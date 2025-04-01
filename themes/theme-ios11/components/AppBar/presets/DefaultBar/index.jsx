@@ -24,6 +24,7 @@ class AppBarDefault extends PureComponent {
     app: PropTypes.shape().isRequired,
     resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
+    setFocus: PropTypes.bool.isRequired,
     updateStatusBar: PropTypes.func.isRequired,
     widgetSettings: PropTypes.shape().isRequired,
     'aria-hidden': PropTypes.bool,
@@ -54,6 +55,15 @@ class AppBarDefault extends PureComponent {
     if (!target) {
       target = document.getElementById('AppHeader');
       this.setState({ target: target || null });
+    }
+
+    if (this.props.setFocus && target) {
+    // Set the focus to the app bar title or else to the first focusable element for screen readers.
+      const focusable = target.querySelector('.app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
+
+      if (focusable) {
+        focusable.focus();
+      }
     }
 
     if (this.props.route.visible) {

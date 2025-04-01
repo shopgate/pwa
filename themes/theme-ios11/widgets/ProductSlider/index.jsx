@@ -167,8 +167,6 @@ class ProductSlider extends Component {
                 delay: Number.parseInt(sliderSettings.delay, 10),
               },
             }}
-            aria-live="off"
-            a11y={{ enabled: false }}
             loop={false}
             indicators={false}
             controls={false}

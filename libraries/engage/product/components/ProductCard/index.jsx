@@ -38,7 +38,7 @@ const location = 'productCard';
  * @param {boolean} props.hideRating Whether the rating should be hidden.
  * @param {boolean} props.hideName Whether the name should be hidden.
  * @param {number} props.titleRows The max number of rows for the product title.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 function ProductCard(props) {
   const {
@@ -63,7 +63,6 @@ function ProductCard(props) {
   return (
     <Link
       className="engage__product-card"
-      tagName="a"
       href={getProductRoute(product.id)}
       itemProp="item"
       itemScope

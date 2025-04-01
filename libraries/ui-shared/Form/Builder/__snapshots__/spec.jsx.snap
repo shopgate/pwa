@@ -130,7 +130,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   name="foo.foo"
                 >
                   <label
-                    className="css-14pken0 css-16msjt6 css-1fekhao label floating"
+                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -400,7 +400,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   name="foo.foo"
                 >
                   <label
-                    className="css-14pken0 css-1fekhao label"
+                    className="css-xrreyh css-1fekhao label"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -627,7 +627,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   name="foo.bar"
                 >
                   <label
-                    className="css-14pken0 css-1fekhao label"
+                    className="css-xrreyh css-1fekhao label"
                     htmlFor="foo.bar"
                   >
                     <Translate
@@ -897,7 +897,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   name="foo.foo"
                 >
                   <label
-                    className="css-14pken0 css-16msjt6 css-1fekhao label floating"
+                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -1247,7 +1247,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   name="foo.firstName"
                 >
                   <label
-                    className="css-14pken0 css-1fekhao label"
+                    className="css-xrreyh css-1fekhao label"
                     htmlFor="foo.firstName"
                   >
                     <Translate
@@ -1461,7 +1461,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   name="foo.lastName"
                 >
                   <label
-                    className="css-14pken0 css-1fekhao label"
+                    className="css-xrreyh css-1fekhao label"
                     htmlFor="foo.lastName"
                   >
                     <Translate
@@ -1738,7 +1738,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   name="foo.foo"
                 >
                   <label
-                    className="css-14pken0 css-16msjt6 css-1fekhao label floating"
+                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -1970,7 +1970,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   name="foo.bar"
                 >
                   <label
-                    className="css-14pken0 css-16msjt6 css-1fekhao label floating"
+                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.bar"
                   >
                     <Translate
@@ -2247,7 +2247,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   name="foo.foo"
                 >
                   <label
-                    className="css-14pken0 css-16msjt6 css-1fekhao label floating"
+                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -2479,7 +2479,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   name="foo.bar"
                 >
                   <label
-                    className="css-14pken0 css-16msjt6 css-1fekhao label floating"
+                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.bar"
                   >
                     <Translate

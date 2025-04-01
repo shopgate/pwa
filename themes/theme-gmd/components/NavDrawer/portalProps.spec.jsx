@@ -4,6 +4,8 @@ import portalProps from './portalProps';
 
 const { Headline } = portalProps;
 
+jest.mock('@shopgate/engage/components');
+
 describe('NavDrawer HeadlineCompatibility', () => {
   const headlineText = 'Headline Text';
 

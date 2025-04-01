@@ -17,13 +17,18 @@ exports[`<Drawer /> should add custom classes 1`] = `
   onDidOpen={[Function]}
   onOpen={[Function]}
 >
-  <div
-    aria-modal={true}
-    className="custom-class-name css-1rg7udn css-1dwe0qx common__drawer"
-    onAnimationEnd={[Function]}
-    role="dialog"
-    style={Object {}}
-  />
+  <FocusTrap
+    active={true}
+  >
+    <div
+      aria-modal={true}
+      className="custom-class-name css-1rg7udn css-kk46gv common__drawer"
+      onAnimationEnd={[Function]}
+      role="dialog"
+      style={Object {}}
+      tabIndex={-1}
+    />
+  </FocusTrap>
 </Drawer>
 `;
 
@@ -44,13 +49,18 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
   onDidOpen={[Function]}
   onOpen={[Function]}
 >
-  <div
-    aria-modal={true}
-    className="custom-class-name css-1rg7udn css-1dwe0qx common__drawer"
-    onAnimationEnd={[Function]}
-    role="dialog"
-    style={Object {}}
-  />
+  <FocusTrap
+    active={true}
+  >
+    <div
+      aria-modal={true}
+      className="custom-class-name css-1rg7udn css-kk46gv common__drawer"
+      onAnimationEnd={[Function]}
+      role="dialog"
+      style={Object {}}
+      tabIndex={-1}
+    />
+  </FocusTrap>
 </Drawer>
 `;
 

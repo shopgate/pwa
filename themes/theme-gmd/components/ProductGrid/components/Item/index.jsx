@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
-import Link from '@shopgate/pwa-common/components/Link';
+import { Link } from '@shopgate/engage/components';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
@@ -18,10 +18,10 @@ const Item = ({ product, display }) => (
   <div className={`${styles} theme__product-grid__item`}>
     <Link
       tag="a"
+      role="none"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
       className={itemImage}
-      aria-hidden={!product.featuredMedia?.altText}
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia

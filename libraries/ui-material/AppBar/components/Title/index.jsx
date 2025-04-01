@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './style';
 
 /**
@@ -16,29 +17,16 @@ class AppBarTitle extends PureComponent {
   };
 
   /**
-   * focus the title for screen readers when page loads
-   */
-  componentDidMount() {
-    // Delay focus slightly to ensure it is recognized by screen readers
-    setTimeout(() => {
-      if (this.titleRef.current) {
-        this.titleRef.current.focus();
-      }
-    }, 100);
-  }
-
-  titleRef = React.createRef();
-
-  /**
    * @returns {JSX.Element}
    */
   render() {
     const { onClick, title } = this.props;
 
+    if (!title) return null;
+
     return (
       <div
-        ref={this.titleRef}
-        className={styles}
+        className={classNames(styles, 'app-bar__title')}
         role="heading"
         aria-labelledby="titleLabel"
         aria-level="1"

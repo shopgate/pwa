@@ -24,10 +24,12 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           className="css-kmhio2"
         >
           <Grid.Item
-            className="css-zpldj2"
+            className="css-90mgzt"
             shrink={0}
           >
-            <TimeIcon />
+            <TimeIcon
+              aria-hidden={true}
+            />
           </Grid.Item>
           <Grid.Item
             className="css-1s3c85m"
@@ -40,25 +42,31 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               locations.hours_details
             </Text>
             <div
-              className="css-veb3jk"
+              className="css-kckwte"
             >
               <StoreOpeningHoursLine
                 day="mon"
                 hours="09:00 - 17:00"
                 key="mon"
               >
-                <div
+                <tr
+                  aria-label="locations.mon: 09:00 - 17:00"
                   className="css-9shxm7"
+                  role="row"
+                  tabIndex={0}
                 >
-                  <div
+                  <td
+                    aria-hidden={true}
                     className="css-1ppc7ry"
                   >
                     locations.mon
-                  </div>
-                  <div>
+                  </td>
+                  <td
+                    aria-hidden={true}
+                  >
                     09:00 - 17:00
-                  </div>
-                </div>
+                  </td>
+                </tr>
               </StoreOpeningHoursLine>
               <StoreOpeningHoursLine
                 day="tue"
@@ -90,18 +98,24 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                 hours="09:00 - 17:00"
                 key="sun"
               >
-                <div
+                <tr
+                  aria-label="locations.sun: 09:00 - 17:00"
                   className="css-9shxm7"
+                  role="row"
+                  tabIndex={0}
                 >
-                  <div
+                  <td
+                    aria-hidden={true}
                     className="css-1ppc7ry"
                   >
                     locations.sun
-                  </div>
-                  <div>
+                  </td>
+                  <td
+                    aria-hidden={true}
+                  >
                     09:00 - 17:00
-                  </div>
-                </div>
+                  </td>
+                </tr>
               </StoreOpeningHoursLine>
             </div>
           </Grid.Item>
@@ -112,6 +126,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
       phone="06033123"
     >
       <a
+        aria-label="locations.phone: 06033123"
         href="tel:06033123"
       >
         <StoreDetailsLine
@@ -122,10 +137,12 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             className="css-kmhio2"
           >
             <Grid.Item
-              className="css-zpldj2 css-1ynyzke"
+              className="css-90mgzt css-1ynyzke"
               shrink={0}
             >
-              <PhoneIcon />
+              <PhoneIcon
+                aria-hidden={true}
+              />
             </Grid.Item>
             <Grid.Item
               className="css-1s3c85m"
@@ -165,7 +182,9 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
       showFull={true}
     >
       <Link
+        aria-label="Marktplatz 12locations.address: locations.map_open"
         href="https://www.google.com/maps/dir/?api=1&destination=Marktplatz%2012%2C%20Butzbach%2035510"
+        role="button"
         target="_blank"
       >
         <StoreDetailsLine
@@ -176,10 +195,12 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             className="css-kmhio2"
           >
             <Grid.Item
-              className="css-zpldj2 css-1ynyzke"
+              className="css-90mgzt css-1ynyzke"
               shrink={0}
             >
-              <LocationIcon />
+              <LocationIcon
+                aria-hidden={true}
+              />
             </Grid.Item>
             <Grid.Item
               className="css-1s3c85m"

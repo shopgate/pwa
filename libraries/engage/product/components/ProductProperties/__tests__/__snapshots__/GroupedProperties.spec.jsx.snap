@@ -16,8 +16,8 @@ Array [
       className={null}
       contentClassName={null}
       handleLabel={null}
-      header={null}
       openWithChevron={false}
+      renderAdditionalHeaderContent={null}
       renderLabel={[Function]}
       role="button"
       startOpened={false}
@@ -61,8 +61,8 @@ Array [
       className={null}
       contentClassName={null}
       handleLabel={null}
-      header={null}
       openWithChevron={false}
+      renderAdditionalHeaderContent={null}
       renderLabel={[Function]}
       role="button"
       startOpened={false}

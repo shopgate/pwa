@@ -12,6 +12,7 @@ jest.mock('@shopgate/engage/product', () => ({
   Swatches: () => null,
   AVAILABILITY_STATE_OK: 'AVAILABILITY_STATE_OK',
   AVAILABILITY_STATE_ALERT: 'AVAILABILITY_STATE_ALERT',
+  getProductRoute: jest.fn(productId => `link-to-product/${productId}`),
 }));
 jest.mock('@shopgate/engage/locations/components', () => ({
   StockInfoLists: () => null,

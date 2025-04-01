@@ -128,7 +128,7 @@ const FavoriteList = ({
         <Card className={styles.root}>
           <Accordion
             className=""
-            header={<ListAccordionHeader
+            renderAdditionalHeaderContent={() => <ListAccordionHeader
               rename={newName => rename(id, newName)}
               remove={remove}
               id={id}

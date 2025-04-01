@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n, PhoneIcon, Link } from '@shopgate/engage/components';
+import { I18n, PhoneIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import { StoreDetailsLine } from './StoreDetailsLine';
 import { detailsPrimary, detailsSecondary } from './Store.style';
@@ -17,16 +17,15 @@ export function StorePhoneNumber({ phone }) {
   }
 
   return (
-    <Link
+    <a
       href={`tel:${phone}`}
-      role="button"
       aria-label={`${i18n.text('locations.phone')}: ${phone}`}
     >
       <StoreDetailsLine icon={PhoneIcon} linked>
         <div className={detailsPrimary}>{phone}</div>
         <I18n.Text string="locations.phone" className={detailsSecondary} />
       </StoreDetailsLine>
-    </Link>
+    </a>
   );
 }
 

@@ -39,6 +39,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
           attributes={null}
           checked={false}
           className=""
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -48,34 +49,9 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
             className="css-15broj4 foo radioItem"
             htmlFor="foo"
           >
-            <RadioUnchecked
+            <UncheckedIcon
               className="css-pljilv uncheckedIcon"
-            >
-              <Icon
-                className="css-pljilv uncheckedIcon"
-                color={null}
-                content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
-                size="inherit"
-                viewBox="0 0 24 24"
-              >
-                <svg
-                  className="css-yys9hb css-pljilv uncheckedIcon common__icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
-                    }
-                  }
-                  style={
-                    Object {
-                      "fill": null,
-                      "fontSize": "inherit",
-                    }
-                  }
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                />
-              </Icon>
-            </RadioUnchecked>
+            />
             <input
               aria-labelledby="foo-label"
               checked={false}
@@ -85,27 +61,14 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <span
+            <Text
               aria-hidden={true}
               className="css-1hju4sd label"
               id="foo-label"
+              string="foo"
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
-                string="foo"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  foo
-                </span>
-              </Translate>
-            </span>
+              foo
+            </Text>
           </label>
         </RadioItem>
       </div>
@@ -153,6 +116,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           attributes={null}
           checked={false}
           className=""
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -162,34 +126,9 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             className="css-15broj4 foo radioItem"
             htmlFor="foo"
           >
-            <RadioUnchecked
+            <UncheckedIcon
               className="css-pljilv uncheckedIcon"
-            >
-              <Icon
-                className="css-pljilv uncheckedIcon"
-                color={null}
-                content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
-                size="inherit"
-                viewBox="0 0 24 24"
-              >
-                <svg
-                  className="css-yys9hb css-pljilv uncheckedIcon common__icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
-                    }
-                  }
-                  style={
-                    Object {
-                      "fill": null,
-                      "fontSize": "inherit",
-                    }
-                  }
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                />
-              </Icon>
-            </RadioUnchecked>
+            />
             <input
               aria-labelledby="foo-label"
               checked={false}
@@ -199,33 +138,21 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <span
+            <Text
               aria-hidden={true}
               className="css-1hju4sd label"
               id="foo-label"
+              string="foo"
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
-                string="foo"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  foo
-                </span>
-              </Translate>
-            </span>
+              foo
+            </Text>
           </label>
         </RadioItem>
         <RadioItem
           attributes={null}
           checked={false}
           className=""
+          id={null}
           key="radio_bar/.1"
           label="bar"
           name="bar"
@@ -235,34 +162,9 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             className="css-15broj4 bar radioItem"
             htmlFor="bar"
           >
-            <RadioUnchecked
+            <UncheckedIcon
               className="css-pljilv uncheckedIcon"
-            >
-              <Icon
-                className="css-pljilv uncheckedIcon"
-                color={null}
-                content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
-                size="inherit"
-                viewBox="0 0 24 24"
-              >
-                <svg
-                  className="css-yys9hb css-pljilv uncheckedIcon common__icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
-                    }
-                  }
-                  style={
-                    Object {
-                      "fill": null,
-                      "fontSize": "inherit",
-                    }
-                  }
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                />
-              </Icon>
-            </RadioUnchecked>
+            />
             <input
               aria-labelledby="bar-label"
               checked={false}
@@ -272,27 +174,14 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <span
+            <Text
               aria-hidden={true}
               className="css-1hju4sd label"
               id="bar-label"
+              string="bar"
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
-                string="bar"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  bar
-                </span>
-              </Translate>
-            </span>
+              bar
+            </Text>
           </label>
         </RadioItem>
       </div>
@@ -340,6 +229,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
           attributes={null}
           checked={false}
           className=""
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -349,34 +239,9 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
             className="css-15broj4 foo radioItem"
             htmlFor="foo"
           >
-            <RadioUnchecked
+            <UncheckedIcon
               className="css-pljilv uncheckedIcon"
-            >
-              <Icon
-                className="css-pljilv uncheckedIcon"
-                color={null}
-                content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
-                size="inherit"
-                viewBox="0 0 24 24"
-              >
-                <svg
-                  className="css-yys9hb css-pljilv uncheckedIcon common__icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
-                    }
-                  }
-                  style={
-                    Object {
-                      "fill": null,
-                      "fontSize": "inherit",
-                    }
-                  }
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                />
-              </Icon>
-            </RadioUnchecked>
+            />
             <input
               aria-labelledby="foo-label"
               checked={false}
@@ -386,27 +251,14 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <span
+            <Text
               aria-hidden={true}
               className="css-1hju4sd label"
               id="foo-label"
+              string="foo"
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
-                string="foo"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  foo
-                </span>
-              </Translate>
-            </span>
+              foo
+            </Text>
           </label>
         </RadioItem>
       </div>
@@ -494,6 +346,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
           attributes={null}
           checked={false}
           className=""
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -503,34 +356,9 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
             className="css-15broj4 foo radioItem"
             htmlFor="foo"
           >
-            <RadioUnchecked
+            <UncheckedIcon
               className="css-pljilv uncheckedIcon"
-            >
-              <Icon
-                className="css-pljilv uncheckedIcon"
-                color={null}
-                content="<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
-                size="inherit"
-                viewBox="0 0 24 24"
-              >
-                <svg
-                  className="css-yys9hb css-pljilv uncheckedIcon common__icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<path d=\\"M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
-                    }
-                  }
-                  style={
-                    Object {
-                      "fill": null,
-                      "fontSize": "inherit",
-                    }
-                  }
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                />
-              </Icon>
-            </RadioUnchecked>
+            />
             <input
               aria-labelledby="foo-label"
               checked={false}
@@ -540,27 +368,14 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <span
+            <Text
               aria-hidden={true}
               className="css-1hju4sd label"
               id="foo-label"
+              string="foo"
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
-                string="foo"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  foo
-                </span>
-              </Translate>
-            </span>
+              foo
+            </Text>
           </label>
         </RadioItem>
       </div>
@@ -608,6 +423,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
           attributes={null}
           checked={true}
           className=""
+          id={null}
           key="radio_foo/.0"
           label="foo"
           name="foo"
@@ -617,34 +433,9 @@ exports[`<RadioGroup /> should use default value 1`] = `
             className="css-15broj4 foo radioItem"
             htmlFor="foo"
           >
-            <RadioChecked
+            <CheckedIcon
               className="css-nihp8 css-pljilv checkedIcon"
-            >
-              <Icon
-                className="css-nihp8 css-pljilv checkedIcon"
-                color={null}
-                content="<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>"
-                size="inherit"
-                viewBox="0 0 24 24"
-              >
-                <svg
-                  className="css-yys9hb css-nihp8 css-pljilv checkedIcon common__icon"
-                  dangerouslySetInnerHTML={
-                    Object {
-                      "__html": "<path d=\\"M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z\\"/>",
-                    }
-                  }
-                  style={
-                    Object {
-                      "fill": null,
-                      "fontSize": "inherit",
-                    }
-                  }
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                />
-              </Icon>
-            </RadioChecked>
+            />
             <input
               aria-labelledby="foo-label"
               checked={true}
@@ -654,27 +445,14 @@ exports[`<RadioGroup /> should use default value 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <span
+            <Text
               aria-hidden={true}
               className="css-1hju4sd label"
               id="foo-label"
+              string="foo"
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
-                string="foo"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  foo
-                </span>
-              </Translate>
-            </span>
+              foo
+            </Text>
           </label>
         </RadioItem>
       </div>

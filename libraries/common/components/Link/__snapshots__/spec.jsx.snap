@@ -2,12 +2,13 @@
 
 exports[`<Link /> renders with children 1`] = `
 <div
-  aria-hidden={false}
+  aria-hidden={null}
   aria-label={null}
   className="css-9auwkz  common__link"
   data-test-id="link: /"
   href={null}
   onClick={[Function]}
+  onKeyDown={[Function]}
   role="link"
   tabIndex={null}
 >

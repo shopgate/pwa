@@ -1,12 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BasicDialog /> should render as expected 1`] = `
-<FocusTrap
-  _createFocusTrap={[Function]}
-  active={true}
-  focusTrapOptions={Object {}}
-  paused={false}
->
+<FocusTrap>
   <div
     aria-labelledby="basicDialogTitle basicDialogDesc"
     aria-modal={true}
@@ -59,12 +54,7 @@ exports[`<BasicDialog /> should render as expected 1`] = `
 `;
 
 exports[`<BasicDialog /> should render with minimal props 1`] = `
-<FocusTrap
-  _createFocusTrap={[Function]}
-  active={true}
-  focusTrapOptions={Object {}}
-  paused={false}
->
+<FocusTrap>
   <div
     aria-labelledby="basicDialogTitle basicDialogDesc"
     aria-modal={true}

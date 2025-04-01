@@ -22,7 +22,8 @@ import * as styles from './style';
  * @param {string} [props.contentClassName] Class name for the content wrapper
  * @param {string} [props.testId] Test ID for the component
  * @param {React.ReactNode} props.children Children used for the content section of the accordion
- * @param {React.ReactNode} props.header optional additional content for the accordion header
+ * @param {Function} props.renderAdditionalHeaderContent optional additional content
+ * for the accordion header
  * @returns {JSX.Element}
  */
 function Accordion(props) {
@@ -38,7 +39,7 @@ function Accordion(props) {
     openWithChevron,
     startOpened,
     chevronPosition,
-    header,
+    renderAdditionalHeaderContent,
   } = props;
 
   if (!renderLabel || !children) {
@@ -93,7 +94,9 @@ function Accordion(props) {
                     <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
                   </div>
                 </div>
-                <div>{header}</div>
+                {renderAdditionalHeaderContent && (
+                <div>{renderAdditionalHeaderContent()}</div>
+                )}
               </div>
               <AccordionContent
                 open={open}
@@ -118,8 +121,8 @@ Accordion.propTypes = {
   className: PropTypes.string,
   contentClassName: PropTypes.string,
   handleLabel: PropTypes.string,
-  header: PropTypes.node,
   openWithChevron: PropTypes.bool,
+  renderAdditionalHeaderContent: PropTypes.func,
   renderLabel: PropTypes.func,
   role: PropTypes.string,
   startOpened: PropTypes.bool,
@@ -128,7 +131,7 @@ Accordion.propTypes = {
 
 Accordion.defaultProps = {
   children: null,
-  header: null,
+  renderAdditionalHeaderContent: null,
   renderLabel: noop,
   className: null,
   contentClassName: null,
