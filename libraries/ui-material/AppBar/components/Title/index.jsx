@@ -26,7 +26,7 @@ class AppBarTitle extends PureComponent {
 
     return (
       <div
-        className={classNames(styles, 'appBar__title')}
+        className={classNames(styles, 'app-bar__title')}
         role="heading"
         aria-labelledby="titleLabel"
         aria-level="1"

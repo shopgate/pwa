@@ -28,7 +28,7 @@ class Link extends Component {
   };
 
   static defaultProps = {
-    'aria-hidden': false,
+    'aria-hidden': null,
     'aria-label': null,
     className: '',
     disabled: false,

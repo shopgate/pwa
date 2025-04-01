@@ -72,7 +72,7 @@ class Glow extends Component {
    */
   render() {
     const {
-      children, styles: propStyles, disabled, forwardedRef, className, color, ...rest
+      children, styles: propStyles, forwardedRef, className, color, ...rest
     } = this.props;
 
     let innerInlineStyles;
@@ -88,6 +88,8 @@ class Glow extends Component {
       };
     }
 
+    /* eslint-disable jsx-a11y/no-static-element-interactions,
+    jsx-a11y/click-events-have-key-events */
     return (
       <div
         {...rest}
@@ -95,15 +97,13 @@ class Glow extends Component {
         onClick={this.handleTouchTap}
         style={propStyles.container}
         ref={forwardedRef}
-        onKeyDown={!disabled ? this.handleKeyPress : undefined}
-        role="button"
-        tabIndex={disabled ? -1 : 0}
-        aria-disabled={disabled}
       >
         <div className={styles.glow} style={innerInlineStyles} />
         {children}
       </div>
     );
+    /* eslint-enable jsx-a11y/no-static-element-interactions,
+    jsx-a11y/click-events-have-key-events */
   }
 }
 
