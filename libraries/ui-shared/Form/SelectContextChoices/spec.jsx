@@ -2,6 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import SelectContextChoices from './index';
 
+jest.mock('@shopgate/engage/a11y/components');
+jest.mock('@shopgate/engage/components');
+
 describe('<SelectContextChoices />', () => {
   // Simple tests for snapshots
   const tests = {

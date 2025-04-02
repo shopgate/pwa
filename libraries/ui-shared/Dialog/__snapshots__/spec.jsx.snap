@@ -9,6 +9,7 @@ exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
       "layout": "",
     }
   }
+  disableA11YFocusHandling={false}
 >
   <Backdrop
     className=""
@@ -36,6 +37,7 @@ exports[`<Dialog /> should render a special dialog 1`] = `
       "layout": "",
     }
   }
+  disableA11YFocusHandling={false}
 >
   <Backdrop
     className=""
@@ -71,6 +73,7 @@ exports[`<Dialog /> should render variant select dialog 1`] = `
       "layout": "",
     }
   }
+  disableA11YFocusHandling={false}
 >
   <Backdrop
     className=""
@@ -103,6 +106,7 @@ exports[`<Dialog /> should render without props 1`] = `
       "layout": "",
     }
   }
+  disableA11YFocusHandling={false}
 >
   <Backdrop
     className=""

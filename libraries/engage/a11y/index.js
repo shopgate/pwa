@@ -1,5 +1,11 @@
 /** @module a11y */
 
-export * from './components';
+export {
+  LiveMessage,
+  LiveMessenger,
+  Navigation,
+  Section,
+  VisuallyHidden,
+} from './components';
 export * from './constants';
 export * from './helpers';
