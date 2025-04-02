@@ -149,7 +149,7 @@ class RatingStars extends Component {
 
     return (
       <div
-        role="img"
+        role={isSelectable ? undefined : 'img'}
         className={className}
         aria-label={this.getTextualFinal(ratedStars)}
         data-test-id={`ratedStars: ${ratedStars}`}

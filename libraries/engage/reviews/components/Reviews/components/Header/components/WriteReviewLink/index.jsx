@@ -8,11 +8,15 @@ import ButtonLink from '@shopgate/pwa-ui-shared/ButtonLink';
 
 /**
  * Link to add a review.
- * @returns {JSX|null}
+ * @returns {JSX.Element}
  */
 const WriteReviewLink = ({ productId }) => (
   <div data-test-id="writeReview" className="engage__reviews__write-review-link">
-    <ButtonLink href={`${ITEM_PATH}/${bin2hex(productId)}/write_review`} noGap aria-label={i18n.text('reviews.button_add')}>
+    <ButtonLink
+      href={`${ITEM_PATH}/${bin2hex(productId)}/write_review`}
+      noGap
+      aria-label={i18n.text('reviews.button_add')}
+    >
       <I18n.Text string="reviews.button_add" />
     </ButtonLink>
   </div>

@@ -8,11 +8,9 @@ import AverageRating from '../AverageRating';
 import WriteReviewLink from '../WriteReviewLink';
 import * as styles from './style';
 
-/* eslint-disable jsx-a11y/aria-role */
-
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ReviewsExcerpt = ({
   productId, average, count, withTopGap,
@@ -25,7 +23,7 @@ const ReviewsExcerpt = ({
     id="reviewsExcerpt"
   >
     <AverageRating productId={productId} average={average} count={count} />
-    <div className={styles.reviewsLine} role="text">
+    <div className={styles.reviewsLine}>
       <I18n.Text string="reviews.rating" className={styles.averageRatingText}>
         <RatingNumber rating={average} className={styles.averageRatingNumber} />
       </I18n.Text>
@@ -35,8 +33,6 @@ const ReviewsExcerpt = ({
     </div>
   </div>
 );
-
-/* eslint-enable jsx-a11y/aria-role */
 
 ReviewsExcerpt.propTypes = {
   average: PropTypes.number,
