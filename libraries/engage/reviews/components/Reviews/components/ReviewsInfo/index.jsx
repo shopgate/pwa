@@ -30,8 +30,7 @@ const {
 
 /**
  * The ReviewsInfo component
- * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ReviewsInfo = () => {
   if (!text) {
