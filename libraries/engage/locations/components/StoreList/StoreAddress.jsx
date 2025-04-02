@@ -1,25 +1,18 @@
-// @flow
 import * as React from 'react';
-import { ResponsiveContainer } from '@shopgate/engage/components';
+import PropTypes from 'prop-types';
 import { StoreContext } from './Store.context';
 import { FulfillmentContext } from '../../locations.context';
 import { StockInfo } from '../StockInfo';
-import { type LocationAddress } from '../../locations.types';
 import { LocationIcon } from '../../../components';
 import { i18n } from '../../../core';
 import { address as container, addressIcon, stockInfoContainer } from './Store.style';
-
-type Props = {
-  address?: LocationAddress,
-  pure?: boolean,
-};
 
 /**
  * Renders the pickup location's address information.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function StoreAddress({ address, pure }: Props) {
+export function StoreAddress({ address, pure }) {
   const store = React.useContext(StoreContext);
   const { product } = React.useContext(FulfillmentContext);
 
@@ -62,15 +55,20 @@ export function StoreAddress({ address, pure }: Props) {
       </div>
       <div>
         {addressContent}
-        <ResponsiveContainer breakpoint="<sm" appAlways>
+        {product && (
           <div className={stockInfoContainer}>
             <StockInfo location={store} product={product} showStoreName={false} />
           </div>
-        </ResponsiveContainer>
+        )}
       </div>
     </div>
   );
 }
+
+StoreAddress.propTypes = {
+  address: PropTypes.shape(),
+  pure: PropTypes.bool,
+};
 
 StoreAddress.defaultProps = {
   address: null,

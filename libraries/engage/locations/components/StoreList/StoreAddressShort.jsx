@@ -1,24 +1,18 @@
-// @flow
 import React, { Fragment, useMemo } from 'react';
 import { i18n, generateGoogleMapsDirectionsUrl } from '@shopgate/engage/core';
 import {
   LocationIcon, Link, Ellipsis, I18n,
 } from '@shopgate/engage//components';
+import PropTypes from 'prop-types';
 import { StoreDetailsLine } from './StoreDetailsLine';
-import { type LocationAddress } from '../../locations.types';
 import { detailsPrimary, detailsSecondary } from './Store.style';
-
-type Props = {
-  address?: LocationAddress,
-  showFull?: boolean,
-};
 
 /**
  * Renders the pickup location's address information.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-export function StoreAddressShort({ address, showFull }: Props) {
+export function StoreAddressShort({ address, showFull }) {
   const mapsUrl = useMemo(() => address && generateGoogleMapsDirectionsUrl(address), [address]);
 
   if (!address) {
@@ -26,27 +20,27 @@ export function StoreAddressShort({ address, showFull }: Props) {
   }
 
   return (
-    <Link target="_blank" href={mapsUrl}>
+    <Link target="_blank" href={mapsUrl} role="button">
       <StoreDetailsLine icon={LocationIcon} linked>
         { showFull && (
           <Fragment>
-            <div className={detailsPrimary}>
+            <p className={detailsPrimary}>
               {address.street}
-            </div>
+            </p>
             {(address.street2 && address.street2 !== '') && (
-              <div className={detailsPrimary}>
+              <p className={detailsPrimary}>
                 {address.street2}
-              </div>
+              </p>
             )}
             {(address.street3 && address.street3 !== '') && (
-              <div className={detailsPrimary}>
+              <p className={detailsPrimary}>
                 {address.street3}
-              </div>
+              </p>
             )}
             {(address.street4 && address.street4 !== '') && (
-              <div className={detailsPrimary}>
+              <p className={detailsPrimary}>
                 {address.street4}
-              </div>
+              </p>
             )}
           </Fragment>
         )}
@@ -54,11 +48,20 @@ export function StoreAddressShort({ address, showFull }: Props) {
         <Ellipsis rows={1} className={detailsPrimary}>
           {i18n.text('locations.address', address)}
         </Ellipsis>
-        <I18n.Text string="locations.map_open" className={detailsSecondary} />
+        <I18n.Text
+          string="locations.map_open"
+          className={detailsSecondary}
+          aria-label={`: ${i18n.text('locations.map_open')}`}
+        />
       </StoreDetailsLine>
     </Link>
   );
 }
+
+StoreAddressShort.propTypes = {
+  address: PropTypes.shape(),
+  showFull: PropTypes.bool,
+};
 
 StoreAddressShort.defaultProps = {
   address: null,
