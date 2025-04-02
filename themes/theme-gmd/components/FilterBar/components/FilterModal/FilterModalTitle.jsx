@@ -50,7 +50,7 @@ const FilterModalTitle = ({ apply, reset, close }) => (
     <Ripple onClick={close} className={styles.closeButton}>
       <CrossIcon />
     </Ripple>
-    <span className={styles.title} id="modalTitle">
+    <span className={styles.title}>
       {i18n.text('titles.filter')}
     </span>
     <Ripple fill className={styles.actionButtonSecondary} onClick={reset}>

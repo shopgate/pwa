@@ -29,10 +29,16 @@ const dialogTypes = {
  * This component takes care of choosing the correct component body for the given type
  * and render it on a modal overlay.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Object} props.modal Object with modal data.
+ * @param {Function} props.onConfirm The function to call when the confirm button is clicked.
+ * @param {Function} props.onDismiss The function to call when the dismiss button is clicked.
+ * @param {boolean} props.disableA11YFocusHandling Whether the internal A11Y focus handling
+ * should be disabled since it's already handled outside the dialog.
+ * @param {NodeList} props.children The children to render inside the modal.
+ * @returns {JSX.Element}
  */
 const Dialog = ({
-  modal, onConfirm, onDismiss, children,
+  modal, onConfirm, onDismiss, children, disableA11YFocusHandling,
 }) => {
   // Assemble the actions.
   const actions = [];
@@ -83,7 +89,7 @@ const Dialog = ({
   const DialogComponent = dialogTypes[dialogType] || BasicDialog;
 
   return (
-    <Modal>
+    <Modal disableA11YFocusHandling={disableA11YFocusHandling}>
       <Backdrop isVisible level={0} opacity={30} />
       <DialogComponent {...dialogProps} />
     </Modal>
@@ -92,12 +98,34 @@ const Dialog = ({
 
 Dialog.propTypes = {
   modal: PropTypes.shape({
+    /**
+     * The title of the modal.
+     */
     title: BasicDialog.propTypes.title,
+    /**
+     * Additional I18n placeholder parameters for the title.
+     */
     titleParams: PropTypes.shape(),
+    /**
+     * Label for the confirm button.
+     */
     confirm: PropTypes.string,
+    /**
+     * Label for the dismiss button.
+     */
     dismiss: PropTypes.string,
+    /**
+     * Message to be displayed in the modal.
+     */
     message: PropTypes.string,
+    /**
+     * Additional parameters for the component that's used to render the dialog.
+     */
     params: PropTypes.shape(),
+    /**
+     * Type of the dialog.
+     * This is used to determine which component to render.
+     */
     type: PropTypes.string,
     /**
      * Whether the confirm button is disabled when visible
@@ -110,6 +138,7 @@ Dialog.propTypes = {
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.any,
+  disableA11YFocusHandling: PropTypes.bool,
   onConfirm: PropTypes.func,
   onDismiss: PropTypes.func,
 };
@@ -118,6 +147,7 @@ Dialog.defaultProps = {
   onConfirm: () => {},
   onDismiss: () => {},
   children: null,
+  disableA11YFocusHandling: false,
 };
 
 export default Dialog;

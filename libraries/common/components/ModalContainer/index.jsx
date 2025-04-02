@@ -12,7 +12,7 @@ export const MODAL_EVENTS = {
  * The ModalContainer is connected to the modal state
  * and renders the currently active modal.
  * @param {Object} props The component props.
- * @return {JSX|null}
+ * @returns {JSX.Element}
  */
 const ModalContainer = ({
   component,
@@ -38,6 +38,8 @@ const ModalContainer = ({
 
   const componentProps = {
     modal,
+    // A11Y focus is handled by the modal container itself.
+    disableA11YFocusHandling: true,
     onConfirm: () => confirm(modal.id),
     onDismiss: () => dismiss(modal.id),
   };
