@@ -5,6 +5,8 @@ import TextMessageDialog from './index';
 const message = 'This is the message.';
 const title = 'This is the title.';
 
+jest.mock('@shopgate/engage/a11y/components');
+
 describe('<TextMessageDialog />', () => {
   it('should render with minimal props', () => {
     const wrapper = shallow(<TextMessageDialog message={message} actions={[]} />);

@@ -156,7 +156,7 @@ class AppBarDefault extends PureComponent {
       return;
     }
 
-    const focusable = target.querySelector('.app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
+    const focusable = target.querySelector('.theme__app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
 
     if (focusable) {
       focusable.focus();

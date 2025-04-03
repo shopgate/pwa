@@ -10,6 +10,8 @@ jest.mock('@shopgate/pwa-core/emitters/ui', () => ({
   emit: jest.fn(),
 }));
 
+jest.mock('@shopgate/engage/a11y/components');
+
 describe('<Sheet />', () => {
   it('should render closed without content', () => {
     const wrapper = shallow(<Sheet />);

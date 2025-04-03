@@ -5,6 +5,8 @@ import { UnwrappedVariantSelectModal as VariantSelectModal } from './index';
 const message = 'This is the message.';
 const title = 'This is the title.';
 
+jest.mock('@shopgate/engage/a11y/components');
+
 describe('<VariantSelectModal />', () => {
   it('should render with minimal props', () => {
     const wrapper = shallow(<VariantSelectModal
