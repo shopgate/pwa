@@ -1,84 +1,88 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BasicDialog /> should render as expected 1`] = `
-<div
-  aria-labelledby="basicDialogTitle basicDialogDesc"
-  aria-modal={true}
-  className="css-1oc7wvq ui-material__base-dialog"
-  data-test-id="basicDialog"
-  role="alertdialog"
->
+<FocusTrap>
   <div
-    className="css-1vzqftr"
-  >
-    <Title
-      title="Hello World"
-    />
-    <Content
-      content={
-        <div>
-          Hello World
-        </div>
-      }
-    />
-  </div>
-  <div
-    className="css-1h5vk0a"
+    aria-labelledby="basicDialogTitle basicDialogDesc"
+    aria-modal={true}
+    className="css-1oc7wvq ui-material__base-dialog"
+    data-test-id="basicDialog"
+    role="alertdialog"
   >
     <div
-      className="css-hw75se"
+      className="css-1vzqftr"
     >
-      <Buttons
-        actions={
-          Array [
-            Object {
-              "action": [MockFunction],
-              "label": "action0",
-            },
-            Object {
-              "action": [MockFunction],
-              "label": "action1",
-            },
-            Object {
-              "action": [MockFunction],
-              "label": "action2",
-            },
-          ]
+      <Title
+        title="Hello World"
+      />
+      <Content
+        content={
+          <div>
+            Hello World
+          </div>
         }
       />
     </div>
+    <div
+      className="css-1h5vk0a"
+    >
+      <div
+        className="css-hw75se"
+      >
+        <Buttons
+          actions={
+            Array [
+              Object {
+                "action": [MockFunction],
+                "label": "action0",
+              },
+              Object {
+                "action": [MockFunction],
+                "label": "action1",
+              },
+              Object {
+                "action": [MockFunction],
+                "label": "action2",
+              },
+            ]
+          }
+        />
+      </div>
+    </div>
   </div>
-</div>
+</FocusTrap>
 `;
 
 exports[`<BasicDialog /> should render with minimal props 1`] = `
-<div
-  aria-labelledby="basicDialogTitle basicDialogDesc"
-  aria-modal={true}
-  className="css-1oc7wvq ui-material__base-dialog"
-  data-test-id="basicDialog"
-  role="alertdialog"
->
+<FocusTrap>
   <div
-    className="css-1vzqftr"
-  >
-    <Title
-      title={null}
-    />
-    <Content
-      content={null}
-    />
-  </div>
-  <div
-    className="css-1h5vk0a"
+    aria-labelledby="basicDialogTitle basicDialogDesc"
+    aria-modal={true}
+    className="css-1oc7wvq ui-material__base-dialog"
+    data-test-id="basicDialog"
+    role="alertdialog"
   >
     <div
-      className="css-hw75se"
+      className="css-1vzqftr"
     >
-      <Buttons
-        actions={Array []}
+      <Title
+        title={null}
+      />
+      <Content
+        content={null}
       />
     </div>
+    <div
+      className="css-1h5vk0a"
+    >
+      <div
+        className="css-hw75se"
+      >
+        <Buttons
+          actions={Array []}
+        />
+      </div>
+    </div>
   </div>
-</div>
+</FocusTrap>
 `;

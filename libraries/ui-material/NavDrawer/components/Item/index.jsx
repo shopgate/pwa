@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import { withForwardedRef } from '@shopgate/engage/core';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import styles from './style';
 
 /**
@@ -13,7 +13,7 @@ class NavDrawerItem extends Component {
     label: PropTypes.string.isRequired,
     'aria-hidden': PropTypes.bool,
     'aria-label': PropTypes.string,
-    badge: PropTypes.func,
+    badge: PropTypes.elementType,
     forwardedRef: PropTypes.shape(),
     icon: PropTypes.func,
     onClick: PropTypes.func,
@@ -46,7 +46,6 @@ class NavDrawerItem extends Component {
 
   /**
    * Handles an Item click by executing it's href.
-   * @param {Object} props The component props.
    */
   handleClick = () => {
     UIEvents.emit('navdrawer_close');

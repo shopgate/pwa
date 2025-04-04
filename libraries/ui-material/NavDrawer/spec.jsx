@@ -3,6 +3,7 @@ import { shallow, mount } from 'enzyme';
 import NavDrawer from './index';
 
 jest.unmock('@shopgate/pwa-core');
+jest.mock('@shopgate/engage/components');
 
 describe('NavDrawer', () => {
   it('should match the snapshot', () => {

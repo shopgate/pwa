@@ -50,21 +50,11 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                 }
               }
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
+              <Text
                 string="navigation.welcome_message"
-                transform={null}
               >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  navigation.welcome_message
-                </span>
-              </Translate>
+                navigation.welcome_message
+              </Text>
             </h1>
           </Headline>
           <Portal
@@ -153,21 +143,11 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             }
                           }
                         >
-                          <Translate
-                            acceptPlainTextWithPlaceholders={false}
-                            className={null}
-                            params={Object {}}
-                            role={null}
+                          <Text
                             string="navigation.your_account"
-                            transform={null}
                           >
-                            <span
-                              className={null}
-                              role={null}
-                            >
-                              navigation.your_account
-                            </span>
-                          </Translate>
+                            navigation.your_account
+                          </Text>
                         </h2>
                       </Headline>
                       <div
@@ -273,21 +253,11 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       }
                     }
                   >
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
+                    <Text
                       string="navigation.store_information"
-                      transform={null}
                     >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        navigation.store_information
-                      </span>
-                    </Translate>
+                      navigation.store_information
+                    </Text>
                   </h2>
                 </Headline>
                 <div
@@ -328,6 +298,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         <Link
                           className="css-1hj8a57"
                           href="/page/shipping"
+                          role="button"
                         >
                           <Text
                             string="navigation.shipping"
@@ -379,6 +350,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         <Link
                           className="css-1hj8a57"
                           href="/page/payment"
+                          role="button"
                         >
                           <Text
                             string="navigation.payment"
@@ -430,6 +402,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         <Link
                           className="css-1hj8a57"
                           href="/page/terms"
+                          role="button"
                         >
                           <Text
                             string="navigation.terms"
@@ -481,6 +454,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         <Link
                           className="css-1hj8a57"
                           href="/page/privacy"
+                          role="button"
                         >
                           <Text
                             string="navigation.privacy"
@@ -554,6 +528,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         <Link
                           className="css-1hj8a57"
                           href="/page/imprint"
+                          role="button"
                         >
                           <Text
                             string="navigation.about"
@@ -653,21 +628,11 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                 }
               }
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
+              <Text
                 string="login.headline"
-                transform={null}
               >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  login.headline
-                </span>
-              </Translate>
+                login.headline
+              </Text>
             </h1>
           </Headline>
           <UserMenu
@@ -826,21 +791,11 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       }
                     }
                   >
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={Object {}}
-                      role={null}
+                    <Text
                       string="navigation.store_information"
-                      transform={null}
                     >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        navigation.store_information
-                      </span>
-                    </Translate>
+                      navigation.store_information
+                    </Text>
                   </h2>
                 </Headline>
                 <div
@@ -881,6 +836,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         <Link
                           className="css-1hj8a57"
                           href="/page/shipping"
+                          role="button"
                         >
                           <Text
                             string="navigation.shipping"
@@ -932,6 +888,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         <Link
                           className="css-1hj8a57"
                           href="/page/payment"
+                          role="button"
                         >
                           <Text
                             string="navigation.payment"
@@ -983,6 +940,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         <Link
                           className="css-1hj8a57"
                           href="/page/terms"
+                          role="button"
                         >
                           <Text
                             string="navigation.terms"
@@ -1034,6 +992,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         <Link
                           className="css-1hj8a57"
                           href="/page/privacy"
+                          role="button"
                         >
                           <Text
                             string="navigation.privacy"
@@ -1107,6 +1066,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         <Link
                           className="css-1hj8a57"
                           href="/page/imprint"
+                          role="button"
                         >
                           <Text
                             string="navigation.about"

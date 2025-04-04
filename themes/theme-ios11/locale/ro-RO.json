@@ -231,7 +231,8 @@
     "description_heading": "Descriere",
     "share": "Distribuiți produsul",
     "pick_an_attribute": "{0} selectați",
-    "tax_disclaimer": "* Inclusiv TVA, eventual plus costuri de expediere",
+    "tax_disclaimer": "* TVA inclus, eventual plus costuri de livrare",
+    "tax_disclaimer_aria": "TVA inclus, eventual plus costuri de livrare",
     "item_added": "{count, plural, =0 {# fără Produse} =1 {{count} Produs adăugat} other {{count} Produse adăugate}}",
     "item_added_unit": "{count} {unit} adăugat",
     "adding_item": "{count, plural, =1 {Se adaugă un produs} other {Se adaugă {count} produse}}",
@@ -552,7 +553,8 @@
     "more_menu": "Mai multe",
     "order_history": "Istoricul comenzilor",
     "profile": "Profil",
-    "back": "Înapoi la {title}"
+    "back": "Înapoi la {title}",
+    "open_menu": "Deschide meniul"
   },
   "reviews": {
     "rating": "Evaluare",
@@ -584,6 +586,12 @@
     "noResult": {
       "qrCode": "Nu am putut găsi un rezultat pentru acest cod QR.",
       "barCode": "Produsul nu a fost găsit."
+    },
+    "flashlight": {
+      "on": "Lanterna este aprinsă",
+      "off": "Lanterna este stinsă",
+      "switchOn": "Pornește lanterna",
+      "switchOff": "Oprește lanterna"
     }
   },
   "permissions": {

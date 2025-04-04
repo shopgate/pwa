@@ -106,6 +106,7 @@ SheetList.Item = () => null;
 SheetList.Item.displayName = 'SheetList.Item';
 export const PriceDifference = () => 'PriceDifference';
 export const TaxDisclaimer = () => 'TaxDisclaimer';
+export const ToggleIcon = jest.requireActual('@shopgate/pwa-ui-shared/ToggleIcon').default;
 export const PickerUtilize = () => 'PickerUtilize';
 export const Sheet = jest.requireActual('@shopgate/pwa-ui-shared/Sheet').default;
 export const Swiper = SwiperMock;

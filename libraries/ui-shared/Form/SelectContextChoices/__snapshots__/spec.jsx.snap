@@ -45,7 +45,6 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
       <Item
         autoClose={false}
         className="css-1dw7neb"
-        closeMenu={[Function]}
         disabled={false}
         key="DE"
         onClick={[Function]}
@@ -55,7 +54,6 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
       <Item
         autoClose={false}
         className=""
-        closeMenu={[Function]}
         disabled={false}
         key="US"
         onClick={[Function]}
@@ -112,7 +110,6 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
       <Item
         autoClose={false}
         className=""
-        closeMenu={[Function]}
         disabled={false}
         key="DE"
         onClick={[Function]}
@@ -122,7 +119,6 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
       <Item
         autoClose={false}
         className=""
-        closeMenu={[Function]}
         disabled={false}
         key="US"
         onClick={[Function]}

@@ -1,22 +1,18 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { i18n } from '../../../core';
-import { type LocationOperationHours } from '../../locations.types';
 import { storeHoursToday } from './Store.style';
 
 const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-type Props = {
-  hours?: LocationOperationHours,
-  longLabel?: bool,
-};
-
 /**
  * Renders the store's opening hours for "today".
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Object} props.hours The store's opening hours.
+ * @param {boolean} props.longLabel Whether to render the opening hours with a long label
+ * @returns {JSX.Element}
  */
-export function StoreHoursToday({ hours, longLabel }: Props) {
+export function StoreHoursToday({ hours, longLabel }) {
   if (!hours) {
     return null;
   }
@@ -36,6 +32,11 @@ export function StoreHoursToday({ hours, longLabel }: Props) {
     </div>
   );
 }
+
+StoreHoursToday.propTypes = {
+  hours: PropTypes.shape(),
+  longLabel: PropTypes.bool,
+};
 
 StoreHoursToday.defaultProps = {
   hours: null,

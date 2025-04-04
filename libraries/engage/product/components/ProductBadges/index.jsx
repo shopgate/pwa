@@ -26,7 +26,7 @@ const styles = {
 /**
  * The ProductBadges component
  * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ProductBadges = ({
   children, location, productId, portalProps, className,

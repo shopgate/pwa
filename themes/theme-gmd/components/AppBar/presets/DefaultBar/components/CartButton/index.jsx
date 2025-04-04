@@ -60,7 +60,7 @@ class CartButton extends PureComponent {
   }
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { count, navigate } = this.props;

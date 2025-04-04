@@ -2,9 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { camelCase } from 'lodash';
-import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
-import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n, CheckedIcon, UncheckedIcon } from '@shopgate/engage/components';
 import style from './style';
 
 /**
@@ -23,11 +21,13 @@ class RadioItem extends PureComponent {
       PropTypes.string,
       PropTypes.shape(),
     ]),
+    id: PropTypes.string,
     onChange: PropTypes.func,
   }
 
   static defaultProps = {
     attributes: null,
+    id: null,
     checked: false,
     className: '',
     onChange: () => { },
@@ -35,11 +35,11 @@ class RadioItem extends PureComponent {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {
-      label: ItemLabel, name, onChange, checked, className, attributes,
+      label: ItemLabel, name, onChange, checked, className, attributes, id,
     } = this.props;
 
     const { disabled } = attributes || {};
@@ -49,7 +49,7 @@ class RadioItem extends PureComponent {
         className={classNames(
           style.container, className, { [style.disabled]: !!disabled }, camelCase(name), 'radioItem'
         )}
-        htmlFor={this.key}
+        htmlFor={id || name}
       >
         {checked && (
           <CheckedIcon
@@ -62,14 +62,21 @@ class RadioItem extends PureComponent {
           />
         )}
         <input
-          className={classNames(style.input, 'input')}
+          className={classNames('sr-only', 'input')}
           checked={checked}
+          id={id || name}
           type="radio"
           name={name}
           onChange={onChange}
+          aria-labelledby={`${id || name}-label`}
           {...attributes}
         />
-        <I18n.Text className={classNames(style.label, 'label')} string={ItemLabel} />
+        <I18n.Text
+          string={ItemLabel}
+          aria-hidden
+          id={`${id || name}-label`}
+          className={classNames(style.label, 'label')}
+        />
       </label>
     );
   }

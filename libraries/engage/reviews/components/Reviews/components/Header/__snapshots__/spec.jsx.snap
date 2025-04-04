@@ -87,6 +87,7 @@ exports[`<Header /> should render empty 1`] = `
                   data-test-id="link: /item/666f6f/write_review"
                   href={null}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="text"
                   tabIndex={null}
                 >
@@ -531,6 +532,7 @@ exports[`<Header /> should render rating summary 1`] = `
                   data-test-id="link: /item/666f6f/write_review"
                   href={null}
                   onClick={[Function]}
+                  onKeyDown={[Function]}
                   role="text"
                   tabIndex={null}
                 >

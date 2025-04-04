@@ -66,8 +66,8 @@ class ProductSlider extends PureComponent {
   componentDidMount() {
     this.requestProducts();
   }
-
   /* eslint-enable extra-rules/potential-point-free */
+
   /**
    * When we receive new products then we can adjust the state.
    * @param {Object} nextProps The next set of component props.
@@ -98,7 +98,7 @@ class ProductSlider extends PureComponent {
 
   /**
    * Renders a headline if we have one.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   renderHeadline = () => {
     if (this.props.settings.headline) {
@@ -112,7 +112,7 @@ class ProductSlider extends PureComponent {
 
   /**
    * Renders the widget.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const { settings, products, widgetSettings } = this.props;
@@ -130,7 +130,6 @@ class ProductSlider extends PureComponent {
       return null;
     }
 
-    // Finally, build the slider.
     return (
       <div className={`${styles.slider} theme__widgets__product-slider`}>
         {this.renderHeadline()}

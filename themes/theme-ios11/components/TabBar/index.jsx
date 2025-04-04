@@ -2,9 +2,9 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { UIEvents } from '@shopgate/pwa-core';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
+import {
+  Grid, Portal, KeyboardConsumer, MODAL_EVENTS,
+} from '@shopgate/engage/components';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -78,11 +78,17 @@ class TabBar extends PureComponent {
     updateHeightCSSProperty(props.isVisible);
     UIEvents.addListener(SHOW_TAB_BAR, this.show);
     UIEvents.addListener(HIDE_TAB_BAR, this.hide);
+
+    // Listen to the modal events to toggle the aria-hidden attribute of the tab bar
+    // when a modal is shown or hidden.
+    UIEvents.addListener(MODAL_EVENTS.SHOW, this.ariaHide);
+    UIEvents.addListener(MODAL_EVENTS.HIDE, this.ariaShow);
   }
 
   state = {
     isVisible: this.props.isVisible,
     isScrolledOut: false,
+    ariaHidden: false,
   };
 
   /**
@@ -109,6 +115,9 @@ class TabBar extends PureComponent {
   componentWillUnmount() {
     UIEvents.removeListener(SHOW_TAB_BAR, this.show);
     UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
+
+    UIEvents.removeListener(MODAL_EVENTS.SHOW, this.ariaHide);
+    UIEvents.removeListener(MODAL_EVENTS.HIDE, this.ariaShow);
 
     updateHeightCSSProperty(false);
   }
@@ -146,12 +155,24 @@ class TabBar extends PureComponent {
     });
   }
 
+  ariaHide = () => {
+    this.setState({
+      ariaHidden: true,
+    });
+  }
+
+  ariaShow = () => {
+    this.setState({
+      ariaHidden: false,
+    });
+  }
+
   /**
    * @returns {JSX}
    */
   render() {
     const { activeTab, path } = this.props;
-    const { isVisible, isScrolledOut } = this.state;
+    const { isVisible, isScrolledOut, ariaHidden } = this.state;
 
     const props = {
       isVisible,
@@ -173,7 +194,13 @@ class TabBar extends PureComponent {
             <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
             {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
             <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
-              <Grid className={className} data-test-id="tabBar" role="tablist" component="div">
+              <Grid
+                className={className}
+                data-test-id="tabBar"
+                role="tablist"
+                component="div"
+                aria-hidden={ariaHidden}
+              >
                 {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
               </Grid>
             </Portal>

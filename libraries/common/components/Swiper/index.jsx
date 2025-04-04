@@ -1,4 +1,6 @@
-import React, { useMemo, useCallback } from 'react';
+import React, {
+  useMemo, useCallback, useEffect, useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
 import {
@@ -14,6 +16,7 @@ import 'swiper/modules/a11y.min.css';
 import 'swiper/modules/pagination.min.css';
 import 'swiper/modules/navigation.min.css';
 import 'swiper/modules/zoom.min.css';
+import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import SwiperItem from './components/SwiperItem';
 import OriginalSwiper from './components/OriginalSwiper';
 import {
@@ -31,7 +34,7 @@ import {
  * Refer to the [Swiper documentation](https://swiperjs.com/react) for details on the available props.
  *
  * @param {SwiperCmpProps} props The component props.
- * @returns {React.Node}
+ * @returns {JSX.Element}
  */
 const Swiper = ({
   maxIndicators,
@@ -52,20 +55,26 @@ const Swiper = ({
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const showPagination = (indicators && children.length > 1);
   const hasControls = typeof controls === 'boolean' && controls === true;
+  const reduceMotion = useReduceMotion();
+  const swiperRef = useRef(null);
 
-  let navigation;
+  const navigation = useMemo(() => {
+    let nav;
 
-  if (hasControls) {
-    navigation = {
-      // Important to use dot notation (swiper internally use it as selector)
-      nextEl: `.swiper-button-next.${buttonNext}`,
-      prevEl: `.swiper-button-prev.${buttonPrev}`,
-    };
-  }
+    if (hasControls) {
+      nav = {
+        // Important to use dot notation (swiper uses it as selector internally)
+        nextEl: `.swiper-button-next.${buttonNext}`,
+        prevEl: `.swiper-button-prev.${buttonPrev}`,
+      };
+    }
 
-  if (typeof controls === 'object') {
-    navigation = controls;
-  }
+    if (typeof controls === 'object') {
+      nav = controls;
+    }
+
+    return nav;
+  }, [controls, hasControls]);
 
   const handleSlideChange = useCallback((swiper) => {
     if (typeof onSlideChange === 'function') {
@@ -105,28 +114,34 @@ const Swiper = ({
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
-  }), [
-    autoPlay,
-    additionalModules,
+  }),
+  [additionalModules, classNames.container, classNames.bulletClass, classNames.bulletActiveClass,
+    swiperProps, autoPlay, interval, navigation, showPagination, paginationType, indicators,
     children.length,
-    classNames.bulletActiveClass,
-    classNames.bulletClass,
-    classNames.container,
-    disabled,
-    indicators,
-    interval,
-    navigation,
-    paginationType,
-    showPagination,
-    handleSlideChange,
-    swiperProps,
-  ]);
+    disabled, handleSlideChange]);
+
+  useEffect(() => {
+    if (!internalProps.autoplay && !swiperProps.autoplay) {
+      return;
+    }
+
+    if (swiperRef.current?.swiper?.autoplay) {
+      if (reduceMotion) {
+        swiperRef.current.swiper.autoplay.stop();
+      } else {
+        swiperRef.current.swiper.autoplay.start();
+      }
+    }
+  }, [internalProps.autoplay, reduceMotion, swiperProps.autoplay]);
 
   return (
     <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
       <OriginalSwiper
+        aria-live="off"
+        a11y={{ enabled: false }}
         {...internalProps}
         {...swiperProps}
+        ref={swiperRef}
       >
         {children}
         {hasControls && (

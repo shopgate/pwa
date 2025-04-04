@@ -7,11 +7,14 @@ exports[`<Row /> should render as expected 1`] = `
   value="TestValue"
 >
   <tr
+    aria-label="TestLabel: TestValue"
     className="engage__product__product-property"
     data-label="TestLabel"
     data-type={null}
+    tabIndex={0}
   >
     <td
+      aria-hidden={true}
       className={
         Object {
           "data-css-fl9ufm": "",
@@ -27,6 +30,7 @@ exports[`<Row /> should render as expected 1`] = `
       />
     </td>
     <td
+      aria-hidden={true}
       className={
         Object {
           "data-css-fl9ufm": "",

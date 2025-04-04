@@ -14,6 +14,8 @@ jest.mock('Components/AppBar/presets/DefaultBar', () => {
 });
 jest.mock('@shopgate/pwa-ui-ios/AppBar/components/Icon');
 
+jest.mock('@shopgate/engage/components');
+
 const mockedStore = configureStore();
 
 describe('<ProductGallery.Appbar> page', () => {

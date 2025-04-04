@@ -1,24 +1,20 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { every, isEmpty } from 'lodash';
 import { getWeekDaysOrder } from '@shopgate/engage/core';
 import { I18n, TimeIcon } from '@shopgate/engage/components';
-import { type LocationOperationHours } from '../../locations.types';
 import { StoreDetailsLine } from './StoreDetailsLine';
 import { StoreOpeningHoursLine } from './StoreOpeningHoursLine';
 import { openingHours, detailsSecondary } from './Store.style';
 
-type Props = {
-  hours?: LocationOperationHours,
-  pure?: boolean
-}
-
 /**
  * Renders the store's opening hours.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Object} props.hours The store's opening hours.
+ * @param {boolean} props.pure Whether to render the opening hours without any wrapper components
+ * @returns {JSX.Element}
  */
-export function StoreOpeningHours({ hours, pure }: Props) {
+export function StoreOpeningHours({ hours, pure }) {
   if (!hours || every(hours, isEmpty)) {
     return null;
   }
@@ -42,6 +38,11 @@ export function StoreOpeningHours({ hours, pure }: Props) {
     </StoreDetailsLine>
   );
 }
+
+StoreOpeningHours.propTypes = {
+  hours: PropTypes.shape(),
+  pure: PropTypes.bool,
+};
 
 StoreOpeningHours.defaultProps = {
   hours: null,

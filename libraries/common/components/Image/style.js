@@ -25,6 +25,7 @@ const image = css({
   width: '100%',
   maxHeight: '100%',
   WebkitTouchCallout: 'none',
+  fontSize: 0,
 }).toString();
 
 export default {

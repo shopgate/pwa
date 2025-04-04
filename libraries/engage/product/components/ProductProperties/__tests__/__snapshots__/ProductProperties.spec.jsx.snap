@@ -123,10 +123,13 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                     type={null}
                   >
                     <tr
+                      aria-label=": "
                       className="engage__product__product-property"
                       data-type={null}
+                      tabIndex={0}
                     >
                       <td
+                        aria-hidden={true}
                         className={
                           Object {
                             "data-css-fl9ufm": "",
@@ -142,6 +145,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                         />
                       </td>
                       <td
+                        aria-hidden={true}
                         className={
                           Object {
                             "data-css-fl9ufm": "",

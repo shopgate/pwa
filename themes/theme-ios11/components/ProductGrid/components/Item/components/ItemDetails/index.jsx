@@ -7,20 +7,20 @@ import {
   Swatches,
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_ALERT,
+  getProductRoute,
 } from '@shopgate/engage/product';
 import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
-
-import {
-  Availability,
-} from '@shopgate/engage/components';
-
+import { Availability, Link } from '@shopgate/engage/components';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import * as styles from './style';
-
 /**
- * @returns {JSX}
+ * The Product Grid Item Detail component.
+ * @param {Object} props The component props.
+ * @param {Object} props.product The product.
+ * @param {Object} props.display The display object.
+ * @returns {JSX.Element}
  */
 const ItemDetails = ({ product, display }) => {
   const { id: productId, name = null, stock = null } = product;
@@ -32,7 +32,11 @@ const ItemDetails = ({ product, display }) => {
   }
 
   return (
-    <div className={`${styles.details} theme__product-grid__item__item-details`} tabIndex={-1} role="button">
+    <Link
+      className={`${styles.details} theme__product-grid__item__item-details`}
+      tabIndex={0}
+      href={getProductRoute(productId)}
+    >
       {/*
         This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects
@@ -71,7 +75,7 @@ const ItemDetails = ({ product, display }) => {
       )}
 
       <ItemPrice product={product} display={display} />
-    </div>
+    </Link>
   );
 };
 

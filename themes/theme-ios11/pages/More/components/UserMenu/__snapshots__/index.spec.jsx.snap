@@ -77,21 +77,11 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                     }
                   }
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
-                    className={null}
-                    params={Object {}}
-                    role={null}
+                  <Text
                     string="navigation.your_account"
-                    transform={null}
                   >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      navigation.your_account
-                    </span>
-                  </Translate>
+                    navigation.your_account
+                  </Text>
                 </h2>
               </Headline>
               <div
@@ -111,6 +101,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   <Link
                     className="css-1hj8a57"
                     href="/account/profile"
+                    role="button"
                   >
                     <Text
                       string="navigation.profile"
@@ -129,6 +120,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   <Link
                     className="css-1hj8a57"
                     href="/account/orders"
+                    role="button"
                   >
                     <Text
                       string="navigation.order_history"
@@ -147,6 +139,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   <Link
                     className="css-1hj8a57"
                     href="/account/wish-list"
+                    role="button"
                   >
                     <Text
                       string="navigation.favorites"
@@ -283,21 +276,11 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                     }
                   }
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
-                    className={null}
-                    params={Object {}}
-                    role={null}
+                  <Text
                     string="navigation.your_account"
-                    transform={null}
                   >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      navigation.your_account
-                    </span>
-                  </Translate>
+                    navigation.your_account
+                  </Text>
                 </h2>
               </Headline>
               <div

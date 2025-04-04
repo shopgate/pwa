@@ -1,41 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core/helpers';
-import {
-  ContextMenu,
-  SurroundPortals,
-} from '@shopgate/engage/components';
-import { FAVORITES_LIST_CONTEXT_MENU } from '../../constants/Portals';
 import styles from './styles';
 
 /**
- * Favorite List Label component
- * @return {JSX}
+ * Favorite List Accordion Label component
+ * @param {string} title The label name
+ * @return {JSX.Element}
  */
 const ListAccordionLabel = ({
-  id, title, rename, remove,
+  title,
 }) => (
-  <>
-    <span className={styles.title}>
-      {title}
-    </span>
-    <SurroundPortals portalName={FAVORITES_LIST_CONTEXT_MENU} portalProps={{ id }}>
-      <ContextMenu>
-        <ContextMenu.Item onClick={rename}>
-          {i18n.text('favorites.rename_list')}
-        </ContextMenu.Item>
-        <ContextMenu.Item onClick={remove} disabled={id === 'DEFAULT'}>
-          {i18n.text('favorites.remove_list')}
-        </ContextMenu.Item>
-      </ContextMenu>
-    </SurroundPortals>
-  </>
+  <span className={styles.title}>
+    {title}
+  </span>
 );
 
 ListAccordionLabel.propTypes = {
-  id: PropTypes.string.isRequired,
-  remove: PropTypes.func.isRequired,
-  rename: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };
 

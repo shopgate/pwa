@@ -21,14 +21,12 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
   }
 >
   <div
-    aria-hidden={false}
-    aria-label={null}
     className="null engage__product__product-image"
   >
     <Image
       alt={null}
       animating={true}
-      aria-hidden={false}
+      aria-hidden={true}
       backgroundColor="#fff"
       className="css-3hjqnz"
       classNameImg=""
@@ -72,10 +70,10 @@ exports[`<ProductImage /> should apply an inner shadow to the placeholder if tur
   portalProps={null}
 >
   <div
-    aria-hidden={false}
     className="css-y5kkpq css-3hjqnz"
   >
     <div
+      aria-hidden={true}
       className="css-1vq3byi"
       data-test-id="placeHolder"
     >
@@ -108,14 +106,12 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
   }
 >
   <div
-    aria-hidden={false}
-    aria-label={null}
     className="null engage__product__product-image"
   >
     <Image
       alt={null}
       animating={true}
-      aria-hidden={false}
+      aria-hidden={true}
       backgroundColor="#fff"
       className=""
       classNameImg=""
@@ -157,7 +153,6 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
 <ProductImage
   alt={null}
   animating={true}
-  aria-hidden={false}
   className={null}
   forcePlaceholder={false}
   highestResolutionLoaded={[Function]}
@@ -193,10 +188,10 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalProps={null}
 >
   <div
-    aria-hidden={false}
     className="css-y5kkpq"
   >
     <div
+      aria-hidden={true}
       className="css-1vq3byi"
       data-test-id="placeHolder"
     >
@@ -214,10 +209,10 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalProps={null}
 >
   <div
-    aria-hidden={false}
     className="css-y5kkpq"
   >
     <div
+      aria-hidden={true}
       className="css-1vq3byi"
       data-test-id="placeHolder"
     >
@@ -235,10 +230,10 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
   portalProps={null}
 >
   <div
-    aria-hidden={false}
     className="css-y5kkpq"
   >
     <div
+      aria-hidden={true}
       className="css-1vq3byi"
       data-test-id="placeHolder"
     >
@@ -271,14 +266,12 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   }
 >
   <div
-    aria-hidden={false}
-    aria-label={null}
     className="null engage__product__product-image"
   >
     <Image
       alt={null}
       animating={true}
-      aria-hidden={false}
+      aria-hidden={true}
       backgroundColor="#fff"
       className=""
       classNameImg=""

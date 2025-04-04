@@ -5,6 +5,8 @@ import NavDrawerDivider from '../Divider';
 import NavDrawerTitle from '../Title';
 import NavDrawerSection from './index';
 
+jest.mock('@shopgate/engage/components');
+
 describe('<NavDrawerSection />', () => {
   it('should render with a title and dividers', () => {
     const sectionTitle = 'Section title';

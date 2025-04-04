@@ -134,7 +134,7 @@ class ProductImageSlider extends Component {
 
   /**
    * Renders the product image slider component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {
@@ -150,7 +150,7 @@ class ProductImageSlider extends Component {
           indicators
           onSlideChange={this.handleSlideChange}
           className={className}
-          aria-label={product ? product.name : ''}
+          aria-hidden={ariaHidden}
         >
           {images.map(image => (
             <Swiper.Item key={`${productId}-${image}`}>
@@ -183,6 +183,7 @@ class ProductImageSlider extends Component {
           resolutions={pdpResolutions}
           noBackground
           alt={product ? product.name : ''}
+          aria-hidden={ariaHidden}
         />
       );
       if (!src) {
@@ -201,9 +202,7 @@ class ProductImageSlider extends Component {
         data-test-id={`product: ${product ? product.name : ''}`}
         onClick={onClick}
         onKeyDown={onClick}
-        role="button"
-        tabIndex="0"
-        aria-hidden={ariaHidden}
+        role="presentation"
         style={wrapperStyles}
         ref={this.mediaRef}
       >
@@ -215,7 +214,7 @@ class ProductImageSlider extends Component {
 
 /**
  * @param {Object} props The component props.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const Wrapper = props => (
   <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
