@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.24.7](https://github.com/shopgate/pwa/compare/v7.24.6...v7.24.7) (2025-04-02)
+
+#### :rocket: Enhancement
+* [#1341](https://github.com/shopgate/pwa/pull/1341) Add HTTPS URL support in QR code scanner ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.24.6](https://github.com/shopgate/pwa/compare/v7.24.5...v7.24.6) (2025-03-04)
 
 #### :rocket: Enhancement
