@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
@@ -54,25 +54,13 @@ const Rating = ({ rating }) => {
     return false;
   }, [rating, showEmptyRatingStars]);
 
-  /**
-   * key listener for screen readers
-   * @param {Object} event The event object
-   */
-  const handleKeyDown = useCallback((event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      scrollToRating();
-    }
-  }, []);
-
   return (
     <SurroundPortals portalName={PRODUCT_RATING}>
       {showRatings &&
       <div
         className={container}
         onClick={scrollToRating}
-        role="link"
-        tabIndex={0}
-        onKeyDown={handleKeyDown}
+        role="presentation"
       >
         <RatingStars value={rating.average} display="big" />
         <RatingCount count={rating.count} prominent />

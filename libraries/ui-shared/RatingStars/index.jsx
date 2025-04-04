@@ -28,7 +28,7 @@ class RatingStars extends Component {
 
   /**
    * Context types definition.
-   * @type {{i18n: (key: string) => string}}
+   * @type {{i18n: function}}
    */
   static contextTypes = {
     i18n: PropTypes.func,
