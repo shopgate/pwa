@@ -19,7 +19,7 @@ const Modal = ({
 }) => {
   useEffect(() => {
     if (disableA11YFocusHandling) {
-      return null;
+      return undefined;
     }
 
     activeModals += 1;
