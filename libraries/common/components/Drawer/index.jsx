@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { FocusTrap } from '@shopgate/engage/a11y/components';
 import styles from './style';
 
 /**
@@ -13,7 +12,6 @@ class Drawer extends Component {
    * @type {Object}
    */
   static propTypes = {
-    alwaysActive: PropTypes.bool,
     animation: PropTypes.shape({
       duration: PropTypes.number,
       in: PropTypes.string,
@@ -35,7 +33,6 @@ class Drawer extends Component {
    * @type {Object}
    */
   static defaultProps = {
-    alwaysActive: false,
     className: '',
     children: null,
     isOpen: false,
@@ -109,7 +106,6 @@ class Drawer extends Component {
    */
   render() {
     const {
-      alwaysActive,
       className,
       children,
       isOpen,
@@ -133,28 +129,26 @@ class Drawer extends Component {
       style.animationDuration = `${animation.duration}ms`;
     }
 
-    return (active || alwaysActive) ? (
-      <FocusTrap active={isOpen}>
-        <div
-          ref={this.sheetRef}
-          className={combinedClassName}
-          style={style}
-          onAnimationEnd={() => {
-            this.handleAnimationEnd();
-            // clear any residual animation style to fix a11y issue on Android
-            // (focus ring is misaligned)
-            if (this.sheetRef?.style) {
-              this.sheetRef.style.animation = '';
-              this.sheetRef.style.transform = 'none';
-            }
-          }}
-          role="dialog"
-          aria-modal
-          tabIndex={-1}
-        >
-          {children}
-        </div>
-      </FocusTrap>
+    return (active) ? (
+      <div
+        ref={this.sheetRef}
+        className={combinedClassName}
+        style={style}
+        onAnimationEnd={() => {
+          this.handleAnimationEnd();
+          // clear any residual animation style to fix a11y issue on Android
+          // (focus ring is misaligned)
+          if (this.sheetRef?.style) {
+            this.sheetRef.style.animation = '';
+            this.sheetRef.style.transform = 'none';
+          }
+        }}
+        role="dialog"
+        aria-modal
+        tabIndex={-1}
+      >
+        {children}
+      </div>
     ) : null;
   }
 }
