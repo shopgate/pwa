@@ -20,11 +20,11 @@ export function StoreOpeningHours({ hours, pure }) {
   }
 
   const storeHours = (
-    <div className={openingHours}>
+    <tbody className={openingHours}>
       {getWeekDaysOrder().map(weekDay => (
         <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
       ))}
-    </div>
+    </tbody>
   );
 
   if (pure) {
@@ -34,7 +34,9 @@ export function StoreOpeningHours({ hours, pure }) {
   return (
     <StoreDetailsLine icon={TimeIcon}>
       <I18n.Text string="locations.hours_details" className={detailsSecondary} />
-      {storeHours}
+      <table>
+        {storeHours}
+      </table>
     </StoreDetailsLine>
   );
 }
