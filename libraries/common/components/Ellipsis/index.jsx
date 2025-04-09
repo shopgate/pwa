@@ -5,12 +5,11 @@ import Dotdotdot from 'react-dotdotdot';
 /**
  * The ellipsis text component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Ellipsis = props => (
   <Dotdotdot
     clamp={props.rows}
-    ellipsis={props.ellipsis}
     className={`${props.className} common__ellipsis`}
     useNativeClamp
   >
@@ -21,13 +20,11 @@ const Ellipsis = props => (
 Ellipsis.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  ellipsis: PropTypes.string,
   rows: PropTypes.number,
 };
 
 Ellipsis.defaultProps = {
   className: '',
-  ellipsis: '...',
   rows: 3,
 };
 

@@ -77,10 +77,10 @@ describe('engage > core > hooks -> useFormState', () => {
     }));
   });
 
-  it('trigger submitting', () => {
+  it('trigger submitting', async () => {
     const { handleChange, handleSubmit } = spy.mock.calls[0][0];
-    act(() => handleChange('mail@mail.com', { target: { name: 'email' } }));
-    act(() => handleSubmit({ preventDefault: jest.fn() }));
+    await act(async () => handleChange('mail@mail.com', { target: { name: 'email' } }));
+    await act(async () => handleSubmit({ preventDefault: jest.fn() }));
 
     expect(submitSpy).toBeCalledWith({ email: 'mail@mail.com' });
   });

@@ -11,7 +11,7 @@ import connect from './connector';
 
 /**
  * ProductDiscountBadge
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const ProductDiscountBadge = ({ productId, discount }) => {
   const {
@@ -31,10 +31,7 @@ const ProductDiscountBadge = ({ productId, discount }) => {
       }}
     >
       { pdp.show && discount ? (
-        <div
-          className={`${styles.container} ${css(pdp.style)} theme__product__product-discount`}
-          aria-hidden
-        >
+        <div className={`${styles.container} ${css(pdp.style)} theme__product__product-discount`}>
           <SurroundPortals portalName={PRODUCT_DISCOUNT} portalProps={{ productId, discount }}>
             <DiscountBadge className={styles.badge} text={`-${discount}%`} />
           </SurroundPortals>

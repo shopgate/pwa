@@ -1,4 +1,3 @@
-// @flow
 import React, { useContext } from 'react';
 import { ProductImage } from '../../../product';
 import { FulfillmentContext } from '../../locations.context';
@@ -10,7 +9,7 @@ import { FULFILLMENT_SHEET_PRODUCT } from '../../constants/Portals';
 
 /**
  * Renders the product information of the store list.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function StoreListProduct() {
   const { product } = useContext(FulfillmentContext);

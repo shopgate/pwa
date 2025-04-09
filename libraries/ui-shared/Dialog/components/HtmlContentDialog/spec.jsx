@@ -5,6 +5,8 @@ import HtmlContentDialog from './index';
 const message = '<p><i>This is a html message.</i></p>';
 const title = 'This is the title.';
 
+jest.mock('@shopgate/engage/a11y/components');
+
 describe('<HtmlContentDialog />', () => {
   it('should render with minimal props', () => {
     const wrapper = shallow(<HtmlContentDialog message={message} actions={[]} />);

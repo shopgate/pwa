@@ -8,18 +8,20 @@ import styles from './style';
 /**
  * The NoResults component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const NoResults = props => (
   <div className={classNames(styles.wrapper, props.className, ' ui-shared__no-results')} data-test-id="noResults">
     <div className={styles.icon}>
       <Icon />
     </div>
-    <div className={styles.headline}>
-      <I18n.Text string={props.headlineText} params={props} />
-    </div>
-    <div className={styles.text}>
-      <I18n.Text string={props.bodyText} params={props} />
+    <div role="alert" aria-atomic="true">
+      <div className={styles.headline}>
+        <I18n.Text string={props.headlineText} params={props} />
+      </div>
+      <div className={styles.text}>
+        <I18n.Text string={props.bodyText} params={props} />
+      </div>
     </div>
   </div>
 );

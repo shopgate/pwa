@@ -12,6 +12,8 @@ import Header from './index';
 
 const mockedStore = configureStore();
 
+jest.mock('@shopgate/engage/components');
+
 /**
  * Creates component with provided store state.
  * @param {Object} mockedState Mocked stage.

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import compose from 'lodash/fp/compose';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
@@ -13,7 +13,7 @@ const CLOSE_DELAY = 250;
 /**
  * The Context Menu Item component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Item = ({ children, closeMenu, onClick }) => {
   const handleClick = compose(
@@ -21,9 +21,23 @@ const Item = ({ children, closeMenu, onClick }) => {
     () => setTimeout(closeMenu, CLOSE_DELAY)
   );
 
+  const handleKeyPress = useCallback((event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClick(event);
+    }
+  }, [handleClick]);
+
   return (
     <Glow>
-      <div className={getItemClass()} onClick={handleClick} aria-hidden data-test-id="contextMenuButton">
+      <div
+        className={getItemClass()}
+        onClick={handleClick}
+        role="button"
+        data-test-id="contextMenuButton"
+        onKeyDown={handleKeyPress}
+        tabIndex={0}
+      >
         {children}
       </div>
     </Glow>

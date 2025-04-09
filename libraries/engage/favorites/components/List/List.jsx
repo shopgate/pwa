@@ -17,6 +17,7 @@ import { FAVORITES_SHOW_LIMIT } from '@shopgate/engage/favorites/constants';
 import ListAccordionLabel from './ListAccordionLabel';
 import ListContent from './ListContent';
 import styles from './styles';
+import ListAccordionHeader from './ListAccordionHeader';
 
 /**
  * @param {Object} _ State
@@ -56,7 +57,7 @@ const mapDispatchToProps = (dispatch, props) => ({
 
 /**
  * Favorite List component
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const FavoriteList = ({
   id,
@@ -127,12 +128,14 @@ const FavoriteList = ({
         <Card className={styles.root}>
           <Accordion
             className=""
+            renderAdditionalHeaderContent={() => <ListAccordionHeader
+              rename={newName => rename(id, newName)}
+              remove={remove}
+              id={id}
+            />}
             renderLabel={() =>
               <ListAccordionLabel
-                id={id}
                 title={name}
-                rename={newName => rename(id, newName)}
-                remove={remove}
               />
               }
             chevronPosition="left"

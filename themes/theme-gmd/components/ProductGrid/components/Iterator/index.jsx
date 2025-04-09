@@ -13,7 +13,7 @@ import Item from '../Item';
 /**
  * The Product Grid Iterator component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Iterator = (props) => {
   const portalProps = { productId: props.id };

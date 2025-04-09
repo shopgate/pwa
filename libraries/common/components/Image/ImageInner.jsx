@@ -30,7 +30,7 @@ const ImageInner = forwardRef(({
     )}
     alt={alt}
     aria-label={alt}
-    role="presentation"
+    aria-hidden={!alt}
     data-test-id="image"
     onLoad={onLoad}
     onError={onError}

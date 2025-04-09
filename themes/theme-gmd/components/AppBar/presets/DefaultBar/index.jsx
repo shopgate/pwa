@@ -146,7 +146,8 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
-   * Sets the a11y focus to the first focusable element within the AppBar.
+   * Sets the focus to the app bar title or else to the first focusable element in the app bar
+   * for screen readers
    */
   setFocus = () => {
     const { target } = this.state;
@@ -155,8 +156,7 @@ class AppBarDefault extends PureComponent {
       return;
     }
 
-    // Set the focus to the first focusable element for screen readers.
-    const focusable = target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
+    const focusable = target.querySelector('.theme__app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
 
     if (focusable) {
       focusable.focus();

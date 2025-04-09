@@ -9,6 +9,7 @@ import { ORDERS_PATH, WISH_LIST_PATH, PROFILE_PATH } from '@shopgate/engage/acco
 import UserMenu from './index';
 
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/a11y/components');
 
 jest.mock('@shopgate/pwa-common/selectors/user', () => ({
   isUserLoginDisabled: jest.fn().mockReturnValue(false),

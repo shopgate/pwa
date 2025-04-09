@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import ErrorText from '@shopgate/pwa-ui-shared/TextField/components/ErrorText';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import styles from './style';
@@ -55,7 +55,7 @@ class RatingScale extends Component {
 
   /**
    * Renders rating stars as form element.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     return (

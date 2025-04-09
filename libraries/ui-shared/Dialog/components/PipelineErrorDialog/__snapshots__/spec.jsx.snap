@@ -17,67 +17,85 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
     actions={Array []}
     title="modal.title_error"
   >
-    <div
-      aria-labelledby="basicDialogTitle basicDialogDesc"
-      aria-modal={true}
-      className="css-1oc7wvq ui-material__base-dialog"
-      data-test-id="basicDialog"
-      role="alertdialog"
-    >
+    <FocusTrap>
       <div
-        className="css-1vzqftr"
+        aria-labelledby="basicDialogTitle basicDialogDesc"
+        aria-modal={true}
+        className="css-1oc7wvq ui-material__base-dialog"
+        data-test-id="basicDialog"
+        role="alertdialog"
       >
-        <Title
-          title="modal.title_error"
+        <div
+          className="css-1vzqftr"
         >
-          <div
-            aria-level="2"
-            className="css-axwumg"
-            id="basicDialogTitle"
-            role="heading"
+          <Title
+            title="modal.title_error"
           >
-            <Ellipsis
-              className=""
-              ellipsis="..."
-              rows={3}
+            <div
+              aria-level="2"
+              className="css-axwumg"
+              id="basicDialogTitle"
+              role="heading"
             >
-              <Dotdotdot
-                clamp={3}
-                className=" common__ellipsis"
-                ellipsis="..."
-                tagName="div"
-                truncationChar="…"
-                useNativeClamp={true}
+              <Ellipsis
+                className=""
+                rows={3}
               >
-                <div
+                <Dotdotdot
+                  clamp={3}
                   className=" common__ellipsis"
+                  tagName="div"
+                  truncationChar="…"
+                  useNativeClamp={true}
                 >
+                  <div
+                    className=" common__ellipsis"
+                  >
+                    <Translate
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={Object {}}
+                      role={null}
+                      string="modal.title_error"
+                      transform={null}
+                    >
+                      <span
+                        className={null}
+                        role={null}
+                      >
+                        modal.title_error
+                      </span>
+                    </Translate>
+                  </div>
+                </Dotdotdot>
+              </Ellipsis>
+            </div>
+          </Title>
+          <Content
+            content={
+              <div
+                onClick={[Function]}
+              >
+                <React.Fragment>
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
-                    string="modal.title_error"
+                    string="Error message"
                     transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      modal.title_error
-                    </span>
-                  </Translate>
-                </div>
-              </Dotdotdot>
-            </Ellipsis>
-          </div>
-        </Title>
-        <Content
-          content={
+                  />
+                </React.Fragment>
+              </div>
+            }
+          >
             <div
-              onClick={[Function]}
+              className="css-1rx8rr8"
+              id="basicDialogDesc"
             >
-              <React.Fragment>
+              <div
+                onClick={[Function]}
+              >
                 <Translate
                   acceptPlainTextWithPlaceholders={false}
                   className={null}
@@ -85,49 +103,31 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                   role={null}
                   string="Error message"
                   transform={null}
-                />
-              </React.Fragment>
+                >
+                  <span
+                    className={null}
+                    role={null}
+                  >
+                    Error message
+                  </span>
+                </Translate>
+              </div>
             </div>
-          }
+          </Content>
+        </div>
+        <div
+          className="css-1h5vk0a"
         >
           <div
-            className="css-1rx8rr8"
-            id="basicDialogDesc"
+            className="css-hw75se"
           >
-            <div
-              onClick={[Function]}
-            >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
-                string="Error message"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  Error message
-                </span>
-              </Translate>
-            </div>
+            <Buttons
+              actions={Array []}
+            />
           </div>
-        </Content>
-      </div>
-      <div
-        className="css-1h5vk0a"
-      >
-        <div
-          className="css-hw75se"
-        >
-          <Buttons
-            actions={Array []}
-          />
         </div>
       </div>
-    </div>
+    </FocusTrap>
   </BasicDialog>
 </PipelineErrorDialog>
 `;
@@ -149,67 +149,85 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
     actions={Array []}
     title="modal.title_error"
   >
-    <div
-      aria-labelledby="basicDialogTitle basicDialogDesc"
-      aria-modal={true}
-      className="css-1oc7wvq ui-material__base-dialog"
-      data-test-id="basicDialog"
-      role="alertdialog"
-    >
+    <FocusTrap>
       <div
-        className="css-1vzqftr"
+        aria-labelledby="basicDialogTitle basicDialogDesc"
+        aria-modal={true}
+        className="css-1oc7wvq ui-material__base-dialog"
+        data-test-id="basicDialog"
+        role="alertdialog"
       >
-        <Title
-          title="modal.title_error"
+        <div
+          className="css-1vzqftr"
         >
-          <div
-            aria-level="2"
-            className="css-axwumg"
-            id="basicDialogTitle"
-            role="heading"
+          <Title
+            title="modal.title_error"
           >
-            <Ellipsis
-              className=""
-              ellipsis="..."
-              rows={3}
+            <div
+              aria-level="2"
+              className="css-axwumg"
+              id="basicDialogTitle"
+              role="heading"
             >
-              <Dotdotdot
-                clamp={3}
-                className=" common__ellipsis"
-                ellipsis="..."
-                tagName="div"
-                truncationChar="…"
-                useNativeClamp={true}
+              <Ellipsis
+                className=""
+                rows={3}
               >
-                <div
+                <Dotdotdot
+                  clamp={3}
                   className=" common__ellipsis"
+                  tagName="div"
+                  truncationChar="…"
+                  useNativeClamp={true}
                 >
+                  <div
+                    className=" common__ellipsis"
+                  >
+                    <Translate
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={Object {}}
+                      role={null}
+                      string="modal.title_error"
+                      transform={null}
+                    >
+                      <span
+                        className={null}
+                        role={null}
+                      >
+                        modal.title_error
+                      </span>
+                    </Translate>
+                  </div>
+                </Dotdotdot>
+              </Ellipsis>
+            </div>
+          </Title>
+          <Content
+            content={
+              <div
+                onClick={[Function]}
+              >
+                <React.Fragment>
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
                     className={null}
                     params={Object {}}
                     role={null}
-                    string="modal.title_error"
+                    string="Custom message"
                     transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      modal.title_error
-                    </span>
-                  </Translate>
-                </div>
-              </Dotdotdot>
-            </Ellipsis>
-          </div>
-        </Title>
-        <Content
-          content={
+                  />
+                </React.Fragment>
+              </div>
+            }
+          >
             <div
-              onClick={[Function]}
+              className="css-1rx8rr8"
+              id="basicDialogDesc"
             >
-              <React.Fragment>
+              <div
+                onClick={[Function]}
+              >
                 <Translate
                   acceptPlainTextWithPlaceholders={false}
                   className={null}
@@ -217,49 +235,31 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                   role={null}
                   string="Custom message"
                   transform={null}
-                />
-              </React.Fragment>
+                >
+                  <span
+                    className={null}
+                    role={null}
+                  >
+                    Custom message
+                  </span>
+                </Translate>
+              </div>
             </div>
-          }
+          </Content>
+        </div>
+        <div
+          className="css-1h5vk0a"
         >
           <div
-            className="css-1rx8rr8"
-            id="basicDialogDesc"
+            className="css-hw75se"
           >
-            <div
-              onClick={[Function]}
-            >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
-                string="Custom message"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  Custom message
-                </span>
-              </Translate>
-            </div>
+            <Buttons
+              actions={Array []}
+            />
           </div>
-        </Content>
-      </div>
-      <div
-        className="css-1h5vk0a"
-      >
-        <div
-          className="css-hw75se"
-        >
-          <Buttons
-            actions={Array []}
-          />
         </div>
       </div>
-    </div>
+    </FocusTrap>
   </BasicDialog>
 </PipelineErrorDialog>
 `;

@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ToggleIcon from '@shopgate/pwa-ui-shared/ToggleIcon';
-import FlashEnabledIcon from '@shopgate/pwa-ui-shared/icons/FlashEnabledIcon';
-import FlashDisabledIcon from '@shopgate/pwa-ui-shared/icons/FlashDisabledIcon';
-import { SCANNER_FLASH } from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import {
+  SurroundPortals, ToggleIcon, FlashEnabledIcon, FlashDisabledIcon,
+} from '@shopgate/engage/components';
+import { SCANNER_FLASH } from '@shopgate/engage/scanner/constants';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 
 /**
  * The FlashlightButton component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FlashlightButton = ({
   flashlightState,
@@ -21,6 +21,7 @@ const FlashlightButton = ({
       onClick={onToggle}
       role="link"
       type="button"
+      aria-label={i18n.text(flashlightState ? 'scanner.flashlight.switchOff' : 'scanner.flashlight.switchOn')}
     >
       <ToggleIcon
         on={flashlightState}
@@ -28,6 +29,9 @@ const FlashlightButton = ({
         offIcon={<FlashDisabledIcon className={styles.icon} />}
       />
     </button>
+    <div className="sr-only" role="status" aria-live="polite">
+      {i18n.text(flashlightState ? 'scanner.flashlight.on' : 'scanner.flashlight.off')}
+    </div>
   </SurroundPortals>
 );
 

@@ -68,7 +68,7 @@ class Glow extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {
@@ -87,6 +87,7 @@ class Glow extends Component {
         ...propStyles.glow,
       };
     }
+
     /* eslint-disable jsx-a11y/no-static-element-interactions,
     jsx-a11y/click-events-have-key-events */
     return (

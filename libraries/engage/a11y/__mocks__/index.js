@@ -1,4 +1,1 @@
-/* eslint-disable require-jsdoc */
-export const Section = ({ children }) => children;
-
-/* eslint-enable require-jsdoc */
+export * from '../components/__mocks__';

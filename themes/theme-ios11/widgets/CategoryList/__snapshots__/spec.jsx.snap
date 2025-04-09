@@ -49,40 +49,30 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       data-test-id="Headline"
       style={null}
     >
-      <Translate
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={Object {}}
-        role={null}
+      <Text
         string="Yay Categories"
-        transform={null}
       >
-        <span
-          className={null}
-          role={null}
-        >
-          Yay Categories
-        </span>
-      </Translate>
+        Yay Categories
+      </Text>
     </h2>
   </Headline>
-  <MockedSheetList
+  <SheetList
     hasImages={false}
   >
-    <Item
+    <SheetList.Item
       image={null}
       key="1"
       link="/category/31"
       testId="Headline"
       title="Headline"
     />
-    <Item
+    <SheetList.Item
       image={null}
       key="2"
       link="/category/32"
       testId="Headline"
       title="Headline"
     />
-  </MockedSheetList>
+  </SheetList>
 </CategoryListWidget>
 `;

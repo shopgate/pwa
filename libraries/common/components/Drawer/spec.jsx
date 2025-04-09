@@ -2,6 +2,8 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import Drawer from './index';
 
+jest.mock('@shopgate/engage/a11y/components');
+
 describe('<Drawer />', () => {
   const onOpen = jest.fn();
   const onClose = jest.fn();

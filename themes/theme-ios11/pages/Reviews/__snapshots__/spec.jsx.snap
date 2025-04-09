@@ -183,7 +183,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               aria-label="reviews.rating_stars"
                               className="css-13azwyo css-hgkz41 ui-shared__rating-stars"
                               data-test-id="ratedStars: 5"
-                              role="text"
+                              role="img"
                             >
                               <div
                                 className="css-4s85e9 rating-stars-empty"
@@ -644,7 +644,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               aria-label="reviews.rating_stars"
                               className="css-13azwyo css-hgkz41 ui-shared__rating-stars"
                               data-test-id="ratedStars: 5"
-                              role="text"
+                              role="img"
                             >
                               <div
                                 className="css-4s85e9 rating-stars-empty"
@@ -1105,7 +1105,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               aria-label="reviews.rating_stars"
                               className="css-13azwyo css-hgkz41 ui-shared__rating-stars"
                               data-test-id="ratedStars: 5"
-                              role="text"
+                              role="img"
                             >
                               <div
                                 className="css-4s85e9 rating-stars-empty"
@@ -1566,7 +1566,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               aria-label="reviews.rating_stars"
                               className="css-13azwyo css-hgkz41 ui-shared__rating-stars"
                               data-test-id="ratedStars: 5"
-                              role="text"
+                              role="img"
                             >
                               <div
                                 className="css-4s85e9 rating-stars-empty"

@@ -6,9 +6,11 @@ import connect from './connector';
 
 /**
  * The header of the reviews component
- * @param {Object} rating The rating values
- * @param {bool} withTopGap Adds additional top gap when true.
- * @returns {JSX}
+ * @param {Object} props The component props
+ * @param {string} props.productId The related product ID.
+ * @param {Object} props.rating The rating values
+ * @param {boolean} props.withTopGap Adds additional top gap when true.
+ * @returns {JSX.Element}
  */
 const Header = ({ productId, rating, withTopGap }) => {
   if (!rating) {

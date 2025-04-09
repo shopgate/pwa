@@ -2,8 +2,11 @@
 
 exports[`<PaymentBarCheckoutButton /> should render disabled button 1`] = `
 <Connect(Link)
+  aria-disabled={true}
   disabled={true}
   href="/checkout"
+  role="button"
+  tabIndex={0}
 >
   <RippleButton
     className="css-ce5yef"
@@ -30,8 +33,11 @@ exports[`<PaymentBarCheckoutButton /> should render disabled button 1`] = `
 
 exports[`<PaymentBarCheckoutButton /> should render enabled button 1`] = `
 <Connect(Link)
+  aria-disabled={false}
   disabled={false}
   href="/checkout"
+  role="button"
+  tabIndex={0}
 >
   <RippleButton
     className="css-1g94fbj"

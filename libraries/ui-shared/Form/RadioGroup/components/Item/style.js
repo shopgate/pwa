@@ -1,10 +1,6 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const input = css({
-  display: 'none',
-}).toString();
-
 const container = css({
   display: 'flex',
   marginLeft: -1, // Removes margin of svg.
@@ -34,7 +30,6 @@ const active = css({
 }).toString();
 
 export default {
-  input,
   icon,
   disabled,
   container,

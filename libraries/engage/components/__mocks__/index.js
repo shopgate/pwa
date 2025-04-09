@@ -91,6 +91,7 @@ export const PriceStriked = () => null;
 export const PriceInfo = () => null;
 export const RangeSlider = () => null;
 export const RatingStars = () => null;
+export const RatingNumber = ({ rating }) => rating;
 export const Availability = () => null;
 export const TextLink = () => null;
 export const ProductImage = ({ children }) => children;
@@ -106,6 +107,7 @@ SheetList.Item = () => null;
 SheetList.Item.displayName = 'SheetList.Item';
 export const PriceDifference = () => 'PriceDifference';
 export const TaxDisclaimer = () => 'TaxDisclaimer';
+export const ToggleIcon = jest.requireActual('@shopgate/pwa-ui-shared/ToggleIcon').default;
 export const PickerUtilize = () => 'PickerUtilize';
 export const Sheet = jest.requireActual('@shopgate/pwa-ui-shared/Sheet').default;
 export const Swiper = SwiperMock;
@@ -115,6 +117,7 @@ export const I18n = {
   Text: ({ string }) => string,
   Placeholder: () => null,
   Price: () => null,
+  Number: ({ number }) => number,
 };
 
 export { default as View, ViewContext } from '../View/__mocks__/index';

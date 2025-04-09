@@ -231,7 +231,8 @@
     "description_heading": "Leírás",
     "share": "Termék megosztása",
     "pick_an_attribute": "{0} válasszon",
-    "tax_disclaimer": "* Áfával együtt, esetleg plusz szállítási költség",
+    "tax_disclaimer": "* Áfával együtt, esetlegesen további szállítási költséggel",
+    "tax_disclaimer_aria": "Áfával együtt, esetlegesen további szállítási költséggel",
     "item_added": "{count, plural, =0 {# nincsenek termékek} =1 {{count} Termék hozzáadva} other {{count} Hozzáadott termékek}}",
     "item_added_unit": "{count} {unit} hozzáadva",
     "adding_item": "{count, plural, =1 {Egy termék hozzáadása folyamatban van} other {Hozzáadás alatt van {count} termék}}",
@@ -552,7 +553,8 @@
     "more_menu": "További",
     "order_history": "Rendelési előzmények",
     "profile": "Profil",
-    "back": "Vissza a {title}"
+    "back": "Vissza a {title}",
+    "open_menu": "Menü megnyitása"
   },
   "reviews": {
     "rating": "Értékelés",
@@ -584,6 +586,12 @@
     "noResult": {
       "qrCode": "Nem találtunk eredményt erre a QR-kódra.",
       "barCode": "A terméket nem találtuk."
+    },
+    "flashlight": {
+      "on": "A zseblámpa be van kapcsolva",
+      "off": "A zseblámpa ki van kapcsolva",
+      "switchOn": "Kapcsold be a zseblámpát",
+      "switchOff": "Kapcsold ki a zseblámpát"
     }
   },
   "permissions": {

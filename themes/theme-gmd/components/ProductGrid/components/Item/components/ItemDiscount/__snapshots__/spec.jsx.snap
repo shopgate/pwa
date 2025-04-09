@@ -2,7 +2,6 @@
 
 exports[`<ItemDiscount /> should render with discount 1`] = `
 <div
-  aria-hidden={true}
   className="css-1hbxai8 theme__product-grid__item__item-discount"
 >
   <Portal

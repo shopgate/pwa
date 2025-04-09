@@ -8,11 +8,17 @@ import { tableCell } from './style';
  * @return {JSX.Element}
  */
 const Row = ({ label, value, type }) => (
-  <tr className="engage__product__product-property" data-type={type} data-label={label}>
-    <td className={tableCell}>
+  <tr
+    className="engage__product__product-property"
+    data-type={type}
+    data-label={label}
+    aria-label={`${typeof label === 'string' ? label : ''}: ${typeof value === 'string' ? value : ''}`}
+    tabIndex={0}
+  >
+    <td className={tableCell} aria-hidden>
       <span dangerouslySetInnerHTML={{ __html: label }} />
     </td>
-    <td className={tableCell} data-test-id={`property: ${value}`}>
+    <td className={tableCell} data-test-id={`property: ${value}`} aria-hidden>
       <span dangerouslySetInnerHTML={{ __html: value }} />
     </td>
   </tr>

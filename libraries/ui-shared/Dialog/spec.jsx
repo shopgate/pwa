@@ -13,6 +13,8 @@ jest.mock('./components/VariantSelectModal', () => {
   return VariantSelectModal;
 });
 
+jest.mock('@shopgate/engage/components');
+
 describe('<Dialog />', () => {
   it('should render without props', () => {
     const wrapper = shallow(<Dialog modal={{ message: 'msg' }} />);

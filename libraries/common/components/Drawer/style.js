@@ -22,10 +22,10 @@ const container = css({
 
 const animation = {
   in: css({
-    animation: `${slideInBaseDrawer} ${duration}ms 1 both ${easing}`,
+    animation: `${slideInBaseDrawer} ${duration}ms 1 forwards ${easing}`,
   }).toString(),
   out: css({
-    animation: `${slideOutBaseDrawer} ${duration}ms 1 both ${easing}`,
+    animation: `${slideOutBaseDrawer} ${duration}ms 1 forwards ${easing}`,
   }).toString(),
 };
 

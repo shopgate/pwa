@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import compose from 'lodash/fp/compose';
 import noop from 'lodash/noop';
 import classNames from 'classnames';
 import Glow from '../../../Glow';
 import { getItemClass } from './style';
+import { useContextMenu } from '../../ContextMenu.hooks';
 
 /**
  * A delay in ms after that the closeMenu callback gets triggered.
@@ -15,23 +15,53 @@ const CLOSE_DELAY = 250;
 /**
  * The Context Menu Item component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Item = ({
-  children, closeMenu, onClick, disabled, autoClose, className,
+  children, onClick, disabled, autoClose, className,
 }) => {
-  const handleClick = compose(
-    onClick,
-    autoClose ? () => setTimeout(closeMenu, CLOSE_DELAY) : noop
-  );
+  const { handleMenuToggle } = useContextMenu();
+
+  /**
+    * Handles the click event.
+    * @param {Event} event The click event.
+    * @returns {void}
+    */
+  const handleClick = useCallback((event) => {
+    event.persist();
+    setTimeout(() => {
+      if (autoClose) {
+        handleMenuToggle(event);
+      }
+
+      setTimeout(() => {
+        onClick(event);
+      }, 0);
+    }, autoClose ? CLOSE_DELAY : 0);
+  }, [autoClose, handleMenuToggle, onClick]);
+
+  /**
+   * Handles the keypress event for screen readers.
+   * @param {Event} event The click event.
+   * @returns {void}
+   */
+  const handleKeyPress = useCallback((event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      handleClick(event);
+    }
+  }, [handleClick]);
 
   return (
     <Glow disabled={disabled}>
       <div
         className={classNames(getItemClass(disabled), className)}
         onClick={disabled ? noop : handleClick}
-        aria-hidden
         data-test-id="contextMenuButton"
+        aria-disabled={disabled}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+        onKeyDown={!disabled ? handleKeyPress : undefined}
       >
         {children}
       </div>
@@ -43,7 +73,6 @@ Item.propTypes = {
   autoClose: PropTypes.bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  closeMenu: PropTypes.func,
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
 };
@@ -52,7 +81,6 @@ Item.defaultProps = {
   autoClose: true,
   children: null,
   className: '',
-  closeMenu: () => {},
   onClick: () => {},
   disabled: false,
 };

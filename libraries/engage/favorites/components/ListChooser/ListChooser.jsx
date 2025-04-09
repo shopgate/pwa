@@ -31,7 +31,7 @@ const mapDispatchToProps = dispatch => ({
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ListChooser = ({
   settings, lists, close, toggle,

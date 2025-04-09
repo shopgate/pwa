@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ItemDetails /> should render additional components with new services 1`] = `
-<div
+<Link
   className="css-t5ln4b theme__product-grid__item__item-details"
-  role="button"
-  tabIndex={-1}
+  href="link-to-product/1234"
+  tabIndex={0}
 >
   <Swatches
     productId="1234"
@@ -48,14 +48,14 @@ exports[`<ItemDetails /> should render additional components with new services 1
       }
     }
   />
-</div>
+</Link>
 `;
 
 exports[`<ItemDetails /> should render with minimal props 1`] = `
-<div
+<Link
   className="css-t5ln4b theme__product-grid__item__item-details"
-  role="button"
-  tabIndex={-1}
+  href="link-to-product/1234"
+  tabIndex={0}
 >
   <Swatches
     productId="1234"
@@ -85,5 +85,5 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       }
     }
   />
-</div>
+</Link>
 `;

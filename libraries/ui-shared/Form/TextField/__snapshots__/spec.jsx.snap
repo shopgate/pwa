@@ -963,7 +963,10 @@ exports[`<TextField> should show the error message 1`] = `
         translate={true}
       >
         <div
+          aria-atomic="true"
+          aria-live="assertive"
           className="css-1tzi51f errorText"
+          role="alert"
         >
           <Translate
             acceptPlainTextWithPlaceholders={false}
