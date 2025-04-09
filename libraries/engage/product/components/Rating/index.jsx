@@ -37,7 +37,7 @@ const scrollToRating = () => {
 /**
  * The Rating component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const Rating = ({ rating }) => {
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
@@ -57,7 +57,11 @@ const Rating = ({ rating }) => {
   return (
     <SurroundPortals portalName={PRODUCT_RATING}>
       {showRatings &&
-      <div className={container} onClick={scrollToRating} role="link" aria-hidden>
+      <div
+        className={container}
+        onClick={scrollToRating}
+        role="presentation"
+      >
         <RatingStars value={rating.average} display="big" />
         <RatingCount count={rating.count} prominent />
       </div>
