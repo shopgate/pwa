@@ -91,6 +91,7 @@ export const PriceStriked = () => null;
 export const PriceInfo = () => null;
 export const RangeSlider = () => null;
 export const RatingStars = () => null;
+export const RatingNumber = ({ rating }) => rating;
 export const Availability = () => null;
 export const TextLink = () => null;
 export const ProductImage = ({ children }) => children;
@@ -116,6 +117,7 @@ export const I18n = {
   Text: ({ string }) => string,
   Placeholder: () => null,
   Price: () => null,
+  Number: ({ number }) => number,
 };
 
 export { default as View, ViewContext } from '../View/__mocks__/index';

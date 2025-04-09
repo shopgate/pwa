@@ -3,10 +3,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import RatingNumber from './index';
 
-jest.mock('@shopgate/pwa-common/components/I18n', () => ({
-  // eslint-disable-next-line react/prop-types
-  Number: ({ rating }) => <div>{rating}</div>,
-}));
+jest.mock('@shopgate/engage/components');
 
 // One of the tests deliberately produces a react warning. The console is mocked to avoid ugly logs.
 console.error = jest.fn();
