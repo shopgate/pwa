@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@shopgate/pwa-common/components/Modal';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
@@ -86,25 +86,25 @@ const Dialog = ({
 
   const DialogComponent = dialogTypes[dialogType] || BasicDialog;
 
-  const modalRef = useRef(null);
-
   // Effect to toggle aria-hidden on all other modals when the dialog is open.
   useEffect(() => {
     const otherModals = document.querySelectorAll('.common__modal:not(.ui-shared__dialog-modal), .engage__sheet-drawer');
 
     otherModals.forEach((entry) => {
       entry.setAttribute('aria-hidden', 'true');
+      entry.setAttribute('inert', '');
     });
 
     return () => {
       otherModals.forEach((entry) => {
         entry.removeAttribute('aria-hidden');
+        entry.removeAttribute('inert');
       });
     };
   }, []);
 
   return (
-    <Modal ref={modalRef} classes={{ container: 'ui-shared__dialog-modal' }}>
+    <Modal classes={{ container: 'ui-shared__dialog-modal' }}>
       <Backdrop isVisible level={0} opacity={30} />
       <DialogComponent {...dialogProps} />
     </Modal>

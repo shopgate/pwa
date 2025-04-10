@@ -59,6 +59,15 @@ class Drawer extends Component {
     };
   }
 
+  /** inheritdoc */
+  componentDidMount() {
+    if (this.props.isOpen) {
+      if (this.sheetRef.current) {
+        this.sheetRef.current.focus();
+      }
+    }
+  }
+
   /**
    * Update state when isOpen changes.
    * @param {Object} nextProps The next component props.

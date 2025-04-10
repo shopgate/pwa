@@ -35,7 +35,7 @@ class ViewProvider extends Component {
       top: 0,
       bottom: 0,
       contentRef: { current: null },
-      ariaHidden: false,
+      ariaHidden: props.modalCount > 0,
     };
     // Last view active element
     this.activeElement = null;
