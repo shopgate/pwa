@@ -15,11 +15,14 @@ describe('engage > components > view > provider', () => {
   let dispatch;
 
   beforeEach(() => {
+    jest.clearAllMocks();
+
     store = createMockStore(combineReducers({
       a11y,
     }));
     ({ dispatch } = store);
   });
+
   it('should initialize and provider context', () => {
     const wrapper = mount((
       <StoreProvider store={store}>
