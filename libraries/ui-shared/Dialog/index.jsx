@@ -24,6 +24,8 @@ const dialogTypes = {
   [MODAL_VARIANT_SELECT]: VariantSelectModal,
 };
 
+const supportsInert = 'inert' in HTMLElement.prototype;
+
 /**
  * The main component for rendering dialogs.
  * This component takes care of choosing the correct component body for the given type
@@ -91,14 +93,17 @@ const Dialog = ({
     const otherModals = document.querySelectorAll('.common__modal:not(.ui-shared__dialog-modal), .engage__sheet-drawer');
 
     otherModals.forEach((entry) => {
-      entry.setAttribute('aria-hidden', 'true');
-      entry.setAttribute('inert', '');
+      if (supportsInert) {
+        entry.setAttribute('inert', '');
+      } else {
+        entry.setAttribute('aria-hidden', 'true');
+      }
     });
 
     return () => {
       otherModals.forEach((entry) => {
-        entry.removeAttribute('aria-hidden');
         entry.removeAttribute('inert');
+        entry.removeAttribute('aria-hidden');
       });
     };
   }, []);
