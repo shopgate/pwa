@@ -4,6 +4,8 @@ import UISharedSheet from '@shopgate/pwa-ui-shared/Sheet';
 
 import SwiperMock from '@shopgate/pwa-common/components/Swiper/__mocks__';
 
+export { MODAL_EVENTS } from '@shopgate/pwa-common/components/ModalContainer';
+
 // ICONS IOS
 export const CartIconIOS = () => null;
 export const FilterIconIOS = () => null;

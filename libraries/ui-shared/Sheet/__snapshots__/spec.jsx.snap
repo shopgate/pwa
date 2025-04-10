@@ -21,7 +21,6 @@ exports[`<Sheet /> should open 1`] = `
     className="ui-shared__sheet css-1owavz5"
   >
     <Drawer
-      alwaysActive={false}
       animation={
         Object {
           "duration": 300,
@@ -36,161 +35,157 @@ exports[`<Sheet /> should open 1`] = `
       onDidOpen={[Function]}
       onOpen={[Function]}
     >
-      <FocusTrap
-        active={true}
-      >
-        <div
-          aria-modal={true}
-          className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
-          onAnimationEnd={[Function]}
-          role="dialog"
-          style={
-            Object {
-              "animationDuration": "300ms",
-            }
+      <div
+        aria-modal={true}
+        className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
+        onAnimationEnd={[Function]}
+        role="dialog"
+        style={
+          Object {
+            "animationDuration": "300ms",
           }
-          tabIndex={-1}
+        }
+        tabIndex={-1}
+      >
+        <Header
+          allowClose={true}
+          handleChange={[Function]}
+          onToggleClose={[Function]}
+          shadow={false}
+          showSearch={false}
+          title="Test-Title"
         >
-          <Header
-            allowClose={true}
-            handleChange={[Function]}
-            onToggleClose={[Function]}
-            shadow={false}
-            showSearch={false}
-            title="Test-Title"
+          <div
+            className=""
           >
-            <div
-              className=""
+            <Grid
+              className="css-1hncgty"
+              component="div"
+              wrap={false}
             >
-              <Grid
-                className="css-1hncgty"
-                component="div"
-                wrap={false}
+              <div
+                className="css-1hncgty css-h7r55a common__grid"
               >
-                <div
-                  className="css-1hncgty css-h7r55a common__grid"
+                <button
+                  aria-label="common.close"
+                  className="css-r4gt00"
+                  onClick={[Function]}
+                  type="button"
                 >
-                  <button
-                    aria-label="common.close"
-                    className="css-r4gt00"
+                  <Ripple
+                    className="css-ugy6xl"
+                    color="#000"
+                    disabled={false}
+                    fill={false}
                     onClick={[Function]}
-                    type="button"
-                  >
-                    <Ripple
-                      className="css-ugy6xl"
-                      color="#000"
-                      disabled={false}
-                      fill={false}
-                      onClick={[Function]}
-                      onComplete={[Function]}
-                      overflow={false}
-                      size={null}
-                    >
-                      <div
-                        className="ui-shared__ripple css-ugy6xl"
-                        data-test-id="Ripple"
-                        onClick={[Function]}
-                        style={null}
-                      >
-                        <Cross
-                          size={24}
-                        >
-                          <Icon
-                            className=""
-                            color={null}
-                            content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
-                            size={24}
-                            viewBox="0 0 24 24"
-                          >
-                            <svg
-                              className="css-yys9hb  common__icon"
-                              dangerouslySetInnerHTML={
-                                Object {
-                                  "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                }
-                              }
-                              style={
-                                Object {
-                                  "fill": null,
-                                  "fontSize": 24,
-                                }
-                              }
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            />
-                          </Icon>
-                        </Cross>
-                      </div>
-                    </Ripple>
-                  </button>
-                  <GridItem
-                    className="css-1mjy0de"
-                    component="div"
-                    grow={1}
-                    role="heading"
-                    shrink={1}
-                    tabIndex={0}
+                    onComplete={[Function]}
+                    overflow={false}
+                    size={null}
                   >
                     <div
-                      className="css-1mjy0de css-1gs0ko2"
-                      role="heading"
-                      tabIndex={0}
+                      className="ui-shared__ripple css-ugy6xl"
+                      data-test-id="Ripple"
+                      onClick={[Function]}
+                      style={null}
                     >
-                      Test-Title
+                      <Cross
+                        size={24}
+                      >
+                        <Icon
+                          className=""
+                          color={null}
+                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                          size={24}
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb  common__icon"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": 24,
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Cross>
                     </div>
-                  </GridItem>
-                </div>
-              </Grid>
-            </div>
-          </Header>
-          <div
-            className="css-13azwyo"
-          >
-            <ProgressBar
-              isVisible={false}
-            >
-              <Transition
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={false}
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                timeout={150}
-                unmountOnExit={false}
-              >
-                <div
-                  className="css-guf25f ui-shared__progress-bar"
-                  style={
-                    Object {
-                      "transform": "scale(1, 0)",
-                    }
-                  }
+                  </Ripple>
+                </button>
+                <GridItem
+                  className="css-1mjy0de"
+                  component="div"
+                  grow={1}
+                  role="heading"
+                  shrink={1}
+                  tabIndex={0}
                 >
                   <div
-                    className="css-p3pdmf"
-                  />
-                </div>
-              </Transition>
-            </ProgressBar>
+                    className="css-1mjy0de css-1gs0ko2"
+                    role="heading"
+                    tabIndex={0}
+                  >
+                    Test-Title
+                  </div>
+                </GridItem>
+              </div>
+            </Grid>
           </div>
-          <div
-            className="css-1pp3d82"
-            onScroll={[Function]}
+        </Header>
+        <div
+          className="css-13azwyo"
+        >
+          <ProgressBar
+            isVisible={false}
           >
-            <div
-              key=".0"
+            <Transition
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={false}
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              timeout={150}
+              unmountOnExit={false}
             >
-              Test
-            </div>
+              <div
+                className="css-guf25f ui-shared__progress-bar"
+                style={
+                  Object {
+                    "transform": "scale(1, 0)",
+                  }
+                }
+              >
+                <div
+                  className="css-p3pdmf"
+                />
+              </div>
+            </Transition>
+          </ProgressBar>
+        </div>
+        <div
+          className="css-1pp3d82"
+          onScroll={[Function]}
+        >
+          <div
+            key=".0"
+          >
+            Test
           </div>
         </div>
-      </FocusTrap>
+      </div>
     </Drawer>
     <Backdrop
       className=""
@@ -282,7 +277,6 @@ exports[`<Sheet /> should render closed without content 1`] = `
   className="ui-shared__sheet"
 >
   <Drawer
-    alwaysActive={false}
     animation={
       Object {
         "duration": 300,
@@ -327,7 +321,6 @@ exports[`<Sheet /> should render opened without content 1`] = `
   className="ui-shared__sheet css-1owavz5"
 >
   <Drawer
-    alwaysActive={false}
     animation={
       Object {
         "duration": 300,
@@ -372,7 +365,6 @@ exports[`<Sheet /> should render with content and title 1`] = `
   className="ui-shared__sheet css-1owavz5"
 >
   <Drawer
-    alwaysActive={false}
     animation={
       Object {
         "duration": 300,
@@ -464,7 +456,6 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     className="ui-shared__sheet"
   >
     <Drawer
-      alwaysActive={false}
       animation={
         Object {
           "duration": 300,
@@ -479,161 +470,157 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       onDidOpen={[Function]}
       onOpen={[Function]}
     >
-      <FocusTrap
-        active={false}
-      >
-        <div
-          aria-modal={true}
-          className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
-          onAnimationEnd={[Function]}
-          role="dialog"
-          style={
-            Object {
-              "animationDuration": "300ms",
-            }
+      <div
+        aria-modal={true}
+        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
+        onAnimationEnd={[Function]}
+        role="dialog"
+        style={
+          Object {
+            "animationDuration": "300ms",
           }
-          tabIndex={-1}
+        }
+        tabIndex={-1}
+      >
+        <Header
+          allowClose={true}
+          handleChange={[Function]}
+          onToggleClose={[Function]}
+          shadow={false}
+          showSearch={false}
+          title="Test-Title"
         >
-          <Header
-            allowClose={true}
-            handleChange={[Function]}
-            onToggleClose={[Function]}
-            shadow={false}
-            showSearch={false}
-            title="Test-Title"
+          <div
+            className=""
           >
-            <div
-              className=""
+            <Grid
+              className="css-1hncgty"
+              component="div"
+              wrap={false}
             >
-              <Grid
-                className="css-1hncgty"
-                component="div"
-                wrap={false}
+              <div
+                className="css-1hncgty css-h7r55a common__grid"
               >
-                <div
-                  className="css-1hncgty css-h7r55a common__grid"
+                <button
+                  aria-label="common.close"
+                  className="css-r4gt00"
+                  onClick={[Function]}
+                  type="button"
                 >
-                  <button
-                    aria-label="common.close"
-                    className="css-r4gt00"
+                  <Ripple
+                    className="css-ugy6xl"
+                    color="#000"
+                    disabled={false}
+                    fill={false}
                     onClick={[Function]}
-                    type="button"
-                  >
-                    <Ripple
-                      className="css-ugy6xl"
-                      color="#000"
-                      disabled={false}
-                      fill={false}
-                      onClick={[Function]}
-                      onComplete={[Function]}
-                      overflow={false}
-                      size={null}
-                    >
-                      <div
-                        className="ui-shared__ripple css-ugy6xl"
-                        data-test-id="Ripple"
-                        onClick={[Function]}
-                        style={null}
-                      >
-                        <Cross
-                          size={24}
-                        >
-                          <Icon
-                            className=""
-                            color={null}
-                            content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
-                            size={24}
-                            viewBox="0 0 24 24"
-                          >
-                            <svg
-                              className="css-yys9hb  common__icon"
-                              dangerouslySetInnerHTML={
-                                Object {
-                                  "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
-                                }
-                              }
-                              style={
-                                Object {
-                                  "fill": null,
-                                  "fontSize": 24,
-                                }
-                              }
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            />
-                          </Icon>
-                        </Cross>
-                      </div>
-                    </Ripple>
-                  </button>
-                  <GridItem
-                    className="css-1mjy0de"
-                    component="div"
-                    grow={1}
-                    role="heading"
-                    shrink={1}
-                    tabIndex={0}
+                    onComplete={[Function]}
+                    overflow={false}
+                    size={null}
                   >
                     <div
-                      className="css-1mjy0de css-1gs0ko2"
-                      role="heading"
-                      tabIndex={0}
+                      className="ui-shared__ripple css-ugy6xl"
+                      data-test-id="Ripple"
+                      onClick={[Function]}
+                      style={null}
                     >
-                      Test-Title
+                      <Cross
+                        size={24}
+                      >
+                        <Icon
+                          className=""
+                          color={null}
+                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                          size={24}
+                          viewBox="0 0 24 24"
+                        >
+                          <svg
+                            className="css-yys9hb  common__icon"
+                            dangerouslySetInnerHTML={
+                              Object {
+                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                              }
+                            }
+                            style={
+                              Object {
+                                "fill": null,
+                                "fontSize": 24,
+                              }
+                            }
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          />
+                        </Icon>
+                      </Cross>
                     </div>
-                  </GridItem>
-                </div>
-              </Grid>
-            </div>
-          </Header>
-          <div
-            className="css-13azwyo"
-          >
-            <ProgressBar
-              isVisible={false}
-            >
-              <Transition
-                appear={false}
-                enter={true}
-                exit={true}
-                in={false}
-                mountOnEnter={false}
-                onEnter={[Function]}
-                onEntered={[Function]}
-                onEntering={[Function]}
-                onExit={[Function]}
-                onExited={[Function]}
-                onExiting={[Function]}
-                timeout={150}
-                unmountOnExit={false}
-              >
-                <div
-                  className="css-guf25f ui-shared__progress-bar"
-                  style={
-                    Object {
-                      "transform": "scale(1, 0)",
-                    }
-                  }
+                  </Ripple>
+                </button>
+                <GridItem
+                  className="css-1mjy0de"
+                  component="div"
+                  grow={1}
+                  role="heading"
+                  shrink={1}
+                  tabIndex={0}
                 >
                   <div
-                    className="css-p3pdmf"
-                  />
-                </div>
-              </Transition>
-            </ProgressBar>
+                    className="css-1mjy0de css-1gs0ko2"
+                    role="heading"
+                    tabIndex={0}
+                  >
+                    Test-Title
+                  </div>
+                </GridItem>
+              </div>
+            </Grid>
           </div>
-          <div
-            className="css-1pp3d82"
-            onScroll={[Function]}
+        </Header>
+        <div
+          className="css-13azwyo"
+        >
+          <ProgressBar
+            isVisible={false}
           >
-            <div
-              key=".0"
+            <Transition
+              appear={false}
+              enter={true}
+              exit={true}
+              in={false}
+              mountOnEnter={false}
+              onEnter={[Function]}
+              onEntered={[Function]}
+              onEntering={[Function]}
+              onExit={[Function]}
+              onExited={[Function]}
+              onExiting={[Function]}
+              timeout={150}
+              unmountOnExit={false}
             >
-              Test
-            </div>
+              <div
+                className="css-guf25f ui-shared__progress-bar"
+                style={
+                  Object {
+                    "transform": "scale(1, 0)",
+                  }
+                }
+              >
+                <div
+                  className="css-p3pdmf"
+                />
+              </div>
+            </Transition>
+          </ProgressBar>
+        </div>
+        <div
+          className="css-1pp3d82"
+          onScroll={[Function]}
+        >
+          <div
+            key=".0"
+          >
+            Test
           </div>
         </div>
-      </FocusTrap>
+      </div>
     </Drawer>
     <Backdrop
       className=""
