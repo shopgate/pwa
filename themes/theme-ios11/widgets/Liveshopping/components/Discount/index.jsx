@@ -6,7 +6,7 @@ import {
   PRODUCT_ITEM_DISCOUNT_BEFORE,
   PRODUCT_ITEM_DISCOUNT_AFTER,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import styles from './style';
 
 /**
@@ -23,7 +23,7 @@ function LiveshoppingDiscount({ discount, productId }) {
       <Portal name={PRODUCT_ITEM_DISCOUNT_BEFORE} props={props} />
       <Portal name={PRODUCT_ITEM_DISCOUNT} props={props}>
         <DiscountBadge
-          text={i18n.text('liveshopping.discount_badge', { 0: discount })}
+          text={i18n.text('liveshopping.discount_badge', [discount])}
           discount={discount}
           display="big"
           className={styles}
