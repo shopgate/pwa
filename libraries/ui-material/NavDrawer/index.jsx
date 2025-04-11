@@ -64,6 +64,9 @@ class NavDrawer extends Component {
       open: false,
     };
 
+    // Save a reference to the element that triggered the NavDrawer
+    this.triggerElement = null;
+
     UIEvents.addListener(OPEN, this.open);
     UIEvents.addListener(CLOSE, this.close);
   }
@@ -97,6 +100,11 @@ class NavDrawer extends Component {
 
   onExited = () => {
     this.contentRef.current.scrollTop = 0;
+
+    if (this.a11yCloseRef.current) {
+      // Focus the element that triggered the NavDrawer after it closes
+      this.triggerElement.focus();
+    }
   }
 
   onExiting = () => {
@@ -104,6 +112,9 @@ class NavDrawer extends Component {
   }
 
   open = () => {
+    // Save a reference to the element that triggered the NavDrawer
+    this.triggerElement = document.activeElement;
+
     this.setState({
       open: true,
     });
