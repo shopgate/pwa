@@ -168,12 +168,17 @@ class ViewContent extends Component {
   };
 
   /**
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     return (
       <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <article className={`${styles} engage__view__content ${this.props.className}`} ref={this.scrollContainer ? this.ref : null} style={this.style}>
+        <article
+          className={`${styles} engage__view__content ${this.props.className}`}
+          ref={this.scrollContainer ? this.ref : null}
+          style={this.style}
+          role="none"
+        >
           <Helmet title={appConfig.shopName} />
           <Above />
           <ResponsiveContainer breakpoint=">xs" webOnly>

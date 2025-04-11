@@ -19,7 +19,7 @@ import styles from './style';
 class ProductHeader extends PureComponent {
   /**
    * @param {Object} props The consumer props.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   consumeRenderer = ({ productId, variantId, options }) => {
     const id = variantId || productId;
@@ -37,7 +37,7 @@ class ProductHeader extends PureComponent {
   }
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     return (
