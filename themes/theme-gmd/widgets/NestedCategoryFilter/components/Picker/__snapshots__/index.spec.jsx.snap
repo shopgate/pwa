@@ -382,7 +382,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h  common__backdrop"
+                          className="css-30873t  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -790,7 +790,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h  common__backdrop"
+                          className="css-30873t  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -1238,7 +1238,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h  common__backdrop"
+                          className="css-30873t  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
@@ -1647,7 +1647,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       >
                         <div
                           aria-hidden={true}
-                          className="css-hlk66h  common__backdrop"
+                          className="css-30873t  common__backdrop"
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={

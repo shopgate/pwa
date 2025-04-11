@@ -4,6 +4,7 @@ import NavDrawer from './index';
 
 jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/a11y/components');
 
 describe('NavDrawer', () => {
   it('should match the snapshot', () => {

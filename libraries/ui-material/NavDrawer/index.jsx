@@ -2,13 +2,13 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import Transition from 'react-transition-group/Transition';
-import Backdrop from '@shopgate/pwa-common/components/Backdrop';
+import { Backdrop } from '@shopgate/engage/components';
+import { ModalStateTracker } from '@shopgate/engage/a11y/components';
 import { UIEvents } from '@shopgate/pwa-core';
 import Divider from './components/Divider';
 import Item from './components/Item';
 import Section from './components/Section';
 import Title from './components/Title';
-import ContentWrapper from './components/ContentWrapper';
 import { contentStyle, drawerStyle } from './style';
 import transition from './transition';
 
@@ -144,7 +144,7 @@ class NavDrawer extends Component {
             const ariaHidden = this.props['aria-hidden'] || state === 'exited';
 
             return (
-              <ContentWrapper isOpen={this.state.open}>
+              <ModalStateTracker isVisible={this.state.open}>
                 <section
                   className={`${drawerStyle} ui-material__nav-drawer`}
                   data-test-id="NavDrawer"
@@ -157,7 +157,7 @@ class NavDrawer extends Component {
                     {this.props.children}
                   </nav>
                 </section>
-              </ContentWrapper>
+              </ModalStateTracker>
             );
           }}
         </Transition>

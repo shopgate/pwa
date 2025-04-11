@@ -757,7 +757,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -1990,7 +1990,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -2747,7 +2747,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -3192,7 +3192,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -4074,7 +4074,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={

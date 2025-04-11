@@ -113,6 +113,7 @@ export const ToggleIcon = jest.requireActual('@shopgate/pwa-ui-shared/ToggleIcon
 export const PickerUtilize = () => 'PickerUtilize';
 export const Sheet = jest.requireActual('@shopgate/pwa-ui-shared/Sheet').default;
 export const Swiper = SwiperMock;
+export const Backdrop = () => null;
 
 // HELPERS
 export const I18n = {
