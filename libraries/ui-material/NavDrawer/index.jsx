@@ -8,6 +8,7 @@ import Divider from './components/Divider';
 import Item from './components/Item';
 import Section from './components/Section';
 import Title from './components/Title';
+import ContentWrapper from './components/ContentWrapper';
 import { contentStyle, drawerStyle } from './style';
 import transition from './transition';
 
@@ -132,18 +133,20 @@ class NavDrawer extends Component {
             const ariaHidden = this.props['aria-hidden'] || state === 'exited';
 
             return (
-              <section
-                className={`${drawerStyle} ui-material__nav-drawer`}
-                data-test-id="NavDrawer"
-                style={transition[state]}
-                aria-hidden={ariaHidden}
-                tabIndex="-1"
-              >
-                <Item label="common.close" ref={this.a11yCloseRef} srOnly />
-                <nav className={contentStyle} ref={this.contentRef}>
-                  {this.props.children}
-                </nav>
-              </section>
+              <ContentWrapper isOpen={this.state.open}>
+                <section
+                  className={`${drawerStyle} ui-material__nav-drawer`}
+                  data-test-id="NavDrawer"
+                  style={transition[state]}
+                  aria-hidden={ariaHidden}
+                  tabIndex="-1"
+                >
+                  <Item label="common.close" ref={this.a11yCloseRef} srOnly />
+                  <nav className={contentStyle} ref={this.contentRef}>
+                    {this.props.children}
+                  </nav>
+                </section>
+              </ContentWrapper>
             );
           }}
         </Transition>
