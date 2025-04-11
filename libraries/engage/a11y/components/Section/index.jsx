@@ -69,7 +69,7 @@ function Section(props) {
   return (
     <section {...rest} ref={contentRef}>
       <VisuallyHidden>
-        <h2>
+        <h2 id={id}>
           <I18n.Text string={title} params={titleParams} />
         </h2>
       </VisuallyHidden>
