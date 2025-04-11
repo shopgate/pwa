@@ -71,7 +71,6 @@ const PushOptInModal = ({
 
   return (
     <Modal
-      isOpened={isPushOptInModalVisible}
       classes={{
         content: styles.modalContent,
         layout: styles.modalLayout,

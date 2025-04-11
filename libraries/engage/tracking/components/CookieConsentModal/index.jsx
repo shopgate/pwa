@@ -82,7 +82,6 @@ const CookieConsentModal = ({
 
   return (
     <Modal
-      isOpened={isCookieConsentModalVisible}
       classes={{
         content: styles.modalContent,
         layout: styles.modalLayout,

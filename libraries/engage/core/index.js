@@ -1,8 +1,4 @@
 /** @module core */
-// --------------- CORE --------------- //
-
-// Emitters
-export { default as UIEvents } from '@shopgate/pwa-core/emitters/ui';
 
 // --------------- STORE --------------- //
 
@@ -26,6 +22,7 @@ export * from './collections';
 export * from './commands';
 export * from './constants';
 export * from './contexts';
+export * from './events';
 export * from './helpers';
 export * from './hocs';
 export * from './hooks';

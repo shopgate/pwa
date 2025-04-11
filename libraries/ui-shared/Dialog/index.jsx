@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@shopgate/pwa-common/components/Modal';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
@@ -24,6 +24,8 @@ const dialogTypes = {
   [MODAL_VARIANT_SELECT]: VariantSelectModal,
 };
 
+const supportsInert = 'inert' in HTMLElement.prototype;
+
 /**
  * The main component for rendering dialogs.
  * This component takes care of choosing the correct component body for the given type
@@ -32,13 +34,11 @@ const dialogTypes = {
  * @param {Object} props.modal Object with modal data.
  * @param {Function} props.onConfirm The function to call when the confirm button is clicked.
  * @param {Function} props.onDismiss The function to call when the dismiss button is clicked.
- * @param {boolean} props.disableA11YFocusHandling Whether the internal A11Y focus handling
- * should be disabled since it's already handled outside the dialog.
  * @param {NodeList} props.children The children to render inside the modal.
  * @returns {JSX.Element}
  */
 const Dialog = ({
-  modal, onConfirm, onDismiss, children, disableA11YFocusHandling,
+  modal, onConfirm, onDismiss, children,
 }) => {
   // Assemble the actions.
   const actions = [];
@@ -88,8 +88,28 @@ const Dialog = ({
 
   const DialogComponent = dialogTypes[dialogType] || BasicDialog;
 
+  // Effect to toggle aria-hidden on all other modals when the dialog is open.
+  useEffect(() => {
+    const otherModals = document.querySelectorAll('.common__modal:not(.ui-shared__dialog-modal), .engage__sheet-drawer');
+
+    otherModals.forEach((entry) => {
+      if (supportsInert) {
+        entry.setAttribute('inert', '');
+      } else {
+        entry.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    return () => {
+      otherModals.forEach((entry) => {
+        entry.removeAttribute('inert');
+        entry.removeAttribute('aria-hidden');
+      });
+    };
+  }, []);
+
   return (
-    <Modal disableA11YFocusHandling={disableA11YFocusHandling}>
+    <Modal classes={{ container: 'ui-shared__dialog-modal' }}>
       <Backdrop isVisible level={0} opacity={30} />
       <DialogComponent {...dialogProps} />
     </Modal>
@@ -138,7 +158,6 @@ Dialog.propTypes = {
   }).isRequired,
   // eslint-disable-next-line react/forbid-prop-types
   children: PropTypes.any,
-  disableA11YFocusHandling: PropTypes.bool,
   onConfirm: PropTypes.func,
   onDismiss: PropTypes.func,
 };
@@ -147,7 +166,6 @@ Dialog.defaultProps = {
   onConfirm: () => {},
   onDismiss: () => {},
   children: null,
-  disableA11YFocusHandling: false,
 };
 
 export default Dialog;

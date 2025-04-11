@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { UIEvents } from '@shopgate/pwa-core';
 import {
-  Grid, Portal, KeyboardConsumer, MODAL_EVENTS,
+  Grid, Portal, KeyboardConsumer,
 } from '@shopgate/engage/components';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
@@ -57,6 +57,7 @@ class TabBar extends PureComponent {
   }
 
   static propTypes = {
+    modalCount: PropTypes.number.isRequired,
     path: PropTypes.string.isRequired,
     activeTab: PropTypes.string,
     isEnabled: PropTypes.bool,
@@ -78,11 +79,6 @@ class TabBar extends PureComponent {
     updateHeightCSSProperty(props.isVisible);
     UIEvents.addListener(SHOW_TAB_BAR, this.show);
     UIEvents.addListener(HIDE_TAB_BAR, this.hide);
-
-    // Listen to the modal events to toggle the aria-hidden attribute of the tab bar
-    // when a modal is shown or hidden.
-    UIEvents.addListener(MODAL_EVENTS.SHOW, this.ariaHide);
-    UIEvents.addListener(MODAL_EVENTS.HIDE, this.ariaShow);
   }
 
   state = {
@@ -109,15 +105,19 @@ class TabBar extends PureComponent {
     if (this.state.isVisible !== prevState.isVisible) {
       updateHeightCSSProperty(this.state.isVisible);
     }
+
+    if (prevProps.modalCount !== this.props.modalCount) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        ariaHidden: this.props.modalCount > 0,
+      });
+    }
   }
 
   /** Will unmount hook */
   componentWillUnmount() {
     UIEvents.removeListener(SHOW_TAB_BAR, this.show);
     UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
-
-    UIEvents.removeListener(MODAL_EVENTS.SHOW, this.ariaHide);
-    UIEvents.removeListener(MODAL_EVENTS.HIDE, this.ariaShow);
 
     updateHeightCSSProperty(false);
   }
@@ -152,18 +152,6 @@ class TabBar extends PureComponent {
     }
     this.setState({
       isVisible: false,
-    });
-  }
-
-  ariaHide = () => {
-    this.setState({
-      ariaHidden: true,
-    });
-  }
-
-  ariaShow = () => {
-    this.setState({
-      ariaHidden: false,
     });
   }
 
