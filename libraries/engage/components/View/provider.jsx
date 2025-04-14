@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import delay from 'lodash/delay';
-import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import { emitScrollEvents } from '@shopgate/pwa-common/streams/view';
-import { MODAL_EVENTS } from '@shopgate/pwa-common/components/ModalContainer';
+import { connect } from 'react-redux';
+import { UIEvents } from '@shopgate/engage/core/events';
+import { getModalCount } from '@shopgate/engage/a11y/selectors';
+import { emitScrollEvents } from '@shopgate/engage/core/streams';
+import { MODAL_EVENTS } from '@shopgate/engage/components';
 import { ViewContext } from './context';
+
+/**
+ * @param {Object} state State
+ * @returns {Object}
+ */
+const mapStateToProps = state => ({
+  modalCount: getModalCount(state),
+});
 
 /**
  * The ViewProvider component.
@@ -12,6 +22,7 @@ import { ViewContext } from './context';
 class ViewProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
+    modalCount: PropTypes.number.isRequired,
   }
 
   /**
@@ -24,7 +35,7 @@ class ViewProvider extends Component {
       top: 0,
       bottom: 0,
       contentRef: { current: null },
-      ariaHidden: false,
+      ariaHidden: props.modalCount > 0,
     };
     // Last view active element
     this.activeElement = null;
@@ -34,6 +45,13 @@ class ViewProvider extends Component {
   componentDidMount() {
     UIEvents.addListener(MODAL_EVENTS.SHOW, this.handleModalShow);
     UIEvents.addListener(MODAL_EVENTS.HIDE, this.handleModalHide);
+  }
+
+  /** @inheritDoc */
+  componentDidUpdate(prevProps) {
+    if (prevProps.modalCount !== this.props.modalCount) {
+      this.setAriaHidden(this.props.modalCount > 0);
+    }
   }
 
   /** @inheritDoc */
@@ -140,4 +158,4 @@ class ViewProvider extends Component {
   }
 }
 
-export default ViewProvider;
+export default connect(mapStateToProps)(ViewProvider);

@@ -86,10 +86,14 @@ class Characteristic extends PureComponent {
 
   closeSheet = () => {
     this.setState({ sheet: false });
+  }
+
+  sheetDidClose = () => {
     if (this.props.charRef && this.props.charRef.current) {
+      // Focus the element that triggered the CharacteristicsSheet after it closes
       this.props.charRef.current.focus();
     }
-  }
+  };
 
   removeHighlight = () => {
     this.setState({ highlight: false });
@@ -164,6 +168,7 @@ class Characteristic extends PureComponent {
           items={values}
           label={translatedLabel}
           onClose={this.closeSheet}
+          onDidClose={this.sheetDidClose}
           onSelect={this.handleItemSelection}
           open={this.state.sheet}
           selectedValue={selected}
