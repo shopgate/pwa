@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import Transition from 'react-transition-group/Transition';
-import Backdrop from '@shopgate/pwa-common/components/Backdrop';
+import { Backdrop } from '@shopgate/engage/components';
+import { ModalStateTracker } from '@shopgate/engage/a11y/components';
 import { UIEvents } from '@shopgate/pwa-core';
 import Divider from './components/Divider';
 import Item from './components/Item';
@@ -63,6 +64,9 @@ class NavDrawer extends Component {
       open: false,
     };
 
+    // Save a reference to the element that triggered the NavDrawer
+    this.triggerElement = null;
+
     UIEvents.addListener(OPEN, this.open);
     UIEvents.addListener(CLOSE, this.close);
   }
@@ -96,6 +100,11 @@ class NavDrawer extends Component {
 
   onExited = () => {
     this.contentRef.current.scrollTop = 0;
+
+    if (this.triggerElement && typeof this.triggerElement.focus === 'function') {
+      // Focus the element that triggered the NavDrawer after it closes
+      this.triggerElement.focus();
+    }
   }
 
   onExiting = () => {
@@ -103,6 +112,9 @@ class NavDrawer extends Component {
   }
 
   open = () => {
+    // Save a reference to the element that triggered the NavDrawer
+    this.triggerElement = document.activeElement;
+
     this.setState({
       open: true,
     });
@@ -132,18 +144,20 @@ class NavDrawer extends Component {
             const ariaHidden = this.props['aria-hidden'] || state === 'exited';
 
             return (
-              <section
-                className={`${drawerStyle} ui-material__nav-drawer`}
-                data-test-id="NavDrawer"
-                style={transition[state]}
-                aria-hidden={ariaHidden}
-                tabIndex="-1"
-              >
-                <Item label="common.close" ref={this.a11yCloseRef} srOnly />
-                <nav className={contentStyle} ref={this.contentRef}>
-                  {this.props.children}
-                </nav>
-              </section>
+              <ModalStateTracker isVisible={this.state.open}>
+                <section
+                  className={`${drawerStyle} ui-material__nav-drawer`}
+                  data-test-id="NavDrawer"
+                  style={transition[state]}
+                  aria-hidden={ariaHidden}
+                  tabIndex="-1"
+                >
+                  <Item label="common.close" ref={this.a11yCloseRef} srOnly />
+                  <nav className={contentStyle} ref={this.contentRef}>
+                    {this.props.children}
+                  </nav>
+                </section>
+              </ModalStateTracker>
             );
           }}
         </Transition>

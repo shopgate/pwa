@@ -35,6 +35,8 @@ export const labelContainer = css({
   display: 'flex',
   flex: 1,
   alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: 12,
 });
 
 export const chevron = css({

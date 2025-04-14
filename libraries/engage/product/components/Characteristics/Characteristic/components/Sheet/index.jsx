@@ -27,6 +27,7 @@ class CharacteristicSheet extends PureComponent {
     fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
     isFetching: PropTypes.bool,
     onClose: PropTypes.func,
+    onDidClose: PropTypes.func,
     onSelect: PropTypes.func,
     productId: PropTypes.string,
     selectedValue: PropTypes.string,
@@ -37,6 +38,7 @@ class CharacteristicSheet extends PureComponent {
     fulfillmentMethods: null,
     onClose() { },
     onSelect() { },
+    onDidClose() { },
     productId: null,
     selectedValue: null,
     contextRef: null,
@@ -99,7 +101,7 @@ class CharacteristicSheet extends PureComponent {
    */
   render() {
     const {
-      items, label, open, selectedValue, contextRef,
+      items, label, open, selectedValue, contextRef, onDidClose,
     } = this.props;
 
     let selectedIndex;
@@ -118,6 +120,7 @@ class CharacteristicSheet extends PureComponent {
             isOpen={open}
             onClose={this.onClose}
             onDidOpen={this.onDidOpen}
+            onDidClose={onDidClose}
           >
             <SheetList className="theme__product__characteristic__sheet">
               {items.map((item, index) => (
