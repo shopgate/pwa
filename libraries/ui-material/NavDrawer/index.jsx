@@ -101,7 +101,7 @@ class NavDrawer extends Component {
   onExited = () => {
     this.contentRef.current.scrollTop = 0;
 
-    if (this.a11yCloseRef.current) {
+    if (this.triggerElement && typeof this.triggerElement.focus === 'function') {
       // Focus the element that triggered the NavDrawer after it closes
       this.triggerElement.focus();
     }
