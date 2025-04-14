@@ -67,7 +67,7 @@ function Section(props) {
   }
 
   return (
-    <section {...rest} ref={contentRef}>
+    <section {...rest} ref={contentRef} aria-labelledby={id}>
       <VisuallyHidden>
         <h2 id={id}>
           <I18n.Text string={title} params={titleParams} />

@@ -13,6 +13,7 @@ exports[`engage > components > view > components > content should render content
 >
   <article
     className="css-ytqxab engage__view__content route_"
+    role="none"
     style={
       Object {
         "overflow": "auto",
