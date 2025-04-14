@@ -25,9 +25,13 @@ export function StoreOpeningHours({ hours, pure }: Props) {
 
   const storeHours = (
     <div className={openingHours}>
-      {getWeekDaysOrder().map(weekDay => (
-        <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
-      ))}
+      <table>
+        <tbody>
+          {getWeekDaysOrder().map(weekDay => (
+            <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 

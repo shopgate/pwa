@@ -5,21 +5,26 @@ import {
   variantDidChange$,
 } from '@shopgate/engage/product';
 import {
-  cartReceived$,
-  fetchCart,
-  cartDidEnter$,
-  getCartItems,
-} from '@shopgate/engage/cart';
-import { userDidLogin$ } from '@shopgate/engage/user';
-import {
+  ToastProvider,
   appDidStart$,
   routeWillEnter$,
   UIEvents,
   getCurrentRoute,
   hex2bin,
   getThemeSettings,
-  getCurrentSearchQuery, appWillInit$, appInitialization,
+  getCurrentSearchQuery,
+  i18n,
+  appWillInit$,
+  appInitialization,
 } from '@shopgate/engage/core';
+import {
+  cartReceived$,
+  fetchCart,
+  cartDidEnter$,
+  getCartItems,
+} from '@shopgate/engage/cart';
+import { userDidLogin$ } from '@shopgate/engage/user';
+
 import {
   receiveFavoritesWhileVisible$,
 } from '@shopgate/pwa-common-commerce/favorites/streams';
@@ -42,6 +47,7 @@ import {
   getIsPending,
   getProductAlternativeLocationParams,
   getProductAlternativeLocations,
+  makeGetLocation,
 } from './selectors';
 import {
   fetchDefaultLocation,
@@ -55,12 +61,14 @@ import {
   submitReservationSuccess$,
   userSearchChanged$,
   storeFinderWillEnter$,
+  preferredLocationDidUpdate$,
   preferredLocationDidUpdateOnPDP$,
   provideAlternativeLocation$,
-  preferredLocationDidUpdateGlobalOnWishlist$, preferredLocationDidUpdate$,
+  preferredLocationDidUpdateGlobalOnWishlist$,
+  storeDetailPageWillEnter$,
 } from './locations.streams';
 import selectLocation from './action-creators/selectLocation';
-import { SET_STORE_FINDER_SEARCH_RADIUS } from './constants';
+import { NEARBY_LOCATIONS_RADIUS, SET_STORE_FINDER_SEARCH_RADIUS, NEARBY_LOCATIONS_LIMIT } from './constants';
 import selectGlobalLocation from './action-creators/selectGlobalLocation';
 
 let initialLocationsResolve;
@@ -103,12 +111,20 @@ function locationsSubscriber(subscribe) {
       }
     });
   });
-
-  subscribe(preferredLocationDidUpdate$, ({ dispatch, getState }) => {
+  subscribe(preferredLocationDidUpdate$, ({
+    dispatch, getState, action, events,
+  }) => {
     const preferredLocation = getPreferredLocation(getState());
-
     if (preferredLocation) {
       dispatch(sendDefaultLocationCode(preferredLocation.code));
+    }
+    const { location = {}, showToast } = action;
+
+    if (showToast) {
+      events.emit(ToastProvider.ADD, {
+        id: 'location.changed',
+        message: i18n.text('location.preferredLocationChanged', { storeName: location?.name }),
+      });
     }
   });
 
@@ -323,7 +339,6 @@ function locationsSubscriber(subscribe) {
     categoryDidBackEnter$.merge(searchDidBackEntered$),
     ({ action, dispatch, getState }) => {
       const state = getState();
-
       if (!showInventoryInLists(state)) {
         return;
       }
@@ -385,6 +400,22 @@ function locationsSubscriber(subscribe) {
   subscribe(appDidStart$, ({ getState }) => {
     // enable inventory in product lists for some users
     setShowInventoryInLists(getState());
+  });
+
+  subscribe(storeDetailPageWillEnter$, async ({ dispatch, getState }) => {
+    const route = getCurrentRoute(getState());
+    const getLocation = makeGetLocation(() => route.params.code);
+    const location = getLocation(getState());
+
+    await dispatch(fetchLocations({
+      geolocation: {
+        longitude: location.longitude,
+        latitude: location.latitude,
+      },
+      limit: NEARBY_LOCATIONS_LIMIT,
+      radius: NEARBY_LOCATIONS_RADIUS,
+
+    }));
   });
 }
 
