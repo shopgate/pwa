@@ -41,83 +41,85 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             >
               locations.hours_details
             </Text>
-            <div
-              className="css-kckwte"
-            >
-              <StoreOpeningHoursLine
-                day="mon"
-                hours="09:00 - 17:00"
-                key="mon"
+            <table>
+              <tbody
+                className="css-kckwte"
               >
-                <tr
-                  aria-label="locations.mon: 09:00 - 17:00"
-                  className="css-9shxm7"
-                  role="row"
-                  tabIndex={0}
+                <StoreOpeningHoursLine
+                  day="mon"
+                  hours="09:00 - 17:00"
+                  key="mon"
                 >
-                  <td
-                    aria-hidden={true}
-                    className="css-1ppc7ry"
+                  <tr
+                    aria-label="locations.mon: 09:00 - 17:00"
+                    className="css-9shxm7"
+                    role="row"
+                    tabIndex={0}
                   >
-                    locations.mon
-                  </td>
-                  <td
-                    aria-hidden={true}
-                  >
-                    09:00 - 17:00
-                  </td>
-                </tr>
-              </StoreOpeningHoursLine>
-              <StoreOpeningHoursLine
-                day="tue"
-                hours={null}
-                key="tue"
-              />
-              <StoreOpeningHoursLine
-                day="wed"
-                hours={null}
-                key="wed"
-              />
-              <StoreOpeningHoursLine
-                day="thu"
-                hours={null}
-                key="thu"
-              />
-              <StoreOpeningHoursLine
-                day="fri"
-                hours={null}
-                key="fri"
-              />
-              <StoreOpeningHoursLine
-                day="sat"
-                hours={null}
-                key="sat"
-              />
-              <StoreOpeningHoursLine
-                day="sun"
-                hours="09:00 - 17:00"
-                key="sun"
-              >
-                <tr
-                  aria-label="locations.sun: 09:00 - 17:00"
-                  className="css-9shxm7"
-                  role="row"
-                  tabIndex={0}
+                    <td
+                      aria-hidden={true}
+                      className="css-1ppc7ry"
+                    >
+                      locations.mon
+                    </td>
+                    <td
+                      aria-hidden={true}
+                    >
+                      09:00 - 17:00
+                    </td>
+                  </tr>
+                </StoreOpeningHoursLine>
+                <StoreOpeningHoursLine
+                  day="tue"
+                  hours={null}
+                  key="tue"
+                />
+                <StoreOpeningHoursLine
+                  day="wed"
+                  hours={null}
+                  key="wed"
+                />
+                <StoreOpeningHoursLine
+                  day="thu"
+                  hours={null}
+                  key="thu"
+                />
+                <StoreOpeningHoursLine
+                  day="fri"
+                  hours={null}
+                  key="fri"
+                />
+                <StoreOpeningHoursLine
+                  day="sat"
+                  hours={null}
+                  key="sat"
+                />
+                <StoreOpeningHoursLine
+                  day="sun"
+                  hours="09:00 - 17:00"
+                  key="sun"
                 >
-                  <td
-                    aria-hidden={true}
-                    className="css-1ppc7ry"
+                  <tr
+                    aria-label="locations.sun: 09:00 - 17:00"
+                    className="css-9shxm7"
+                    role="row"
+                    tabIndex={0}
                   >
-                    locations.sun
-                  </td>
-                  <td
-                    aria-hidden={true}
-                  >
-                    09:00 - 17:00
-                  </td>
-                </tr>
-              </StoreOpeningHoursLine>
-            </div>
+                    <td
+                      aria-hidden={true}
+                      className="css-1ppc7ry"
+                    >
+                      locations.sun
+                    </td>
+                    <td
+                      aria-hidden={true}
+                    >
+                      09:00 - 17:00
+                    </td>
+                  </tr>
+                </StoreOpeningHoursLine>
+              </tbody>
+            </table>
           </Grid.Item>
         </Grid>
       </StoreDetailsLine>

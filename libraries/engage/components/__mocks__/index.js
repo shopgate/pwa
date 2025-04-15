@@ -1,6 +1,7 @@
 import noop from 'lodash/noop';
 /* eslint-disable require-jsdoc */
 import UISharedSheet from '@shopgate/pwa-ui-shared/Sheet';
+import UISharedDiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 
 import SwiperMock from '@shopgate/pwa-common/components/Swiper/__mocks__';
 
@@ -114,6 +115,7 @@ export const PickerUtilize = () => 'PickerUtilize';
 export const Sheet = jest.requireActual('@shopgate/pwa-ui-shared/Sheet').default;
 export const Swiper = SwiperMock;
 export const Backdrop = () => null;
+export const DiscountBadge = UISharedDiscountBadge;
 
 // HELPERS
 export const I18n = {

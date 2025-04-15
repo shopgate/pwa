@@ -68,6 +68,7 @@ const badgesPortal = css({
     left: 'initial',
     width: 'initial',
     marginBottom: 8,
+    paddingLeft: 0,
   },
 }).toString();
 
