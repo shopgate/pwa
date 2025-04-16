@@ -11,10 +11,7 @@ const safebuttonColor = buttonColorContrast > 4 ? buttonColor : themeColors.ligh
 const container = css({
   position: 'fixed',
   height: 'var(--snack-bar-height, 80px)',
-  // Quick workaround for a feature introduced with PWA6 CCP-2358 (hide TabBar on scroll down).
-  // TabBar is position fixed now, to its height is not recognized when footer height is measured.
-  // Without the fix SnackBar would overlap the TabBar.
-  bottom: 'max(var(--footer-height), calc(var(--tabbar-height, 0px) + var(--safe-area-inset-bottom)))',
+  bottom: 'var(--footer-height)',
   transition: 'bottom 0.3s ease',
   overflow: 'hidden',
   zIndex: 6,
