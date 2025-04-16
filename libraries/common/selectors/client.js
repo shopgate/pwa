@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import MobileDetect from 'mobile-detect';
-import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
+import { hasSGJavaScriptBridge, logger } from '@shopgate/pwa-core/helpers';
+import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import { isVersionAtLeast } from '@shopgate/pwa-core/helpers/version';
 import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
 import { hasWebBridge } from '@shopgate/engage/core/helpers/bridge';
@@ -180,6 +181,13 @@ export const getPageInsets = createSelector(
   (clientInformation, model, iOS) => {
     if (iOS) {
       if (!hasSGJavaScriptBridge()) {
+        if (isDev && iOS) {
+          logger.info('%cℹ️ iOS safe area insets simulation is enabled', 'color: blue');
+
+          // Simulate safe area insets in development when user agent is set to iOS device
+          return PAGE_INSETS_IPHONE_X;
+        }
+
         return PAGE_INSETS_ANDROID;
       }
 
