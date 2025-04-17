@@ -177,7 +177,7 @@ export const getHasSimulatedSafeAreaInsets = createSelector(
 );
 
 /**
- * Determines page insets for the current device
+ * Determines page insets for the current device. Used as a fallback for the native insets.
  * @param {Object} state The application state.
  * @returns {Object}
  */

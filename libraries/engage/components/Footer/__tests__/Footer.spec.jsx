@@ -34,13 +34,6 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   getAbsoluteHeight: jest.fn(),
   useScrollContainer: jest.fn().mockReturnValue(false),
 }));
-jest.mock('../SimulatedBottomInset.jsx', () => ({
-  __esModule: true,
-  default: function SimulatedBottomInset() {
-    return null;
-  },
-}));
-
 jest.mock('../helpers', () => ({
   getElementBackgroundColor: jest.fn(),
   handleSafeAreaInsets: jest.fn(),

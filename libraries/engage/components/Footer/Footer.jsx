@@ -10,7 +10,6 @@ import {
   updateFooterHeight,
 } from './helpers';
 import { APP_FOOTER_ID, DATA_IGNORED } from './constants';
-import SimulateBottomInset from './SimulatedBottomInset';
 
 /**
  * The footer component.
@@ -72,7 +71,6 @@ const Footer = ({ children }) => {
       <div id={APP_FOOTER_ID} ref={footerRef}>
         {children}
       </div>
-      <SimulateBottomInset />
     </div>
   );
 };
