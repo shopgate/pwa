@@ -24,6 +24,8 @@ const props = {
   ],
 };
 
+jest.mock('@shopgate/engage/a11y/components');
+
 describe('<BasicDialog />', () => {
   it('should render with minimal props', () => {
     const wrapper = shallow(<BasicDialog actions={[]} />);

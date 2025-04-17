@@ -6,4 +6,7 @@ export default css({
   right: 0,
   bottom: 0,
   left: 0,
+  // Prevents that content behind the backdrop is clickable
+  pointerEvents: 'all',
+  touchAction: 'none',
 });

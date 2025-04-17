@@ -7,6 +7,8 @@ import WriteReviewLink from './index';
 
 const mockedStore = configureStore();
 
+jest.mock('@shopgate/engage/components');
+
 /**
  * Creates component with provided store state.
  * @param {Object} mockedState Mocked stage.
@@ -31,6 +33,6 @@ describe('<WriteReviewLink>', () => {
   it('should render when current product is set', () => {
     component = createComponent(mockedStateWithAll);
     expect(component).toMatchSnapshot();
-    expect(component.find('span').exists()).toBe(true);
+    expect(component.find('Text[string="reviews.button_add"]').exists()).toBe(true);
   });
 });

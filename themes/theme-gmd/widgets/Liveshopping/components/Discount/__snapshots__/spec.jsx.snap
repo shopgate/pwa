@@ -28,28 +28,23 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
       text="liveshopping.discount_badge"
     >
       <div
+        aria-label="cart.discount: liveshopping.discount_badge"
         className="ui-shared__discount-badge"
         data-test-id="liveshopping.discount_badge"
+        tabIndex={-1}
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
+        <Text
+          aria-hidden={true}
           className="css-krn0mb css-b15hhv"
           params={
             Array [
               50,
             ]
           }
-          role={null}
           string="liveshopping.discount_badge"
-          transform={null}
         >
-          <span
-            className="css-krn0mb css-b15hhv"
-            role={null}
-          >
-            liveshopping.discount_badge
-          </span>
-        </Translate>
+          liveshopping.discount_badge
+        </Text>
       </div>
     </DiscountBadge>
   </Portal>

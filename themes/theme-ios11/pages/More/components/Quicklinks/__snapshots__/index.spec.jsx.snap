@@ -82,21 +82,11 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 }
               }
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={Object {}}
-                role={null}
+              <Text
                 string="navigation.more_menu"
-                transform={null}
               >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  navigation.more_menu
-                </span>
-              </Translate>
+                navigation.more_menu
+              </Text>
             </h2>
           </Headline>
           <div
@@ -127,6 +117,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 <Link
                   className="css-1hj8a57"
                   href="/some/url"
+                  role="button"
                 >
                   <Text
                     string="Some Label"
@@ -146,6 +137,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 <Link
                   className="css-1hj8a57"
                   href="/another/url"
+                  role="button"
                 >
                   <Text
                     string="Another Label"

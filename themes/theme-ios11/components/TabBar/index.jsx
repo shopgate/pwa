@@ -2,9 +2,9 @@ import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { UIEvents } from '@shopgate/pwa-core';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
+import {
+  Grid, Portal, KeyboardConsumer,
+} from '@shopgate/engage/components';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -57,6 +57,7 @@ class TabBar extends PureComponent {
   }
 
   static propTypes = {
+    modalCount: PropTypes.number.isRequired,
     path: PropTypes.string.isRequired,
     activeTab: PropTypes.string,
     isEnabled: PropTypes.bool,
@@ -83,6 +84,7 @@ class TabBar extends PureComponent {
   state = {
     isVisible: this.props.isVisible,
     isScrolledOut: false,
+    ariaHidden: false,
   };
 
   /**
@@ -102,6 +104,13 @@ class TabBar extends PureComponent {
   componentDidUpdate(prevProps, prevState) {
     if (this.state.isVisible !== prevState.isVisible) {
       updateHeightCSSProperty(this.state.isVisible);
+    }
+
+    if (prevProps.modalCount !== this.props.modalCount) {
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState({
+        ariaHidden: this.props.modalCount > 0,
+      });
     }
   }
 
@@ -151,7 +160,7 @@ class TabBar extends PureComponent {
    */
   render() {
     const { activeTab, path } = this.props;
-    const { isVisible, isScrolledOut } = this.state;
+    const { isVisible, isScrolledOut, ariaHidden } = this.state;
 
     const props = {
       isVisible,
@@ -173,7 +182,13 @@ class TabBar extends PureComponent {
             <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
             {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
             <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
-              <Grid className={className} data-test-id="tabBar" role="tablist" component="div">
+              <Grid
+                className={className}
+                data-test-id="tabBar"
+                role="tablist"
+                component="div"
+                aria-hidden={ariaHidden}
+              >
                 {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
               </Grid>
             </Portal>

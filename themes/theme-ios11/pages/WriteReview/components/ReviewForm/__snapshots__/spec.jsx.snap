@@ -46,21 +46,12 @@ exports[`<ReviewForm /> should render empty 1`] = `
                 <div
                   className="css-y3mt5b"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
                     className="css-mfy564"
-                    params={Object {}}
-                    role={null}
                     string="reviews.review_form_rate"
-                    transform={null}
                   >
-                    <span
-                      className="css-mfy564"
-                      role={null}
-                    >
-                      reviews.review_form_rate
-                    </span>
-                  </Translate>
+                    reviews.review_form_rate
+                  </Text>
                   <span
                     className={
                       Object {
@@ -80,7 +71,6 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo  ui-shared__rating-stars"
                         data-test-id="ratedStars: 0"
-                        role="text"
                       >
                         <div
                           className="css-4s85e9 rating-stars-empty"
@@ -358,7 +348,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     name="author"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="author"
                     >
                       <Translate
@@ -547,7 +537,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     name="title"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="title"
                     >
                       <Translate
@@ -736,7 +726,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     name="review"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="review"
                     >
                       <Translate
@@ -1029,21 +1019,12 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 <div
                   className="css-y3mt5b"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
                     className="css-mfy564"
-                    params={Object {}}
-                    role={null}
                     string="reviews.review_form_rate"
-                    transform={null}
                   >
-                    <span
-                      className="css-mfy564"
-                      role={null}
-                    >
-                      reviews.review_form_rate
-                    </span>
-                  </Translate>
+                    reviews.review_form_rate
+                  </Text>
                   <span
                     className={
                       Object {
@@ -1063,7 +1044,6 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo  ui-shared__rating-stars"
                         data-test-id="ratedStars: 0"
-                        role="text"
                       >
                         <div
                           className="css-4s85e9 rating-stars-empty"
@@ -1341,7 +1321,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     name="author"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="author"
                     >
                       <Translate
@@ -1530,7 +1510,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     name="title"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="title"
                     >
                       <Translate
@@ -1719,7 +1699,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     name="review"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="review"
                     >
                       <Translate
@@ -2090,21 +2070,12 @@ exports[`<ReviewForm /> should set form data 1`] = `
                 <div
                   className="css-y3mt5b"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
                     className="css-mfy564"
-                    params={Object {}}
-                    role={null}
                     string="reviews.review_form_rate"
-                    transform={null}
                   >
-                    <span
-                      className="css-mfy564"
-                      role={null}
-                    >
-                      reviews.review_form_rate
-                    </span>
-                  </Translate>
+                    reviews.review_form_rate
+                  </Text>
                   <span
                     className={
                       Object {
@@ -2124,7 +2095,6 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo  ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
-                        role="text"
                       >
                         <div
                           className="css-4s85e9 rating-stars-empty"
@@ -2598,7 +2568,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     name="author"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -2787,7 +2757,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     name="title"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -2976,7 +2946,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     name="review"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -3279,21 +3249,12 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                 <div
                   className="css-y3mt5b"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
                     className="css-mfy564"
-                    params={Object {}}
-                    role={null}
                     string="reviews.review_form_rate"
-                    transform={null}
                   >
-                    <span
-                      className="css-mfy564"
-                      role={null}
-                    >
-                      reviews.review_form_rate
-                    </span>
-                  </Translate>
+                    reviews.review_form_rate
+                  </Text>
                   <span
                     className={
                       Object {
@@ -3313,7 +3274,6 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo  ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
-                        role="text"
                       >
                         <div
                           className="css-4s85e9 rating-stars-empty"
@@ -3787,7 +3747,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     name="author"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -3976,7 +3936,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     name="title"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -4165,7 +4125,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     name="review"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -4468,21 +4428,12 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                 <div
                   className="css-y3mt5b"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
                     className="css-mfy564"
-                    params={Object {}}
-                    role={null}
                     string="reviews.review_form_rate"
-                    transform={null}
                   >
-                    <span
-                      className="css-mfy564"
-                      role={null}
-                    >
-                      reviews.review_form_rate
-                    </span>
-                  </Translate>
+                    reviews.review_form_rate
+                  </Text>
                   <span
                     className={
                       Object {
@@ -4502,7 +4453,6 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo  ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
-                        role="text"
                       >
                         <div
                           className="css-4s85e9 rating-stars-empty"
@@ -4976,7 +4926,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     name="author"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -5165,7 +5115,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     name="title"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -5354,7 +5304,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     name="review"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -5657,21 +5607,12 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                 <div
                   className="css-y3mt5b"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
                     className="css-mfy564"
-                    params={Object {}}
-                    role={null}
                     string="reviews.review_form_rate"
-                    transform={null}
                   >
-                    <span
-                      className="css-mfy564"
-                      role={null}
-                    >
-                      reviews.review_form_rate
-                    </span>
-                  </Translate>
+                    reviews.review_form_rate
+                  </Text>
                   <span
                     className={
                       Object {
@@ -5691,7 +5632,6 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo  ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
-                        role="text"
                       >
                         <div
                           className="css-4s85e9 rating-stars-empty"
@@ -6165,7 +6105,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     name="author"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -6354,7 +6294,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     name="title"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -6543,7 +6483,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     name="review"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -6852,21 +6792,12 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                 <div
                   className="css-y3mt5b"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
                     className="css-mfy564"
-                    params={Object {}}
-                    role={null}
                     string="reviews.review_form_rate"
-                    transform={null}
                   >
-                    <span
-                      className="css-mfy564"
-                      role={null}
-                    >
-                      reviews.review_form_rate
-                    </span>
-                  </Translate>
+                    reviews.review_form_rate
+                  </Text>
                   <span
                     className={
                       Object {
@@ -6886,7 +6817,6 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo  ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
-                        role="text"
                       >
                         <div
                           className="css-4s85e9 rating-stars-empty"
@@ -7360,7 +7290,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     name="author"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -7549,7 +7479,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     name="title"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -7738,7 +7668,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     name="review"
                   >
                     <label
-                      className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -8031,21 +7961,12 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 <div
                   className="css-y3mt5b"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
+                  <Text
                     className="css-mfy564"
-                    params={Object {}}
-                    role={null}
                     string="reviews.review_form_rate"
-                    transform={null}
                   >
-                    <span
-                      className="css-mfy564"
-                      role={null}
-                    >
-                      reviews.review_form_rate
-                    </span>
-                  </Translate>
+                    reviews.review_form_rate
+                  </Text>
                   <span
                     className={
                       Object {
@@ -8065,7 +7986,6 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         aria-label="reviews.rating_stars"
                         className="css-13azwyo  ui-shared__rating-stars"
                         data-test-id="ratedStars: 0"
-                        role="text"
                       >
                         <div
                           className="css-4s85e9 rating-stars-empty"
@@ -8350,7 +8270,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     name="author"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="author"
                     >
                       <Translate
@@ -8539,7 +8459,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     name="title"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="title"
                     >
                       <Translate
@@ -8728,7 +8648,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     name="review"
                   >
                     <label
-                      className="css-u7lqu6 css-1fekhao label"
+                      className="css-xrreyh css-1fekhao label"
                       htmlFor="review"
                     >
                       <Translate

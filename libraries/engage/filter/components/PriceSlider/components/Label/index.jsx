@@ -96,7 +96,9 @@ function Label(props) {
         {currencySymbol}
       </span>
       <input
-        type="text"
+        type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
         id="priceMin"
         name="priceMin"
         value={minValue}
@@ -111,7 +113,9 @@ function Label(props) {
         aria-describedby="price-slider-currency-label"
       />
       <input
-        type="text"
+        type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
         id="priceMax"
         name="priceMax"
         value={maxValue}

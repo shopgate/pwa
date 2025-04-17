@@ -3,25 +3,7 @@ import { mount } from 'enzyme';
 import { SheetList } from '@shopgate/engage/components';
 import { Unwrapped as CategoryListWidget } from './index';
 
-jest.mock('@shopgate/pwa-common/components/Link', () => {
-  /**
-   * Mocked LinkComponent
-   * @return {JSX}
-   */
-  const Link = () => <div />;
-  return Link;
-});
-// eslint-disable-next-line require-jsdoc
-function MockedSheetList({ children }) { return children; }
-MockedSheetList.Item = function Item() { return null; };
-
-jest.mock('@shopgate/engage/components', () => ({
-  Image: () => null,
-  ResponsiveContainer: ({ children }) => children,
-  TextLink: ({ children }) => children,
-  SheetList: MockedSheetList,
-}));
-jest.mock('Components/CategoryGrid', () => function CategoryGrid() { return null; });
+jest.mock('@shopgate/engage/components');
 
 describe('<CategoryListWidget />', () => {
   it('should not render the CategoryListWidget', () => {

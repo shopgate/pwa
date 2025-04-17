@@ -1,153 +1,162 @@
-import React, { Component, Children } from 'react';
+import React, {
+  useState, useEffect, useRef,
+  useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
 import classNames from 'classnames';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
+import { FocusTrap } from '@shopgate/engage/a11y/components';
+import { i18n } from '@shopgate/engage/core';
 import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
 import Item from './components/Item';
 import styles from './style';
+import ContextMenuProvider from './ContextMenuProvider';
 
 /**
- * The ContextMenu component.
- */
-class ContextMenu extends Component {
-  static Item = Item;
+ * The Context Menu component.
+  * @param {Object} props The component props.
+  * @param {Object} props.children The menu items.
+  * @param {Object} props.classes The classes for the container and button.
+  * @param {string} props.classes.container The class name for the container.
+  * @param {string} props.classes.button The class name for the button.
+  * @param {boolean} props.disabled Whether the menu is disabled.
+  * @param {boolean} props.isOpened Whether the menu is opened.
+  * @param {Function} props.onStateChange A callback that is called when the menu state changes.
+  * @param {boolean} props.scroll Whether the menu should be scrollable.
+  * @param {boolean} props.showToggle Whether the toggle button should be shown.
+  * @returns {JSX}
+  */
+const ContextMenu = (props) => {
+  const {
+    children, classes, disabled, showToggle, scroll, isOpened, onStateChange,
+  } = props;
 
-  static propTypes = {
-    children: PropTypes.node,
-    classes: PropTypes.shape(),
-    disabled: PropTypes.bool,
-    isOpened: PropTypes.bool,
-    onStateChange: PropTypes.func,
-    scroll: PropTypes.bool,
-    showToggle: PropTypes.bool,
-  };
+  const [active, setActive] = useState(isOpened);
+  const elementRef = useRef(null);
+  const menuRef = useRef(null);
 
-  static defaultProps = {
-    children: null,
-    classes: {
-      container: '',
-      button: '',
-    },
-    disabled: false,
-    showToggle: true,
-    isOpened: null,
-    onStateChange: null,
-    scroll: null,
-  };
-
-  /**
-   * The Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.elementRef = null;
-    this.state = {
-      active: props.isOpened,
-    };
-  }
-
-  /** @inheritDoc */
-  UNSAFE_componentWillReceiveProps({ isOpened }) {
-    if (typeof isOpened === 'boolean' && this.state.active !== isOpened) {
-      this.setState({ active: isOpened });
+  useEffect(() => {
+    if (typeof isOpened === 'boolean' && active !== isOpened) {
+      setActive(isOpened);
     }
-  }
+  }, [active, isOpened]);
 
-  /**
-   * Gets the offset of the DOM element.
-   * @returns {Object}
-   */
-  get offset() {
-    if (this.elementRef) {
-      return this.elementRef.getBoundingClientRect();
+  useEffect(() => {
+    if (active && menuRef.current) {
+      menuRef.current.focus();
     }
-
-    return {
-      top: 0,
-      left: 0,
-    };
-  }
+  }, [active]);
 
   /**
-   * Handles any menu toggling interactions.
-   * @param {Object} [e] Event
-   */
-  handleMenuToggle = (e) => {
+   * Handles the menu toggle.
+   * @param {Object} e The event object.
+  */
+  const handleMenuToggle = useCallback((e) => {
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
-
-    if (this.elementRef) {
-      this.setState(({ active }) => {
-        const state = { active: !active };
-
-        if (this.props.onStateChange) {
-          this.props.onStateChange(state);
+    if (elementRef.current) {
+      setActive((prevActive) => {
+        const newState = !prevActive;
+        if (onStateChange) {
+          onStateChange({ active: newState });
         }
-
-        return state;
+        return newState;
       });
     }
-  };
+  }, [onStateChange]);
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const {
-      children, classes, disabled, showToggle, scroll,
-    } = this.props;
-    const { active } = this.state;
+  const offset = elementRef.current ?
+    elementRef.current.getBoundingClientRect() :
+    {
+      top: 0,
+      left: 0,
+    };
+  const useScroll = typeof scroll === 'boolean' && !!scroll;
 
-    const useScroll = typeof scroll === 'boolean' && !!scroll;
-
-    return (
-      <div
-        data-test-id="contextMenu"
-        ref={(ref) => { this.elementRef = ref; }}
-        className={classNames(styles.container, classes.container, 'ui-shared__context-menu')}
-        aria-hidden
-      >
-        {showToggle && (
-          <button
-            className={classNames(styles.button, classes.button, {
-              [styles.disabled]: disabled,
-            })}
-            onClick={this.handleMenuToggle}
-            disabled={disabled}
-            type="button"
-            aria-hidden
-          >
-            <MoreVertIcon />
-          </button>
-        )}
-        <ConnectedReactPortal isOpened={active}>
+  return (
+    <div
+      data-test-id="contextMenu"
+      ref={elementRef}
+      className={classNames(styles.container, classes.container, 'ui-shared__context-menu')}
+    >
+      {showToggle && (
+        <button
+          className={classNames(styles.button, classes.button, {
+            [styles.disabled]: disabled,
+          })}
+          onClick={handleMenuToggle}
+          disabled={disabled}
+          type="button"
+          aria-label={i18n.text('navigation.open_menu')}
+          aria-haspopup="true"
+          aria-expanded={active}
+          aria-controls="contextMenuDialog"
+        >
+          <MoreVertIcon aria-hidden />
+        </button>
+      )}
+      <ConnectedReactPortal isOpened={active}>
+        <FocusTrap active={active}>
           <div className={styles.overlay}>
-            <Backdrop isVisible level={0} opacity={0} onClick={this.handleMenuToggle} />
-            <Position offset={this.offset}>
-              <div className={classNames(styles.menu, { [styles.scrollable]: useScroll })}>
-                {Children.map(children, (child) => {
-                  if (!child) {
-                    return null;
-                  }
-
-                  return (
-                    React.cloneElement(child, { closeMenu: this.handleMenuToggle })
-                  );
-                })}
-              </div>
+            <Backdrop isVisible level={0} opacity={0} onClick={handleMenuToggle} />
+            <Position offset={offset}>
+              <ContextMenuProvider handleMenuToggle={handleMenuToggle}>
+                <div
+                  className={classNames(styles.menu, { [styles.scrollable]: useScroll })}
+                  ref={menuRef}
+                  tabIndex="-1"
+                  aria-modal="true"
+                  role="dialog"
+                >
+                  {children}
+                  <button
+                    onClick={handleMenuToggle}
+                    className="sr-only"
+                    aria-label={i18n.text('common.close')}
+                    type="button"
+                  >
+                    {i18n.text('common.close')}
+                  </button>
+                </div>
+              </ContextMenuProvider>
             </Position>
           </div>
-        </ConnectedReactPortal>
-      </div>
-    );
-  }
-}
+        </FocusTrap>
+      </ConnectedReactPortal>
+    </div>
+  );
+};
+
+ContextMenu.propTypes = {
+  children: PropTypes.node,
+  classes: PropTypes.shape({
+    container: PropTypes.string,
+    button: PropTypes.string,
+  }),
+  disabled: PropTypes.bool,
+  isOpened: PropTypes.bool,
+  onStateChange: PropTypes.func,
+  scroll: PropTypes.bool,
+  showToggle: PropTypes.bool,
+};
+
+ContextMenu.defaultProps = {
+  children: null,
+  classes: {
+    container: '',
+    button: '',
+  },
+  disabled: false,
+  showToggle: true,
+  isOpened: null,
+  onStateChange: null,
+  scroll: null,
+};
+
+ContextMenu.Item = Item;
 
 export default ContextMenu;

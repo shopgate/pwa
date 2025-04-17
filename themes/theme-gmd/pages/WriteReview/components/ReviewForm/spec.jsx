@@ -19,6 +19,8 @@ jest.mock('@shopgate/pwa-common/helpers/router', () => ({
   getCurrentRoute: jest.fn(),
 }));
 
+jest.mock('@shopgate/engage/components');
+
 /**
  * Creates component with provided store state.
  * @param {Object} mockedState Mocked stage.

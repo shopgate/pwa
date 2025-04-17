@@ -135,7 +135,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -430,7 +429,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -455,6 +453,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             "animationDuration": "300ms",
                           }
                         }
+                        tabIndex={-1}
                       >
                         <Header
                           allowClose={true}
@@ -758,7 +757,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -1048,7 +1047,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -1202,7 +1200,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -1339,7 +1336,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -1666,7 +1662,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -1691,6 +1686,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "animationDuration": "300ms",
                           }
                         }
+                        tabIndex={-1}
                       >
                         <Header
                           allowClose={true}
@@ -1994,7 +1990,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -2111,7 +2107,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -2424,7 +2419,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -2449,6 +2443,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "animationDuration": "300ms",
                           }
                         }
+                        tabIndex={-1}
                       >
                         <Header
                           allowClose={true}
@@ -2752,7 +2747,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -2869,7 +2864,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -2894,6 +2888,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "animationDuration": "300ms",
                           }
                         }
+                        tabIndex={-1}
                       >
                         <Header
                           allowClose={true}
@@ -3197,7 +3192,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={
@@ -3463,7 +3458,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -3752,7 +3746,6 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     className="ui-shared__sheet"
                   >
                     <Drawer
-                      alwaysActive={false}
                       animation={
                         Object {
                           "duration": 300,
@@ -3777,6 +3770,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             "animationDuration": "300ms",
                           }
                         }
+                        tabIndex={-1}
                       >
                         <Header
                           allowClose={true}
@@ -4080,7 +4074,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             >
                               <div
                                 aria-hidden={true}
-                                className="css-hlk66h  common__backdrop"
+                                className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
                                 onClick={[Function]}
                                 style={

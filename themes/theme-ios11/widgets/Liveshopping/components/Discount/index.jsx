@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal, DiscountBadge } from '@shopgate/engage/components';
 import {
   PRODUCT_ITEM_DISCOUNT,
   PRODUCT_ITEM_DISCOUNT_BEFORE,
   PRODUCT_ITEM_DISCOUNT_AFTER,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { i18n } from '@shopgate/engage/core/helpers';
 import styles from './style';
 
 /**
@@ -23,7 +23,7 @@ function LiveshoppingDiscount({ discount, productId }) {
       <Portal name={PRODUCT_ITEM_DISCOUNT_BEFORE} props={props} />
       <Portal name={PRODUCT_ITEM_DISCOUNT} props={props}>
         <DiscountBadge
-          text="liveshopping.discount_badge"
+          text={i18n.text('liveshopping.discount_badge', [discount])}
           discount={discount}
           display="big"
           className={styles}

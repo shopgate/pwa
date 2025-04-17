@@ -1,76 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BasicDialog /> should render as expected 1`] = `
-<div
-  aria-labelledby="basicDialogTitle basicDialogDesc"
-  aria-modal={true}
-  className="css-e1s1x1 ui-ios__base-dialog"
-  data-test-id="basicDialog"
-  role="alertdialog"
->
+<FocusTrap>
   <div
-    className="css-1462t03"
+    aria-labelledby="basicDialogTitle basicDialogDesc"
+    aria-modal={true}
+    className="css-e1s1x1 ui-ios__base-dialog"
+    data-test-id="basicDialog"
+    role="alertdialog"
   >
-    <Title
-      title="Hello World"
-    />
-    <Content
-      content={
-        <div>
-          Hello World
-        </div>
-      }
-    />
+    <div
+      className="css-1462t03"
+    >
+      <Title
+        title="Hello World"
+      />
+      <Content
+        content={
+          <div>
+            Hello World
+          </div>
+        }
+      />
+    </div>
+    <div
+      className="css-1hb9t7t"
+    >
+      <Buttons
+        actions={
+          Array [
+            Object {
+              "action": [MockFunction],
+              "label": "action0",
+            },
+            Object {
+              "action": [MockFunction],
+              "label": "action1",
+            },
+            Object {
+              "action": [MockFunction],
+              "label": "action2",
+            },
+          ]
+        }
+      />
+    </div>
   </div>
-  <div
-    className="css-1hb9t7t"
-  >
-    <Buttons
-      actions={
-        Array [
-          Object {
-            "action": [MockFunction],
-            "label": "action0",
-          },
-          Object {
-            "action": [MockFunction],
-            "label": "action1",
-          },
-          Object {
-            "action": [MockFunction],
-            "label": "action2",
-          },
-        ]
-      }
-    />
-  </div>
-</div>
+</FocusTrap>
 `;
 
 exports[`<BasicDialog /> should render with minimal props 1`] = `
-<div
-  aria-labelledby="basicDialogTitle basicDialogDesc"
-  aria-modal={true}
-  className="css-e1s1x1 ui-ios__base-dialog"
-  data-test-id="basicDialog"
-  role="alertdialog"
->
+<FocusTrap>
   <div
-    className="css-1462t03"
+    aria-labelledby="basicDialogTitle basicDialogDesc"
+    aria-modal={true}
+    className="css-e1s1x1 ui-ios__base-dialog"
+    data-test-id="basicDialog"
+    role="alertdialog"
   >
-    <Title
-      title={null}
-    />
-    <Content
-      content={null}
-    />
+    <div
+      className="css-1462t03"
+    >
+      <Title
+        title={null}
+      />
+      <Content
+        content={null}
+      />
+    </div>
+    <div
+      className="css-1hb9t7t"
+    >
+      <Buttons
+        actions={Array []}
+      />
+    </div>
   </div>
-  <div
-    className="css-1hb9t7t"
-  >
-    <Buttons
-      actions={Array []}
-    />
-  </div>
-</div>
+</FocusTrap>
 `;

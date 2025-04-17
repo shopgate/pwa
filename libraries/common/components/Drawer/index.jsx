@@ -12,7 +12,6 @@ class Drawer extends Component {
    * @type {Object}
    */
   static propTypes = {
-    alwaysActive: PropTypes.bool,
     animation: PropTypes.shape({
       duration: PropTypes.number,
       in: PropTypes.string,
@@ -34,7 +33,6 @@ class Drawer extends Component {
    * @type {Object}
    */
   static defaultProps = {
-    alwaysActive: false,
     className: '',
     children: null,
     isOpen: false,
@@ -55,10 +53,19 @@ class Drawer extends Component {
    */
   constructor(props) {
     super(props);
-
+    this.sheetRef = React.createRef();
     this.state = {
       active: props.isOpen,
     };
+  }
+
+  /** inheritdoc */
+  componentDidMount() {
+    if (this.props.isOpen) {
+      if (this.sheetRef.current) {
+        this.sheetRef.current.focus();
+      }
+    }
   }
 
   /**
@@ -74,6 +81,18 @@ class Drawer extends Component {
         this.setState({ active: true });
       } else if (typeof nextProps.onClose === 'function') {
         nextProps.onClose();
+      }
+    }
+  }
+
+  /**
+   * Set focus for a11y when sheet opens
+   * @param {Object} prevProps The previous component props.
+   */
+  componentDidUpdate(prevProps) {
+    if (!prevProps.isOpen && this.props.isOpen) {
+      if (this.sheetRef.current) {
+        this.sheetRef.current.focus();
       }
     }
   }
@@ -96,7 +115,6 @@ class Drawer extends Component {
    */
   render() {
     const {
-      alwaysActive,
       className,
       children,
       isOpen,
@@ -120,13 +138,23 @@ class Drawer extends Component {
       style.animationDuration = `${animation.duration}ms`;
     }
 
-    return (active || alwaysActive) ? (
+    return (active) ? (
       <div
+        ref={this.sheetRef}
         className={combinedClassName}
         style={style}
-        onAnimationEnd={this.handleAnimationEnd}
+        onAnimationEnd={() => {
+          this.handleAnimationEnd();
+          // clear any residual animation style to fix a11y issue on Android
+          // (focus ring is misaligned)
+          if (this.sheetRef?.style) {
+            this.sheetRef.style.animation = '';
+            this.sheetRef.style.transform = 'none';
+          }
+        }}
         role="dialog"
         aria-modal
+        tabIndex={-1}
       >
         {children}
       </div>

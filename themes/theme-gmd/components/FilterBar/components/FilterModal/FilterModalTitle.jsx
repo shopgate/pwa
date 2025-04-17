@@ -43,7 +43,7 @@ const styles = {
 /**
  * Filter Modal Title
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FilterModalTitle = ({ apply, reset, close }) => (
   <div className={styles.root}>

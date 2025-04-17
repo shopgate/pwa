@@ -50,7 +50,7 @@ exports[`<TextField /> should focus the input 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -234,7 +234,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -418,7 +418,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -602,7 +602,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -786,7 +786,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-16msjt6 css-1fekhao label floating"
+        className="css-xrreyh css-16msjt6 css-1fekhao label floating"
         htmlFor="test-input"
       >
         <Translate
@@ -970,7 +970,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1160,7 +1160,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1344,7 +1344,7 @@ exports[`<TextField /> should show the error message 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1541,7 +1541,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1725,7 +1725,7 @@ exports[`<TextField /> should show the label 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1930,7 +1930,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       name="test-input"
     >
       <label
-        className="css-u7lqu6 css-1fekhao label"
+        className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate

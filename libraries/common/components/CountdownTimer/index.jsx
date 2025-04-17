@@ -139,7 +139,7 @@ class CountdownTimer extends Component {
 
   /**
    * Renders the element.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     return (

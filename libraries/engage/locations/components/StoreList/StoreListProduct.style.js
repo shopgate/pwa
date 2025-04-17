@@ -37,7 +37,7 @@ export const productInfo = css({
 
 export const productInfoLeft = css({
   fontSize: '0.875rem',
-  color: themeColors.shade3,
+  color: themeColors.shade11,
 }).toString();
 
 export const priceInfo = css({

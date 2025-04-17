@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import DiscountBadge from './index';
 
+jest.mock('@shopgate/engage/components');
+
 describe('<DiscountBadge />', () => {
   it('should render the text', () => {
     const wrapper = shallow(<DiscountBadge text="foo" />);

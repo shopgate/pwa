@@ -23,6 +23,7 @@ import product from '@shopgate/pwa-common-commerce/product/reducers';
 import { settings, app } from '@shopgate/engage/core/reducers';
 import locations from '@shopgate/engage/locations/reducers';
 import orders from '@shopgate/engage/orders/reducers';
+import a11y from '@shopgate/engage/a11y/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
 import account from '@shopgate/engage/account/reducers';
@@ -64,6 +65,7 @@ const reducers = combineReducers({
   checkout,
   client,
   app,
+  a11y,
   ...extensions && { extensions: combineReducers(extensions) },
   favorites,
   filter,

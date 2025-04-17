@@ -28,7 +28,7 @@ class RatingStars extends Component {
 
   /**
    * Context types definition.
-   * @type {{i18n: shim}}
+   * @type {{i18n: function}}
    */
   static contextTypes = {
     i18n: PropTypes.func,
@@ -87,7 +87,7 @@ class RatingStars extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { value, isSelectable } = this.props;
@@ -146,10 +146,10 @@ class RatingStars extends Component {
         </div>
       )),
     ];
-    /* eslint-disable jsx-a11y/aria-role */
+
     return (
       <div
-        role="text"
+        role={isSelectable ? undefined : 'img'}
         className={className}
         aria-label={this.getTextualFinal(ratedStars)}
         data-test-id={`ratedStars: ${ratedStars}`}
@@ -162,7 +162,6 @@ class RatingStars extends Component {
         </div>
       </div>
     );
-  /* eslint-enable jsx-a11y/aria-role */
   }
 }
 

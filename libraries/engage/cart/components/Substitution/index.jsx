@@ -10,7 +10,7 @@ import connect from './connector';
 /**
  * Renders the cart reservation card label.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Substitution = ({
   id, onChange, checked, className, label, disabled,

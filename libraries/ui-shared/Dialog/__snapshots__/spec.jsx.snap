@@ -1,12 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
-<Modal
+<ForwardRef
   classes={
     Object {
-      "container": "",
-      "content": "",
-      "layout": "",
+      "container": "ui-shared__dialog-modal",
     }
   }
 >
@@ -24,16 +22,14 @@ exports[`<Dialog /> should render BasicDialog when no message given 1`] = `
     actions={Array []}
     title={null}
   />
-</Modal>
+</ForwardRef>
 `;
 
 exports[`<Dialog /> should render a special dialog 1`] = `
-<Modal
+<ForwardRef
   classes={
     Object {
-      "container": "",
-      "content": "",
-      "layout": "",
+      "container": "ui-shared__dialog-modal",
     }
   }
 >
@@ -59,16 +55,14 @@ exports[`<Dialog /> should render a special dialog 1`] = `
       }
     }
   />
-</Modal>
+</ForwardRef>
 `;
 
 exports[`<Dialog /> should render variant select dialog 1`] = `
-<Modal
+<ForwardRef
   classes={
     Object {
-      "container": "",
-      "content": "",
-      "layout": "",
+      "container": "ui-shared__dialog-modal",
     }
   }
 >
@@ -91,16 +85,14 @@ exports[`<Dialog /> should render variant select dialog 1`] = `
       }
     }
   />
-</Modal>
+</ForwardRef>
 `;
 
 exports[`<Dialog /> should render without props 1`] = `
-<Modal
+<ForwardRef
   classes={
     Object {
-      "container": "",
-      "content": "",
-      "layout": "",
+      "container": "ui-shared__dialog-modal",
     }
   }
 >
@@ -120,5 +112,5 @@ exports[`<Dialog /> should render without props 1`] = `
     params={Object {}}
     title={null}
   />
-</Modal>
+</ForwardRef>
 `;

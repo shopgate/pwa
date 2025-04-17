@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
 import styles from './style';
@@ -15,7 +15,7 @@ import styles from './style';
  * @param {number} props.unitPriceMin The minimum price of possible child products
  * @param {boolean} props.discounted Tells if the pice is discounted
  * @param {Object} context The component context.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const Price = (props, context) => {
   // Added with PWA 6 - CCP-2372
@@ -49,8 +49,6 @@ const Price = (props, context) => {
 
   ariaPrice = ariaPrice.replace('-', '\u2212');
 
-  /* eslint-disable jsx-a11y/aria-role */
-
   /**
    * A unitPriceMin > 0 means, that the product has child products with different prices.
    * The unitPriceMin contains the lowest of these prices and will be
@@ -61,9 +59,9 @@ const Price = (props, context) => {
       className={containerClasses}
       data-test-id={`minPrice: ${props.unitPriceMin} price: ${props.unitPrice} currency: ${props.currency}`}
     >
-      <span role="text" aria-label={__('price.label', { price: ariaPrice })}>
+      <span aria-label={__('price.label', { price: ariaPrice })}>
         {props.unitPriceMin ? (
-          <I18n.Text string="price.from">
+          <I18n.Text aria-hidden string="price.from">
             <I18n.Price
               currency={props.currency}
               fractions={props.fractions}
@@ -86,13 +84,15 @@ const Price = (props, context) => {
         )}
       </span>
       {props.taxDisclaimer && showDisclaimer ? (
-        <div role="text" className={styles.disclaimer} aria-label={__('product.tax_disclaimer')}>
-          {hint || '*'}
+        <div className={styles.disclaimer}>
+          <span aria-hidden>{hint || '*'}</span>
+          <span className="sr-only" aria-label={hint || __('product.tax_disclaimer_aria')}>
+            {__('product.tax_disclaimer_aria')}
+          </span>
         </div>
       ) : null}
     </div>
   );
-  /* eslint-enable jsx-a11y/aria-role */
 };
 
 Price.propTypes = {

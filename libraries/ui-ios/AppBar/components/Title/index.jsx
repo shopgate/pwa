@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './style';
 
 /**
@@ -11,16 +12,20 @@ class AppBarTitle extends PureComponent {
   };
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { title } = this.props;
 
+    if (!title) return null;
+
     return (
       <div
-        className={styles}
+        className={classNames(styles, 'theme__app-bar__title')}
         role="heading"
         aria-level="1"
+        aria-live="polite"
+        tabIndex={-1}
         data-test-id={`title: ${title}`}
         dangerouslySetInnerHTML={{ __html: title }}
       />

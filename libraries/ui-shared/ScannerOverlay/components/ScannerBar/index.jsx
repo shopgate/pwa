@@ -1,17 +1,17 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
-import { SCANNER_BAR } from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
+import { Grid, SurroundPortals } from '@shopgate/engage/components';
+import { SCANNER_BAR } from '@shopgate/engage/scanner/constants';
 import FlashlightButton from './components/FlashlightButton';
 import ScannerInstructions from './components/ScannerInstructions';
 import styles from './style';
 
 /**
- * @param {boolean} flashlightState The on/off state of the flashlight.
- * @param {Function} onToggleFlashlight The toggle event triggered by the user.
- * @returns {JSX}
+ * @param {Object} props The component props.
+ * @param {boolean} props.flashlightState The on/off state of the flashlight.
+ * @param {Function} props.onToggleFlashlight The toggle event triggered by the user.
+ * @returns {React.ReactPortal} A React portal that renders the scanner bar in the AppFooter.
  */
 const ScannerBar = ({ flashlightState, onToggleFlashlight }) => createPortal(
   (

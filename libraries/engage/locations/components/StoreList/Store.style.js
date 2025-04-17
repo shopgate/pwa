@@ -65,24 +65,24 @@ export const storeDetailsAccordion = css({
 }).toString();
 
 export const storeHoursToday = css({
-  color: `var(--color-text-low-emphasis, ${themeColors.gray})`,
+  color: `var(--color-text-medium-emphasis, ${themeColors.gray})`,
 }).toString();
 
 export const address = css({
   display: 'flex',
   flexFlow: 'row nowrap',
-  color: `var(--color-text-low-emphasis, ${themeColors.gray})`,
+  color: `var(--color-text-medium-emphasis, ${themeColors.gray})`,
   marginBottom: 4,
 }).toString();
 
 export const addressIcon = css({
-  color: themeColors.shade7,
+  color: 'var(--color-text-medium-emphasis)',
   fontSize: '1.4rem',
   padding: `${gap.xsmall}px ${gap.big}px 0 0`,
 }).toString();
 
 export const detailsIcon = css({
-  color: themeColors.shade3,
+  color: 'var(--color-text-medium-emphasis)',
   fontSize: '1.4rem',
   padding: `${gap.xsmall}px ${gap.big}px 0 0`,
 }).toString();
@@ -101,7 +101,7 @@ export const details = css({
 
 export const openingHours = css({
   display: 'table',
-  color: 'var(--color-text-low-emphasis)',
+  color: 'var(--color-text-medium-emphasis)',
 }).toString();
 
 export const openingHoursRow = css({
@@ -119,7 +119,7 @@ export const detailsPrimary = css({
 }).toString();
 
 export const detailsSecondary = css({
-  color: `var(--color-text-medium-emphasis, ${themeColors.shade3})`,
+  color: `var(--color-text-medium-emphasis, ${themeColors.shade11})`,
   fontSize: '0.75rem',
 }).toString();
 

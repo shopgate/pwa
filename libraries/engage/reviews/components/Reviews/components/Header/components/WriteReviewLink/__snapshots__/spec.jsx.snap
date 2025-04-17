@@ -17,7 +17,6 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
     productId="foo"
   >
     <div
-      aria-hidden={true}
       className="engage__reviews__write-review-link"
       data-test-id="writeReview"
     >
@@ -101,21 +100,11 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
                           onClick={[Function]}
                           style={null}
                         >
-                          <Translate
-                            acceptPlainTextWithPlaceholders={false}
-                            className={null}
-                            params={Object {}}
-                            role={null}
+                          <Text
                             string="reviews.button_add"
-                            transform={null}
                           >
-                            <span
-                              className={null}
-                              role={null}
-                            >
-                              reviews.button_add
-                            </span>
-                          </Translate>
+                            reviews.button_add
+                          </Text>
                         </div>
                       </Ripple>
                     </button>

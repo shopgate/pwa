@@ -48,7 +48,7 @@ export default function pushOptIn(subscribe) {
    * @param {Object} subscriptionParams Params from the subscription callback
    * @param {string} configKey The "pushOptIn" key to be used
    * @param {Function} increaseCountAction Action to increase the count in Redux for the configKey
-   * @returns {void}
+   * @returns {Promise<void>}
    */
   const showOptInAfterChecks = async ({ dispatch, getState }, configKey, increaseCountAction) => {
     if (!appSupportsPushOptIn()) {

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/aria-role */
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -10,14 +9,14 @@ import {
 } from './GlobalLocationSwitcherBar.style';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const GlobalLocationSwitcherBar = ({ locationName, handleChange, standalone }) => (
   <div className={wrapper}>
     <div className={classNames(inner, { [innerStandalone]: standalone })}>
-      <span role="text">
+      <span aria-label={`${i18n.text('locations.your_current_location.heading')}: ${locationName}`}>
         <span className={heading}>
-          {i18n.text('locations.your_current_location.heading')}
+          {`${i18n.text('locations.your_current_location.heading')}:`}
         </span>
         <span className={name}>{ locationName }</span>
       </span>
@@ -45,4 +44,3 @@ GlobalLocationSwitcherBar.defaultProps = {
 };
 
 export default GlobalLocationSwitcherBar;
-/* eslint-enable jsx-a11y/aria-role */

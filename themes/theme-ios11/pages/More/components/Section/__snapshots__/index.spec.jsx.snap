@@ -28,21 +28,11 @@ exports[`<Section /> should render with a headline and items 1`] = `
         }
       }
     >
-      <Translate
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={Object {}}
-        role={null}
+      <Text
         string="Headline"
-        transform={null}
       >
-        <span
-          className={null}
-          role={null}
-        >
-          Headline
-        </span>
-      </Translate>
+        Headline
+      </Text>
     </h2>
   </Headline>
   <div
@@ -62,6 +52,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       <Link
         className="css-1hj8a57"
         href="/link/one"
+        role="button"
       >
         <Text
           string="Item One"
@@ -80,6 +71,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       <Link
         className="css-1hj8a57"
         href="/link/two"
+        role="button"
       >
         <Text
           string="Item Two"
@@ -122,6 +114,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       <Link
         className="css-1hj8a57"
         href="/link/one"
+        role="button"
       >
         <Text
           string="Item One"
@@ -140,6 +133,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       <Link
         className="css-1hj8a57"
         href="/link/two"
+        role="button"
       >
         <Text
           string="Item Two"

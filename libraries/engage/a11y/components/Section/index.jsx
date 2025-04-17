@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import kebabCase from 'lodash/kebabCase';
 import { I18n } from '@shopgate/engage/components';
+import { VisuallyHidden } from '../index';
 
 /**
  * Checks the section ref has suitable child nodes.
@@ -34,7 +35,7 @@ const hasChildNodes = (ref, headlineId) => {
  * @param {Object} [props.titleParams={}] Additional parameters for the title placeholder.
  * @param {Object} [props.className=null] A class name for the section.
  * @param {NodeList} [props.children=null] Component children.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function Section(props) {
   const {
@@ -67,9 +68,11 @@ function Section(props) {
 
   return (
     <section {...rest} ref={contentRef} aria-labelledby={id}>
-      <h2 id={id} hidden>
-        <I18n.Text string={title} params={titleParams} />
-      </h2>
+      <VisuallyHidden>
+        <h2 id={id}>
+          <I18n.Text string={title} params={titleParams} />
+        </h2>
+      </VisuallyHidden>
       {children}
     </section>
   );

@@ -18,6 +18,8 @@ jest.mock('react-dom', () => ({
   ),
 }));
 
+jest.mock('@shopgate/engage/components');
+
 defaultClientInformation.libVersion = SCANNER_MIN_APP_LIB_VERSION;
 
 describe('<ScannerOverlay />', () => {

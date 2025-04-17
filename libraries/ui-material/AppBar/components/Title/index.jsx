@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './style';
 
 /**
@@ -16,27 +17,25 @@ class AppBarTitle extends PureComponent {
   };
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { onClick, title } = this.props;
 
-    /* eslint-disable jsx-a11y/no-static-element-interactions,
-    jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
+    if (!title) return null;
+
     return (
       <div
-        className={styles}
+        className={classNames(styles, 'theme__app-bar__title')}
         role="heading"
         aria-labelledby="titleLabel"
         aria-level="1"
         data-test-id={`title: ${title}`}
-        tabIndex={0}
+        tabIndex={-1}
       >
-        <span onClick={onClick} id="titleLabel" dangerouslySetInnerHTML={{ __html: title }} />
+        <span role="presentation" onClick={onClick} id="titleLabel" dangerouslySetInnerHTML={{ __html: title }} />
       </div>
     );
-    /* eslint-enable jsx-a11y/no-static-element-interactions,
-    jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-tabindex */
   }
 }
 

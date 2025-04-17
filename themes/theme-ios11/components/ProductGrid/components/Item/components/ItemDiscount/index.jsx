@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_ITEM_DISCOUNT,
   PRODUCT_ITEM_DISCOUNT_AFTER,
@@ -23,7 +23,7 @@ class ItemDiscount extends PureComponent {
   };
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { productId, discount } = this.props;
@@ -34,7 +34,7 @@ class ItemDiscount extends PureComponent {
     }
 
     return (
-      <div className={`${styles} theme__product-grid__item__item-discount`} aria-hidden>
+      <div className={`${styles} theme__product-grid__item__item-discount`}>
         <Portal name={PRODUCT_ITEM_DISCOUNT_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_DISCOUNT} props={props}>
           <DiscountBadge text={`-${discount}%`} />

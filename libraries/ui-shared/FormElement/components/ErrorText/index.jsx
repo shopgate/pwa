@@ -7,10 +7,15 @@ import styles from './style';
 /**
  * Error message component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ErrorText = ({ className, errorText, translate }) => (
-  <div className={classNames(className, styles, 'errorText')}>
+  <div
+    className={classNames(className, styles, 'errorText')}
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
     {translate && <I18n.Text string={errorText} />}
     {!translate && errorText}
   </div>

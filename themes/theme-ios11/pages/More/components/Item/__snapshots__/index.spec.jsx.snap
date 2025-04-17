@@ -34,6 +34,7 @@ exports[`<Item /> should render as a link when an href is passed to the props 1`
   <Link
     className="css-1hj8a57"
     href="/some/link"
+    role="button"
   >
     <Text
       string="Item Label"
