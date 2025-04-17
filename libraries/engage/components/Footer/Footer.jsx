@@ -1,16 +1,16 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { getAbsoluteHeight } from '@shopgate/engage/core/helpers';
 import { SHEET_EVENTS } from '@shopgate/engage/components';
-import {
-  footer,
-} from './Footer.style';
+import * as classes from './Footer.style';
 import {
   handleSafeAreaInsets,
   updateFooterHeight,
 } from './helpers';
 import { APP_FOOTER_ID, DATA_IGNORED } from './constants';
+import SimulateBottomInset from './SimulatedBottomInset';
 
 /**
  * The footer component.
@@ -68,10 +68,11 @@ const Footer = ({ children }) => {
   }, [performFooterUpdate]);
 
   return (
-    <div className={`${footer} engage__footer`}>
+    <div className={classNames(classes.footer, 'engage__footer')}>
       <div id={APP_FOOTER_ID} ref={footerRef}>
         {children}
       </div>
+      <SimulateBottomInset />
     </div>
   );
 };

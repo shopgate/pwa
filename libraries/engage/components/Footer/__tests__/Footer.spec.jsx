@@ -23,7 +23,6 @@ global.MutationObserver = class {
   disconnect() { mutationDisconnectSpy(); }
 };
 /* eslint-enable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */
-
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/core/events', () => ({
   UIEvents: {
@@ -34,6 +33,12 @@ jest.mock('@shopgate/engage/core/events', () => ({
 jest.mock('@shopgate/engage/core/helpers', () => ({
   getAbsoluteHeight: jest.fn(),
   useScrollContainer: jest.fn().mockReturnValue(false),
+}));
+jest.mock('../SimulatedBottomInset.jsx', () => ({
+  __esModule: true,
+  default: function SimulatedBottomInset() {
+    return null;
+  },
 }));
 
 jest.mock('../helpers', () => ({

@@ -170,18 +170,26 @@ export const hasScannerSupport = createSelector(
 );
 
 /**
+ * Creates a selector to check if simulated safe area insets are enabled.
+ */
+export const getHasSimulatedSafeAreaInsets = createSelector(
+  isIos,
+  iOS => isDev && !hasSGJavaScriptBridge() && iOS
+);
+
+/**
  * Determines page insets for the current device
  * @param {Object} state The application state.
  * @returns {Object}
  */
 export const getPageInsets = createSelector(
-  getClientInformation,
   getDeviceModel,
   isIos,
-  (clientInformation, model, iOS) => {
+  getHasSimulatedSafeAreaInsets,
+  (model, iOS, hasSimulatedSafeAreaInsets) => {
     if (iOS) {
       if (!hasSGJavaScriptBridge()) {
-        if (isDev && iOS) {
+        if (hasSimulatedSafeAreaInsets) {
           logger.info('%cℹ️ iOS safe area insets simulation is enabled', 'color: blue');
 
           // Simulate safe area insets in development when user agent is set to iOS device
