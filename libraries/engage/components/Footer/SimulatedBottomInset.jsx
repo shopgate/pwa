@@ -15,7 +15,7 @@ const classes = {
     width: '100%',
     zIndex: 10000000,
     pointerEvents: 'auto',
-    boxSizing: 'border-box',
+    // boxSizing: 'border-box',
     transition: 'background 0.2s ease',
   }),
   insetContainerHighlight: css({
@@ -23,10 +23,11 @@ const classes = {
   }),
   insetHandle: css({
     width: 120,
-    height: 5,
+    height: 3,
     borderRadius: 3,
     background: 'rgba(0, 0, 0, 0.4)',
     border: '1px solid rgba(255, 255, 255, 0.5)',
+    boxSizing: 'content-box',
   }),
 };
 
