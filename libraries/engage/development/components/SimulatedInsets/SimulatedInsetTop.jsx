@@ -1,10 +1,11 @@
 import React, {
   useState, useCallback, useEffect, useMemo,
 } from 'react';
-import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { useSelector, useDispatch } from 'react-redux';
 import { css } from 'glamor';
-import { UIEvents } from '@shopgate/engage/core/events';
+import { getIsInsetHighlightVisible, getStatusBarStyleStorage } from '@shopgate/engage/development/selectors';
+import { toggleInsetHighlight } from '@shopgate/engage/development/action-creators';
 
 const classes = {
   container: css({
@@ -57,15 +58,9 @@ const getTime = () => {
 
 /**
  * Renders a simulated iOS top inset in development.
- * @param {Object} props The component props.
- * @param {boolean} props.highlightInset Whether the inset should be highlighted.
- * @param {Function} props.onSetHighlightInset Toggles if insets should be highlighted.
  * @returns {JSX.Element}
  */
-const SimulatedInsetTop = ({
-  highlightInset,
-  onSetHighlightInset,
-}) => {
+const SimulatedInsetTop = () => {
   // State to hold the current time string for the status bar
   const [time, setTime] = useState(getTime());
 
@@ -78,42 +73,27 @@ const SimulatedInsetTop = ({
     return () => clearInterval(interval);
   }, []);
 
-  // Stete to hold the current iOS status bar style
-  const [statusBarStyle, setStatusBarStyle] = useState('dark');
-
-  // Register event listener for navigation bar style updates
-  useEffect(() => {
-    /**
-     * Handles the update of the navigation bar style.
-     * @param {Object} event The event payload.
-     * @returns {void}
-     */
-    const update = event => setStatusBarStyle(event.statusBarStyle);
-
-    UIEvents.addListener('devInternalUpdateNavigationBarStyle', update);
-
-    return () => {
-      UIEvents.removeListener('devInternalUpdateNavigationBarStyle', update);
-    };
-  }, []);
+  const dispatch = useDispatch();
+  const highlightInset = useSelector(getIsInsetHighlightVisible);
 
   const handleClick = useCallback(() => {
-    onSetHighlightInset(!highlightInset);
-  }, [highlightInset, onSetHighlightInset]);
+    dispatch(toggleInsetHighlight(!highlightInset));
+  }, [dispatch, highlightInset]);
+
+  const { statusBarStyle } = useSelector(getStatusBarStyleStorage);
 
   const containerClasses = useMemo(
-    () => classNames(
-      classes.container,
-      statusBarStyle === 'dark' ? classes.styleDark : classes.styleLight, {
-        [classes.containerHighlight]: highlightInset,
-      }
-    ),
+    () => classNames(classes.container, {
+      [classes.containerHighlight]: highlightInset,
+      [classes.styleDark]: statusBarStyle === 'dark',
+      [classes.styleLight]: statusBarStyle === 'light',
+    }),
     [highlightInset, statusBarStyle]
   );
 
   return (
     <div
-      inert
+      aria-hidden
       role="presentation"
       className={classNames(containerClasses)}
       onClick={handleClick}
@@ -123,11 +103,6 @@ const SimulatedInsetTop = ({
       <div className={classes.info}>5G</div>
     </div>
   );
-};
-
-SimulatedInsetTop.propTypes = {
-  highlightInset: PropTypes.bool.isRequired,
-  onSetHighlightInset: PropTypes.func.isRequired,
 };
 
 export default SimulatedInsetTop;

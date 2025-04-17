@@ -57,6 +57,6 @@ export const updateLegacyNavigationBar = (options = {}) => {
 
   if (isDev) {
     // Dispatch the payload in dev as regular event, so that simulated top inset can adopt the color
-    UIEvents.emit('devInternalUpdateNavigationBarStyle', payload);
+    UIEvents.emit('devInternalUpdateStatusBarStyle', payload);
   }
 };

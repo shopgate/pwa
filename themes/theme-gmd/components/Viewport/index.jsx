@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import Helmet from 'react-helmet';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
-import DevOnlySimulatedInsets from '@shopgate/engage/components/DevOnlySimulatedInsets';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { setPageContentWidth, setViewportHeight } from '@shopgate/engage/styles';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
@@ -66,24 +65,21 @@ const Viewport = ({
           )}
         </Helmet>
       )}
-
       <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
       <div className={`${styles.viewport} theme__viewport`} aria-hidden={hidden} tabIndex="-1">
         <LiveMessenger />
-        <DevOnlySimulatedInsets>
-          <header className={styles.header} id="AppHeader">
-            <ResponsiveContainer webOnly breakpoint=">xs">
-              <WideBar
-                backgroundColor="#fff"
-                textColor="#000"
-              />
-            </ResponsiveContainer>
-          </header>
-          <section className={styles.content} id="AppContent">
-            {children}
-          </section>
-          <Footer />
-        </DevOnlySimulatedInsets>
+        <header className={styles.header} id="AppHeader">
+          <ResponsiveContainer webOnly breakpoint=">xs">
+            <WideBar
+              backgroundColor="#fff"
+              textColor="#000"
+            />
+          </ResponsiveContainer>
+        </header>
+        <section className={styles.content} id="AppContent">
+          {children}
+        </section>
+        <Footer />
         <Search />
         <Navigation entries={a11yNavEntries} />
       </div>
