@@ -1,8 +1,9 @@
 import { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/engage';
-import { UIEvents, useWidgetSettings } from '@shopgate/engage/core';
-import { viewScroll$ } from '@shopgate/pwa-common/streams/view';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
+import { UIEvents } from '@shopgate/engage/core/events';
+import { viewScroll$ } from '@shopgate/engage/core/streams';
 import {
   HIDE_TAB_BAR,
   SHOW_TAB_BAR,

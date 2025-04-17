@@ -1,16 +1,16 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 export default css({
   position: 'absolute',
-  background: `var(--color-secondary, ${colors.accent})`,
-  color: `var(--color-secondary-contrast, ${colors.light})`,
+  background: 'var(--sg-tab-bar-item-badge-background)',
+  color: 'var(--sg-tab-bar-item-badge-color)',
   fontSize: '0.7rem',
   lineHeight: 1.5,
   fontWeight: 'bold',
-  borderRadius: variables.gap.small,
+  borderRadius: 'var(--sg-tab-bar-item-badge-border-radius)',
   height: variables.gap.big,
   top: -variables.gap.small,
   paddingLeft: variables.gap.small / 2,
