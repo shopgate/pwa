@@ -17,7 +17,7 @@ const classes = {
     width: '100%',
     zIndex: 10000000,
     pointerEvents: 'auto',
-    fontSize: '18px',
+    fontSize: '16px',
   }),
   containerHighlight: css({
     background: 'rgba(200, 200, 200, 0.9)',
