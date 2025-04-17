@@ -6,12 +6,12 @@ const backgroundColor = themeColors.lightDark;
 const buttonColor = themeColors.accent;
 const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
 // Button color can be anything. Fall back to white if accent is too dark.
-const safebuttonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
+const safeButtonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
 
 const container = css({
   position: 'fixed',
   height: 'var(--snack-bar-height, 80px)',
-  bottom: 'var(--footer-height)',
+  bottom: 'max(var(--footer-height), var(--safe-area-inset-bottom))',
   transition: 'bottom 0.3s ease',
   overflow: 'hidden',
   zIndex: 6,
@@ -52,7 +52,7 @@ const label = css({
 }).toString();
 
 const button = css({
-  color: safebuttonColor,
+  color: safeButtonColor,
   fontWeight: 500,
   height: 36,
   letterSpacing: 'inherit',
