@@ -3,9 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {
-  KeyboardConsumer, SurroundPortals,
-} from '@shopgate/engage/components';
+import { KeyboardConsumer, SurroundPortals } from '@shopgate/engage/components';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { useWidgetSettings } from '@shopgate/engage/core';
@@ -16,9 +14,9 @@ import {
   HIDE_TAB_BAR,
 } from './constants';
 import connect from './connector';
+import { useTabBarScrollObserver } from './hooks';
 import * as classes from './style';
 import visibleTabs from './tabs';
-import ScrollTabBar from './ScrollTabBar';
 
 /**
  * Renders the action for a given tab configuration.
@@ -57,6 +55,8 @@ const TabBar = ({
   path,
   modalCount,
 }) => {
+  useTabBarScrollObserver(isVisibleProp);
+
   const {
     transition = 'fade',
     variant = 'default',
@@ -218,42 +218,24 @@ const TabBar = ({
   ]);
 
   return (
-    <>
-      <KeyboardConsumer>
-        {({ open }) => !open && (
-          <SurroundPortals portalName={TAB_BAR} portalProps={portalProps}>
-            <div className={tabBarClasses.container} onTransitionEnd={handleTransitionEnd}>
-              <div
-                ref={tabBarRef}
-                className={tabBarClasses.component}
-                data-test-id="tabBar"
-                role="tablist"
-                aria-hidden={ariaHidden}
-              >
-                {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
-              </div>
-            </div>
-          </SurroundPortals>
-        )}
-      </KeyboardConsumer>
-      <ScrollTabBar />
-    </>
+    <KeyboardConsumer>
+      {({ open }) => !open && (
+      <SurroundPortals portalName={TAB_BAR} portalProps={portalProps}>
+        <div className={tabBarClasses.container} onTransitionEnd={handleTransitionEnd}>
+          <div
+            ref={tabBarRef}
+            className={tabBarClasses.component}
+            data-test-id="tabBar"
+            role="tablist"
+            aria-hidden={ariaHidden}
+          >
+            {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+          </div>
+        </div>
+      </SurroundPortals>
+      )}
+    </KeyboardConsumer>
   );
-};
-
-/**
- * Shows the TabBar
- * @param {boolean} [force=false] When set to TRUE the TabBar wil be shown even if not enabled
- */
-TabBar.show = (force = false) => {
-  UIEvents.emit(SHOW_TAB_BAR, { force });
-};
-
-/**
- * Hides the TabBar
- */
-TabBar.hide = () => {
-  UIEvents.emit(HIDE_TAB_BAR);
 };
 
 TabBar.propTypes = {
@@ -270,4 +252,21 @@ TabBar.defaultProps = {
   isEnabled: true,
 };
 
-export default connect(memo(TabBar));
+const ConnectedTabBar = connect(memo(TabBar));
+
+/**
+ * Shows the TabBar
+ * @param {boolean} [force=false] When set to TRUE the TabBar wil be shown even if not enabled
+ */
+ConnectedTabBar.show = (force = false) => {
+  UIEvents.emit(SHOW_TAB_BAR, { force });
+};
+
+/**
+ * Hides the TabBar
+ */
+ConnectedTabBar.hide = () => {
+  UIEvents.emit(HIDE_TAB_BAR);
+};
+
+export default ConnectedTabBar;

@@ -10,14 +10,18 @@ export const eventsSubject = new Subject();
 
 /**
  * Cold observable for View scroll events
+ * Use this to listen for scroll-related changes in any part of the app.
  * @type {Observable}
  */
 export const viewScroll$ = Observable.from(eventsSubject);
 
 /**
- * @param {HTMLElement} element .
- * @param {number} throttleTime .
- * @returns {Observable}
+ * Sets up throttled scroll event stream for a given element or window.
+ * Emits enriched scroll info such as direction and distance.
+ *
+ * @param {HTMLElement|Window} element - DOM node or window to observe
+ * @param {number} throttleTime - Time in ms to throttle scroll events
+ * @returns {Observable} - Observable emitting scroll-related data
  */
 export const emitScrollEvents = (element, throttleTime = 250) => {
   // In rare situation during unmounting a react dom ref might
@@ -27,6 +31,13 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
   }
 
   let previousScrollTop = 0;
+  // Tracks scroll direction ('up' or 'down')
+  let lastDirection = null;
+  // Minimum distance to consider a real scroll
+  const minDelta = 20;
+  // Pixels from bottom to consider "at bottom"
+  const bottomThreshold = 20;
+
   const scroll$ = Observable
     .fromEvent(element, 'scroll')
     .throttleTime(throttleTime, asyncScheduler, {
@@ -34,21 +45,77 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
       trailing: true,
     })
     .map((event) => {
-      const scrollTop = element.scrollY || element.scrollTop || 0;
+      // Determine if element is the window/document or a scrollable container
+      const isWindow =
+        element === window ||
+        element === document.body ||
+        element === document.documentElement;
+
+      // Get current scroll position
+      const scrollTop = isWindow
+        ? window.scrollY || window.pageYOffset || 0
+        : element.scrollTop;
+
+      // Compute max scroll value
+      const maxScrollTop = isWindow
+        ? Math.max(
+          document.documentElement.scrollHeight,
+          document.body.scrollHeight
+        ) - window.innerHeight
+        : element.scrollHeight - element.clientHeight;
+
+      // Determine whether we're at (or very near) the bottom
+      const nearBottom = scrollTop >= maxScrollTop - bottomThreshold;
+
+      // Compute scroll delta and direction
+      const delta = scrollTop - previousScrollTop;
+      const isScrollingDown = delta > 0;
+      const isScrollingUp = delta < 0;
+
+      let direction = lastDirection;
+      if (isScrollingDown) {
+        direction = 'down';
+      } else if (isScrollingUp) {
+        direction = 'up';
+      }
+
+      // Detect downward scroll beyond threshold and not at bottom
+      const scrollDown = isScrollingDown &&
+        delta > minDelta &&
+        !nearBottom;
+
+      // Detect upward scroll beyond threshold
+      const scrollUp = isScrollingUp &&
+        Math.abs(delta) > minDelta;
+
+      // Prevent false triggers when iOS bounces at bottom
+      const bounced = lastDirection === 'down' &&
+        direction === 'up' &&
+        nearBottom;
+
+      // Only emit event if it’s not a bounce
+      const scrolled = (scrollDown || scrollUp) && !bounced;
+
+      // Remember direction and position for next event
+      lastDirection = direction;
+
       return {
         event,
         scrollTop,
         previousScrollTop,
-        scrolled: previousScrollTop !== scrollTop,
-        scrollOut: previousScrollTop < scrollTop,
-        scrollIn: previousScrollTop >= scrollTop,
+        scrolled,
+        scrollUp,
+        scrollDown: scrollDown && !bounced,
+        // Kept for backward compatibility
+        scrollOut: scrollDown && !bounced,
+        scrollIn: scrollUp,
       };
     }).do((event) => {
-      // Remember scroll position for next event
+      // Store current scrollTop for next event comparison
       previousScrollTop = event.scrollTop;
     });
 
-  // Copy all events to viewScroll$ stream
+  // Pipe scroll data into the shared stream for global consumers
   scroll$.subscribe(viewScroll$);
 
   return scroll$;
