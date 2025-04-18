@@ -14,6 +14,10 @@ jest.mock('@shopgate/engage/core', () => ({
   withForwardedRef: jest.fn(),
   isIOSTheme: jest.fn(() => false),
 }));
+jest.mock('@shopgate/engage/core/hooks/useScrollDirectionChange', () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
 jest.mock('../../../selectors/product', () => ({
   makeGetProductProperties: jest.fn(() => jest.fn()),
 }));

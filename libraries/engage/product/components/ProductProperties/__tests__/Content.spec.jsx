@@ -7,6 +7,10 @@ import Content from '../Content';
 jest.mock('@shopgate/engage/core/helpers', () => ({
   isBeta: jest.fn(),
 }));
+jest.mock('@shopgate/engage/core/hooks/useScrollDirectionChange', () => ({
+  __esModule: true,
+  default: jest.fn(),
+}));
 
 jest.mock('../GroupedProperties', () => function GroupedProperties() { return 'GroupedProperties'; });
 
