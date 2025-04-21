@@ -19,11 +19,11 @@ const container = css({
 }).toString();
 
 const regular = css({
-  color: 'var(--sg-tab-bar-item-default-color)',
+  color: 'var(--tab-bar-item-default-color)',
 }).toString();
 
 const highlighted = css({
-  color: 'var(--sg-tab-bar-item-highlighted-color)',
+  color: 'var(--tab-bar-item-highlighted-color)',
 }).toString();
 
 const label = css({

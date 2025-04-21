@@ -1,28 +1,31 @@
 import { css } from 'glamor';
 import { themeShadows, themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
+css.global('html', {
+  '--tab-bar-min-height': `${themeVariables.tabBar.height}px`,
+  '--tab-bar-background': themeColors.lightOverlay,
+  '--tab-bar-box-shadow': themeShadows.tabBar,
+
+  '--tab-bar-floating-min-height': 'var(--tab-bar-min-height)',
+  '--tab-bar-floating-background': 'var(--tab-bar-background)',
+  '--tab-bar-floating-border-radius': '16px',
+  '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.28)',
+
+  '--tab-bar-item-default-color': themeColors.shade11,
+  '--tab-bar-item-highlighted-color': `var(--color-secondary, ${themeColors.accent})`,
+
+  '--tab-bar-item-badge-color': `var(--color-secondary-contrast, ${themeColors.light})`,
+  '--tab-bar-item-badge-background': `var(--color-secondary, ${themeColors.accent})`,
+  '--tab-bar-item-badge-border-radius': `${themeVariables.gap.small}px`,
+  '--tab-bar-item-badge-top': `-${themeVariables.gap.small}px`,
+  '--tab-bar-item-badge-left': 'calc(50% + 20px)',
+});
+
 export const hidden = css({
   '&&': {
     display: 'none',
   },
 }).toString();
-
-export const customProperties = css({
-  '--sg-tab-bar-min-height': `${themeVariables.tabBar.height}px`,
-  '--sg-tab-bar-background': themeColors.lightOverlay,
-  '--sg-tab-bar-box-shadow': themeShadows.tabBar,
-
-  '--sg-tab-bar-floating-min-height': 'var(--sg-tab-bar-min-height)',
-  '--sg-tab-bar-floating-background': 'var(--sg-tab-bar-background)',
-  '--sg-tab-bar-floating-border-radius': '16px',
-  '--sg-tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.28)',
-
-  '--sg-tab-bar-item-default-color': themeColors.shade11,
-  '--sg-tab-bar-item-highlighted-color': `var(--color-secondary, ${themeColors.accent})`,
-  '--sg-tab-bar-item-badge-color': `var(--color-secondary-contrast, ${themeColors.light})`,
-  '--sg-tab-bar-item-badge-background': `var(--color-secondary, ${themeColors.accent})`,
-  '--sg-tab-bar-item-badge-border-radius': `${themeVariables.gap.small}px`,
-});
 
 export const tabBarContainer = css({
   display: 'flex',
@@ -30,6 +33,7 @@ export const tabBarContainer = css({
   position: 'fixed',
   bottom: 0,
   zIndex: 10,
+  justifyContent: 'center',
 });
 
 export const tabBarContainerFloating = css({
@@ -39,31 +43,22 @@ export const tabBarContainerFloating = css({
 export const tabBar = css({
   display: 'flex',
   width: '100%',
-  minHeight: 'calc(var(--sg-tab-bar-min-height) + var(--safe-area-inset-bottom))',
+  minHeight: 'calc(var(--tab-bar-min-height) + var(--safe-area-inset-bottom))',
   paddingBottom: 'var(--safe-area-inset-bottom)',
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
-  boxShadow: 'var(--sg-tab-bar-box-shadow)',
-  background: 'var(--sg-tab-bar-background)',
-  ':before': {
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    content: '""',
-    zIndex: -1,
-  },
+  boxShadow: 'var(--tab-bar-box-shadow)',
+  background: 'var(--tab-bar-background)',
 });
 
 export const tabBarFloating = css({
-  background: 'var(--sg-tab-bar-floating-background)',
-  minHeight: 'var(--sg-tab-bar-floating-min-height)',
-  padding: '8px 0',
+  background: 'var(--tab-bar-floating-background)',
+  minHeight: 'var(--tab-bar-floating-min-height)',
+  padding: '4px 0',
   marginBottom: 'max(16px, var(--safe-area-inset-bottom))',
-  borderRadius: 'var(--sg-tab-bar-floating-border-radius)',
-  boxShadow: 'var(--sg-tab-bar-floating-box-shadow)',
+  borderRadius: 'var(--tab-bar-floating-border-radius)',
+  boxShadow: 'var(--tab-bar-floating-box-shadow)',
 });
 
 export const transitions = {

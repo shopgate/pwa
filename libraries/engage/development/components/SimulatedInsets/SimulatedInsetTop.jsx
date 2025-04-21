@@ -21,13 +21,16 @@ const classes = {
     fontSize: '16px',
   }),
   containerHighlight: css({
-    background: 'rgba(200, 200, 200, 0.9)',
+    background: 'rgba(255, 0, 0, 0.5)',
   }),
   styleLight: css({
     color: 'white',
   }),
   styleDark: css({
     color: 'black',
+  }),
+  styleNone: css({
+    color: 'transparent',
   }),
   info: css({
     flex: 1,
@@ -87,6 +90,7 @@ const SimulatedInsetTop = () => {
       [classes.containerHighlight]: highlightInset,
       [classes.styleDark]: statusBarStyle === 'dark',
       [classes.styleLight]: statusBarStyle === 'light',
+      [classes.styleNone]: statusBarStyle === 'none',
     }),
     [highlightInset, statusBarStyle]
   );

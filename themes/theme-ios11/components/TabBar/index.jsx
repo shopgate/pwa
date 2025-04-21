@@ -59,7 +59,7 @@ const TabBar = ({
 
   const {
     transition = 'fade',
-    variant = 'default',
+    variant = 'floating',
     hideOnScroll = false,
   } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
@@ -175,7 +175,6 @@ const TabBar = ({
   const tabBarClasses = useMemo(() => {
     // Create class list for the tab bar container
     const container = classNames(
-      classes.customProperties,
       'theme__tab-bar__container',
       classes.tabBarContainer,
       transitionClasses.base,

@@ -19,7 +19,7 @@ const classes = {
     transition: 'background 0.2s ease',
   }),
   containerHighlight: css({
-    background: 'rgba(200, 200, 200, 0.9)',
+    background: 'rgba(255, 0, 0, 0.5)',
   }),
   handle: css({
     width: 120,

@@ -1,4 +1,5 @@
 import { produce } from 'immer';
+import { isDev } from '@shopgate/engage/core/helpers';
 import {
   DEVELOPMENT_TOOLS_TOGGLE_INSETS,
   DEVELOPMENT_TOOLS_TOGGLE_INSET_HIGHLIGHT,
@@ -25,6 +26,10 @@ const initialState = {
 export default function settingsReducer(state = initialState, action) {
   /* eslint-disable no-param-reassign */
   const producer = produce(/** @param {DevToolsSettingsState} draft The draft */ (draft) => {
+    if (!isDev) {
+      return;
+    }
+
     switch (action.type) {
       case DEVELOPMENT_TOOLS_TOGGLE_INSETS: {
         draft.showInsets = action.visible;
