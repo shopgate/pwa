@@ -16,6 +16,12 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 jest.mock('@shopgate/pwa-common/selectors/history', () => ({
   getSortOrder: jest.fn(),
 }));
+jest.mock('../connector', () => ({
+  __esModule: true,
+  default: function Connector(Component) {
+    return props => <Component {...props} />;
+  },
+}));
 jest.mock('@shopgate/engage/components');
 
 describe('engage > components > view > components > content', () => {
@@ -28,7 +34,7 @@ describe('engage > components > view > components > content', () => {
       </Content>
     ), { disableLifecycleMethods: true })
       // Dive through Route context and into render component
-      .dive().dive();
+      .dive().dive().dive();
 
     expect(wrapper).toMatchSnapshot();
   });

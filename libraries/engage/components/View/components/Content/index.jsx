@@ -127,7 +127,7 @@ class ViewContent extends Component {
       overflow,
       // On screens with enable TabBar we need to consider the safe-area-bottom inset, to that
       // content is not overlapped by the non clickable space.
-      paddingBottom: `calc(max(var(--tabbar-height), ${isTabBarEnabled ? 'var(--safe-area-inset-bottom)' : 0}) + ${keyboardHeight}px)`,
+      paddingBottom: `calc(max(var(--tabbar-height), ${isTabBarEnabled ? 'var(--safe-area-inset-bottom)' : '0px'}) + ${keyboardHeight}px)`,
     };
   }
 
