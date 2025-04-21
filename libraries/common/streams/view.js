@@ -34,9 +34,11 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
   // Tracks scroll direction ('up' or 'down')
   let lastDirection = null;
   // Minimum distance to consider a real scroll
-  const minDelta = 20;
+  const minDelta = 10;
   // Pixels from bottom to consider "at bottom"
   const bottomThreshold = 20;
+  // Prevent scrollUp triggering in this zone
+  const deadZoneThreshold = 30;
 
   const scroll$ = Observable
     .fromEvent(element, 'scroll')
@@ -52,7 +54,7 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
         element === document.documentElement;
 
       // Get current scroll position
-      const scrollTop = isWindow
+      const rawScrollTop = isWindow
         ? window.scrollY || window.pageYOffset || 0
         : element.scrollTop;
 
@@ -64,39 +66,45 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
         ) - window.innerHeight
         : element.scrollHeight - element.clientHeight;
 
-      // Determine whether we're at (or very near) the bottom
-      const nearBottom = scrollTop >= maxScrollTop - bottomThreshold;
+      // Clamp scrollTop to prevent overshoot from iOS bounce
+      const scrollTop = Math.min(rawScrollTop, maxScrollTop);
 
-      // Compute scroll delta and direction
       const delta = scrollTop - previousScrollTop;
       const isScrollingDown = delta > 0;
       const isScrollingUp = delta < 0;
 
+      // Determine direction
       let direction = lastDirection;
-      if (isScrollingDown) {
-        direction = 'down';
-      } else if (isScrollingUp) {
-        direction = 'up';
-      }
+      if (isScrollingDown) direction = 'down';
+      else if (isScrollingUp) direction = 'up';
 
-      // Detect downward scroll beyond threshold and not at bottom
+      // Are we near the bottom of the scrollable area?
+      const nearBottom = scrollTop >= maxScrollTop - bottomThreshold;
+      const inDeadZone = scrollTop >= maxScrollTop - deadZoneThreshold;
+
+      // Detect downward scroll beyond threshold and not near bottom
       const scrollDown = isScrollingDown &&
         delta > minDelta &&
         !nearBottom;
 
       // Detect upward scroll beyond threshold
-      const scrollUp = isScrollingUp &&
+      let scrollUp = isScrollingUp &&
         Math.abs(delta) > minDelta;
 
-      // Prevent false triggers when iOS bounces at bottom
+      // Suppress scrollUp events in dead zone to avoid iOS bounce
+      if (scrollUp && inDeadZone && direction === 'up') {
+        scrollUp = false;
+      }
+
+      // Detect a bounce-back: scrollDown followed by a quick scrollUp at the bottom
       const bounced = lastDirection === 'down' &&
         direction === 'up' &&
         nearBottom;
 
-      // Only emit event if it’s not a bounce
+      // Final scrolled flag — only emit if meaningful and not a bounce
       const scrolled = (scrollDown || scrollUp) && !bounced;
 
-      // Remember direction and position for next event
+      // Update direction and scrollTop memory
       lastDirection = direction;
 
       return {
@@ -106,9 +114,9 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
         scrolled,
         scrollUp,
         scrollDown: scrollDown && !bounced,
-        // Kept for backward compatibility
-        scrollOut: scrollDown && !bounced,
-        scrollIn: scrollUp,
+        direction,
+        scrollOut: scrollDown && !bounced, // legacy compatibility
+        scrollIn: scrollUp, // legacy compatibility
       };
     }).do((event) => {
       // Store current scrollTop for next event comparison

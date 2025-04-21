@@ -6,9 +6,9 @@ import { viewScroll$ } from '@shopgate/engage/core/streams';
  * @property {Event} event The original scroll event object
  * @property {number} scrollTop Current vertical scroll position
  * @property {number} previousScrollTop Previous scrollTop value
- * @property {boolean} scrolled True if scrollTop changed from previous
  * @property {boolean} scrollDown True if scrolling down
  * @property {boolean} scrollUp True if scrolling up
+ * @property {'up' | 'down' | null} direction Scroll direction
  */
 
 /**
@@ -19,22 +19,17 @@ import { viewScroll$ } from '@shopgate/engage/core/streams';
 
 /**
  * A scroll hook that detects scroll direction changes (up/down) and
- * triggers the appropriate callbacks. It is commonly used to show or
- * hide UI elements like toolbars or tab bars based on scroll behavior.
- *
- * KEY BEHAVIOR:
- * - Fires `onScrollDown` when scroll direction changes to "down"
- *   AND scrollTop is equal to or greater than `offset`
- * - Fires `onScrollUp` when direction changes to "up"
- * - Optionally fires only on direction change (default), or on every scroll
+ * triggers the appropriate callbacks. Commonly used to show/hide
+ * UI elements based on scroll behavior.
  *
  * @param {Object} params The hook parameters
- * @param {boolean} params.enabled Whether the hook is active and should listen to scroll
- * @param {number} [params.offset=100] Minimum scrollTop required to trigger onScrollDown
+ * @param {boolean} params.enabled Whether the hook is active
+ * @param {number} [params.offset=100] ScrollTop threshold for down scroll triggers. When set,
+ * onScrollDown will first be triggered when the scroll position is greater than this value.
  * @param {boolean} [params.onlyFireOnDirectionChange=true]
- *   If true, callbacks only fire once per direction change
- * @param {ScrollCallback} [params.onScrollUp] Called when scrolling up (direction = "up")
- * @param {ScrollCallback} [params.onScrollDown] Called when scrolling down past offset
+ *   If true, callbacks fire only once per direction change
+ * @param {ScrollCallback} [params.onScrollUp] Triggered on scroll up
+ * @param {ScrollCallback} [params.onScrollDown] Triggered on scroll down past offset
  */
 function useScrollDirectionChange({
   enabled,
@@ -43,86 +38,66 @@ function useScrollDirectionChange({
   onScrollUp,
   onScrollDown,
 }) {
-  // Track the last known scroll direction ('up' or 'down')
   const lastDirectionRef = useRef(null);
-
-  // Track whether onScrollDown has already fired in the current downward scroll session
   const downTriggeredRef = useRef(false);
-
-  // Track whether onScrollUp has already fired in the current upward scroll session
   const upTriggeredRef = useRef(false);
 
   /**
    * Scroll event handler.
-   * Determines direction and triggers the appropriate callback
-   * based on direction change and offset.
+   * Uses `event.direction` and triggers callbacks accordingly.
    */
-  const handleScroll = useCallback(/** @param {ViewScrollEvent} event Event object */(event) => {
-    if (!enabled || !event.scrolled) return;
+  const handleScroll = useCallback(
+    /** @param {ViewScrollEvent} event The event */
+    (event) => {
+      if (!enabled || !event.scrolled || !event.direction) return;
 
-    const { scrollDown, scrollUp, scrollTop } = event;
+      const { scrollTop, direction } = event;
 
-    // Determine scroll direction from event flags
-    let currentDirection = null;
-    if (scrollDown) currentDirection = 'down';
-    else if (scrollUp) currentDirection = 'up';
+      const prevDirection = lastDirectionRef.current;
+      const directionChanged = direction !== prevDirection;
 
-    if (!currentDirection) return;
-
-    const previousDirection = lastDirectionRef.current;
-    const directionChanged = currentDirection !== previousDirection;
-
-    // Update last direction ref
-    if (directionChanged) {
-      lastDirectionRef.current = currentDirection;
-
-      // Reset "already fired" flags when direction changes
-      if (currentDirection === 'down') downTriggeredRef.current = false;
-      if (currentDirection === 'up') upTriggeredRef.current = false;
-    }
-
-    // 🔽 Scroll down logic
-    if (currentDirection === 'down') {
-      // Fire if:
-      // - direction just changed
-      // - or repeat firing is allowed
-      // - and we're past the offset
-      const shouldFire =
-        (!onlyFireOnDirectionChange || directionChanged || !downTriggeredRef.current) &&
-        scrollTop >= offset;
-
-      if (shouldFire && typeof onScrollDown === 'function') {
-        downTriggeredRef.current = true;
-        // We need to remove some deprecated / internal properties from the event
-        const {
-          scrollIn, scrollOut, scrolled, ...publicEventProps
-        } = event;
-        onScrollDown(publicEventProps);
+      // Store current direction and reset flags if direction changed
+      if (directionChanged) {
+        lastDirectionRef.current = direction;
+        if (direction === 'down') downTriggeredRef.current = false;
+        if (direction === 'up') upTriggeredRef.current = false;
       }
-    }
 
-    // 🔼 Scroll up logic
-    if (currentDirection === 'up') {
-      // Fire if:
-      // - direction just changed
-      // - or repeat firing is allowed
-      const shouldFire =
-        !onlyFireOnDirectionChange || directionChanged || !upTriggeredRef.current;
+      // 🔽 Handle downward scroll
+      if (direction === 'down') {
+        const shouldFire =
+          (!onlyFireOnDirectionChange || directionChanged || !downTriggeredRef.current) &&
+          scrollTop >= offset;
 
-      if (shouldFire && typeof onScrollUp === 'function') {
-        upTriggeredRef.current = true;
-        // We need to remove some deprecated / internal properties from the event
-        const {
-          scrollIn, scrollOut, scrolled, ...publicEventProps
-        } = event;
-        onScrollUp(publicEventProps);
+        if (shouldFire && typeof onScrollDown === 'function') {
+          downTriggeredRef.current = true;
+
+          // Strip internal/legacy properties
+          const {
+            scrollIn, scrollOut, scrolled, ...publicEvent
+          } = event;
+          onScrollDown(publicEvent);
+        }
       }
-    }
-  }, [enabled, offset, onlyFireOnDirectionChange, onScrollUp, onScrollDown]);
 
-  /**
-   * Subscribe to the global scroll stream and handle clean-up on unmount or disable.
-   */
+      // 🔼 Handle upward scroll
+      if (direction === 'up') {
+        const shouldFire =
+          !onlyFireOnDirectionChange || directionChanged || !upTriggeredRef.current;
+
+        if (shouldFire && typeof onScrollUp === 'function') {
+          upTriggeredRef.current = true;
+
+          const {
+            scrollIn, scrollOut, scrolled, ...publicEvent
+          } = event;
+          onScrollUp(publicEvent);
+        }
+      }
+    },
+    [enabled, offset, onlyFireOnDirectionChange, onScrollUp, onScrollDown]
+  );
+
   useEffect(() => {
     if (!enabled) return undefined;
 
