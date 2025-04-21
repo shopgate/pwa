@@ -11,6 +11,7 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { useScrollContainer } from '@shopgate/engage/core';
+import connect from './connector';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
@@ -27,6 +28,7 @@ class ViewContent extends Component {
     visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
     className: PropTypes.string,
+    isTabBarEnabled: PropTypes.bool,
     noContentPortal: PropTypes.bool,
     noKeyboardListener: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
@@ -38,6 +40,7 @@ class ViewContent extends Component {
     noScrollOnKeyboard: false,
     noContentPortal: false,
     noKeyboardListener: false,
+    isTabBarEnabled: false,
   };
 
   /**
@@ -111,7 +114,7 @@ class ViewContent extends Component {
    * @returns {Object}
    */
   get style() {
-    const { noScrollOnKeyboard } = this.props;
+    const { noScrollOnKeyboard, isTabBarEnabled } = this.props;
     const { keyboardHeight } = this.state;
 
     let overflow = 'inherit';
@@ -122,7 +125,9 @@ class ViewContent extends Component {
 
     return {
       overflow,
-      paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px)`,
+      // On screens with enable TabBar we need to consider the safe-area-bottom inset, to that
+      // content is not overlapped by the non clickable space.
+      paddingBottom: `calc(max(var(--tabbar-height), ${isTabBarEnabled ? 'var(--safe-area-inset-bottom)' : 0}) + ${keyboardHeight}px)`,
     };
   }
 
@@ -203,10 +208,12 @@ class ViewContent extends Component {
   }
 }
 
+const ConnectedViewContent = connect(ViewContent);
+
 export default props => (
   <RouteContext.Consumer>
     {({ visible, pattern = '', is404 = false }) => (
-      <ViewContent {...props} visible={visible} className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`} />
+      <ConnectedViewContent {...props} visible={visible} className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`} />
     )}
   </RouteContext.Consumer>
 );
