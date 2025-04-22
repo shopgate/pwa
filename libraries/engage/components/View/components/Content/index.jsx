@@ -26,9 +26,9 @@ class ViewContent extends Component {
   static propTypes = {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
+    applyBottomInsets: PropTypes.bool,
     children: PropTypes.node,
     className: PropTypes.string,
-    isTabBarEnabled: PropTypes.bool,
     noContentPortal: PropTypes.bool,
     noKeyboardListener: PropTypes.bool,
     noScrollOnKeyboard: PropTypes.bool,
@@ -40,7 +40,7 @@ class ViewContent extends Component {
     noScrollOnKeyboard: false,
     noContentPortal: false,
     noKeyboardListener: false,
-    isTabBarEnabled: false,
+    applyBottomInsets: false,
   };
 
   /**
@@ -114,7 +114,7 @@ class ViewContent extends Component {
    * @returns {Object}
    */
   get style() {
-    const { noScrollOnKeyboard, isTabBarEnabled } = this.props;
+    const { noScrollOnKeyboard, applyBottomInsets } = this.props;
     const { keyboardHeight } = this.state;
 
     let overflow = 'inherit';
@@ -125,9 +125,7 @@ class ViewContent extends Component {
 
     return {
       overflow,
-      // On screens with enable TabBar we need to consider the safe-area-bottom inset, to that
-      // content is not overlapped by the non clickable space.
-      paddingBottom: `calc(max(var(--tabbar-height), ${isTabBarEnabled ? 'var(--safe-area-inset-bottom)' : '0px'}) + ${keyboardHeight}px)`,
+      paddingBottom: `calc(max(var(--tabbar-height), ${applyBottomInsets ? 'var(--safe-area-inset-bottom)' : '0px'}) + ${keyboardHeight}px)`,
     };
   }
 

@@ -1,6 +1,9 @@
 import { createSelector } from 'reselect';
 import MobileDetect from 'mobile-detect';
-import { isDev as isDevelopment, hasSGJavaScriptBridge } from '@shopgate/engage/core/helpers';
+import {
+  isDev as isDevelopment,
+  hasSGJavaScriptBridge,
+} from '@shopgate/engage/core/helpers';
 
 const md = new MobileDetect(navigator.userAgent);
 
@@ -56,7 +59,6 @@ export const getAreSimulatedInsetsInjected = createSelector(
   getAreInsetsVisible,
   (isDev, insetsVisible) => {
     if (!isDev) { return false; }
-
     return !hasSGJavaScriptBridge() && (insetsVisible || md.os() === 'iOS');
   }
 );

@@ -59,7 +59,7 @@ const TabBar = ({
 
   const {
     transition = 'fade',
-    variant = 'floating',
+    variant = 'docked',
     hideOnScroll = false,
   } = useWidgetSettings('@shopgate/engage/components/TabBar');
 

@@ -26,12 +26,29 @@ export const isTabBarEnabled = createSelector(
 );
 
 /**
+ * Creates a selector that returns whether the bottom insets should be applied to the View.
+ * That's needed on any screen of the GMD theme (detected by th absence of the TabBar state)
+ * and on screens of the iOS theme where the TabBar is enabled.
+ */
+export const getApplyBottomInsets = createSelector(
+  getTabBarState,
+  isTabBarEnabled,
+  (tabBarState, tabBarEnabled) => {
+    if (typeof tabBarState === 'undefined') {
+      return true;
+    }
+
+    return tabBarEnabled;
+  }
+);
+
+/**
  * Maps the contents of the state to the component props.
  * @param {Object} state The current application state.
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isTabBarEnabled: isTabBarEnabled(state),
+  applyBottomInsets: getApplyBottomInsets(state),
 });
 
 export default connect(mapStateToProps);
