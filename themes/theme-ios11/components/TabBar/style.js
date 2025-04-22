@@ -2,14 +2,13 @@ import { css } from 'glamor';
 import { themeShadows, themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 css.global('html', {
-  '--tab-bar-min-height': `${themeVariables.tabBar.height}px`,
   '--tab-bar-background': themeColors.lightOverlay,
   '--tab-bar-box-shadow': themeShadows.tabBar,
+  '--tab-bar-min-height': `${themeVariables.tabBar.height}px`,
 
-  '--tab-bar-floating-min-height': 'var(--tab-bar-min-height)',
-  '--tab-bar-floating-background': 'var(--tab-bar-background)',
   '--tab-bar-floating-border-radius': '16px',
   '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.28)',
+  '--tab-bar-floating-min-height': 'var(--tab-bar-min-height)',
 
   '--tab-bar-item-default-color': themeColors.shade11,
   '--tab-bar-item-highlighted-color': `var(--color-secondary, ${themeColors.accent})`,
@@ -27,7 +26,7 @@ export const hidden = css({
   },
 }).toString();
 
-export const tabBarContainer = css({
+export const tabBarContainerBase = css({
   display: 'flex',
   width: '100%',
   position: 'fixed',
@@ -36,24 +35,30 @@ export const tabBarContainer = css({
   justifyContent: 'center',
 });
 
+export const tabBarContainerDocked = css({
+
+});
+
 export const tabBarContainerFloating = css({
   padding: '0 16px',
 });
 
-export const tabBar = css({
+export const tabBarBase = css({
   display: 'flex',
   width: '100%',
-  minHeight: 'calc(var(--tab-bar-min-height) + var(--safe-area-inset-bottom))',
-  paddingBottom: 'var(--safe-area-inset-bottom)',
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
-  boxShadow: 'var(--tab-bar-box-shadow)',
   background: 'var(--tab-bar-background)',
 });
 
+export const tabBarDocked = css({
+  minHeight: 'calc(var(--tab-bar-min-height) + var(--safe-area-inset-bottom))',
+  paddingBottom: 'var(--safe-area-inset-bottom)',
+  boxShadow: 'var(--tab-bar-box-shadow)',
+});
+
 export const tabBarFloating = css({
-  background: 'var(--tab-bar-floating-background)',
   minHeight: 'var(--tab-bar-floating-min-height)',
   padding: '4px 0',
   marginBottom: 'max(16px, var(--safe-area-inset-bottom))',

@@ -17,7 +17,7 @@ const classes = {
     transition: 'background 0.2s ease',
   }),
   containerHighlight: css({
-    background: 'rgba(255, 0, 0, 0.5)',
+    background: 'rgba(255, 0, 0, 0.7)',
   }),
   handle: css({
     width: 120,

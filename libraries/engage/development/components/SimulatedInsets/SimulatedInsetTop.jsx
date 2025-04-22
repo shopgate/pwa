@@ -22,7 +22,7 @@ const classes = {
     fontSize: '16px',
   }),
   containerHighlight: css({
-    background: 'rgba(255, 0, 0, 0.5)',
+    background: 'rgba(255, 0, 0, 0.7)',
   }),
   styleLight: css({
     color: 'white',
