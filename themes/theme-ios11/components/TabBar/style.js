@@ -7,7 +7,7 @@ css.global('html', {
   '--tab-bar-min-height': `${themeVariables.tabBar.height}px`,
 
   '--tab-bar-floating-border-radius': '16px',
-  '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.2)',
+  '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.24)',
   '--tab-bar-floating-min-height': '59px',
 
   '--tab-bar-item-default-color': themeColors.shade11,
