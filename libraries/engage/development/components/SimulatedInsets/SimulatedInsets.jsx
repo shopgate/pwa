@@ -1,7 +1,12 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getAreSimulatedInsetsInjected } from '@shopgate/engage/development/selectors';
+import { useLongPress } from '@shopgate/engage/core/hooks';
+import {
+  getAreSimulatedInsetsInjected,
+  getIsInsetHighlightVisible,
+} from '@shopgate/engage/development/selectors';
+import { toggleInsetHighlight, toggleInsets } from '@shopgate/engage/development/action-creators';
 import SimulatedInsetTop from './SimulatedInsetTop';
 import SimulatedInsetBottom from './SimulatedInsetBottom';
 
@@ -14,11 +19,34 @@ import SimulatedInsetBottom from './SimulatedInsetBottom';
 const SimulatedInsets = ({ children }) => {
   const hasSimulatedSafeAreaInsets = useSelector(getAreSimulatedInsetsInjected);
 
+  const dispatch = useDispatch();
+  const highlightInset = useSelector(getIsInsetHighlightVisible);
+
+  const handleClick = useCallback(() => {
+    dispatch(toggleInsetHighlight(!highlightInset));
+  }, [dispatch, highlightInset]);
+
+  const attrs = useLongPress(() => {
+    dispatch(toggleInsets(!hasSimulatedSafeAreaInsets));
+  });
+
   return (
     <>
-      {hasSimulatedSafeAreaInsets && <SimulatedInsetTop />}
+      {hasSimulatedSafeAreaInsets && (
+        <SimulatedInsetTop
+          onClick={handleClick}
+          highlightInset={highlightInset}
+          {...attrs}
+        />
+      )}
       {children}
-      {hasSimulatedSafeAreaInsets && <SimulatedInsetBottom />}
+      {hasSimulatedSafeAreaInsets && (
+        <SimulatedInsetBottom
+          onClick={handleClick}
+          highlightInset={highlightInset}
+          {...attrs}
+        />
+      )}
     </>
   );
 };

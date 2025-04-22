@@ -1,9 +1,7 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
 import { css } from 'glamor';
-import { getIsInsetHighlightVisible } from '@shopgate/engage/development/selectors';
-import { toggleInsetHighlight } from '@shopgate/engage/development/action-creators';
 
 const classes = {
   container: css({
@@ -19,7 +17,7 @@ const classes = {
     transition: 'background 0.2s ease',
   }),
   containerHighlight: css({
-    background: 'rgba(255, 0, 0, 0.5)',
+    background: 'rgba(255, 0, 0, 0.7)',
   }),
   handle: css({
     width: 120,
@@ -33,16 +31,16 @@ const classes = {
 
 /**
  * Renders a simulated iOS bottom inset in development.
+ * @param {Object} props The component props.
+ * @param {boolean} props.highlightInset Whether the inset is highlighted.
+ * @param {Function} props.onClick The function to call when the inset is clicked.
  * @returns {JSX.Element}
  */
-const SimulatedInsetBottom = () => {
-  const dispatch = useDispatch();
-  const highlightInset = useSelector(getIsInsetHighlightVisible);
-
-  const handleClick = useCallback(() => {
-    dispatch(toggleInsetHighlight(!highlightInset));
-  }, [dispatch, highlightInset]);
-
+const SimulatedInsetBottom = ({
+  highlightInset,
+  onClick,
+  ...props
+}) => {
   const containerClasses = useMemo(() => classNames(classes.container, {
     [classes.containerHighlight]: highlightInset,
   }), [highlightInset]);
@@ -52,11 +50,17 @@ const SimulatedInsetBottom = () => {
       aria-hidden
       role="presentation"
       className={containerClasses}
-      onClick={handleClick}
+      {...props}
+      onClick={onClick}
     >
       <div className={classes.handle} />
     </div>
   );
+};
+
+SimulatedInsetBottom.propTypes = {
+  highlightInset: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default SimulatedInsetBottom;

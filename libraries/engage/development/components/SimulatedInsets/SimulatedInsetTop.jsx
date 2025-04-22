@@ -1,11 +1,11 @@
 import React, {
-  useState, useCallback, useEffect, useMemo,
+  useState, useEffect, useMemo,
 } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { css } from 'glamor';
-import { getIsInsetHighlightVisible, getStatusBarStyleStorage } from '@shopgate/engage/development/selectors';
-import { toggleInsetHighlight } from '@shopgate/engage/development/action-creators';
+import { getStatusBarStyleStorage } from '@shopgate/engage/development/selectors';
 
 const classes = {
   container: css({
@@ -18,10 +18,11 @@ const classes = {
     width: '100%',
     zIndex: 10000000,
     pointerEvents: 'auto',
+    transition: 'background 0.2s ease',
     fontSize: '16px',
   }),
   containerHighlight: css({
-    background: 'rgba(255, 0, 0, 0.5)',
+    background: 'rgba(255, 0, 0, 0.7)',
   }),
   styleLight: css({
     color: 'white',
@@ -61,9 +62,16 @@ const getTime = () => {
 
 /**
  * Renders a simulated iOS top inset in development.
+ * @param {Object} props The component props.
+ * @param {boolean} props.highlightInset Whether the inset is highlighted.
+ * @param {Function} props.onClick The function to call when the inset is clicked.
  * @returns {JSX.Element}
  */
-const SimulatedInsetTop = () => {
+const SimulatedInsetTop = ({
+  highlightInset,
+  onClick,
+  ...props
+}) => {
   // State to hold the current time string for the status bar
   const [time, setTime] = useState(getTime());
 
@@ -75,13 +83,6 @@ const SimulatedInsetTop = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  const dispatch = useDispatch();
-  const highlightInset = useSelector(getIsInsetHighlightVisible);
-
-  const handleClick = useCallback(() => {
-    dispatch(toggleInsetHighlight(!highlightInset));
-  }, [dispatch, highlightInset]);
 
   const { statusBarStyle } = useSelector(getStatusBarStyleStorage);
 
@@ -100,13 +101,19 @@ const SimulatedInsetTop = () => {
       aria-hidden
       role="presentation"
       className={classNames(containerClasses)}
-      onClick={handleClick}
+      {...props}
+      onClick={onClick}
     >
       <div className={classes.info}>{time}</div>
       <div className={classes.notch} />
       <div className={classes.info}>5G</div>
     </div>
   );
+};
+
+SimulatedInsetTop.propTypes = {
+  highlightInset: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default SimulatedInsetTop;

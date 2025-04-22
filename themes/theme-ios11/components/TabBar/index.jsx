@@ -176,13 +176,16 @@ const TabBar = ({
     // Create class list for the tab bar container
     const container = classNames(
       'theme__tab-bar__container',
-      classes.tabBarContainer,
+      classes.tabBarContainerBase,
       transitionClasses.base,
-      `transition-${hideOnScroll ? 'none' : transition}`,
+      `transition-${!hideOnScroll ? 'none' : transition}`,
       isScrolledOut ? transitionClasses.out : transitionClasses.in,
       isScrolledOut ? 'transition-hidden' : 'transition-visible',
       transitionVisibility ? 'visible' : 'hidden',
       {
+        'variant-docked': variant !== 'floating',
+        'variant-floating': variant === 'floating',
+        [classes.tabBarContainerDocked]: variant !== 'floating',
         [classes.tabBarContainerFloating]: variant === 'floating',
         [classes.hidden]: !isVisible,
       }
@@ -194,8 +197,9 @@ const TabBar = ({
       // Backwards compatibility to prevent broken custom styling that addressed class of the Grid
       // component
       'common__grid',
-      classes.tabBar,
+      classes.tabBarBase,
       {
+        [classes.tabBarDocked]: variant !== 'floating',
         [classes.tabBarFloating]: variant === 'floating',
       }
     );

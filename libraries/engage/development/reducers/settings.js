@@ -13,7 +13,7 @@ import {
 
 /** @type DevToolsSettingsState */
 const initialState = {
-  showInsets: false,
+  showInsets: null,
   showInsetHighlight: false,
 };
 
