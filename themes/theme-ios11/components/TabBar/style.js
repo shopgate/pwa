@@ -7,8 +7,8 @@ css.global('html', {
   '--tab-bar-min-height': `${themeVariables.tabBar.height}px`,
 
   '--tab-bar-floating-border-radius': '16px',
-  '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.28)',
-  '--tab-bar-floating-min-height': 'var(--tab-bar-min-height)',
+  '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.2)',
+  '--tab-bar-floating-min-height': '59px',
 
   '--tab-bar-item-default-color': themeColors.shade11,
   '--tab-bar-item-highlighted-color': `var(--color-secondary, ${themeColors.accent})`,
@@ -36,7 +36,9 @@ export const tabBarContainerBase = css({
 });
 
 export const tabBarContainerDocked = css({
-
+  background: 'var(--tab-bar-background)',
+  minHeight: 'calc(var(--tab-bar-min-height) + var(--safe-area-inset-bottom))',
+  boxShadow: 'var(--tab-bar-box-shadow)',
 });
 
 export const tabBarContainerFloating = css({
@@ -49,16 +51,14 @@ export const tabBarBase = css({
   zIndex: 10,
   alignItems: 'center',
   justifyContent: 'space-around',
-  background: 'var(--tab-bar-background)',
 });
 
 export const tabBarDocked = css({
-  minHeight: 'calc(var(--tab-bar-min-height) + var(--safe-area-inset-bottom))',
   paddingBottom: 'var(--safe-area-inset-bottom)',
-  boxShadow: 'var(--tab-bar-box-shadow)',
 });
 
 export const tabBarFloating = css({
+  background: 'var(--tab-bar-background)',
   minHeight: 'var(--tab-bar-floating-min-height)',
   padding: '4px 0',
   marginBottom: 'max(16px, var(--safe-area-inset-bottom))',
