@@ -55,8 +55,20 @@ export const getAreSimulatedInsetsInjected = createSelector(
   getIsDev,
   getAreInsetsVisible,
   (isDev, insetsVisible) => {
+    // No insets injected if the app is not in development mode.
     if (!isDev) { return false; }
 
-    return !hasSGJavaScriptBridge() && (insetsVisible || md.os() === 'iOS');
+    // No insets injected if PWA is running inside the app
+    if (hasSGJavaScriptBridge()) {
+      return false;
+    }
+
+    // If the state contains a bool value, respect is.
+    if (typeof insetsVisible === 'boolean') {
+      return insetsVisible;
+    }
+
+    // Show insets on simulated iOS devices by default if insets decision is not set.
+    return insetsVisible === null && md.os() === 'iOS';
   }
 );

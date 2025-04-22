@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleInsets } from '@shopgate/engage/development/action-creators';
-import { getAreInsetsVisible } from '@shopgate/engage/development/selectors';
+import { getAreSimulatedInsetsInjected } from '@shopgate/engage/development/selectors';
 import { useShortcut } from './hooks';
 
 /**
@@ -9,10 +9,10 @@ import { useShortcut } from './hooks';
  */
 const Shortcuts = () => {
   const dispatch = useDispatch();
-  const areInsetsVisible = useSelector(getAreInsetsVisible);
+  const areInsetsInjected = useSelector(getAreSimulatedInsetsInjected);
 
   useShortcut('cmd+i', () => {
-    dispatch(toggleInsets(!areInsetsVisible));
+    dispatch(toggleInsets(!areInsetsInjected));
   });
 
   return null;

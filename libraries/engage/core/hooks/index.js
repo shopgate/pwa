@@ -11,5 +11,6 @@ export { useWidgetSettings } from './useWidgetSettings';
 export { useWidgetStyles } from './useWidgetStyles';
 export * from './html';
 export { default as useScrollDirectionChange } from './useScrollDirectionChange';
+export { default as useLongPress } from './useLongPress';
 export { usePrevious } from './usePrevious';
 export { useResponsiveValue } from '@shopgate/engage/components/ResponsiveContainer/hooks';
