@@ -11,7 +11,7 @@ const Shortcuts = () => {
   const dispatch = useDispatch();
   const areInsetsInjected = useSelector(getAreSimulatedInsetsInjected);
 
-  useShortcut('cmd+i', () => {
+  useShortcut('ctrl+i', () => {
     dispatch(toggleInsets(!areInsetsInjected));
   });
 
