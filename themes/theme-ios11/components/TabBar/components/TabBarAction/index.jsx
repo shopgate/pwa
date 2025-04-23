@@ -40,6 +40,12 @@ const TabBarAction = ({
     { [style.regular]: !isHighlighted }
   );
 
+  // Remove some props that are not meant for the Button component.
+  const {
+    // eslint-disable-next-line react/prop-types
+    dispatch, historyPush, path, type, ...buttonProps
+  } = props;
+
   return (
     <Button
       className={className}
@@ -49,7 +55,7 @@ const TabBarAction = ({
       aria-label={ariaLabel}
       tabIndex={tabIndex}
       role="tab"
-      {...props}
+      {...buttonProps}
     >
       {Icon}
       <div className={style.label} data-test-id={label}>
