@@ -2,12 +2,11 @@ import { css } from 'glamor';
 import { useScrollContainer } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const wrapper = css({
   display: 'flex',
   flexDirection: 'column',
-  background: `var(--page-background-color, ${colors.shade8})`,
   textAlign: 'center',
   height: '100%',
   ...(useScrollContainer() ? {} : { paddingTop: 100 }),
