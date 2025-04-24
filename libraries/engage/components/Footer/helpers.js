@@ -226,14 +226,30 @@ const { style } = document.documentElement;
  * @param {number} height height
  */
 export const updateFooterHeight = (height) => {
-  // The TabBar uses position: fixed, so its height will be ignored when height of the Footer is
-  // measured. Additionally it's animated in some cases which makes measuring via JS much more
-  // complicated.
-  // To simplify everything, we just use the --tabbar-height CSS custom property insider the
-  // --footer-height CSS custom property. This will be 0px when the tabbar is not visible.
+  // The TabBar is positioned with `position: fixed`, so it doesn’t contribute to the measured
+  // height of the Footer. Additionally, it’s sometimes animated in/out, which makes dynamic
+  // measurement via JavaScript more complex and error-prone.
+  //
+  // To simplify everything, we include the --tabbar-height CSS custom property to the calculation
+  // of the --footer-height value.
   const footerHeight = `max(${height}px, var(--tabbar-height, 0px))`;
 
   if (style.getPropertyValue('--footer-height') !== footerHeight) {
     style.setProperty('--footer-height', footerHeight);
+  }
+
+  // The View component wraps every app page and applies a bottom offset to centrally manage
+  // safe area insets across screens.
+  //
+  // If the measured footer height is > 0px, it means the footer is rendering content that already
+  // accounts for the safe area, so no additional offset is needed.
+  //
+  // If the measured footer height is 0px, the footer is either empty or only contains the tab bar
+  // (which is measured via the CSS variable --footer-height). In that case, we still need to apply
+  // an offset equal to the larger of the bottom safe area inset or the tab bar height.
+  const pageContentOffset = height === 0 ? 'max(var(--footer-height), var(--safe-area-inset-bottom))' : '0px';
+
+  if (style.getPropertyValue('--page-content-offset-bottom') !== pageContentOffset) {
+    style.setProperty('--page-content-offset-bottom', pageContentOffset);
   }
 };

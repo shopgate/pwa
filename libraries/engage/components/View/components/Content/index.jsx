@@ -11,7 +11,6 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { useScrollContainer } from '@shopgate/engage/core';
-import connect from './connector';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
@@ -26,7 +25,6 @@ class ViewContent extends Component {
   static propTypes = {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
-    applyBottomInsets: PropTypes.bool,
     children: PropTypes.node,
     className: PropTypes.string,
     noContentPortal: PropTypes.bool,
@@ -40,7 +38,6 @@ class ViewContent extends Component {
     noScrollOnKeyboard: false,
     noContentPortal: false,
     noKeyboardListener: false,
-    applyBottomInsets: false,
   };
 
   /**
@@ -114,7 +111,7 @@ class ViewContent extends Component {
    * @returns {Object}
    */
   get style() {
-    const { noScrollOnKeyboard, applyBottomInsets } = this.props;
+    const { noScrollOnKeyboard } = this.props;
     const { keyboardHeight } = this.state;
 
     let overflow = 'inherit';
@@ -125,7 +122,7 @@ class ViewContent extends Component {
 
     return {
       overflow,
-      paddingBottom: `calc(max(var(--tabbar-height), ${applyBottomInsets ? 'var(--safe-area-inset-bottom)' : '0px'}) + ${keyboardHeight}px)`,
+      paddingBottom: `calc(var(--page-content-offset-bottom) + ${keyboardHeight}px)`,
     };
   }
 
@@ -206,12 +203,10 @@ class ViewContent extends Component {
   }
 }
 
-const ConnectedViewContent = connect(ViewContent);
-
 export default props => (
   <RouteContext.Consumer>
     {({ visible, pattern = '', is404 = false }) => (
-      <ConnectedViewContent {...props} visible={visible} className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`} />
+      <ViewContent {...props} visible={visible} className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`} />
     )}
   </RouteContext.Consumer>
 );
