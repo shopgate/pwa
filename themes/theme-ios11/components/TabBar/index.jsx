@@ -78,9 +78,7 @@ const TabBar = ({
      */
     const measureTabBarHeight = () => {
       if (tabBarRef.current) {
-        const rect = tabBarRef.current.getBoundingClientRect();
-        const height = window.innerHeight - rect.top;
-        setTabBarHeight(height);
+        setTabBarHeight(tabBarRef.current.offsetHeight);
       }
     };
 
@@ -224,7 +222,11 @@ const TabBar = ({
     <KeyboardConsumer>
       {({ open }) => !open && (
       <SurroundPortals portalName={TAB_BAR} portalProps={portalProps}>
-        <div className={tabBarClasses.container} onTransitionEnd={handleTransitionEnd}>
+        <div
+          className={tabBarClasses.container}
+          aria-hidden={ariaHidden}
+          onTransitionEnd={handleTransitionEnd}
+        >
           <div
             ref={tabBarRef}
             className={tabBarClasses.component}

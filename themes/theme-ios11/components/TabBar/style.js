@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeShadows, themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 
-css.global('html', {
+css.global(':root', {
   '--tab-bar-background': themeColors.lightOverlay,
   '--tab-bar-box-shadow': themeShadows.tabBar,
   '--tab-bar-min-height': `${themeVariables.tabBar.height}px`,
@@ -21,10 +21,8 @@ css.global('html', {
 });
 
 export const hidden = css({
-  '&&': {
-    display: 'none',
-  },
-}).toString();
+  display: 'none !important',
+});
 
 export const tabBarContainerBase = css({
   display: 'flex',
@@ -94,3 +92,4 @@ export const transitions = {
     }),
   },
 };
+
