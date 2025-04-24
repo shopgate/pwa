@@ -230,7 +230,8 @@
     "description_heading": "Kuvaus",
     "share": "Jaa tuote",
     "pick_an_attribute": "{0} valitse",
-    "tax_disclaimer": "* Sisältää alv:n ja mahdollisesti toimituskulut",
+    "tax_disclaimer": "* Sisältäen arvonlisäveron, mahdolliset toimituskulut erikseen",
+    "tax_disclaimer_aria": "Sisältäen arvonlisäveron, mahdolliset toimituskulut erikseen",
     "adding_item": "{count, plural, =1 {Lisätään yksi tuote} other {Lisätään {count} tuotetta}}",
     "pick_option_first": "Valitse vaihtoehto ensin. {option}",
     "fill_out_required_input_first": "Täytä ensin kaikki pakolliset kentät.",
@@ -586,6 +587,12 @@
   },
   "scanner": {
     "instructions": "Aseta viivakoodi tai QR-koodi keskelle. Tunnistus tapahtuu automaattisesti.",
+    "flashlight": {
+      "on": "Taskulamppu on päällä",
+      "off": "Taskulamppu on pois päältä",
+      "switchOn": "Kytke taskulamppu päälle",
+      "switchOff": "Kytke taskulamppu pois päältä"
+    },
     "noResult": {
       "qrCode": "Emme löytäneet tulosta tälle QR-koodille.",
       "barCode": "Tuotetta ei löytynyt."

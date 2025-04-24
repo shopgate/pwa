@@ -38,6 +38,7 @@ jest.mock('@shopgate/pwa-common/helpers/dom', () => {
     getAbsoluteHeight: jest.fn(),
   };
 });
+jest.mock('@shopgate/engage/a11y/components');
 jest.mock('@shopgate/pwa-common/components/Portal', () => {
   // eslint-disable-next-line require-jsdoc
   function Portal() {

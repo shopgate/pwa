@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@shopgate/pwa-common/components/Modal';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
@@ -24,12 +24,18 @@ const dialogTypes = {
   [MODAL_VARIANT_SELECT]: VariantSelectModal,
 };
 
+const supportsInert = 'inert' in HTMLElement.prototype;
+
 /**
  * The main component for rendering dialogs.
  * This component takes care of choosing the correct component body for the given type
  * and render it on a modal overlay.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Object} props.modal Object with modal data.
+ * @param {Function} props.onConfirm The function to call when the confirm button is clicked.
+ * @param {Function} props.onDismiss The function to call when the dismiss button is clicked.
+ * @param {NodeList} props.children The children to render inside the modal.
+ * @returns {JSX.Element}
  */
 const Dialog = ({
   modal, onConfirm, onDismiss, children,
@@ -82,8 +88,28 @@ const Dialog = ({
 
   const DialogComponent = dialogTypes[dialogType] || BasicDialog;
 
+  // Effect to toggle aria-hidden on all other modals when the dialog is open.
+  useEffect(() => {
+    const otherModals = document.querySelectorAll('.common__modal:not(.ui-shared__dialog-modal), .engage__sheet-drawer');
+
+    otherModals.forEach((entry) => {
+      if (supportsInert) {
+        entry.setAttribute('inert', '');
+      } else {
+        entry.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    return () => {
+      otherModals.forEach((entry) => {
+        entry.removeAttribute('inert');
+        entry.removeAttribute('aria-hidden');
+      });
+    };
+  }, []);
+
   return (
-    <Modal>
+    <Modal classes={{ container: 'ui-shared__dialog-modal' }}>
       <Backdrop isVisible level={0} opacity={30} />
       <DialogComponent {...dialogProps} />
     </Modal>
@@ -92,12 +118,34 @@ const Dialog = ({
 
 Dialog.propTypes = {
   modal: PropTypes.shape({
+    /**
+     * The title of the modal.
+     */
     title: BasicDialog.propTypes.title,
+    /**
+     * Additional I18n placeholder parameters for the title.
+     */
     titleParams: PropTypes.shape(),
+    /**
+     * Label for the confirm button.
+     */
     confirm: PropTypes.string,
+    /**
+     * Label for the dismiss button.
+     */
     dismiss: PropTypes.string,
+    /**
+     * Message to be displayed in the modal.
+     */
     message: PropTypes.string,
+    /**
+     * Additional parameters for the component that's used to render the dialog.
+     */
     params: PropTypes.shape(),
+    /**
+     * Type of the dialog.
+     * This is used to determine which component to render.
+     */
     type: PropTypes.string,
     /**
      * Whether the confirm button is disabled when visible

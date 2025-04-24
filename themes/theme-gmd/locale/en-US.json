@@ -231,6 +231,7 @@
     "share": "Share product",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
+    "tax_disclaimer_aria": "VAT included, plus shipping costs if applicable",
     "adding_item": "{count, plural, =1 {Adding one item} other {Adding {count} items}}",
     "pick_option_first": "Pick an option first. {option}",
     "fill_out_required_input_first": "Fill out the required inputs first.",
@@ -490,7 +491,7 @@
         "insufficientstock": "Currently out of stock."
       },
       "coupon": {
-        "404": "This was coupon was not found.",
+        "404": "This coupon was not found.",
         "2000": "This coupon is not valid.",
         "2001": "The coupon is not active until {startDate, date, yyyyMMdd} {startDate, time, short}.",
         "2002": "The coupon expired at {endDate, date, yyyyMMdd} {endDate, time, short}.",
@@ -589,6 +590,12 @@
     "noResult": {
       "qrCode": "We couldn't find a result for this QR code.",
       "barCode": "Product not found."
+    },
+    "flashlight": {
+      "on": "Flashlight is on",
+      "off": "Flashlight is off",
+      "switchOn": "Turn on flashlight",
+      "switchOff": "Turn off flashlight"
     }
   },
   "permissions": {

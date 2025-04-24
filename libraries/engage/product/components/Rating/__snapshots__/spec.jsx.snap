@@ -30,10 +30,9 @@ exports[`Rating (product header) Rendering should render rating when data is ava
         portalName="product.rating"
       >
         <div
-          aria-hidden={true}
           className="css-1w47iqp"
           onClick={[Function]}
-          role="link"
+          role="presentation"
         >
           <RatingStars
             display="big"

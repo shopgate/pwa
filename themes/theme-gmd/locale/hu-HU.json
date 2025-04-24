@@ -230,7 +230,8 @@
     "description_heading": "Leírás",
     "share": "Termék megosztása",
     "pick_an_attribute": "{0} válasszon",
-    "tax_disclaimer": "* Áfával együtt, esetleg plusz szállítási költség",
+    "tax_disclaimer": "* Áfával együtt, esetlegesen további szállítási költséggel",
+    "tax_disclaimer_aria": "Áfával együtt, esetlegesen további szállítási költséggel",
     "adding_item": "{count, plural, =1 {Egy termék hozzáadása folyamatban van} other {Hozzáadás alatt van {count} termék}}",
     "pick_option_first": "Először válasszon ki egy opciót. {option}",
     "fill_out_required_input_first": "Először töltsd ki az összes kötelező mezőt.",
@@ -589,6 +590,12 @@
     "noResult": {
       "qrCode": "Nem találtunk eredményt erre a QR-kódra.",
       "barCode": "A terméket nem találtuk."
+    },
+    "flashlight": {
+      "on": "A zseblámpa be van kapcsolva",
+      "off": "A zseblámpa ki van kapcsolva",
+      "switchOn": "Kapcsold be a zseblámpát",
+      "switchOff": "Kapcsold ki a zseblámpát"
     }
   },
   "permissions": {

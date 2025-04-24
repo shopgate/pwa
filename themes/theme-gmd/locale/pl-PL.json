@@ -231,6 +231,7 @@
     "share": "Udostępnij produkt",
     "pick_an_attribute": "{0} wybierz",
     "tax_disclaimer": "* Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
+    "tax_disclaimer_aria": "Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
     "adding_item": "{count, plural, =1 {Dodawany jest jeden produkt} other {Dodawane są {count} produkty}}",
     "pick_option_first": "Najpierw wybierz opcję. {option}",
     "fill_out_required_input_first": "Najpierw wypełnij wszystkie pola obowiązkowe.",
@@ -589,6 +590,12 @@
     "noResult": {
       "qrCode": "Nie udało nam się znaleźć żadnych wyników dla tego kodu QR.",
       "barCode": "Nie znaleziono produktu."
+    },
+    "flashlight": {
+      "on": "Lampa błyskowa jest włączona",
+      "off": "Lampa błyskowa jest wyłączona",
+      "switchOn": "Włącz lampę błyskową",
+      "switchOff": "Wyłącz lampę błyskową"
     }
   },
   "permissions": {

@@ -20,6 +20,10 @@ const infoPane = css({
   justifyContent: 'space-between',
 }).toString();
 
+const infoPanePagination = css({
+  paddingBottom: 0,
+}).toString();
+
 const priceGrid = css({
   alignItems: 'flex-end',
   justifyContent: 'space-between',
@@ -41,6 +45,10 @@ const card = {
   margin: '5px 15px 10px',
 };
 
+const linkPagination = css({
+  paddingBottom: 28,
+}).toString();
+
 const title = {
   marginBottom: variables.gap.small * 0.5,
 };
@@ -60,16 +68,19 @@ const badgesPortal = css({
     left: 'initial',
     width: 'initial',
     marginBottom: 8,
+    paddingLeft: 0,
   },
 }).toString();
 
 export default {
   image,
   infoPane,
+  infoPanePagination,
   priceGrid,
   priceStriked,
   price,
   card,
+  linkPagination,
   title,
   timer,
   badgesPortal,

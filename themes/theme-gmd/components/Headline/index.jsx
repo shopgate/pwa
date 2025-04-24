@@ -4,7 +4,8 @@ import styles from './style';
 
 /**
  * The headline component.
- * @param {string} props The component props.
+ * @param {Object} props The component props.
+ * @param {string} props.text The text for the headline
  * @returns {JSX}
  */
 const Headline = ({ text }) => (

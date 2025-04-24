@@ -9,12 +9,9 @@ import {
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_ALERT,
 } from '@shopgate/engage/product';
-import {
-  TextLink, Link, Availability,
-} from '@shopgate/engage/components';
+import { Link, Availability } from '@shopgate/engage/components';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
 import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
-
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import ShortDescription from '../ShortDescription';
@@ -22,7 +19,7 @@ import * as styles from './style';
 
 /**
  * The item details component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ItemDetails = ({ product, display }) => {
   const {
@@ -36,31 +33,23 @@ const ItemDetails = ({ product, display }) => {
   }
 
   return (
-    <div className={`${styles.details} theme__product-grid__item__item-details`} tabIndex={-1} role="button">
-      <Link
-        href={getProductRoute(productId)}
-        state={{ title: name }}
-      >
+    <Link
+      className={`${styles.details} theme__product-grid__item__item-details`}
+      tabIndex={0}
+      href={getProductRoute(productId)}
+    >
+      <div>
         {/*
           This feature is currently in BETA testing.
           It should only be used for approved BETA Client Projects
         */}
         <Swatches productId={productId} />
-      </Link>
-      <TextLink
-        href={getProductRoute(productId)}
-        state={{ title: name }}
-        className={styles.itemNameLink}
-      >
+      </div>
+      <div className={styles.itemNameLink}>
         <ItemName display={display} productId={productId} name={name} />
-      </TextLink>
+      </div>
 
-      <Link
-        tag="a"
-        href={getProductRoute(productId)}
-        state={{ title: name }}
-        className={styles.propertiesLink}
-      >
+      <div className={styles.propertiesLink}>
         <ShortDescription shortDescription={shortDescription} />
 
         {/*
@@ -81,24 +70,24 @@ const ItemDetails = ({ product, display }) => {
         <EffectivityDates productId={productId} />
 
         { hasNewServices && (
-          <>
-            <Availability
-              state={!stock || stock.orderable
-                ? AVAILABILITY_STATE_OK
-                : AVAILABILITY_STATE_ALERT
+        <>
+          <Availability
+            state={!stock || stock.orderable
+              ? AVAILABILITY_STATE_OK
+              : AVAILABILITY_STATE_ALERT
             }
-              text={i18n.text('product.available.not')}
-              showWhenAvailable={false}
-            />
-            <StockInfoLists product={product} />
-          </>
+            text={i18n.text('product.available.not')}
+            showWhenAvailable={false}
+          />
+          <StockInfoLists product={product} />
+        </>
         )}
 
         <div className={styles.itemPrice}>
           <ItemPrice product={product} display={display} />
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 

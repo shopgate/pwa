@@ -26,21 +26,32 @@ exports[`<Section /> should render with a label 1`] = `
     aria-labelledby="my-headline"
     className=""
   >
-    <h2
-      hidden={true}
-      id="my-headline"
+    <VisuallyHidden
+      tag="span"
     >
-      <Translate
-        params={
+      <span
+        className={
           Object {
-            "some": "params",
+            "data-css-10i921h": "",
           }
         }
-        string="my.headline"
       >
-        my.headline
-      </Translate>
-    </h2>
+        <h2
+          id="my-headline"
+        >
+          <Translate
+            params={
+              Object {
+                "some": "params",
+              }
+            }
+            string="my.headline"
+          >
+            my.headline
+          </Translate>
+        </h2>
+      </span>
+    </VisuallyHidden>
     <div
       id="child-component"
     />

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import classNames from 'classnames';
 import {
-  Grid, Link, TextLink, ProductProperties, SurroundPortals, ConditionalWrapper, I18n,
+  Grid, Link, ProductProperties, SurroundPortals, ConditionalWrapper, I18n,
 } from '@shopgate/engage/components';
 import {
   CART_ITEM_IMAGE,
@@ -27,7 +27,7 @@ import styles from './CartItemProductLayout.style';
 
 /**
  * The Cart Product Layout component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 export function CartItemProductLayout() {
   // Added with PWA 6 - CCP-2372
@@ -82,22 +82,12 @@ export function CartItemProductLayout() {
       })}
       >
         <Grid.Item className={styles.content} grow={1}>
-          <ConditionalWrapper
-            condition={isEditable}
-            wrapper={children =>
-              <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
-                {children}
-              </TextLink>
-
-            }
+          <SurroundPortals
+            portalName={CART_ITEM_LINK}
+            portalProps={portalProps}
           >
-            <SurroundPortals
-              portalName={CART_ITEM_LINK}
-              portalProps={portalProps}
-            >
-              <CartItemProductTitle value={product.name} />
-            </SurroundPortals>
-          </ConditionalWrapper>
+            <CartItemProductTitle value={product.name} productId={product.id} />
+          </SurroundPortals>
           <Grid className={styles.info}>
             <Grid.Item grow={1} className={styles.properties}>
               <SurroundPortals

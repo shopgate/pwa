@@ -165,9 +165,7 @@ class ProductContent extends PureComponent {
         <AppBar productId={productId} />
         <ProductContext.Provider value={contextValue}>
           <Media aria-hidden />
-          <Section title="product.sections.information">
-            <Header />
-          </Section>
+          <Header />
           {/*
             This feature is currently in BETA testing.
             It should only be used for approved BETA Client Projects

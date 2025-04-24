@@ -9,7 +9,9 @@ export const UNIT_SYSTEM_IMPERIAL = 'imperial';
 /**
  * Renders a single store distance.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {number} props.distance The distance.
+ * @param {string} props.unitSystem The unit system.
+ * @returns {JSX.Element}
  */
 export function StoreDistance({ distance = null, unitSystem = UNIT_SYSTEM_METRIC }) {
   if (distance === null) {

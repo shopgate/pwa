@@ -2,6 +2,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import PipelineErrorDialog from './index';
 
+jest.mock('@shopgate/engage/a11y/components');
+
 describe('<PipelineErrorDialog />', () => {
   const defaultParams = {
     code: '123',

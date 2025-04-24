@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, I18n, ContextMenu, SurroundPortals,
+  Grid, I18n, ContextMenu, SurroundPortals, TextLink,
 } from '@shopgate/engage/components';
 import {
   CART_ITEM_CONTEXT_MENU,
-  CART_ITEM_CONTEXT_MENU_ITEM_EDIT,
   CART_ITEM_CONTEXT_MENU_ITEM_REMOVE,
   CART_ITEM_NAME,
 } from '@shopgate/engage/cart';
@@ -13,7 +12,8 @@ import {
   CartContextMenuItemChangeLocation,
   CartContextMenuItemChangeFulfillment,
 } from '@shopgate/engage/locations';
-import { ProductName } from '@shopgate/engage/product';
+import { ITEM_PATH, ProductName } from '@shopgate/engage/product';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import {
   menuToggleButton,
@@ -21,6 +21,7 @@ import {
   title,
   menuContainer,
 } from './CartItemProductTitle.style';
+import { ConditionalWrapper } from '../../../components';
 
 const contextMenuClasses = {
   button: menuToggleButton,
@@ -30,22 +31,17 @@ const contextMenuClasses = {
 /**
  * The Cart Product Title component.
  * @param {Object} props The component properties.
- * @param {Object} context The component context.
- * @returns {JSX}
+ * @param {string} props.value The product name
+ * @param {string} props.productId The product id
+ * @returns {JSX.Element}
  */
-export function CartItemProductTitle({ value }) {
+export function CartItemProductTitle({ value, productId }) {
   const { invokeFulfillmentAction } = useCartItem();
 
   const context = useCartItemProduct();
   const {
     handleRemove, toggleEditMode, cartItem, isEditable,
   } = context;
-
-  const handleToggleEditMode = useCallback(() => {
-    if (toggleEditMode) {
-      toggleEditMode(true);
-    }
-  }, [toggleEditMode]);
 
   const handleChangeLocationClick = useCallback(() => {
     if (!cartItem || !cartItem.fulfillment || !cartItem.fulfillment.method) {
@@ -64,14 +60,23 @@ export function CartItemProductTitle({ value }) {
   return (
     <Grid>
       <Grid.Item grow={1}>
-        <ProductName
-          name={value}
-          className={title}
-          portalName={CART_ITEM_NAME}
-          portalProps={context}
-          testId={value}
-          ellipsis={false}
-        />
+        <ConditionalWrapper
+          condition={isEditable}
+          wrapper={children =>
+            <TextLink href={`${ITEM_PATH}/${bin2hex(productId)}`}>
+              {children}
+            </TextLink>
+          }
+        >
+          <ProductName
+            name={value}
+            className={title}
+            portalName={CART_ITEM_NAME}
+            portalProps={context}
+            testId={value}
+            ellipsis={false}
+          />
+        </ConditionalWrapper>
       </Grid.Item>
       { isEditable && (
         <Grid.Item className={menuContainer} shrink={0}>
@@ -97,19 +102,6 @@ export function CartItemProductTitle({ value }) {
                   </ContextMenu.Item>
                 </div>
               </SurroundPortals>
-              <SurroundPortals
-                portalName={CART_ITEM_CONTEXT_MENU_ITEM_EDIT}
-                portalProps={{
-                  context,
-                  toggleEditMode,
-                }}
-              >
-                <div data-test-id="cartItemContextMenuItemEdit">
-                  <ContextMenu.Item onClick={handleToggleEditMode}>
-                    <I18n.Text string="cart.edit" />
-                  </ContextMenu.Item>
-                </div>
-              </SurroundPortals>
               <CartContextMenuItemChangeLocation
                 cartItem={context.cartItem}
                 onClick={handleChangeLocationClick}
@@ -127,5 +119,6 @@ export function CartItemProductTitle({ value }) {
 }
 
 CartItemProductTitle.propTypes = {
+  productId: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
 };

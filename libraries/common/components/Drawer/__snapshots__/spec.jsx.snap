@@ -2,7 +2,6 @@
 
 exports[`<Drawer /> should add custom classes 1`] = `
 <Drawer
-  alwaysActive={false}
   animation={
     Object {
       "duration": null,
@@ -19,17 +18,17 @@ exports[`<Drawer /> should add custom classes 1`] = `
 >
   <div
     aria-modal={true}
-    className="custom-class-name css-1rg7udn css-1dwe0qx common__drawer"
+    className="custom-class-name css-1rg7udn css-kk46gv common__drawer"
     onAnimationEnd={[Function]}
     role="dialog"
     style={Object {}}
+    tabIndex={-1}
   />
 </Drawer>
 `;
 
 exports[`<Drawer /> should execute callback when drawer close animation did end 1`] = `
 <Drawer
-  alwaysActive={false}
   animation={
     Object {
       "duration": null,
@@ -46,17 +45,17 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
 >
   <div
     aria-modal={true}
-    className="custom-class-name css-1rg7udn css-1dwe0qx common__drawer"
+    className="custom-class-name css-1rg7udn css-kk46gv common__drawer"
     onAnimationEnd={[Function]}
     role="dialog"
     style={Object {}}
+    tabIndex={-1}
   />
 </Drawer>
 `;
 
 exports[`<Drawer /> should execute callback when drawer open animation did end 1`] = `
 <Drawer
-  alwaysActive={false}
   animation={
     Object {
       "duration": null,

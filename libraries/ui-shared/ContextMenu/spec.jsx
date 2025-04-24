@@ -1,5 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import ContextMenu from './index';
 
@@ -52,7 +53,6 @@ describe('<ContextMenu />', () => {
 
   describe('Given the component was mounted to the DOM', () => {
     let renderedElement;
-    let renderedInstance;
 
     /**
      * The view component
@@ -64,8 +64,6 @@ describe('<ContextMenu />', () => {
           <ContextMenu.Item onClick={mockItemBClick}>Item B</ContextMenu.Item>
         </ContextMenu>
       ));
-
-      renderedInstance = renderedElement.instance();
     };
 
     beforeEach(renderComponent);
@@ -75,7 +73,7 @@ describe('<ContextMenu />', () => {
     });
 
     it('should have active state set to false', () => {
-      expect(renderedInstance.state.active).toBe(null);
+      expect(renderedElement.find('ConnectedReactPortal').prop('isOpened')).toBe(null);
     });
 
     it('should render the toggle button', () => {
@@ -93,7 +91,7 @@ describe('<ContextMenu />', () => {
       });
 
       it('should have active state set to true', () => {
-        expect(renderedInstance.state.active).toBe(true);
+        expect(renderedElement.find('ConnectedReactPortal').prop('isOpened')).toBe(true);
       });
 
       it('should render the actual context menu w/ items', () => {
@@ -102,10 +100,12 @@ describe('<ContextMenu />', () => {
 
       describe('Given the first item gets clicked', () => {
         beforeEach(() => {
-          renderedElement.find(ContextMenu.Item).first().children().find('[data-test-id="contextMenuButton"]')
-            .first()
-            .simulate('click');
-          jest.runAllTimers();
+          act(() => {
+            renderedElement.find(ContextMenu.Item).first().children().find('[data-test-id="contextMenuButton"]')
+              .first()
+              .simulate('click');
+            jest.runAllTimers();
+          });
         });
 
         it('should call the related click handler', () => {
@@ -124,7 +124,7 @@ describe('<ContextMenu />', () => {
         });
 
         it('should have active state reset to false', () => {
-          expect(renderedInstance.state.active).toBe(false);
+          expect(renderedElement.find('ConnectedReactPortal').prop('isOpened')).toBe(false);
         });
 
         it('should close the context menu', () => {

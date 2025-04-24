@@ -45,7 +45,7 @@ export const name = css({
 
 export const method = css({
   fontSize: '0.75rem',
-  color: themeColors.shade3,
+  color: themeColors.shade11,
 });
 
 export const locationAddress = css({

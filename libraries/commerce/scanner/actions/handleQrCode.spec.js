@@ -1,10 +1,12 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core/constants/Scanner';
-import { historyReplace, historyPop } from '@shopgate/pwa-common/actions/router';
-import { fetchPageConfig } from '@shopgate/pwa-common/actions/page';
-import { getPageConfigById } from '@shopgate/pwa-common/selectors/page';
-import { fetchProductsById, getProductById } from '@shopgate/pwa-common-commerce/product';
-import { fetchCategory, getCategory } from '@shopgate/pwa-common-commerce/category';
+import { historyReplace, historyPop, historyPush } from '@shopgate/engage/core/actions';
+import { fetchPageConfig } from '@shopgate/engage/page/actions';
+import { getPageConfigById } from '@shopgate/engage/page/selectors';
+import { fetchProductsById } from '@shopgate/engage/product';
+import { getProductById } from '@shopgate/engage/product/selectors/product';
+import { fetchCategory } from '@shopgate/engage/category/actions';
+import { getCategory } from '@shopgate/engage/category/selectors';
 import {
   QR_CODE_TYPE_HOMEPAGE,
   QR_CODE_TYPE_PRODUCT,
@@ -19,23 +21,28 @@ import handleQrCode from './handleQrCode';
 import handleSearch from './handleSearch';
 import handleNoResults from './handleNoResults';
 
-jest.mock('@shopgate/pwa-common/actions/router', () => ({
+jest.mock('@shopgate/engage/core/actions', () => ({
   historyReplace: jest.fn(),
   historyPop: jest.fn(),
+  historyPush: jest.fn(),
 }));
-jest.mock('@shopgate/pwa-common/actions/page', () => ({
+jest.mock('@shopgate/engage/page/actions', () => ({
   fetchPageConfig: jest.fn().mockResolvedValue(null),
 }));
-jest.mock('@shopgate/pwa-common/selectors/page', () => ({
+jest.mock('@shopgate/engage/page/selectors', () => ({
   getPageConfigById: jest.fn(),
 }));
 
-jest.mock('@shopgate/pwa-common-commerce/product', () => ({
+jest.mock('@shopgate/engage/product', () => ({
   fetchProductsById: jest.fn().mockResolvedValue(null),
+}));
+jest.mock('@shopgate/engage/product/selectors/product', () => ({
   getProductById: jest.fn(),
 }));
-jest.mock('@shopgate/pwa-common-commerce/category', () => ({
+jest.mock('@shopgate/engage/category/actions', () => ({
   fetchCategory: jest.fn().mockResolvedValue(null),
+}));
+jest.mock('@shopgate/engage/category/selectors', () => ({
   getCategory: jest.fn(),
 }));
 jest.mock('../helpers', () => ({
@@ -43,8 +50,11 @@ jest.mock('../helpers', () => ({
 }));
 jest.mock('@shopgate/pwa-core/commands/registerEvents', () => jest.fn());
 
-jest.mock('./handleSearch');
-jest.mock('./handleNoResults');
+jest.mock('./handleSearch', () => jest.fn());
+jest.mock('./handleNoResults', () => ({
+  __esModule: true,
+  default: jest.fn((event, message) => message),
+}));
 
 const scope = SCANNER_SCOPE_DEFAULT;
 const format = 'QR_CODE';
@@ -228,6 +238,30 @@ describe('handleQrCode', () => {
         pathname: '/page/SG3',
       });
       expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, payload));
+    });
+  });
+
+  describe('External link handling', () => {
+    beforeEach(() => {
+      parse2dsQrCode.mockReturnValue(null);
+    });
+
+    it('should open external link with https url', () => {
+      const externalLink = 'https://shopgate.com';
+      handleQrCode({ scope, format, payload: externalLink })(dispatch);
+      expect(historyPush).toHaveBeenCalledWith({
+        pathname: externalLink,
+      });
+      expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, externalLink));
+      expect(historyPop).toHaveBeenCalledWith();
+    });
+
+    it('should trigger "no result" handling when with http url', () => {
+      const externalLink = 'http://shopgate.com';
+      const event = { scope, format, payload: externalLink };
+      handleQrCode(event)(dispatch, getState);
+      expect(historyPush).not.toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
   });
 });

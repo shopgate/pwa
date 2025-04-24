@@ -35,7 +35,7 @@ class ButtonLink extends Component {
 
   /**
    * Renders an ActionButton and handles link handling.
-   * @returns {XML}
+   * @returns {JSX.Element}
    */
   render() {
     const {

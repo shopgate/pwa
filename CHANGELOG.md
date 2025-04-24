@@ -1,5 +1,35 @@
 # Changelog
 
+## [v7.25.0](https://github.com/shopgate/pwa/compare/v7.24.7...v7.25.0) (2025-04-17)
+
+#### :rocket: Enhancement
+* [#1322](https://github.com/shopgate/pwa/pull/1322) Accessibility improvements ([@SaschaKrist](https://github.com/SaschaKrist))
+
+
+## [v7.24.7](https://github.com/shopgate/pwa/compare/v7.24.6...v7.24.7) (2025-04-02)
+
+#### :rocket: Enhancement
+* [#1341](https://github.com/shopgate/pwa/pull/1341) Add HTTPS URL support in QR code scanner ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.24.6](https://github.com/shopgate/pwa/compare/v7.24.5...v7.24.6) (2025-03-04)
+
+#### :rocket: Enhancement
+* [#1335](https://github.com/shopgate/pwa/pull/1335) Updated native-modules dependency ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.24.5](https://github.com/shopgate/pwa/compare/v7.24.4...v7.24.5) (2025-03-04)
+
+#### :rocket: Enhancement
+* [#1334](https://github.com/shopgate/pwa/pull/1334) Added human readable class to container of the image component ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.24.3](https://github.com/shopgate/pwa/compare/v7.24.2...v7.24.3) (2025-03-03)
+
+#### :bug: Bug Fix
+* [#1333](https://github.com/shopgate/pwa/pull/1333) Re-added some accidentally removed human readable classes ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.24.0](https://github.com/shopgate/pwa/compare/v7.23.10...v7.24.0) (2025-02-14)
 
 #### :rocket: Enhancement

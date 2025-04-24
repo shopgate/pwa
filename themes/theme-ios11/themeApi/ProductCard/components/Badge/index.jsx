@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Portal } from '@shopgate/pwa-common/components';
+import { Portal } from '@shopgate/engage/components';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import {
   PRODUCT_ITEM_DISCOUNT,
@@ -10,7 +10,7 @@ import {
 import styles from './style';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function ProductCardBadge({ productId, style, value }) {
   const props = { productId };

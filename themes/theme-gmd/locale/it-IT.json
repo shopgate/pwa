@@ -230,7 +230,8 @@
     "description_heading": "A riguardo",
     "share": "Condividi prodotto",
     "pick_an_attribute": "Seleziona un {0}",
-    "tax_disclaimer": "* IVA inclusa più le spese di spedizione, se applicabile",
+    "tax_disclaimer": "* IVA inclusa, eventualmente più spese di spedizione",
+    "tax_disclaimer_aria": "IVA inclusa, eventualmente più spese di spedizione",
     "adding_item": "{count, plural, =1 {Un prodotto viene aggiunto} other {Vengono aggiunti {count} prodotti}}",
     "pick_option_first": "Prima scegli un'opzione. {option}",
     "fill_out_required_input_first": "Prima inserisci i dati richiesti.",
@@ -589,6 +590,12 @@
     "noResult": {
       "qrCode": "Non siamo riusciti a trovare alcun risultato per questo codice QR.",
       "barCode": "Nessun prodotto trovato."
+    },
+    "flashlight": {
+      "on": "Il flash è acceso",
+      "off": "Il flash è spento",
+      "switchOn": "Accendi il flash",
+      "switchOff": "Spegni il flash"
     }
   },
   "permissions": {

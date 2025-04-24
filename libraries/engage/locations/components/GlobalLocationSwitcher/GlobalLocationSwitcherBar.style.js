@@ -24,9 +24,6 @@ export const innerStandalone = css({
 
 export const heading = css({
   paddingRight: variables.gap.small,
-  ':after': {
-    content: ':',
-  },
 }).toString();
 
 export const name = css({

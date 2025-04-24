@@ -4,7 +4,6 @@ exports[`<Ellipsis /> should render 1`] = `
 <Dotdotdot
   clamp={3}
   className=" common__ellipsis"
-  ellipsis="..."
   tagName="div"
   truncationChar="…"
   useNativeClamp={true}

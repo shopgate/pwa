@@ -24,7 +24,7 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
   unwrapped={false}
 >
   <div
-    className="css-vfdozt"
+    className="css-vfdozt common__image__container"
   />
 </Image>
 `;
@@ -53,7 +53,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
   unwrapped={false}
 >
   <div
-    className="css-vfdozt"
+    className="css-vfdozt common__image__container"
   >
     <ForwardRef
       alt={null}
@@ -70,13 +70,13 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
     >
       <img
         alt={null}
+        aria-hidden={true}
         aria-label={null}
-        className="css-f45h63 common__image"
+        className="css-ax9x1t common__image"
         data-test-id="image"
         loading="lazy"
         onError={[Function]}
         onLoad={[Function]}
-        role="presentation"
         src="foo/bar"
         style={
           Object {

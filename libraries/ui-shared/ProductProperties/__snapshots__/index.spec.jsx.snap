@@ -75,13 +75,11 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
     >
       <Ellipsis
         className=""
-        ellipsis="..."
         rows={2}
       >
         <Dotdotdot
           clamp={2}
           className=" common__ellipsis"
-          ellipsis="..."
           tagName="div"
           truncationChar="…"
           useNativeClamp={true}
@@ -99,13 +97,11 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
     >
       <Ellipsis
         className=""
-        ellipsis="..."
         rows={2}
       >
         <Dotdotdot
           clamp={2}
           className=" common__ellipsis"
-          ellipsis="..."
           tagName="div"
           truncationChar="…"
           useNativeClamp={true}

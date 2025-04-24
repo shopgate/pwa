@@ -233,6 +233,7 @@
     "share": "Dela produkt",
     "pick_an_attribute": "{0} välj",
     "tax_disclaimer": "* Inkl. moms eventuellt plus fraktkostnader",
+    "tax_disclaimer_aria": "Inklusive moms, eventuellt tillkommer fraktkostnader",
     "item_added": "{count, plural, =0 {# inga Produkter} =1 {{count} Produkt tillagd} other {{count} Produkter tillagda}}",
     "item_added_unit": "{count} {unit} tillagd",
     "adding_item": "{count, plural, =1 {En produkt läggs till} other {{count} produkter läggs till}}",
@@ -566,7 +567,8 @@
     "more_menu": "Mer",
     "order_history": "Beställningshistorik",
     "profile": "Profil",
-    "back": "Tillbaka till {title}"
+    "back": "Tillbaka till {title}",
+    "open_menu": "Öppna meny"
   },
   "reviews": {
     "rating": "Betyg",
@@ -598,6 +600,12 @@
     "noResult": {
       "qrCode": "Vi kunde inte hitta något resultat för den här QR-koden.",
       "barCode": "Produkten hittades inte."
+    },
+    "flashlight": {
+      "on": "Blixtljuset är på",
+      "off": "Blixtljuset är av",
+      "switchOn": "Sätt på blixtljuset",
+      "switchOff": "Stäng av blixtljuset"
     }
   },
   "permissions": {

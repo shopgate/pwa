@@ -10,7 +10,9 @@ import { address as container, addressIcon, stockInfoContainer } from './Store.s
 /**
  * Renders the pickup location's address information.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Object} props.address The address object.
+ * @param {boolean} props.pure Whether to only render the address without any wrapper components.
+ * @returns {JSX.Element}
  */
 export function StoreAddress({ address, pure }) {
   const store = React.useContext(StoreContext);
@@ -50,7 +52,7 @@ export function StoreAddress({ address, pure }) {
 
   return (
     <div className={container}>
-      <div className={addressIcon}>
+      <div className={addressIcon} aria-hidden>
         <LocationIcon />
       </div>
       <div>

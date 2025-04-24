@@ -28,7 +28,6 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
-    'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
@@ -48,7 +47,6 @@ class ProductImage extends Component {
   static defaultProps = {
     alt: null,
     animating: true,
-    'aria-hidden': false,
     className: null,
     forcePlaceholder: false,
     highestResolutionLoaded: () => { },
@@ -135,7 +133,7 @@ class ProductImage extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {
@@ -156,7 +154,6 @@ class ProductImage extends Component {
               [styles.innerShadow]: showInnerShadow,
               [className]: !!className,
             })}
-            aria-hidden={this.props['aria-hidden']}
           >
             { placeholderSrc ? (
               <ProductImagePlaceholder
@@ -165,11 +162,10 @@ class ProductImage extends Component {
                 noBackground={noBackground}
               />
             ) : (
-              <div className={styles.placeholderContent} data-test-id="placeHolder">
+              <div aria-hidden className={styles.placeholderContent} data-test-id="placeHolder">
                 <PlaceholderIcon className={styles.placeholder} />
               </div>
             )}
-
           </div>
         </SurroundPortals>
       );
@@ -184,12 +180,13 @@ class ProductImage extends Component {
           resolutions: this.props.resolutions,
         }}
       >
-        <div aria-hidden={this.props['aria-hidden']} className={`${className} engage__product__product-image`} aria-label={this.props.alt}>
+        <div className={`${className} engage__product__product-image`}>
           <Image
             {...this.props}
             className={showInnerShadow ? styles.innerShadow : ''}
             backgroundColor={noBackground ? 'transparent' : colors.light}
             onError={this.imageLoadingFailed}
+            aria-hidden={!this.props.alt}
           />
         </div>
       </SurroundPortals>

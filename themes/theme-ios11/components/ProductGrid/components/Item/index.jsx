@@ -12,21 +12,21 @@ import styles, { itemDetails } from './style';
 /**
  * The Product Grid Item component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @param {Object} props.product The product.
+ * @param {Object} props.display The display object.
+ * @return {JSX.Element}
  */
 const Item = ({ product, display }) => (
   <div className={`${styles} theme__product-grid__item`}>
     <Link
-      tagName="a"
+      role="none"
       href={getProductRoute(product.id)}
       state={{ title: product.name }}
-      aria-hidden={!product.featuredMedia?.altText}
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
           type={product.featuredMedia.type}
           url={product.featuredMedia.url}
-          altText={product.featuredMedia.altText || product.name}
         />
         : <ItemImage
           productId={product.id}
@@ -43,7 +43,7 @@ const Item = ({ product, display }) => (
     </ProductBadges>
     <div className={itemDetails}>
       <Link
-        tagName="a"
+        tabIndex={0}
         href={getProductRoute(product.id)}
         state={{ title: product.name }}
       >

@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import connect from './connector';
 
 export const MODAL_EVENTS = {
@@ -12,7 +11,7 @@ export const MODAL_EVENTS = {
  * The ModalContainer is connected to the modal state
  * and renders the currently active modal.
  * @param {Object} props The component props.
- * @return {JSX|null}
+ * @returns {JSX.Element}
  */
 const ModalContainer = ({
   component,
@@ -20,24 +19,13 @@ const ModalContainer = ({
   dismiss,
   modal,
 }) => {
-  const ref = useRef(false);
-  useEffect(() => {
-    if (modal && !ref.current) {
-      ref.current = true;
-      UIEvents.emit(MODAL_EVENTS.SHOW);
-    }
-    if (!modal && ref.current) {
-      ref.current = false;
-      UIEvents.emit(MODAL_EVENTS.HIDE);
-    }
-  }, [modal]);
-
   if (!modal) {
     return null;
   }
 
   const componentProps = {
     modal,
+    // A11Y focus is handled by the modal container itself.
     onConfirm: () => confirm(modal.id),
     onDismiss: () => dismiss(modal.id),
   };
