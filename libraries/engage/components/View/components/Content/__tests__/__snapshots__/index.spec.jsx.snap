@@ -17,7 +17,7 @@ exports[`engage > components > view > components > content should render content
     style={
       Object {
         "overflow": "auto",
-        "paddingBottom": "calc(var(--page-content-offset) + 0px)",
+        "paddingBottom": "calc(var(--page-content-offset-bottom) + 0px)",
       }
     }
   >
