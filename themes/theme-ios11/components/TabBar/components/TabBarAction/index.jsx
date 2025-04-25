@@ -32,6 +32,12 @@ const TabBarAction = ({
 }) => {
   const { showLabels = true } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
+  // Remove some props that are not meant for the Button component.
+  const {
+    // eslint-disable-next-line react/prop-types
+    dispatch, historyPush, path, type, ...buttonProps
+  } = props;
+
   const className = classNames(
     'theme__tab-bar__tab-bar-action',
     style.container,
@@ -39,12 +45,6 @@ const TabBarAction = ({
     { 'tab-active': isHighlighted },
     { [style.regular]: !isHighlighted }
   );
-
-  // Remove some props that are not meant for the Button component.
-  const {
-    // eslint-disable-next-line react/prop-types
-    dispatch, historyPush, path, type, ...buttonProps
-  } = props;
 
   return (
     <Button
@@ -54,11 +54,12 @@ const TabBarAction = ({
       aria-hidden={ariaHidden}
       aria-label={ariaLabel}
       tabIndex={tabIndex}
+      data-type={type}
       role="tab"
       {...buttonProps}
     >
       {Icon}
-      <div className={style.label} data-test-id={label}>
+      <div className={classNames(style.label, 'theme__tab-bar__tab-bar-action__label')} data-test-id={label}>
         {showLabels && <I18n.Text string={label} />}
       </div>
       {children}
