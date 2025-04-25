@@ -43,7 +43,7 @@ const RelationsSliderContent = memo(({ products: { products, productsCount }, ge
         classNames={{ container: styles.sliderContainer }}
       >
         {products.map(product => (
-          <Swiper.Item key={product.id}>
+          <Swiper.Item key={product.id} className={styles.sliderItem}>
             <Card className={styles.card}>
               <ProductCard
                 product={product}
