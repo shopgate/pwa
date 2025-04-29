@@ -38,9 +38,7 @@ export function StoreOpeningHours({ hours, pure }) {
   return (
     <StoreDetailsLine icon={TimeIcon}>
       <I18n.Text string="locations.hours_details" className={detailsSecondary} />
-      <table>
-        {storeHours}
-      </table>
+      {storeHours}
     </StoreDetailsLine>
   );
 }
