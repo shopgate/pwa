@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.26.0](https://github.com/shopgate/pwa/compare/v7.25.0...v7.26.0) (2025-04-29)
+
+#### :rocket: Enhancement
+* [#1326](https://github.com/shopgate/pwa/pull/1326) Improve accessibility for store detail page ([@SaschaKrist](https://github.com/SaschaKrist))
+
+
 ## [v7.25.0](https://github.com/shopgate/pwa/compare/v7.24.7...v7.25.0) (2025-04-17)
 
 #### :rocket: Enhancement
