@@ -73,6 +73,9 @@ const TabBar = ({
 
   // Effect to measure the tab bar height
   useEffect(() => {
+    // No measure update when the tab bar is not visible
+    if (!isVisible) return undefined;
+
     /**
      * Sets the CSS property for the tab bar height.
      */
@@ -86,7 +89,7 @@ const TabBar = ({
 
     window.addEventListener('resize', measureTabBarHeight);
     return () => window.removeEventListener('resize', measureTabBarHeight);
-  }, []);
+  }, [isVisible]);
 
   // Effect to maintain the aria-hidden attribute based on modal count
   useEffect(() => {
@@ -226,9 +229,9 @@ const TabBar = ({
           className={tabBarClasses.container}
           aria-hidden={ariaHidden}
           onTransitionEnd={handleTransitionEnd}
+          ref={tabBarRef}
         >
           <div
-            ref={tabBarRef}
             className={tabBarClasses.component}
             data-test-id="tabBar"
             role="tablist"
