@@ -2,11 +2,13 @@ import React, {
   useMemo, useEffect, useCallback, useState, useRef, memo,
 } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { KeyboardConsumer, SurroundPortals } from '@shopgate/engage/components';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { useWidgetSettings } from '@shopgate/engage/core';
+import { getAreSimulatedInsetsInjected } from '@shopgate/engage/development/selectors';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -71,6 +73,8 @@ const TabBar = ({
 
   const tabBarRef = useRef(null);
 
+  const hasSimulatedSafeAreaInsets = useSelector(getAreSimulatedInsetsInjected);
+
   // Effect to measure the tab bar height
   useEffect(() => {
     // No measure update when the tab bar is not visible
@@ -89,7 +93,7 @@ const TabBar = ({
 
     window.addEventListener('resize', measureTabBarHeight);
     return () => window.removeEventListener('resize', measureTabBarHeight);
-  }, [isVisible]);
+  }, [isVisible, hasSimulatedSafeAreaInsets]);
 
   // Effect to maintain the aria-hidden attribute based on modal count
   useEffect(() => {
