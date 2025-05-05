@@ -275,7 +275,7 @@
           "@shopgate/engage/components/TabBar": {
             "showLabels": true,
             "hideOnScroll": false,
-            "variant": "default",
+            "variant": "docked",
             "transition": "fade"
           },
           "@shopgate/engage/product/ProductGrid": {
