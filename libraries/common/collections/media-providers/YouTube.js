@@ -79,6 +79,10 @@ class YouTubeMediaProvider extends MediaProvider {
    * @returns {YouTubeMediaProvider}
    */
   stop() {
+    // Select all iframes in the document. Actually this should be done via the iframes
+    // registered in this.containers, but that doesn't seem to work reliably anymore.
+    // Since we had to find a quick fix for CURB-5033 we now select all iframes in the document
+    // via the media container selector and then stop the videos.
     const iframes = this.getMediaContainers(document);
 
     iframes.forEach((iframe) => {
