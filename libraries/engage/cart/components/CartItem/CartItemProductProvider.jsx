@@ -46,6 +46,7 @@ const CartItemProductProvider = ({
     discountAmount,
     extendedPrice,
     appliedPromotions,
+    isExternal = false,
   } = cartItem;
   const [editMode, setEditMode] = useState(false);
   const cartItemRef = useRef();
@@ -103,6 +104,8 @@ const CartItemProductProvider = ({
       toggleEditMode,
       editMode,
       isEditable,
+      isLinkable: !isExternal,
+      allowQuantityChange: !isExternal,
       cartItemId: id,
       cartItem: {
         id,
@@ -130,6 +133,7 @@ const CartItemProductProvider = ({
       handleUpdate,
       id,
       isEditable,
+      isExternal,
       messages,
       product,
       status,

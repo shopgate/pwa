@@ -40,7 +40,7 @@ export function CartItemProductTitle({ value, productId }) {
 
   const context = useCartItemProduct();
   const {
-    handleRemove, toggleEditMode, cartItem, isEditable,
+    handleRemove, toggleEditMode, cartItem, isEditable, isLinkable,
   } = context;
 
   const handleChangeLocationClick = useCallback(() => {
@@ -61,7 +61,7 @@ export function CartItemProductTitle({ value, productId }) {
     <Grid>
       <Grid.Item grow={1}>
         <ConditionalWrapper
-          condition={isEditable}
+          condition={isEditable && isLinkable}
           wrapper={children =>
             <TextLink href={`${ITEM_PATH}/${bin2hex(productId)}`}>
               {children}
