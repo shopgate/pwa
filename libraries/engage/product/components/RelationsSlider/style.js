@@ -21,6 +21,10 @@ export const sliderContainer = css({
   padding: `${variables.gap.small}px 0 ${variables.gap.big}px`,
 }).toString();
 
+export const sliderItem = css({
+  paddingBottom: 10,
+}).toString();
+
 export const card = css({
   height: '100%',
   margin: `0 ${variables.gap.small}px`,

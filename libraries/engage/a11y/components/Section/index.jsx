@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import kebabCase from 'lodash/kebabCase';
 import { I18n } from '@shopgate/engage/components';
-import { VisuallyHidden } from '../index';
+import VisuallyHidden from '../VisuallyHidden';
 
 /**
  * Checks the section ref has suitable child nodes.
