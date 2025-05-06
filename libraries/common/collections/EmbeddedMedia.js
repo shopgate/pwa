@@ -73,6 +73,19 @@ class EmbeddedMedia {
   }
 
   /**
+   * Applies optimizations to embedded media iframes within the given container.
+   * Common enhancements include adding responsive wrappers and appropriate
+   * sandbox attributes to improve security and layout behavior.
+   *
+   * @param {Document} document - The DOM document containing iframes to optimize.
+   */
+  applyIframeOptimizations(document) {
+    this.providers.forEach((provider) => {
+      provider.applyIframeOptimizations(document);
+    });
+  }
+
+  /**
    * Stops all playing media within the DOM containers.
    */
   stop() {
