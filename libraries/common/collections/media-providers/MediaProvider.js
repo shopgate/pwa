@@ -60,6 +60,18 @@ class MediaProvider {
   }
 
   /**
+   * Applies optimizations to embedded media iframes within the given container.
+   * Common enhancements include adding responsive wrappers and appropriate
+   * sandbox attributes to improve security and layout behavior.
+   *
+   * @param {Document} document - The DOM document containing iframes to optimize.
+   * @returns {MediaProvider}
+   */
+  applyIframeOptimizations() {
+    return this;
+  }
+
+  /**
    * Optimizes video container to make it responsive.
    * @param {Element} container A DOM container.
    * @returns {MediaProvider}
