@@ -30,14 +30,34 @@ class YouTubeMediaProvider extends MediaProvider {
       return this;
     }
 
+    this.containers.set(container, iframes);
+
+    return this;
+  }
+
+  /**
+   * Applies optimizations to embedded media iframes within the given container.
+   * Common enhancements include adding responsive wrappers and appropriate
+   * sandbox attributes to improve security and layout behavior.
+   *
+   * @param {Document} document - The DOM document containing iframes to optimize.
+   * @returns {YouTubeMediaProvider}
+   */
+  applyIframeOptimizations(document) {
+    const iframes = this.getMediaContainers(document);
+
+    if (!iframes.length) {
+      return this;
+    }
+
     // Update the video urls to enable stopping videos via the event API.
     iframes.forEach((iframe, index) => {
       // Block clicks on YouTube icon
-      iframes[index].sandbox = 'allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation';
+      iframes[index].setAttribute('sandbox', 'allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation');
 
       this.responsify(iframe);
 
-      const { src } = iframe;
+      const src = iframe.getAttribute('src');
 
       const [url, query] = src.split('?');
       const urlParams = new URLSearchParams(query);
@@ -47,10 +67,8 @@ class YouTubeMediaProvider extends MediaProvider {
       // Enable controls to avoid the iframe not being resumable because of controls=0 param on ios.
       urlParams.set('controls', 1);
 
-      iframes[index].src = `${url}?${urlParams.toString()}`;
+      iframes[index].setAttribute('src', `${url}?${urlParams.toString()}`);
     });
-
-    this.containers.set(container, iframes);
 
     return this;
   }
@@ -61,12 +79,23 @@ class YouTubeMediaProvider extends MediaProvider {
    * @returns {YouTubeMediaProvider}
    */
   stop() {
-    this.containers.forEach((iframes) => {
-      iframes.forEach((iframe) => {
-        if (iframe.contentWindow && iframe.contentWindow.postMessage) {
-          iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-        }
-      });
+    // Select all iframes in the document. Actually this should be done via the iframes
+    // registered in this.containers, but that doesn't seem to work reliably anymore.
+    // Since we had to find a quick fix for CURB-5033 we now select all iframes in the document
+    // via the media container selector and then stop the videos.
+    const iframes = this.getMediaContainers(document);
+
+    iframes.forEach((iframe) => {
+      if (typeof iframe?.contentWindow?.postMessage === 'function') {
+        iframe.contentWindow.postMessage(
+          JSON.stringify({
+            event: 'command',
+            func: 'stopVideo',
+            args: [],
+          }),
+          '*'
+        );
+      }
     });
 
     return this;
