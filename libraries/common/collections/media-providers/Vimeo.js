@@ -71,15 +71,36 @@ class VimeoMediaProvider extends MediaProvider {
 
     const players = [];
 
-    iframes.forEach((iframe, index) => {
-      // Block clicks on Vimeo icon
-      iframes[index].sandbox = 'allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation';
-
-      this.responsify(iframe);
+    iframes.forEach((iframe) => {
       players.push(new window.Vimeo.Player(iframe));
     });
 
     this.containers.set(container, players);
+
+    return this;
+  }
+
+  /**
+   * Applies optimizations to embedded media iframes within the given container.
+   * Common enhancements include adding responsive wrappers and appropriate
+   * sandbox attributes to improve security and layout behavior.
+   *
+   * @param {Document} document - The DOM document containing iframes to optimize.
+   * @returns {YouTubeMediaProvider}
+   */
+  applyIframeOptimizations(document) {
+    const iframes = this.getMediaContainers(document);
+
+    if (!iframes.length) {
+      return this;
+    }
+
+    iframes.forEach((iframe, index) => {
+      // Block clicks on Vimeo icon
+      iframes[index].setAttribute('sandbox', 'allow-forms allow-scripts allow-pointer-lock allow-same-origin allow-top-navigation');
+
+      this.responsify(iframe);
+    });
 
     return this;
   }
@@ -90,10 +111,22 @@ class VimeoMediaProvider extends MediaProvider {
    * @returns {VimeoMediaProvider}
    */
   stop() {
-    this.containers.forEach((players) => {
-      players.forEach((player) => {
-        player.pause();
-      });
+    // Select all iframes in the document. Actually this should be done via the iframes
+    // registered in this.containers, but that doesn't seem to work reliably anymore.
+    // Since we had to find a quick fix for CURB-5033 we now select all iframes in the document
+    // via the media container selector and then stop the videos.
+    const iframes = this.getMediaContainers(document);
+
+    iframes.forEach((iframe) => {
+      try {
+        const player = new window.Vimeo.Player(iframe);
+
+        player.pause().catch(() => {
+          // Ignore errors
+        });
+      } catch (e) {
+        // Ignore errors
+      }
     });
 
     return this;
