@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.24.8](https://github.com/shopgate/pwa/compare/v7.24.7...v7.24.8) (2025-05-06)
+
+#### :bug: Bug Fix
+* [#1348](https://github.com/shopgate/pwa/pull/1348) Fixed a YouTube iFrame Issue on recent iOS versions ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.24.7](https://github.com/shopgate/pwa/compare/v7.24.6...v7.24.7) (2025-04-02)
 
 #### :rocket: Enhancement
