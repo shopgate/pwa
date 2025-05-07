@@ -13,7 +13,7 @@ import { useRef, useCallback } from 'react';
 
 /**
  * Prevents the default context menu from appearing on long press.
- * @param {Object} e The event object.
+ * @param {MouseEvent} e The event object.
  */
 const preventContextMenu = (e) => {
   e.preventDefault();
