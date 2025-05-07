@@ -47,7 +47,11 @@ const StoreSelectLocationButton = ({ setPostalCode }) => {
         className={selectLocationButton.toString()}
         disabled={(isLoading || store?.isComingSoon || (!noInventory && !isAvailable))}
       >
-        {i18n.text('locations.select_location')}
+        {i18n.text(
+          store?.isComingSoon ?
+            'location.comingSoon' :
+            'locations.select_location'
+        )}
       </RippleButton>
     </div>
   );

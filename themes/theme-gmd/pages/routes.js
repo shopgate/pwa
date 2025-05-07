@@ -28,3 +28,4 @@ export const ForgotPassword = lazy(() => import('./ForgotPassword'));
 export const Account = lazy(() => import('./Account'));
 export const AccountContact = lazy(() => import('./Account/Contact'));
 export const StoreFinder = lazy(() => import('./StoreFinder'));
+export const StoreDetails = lazy(() => import('./StoreDetails'));

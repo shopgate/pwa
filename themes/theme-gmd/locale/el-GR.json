@@ -31,6 +31,7 @@
     "register": "Εγγραφή",
     "order_details": "Λεπτομέρειες παραγγελίας",
     "store_finder": "Εντοπισμός καταστήματος",
+    "store_details": "Λεπτομέρειες καταστήματος",
     "order_history": "Ιστορικό παραγγελιών",
     "profile": "Προφίλ",
     "your_account": "Ο λογαριασμός μου",
@@ -270,6 +271,19 @@
       "properties": "Ιδιότητες"
     }
   },
+  "location": {
+    "myStore": "Το κατάστημά μου",
+    "makeMyStore": "Δημιουργία του καταστήματός μου",
+    "getDirections": "Πάρε οδηγίες",
+    "phone": "Τηλέφωνο",
+    "storeHours": "Ώρες λειτουργίας",
+    "storesNearby": "Καταστήματα κοντά",
+    "open": "Ανοιχτό",
+    "findMoreStores": "Βρείτε περισσότερα καταστήματα",
+    "noStoresNearby": "Δεν βρέθηκαν καταστήματα κοντά στην επιλεγμένη τοποθεσία",
+    "preferredLocationChanged": "Η προτιμώμενη τοποθεσία σας έχει αλλάξει σε {storeName}",
+    "comingSoon": "Σύντομα"
+  },
   "locations": {
     "headline": "Καταστήματα κοντά σας",
     "details": "Λεπτομέρειες",
@@ -306,6 +320,7 @@
     "search_placeholder": "Ταχυδρομικός κώδικας",
     "change_location": "Αλλαγή καταστήματος",
     "select_location": "Επιλέξτε κατάστημα",
+    "store_info": "Πληροφορίες καταστήματος",
     "get_directions": "Οδηγίες",
     "store_hours": "Ωράριο καταστήματος",
     "radius_km": "{radius} χλμ.",

@@ -187,7 +187,7 @@ const config = {
       },
       {
         test: /\.(js|jsx)$/,
-        exclude: new RegExp(`node_modules\\b(?!\\${path.sep}@shopgate)\\b.*`),
+        exclude: new RegExp(`node_modules\\b(?!${path.sep}@shopgate|${path.sep}react-leaflet|${path.sep}@react-leaflet)\\b.*`),
         use: [
           {
             loader: 'babel-loader',

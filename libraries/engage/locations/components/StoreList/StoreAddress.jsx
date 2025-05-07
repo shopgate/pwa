@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { ResponsiveContainer } from '@shopgate/engage/components';
 import { StoreContext } from './Store.context';
 import { FulfillmentContext } from '../../locations.context';
 import { StockInfo } from '../StockInfo';
@@ -58,11 +57,11 @@ export function StoreAddress({ address, pure }) {
       </div>
       <div>
         {addressContent}
-        <ResponsiveContainer breakpoint="<sm" appAlways>
+        {product && (
           <div className={stockInfoContainer}>
             <StockInfo location={store} product={product} showStoreName={false} />
           </div>
-        </ResponsiveContainer>
+        )}
       </div>
     </div>
   );

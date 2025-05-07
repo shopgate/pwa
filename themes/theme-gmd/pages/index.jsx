@@ -46,7 +46,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
 import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
-import { STORE_FINDER_PATTERN } from '@shopgate/engage/locations/constants';
+import { STORE_FINDER_PATTERN, STORE_DETAILS_PATTERN } from '@shopgate/engage/locations/constants';
 import { GlobalLocationSelector } from '@shopgate/engage/locations/components';
 import FavoritesListChooser from '@shopgate/engage/favorites/components/ListChooser';
 
@@ -254,6 +254,10 @@ const Pages = ({ store }) => {
                       <Route
                         pattern={STORE_FINDER_PATTERN}
                         component={routes.StoreFinder}
+                      />
+                      <Route
+                        pattern={STORE_DETAILS_PATTERN}
+                        component={routes.StoreDetails}
                       />
                       <Route.NotFound component={PageNotFound} />
                       {React.Children.map(routePortals, Component => Component)}

@@ -31,6 +31,7 @@
     "register": "Register",
     "order_details": "Order Details",
     "store_finder": "Store Finder",
+    "store_details": "Store Details",
     "order_history": "Order History",
     "profile": "Profile",
     "your_account": "My Account",
@@ -270,6 +271,19 @@
       "properties": "Properties"
     }
   },
+  "location": {
+    "myStore": "My Store",
+    "makeMyStore": "Make My Store",
+    "getDirections": "Get Directions",
+    "phone": "Phone",
+    "storeHours": "Store Hours",
+    "storesNearby": "Other Nearby Stores",
+    "open": "Open",
+    "findMoreStores": "Find More Stores",
+    "noStoresNearby": "No stores found near the selected location",
+    "preferredLocationChanged": "Your preferred location has been changed to {storeName}",
+    "comingSoon": "Coming Soon"
+  },
   "locations": {
     "headline": "Stores near you",
     "details": "Store Details",
@@ -306,6 +320,7 @@
     "search_placeholder": "ZIP code",
     "change_location": "Change location",
     "select_location": "Select location",
+    "store_info": "Store Info",
     "get_directions": "Get Directions",
     "store_hours": "Store Hours",
     "radius_km": "{radius} km",

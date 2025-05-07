@@ -31,6 +31,7 @@
     "register": "Rekisteröidy",
     "order_details": "Tilaustiedot",
     "store_finder": "Myymälähaku",
+    "store_details": "Myymälätiedot",
     "order_history": "Tilaushistoria",
     "profile": "Profiili",
     "your_account": "Oma tili",
@@ -270,6 +271,19 @@
       "properties": "Ominaisuudet"
     }
   },
+  "location": {
+    "myStore": "Myymäläni",
+    "makeMyStore": "Luo myymäläni",
+    "getDirections": "Hanki reittiohjeet",
+    "phone": "Puhelin",
+    "storeHours": "Aukioloajat",
+    "storesNearby": "Läheiset kaupat",
+    "open": "Avoinna",
+    "findMoreStores": "Etsi lisää myymälöitä",
+    "noStoresNearby": "No se han encontrado tiendas cerca de la ubicación seleccionada",
+    "preferredLocationChanged": "Suositeltava sijaintisi on muutettu seuraavasti {storeName}",
+    "comingSoon": "Tulossa pian"
+  },
   "locations": {
     "headline": "Myymälät lähellä sinua",
     "details": "Tiedot",
@@ -306,6 +320,7 @@
     "search_placeholder": "Postinumero",
     "change_location": "Vaihda myymälä",
     "select_location": "Valitse myymälä",
+    "store_info": "Myymälätiedot",
     "get_directions": "Näytä reitti",
     "store_hours": "Aukioloajat",
     "radius_km": "{radius} km",

@@ -37,23 +37,23 @@ export function StoreAddressShort({ address, showFull }) {
       <StoreDetailsLine icon={LocationIcon} linked>
         { showFull && (
           <Fragment>
-            <div className={detailsPrimary}>
+            <p className={detailsPrimary}>
               {address.street}
-            </div>
+            </p>
             {(address.street2 && address.street2 !== '') && (
-              <div className={detailsPrimary}>
+              <p className={detailsPrimary}>
                 {address.street2}
-              </div>
+              </p>
             )}
             {(address.street3 && address.street3 !== '') && (
-              <div className={detailsPrimary}>
+              <p className={detailsPrimary}>
                 {address.street3}
-              </div>
+              </p>
             )}
             {(address.street4 && address.street4 !== '') && (
-              <div className={detailsPrimary}>
+              <p className={detailsPrimary}>
                 {address.street4}
-              </div>
+              </p>
             )}
           </Fragment>
         )}
@@ -61,7 +61,11 @@ export function StoreAddressShort({ address, showFull }) {
         <Ellipsis rows={1} className={detailsPrimary}>
           {i18n.text('locations.address', address)}
         </Ellipsis>
-        <I18n.Text string="locations.map_open" className={detailsSecondary} />
+        <I18n.Text
+          string="locations.map_open"
+          className={detailsSecondary}
+          aria-label={`: ${i18n.text('locations.map_open')}`}
+        />
       </StoreDetailsLine>
     </Link>
   );

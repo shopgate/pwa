@@ -31,6 +31,7 @@
     "register": "Registreren",
     "order_details": "Bestelgegevens",
     "store_finder": "Winkelzoeker",
+    "store_details": "Winkeldetails",
     "order_history": "Bestelgeschiedenis",
     "profile": "Profiel",
     "your_account": "Mijn Account",
@@ -270,6 +271,19 @@
       "properties": "Eigenschappen"
     }
   },
+  "location": {
+    "myStore": "Mijn winkel",
+    "makeMyStore": "Maak mijn winkel",
+    "getDirections": "Krijg routebeschrijving",
+    "phone": "Telefoon",
+    "storeHours": "Openingstijden",
+    "storesNearby": "Winkels in de buurt",
+    "open": "Open",
+    "findMoreStores": "Vind meer winkels",
+    "noStoresNearby": "Geen winkels gevonden in de buurt van de geselecteerde locatie",
+    "preferredLocationChanged": "Uw voorkeurslocatie is gewijzigd in {storeName}",
+    "comingSoon": "Binnenkort beschikbaar"
+  },
   "locations": {
     "headline": "Winkels in uw buurt",
     "details": "Details",
@@ -306,6 +320,7 @@
     "search_placeholder": "Postcode",
     "change_location": "Winkel wijzigen",
     "select_location": "Winkel selecteren",
+    "store_info": "Winkelgegevens",
     "get_directions": "Route plannen",
     "store_hours": "Openingstijden",
     "radius_km": "{radius} km",

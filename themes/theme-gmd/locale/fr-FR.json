@@ -31,6 +31,7 @@
     "register": "S'inscrire",
     "order_details": "Détails de la commande",
     "store_finder": "Trouver un magasin",
+    "store_details": "Détails du magasin",
     "order_history": "Historique des commandes",
     "profile": "Profil",
     "your_account": "Mon compte",
@@ -270,6 +271,19 @@
       "properties": "Propriétés"
     }
   },
+  "location": {
+    "myStore": "Mon magasin",
+    "makeMyStore": "Créer mon magasin",
+    "getDirections": "Obtenir des directions",
+    "phone": "Téléphone",
+    "storeHours": "Horaires d'ouverture",
+    "storesNearby": "Magasins à proximité",
+    "open": "Ouvert",
+    "findMoreStores": "Trouver plus de magasins",
+    "noStoresNearby": "Aucun magasin trouvé à proximité du site choisi",
+    "preferredLocationChanged": "Votre lieu de travail préféré a été modifié en {storeName}",
+    "comingSoon": "Bientôt disponible"
+  },
   "locations": {
     "headline": "Magasins près de chez vous",
     "details": "Détails",
@@ -306,6 +320,7 @@
     "search_placeholder": "Code postal",
     "change_location": "Changer de magasin",
     "select_location": "Sélectionner un magasin",
+    "store_info": "Informations sur le magasin",
     "get_directions": "Obtenir un itinéraire",
     "store_hours": "Heures d'ouverture",
     "radius_km": "{radius} km",
