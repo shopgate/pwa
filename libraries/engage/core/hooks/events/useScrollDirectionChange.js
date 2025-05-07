@@ -31,7 +31,7 @@ import { viewScroll$ } from '@shopgate/engage/core/streams';
  * @param {ScrollCallback} [params.onScrollUp] Triggered on scroll up
  * @param {ScrollCallback} [params.onScrollDown] Triggered on scroll down past offset
  */
-function useScrollDirectionChange({
+export default function useScrollDirectionChange({
   enabled,
   offset = 100,
   onlyFireOnDirectionChange = true,
@@ -106,4 +106,3 @@ function useScrollDirectionChange({
   }, [enabled, handleScroll]);
 }
 
-export default useScrollDirectionChange;

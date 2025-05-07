@@ -1,11 +1,23 @@
 import { useRef, useCallback } from 'react';
 
 /**
+ * @typedef {Object} LongPressHandlers
+ * @property {Function} onMouseDown - Attach to `onMouseDown` event.
+ * @property {Function} onTouchStart - Attach to `onTouchStart` event.
+ * @property {Function} onMouseUp - Attach to `onMouseUp` event.
+ * @property {Function} onMouseLeave - Attach to `onMouseLeave` event.
+ * @property {Function} onTouchEnd - Attach to `onTouchEnd` event.
+ * @property {Function} onContextMenu - Attach to `onContextMenu` event to prevent the native
+ * context menu.
+ */
+
+/**
  * Prevents the default context menu from appearing on long press.
  * @param {Object} e The event object.
- * @returns {void}
  */
-const preventContextMenu = e => e.preventDefault();
+const preventContextMenu = (e) => {
+  e.preventDefault();
+};
 
 /**
  * Custom hook to handle long press interactions.
@@ -13,33 +25,13 @@ const preventContextMenu = e => e.preventDefault();
  * @param {Function} callback - Function to call on long press.
  * @param {Object} [options={}] - Configuration and lifecycle callbacks.
  * @param {number} [options.threshold=1000] - Duration in milliseconds to trigger long press.
- * @param {Function} [options.onStart] - This function is called when the user starts pressing.
- * @param {Function} [options.onFinish] - This function is called when a long press event finishes
- * successfully (the user releases after the threshold).
- * @param {Function} [options.onCancel] - This function is called when a press event is cancelled
- * (the user releases before the threshold).
+ * @param {Function} [options.onStart] - Called when the press starts.
+ * @param {Function} [options.onFinish] - Called when the long press completes.
+ * @param {Function} [options.onCancel] - Called when the press is cancelled before the threshold.
  *
- * @returns {Object} Event handlers to attach to an element.
- * @returns {Function} return.onMouseDown
- * @returns {Function} return.onTouchStart
- * @returns {Function} return.onMouseUp
- * @returns {Function} return.onMouseLeave
- * @returns {Function} return.onTouchEnd
- * @returns {Function} return.onContextMenu
- *
- * @example
- * const bind = useLongPress(
- *   () => console.log('Long Pressed!'),
- *   {
- *     threshold: 2000,
- *     onStart: () => console.log('Start'),
- *     onFinish: () => console.log('Finish'),
- *     onCancel: () => console.log('Cancel'),
- *   }
- * );
- * <div {...bind}>Press and Hold</div>
+ * @returns {LongPressHandlers} An object containing event handlers for mouse and touch events.
  */
-function useLongPress(
+export default function useLongPress(
   callback,
   {
     threshold = 1000,
@@ -85,5 +77,3 @@ function useLongPress(
     onContextMenu: preventContextMenu,
   };
 }
-
-export default useLongPress;

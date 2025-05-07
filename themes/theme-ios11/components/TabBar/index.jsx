@@ -2,13 +2,11 @@ import React, {
   useMemo, useEffect, useCallback, useState, useRef, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 import classNames from 'classnames';
 import { KeyboardConsumer, SurroundPortals } from '@shopgate/engage/components';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
-import { useWidgetSettings } from '@shopgate/engage/core';
-import { getAreSimulatedInsetsInjected } from '@shopgate/engage/development/selectors';
+import { useWidgetSettings, useElementSize } from '@shopgate/engage/core/hooks';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -65,7 +63,6 @@ const TabBar = ({
     hideOnScroll = false,
   } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
-  const [tabBarHeight, setTabBarHeight] = useState(0);
   const [ariaHidden, setAriaHidden] = useState(modalCount > 0);
   const [isScrolledOut, setIsScrolledOut] = useState(false);
   const [isVisible, setIsVisible] = useState(isVisibleProp);
@@ -73,27 +70,7 @@ const TabBar = ({
 
   const tabBarRef = useRef(null);
 
-  const hasSimulatedSafeAreaInsets = useSelector(getAreSimulatedInsetsInjected);
-
-  // Effect to measure the tab bar height
-  useEffect(() => {
-    // No measure update when the tab bar is not visible
-    if (!isVisible) return undefined;
-
-    /**
-     * Sets the CSS property for the tab bar height.
-     */
-    const measureTabBarHeight = () => {
-      if (tabBarRef.current) {
-        setTabBarHeight(tabBarRef.current.offsetHeight);
-      }
-    };
-
-    measureTabBarHeight();
-
-    window.addEventListener('resize', measureTabBarHeight);
-    return () => window.removeEventListener('resize', measureTabBarHeight);
-  }, [isVisible, hasSimulatedSafeAreaInsets]);
+  const { height: tabBarHeight } = useElementSize(tabBarRef);
 
   // Effect to maintain the aria-hidden attribute based on modal count
   useEffect(() => {
