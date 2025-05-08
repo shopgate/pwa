@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.27.0](https://github.com/shopgate/pwa/compare/v7.26.0...v7.27.0) (2025-05-08)
+
+#### :rocket: Enhancement
+* [#1346](https://github.com/shopgate/pwa/pull/1346) Add Detection for Android Edge-to-Edge Design Support ([@fkloes](https://github.com/fkloes))
+* [#1345](https://github.com/shopgate/pwa/pull/1345) Improved TabBar Customization + Dev Support for iOS Safe Areas ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.26.0](https://github.com/shopgate/pwa/compare/v7.25.1...v7.26.0) (2025-05-07)
 
 #### :rocket: Enhancement
