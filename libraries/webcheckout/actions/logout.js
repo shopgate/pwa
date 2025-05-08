@@ -7,9 +7,10 @@ import { getLogoutUrl, getLogoutSuccessUrl } from '../selectors';
 
 /**
  * Log out the current user.
+ * @param {{ headers: { [headerName: string]: string } }} options
  * @return {Function} A redux thunk.
  */
-const webCheckoutLogout = () => (dispatch) => {
+const webCheckoutLogout = (options = {}) => (dispatch) => {
   const logoutUrl = getLogoutUrl();
 
   if (!logoutUrl) {
@@ -19,9 +20,11 @@ const webCheckoutLogout = () => (dispatch) => {
 
   dispatch(requestShopifyLogout());
 
-  new HttpRequest(logoutUrl)
-    .setHeaders({ accept: 'text/html' })
-    .dispatch()
+  const request = new HttpRequest(logoutUrl)
+
+  if (options.headers) request.setHeaders(options.headers)
+
+  request.dispatch()
     .then((response) => {
       const {
         headers: { location } = {},
