@@ -4,10 +4,6 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
 <StoreHeader>
   <div
     className="css-1qplxu7"
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    role="button"
-    tabIndex={0}
   >
     <Grid>
       <Grid.Item

@@ -31,6 +31,7 @@
     "register": "Registrera",
     "order_details": "Beställningsdetaljer",
     "store_finder": "Butikssökare",
+    "store_details": "Butiksdetaljer",
     "order_history": "Beställningshistorik",
     "profile": "Profil",
     "your_account": "Mitt konto",
@@ -270,6 +271,19 @@
       "properties": "Egenskaper"
     }
   },
+  "location": {
+    "myStore": "Min butik",
+    "makeMyStore": "Skapa min butik",
+    "getDirections": "Hämta vägbeskrivning",
+    "phone": "Telefon",
+    "storeHours": "Öppettider",
+    "storesNearby": "Butiker i närheten",
+    "open": "Öppet",
+    "findMoreStores": "Hitta fler butiker",
+    "noStoresNearby": "Inga butiker hittades i närheten av den valda platsen",
+    "preferredLocationChanged": "Din önskade plats har ändrats till {storeName}",
+    "comingSoon": "Kommer snart"
+  },
   "locations": {
     "headline": "Butiker nära dig",
     "details": "Detaljer",
@@ -306,6 +320,7 @@
     "search_placeholder": "Postnummer",
     "change_location": "Byt butik",
     "select_location": "Välj butik",
+    "store_info": "Butiksinformation",
     "get_directions": "Få vägbeskrivning",
     "store_hours": "Öppettider",
     "radius_km": "{radius} km",

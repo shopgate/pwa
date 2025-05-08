@@ -1,9 +1,9 @@
-// @flow
 import * as React from 'react';
 import { css } from 'glamor';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import defaultsDeep from 'lodash/defaultsDeep';
+import PropTypes from 'prop-types';
 import { makeGetLocationInventory } from '../../selectors';
 import { getThemeSettings } from '../../../core';
 import { SurroundPortals } from '../../../components';
@@ -11,13 +11,6 @@ import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants';
 import { getAvailabilitySettings } from '../../helpers';
 import defaultSettings from './StockInfo.defaultSettings';
 import { StockInfoInventory } from './StockInfoInventory';
-import { type Location } from '../../locations.types';
-
-type Props = {
-  location: Location,
-  inventory: any,
-  className?: string | {} | null,
-}
 
 /**
  * Creates a mapper for redux.
@@ -38,7 +31,7 @@ const makeMapStateToProps = () => {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const StockInfoUnwrapped = ({ location, inventory, className }: Props) => {
+const StockInfoUnwrapped = ({ location, inventory, className }) => {
   const { locationStockInfo } = getThemeSettings('product') || {};
   const settings = defaultsDeep(locationStockInfo, defaultSettings);
 
@@ -88,8 +81,15 @@ const StockInfoUnwrapped = ({ location, inventory, className }: Props) => {
   );
 };
 
+StockInfoUnwrapped.propTypes = {
+  location: PropTypes.shape().isRequired,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.shape()]),
+  inventory: PropTypes.shape(),
+};
+
 StockInfoUnwrapped.defaultProps = {
   className: null,
+  inventory: null,
 };
 
 export const StockInfo = connect(makeMapStateToProps)(StockInfoUnwrapped);

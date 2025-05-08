@@ -61,6 +61,11 @@ export const SORT_CLOSEST_LOCATION_WITH_INVENTORY = 'closestLocationWithInventor
 export const DEFAULT_ROPE_FULFILLMENT_METHOD = 'defaultRopeFulfillmentMethod';
 
 export const USER_SEARCH_GEOLOCATION_LIFETIME = 3e5; // 5 minutes for geolocation expire
+export const NEARBY_LOCATIONS_LIMIT = 8;
+// 25 miles in km
+export const NEARBY_LOCATIONS_RADIUS = 25 * 1.60934;
+// 10 miles in km
+export const MAP_RADIUS_KM = 10 * 1.60934;
 
 export {
   STAGE_SELECT_STORE,
@@ -72,4 +77,6 @@ export {
 
 export {
   STORE_FINDER_PATTERN,
+  STORE_DETAILS_PATTERN,
+  STORE_DETAILS_PATH,
 } from './routes';

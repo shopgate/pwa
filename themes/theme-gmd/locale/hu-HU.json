@@ -31,6 +31,7 @@
     "register": "Regisztráció",
     "order_details": "Rendelés részletei",
     "store_finder": "Üzletkereső",
+    "store_details": "Üzlet részletei",
     "order_history": "Rendelési előzmények",
     "profile": "Profil",
     "your_account": "Saját fiók",
@@ -270,6 +271,19 @@
       "properties": "Tulajdonságok"
     }
   },
+  "location": {
+    "myStore": "Az én boltom",
+    "makeMyStore": "Hozd létre a boltom",
+    "getDirections": "Útvonalterv kérés",
+    "phone": "Telefon",
+    "storeHours": "Nyitvatartás",
+    "storesNearby": "Közeli boltok",
+    "open": "Nyitva",
+    "findMoreStores": "További boltok keresése",
+    "noStoresNearby": "A kiválasztott hely közelében nem találtunk üzleteket",
+    "preferredLocationChanged": "Az Ön preferált helye megváltozott {storeName}",
+    "comingSoon": "Hamarosan"
+  },
   "locations": {
     "headline": "Üzletek az Ön közelében",
     "details": "Részletek",
@@ -306,6 +320,7 @@
     "search_placeholder": "Irányítószám",
     "change_location": "Üzlet módosítása",
     "select_location": "Üzlet kiválasztása",
+    "store_info": "Üzlet információ",
     "get_directions": "Útvonalterv",
     "store_hours": "Nyitvatartás",
     "radius_km": "{radius} km",

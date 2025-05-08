@@ -41,85 +41,87 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             >
               locations.hours_details
             </Text>
-            <table>
-              <tbody
-                className="css-kckwte"
-              >
-                <StoreOpeningHoursLine
-                  day="mon"
-                  hours="09:00 - 17:00"
-                  key="mon"
-                >
-                  <tr
-                    aria-label="locations.mon: 09:00 - 17:00"
-                    className="css-9shxm7"
-                    role="row"
-                    tabIndex={0}
+            <div
+              className="css-kckwte"
+            >
+              <table>
+                <tbody>
+                  <StoreOpeningHoursLine
+                    day="mon"
+                    hours="09:00 - 17:00"
+                    key="mon"
                   >
-                    <td
-                      aria-hidden={true}
-                      className="css-1ppc7ry"
+                    <tr
+                      aria-label="locations.mon: 09:00 - 17:00"
+                      className="css-9shxm7"
+                      role="row"
+                      tabIndex={0}
                     >
-                      locations.mon
-                    </td>
-                    <td
-                      aria-hidden={true}
-                    >
-                      09:00 - 17:00
-                    </td>
-                  </tr>
-                </StoreOpeningHoursLine>
-                <StoreOpeningHoursLine
-                  day="tue"
-                  hours={null}
-                  key="tue"
-                />
-                <StoreOpeningHoursLine
-                  day="wed"
-                  hours={null}
-                  key="wed"
-                />
-                <StoreOpeningHoursLine
-                  day="thu"
-                  hours={null}
-                  key="thu"
-                />
-                <StoreOpeningHoursLine
-                  day="fri"
-                  hours={null}
-                  key="fri"
-                />
-                <StoreOpeningHoursLine
-                  day="sat"
-                  hours={null}
-                  key="sat"
-                />
-                <StoreOpeningHoursLine
-                  day="sun"
-                  hours="09:00 - 17:00"
-                  key="sun"
-                >
-                  <tr
-                    aria-label="locations.sun: 09:00 - 17:00"
-                    className="css-9shxm7"
-                    role="row"
-                    tabIndex={0}
+                      <td
+                        aria-hidden={true}
+                        className="css-1ppc7ry"
+                      >
+                        locations.mon
+                      </td>
+                      <td
+                        aria-hidden={true}
+                      >
+                        09:00 - 17:00
+                      </td>
+                    </tr>
+                  </StoreOpeningHoursLine>
+                  <StoreOpeningHoursLine
+                    day="tue"
+                    hours={null}
+                    key="tue"
+                  />
+                  <StoreOpeningHoursLine
+                    day="wed"
+                    hours={null}
+                    key="wed"
+                  />
+                  <StoreOpeningHoursLine
+                    day="thu"
+                    hours={null}
+                    key="thu"
+                  />
+                  <StoreOpeningHoursLine
+                    day="fri"
+                    hours={null}
+                    key="fri"
+                  />
+                  <StoreOpeningHoursLine
+                    day="sat"
+                    hours={null}
+                    key="sat"
+                  />
+                  <StoreOpeningHoursLine
+                    day="sun"
+                    hours="09:00 - 17:00"
+                    key="sun"
                   >
-                    <td
-                      aria-hidden={true}
-                      className="css-1ppc7ry"
+                    <tr
+                      aria-label="locations.sun: 09:00 - 17:00"
+                      className="css-9shxm7"
+                      role="row"
+                      tabIndex={0}
                     >
-                      locations.sun
-                    </td>
-                    <td
-                      aria-hidden={true}
-                    >
-                      09:00 - 17:00
-                    </td>
-                  </tr>
-                </StoreOpeningHoursLine>
-              </tbody>
-            </table>
+                      <td
+                        aria-hidden={true}
+                        className="css-1ppc7ry"
+                      >
+                        locations.sun
+                      </td>
+                      <td
+                        aria-hidden={true}
+                      >
+                        09:00 - 17:00
+                      </td>
+                    </tr>
+                  </StoreOpeningHoursLine>
+                </tbody>
+              </table>
+            </div>
           </Grid.Item>
         </Grid>
       </StoreDetailsLine>
@@ -130,6 +132,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
       <a
         aria-label="locations.phone: 06033123"
         href="tel:06033123"
+        tabIndex={0}
       >
         <StoreDetailsLine
           icon={[Function]}
@@ -151,11 +154,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               grow={1}
             >
               <div
-                className="css-vatcax"
+                aria-hidden={true}
+                className="css-ajdtgl"
               >
                 06033123
               </div>
               <Text
+                aria-hidden={true}
                 className="css-1mv6qvu"
                 string="locations.phone"
               >
@@ -208,18 +213,19 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               className="css-1s3c85m"
               grow={1}
             >
-              <div
-                className="css-vatcax"
+              <p
+                className="css-ajdtgl"
               >
                 Marktplatz 12
-              </div>
+              </p>
               <Ellipsis
-                className="css-vatcax"
+                className="css-ajdtgl"
                 rows={1}
               >
                 locations.address
               </Ellipsis>
               <Text
+                aria-label=": locations.map_open"
                 className="css-1mv6qvu"
                 string="locations.map_open"
               >
