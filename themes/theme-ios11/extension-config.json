@@ -274,7 +274,9 @@
           },
           "@shopgate/engage/components/TabBar": {
             "showLabels": true,
-            "hideOnScroll": false
+            "hideOnScroll": false,
+            "variant": "docked",
+            "transition": "fade"
           },
           "@shopgate/engage/product/ProductGrid": {
             "columns": 2

@@ -122,7 +122,7 @@ class ViewContent extends Component {
 
     return {
       overflow,
-      paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px)`,
+      paddingBottom: `calc(var(--page-content-offset-bottom) + ${keyboardHeight}px)`,
     };
   }
 

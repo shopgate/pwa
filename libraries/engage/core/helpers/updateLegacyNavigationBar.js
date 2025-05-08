@@ -1,7 +1,8 @@
 import Color from 'color';
 import { isAvailable, StatusBar } from '@shopgate/native-modules';
-import broadcastEvent from '@shopgate/pwa-core/commands/broadcastEvent';
-
+import { broadcastEvent } from '@shopgate/engage/core/commands';
+import { isDev } from '@shopgate/engage/core/helpers';
+import { UIEvents } from '@shopgate/engage/core/events';
 /**
  * Updates the styles of the navigation bar of iOS devices.
  * @param {Object} options Options for the status bar.
@@ -43,13 +44,19 @@ export const updateLegacyNavigationBar = (options = {}) => {
     return;
   }
 
+  const payload = {
+    ...statusBarStyle && { statusBarStyle },
+    ...isDefault && { isDefault },
+    targetTab,
+    styles,
+  };
   broadcastEvent({
     event: 'updateNavigationBarStyle',
-    parameters: [{
-      ...statusBarStyle && { statusBarStyle },
-      ...isDefault && { isDefault },
-      targetTab,
-      styles,
-    }],
+    parameters: [payload],
   });
+
+  if (isDev) {
+    // Dispatch the payload in dev as regular event, so that simulated top inset can adopt the color
+    UIEvents.emit('devInternalUpdateStatusBarStyle', payload);
+  }
 };

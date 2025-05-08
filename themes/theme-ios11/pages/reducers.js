@@ -30,6 +30,7 @@ import extensions from 'Extensions/reducers';
 import tabBar from 'Components/TabBar/reducer';
 import appRating from '@shopgate/engage/app-rating/reducers';
 import tracking from '@shopgate/engage/tracking/reducers';
+import development from '@shopgate/engage/development/reducers';
 
 persistedReducers.set([
   'cart.data',
@@ -43,6 +44,7 @@ persistedReducers.set([
   'appRating',
   'pushOptIn.optInTrigger',
   'tracking.cookieSettings',
+  'development.settings',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
@@ -85,6 +87,7 @@ const reducers = combineReducers({
   appRating,
   pushOptIn,
   tracking,
+  development,
 });
 
 export default reducers;
