@@ -2,7 +2,7 @@
 
 exports[`<CartEmpty /> should render 1`] = `
 <div
-  className="css-1w5gyyu"
+  className="css-1fis757"
 >
   <Portal
     name="cart.empty.before"

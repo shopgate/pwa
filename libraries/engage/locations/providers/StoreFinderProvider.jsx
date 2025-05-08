@@ -1,8 +1,10 @@
 import React, {
-  useMemo, useState, useCallback, useEffect,
+  useMemo, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
+import { getPreferredLocation } from '../selectors';
 import { STORE_FINDER_PATTERN } from '../constants';
 import { StoreFinderContext } from '../locations.context';
 import connect from './StoreFinder.connector';
@@ -19,52 +21,19 @@ const StoreFinderProvider = ({
   shopSettings,
   userSearch,
   storeFinderSearch,
-  storeListRef,
   selectGlobalLocation,
   selectLocation,
 }) => {
   const { pop } = useNavigation();
-  const [selectedLocation, setSelectedLocation] = useState(null);
-  const [locationsHash, setLocationsHash] = useState(null);
 
-  const changeLocation = useCallback((location, scrollIntoView = false) => {
-    setSelectedLocation(location);
-
-    if (scrollIntoView && storeListRef.current) {
-      const container = storeListRef.current;
-      const element = container.querySelector(`[data-location-code="${location.code}"]`);
-
-      const scrollParams = {
-        top: (element.parentNode.offsetTop - container.offsetTop) - 10,
-        behavior: 'smooth',
-      };
-
-      const { overflowY } = getComputedStyle(container);
-
-      if (overflowY === 'scroll') {
-        container.scroll(scrollParams);
-      } else {
-        window.scroll(scrollParams);
-      }
-    }
-  }, [storeListRef]);
+  const selectedLocation = useSelector(getPreferredLocation);
 
   const selectLocationCb = useCallback((location) => {
-    setSelectedLocation(location);
-    selectLocation(location);
+    selectLocation(location, true);
     selectGlobalLocation(location);
     // Back navigation
     pop();
   }, [selectLocation, selectGlobalLocation, pop]);
-
-  useEffect(() => {
-    const hash = JSON.stringify(locations.map(({ code }) => code));
-
-    if (hash !== locationsHash) {
-      setLocationsHash(hash);
-      changeLocation(locations[0]);
-    }
-  });
 
   /**
    * @param {bool} loading
@@ -81,7 +50,6 @@ const StoreFinderProvider = ({
   const value = useMemo(() => ({
     locations,
     selectedLocation,
-    changeLocation,
     selectLocation: selectLocationCb,
     isFetching,
     shopSettings,
@@ -91,7 +59,6 @@ const StoreFinderProvider = ({
   }), [
     isFetching,
     locations,
-    changeLocation,
     selectLocationCb,
     selectedLocation,
     shopSettings,
@@ -115,14 +82,12 @@ StoreFinderProvider.propTypes = {
   locations: PropTypes.arrayOf(PropTypes.shape()),
   shopSettings: PropTypes.shape(),
   storeFinderSearch: PropTypes.shape(),
-  storeListRef: PropTypes.shape(),
   userSearch: PropTypes.shape(),
 };
 
 StoreFinderProvider.defaultProps = {
   children: null,
   locations: [],
-  storeListRef: null,
   isFetching: false,
   shopSettings: null,
   userSearch: null,

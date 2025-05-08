@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import pickBy from 'lodash/pickBy';
-import { getUserData, getExternalCustomerNumber, getUserId } from '@shopgate/engage/user';
+import { getExternalCustomerNumber, getUserData, getUserId } from '@shopgate/engage/user';
 import { generateSortedHash } from '@shopgate/pwa-common/helpers/redux/generateSortedHash';
 import { getProduct } from '@shopgate/engage/product/selectors/product';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
@@ -8,7 +8,7 @@ import { getIsLocationBasedShopping, makeUseLocationFulfillmentMethods } from '@
 import { makeGetEnabledFulfillmentMethods } from '../../core/config';
 import { makeIsProductActive, makeIsBaseProductActive } from '../../product/selectors/product';
 import { isProductAvailable } from '../helpers/productInventory';
-import { DIRECT_SHIP } from '../constants';
+import { DIRECT_SHIP, NEARBY_LOCATIONS_LIMIT, NEARBY_LOCATIONS_RADIUS } from '../constants';
 
 /**
  * Selector to retrieve a product's fulfillment methods.
@@ -626,3 +626,31 @@ export const getProductAlternativeLocations = createSelector(
       .filter(Boolean);
   }
 );
+
+/**
+ * Creates a selector that retrieves nearby locations for a location referenced by a location code.
+ * @param {string} locationCode Location code.
+ * @returns {Function}
+ */
+export const makeGetNearbyLocationsByLocationCode = (locationCode) => {
+  const getFilteredLocationsForRoute = makeGetFilteredLocations((state) => {
+    const routeLocation = makeGetLocation(() => locationCode)(state);
+    return ({
+      latitude: routeLocation?.latitude,
+      longitude: routeLocation?.longitude,
+      limit: NEARBY_LOCATIONS_LIMIT,
+      radius: NEARBY_LOCATIONS_RADIUS,
+    });
+  });
+
+  return createSelector(
+    getFilteredLocationsForRoute,
+    (locations) => {
+      // remove current location from nearby locations
+      const filteredLocations = locations.filter(location =>
+        location.code !== locationCode);
+      return filteredLocations;
+    }
+  );
+};
+

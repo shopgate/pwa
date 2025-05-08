@@ -31,6 +31,7 @@
     "register": "Registrovat se",
     "order_details": "Detaily objednávky",
     "store_finder": "Vyhledávač prodejen",
+    "store_details": "Podrobnosti o obchodu",
     "order_history": "Historie objednávek",
     "profile": "Profil",
     "your_account": "Můj účet",
@@ -270,6 +271,19 @@
       "properties": "Vlastnosti"
     }
   },
+  "location": {
+    "myStore": "Můj obchod",
+    "makeMyStore": "Vytvořit můj obchod",
+    "getDirections": "Získat směr",
+    "phone": "Telefon",
+    "storeHours": "Otevírací doba",
+    "storesNearby": "Obchody v okolí",
+    "open": "Otevřeno",
+    "findMoreStores": "Najít více obchodů",
+    "noStoresNearby": "V blízkosti vybraného místa nebyly nalezeny žádné obchody",
+    "preferredLocationChanged": "Vaše preferované umístění bylo změněno na {storeName}",
+    "comingSoon": "Již brzy"
+  },
   "locations": {
     "headline": "Obchody ve vaší blízkosti",
     "details": "Podrobnosti",
@@ -306,6 +320,7 @@
     "search_placeholder": "PSČ",
     "change_location": "Změnit prodejnu",
     "select_location": "Vybrat prodejnu",
+    "store_info": "Informace o prodejně",
     "get_directions": "Naplánovat trasu",
     "store_hours": "Otevírací doba",
     "radius_km": "{radius} km",

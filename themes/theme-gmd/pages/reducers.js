@@ -30,6 +30,7 @@ import account from '@shopgate/engage/account/reducers';
 import appRating from '@shopgate/engage/app-rating/reducers';
 import extensions from 'Extensions/reducers';
 import tracking from '@shopgate/engage/tracking/reducers';
+import development from '@shopgate/engage/development/reducers';
 
 persistedReducers.set([
   'cart.data',
@@ -44,6 +45,7 @@ persistedReducers.set([
   'pushOptIn.optInTrigger',
   'tracking.cookieSettings',
   ...(hasWebBridge() ? 'menu' : []),
+  'development.settings',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
@@ -83,6 +85,7 @@ const reducers = combineReducers({
   appRating,
   pushOptIn,
   tracking,
+  development,
 });
 
 export default reducers;

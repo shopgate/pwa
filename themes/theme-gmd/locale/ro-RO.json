@@ -31,6 +31,7 @@
     "register": "Înregistrare",
     "order_details": "Detalii comandă",
     "store_finder": "Găsire magazin",
+    "store_details": "Detalii magazin",
     "order_history": "Istoricul comenzilor",
     "profile": "Profil",
     "your_account": "Contul meu",
@@ -270,6 +271,19 @@
       "properties": "Proprietăți"
     }
   },
+  "location": {
+    "myStore": "Magazinul meu",
+    "makeMyStore": "Creează magazinul meu",
+    "getDirections": "Obține direcții",
+    "phone": "Telefon",
+    "storeHours": "Program de funcționare",
+    "storesNearby": "Magazine în apropiere",
+    "open": "Deschis",
+    "findMoreStores": "Găsiți mai multe magazine",
+    "noStoresNearby": "Nu s-au găsit magazine în apropierea locației selectate",
+    "preferredLocationChanged": "Locația dvs. preferată a fost schimbată la {storeName}",
+    "comingSoon": "Disponibil în curând"
+  },
   "locations": {
     "headline": "Magazine aproape de dvs.",
     "details": "Detalii",
@@ -306,6 +320,7 @@
     "search_placeholder": "Cod poștal",
     "change_location": "Schimbați magazinul",
     "select_location": "Selectați magazinul",
+    "store_info": "Informații despre magazin",
     "get_directions": "Obțineți indicații",
     "store_hours": "Program",
     "radius_km": "{radius} km",

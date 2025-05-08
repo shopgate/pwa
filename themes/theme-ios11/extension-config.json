@@ -1,5 +1,5 @@
 {
-  "version": "7.25.0",
+  "version": "7.26.0",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -274,7 +274,9 @@
           },
           "@shopgate/engage/components/TabBar": {
             "showLabels": true,
-            "hideOnScroll": false
+            "hideOnScroll": false,
+            "variant": "docked",
+            "transition": "fade"
           },
           "@shopgate/engage/product/ProductGrid": {
             "columns": 2

@@ -20,10 +20,11 @@ export function StorePhoneNumber({ phone }) {
     <a
       href={`tel:${phone}`}
       aria-label={`${i18n.text('locations.phone')}: ${phone}`}
+      tabIndex={0}
     >
       <StoreDetailsLine icon={PhoneIcon} linked>
-        <div className={detailsPrimary}>{phone}</div>
-        <I18n.Text string="locations.phone" className={detailsSecondary} />
+        <div className={detailsPrimary} aria-hidden>{phone}</div>
+        <I18n.Text string="locations.phone" className={detailsSecondary} aria-hidden />
       </StoreDetailsLine>
     </a>
   );

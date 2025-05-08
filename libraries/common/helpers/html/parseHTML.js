@@ -43,6 +43,8 @@ const parseHTML = (html, decode, settings, processStyles = false, cookieConsentS
     // Run cookie consent logic from embedded media to remove markup that's not supposed to run
     // when consent is not accepted.
     embeddedMedia.handleCookieConsent(dom, cookieConsent);
+    // Optimize embedded media iframe markup before it's injected into the DOM.
+    embeddedMedia.applyIframeOptimizations(dom);
 
     // How many onloads have been processed.
     let onloads = 0;
