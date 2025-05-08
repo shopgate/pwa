@@ -20,6 +20,7 @@ const webCheckoutLogout = () => (dispatch) => {
   dispatch(requestShopifyLogout());
 
   new HttpRequest(logoutUrl)
+    .setHeaders({ accept: 'text/html' })
     .dispatch()
     .then((response) => {
       const {

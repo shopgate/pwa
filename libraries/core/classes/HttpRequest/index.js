@@ -24,6 +24,7 @@ class HttpRequest extends Request {
 
     this.payload = null;
     this.contentType = null;
+    this.headers = null;
 
     this.createSerial(this.url);
     this.createEventCallbackName('httpResponse');
@@ -46,6 +47,16 @@ class HttpRequest extends Request {
    */
   setContentType(type) {
     this.contentType = type;
+    return this;
+  }
+
+  /**
+   * Sets the headers for the HttpRequest
+   * @param {{ [headerName: string]: string }} headers
+   * @returns {HttpRequest}
+   */
+  setHeaders(headers) {
+    this.headers = headers;
     return this;
   }
 
@@ -97,6 +108,14 @@ class HttpRequest extends Request {
     }
 
     return contentType;
+  }
+
+  getHeaders() {
+    if (!this.headers) {
+      return {};
+    }
+
+    return this.headers;
   }
 
   /**
@@ -166,7 +185,9 @@ class HttpRequest extends Request {
         timeout: this.timeout,
         followRedirects: this.followRedirects,
         body: this.getRequestBody(),
+        // the iOS Cloud Flight app will use this over any content type passed in the headers and breaks if it's not set:
         contentType: this.contentType ? this.contentType : this.getContentType(),
+        headers: this.getHeaders(),
       };
 
       /**
