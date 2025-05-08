@@ -6,9 +6,14 @@ import successShopifyLogout from '../action-creators/successShopifyLogout';
 import { getLogoutUrl, getLogoutSuccessUrl } from '../selectors';
 
 /**
+ * @typedef {Object} LogoutOptions
+ * @property {Object.<string, string>} [headers] - Optional request headers.
+ */
+
+/**
  * Log out the current user.
- * @param {{ headers: { [headerName: string]: string } }} options
- * @return {Function} A redux thunk.
+ * @param {LogoutOptions} [options] - Optional options containing request headers.
+ * @returns {Function} A Redux thunk.
  */
 const webCheckoutLogout = (options = {}) => (dispatch) => {
   const logoutUrl = getLogoutUrl();
@@ -20,9 +25,9 @@ const webCheckoutLogout = (options = {}) => (dispatch) => {
 
   dispatch(requestShopifyLogout());
 
-  const request = new HttpRequest(logoutUrl)
+  const request = new HttpRequest(logoutUrl);
 
-  if (options.headers) request.setHeaders(options.headers)
+  if (options.headers) request.setHeaders(options.headers);
 
   request.dispatch()
     .then((response) => {

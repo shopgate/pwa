@@ -43,6 +43,7 @@ class HttpRequest extends Request {
   /**
    * Sets the contentType for the HttpRequest
    * @param {string} type The contentType for request
+   * @deprecated Not supported anymore by app version >= 11.0.0
    * @returns {HttpRequest}
    */
   setContentType(type) {
@@ -51,11 +52,20 @@ class HttpRequest extends Request {
   }
 
   /**
-   * Sets the headers for the HttpRequest
-   * @param {{ [headerName: string]: string }} headers
-   * @returns {HttpRequest}
+   * @typedef {Object.<string, string>} HeaderMap
+   */
+
+  /**
+   * Sets the headers for the HttpRequest.
+   * @param {HeaderMap} headers - An object mapping header names to values.
+   * @returns {HttpRequest} The current HttpRequest instance (for chaining).
    */
   setHeaders(headers) {
+    if (typeof headers !== 'object') {
+      logger.error('HttpRequest: setHeaders expects an object as parameter');
+      return this;
+    }
+
     this.headers = headers;
     return this;
   }
@@ -110,6 +120,10 @@ class HttpRequest extends Request {
     return contentType;
   }
 
+  /**
+   * Determines the headers for the request
+   * @returns {Object} The headers
+   */
   getHeaders() {
     if (!this.headers) {
       return {};
@@ -185,7 +199,8 @@ class HttpRequest extends Request {
         timeout: this.timeout,
         followRedirects: this.followRedirects,
         body: this.getRequestBody(),
-        // the iOS Cloud Flight app will use this over any content type passed in the headers and breaks if it's not set:
+        // the iOS Cloud Flight app will use this over any content type passed in
+        // the headers and breaks if it's not set:
         contentType: this.contentType ? this.contentType : this.getContentType(),
         headers: this.getHeaders(),
       };
