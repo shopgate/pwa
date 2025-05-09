@@ -7,6 +7,7 @@ import {
   hasSGJavaScriptBridge,
   hasWebBridge,
   hasNewServices,
+  isAndroidOs,
 } from '@shopgate/engage/core/helpers';
 
 /**
@@ -65,9 +66,14 @@ export const appSupportsCookieConsent = () => {
  * @returns {boolean}
  */
 export const appSupportsAndroidEdgeToEdge = () => {
-  if (hasWebBridge() || !hasSGJavaScriptBridge()) {
-    // Deactivated in browser mode and development for now
+  if (hasWebBridge()) {
+    // Deactivated in browser mode
     return false;
+  }
+
+  if (!hasSGJavaScriptBridge() && isAndroidOs) {
+    // Active in dev environment with Android user agent
+    return true;
   }
 
   return isFeatureFlagEnabled('StatusBar', APP_FEATURE_ANDROID_EDGE_TO_EDGE);
