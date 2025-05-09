@@ -136,9 +136,11 @@ export const initialize = async (locales, reducers, subscribers) => {
   moment.locale(process.env.LOCALE);
 
   if (isDev) {
+    // Inject an object to the window that can be used to check if the PWA is running in dev mode
     window.SGConnectDev = {
-      // Indicates the the current dev app is running in a browser - not in the app
+      // Indicates the the current dev app is running in a browser - not in the real app
       isDevBrowser: !hasWebBridge() && !hasSGJavaScriptBridge(),
+      // Indicates that the PWA is running in a dev environment
       isDev,
     };
   }
