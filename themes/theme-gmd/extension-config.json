@@ -817,7 +817,7 @@
     "androidNavigationBarDefaultColor": {
       "type": "admin",
       "destination": "frontend",
-      "default": "#ffffff",
+      "default": null,
       "params": {
         "type": "text" ,
         "label": "Default color of the navigation bar on Android >= 15",
