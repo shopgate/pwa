@@ -7,6 +7,7 @@ import {
   BEFORE,
   AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
+import { I18n } from '@shopgate/engage/components';
 import { Form } from '..';
 import ActionListener from './classes/ActionListener';
 import {
@@ -249,11 +250,12 @@ class Builder extends Component {
    * @param {string} formName Name of the form
    * @param {Object} element The data of the element to be rendered
    * @param {string} elementErrorText The error text to be shown for this specific element
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   renderElement = (formName, element, elementErrorText) => {
+    const { formData } = this.state;
     const elementName = `${this.props.name}_${element.id}`;
-    const elementValue = this.state.formData[element.id];
+    const elementValue = formData[element.id];
     const elementVisible = this.state.elementVisibility[element.id] || false;
 
     // Take a dynamic REACT element based on its type
@@ -274,9 +276,9 @@ class Builder extends Component {
         // Province selection only makes sense with a country being selected, or from custom options
         const countryElement = this.formElements.find(el => el.type === ELEMENT_TYPE_COUNTRY);
         elementData.options =
-          (countryElement && this.state.formData[countryElement.id]
+          (countryElement && formData[countryElement.id]
             ? buildProvinceList(
-              this.state.formData[countryElement.id],
+              formData[countryElement.id],
               // Auto-select with "empty" when not required
               element.required ? null : emptySelectOption
             )
@@ -301,9 +303,10 @@ class Builder extends Component {
 
   /**
    * Renders the component based on the given config
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
+    const { name, className, onSubmit } = this.props;
     // Convert validation errors for easier handling
     const validationErrors = buildValidationErrorList(this.props.validationErrors);
 
@@ -311,29 +314,29 @@ class Builder extends Component {
       <Form className={camelCase(this.props.name)} onSubmit={this.props.onSubmit}>
         <div className={this.props.className}>
           {this.formElements.map(element => (
-            <Fragment key={`${this.props.name}_${element.id}`}>
+            <Fragment key={`${name}_${element.id}`}>
               <Portal
-                name={`${sanitizePortalName(this.props.name)}.${sanitizePortalName(element.id)}.${BEFORE}`}
+                name={`${sanitizePortalName(name)}.${sanitizePortalName(element.id)}.${BEFORE}`}
                 props={{
-                  formName: this.props.name,
+                  formName: name,
                   errorText: validationErrors[element.id] || '',
                   element,
                 }}
               />
               <Portal
-                name={`${sanitizePortalName(this.props.name)}.${sanitizePortalName(element.id)}`}
+                name={`${sanitizePortalName(name)}.${sanitizePortalName(element.id)}`}
                 props={{
-                  formName: this.props.name,
+                  formName: name,
                   errorText: validationErrors[element.id] || '',
                   element,
                 }}
               >
-                {this.renderElement(this.props.name, element, validationErrors[element.id] || '')}
+                {this.renderElement(name, element, validationErrors[element.id] || '')}
               </Portal>
               <Portal
-                name={`${sanitizePortalName(this.props.name)}.${sanitizePortalName(element.id)}.${AFTER}`}
+                name={`${sanitizePortalName(name)}.${sanitizePortalName(element.id)}.${AFTER}`}
                 props={{
-                  formName: this.props.name,
+                  formName: name,
                   errorText: validationErrors[element.id] || '',
                   element,
                 }}

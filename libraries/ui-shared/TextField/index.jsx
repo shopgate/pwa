@@ -157,47 +157,65 @@ class TextField extends Component {
 
   /**
    * Renders the text field.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const styleType = this.props.multiLine ? 'multiLine' : 'input';
     const style = styles.container[styleType];
+    const {
+      multiLine,
+      className,
+      disabled,
+      hintText,
+      name,
+      label,
+      setRef,
+      onSanitize,
+      password,
+      type,
+      value,
+      isControlled,
+      inputComponent,
+      showErrorText,
+      errorText,
+      translateErrorText,
+    } = this.props;
 
     return (
-      <div className={classNames(style, this.props.className, 'textField', 'ui-shared__text-field', {
-        disabled: this.props.disabled,
+      <div className={classNames(style, className, 'textField', 'ui-shared__text-field', {
+        disabled,
       })}
       >
-        <Hint visible={this.isHintVisible} hintText={this.props.hintText} />
+        <Hint visible={this.isHintVisible} hintText={hintText} />
         <Label
-          name={this.props.name}
-          label={this.props.label}
+          name={name}
+          label={label}
           isFocused={this.isFocused}
           isFloating={this.isLabelFloating}
           hasErrorMessage={this.hasErrorMessage}
         />
         <FormElement
-          id={this.props.name}
-          multiLine={this.props.multiLine}
-          name={this.props.name}
-          setRef={this.props.setRef}
+          id={name}
+          multiLine={multiLine}
+          name={name}
+          setRef={setRef}
           onFocusChange={this.handleFocusChange}
           onChange={this.handleChange}
-          onSanitize={this.props.onSanitize}
+          onSanitize={onSanitize}
           onValidate={this.handleValidate}
-          password={this.props.password}
-          type={this.props.type}
-          value={this.props.value}
-          isControlled={this.props.isControlled}
-          inputComponent={this.props.inputComponent}
-          disabled={this.props.disabled}
+          password={password}
+          type={type}
+          value={value}
+          isControlled={isControlled}
+          inputComponent={inputComponent}
+          disabled={disabled}
         />
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
-        {this.props.showErrorText &&
+        {showErrorText &&
           <ErrorText
             validationError={this.state.validationError}
-            errorText={this.props.errorText}
-            translate={this.props.translateErrorText}
+            errorText={errorText}
+            translate={translateErrorText}
           />
         }
 
