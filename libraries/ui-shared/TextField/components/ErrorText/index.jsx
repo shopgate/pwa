@@ -11,6 +11,7 @@ import styles from './style';
  */
 const ErrorText = props => (
   <div
+    id="ariaError"
     className={classNames(props.className, styles.error, 'errorText')}
     aria-live="assertive"
     aria-atomic="true"

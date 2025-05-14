@@ -32,6 +32,7 @@ class TextField extends Component {
     onSanitize: PropTypes.func,
     onValidate: PropTypes.func,
     password: PropTypes.bool,
+    required: PropTypes.bool,
     setRef: PropTypes.func,
     showErrorText: PropTypes.bool,
     translateErrorText: PropTypes.bool,
@@ -52,6 +53,7 @@ class TextField extends Component {
     onFocusChange: () => { },
     onSanitize: value => value,
     onValidate: () => true,
+    required: false,
     password: false,
     translateErrorText: true,
     type: 'text',
@@ -179,6 +181,7 @@ class TextField extends Component {
       showErrorText,
       errorText,
       translateErrorText,
+      required,
     } = this.props;
 
     return (
@@ -209,6 +212,10 @@ class TextField extends Component {
           isControlled={isControlled}
           inputComponent={inputComponent}
           disabled={disabled}
+          required={required}
+          aria-required={required}
+          aria-invalid={!!errorText}
+          aria-describedby={this.hasErrorMessage ? 'ariaError' : null}
         />
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
         {showErrorText &&
@@ -218,7 +225,6 @@ class TextField extends Component {
             translate={translateErrorText}
           />
         }
-
       </div>
     );
   }

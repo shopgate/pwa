@@ -539,7 +539,8 @@
       "reset_instructions": "U ontvangt een e-mail om uw wachtwoord opnieuw in te stellen op {email}",
       "back_to_login": "Terug naar inloggen",
       "customer_not_found": "Geen account gevonden met dit e-mailadres."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {één fout} other {{amount} fouten}} in dit formulier."
   },
   "navigation": {
     "login_register": "Log in / Registreer",

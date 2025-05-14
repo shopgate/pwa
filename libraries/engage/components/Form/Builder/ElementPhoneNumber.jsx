@@ -95,6 +95,7 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
     label,
     handleChange,
     disabled = false,
+    required = false,
     config: {
       supportedCountries = [],
       countrySortOrder = [],
@@ -233,6 +234,10 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           disabled={disabled}
+          required={required}
+          aria-required={required}
+          aria-invalid={!!errorText}
+          aria-describedby={errorText.length > 0 ? 'ariaError' : null}
           {...hasCountrySelect ? {
             countryOptionsOrder,
             addInternationalOption: false,
@@ -258,6 +263,7 @@ UnwrappedElementPhoneNumber.propTypes = {
     default: PropTypes.string,
     label: PropTypes.string,
     disabled: PropTypes.bool,
+    required: PropTypes.bool,
     handleChange: PropTypes.func,
     config: PropTypes.shape({
       supportedCountries: PropTypes.arrayOf(PropTypes.string),

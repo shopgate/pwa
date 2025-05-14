@@ -539,7 +539,8 @@
       "reset_instructions": "Kapni fog egy e-mailt a jelszó visszaállításához a(z) {email} címre",
       "back_to_login": "Vissza a bejelentkezéshez",
       "customer_not_found": "Ehhez az e-mail címhez nem tartozik fiók."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {egy hiba} other {{amount} hibák}} ezen az űrlapon."
   },
   "navigation": {
     "login_register": "Bejelentkezés",

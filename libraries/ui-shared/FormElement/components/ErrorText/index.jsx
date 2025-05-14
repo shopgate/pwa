@@ -11,8 +11,8 @@ import styles from './style';
  */
 const ErrorText = ({ className, errorText, translate }) => (
   <div
+    id="ariaError"
     className={classNames(className, styles, 'errorText')}
-    role="alert"
     aria-live="assertive"
     aria-atomic="true"
   >

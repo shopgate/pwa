@@ -309,10 +309,16 @@ class Builder extends Component {
     const { name, className, onSubmit } = this.props;
     // Convert validation errors for easier handling
     const validationErrors = buildValidationErrorList(this.props.validationErrors);
+    const validationErrorsAmount = Object.entries(validationErrors).length;
 
     return (
-      <Form className={camelCase(this.props.name)} onSubmit={this.props.onSubmit}>
-        <div className={this.props.className}>
+      <Form className={camelCase(name)} onSubmit={onSubmit}>
+        {validationErrorsAmount > 0 && (
+          <div className="sr-only">
+            <I18n.Text string="login.errorAmount" params={{ amount: validationErrorsAmount }} />
+          </div>
+        )}
+        <div className={className}>
           {this.formElements.map(element => (
             <Fragment key={`${name}_${element.id}`}>
               <Portal

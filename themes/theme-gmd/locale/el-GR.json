@@ -539,7 +539,8 @@
       "reset_instructions": "Θα λάβετε email με οδηγίες για την επαναφορά του κωδικού στο {email}",
       "back_to_login": "Επιστροφή στη σύνδεση",
       "customer_not_found": "Δεν βρέθηκε λογαριασμός με αυτό το email."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {ένα σφάλμα} other {{amount} σφάλματα}} σε αυτήν τη φόρμα."
   },
   "navigation": {
     "login_register": "Είσοδος",

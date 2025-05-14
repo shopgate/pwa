@@ -539,7 +539,8 @@
       "reset_instructions": "Recibirá un correo electrónico con las instrucciones para restablecer su contraseña a {email}",
       "back_to_login": "Volver a iniciar sesión",
       "customer_not_found": "No se encontró una cuenta con ese correo electrónico."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {un error} other {{amount} errores}} en este formulario."
   },
   "navigation": {
     "login_register": "Iniciar sesión / Registro",

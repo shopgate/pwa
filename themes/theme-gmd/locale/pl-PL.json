@@ -539,7 +539,8 @@
       "reset_instructions": "Instrukcje resetowania hasła zostały wysłane na adres {email}",
       "back_to_login": "Powrót do logowania",
       "customer_not_found": "Nie znaleziono konta dla podanego adresu e-mail."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {jeden błąd} other {{amount} błędów}} w tym formularzu."
   },
   "navigation": {
     "login_register": "Zaloguj się",
