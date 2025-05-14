@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Link';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
   LOGIN_PATH,
   REGISTER_PATH,
   CHECKOUT_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
-import TextField from '@shopgate/pwa-ui-shared/TextField';
-import { View } from '@shopgate/engage/components';
+import {
+  View, I18n, Link, Portal, TextField, RippleButton,
+} from '@shopgate/engage/components';
 import { validate } from '@shopgate/engage/core';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PAGE_LOGIN_BEFORE,
   PAGE_LOGIN,
@@ -176,13 +173,19 @@ class Login extends Component {
 
   /**
    * Renders the component.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const isCheckout = this.props.redirect?.location === CHECKOUT_PATH;
+    const {
+      login, showErrors, loginError, password, passwordError,
+    } = this.state;
+    const { isLoading, isDisabled } = this.props;
+    const hasLoginError = loginError.length > 0;
+    const hasPasswordError = passwordError.length > 0;
 
     return (
-      <View aria-hidden={false}>
+      <View>
         <CloseBar shadow={false} />
         <section className={styles.container} data-test-id="LoginPage">
           <Portal name={PAGE_LOGIN_BEFORE} />
@@ -198,24 +201,32 @@ class Login extends Component {
               { /* No validate, browsers reject IDN emails! */}
               <form onSubmit={this.handleSubmitForm} noValidate className={styles.form}>
                 <TextField
+                  required
+                  aria-required
+                  aria-invalid={hasLoginError}
+                  aria-describedby={hasLoginError ? 'ariaError' : null}
                   type="email"
                   name="email"
                   className={styles.input}
                   label="login.email"
                   onChange={this.handleEmailChange}
-                  value={this.state.login}
+                  value={login}
                   setRef={this.setUserFieldRef}
-                  errorText={this.state.showErrors ? this.state.loginError : ''}
+                  errorText={showErrors ? loginError : ''}
                 />
                 <TextField
+                  required
+                  aria-required
+                  aria-invalid={hasPasswordError}
+                  aria-describedby={hasPasswordError ? 'ariaError' : null}
                   password
                   name="password"
                   className={styles.input}
                   label="login.password"
                   onChange={this.handlePasswordChange}
-                  value={this.state.password}
+                  value={password}
                   setRef={this.setPasswordFieldRef}
-                  errorText={this.state.showErrors ? this.state.passwordError : ''}
+                  errorText={showErrors ? passwordError : ''}
                 />
                 <div className={styles.forgotWrapper}>
                   <ForgotPassword />
@@ -224,7 +235,7 @@ class Login extends Component {
                   <RippleButton
                     className={styles.button}
                     type="secondary"
-                    disabled={this.props.isLoading || this.props.isDisabled}
+                    disabled={isLoading || isDisabled}
                   >
                     <I18n.Text string="login.button" />
                   </RippleButton>
@@ -239,7 +250,7 @@ class Login extends Component {
                 <Link
                   href={`${REGISTER_PATH}${isCheckout ? '?checkout=1' : ''}`}
                   className={styles.signup}
-                  disabled={this.props.isLoading || this.props.isDisabled}
+                  disabled={isLoading || isDisabled}
                 >
                   <I18n.Text string="login.signup" />
                 </Link>
