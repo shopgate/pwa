@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Input from '@shopgate/pwa-common/components/Input';
+import { Input } from '@shopgate/engage/components';
 import styles from './style';
 
 /**
  * Creates an input or a multiLine based on the type prop.
  * @param {Object} props The props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FormElement = (props) => {
   const styleType = props.multiLine ? 'multiLine' : 'input';

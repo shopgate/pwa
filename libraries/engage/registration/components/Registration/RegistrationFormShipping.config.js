@@ -15,10 +15,12 @@ const generateFormConfig = ({
     firstName: {
       type: 'text',
       label: `${i18n.text('checkout.pickup_contact.form.firstName')} *`,
+      required: true,
     },
     lastName: {
       type: 'text',
       label: `${i18n.text('checkout.pickup_contact.form.lastName')} *`,
+      required: true,
     },
     mobile: {
       type: 'phone_picker',
@@ -28,6 +30,7 @@ const generateFormConfig = ({
         countrySortOrder,
         userLocation,
       },
+      required: true,
     },
     companyName: {
       type: 'text',
@@ -36,6 +39,7 @@ const generateFormConfig = ({
     address1: {
       type: 'text',
       label: `${i18n.text('checkout.pickup_contact.form.address1')} *`,
+      required: true,
     },
     ...(numberOfAddressLines >= 2 ? {
       address2: {
@@ -58,14 +62,17 @@ const generateFormConfig = ({
     postalCode: {
       type: 'text',
       label: `${i18n.text('checkout.pickup_contact.form.postalCode')} *`,
+      required: true,
     },
     city: {
       type: 'text',
       label: `${i18n.text('checkout.pickup_contact.form.city')} *`,
+      required: true,
     },
     country: {
       type: 'country',
       label: `${i18n.text('checkout.pickup_contact.form.country')} *`,
+      required: true,
       countries: supportedCountries,
     },
     region: {

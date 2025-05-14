@@ -10,6 +10,7 @@ import classNames from 'classnames';
 class SimpleInput extends Component {
   static propTypes = {
     /** Additional html attributes by input type */
+    'aria-invalid': PropTypes.bool,
     attributes: PropTypes.shape(),
     autoComplete: PropTypes.bool,
     autoCorrect: PropTypes.bool,
@@ -30,6 +31,7 @@ class SimpleInput extends Component {
     onSanitize: PropTypes.func,
     onValidate: PropTypes.func,
     password: PropTypes.bool,
+    required: PropTypes.bool,
     setRef: PropTypes.func,
     type: PropTypes.string,
     validateOnBlur: PropTypes.bool,
@@ -39,6 +41,7 @@ class SimpleInput extends Component {
   static defaultProps = {
     attributes: null,
     autoComplete: false,
+    'aria-invalid': false,
     autoCorrect: false,
     className: '',
     disabled: false,
@@ -52,6 +55,7 @@ class SimpleInput extends Component {
     onSanitize: value => value,
     onValidate: () => true,
     password: false,
+    required: false,
     setRef: () => { },
     type: 'text',
     validateOnBlur: true,
@@ -206,15 +210,20 @@ class SimpleInput extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {
+      'aria-invalid': ariaInvalid,
       attributes,
       className,
+      disabled,
+      id,
+      name,
       password,
       onKeyPress,
       maxLength,
+      required,
     } = this.props;
     const type = password ? 'password' : this.props.type;
 
@@ -226,8 +235,10 @@ class SimpleInput extends Component {
 
     return (
       <InputComponent
-        id={this.props.id}
-        name={this.props.name}
+        id={id}
+        name={name}
+        aria-invalid={ariaInvalid}
+        aria-describedby={ariaInvalid ? 'ariaError' : null}
         ref={ref => this.handleRef(ref)}
         className={classNames(className, 'simpleInput', 'common__simple-input')}
         type={type}
@@ -243,10 +254,11 @@ class SimpleInput extends Component {
         onChange={type !== 'number' ? this.handleChange : () => {}}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        disabled={this.props.disabled}
+        disabled={disabled}
         autoCorrect={autoCorrect}
         autoComplete={autoComplete}
         maxLength={maxLength}
+        required={required}
         {...attributes}
       />
     );

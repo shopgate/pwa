@@ -42,12 +42,11 @@ class Button extends Component {
 
   /**
    * Renders the component.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     return (
-      // eslint-disable-next-line react/button-has-type
-      <button data-test-id={this.props.testId} {...this.buttonProps}>
+      <button data-test-id={this.props.testId} {...this.buttonProps} type="button">
         {this.props.children}
       </button>
     );

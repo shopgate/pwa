@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import styles from './style';
 
 /**
@@ -11,8 +11,8 @@ import styles from './style';
  */
 const ErrorText = ({ className, errorText, translate }) => (
   <div
+    id="ariaError"
     className={classNames(className, styles, 'errorText')}
-    role="alert"
     aria-live="assertive"
     aria-atomic="true"
   >

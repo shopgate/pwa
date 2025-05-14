@@ -539,7 +539,8 @@
       "reset_instructions": "Saat sähköpostiisi ohjeet salasanan nollaamiseksi osoitteeseen {email}",
       "back_to_login": "Takaisin kirjautumiseen",
       "customer_not_found": "Tällä sähköpostiosoitteella ei ole rekisteröityä tiliä."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {yksi virhe} other {{amount} virhettä}} tässä lomakkeessa."
   },
   "navigation": {
     "login_register": "Kirjaudu sisään",
