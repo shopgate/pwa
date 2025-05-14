@@ -13,14 +13,14 @@ import styles from './style';
 
 /**
  * @param {Object} props The component props.
- * @param {Object} context The consumed context.
- * @returns {JSX}
+ * @param {boolean} isDisabled whether the button is disabled
+ * @returns {JSX.Element}
  */
 const LoggedOut = ({ isDisabled }) => (
   <div data-test-id="userMenu">
     <Grid className={classnames(styles.grid, 'theme__more-page__user-menu__container')}>
       <Grid.Item className={classnames(styles.gridItem, 'theme__more-page__login-button__container')}>
-        <Link href={LOGIN_PATH} disabled={isDisabled}>
+        <Link tabIndex={0} href={LOGIN_PATH} disabled={isDisabled}>
           <Button
             type="secondary"
             className={classnames(styles.button, 'theme__more-page__login-button')}
@@ -32,7 +32,7 @@ const LoggedOut = ({ isDisabled }) => (
         </Link>
       </Grid.Item>
       <Grid.Item className={classnames(styles.gridItem, 'theme__more-page-register-button__container')}>
-        <Link href={REGISTER_PATH} disabled={isDisabled}>
+        <Link tabIndex={0} href={REGISTER_PATH} disabled={isDisabled}>
           <Button
             type="secondary"
             className={classnames(styles.button, 'theme__more-page-register-button')}
