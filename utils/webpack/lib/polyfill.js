@@ -21,3 +21,29 @@ if (!String.prototype.padEnd) {
     }
   }
 }
+
+if (!Array.prototype.flat) {
+  Array.prototype.flat = function(depth) {
+    var flattened = [];
+
+    function flatten(arr, currentDepth) {
+      for (var i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i]) && currentDepth < depth) {
+          flatten(arr[i], currentDepth + 1);
+        } else {
+          flattened.push(arr[i]);
+        }
+      }
+    }
+
+    flatten(this, 0);
+
+    return flattened;
+  };
+}
+
+if (!Array.prototype.flatMap) {
+  Array.prototype.flatMap = function(callback, thisArg) {
+    return this.map(callback, thisArg).flat();
+  };
+}

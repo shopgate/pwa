@@ -7,6 +7,7 @@ const container = css({
   boxShadow: themeShadows.scannerBar,
   fontSize: 14,
   alignItems: 'center',
+  paddingBottom: 'var(--safe-area-inset-bottom)',
 }).toString();
 
 const column = css({
@@ -20,4 +21,3 @@ export default {
   container,
   column,
 };
-

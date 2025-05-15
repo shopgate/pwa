@@ -4,6 +4,7 @@ import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
 import { isVersionAtLeast } from '@shopgate/pwa-core/helpers/version';
 import { SCANNER_MIN_APP_LIB_VERSION } from '@shopgate/pwa-core/constants/Scanner';
 import { hasWebBridge } from '@shopgate/engage/core/helpers/bridge';
+import { getAreSimulatedInsetsInjected } from '@shopgate/engage/development/selectors';
 import {
   OS_ANDROID,
   OS_IOS,
@@ -169,15 +170,20 @@ export const hasScannerSupport = createSelector(
 );
 
 /**
- * Determines page insets for the current device
+ * Determines page insets for the current device. Used as a fallback for the native insets.
  * @param {Object} state The application state.
  * @returns {Object}
  */
 export const getPageInsets = createSelector(
-  getClientInformation,
   getDeviceModel,
   isIos,
-  (clientInformation, model, iOS) => {
+  getAreSimulatedInsetsInjected,
+  (model, iOS, injectSimulatedInsets) => {
+    if (injectSimulatedInsets) {
+      // Simulate safe area insets in development when user agent is set to iOS device
+      return PAGE_INSETS_IPHONE_X;
+    }
+
     if (iOS) {
       if (!hasSGJavaScriptBridge()) {
         return PAGE_INSETS_ANDROID;

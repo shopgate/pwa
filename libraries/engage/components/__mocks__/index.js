@@ -6,6 +6,7 @@ import UISharedDiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import SwiperMock from '@shopgate/pwa-common/components/Swiper/__mocks__';
 
 export { MODAL_EVENTS } from '@shopgate/pwa-common/components/ModalContainer';
+export { SHEET_EVENTS } from '@shopgate/pwa-ui-shared/Sheet';
 
 // ICONS IOS
 export const CartIconIOS = () => null;

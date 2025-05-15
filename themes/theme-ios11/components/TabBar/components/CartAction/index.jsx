@@ -35,8 +35,12 @@ class TabBarCartAction extends Component {
    * @return {JSX}
    */
   render() {
-    const { label, cartProductCount } = this.props;
+    // Remove some props that are not meant for the TabBarAction component.
+    const { cartProductCount, ...tabBarActionProps } = this.props;
+
+    const { label } = this.props;
     const ariaLabel = `${i18n.text(label)}. ${i18n.text('common.products')}: ${cartProductCount}.`;
+
     return (
       <Fragment>
         <Portal name={portals.TAB_BAR_CART_BEFORE} props={this.props} />
@@ -48,7 +52,7 @@ class TabBarCartAction extends Component {
           }}
         >
           <TabBarAction
-            {...this.props}
+            {...tabBarActionProps}
             aria-label={ariaLabel}
             icon={(
               <Portal name={portals.TAB_BAR_CART_ICON}>

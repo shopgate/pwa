@@ -7,7 +7,7 @@ import Content from '../Content';
 jest.mock('@shopgate/engage/core/helpers', () => ({
   isBeta: jest.fn(),
 }));
-
+jest.mock('@shopgate/engage/core/hooks/events');
 jest.mock('../GroupedProperties', () => function GroupedProperties() { return 'GroupedProperties'; });
 
 jest.mock('@shopgate/engage/components', () => ({

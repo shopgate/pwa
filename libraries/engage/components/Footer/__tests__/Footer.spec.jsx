@@ -1,61 +1,75 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import { SHEET_EVENTS } from '@shopgate/pwa-ui-shared/Sheet';
-import { updateInsetBackgroundColor, updateFooterHeight } from '../Footer.style';
+import { UIEvents } from '@shopgate/engage/core/events';
+import { SHEET_EVENTS } from '@shopgate/engage/components';
+import { getAbsoluteHeight } from '@shopgate/engage/core/helpers';
 import Footer from '../Footer';
+import {
+  handleSafeAreaInsets,
+  updateFooterHeight,
+} from '../helpers';
+import { APP_FOOTER_ID } from '../constants';
 
 const mutationConstructorSpy = jest.fn();
 const mutationObserveSpy = jest.fn();
+const mutationDisconnectSpy = jest.fn();
 
 /* eslint-disable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */
 global.MutationObserver = class {
   constructor(callback) { mutationConstructorSpy(callback); }
 
   observe(element, initObject) { mutationObserveSpy(element, initObject); }
+
+  disconnect() { mutationDisconnectSpy(); }
 };
 /* eslint-enable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */
-
-let mockedPortalContent;
-
-jest.mock('../Footer.style', () => {
-  const actual = require.requireActual('../Footer.style');
-  return {
-    ...actual,
-    updateInsetBackgroundColor: jest.fn(),
-    updateFooterHeight: jest.fn(),
-  };
-});
-jest.mock('@shopgate/pwa-core/emitters/ui', () => ({
-  addListener: jest.fn(),
-  removeListener: jest.fn(),
+jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/core/events', () => ({
+  UIEvents: {
+    addListener: jest.fn(),
+    removeListener: jest.fn(),
+  },
 }));
-jest.mock('@shopgate/pwa-common/helpers/dom', () => {
-  const actual = require.requireActual('@shopgate/pwa-common/helpers/dom');
-  return {
-    ...actual,
-    getAbsoluteHeight: jest.fn(),
-  };
-});
-jest.mock('@shopgate/engage/a11y/components');
-jest.mock('@shopgate/pwa-common/components/Portal', () => {
-  // eslint-disable-next-line require-jsdoc
-  function Portal() {
-    return mockedPortalContent || null;
-  }
-
-  return Portal;
-});
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  getAbsoluteHeight: jest.fn(),
+  useScrollContainer: jest.fn().mockReturnValue(false),
+}));
+jest.mock('../helpers', () => ({
+  getElementBackgroundColor: jest.fn(),
+  handleSafeAreaInsets: jest.fn(),
+  updateFooterHeight: jest.fn(),
+}));
 
 const FOOTER_CHILD_ID = 'footer-child';
-const PORTAL_CONTENT_ID = 'portal-content';
-const insetBackgroundUpdateSpy = jest.spyOn(Footer.prototype, 'performFooterUpdate');
 const defaultBackgroundColor = 'red';
-const defaultChildren = (<div
-  id={FOOTER_CHILD_ID}
-  style={{ backgroundColor: defaultBackgroundColor }}
-/>);
+const defaultChildren = (
+  <div
+    id={FOOTER_CHILD_ID}
+    style={{ backgroundColor: defaultBackgroundColor }}
+  />
+);
+
+/**
+ * @param {Object} wrapper A wrapper.
+ * @param {string} id Id of the element to change.
+ */
+const addHeightToWrapperElement = (wrapper, id) => {
+  const elements = wrapper.find(`#${APP_FOOTER_ID}`).getDOMNode().querySelectorAll(`#${id}`);
+  if (elements) {
+    Array.from(elements).forEach((element) => {
+      Object.defineProperty(element, 'clientHeight', {
+        get: () => 30,
+      });
+    });
+  }
+};
+
+/**
+ * Returns to DOM node of the footer from an enzyme wrapper.
+ * @param {Object} wrapper A wrapper.
+ * @returns {Node}
+ */
+const getFooterRefFromWrapper = wrapper => wrapper.find(`#${APP_FOOTER_ID}`).getDOMNode();
 
 /**
  * @param {NodeList} children Children for the footer.
@@ -73,161 +87,38 @@ const createComponent = (children = defaultChildren) => {
   return wrapper.find(Footer);
 };
 
-/**
- * @param {Object} wrapper A wrapper.
- * @param {string} id Id of the element to change.
- */
-const addHeightToWrapperElement = (wrapper, id) => {
-  const elements = wrapper.instance().ref.current.querySelectorAll(`#${id}`);
-  if (elements) {
-    Array.from(elements).forEach((element) => {
-      Object.defineProperty(element, 'clientHeight', {
-        get: () => 30,
-      });
-    });
-  }
-};
-
 describe('<Footer />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
-    mockedPortalContent = null;
   });
 
   it('should render the component', () => {
     const wrapper = createComponent();
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Portal')).toHaveLength(2);
-    expect(wrapper.find(`div#AppFooter > #${FOOTER_CHILD_ID}`)).toExist();
+    expect(wrapper.find(`div#${APP_FOOTER_ID} > #${FOOTER_CHILD_ID}`)).toExist();
     expect(mutationConstructorSpy).toHaveBeenCalledWith(expect.any(Function));
-    expect(insetBackgroundUpdateSpy).toHaveBeenCalledTimes(1);
-  });
-
-  describe('.hasVisibleContent()', () => {
-    it('should return FALSE when footer has no visible content', () => {
-      const wrapper = createComponent();
-      expect(wrapper.instance().hasVisibleContent()).toBe(false);
-    });
-
-    it('should return FALSE when there are components, but they are not visible', () => {
-      mockedPortalContent = <div id={PORTAL_CONTENT_ID} />;
-      const wrapper = createComponent();
-      expect(wrapper.instance().hasVisibleContent()).toBe(false);
-    });
-
-    it('should return FALSE when there are components, but they are supposed to be ignored', () => {
-      mockedPortalContent = <div id={PORTAL_CONTENT_ID} data-footer-inset-update-ignore />;
-      const wrapper = createComponent(null);
-      addHeightToWrapperElement(wrapper, PORTAL_CONTENT_ID);
-      expect(wrapper.instance().hasVisibleContent()).toBe(false);
-    });
-
-    it('should return TRUE when the core portal has visible content', () => {
-      const wrapper = createComponent();
-      addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-      expect(wrapper.instance().hasVisibleContent()).toBe(true);
-    });
-
-    it('should return TRUE when the an extension portal has visible content', () => {
-      mockedPortalContent = <div id={PORTAL_CONTENT_ID} />;
-      const wrapper = createComponent(null);
-      addHeightToWrapperElement(wrapper, PORTAL_CONTENT_ID);
-      expect(wrapper.instance().hasVisibleContent()).toBe(true);
-    });
-  });
-
-  describe('.getInsetBackgroundColor()', () => {
-    it('should return null when there is no visible content', () => {
-      const wrapper = createComponent(null);
-      addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-      const elements = wrapper.instance().ref.current.children;
-      expect(wrapper.instance().getInsetBackgroundColor(elements)).toBe(null);
-    });
-
-    it('should return "red" when there is visible content within the core portal', () => {
-      const wrapper = createComponent();
-      addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-      const elements = wrapper.instance().ref.current.children;
-      expect(wrapper.instance().getInsetBackgroundColor(elements))
-        .toBe(defaultBackgroundColor);
-    });
-
-    it('should return "blue" when there is visible content within the core portal', () => {
-      const backgroundColor = 'blue';
-      mockedPortalContent = <div id={FOOTER_CHILD_ID} style={{ backgroundColor }} />;
-      const wrapper = createComponent();
-      addHeightToWrapperElement(wrapper, PORTAL_CONTENT_ID);
-      addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-      const elements = wrapper.instance().ref.current.children;
-      expect(wrapper.instance().getInsetBackgroundColor(elements))
-        .toBe(backgroundColor);
-    });
-
-    it('should return "red" when there is visible content within the core portal', () => {
-      const backgroundColor = 'blue';
-      mockedPortalContent = (<div
-        id={FOOTER_CHILD_ID}
-        style={{ backgroundColor }}
-        data-footer-inset-update-ignore
-      />);
-
-      const wrapper = createComponent();
-      addHeightToWrapperElement(wrapper, PORTAL_CONTENT_ID);
-      addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-      const elements = wrapper.instance().ref.current.children;
-      expect(wrapper.instance().getInsetBackgroundColor(elements))
-        .toBe(defaultBackgroundColor);
-    });
-
-    it('should return null when the last visible content in invisible by the background color', () => {
-      const backgroundColor = 'rgba(0, 0, 0, 0)';
-      mockedPortalContent = <div id={FOOTER_CHILD_ID} style={{ backgroundColor }} />;
-      const wrapper = createComponent();
-      addHeightToWrapperElement(wrapper, PORTAL_CONTENT_ID);
-      addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-      const elements = wrapper.instance().ref.current.children;
-      expect(wrapper.instance().getInsetBackgroundColor(elements)).toBe(null);
-    });
-  });
-
-  describe('.performFooterUpdate()', () => {
-    it('should do nothing when the ref is empty', () => {
-      const wrapper = createComponent();
-      wrapper.instance().ref.current = null;
-      updateInsetBackgroundColor.mockClear();
-      wrapper.instance().performFooterUpdate();
-      expect(updateInsetBackgroundColor).not.toHaveBeenCalled();
-    });
-
-    it('should update the inset background color', () => {
-      const wrapper = createComponent();
-      updateInsetBackgroundColor.mockClear();
-      const instance = wrapper.instance();
-      instance.performFooterUpdate();
-      const backgroundColor = instance.getInsetBackgroundColor(instance.ref.current.children);
-      expect(updateInsetBackgroundColor).toHaveBeenCalledTimes(1);
-      expect(updateInsetBackgroundColor).toHaveBeenCalledWith(backgroundColor);
-    });
+    expect(handleSafeAreaInsets).toHaveBeenCalledTimes(1);
+    expect(updateFooterHeight).toHaveBeenCalledTimes(1);
   });
 
   describe('MutationObserver', () => {
     let callback;
-    let instance;
+    let wrapper;
 
     beforeEach(() => {
-      const wrapper = createComponent();
-      instance = wrapper.instance();
-      insetBackgroundUpdateSpy.mockClear();
+      jest.clearAllMocks();
+      wrapper = createComponent();
       ([[callback]] = mutationConstructorSpy.mock.calls);
     });
 
     it('should observer with the correct initialization', () => {
       expect(mutationObserveSpy).toHaveBeenCalledWith(
-        instance.ref.current,
+        getFooterRefFromWrapper(wrapper),
         {
-          attributes: true,
           childList: true,
           subtree: true,
+          attributes: true,
+          attributeFilter: ['style', 'class'],
         }
       );
     });
@@ -235,14 +126,14 @@ describe('<Footer />', () => {
     it('should perform an inset update when the updated DOM element is not ignored', () => {
       const element = document.createElement('div');
       callback([{ target: element }]);
-      expect(insetBackgroundUpdateSpy).toHaveBeenCalledTimes(1);
+      expect(handleSafeAreaInsets).toHaveBeenCalledTimes(2);
     });
 
     it('should not perform an inset update when the updated DOM element is ignored', () => {
       const element = document.createElement('div');
       element.setAttribute('data-footer-inset-update-ignore', 'true');
       callback([{ target: element }]);
-      expect(insetBackgroundUpdateSpy).not.toHaveBeenCalled();
+      expect(handleSafeAreaInsets).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -253,35 +144,81 @@ describe('<Footer />', () => {
           <div>Footer</div>
         </Footer>
       ));
-      const instance = wrapper.instance();
 
       expect(UIEvents.addListener).toBeCalledTimes(2);
-      expect(UIEvents.addListener).nthCalledWith(1, SHEET_EVENTS.OPEN, instance.hide);
-      expect(UIEvents.addListener).nthCalledWith(2, SHEET_EVENTS.CLOSE, instance.show);
+
+      expect(UIEvents.addListener).nthCalledWith(1, SHEET_EVENTS.OPEN, expect.any(Function));
+      expect(UIEvents.addListener).nthCalledWith(2, SHEET_EVENTS.CLOSE, expect.any(Function));
 
       wrapper.unmount();
       expect(UIEvents.removeListener).toBeCalledTimes(2);
-      expect(UIEvents.removeListener).nthCalledWith(1, SHEET_EVENTS.OPEN, instance.hide);
-      expect(UIEvents.removeListener).nthCalledWith(2, SHEET_EVENTS.CLOSE, instance.show);
+      expect(UIEvents.removeListener).nthCalledWith(1, SHEET_EVENTS.OPEN, expect.any(Function));
+      expect(UIEvents.removeListener).nthCalledWith(2, SHEET_EVENTS.CLOSE, expect.any(Function));
     });
   });
 
-  describe('updateFooterHeight', () => {
-    let instance;
+  describe('helpers', () => {
+    describe('updateFooterHeight()', () => {
+      beforeAll(() => {
+        handleSafeAreaInsets.mockClear();
+      });
 
-    beforeEach(() => {
-      const wrapper = createComponent();
-      instance = wrapper.instance();
+      beforeEach(() => {
+        createComponent();
+      });
+
+      it('should set footer height to zero', () => {
+        // Invoke event listener SHEET_EVENTS.OPEN (hide footer)
+        UIEvents.addListener.mock.calls[0][1]();
+        expect(updateFooterHeight).toHaveBeenCalledWith(0);
+      });
+      it('should set footer height', () => {
+        getAbsoluteHeight.mockReturnValueOnce('48px');
+        // Invoke event listener SHEET_EVENTS.HIDE (show footer)
+        UIEvents.addListener.mock.calls[1][1]();
+        expect(updateFooterHeight).toHaveBeenCalledWith('48px');
+      });
     });
 
-    it('should set footer height to zero', () => {
-      instance.hide();
-      expect(updateFooterHeight).toHaveBeenCalledWith(0);
-    });
-    it('should set footer height', () => {
-      getAbsoluteHeight.mockReturnValueOnce('48px');
-      instance.show();
-      expect(updateFooterHeight).toHaveBeenCalledWith('48px');
+    describe('.getInsetBackgroundColor()', () => {
+      let getElementBackgroundColor;
+      beforeAll(() => {
+        jest.resetModules();
+        jest.unmock('../helpers');
+      });
+
+      beforeEach(() => {
+        ({ getElementBackgroundColor } = jest.requireActual('../helpers'));
+      });
+
+      it('should return null when there is no visible content', () => {
+        const wrapper = createComponent(null);
+        addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
+        const elements = getFooterRefFromWrapper(wrapper).children[0];
+        expect(getElementBackgroundColor(elements)).toBe(null);
+      });
+
+      it('should return "red" when there is visible content', () => {
+        const wrapper = createComponent();
+        addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
+        const elements = getFooterRefFromWrapper(wrapper).children[0];
+        expect(getElementBackgroundColor(elements)).toBe(defaultBackgroundColor);
+      });
+
+      it('should return "yellow" for a deeply nested element with bg color', () => {
+        const children = (
+          <div id={FOOTER_CHILD_ID}>
+            <div>
+              <div style={{ backgroundColor: 'yellow' }} />
+            </div>
+          </div>
+        );
+        const wrapper = createComponent(children);
+
+        addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
+        const elements = getFooterRefFromWrapper(wrapper).children[0];
+        expect(getElementBackgroundColor(elements)).toBe('yellow');
+      });
     });
   });
 });

@@ -65,7 +65,6 @@ const Viewport = ({
           )}
         </Helmet>
       )}
-
       <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
       <div className={`${styles.viewport} theme__viewport`} aria-hidden={hidden} tabIndex="-1">
         <LiveMessenger />

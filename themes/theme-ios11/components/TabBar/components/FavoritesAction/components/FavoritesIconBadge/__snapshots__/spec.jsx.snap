@@ -11,7 +11,7 @@ exports[`TabBar favorites action - lifecycle should update when number exceeds m
   }
 >
   <div
-    className="css-2xnaag theme__tab-bar__favorites-icon-badge theme__badge"
+    className="css-qcorc4 theme__tab-bar__favorites-icon-badge theme__badge"
   >
     999+
   </div>
@@ -29,7 +29,7 @@ exports[`TabBar favorites action - lifecycle should update when number is change
   }
 >
   <div
-    className="css-2xnaag theme__tab-bar__favorites-icon-badge theme__badge"
+    className="css-qcorc4 theme__tab-bar__favorites-icon-badge theme__badge"
   >
     99
   </div>
@@ -60,7 +60,7 @@ exports[`TabBar favorites action should render exact number 1`] = `
         widgetSettings={Object {}}
       >
         <div
-          className="css-2xnaag theme__tab-bar__favorites-icon-badge theme__badge"
+          className="css-qcorc4 theme__tab-bar__favorites-icon-badge theme__badge"
         >
           1
         </div>

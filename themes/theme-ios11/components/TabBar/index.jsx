@@ -1,24 +1,22 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, {
+  useMemo, useEffect, useCallback, useState, useRef, memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { UIEvents } from '@shopgate/pwa-core';
-import {
-  Grid, Portal, KeyboardConsumer,
-} from '@shopgate/engage/components';
+import { KeyboardConsumer, SurroundPortals } from '@shopgate/engage/components';
+import { UIEvents } from '@shopgate/engage/core/events';
+import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
+import { useWidgetSettings, useElementSize } from '@shopgate/engage/core/hooks';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
-  TAB_BAR_BEFORE,
-  TAB_BAR_AFTER,
   SHOW_TAB_BAR,
   HIDE_TAB_BAR,
 } from './constants';
 import connect from './connector';
-import styles, {
-  updateHeightCSSProperty, inVisible, scrolledIn, scrolledOut,
-} from './style';
+import { useTabBarScrollObserver } from './hooks';
+import * as classes from './style';
 import visibleTabs from './tabs';
-import ScrollTabBar from './ScrollTabBar';
 
 /**
  * Renders the action for a given tab configuration.
@@ -42,164 +40,222 @@ const createTabAction = (tab, isHighlighted, path) => {
 
 /**
  * The TabBar component
+ * @param {Object} props The component props.
+ * @param {boolean} props.isEnabled If the tab bar is enabled.
+ * @param {boolean} props.isVisible If the tab bar is visible.
+ * @param {string} props.activeTab The active tab.
+ * @param {string} props.path The current path.
+ * @param {number} props.modalCount The current modal count.
+ * @returns {JSX.Element}
  */
-class TabBar extends PureComponent {
-  /**
-   * Shows tha TabBar
-   * @param {boolean} [force=false] When set to TRUE the TabBar wil be shown even if not enabled
-   */
-  static show = (force = false) => {
-    UIEvents.emit(SHOW_TAB_BAR, { force });
-  }
+const TabBar = ({
+  isEnabled,
+  isVisible: isVisibleProp,
+  activeTab,
+  path,
+  modalCount,
+}) => {
+  useTabBarScrollObserver(isVisibleProp);
 
-  static hide = () => {
-    UIEvents.emit(HIDE_TAB_BAR);
-  }
+  const {
+    transition = 'fade',
+    variant = 'docked',
+    hideOnScroll = false,
+  } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
-  static propTypes = {
-    modalCount: PropTypes.number.isRequired,
-    path: PropTypes.string.isRequired,
-    activeTab: PropTypes.string,
-    isEnabled: PropTypes.bool,
-    isVisible: PropTypes.bool,
-  };
+  const [ariaHidden, setAriaHidden] = useState(modalCount > 0);
+  const [isScrolledOut, setIsScrolledOut] = useState(false);
+  const [isVisible, setIsVisible] = useState(isVisibleProp);
+  const [transitionVisibility, setTransitionVisibility] = useState(true);
 
-  static defaultProps = {
-    activeTab: null,
-    isVisible: true,
-    isEnabled: true,
-  };
+  const tabBarRef = useRef(null);
 
-  /**
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
+  const { height: tabBarHeight } = useElementSize(tabBarRef);
 
-    updateHeightCSSProperty(props.isVisible);
-    UIEvents.addListener(SHOW_TAB_BAR, this.show);
-    UIEvents.addListener(HIDE_TAB_BAR, this.hide);
-  }
+  // Effect to maintain the aria-hidden attribute based on modal count
+  useEffect(() => {
+    setAriaHidden(modalCount > 0);
+  }, [modalCount]);
 
-  state = {
-    isVisible: this.props.isVisible,
-    isScrolledOut: false,
-    ariaHidden: false,
-  };
+  // Effect to update the visibility state of the tab bar
+  useEffect(() => {
+    setIsVisible(isVisibleProp);
+  }, [isVisibleProp]);
 
-  /**
-   * @param {Object} nextProps next props
-   */
-  UNSAFE_componentWillReceiveProps({ isVisible }) {
-    if (this.state.isVisible !== isVisible) {
-      this.setState({ isVisible });
-    }
-  }
+  useEffect(() => {
+    setTransitionVisibility(isVisible);
+  }, [isVisible]);
+
+  // Effect to update the CSS custom property for tab bar height
+  useEffect(() => {
+    const update = !isVisible || isScrolledOut ? 0 : tabBarHeight;
+    // Set a global css variable that indicates the current height of the TabBar
+    setCSSCustomProp('--tabbar-height', `${update}px`);
+  }, [isScrolledOut, isVisible, tabBarHeight]);
 
   /**
-   * it's responsible to update the css height property of the tabbar
-   * @param {Object} prevProps previous props
-   * @param {Object} prevState previous state
+   * Callback for the tab bar events invoked when the tab bar is shown.
    */
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.isVisible !== prevState.isVisible) {
-      updateHeightCSSProperty(this.state.isVisible);
-    }
-
-    if (prevProps.modalCount !== this.props.modalCount) {
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({
-        ariaHidden: this.props.modalCount > 0,
-      });
-    }
-  }
-
-  /** Will unmount hook */
-  componentWillUnmount() {
-    UIEvents.removeListener(SHOW_TAB_BAR, this.show);
-    UIEvents.removeListener(HIDE_TAB_BAR, this.hide);
-
-    updateHeightCSSProperty(false);
-  }
-
-  show = ({ scroll, force } = {}) => {
-    // Don't show the TabBar when it's not enabled
-    if (!this.props.isEnabled && force !== true) {
+  const handleShow = useCallback(({ scroll, force } = {}) => {
+    if (!isEnabled && force !== true) {
       return;
     }
 
     if (scroll === true) {
-      this.setState({
-        isScrolledOut: false,
-      }, () => {
-        updateHeightCSSProperty(true);
-      });
+      setIsScrolledOut(false);
       return;
     }
-    this.setState({
-      isVisible: true,
-    });
-  }
 
-  hide = ({ scroll } = {}) => {
-    if (scroll === true) {
-      this.setState({
-        isScrolledOut: true,
-      }, () => {
-        updateHeightCSSProperty(false);
-      });
-      return;
-    }
-    this.setState({
-      isVisible: false,
-    });
-  }
+    setIsVisible(true);
+  }, [isEnabled]);
 
   /**
-   * @returns {JSX}
+   * Callback for the tab bar events invoked when the tab bar is hidden.
    */
-  render() {
-    const { activeTab, path } = this.props;
-    const { isVisible, isScrolledOut, ariaHidden } = this.state;
+  const handleHide = useCallback(({ scroll } = {}) => {
+    if (scroll === true) {
+      setIsScrolledOut(true);
+      return;
+    }
 
-    const props = {
-      isVisible,
-      activeTab,
-      path,
+    setIsVisible(false);
+  }, []);
+
+  // Effect to register the event listeners for showing and hiding the tab bar
+  useEffect(() => {
+    UIEvents.addListener(SHOW_TAB_BAR, handleShow);
+    UIEvents.addListener(HIDE_TAB_BAR, handleHide);
+
+    return () => {
+      UIEvents.removeListener(SHOW_TAB_BAR, handleShow);
+      UIEvents.removeListener(HIDE_TAB_BAR, handleHide);
     };
+  }, [handleHide, handleShow]);
 
-    const className = classNames('theme__tab-bar', styles,
-      isScrolledOut ? scrolledOut : scrolledIn,
+  // Create props for the portals
+  const portalProps = useMemo(() => ({
+    tabs: { ...tabs },
+    isVisible,
+    activeTab,
+    path,
+  }), [activeTab, isVisible, path]);
+
+  // Callback invoked when the animated tab bar transition ends
+  const handleTransitionEnd = useCallback(() => {
+    setTransitionVisibility(!isScrolledOut);
+  }, [isScrolledOut]);
+
+  // Pick classes for the configured transition
+  const transitionClasses = useMemo(() => {
+    if (Object.keys(classes.transitions).includes(transition)) {
+      return classes.transitions[transition];
+    }
+
+    return classes.transitions.fade;
+  }, [transition]);
+
+  const tabBarClasses = useMemo(() => {
+    // Create class list for the tab bar container
+    const container = classNames(
+      'theme__tab-bar__container',
+      classes.tabBarContainerBase,
+      transitionClasses.base,
+      `transition-${!hideOnScroll ? 'none' : transition}`,
+      isScrolledOut ? transitionClasses.out : transitionClasses.in,
+      isScrolledOut ? 'transition-hidden' : 'transition-visible',
+      transitionVisibility ? 'visible' : 'hidden',
       {
-        [inVisible]: !isVisible,
-      });
-
-    return (
-      <>
-        <KeyboardConsumer>
-          {({ open }) => !open && (
-          <Fragment>
-            <Portal name={TAB_BAR_BEFORE} props={{ ...props }} />
-            {/* eslint-disable-next-line extra-rules/no-single-line-objects */}
-            <Portal name={TAB_BAR} props={{ tabs: { ...tabs }, ...props }}>
-              <Grid
-                className={className}
-                data-test-id="tabBar"
-                role="tablist"
-                component="div"
-                aria-hidden={ariaHidden}
-              >
-                {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
-              </Grid>
-            </Portal>
-            <Portal name={TAB_BAR_AFTER} props={{ ...props }} />
-          </Fragment>
-          )}
-        </KeyboardConsumer>
-        <ScrollTabBar />
-      </>
+        'variant-docked': variant !== 'floating',
+        'variant-floating': variant === 'floating',
+        [classes.tabBarContainerDocked]: variant !== 'floating',
+        [classes.tabBarContainerFloating]: variant === 'floating',
+        [classes.hidden]: !isVisible,
+      }
     );
-  }
-}
 
-export default connect(TabBar);
+    // Create class list for the actual tab bar
+    const component = classNames(
+      'theme__tab-bar',
+      // Backwards compatibility to prevent broken custom styling that addressed class of the Grid
+      // component
+      'common__grid',
+      classes.tabBarBase,
+      {
+        [classes.tabBarDocked]: variant !== 'floating',
+        [classes.tabBarFloating]: variant === 'floating',
+      }
+    );
+
+    return {
+      container,
+      component,
+    };
+  }, [
+    isScrolledOut,
+    isVisible,
+    hideOnScroll,
+    transition,
+    transitionClasses.base,
+    transitionClasses.in,
+    transitionClasses.out,
+    transitionVisibility,
+    variant,
+  ]);
+
+  return (
+    <KeyboardConsumer>
+      {({ open }) => !open && (
+      <SurroundPortals portalName={TAB_BAR} portalProps={portalProps}>
+        <div
+          className={tabBarClasses.container}
+          aria-hidden={ariaHidden}
+          onTransitionEnd={handleTransitionEnd}
+          ref={tabBarRef}
+        >
+          <div
+            className={tabBarClasses.component}
+            data-test-id="tabBar"
+            role="tablist"
+            aria-hidden={ariaHidden}
+          >
+            {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+          </div>
+        </div>
+      </SurroundPortals>
+      )}
+    </KeyboardConsumer>
+  );
+};
+
+TabBar.propTypes = {
+  modalCount: PropTypes.number.isRequired,
+  path: PropTypes.string.isRequired,
+  activeTab: PropTypes.string,
+  isEnabled: PropTypes.bool,
+  isVisible: PropTypes.bool,
+};
+
+TabBar.defaultProps = {
+  activeTab: null,
+  isVisible: true,
+  isEnabled: true,
+};
+
+const ConnectedTabBar = connect(memo(TabBar));
+
+/**
+ * Shows the TabBar
+ * @param {boolean} [force=false] When set to TRUE the TabBar wil be shown even if not enabled
+ */
+ConnectedTabBar.show = (force = false) => {
+  UIEvents.emit(SHOW_TAB_BAR, { force });
+};
+
+/**
+ * Hides the TabBar
+ */
+ConnectedTabBar.hide = () => {
+  UIEvents.emit(HIDE_TAB_BAR);
+};
+
+export default ConnectedTabBar;

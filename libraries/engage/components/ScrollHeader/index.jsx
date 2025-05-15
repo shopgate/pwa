@@ -1,9 +1,7 @@
-import React, {
-  useState, useCallback, useEffect,
-} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { viewScroll$ } from '@shopgate/engage/core/streams';
+import { useScrollDirectionChange } from '@shopgate/engage/core/hooks';
 import {
   root, scrolledIn, scrolledOut, transition,
 } from './style';
@@ -18,30 +16,15 @@ function ScrollHeader({
 }) {
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
 
-  const onScroll = useCallback((scrollEvent) => {
-    const {
-      scrollTop, scrolled, scrollOut, scrollIn,
-    } = scrollEvent;
-
-    if (!scrolled) {
-      return;
-    }
-
-    if (!shouldHideHeader && scrollOut && scrollTop >= scrollOffset) {
+  useScrollDirectionChange({
+    enabled: hideOnScroll,
+    offset: scrollOffset,
+    onScrollDown: () => {
       setShouldHideHeader(true);
-    }
-
-    if (shouldHideHeader && scrollIn) {
+    },
+    onScrollUp: () => {
       setShouldHideHeader(false);
-    }
-  }, [scrollOffset, shouldHideHeader]);
-
-  useEffect(() => {
-    if (hideOnScroll) {
-      const subscription = viewScroll$.subscribe(onScroll);
-      return () => subscription.unsubscribe();
-    }
-    return undefined;
+    },
   });
 
   return (

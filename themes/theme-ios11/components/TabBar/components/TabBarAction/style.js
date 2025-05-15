@@ -1,5 +1,4 @@
 import { css } from 'glamor';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const container = css({
   display: 'flex',
@@ -11,24 +10,26 @@ const container = css({
   fontWeight: 500,
   fontSize: '0.64rem',
   height: '100%',
-  padding: 0,
   '> svg': {
     flexGrow: 1,
     marginRight: 'auto',
     marginLeft: 'auto',
+    minHeight: 32,
   },
 }).toString();
 
 const regular = css({
-  color: themeColors.shade11,
+  color: 'var(--tab-bar-item-default-color)',
 }).toString();
 
 const highlighted = css({
-  color: `var(--color-secondary, ${themeColors.accent})`,
+  color: 'var(--tab-bar-item-highlighted-color)',
 }).toString();
 
 const label = css({
-  marginBottom: 2,
+  ':not(:empty)': {
+    display: 'block',
+  },
 }).toString();
 
 const item = css({

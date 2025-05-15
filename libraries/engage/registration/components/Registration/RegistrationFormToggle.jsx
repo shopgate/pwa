@@ -19,7 +19,7 @@ const styles = {
 
 /**
  * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const RegistrationFormToggle = ({ isGuest }) => {
   const {
@@ -38,9 +38,14 @@ const RegistrationFormToggle = ({ isGuest }) => {
 
   return (
     <div className={styles.root} id={ELEMENT_ID_SHIPPING_CONTACT_TOGGLE}>
-      <span className={styles.label}>
+      <label
+        aria-hidden
+        className={styles.label}
+        htmlFor="toggle-shipping-form"
+        id="toggle-shipping-form-label"
+      >
         { i18n.text('registration.different_shipping_address_label')}
-      </span>
+      </label>
       <Toggle
         id="toggle-shipping-form"
         checked={isShippingFormVisible}

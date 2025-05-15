@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { getHistoryPathname } from '@shopgate/pwa-common/selectors/history';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
@@ -30,7 +30,7 @@ const getTabBarState = state => state.ui.tabBar;
  * @returns {string}
  */
 export const getActiveTab = createSelector(
-  getHistoryPathname,
+  getCurrentPathname,
   (pathname) => {
     if (!pathname) {
       return TAB_NONE;

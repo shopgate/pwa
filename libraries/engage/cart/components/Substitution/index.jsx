@@ -17,7 +17,9 @@ const Substitution = ({
 }) => (
   <div className={classNames(root, className)}>
     <div className={leftSpace} />
-    <span className={text}>{label}</span>
+    <label aria-hidden className={text} htmlFor={id} id={`${id}-label`}>
+      {label}
+    </label>
     <div className={rightSpace}>
       <Toggle
         className={checkbox}

@@ -6,15 +6,12 @@ const backgroundColor = themeColors.lightDark;
 const buttonColor = themeColors.accent;
 const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
 // Button color can be anything. Fall back to white if accent is too dark.
-const safebuttonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
+const safeButtonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
 
 const container = css({
   position: 'fixed',
   height: 'var(--snack-bar-height, 80px)',
-  // Quick workaround for a feature introduced with PWA6 CCP-2358 (hide TabBar on scroll down).
-  // TabBar is position fixed now, to its height is not recognized when footer height is measured.
-  // Without the fix SnackBar would overlap the TabBar.
-  bottom: 'max(var(--footer-height), calc(var(--tabbar-height, 0px) + var(--safe-area-inset-bottom)))',
+  bottom: 'max(var(--footer-height), var(--safe-area-inset-bottom))',
   transition: 'bottom 0.3s ease',
   overflow: 'hidden',
   zIndex: 6,
@@ -55,7 +52,7 @@ const label = css({
 }).toString();
 
 const button = css({
-  color: safebuttonColor,
+  color: safeButtonColor,
   fontWeight: 500,
   height: 36,
   letterSpacing: 'inherit',

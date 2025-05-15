@@ -11,6 +11,7 @@ const container = css({
   position: 'relative',
   zIndex: 2,
   overflow: 'hidden',
+  paddingBottom: 'var(--safe-area-inset-bottom)',
 });
 
 const innerContainer = css({

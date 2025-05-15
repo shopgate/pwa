@@ -1,29 +1,5 @@
 import { css } from 'glamor';
-import { useScrollContainer } from '@shopgate/engage/core/helpers/scrollContainer';
-
-const { style } = document.documentElement;
-
-/**
- * Updates the background color of the bottom inset.
- * @param {string} color The new background color
- */
-export const updateInsetBackgroundColor = (color) => {
-  if (style.getPropertyValue('--footer-inset-background-color') !== color) {
-    style.setProperty('--footer-inset-background-color', color);
-  }
-};
-
-/**
- * Update the footer height
- * @param {number} height height
- */
-export const updateFooterHeight = (height) => {
-  const inset = Number(style.getPropertyValue('--safe-area-inset-bottom').replace(/\D/g, ''));
-  const footerHeight = `${inset + height}px`;
-  if (style.getPropertyValue('--footer-height') !== footerHeight) {
-    style.setProperty('--footer-height', footerHeight);
-  }
-};
+import { useScrollContainer } from '@shopgate/engage/core/helpers';
 
 export const footer = css({
   bottom: 0,
@@ -33,12 +9,4 @@ export const footer = css({
   ...(!useScrollContainer() ? {
     position: 'sticky',
   } : {}),
-  ':after': {
-    backgroundColor: 'var(--footer-inset-background-color, var(--page-background-color))',
-    height: 'var(--safe-area-inset-bottom)',
-    content: ' ',
-    display: 'inherit',
-    position: 'relative',
-    zIndex: 15,
-  },
 });

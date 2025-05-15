@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -24,7 +25,7 @@ import {
  */
 function PaymentBarContent({ showSeparator }) {
   return (
-    <div className={wrapper}>
+    <div className={classNames(wrapper, 'theme__cart__payment-bar')}>
       <SurroundPortals portalName={CART_PAYMENT_BAR}>
         <Grid className={container}>
           <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS}>

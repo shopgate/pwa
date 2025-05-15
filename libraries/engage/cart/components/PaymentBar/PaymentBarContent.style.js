@@ -9,6 +9,7 @@ export const wrapper = css({
   boxShadow: shadows.cart.paymentBar,
   position: 'relative',
   zIndex: 2,
+  paddingBottom: 'var(--safe-area-inset-bottom)',
 });
 
 export const container = css({
