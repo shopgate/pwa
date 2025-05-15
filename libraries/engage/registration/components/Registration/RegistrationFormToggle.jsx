@@ -32,7 +32,7 @@ const RegistrationFormToggle = ({ isGuest }) => {
     setIsShippingFormVisible(e.target.checked);
   }, [setIsShippingFormVisible]);
 
-  if (isShippingAddressSelectionEnabled) {
+  if (!isShippingAddressSelectionEnabled) {
     return null;
   }
 
