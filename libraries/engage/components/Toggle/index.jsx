@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import {
-  label, checkbox, hidden, thumb, container,
+  label, checkbox, thumb, container,
 } from './style';
 
 /**
@@ -15,9 +15,17 @@ const Toggle = ({
 }) => (
   <div className={className}>
     <div className={container}>
-      <input type="checkbox" id={id} className={classNames(checkbox, hidden)} checked={checked} onChange={onChange} disabled={disabled} />
-      {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-      <label htmlFor={id} className={label} />
+      <input
+        type="checkbox"
+        id={id}
+        className={classNames(checkbox)}
+        checked={checked}
+        aria-checked={checked}
+        onChange={onChange}
+        disabled={disabled}
+        aria-labelledby={`${id}-label`}
+      />
+      <div className={label} />
       <div className={thumb} />
     </div>
   </div>
