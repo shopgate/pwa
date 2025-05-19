@@ -1,5 +1,5 @@
 {
-  "version": "7.26.0",
+  "version": "7.27.0",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -812,6 +812,16 @@
       "params": {
         "type": "json",
         "label": "By default we attempt to make videos inside HTML widgets responsive, so that they take the full screen width. This setting can be used to disable this behavior for specific video providers."
+      }
+    },
+    "androidNavigationBarDefaultColor": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "text" ,
+        "label": "Default color of the navigation bar on Android >= 15",
+        "description": "On Android >= 15 the navigation bar overlays the app. This settings defines the default color of the navigation bar if not set on demand by the PWA."
       }
     }
   }
