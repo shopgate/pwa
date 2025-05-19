@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Toggle } from '@shopgate/engage/components';
 import {
-  root, checkbox, leftSpace, rightSpace, text,
+  root, checkbox, rightSpace, text,
 } from './style';
 import connect from './connector';
 
@@ -16,7 +16,6 @@ const Substitution = ({
   id, onChange, checked, className, label, disabled,
 }) => (
   <div className={classNames(root, className)}>
-    <div className={leftSpace} />
     <label aria-hidden className={text} htmlFor={id} id={`${id}-label`}>
       {label}
     </label>

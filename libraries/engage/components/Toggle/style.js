@@ -20,7 +20,7 @@ export const label = css({
 }).toString();
 
 export const checkbox = css({
-  ':checked ~ label': {
+  [`:checked ~ .${label}`]: {
     background: `var(--color-primary, ${colors.primary})`,
     opacity: 0.5,
   },
@@ -28,7 +28,7 @@ export const checkbox = css({
     left: 20,
     background: `var(--color-primary, ${colors.primary})`,
   },
-  ':disabled ~ label': {
+  [`:disabled ~ .${label}`]: {
     background: '#D5D5D5',
     pointerEvents: 'none',
     filter: 'none',
