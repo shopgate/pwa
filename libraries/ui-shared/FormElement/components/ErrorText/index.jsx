@@ -17,6 +17,7 @@ const ErrorText = ({
     className={classNames(className, styles, 'errorText')}
     aria-live="assertive"
     aria-atomic="true"
+    aria-hidden
   >
     {translate && <I18n.Text string={errorText} />}
     {!translate && errorText}

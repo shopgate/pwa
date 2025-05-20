@@ -15,6 +15,7 @@ const ErrorText = props => (
     className={classNames(props.className, styles.error, 'errorText')}
     aria-live="assertive"
     aria-atomic="true"
+    aria-hidden
   >
     {props.translate && <I18n.Text string={props.validationError || props.errorText} />}
     {!props.translate && (props.validationError || props.errorText)}
