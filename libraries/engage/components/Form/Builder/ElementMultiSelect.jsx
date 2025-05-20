@@ -69,6 +69,7 @@ const ElementMultiSelect = (props) => {
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );

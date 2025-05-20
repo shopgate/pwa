@@ -204,7 +204,7 @@ class Login extends Component {
                   required
                   aria-required
                   aria-invalid={hasLoginError}
-                  aria-describedby={hasLoginError ? 'ariaError' : null}
+                  aria-describedby={hasLoginError ? 'ariaError-email' : null}
                   type="email"
                   name="email"
                   className={styles.input}
@@ -218,7 +218,7 @@ class Login extends Component {
                   required
                   aria-required
                   aria-invalid={hasPasswordError}
-                  aria-describedby={hasPasswordError ? 'ariaError' : null}
+                  aria-describedby={hasPasswordError ? 'ariaError-password' : null}
                   password
                   name="password"
                   className={styles.input}

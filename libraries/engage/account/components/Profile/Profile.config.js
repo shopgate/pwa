@@ -1,4 +1,4 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { generateCustomerAttributesFields } from '@shopgate/engage/account/helper/form';
 
 /**
@@ -17,6 +17,7 @@ const generateFormConfig = additionalOptions => ({
     firstName: {
       type: 'text',
       label: `${i18n.text('account.profile.form.firstName')} *`,
+      required: true,
     },
     middleName: {
       type: 'text',
@@ -25,10 +26,12 @@ const generateFormConfig = additionalOptions => ({
     lastName: {
       type: 'text',
       label: `${i18n.text('account.profile.form.lastName')} *`,
+      required: true,
     },
     emailAddress: {
       type: 'email',
       label: `${i18n.text('account.profile.form.emailAddress')} *`,
+      required: true,
       disabled: true,
     },
     marketingOptIn: {

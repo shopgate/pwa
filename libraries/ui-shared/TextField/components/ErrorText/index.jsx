@@ -11,18 +11,19 @@ import styles from './style';
  */
 const ErrorText = props => (
   <div
-    id="ariaError"
+    id={`ariaError-${props.elementName}`}
     className={classNames(props.className, styles.error, 'errorText')}
     aria-live="assertive"
     aria-atomic="true"
   >
-    { props.translate && <I18n.Text string={props.validationError || props.errorText} /> }
-    { !props.translate && (props.validationError || props.errorText) }
+    {props.translate && <I18n.Text string={props.validationError || props.errorText} />}
+    {!props.translate && (props.validationError || props.errorText)}
   </div>
 );
 
 ErrorText.propTypes = {
   className: PropTypes.string,
+  elementName: PropTypes.string,
   errorText: PropTypes.string,
   translate: PropTypes.bool,
   validationError: PropTypes.string,
@@ -31,6 +32,7 @@ ErrorText.propTypes = {
 ErrorText.defaultProps = {
   className: '',
   errorText: null,
+  elementName: null,
   translate: true,
   validationError: null,
 };

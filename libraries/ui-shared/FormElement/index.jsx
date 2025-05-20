@@ -70,7 +70,7 @@ class FormElement extends Component {
   }
 
   /**
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const {
@@ -113,7 +113,7 @@ class FormElement extends Component {
           <Underline isFocused={isFocused} hasErrorMessage={this.hasErrorMessage} />
         }
         {errorText && showErrorText &&
-          <ErrorText errorText={errorText} translate={translateErrorText} />
+          <ErrorText errorText={errorText} translate={translateErrorText} elementName={htmlFor} />
         }
       </div>
     );

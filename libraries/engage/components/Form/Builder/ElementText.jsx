@@ -72,12 +72,13 @@ const ElementText = (props) => {
         showErrorText={false}
         disabled={disabled}
         aria-invalid={!!errorText}
-        aria-describedby={errorText.length > 0 ? 'ariaError' : null}
+        aria-describedby={errorText.length > 0 ? `ariaError-${name}` : null}
       />
       <FormHelper
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );

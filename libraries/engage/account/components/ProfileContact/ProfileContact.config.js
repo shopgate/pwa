@@ -1,4 +1,4 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { ADDRESS_TYPE_SHIPPING, ADDRESS_TYPE_BILLING } from '@shopgate/engage/checkout';
 
 /**
@@ -24,6 +24,7 @@ export const generateFormConfig = ({
     firstName: {
       type: 'text',
       label: `${i18n.text('account.profile.form.firstName')} *`,
+      required: true,
     },
     ...(!isCheckout ? {
       middleName: {
@@ -34,15 +35,18 @@ export const generateFormConfig = ({
     lastName: {
       type: 'text',
       label: `${i18n.text('account.profile.form.lastName')} *`,
+      required: true,
     },
     ...(!isCheckout ? {
       emailAddress: {
         type: 'email',
         label: `${i18n.text('account.profile.form.emailAddress')} *`,
+        required: true,
       },
       mobile: {
         type: 'phone_picker',
         label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
+        required: true,
         config: {
           supportedCountries,
           countrySortOrder,
@@ -53,6 +57,7 @@ export const generateFormConfig = ({
     address1: {
       type: 'text',
       label: `${i18n.text('account.profile.form.address1')} *`,
+      required: true,
     },
     ...(numberOfAddressLines >= 2 ? {
       address2: {
@@ -75,14 +80,17 @@ export const generateFormConfig = ({
     postalCode: {
       type: 'text',
       label: `${i18n.text('account.profile.form.postalCode')} *`,
+      required: true,
     },
     city: {
       type: 'text',
       label: `${i18n.text('account.profile.form.city')} *`,
+      required: true,
     },
     country: {
       type: 'country',
       label: `${i18n.text('account.profile.form.country')} *`,
+      required: true,
       countries: supportedCountries,
     },
     region: {
