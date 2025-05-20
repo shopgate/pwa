@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.27.0](https://github.com/shopgate/pwa/compare/v7.26.0...v7.27.0) (2025-05-16)
+
+#### :rocket: Enhancement
+* [#1351](https://github.com/shopgate/pwa/pull/1351) Add Support for Updating Navigation Bar Color on Android 15 Edge-to-Edge displays ([@fkloes](https://github.com/fkloes))
+* [#1350](https://github.com/shopgate/pwa/pull/1350) Add setHeaders method to HttpRequest for custom header support ([@Rekhyt](https://github.com/Rekhyt))
+* [#1346](https://github.com/shopgate/pwa/pull/1346) Add Detection for Android Edge-to-Edge Design Support ([@fkloes](https://github.com/fkloes))
+* [#1345](https://github.com/shopgate/pwa/pull/1345) Improved TabBar Customization + Dev Support for iOS Safe Areas ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.26.0](https://github.com/shopgate/pwa/compare/v7.25.1...v7.26.0) (2025-05-07)
 
 #### :rocket: Enhancement
