@@ -50,7 +50,11 @@ export function useFormState(
   } = useValidation(validationConstraints);
 
   const scrollToError = useCallback(() => {
-    scrollTo('.validationError');
+    const errorElement = document.querySelector('.validationError');
+    if (errorElement) {
+      scrollTo('.validationError');
+      errorElement.focus();
+    }
   }, [scrollTo]);
 
   // -- CHANGED ---------------

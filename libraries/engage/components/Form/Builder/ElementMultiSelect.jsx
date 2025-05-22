@@ -37,6 +37,7 @@ const ElementMultiSelect = (props) => {
         'formBuilderField',
         { validationError: !!errorText }
       )}
+      tabIndex={-1}
     >
       <ResponsiveContainer appAlways breakpoint="xs">
         <Select

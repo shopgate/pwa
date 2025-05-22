@@ -217,8 +217,10 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
     <div
       className={classnames(
         'formBuilderField',
-        'engage__form-phone-number'
+        'engage__form-phone-number',
+        { validationError: !!errorText }
       )}
+      tabIndex={-1}
     >
       <div className={phoneClasses}>
         <Label

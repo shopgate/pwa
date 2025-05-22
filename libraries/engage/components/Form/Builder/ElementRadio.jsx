@@ -34,6 +34,7 @@ const ElementRadio = (props) => {
         'formBuilderField',
         { validationError: !!errorText }
       )}
+      tabIndex={-1}
     >
       <RadioGroup
         name={name}

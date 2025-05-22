@@ -57,6 +57,7 @@ const ElementText = (props) => {
         'formBuilderField',
         { validationError: !!errorText }
       )}
+      tabIndex={-1}
     >
       <TextField
         required={required}

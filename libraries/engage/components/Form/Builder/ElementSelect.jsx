@@ -36,6 +36,7 @@ const ElementSelect = (props) => {
         'formBuilderField',
         { validationError: !!errorText }
       )}
+      tabIndex={-1}
     >
       <Select
         name={name}

@@ -34,6 +34,7 @@ const ElementCheckbox = (props) => {
         'formBuilderField',
         { validationError: !!errorText }
       )}
+      tabIndex={-1}
     >
       <Checkbox
         name={name}
