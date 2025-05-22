@@ -10,14 +10,14 @@ import styles from './style';
  * @returns {JSX.Element}
  */
 const ErrorText = ({
-  className, errorText, translate, elementName,
+  className, errorText, translate, elementName, ariaHidden,
 }) => (
   <div
     id={`ariaError-${elementName}`}
     className={classNames(className, styles, 'errorText')}
     aria-live="assertive"
     aria-atomic="true"
-    aria-hidden
+    aria-hidden={ariaHidden}
   >
     {translate && <I18n.Text string={errorText} />}
     {!translate && errorText}
@@ -25,6 +25,7 @@ const ErrorText = ({
 );
 
 ErrorText.propTypes = {
+  ariaHidden: PropTypes.bool,
   className: PropTypes.string,
   elementName: PropTypes.string,
   errorText: PropTypes.string,
@@ -36,6 +37,7 @@ ErrorText.defaultProps = {
   errorText: null,
   elementName: null,
   translate: true,
+  ariaHidden: false,
 };
 
 export default ErrorText;

@@ -25,7 +25,7 @@ const FormHelper = ({
       }}
     >
       {!!errorText && (
-      <ErrorTextCmp errorText={errorText} translate={false} elementName={elementName} />
+      <ErrorTextCmp errorText={errorText} translate={false} elementName={elementName} ariaHidden />
       )}
     </SurroundPortals>
   </div>
