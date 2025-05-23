@@ -297,8 +297,6 @@ class Builder extends Component {
         value={elementValue}
         visible={elementVisible}
         formName={formName}
-        className={elementErrorText ? 'validationError' : null}
-        tabIndex={-1}
       />
     );
   };

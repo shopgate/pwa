@@ -258,15 +258,18 @@ exports[`<FormElement /> should show the error message 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className={null}
+      elementName="test-input"
       errorText="The error text"
       translate={true}
     >
       <div
         aria-atomic="true"
+        aria-hidden={false}
         aria-live="assertive"
         className="css-1tzi51f errorText"
-        role="alert"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
