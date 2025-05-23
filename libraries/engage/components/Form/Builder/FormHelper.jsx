@@ -7,12 +7,13 @@ import { sanitizePortalName } from './helpers/common';
 /**
  * Component for error texts
  * @param {Object} props Component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FormHelper = ({
   errorText,
   element,
   formName,
+  elementName,
 }) => (
   <div className="formHelper">
     <SurroundPortals
@@ -24,7 +25,7 @@ const FormHelper = ({
       }}
     >
       {!!errorText && (
-      <ErrorTextCmp errorText={errorText} translate={false} />
+      <ErrorTextCmp errorText={errorText} translate={false} elementName={elementName} ariaHidden />
       )}
     </SurroundPortals>
   </div>
@@ -33,11 +34,13 @@ const FormHelper = ({
 FormHelper.propTypes = {
   element: PropTypes.shape().isRequired,
   formName: PropTypes.string.isRequired,
+  elementName: PropTypes.string,
   errorText: PropTypes.string,
 };
 
 FormHelper.defaultProps = {
   errorText: null,
+  elementName: null,
 };
 
 export default FormHelper;

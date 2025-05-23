@@ -1,4 +1,4 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 
 /**
  * Generates form configuration.
@@ -17,10 +17,12 @@ const generateFormConfig = ({
     email: {
       type: 'email',
       label: `${i18n.text('checkout.pickup_contact.form.emailAddress')} *`,
+      required: true,
     },
     phone: {
       type: 'phone_picker',
       label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
+      required: true,
       config: {
         supportedCountries,
         countrySortOrder,

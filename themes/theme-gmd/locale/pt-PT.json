@@ -539,7 +539,8 @@
       "reset_instructions": "Irá receber um e-mail para redefinir a sua palavra-passe em {email}",
       "back_to_login": "Voltar ao início de sessão",
       "customer_not_found": "Não encontramos uma conta com este endereço de e-mail."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {um erro} other {{amount} erros}} neste formulário."
   },
   "navigation": {
     "login_register": "Entrar / Registrar",

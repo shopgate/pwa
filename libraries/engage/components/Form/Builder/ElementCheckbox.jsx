@@ -49,6 +49,7 @@ const ElementCheckbox = (props) => {
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );

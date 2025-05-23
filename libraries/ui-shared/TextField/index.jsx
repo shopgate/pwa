@@ -32,6 +32,7 @@ class TextField extends Component {
     onSanitize: PropTypes.func,
     onValidate: PropTypes.func,
     password: PropTypes.bool,
+    required: PropTypes.bool,
     setRef: PropTypes.func,
     showErrorText: PropTypes.bool,
     translateErrorText: PropTypes.bool,
@@ -52,6 +53,7 @@ class TextField extends Component {
     onFocusChange: () => { },
     onSanitize: value => value,
     onValidate: () => true,
+    required: false,
     password: false,
     translateErrorText: true,
     type: 'text',
@@ -157,50 +159,75 @@ class TextField extends Component {
 
   /**
    * Renders the text field.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const styleType = this.props.multiLine ? 'multiLine' : 'input';
     const style = styles.container[styleType];
+    const {
+      multiLine,
+      className,
+      disabled,
+      hintText,
+      name,
+      label,
+      setRef,
+      onSanitize,
+      password,
+      type,
+      value,
+      isControlled,
+      inputComponent,
+      showErrorText,
+      errorText,
+      translateErrorText,
+      required,
+    } = this.props;
 
     return (
-      <div className={classNames(style, this.props.className, 'textField', 'ui-shared__text-field', {
-        disabled: this.props.disabled,
+      <div className={classNames(style, className, 'textField', 'ui-shared__text-field', {
+        disabled,
       })}
       >
-        <Hint visible={this.isHintVisible} hintText={this.props.hintText} />
+        <Hint visible={this.isHintVisible} hintText={hintText} />
         <Label
-          name={this.props.name}
-          label={this.props.label}
+          name={name}
+          label={label}
           isFocused={this.isFocused}
           isFloating={this.isLabelFloating}
           hasErrorMessage={this.hasErrorMessage}
         />
         <FormElement
-          id={this.props.name}
-          multiLine={this.props.multiLine}
-          name={this.props.name}
-          setRef={this.props.setRef}
+          id={name}
+          multiLine={multiLine}
+          name={name}
+          setRef={setRef}
           onFocusChange={this.handleFocusChange}
           onChange={this.handleChange}
-          onSanitize={this.props.onSanitize}
+          onSanitize={onSanitize}
           onValidate={this.handleValidate}
-          password={this.props.password}
-          type={this.props.type}
-          value={this.props.value}
-          isControlled={this.props.isControlled}
-          inputComponent={this.props.inputComponent}
-          disabled={this.props.disabled}
+          password={password}
+          type={type}
+          value={value}
+          isControlled={isControlled}
+          inputComponent={inputComponent}
+          disabled={disabled}
+          required={required}
+          attributes={{
+            'aria-invalid': !!errorText,
+            'aria-describedby': this.hasErrorMessage ? `ariaError-${name}` : null,
+          }}
         />
+
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
-        {this.props.showErrorText &&
+        {showErrorText &&
           <ErrorText
             validationError={this.state.validationError}
-            errorText={this.props.errorText}
-            translate={this.props.translateErrorText}
+            errorText={errorText}
+            translate={translateErrorText}
+            elementName={name}
           />
         }
-
       </div>
     );
   }

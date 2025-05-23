@@ -59,6 +59,7 @@ const ElementRadio = (props) => {
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );

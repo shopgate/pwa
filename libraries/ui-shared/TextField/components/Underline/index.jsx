@@ -9,7 +9,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Underline = props => (
-  <div className={classNames(styles.underlineWrapper, 'underline')}>
+  <div className={classNames(styles.underlineWrapper, 'underline')} aria-hidden>
     <div
       className={styles.underline}
       style={styles.underlineStyle(props.isFocused, props.hasErrorMessage)}

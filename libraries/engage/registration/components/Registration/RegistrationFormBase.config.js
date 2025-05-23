@@ -16,23 +16,28 @@ const generateFormConfig = ({
       firstName: {
         type: 'text',
         label: `${i18n.text('checkout.pickup_contact.form.firstName')} *`,
+        required: true,
       },
       lastName: {
         type: 'text',
         label: `${i18n.text('checkout.pickup_contact.form.lastName')} *`,
+        required: true,
       },
     } : null),
     emailAddress: {
       type: 'email',
       label: `${i18n.text('checkout.pickup_contact.form.emailAddress')} *`,
+      required: true,
     },
     password: {
       type: 'password',
       label: i18n.text('checkout.pickup_contact.form.password'),
+      required: true,
     },
     passwordConfirm: {
       type: 'password',
       label: i18n.text('checkout.pickup_contact.form.passwordConfirm'),
+      required: true,
     },
   },
 });

@@ -539,7 +539,8 @@
       "reset_instructions": "Du kommer att få ett e-postmeddelande för att återställa ditt lösenord till {email}",
       "back_to_login": "Tillbaka till inloggning",
       "customer_not_found": "Vi kunde inte hitta något konto kopplat till denna e-postadress."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {ett fel} other {{amount} fel}} i det här formuläret."
   },
   "navigation": {
     "login_register": "Logga in",

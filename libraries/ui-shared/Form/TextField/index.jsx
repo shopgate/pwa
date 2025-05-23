@@ -83,7 +83,7 @@ class TextField extends Component {
 
   /**
    * Renders the text field.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const {

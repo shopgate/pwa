@@ -539,7 +539,8 @@
       "reset_instructions": "Zasíláme vám e-mail pro resetování hesla na {email}",
       "back_to_login": "Zpět na přihlášení",
       "customer_not_found": "Účet s touto e-mailovou adresou neexistuje."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {jedna chyba} other {{amount} chyb}} ve formuláři."
   },
   "navigation": {
     "login_register": "Přihlásit se",

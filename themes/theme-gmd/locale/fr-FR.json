@@ -539,7 +539,8 @@
       "reset_instructions": "Un e-mail de réinitialisation du mot de passe a été envoyé à {email}",
       "back_to_login": "Retour à la connexion",
       "customer_not_found": "Aucun compte n'est associé à cette adresse e-mail."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {une erreur} other {{amount} erreurs}} dans ce formulaire."
   },
   "navigation": {
     "login_register": "Se connecter / S'inscrire",

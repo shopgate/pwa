@@ -2,6 +2,8 @@
 
 exports[`<Select /> should render select with 1 selected option 1`] = `
 <Select
+  aria-describedby={null}
+  aria-invalid={false}
   className=""
   disabled={false}
   errorText=""
@@ -17,6 +19,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     }
   }
   placeholder=""
+  required={false}
   showErrorText={true}
   size={null}
   translateErrorText={true}
@@ -41,6 +44,8 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
     >
       <select
+        aria-describedby={null}
+        aria-invalid={false}
         className="css-1xdqvez select"
         disabled={false}
         id="test-name"
@@ -48,6 +53,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
+        required={false}
         value="DE"
       >
         <option
@@ -118,6 +124,8 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
 
 exports[`<Select /> should render select with 2 options 1`] = `
 <Select
+  aria-describedby={null}
+  aria-invalid={false}
   className=""
   disabled={false}
   errorText=""
@@ -133,6 +141,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
     }
   }
   placeholder=""
+  required={false}
   showErrorText={true}
   size={null}
   translateErrorText={true}
@@ -157,6 +166,8 @@ exports[`<Select /> should render select with 2 options 1`] = `
       className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
     >
       <select
+        aria-describedby={null}
+        aria-invalid={false}
         className="css-1xdqvez select"
         disabled={false}
         id="test-name"
@@ -164,6 +175,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
+        required={false}
         value="DE"
       >
         <option
@@ -234,6 +246,8 @@ exports[`<Select /> should render select with 2 options 1`] = `
 
 exports[`<Select /> should render select with no options 1`] = `
 <Select
+  aria-describedby={null}
+  aria-invalid={false}
   className=""
   disabled={false}
   errorText=""
@@ -244,6 +258,7 @@ exports[`<Select /> should render select with no options 1`] = `
   onChange={[Function]}
   options={Object {}}
   placeholder=""
+  required={false}
   showErrorText={true}
   size={null}
   translateErrorText={true}
@@ -268,6 +283,8 @@ exports[`<Select /> should render select with no options 1`] = `
       className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
     >
       <select
+        aria-describedby={null}
+        aria-invalid={false}
         className="css-1xdqvez select"
         disabled={false}
         id="test-name"
@@ -275,6 +292,7 @@ exports[`<Select /> should render select with no options 1`] = `
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
+        required={false}
         value=""
       />
       <Chevron

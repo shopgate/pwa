@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
   LOGIN_PATH,
   REGISTER_PATH,
   CHECKOUT_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
-import TextField from '@shopgate/pwa-ui-shared/TextField';
-import { View, TextLink } from '@shopgate/engage/components';
+import {
+  View, TextLink, I18n, RippleButton, TextField, Portal,
+} from '@shopgate/engage/components';
 import { validate } from '@shopgate/engage/core';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import Portal from '@shopgate/pwa-common/components/Portal';
 import {
   PAGE_LOGIN_BEFORE,
   PAGE_LOGIN,
@@ -175,10 +173,17 @@ class Login extends Component {
 
   /**
    * Renders the component.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const isCheckout = this.props.redirect?.location === CHECKOUT_PATH;
+    const { isLoading, isDisabled } = this.props;
+    const {
+      login, showErrors, loginError, password, passwordError,
+    } = this.state;
+
+    const hasLoginError = showErrors && loginError.length > 0;
+    const hasPasswordError = showErrors && passwordError.length > 0;
 
     return (
       <View>
@@ -197,24 +202,34 @@ class Login extends Component {
               { /* No validate, browsers reject IDN emails! */}
               <form onSubmit={this.handleSubmitForm} noValidate className={styles.form}>
                 <TextField
+                  required
                   type="email"
                   name="email"
                   className={styles.input}
                   label="login.email"
                   onChange={this.handleEmailChange}
-                  value={this.state.login}
+                  value={login}
                   setRef={this.setUserFieldRef}
-                  errorText={this.state.showErrors ? this.state.loginError : ''}
+                  errorText={showErrors ? loginError : ''}
+                  attributes={{
+                    'aria-invalid': hasLoginError,
+                    'aria-describedby': hasLoginError ? 'ariaError-email' : null,
+                  }}
                 />
                 <TextField
+                  required
                   password
                   name="password"
                   className={styles.input}
                   label="login.password"
                   onChange={this.handlePasswordChange}
-                  value={this.state.password}
+                  value={password}
                   setRef={this.setPasswordFieldRef}
-                  errorText={this.state.showErrors ? this.state.passwordError : ''}
+                  errorText={showErrors ? passwordError : ''}
+                  attributes={{
+                    'aria-invalid': hasPasswordError,
+                    'aria-describedby': hasPasswordError ? 'ariaError-password' : null,
+                  }}
                 />
                 <div className={styles.forgotWrapper}>
                   <ForgotPassword />
@@ -223,7 +238,7 @@ class Login extends Component {
                   <RippleButton
                     className={styles.button}
                     type="secondary"
-                    disabled={this.props.isLoading || this.props.isDisabled}
+                    disabled={isLoading || isDisabled}
                   >
                     <I18n.Text string="login.button" />
                   </RippleButton>
@@ -238,7 +253,7 @@ class Login extends Component {
                 <TextLink
                   href={`${REGISTER_PATH}${isCheckout ? '?checkout=1' : ''}`}
                   className={styles.signup}
-                  disabled={this.props.isLoading || this.props.isDisabled}
+                  disabled={isLoading || isDisabled}
                 >
                   <I18n.Text string="login.register" />
                 </TextLink>
