@@ -10,7 +10,6 @@ import classNames from 'classnames';
 class SimpleInput extends Component {
   static propTypes = {
     /** Additional html attributes by input type */
-    'aria-invalid': PropTypes.bool,
     attributes: PropTypes.shape(),
     autoComplete: PropTypes.bool,
     autoCorrect: PropTypes.bool,
@@ -41,7 +40,6 @@ class SimpleInput extends Component {
   static defaultProps = {
     attributes: null,
     autoComplete: false,
-    'aria-invalid': false,
     autoCorrect: false,
     className: '',
     disabled: false,
@@ -214,7 +212,6 @@ class SimpleInput extends Component {
    */
   render() {
     const {
-      'aria-invalid': ariaInvalid,
       attributes,
       className,
       disabled,
@@ -237,8 +234,6 @@ class SimpleInput extends Component {
       <InputComponent
         id={id}
         name={name}
-        aria-invalid={ariaInvalid}
-        aria-describedby={ariaInvalid ? `ariaError-${name}` : null}
         ref={ref => this.handleRef(ref)}
         className={classNames(className, 'simpleInput', 'common__simple-input')}
         type={type}

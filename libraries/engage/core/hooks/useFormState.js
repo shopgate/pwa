@@ -53,7 +53,10 @@ export function useFormState(
     const errorElement = document.querySelector('.validationError');
     if (errorElement) {
       scrollTo('.validationError');
-      errorElement.focus();
+      const inputElement = errorElement.querySelector('input, select, textarea');
+      if (inputElement) {
+        inputElement.focus();
+      }
     }
   }, [scrollTo]);
 

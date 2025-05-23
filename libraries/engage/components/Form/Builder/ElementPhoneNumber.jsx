@@ -220,7 +220,6 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
         'engage__form-phone-number',
         { validationError: !!errorText }
       )}
-      tabIndex={-1}
     >
       <div className={phoneClasses}>
         <Label
@@ -237,7 +236,6 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
           onBlur={() => setIsFocused(false)}
           disabled={disabled}
           required={required}
-          aria-required={required}
           aria-invalid={!!errorText}
           aria-describedby={errorText.length > 0 ? `ariaError-${name}` : null}
           {...hasCountrySelect ? {

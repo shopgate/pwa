@@ -36,12 +36,10 @@ const ElementSelect = (props) => {
         'formBuilderField',
         { validationError: !!errorText }
       )}
-      tabIndex={-1}
     >
       <Select
         name={name}
         required={required}
-        aria-required={required}
         label={label}
         placeholder={placeholder}
         value={value}

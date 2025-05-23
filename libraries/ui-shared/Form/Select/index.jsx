@@ -11,6 +11,8 @@ import styles from './style';
 class Select extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    'aria-describedby': PropTypes.string,
+    'aria-invalid': PropTypes.bool,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     errorText: PropTypes.node,
@@ -20,6 +22,7 @@ class Select extends Component {
     onChange: PropTypes.func,
     options: PropTypes.shape(),
     placeholder: PropTypes.node,
+    required: PropTypes.bool,
     showErrorText: PropTypes.bool,
     size: PropTypes.number,
     translateErrorText: PropTypes.bool,
@@ -30,6 +33,8 @@ class Select extends Component {
   };
 
   static defaultProps = {
+    'aria-invalid': false,
+    'aria-describedby': null,
     className: '',
     errorText: '',
     isControlled: false,
@@ -42,6 +47,7 @@ class Select extends Component {
     size: null,
     value: '',
     disabled: false,
+    required: false,
     multiple: false,
   };
 
@@ -115,6 +121,9 @@ class Select extends Component {
     const {
       name, options, translateErrorText, disabled,
       multiple, size, showErrorText, className, placeholder, label, errorText,
+      required,
+      'aria-invalid': ariaInvalid,
+      'aria-describedby': ariaDescribedBy,
     } = this.props;
 
     const { value, isFocused } = this.state;
@@ -142,6 +151,9 @@ class Select extends Component {
           value={value}
           className={classNames(styles.select, 'select')}
           disabled={disabled}
+          required={required}
+          aria-invalid={ariaInvalid}
+          aria-describedby={ariaDescribedBy}
           {...multiple && {
             multiple,
             size,

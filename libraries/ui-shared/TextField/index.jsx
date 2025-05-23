@@ -213,10 +213,12 @@ class TextField extends Component {
           inputComponent={inputComponent}
           disabled={disabled}
           required={required}
-          aria-required={required}
-          aria-invalid={!!errorText}
-          aria-describedby={this.hasErrorMessage ? `ariaError-${name}` : null}
+          attributes={{
+            'aria-invalid': !!errorText,
+            'aria-describedby': this.hasErrorMessage ? `ariaError-${name}` : null,
+          }}
         />
+
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
         {showErrorText &&
           <ErrorText

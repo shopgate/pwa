@@ -181,8 +181,9 @@ class Login extends Component {
     const {
       login, showErrors, loginError, password, passwordError,
     } = this.state;
-    const hasPasswordError = passwordError.length > 0;
-    const hasLoginError = loginError.length > 0;
+
+    const hasLoginError = showErrors && loginError.length > 0;
+    const hasPasswordError = showErrors && passwordError.length > 0;
 
     return (
       <View>
@@ -202,9 +203,6 @@ class Login extends Component {
               <form onSubmit={this.handleSubmitForm} noValidate className={styles.form}>
                 <TextField
                   required
-                  aria-required
-                  aria-invalid={hasLoginError}
-                  aria-describedby={hasLoginError ? 'ariaError-email' : null}
                   type="email"
                   name="email"
                   className={styles.input}
@@ -213,12 +211,13 @@ class Login extends Component {
                   value={login}
                   setRef={this.setUserFieldRef}
                   errorText={showErrors ? loginError : ''}
+                  attributes={{
+                    'aria-invalid': hasLoginError,
+                    'aria-describedby': hasLoginError ? 'ariaError-email' : null,
+                  }}
                 />
                 <TextField
                   required
-                  aria-required
-                  aria-invalid={hasPasswordError}
-                  aria-describedby={hasPasswordError ? 'ariaError-password' : null}
                   password
                   name="password"
                   className={styles.input}
@@ -227,6 +226,10 @@ class Login extends Component {
                   value={password}
                   setRef={this.setPasswordFieldRef}
                   errorText={showErrors ? passwordError : ''}
+                  attributes={{
+                    'aria-invalid': hasPasswordError,
+                    'aria-describedby': hasPasswordError ? 'ariaError-password' : null,
+                  }}
                 />
                 <div className={styles.forgotWrapper}>
                   <ForgotPassword />

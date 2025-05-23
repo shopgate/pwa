@@ -57,11 +57,9 @@ const ElementText = (props) => {
         'formBuilderField',
         { validationError: !!errorText }
       )}
-      tabIndex={-1}
     >
       <TextField
         required={required}
-        aria-required={required}
         type={type}
         name={name}
         label={label}
@@ -72,8 +70,6 @@ const ElementText = (props) => {
         translateErrorText={false}
         showErrorText={false}
         disabled={disabled}
-        aria-invalid={!!errorText}
-        aria-describedby={errorText.length > 0 ? `ariaError-${name}` : null}
       />
       <FormHelper
         errorText={errorText}
