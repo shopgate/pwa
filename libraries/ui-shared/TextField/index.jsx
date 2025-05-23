@@ -215,7 +215,7 @@ class TextField extends Component {
           required={required}
           aria-required={required}
           aria-invalid={!!errorText}
-          aria-describedby={this.hasErrorMessage ? 'ariaError' : null}
+          aria-describedby={this.hasErrorMessage ? `ariaError-${name}` : null}
         />
         <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
         {showErrorText &&
@@ -223,6 +223,7 @@ class TextField extends Component {
             validationError={this.state.validationError}
             errorText={errorText}
             translate={translateErrorText}
+            elementName={name}
           />
         }
       </div>

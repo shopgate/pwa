@@ -238,7 +238,7 @@ class SimpleInput extends Component {
         id={id}
         name={name}
         aria-invalid={ariaInvalid}
-        aria-describedby={ariaInvalid ? 'ariaError' : null}
+        aria-describedby={ariaInvalid ? `ariaError-${name}` : null}
         ref={ref => this.handleRef(ref)}
         className={classNames(className, 'simpleInput', 'common__simple-input')}
         type={type}

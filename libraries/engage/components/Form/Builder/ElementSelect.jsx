@@ -36,6 +36,7 @@ const ElementSelect = (props) => {
         'formBuilderField',
         { validationError: !!errorText }
       )}
+      tabIndex={-1}
     >
       <Select
         name={name}
@@ -51,11 +52,14 @@ const ElementSelect = (props) => {
         translateErrorText={false}
         showErrorText={false}
         disabled={disabled}
+        aria-invalid={!!errorText}
+        aria-describedby={errorText.length > 0 ? `ariaError-${name}` : null}
       />
       <FormHelper
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );

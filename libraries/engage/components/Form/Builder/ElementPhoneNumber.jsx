@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { camelCase, upperCase, isEqual } from 'lodash';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { parsePhoneNumber } from 'react-phone-number-input';
 import PhoneInputCountrySelect from 'react-phone-number-input/mobile';
 import PhoneInput from 'react-phone-number-input/input-mobile';
@@ -217,8 +217,10 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
     <div
       className={classnames(
         'formBuilderField',
-        'engage__form-phone-number'
+        'engage__form-phone-number',
+        { validationError: !!errorText }
       )}
+      tabIndex={-1}
     >
       <div className={phoneClasses}>
         <Label
@@ -237,7 +239,7 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
           required={required}
           aria-required={required}
           aria-invalid={!!errorText}
-          aria-describedby={errorText.length > 0 ? 'ariaError' : null}
+          aria-describedby={errorText.length > 0 ? `ariaError-${name}` : null}
           {...hasCountrySelect ? {
             countryOptionsOrder,
             addInternationalOption: false,
@@ -253,6 +255,7 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 
 const pickupFieldActions = [{
   type: 'setVisibility',
@@ -35,20 +35,24 @@ const generateFormConfig = ({
       type: 'text',
       actions: pickupFieldActions,
       label: `${i18n.text('checkout.pickup_contact.form.firstName')} *`,
+      required: true,
     },
     lastName: {
       type: 'text',
       actions: pickupFieldActions,
       label: `${i18n.text('checkout.pickup_contact.form.lastName')} *`,
+      required: true,
     },
     emailAddress: {
       type: 'email',
       actions: pickupFieldActions,
       label: `${i18n.text('checkout.pickup_contact.form.emailAddress')} *`,
+      required: true,
     },
     mobile: {
       type: 'phone_picker',
       label: `${i18n.text('checkout.pickup_contact.form.mobile')} *`,
+      required: true,
       actions: pickupFieldActions,
       config: {
         supportedCountries,
