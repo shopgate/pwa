@@ -129,7 +129,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                   >
                     <Text
                       aria-hidden={true}
-                      className="css-7wvaon css-1dtzobl"
+                      className="css-7wvaon css-1dtzobl theme__discount-badge"
                       params={
                         Array [
                           null,
