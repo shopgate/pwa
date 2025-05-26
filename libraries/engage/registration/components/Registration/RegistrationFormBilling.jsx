@@ -10,7 +10,7 @@ import { form, section } from './RegistrationContent.style';
 /**
  * The RegistrationFormBilling component.
  * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const RegistrationFormBilling = ({ isGuest }) => {
   const {

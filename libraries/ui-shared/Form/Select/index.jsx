@@ -11,6 +11,8 @@ import styles from './style';
 class Select extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
+    'aria-describedby': PropTypes.string,
+    'aria-invalid': PropTypes.bool,
     className: PropTypes.string,
     disabled: PropTypes.bool,
     errorText: PropTypes.node,
@@ -20,6 +22,7 @@ class Select extends Component {
     onChange: PropTypes.func,
     options: PropTypes.shape(),
     placeholder: PropTypes.node,
+    required: PropTypes.bool,
     showErrorText: PropTypes.bool,
     size: PropTypes.number,
     translateErrorText: PropTypes.bool,
@@ -30,6 +33,8 @@ class Select extends Component {
   };
 
   static defaultProps = {
+    'aria-invalid': false,
+    'aria-describedby': null,
     className: '',
     errorText: '',
     isControlled: false,
@@ -42,6 +47,7 @@ class Select extends Component {
     size: null,
     value: '',
     disabled: false,
+    required: false,
     multiple: false,
   };
 
@@ -109,35 +115,45 @@ class Select extends Component {
   };
 
   /**
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const {
-      name, options, translateErrorText, disabled, multiple, size, showErrorText,
+      name, options, translateErrorText, disabled,
+      multiple, size, showErrorText, className, placeholder, label, errorText,
+      required,
+      'aria-invalid': ariaInvalid,
+      'aria-describedby': ariaDescribedBy,
     } = this.props;
+
+    const { value, isFocused } = this.state;
+
     return (
       <FormElement
-        className={`${this.props.className} ui-shared__form__select`}
-        placeholder={this.props.placeholder}
+        className={`${className} ui-shared__form__select`}
+        placeholder={placeholder}
         htmlFor={name}
-        label={this.props.label}
-        errorText={this.props.errorText}
+        label={label}
+        errorText={errorText}
         translateErrorText={translateErrorText}
-        isFocused={this.state.isFocused}
-        hasValue={!!this.state.value || !!options['']}
-        hasPlaceholder={!disabled || this.state.value !== ''}
+        isFocused={isFocused}
+        hasValue={!!value || !!options['']}
+        hasPlaceholder={!disabled || value !== ''}
         disabled={disabled}
         showErrorText={showErrorText}
       >
         <select
-          id={this.props.name}
-          name={this.props.name}
+          id={name}
+          name={name}
           onChange={this.handleChange}
           onFocus={() => this.handleFocusChange(true)}
           onBlur={() => this.handleFocusChange(false)}
-          value={this.state.value}
+          value={value}
           className={classNames(styles.select, 'select')}
           disabled={disabled}
+          required={required}
+          aria-invalid={ariaInvalid}
+          aria-describedby={ariaDescribedBy}
           {...multiple && {
             multiple,
             size,

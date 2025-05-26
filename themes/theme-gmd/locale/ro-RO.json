@@ -539,7 +539,8 @@
       "reset_instructions": "Veți primi un email pentru a vă reseta parola la {email}",
       "back_to_login": "Înapoi la autentificare",
       "customer_not_found": "Nu am găsit un cont asociat cu această adresă de email."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {o eroare} other {{amount} erori}} în acest formular."
   },
   "navigation": {
     "login_register": "Conectați-vă",

@@ -539,7 +539,8 @@
       "reset_instructions": "Sie erhalten eine E-Mail zum Zurücksetzen Ihres Passworts an {email}",
       "back_to_login": "Zurück zur Anmeldung",
       "customer_not_found": "Zu dieser E-Mail-Adresse liegt und kein Account vor."
-    }
+    },
+    "errorAmount": "{amount} Fehler im Formular"
   },
   "navigation": {
     "login_register": "Anmelden",

@@ -28,7 +28,7 @@ const mapping = {
  * Takes an element and renders it, if the type matches
  * @param {Object} props Component props.
  * @param {Object} props.element The data of the element to be rendered
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ElementText = (props) => {
   const {
@@ -43,6 +43,9 @@ const ElementText = (props) => {
   if (!visible) {
     return null;
   }
+  const {
+    required, disabled, handleChange, label,
+  } = element;
 
   const type = mapping[element.type];
 
@@ -56,21 +59,23 @@ const ElementText = (props) => {
       )}
     >
       <TextField
+        required={required}
         type={type}
         name={name}
-        label={element.label}
+        label={label}
         value={value}
-        onChange={element.handleChange}
+        onChange={handleChange}
         errorText={errorText}
         isControlled
         translateErrorText={false}
         showErrorText={false}
-        disabled={element.disabled}
+        disabled={disabled}
       />
       <FormHelper
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );
