@@ -24,7 +24,7 @@ const DiscountBadge = ({
     tabIndex={-1}
   >
     <I18n.Text
-      className={`${styles[display]} ${className}`}
+      className={`${styles[display]} ${className} theme__discount-badge`}
       string={text}
       params={[discount]}
       aria-hidden

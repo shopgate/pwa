@@ -4,6 +4,7 @@ import {
   SurroundPortals, PlaceholderParagraph, HtmlSanitizer, I18n,
 } from '@shopgate/engage/components';
 import { PRODUCT_DESCRIPTION } from '@shopgate/engage/product';
+import classNames from 'classnames';
 import {
   container, title, placeholder, content,
 } from './style';
@@ -12,14 +13,16 @@ import connect from './connector';
 /**
  * The product description.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {string} props.html html describing the product
+ * @param {Function} props.navigate where to navigate on click
+ * @returns {JSX.Element}
  */
 function Description({ html, navigate, ...props }) {
   return (
     <SurroundPortals portalName={PRODUCT_DESCRIPTION} portalProps={{ html, navigate, ...props }}>
       {(html !== '') && (
         <div className={`${container} engage__product__description`}>
-          <div className={title}>
+          <div className={classNames(title, 'theme__description_heading')}>
             <I18n.Text string="product.description_heading" />
           </div>
           <PlaceholderParagraph className={placeholder} ready={!!html}>

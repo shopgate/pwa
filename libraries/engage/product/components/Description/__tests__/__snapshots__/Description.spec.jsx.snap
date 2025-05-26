@@ -36,11 +36,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
       className="css-1gp4e0e engage__product__description"
     >
       <div
-        className={
-          Object {
-            "data-css-1qs89bq": "",
-          }
-        }
+        className="css-1qs89bq theme__description_heading"
       >
         <Text
           string="product.description_heading"
@@ -111,11 +107,7 @@ exports[`<Description /> should render description if data is available 1`] = `
       className="css-1gp4e0e engage__product__description"
     >
       <div
-        className={
-          Object {
-            "data-css-1qs89bq": "",
-          }
-        }
+        className="css-1qs89bq theme__description_heading"
       >
         <Text
           string="product.description_heading"
