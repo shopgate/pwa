@@ -31,6 +31,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.5.5",
     "@babel/runtime-corejs3": "^7.5.5",
+    "@emotion/react": "^11.14.0",
     "@hot-loader/react-dom": "~16.8.6",
     "@shopgate/engage": "7.27.0",
     "@shopgate/pwa-common": "7.27.0",
@@ -65,6 +66,7 @@
     "redux-mock-store": "^1.5.4",
     "reselect": "^4.1.8",
     "smoothscroll-polyfill": "^0.4.3",
+    "tss-react": "^4.9.18",
     "webpack": "^4.47.0",
     "webpack-cli": "4.10.0"
   },
