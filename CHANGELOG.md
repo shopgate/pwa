@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.27.1](https://github.com/shopgate/pwa/compare/v7.27.0...v7.27.1) (2025-05-26)
+
+#### :rocket: Enhancement
+* [#1352](https://github.com/shopgate/pwa/pull/1352) Improve a11y of form error handling ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v7.27.0](https://github.com/shopgate/pwa/compare/v7.26.0...v7.27.0) (2025-05-16)
 
 #### :rocket: Enhancement
