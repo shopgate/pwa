@@ -23,6 +23,7 @@ import {
   PAGE_LOGIN_FORM_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { CloseBar } from 'Components/AppBar/presets';
+import classNames from 'classnames';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
 import styles from './style';
@@ -191,10 +192,10 @@ class Login extends Component {
         <section className={styles.container} data-test-id="LoginPage">
           <Portal name={PAGE_LOGIN_BEFORE} />
           <Portal name={PAGE_LOGIN}>
-            <div className={styles.headline}>
+            <div className={classNames(styles.headline, 'theme__headline')}>
               <I18n.Text string="login.headline" />
             </div>
-            <div className={styles.subline}>
+            <div className={classNames(styles.subline, 'theme__sub-headline')}>
               <I18n.Text string="login.subline" />
             </div>
             <Portal name={PAGE_LOGIN_FORM_BEFORE} />
