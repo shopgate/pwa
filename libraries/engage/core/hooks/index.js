@@ -11,6 +11,7 @@ export { usePageSettings } from './usePageSettings';
 export { useWidgetConfig } from './useWidgetConfig';
 export { useWidgetSettings } from './useWidgetSettings';
 export { useWidgetStyles } from './useWidgetStyles';
+export { useThemeComponents } from './useThemeComponents';
 export * from './html';
 export { usePrevious } from './usePrevious';
 export { useResponsiveValue } from '@shopgate/engage/components/ResponsiveContainer/hooks';

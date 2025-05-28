@@ -1,12 +1,14 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { ThemeComponentsProvider } from '@shopgate/engage/core/providers';
 import Widgets from './index';
 
 jest.useFakeTimers();
 
-jest.mock('react', () => ({
-  ...require.requireActual('react'),
-  Suspense: function Suspense({ children }) { return children; },
+jest.mock('@shopgate/pwa-common/context', () => ({
+  ThemeContext: {
+    Provider: ({ children }) => children,
+  },
 }));
 
 /**
@@ -28,6 +30,18 @@ const components = {
   '@shopgate/commerce-widgets/widget-grid': WidgetGrid,
 };
 
+/**
+ * @param {Object[]} widgets Widgets to be rendered.
+ * @returns {JSX.Element}
+ */
+const createWrapper = widgets => mount((
+  <ThemeComponentsProvider widgets={components} components={{}}>
+    <Widgets
+      widgets={widgets}
+    />
+  </ThemeComponentsProvider>
+));
+
 describe('<Widgets />', () => {
   it('should render a grid if height is defined', () => {
     const widgets = [{
@@ -42,12 +56,7 @@ describe('<Widgets />', () => {
       type: '@shopgate/commerce-widgets/image',
     }];
 
-    const wrapper = mount((
-      <Widgets
-        components={components}
-        widgets={widgets}
-      />
-    ));
+    const wrapper = createWrapper(widgets);
 
     expect(wrapper.find('WidgetGrid').exists()).toBe(true);
   });
@@ -64,12 +73,7 @@ describe('<Widgets />', () => {
       type: '@shopgate/commerce-widgets/image',
     }];
 
-    const wrapper = mount((
-      <Widgets
-        components={components}
-        widgets={widgets}
-      />
-    ));
+    const wrapper = createWrapper(widgets);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('WidgetGrid').exists()).toBe(false);
@@ -97,12 +101,7 @@ describe('<Widgets />', () => {
       },
     }];
 
-    const wrapper = mount((
-      <Widgets
-        components={components}
-        widgets={widgets}
-      />
-    ));
+    const wrapper = createWrapper(widgets);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('WidgetGrid').exists()).toBe(true);
@@ -143,12 +142,7 @@ describe('<Widgets />', () => {
       },
     ];
 
-    const wrapper = mount((
-      <Widgets
-        components={components}
-        widgets={widgets}
-      />
-    ));
+    const wrapper = createWrapper(widgets);
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('img').length).toBe(1);
@@ -179,42 +173,30 @@ describe('<Widgets />', () => {
       },
     ];
     /* eslint-enable camelcase */
-    const wrapper = mount((
-      <Widgets
-        components={components}
-        widgets={widgets}
-      />
-    ));
-    wrapper.instance().forceUpdate = jest.fn();
+    const wrapper = createWrapper(widgets);
+    const instance = wrapper.find('Widgets').instance();
+
+    instance.forceUpdate = jest.fn();
     expect(wrapper.find(Image).exists()).toBe(false);
     jest.advanceTimersByTime(msToNextFullHour);
-    expect(wrapper.instance().forceUpdate).toHaveBeenCalledTimes(1);
+    expect(instance.forceUpdate).toHaveBeenCalledTimes(1);
     // In real life next timeout should be in 60 minutes.
     // This test has same Date and fake timers.
     jest.advanceTimersByTime(msToNextFullHour);
-    expect(wrapper.instance().forceUpdate).toHaveBeenCalledTimes(2);
-    wrapper.instance().componentWillUnmount();
+    expect(instance.forceUpdate).toHaveBeenCalledTimes(2);
+    instance.componentWillUnmount();
     expect(clearTimeout).toHaveBeenCalled();
   });
 
   it('should render only wrapper when widgets array is empty', () => {
     const widgets = [];
-    const wrapper = mount((
-      <Widgets
-        components={components}
-        widgets={widgets}
-      />
-    ));
+    const wrapper = createWrapper(widgets);
     expect(wrapper.find('Image').exists()).toBe(false);
   });
 
   it('should render null when no widgets are passed', () => {
-    const wrapper = mount((
-      <Widgets
-        components={components}
-      />
-    ));
-    expect(wrapper.html()).toBe(null);
+    const wrapper = createWrapper(undefined);
+    expect(wrapper.find('Widgets').html()).toBe(null);
   });
 
   it('should check settings of child widgets inside widget-grid', () => {
@@ -255,12 +237,7 @@ describe('<Widgets />', () => {
         },
       },
     ];
-    const wrapper = mount((
-      <Widgets
-        components={components}
-        widgets={widgets}
-      />
-    ));
+    const wrapper = createWrapper(widgets);
     expect(wrapper.find('img').length).toBe(1);
   });
 });
