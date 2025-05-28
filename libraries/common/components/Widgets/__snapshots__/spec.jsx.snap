@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Widgets /> should not wrap a widget which is not a grid and has no height 1`] = `
-<ThemeComponentsProvider
+<ThemeResourcesProvider
   components={Object {}}
   legacyThemeAPI={null}
   widgets={
@@ -11,7 +11,7 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
     }
   }
 >
-  <ThemeComponentsWrapper
+  <ThemeResourcesWrapper
     widgets={
       Array [
         Object {
@@ -28,13 +28,10 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
     }
   >
     <Widgets
-      themeComponents={
+      themeWidgets={
         Object {
-          "components": Object {},
-          "widgets": Object {
-            "@shopgate/commerce-widgets/image": [Function],
-            "@shopgate/commerce-widgets/widget-grid": [Function],
-          },
+          "@shopgate/commerce-widgets/image": [Function],
+          "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
       widgets={
@@ -74,12 +71,12 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
         </Image>
       </div>
     </Widgets>
-  </ThemeComponentsWrapper>
-</ThemeComponentsProvider>
+  </ThemeResourcesWrapper>
+</ThemeResourcesProvider>
 `;
 
 exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
-<ThemeComponentsProvider
+<ThemeResourcesProvider
   components={Object {}}
   legacyThemeAPI={null}
   widgets={
@@ -89,7 +86,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
     }
   }
 >
-  <ThemeComponentsWrapper
+  <ThemeResourcesWrapper
     widgets={
       Array [
         Object {
@@ -116,13 +113,10 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
     }
   >
     <Widgets
-      themeComponents={
+      themeWidgets={
         Object {
-          "components": Object {},
-          "widgets": Object {
-            "@shopgate/commerce-widgets/image": [Function],
-            "@shopgate/commerce-widgets/widget-grid": [Function],
-          },
+          "@shopgate/commerce-widgets/image": [Function],
+          "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
       widgets={
@@ -243,12 +237,12 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
         </WidgetGrid>
       </div>
     </Widgets>
-  </ThemeComponentsWrapper>
-</ThemeComponentsProvider>
+  </ThemeResourcesWrapper>
+</ThemeResourcesProvider>
 `;
 
 exports[`<Widgets /> should render only one widget when the second one is not published and third one is invalid 1`] = `
-<ThemeComponentsProvider
+<ThemeResourcesProvider
   components={Object {}}
   legacyThemeAPI={null}
   widgets={
@@ -258,7 +252,7 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
     }
   }
 >
-  <ThemeComponentsWrapper
+  <ThemeResourcesWrapper
     widgets={
       Array [
         Object {
@@ -296,13 +290,10 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
     }
   >
     <Widgets
-      themeComponents={
+      themeWidgets={
         Object {
-          "components": Object {},
-          "widgets": Object {
-            "@shopgate/commerce-widgets/image": [Function],
-            "@shopgate/commerce-widgets/widget-grid": [Function],
-          },
+          "@shopgate/commerce-widgets/image": [Function],
+          "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
       widgets={
@@ -363,6 +354,6 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
         </Image>
       </div>
     </Widgets>
-  </ThemeComponentsWrapper>
-</ThemeComponentsProvider>
+  </ThemeResourcesWrapper>
+</ThemeResourcesProvider>
 `;

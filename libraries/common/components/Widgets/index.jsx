@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import { withThemeComponents } from '@shopgate/engage/core/hocs';
+import { withThemeWidgets } from '@shopgate/engage/core/hocs';
 import WidgetGrid from './components/WidgetGrid';
 import shouldShowWidget from './helpers/shouldShowWidget';
 
@@ -31,9 +31,7 @@ const createGridWrapper = (key, config, components) => (
  */
 class Widgets extends Component {
   static propTypes = {
-    themeComponents: PropTypes.shape({
-      widgets: PropTypes.objectOf(PropTypes.elementType),
-    }).isRequired,
+    themeWidgets: PropTypes.objectOf(PropTypes.elementType).isRequired,
     widgets: PropTypes.arrayOf(PropTypes.shape()),
   };
 
@@ -57,7 +55,7 @@ class Widgets extends Component {
    * @return {JSX}
    */
   shouldComponentUpdate(nextProps) {
-    if (!isEqual(this.props.themeComponents, nextProps.themeComponents)) {
+    if (!isEqual(this.props.themeWidgets, nextProps.themeWidgets)) {
       return true;
     }
 
@@ -114,7 +112,7 @@ class Widgets extends Component {
    * @returns {Array} Array of JSX elements.
    */
   createArrayOfElements() {
-    const { widgets = [], themeComponents: { widgets: components } } = this.props;
+    const { widgets = [], themeWidgets: components } = this.props;
 
     return widgets
       .filter(widget => shouldShowWidget(widget.settings))
@@ -159,7 +157,7 @@ class Widgets extends Component {
    * @return {JSX}
    */
   render() {
-    const { widgets, themeComponents: { widgets: components } } = this.props;
+    const { widgets, themeWidgets: components } = this.props;
 
     if (!widgets) {
       return null;
@@ -171,4 +169,4 @@ class Widgets extends Component {
   }
 }
 
-export default withThemeComponents(Widgets);
+export default withThemeWidgets(Widgets);

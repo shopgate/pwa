@@ -7,4 +7,8 @@ export { withNavigation } from './withNavigation';
 export { withWidgetSettings } from './withWidgetSettings';
 export { withWidgetStyles } from './withWidgetStyles';
 export { withApp } from './withApp';
-export { withThemeComponents } from './withThemeComponents';
+export {
+  withThemeResources,
+  withThemeComponents,
+  withThemeWidgets,
+} from './withThemeResources';

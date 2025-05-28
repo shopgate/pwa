@@ -63,7 +63,7 @@ import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants'
 import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import { CookieConsentModal } from '@shopgate/engage/tracking/components';
 import { DevelopmentTools } from '@shopgate/engage/development/components';
-import { ThemeComponentsProvider } from '@shopgate/engage/core/providers';
+import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
 import widgets from 'Extensions/widgets';
 import PageNotFound from './404';
 import { themeComponents, legacyThemeAPI } from '../themeApi';
@@ -105,7 +105,7 @@ const Pages = ({ store }) => {
       </Helmet>
       <NavigationHandler>
         <AppProvider>
-          <ThemeComponentsProvider
+          <ThemeResourcesProvider
             widgets={widgets}
             components={themeComponents}
             legacyThemeAPI={legacyThemeAPI}
@@ -293,7 +293,7 @@ const Pages = ({ store }) => {
                 </DevelopmentTools>
               </ToastProvider>
             </LoadingProvider>
-          </ThemeComponentsProvider>
+          </ThemeResourcesProvider>
         </AppProvider>
       </NavigationHandler>
     </App>

@@ -1,14 +1,14 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { ThemeContext as LegacyThemeContext } from '@shopgate/pwa-common/context';
-import { ThemeComponentsContext } from '../contexts';
+import { ThemeResourcesContext } from '../contexts';
 
 /**
  * @typedef {Object<string, React.ComponentType<any>>} ComponentMap
  */
 
 /**
- * ThemeComponentsProvider component.
+ * ThemeResourcesProvider component.
  * @param {Object} props The component props.
  * @param {ComponentMap} props.widgets Mapping object with all available widget components for the
  * theme. Key is the widget code, value is the widget component.
@@ -20,7 +20,7 @@ import { ThemeComponentsContext } from '../contexts';
  * @param {React.ReactNode} props.children The component children.
  * @returns {JSX.Element}
  */
-const ThemeComponentsProvider = ({
+const ThemeResourcesProvider = ({
   widgets,
   components,
   legacyThemeAPI,
@@ -32,27 +32,26 @@ const ThemeComponentsProvider = ({
   }), [components, widgets]);
 
   return (
-    <ThemeComponentsContext.Provider value={value}>
+    <ThemeResourcesContext.Provider value={value}>
       {/* LegacyThemeContext is used for backward compatibility with existing extensions */}
       {legacyThemeAPI ? (
         <LegacyThemeContext.Provider value={legacyThemeAPI}>
           {children}
         </LegacyThemeContext.Provider>
       ) : (children)}
-
-    </ThemeComponentsContext.Provider>
+    </ThemeResourcesContext.Provider>
   );
 };
 
-ThemeComponentsProvider.propTypes = {
+ThemeResourcesProvider.propTypes = {
   children: PropTypes.node.isRequired,
   components: PropTypes.objectOf(PropTypes.elementType).isRequired,
   widgets: PropTypes.objectOf(PropTypes.elementType).isRequired,
   legacyThemeAPI: PropTypes.shape(),
 };
 
-ThemeComponentsProvider.defaultProps = {
+ThemeResourcesProvider.defaultProps = {
   legacyThemeAPI: null,
 };
 
-export default ThemeComponentsProvider;
+export default ThemeResourcesProvider;

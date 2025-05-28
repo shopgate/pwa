@@ -1,6 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { ThemeComponentsProvider } from '@shopgate/engage/core/providers';
+import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
 import Widgets from './index';
 
 jest.useFakeTimers();
@@ -35,11 +35,11 @@ const components = {
  * @returns {JSX.Element}
  */
 const createWrapper = widgets => mount((
-  <ThemeComponentsProvider widgets={components} components={{}}>
+  <ThemeResourcesProvider widgets={components} components={{}}>
     <Widgets
       widgets={widgets}
     />
-  </ThemeComponentsProvider>
+  </ThemeResourcesProvider>
 ));
 
 describe('<Widgets />', () => {

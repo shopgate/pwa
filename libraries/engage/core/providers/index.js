@@ -3,4 +3,4 @@ export { default as LoadingContext } from '@shopgate/pwa-common/providers/loadin
 export { default as ToastProvider } from '@shopgate/pwa-common/providers/toast';
 export { default as ToastContext } from '@shopgate/pwa-common/providers/toast/context';
 export { default as AppProvider } from './AppProvider';
-export { default as ThemeComponentsProvider } from './ThemeComponentsProvider';
+export { default as ThemeResourcesProvider } from './ThemeResourcesProvider';
