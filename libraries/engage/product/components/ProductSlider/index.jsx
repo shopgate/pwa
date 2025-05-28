@@ -28,6 +28,7 @@ function ProductSlider(props) {
 
   const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
   const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSettings;
+  // ProductSlider items are rendered with the ProductCard component provided by the theme.
   const { ProductCard } = useThemeComponents();
   const Item = props.item || ProductCard;
 
