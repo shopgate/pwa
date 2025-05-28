@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Theme } from '@shopgate/pwa-common/context';
+import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -22,64 +22,62 @@ function LiveshoppingItem({
   productId,
   hasPagination,
 }) {
-  return (
-    <Theme>
-      {({ ProductCard }) => (
-        <ProductCard
-          productId={productId}
-          style={styles.card}
-          render={({ product, url }) => {
-            const {
-              featuredImageBaseUrl,
-              liveshoppings,
-              name,
-              price,
-            } = product;
-            const timeout = getLiveshoppingTimeout(liveshoppings);
-            const { ListImage: gridResolutions } = getProductImageSettings();
+  const { ProductCard } = useThemeComponents();
 
-            return (
-              <Link
-                href={url}
-                state={{ title: name }}
-                className={classNames({ [styles.linkPagination]: hasPagination })}
+  return (
+    <ProductCard
+      productId={productId}
+      style={styles.card}
+      render={({ product, url }) => {
+        const {
+          featuredImageBaseUrl,
+          liveshoppings,
+          name,
+          price,
+        } = product;
+        const timeout = getLiveshoppingTimeout(liveshoppings);
+        const { ListImage: gridResolutions } = getProductImageSettings();
+
+        return (
+          <Link
+            href={url}
+            state={{ title: name }}
+            className={classNames({ [styles.linkPagination]: hasPagination })}
+          >
+            <Grid>
+              <Grid.Item className={styles.image}>
+                <ProductImage
+                  src={featuredImageBaseUrl}
+                  resolutions={gridResolutions}
+                  alt={name}
+                />
+              </Grid.Item>
+              <Grid.Item className={classNames(styles.infoPane, {
+                [styles.infoPanePagination]: hasPagination,
+              })}
               >
-                <Grid>
-                  <Grid.Item className={styles.image}>
-                    <ProductImage
-                      src={featuredImageBaseUrl}
-                      resolutions={gridResolutions}
-                      alt={name}
-                    />
-                  </Grid.Item>
-                  <Grid.Item className={classNames(styles.infoPane, {
-                    [styles.infoPanePagination]: hasPagination,
-                  })}
+                <div data-test-id={name}>
+                  <ProductBadges
+                    location="liveshopping"
+                    productId={productId}
+                    className={styles.badgesPortal}
                   >
-                    <div data-test-id={name}>
-                      <ProductBadges
-                        location="liveshopping"
-                        productId={productId}
-                        className={styles.badgesPortal}
-                      >
-                        {price.discount > 0 &&
-                        <Discount discount={price.discount} productId={productId} />
+                    {price.discount > 0 &&
+                    <Discount discount={price.discount} productId={productId} />
                       }
-                      </ProductBadges>
-                      <ProductCard.Content.Title title={name} style={styles.title} />
-                      {timeout &&
-                        <CountdownTimer className={styles.timer} timeout={timeout / 1000} />
+                  </ProductBadges>
+                  <ProductCard.Content.Title title={name} style={styles.title} />
+                  {timeout &&
+                  <CountdownTimer className={styles.timer} timeout={timeout / 1000} />
                       }
-                    </div>
-                    <Price price={price} />
-                  </Grid.Item>
-                </Grid>
-              </Link>
-            );
-          }}
-        />
-      )}
-    </Theme>
+                </div>
+                <Price price={price} />
+              </Grid.Item>
+            </Grid>
+          </Link>
+        );
+      }}
+    />
   );
 }
 

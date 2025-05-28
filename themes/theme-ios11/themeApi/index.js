@@ -1,14 +1,18 @@
 import { SheetDrawer as Drawer, View } from '@shopgate/engage/components';
 import { ProductContext } from '@shopgate/engage/product/contexts';
-import { ProductSlider, PriceDifference } from '@shopgate/engage/product/components';
-import { TextOption, SelectOption } from '@shopgate/engage/product/components/Options';
+import {
+  ProductSlider,
+  PriceDifference,
+  TextOption,
+  SelectOption,
+} from '@shopgate/engage/product/components';
 import AppBar from 'Components/AppBar/presets/BackBar';
 import ProductGrid from 'Components/ProductGrid';
 import TabBar from 'Components/TabBar';
 import ProductHeader from '../pages/Product/components/Header';
 import ProductCard from './ProductCard';
 
-export default {
+export const legacyThemeAPI = {
   AppBar,
   Drawer,
   ProductCard,
@@ -23,4 +27,12 @@ export default {
   contexts: {
     ProductContext,
   },
+};
+
+export const themeComponents = {
+  AppBar,
+  ProductCard,
+  ProductGrid,
+  ProductHeader,
+  TabBar,
 };

@@ -16,15 +16,10 @@ jest.mock('@shopgate/engage/components', () => {
   };
 });
 
-jest.mock('@shopgate/engage/product', () => ({
-  ProductListTypeProvider: ({ children }) => children,
-  ProductListEntryProvider: ({ children }) => children,
-}));
-
-jest.mock('@shopgate/pwa-common/context', () => {
+jest.mock('@shopgate/engage/core/hooks', () => {
   const ProductCard = props => <ProductCard {...props} />;
   return {
-    Theme: ({ children }) => children({ ProductCard }),
+    useThemeComponents: () => ({ ProductCard }),
   };
 });
 
@@ -32,7 +27,7 @@ describe('<ProductSlider />', () => {
   it('should match snapshot', () => {
     const wrapper = shallow((
       <ProductSlider productIds={['prod1']} />
-    )).dive();
+    ));
 
     expect(wrapper).toMatchSnapshot();
   });

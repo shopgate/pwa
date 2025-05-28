@@ -1,244 +1,359 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Widgets /> should not wrap a widget which is not a grid and has no height 1`] = `
-<Widgets
-  components={
+<ThemeResourcesProvider
+  components={Object {}}
+  legacyThemeAPI={null}
+  widgets={
     Object {
       "@shopgate/commerce-widgets/image": [Function],
       "@shopgate/commerce-widgets/widget-grid": [Function],
     }
   }
-  widgets={
-    Array [
-      Object {
-        "col": 0,
-        "row": 0,
-        "settings": Object {
-          "id": 83535,
-          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
-        },
-        "type": "@shopgate/commerce-widgets/image",
-        "width": 12,
-      },
-    ]
-  }
 >
-  <div
-    className="common__widgets"
-  >
-    <Image
-      col={0}
-      key="w0"
-      row={0}
-      settings={
+  <ThemeResourcesWrapper
+    widgets={
+      Array [
         Object {
-          "id": 83535,
-          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
-        }
-      }
-      type="@shopgate/commerce-widgets/image"
-      width={12}
-    >
-      <img
-        alt=""
-      />
-    </Image>
-  </div>
-</Widgets>
-`;
-
-exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
-<Widgets
-  components={
-    Object {
-      "@shopgate/commerce-widgets/image": [Function],
-      "@shopgate/commerce-widgets/widget-grid": [Function],
-    }
-  }
-  widgets={
-    Array [
-      Object {
-        "settings": Object {
-          "widgets": Array [
-            Object {
-              "col": 0,
-              "height": 5,
-              "row": 0,
-              "settings": Object {
-                "alt": "",
-                "id": "84961",
-                "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
-                "link": "/category/",
-              },
-              "type": "@shopgate/commerce-widgets/image",
-              "width": 12,
-            },
-          ],
+          "col": 0,
+          "row": 0,
+          "settings": Object {
+            "id": 83535,
+            "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+          },
+          "type": "@shopgate/commerce-widgets/image",
+          "width": 12,
         },
-        "type": "@shopgate/commerce-widgets/widget-grid",
-      },
-    ]
-  }
->
-  <div
-    className="common__widgets"
+      ]
+    }
   >
-    <WidgetGrid
-      components={
+    <Widgets
+      themeWidgets={
         Object {
           "@shopgate/commerce-widgets/image": [Function],
           "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
-      config={
+      widgets={
         Array [
           Object {
             "col": 0,
-            "height": 5,
             "row": 0,
             "settings": Object {
-              "alt": "",
-              "id": "84961",
-              "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
-              "link": "/category/",
+              "id": 83535,
+              "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
             },
             "type": "@shopgate/commerce-widgets/image",
             "width": 12,
           },
         ]
       }
-      key="w0"
     >
       <div
-        className="css-jldvt6 common__widgets__widget-grid"
+        className="common__widgets"
       >
-        <Widget
-          component={[Function]}
-          config={
+        <Image
+          col={0}
+          key="w0"
+          row={0}
+          settings={
             Object {
-              "col": 0,
-              "height": 5,
-              "row": 0,
-              "settings": Object {
-                "alt": "",
-                "id": "84961",
-                "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
-                "link": "/category/",
-              },
-              "type": "@shopgate/commerce-widgets/image",
-              "width": 12,
+              "id": 83535,
+              "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
             }
           }
-          key="w0"
+          type="@shopgate/commerce-widgets/image"
+          width={12}
         >
-          <GridItem
-            className="common__widgets__widget css-14cdwhd"
-            component="div"
-            grow={0}
-            shrink={1}
-          >
-            <div
-              className="common__widgets__widget css-14cdwhd"
-            >
-              <div>
-                <Suspense
-                  fallback={<Loading />}
-                >
-                  <Image
-                    ratio={
-                      Array [
-                        12,
-                        5,
-                      ]
-                    }
-                    settings={
-                      Object {
-                        "alt": "",
-                        "id": "84961",
-                        "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
-                        "link": "/category/",
-                      }
-                    }
-                  >
-                    <img
-                      alt=""
-                    />
-                  </Image>
-                </Suspense>
-              </div>
-            </div>
-          </GridItem>
-        </Widget>
+          <img
+            alt=""
+          />
+        </Image>
       </div>
-    </WidgetGrid>
-  </div>
-</Widgets>
+    </Widgets>
+  </ThemeResourcesWrapper>
+</ThemeResourcesProvider>
 `;
 
-exports[`<Widgets /> should render only one widget when the second one is not published and third one is invalid 1`] = `
-<Widgets
-  components={
+exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
+<ThemeResourcesProvider
+  components={Object {}}
+  legacyThemeAPI={null}
+  widgets={
     Object {
       "@shopgate/commerce-widgets/image": [Function],
       "@shopgate/commerce-widgets/widget-grid": [Function],
     }
   }
-  widgets={
-    Array [
-      Object {
-        "col": 0,
-        "row": 0,
-        "settings": Object {
-          "id": 835351,
-          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
-        },
-        "type": "@shopgate/commerce-widgets/image",
-        "width": 12,
-      },
-      Object {
-        "col": 0,
-        "row": 0,
-        "settings": Object {
-          "id": 835352,
-          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
-        },
-        "type": "@shopgate/commerce-widgets/imagefoo",
-        "width": 12,
-      },
-      Object {
-        "col": 0,
-        "row": 0,
-        "settings": Object {
-          "id": 835353,
-          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
-          "published": false,
-        },
-        "type": "@shopgate/commerce-widgets/image",
-        "width": 12,
-      },
-    ]
-  }
 >
-  <div
-    className="common__widgets"
-  >
-    <Image
-      col={0}
-      key="w0"
-      row={0}
-      settings={
+  <ThemeResourcesWrapper
+    widgets={
+      Array [
         Object {
-          "id": 835351,
-          "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+          "settings": Object {
+            "widgets": Array [
+              Object {
+                "col": 0,
+                "height": 5,
+                "row": 0,
+                "settings": Object {
+                  "alt": "",
+                  "id": "84961",
+                  "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                  "link": "/category/",
+                },
+                "type": "@shopgate/commerce-widgets/image",
+                "width": 12,
+              },
+            ],
+          },
+          "type": "@shopgate/commerce-widgets/widget-grid",
+        },
+      ]
+    }
+  >
+    <Widgets
+      themeWidgets={
+        Object {
+          "@shopgate/commerce-widgets/image": [Function],
+          "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
-      type="@shopgate/commerce-widgets/image"
-      width={12}
+      widgets={
+        Array [
+          Object {
+            "settings": Object {
+              "widgets": Array [
+                Object {
+                  "col": 0,
+                  "height": 5,
+                  "row": 0,
+                  "settings": Object {
+                    "alt": "",
+                    "id": "84961",
+                    "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                    "link": "/category/",
+                  },
+                  "type": "@shopgate/commerce-widgets/image",
+                  "width": 12,
+                },
+              ],
+            },
+            "type": "@shopgate/commerce-widgets/widget-grid",
+          },
+        ]
+      }
     >
-      <img
-        alt=""
-      />
-    </Image>
-  </div>
-</Widgets>
+      <div
+        className="common__widgets"
+      >
+        <WidgetGrid
+          components={
+            Object {
+              "@shopgate/commerce-widgets/image": [Function],
+              "@shopgate/commerce-widgets/widget-grid": [Function],
+            }
+          }
+          config={
+            Array [
+              Object {
+                "col": 0,
+                "height": 5,
+                "row": 0,
+                "settings": Object {
+                  "alt": "",
+                  "id": "84961",
+                  "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                  "link": "/category/",
+                },
+                "type": "@shopgate/commerce-widgets/image",
+                "width": 12,
+              },
+            ]
+          }
+          key="w0"
+        >
+          <div
+            className="css-jldvt6 common__widgets__widget-grid"
+          >
+            <Widget
+              component={[Function]}
+              config={
+                Object {
+                  "col": 0,
+                  "height": 5,
+                  "row": 0,
+                  "settings": Object {
+                    "alt": "",
+                    "id": "84961",
+                    "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                    "link": "/category/",
+                  },
+                  "type": "@shopgate/commerce-widgets/image",
+                  "width": 12,
+                }
+              }
+              key="w0"
+            >
+              <GridItem
+                className="common__widgets__widget css-14cdwhd"
+                component="div"
+                grow={0}
+                shrink={1}
+              >
+                <div
+                  className="common__widgets__widget css-14cdwhd"
+                >
+                  <div>
+                    <Suspense
+                      fallback={<Loading />}
+                    >
+                      <Image
+                        ratio={
+                          Array [
+                            12,
+                            5,
+                          ]
+                        }
+                        settings={
+                          Object {
+                            "alt": "",
+                            "id": "84961",
+                            "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                            "link": "/category/",
+                          }
+                        }
+                      >
+                        <img
+                          alt=""
+                        />
+                      </Image>
+                    </Suspense>
+                  </div>
+                </div>
+              </GridItem>
+            </Widget>
+          </div>
+        </WidgetGrid>
+      </div>
+    </Widgets>
+  </ThemeResourcesWrapper>
+</ThemeResourcesProvider>
+`;
+
+exports[`<Widgets /> should render only one widget when the second one is not published and third one is invalid 1`] = `
+<ThemeResourcesProvider
+  components={Object {}}
+  legacyThemeAPI={null}
+  widgets={
+    Object {
+      "@shopgate/commerce-widgets/image": [Function],
+      "@shopgate/commerce-widgets/widget-grid": [Function],
+    }
+  }
+>
+  <ThemeResourcesWrapper
+    widgets={
+      Array [
+        Object {
+          "col": 0,
+          "row": 0,
+          "settings": Object {
+            "id": 835351,
+            "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+          },
+          "type": "@shopgate/commerce-widgets/image",
+          "width": 12,
+        },
+        Object {
+          "col": 0,
+          "row": 0,
+          "settings": Object {
+            "id": 835352,
+            "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+          },
+          "type": "@shopgate/commerce-widgets/imagefoo",
+          "width": 12,
+        },
+        Object {
+          "col": 0,
+          "row": 0,
+          "settings": Object {
+            "id": 835353,
+            "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+            "published": false,
+          },
+          "type": "@shopgate/commerce-widgets/image",
+          "width": 12,
+        },
+      ]
+    }
+  >
+    <Widgets
+      themeWidgets={
+        Object {
+          "@shopgate/commerce-widgets/image": [Function],
+          "@shopgate/commerce-widgets/widget-grid": [Function],
+        }
+      }
+      widgets={
+        Array [
+          Object {
+            "col": 0,
+            "row": 0,
+            "settings": Object {
+              "id": 835351,
+              "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+            },
+            "type": "@shopgate/commerce-widgets/image",
+            "width": 12,
+          },
+          Object {
+            "col": 0,
+            "row": 0,
+            "settings": Object {
+              "id": 835352,
+              "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+            },
+            "type": "@shopgate/commerce-widgets/imagefoo",
+            "width": 12,
+          },
+          Object {
+            "col": 0,
+            "row": 0,
+            "settings": Object {
+              "id": 835353,
+              "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+              "published": false,
+            },
+            "type": "@shopgate/commerce-widgets/image",
+            "width": 12,
+          },
+        ]
+      }
+    >
+      <div
+        className="common__widgets"
+      >
+        <Image
+          col={0}
+          key="w0"
+          row={0}
+          settings={
+            Object {
+              "id": 835351,
+              "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+            }
+          }
+          type="@shopgate/commerce-widgets/image"
+          width={12}
+        >
+          <img
+            alt=""
+          />
+        </Image>
+      </div>
+    </Widgets>
+  </ThemeResourcesWrapper>
+</ThemeResourcesProvider>
 `;

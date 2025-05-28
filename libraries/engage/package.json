@@ -40,7 +40,6 @@
     "react-phone-number-input": "^3.2.16",
     "react-player": "1.11.0",
     "react-portal": "^3.1.0",
-    "react-swipeable": "^4.0.1",
     "validate.js": "^0.13.1"
   },
   "devDependencies": {

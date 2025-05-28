@@ -22,13 +22,52 @@ const getInjectedProps = (context, prop) => {
  * @param {Function} WrappedComponent The react component to wrap.
  * @param {Object} [options={}] Options for the HOC.
  * @param {string} [options.prop] An optional prop name to inject the theme properties.
- * @returns {JSX}
+ * @deprecated
+ *
+ * Use `withThemeComponents()` instead.
+ * ```js
+ * import { withThemeComponents } from '@shopgate/engage/core/hocs';
+ *
+ * function MyComponent({ themeComponents }) {
+ *   const { ProductCard } = themeComponents.components;
+ *   return <ProductCard />;
+ * }
+ * ````
+ * This HOC will not expose components that can be imported directly from the `@shopgate/engage`
+ * package (see list below).
+ *
+ * ---
+ * Use these updated imports instead of deprecated context values:
+ *
+ * ```js
+ * // Deprecated: Drawer → use SheetDrawer
+ * import { SheetDrawer } from '@shopgate/engage/components';
+ *
+ * // Deprecated: PriceDifference → use PriceDifference
+ * import { PriceDifference } from '@shopgate/engage/product/components';
+ *
+ * // Deprecated: ProductSlider → use ProductSlider
+ * import { ProductSlider } from '@shopgate/engage/product/components';
+ *
+ * // Deprecated: SelectOption → use SelectOption
+ * import { SelectOption } from '@shopgate/engage/product/components';
+ *
+ * // Deprecated: TextOption → use TextOption
+ * import { TextOption } from '@shopgate/engage/product/components';
+ *
+ * // Deprecated: View → use View
+ * import { View } from '@shopgate/engage/components'
+ *
+ * // Deprecated: { contexts: { ProductContext }} → use ProductContext
+ * import { ProductContext } from '@shopgate/engage/product/contexts';
+ * ```
+ * @returns {JSX.Element}
  */
 export function withTheme(WrappedComponent, options = {}) {
   /**
    * The actual HOC.
    * @param {Object} props The component props.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   const WithTheme = props => (
     <ThemeContext.Consumer>

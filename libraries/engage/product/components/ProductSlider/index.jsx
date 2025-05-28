@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
+import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import { Swiper } from '@shopgate/engage/components';
-import { Theme } from '@shopgate/engage/core/contexts';
 import {
   ProductListTypeProvider,
   ProductListEntryProvider,
@@ -28,38 +28,34 @@ function ProductSlider(props) {
 
   const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
   const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSettings;
+  // ProductSlider items are rendered with the ProductCard component provided by the theme.
+  const { ProductCard } = useThemeComponents();
+  const Item = props.item || ProductCard;
 
   return (
-    <Theme>
-      {({ ProductCard }) => {
-        const Item = props.item || ProductCard;
-        return (
-          <ProductListTypeProvider type="productSlider" subType={scope} meta={meta}>
-            <Swiper
-              {...autoplay && {
-                autoplay: {
-                  delay,
-                },
-              }}
-              className={`${className} engage__product__product-slider`}
-              controls={false}
-              indicators={false}
-              loop={false}
-              freeMode={!snap}
-              slidesPerView={slidesPerView}
-            >
-              {productIds.map(id => (
-                <Swiper.Item key={id} className={container}>
-                  <ProductListEntryProvider productId={id}>
-                    <Item productId={id} style={items} />
-                  </ProductListEntryProvider>
-                </Swiper.Item>
-              ))}
-            </Swiper>
-          </ProductListTypeProvider>
-        );
-      }}
-    </Theme>
+    <ProductListTypeProvider type="productSlider" subType={scope} meta={meta}>
+      <Swiper
+        {...autoplay && {
+          autoplay: {
+            delay,
+          },
+        }}
+        className={`${className} engage__product__product-slider`}
+        controls={false}
+        indicators={false}
+        loop={false}
+        freeMode={!snap}
+        slidesPerView={slidesPerView}
+      >
+        {productIds.map(id => (
+          <Swiper.Item key={id} className={container}>
+            <ProductListEntryProvider productId={id}>
+              <Item productId={id} style={items} />
+            </ProductListEntryProvider>
+          </Swiper.Item>
+        ))}
+      </Swiper>
+    </ProductListTypeProvider>
   );
 }
 

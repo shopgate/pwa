@@ -1,53 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > components > view > components > content should render content 1`] = `
-<Swipeable
-  delta={10}
-  disabled={false}
-  flickThreshold={0.6}
-  nodeName="div"
-  onSwiped={[Function]}
-  preventDefaultTouchmoveEvent={false}
-  rotationAngle={0}
-  stopPropagation={false}
->
-  <article
-    className="css-ytqxab engage__view__content route_"
-    role="none"
-    style={
-      Object {
-        "overflow": "auto",
-        "paddingBottom": "calc(var(--page-content-offset-bottom) + 0px)",
-      }
+<article
+  className="css-ytqxab engage__view__content route_"
+  role="none"
+  style={
+    Object {
+      "overflow": "auto",
+      "paddingBottom": "calc(var(--page-content-offset-bottom) + 0px)",
     }
+  }
+>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+    title="Test Shop"
+  />
+  <ViewAbove />
+  <ResponsiveContainer
+    appAlways={false}
+    appOnly={false}
+    breakpoint=">xs"
+    webAlways={false}
+    webOnly={true}
   >
-    <HelmetWrapper
-      defer={true}
-      encodeSpecialCharacters={true}
-      title="Test Shop"
+    <div
+      id="PageHeaderBelow"
     />
-    <ViewAbove />
-    <ResponsiveContainer
-      appAlways={false}
-      appOnly={false}
-      breakpoint=">xs"
-      webAlways={false}
-      webOnly={true}
-    >
-      <div
-        id="PageHeaderBelow"
-      />
-    </ResponsiveContainer>
-    <ConditionalWrapper
-      condition={true}
-      wrapper={[Function]}
-      wrapperFalsy={null}
-    >
-      <div>
-        Page #1
-      </div>
-    </ConditionalWrapper>
-    <ViewBelow />
-  </article>
-</Swipeable>
+  </ResponsiveContainer>
+  <ConditionalWrapper
+    condition={true}
+    wrapper={[Function]}
+    wrapperFalsy={null}
+  >
+    <div>
+      Page #1
+    </div>
+  </ConditionalWrapper>
+  <ViewBelow />
+</article>
 `;

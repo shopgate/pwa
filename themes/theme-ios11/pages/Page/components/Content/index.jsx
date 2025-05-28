@@ -11,7 +11,6 @@ import Widgets from '@shopgate/pwa-common/components/Widgets';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import { Logo } from '@shopgate/engage/components';
-import widgets from 'Extensions/widgets';
 import connect from './connector';
 
 /**
@@ -44,7 +43,7 @@ function PageContent({
       <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
       <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
         {(!postponeRender && configs && configs.widgets) && (
-          <Widgets components={widgets} widgets={configs.widgets} />
+          <Widgets widgets={configs.widgets} />
         )}
       </Portal>
       <Portal name={PAGE_CONTENT_AFTER} props={{ id: pageId }} />
