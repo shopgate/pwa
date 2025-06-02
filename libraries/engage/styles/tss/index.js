@@ -4,7 +4,8 @@ import { createMakeAndWithStyles, createTss } from 'tss-react';
 export { GlobalStyles } from 'tss-react';
 
 export const emotionCache = createCache({
-  key: 'tss', // All tss-react styles will be prefixed with `.tss-*` instead of `.css-*`
+  // All tss-react styles will be prefixed with `.tss-*` instead of `.css-*`
+  key: 'tss',
 });
 
 /**

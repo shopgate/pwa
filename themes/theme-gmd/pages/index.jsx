@@ -46,7 +46,6 @@ import {
 } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import Toaster from '@shopgate/pwa-common/components/Toaster';
-import { ThemeContext } from '@shopgate/pwa-common/context';
 import { APP_GLOBALS } from '@shopgate/pwa-common/constants/Portals';
 import { STORE_FINDER_PATTERN, STORE_DETAILS_PATTERN } from '@shopgate/engage/locations/constants';
 import { GlobalLocationSelector } from '@shopgate/engage/locations/components';
@@ -71,10 +70,12 @@ import {
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account/constants';
 import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders/constants';
+import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
+import widgets from 'Extensions/widgets';
 import PageNotFound from './404';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
-import themeApi from '../themeApi';
+import { themeComponents, legacyThemeAPI } from '../themeApi';
 import { navigation, navigationHidden, content } from './index.style';
 
 const devFontsUrl = 'https://connect.shopgate.com/assets/fonts/roboto/font.css';
@@ -123,7 +124,11 @@ const Pages = ({ store }) => {
       <NavigationHandler>
         <AppProvider>
           <CacheProvider value={emotionCache}>
-            <ThemeContext.Provider value={themeApi}>
+            <ThemeResourcesProvider
+              widgets={widgets}
+              components={themeComponents}
+              legacyThemeAPI={legacyThemeAPI}
+            >
               <LoadingProvider>
                 <ToastProvider>
                   <DevelopmentTools>
@@ -153,7 +158,10 @@ const Pages = ({ store }) => {
                             component={routes.StartPage}
                             transform={routesTransforms[INDEX_PATH]}
                           />
-                          <Route pattern={PAGE_PATTERN} component={routes.Page} />
+                          <Route
+                            pattern={PAGE_PATTERN}
+                            component={routes.Page}
+                          />
                           <Route
                             pattern={PRIVACY_SETTINGS_PATTERN}
                             component={routes.PrivacySettings}
@@ -164,17 +172,37 @@ const Pages = ({ store }) => {
                             cache
                             transform={routesTransforms[ROOT_CATEGORY_PATTERN]}
                           />
-                          <Route pattern={CATEGORY_PATTERN} component={routes.Category} cache />
-                          <Route pattern={CATEGORY_FILTER_PATTERN} component={routes.Filter} />
-                          <Route pattern={CATEGORY_ALL_PATTERN} component={routes.Search} cache />
-                          <Route pattern={CATEGORY_ALL_FILTER_PATTERN} component={routes.Filter} />
+                          <Route
+                            pattern={CATEGORY_PATTERN}
+                            component={routes.Category}
+                            cache
+                          />
+                          <Route
+                            pattern={CATEGORY_FILTER_PATTERN}
+                            component={routes.Filter}
+                          />
+                          <Route
+                            pattern={CATEGORY_ALL_PATTERN}
+                            component={routes.Search}
+                            cache
+                          />
+                          <Route
+                            pattern={CATEGORY_ALL_FILTER_PATTERN}
+                            component={routes.Filter}
+                          />
                           <Route
                             pattern={ITEM_PATTERN}
                             component={routes.Product}
                             transform={transformItemRoute}
                           />
-                          <Route pattern={ITEM_GALLERY_PATTERN} component={routes.ProductGallery} />
-                          <Route pattern={ITEM_REVIEWS_PATTERN} component={routes.Reviews} />
+                          <Route
+                            pattern={ITEM_GALLERY_PATTERN}
+                            component={routes.ProductGallery}
+                          />
+                          <Route
+                            pattern={ITEM_REVIEWS_PATTERN}
+                            component={routes.Reviews}
+                          />
                           <Route
                             pattern={ITEM_WRITE_REVIEW_PATTERN}
                             component={routes.WriteReview}
@@ -185,13 +213,17 @@ const Pages = ({ store }) => {
                             transform={routesTransforms[CART_PATH]}
                           />
                           <Route pattern={SCANNER_PATH} component={routes.Scanner} />
-                          { appConfig.hasFavorites && <Route
+                          { appConfig.hasFavorites && (
+                          <Route
                             pattern={FAVORITES_PATH}
                             component={routes.Favorites}
                             transform={routesTransforms[FAVORITES_PATH]}
                           />
-                          }
-                          <Route pattern={LOGIN_PATH} component={routes.Login} />
+                          )}
+                          <Route
+                            pattern={LOGIN_PATH}
+                            component={routes.Login}
+                          />
                           <Route
                             pattern={SEARCH_PATTERN}
                             component={routes.Search}
@@ -267,7 +299,9 @@ const Pages = ({ store }) => {
                             pattern={STORE_DETAILS_PATTERN}
                             component={routes.StoreDetails}
                           />
-                          <Route.NotFound component={PageNotFound} />
+                          <Route.NotFound
+                            component={PageNotFound}
+                          />
                           {React.Children.map(routePortals, Component => Component)}
                         </Router>
                       </div>
@@ -281,7 +315,7 @@ const Pages = ({ store }) => {
                   </DevelopmentTools>
                 </ToastProvider>
               </LoadingProvider>
-            </ThemeContext.Provider>
+            </ThemeResourcesProvider>
           </CacheProvider>
         </AppProvider>
       </NavigationHandler>
