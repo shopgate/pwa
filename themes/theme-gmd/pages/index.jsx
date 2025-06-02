@@ -72,6 +72,7 @@ import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/engage/account/constants';
 import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders/constants';
 import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
+import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import widgets from 'Extensions/widgets';
 import PageNotFound from './404';
 import * as routes from './routes';
@@ -165,6 +166,10 @@ const Pages = ({ store }) => {
                             <Route
                               pattern={PAGE_PATTERN}
                               component={routes.Page}
+                            />
+                            <Route
+                              pattern={PAGE_PREVIEW_PATTERN}
+                              component={routes.PagePreview}
                             />
                             <Route
                               pattern={PRIVACY_SETTINGS_PATTERN}

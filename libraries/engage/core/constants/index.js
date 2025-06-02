@@ -72,3 +72,14 @@ export * from '@shopgate/pwa-common/constants/MenuIDs';
 export * from '@shopgate/pwa-common/constants/ModalTypes';
 
 export { INDEX_PATH, INDEX_PATH_DEEPLINK, LOGIN_PATH };
+
+/**
+ * Helper constant that can be used as a return value in Redux selectors to prevent
+ * unnecessary re-renders.
+ */
+export const EMPTY_OBJECT = Object.freeze({});
+/**
+ * Helper constant that can be used as a return value in Redux selectors to prevent
+ * unnecessary re-renders.
+ */
+export const EMPTY_ARRAY = Object.freeze([]);

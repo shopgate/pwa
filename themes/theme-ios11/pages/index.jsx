@@ -67,6 +67,7 @@ import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import { CookieConsentModal } from '@shopgate/engage/tracking/components';
 import { DevelopmentTools } from '@shopgate/engage/development/components';
 import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
+import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import widgets from 'Extensions/widgets';
 import PageNotFound from './404';
 import { themeComponents, legacyThemeAPI } from '../themeApi';
@@ -140,6 +141,10 @@ const Pages = ({ store }) => {
                           <Route
                             pattern={PAGE_PATTERN}
                             component={routes.Page}
+                          />
+                          <Route
+                            pattern={PAGE_PREVIEW_PATTERN}
+                            component={routes.PagePreview}
                           />
                           <Route
                             pattern={PRIVACY_SETTINGS_PATTERN}
