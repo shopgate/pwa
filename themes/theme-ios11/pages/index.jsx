@@ -1,10 +1,11 @@
 import { hot } from 'react-hot-loader/root';
 import 'Extensions/portals';
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { CacheProvider } from '@emotion/react';
 import { emotionCache } from '@shopgate/engage/styles/tss';
+import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { isDev, isWindows } from '@shopgate/engage/core/helpers';
@@ -92,6 +93,8 @@ const globalLocationSelectorAllowList = [
 const Pages = ({ store }) => {
   const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
 
+  const theme = useMemo(() => createTheme(), []);
+
   return (
     <App store={store}>
       <Helmet>
@@ -108,195 +111,197 @@ const Pages = ({ store }) => {
       <NavigationHandler>
         <AppProvider>
           <CacheProvider value={emotionCache}>
-            <ThemeResourcesProvider
-              widgets={widgets}
-              components={themeComponents}
-              legacyThemeAPI={legacyThemeAPI}
-            >
-              <LoadingProvider>
-                <ToastProvider>
-                  <DevelopmentTools>
-                    <Portal name={APP_GLOBALS} />
-                    <Viewport>
-                      <ModalContainer component={Dialog} />
-                      <PushOptInModal />
-                      <CookieConsentModal />
-                      <Toaster render={props => <SnackBarContainer {...props} />} />
-                      <FavoritesListChooser />
-                      <FulfillmentSlotProvider />
-                      <GlobalLocationSelector
-                        routePatternAllowList={globalLocationSelectorAllowList}
-                      />
-                      <Router history={history}>
-                        <Route
-                          pattern={INDEX_PATH}
-                          component={routes.StartPage}
-                          transform={routesTransforms[INDEX_PATH]}
+            <ThemeProvider theme={theme}>
+              <ThemeResourcesProvider
+                widgets={widgets}
+                components={themeComponents}
+                legacyThemeAPI={legacyThemeAPI}
+              >
+                <LoadingProvider>
+                  <ToastProvider>
+                    <DevelopmentTools>
+                      <Portal name={APP_GLOBALS} />
+                      <Viewport>
+                        <ModalContainer component={Dialog} />
+                        <PushOptInModal />
+                        <CookieConsentModal />
+                        <Toaster render={props => <SnackBarContainer {...props} />} />
+                        <FavoritesListChooser />
+                        <FulfillmentSlotProvider />
+                        <GlobalLocationSelector
+                          routePatternAllowList={globalLocationSelectorAllowList}
                         />
-                        <Route
-                          pattern={PAGE_PATTERN}
-                          component={routes.Page}
-                        />
-                        <Route
-                          pattern={PRIVACY_SETTINGS_PATTERN}
-                          component={routes.PrivacySettings}
-                        />
-                        <Route
-                          pattern={CATEGORY_PATTERN}
-                          component={routes.Category}
-                          cache
-                        />
-                        <Route
-                          pattern={CATEGORY_FILTER_PATTERN}
-                          component={routes.Filter}
-                        />
-                        <Route
-                          pattern={CATEGORY_ALL_PATTERN}
-                          component={routes.Search}
-                          cache
-                        />
-                        <Route
-                          pattern={CATEGORY_ALL_FILTER_PATTERN}
-                          component={routes.Filter}
-                        />
-                        <Route
-                          pattern={ITEM_PATTERN}
-                          component={routes.Product}
-                          transform={transformItemRoute}
-                        />
-                        <Route
-                          pattern={ITEM_GALLERY_PATTERN}
-                          component={routes.ProductGallery}
-                        />
-                        <Route
-                          pattern={ITEM_REVIEWS_PATTERN}
-                          component={routes.Reviews}
-                        />
-                        <Route
-                          pattern={ITEM_WRITE_REVIEW_PATTERN}
-                          component={routes.WriteReview}
-                        />
-                        <Route
-                          pattern={CART_PATH}
-                          component={routes.Cart}
-                          transform={routesTransforms[CART_PATH]}
-                        />
-                        <Route
-                          pattern={BROWSE_PATH}
-                          component={routes.Browse}
-                          transform={routesTransforms[BROWSE_PATH]}
-                        />
-                        <Route
-                          pattern={MORE_PATH}
-                          component={routes.More}
-                          transform={routesTransforms[MORE_PATH]}
-                        />
-                        { appConfig.hasFavorites && (
-                        <Route
-                          pattern={FAVORITES_PATH}
-                          component={routes.Favorites}
-                          transform={routesTransforms[FAVORITES_PATH]}
-                        />
+                        <Router history={history}>
+                          <Route
+                            pattern={INDEX_PATH}
+                            component={routes.StartPage}
+                            transform={routesTransforms[INDEX_PATH]}
+                          />
+                          <Route
+                            pattern={PAGE_PATTERN}
+                            component={routes.Page}
+                          />
+                          <Route
+                            pattern={PRIVACY_SETTINGS_PATTERN}
+                            component={routes.PrivacySettings}
+                          />
+                          <Route
+                            pattern={CATEGORY_PATTERN}
+                            component={routes.Category}
+                            cache
+                          />
+                          <Route
+                            pattern={CATEGORY_FILTER_PATTERN}
+                            component={routes.Filter}
+                          />
+                          <Route
+                            pattern={CATEGORY_ALL_PATTERN}
+                            component={routes.Search}
+                            cache
+                          />
+                          <Route
+                            pattern={CATEGORY_ALL_FILTER_PATTERN}
+                            component={routes.Filter}
+                          />
+                          <Route
+                            pattern={ITEM_PATTERN}
+                            component={routes.Product}
+                            transform={transformItemRoute}
+                          />
+                          <Route
+                            pattern={ITEM_GALLERY_PATTERN}
+                            component={routes.ProductGallery}
+                          />
+                          <Route
+                            pattern={ITEM_REVIEWS_PATTERN}
+                            component={routes.Reviews}
+                          />
+                          <Route
+                            pattern={ITEM_WRITE_REVIEW_PATTERN}
+                            component={routes.WriteReview}
+                          />
+                          <Route
+                            pattern={CART_PATH}
+                            component={routes.Cart}
+                            transform={routesTransforms[CART_PATH]}
+                          />
+                          <Route
+                            pattern={BROWSE_PATH}
+                            component={routes.Browse}
+                            transform={routesTransforms[BROWSE_PATH]}
+                          />
+                          <Route
+                            pattern={MORE_PATH}
+                            component={routes.More}
+                            transform={routesTransforms[MORE_PATH]}
+                          />
+                          { appConfig.hasFavorites && (
+                          <Route
+                            pattern={FAVORITES_PATH}
+                            component={routes.Favorites}
+                            transform={routesTransforms[FAVORITES_PATH]}
+                          />
+                          )}
+                          <Route
+                            pattern={LOGIN_PATH}
+                            component={routes.Login}
+                          />
+                          <Route
+                            pattern={SEARCH_PATTERN}
+                            component={routes.Search}
+                            cache
+                            transform={routesTransforms[SEARCH_PATTERN]}
+                          />
+                          <Route
+                            pattern={SEARCH_FILTER_PATTERN}
+                            component={routes.Filter}
+                            transform={routesTransforms[SEARCH_FILTER_PATTERN]}
+                          />
+                          <Route
+                            pattern={SCANNER_PATH}
+                            component={routes.Scanner}
+                          />
+                          <Route
+                            pattern={BACK_IN_STOCK_PATTERN}
+                            component={routes.BackInStock}
+                          />
+                          <Route
+                            pattern={CHECKOUT_PATTERN}
+                            component={routes.Checkout}
+                          />
+                          <Route
+                            pattern={GUEST_CHECKOUT_PATTERN}
+                            component={routes.GuestCheckoutRegistration}
+                          />
+                          <Route
+                            pattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
+                            component={routes.GuestCheckoutPayment}
+                          />
+                          <Route
+                            pattern={CHECKOUT_CONFIRMATION_PATTERN}
+                            component={routes.CheckoutConfirmationPage}
+                          />
+                          <Route
+                            pattern={CHECKOUT_ADDRESS_BOOK_PATTERN}
+                            component={routes.CheckoutAddressBook}
+                          />
+                          <Route
+                            pattern={CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}
+                            component={routes.CheckoutAddressBookContact}
+                          />
+                          <Route
+                            pattern={REGISTER_PATH}
+                            component={routes.Register}
+                          />
+                          <Route
+                            pattern={FORGOT_PASSWORD_PATTERN}
+                            component={routes.ForgotPassword}
+                          />
+                          <Route
+                            pattern={ACCOUNT_PATH}
+                            component={routes.Account}
+                          />
+                          <Route
+                            pattern={ACCOUNT_PATTERN}
+                            component={routes.Account}
+                          />
+                          <Route
+                            pattern={PROFILE_ADDRESS_PATH}
+                            component={routes.AccountContact}
+                          />
+                          <Route
+                            pattern={ORDER_DETAILS_PATTERN}
+                            component={routes.OrderDetails}
+                          />
+                          <Route
+                            pattern={ORDER_DETAILS_PRIVATE_PATTERN}
+                            component={routes.OrderDetails}
+                          />
+                          <Route
+                            pattern={STORE_FINDER_PATTERN}
+                            component={routes.StoreFinder}
+                          />
+                          <Route
+                            pattern={STORE_DETAILS_PATTERN}
+                            component={routes.StoreDetails}
+                          />
+                          <Route.NotFound
+                            component={PageNotFound}
+                          />
+                          {React.Children.map(routePortals, Component => Component)}
+                        </Router>
+                        {/** Load the Roboto for Windows developers so that they see a nice font */}
+                        {isDev && isWindows && (
+                        <Helmet>
+                          <link href={devFontsUrl} rel="stylesheet" />
+                        </Helmet>
                         )}
-                        <Route
-                          pattern={LOGIN_PATH}
-                          component={routes.Login}
-                        />
-                        <Route
-                          pattern={SEARCH_PATTERN}
-                          component={routes.Search}
-                          cache
-                          transform={routesTransforms[SEARCH_PATTERN]}
-                        />
-                        <Route
-                          pattern={SEARCH_FILTER_PATTERN}
-                          component={routes.Filter}
-                          transform={routesTransforms[SEARCH_FILTER_PATTERN]}
-                        />
-                        <Route
-                          pattern={SCANNER_PATH}
-                          component={routes.Scanner}
-                        />
-                        <Route
-                          pattern={BACK_IN_STOCK_PATTERN}
-                          component={routes.BackInStock}
-                        />
-                        <Route
-                          pattern={CHECKOUT_PATTERN}
-                          component={routes.Checkout}
-                        />
-                        <Route
-                          pattern={GUEST_CHECKOUT_PATTERN}
-                          component={routes.GuestCheckoutRegistration}
-                        />
-                        <Route
-                          pattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
-                          component={routes.GuestCheckoutPayment}
-                        />
-                        <Route
-                          pattern={CHECKOUT_CONFIRMATION_PATTERN}
-                          component={routes.CheckoutConfirmationPage}
-                        />
-                        <Route
-                          pattern={CHECKOUT_ADDRESS_BOOK_PATTERN}
-                          component={routes.CheckoutAddressBook}
-                        />
-                        <Route
-                          pattern={CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}
-                          component={routes.CheckoutAddressBookContact}
-                        />
-                        <Route
-                          pattern={REGISTER_PATH}
-                          component={routes.Register}
-                        />
-                        <Route
-                          pattern={FORGOT_PASSWORD_PATTERN}
-                          component={routes.ForgotPassword}
-                        />
-                        <Route
-                          pattern={ACCOUNT_PATH}
-                          component={routes.Account}
-                        />
-                        <Route
-                          pattern={ACCOUNT_PATTERN}
-                          component={routes.Account}
-                        />
-                        <Route
-                          pattern={PROFILE_ADDRESS_PATH}
-                          component={routes.AccountContact}
-                        />
-                        <Route
-                          pattern={ORDER_DETAILS_PATTERN}
-                          component={routes.OrderDetails}
-                        />
-                        <Route
-                          pattern={ORDER_DETAILS_PRIVATE_PATTERN}
-                          component={routes.OrderDetails}
-                        />
-                        <Route
-                          pattern={STORE_FINDER_PATTERN}
-                          component={routes.StoreFinder}
-                        />
-                        <Route
-                          pattern={STORE_DETAILS_PATTERN}
-                          component={routes.StoreDetails}
-                        />
-                        <Route.NotFound
-                          component={PageNotFound}
-                        />
-                        {React.Children.map(routePortals, Component => Component)}
-                      </Router>
-                      {/** Load the Roboto for Windows developers so that they see a nice font */}
-                      {isDev && isWindows && (
-                      <Helmet>
-                        <link href={devFontsUrl} rel="stylesheet" />
-                      </Helmet>
-                      )}
-                    </Viewport>
-                  </DevelopmentTools>
-                </ToastProvider>
-              </LoadingProvider>
-            </ThemeResourcesProvider>
+                      </Viewport>
+                    </DevelopmentTools>
+                  </ToastProvider>
+                </LoadingProvider>
+              </ThemeResourcesProvider>
+            </ThemeProvider>
           </CacheProvider>
         </AppProvider>
       </NavigationHandler>
