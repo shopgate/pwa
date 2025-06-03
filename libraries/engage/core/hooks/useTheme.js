@@ -9,10 +9,10 @@ import { ThemeContext } from '@shopgate/pwa-common/context';
  *
  * ```js
  * import { useThemeComponents } from '@shopgate/engage/core/hooks';
- * const { components } = useThemeComponents();
+ * const { ProductCard } = useThemeComponents();
  * ```
  *
- * This hook will not expose components that can be imported directly from the `@shopgate/engage`
+ * This hook will NOT expose components that can be imported directly from the `@shopgate/engage`
  * package (see list below).
  *
  * ---

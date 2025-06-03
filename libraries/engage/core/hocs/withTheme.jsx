@@ -29,11 +29,11 @@ const getInjectedProps = (context, prop) => {
  * import { withThemeComponents } from '@shopgate/engage/core/hocs';
  *
  * function MyComponent({ themeComponents }) {
- *   const { ProductCard } = themeComponents.components;
+ *   const { ProductCard } = themeComponents;
  *   return <ProductCard />;
  * }
  * ````
- * This HOC will not expose components that can be imported directly from the `@shopgate/engage`
+ * This HOC will NOT expose components that can be imported directly from the `@shopgate/engage`
  * package (see list below).
  *
  * ---
