@@ -2,7 +2,7 @@ import createCache from '@emotion/cache';
 import { createMakeAndWithStyles, createTss } from 'tss-react';
 import { useTheme } from '@shopgate/engage/styles';
 
-export { GlobalStyles } from 'tss-react';
+export { GlobalStyles, keyframes } from 'tss-react';
 
 export const emotionCache = createCache({
   // All tss-react styles will be prefixed with `.tss-*` instead of `.css-*`

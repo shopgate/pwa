@@ -9,4 +9,5 @@ export {
   withStyles,
   tss,
   GlobalStyles,
+  keyframes,
 } from './tss';

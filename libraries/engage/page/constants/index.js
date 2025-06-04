@@ -11,6 +11,6 @@ export const RETURN_POLICY_PATH = `${PAGE_PATH}/return_policy`;
 export const SHIPPING_PATH = `${PAGE_PATH}/shipping`;
 export const TERMS_PATH = `${PAGE_PATH}/terms`;
 
-export const PAGE_PREVIEW_PATTERN = '/page_preview';
+export const PAGE_PREVIEW_PATTERN = '/shopgate-internal-page-preview';
 
 export const PAGE_PREVIEW_SLUG = 'page_preview';
