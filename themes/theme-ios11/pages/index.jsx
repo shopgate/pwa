@@ -68,7 +68,8 @@ import { CookieConsentModal } from '@shopgate/engage/tracking/components';
 import { DevelopmentTools } from '@shopgate/engage/development/components';
 import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
-import widgets from 'Extensions/widgets';
+import widgetsV1 from 'Extensions/widgets';
+import widgetsV2 from 'Extensions/widgetsV2';
 import PageNotFound from './404';
 import { themeComponents, legacyThemeAPI } from '../themeApi';
 import * as routes from './routes';
@@ -114,7 +115,10 @@ const Pages = ({ store }) => {
           <CacheProvider value={emotionCache}>
             <ThemeProvider theme={theme}>
               <ThemeResourcesProvider
-                widgets={widgets}
+                widgets={{
+                  v1: widgetsV1,
+                  v2: widgetsV2,
+                }}
                 components={themeComponents}
                 legacyThemeAPI={legacyThemeAPI}
               >

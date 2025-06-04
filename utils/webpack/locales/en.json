@@ -17,7 +17,8 @@
     "TYPE_SUBSCRIBERS": "subscribers",
     "TYPE_TRACKERS": "trackers",
     "TYPE_TRANSLATIONS": "translations",
-    "TYPE_WIDGETS": "widgets"
+    "TYPE_WIDGETS": "widgets",
+    "TYPE_WIDGETS_V2": "widgets 2.0"
   },
   "plugins/ShopgateThemeConfigValidatorPlugin": {
     "VALIDATING_CONFIG": "Validating theme configuration ...",

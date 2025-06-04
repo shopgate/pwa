@@ -1,20 +1,19 @@
-import React, { useCallback, useState } from 'react';
+import React, { Suspense, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, keyframes, colorToRgba } from '@shopgate/engage/styles';
 import { VisibilityOffIcon } from '@shopgate/engage/components';
 import { usePressHandler, useRoute } from '@shopgate/engage/core/hooks';
+import WidgetProvider from './WidgetProvider';
 import { useWidgetPreviewEvent, dispatchWidgetPreviewEvent } from './events';
 
 const useStyles = makeStyles()((theme, { highlightColor }) => ({
   root: {
-    minHeight: 200,
     '&:first-child': {
       borderTop: '1px solid #ccc',
     },
     borderBottom: '1px solid #ccc',
     position: 'relative',
-    padding: theme.spacing(1),
-    overflowY: 'auto',
+    overflowY: 'hidden',
   },
   widgetInfo: {
     position: 'absolute',
@@ -25,9 +24,6 @@ const useStyles = makeStyles()((theme, { highlightColor }) => ({
   },
   visibilityIcon: {
     color: 'red',
-  },
-  pre: {
-    fontSize: 10,
   },
   preview: {
     cursor: 'pointer',
@@ -51,11 +47,13 @@ const useStyles = makeStyles()((theme, { highlightColor }) => ({
 /**
  * The Widget component.
  * @param {Object} props The component props.
+ * @param {React.ComponentType} props.component The widget component to render.
  * @param {WidgetDefinition} props.definition The widget definition data.
  * @param {boolean} props.isPreview Whether the widget is in preview mode.
  * @returns {JSX.Element}
  */
 const Widget = ({
+  component: Component,
   definition,
   isPreview,
 }) => {
@@ -76,6 +74,10 @@ const Widget = ({
   }, [definition.code]);
 
   const handlers = usePressHandler(handleInteraction);
+
+  if (!Component) {
+    return null;
+  }
 
   return (
     <div
@@ -101,14 +103,17 @@ const Widget = ({
           )}
         </div>
       )}
-      <pre className={classes.pre}>
-        {JSON.stringify(definition, null, 2)}
-      </pre>
+      <WidgetProvider definition={definition}>
+        <Suspense>
+          <Component />
+        </Suspense>
+      </WidgetProvider>
     </div>
   );
 };
 
 Widget.propTypes = {
+  component: PropTypes.elementType.isRequired,
   definition: PropTypes.shape().isRequired,
   isPreview: PropTypes.bool.isRequired,
 };

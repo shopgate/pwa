@@ -25,11 +25,12 @@ export function useThemeComponents() {
 // eslint-disable-next-line valid-jsdoc
 /**
  * Hook to access the widgets provided by the ThemeResourceContext
+ * @param {"v1"|"v2"} [version='v1'] The API version of the widgets to return. Can be 'v1' or 'v2'.
  * @returns Mapping object that contains all available widgets. Key is the widget code, value is
  * the widget component.
  */
-export function useThemeWidgets() {
+export function useThemeWidgets(version = 'v1') {
   const { widgets } = useThemeResources();
-  return widgets;
+  return widgets[version] ? widgets[version] : widgets.v1;
 }
 

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { useRoute } from '@shopgate/engage/core/hooks';
+import { logger, isDev } from '@shopgate/engage/core/helpers';
+import { useRoute, useThemeWidgets } from '@shopgate/engage/core/hooks';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import { usePreviewIframeCommunication } from './hooks';
 import Widget from './Widget';
@@ -29,6 +30,8 @@ import Widget from './Widget';
  * @property {WidgetDefinitionLayout} layout Layout settings for the widget.
  */
 
+const PLACEHOLDER_COMPONENT = '@shopgate/widgetsInternal/Placeholder';
+
 /**
  * The Widgets component renders a list of widgets.
  * @param {Object} props The component props.
@@ -36,12 +39,23 @@ import Widget from './Widget';
  * @returns {JSX.Element}
  */
 const Widgets = ({
-  widgets = [],
+  widgets: widgetsProp = [],
 }) => {
   const { pattern } = useRoute();
   const isPreview = pattern === PAGE_PREVIEW_PATTERN;
+  const widgetComponents = useThemeWidgets('v2');
 
   usePreviewIframeCommunication(isPreview);
+
+  // Create sanitized widgets array that only includes widgets with valid components.
+  const widgets = useMemo(() => {
+    if (isPreview) {
+      // All widgets are allowed in preview mode.
+      return widgetsProp;
+    }
+
+    return widgetsProp.filter(widget => !!widgetComponents[widget.widgetConfigDefinitionCode]);
+  }, [isPreview, widgetComponents, widgetsProp]);
 
   if (!Array.isArray(widgets) || widgets.length === 0) {
     return null;
@@ -49,11 +63,21 @@ const Widgets = ({
 
   return (
     <div className="engage__widgets">
-      {widgets.map(widget => <Widget
-        key={widget.code}
-        definition={widget}
-        isPreview={isPreview}
-      />)}
+      {widgets.map((widget) => {
+        const component = widgetComponents[widget.widgetConfigDefinitionCode] ||
+          widgetComponents[PLACEHOLDER_COMPONENT];
+
+        if (isDev && !widgetComponents[widget.widgetConfigDefinitionCode]) {
+          logger.warn(`Widget component "${widget.widgetConfigDefinitionCode}" not found`);
+        }
+
+        return <Widget
+          key={widget.code}
+          definition={widget}
+          isPreview={isPreview}
+          component={component}
+        />;
+      })}
     </div>
   );
 };

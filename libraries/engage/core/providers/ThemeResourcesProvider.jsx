@@ -8,9 +8,15 @@ import { ThemeResourcesContext } from '../contexts';
  */
 
 /**
+ * @typedef {Object} Widgets
+ * @property {ComponentMap} v1 All available widgets for Widget API v1
+ * @property {ComponentMap} v2 All available widgets for Widget API v2
+ */
+
+/**
  * ThemeResourcesProvider component.
  * @param {Object} props The component props.
- * @param {ComponentMap} props.widgets Mapping object with all available widget components for the
+ * @param {Widgets} props.widgets Mapping object with all available widget components for the
  * theme. Key is the widget code, value is the widget component.
  * @param {ComponentMap} props.components Object with shared theme components. Can be used by
  * extensions the get unified visual presentation.

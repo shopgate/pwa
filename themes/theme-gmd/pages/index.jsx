@@ -73,7 +73,8 @@ import { ACCOUNT_PATH, ACCOUNT_PATTERN, PROFILE_ADDRESS_PATH } from '@shopgate/e
 import { ORDER_DETAILS_PATTERN, ORDER_DETAILS_PRIVATE_PATTERN } from '@shopgate/engage/orders/constants';
 import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
-import widgets from 'Extensions/widgets';
+import widgetsV1 from 'Extensions/widgets';
+import widgetsV2 from 'Extensions/widgetsV2';
 import PageNotFound from './404';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
@@ -130,7 +131,10 @@ const Pages = ({ store }) => {
           <CacheProvider value={emotionCache}>
             <ThemeProvider theme={theme}>
               <ThemeResourcesProvider
-                widgets={widgets}
+                widgets={{
+                  v1: widgetsV1,
+                  v2: widgetsV2,
+                }}
                 components={themeComponents}
                 legacyThemeAPI={legacyThemeAPI}
               >
