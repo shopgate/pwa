@@ -2,8 +2,8 @@ import React, { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { View } from '@shopgate/engage/components';
 import { DefaultBar } from 'Components/AppBar/presets';
-import { WidgetList } from '@shopgate/engage/widgets/components';
-import { makeGetPage, makeGetWidgetListFromPage } from '@shopgate/engage/page/selectors';
+import { Widgets } from '@shopgate/engage/page/components';
+import { makeGetPage, makeGetWidgetsFromPage } from '@shopgate/engage/page/selectors';
 import { PAGE_PREVIEW_SLUG } from '@shopgate/engage/page/constants';
 
 /**
@@ -15,17 +15,17 @@ const PagePreview = () => {
     slug: PAGE_PREVIEW_SLUG,
   }), []);
 
-  const getWidgetListFromPage = useMemo(() => makeGetWidgetListFromPage({
+  const getWidgetsFromPage = useMemo(() => makeGetWidgetsFromPage({
     slug: PAGE_PREVIEW_SLUG,
   }), []);
 
   const page = useSelector(getPage);
-  const widgetList = useSelector(getWidgetListFromPage);
+  const widgetList = useSelector(getWidgetsFromPage);
 
   return (
     <View noContentPortal>
       <DefaultBar title={page?.data?.name || ''} />
-      <WidgetList widgets={widgetList} />
+      <Widgets widgets={widgetList} />
     </View>
   );
 };

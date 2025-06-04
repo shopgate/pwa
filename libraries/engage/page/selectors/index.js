@@ -82,7 +82,7 @@ export const makeGetPage = ({
  * @param {string} [params.slug=null] The slug of the page (optional).
  * @returns {Function} A selector function that retrieves the widget list.
  */
-export const makeGetWidgetListFromPage = ({
+export const makeGetWidgetsFromPage = ({
   type = 'cms',
   slug = null,
   dropzone = 'cmsWidgetList',
