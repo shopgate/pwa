@@ -1,29 +1,24 @@
-import React, { createContext, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { WidgetContext } from './WidgetContext';
 
 /**
  * @typedef {import('./Widgets.jsx').WidgetDefinition} WidgetDefinition
  */
 
 /**
- * @typedef {Object} WidgetContextType
- * @property {WidgetDefinition['code']} code The unique widget code.
- * @property {WidgetDefinition['widgetConfig']} config The widget configuration.
- * @property {WidgetDefinition['layout']} layout The widget layout settings.
- * @property {WidgetDefinition['visibility']} visibility The widget visibility settings.
+ * @typedef {import('./WidgetContext.js').WidgetContextType} WidgetContextType
  */
 
-/** @type {React.Context<WidgetContextType>} */
-export const WidgetContext = createContext();
-
 /**
- * The WidgetProvider component provides the context for widgets.
+ * The WidgetProvider component provides the context for a single widget.
  * @param {Object} props The component props.
  * @param {WidgetDefinition} props.definition The widget definition data.
  * @param {React.ReactNode} props.children The child components to render.
  * @returns {JSX.Element}
  */
 const WidgetProvider = ({ children, definition }) => {
+  /** @type {WidgetContextType} */
   const value = useMemo(() => {
     const {
       widgetConfig, layout, visibility, code,

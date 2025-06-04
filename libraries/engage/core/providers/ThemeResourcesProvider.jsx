@@ -52,7 +52,7 @@ const ThemeResourcesProvider = ({
 ThemeResourcesProvider.propTypes = {
   children: PropTypes.node.isRequired,
   components: PropTypes.objectOf(PropTypes.elementType).isRequired,
-  widgets: PropTypes.objectOf(PropTypes.elementType).isRequired,
+  widgets: PropTypes.shape().isRequired,
   legacyThemeAPI: PropTypes.shape(),
 };
 

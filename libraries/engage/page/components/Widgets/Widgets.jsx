@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { logger, isDev } from '@shopgate/engage/core/helpers';
 import { useRoute, useThemeWidgets } from '@shopgate/engage/core/hooks';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
-import { usePreviewIframeCommunication } from './hooks';
+import { ConditionalWrapper } from '@shopgate/engage/components';
+import WidgetsPreviewProvider from './WidgetsPreviewProvider';
 import Widget from './Widget';
+import { usePreviewIframeCommunication } from './hooks';
 
 /**
  * @typedef {Object} WidgetDefinitionVisibility
@@ -60,25 +62,33 @@ const Widgets = ({
   if (!Array.isArray(widgets) || widgets.length === 0) {
     return null;
   }
-
   return (
-    <div className="engage__widgets">
-      {widgets.map((widget) => {
-        const component = widgetComponents[widget.widgetConfigDefinitionCode] ||
+    <ConditionalWrapper
+      condition={isPreview}
+      wrapper={children => (
+        <WidgetsPreviewProvider>
+          {children}
+        </WidgetsPreviewProvider>
+      )}
+    >
+      <div className="engage__widgets">
+        {widgets.map((widget) => {
+          const component = widgetComponents[widget.widgetConfigDefinitionCode] ||
           widgetComponents[PLACEHOLDER_COMPONENT];
 
-        if (isDev && !widgetComponents[widget.widgetConfigDefinitionCode]) {
-          logger.warn(`Widget component "${widget.widgetConfigDefinitionCode}" not found`);
-        }
+          if (isDev && !widgetComponents[widget.widgetConfigDefinitionCode]) {
+            logger.warn(`Widget component "${widget.widgetConfigDefinitionCode}" not found`);
+          }
 
-        return <Widget
-          key={widget.code}
-          definition={widget}
-          isPreview={isPreview}
-          component={component}
-        />;
-      })}
-    </div>
+          return <Widget
+            key={widget.code}
+            definition={widget}
+            isPreview={isPreview}
+            component={component}
+          />;
+        })}
+      </div>
+    </ConditionalWrapper>
   );
 };
 

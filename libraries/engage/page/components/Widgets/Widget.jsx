@@ -80,7 +80,7 @@ const Widget = ({
   }
 
   return (
-    <div
+    <section
       id={definition.code}
       className={cx(classes.root, css({
         marginTop: definition?.layout?.marginTop,
@@ -108,7 +108,7 @@ const Widget = ({
           <Component />
         </Suspense>
       </WidgetProvider>
-    </div>
+    </section>
   );
 };
 

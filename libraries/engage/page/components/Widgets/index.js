@@ -1,2 +1,2 @@
 export { default } from './Widgets';
-export { WidgetContext } from './WidgetProvider';
+export { WidgetContext } from './WidgetContext';

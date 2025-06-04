@@ -1,9 +1,12 @@
-import { useEffect, useCallback, useRef } from 'react';
+import {
+  useEffect, useCallback, useRef, useContext,
+} from 'react';
 import { logger } from '@shopgate/engage/core/helpers';
 import { useDispatch } from 'react-redux';
 import { receivePageConfigV2 } from '@shopgate/engage/page/action-creators';
 import { PAGE_PREVIEW_SLUG, PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import { ALLOWED_PAGE_PREVIEW_ORIGINS } from '@shopgate/engage/page/constants/pagePreview';
+import { WidgetsPreviewContext } from './WidgetsPreviewContext';
 import {
   dispatchWidgetPreviewEvent,
   useWidgetPreviewEvent,
@@ -166,3 +169,15 @@ export const usePreviewIframeCommunication = (isActive = false) => {
     });
   });
 };
+
+/**
+ * @typedef {import('./WidgetsPreviewContext.js').WidgetsPreviewContextType}
+ * WidgetsPreviewContextType
+ */
+
+/**
+ * The useWidgetsPreview hook provides access to the context that is wrapped around the Widgets
+ * component when it's rendered in preview mode.
+ * @returns {WidgetsPreviewContextType} The widget context.
+ */
+export const useWidgetsPreview = () => useContext(WidgetsPreviewContext);
