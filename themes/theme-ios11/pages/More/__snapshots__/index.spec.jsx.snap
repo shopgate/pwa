@@ -682,6 +682,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         <Link
                           disabled={false}
                           href="/login"
+                          tabIndex={0}
                         >
                           <Button
                             className="css-6f03lb theme__more-page__login-button"
@@ -703,6 +704,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         <Link
                           disabled={false}
                           href="/register"
+                          tabIndex={0}
                         >
                           <Button
                             className="css-6f03lb theme__more-page-register-button"

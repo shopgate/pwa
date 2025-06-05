@@ -11,4 +11,6 @@ css.global('.sr-only', {
   position: 'absolute',
   width: '1px',
   whiteSpace: 'nowrap',
+  top: 0,
+  left: 0,
 });

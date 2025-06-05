@@ -41,6 +41,7 @@ const ElementMultiSelect = (props) => {
       <ResponsiveContainer appAlways breakpoint="xs">
         <Select
           name={name}
+          required={element?.required}
           label={element.label}
           placeholder={element.placeholder}
           value={values}
@@ -52,6 +53,8 @@ const ElementMultiSelect = (props) => {
           showErrorText={false}
           disabled={element.disabled}
           multiple
+          aria-invalid={!!errorText}
+          aria-describedby={errorText.length > 0 ? `ariaError-${name}` : null}
         />
       </ResponsiveContainer>
       <ResponsiveContainer webOnly breakpoint=">xs">
@@ -69,6 +72,7 @@ const ElementMultiSelect = (props) => {
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );
