@@ -23,9 +23,11 @@ const useStyles = makeStyles()(() => ({
     zIndex: 1000,
     pointerEvents: 'none',
     opacity: 0,
-    transition: 'opacity 0.2s ease-in-out',
+    transform: 'scale(0.9)',
+    transition: 'opacity 0.1s ease-in-out, transform 0.1s ease-in-out',
     '&[data-visible="true"]': {
       opacity: 1,
+      transform: 'scale(1)',
     },
   },
   arrowTop: {
