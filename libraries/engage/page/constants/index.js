@@ -14,3 +14,8 @@ export const TERMS_PATH = `${PAGE_PATH}/terms`;
 export const PAGE_PREVIEW_PATTERN = '/shopgate-internal-page-preview';
 
 export const PAGE_PREVIEW_SLUG = 'page_preview';
+
+/**
+ * Checks if the app is currently in page preview mode.
+ */
+export const IS_PAGE_PREVIEW_ACTIVE = window.location.pathname.startsWith(PAGE_PREVIEW_PATTERN);

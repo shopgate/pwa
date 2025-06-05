@@ -1,5 +1,6 @@
 import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useRoute, useThemeWidgets } from '@shopgate/engage/core/hooks';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import { ConditionalWrapper } from '@shopgate/engage/components';
@@ -34,6 +35,14 @@ import { usePreviewIframeCommunication } from './hooks';
 
 const PLACEHOLDER_COMPONENT = '@shopgate/widgetsInternal/Placeholder';
 
+const useStyles = makeStyles()(({
+  preview: {
+    '& *': {
+      scrollbarWidth: 'thin',
+    },
+  },
+}));
+
 /**
  * The Widgets component renders a list of widgets.
  * @param {Object} props The component props.
@@ -43,6 +52,8 @@ const PLACEHOLDER_COMPONENT = '@shopgate/widgetsInternal/Placeholder';
 const Widgets = ({
   widgets: widgetsProp = [],
 }) => {
+  const { classes, cx } = useStyles();
+
   const { pattern } = useRoute();
   const widgetsRef = useRef(null);
   const isPreview = pattern === PAGE_PREVIEW_PATTERN;
@@ -74,7 +85,12 @@ const Widgets = ({
         </WidgetsPreviewProvider>
       )}
     >
-      <div className="engage__widgets" ref={widgetsRef}>
+      <div
+        className={cx('engage__widgets', {
+          [classes.preview]: isPreview,
+        })}
+        ref={widgetsRef}
+      >
         {widgets.map((widget) => {
           const component = widgetComponents[widget.widgetConfigDefinitionCode] ||
           widgetComponents[PLACEHOLDER_COMPONENT];
