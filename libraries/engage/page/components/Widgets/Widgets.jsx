@@ -25,9 +25,16 @@ import { usePreviewIframeCommunication } from './hooks';
  */
 
 /**
+ * @typedef {Object} WidgetDefinitionMeta
+ * @property {string} hiddenMessage Message displayed when the widget is hidden.
+ * @property {string} scheduledMessage Message displayed for scheduled widgets.
+ */
+
+/**
  * @typedef {Object} WidgetDefinition
  * @property {string} code Unique code for the widget.
  * @property {string} widgetConfigDefinitionCode Name of the widget.
+ * @property {WidgetDefinitionMeta} meta Meta information for the widget.
  * @property {Object} widgetConfig Individual configuration for the widget.
  * @property {WidgetDefinitionVisibility} visibility Visibility settings for the widget.
  * @property {WidgetDefinitionLayout} layout Layout settings for the widget.

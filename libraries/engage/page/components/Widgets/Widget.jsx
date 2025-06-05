@@ -6,6 +6,7 @@ import { usePressHandler } from '@shopgate/engage/core/hooks';
 import WidgetProvider from './WidgetProvider';
 import { dispatchWidgetPreviewEvent } from './events';
 import { useWidgetsPreview } from './hooks';
+import Tooltip from './Tooltip';
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -14,13 +15,14 @@ const useStyles = makeStyles()(theme => ({
   },
   widgetInfo: {
     position: 'absolute',
-    bottom: 0,
+    top: 0,
     left: 0,
     fontSize: 24,
     padding: theme.spacing(1),
   },
   visibilityIcon: {
-    color: 'red',
+    color: '#f44336',
+    cursor: 'pointer',
   },
 }));
 
@@ -73,7 +75,9 @@ const Widget = ({
       {isPreview && (
         <div className={classes.widgetInfo}>
           {definition?.visibility?.isHidden && (
-            <VisibilityOffIcon className={classes.visibilityIcon} />
+            <Tooltip text={definition.meta.hiddenMessage}>
+              <VisibilityOffIcon className={classes.visibilityIcon} />
+            </Tooltip>
           )}
         </div>
       )}

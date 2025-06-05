@@ -6,13 +6,15 @@ const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(2),
     minHeight: 200,
-
   },
   pre: {
-    background: '#26373F',
-    color: '#FFF302',
+    background: '#f7f9fc',
+    border: '1px solid #dbdde2',
+    borderRadius: 8,
+    color: '#000',
     fontSize: 10,
     overflowY: 'auto',
+    padding: theme.spacing(1),
   },
 }));
 
