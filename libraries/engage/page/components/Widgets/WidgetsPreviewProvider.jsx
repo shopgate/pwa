@@ -1,5 +1,6 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useWidgetPreviewEvent, dispatchWidgetPreviewEvent } from './events';
 import { WidgetsPreviewContext } from './WidgetsPreviewContext';
 
 /**
@@ -11,7 +12,24 @@ import { WidgetsPreviewContext } from './WidgetsPreviewContext';
  * @returns {JSX.Element}
  */
 const WidgetsPreviewProvider = ({ children }) => {
-  const value = useMemo(() => ({}), []);
+  const [activeId, setActiveId] = useState(null);
+
+  useWidgetPreviewEvent('set-active-widget-id', (e) => {
+    setActiveId(e.detail.widgetCode);
+  });
+
+  const handleSetActiveId = useCallback((id, highlight = false) => {
+    setActiveId(id);
+
+    if (highlight) {
+      dispatchWidgetPreviewEvent('highlight-widget', id);
+    }
+  }, [setActiveId]);
+
+  const value = useMemo(() => ({
+    activeId,
+    setActiveId: handleSetActiveId,
+  }), [activeId, handleSetActiveId]);
 
   return (
     <WidgetsPreviewContext.Provider value={value}>

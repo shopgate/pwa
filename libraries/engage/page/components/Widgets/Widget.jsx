@@ -1,17 +1,14 @@
-import React, { Suspense, useCallback, useState } from 'react';
+import React, { Suspense, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, keyframes, colorToRgba } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { VisibilityOffIcon } from '@shopgate/engage/components';
-import { usePressHandler, useRoute } from '@shopgate/engage/core/hooks';
+import { usePressHandler } from '@shopgate/engage/core/hooks';
 import WidgetProvider from './WidgetProvider';
-import { useWidgetPreviewEvent, dispatchWidgetPreviewEvent } from './events';
+import { dispatchWidgetPreviewEvent } from './events';
+import { useWidgetsPreview } from './hooks';
 
-const useStyles = makeStyles()((theme, { highlightColor }) => ({
+const useStyles = makeStyles()(theme => ({
   root: {
-    '&:first-child': {
-      borderTop: '1px solid #ccc',
-    },
-    borderBottom: '1px solid #ccc',
     position: 'relative',
     overflowY: 'hidden',
   },
@@ -24,19 +21,6 @@ const useStyles = makeStyles()((theme, { highlightColor }) => ({
   },
   visibilityIcon: {
     color: 'red',
-  },
-  preview: {
-    cursor: 'pointer',
-  },
-  previewFlash: {
-    animationName: keyframes({
-      '0%': { backgroundColor: 'transparent' },
-      '50%': { backgroundColor: colorToRgba(highlightColor || '#50A9AD', 0.5) },
-      '100%': { backgroundColor: 'transparent' },
-    }),
-    animationDuration: '0.5s',
-    animationTimingFunction: 'ease-in-out',
-    animationFillMode: 'forwards',
   },
 }));
 
@@ -57,21 +41,14 @@ const Widget = ({
   definition,
   isPreview,
 }) => {
-  const { query: { highlightColor } } = useRoute();
-  const { classes, css, cx } = useStyles({ highlightColor });
+  const { classes, cx } = useStyles();
 
-  const [isFlashing, setIsFlashing] = useState(false);
-
-  useWidgetPreviewEvent('highlight-widget', (e) => {
-    if (e.detail.widgetCode === definition.code) {
-      setIsFlashing(true);
-    }
-  });
+  const { setActiveId } = useWidgetsPreview();
 
   const handleInteraction = useCallback(() => {
-    setIsFlashing(true);
+    setActiveId(definition.code, true);
     dispatchWidgetPreviewEvent('widget-clicked', definition.code);
-  }, [definition.code]);
+  }, [definition.code, setActiveId]);
 
   const handlers = usePressHandler(handleInteraction);
 
@@ -82,17 +59,14 @@ const Widget = ({
   return (
     <section
       id={definition.code}
-      className={cx(classes.root, css({
+      className={cx(classes.root)}
+      style={{
         marginTop: definition?.layout?.marginTop,
         marginBottom: definition?.layout?.marginBottom,
         marginLeft: definition?.layout?.marginLeft,
         marginRight: definition?.layout?.marginRight,
-      }), {
-        [classes.previewFlash]: isFlashing,
-        [classes.preview]: isPreview,
-      })}
+      }}
       {... (isPreview && {
-        onAnimationEnd: () => setIsFlashing(false),
         ...handlers,
       })}
     >

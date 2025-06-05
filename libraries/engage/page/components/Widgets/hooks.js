@@ -1,11 +1,13 @@
 import {
-  useEffect, useCallback, useRef, useContext,
+  useEffect, useCallback, useRef, useContext, useMemo,
 } from 'react';
 import { logger } from '@shopgate/engage/core/helpers';
 import { useDispatch } from 'react-redux';
+import { useRoute } from '@shopgate/engage/core/hooks';
 import { receivePageConfigV2 } from '@shopgate/engage/page/action-creators';
-import { PAGE_PREVIEW_SLUG, PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
-import { ALLOWED_PAGE_PREVIEW_ORIGINS } from '@shopgate/engage/page/constants/pagePreview';
+import { PAGE_PREVIEW_SLUG } from '@shopgate/engage/page/constants';
+import { ALLOWED_PAGE_PREVIEW_ORIGINS, CONSIDER_CONTAINER_MARGINS_DEFAULT } from './constants';
+import { getScrollContainer } from './helpers';
 import { WidgetsPreviewContext } from './WidgetsPreviewContext';
 import {
   dispatchWidgetPreviewEvent,
@@ -126,6 +128,17 @@ function useIframeMessenger(onMessage, parentOrigins) {
 export const usePreviewIframeCommunication = (isActive = false) => {
   const dispatch = useDispatch();
 
+  const { query: { considerContainerMargins } } = useRoute();
+
+  // Detect if container margins should be considered at scroll to widget.
+  const considerVerticalMargins = useMemo(() => {
+    if (!considerContainerMargins) {
+      return CONSIDER_CONTAINER_MARGINS_DEFAULT;
+    }
+
+    return considerContainerMargins === 'true';
+  }, [considerContainerMargins]);
+
   const { sendToParent } = useIframeMessenger((data) => {
     if (data.type === 'receivePageConfig') {
       // Page preview config received from the parent window.
@@ -136,22 +149,68 @@ export const usePreviewIframeCommunication = (isActive = false) => {
       }));
     } else if (data.type === 'scrollToWidget' && data.payload?.widgetCode) {
       // Parent window requested to scroll to a specific widget.
-      const container = document.querySelector(`.route__${PAGE_PREVIEW_PATTERN.replace(/^\/+/, '')}`);
+      const scrollContainer = getScrollContainer();
       const target = document.getElementById(data.payload.widgetCode);
 
-      if (container && target) {
-        const containerTop = container.getBoundingClientRect().top;
-        const targetTop = target.getBoundingClientRect().top;
-        const scrollOffset = targetTop - containerTop + container.scrollTop;
+      if (scrollContainer && target) {
+        let marginTop = 0;
 
-        container.scrollTo({
-          top: scrollOffset,
+        if (considerVerticalMargins) {
+          const styles = window.getComputedStyle(target);
+          marginTop = parseFloat(styles.marginTop);
+        }
+
+        const containerTop = scrollContainer.getBoundingClientRect().top;
+        const targetTop = target.getBoundingClientRect().top;
+        const scrollOffset = targetTop - containerTop + scrollContainer.scrollTop - marginTop;
+        const maxScrollTop = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+        const actualScrollTop = Math.min(scrollOffset, maxScrollTop);
+
+        // Register the target element as the active widget.
+        dispatchWidgetPreviewEvent('set-active-widget-id', data.payload.widgetCode);
+
+        /**
+         * Callback to highlight the widget after scrolling.
+         */
+        const highlightWidget = () => {
+          dispatchWidgetPreviewEvent('highlight-widget', data.payload.widgetCode);
+        };
+
+        // Add listener to onScrollEnd if available, otherwise use scroll event.
+        if ('onscrollend' in scrollContainer) {
+          /**
+           * Callback for the scrollend event.
+           */
+          const onEnded = () => {
+            scrollContainer.removeEventListener('scrollend', onEnded);
+            highlightWidget();
+          };
+          scrollContainer.addEventListener('scrollend', onEnded, { once: true });
+          scrollContainer.scrollTo({
+            top: actualScrollTop,
+            behavior: 'smooth',
+          });
+          return;
+        }
+
+        // Fallback: listen for scroll events until scrollTop ≈ actualScrollTop
+
+        /**
+         * Callback for the scroll event.
+         */
+        const onScroll = () => {
+          // Allow a 1 px leeway for subpixel rendering
+          if (Math.abs(scrollContainer.scrollTop - actualScrollTop) < 1) {
+            scrollContainer.removeEventListener('scroll', onScroll);
+            highlightWidget();
+          }
+        };
+
+        scrollContainer.addEventListener('scroll', onScroll);
+        scrollContainer.scrollTo({
+          top: actualScrollTop,
           behavior: 'smooth',
         });
-
-        setTimeout(() => {
-          dispatchWidgetPreviewEvent('highlight-widget', data.payload.widgetCode);
-        }, 500);
       }
     }
   }, ALLOWED_PAGE_PREVIEW_ORIGINS);

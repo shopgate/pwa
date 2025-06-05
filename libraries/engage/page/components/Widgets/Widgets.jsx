@@ -1,11 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { logger, isDev } from '@shopgate/engage/core/helpers';
 import { useRoute, useThemeWidgets } from '@shopgate/engage/core/hooks';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import { ConditionalWrapper } from '@shopgate/engage/components';
 import WidgetsPreviewProvider from './WidgetsPreviewProvider';
 import Widget from './Widget';
+import Overlay from './Overlay';
 import { usePreviewIframeCommunication } from './hooks';
 
 /**
@@ -44,6 +44,7 @@ const Widgets = ({
   widgets: widgetsProp = [],
 }) => {
   const { pattern } = useRoute();
+  const widgetsRef = useRef(null);
   const isPreview = pattern === PAGE_PREVIEW_PATTERN;
   const widgetComponents = useThemeWidgets('v2');
 
@@ -56,6 +57,7 @@ const Widgets = ({
       return widgetsProp;
     }
 
+    // Remove widgets that do not have a valid component.
     return widgetsProp.filter(widget => !!widgetComponents[widget.widgetConfigDefinitionCode]);
   }, [isPreview, widgetComponents, widgetsProp]);
 
@@ -68,17 +70,14 @@ const Widgets = ({
       wrapper={children => (
         <WidgetsPreviewProvider>
           {children}
+          <Overlay containerRef={widgetsRef} />
         </WidgetsPreviewProvider>
       )}
     >
-      <div className="engage__widgets">
+      <div className="engage__widgets" ref={widgetsRef}>
         {widgets.map((widget) => {
           const component = widgetComponents[widget.widgetConfigDefinitionCode] ||
           widgetComponents[PLACEHOLDER_COMPONENT];
-
-          if (isDev && !widgetComponents[widget.widgetConfigDefinitionCode]) {
-            logger.warn(`Widget component "${widget.widgetConfigDefinitionCode}" not found`);
-          }
 
           return <Widget
             key={widget.code}

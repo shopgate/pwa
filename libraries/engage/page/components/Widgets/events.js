@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 /**
- * @typedef {"highlight-widget"|"widget-clicked"} WidgetPreviewEventName
+ * @typedef {"highlight-widget"|"widget-clicked"|"set-active-widget-id"} WidgetPreviewEventName
  */
 
 /**

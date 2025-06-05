@@ -8,3 +8,6 @@ export const ALLOWED_PAGE_PREVIEW_ORIGINS = [
   'next.us.admin.shopgate.com',
   'http://localhost:1337',
 ];
+
+// Whether to consider vertical margins when calculating the overlay position.
+export const CONSIDER_CONTAINER_MARGINS_DEFAULT = false;
