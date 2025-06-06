@@ -153,7 +153,7 @@ export const usePreviewIframeCommunication = (isActive = false) => {
     } else if (data.type === 'scrollToWidget' && data.payload?.widgetCode) {
       // Parent window requested to scroll to a specific widget.
       const scrollContainer = getScrollContainer();
-      const target = document.getElementById(data.payload.widgetCode);
+      const target = scrollContainer.querySelector(`#widget-code-${data.payload.widgetCode}`);
 
       if (scrollContainer && target) {
         let marginTop = 0;

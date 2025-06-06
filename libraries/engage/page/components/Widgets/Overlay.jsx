@@ -118,7 +118,7 @@ const Overlay = ({
       return;
     }
 
-    const target = containerRef.current.querySelector(`#${CSS.escape(activeWidget)}`);
+    const target = containerRef.current.querySelector(`#widget-code-${activeWidget}`);
 
     if (!target) {
       setMainOverlayStyle(null);

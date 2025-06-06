@@ -70,7 +70,7 @@ const Widget = ({
 
   return (
     <section
-      id={definition.code}
+      id={`widget-code-${definition.code}`}
       className={cx(classes.root, {
         [classes.preview]: isPreview,
       })}
