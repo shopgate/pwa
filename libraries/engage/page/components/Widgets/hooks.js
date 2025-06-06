@@ -6,7 +6,10 @@ import { useDispatch } from 'react-redux';
 import { useRoute } from '@shopgate/engage/core/hooks';
 import { receivePageConfigV2 } from '@shopgate/engage/page/action-creators';
 import { PAGE_PREVIEW_SLUG } from '@shopgate/engage/page/constants';
-import { ALLOWED_PAGE_PREVIEW_ORIGINS, CONSIDER_CONTAINER_MARGINS_DEFAULT } from './constants';
+import {
+  ALLOWED_PAGE_PREVIEW_ORIGINS,
+  CONSIDER_CONTAINER_MARGINS_ON_SCROLL_DEFAULT,
+} from './constants';
 import { getScrollContainer } from './helpers';
 import { WidgetsPreviewContext } from './WidgetsPreviewContext';
 import {
@@ -128,16 +131,16 @@ function useIframeMessenger(onMessage, parentOrigins) {
 export const usePreviewIframeCommunication = (isActive = false) => {
   const dispatch = useDispatch();
 
-  const { query: { considerContainerMargins } } = useRoute();
+  const { query: { considerContainerMarginsOnScroll } } = useRoute();
 
   // Detect if container margins should be considered at scroll to widget.
   const considerVerticalMargins = useMemo(() => {
-    if (!considerContainerMargins) {
-      return CONSIDER_CONTAINER_MARGINS_DEFAULT;
+    if (!considerContainerMarginsOnScroll) {
+      return CONSIDER_CONTAINER_MARGINS_ON_SCROLL_DEFAULT;
     }
 
-    return considerContainerMargins === 'true';
-  }, [considerContainerMargins]);
+    return considerContainerMarginsOnScroll === 'true';
+  }, [considerContainerMarginsOnScroll]);
 
   const { sendToParent } = useIframeMessenger((data) => {
     if (data.type === 'receivePageConfig') {

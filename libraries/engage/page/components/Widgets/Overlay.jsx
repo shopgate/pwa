@@ -1,29 +1,44 @@
 import React, {
-  useState, useRef, useEffect, useCallback, useMemo,
+  useState, useRef, useEffect, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, keyframes, colorToRgba } from '@shopgate/engage/styles';
 import { useRoute } from '@shopgate/engage/core/hooks';
-import { CONSIDER_CONTAINER_MARGINS_DEFAULT } from './constants';
 import { getScrollContainer } from './helpers';
 import { useWidgetPreviewEvent } from './events';
 import { useWidgetsPreview } from './hooks';
 
 /**
- * @typedef {Object} PositionStyle
- * @property {number} top
- * @property {number} left
- * @property {number} width
- * @property {number} height
+ * @typedef {Object} OverlayStyle
+ * @property {number} top Style for the top position of the overlay.
+ * @property {number} left Style for the left position of the overlay.
+ * @property {number} width Style for the width of the overlay.
+ * @property {number} height Style for the height of the overlay.
  */
 
-const useStyles = makeStyles()((_, { highlightColor, borderColor, isFlashing }) => ({
+/**
+ * @typedef {Object} MarginOverlayStyles
+ * @property {OverlayStyle} top Style for the top margin overlay.
+ * @property {OverlayStyle} left Style for the left margin overlay.
+ * @property {OverlayStyle} bottom Style for the bottom margin overlay.
+ * @property {OverlayStyle} right Style for the right margin overlay.
+ */
+
+const useStyles = makeStyles({ name: 'WidgetPreviewOverlay' })((_, {
+  highlightColor,
+  overlayBorderColor,
+  marginOverlayColor,
+  isFlashing,
+}) => ({
   root: {
+
+  },
+  mainOverlay: {
     position: 'absolute',
     pointerEvents: 'none',
     zIndex: 10,
     boxShadow: '0 0 8px 2px rgba(34, 42, 69, 0.07)',
-    outline: `1px solid ${borderColor || '#50A9AD'}`,
+    outline: `1px solid ${overlayBorderColor || '#50A9AD'}`,
     ...(isFlashing && {
       animationName: keyframes({
         '0%': { backgroundColor: 'transparent' },
@@ -35,10 +50,17 @@ const useStyles = makeStyles()((_, { highlightColor, borderColor, isFlashing }) 
       animationFillMode: 'forwards',
     }),
   },
+  marginOverlay: {
+    position: 'absolute',
+    backgroundColor: colorToRgba(marginOverlayColor || '#50A9AD', 0.1),
+    pointerEvents: 'none',
+    zIndex: 9,
+  },
 }));
 
 /**
  * The Overlay component is used to highlight the active widget when preview mode is active.
+ * It also visualizes the margins of the widget and the borders to its sibling widgets.
  * @param {Object} props The component props.
  * @param {React.Ref<HTMLDivElement>} props.containerRef The reference to the container element that
  * holds the widgets.
@@ -50,28 +72,32 @@ const Overlay = ({
   const {
     query: {
       highlightColor,
-      borderColor,
-      considerContainerMargins,
+      overlayBorderColor,
+      marginOverlayColor,
     },
   } = useRoute();
 
-  // Detect if container margins should be considered at overlay calculation.
-  const considerVerticalMargins = useMemo(() => {
-    if (!considerContainerMargins) {
-      return CONSIDER_CONTAINER_MARGINS_DEFAULT;
-    }
-
-    return considerContainerMargins === 'true';
-  }, [considerContainerMargins]);
-
   const { activeId } = useWidgetsPreview();
 
-  const [style, setStyle] = useState/** @type {PositionStyle|null} */(null);
+  /**
+   * State to hold the style for the main overlay that highlights the active widget.
+   * @type {[OverlayStyle|null, React.Dispatch<React.SetStateAction<OverlayStyle|null>>]}
+   */
+  const [mainOverlayStyle, setMainOverlayStyle] = useState(null);
+
+  /**
+   * State to hold the styles for the margin overlays that visualize the widget margins.
+   * @type {[MarginOverlayStyles|null,
+   * React.Dispatch<React.SetStateAction<MarginOverlayStyles|null>>]}
+   */
+  const [marginOverlays, setMarginOverlays] = useState(null);
+
   const [isFlashing, setIsFlashing] = useState(false);
 
   const { classes } = useStyles({
     highlightColor,
-    borderColor,
+    overlayBorderColor,
+    marginOverlayColor,
     isFlashing,
   });
 
@@ -85,7 +111,7 @@ const Overlay = ({
   const mutationRef = useRef(null);
 
   /**
-   * Callback to update the overlay position and size based on the active widget.
+   * Callback to update the overlay position, margin overlays and size based on the active widget.
    */
   const updateOverlay = useCallback(() => {
     if (!containerRef.current || !activeId) {
@@ -95,41 +121,70 @@ const Overlay = ({
     const target = containerRef.current.querySelector(`#${CSS.escape(activeId)}`);
 
     if (!target) {
-      setStyle(null);
+      setMainOverlayStyle(null);
       return;
     }
 
     const scrollContainer = getScrollContainer();
 
+    // Get the computed styles of the active widget to calculate margins
     const styles = window.getComputedStyle(target);
     const marginLeft = parseFloat(styles.marginLeft);
     const marginRight = parseFloat(styles.marginRight);
+    const marginTop = parseFloat(styles.marginTop);
+    const marginBottom = parseFloat(styles.marginBottom);
 
-    let marginTop = 0;
-    let marginBottom = 0;
-
-    if (considerVerticalMargins) {
-      marginTop = parseFloat(styles.marginTop);
-      marginBottom = parseFloat(styles.marginBottom);
-    }
-    // Bounding rects
+    // Get bounding rectangles for the target widget and the scroll container
     const elementRect = target.getBoundingClientRect();
     const containerRect = scrollContainer.getBoundingClientRect();
 
-    // Calculate position relative to the container's content area
-    const top = elementRect.top - containerRect.top + scrollContainer.scrollTop - marginTop;
-    const left = elementRect.left - containerRect.left + scrollContainer.scrollLeft - marginLeft;
+    const baseTop = elementRect.top - containerRect.top + scrollContainer.scrollTop;
+    const baseLeft = elementRect.left - containerRect.left + scrollContainer.scrollLeft;
 
+    const top = baseTop;
+    const left = baseLeft - marginLeft;
     const width = target.offsetWidth + marginLeft + marginRight;
-    const height = target.offsetHeight + marginTop + marginBottom;
+    const height = target.offsetHeight;
 
-    setStyle({
-      top: `${top + 1}px`,
-      left: `${left}px`,
-      width: `${width}px`,
-      height: `${height}px`,
+    // Keep a backdoor to re-enable overlay outline inside the widget margins
+    const mainOverlayBordersOnMarginEdges = true;
+    const mainTop = baseTop - (mainOverlayBordersOnMarginEdges ? marginTop : 0);
+    const mainHeight = height + (mainOverlayBordersOnMarginEdges ? marginTop + marginBottom : 0);
+
+    setMainOverlayStyle({
+      top: mainTop + 1,
+      left,
+      width,
+      height: mainHeight - 2,
     });
-  }, [activeId, containerRef, considerVerticalMargins]);
+
+    setMarginOverlays({
+      top: {
+        top: top - marginTop,
+        left,
+        width,
+        height: marginTop,
+      },
+      bottom: {
+        top: top + height,
+        left,
+        width,
+        height: marginBottom,
+      },
+      left: {
+        top,
+        left,
+        width: marginLeft,
+        height,
+      },
+      right: {
+        top,
+        left: left + width - marginRight,
+        width: marginRight,
+        height,
+      },
+    });
+  }, [activeId, containerRef]);
 
   // Effect to setup observers that watch for changes in the container and its children.
   // Needed to update the overlay style when the layout changes.
@@ -214,14 +269,23 @@ const Overlay = ({
     setIsFlashing(false);
   }, []);
 
-  if (!style) return null;
+  if (!mainOverlayStyle) return null;
 
   return (
-    <div
-      className={classes.root}
-      style={style}
-      onAnimationEnd={handleAnimationEnd}
-    />
+    <div className={classes.root}>
+      <div
+        className={classes.mainOverlay}
+        style={mainOverlayStyle}
+        onAnimationEnd={handleAnimationEnd}
+      />
+      {marginOverlays && Object.entries(marginOverlays).map(([key, overlayStyle]) => (
+        <div
+          key={key}
+          className={classes.marginOverlay}
+          style={overlayStyle}
+        />
+      ))}
+    </div>
   );
 };
 

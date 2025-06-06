@@ -8,21 +8,26 @@ import { dispatchWidgetPreviewEvent } from './events';
 import { useWidgetsPreview } from './hooks';
 import Tooltip from './Tooltip';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()((theme, {
+  marginTop,
+  marginLeft,
+}) => ({
   root: {
     position: 'relative',
-    overflowY: 'hidden',
   },
   widgetInfo: {
     position: 'absolute',
-    top: 0,
-    left: 0,
+    top: -marginTop,
+    left: -marginLeft,
     fontSize: 24,
     padding: theme.spacing(1),
   },
+  preview: {
+    cursor: 'pointer',
+  },
   visibilityIcon: {
     color: '#f44336',
-    cursor: 'pointer',
+    cursor: 'help',
   },
 }));
 
@@ -43,7 +48,12 @@ const Widget = ({
   definition,
   isPreview,
 }) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles({
+    marginTop: definition?.layout?.marginTop ?? 0,
+    marginBottom: definition?.layout?.marginBottom ?? 0,
+    marginLeft: definition?.layout?.marginLeft ?? 0,
+    marginRight: definition?.layout?.marginRight ?? 0,
+  });
 
   const { setActiveId } = useWidgetsPreview();
 
@@ -61,7 +71,9 @@ const Widget = ({
   return (
     <section
       id={definition.code}
-      className={cx(classes.root)}
+      className={cx(classes.root, {
+        [classes.preview]: isPreview,
+      })}
       style={{
         marginTop: definition?.layout?.marginTop,
         marginBottom: definition?.layout?.marginBottom,
