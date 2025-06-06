@@ -1,20 +1,32 @@
 import { useContext } from 'react';
 import ThemeResourcesContext from '../contexts/ThemeResourcesContext';
 
-// eslint-disable-next-line valid-jsdoc
+/**
+ * @typedef  {import('../contexts/ThemeResourcesContext').ThemeResourcesContextType
+ * ThemeResourcesContextType}
+ */
+
+/**
+ * @typedef {ThemeResourcesContextType['components']} ThemeComponentsType
+ */
+
+/**
+ * @typedef {ThemeResourcesContextType['widgets']} ThemeWidgetsType
+ */
+
 /**
  * Hook to access to the ThemeResourceContext. The context provides access to different groups
  * of React components provided by the active theme.
- * @returns Value of the ThemeResourceContext
+ * @returns {ThemeResourcesContextType} Value of the ThemeResourceContext
  */
 export function useThemeResources() {
   return useContext(ThemeResourcesContext);
 }
 
-// eslint-disable-next-line valid-jsdoc
 /**
  * Hook to access the components provided by the ThemeResourceContext
- * @returns Mapping object that contains multiple components provided by the theme.
+ * @returns {ThemeComponentsType} Mapping object that contains multiple components provided by the
+ * theme.
  * Key is the component name, value is the component
  */
 export function useThemeComponents() {
@@ -22,11 +34,10 @@ export function useThemeComponents() {
   return components;
 }
 
-// eslint-disable-next-line valid-jsdoc
 /**
  * Hook to access the widgets provided by the ThemeResourceContext
- * @returns Mapping object that contains all available widgets. Key is the widget code, value is
- * the widget component.
+ * @returns {ThemeWidgetsType} Mapping object that contains all available widgets.
+ * Key is the widget code, value is the widget component.
  */
 export function useThemeWidgets() {
   const { widgets } = useThemeResources();

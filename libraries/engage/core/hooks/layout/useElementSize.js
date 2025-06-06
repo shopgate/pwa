@@ -1,23 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
 import throttle from 'lodash/throttle';
 
-/**
- * @typedef {Object} ElementSize
- * @property {number} height - The element's height in pixels.
- * @property {number} [width] - The element's width in pixels (optional).
- */
-
-/**
- * @typedef {Object} UseElementSizeOptions
- * @property {number} [throttleMs=100] - Throttle delay in milliseconds.
- * @property {boolean} [includeWidth=false] - Whether to measure the element's width.
- */
+/** @typedef {import('./useElementSize').ElementSize} ElementSize */
+/** @typedef {import('./useElementSize').UseElementSizeOptions} UseElementSizeOptions */
+/** @typedef {import('react').RefObject<HTMLElement>} HTMLElementRef */
 
 /**
  * Tracks the height (and optionally width) of a DOM element using ResizeObserver,
  * with a fallback to window resize and MutationObserver in older browsers.
  *
- * @param {React.RefObject<HTMLElement>} ref - A ref to the element being measured.
+ * @param {HTMLElementRef} ref - A ref to the element being measured.
  * @param {UseElementSizeOptions} [options={}] - Optional settings.
  * @returns {ElementSize} The current height (and optionally width) of the element.
  */

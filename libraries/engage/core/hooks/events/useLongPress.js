@@ -1,15 +1,8 @@
+// @ts-check
 import { useRef, useCallback } from 'react';
 
-/**
- * @typedef {Object} LongPressHandlers
- * @property {Function} onMouseDown - Attach to `onMouseDown` event.
- * @property {Function} onTouchStart - Attach to `onTouchStart` event.
- * @property {Function} onMouseUp - Attach to `onMouseUp` event.
- * @property {Function} onMouseLeave - Attach to `onMouseLeave` event.
- * @property {Function} onTouchEnd - Attach to `onTouchEnd` event.
- * @property {Function} onContextMenu - Attach to `onContextMenu` event to prevent the native
- * context menu.
- */
+/** @typedef {import('./useLongPress').LongPressHandlers} LongPressHandlers */
+/** @typedef {import('./useLongPress').UseLongPressOptions} UseLongPressOptions */
 
 /**
  * Prevents the default context menu from appearing on long press.
@@ -19,16 +12,12 @@ const preventContextMenu = (e) => {
   e.preventDefault();
 };
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * Custom hook to handle long press interactions.
  *
- * @param {Function} callback - Function to call on long press.
- * @param {Object} [options={}] - Configuration and lifecycle callbacks.
- * @param {number} [options.threshold=1000] - Duration in milliseconds to trigger long press.
- * @param {Function} [options.onStart] - Called when the press starts.
- * @param {Function} [options.onFinish] - Called when the long press completes.
- * @param {Function} [options.onCancel] - Called when the press is cancelled before the threshold.
- *
+ * @param {(e: Event) => void} callback - Function to call on long press.
+ * @param {UseLongPressOptions} [options={}] - Configuration and lifecycle callbacks.
  * @returns {LongPressHandlers} An object containing event handlers for mouse and touch events.
  */
 export default function useLongPress(
