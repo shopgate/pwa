@@ -77,7 +77,7 @@ const Overlay = ({
     },
   } = useRoute();
 
-  const { activeId } = useWidgetsPreview();
+  const { activeWidget } = useWidgetsPreview();
 
   /**
    * State to hold the style for the main overlay that highlights the active widget.
@@ -114,11 +114,11 @@ const Overlay = ({
    * Callback to update the overlay position, margin overlays and size based on the active widget.
    */
   const updateOverlay = useCallback(() => {
-    if (!containerRef.current || !activeId) {
+    if (!containerRef.current || !activeWidget) {
       return;
     }
 
-    const target = containerRef.current.querySelector(`#${CSS.escape(activeId)}`);
+    const target = containerRef.current.querySelector(`#${CSS.escape(activeWidget)}`);
 
     if (!target) {
       setMainOverlayStyle(null);
@@ -184,7 +184,7 @@ const Overlay = ({
         height,
       },
     });
-  }, [activeId, containerRef]);
+  }, [activeWidget, containerRef]);
 
   // Effect to setup observers that watch for changes in the container and its children.
   // Needed to update the overlay style when the layout changes.

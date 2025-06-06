@@ -55,12 +55,12 @@ const Widget = ({
     marginRight: definition?.layout?.marginRight ?? 0,
   });
 
-  const { setActiveId } = useWidgetsPreview();
+  const { setActiveWidget, activeWidget } = useWidgetsPreview();
 
   const handleInteraction = useCallback(() => {
-    setActiveId(definition.code, true);
+    setActiveWidget(definition.code, activeWidget === definition.code);
     dispatchWidgetPreviewEvent('widget-clicked', definition.code);
-  }, [definition.code, setActiveId]);
+  }, [activeWidget, definition.code, setActiveWidget]);
 
   const handlers = usePressHandler(handleInteraction);
 

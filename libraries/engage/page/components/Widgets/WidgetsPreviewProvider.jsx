@@ -12,24 +12,24 @@ import { WidgetsPreviewContext } from './WidgetsPreviewContext';
  * @returns {JSX.Element}
  */
 const WidgetsPreviewProvider = ({ children }) => {
-  const [activeId, setActiveId] = useState(null);
+  const [activeWidget, setActiveWidget] = useState(null);
 
   useWidgetPreviewEvent('set-active-widget-id', (e) => {
-    setActiveId(e.detail.widgetCode);
+    setActiveWidget(e.detail.widgetCode);
   });
 
-  const handleSetActiveId = useCallback((id, highlight = false) => {
-    setActiveId(id);
+  const handleSetActiveWidget = useCallback((code, highlight = false) => {
+    setActiveWidget(code);
 
     if (highlight) {
-      dispatchWidgetPreviewEvent('highlight-widget', id);
+      dispatchWidgetPreviewEvent('highlight-widget', code);
     }
-  }, [setActiveId]);
+  }, []);
 
   const value = useMemo(() => ({
-    activeId,
-    setActiveId: handleSetActiveId,
-  }), [activeId, handleSetActiveId]);
+    activeWidget,
+    setActiveWidget: handleSetActiveWidget,
+  }), [activeWidget, handleSetActiveWidget]);
 
   return (
     <WidgetsPreviewContext.Provider value={value}>
