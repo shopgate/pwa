@@ -5,7 +5,7 @@ const { variables } = themeConfig;
 
 const content = css({
   position: 'relative',
-  padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
+  padding: variables.gap.big,
 }).toString();
 
 const price = css({

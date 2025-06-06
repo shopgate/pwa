@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { camelCase, upperCase, isEqual } from 'lodash';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { parsePhoneNumber } from 'react-phone-number-input';
 import PhoneInputCountrySelect from 'react-phone-number-input/mobile';
 import PhoneInput from 'react-phone-number-input/input-mobile';
@@ -95,6 +95,7 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
     label,
     handleChange,
     disabled = false,
+    required = false,
     config: {
       supportedCountries = [],
       countrySortOrder = [],
@@ -216,7 +217,8 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
     <div
       className={classnames(
         'formBuilderField',
-        'engage__form-phone-number'
+        'engage__form-phone-number',
+        { validationError: !!errorText }
       )}
     >
       <div className={phoneClasses}>
@@ -233,6 +235,9 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           disabled={disabled}
+          required={required}
+          aria-invalid={!!errorText}
+          aria-describedby={errorText.length > 0 ? `ariaError-${name}` : null}
           {...hasCountrySelect ? {
             countryOptionsOrder,
             addInternationalOption: false,
@@ -248,6 +253,7 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );
@@ -258,6 +264,7 @@ UnwrappedElementPhoneNumber.propTypes = {
     default: PropTypes.string,
     label: PropTypes.string,
     disabled: PropTypes.bool,
+    required: PropTypes.bool,
     handleChange: PropTypes.func,
     config: PropTypes.shape({
       supportedCountries: PropTypes.arrayOf(PropTypes.string),

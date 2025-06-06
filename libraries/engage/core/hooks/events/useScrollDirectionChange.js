@@ -1,35 +1,18 @@
+// @ts-check
 import { useEffect, useRef, useCallback } from 'react';
 import { viewScroll$ } from '@shopgate/engage/core/streams';
 
-/**
- * @typedef {Object} ViewScrollEvent
- * @property {Event} event The original scroll event object
- * @property {number} scrollTop Current vertical scroll position
- * @property {number} previousScrollTop Previous scrollTop value
- * @property {boolean} scrollDown True if scrolling down
- * @property {boolean} scrollUp True if scrolling up
- * @property {'up' | 'down' | null} direction Scroll direction
- */
-
-/**
- * @callback ScrollCallback
- * @param {ViewScrollEvent} event
- * @returns {void}
- */
+/** @typedef {import('./useScrollDirectionChange').ViewScrollEvent} ViewScrollEvent */
+/** @typedef {import('./useScrollDirectionChange').ScrollCallback} ScrollCallback */
+// eslint-disable-next-line max-len
+/** @typedef {import('./useScrollDirectionChange').UseScrollDirectionChangeParams} UseScrollDirectionChangeParams */
 
 /**
  * A scroll hook that detects scroll direction changes (up/down) and
  * triggers the appropriate callbacks. Commonly used to show/hide
  * UI elements based on scroll behavior.
  *
- * @param {Object} params The hook parameters
- * @param {boolean} params.enabled Whether the hook is active
- * @param {number} [params.offset=100] ScrollTop threshold for down scroll triggers. When set,
- * onScrollDown will first be triggered when the scroll position is greater than this value.
- * @param {boolean} [params.onlyFireOnDirectionChange=true]
- *   If true, callbacks fire only once per direction change
- * @param {ScrollCallback} [params.onScrollUp] Triggered on scroll up
- * @param {ScrollCallback} [params.onScrollDown] Triggered on scroll down past offset
+ * @param {UseScrollDirectionChangeParams} params The hook parameters
  */
 export default function useScrollDirectionChange({
   enabled,

@@ -7,9 +7,6 @@ const styles = {
     fontSize: 14,
     color: 'var(--color-text-medium-emphasis)',
     fontWeight: 400,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
   }),
 };
 

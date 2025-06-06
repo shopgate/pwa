@@ -46,15 +46,13 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
     role="alert"
   >
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-v3axxa"
       key="info-something"
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_info: something
       </span>
@@ -111,15 +109,13 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     role="alert"
   >
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-v3axxa"
       key="info-This is some information"
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_info: This is some information
       </span>
@@ -131,15 +127,13 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-4nzmrl"
       key="error-This is an error that happened here."
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_error: This is an error that happened here.
       </span>
@@ -151,15 +145,13 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-y8hi5f"
       key="warning-This is just a warning. Nothing to freak out about."
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_warning: This is just a warning. Nothing to freak out about.
       </span>
@@ -171,15 +163,13 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-v3axxa"
       key="info-Normal pre-translated message."
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_info: Normal pre-translated message.
       </span>
@@ -191,15 +181,13 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-v3axxa"
       key="info-Normal pre-translated message two."
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_info: Normal pre-translated message two.
       </span>
@@ -248,15 +236,13 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     role="alert"
   >
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-v3axxa"
       key="info-some.translation.string"
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_info: some,translation,,string
       </span>
@@ -270,15 +256,13 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       </span>
     </div>
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-v3axxa"
       key="info-Message with messageParams"
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_info: Message with messageParams
       </span>
@@ -316,15 +300,13 @@ exports[`<MessageBar /> should render with custom classNames 1`] = `
     role="alert"
   >
     <div
+      aria-atomic="true"
+      aria-live="assertive"
       className="css-v3axxa cls-message"
       key="info-This is some information"
     >
       <span
-        className={
-          Object {
-            "data-css-5e1epi": "",
-          }
-        }
+        className="sr-only"
       >
         cart.message_type_info: This is some information
       </span>

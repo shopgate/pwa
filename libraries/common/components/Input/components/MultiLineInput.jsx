@@ -85,7 +85,9 @@ class MultiLineInput extends SimpleInput {
    * @returns {JSX}
    */
   render() {
-    const { className, password, attributes } = this.props;
+    const {
+      className, password, attributes, disabled, required,
+    } = this.props;
     const type = password ? 'password' : this.props.type;
     const { value } = this.state;
 
@@ -100,7 +102,8 @@ class MultiLineInput extends SimpleInput {
         onChange={this.handleChange}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}
-        disabled={this.props.disabled}
+        required={required}
+        disabled={disabled}
         {...attributes}
       />
     );

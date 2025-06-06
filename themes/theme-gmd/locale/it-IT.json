@@ -539,7 +539,8 @@
       "reset_instructions": "Riceverai un'email per reimpostare la tua password a {email}",
       "back_to_login": "Torna al login",
       "customer_not_found": "Non abbiamo trovato un account associato a questo indirizzo email."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {un errore} other {{amount} errori}} in questo modulo."
   },
   "navigation": {
     "login_register": "Accedi / Registrati",

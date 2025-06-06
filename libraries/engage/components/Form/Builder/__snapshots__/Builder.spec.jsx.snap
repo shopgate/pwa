@@ -142,6 +142,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -176,6 +177,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     name="foo_foo"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
@@ -197,6 +199,12 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_foo"
                     inputComponent="input"
@@ -208,11 +216,18 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value="default"
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_foo"
@@ -225,13 +240,19 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value="default"
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -248,12 +269,15 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value="default"
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -269,6 +293,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value="default"
@@ -281,6 +306,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -308,6 +334,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     "visible": true,
                   }
                 }
+                elementName="foo_foo"
                 errorText=""
                 formName="foo"
               >
@@ -498,6 +525,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -532,6 +560,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     name="foo_foo"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-1fekhao label"
                       htmlFor="foo_foo"
                     >
@@ -553,6 +582,12 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_foo"
                     inputComponent="input"
@@ -564,11 +599,18 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value=""
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_foo"
@@ -581,13 +623,19 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value=""
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -604,12 +652,15 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value=""
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -625,6 +676,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value=""
@@ -637,6 +689,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -663,6 +716,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     "visible": true,
                   }
                 }
+                elementName="foo_foo"
                 errorText=""
                 formName="foo"
               >
@@ -816,6 +870,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -850,6 +905,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     name="foo_bar"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-1fekhao label"
                       htmlFor="foo_bar"
                     >
@@ -871,6 +927,12 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_bar"
                     inputComponent="input"
@@ -882,11 +944,18 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value=""
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_bar"
@@ -899,13 +968,19 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value=""
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -922,12 +997,15 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value=""
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -943,6 +1021,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value=""
@@ -955,6 +1034,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -994,6 +1074,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     "type": "text",
                   }
                 }
+                elementName="foo_bar"
                 errorText=""
                 formName="foo"
               >
@@ -1208,6 +1289,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -1242,6 +1324,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     name="foo_foo"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
@@ -1263,6 +1346,12 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_foo"
                     inputComponent="input"
@@ -1274,11 +1363,18 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value="abc"
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_foo"
@@ -1291,13 +1387,19 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value="abc"
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -1314,12 +1416,15 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value="abc"
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -1335,6 +1440,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value="abc"
@@ -1347,6 +1453,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -1373,6 +1480,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     "visible": true,
                   }
                 }
+                elementName="foo_foo"
                 errorText=""
                 formName="foo"
               >
@@ -1843,6 +1951,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -1877,6 +1986,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     name="foo_firstName"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-1fekhao label"
                       htmlFor="foo_firstName"
                     >
@@ -1898,6 +2008,12 @@ exports[`<Builder /> should render two text fields 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_firstName"
                     inputComponent="input"
@@ -1909,11 +2025,18 @@ exports[`<Builder /> should render two text fields 1`] = `
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value=""
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_firstName"
@@ -1926,13 +2049,19 @@ exports[`<Builder /> should render two text fields 1`] = `
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value=""
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -1949,12 +2078,15 @@ exports[`<Builder /> should render two text fields 1`] = `
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value=""
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -1970,6 +2102,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value=""
@@ -1982,6 +2115,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -2008,6 +2142,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     "visible": true,
                   }
                 }
+                elementName="foo_firstName"
                 errorText=""
                 formName="foo"
               >
@@ -2122,6 +2257,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -2156,6 +2292,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     name="foo_lastName"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-1fekhao label"
                       htmlFor="foo_lastName"
                     >
@@ -2177,6 +2314,12 @@ exports[`<Builder /> should render two text fields 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_lastName"
                     inputComponent="input"
@@ -2188,11 +2331,18 @@ exports[`<Builder /> should render two text fields 1`] = `
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value=""
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_lastName"
@@ -2205,13 +2355,19 @@ exports[`<Builder /> should render two text fields 1`] = `
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value=""
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -2228,12 +2384,15 @@ exports[`<Builder /> should render two text fields 1`] = `
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value=""
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -2249,6 +2408,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value=""
@@ -2261,6 +2421,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -2287,6 +2448,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     "visible": true,
                   }
                 }
+                elementName="foo_lastName"
                 errorText=""
                 formName="foo"
               >
@@ -2484,6 +2646,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -2518,6 +2681,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     name="foo_foo"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
@@ -2539,6 +2703,12 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_foo"
                     inputComponent="input"
@@ -2550,11 +2720,18 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value="default"
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_foo"
@@ -2567,13 +2744,19 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value="default"
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -2590,12 +2773,15 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value="default"
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -2611,6 +2797,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value="default"
@@ -2623,6 +2810,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -2650,6 +2838,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     "visible": true,
                   }
                 }
+                elementName="foo_foo"
                 errorText=""
                 formName="foo"
               >
@@ -2820,6 +3009,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -2854,6 +3044,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     name="foo_bar"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_bar"
                     >
@@ -2875,6 +3066,12 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_bar"
                     inputComponent="input"
@@ -2886,11 +3083,18 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value="default"
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_bar"
@@ -2903,13 +3107,19 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value="default"
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -2926,12 +3136,15 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value="default"
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -2947,6 +3160,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value="default"
@@ -2959,6 +3173,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -3003,6 +3218,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     "type": "text",
                   }
                 }
+                elementName="foo_bar"
                 errorText=""
                 formName="foo"
               >
@@ -3236,6 +3452,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -3270,6 +3487,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     name="foo_foo"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
@@ -3291,6 +3509,12 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_foo"
                     inputComponent="input"
@@ -3302,11 +3526,18 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value="abc"
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_foo"
@@ -3319,13 +3550,19 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value="abc"
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -3342,12 +3579,15 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value="abc"
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -3363,6 +3603,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value="abc"
@@ -3375,6 +3616,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -3402,6 +3644,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     "visible": true,
                   }
                 }
+                elementName="foo_foo"
                 errorText=""
                 formName="foo"
               >
@@ -3572,6 +3815,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                 onSanitize={[Function]}
                 onValidate={[Function]}
                 password={false}
+                required={false}
                 setRef={[Function]}
                 showErrorText={false}
                 translateErrorText={false}
@@ -3606,6 +3850,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     name="foo_bar"
                   >
                     <label
+                      aria-hidden={true}
                       className="css-xrreyh css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_bar"
                     >
@@ -3627,6 +3872,12 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     </label>
                   </Label>
                   <FormElement
+                    attributes={
+                      Object {
+                        "aria-describedby": null,
+                        "aria-invalid": false,
+                      }
+                    }
                     disabled={false}
                     id="foo_bar"
                     inputComponent="input"
@@ -3638,11 +3889,18 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     onSanitize={[Function]}
                     onValidate={[Function]}
                     password={false}
+                    required={false}
                     setRef={[Function]}
                     type="text"
                     value="cheat"
                   >
                     <_default
+                      attributes={
+                        Object {
+                          "aria-describedby": null,
+                          "aria-invalid": false,
+                        }
+                      }
                       className="css-keangt"
                       disabled={false}
                       id="foo_bar"
@@ -3655,13 +3913,19 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       onSanitize={[Function]}
                       onValidate={[Function]}
                       password={false}
+                      required={false}
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
                       value="cheat"
                     >
                       <SimpleInput
-                        attributes={null}
+                        attributes={
+                          Object {
+                            "aria-describedby": null,
+                            "aria-invalid": false,
+                          }
+                        }
                         autoComplete={false}
                         autoCorrect={false}
                         className="css-keangt"
@@ -3678,12 +3942,15 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         onSanitize={[Function]}
                         onValidate={[Function]}
                         password={false}
+                        required={false}
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
                         value="cheat"
                       >
                         <input
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -3699,6 +3966,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                           onInput={null}
                           onKeyPress={[Function]}
                           pattern={null}
+                          required={false}
                           step={null}
                           type="text"
                           value="cheat"
@@ -3711,6 +3979,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     isFocused={false}
                   >
                     <div
+                      aria-hidden={true}
                       className="css-ycal4l underline"
                     >
                       <div
@@ -3755,6 +4024,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     "type": "text",
                   }
                 }
+                elementName="foo_bar"
                 errorText=""
                 formName="foo"
               >

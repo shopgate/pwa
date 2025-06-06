@@ -6,29 +6,29 @@ export { RouteContext };
 
 /**
  * @deprecated
- * Use `ThemeComponentsContext` provided via:
+ * Use `ThemeResourcesContext` instead.
  *
- * This context will not expose components that can be imported directly from the `@shopgate/engage`
- * package (see list below).
+ * This context will NOT expose components that can be imported directly from the `@shopgate/engage`
+ * package (see list below). All other components can be accessed through the `components` property.
  *
  * ```js
- * import { ThemeComponentsProvider } from '@shopgate/engage/core/providers';
+ * import { ThemeResourcesContext } from '@shopgate/engage/core/contexts';
  * ```
  *
- * To access the equivalent value using the `useThemeComponents()` hook:
+ * To access the `components` property value use the `useThemeComponents()` hook:
  *
  * ```js
  * import { useThemeComponents } from '@shopgate/engage/core/hooks';
- * const { components } = useThemeComponents();
+ * const { ProductCard } = useThemeComponents();
  * ```
  *
- * Or inject the full context value using the HOC:
+ * Or inject the components context value using the HOC:
  *
  * ```js
  * import { withThemeComponents } from '@shopgate/engage/core/hocs';
  *
  * function MyComponent({ themeComponents }) {
- *   const { ProductCard } = themeComponents.components;
+ *   const { ProductCard } = themeComponents;
  *   return <ProductCard />;
  * }
  *
@@ -88,12 +88,12 @@ export const ThemeContext = React.createContext({
  * @deprecated
  * Use `useThemeComponents()` or `withThemeComponents()` instead.
  *
- * Hook and HOC will not expose components that can be imported directly from the `@shopgate/engage`
+ * Hook and HOC will NOT expose components that can be imported directly from the `@shopgate/engage`
  * package (see list below).
  *
  * ```js
  * import { useThemeComponents } from '@shopgate/engage/core/hooks';
- * const { components } = useThemeComponents();
+ * const { ProductCard } = useThemeComponents();
  * ```
  *
  * Or inject the full context value using the HOC:
@@ -102,7 +102,7 @@ export const ThemeContext = React.createContext({
  * import { withThemeComponents } from '@shopgate/engage/core/hocs';
  *
  * function MyComponent({ themeComponents }) {
- *   const { ProductCard } = themeComponents.components;
+ *   const { ProductCard } = themeComponents;
  *   return <ProductCard />;
  * }
  *

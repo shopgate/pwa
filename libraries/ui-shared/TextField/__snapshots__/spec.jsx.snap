@@ -16,6 +16,7 @@ exports[`<TextField /> should focus the input 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -50,6 +51,7 @@ exports[`<TextField /> should focus the input 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -64,6 +66,12 @@ exports[`<TextField /> should focus the input 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -75,11 +83,18 @@ exports[`<TextField /> should focus the input 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -92,13 +107,19 @@ exports[`<TextField /> should focus the input 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -115,12 +136,15 @@ exports[`<TextField /> should focus the input 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -136,6 +160,7 @@ exports[`<TextField /> should focus the input 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value=""
@@ -148,6 +173,7 @@ exports[`<TextField /> should focus the input 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -162,13 +188,19 @@ exports[`<TextField /> should focus the input 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -200,6 +232,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -234,6 +267,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -248,6 +282,12 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -259,11 +299,18 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -276,13 +323,19 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -299,12 +352,15 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -320,6 +376,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value="foobar"
@@ -332,6 +389,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -346,13 +404,19 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -384,6 +448,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -418,6 +483,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -432,6 +498,12 @@ exports[`<TextField /> should render a simple text field 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -443,11 +515,18 @@ exports[`<TextField /> should render a simple text field 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -460,13 +539,19 @@ exports[`<TextField /> should render a simple text field 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -483,12 +568,15 @@ exports[`<TextField /> should render a simple text field 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -504,6 +592,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value=""
@@ -516,6 +605,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -530,13 +620,19 @@ exports[`<TextField /> should render a simple text field 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -568,6 +664,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={true}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -602,6 +699,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -616,6 +714,12 @@ exports[`<TextField /> should render the text field as password 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -627,11 +731,18 @@ exports[`<TextField /> should render the text field as password 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={true}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -644,13 +755,19 @@ exports[`<TextField /> should render the text field as password 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={true}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -667,12 +784,15 @@ exports[`<TextField /> should render the text field as password 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={true}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -688,6 +808,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="password"
             value=""
@@ -700,6 +821,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -714,13 +836,19 @@ exports[`<TextField /> should render the text field as password 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -752,6 +880,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -786,6 +915,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-16msjt6 css-1fekhao label floating"
         htmlFor="test-input"
       >
@@ -800,6 +930,12 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -811,11 +947,18 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value="FooBar"
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -828,13 +971,19 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value="FooBar"
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -851,12 +1000,15 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value="FooBar"
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -872,6 +1024,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value="FooBar"
@@ -884,6 +1037,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -898,13 +1052,19 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -936,6 +1096,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -970,6 +1131,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -984,6 +1146,12 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": "ariaError-test-input",
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -995,11 +1163,18 @@ exports[`<TextField /> should replace the error text with custom validation erro
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": "ariaError-test-input",
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -1012,13 +1187,19 @@ exports[`<TextField /> should replace the error text with custom validation erro
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": "ariaError-test-input",
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1035,12 +1216,15 @@ exports[`<TextField /> should replace the error text with custom validation erro
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby="ariaError-test-input"
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -1056,6 +1240,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value=""
@@ -1068,6 +1253,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -1081,13 +1267,19 @@ exports[`<TextField /> should replace the error text with custom validation erro
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError="Custom validation error"
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1126,6 +1318,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -1160,6 +1353,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -1174,6 +1368,12 @@ exports[`<TextField /> should sanitize the input 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -1185,11 +1385,18 @@ exports[`<TextField /> should sanitize the input 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -1202,13 +1409,19 @@ exports[`<TextField /> should sanitize the input 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1225,12 +1438,15 @@ exports[`<TextField /> should sanitize the input 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -1246,6 +1462,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value="FOOBAR"
@@ -1258,6 +1475,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -1272,13 +1490,19 @@ exports[`<TextField /> should sanitize the input 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1310,6 +1534,7 @@ exports[`<TextField /> should show the error message 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -1344,6 +1569,7 @@ exports[`<TextField /> should show the error message 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -1358,6 +1584,12 @@ exports[`<TextField /> should show the error message 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": "ariaError-test-input",
+          "aria-invalid": true,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -1369,11 +1601,18 @@ exports[`<TextField /> should show the error message 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": "ariaError-test-input",
+            "aria-invalid": true,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -1386,13 +1625,19 @@ exports[`<TextField /> should show the error message 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": "ariaError-test-input",
+              "aria-invalid": true,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1409,12 +1654,15 @@ exports[`<TextField /> should show the error message 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby="ariaError-test-input"
+            aria-invalid={true}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -1430,6 +1678,7 @@ exports[`<TextField /> should show the error message 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value=""
@@ -1442,6 +1691,7 @@ exports[`<TextField /> should show the error message 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -1455,13 +1705,19 @@ exports[`<TextField /> should show the error message 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText="This is an error here"
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1500,6 +1756,7 @@ exports[`<TextField /> should show the hint text 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -1541,6 +1798,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -1555,6 +1813,12 @@ exports[`<TextField /> should show the hint text 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -1566,11 +1830,18 @@ exports[`<TextField /> should show the hint text 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -1583,13 +1854,19 @@ exports[`<TextField /> should show the hint text 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1606,12 +1883,15 @@ exports[`<TextField /> should show the hint text 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -1627,6 +1907,7 @@ exports[`<TextField /> should show the hint text 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value=""
@@ -1639,6 +1920,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -1653,13 +1935,19 @@ exports[`<TextField /> should show the hint text 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1691,6 +1979,7 @@ exports[`<TextField /> should show the label 1`] = `
   onSanitize={[Function]}
   onValidate={[Function]}
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -1725,6 +2014,7 @@ exports[`<TextField /> should show the label 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -1746,6 +2036,12 @@ exports[`<TextField /> should show the label 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -1757,11 +2053,18 @@ exports[`<TextField /> should show the label 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -1774,13 +2077,19 @@ exports[`<TextField /> should show the label 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1797,12 +2106,15 @@ exports[`<TextField /> should show the label 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -1818,6 +2130,7 @@ exports[`<TextField /> should show the label 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value=""
@@ -1830,6 +2143,7 @@ exports[`<TextField /> should show the label 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -1844,13 +2158,19 @@ exports[`<TextField /> should show the label 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1896,6 +2216,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     }
   }
   password={false}
+  required={false}
   setRef={[Function]}
   showErrorText={true}
   translateErrorText={true}
@@ -1930,6 +2251,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       name="test-input"
     >
       <label
+        aria-hidden={true}
         className="css-xrreyh css-1fekhao label"
         htmlFor="test-input"
       >
@@ -1944,6 +2266,12 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       </label>
     </Label>
     <FormElement
+      attributes={
+        Object {
+          "aria-describedby": null,
+          "aria-invalid": false,
+        }
+      }
       disabled={false}
       id="test-input"
       inputComponent="input"
@@ -1955,11 +2283,18 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       onSanitize={[Function]}
       onValidate={[Function]}
       password={false}
+      required={false}
       setRef={[Function]}
       type="text"
       value=""
     >
       <_default
+        attributes={
+          Object {
+            "aria-describedby": null,
+            "aria-invalid": false,
+          }
+        }
         className="css-keangt"
         disabled={false}
         id="test-input"
@@ -1972,13 +2307,19 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         onSanitize={[Function]}
         onValidate={[Function]}
         password={false}
+        required={false}
         setRef={[Function]}
         type="text"
         validateOnBlur={true}
         value=""
       >
         <SimpleInput
-          attributes={null}
+          attributes={
+            Object {
+              "aria-describedby": null,
+              "aria-invalid": false,
+            }
+          }
           autoComplete={false}
           autoCorrect={false}
           className="css-keangt"
@@ -1995,12 +2336,15 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           onSanitize={[Function]}
           onValidate={[Function]}
           password={false}
+          required={false}
           setRef={[Function]}
           type="text"
           validateOnBlur={true}
           value=""
         >
           <input
+            aria-describedby={null}
+            aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
             className="css-keangt simpleInput common__simple-input"
@@ -2016,6 +2360,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
             onInput={null}
             onKeyPress={[Function]}
             pattern={null}
+            required={false}
             step={null}
             type="text"
             value=""
@@ -2028,6 +2373,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       isFocused={false}
     >
       <div
+        aria-hidden={true}
         className="css-ycal4l underline"
       >
         <div
@@ -2042,13 +2388,19 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       </div>
     </Underline>
     <ErrorText
+      ariaHidden={false}
       className=""
+      elementName="test-input"
       errorText=""
       translate={true}
       validationError={null}
     >
       <div
+        aria-atomic="true"
+        aria-hidden={false}
+        aria-live="assertive"
         className="css-of8bei errorText"
+        id="ariaError-test-input"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
