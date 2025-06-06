@@ -32,7 +32,7 @@ const useStyles = makeStyles()((theme, {
 }));
 
 /**
- * @typedef {import('./Widgets.jsx').WidgetDefinition} WidgetDefinition
+ * @typedef {import('./types').WidgetDefinition} WidgetDefinition
  */
 
 /**

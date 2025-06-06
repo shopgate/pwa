@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { WidgetContext } from '@shopgate/engage/page/components/Widgets';
 
 /**
- * @typedef {import('../components/Widgets/WidgetContext').WidgetContextType} WidgetContextType
+ * @typedef {import('../components/Widgets/WidgetContext').WidgetContextType WidgetContextType}
  */
 
 /**

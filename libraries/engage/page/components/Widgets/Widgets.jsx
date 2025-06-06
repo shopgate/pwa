@@ -10,34 +10,7 @@ import Overlay from './Overlay';
 import { usePreviewIframeCommunication } from './hooks';
 
 /**
- * @typedef {Object} WidgetDefinitionVisibility
- * @property {boolean} isHidden Whether the widget is hidden.
- * @property {string} scheduleStartDate Start date for scheduled widgets.
- * @property {string} scheduleEndDate End date for scheduled widgets.
- */
-
-/**
- * @typedef {Object} WidgetDefinitionLayout
- * @property {number} marginTop Top margin for the widget.
- * @property {number} marginBottom Bottom margin for the widget.
- * @property {number} marginLeft Left margin for the widget.
- * @property {number} marginRight Right margin for the widget.
- */
-
-/**
- * @typedef {Object} WidgetDefinitionMeta
- * @property {string} hiddenMessage Message displayed when the widget is hidden.
- * @property {string} scheduledMessage Message displayed for scheduled widgets.
- */
-
-/**
- * @typedef {Object} WidgetDefinition
- * @property {string} code Unique code for the widget.
- * @property {string} widgetConfigDefinitionCode Name of the widget.
- * @property {WidgetDefinitionMeta} meta Meta information for the widget.
- * @property {Object} widgetConfig Individual configuration for the widget.
- * @property {WidgetDefinitionVisibility} visibility Visibility settings for the widget.
- * @property {WidgetDefinitionLayout} layout Layout settings for the widget.
+ * @typedef {import('./types').WidgetDefinition} WidgetDefinition
  */
 
 const PLACEHOLDER_COMPONENT = '@shopgate/widgetsInternal/Placeholder';

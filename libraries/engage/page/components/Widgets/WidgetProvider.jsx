@@ -2,13 +2,8 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { WidgetContext } from './WidgetContext';
 
-/**
- * @typedef {import('./Widgets.jsx').WidgetDefinition} WidgetDefinition
- */
-
-/**
- * @typedef {import('./WidgetContext.js').WidgetContextType} WidgetContextType
- */
+/**  @typedef {import('./WidgetContext').WidgetContextType} WidgetContextType */
+/**  @typedef {import('./WidgetContext').WidgetDefinition} WidgetDefinition */
 
 /**
  * The WidgetProvider component provides the context for a single widget.
