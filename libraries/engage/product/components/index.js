@@ -6,6 +6,7 @@ export { default as MapPriceHint } from './MapPriceHint';
 export * from './Media';
 export { default as MediaSlider } from './MediaSlider';
 export { default as Options } from './Options';
+export { SelectOption, TextOption } from './Options';
 export { default as OrderQuantityHint } from './OrderQuantityHint';
 export { default as PriceDifference } from './PriceDifference';
 export * from './PriceInfo';
