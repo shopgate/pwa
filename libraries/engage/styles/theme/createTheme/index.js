@@ -1,6 +1,8 @@
 import createBreakpoints from './createBreakpoints';
 import createSpacing from './createSpacing';
 import transitions from './transitions';
+import shadows from './shadows';
+import zIndex from './zIndex';
 
 // eslint-disable-next-line valid-jsdoc
 /**
@@ -15,5 +17,7 @@ export const createTheme = () => {
     breakpoints,
     spacing,
     transitions,
+    shadows,
+    zIndex,
   };
 };
