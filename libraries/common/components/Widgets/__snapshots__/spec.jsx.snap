@@ -6,8 +6,10 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
   legacyThemeAPI={null}
   widgets={
     Object {
-      "@shopgate/commerce-widgets/image": [Function],
-      "@shopgate/commerce-widgets/widget-grid": [Function],
+      "v1": Object {
+        "@shopgate/commerce-widgets/image": [Function],
+        "@shopgate/commerce-widgets/widget-grid": [Function],
+      },
     }
   }
 >
@@ -81,8 +83,10 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
   legacyThemeAPI={null}
   widgets={
     Object {
-      "@shopgate/commerce-widgets/image": [Function],
-      "@shopgate/commerce-widgets/widget-grid": [Function],
+      "v1": Object {
+        "@shopgate/commerce-widgets/image": [Function],
+        "@shopgate/commerce-widgets/widget-grid": [Function],
+      },
     }
   }
 >
@@ -247,8 +251,10 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
   legacyThemeAPI={null}
   widgets={
     Object {
-      "@shopgate/commerce-widgets/image": [Function],
-      "@shopgate/commerce-widgets/widget-grid": [Function],
+      "v1": Object {
+        "@shopgate/commerce-widgets/image": [Function],
+        "@shopgate/commerce-widgets/widget-grid": [Function],
+      },
     }
   }
 >
