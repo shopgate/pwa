@@ -1,5 +1,5 @@
 export { default as ThemeProvider } from './providers/ThemeProvider';
-export { createTheme } from './createTheme';
+export { createTheme, Theme, Breakpoint } from './createTheme';
 export {
   useActiveBreakpoint,
   useMediaQuery,
