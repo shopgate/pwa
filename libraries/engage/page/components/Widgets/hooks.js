@@ -59,39 +59,6 @@ function useIframeMessenger(onMessage, parentOrigins) {
   // Keep track of the last allowed origin we heard from
   const lastOriginRef = useRef(null);
 
-  // Attach / detach the "message" listener.
-  useEffect(() => {
-    /**
-     * Handler for incoming postMessage events.
-     * @param {any} rawEvent  – The original MessageEvent object.
-     */
-    function handler(rawEvent) {
-      if (rawEvent?.data?.type === 'webpackOk') {
-        onMessageRef.current({
-          type: 'requestPageConfig',
-        }, rawEvent);
-
-        return;
-      }
-
-      // Only proceed if the origin is in our whitelist.
-      if (!parentOrigins.includes(rawEvent.origin)) return;
-      // Ensure the message actually came from window.parent.
-      if (rawEvent.source !== window.parent) return;
-
-      // Record this origin as most recently seen.
-      lastOriginRef.current = rawEvent.origin;
-
-      // Forward the event.data and the raw event to the callback.
-      onMessageRef.current(rawEvent.data, rawEvent);
-    }
-
-    window.addEventListener('message', handler);
-    return () => {
-      window.removeEventListener('message', handler);
-    };
-  }, [parentOrigins]);
-
   /**
    * Send a message up to the parent window.
    * @param {MessageData} data       - The data object to post.
@@ -120,6 +87,31 @@ function useIframeMessenger(onMessage, parentOrigins) {
     },
     [parentOrigins]
   );
+
+  // Attach / detach the "message" listener.
+  useEffect(() => {
+    /**
+     * Handler for incoming postMessage events.
+     * @param {any} rawEvent  – The original MessageEvent object.
+     */
+    function handler(rawEvent) {
+      // Only proceed if the origin is in our whitelist.
+      if (!parentOrigins.includes(rawEvent.origin)) return;
+      // Ensure the message actually came from window.parent.
+      if (rawEvent.source !== window.parent) return;
+
+      // Record this origin as most recently seen.
+      lastOriginRef.current = rawEvent.origin;
+
+      // Forward the event.data and the raw event to the callback.
+      onMessageRef.current(rawEvent.data, rawEvent);
+    }
+
+    window.addEventListener('message', handler);
+    return () => {
+      window.removeEventListener('message', handler);
+    };
+  }, [parentOrigins, sendToParent]);
 
   return { sendToParent };
 }
