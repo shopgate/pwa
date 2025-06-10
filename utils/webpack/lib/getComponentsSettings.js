@@ -41,9 +41,7 @@ module.exports = function getComponentsSettings(themePath) {
     const themeWidgetsPath = `${themePath}/widgets`;
 
     const themeWidgetsV1Config = `${themeWidgetsPath}/widgets.json`;
-
-    // TODO: Figure out if we can import a JSON from from the @shopgate/engage library instead
-    const themeWidgetsV2Config = `${themeWidgetsPath}/widgets_v2.json`;
+    const themeWidgetsV2Config = '@shopgate/engage/page/widgets/widgets.json';
 
     /** @type {ComponentSettings} */
     const defaultConfig = importFresh(`${themePath}/config/components.json`);
@@ -55,7 +53,10 @@ module.exports = function getComponentsSettings(themePath) {
      * @returns {Object} The imported configuration object, or an empty object if the file doesn't
      * exist.
      */
-    const loadConfig = path => (fs.existsSync(path) ? importFresh(path) : {});
+    const loadConfig = path => (fs.existsSync(path) || path.startsWith('@shopgate/engage') ?
+      importFresh(path) :
+      {}
+    );
 
     return {
       ...defaultConfig,
