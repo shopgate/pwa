@@ -19,3 +19,8 @@ export const PAGE_PREVIEW_SLUG = 'page_preview';
  * Checks if the app is currently in page preview mode.
  */
 export const IS_PAGE_PREVIEW_ACTIVE = window.location.pathname.startsWith(PAGE_PREVIEW_PATTERN);
+
+/**
+ * One hour in milliseconds
+ */
+export const PAGE_STATE_LIFETIME = 3600000;

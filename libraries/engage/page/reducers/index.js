@@ -3,6 +3,7 @@ import {
   REQUEST_PAGE_CONFIG_V2,
   RECEIVE_PAGE_CONFIG_V2,
   ERROR_PAGE_CONFIG_V2,
+  PAGE_STATE_LIFETIME,
 } from '../constants';
 
 const defaultState = {};
@@ -21,8 +22,9 @@ export function pageV2(state = defaultState, action) {
         const { pageType, pageSlug } = action;
         draft[pageType] = draft[pageType] || {};
         draft[pageType][pageSlug] = {
-          isFetching: true,
           data: null,
+          isFetching: true,
+          expires: 0,
         };
         break;
       }
@@ -31,8 +33,9 @@ export function pageV2(state = defaultState, action) {
         const { pageType, pageSlug, data } = action;
         draft[pageType] = draft[pageType] || {};
         draft[pageType][pageSlug] = {
-          isFetching: false,
           data,
+          isFetching: false,
+          expires: Date.now() + PAGE_STATE_LIFETIME,
         };
         break;
       }
@@ -41,8 +44,8 @@ export function pageV2(state = defaultState, action) {
         const { pageType, pageSlug } = action;
         draft[pageType] = draft[pageType] || {};
         draft[pageType][pageSlug] = {
-          isFetching: false,
           data: null,
+          isFetching: false,
         };
         break;
       }
