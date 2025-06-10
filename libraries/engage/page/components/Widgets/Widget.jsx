@@ -80,6 +80,7 @@ const Widget = ({
         marginLeft: definition?.layout?.marginLeft,
         marginRight: definition?.layout?.marginRight,
       }}
+      data-widget-name={definition.widgetConfigDefinitionCode}
       {... (isPreview && {
         ...handlers,
       })}
