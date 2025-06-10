@@ -4,9 +4,13 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import ConfigIcon from '@shopgate/pwa-common/components/Icon';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Icon from './components/Icon';
 import connect from './connector';
 import styles from './style';
+
+const { icons } = themeConfig;
 
 /**
  * The Cart Empty component.
@@ -19,7 +23,7 @@ const Empty = ({ goBackHistory }) => (
     <Portal name={portals.CART_EMPTY}>
       <div className={styles.container}>
         <div className={styles.icon}>
-          <Icon />
+          {icons?.emptyCart ? <ConfigIcon content={icons.emptyCart} /> : <Icon />}
         </div>
         <div className={styles.title} data-test-id="emptyCartPlaceHolderString">
           <I18n.Text string="cart.empty" />

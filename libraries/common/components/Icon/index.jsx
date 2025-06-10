@@ -9,7 +9,7 @@ import styles from './style';
  * @param {string} [props.className] Additional CSS styles for this component
  * @param {string} [props.viewBox] The viewBox attribute passed to the SVG
  * @param {number} [props.size=24] The icon size
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Icon = props => (
   <svg
