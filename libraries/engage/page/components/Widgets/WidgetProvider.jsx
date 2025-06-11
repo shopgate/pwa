@@ -16,13 +16,14 @@ const WidgetProvider = ({ children, definition }) => {
   /** @type {WidgetContextType} */
   const value = useMemo(() => {
     const {
-      widgetConfig, layout, visibility, code,
+      widgetConfig, layout, visibility, code, widgetConfigDefinitionCode,
     } = definition;
     return {
+      code,
+      name: widgetConfigDefinitionCode,
       config: widgetConfig,
       layout,
       visibility,
-      code,
     };
   }, [definition]);
 

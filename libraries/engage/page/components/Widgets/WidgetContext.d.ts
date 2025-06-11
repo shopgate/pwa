@@ -7,15 +7,19 @@ import {
 
 export { WidgetDefinition } from './types';
 
-export interface WidgetContextType {
+export interface WidgetContextType<C = Record<string, any>> {
   /**
-   * The unique widget code
+   * The unique code of the widget instance
    */
   code: string;
   /**
+   * The name of the widget
+   */
+  name: string;
+  /**
    * The widget configuration
    */
-  config: Record<string, any>;
+  config: C;
   /**
    * The widget layout settings
    */

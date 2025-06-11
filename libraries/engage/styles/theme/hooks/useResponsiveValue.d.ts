@@ -22,4 +22,6 @@ type BreakpointValueMap<T> = Partial<Record<Breakpoint, T>>;
  * }
  * ```
  */
-export default function useResponsiveValue<T>(values: BreakpointValueMap<T>): T | undefined;
+export default function useResponsiveValue<const T extends BreakpointValueMap<any>>(
+  values: T
+): T[keyof T];

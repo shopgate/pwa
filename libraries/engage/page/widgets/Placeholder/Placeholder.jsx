@@ -1,11 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { useWidget } from '@shopgate/engage/page/hooks';
+import { usePlaceholderWidget } from './hooks';
 
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(2),
     minHeight: 200,
+  },
+  name: {
+    fontSize: 14,
   },
   pre: {
     background: '#f7f9fc',
@@ -25,12 +28,14 @@ const useStyles = makeStyles()(theme => ({
  */
 const PlaceholderWidget = () => {
   const { classes } = useStyles();
+
   const {
-    code, config, layout, visibility,
-  } = useWidget();
+    code, name, config, layout, visibility,
+  } = usePlaceholderWidget();
 
   return (
     <div className={classes.root}>
+      <div className={classes.name}>{name}</div>
       <pre className={classes.pre}>
         {JSON.stringify({
           code,
