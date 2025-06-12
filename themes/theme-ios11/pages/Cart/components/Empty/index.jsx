@@ -2,13 +2,16 @@ import React from 'react';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ConfigIcon from '@shopgate/pwa-common/components/Icon';
 import Icon from './components/Icon';
 import styles from './style';
 
+const { icons } = themeConfig;
+
 /**
  * The Cart Empty component.
- * @param {Object} props The component props.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const Empty = () => (
   <div className={styles.wrapper}>
@@ -16,7 +19,7 @@ const Empty = () => (
     <Portal name={portals.CART_EMPTY}>
       <div className={styles.container}>
         <div className={styles.icon}>
-          <Icon />
+          {icons?.emptyCart ? <ConfigIcon content={icons.emptyCart} /> : <Icon />}
         </div>
         <div className={styles.title} data-test-id="emptyCartPlaceHolderString">
           <I18n.Text string="cart.empty" />
