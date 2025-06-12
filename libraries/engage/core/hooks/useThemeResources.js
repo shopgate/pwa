@@ -7,11 +7,11 @@ import ThemeResourcesContext from '../contexts/ThemeResourcesContext';
  */
 
 /**
- * @typedef {ThemeResourcesContextType['components']} ThemeComponentsType
+ * @typedef {import('../contexts/ThemeResourcesContext').ThemeComponentMap ThemeComponentMap}
  */
 
 /**
- * @typedef {ThemeResourcesContextType['widgets']} ThemeWidgetsType
+ * @typedef {import('../contexts/ThemeResourcesContext').ThemeWidgetMap ThemeWidgetMap}
  */
 
 /**
@@ -25,7 +25,7 @@ export function useThemeResources() {
 
 /**
  * Hook to access the components provided by the ThemeResourceContext
- * @returns {ThemeComponentsType} Mapping object that contains multiple components provided by the
+ * @returns {ThemeComponentMap} Mapping object that contains multiple components provided by the
  * theme.
  * Key is the component name, value is the component
  */
@@ -36,11 +36,11 @@ export function useThemeComponents() {
 
 /**
  * Hook to access the widgets provided by the ThemeResourceContext
- * @returns {ThemeWidgetsType} Mapping object that contains all available widgets.
+ * @param {string} [version='v1'] The version of the widget API to use. Defaults to 'v1'.
+ * @returns {ThemeWidgetMap} Mapping object that contains all available widgets.
  * Key is the widget code, value is the widget component.
  */
-export function useThemeWidgets() {
+export function useThemeWidgets(version = 'v1') {
   const { widgets } = useThemeResources();
-  return widgets;
+  return widgets[version] ? widgets[version] : widgets.v1;
 }
-

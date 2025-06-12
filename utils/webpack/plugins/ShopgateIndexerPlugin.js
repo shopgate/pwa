@@ -10,6 +10,7 @@ const i18n = require('../lib/i18n');
 const t = i18n(__filename);
 
 const TYPE_WIDGETS = 'WIDGETS';
+const TYPE_WIDGETS_V2 = 'WIDGETS_V2';
 const TYPE_TRACKERS = 'TRACKERS';
 const TYPE_PORTALS = 'PORTALS';
 const TYPE_REDUCERS = 'REDUCERS';
@@ -35,8 +36,9 @@ function getExtensionsPath() {
 function componentExists(componentPath) {
   const existsInExtensions = fs.existsSync(path.resolve(themePath, '..', '..', 'extensions', componentPath));
   const existsInWidgets = fs.existsSync(path.resolve(themePath, 'widgets', componentPath));
+  const isEngageWidget = componentPath.startsWith('@shopgate/engage/page/widgets');
 
-  return !(!existsInExtensions && !existsInWidgets);
+  return existsInExtensions || existsInWidgets || isEngageWidget;
 }
 
 /**
@@ -73,7 +75,7 @@ function readConfig(options) {
   const imports = importsStart ? [importsStart] : []; // Holds the import strings.
   const exports = [exportsStart]; // Holds the export strings.
 
-  if (type === TYPE_PORTALS || type === TYPE_WIDGETS) {
+  if (type === TYPE_PORTALS || type === TYPE_WIDGETS || type === TYPE_WIDGETS_V2) {
     imports.push('import { hot } from \'react-hot-loader/root\';');
     imports.push('import { lazy } from \'react\';');
     imports.push('');
@@ -91,7 +93,7 @@ function readConfig(options) {
 
     const isPortalsOrWidgets = (
       (type === TYPE_PORTALS && component.target !== 'app.routes')
-      || type === TYPE_WIDGETS
+      || type === TYPE_WIDGETS || type === TYPE_WIDGETS_V2
     );
 
     if (isPortalsOrWidgets) {
@@ -240,7 +242,7 @@ function index(options) {
  * Indexes the widgets.
  */
 function indexWidgets() {
-  const { widgets = {} } = getComponentsSettings(themePath);
+  const { widgets = {}, widgetsV2 = {} } = getComponentsSettings(themePath);
 
   index({
     file: 'widgets.js',
@@ -249,6 +251,15 @@ function indexWidgets() {
       config: widgets,
     },
     ...getIndexLogTranslations(TYPE_WIDGETS),
+  });
+
+  index({
+    file: 'widgetsV2.js',
+    config: {
+      type: TYPE_WIDGETS_V2,
+      config: widgetsV2,
+    },
+    ...getIndexLogTranslations(TYPE_WIDGETS_V2),
   });
 }
 
