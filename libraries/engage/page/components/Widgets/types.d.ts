@@ -62,4 +62,32 @@ export interface WidgetDefinition {
    * Layout settings for the widget.
    */
   layout: WidgetDefinitionLayout;
+  /**
+   * Optional metadata for the widget (only available in preview mode)
+   */
+  meta?: {
+    /**
+     * Message for the scheduled icon tooltip
+     */
+    scheduledIconMessage?: string;
+    /**
+     * Message for the hidden icon tooltip
+     */
+    hiddenIconMessage?: string;
+  }
+}
+
+export interface ScheduledStatus {
+  /**
+   * Indicates if the widget is scheduled.
+   */
+  isScheduled: boolean;
+  /**
+   * Indicates if the widget is currently hidden based on the scheduling
+   */
+  isHidden: boolean;
+  /**
+   * Indicates if the scheduled time frame has expired.
+   */
+  isExpired: boolean;
 }

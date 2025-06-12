@@ -7,7 +7,7 @@ const useStyles = makeStyles()(() => ({
   wrapper: {
     display: 'inline-block',
     position: 'relative',
-    cursor: 'default',
+    cursor: 'help',
   },
   tooltipBox: {
     position: 'absolute',
@@ -164,6 +164,10 @@ function Tooltip({ children, text }) {
     setArrowLeft(computedArrowLeft);
   }, [mounted]);
 
+  if (!text) {
+    return children;
+  }
+
   const portalStyle = {
     left: `${coords.left}px`,
     top: `${coords.top}px`,
@@ -199,7 +203,11 @@ function Tooltip({ children, text }) {
 
 Tooltip.propTypes = {
   children: PropTypes.node.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
+};
+
+Tooltip.defaultProps = {
+  text: null,
 };
 
 export default Tooltip;

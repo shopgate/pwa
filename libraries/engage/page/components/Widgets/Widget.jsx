@@ -1,11 +1,12 @@
-import React, { Suspense, useCallback } from 'react';
+import React, { Suspense, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { VisibilityOffIcon } from '@shopgate/engage/components';
-import { usePressHandler } from '@shopgate/engage/core/hooks';
+import { VisibilityOffIcon, TimeIcon } from '@shopgate/engage/components';
+import { usePressHandler, useRoute } from '@shopgate/engage/core/hooks';
 import WidgetProvider from './WidgetProvider';
 import { dispatchWidgetPreviewEvent } from './events';
 import { useWidgetsPreview } from './hooks';
+import { checkScheduled } from './helpers';
 import Tooltip from './Tooltip';
 
 const useStyles = makeStyles()((theme, {
@@ -18,21 +19,32 @@ const useStyles = makeStyles()((theme, {
   widgetInfo: {
     position: 'absolute',
     top: -marginTop,
-    left: -marginLeft,
+    left: -marginLeft + theme.spacing(0.5),
     fontSize: 24,
     padding: theme.spacing(1),
+    display: 'flex',
+    gap: theme.spacing(1),
   },
   preview: {
     cursor: 'pointer',
   },
   visibilityIcon: {
     color: '#f44336',
-    cursor: 'help',
+  },
+  scheduledIcon: {
+    color: '#347DD3',
+  },
+  scheduledIconExpired: {
+    color: '#f44336',
   },
 }));
 
 /**
  * @typedef {import('./types').WidgetDefinition} WidgetDefinition
+ */
+
+/**
+ * @typedef {import('./types').ScheduledStatus} ScheduledStatus
  */
 
 /**
@@ -48,6 +60,11 @@ const Widget = ({
   definition,
   isPreview,
 }) => {
+  const {
+    query: {
+      timezoneOffset,
+    },
+  } = useRoute();
   const { classes, cx } = useStyles({
     marginTop: definition?.layout?.marginTop ?? 0,
     marginBottom: definition?.layout?.marginBottom ?? 0,
@@ -61,6 +78,23 @@ const Widget = ({
     setActiveWidget(definition.code, activeWidget === definition.code);
     dispatchWidgetPreviewEvent('widget-clicked', definition.code);
   }, [activeWidget, definition.code, setActiveWidget]);
+
+  /** @type {ScheduledStatus} */
+  const scheduled = useMemo(() => {
+    if (!isPreview) {
+      return {
+        isScheduled: false,
+        isHidden: false,
+        isExpired: false,
+      };
+    }
+
+    return checkScheduled({
+      from: definition?.visibility?.scheduleStartDate,
+      to: definition?.visibility?.scheduleEndDate,
+      timezoneOffset,
+    });
+  }, [definition, isPreview, timezoneOffset]);
 
   const handlers = usePressHandler(handleInteraction);
 
@@ -87,8 +121,16 @@ const Widget = ({
     >
       {isPreview && (
         <div className={classes.widgetInfo}>
-          {definition?.visibility?.isHidden && (
-            <Tooltip text={definition.meta.hiddenMessage}>
+          {scheduled.isScheduled && (
+            <Tooltip text={definition.meta.scheduledIconMessage}>
+              <TimeIcon className={cx(classes.scheduledIcon, {
+                [classes.scheduledIconExpired]: scheduled.isExpired,
+              })}
+              />
+            </Tooltip>
+          )}
+          {(definition?.visibility?.isHidden || scheduled.isHidden) && (
+            <Tooltip text={definition.meta.hiddenIconMessage}>
               <VisibilityOffIcon className={classes.visibilityIcon} />
             </Tooltip>
           )}
