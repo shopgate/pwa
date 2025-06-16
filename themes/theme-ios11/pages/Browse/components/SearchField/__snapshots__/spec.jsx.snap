@@ -62,6 +62,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               onSubmit={[Function]}
               onValidate={[Function]}
               password={false}
+              required={false}
               setRef={[Function]}
               type="search"
               validateOnBlur={true}
@@ -83,6 +84,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
                 onInput={null}
                 onKeyPress={[Function]}
                 pattern={null}
+                required={false}
                 step={null}
                 type="search"
                 value="foo"
@@ -177,6 +179,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               onSubmit={[Function]}
               onValidate={[Function]}
               password={false}
+              required={false}
               setRef={[Function]}
               type="search"
               validateOnBlur={true}
@@ -198,6 +201,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
                 onInput={null}
                 onKeyPress={[Function]}
                 pattern={null}
+                required={false}
                 step={null}
                 type="search"
                 value="foo"

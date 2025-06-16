@@ -33,6 +33,7 @@
     "register": "Regisztráció",
     "order_details": "Rendelés részletei",
     "store_finder": "Üzletkereső",
+    "store_details": "Üzlet részletei",
     "order_history": "Rendelési előzmények",
     "profile": "Profil",
     "your_account": "Saját fiók",
@@ -274,6 +275,19 @@
       "properties": "Tulajdonságok"
     }
   },
+  "location": {
+    "myStore": "Az én boltom",
+    "makeMyStore": "Hozd létre a boltom",
+    "getDirections": "Útvonalterv kérés",
+    "phone": "Telefon",
+    "storeHours": "Nyitvatartás",
+    "storesNearby": "Közeli boltok",
+    "open": "Nyitva",
+    "findMoreStores": "További boltok keresése",
+    "noStoresNearby": "A kiválasztott hely közelében nem találtunk üzleteket",
+    "preferredLocationChanged": "Az Ön preferált helye megváltozott {storeName}",
+    "comingSoon": "Hamarosan"
+  },
   "locations": {
     "headline": "Üzletek az Ön közelében",
     "details": "Részletek",
@@ -310,6 +324,7 @@
     "search_placeholder": "Irányítószám",
     "change_location": "Üzlet módosítása",
     "select_location": "Üzlet kiválasztása",
+    "store_info": "Üzlet információ",
     "get_directions": "Útvonalterv",
     "store_hours": "Nyitvatartás",
     "radius_km": "{radius} km",
@@ -528,7 +543,8 @@
       "reset_instructions": "Kapni fog egy e-mailt a jelszó visszaállításához a(z) {email} címre",
       "back_to_login": "Vissza a bejelentkezéshez",
       "customer_not_found": "Ehhez az e-mail címhez nem tartozik fiók."
-    }
+    },
+    "errorAmount": "{amount, plural, =1 {egy hiba} other {{amount} hibák}} ezen az űrlapon."
   },
   "navigation": {
     "login_register": "Bejelentkezés",

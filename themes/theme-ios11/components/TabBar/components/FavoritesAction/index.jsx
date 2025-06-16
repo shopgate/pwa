@@ -52,9 +52,15 @@ class TabBarFavoritesAction extends Component {
       (this.props.widgetSettings.showCounter ??
         TabBarFavoritesAction.defaultProps.widgetSettings.showCounter));
 
-    const { label, favoritesCount } = this.props;
+    // Remove some props that are not meant for the TabBarAction component.
+    const {
+      showWishlistItemsCountBadge, favoritesCount, widgetSettings, ...tabBarActionProps
+    } = this.props;
+
+    const { label } = this.props;
     const ariaCount = showCounter ? `${i18n.text('common.products')}: ${favoritesCount}.` : '';
     const ariaLabel = `${i18n.text(label)}. ${ariaCount} `;
+
     return (
       <Fragment>
         <Portal
@@ -72,7 +78,7 @@ class TabBarFavoritesAction extends Component {
           }}
         >
           <TabBarAction
-            {...this.props}
+            {...tabBarActionProps}
             aria-label={ariaLabel}
             icon={(
               <Portal name={portals.TAB_BAR_FAVORITES_ICON}>

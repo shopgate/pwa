@@ -24,8 +24,36 @@ export * from './constants';
 export * from './contexts';
 export * from './events';
 export * from './helpers';
-export * from './hocs';
-export * from './hooks';
+
+// Only export HOCs that existed before the hoc folder existed
+export {
+  withShowModal,
+  withTheme,
+  withRoute,
+  withCurrentProduct,
+  withForwardedRef,
+  withNavigation,
+  withWidgetSettings,
+  withWidgetStyles,
+  withApp,
+} from './hocs';
+// Only export hooks that existed before the hooks folder existed
+export {
+  useAsyncMemo,
+  useRoute,
+  useTheme,
+  useApp,
+  useCurrentProduct,
+  useNavigation,
+  usePageConfig,
+  usePageSettings,
+  useWidgetConfig,
+  useWidgetSettings,
+  useWidgetStyles,
+  useLoadImage,
+  usePrevious,
+  useResponsiveValue,
+} from './hooks';
 export * from './initialization';
 export * from './providers';
 export * from './selectors';

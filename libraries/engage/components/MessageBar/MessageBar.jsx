@@ -2,7 +2,7 @@ import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { i18n, errorBehavior } from '@shopgate/engage/core';
+import { i18n, errorBehavior } from '@shopgate/engage/core/helpers';
 import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import WarningIcon from '@shopgate/pwa-ui-shared/icons/WarningIcon';
@@ -20,7 +20,9 @@ const iconMapping = {
  * @param {Object} props The component props.
  * @property {Array} props.messages The message content.
  * @property {Object} props.classNames Styling.
- * @return {JSX}
+ * @property {boolean} props.raised whether to use specific styling.
+ * @property {boolean} props.showIcons whether to show icons.
+ * @return {JSX.Element}
  */
 const MessageBar = ({
   messages, classNames, raised, showIcons,
@@ -65,11 +67,13 @@ const MessageBar = ({
               classNames.message,
               Icon ? styles.withIcon : null
             )}
+            aria-live="assertive"
+            aria-atomic="true"
           >
             {Icon && (
               <Icon className={classnames(classNames.icon, styles.icon)} />
             )}
-            <span className={styles.srOnly}>
+            <span className="sr-only">
               {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
             </span>
             <span aria-hidden className={Icon ? styles.messageToIcon : null}>

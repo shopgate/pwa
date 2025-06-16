@@ -7,17 +7,27 @@ import styles from './style';
 /**
  * Error message component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
-const ErrorText = props => (
-  <div className={classNames(props.className, styles.error, 'errorText')}>
-    { props.translate && <I18n.Text string={props.validationError || props.errorText} /> }
-    { !props.translate && (props.validationError || props.errorText) }
+const ErrorText = ({
+  elementName, validationError, errorText, ariaHidden, translate, className,
+}) => (
+  <div
+    id={`ariaError-${elementName}`}
+    className={classNames(className, styles.error, 'errorText')}
+    aria-live="assertive"
+    aria-atomic="true"
+    aria-hidden={ariaHidden}
+  >
+    {translate && <I18n.Text string={validationError || errorText} />}
+    {!translate && (validationError || errorText)}
   </div>
 );
 
 ErrorText.propTypes = {
+  ariaHidden: PropTypes.bool,
   className: PropTypes.string,
+  elementName: PropTypes.string,
   errorText: PropTypes.string,
   translate: PropTypes.bool,
   validationError: PropTypes.string,
@@ -26,7 +36,9 @@ ErrorText.propTypes = {
 ErrorText.defaultProps = {
   className: '',
   errorText: null,
+  elementName: null,
   translate: true,
+  ariaHidden: false,
   validationError: null,
 };
 

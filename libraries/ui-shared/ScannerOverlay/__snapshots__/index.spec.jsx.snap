@@ -46,7 +46,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
         }
       >
         <Grid
-          className="css-1je6emb ui-shared__scanner-bar"
+          className="css-1saiotv ui-shared__scanner-bar"
         >
           <Grid.Item
             className="css-1uot7vp"

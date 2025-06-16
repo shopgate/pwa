@@ -281,7 +281,7 @@ exports[`<ProductCardRender /> should not render the rating stars when there is 
                 >
                   <Text
                     aria-hidden={true}
-                    className="css-7wvaon "
+                    className="css-7wvaon  theme__discount-badge"
                     params={
                       Array [
                         null,
@@ -520,7 +520,7 @@ exports[`<ProductCardRender /> should render as expected 1`] = `
                 >
                   <Text
                     aria-hidden={true}
-                    className="css-7wvaon "
+                    className="css-7wvaon  theme__discount-badge"
                     params={
                       Array [
                         null,
@@ -762,7 +762,7 @@ exports[`<ProductCardRender /> should render with one row for the product name 1
                 >
                   <Text
                     aria-hidden={true}
-                    className="css-7wvaon "
+                    className="css-7wvaon  theme__discount-badge"
                     params={
                       Array [
                         null,
@@ -1004,7 +1004,7 @@ exports[`<ProductCardRender /> should render without name 1`] = `
                 >
                   <Text
                     aria-hidden={true}
-                    className="css-7wvaon "
+                    className="css-7wvaon  theme__discount-badge"
                     params={
                       Array [
                         null,
@@ -1331,7 +1331,7 @@ exports[`<ProductCardRender /> should render without rating 1`] = `
                 >
                   <Text
                     aria-hidden={true}
-                    className="css-7wvaon "
+                    className="css-7wvaon  theme__discount-badge"
                     params={
                       Array [
                         null,

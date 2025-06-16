@@ -9,7 +9,7 @@ import FormHelper from './FormHelper';
  * Takes an element and renders it, if the type matches
  * @param {Object} props Component props.
  * @param {Object} props.element The data of the element to be rendered
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ElementSelect = (props) => {
   const {
@@ -24,6 +24,9 @@ const ElementSelect = (props) => {
   if (!visible) {
     return null;
   }
+  const {
+    label, placeholder, required, options, disabled, handleChange,
+  } = element;
 
   return (
     <div
@@ -36,21 +39,25 @@ const ElementSelect = (props) => {
     >
       <Select
         name={name}
-        label={element.label}
-        placeholder={element.placeholder}
+        required={required}
+        label={label}
+        placeholder={placeholder}
         value={value}
-        options={element.options}
-        onChange={element.handleChange}
+        options={options}
+        onChange={handleChange}
         errorText={errorText}
         isControlled
         translateErrorText={false}
         showErrorText={false}
-        disabled={element.disabled}
+        disabled={disabled}
+        aria-invalid={!!errorText}
+        aria-describedby={errorText.length > 0 ? `ariaError-${name}` : null}
       />
       <FormHelper
         errorText={errorText}
         element={element}
         formName={formName}
+        elementName={name}
       />
     </div>
   );

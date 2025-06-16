@@ -115,7 +115,7 @@ let mockedFavoritesLimit = 100;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   get hasFavorites() { return mockedHasFavorites; },
   get favorites() { return { limit: mockedFavoritesLimit }; },
-  get themeConfig() { return {}; },
+  get themeConfig() { return { colors: {} }; },
 }));
 
 /**

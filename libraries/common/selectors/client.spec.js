@@ -72,6 +72,9 @@ describe('Client selectors', () => {
           ...state,
         },
       },
+      development: {
+        settings: {},
+      },
     });
 
     describe('getClientInformation()', () => {

@@ -1,5 +1,34 @@
 # Changelog
 
+## [v7.27.1](https://github.com/shopgate/pwa/compare/v7.27.0...v7.27.1) (2025-06-04)
+
+#### :rocket: Enhancement
+* [#1354](https://github.com/shopgate/pwa/pull/1354) Add css classes ([@AylinUenal](https://github.com/AylinUenal))
+* [#1352](https://github.com/shopgate/pwa/pull/1352) Improve a11y of form error handling ([@AylinUenal](https://github.com/AylinUenal))
+
+
+## [v7.27.0](https://github.com/shopgate/pwa/compare/v7.26.0...v7.27.0) (2025-05-16)
+
+#### :rocket: Enhancement
+* [#1351](https://github.com/shopgate/pwa/pull/1351) Add Support for Updating Navigation Bar Color on Android 15 Edge-to-Edge displays ([@fkloes](https://github.com/fkloes))
+* [#1350](https://github.com/shopgate/pwa/pull/1350) Add setHeaders method to HttpRequest for custom header support ([@Rekhyt](https://github.com/Rekhyt))
+* [#1346](https://github.com/shopgate/pwa/pull/1346) Add Detection for Android Edge-to-Edge Design Support ([@fkloes](https://github.com/fkloes))
+* [#1345](https://github.com/shopgate/pwa/pull/1345) Improved TabBar Customization + Dev Support for iOS Safe Areas ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.26.0](https://github.com/shopgate/pwa/compare/v7.25.1...v7.26.0) (2025-05-07)
+
+#### :rocket: Enhancement
+* [#1303](https://github.com/shopgate/pwa/pull/1303) Implement store detail page in store finder ([@SaschaKrist](https://github.com/SaschaKrist))
+* [#1326](https://github.com/shopgate/pwa/pull/1326) Improve accessibility for store detail page ([@SaschaKrist](https://github.com/SaschaKrist))
+
+
+## [v7.25.1](https://github.com/shopgate/pwa/compare/v7.25.0...v7.25.1) (2025-05-06)
+
+#### :bug: Bug Fix
+* [#1347](https://github.com/shopgate/pwa/pull/1347) Fixed a YouTube iFrame Issue on recent iOS versions ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.25.0](https://github.com/shopgate/pwa/compare/v7.24.7...v7.25.0) (2025-04-17)
 
 #### :rocket: Enhancement

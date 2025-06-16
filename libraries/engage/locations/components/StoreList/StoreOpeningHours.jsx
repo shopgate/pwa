@@ -20,11 +20,15 @@ export function StoreOpeningHours({ hours, pure }) {
   }
 
   const storeHours = (
-    <tbody className={openingHours}>
-      {getWeekDaysOrder().map(weekDay => (
-        <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
-      ))}
-    </tbody>
+    <div className={openingHours}>
+      <table>
+        <tbody>
+          {getWeekDaysOrder().map(weekDay => (
+            <StoreOpeningHoursLine hours={hours[weekDay]} day={weekDay} key={weekDay} />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 
   if (pure) {
@@ -34,9 +38,7 @@ export function StoreOpeningHours({ hours, pure }) {
   return (
     <StoreDetailsLine icon={TimeIcon}>
       <I18n.Text string="locations.hours_details" className={detailsSecondary} />
-      <table>
-        {storeHours}
-      </table>
+      {storeHours}
     </StoreDetailsLine>
   );
 }

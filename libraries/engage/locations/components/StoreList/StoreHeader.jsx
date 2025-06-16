@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { Grid, ResponsiveContainer } from '@shopgate/engage/components';
 import { isProductAvailable } from '../../helpers';
@@ -16,24 +16,14 @@ import { storeHeader, storeName, disabled } from './Store.style';
  */
 export function StoreHeader() {
   const store = useContext(StoreContext);
-  const { selectLocation, product } = useContext(FulfillmentContext);
+  const { product } = useContext(FulfillmentContext);
   const isAvailable = isProductAvailable(store, store?.inventory);
-
-  const handleClick = useCallback(() => {
-    if (isAvailable) {
-      selectLocation(store);
-    }
-  }, [isAvailable, selectLocation, store]);
 
   const { name, distance, unitSystem } = store;
 
   return (
     <div
       className={classNames(storeHeader, { [disabled]: !isAvailable })}
-      onClick={handleClick}
-      onKeyDown={handleClick}
-      role="button"
-      tabIndex={0}
     >
       <Grid>
         <Grid.Item grow={1} className={storeName}>

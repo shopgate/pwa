@@ -1,12 +1,11 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const wrapper = css({
   display: 'flex',
   flexDirection: 'column',
-  background: colors.shade8,
   textAlign: 'center',
   height: '100%',
 }).toString();

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Swipeable from 'react-swipeable';
 import Helmet from 'react-helmet';
 import ResponsiveContainer from '@shopgate/engage/components/ResponsiveContainer';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -122,7 +121,7 @@ class ViewContent extends Component {
 
     return {
       overflow,
-      paddingBottom: `calc(var(--tabbar-height) + ${keyboardHeight}px)`,
+      paddingBottom: `calc(var(--page-content-offset-bottom) + ${keyboardHeight}px)`,
     };
   }
 
@@ -146,59 +145,35 @@ class ViewContent extends Component {
   }
 
   /**
-   * Handles the swipe down gesture.
-   * @param {Object} e The event object.
-   * @param {number} x The change on the x axis.
-   * @param {number} y The change on the y axis.
-   * @param {boolean} isFlick Whether this is a flick or swipe.
-   * @param {number} velocity The velocity of the gesture.
-   */
-  handleSwipe = (e, x, y, isFlick, velocity) => {
-    const swipeEvent = new CustomEvent('swipe', {
-      detail: {
-        event: e,
-        x,
-        y,
-        isFlick,
-        velocity,
-      },
-    });
-
-    this.ref.current.dispatchEvent(swipeEvent);
-  };
-
-  /**
    * @return {JSX.Element}
    */
   render() {
     return (
-      <Swipeable onSwiped={this.handleSwipe} flickThreshold={0.6} delta={10}>
-        <article
-          className={`${styles} engage__view__content ${this.props.className}`}
-          ref={this.scrollContainer ? this.ref : null}
-          style={this.style}
-          role="none"
-        >
-          <Helmet title={appConfig.shopName} />
-          <Above />
-          <ResponsiveContainer breakpoint=">xs" webOnly>
-            {this.props.visible ? (
-              <div id="PageHeaderBelow" />
-            ) : null}
-          </ResponsiveContainer>
-          <ConditionalWrapper
-            condition={!this.props.noContentPortal}
-            wrapper={children =>
-              <SurroundPortals portalName={VIEW_CONTENT}>
-                {children}
-              </SurroundPortals>
+      <article
+        className={`${styles} engage__view__content ${this.props.className}`}
+        ref={this.scrollContainer ? this.ref : null}
+        style={this.style}
+        role="none"
+      >
+        <Helmet title={appConfig.shopName} />
+        <Above />
+        <ResponsiveContainer breakpoint=">xs" webOnly>
+          {this.props.visible ? (
+            <div id="PageHeaderBelow" />
+          ) : null}
+        </ResponsiveContainer>
+        <ConditionalWrapper
+          condition={!this.props.noContentPortal}
+          wrapper={children =>
+            <SurroundPortals portalName={VIEW_CONTENT}>
+              {children}
+            </SurroundPortals>
             }
-          >
-            {this.props.children}
-          </ConditionalWrapper>
-          <Below />
-        </article>
-      </Swipeable>
+        >
+          {this.props.children}
+        </ConditionalWrapper>
+        <Below />
+      </article>
     );
   }
 }

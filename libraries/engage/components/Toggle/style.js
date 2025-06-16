@@ -20,7 +20,7 @@ export const label = css({
 }).toString();
 
 export const checkbox = css({
-  ':checked ~ label': {
+  [`:checked ~ .${label}`]: {
     background: `var(--color-primary, ${colors.primary})`,
     opacity: 0.5,
   },
@@ -28,7 +28,7 @@ export const checkbox = css({
     left: 20,
     background: `var(--color-primary, ${colors.primary})`,
   },
-  ':disabled ~ label': {
+  [`:disabled ~ .${label}`]: {
     background: '#D5D5D5',
     pointerEvents: 'none',
     filter: 'none',
@@ -37,6 +37,16 @@ export const checkbox = css({
     background: '#BCBDBC',
     filter: 'none',
   },
+  // a11y configuration: hide visually but keep interactive
+  position: 'absolute',
+  opacity: 0,
+  width: '100%',
+  height: '100%',
+  top: 0,
+  left: 0,
+  margin: 0,
+  zIndex: 2,
+  cursor: 'pointer',
 }).toString();
 
 export const thumb = css({
@@ -53,8 +63,4 @@ export const thumb = css({
   transition: 'all .3s ease',
   pointerEvents: 'none',
   zIndex: 100,
-}).toString();
-
-export const hidden = css({
-  display: 'none',
 }).toString();
