@@ -48,6 +48,8 @@ export function CartItemProductLayout() {
     handleRemove,
     toggleEditMode,
     isEditable,
+    isLinkable,
+    allowQuantityChange,
   } = context;
 
   const portalProps = useMemo(() => ({
@@ -133,7 +135,7 @@ export function CartItemProductLayout() {
         <Grid.Item className={styles.leftColumn}>
           <div className={styles.image} aria-hidden>
             <ConditionalWrapper
-              condition={isEditable}
+              condition={isEditable && isLinkable}
               wrapper={children =>
                 <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
                   {children}
@@ -145,7 +147,7 @@ export function CartItemProductLayout() {
               </SurroundPortals>
             </ConditionalWrapper>
           </div>
-          { !isOrderDetails && (
+          { !isOrderDetails && allowQuantityChange && (
             <SurroundPortals
               portalName={CART_ITEM_QUANTITY_PICKER}
               portalProps={portalProps}

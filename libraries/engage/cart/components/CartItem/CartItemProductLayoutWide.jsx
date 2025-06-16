@@ -60,6 +60,8 @@ const CartItemProductLayoutWide = () => {
     currency,
     handleUpdate,
     isEditable,
+    isLinkable,
+    allowQuantityChange,
     messages,
   } = context;
 
@@ -79,7 +81,7 @@ const CartItemProductLayoutWide = () => {
         </div>
         <div className={detailsColumn}>
           <ConditionalWrapper
-            condition={isEditable}
+            condition={isEditable && isLinkable}
             wrapper={children =>
               <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
                 {children}
@@ -121,7 +123,7 @@ const CartItemProductLayoutWide = () => {
           <CartItemProductLayoutWideOrderDetails />
         )}
         <div className={column}>
-          { isEditable ? (
+          { isEditable && allowQuantityChange ? (
             <SurroundPortals
               portalName={CART_ITEM_QUANTITY_PICKER}
               portalProps={{
