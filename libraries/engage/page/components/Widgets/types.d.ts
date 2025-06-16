@@ -67,13 +67,47 @@ export interface WidgetDefinition {
    */
   meta?: {
     /**
-     * Message for the scheduled icon tooltip
+     * Hidden state related data
      */
-    scheduledIconMessage?: string;
+    hidden: {
+      /**
+       * Whether the widget is hidden.
+       */
+      isHidden: boolean;
+      /**
+       * Tooltip text for hidden related UI elements.
+       */
+      tooltip: string;
+      /**
+       * Label text for hidden related UI elements.
+       */
+      label: string;
+    };
     /**
-     * Message for the hidden icon tooltip
+     * Scheduled state related data
      */
-    hiddenIconMessage?: string;
+    scheduled: {
+      /**
+       * Indicates if the widget is scheduled.
+       */
+      isScheduled: boolean;
+      /**
+       * Indicates that the widget schedule time frame is currently active.
+       */
+      isActive: boolean;
+      /**
+       * Indicates if the scheduled time frame has expired
+       */
+      isExpired: boolean;
+      /**
+       * Tooltip text for schedule related UI elements.
+       */
+      tooltip: string;
+      /**
+       * Label text for schedule related UI elements.
+       */
+      label: string;
+    };
   }
 }
 

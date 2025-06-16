@@ -1,12 +1,11 @@
-import React, { Suspense, useCallback, useMemo } from 'react';
+import React, { Suspense, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { VisibilityOffIcon, TimeIcon } from '@shopgate/engage/components';
-import { usePressHandler, useRoute } from '@shopgate/engage/core/hooks';
+import { usePressHandler } from '@shopgate/engage/core/hooks';
 import WidgetProvider from './WidgetProvider';
 import { dispatchWidgetPreviewEvent } from './events';
 import { useWidgetsPreview } from './hooks';
-import { checkScheduled } from './helpers';
 import Tooltip from './Tooltip';
 
 const useStyles = makeStyles()((theme, {
@@ -60,11 +59,6 @@ const Widget = ({
   definition,
   isPreview,
 }) => {
-  const {
-    query: {
-      timezoneOffset,
-    },
-  } = useRoute();
   const { classes, cx } = useStyles({
     marginTop: definition?.layout?.marginTop ?? 0,
     marginBottom: definition?.layout?.marginBottom ?? 0,
@@ -78,23 +72,6 @@ const Widget = ({
     setActiveWidget(definition.code, activeWidget === definition.code);
     dispatchWidgetPreviewEvent('widget-clicked', definition.code);
   }, [activeWidget, definition.code, setActiveWidget]);
-
-  /** @type {ScheduledStatus} */
-  const scheduled = useMemo(() => {
-    if (!isPreview) {
-      return {
-        isScheduled: false,
-        isHidden: false,
-        isExpired: false,
-      };
-    }
-
-    return checkScheduled({
-      from: definition?.visibility?.scheduleStartDate,
-      to: definition?.visibility?.scheduleEndDate,
-      timezoneOffset,
-    });
-  }, [definition, isPreview, timezoneOffset]);
 
   const handlers = usePressHandler(handleInteraction);
 
@@ -119,18 +96,18 @@ const Widget = ({
         ...handlers,
       })}
     >
-      {isPreview && (
+      {isPreview && definition?.meta && (
         <div className={classes.widgetInfo}>
-          {scheduled.isScheduled && (
-            <Tooltip text={definition.meta.scheduledIconMessage}>
+          {definition.meta?.scheduled?.isScheduled && (
+            <Tooltip text={definition.meta?.scheduled?.tooltip}>
               <TimeIcon className={cx(classes.scheduledIcon, {
-                [classes.scheduledIconExpired]: scheduled.isExpired,
+                [classes.scheduledIconExpired]: definition.meta?.scheduled?.isExpired,
               })}
               />
             </Tooltip>
           )}
-          {(definition?.visibility?.isHidden || scheduled.isHidden) && (
-            <Tooltip text={definition.meta.hiddenIconMessage}>
+          {(definition.meta?.hidden?.isHidden) && (
+            <Tooltip text={definition.meta?.hidden?.tooltip}>
               <VisibilityOffIcon className={classes.visibilityIcon} />
             </Tooltip>
           )}

@@ -18,7 +18,8 @@ export const getScrollContainer = () => document.querySelector(`.route__${PAGE_P
 /**
  * @typedef {Object} ScheduledStatus
  * @param {boolean} isScheduled Indicates if the widget is scheduled.
- * @param {boolean} isHidden Indicates if the widget is currently hidden based on the scheduling.
+ * @param {boolean} isActive Indicates if the widget is currently active within the
+ * scheduled time frame.
  * @param {boolean} isExpired Indicates if the scheduled time frame has expired.
  */
 
@@ -38,14 +39,14 @@ export function checkScheduled({ from, to, timezoneOffset } = {}) {
   const fromDate = from ? new Date(from) : null;
   const toDate = to ? new Date(to) : null;
 
-  const inTimeframe = (!fromDate || localNow >= new Date(fromDate.getTime() + offsetMs)) &&
+  const isActive = (!fromDate || localNow >= new Date(fromDate.getTime() + offsetMs)) &&
                       (!toDate || localNow <= new Date(toDate.getTime() + offsetMs));
 
   const isExpired = !!toDate && localNow > new Date(toDate.getTime() + offsetMs);
   const isScheduled = !!fromDate || !!toDate;
   return {
     isScheduled,
-    isHidden: !inTimeframe,
+    isActive,
     isExpired,
   };
 }
