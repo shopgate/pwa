@@ -12,13 +12,13 @@ const importFresh = require('import-fresh');
 
 /**
  * @typedef {Object} ComponentSettings
- * @property {ComponentSettingsMap} portals Portal component mapping
- * @property {ComponentSettingsMap} translations Translation file mapping
- * @property {ComponentSettingsMap} tracking Tracking plugin mapping
- * @property {ComponentSettingsMap} subscribers RxJS subscriber mapping
- * @property {ComponentSettingsMap} reducers Redux reducer mapping
- * @property {ComponentSettingsMap} widgets Widget component mapping
- * @property {ComponentSettingsMap} widgetsV2 Widget component mapping for version 2 of the widget
+ * @property {ComponentSettingsMap} [portals] Portal component mapping
+ * @property {ComponentSettingsMap} [translations] Translation file mapping
+ * @property {ComponentSettingsMap} [tracking] Tracking plugin mapping
+ * @property {ComponentSettingsMap} [subscribers] RxJS subscriber mapping
+ * @property {ComponentSettingsMap} [reducers] Redux reducer mapping
+ * @property {ComponentSettingsMap} [widgets] Widget component mapping
+ * @property {ComponentSettingsMap} [widgetsV2] Widget component mapping for version 2 of the widget
  * system
  */
 

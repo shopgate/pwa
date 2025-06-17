@@ -39,7 +39,7 @@ const useStyles = makeStyles()(() => ({
       transform: 'translateX(-50%)',
       borderWidth: '6px 6px 0 6px',
       borderStyle: 'solid',
-      borderColor: 'rgba(0, 0, 0, 0.75) transparent transparent transparent',
+      borderColor: 'rgba(0, 0, 0, 0.87) transparent transparent transparent',
     },
   },
   arrowBottom: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles()(() => ({
       transform: 'translateX(-50%) rotate(180deg)',
       borderWidth: '6px 6px 0 6px',
       borderStyle: 'solid',
-      borderColor: 'rgba(0, 0, 0, 0.75) transparent transparent transparent',
+      borderColor: 'rgba(0, 0, 0, 0.87) transparent transparent transparent',
     },
   },
 }));

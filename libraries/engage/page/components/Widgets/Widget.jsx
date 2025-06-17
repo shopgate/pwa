@@ -16,13 +16,20 @@ const useStyles = makeStyles()((theme, {
     position: 'relative',
   },
   widgetInfo: {
+    zIndex: 12,
     position: 'absolute',
-    top: -marginTop,
+    top: -marginTop + (theme.spacing(0.5) + 1),
     left: -marginLeft + theme.spacing(0.5),
     fontSize: 24,
-    padding: theme.spacing(1),
+    padding: theme.spacing(0.5),
     display: 'flex',
     gap: theme.spacing(1),
+    background: '#fff',
+    borderRadius: 4,
+    border: '1px solid rgba(0, 0, 0, 0.23)',
+    ':empty': {
+      display: 'none',
+    },
   },
   preview: {
     cursor: 'pointer',
