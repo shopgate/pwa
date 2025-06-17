@@ -4,7 +4,7 @@ import { ThemeContext as LegacyThemeContext } from '@shopgate/pwa-common/context
 import { ThemeResourcesContext } from '../contexts';
 
 /**
- * @typedef  {import('../contexts/ThemeResourcesContext').ThemeComponentMap ThemeComponentMap}
+ * @typedef {import('../contexts/ThemeResourcesContext').ThemeComponentMap} ThemeComponentMap
  */
 
 /**

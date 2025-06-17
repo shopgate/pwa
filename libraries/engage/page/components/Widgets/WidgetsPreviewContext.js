@@ -10,7 +10,7 @@ import { noop } from 'lodash';
 /**
  * @typedef {Object} WidgetsPreviewContextType
  * @property {string} activeWidget The code of the currently active widget.
- * @property {SetActiveSetActiveWidgetCode} setActiveWidget A function to set the active widget code
+ * @property {SetActiveWidget} setActiveWidget A function to set the active widget code
  */
 
 /** @type {React.Context<WidgetsPreviewContextType>} */

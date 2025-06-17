@@ -22,7 +22,7 @@ const createSpacing = () => {
   };
 
   /**
-   * @param {...(number | string)} args - One ore more spacing arguments, which can be numbers
+   * @param {...(number | string)} args - 0 to 4 spacing arguments, which can be numbers
    * or strings like 'auto',
    * @returns {string} A space-separated string of pixel values or other transformed values
    */
