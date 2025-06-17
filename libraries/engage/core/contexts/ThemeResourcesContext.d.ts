@@ -43,7 +43,16 @@ export interface ThemeResourcesContextType {
    * Mapping object that contains all available widgets.
    * Key is the widget code, value is the widget component.
    */
-  widgets: ThemeWidgetMap;
+  widgets: {
+    /**
+     * All available widgets for Widget API v1
+     */
+    v1: ThemeWidgetMap;
+    /**
+     * All available widgets for Widget API v2
+     */
+    v2: ThemeWidgetMap;
+  };
 
   /**
    * Mapping object that contains multiple components provided by the theme.

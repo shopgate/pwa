@@ -2,6 +2,7 @@ import { PAGE_PATH, PAGE_PATTERN } from '@shopgate/pwa-common/constants/RoutePat
 
 export * from '@shopgate/pwa-common/constants/PageIDs';
 export { PAGE_PATH, PAGE_PATTERN };
+export * from './actionTypes';
 
 export const IMPRINT_PATH = `${PAGE_PATH}/imprint`;
 export const PAYMENT_PATH = `${PAGE_PATH}/payment`;
@@ -9,3 +10,17 @@ export const PRIVACY_PATH = `${PAGE_PATH}/privacy`;
 export const RETURN_POLICY_PATH = `${PAGE_PATH}/return_policy`;
 export const SHIPPING_PATH = `${PAGE_PATH}/shipping`;
 export const TERMS_PATH = `${PAGE_PATH}/terms`;
+
+export const PAGE_PREVIEW_PATTERN = '/shopgate-internal-page-preview';
+
+export const PAGE_PREVIEW_SLUG = 'page_preview';
+
+/**
+ * Checks if the app is currently in page preview mode.
+ */
+export const IS_PAGE_PREVIEW_ACTIVE = window.location.pathname.startsWith(PAGE_PREVIEW_PATTERN);
+
+/**
+ * One hour in milliseconds
+ */
+export const PAGE_STATE_LIFETIME = 3600000;

@@ -1,6 +1,7 @@
 import { css } from 'glamor';
 import { useScrollContainer } from '@shopgate/engage/core';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 
 export default css({
   display: 'flex',
@@ -12,6 +13,9 @@ export default css({
     overflowScrolling: 'touch',
     position: 'absolute',
     WebkitOverflowScrolling: 'touch',
+    ...(IS_PAGE_PREVIEW_ACTIVE && {
+      scrollbarWidth: 'thin',
+    }),
   } : {
     height: '100%',
     backgroundColor: 'var(--page-background-color)',

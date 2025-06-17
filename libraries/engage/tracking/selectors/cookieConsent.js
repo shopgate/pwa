@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { appConfig } from '@shopgate/engage';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import { appSupportsCookieConsent } from '@shopgate/engage/core/helpers';
 
 const { cookieConsent: { isCookieConsentActivated, showComfortCookiesToggle } = {} } = appConfig;
@@ -27,7 +28,7 @@ export const getCookieSettingsState = state => state?.tracking?.cookieSettings |
 export const getIsCookieConsentHandled = createSelector(
   getCookieSettingsState,
   (settingsState) => {
-    if (!isCookieConsentActivated || !appSupportsCookieConsent()) {
+    if (!isCookieConsentActivated || !appSupportsCookieConsent() || IS_PAGE_PREVIEW_ACTIVE) {
       return true;
     }
 

@@ -35,3 +35,71 @@ export const makeGetPrivacyPolicyLink = () => {
     }
   );
 };
+
+/**
+ * @param {Object} state The current application state.
+ * @return {Function} A selector function that retrieves the pageV2 state.
+ */
+const getPageV2State = state => state.pageV2;
+
+/**
+ * List of available page types.
+ * @typedef {'cms' | 'category'} PageType
+ */
+
+/**
+ * List of available dropzone types.
+ * @typedef {'cmsWidgetList'} DropzoneType
+ */
+
+/**
+ * Creates a selector that retrieves page data based on the type and slug.
+ * @param {Object} params The selector params
+ * @param {PageType} [params.type] The type of the page.
+ * @param {string|null} [params.slug=null] The slug of the page (optional).
+ * @returns {Function} A selector function that retrieves the page data.
+ */
+export const makeGetPage = ({
+  type = 'cms',
+  slug = null,
+}) => createSelector(
+  getPageV2State,
+  (pageState) => {
+    if (type && slug) {
+      return pageState[type]?.[slug] || null;
+    }
+
+    return pageState[type] || null;
+  }
+);
+
+/**
+ * Creates a selector that retrieves the widget list from a page based on the type, slug and
+ * and dropzone name.
+ * @param {Object} params The selector params
+ * @param {PageType} [params.type='cms'] The type of the page.
+ * @param {DropzoneType} [params.dropzone='cmsWidgetList'] The dropzone name to retrieve the widget
+ * list from.
+ * @param {string|null} [params.slug=null] The slug of the page (optional).
+ * @returns {Function} A selector function that retrieves the widget list.
+ */
+export const makeGetWidgetsFromPage = ({
+  type = 'cms',
+  slug = null,
+  dropzone = 'cmsWidgetList',
+}) => {
+  const getPage = makeGetPage({
+    type, slug,
+  });
+
+  return createSelector(
+    getPage,
+    (page) => {
+      if (!page) {
+        return undefined;
+      }
+
+      return (page.data?.dropzones ?? []).find(entry => entry.dropzone === dropzone)?.widgetList;
+    }
+  );
+};

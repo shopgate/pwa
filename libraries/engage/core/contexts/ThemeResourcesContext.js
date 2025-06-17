@@ -6,6 +6,9 @@ import { createContext } from 'react';
 
 /** @type {import('react').Context<ThemeResourcesContextType>} */
 export default createContext({
-  widgets: {},
+  widgets: {
+    v1: {},
+    v2: {},
+  },
   components: {},
 });
