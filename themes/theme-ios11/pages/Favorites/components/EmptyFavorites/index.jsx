@@ -18,6 +18,7 @@ const EmptyFavorites = () => {
 
   const imageSRC = useMemo(() => encodeSVG(emptyFavorites),
     [emptyFavorites]);
+
   return (
     <div className={styles.container}>
       <SurroundPortals portalName={FAVORITES_EMPTY}>
