@@ -1,7 +1,7 @@
 import React, { Suspense, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { VisibilityOffIcon, TimeIcon } from '@shopgate/engage/components';
+import { VisibilityOffIcon, TimeIcon, Loading } from '@shopgate/engage/components';
 import { usePressHandler } from '@shopgate/engage/core/hooks';
 import WidgetProvider from './WidgetProvider';
 import { dispatchWidgetPreviewEvent } from './events';
@@ -114,7 +114,7 @@ const Widget = ({
         </div>
       )}
       <WidgetProvider definition={definition}>
-        <Suspense>
+        <Suspense fallback={<Loading />}>
           <Component />
         </Suspense>
       </WidgetProvider>
