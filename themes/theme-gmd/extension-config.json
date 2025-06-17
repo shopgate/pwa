@@ -454,7 +454,8 @@
         },
         "fullSVGs": {
           "emptyCart": null,
-          "emptyFavorites": null
+          "emptyFavorites": null,
+          "noResultsImage": null
         },
         "assets": {},
         "pages": [

@@ -1,30 +1,44 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { encodeSVG } from '@shopgate/engage/core';
 import Icon from './components/Icon';
 import styles from './style';
+
+const { fullSVGs } = themeConfig;
 
 /**
  * The NoResults component.
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const NoResults = props => (
-  <div className={classNames(styles.wrapper, props.className, ' ui-shared__no-results')} data-test-id="noResults">
-    <div className={styles.icon}>
-      <Icon />
-    </div>
-    <div role="alert" aria-atomic="true">
-      <div className={styles.headline}>
-        <I18n.Text string={props.headlineText} params={props} />
+const NoResults = (props) => {
+  const { noResultsImage } = fullSVGs;
+
+  const imageSRC = useMemo(() => encodeSVG(noResultsImage),
+    [noResultsImage]);
+
+  return (
+    <div
+      className={classNames(styles.wrapper, props.className, ' ui-shared__no-results')}
+      data-test-id="noResults"
+    >
+      <div className={styles.icon}>
+        {noResultsImage ? <img src={imageSRC} alt="" /> : <Icon />}
       </div>
-      <div className={styles.text}>
-        <I18n.Text string={props.bodyText} params={props} />
+      <div role="alert" aria-atomic="true">
+        <div className={styles.headline}>
+          <I18n.Text string={props.headlineText} params={props} />
+        </div>
+        <div className={styles.text}>
+          <I18n.Text string={props.bodyText} params={props} />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 NoResults.defaultProps = {
   className: null,
