@@ -12,7 +12,11 @@ import {
  * @returns {JSX}
  */
 function ScrollHeader({
-  className, children, hideOnScroll, scrollOffset,
+  className,
+  children,
+  hideOnScroll,
+  scrollOffset,
+  classes,
 }) {
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
 
@@ -27,10 +31,15 @@ function ScrollHeader({
     },
   });
 
+  const scrolledInStyle = classes?.scrolledIn ? classes.scrolledIn : scrolledIn;
+  const scrolledOutStyle = classes?.scrolledOut ? classes.scrolledOut : scrolledOut;
+  const transitionStyle = classes?.transition ? classes.transition : transition;
+  const rootStyle = classes?.root ? classes.root : root;
+
   return (
-    <div className={classNames(root, transition, className, {
-      [scrolledIn]: !shouldHideHeader,
-      [scrolledOut]: shouldHideHeader,
+    <div className={classNames(rootStyle, transitionStyle, className, {
+      [scrolledInStyle]: !shouldHideHeader,
+      [scrolledOutStyle]: shouldHideHeader,
     })}
     >
       {children}
@@ -40,6 +49,12 @@ function ScrollHeader({
 
 ScrollHeader.propTypes = {
   children: PropTypes.node.isRequired,
+  classes: PropTypes.shape({
+    root: PropTypes.string,
+    scrolledIn: PropTypes.string,
+    scrolledOut: PropTypes.string,
+    transition: PropTypes.string,
+  }),
   className: PropTypes.string,
   hideOnScroll: PropTypes.bool,
   scrollOffset: PropTypes.number,
@@ -49,6 +64,7 @@ ScrollHeader.defaultProps = {
   className: null,
   hideOnScroll: true,
   scrollOffset: 100,
+  classes: {},
 };
 
 export default ScrollHeader;
