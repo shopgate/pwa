@@ -528,6 +528,8 @@
     "password": "Lösenord",
     "forgot_password": "Har du glömt ditt lösenord?",
     "forgot_password_popup": "Använd skrivbordswebbplatsen för att återställa ditt lösenord.",
+    "hide_password": "Dölj lösenord",
+    "show_password": "Visa lösenord",
     "button": "Logga in",
     "no_account": "Har du inget konto än?",
     "register": "Börja här.",

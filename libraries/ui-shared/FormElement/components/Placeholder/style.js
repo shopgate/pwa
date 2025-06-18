@@ -35,15 +35,24 @@ const placeholderInactive = css({
 }).toString();
 
 /**
+ * Additional left spacing when a left element is present
+ */
+const leftOffset = css({
+  left: 26,
+}).toString();
+
+/**
  * Gets the style classes for the underline element.
  * @param {boolean} visible Whether the hint is visible.
+ * @param {boolean} hasLeftElement - Whether a left element is present.
  * @return {string} The style classes.
  */
-const placeholderStyles = (visible = false) => (
+const placeholderStyles = (visible = false, hasLeftElement = false) => (
   classNames(
     placeholder,
     {
       [placeholderInactive]: !visible,
+      [leftOffset]: hasLeftElement,
     }
   )
 );

@@ -528,6 +528,8 @@
     "password": "Senha",
     "forgot_password": "Esqueceu sua senha?",
     "forgot_password_popup": "Por favor, use o site do desktop para redefinir sua senha.",
+    "hide_password": "Ocultar palavra-passe",
+    "show_password": "Mostrar palavra-passe",
     "button": "Login",
     "no_account": "Você não tem uma conta?",
     "register": "Registrar",

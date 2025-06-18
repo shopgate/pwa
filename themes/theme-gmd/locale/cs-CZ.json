@@ -528,6 +528,8 @@
     "password": "Heslo",
     "forgot_password": "Zapomněli jste své heslo?",
     "forgot_password_popup": "Pro obnovení hesla použijte prosím webovou stránku na ploše.",
+    "hide_password": "Skrýt heslo",
+    "show_password": "Zobrazit heslo",
     "button": "Přihlásit se",
     "no_account": "Ještě nemáte účet?",
     "register": "Začněte zde.",
