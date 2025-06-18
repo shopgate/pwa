@@ -31,15 +31,10 @@ function ScrollHeader({
     },
   });
 
-  const scrolledInStyle = classes?.scrolledIn ? classes.scrolledIn : scrolledIn;
-  const scrolledOutStyle = classes?.scrolledOut ? classes.scrolledOut : scrolledOut;
-  const transitionStyle = classes?.transition ? classes.transition : transition;
-  const rootStyle = classes?.root ? classes.root : root;
-
   return (
-    <div className={classNames(rootStyle, transitionStyle, className, {
-      [scrolledInStyle]: !shouldHideHeader,
-      [scrolledOutStyle]: shouldHideHeader,
+    <div className={classNames(root, transition, className, {
+      [classNames(scrolledIn, classes.scrolledIn)]: !shouldHideHeader,
+      [classNames(scrolledOut, classes.scrolledOut)]: shouldHideHeader,
     })}
     >
       {children}
@@ -50,10 +45,8 @@ function ScrollHeader({
 ScrollHeader.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.shape({
-    root: PropTypes.string,
-    scrolledIn: PropTypes.string,
-    scrolledOut: PropTypes.string,
-    transition: PropTypes.string,
+    scrolledIn: PropTypes.object,
+    scrolledOut: PropTypes.object,
   }),
   className: PropTypes.string,
   hideOnScroll: PropTypes.bool,
