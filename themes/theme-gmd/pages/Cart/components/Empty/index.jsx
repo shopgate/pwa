@@ -10,7 +10,7 @@ import Icon from './components/Icon';
 import connect from './connector';
 import styles from './style';
 
-const { fullSVGs } = themeConfig;
+const { fullSVGs = {} } = themeConfig || {};
 
 /**
  * The Cart Empty component.
@@ -18,7 +18,7 @@ const { fullSVGs } = themeConfig;
  * @return {JSX.Element}
  */
 const Empty = ({ goBackHistory }) => {
-  const { emptyCart } = fullSVGs;
+  const { emptyCart = '' } = fullSVGs || {};
 
   const imageSRC = useMemo(() => encodeSVG(emptyCart),
     [emptyCart]);

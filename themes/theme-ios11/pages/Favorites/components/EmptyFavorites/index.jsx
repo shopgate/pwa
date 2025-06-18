@@ -7,14 +7,14 @@ import { encodeSVG } from '@shopgate/engage/core/helpers';
 import styles from './style';
 import { EmptyFavoritesIcon } from './components/Icon';
 
-const { fullSVGs } = themeConfig;
+const { fullSVGs = {} } = themeConfig || {};
 
 /**
  * The Empty Favorites component
  * @return {JSX.Element}
  */
 const EmptyFavorites = () => {
-  const { emptyFavorites } = fullSVGs;
+  const { emptyFavorites = '' } = fullSVGs || {};
 
   const imageSRC = useMemo(() => encodeSVG(emptyFavorites),
     [emptyFavorites]);

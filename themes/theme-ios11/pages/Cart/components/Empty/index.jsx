@@ -7,14 +7,14 @@ import { encodeSVG } from '@shopgate/engage/core/helpers';
 import Icon from './components/Icon';
 import styles from './style';
 
-const { fullSVGs } = themeConfig;
+const { fullSVGs = {} } = themeConfig || {};
 
 /**
  * The Cart Empty component.
  * @return {JSX.Element}
  */
 const Empty = () => {
-  const { emptyCart } = fullSVGs;
+  const { emptyCart = '' } = fullSVGs || {};
 
   const imageSRC = useMemo(() => encodeSVG(emptyCart),
     [emptyCart]);

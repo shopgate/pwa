@@ -7,7 +7,7 @@ import { encodeSVG } from '@shopgate/engage/core';
 import Icon from './components/Icon';
 import styles from './style';
 
-const { fullSVGs } = themeConfig;
+const { fullSVGs = {} } = themeConfig || {};
 
 /**
  * The NoResults component.
@@ -15,7 +15,7 @@ const { fullSVGs } = themeConfig;
  * @returns {JSX.Element}
  */
 const NoResults = (props) => {
-  const { noResultsImage } = fullSVGs;
+  const { noResultsImage = '' } = fullSVGs || {};
 
   const imageSRC = useMemo(() => encodeSVG(noResultsImage),
     [noResultsImage]);
