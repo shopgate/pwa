@@ -8,7 +8,7 @@ import { itemClass, shadowStyle } from './style';
 
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function ProductCard({
   product,
@@ -27,7 +27,11 @@ function ProductCard({
   const url = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
   return (
-    <section className={`${itemClass} theme__product-card`} style={cardStyle} data-test-id={`Product: ${product.name}`}>
+    <section
+      className={`${itemClass} theme__product-card ui-shared__card`}
+      style={cardStyle}
+      data-test-id={`Product: ${product.name}`}
+    >
       {render({
         product,
         url,
