@@ -22,10 +22,13 @@ import OriginalSwiper from './components/OriginalSwiper';
 import {
   container, innerContainer, zoomFix, buttonNext, buttonPrev,
 } from './styles';
+import { themeConfig } from '../../helpers/config';
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
  */
+
+const { pdpImageSliderPaginationType } = themeConfig || {};
 
 /**
  * The basic Swiper component. It acts as a wrapper for the Swiper JS library component.
@@ -103,7 +106,7 @@ const Swiper = ({
     ...showPagination && {
       pagination: {
         el: undefined,
-        type: paginationType,
+        type: pdpImageSliderPaginationType || paginationType,
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
         bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
         dynamicBullets: true,
