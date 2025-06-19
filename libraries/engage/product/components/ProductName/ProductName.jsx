@@ -34,7 +34,7 @@ const ProductName = ({
     }
   >
     <div
-      className={classNames(styles.wrapper, className)}
+      className={classNames(styles.wrapper, className, 'engage__product__product-name')}
       style={style}
       itemProp={itemProp}
       data-test-id={testId}
