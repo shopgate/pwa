@@ -6,6 +6,7 @@ import {
   root, scrolledIn, scrolledOut, transition,
 } from './style';
 
+/* eslint-disable react/prop-types */
 /**
  * A container component that hides its content on scroll down and shows it on scroll up.
  *
@@ -27,8 +28,8 @@ import {
 function ScrollHeaderBase({
   className,
   children,
-  hideOnScroll,
-  scrollOffset,
+  hideOnScroll = true,
+  scrollOffset = 100,
   onChange,
   classes,
 }, ref) {
@@ -66,11 +67,16 @@ function ScrollHeaderBase({
   );
 }
 
-ScrollHeaderBase.propTypes = {
+/* eslint-enable react/prop-types */
+
+const ScrollHeader = forwardRef(ScrollHeaderBase);
+ScrollHeader.displayName = 'ScrollHeader';
+
+ScrollHeader.propTypes = {
   children: PropTypes.node.isRequired,
   classes: PropTypes.shape({
-    scrolledIn: PropTypes.object,
-    scrolledOut: PropTypes.object,
+    scrolledIn: PropTypes.string,
+    scrolledOut: PropTypes.string,
   }),
   className: PropTypes.string,
   hideOnScroll: PropTypes.bool,
@@ -78,15 +84,12 @@ ScrollHeaderBase.propTypes = {
   scrollOffset: PropTypes.number,
 };
 
-ScrollHeaderBase.defaultProps = {
+ScrollHeader.defaultProps = {
   className: null,
   hideOnScroll: true,
   scrollOffset: 100,
   classes: {},
   onChange: null,
 };
-
-const ScrollHeader = forwardRef(ScrollHeaderBase);
-ScrollHeader.displayName = 'ScrollHeader';
 
 export default ScrollHeader;
