@@ -15,6 +15,7 @@ export * from './bridge';
 export { isBeta } from '../config/isBeta';
 export { getFullImageSource } from './getFullImageSource';
 export { getImageFormat } from './getImageFormat';
+export { encodeSVG } from './encodeSVG';
 export { i18n, getWeekDaysOrder } from './i18n';
 export { updateLegacyNavigationBar } from './updateLegacyNavigationBar';
 export { updateAndroidNavigationBarColor } from './androidNavigationBar';
