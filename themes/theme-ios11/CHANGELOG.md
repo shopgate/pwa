@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.27.2](https://github.com/shopgate/pwa/compare/v7.27.1...v7.27.2) (2025-06-20)
+
+#### :rocket: Enhancement
+* [#1360](https://github.com/shopgate/pwa/pull/1360) Add possibility to add ScrollHeader styling from external ([@SaschaKrist](https://github.com/SaschaKrist))
+
+#### :house: Internal
+* [#1355](https://github.com/shopgate/pwa/pull/1355) Internal refactoring and removal of some unused dependencies ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.27.1](https://github.com/shopgate/pwa/compare/v7.27.0...v7.27.1) (2025-06-04)
 
 #### :rocket: Enhancement
