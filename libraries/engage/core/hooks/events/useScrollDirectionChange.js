@@ -18,6 +18,8 @@ export default function useScrollDirectionChange({
   enabled,
   offset = 100,
   onlyFireOnDirectionChange = true,
+  onlyFireOnScrollUpAtTop = false,
+  onlyFireOnScrollUpAtTopOffset = 0,
   onScrollUp,
   onScrollDown,
 }) {
@@ -41,6 +43,7 @@ export default function useScrollDirectionChange({
 
       // Store current direction and reset flags if direction changed
       if (directionChanged) {
+        // @ts-expect-error
         lastDirectionRef.current = direction;
         if (direction === 'down') downTriggeredRef.current = false;
         if (direction === 'up') upTriggeredRef.current = false;
@@ -65,6 +68,11 @@ export default function useScrollDirectionChange({
 
       // 🔼 Handle upward scroll
       if (direction === 'up') {
+        // if user wants “only fire at the very top” and we’re not at 0, skip
+        if (onlyFireOnScrollUpAtTop && scrollTop > onlyFireOnScrollUpAtTopOffset) {
+          return;
+        }
+
         const shouldFire =
           !onlyFireOnDirectionChange || directionChanged || !upTriggeredRef.current;
 
@@ -78,7 +86,15 @@ export default function useScrollDirectionChange({
         }
       }
     },
-    [enabled, offset, onlyFireOnDirectionChange, onScrollUp, onScrollDown]
+    [
+      enabled,
+      onlyFireOnDirectionChange,
+      offset,
+      onScrollDown,
+      onlyFireOnScrollUpAtTop,
+      onlyFireOnScrollUpAtTopOffset,
+      onScrollUp,
+    ]
   );
 
   useEffect(() => {
