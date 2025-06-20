@@ -57,7 +57,7 @@ const multiLine = css({
 const element = css({
   marginTop: 16,
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'flex-end',
 }).toString();
 
 /**

@@ -80,7 +80,7 @@ const signup = css({
 }).toString();
 
 const icon = css({
-  fill: colors.shade4,
+  fill: `var(--color-text-medium-emphasis, ${colors.shade6})`,
   width: '24px',
   height: '24px',
 }).toString();
