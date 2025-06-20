@@ -19,9 +19,14 @@ import * as styles from './style';
 
 /**
  * The item details component.
+ * @param {Object} props The component props.
+ * @param {Object} props.product The product.
+ * @param {Object} props.display The display object.
+ * @param {Object} [props.productListTypeMeta] Optional meta object with data from the product list
+ * type context.
  * @returns {JSX.Element}
  */
-const ItemDetails = ({ product, display }) => {
+const ItemDetails = ({ product, display, productListTypeMeta }) => {
   const {
     id: productId, name = null, stock = null, shortDescription = null,
   } = product;
@@ -37,6 +42,10 @@ const ItemDetails = ({ product, display }) => {
       className={`${styles.details} theme__product-grid__item__item-details`}
       tabIndex={0}
       href={getProductRoute(productId)}
+      state={{
+        title: product.name,
+        ...productListTypeMeta,
+      }}
     >
       <div>
         {/*
@@ -94,10 +103,12 @@ const ItemDetails = ({ product, display }) => {
 ItemDetails.propTypes = {
   product: PropTypes.shape().isRequired,
   display: PropTypes.shape(),
+  productListTypeMeta: PropTypes.shape(),
 };
 
 ItemDetails.defaultProps = {
   display: null,
+  productListTypeMeta: null,
 };
 
 export default ItemDetails;

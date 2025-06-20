@@ -5,6 +5,7 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   flags={null}
   handleGetProducts={[Function]}
   infiniteLoad={false}
+  meta={null}
   products={Array []}
   requestHash={null}
   scope={null}
@@ -24,6 +25,7 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
         data-test-id="productGrid"
       >
         <ProductListTypeProvider
+          meta={null}
           subType={null}
           type="productGrid"
         />
@@ -38,6 +40,7 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
   flags={null}
   handleGetProducts={[Function]}
   infiniteLoad={true}
+  meta={null}
   products={Array []}
   requestHash={null}
   scope={null}
@@ -45,6 +48,7 @@ exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
 >
   <Consumer>
     <ProductListTypeProvider
+      meta={null}
       subType={null}
       type="productGrid"
     >
