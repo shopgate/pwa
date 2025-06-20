@@ -25,9 +25,24 @@ export const innerContainer = css({
       opacity: '.5',
       margin: '0 4px',
       transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+      border: `1px solid ${themeColors.dark}`,
     },
     ' .swiper-pagination-bullet-active.swiper-pagination-bullet-active-main': {
       opacity: 1,
+    },
+  },
+  ' .swiper-pagination-fraction': {
+    background: themeColors.background,
+    borderRadius: '50%',
+    width: 'fit-content',
+    padding: 4,
+    margin: '0 8px',
+    transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+  },
+  ' .swiper-pagination-progressbar': {
+    background: themeColors.shade7,
+    ' .swiper-pagination-progressbar-fill': {
+      background: themeColors.primary,
     },
   },
 }).toString();
