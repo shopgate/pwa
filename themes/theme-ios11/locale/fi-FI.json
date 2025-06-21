@@ -532,6 +532,8 @@
     "password": "Salasana",
     "forgot_password": "Unohditko salasanasi?",
     "forgot_password_popup": "Käytä työpöytäsivustoa salasanasi palauttamiseen.",
+    "hide_password": "Piilota salasana",
+    "show_password": "Näytä salasana",
     "button": "Kirjaudu sisään",
     "no_account": "Sinulla ei ole vielä tiliä?",
     "signup": "Rekisteröi",

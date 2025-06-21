@@ -528,6 +528,8 @@
     "password": "Jelszó",
     "forgot_password": "Elfelejtette jelszavát?",
     "forgot_password_popup": "Kérjük, használja az asztali weboldalt jelszava visszaállításához.",
+    "hide_password": "Jelszó elrejtése",
+    "show_password": "Jelszó megjelenítése",
     "button": "Bejelentkezés",
     "no_account": "Még nincs fiókja?",
     "register": "Kezdje el itt.",

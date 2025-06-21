@@ -56,6 +56,15 @@ const multiLine = css({
 
 const element = css({
   marginTop: 16,
+  display: 'flex',
+  alignItems: 'flex-end',
+}).toString();
+
+/**
+ * Additional left spacing when a left element is present
+ */
+const leftOffset = css({
+  marginLeft: 2,
 }).toString();
 
 export default {
@@ -63,4 +72,5 @@ export default {
   input,
   multiLine,
   element,
+  leftOffset,
 };

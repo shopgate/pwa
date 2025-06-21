@@ -528,6 +528,8 @@
     "password": "Contraseña",
     "forgot_password": "¿Has olvidado tu contraseña?",
     "forgot_password_popup": "Utilice el sitio web para restablecer su contraseña.",
+    "hide_password": "Ocultar contraseña",
+    "show_password": "Mostrar contraseña",
     "button": "Iniciar sesión",
     "no_account": "¿Aún no tienes una cuenta?",
     "register": "¡Créate una ahora!",

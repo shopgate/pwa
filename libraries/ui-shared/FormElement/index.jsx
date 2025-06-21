@@ -19,6 +19,7 @@ class FormElement extends Component {
     ]),
     disabled: PropTypes.bool,
     errorText: PropTypes.node,
+    hasLeftElement: PropTypes.bool,
     hasPlaceholder: PropTypes.bool,
     hasUnderline: PropTypes.bool,
     hasValue: PropTypes.bool,
@@ -40,6 +41,7 @@ class FormElement extends Component {
     label: '',
     labelStatic: false,
     isFocused: false,
+    hasLeftElement: false,
     hasValue: false,
     hasPlaceholder: true,
     hasUnderline: true,
@@ -74,8 +76,8 @@ class FormElement extends Component {
    */
   render() {
     const {
-      isFocused, errorText, translateErrorText,
-      placeholder, hasPlaceholder, htmlFor, label, className, disabled, labelStatic, showErrorText,
+      isFocused, errorText, translateErrorText, placeholder, hasLeftElement, hasPlaceholder,
+      htmlFor, label, className, disabled, labelStatic, showErrorText,
     } = this.props;
 
     return (
@@ -92,6 +94,7 @@ class FormElement extends Component {
           <Placeholder
             visible={this.isPlaceholderVisible}
             placeholder={placeholder || label}
+            hasLeftElement={hasLeftElement}
             aria-hidden
           />
         }

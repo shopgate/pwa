@@ -528,6 +528,8 @@
     "password": "Hasło",
     "forgot_password": "Zapomniałeś hasła?",
     "forgot_password_popup": "Aby zresetować hasło, należy skorzystać z witryny internetowej pulpitu.",
+    "hide_password": "Ukryj hasło",
+    "show_password": "Pokaż hasło",
     "button": "Zaloguj się",
     "no_account": "Nie masz jeszcze konta?",
     "register": "Zacznij od tego miejsca.",

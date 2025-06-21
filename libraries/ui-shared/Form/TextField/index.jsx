@@ -98,6 +98,7 @@ class TextField extends Component {
         placeholder={placeholder}
         label={label}
         errorText={errorText}
+        hasLeftElement={!!leftElement}
         hasUnderline={hasUnderline}
         hasValue={!!props.value}
         isFocused={this.state.isFocused}
@@ -108,7 +109,10 @@ class TextField extends Component {
             <Input
               {...props}
               onFocusChange={this.handleFocusChange}
-              className={style[props.multiLine ? 'multiLine' : 'input']}
+              className={`
+                ${style[props.multiLine ? 'multiLine' : 'input']} 
+                ${leftElement ? style.leftOffset : ''}
+              `}
               validateOnBlur
             />
           </Grid.Item>

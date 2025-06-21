@@ -528,6 +528,8 @@
     "password": "Parolă",
     "forgot_password": "V-ați uitat parola?",
     "forgot_password_popup": "Vă rugăm să utilizați site-ul desktop pentru a vă reseta parola.",
+    "hide_password": "Ascunde parola",
+    "show_password": "Afișează parola",
     "button": "Conectați-vă",
     "no_account": "Nu aveți încă un cont?",
     "register": "Începeți aici.",

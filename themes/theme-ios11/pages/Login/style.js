@@ -60,6 +60,12 @@ const signup = css({
   padding: '.35em',
 }).toString();
 
+const icon = css({
+  fill: colors.shade4,
+  width: '24px',
+  height: '24px',
+}).toString();
+
 export default {
   container,
   headline,
@@ -71,4 +77,5 @@ export default {
   button,
   noAccount,
   signup,
+  icon,
 };
