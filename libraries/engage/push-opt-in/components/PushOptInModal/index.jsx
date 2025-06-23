@@ -9,6 +9,7 @@ import { appConfig } from '@shopgate/engage';
 import pushImage from './push-opt-in.svg';
 import styles from './style';
 import connect from './connector';
+import { svgToDataUrl } from '../../../core';
 
 /**
  * The Push opt-in modal component.
@@ -38,20 +39,7 @@ const PushOptInModal = ({
       return modalImageURL;
     }
 
-    // SVG overwrite configured -> create data url
-    try {
-      // encode SVG string to UTF-8 byte array to handle non-Latin1 characters
-      // (e.g. Unicode characters like emojis)
-      const utf8Encoder = new TextEncoder();
-      const svgBytes = utf8Encoder.encode(modalImageSVG);
-
-      // Convert the byte array to a Base64 string
-      const base64Svg = btoa(String.fromCharCode.apply(null, svgBytes));
-
-      return `data:image/svg+xml;base64,${base64Svg}`;
-    } catch (e) {
-      return pushImage;
-    }
+    return svgToDataUrl(modalImageSVG, pushImage);
   }, [modalImageSVG, modalImageURL]);
 
   // Button event handlers are throttled to prevent multiple clicks

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { encodeSVG } from '@shopgate/engage/core';
+import { svgToDataUrl } from '@shopgate/engage/core';
 import Icon from './components/Icon';
 import styles from './style';
 
-const { fullSVGs = {} } = themeConfig || {};
+const { svgImages = {} } = themeConfig || {};
 
 /**
  * The NoResults component.
@@ -15,9 +15,9 @@ const { fullSVGs = {} } = themeConfig || {};
  * @returns {JSX.Element}
  */
 const NoResults = (props) => {
-  const { noResultsImage = '' } = fullSVGs || {};
+  const { noResultsImage = '' } = svgImages || {};
 
-  const imageSRC = useMemo(() => encodeSVG(noResultsImage),
+  const imageSRC = useMemo(() => svgToDataUrl(noResultsImage),
     [noResultsImage]);
 
   return (

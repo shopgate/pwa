@@ -2,21 +2,21 @@ import React, { useMemo } from 'react';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { encodeSVG } from '@shopgate/engage/core/helpers';
+import { themeConfig } from '@shopgate/engage';
+import { svgToDataUrl } from '@shopgate/engage/core/helpers';
 import Icon from './components/Icon';
 import styles from './style';
 
-const { fullSVGs = {} } = themeConfig || {};
+const { svgImages = {} } = themeConfig || {};
 
 /**
  * The Cart Empty component.
  * @return {JSX.Element}
  */
 const Empty = () => {
-  const { emptyCart = '' } = fullSVGs || {};
+  const { emptyCart = '' } = svgImages || {};
 
-  const imageSRC = useMemo(() => encodeSVG(emptyCart),
+  const imageSRC = useMemo(() => svgToDataUrl(emptyCart),
     [emptyCart]);
 
   return (

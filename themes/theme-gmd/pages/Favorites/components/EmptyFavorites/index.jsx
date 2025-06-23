@@ -3,21 +3,21 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import { FAVORITES_EMPTY } from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { encodeSVG } from '@shopgate/engage/core/helpers';
+import { svgToDataUrl } from '@shopgate/engage/core/helpers';
 import styles from './style';
-import { EmptyFavoritesIcon } from './components/Icon';
+import Icon from './components/Icon';
 import ContinueButton from './components/ContinueButton';
 
-const { fullSVGs = {} } = themeConfig || {};
+const { svgImages = {} } = themeConfig || {};
 
 /**
  * The Empty Favorites component
  * @return {JSX.Element}
  */
 const EmptyFavorites = () => {
-  const { emptyFavorites = '' } = fullSVGs || {};
+  const { emptyFavorites = '' } = svgImages || {};
 
-  const imageSRC = useMemo(() => encodeSVG(emptyFavorites),
+  const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites),
     [emptyFavorites]);
 
   return (
@@ -26,7 +26,7 @@ const EmptyFavorites = () => {
         <div className={styles.iconContainer} data-test-id="emptyFavComponent">
           {emptyFavorites
             ? <img src={imageSRC} alt="" />
-            : <EmptyFavoritesIcon />
+            : <Icon />
           }
           <I18n.Text string="favorites.empty" className={styles.title} />
         </div>
