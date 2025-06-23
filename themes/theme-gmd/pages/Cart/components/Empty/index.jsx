@@ -6,6 +6,7 @@ import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { themeConfig } from '@shopgate/engage';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
+import classNames from 'classnames';
 import Icon from './components/Icon';
 import connect from './connector';
 import styles from './style';
@@ -28,7 +29,7 @@ const Empty = ({ goBackHistory }) => {
       <Portal name={portals.CART_EMPTY_BEFORE} />
       <Portal name={portals.CART_EMPTY}>
         <div className={styles.container}>
-          <div className={styles.icon}>
+          <div className={classNames(styles.icon, 'cart__empty-cart__image')}>
             {emptyCart ? <img src={imageSRC} alt="" /> : <Icon />}
           </div>
           <div className={styles.title} data-test-id="emptyCartPlaceHolderString">

@@ -4,6 +4,7 @@ import { FAVORITES_EMPTY } from '@shopgate/pwa-common-commerce/favorites/constan
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
+import classNames from 'classnames';
 import styles from './style';
 import Icon from './components/Icon';
 import ContinueButton from './components/ContinueButton';
@@ -23,7 +24,10 @@ const EmptyFavorites = () => {
   return (
     <div className={styles.container}>
       <SurroundPortals portalName={FAVORITES_EMPTY}>
-        <div className={styles.iconContainer} data-test-id="emptyFavComponent">
+        <div
+          className={classNames(styles.iconContainer, 'favorites__empty-favorites__image')}
+          data-test-id="emptyFavComponent"
+        >
           {emptyFavorites
             ? <img src={imageSRC} alt="" />
             : <Icon />

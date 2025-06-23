@@ -4,6 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { themeConfig } from '@shopgate/engage';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
+import classNames from 'classnames';
 import Icon from './components/Icon';
 import styles from './style';
 
@@ -24,7 +25,7 @@ const Empty = () => {
       <Portal name={portals.CART_EMPTY_BEFORE} />
       <Portal name={portals.CART_EMPTY}>
         <div className={styles.container}>
-          <div className={styles.icon}>
+          <div className={classNames(styles.icon, 'cart__empty-cart__image')}>
             {emptyCart ? <img src={imageSRC} alt="" /> : <Icon />}
           </div>
           <div className={styles.title} data-test-id="emptyCartPlaceHolderString">

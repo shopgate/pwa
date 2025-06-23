@@ -25,7 +25,7 @@ const NoResults = (props) => {
       className={classNames(styles.wrapper, props.className, ' ui-shared__no-results')}
       data-test-id="noResults"
     >
-      <div className={styles.icon}>
+      <div className={classNames(styles.icon, 'no-results__image')}>
         {noResultsImage ? <img src={imageSRC} alt="" /> : <Icon />}
       </div>
       <div role="alert" aria-atomic="true">
