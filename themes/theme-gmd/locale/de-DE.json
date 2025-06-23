@@ -528,6 +528,8 @@
     "password": "Passwort",
     "forgot_password": "Passwort vergessen?",
     "forgot_password_popup": "Bitte benutzen Sie die Desktop-Website, um Ihr Passwort zurückzusetzen.",
+    "hide_password": "Passwort ausblenden",
+    "show_password": "Passwort einblenden",
     "button": "Anmelden",
     "no_account": "Sie haben noch kein Konto?",
     "register": "Starten Sie hier.",

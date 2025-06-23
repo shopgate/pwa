@@ -9,7 +9,7 @@ import {
 import {
   View, TextLink, I18n, RippleButton, TextField, Portal,
 } from '@shopgate/engage/components';
-import { validate } from '@shopgate/engage/core';
+import { validate, i18n } from '@shopgate/engage/core';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import {
   PAGE_LOGIN_BEFORE,
@@ -23,6 +23,8 @@ import {
   PAGE_LOGIN_FORM_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { CloseBar } from 'Components/AppBar/presets';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import Icon from '@shopgate/pwa-common/components/Icon';
 import classNames from 'classnames';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
@@ -34,6 +36,7 @@ const defaultState = {
   loginError: '',
   passwordError: '',
   showErrors: false,
+  isPasswordVisible: false,
 };
 
 const loginConstraints = {
@@ -173,6 +176,26 @@ class Login extends Component {
   };
 
   /**
+   * Toggles the visibility of the password input field.
+   */
+  togglePasswordVisibility = () => {
+    this.setState(prevState => ({
+      isPasswordVisible: !prevState.isPasswordVisible,
+    }));
+  };
+
+  /**
+   * Handles keyboard interaction for toggling password visibility.
+   * @param {KeyboardEvent} e The keyboard event.
+   */
+  handlePasswordToggleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.togglePasswordVisibility();
+    }
+  };
+
+  /**
    * Renders the component.
    * @return {JSX.Element}
    */
@@ -185,6 +208,12 @@ class Login extends Component {
 
     const hasLoginError = showErrors && loginError.length > 0;
     const hasPasswordError = showErrors && passwordError.length > 0;
+
+    const {
+      person, lock, visibility, visibilityOff,
+    } = themeConfig.icons || {};
+    const isToggleVisible = visibility && visibilityOff;
+    const iconVisibility = this.state.isPasswordVisible ? visibilityOff : visibility;
 
     return (
       <View>
@@ -216,10 +245,11 @@ class Login extends Component {
                     'aria-invalid': hasLoginError,
                     'aria-describedby': hasLoginError ? 'ariaError-email' : null,
                   }}
+                  leftElement={person ? <Icon content={person} className={styles.icon} /> : null}
                 />
                 <TextField
                   required
-                  password
+                  type={this.state.isPasswordVisible ? 'text' : 'password'}
                   name="password"
                   className={styles.input}
                   label="login.password"
@@ -231,6 +261,21 @@ class Login extends Component {
                     'aria-invalid': hasPasswordError,
                     'aria-describedby': hasPasswordError ? 'ariaError-password' : null,
                   }}
+                  leftElement={lock ? <Icon content={lock} className={styles.icon} /> : null}
+                  rightElement={isToggleVisible ? (
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      onClick={this.togglePasswordVisibility}
+                      onKeyDown={this.handlePasswordToggleKeyDown}
+                      aria-label={this.state.isPasswordVisible
+                        ? i18n.text('login.hide_password')
+                        : i18n.text('login.show_password')
+                      }
+                    >
+                      <Icon content={iconVisibility} className={styles.icon} />
+                    </div>
+                  ) : null}
                 />
                 <div className={styles.forgotWrapper}>
                   <ForgotPassword />
