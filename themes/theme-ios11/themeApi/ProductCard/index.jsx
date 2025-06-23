@@ -28,7 +28,7 @@ function ProductCard({
 
   return (
     <section
-      className={`${itemClass} theme__product-card ui-shared__card`}
+      className={`${itemClass} theme__product-card`}
       style={cardStyle}
       data-test-id={`Product: ${product.name}`}
     >
