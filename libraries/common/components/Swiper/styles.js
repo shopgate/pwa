@@ -32,8 +32,9 @@ export const innerContainer = css({
     },
   },
   ' .swiper-pagination-fraction': {
+    fontSize: 12,
     background: themeColors.background,
-    borderRadius: '50%',
+    borderRadius: '35%',
     width: 'fit-content',
     padding: 4,
     margin: '0 8px',
