@@ -48,8 +48,6 @@ function ProductCard(props) {
   } = props;
   const { meta } = useProductListType();
 
-  const { meta } = useProductListType();
-
   const { ListImage: gridResolutions } = getProductImageSettings();
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
 
