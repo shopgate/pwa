@@ -49,9 +49,12 @@ const linkPagination = css({
   paddingBottom: 28,
 }).toString();
 
-const title = {
+const title = css({
+  fontWeight: '500',
+  lineHeight: 1.15,
+  marginTop: 1,
   marginBottom: variables.gap.small * 0.5,
-};
+}).toString();
 
 const timer = css({
   fontSize: '0.875rem',
