@@ -39,6 +39,7 @@ const placeholderInactive = css({
  */
 const leftOffset = css({
   left: 26,
+  width: 'calc(100% - 26px)',
 }).toString();
 
 /**

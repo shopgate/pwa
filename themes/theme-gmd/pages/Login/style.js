@@ -85,6 +85,11 @@ const icon = css({
   height: '24px',
 }).toString();
 
+const toggleButton = css({
+  padding: '4px',
+  margin: '-4px 0',
+}).toString();
+
 export default {
   container,
   headline,
@@ -97,4 +102,5 @@ export default {
   noAccount,
   signup,
   icon,
+  toggleButton,
 };

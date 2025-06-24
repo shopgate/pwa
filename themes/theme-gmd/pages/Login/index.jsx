@@ -272,6 +272,7 @@ class Login extends Component {
                         ? i18n.text('login.hide_password')
                         : i18n.text('login.show_password')
                       }
+                      className={styles.toggleButton}
                     >
                       <Icon content={iconVisibility} className={styles.icon} />
                     </div>
