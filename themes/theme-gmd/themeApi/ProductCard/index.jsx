@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import Render from './components/Render';
+import { ProductCard as EngageProductCard } from '@shopgate/engage/product/components';
 import connect from './connector';
 import { itemClass, shadowStyle } from './style';
 
@@ -40,7 +40,7 @@ function ProductCard({
   );
 }
 
-ProductCard.Content = Render;
+ProductCard.Content = EngageProductCard;
 
 ProductCard.propTypes = {
   product: PropTypes.shape(),
@@ -51,7 +51,7 @@ ProductCard.propTypes = {
 
 ProductCard.defaultProps = {
   product: null,
-  render: props => <Render {...props} />,
+  render: props => <EngageProductCard {...props} />,
   shadow: true,
   style: {},
 };

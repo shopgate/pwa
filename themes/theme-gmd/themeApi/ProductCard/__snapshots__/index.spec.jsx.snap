@@ -77,7 +77,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
           }
         }
       >
-        <ProductCardRender
+        <ProductCard
           product={
             Object {
               "featuredImageBaseUrl": null,
