@@ -1,5 +1,15 @@
 # Changelog
 
+## [v7.27.2](https://github.com/shopgate/pwa/compare/v7.27.1...v7.27.2) (2025-06-24)
+
+#### :rocket: Enhancement
+* [#1359](https://github.com/shopgate/pwa/pull/1359) Add icons to login input fields for username, password, and password visibility toggle ([@patrick-scherer](https://github.com/patrick-scherer))
+* [#1360](https://github.com/shopgate/pwa/pull/1360) Add possibility to add ScrollHeader styling from external ([@SaschaKrist](https://github.com/SaschaKrist))
+
+#### :house: Internal
+* [#1355](https://github.com/shopgate/pwa/pull/1355) Internal refactoring and removal of some unused dependencies ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.27.1](https://github.com/shopgate/pwa/compare/v7.27.0...v7.27.1) (2025-06-04)
 
 #### :rocket: Enhancement
