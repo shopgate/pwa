@@ -46,6 +46,7 @@ const CartItemProductProvider = ({
     discountAmount,
     extendedPrice,
     appliedPromotions,
+    flags = {},
   } = cartItem;
   const [editMode, setEditMode] = useState(false);
   const cartItemRef = useRef();
@@ -92,35 +93,42 @@ const CartItemProductProvider = ({
   }, [isAndroid, onFocus]);
 
   const value = useMemo(
-    () => ({
-      type: CART_ITEM_TYPE_PRODUCT,
-      currency: currencyOverride || currency,
-      product,
-      messages,
-      handleRemove,
-      handleUpdate,
-      cartItemRef,
-      toggleEditMode,
-      editMode,
-      isEditable,
-      cartItemId: id,
-      cartItem: {
-        id,
+    () => {
+      const isLinkable = flags?.disableLink !== true;
+      const allowQuantityChange = flags?.disableQuantityField !== true;
+
+      return {
+        type: CART_ITEM_TYPE_PRODUCT,
+        currency: currencyOverride || currency,
         product,
-        status,
-        subStatus,
-        quantity,
-        orderedQuantity,
-        fulfillment,
-        unitPromoAmount,
-        unitDiscountAmount,
-        price,
-        promoAmount,
-        discountAmount,
-        extendedPrice,
-        appliedPromotions,
-      },
-    }),
+        messages,
+        handleRemove,
+        handleUpdate,
+        cartItemRef,
+        toggleEditMode,
+        editMode,
+        isEditable,
+        isLinkable,
+        allowQuantityChange,
+        cartItemId: id,
+        cartItem: {
+          id,
+          product,
+          status,
+          subStatus,
+          quantity,
+          orderedQuantity,
+          fulfillment,
+          unitPromoAmount,
+          unitDiscountAmount,
+          price,
+          promoAmount,
+          discountAmount,
+          extendedPrice,
+          appliedPromotions,
+        },
+      };
+    },
     [
       currency,
       currencyOverride,
@@ -130,6 +138,7 @@ const CartItemProductProvider = ({
       handleUpdate,
       id,
       isEditable,
+      flags,
       messages,
       product,
       status,

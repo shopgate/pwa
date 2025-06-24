@@ -5,7 +5,8 @@ import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import { getProductImageSettings, ProductImage, ProductBadges } from '@shopgate/engage/product';
+import { getProductImageSettings } from '@shopgate/engage/product/helpers';
+import { ProductImage, ProductBadges, ProductName } from '@shopgate/engage/product/components';
 import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
@@ -66,7 +67,12 @@ function LiveshoppingItem({
                     <Discount discount={price.discount} productId={productId} />
                       }
                   </ProductBadges>
-                  <ProductCard.Content.Title title={name} style={styles.title} />
+                  <ProductName
+                    name={name}
+                    className={styles.title}
+                    testId={`Productname: ${name}`}
+                    rows={2}
+                  />
                   {timeout &&
                   <CountdownTimer className={styles.timer} timeout={timeout / 1000} />
                       }
