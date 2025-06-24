@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
+import { useProductListType } from '@shopgate/engage/product/hooks';
 import {
   Link,
   RatingStars,
@@ -44,6 +45,7 @@ function ProductCard(props) {
   const {
     product, hidePrice, hideRating, hideName, titleRows,
   } = props;
+  const { meta } = useProductListType();
 
   const { ListImage: gridResolutions } = getProductImageSettings();
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
@@ -68,6 +70,9 @@ function ProductCard(props) {
       itemScope
       itemType="http://schema.org/Product"
       tabIndex={0}
+      state={{
+        ...meta,
+      }}
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
