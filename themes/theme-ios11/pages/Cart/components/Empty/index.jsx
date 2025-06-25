@@ -25,7 +25,7 @@ const Empty = () => {
       <Portal name={portals.CART_EMPTY_BEFORE} />
       <Portal name={portals.CART_EMPTY}>
         <div className={styles.container}>
-          <div className={classNames(styles.icon, 'cart__empty-cart__image')}>
+          <div className={classNames(styles.icon, 'empty-cart__image')}>
             {emptyCart ? <img src={imageSRC} alt="" /> : <Icon />}
           </div>
           <div className={styles.title} data-test-id="emptyCartPlaceHolderString">

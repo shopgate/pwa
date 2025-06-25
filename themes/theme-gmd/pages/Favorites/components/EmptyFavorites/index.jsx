@@ -25,7 +25,7 @@ const EmptyFavorites = () => {
     <div className={styles.container}>
       <SurroundPortals portalName={FAVORITES_EMPTY}>
         <div
-          className={classNames(styles.iconContainer, 'favorites__empty-favorites__image')}
+          className={classNames(styles.iconContainer, 'empty-favorites__image')}
           data-test-id="emptyFavComponent"
         >
           {emptyFavorites
