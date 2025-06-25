@@ -8,6 +8,7 @@ import Icon from './components/Icon';
 import styles from './style';
 
 const { svgImages = {} } = themeConfig || {};
+const { noResultsImage = '' } = svgImages || {};
 
 /**
  * The NoResults component.
@@ -15,10 +16,7 @@ const { svgImages = {} } = themeConfig || {};
  * @returns {JSX.Element}
  */
 const NoResults = (props) => {
-  const { noResultsImage = '' } = svgImages || {};
-
-  const imageSRC = useMemo(() => svgToDataUrl(noResultsImage),
-    [noResultsImage]);
+  const imageSRC = useMemo(() => svgToDataUrl(noResultsImage), []);
 
   return (
     <div

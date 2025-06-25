@@ -12,17 +12,14 @@ import connect from './connector';
 import styles from './style';
 
 const { svgImages = {} } = themeConfig || {};
-
+const { emptyCart = '' } = svgImages || {};
 /**
  * The Cart Empty component.
  * @param {Object} props The component props.
  * @return {JSX.Element}
  */
 const Empty = ({ goBackHistory }) => {
-  const { emptyCart = '' } = svgImages || {};
-
-  const imageSRC = useMemo(() => svgToDataUrl(emptyCart),
-    [emptyCart]);
+  const imageSRC = useMemo(() => svgToDataUrl(emptyCart), []);
 
   return (
     <div className={styles.wrapper}>

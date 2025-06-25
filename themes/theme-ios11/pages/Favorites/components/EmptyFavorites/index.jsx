@@ -9,16 +9,14 @@ import styles from './style';
 import Icon from './components/Icon';
 
 const { svgImages = {} } = themeConfig || {};
+const { emptyFavorites = '' } = svgImages || {};
 
 /**
  * The Empty Favorites component
  * @return {JSX.Element}
  */
 const EmptyFavorites = () => {
-  const { emptyFavorites = '' } = svgImages || {};
-
-  const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites),
-    [emptyFavorites]);
+  const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites), []);
 
   return (
     <div className={styles.container}>

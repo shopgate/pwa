@@ -10,16 +10,14 @@ import Icon from './components/Icon';
 import ContinueButton from './components/ContinueButton';
 
 const { svgImages = {} } = themeConfig || {};
+const { emptyFavorites = '' } = svgImages || {};
 
 /**
  * The Empty Favorites component
  * @return {JSX.Element}
  */
 const EmptyFavorites = () => {
-  const { emptyFavorites = '' } = svgImages || {};
-
-  const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites),
-    [emptyFavorites]);
+  const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites), []);
 
   return (
     <div className={styles.container}>

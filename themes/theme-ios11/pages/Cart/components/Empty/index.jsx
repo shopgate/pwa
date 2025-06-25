@@ -9,16 +9,14 @@ import Icon from './components/Icon';
 import styles from './style';
 
 const { svgImages = {} } = themeConfig || {};
+const { emptyCart = '' } = svgImages || {};
 
 /**
  * The Cart Empty component.
  * @return {JSX.Element}
  */
 const Empty = () => {
-  const { emptyCart = '' } = svgImages || {};
-
-  const imageSRC = useMemo(() => svgToDataUrl(emptyCart),
-    [emptyCart]);
+  const imageSRC = useMemo(() => svgToDataUrl(emptyCart), []);
 
   return (
     <div className={styles.wrapper}>
