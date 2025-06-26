@@ -240,7 +240,7 @@ class Login extends Component {
                     'aria-invalid': hasLoginError,
                     'aria-describedby': hasLoginError ? 'ariaError-email' : null,
                   }}
-                  leftElement={<PersonIcon className={styles.icon} />}
+                  leftElement={<PersonIcon className={classNames(styles.icon, styles.iconLeft)} />}
                 />
                 <TextField
                   required
@@ -256,7 +256,7 @@ class Login extends Component {
                     'aria-invalid': hasPasswordError,
                     'aria-describedby': hasPasswordError ? 'ariaError-password' : null,
                   }}
-                  leftElement={<LockIcon className={styles.icon} />}
+                  leftElement={<LockIcon className={classNames(styles.icon, styles.iconLeft)} />}
                   rightElement={
                     <div
                       role="button"
@@ -269,7 +269,7 @@ class Login extends Component {
                       }
                       className={styles.toggleButton}
                     >
-                      <VisibilityToggleIcon className={styles.icon} />
+                      <VisibilityToggleIcon className={classNames(styles.icon, styles.iconRight)} />
                     </div>
                   }
                 />

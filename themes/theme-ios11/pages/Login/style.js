@@ -23,6 +23,7 @@ const subline = css({
 
 const form = css({
   paddingTop: variables.gap.big * 1.5,
+  '--form-element-left-offset': '30px',
 });
 
 const input = css({
@@ -61,9 +62,17 @@ const signup = css({
 }).toString();
 
 const icon = css({
-  fill: colors.shade4,
+  fill: `var(--color-text-medium-emphasis, ${colors.shade6})`,
   width: '24px',
   height: '24px',
+}).toString();
+
+const iconLeft = css({
+  marginRight: variables.gap.xsmall,
+}).toString();
+
+const iconRight = css({
+  marginLeft: variables.gap.xsmall,
 }).toString();
 
 const toggleButton = css({
@@ -83,5 +92,7 @@ export default {
   noAccount,
   signup,
   icon,
+  iconLeft,
+  iconRight,
   toggleButton,
 };
