@@ -38,7 +38,8 @@ const placeholderInactive = css({
  * Additional left spacing when a left element is present
  */
 const leftOffset = css({
-  left: 26,
+  left: 'var(--form-element-left-offset, 26px)',
+  width: 'calc(100% - var(--form-element-left-offset, 26px))',
 }).toString();
 
 /**

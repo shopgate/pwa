@@ -147,6 +147,7 @@ export { default as LogoutIcon } from '@shopgate/pwa-ui-shared/icons/LogoutIcon'
 export { default as MagnifierIcon } from '@shopgate/pwa-ui-shared/icons/MagnifierIcon';
 export { default as MoreIcon } from '@shopgate/pwa-ui-shared/icons/MoreIcon';
 export { default as MoreVertIcon } from '@shopgate/pwa-ui-shared/icons/MoreVertIcon';
+export { default as PersonIcon } from '@shopgate/pwa-ui-shared/icons/PersonIcon';
 export { default as PhoneIcon } from '@shopgate/pwa-ui-shared/icons/PhoneIcon';
 export { default as PlaceholderIcon } from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 export { default as RadioCheckedIcon } from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
