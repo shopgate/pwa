@@ -49,6 +49,7 @@ const Swiper = ({
   onSlideChange,
   additionalModules,
   children,
+  paginationType: paginationTypeProp,
   ...swiperProps
 }) => {
   const useFraction = (maxIndicators && maxIndicators < children.length);
@@ -103,7 +104,7 @@ const Swiper = ({
     ...showPagination && {
       pagination: {
         el: undefined,
-        type: paginationType,
+        type: paginationTypeProp || paginationType,
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
         bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
         dynamicBullets: true,
@@ -115,10 +116,23 @@ const Swiper = ({
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
   }),
-  [additionalModules, classNames.container, classNames.bulletClass, classNames.bulletActiveClass,
-    swiperProps, autoPlay, interval, navigation, showPagination, paginationType, indicators,
+  [
+    additionalModules,
+    classNames.container,
+    classNames.bulletClass,
+    classNames.bulletActiveClass,
+    swiperProps,
+    autoPlay,
+    interval,
+    navigation,
+    showPagination,
+    paginationTypeProp,
+    paginationType,
+    indicators,
     children.length,
-    disabled, handleSlideChange]);
+    disabled,
+    handleSlideChange,
+  ]);
 
   useEffect(() => {
     if (!internalProps.autoplay && !swiperProps.autoplay) {
@@ -230,6 +244,10 @@ Swiper.propTypes = {
    * Invoked with the index of the new slide and the Swiper instance.
    */
   onSlideChange: PropTypes.func,
+  /**
+   * Config to determine slider pagination type
+   */
+  paginationType: PropTypes.string,
 };
 
 Swiper.defaultProps = {
@@ -244,6 +262,7 @@ Swiper.defaultProps = {
   maxIndicators: null,
   disabled: false,
   onSlideChange: null,
+  paginationType: null,
 };
 
 export default Swiper;

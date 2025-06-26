@@ -29,6 +29,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       loop={true}
       maxIndicators={null}
       onSlideChange={null}
+      paginationType={null}
     >
       <SwiperSlide
         className={null}

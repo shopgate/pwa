@@ -66,7 +66,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
             className="css-f7yea6"
           >
             <Swiper
-              className="css-sa13d4"
+              className="css-2ypihg"
               classNames={
                 Object {
                   "container": "css-sa13d4",
@@ -220,7 +220,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
             className="css-f7yea6"
           >
             <Swiper
-              className="css-sa13d4"
+              className="css-2ypihg"
               classNames={
                 Object {
                   "container": "css-sa13d4",
