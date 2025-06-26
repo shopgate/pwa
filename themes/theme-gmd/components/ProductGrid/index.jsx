@@ -90,7 +90,11 @@ const ProductGrid = ({
 };
 
 ProductGrid.propTypes = {
-  flags: PropTypes.shape(),
+  flags: PropTypes.shape({
+    name: PropTypes.bool,
+    price: PropTypes.bool,
+    reviews: PropTypes.bool,
+  }),
   handleGetProducts: PropTypes.func,
   infiniteLoad: PropTypes.bool,
   meta: PropTypes.shape(),

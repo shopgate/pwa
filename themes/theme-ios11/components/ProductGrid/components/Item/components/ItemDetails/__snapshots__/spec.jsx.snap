@@ -4,6 +4,11 @@ exports[`<ItemDetails /> should render additional components with new services 1
 <Link
   className="css-t5ln4b theme__product-grid__item__item-details"
   href="link-to-product/1234"
+  state={
+    Object {
+      "title": "Foo",
+    }
+  }
   tabIndex={0}
 >
   <Swatches
@@ -55,6 +60,11 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
 <Link
   className="css-t5ln4b theme__product-grid__item__item-details"
   href="link-to-product/1234"
+  state={
+    Object {
+      "title": "Foo",
+    }
+  }
   tabIndex={0}
 >
   <Swatches

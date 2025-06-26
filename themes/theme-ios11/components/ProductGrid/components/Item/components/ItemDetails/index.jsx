@@ -20,9 +20,10 @@ import * as styles from './style';
  * @param {Object} props The component props.
  * @param {Object} props.product The product.
  * @param {Object} props.display The display object.
+ * @param {Object} [props.productListTypeMeta] Optional meta object with data from the product list
  * @returns {JSX.Element}
  */
-const ItemDetails = ({ product, display }) => {
+const ItemDetails = ({ product, display, productListTypeMeta }) => {
   const { id: productId, name = null, stock = null } = product;
 
   const hasNewServices = useMemo(() => checkHasNewServices(), []);
@@ -36,6 +37,10 @@ const ItemDetails = ({ product, display }) => {
       className={`${styles.details} theme__product-grid__item__item-details`}
       tabIndex={0}
       href={getProductRoute(productId)}
+      state={{
+        title: product.name,
+        ...productListTypeMeta,
+      }}
     >
       {/*
         This feature is currently in BETA testing.
@@ -82,10 +87,12 @@ const ItemDetails = ({ product, display }) => {
 ItemDetails.propTypes = {
   product: PropTypes.shape().isRequired,
   display: PropTypes.shape(),
+  productListTypeMeta: PropTypes.shape(),
 };
 
 ItemDetails.defaultProps = {
   display: null,
+  productListTypeMeta: null,
 };
 
 export default ItemDetails;

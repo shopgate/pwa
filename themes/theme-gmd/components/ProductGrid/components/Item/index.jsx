@@ -52,6 +52,7 @@ const Item = ({ product, display }) => {
         <ItemDetails
           product={product}
           display={display}
+          productListTypeMeta={meta}
         />
         <ItemFavoritesButton productId={product.id} />
       </div>

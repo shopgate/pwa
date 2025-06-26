@@ -49,20 +49,11 @@ const Item = ({ product, display }) => {
         />
       </ProductBadges>
       <div className={itemDetails}>
-        <Link
-          tabIndex={0}
-          href={getProductRoute(product.id)}
-          state={{
-            title: product.name,
-            ...meta,
-          }}
-        >
-          <ItemDetails
-            product={product}
-            display={display}
-            meta={meta}
-          />
-        </Link>
+        <ItemDetails
+          product={product}
+          display={display}
+          productListTypeMeta={meta}
+        />
         <ItemFavoritesButton productId={product.id} />
       </div>
     </div>
