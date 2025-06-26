@@ -6,18 +6,22 @@ exports[`<Backdrop /> should render 1`] = `
     Object {
       "appear": Object {
         "opacity": 0.5,
+        "pointerEvents": "auto",
       },
       "base": Object {
         "background": "#000",
         "opacity": 0,
+        "pointerEvents": "auto",
         "transition": "opacity 200ms ease-out",
         "zIndex": 2,
       },
       "enter": Object {
         "opacity": 0.5,
+        "pointerEvents": "auto",
       },
       "leave": Object {
         "opacity": 0,
+        "pointerEvents": "none",
       },
     }
   }
@@ -27,6 +31,7 @@ exports[`<Backdrop /> should render 1`] = `
     aria-hidden={true}
     className="css-30873t  common__backdrop"
     data-test-id="Backdrop"
+    key="backdrop"
     onClick={[Function]}
   />
 </Transition>

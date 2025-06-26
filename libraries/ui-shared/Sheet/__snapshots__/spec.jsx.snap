@@ -202,18 +202,22 @@ exports[`<Sheet /> should open 1`] = `
           Object {
             "appear": Object {
               "opacity": 0.2,
+              "pointerEvents": "auto",
             },
             "base": Object {
               "background": "#000",
               "opacity": 0,
+              "pointerEvents": "auto",
               "transition": "opacity 200ms ease-out",
               "zIndex": 4,
             },
             "enter": Object {
               "opacity": 0.2,
+              "pointerEvents": "auto",
             },
             "leave": Object {
               "opacity": 0,
+              "pointerEvents": "none",
             },
           }
         }
@@ -227,12 +231,14 @@ exports[`<Sheet /> should open 1`] = `
               childrenAppearStyle={
                 Object {
                   "opacity": 0.2,
+                  "pointerEvents": "auto",
                 }
               }
               childrenBaseStyle={
                 Object {
                   "background": "#000",
                   "opacity": 0,
+                  "pointerEvents": "auto",
                   "transition": "opacity 200ms ease-out",
                   "zIndex": 4,
                 }
@@ -240,24 +246,28 @@ exports[`<Sheet /> should open 1`] = `
               childrenEnterStyle={
                 Object {
                   "opacity": 0.2,
+                  "pointerEvents": "auto",
                 }
               }
               childrenLeaveStyle={
                 Object {
                   "opacity": 0,
+                  "pointerEvents": "none",
                 }
               }
-              key=".$.0"
+              key=".$.$backdrop"
             >
               <div
                 aria-hidden={true}
                 className="css-30873t  common__backdrop"
                 data-test-id="Backdrop"
+                key="backdrop"
                 onClick={[Function]}
                 style={
                   Object {
                     "background": "#000",
                     "opacity": 0,
+                    "pointerEvents": "auto",
                     "transition": "opacity 200ms ease-out",
                     "zIndex": 4,
                   }
@@ -637,18 +647,22 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           Object {
             "appear": Object {
               "opacity": 0.2,
+              "pointerEvents": "auto",
             },
             "base": Object {
               "background": "#000",
               "opacity": 0,
+              "pointerEvents": "auto",
               "transition": "opacity 200ms ease-out",
               "zIndex": 4,
             },
             "enter": Object {
               "opacity": 0.2,
+              "pointerEvents": "auto",
             },
             "leave": Object {
               "opacity": 0,
+              "pointerEvents": "none",
             },
           }
         }
@@ -662,12 +676,14 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               childrenAppearStyle={
                 Object {
                   "opacity": 0.2,
+                  "pointerEvents": "auto",
                 }
               }
               childrenBaseStyle={
                 Object {
                   "background": "#000",
                   "opacity": 0,
+                  "pointerEvents": "auto",
                   "transition": "opacity 200ms ease-out",
                   "zIndex": 4,
                 }
@@ -675,24 +691,28 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               childrenEnterStyle={
                 Object {
                   "opacity": 0.2,
+                  "pointerEvents": "auto",
                 }
               }
               childrenLeaveStyle={
                 Object {
                   "opacity": 0,
+                  "pointerEvents": "none",
                 }
               }
-              key=".$.0"
+              key=".$.$backdrop"
             >
               <div
                 aria-hidden={true}
                 className="css-30873t  common__backdrop"
                 data-test-id="Backdrop"
+                key="backdrop"
                 onClick={[Function]}
                 style={
                   Object {
                     "background": "#000",
                     "opacity": 0,
+                    "pointerEvents": "auto",
                     "transition": "opacity 200ms ease-out",
                     "zIndex": 4,
                   }
