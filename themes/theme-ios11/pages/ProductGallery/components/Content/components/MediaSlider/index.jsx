@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { Swiper, Image } from '@shopgate/engage/components';
+import { appConfig } from '@shopgate/engage';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import styles from './style';
 import connect from './connector';
+
+const { pdpImageSliderPaginationType } = appConfig || {};
 
 /**
  * The Product media gallery component.
@@ -24,6 +27,7 @@ const ProductGalleryMedia = ({ initialSlide, media }) => {
   return (
     <div className={styles.container}>
       <Swiper
+        paginationType={pdpImageSliderPaginationType}
         classNames={styles.sliderStyles}
         className={styles.slider}
         initialSlide={initialSlide}

@@ -225,7 +225,7 @@
       "destination": "frontend",
       "default": "bullets",
       "params": {
-        "type": "json",
+        "type": "text",
         "label": "Pagination type for the image slider on the product detail page. Possible variants: bullets (a.k.a dynamic), fraction, progressbar"
       }
     },

@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MediaSlider, MediaImage } from '@shopgate/engage/product';
+import { appConfig } from '@shopgate/engage';
 import connect from './connector';
+
+const { pdpImageSliderPaginationType } = appConfig || {};
 
 /**
  * The product media slider component.
@@ -14,6 +17,7 @@ const ProductMediaSlider = ({
   className,
 }) => (
   <MediaSlider
+    paginationType={pdpImageSliderPaginationType}
     productId={productId}
     className={className}
     renderPlaceholder={(featuredMedia) => {

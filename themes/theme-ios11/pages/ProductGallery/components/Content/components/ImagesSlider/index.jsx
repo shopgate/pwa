@@ -28,7 +28,7 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
   return (
     <div className={styles.container}>
       <Swiper
-        paginationConfig={pdpImageSliderPaginationType}
+        paginationType={pdpImageSliderPaginationType}
         classNames={styles.sliderStyles}
         className={styles.slider}
         initialSlide={initialSlide}
@@ -38,9 +38,6 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
         zoom={{
           ...GALLERY_SLIDER_ZOOM,
           ...zoom,
-        }}
-        style={{
-          '--swiper-pagination-fraction-top-offset': 'calc(4px + var(--safe-area-inset-top)',
         }}
       >
         {images.map(image => (

@@ -21,6 +21,8 @@ const container = css({
 
 const slider = css({
   height: '100%',
+  '--swiper-pagination-fraction-top-offset': 'calc(4px + var(--safe-area-inset-top))',
+  '--swiper-pagination-bottom': 'max(var(--safe-area-inset-bottom), 8px)',
 }).toString();
 
 const slide = css({

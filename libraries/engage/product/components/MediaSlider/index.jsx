@@ -2,14 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals, Swiper } from '@shopgate/engage/components';
 import { PRODUCT_MEDIA } from '@shopgate/pwa-common-commerce/product';
-import { appConfig } from '@shopgate/engage';
 import { MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '../../constants';
 import MediaImage from './components/MediaImage';
 import MediaVideo from './components/MediaVideo';
 import connect from './connector';
 import { container } from './style';
-
-const { pdpImageSliderPaginationType } = appConfig || {};
 
 const typeRenders = {
   [MEDIA_TYPE_IMAGE]: MediaImage,
@@ -21,7 +18,13 @@ const typeRenders = {
  * @returns {JSX.Element}
  */
 const MediaSlider = ({
-  navigate, featuredMedia, media, 'aria-hidden': ariaHidden, renderPlaceholder, className,
+  navigate,
+  featuredMedia,
+  media,
+  'aria-hidden': ariaHidden,
+  renderPlaceholder,
+  className,
+  paginationType,
 }) => {
   let currentSlide = 0;
 
@@ -49,7 +52,7 @@ const MediaSlider = ({
       <SurroundPortals portalName={PRODUCT_MEDIA}>
         {media &&
           <Swiper
-            paginationConfig={pdpImageSliderPaginationType}
+            paginationType={paginationType}
             loop={media.length > 1}
             indicators
             onSlideChange={setCurrentSlide}
@@ -91,6 +94,7 @@ MediaSlider.propTypes = {
     title: PropTypes.string,
     url: PropTypes.string,
   })),
+  paginationType: PropTypes.string,
   renderPlaceholder: PropTypes.func,
 };
 
@@ -98,6 +102,7 @@ MediaSlider.defaultProps = {
   'aria-hidden': null,
   className: null,
   featuredMedia: null,
+  paginationType: null,
   media: null,
   renderPlaceholder: featuredMedia => (<MediaImage {...featuredMedia} />),
 };

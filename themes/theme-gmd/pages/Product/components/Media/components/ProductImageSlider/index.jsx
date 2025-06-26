@@ -149,7 +149,7 @@ class ProductImageSlider extends Component {
     if (images && images.length > 1) {
       content = (
         <Swiper
-          paginationConfig={pdpImageSliderPaginationType}
+          paginationType={pdpImageSliderPaginationType}
           loop
           indicators
           onSlideChange={this.handleSlideChange}

@@ -40,7 +40,7 @@ export const innerContainer = css({
     background: themeColors.background,
     borderRadius: '50px',
     width: 'fit-content',
-    padding: 4,
+    padding: '4px 8px',
     margin: '4px 16px',
     transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   },
