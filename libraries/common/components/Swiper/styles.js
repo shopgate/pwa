@@ -47,7 +47,7 @@ export const innerContainer = css({
   ' .swiper-pagination-progressbar': {
     background: themeColors.shade7,
     ' .swiper-pagination-progressbar-fill': {
-      background: themeColors.primary,
+      background: themeColors.dark,
     },
   },
 }).toString();
