@@ -22,13 +22,10 @@ import OriginalSwiper from './components/OriginalSwiper';
 import {
   container, innerContainer, zoomFix, buttonNext, buttonPrev,
 } from './styles';
-import { themeConfig } from '../../helpers/config';
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
  */
-
-const { pdpImageSliderPaginationType } = themeConfig || {};
 
 /**
  * The basic Swiper component. It acts as a wrapper for the Swiper JS library component.
@@ -52,6 +49,7 @@ const Swiper = ({
   onSlideChange,
   additionalModules,
   children,
+  paginationConfig,
   ...swiperProps
 }) => {
   const useFraction = (maxIndicators && maxIndicators < children.length);
@@ -106,7 +104,7 @@ const Swiper = ({
     ...showPagination && {
       pagination: {
         el: undefined,
-        type: pdpImageSliderPaginationType || paginationType,
+        type: paginationConfig || paginationType,
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
         bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
         dynamicBullets: true,
@@ -118,9 +116,9 @@ const Swiper = ({
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
   }),
-  [additionalModules, classNames.container, classNames.bulletClass, classNames.bulletActiveClass,
-    swiperProps, autoPlay, interval, navigation, showPagination, paginationType, indicators,
-    children.length,
+  [additionalModules, classNames.container, classNames.bulletClass,
+    classNames.bulletActiveClass, swiperProps, autoPlay, interval, navigation,
+    showPagination, paginationConfig, paginationType, indicators, children.length,
     disabled, handleSlideChange]);
 
   useEffect(() => {
@@ -233,6 +231,10 @@ Swiper.propTypes = {
    * Invoked with the index of the new slide and the Swiper instance.
    */
   onSlideChange: PropTypes.func,
+  /**
+   * Config pdpImageSliderPaginationType to determine slider pagination type
+   */
+  paginationConfig: PropTypes.string,
 };
 
 Swiper.defaultProps = {
@@ -247,6 +249,7 @@ Swiper.defaultProps = {
   maxIndicators: null,
   disabled: false,
   onSlideChange: null,
+  paginationConfig: null,
 };
 
 export default Swiper;

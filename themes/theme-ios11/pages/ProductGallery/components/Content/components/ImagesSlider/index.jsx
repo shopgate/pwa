@@ -4,14 +4,17 @@ import { useWidgetSettings } from '@shopgate/engage/core';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { Image, SurroundPortals, Swiper } from '@shopgate/engage/components';
 import { PRODUCT_GALLERY_IMAGES } from '@shopgate/engage/product';
+import { themeConfig } from '@shopgate/engage';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import styles from './style';
 import connect from './connector';
 
+const { pdpImageSliderPaginationType } = themeConfig || {};
+
 /**
  * The Product Gallery content component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const ProductGalleryImages = ({ initialSlide, images }) => {
   const { zoom = {} } = useWidgetSettings('@shopgate/engage/product/Gallery') || {};
@@ -25,6 +28,7 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
   return (
     <div className={styles.container}>
       <Swiper
+        paginationConfig={pdpImageSliderPaginationType}
         classNames={styles.sliderStyles}
         className={styles.slider}
         initialSlide={initialSlide}
@@ -34,6 +38,9 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
         zoom={{
           ...GALLERY_SLIDER_ZOOM,
           ...zoom,
+        }}
+        style={{
+          '--swiper-pagination-fraction-top-offset': 'calc(4px + var(--safe-area-inset-top)',
         }}
       >
         {images.map(image => (
@@ -63,7 +70,7 @@ ProductGalleryImages.propTypes = {
 
 /**
  * @param {Object} props The component props.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const Wrapper = props => (
   <SurroundPortals portalName={PRODUCT_GALLERY_IMAGES} portalProps={props}>
