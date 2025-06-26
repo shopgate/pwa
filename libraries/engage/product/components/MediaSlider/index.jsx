@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals, Swiper } from '@shopgate/engage/components';
 import { PRODUCT_MEDIA } from '@shopgate/pwa-common-commerce/product';
+import { appConfig } from '@shopgate/engage';
 import { MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '../../constants';
 import MediaImage from './components/MediaImage';
 import MediaVideo from './components/MediaVideo';
 import connect from './connector';
 import { container } from './style';
+
+const { pdpImageSliderPaginationType } = appConfig || {};
 
 const typeRenders = {
   [MEDIA_TYPE_IMAGE]: MediaImage,
@@ -15,7 +18,7 @@ const typeRenders = {
 
 /**
  * The product media slider component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const MediaSlider = ({
   navigate, featuredMedia, media, 'aria-hidden': ariaHidden, renderPlaceholder, className,
@@ -46,6 +49,7 @@ const MediaSlider = ({
       <SurroundPortals portalName={PRODUCT_MEDIA}>
         {media &&
           <Swiper
+            paginationConfig={pdpImageSliderPaginationType}
             loop={media.length > 1}
             indicators
             onSlideChange={setCurrentSlide}

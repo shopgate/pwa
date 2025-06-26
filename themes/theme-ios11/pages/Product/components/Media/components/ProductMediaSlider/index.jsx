@@ -5,7 +5,7 @@ import connect from './connector';
 
 /**
  * The product media slider component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const ProductMediaSlider = ({
   productId,

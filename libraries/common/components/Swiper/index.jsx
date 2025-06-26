@@ -232,7 +232,7 @@ Swiper.propTypes = {
    */
   onSlideChange: PropTypes.func,
   /**
-   * Config pdpImageSliderPaginationType to determine slider pagination type
+   * Config to determine slider pagination type
    */
   paginationConfig: PropTypes.string,
 };

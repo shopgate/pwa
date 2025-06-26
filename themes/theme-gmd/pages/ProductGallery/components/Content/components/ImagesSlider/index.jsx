@@ -4,12 +4,12 @@ import { useWidgetSettings } from '@shopgate/engage/core';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { Image, SurroundPortals, Swiper } from '@shopgate/engage/components';
 import { PRODUCT_GALLERY_IMAGES } from '@shopgate/engage/product';
-import { themeConfig } from '@shopgate/engage';
+import { appConfig } from '@shopgate/engage';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import styles from './style';
 import connect from './connector';
 
-const { pdpImageSliderPaginationType } = themeConfig || {};
+const { pdpImageSliderPaginationType } = appConfig || {};
 
 /**
  * The Product Gallery content component.

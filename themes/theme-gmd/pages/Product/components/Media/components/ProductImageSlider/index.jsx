@@ -11,10 +11,10 @@ import {
   ProductImage,
   getProductImageSettings,
 } from '@shopgate/engage/product';
-import { themeConfig } from '@shopgate/engage';
+import { appConfig } from '@shopgate/engage';
 import connect from './connector';
 
-const { pdpImageSliderPaginationType } = themeConfig || {};
+const { pdpImageSliderPaginationType } = appConfig || {};
 
 /**
  * The product image slider component.
