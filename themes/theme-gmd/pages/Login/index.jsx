@@ -8,6 +8,7 @@ import {
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   View, TextLink, I18n, RippleButton, TextField, Portal,
+  PersonIcon, LockIcon, VisibilityIcon, VisibilityOffIcon,
 } from '@shopgate/engage/components';
 import { validate, i18n } from '@shopgate/engage/core';
 import { RouteContext } from '@shopgate/pwa-common/context';
@@ -23,8 +24,6 @@ import {
   PAGE_LOGIN_FORM_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { CloseBar } from 'Components/AppBar/presets';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import Icon from '@shopgate/pwa-common/components/Icon';
 import classNames from 'classnames';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
@@ -209,11 +208,7 @@ class Login extends Component {
     const hasLoginError = showErrors && loginError.length > 0;
     const hasPasswordError = showErrors && passwordError.length > 0;
 
-    const {
-      person, lock, visibility, visibilityOff,
-    } = themeConfig.icons || {};
-    const isToggleVisible = visibility && visibilityOff;
-    const iconVisibility = this.state.isPasswordVisible ? visibilityOff : visibility;
+    const VisibilityToggleIcon = this.state.isPasswordVisible ? VisibilityOffIcon : VisibilityIcon;
 
     return (
       <View>
@@ -245,7 +240,7 @@ class Login extends Component {
                     'aria-invalid': hasLoginError,
                     'aria-describedby': hasLoginError ? 'ariaError-email' : null,
                   }}
-                  leftElement={person ? <Icon content={person} className={styles.icon} /> : null}
+                  leftElement={<PersonIcon className={classNames(styles.icon, styles.iconLeft)} />}
                 />
                 <TextField
                   required
@@ -261,8 +256,8 @@ class Login extends Component {
                     'aria-invalid': hasPasswordError,
                     'aria-describedby': hasPasswordError ? 'ariaError-password' : null,
                   }}
-                  leftElement={lock ? <Icon content={lock} className={styles.icon} /> : null}
-                  rightElement={isToggleVisible ? (
+                  leftElement={<LockIcon className={classNames(styles.icon, styles.iconLeft)} />}
+                  rightElement={
                     <div
                       role="button"
                       tabIndex={0}
@@ -272,10 +267,11 @@ class Login extends Component {
                         ? i18n.text('login.hide_password')
                         : i18n.text('login.show_password')
                       }
+                      className={styles.toggleButton}
                     >
-                      <Icon content={iconVisibility} className={styles.icon} />
+                      <VisibilityToggleIcon className={classNames(styles.icon, styles.iconRight)} />
                     </div>
-                  ) : null}
+                  }
                 />
                 <div className={styles.forgotWrapper}>
                   <ForgotPassword />
