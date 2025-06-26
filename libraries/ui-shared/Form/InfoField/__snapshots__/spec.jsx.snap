@@ -5,6 +5,7 @@ exports[`<InfoField> should render info field 1`] = `
   className=""
   disabled={false}
   errorText=""
+  hasLeftElement={false}
   hasPlaceholder={true}
   hasUnderline={true}
   hasValue={false}

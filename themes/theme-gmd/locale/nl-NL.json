@@ -528,6 +528,8 @@
     "password": "Wachtwoord",
     "forgot_password": "Wachtwoord vergeten?",
     "forgot_password_popup": "Gebruik alsublieft de desktop website om uw wachtwoord te resetten.",
+    "hide_password": "Wachtwoord verbergen",
+    "show_password": "Wachtwoord tonen",
     "button": "Log in",
     "no_account": "Heeft u geen account?",
     "register": "Creëer uw account hier!",

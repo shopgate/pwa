@@ -33,6 +33,7 @@ const subline = css({
 
 const form = css({
   paddingTop: variables.gap.big * 1.5,
+  '--form-element-left-offset': '30px',
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     ...StylePresets.OUTLINED_FORM_FIELDS,
     ' .simpleInput': {
@@ -79,6 +80,25 @@ const signup = css({
   padding: '.35em',
 }).toString();
 
+const icon = css({
+  fill: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+  width: '24px',
+  height: '24px',
+}).toString();
+
+const iconLeft = css({
+  marginRight: variables.gap.xsmall,
+}).toString();
+
+const iconRight = css({
+  marginLeft: variables.gap.xsmall,
+}).toString();
+
+const toggleButton = css({
+  padding: '4px',
+  margin: '-4px 0',
+}).toString();
+
 export default {
   container,
   headline,
@@ -90,4 +110,8 @@ export default {
   button,
   noAccount,
   signup,
+  icon,
+  iconLeft,
+  iconRight,
+  toggleButton,
 };

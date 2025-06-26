@@ -16,7 +16,7 @@ exports[`<CartEmpty /> should render 1`] = `
       className="css-aphe06"
     >
       <div
-        className="css-11342l"
+        className="css-11342l empty-cart__image"
       >
         <Icon />
       </div>

@@ -528,6 +528,8 @@
     "password": "Password",
     "forgot_password": "Password dimenticata?",
     "forgot_password_popup": "Usa il sito web del desktop per resettare la password prego.",
+    "hide_password": "Nascondi password",
+    "show_password": "Mostra password",
     "button": "Accedi",
     "no_account": "Non hai un account?",
     "register": "Crealo qui!",

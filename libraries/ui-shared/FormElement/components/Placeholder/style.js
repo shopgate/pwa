@@ -21,7 +21,7 @@ const placeholder = css({
   position: 'absolute',
   pointerEvents: 'none',
   top: 24,
-  color: themeConfig.colors.shade4,
+  color: `var(--color-text-medium-emphasis, ${themeConfig.colors.shade6})`,
   willChange: 'transform',
   transition: `opacity ${easing}`,
   ...ellipsisLine,
@@ -35,15 +35,25 @@ const placeholderInactive = css({
 }).toString();
 
 /**
+ * Additional left spacing when a left element is present
+ */
+const leftOffset = css({
+  left: 'var(--form-element-left-offset, 26px)',
+  width: 'calc(100% - var(--form-element-left-offset, 26px))',
+}).toString();
+
+/**
  * Gets the style classes for the underline element.
  * @param {boolean} visible Whether the hint is visible.
+ * @param {boolean} hasLeftElement - Whether a left element is present.
  * @return {string} The style classes.
  */
-const placeholderStyles = (visible = false) => (
+const placeholderStyles = (visible = false, hasLeftElement = false) => (
   classNames(
     placeholder,
     {
       [placeholderInactive]: !visible,
+      [leftOffset]: hasLeftElement,
     }
   )
 );

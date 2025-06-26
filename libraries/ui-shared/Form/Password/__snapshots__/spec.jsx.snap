@@ -41,6 +41,7 @@ exports[`<Password> should render a password field 1`] = `
       className="ui-shared__form__password undefined ui-shared__form__text-field"
       disabled={false}
       errorText=""
+      hasLeftElement={false}
       hasPlaceholder={true}
       hasUnderline={true}
       hasValue={false}
@@ -74,7 +75,10 @@ exports[`<Password> should render a password field 1`] = `
               >
                 <_default
                   attributes={null}
-                  className="css-keangt"
+                  className="
+                css-keangt 
+                
+              "
                   maxLength=""
                   multiLine={false}
                   name="test-input"
@@ -88,7 +92,10 @@ exports[`<Password> should render a password field 1`] = `
                     attributes={null}
                     autoComplete={false}
                     autoCorrect={false}
-                    className="css-keangt"
+                    className="
+                css-keangt 
+                
+              "
                     disabled={false}
                     id={null}
                     inputComponent="input"
@@ -111,7 +118,10 @@ exports[`<Password> should render a password field 1`] = `
                     <input
                       autoComplete="off"
                       autoCorrect="off"
-                      className="css-keangt simpleInput common__simple-input"
+                      className="
+                css-keangt 
+                
+               simpleInput common__simple-input"
                       disabled={false}
                       id={null}
                       inputMode={null}
@@ -134,13 +144,13 @@ exports[`<Password> should render a password field 1`] = `
               </li>
             </GridItem>
             <GridItem
-              className="css-h3zoee"
+              className="css-1wtqg4g"
               component="li"
               grow={0}
               shrink={1}
             >
               <li
-                className="css-h3zoee"
+                className="css-1wtqg4g"
               >
                 <ToggleIcon
                   offIcon={

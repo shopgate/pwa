@@ -10,7 +10,9 @@ import ProductCard, { ProductCardUnwrapped } from './index';
 
 jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/engage/core');
-jest.mock('./components/Render', () => function ProductCardRender() { return null; });
+jest.mock('@shopgate/engage/product/components', () => ({
+  ProductCard: () => null,
+}));
 
 /**
  * Creates a state for a mocked store.
@@ -54,7 +56,7 @@ describe('<ProductCard />', () => {
     const wrapper = renderComponent({ productId: mockProductId });
     expect(wrapper).toMatchSnapshot();
 
-    const renderWrapper = wrapper.find('ProductCardRender');
+    const renderWrapper = wrapper.find('ProductCard ProductCard');
     expect(renderWrapper.prop('url')).toBe(`${ITEM_PATH}/${bin2hex(mockProductId)}`);
     expect(renderWrapper.prop('product')).toBe(mockProduct);
   });

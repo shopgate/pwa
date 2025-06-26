@@ -8,8 +8,9 @@ import {
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   View, TextLink, I18n, RippleButton, TextField, Portal,
+  PersonIcon, LockIcon, VisibilityIcon, VisibilityOffIcon,
 } from '@shopgate/engage/components';
-import { validate } from '@shopgate/engage/core';
+import { validate, i18n } from '@shopgate/engage/core';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import {
   PAGE_LOGIN_BEFORE,
@@ -34,6 +35,7 @@ const defaultState = {
   loginError: '',
   passwordError: '',
   showErrors: false,
+  isPasswordVisible: false,
 };
 
 const loginConstraints = {
@@ -173,6 +175,26 @@ class Login extends Component {
   };
 
   /**
+   * Toggles the visibility of the password input field.
+   */
+  togglePasswordVisibility = () => {
+    this.setState(prevState => ({
+      isPasswordVisible: !prevState.isPasswordVisible,
+    }));
+  };
+
+  /**
+   * Handles keyboard interaction for toggling password visibility.
+   * @param {KeyboardEvent} e The keyboard event.
+   */
+  handlePasswordToggleKeyDown = (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.togglePasswordVisibility();
+    }
+  };
+
+  /**
    * Renders the component.
    * @return {JSX.Element}
    */
@@ -185,6 +207,8 @@ class Login extends Component {
 
     const hasLoginError = showErrors && loginError.length > 0;
     const hasPasswordError = showErrors && passwordError.length > 0;
+
+    const VisibilityToggleIcon = this.state.isPasswordVisible ? VisibilityOffIcon : VisibilityIcon;
 
     return (
       <View>
@@ -216,10 +240,11 @@ class Login extends Component {
                     'aria-invalid': hasLoginError,
                     'aria-describedby': hasLoginError ? 'ariaError-email' : null,
                   }}
+                  leftElement={<PersonIcon className={classNames(styles.icon, styles.iconLeft)} />}
                 />
                 <TextField
                   required
-                  password
+                  type={this.state.isPasswordVisible ? 'text' : 'password'}
                   name="password"
                   className={styles.input}
                   label="login.password"
@@ -231,6 +256,22 @@ class Login extends Component {
                     'aria-invalid': hasPasswordError,
                     'aria-describedby': hasPasswordError ? 'ariaError-password' : null,
                   }}
+                  leftElement={<LockIcon className={classNames(styles.icon, styles.iconLeft)} />}
+                  rightElement={
+                    <div
+                      role="button"
+                      tabIndex={0}
+                      onClick={this.togglePasswordVisibility}
+                      onKeyDown={this.handlePasswordToggleKeyDown}
+                      aria-label={this.state.isPasswordVisible
+                        ? i18n.text('login.hide_password')
+                        : i18n.text('login.show_password')
+                      }
+                      className={styles.toggleButton}
+                    >
+                      <VisibilityToggleIcon className={classNames(styles.icon, styles.iconRight)} />
+                    </div>
+                  }
                 />
                 <div className={styles.forgotWrapper}>
                   <ForgotPassword />

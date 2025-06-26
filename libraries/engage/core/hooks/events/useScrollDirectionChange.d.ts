@@ -43,6 +43,20 @@ export interface UseScrollDirectionChangeParams {
    */
   onlyFireOnDirectionChange?: boolean;
 
+  /**
+   * If true, onScrollUp fires only when scrollTop is below or equal to
+   * `onlyFireOnScrollUpAtTopOffset`.
+   * @default false
+   */
+  onlyFireOnScrollUpAtTop?: boolean;
+
+  /**
+   * Maximum scrollTop at which `onScrollUp` may fire when
+   * `onlyFireOnScrollUpAtTop` is true.
+   * @default 0
+   */
+  onlyFireOnScrollUpAtTopOffset?: number;
+
   /** Callback triggered on scroll up */
   onScrollUp?: ScrollCallback;
 
