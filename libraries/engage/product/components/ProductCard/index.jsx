@@ -46,7 +46,6 @@ function ProductCard(props) {
   const {
     product, hidePrice, hideRating, hideName, titleRows, url,
   } = props;
-
   const { meta } = useProductListType();
 
   const { ListImage: gridResolutions } = getProductImageSettings();

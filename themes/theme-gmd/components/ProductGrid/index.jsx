@@ -14,7 +14,23 @@ export const WIDGET_ID = '@shopgate/engage/product/ProductGrid';
 /**
  * The Product Grid component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Array} props.products The list of products to display.
+ * @param {string} props.scope Optional scope of the component. Will be used as subType property of
+ * the ProductListTypeContext and is intended as a description in which "context" the component is
+ * used.
+ * @param {Object} props.meta Optional metadata for the product list type context.
+ * @param {Object} props.flags The flags object.
+ * @param {boolean} props.flags.name Whether to display product names.
+ * @param {boolean} props.flags.price Whether to display product prices.
+ * @param {boolean} props.flags.reviews Whether to display rating stars.
+ * @param {boolean} props.infiniteLoad Whether the grid should support infinite loading.
+ * @param {Function} props.handleGetProducts Callback function that's invoked to load more products
+ * when infinite loading is enabled.
+ * @param {number} props.totalProductCount The total number of products. Needed when infinite
+ * loading is enabled.
+ * @param {string} props.requestHash The hash for the current request. Needed when infinite loading
+ * is enabled
+ * @returns {JSX.Element}
  */
 const ProductGrid = ({
   flags,
@@ -24,13 +40,14 @@ const ProductGrid = ({
   totalProductCount,
   requestHash,
   scope,
+  meta,
 }) => {
   const { columns = 2 } = useWidgetSettings(WIDGET_ID) || {};
 
   if (!infiniteLoad) {
     return (
       <Layout columns={columns}>
-        <ProductListTypeProvider type="productGrid" subType={scope}>
+        <ProductListTypeProvider type="productGrid" subType={scope} meta={meta}>
           {products.map(product => (
             <Iterator
               display={flags}
@@ -47,7 +64,7 @@ const ProductGrid = ({
   return (
     <ViewContext.Consumer>
       {({ getContentRef }) => (
-        <ProductListTypeProvider type="productGrid" subType={scope}>
+        <ProductListTypeProvider type="productGrid" subType={scope} meta={meta}>
           <InfiniteContainer
             containerRef={getContentRef()}
             wrapper={props => (
@@ -73,9 +90,14 @@ const ProductGrid = ({
 };
 
 ProductGrid.propTypes = {
-  flags: PropTypes.shape(),
+  flags: PropTypes.shape({
+    name: PropTypes.bool,
+    price: PropTypes.bool,
+    reviews: PropTypes.bool,
+  }),
   handleGetProducts: PropTypes.func,
   infiniteLoad: PropTypes.bool,
+  meta: PropTypes.shape(),
   products: PropTypes.arrayOf(PropTypes.shape()),
   requestHash: PropTypes.string,
   /**
@@ -95,6 +117,7 @@ ProductGrid.defaultProps = {
   requestHash: null,
   totalProductCount: null,
   scope: null,
+  meta: null,
 };
 
 export default ProductGrid;
