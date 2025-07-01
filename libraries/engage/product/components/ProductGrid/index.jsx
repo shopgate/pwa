@@ -48,7 +48,7 @@ const ProductGrid = ({
 
   const columns = useResponsiveValue({
     xs: 2,
-    lg: 4,
+    md: 4,
   });
 
   if (!infiniteLoad) {
