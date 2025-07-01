@@ -333,18 +333,22 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     Object {
                       "appear": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "base": Object {
                         "background": "#000",
                         "opacity": 0,
+                        "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
                       },
                       "enter": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "leave": Object {
                         "opacity": 0,
+                        "pointerEvents": "none",
                       },
                     }
                   }
@@ -358,12 +362,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                         childrenAppearStyle={
                           Object {
                             "opacity": 0.2,
+                            "pointerEvents": "auto",
                           }
                         }
                         childrenBaseStyle={
                           Object {
                             "background": "#000",
                             "opacity": 0,
+                            "pointerEvents": "auto",
                             "transition": "opacity 200ms ease-out",
                             "zIndex": 4,
                           }
@@ -371,24 +377,28 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                         childrenEnterStyle={
                           Object {
                             "opacity": 0.2,
+                            "pointerEvents": "auto",
                           }
                         }
                         childrenLeaveStyle={
                           Object {
                             "opacity": 0,
+                            "pointerEvents": "none",
                           }
                         }
-                        key=".$.0"
+                        key=".$.$backdrop"
                       >
                         <div
                           aria-hidden={true}
                           className="css-30873t  common__backdrop"
                           data-test-id="Backdrop"
+                          key="backdrop"
                           onClick={[Function]}
                           style={
                             Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             }
@@ -741,18 +751,22 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     Object {
                       "appear": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "base": Object {
                         "background": "#000",
                         "opacity": 0,
+                        "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
                       },
                       "enter": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "leave": Object {
                         "opacity": 0,
+                        "pointerEvents": "none",
                       },
                     }
                   }
@@ -766,12 +780,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         childrenAppearStyle={
                           Object {
                             "opacity": 0.2,
+                            "pointerEvents": "auto",
                           }
                         }
                         childrenBaseStyle={
                           Object {
                             "background": "#000",
                             "opacity": 0,
+                            "pointerEvents": "auto",
                             "transition": "opacity 200ms ease-out",
                             "zIndex": 4,
                           }
@@ -779,24 +795,28 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         childrenEnterStyle={
                           Object {
                             "opacity": 0.2,
+                            "pointerEvents": "auto",
                           }
                         }
                         childrenLeaveStyle={
                           Object {
                             "opacity": 0,
+                            "pointerEvents": "none",
                           }
                         }
-                        key=".$.0"
+                        key=".$.$backdrop"
                       >
                         <div
                           aria-hidden={true}
                           className="css-30873t  common__backdrop"
                           data-test-id="Backdrop"
+                          key="backdrop"
                           onClick={[Function]}
                           style={
                             Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             }
@@ -1189,18 +1209,22 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     Object {
                       "appear": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "base": Object {
                         "background": "#000",
                         "opacity": 0,
+                        "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
                       },
                       "enter": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "leave": Object {
                         "opacity": 0,
+                        "pointerEvents": "none",
                       },
                     }
                   }
@@ -1214,12 +1238,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         childrenAppearStyle={
                           Object {
                             "opacity": 0.2,
+                            "pointerEvents": "auto",
                           }
                         }
                         childrenBaseStyle={
                           Object {
                             "background": "#000",
                             "opacity": 0,
+                            "pointerEvents": "auto",
                             "transition": "opacity 200ms ease-out",
                             "zIndex": 4,
                           }
@@ -1227,24 +1253,28 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         childrenEnterStyle={
                           Object {
                             "opacity": 0.2,
+                            "pointerEvents": "auto",
                           }
                         }
                         childrenLeaveStyle={
                           Object {
                             "opacity": 0,
+                            "pointerEvents": "none",
                           }
                         }
-                        key=".$.0"
+                        key=".$.$backdrop"
                       >
                         <div
                           aria-hidden={true}
                           className="css-30873t  common__backdrop"
                           data-test-id="Backdrop"
+                          key="backdrop"
                           onClick={[Function]}
                           style={
                             Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             }
@@ -1598,18 +1628,22 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     Object {
                       "appear": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "base": Object {
                         "background": "#000",
                         "opacity": 0,
+                        "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
                       },
                       "enter": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "leave": Object {
                         "opacity": 0,
+                        "pointerEvents": "none",
                       },
                     }
                   }
@@ -1623,12 +1657,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                         childrenAppearStyle={
                           Object {
                             "opacity": 0.2,
+                            "pointerEvents": "auto",
                           }
                         }
                         childrenBaseStyle={
                           Object {
                             "background": "#000",
                             "opacity": 0,
+                            "pointerEvents": "auto",
                             "transition": "opacity 200ms ease-out",
                             "zIndex": 4,
                           }
@@ -1636,24 +1672,28 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                         childrenEnterStyle={
                           Object {
                             "opacity": 0.2,
+                            "pointerEvents": "auto",
                           }
                         }
                         childrenLeaveStyle={
                           Object {
                             "opacity": 0,
+                            "pointerEvents": "none",
                           }
                         }
-                        key=".$.0"
+                        key=".$.$backdrop"
                       >
                         <div
                           aria-hidden={true}
                           className="css-30873t  common__backdrop"
                           data-test-id="Backdrop"
+                          key="backdrop"
                           onClick={[Function]}
                           style={
                             Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             }
@@ -1806,18 +1846,22 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                     Object {
                       "appear": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "base": Object {
                         "background": "#000",
                         "opacity": 0,
+                        "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
                       },
                       "enter": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "leave": Object {
                         "opacity": 0,
+                        "pointerEvents": "none",
                       },
                     }
                   }
@@ -1973,18 +2017,22 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                     Object {
                       "appear": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "base": Object {
                         "background": "#000",
                         "opacity": 0,
+                        "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
                       },
                       "enter": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "leave": Object {
                         "opacity": 0,
+                        "pointerEvents": "none",
                       },
                     }
                   }
@@ -2135,18 +2183,22 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                     Object {
                       "appear": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "base": Object {
                         "background": "#000",
                         "opacity": 0,
+                        "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
                       },
                       "enter": Object {
                         "opacity": 0.2,
+                        "pointerEvents": "auto",
                       },
                       "leave": Object {
                         "opacity": 0,
+                        "pointerEvents": "none",
                       },
                     }
                   }

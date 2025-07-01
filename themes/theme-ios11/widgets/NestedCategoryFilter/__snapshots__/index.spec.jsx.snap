@@ -172,18 +172,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -724,18 +728,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -749,12 +757,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               childrenAppearStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenBaseStyle={
                                 Object {
                                   "background": "#000",
                                   "opacity": 0,
+                                  "pointerEvents": "auto",
                                   "transition": "opacity 200ms ease-out",
                                   "zIndex": 4,
                                 }
@@ -762,24 +772,28 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               childrenEnterStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenLeaveStyle={
                                 Object {
                                   "opacity": 0,
+                                  "pointerEvents": "none",
                                 }
                               }
-                              key=".$.0"
+                              key=".$.$backdrop"
                             >
                               <div
                                 aria-hidden={true}
                                 className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
+                                key="backdrop"
                                 onClick={[Function]}
                                 style={
                                   Object {
                                     "background": "#000",
                                     "opacity": 0,
+                                    "pointerEvents": "auto",
                                     "transition": "opacity 200ms ease-out",
                                     "zIndex": 4,
                                   }
@@ -1100,18 +1114,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -1253,18 +1271,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -1389,18 +1411,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -1973,18 +1999,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -1998,12 +2028,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               childrenAppearStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenBaseStyle={
                                 Object {
                                   "background": "#000",
                                   "opacity": 0,
+                                  "pointerEvents": "auto",
                                   "transition": "opacity 200ms ease-out",
                                   "zIndex": 4,
                                 }
@@ -2011,24 +2043,28 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               childrenEnterStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenLeaveStyle={
                                 Object {
                                   "opacity": 0,
+                                  "pointerEvents": "none",
                                 }
                               }
-                              key=".$.0"
+                              key=".$.$backdrop"
                             >
                               <div
                                 aria-hidden={true}
                                 className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
+                                key="backdrop"
                                 onClick={[Function]}
                                 style={
                                   Object {
                                     "background": "#000",
                                     "opacity": 0,
+                                    "pointerEvents": "auto",
                                     "transition": "opacity 200ms ease-out",
                                     "zIndex": 4,
                                   }
@@ -2168,18 +2204,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -2738,18 +2778,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -2763,12 +2807,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               childrenAppearStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenBaseStyle={
                                 Object {
                                   "background": "#000",
                                   "opacity": 0,
+                                  "pointerEvents": "auto",
                                   "transition": "opacity 200ms ease-out",
                                   "zIndex": 4,
                                 }
@@ -2776,24 +2822,28 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               childrenEnterStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenLeaveStyle={
                                 Object {
                                   "opacity": 0,
+                                  "pointerEvents": "none",
                                 }
                               }
-                              key=".$.0"
+                              key=".$.$backdrop"
                             >
                               <div
                                 aria-hidden={true}
                                 className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
+                                key="backdrop"
                                 onClick={[Function]}
                                 style={
                                   Object {
                                     "background": "#000",
                                     "opacity": 0,
+                                    "pointerEvents": "auto",
                                     "transition": "opacity 200ms ease-out",
                                     "zIndex": 4,
                                   }
@@ -3183,18 +3233,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -3208,12 +3262,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               childrenAppearStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenBaseStyle={
                                 Object {
                                   "background": "#000",
                                   "opacity": 0,
+                                  "pointerEvents": "auto",
                                   "transition": "opacity 200ms ease-out",
                                   "zIndex": 4,
                                 }
@@ -3221,24 +3277,28 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               childrenEnterStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenLeaveStyle={
                                 Object {
                                   "opacity": 0,
+                                  "pointerEvents": "none",
                                 }
                               }
-                              key=".$.0"
+                              key=".$.$backdrop"
                             >
                               <div
                                 aria-hidden={true}
                                 className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
+                                key="backdrop"
                                 onClick={[Function]}
                                 style={
                                   Object {
                                     "background": "#000",
                                     "opacity": 0,
+                                    "pointerEvents": "auto",
                                     "transition": "opacity 200ms ease-out",
                                     "zIndex": 4,
                                   }
@@ -3529,18 +3589,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -4069,18 +4133,22 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           Object {
                             "appear": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "base": Object {
                               "background": "#000",
                               "opacity": 0,
+                              "pointerEvents": "auto",
                               "transition": "opacity 200ms ease-out",
                               "zIndex": 4,
                             },
                             "enter": Object {
                               "opacity": 0.2,
+                              "pointerEvents": "auto",
                             },
                             "leave": Object {
                               "opacity": 0,
+                              "pointerEvents": "none",
                             },
                           }
                         }
@@ -4094,12 +4162,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               childrenAppearStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenBaseStyle={
                                 Object {
                                   "background": "#000",
                                   "opacity": 0,
+                                  "pointerEvents": "auto",
                                   "transition": "opacity 200ms ease-out",
                                   "zIndex": 4,
                                 }
@@ -4107,24 +4177,28 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               childrenEnterStyle={
                                 Object {
                                   "opacity": 0.2,
+                                  "pointerEvents": "auto",
                                 }
                               }
                               childrenLeaveStyle={
                                 Object {
                                   "opacity": 0,
+                                  "pointerEvents": "none",
                                 }
                               }
-                              key=".$.0"
+                              key=".$.$backdrop"
                             >
                               <div
                                 aria-hidden={true}
                                 className="css-30873t  common__backdrop"
                                 data-test-id="Backdrop"
+                                key="backdrop"
                                 onClick={[Function]}
                                 style={
                                   Object {
                                     "background": "#000",
                                     "opacity": 0,
+                                    "pointerEvents": "auto",
                                     "transition": "opacity 200ms ease-out",
                                     "zIndex": 4,
                                   }

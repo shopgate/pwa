@@ -15,10 +15,16 @@ const typeRenders = {
 
 /**
  * The product media slider component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const MediaSlider = ({
-  navigate, featuredMedia, media, 'aria-hidden': ariaHidden, renderPlaceholder, className,
+  navigate,
+  featuredMedia,
+  media,
+  'aria-hidden': ariaHidden,
+  renderPlaceholder,
+  className,
+  paginationType,
 }) => {
   let currentSlide = 0;
 
@@ -46,6 +52,7 @@ const MediaSlider = ({
       <SurroundPortals portalName={PRODUCT_MEDIA}>
         {media &&
           <Swiper
+            paginationType={paginationType}
             loop={media.length > 1}
             indicators
             onSlideChange={setCurrentSlide}
@@ -87,6 +94,7 @@ MediaSlider.propTypes = {
     title: PropTypes.string,
     url: PropTypes.string,
   })),
+  paginationType: PropTypes.string,
   renderPlaceholder: PropTypes.func,
 };
 
@@ -94,6 +102,7 @@ MediaSlider.defaultProps = {
   'aria-hidden': null,
   className: null,
   featuredMedia: null,
+  paginationType: null,
   media: null,
   renderPlaceholder: featuredMedia => (<MediaImage {...featuredMedia} />),
 };

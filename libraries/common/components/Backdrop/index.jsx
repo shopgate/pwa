@@ -108,15 +108,19 @@ class Backdrop extends Component {
         opacity: 0,
         transition: `opacity ${this.props.duration}ms ease-out`,
         zIndex: this.props.level,
+        pointerEvents: 'auto',
       },
       appear: {
         opacity,
+        pointerEvents: 'auto',
       },
       enter: {
         opacity,
+        pointerEvents: 'auto',
       },
       leave: {
         opacity: 0,
+        pointerEvents: 'none',
       },
     };
 
@@ -125,7 +129,7 @@ class Backdrop extends Component {
     return (
       <Transition childrenStyles={transition}>
         {this.props.isVisible ?
-          <div data-test-id="Backdrop" aria-hidden className={className} onClick={this.props.onClick} /> : null
+          <div data-test-id="Backdrop" key="backdrop" aria-hidden className={className} onClick={this.props.onClick} /> : null
         }
       </Transition>
     );

@@ -12,7 +12,7 @@ import { innerShadow } from './style';
 
 /**
  * The featured image component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const MediaImage = ({
   url, altText, className, resolutions,

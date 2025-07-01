@@ -220,6 +220,15 @@
         "label": "If the Back-in-Stock feature is enabled / disabled."
       }
     },
+    "pdpImageSliderPaginationType": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": "bullets",
+      "params": {
+        "type": "text",
+        "label": "Pagination type for the image slider on the product detail page. Possible variants: bullets (a.k.a dynamic), fraction, progressbar"
+      }
+    },
     "theme": {
       "type": "admin",
       "destination": "frontend",

@@ -28,7 +28,7 @@ const styles = {
 
 /**
  * The product media component.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Media = ({ 'aria-hidden': ariaHidden, className }) => (
   <ProductContext.Consumer>
