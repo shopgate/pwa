@@ -1,5 +1,4 @@
-import React, { useMemo } from 'react';
-import { camelCase } from 'lodash';
+import React from 'react';
 import { ActionButton, I18n } from '@shopgate/engage/components';
 import { ProductGrid } from '@shopgate/engage/product/components';
 import { useWidgetProducts } from '@shopgate/engage/page/hooks';
@@ -11,61 +10,22 @@ import { useProductListWidget } from './hooks';
  */
 const ProductListWidget = () => {
   const {
-    config,
-  } = useProductListWidget();
-
-  const {
-    products,
-    productCount,
+    productsSearchType,
+    productsSearchValue,
     sort,
-    loadMoreButton = false,
-    showName = false,
-    showPrice = false,
-    showRating = false,
-  } = config;
-
-  const {
-    productSelectorType,
-    productsBrand,
-    productsCategory,
-    productsItemNumbers,
-    productsSearchTerm,
-  } = products;
-
-  const value = useMemo(() => {
-    switch (productSelectorType) {
-      case 'brand':
-        return productsBrand;
-      case 'category':
-        return productsCategory;
-      case 'itemNumbers':
-        return productsItemNumbers;
-      case 'searchTerm':
-      default:
-        return productsSearchTerm;
-    }
-  }, [
-    productSelectorType,
-    productsBrand,
-    productsCategory,
-    productsItemNumbers,
-    productsSearchTerm,
-  ]);
+    productCount,
+    showLoadMore,
+    flags,
+  } = useProductListWidget();
 
   const {
     fetchNext, hasNext, isFetching, results,
   } = useWidgetProducts({
-    type: productSelectorType || 'searchTerm',
-    value: value || '',
+    type: productsSearchType,
+    value: productsSearchValue,
     limit: productCount,
-    sort: camelCase(sort),
+    sort,
   });
-
-  const flags = useMemo(() => ({
-    name: showName,
-    price: showPrice,
-    reviews: showRating,
-  }), [showName, showPrice, showRating]);
 
   return (
     <>
@@ -75,7 +35,7 @@ const ProductListWidget = () => {
         scope="widgets"
         infiniteLoad={false}
       />
-      { hasNext && loadMoreButton && (
+      { hasNext && showLoadMore && (
       <ActionButton
         loading={isFetching}
         onClick={fetchNext}

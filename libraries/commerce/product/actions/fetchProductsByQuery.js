@@ -75,6 +75,7 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
           params,
           ...id && { id },
           includeFilters: false,
+          includeSort: false,
         }));
       }
 

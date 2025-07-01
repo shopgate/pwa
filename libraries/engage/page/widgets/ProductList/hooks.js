@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+import { camelCase } from 'lodash';
 import { useWidget } from '@shopgate/engage/page/hooks';
 
 /**
@@ -24,11 +26,67 @@ import { useWidget } from '@shopgate/engage/page/hooks';
 
 /**
  * @typedef {ReturnType< typeof import('@shopgate/engage/page/hooks')
- * .useWidget<ProductListWidgetConfig> >} HookReturnType
+ * .useWidget<ProductListWidgetConfig> >} UseWidgetReturnType
  */
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * Hook to access the Product List widget configuration.
- * @returns {HookReturnType}
  */
-export const useProductListWidget = () => useWidget();
+export const useProductListWidget = () => {
+  /** @type {UseWidgetReturnType}  */
+  const { config } = useWidget();
+
+  const {
+    products,
+    productCount,
+    sort,
+    loadMoreButton = false,
+    showName = false,
+    showPrice = false,
+    showRating = false,
+  } = config;
+
+  const {
+    productSelectorType,
+    productsBrand,
+    productsCategory,
+    productsItemNumbers,
+    productsSearchTerm,
+  } = products;
+
+  const value = useMemo(() => {
+    switch (productSelectorType) {
+      case 'brand':
+        return productsBrand;
+      case 'category':
+        return productsCategory;
+      case 'itemNumbers':
+        return productsItemNumbers.split(',').map(item => item.trim());
+      case 'searchTerm':
+      default:
+        return productsSearchTerm;
+    }
+  }, [
+    productSelectorType,
+    productsBrand,
+    productsCategory,
+    productsItemNumbers,
+    productsSearchTerm,
+  ]);
+
+  const flags = useMemo(() => ({
+    name: showName,
+    price: showPrice,
+    reviews: showRating,
+  }), [showName, showPrice, showRating]);
+
+  return {
+    productsSearchType: productSelectorType,
+    productsSearchValue: value,
+    sort: camelCase(sort),
+    productCount,
+    showLoadMore: loadMoreButton,
+    flags,
+  };
+};

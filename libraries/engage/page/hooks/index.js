@@ -49,14 +49,15 @@ export const useWidgetProducts = (options = {}) => {
   } = options;
 
   const dispatch = useDispatch();
+  const { code = `${type}_${value}_${limit}_${sort}` } = useWidget();
 
-  const { code = 'abc' } = useWidget();
-
+  // ###### Products selection ######
   const showInventoryInProductLists = useSelector(showInventoryInLists);
 
   const selectorOptions = useMemo(() => ({
     sort: transformDisplayOptions(sort),
     value,
+    useDefaultRequestForProductIds: true,
     ...(showInventoryInProductLists && {
       useDefaultRequestForProductIds: true,
     }),
@@ -69,49 +70,94 @@ export const useWidgetProducts = (options = {}) => {
 
   const widgetProducts = useSelector(getWidgetProducts);
 
-  const [hasNext, setHasNext] = useState(
-    typeof widgetProducts.totalProductCount !== 'number' || widgetProducts.products.length < widgetProducts.totalProductCount
-  );
+  // ###### Products request ######
 
-  // const offset = Math.min(widgetProducts.products.length, widgetProducts.totalProductCount ?? 0);
-  const offset = 0;
+  const [hasNext, setHasNext] = useState(true);
+  const [offset, setOffset] = useState(0);
+  const { isFetching } = widgetProducts;
 
-  const requestOptions = useMemo(() => ({
+  const baseRequestOptions = useMemo(() => ({
     limit,
-    offset,
     sort: transformDisplayOptions(sort),
+    useDefaultRequestForProductIds: true,
     ...(showInventoryInProductLists && {
       useDefaultRequestForProductIds: true,
     }),
-  }), [limit, offset, showInventoryInProductLists, sort]);
+  }), [limit, showInventoryInProductLists, sort]);
 
-  const fetchProducts = useCallback(async () => {
-    console.warn('fectch', value, requestOptions, code, hasNext);
-    if (!hasNext || !value) {
+  /**
+   * Callback to dispatch the initial fetch request for products when the mounts, or when its
+   * parameters change.
+   */
+  const fetchInitial = useCallback(async () => {
+    if (!value) {
+      setHasNext(false);
       return;
     }
+
+    // Initial request needs to start at offset 0
+    const initialOptions = {
+      ...baseRequestOptions,
+      offset: 0,
+    };
 
     const result = await dispatch(fetchProductsByQuery(
       REQUEST_TYPE_MAPPING[type],
       value,
-      requestOptions,
+      initialOptions,
       code
     ));
 
-    setHasNext(() => result.products.length >= requestOptions.limit);
-  }, [code, dispatch, hasNext, requestOptions, type, value]);
+    // Re-initialize offset and hasNext based on the result
+    setOffset(limit);
+    setHasNext(result.totalProductCount > limit);
+  }, [code, dispatch, type, value, limit, baseRequestOptions]);
 
+  // Effect to trigger the initial fetch when the component mounts or the parameters change.
   useEffect(() => {
-    setHasNext(() => true);
-    fetchProducts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [type, value, limit, sort]);
+    fetchInitial();
+  }, [fetchInitial]);
+
+  /**
+   * Callback to fetch the next chunk of products when e.g. users interacted with a "Load More"
+   * button.
+   */
+  const fetchNext = useCallback(async () => {
+    if (!hasNext || isFetching || !value) {
+      return;
+    }
+
+    const nextOptions = {
+      ...baseRequestOptions,
+      offset,
+    };
+
+    const result = await dispatch(fetchProductsByQuery(
+      REQUEST_TYPE_MAPPING[type],
+      value,
+      nextOptions,
+      code
+    ));
+
+    setOffset(offset + limit);
+    setHasNext(result.totalProductCount > offset + limit);
+  }, [
+    code,
+    dispatch,
+    hasNext,
+    isFetching,
+    value,
+    offset,
+    limit,
+    baseRequestOptions,
+    type,
+  ]);
 
   return {
-    fetchNext: fetchProducts,
+    fetchNext,
     hasNext,
-    isFetching: widgetProducts.isFetching,
-    results: widgetProducts.products,
+    isFetching,
+    results: widgetProducts.products.slice(0, offset),
     totalResultCount: widgetProducts.totalProductCount,
   };
 };

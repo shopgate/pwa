@@ -128,7 +128,7 @@ export const makeGetWidgetsFromPage = ({
  * @returns {Function} A selector function that generates a hash for the widget products result.
  */
 const makeGetWidgetProductsResultHash = (type, options, id) => {
-  const { value, sort } = options;
+  const { value, sort, useDefaultRequestForProductIds } = options;
 
   const transformedSort = transformDisplayOptions(sort);
 
@@ -158,7 +158,9 @@ const makeGetWidgetProductsResultHash = (type, options, id) => {
           hashParams = {
             id,
             productIds: value,
-            sort: transformedSort,
+            ...!useDefaultRequestForProductIds && {
+              sort: transformedSort,
+            },
             ...fulfillmentParams,
           };
 
@@ -175,7 +177,7 @@ const makeGetWidgetProductsResultHash = (type, options, id) => {
         default:
       }
 
-      return generateResultHash(hashParams, true, false);
+      return generateResultHash(hashParams, !!hashParams?.sort, false);
     }
   );
 };
