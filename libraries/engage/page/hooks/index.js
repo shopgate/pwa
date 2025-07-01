@@ -45,7 +45,7 @@ export const useWidgetProducts = (options = {}) => {
     type,
     value,
     limit = ITEMS_PER_LOAD,
-    sortOrder = 'relevance',
+    sort = 'relevance',
   } = options;
 
   const dispatch = useDispatch();
@@ -55,12 +55,12 @@ export const useWidgetProducts = (options = {}) => {
   const showInventoryInProductLists = useSelector(showInventoryInLists);
 
   const selectorOptions = useMemo(() => ({
-    sort: transformDisplayOptions(sortOrder),
+    sort: transformDisplayOptions(sort),
     value,
     ...(showInventoryInProductLists && {
       useDefaultRequestForProductIds: true,
     }),
-  }), [showInventoryInProductLists, sortOrder, value]);
+  }), [showInventoryInProductLists, sort, value]);
 
   const getWidgetProducts = useMemo(
     () => makeGetWidgetProducts(type, selectorOptions, code),
@@ -73,19 +73,21 @@ export const useWidgetProducts = (options = {}) => {
     typeof widgetProducts.totalProductCount !== 'number' || widgetProducts.products.length < widgetProducts.totalProductCount
   );
 
-  const offset = Math.min(widgetProducts.products.length, widgetProducts.totalProductCount ?? 0);
+  // const offset = Math.min(widgetProducts.products.length, widgetProducts.totalProductCount ?? 0);
+  const offset = 0;
 
   const requestOptions = useMemo(() => ({
     limit,
     offset,
-    sort: transformDisplayOptions(sortOrder),
+    sort: transformDisplayOptions(sort),
     ...(showInventoryInProductLists && {
       useDefaultRequestForProductIds: true,
     }),
-  }), [limit, offset, showInventoryInProductLists, sortOrder]);
+  }), [limit, offset, showInventoryInProductLists, sort]);
 
   const fetchProducts = useCallback(async () => {
-    if (!hasNext) {
+    console.warn('fectch', value, requestOptions, code, hasNext);
+    if (!hasNext || !value) {
       return;
     }
 
@@ -100,9 +102,10 @@ export const useWidgetProducts = (options = {}) => {
   }, [code, dispatch, hasNext, requestOptions, type, value]);
 
   useEffect(() => {
+    setHasNext(() => true);
     fetchProducts();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [type, value, limit, sort]);
 
   return {
     fetchNext: fetchProducts,

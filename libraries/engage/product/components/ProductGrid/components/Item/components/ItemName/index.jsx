@@ -25,7 +25,10 @@ const ItemName = ({
   name,
 }) => {
   const { classes, cx } = useStyles();
-  const portalProps = useMemo(() => ({ productId }), [productId]);
+  const portalProps = useMemo(() => ({
+    productId,
+    display,
+  }), [display, productId]);
 
   if (display && !display.name) {
     return null;

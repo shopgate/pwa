@@ -25,7 +25,7 @@ export type UseWidgetProductsOptions = {
    * Sort order for the products
    * @default 'relevance'
    */
-  sortOrder?: 'relevance' | 'priceAsc' | 'priceDesc' | 'nameAsc' | 'nameDesc';
+  sort?: 'relevance' | 'priceAsc' | 'priceDesc' | 'nameAsc' | 'nameDesc';
 };
 
 export type UseWidgetProductsResult = {
