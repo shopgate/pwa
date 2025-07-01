@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemDetails /> should render additional components with new services 1`] = `
+<Link
+  className="css-q9if5h-root theme__product-grid__item__item-details"
+  href="link-to-product/1234"
+  state={
+    Object {
+      "title": "Foo",
+    }
+  }
+  tabIndex={0}
+>
+  <Swatches
+    productId="1234"
+  />
+  <ItemName
+    display={null}
+    name="Foo"
+    productId="1234"
+  />
+  <MapPriceHint
+    productId="1234"
+  />
+  <OrderQuantityHint
+    className="css-1ke3znq-quantityHint"
+    productId="1234"
+  />
+  <EffectivityDates
+    productId="1234"
+  />
+  <Availability
+    showWhenAvailable={false}
+    state="AVAILABILITY_STATE_OK"
+    text="product.available.not"
+  />
+  <StockInfoLists
+    product={
+      Object {
+        "id": "1234",
+        "name": "Foo",
+        "price": Object {},
+      }
+    }
+  />
+  <ItemPrice
+    display={null}
+    product={
+      Object {
+        "id": "1234",
+        "name": "Foo",
+        "price": Object {},
+      }
+    }
+  />
+</Link>
+`;
+
+exports[`<ItemDetails /> should render with minimal props 1`] = `
+<Link
+  className="css-q9if5h-root theme__product-grid__item__item-details"
+  href="link-to-product/1234"
+  state={
+    Object {
+      "title": "Foo",
+    }
+  }
+  tabIndex={0}
+>
+  <Swatches
+    productId="1234"
+  />
+  <ItemName
+    display={null}
+    name="Foo"
+    productId="1234"
+  />
+  <MapPriceHint
+    productId="1234"
+  />
+  <OrderQuantityHint
+    className="css-1ke3znq-quantityHint"
+    productId="1234"
+  />
+  <EffectivityDates
+    productId="1234"
+  />
+  <ItemPrice
+    display={null}
+    product={
+      Object {
+        "id": "1234",
+        "name": "Foo",
+        "price": Object {},
+      }
+    }
+  />
+</Link>
+`;

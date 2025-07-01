@@ -13,4 +13,4 @@ import { createContext } from 'react';
  */
 
 /** @type {React.Context<WidgetContextType>} */
-export const WidgetContext = createContext();
+export const WidgetContext = createContext({});

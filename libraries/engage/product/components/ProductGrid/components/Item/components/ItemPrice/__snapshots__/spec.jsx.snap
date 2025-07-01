@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemPrice /> should render with minimal props 1`] = `
+<Component
+  portalName="PRODUCT_ITEM_PRICE"
+  portalProps={
+    Object {
+      "location": "productGrid",
+      "productId": "1234",
+    }
+  }
+>
+  <ProductGridPrice
+    product={
+      Object {
+        "id": "1234",
+        "price": Object {},
+      }
+    }
+  />
+</Component>
+`;
