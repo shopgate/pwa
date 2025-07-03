@@ -24,7 +24,7 @@ class ItemFavoritesButton extends PureComponent {
   };
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { productId, isFavorite } = this.props;

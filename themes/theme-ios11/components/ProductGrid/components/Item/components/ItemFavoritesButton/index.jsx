@@ -7,6 +7,7 @@ import {
   PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
+import classNames from 'classnames';
 import connect from './connector';
 import styles from './style';
 
@@ -24,7 +25,7 @@ class ItemFavoritesButton extends PureComponent {
   };
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const { productId, isFavorite } = this.props;
@@ -34,7 +35,7 @@ class ItemFavoritesButton extends PureComponent {
       <Fragment>
         <Portal name={PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_FAVORITES_BUTTON} props={props}>
-          <div className={styles} data-test-id="favorites">
+          <div className={classNames(styles, 'theme__favorites-button')} data-test-id="favorites">
             <FavoritesButton
               active={isFavorite}
               productId={productId}

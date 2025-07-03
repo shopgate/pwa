@@ -10,19 +10,20 @@ import {
   PRODUCT_CTAS_FAVORITES_BEFORE,
   PRODUCT_CTAS_FAVORITES_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import classNames from 'classnames';
 import styles from './style';
 import connect from './connector';
 
 /**
  * Renders CTA buttons for product page (add to cart + toggle favorites).
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
   <Fragment>
     <Portal name={PRODUCT_CTAS_BEFORE} />
     <Portal name={PRODUCT_CTAS}>
-      <div className={styles.buttons}>
+      <div className={classNames(styles.buttons, 'theme__product__header__cta-buttons')}>
         <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
         <Portal name={PRODUCT_CTAS_FAVORITES}>
           { isProductActive && (
