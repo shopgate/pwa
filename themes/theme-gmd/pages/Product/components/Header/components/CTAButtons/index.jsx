@@ -20,7 +20,7 @@ import connect from './connector';
 /**
  * Renders CTA buttons for product page (add to cart + toggle favorites).
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
   <Fragment>
