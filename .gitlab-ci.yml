@@ -1,0 +1,18 @@
+image: 602824140852.dkr.ecr.us-east-1.amazonaws.com/development/builder-npm-git:node_14
+
+stages:
+  - setup
+  # - release
+  # - tablet_upload
+  # - notify
+  #
+  #
+  #
+
+
+setup:
+  stage: setup
+  before_script:
+    - ./scripts/notify-slack.sh "Start" "PWA Setup"
+  script:
+    - echo "Setting up the environment"
