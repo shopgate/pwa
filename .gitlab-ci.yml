@@ -16,3 +16,5 @@ setup:
     - ./scripts/notify-slack.sh "Start" "PWA Setup"
   script:
     - echo "Setting up the environment"
+    - echo "CI_JOB_NAME: $CI_JOB_NAME"
+    - echo "SLACK_WEBHOOK_URL: $SLACK_WEBHOOK_URL"
