@@ -1,5 +1,6 @@
 import React, { Fragment, memo } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -26,7 +27,7 @@ const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
   <Fragment>
     <Portal name={PRODUCT_CTAS_BEFORE} />
     <Portal name={PRODUCT_CTAS}>
-      <div className={`${styles.buttons} theme__product__header__cta-buttons`}>
+      <div className={classNames(styles.buttons, 'theme__product__header__cta-buttons')}>
         <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
         <Portal name={PRODUCT_CTAS_FAVORITES}>
           { isProductActive && (
