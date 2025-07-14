@@ -11,7 +11,11 @@ import {
 import {
   getProductState,
 } from '@shopgate/engage/product/selectors/product';
-import { LEGAL_MENU } from '@shopgate/engage/core/constants';
+import {
+  LEGAL_MENU,
+  SORT_PRICE_ASC,
+  SORT_PRICE_DESC,
+} from '@shopgate/engage/core/constants';
 import {
   hasNewServices,
   transformDisplayOptions,
@@ -219,9 +223,29 @@ export const makeGetWidgetProducts = (type, options, id) => {
     (state, props) => props ?? {},
     getWidgetProductResultsHash,
     getWidgetProductResultsByHash,
-    (state, props, resultsHash, resultsByHash) => ({
-      isFetching: resultsByHash?.isFetching || false,
-      ...getPopulatedProductsResult(state, props, resultsHash, resultsByHash),
-    })
+    (state, props, resultsHash, resultsByHash) => {
+      const result = {
+        isFetching: resultsByHash?.isFetching || false,
+        ...getPopulatedProductsResult(state, props, resultsHash, resultsByHash),
+      };
+
+      // Since the getProducts pipeline does not support sorting when a product ID list is
+      // provided, we need to sort the products manually here.
+      if (type === 'itemNumbers') {
+        if (options.sort === SORT_PRICE_ASC) {
+          result.products = result.products.sort(
+            (p1, p2) => p1.price.unitPrice - p2.price.unitPrice
+          );
+        }
+
+        if (options.sort === SORT_PRICE_DESC) {
+          result.products = result.products.sort(
+            (p1, p2) => p2.price.unitPrice - p1.price.unitPrice
+          );
+        }
+      }
+
+      return result;
+    }
   );
 };

@@ -17,7 +17,7 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
    */
   const {
     useDefaultRequestForProductIds = false,
-    productIdType = null,
+    productIdType = undefined,
     ...sanitizedOptions
   } = options;
 
