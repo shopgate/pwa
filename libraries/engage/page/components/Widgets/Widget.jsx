@@ -126,7 +126,7 @@ const Widget = ({
           )}
         </div>
       )}
-      <WidgetProvider definition={definition}>
+      <WidgetProvider definition={definition} isPreview={isPreview}>
         <Suspense fallback={<Loading />}>
           <Component />
         </Suspense>
