@@ -118,7 +118,7 @@ export const makeGetWidgetsFromPage = ({
         return undefined;
       }
 
-      return (page.data?.dropzones ?? []).find(entry => entry.dropzone === dropzone)?.widgetList;
+      return page.data?.dropzones?.[dropzone] ?? [];
     }
   );
 };
