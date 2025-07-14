@@ -24,11 +24,11 @@ const useStyles = makeStyles()((theme, { columns }) => ({
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Layout = ({ children, columns }) => {
+const Layout = ({ children, columns, className }) => {
   const { classes, cx } = useStyles({ columns });
 
   return (
-    <Grid wrap className={cx(classes.root, 'theme__product-grid')} data-test-id="productGrid">
+    <Grid wrap className={cx(classes.root, className, 'theme__product-grid')} data-test-id="productGrid">
       {children}
     </Grid>
   );
@@ -37,9 +37,11 @@ const Layout = ({ children, columns }) => {
 Layout.propTypes = {
   columns: PropTypes.number.isRequired,
   children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 Layout.defaultProps = {
+  className: null,
   children: null,
 };
 

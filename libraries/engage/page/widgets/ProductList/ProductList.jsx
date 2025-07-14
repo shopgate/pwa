@@ -2,13 +2,24 @@ import React from 'react';
 import { ActionButton, I18n } from '@shopgate/engage/components';
 import { ProductGrid } from '@shopgate/engage/product/components';
 import { useWidgetProducts } from '@shopgate/engage/page/hooks';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useProductListWidget } from './hooks';
+
+const useStyles = makeStyles()({
+  root: {
+    '&&': {
+      marginTop: 0,
+    },
+  },
+});
 
 /**
  * The ProductListWidget is used to display product lists.
  * @returns {JSX.Element}
  */
 const ProductListWidget = () => {
+  const { classes } = useStyles();
+
   const {
     productsSearchType,
     productsSearchValue,
@@ -34,6 +45,7 @@ const ProductListWidget = () => {
         flags={flags}
         scope="widgets"
         infiniteLoad={false}
+        className={classes.root}
       />
       { hasNext && showLoadMore && (
         <ActionButton

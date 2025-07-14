@@ -32,6 +32,7 @@ export const WIDGET_ID = '@shopgate/engage/product/ProductGrid';
  * loading is enabled.
  * @param {string} props.requestHash The hash for the current request. Needed when infinite loading
  * is enabled
+ * @param {string} props.className Optional class name for the grid container
  * @returns {JSX.Element}
  */
 const ProductGrid = ({
@@ -43,6 +44,7 @@ const ProductGrid = ({
   requestHash,
   scope,
   meta,
+  className,
 }) => {
   const { getContentRef } = useContext(ViewContext);
 
@@ -53,7 +55,7 @@ const ProductGrid = ({
 
   if (!infiniteLoad) {
     return (
-      <Layout columns={columns}>
+      <Layout columns={columns} className={className}>
         <ProductListTypeProvider type="productGrid" subType={scope} meta={meta}>
           {products.map(product => (
             <Iterator
@@ -75,12 +77,14 @@ const ProductGrid = ({
         wrapper={props => (
           <Layout
             columns={columns}
+            className={className}
             {...props}
           />
         )}
         iterator={Iterator}
         loader={handleGetProducts}
         items={products}
+        columns={columns}
         loadingIndicator={<LoadingIndicator />}
         totalItems={totalProductCount}
         initialLimit={ITEMS_PER_LOAD}
@@ -93,6 +97,7 @@ const ProductGrid = ({
 };
 
 ProductGrid.propTypes = {
+  className: PropTypes.string,
   flags: PropTypes.shape({
     name: PropTypes.bool,
     price: PropTypes.bool,
@@ -102,12 +107,12 @@ ProductGrid.propTypes = {
   infiniteLoad: PropTypes.bool,
   meta: PropTypes.shape(),
   products: PropTypes.arrayOf(PropTypes.shape()),
-  requestHash: PropTypes.string,
   /**
    * Optional scope of the component. Will be used as subType property of the ProductListTypeContext
    * and is intended as a description in which "context" the component is used.
    * @default null
    */
+  requestHash: PropTypes.string,
   scope: PropTypes.string,
   totalProductCount: PropTypes.number,
 };
@@ -121,6 +126,7 @@ ProductGrid.defaultProps = {
   totalProductCount: null,
   scope: null,
   meta: null,
+  className: null,
 };
 
 export default ProductGrid;
