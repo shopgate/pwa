@@ -2,6 +2,7 @@
 
 exports[`<ProductGrid /> should render the original layout 1`] = `
 <ProductGrid
+  className={null}
   flags={null}
   handleGetProducts={[Function]}
   infiniteLoad={false}
@@ -11,9 +12,11 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   scope={null}
   totalProductCount={null}
 >
-  <Layout>
+  <Layout
+    className={null}
+  >
     <Grid
-      className="css-1qmdz0q-root theme__product-grid"
+      className="css-7aoo94-root theme__product-grid"
       data-test-id="productGrid"
       wrap={true}
     />
@@ -23,6 +26,7 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
 
 exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
 <ProductGrid
+  className={null}
   flags={null}
   handleGetProducts={[Function]}
   infiniteLoad={true}
