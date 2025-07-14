@@ -13,23 +13,9 @@ const useStyles = makeStyles()((theme, { columns }) => ({
     ':not(:empty)': {
       marginTop: 16,
     },
-    ...columns <= 2 && {
-      ' > *': {
-        [`:nth-child(${columns}n)`]: {
-          paddingRight: 0,
-        },
-        [`:nth-child(${columns}n+1)`]: {
-          paddingLeft: 0,
-        },
-        padding: '0px 8px',
-        width: `${100 / columns}%`,
-      },
-    },
-    ...columns > 2 && {
-      display: 'grid',
-      gridGap: '0 16px',
-      gridTemplateColumns: `repeat(${columns}, 1fr)`,
-    },
+    display: 'grid',
+    gridGap: '0 16px',
+    gridTemplateColumns: `repeat(${columns}, 1fr)`,
   },
 }));
 

@@ -13,7 +13,7 @@ import ItemDetails from './components/ItemDetails';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()((theme, { display }) => ({
   root: {
     position: 'relative',
     display: 'block',
@@ -22,8 +22,11 @@ const useStyles = makeStyles()({
   },
   itemDetails: {
     position: 'relative',
+    ...display && !display.name && !display.price && !display.reviews && {
+      paddingBottom: 30,
+    },
   },
-});
+}));
 
 /**
  * The Product Grid Item component.
@@ -33,7 +36,7 @@ const useStyles = makeStyles()({
  * @return {JSX.Element}
  */
 const Item = ({ product, display }) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles({ display });
   const { meta } = useProductListType();
 
   return (
@@ -56,7 +59,7 @@ const Item = ({ product, display }) => {
             name={product.name}
             imageUrl={product.featuredImageBaseUrl}
           />
-    }
+        }
       </Link>
       <ProductBadges location="productGrid" productId={product.id}>
         <ItemDiscount

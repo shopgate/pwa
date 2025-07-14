@@ -36,12 +36,12 @@ const ProductListWidget = () => {
         infiniteLoad={false}
       />
       { hasNext && showLoadMore && (
-      <ActionButton
-        loading={isFetching}
-        onClick={fetchNext}
-      >
-        <I18n.Text string="common.load_more" />
-      </ActionButton>
+        <ActionButton
+          loading={isFetching}
+          onClick={fetchNext}
+        >
+          <I18n.Text string="common.load_more" />
+        </ActionButton>
       )}
     </>
   );

@@ -28,6 +28,10 @@ export interface WidgetContextType<C = Record<string, any>> {
    * The widget visibility settings
    */
   visibility: WidgetDefinitionVisibility;
+  /**
+   * Whether the widget is rendered in preview mode
+   */
+  isPreview: boolean;
 }
 
 /**

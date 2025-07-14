@@ -1,6 +1,11 @@
 import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { PRODUCT_ITEM_NAME } from '@shopgate/engage/category/constants';
+import {
+  PRODUCT_ITEM_NAME,
+  PRODUCT_ITEM_NAME_BEFORE,
+  PRODUCT_ITEM_NAME_AFTER,
+} from '@shopgate/engage/category/constants';
+import { Portal } from '@shopgate/engage/components';
 import { ProductName } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -31,7 +36,18 @@ const ItemName = ({
   }), [display, productId]);
 
   if (display && !display.name) {
-    return null;
+    return (
+      <>
+        <Portal
+          name={PRODUCT_ITEM_NAME_BEFORE}
+          props={portalProps}
+        />
+        <Portal
+          name={PRODUCT_ITEM_NAME_AFTER}
+          props={portalProps}
+        />
+      </>
+    );
   }
 
   return (
