@@ -86,8 +86,8 @@ export const useWidgetProducts = (options = {}) => {
   }), [limit, showInventoryInProductLists, sort]);
 
   /**
-   * Callback to dispatch the initial fetch request for products when the mounts, or when its
-   * parameters change.
+   * Callback to dispatch the initial fetch request for products when the hook mounts,
+   * or when its parameters change.
    */
   const fetchInitial = useCallback(async () => {
     if (!value) {

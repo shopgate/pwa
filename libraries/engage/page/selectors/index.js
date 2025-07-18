@@ -207,12 +207,12 @@ const makeGetWidgetProductResultsByHash = (type, options, id) => {
 };
 
 /**
- * Creates a selector that generates a hash to select results for widget products.
+ * Creates a selector that collects products for a widget.
  * @param {'searchTerm' | 'itemNumbers' | 'brand' | 'category' |'highlights'} type Type of the
  * request to make.
  * @param {Object} options Request options
  * @param {string} id Unique identifier to find the result in the state.
- * @returns {Function} A selector function that generates a hash for the widget products result.
+ * @returns {Function} A selector function that collects products for a widget.
  */
 export const makeGetWidgetProducts = (type, options, id) => {
   const getWidgetProductResultsHash = makeGetWidgetProductsResultHash(type, options, id);

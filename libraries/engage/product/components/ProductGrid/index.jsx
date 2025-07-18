@@ -107,11 +107,6 @@ ProductGrid.propTypes = {
   infiniteLoad: PropTypes.bool,
   meta: PropTypes.shape(),
   products: PropTypes.arrayOf(PropTypes.shape()),
-  /**
-   * Optional scope of the component. Will be used as subType property of the ProductListTypeContext
-   * and is intended as a description in which "context" the component is used.
-   * @default null
-   */
   requestHash: PropTypes.string,
   scope: PropTypes.string,
   totalProductCount: PropTypes.number,
