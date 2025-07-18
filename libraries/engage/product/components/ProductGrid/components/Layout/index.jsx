@@ -7,7 +7,7 @@ const useStyles = makeStyles()((theme, { columns }) => ({
   root: {
     padding: '0 16px',
     ':not(:empty)': {
-      marginTop: 24,
+      marginTop: 16,
     },
     display: 'grid',
     gridGap: '0 16px',
