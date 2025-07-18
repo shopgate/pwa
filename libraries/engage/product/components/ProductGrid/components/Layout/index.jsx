@@ -1,17 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()((theme, { columns }) => ({
   root: {
-    background: colors.light,
     padding: '0 16px',
     ':not(:empty)': {
-      marginTop: 16,
+      marginTop: 24,
     },
     display: 'grid',
     gridGap: '0 16px',

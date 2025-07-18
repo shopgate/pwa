@@ -7,6 +7,10 @@ import { useProductListWidget } from './hooks';
 
 const useStyles = makeStyles()({
   root: {
+    // Prevent that the ActionButton margin messes with the layout of the sibling widgets
+    overflow: 'hidden',
+  },
+  grid: {
     '&&': {
       marginTop: 0,
     },
@@ -39,13 +43,13 @@ const ProductListWidget = () => {
   });
 
   return (
-    <>
+    <div className={classes.root}>
       <ProductGrid
         products={results}
         flags={flags}
         scope="widgets"
         infiniteLoad={false}
-        className={classes.root}
+        className={classes.grid}
       />
       { hasNext && showLoadMore && (
         <ActionButton
@@ -55,7 +59,7 @@ const ProductListWidget = () => {
           <I18n.Text string="common.load_more" />
         </ActionButton>
       )}
-    </>
+    </div>
   );
 };
 

@@ -16,7 +16,8 @@ const { colors } = themeConfig;
 const useStyles = makeStyles()((theme, { display }) => ({
   root: {
     position: 'relative',
-    display: 'block',
+    display: 'flex',
+    flexDirection: 'column',
     background: colors.light,
     height: '100%',
   },

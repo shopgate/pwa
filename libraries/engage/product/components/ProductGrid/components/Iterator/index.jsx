@@ -18,7 +18,7 @@ const Iterator = (props) => {
   const { id, display } = props;
 
   return (
-    <Grid.Item key={id} data-test-id={props.name}>
+    <Grid.Item key={id} data-test-id={props.name} className="theme__product-grid__item__container">
       <ProductListEntryProvider productId={props.id}>
         <SurroundPortals
           portalName={PRODUCT_ITEM}
