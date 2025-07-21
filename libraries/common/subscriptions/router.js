@@ -9,6 +9,7 @@ import {
 import Route from '@virtuous/conductor/Route';
 import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
 import { logger } from '@shopgate/pwa-core';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import { getCurrentRoute, getRouterStackIndex } from '../selectors/router';
 import { LoadingProvider } from '../providers';
 import { redirects } from '../collections';
@@ -31,6 +32,11 @@ import ToastProvider from '../providers/toast';
  */
 export default function routerSubscriptions(subscribe) {
   subscribe(navigate$, async (params) => {
+    if (IS_PAGE_PREVIEW_ACTIVE) {
+      // No navigation is allowed in page preview mode.
+      return;
+    }
+
     const {
       action, dispatch, getState, events,
     } = params;

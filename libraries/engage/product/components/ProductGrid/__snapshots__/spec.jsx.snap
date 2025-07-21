@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProductGrid /> should render the original layout 1`] = `
+<ProductGrid
+  className={null}
+  flags={null}
+  handleGetProducts={[Function]}
+  infiniteLoad={false}
+  meta={null}
+  products={Array []}
+  requestHash={null}
+  scope={null}
+  totalProductCount={null}
+>
+  <Layout
+    className={null}
+  >
+    <Grid
+      className="css-1mymkyg-root theme__product-grid"
+      data-test-id="productGrid"
+      wrap={true}
+    />
+  </Layout>
+</ProductGrid>
+`;
+
+exports[`<ProductGrid /> should render with the InfiniteContainer 1`] = `
+<ProductGrid
+  className={null}
+  flags={null}
+  handleGetProducts={[Function]}
+  infiniteLoad={true}
+  meta={null}
+  products={Array []}
+  requestHash={null}
+  scope={null}
+  totalProductCount={null}
+>
+  <ProductListTypeProvider
+    meta={null}
+    subType={null}
+    type="productGrid"
+  >
+    <InfiniteContainer
+      containerRef={
+        Object {
+          "current": null,
+        }
+      }
+      enablePromiseBasedLoading={true}
+      initialLimit={32}
+      items={Array []}
+      iterator={[Function]}
+      limit={32}
+      loader={[Function]}
+      loadingIndicator={<UNDEFINED />}
+      requestHash={null}
+      totalItems={null}
+      wrapper={[Function]}
+    />
+  </ProductListTypeProvider>
+</ProductGrid>
+`;

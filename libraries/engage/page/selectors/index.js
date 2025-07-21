@@ -1,7 +1,26 @@
 import { createSelector } from 'reselect';
-import { makeGetMenu, makeGetIsFetchingMenu } from '@shopgate/engage/core/selectors';
-import { LEGAL_MENU } from '@shopgate/engage/core/constants';
-import { hasNewServices } from '@shopgate/engage/core';
+import {
+  makeGetMenu,
+  makeGetIsFetchingMenu,
+} from '@shopgate/engage/core/selectors';
+import {
+  getFulfillmentParams,
+  getPopulatedProductsResult,
+  SHOPGATE_CATALOG_GET_HIGHLIGHT_PRODUCTS,
+} from '@shopgate/engage/product';
+import {
+  getProductState,
+} from '@shopgate/engage/product/selectors/product';
+import {
+  LEGAL_MENU,
+  SORT_PRICE_ASC,
+  SORT_PRICE_DESC,
+} from '@shopgate/engage/core/constants';
+import {
+  hasNewServices,
+  transformDisplayOptions,
+  generateResultHash,
+} from '@shopgate/engage/core/helpers';
 import { PRIVACY_PATH } from '../constants';
 
 export * from '@shopgate/pwa-common/selectors/page';
@@ -99,7 +118,134 @@ export const makeGetWidgetsFromPage = ({
         return undefined;
       }
 
-      return (page.data?.dropzones ?? []).find(entry => entry.dropzone === dropzone)?.widgetList;
+      return page.data?.dropzones?.[dropzone] ?? [];
+    }
+  );
+};
+
+/**
+ * Creates a selector that generates a hash to select results for widget products.
+ * @param {'searchTerm' | 'itemNumbers' | 'brand' | 'category' |'highlights'} type Type of the
+ * request to make.
+ * @param {Object} options Request options
+ * @param {string} id Unique identifier to find the result in the state.
+ * @returns {Function} A selector function that generates a hash for the widget products result.
+ */
+const makeGetWidgetProductsResultHash = (type, options, id) => {
+  const {
+    value, sort, useDefaultRequestForProductIds, productIdType,
+  } = options;
+
+  const transformedSort = transformDisplayOptions(sort);
+
+  return createSelector(
+    getFulfillmentParams,
+    (fulfillmentParams) => {
+      let hashParams = {};
+
+      switch (type) {
+        case 'highlights':
+          hashParams = {
+            id,
+            pipeline: SHOPGATE_CATALOG_GET_HIGHLIGHT_PRODUCTS,
+            sort: transformedSort,
+          };
+          break;
+        case 'searchTerm':
+        case 'brand':
+          hashParams = {
+            id,
+            searchPhrase: value,
+            sort: transformedSort,
+            ...fulfillmentParams,
+          };
+          break;
+        case 'itemNumbers':
+          hashParams = {
+            id,
+            productIds: value,
+            productIdType,
+            ...!useDefaultRequestForProductIds && {
+              sort: transformedSort,
+            },
+            ...fulfillmentParams,
+          };
+
+          break;
+        case 'category':
+          hashParams = {
+            id,
+            categoryId: value,
+            sort: transformedSort,
+            ...fulfillmentParams,
+          };
+
+          break;
+        default:
+      }
+
+      return generateResultHash(hashParams, !!hashParams?.sort, false);
+    }
+  );
+};
+
+/**
+ * @param {'searchTerm' | 'itemNumbers' | 'brand' | 'category' |'highlights'} type Type of the
+ * request to make.
+ * @param {Object} options Request options
+ * @param {string} id Unique identifier to find the result in the state.
+ * @returns {Function} A selector function that retrieves the widget products result by hash.
+ */
+const makeGetWidgetProductResultsByHash = (type, options, id) => {
+  const getWidgetProductResultsHash = makeGetWidgetProductsResultHash(type, options, id);
+
+  return createSelector(
+    getProductState,
+    getWidgetProductResultsHash,
+    (productState, hash) => productState.resultsByHash[hash]
+  );
+};
+
+/**
+ * Creates a selector that collects products for a widget.
+ * @param {'searchTerm' | 'itemNumbers' | 'brand' | 'category' |'highlights'} type Type of the
+ * request to make.
+ * @param {Object} options Request options
+ * @param {string} id Unique identifier to find the result in the state.
+ * @returns {Function} A selector function that collects products for a widget.
+ */
+export const makeGetWidgetProducts = (type, options, id) => {
+  const getWidgetProductResultsHash = makeGetWidgetProductsResultHash(type, options, id);
+  const getWidgetProductResultsByHash = makeGetWidgetProductResultsByHash(type, options, id);
+
+  return createSelector(
+    state => state,
+    (state, props) => props ?? {},
+    getWidgetProductResultsHash,
+    getWidgetProductResultsByHash,
+    (state, props, resultsHash, resultsByHash) => {
+      const result = {
+        isFetching: resultsByHash?.isFetching || false,
+        ...getPopulatedProductsResult(state, props, resultsHash, resultsByHash),
+      };
+
+      // Since the getProducts pipeline does not support sorting when a product ID list is
+      // provided, we need to sort the products manually here.
+      if (type === 'itemNumbers') {
+        if (options.sort === SORT_PRICE_ASC) {
+          result.products = result.products.sort(
+            (p1, p2) => p1.price.unitPrice - p2.price.unitPrice
+          );
+        }
+
+        if (options.sort === SORT_PRICE_DESC) {
+          result.products = result.products.sort(
+            (p1, p2) => p2.price.unitPrice - p1.price.unitPrice
+          );
+        }
+      }
+
+      return result;
     }
   );
 };

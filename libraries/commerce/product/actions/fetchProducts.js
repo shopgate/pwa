@@ -21,6 +21,14 @@ import receiveProductsCached from '../action-creators/receiveProductsCached';
 import { makeGetProductResultByCustomHash } from '../selectors/product';
 
 /**
+ * Checks if a product ID type is a product identifiers type.
+ * @param {string} productIdType The product ID type to check.
+ * @returns {boolean}
+ */
+export const isProductIdentifiersProductIdType = productIdType =>
+  ['sku', 'ean', 'upc'].includes(productIdType);
+
+/**
  * Process the pipeline params to be compatible.
  * Currently the categoryId field cannot be used in combination with the filter field. In order to
  * use them together the categoryId field has to be extracted into the filter field.
@@ -46,6 +54,22 @@ const processParams = (params, activeFilters, includeSort = true, includeFilters
   if (includeSort === false && params && params.sort) {
     delete newParams.sort;
   }
+
+  if (newParams.productIdType) {
+    if (isProductIdentifiersProductIdType(newParams.productIdType)) {
+      if (newParams.productIdType === 'sku') {
+        newParams.productSkus = newParams.productIds;
+      } else if (newParams.productIdType === 'ean') {
+        newParams.productEans = newParams.productIds;
+      } else if (newParams.productIdType === 'upc') {
+        newParams.productUpcs = newParams.productIds;
+      }
+
+      delete newParams.productIds;
+    }
+  }
+
+  delete newParams.productIdType;
 
   return newParams;
 };
@@ -199,7 +223,10 @@ function fetchProducts(options) {
           cachedTime,
         }));
 
-        if (Array.isArray(params?.productIds)) {
+        if (
+          !isProductIdentifiersProductIdType(params?.productIdType) &&
+          Array.isArray(params?.productIds)
+        ) {
           const requestIds = params?.productIds;
           const responseIds = response.products.map(product => product.id);
           const missingResponseIds = difference(requestIds, responseIds);

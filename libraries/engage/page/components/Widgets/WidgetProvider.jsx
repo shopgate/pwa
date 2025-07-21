@@ -9,10 +9,11 @@ import { WidgetContext } from './WidgetContext';
  * The WidgetProvider component provides the context for a single widget.
  * @param {Object} props The component props.
  * @param {WidgetDefinition} props.definition The widget definition data.
+ * @param {boolean} props.isPreview Whether the widget is in preview mode.
  * @param {React.ReactNode} props.children The child components to render.
  * @returns {JSX.Element}
  */
-const WidgetProvider = ({ children, definition }) => {
+const WidgetProvider = ({ children, definition, isPreview }) => {
   /** @type {WidgetContextType} */
   const value = useMemo(() => {
     const {
@@ -24,8 +25,9 @@ const WidgetProvider = ({ children, definition }) => {
       config: widgetConfig,
       layout,
       visibility,
+      isPreview,
     };
-  }, [definition]);
+  }, [definition, isPreview]);
 
   return (
     <WidgetContext.Provider value={value}>
@@ -37,6 +39,7 @@ const WidgetProvider = ({ children, definition }) => {
 WidgetProvider.propTypes = {
   children: PropTypes.node.isRequired,
   definition: PropTypes.shape().isRequired,
+  isPreview: PropTypes.bool.isRequired,
 };
 
 export default WidgetProvider;

@@ -75,9 +75,15 @@ const Widget = ({
 
   const { setActiveWidget, activeWidget } = useWidgetsPreview();
 
+  // Handle clicks on the widget container in preview mode. Take care that highlighting only happens
+  // when the widget is not already active, otherwise it would be confusing when users want to
+  // interact with widget elements.
   const handleInteraction = useCallback(() => {
-    setActiveWidget(definition.code, activeWidget === definition.code);
-    dispatchWidgetPreviewEvent('widget-clicked', definition.code);
+    setActiveWidget(definition.code, activeWidget !== definition.code);
+
+    if (activeWidget !== definition.code) {
+      dispatchWidgetPreviewEvent('widget-clicked', definition.code);
+    }
   }, [activeWidget, definition.code, setActiveWidget]);
 
   const handlers = usePressHandler(handleInteraction);
@@ -120,7 +126,7 @@ const Widget = ({
           )}
         </div>
       )}
-      <WidgetProvider definition={definition}>
+      <WidgetProvider definition={definition} isPreview={isPreview}>
         <Suspense fallback={<Loading />}>
           <Component />
         </Suspense>
