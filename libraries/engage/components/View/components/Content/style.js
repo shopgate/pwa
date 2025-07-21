@@ -15,6 +15,7 @@ export default css({
     WebkitOverflowScrolling: 'touch',
     ...(IS_PAGE_PREVIEW_ACTIVE && {
       scrollbarWidth: 'thin',
+      backgroundColor: 'var(--page-background-color)',
     }),
   } : {
     height: '100%',

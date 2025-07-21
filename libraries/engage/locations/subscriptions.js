@@ -40,6 +40,7 @@ import {
 } from '@shopgate/pwa-common-commerce/search/streams';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { cookieConsentInitialized$ } from '@shopgate/engage/tracking/streams';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import {
   getUserSearch,
   getStoreFinderSearch,
@@ -106,7 +107,9 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
 function locationsSubscriber(subscribe) {
   subscribe(appWillInit$, () => {
     appInitialization.set('location', async ({ dispatch }) => {
-      if (hasNewServices()) {
+      // Skip fetching the default location if the page preview is active, since it blocks
+      // iFrame communication.
+      if (hasNewServices() && !IS_PAGE_PREVIEW_ACTIVE) {
         await dispatch(fetchDefaultLocation());
       }
     });
