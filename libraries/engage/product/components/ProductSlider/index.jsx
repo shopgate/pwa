@@ -13,7 +13,7 @@ export const WIDGET_ID = '@shopgate/engage/product/ProductSlider';
 
 /**
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function ProductSlider(props) {
   const {
@@ -24,6 +24,8 @@ function ProductSlider(props) {
     snap,
     scope,
     meta,
+    loop,
+    ...rest
   } = props;
 
   const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
@@ -43,14 +45,14 @@ function ProductSlider(props) {
         className={`${className} engage__product__product-slider`}
         controls={false}
         indicators={false}
-        loop={false}
+        loop={loop}
         freeMode={!snap}
         slidesPerView={slidesPerView}
       >
         {productIds.map(id => (
           <Swiper.Item key={id} className={container}>
             <ProductListEntryProvider productId={id}>
-              <Item productId={id} style={items} />
+              <Item productId={id} style={items} {...rest} />
             </ProductListEntryProvider>
           </Swiper.Item>
         ))}
@@ -72,6 +74,7 @@ ProductSlider.propTypes = {
    * and is intended as a description in which "context" the component is used.
    * @default null
    */
+  loop: PropTypes.bool,
   meta: PropTypes.shape(),
   scope: PropTypes.string,
   slidesPerView: PropTypes.number,
@@ -85,6 +88,7 @@ ProductSlider.defaultProps = {
   item: null,
   slidesPerView: null,
   snap: false,
+  loop: false,
   scope: null,
   meta: null,
 };
