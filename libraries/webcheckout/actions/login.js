@@ -35,11 +35,13 @@ const webCheckoutLogin = (user, password) => (dispatch) => {
     .dispatch()
     .then((response) => {
       const {
-        headers: { location } = {},
+        headers: { location, Location } = {},
         statusCode,
       } = response;
 
-      if (statusCode === 302 && location && location.endsWith('/account')) {
+      const redirectLocation = location || Location
+
+      if (statusCode === 302 && redirectLocation && redirectLocation.endsWith('/account')) {
         dispatch(successShopifyLogin());
       } else {
         dispatch(errorShopifyLogin());
