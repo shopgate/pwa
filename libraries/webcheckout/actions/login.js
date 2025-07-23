@@ -23,6 +23,7 @@ const webCheckoutLogin = (user, password) => (dispatch) => {
   new HttpRequest(`${getShopifyUrl()}/account/login`)
     .setMethod('POST')
     .setTimeout(20000)
+    .setHeaders({ 'content-type': 'application/x-www-form-urlencoded'})
     .setPayload({
       // eslint-disable-next-line camelcase
       form_type: 'customer_login',
