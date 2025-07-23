@@ -2,6 +2,9 @@
     "@shopgate/widgets/productListWidget": {
     "path": "@shopgate/engage/page/widgets/ProductList"
   },
+  "@shopgate/widgets/headlineWidget": {
+    "path": "@shopgate/engage/page/widgets/Headline"
+  },
   "@shopgate/widgetsInternal/Placeholder": {
     "path": "@shopgate/engage/page/widgets/Placeholder"
   }
