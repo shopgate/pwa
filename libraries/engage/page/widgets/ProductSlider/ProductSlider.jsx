@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { ProductSlider } from '@shopgate/engage/product/components';
 import { useWidgetProducts } from '@shopgate/engage/page/hooks';
+import { useTheme } from '@shopgate/engage/styles';
 import { useProductSliderWidget } from './hooks';
 
 /**
@@ -13,7 +14,8 @@ const ProductSliderWidget = () => {
     productsSearchValue,
     sort,
     productCount,
-    flags,
+    swiperProps,
+    productItemProps,
   } = useProductSliderWidget();
 
   const {
@@ -24,14 +26,27 @@ const ProductSliderWidget = () => {
     limit: productCount,
     sort,
   });
-
+  const theme = useTheme();
   const productIds = useMemo(() => results?.map(result => result.id), [results]);
 
   return (
     <ProductSlider
       productIds={productIds}
       scope="widgets"
-      {...flags}
+      productItemProps={productItemProps}
+      slidesPerView={2.3}
+      breakpoints={{
+        [theme.breakpoints.values.sm]: {
+          slidesPerView: 3.3,
+        },
+        [theme.breakpoints.values.md]: {
+          slidesPerView: 4.3,
+        },
+        [theme.breakpoints.values.lg]: {
+          slidesPerView: 5.3,
+        },
+      }}
+      {...swiperProps}
     />
   );
 };

@@ -25,9 +25,8 @@ function ProductSlider(props) {
     scope,
     meta,
     loop,
-    ...rest
+    productItemProps,
   } = props;
-
   const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
   const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSettings;
   // ProductSlider items are rendered with the ProductCard component provided by the theme.
@@ -48,11 +47,12 @@ function ProductSlider(props) {
         loop={loop}
         freeMode={!snap}
         slidesPerView={slidesPerView}
+        breakpoints={props.breakpoints}
       >
         {productIds.map(id => (
           <Swiper.Item key={id} className={container}>
             <ProductListEntryProvider productId={id}>
-              <Item productId={id} style={items} {...rest} />
+              <Item productId={id} style={items} {...productItemProps} />
             </ProductListEntryProvider>
           </Swiper.Item>
         ))}
@@ -66,16 +66,18 @@ ProductSlider.WIDGET_ID = WIDGET_ID;
 ProductSlider.propTypes = {
   productIds: PropTypes.arrayOf(PropTypes.string).isRequired,
   autoplay: PropTypes.bool,
+  breakpoints: PropTypes.number,
   className: PropTypes.string,
   delay: PropTypes.number,
-  item: PropTypes.func,
   /**
    * Optional scope of the component. Will be used as subType property of the ProductListTypeContext
    * and is intended as a description in which "context" the component is used.
    * @default null
    */
+  item: PropTypes.func,
   loop: PropTypes.bool,
   meta: PropTypes.shape(),
+  productItemProps: PropTypes.shape(),
   scope: PropTypes.string,
   slidesPerView: PropTypes.number,
   snap: PropTypes.bool,
@@ -86,11 +88,13 @@ ProductSlider.defaultProps = {
   className: null,
   delay: 10,
   item: null,
-  slidesPerView: null,
-  snap: false,
   loop: false,
-  scope: null,
   meta: null,
+  productItemProps: null,
+  scope: null,
+  slidesPerView: null,
+  breakpoints: null,
+  snap: false,
 };
 
 export default ProductSlider;

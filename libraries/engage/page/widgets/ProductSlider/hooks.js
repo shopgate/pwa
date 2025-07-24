@@ -77,20 +77,24 @@ export const useProductSliderWidget = () => {
     productsSearchTerm,
   ]);
 
-  const flags = useMemo(() => ({
-    hideName: !showName,
-    hidePrice: !showPrice,
-    hideRating: !showRating,
+  const swiperProps = useMemo(() => ({
     autoplay: slideAutomatic,
     delay: sliderSpeed,
     loop: endlessSlider,
-  }), [showName, showPrice, showRating, slideAutomatic, sliderSpeed, endlessSlider]);
+  }), [slideAutomatic, sliderSpeed, endlessSlider]);
+
+  const productItemProps = useMemo(() => ({
+    hideName: !showName,
+    hidePrice: !showPrice,
+    hideRating: !showRating,
+  }), [showName, showPrice, showRating]);
 
   return {
     productsSearchType: productSelectorType,
     productsSearchValue: value,
     sort: camelCase(sort),
     productCount,
-    flags,
+    swiperProps,
+    productItemProps,
   };
 };
