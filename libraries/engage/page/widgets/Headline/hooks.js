@@ -6,27 +6,27 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  * @property {string} [headline.text] - The text to display as the headline.
  */
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * Custom hook to retrieve the headline widget configuration.
- * @returns {{ headline: string }} An object containing the headline text.
  */
 export const useHeadlineWidget = () => {
   const { config } = useWidget();
 
   const {
-    bold, fontSize, italic, text, underline, textAlign,
+    bold, italic, text, underline, textAlign, typography,
   } = config.headline;
 
   const styles = {
     ...(bold && { fontWeight: 'bold' }),
     ...(italic && { fontStyle: 'italic' }),
     ...(underline && { textDecoration: 'underline' }),
-    ...(fontSize ? { fontSize } : 14),
-    ...(textAlign && { textAlign }),
   };
 
   return {
     headline: text,
+    variant: typography,
+    align: textAlign,
     styles,
   };
 };
