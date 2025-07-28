@@ -12,9 +12,13 @@ import styles from './style';
  * The ProductGridPrice component is supposed to be used to display prices at product grids. It
  * renders a row with the current price and a strike price when present. As same as the price info.
  * @param {Object} product A product entity.
- * @return {JSX}
+ * @param {boolean} hidePrice whether to hide the product price
+ * @return {JSX.Element}
  */
-const ProductGridPrice = ({ product }) => {
+const ProductGridPrice = ({ product, hidePrice }) => {
+  if (hidePrice) {
+    return null;
+  }
   const { price } = product;
 
   return (
@@ -67,6 +71,11 @@ const ProductGridPrice = ({ product }) => {
 
 ProductGridPrice.propTypes = {
   product: PropTypes.shape().isRequired,
+  hidePrice: PropTypes.bool,
+};
+
+ProductGridPrice.defaultProps = {
+  hidePrice: false,
 };
 
 export default withPriceCalculation(ProductGridPrice);

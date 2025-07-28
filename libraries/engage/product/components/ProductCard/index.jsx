@@ -100,7 +100,7 @@ function ProductCard(props) {
         </div>
         )}
       </ProductBadges>
-      {!(hidePrice && hideRating) && (
+      {!(hidePrice && hideRating && hideName) && (
         <div className={`${styles.details} engage__product-card__information`}>
             {showRatings && <RatingStars value={product.rating.average} />}
           {/*
@@ -109,15 +109,14 @@ function ProductCard(props) {
           */}
           <Swatches productId={product.id} />
 
-          {!hideName && (
-            <ProductName
-              name={product.name}
-              className={styles.title}
-              testId={`Productname: ${product.name}`}
-              itemProp="name"
-              rows={titleRows || 3}
-            />
-          )}
+          <ProductName
+            hideName={hideName}
+            name={product.name}
+            className={styles.title}
+            testId={`Productname: ${product.name}`}
+            itemProp="name"
+            rows={titleRows || 3}
+          />
 
           {/*
             This feature is currently in BETA testing.
@@ -131,17 +130,15 @@ function ProductCard(props) {
           */}
           <OrderQuantityHint productId={product.id} />
 
-          {!hidePrice && (
-            <SurroundPortals
-              portalName={PRODUCT_ITEM_PRICE}
-              portalProps={{
-                productId: product.id,
-                location,
-              }}
-            >
-              <ProductGridPrice product={product} />
-            </SurroundPortals>
-          )}
+          <SurroundPortals
+            portalName={PRODUCT_ITEM_PRICE}
+            portalProps={{
+              productId: product.id,
+              location,
+            }}
+          >
+            <ProductGridPrice product={product} hidePrice={hidePrice} />
+          </SurroundPortals>
         </div>
       )}
     </Link>

@@ -23,7 +23,7 @@ const styles = {
  * @returns {JSX.Element}
  */
 const ProductName = ({
-  name, className, testId, ellipsis, portalName, portalProps, itemProp, rows, style,
+  name, className, hideName, testId, ellipsis, portalName, portalProps, itemProp, rows, style,
 }) => (
   <ConditionalWrapper
     condition={!!portalName}
@@ -33,6 +33,7 @@ const ProductName = ({
       </SurroundPortals>
     }
   >
+    {!hideName && (
     <div
       className={classNames(styles.wrapper, className, 'engage__product__product-name')}
       style={style}
@@ -42,12 +43,14 @@ const ProductName = ({
     >
       <ProductNameContent name={name} ellipsis={ellipsis} rows={rows} />
     </div>
+    )}
   </ConditionalWrapper>
 );
 
 ProductName.propTypes = {
   className: PropTypes.string,
   ellipsis: PropTypes.bool,
+  hideName: PropTypes.bool,
   itemProp: PropTypes.string,
   name: PropTypes.string,
   portalName: PropTypes.string,
@@ -61,6 +64,7 @@ ProductName.defaultProps = {
   name: null,
   className: null,
   ellipsis: true,
+  hideName: false,
   itemProp: null,
   portalName: null,
   portalProps: null,
