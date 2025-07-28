@@ -25,7 +25,7 @@ export const useHeadlineWidget = () => {
 
   return {
     headline: text,
-    variant: typography,
+    variant: typography ?? 'h3',
     align: textAlign,
     styles,
   };
