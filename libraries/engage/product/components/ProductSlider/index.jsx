@@ -24,8 +24,8 @@ function ProductSlider(props) {
     snap,
     scope,
     meta,
-    loop,
     productItemProps,
+    ...swiperProps
   } = props;
   const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
   const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSettings;
@@ -44,10 +44,9 @@ function ProductSlider(props) {
         className={`${className} engage__product__product-slider`}
         controls={false}
         indicators={false}
-        loop={loop}
         freeMode={!snap}
         slidesPerView={slidesPerView}
-        breakpoints={props.breakpoints}
+        {...swiperProps}
       >
         {productIds.map(id => (
           <Swiper.Item key={id} className={container}>
@@ -66,7 +65,6 @@ ProductSlider.WIDGET_ID = WIDGET_ID;
 ProductSlider.propTypes = {
   productIds: PropTypes.arrayOf(PropTypes.string).isRequired,
   autoplay: PropTypes.bool,
-  breakpoints: PropTypes.number,
   className: PropTypes.string,
   delay: PropTypes.number,
   /**
@@ -75,7 +73,6 @@ ProductSlider.propTypes = {
    * @default null
    */
   item: PropTypes.func,
-  loop: PropTypes.bool,
   meta: PropTypes.shape(),
   productItemProps: PropTypes.shape(),
   scope: PropTypes.string,
@@ -88,12 +85,10 @@ ProductSlider.defaultProps = {
   className: null,
   delay: 10,
   item: null,
-  loop: false,
   meta: null,
   productItemProps: null,
   scope: null,
   slidesPerView: null,
-  breakpoints: null,
   snap: false,
 };
 

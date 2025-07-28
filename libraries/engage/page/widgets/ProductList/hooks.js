@@ -17,7 +17,7 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  * @typedef {Object} ProductListWidgetConfig
  * @property {ProductListWidgetProducts} products The products configuration for the widget.
  * @property {number} productCount The number of products to display in the widget
- * @property {"relevance" | "PriceDesc" | "PriceDesc"} sort Sort order for the products
+ * @property {"relevance" | "PriceDesc" | "PriceAsc"} sort Sort order for the products
  * @property {boolean} loadMoreButton Whether to display a "Load more" button
  * @property {boolean} showName Whether to display product names
  * @property {boolean} showPrice Whether to display product prices
