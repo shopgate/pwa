@@ -23,6 +23,7 @@ const Headline = () => {
 
   return (
     <Typography
+      // && increases the specificity of the styles which guarantees that defaults are overridden
       className={cx(css({ '&&': { ...styles } }), classes.root)}
       variant={variant}
       align={align}
