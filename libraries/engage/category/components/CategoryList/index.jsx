@@ -16,8 +16,10 @@ import styles from './style';
  * The CategoryList component.
  * @param {Object} props The component props.
  * @param {Array} props.categories The categories to display.
- * @param {Array} props.categories The number of rows to prerender.
- * @returns {JSX}
+ * @param {number} props.prerender The number of rows to prerender.
+ * @param {boolean} props.showAllProducts Whether to show all products
+ * @param {boolean} props.showImages Whether to show category images
+ * @returns {JSX.Element}
  */
 const CategoryList = ({
   categories,
