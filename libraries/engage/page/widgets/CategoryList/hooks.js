@@ -1,7 +1,9 @@
 import { camelCase } from 'lodash';
 import { useWidget } from '@shopgate/engage/page/hooks';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getCategory, getCategoryChildren } from '@shopgate/pwa-common-commerce/category/selectors';
+import { fetchCategory } from '@shopgate/engage/category/actions';
+import { useEffect } from 'react';
 
 /**
  * @typedef {Object} CategoryListWidgetConfig
@@ -23,6 +25,7 @@ import { getCategory, getCategoryChildren } from '@shopgate/pwa-common-commerce/
 export const useCategoryListWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
+  const dispatch = useDispatch();
 
   const {
     category,
@@ -38,6 +41,12 @@ export const useCategoryListWidget = () => {
   // Get category children of the selected category
   const categories = useSelector(state =>
     (category ? getCategoryChildren(state, { categoryId: category }) : null));
+
+  useEffect(() => {
+    if (category && !parentCategory) {
+      dispatch(fetchCategory(category));
+    }
+  }, [category, parentCategory, dispatch]);
 
   return {
     parentCategory,
