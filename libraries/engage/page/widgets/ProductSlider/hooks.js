@@ -31,9 +31,9 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  * .useWidget<ProductSliderWidgetConfig> >} UseWidgetReturnType
  */
 
+// eslint-disable-next-line valid-jsdoc
 /**
  * Hook to access the Product Slider widget configuration.
- * @returns {UseWidgetReturnType} the widget config
  */
 export const useProductSliderWidget = () => {
   /** @type {UseWidgetReturnType}  */
