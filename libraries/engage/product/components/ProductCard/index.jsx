@@ -7,7 +7,7 @@ import {
   Link,
   RatingStars,
   DiscountBadge,
-  SurroundPortals, Portal,
+  SurroundPortals,
 } from '@shopgate/engage/components';
 import {
   getProductRoute,
@@ -23,7 +23,7 @@ import {
 } from '@shopgate/engage/product/components';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import {
-  PRODUCT_ITEM_DISCOUNT, PRODUCT_ITEM_NAME_AFTER, PRODUCT_ITEM_NAME_BEFORE,
+  PRODUCT_ITEM_DISCOUNT,
   PRODUCT_ITEM_PRICE,
 } from '@shopgate/engage/category';
 import ProductGridPrice from '../ProductGridPrice';
@@ -108,16 +108,7 @@ function ProductCard(props) {
             It should only be used for approved BETA Client Projects
           */}
           <Swatches productId={product.id} />
-          {hideName ? (
-            <>
-              <Portal
-                name={PRODUCT_ITEM_NAME_BEFORE}
-              />
-              <Portal
-                name={PRODUCT_ITEM_NAME_AFTER}
-              />
-            </>
-          ) : (
+          {!hideName && (
             <ProductName
               name={product.name}
               className={styles.title}
@@ -139,15 +130,17 @@ function ProductCard(props) {
           */}
           <OrderQuantityHint productId={product.id} />
 
-          <SurroundPortals
-            portalName={PRODUCT_ITEM_PRICE}
-            portalProps={{
-              productId: product.id,
-              location,
-            }}
-          >
-            {!hidePrice && <ProductGridPrice product={product} /> }
-          </SurroundPortals>
+          {!hidePrice && (
+            <SurroundPortals
+              portalName={PRODUCT_ITEM_PRICE}
+              portalProps={{
+                productId: product.id,
+                location,
+              }}
+            >
+              <ProductGridPrice product={product} />
+            </SurroundPortals>
+          )}
         </div>
       )}
     </Link>
