@@ -78,6 +78,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
         }
       >
         <ProductCard
+          dispatch={[Function]}
           product={
             Object {
               "featuredImageBaseUrl": null,
@@ -98,6 +99,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
               },
             }
           }
+          productId="PR0DUCTID"
           url="/item/505230445543544944"
         />
       </section>

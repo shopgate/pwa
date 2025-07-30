@@ -136,6 +136,12 @@ const Swiper = ({
 
   useEffect(() => {
     if (!internalProps.autoplay && !swiperProps.autoplay) {
+      if (swiperRef.current?.swiper?.autoplay) {
+        // When autoplay is disabled, ensure that the slider is really stopped. That tackles UI
+        // issues when e.g. autoplay and loop mode where disabled during one slide interval.
+        swiperRef.current.swiper.autoplay.stop();
+      }
+
       return;
     }
 
