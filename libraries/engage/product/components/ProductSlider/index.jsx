@@ -25,13 +25,14 @@ function ProductSlider(props) {
     scope,
     meta,
     productItemProps,
+    item,
     ...swiperProps
   } = props;
   const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
   const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSettings;
   // ProductSlider items are rendered with the ProductCard component provided by the theme.
   const { ProductCard } = useThemeComponents();
-  const Item = props.item || ProductCard;
+  const Item = item || ProductCard;
 
   return (
     <ProductListTypeProvider type="productSlider" subType={scope} meta={meta}>
@@ -45,8 +46,8 @@ function ProductSlider(props) {
         controls={false}
         indicators={false}
         freeMode={!snap}
-        slidesPerView={slidesPerView}
         {...swiperProps}
+        slidesPerView={slidesPerView}
       >
         {productIds.map(id => (
           <Swiper.Item key={id} className={container}>
