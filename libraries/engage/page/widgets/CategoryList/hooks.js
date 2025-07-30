@@ -45,7 +45,9 @@ export const useCategoryListWidget = () => {
     (category ? getCategoryChildren(state, { categoryId: category, sort: sortCC }) : null));
 
   useEffect(() => {
-    dispatch(fetchCategory(category, sortCC));
+    if (category) {
+      dispatch(fetchCategory(category, sortCC));
+    }
   }, [category, parentCategory, dispatch, sort, sortCC]);
 
   return {
