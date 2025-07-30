@@ -12,7 +12,7 @@ import styles from './style';
  * The ProductGridPrice component is supposed to be used to display prices at product grids. It
  * renders a row with the current price and a strike price when present. As same as the price info.
  * @param {Object} product A product entity.
- * @return {JSX}
+ * @return {JSX.Element}
  */
 const ProductGridPrice = ({ product }) => {
   const { price } = product;
