@@ -24,6 +24,7 @@ const categoriesById = (state = {}, action) => {
           ...state[action.categoryId],
           expires: 0,
           isFetching: true,
+          sort: action.sort,
         },
       };
 
@@ -37,6 +38,7 @@ const categoriesById = (state = {}, action) => {
           ...categoryData,
           expires: Date.now() + CATEGORY_LIFETIME,
           isFetching: false,
+          sort: action.sort,
         },
         ...handleCategoryCollection(action.categoryChildren),
       };
@@ -66,6 +68,7 @@ const categoriesById = (state = {}, action) => {
         [action.categoryId]: {
           ...state[action.categoryId],
           isFetching: false,
+          sort: action.sort,
         },
       };
 

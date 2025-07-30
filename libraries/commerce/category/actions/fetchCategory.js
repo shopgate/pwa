@@ -11,13 +11,18 @@ import { getCategory } from '../selectors';
 /**
  * Fetches the data for a given category ID (including child categories).
  * @param {string} categoryId The category ID.
+ * @param {string} sort the selected sort order
  * @return {Function} The dispatched action.
  */
-function fetchCategory(categoryId) {
+function fetchCategory(categoryId, sort) {
   return (dispatch, getState) => {
     const category = getCategory(getState(), { categoryId });
 
-    if (!shouldFetchData(category)) {
+    // Check if we need to fetch data or if the sort has changed
+    const shouldFetch = shouldFetchData(category);
+    const sortChanged = category && category.sort !== sort;
+
+    if (!shouldFetch && !sortChanged) {
       /**
        * Child categories are maybe missing.
        * So we need to check it (check happens inside fetchCategoryChildren).
@@ -30,13 +35,14 @@ function fetchCategory(categoryId) {
       return Promise.resolve(category);
     }
 
-    // No data at all. So we have the fetch the category with children included
-    dispatch(requestCategory(categoryId));
+    // No data at all or sort changed. So we have to fetch the category with children included
+    dispatch(requestCategory(categoryId, sort));
 
     const request = new PipelineRequest(SHOPGATE_CATALOG_GET_CATEGORY)
       .setInput({
         categoryId,
         includeChildren: true,
+        childrenSort: sort,
       })
       .setResponseBehavior({
         error: errorBehavior.modal(),
@@ -45,7 +51,7 @@ function fetchCategory(categoryId) {
 
     request
       .then((result) => {
-        dispatch(receiveCategory(categoryId, result, (result.children || [])));
+        dispatch(receiveCategory(categoryId, result, (result.children || []), sort));
       })
       .catch((error) => {
         dispatch(errorCategory(categoryId, error.code));
