@@ -12,9 +12,8 @@ const showAllProducts = css({
 }).toString();
 
 const image = css({
-  display: 'none',
-  background: 'red',
-  borderRadius: 20,
+  width: '30px',
+  marginRight: 8,
 }).toString();
 
 export default {

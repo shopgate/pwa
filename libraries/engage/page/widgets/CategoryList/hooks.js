@@ -48,7 +48,7 @@ export const useCategoryListWidget = () => {
     if (category) {
       dispatch(fetchCategory(category, sortCC));
     }
-  }, [category, parentCategory, dispatch, sort, sortCC]);
+  }, [category, dispatch, sort, sortCC]);
 
   return {
     parentCategory,
