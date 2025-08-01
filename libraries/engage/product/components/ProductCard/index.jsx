@@ -100,7 +100,7 @@ function ProductCard(props) {
         </div>
         )}
       </ProductBadges>
-      {!(hidePrice && hideRating) && (
+      {!(hidePrice && hideRating && hideName) && (
         <div className={`${styles.details} engage__product-card__information`}>
             {showRatings && <RatingStars value={product.rating.average} />}
           {/*
@@ -108,7 +108,6 @@ function ProductCard(props) {
             It should only be used for approved BETA Client Projects
           */}
           <Swatches productId={product.id} />
-
           {!hideName && (
             <ProductName
               name={product.name}

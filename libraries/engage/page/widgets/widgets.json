@@ -5,6 +5,9 @@
   "@shopgate/widgets/productListWidget": {
     "path": "@shopgate/engage/page/widgets/ProductList"
   },
+  "@shopgate/widgets/productSliderWidget": {
+    "path": "@shopgate/engage/page/widgets/ProductSlider"
+  },
   "@shopgate/widgets/htmlWidget": {
     "path": "@shopgate/engage/page/widgets/HTML"
   },
