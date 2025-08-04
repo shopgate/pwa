@@ -1,5 +1,8 @@
 {
-    "@shopgate/widgets/productListWidget": {
+  "@shopgate/widgetsInternal/Placeholder": {
+    "path": "@shopgate/engage/page/widgets/Placeholder"
+  },
+  "@shopgate/widgets/productListWidget": {
     "path": "@shopgate/engage/page/widgets/ProductList"
   },
   "@shopgate/widgets/productSliderWidget": {
@@ -8,7 +11,7 @@
   "@shopgate/widgets/htmlWidget": {
     "path": "@shopgate/engage/page/widgets/HTML"
   },
-  "@shopgate/widgetsInternal/Placeholder": {
-    "path": "@shopgate/engage/page/widgets/Placeholder"
+  "@shopgate/widgets/headlineWidget": {
+    "path": "@shopgate/engage/page/widgets/Headline"
   }
 }
