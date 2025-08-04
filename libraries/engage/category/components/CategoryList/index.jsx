@@ -19,6 +19,7 @@ import styles from './style';
  * @param {number} props.prerender The number of rows to prerender.
  * @param {boolean} props.showAllProducts Whether to show all products
  * @param {boolean} props.showImages Whether to show category images
+ * @param {boolean} props.showLeftSideImages Whether to show category images on the left side
  * @returns {JSX.Element}
  */
 const CategoryList = ({
@@ -27,6 +28,7 @@ const CategoryList = ({
   prerender,
   showAllProducts,
   showImages,
+  showLeftSideImages,
 }) => {
   if (!categories || !categories.length) {
     if (prerender === 0) {
@@ -82,10 +84,15 @@ const CategoryList = ({
             }}
             testId={category.name}
             rightComponent={
-              showImages
-                ? <CategoryImage className={styles.image} src={category.imageUrl} />
-                : null
-            }
+                showImages
+                  ? <CategoryImage className={styles.image} src={category.imageUrl} />
+                  : null
+              }
+            leftComponent={
+                showLeftSideImages
+                  ? <CategoryImage className={styles.image} src={category.imageUrl} />
+                  : null
+              }
             linkComponent={TextLink}
           />
         </Portal>
@@ -100,6 +107,7 @@ CategoryList.propTypes = {
   prerender: PropTypes.number,
   showAllProducts: PropTypes.bool,
   showImages: PropTypes.bool,
+  showLeftSideImages: PropTypes.bool,
 };
 
 CategoryList.defaultProps = {
@@ -108,6 +116,7 @@ CategoryList.defaultProps = {
   prerender: 0,
   showAllProducts: false,
   showImages: false,
+  showLeftSideImages: false,
 };
 
 export default CategoryList;

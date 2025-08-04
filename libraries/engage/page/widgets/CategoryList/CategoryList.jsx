@@ -17,7 +17,7 @@ const CategoryListWidget = () => {
     <CategoryList
       categories={categories}
       parentCategory={parentCategory}
-      showImages={showImages}
+      showLeftSideImages={showImages}
     />
   );
 };

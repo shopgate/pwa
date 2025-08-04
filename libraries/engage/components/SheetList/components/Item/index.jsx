@@ -45,14 +45,15 @@ class Item extends Component {
   };
 
   /**
-   * Should only update what the `selected` or `disabled` props change.
+   * Should only update when the `selected` or `disabled` or 'leftComponent' props change.
    * @param {Object} nextProps The next set of component props.
    * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
     return (
       this.props.isSelected !== nextProps.isSelected ||
-      this.props.isDisabled !== nextProps.isDisabled
+      this.props.isDisabled !== nextProps.isDisabled ||
+      this.props.leftComponent !== nextProps.leftComponent
     );
   }
 

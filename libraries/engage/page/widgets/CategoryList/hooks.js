@@ -10,7 +10,6 @@ import { useEffect, useMemo } from 'react';
  * @property {string} category The parent category ID to display categories for.
  * @property {string} [sort] The sort order for categories
  * @property {boolean} [showImages] Whether to display images for categories.
- * @property {boolean} [showSubcategories] Whether to display subcategories.
  */
 
 /**
@@ -31,7 +30,6 @@ export const useCategoryListWidget = () => {
     category,
     sort,
     showImages,
-    showSubcategories,
   } = config;
 
   const sortCC = useMemo(() => camelCase(sort), [sort]);
@@ -53,7 +51,6 @@ export const useCategoryListWidget = () => {
   return {
     parentCategory,
     showImages,
-    showSubcategories,
     categories,
   };
 };
