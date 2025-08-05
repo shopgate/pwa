@@ -188,12 +188,24 @@ const Swiper = ({
    * changes. To fix that, we stop and restart the autoplay after the loop prop changes.
    */
   useEffect(() => {
-    if (swiperRef.current?.swiper?.autoplay?.running) {
-      swiperRef.current.swiper.autoplay.stop();
+    const { swiper } = swiperRef.current;
+    if (!swiper || !swiper?.autoplay) return;
+
+    if (swiper.autoplay?.running) {
+      swiper.autoplay.stop();
 
       setTimeout(() => {
-        swiperRef.current.swiper.autoplay.start();
+        swiper.autoplay.start();
       }, 100);
+    }
+    const realIndex = swiper?.realIndex || 0;
+
+    if (shouldLoop) {
+      swiper.loopDestroy();
+      swiper.loopCreate(realIndex);
+      swiper.updateSlides();
+    } else {
+      swiper.loopDestroy();
     }
   }, [shouldLoop]);
 
