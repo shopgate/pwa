@@ -8,6 +8,7 @@ import { emotionCache } from '@shopgate/engage/styles/tss';
 import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
 import { ThemeConfigResolver, AppProvider, hasWebBridge } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { themeConfig } from '@shopgate/engage';
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
@@ -111,7 +112,11 @@ const globalLocationSelectorAllowList = [
 const Pages = ({ store }) => {
   const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
 
-  const theme = useMemo(() => createTheme(), []);
+  const theme = useMemo(() => createTheme({
+    typography: {
+      fontFamily: themeConfig.typography.family,
+    },
+  }), []);
 
   return (
     <App store={store}>
