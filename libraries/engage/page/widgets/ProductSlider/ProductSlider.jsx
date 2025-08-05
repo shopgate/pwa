@@ -29,6 +29,10 @@ const ProductSliderWidget = () => {
   const theme = useTheme();
   const productIds = useMemo(() => results?.map(result => result.id), [results]);
 
+  if (!productIds || !productIds.length) {
+    return null;
+  }
+
   return (
     <ProductSlider
       productIds={productIds}

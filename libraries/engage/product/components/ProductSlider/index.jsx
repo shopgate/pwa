@@ -33,7 +33,6 @@ function ProductSlider(props) {
   // ProductSlider items are rendered with the ProductCard component provided by the theme.
   const { ProductCard } = useThemeComponents();
   const Item = item || ProductCard;
-  const shouldLoop = swiperProps.loop && productIds.length > slidesPerView + 1;
 
   return (
     <ProductListTypeProvider type="productSlider" subType={scope} meta={meta}>
@@ -49,7 +48,6 @@ function ProductSlider(props) {
         freeMode={!snap}
         {...swiperProps}
         slidesPerView={slidesPerView}
-        loop={shouldLoop}
       >
         {productIds.map(id => (
           <Swiper.Item key={id} className={container}>
