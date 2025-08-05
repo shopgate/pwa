@@ -26,7 +26,6 @@ const childrenByCategoryId = (state = {}, action) => {
           children: null,
           isFetching: true,
           expires: 0,
-          sort: action.sort,
         },
       };
     case RECEIVE_CATEGORY:
@@ -41,7 +40,6 @@ const childrenByCategoryId = (state = {}, action) => {
           children: actionChildren ? action.categoryChildren.map(child => child.id) : null,
           isFetching: false,
           expires: Date.now() + CATEGORY_LIFETIME,
-          sort: action.sort,
         },
       };
     }
@@ -58,7 +56,6 @@ const childrenByCategoryId = (state = {}, action) => {
         [action.categoryId]: {
           ...state[action.categoryId],
           isFetching: false,
-          sort: action.sort,
         },
       };
     default:

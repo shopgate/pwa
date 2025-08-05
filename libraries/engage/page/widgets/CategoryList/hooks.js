@@ -36,15 +36,16 @@ export const useCategoryListWidget = () => {
 
   // Get the parent category object from the selected category
   const parentCategory = useSelector(state =>
-    (category ? getCategory(state, { categoryId: category, childrenSort: sortCC }) : null));
+    (category ? getCategory(state, { categoryId: category }) : null));
 
   // Get category children of the selected category (pipeline handles sorting)
   const categories = useSelector(state =>
-    (category ? getCategoryChildren(state, { categoryId: category, sort: sortCC }) : null));
+    (category ? getCategoryChildren(state, { categoryId: category }) : null));
 
+  // TODO sort here
   useEffect(() => {
     if (category) {
-      dispatch(fetchCategory(category, sortCC));
+      dispatch(fetchCategory(category));
     }
   }, [category, dispatch, sort, sortCC]);
 
