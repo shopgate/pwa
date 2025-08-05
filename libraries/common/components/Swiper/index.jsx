@@ -89,7 +89,7 @@ const Swiper = ({
 
   /**
    * Handles the breakpoint change event.
-   * Its used to determine the currently active slidesPerView which can be different for each
+   * It's used to determine the currently active slidesPerView which can be different for each
    * breakpoint.
    */
   const handleOnBreakpoint = useCallback((swiper, breakpoint) => {
@@ -163,7 +163,7 @@ const Swiper = ({
     if (!internalProps.autoplay && !swiperProps.autoplay) {
       if (swiperRef.current?.swiper?.autoplay) {
         // When autoplay is disabled, ensure that the slider is really stopped. That tackles UI
-        // issues when e.g. autoplay and loop mode where disabled during one slide interval.
+        // issues when e.g. autoplay and loop mode were disabled during one slide interval.
         swiperRef.current.swiper.autoplay.stop();
       }
 
@@ -179,12 +179,12 @@ const Swiper = ({
     }
   }, [internalProps.autoplay, reduceMotion, swiperProps.autoplay]);
 
-  // Wehen there are less slides than slidesPerView, we need to disable the loop mode to avoid
+  // When there are less slides than slidesPerView, we need to disable the loop mode to avoid
   // flickering.
   const shouldLoop = loopProp && children?.length > currentSlidesPerView + 1;
 
   /**
-   * Effect to compensate an issue where slider stops autoplaying when its loop prop is dynamically
+   * Effect to compensate an issue where slider stops autoplaying when its loop prop dynamically
    * changes. To fix that, we stop and restart the autoplay after the loop prop changes.
    */
   useEffect(() => {
