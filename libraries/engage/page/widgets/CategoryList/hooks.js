@@ -41,7 +41,7 @@ export const useCategoryListWidget = () => {
 
   // Get category children of the selected category (pipeline handles sorting)
   const categories = useSelector(state =>
-    (category ? getCategoriesById(state, { categoryId: category }) : null));
+    (getCategoriesById(state, { categoryId: category })));
 
   const sortByName = useCallback((array, order) => {
     if (!array) {
@@ -59,9 +59,7 @@ export const useCategoryListWidget = () => {
   const sortedCategories = sortByName(categories, sortCC) || [];
 
   useEffect(() => {
-    if (category) {
-      dispatch(fetchCategoryOrRootCategories(category));
-    }
+    dispatch(fetchCategoryOrRootCategories(category));
   }, [category, dispatch]);
 
   return {
