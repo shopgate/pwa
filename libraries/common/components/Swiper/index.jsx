@@ -25,6 +25,10 @@ import {
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
+*/
+
+/**
+ * @typedef {import('swiper/react').SwiperClass} SwiperClass
  */
 
 /**
@@ -59,6 +63,7 @@ const Swiper = ({
   const showPagination = (indicators && children.length > 1);
   const hasControls = typeof controls === 'boolean' && controls === true;
   const reduceMotion = useReduceMotion();
+  /** @type {React.RefObject<{ swiper: SwiperClass}>} */
   const swiperRef = useRef(null);
 
   const [currentSlidesPerView, setCurrentSlidesPerView] = useState(swiperProps?.slidesPerView || 1);
@@ -86,25 +91,6 @@ const Swiper = ({
       onSlideChange(swiper.realIndex, swiper);
     }
   }, [onSlideChange]);
-
-  /**
-   * Handles the breakpoint change event.
-   * It's used to determine the currently active slidesPerView which can be different for each
-   * breakpoint.
-   */
-  const handleOnBreakpoint = useCallback((swiper, breakpoint) => {
-    let { slidesPerView } = breakpoint;
-
-    if (!slidesPerView) {
-      slidesPerView = 1;
-    }
-
-    setCurrentSlidesPerView(slidesPerView);
-
-    if (typeof onBreakpoint === 'function') {
-      onBreakpoint(swiper, breakpoint);
-    }
-  }, [onBreakpoint]);
 
   /**
    * @type {SwiperCmpProps}
@@ -138,7 +124,6 @@ const Swiper = ({
     allowSlidePrev: !disabled,
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
-    onBreakpoint: handleOnBreakpoint,
   }),
   [
     additionalModules,
@@ -156,14 +141,13 @@ const Swiper = ({
     children.length,
     disabled,
     handleSlideChange,
-    handleOnBreakpoint,
   ]);
 
   useEffect(() => {
     if (!internalProps.autoplay && !swiperProps.autoplay) {
       if (swiperRef.current?.swiper?.autoplay) {
         // When autoplay is disabled, ensure that the slider is really stopped. That tackles UI
-        // issues when e.g. autoplay and loop mode were disabled during one slide interval.
+        // issues when e.g. autoplay and loop mode where disabled during one slide interval.
         swiperRef.current.swiper.autoplay.stop();
       }
 
@@ -179,12 +163,12 @@ const Swiper = ({
     }
   }, [internalProps.autoplay, reduceMotion, swiperProps.autoplay]);
 
-  // When there are less slides than slidesPerView, we need to disable the loop mode to avoid
+  // Wehen there are less slides than slidesPerView, we need to disable the loop mode to avoid
   // flickering.
   const shouldLoop = loopProp && children?.length > currentSlidesPerView + 1;
 
   /**
-   * Effect to compensate an issue where slider stops autoplaying when its loop prop dynamically
+   * Effect to compensate an issue where slider stops autoplaying when its loop prop is dynamically
    * changes. To fix that, we stop and restart the autoplay after the loop prop changes.
    */
   useEffect(() => {
@@ -209,6 +193,36 @@ const Swiper = ({
     }
   }, [shouldLoop]);
 
+  const delay = internalProps.autoplay?.delay || swiperProps.autoplay?.delay;
+
+  /**
+   * Handles the breakpoint change event.
+   * Its used to determine the currently active slidesPerView which can be different for each
+   * breakpoint. Additionally it re-sets the autoplay delay, to handle some issues that occur
+   * when the delay is changed while a breakpoint is active that doesn't allow autoplay and is
+   * changed to a breakpoint that allows autoplay.
+   */
+  const handleOnBreakpoint = useCallback((swiper, breakpoint) => {
+    let { slidesPerView } = breakpoint;
+
+    if (!slidesPerView) {
+      slidesPerView = 1;
+    }
+
+    setCurrentSlidesPerView(slidesPerView);
+
+    if (typeof delay === 'number' && swiper.autoplay.running) {
+      swiper.autoplay.stop();
+      // eslint-disable-next-line no-param-reassign
+      swiper.params.autoplay.delay = delay;
+      swiper.autoplay.start();
+    }
+
+    if (typeof onBreakpoint === 'function') {
+      onBreakpoint(swiper, breakpoint);
+    }
+  }, [delay, onBreakpoint]);
+
   return (
     <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
       <OriginalSwiper
@@ -217,6 +231,7 @@ const Swiper = ({
         {...internalProps}
         {...swiperProps}
         loop={shouldLoop}
+        onBreakpoint={handleOnBreakpoint}
         ref={swiperRef}
       >
         {children}
