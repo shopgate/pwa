@@ -1,9 +1,10 @@
 import { camelCase } from 'lodash';
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useSelector, useDispatch } from 'react-redux';
-import { getCategory, getCategoryChildren } from '@shopgate/pwa-common-commerce/category/selectors';
-import { fetchCategory } from '@shopgate/engage/category/actions';
-import { useEffect, useMemo } from 'react';
+import { getCategory } from '@shopgate/pwa-common-commerce/category/selectors';
+import { fetchCategoryOrRootCategories } from '@shopgate/engage/category/actions';
+import { useCallback, useEffect, useMemo } from 'react';
+import { getCategoriesById } from '@shopgate/theme-ios11/widgets/selectors';
 
 /**
  * @typedef {Object} CategoryListWidgetConfig
@@ -40,18 +41,29 @@ export const useCategoryListWidget = () => {
 
   // Get category children of the selected category (pipeline handles sorting)
   const categories = useSelector(state =>
-    (category ? getCategoryChildren(state, { categoryId: category }) : null));
+    (category ? getCategoriesById(state, { categoryId: category }) : null));
 
-  // TODO sort here
+  const sortByName = useCallback((array, order) => {
+    if (order === 'relevance') {
+      return array;
+    }
+    const isAsc = order === 'nameAsc';
+
+    return [...array].sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) * (isAsc ? 1 : -1));
+  }, []);
+
+  const sortedCategories = sortByName(categories, sortCC);
+
   useEffect(() => {
     if (category) {
-      dispatch(fetchCategory(category));
+      dispatch(fetchCategoryOrRootCategories(category));
     }
-  }, [category, dispatch, sort, sortCC]);
+  }, [category, dispatch]);
 
   return {
     parentCategory,
     showImages,
-    categories,
+    categories: sortedCategories,
   };
 };
