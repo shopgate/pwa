@@ -44,6 +44,9 @@ export const useCategoryListWidget = () => {
     (category ? getCategoriesById(state, { categoryId: category }) : null));
 
   const sortByName = useCallback((array, order) => {
+    if (!array) {
+      return [];
+    }
     if (order === 'relevance') {
       return array;
     }
@@ -53,7 +56,7 @@ export const useCategoryListWidget = () => {
       a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) * (isAsc ? 1 : -1));
   }, []);
 
-  const sortedCategories = sortByName(categories, sortCC);
+  const sortedCategories = sortByName(categories, sortCC) || [];
 
   useEffect(() => {
     if (category) {

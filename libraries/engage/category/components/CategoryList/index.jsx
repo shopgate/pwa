@@ -15,6 +15,7 @@ import styles from './style';
 /**
  * The CategoryList component.
  * @param {Object} props The component props.
+ * @param {Object} props.parentCategory The parentCategory props.
  * @param {Array} props.categories The categories to display.
  * @param {number} props.prerender The number of rows to prerender.
  * @param {boolean} props.showAllProducts Whether to show all products

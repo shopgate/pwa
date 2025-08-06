@@ -13,6 +13,10 @@ const CategoryListWidget = () => {
     showImages,
   } = useCategoryListWidget();
 
+  if (!categories) {
+    return null;
+  }
+
   return (
     <CategoryList
       categories={categories}
