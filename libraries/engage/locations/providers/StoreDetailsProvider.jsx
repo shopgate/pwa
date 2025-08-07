@@ -40,8 +40,13 @@ const StoreDetailsProvider = ({
 
   const selectLocationCb = useCallback((location) => {
     selectLocation(location, true);
-    selectGlobalLocation(location);
-  }, [selectLocation, selectGlobalLocation]);
+
+    if (location.code !== preferredLocation?.code) {
+      // Only dispatch selectGlobalLocation when location really changed, since this action
+      // might clear product data from the resultsByHash product storage.
+      selectGlobalLocation(location);
+    }
+  }, [preferredLocation, selectLocation, selectGlobalLocation]);
 
   const value = useMemo(() => ({
     preferredLocation,

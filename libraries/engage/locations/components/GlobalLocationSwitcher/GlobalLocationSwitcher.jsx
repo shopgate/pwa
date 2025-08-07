@@ -28,10 +28,12 @@ const GlobalLocationSwitcher = ({
   const closeSheetHandler = useCallback((location) => {
     setSheetOpen(false);
 
-    if (location) {
+    if (location && location.code !== preferredLocation?.code) {
+      // Only dispatch selectGlobalLocation when location really changed, since this action
+      // might clear product data from the resultsByHash product storage.
       selectGlobalLocation(location);
     }
-  }, [selectGlobalLocation]);
+  }, [preferredLocation, selectGlobalLocation]);
 
   const locationName = useMemo(() => preferredLocation?.name || null, [preferredLocation]);
 
