@@ -1,0 +1,29 @@
+import React from 'react';
+import { CategoryList } from '@shopgate/engage/category/components';
+import { useCategoryListWidget } from './hooks';
+
+/**
+ * The CategoryListWidget is used to display category lists.
+ * @returns {JSX.Element}
+ */
+const CategoryListWidget = () => {
+  const {
+    parentCategory,
+    categories,
+    showImages,
+  } = useCategoryListWidget();
+
+  if (!categories) {
+    return null;
+  }
+
+  return (
+    <CategoryList
+      categories={categories}
+      parentCategory={parentCategory}
+      showLeftSideImages={showImages}
+    />
+  );
+};
+
+export default CategoryListWidget;
