@@ -24,6 +24,7 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  * @property {boolean} [slideAutomatic] Whether the slider should automatically slide.
  * @property {boolean} [endlessSlider] Whether the slider should loop endlessly.
  * @property {number} [sliderSpeed] The speed (in ms) for the slider autoplay.
+ * @property {boolean} [isPreview] Whether the widget is in preview mode.
  */
 
 /**
@@ -37,7 +38,7 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  */
 export const useProductSliderWidget = () => {
   /** @type {UseWidgetReturnType}  */
-  const { config } = useWidget();
+  const { config, isPreview } = useWidget();
 
   const {
     products,
@@ -98,5 +99,6 @@ export const useProductSliderWidget = () => {
     productCount,
     swiperProps,
     productItemProps,
+    isPreview,
   };
 };
