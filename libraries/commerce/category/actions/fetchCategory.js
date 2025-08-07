@@ -17,10 +17,8 @@ function fetchCategory(categoryId) {
   return (dispatch, getState) => {
     const category = getCategory(getState(), { categoryId });
 
-    // Check if we need to fetch data or if the sort has changed
-    const shouldFetch = shouldFetchData(category);
-
-    if (!shouldFetch) {
+    // Check if we need to fetch data
+    if (!shouldFetchData(category)) {
       /**
        * Child categories are maybe missing.
        * So we need to check it (check happens inside fetchCategoryChildren).
@@ -33,7 +31,7 @@ function fetchCategory(categoryId) {
       return Promise.resolve(category);
     }
 
-    // No data at all or sort changed. So we have to fetch the category with children included
+    // No data at all. So we have to fetch the category with children included
     dispatch(requestCategory(categoryId));
 
     const request = new PipelineRequest(SHOPGATE_CATALOG_GET_CATEGORY)
