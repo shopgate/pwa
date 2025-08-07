@@ -26,6 +26,7 @@ import {
   RECEIVE_PRODUCTS,
   PROVIDE_PRODUCT_BUFFER_TIME,
   PROVIDE_PRODUCT,
+  EXPIRE_PRODUCT_DATA,
 } from '../constants';
 
 /**
@@ -172,3 +173,9 @@ export const fetchProductsRequested$ = main$
       },
     };
   });
+
+/**
+ * Emits when product data has been expired.
+ */
+export const productDataExpired$ = main$
+  .filter(({ action }) => action.type === EXPIRE_PRODUCT_DATA);

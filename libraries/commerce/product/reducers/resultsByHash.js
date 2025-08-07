@@ -10,6 +10,7 @@ import {
   EXPIRE_PRODUCT_BY_ID,
   EXPIRE_PRODUCTS_BY_HASH,
   ERROR_PRODUCT,
+  EXPIRE_PRODUCT_DATA,
 } from '../constants';
 
 /**
@@ -103,6 +104,16 @@ export default function resultsByHash(state = {}, action) {
             },
           };
         }
+        return accumulator;
+      }, { ...state });
+    }
+    // Mark all product data as expired
+    case EXPIRE_PRODUCT_DATA: {
+      return Object.keys(state).reduce((accumulator, hash) => {
+        accumulator[hash] = {
+          ...accumulator[hash],
+          expires: 0,
+        };
         return accumulator;
       }, { ...state });
     }
