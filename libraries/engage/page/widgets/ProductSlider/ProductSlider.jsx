@@ -16,6 +16,7 @@ const ProductSliderWidget = () => {
     productCount,
     swiperProps,
     productItemProps,
+    isPreview,
   } = useProductSliderWidget();
 
   const {
@@ -29,12 +30,18 @@ const ProductSliderWidget = () => {
   const theme = useTheme();
   const productIds = useMemo(() => results?.map(result => result.id), [results]);
 
+  if (!productIds || !productIds.length) {
+    return null;
+  }
+
   return (
     <ProductSlider
       productIds={productIds}
       scope="widgets"
       productItemProps={productItemProps}
       slidesPerView={2.3}
+      // Improves interaction with the slider in the CMS preview iframe
+      {...isPreview ? { touchStartPreventDefault: true } : {}}
       breakpoints={{
         [theme.breakpoints.values.sm]: {
           slidesPerView: 3.3,

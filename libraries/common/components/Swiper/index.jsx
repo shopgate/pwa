@@ -1,5 +1,5 @@
 import React, {
-  useMemo, useCallback, useEffect, useRef,
+  useMemo, useCallback, useEffect, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import cls from 'classnames';
@@ -28,6 +28,29 @@ import {
  */
 
 /**
+ * @typedef {import('swiper/react').SwiperClass} SwiperClass
+ */
+
+/**
+ * Performs steps that are required when the loop prop of the Swiper is updated.
+ * @param {SwiperClass} swiper Swiper instance
+ * @param {boolean} loop Whether the loop mode should be enabled or not.
+ */
+const handleLoopPropUpdate = (swiper, loop) => {
+  const realIndex = swiper?.realIndex || 0;
+
+  // eslint-disable-next-line no-param-reassign
+  swiper.params.loop = loop;
+  if (loop) {
+    swiper.loopDestroy();
+    swiper.loopCreate(realIndex);
+    swiper.updateSlides();
+  } else {
+    swiper.loopDestroy();
+  }
+};
+
+/**
  * The basic Swiper component. It acts as a wrapper for the Swiper JS library component.
  *
  * This component wraps the [Swiper](https://swiperjs.com/) library's main component.
@@ -47,7 +70,9 @@ const Swiper = ({
   classNames,
   className,
   onSlideChange,
+  onBreakpoint,
   additionalModules,
+  loop: loopProp,
   children,
   paginationType: paginationTypeProp,
   ...swiperProps
@@ -57,7 +82,11 @@ const Swiper = ({
   const showPagination = (indicators && children.length > 1);
   const hasControls = typeof controls === 'boolean' && controls === true;
   const reduceMotion = useReduceMotion();
+
+  /** @type {React.RefObject<{ swiper: SwiperClass}>} */
   const swiperRef = useRef(null);
+
+  const [currentSlidesPerView, setCurrentSlidesPerView] = useState(swiperProps?.slidesPerView || 1);
 
   const navigation = useMemo(() => {
     let nav;
@@ -154,6 +183,61 @@ const Swiper = ({
     }
   }, [internalProps.autoplay, reduceMotion, swiperProps.autoplay]);
 
+  // The currently configured delay for autoplay.
+  const delay = internalProps.autoplay?.delay || swiperProps.autoplay?.delay;
+  // Whether the loop mode should be enabled.
+  const shouldLoop = loopProp && children?.length > currentSlidesPerView + 1;
+
+  useEffect(() => {
+    if (!swiperRef.current) return;
+    // Perform required steps when loop prop changes on runtime.
+    handleLoopPropUpdate(swiperRef.current.swiper, shouldLoop);
+  }, [shouldLoop]);
+
+  /**
+   * Handles the breakpoint change event.
+   * The Swiper has some issues when props are changed on runtime followed by a breakpoint change.
+   * This function is supposed to ensure the the Swiper behaves as expected in that case.
+   */
+  const handleOnBreakpoint = useCallback(
+    /**
+     * @param {SwiperClass} swiper Swiper instance
+     * @param {Object} breakpoint Current breakpoint object
+     */
+    (swiper, breakpoint) => {
+      let { slidesPerView } = breakpoint;
+
+      if (!slidesPerView) {
+        slidesPerView = 1;
+      }
+
+      const wasRunning = swiper?.autoplay?.running || false;
+
+      if (wasRunning) {
+        swiper.autoplay.stop();
+      }
+
+      const loopUpdate = loopProp && swiper.slides.length > slidesPerView + 1;
+
+      handleLoopPropUpdate(swiper, loopUpdate);
+
+      if (typeof delay === 'number' && swiper.params.autoplay) {
+        // eslint-disable-next-line no-param-reassign
+        swiper.params.autoplay.delay = delay;
+      }
+
+      if (wasRunning) {
+        swiper.autoplay.start();
+      }
+
+      setCurrentSlidesPerView(slidesPerView);
+
+      if (typeof onBreakpoint === 'function') {
+        onBreakpoint(swiper, breakpoint);
+      }
+    }, [delay, loopProp, onBreakpoint]
+  );
+
   return (
     <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
       <OriginalSwiper
@@ -161,6 +245,8 @@ const Swiper = ({
         a11y={{ enabled: false }}
         {...internalProps}
         {...swiperProps}
+        loop={shouldLoop}
+        onBreakpoint={handleOnBreakpoint}
         ref={swiperRef}
       >
         {children}
@@ -240,11 +326,13 @@ Swiper.propTypes = {
    * @see https://v9.swiperjs.com/swiper-api#autoplay
    */
   interval: PropTypes.number,
+  loop: PropTypes.bool,
   /**
    * Maximum number of bullets to show in pagination. If the number of children is greater than
    * this number, bullet pagination will be replaced with fraction (numeric) pagination.
    */
   maxIndicators: PropTypes.number,
+  onBreakpoint: PropTypes.func,
   /**
    * Callback invoked when the Swiper slide changes.
    * Invoked with the index of the new slide and the Swiper instance.
@@ -265,9 +353,11 @@ Swiper.defaultProps = {
   controls: false,
   indicators: false,
   interval: 3000,
+  loop: false,
   maxIndicators: null,
   disabled: false,
   onSlideChange: null,
+  onBreakpoint: null,
   paginationType: null,
 };
 
