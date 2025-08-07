@@ -41,7 +41,7 @@ const ProductSliderWidget = () => {
       productItemProps={productItemProps}
       slidesPerView={2.3}
       // Improves interaction with the slider in the CMS preview iframe
-      touchStartPreventDefault={isPreview}
+      {...isPreview ? { touchStartPreventDefault: true } : {}}
       breakpoints={{
         [theme.breakpoints.values.sm]: {
           slidesPerView: 3.3,
