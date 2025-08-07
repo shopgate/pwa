@@ -25,11 +25,30 @@ import {
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
-*/
+ */
 
 /**
  * @typedef {import('swiper/react').SwiperClass} SwiperClass
  */
+
+/**
+ * Performs steps that are required when the loop prop of the Swiper is updated.
+ * @param {SwiperClass} swiper Swiper instance
+ * @param {boolean} loop Whether the loop mode should be enabled or not.
+ */
+const handleLoopPropUpdate = (swiper, loop) => {
+  const realIndex = swiper?.realIndex || 0;
+
+  // eslint-disable-next-line no-param-reassign
+  swiper.params.loop = loop;
+  if (loop) {
+    swiper.loopDestroy();
+    swiper.loopCreate(realIndex);
+    swiper.updateSlides();
+  } else {
+    swiper.loopDestroy();
+  }
+};
 
 /**
  * The basic Swiper component. It acts as a wrapper for the Swiper JS library component.
@@ -63,6 +82,7 @@ const Swiper = ({
   const showPagination = (indicators && children.length > 1);
   const hasControls = typeof controls === 'boolean' && controls === true;
   const reduceMotion = useReduceMotion();
+
   /** @type {React.RefObject<{ swiper: SwiperClass}>} */
   const swiperRef = useRef(null);
 
@@ -163,65 +183,60 @@ const Swiper = ({
     }
   }, [internalProps.autoplay, reduceMotion, swiperProps.autoplay]);
 
-  // Wehen there are less slides than slidesPerView, we need to disable the loop mode to avoid
-  // flickering.
+  // The currently configured delay for autoplay.
+  const delay = internalProps.autoplay?.delay || swiperProps.autoplay?.delay;
+  // Whether the loop mode should be enabled.
   const shouldLoop = loopProp && children?.length > currentSlidesPerView + 1;
 
-  /**
-   * Effect to compensate an issue where slider stops autoplaying when its loop prop is dynamically
-   * changes. To fix that, we stop and restart the autoplay after the loop prop changes.
-   */
   useEffect(() => {
-    const { swiper } = swiperRef.current;
-    if (!swiper || !swiper?.autoplay) return;
-
-    if (swiper.autoplay?.running) {
-      swiper.autoplay.stop();
-
-      setTimeout(() => {
-        swiper.autoplay.start();
-      }, 100);
-    }
-    const realIndex = swiper?.realIndex || 0;
-
-    if (shouldLoop) {
-      swiper.loopDestroy();
-      swiper.loopCreate(realIndex);
-      swiper.updateSlides();
-    } else {
-      swiper.loopDestroy();
-    }
+    if (!swiperRef.current) return;
+    // Perform required steps when loop prop changes on runtime.
+    handleLoopPropUpdate(swiperRef.current.swiper, shouldLoop);
   }, [shouldLoop]);
-
-  const delay = internalProps.autoplay?.delay || swiperProps.autoplay?.delay;
 
   /**
    * Handles the breakpoint change event.
-   * Its used to determine the currently active slidesPerView which can be different for each
-   * breakpoint. Additionally it re-sets the autoplay delay, to handle some issues that occur
-   * when the delay is changed while a breakpoint is active that doesn't allow autoplay and is
-   * changed to a breakpoint that allows autoplay.
+   * The Swiper has some issues when props are changed on runtime followed by a breakpoint change.
+   * This function is supposed to ensure the the Swiper behaves as expected in that case.
    */
-  const handleOnBreakpoint = useCallback((swiper, breakpoint) => {
-    let { slidesPerView } = breakpoint;
+  const handleOnBreakpoint = useCallback(
+    /**
+     * @param {SwiperClass} swiper Swiper instance
+     * @param {Object} breakpoint Current breakpoint object
+     */
+    (swiper, breakpoint) => {
+      let { slidesPerView } = breakpoint;
 
-    if (!slidesPerView) {
-      slidesPerView = 1;
-    }
+      if (!slidesPerView) {
+        slidesPerView = 1;
+      }
 
-    setCurrentSlidesPerView(slidesPerView);
+      const wasRunning = swiper?.autoplay?.running || false;
 
-    if (typeof delay === 'number' && swiper.autoplay.running) {
-      swiper.autoplay.stop();
-      // eslint-disable-next-line no-param-reassign
-      swiper.params.autoplay.delay = delay;
-      swiper.autoplay.start();
-    }
+      if (wasRunning) {
+        swiper.autoplay.stop();
+      }
 
-    if (typeof onBreakpoint === 'function') {
-      onBreakpoint(swiper, breakpoint);
-    }
-  }, [delay, onBreakpoint]);
+      const loopUpdate = loopProp && swiper.slides.length > slidesPerView + 1;
+
+      handleLoopPropUpdate(swiper, loopUpdate);
+
+      if (typeof delay === 'number' && swiper.params.autoplay) {
+        // eslint-disable-next-line no-param-reassign
+        swiper.params.autoplay.delay = delay;
+      }
+
+      if (wasRunning) {
+        swiper.autoplay.start();
+      }
+
+      setCurrentSlidesPerView(slidesPerView);
+
+      if (typeof onBreakpoint === 'function') {
+        onBreakpoint(swiper, breakpoint);
+      }
+    }, [delay, loopProp, onBreakpoint]
+  );
 
   return (
     <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
