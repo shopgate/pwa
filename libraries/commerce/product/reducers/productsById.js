@@ -112,7 +112,7 @@ export default function productsById(state = {}, action) {
     case DELETE_PRODUCTS_BY_IDS: {
       const nextState = { ...state };
 
-      if (Array.isArray(action?.productIds)) {
+      if (Array.isArray(action?.productIds) && action.scopes.includes('price')) {
         action.productIds.forEach((productId) => {
           delete nextState[productId];
         });
