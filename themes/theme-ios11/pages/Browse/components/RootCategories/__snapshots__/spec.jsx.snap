@@ -101,6 +101,7 @@ exports[`<RootCategories /> should render category list with root categories fro
             prerender={0}
             showAllProducts={false}
             showImages={false}
+            showLeftSideImages={false}
           >
             <SheetList
               className="css-1tgouoh engage__category__category-list"
@@ -115,6 +116,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                 }
               >
                 <SheetList.Item
+                  leftComponent={null}
                   link="/category/3132332d313233"
                   linkComponent={[Function]}
                   linkState={
@@ -138,6 +140,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                 }
               >
                 <SheetList.Item
+                  leftComponent={null}
                   link="/category/3435362d313233"
                   linkComponent={[Function]}
                   linkState={
@@ -161,6 +164,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                 }
               >
                 <SheetList.Item
+                  leftComponent={null}
                   link="/category/3738392d313233"
                   linkComponent={[Function]}
                   linkState={
@@ -184,6 +188,7 @@ exports[`<RootCategories /> should render category list with root categories fro
                 }
               >
                 <SheetList.Item
+                  leftComponent={null}
                   link="/category/3738392d343536"
                   linkComponent={[Function]}
                   linkState={
