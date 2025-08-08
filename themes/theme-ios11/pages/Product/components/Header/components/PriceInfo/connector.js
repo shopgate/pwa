@@ -14,15 +14,15 @@ const mapStateToProps = (state, props) => ({
 
 /**
  * @param {Object} next The next component props.
- * @param {Object} prev The previous component props.
+ * @param {Object} prev The current component props.
  * @return {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!prev.price && next.price) {
+  if (!prev.product && next.product) {
     return false;
   }
 
-  if (!isEqual(prev.price, next.price)) {
+  if (!isEqual(prev.product, next.product)) {
     return false;
   }
 

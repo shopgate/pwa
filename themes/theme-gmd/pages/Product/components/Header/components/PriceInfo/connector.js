@@ -18,11 +18,11 @@ const mapStateToProps = (state, props) => ({
  * @return {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!prev.price && next.price) {
+  if (!prev.product && next.product) {
     return false;
   }
 
-  if (!isEqual(prev.price, next.price)) {
+  if (!isEqual(prev.product, next.product)) {
     return false;
   }
 
