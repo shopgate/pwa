@@ -26,7 +26,6 @@ import {
   SELECT_LOCATION,
   STORE_DETAILS_PATTERN,
 } from './constants';
-import { getPreferredLocation } from './selectors';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 import { WISH_LIST_PATH } from '../account/constants';
 
@@ -131,16 +130,7 @@ export const preferredLocationDidUpdateGlobalNotOnCategory$ = preferredLocationD
  * Emits when users select a new location
  */
 export const preferredLocationDidUpdate$ = main$
-  .filter(({ action }) => action.type === SELECT_LOCATION)
-  .filter(({ action, prevState }) => {
-    const preferredLocation = getPreferredLocation(prevState);
-    if (preferredLocation && action?.location?.code === preferredLocation?.code) {
-      // Do not emit if the preferred location did not change.
-      return false;
-    }
-
-    return true;
-  });
+  .filter(({ action }) => action.type === SELECT_LOCATION);
 
 export const storeFinderWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === STORE_FINDER_PATTERN);

@@ -5,7 +5,6 @@ import {
   variantDidChange$,
 } from '@shopgate/engage/product';
 import {
-  ToastProvider,
   appDidStart$,
   routeWillEnter$,
   UIEvents,
@@ -13,7 +12,6 @@ import {
   hex2bin,
   getThemeSettings,
   getCurrentSearchQuery,
-  i18n,
   appWillInit$,
   appInitialization,
 } from '@shopgate/engage/core';
@@ -51,7 +49,7 @@ import {
 } from './selectors';
 import {
   fetchDefaultLocation,
-  fetchLocations, fetchProductLocations, sendDefaultLocationCode, setPending, setUserGeolocation,
+  fetchLocations, fetchProductLocations, setPending, setUserGeolocation,
 } from './actions';
 import { setShowInventoryInLists, showInventoryInLists } from './helpers';
 import fetchInventories from './actions/fetchInventories';
@@ -61,7 +59,6 @@ import {
   submitReservationSuccess$,
   userSearchChanged$,
   storeFinderWillEnter$,
-  preferredLocationDidUpdate$,
   preferredLocationDidUpdateOnPDP$,
   provideAlternativeLocation$,
   preferredLocationDidUpdateGlobalOnWishlist$,
@@ -90,7 +87,9 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
     if (!initialLocations.some(l => l.code === locationCode)) {
       return;
     }
-    dispatch(selectLocation({ code: locationCode }));
+
+    await dispatch(selectLocation({ location: { code: locationCode } }));
+
     requestAnimationFrame(() => {
       dispatch(setPending(false));
     });
@@ -110,22 +109,6 @@ function locationsSubscriber(subscribe) {
         await dispatch(fetchDefaultLocation());
       }
     });
-  });
-  subscribe(preferredLocationDidUpdate$, ({
-    dispatch, getState, action, events,
-  }) => {
-    const preferredLocation = getPreferredLocation(getState());
-    if (preferredLocation) {
-      dispatch(sendDefaultLocationCode(preferredLocation.code));
-    }
-    const { location = {}, showToast } = action;
-
-    if (showToast) {
-      events.emit(ToastProvider.ADD, {
-        id: 'location.changed',
-        message: i18n.text('location.preferredLocationChanged', { storeName: location?.name }),
-      });
-    }
   });
 
   subscribe(cookieConsentInitialized$, async ({ dispatch, getState }) => {
@@ -161,7 +144,7 @@ function locationsSubscriber(subscribe) {
         if (!preferredLocation) {
           const locationToPreselect = locations.find(l => l.code === preferredLocationDefault);
           if (locationToPreselect) {
-            dispatch(selectLocation({ code: preferredLocationDefault }));
+            await dispatch(selectLocation({ location: { code: preferredLocationDefault } }));
           }
         }
       }
@@ -285,7 +268,7 @@ function locationsSubscriber(subscribe) {
       return;
     }
 
-    dispatch(selectLocation({ code: firstLocationCode }));
+    await dispatch(selectLocation({ location: { code: firstLocationCode } }));
     dispatch(selectGlobalLocation({ code: firstLocationCode }));
   });
 

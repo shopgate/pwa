@@ -38,16 +38,16 @@ const mapDispatchToProps = {
 const GlobalLocationSelector = ({
   isLocationBasedShopping,
   preferredLocation,
-  selectGlobalLocation: selectLocation,
+  selectGlobalLocation: selectGlobalLocationProp,
   routePatternAllowList,
   currentRoute,
   isPending,
 }) => {
-  const closeSheetHandler = useCallback((location) => {
+  const closeSheetHandler = useCallback(async (location) => {
     if (location) {
-      selectLocation(location);
+      selectGlobalLocationProp(location);
     }
-  }, [selectLocation]);
+  }, [selectGlobalLocationProp]);
 
   const renderComponent = useMemo(() => {
     if (!currentRoute) {

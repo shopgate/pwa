@@ -38,8 +38,11 @@ const StoreDetailsProvider = ({
   );
   const nearbyLocations = useSelector(getNearbyLocations);
 
-  const selectLocationCb = useCallback((location) => {
-    selectLocation(location, true);
+  const selectLocationCb = useCallback(async (location) => {
+    await selectLocation({
+      location,
+      showToast: true,
+    });
 
     if (location.code !== preferredLocation?.code) {
       // Only dispatch selectGlobalLocation when location really changed, since this action

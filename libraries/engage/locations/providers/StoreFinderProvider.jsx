@@ -28,8 +28,11 @@ const StoreFinderProvider = ({
 
   const selectedLocation = useSelector(getPreferredLocation);
 
-  const selectLocationCb = useCallback((location) => {
-    selectLocation(location, true);
+  const selectLocationCb = useCallback(async (location) => {
+    await selectLocation({
+      location,
+      showToast: true,
+    });
 
     if (location.code !== selectedLocation?.code) {
       // Only dispatch selectGlobalLocation when location really changed, since this action
