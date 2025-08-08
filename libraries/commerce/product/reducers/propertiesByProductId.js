@@ -3,6 +3,7 @@ import {
   REQUEST_PRODUCT_PROPERTIES,
   RECEIVE_PRODUCT_PROPERTIES,
   ERROR_PRODUCT_PROPERTIES,
+  EXPIRE_PRODUCT_DATA,
 } from '../constants';
 
 /**
@@ -32,6 +33,7 @@ export default function propertiesByProductId(state = {}, action) {
           expires: Date.now() + PRODUCT_LIFETIME,
         },
       };
+
     case ERROR_PRODUCT_PROPERTIES:
       return {
         ...state,
@@ -40,6 +42,16 @@ export default function propertiesByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+
+    case EXPIRE_PRODUCT_DATA: {
+      return Object.keys(state).reduce((acc, productId) => {
+        acc[productId] = {
+          ...state[productId],
+          expires: 0,
+        };
+        return acc;
+      }, {});
+    }
 
     default:
       return state;
