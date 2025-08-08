@@ -18,9 +18,6 @@ import {
 import {
   CATEGORY_ALL_PATTERN,
 } from '@shopgate/pwa-common-commerce/category/constants';
-import {
-  productDataExpired$,
-} from '@shopgate/pwa-common-commerce/product/streams';
 import { filterWillLeave$ } from '../../filter/streams';
 import {
   REQUEST_SEARCH_RESULTS,
@@ -72,7 +69,6 @@ export const searchFiltersDidUpdate$ = filtersDidUpdate$
 
 export const searchProductsNeedUpdate$ = preferredLocationDidUpdate$
   .merge(preferredLocationDidUpdateGlobalNotOnSearch$)
-  .merge(productDataExpired$)
   .switchMap(() => searchDidBackEntered$.first())
   .merge(searchFiltersDidUpdate$)
   .merge(preferredLocationDidUpdateGlobalOnSearch$);

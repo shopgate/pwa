@@ -25,6 +25,7 @@ import {
   PROVIDE_PRODUCT_ALTERNATIVE_LOCATION,
   SELECT_LOCATION,
   STORE_DETAILS_PATTERN,
+  SEND_SET_DEFAULT_LOCATION_CODE_SUCCESS,
 } from './constants';
 import { RECEIVE_ORDER_DETAILS } from '../orders/constants';
 import { WISH_LIST_PATH } from '../account/constants';
@@ -164,3 +165,5 @@ export const preferredLocationDidUpdateOnPDP$ = preferredLocationDidUpdateGlobal
 export const storeDetailPageWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === STORE_DETAILS_PATTERN);
 
+export const sendDefaultLocationCodeSuccess$ = main$
+  .filter(({ action }) => action.type === SEND_SET_DEFAULT_LOCATION_CODE_SUCCESS);
