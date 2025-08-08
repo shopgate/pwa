@@ -109,13 +109,16 @@ export default function resultsByHash(state = {}, action) {
     }
     // Mark all product data as expired
     case EXPIRE_PRODUCT_DATA: {
-      return Object.keys(state).reduce((accumulator, hash) => {
-        accumulator[hash] = {
-          ...accumulator[hash],
-          expires: 0,
-        };
-        return accumulator;
-      }, { ...state });
+      if (Array.isArray(action.scopes) && action.scopes.includes('price')) {
+        return Object.keys(state).reduce((accumulator, hash) => {
+          accumulator[hash] = {
+            ...accumulator[hash],
+            expires: 0,
+          };
+          return accumulator;
+        }, { ...state });
+      }
+      return state;
     }
 
     case ERROR_PRODUCTS:

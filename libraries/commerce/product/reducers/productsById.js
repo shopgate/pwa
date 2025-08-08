@@ -100,19 +100,22 @@ export default function productsById(state = {}, action) {
 
     // Mark all product data as expired
     case EXPIRE_PRODUCT_DATA: {
-      return Object.keys(state).reduce((accumulator, productId) => {
-        accumulator[productId] = {
-          ...accumulator[productId],
-          expires: 0,
-        };
-        return accumulator;
-      }, { ...state });
+      if (Array.isArray(action.scopes) && action.scopes.includes('price')) {
+        return Object.keys(state).reduce((accumulator, productId) => {
+          accumulator[productId] = {
+            ...accumulator[productId],
+            expires: 0,
+          };
+          return accumulator;
+        }, { ...state });
+      }
+      return state;
     }
 
     case DELETE_PRODUCTS_BY_IDS: {
       const nextState = { ...state };
 
-      if (Array.isArray(action?.productIds) && action.scopes.includes('price')) {
+      if (Array.isArray(action?.productIds)) {
         action.productIds.forEach((productId) => {
           delete nextState[productId];
         });
