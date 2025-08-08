@@ -1,10 +1,10 @@
-import { camelCase } from 'lodash';
-import { useWidget } from '@shopgate/engage/page/hooks';
+import { useEffect, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { camelCase } from 'lodash';
 import { getCategory } from '@shopgate/pwa-common-commerce/category/selectors';
 import { fetchCategoryOrRootCategories } from '@shopgate/engage/category/actions';
-import { useEffect, useMemo } from 'react';
-import { getCategoriesById } from '@shopgate/theme-ios11/widgets/selectors';
+import { useWidget } from '@shopgate/engage/page/hooks';
+import { getCategoriesById } from './selectors';
 
 /**
  * @typedef {Object} CategoryListWidgetConfig
