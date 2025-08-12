@@ -131,6 +131,7 @@ function FulfillmentProvider(props: Props) {
         isInitialized.current = true;
         await selectLocation({
           location: productLocation,
+          skipLocationSync: true,
         });
       }
     };
