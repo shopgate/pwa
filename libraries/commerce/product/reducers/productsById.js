@@ -9,6 +9,7 @@ import {
   EXPIRE_PRODUCT_BY_ID,
   DELETE_PRODUCTS_BY_IDS,
   RECEIVE_PRODUCT_RELATIONS,
+  EXPIRE_PRODUCT_DATA,
 } from '../constants';
 import handleProductCollection from './helpers/handleProductCollection';
 
@@ -96,6 +97,20 @@ export default function productsById(state = {}, action) {
           expires: 0,
         },
       };
+
+    // Mark all product data as expired
+    case EXPIRE_PRODUCT_DATA: {
+      if (Array.isArray(action.scopes) && action.scopes.includes('price')) {
+        return Object.keys(state).reduce((accumulator, productId) => {
+          accumulator[productId] = {
+            ...accumulator[productId],
+            expires: 0,
+          };
+          return accumulator;
+        }, { ...state });
+      }
+      return state;
+    }
 
     case DELETE_PRODUCTS_BY_IDS: {
       const nextState = { ...state };

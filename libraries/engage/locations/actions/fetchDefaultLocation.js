@@ -15,7 +15,10 @@ const fetchDefaultLocation = () => async (dispatch, getState) => {
   const selectedLocationCode = getPreferredLocation(getState())?.code;
 
   if (selectedLocationCode !== location?.code || location === null) {
-    dispatch(selectLocation(location));
+    await dispatch(selectLocation({
+      location,
+      skipLocationSync: true,
+    }));
   }
 
   return request;

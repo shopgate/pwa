@@ -41,7 +41,7 @@ export type StateProps = {
 } & ProductAware & BaseProductAware
 
 export type DispatchProps = {
-  selectLocation: (location: Location) => void,
+  selectLocation: ({location: Location}) => void,
   submitReservation: (
     values: ReservationFormValues,
     product: Product | null

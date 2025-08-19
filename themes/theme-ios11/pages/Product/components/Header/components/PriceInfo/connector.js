@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import isEqual from 'lodash/isEqual';
 import { getProduct } from '@shopgate/pwa-common-commerce/product';
 
 /**
@@ -13,11 +14,15 @@ const mapStateToProps = (state, props) => ({
 
 /**
  * @param {Object} next The next component props.
- * @param {Object} prev The current component props.
+ * @param {Object} prev The previous component props.
  * @return {boolean}
  */
 const areStatePropsEqual = (next, prev) => {
   if (!prev.product && next.product) {
+    return false;
+  }
+
+  if (!isEqual(prev.product, next.product)) {
     return false;
   }
 
