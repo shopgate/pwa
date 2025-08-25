@@ -4,13 +4,15 @@ import { useWidget } from '@shopgate/engage/page/hooks';
 
 /**
  * @typedef {Object} ProductListWidgetProducts
- * @property {"searchTerm" | "brand" | "category" | "itemNumbers"} productSelectorType Source type
- * for the product list.
+ * @property {"searchTerm" | "brand" | "category" | "manualItemNumbers" | "productSelector"
+ * | "itemNumbers"} productSelectorType Source type for the product list.
  * @property {string} productsSearchTerm A search term to filter products by
  * @property {string} productsBrand A brand to filter products by
  * @property {string} productsCategory A category to filter products by
  * @property {string} productsItemNumbers A comma-separated list of item numbers to filter products
  * by
+ * @property {string[]} productsManualItemNumbers Array of product item numbers (manual input)
+ * @property {string[]} productsSelectorItemNumbers Array of product item numbers (product selector)
  */
 
 /**
@@ -52,6 +54,8 @@ export const useProductListWidget = () => {
     productsBrand,
     productsCategory,
     productsItemNumbers,
+    productsManualItemNumbers,
+    productsSelectorItemNumbers,
     productsSearchTerm,
   } = products;
 
@@ -61,8 +65,13 @@ export const useProductListWidget = () => {
         return productsBrand;
       case 'category':
         return productsCategory;
+      // Kept for backward compatibility - was replaces by 'manualItemNumbers' and 'productSelector'
       case 'itemNumbers':
         return productsItemNumbers.split(',').map(item => item.trim());
+      case 'manualItemNumbers':
+        return productsManualItemNumbers;
+      case 'productSelector':
+        return productsSelectorItemNumbers;
       case 'searchTerm':
       default:
         return productsSearchTerm;
@@ -71,9 +80,21 @@ export const useProductListWidget = () => {
     productSelectorType,
     productsBrand,
     productsCategory,
-    productsItemNumbers,
     productsSearchTerm,
+    productsItemNumbers,
+    productsManualItemNumbers,
+    productsSelectorItemNumbers,
   ]);
+
+  /** @type {"brand" | "category" | "productIds" | "searchTerm"} */
+  const productsSearchType = useMemo(() => {
+    // Map different input types that indicate arrays with item numbers to the same type
+    if (['itemNumbers', 'manualItemNumbers', 'productSelector'].includes(productSelectorType)) {
+      return 'productIds';
+    }
+
+    return productSelectorType;
+  }, [productSelectorType]);
 
   const flags = useMemo(() => ({
     name: showName,
@@ -82,7 +103,7 @@ export const useProductListWidget = () => {
   }), [showName, showPrice, showRating]);
 
   return {
-    productsSearchType: productSelectorType,
+    productsSearchType,
     productsSearchValue: value,
     sort: camelCase(sort),
     productCount,

@@ -31,7 +31,7 @@ const REQUEST_TYPE_MAPPING = {
   highlights: 1,
   searchTerm: 2,
   brand: 3,
-  itemNumbers: 4,
+  productIds: 4,
   category: 5,
 };
 

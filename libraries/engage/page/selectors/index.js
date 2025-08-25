@@ -125,7 +125,7 @@ export const makeGetWidgetsFromPage = ({
 
 /**
  * Creates a selector that generates a hash to select results for widget products.
- * @param {'searchTerm' | 'itemNumbers' | 'brand' | 'category' |'highlights'} type Type of the
+ * @param {'searchTerm' | 'productIds' | 'brand' | 'category' |'highlights'} type Type of the
  * request to make.
  * @param {Object} options Request options
  * @param {string} id Unique identifier to find the result in the state.
@@ -160,7 +160,7 @@ const makeGetWidgetProductsResultHash = (type, options, id) => {
             ...fulfillmentParams,
           };
           break;
-        case 'itemNumbers':
+        case 'productIds':
           hashParams = {
             id,
             productIds: value,
@@ -190,7 +190,7 @@ const makeGetWidgetProductsResultHash = (type, options, id) => {
 };
 
 /**
- * @param {'searchTerm' | 'itemNumbers' | 'brand' | 'category' |'highlights'} type Type of the
+ * @param {'searchTerm' | 'productIds' | 'brand' | 'category' |'highlights'} type Type of the
  * request to make.
  * @param {Object} options Request options
  * @param {string} id Unique identifier to find the result in the state.
@@ -208,7 +208,7 @@ const makeGetWidgetProductResultsByHash = (type, options, id) => {
 
 /**
  * Creates a selector that collects products for a widget.
- * @param {'searchTerm' | 'itemNumbers' | 'brand' | 'category' |'highlights'} type Type of the
+ * @param {'searchTerm' | 'productIds' | 'brand' | 'category' |'highlights'} type Type of the
  * request to make.
  * @param {Object} options Request options
  * @param {string} id Unique identifier to find the result in the state.
@@ -231,7 +231,7 @@ export const makeGetWidgetProducts = (type, options, id) => {
 
       // Since the getProducts pipeline does not support sorting when a product ID list is
       // provided, we need to sort the products manually here.
-      if (type === 'itemNumbers') {
+      if (type === 'productIds') {
         if (options.sort === SORT_PRICE_ASC) {
           result.products = result.products.sort(
             (p1, p2) => p1.price.unitPrice - p2.price.unitPrice

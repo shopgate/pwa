@@ -15,7 +15,7 @@ export type UseWidgetProductsOptions = {
   /**
    * The type of product search to perform.
    */
-  type: 'searchTerm' | 'itemNumbers' | 'brand' | 'category' | 'highlights';
+  type: 'searchTerm' | 'productIds' | 'brand' | 'category' | 'highlights';
   /**
    * The number of products to return per page.
    * @default 32
