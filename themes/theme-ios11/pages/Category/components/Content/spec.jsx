@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import Content from './index';
 
-jest.mock('Components/ProductFilters', () => () => null);
+jest.mock('@shopgate/engage/product/components/ProductFilters', () => () => null);
 jest.mock('../ProductsContent', () => () => null);
 jest.mock('../Empty', () => () => null);
 jest.mock('../CategoryListContent', () => () => null);

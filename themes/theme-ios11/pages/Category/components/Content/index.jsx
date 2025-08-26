@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import ProductFilters from 'Components/ProductFilters';
+import { ProductFilters } from '@shopgate/engage/product/components';
 import { VIEW_CONTENT } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
