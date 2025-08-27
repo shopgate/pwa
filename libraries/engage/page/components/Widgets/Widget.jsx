@@ -59,12 +59,15 @@ const useStyles = makeStyles()((theme, {
  * @param {React.ComponentType} props.component The widget component to render.
  * @param {WidgetDefinition} props.definition The widget definition data.
  * @param {boolean} props.isPreview Whether the widget is in preview mode.
+ * @param {boolean} props.isCustomLegacyWidget Whether the widget is a legacy custom widget provided
+ * by an extension that's configured via an HTML comment inside a HTML widget.
  * @returns {JSX.Element}
  */
 const Widget = ({
   component: Component,
   definition,
   isPreview,
+  isCustomLegacyWidget,
 }) => {
   const { classes, cx } = useStyles({
     marginTop: definition?.layout?.marginTop ?? 0,
@@ -128,7 +131,11 @@ const Widget = ({
       )}
       <WidgetProvider definition={definition} isPreview={isPreview}>
         <Suspense fallback={<Loading />}>
-          <Component />
+          <Component
+            {...(isCustomLegacyWidget ? {
+              settings: definition.widgetConfig,
+            } : {})}
+          />
         </Suspense>
       </WidgetProvider>
     </section>
@@ -139,6 +146,11 @@ Widget.propTypes = {
   component: PropTypes.elementType.isRequired,
   definition: PropTypes.shape().isRequired,
   isPreview: PropTypes.bool.isRequired,
+  isCustomLegacyWidget: PropTypes.bool,
+};
+
+Widget.defaultProps = {
+  isCustomLegacyWidget: false,
 };
 
 export default Widget;

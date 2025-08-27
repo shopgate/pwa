@@ -55,6 +55,11 @@ export interface WidgetDefinition {
    */
   widgetConfig: Record<string, any>;
   /**
+   * Whether the widget is a legacy custom widget provided by an extension that's configured
+   * via an HTML comment inside a HTML widget.
+   */
+  isCustomLegacyWidget?: boolean;
+  /**
    * Visibility settings for the widget.
    */
   visibility: WidgetDefinitionVisibility;
