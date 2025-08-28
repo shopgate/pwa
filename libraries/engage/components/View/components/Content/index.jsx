@@ -13,7 +13,7 @@ import { useScrollContainer } from '@shopgate/engage/core';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
-import styles from './style';
+import { container, containerInner } from './style';
 
 /**
  * The ViewContent component.
@@ -120,8 +120,8 @@ class ViewContent extends Component {
     }
 
     return {
+      '--keyboard-height': `${keyboardHeight}px`,
       overflow,
-      paddingBottom: `calc(var(--page-content-offset-bottom) + ${keyboardHeight}px)`,
     };
   }
 
@@ -150,29 +150,31 @@ class ViewContent extends Component {
   render() {
     return (
       <article
-        className={`${styles} engage__view__content ${this.props.className}`}
+        className={`${container} engage__view__content ${this.props.className}`}
         ref={this.scrollContainer ? this.ref : null}
         style={this.style}
         role="none"
       >
-        <Helmet title={appConfig.shopName} />
-        <Above />
-        <ResponsiveContainer breakpoint=">xs" webOnly>
-          {this.props.visible ? (
-            <div id="PageHeaderBelow" />
-          ) : null}
-        </ResponsiveContainer>
-        <ConditionalWrapper
-          condition={!this.props.noContentPortal}
-          wrapper={children =>
-            <SurroundPortals portalName={VIEW_CONTENT}>
-              {children}
-            </SurroundPortals>
+        <div className={containerInner}>
+          <Helmet title={appConfig.shopName} />
+          <Above />
+          <ResponsiveContainer breakpoint=">xs" webOnly>
+            {this.props.visible ? (
+              <div id="PageHeaderBelow" />
+            ) : null}
+          </ResponsiveContainer>
+          <ConditionalWrapper
+            condition={!this.props.noContentPortal}
+            wrapper={children =>
+              <SurroundPortals portalName={VIEW_CONTENT}>
+                {children}
+              </SurroundPortals>
             }
-        >
-          {this.props.children}
-        </ConditionalWrapper>
-        <Below />
+          >
+            {this.props.children}
+          </ConditionalWrapper>
+          <Below />
+        </div>
       </article>
     );
   }

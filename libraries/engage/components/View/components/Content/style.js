@@ -1,8 +1,8 @@
 import { css } from 'glamor';
-import { useScrollContainer } from '@shopgate/engage/core';
+import { useScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
-export default css({
+export const container = css({
   display: 'flex',
   flexDirection: 'column',
   width: '100vw',
@@ -18,5 +18,19 @@ export default css({
   }),
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     width: 'var(--page-content-width)',
+  },
+});
+
+export const containerInner = css({
+  ...isIOs ? {
+    // Make the scroll container content a bit higher than the actual scroll container to
+    // get a rubber band effect in all situations
+    minHeight: 'calc(100% + 12px)',
+  } : {},
+  ':after': {
+    content: "''",
+    display: 'block',
+    pointerEvents: 'none',
+    paddingBottom: 'calc(var(--page-content-offset-bottom) + var(--keyboard-height))',
   },
 });
