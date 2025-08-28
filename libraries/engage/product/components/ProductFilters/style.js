@@ -1,8 +1,9 @@
 import { css } from 'glamor';
+import { useScrollContainer } from '@shopgate/engage/core';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 export const filters = css({
-  top: 0,
+  ...(useScrollContainer() ? { top: 0 } : { top: 44 }),
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     top: 64,
     marginBottom: 16,

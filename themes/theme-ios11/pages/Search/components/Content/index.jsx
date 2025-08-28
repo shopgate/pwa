@@ -6,7 +6,7 @@ import { SurroundPortals, NoResults } from '@shopgate/engage/components';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category/constants';
 import { BackBar } from 'Components/AppBar/presets';
-import ProductFilters from 'Components/ProductFilters';
+import { ProductFilters } from '@shopgate/engage/product/components';
 import { VIEW_CONTENT } from '@shopgate/engage/core';
 import Products from '../Products';
 import connect from './connector';
