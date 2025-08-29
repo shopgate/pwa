@@ -6,37 +6,46 @@ exports[`engage > components > view > components > content should render content
   role="none"
   style={
     Object {
+      "--extra-ios-scroll-space": "12px",
+      "--keyboard-height": "0px",
       "overflow": "auto",
-      "paddingBottom": "calc(var(--page-content-offset-bottom) + 0px)",
     }
   }
 >
-  <HelmetWrapper
-    defer={true}
-    encodeSpecialCharacters={true}
-    title="Test Shop"
-  />
-  <ViewAbove />
-  <ResponsiveContainer
-    appAlways={false}
-    appOnly={false}
-    breakpoint=">xs"
-    webAlways={false}
-    webOnly={true}
+  <div
+    className={
+      Object {
+        "data-css-18u3fb9": "",
+      }
+    }
   >
-    <div
-      id="PageHeaderBelow"
+    <HelmetWrapper
+      defer={true}
+      encodeSpecialCharacters={true}
+      title="Test Shop"
     />
-  </ResponsiveContainer>
-  <ConditionalWrapper
-    condition={true}
-    wrapper={[Function]}
-    wrapperFalsy={null}
-  >
-    <div>
-      Page #1
-    </div>
-  </ConditionalWrapper>
-  <ViewBelow />
+    <ViewAbove />
+    <ResponsiveContainer
+      appAlways={false}
+      appOnly={false}
+      breakpoint=">xs"
+      webAlways={false}
+      webOnly={true}
+    >
+      <div
+        id="PageHeaderBelow"
+      />
+    </ResponsiveContainer>
+    <ConditionalWrapper
+      condition={true}
+      wrapper={[Function]}
+      wrapperFalsy={null}
+    >
+      <div>
+        Page #1
+      </div>
+    </ConditionalWrapper>
+    <ViewBelow />
+  </div>
 </article>
 `;
