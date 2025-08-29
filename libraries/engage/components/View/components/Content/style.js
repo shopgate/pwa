@@ -22,10 +22,10 @@ export const container = css({
 });
 
 export const containerInner = css({
-  ...isIOs ? {
+  ...isIOs && useScrollContainer() ? {
     // Make the scroll container content a bit higher than the actual scroll container to
     // get a rubber band effect in all situations
-    minHeight: 'calc(100% + 12px)',
+    minHeight: 'calc(100% + var(--extra-ios-scroll-space, 0px))',
   } : {},
   ':after': {
     content: "''",

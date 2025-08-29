@@ -6,6 +6,7 @@ exports[`engage > components > view > components > content should render content
   role="none"
   style={
     Object {
+      "--extra-ios-scroll-space": "12px",
       "--keyboard-height": "0px",
       "overflow": "auto",
     }
