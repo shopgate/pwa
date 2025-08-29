@@ -4,6 +4,7 @@ import {
   RECEIVE_PRODUCT_VARIANTS,
   ERROR_PRODUCT_VARIANTS,
   EXPIRE_PRODUCT_BY_ID,
+  EXPIRE_PRODUCT_DATA,
 } from '../constants';
 
 /**
@@ -50,6 +51,16 @@ export default function variantsByProductId(state = {}, action) {
           expires: 0,
         },
       };
+
+    case EXPIRE_PRODUCT_DATA: {
+      return Object.keys(state).reduce((acc, productId) => {
+        acc[productId] = {
+          ...state[productId],
+          expires: 0,
+        };
+        return acc;
+      }, {});
+    }
 
     default:
       return state;

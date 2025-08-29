@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.27.5](https://github.com/shopgate/pwa/compare/v7.27.4...v7.27.5) (2025-08-19)
+
+#### :rocket: Enhancement
+* [#1374](https://github.com/shopgate/pwa/pull/1374) Add new action to expire product data ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.27.2](https://github.com/shopgate/pwa/compare/v7.27.1...v7.27.2) (2025-07-02)
 
 #### :rocket: Enhancement

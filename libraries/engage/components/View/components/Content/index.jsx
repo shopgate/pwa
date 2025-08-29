@@ -9,11 +9,11 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
-import { useScrollContainer } from '@shopgate/engage/core';
+import { useScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
-import styles from './style';
+import { container, containerInner } from './style';
 
 /**
  * The ViewContent component.
@@ -48,6 +48,7 @@ class ViewContent extends Component {
     this.ref = React.createRef();
     this.state = {
       keyboardHeight: 0,
+      isInputFocused: false,
     };
 
     this.scrollContainer = useScrollContainer();
@@ -59,6 +60,11 @@ class ViewContent extends Component {
     this.props.setContentRef(this.ref);
 
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+
+    if (isIOs) {
+      window.addEventListener('focusin', this.handleInputFocusChange);
+      window.addEventListener('focusout', this.handleInputFocusChange);
+    }
   }
 
   /**
@@ -104,6 +110,11 @@ class ViewContent extends Component {
     }, false);
 
     event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
+
+    if (isIOs) {
+      window.removeEventListener('focusin', this.handleInputFocusChange);
+      window.removeEventListener('focusout', this.handleInputFocusChange);
+    }
   }
 
   /**
@@ -111,7 +122,7 @@ class ViewContent extends Component {
    */
   get style() {
     const { noScrollOnKeyboard } = this.props;
-    const { keyboardHeight } = this.state;
+    const { keyboardHeight, isInputFocused } = this.state;
 
     let overflow = 'inherit';
 
@@ -120,10 +131,35 @@ class ViewContent extends Component {
     }
 
     return {
+      '--keyboard-height': `${keyboardHeight}px`,
+      // Used on iOS devices to make the scroll container content always a bit taller than the
+      // scroll container to enforce rubber band effect. Needs to be deactivated when input
+      // is focused to prevent side effects (multiple scrollable content areas).
+      '--extra-ios-scroll-space': isInputFocused ? 0 : '12px',
       overflow,
-      paddingBottom: `calc(var(--page-content-offset-bottom) + ${keyboardHeight}px)`,
     };
   }
+
+  /**
+   * Handles focus changes on the window to detect if an input is focused.
+   * @param {FocusEvent} e The event payload
+   */
+  handleInputFocusChange = (e) => {
+    const el = e.target;
+    const isInputTarget =
+        (el.tagName === 'INPUT' &&
+          ['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(
+            el.type
+          )) ||
+        el.tagName === 'TEXTAREA' ||
+        el.isContentEditable;
+
+    if (isInputTarget) {
+      this.setState({
+        isInputFocused: e.type === 'focusin',
+      });
+    }
+  };
 
   /**
    * Handles a keyboard change event.
@@ -150,29 +186,31 @@ class ViewContent extends Component {
   render() {
     return (
       <article
-        className={`${styles} engage__view__content ${this.props.className}`}
+        className={`${container} engage__view__content ${this.props.className}`}
         ref={this.scrollContainer ? this.ref : null}
         style={this.style}
         role="none"
       >
-        <Helmet title={appConfig.shopName} />
-        <Above />
-        <ResponsiveContainer breakpoint=">xs" webOnly>
-          {this.props.visible ? (
-            <div id="PageHeaderBelow" />
-          ) : null}
-        </ResponsiveContainer>
-        <ConditionalWrapper
-          condition={!this.props.noContentPortal}
-          wrapper={children =>
-            <SurroundPortals portalName={VIEW_CONTENT}>
-              {children}
-            </SurroundPortals>
+        <div className={containerInner}>
+          <Helmet title={appConfig.shopName} />
+          <Above />
+          <ResponsiveContainer breakpoint=">xs" webOnly>
+            {this.props.visible ? (
+              <div id="PageHeaderBelow" />
+            ) : null}
+          </ResponsiveContainer>
+          <ConditionalWrapper
+            condition={!this.props.noContentPortal}
+            wrapper={children =>
+              <SurroundPortals portalName={VIEW_CONTENT}>
+                {children}
+              </SurroundPortals>
             }
-        >
-          {this.props.children}
-        </ConditionalWrapper>
-        <Below />
+          >
+            {this.props.children}
+          </ConditionalWrapper>
+          <Below />
+        </div>
       </article>
     );
   }

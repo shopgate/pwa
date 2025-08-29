@@ -28,12 +28,21 @@ const StoreFinderProvider = ({
 
   const selectedLocation = useSelector(getPreferredLocation);
 
-  const selectLocationCb = useCallback((location) => {
-    selectLocation(location, true);
-    selectGlobalLocation(location);
+  const selectLocationCb = useCallback(async (location) => {
+    await selectLocation({
+      location,
+      showToast: true,
+    });
+
+    if (location.code !== selectedLocation?.code) {
+      // Only dispatch selectGlobalLocation when location really changed, since this action
+      // might clear product data from the resultsByHash product storage.
+      selectGlobalLocation(location);
+    }
+
     // Back navigation
     pop();
-  }, [selectLocation, selectGlobalLocation, pop]);
+  }, [selectedLocation, pop, selectLocation, selectGlobalLocation]);
 
   /**
    * @param {bool} loading

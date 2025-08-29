@@ -3,6 +3,7 @@ import {
   REQUEST_PRODUCT_IMAGES,
   RECEIVE_PRODUCT_IMAGES,
   ERROR_PRODUCT_IMAGES,
+  EXPIRE_PRODUCT_DATA,
 } from '../constants';
 
 /**
@@ -38,6 +39,20 @@ export default function imagesByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+    // Mark all product images as expired when action is dispatched with the "media" scope
+    case EXPIRE_PRODUCT_DATA: {
+      if (Array.isArray(action.scopes) && action.scopes.includes('media')) {
+        // Expire all descriptions
+        return Object.keys(state).reduce((acc, productId) => {
+          acc[productId] = {
+            ...state[productId],
+            expires: 0,
+          };
+          return acc;
+        }, {});
+      }
+      return state;
+    }
 
     default:
       return state;

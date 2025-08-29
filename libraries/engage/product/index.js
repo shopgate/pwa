@@ -2,6 +2,7 @@
 
 // ACTION-CREATORS
 export { default as productNotAvailable } from '@shopgate/pwa-common-commerce/product/action-creators/productNotAvailable';
+export { default as expireProductData } from '@shopgate/pwa-common-commerce/product/action-creators/expireProductData';
 
 // ACTIONS
 export { default as changeSortOrder } from '@shopgate/pwa-common-commerce/product/actions/changeSortOrder';

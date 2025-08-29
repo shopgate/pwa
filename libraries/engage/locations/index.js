@@ -57,6 +57,7 @@ export {
   preferredLocationDidUpdateGlobalOnCategory$,
   preferredLocationDidUpdateGlobalNotOnSearch$,
   preferredLocationDidUpdateGlobalOnSearch$,
+  sendDefaultLocationCodeSuccess$,
 } from './locations.streams';
 
 // HOOKS

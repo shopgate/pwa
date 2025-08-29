@@ -3,6 +3,7 @@ import {
   REQUEST_PRODUCT_DESCRIPTION,
   RECEIVE_PRODUCT_DESCRIPTION,
   ERROR_PRODUCT_DESCRIPTION,
+  EXPIRE_PRODUCT_DATA,
 } from '../constants';
 
 /**
@@ -40,6 +41,21 @@ export default function descriptionsByProductId(state = {}, action) {
           isFetching: false,
         },
       };
+    // Mark all product descriptions as expired when action is dispatched with
+    // the "description" scope
+    case EXPIRE_PRODUCT_DATA: {
+      if (Array.isArray(action.scopes) && action.scopes.includes('description')) {
+        // Expire all descriptions
+        return Object.keys(state).reduce((acc, productId) => {
+          acc[productId] = {
+            ...state[productId],
+            expires: 0,
+          };
+          return acc;
+        }, {});
+      }
+      return state;
+    }
 
     default:
       return state;

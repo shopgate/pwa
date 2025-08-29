@@ -9,7 +9,7 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { NO_RESULTS_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { CATEGORY_ALL_PATTERN } from '@shopgate/engage/category/constants';
 import { ResponsiveContainer } from '@shopgate/engage/components';
-import ProductFilters from 'Components/ProductFilters';
+import { ProductFilters } from '@shopgate/engage/product/components';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from 'Components/PageTitleBar';

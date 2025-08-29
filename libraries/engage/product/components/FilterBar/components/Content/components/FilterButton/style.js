@@ -25,7 +25,6 @@ const filterButtonLabel = css({
   fontSize: '0.875rem',
   fontWeight: '500',
   lineHeight: 1,
-  paddingTop: 1,
   paddingRight: variables.gap.small,
 }).toString();
 
@@ -35,7 +34,7 @@ const filterButtonRipple = css({
   width: '100%',
   justifyContent: 'center',
   alignItems: 'center',
-  margin: '0 6px',
+  margin: 0,
   padding: '6px 10px',
 }).toString();
 

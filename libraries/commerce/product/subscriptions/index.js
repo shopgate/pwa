@@ -24,6 +24,7 @@ import {
   visibleProductNotFound$,
   productNotAvailable$,
   fetchProductsRequested$,
+  pdpDataNeedsRefresh$,
 } from '../streams';
 import fetchProductsById from '../actions/fetchProductsById';
 import { getProductRelationsByHash } from '../selectors/relations';
@@ -32,6 +33,9 @@ import expireProductById from '../action-creators/expireProductById';
 import { ITEM_PATTERN, NOT_AVAILABLE_EFFECTIVITY_DATES } from '../constants';
 import { getProductName } from '../selectors/product';
 
+const fetchPDPData$ = productWillEnter$
+  .merge(pdpDataNeedsRefresh$);
+
 /**
  * Product subscriptions.
  * @param {Function} subscribe The subscribe function.
@@ -39,7 +43,7 @@ import { getProductName } from '../selectors/product';
 function product(subscribe) {
   const processProduct$ = productReceived$.merge(cachedProductReceived$);
 
-  subscribe(productWillEnter$, ({ action, dispatch }) => {
+  subscribe(fetchPDPData$, ({ action, dispatch }) => {
     const { productId } = action.route.params;
     const { productId: variantId } = action.route.state;
     const id = variantId || hex2bin(productId);

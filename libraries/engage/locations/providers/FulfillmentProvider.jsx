@@ -125,10 +125,18 @@ function FulfillmentProvider(props: Props) {
   useEffect(() => setIsOpen(open), [open]);
   useEffect(() => setProduct(propsProduct), [propsProduct]);
   useEffect(() => {
-    if (updatePreferredLocation && productLocation && !isInitialized.current) {
-      isInitialized.current = true;
-      selectLocation(productLocation);
-    }
+    // eslint-disable-next-line require-jsdoc
+    const exec = async () => {
+      if (updatePreferredLocation && productLocation && !isInitialized.current) {
+        isInitialized.current = true;
+        await selectLocation({
+          location: productLocation,
+          skipLocationSync: true,
+        });
+      }
+    };
+
+    exec();
   }, [productLocation, selectLocation, updatePreferredLocation]);
 
   useEffect(() => {
@@ -332,9 +340,11 @@ function FulfillmentProvider(props: Props) {
       selectionConfirmed = await confirmSelection(location);
 
       if (selectionConfirmed) {
-        selectLocation({
-          code: location.code,
-          name: location.name,
+        await selectLocation({
+          location: {
+            code: location.code,
+            name: location.name,
+          },
         });
       }
     }

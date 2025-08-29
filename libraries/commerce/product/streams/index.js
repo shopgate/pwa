@@ -26,6 +26,8 @@ import {
   RECEIVE_PRODUCTS,
   PROVIDE_PRODUCT_BUFFER_TIME,
   PROVIDE_PRODUCT,
+  EXPIRE_PRODUCT_DATA,
+  REFRESH_EXPIRED_PDP_DATA,
 } from '../constants';
 
 /**
@@ -171,4 +173,32 @@ export const fetchProductsRequested$ = main$
         productId: productIds,
       },
     };
+  });
+
+/**
+ * Emits when product data has been expired.
+ */
+export const productDataExpired$ = main$
+  .filter(({ action }) => action.type === EXPIRE_PRODUCT_DATA);
+
+/**
+ * Emits when the REFRESH_EXPIRED_PDP_DATA action is dispatched
+ * and the current route is a product detail page.
+ *
+ * Stream payload will contain a route object that reflects the current active product / variant.
+ */
+export const pdpDataNeedsRefresh$ = main$
+  .filter(({ action }) => action.type === REFRESH_EXPIRED_PDP_DATA)
+  .filter(({ getState }) => {
+    const { pattern } = getCurrentRoute(getState());
+    return pattern === ITEM_PATTERN;
+  }).switchMap((params) => {
+    const { getState } = params;
+    const route = getCurrentRoute(getState());
+    return Observable.of({
+      ...params,
+      action: {
+        route,
+      },
+    });
   });
