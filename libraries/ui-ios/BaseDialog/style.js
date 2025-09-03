@@ -61,7 +61,7 @@ const button = css({
   marginRight: `-${themeVariables.gap.small / 2}px`,
 
   '&:not(:last-child)': {
-    borderRadius: 0,
+    borderRadius: '0 !important',
     borderRight: `0.5px solid ${borderColor}`,
     borderBottom: `0.5px solid ${borderColor}`,
   },
