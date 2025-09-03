@@ -24,7 +24,7 @@ const PagePreview = () => {
 
   return (
     <View noContentPortal>
-      <DefaultBar title={page?.data?.name || ''} left={null} right={null} />
+      <DefaultBar title={page?.data?.pageTitle || page?.data?.name || ''} left={null} right={null} />
       <Widgets widgets={widgetList} />
     </View>
   );
