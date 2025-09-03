@@ -55,6 +55,7 @@ const Widgets = ({
   if (!Array.isArray(widgets) || widgets.length === 0) {
     return null;
   }
+
   return (
     <ConditionalWrapper
       condition={isPreview}
@@ -80,6 +81,7 @@ const Widgets = ({
             definition={widget}
             isPreview={isPreview}
             component={component}
+            isCustomLegacyWidget={widget.isCustomLegacyWidget}
           />;
         })}
       </div>

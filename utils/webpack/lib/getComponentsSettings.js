@@ -65,6 +65,9 @@ module.exports = function getComponentsSettings(themePath) {
         ...loadConfig(themeWidgetsV1Config),
       },
       widgetsV2: {
+        // To enable backwards compatibility for custom legacy widgets that are provided by
+        // extensions we include them in the list of V2 widgets.
+        ...defaultConfig.widgets,
         ...defaultConfig.widgetsV2,
         ...loadConfig(themeWidgetsV2Config),
       },
