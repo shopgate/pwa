@@ -27,7 +27,7 @@ const PriceInfo = ({
   const { pricePerMeasureUnit, info, currency } = price;
 
   const content = useMemo(() => {
-    if (!displayPricePerMeasureUnit) {
+    if (!displayPricePerMeasureUnit || !pricePerMeasureUnit) {
       return info;
     }
 
@@ -44,7 +44,8 @@ const PriceInfo = ({
 
     return i18n.text('price.pricePerMeasurementFormat', {
       price: i18n.price(pricePerMeasureUnit, currency || externalCurrency, 2),
-      refValue: unitPriceRefValue || '',
+      // Don't show base prices like 1.99€/1kg, but show 1.99€/kg instead
+      refValue: !!unitPriceRefValue && unitPriceRefValue !== 1 ? unitPriceRefValue : '',
       refUom: unit,
     });
   }, [
@@ -67,8 +68,8 @@ const PriceInfo = ({
       wrapper={wrapper}
     >
       <div
-        className={classNames(styles.container, className, {
-          [styles.noWrap]: displayPricePerMeasureUnit,
+        className={classNames(styles.container, className, 'engage__product__price-info', {
+          [styles.noWrap]: content !== info,
         })}
         dangerouslySetInnerHTML={{ __html: content }}
         data-test-id={`priceInfo: ${content}`}
