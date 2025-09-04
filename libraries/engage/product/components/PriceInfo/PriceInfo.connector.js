@@ -9,7 +9,7 @@ import { SHOP_SETTING_DISPLAY_PRICE_PER_MEASURE_UNIT } from '../../../core/const
 const makeMapStateToProps = () => {
   const getShopSetting = makeGetShopSettingByKey(
     SHOP_SETTING_DISPLAY_PRICE_PER_MEASURE_UNIT,
-    false
+    true
   );
 
   return (state, props) => ({
