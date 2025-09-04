@@ -1,5 +1,16 @@
 # Changelog
 
+## [v7.28.0](https://github.com/shopgate/pwa/compare/v7.27.5...v7.28.0) (2025-09-04)
+
+#### :rocket: Enhancement
+* [#1376](https://github.com/shopgate/pwa/pull/1376) Expose ProductFilters component in @shopgate/engage (moved from themes) ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1380](https://github.com/shopgate/pwa/pull/1380) Fixed bug with the camera permissions hint on the iOS theme ([@fkloes](https://github.com/fkloes))
+* [#1379](https://github.com/shopgate/pwa/pull/1379) Fixed redirect handler parameters ([@fkloes](https://github.com/fkloes))
+* [#1378](https://github.com/shopgate/pwa/pull/1378) Fixed scroll container issue on iOS ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.27.5](https://github.com/shopgate/pwa/compare/v7.27.4...v7.27.5) (2025-08-19)
 
 #### :rocket: Enhancement
