@@ -26,6 +26,7 @@ const grantCameraPermissions = (options = {}) => (dispatch) => {
       title: null,
       message: 'permissions.access_denied.camera_message',
       confirm: 'permissions.access_denied.settings_button',
+      dismiss: 'common.close',
       ...modal,
     },
   }));

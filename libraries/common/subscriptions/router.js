@@ -185,7 +185,7 @@ export default function routerSubscriptions(subscribe) {
         const route = new Route({
           pathname: location,
           pattern,
-          routeState,
+          state: routeState,
           transform,
         });
 
