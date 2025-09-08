@@ -49,7 +49,7 @@ export const useWidgetProducts = (options = {}) => {
   } = options;
 
   const dispatch = useDispatch();
-  const { code = `${type}_${value}_${limit}_${sort}` } = useWidget();
+  const { code = `${type}_${value}_${limit}_${sort}`, isPreview } = useWidget();
 
   // ###### Products selection ######
   const showInventoryInProductLists = useSelector(showInventoryInLists);
@@ -72,8 +72,17 @@ export const useWidgetProducts = (options = {}) => {
 
   // ###### Products request ######
 
-  const [hasNext, setHasNext] = useState(true);
-  const [offset, setOffset] = useState(0);
+  // Outside the preview mode the offset and hasNext state are initialized based on previously
+  // fetched product data. That ensures that users see the same product list when they leave
+  // the page and come back later.
+  const [offset, setOffset] = useState(isPreview
+    ? 0
+    : widgetProducts.products.length);
+
+  const [hasNext, setHasNext] = useState(isPreview
+    ? true
+    : widgetProducts.totalProductCount > widgetProducts.products.length);
+
   const { isFetching } = widgetProducts;
 
   const baseRequestOptions = useMemo(() => ({
@@ -117,7 +126,15 @@ export const useWidgetProducts = (options = {}) => {
 
   // Effect to trigger the initial fetch when the component mounts or the parameters change.
   useEffect(() => {
-    fetchInitial();
+    if ((!isPreview && offset === 0) || isPreview) {
+      fetchInitial();
+    }
+
+  // This effect should only run at first render or when the fetchInitial callback updates.
+  // fetchInitial will never be updated on a real "page" at runtime since its dependencies
+  // are static.
+  // In preview mode updates of fetchInitial are an essential part of the preview system.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchInitial]);
 
   /**
