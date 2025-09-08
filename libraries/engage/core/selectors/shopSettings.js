@@ -15,6 +15,7 @@ import {
   SHOP_SETTING_WISHLIST_ITEM_QUANTITY_ENABLED,
   SHOP_SETTING_WISHLIST_ITEM_NOTES_ENABLED,
   SHOP_SETTING_SHOW_WISHLIST_ITEMS_COUNT_BADGE,
+  SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS,
 } from '../constants/shopSettings';
 
 /**
@@ -143,3 +144,9 @@ export const getShowWishlistItemsCountBadge = createSelector(
   (loadWishlistOnAppStartEnabled, showWishlistItemsCountBadge) =>
     (loadWishlistOnAppStartEnabled ? showWishlistItemsCountBadge : false)
 );
+
+export const getEnableCms2ForAllShoppers = makeGetShopSettingByKey(
+  SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS,
+  true
+);
+

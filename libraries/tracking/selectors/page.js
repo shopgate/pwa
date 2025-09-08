@@ -6,7 +6,7 @@ import {
 import {
   isDev,
 } from '@shopgate/engage/core/helpers';
-import { getPageConfigById } from '@shopgate/engage/page/selectors';
+import { makeGetUnifiedCMSPageData } from '@shopgate/engage/page/selectors';
 import { shopNumber } from '@shopgate/pwa-common/helpers/config';
 
 /**
@@ -67,7 +67,7 @@ export const makeGetRoutePageConfig = () => {
   return createSelector(
     state => state,
     getPageIdRouteParam,
-    (state, pageId) => (pageId ? getPageConfigById(state, { pageId }) : null)
+    (state, pageId) => (pageId ? makeGetUnifiedCMSPageData({ slug: pageId })(state) : null)
   );
 };
 

@@ -12,6 +12,7 @@ export {
   getWishlistItemNotesEnabled,
   getShowWishlistItemsCountBadge,
   getLoadWishlistOnAppStartEnabled,
+  getEnableCms2ForAllShoppers,
 } from './shopSettings';
 export {
   getIsLocationBasedShopping,

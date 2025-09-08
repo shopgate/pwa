@@ -1,65 +1,71 @@
-import React, { Fragment } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { PAGE_CONTENT } from '@shopgate/engage/core/constants';
 import {
-  PAGE_CONTENT_BEFORE,
-  PAGE_CONTENT,
-  PAGE_CONTENT_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
-import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
-import Widgets from '@shopgate/pwa-common/components/Widgets';
+  Logo,
+  SurroundPortals,
+  Widgets as WidgetsV1,
+} from '@shopgate/engage/components';
+import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
+import { Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
-import { Logo } from '@shopgate/engage/components';
 import connect from './connector';
 
 /**
  * @param {Object} props The component props
- * @param {Object} props.configs The page configs.
+ * @param {boolean} props.isCmsV2Enabled Whether CMS V2 is enabled.
+ * @param {boolean} props.postponeRender Whether to postpone rendering the widgets.
  * @param {string} props.pageId The page id.
- * @return {JSX}
+ * @param {string} props.title The page title.
+ * @param {Array} props.widgets The page widgets.
+ * @returns {JSX.Element}
  */
-function PageContent({
-  configs, pageId, postponeRender,
-}) {
-  if (!configs) {
-    return null;
-  }
-
+const PageContent = ({
+  isCmsV2Enabled = false,
+  postponeRender = false,
+  pageId = null,
+  title = '',
+  widgets = [],
+}) => {
   let center = <Logo />;
 
   if (pageId !== PAGE_ID_INDEX) {
-    center = <AppBar.Title title={configs.title || ''} />;
+    center = <AppBar.Title title={title} />;
   }
 
   const Bar = (pageId === PAGE_ID_INDEX) ? DefaultBar : BackBar;
 
+  const Component = isCmsV2Enabled ? WidgetsV2 : WidgetsV1;
+
   return (
-    <Fragment>
-      <Bar
-        center={center}
-        title={configs.title || ''}
-      />
-      <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
-      <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
-        {(!postponeRender && configs && configs.widgets) && (
-          <Widgets widgets={configs.widgets} />
+    <>
+      <Bar center={center} title={title} />
+      <SurroundPortals
+        portalName={PAGE_CONTENT}
+        portalProps={{ id: pageId }}
+      >
+        {!postponeRender && (
+        <Component widgets={widgets} />
         )}
-      </Portal>
-      <Portal name={PAGE_CONTENT_AFTER} props={{ id: pageId }} />
-    </Fragment>
+      </SurroundPortals>
+    </>
   );
-}
+};
 
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
-  configs: PropTypes.shape(),
+  isCmsV2Enabled: PropTypes.bool,
   postponeRender: PropTypes.bool,
+  title: PropTypes.string,
+  widgets: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 PageContent.defaultProps = {
-  configs: null,
+  isCmsV2Enabled: false,
   postponeRender: false,
+  title: '',
+  widgets: [],
 };
 
-export default connect(PageContent);
+export default connect(memo(PageContent));
