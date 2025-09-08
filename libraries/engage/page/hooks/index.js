@@ -110,7 +110,9 @@ export const useWidgetProducts = (options = {}) => {
 
     // Re-initialize offset and hasNext based on the result
     setOffset(limit);
-    setHasNext(result.totalProductCount > limit);
+    // When the result comes from a real pipeline request there will be "totalProductCount".
+    // When the result are cached products, it can also be "totalResultCount".
+    setHasNext((result.totalProductCount ?? result.totalResultCount) > limit);
   }, [code, dispatch, type, value, limit, baseRequestOptions]);
 
   // Effect to trigger the initial fetch when the component mounts or the parameters change.
@@ -140,7 +142,9 @@ export const useWidgetProducts = (options = {}) => {
     ));
 
     setOffset(offset + limit);
-    setHasNext(result.totalProductCount > offset + limit);
+    // When the result comes from a real pipeline request there will be "totalProductCount".
+    // When the result are cached products, it can also be "totalResultCount".
+    setHasNext((result.totalProductCount ?? result.totalResultCount) > offset + limit);
   }, [
     code,
     dispatch,
