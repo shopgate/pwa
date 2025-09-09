@@ -1,5 +1,5 @@
 import React from 'react';
-import { useResponsiveValue, makeStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { Link, ConditionalWrapper } from '@shopgate/engage/components';
 import { useImageWidget } from './hooks';
 
@@ -18,15 +18,7 @@ const Image = () => {
   const { cx, classes } = useStyles();
   const { link, altText, url } = useImageWidget();
 
-  // Regex to separate filename and file extension
-  const match = url.match(/^(.*)\.([^./]+)$/);
-
-  const responsiveUrl = useResponsiveValue({
-    xs: url,
-    md: !match ? url : `${match[1]}@2x.${match[2]}`,
-  });
-
-  if (!responsiveUrl) return null;
+  if (!url) return null;
 
   return (
     <div className={cx(classes.root)}>
@@ -40,7 +32,7 @@ const Image = () => {
       >
         <img
           loading="lazy"
-          src={responsiveUrl}
+          src={url}
           alt={altText}
           aria-label={altText}
           className={cx(classes.image)}
