@@ -4,6 +4,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { useLongPress } from '@shopgate/engage/core/hooks';
 import { getClientInformation } from '@shopgate/engage/core/selectors';
 import { enableDebugLogging } from './actions';
+import DevelopmentSettings from '../DevelopmentSettings';
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -33,12 +34,15 @@ const ClientInformation = () => {
   const { classes, cx } = useStyles();
   const dispatch = useDispatch();
   const [deviceIdVisible, setDeviceIdVisible] = useState(false);
+  const [developmentSettingsVisible, setDevelopmentSettingsVisible] = useState(false);
 
   // Press handler to show the device ID
-  const showDeviceIdAttrs = useLongPress(() => {
+  const longPressAttrs = useLongPress(() => {
     if (!deviceIdVisible) {
       setDeviceIdVisible(true);
       dispatch(enableDebugLogging());
+    } else {
+      setDevelopmentSettingsVisible(true);
     }
   }, { threshold: 5000 });
 
@@ -56,7 +60,7 @@ const ClientInformation = () => {
   return (
     <div
       className={cx('ui-shared__client-information', classes.root)}
-      {...showDeviceIdAttrs}
+      {...longPressAttrs}
       aria-hidden
     >
       <p className={classes.unselectable}>
@@ -65,9 +69,15 @@ const ClientInformation = () => {
         {`Lib Version: ${libVersion}`}
       </p>
       {deviceIdVisible &&
-        <p className={classes.deviceId}>
-          {`Device ID: ${deviceId ?? ''}`}
-        </p>
+        <>
+          <p className={classes.deviceId}>
+            {`Device ID: ${deviceId ?? ''}`}
+          </p>
+          <DevelopmentSettings
+            isOpen={developmentSettingsVisible}
+            onClose={() => setDevelopmentSettingsVisible(false)}
+          />
+        </>
       }
     </div>
   );
