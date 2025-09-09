@@ -8,7 +8,7 @@ import { toggleCms2Preview } from '../../action-creators';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(2, 2, 4),
     display: 'flex',
     justifyContent: 'center',
   },
