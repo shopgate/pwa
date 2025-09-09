@@ -75,3 +75,12 @@ export const getAreSimulatedInsetsInjected = createSelector(
     return insetsVisible === null && md.os() === 'iOS';
   }
 );
+
+/**
+ * Creates a selector to determine if the CMS2 preview is enabled.
+ * @type {(state: any) => boolean}
+ */
+export const getIsCMS2PreviewEnabled = createSelector(
+  getState,
+  settings => !!settings.cms2PreviewEnabled
+);

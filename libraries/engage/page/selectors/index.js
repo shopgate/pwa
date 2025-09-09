@@ -22,6 +22,7 @@ import {
   transformDisplayOptions,
   generateResultHash,
 } from '@shopgate/engage/core/helpers';
+import { getIsCMS2PreviewEnabled } from '@shopgate/engage/development/selectors';
 import { makeGetPageConfigById } from '@shopgate/pwa-common/selectors/page';
 import { PRIVACY_PATH } from '../constants';
 
@@ -130,7 +131,8 @@ export const makeGetWidgetsFromPage = ({
  */
 export const getIsCms2Enabled = createSelector(
   getEnableCms2ForAllShoppers,
-  isEnabled => isEnabled
+  getIsCMS2PreviewEnabled,
+  (shopSettingEnabled, previewEnabled) => shopSettingEnabled || previewEnabled
 );
 
 /**
