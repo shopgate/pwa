@@ -1,5 +1,5 @@
-import DataRequest from '@shopgate/pwa-core/classes/DataRequest';
-import setDebugLoggingEnabled from '@shopgate/pwa-core/commands/setDebugLoggingEnabled';
+import { DataRequest } from '@shopgate/engage/core/classes';
+import { setDebugLoggingEnabled } from '@shopgate/engage/core/commands';
 
 /**
  * Enable debug logging.
