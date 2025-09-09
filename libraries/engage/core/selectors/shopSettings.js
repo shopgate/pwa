@@ -147,6 +147,6 @@ export const getShowWishlistItemsCountBadge = createSelector(
 
 export const getEnableCms2ForAllShoppers = makeGetShopSettingByKey(
   SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS,
-  true
+  false
 );
 
