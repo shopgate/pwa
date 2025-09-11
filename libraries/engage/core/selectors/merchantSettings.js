@@ -9,6 +9,7 @@ import {
   MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
   MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION,
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
+  MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
 } from '../constants';
 
 /**
@@ -72,3 +73,14 @@ export const getProductListShowInventory = makeGetMerchantSettingByKey(
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
   false
 );
+
+/**
+ * Selector that retrieves the enabled CMS version.
+ * @type {(state: RootState) => "v1" | "v2" | "both"}
+ */
+export const getEnabledCMSVersion = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
+  'v1'
+);
+
+export { getState };

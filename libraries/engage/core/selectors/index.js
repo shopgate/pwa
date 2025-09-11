@@ -22,6 +22,7 @@ export {
   getEnableWebIndexing,
   getProductShowAlternativeLocation,
   getProductListShowInventory,
+  getEnabledCMSVersion,
 } from './merchantSettings';
 
 export * from '../config/config.selectors';

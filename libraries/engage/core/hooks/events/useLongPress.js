@@ -29,7 +29,8 @@ export default function useLongPress(
     onCancel,
   } = {}
 ) {
-  const timerRef = useRef(null);
+  /** @type {import('react').MutableRefObject<number | undefined>} */
+  const timerRef = useRef(undefined);
   const triggeredRef = useRef(false);
 
   const start = useCallback(
@@ -37,7 +38,7 @@ export default function useLongPress(
       if (onStart) onStart(e);
       triggeredRef.current = false;
 
-      timerRef.current = setTimeout(() => {
+      timerRef.current = window.setTimeout(() => {
         callback(e);
         triggeredRef.current = true;
         if (onFinish) onFinish(e);
@@ -48,7 +49,7 @@ export default function useLongPress(
 
   const cancel = useCallback(
     (e) => {
-      clearTimeout(timerRef.current);
+      window.clearTimeout(timerRef.current);
       if (!triggeredRef.current && onCancel) {
         onCancel(e);
       }
