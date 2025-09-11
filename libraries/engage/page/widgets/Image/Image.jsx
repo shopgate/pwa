@@ -4,7 +4,6 @@ import { Link, ConditionalWrapper } from '@shopgate/engage/components';
 import { useImageWidget } from './hooks';
 
 const useStyles = makeStyles()(() => ({
-  root: {},
   link: {},
   image: {
     width: '100%',
@@ -21,24 +20,21 @@ const Image = () => {
   if (!url) return null;
 
   return (
-    <div className={cx(classes.root)}>
-      <ConditionalWrapper
-        condition={!!link}
-        wrapper={children => (
-          <Link href={link} className={cx(classes.link)}>
-            {children}
-          </Link>
-        )}
-      >
-        <img
-          loading="lazy"
-          src={url}
-          alt={altText}
-          aria-label={altText}
-          className={cx(classes.image)}
-        />
-      </ConditionalWrapper>
-    </div>
+    <ConditionalWrapper
+      condition={!!link}
+      wrapper={children => (
+        <Link href={link} className={cx(classes.link)}>
+          {children}
+        </Link>
+      )}
+    >
+      <img
+        loading="lazy"
+        src={url}
+        alt={altText}
+        className={cx(classes.image)}
+      />
+    </ConditionalWrapper>
   );
 };
 export default Image;
