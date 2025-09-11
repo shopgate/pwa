@@ -86,11 +86,16 @@ class ViewContent extends Component {
   componentDidMount() {
     const { scrollTop } = this.context.state;
 
-    if (this.ref.current === window) {
-      window.scrollTo(0, scrollTop || 0);
-    } else {
-      this.ref.current.scrollTop = scrollTop;
-    }
+    // This trick ensures the scroll position is restored correctly. Without it there where
+    // situations where scroll position was restored before the content was rendered.
+    // In that case restoration didn't have any effect.
+    window.requestAnimationFrame(() => {
+      if (this.ref.current === window) {
+        window.scrollTo(0, scrollTop || 0);
+      } else {
+        this.ref.current.scrollTop = scrollTop;
+      }
+    });
   }
 
   /**

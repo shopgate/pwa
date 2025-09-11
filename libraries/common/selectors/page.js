@@ -22,3 +22,20 @@ export const getPageConfigById = createSelector(
     return pageState[pageId];
   }
 );
+
+/**
+ * Creates a selector that retrieves a page configuration by its ID.
+ * @param {Object} params The selector parameters.
+ * @param {string} params.pageId The ID of the page.
+ * @returns {Function} A selector function that retrieves the page configuration.
+ */
+export const makeGetPageConfigById = ({ pageId }) => createSelector(
+  getPageState,
+  (pageState) => {
+    if (!pageState || !pageState[pageId]) {
+      return null;
+    }
+
+    return pageState[pageId];
+  }
+);

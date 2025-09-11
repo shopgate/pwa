@@ -1,73 +1,82 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { PAGE_CONTENT } from '@shopgate/engage/core/constants';
 import {
-  PAGE_CONTENT_BEFORE,
-  PAGE_CONTENT,
-  PAGE_CONTENT_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
-import { PAGE_ID_INDEX } from '@shopgate/pwa-common/constants/PageIDs';
-import Widgets from '@shopgate/pwa-common/components/Widgets';
+  Logo,
+  SurroundPortals,
+  Widgets as WidgetsV1,
+} from '@shopgate/engage/components';
+import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
+import { Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
-import { Logo } from '@shopgate/engage/components';
-import widgets from 'Extensions/widgets';
+import availableWidgets from 'Extensions/widgets';
 import styles from './style';
 import connect from './connector';
 
 /**
  * @param {Object} props The component props
- * @param {Object} props.configs The page configs.
+ * @param {boolean} props.isCmsV2Enabled Whether CMS V2 is enabled.
+ * @param {boolean} props.postponeRender Whether to postpone rendering the widgets.
  * @param {string} props.pageId The page id.
+ * @param {string} props.title The page title.
+ * @param {Array} props.widgets The page widgets.
  * @param {bool} props.isCookieConsentHandled Whether the cookie consent is handled (pages can be
  * to show the privacy policy. We need to re-configure the screen so that users can't break out)
- * @return {JSX}
+ * @returns {JSX.Element}
  */
 function PageContent({
-  configs, pageId, postponeRender, isCookieConsentHandled,
+  isCmsV2Enabled = false,
+  postponeRender = false,
+  pageId = null,
+  title = '',
+  widgets = [],
+  isCookieConsentHandled,
 }) {
-  if (!configs) {
-    return null;
-  }
-
   let center = <Logo key="center" />;
 
   if (pageId !== PAGE_ID_INDEX) {
-    center = <AppBar.Title key="center" title={configs.title || ''} />;
+    center = <AppBar.Title key="center" title={title} />;
   }
 
   const BarComponent = !isCookieConsentHandled ? BackBar : DefaultBar;
+  const Component = isCmsV2Enabled ? WidgetsV2 : WidgetsV1;
 
   return (
     <Fragment>
       <BarComponent
         center={center}
-        title={configs.title || ''}
+        title={title}
         {...!isCookieConsentHandled && { right: (<></>) }}
       />
-      <Portal name={PAGE_CONTENT_BEFORE} props={{ id: pageId }} />
-      <Portal name={PAGE_CONTENT} props={{ id: pageId }}>
+      <SurroundPortals
+        portalName={PAGE_CONTENT}
+        portalProps={{ id: pageId }}
+      >
         <div key="widgetWrapper" className={styles.widgetWrapper}>
-          {(!postponeRender && configs && configs.widgets) && (
-            <Widgets components={widgets} widgets={configs.widgets} />
+          {(!postponeRender) && (
+            <Component components={availableWidgets} widgets={widgets} />
           )}
         </div>
-      </Portal>
-      <Portal name={PAGE_CONTENT_AFTER} props={{ id: pageId }} />
+      </SurroundPortals>
     </Fragment>
   );
 }
 
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
-  configs: PropTypes.shape(),
+  isCmsV2Enabled: PropTypes.bool,
   isCookieConsentHandled: PropTypes.bool,
   postponeRender: PropTypes.bool,
+  title: PropTypes.string,
+  widgets: PropTypes.arrayOf(PropTypes.shape()),
 };
 
 PageContent.defaultProps = {
-  configs: null,
+  isCmsV2Enabled: false,
   postponeRender: false,
+  title: '',
+  widgets: [],
   isCookieConsentHandled: true,
 };
 

@@ -37,6 +37,7 @@ persistedReducers.set([
   'cart.data',
   'client.info',
   'page',
+  'pageV2',
   'locations.storage',
   'locations.userFormInput',
   'locations.userSearch',
