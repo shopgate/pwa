@@ -19,5 +19,8 @@
   },
   "@shopgate/widgets/imageWidget": {
     "path": "@shopgate/engage/page/widgets/Image"
+  },
+  "@shopgate/widgets/richTextWidget": {
+    "path": "@shopgate/engage/page/widgets/RichText"
   }
 }
