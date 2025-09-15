@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useLongPress } from '@shopgate/engage/core/hooks';
 import { getClientInformation } from '@shopgate/engage/core/selectors';
-import { enableDebugLogging } from './actions';
 import DevelopmentSettings from '../DevelopmentSettings';
 
 const useStyles = makeStyles()(theme => ({
@@ -32,7 +31,6 @@ const useStyles = makeStyles()(theme => ({
  */
 const ClientInformation = () => {
   const { classes, cx } = useStyles();
-  const dispatch = useDispatch();
   const [deviceIdVisible, setDeviceIdVisible] = useState(false);
   const [developmentSettingsVisible, setDevelopmentSettingsVisible] = useState(false);
 
@@ -40,7 +38,6 @@ const ClientInformation = () => {
   const longPressAttrs = useLongPress(() => {
     if (!deviceIdVisible) {
       setDeviceIdVisible(true);
-      dispatch(enableDebugLogging());
     } else {
       setDevelopmentSettingsVisible(true);
     }
