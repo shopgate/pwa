@@ -7,17 +7,7 @@ import headerStyles from './components/Header/style';
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
-jest.mock('@shopgate/pwa-ui-shared/ClientInformation', () => () => 'ClientInformation');
-jest.mock('@shopgate/pwa-ui-shared/ClientInformation/connector', () => (obj) => {
-  const newObj = obj;
-
-  newObj.defaultProps = {
-    client: {},
-    enableDebugLogging: () => {},
-  };
-
-  return newObj;
-});
+jest.mock('@shopgate/engage/development/components/ClientInformation', () => () => 'ClientInformation');
 
 jest.mock('@shopgate/pwa-common/helpers/config');
 /*

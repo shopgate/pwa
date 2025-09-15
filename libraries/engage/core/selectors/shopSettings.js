@@ -145,6 +145,10 @@ export const getShowWishlistItemsCountBadge = createSelector(
     (loadWishlistOnAppStartEnabled ? showWishlistItemsCountBadge : false)
 );
 
+/**
+ * Selector that determines if CMS 2 is enabled for all shoppers.
+ * @type {(state: RootState) => boolean}
+ */
 export const getEnableCms2ForAllShoppers = makeGetShopSettingByKey(
   SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS,
   false
