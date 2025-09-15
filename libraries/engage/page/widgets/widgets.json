@@ -16,5 +16,8 @@
   },
   "@shopgate/widgets/headlineWidget": {
     "path": "@shopgate/engage/page/widgets/Headline"
+  },
+  "@shopgate/widgets/imageWidget": {
+    "path": "@shopgate/engage/page/widgets/Image"
   }
 }
