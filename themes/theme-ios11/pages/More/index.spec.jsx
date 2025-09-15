@@ -23,7 +23,7 @@ jest.mock('./components/StoreInfo/components/LegalPages', () => function LegalPa
 });
 
 /* eslint-disable require-jsdoc */
-jest.mock('@shopgate/pwa-ui-shared/ClientInformation', () => {
+jest.mock('@shopgate/engage/development/components/ClientInformation', () => {
   const ClientInformation = () => (<div />);
   return ClientInformation;
 });
