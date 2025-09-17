@@ -10,13 +10,13 @@ export interface Breakpoints {
    *    // extra-small
    *    xs: 0,
    *    // small
-   *    sm: 600,
+   *    sm: 480,
    *    // medium
-   *    md: 900,
+   *    md: 768,
    *    // large
-   *    lg: 1200,
+   *    lg: 1024,
    *    // extra-large
-   *    xl: 1536,
+   *    xl: 1280,
    * }
    */
   values: { [key in Breakpoint]: number };

@@ -22,5 +22,8 @@
   },
   "@shopgate/widgets/imageRowWidget": {
     "path": "@shopgate/engage/page/widgets/ImageRow"
+  },
+  "@shopgate/widgets/imageSliderWidget": {
+    "path": "@shopgate/engage/page/widgets/ImageSlider"
   }
 }
