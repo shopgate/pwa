@@ -9,23 +9,23 @@ export const getScrollContainer = () => document.querySelector(`.route__${PAGE_P
 
 /**
  * @typedef {Object} ScheduledParams
- * @param {string} [from] The start date of the scheduling in ISO format.
- * @param {string} [to] The end date of the scheduling in ISO format.
- * @param {number} [timezoneOffset] The timezone offset in minutes. If not provided, the local
+ * @property {string} [from] The start date of the scheduling in ISO format.
+ * @property {string} [to] The end date of the scheduling in ISO format.
+ * @property {number} [timezoneOffset] The timezone offset in minutes. If not provided, the local
  * timezone offset will be used.
  */
 
 /**
  * @typedef {Object} ScheduledStatus
- * @param {boolean} isScheduled Indicates if the widget is scheduled.
- * @param {boolean} isActive Indicates if the widget is currently active within the
+ * @property {boolean} isScheduled Indicates if the widget is scheduled.
+ * @property {boolean} isActive Indicates if the widget is currently active within the
  * scheduled time frame.
- * @param {boolean} isExpired Indicates if the scheduled time frame has expired.
+ * @property {boolean} isExpired Indicates if the scheduled time frame has expired.
  */
 
 /**
  * Retrieves the scheduling status of a widget based on the provided parameters.
- * @param {ScheduledParams} params The parameters for the function.
+ * @param {ScheduledParams} [params] The parameters for the function.
  * @returns {ScheduledStatus} An object containing the scheduling status.
  */
 export function checkScheduled({ from, to, timezoneOffset } = {}) {
