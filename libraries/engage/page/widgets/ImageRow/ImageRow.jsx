@@ -1,30 +1,42 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { Link, ConditionalWrapper } from '@shopgate/engage/components';
+import { Link, ConditionalWrapper, Grid } from '@shopgate/engage/components';
 import { useImageWidget } from './hooks';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   imageContainer: {
+    width: '100%',
     display: 'flex',
-  },
-  imageContainerDense: {
-  },
-  imageContainerDefault: {
-  },
-  imageContainerNoWrap: {
+    overflowX: 'hidden',
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
   },
   image: {
+    maxWidth: '100%',
+    height: 'auto',
+    flexShrink: 1,
+    display: 'block',
     width: '100%',
-    height: '100%',
+    objectFit: 'contain',
   },
-  imageDense: {
-    width: '33%',
+  itemContainerDense: {
+    [theme.breakpoints.down('md')]: {
+      flex: '1 1 33%',
+    },
+    [theme.breakpoints.up('md')]: {
+      flex: '1 1 16%',
+    },
   },
-  imageDefault: {
-    width: '50%',
+  itemContainerDefault: {
+    [theme.breakpoints.down('md')]: {
+      flex: '1 1 50%',
+    },
+    [theme.breakpoints.up('md')]: {
+      flex: '1 1 25%',
+    },
   },
-  imageNoWrap: {
-    flex: 1,
+  itemContainerNoWrap: {
+    flex: ' 1 1 0%',
   },
 }));
 
@@ -34,6 +46,7 @@ const useStyles = makeStyles()(() => ({
  */
 const ImageRow = () => {
   const { cx, classes } = useStyles();
+
   const {
     images, imageWrapping,
   } = useImageWidget();
@@ -41,35 +54,35 @@ const ImageRow = () => {
   if (images.length === 0) return null;
 
   return (
-    <div className={cx(classes.imageContainer, {
-      [classes.imageContainerDefault]: imageWrapping === 'responsiveDefault',
-      [classes.imageContainerDense]: imageWrapping === 'responsiveDense',
-      [classes.imageContainerNoWrap]: imageWrapping === 'responsiveNoWrap',
-    })}
-    >
+    <Grid className={cx(classes.imageContainer)} component="div">
       {images.map(img => (
-        <ConditionalWrapper
+        <Grid.Item
           key={img.url}
-          condition={!!img.link}
-          wrapper={children => (
-            <Link href={img.link} className={cx(classes.image)}>
-              {children}
-            </Link>
-          )}
+          component="div"
+          className={cx({
+            [classes.itemContainerDefault]: imageWrapping === 'responsiveDefault',
+            [classes.itemContainerDense]: imageWrapping === 'responsiveDense',
+            [classes.itemContainerNoWrap]: imageWrapping === 'responsiveNoWrap',
+          })}
         >
-          <img
-            loading="lazy"
-            src={img.url}
-            alt={img.altText}
-            className={cx(classes.image, {
-              [classes.imageDefault]: imageWrapping === 'responsiveDefault',
-              [classes.imageDense]: imageWrapping === 'responsiveDense',
-              [classes.imageNoWrap]: imageWrapping === 'responsiveNoWrap',
-            })}
-          />
-        </ConditionalWrapper>
+          <ConditionalWrapper
+            condition={!!img.link}
+            wrapper={children => (
+              <Link href={img.link} className={cx(classes.image)}>
+                {children}
+              </Link>
+            )}
+          >
+            <img
+              loading="lazy"
+              src={img.url}
+              alt={img.altText}
+              className={cx(classes.image)}
+            />
+          </ConditionalWrapper>
+        </Grid.Item>
       ))}
-    </div>
+    </Grid>
   );
 };
 export default ImageRow;

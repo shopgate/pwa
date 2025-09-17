@@ -1,33 +1,13 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
-
-/**
- * Parses the image URL to return a high resolution version if required.
- * @param {string} url The original image URL.
- * @param {boolean} useHighRes Whether to return a high resolution version.
- * @returns {string} The parsed image URL.
- */
-const parseImageUrl = (url, useHighRes) => {
-  if (!url || !useHighRes) {
-    return url;
-  }
-
-  const match = url.match(/^(.*)\.([^./]+)$/);
-
-  return !match ? url : `${match[1]}@2x.${match[2]}`;
-};
+import { parseImageUrl } from '../../helpers';
 
 /**
  * @typedef {Object} ImageWidgetConfig
- * @property {Object} image The image object.
- * @property {string} image.url The image URL.
- * @property {string} [image.altText] The image alt text.
- * @property {Object} imageWide The wide image object.
- * @property {string} imageWide.url The wide image URL.
- * @property {string} [imageWide.altText] The wide image alt text.
- * @property {boolean} [useImageWide] Whether to use the wide image on
- * medium and larger screens.
- * @property {string} [link] The link URL.
+ * @property {Array} images The images array.
+ * @property {string} imageWrapping The imageWrapping setting,
+ * one of: responsiveDefault | responsiveDense | responsiveNoWrap.
+ * @property {string} [link] The optional link URL.
  */
 
 /**
@@ -60,7 +40,7 @@ export const useImageWidget = () => {
       },
       md: {
         url: url ? parseImageUrl(url, true) : '',
-        altText: altText || '',
+        altText,
         link,
       },
     };
