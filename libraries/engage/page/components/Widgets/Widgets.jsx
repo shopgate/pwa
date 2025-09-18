@@ -7,6 +7,7 @@ import { ConditionalWrapper } from '@shopgate/engage/components';
 import WidgetsPreviewProvider from './WidgetsPreviewProvider';
 import Widget from './Widget';
 import Overlay from './Overlay';
+import { checkScheduled } from './helpers';
 import { usePreviewIframeCommunication } from './hooks';
 
 /**
@@ -49,7 +50,14 @@ const Widgets = ({
     }
 
     // Remove widgets that do not have a valid component.
-    return widgetsProp.filter(widget => !!widgetComponents[widget.widgetConfigDefinitionCode]);
+    return widgetsProp.filter(
+      widget =>
+        !!widgetComponents[widget.widgetConfigDefinitionCode] &&
+      checkScheduled({
+        from: widget?.visibility.scheduleStartDate,
+        to: widget?.visibility.scheduleEndDate,
+      }).isActive
+    );
   }, [isPreview, widgetComponents, widgetsProp]);
 
   if (!Array.isArray(widgets) || widgets.length === 0) {
