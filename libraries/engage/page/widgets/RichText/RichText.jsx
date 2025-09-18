@@ -5,8 +5,12 @@ import { useRichTextWidget } from './hooks';
 
 const useStyles = makeStyles()(() => ({
   html: {
+    '& > p:first-child': {
+      marginTop: 0,
+    },
     '& p': {
-      marginBottom: '17px',
+      marginTop: 17,
+      marginBottom: 17,
     },
     'ul, ol': {
       paddingLeft: '40px',
