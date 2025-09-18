@@ -1,6 +1,6 @@
 import { historyPop, historyReplace, historyPush } from '@shopgate/engage/core/actions';
 import { fetchPageConfig } from '@shopgate/engage/page/actions';
-import { getPageConfigById } from '@shopgate/engage/page/selectors';
+import { makeGetUnifiedCMSPageData } from '@shopgate/engage/page/selectors';
 import { fetchProductsById } from '@shopgate/engage/product';
 import { getProductById } from '@shopgate/engage/product/selectors/product';
 import { fetchCategory } from '@shopgate/engage/category/actions';
@@ -92,7 +92,7 @@ const handleQrCode = ({ scope, format, payload }) => async (dispatch, getState) 
       // Force to fetch missing products
       await dispatch(fetchPageConfig(data.pageId));
 
-      if (!getPageConfigById(getState(), data)) {
+      if (!makeGetUnifiedCMSPageData({ slug: data.pageId })(getState())) {
         notFound();
       } else {
         dispatch(successHandleScanner(scope, format, payload));

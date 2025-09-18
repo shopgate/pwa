@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import {
   makeGetMenu,
   makeGetIsFetchingMenu,
+  getEnableCms2ForAllShoppers,
 } from '@shopgate/engage/core/selectors';
 import {
   getFulfillmentParams,
@@ -21,6 +22,8 @@ import {
   transformDisplayOptions,
   generateResultHash,
 } from '@shopgate/engage/core/helpers';
+import { getIsCMS2PreviewEnabled } from '@shopgate/engage/development/selectors';
+import { makeGetPageConfigById } from '@shopgate/pwa-common/selectors/page';
 import { PRIVACY_PATH } from '../constants';
 
 export * from '@shopgate/pwa-common/selectors/page';
@@ -119,6 +122,60 @@ export const makeGetWidgetsFromPage = ({
       }
 
       return page.data?.dropzones?.[dropzone] ?? [];
+    }
+  );
+};
+
+/**
+ * Determines whether the new CMS version 2 is enabled.
+ */
+export const getIsCms2Enabled = createSelector(
+  getEnableCms2ForAllShoppers,
+  getIsCMS2PreviewEnabled,
+  (shopSettingEnabled, previewEnabled) => shopSettingEnabled || previewEnabled
+);
+
+/**
+ * Creates a selector that retrieves unified CMS page data. Depending on the CMS version,
+ * the data is retrieved from different sources, but returned in a consistent format.
+ * @param {Object} params The selector parameters.
+ * @param {string} params.slug The slug of the page.
+ * @returns {Function} A selector function that retrieves the unified CMS page data.
+ */
+export const makeGetUnifiedCMSPageData = ({ slug }) => {
+  const getPageV2 = makeGetPage({
+    type: 'cms',
+    slug,
+  });
+
+  const getPageV1 = makeGetPageConfigById({ pageId: slug });
+
+  return createSelector(
+    getIsCms2Enabled,
+    getPageV1,
+    getPageV2,
+    (isCms2Enabled, pageV1, pageV2) => {
+      if (isCms2Enabled) {
+        if (!pageV2) return undefined;
+
+        return {
+          isFetching: pageV2?.isFetching ?? false,
+          expires: pageV2?.expires ?? null,
+          title: pageV2?.data?.pageTitle || pageV2?.data?.name || '',
+          widgets: pageV2?.data?.dropzones?.['cmsWidgetList'] ?? [],
+          cmsVersion: 2,
+        };
+      }
+
+      if (!pageV1) return undefined;
+
+      return {
+        isFetching: pageV1?.isFetching ?? false,
+        expires: pageV1?.expires ?? null,
+        title: pageV1?.title || '',
+        widgets: pageV1?.widgets || [],
+        cmsVersion: 1,
+      };
     }
   );
 };

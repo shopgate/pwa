@@ -1,4 +1,5 @@
 import { produce } from 'immer';
+import { APP_WILL_START } from '@shopgate/engage/core/constants';
 import {
   REQUEST_PAGE_CONFIG_V2,
   RECEIVE_PAGE_CONFIG_V2,
@@ -111,6 +112,16 @@ export function pageV2(state = defaultState, action) {
           data: null,
           isFetching: false,
         };
+        break;
+      }
+
+      case APP_WILL_START: {
+        Object.keys(draft).forEach((pageType) => {
+          Object.keys(draft[pageType]).forEach((pageCode) => {
+            draft[pageType][pageCode].expires = 0;
+          });
+        });
+
         break;
       }
       default:

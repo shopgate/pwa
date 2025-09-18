@@ -23,5 +23,6 @@ export const SHOP_SETTING_WISHLIST_ITEM_QUANTITY_ENABLED = 'wishlistItemQuantity
 export const SHOP_SETTING_WISHLIST_ITEM_NOTES_ENABLED = 'wishlistItemNotesEnabled';
 export const SHOP_SETTING_LOAD_WISHLIST_ON_APP_START_ENABLED = 'loadWishlistOnAppStartEnabled';
 export const SHOP_SETTING_SHOW_WISHLIST_ITEMS_COUNT_BADGE = 'showWishlistItemsCountBadge';
+export const SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS = 'enableCms2ForAllShoppers';
 
 export const WISHLIST_MODE_PERSIST_ON_ADD = 'persistOnAdd';

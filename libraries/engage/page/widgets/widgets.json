@@ -22,5 +22,8 @@
   },
   "@shopgate/widgets/richTextWidget": {
     "path": "@shopgate/engage/page/widgets/RichText"
+  },
+  "@shopgate/widgets/imageSliderWidget": {
+    "path": "@shopgate/engage/page/widgets/ImageSlider"
   }
 }

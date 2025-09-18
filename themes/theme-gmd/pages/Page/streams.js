@@ -3,6 +3,7 @@ import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { routeWillEnter$ } from '@shopgate/pwa-common/streams/router';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { RECEIVE_PAGE_CONFIG } from '@shopgate/pwa-common/constants/ActionTypes';
+import { RECEIVE_PAGE_CONFIG_V2 } from '@shopgate/engage/page/constants';
 import { startPageWillEnter$ } from '../StartPage/streams';
 
 export const pageWillEnter$ = routeWillEnter$
@@ -17,7 +18,7 @@ export const receivedVisiblePageConfig$ = main$
   .filter(({ action, getState }) => {
     const route = getCurrentRoute(getState());
 
-    if (action.type !== RECEIVE_PAGE_CONFIG) {
+    if (![RECEIVE_PAGE_CONFIG, RECEIVE_PAGE_CONFIG_V2].includes(action.type)) {
       return false;
     }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
-import ClientInformation from '@shopgate/pwa-ui-shared/ClientInformation';
+import { ClientInformation } from '@shopgate/engage/development/components';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import Header from './components/Header';
 import Main from './components/Main';

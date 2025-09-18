@@ -6,3 +6,4 @@ export { default as ProductSliderWidget } from './ProductSlider';
 export { default as HeadlineWidget } from './Headline';
 export { default as ImageWidget } from './Image';
 export { default as RichTextWidget } from './RichText';
+export { default as ImageSliderWidget } from './ImageSlider';
