@@ -7,3 +7,4 @@ export { default as HeadlineWidget } from './Headline';
 export { default as ImageWidget } from './Image';
 export { default as ImageRowWidget } from './ImageRow';
 export { default as ImageSliderWidget } from './ImageSlider';
+export { default as RichTextWidget } from './RichText';

@@ -1,7 +1,4 @@
 {
-  "@shopgate/widgetsInternal/Placeholder": {
-    "path": "@shopgate/engage/page/widgets/Placeholder"
-  },
   "@shopgate/widgets/productListWidget": {
     "path": "@shopgate/engage/page/widgets/ProductList"
   },
@@ -25,5 +22,11 @@
   },
   "@shopgate/widgets/imageSliderWidget": {
     "path": "@shopgate/engage/page/widgets/ImageSlider"
+  },
+  "@shopgate/widgets/richTextWidget": {
+    "path": "@shopgate/engage/page/widgets/RichText"
+  },
+  "@shopgate/widgetsInternal/Placeholder": {
+    "path": "@shopgate/engage/page/widgets/Placeholder"
   }
 }
