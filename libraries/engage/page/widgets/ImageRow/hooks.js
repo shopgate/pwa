@@ -24,11 +24,11 @@ export const useImageWidget = () => {
   const { config } = useWidget();
 
   const {
-    images,
+    images = [],
     imageWrapping,
   } = config || {};
 
-  const mappedImages = useMemo(() => images?.map(({ image, link }) => {
+  const mappedImages = useMemo(() => images.map(({ image, link }) => {
     const { url, altText } = image || {};
 
     return {
@@ -36,12 +36,10 @@ export const useImageWidget = () => {
       altText,
       link,
     };
-  }), [images]);
-
-  const filteredImages = mappedImages.filter(img => img.url);
+  }).filter(img => img.url), [images]);
 
   return {
-    images: filteredImages,
+    images: mappedImages,
     imageWrapping,
   };
 };

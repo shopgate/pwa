@@ -56,7 +56,7 @@ const ImageRow = () => {
 
   return (
     <Grid className={cx(classes.imageContainer)} component="div">
-      {images?.map(img => (
+      {images.map(img => (
         <Grid.Item
           key={img.url}
           component="div"
