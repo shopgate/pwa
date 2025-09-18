@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Link, ConditionalWrapper, Grid } from '@shopgate/engage/components';
 import { useImageWidget } from './hooks';
+import ResponsiveWidgetImage from '../../components/ResponsiveWidgetImage';
 
 const useStyles = makeStyles()(theme => ({
   imageContainer: {
@@ -55,7 +56,7 @@ const ImageRow = () => {
 
   return (
     <Grid className={cx(classes.imageContainer)} component="div">
-      {images.map(img => (
+      {images?.map(img => (
         <Grid.Item
           key={img.url}
           component="div"
@@ -73,8 +74,7 @@ const ImageRow = () => {
               </Link>
             )}
           >
-            <img
-              loading="lazy"
+            <ResponsiveWidgetImage
               src={img.url}
               alt={img.altText}
               className={cx(classes.image)}

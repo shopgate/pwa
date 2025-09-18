@@ -1,6 +1,5 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
-import { useResponsiveValue } from '@shopgate/engage/styles';
-import { parseImageUrl } from '../../helpers';
+import { useMemo } from 'react';
 
 /**
  * @typedef {Object} ImageWidgetConfig
@@ -29,32 +28,20 @@ export const useImageWidget = () => {
     imageWrapping,
   } = config || {};
 
-  const mappedImages = images.map(({ image, link }) => {
+  const mappedImages = useMemo(() => images?.map(({ image, link }) => {
     const { url, altText } = image || {};
 
     return {
-      xs: {
-        url,
-        altText,
-        link,
-      },
-      md: {
-        url: url ? parseImageUrl(url, true) : '',
-        altText,
-        link,
-      },
+      url,
+      altText,
+      link,
     };
-  });
+  }), [images]);
 
-  const responsiveValues = useResponsiveValue({
-    xs: mappedImages.map(img => img.xs),
-    md: mappedImages.map(img => img.md),
-  });
-
-  const responsiveImages = responsiveValues ?? [];
+  const filteredImages = mappedImages.filter(img => img.url);
 
   return {
-    images: responsiveImages,
+    images: filteredImages,
     imageWrapping,
   };
 };
