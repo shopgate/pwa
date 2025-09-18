@@ -1,6 +1,5 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
-import { parseImageUrl } from '../../helpers';
 
 /**
  * @typedef {Object} ImageWidgetConfig
@@ -32,21 +31,20 @@ export const useImageWidget = () => {
     image, imageWide, link, useImageWide,
   } = config || {};
 
-  const url = useResponsiveValue({
-    xs: image?.url,
-    md: useImageWide && imageWide?.url ?
-      parseImageUrl(imageWide.url, true) :
-      parseImageUrl(image?.url, true),
-  });
-
-  const altText = useResponsiveValue({
-    xs: image?.altText,
-    md: useImageWide && imageWide?.altText ? imageWide.altText : image?.altText,
+  const resolved = useResponsiveValue({
+    xs: {
+      url: image?.url,
+      altText: image?.altText,
+    },
+    md: {
+      url: useImageWide && imageWide?.url ? imageWide.url : image?.url,
+      altText: useImageWide && imageWide?.altText ? imageWide.altText : image?.altText,
+    },
   });
 
   return {
-    url,
-    altText,
+    url: resolved.url,
+    altText: resolved.altText,
     link,
   };
 };
