@@ -45,3 +45,11 @@ export type GetProductSearchParamsFromProductsInputConfigReturnValue = {
 export declare function getProductSearchParamsFromProductsInputConfig(
   products: ProductsWidgetInputConfig
 ): GetProductSearchParamsFromProductsInputConfigReturnValue;
+
+/**
+ * Helper to parse the image URL to return a high resolution version if required.
+ */
+export declare function parseImageUrl(
+  url: string,
+  useHighRes?: boolean
+): string;

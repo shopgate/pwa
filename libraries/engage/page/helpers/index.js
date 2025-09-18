@@ -64,3 +64,19 @@ export const getProductSearchParamsFromProductsInputConfig = (products = {}) => 
     productsSearchValue,
   };
 };
+
+/**
+ * Parses the image URL to return a high resolution version if required.
+ * @param {string} url The original image URL.
+ * @param {boolean} useHighRes Whether to return a high resolution version.
+ * @returns {string} The parsed image URL.
+ */
+export const parseImageUrl = (url, useHighRes) => {
+  if (!url || !useHighRes) {
+    return url;
+  }
+
+  const match = url.match(/^(.*)\.([^./]+)$/);
+
+  return !match ? url : `${match[1]}@2x.${match[2]}`;
+};
