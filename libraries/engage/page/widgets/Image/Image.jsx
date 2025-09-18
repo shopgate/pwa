@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Link, ConditionalWrapper } from '@shopgate/engage/components';
+import { ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { useImageWidget } from './hooks';
 
 const useStyles = makeStyles()(() => ({
@@ -28,8 +29,7 @@ const Image = () => {
         </Link>
       )}
     >
-      <img
-        loading="lazy"
+      <ResponsiveWidgetImage
         src={url}
         alt={altText}
         className={cx(classes.image)}
