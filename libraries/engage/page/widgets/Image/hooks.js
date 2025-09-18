@@ -1,21 +1,6 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
-
-/**
- * Parses the image URL to return a high resolution version if required.
- * @param {string} url The original image URL.
- * @param {boolean} useHighRes Whether to return a high resolution version.
- * @returns {string} The parsed image URL.
- */
-const parseImageUrl = (url, useHighRes) => {
-  if (!url || !useHighRes) {
-    return url;
-  }
-
-  const match = url.match(/^(.*)\.([^./]+)$/);
-
-  return !match ? url : `${match[1]}@2x.${match[2]}`;
-};
+import { parseImageUrl } from '../../helpers';
 
 /**
  * @typedef {Object} ImageWidgetConfig

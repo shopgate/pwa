@@ -5,4 +5,5 @@ export { default as HtmlWidget } from './HTML';
 export { default as ProductSliderWidget } from './ProductSlider';
 export { default as HeadlineWidget } from './Headline';
 export { default as ImageWidget } from './Image';
+export { default as ImageRowWidget } from './ImageRow';
 export { default as ImageSliderWidget } from './ImageSlider';
