@@ -24,7 +24,7 @@ export function useShortcut(shortcut, callback) {
       if (event.altKey) keys.push('alt');
       if (event.shiftKey) keys.push('shift');
 
-      const key = event.key.toLowerCase();
+      const key = event.key?.toLowerCase();
       if (!['control', 'meta', 'alt', 'shift'].includes(key)) {
         keys.push(key);
       }

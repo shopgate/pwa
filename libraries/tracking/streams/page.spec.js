@@ -9,7 +9,7 @@ import {
   getIsAppWebViewVisible,
 } from '@shopgate/engage/core/selectors';
 import { PAGE_PATTERN } from '@shopgate/engage/page/constants';
-import { getPageConfigById } from '@shopgate/engage/page/selectors';
+import { makeGetUnifiedCMSPageData } from '@shopgate/engage/page/selectors';
 import { pageIsReady$ } from './page';
 
 jest.mock('@shopgate/engage/core/selectors', () => ({
@@ -17,7 +17,7 @@ jest.mock('@shopgate/engage/core/selectors', () => ({
 }));
 
 jest.mock('@shopgate/engage/page/selectors', () => ({
-  getPageConfigById: jest.fn(),
+  makeGetUnifiedCMSPageData: jest.fn(() => () => undefined),
 }));
 
 jest.mock('@shopgate/pwa-common/selectors/router', () => {
@@ -44,7 +44,7 @@ describe('Page streams', () => {
   const getState = jest.fn().mockReturnValue({});
 
   beforeAll(() => {
-    getPageConfigById.mockReturnValue(pageConfig);
+    makeGetUnifiedCMSPageData.mockReturnValue(() => pageConfig);
     getCurrentRoute.mockReturnValue(pageRoute);
   });
 
@@ -78,38 +78,39 @@ describe('Page streams', () => {
 
         expect(subscriber).toHaveBeenCalledTimes(1);
         expect(subscriber).toHaveBeenCalledWith(routeDidEnterPayload);
-        expect(getPageConfigById).toHaveBeenCalledTimes(1);
-        expect(getPageConfigById).toHaveBeenCalledWith({}, { pageId });
+
+        expect(makeGetUnifiedCMSPageData).toHaveBeenCalledTimes(1);
+        expect(makeGetUnifiedCMSPageData).toHaveBeenCalledWith({ slug: pageId });
       });
 
       it('should not emit when a page is already available within the store, but it is fetching', () => {
-        getPageConfigById.mockReturnValueOnce({
+        makeGetUnifiedCMSPageData.mockReturnValueOnce(() => ({
           ...pageConfig,
           isFetching: true,
-        });
+        }));
 
         subscription = pageIsReady$.subscribe(subscriber);
         mainSubject.next(routeDidEnterPayload);
 
         expect(subscriber).not.toHaveBeenCalled();
-        expect(getPageConfigById).toHaveBeenCalledTimes(1);
-        expect(getPageConfigById).toHaveBeenCalledWith({}, { pageId });
+        expect(makeGetUnifiedCMSPageData).toHaveBeenCalledTimes(1);
+        expect(makeGetUnifiedCMSPageData).toHaveBeenCalledWith({ slug: pageId });
       });
 
       it('should emit after the page config comes available', () => {
-        getPageConfigById.mockReturnValueOnce(null);
+        makeGetUnifiedCMSPageData.mockReturnValueOnce(() => undefined);
 
         subscription = pageIsReady$.subscribe(subscriber);
         mainSubject.next(routeDidEnterPayload);
         expect(subscriber).not.toHaveBeenCalled();
-        expect(getPageConfigById).toHaveBeenCalledTimes(1);
-        expect(getPageConfigById).toHaveBeenCalledWith({}, { pageId });
+        expect(makeGetUnifiedCMSPageData).toHaveBeenCalledTimes(1);
+        expect(makeGetUnifiedCMSPageData).toHaveBeenCalledWith({ slug: pageId });
 
         mainSubject.next({ action: { type: RECEIVE_PAGE_CONFIG } });
 
         expect(subscriber).toHaveBeenCalledTimes(1);
         expect(subscriber).toHaveBeenCalledWith(routeDidEnterPayload);
-        expect(getPageConfigById).toHaveBeenCalledTimes(1);
+        expect(makeGetUnifiedCMSPageData).toHaveBeenCalledTimes(1);
       });
 
       describe('app webview not visible', () => {

@@ -19,6 +19,7 @@ class Item extends Component {
     image: PropTypes.element,
     isDisabled: PropTypes.bool,
     isSelected: PropTypes.bool,
+    leftComponent: PropTypes.element,
     link: PropTypes.string,
     linkComponent: PropTypes.elementType,
     linkState: PropTypes.shape(),
@@ -34,34 +35,37 @@ class Item extends Component {
     image: null,
     isDisabled: false,
     isSelected: false,
+    leftComponent: null,
     link: null,
+    linkComponent: Link,
     linkState: null,
     onClick: null,
     rightComponent: null,
-    linkComponent: Link,
     testId: null,
   };
 
   /**
-   * Should only update what the `selected` or `disabled` props change.
+   * Should only update when the `selected` or `disabled` or 'leftComponent' props change.
    * @param {Object} nextProps The next set of component props.
-   * @returns {JSX}
+   * @returns {boolean}
    */
   shouldComponentUpdate(nextProps) {
     return (
       this.props.isSelected !== nextProps.isSelected ||
-      this.props.isDisabled !== nextProps.isDisabled
+      this.props.isDisabled !== nextProps.isDisabled ||
+      this.props.leftComponent !== nextProps.leftComponent
     );
   }
 
   /**
    * Renders the bulk of the content.
    * @param {boolean} [isNested=true] Tells if the content is rendered nested.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   renderContent(isNested = true) {
     const {
-      isDisabled, isSelected, title, image, rightComponent, forwardedRef, description,
+      isDisabled, isSelected, title, image, rightComponent,
+      leftComponent, forwardedRef, description,
     } = this.props;
 
     const gridStyles = {
@@ -82,6 +86,11 @@ class Item extends Component {
             <div className={styles.image}>
               {image}
             </div>
+          )}
+          {(leftComponent !== null) && (
+            <Grid.Item component="div" grow={1}>
+              {leftComponent}
+            </Grid.Item>
           )}
           <Grid.Item className={classNames(titleStyles)} component="div" grow={1}>
             <div>
@@ -105,7 +114,7 @@ class Item extends Component {
   }
 
   /**
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
   render() {
     const {

@@ -28,6 +28,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       interval={3000}
       loop={true}
       maxIndicators={null}
+      onBreakpoint={null}
       onSlideChange={null}
       paginationType={null}
     >

@@ -162,6 +162,7 @@ class InfiniteContainer extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     return (
       !isEqual(this.props.containerRef, nextProps.containerRef) ||
+      !isEqual(this.props.columns, nextProps.columns) ||
       !isEqual(this.props.items, nextProps.items) ||
       !isEqual(this.state, nextState)
     );

@@ -1,6 +1,7 @@
 // Ugly imports to avoid breaking tests due to circular dependencies
 import { isIOSTheme } from '@shopgate/engage/core/helpers/isIOSTheme';
 import { hasWebBridge } from '@shopgate/engage/core/helpers/bridge';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 
 const iosThemeActive = isIOSTheme();
 
@@ -38,7 +39,7 @@ export const parser = (comparators, breakpoint, {
 
   // Web / App config.
   // Handle iOS theme as app for now so that media queries in shared components only work for app
-  const isWeb = hasWebBridge() && !iosThemeActive;
+  const isWeb = hasWebBridge() && !iosThemeActive && !IS_PAGE_PREVIEW_ACTIVE;
 
   // Always mode.
   if ((webAlways && isWeb) || (appAlways && !isWeb)) {

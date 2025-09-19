@@ -11,6 +11,7 @@ import client from '@shopgate/pwa-common/reducers/client';
 import url from '@shopgate/pwa-common/reducers/url';
 import user from '@shopgate/pwa-common/reducers/user';
 import page from '@shopgate/pwa-common/reducers/page';
+import { pageV2 } from '@shopgate/engage/page/reducers';
 import router from '@shopgate/pwa-common/reducers/router';
 import menu from '@shopgate/pwa-common/reducers/menu';
 import modal from '@shopgate/pwa-common/reducers/modal';
@@ -36,6 +37,7 @@ persistedReducers.set([
   'cart.data',
   'client.info',
   'page',
+  'pageV2',
   'locations.storage',
   'locations.userFormInput',
   'locations.userSearch',
@@ -74,6 +76,7 @@ const reducers = combineReducers({
   menu,
   modal,
   page,
+  pageV2,
   product,
   locations,
   orders,

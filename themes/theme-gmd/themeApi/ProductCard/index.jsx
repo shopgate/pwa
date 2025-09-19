@@ -7,7 +7,12 @@ import connect from './connector';
 import { itemClass, shadowStyle } from './style';
 
 /**
+ * ProductCard component for theme-gmd.
  * @param {Object} props The component props.
+ * @param {Object} props.product The product object.
+ * @param {Function} props.render The render function for the card content.
+ * @param {boolean} props.shadow Whether to show a shadow.
+ * @param {Object} props.style Custom style for the card.
  * @returns {JSX.Element}
  */
 function ProductCard({
@@ -15,6 +20,7 @@ function ProductCard({
   render,
   shadow,
   style,
+  ...props
 }) {
   if (!product) {
     return null;
@@ -35,6 +41,7 @@ function ProductCard({
       {render({
         product,
         url,
+        ...props,
       })}
     </section>
   );

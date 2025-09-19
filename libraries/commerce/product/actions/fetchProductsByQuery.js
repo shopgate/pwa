@@ -17,6 +17,7 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
    */
   const {
     useDefaultRequestForProductIds = false,
+    productIdType = undefined,
     ...sanitizedOptions
   } = options;
 
@@ -27,11 +28,10 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
         ...sanitizedOptions,
       };
 
-      dispatch(fetchHighlightProducts({
+      return dispatch(fetchHighlightProducts({
         params,
         ...id && { id },
       }));
-      break;
     }
 
     // Search phrase
@@ -65,6 +65,7 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
       if (useDefaultRequestForProductIds) {
         const params = {
           productIds: value,
+          productIdType,
           ...sanitizedOptions,
         };
 
@@ -72,16 +73,15 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
         delete params.limit;
         delete params.offset;
 
-        dispatch(fetchProducts({
+        return dispatch(fetchProducts({
           params,
           ...id && { id },
           includeFilters: false,
+          includeSort: false,
         }));
-      } else {
-        dispatch(fetchProductsById(value, id));
       }
 
-      break;
+      return dispatch(fetchProductsById(value, id));
     }
 
     // Category

@@ -9,9 +9,10 @@ const { variables } = themeConfig;
 
 /**
  * The custom HTML widget.
+ * @param {Object} props The widget props.
  * @param {Object} props.settings The widget settings.
  * @param {Function} props.navigate The navigate action.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const Html = ({ settings, navigate }) => {
   const { html } = settings;

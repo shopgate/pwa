@@ -26,8 +26,10 @@ const WidgetGrid = ({ children }) => <div className="widget-grid">{children}</di
 /* eslint-enable react/prop-types */
 
 const components = {
-  '@shopgate/commerce-widgets/image': Image,
-  '@shopgate/commerce-widgets/widget-grid': WidgetGrid,
+  v1: {
+    '@shopgate/commerce-widgets/image': Image,
+    '@shopgate/commerce-widgets/widget-grid': WidgetGrid,
+  },
 };
 
 /**

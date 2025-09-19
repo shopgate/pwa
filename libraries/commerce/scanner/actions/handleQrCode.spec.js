@@ -2,7 +2,7 @@
 import { SCANNER_SCOPE_DEFAULT } from '@shopgate/pwa-core/constants/Scanner';
 import { historyReplace, historyPop, historyPush } from '@shopgate/engage/core/actions';
 import { fetchPageConfig } from '@shopgate/engage/page/actions';
-import { getPageConfigById } from '@shopgate/engage/page/selectors';
+import { makeGetUnifiedCMSPageData } from '@shopgate/engage/page/selectors';
 import { fetchProductsById } from '@shopgate/engage/product';
 import { getProductById } from '@shopgate/engage/product/selectors/product';
 import { fetchCategory } from '@shopgate/engage/category/actions';
@@ -30,7 +30,7 @@ jest.mock('@shopgate/engage/page/actions', () => ({
   fetchPageConfig: jest.fn().mockResolvedValue(null),
 }));
 jest.mock('@shopgate/engage/page/selectors', () => ({
-  getPageConfigById: jest.fn(),
+  makeGetUnifiedCMSPageData: jest.fn(() => () => null),
 }));
 
 jest.mock('@shopgate/engage/product', () => ({
@@ -225,14 +225,14 @@ describe('handleQrCode', () => {
     });
 
     it('should trigger "no result" handling when no page not found', async () => {
-      getPageConfigById.mockReturnValue(null);
+      makeGetUnifiedCMSPageData.mockReturnValue(() => null);
       const event = { scope, format, payload };
       await handleQrCode(event)(dispatch, getState);
       expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
 
     it('should navigate to CMS when page exists', async () => {
-      getPageConfigById.mockReturnValue(true);
+      makeGetUnifiedCMSPageData.mockReturnValue(() => true);
       await handleQrCode({ scope, format, payload })(dispatch, getState);
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: '/page/SG3',

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ItemImage /> should render 1`] = `
+<Component
+  portalName="product-item.image"
+  portalProps={
+    Object {
+      "productId": "1234",
+    }
+  }
+>
+  <Connect(WithWidgetSettings(ProductImage))
+    alt="FooBar"
+    itemProp="image"
+    resolutions={
+      Array [
+        Object {
+          "height": 440,
+          "width": 440,
+        },
+      ]
+    }
+    src="http://www.google.com"
+  />
+</Component>
+`;

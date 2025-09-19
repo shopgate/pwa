@@ -23,6 +23,7 @@ import engageCheckout from '@shopgate/engage/checkout/subscriptions';
 import engageRegistration from '@shopgate/engage/registration/subscriptions';
 import engageTracking from '@shopgate/engage/tracking/subscriptions';
 import development from '@shopgate/engage/development/subscriptions';
+import engagePage from '@shopgate/engage/page/subscriptions';
 // PWA Tracking
 import trackingSetup from '@shopgate/pwa-tracking/subscriptions/setup';
 import trackingPages from '@shopgate/pwa-tracking/subscriptions/pages';
@@ -94,6 +95,7 @@ const subscriptions = [
   engageRegistration,
   engageBackInStock,
   engageTracking,
+  engagePage,
   development,
   // App rating subscribers
   appRating,
