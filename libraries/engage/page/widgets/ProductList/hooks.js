@@ -42,7 +42,7 @@ export const useProductListWidget = () => {
     showName = false,
     showPrice = false,
     showRating = false,
-    showHeadline,
+    showHeadline = false,
     headline,
   } = config;
 

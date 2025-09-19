@@ -47,7 +47,7 @@ export const useProductSliderWidget = () => {
     slideAutomatic = true,
     endlessSlider = true,
     sliderSpeed = 7000,
-    showHeadline,
+    showHeadline = false,
     headline,
   } = config;
 

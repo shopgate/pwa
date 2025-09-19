@@ -33,7 +33,7 @@ export const useCategoryListWidget = () => {
     category,
     sort,
     showImages,
-    showHeadline,
+    showHeadline = false,
     headline,
   } = config;
 

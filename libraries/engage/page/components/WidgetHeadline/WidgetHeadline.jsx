@@ -22,7 +22,7 @@ const WidgetHeadline = ({ headline }) => {
   const { classes, cx } = useStyles();
 
   const {
-    typography,
+    typography = 'h3',
     text,
     textAlign,
     bold,
