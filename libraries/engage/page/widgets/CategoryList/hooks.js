@@ -11,6 +11,8 @@ import { getCategoriesById } from './selectors';
  * @property {string} category The parent category ID to display categories for.
  * @property {string} [sort] The sort order for categories
  * @property {boolean} [showImages] Whether to display images for categories.
+ * @property {boolean} [showHeadline] Whether to show the headline.
+ * @property {Object} [headline] The headline to be displayed.
  */
 
 /**
@@ -31,6 +33,8 @@ export const useCategoryListWidget = () => {
     category,
     sort,
     showImages,
+    showHeadline = false,
+    headline,
   } = config;
 
   const sortCC = useMemo(() => camelCase(sort), [sort]);
@@ -65,5 +69,7 @@ export const useCategoryListWidget = () => {
     parentCategory,
     showImages,
     categories: sortedCategories,
+    showHeadline,
+    headline,
   };
 };
