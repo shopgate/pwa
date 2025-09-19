@@ -39,7 +39,7 @@ const ProductSliderWidget = () => {
 
   return (
     <>
-      {(showHeadline && headline) ? (
+      {(showHeadline && headline && productIds.length) ? (
         <WidgetHeadline headline={headline} />
       ) : null}
       <ProductSlider

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Typography } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
@@ -7,9 +7,6 @@ const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(2),
   },
-  bold: { fontWeight: 'bold' },
-  italic: { fontStyle: 'italic' },
-  underline: { textDecoration: 'underline' },
 }));
 
 /**
@@ -18,8 +15,8 @@ const useStyles = makeStyles()(theme => ({
  * @param {Object} props.headline The headline props.
  * @returns {JSX.Element}
  */
-const WidgetHeadline = ({ headline }) => {
-  const { classes, cx } = useStyles();
+const WidgetHeadline = ({ headline, className }) => {
+  const { classes, cx, css } = useStyles();
 
   const {
     typography = 'h3',
@@ -30,17 +27,20 @@ const WidgetHeadline = ({ headline }) => {
     underline,
   } = headline;
 
+  const styles = useMemo(() => ({
+    ...(bold && { fontWeight: 'bold' }),
+    ...(italic && { fontStyle: 'italic' }),
+    ...(underline && { textDecoration: 'underline' }),
+  }), [bold, italic, underline]);
+
   if (!text) return null;
 
   return (
     <Typography
       variant={typography}
       align={textAlign}
-      className={cx(classes.root, {
-        [classes.bold]: bold,
-        [classes.italic]: italic,
-        [classes.underline]: underline,
-      })}
+      // && increases the specificity of the styles which guarantees that defaults are overridden
+      className={cx(css({ '&&': { ...styles } }), classes.root, className)}
     >
       {text}
     </Typography>
@@ -49,6 +49,11 @@ const WidgetHeadline = ({ headline }) => {
 
 WidgetHeadline.propTypes = {
   headline: PropTypes.shape().isRequired,
+  className: PropTypes.string,
+};
+
+WidgetHeadline.defaultProps = {
+  className: null,
 };
 
 export default WidgetHeadline;

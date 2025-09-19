@@ -47,7 +47,7 @@ const ProductListWidget = () => {
 
   return (
     <div className={classes.root}>
-      {(showHeadline && headline) ? (
+      {(showHeadline && headline && results.length) ? (
         <WidgetHeadline headline={headline} />
       ) : null}
       <ProductGrid
