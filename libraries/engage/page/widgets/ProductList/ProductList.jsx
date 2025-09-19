@@ -4,6 +4,7 @@ import { ProductGrid } from '@shopgate/engage/product/components';
 import { useWidgetProducts } from '@shopgate/engage/page/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useProductListWidget } from './hooks';
+import WidgetHeadline from '../../components/WidgetHeadline';
 
 const useStyles = makeStyles()({
   root: {
@@ -31,6 +32,8 @@ const ProductListWidget = () => {
     productCount,
     showLoadMore,
     flags,
+    showHeadline,
+    headline,
   } = useProductListWidget();
 
   const {
@@ -44,6 +47,9 @@ const ProductListWidget = () => {
 
   return (
     <div className={classes.root}>
+      {(showHeadline && headline) ? (
+        <WidgetHeadline headline={headline} />
+      ) : null}
       <ProductGrid
         products={results}
         flags={flags}

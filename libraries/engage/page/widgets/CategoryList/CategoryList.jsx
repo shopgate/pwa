@@ -1,6 +1,7 @@
 import React from 'react';
 import { CategoryList } from '@shopgate/engage/category/components';
 import { useCategoryListWidget } from './hooks';
+import WidgetHeadline from '../../components/WidgetHeadline';
 
 /**
  * The CategoryListWidget is used to display category lists.
@@ -11,6 +12,8 @@ const CategoryListWidget = () => {
     parentCategory,
     categories,
     showImages,
+    showHeadline,
+    headline,
   } = useCategoryListWidget();
 
   if (!categories) {
@@ -18,11 +21,16 @@ const CategoryListWidget = () => {
   }
 
   return (
-    <CategoryList
-      categories={categories}
-      parentCategory={parentCategory}
-      showLeftSideImages={showImages}
-    />
+    <>
+      {(showHeadline && headline) ? (
+        <WidgetHeadline headline={headline} />
+      ) : null}
+      <CategoryList
+        categories={categories}
+        parentCategory={parentCategory}
+        showLeftSideImages={showImages}
+      />
+    </>
   );
 };
 
