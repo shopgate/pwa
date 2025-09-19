@@ -21,7 +21,7 @@ import { getProductSearchParamsFromProductsInputConfig } from '@shopgate/engage/
  * @property {number} [sliderSpeed] The speed (in ms) for the slider autoplay.
  * @property {boolean} [isPreview] Whether the widget is in preview mode.
  * @property {boolean} [showHeadline] Whether to show the headline.
- * @property {string} [headline] The headline to be displayed.
+ * @property {Object} [headline] The headline to be displayed.
  */
 
 /**
@@ -47,8 +47,8 @@ export const useProductSliderWidget = () => {
     slideAutomatic = true,
     endlessSlider = true,
     sliderSpeed = 7000,
-    showHeadline = false,
-    headline = '',
+    showHeadline,
+    headline,
   } = config;
 
   const productSearchParams = useMemo(

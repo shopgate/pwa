@@ -20,7 +20,6 @@ const useStyles = makeStyles()(theme => ({
  */
 const WidgetHeadline = ({ headline }) => {
   const { classes, cx } = useStyles();
-  if (!headline) return null;
 
   const {
     typography,
@@ -31,18 +30,17 @@ const WidgetHeadline = ({ headline }) => {
     underline,
   } = headline;
 
-  if (!headline) return null;
+  if (!text) return null;
 
   return (
     <Typography
       variant={typography}
       align={textAlign}
-      className={cx(
-        bold && classes.bold,
-        italic && classes.italic,
-        underline && classes.underline,
-        classes.root
-      )}
+      className={cx(classes.root, {
+        [classes.bold]: bold,
+        [classes.italic]: italic,
+        [classes.underline]: underline,
+      })}
     >
       {text}
     </Typography>

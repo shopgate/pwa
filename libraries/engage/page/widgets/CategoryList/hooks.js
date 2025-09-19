@@ -12,7 +12,7 @@ import { getCategoriesById } from './selectors';
  * @property {string} [sort] The sort order for categories
  * @property {boolean} [showImages] Whether to display images for categories.
  * @property {boolean} [showHeadline] Whether to show the headline.
- * @property {string} [headline] The headline to be displayed.
+ * @property {Object} [headline] The headline to be displayed.
  */
 
 /**
@@ -33,8 +33,8 @@ export const useCategoryListWidget = () => {
     category,
     sort,
     showImages,
-    showHeadline = false,
-    headline = '',
+    showHeadline,
+    headline,
   } = config;
 
   const sortCC = useMemo(() => camelCase(sort), [sort]);

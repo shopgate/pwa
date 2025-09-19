@@ -18,7 +18,7 @@ import { getProductSearchParamsFromProductsInputConfig } from '@shopgate/engage/
  * @property {boolean} showPrice Whether to display product prices
  * @property {boolean} showRating Whether to display product ratings
  * @property {boolean} [showHeadline] Whether to show the headline.
- * @property {string} [headline] The headline to be displayed.
+ * @property {Object} [headline] The headline to be displayed.
  */
 
 /**
@@ -42,8 +42,8 @@ export const useProductListWidget = () => {
     showName = false,
     showPrice = false,
     showRating = false,
-    showHeadline = false,
-    headline = '',
+    showHeadline,
+    headline,
   } = config;
 
   const productSearchParams = useMemo(
