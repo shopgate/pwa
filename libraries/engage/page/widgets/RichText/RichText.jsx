@@ -3,14 +3,16 @@ import { HtmlSanitizer } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useRichTextWidget } from './hooks';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
+  root: {
+    padding: theme.spacing(1),
+  },
   html: {
     '& > p:first-child': {
       marginTop: 0,
     },
     '& p': {
-      marginTop: 17,
-      marginBottom: 17,
+      margin: '0px 0px 1rem 0px',
     },
     'ul, ol': {
       paddingLeft: '40px',
@@ -20,6 +22,30 @@ const useStyles = makeStyles()(() => ({
     },
     'ol li': {
       listStyleType: 'decimal',
+    },
+    h1: {
+      ...theme.typography.h1,
+      margin: '0px 0px 1rem 0px',
+    },
+    h2: {
+      ...theme.typography.h2,
+      margin: '0px 0px 1rem 0px',
+    },
+    h3: {
+      ...theme.typography.h3,
+      margin: '0px 0px 1rem 0px',
+    },
+    h4: {
+      ...theme.typography.h4,
+      margin: '0px 0px 1rem 0px',
+    },
+    h5: {
+      ...theme.typography.h5,
+      margin: '0px 0px 1rem 0px',
+    },
+    h6: {
+      ...theme.typography.h6,
+      margin: '0px 0px 1rem 0px',
     },
   },
 }));
@@ -34,13 +60,15 @@ const RichText = () => {
   if (!richText) return null;
 
   return (
-    <HtmlSanitizer
-      processStyles
-      settings={{ html: richText }}
-      className={cx(classes.html)}
-    >
-      {richText}
-    </HtmlSanitizer>
+    <div className={cx(classes.root)}>
+      <HtmlSanitizer
+        processStyles
+        settings={{ html: richText }}
+        className={cx(classes.html)}
+      >
+        {richText}
+      </HtmlSanitizer>
+    </div>
   );
 };
 export default RichText;
