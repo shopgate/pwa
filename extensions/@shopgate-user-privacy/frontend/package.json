@@ -7,14 +7,14 @@
     "url": "https://github.com/shopgate/ext-user-privacy"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "7.28.0",
-    "@shopgate/pwa-common-commerce": "7.28.0",
-    "@shopgate/pwa-core": "7.28.0",
-    "@shopgate/pwa-ui-shared": "7.28.0",
+    "@shopgate/pwa-common": "7.29.0-alpha.8",
+    "@shopgate/pwa-common-commerce": "7.29.0-alpha.8",
+    "@shopgate/pwa-core": "7.29.0-alpha.8",
+    "@shopgate/pwa-ui-shared": "7.29.0-alpha.8",
     "prop-types": "~15.8.1",
     "react": "~16.14.0",
     "react-redux": "^8.1.3",
     "redux": "^4.2.1"
   },
-  "version": "7.28.0"
+  "version": "7.29.0-alpha.8"
 }
