@@ -26,6 +26,9 @@
   "@shopgate/widgets/richTextWidget": {
     "path": "@shopgate/engage/page/widgets/RichText"
   },
+  "@shopgate/widgets/heroBannerWidget": {
+    "path": "@shopgate/engage/page/widgets/HeroBanner"
+  },
   "@shopgate/widgetsInternal/Placeholder": {
     "path": "@shopgate/engage/page/widgets/Placeholder"
   }
