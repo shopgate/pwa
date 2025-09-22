@@ -56,6 +56,7 @@ const useStyles = makeStyles()(theme => ({
 /**
  * @param {Object} props The component props.
  * @param {string} props.content The rich text content.
+ * @param {string} [props.className] An optional class name.
  * @returns {JSX.Element}
  */
 const WidgetRichText = ({
