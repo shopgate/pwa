@@ -1,7 +1,7 @@
 import React from 'react';
-import { HtmlSanitizer } from '@shopgate/engage/components';
+import { ConditionalWrapper, Link } from '@shopgate/engage/components';
+import { WidgetRichText, ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { useHeroBannerWidget } from './hooks';
 
 const useStyles = makeStyles()(theme => ({
@@ -16,26 +16,13 @@ const useStyles = makeStyles()(theme => ({
       minHeight: 400,
     },
   },
-  html: {
+  link: {
+    width: '100%',
+  },
+  richText: {
     position: 'relative',
     zIndex: 2,
-    padding: 16,
-    '& > p:first-child': {
-      marginTop: 0,
-    },
-    '& p': {
-      marginTop: 17,
-      marginBottom: 17,
-    },
-    'ul, ol': {
-      paddingLeft: '40px',
-    },
-    'ul li': {
-      listStyleType: 'disc',
-    },
-    'ol li': {
-      listStyleType: 'decimal',
-    },
+    padding: theme.spacing(2),
   },
   image: {
     position: 'absolute',
@@ -53,27 +40,33 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const HeroBanner = () => {
-  const { text, backgroundImage } = useHeroBannerWidget();
+  const { text, backgroundImage, link } = useHeroBannerWidget();
 
   const { cx, classes } = useStyles();
 
   if (!text) return null;
 
   return (
-    <div className={cx(classes.root)}>
-      <HtmlSanitizer
-        processStyles
-        settings={{ html: text }}
-        className={cx(classes.html)}
-      >
-        {text}
-      </HtmlSanitizer>
-      <ResponsiveWidgetImage
-        src={backgroundImage?.url}
-        alt={backgroundImage?.alt}
-        className={cx(classes.image)}
-      />
-    </div>
+    <ConditionalWrapper
+      condition={!!link}
+      wrapper={children => (
+        <Link href={link} className={cx(classes.link)}>
+          {children}
+        </Link>
+      )}
+    >
+      <div className={cx(classes.root)}>
+        <WidgetRichText
+          content={text}
+          className={cx(classes.richText)}
+        />
+        <ResponsiveWidgetImage
+          src={backgroundImage?.url}
+          alt={backgroundImage?.alt}
+          className={cx(classes.image)}
+        />
+      </div>
+    </ConditionalWrapper>
   );
 };
 

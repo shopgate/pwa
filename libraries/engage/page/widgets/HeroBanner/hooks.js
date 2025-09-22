@@ -6,6 +6,7 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  * @property {Object} backgroundImage Banner background image
  * @property {string} backgroundImage.url Banner background image URL
  * @property {string} backgroundImage.alt Banner background image alt text
+ * @property {string} link Optional banner link
  */
 
 /**
@@ -20,8 +21,5 @@ import { useWidget } from '@shopgate/engage/page/hooks';
 export const useHeroBannerWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
-  return {
-    text: config?.text || config?.Text || '',
-    backgroundImage: config?.backgroundImage,
-  };
+  return config;
 };
