@@ -4,6 +4,9 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { useRichTextWidget } from './hooks';
 
 const useStyles = makeStyles()(theme => ({
+  root: {
+    padding: theme.spacing(1),
+  },
   html: {
     '& > p:first-child': {
       marginTop: 0,
@@ -57,13 +60,15 @@ const RichText = () => {
   if (!richText) return null;
 
   return (
-    <HtmlSanitizer
-      processStyles
-      settings={{ html: richText }}
-      className={cx(classes.html)}
-    >
-      {richText}
-    </HtmlSanitizer>
+    <div className={cx(classes.root)}>
+      <HtmlSanitizer
+        processStyles
+        settings={{ html: richText }}
+        className={cx(classes.html)}
+      >
+        {richText}
+      </HtmlSanitizer>
+    </div>
   );
 };
 export default RichText;
