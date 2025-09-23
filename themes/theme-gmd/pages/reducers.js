@@ -5,7 +5,7 @@ import {
   RESET_APP_REDUCERS,
   hasWebBridge,
 } from '@shopgate/engage/core';
-import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import backInStock from '@shopgate/engage/back-in-stock/reducers';
 import checkout from '@shopgate/engage/checkout/reducers';
 import client from '@shopgate/pwa-common/reducers/client';
@@ -39,7 +39,7 @@ persistedReducers.set([
   'client.info',
   'page',
   // Preview page data should not persist
-  ...PAGE_PREVIEW_PATTERN ? [] : ['pageV2'],
+  ...IS_PAGE_PREVIEW_ACTIVE ? [] : ['pageV2'],
   'locations.storage',
   'locations.userFormInput',
   'locations.userSearch',
