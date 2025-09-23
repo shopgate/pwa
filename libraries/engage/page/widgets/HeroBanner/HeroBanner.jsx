@@ -44,8 +44,6 @@ const HeroBanner = () => {
 
   const { cx, classes } = useStyles();
 
-  if (!text) return null;
-
   return (
     <ConditionalWrapper
       condition={!!link}
