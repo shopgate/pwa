@@ -5,7 +5,10 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { useHeroBannerWidget } from './hooks';
 
 const useStyles = makeStyles()(theme => ({
-  root: {
+  link: {
+    width: '100%',
+  },
+  content: {
     width: '100%',
     position: 'relative',
     display: 'flex',
@@ -15,9 +18,6 @@ const useStyles = makeStyles()(theme => ({
     [theme.breakpoints.up('md')]: {
       minHeight: 400,
     },
-  },
-  link: {
-    width: '100%',
   },
   richText: {
     position: 'relative',
@@ -53,7 +53,7 @@ const HeroBanner = () => {
         </Link>
       )}
     >
-      <div className={cx(classes.root)}>
+      <div className={cx(classes.content)}>
         <WidgetRichText
           content={text}
           className={cx(classes.richText)}
