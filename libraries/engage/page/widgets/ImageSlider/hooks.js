@@ -28,6 +28,7 @@ import { useTheme } from '@shopgate/engage/styles';
  * @property {number} slidesPerViewCustomSmall Slides per view for small screens.
  * @property {number} slidesPerViewCustomMedium Slides per view for medium screens.
  * @property {number} slidesPerViewCustomLarge Slides per view for large screens.
+ * @property {number} imageSpacing Optional gap between image slides (in pixels).
  */
 
 /**
@@ -53,6 +54,7 @@ export const useImageSliderWidget = () => {
     slidesPerViewCustomSmall,
     slidesPerViewCustomMedium,
     slidesPerViewCustomLarge,
+    imageSpacing,
   } = config;
 
   /**
@@ -87,6 +89,7 @@ export const useImageSliderWidget = () => {
       loop: endlessSlider,
       slidesPerView: slidesPerViewSmall,
       breakpoints,
+      spaceBetween: imageSpacing,
       ...isPreview ? {
         // Improves interaction with the slider in the CMS preview iframe
         touchStartPreventDefault: true,
@@ -94,6 +97,7 @@ export const useImageSliderWidget = () => {
         // This fixes issues with the Swiper when breakpoint settings change during runtime.
         key: JSON.stringify({
           slidesPerView,
+          spaceBetween: imageSpacing,
           ...breakpoints,
         }),
       } : {},
@@ -108,6 +112,7 @@ export const useImageSliderWidget = () => {
     slidesPerViewCustomMedium,
     slidesPerViewCustomLarge,
     slidesPerViewCustomSmall,
+    imageSpacing,
   ]);
 
   return {
