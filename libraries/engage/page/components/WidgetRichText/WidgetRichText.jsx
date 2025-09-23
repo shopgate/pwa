@@ -5,6 +5,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   root: {
+    width: '100%',
     '& > :first-child': {
       marginTop: 0,
     },

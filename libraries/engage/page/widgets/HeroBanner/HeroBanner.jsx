@@ -13,7 +13,6 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
     minHeight: 300,
     [theme.breakpoints.up('md')]: {
       minHeight: 400,
