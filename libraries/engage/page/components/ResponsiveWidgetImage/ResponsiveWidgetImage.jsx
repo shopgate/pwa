@@ -25,6 +25,10 @@ const ResponsiveWidgetImage = ({
 
   const src2x = useMemo(() => parseImageUrl(src, true), [src]);
 
+  if (!src) {
+    return null;
+  }
+
   return (
     <picture>
       <source media={`(width >= ${breakpoints.values[breakpoint]}px)`} srcSet={src2x} />
