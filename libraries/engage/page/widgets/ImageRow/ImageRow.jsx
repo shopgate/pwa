@@ -1,16 +1,17 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Link, ConditionalWrapper, Grid } from '@shopgate/engage/components';
-import { useImageWidget } from './hooks';
+import { useImageRowWidget } from './hooks';
 import ResponsiveWidgetImage from '../../components/ResponsiveWidgetImage';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()((theme, { imageSpacing }) => ({
   imageContainer: {
     width: '100%',
     display: 'flex',
     overflowX: 'hidden',
     alignItems: 'flex-start',
     flexWrap: 'wrap',
+    gap: `${imageSpacing}px`,
   },
   image: {
     maxWidth: '100%',
@@ -22,18 +23,18 @@ const useStyles = makeStyles()(theme => ({
   },
   itemContainerDense: {
     [theme.breakpoints.down('md')]: {
-      flex: '1 1 33%',
+      flex: `1 1 calc(33% - ${imageSpacing}px)`,
     },
     [theme.breakpoints.up('md')]: {
-      flex: '1 1 16%',
+      flex: `1 1 calc(16% - ${imageSpacing}px)`,
     },
   },
   itemContainerDefault: {
     [theme.breakpoints.down('md')]: {
-      flex: '1 1 50%',
+      flex: `1 1 calc(50% - ${imageSpacing}px)`,
     },
     [theme.breakpoints.up('md')]: {
-      flex: '1 1 25%',
+      flex: `1 1 calc(25% - ${imageSpacing}px)`,
     },
   },
   itemContainerNoWrap: {
@@ -46,11 +47,11 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const ImageRow = () => {
-  const { cx, classes } = useStyles();
-
   const {
-    images, imageWrapping,
-  } = useImageWidget();
+    images, imageWrapping, imageSpacing,
+  } = useImageRowWidget();
+
+  const { cx, classes } = useStyles({ imageSpacing });
 
   if (images.length === 0) return null;
 
