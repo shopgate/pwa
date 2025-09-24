@@ -88,28 +88,35 @@ export const useImageSliderWidget = () => {
       },
     };
 
+    const showPagination = images.length > 1;
+    // Create a key that changes when relevant config changes, to force remount of Swiper
+    const componentKey = JSON.stringify({
+      slidesPerView,
+      spaceBetween: imageSpacing,
+      paginationType,
+      showPagination,
+      ...breakpoints,
+    });
+
     return {
       autoplay: slideAutomatic ? { delay: sliderSpeed } : false,
       loop: endlessSlider,
       slidesPerView: slidesPerViewSmall,
       breakpoints,
       spaceBetween: imageSpacing,
-      paginationType,
+      key: componentKey,
+      pagination: showPagination ? {
+        type: paginationType,
+        clickable: true,
+        dynamicBullets: true,
+      } : false,
       ...isPreview ? {
         // Improves interaction with the slider in the CMS preview iframe
         touchStartPreventDefault: true,
-        // Create a component key from breakpoint settings to force remount on breakpoint change.
-        // This fixes issues with the Swiper when breakpoint settings change during runtime.
-        key: JSON.stringify({
-          slidesPerView,
-          spaceBetween: imageSpacing,
-          paginationType,
-          ...breakpoints,
-        }),
       } : {},
     };
   },
-  [slidesPerView, theme.breakpoints.values.sm, theme.breakpoints.values.md,
+  [slidesPerView, theme.breakpoints.values.sm, theme.breakpoints.values.md, images,
     slideAutomatic, sliderSpeed, endlessSlider, imageSpacing, paginationType,
     isPreview, slidesPerViewCustomSmall, slidesPerViewCustomMedium,
     slidesPerViewCustomLarge]);
