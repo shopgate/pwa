@@ -25,7 +25,7 @@ const WidgetHeadline = ({ headline, className }) => {
     bold,
     italic,
     underline,
-  } = headline;
+  } = headline || {};
 
   const styles = useMemo(() => ({
     ...(bold && { fontWeight: 'bold' }),
