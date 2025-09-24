@@ -27,7 +27,7 @@ export const useImageRowWidget = () => {
   const {
     images = [],
     imageWrapping,
-    imageSpacing,
+    imageSpacing = 0,
   } = config || {};
 
   const mappedImages = useMemo(() => images.map(({ image, link }) => {
