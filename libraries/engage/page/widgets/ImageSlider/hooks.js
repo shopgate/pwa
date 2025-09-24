@@ -55,7 +55,11 @@ export const useImageSliderWidget = () => {
     slidesPerViewCustomMedium,
     slidesPerViewCustomLarge,
     imageSpacing,
+    paginationStyle = 'bullets',
   } = config;
+
+  const paginationType = useMemo(() => (paginationStyle === 'default' ? 'bullets' : paginationStyle.toLowerCase()),
+    [paginationStyle]);
 
   /**
    * @type {SwiperCmpProps}
@@ -90,6 +94,7 @@ export const useImageSliderWidget = () => {
       slidesPerView: slidesPerViewSmall,
       breakpoints,
       spaceBetween: imageSpacing,
+      paginationType,
       ...isPreview ? {
         // Improves interaction with the slider in the CMS preview iframe
         touchStartPreventDefault: true,
@@ -98,22 +103,16 @@ export const useImageSliderWidget = () => {
         key: JSON.stringify({
           slidesPerView,
           spaceBetween: imageSpacing,
+          paginationType,
           ...breakpoints,
         }),
       } : {},
     };
-  }, [
-    isPreview,
-    slidesPerView,
-    slideAutomatic,
-    sliderSpeed,
-    endlessSlider,
-    theme.breakpoints.values,
-    slidesPerViewCustomMedium,
-    slidesPerViewCustomLarge,
-    slidesPerViewCustomSmall,
-    imageSpacing,
-  ]);
+  },
+  [slidesPerView, theme.breakpoints.values.sm, theme.breakpoints.values.md,
+    slideAutomatic, sliderSpeed, endlessSlider, imageSpacing, paginationType,
+    isPreview, slidesPerViewCustomSmall, slidesPerViewCustomMedium,
+    slidesPerViewCustomLarge]);
 
   return {
     slides: images.filter(img => img?.image?.url),
