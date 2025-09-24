@@ -1,12 +1,22 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@shopgate/engage/styles';
+import { useTheme, makeStyles } from '@shopgate/engage/styles';
 import { parseImageUrl } from '../../helpers';
 
 /** @typedef {import('@shopgate/engage/styles').Theme} Theme */
 /** @typedef {Theme['breakpoints']['keys'][0]} Breakpoint */
 /** @typedef {React.ImgHTMLAttributes<HTMLImageElement>} ImgProps */
 /** @typedef {{breakpoint: Breakpoint} & ImgProps} ResponsiveImageProps */
+
+const useStyles = makeStyles()({
+  preventSave: {
+    userSelect: 'none',
+    ' img': {
+      userSelect: 'none',
+      pointerEvents: 'none',
+    },
+  },
+});
 
 /**
  * The ResponsiveWidgetImage component renders an image that adapts to different screen sizes.
@@ -22,7 +32,7 @@ const ResponsiveWidgetImage = ({
   ...imgProps
 }) => {
   const { breakpoints } = useTheme();
-
+  const { classes } = useStyles();
   const src2x = useMemo(() => parseImageUrl(src, true), [src]);
 
   if (!src) {
@@ -30,7 +40,10 @@ const ResponsiveWidgetImage = ({
   }
 
   return (
-    <picture>
+    <picture
+      onContextMenu={e => e.preventDefault()}
+      className={classes.preventSave}
+    >
       <source media={`(width >= ${breakpoints.values[breakpoint]}px)`} srcSet={src2x} />
       <img
         src={src}

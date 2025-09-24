@@ -6,7 +6,6 @@ import { useImageSliderWidget } from './hooks';
 
 const useStyles = makeStyles()({
   image: {
-    touchAction: 'none',
     width: '100%',
   },
 });
