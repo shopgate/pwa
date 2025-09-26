@@ -91,15 +91,15 @@ export const useImageSliderWidget = () => {
       },
     };
 
-    const showPagination = paginationType !== 'off' || imagesWithUrls.length > 1;
+    const showPagination = paginationType !== 'off' && imagesWithUrls.length > 1;
     // Create a key that changes when relevant config changes, to force remount of Swiper
-    const componentKey = JSON.stringify({
+    const componentKey = isPreview ? JSON.stringify({
       slidesPerView,
       spaceBetween: imageSpacing,
       paginationType,
       showPagination,
       ...breakpoints,
-    });
+    }) : null;
 
     return {
       autoplay: slideAutomatic ? { delay: sliderSpeed } : false,
