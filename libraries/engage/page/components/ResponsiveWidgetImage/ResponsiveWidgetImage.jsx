@@ -56,12 +56,13 @@ const ResponsiveWidgetImage = ({
 };
 
 ResponsiveWidgetImage.propTypes = {
-  src: PropTypes.string.isRequired,
   alt: PropTypes.string,
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  src: PropTypes.string,
 };
 
 ResponsiveWidgetImage.defaultProps = {
+  src: null,
   alt: null,
   breakpoint: 'md',
 };
