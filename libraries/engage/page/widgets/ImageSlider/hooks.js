@@ -19,7 +19,7 @@ import { useTheme } from '@shopgate/engage/styles';
  */
 
 /**
- * @typedef {Object} ImageWidgetConfig
+ * @typedef {Object} ImageSliderWidgetConfig
  * @property {ImageSliderImage[]} images The image objects.
  * @property {boolean} slideAutomatic Whether the slider should automatically slide.
  * @property {boolean} endlessSlider Whether the slider should loop endlessly.
@@ -29,11 +29,13 @@ import { useTheme } from '@shopgate/engage/styles';
  * @property {number} slidesPerViewCustomMedium Slides per view for medium screens.
  * @property {number} slidesPerViewCustomLarge Slides per view for large screens.
  * @property {number} imageSpacing Optional gap between image slides (in pixels).
+ * @property {"default"|"off"|"bullets"|"progressbar"|"fraction"} paginationStyle
+ * the pagination type for the slider.
  */
 
 /**
  * @typedef {ReturnType< typeof import('@shopgate/engage/page/hooks')
- *   .useWidget<ImageWidgetConfig> >} UseWidgetReturnType
+ *   .useWidget<ImageSliderWidgetConfig> >} UseWidgetReturnType
  */
 
 // eslint-disable-next-line valid-jsdoc
@@ -60,6 +62,7 @@ export const useImageSliderWidget = () => {
 
   const paginationType = useMemo(() => (paginationStyle === 'default' ? 'bullets' : paginationStyle.toLowerCase()),
     [paginationStyle]);
+  const imagesWithUrls = useMemo(() => images.filter(img => img?.image?.url), [images]);
 
   /**
    * @type {SwiperCmpProps}
@@ -88,7 +91,7 @@ export const useImageSliderWidget = () => {
       },
     };
 
-    const showPagination = images.length > 1;
+    const showPagination = paginationType !== 'off' || imagesWithUrls.length > 1;
     // Create a key that changes when relevant config changes, to force remount of Swiper
     const componentKey = JSON.stringify({
       slidesPerView,
@@ -104,25 +107,25 @@ export const useImageSliderWidget = () => {
       slidesPerView: slidesPerViewSmall,
       breakpoints,
       spaceBetween: imageSpacing,
-      key: componentKey,
       pagination: showPagination ? {
         type: paginationType,
         clickable: true,
         dynamicBullets: true,
       } : false,
       ...isPreview ? {
+        key: componentKey,
         // Improves interaction with the slider in the CMS preview iframe
         touchStartPreventDefault: true,
       } : {},
     };
   },
-  [slidesPerView, theme.breakpoints.values.sm, theme.breakpoints.values.md, images,
-    slideAutomatic, sliderSpeed, endlessSlider, imageSpacing, paginationType,
-    isPreview, slidesPerViewCustomSmall, slidesPerViewCustomMedium,
+  [slidesPerView, theme.breakpoints.values.sm, theme.breakpoints.values.md,
+    paginationType, imagesWithUrls.length, imageSpacing, slideAutomatic, sliderSpeed,
+    endlessSlider, isPreview, slidesPerViewCustomSmall, slidesPerViewCustomMedium,
     slidesPerViewCustomLarge]);
 
   return {
-    slides: images.filter(img => img?.image?.url),
+    slides: imagesWithUrls,
     swiperProps,
   };
 };
