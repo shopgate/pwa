@@ -19,43 +19,38 @@
  */
 export const getProductSearchParamsFromProductsInputConfig = (products = {}) => {
   const {
-    productSelectorType,
-    productsBrand,
-    productsCategory,
-    productsItemNumbers,
-    productsManualItemNumbers,
-    productsSelectorItemNumbers,
-    productsSearchTerm,
+    type,
+    brand,
+    category,
+    manualItemNumbers,
+    selectorItemNumbers,
+    searchTerm,
   } = products || {};
 
-  let productsSearchType = productSelectorType;
+  let productsSearchType = type;
 
   /** @type {string|string[]} */
   let productsSearchValue = '';
 
-  switch (productSelectorType) {
+  switch (type) {
     case 'brand':
-      productsSearchValue = productsBrand;
+      productsSearchValue = brand;
       break;
     case 'category':
-      productsSearchValue = productsCategory;
-      break;
-    // Kept for backward compatibility - was replaces by 'manualItemNumbers' and 'productSelector'
-    case 'itemNumbers':
-      productsSearchValue = productsItemNumbers.split(',').map(item => item.trim());
+      productsSearchValue = category;
       break;
     case 'manualItemNumbers':
-      productsSearchValue = productsManualItemNumbers;
+      productsSearchValue = manualItemNumbers;
       break;
     case 'productSelector':
-      productsSearchValue = productsSelectorItemNumbers;
+      productsSearchValue = selectorItemNumbers;
       break;
     case 'searchTerm':
     default:
-      productsSearchValue = productsSearchTerm;
+      productsSearchValue = searchTerm;
   }
 
-  if (['itemNumbers', 'manualItemNumbers', 'productSelector'].includes(productSelectorType)) {
+  if (['manualItemNumbers', 'productSelector'].includes(type)) {
     productsSearchType = 'productIds';
   }
 
