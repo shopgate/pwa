@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme, makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useResponsiveValue } from '@shopgate/engage/styles';
 import { parseImageUrl } from '../../helpers';
 
 /** @typedef {import('@shopgate/engage/styles').Theme} Theme */
@@ -11,10 +11,7 @@ import { parseImageUrl } from '../../helpers';
 const useStyles = makeStyles()({
   preventSave: {
     userSelect: 'none',
-    ' img': {
-      userSelect: 'none',
-      pointerEvents: 'none',
-    },
+    pointerEvents: 'none',
   },
 });
 
@@ -29,35 +26,37 @@ const ResponsiveWidgetImage = ({
   src,
   alt,
   breakpoint,
+  className,
   ...imgProps
 }) => {
-  const { breakpoints } = useTheme();
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
+
   const src2x = useMemo(() => parseImageUrl(src, true), [src]);
+
+  const imgSrc = useResponsiveValue({
+    xs: src,
+    [breakpoint]: src2x,
+  });
 
   if (!src) {
     return null;
   }
 
   return (
-    <picture
-      onContextMenu={e => e.preventDefault()}
-      className={classes.preventSave}
-    >
-      <source media={`(width >= ${breakpoints.values[breakpoint]}px)`} srcSet={src2x} />
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        {...imgProps}
-      />
-    </picture>
+    <img
+      src={imgSrc}
+      alt={alt}
+      loading="lazy"
+      className={cx(classes.preventSave, className)}
+      {...imgProps}
+    />
   );
 };
 
 ResponsiveWidgetImage.propTypes = {
   alt: PropTypes.string,
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  className: PropTypes.string,
   src: PropTypes.string,
 };
 
@@ -65,6 +64,7 @@ ResponsiveWidgetImage.defaultProps = {
   src: null,
   alt: null,
   breakpoint: 'md',
+  className: null,
 };
 
 export default ResponsiveWidgetImage;
