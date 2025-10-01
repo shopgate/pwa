@@ -8,6 +8,7 @@ import {
 } from '@shopgate/engage/components';
 import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
 import { Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
+import { PageNotFound } from '@shopgate/engage/page';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import connect from './connector';
@@ -27,6 +28,7 @@ const PageContent = ({
   pageId = null,
   title = '',
   widgets = [],
+  error = false,
 }) => {
   let center = <Logo />;
 
@@ -46,7 +48,11 @@ const PageContent = ({
         portalProps={{ id: pageId }}
       >
         {!postponeRender && (
-        <Component widgets={widgets} />
+          isCmsV2Enabled && error ? (
+            <PageNotFound />
+          ) : (
+            <Component widgets={widgets} />
+          )
         )}
       </SurroundPortals>
     </>
@@ -55,6 +61,7 @@ const PageContent = ({
 
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
+  error: PropTypes.bool,
   isCmsV2Enabled: PropTypes.bool,
   postponeRender: PropTypes.bool,
   title: PropTypes.string,
@@ -66,6 +73,7 @@ PageContent.defaultProps = {
   postponeRender: false,
   title: '',
   widgets: [],
+  error: false,
 };
 
 export default connect(memo(PageContent));

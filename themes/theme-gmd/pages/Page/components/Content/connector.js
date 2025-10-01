@@ -38,13 +38,16 @@ const makeMapStateToProps = (_, { pageId }) => {
       postponeRender = false;
     }
 
-    const { cmsVersion, title, widgets } = getUnifiedCMSPageData(state) ?? {};
+    const {
+      cmsVersion, title, widgets, error,
+    } = getUnifiedCMSPageData(state) ?? {};
 
     return {
       postponeRender,
       isCmsV2Enabled: cmsVersion === 2,
       title,
       widgets,
+      error: Boolean(error),
     };
   };
 };

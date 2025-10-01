@@ -164,6 +164,7 @@ export const makeGetUnifiedCMSPageData = ({ slug }) => {
           title: pageV2?.data?.pageTitle || pageV2?.data?.name || '',
           widgets: pageV2?.data?.dropzones?.['cmsWidgetList'] ?? [],
           cmsVersion: 2,
+          error: pageV2?.error ?? false,
         };
       }
 
@@ -175,6 +176,7 @@ export const makeGetUnifiedCMSPageData = ({ slug }) => {
         title: pageV1?.title || '',
         widgets: pageV1?.widgets || [],
         cmsVersion: 1,
+        error: false,
       };
     }
   );

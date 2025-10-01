@@ -90,6 +90,7 @@ export function pageV2(state = defaultState, action) {
           data: null,
           isFetching: true,
           expires: 0,
+          error: false,
         };
         break;
       }
@@ -101,6 +102,7 @@ export function pageV2(state = defaultState, action) {
           data: transformCustomLegacyWidgets(data),
           isFetching: false,
           expires: Date.now() + PAGE_STATE_LIFETIME,
+          error: false,
         };
         break;
       }
@@ -111,6 +113,8 @@ export function pageV2(state = defaultState, action) {
         draft[pageType][pageSlug] = {
           data: null,
           isFetching: false,
+          expires: 0,
+          error: true,
         };
         break;
       }

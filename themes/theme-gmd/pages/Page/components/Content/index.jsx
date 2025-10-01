@@ -8,6 +8,7 @@ import {
 } from '@shopgate/engage/components';
 import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
 import { Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
+import { PageNotFound } from '@shopgate/engage/page';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import availableWidgets from 'Extensions/widgets';
@@ -32,6 +33,7 @@ function PageContent({
   title = '',
   widgets = [],
   isCookieConsentHandled,
+  error = false,
 }) {
   let center = <Logo key="center" />;
 
@@ -55,7 +57,11 @@ function PageContent({
       >
         <div key="widgetWrapper" className={styles.widgetWrapper}>
           {(!postponeRender) && (
-            <Component components={availableWidgets} widgets={widgets} />
+            isCmsV2Enabled && error ? (
+              <PageNotFound />
+            ) : (
+              <Component components={availableWidgets} widgets={widgets} />
+            )
           )}
         </div>
       </SurroundPortals>
@@ -65,6 +71,7 @@ function PageContent({
 
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
+  error: PropTypes.bool,
   isCmsV2Enabled: PropTypes.bool,
   isCookieConsentHandled: PropTypes.bool,
   postponeRender: PropTypes.bool,
@@ -78,6 +85,7 @@ PageContent.defaultProps = {
   title: '',
   widgets: [],
   isCookieConsentHandled: true,
+  error: false,
 };
 
 export default connect(PageContent);
