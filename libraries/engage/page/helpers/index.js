@@ -19,7 +19,6 @@
  */
 export const getProductSearchParamsFromProductsInputConfig = (products = {}) => {
   const {
-    type,
     brand,
     category,
     manualItemNumbers,
@@ -27,32 +26,20 @@ export const getProductSearchParamsFromProductsInputConfig = (products = {}) => 
     searchTerm,
   } = products || {};
 
-  let productsSearchType = type;
+  const mapping = [
+    ['brand', brand],
+    ['category', category],
+    ['searchTerm', searchTerm],
+    ['productIds', manualItemNumbers],
+    ['productIds', selectorItemNumbers],
+  ];
 
-  /** @type {string|string[]} */
-  let productsSearchValue = '';
+  // Pick the first non-undefined value
+  // eslint-disable-next-line prefer-const
+  let [productsSearchType, productsSearchValue] =
+    mapping.find(([, value]) => value !== undefined) || ['searchTerm', searchTerm];
 
-  switch (type) {
-    case 'brand':
-      productsSearchValue = brand;
-      break;
-    case 'category':
-      productsSearchValue = category;
-      break;
-    case 'manualItemNumbers':
-      productsSearchValue = manualItemNumbers;
-      break;
-    case 'productSelector':
-      productsSearchValue = selectorItemNumbers;
-      break;
-    case 'searchTerm':
-    default:
-      productsSearchValue = searchTerm;
-  }
-
-  if (['manualItemNumbers', 'productSelector'].includes(type)) {
-    productsSearchType = 'productIds';
-  }
+  console.warn({ productsSearchType, productsSearchValue });
 
   return {
     productsSearchType,

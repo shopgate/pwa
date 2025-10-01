@@ -1,9 +1,5 @@
 export type ProductsWidgetInputConfig = {
   /**
-   * Source type for the product list
-   */
-  type: 'searchTerm' | 'brand' | 'category' | 'manualItemNumbers' | 'productSelector';
-  /**
    * A search term to filter products by
    */
   searchTerm: string;
