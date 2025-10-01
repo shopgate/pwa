@@ -9,7 +9,9 @@ const useStyles = makeStyles()({
     display: 'flex',
     justifyContent: 'center',
   },
-
+  text: {
+    whiteSpace: 'nowrap',
+  },
 });
 
 /**
@@ -38,8 +40,9 @@ const ButtonWidget = () => {
       <Button
         type={style || 'primary'}
         onClick={handleClick}
+        wrapContent={false}
       >
-        {text}
+        <span className={classes.text}>{text}</span>
       </Button>
     </div>
   );
