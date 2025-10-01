@@ -29,6 +29,9 @@
   "@shopgate/widgets/heroBannerWidget": {
     "path": "@shopgate/engage/page/widgets/HeroBanner"
   },
+  "@shopgate/widgets/buttonWidget": {
+    "path": "@shopgate/engage/page/widgets/Button"
+  },
   "@shopgate/widgetsInternal/Placeholder": {
     "path": "@shopgate/engage/page/widgets/Placeholder"
   }
