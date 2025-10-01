@@ -39,8 +39,6 @@ export const getProductSearchParamsFromProductsInputConfig = (products = {}) => 
   let [productsSearchType, productsSearchValue] =
     mapping.find(([, value]) => value !== undefined) || ['searchTerm', searchTerm];
 
-  console.warn({ productsSearchType, productsSearchValue });
-
   return {
     productsSearchType,
     productsSearchValue,
