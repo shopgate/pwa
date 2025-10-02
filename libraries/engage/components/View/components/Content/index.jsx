@@ -10,6 +10,7 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { useScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
+import { ParallaxProvider } from 'react-scroll-parallax';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
@@ -152,12 +153,12 @@ class ViewContent extends Component {
   handleInputFocusChange = (e) => {
     const el = e.target;
     const isInputTarget =
-        (el.tagName === 'INPUT' &&
-          ['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(
-            el.type
-          )) ||
-        el.tagName === 'TEXTAREA' ||
-        el.isContentEditable;
+      (el.tagName === 'INPUT' &&
+        ['text', 'password', 'email', 'number', 'search', 'tel', 'url'].includes(
+          el.type
+        )) ||
+      el.tagName === 'TEXTAREA' ||
+      el.isContentEditable;
 
     if (isInputTarget) {
       this.setState({
@@ -190,33 +191,35 @@ class ViewContent extends Component {
    */
   render() {
     return (
-      <article
-        className={`${container} engage__view__content ${this.props.className}`}
-        ref={this.scrollContainer ? this.ref : null}
-        style={this.style}
-        role="none"
-      >
-        <div className={containerInner}>
-          <Helmet title={appConfig.shopName} />
-          <Above />
-          <ResponsiveContainer breakpoint=">xs" webOnly>
-            {this.props.visible ? (
-              <div id="PageHeaderBelow" />
-            ) : null}
-          </ResponsiveContainer>
-          <ConditionalWrapper
-            condition={!this.props.noContentPortal}
-            wrapper={children =>
-              <SurroundPortals portalName={VIEW_CONTENT}>
-                {children}
-              </SurroundPortals>
-            }
-          >
-            {this.props.children}
-          </ConditionalWrapper>
-          <Below />
-        </div>
-      </article>
+      <ParallaxProvider scrollContainer={this.ref.current}>
+        <article
+          className={`${container} engage__view__content ${this.props.className}`}
+          ref={this.scrollContainer ? this.ref : null}
+          style={this.style}
+          role="none"
+        >
+          <div className={containerInner}>
+            <Helmet title={appConfig.shopName} />
+            <Above />
+            <ResponsiveContainer breakpoint=">xs" webOnly>
+              {this.props.visible ? (
+                <div id="PageHeaderBelow" />
+              ) : null}
+            </ResponsiveContainer>
+            <ConditionalWrapper
+              condition={!this.props.noContentPortal}
+              wrapper={children =>
+                <SurroundPortals portalName={VIEW_CONTENT}>
+                  {children}
+                </SurroundPortals>
+              }
+            >
+              {this.props.children}
+            </ConditionalWrapper>
+            <Below />
+          </div>
+        </article>
+      </ParallaxProvider>
     );
   }
 }

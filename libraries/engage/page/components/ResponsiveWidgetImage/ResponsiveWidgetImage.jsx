@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { useTheme, makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useResponsiveValue } from '@shopgate/engage/styles';
+import { useParallax } from 'react-scroll-parallax';
+import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import { parseImageUrl } from '../../helpers';
 
 /** @typedef {import('@shopgate/engage/styles').Theme} Theme */
@@ -16,11 +18,16 @@ const useStyles = makeStyles()({
       pointerEvents: 'none',
     },
   },
+  container: {
+    width: '100%',
+    overflow: 'hidden',
+    border: '2px solid red',
+  },
 });
 
 /**
  * The ResponsiveWidgetImage component renders an image that adapts to different screen sizes.
- * It uses the <picture> element to provide a higher resolution image for medium and larger screens.
+ * It renders
  *
  * @param {ResponsiveImageProps} props The component props.
  * @returns {JSX.Element}
@@ -29,35 +36,61 @@ const ResponsiveWidgetImage = ({
   src,
   alt,
   breakpoint,
+  className,
   ...imgProps
 }) => {
-  const { breakpoints } = useTheme();
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
+  const [imageHeight, setImageHeight] = React.useState(0);
+
+  const reduceMotion = useReduceMotion();
+
+  /**
+   * Handles the image load event to set the image height.
+   * @param {Object} event The load event.
+   */
+  const handleImageLoad = (event) => {
+    setImageHeight(event.target.clientHeight);
+  };
+
+  const parallax = useParallax({
+    translateY: [-15, 15],
+    scale: [1.3, 1.3],
+    disabled: reduceMotion,
+  });
+
   const src2x = useMemo(() => parseImageUrl(src, true), [src]);
+
+  const imgSrc = useResponsiveValue({
+    xs: src,
+    [breakpoint]: src2x,
+  });
 
   if (!src) {
     return null;
   }
 
   return (
-    <picture
-      onContextMenu={e => e.preventDefault()}
-      className={classes.preventSave}
+    <div
+      className={cx(classes.container)}
+      style={{ height: imageHeight }}
     >
-      <source media={`(width >= ${breakpoints.values[breakpoint]}px)`} srcSet={src2x} />
       <img
-        src={src}
+        src={imgSrc}
+        ref={parallax.ref}
         alt={alt}
         loading="lazy"
+        className={cx(classes.preventSave, className)}
+        onLoad={handleImageLoad}
         {...imgProps}
       />
-    </picture>
+    </div>
   );
 };
 
 ResponsiveWidgetImage.propTypes = {
   alt: PropTypes.string,
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
+  className: PropTypes.string,
   src: PropTypes.string,
 };
 
@@ -65,6 +98,7 @@ ResponsiveWidgetImage.defaultProps = {
   src: null,
   alt: null,
   breakpoint: 'md',
+  className: null,
 };
 
 export default ResponsiveWidgetImage;
