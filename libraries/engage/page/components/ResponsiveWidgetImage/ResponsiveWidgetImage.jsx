@@ -35,6 +35,7 @@ const ResponsiveWidgetImage = ({
   alt,
   breakpoint,
   className,
+  enableParallax = false,
   ...imgProps
 }) => {
   const { classes, cx } = useStyles();
@@ -53,7 +54,7 @@ const ResponsiveWidgetImage = ({
   const parallax = useParallax({
     translateY: [-15, 15],
     scale: [1.3, 1.3],
-    disabled: reduceMotion,
+    disabled: reduceMotion || !enableParallax,
   });
 
   const src2x = useMemo(() => parseImageUrl(src, true), [src]);
@@ -89,6 +90,7 @@ ResponsiveWidgetImage.propTypes = {
   alt: PropTypes.string,
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   className: PropTypes.string,
+  enableParallax: PropTypes.bool,
   src: PropTypes.string,
 };
 
@@ -97,6 +99,7 @@ ResponsiveWidgetImage.defaultProps = {
   alt: null,
   breakpoint: 'md',
   className: null,
+  enableParallax: false,
 };
 
 export default ResponsiveWidgetImage;

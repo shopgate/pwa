@@ -17,6 +17,7 @@ const useStyles = makeStyles()(theme => ({
     [theme.breakpoints.up('md')]: {
       minHeight: 400,
     },
+    overflow: 'hidden',
   },
   richText: {
     position: 'relative',
@@ -43,6 +44,9 @@ const HeroBanner = () => {
 
   const { cx, classes } = useStyles();
 
+  // This could be moved to a widget setting in the future
+  const enableParallax = true;
+
   return (
     <ConditionalWrapper
       condition={!!link}
@@ -61,6 +65,7 @@ const HeroBanner = () => {
           src={backgroundImage?.url}
           alt={backgroundImage?.alt}
           className={cx(classes.image)}
+          enableParallax={enableParallax}
         />
       </div>
     </ConditionalWrapper>
