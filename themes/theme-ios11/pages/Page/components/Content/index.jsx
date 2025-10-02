@@ -7,10 +7,11 @@ import {
   Widgets as WidgetsV1,
 } from '@shopgate/engage/components';
 import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
-import { Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
-import { PageNotFound } from '@shopgate/engage/page';
+import { NotFound, Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
+import availableWidgets from 'Extensions/widgets';
+import { i18n } from '@shopgate/engage/core';
 import connect from './connector';
 
 /**
@@ -33,7 +34,7 @@ const PageContent = ({
   let center = <Logo />;
 
   if (pageId !== PAGE_ID_INDEX) {
-    center = <AppBar.Title title={title} />;
+    center = <AppBar.Title title={error ? i18n.text('titles.page_not_found') : title} />;
   }
 
   const Bar = (pageId === PAGE_ID_INDEX) ? DefaultBar : BackBar;
@@ -42,17 +43,15 @@ const PageContent = ({
 
   return (
     <>
-      <Bar center={center} title={title} />
+      <Bar center={center} title={error ? i18n.text('titles.page_not_found') : title} />
       <SurroundPortals
         portalName={PAGE_CONTENT}
         portalProps={{ id: pageId }}
       >
-        {!postponeRender && (
-          isCmsV2Enabled && error ? (
-            <PageNotFound />
-          ) : (
-            <Component widgets={widgets} />
-          )
+        {(!postponeRender) && (
+          error
+            ? <NotFound />
+            : <Component components={availableWidgets} widgets={widgets} />
         )}
       </SurroundPortals>
     </>

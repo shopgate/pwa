@@ -7,11 +7,11 @@ import {
   Widgets as WidgetsV1,
 } from '@shopgate/engage/components';
 import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
-import { Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
-import { PageNotFound } from '@shopgate/engage/page';
+import { NotFound, Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import availableWidgets from 'Extensions/widgets';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 import connect from './connector';
 
@@ -38,7 +38,7 @@ function PageContent({
   let center = <Logo key="center" />;
 
   if (pageId !== PAGE_ID_INDEX) {
-    center = <AppBar.Title key="center" title={title} />;
+    center = <AppBar.Title title={error ? i18n.text('titles.page_not_found') : title} />;
   }
 
   const BarComponent = !isCookieConsentHandled ? BackBar : DefaultBar;
@@ -48,7 +48,7 @@ function PageContent({
     <Fragment>
       <BarComponent
         center={center}
-        title={title}
+        title={error ? i18n.text('titles.page_not_found') : title}
         {...!isCookieConsentHandled && { right: (<></>) }}
       />
       <SurroundPortals
@@ -57,11 +57,9 @@ function PageContent({
       >
         <div key="widgetWrapper" className={styles.widgetWrapper}>
           {(!postponeRender) && (
-            isCmsV2Enabled && error ? (
-              <PageNotFound />
-            ) : (
-              <Component components={availableWidgets} widgets={widgets} />
-            )
+            error
+              ? <NotFound />
+              : <Component components={availableWidgets} widgets={widgets} />
           )}
         </div>
       </SurroundPortals>

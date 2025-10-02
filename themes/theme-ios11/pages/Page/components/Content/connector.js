@@ -47,7 +47,7 @@ const makeMapStateToProps = (_, { pageId }) => {
       isCmsV2Enabled: cmsVersion === 2,
       title,
       widgets,
-      error: Boolean(error),
+      error,
     };
   };
 };
