@@ -8,6 +8,7 @@ import {
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
+import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { historyRedirect, historyPush, windowOpenOverride } from '../actions/router';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
@@ -66,6 +67,9 @@ jest.mock('../selectors/router', () => ({
 jest.mock('../selectors/client', () => ({
   getIsConnected: jest.fn().mockReturnValue(true),
 }));
+jest.mock('@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart', () => jest.fn(
+  () => 'addCouponsToCartDispatched'
+));
 
 describe('Router subscriptions', () => {
   const protectedRoute = '/protected';
@@ -597,6 +601,57 @@ describe('Router subscriptions', () => {
         id: 'navigate.error',
         message: 'error.general',
       });
+    });
+
+    it('should redeem a coupon code when it is the only query parameter in an internal url', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route?coupon=12345',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(addCouponsToCart).toHaveBeenCalledTimes(1);
+      expect(addCouponsToCart).toHaveBeenCalledWith(['12345'], false);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith('addCouponsToCartDispatched');
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_route',
+      });
+    });
+
+    it('should redeem a coupon code when it is one of many query parameters in an internal url', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route?otherParam=foo&coupon=12345&anotherParam=bar',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(addCouponsToCart).toHaveBeenCalledTimes(1);
+      expect(addCouponsToCart).toHaveBeenCalledWith(['12345'], false);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith('addCouponsToCartDispatched');
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_route?otherParam=foo&anotherParam=bar',
+      });
+    });
+
+    it('should NOT redeem a coupon code when it is the only query parameter in an external url', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: 'https://www.awesome-shop.com/some_route?otherParam=foo&coupon=12345&anotherParam=bar',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(addCouponsToCart).not.toHaveBeenCalled();
+      expect(dispatch).not.toHaveBeenCalledWith('addCouponsToCartDispatched');
+      testExpectedCall(openExternalLinkSpy);
+
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        params.pathname,
+        params.action,
+        mockedRouterState,
+        undefined
+      );
     });
   });
 

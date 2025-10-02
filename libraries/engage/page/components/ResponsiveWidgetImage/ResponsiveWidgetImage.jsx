@@ -13,10 +13,7 @@ import { parseImageUrl } from '../../helpers';
 const useStyles = makeStyles()({
   preventSave: {
     userSelect: 'none',
-    ' img': {
-      userSelect: 'none',
-      pointerEvents: 'none',
-    },
+    pointerEvents: 'none',
   },
   container: {
     width: '100%',
