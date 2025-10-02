@@ -24,7 +24,8 @@ const useStyles = makeStyles()({
 
 /**
  * The ResponsiveWidgetImage component renders an image that adapts to different screen sizes.
- * It renders
+ * It renders a image with higher resolution on larger screens
+ * It can apply a parallax effect when scrolling.
  *
  * @param {ResponsiveImageProps} props The component props.
  * @returns {JSX.Element}
