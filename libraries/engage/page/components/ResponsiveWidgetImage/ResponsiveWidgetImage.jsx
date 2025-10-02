@@ -18,7 +18,6 @@ const useStyles = makeStyles()({
   container: {
     width: '100%',
     overflow: 'hidden',
-    border: '2px solid red',
   },
 });
 
@@ -52,7 +51,9 @@ const ResponsiveWidgetImage = ({
   };
 
   const parallax = useParallax({
+    // If parallax is to soft, increase the translateY values.
     translateY: [-15, 15],
+    // If the scrolling image moves out of the viewport too early, increase the scale values.
     scale: [1.3, 1.3],
     disabled: reduceMotion || !enableParallax,
   });
