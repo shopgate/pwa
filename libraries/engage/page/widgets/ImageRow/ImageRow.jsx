@@ -48,7 +48,7 @@ const useStyles = makeStyles()((theme, { imageSpacing }) => ({
  */
 const ImageRow = () => {
   const {
-    images, imageWrapping, imageSpacing,
+    images, imageWrapping, imageSpacing, parallax,
   } = useImageRowWidget();
 
   const { cx, classes } = useStyles({ imageSpacing });
@@ -79,6 +79,7 @@ const ImageRow = () => {
               src={img.url}
               alt={img.altText}
               className={cx(classes.image)}
+              enableParallax={parallax}
             />
           </ConditionalWrapper>
         </Grid.Item>

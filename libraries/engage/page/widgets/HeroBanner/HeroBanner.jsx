@@ -40,12 +40,11 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const HeroBanner = () => {
-  const { text, backgroundImage, link } = useHeroBannerWidget();
+  const {
+    text, backgroundImage, link, parallax,
+  } = useHeroBannerWidget();
 
   const { cx, classes } = useStyles();
-
-  // This could be moved to a widget setting in the future
-  const enableParallax = true;
 
   return (
     <ConditionalWrapper
@@ -65,7 +64,7 @@ const HeroBanner = () => {
           src={backgroundImage?.url}
           alt={backgroundImage?.alt}
           className={cx(classes.image)}
-          enableParallax={enableParallax}
+          enableParallax={parallax}
         />
       </div>
     </ConditionalWrapper>

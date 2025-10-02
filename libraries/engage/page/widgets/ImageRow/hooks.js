@@ -28,6 +28,7 @@ export const useImageRowWidget = () => {
     images = [],
     imageWrapping,
     imageSpacing = 0,
+    parallax,
   } = config || {};
 
   const mappedImages = useMemo(() => images.map(({ image, link }) => {
@@ -44,5 +45,6 @@ export const useImageRowWidget = () => {
     images: mappedImages,
     imageWrapping,
     imageSpacing,
+    parallax,
   };
 };

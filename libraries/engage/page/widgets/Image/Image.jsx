@@ -16,7 +16,9 @@ const useStyles = makeStyles()(() => ({
  */
 const Image = () => {
   const { cx, classes } = useStyles();
-  const { link, altText, url } = useImageWidget();
+  const {
+    link, altText, url, parallax,
+  } = useImageWidget();
 
   if (!url) return null;
 
@@ -33,6 +35,7 @@ const Image = () => {
         src={url}
         alt={altText}
         className={cx(classes.image)}
+        enableParallax={parallax}
       />
     </ConditionalWrapper>
   );

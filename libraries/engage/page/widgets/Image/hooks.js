@@ -28,7 +28,7 @@ export const useImageWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
   const {
-    image, imageWide, link, useImageWide,
+    image, imageWide, link, useImageWide, parallax,
   } = config || {};
 
   const resolved = useResponsiveValue({
@@ -46,5 +46,6 @@ export const useImageWidget = () => {
     url: resolved.url,
     altText: resolved.altText,
     link,
+    parallax,
   };
 };
