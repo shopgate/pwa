@@ -7,10 +7,10 @@ import {
   Widgets as WidgetsV1,
 } from '@shopgate/engage/components';
 import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
-import { Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
+import { NotFound, Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
-import availableWidgets from 'Extensions/widgets';
+import { i18n } from '@shopgate/engage/core';
 import styles from './style';
 import connect from './connector';
 
@@ -23,6 +23,7 @@ import connect from './connector';
  * @param {Array} props.widgets The page widgets.
  * @param {bool} props.isCookieConsentHandled Whether the cookie consent is handled (pages can be
  * to show the privacy policy. We need to re-configure the screen so that users can't break out)
+ * @param {boolean} props.hasError Whether the page has an error.
  * @returns {JSX.Element}
  */
 function PageContent({
@@ -32,11 +33,12 @@ function PageContent({
   title = '',
   widgets = [],
   isCookieConsentHandled,
+  hasError = false,
 }) {
   let center = <Logo key="center" />;
 
   if (pageId !== PAGE_ID_INDEX) {
-    center = <AppBar.Title key="center" title={title} />;
+    center = <AppBar.Title title={hasError ? i18n.text('titles.page_not_found') : title} />;
   }
 
   const BarComponent = !isCookieConsentHandled ? BackBar : DefaultBar;
@@ -46,7 +48,7 @@ function PageContent({
     <Fragment>
       <BarComponent
         center={center}
-        title={title}
+        title={hasError ? i18n.text('titles.page_not_found') : title}
         {...!isCookieConsentHandled && { right: (<></>) }}
       />
       <SurroundPortals
@@ -55,7 +57,9 @@ function PageContent({
       >
         <div key="widgetWrapper" className={styles.widgetWrapper}>
           {(!postponeRender) && (
-            <Component components={availableWidgets} widgets={widgets} />
+            hasError
+              ? <NotFound />
+              : <Component widgets={widgets} />
           )}
         </div>
       </SurroundPortals>
@@ -65,6 +69,7 @@ function PageContent({
 
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
+  hasError: PropTypes.bool,
   isCmsV2Enabled: PropTypes.bool,
   isCookieConsentHandled: PropTypes.bool,
   postponeRender: PropTypes.bool,
@@ -78,6 +83,7 @@ PageContent.defaultProps = {
   title: '',
   widgets: [],
   isCookieConsentHandled: true,
+  hasError: false,
 };
 
 export default connect(PageContent);
