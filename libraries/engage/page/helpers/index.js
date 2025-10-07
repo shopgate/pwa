@@ -19,45 +19,25 @@
  */
 export const getProductSearchParamsFromProductsInputConfig = (products = {}) => {
   const {
-    productSelectorType,
-    productsBrand,
-    productsCategory,
-    productsItemNumbers,
-    productsManualItemNumbers,
-    productsSelectorItemNumbers,
-    productsSearchTerm,
+    brand,
+    category,
+    manualItemNumbers,
+    selectorItemNumbers,
+    searchTerm,
   } = products || {};
 
-  let productsSearchType = productSelectorType;
+  const mapping = [
+    ['brand', brand],
+    ['category', category],
+    ['searchTerm', searchTerm],
+    ['productIds', manualItemNumbers],
+    ['productIds', selectorItemNumbers],
+  ];
 
-  /** @type {string|string[]} */
-  let productsSearchValue = '';
-
-  switch (productSelectorType) {
-    case 'brand':
-      productsSearchValue = productsBrand;
-      break;
-    case 'category':
-      productsSearchValue = productsCategory;
-      break;
-    // Kept for backward compatibility - was replaces by 'manualItemNumbers' and 'productSelector'
-    case 'itemNumbers':
-      productsSearchValue = productsItemNumbers.split(',').map(item => item.trim());
-      break;
-    case 'manualItemNumbers':
-      productsSearchValue = productsManualItemNumbers;
-      break;
-    case 'productSelector':
-      productsSearchValue = productsSelectorItemNumbers;
-      break;
-    case 'searchTerm':
-    default:
-      productsSearchValue = productsSearchTerm;
-  }
-
-  if (['itemNumbers', 'manualItemNumbers', 'productSelector'].includes(productSelectorType)) {
-    productsSearchType = 'productIds';
-  }
+  // Pick the first non-undefined value
+  // eslint-disable-next-line prefer-const
+  let [productsSearchType, productsSearchValue] =
+    mapping.find(([, value]) => value !== undefined) || ['searchTerm', searchTerm];
 
   return {
     productsSearchType,

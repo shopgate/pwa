@@ -1,15 +1,11 @@
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { css } from 'glamor';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { I18n } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { historyPop } from '@shopgate/pwa-common/actions/router';
-
-const mapDispatchToProps = {
-  onClick: historyPop,
-};
+import { historyPop, historyResetTo } from '@shopgate/pwa-common/actions/router';
+import { i18n, INDEX_PATH } from '../../core';
 
 const { variables } = themeConfig;
 
@@ -32,32 +28,42 @@ const styles = {
   buttonContainer: css({
     flexGrow: '0',
     padding: `${variables.emptyPage.buttonVerticalGap}px ${variables.gap.big}px`,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: variables.gap.big,
+    alignItems: 'center',
   }).toString(),
 };
 
 /**
- * @returns {JSX}
+ * The NotFoundPage component renders a "Page Not Found" view
+ * with options to navigate back or to the home page.
+ * @returns {JSX.Element}
  */
-const NotFound = ({ onClick }) => {
-  const handleClick = useCallback(() => {
-    onClick();
-  }, [onClick]);
+const NotFound = () => {
+  const dispatch = useDispatch();
+
+  const handleBack = useCallback(() => {
+    dispatch(historyPop());
+  }, [dispatch]);
+
+  const handleHome = useCallback(() => {
+    dispatch(historyResetTo(INDEX_PATH));
+  }, [dispatch]);
 
   return (
     <div className={styles.wrapper}>
       <I18n.Text className={styles.text} string="page.not_found" />
-
       <div className={styles.buttonContainer}>
-        <RippleButton onClick={handleClick} className={styles.button} type="secondary">
-          <I18n.Text string="page.continue" />
+        <RippleButton onClick={handleBack} className={styles.button} type="secondary">
+          <I18n.Text string="common.back" />
+        </RippleButton>
+        <RippleButton onClick={handleHome} className={styles.button} type="secondary">
+          <I18n.Text string="navigation.back" params={{ title: i18n.text('navigation.home') }} />
         </RippleButton>
       </div>
     </div>
   );
 };
 
-NotFound.propTypes = {
-  onClick: PropTypes.func.isRequired,
-};
-
-export default connect(null, mapDispatchToProps)(NotFound);
+export default NotFound;

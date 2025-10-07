@@ -7,6 +7,7 @@ import {
   errorPageConfigV2,
 } from '@shopgate/engage/page/action-creators';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { ERROR_HANDLE_SUPPRESS, ERROR_HANDLE_DEFAULT } from '@shopgate/engage/core/constants';
 import { SHOPGATE_CMS_GET_PAGE_CONFIG } from '../../constants/Pipelines';
 import {
   requestPageConfig,
@@ -48,6 +49,7 @@ function fetchPageConfig(pageId) {
 
     const request = new PipelineRequest(SHOPGATE_CMS_GET_PAGE_CONFIG)
       .setVersion(cmsV2Enabled ? 2 : 1)
+      .setHandleErrors(cmsV2Enabled ? ERROR_HANDLE_SUPPRESS : ERROR_HANDLE_DEFAULT)
       .setInput({
         pageId,
         ...(hasNewServices() && !cmsV2Enabled ? {
