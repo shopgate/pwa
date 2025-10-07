@@ -53,7 +53,7 @@ const NotFound = () => {
 
   return (
     <div className={styles.wrapper}>
-      <I18n.Text className={styles.text} string="titles.page_not_found" />
+      <I18n.Text className={styles.text} string="page.not_found" />
       <div className={styles.buttonContainer}>
         <RippleButton onClick={handleBack} className={styles.button} type="secondary">
           <I18n.Text string="common.back" />

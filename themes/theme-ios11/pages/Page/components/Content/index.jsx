@@ -10,7 +10,6 @@ import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
 import { NotFound, Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
-import availableWidgets from 'Extensions/widgets';
 import { i18n } from '@shopgate/engage/core';
 import connect from './connector';
 
@@ -21,6 +20,7 @@ import connect from './connector';
  * @param {string} props.pageId The page id.
  * @param {string} props.title The page title.
  * @param {Array} props.widgets The page widgets.
+ * @param {boolean} props.hasError Whether the page has an error.
  * @returns {JSX.Element}
  */
 const PageContent = ({
@@ -29,12 +29,12 @@ const PageContent = ({
   pageId = null,
   title = '',
   widgets = [],
-  error = false,
+  hasError = false,
 }) => {
   let center = <Logo />;
 
   if (pageId !== PAGE_ID_INDEX) {
-    center = <AppBar.Title title={error ? i18n.text('titles.page_not_found') : title} />;
+    center = <AppBar.Title title={hasError ? i18n.text('titles.page_not_found') : title} />;
   }
 
   const Bar = (pageId === PAGE_ID_INDEX) ? DefaultBar : BackBar;
@@ -43,15 +43,15 @@ const PageContent = ({
 
   return (
     <>
-      <Bar center={center} title={error ? i18n.text('titles.page_not_found') : title} />
+      <Bar center={center} title={hasError ? i18n.text('titles.page_not_found') : title} />
       <SurroundPortals
         portalName={PAGE_CONTENT}
         portalProps={{ id: pageId }}
       >
         {(!postponeRender) && (
-          error
+          hasError
             ? <NotFound />
-            : <Component components={availableWidgets} widgets={widgets} />
+            : <Component widgets={widgets} />
         )}
       </SurroundPortals>
     </>
@@ -60,7 +60,7 @@ const PageContent = ({
 
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,
-  error: PropTypes.bool,
+  hasError: PropTypes.bool,
   isCmsV2Enabled: PropTypes.bool,
   postponeRender: PropTypes.bool,
   title: PropTypes.string,
@@ -72,7 +72,7 @@ PageContent.defaultProps = {
   postponeRender: false,
   title: '',
   widgets: [],
-  error: false,
+  hasError: false,
 };
 
 export default connect(memo(PageContent));
