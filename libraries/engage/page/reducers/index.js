@@ -96,7 +96,7 @@ export function pageV2(state = defaultState, action) {
           data: null,
           isFetching: false,
           expires: 0,
-          error: false,
+          hasError: false,
         };
       }
     };
@@ -105,7 +105,7 @@ export function pageV2(state = defaultState, action) {
       case REQUEST_PAGE_CONFIG_V2: {
         initializePage();
         draft[pageType][pageSlug].isFetching = true;
-        draft[pageType][pageSlug].error = false;
+        draft[pageType][pageSlug].hasError = false;
 
         break;
       }
@@ -115,7 +115,7 @@ export function pageV2(state = defaultState, action) {
         draft[pageType][pageSlug].data = transformCustomLegacyWidgets(data);
         draft[pageType][pageSlug].isFetching = false;
         draft[pageType][pageSlug].expires = Date.now() + PAGE_STATE_LIFETIME;
-        draft[pageType][pageSlug].error = false;
+        draft[pageType][pageSlug].hasError = false;
 
         break;
       }
@@ -123,7 +123,7 @@ export function pageV2(state = defaultState, action) {
       case ERROR_PAGE_CONFIG_V2: {
         initializePage();
         draft[pageType][pageSlug].isFetching = false;
-        draft[pageType][pageSlug].error = true;
+        draft[pageType][pageSlug].hasError = true;
 
         break;
       }

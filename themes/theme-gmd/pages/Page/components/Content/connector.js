@@ -39,7 +39,7 @@ const makeMapStateToProps = (_, { pageId }) => {
     }
 
     const {
-      cmsVersion, title, widgets, error,
+      cmsVersion, title, widgets, hasError,
     } = getUnifiedCMSPageData(state) ?? {};
 
     return {
@@ -47,7 +47,7 @@ const makeMapStateToProps = (_, { pageId }) => {
       isCmsV2Enabled: cmsVersion === 2,
       title,
       widgets,
-      error,
+      hasError,
     };
   };
 };
