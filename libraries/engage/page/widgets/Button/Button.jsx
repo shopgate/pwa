@@ -22,7 +22,7 @@ const ButtonWidget = () => {
   const { classes } = useStyles();
 
   const { config } = useWidget();
-  const { text, link, style } = config;
+  const { text, link } = config;
   const { push } = useNavigation();
 
   const handleClick = useCallback((e) => {
@@ -38,7 +38,7 @@ const ButtonWidget = () => {
   return (
     <div className={classes.root}>
       <Button
-        type={style || 'primary'}
+        type="primary"
         onClick={handleClick}
         wrapContent={false}
       >
