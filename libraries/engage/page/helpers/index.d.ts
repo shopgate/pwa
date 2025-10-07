@@ -1,28 +1,24 @@
 export type ProductsWidgetInputConfig = {
   /**
-   * Source type for the product list
-   */
-  productSelectorType: 'searchTerm' | 'brand' | 'category' | 'manualItemNumbers' | 'productSelector';
-  /**
    * A search term to filter products by
    */
-  productsSearchTerm: string;
+  searchTerm: string;
   /**
    * A brand to filter products by
    */
-  productsBrand: string;
+  brand: string;
   /**
    * A category to filter products by
    */
-  productsCategory: string;
+  category: string;
   /**
    * Array of product item numbers (selected via manual input)
    */
-  productsManualItemNumbers: string[];
+  manualItemNumbers: string[];
   /**
    * Array of product item numbers (selected via product selector)
    */
-  productsSelectorItemNumbers: string[];
+  selectorItemNumbers: string[];
 }
 
 export type GetProductSearchParamsFromProductsInputConfigReturnValue = {
