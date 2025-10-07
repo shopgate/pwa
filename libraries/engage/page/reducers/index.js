@@ -82,43 +82,56 @@ const defaultState = {};
 export function pageV2(state = defaultState, action) {
   /* eslint-disable no-param-reassign */
   const producer = produce((draft) => {
-    switch (action.type) {
-      case REQUEST_PAGE_CONFIG_V2: {
-        const { pageType, pageSlug } = action;
-        draft[pageType] = draft[pageType] || {};
+    const { pageType, pageSlug, data } = action || {};
+
+    /**
+     * Helper to initialize pageType and pageSlug if not present
+     */
+    const initializePage = () => {
+      if (!draft[pageType]) {
+        draft[pageType] = {};
+      }
+      if (!draft[pageType][pageSlug]) {
         draft[pageType][pageSlug] = {
           data: null,
-          isFetching: true,
+          isFetching: false,
           expires: 0,
+          hasError: false,
         };
+      }
+    };
+
+    switch (action.type) {
+      case REQUEST_PAGE_CONFIG_V2: {
+        initializePage();
+        draft[pageType][pageSlug].isFetching = true;
+        draft[pageType][pageSlug].hasError = false;
+
         break;
       }
 
       case RECEIVE_PAGE_CONFIG_V2: {
-        const { pageType, pageSlug, data } = action;
-        draft[pageType] = draft[pageType] || {};
-        draft[pageType][pageSlug] = {
-          data: transformCustomLegacyWidgets(data),
-          isFetching: false,
-          expires: Date.now() + PAGE_STATE_LIFETIME,
-        };
+        initializePage();
+        draft[pageType][pageSlug].data = transformCustomLegacyWidgets(data);
+        draft[pageType][pageSlug].isFetching = false;
+        draft[pageType][pageSlug].expires = Date.now() + PAGE_STATE_LIFETIME;
+        draft[pageType][pageSlug].hasError = false;
+
         break;
       }
 
       case ERROR_PAGE_CONFIG_V2: {
-        const { pageType, pageSlug } = action;
-        draft[pageType] = draft[pageType] || {};
-        draft[pageType][pageSlug] = {
-          data: null,
-          isFetching: false,
-        };
+        initializePage();
+        draft[pageType][pageSlug].isFetching = false;
+        draft[pageType][pageSlug].hasError = true;
+
         break;
       }
 
       case APP_WILL_START: {
-        Object.keys(draft).forEach((pageType) => {
-          Object.keys(draft[pageType]).forEach((pageCode) => {
-            draft[pageType][pageCode].expires = 0;
+        Object.keys(draft).forEach((page) => {
+          Object.keys(draft[page]).forEach((pageCode) => {
+            draft[page][pageCode].expires = 0;
           });
         });
 
