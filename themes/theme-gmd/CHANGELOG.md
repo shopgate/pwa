@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.29.0](https://github.com/shopgate/pwa/compare/v7.28.0...v7.29.0) (2025-10-07)
+
+#### :bug: Bug Fix
+* [#1398](https://github.com/shopgate/pwa/pull/1398) Fixed handling of links with coupons ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.28.0](https://github.com/shopgate/pwa/compare/v7.27.5...v7.28.0) (2025-09-08)
 
 #### :rocket: Enhancement
