@@ -38,7 +38,7 @@ const ButtonWidget = () => {
   return (
     <div className={classes.root}>
       <Button
-        type="primary"
+        type="secondary"
         onClick={handleClick}
         wrapContent={false}
       >
