@@ -83,10 +83,7 @@ const Widget = ({
   // interact with widget elements.
   const handleInteraction = useCallback(() => {
     setActiveWidget(definition.code, activeWidget !== definition.code);
-
-    if (activeWidget !== definition.code) {
-      dispatchWidgetPreviewEvent('widget-clicked', definition.code);
-    }
+    dispatchWidgetPreviewEvent('widget-clicked', definition.code);
   }, [activeWidget, definition.code, setActiveWidget]);
 
   const handlers = usePressHandler(handleInteraction);
