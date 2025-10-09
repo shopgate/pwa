@@ -140,6 +140,7 @@ const Item = ({ display, product }) => (
                 discounted={!!product.price.discount}
                 unitPrice={product.price.unitPrice}
                 unitPriceMin={product.price.unitPriceMin}
+                unitPriceMax={product.price.unitPriceMax}
               />
               {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
                 <PriceStriked
