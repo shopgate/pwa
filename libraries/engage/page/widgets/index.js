@@ -9,3 +9,4 @@ export { default as ImageRowWidget } from './ImageRow';
 export { default as ImageSliderWidget } from './ImageSlider';
 export { default as RichTextWidget } from './RichText';
 export { default as HeroBannerWidget } from './HeroBanner';
+export { default as ButtonWidget } from './Button';
