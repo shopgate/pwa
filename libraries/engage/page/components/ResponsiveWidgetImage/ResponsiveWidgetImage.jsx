@@ -38,17 +38,8 @@ const ResponsiveWidgetImage = ({
   ...imgProps
 }) => {
   const { classes, cx } = useStyles();
-  const [imageHeight, setImageHeight] = React.useState(0);
 
   const reduceMotion = useReduceMotion();
-
-  /**
-   * Handles the image load event to set the image height.
-   * @param {Object} event The load event.
-   */
-  const handleImageLoad = (event) => {
-    setImageHeight(event.target.clientHeight);
-  };
 
   const parallax = useParallax({
     // If parallax is to soft, increase the translateY values.
@@ -56,6 +47,7 @@ const ResponsiveWidgetImage = ({
     // If the scrolling image moves out of the viewport too early, increase the scale values.
     scale: [1.3, 1.3],
     disabled: reduceMotion || !enableParallax,
+    // disabled: true,
   });
 
   const src2x = useMemo(() => parseImageUrl(src, true), [src]);
@@ -72,7 +64,7 @@ const ResponsiveWidgetImage = ({
   return (
     <div
       className={cx(classes.container)}
-      style={{ height: imageHeight }}
+    // style={{ height: imageHeight }}
     >
       <img
         src={imgSrc}
@@ -80,7 +72,6 @@ const ResponsiveWidgetImage = ({
         alt={alt}
         loading="lazy"
         className={cx(classes.preventSave, className)}
-        onLoad={handleImageLoad}
         {...imgProps}
       />
     </div>
