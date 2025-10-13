@@ -15,6 +15,7 @@ import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
 import { container, containerInner } from './style';
+import ParallaxUpdater from './components/ParallaxUpdater';
 
 /**
  * The ViewContent component.
@@ -47,9 +48,11 @@ class ViewContent extends Component {
     super(props);
 
     this.ref = React.createRef();
+    this.scrollContainerInner = React.createRef();
     this.state = {
       keyboardHeight: 0,
       isInputFocused: false,
+      scrollHeight: 0,
     };
 
     this.scrollContainer = useScrollContainer();
@@ -97,6 +100,20 @@ class ViewContent extends Component {
         this.ref.current.scrollTop = scrollTop;
       }
     });
+
+    const containerElement = this.scrollContainerInner.current;
+    const myObserver = new ResizeObserver((entries) => {
+      const firstEntry = entries[0];
+      if (firstEntry) {
+        this.setState({
+          scrollHeight: firstEntry.contentRect.height,
+        });
+      }
+    });
+
+    if (containerElement) {
+      myObserver.observe(containerElement);
+    }
   }
 
   /**
@@ -191,14 +208,15 @@ class ViewContent extends Component {
    */
   render() {
     return (
-      <ParallaxProvider scrollContainer={this.ref.current}>
-        <article
-          className={`${container} engage__view__content ${this.props.className}`}
-          ref={this.scrollContainer ? this.ref : null}
-          style={this.style}
-          role="none"
-        >
-          <div className={containerInner}>
+      <article
+        className={`${container} engage__view__content ${this.props.className}`}
+        ref={this.scrollContainer ? this.ref : null}
+        style={this.style}
+        role="none"
+      >
+        <ParallaxProvider scrollContainer={this.ref.current}>
+          <ParallaxUpdater scrollHeight={this.state.scrollHeight} />
+          <div className={containerInner} ref={this.scrollContainerInner}>
             <Helmet title={appConfig.shopName} />
             <Above />
             <ResponsiveContainer breakpoint=">xs" webOnly>
@@ -211,15 +229,15 @@ class ViewContent extends Component {
               wrapper={children =>
                 <SurroundPortals portalName={VIEW_CONTENT}>
                   {children}
-                </SurroundPortals>
-              }
+                </SurroundPortals>}
             >
               {this.props.children}
             </ConditionalWrapper>
             <Below />
           </div>
-        </article>
-      </ParallaxProvider>
+
+        </ParallaxProvider>
+      </article>
     );
   }
 }

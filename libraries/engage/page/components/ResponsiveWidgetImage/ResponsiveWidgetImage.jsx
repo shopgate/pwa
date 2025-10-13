@@ -47,7 +47,6 @@ const ResponsiveWidgetImage = ({
     // If the scrolling image moves out of the viewport too early, increase the scale values.
     scale: [1.3, 1.3],
     disabled: reduceMotion || !enableParallax,
-    // disabled: true,
   });
 
   const src2x = useMemo(() => parseImageUrl(src, true), [src]);
@@ -64,7 +63,6 @@ const ResponsiveWidgetImage = ({
   return (
     <div
       className={cx(classes.container)}
-    // style={{ height: imageHeight }}
     >
       <img
         src={imgSrc}
