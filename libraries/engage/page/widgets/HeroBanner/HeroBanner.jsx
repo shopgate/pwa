@@ -4,7 +4,7 @@ import { WidgetRichText, ResponsiveWidgetImage } from '@shopgate/engage/page/com
 import { makeStyles } from '@shopgate/engage/styles';
 import { useHeroBannerWidget } from './hooks';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()((theme, { borderRadius }) => ({
   link: {
     width: '100%',
   },
@@ -32,6 +32,7 @@ const useStyles = makeStyles()(theme => ({
     objectFit: 'cover',
     zIndex: 0,
     pointerEvents: 'none',
+    borderRadius,
   },
 }));
 
@@ -39,9 +40,11 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const HeroBanner = () => {
-  const { text, backgroundImage, link } = useHeroBannerWidget();
+  const {
+    text, backgroundImage, link, borderRadius,
+  } = useHeroBannerWidget();
 
-  const { cx, classes } = useStyles();
+  const { cx, classes } = useStyles({ borderRadius });
 
   return (
     <ConditionalWrapper

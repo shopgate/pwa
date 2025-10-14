@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useTheme } from '@shopgate/engage/styles';
+import { resolveBorderRadius } from '../../components/Widgets/helpers';
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
@@ -58,7 +59,16 @@ export const useImageSliderWidget = () => {
     slidesPerViewCustomLarge,
     imageSpacing,
     paginationStyle = 'bullets',
+    borderRadius,
+    borderRadiusCustom,
   } = config;
+
+  const borderRadiusResolved = resolveBorderRadius(
+    {
+      borderRadius,
+      borderRadiusCustom,
+    }
+  );
 
   const paginationType = useMemo(() => (paginationStyle === 'default' ? 'bullets' : paginationStyle.toLowerCase()),
     [paginationStyle]);
@@ -127,5 +137,6 @@ export const useImageSliderWidget = () => {
   return {
     slides: imagesWithUrls,
     swiperProps,
+    borderRadius: borderRadiusResolved,
   };
 };

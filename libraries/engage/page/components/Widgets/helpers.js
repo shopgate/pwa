@@ -58,8 +58,8 @@ export function checkScheduled({ from, to, timezoneOffset } = {}) {
  * @returns {string|number} The resolved border radius.
  */
 export const resolveBorderRadius = ({ borderRadius, borderRadiusCustom }) => {
-  if (borderRadius === 'default') return 'none';
+  if (borderRadius === 'default') return 0;
   if (borderRadius === 'rounded') return '16px';
-  if (borderRadius === 'custom') return borderRadiusCustom;
-  return 'none';
+  if (borderRadius === 'custom') return `${borderRadiusCustom}px`;
+  return 0;
 };

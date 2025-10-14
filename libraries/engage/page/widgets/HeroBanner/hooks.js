@@ -1,4 +1,5 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
+import { resolveBorderRadius } from '../../components/Widgets/helpers';
 
 /**
  * @typedef {Object} HeroBanner
@@ -21,5 +22,18 @@ import { useWidget } from '@shopgate/engage/page/hooks';
 export const useHeroBannerWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
-  return config;
+
+  const {
+    borderRadius,
+    borderRadiusCustom,
+  } = config || {};
+
+  const borderRadiusResolved = resolveBorderRadius(
+    {
+      borderRadius,
+      borderRadiusCustom,
+    }
+  );
+
+  return { ...config, borderRadius: borderRadiusResolved };
 };

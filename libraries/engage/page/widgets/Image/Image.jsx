@@ -4,7 +4,7 @@ import { Link, ConditionalWrapper } from '@shopgate/engage/components';
 import { ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { useImageWidget } from './hooks';
 
-const useStyles = makeStyles()(({ borderRadius }) => ({
+const useStyles = makeStyles()((theme, borderRadius) => ({
   link: {},
   image: {
     width: '100%',
@@ -19,7 +19,8 @@ const Image = () => {
   const {
     link, altText, url, borderRadius,
   } = useImageWidget();
-  const { cx, classes } = useStyles({ borderRadius });
+
+  const { cx, classes } = useStyles(borderRadius);
 
   if (!url) return null;
 

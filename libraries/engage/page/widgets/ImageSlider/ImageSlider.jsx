@@ -4,19 +4,20 @@ import { Swiper, Link, ConditionalWrapper } from '@shopgate/engage/components';
 import { ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { useImageSliderWidget } from './hooks';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()((theme, { borderRadius }) => ({
   image: {
     width: '100%',
+    borderRadius,
   },
-});
+}));
 
 /**
  * The ImageSliderWidget is used to display an image slider.
  * @returns {JSX.Element}
  */
 const ImageSliderWidget = () => {
-  const { classes } = useStyles();
-  const { slides, swiperProps } = useImageSliderWidget();
+  const { slides, swiperProps, borderRadius } = useImageSliderWidget();
+  const { classes } = useStyles({ borderRadius });
 
   if (slides.length === 0) {
     return null;

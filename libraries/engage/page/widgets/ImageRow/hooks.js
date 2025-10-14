@@ -1,5 +1,6 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useMemo } from 'react';
+import { resolveBorderRadius } from '../../components/Widgets/helpers';
 
 /**
  * @typedef {Object} ImageRowWidgetConfig
@@ -28,7 +29,16 @@ export const useImageRowWidget = () => {
     images = [],
     imageWrapping,
     imageSpacing = 0,
+    borderRadius,
+    borderRadiusCustom,
   } = config || {};
+
+  const borderRadiusResolved = resolveBorderRadius(
+    {
+      borderRadius,
+      borderRadiusCustom,
+    }
+  );
 
   const mappedImages = useMemo(() => images.map(({ image, link }) => {
     const { url, altText } = image || {};
@@ -44,5 +54,6 @@ export const useImageRowWidget = () => {
     images: mappedImages,
     imageWrapping,
     imageSpacing,
+    borderRadius: borderRadiusResolved,
   };
 };
