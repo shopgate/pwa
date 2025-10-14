@@ -24,15 +24,12 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 2,
     padding: theme.spacing(2),
   },
-  image: {
+  imageContainer: {
     position: 'absolute',
     width: '100%',
     height: '100%',
     top: 0,
     left: 0,
-    objectFit: 'cover',
-    zIndex: 0,
-    pointerEvents: 'none',
   },
 }));
 
@@ -60,12 +57,15 @@ const HeroBanner = () => {
           content={text}
           className={cx(classes.richText)}
         />
-        <ResponsiveWidgetImage
-          src={backgroundImage?.url}
-          alt={backgroundImage?.alt}
-          className={cx(classes.image)}
-          enableParallax={parallax}
-        />
+        <div className={cx(classes.imageContainer)}>
+          <ResponsiveWidgetImage
+            src={backgroundImage?.url}
+            alt={backgroundImage?.alt}
+            enableParallax={parallax}
+            isBanner
+          />
+
+        </div>
       </div>
     </ConditionalWrapper>
   );

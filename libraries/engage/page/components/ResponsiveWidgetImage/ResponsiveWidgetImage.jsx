@@ -14,12 +14,27 @@ const useStyles = makeStyles()({
   preventSave: {
     userSelect: 'none',
     pointerEvents: 'none',
+  },
+  image: {
     width: '100%',
   },
   container: {
     width: '100%',
     overflow: 'hidden',
-    border: '3px solid red',
+  },
+  bannerContainer: {
+    overflow: 'hidden',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+  },
+  banner: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
   },
 });
 
@@ -37,6 +52,7 @@ const ResponsiveWidgetImage = ({
   breakpoint,
   className,
   enableParallax = false,
+  isBanner = false,
   ...imgProps
 }) => {
   const { classes, cx } = useStyles();
@@ -47,8 +63,7 @@ const ResponsiveWidgetImage = ({
   const reduceMotion = useReduceMotion();
 
   // If parallax is to soft, increase this value.
-  const parallaxPercent = 30;
-
+  const parallaxPercent = 15;
   const parallax = useParallax({
     translateY: [`-${parallaxPercent}`, `${parallaxPercent}`],
     disabled: reduceMotion || !enableParallax,
@@ -81,18 +96,30 @@ const ResponsiveWidgetImage = ({
 
   return (
     <div
-      className={cx(classes.container)}
-      style={{ aspectRatio: containerRatio }}
+      className={cx(
+        [
+          [isBanner && classes.bannerContainer],
+          [!isBanner && classes.container],
+        ]
+      )}
+      style={{
+        ...(!isBanner ? { aspectRatio: containerRatio } : {}),
+      }}
     >
       <img
         src={imgSrc}
         ref={parallax.ref}
         alt={alt}
         loading="lazy"
-        className={cx(classes.preventSave, className)}
+        className={cx([
+          classes.preventSave,
+          classes.image,
+          isBanner && classes.banner,
+        ], className)}
         onLoad={handleImageLoad}
         style={{
           marginTop: enableParallax ? `-${imageHeight / 100 * (parallaxPercent - 10 / 2)}px` : 0,
+          ...(enableParallax && isBanner ? { height: `${100 + parallaxPercent * 2}%` } : {}),
         }}
         {...imgProps}
       />
@@ -105,6 +132,7 @@ ResponsiveWidgetImage.propTypes = {
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   className: PropTypes.string,
   enableParallax: PropTypes.bool,
+  isBanner: PropTypes.bool,
   src: PropTypes.string,
 };
 
@@ -114,6 +142,7 @@ ResponsiveWidgetImage.defaultProps = {
   breakpoint: 'md',
   className: null,
   enableParallax: false,
+  isBanner: false,
 };
 
 export default ResponsiveWidgetImage;
