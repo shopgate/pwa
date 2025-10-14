@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useResponsiveValue } from '@shopgate/engage/styles';
 import { useParallax } from 'react-scroll-parallax';
@@ -14,10 +14,12 @@ const useStyles = makeStyles()({
   preventSave: {
     userSelect: 'none',
     pointerEvents: 'none',
+    width: '100%',
   },
   container: {
     width: '100%',
     overflow: 'hidden',
+    border: '3px solid red',
   },
 });
 
@@ -39,18 +41,35 @@ const ResponsiveWidgetImage = ({
 }) => {
   const { classes, cx } = useStyles();
 
+  const [containerRatio, setContainerRatio] = useState(0);
+  const [imageHeight, setImageHeight] = useState(0);
+
   const reduceMotion = useReduceMotion();
 
+  // If parallax is to soft, increase this value.
+  const parallaxPercent = 30;
+
   const parallax = useParallax({
-    // If parallax is to soft, increase the translateY values.
-    translateY: [-15, 15],
-    // If the scrolling image moves out of the viewport too early, increase the scale values.
-    scale: [1.3, 1.3],
+    translateY: [`-${parallaxPercent}`, `${parallaxPercent}`],
     disabled: reduceMotion || !enableParallax,
   });
 
-  const src2x = useMemo(() => parseImageUrl(src, true), [src]);
+  /**
+   * Handles the image load event
+   * We set the aspect ratio of the container based on the image dimensions
+   * to prevent white spaces in the layout while the image is moving.
+   * The aspect ratio is calculated with the parallaxPercent
+   * @param {Object} event The load event.
+   */
+  const handleImageLoad = (event) => {
+    const width = event.target.clientWidth;
+    const height = event.target.clientHeight;
 
+    const heightReduction = enableParallax ? (height / 100 * (parallaxPercent + 10)) : 0;
+    setContainerRatio(`${width}/${height - heightReduction}`);
+    setImageHeight(event.target.clientHeight);
+  };
+  const src2x = useMemo(() => parseImageUrl(src, true), [src]);
   const imgSrc = useResponsiveValue({
     xs: src,
     [breakpoint]: src2x,
@@ -63,6 +82,7 @@ const ResponsiveWidgetImage = ({
   return (
     <div
       className={cx(classes.container)}
+      style={{ aspectRatio: containerRatio }}
     >
       <img
         src={imgSrc}
@@ -70,6 +90,10 @@ const ResponsiveWidgetImage = ({
         alt={alt}
         loading="lazy"
         className={cx(classes.preventSave, className)}
+        onLoad={handleImageLoad}
+        style={{
+          marginTop: enableParallax ? `-${imageHeight / 100 * (parallaxPercent - 10 / 2)}px` : 0,
+        }}
         {...imgProps}
       />
     </div>
