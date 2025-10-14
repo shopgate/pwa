@@ -1,5 +1,6 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
+import { resolveBorderRadius } from '../../components/Widgets/helpers';
 
 /**
  * @typedef {Object} ImageWidgetConfig
@@ -28,8 +29,15 @@ export const useImageWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
   const {
-    image, imageWide, link, useImageWide,
+    image, imageWide, link, useImageWide, borderRadius, borderRadiusCustom,
   } = config || {};
+
+  const borderRadiusResolved = resolveBorderRadius(
+    {
+      borderRadius,
+      borderRadiusCustom,
+    }
+  );
 
   const resolved = useResponsiveValue({
     xs: {
@@ -46,5 +54,6 @@ export const useImageWidget = () => {
     url: resolved.url,
     altText: resolved.altText,
     link,
+    borderRadius: borderRadiusResolved,
   };
 };

@@ -50,3 +50,16 @@ export function checkScheduled({ from, to, timezoneOffset } = {}) {
     isExpired,
   };
 }
+
+/**
+ * Retrieves the border radius based on the config
+ * @param {string} borderRadius The border radius option.
+ * @param {number} borderRadiusCustom The custom border radius value.
+ * @returns {string|number} The resolved border radius.
+ */
+export const resolveBorderRadius = ({ borderRadius, borderRadiusCustom }) => {
+  if (borderRadius === 'default') return 'none';
+  if (borderRadius === 'rounded') return '16px';
+  if (borderRadius === 'custom') return borderRadiusCustom;
+  return 'none';
+};
