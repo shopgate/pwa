@@ -52,7 +52,7 @@ const useStyles = makeStyles()(theme => ({
       margin: '0px 0px 1rem 0px',
     },
     a: {
-      color: `var(--color-primary, ${theme.palette.primary})`,
+      color: 'var(--color-primary)',
     },
   },
 }));
