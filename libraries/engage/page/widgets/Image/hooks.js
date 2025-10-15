@@ -12,6 +12,7 @@ import { useResponsiveValue } from '@shopgate/engage/styles';
  * @property {boolean} [useImageWide] Whether to use the wide image on
  * medium and larger screens.
  * @property {string} [link] The link URL.
+ * @property {boolean} [parallax] Whether to apply a parallax effect to the image.
  */
 
 /**

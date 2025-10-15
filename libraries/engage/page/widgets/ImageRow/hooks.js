@@ -8,6 +8,7 @@ import { useMemo } from 'react';
  * one of: responsiveDefault | responsiveDense | responsiveNoWrap.
  * @property {string} [link] The optional link URL.
  * @property {number} [imageSpacing] An optional gap between images (in pixels).
+ * @property {boolean} [parallax] Whether to apply a parallax effect to the image.
  */
 
 /**

@@ -7,6 +7,7 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  * @property {string} backgroundImage.url Banner background image URL
  * @property {string} backgroundImage.alt Banner background image alt text
  * @property {string} link Optional banner link
+ * @property {boolean} parallax Whether to apply a parallax effect to the image
  */
 
 /**
