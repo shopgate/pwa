@@ -11,6 +11,9 @@
   "@shopgate/widgets/htmlWidget": {
     "path": "@shopgate/engage/page/widgets/HTML"
   },
+  "@shopgate/widgets/videoWidget": {
+    "path": "@shopgate/engage/page/widgets/Video"
+  },
   "@shopgate/widgets/headlineWidget": {
     "path": "@shopgate/engage/page/widgets/Headline"
   },
