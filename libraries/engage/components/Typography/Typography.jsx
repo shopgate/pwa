@@ -170,12 +170,17 @@ const Typography = React.forwardRef((props, ref) => {
     <Component
       className={classNames(
         classes.root,
+        'engage__typography',
         {
           [classes[variant]]: variant !== 'inherit',
+          [`engage__typography_${variant}`]: variant !== 'inherit',
           [classes[`color${capitalize(color)}`]]: color !== 'initial',
           [classes.noWrap]: noWrap,
           [classes.gutterBottom]: gutterBottom,
+          'engage__typography__gutter-bottom': gutterBottom,
           [classes.paragraph]: paragraph,
+          // eslint-disable-next-line camelcase
+          engage__typography__paragraph: paragraph,
           [classes[`align${capitalize(align)}`]]: align !== 'inherit',
           [classes[`display${capitalize(display)}`]]: display !== 'initial',
         },
@@ -243,4 +248,4 @@ Typography.defaultProps = {
   variantMapping: defaultVariantMapping,
 };
 
-export default withStyles(Typography, styles, { name: 'Typography' });
+export default withStyles(Typography, styles);
