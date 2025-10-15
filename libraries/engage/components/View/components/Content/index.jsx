@@ -48,6 +48,7 @@ class ViewContent extends Component {
     super(props);
 
     this.ref = React.createRef();
+    this.resizeObserver = null;
     this.scrollContainerInner = React.createRef();
     this.state = {
       keyboardHeight: 0,
@@ -102,9 +103,11 @@ class ViewContent extends Component {
     });
 
     const containerElement = this.scrollContainerInner.current;
-    const myObserver = new ResizeObserver((entries) => {
+    this.resizeObserver = new ResizeObserver((entries) => {
+      console.log('sasa:106: entries);', entries);
       const firstEntry = entries[0];
       if (firstEntry) {
+        console.log('sasa:110: firstEntry.contentRect.height);', firstEntry.contentRect.height);
         this.setState({
           scrollHeight: firstEntry.contentRect.height,
         });
@@ -112,7 +115,7 @@ class ViewContent extends Component {
     });
 
     if (containerElement) {
-      myObserver.observe(containerElement);
+      this.resizeObserver.observe(containerElement);
     }
   }
 
@@ -137,6 +140,10 @@ class ViewContent extends Component {
     if (isIOs) {
       window.removeEventListener('focusin', this.handleInputFocusChange);
       window.removeEventListener('focusout', this.handleInputFocusChange);
+    }
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
+      this.resizeObserver = null;
     }
   }
 
@@ -216,24 +223,26 @@ class ViewContent extends Component {
       >
         <ParallaxProvider scrollContainer={this.ref.current}>
           <ParallaxUpdater scrollHeight={this.state.scrollHeight} />
-          <div className={containerInner} ref={this.scrollContainerInner}>
-            <Helmet title={appConfig.shopName} />
-            <Above />
-            <ResponsiveContainer breakpoint=">xs" webOnly>
-              {this.props.visible ? (
-                <div id="PageHeaderBelow" />
-              ) : null}
-            </ResponsiveContainer>
-            <ConditionalWrapper
-              condition={!this.props.noContentPortal}
-              wrapper={children =>
-                <SurroundPortals portalName={VIEW_CONTENT}>
-                  {children}
-                </SurroundPortals>}
-            >
-              {this.props.children}
-            </ConditionalWrapper>
-            <Below />
+          <div className={containerInner}>
+            <div ref={this.scrollContainerInner}>
+              <Helmet title={appConfig.shopName} />
+              <Above />
+              <ResponsiveContainer breakpoint=">xs" webOnly>
+                {this.props.visible ? (
+                  <div id="PageHeaderBelow" />
+                ) : null}
+              </ResponsiveContainer>
+              <ConditionalWrapper
+                condition={!this.props.noContentPortal}
+                wrapper={children =>
+                  <SurroundPortals portalName={VIEW_CONTENT}>
+                    {children}
+                  </SurroundPortals>}
+              >
+                {this.props.children}
+              </ConditionalWrapper>
+              <Below />
+            </div>
           </div>
 
         </ParallaxProvider>
