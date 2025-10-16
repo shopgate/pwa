@@ -26,6 +26,7 @@ function LiveShoppingPrice({ price }) {
         className={priceStriked > 0 ? styles.price : ''}
         unitPrice={price.unitPrice}
         unitPriceMin={price.unitPriceMin}
+        unitPriceMax={price.unitPriceMax}
         currency={price.currency}
       />
     </Grid>

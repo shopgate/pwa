@@ -45,6 +45,7 @@ const Content = ({ price, hasProductVariants }) => (
           taxDisclaimer
           unitPrice={getTotalPrice(price.unitPrice, optionsPrices)}
           unitPriceMin={hasProductVariants ? price.unitPriceMin : 0}
+          unitPriceMax={hasProductVariants ? price.unitPriceMax : undefined}
         />
         )}
       </PlaceholderLabel>

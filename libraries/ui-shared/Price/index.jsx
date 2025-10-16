@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
@@ -41,7 +41,14 @@ const Price = (props, context) => {
 
   let ariaPrice;
 
-  if (props.unitPriceMin) {
+  const showFromPrice = useMemo(() => {
+    // unitPriceMin is falsy so we don't have a price range
+    if (!props.unitPriceMin) return false;
+    // Only show 'from' if we have a price range (both prices are available and different)
+    return props.unitPriceMin !== props.unitPriceMax;
+  }, [props.unitPriceMax, props.unitPriceMin]);
+
+  if (showFromPrice) {
     ariaPrice = __('price.from', { price: _p(props.unitPriceMin, props.currency, props.fractions) });
   } else {
     ariaPrice = _p(props.unitPrice, props.currency, props.fractions);
@@ -60,7 +67,7 @@ const Price = (props, context) => {
       data-test-id={`minPrice: ${props.unitPriceMin} price: ${props.unitPrice} currency: ${props.currency}`}
     >
       <span aria-label={__('price.label', { price: ariaPrice })}>
-        {props.unitPriceMin ? (
+        {showFromPrice ? (
           <I18n.Text aria-hidden string="price.from">
             <I18n.Price
               currency={props.currency}
@@ -103,12 +110,14 @@ Price.propTypes = {
   discounted: PropTypes.bool,
   fractions: PropTypes.bool,
   taxDisclaimer: PropTypes.bool,
+  unitPriceMax: PropTypes.number,
   unitPriceMin: PropTypes.number,
 };
 
 Price.defaultProps = {
   className: '',
   unitPriceMin: 0,
+  unitPriceMax: undefined,
   discounted: false,
   fractions: true,
   taxDisclaimer: false,
