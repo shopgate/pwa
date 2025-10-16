@@ -1,5 +1,5 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
-import { resolveBorderRadiusFromWidgetConfig } from '../../components/Widgets/helpers';
+import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 
 /**
  * @typedef {Object} HeroBanner

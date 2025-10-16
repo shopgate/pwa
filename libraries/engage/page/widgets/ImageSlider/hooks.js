@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useTheme } from '@shopgate/engage/styles';
-import { resolveBorderRadiusFromWidgetConfig } from '../../components/Widgets/helpers';
+import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps

@@ -1,6 +1,6 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useMemo } from 'react';
-import { resolveBorderRadiusFromWidgetConfig } from '../../components/Widgets/helpers';
+import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 
 /**
  * @typedef {Object} ImageRowWidgetConfig

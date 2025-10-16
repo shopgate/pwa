@@ -1,6 +1,6 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
-import { resolveBorderRadiusFromWidgetConfig } from '../../components/Widgets/helpers';
+import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 
 /**
  * @typedef {Object} ImageWidgetConfig
