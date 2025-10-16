@@ -49,3 +49,22 @@ export declare function parseImageUrl(
   url: string,
   useHighRes?: boolean
 ): string;
+
+type BorderRadiusParams = {
+  /**
+   * The border radius option
+   */
+  borderRadius: 'default' | 'none' |'rounded' | 'custom';
+  /**
+   * The custom border radius value
+   */
+  customBorderRadius?: number
+};
+
+/**
+ * Retrieves the border radius based on the widget config
+ * @returns The resolved border radius
+ */
+export declare function resolveBorderRadiusFromWidgetConfig(
+  params: BorderRadiusParams
+)
