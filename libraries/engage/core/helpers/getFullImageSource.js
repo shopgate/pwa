@@ -46,7 +46,7 @@ const buildUrl = (baseUrl, params = {}) => {
  * @returns {string}
  */
 export const getFullImageSource = (src, { width, height } = {}) => {
-  if (src && src.includes('images.shopgate.services/v2/images')) {
+  if (src && src.includes('images.shopgate.services')) {
     const { fillColor, quality } = getProductImageSettings();
     const format = getImageFormat();
 
