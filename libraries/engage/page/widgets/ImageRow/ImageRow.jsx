@@ -4,7 +4,7 @@ import { Link, ConditionalWrapper, Grid } from '@shopgate/engage/components';
 import { useImageRowWidget } from './hooks';
 import ResponsiveWidgetImage from '../../components/ResponsiveWidgetImage';
 
-const useStyles = makeStyles()((theme, { imageSpacing }) => ({
+const useStyles = makeStyles()((theme, { imageSpacing, borderRadius }) => ({
   imageContainer: {
     width: '100%',
     display: 'flex',
@@ -20,6 +20,7 @@ const useStyles = makeStyles()((theme, { imageSpacing }) => ({
     display: 'block',
     width: '100%',
     objectFit: 'contain',
+    borderRadius: `${borderRadius}px`,
   },
   itemContainerDense: {
     [theme.breakpoints.down('md')]: {
@@ -48,10 +49,10 @@ const useStyles = makeStyles()((theme, { imageSpacing }) => ({
  */
 const ImageRow = () => {
   const {
-    images, imageWrapping, imageSpacing,
+    images, imageWrapping, imageSpacing, borderRadius,
   } = useImageRowWidget();
 
-  const { cx, classes } = useStyles({ imageSpacing });
+  const { cx, classes } = useStyles({ imageSpacing, borderRadius });
 
   if (images.length === 0) return null;
 
