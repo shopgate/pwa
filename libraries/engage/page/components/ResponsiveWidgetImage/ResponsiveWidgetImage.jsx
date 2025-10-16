@@ -5,10 +5,20 @@ import { useParallax } from 'react-scroll-parallax';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import { parseImageUrl } from '../../helpers';
 
+/**
+ * @typedef {Object} CustomResponsiveImageProps
+ * @property {boolean} [enableParallax] Whether to enable the parallax effect.
+ * @property {number} [borderRadius] The border radius to apply to the image.
+ * @property {Breakpoint} [breakpoint] The breakpoint from which on a higher resolution image should
+ * be loaded.
+ * @property {boolean} [isBanner] Whether the image is used as a banner (full width and height of
+ * its container).
+ */
+
 /** @typedef {import('@shopgate/engage/styles').Theme} Theme */
 /** @typedef {Theme['breakpoints']['keys'][0]} Breakpoint */
 /** @typedef {React.ImgHTMLAttributes<HTMLImageElement>} ImgProps */
-/** @typedef {{breakpoint: Breakpoint} & ImgProps} ResponsiveImageProps */
+/** @typedef {CustomResponsiveImageProps & ImgProps} ResponsiveImageProps */
 
 const useStyles = makeStyles()({
   preventSave: {
@@ -53,6 +63,7 @@ const ResponsiveWidgetImage = ({
   className,
   enableParallax = false,
   isBanner = false,
+  borderRadius = 0,
   ...imgProps
 }) => {
   const { classes, cx } = useStyles();
@@ -103,6 +114,7 @@ const ResponsiveWidgetImage = ({
         ]
       )}
       style={{
+        borderRadius: `${borderRadius}px`,
         ...(!isBanner ? { aspectRatio: containerRatio } : {}),
       }}
     >
@@ -129,6 +141,7 @@ const ResponsiveWidgetImage = ({
 
 ResponsiveWidgetImage.propTypes = {
   alt: PropTypes.string,
+  borderRadius: PropTypes.number,
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   className: PropTypes.string,
   enableParallax: PropTypes.bool,
@@ -143,6 +156,7 @@ ResponsiveWidgetImage.defaultProps = {
   className: null,
   enableParallax: false,
   isBanner: false,
+  borderRadius: 0,
 };
 
 export default ResponsiveWidgetImage;

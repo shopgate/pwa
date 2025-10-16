@@ -38,7 +38,7 @@ const useStyles = makeStyles()(theme => ({
  */
 const HeroBanner = () => {
   const {
-    text, backgroundImage, link, parallax,
+    text, backgroundImage, link, borderRadius, parallax,
   } = useHeroBannerWidget();
 
   const { cx, classes } = useStyles();
@@ -61,6 +61,7 @@ const HeroBanner = () => {
           <ResponsiveWidgetImage
             src={backgroundImage?.url}
             alt={backgroundImage?.alt}
+            borderRadius={borderRadius}
             enableParallax={parallax}
             isBanner
           />

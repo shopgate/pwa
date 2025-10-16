@@ -1,51 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > components > view > components > content should render content 1`] = `
-<article
-  className="css-ytqxab engage__view__content route_"
-  role="none"
-  style={
-    Object {
-      "--extra-ios-scroll-space": "12px",
-      "--keyboard-height": "0px",
-      "overflow": "auto",
-    }
-  }
+<ParallaxProvider
+  viewVisible={true}
 >
-  <div
-    className={
+  <article
+    className="css-ytqxab engage__view__content route_"
+    role="none"
+    style={
       Object {
-        "data-css-18u3fb9": "",
+        "--extra-ios-scroll-space": "12px",
+        "--keyboard-height": "0px",
+        "overflow": "auto",
       }
     }
   >
-    <HelmetWrapper
-      defer={true}
-      encodeSpecialCharacters={true}
-      title="Test Shop"
-    />
-    <ViewAbove />
-    <ResponsiveContainer
-      appAlways={false}
-      appOnly={false}
-      breakpoint=">xs"
-      webAlways={false}
-      webOnly={true}
+    <div
+      className={
+        Object {
+          "data-css-18u3fb9": "",
+        }
+      }
     >
       <div
-        id="PageHeaderBelow"
-      />
-    </ResponsiveContainer>
-    <ConditionalWrapper
-      condition={true}
-      wrapper={[Function]}
-      wrapperFalsy={null}
-    >
-      <div>
-        Page #1
+        className="engage__view__content__scrollable-content"
+      >
+        <HelmetWrapper
+          defer={true}
+          encodeSpecialCharacters={true}
+          title="Test Shop"
+        />
+        <ViewAbove />
+        <ResponsiveContainer
+          appAlways={false}
+          appOnly={false}
+          breakpoint=">xs"
+          webAlways={false}
+          webOnly={true}
+        >
+          <div
+            id="PageHeaderBelow"
+          />
+        </ResponsiveContainer>
+        <ConditionalWrapper
+          condition={true}
+          wrapper={[Function]}
+          wrapperFalsy={null}
+        >
+          <div>
+            Page #1
+          </div>
+        </ConditionalWrapper>
+        <ViewBelow />
       </div>
-    </ConditionalWrapper>
-    <ViewBelow />
-  </div>
-</article>
+    </div>
+  </article>
+</ParallaxProvider>
 `;
