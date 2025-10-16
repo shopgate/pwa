@@ -51,6 +51,9 @@ const useStyles = makeStyles()(theme => ({
       ...theme.typography.h6,
       margin: '0px 0px 1rem 0px',
     },
+    a: {
+      color: 'var(--color-primary)',
+    },
   },
 }));
 

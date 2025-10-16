@@ -67,6 +67,8 @@ import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants'
 import { PRIVACY_SETTINGS_PATTERN } from '@shopgate/engage/tracking/constants';
 import { CookieConsentModal } from '@shopgate/engage/tracking/components';
 import { DevelopmentTools } from '@shopgate/engage/development/components';
+import { CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY } from '@shopgate/engage/core/constants';
+import { configuration } from '@shopgate/engage/core/collections';
 import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import widgetsV1 from 'Extensions/widgets';
@@ -96,11 +98,16 @@ const globalLocationSelectorAllowList = [
 const Pages = ({ store }) => {
   const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
 
-  const theme = useMemo(() => createTheme({
-    typography: {
-      fontFamily: themeConfig.typography.family,
-    },
-  }), []);
+  const theme = useMemo(() => {
+    const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);
+
+    return createTheme({
+      typography: {
+        fontFamily: themeConfig.typography.family,
+        ...extendedTypography,
+      },
+    });
+  }, []);
 
   return (
     <App store={store}>
