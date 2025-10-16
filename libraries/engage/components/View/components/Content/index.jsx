@@ -121,10 +121,6 @@ class ViewContent extends Component {
       window.removeEventListener('focusin', this.handleInputFocusChange);
       window.removeEventListener('focusout', this.handleInputFocusChange);
     }
-    if (this.resizeObserver) {
-      this.resizeObserver.disconnect();
-      this.resizeObserver = null;
-    }
   }
 
   /**
@@ -217,7 +213,8 @@ class ViewContent extends Component {
                 wrapper={children =>
                   <SurroundPortals portalName={VIEW_CONTENT}>
                     {children}
-                  </SurroundPortals>}
+                  </SurroundPortals>
+                }
               >
                 {this.props.children}
               </ConditionalWrapper>
