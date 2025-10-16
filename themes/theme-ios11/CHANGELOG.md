@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.28.1](https://github.com/shopgate/pwa/compare/v7.28.0...v7.28.1) (2025-10-09)
+
+#### :rocket: Enhancement
+* [#1404](https://github.com/shopgate/pwa/pull/1404) Hide "from" prices when max price is equal to min price ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.28.0](https://github.com/shopgate/pwa/compare/v7.27.5...v7.28.0) (2025-09-08)
 
 #### :rocket: Enhancement
