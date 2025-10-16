@@ -59,7 +59,7 @@ export const isHTTPS = (url = '') => url.startsWith('https://');
  * @returns {string}
  */
 export const getActualImageSource = (src, { width, height }) => {
-  if (src && src.includes('images.shopgate.services/v2/images')) {
+  if (src && src.includes('images.shopgate.services')) {
     const fillColor = 'FFFFFF,1';
     const format = isAndroidOs ? 'webp' : 'jpeg';
 
