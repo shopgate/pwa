@@ -10,12 +10,11 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { useScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
-import { ParallaxProvider } from 'react-scroll-parallax';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
+import ParallaxProvider from './components/ParallaxProvider';
 import { container, containerInner } from './style';
-import ParallaxUpdater from './components/ParallaxUpdater';
 
 /**
  * The ViewContent component.
@@ -48,12 +47,9 @@ class ViewContent extends Component {
     super(props);
 
     this.ref = React.createRef();
-    this.resizeObserver = null;
-    this.scrollContainerInner = React.createRef();
     this.state = {
       keyboardHeight: 0,
       isInputFocused: false,
-      scrollHeight: 0,
     };
 
     this.scrollContainer = useScrollContainer();
@@ -101,22 +97,6 @@ class ViewContent extends Component {
         this.ref.current.scrollTop = scrollTop;
       }
     });
-
-    const containerElement = this.scrollContainerInner.current;
-    this.resizeObserver = new ResizeObserver((entries) => {
-      console.log('sasa:106: entries);', entries);
-      const firstEntry = entries[0];
-      if (firstEntry) {
-        console.log('sasa:110: firstEntry.contentRect.height);', firstEntry.contentRect.height);
-        this.setState({
-          scrollHeight: firstEntry.contentRect.height,
-        });
-      }
-    });
-
-    if (containerElement) {
-      this.resizeObserver.observe(containerElement);
-    }
   }
 
   /**
@@ -215,16 +195,16 @@ class ViewContent extends Component {
    */
   render() {
     return (
-      <article
-        className={`${container} engage__view__content ${this.props.className}`}
-        ref={this.scrollContainer ? this.ref : null}
-        style={this.style}
-        role="none"
-      >
-        <ParallaxProvider scrollContainer={this.ref.current}>
-          <ParallaxUpdater scrollHeight={this.state.scrollHeight} />
+      <ParallaxProvider viewVisible={this.props.visible}>
+        <article
+          className={`${container} engage__view__content ${this.props.className}`}
+          ref={this.scrollContainer ? this.ref : null}
+          style={this.style}
+          role="none"
+        >
           <div className={containerInner}>
-            <div ref={this.scrollContainerInner}>
+            {/** Class of this div is needed by the ParallaxProvider component */}
+            <div className="engage__view__content__scrollable-content">
               <Helmet title={appConfig.shopName} />
               <Above />
               <ResponsiveContainer breakpoint=">xs" webOnly>
@@ -244,9 +224,8 @@ class ViewContent extends Component {
               <Below />
             </div>
           </div>
-
-        </ParallaxProvider>
-      </article>
+        </article>
+      </ParallaxProvider>
     );
   }
 }
