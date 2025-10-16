@@ -55,11 +55,11 @@ export const isHTTPS = (url = '') => url.startsWith('https://');
  * @param {Object} dimension Dimension of the requested image.
  * @param {number} dimension.width Width in pixels.
  * @param {number} dimension.height Height in pixels.
- * @deprecated use @engage/core/helpers/getFullImageSource instead
+ * @deprecated use getFullImageSource from @shopgate/engage/core/helpers instead
  * @returns {string}
  */
 export const getActualImageSource = (src, { width, height }) => {
-  if (src && src.includes('images.shopgate.services/v2/images')) {
+  if (src && src.includes('images.shopgate.services')) {
     const fillColor = 'FFFFFF,1';
     const format = isAndroidOs ? 'webp' : 'jpeg';
 
