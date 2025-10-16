@@ -1,6 +1,6 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
-import { resolveBorderRadius } from '../../components/Widgets/helpers';
+import { resolveBorderRadiusFromWidgetConfig } from '../../components/Widgets/helpers';
 
 /**
  * @typedef {Object} ImageWidgetConfig
@@ -13,6 +13,8 @@ import { resolveBorderRadius } from '../../components/Widgets/helpers';
  * @property {boolean} [useImageWide] Whether to use the wide image on
  * medium and larger screens.
  * @property {string} [link] The link URL.
+ * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
+ * @property {number} [borderRadiusCustom] The custom border radius value.
  */
 
 /**
@@ -32,12 +34,10 @@ export const useImageWidget = () => {
     image, imageWide, link, useImageWide, borderRadius, borderRadiusCustom,
   } = config || {};
 
-  const borderRadiusResolved = resolveBorderRadius(
-    {
-      borderRadius,
-      borderRadiusCustom,
-    }
-  );
+  const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
+    borderRadius,
+    borderRadiusCustom,
+  });
 
   const resolved = useResponsiveValue({
     xs: {

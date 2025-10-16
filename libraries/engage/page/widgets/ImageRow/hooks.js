@@ -1,6 +1,6 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useMemo } from 'react';
-import { resolveBorderRadius } from '../../components/Widgets/helpers';
+import { resolveBorderRadiusFromWidgetConfig } from '../../components/Widgets/helpers';
 
 /**
  * @typedef {Object} ImageRowWidgetConfig
@@ -9,6 +9,8 @@ import { resolveBorderRadius } from '../../components/Widgets/helpers';
  * one of: responsiveDefault | responsiveDense | responsiveNoWrap.
  * @property {string} [link] The optional link URL.
  * @property {number} [imageSpacing] An optional gap between images (in pixels).
+ * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
+ * @property {number} [borderRadiusCustom] The custom border radius value.
  */
 
 /**
@@ -33,12 +35,10 @@ export const useImageRowWidget = () => {
     borderRadiusCustom,
   } = config || {};
 
-  const borderRadiusResolved = resolveBorderRadius(
-    {
-      borderRadius,
-      borderRadiusCustom,
-    }
-  );
+  const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
+    borderRadius,
+    borderRadiusCustom,
+  });
 
   const mappedImages = useMemo(() => images.map(({ image, link }) => {
     const { url, altText } = image || {};

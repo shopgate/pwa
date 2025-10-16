@@ -32,7 +32,7 @@ const useStyles = makeStyles()((theme, { borderRadius }) => ({
     objectFit: 'cover',
     zIndex: 0,
     pointerEvents: 'none',
-    borderRadius,
+    borderRadius: `${borderRadius}px`,
   },
 }));
 

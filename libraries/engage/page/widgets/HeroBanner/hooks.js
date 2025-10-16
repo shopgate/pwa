@@ -1,5 +1,5 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
-import { resolveBorderRadius } from '../../components/Widgets/helpers';
+import { resolveBorderRadiusFromWidgetConfig } from '../../components/Widgets/helpers';
 
 /**
  * @typedef {Object} HeroBanner
@@ -8,6 +8,8 @@ import { resolveBorderRadius } from '../../components/Widgets/helpers';
  * @property {string} backgroundImage.url Banner background image URL
  * @property {string} backgroundImage.alt Banner background image alt text
  * @property {string} link Optional banner link
+ * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
+ * @property {number} [borderRadiusCustom] The custom border radius value.
  */
 
 /**
@@ -26,14 +28,16 @@ export const useHeroBannerWidget = () => {
   const {
     borderRadius,
     borderRadiusCustom,
+    ...rest
   } = config || {};
 
-  const borderRadiusResolved = resolveBorderRadius(
-    {
-      borderRadius,
-      borderRadiusCustom,
-    }
-  );
+  const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
+    borderRadius,
+    borderRadiusCustom,
+  });
 
-  return { ...config, borderRadius: borderRadiusResolved };
+  return {
+    ...rest,
+    borderRadius: borderRadiusResolved,
+  };
 };

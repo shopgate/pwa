@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { useTheme } from '@shopgate/engage/styles';
-import { resolveBorderRadius } from '../../components/Widgets/helpers';
+import { resolveBorderRadiusFromWidgetConfig } from '../../components/Widgets/helpers';
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
@@ -31,6 +31,8 @@ import { resolveBorderRadius } from '../../components/Widgets/helpers';
  * @property {number} slidesPerViewCustomLarge Slides per view for large screens.
  * @property {number} imageSpacing Optional gap between image slides (in pixels).
  * @property {"default"|"off"|"bullets"|"progressbar"|"fraction"} paginationStyle
+ * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
+ * @property {number} [borderRadiusCustom] The custom border radius value.
  * the pagination type for the slider.
  */
 
@@ -63,12 +65,10 @@ export const useImageSliderWidget = () => {
     borderRadiusCustom,
   } = config;
 
-  const borderRadiusResolved = resolveBorderRadius(
-    {
-      borderRadius,
-      borderRadiusCustom,
-    }
-  );
+  const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
+    borderRadius,
+    borderRadiusCustom,
+  });
 
   const paginationType = useMemo(() => (paginationStyle === 'default' ? 'bullets' : paginationStyle.toLowerCase()),
     [paginationStyle]);

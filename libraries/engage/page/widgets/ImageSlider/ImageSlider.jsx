@@ -7,7 +7,7 @@ import { useImageSliderWidget } from './hooks';
 const useStyles = makeStyles()((theme, { borderRadius }) => ({
   image: {
     width: '100%',
-    borderRadius,
+    borderRadius: `${borderRadius}px`,
   },
 }));
 

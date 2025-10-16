@@ -52,14 +52,15 @@ export function checkScheduled({ from, to, timezoneOffset } = {}) {
 }
 
 /**
- * Retrieves the border radius based on the config
- * @param {string} borderRadius The border radius option.
- * @param {number} borderRadiusCustom The custom border radius value.
- * @returns {string|number} The resolved border radius.
+ * Retrieves the border radius based on the widget config
+ * @param {Object} params The helper parameters.
+ * @param {"default"|"none"|"rounded"|"custom"} params.borderRadius The border radius option.
+ * @param {number} params.borderRadiusCustom The custom border radius value.
+ * @returns {number} The resolved border radius.
  */
-export const resolveBorderRadius = ({ borderRadius, borderRadiusCustom }) => {
-  if (borderRadius === 'default') return 0;
-  if (borderRadius === 'rounded') return '16px';
-  if (borderRadius === 'custom') return `${borderRadiusCustom}px`;
+export const resolveBorderRadiusFromWidgetConfig = ({ borderRadius, borderRadiusCustom }) => {
+  if (borderRadius === 'none') return 0;
+  if (borderRadius === 'rounded') return 16;
+  if (borderRadius === 'custom' && typeof borderRadiusCustom === 'number') return borderRadiusCustom;
   return 0;
 };

@@ -20,7 +20,7 @@ const useStyles = makeStyles()((theme, { imageSpacing, borderRadius }) => ({
     display: 'block',
     width: '100%',
     objectFit: 'contain',
-    borderRadius,
+    borderRadius: `${borderRadius}px`,
   },
   itemContainerDense: {
     [theme.breakpoints.down('md')]: {
