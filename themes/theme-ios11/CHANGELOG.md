@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.28.2](https://github.com/shopgate/pwa/compare/v7.28.1...v7.28.2) (2025-10-16)
+
+#### :house: Internal
+* [#1410](https://github.com/shopgate/pwa/pull/1410) Update helper logic for Shopgate image service URL detection ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.28.1](https://github.com/shopgate/pwa/compare/v7.28.0...v7.28.1) (2025-10-09)
 
 #### :rocket: Enhancement
