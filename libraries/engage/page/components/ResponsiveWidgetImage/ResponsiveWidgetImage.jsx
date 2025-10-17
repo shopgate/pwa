@@ -66,9 +66,8 @@ const ResponsiveWidgetImage = ({
   ...imgProps
 }) => {
   const { classes, cx } = useStyles();
-
-  const [containerRatio, setContainerRatio] = useState(0);
   const [imageHeight, setImageHeight] = useState(0);
+  const [imageWidth, setImageWidth] = useState(0);
 
   // If parallax is to soft, increase this value.
   const parallaxPercent = 15;
@@ -87,11 +86,15 @@ const ResponsiveWidgetImage = ({
   const handleImageLoad = (event) => {
     const width = event.target.clientWidth;
     const height = event.target.clientHeight;
-
-    const heightReduction = enableParallax ? (height / 100 * (parallaxPercent + 10)) : 0;
-    setContainerRatio(`${width}/${height - heightReduction}`);
-    setImageHeight(event.target.clientHeight);
+    setImageWidth(width);
+    setImageHeight(height);
   };
+
+  const containerRatio = useMemo(() => {
+    const heightReduction = enableParallax ? (imageHeight / 100 * (parallaxPercent + 10)) : 0;
+    return `${imageWidth}/${imageHeight - heightReduction}`;
+  }, [enableParallax, imageHeight, imageWidth]);
+
   const src2x = useMemo(() => parseImageUrl(src, true), [src]);
   const imgSrc = useResponsiveValue({
     xs: src,
@@ -123,7 +126,7 @@ const ResponsiveWidgetImage = ({
         })}
         onLoad={handleImageLoad}
         style={{
-          marginTop: enableParallax ? `-${imageHeight / 100 * (parallaxPercent - 10 / 2)}px` : 0,
+          marginTop: enableParallax ? `-${parallaxPercent / 2}%` : 0,
           ...(enableParallax && isBanner ? { height: `${100 + parallaxPercent * 2}%` } : {}),
         }}
         {...imgProps}
