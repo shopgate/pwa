@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useResponsiveValue } from '@shopgate/engage/styles';
 import { useParallax } from 'react-scroll-parallax';
-import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import { parseImageUrl } from '../../helpers';
 
 /**
@@ -71,13 +70,11 @@ const ResponsiveWidgetImage = ({
   const [containerRatio, setContainerRatio] = useState(0);
   const [imageHeight, setImageHeight] = useState(0);
 
-  const reduceMotion = useReduceMotion();
-
   // If parallax is to soft, increase this value.
   const parallaxPercent = 15;
   const parallax = useParallax({
     translateY: [`-${parallaxPercent}`, `${parallaxPercent}`],
-    disabled: reduceMotion || !enableParallax,
+    disabled: !enableParallax,
   });
 
   /**
@@ -107,15 +104,13 @@ const ResponsiveWidgetImage = ({
 
   return (
     <div
-      className={cx(
-        [
-          [isBanner && classes.bannerContainer],
-          [!isBanner && classes.container],
-        ]
-      )}
+      className={cx({
+        [classes.bannerContainer]: isBanner,
+        [classes.container]: !isBanner,
+      })}
       style={{
         borderRadius: `${borderRadius}px`,
-        ...(!isBanner ? { aspectRatio: containerRatio } : {}),
+        ...(!isBanner && enableParallax ? { aspectRatio: containerRatio } : {}),
       }}
     >
       <img
@@ -123,11 +118,9 @@ const ResponsiveWidgetImage = ({
         ref={parallax.ref}
         alt={alt}
         loading="lazy"
-        className={cx([
-          classes.preventSave,
-          classes.image,
-          isBanner && classes.banner,
-        ], className)}
+        className={cx(className, classes.preventSave, classes.image, {
+          [classes.banner]: isBanner,
+        })}
         onLoad={handleImageLoad}
         style={{
           marginTop: enableParallax ? `-${imageHeight / 100 * (parallaxPercent - 10 / 2)}px` : 0,
