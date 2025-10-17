@@ -15,6 +15,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {string} [link] The link URL.
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
+ * @property {boolean} [parallax] Whether to apply a parallax effect to the image.
  */
 
 /**
@@ -31,7 +32,7 @@ export const useImageWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
   const {
-    image, imageWide, link, useImageWide, borderRadius, borderRadiusCustom,
+    image, imageWide, link, useImageWide, borderRadius, borderRadiusCustom, parallax,
   } = config || {};
 
   const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
@@ -55,5 +56,6 @@ export const useImageWidget = () => {
     altText: resolved.altText,
     link,
     borderRadius: borderRadiusResolved,
+    parallax,
   };
 };

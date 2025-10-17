@@ -11,6 +11,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {number} [imageSpacing] An optional gap between images (in pixels).
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
+ * @property {boolean} [parallax] Whether to apply a parallax effect to the image.
  */
 
 /**
@@ -33,6 +34,7 @@ export const useImageRowWidget = () => {
     imageSpacing = 0,
     borderRadius,
     borderRadiusCustom,
+    parallax,
   } = config || {};
 
   const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
@@ -55,5 +57,6 @@ export const useImageRowWidget = () => {
     imageWrapping,
     imageSpacing,
     borderRadius: borderRadiusResolved,
+    parallax,
   };
 };

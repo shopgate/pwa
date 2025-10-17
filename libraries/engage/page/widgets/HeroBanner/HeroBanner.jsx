@@ -4,7 +4,7 @@ import { WidgetRichText, ResponsiveWidgetImage } from '@shopgate/engage/page/com
 import { makeStyles } from '@shopgate/engage/styles';
 import { useHeroBannerWidget } from './hooks';
 
-const useStyles = makeStyles()((theme, { borderRadius }) => ({
+const useStyles = makeStyles()(theme => ({
   link: {
     width: '100%',
   },
@@ -23,16 +23,12 @@ const useStyles = makeStyles()((theme, { borderRadius }) => ({
     zIndex: 2,
     padding: theme.spacing(2),
   },
-  image: {
+  imageContainer: {
     position: 'absolute',
     width: '100%',
     height: '100%',
     top: 0,
     left: 0,
-    objectFit: 'cover',
-    zIndex: 0,
-    pointerEvents: 'none',
-    borderRadius: `${borderRadius}px`,
   },
 }));
 
@@ -41,10 +37,10 @@ const useStyles = makeStyles()((theme, { borderRadius }) => ({
  */
 const HeroBanner = () => {
   const {
-    text, backgroundImage, link, borderRadius,
+    text, backgroundImage, link, borderRadius, parallax,
   } = useHeroBannerWidget();
 
-  const { cx, classes } = useStyles({ borderRadius });
+  const { cx, classes } = useStyles();
 
   return (
     <ConditionalWrapper
@@ -60,11 +56,16 @@ const HeroBanner = () => {
           content={text}
           className={cx(classes.richText)}
         />
-        <ResponsiveWidgetImage
-          src={backgroundImage?.url}
-          alt={backgroundImage?.alt}
-          className={cx(classes.image)}
-        />
+        <div className={cx(classes.imageContainer)}>
+          <ResponsiveWidgetImage
+            src={backgroundImage?.url}
+            alt={backgroundImage?.alt}
+            borderRadius={borderRadius}
+            enableParallax={parallax}
+            isBanner
+          />
+
+        </div>
       </div>
     </ConditionalWrapper>
   );

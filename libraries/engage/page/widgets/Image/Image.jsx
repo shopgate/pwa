@@ -4,23 +4,21 @@ import { Link, ConditionalWrapper } from '@shopgate/engage/components';
 import { ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { useImageWidget } from './hooks';
 
-const useStyles = makeStyles()((theme, { borderRadius }) => ({
+const useStyles = makeStyles()({
   link: {},
   image: {
     width: '100%',
-    borderRadius: `${borderRadius}px`,
   },
-}));
+});
 /**
  * The ImageWidget is used to display a image.
  * @returns {JSX.Element}
  */
 const Image = () => {
+  const { cx, classes } = useStyles();
   const {
-    link, altText, url, borderRadius,
+    link, altText, url, borderRadius, parallax,
   } = useImageWidget();
-
-  const { cx, classes } = useStyles({ borderRadius });
 
   if (!url) return null;
 
@@ -37,6 +35,8 @@ const Image = () => {
         src={url}
         alt={altText}
         className={cx(classes.image)}
+        borderRadius={borderRadius}
+        enableParallax={parallax}
       />
     </ConditionalWrapper>
   );

@@ -4,7 +4,7 @@ import { Link, ConditionalWrapper, Grid } from '@shopgate/engage/components';
 import { useImageRowWidget } from './hooks';
 import ResponsiveWidgetImage from '../../components/ResponsiveWidgetImage';
 
-const useStyles = makeStyles()((theme, { imageSpacing, borderRadius }) => ({
+const useStyles = makeStyles()((theme, { imageSpacing }) => ({
   imageContainer: {
     width: '100%',
     display: 'flex',
@@ -20,7 +20,6 @@ const useStyles = makeStyles()((theme, { imageSpacing, borderRadius }) => ({
     display: 'block',
     width: '100%',
     objectFit: 'contain',
-    borderRadius: `${borderRadius}px`,
   },
   itemContainerDense: {
     [theme.breakpoints.down('md')]: {
@@ -49,10 +48,10 @@ const useStyles = makeStyles()((theme, { imageSpacing, borderRadius }) => ({
  */
 const ImageRow = () => {
   const {
-    images, imageWrapping, imageSpacing, borderRadius,
+    images, imageWrapping, imageSpacing, borderRadius, parallax,
   } = useImageRowWidget();
 
-  const { cx, classes } = useStyles({ imageSpacing, borderRadius });
+  const { cx, classes } = useStyles({ imageSpacing });
 
   if (images.length === 0) return null;
 
@@ -80,6 +79,8 @@ const ImageRow = () => {
               src={img.url}
               alt={img.altText}
               className={cx(classes.image)}
+              borderRadius={borderRadius}
+              enableParallax={parallax}
             />
           </ConditionalWrapper>
         </Grid.Item>

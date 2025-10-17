@@ -10,6 +10,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {string} link Optional banner link
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
+ * @property {boolean} parallax Whether to apply a parallax effect to the image
  */
 
 /**

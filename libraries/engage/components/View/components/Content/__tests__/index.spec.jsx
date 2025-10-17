@@ -18,6 +18,13 @@ jest.mock('@shopgate/pwa-common/selectors/history', () => ({
 }));
 jest.mock('@shopgate/engage/components');
 
+jest.mock('../components/ParallaxProvider', () => ({
+  __esModule: true,
+  default: function ParallaxProvider({ children }) {
+    return children;
+  },
+}));
+
 describe('engage > components > view > components > content', () => {
   beforeEach(jest.clearAllMocks);
 
