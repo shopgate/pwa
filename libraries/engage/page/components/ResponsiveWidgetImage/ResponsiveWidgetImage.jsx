@@ -48,10 +48,6 @@ const useStyles = makeStyles()({
 });
 
 /**
- * The ResponsiveWidgetImage component renders an image that adapts to different screen sizes.
- * It renders a image with higher resolution on larger screens
- * It can apply a parallax effect when scrolling.
- *
  * @param {ResponsiveImageProps} props The component props.
  * @returns {JSX.Element}
  */
@@ -104,10 +100,6 @@ const ResponsiveWidgetImage = ({
     [breakpoint]: src2x,
   });
 
-  if (!src) {
-    return null;
-  }
-
   return (
     <div
       className={cx({
@@ -156,6 +148,31 @@ ResponsiveWidgetImage.defaultProps = {
   enableParallax: false,
   isBanner: false,
   borderRadius: 0,
+};
+
+/**
+ * The ResponsiveWidgetImage component renders an image that adapts to different screen sizes.
+ * It renders a image with higher resolution on larger screens
+ * It can apply a parallax effect when scrolling.
+ *
+ * @param {ResponsiveImageProps} props The component props.
+ * @returns {JSX.Element}
+ */
+const Protector = ({ src, ...rest }) => {
+  if (!src) {
+    return null;
+  }
+  // Only render the actual ResponsiveWidgetImage if a src is provided to avoid errors from
+  // the useParallax hook.
+  return <ResponsiveWidgetImage src={src} {...rest} />;
+};
+
+Protector.propTypes = {
+  src: PropTypes.string,
+};
+
+Protector.defaultProps = {
+  src: null,
 };
 
 export default ResponsiveWidgetImage;
