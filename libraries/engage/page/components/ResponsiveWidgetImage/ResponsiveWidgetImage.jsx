@@ -175,4 +175,4 @@ Protector.defaultProps = {
   src: null,
 };
 
-export default ResponsiveWidgetImage;
+export default Protector;
