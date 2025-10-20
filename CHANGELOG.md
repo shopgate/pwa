@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.29.0](https://github.com/shopgate/pwa/compare/v7.28.2...v7.29.0) (2025-10-20)
+
+#### :rocket: Enhancement
+* [#1386](https://github.com/shopgate/pwa/pull/1386) Introduce CMS 2.0 ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1398](https://github.com/shopgate/pwa/pull/1398) Fixed handling of links with coupons ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.28.2](https://github.com/shopgate/pwa/compare/v7.28.1...v7.28.2) (2025-10-16)
 
 #### :house: Internal
