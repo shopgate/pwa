@@ -37,7 +37,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  */
 
 /**
- * @typedef {ReturnType< typeof import('@shopgate/engage/page/hooks')
+ * @typedef {ReturnType<typeof import('@shopgate/engage/page/hooks')
  *   .useWidget<ImageSliderWidgetConfig> >} UseWidgetReturnType
  */
 
@@ -47,7 +47,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  */
 export const useImageSliderWidget = () => {
   /** @type {UseWidgetReturnType}  */
-  const { config, isPreview } = useWidget();
+  const { config, isPreview, layout } = useWidget();
   const theme = useTheme();
 
   const {
@@ -122,6 +122,19 @@ export const useImageSliderWidget = () => {
         clickable: true,
         dynamicBullets: true,
       } : false,
+      // Prevent cut-off sliders when margins are used in the layout
+      ...(layout.marginLeft || layout.marginRight ? {
+        style: {
+          ...layout.marginLeft ? {
+            marginLeft: layout.marginLeft * -1,
+            paddingLeft: layout.marginLeft,
+          } : {},
+          ...layout.marginRight ? {
+            marginRight: layout.marginRight * -1,
+            paddingRight: layout.marginRight,
+          } : {},
+        },
+      } : null),
       ...isPreview ? {
         key: componentKey,
         // Improves interaction with the slider in the CMS preview iframe
@@ -129,10 +142,22 @@ export const useImageSliderWidget = () => {
       } : {},
     };
   },
-  [slidesPerView, theme.breakpoints.values.sm, theme.breakpoints.values.md,
-    paginationType, imagesWithUrls.length, imageSpacing, slideAutomatic, sliderSpeed,
-    endlessSlider, isPreview, slidesPerViewCustomSmall, slidesPerViewCustomMedium,
-    slidesPerViewCustomLarge]);
+  [
+    slidesPerView,
+    theme.breakpoints.values.sm,
+    theme.breakpoints.values.md,
+    paginationType,
+    imagesWithUrls.length,
+    imageSpacing,
+    slideAutomatic,
+    sliderSpeed,
+    endlessSlider,
+    isPreview,
+    slidesPerViewCustomSmall,
+    slidesPerViewCustomMedium,
+    slidesPerViewCustomLarge,
+    layout,
+  ]);
 
   return {
     slides: imagesWithUrls,
