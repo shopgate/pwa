@@ -9,6 +9,8 @@ import {
 import Route from '@virtuous/conductor/Route';
 import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
 import { logger } from '@shopgate/pwa-core';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { getCurrentRoute, getRouterStackIndex } from '../selectors/router';
 import { LoadingProvider } from '../providers';
 import { redirects } from '../collections';
@@ -31,6 +33,11 @@ import ToastProvider from '../providers/toast';
  */
 export default function routerSubscriptions(subscribe) {
   subscribe(navigate$, async (params) => {
+    if (IS_PAGE_PREVIEW_ACTIVE) {
+      // No navigation is allowed in page preview mode.
+      return;
+    }
+
     const {
       action, dispatch, getState, events,
     } = params;
@@ -236,6 +243,18 @@ export default function routerSubscriptions(subscribe) {
       // The URL is not valid - show a toast message
       showConnectivityError();
       return;
+    }
+
+    if (parsed?.query?.coupon) {
+      const hasBase = location.startsWith('http://') || location.startsWith('https://');
+
+      // Remove the coupon query parameter from internal URLs and redeem the coupon.
+      if (!hasBase) {
+        dispatch(addCouponsToCart([parsed.query.coupon], false));
+        const u = new URL(location, hasBase ? undefined : 'http://example.com');
+        u.searchParams.delete('coupon');
+        location = hasBase ? u.toString() : u.pathname + u.search + u.hash;
+      }
     }
 
     // Override the location if is Shop link is found.

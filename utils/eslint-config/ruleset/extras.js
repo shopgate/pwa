@@ -7,6 +7,7 @@ module.exports = {
     'extra-rules',
     'json',
     'cypress',
+    'tss-unused-classes',
   ],
   rules: {
     'extra-rules/no-commented-out-code': 2,
@@ -17,5 +18,6 @@ module.exports = {
     'eslint-comments/no-unlimited-disable': 'error',
     'eslint-comments/no-unused-disable': 'error',
     'eslint-comments/no-unused-enable': 'error',
+    'tss-unused-classes/unused-classes': 'warn',
   },
 };

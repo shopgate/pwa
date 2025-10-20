@@ -12,6 +12,7 @@ export {
   getWishlistItemNotesEnabled,
   getShowWishlistItemsCountBadge,
   getLoadWishlistOnAppStartEnabled,
+  getEnableCms2ForAllShoppers,
 } from './shopSettings';
 export {
   getIsLocationBasedShopping,
@@ -21,6 +22,7 @@ export {
   getEnableWebIndexing,
   getProductShowAlternativeLocation,
   getProductListShowInventory,
+  getEnabledCMSVersion,
 } from './merchantSettings';
 
 export * from '../config/config.selectors';

@@ -6,7 +6,7 @@ import connect from './connector';
 /**
  * The CategoryImage component
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CategoryImage = ({ className, src, placeholderSrc }) => {
   const [showPlaceholder, setShowPlaceholder] = useState(!src);

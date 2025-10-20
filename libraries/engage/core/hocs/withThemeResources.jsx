@@ -33,10 +33,17 @@ export const withThemeComponents = WrappedComponent => function ThemeResourcesWr
  * HOC that injects the `widgets` value of the ThemeResources context as a prop called
  * `themeWidgets`.
  * @param {React.ComponentType<any>} WrappedComponent The wrapped component
+ * @param {Object} [options={}] Options for the HOC.
+ * @param {"v1"|"v2"} [options.version='v1'] The API version of the widgets to return. Can be 'v1'
+ * or 'v2'.
  * @returns {React.FC<any>}
  */
-export const withThemeWidgets = WrappedComponent => function ThemeResourcesWrapper(props) {
-  const themeWidgets = useThemeWidgets();
+export const withThemeWidgets = (
+  WrappedComponent,
+  options = {}
+) => function ThemeResourcesWrapper(props) {
+  const { version = 'v1' } = options;
+  const themeWidgets = useThemeWidgets(version);
 
   return <WrappedComponent {...props} themeWidgets={themeWidgets} />;
 };

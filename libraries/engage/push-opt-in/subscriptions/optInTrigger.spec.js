@@ -90,6 +90,8 @@ jest.mock('@shopgate/pwa-core/commands/appPermissions', () => {
   };
 });
 
+jest.mock('@shopgate/engage/product');
+
 jest.mock('@shopgate/engage/core/helpers', () => ({
   appSupportsPushOptIn: jest.fn().mockReturnValue(true),
   logger: {
@@ -99,6 +101,7 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   hasSGJavaScriptBridge: jest.fn(() => true),
   hasWebBridge: jest.fn(() => false),
   createMockedPermissions: jest.fn(() => 'mockedPermissions'),
+  useScrollContainer: jest.fn(() => true),
 }));
 
 describe('Push OptIn Subscriptions', () => {

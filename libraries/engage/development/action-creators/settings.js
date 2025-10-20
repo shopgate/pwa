@@ -1,6 +1,7 @@
 import {
   DEVELOPMENT_TOOLS_TOGGLE_INSETS,
   DEVELOPMENT_TOOLS_TOGGLE_INSET_HIGHLIGHT,
+  DEVELOPMENT_TOOLS_TOGGLE_CMS2_PREVIEW,
 } from '../constants';
 
 /**
@@ -23,3 +24,12 @@ export const toggleInsetHighlight = (visible = true) => ({
   visible,
 });
 
+/**
+ * Toggles the CMS 2.0 preview mode.
+ * @param {boolean} enabled Whether the CMS 2.0 preview should be enabled or not.
+ * @returns {Object} The action object.
+ */
+export const toggleCms2Preview = (enabled = true) => ({
+  type: DEVELOPMENT_TOOLS_TOGGLE_CMS2_PREVIEW,
+  enabled,
+});

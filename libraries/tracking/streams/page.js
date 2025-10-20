@@ -10,8 +10,8 @@ import {
 import {
   getIsAppWebViewVisible,
 } from '@shopgate/engage/core/selectors';
-import { PAGE_PATTERN } from '@shopgate/engage/page/constants';
-import { getPageConfigById } from '@shopgate/engage/page/selectors';
+import { PAGE_PATTERN, RECEIVE_PAGE_CONFIG_V2 } from '@shopgate/engage/page/constants';
+import { makeGetUnifiedCMSPageData } from '@shopgate/engage/page/selectors';
 
 /**
  * Emits when a "page" was entered.
@@ -26,7 +26,7 @@ const pageRouteReappeared$ = pwaDidAppear$
   .filter(({ action }) => action.route.pattern === PAGE_PATTERN);
 
 const pageConfigReceived$ = main$
-  .filter(({ action }) => action.type === RECEIVE_PAGE_CONFIG);
+  .filter(({ action }) => [RECEIVE_PAGE_CONFIG, RECEIVE_PAGE_CONFIG_V2].includes(action.type));
 
 /**
  * Emits when a "page" was opened, and its config is available.
@@ -39,7 +39,7 @@ export const pageIsReady$ = pageDidEnter$
     const { pageId } = action.route.params;
 
     // Check if the page config for the current route is already available within Redux.
-    const pageConfig = getPageConfigById(getState(), { pageId });
+    const pageConfig = makeGetUnifiedCMSPageData({ slug: pageId })(getState());
 
     if (!pageConfig || pageConfig.isFetching) {
       // Wait for incoming page data if it's not available yet.

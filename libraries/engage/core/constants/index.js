@@ -23,6 +23,7 @@ export {
   SHOP_SETTING_WISHLIST_ITEM_NOTES_ENABLED,
   SHOP_SETTING_LOAD_WISHLIST_ON_APP_START_ENABLED,
   SHOP_SETTING_SHOW_WISHLIST_ITEMS_COUNT_BADGE,
+  SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS,
 } from './shopSettings';
 export {
   RECEIVE_MERCHANT_SETTINGS,
@@ -35,6 +36,7 @@ export {
   MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
   MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION,
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
+  MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
 } from './merchantSettings';
 export { SHOPGATE_CORE_GET_SHOP_SETTINGS, EUNAUTHORIZED, EAUTHENTICATION } from './pipelines';
 
@@ -72,3 +74,14 @@ export * from '@shopgate/pwa-common/constants/MenuIDs';
 export * from '@shopgate/pwa-common/constants/ModalTypes';
 
 export { INDEX_PATH, INDEX_PATH_DEEPLINK, LOGIN_PATH };
+
+/**
+ * Helper constant that can be used as a return value in Redux selectors to prevent
+ * unnecessary re-renders.
+ */
+export const EMPTY_OBJECT = Object.freeze({});
+/**
+ * Helper constant that can be used as a return value in Redux selectors to prevent
+ * unnecessary re-renders.
+ */
+export const EMPTY_ARRAY = Object.freeze([]);

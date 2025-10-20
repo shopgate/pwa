@@ -1,0 +1,12 @@
+export { default as PlaceholderWidget } from './Placeholder';
+export { default as ProductListWidget } from './ProductList';
+export { default as CategoryListWidget } from './CategoryList';
+export { default as HtmlWidget } from './HTML';
+export { default as ProductSliderWidget } from './ProductSlider';
+export { default as HeadlineWidget } from './Headline';
+export { default as ImageWidget } from './Image';
+export { default as ImageRowWidget } from './ImageRow';
+export { default as ImageSliderWidget } from './ImageSlider';
+export { default as RichTextWidget } from './RichText';
+export { default as HeroBannerWidget } from './HeroBanner';
+export { default as ButtonWidget } from './Button';

@@ -12,10 +12,14 @@ const { hasReviews } = appConfig;
  * The RatingStars component.
  * @return {JSX}
  */
-const RatingStars = ({ product }) => {
+const RatingStars = ({ product, display }) => {
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
 
   const showRatings = useMemo(() => {
+    if (display?.reviews === false) {
+      return false;
+    }
+
     if (hasReviews && product?.rating?.average > 0) {
       return true;
     }
@@ -25,7 +29,7 @@ const RatingStars = ({ product }) => {
     }
 
     return false;
-  }, [product, showEmptyRatingStars]);
+  }, [display, product, showEmptyRatingStars]);
 
   if (!showRatings) {
     return null;
@@ -36,6 +40,13 @@ const RatingStars = ({ product }) => {
 
 RatingStars.propTypes = {
   product: PropTypes.shape().isRequired,
+  display: PropTypes.shape({
+    reviews: PropTypes.bool,
+  }),
+};
+
+RatingStars.defaultProps = {
+  display: null,
 };
 
 export default hot(module)(connect(RatingStars));

@@ -14,6 +14,7 @@ export { default as ProductBadges } from './ProductBadges';
 export { default as ProductCard } from './ProductCard';
 export { default as ProductCharacteristics } from './ProductCharacteristics';
 export { default as ProductDiscountBadge } from './ProductDiscountBadge';
+export { default as ProductGrid } from './ProductGrid';
 export { default as ProductGridPrice } from './ProductGridPrice';
 export { default as ProductImage } from './ProductImage';
 export { default as ProductList } from './ProductList';

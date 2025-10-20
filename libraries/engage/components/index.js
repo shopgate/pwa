@@ -65,7 +65,6 @@ export { default as Card } from '@shopgate/pwa-ui-shared/Card';
 export { default as CardList } from '@shopgate/pwa-ui-shared/CardList';
 export { default as CartTotalLine } from '@shopgate/pwa-ui-shared/CartTotalLine';
 export { default as Chip } from '@shopgate/pwa-ui-shared/Chip';
-export { default as ClientInformation } from '@shopgate/pwa-ui-shared/ClientInformation';
 export { default as ContextMenu } from '@shopgate/pwa-ui-shared/ContextMenu';
 export { default as Dialog } from '@shopgate/pwa-ui-shared/Dialog';
 export { default as DiscountBadge } from '@shopgate/pwa-ui-shared/DiscountBadge';
@@ -200,4 +199,5 @@ export { default as PickerUtilize } from './PickerUtilize';
 export { default as Switch } from './Switch';
 export { default as SnackBarContainer } from './SnackBarContainer';
 export { default as ConnectedReactPortal } from './ConnectedReactPortal';
+export { Typography } from './Typography';
 

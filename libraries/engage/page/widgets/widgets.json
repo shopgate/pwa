@@ -1,0 +1,38 @@
+{
+  "@shopgate/widgets/productListWidget": {
+    "path": "@shopgate/engage/page/widgets/ProductList"
+  },
+  "@shopgate/widgets/categoryListWidget": {
+    "path": "@shopgate/engage/page/widgets/CategoryList"
+  },
+  "@shopgate/widgets/productSliderWidget": {
+    "path": "@shopgate/engage/page/widgets/ProductSlider"
+  },
+  "@shopgate/widgets/htmlWidget": {
+    "path": "@shopgate/engage/page/widgets/HTML"
+  },
+  "@shopgate/widgets/headlineWidget": {
+    "path": "@shopgate/engage/page/widgets/Headline"
+  },
+  "@shopgate/widgets/imageWidget": {
+    "path": "@shopgate/engage/page/widgets/Image"
+  },
+  "@shopgate/widgets/imageRowWidget": {
+    "path": "@shopgate/engage/page/widgets/ImageRow"
+  },
+  "@shopgate/widgets/imageSliderWidget": {
+    "path": "@shopgate/engage/page/widgets/ImageSlider"
+  },
+  "@shopgate/widgets/richTextWidget": {
+    "path": "@shopgate/engage/page/widgets/RichText"
+  },
+  "@shopgate/widgets/heroBannerWidget": {
+    "path": "@shopgate/engage/page/widgets/HeroBanner"
+  },
+  "@shopgate/widgets/buttonWidget": {
+    "path": "@shopgate/engage/page/widgets/Button"
+  },
+  "@shopgate/widgetsInternal/Placeholder": {
+    "path": "@shopgate/engage/page/widgets/Placeholder"
+  }
+}

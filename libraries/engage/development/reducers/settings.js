@@ -3,6 +3,7 @@ import { isDev } from '@shopgate/engage/core/helpers';
 import {
   DEVELOPMENT_TOOLS_TOGGLE_INSETS,
   DEVELOPMENT_TOOLS_TOGGLE_INSET_HIGHLIGHT,
+  DEVELOPMENT_TOOLS_TOGGLE_CMS2_PREVIEW,
 } from '../constants';
 
 /**
@@ -15,6 +16,7 @@ import {
 const initialState = {
   showInsets: null,
   showInsetHighlight: false,
+  cms2PreviewEnabled: false,
 };
 
 /**
@@ -26,20 +28,26 @@ const initialState = {
 export default function settingsReducer(state = initialState, action) {
   /* eslint-disable no-param-reassign */
   const producer = produce(/** @param {DevToolsSettingsState} draft The draft */ (draft) => {
-    if (!isDev) {
-      return;
-    }
-
     switch (action.type) {
       case DEVELOPMENT_TOOLS_TOGGLE_INSETS: {
-        draft.showInsets = action.visible;
+        if (isDev) {
+          draft.showInsets = action.visible;
+        }
         break;
       }
 
       case DEVELOPMENT_TOOLS_TOGGLE_INSET_HIGHLIGHT: {
-        draft.showInsetHighlight = action.visible;
+        if (isDev) {
+          draft.showInsetHighlight = action.visible;
+        }
         break;
       }
+
+      case DEVELOPMENT_TOOLS_TOGGLE_CMS2_PREVIEW: {
+        draft.cms2PreviewEnabled = action.enabled;
+        break;
+      }
+
       default:
         break;
     }
