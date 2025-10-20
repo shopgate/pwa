@@ -92,12 +92,59 @@ export const useImageSliderWidget = () => {
       slidesPerViewLarge = slidesPerViewCustomLarge;
     }
 
+    /**
+     * Special image spacing for slides with a SINGLE slide per view.
+     *
+     * Needs to be at least as large as the highest horizontal layout margin (when set) to avoid
+     * showing of more than one slide.
+     * @type {number}
+     */
+    const imageSpacingForSingleSlide = Math.max(
+      layout?.marginLeft ?? 0,
+      layout?.marginRight ?? 0,
+      imageSpacing
+    );
+
     const breakpoints = {
       [theme.breakpoints.values.sm]: {
         slidesPerView: slidesPerViewMedium,
+        ...(slidesPerViewMedium === 1 && imageSpacingForSingleSlide ? {
+          spaceBetween: imageSpacingForSingleSlide,
+        } : {
+          spaceBetween: imageSpacing,
+        }),
+        ...(layout.marginLeft || layout.marginRight ? {
+          style: {
+            ...layout.marginLeft ? {
+              marginLeft: layout.marginLeft * -1,
+              paddingLeft: layout.marginLeft,
+            } : {},
+            ...layout.marginRight ? {
+              marginRight: layout.marginRight * -1,
+              paddingRight: layout.marginRight,
+            } : {},
+          },
+        } : null),
       },
       [theme.breakpoints.values.md]: {
         slidesPerView: slidesPerViewLarge,
+        ...(slidesPerViewLarge === 1 && imageSpacingForSingleSlide ? {
+          spaceBetween: imageSpacingForSingleSlide,
+        } : {
+          spaceBetween: imageSpacing,
+        }),
+        ...(layout.marginLeft || layout.marginRight ? {
+          style: {
+            ...layout.marginLeft ? {
+              marginLeft: layout.marginLeft * -1,
+              paddingLeft: layout.marginLeft,
+            } : {},
+            ...layout.marginRight ? {
+              marginRight: layout.marginRight * -1,
+              paddingRight: layout.marginRight,
+            } : {},
+          },
+        } : null),
       },
     };
 
@@ -116,7 +163,6 @@ export const useImageSliderWidget = () => {
       loop: endlessSlider,
       slidesPerView: slidesPerViewSmall,
       breakpoints,
-      spaceBetween: imageSpacing,
       pagination: showPagination ? {
         type: paginationType,
         clickable: true,
@@ -135,6 +181,11 @@ export const useImageSliderWidget = () => {
           } : {},
         },
       } : null),
+      ...(slidesPerViewSmall === 1 && imageSpacingForSingleSlide ? {
+        spaceBetween: imageSpacingForSingleSlide,
+      } : {
+        spaceBetween: imageSpacing,
+      }),
       ...isPreview ? {
         key: componentKey,
         // Improves interaction with the slider in the CMS preview iframe
