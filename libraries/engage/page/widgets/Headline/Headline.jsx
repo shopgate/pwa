@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import WidgetHeadline from '../../components/WidgetHeadline';
 import { useWidget } from '../../hooks';
 
@@ -7,14 +7,19 @@ import { useWidget } from '../../hooks';
  * @returns {JSX.Element}
  */
 const Headline = () => {
-  const { config } = useWidget();
+  const { config, layout } = useWidget();
 
   const { headline } = config;
+
+  const widgetMargins = useMemo(() => ({
+    marginRight: layout.marginRight || 0,
+    marginLeft: layout.marginLeft || 0,
+  }), [layout.marginLeft, layout.marginRight]);
 
   if (!headline) return null;
 
   return (
-    <WidgetHeadline headline={headline} />
+    <WidgetHeadline headline={headline} widgetMargins={widgetMargins} />
   );
 };
 

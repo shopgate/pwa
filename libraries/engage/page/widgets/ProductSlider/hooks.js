@@ -55,6 +55,12 @@ export const useProductSliderWidget = () => {
     () => getProductSearchParamsFromProductsInputConfig(products),
     [products]
   );
+
+  const widgetMargins = useMemo(() => ({
+    marginRight: layout.marginRight || 0,
+    marginLeft: layout.marginLeft || 0,
+  }), [layout.marginLeft, layout.marginRight]);
+
   const swiperProps = useMemo(() => ({
     autoplay: slideAutomatic,
     delay: sliderSpeed,
@@ -89,5 +95,6 @@ export const useProductSliderWidget = () => {
     isPreview,
     showHeadline,
     headline,
+    widgetMargins,
   };
 };

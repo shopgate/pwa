@@ -20,6 +20,7 @@ const ProductSliderWidget = () => {
     isPreview,
     showHeadline,
     headline,
+    widgetMargins,
   } = useProductSliderWidget();
 
   const {
@@ -40,7 +41,7 @@ const ProductSliderWidget = () => {
   return (
     <>
       {(showHeadline && headline && productIds.length) ? (
-        <WidgetHeadline headline={headline} />
+        <WidgetHeadline headline={headline} widgetMargins={widgetMargins} />
       ) : null}
       <ProductSlider
         productIds={productIds}
