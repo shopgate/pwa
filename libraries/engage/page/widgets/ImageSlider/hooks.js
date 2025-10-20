@@ -113,18 +113,6 @@ export const useImageSliderWidget = () => {
         } : {
           spaceBetween: imageSpacing,
         }),
-        ...(layout.marginLeft || layout.marginRight ? {
-          style: {
-            ...layout.marginLeft ? {
-              marginLeft: layout.marginLeft * -1,
-              paddingLeft: layout.marginLeft,
-            } : {},
-            ...layout.marginRight ? {
-              marginRight: layout.marginRight * -1,
-              paddingRight: layout.marginRight,
-            } : {},
-          },
-        } : null),
       },
       [theme.breakpoints.values.md]: {
         slidesPerView: slidesPerViewLarge,
@@ -133,18 +121,6 @@ export const useImageSliderWidget = () => {
         } : {
           spaceBetween: imageSpacing,
         }),
-        ...(layout.marginLeft || layout.marginRight ? {
-          style: {
-            ...layout.marginLeft ? {
-              marginLeft: layout.marginLeft * -1,
-              paddingLeft: layout.marginLeft,
-            } : {},
-            ...layout.marginRight ? {
-              marginRight: layout.marginRight * -1,
-              paddingRight: layout.marginRight,
-            } : {},
-          },
-        } : null),
       },
     };
 
