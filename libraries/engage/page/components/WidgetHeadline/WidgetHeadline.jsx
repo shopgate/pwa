@@ -9,13 +9,30 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
+/** @typedef {import('@shopgate/engage/components/Typography').TypographyProps} TypographyProps */
+
+/**
+ * @typedef {Object} HeadlineProps
+ * @property {string} text The headline text.
+ * @property {TypographyProps['align]} [textAlign] The text alignment.
+ * @property {TypographyProps['variant']} [typography] The typography variant to use.
+ * @property {boolean} [bold] Whether the text should be bold.
+ * @property {boolean} [italic] Whether the text should be italic.
+ * @property {boolean} [underline] Whether the text should be underlined.
+ */
+
+/** @typedef {{headline: HeadlineProps} & TypographyProps} WidgetHeadlineProps */
+
 /**
  * The WidgetHeadline is used to display a headline for the widget.
- * @param {Object} props The component props.
- * @param {Object} props.headline The headline props.
+ * @param {WidgetHeadlineProps} props The component props.
  * @returns {JSX.Element}
  */
-const WidgetHeadline = ({ headline, className }) => {
+const WidgetHeadline = ({
+  headline,
+  className,
+  ...rest
+}) => {
   const { classes, cx, css } = useStyles();
 
   const {
@@ -41,6 +58,7 @@ const WidgetHeadline = ({ headline, className }) => {
       align={textAlign}
       // && increases the specificity of the styles which guarantees that defaults are overridden
       className={cx(css({ '&&': { ...styles } }), classes.root, className)}
+      {...rest}
     >
       {text}
     </Typography>

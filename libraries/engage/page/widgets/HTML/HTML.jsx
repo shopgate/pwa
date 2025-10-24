@@ -64,6 +64,9 @@ const useStyles = makeStyles()({
       visibility: 'hidden',
       height: 0,
     },
+    a: {
+      color: 'var(--color-primary)',
+    },
   },
 });
 

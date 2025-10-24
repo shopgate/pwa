@@ -15,8 +15,8 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const ImageSliderWidget = () => {
+  const { slides, swiperProps, borderRadius } = useImageSliderWidget();
   const { classes } = useStyles();
-  const { slides, swiperProps } = useImageSliderWidget();
 
   if (slides.length === 0) {
     return null;
@@ -46,6 +46,7 @@ const ImageSliderWidget = () => {
                 className={classes.image}
                 src={slide.image.url}
                 alt={slide.image.altText || ''}
+                borderRadius={borderRadius}
               />
             </ConditionalWrapper>
           </Swiper.Item>

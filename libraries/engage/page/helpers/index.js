@@ -60,3 +60,17 @@ export const parseImageUrl = (url, useHighRes) => {
 
   return !match ? url : `${match[1]}@2x.${match[2]}`;
 };
+
+/**
+ * Retrieves the border radius based on the widget config
+ * @param {Object} params The helper parameters.
+ * @param {"default"|"none"|"rounded"|"custom"} params.borderRadius The border radius option.
+ * @param {number} params.borderRadiusCustom The custom border radius value.
+ * @returns {number} The resolved border radius.
+ */
+export const resolveBorderRadiusFromWidgetConfig = ({ borderRadius, borderRadiusCustom }) => {
+  if (borderRadius === 'none') return 0;
+  if (borderRadius === 'rounded') return 16;
+  if (borderRadius === 'custom' && typeof borderRadiusCustom === 'number') return borderRadiusCustom;
+  return 0;
+};

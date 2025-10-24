@@ -23,15 +23,12 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 2,
     padding: theme.spacing(2),
   },
-  image: {
+  imageContainer: {
     position: 'absolute',
     width: '100%',
     height: '100%',
     top: 0,
     left: 0,
-    objectFit: 'cover',
-    zIndex: 0,
-    pointerEvents: 'none',
   },
 }));
 
@@ -39,7 +36,9 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const HeroBanner = () => {
-  const { text, backgroundImage, link } = useHeroBannerWidget();
+  const {
+    text, backgroundImage, link, borderRadius, parallax,
+  } = useHeroBannerWidget();
 
   const { cx, classes } = useStyles();
 
@@ -57,11 +56,16 @@ const HeroBanner = () => {
           content={text}
           className={cx(classes.richText)}
         />
-        <ResponsiveWidgetImage
-          src={backgroundImage?.url}
-          alt={backgroundImage?.alt}
-          className={cx(classes.image)}
-        />
+        <div className={cx(classes.imageContainer)}>
+          <ResponsiveWidgetImage
+            src={backgroundImage?.url}
+            alt={backgroundImage?.alt}
+            borderRadius={borderRadius}
+            enableParallax={parallax}
+            isBanner
+          />
+
+        </div>
       </div>
     </ConditionalWrapper>
   );

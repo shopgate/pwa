@@ -26,6 +26,7 @@ const ProductGridPrice = ({ product }) => {
             discounted={!!price.discount}
             unitPrice={price.unitPrice}
             unitPriceMin={price.unitPriceMin}
+            unitPriceMax={price.unitPriceMax}
           />
         </Grid.Item>
         {(price.msrp > 0 && price.unitPrice !== price.msrp) && (

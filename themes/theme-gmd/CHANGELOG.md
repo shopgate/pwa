@@ -1,5 +1,26 @@
 # Changelog
 
+## [v7.29.0](https://github.com/shopgate/pwa/compare/v7.28.2...v7.29.0) (2025-10-20)
+
+#### :rocket: Enhancement
+* [#1386](https://github.com/shopgate/pwa/pull/1386) Introduce CMS 2.0 ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1398](https://github.com/shopgate/pwa/pull/1398) Fixed handling of links with coupons ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.28.2](https://github.com/shopgate/pwa/compare/v7.28.1...v7.28.2) (2025-10-16)
+
+#### :house: Internal
+* [#1410](https://github.com/shopgate/pwa/pull/1410) Update helper logic for Shopgate image service URL detection ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.28.1](https://github.com/shopgate/pwa/compare/v7.28.0...v7.28.1) (2025-10-09)
+
+#### :rocket: Enhancement
+* [#1404](https://github.com/shopgate/pwa/pull/1404) Hide "from" prices when max price is equal to min price ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.28.0](https://github.com/shopgate/pwa/compare/v7.27.5...v7.28.0) (2025-09-08)
 
 #### :rocket: Enhancement
