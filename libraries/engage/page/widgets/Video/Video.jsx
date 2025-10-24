@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
+import { usePrevious } from '@shopgate/engage/core';
 import { useVideoWidget } from './hooks';
-import { usePrevious } from '../../../core';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme, { borderRadius }) => ({
   video: {
-    maxWidth: '100%',
-  },
-  videoLoading: {
     width: '100%',
+    borderRadius,
   },
 }));
 /**
@@ -17,16 +15,17 @@ const useStyles = makeStyles()(() => ({
  * @returns {JSX.Element}
  */
 const Video = () => {
-  const { classes } = useStyles();
-  const reduceMotion = useReduceMotion();
-  const [isLoaded, setIsLoaded] = useState(false);
-  const videoRef = React.useRef(null);
-
   const {
-    url, muted, loop, controls, autoplay,
+    url, muted, loop, controls, autoplay, borderRadius,
   } = useVideoWidget();
 
+  const { classes } = useStyles({ borderRadius });
+  const reduceMotion = useReduceMotion();
+  const [hasError, setHasError] = useState(false);
+  const videoRef = React.useRef(null);
   const prevAutoPlay = usePrevious(autoplay);
+  const prevUrl = usePrevious(url);
+
   useEffect(() => {
     if (videoRef.current && prevAutoPlay && !autoplay) {
       videoRef.current.pause();
@@ -37,12 +36,12 @@ const Video = () => {
       videoRef.current.play();
     }
 
-    if (!url) {
-      setIsLoaded(false);
+    if (!url || url !== prevUrl || !hasError) {
+      setHasError(false);
     }
-  }, [autoplay, prevAutoPlay, url]);
+  }, [autoplay, hasError, prevAutoPlay, prevUrl, url]);
 
-  if (!url) return null;
+  if (!url || hasError) return null;
 
   return (
     <video
@@ -51,12 +50,12 @@ const Video = () => {
       muted={muted}
       controls={controls}
       autoPlay={reduceMotion ? false : autoplay}
-      className={isLoaded ? classes.video : classes.videoLoading}
+      className={classes.video}
       preload="auto"
       playsInline
       loop={loop}
       aria-hidden
-      onLoadedData={() => setIsLoaded(true)}
+      onError={() => setHasError(true)}
     >
       {/* for a11y reasons there needs to be a track file (but video is aria hidden) */}
       <track kind="captions" src="" srcLang="de" label="Deutsch" />

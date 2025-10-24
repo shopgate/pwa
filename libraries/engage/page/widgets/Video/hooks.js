@@ -1,4 +1,5 @@
 import { useWidget } from '@shopgate/engage/page/hooks';
+import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 
 /**
  * @typedef {Object} VideoWidgetConfig
@@ -22,8 +23,13 @@ export const useVideoWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
   const {
-    url, muted, loop, controls, autoplay,
+    url, muted, loop, controls, autoplay, borderRadius, borderRadiusCustom,
   } = config || {};
+
+  const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
+    borderRadius,
+    borderRadiusCustom,
+  });
 
   return {
     url,
@@ -31,5 +37,6 @@ export const useVideoWidget = () => {
     loop,
     controls,
     autoplay,
+    borderRadius: borderRadiusResolved,
   };
 };
