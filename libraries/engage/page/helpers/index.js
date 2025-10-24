@@ -74,3 +74,17 @@ export const resolveBorderRadiusFromWidgetConfig = ({ borderRadius, borderRadius
   if (borderRadius === 'custom' && typeof borderRadiusCustom === 'number') return borderRadiusCustom;
   return 0;
 };
+
+/**
+ * Validator factory for regular expressions
+ * @param {RegExp} regex the regex
+ * @return {Function}
+ */
+export const matchesRegex = regex => val => !val || regex.test(val);
+
+/**
+ * Returns a function that validates if input is a valid url with the https protocol
+ * @param {string} val the string to be validated
+ * @return {boolean}
+ */
+export const isHttpsUrl = matchesRegex(new RegExp('^\\s*https://[^\\s/$.?#].[^\\s]*\\s*$', 'i'));

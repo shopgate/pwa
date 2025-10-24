@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import { usePrevious } from '@shopgate/engage/core';
 import { useVideoWidget } from './hooks';
+import { isHttpsUrl } from '../../helpers';
 
 const useStyles = makeStyles()((theme, { borderRadius }) => ({
   video: {
@@ -25,6 +26,7 @@ const Video = () => {
   const videoRef = React.useRef(null);
   const prevAutoPlay = usePrevious(autoplay);
   const prevUrl = usePrevious(url);
+  const isValidUrl = useMemo(() => (url ? isHttpsUrl(url) : false), [url]);
 
   useEffect(() => {
     if (videoRef.current && prevAutoPlay && !autoplay) {
@@ -41,14 +43,14 @@ const Video = () => {
     }
   }, [autoplay, hasError, prevAutoPlay, prevUrl, url]);
 
-  if (!url || hasError) return null;
+  if (!url || hasError || !isValidUrl) return null;
 
   return (
     <video
       ref={videoRef}
       src={url}
       muted={muted}
-      controls={controls}
+      controls={(!autoplay || reduceMotion) ? true : controls}
       autoPlay={reduceMotion ? false : autoplay}
       className={classes.video}
       preload="auto"
