@@ -5,7 +5,7 @@ import { usePrevious } from '@shopgate/engage/core';
 import { useVideoWidget } from './hooks';
 import { isHttpsUrl } from '../../helpers';
 
-const useStyles = makeStyles()((theme, { borderRadius }) => ({
+const useStyles = makeStyles()((_theme, { borderRadius }) => ({
   video: {
     width: '100%',
     borderRadius,
