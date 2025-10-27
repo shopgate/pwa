@@ -7,11 +7,6 @@ const edgeBorderWidth = 3;
 const edgeOffsetHorizontal = themeVariables.gap.xbig;
 const edgeOffsetVertical = themeVariables.gap.xxbig;
 
-// Disable rubber band effect extra space for scanner view
-css.global('.engage__view__content.route__scanner', {
-  '--extra-ios-scroll-space': '0px !important',
-});
-
 export default css({
   height: '90%',
   width: '100%',
