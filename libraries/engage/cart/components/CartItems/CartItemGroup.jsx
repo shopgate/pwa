@@ -1,31 +1,29 @@
-// @flow
 import { hot } from 'react-hot-loader/root';
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import CartItemGroupReservation from './CartItemGroupReservation';
-
-type Props = {
-  children: React.Node,
-  fulfillmentLocationId?: string | null,
-  multiLineReservation?: boolean,
-  fulfillmentMethod?: string | null,
-}
 
 /**
  * Renders the product group.
  * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * @param {React.ReactNode} props.children The child components.
+ * @param {string|null} [props.fulfillmentLocationId] The fulfillment location ID.
+ * @param {boolean} [props.multiLineReservation=false] Whether multi-line reservation is enabled.
+ * @param {string|null} [props.fulfillmentMethod] The fulfillment method.
+ * @returns {JSX.Element} The rendered component.
  */
-function CartItemGroup(props: Props) {
-  const {
-    multiLineReservation, fulfillmentLocationId, children, fulfillmentMethod,
-  } = props;
-
+const CartItemGroup = ({
+  children,
+  fulfillmentLocationId,
+  multiLineReservation,
+  fulfillmentMethod,
+}) => {
   if (!multiLineReservation) {
     return children;
   }
 
   return (
-    <React.Fragment>
+    <>
       {!!fulfillmentLocationId && (
         <CartItemGroupReservation
           locationId={fulfillmentLocationId}
@@ -33,9 +31,16 @@ function CartItemGroup(props: Props) {
         />
       )}
       {children}
-    </React.Fragment>
+    </>
   );
-}
+};
+
+CartItemGroup.propTypes = {
+  children: PropTypes.node.isRequired,
+  fulfillmentLocationId: PropTypes.string,
+  fulfillmentMethod: PropTypes.string,
+  multiLineReservation: PropTypes.bool,
+};
 
 CartItemGroup.defaultProps = {
   fulfillmentLocationId: null,

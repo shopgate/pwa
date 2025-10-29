@@ -1,5 +1,5 @@
-// @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_PAYMENT_BAR_TOTALS_TAX,
@@ -10,22 +10,15 @@ import { CartContext } from '../../cart.context';
 import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarTax.connector';
 
-type TaxData = {
-  label: string,
-  amount: number,
-}
-
-type Props = {
-  taxData?: TaxData,
-  showSeparator?: boolean,
-  className?: string,
-}
-
 /**
  * The Tax component.
- * @returns {JSX}
+ * @param {Object} props The component props.
+ * @param {Object} [props.taxData] The tax data.
+ * @param {boolean} [props.showSeparator=true] Whether to show a separator.
+ * @param {string|null} [props.className=null] The class name for styling.
+ * @returns {JSX.Element|null} The rendered component or null.
  */
-function PaymentBarTax({ taxData, showSeparator, className }: Props) {
+const PaymentBarTax = ({ taxData, showSeparator, className }) => {
   const {
     currency, isLoading, config, hasPromotionCoupons,
   } = React.useContext(CartContext);
@@ -52,7 +45,16 @@ function PaymentBarTax({ taxData, showSeparator, className }: Props) {
       </CartTotalLine>
     </SurroundPortals>
   );
-}
+};
+
+PaymentBarTax.propTypes = {
+  className: PropTypes.string,
+  showSeparator: PropTypes.bool,
+  taxData: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    amount: PropTypes.number.isRequired,
+  }),
+};
 
 PaymentBarTax.defaultProps = {
   taxData: null,

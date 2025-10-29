@@ -1,24 +1,19 @@
-// @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { I18n, SurroundPortals, RippleButton } from '@shopgate/engage/components';
-import {
-  CART_CHECKOUT_BUTTON,
-} from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { FulfillmentSheet, STAGE_RESERVE_FORM } from '../../../locations';
 import { CartContext } from '../../cart.context';
 import { button, disabledButton } from './PaymentBarCheckoutButton.style';
 import connect from './PaymentBarReserveButton.connector';
 
-type Props = {
-  historyReset: () => {}
-}
-
 /**
  * The reserve button component.
  * @param {Object} props The component props.
- * @return {JSX}
+ * @param {Function} props.historyReset The history reset function.
+ * @return {JSX.Element} The rendered component.
  */
-function PaymentBarReserveButton({ historyReset }: Props) {
+const PaymentBarReserveButton = ({ historyReset }) => {
   const { flags: { orderable } } = React.useContext(CartContext);
 
   /**
@@ -27,7 +22,7 @@ function PaymentBarReserveButton({ historyReset }: Props) {
   function handleClick() {
     FulfillmentSheet.open({
       stage: STAGE_RESERVE_FORM,
-      callback: (l, p, orderSuccess) => {
+      callback: (location, product, orderSuccess) => {
         if (orderSuccess === true) {
           historyReset();
         }
@@ -47,6 +42,10 @@ function PaymentBarReserveButton({ historyReset }: Props) {
       </RippleButton>
     </SurroundPortals>
   );
-}
+};
+
+PaymentBarReserveButton.propTypes = {
+  historyReset: PropTypes.func.isRequired,
+};
 
 export default connect(PaymentBarReserveButton);

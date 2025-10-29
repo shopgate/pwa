@@ -1,25 +1,18 @@
-// @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import { I18n, ContextMenu } from '@shopgate/engage/components';
 import { DIRECT_SHIP } from '../../constants';
 
-type Props = {
-  cartItem: Object;
-  onClick?: Function;
-  closeMenu?: Function;
-}
-
 /**
+ * Renders the cart context menu item for changing the location.
  * @param {Object} props The component props.
- * @property {Object} props.cartItem cartItem
- * @property {Function} props.onClick onClick
- * @property {Function} props.closeMenu closeMenu
- * @returns {JSX}
+ * @param {Object} props.cartItem The cart item.
+ * @param {Function} [props.onClick=noop] The click handler.
+ * @param {Function} [props.closeMenu=noop] The menu close handler.
+ * @returns {JSX.Element|null} The rendered component or null.
  */
-export const CartContextMenuItemChangeLocation = (props: Props) => {
-  const { cartItem, onClick, closeMenu } = props;
-
+export const CartContextMenuItemChangeLocation = ({ cartItem, onClick, closeMenu }) => {
   if (!cartItem.fulfillment || cartItem.fulfillment.method === DIRECT_SHIP) {
     return null;
   }
@@ -29,6 +22,16 @@ export const CartContextMenuItemChangeLocation = (props: Props) => {
       <I18n.Text string="locations.change_location" />
     </ContextMenu.Item>
   );
+};
+
+CartContextMenuItemChangeLocation.propTypes = {
+  cartItem: PropTypes.shape({
+    fulfillment: PropTypes.shape({
+      method: PropTypes.string,
+    }),
+  }).isRequired,
+  closeMenu: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 CartContextMenuItemChangeLocation.defaultProps = {

@@ -1,5 +1,5 @@
-// @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_PAYMENT_BAR_TOTALS_SHIPPING,
@@ -10,21 +10,15 @@ import { CartContext } from '../../cart.context';
 import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarShippingCost.connector';
 
-type ShippingCostProp = {
-  label: string | null,
-  amount: number,
-}
-
-type Props = {
-  shippingCost?: ShippingCostProp,
-  showSeparator?: boolean,
-  className?: string,
-}
-
 /**
- * @returns {JSX}
+ * The PaymentBarShippingCost component.
+ * @param {Object} props The component props.
+ * @param {Object|null} props.shippingCost The shipping cost details.
+ * @param {boolean} [props.showSeparator=true] Whether to show a separator.
+ * @param {string|null} [props.className=null] Additional class names.
+ * @returns {JSX.Element|null} The rendered component.
  */
-function PaymentBarShippingCost({ shippingCost, showSeparator, className }: Props) {
+const PaymentBarShippingCost = ({ shippingCost, showSeparator, className }) => {
   const {
     currency, isLoading, isUserLoggedIn, config, hasPromotionCoupons,
   } = React.useContext(CartContext);
@@ -53,7 +47,16 @@ function PaymentBarShippingCost({ shippingCost, showSeparator, className }: Prop
       )}
     </SurroundPortals>
   );
-}
+};
+
+PaymentBarShippingCost.propTypes = {
+  className: PropTypes.string,
+  shippingCost: PropTypes.shape({
+    label: PropTypes.string,
+    amount: PropTypes.number,
+  }),
+  showSeparator: PropTypes.bool,
+};
 
 PaymentBarShippingCost.defaultProps = {
   className: null,
