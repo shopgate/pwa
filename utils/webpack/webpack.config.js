@@ -20,6 +20,7 @@ const getThemeConfig = require('./lib/getThemeConfig');
 const getThemeLanguage = require('./lib/getThemeLanguage');
 const getDevConfig = require('./lib/getDevConfig');
 const i18n = require('./lib/i18n');
+const { resolveForAliasPackage } = require('./lib/helpers');
 const getExtensionsNodeModulesPaths = require('./lib/getExtensionsNodeModulesPaths');
 
 const themePath = process.cwd();
@@ -61,11 +62,44 @@ const config = {
   },
   resolve: {
     extensions: ['.json', '.js', '.jsx', '.mjs'],
+    /**
+     * Aliases for module resolution. They guarantee that whenever one of the bundled modules
+     * uses in import to one of the packages, it will always resolve to the version of the core.
+     */
     alias: {
       ...rxPaths(),
-      'react-dom': '@hot-loader/react-dom',
+
+      // Packages from common module
+      react: resolveForAliasPackage('react'),
+      'react-dom': resolveForAliasPackage('@hot-loader', '/react-dom'),
+      'react-redux': resolveForAliasPackage('react-redux'),
+      reselect: resolveForAliasPackage('reselect'),
+      glamor: resolveForAliasPackage('glamor'),
+      intl: resolveForAliasPackage('intl'),
+      'intl/locale-data/jsonp': resolveForAliasPackage('intl', '/locale-data/jsonp'),
+
+      // Additional packages that are sometimes used in devDependencies of extensions
+      'react-helmet': resolveForAliasPackage('react-helmet'),
+      'css-spring': resolveForAliasPackage('css-spring'),
+      'react-transition-group': resolveForAliasPackage('react-transition-group'),
+      'react-hot-loader': resolveForAliasPackage('react-hot-loader'),
+      '@virtuous': resolveForAliasPackage('@virtuous'),
+      lodash: resolveForAliasPackage('lodash'),
+
+      // Internal Shopgate packages
+      '@shopgate/engage': resolveForAliasPackage('@shopgate/engage'),
+      '@shopgate/pwa-common': resolveForAliasPackage('@shopgate/pwa-common'),
+      '@shopgate/pwa-common-commerce': resolveForAliasPackage('@shopgate/pwa-common-commerce'),
+      '@shopgate/pwa-core': resolveForAliasPackage('@shopgate/pwa-core'),
+      '@shopgate/pwa-tracking': resolveForAliasPackage('@shopgate/pwa-tracking'),
+      '@shopgate/pwa-ui-ios': resolveForAliasPackage('@shopgate/pwa-ui-ios'),
+      '@shopgate/pwa-ui-material': resolveForAliasPackage('@shopgate/pwa-ui-material'),
+      '@shopgate/pwa-ui-shared': resolveForAliasPackage('@shopgate/pwa-ui-shared'),
+      '@shopgate/pwa-webcheckout-shopify': resolveForAliasPackage('@shopgate/pwa-webcheckout-shopify'),
+      '@shopgate/tracking-core': resolveForAliasPackage('@shopgate/tracking-core'),
     },
     modules: [
+      'node_modules',
       path.resolve(themePath, 'widgets'),
       path.resolve(themePath, 'node_modules'),
       path.resolve(themePath, '..', '..', 'node_modules'),
