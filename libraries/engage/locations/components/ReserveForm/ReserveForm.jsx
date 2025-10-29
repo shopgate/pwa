@@ -1,4 +1,3 @@
-// @flow
 import { hot } from 'react-hot-loader/root';
 import 'react-phone-number-input/style.css';
 import React, {
@@ -7,25 +6,27 @@ import React, {
 import {
   TextField, RippleButton, RadioGroup, RadioGroupItem, ProgressBar,
 } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { useFormState } from '../../../core/hooks/useFormState';
-import { i18n } from '../../../core/helpers/i18n';
 import { FulfillmentContext } from '../../locations.context';
-import { type ReservationFormValues } from '../../locations.types';
 import { ReserveFormPhone } from './ReserveFormPhone';
 import { constraints } from './ReserveForm.constraints';
 import {
   form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button, progressBar,
 } from './ReserveForm.style';
 
+// eslint-disable-next-line max-len
+/** @typedef {import('@shopgate/engage/locations/locations.types').ReservationFormValues} ReservationFormValues */
+
 const PICKUP_PERSON_ME = 'me';
 const PICKUP_PERSON_OTHER = 'someoneelse';
 
 /**
  * Determines the pick up person.
- * @param {Object} userInput The current user input
+ * @param {ReservationFormValues|null} userInput The current user input
  * @return {string}
  */
-const determinePickupPerson = (userInput: ReservationFormValues | null) => {
+const determinePickupPerson = (userInput) => {
   if (!userInput) {
     return PICKUP_PERSON_ME;
   }
@@ -48,13 +49,14 @@ const determinePickupPerson = (userInput: ReservationFormValues | null) => {
 
 /**
  * Renders the quick reservation form.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 function ReserveFormUnwrapped() {
   const { sendReservation, userInput } = useContext(FulfillmentContext);
   const [picker, setPicker] = useState(determinePickupPerson(userInput));
 
-  const defaultState: ReservationFormValues = {
+  /** @type {ReservationFormValues} */
+  const defaultState = {
     firstName: '',
     lastName: '',
     cellPhone: '',
@@ -75,7 +77,8 @@ function ReserveFormUnwrapped() {
     },
   }), [picker]);
 
-  const initialState: ReservationFormValues = userInput ? {
+  /** @type {ReservationFormValues} */
+  const initialState = userInput ? {
     ...defaultState,
     ...userInput,
   } : defaultState;
@@ -83,7 +86,8 @@ function ReserveFormUnwrapped() {
   /**
    * @param {Object} values The form values.
    */
-  const complete = useCallback(async (values: ReservationFormValues) => {
+  /** @param {ReservationFormValues} values */
+  const complete = useCallback(async (values) => {
     const response = values;
 
     if (picker === PICKUP_PERSON_ME) {
