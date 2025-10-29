@@ -8,6 +8,7 @@ const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const rxPaths = require('rxjs/_esm5/path-mapping');
 const ShopgateIndexerPlugin = require('./plugins/ShopgateIndexerPlugin');
 const ShopgateThemeConfigValidatorPlugin = require('./plugins/ShopgateThemeConfigValidatorPlugin');
@@ -30,6 +31,7 @@ const t = i18n(__filename);
 
 const devtool = isDev ? sourceMap : (process.env.SOURCE_MAPS || false);
 const fileSuffix = devtool ? '.sm' : '';
+const addBundleAnalyzer = !!process.env.BUNDLE_ANALYZER;
 
 const config = {
   mode: ENV,
@@ -102,6 +104,9 @@ const config = {
         LANG: JSON.stringify(isoLang),
         LOCALE: JSON.stringify(isoLang),
         LOCALE_FILE: JSON.stringify(getThemeLanguage(themePath, appConfig.language)),
+        LOCALE_FILE_LOWER_CASE: JSON.stringify(
+          getThemeLanguage(themePath, appConfig.language).toLowerCase()
+        ),
         IP: JSON.stringify(ip),
         PORT: JSON.stringify(apiPort),
       },
@@ -150,6 +155,9 @@ const config = {
       })}`,
       clear: false,
     }),
+    ...(isDev && addBundleAnalyzer ? [
+      new BundleAnalyzerPlugin(),
+    ] : []),
     ...(!isDev ? [
       new CompressionWebpackPlugin({
         filename: '[path].gz[query]',
