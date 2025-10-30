@@ -27,6 +27,7 @@ const appConfig = getAppSettings(themePath);
 const themeConfig = getThemeConfig(themePath, appConfig);
 const isoLang = convertLanguageToISO(appConfig.language);
 const { sourceMap, ip, apiPort } = getDevConfig();
+const themeLanguage = getThemeLanguage(themePath, appConfig.language);
 const t = i18n(__filename);
 
 const devtool = isDev ? sourceMap : (process.env.SOURCE_MAPS || false);
@@ -130,10 +131,8 @@ const config = {
         THEME: JSON.stringify(process.env.theme),
         THEME_PATH: JSON.stringify(themePath),
         LOCALE: JSON.stringify(isoLang),
-        LOCALE_FILE: JSON.stringify(getThemeLanguage(themePath, appConfig.language)),
-        LOCALE_FILE_LOWER_CASE: JSON.stringify(
-          getThemeLanguage(themePath, appConfig.language).toLowerCase()
-        ),
+        LOCALE_FILE: JSON.stringify(themeLanguage),
+        LOCALE_FILE_LOWER_CASE: JSON.stringify(themeLanguage.toLowerCase()),
         IP: JSON.stringify(ip),
         PORT: JSON.stringify(apiPort),
       },
