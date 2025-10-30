@@ -86,7 +86,10 @@ class I18n {
       const localeFilePath = path.join(localesDirectory, `${entry}.json`);
       if (fs.existsSync(localeFilePath)) {
         const data = flatten(readJSON(localeFilePath));
-        merged = { ...merged, ...data };
+        merged = {
+          ...merged,
+          ...data,
+        };
       }
     });
 
