@@ -45,7 +45,7 @@
   "devDependencies": {
     "@shopgate/pwa-core": "7.29.0",
     "@types/react-portal": "^3.0.9",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "prop-types": "~15.8.1",
     "react": "~16.14.0",
     "react-dom": "~16.14.0"

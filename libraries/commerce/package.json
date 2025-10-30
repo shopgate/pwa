@@ -21,7 +21,7 @@
   "devDependencies": {
     "@shopgate/pwa-common": "7.29.0",
     "@shopgate/pwa-core": "7.29.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.21",
     "react": "~16.14.0",
     "react-dom": "~16.14.0"
   }

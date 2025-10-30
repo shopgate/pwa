@@ -59,7 +59,7 @@ const useStyles = makeStyles()({
     // Clearfix for floated widget content
     ':after': {
       clear: 'both',
-      content: '.',
+      content: '"."',
       display: 'block',
       visibility: 'hidden',
       height: 0,
