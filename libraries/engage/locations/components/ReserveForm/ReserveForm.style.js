@@ -63,7 +63,7 @@ export const phoneFieldErrorText = css({
   overflow: 'hidden',
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
-});
+}).toString();
 
 export const pickerSwitch = css({
   marginTop: '-1rem',
