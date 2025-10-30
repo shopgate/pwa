@@ -1,18 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import SideNavigationItem from './SideNavigationItem';
 import connect from './SideNavigationLinksQuicklinks.connector';
-
-type Props = {
-  links?: Array,
-  isFetching?: boolean,
-}
 
 /**
  *
  * @param {Object} props The component props
- * @returns {JSX}
+ * @param {Array} props.links The quicklinks links
+ * @returns {*[]}
  */
-const SideNavigationLinksQuicklinks = ({ links }: Props) => {
+const SideNavigationLinksQuicklinks = ({ links }) => {
   if (!links) {
     return null;
   }
@@ -22,9 +19,12 @@ const SideNavigationLinksQuicklinks = ({ links }: Props) => {
   );
 };
 
+SideNavigationLinksQuicklinks.propTypes = {
+  links: PropTypes.arrayOf(PropTypes.shape()),
+};
+
 SideNavigationLinksQuicklinks.defaultProps = {
   links: null,
-  isFetching: false,
 };
 
 export default connect(SideNavigationLinksQuicklinks);

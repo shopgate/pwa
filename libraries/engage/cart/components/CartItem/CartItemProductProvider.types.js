@@ -1,30 +1,36 @@
-// @flow
-import * as React from 'react';
-import { type Product } from '@shopgate/engage/product';
-import { type ItemFulfillment } from '../../cart.types';
+/**
+ * @typedef {import('../../cart.types').ItemFulfillment} ItemFulfillment
+ */
+/**
+ * @typedef {import('@shopgate/engage/product/product.types').Product} Product
+ */
 
-export type CartItemProduct = {
-  id: string,
-  product: Product,
-  quantity: number,
-  messages: any[],
-  fulfillment?: ItemFulfillment,
-}
+/**
+ * @typedef {Object} CartItemProduct
+ * @property {string} id
+ * @property {Product} product
+ * @property {number} quantity
+ * @property {any[]} messages
+ * @property {ItemFulfillment} [fulfillment]
+ */
 
-export type OwnProps = {
-  cartItem: CartItemProduct,
-  onToggleFocus?: (isEnabled: boolean) => void,
-  isEditable?: boolean,
-  children?: React.Node,
-  currencyOverride?: string,
-}
+/**
+ * @typedef {Object} OwnProps
+ * @property {CartItemProduct} cartItem
+ * @property {(isEnabled: boolean) => void} [onToggleFocus]
+ * @property {boolean} [isEditable]
+ * @property {React.ReactNode} [children]
+ * @property {string} [currencyOverride]
+ */
 
-export type StateProps = {
-  isAndroid?: boolean,
-  currency?: string,
-}
+/**
+ * @typedef {Object} StateProps
+ * @property {boolean} [isAndroid]
+ * @property {string} [currency]
+ */
 
-export type DispatchProps = {
-  deleteProduct?: (cartItemId: string) => Promise<any>,
-  updateProduct?: (cartItemId: String, quantity: number) => Promise<any>,
-}
+/**
+ * @typedef {Object} DispatchProps
+ * @property {(cartItemId: string) => Promise<any>} [deleteProduct]
+ * @property {(cartItemId: string, quantity: number) => Promise<any>} [updateProduct]
+ */
