@@ -1,16 +1,18 @@
-// @flow
-import * as Redux from 'redux';
 import { connect } from 'react-redux';
 import { updateProductsInCart } from '@shopgate/engage/cart';
 import { fetchProductLocations } from '../../actions';
-import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocation.types';
+
+/**
+ * @typedef {import('./CartItemProductChangeLocation.types').OwnProps} OwnProps
+ * @typedef {import('./CartItemProductChangeLocation.types').DispatchProps} DispatchProps
+ */
 
 /**
  * Connects the dispatch function to a callable function in the props.
  * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
+ * @returns {DispatchProps} The extended component props.
  */
-const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): DispatchProps => ({
+const mapDispatchToProps = dispatch => ({
   fetchProductLocations,
   updateProductInCart: (cartItemId, quantity, location, fulfillmentMethod) => {
     dispatch(updateProductsInCart([{
@@ -27,4 +29,4 @@ const mapDispatchToProps = (dispatch: Redux.Dispatch<any>): DispatchProps => ({
   },
 });
 
-export default connect<null, DispatchProps, OwnProps>(null, mapDispatchToProps);
+export default connect(null, mapDispatchToProps);

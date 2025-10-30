@@ -1,17 +1,19 @@
-// @flow
-export type MerchantSettings = {
-  enabledFulfillmentMethods: string[];
-  enabledFulfillmentMethodSelectionForEngage: string[];
-}
+/**
+ * @typedef {Object} MerchantSettings
+ * @property {string[]} enabledFulfillmentMethods
+ * @property {string[]} enabledFulfillmentMethodSelectionForEngage
+ */
 
-export type ShopSettings = {
-  supportedCountries?: string[];
-  countrySortOrder?: string[];
-}
+/**
+ * @typedef {Object} ShopSettings
+ * @property {string[]} [supportedCountries]
+ * @property {string[]} [countrySortOrder]
+ */
 
-export type ConfigState = {
-  isFetching: boolean;
-  expires: number;
-  merchantSettings: MerchantSettings;
-  shopSettings: ShopSettings,
-}
+/**
+ * @typedef {Object} ConfigState
+ * @property {boolean} isFetching
+ * @property {number} expires
+ * @property {MerchantSettings} merchantSettings
+ * @property {ShopSettings} shopSettings
+ */

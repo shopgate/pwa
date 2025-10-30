@@ -123,10 +123,16 @@
  * @property {string} userSearchQuery
  */
 
+/* eslint-disable max-len */
+/**
+ * @typedef {'STAGE_SELECT_STORE' | 'STAGE_RESERVE_FORM' | 'STAGE_RESPONSE_SUCCESS' | 'STAGE_RESPONSE_ERROR'} SheetStage
+ */
+/* eslint-enable max-len */
+
 /**
  * @typedef {Object} SheetOpenParams
  * @property {function(Location|null, string|null, boolean|null):void} [callback]
- * @property {string} [stage]
+ * @property {SheetStage} [stage]
  * @property {string} [fulfillmentPath]
  * @property {boolean} [changeOnly]
  */

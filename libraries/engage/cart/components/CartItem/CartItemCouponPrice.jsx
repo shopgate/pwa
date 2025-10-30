@@ -6,12 +6,15 @@ import {
 } from '@shopgate/pwa-common-commerce/cart';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import styles from './CartItemCouponPrice.style';
+/**
+ * @typedef {import('../../../cart/cart.types').SavedPrice} SavedPrice
+ */
 
 /**
  * The Coupon Price component.
  * @param {Object} props The component properties.
  * @param {string} props.currency The currency to display.
- * @param {Object} props.savedPrice The saved price details.
+ * @param {SavedPrice} props.savedPrice The saved price details.
  * @param {string} props.savedPrice.type The type of the saved price (fixed or percentage).
  * @param {number} props.savedPrice.value The value of the saved price.
  * @returns {JSX.Element|null}

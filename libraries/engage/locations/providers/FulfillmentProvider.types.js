@@ -1,52 +1,51 @@
-// @flow
-import * as React from 'react';
-import { type AddToCartProduct, type Item } from '../../cart';
-import { type ShopSettings } from '../../core/config/config.types';
-import { type Product, type BaseProductAware, type ProductAware } from '../../product/product.types';
-import {
-  type Location,
-  type ReservationFormValues,
-  type ReservationResponse,
-  type SheetStage,
-} from '../locations.types';
+/* eslint-disable max-len */
+/**
+ * @typedef {import('../../product/product.types').Product} Product
+ * @typedef {import('../locations.types').Location} Location
+ * @typedef {import('../locations.types').ReservationFormValues} ReservationFormValues
+ * @typedef {import('../locations.types').ReservationResponse} ReservationResponse
+ * @typedef {import('../locations.types').SheetStage} SheetStage
+ * @typedef {import('../../cart/cart.types').AddToCartProduct} AddToCartProduct
+ * @typedef {import('../../cart/cart.types').Item} Item
+ * @typedef {import('../../core/config/config.types').ShopSettings} ShopSettings
+ */
 
-export type OwnProps = {
-  children: React.Node,
-  open?: boolean,
-  title?: string,
-  changeOnly?: boolean,
-  onClose?: (
-    location: Location | null,
-    productId: string | null,
-    orderSuccess?: boolean | null
-  ) => void,
-  meta?: { [string]: any },
-  stage?: SheetStage,
-  updatePreferredLocation?: boolean,
-  restrictMultiLocationOrders?: boolean,
-  isCart?: boolean,
-  cartProducts?: Array<Object>,
-  fulfillmentSchedulingEnabled?: boolean,
-  activeFulfillmentSlotLocationCode?: string,
-  activeFulfillmentSlot?: Object
-};
+/**
+ * @typedef {Object} OwnProps
+ * @property {React.ReactNode} children
+ * @property {boolean} [open]
+ * @property {string} [title]
+ * @property {boolean} [changeOnly]
+ * @property {(location: Location|null, productId: string|null, orderSuccess?: boolean|null) => void} [onClose]
+ * @property {Object<string, any>} [meta]
+ * @property {SheetStage} [stage]
+ * @property {boolean} [updatePreferredLocation]
+ * @property {boolean} [restrictMultiLocationOrders]
+ * @property {boolean} [isCart]
+ * @property {Object[]} [cartProducts]
+ * @property {boolean} [fulfillmentSchedulingEnabled]
+ * @property {string} [activeFulfillmentSlotLocationCode]
+ * @property {Object} [activeFulfillmentSlot]
+ */
 
-export type StateProps = {
-  locations: Location[] | null,
-  userInput: ReservationFormValues | null,
-  fulfillmentPaths: string[],
-  fulfillmentMethods?: string[],
-  shopSettings?: ShopSettings,
-  inventory: any,
-} & ProductAware & BaseProductAware
+/**
+ * @typedef {Object} StateProps
+ * @property {Location[]|null} locations
+ * @property {ReservationFormValues|null} userInput
+ * @property {string[]} fulfillmentPaths
+ * @property {string[]} [fulfillmentMethods]
+ * @property {ShopSettings} [shopSettings]
+ * @property {any} inventory
+ * @extends Product
+ */
 
-export type DispatchProps = {
-  selectLocation: ({location: Location}) => void,
-  submitReservation: (
-    values: ReservationFormValues,
-    product: Product | null
-  ) => Promise<ReservationResponse>,
-  storeFormInput: (values: ReservationFormValues) => void,
-  addProductsToCart: (data: AddToCartProduct[]) => void,
-  updateProductsInCart: (data: Item[]) => void,
-}
+/**
+ * @typedef {Object} DispatchProps
+ * @property {function({location: Location}):void} selectLocation
+ * @property {function(ReservationFormValues, Product|null):Promise<ReservationResponse>} submitReservation
+ * @property {function(ReservationFormValues):void} storeFormInput
+ * @property {function(AddToCartProduct[]):void} addProductsToCart
+ * @property {function(Item[]):void} updateProductsInCart
+ */
+/* eslint-enable max-len */
+

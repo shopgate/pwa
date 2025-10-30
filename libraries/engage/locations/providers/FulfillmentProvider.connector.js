@@ -1,4 +1,3 @@
-// @flow
 import { connect } from 'react-redux';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { getBaseProduct, getProduct } from '@shopgate/pwa-common-commerce/product/selectors/product';
@@ -22,7 +21,11 @@ import {
   getIsFetching,
 } from '../selectors';
 import { submitReservation } from '../actions';
-import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentProvider.types';
+/**
+ * @typedef {import('./FulfillmentProvider.types').OwnProps} OwnProps
+ * @typedef {import('./FulfillmentProvider.types').StateProps} StateProps
+ * @typedef {import('./FulfillmentProvider.types').DispatchProps} DispatchProps
+ */
 
 /**
  * @returns {Function}
@@ -44,8 +47,8 @@ function makeMapStateToProps() {
   const getEnabledFulfillmentMethods = makeGetEnabledFulfillmentMethods();
 
   /**
-   * @param {Object} state The application state.
-   * @param {Object} props The component props.
+   * @param {StateProps} state The application state.
+   * @param {OwnProps} props The component props.
    * @returns {Object}
    */
   return (state, props) => ({
@@ -71,7 +74,7 @@ function makeMapStateToProps() {
 }
 
 /**
- * @param {Function} dispatch The dispatch function.
+ * @param {DispatchProps} dispatch The dispatch function.
  * @returns {Object}
  */
 const mapDispatchToProps = dispatch => ({
@@ -83,7 +86,4 @@ const mapDispatchToProps = dispatch => ({
   showModal: (...params) => dispatch(showModal(...params)),
 });
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  makeMapStateToProps,
-  mapDispatchToProps
-);
+export default connect(makeMapStateToProps, mapDispatchToProps);

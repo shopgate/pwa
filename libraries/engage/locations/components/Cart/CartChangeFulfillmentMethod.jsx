@@ -1,26 +1,28 @@
-// @flow
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import connect from './CartChangeFulfillmentMethod.connector';
-import { type OwnProps, type DispatchProps } from './CartChangeFulfillmentMethod.types';
 import { STAGE_FULFILLMENT_METHOD } from '../../constants';
 
-type Props = OwnProps & DispatchProps;
+/**
+ * @typedef {import('./CartChangeFulfillmentMethod.types').OwnProps} OwnProps
+ * @typedef {import('./CartChangeFulfillmentMethod.types').DispatchProps} DispatchProps
+ * @typedef {OwnProps & DispatchProps} Props
+ */
 
 /**
- * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * Renders the CartChangeFulfillmentMethod component.
+ * @param {Props} props The component props.
+ * @returns {JSX.Element|null}
  */
-function CartChangeFulfillmentMethod(props: Props) {
-  const {
-    cartItem, fetchProductLocations, registerAction,
-  } = props;
-  const [opened, setOpened] = React.useState(false);
+const CartChangeFulfillmentMethod = ({
+  cartItem,
+  fetchProductLocations,
+  registerAction,
+}) => {
+  const [opened, setOpened] = useState(false);
 
-  /**
-   * Register cart item action
-   */
-  React.useEffect(() => {
+  useEffect(() => {
     if (!registerAction || !cartItem) {
       return;
     }
@@ -52,6 +54,20 @@ function CartChangeFulfillmentMethod(props: Props) {
       updatePreferredLocation
     />
   );
-}
+};
+
+CartChangeFulfillmentMethod.propTypes = {
+  cartItem: PropTypes.shape({
+    product: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  fetchProductLocations: PropTypes.func.isRequired,
+  registerAction: PropTypes.func,
+};
+
+CartChangeFulfillmentMethod.defaultProps = {
+  registerAction: null,
+};
 
 export default connect(CartChangeFulfillmentMethod);
