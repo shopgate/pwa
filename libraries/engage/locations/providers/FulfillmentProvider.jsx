@@ -1,12 +1,12 @@
-// @flow
 import React, {
   useState, useMemo, useRef, useEffect, useCallback,
 } from 'react';
+import PropTypes from 'prop-types';
 import {
   logger, i18n, UIEvents,
 } from '../../core';
 import { withCurrentProduct } from '../../core/hocs/withCurrentProduct';
-import { FulfillmentContext, type FulfillmentContextProps } from '../locations.context';
+import { FulfillmentContext } from '../locations.context';
 import { FulfillmentPathSelector } from '../components/FulfillmentPathSelector';
 import {
   STAGE_SELECT_STORE,
@@ -20,33 +20,33 @@ import {
   ROPIS,
   BOPIS,
 } from '../constants';
-import {
-  type Location,
-  type SheetOpenParams,
-  type SheetStage,
-  type FulfillmentPath,
-  type ReservationFormValues,
-  type SheetCallbackFn,
-} from '../locations.types';
-import {
-  type OwnProps,
-  type StateProps,
-  type DispatchProps,
-} from './FulfillmentProvider.types';
 import connect from './FulfillmentProvider.connector';
+
+/**
+ * @typedef {import('./FulfillmentProvider.types').OwnProps} OwnProps
+ * @typedef {import('./FulfillmentProvider.types').StateProps} StateProps
+ * @typedef {import('./FulfillmentProvider.types').DispatchProps} DispatchProps
+ * @typedef {import('../locations.types').SheetOpenParams} SheetOpenParams
+ * @typedef {import('../locations.types').SheetStage} SheetStage
+ * @typedef {import('../locations.types').Location} Location
+ * @typedef {import('../locations.types').ReservationFormValues} ReservationFormValues
+ * @typedef {import('../locations.types').FulfillmentPath} FulfillmentPath
+ */
+
+/**
+ * @typedef {OwnProps & StateProps & DispatchProps} Props
+ */
 
 export const EVENT_SET_OPEN = 'FulfillmentProvider.setOpen';
 
-type Props = OwnProps & StateProps & DispatchProps;
-
-let callback: SheetCallbackFn | null;
+let callback = null;
 
 /**
  * Provides the fulfillment context.
- * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Props} props The component props.
+ * @returns {JSX.Element} The rendered component.
  */
-function FulfillmentProvider(props: Props) {
+const FulfillmentProvider = (props) => {
   const {
     children,
     locations,
@@ -84,10 +84,10 @@ function FulfillmentProvider(props: Props) {
   const [fulfillmentPath, setFulfillmentPath] = useState(defaultFulfillmentPath || null);
   const [changeOnly, setChangeOnly] = useState(props.changeOnly);
   const [isOpen, setIsOpen] = useState(open);
-  const [stage, setStage] = useState<SheetStage | null>(props.stage || null);
+  const [stage, setStage] = useState(props.stage || null);
   const [fulfillmentMethod, setFulfillmentMethod] = useState(null);
-  const [orderNumbers, setOrderNumbers] = useState<string[] | null>(null);
-  const [errors, setErrors] = useState<string[] | null>(null);
+  const [orderNumbers, setOrderNumbers] = useState(null);
+  const [errors, setErrors] = useState(null);
   const [product, setProduct] = useState(propsProduct);
   const [isChangeFulfillment, setIsChangeFulfillment] = useState(false);
   const [cartItem, setCartItem] = useState(null);
@@ -101,7 +101,7 @@ function FulfillmentProvider(props: Props) {
     }
   }, [defaultFulfillmentMethod]);
 
-  const title = useMemo<string>(() => {
+  const title = useMemo(() => {
     if (props.title !== null) {
       return i18n.text(props.title);
     }
@@ -145,31 +145,30 @@ function FulfillmentProvider(props: Props) {
 
   /**
    * Checks whether the given stage is currently set.
-   * @param {string} inputStage The stage to check for.
+   * @param {SheetStage} inputStage The stage to check for.
    * @returns {boolean}
    */
-  function isStage(inputStage: SheetStage) {
-    return inputStage === stage;
-  }
+  const isStage = inputStage => inputStage === stage;
 
   /**
    * Handles opening of the sheet.
-   * @param {Object} params The sheet open parameters.
+   * @param {SheetOpenParams} params The sheet open parameters.
    */
-  function handleOpen(params: SheetOpenParams) {
+  const handleOpen = (params) => {
     setIsOpen(true);
     setStage(prevState => params.stage || prevState);
     setChangeOnly(prevState => params.changeOnly || prevState);
     setFulfillmentPath(prevState => params.fulfillmentPath || prevState);
     callback = params.callback || null;
-  }
+  };
 
   /**
-   * Is called when the sheet closed.
-   * @param {Object} [location=null] The selected location.
-   * @param {string} [productId=null] The product ID.
+   * Handles the closing of the sheet.
+   * @param {Location|null} location - The selected location or null if no location is selected.
+   * @param {string|null} productId - The product ID or null if no product is provided.
+   * @returns {void}
    */
-  function handleClose(location: Location | null = null, productId: string | null = null) {
+  const handleClose = (location = null, productId = null) => {
     let orderSuccess = true;
 
     if (isStage(STAGE_RESPONSE_ERROR)) {
@@ -193,7 +192,7 @@ function FulfillmentProvider(props: Props) {
     setErrors(null);
     setIsChangeFulfillment(false);
     setFulfillmentMethod(null);
-  }
+  };
 
   useEffect(() => {
     UIEvents.addListener(EVENT_SET_OPEN, handleOpen);
@@ -204,9 +203,9 @@ function FulfillmentProvider(props: Props) {
 
   /**
    * Handles the sending of the reservation.
-   * @param {Object} values The form values.
+   * @param {ReservationFormValues} values The reservation form values.
    */
-  async function sendReservation(values: ReservationFormValues) {
+  async function sendReservation(values) {
     try {
       const response = await submitReservation(values, product);
 
@@ -231,10 +230,10 @@ function FulfillmentProvider(props: Props) {
   }
 
   /**
-   * @param {Object} location The selected location.
+   * @param {Location} location The selected location.
    * @returns {boolean}
    */
-  const confirmSelection = async (location: Location) => {
+  const confirmSelection = async (location) => {
     const { code, name } = location;
 
     const ropeCartProducts = cartProducts
@@ -286,9 +285,9 @@ function FulfillmentProvider(props: Props) {
 
   /**
    * Handles multiline reservation.
-   * @param {Object} location The selected location.
-   */
-  function handleMultilineReservation(location: Location) {
+   * @param {Location} location The selected location.
+   * */
+  const handleMultilineReservation = (location) => {
     if (product === null || location.code === null) {
       return;
     }
@@ -316,7 +315,7 @@ function FulfillmentProvider(props: Props) {
     }
 
     handleClose(location, product.id);
-  }
+  };
 
   /**
    * Handles quick reservation.
@@ -327,9 +326,10 @@ function FulfillmentProvider(props: Props) {
 
   /**
    * Handles the selection of a store location from the sheet.
-   * @param {Object} location The selected location.
+   * @param {Location} location The selected location.
+   * @returns {Promise<void>}
    */
-  async function handleSelectLocation(location: Location) {
+  async function handleSelectLocation(location) {
     if (isLoading) {
       return;
     }
@@ -358,8 +358,8 @@ function FulfillmentProvider(props: Props) {
 
     /**
      * Select the reservation method strategy.
-     * @param {string} method The reservation method.
-     * @param {Object} storeLocation A store location
+     * @param {string|FulfillmentPath} method The reservation method.
+     * @param {Location} storeLocation The selected store location.
      */
     const handleReservationMethod = (method, storeLocation) => {
       if (!method) {
@@ -378,7 +378,10 @@ function FulfillmentProvider(props: Props) {
     // No fulfillment path selected yet.
     if (fulfillmentPath === null) {
       if (fulfillmentPaths.length > 1) {
-        FulfillmentPathSelector.open((method: FulfillmentPath) => {
+        /**
+         * @param {FulfillmentPath} method - The selected fulfillment path.
+         */
+        FulfillmentPathSelector.open((method) => {
           if (!method) {
             return;
           }
@@ -409,7 +412,7 @@ function FulfillmentProvider(props: Props) {
    * @param {string} method The selected fulfillment method.
    * @param {Object} item The cart item to change.
    */
-  function handleChangeFulfillmentMethod(method, item) {
+  const handleChangeFulfillmentMethod = (method, item) => {
     logger.assert(item.product.id === product.id, 'Change fulfillment method is called with unexpected product id');
 
     setIsChangeFulfillment(true);
@@ -439,13 +442,13 @@ function FulfillmentProvider(props: Props) {
 
       handleClose(null, item.product.id);
     }
-  }
+  };
 
   const handleSelectStoreFinderLocation = useCallback((location) => {
     setStoreFinderLocation(location);
   }, []);
 
-  const context: FulfillmentContextProps = {
+  const context = {
     stage,
     title,
     fulfillmentPath,
@@ -485,7 +488,79 @@ function FulfillmentProvider(props: Props) {
       {children}
     </FulfillmentContext.Provider>
   );
-}
+};
+
+FulfillmentProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  selectLocation: PropTypes.func.isRequired,
+  storeFormInput: PropTypes.func.isRequired,
+  submitReservation: PropTypes.func.isRequired,
+  updateProductsInCart: PropTypes.func.isRequired,
+  activeFulfillmentSlot: PropTypes.shape({
+    id: PropTypes.string,
+  }),
+  activeFulfillmentSlotLocationCode: PropTypes.string,
+  baseProduct: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+  }),
+  cartProducts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      fulfillment: PropTypes.shape({
+        method: PropTypes.string,
+        location: PropTypes.shape({
+          code: PropTypes.string,
+          name: PropTypes.string,
+        }),
+      }),
+    })
+  ),
+  changeOnly: PropTypes.bool,
+  enabledFulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+  fulfillmentMethod: PropTypes.string,
+  fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+  fulfillmentPath: PropTypes.string,
+  fulfillmentPaths: PropTypes.arrayOf(PropTypes.string),
+  fulfillmentSchedulingEnabled: PropTypes.bool,
+  inventory: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  isCart: PropTypes.bool,
+  isFetching: PropTypes.bool,
+  isInitialized: PropTypes.bool,
+  isStoreFinder: PropTypes.bool,
+  location: PropTypes.shape({
+    code: PropTypes.string,
+    name: PropTypes.string,
+  }),
+  locations: PropTypes.arrayOf(
+    PropTypes.shape({
+      code: PropTypes.string,
+      name: PropTypes.string,
+    })
+  ),
+  meta: PropTypes.shape(),
+  noInventory: PropTypes.bool,
+  noLocationSelection: PropTypes.bool,
+  onClose: PropTypes.func,
+  open: PropTypes.bool,
+  product: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+  }),
+  restrictMultiLocationOrders: PropTypes.bool,
+  shopSettings: PropTypes.shape({
+    supportedCountries: PropTypes.arrayOf(PropTypes.string),
+    countrySortOrder: PropTypes.arrayOf(PropTypes.string),
+  }),
+  showModal: PropTypes.func,
+  stage: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  title: PropTypes.string,
+  updatePreferredLocation: PropTypes.bool,
+  userInput: PropTypes.shape({
+    field: PropTypes.string,
+    value: PropTypes.string,
+  }),
+};
 
 FulfillmentProvider.defaultProps = {
   open: false,
@@ -493,20 +568,42 @@ FulfillmentProvider.defaultProps = {
   updatePreferredLocation: true,
   fulfillmentMethods: null,
   title: null,
+  activeFulfillmentSlot: null,
+  activeFulfillmentSlotLocationCode: null,
+  baseProduct: null,
+  cartProducts: [],
+  enabledFulfillmentMethods: [],
+  fulfillmentMethod: null,
+  fulfillmentPath: null,
+  fulfillmentPaths: [],
+  fulfillmentSchedulingEnabled: false,
+  inventory: null,
+  isCart: false,
+  isFetching: false,
+  isInitialized: false,
+  isStoreFinder: false,
+  location: null,
+  locations: [],
+  noInventory: false,
+  noLocationSelection: false,
+  product: null,
+  restrictMultiLocationOrders: false,
+  shopSettings: null,
+  showModal: null,
+  userInput: null,
+  stage: null,
+  onClose: null,
+  meta: null,
 };
 
-const FulfillmentProviderWrapped = withCurrentProduct<Props>(connect(FulfillmentProvider));
+const FulfillmentProviderWrapped = withCurrentProduct(connect(FulfillmentProvider));
 
 /**
  * Opens the sheet that is wrapped inside the provider.
- * @param {Object} params The opening parameters.
- * @property {Function} [params.callback] A callback function that's when the sheet closes.
- * @property {string} [params.stage] A specific stage to show.
- * @property {string} [params.fulfillmentPath] The fulfillment path that was chosen.
- * @property {boolean} [params.changeOnly=false] Whether only the location will be changed.
+ * @param {SheetOpenParams} params The opening parameters.
  */
-export function openSheet(params: SheetOpenParams): void {
+export const openSheet = (params) => {
   UIEvents.emit(EVENT_SET_OPEN, params);
-}
+};
 
 export default FulfillmentProviderWrapped;

@@ -1,15 +1,13 @@
 import React from 'react';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { container } from './FulfillmentSelectorHeader.style';
 
 /**
  * Renders the fulfillment selector title.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
-export function FulfillmentSelectorHeader() {
-  return (
-    <div role="heading" className={container}>
-      {i18n.text('locations.fulfillment.heading')}
-    </div>
-  );
-}
+export const FulfillmentSelectorHeader = () => (
+  <div role="heading" className={container}>
+    {i18n.text('locations.fulfillment.heading')}
+  </div>
+);

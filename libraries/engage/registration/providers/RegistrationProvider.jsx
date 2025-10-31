@@ -10,6 +10,7 @@ import {
 } from '@shopgate/engage/core';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import PropTypes from 'prop-types';
 import { extractDefaultValues } from '../../account/helper/form';
 import Context from './RegistrationProvider.context';
 import {
@@ -20,19 +21,6 @@ import {
 } from './RegistrationProvider.constraints';
 import connect from './RegistrationProvider.connector';
 import { MARKETING_OPT_IN_DEFAULT } from '../constants';
-
-type Props = {
-  children: any,
-  shopSettings: any,
-  userLocation: any,
-  customerAttributes: any,
-  isDataReady: bool,
-  registrationMode: string,
-  cartHasDirectShipItems?: bool,
-  numberOfAddressLines?: number,
-  submitRegistration: () => Promise<any>,
-  formContainerRef?: any,
-};
 
 const initialBaseFormState = {
   emailAddress: '',
@@ -78,7 +66,17 @@ const convertValidationErrors = validationErrors => Object
 
 /**
  * Registration Provider
- * @returns {JSX}
+ * @param {React.ReactNode} children Child components.
+ * @param {Object} shopSettings Shop settings object.
+ * @param {Object} userLocation User location object.
+ * @param {Object} customerAttributes Customer attributes object.
+ * @param {boolean} isDataReady Indicates if data is ready.
+ * @param {string} registrationMode Registration mode.
+ * @param {boolean} [cartHasDirectShipItems=false] Indicates if the cart has direct ship items.
+ * @param {number} [numberOfAddressLines=null] Number of address lines.
+ * @param {Function} submitRegistration Function to submit registration.
+ * @param {Object} [formContainerRef=null] Reference to the form container.
+ * @returns {JSX.Element}
  */
 const RegistrationProvider = ({
   isDataReady,
@@ -91,7 +89,7 @@ const RegistrationProvider = ({
   submitRegistration,
   children,
   formContainerRef,
-}: Props) => {
+}) => {
   const [isLocked, setLocked] = useState(false);
   const [isBaseFormSubmitted, setIsBaseFormSubmitted] = useState(false);
   const [isBillingFormSubmitted, setIsBillingFormSubmitted] = useState(false);
@@ -389,6 +387,25 @@ const RegistrationProvider = ({
       {children}
     </Context.Provider>
   );
+};
+
+RegistrationProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  customerAttributes: PropTypes.shape().isRequired,
+  isDataReady: PropTypes.bool.isRequired,
+  registrationMode: PropTypes.string.isRequired,
+  shopSettings: PropTypes.shape({
+    supportedCountries: PropTypes.arrayOf(PropTypes.string),
+    countrySortOrder: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  submitRegistration: PropTypes.func.isRequired,
+  userLocation: PropTypes.shape({
+    country: PropTypes.string,
+    region: PropTypes.string,
+  }).isRequired,
+  cartHasDirectShipItems: PropTypes.bool,
+  formContainerRef: PropTypes.shape(),
+  numberOfAddressLines: PropTypes.number,
 };
 
 RegistrationProvider.defaultProps = {

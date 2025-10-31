@@ -115,6 +115,26 @@
  */
 
 /**
+ * @typedef {'QUICK_RESERVE' | 'MULTI_LINE_RESERVE'} FulfillmentPath
+ */
+
+/**
+ * @callback SheetCallbackFn
+ * @param {import('../../locations.types').Location | null} location
+ * @param {string | null} productId
+ * @param {boolean | null} orderSuccess
+ * @returns {void}
+ */
+
+/**
+ * @typedef {'DIRECT_SHIP' | 'ROPIS' | 'BOPIS' | null} UserLocationFulfillmentMethod
+ */
+
+/**
+ * @typedef {string | null} UserLocationLocationCode
+ */
+
+/**
  * @typedef {Object} LocationsState
  * @property {LocationsByIdState|{}} locationsById
  * @property {LocationsByProductIdState|{}} locationsByProductId
@@ -131,9 +151,9 @@
 
 /**
  * @typedef {Object} SheetOpenParams
- * @property {function(Location|null, string|null, boolean|null):void} [callback]
+ * @property {SheetCallbackFn} [callback]
  * @property {SheetStage} [stage]
- * @property {string} [fulfillmentPath]
+ * @property {FulfillmentPath} [fulfillmentPath]
  * @property {boolean} [changeOnly]
  */
 

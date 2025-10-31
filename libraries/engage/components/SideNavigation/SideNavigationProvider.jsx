@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   CATEGORY_PATTERN,
   CATEGORY_FILTER_PATTERN,
@@ -13,17 +14,6 @@ import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import Context from './SideNavigationProvider.context';
 import connect from './SideNavigationProvider.connector';
 
-type Props = {
-  maxCategoryNesting: number,
-  routePatternBlacklist?: Array,
-  currentParams?: Object,
-  currentPathname?: string,
-  currentRoute?: Object,
-  isLoggedIn: boolean,
-  logout: () => any,
-  children: any
-}
-
 const categoryPatterns = [CATEGORY_PATTERN, CATEGORY_FILTER_PATTERN];
 const itemPatterns = [
   ITEM_PATTERN,
@@ -34,7 +24,16 @@ const itemPatterns = [
 
 /**
  * SideNavigation Provider
- * @returns {JSX}
+ * @param {Object} props The component props.
+ * @param {number} props.maxCategoryNesting Maximum category nesting level.
+ * @param {Array} [props.routePatternBlacklist=[]] List of route patterns to blacklist.
+ * @param {Object} [props.currentParams=null] Current route parameters.
+ * @param {string} [props.currentPathname=''] Current pathname.
+ * @param {Object} [props.currentRoute=null] Current route object.
+ * @param {boolean} props.isLoggedIn Whether the user is logged in.
+ * @param {Function} props.logout Logout function.
+ * @param {React.ReactNode} props.children Child components.
+ * @returns {JSX.Element} The rendered component.
  */
 const SideNavigationProvider = ({
   maxCategoryNesting,
@@ -45,7 +44,7 @@ const SideNavigationProvider = ({
   isLoggedIn,
   logout,
   children,
-}:Props) => {
+}) => {
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -64,7 +63,8 @@ const SideNavigationProvider = ({
     }
 
     setIsVisible(!routePatternBlacklist.includes(pattern));
-  });
+  }, [currentRoute, currentParams, routePatternBlacklist]);
+
   const value = useMemo(
     () => ({
       maxCategoryNesting,
@@ -76,16 +76,8 @@ const SideNavigationProvider = ({
       activeCategoryId,
       isVisible,
     }),
-    [
-      activeCategoryId,
-      currentParams,
-      currentPathname,
-      currentRoute,
-      isLoggedIn,
-      isVisible,
-      logout,
-      maxCategoryNesting,
-    ]
+    [activeCategoryId, currentParams, currentPathname,
+      currentRoute, isLoggedIn, isVisible, logout, maxCategoryNesting]
   );
 
   return (
@@ -93,6 +85,21 @@ const SideNavigationProvider = ({
       {children}
     </Context.Provider>
   );
+};
+
+SideNavigationProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
+  maxCategoryNesting: PropTypes.number.isRequired,
+  currentParams: PropTypes.shape({
+    categoryId: PropTypes.string,
+  }),
+  currentPathname: PropTypes.string,
+  currentRoute: PropTypes.shape({
+    pattern: PropTypes.string.isRequired,
+  }),
+  routePatternBlacklist: PropTypes.arrayOf(PropTypes.string),
 };
 
 SideNavigationProvider.defaultProps = {

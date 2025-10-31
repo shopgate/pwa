@@ -1,23 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { hot } from 'react-hot-loader/root';
 import SideNavigationProvider from './SideNavigationProvider';
 import SideNavigationContent from './SideNavigationContent';
 
-type Props = {
-  classNames?: Object,
-  maxCategoryNesting?: number,
-  routePatternBlacklist?: Array
-}
-
 /**
- * The SideNavigation component
- * @returns {JSX}
+ * The SideNavigation component.
+ * @param {Object} props The component props.
+ * @param {Object} [props.classNames=null] Custom class names for the component.
+ * @param {number} [props.maxCategoryNesting=3] Maximum category nesting level.
+ * @param {Array} [props.routePatternBlacklist=[]] List of route patterns to blacklist.
+ * @returns {JSX.Element} The rendered component.
  */
 const SideNavigation = ({
   maxCategoryNesting,
   routePatternBlacklist,
   classNames,
-}: Props) => (
+}) => (
   <SideNavigationProvider
     maxCategoryNesting={maxCategoryNesting}
     routePatternBlacklist={routePatternBlacklist}
@@ -25,6 +24,12 @@ const SideNavigation = ({
     <SideNavigationContent classNames={classNames} />
   </SideNavigationProvider>
 );
+
+SideNavigation.propTypes = {
+  classNames: PropTypes.shape(),
+  maxCategoryNesting: PropTypes.number,
+  routePatternBlacklist: PropTypes.arrayOf(PropTypes.string),
+};
 
 SideNavigation.defaultProps = {
   maxCategoryNesting: 3,
