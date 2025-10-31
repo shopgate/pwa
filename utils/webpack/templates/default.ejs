@@ -10,6 +10,11 @@
   <title>
     <%= htmlWebpackPlugin.options.title %>
   </title>
+  <% if (htmlWebpackPlugin.files && htmlWebpackPlugin.files.css) { %>
+    <% htmlWebpackPlugin.files.css.forEach(function(css) { %>
+      <link rel="stylesheet" href="<%= css %>">
+    <% }) %>
+  <% } %>
   <% const scripts = htmlWebpackPlugin.files.js; %>
   <% const vendor = scripts.find(s => s.includes('vendor')); %>
   <% if (vendor) { %><script src="<%= vendor %>"></script><% } %>

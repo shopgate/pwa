@@ -199,7 +199,7 @@ const config = {
       // Extract CSS into separate minified files on production builds
       new MiniCssExtractPlugin({
         filename: '[name].[contenthash].css',
-        chunkFilename: '[id].[contenthash].css',
+        chunkFilename: '[name].[contenthash].css',
       }),
       new CssMinimizerPlugin(),
     ] : []),
