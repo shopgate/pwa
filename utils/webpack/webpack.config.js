@@ -148,7 +148,6 @@ const config = {
         },
       },
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
 
     // Plugin to minify the HTML output fo the default.ejs template
     new HTMLWebpackPlugin({
@@ -299,7 +298,6 @@ const config = {
     moduleIds: 'deterministic',
     chunkIds: 'deterministic',
     nodeEnv: ENV,
-    minimize: true,
     removeAvailableModules: true,
     minimizer: [
       new TerserPlugin({
