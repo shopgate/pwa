@@ -3,11 +3,27 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { CookiesProvider } from 'react-cookie';
 import { loadCustomStyles } from '@shopgate/engage/styles';
+import { isDev } from './helpers/environment';
 import ErrorBoundary from './components/ErrorBoundary';
 import { appDidStart } from './action-creators/app';
 import I18n from './components/I18n';
 import { getIsSessionExpired } from './selectors/user';
 import logout from './actions/user/logout';
+
+// Suppress specific console logs in development mode
+if (isDev) {
+  const filters = [
+    // tss-react / emotion SSR warning - we don't care since we don't use SSR
+    'is potentially unsafe when doing server-side rendering.  Try changing it to',
+  ];
+
+  const original = console.error;
+  console.error = (...args) => {
+    const msg = args.join(' ');
+    if (filters.some(f => msg.includes(f))) return;
+    original(...args);
+  };
+}
 
 /**
  * The application component.
