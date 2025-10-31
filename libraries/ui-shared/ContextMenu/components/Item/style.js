@@ -5,7 +5,7 @@ import { getCSSCustomProp } from '@shopgate/engage/styles';
 
 /**
  * Get the item class.
- * @param {bool} disabled Disabled.
+ * @param {boolean} disabled Disabled.
  * @returns {string}
  */
 export const getItemClass = (disabled) => {

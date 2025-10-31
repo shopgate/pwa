@@ -24,7 +24,7 @@ export default class KeyFigure {
 
   /**
    * Toggles the status of the benchmark and also clears the result.
-   * @param {bool} started Whether benchmark is running or not.
+   * @param {boolean} started Whether benchmark is running or not.
    */
   setStarted(started) {
     if (started) {

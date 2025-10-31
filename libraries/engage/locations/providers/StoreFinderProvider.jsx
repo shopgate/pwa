@@ -45,7 +45,7 @@ const StoreFinderProvider = ({
   }, [selectedLocation, pop, selectLocation, selectGlobalLocation]);
 
   /**
-   * @param {bool} loading
+   * @param {boolean} loading
    */
   const setIsLoading = useCallback((loading) => {
     if (loading) {

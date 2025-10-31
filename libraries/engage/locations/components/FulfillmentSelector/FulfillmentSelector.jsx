@@ -1,8 +1,8 @@
-// @flow
 import { hot } from 'react-hot-loader/root';
 import React, {
   useState, useEffect, useCallback, useMemo,
 } from 'react';
+import PropTypes from 'prop-types';
 import { SurroundPortals } from '../../../components';
 import {
   DIRECT_SHIP,
@@ -12,16 +12,6 @@ import {
   PRODUCT_FULFILLMENT_SELECTOR,
 } from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
-import {
-  type UserLocationFulfillmentMethod,
-} from '../../locations.types';
-import {
-  type OwnProps,
-  type StateProps,
-  type DispatchProps,
-  type Selection,
-  type FulfillmentSelectorContextProps,
-} from './FulfillmentSelector.types';
 import { FulfillmentSelectorContext } from './FulfillmentSelector.context';
 import { FulfillmentSelectorHeader } from './FulfillmentSelectorHeader';
 import { FulfillmentSelectorItem } from './FulfillmentSelectorItem';
@@ -33,14 +23,24 @@ import { FulfillmentSelectorLocation } from './FulfillmentSelectorLocation';
 import { container } from './FulfillmentSelector.style';
 import connect from './FulfillmentSelector.connector';
 
-type Props = OwnProps & StateProps & DispatchProps;
+/* eslint-disable max-len */
+/** @typedef {import('./FulfillmentSelector.types').FulfillmentSelectorContextProps} FulfillmentSelectorContextProps */
+/** @typedef {import('./FulfillmentSelector.types').OwnProps} OwnProps */
+/** @typedef {import('./FulfillmentSelector.types').StateProps} StateProps */
+/** @typedef {import('./FulfillmentSelector.types').DispatchProps} DispatchProps */
+/** @typedef {import('../../locations.types').UserLocationFulfillmentMethod} UserLocationFulfillmentMethod */
+/* eslint-enable max-len */
+
+/**
+ * @typedef {OwnProps & StateProps & DispatchProps} Props
+ */
 
 /**
  * Renders the fulfillment selector radio button group.
- * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Props} props The component props.
+ * @returns {JSX.Element|null}
  */
-function FulfillmentSelector(props: Props) {
+const FulfillmentSelector = (props) => {
   const {
     productId,
     merchantSettings,
@@ -61,7 +61,7 @@ function FulfillmentSelector(props: Props) {
     isReady,
   } = props;
 
-  const [selection, setSelection] = useState<Selection>(userFulfillmentMethod);
+  const [selection, setSelection] = useState(userFulfillmentMethod);
   const [selectedLocation, setSelectedLocation] = useState(preferredLocation);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -81,7 +81,8 @@ function FulfillmentSelector(props: Props) {
     }
   }, [preferredLocation, selectedLocation]);
 
-  const fulfillmentMethodFallback = useMemo<UserLocationFulfillmentMethod>(() => {
+  /** @type {UserLocationFulfillmentMethod} */
+  const fulfillmentMethodFallback = useMemo(() => {
     if (!shopFulfillmentMethods) {
       return null;
     }
@@ -99,11 +100,6 @@ function FulfillmentSelector(props: Props) {
       return;
     }
 
-    /**
-     * The user has already set a fulfillment method which is supported by the shop, so we don't
-     * need to apply the fallback. We don't check against the product fulfillment methods to
-     * avoid too much auto magic when navigating through catalogs with different set up products.
-     */
     if (userFulfillmentMethod && shopFulfillmentMethods.includes(userFulfillmentMethod)) {
       return;
     }
@@ -128,28 +124,19 @@ function FulfillmentSelector(props: Props) {
     }
   }, [preferredLocation, selectedLocation, shopFulfillmentMethods]);
 
-  /**
-   * Updates the selected location when the sheet closes.
-   */
   const handleClose = useCallback((newLocationData) => {
     setIsOpen(false);
 
     if (!newLocationData && (!usedLocation || !usedLocation.code)) {
-      // Reset the UI back to directShip if there was no location selected already
       setSelection(fulfillmentMethodFallback);
       return;
     }
 
     if (newLocationData) {
-      // Update the selected location only when the selection was done for the same product.
       setSelectedLocation(newLocationData.location);
     }
   }, [fulfillmentMethodFallback, usedLocation]);
 
-  /**
-   * Whenever the pick-up selection is made, open the
-   * store selector sheet and use the new location.
-   */
   const handleChange = useCallback((method, changeOnly = false) => {
     conditioner.without('fulfillment-inventory').check().then((passed) => {
       if (!passed) {
@@ -193,7 +180,7 @@ function FulfillmentSelector(props: Props) {
     return null;
   }
 
-  const context: FulfillmentSelectorContextProps = {
+  const context = /** @type {FulfillmentSelectorContextProps} */ ({
     selection,
     selectedLocation,
     inventory,
@@ -213,7 +200,7 @@ function FulfillmentSelector(props: Props) {
     productFulfillmentMethods,
     locationFulfillmentMethods,
     useLocationFulfillmentMethods,
-  };
+  });
 
   return (
     <FulfillmentSelectorContext.Provider value={context}>
@@ -255,6 +242,37 @@ function FulfillmentSelector(props: Props) {
       <FulfillmentSelectorAddToCart />
     </FulfillmentSelectorContext.Provider>
   );
-}
+};
 
-export default hot(connect(React.memo<Props>(FulfillmentSelector)));
+FulfillmentSelector.propTypes = {
+  conditioner: PropTypes.shape().isRequired,
+  fulfillmentPaths: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isBOPISEnabled: PropTypes.bool.isRequired,
+  isDirectShipEnabled: PropTypes.bool.isRequired,
+  isOrderable: PropTypes.bool.isRequired,
+  isReady: PropTypes.bool.isRequired,
+  isROPISEnabled: PropTypes.bool.isRequired,
+  productId: PropTypes.string.isRequired,
+  storeFulfillmentMethod: PropTypes.func.isRequired,
+  inventory: PropTypes.shape(),
+  locationFulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+  merchantSettings: PropTypes.shape(),
+  preferredLocation: PropTypes.shape(),
+  productFulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+  shopFulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
+  useLocationFulfillmentMethods: PropTypes.bool,
+  userFulfillmentMethod: PropTypes.string,
+};
+
+FulfillmentSelector.defaultProps = {
+  merchantSettings: null,
+  shopFulfillmentMethods: null,
+  productFulfillmentMethods: null,
+  locationFulfillmentMethods: null,
+  useLocationFulfillmentMethods: false,
+  preferredLocation: null,
+  inventory: null,
+  userFulfillmentMethod: null,
+};
+
+export default hot(connect(React.memo(FulfillmentSelector)));

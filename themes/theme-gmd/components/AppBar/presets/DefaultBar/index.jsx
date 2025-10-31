@@ -165,7 +165,7 @@ class AppBarDefault extends PureComponent {
 
   /**
    * Maintains the status bar based on the visibility of the global SearchComponent.
-   * @param {bool} visible The current state.
+   * @param {boolean} visible The current state.
    */
   toggleSearch = (visible) => {
     if (!this.props.route.visible) {

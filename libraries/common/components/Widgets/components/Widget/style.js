@@ -6,7 +6,7 @@ import { css } from 'glamor';
  * @param {number} row Row index.
  * @param {number} width Width.
  * @param {number} height Height.
- * @param {bool} visible Visible.
+ * @param {boolean} visible Visible.
  * @returns {string}
  */
 function widgetCell({

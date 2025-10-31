@@ -21,7 +21,7 @@ import connect from './connector';
  * @param {string} props.pageId The page id.
  * @param {string} props.title The page title.
  * @param {Array} props.widgets The page widgets.
- * @param {bool} props.isCookieConsentHandled Whether the cookie consent is handled (pages can be
+ * @param {boolean} props.isCookieConsentHandled Whether the cookie consent is handled (pages can be
  * to show the privacy policy. We need to re-configure the screen so that users can't break out)
  * @param {boolean} props.hasError Whether the page has an error.
  * @returns {JSX.Element}

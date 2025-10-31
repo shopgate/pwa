@@ -6,40 +6,45 @@ import {
   i18n, useAsyncMemo, getUserAgent, LoadingProvider,
 } from '@shopgate/engage/core';
 import { MARKETING_OPT_IN_DEFAULT } from '@shopgate/engage/registration/constants';
+import PropTypes from 'prop-types';
 import Context from './CheckoutProvider.context';
 import connect from './CheckoutProvider.connector';
 import { pickupConstraints, selfPickupConstraints } from './CheckoutProvider.constraints';
 import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
 
-type Props = {
-  orderInitialized?: bool,
-  orderReadOnly?: bool,
-  pathPattern: string,
-  children: any,
-  shopSettings: any,
-  paymentTransactions: any,
-  billingAddress: any,
-  shippingAddress: any,
-  fulfillmentSlot: any,
-  pickupAddress: any,
-  taxLines: any,
-  userLocation: any,
-  isDataReady: bool,
-  orderReserveOnly?: bool,
-  isShippingAddressSelectionEnabled?: bool,
-  isPickupContactSelectionEnabled?: bool,
-  isGuestCheckout?: bool,
-  campaignAttribution: any,
-  order: any,
-  fetchCart: () => Promise<any>,
-  prepareCheckout: () => Promise<any>,
-  fetchCheckoutOrder: () => Promise<any>,
-  updateCheckoutOrder: () => Promise<any>,
-  submitCheckoutOrder: () => Promise<any>,
-  historyReplace: (any) => void,
-  showModal: (any) => void,
-  clearCheckoutCampaign: (any) => void,
-};
+/* eslint-disable max-len */
+/**
+ * Props for the CheckoutProvider component.
+ * @typedef {Object} CheckoutProviderProps
+ * @property {boolean} [orderInitialized=false] - Indicates if the order is initialized.
+ * @property {boolean} [orderReadOnly=false] - Indicates if the order is read-only.
+ * @property {string} pathPattern - The path pattern for the checkout.
+ * @property {React.ReactNode} children - The child components.
+ * @property {Object} shopSettings - The shop settings.
+ * @property {Array} paymentTransactions - The payment transactions.
+ * @property {Object} billingAddress - The billing address.
+ * @property {Object} shippingAddress - The shipping address.
+ * @property {Object} fulfillmentSlot - The fulfillment slot.
+ * @property {Object} pickupAddress - The pickup address.
+ * @property {Array} taxLines - The tax lines.
+ * @property {Object} userLocation - The user location.
+ * @property {boolean} isDataReady - Indicates if the data is ready.
+ * @property {boolean} [orderReserveOnly=false] - Indicates if the order is reserve-only.
+ * @property {boolean} [isShippingAddressSelectionEnabled=false] - Indicates if shipping address selection is enabled.
+ * @property {boolean} [isPickupContactSelectionEnabled=false] - Indicates if pickup contact selection is enabled.
+ * @property {boolean} [isGuestCheckout=false] - Indicates if guest checkout is enabled.
+ * @property {Object} campaignAttribution - The campaign attribution data.
+ * @property {Object} order - The checkout order.
+ * @property {Function} fetchCart - Function to fetch the cart.
+ * @property {Function} prepareCheckout - Function to prepare the checkout.
+ * @property {Function} fetchCheckoutOrder - Function to fetch the checkout order.
+ * @property {Function} updateCheckoutOrder - Function to update the checkout order.
+ * @property {Function} submitCheckoutOrder - Function to submit the checkout order.
+ * @property {Function} historyReplace - Function to replace the history.
+ * @property {Function} showModal - Function to show a modal.
+ * @property {Function} clearCheckoutCampaign - Function to clear the checkout campaign.
+ */
+/* eslint-enable max-len */
 
 const defaultPickupPersonState = {
   pickupPerson: 'me',
@@ -71,7 +76,7 @@ const initialOptInFormState = {
 
 /**
  * Checkout Provider
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CheckoutProvider = ({
   pathPattern,
@@ -101,7 +106,7 @@ const CheckoutProvider = ({
   campaignAttribution,
   clearCheckoutCampaign,
   order: checkoutOrder,
-}: Props) => {
+}) => {
   const [paymentButton, setPaymentButton] = React.useState(null);
   const paymentHandlerRef = React.useRef(null);
   const [paymentData, setPaymentData] = React.useState(null);
@@ -523,6 +528,51 @@ const CheckoutProvider = ({
   );
 };
 
+CheckoutProvider.propTypes = {
+  billingAddress: PropTypes.shape({
+    customerContactId: PropTypes.string,
+  }).isRequired,
+  children: PropTypes.node.isRequired,
+  clearCheckoutCampaign: PropTypes.func.isRequired,
+  fetchCart: PropTypes.func.isRequired,
+  fetchCheckoutOrder: PropTypes.func.isRequired,
+  fulfillmentSlot: PropTypes.shape().isRequired,
+  historyReplace: PropTypes.func.isRequired,
+  isDataReady: PropTypes.bool.isRequired,
+  order: PropTypes.shape({
+    isOrderable: PropTypes.bool,
+    currencyCode: PropTypes.string,
+  }).isRequired,
+  pathPattern: PropTypes.string.isRequired,
+  paymentTransactions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  pickupAddress: PropTypes.shape({
+    type: PropTypes.string,
+  }).isRequired,
+  prepareCheckout: PropTypes.func.isRequired,
+  shippingAddress: PropTypes.shape({
+    customerContactId: PropTypes.string,
+  }).isRequired,
+  shopSettings: PropTypes.shape({
+    supportedCountries: PropTypes.arrayOf(PropTypes.string),
+    countrySortOrder: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  showModal: PropTypes.func.isRequired,
+  submitCheckoutOrder: PropTypes.func.isRequired,
+  taxLines: PropTypes.arrayOf(PropTypes.object).isRequired,
+  updateCheckoutOrder: PropTypes.func.isRequired,
+  userLocation: PropTypes.shape({
+    latitude: PropTypes.number,
+    longitude: PropTypes.number,
+  }).isRequired,
+  campaignAttribution: PropTypes.shape(),
+  isGuestCheckout: PropTypes.bool,
+  isPickupContactSelectionEnabled: PropTypes.bool,
+  isShippingAddressSelectionEnabled: PropTypes.bool,
+  orderInitialized: PropTypes.bool,
+  orderReadOnly: PropTypes.bool,
+  orderReserveOnly: PropTypes.bool,
+};
+
 CheckoutProvider.defaultProps = {
   orderInitialized: false,
   orderReadOnly: false,
@@ -530,6 +580,7 @@ CheckoutProvider.defaultProps = {
   isShippingAddressSelectionEnabled: false,
   isPickupContactSelectionEnabled: false,
   isGuestCheckout: false,
+  campaignAttribution: null,
 };
 
 export default connect(CheckoutProvider);

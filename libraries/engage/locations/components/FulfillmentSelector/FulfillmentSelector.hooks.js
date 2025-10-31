@@ -1,11 +1,12 @@
-// @flow
+// eslint-disable-next-line max-len
+/** @typedef {import('./FulfillmentSelector.types').FulfillmentSelectorContextProps} FulfillmentSelectorContextProps */
+
 import { useContext } from 'react';
-import { type FulfillmentSelectorContextProps } from './FulfillmentSelector.types';
 import { FulfillmentSelectorContext } from './FulfillmentSelector.context';
 
 /**
- * @returns {Object} The fulfillment selector context.
+ * @returns {FulfillmentSelectorContextProps} The fulfillment selector context.
  */
-export function useFulfillmentSelectorState(): FulfillmentSelectorContextProps {
+export function useFulfillmentSelectorState() {
   return useContext(FulfillmentSelectorContext);
 }

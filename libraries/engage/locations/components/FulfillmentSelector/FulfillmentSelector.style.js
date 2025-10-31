@@ -5,4 +5,4 @@ const { variables } = themeConfig;
 
 export const container = css({
   padding: `${variables.gap.small}px ${variables.gap.big}px`,
-});
+}).toString();

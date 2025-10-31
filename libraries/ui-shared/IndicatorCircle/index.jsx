@@ -9,7 +9,7 @@ import styles from './style';
  * @param {Object} props.size Width and height of the circle.
  * @param {Object} props.color Color of the circle.
  * @param {Object} props.strokeWidth Stroke width of the circle.
- * @param {bool} props.paused Animation should be paused.
+ * @param {boolean} props.paused Animation should be paused.
  * @returns {JSX}
  */
 const IndicatorCircle = ({
