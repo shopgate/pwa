@@ -8,6 +8,8 @@ const ProgressBarWebpackPlugin = require('progress-bar-webpack-plugin');
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const { GenerateSW } = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const rxPaths = require('rxjs/_esm5/path-mapping');
 const ShopgateIndexerPlugin = require('./plugins/ShopgateIndexerPlugin');
 const ShopgateThemeConfigValidatorPlugin = require('./plugins/ShopgateThemeConfigValidatorPlugin');
@@ -61,7 +63,7 @@ const config = {
     ],
   },
   output: {
-    filename: !isDev ? `[name].[hash]${fileSuffix}.js` : `[name]${fileSuffix}.js`,
+    filename: !isDev ? `[name].[contenthash]${fileSuffix}.js` : `[name]${fileSuffix}.js`,
     chunkFilename: `[name].[chunkhash]${fileSuffix}.js`,
     path: path.resolve(themePath, PUBLIC_FOLDER),
     publicPath: isDev ? '/' : (process.env.publicPath || './'),
@@ -195,6 +197,12 @@ const config = {
         clientsClaim: true,
         skipWaiting: true,
       }),
+      // Extract CSS into separate minified files on production builds
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+        chunkFilename: '[id].[contenthash].css',
+      }),
+      new CssMinimizerPlugin(),
     ] : []),
   ],
   module: {
@@ -203,13 +211,17 @@ const config = {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: 'asset/resource',
         generator: {
-          filename: '[name][hash][ext][query]',
+          filename: '[name].[contenthash][ext][query]',
         },
       },
       {
         test: /\.css$/,
-        use: [
+        // Bundle CSS on development, extract it into separate files on production
+        use: isDev ? [
           'style-loader',
+          'css-loader',
+        ] : [
+          MiniCssExtractPlugin.loader,
           'css-loader',
         ],
       },
