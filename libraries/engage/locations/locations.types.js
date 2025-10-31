@@ -115,7 +115,10 @@
  */
 
 /**
- * @typedef {'QUICK_RESERVE' | 'MULTI_LINE_RESERVE'} FulfillmentPath
+ * @typedef {(
+ *   typeof import('./constants').QUICK_RESERVE |
+ *   typeof import('./constants').MULTI_LINE_RESERVE
+ * )} FulfillmentPath
  */
 
 /**
@@ -127,7 +130,7 @@
  */
 
 /**
- * @typedef {'DIRECT_SHIP' | 'ROPIS' | 'BOPIS' | null} UserLocationFulfillmentMethod
+ * @typedef {(typeof DIRECT_SHIP | typeof ROPIS| typeof BOPIS)} UserLocationFulfillmentMethod
  */
 
 /**
@@ -143,11 +146,14 @@
  * @property {string} userSearchQuery
  */
 
-/* eslint-disable max-len */
 /**
- * @typedef {'STAGE_SELECT_STORE' | 'STAGE_RESERVE_FORM' | 'STAGE_RESPONSE_SUCCESS' | 'STAGE_RESPONSE_ERROR'} SheetStage
+ * @typedef {(
+ *   typeof import('./constants').STAGE_SELECT_STORE |
+ *   typeof import('./constants').STAGE_RESERVE_FORM |
+ *   typeof import('./constants').STAGE_RESPONSE_SUCCESS |
+ *   typeof import('./constants').STAGE_RESPONSE_ERROR
+ * )} SheetStage
  */
-/* eslint-enable max-len */
 
 /**
  * @typedef {Object} SheetOpenParams

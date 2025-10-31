@@ -25,7 +25,7 @@ export const column = css({
   ':last-child': {
     paddingRight: variables.gap.small,
   },
-}).toString();
+});
 
 export const priceColumnWide = css({
   flexGrow: 4,

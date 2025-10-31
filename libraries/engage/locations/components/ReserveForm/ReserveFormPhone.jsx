@@ -92,7 +92,7 @@ const ReserveFormPhoneUnwrapped = memo((props) => {
   const labels = useMemo(() => {
     const output = {};
 
-    if (!Array.isArray(countries) || countries.length === 0) {
+    if (!countries || !Array.isArray(countries) || countries.length === 0) {
       return output;
     }
 

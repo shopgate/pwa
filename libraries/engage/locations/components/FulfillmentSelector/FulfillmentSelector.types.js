@@ -1,10 +1,14 @@
 /* eslint-disable max-len */
-
 /** @typedef {import('../../locations.types').Location} Location */
 /** @typedef {import('../../locations.types').UserLocationFulfillmentMethod} UserLocationFulfillmentMethod */
 
 /**
- * @typedef {('DIRECT_SHIP' | 'ROPIS' | 'BOPIS' | null)} Selection
+ * @typedef {(
+ *   typeof import('../../constants').DIRECT_SHIP |
+ *   typeof import('../../constants').ROPIS |
+ *   typeof import('../../constants').BOPIS |
+ *   null
+ * )} Selection
  */
 
 /**

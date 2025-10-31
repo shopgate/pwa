@@ -36,7 +36,7 @@
  * @property {string[]} [fulfillmentMethods]
  * @property {ShopSettings} [shopSettings]
  * @property {any} inventory
- * @extends Product
+ * @mixes Product
  */
 
 /**

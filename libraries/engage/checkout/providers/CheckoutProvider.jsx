@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-expressions */
-import React, { useCallback } from 'react';
+import React, {
+  useCallback, useEffect, useMemo, useRef, useState,
+} from 'react';
 import { isAvailable, InAppBrowser, Linking } from '@shopgate/native-modules';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import {
@@ -107,14 +109,14 @@ const CheckoutProvider = ({
   clearCheckoutCampaign,
   order: checkoutOrder,
 }) => {
-  const [paymentButton, setPaymentButton] = React.useState(null);
-  const paymentHandlerRef = React.useRef(null);
-  const [paymentData, setPaymentData] = React.useState(null);
-  const [isLocked, setLocked] = React.useState(true);
-  const [isButtonLocked, setButtonLocked] = React.useState(true);
-  const [isLoading, setLoading] = React.useState(true);
-  const [validationRules, setValidationRules] = React.useState(selfPickupConstraints);
-  const [updateOptIns, setUpdateOptIns] = React.useState(false);
+  const [paymentButton, setPaymentButton] = useState(null);
+  const paymentHandlerRef = useRef(null);
+  const [paymentData, setPaymentData] = useState(null);
+  const [isLocked, setLocked] = useState(true);
+  const [isButtonLocked, setButtonLocked] = useState(true);
+  const [isLoading, setLoading] = useState(true);
+  const [validationRules, setValidationRules] = useState(selfPickupConstraints);
+  const [updateOptIns, setUpdateOptIns] = useState(false);
 
   const defaultOptInFormState = {
     ...initialOptInFormState,
@@ -147,7 +149,7 @@ const CheckoutProvider = ({
   }, [], false);
 
   // Handle passed errors from external checkout gateway.
-  React.useEffect(() => {
+  useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const errorCode = urlParams.get('errorCode');
     if (!errorCode) {
@@ -161,10 +163,10 @@ const CheckoutProvider = ({
     });
   }, [showModal]);
 
-  const submitPromise = React.useRef(null);
+  const submitPromise = useRef(null);
 
   // Handles submit of the checkout form.
-  const handleSubmitOrder = React.useCallback(async (values) => {
+  const handleSubmitOrder = useCallback(async (values) => {
     setLocked(true);
 
     // Update order to set pickup contact.
@@ -364,7 +366,7 @@ const CheckoutProvider = ({
   ]);
 
   // Whenever the order is locked we also want to show to loading bar.
-  React.useEffect(() => {
+  useEffect(() => {
     if (isLocked) {
       setLoading(true);
       return;
@@ -372,7 +374,7 @@ const CheckoutProvider = ({
     setLoading(false);
   }, [isLocked]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isLoading) {
       LoadingProvider.setLoading(pathPattern);
       return;
@@ -388,7 +390,7 @@ const CheckoutProvider = ({
   );
 
   // When "someone-else" is picked for pickup the validation rules need to change.
-  React.useEffect(() => {
+  useEffect(() => {
     setValidationRules(
       formState.values.pickupPerson === 'me' || isGuestCheckout
         ? selfPickupConstraints
@@ -396,13 +398,13 @@ const CheckoutProvider = ({
     );
   }, [formState.values.pickupPerson, isGuestCheckout]);
 
-  const isOrderable = React.useMemo(
+  const isOrderable = useMemo(
     () => (typeof checkoutOrder?.isOrderable !== 'undefined' ? checkoutOrder.isOrderable : true),
     [checkoutOrder]
   );
 
   // Create memoized context value.
-  const value = React.useMemo(() => ({
+  const value = useMemo(() => ({
     setPaymentHandler: (handler) => {
       setPaymentButton(() => handler.getCustomPayButton());
       paymentHandlerRef.current = handler;
@@ -479,7 +481,7 @@ const CheckoutProvider = ({
   ]);
 
   // Handle deeplinks from external payment site.
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isAvailable()) return undefined;
 
     /**

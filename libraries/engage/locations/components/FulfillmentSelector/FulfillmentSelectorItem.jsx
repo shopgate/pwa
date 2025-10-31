@@ -14,6 +14,8 @@ import {
   content,
 } from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
+import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
+
 /** @typedef {import('./FulfillmentSelector.types').Selection} Selection */
 
 /**
@@ -72,7 +74,7 @@ const FulfillmentSelectorItemUnwrapped = ({
 
 FulfillmentSelectorItemUnwrapped.propTypes = {
   children: PropTypes.node.isRequired,
-  name: PropTypes.oneOf(['DIRECT_SHIP', 'ROPIS', 'BOPIS', null]).isRequired,
+  name: PropTypes.oneOf([DIRECT_SHIP, ROPIS, BOPIS, null]).isRequired,
   onChange: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
 };
