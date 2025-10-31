@@ -14,14 +14,24 @@ import logout from './actions/user/logout';
 if (isDev) {
   const filters = [
     // tss-react / emotion SSR warning - we don't care since we don't use SSR
-    'is potentially unsafe when doing server-side rendering.  Try changing it to',
+    'is potentially unsafe when doing server-side rendering. Try changing it to',
+    // Webpack warning about named imports from JSON files - we already see it in the terminal
+    'from default-exporting module (only default export is available soon)',
   ];
 
-  const original = console.error;
+  const originalError = console.error;
+  const originalWarn = console.warn;
+
   console.error = (...args) => {
     const msg = args.join(' ');
     if (filters.some(f => msg.includes(f))) return;
-    original(...args);
+    originalError(...args);
+  };
+
+  console.warn = (...args) => {
+    const msg = args.join(' ');
+    if (filters.some(f => msg.includes(f))) return;
+    originalWarn(...args);
   };
 }
 
