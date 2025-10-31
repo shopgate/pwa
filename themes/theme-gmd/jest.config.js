@@ -10,12 +10,10 @@ module.exports = {
     '^Extensions(.*)$': '<rootDir>/extensions',
     '^Pages(.*)$': '<rootDir>/pages',
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
+    // Fix issue with Swiper ES module imports that work via "exports" field in package.json
     '^swiper/react$': '<rootDir>/node_modules/swiper/swiper-react.mjs',
-    '^swiper/css': '<rootDir>/__mocks__/styleMock.js',
-    '^swiper/a11y': '<rootDir>/__mocks__/styleMock.js',
-    '^swiper/pagination': '<rootDir>/__mocks__/styleMock.js',
-    '^swiper/navigation': '<rootDir>/__mocks__/styleMock.js',
-    '^swiper/zoom': '<rootDir>/__mocks__/styleMock.js',
+    // Mock Swiper styles since they are not needed for unit tests
+    '^swiper/css(?:/.*)?$': '<rootDir>/__mocks__/styleMock.js',
   },
   testPathIgnorePatterns: [
     ...defaultConfig.testPathIgnorePatterns,
