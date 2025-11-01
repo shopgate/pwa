@@ -1,5 +1,4 @@
 // @flow
-import { hot } from 'react-hot-loader/root';
 import React, {
   useState, useEffect, useCallback, useMemo,
 } from 'react';
@@ -257,4 +256,4 @@ function FulfillmentSelector(props: Props) {
   );
 }
 
-export default hot(connect(React.memo<Props>(FulfillmentSelector)));
+export default connect(React.memo<Props>(FulfillmentSelector));

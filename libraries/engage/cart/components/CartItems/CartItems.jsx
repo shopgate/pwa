@@ -1,5 +1,4 @@
 // @flow
-import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
@@ -105,4 +104,4 @@ CartItems.defaultProps = {
   currencyOverride: null,
 };
 
-export default hot(CartItems);
+export default CartItems;

@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { hot } from 'react-hot-loader/root';
 import { FulfillmentProvider } from '../../providers';
 import { FulfillmentSheetContent } from '../FulfillmentSheet/FulfillmentSheetContent';
 import CartContextMenuChangeFulfillmentContent from './CartContextMenuChangeFulfillmentContent';
@@ -30,4 +29,4 @@ const CartContextMenuChangeFulfillment = ({ cartItem }: Props) => {
   );
 };
 
-export default hot(CartContextMenuChangeFulfillment);
+export default CartContextMenuChangeFulfillment;

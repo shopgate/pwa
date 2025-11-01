@@ -1,5 +1,4 @@
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
 import SideNavigationProvider from './SideNavigationProvider';
 import SideNavigationContent from './SideNavigationContent';
 
@@ -32,4 +31,4 @@ SideNavigation.defaultProps = {
   classNames: null,
 };
 
-export default hot(SideNavigation);
+export default SideNavigation;

@@ -1,5 +1,4 @@
 // @flow
-import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -72,4 +71,4 @@ CartItem.defaultProps = {
   currencyOverride: null,
 };
 
-export default hot(React.memo<Props>(CartItem));
+export default React.memo<Props>(CartItem);

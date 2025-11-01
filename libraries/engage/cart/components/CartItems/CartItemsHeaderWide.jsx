@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import classNames from 'classnames';
-import { hot } from 'react-hot-loader/root';
 import { I18n } from '@shopgate/engage/components';
 import {
   header,
@@ -78,4 +77,4 @@ CartItemsHeaderWide.defaultProps = {
   hasLineItemPromotions: false,
 };
 
-export default hot(connect(CartItemsHeaderWide));
+export default connect(CartItemsHeaderWide);

@@ -10,6 +10,7 @@ const { GenerateSW } = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const rxPaths = require('rxjs/_esm5/path-mapping');
 const ShopgateIndexerPlugin = require('./plugins/ShopgateIndexerPlugin');
 const ShopgateThemeConfigValidatorPlugin = require('./plugins/ShopgateThemeConfigValidatorPlugin');
@@ -79,7 +80,7 @@ const config = {
 
       // Packages from common module
       react: resolveForAliasPackage('react'),
-      'react-dom': resolveForAliasPackage('@hot-loader', '/react-dom'),
+      'react-dom': resolveForAliasPackage('react-dom'),
       'react-redux': resolveForAliasPackage('react-redux'),
       reselect: resolveForAliasPackage('reselect'),
       glamor: resolveForAliasPackage('glamor'),
@@ -90,7 +91,6 @@ const config = {
       'react-helmet': resolveForAliasPackage('react-helmet'),
       'css-spring': resolveForAliasPackage('css-spring'),
       'react-transition-group': resolveForAliasPackage('react-transition-group'),
-      'react-hot-loader': resolveForAliasPackage('react-hot-loader'),
       '@virtuous': resolveForAliasPackage('@virtuous'),
       lodash: resolveForAliasPackage('lodash'),
       'prop-types': resolveForAliasPackage('prop-types'),
@@ -184,6 +184,7 @@ const config = {
     ...(isDev && addBundleAnalyzer ? [
       new BundleAnalyzerPlugin(),
     ] : []),
+    ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
     ...(!isDev ? [
       new CompressionWebpackPlugin({
         filename: '[path][base].gz[query]',
@@ -237,6 +238,7 @@ const config = {
             options: {
               configFile: path.resolve(themePath, 'babel.config.js'),
               cacheDirectory: path.resolve(themePath, '..', '..', '.cache-loader'),
+              plugins: [isDev && require.resolve('react-refresh/babel')].filter(Boolean),
             },
           },
         ],

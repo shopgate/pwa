@@ -1,5 +1,4 @@
 // @flow
-import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import CartItemGroupReservation from './CartItemGroupReservation';
 
@@ -43,4 +42,4 @@ CartItemGroup.defaultProps = {
   fulfillmentMethod: null,
 };
 
-export default hot(CartItemGroup);
+export default CartItemGroup;

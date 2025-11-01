@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -125,4 +124,4 @@ class RadioGroup extends Component {
   }
 }
 
-export default hot(RadioGroup);
+export default RadioGroup;
