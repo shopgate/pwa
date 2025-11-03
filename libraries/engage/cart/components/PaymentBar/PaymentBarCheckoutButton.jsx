@@ -1,8 +1,5 @@
-// @flow
 import React, { useContext, useMemo } from 'react';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Link';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { I18n, Link, SurroundPortals } from '@shopgate/engage/components';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';

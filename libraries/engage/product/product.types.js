@@ -1,43 +1,38 @@
-// @flow
+/**
+ * @typedef {Object} ProductCharacteristic
+ * @property {string|number} id
+ * @property {string} label
+ * @property {string} value
+ */
 
-export type ProductId = string;
+/**
+ * @typedef {Object} ProductTierPrice
+ * @property {number|null} from
+ * @property {number|null} to
+ * @property {number} unitPrice
+ */
 
-export type ProductCharacteristic = {
-  id: string | number,
-  label: string,
-  value: string,
-}
+/**
+ * @typedef {Object} ProductPrice
+ * @property {string} currency
+ * @property {string} info
+ * @property {number} unitPrice
+ * @property {number} [unitPriceStriked]
+ * @property {number} [unitPriceMin]
+ * @property {number} [unitPriceMax]
+ * @property {number} unitPriceNet
+ * @property {number} unitPriceWithTax
+ * @property {number} taxAmount
+ * @property {number} taxPercent
+ * @property {number} [msrp]
+ * @property {ProductTierPrice[]} tiers
+ * @property {number} [discount]
+ */
 
-export type ProductTierPrice = {
-  from: number | null,
-  to: number | null,
-  unitPrice: number,
-}
-
-export type ProductPrice = {
-  currency: string,
-  info: string,
-  unitPrice: number,
-  unitPriceStriked?: number,
-  unitPriceMin?: number,
-  unitPriceMax?: number,
-  unitPriceNet: number,
-  unitPriceWithTax: number,
-  taxAmount: number,
-  taxPercent: number,
-  msrp?: number,
-  tiers: ProductTierPrice[],
-  discount?: number
-}
-
-export type ProductPriceAware = { price?: ProductPrice | null }
-export type ProductCharacteristicsAware = { characteristics?: ProductCharacteristic[] | null }
-
-// TODO: Finish product type.
-export type Product = {
-  id: ProductId;
-  name: string,
-} & ProductCharacteristicsAware & ProductPriceAware
-
-export type ProductAware = { product?: Product | null }
-export type BaseProductAware = { baseProduct?: Product | null }
+/**
+ * @typedef {Object} Product
+ * @property {string} id
+ * @property {string} name
+ * @property {ProductCharacteristic[]|null} [characteristics]
+ * @property {ProductPrice|null} [price]
+ */

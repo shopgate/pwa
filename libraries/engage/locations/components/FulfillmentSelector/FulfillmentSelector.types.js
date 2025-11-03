@@ -1,59 +1,72 @@
-// @flow
-import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
-import { type Location, type UserLocationFulfillmentMethod } from '../../locations.types';
+/* eslint-disable max-len */
+/** @typedef {import('../../locations.types').Location} Location */
+/** @typedef {import('../../locations.types').UserLocationFulfillmentMethod} UserLocationFulfillmentMethod */
 
-export type Selection = typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null;
+/**
+ * @typedef {(
+ *   typeof import('../../constants').DIRECT_SHIP |
+ *   typeof import('../../constants').ROPIS |
+ *   typeof import('../../constants').BOPIS |
+ *   null
+ * )} Selection
+ */
 
-export type UserSearch = {
-  geolocation: null,
-  postalCode: null,
-}
+/**
+ * @typedef {Object} UserSearch
+ * @property {null} geolocation
+ * @property {null} postalCode
+ */
 
-export type FulfillmentSelectorContextProps = {
-  selection: Selection,
-  selectedLocation: Location | null,
-  location?: Location | null,
-  isDirectShipEnabled: boolean,
-  isROPISEnabled: boolean,
-  isBOPISEnabled: boolean,
-  isReady: boolean,
-  productId: string,
-  handleChange: (element: Selection, changeOnly: boolean) => void,
-  conditioner: any,
-  fulfillmentPaths: string[],
-  merchantSettings: Object,
-  userFulfillmentMethod: string | null,
-  isOrderable: boolean,
-  shopFulfillmentMethods?: string[] | null,
-  productFulfillmentMethods: string[] | null,
-  locationFulfillmentMethods: string[] | null,
-  useLocationFulfillmentMethods: boolean,
-  inventory?: Object,
-  preferredLocation?: Object,
-}
+/**
+ * @typedef {Object} FulfillmentSelectorContextProps
+ * @property {Selection} selection
+ * @property {Location|null} selectedLocation
+ * @property {Location|null} [location]
+ * @property {boolean} isDirectShipEnabled
+ * @property {boolean} isROPISEnabled
+ * @property {boolean} isBOPISEnabled
+ * @property {boolean} isReady
+ * @property {string} productId
+ * @property {function(Selection, boolean): void} handleChange
+ * @property {any} conditioner
+ * @property {string[]} fulfillmentPaths
+ * @property {Object} merchantSettings
+ * @property {string|null} userFulfillmentMethod
+ * @property {boolean} isOrderable
+ * @property {string[]|null} [shopFulfillmentMethods]
+ * @property {string[]|null} productFulfillmentMethods
+ * @property {string[]|null} locationFulfillmentMethods
+ * @property {boolean} useLocationFulfillmentMethods
+ * @property {Object} [inventory]
+ * @property {Object} [preferredLocation]
+ */
 
-export type OwnProps = {
-  conditioner: any,
-  productId: string,
-}
+/**
+ * @typedef {Object} OwnProps
+ * @property {any} conditioner
+ * @property {string} productId
+ */
 
-export type StateProps = {
-  merchantSettings?: Object,
-  shopFulfillmentMethods?: string[] | null,
-  productFulfillmentMethods: string[] | null,
-  locationFulfillmentMethods: string[] | null,
-  useLocationFulfillmentMethods: boolean,
-  isDirectShipEnabled: boolean,
-  isROPISEnabled: boolean,
-  isBOPISEnabled: boolean,
-  preferredLocation: Location | null,
-  inventory: any,
-  userFulfillmentMethod: string | null,
-  fulfillmentPaths: string[],
-  isOrderable: boolean,
-  isReady: boolean,
-}
+/**
+ * @typedef {Object} StateProps
+ * @property {Object} [merchantSettings]
+ * @property {string[]|null} [shopFulfillmentMethods]
+ * @property {string[]|null} productFulfillmentMethods
+ * @property {string[]|null} locationFulfillmentMethods
+ * @property {boolean} useLocationFulfillmentMethods
+ * @property {boolean} isDirectShipEnabled
+ * @property {boolean} isROPISEnabled
+ * @property {boolean} isBOPISEnabled
+ * @property {Location|null} preferredLocation
+ * @property {Object} inventory
+ * @property {string|null} userFulfillmentMethod
+ * @property {string[]} fulfillmentPaths
+ * @property {boolean} isOrderable
+ * @property {boolean} isReady
+ */
 
-export type DispatchProps = {
-  storeFulfillmentMethod: (method: UserLocationFulfillmentMethod) => void,
-}
+/**
+ * @typedef {Object} DispatchProps
+ * @property {function(UserLocationFulfillmentMethod): void} storeFulfillmentMethod
+ */
+/* eslint-enable max-len */

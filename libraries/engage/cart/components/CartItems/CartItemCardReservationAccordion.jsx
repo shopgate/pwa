@@ -1,27 +1,25 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/engage/components';
-import { type OptionalLocationAware, StoreAddress, StoreOpeningHours } from '@shopgate/engage/locations';
+import { StoreAddress, StoreOpeningHours } from '@shopgate/engage/locations';
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
 import {
   accordionToggle, accordionContent, locationAddress, locationHours,
 } from './CartItemCard.style';
 
-type Props = OptionalLocationAware & {
-  openWithChevron?: boolean,
-  operationHours?: Object,
-};
+// eslint-disable-next-line max-len
+/** @typedef {import('@shopgate/engage/locations/locations.types').OptionalLocationAware} OptionalLocationAware */
 
 /**
- * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {OptionalLocationAware} props The component props.
+ * @returns {JSX.Element}
  */
 const CartItemCardReservationAccordion = ({
   openWithChevron,
   location,
   fulfillmentMethod,
   operationHours,
-}: Props) => (
+}) => (
   <Accordion
     className={accordionToggle}
     openWithChevron={openWithChevron}
@@ -45,8 +43,23 @@ const CartItemCardReservationAccordion = ({
   </Accordion>
 );
 
+CartItemCardReservationAccordion.propTypes = {
+  fulfillmentMethod: PropTypes.string,
+  location: PropTypes.shape({
+    operationHours: PropTypes.shape(),
+    address: PropTypes.shape({
+      phoneNumber: PropTypes.string,
+    }),
+  }),
+  openWithChevron: PropTypes.bool,
+  operationHours: PropTypes.shape(),
+};
+
 CartItemCardReservationAccordion.defaultProps = {
   openWithChevron: false,
+  location: null,
+  fulfillmentMethod: null,
+  operationHours: null,
 };
 
 export { CartItemCardReservationAccordion };

@@ -1,23 +1,29 @@
-// @flow
 import { connect } from 'react-redux';
 import deleteCouponsFromCart from '@shopgate/pwa-common-commerce/cart/actions/deleteCouponsFromCart';
 import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
-import { type OwnProps, type StateProps, type DispatchProps } from './CartItemCoupon.types';
 
 /**
- * @param {Object} state The current application state.
- * @return {Object} The extended component props.
+ * @typedef {import('./CartItemCoupon.types').OwnProps} OwnProps
+ * @typedef {import('./CartItemCoupon.types').StateProps} StateProps
+ * @typedef {import('./CartItemCoupon.types').DispatchProps} DispatchProps
  */
-const mapStateToProps = (state): StateProps => ({
+
+/**
+ * Maps state to props.
+ * @param {Object} state The current application state.
+ * @returns {StateProps} The extended component props.
+ */
+const mapStateToProps = state => ({
   currency: getCurrency(state),
 });
 
 /**
+ * Maps dispatch to props.
  * @param {Function} dispatch The redux dispatch function.
- * @return {Object} The extended component props.
+ * @returns {DispatchProps} The extended component props.
  */
-const mapDispatchToProps = (dispatch): DispatchProps => ({
+const mapDispatchToProps = dispatch => ({
   deleteCoupon: couponCode => dispatch(deleteCouponsFromCart([couponCode])),
 });
 
-export default connect<StateProps, DispatchProps, OwnProps>(mapStateToProps, mapDispatchToProps);
+export default connect(mapStateToProps, mapDispatchToProps);

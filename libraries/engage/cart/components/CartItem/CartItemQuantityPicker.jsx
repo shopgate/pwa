@@ -1,29 +1,43 @@
-// @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import QuantityInput from '@shopgate/engage/components/QuantityInput';
 import { inputStyle } from './CartItemQuantityPicker.style';
 
-type Props = {
-  editMode?: boolean,
-  onChange?: (quantity: number) => void,
-  onToggleEditMode?: (editMode: boolean) => void,
-  quantity?: number,
-  unit?: string,
-  disabled?: boolean,
-  hasCatchWeight?: boolean,
-}
+/**
+ * @typedef {Object} Props
+ * @property {boolean} [editMode]
+ * @property {function(number):void} [onChange]
+ * @property {function(boolean):void} [onToggleEditMode]
+ * @property {number} [quantity]
+ * @property {string} [unit]
+ * @property {boolean} [disabled]
+ * @property {boolean} [hasCatchWeight]
+ */
 
 /**
  * The Quantity Picker component.
  */
-export class CartItemQuantityPicker extends React.Component<Props> {
+export class CartItemQuantityPicker extends React.Component {
+  /**
+   * @type {Props}
+   */
+  static propTypes = {
+    disabled: PropTypes.bool,
+    editMode: PropTypes.bool,
+    hasCatchWeight: PropTypes.bool,
+    onChange: PropTypes.func,
+    onToggleEditMode: PropTypes.func,
+    quantity: PropTypes.number,
+    unit: PropTypes.string,
+  };
+
   static defaultProps = {
     editMode: false,
-    onChange: () => { },
+    onChange: () => {},
     unit: null,
     quantity: 1,
-    onToggleEditMode: () => { },
+    onToggleEditMode: () => {},
     disabled: false,
     hasCatchWeight: false,
   };
@@ -32,7 +46,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
    * Constructor.
    * @param {Object} props The component props.
    */
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
 
     this.regex = /^([0-9.,]+)$/;
@@ -48,11 +62,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
     }
 
     if (this.input.current) {
-      /**
-       * Prevent the opening of the context menu when this
-       * input is focused and the value is selected.
-       */
-      this.input.current.addEventListener('contextmenu', (event: MouseEvent) => {
+      this.input.current.addEventListener('contextmenu', (event) => {
         event.preventDefault();
         event.stopPropagation();
         return false;
@@ -64,7 +74,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
    * The componentWillReceiveProps lifecycle hook. I will bring the input into the correct state.
    * @param {Object} nextProps The next set of props.
    */
-  UNSAFE_componentWillReceiveProps(nextProps: Props) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     if (this.input.current) {
       if (nextProps.editMode) {
         this.input.current.focus();
@@ -74,16 +84,10 @@ export class CartItemQuantityPicker extends React.Component<Props> {
     }
   }
 
-  regex: RegExp;
+  regex;
 
-  input: {|
-    current: any,
-  |};
+  input;
 
-  /**
-   * The default quantity.
-   * @type {number}
-   */
   defaultQuantity = 1;
 
   /**
@@ -103,11 +107,10 @@ export class CartItemQuantityPicker extends React.Component<Props> {
   }
 
   /**
-   * Event handler for the the onClick event of the input.
-   * @param {Object} event The event object.
+   * Handles the input click event.
+   * @param {Event} event The click event.
    */
-  handleInputClick = (event: SyntheticInputEvent<HTMLInputElement>) => {
-    // Prevent the native focus event ...
+  handleInputClick = (event) => {
     event.stopPropagation();
     event.preventDefault();
 
@@ -116,9 +119,6 @@ export class CartItemQuantityPicker extends React.Component<Props> {
     }
   };
 
-  /**
-   * Event handler for the onFocus event of the input.
-   */
   handleInputFocus = () => {
     if (this.props.onToggleEditMode) {
       this.props.onToggleEditMode(true);
@@ -126,10 +126,10 @@ export class CartItemQuantityPicker extends React.Component<Props> {
   };
 
   /**
-   * Event handler for the onSubmit event of the form which wraps the input.
-   * @param {Object} event The event object.
+   * Handles the form submission event.
+   * @param {Event} event The submit event.
    */
-  handleSubmitForm = (event: SyntheticInputEvent<HTMLFormElement>) => {
+  handleSubmitForm = (event) => {
     event.preventDefault();
     if (this.input.current) {
       this.input.current.blur();
@@ -137,14 +137,13 @@ export class CartItemQuantityPicker extends React.Component<Props> {
   };
 
   /**
-   * Event handler for the the onBlur event of the input.
-   * @param {Object} event The event object.
-   * @param {number} newQuantity The event object.
+   * Handles the input blur event.
+   * @param {Event} event The blur event.
+   * @param {number} newQuantity The new quantity value.
    */
-  handleInputBlur = (event: any, newQuantity: number) => {
+  handleInputBlur = (event, newQuantity) => {
     const { onChange } = this.props;
 
-    // Deactivate the edit mode
     if (this.props.onToggleEditMode) {
       this.props.onToggleEditMode(false);
     }
@@ -158,7 +157,7 @@ export class CartItemQuantityPicker extends React.Component<Props> {
 
   /**
    * Renders the component.
-   * @return {JSX}
+   * @return {JSX.Element}
    */
   render() {
     const { unit, hasCatchWeight } = this.props;

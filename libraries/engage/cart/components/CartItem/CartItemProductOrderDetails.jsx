@@ -10,7 +10,7 @@ import {
 } from './CartItemProductOrderDetails.style';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CartItemProductOrderDetails = () => {
   const { location, cartItem, cartIsDirectShipOnly } = useCartItem();

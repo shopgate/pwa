@@ -1,9 +1,11 @@
-// @flow
+// eslint-disable-next-line max-len
+/** @typedef {import('./FulfillmentSelector.types').FulfillmentSelectorContextProps} FulfillmentSelectorContextProps */
+
 import { createContext } from 'react';
-import { type FulfillmentSelectorContextProps } from './FulfillmentSelector.types';
 import { DIRECT_SHIP } from '../../constants';
 
-export const FulfillmentSelectorContext = createContext<FulfillmentSelectorContextProps>({
+/** @type {FulfillmentSelectorContextProps} */
+export const FulfillmentSelectorContext = createContext({
   selection: DIRECT_SHIP,
   selectedLocation: null,
   location: null,
@@ -12,7 +14,7 @@ export const FulfillmentSelectorContext = createContext<FulfillmentSelectorConte
   isBOPISEnabled: false,
   isReady: false,
   productId: null,
-  handleChange: () => { },
+  handleChange: () => {},
   conditioner: {},
   fulfillmentPaths: [],
   userFulfillmentMethod: null,

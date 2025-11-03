@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import SideNavigationCategories from './SideNavigationCategories';
 import SideNavigationLinks from './SideNavigationLinks';
@@ -6,17 +7,13 @@ import SideNavigationItem from './SideNavigationItem';
 import { useSideNavigation } from './SideNavigation.hooks';
 import { container } from './SideNavigationContent.style';
 
-type Props = {
-  classNames?: {
-    visible?: string | Object,
-    hidden?: string | Object,
-  },
-}
-
 /**
- * @returns {JSX}
+ * SideNavigationContent component.
+ * @param {Object} props - The component props.
+ * @param {Object} [props.classNames] - The class names for the navigation visibility.
+ * @returns {JSX.Element} The rendered component.
  */
-const SideNavigationContent = ({ classNames }: Props) => {
+const SideNavigationContent = ({ classNames }) => {
   const { isVisible } = useSideNavigation();
   const wrapperClass = useMemo(() => {
     if (!classNames) {
@@ -38,9 +35,15 @@ const SideNavigationContent = ({ classNames }: Props) => {
           </ul>
         </nav>
       )}
-
     </div>
   );
+};
+
+SideNavigationContent.propTypes = {
+  classNames: PropTypes.shape({
+    visible: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    hidden: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  }),
 };
 
 SideNavigationContent.defaultProps = {

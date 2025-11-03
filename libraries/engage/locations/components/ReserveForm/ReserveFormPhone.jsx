@@ -1,15 +1,17 @@
-// @flow
-import * as React from 'react';
+import React, {
+  useMemo, useContext, memo, useCallback,
+} from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { i18n } from '@shopgate/engage/core';
 import { parsePhoneNumber } from 'react-phone-number-input';
 import PhoneInput from 'react-phone-number-input/mobile';
 import { getCountries } from 'react-phone-number-input/input';
-import en from 'react-phone-number-input/locale/en';
-import de from 'react-phone-number-input/locale/de';
-import es from 'react-phone-number-input/locale/es';
-import fr from 'react-phone-number-input/locale/fr';
-import pt from 'react-phone-number-input/locale/pt';
+import en from 'react-phone-number-input/locale/en.json';
+import de from 'react-phone-number-input/locale/de.json';
+import es from 'react-phone-number-input/locale/es.json';
+import fr from 'react-phone-number-input/locale/fr.json';
+import pt from 'react-phone-number-input/locale/pt.json';
 import flags from 'react-phone-number-input/flags';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
@@ -17,10 +19,16 @@ import { FulfillmentContext } from '../../locations.context';
 import {
   formField, phoneField, phoneFieldError, phoneFieldErrorText,
 } from './ReserveForm.style';
-import { type OwnProps, type StateProps } from './ReserveFormPhone.types';
 import connect from './ReserveFormPhone.connector';
 
-type Props = OwnProps & StateProps;
+/**
+ * @typedef {import('./ReserveFormPhone.types').OwnProps} OwnProps
+ * @typedef {import('./ReserveFormPhone.types').StateProps} StateProps
+ */
+
+/**
+ * @typedef {OwnProps & StateProps} Props
+ */
 
 const builtInCountries = getCountries();
 const locales = {
@@ -33,10 +41,10 @@ const locales = {
 
 /**
  * Renders the reserve form phone input maybe with country selection.
- * @param {Object} props The component props.
+ * @param {Props} props The component props.
  * @returns {JSX.Element}
  */
-const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
+const ReserveFormPhoneUnwrapped = memo((props) => {
   const {
     name,
     value,
@@ -45,17 +53,17 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
     errorText,
     userLocation,
   } = props;
-  const { shopSettings, userInput } = React.useContext(FulfillmentContext);
+  const { shopSettings, userInput } = useContext(FulfillmentContext);
 
-  const initialValue = React.useMemo(() => (
+  const initialValue = useMemo(() => (
     userInput && userInput[name] ? userInput[name] : ''
   ), [name, userInput]);
 
-  const supportedCountries = React.useMemo(() => (
+  const supportedCountries = useMemo(() => (
     shopSettings ? shopSettings.supportedCountries : []
   ), [shopSettings]);
 
-  const countries = React.useMemo(() => {
+  const countries = useMemo(() => {
     if (!supportedCountries) {
       return builtInCountries;
     }
@@ -81,10 +89,10 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
 
   const countriesNames = useCountriesNames(supportedCountries, locales);
 
-  const labels = React.useMemo(() => {
+  const labels = useMemo(() => {
     const output = {};
 
-    if (!countries) {
+    if (!countries || !Array.isArray(countries) || countries.length === 0) {
       return output;
     }
 
@@ -96,7 +104,7 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
     return output;
   }, [countries, countriesNames]);
 
-  const defaultCountry = React.useMemo(() => {
+  const defaultCountry = useMemo(() => {
     if (!initialValue && !value && userLocation) {
       return userLocation.country;
     }
@@ -107,14 +115,14 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
       return phoneNumber.country;
     }
 
-    if (userLocation) {
+    if (userLocation && userLocation.country) {
       return userLocation.country;
     }
 
     return i18n.getLang().split('-')[1];
   }, [initialValue, userLocation, value]);
 
-  const handleChange = React.useCallback((phoneValue) => {
+  const handleChange = useCallback((phoneValue) => {
     onChange(phoneValue, { target: { name } });
   }, [name, onChange]);
 
@@ -157,5 +165,22 @@ const ReserveFormPhoneUnwrapped = React.memo<Props>((props: Props) => {
     </div>
   );
 });
+
+ReserveFormPhoneUnwrapped.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errorText: PropTypes.string,
+  userLocation: PropTypes.shape({
+    country: PropTypes.string,
+  }),
+  value: PropTypes.string,
+};
+
+ReserveFormPhoneUnwrapped.defaultProps = {
+  errorText: '',
+  userLocation: null,
+  value: '',
+};
 
 export const ReserveFormPhone = connect(ReserveFormPhoneUnwrapped);

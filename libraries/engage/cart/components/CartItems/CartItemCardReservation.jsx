@@ -1,8 +1,7 @@
-// @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { every, isEmpty } from 'lodash';
 import { ResponsiveContainer } from '@shopgate/engage/components';
-import { type OptionalLocationAware } from '@shopgate/engage/locations';
 import { useCartItem } from '../CartItem';
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
 import connect from './CartItem.connector';
@@ -11,14 +10,15 @@ import {
   accordionToggle,
 } from './CartItemCard.style';
 
-type Props = OptionalLocationAware;
+// eslint-disable-next-line max-len
+/** @typedef {import('@shopgate/engage/locations/locations.types').OptionalLocationAware} OptionalLocationAware */
 
 /**
  * Renders the cart item card reservation block,
- * @param {Object} props The component props.
+ * @param {OptionalLocationAware} props The component props.
  * @returns {JSX.Element}
  */
-function CartItemCardReservation({ location, fulfillmentMethod }: Props) {
+const CartItemCardReservation = ({ location, fulfillmentMethod }) => {
   const { isOrderDetails } = useCartItem();
 
   if (!location) {
@@ -59,10 +59,32 @@ function CartItemCardReservation({ location, fulfillmentMethod }: Props) {
           />
         )}
       </ResponsiveContainer>
-
     </React.Fragment>
-
   );
-}
+};
 
-export default connect<Props>(CartItemCardReservation);
+CartItemCardReservation.propTypes = {
+  fulfillmentMethod: PropTypes.string,
+  location: PropTypes.shape({
+    operationHours: PropTypes.shape({
+      sun: PropTypes.string,
+      mon: PropTypes.string,
+      tue: PropTypes.string,
+      wed: PropTypes.string,
+      thu: PropTypes.string,
+      fri: PropTypes.string,
+      sat: PropTypes.string,
+    }),
+    address: PropTypes.shape({
+      phoneNumber: PropTypes.string,
+      street: PropTypes.string,
+    }),
+  }),
+};
+
+CartItemCardReservation.defaultProps = {
+  location: null,
+  fulfillmentMethod: null,
+};
+
+export default connect(CartItemCardReservation);

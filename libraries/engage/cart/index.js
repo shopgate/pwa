@@ -1,4 +1,3 @@
-// @flow
 /** @module cart */
 
 // ACTIONS
@@ -74,7 +73,5 @@ export {
 } from './cart.hooks';
 
 // TYPES
-export type {
-  Item,
-  AddToCartProduct,
-} from './cart.types';
+/** @typedef {import('./cart.types').Item} Item */
+/** @typedef {import('./cart.types').AddToCartProduct} AddToCartProduct */

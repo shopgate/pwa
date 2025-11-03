@@ -68,3 +68,17 @@ type BorderRadiusParams = {
 export declare function resolveBorderRadiusFromWidgetConfig(
   params: BorderRadiusParams
 )
+
+/**
+ * Validator factory for regular expressions.
+ * @param regex The regular expression to match.
+ * @returns A function that validates if a value matches the regex.
+ */
+export declare function matchesRegex(regex: RegExp): (val: string) => boolean;
+
+/**
+ * Validates if a given string is a valid HTTPS URL.
+ * @param val The string to validate.
+ * @returns True if the string is a valid HTTPS URL, false otherwise.
+ */
+export declare const isHttpsUrl: (val: string) => boolean;

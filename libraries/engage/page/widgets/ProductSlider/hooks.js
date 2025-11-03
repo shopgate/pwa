@@ -35,7 +35,7 @@ import { getProductSearchParamsFromProductsInputConfig } from '@shopgate/engage/
  */
 export const useProductSliderWidget = () => {
   /** @type {UseWidgetReturnType}  */
-  const { config, isPreview } = useWidget();
+  const { config, isPreview, layout } = useWidget();
 
   const {
     products,
@@ -59,7 +59,20 @@ export const useProductSliderWidget = () => {
     autoplay: slideAutomatic,
     delay: sliderSpeed,
     loop: endlessSlider,
-  }), [slideAutomatic, sliderSpeed, endlessSlider]);
+    // Prevent cut-off sliders when margins are used in the layout
+    ...(layout.marginLeft || layout.marginRight ? {
+      style: {
+        ...layout.marginLeft ? {
+          marginLeft: layout.marginLeft * -1,
+          paddingLeft: layout.marginLeft,
+        } : {},
+        ...layout.marginRight ? {
+          marginRight: layout.marginRight * -1,
+          paddingRight: layout.marginRight,
+        } : {},
+      },
+    } : null),
+  }), [slideAutomatic, sliderSpeed, endlessSlider, layout]);
 
   const productItemProps = useMemo(() => ({
     hideName: !showName,

@@ -1,11 +1,11 @@
-// @flow
+/**
+ * @typedef {Object} OwnProps
+ * @property {Object} cartItem
+ * @property {Function} [registerAction]
+ */
 
-export type OwnProps = {
-  cartItem: Object;
-  registerAction?: Function;
-}
-
-export type DispatchProps = {
-  fetchProductLocations: Function;
-  updateProductInCart: Function;
-}
+/**
+ * @typedef {Object} DispatchProps
+ * @property {Function} fetchProductLocations
+ * @property {Function} updateProductInCart
+ */

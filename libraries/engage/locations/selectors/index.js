@@ -424,7 +424,7 @@ export const makeIsRopeProductOrderable = (getLocationCode, getProductCode) => {
  * @param {Function} getLocationCode Has to retrieve the location code.
  * @param {Function} getProductCode Has to retrieve the product code.
  * @param {string} fulfillmentMethod The fulfillment method to check.
- * @param {bool} ignoreLocationMethods[false] Wether the location fulfillment methods are ignored
+ * @param {boolean} ignoreLocationMethods[false] Whether location fulfillment methods are ignored
  * @returns {Function}
  */
 export const makeIsFulfillmentSelectorMethodEnabled = (

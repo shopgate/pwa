@@ -1,6 +1,5 @@
-// @flow
 import * as React from 'react';
-import PT from 'prop-types';
+import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_ITEM_IMAGE,
@@ -9,7 +8,6 @@ import {
   CART_ITEM_PRICE,
 } from '@shopgate/pwa-common-commerce/cart';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import { type Coupon } from '../../cart.types';
 import { CartItemCouponIcon } from './CartItemCouponIcon';
 import { CartItemCouponPrice } from './CartItemCouponPrice';
 import { CartItemCouponFreeShipping } from './CartItemCouponFreeShipping';
@@ -20,25 +18,19 @@ import {
   item, icon, content, contentLast,
 } from './CartItemCouponLayout.style';
 
-type Props = {
-  coupon: Coupon,
-  currency: string,
-  handleDelete?: (event: SyntheticEvent<HTMLButtonElement>) => void,
-}
-
-type ContextProps = {
-  cartItemId: string,
-  type: string,
-  editable?: boolean
-}
-
 /**
  * The CouponLayout component.
  * @param {Object} props The component properties.
+ * @param {Object} props.coupon The coupon details.
+ * @param {string} props.currency The currency to display.
+ * @param {Function} [props.handleDelete] The delete handler function.
  * @param {Object} context The component context.
- * @returns {JSX}
+ * @param {string} context.cartItemId The cart item ID.
+ * @param {string} context.type The type of the cart item.
+ * @param {boolean} [context.editable] Whether the item is editable.
+ * @returns {JSX.Element}
  */
-export function CartItemCouponLayout(props: Props, context: ContextProps) {
+export function CartItemCouponLayout(props, context) {
   const { coupon, currency, handleDelete } = props;
 
   return (
@@ -73,11 +65,24 @@ export function CartItemCouponLayout(props: Props, context: ContextProps) {
 }
 
 CartItemCouponLayout.defaultProps = {
-  handleDelete: () => { },
+  handleDelete: () => {},
+};
+
+CartItemCouponLayout.propTypes = {
+  coupon: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    code: PropTypes.string.isRequired,
+    freeShipping: PropTypes.bool,
+    savedPrice: PropTypes.shape({
+      value: PropTypes.number.isRequired,
+    }),
+  }).isRequired,
+  currency: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func,
 };
 
 CartItemCouponLayout.contextTypes = {
-  cartItemId: PT.string,
-  type: PT.string,
-  editable: PT.bool,
+  cartItemId: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  editable: PropTypes.bool,
 };

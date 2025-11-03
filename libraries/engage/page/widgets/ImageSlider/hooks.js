@@ -37,7 +37,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  */
 
 /**
- * @typedef {ReturnType< typeof import('@shopgate/engage/page/hooks')
+ * @typedef {ReturnType<typeof import('@shopgate/engage/page/hooks')
  *   .useWidget<ImageSliderWidgetConfig> >} UseWidgetReturnType
  */
 
@@ -47,7 +47,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  */
 export const useImageSliderWidget = () => {
   /** @type {UseWidgetReturnType}  */
-  const { config, isPreview } = useWidget();
+  const { config, isPreview, layout } = useWidget();
   const theme = useTheme();
 
   const {
@@ -92,12 +92,35 @@ export const useImageSliderWidget = () => {
       slidesPerViewLarge = slidesPerViewCustomLarge;
     }
 
+    /**
+     * Special image spacing for slides with a SINGLE slide per view.
+     *
+     * Needs to be at least as large as the highest horizontal layout margin (when set) to avoid
+     * showing of more than one slide.
+     * @type {number}
+     */
+    const imageSpacingForSingleSlide = Math.max(
+      layout?.marginLeft ?? 0,
+      layout?.marginRight ?? 0,
+      imageSpacing
+    );
+
     const breakpoints = {
       [theme.breakpoints.values.sm]: {
         slidesPerView: slidesPerViewMedium,
+        ...(slidesPerViewMedium === 1 && imageSpacingForSingleSlide ? {
+          spaceBetween: imageSpacingForSingleSlide,
+        } : {
+          spaceBetween: imageSpacing,
+        }),
       },
       [theme.breakpoints.values.md]: {
         slidesPerView: slidesPerViewLarge,
+        ...(slidesPerViewLarge === 1 && imageSpacingForSingleSlide ? {
+          spaceBetween: imageSpacingForSingleSlide,
+        } : {
+          spaceBetween: imageSpacing,
+        }),
       },
     };
 
@@ -116,12 +139,29 @@ export const useImageSliderWidget = () => {
       loop: endlessSlider,
       slidesPerView: slidesPerViewSmall,
       breakpoints,
-      spaceBetween: imageSpacing,
       pagination: showPagination ? {
         type: paginationType,
         clickable: true,
         dynamicBullets: true,
       } : false,
+      // Prevent cut-off sliders when margins are used in the layout
+      ...(layout.marginLeft || layout.marginRight ? {
+        style: {
+          ...layout.marginLeft ? {
+            marginLeft: layout.marginLeft * -1,
+            paddingLeft: layout.marginLeft,
+          } : {},
+          ...layout.marginRight ? {
+            marginRight: layout.marginRight * -1,
+            paddingRight: layout.marginRight,
+          } : {},
+        },
+      } : null),
+      ...(slidesPerViewSmall === 1 && imageSpacingForSingleSlide ? {
+        spaceBetween: imageSpacingForSingleSlide,
+      } : {
+        spaceBetween: imageSpacing,
+      }),
       ...isPreview ? {
         key: componentKey,
         // Improves interaction with the slider in the CMS preview iframe
@@ -129,10 +169,22 @@ export const useImageSliderWidget = () => {
       } : {},
     };
   },
-  [slidesPerView, theme.breakpoints.values.sm, theme.breakpoints.values.md,
-    paginationType, imagesWithUrls.length, imageSpacing, slideAutomatic, sliderSpeed,
-    endlessSlider, isPreview, slidesPerViewCustomSmall, slidesPerViewCustomMedium,
-    slidesPerViewCustomLarge]);
+  [
+    slidesPerView,
+    theme.breakpoints.values.sm,
+    theme.breakpoints.values.md,
+    paginationType,
+    imagesWithUrls.length,
+    imageSpacing,
+    slideAutomatic,
+    sliderSpeed,
+    endlessSlider,
+    isPreview,
+    slidesPerViewCustomSmall,
+    slidesPerViewCustomMedium,
+    slidesPerViewCustomLarge,
+    layout,
+  ]);
 
   return {
     slides: imagesWithUrls,

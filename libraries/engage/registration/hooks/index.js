@@ -4,7 +4,7 @@ import GuestRegistrationContext from '../providers/GuestRegistrationProvider.con
 
 /**
  * Returns the value of the checkout provider state.
- * @param {bool} isGuest Whether the registration is a guest registration
+ * @param {boolean} isGuest Whether the registration is a guest registration
  * @returns {Object}
  */
 export const useRegistration = (isGuest = false) =>

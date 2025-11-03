@@ -7,4 +7,4 @@ export const wrapper = css({
     display: 'block',
     color: 'var(--color-text-medium-emphasis)',
   },
-});
+}).toString();

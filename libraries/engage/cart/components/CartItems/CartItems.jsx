@@ -1,31 +1,31 @@
-// @flow
-import * as React from 'react';
+import React from 'react';
 import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
-import { type Item } from '../../cart.types';
+import PropTypes from 'prop-types';
 import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
 import { CartItemCard } from './CartItemCard';
 import { items, card } from './CartItems.style';
 import CartItemsSubstitution from './CartItemsSubstitution';
 
-type Props = {
-  cartItems?: Item[],
-  multiLineReservation?: boolean,
-  onFocus: (hidden: boolean) => void,
-  editable?: boolean,
-  isOrderDetails?: boolean,
-  isDirectShipOnly?: boolean,
-  isCheckoutConfirmation?: boolean,
-  currencyOverride?: string,
-}
+/**
+ * @typedef {import('../../../cart/cart.types').Item} Item
+ */
 
 /**
  * Renders the cart items.
  * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * @param {Item} [props.cartItems] The cart items.
+ * @param {boolean} [props.multiLineReservation] Whether multi-line reservation is enabled.
+ * @param {Function} props.onFocus The focus handler.
+ * @param {boolean} [props.editable] Whether the cart is editable.
+ * @param {boolean} [props.isOrderDetails] Whether this is for order details.
+ * @param {boolean} [props.isDirectShipOnly] Whether the cart is direct-ship only.
+ * @param {boolean} [props.isCheckoutConfirmation] Whether this is for checkout confirmation.
+ * @param {string} [props.currencyOverride] The currency override.
+ * @returns {JSX.Element|null}
  */
-function CartItems({
+const CartItems = ({
   cartItems,
   onFocus,
   multiLineReservation,
@@ -34,13 +34,13 @@ function CartItems({
   isCheckoutConfirmation,
   currencyOverride,
   isDirectShipOnly,
-}: Props) {
+}) => {
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
 
   return (
-    <React.Fragment>
+    <>
       <ResponsiveContainer breakpoint=">xs" webOnly>
         <CartItemsHeaderWide
           editable={editable}
@@ -90,9 +90,27 @@ function CartItems({
           </CardList.Item>
         ))}
       </CardList>
-    </React.Fragment>
+    </>
   );
-}
+};
+
+CartItems.propTypes = {
+  onFocus: PropTypes.func.isRequired,
+  cartItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      fulfillmentLocationId: PropTypes.string,
+      fulfillmentMethod: PropTypes.string,
+      messages: PropTypes.arrayOf(PropTypes.string),
+    })
+  ),
+  currencyOverride: PropTypes.string,
+  editable: PropTypes.bool,
+  isCheckoutConfirmation: PropTypes.bool,
+  isDirectShipOnly: PropTypes.bool,
+  isOrderDetails: PropTypes.bool,
+  multiLineReservation: PropTypes.bool,
+};
 
 CartItems.defaultProps = {
   cartItems: null,

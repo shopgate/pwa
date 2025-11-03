@@ -27,7 +27,7 @@ const transitionStyles = {
  * @param {string} state A state of the react-transition-group/Transition component.
  * @return {Object}
  */
-export const getCartItemTransitionStyle = (state: string) => ({
+export const getCartItemTransitionStyle = state => ({
   ...defaultTransitionStyle,
   ...transitionStyles[state],
 });

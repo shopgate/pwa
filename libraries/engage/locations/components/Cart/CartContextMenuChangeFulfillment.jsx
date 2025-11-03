@@ -1,20 +1,24 @@
 import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { FulfillmentProvider } from '../../providers';
 import { FulfillmentSheetContent } from '../FulfillmentSheet/FulfillmentSheetContent';
 import CartContextMenuChangeFulfillmentContent from './CartContextMenuChangeFulfillmentContent';
-import { type Item } from '../../../cart';
-
-type Props = {
-  cartItem: Item,
-}
+/**
+ * @typedef {import('../../../cart/cart.types').Item} Item
+ */
 
 /**
- * The CartContextMenuChangeFulfillmentContent component renders a context menu which enables
- * switching the active fulfillment method for a cart item.
- * @param {Object} props The component props.
- * @returns {JSX}
+ * @typedef {Object} Props
+ * @property {Item} cartItem
  */
-const CartContextMenuChangeFulfillment = ({ cartItem }: Props) => {
+
+/**
+ * The CartContextMenuChangeFulfillment component renders a context menu which enables
+ * switching the active fulfillment method for a cart item.
+ * @param {Props} props The component props.
+ * @returns {JSX.Element}
+ */
+const CartContextMenuChangeFulfillment = ({ cartItem }) => {
   const contextProps = useMemo(() => ({
     productId: cartItem.product.id,
     meta: { cartItem },
@@ -27,6 +31,14 @@ const CartContextMenuChangeFulfillment = ({ cartItem }: Props) => {
       <FulfillmentSheetContent />
     </FulfillmentProvider>
   );
+};
+
+CartContextMenuChangeFulfillment.propTypes = {
+  cartItem: PropTypes.shape({
+    product: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default CartContextMenuChangeFulfillment;

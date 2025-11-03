@@ -191,7 +191,7 @@ const getReviewsStateForId = (id) => {
 
 /**
  * Sets up mocks.
- * @param {bool} mockReviewsAvailable A feature flag "hasReviews" value.
+ * @param {boolean} mockReviewsAvailable A feature flag "hasReviews" value.
  * @type {Function}
  */
 const setMocks = (mockReviewsAvailable = true) => {

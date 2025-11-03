@@ -39,12 +39,12 @@ export const activeIconDisabled = css(icon, {
 
 export const radio = css({
   display: 'none',
-});
+}).toString();
 
 export const content = css({
   flexGrow: 1,
   color: 'var(--color-text-high-emphasis)',
-});
+}).toString();
 
 export const itemRow = css({
   alignContent: 'stretch',

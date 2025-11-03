@@ -6,7 +6,7 @@ const { colors, variables } = themeConfig;
 export const container = css({
   display: 'flex',
   flexDirection: 'column',
-});
+}).toString();
 
 export const button = css({
   width: '100%',

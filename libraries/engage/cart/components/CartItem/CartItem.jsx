@@ -1,5 +1,5 @@
-// @flow
-import * as React from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
   CART_ITEM_TYPE_PRODUCT,
@@ -10,25 +10,19 @@ import { ProductListEntryProvider } from '@shopgate/engage/product';
 import CartItemProduct from './CartItemProduct';
 import CartItemCoupon from './CartItemCoupon';
 import CartItemProductProvider from './CartItemProductProvider';
-import { type Item } from '../../cart.types';
-
-type Props = {
-  item: Item,
-  onFocus: (isEnabled: boolean) => void,
-  editable?: boolean,
-  currencyOverride?: string,
-}
 
 /**
  * The cart item component.
  * @param {Object} props The component props.
  * @property {Object} props.item The cart item.
  * @property {Function} props.onFocus A function to indicate when the item has been focussed.
+ * @property {boolean} [props.editable] Whether the item is editable.
+ * @property {string|null} [props.currencyOverride] The currency to use instead of the default one.
  * @return {JSX.Element}
  */
 function CartItem({
   item, onFocus, editable, currencyOverride,
-}: Props) {
+}) {
   if (item.type !== CART_ITEM_TYPE_PRODUCT && item.type !== CART_ITEM_TYPE_COUPON) {
     return null;
   }
@@ -71,4 +65,17 @@ CartItem.defaultProps = {
   currencyOverride: null,
 };
 
-export default React.memo<Props>(CartItem);
+CartItem.propTypes = {
+  item: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+    id: PropTypes.string,
+    product: PropTypes.object,
+    coupon: PropTypes.any,
+    messages: PropTypes.array,
+  }).isRequired,
+  onFocus: PropTypes.func.isRequired,
+  currencyOverride: PropTypes.string,
+  editable: PropTypes.bool,
+};
+
+export default React.memo(CartItem);
