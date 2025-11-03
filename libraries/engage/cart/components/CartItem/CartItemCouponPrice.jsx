@@ -7,7 +7,7 @@ import {
 import Price from '@shopgate/pwa-ui-shared/Price';
 import styles from './CartItemCouponPrice.style';
 /**
- * @typedef {import('../../../cart/cart.types').SavedPrice} SavedPrice
+ * @typedef {import('../../cart.types').SavedPrice} SavedPrice
  */
 
 /**

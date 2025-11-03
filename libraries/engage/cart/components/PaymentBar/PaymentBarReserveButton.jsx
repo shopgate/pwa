@@ -22,7 +22,7 @@ const PaymentBarReserveButton = ({ historyReset }) => {
   function handleClick() {
     FulfillmentSheet.open({
       stage: STAGE_RESERVE_FORM,
-      callback: (location, product, orderSuccess) => {
+      callback: (_location, _product, orderSuccess) => {
         if (orderSuccess === true) {
           historyReset();
         }
