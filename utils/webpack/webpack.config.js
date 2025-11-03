@@ -254,6 +254,10 @@ const config = {
   },
   devtool,
   stats: isDev ? 'normal' : 'errors-only',
+  ignoreWarnings: [
+    // Disable warning about named imports from JSON files. It's covered by our linter rules.
+    /from default-exporting module \(only default export is available soon\)/,
+  ],
   performance: {
     hints: isDev ? false : 'warning',
   },
