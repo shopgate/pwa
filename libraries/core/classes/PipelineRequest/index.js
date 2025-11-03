@@ -143,7 +143,7 @@ class PipelineRequest extends Request {
   /**
    * Sets a flag to suppress errors.
    * When true, no EVENT_PIPELINE_ERROR would be triggered.
-   * @param {bool} value Value.
+   * @param {boolean} value Value.
    * @return {PipelineRequest}
    * @deprecated
    */

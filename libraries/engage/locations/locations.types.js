@@ -1,154 +1,170 @@
-// @flow
-import {
-  DIRECT_SHIP,
-  ROPIS,
-  BOPIS,
-  STAGE_SELECT_STORE,
-  STAGE_RESERVE_FORM,
-  STAGE_RESPONSE_SUCCESS,
-  STAGE_RESPONSE_ERROR,
-  QUICK_RESERVE,
-  MULTI_LINE_RESERVE,
-} from './constants';
+/**
+ * @typedef {Object} LocationType
+ * @property {string} code
+ * @property {string} name
+ */
 
-type LocationType = {
-  code: string,
-  name: string,
-}
+/**
+ * @typedef {Object} LocationOperationHours
+ * @property {string|null} sun
+ * @property {string|null} mon
+ * @property {string|null} tue
+ * @property {string|null} wed
+ * @property {string|null} thu
+ * @property {string|null} fri
+ * @property {string|null} sat
+ */
 
-export type LocationOperationHours = {
-  sun: string | null,
-  mon: string | null,
-  tue: string | null,
-  wed: string | null,
-  thu: string | null,
-  fri: string | null,
-  sat: string | null,
-}
+/**
+ * @typedef {Object} LocationProductInventory
+ * @property {boolean} isAvailable
+ * @property {number|null} visible
+ */
 
-type LocationProductInventory = {
-  isAvailable: boolean,
-  visible: number | null,
-}
+/**
+ * @typedef {Object} LocationAddress
+ * @property {string} code
+ * @property {string} name
+ * @property {string} street
+ * @property {string|null} street2
+ * @property {string|null} street3
+ * @property {string|null} street4
+ * @property {string} postalCode
+ * @property {string} city
+ * @property {string} region
+ * @property {string} country
+ * @property {string} [phoneNumber]
+ * @property {string} [faxNumber]
+ * @property {string} [emailAddress]
+ * @property {boolean} isPrimary
+ */
 
-export type LocationAddress = {
-  code: string,
-  name: string,
-  street: string,
-  street2: string | null,
-  street3: string | null,
-  street4: string | null,
-  postalCode: string,
-  city: string,
-  region: string,
-  country: string,
-  phoneNumber?: string,
-  faxNumber?: string,
-  emailAddress?: string,
-  isPrimary: boolean,
-}
+/**
+ * @typedef {Object} Location
+ * @property {string|null} code
+ * @property {string|null} name
+ * @property {string} [status]
+ * @property {string[]} [supportedFulfillmentMethods]
+ * @property {number} [latitude]
+ * @property {number} [longitude]
+ * @property {string} [timeZone]
+ * @property {string} [localeCode]
+ * @property {boolean} [isComingSoon]
+ * @property {boolean} [isDefault]
+ * @property {LocationType} [type]
+ * @property {LocationOperationHours} [operationHours]
+ * @property {LocationAddress} [address]
+ * @property {LocationAddress[]} [addresses]
+ * @property {LocationProductInventory} [productInventory]
+ * @property {number} [distance]
+ * @property {string} [unitSystem]
+ * @property {Object} [inventory]
+ */
 
-export type Location = {
-  code: string | null,
-  name: string | null,
-  status?: string,
-  supportedFulfillmentMethods?: string[],
-  latitude?: number,
-  longitude?: number,
-  timeZone?: string,
-  localeCode?: string,
-  isComingSoon?: boolean,
-  isDefault?: boolean,
-  type?: LocationType,
-  operationHours?: LocationOperationHours,
-  address?: LocationAddress,
-  addresses?: LocationAddress[],
-  productInventory?: LocationProductInventory,
-  distance?: number,
-  unitSystem?: string,
-  inventory?: Object
-}
+/**
+ * @typedef {Object} LocationAware
+ * @property {Location} location
+ * @property {string|null} [fulfillmentMethod]
+ */
 
-export type LocationAware = {
-  location: Location,
-  fulfillmentMethod?: string | null,
-}
+/**
+ * @typedef {Object} OptionalLocationAware
+ * @property {Location|null} [location]
+ * @property {string|null} [fulfillmentMethod]
+ */
 
-export type OptionalLocationAware = {
-  location?: Location | null,
-  fulfillmentMethod?: string | null
-}
+/**
+ * @typedef {Object} ProductLocations
+ * @property {boolean} isFetching
+ * @property {number} expires
+ * @property {Location[]} locations
+ */
 
-type ProductLocations = {
-  isFetching: boolean,
-  expires: number,
-  locations: Location[],
-}
+/**
+ * @typedef {Object<string, Location>} LocationsByIdState
+ */
 
-export type LocationsByIdState = {
-  [code: string]: Location;
-}
+/**
+ * @typedef {Object<string, ProductLocations>} LocationsByProductIdState
+ */
 
-export type LocationsByProductIdState = {
-  [productId: string]: ProductLocations
-}
+/**
+ * @typedef {Object} UserLocationState
+ * @property {string|null} code
+ * @property {string|null} name
+ * @property {string|null} productCode
+ * @property {number|null} visibleInventory
+ * @property {string|null} addressCode
+ * @property {string|null} fulfillmentMethod
+ */
 
-export type FulfillmentPath = typeof QUICK_RESERVE
-  | typeof MULTI_LINE_RESERVE;
+/**
+ * @typedef {Object} ReservationFormValues
+ * @property {string} [firstName]
+ * @property {string} [lastName]
+ * @property {string} [cellPhone]
+ * @property {string} [email]
+ * @property {string} [firstName2]
+ * @property {string} [lastName2]
+ * @property {string} [cellPhone2]
+ * @property {string} [email2]
+ */
 
-export type UserLocationState = {
-  code: string | null,
-  name: string | null,
-  productCode: string | null,
-  visibleInventory: number | null,
-  addressCode: string | null,
-  fulfillmentMethod: typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null,
-}
+/**
+ * @typedef {Object<string, string|null>} UserFormInputState
+ */
 
-export type ReservationFormValues = {
-  firstName?: string;
-  lastName?: string;
-  cellPhone?: string;
-  email?: string;
-  firstName2?: string;
-  lastName2?: string;
-  cellPhone2?: string;
-  email2?: string;
-}
+/**
+ * @typedef {(
+ *   typeof import('./constants').QUICK_RESERVE |
+ *   typeof import('./constants').MULTI_LINE_RESERVE
+ * )} FulfillmentPath
+ */
 
-export type UserLocationFulfillmentMethod = typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS | null;
+/**
+ * @callback SheetCallbackFn
+ * @param {import('../../locations.types').Location | null} location
+ * @param {string | null} productId
+ * @param {boolean | null} orderSuccess
+ * @returns {void}
+ */
 
-export type UserLocationLocationCode = string | null;
+/**
+ * @typedef {(typeof DIRECT_SHIP | typeof ROPIS| typeof BOPIS)} UserLocationFulfillmentMethod
+ */
 
-export type UserFormInputState = {
-  [string]: string | null,
-}
+/**
+ * @typedef {string | null} UserLocationLocationCode
+ */
 
-export type LocationsState = {
-  locationsById: LocationsByIdState | {},
-  locationsByProductId: LocationsByProductIdState | {},
-  userLocation: UserLocationState | {},
-  userFormInput: ReservationFormValues,
-  userSearchQuery: string,
-}
+/**
+ * @typedef {Object} LocationsState
+ * @property {LocationsByIdState|{}} locationsById
+ * @property {LocationsByProductIdState|{}} locationsByProductId
+ * @property {UserLocationState|{}} userLocation
+ * @property {ReservationFormValues} userFormInput
+ * @property {string} userSearchQuery
+ */
 
-export type SheetStage = typeof STAGE_SELECT_STORE
-  | typeof STAGE_RESERVE_FORM | typeof STAGE_RESPONSE_SUCCESS | typeof STAGE_RESPONSE_ERROR;
+/**
+ * @typedef {(
+ *   typeof import('./constants').STAGE_SELECT_STORE |
+ *   typeof import('./constants').STAGE_RESERVE_FORM |
+ *   typeof import('./constants').STAGE_RESPONSE_SUCCESS |
+ *   typeof import('./constants').STAGE_RESPONSE_ERROR
+ * )} SheetStage
+ */
 
-export type SheetCallbackFn = (
-  location: Location | null,
-  productId: string | null,
-  orderSuccess: boolean | null,
-) => void;
+/**
+ * @typedef {Object} SheetOpenParams
+ * @property {SheetCallbackFn} [callback]
+ * @property {SheetStage} [stage]
+ * @property {FulfillmentPath} [fulfillmentPath]
+ * @property {boolean} [changeOnly]
+ */
 
-export type SheetOpenParams = {
-  callback?: SheetCallbackFn,
-  stage?: SheetStage,
-  fulfillmentPath?: FulfillmentPath,
-  changeOnly?: boolean,
-}
-
-export type ReservationResponse = {
-  orderNumbers: string[] | null,
-  errors: string[] | null,
-}
+/**
+ * @typedef {Object} ReservationResponse
+ * @property {string[]|null} orderNumbers
+ * @property {string[]|null} errors
+ */

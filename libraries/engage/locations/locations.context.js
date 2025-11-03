@@ -1,56 +1,56 @@
-// @flow
 import { createContext } from 'react';
-import { type Product } from '../product/product.types';
-import {
-  type Location,
-  type ReservationFormValues,
-  type SheetStage,
-  type FulfillmentPath,
-  type SheetOpenParams,
-  type SheetCallbackFn,
-} from './locations.types';
 import { STAGE_SELECT_STORE } from './constants';
-import { type ShopSettings } from '../core/config/config.types';
+/* eslint-disable max-len */
+/** @typedef {import('@shopgate/engage/locations/locations.types').Location} Location */
+/** @typedef {import('@shopgate/engage/locations/locations.types').ReservationFormValues} ReservationFormValues */
+/** @typedef {import('@shopgate/engage/locations/locations.types').SheetStage} SheetStage */
+/** @typedef {import('@shopgate/engage/locations/locations.types').FulfillmentPath} FulfillmentPath */
+/** @typedef {import('@shopgate/engage/locations/locations.types').SheetOpenParams} SheetOpenParams */
+/** @typedef {import('@shopgate/engage/locations/locations.types').SheetCallbackFn} SheetCallbackFn */
+/** @typedef {import('../product/product.types').Product} Product */
+/** @typedef {import('../core/config/config.types').ShopSettings} ShopSettings */
+/* eslint-enable max-len */
 
-export type FulfillmentContextProps = {
-  selectLocation: (location: Location) => Promise<void>,
-  selectStoreFinderLocation: (location: Location) => void,
-  changeFulfillment: (method: string, cartItem: { [string]: any }) => void,
-  sendReservation: (values: ReservationFormValues) => Promise<void>,
-  isStage: (stage: SheetStage) => boolean,
-  handleOpen: (params: SheetOpenParams) => void,
-  setIsLoading: (params: boolean) => void,
-  handleClose: SheetCallbackFn,
-  location: Location | null, // current product location
-  storeFinderLocation: Location | null, // current product location
-  locations: Location[] | null,
-  orderNumbers: string[] | null,
-  baseProduct: Product | null,
-  product: Product | null,
-  userInput: ReservationFormValues | null,
-  stage: SheetStage | null,
-  title: string | null,
-  fulfillmentPath: FulfillmentPath | null,
-  fulfillmentMethods: string[] | null,
-  enabledFulfillmentMethods: string[] | null,
-  shopSettings: ShopSettings | null,
-  isOpen: boolean,
-  errors: string[] | null,
-  noLocationSelection?: boolean,
-  isStoreFinder?: boolean,
-  isLoading?: boolean,
-  meta?: { [string]: any },
-}
+/**
+ * @typedef {Object} FulfillmentContextProps
+ * @property {function(Location): Promise<void>} selectLocation
+ * @property {function(Location): void} selectStoreFinderLocation
+ * @property {(method: string, cartItem: Object<string, any>) => void} changeFulfillment
+ * @property {function(ReservationFormValues): Promise<void>} sendReservation
+ * @property {function(SheetStage): boolean} isStage
+ * @property {function(SheetOpenParams): void} handleOpen
+ * @property {(isLoading: boolean) => void} setIsLoading
+ * @property {SheetCallbackFn} handleClose
+ * @property {Location|null} location
+ * @property {Location|null} storeFinderLocation
+ * @property {Location[]|null} locations
+ * @property {string[]|null} orderNumbers
+ * @property {Product|null} baseProduct
+ * @property {Product|null} product
+ * @property {ReservationFormValues|null} userInput
+ * @property {SheetStage|null} stage
+ * @property {string|null} title
+ * @property {FulfillmentPath|null} fulfillmentPath
+ * @property {string[]|null} fulfillmentMethods
+ * @property {string[]|null} enabledFulfillmentMethods
+ * @property {ShopSettings|null} shopSettings
+ * @property {boolean} isOpen
+ * @property {string[]|null} errors
+ * @property {boolean} [noLocationSelection]
+ * @property {boolean} [isStoreFinder]
+ * @property {boolean} [isLoading]
+ * @property {Object} [meta]
+ */
 
-export const FulfillmentContext = createContext<FulfillmentContextProps>({
-  selectLocation() { return Promise.resolve(); },
-  selectStoreFinderLocation() { },
-  changeFulfillment() { },
-  sendReservation() { return Promise.resolve(); },
-  isStage() { return false; },
-  handleOpen() { },
-  handleClose() { },
-  setIsLoading() { },
+export const FulfillmentContext = createContext(/** @type {FulfillmentContextProps} */ ({
+  selectLocation: () => Promise.resolve(),
+  selectStoreFinderLocation: () => {},
+  changeFulfillment: () => {},
+  sendReservation: () => Promise.resolve(),
+  isStage: () => false,
+  handleOpen: () => {},
+  handleClose: () => {},
+  setIsLoading: () => {},
   location: null,
   storeFinderLocation: null,
   locations: [],
@@ -69,8 +69,10 @@ export const FulfillmentContext = createContext<FulfillmentContextProps>({
   noLocationSelection: false,
   isStoreFinder: false,
   isLoading: false,
-});
+}));
 
-export type StoreFinderContextProps = {};
+/**
+ * @typedef {Object} StoreFinderContextProps
+ */
 
-export const StoreFinderContext = createContext<StoreFinderContextProps>({});
+export const StoreFinderContext = createContext(/** @type {StoreFinderContextProps} */ ({}));

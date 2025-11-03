@@ -10,10 +10,9 @@ import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossi
 
 /**
  * Renders the direct ship item label.
- * @param {Object} props The component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
-export function FulfillmentSelectorDirectShip() {
+export const FulfillmentSelectorDirectShip = () => {
   const {
     productId, selection, isOrderable, isDirectShipEnabled, isReady,
   } = useFulfillmentSelectorState();
@@ -47,5 +46,5 @@ export function FulfillmentSelectorDirectShip() {
       </Grid.Item>
     </Grid>
   );
-}
+};
 

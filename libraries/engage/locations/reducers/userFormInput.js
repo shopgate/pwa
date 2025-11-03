@@ -1,20 +1,15 @@
-// @flow
-import * as Redux from 'redux';
 import { STORE_FORM_INPUT } from '../constants';
-import { type UserLocationState } from '../locations.types';
+/** @typedef {import('./locations.types').UserLocationState} */
 
 /**
- * TODO: Move to a different state / has nothing to do with locations.
- *
- * Stores the user's reserve form input
- * @param {Object} state The current state.
+ * Stores the user's reserve form input.
+ * @param {UserLocationState} [state={}] The current state.
  * @param {Object} action The action object.
- * @return {Object} The new state.
+ * @param {string} action.type The action type.
+ * @param {Object} [action.input] The input data to store.
+ * @returns {UserLocationState} The new state.
  */
-export default function formInput(
-  state: UserLocationState = {},
-  action: Redux.Action
-): UserLocationState {
+const formInput = (state = {}, action) => {
   switch (action.type) {
     case STORE_FORM_INPUT:
       return {
@@ -24,4 +19,6 @@ export default function formInput(
     default:
       return state;
   }
-}
+};
+
+export default formInput;

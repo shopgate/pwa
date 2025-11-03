@@ -1,13 +1,13 @@
-// @flow
+/**
+ * @typedef {Object} OwnProps
+ * @property {string} name
+ * @property {string} value
+ * @property {string} label
+ * @property {string} errorText
+ * @property {(value: string, event: any) => void} onChange
+ */
 
-export type OwnProps = {
-  name: string,
-  value: string,
-  label: string,
-  errorText: string,
-  onChange: (value: string, event: any) => void;
-}
-
-export type StateProps = {
-  userLocation: { [string]: any } | null;
-}
+/**
+ * @typedef {Object} StateProps
+ * @property {Object<string, any> | null} userLocation
+ */

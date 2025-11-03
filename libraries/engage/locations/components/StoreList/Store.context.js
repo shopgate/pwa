@@ -1,5 +1,7 @@
-// @flow
-import { createContext } from 'react';
-import { type Location } from '../../locations.types';
+/**
+ * @typedef {import('../../locations.types').Location} Location
+ */
 
-export const StoreContext = createContext<Location>({});
+import { createContext } from 'react';
+
+export const StoreContext = createContext(/** @type {Location} */ ({}));

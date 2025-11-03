@@ -1,4 +1,3 @@
-// @flow
 import { connect } from 'react-redux';
 import {
   hasProductVariants,
@@ -23,16 +22,31 @@ import {
   getUserSearch,
 } from '../../selectors';
 import { storeFulfillmentMethod } from '../../action-creators';
-import { type OwnProps, type StateProps, type DispatchProps } from './FulfillmentSelector.types';
+
+/* eslint-disable max-len */
+/** @typedef {import('./FulfillmentSelector.types').OwnProps} OwnProps */
+/** @typedef {import('./FulfillmentSelector.types').StateProps} StateProps */
+/** @typedef {import('./FulfillmentSelector.types').DispatchProps} DispatchProps */
 
 /**
- * @return {Function} The extended component props.
+ * Maps state to props for the component.
+ * @returns {function(state: any, props: OwnProps): StateProps} A function that maps state and props to StateProps.
  */
-function makeMapStateToProps() {
-  /* eslint-disable require-jsdoc */
+const makeMapStateToProps = () => {
+  /**
+   * Retrieves the location code based on the state and props.
+   * @param {any} state The application state.
+   * @param {OwnProps} props The component props.
+   * @returns {string|null} The location code.
+   */
   const getLocationCode = (state, props) => getPreferredLocation(state, props)?.code;
+  /**
+   * Retrieves the product code based on the props.
+   * @param {any} _ Unused state parameter.
+   * @param {OwnProps} props The component props.
+   * @returns {string|null} The product code.
+   */
   const getProductCode = (_, props) => props.variantId || props.productId || null;
-  /* eslint-enable require-jsdoc */
 
   const getFulfillmentPaths = makeGetFulfillmentPaths();
   const isDirectShipEnabled = makeIsFulfillmentSelectorMethodEnabled(
@@ -62,8 +76,8 @@ function makeMapStateToProps() {
 
   /**
    * @param {Object} state The application state.
-   * @param {Object} props The component props.
-   * @returns {Object}
+   * @param {OwnProps} props The component props.
+   * @returns {StateProps} The mapped state props.
    */
   return (state, props) => {
     const hasVariants = hasProductVariants(state, props);
@@ -71,7 +85,6 @@ function makeMapStateToProps() {
 
     return {
       merchantSettings: {
-        // eslint-disable-next-line max-len
         [MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION]: getProductShowAlternativeLocation(state),
       },
       fulfillmentPaths: getFulfillmentPaths(state),
@@ -90,13 +103,15 @@ function makeMapStateToProps() {
       userSearch: getUserSearch(state),
     };
   };
-}
+};
+/* eslint-enable max-len */
 
+/**
+ * Maps dispatch actions to props for the component.
+ * @type {DispatchProps}
+ */
 const mapDispatchToProps = {
   storeFulfillmentMethod,
 };
 
-export default connect<StateProps, DispatchProps, OwnProps>(
-  makeMapStateToProps,
-  mapDispatchToProps
-);
+export default connect(makeMapStateToProps, mapDispatchToProps);

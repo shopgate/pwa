@@ -5,7 +5,7 @@ const { colors } = themeConfig;
 
 export const list = css({
   borderBottom: `1px solid ${colors.shade7}`,
-});
+}).toString();
 
 export const loadingIndicator = css({
   padding: 0,

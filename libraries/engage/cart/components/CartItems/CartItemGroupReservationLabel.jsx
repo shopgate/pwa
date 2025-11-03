@@ -1,21 +1,17 @@
-// @flow
 import React from 'react';
+import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
 import { LocationIcon } from '@shopgate/engage/components';
-import {
-  type LocationAware,
-  BOPIS,
-} from '@shopgate/engage/locations';
+import { BOPIS } from '@shopgate/engage/locations';
 import { address, addressIcon, title } from './CartItemGroup.style';
-
-type Props = LocationAware;
+/** @typedef {import('@shopgate/engage/locations/locations.types').LocationAware} LocationAware */
 
 /**
  * Renders the cart reservation group label.
- * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {LocationAware} props The component props.
+ * @returns {JSX.Element|null}
  */
-export function CartItemGroupReservationLabel({ location, fulfillmentMethod }: Props) {
+export function CartItemGroupReservationLabel({ location, fulfillmentMethod }) {
   if (!location) {
     return null;
   }
@@ -36,3 +32,12 @@ export function CartItemGroupReservationLabel({ location, fulfillmentMethod }: P
     </div>
   );
 }
+
+CartItemGroupReservationLabel.propTypes = {
+  fulfillmentMethod: PropTypes.string.isRequired,
+  location: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default CartItemGroupReservationLabel;

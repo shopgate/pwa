@@ -8,7 +8,7 @@ import { StoreFinderSelectLocationButton } from './StoreFinderSelectLocationButt
 import StoreFinderStoreInfoButton from './StoreFinderStoreInfoButton';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const StoreFinderLocation = () => {
   const store = useContext(StoreContext);

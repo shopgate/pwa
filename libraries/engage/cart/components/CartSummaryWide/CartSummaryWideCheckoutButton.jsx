@@ -1,24 +1,20 @@
 import React, { useContext, useMemo } from 'react';
 import classNames from 'classnames';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import Link from '@shopgate/pwa-common/components/Link';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { SurroundPortals, I18n, Link } from '@shopgate/engage/components';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import PropTypes from 'prop-types';
 import { CartContext } from '../../cart.context';
 import { container, button, disabledButton } from './CartSummaryWideCheckoutButton.style';
 import connect from './CartSummaryWideCheckoutButton.connector';
 
-type Props = {
-  isOrderable?: boolean;
-}
-
 /**
  * @param {Object} props The component props
- * @returns {JSX}
+ * @param {boolean} props.isOrderable Indicates whether the cart is orderable.
+ * @returns {JSX.Element}
  */
-const CartSummaryWideCheckoutButton = ({ isOrderable }:Props) => {
+const CartSummaryWideCheckoutButton = ({ isOrderable }) => {
   const { isLoading } = useContext(CartContext);
   const isActive = useMemo(() => (isOrderable && !isLoading), [isLoading, isOrderable]);
 
@@ -41,6 +37,10 @@ const CartSummaryWideCheckoutButton = ({ isOrderable }:Props) => {
       </SurroundPortals>
     </div>
   );
+};
+
+CartSummaryWideCheckoutButton.propTypes = {
+  isOrderable: PropTypes.bool,
 };
 
 CartSummaryWideCheckoutButton.defaultProps = {

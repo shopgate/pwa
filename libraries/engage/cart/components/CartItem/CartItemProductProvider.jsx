@@ -4,20 +4,28 @@ import React, {
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
+import PropTypes from 'prop-types';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../cart.constants';
 import Context from './CartItemProductProvider.context';
 import connect from './CartItemProductProvider.connector';
-import { type OwnProps, type StateProps, type DispatchProps } from './CartItemProductProvider.types';
 import CartItemProductProviderLegacy from './CartItemProductProviderLegacy';
 
 const { variables } = themeConfig;
 
-type Props = OwnProps & StateProps & DispatchProps
+/**
+ * @typedef {import('./CartItemProductProvider.types').OwnProps} OwnProps
+ * @typedef {import('./CartItemProductProvider.types').StateProps} StateProps
+ * @typedef {import('./CartItemProductProvider.types').DispatchProps} DispatchProps
+ */
+
+/**
+ * @typedef {OwnProps & StateProps & DispatchProps} Props
+ */
 
 /**
  * The CartItemProduct Provider
- * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Props} props The component props.
+ * @returns {JSX.Element}
  */
 const CartItemProductProvider = ({
   currency,
@@ -29,7 +37,7 @@ const CartItemProductProvider = ({
   children,
   isAndroid,
   currencyOverride,
-}: Props) => {
+}) => {
   const {
     id,
     product,
@@ -59,7 +67,7 @@ const CartItemProductProvider = ({
     updateProduct(id, updatedQuantity);
   }, [id, updateProduct]);
 
-  const toggleEditMode = useCallback((isEnabled: boolean) => {
+  const toggleEditMode = useCallback((isEnabled) => {
     if (isAndroid && isEnabled) {
       /**
        * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
@@ -165,11 +173,45 @@ const CartItemProductProvider = ({
   );
 };
 
+CartItemProductProvider.propTypes = {
+  cartItem: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    product: PropTypes.object.isRequired,
+    quantity: PropTypes.number.isRequired,
+    fulfillment: PropTypes.object,
+    messages: PropTypes.array.isRequired,
+    status: PropTypes.string,
+    subStatus: PropTypes.string,
+    orderedQuantity: PropTypes.number,
+    unitPromoAmount: PropTypes.number,
+    unitDiscountAmount: PropTypes.number,
+    price: PropTypes.number,
+    promoAmount: PropTypes.number,
+    discountAmount: PropTypes.number,
+    extendedPrice: PropTypes.number,
+    appliedPromotions: PropTypes.array,
+    flags: PropTypes.shape({
+      disableLink: PropTypes.bool,
+      disableQuantityField: PropTypes.bool,
+    }),
+  }).isRequired,
+  deleteProduct: PropTypes.func.isRequired,
+  updateProduct: PropTypes.func.isRequired,
+  children: PropTypes.node,
+  currency: PropTypes.string,
+  currencyOverride: PropTypes.string,
+  isAndroid: PropTypes.bool,
+  isEditable: PropTypes.bool,
+  onFocus: PropTypes.func,
+};
+
 CartItemProductProvider.defaultProps = {
   children: null,
   isEditable: true,
   onFocus: () => {},
   currencyOverride: null,
+  currency: null,
+  isAndroid: false,
 };
 
 export default connect(CartItemProductProvider);

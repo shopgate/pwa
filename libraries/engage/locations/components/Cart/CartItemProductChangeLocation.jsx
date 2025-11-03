@@ -1,32 +1,35 @@
-// @flow
-import * as React from 'react';
 import noop from 'lodash/noop';
+import React, { useEffect, useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import { isProductAvailable } from '../../helpers';
 import { STAGE_SELECT_STORE } from '../../constants';
 import connect from './CartItemProductChangeLocation.connector';
-import { type OwnProps, type DispatchProps } from './CartItemProductChangeLocation.types';
-
-type Props = OwnProps & DispatchProps;
 
 /**
- * @param {Object} props The component props.
- * @param {Object} cartItem cartItem
- * @param {Function} updateProduct updateProduct
- * @param {Function} fetchProductLocations fetchProductLocations
- * @returns {JSX}
+ * @typedef {import('./CartItemProductChangeLocation.types').OwnProps} OwnProps
+ * @typedef {import('./CartItemProductChangeLocation.types').DispatchProps} DispatchProps
  */
-const CartItemProductChangeLocation = (props: Props) => {
+
+/**
+ * @typedef {OwnProps & DispatchProps} Props
+ */
+
+/**
+ * @param {Props} props The component props.
+ * @returns {JSX.Element|null}
+ */
+const CartItemProductChangeLocation = (props) => {
   const {
     cartItem, updateProductInCart, fetchProductLocations, registerAction,
   } = props;
-  const [opened, setOpened] = React.useState(false);
-  const [fulfillmentMethod, setFulfillmentMethod] = React.useState(null);
+  const [opened, setOpened] = useState(false);
+  const [fulfillmentMethod, setFulfillmentMethod] = useState(null);
 
   /**
    * Register cart item action
    */
-  React.useEffect(() => {
+  useEffect(() => {
     if (!registerAction || !cartItem) {
       return;
     }
@@ -40,8 +43,9 @@ const CartItemProductChangeLocation = (props: Props) => {
 
   /**
    * Select location callback
+   * @param {Object|null} location
    */
-  const onLocationSelect = React.useCallback((location) => {
+  const onLocationSelect = useCallback((location) => {
     setTimeout(() => setOpened(false), 500);
     if (!location || !isProductAvailable(location, location?.inventory)) {
       return;
@@ -68,6 +72,20 @@ const CartItemProductChangeLocation = (props: Props) => {
       isCart
     />
   );
+};
+
+CartItemProductChangeLocation.propTypes = {
+  cartItem: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    quantity: PropTypes.number.isRequired,
+    fulfillment: PropTypes.object,
+    product: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+  fetchProductLocations: PropTypes.func.isRequired,
+  updateProductInCart: PropTypes.func.isRequired,
+  registerAction: PropTypes.func,
 };
 
 CartItemProductChangeLocation.defaultProps = {

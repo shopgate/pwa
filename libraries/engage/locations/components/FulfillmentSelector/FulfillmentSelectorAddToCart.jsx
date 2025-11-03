@@ -1,4 +1,3 @@
-// @flow
 import { useEffect } from 'react';
 import { isProductAvailable } from '../../helpers';
 import {
@@ -11,26 +10,25 @@ import {
 } from '../../constants';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import { FulfillmentPathSelector } from '../FulfillmentPathSelector';
-import { type FulfillmentPath } from '../../locations.types';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
+
+/** @typedef {import('../../locations.types').FulfillmentPath} FulfillmentPath */
 
 /**
  * Opens the fulfillment path selector and returns a promise that resolves after selection.
- * @returns {Promise}
+ * @returns {Promise<FulfillmentPath>} A promise resolving to the selected fulfillment path.
  */
-function promisifiedFulfillmentPathSelector(): Promise<FulfillmentPath> {
-  return new Promise((resolve) => {
-    FulfillmentPathSelector.open((selectedPath: FulfillmentPath) => {
-      resolve(selectedPath);
-    });
+const promisifiedFulfillmentPathSelector = () => new Promise((resolve) => {
+  FulfillmentPathSelector.open((selectedPath) => {
+    resolve(selectedPath);
   });
-}
+});
 
 /**
  * Interject add to cart flow.
- * @returns {JSX}
+ * @returns {JSX.Element|null} The rendered component or null.
  */
-export function FulfillmentSelectorAddToCart() {
+export const FulfillmentSelectorAddToCart = () => {
   const {
     preferredLocation,
     inventory,
@@ -45,11 +43,8 @@ export function FulfillmentSelectorAddToCart() {
 
   const usedLocation = selectedLocation || preferredLocation;
 
-  // Add to cart effect to validate inventory
   useEffect(() => {
-    // Add most late conditioner
     conditioner.addConditioner('fulfillment-inventory', async () => {
-      // Allow direct ship item
       if (isDirectShipEnabled && selection === DIRECT_SHIP) {
         return true;
       }
@@ -91,7 +86,6 @@ export function FulfillmentSelectorAddToCart() {
       }
 
       if (!fulfillmentPaths.includes(MULTI_LINE_RESERVE)) {
-        // Open reservation form. Stop adding to a cart
         FulfillmentSheet.open({
           stage: STAGE_RESERVE_FORM,
         });
@@ -114,4 +108,5 @@ export function FulfillmentSelectorAddToCart() {
   ]);
 
   return null;
-}
+};
+

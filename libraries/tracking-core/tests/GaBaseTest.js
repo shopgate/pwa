@@ -187,7 +187,7 @@ describe('GaBase', () => {
    * @param {Object} data data that is passed to the event
    * @param {Object} expectedUniversal expected arguments for universal sdk
    * @param {Object} expectedClassic expected arguments for classic sdk
-   * @param {bool} merchant if merchants should receive the event
+   * @param {boolean} merchant if merchants should receive the event
    * @private
    */
   function testEventData(eventName, data, expectedUniversal, expectedClassic, merchant = true) {

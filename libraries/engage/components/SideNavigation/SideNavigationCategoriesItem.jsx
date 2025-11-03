@@ -1,6 +1,7 @@
 import React, {
   useState, useCallback, useMemo, useEffect,
 } from 'react';
+import PropTypes from 'prop-types';
 import ArrowDrop from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
@@ -14,18 +15,16 @@ import {
 } from './SideNavigationCategoriesItem.style';
 import { useSideNavigation } from './SideNavigation.hooks';
 
-type Props = {
-  categoryId?: string,
-  level?: number,
-  category: Object,
-  subcategories?: Array,
-  subcategoriesFetching?:boolean,
-  fetchCategory: () => any,
-}
-
 /**
- * The SideNavigationCategoriesItem component
- * @returns {JSX}
+ * The SideNavigationCategoriesItem component.
+ * @param {Object} props The component props.
+ * @param {string} [props.categoryId=null] The category ID.
+ * @param {Object} props.category The category object.
+ * @param {Array} [props.subcategories=null] The list of subcategories.
+ * @param {boolean} [props.subcategoriesFetching=false] Whether subcategories are being fetched.
+ * @param {Function} props.fetchCategory The function to fetch a category.
+ * @param {number} [props.level=0] The current nesting level.
+ * @returns {JSX.Element|null} The rendered component.
  */
 const SideNavigationCategoriesItem = ({
   categoryId,
@@ -34,7 +33,7 @@ const SideNavigationCategoriesItem = ({
   subcategoriesFetching,
   fetchCategory,
   level,
-}: Props) => {
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -104,6 +103,20 @@ SideNavigationCategoriesItem.defaultProps = {
   subcategoriesFetching: false,
   categoryId: null,
   level: 0,
+};
+
+SideNavigationCategoriesItem.propTypes = {
+  category: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    childrenCount: PropTypes.number.isRequired,
+  }).isRequired,
+  fetchCategory: PropTypes.func.isRequired,
+  categoryId: PropTypes.string,
+  level: PropTypes.number,
+  subcategories: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  })),
+  subcategoriesFetching: PropTypes.bool,
 };
 
 export default connect(SideNavigationCategoriesItem);

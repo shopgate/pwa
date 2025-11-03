@@ -7,7 +7,7 @@ import React from 'react';
  * @param {Function} asyncFunction The function that will be executed to generate memoized output.
  * @param {Array} asyncFunctionDependencies
  *  A list of dependencies (same behavior as with `React.useMemo`)
- * @param {Any} initialValue The initial value that is set before promise is fulfilled.
+ * @param {any} initialValue The initial value that is set before promise is fulfilled.
  * @returns {Array}
  */
 export function useAsyncMemo(

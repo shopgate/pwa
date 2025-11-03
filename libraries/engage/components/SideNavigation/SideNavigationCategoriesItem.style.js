@@ -10,8 +10,7 @@ export const chevronButton = css({
   fontSize: '1.6em',
   color: '#373D41',
   position: 'relative',
-
-});
+}).toString();
 
 export const chevron = css({
   transformOrigin: 'center center',
@@ -32,7 +31,7 @@ export const progressBar = css({
   width: '100%',
   bottom: 0,
   height: 3,
-});
+}).toString();
 
 export const open = css({
 //  borderRight: '2px solid var(--color-primary)',

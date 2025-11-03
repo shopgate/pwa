@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { hot } from 'react-hot-loader/root';
 import { I18n } from '@shopgate/engage/components';
@@ -15,16 +16,15 @@ import {
 } from './CartItemsHeaderWide.style';
 import connect from './CartItemsHeaderWide.connector';
 
-type Props = {
-  editable?: boolean,
-  isOrderDetails?: boolean,
-  isDirectShipOnly?: boolean,
-  hasLineItemPromotions?: boolean,
-  enabledFulfillmentMethodsCount: number,
-}
-
 /**
- * @returns {JSX}
+ * The CartItemsHeaderWide component.
+ * @param {Object} props The component props.
+ * @param {boolean} [props.editable=true] Whether the cart is editable.
+ * @param {boolean} [props.isOrderDetails=false] Whether the component is used in order details.
+ * @param {boolean} [props.isDirectShipOnly=false] Whether the cart is direct ship only.
+ * @param {boolean} [props.hasLineItemPromotions=false] Whether the cart has line item promotions.
+ * @param {number} props.enabledFulfillmentMethodsCount The count of enabled fulfillment methods.
+ * @returns {JSX.Element} The rendered component.
  */
 const CartItemsHeaderWide = ({
   editable,
@@ -32,7 +32,7 @@ const CartItemsHeaderWide = ({
   enabledFulfillmentMethodsCount,
   hasLineItemPromotions,
   isDirectShipOnly,
-}: Props) => (
+}) => (
   <div className={header}>
     <div className={imageColumn}>
       <I18n.Text string="cart.items" />
@@ -45,19 +45,19 @@ const CartItemsHeaderWide = ({
       <I18n.Text string="cart.price" />
     </div>
     {isOrderDetails && (
-      <Fragment>
-        {!isDirectShipOnly ? (
-          <div className={locationColumn}>
-            <I18n.Text string="cart.location" />
-          </div>
-        ) : null}
-        <div className={column}>
-          <I18n.Text string="cart.status" />
+    <>
+      {!isDirectShipOnly ? (
+        <div className={locationColumn}>
+          <I18n.Text string="cart.location" />
         </div>
-        <div className={column}>
-          <I18n.Text string="cart.fulfilled_quantity" />
-        </div>
-      </Fragment>
+      ) : null}
+      <div className={column}>
+        <I18n.Text string="cart.status" />
+      </div>
+      <div className={column}>
+        <I18n.Text string="cart.fulfilled_quantity" />
+      </div>
+    </>
     )}
     <div className={editable ? quantityPickerColumn : quantityPickerColumnNotEditable}>
       <I18n.Text string={isOrderDetails ? 'cart.ordered_quantity' : 'cart.quantity'} />
@@ -66,10 +66,18 @@ const CartItemsHeaderWide = ({
       <I18n.Text string="cart.subtotal" />
     </div>
     { editable && enabledFulfillmentMethodsCount > 1 && (
-      <div className={contextMenuColumn} />
+    <div className={contextMenuColumn} />
     )}
   </div>
 );
+
+CartItemsHeaderWide.propTypes = {
+  enabledFulfillmentMethodsCount: PropTypes.number.isRequired,
+  editable: PropTypes.bool,
+  hasLineItemPromotions: PropTypes.bool,
+  isDirectShipOnly: PropTypes.bool,
+  isOrderDetails: PropTypes.bool,
+};
 
 CartItemsHeaderWide.defaultProps = {
   editable: true,

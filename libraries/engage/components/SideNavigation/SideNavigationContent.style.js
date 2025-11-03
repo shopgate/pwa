@@ -6,4 +6,4 @@ export const container = css({
   position: 'sticky',
   top: 'var(--app-bar-height)',
   */
-});
+}).toString();

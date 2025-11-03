@@ -1,27 +1,26 @@
 import React, { useEffect } from 'react';
 import { LoadingIndicator } from '@shopgate/pwa-ui-shared';
+import PropTypes from 'prop-types';
 import SideNavigationCategoriesItemChildren from './SideNavigationCategoriesItemChildren';
 import connect from './SideNavigationCategories.connector';
 import { list, loadingIndicator } from './SideNavigationCategories.style';
 import { item } from './SideNavigationItem.style';
 
-type Props = {
-  categoryId?: string,
-  rootCategoriesFetching?: boolean,
-  subcategories?: Array,
-  fetchCategory: () => any
-}
-
 /**
- * The SideNavigationCategories component
- * @returns {JSX}
+ * The SideNavigationCategories component.
+ * @param {Object} props - The component props.
+ * @property {string} [props.categoryId] - The ID of the category to fetch.
+ * @property {boolean} [props.rootCategoriesFetching] - whether root categories are being fetched.
+ * @property {Array} [props.subcategories] - The list of subcategories.
+ * @property {Function} props.fetchCategory - Function to fetch the category data.
+ * @returns {JSX.Element|null} The rendered component or null.
  */
 const SideNavigationCategories = ({
   categoryId,
   subcategories,
   fetchCategory,
   rootCategoriesFetching,
-}: Props) => {
+}) => {
   useEffect(() => {
     if (!subcategories) {
       fetchCategory(categoryId);
@@ -47,10 +46,17 @@ const SideNavigationCategories = ({
   );
 };
 
+SideNavigationCategories.propTypes = {
+  fetchCategory: PropTypes.func.isRequired,
+  categoryId: PropTypes.string,
+  rootCategoriesFetching: PropTypes.bool,
+  subcategories: PropTypes.arrayOf(PropTypes.shape()),
+};
+
 SideNavigationCategories.defaultProps = {
-  subcategories: null,
   categoryId: null,
   rootCategoriesFetching: false,
+  subcategories: null,
 };
 
 export default connect(SideNavigationCategories);

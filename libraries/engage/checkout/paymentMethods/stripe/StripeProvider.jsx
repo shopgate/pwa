@@ -1,22 +1,14 @@
 import React, { useEffect, useContext } from 'react';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import {
   Elements, CardNumberElement, useStripe, useElements,
 } from '@stripe/react-stripe-js';
+import PropTypes from 'prop-types';
 import Context from './StripeProvider.context';
 import connect from './StripeProvider.connector';
 import { promise as stripePromise, loadSdk } from './sdk';
 import { useCheckoutContext } from '../../hooks/common';
 import PaymentContext from '../context';
-
-type PropsWrapper = {
-  publishableKey?: string,
-  children: any,
-}
-
-type Props = {
-  children: any,
-}
 
 /**
  * Prepares checkout with stripe request and creates event data.
@@ -103,9 +95,10 @@ const triggerStripeRequest = async (stripe, req, order, activeTransaction) => {
 /**
  * A Provider that is needed for all stripe based
  * @param {Object} props The components props.
- * @returns {JSX}
+ * @param {Object} props.children The child components.
+ * @returns {JSX.Element}
  */
-const StripeProvider = ({ children }: Props) => {
+const StripeProvider = ({ children }) => {
   const [error, setError] = React.useState(null);
   const { order, paymentData } = useCheckoutContext();
   const stripe = useStripe();
@@ -180,12 +173,18 @@ const StripeProvider = ({ children }: Props) => {
   );
 };
 
+StripeProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 /**
  * A Provider that is needed for all stripe based
  * @param {Object} props The components props.
- * @returns {JSX}
+ * @param {string} [props.publishableKey] The publishable key.
+ * @param {Object} props.children The child components.
+ * @returns {JSX.Element}
  */
-const StripeProviderWrapper = ({ publishableKey, children }: PropsWrapper) => {
+const StripeProviderWrapper = ({ publishableKey, children }) => {
   React.useEffect(() => {
     if (!publishableKey) {
       return;
@@ -201,6 +200,11 @@ const StripeProviderWrapper = ({ publishableKey, children }: PropsWrapper) => {
       </StripeProvider>
     </Elements>
   );
+};
+
+StripeProviderWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+  publishableKey: PropTypes.string,
 };
 
 StripeProviderWrapper.defaultProps = {
