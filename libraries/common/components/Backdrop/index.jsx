@@ -50,7 +50,7 @@ function Backdrop({
 
   const targetOpacity = useMemo(() => (opacity / 100), [opacity]);
 
-  // Map Transition states to inline styles (equivalent to your old childrenStyles)
+  // Map Transition states to inline styles
   const transitionStyles = useMemo(() => ({
     entering: {
       opacity: targetOpacity,
