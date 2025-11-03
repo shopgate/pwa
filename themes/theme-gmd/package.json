@@ -32,7 +32,6 @@
     "@babel/runtime": "^7.5.5",
     "@babel/runtime-corejs3": "^7.5.5",
     "@emotion/react": "^11.14.0",
-    "@hot-loader/react-dom": "~16.14.0",
     "@shopgate/engage": "7.29.0",
     "@shopgate/pwa-common": "7.29.0",
     "@shopgate/pwa-common-commerce": "7.29.0",
