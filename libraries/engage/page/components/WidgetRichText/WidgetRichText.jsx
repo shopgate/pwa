@@ -6,10 +6,10 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   root: {
     width: '100%',
-    '& > :first-child': {
+    '& > :first-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       marginTop: 0,
     },
-    '& > :last-child': {
+    '& > :last-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       marginBottom: 0,
     },
     '& p': {

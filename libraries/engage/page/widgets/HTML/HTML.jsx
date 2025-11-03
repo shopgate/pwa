@@ -53,7 +53,7 @@ const useStyles = makeStyles()({
       borderLeft: `.25rem solid ${colors.shade6}`,
       fontStyle: 'italic',
     },
-    ' > :first-child': {
+    ' > :first-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       marginTop: 0,
     },
     // Clearfix for floated widget content
