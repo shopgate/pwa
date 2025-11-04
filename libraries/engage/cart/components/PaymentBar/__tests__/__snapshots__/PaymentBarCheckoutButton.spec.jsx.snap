@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PaymentBarCheckoutButton /> should render disabled button 1`] = `
-<Connect(Link)
+<Link
   aria-disabled={true}
   disabled={true}
   href="/checkout"
@@ -19,20 +19,15 @@ exports[`<PaymentBarCheckoutButton /> should render disabled button 1`] = `
     type="regular"
     wrapContent={true}
   >
-    <Translate
-      acceptPlainTextWithPlaceholders={false}
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="cart.checkout"
-      transform={null}
     />
   </RippleButton>
-</Connect(Link)>
+</Link>
 `;
 
 exports[`<PaymentBarCheckoutButton /> should render enabled button 1`] = `
-<Connect(Link)
+<Link
   aria-disabled={false}
   disabled={false}
   href="/checkout"
@@ -50,14 +45,9 @@ exports[`<PaymentBarCheckoutButton /> should render enabled button 1`] = `
     type="regular"
     wrapContent={true}
   >
-    <Translate
-      acceptPlainTextWithPlaceholders={false}
-      className={null}
-      params={Object {}}
-      role={null}
+    <Text
       string="cart.checkout"
-      transform={null}
     />
   </RippleButton>
-</Connect(Link)>
+</Link>
 `;
