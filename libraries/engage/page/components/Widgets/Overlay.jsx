@@ -207,7 +207,6 @@ const Overlay = ({
 
     // Create one MutationObserver on the container to watch for changes in the DOM
     mutationRef.current = new MutationObserver((mutations) => {
-      // eslint-disable-next-line no-restricted-syntax
       for (const mutation of mutations) {
         if (mutation.type === 'childList') {
           // Handle newly added nodes - observe them for size changes
