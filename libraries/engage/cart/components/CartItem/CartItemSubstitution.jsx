@@ -13,7 +13,9 @@ import { root } from './CartItemSubstitution.style';
 /**
  * Renders the cart reservation card label.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Function} props.setSubstitutionAllowed The action to set substitution allowed flag.
+ * @param {boolean} props.editable Whether the substitution option is editable.
+ * @returns {JSX.Element}
  */
 const CartItemSubstitution = ({ setSubstitutionAllowed, editable }) => {
   const { cartItem: { id, substitutionAllowed, fulfillment } = {} } = useCartItem();

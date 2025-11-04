@@ -69,7 +69,9 @@ const mapDispatchToProps = dispatch => ({
 
 /**
  * @param {Object} props The component props
- * @returns {JSX}
+ * @param {string} props.text The promotional text
+ * @param {Function} props.showText The function to show the promotional text
+ * @returns {JSX.Element}
  */
 const PromotionalTextInfoIcon = ({ text, showText }) => {
   const { isLoading } = useContext(CartContext);

@@ -46,7 +46,6 @@ import {
 } from './CartItemProductLayoutWide.style';
 
 /**
- * @param {Object} props The component properties.
  * @returns {JSX}
  */
 const CartItemProductLayoutWide = () => {
