@@ -67,7 +67,6 @@ describe('Pages Subscriptions', () => {
 
     beforeEach(() => {
       [[stream, callback]] = subscribe.mock.calls;
-      redirects.constructor();
       callback({ dispatch, getState });
     });
 

@@ -8943,7 +8943,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
               <TextField
                 className=""
                 disabled={false}
-                errorText=""
+                errorText="reviews.review_form_error_author_empty"
                 hintText=""
                 id="author"
                 inputComponent="input"
@@ -8984,7 +8984,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     </div>
                   </Hint>
                   <Label
-                    hasErrorMessage={false}
+                    hasErrorMessage={true}
                     isFloating={false}
                     isFocused={false}
                     label="reviews.review_form_author"
@@ -9015,8 +9015,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   <FormElement
                     attributes={
                       Object {
-                        "aria-describedby": null,
-                        "aria-invalid": false,
+                        "aria-describedby": "ariaError-author",
+                        "aria-invalid": true,
                       }
                     }
                     disabled={false}
@@ -9038,8 +9038,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <_default
                       attributes={
                         Object {
-                          "aria-describedby": null,
-                          "aria-invalid": false,
+                          "aria-describedby": "ariaError-author",
+                          "aria-invalid": true,
                         }
                       }
                       className="css-keangt"
@@ -9063,8 +9063,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <SimpleInput
                         attributes={
                           Object {
-                            "aria-describedby": null,
-                            "aria-invalid": false,
+                            "aria-describedby": "ariaError-author",
+                            "aria-invalid": true,
                           }
                         }
                         autoComplete={false}
@@ -9090,8 +9090,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         value=""
                       >
                         <input
-                          aria-describedby={null}
-                          aria-invalid={false}
+                          aria-describedby="ariaError-author"
+                          aria-invalid={true}
                           autoComplete="off"
                           autoCorrect="off"
                           className="css-keangt simpleInput common__simple-input"
@@ -9116,7 +9116,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     </_default>
                   </FormElement>
                   <Underline
-                    hasErrorMessage={false}
+                    hasErrorMessage={true}
                     isFocused={false}
                   >
                     <div
@@ -9127,8 +9127,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         className="css-1tpmuef"
                         style={
                           Object {
-                            "borderBottomColor": "var(--color-primary, #fa5400)",
-                            "transform": "scale3d(0,1,1)",
+                            "borderBottomColor": "var(--color-state-alert, #ff0000)",
                           }
                         }
                       />
@@ -9138,7 +9137,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     ariaHidden={false}
                     className=""
                     elementName="author"
-                    errorText=""
+                    errorText="reviews.review_form_error_author_empty"
                     translate={true}
                     validationError={null}
                   >
@@ -9154,9 +9153,16 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         className={null}
                         params={Object {}}
                         role={null}
-                        string=""
+                        string="reviews.review_form_error_author_empty"
                         transform={null}
-                      />
+                      >
+                        <span
+                          className={null}
+                          role={null}
+                        >
+                          reviews.review_form_error_author_empty
+                        </span>
+                      </Translate>
                     </div>
                   </ErrorText>
                 </div>

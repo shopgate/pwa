@@ -12,7 +12,7 @@ global.process.env = {
 };
 
 // Mocks of the global Headers class.
-global.Headers = () => { };
+global.Headers = class Headers {};
 
 // Create a mock for the fetch method.
 const mockedFetchResponse = {};
@@ -38,7 +38,7 @@ let processResponseSpy;
 
 /**
  * Updates the mock for the fetch module.
- * @param {boolean} throwError Wheater the mocked fetch shall throw an error.
+ * @param {boolean} throwError Whether the mocked fetch shall throw an error.
  */
 const updateMockedFetch = (throwError = false) => {
   if (!throwError) {
