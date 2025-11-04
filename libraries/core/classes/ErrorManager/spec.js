@@ -3,7 +3,8 @@ import { DEFAULT_CONTEXT, DEFAULT_SEVERITY } from '../../constants/ErrorManager'
 
 describe('ErrorManager', () => {
   beforeEach(() => {
-    errorManager.constructor();
+    errorManager.errorQueue.clear();
+    errorManager.messages = {};
   });
 
   describe('errorManager.validate', () => {

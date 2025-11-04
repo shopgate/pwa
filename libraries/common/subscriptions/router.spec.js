@@ -168,7 +168,7 @@ describe('Router subscriptions', () => {
 
     beforeEach(() => {
       [[stream, callback]] = subscribe.mock.calls;
-      redirects.constructor();
+      redirects.redirects.clear();
     });
 
     it('should setup as expected', () => {
