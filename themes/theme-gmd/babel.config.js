@@ -58,7 +58,7 @@ module.exports = (api) => {
       },
       development: {
         plugins: [
-          'flow-react-proptypes',
+
         ],
       },
       production: {
