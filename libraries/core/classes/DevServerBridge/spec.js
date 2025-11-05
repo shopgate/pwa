@@ -17,7 +17,10 @@ global.Headers = class Headers {};
 // Create a mock for the fetch method.
 const mockedFetchResponse = {};
 let mockedFetch;
-jest.mock('isomorphic-fetch', () => (...args) => mockedFetch(...args));
+
+beforeAll(() => {
+  global.fetch = jest.fn(); // mock fetch globally
+});
 
 // Create a mock for the Event class.
 const mockedEventCall = jest.fn();
@@ -41,11 +44,11 @@ let processResponseSpy;
  * @param {boolean} throwError Whether the mocked fetch shall throw an error.
  */
 const updateMockedFetch = (throwError = false) => {
-  if (!throwError) {
-    mockedFetch = jest.fn().mockResolvedValue({ json: () => mockedFetchResponse });
-  } else {
-    mockedFetch = jest.fn().mockRejectedValue(new Error());
-  }
+  mockedFetch = throwError
+    ? jest.fn().mockRejectedValue(new Error())
+    : jest.fn().mockResolvedValue({ json: () => mockedFetchResponse });
+
+  global.fetch.mockImplementation((...args) => mockedFetch(...args));
 };
 
 describe('DevServerBridge', () => {
