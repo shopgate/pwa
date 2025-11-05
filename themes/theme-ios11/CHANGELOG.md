@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.28.3](https://github.com/shopgate/pwa/compare/v7.28.2...v7.28.3) (2025-11-05)
+
+#### :bug: Bug Fix
+* [#1413](https://github.com/shopgate/pwa/pull/1413) Fix barcode scanner UI ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.28.2](https://github.com/shopgate/pwa/compare/v7.28.1...v7.28.2) (2025-10-16)
 
 #### :house: Internal
