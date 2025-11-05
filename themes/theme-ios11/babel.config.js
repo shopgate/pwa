@@ -9,7 +9,6 @@ module.exports = (api) => {
         modules: false,
       }],
       '@babel/preset-react',
-      '@babel/preset-flow',
     ],
     plugins: [
       'lodash',
@@ -46,13 +45,11 @@ module.exports = (api) => {
         presets: [
           '@babel/preset-env',
           '@babel/preset-react',
-          '@babel/preset-flow',
         ],
       },
       development: {
         plugins: [
           'react-hot-loader/babel',
-          'flow-react-proptypes',
         ],
       },
       production: {

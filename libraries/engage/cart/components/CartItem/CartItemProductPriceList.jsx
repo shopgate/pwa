@@ -28,7 +28,10 @@ const styles = {
 
 /**
  * @param {Object} props The component props
- * @returns {JSX}
+ * @param {Object} [props.classes] CSS class names
+ * @param {boolean} [props.isSubtotal] Whether to show subtotal prices
+ * @param {boolean} [props.showLabels] Whether to show promotion labels
+ * @returns {JSX.Element}
  */
 const CartItemProductPriceList = ({ classes, isSubtotal, showLabels }) => {
   const { isOrderDetails, isCheckoutConfirmation } = useCartItem();

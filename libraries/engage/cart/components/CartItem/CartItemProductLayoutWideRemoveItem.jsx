@@ -4,8 +4,7 @@ import { button, ripple } from './CartItemProductLayoutWideRemoveItem.style';
 import { useCartItemProduct } from './CartItem.hooks';
 
 /**
- * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CartItemProductLayoutWideRemoveItem = () => {
   const { handleRemove } = useCartItemProduct();
