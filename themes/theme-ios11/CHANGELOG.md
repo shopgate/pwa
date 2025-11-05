@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.29.1](https://github.com/shopgate/pwa/compare/v7.29.0...v7.29.1) (2025-11-05)
+
+#### :rocket: Enhancement
+* [#1409](https://github.com/shopgate/pwa/pull/1409) Add video widget ([@AylinUenal](https://github.com/AylinUenal))
+
+#### :bug: Bug Fix
+* [#1414](https://github.com/shopgate/pwa/pull/1414) Fix barcode scanner UI ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.29.0](https://github.com/shopgate/pwa/compare/v7.28.2...v7.29.0) (2025-10-20)
 
 #### :rocket: Enhancement
