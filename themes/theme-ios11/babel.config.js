@@ -27,7 +27,6 @@ module.exports = (api) => {
         runtime: 'classic',
         development: !isProd && !isTest,
       }],
-      '@babel/preset-flow',
     ],
 
     plugins: [
@@ -55,7 +54,6 @@ module.exports = (api) => {
         presets: [
           ['@babel/preset-env', { targets: { node: 'current' } }],
           ['@babel/preset-react', { runtime: 'classic' }],
-          '@babel/preset-flow',
         ],
       },
       development: {

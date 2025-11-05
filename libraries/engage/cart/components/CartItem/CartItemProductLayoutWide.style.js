@@ -47,12 +47,12 @@ export const locationColumn = css(column, {
   lineHeight: '1.625rem',
   fontWeight: 500,
   flexGrow: 2,
-});
+}).toString();
 
 export const statusColumn = css(column, {
   fontSize: '1.25rem',
   lineHeight: '1.625rem',
-});
+}).toString();
 
 export const productName = css({
   fontSize: '1.25rem',

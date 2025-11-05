@@ -11,7 +11,7 @@ import {
 } from './CartItemProductLayoutWide.style';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CartItemProductLayoutWide = () => {
   const { location, cartItem, cartIsDirectShipOnly } = useCartItem();

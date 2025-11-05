@@ -148,7 +148,7 @@ function createCartLineItems(getState) {
  * @param {Function} getState The redux getState function.
  * @returns {Object}
  */
-function createOrder(formValues: { [string]: string }, product: any, getState: () => any) {
+function createOrder(formValues, product, getState) {
   const state = getState();
 
   const userAgent = getUserAgent();

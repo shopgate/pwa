@@ -10,7 +10,7 @@ import { useCartItemProduct } from './CartItem.hooks';
 import { caption } from './CartItemProductPriceCaption.style';
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CartItemProductPriceCaption = ({ className }) => {
   const { cartItem } = useCartItemProduct();
@@ -34,7 +34,7 @@ const CartItemProductPriceCaption = ({ className }) => {
     <span className={classNames(caption, className)}>
     (
       <I18n.Text string={label} />
-    )
+)
     </span>
   );
 };
