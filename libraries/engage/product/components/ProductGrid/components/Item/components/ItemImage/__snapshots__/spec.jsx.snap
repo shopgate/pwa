@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ItemImage /> should render 1`] = `
-<Component
+<SurroundPortals
   portalName="product-item.image"
   portalProps={
     Object {
@@ -22,5 +22,5 @@ exports[`<ItemImage /> should render 1`] = `
     }
     src="http://www.google.com"
   />
-</Component>
+</SurroundPortals>
 `;
