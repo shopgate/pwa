@@ -1,4 +1,3 @@
-/* global jasmine */
 /* eslint-disable max-len */
 /* eslint-disable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this, no-unused-vars */
 
@@ -40,9 +39,7 @@ global.SGEvent = {
   __call: () => { },
 };
 
-if (jasmine) {
-  jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
-}
+jest.setTimeout(10000);
 
 global.mutationConstructorSpy = jest.fn();
 global.mutationObserveSpy = jest.fn();

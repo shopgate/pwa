@@ -13,7 +13,7 @@ jest.mock('@shopgate/engage/components');
 const createComponent = (mockedValue = true) => {
   jest.resetModules();
   jest.mock('@shopgate/pwa-common/helpers/config', () => {
-    const originalConfig = require.requireActual('@shopgate/pwa-common/helpers/config');
+    const originalConfig = jest.requireActual('@shopgate/pwa-common/helpers/config');
     return ({
       ...originalConfig,
       language: 'de-de',
@@ -21,7 +21,7 @@ const createComponent = (mockedValue = true) => {
     });
   });
 
-  const NavDrawerSectionWrapper = require.requireActual('./index').default;
+  const NavDrawerSectionWrapper = jest.requireActual('./index').default;
   return shallow(<NavDrawerSectionWrapper title={sectionTitle} />);
 };
 

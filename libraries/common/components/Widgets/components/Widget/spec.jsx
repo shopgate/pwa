@@ -4,7 +4,7 @@ import Grid from '../../../Grid';
 import Widget from './index';
 
 jest.mock('react', () => ({
-  ...require.requireActual('react'),
+  ...jest.requireActual('react'),
   Suspense: function Suspense({ children }) { return children; },
 }));
 

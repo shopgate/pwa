@@ -12,7 +12,7 @@ import {
 import ScannerContainer from './index';
 
 jest.mock('@shopgate/pwa-core/helpers', () => {
-  const actual = require.requireActual('@shopgate/pwa-core/helpers');
+  const actual = jest.requireActual('@shopgate/pwa-core/helpers');
   return {
     ...actual,
     logger: {

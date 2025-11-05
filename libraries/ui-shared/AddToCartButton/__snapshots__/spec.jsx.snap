@@ -192,17 +192,17 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1vypr3k"
+      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1hx8uyq"
       data-test-id="addToCartButton"
       onClick={[Function]}
       type="button"
     >
       <div
-        className="css-rukjns"
+        className="css-rukjns css-1tg5aiu"
         style={
           Object {
             "opacity": 1,
-            "transform": "translate3d(0, 300%, 0)",
+            "transform": "translate3d(0, -50%, 0)",
           }
         }
       >
@@ -234,12 +234,12 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
         </Tick>
       </div>
       <div
-        className="css-rukjns"
+        className="css-rukjns css-1kfuvpr"
         onAnimationEnd={[Function]}
         style={
           Object {
             "opacity": 1,
-            "transform": "translate3d(0, -50%, 0)",
+            "transform": "translate3d(0, -300%, 0)",
           }
         }
       >

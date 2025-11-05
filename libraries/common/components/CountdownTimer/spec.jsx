@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import CountdownTimer, { getFormattedTimeString } from './index';
 
 describe('<CountdownTimer>', () => {
@@ -22,10 +23,10 @@ describe('<CountdownTimer>', () => {
     callback
   ) => {
     const timeout = Math.floor(Date.now() / 1000)
-        + (remainingDays * 86400)
-        + (remainingHours * 3600)
-        + (remainingMinutes * 60)
-        + remainingSeconds;
+      + (remainingDays * 86400)
+      + (remainingHours * 3600)
+      + (remainingMinutes * 60)
+      + remainingSeconds;
 
     const wrapper = shallow(<CountdownTimer timeout={timeout} onExpire={callback} />);
 
@@ -53,7 +54,7 @@ describe('<CountdownTimer>', () => {
     remainingSeconds
   ) => {
     jest.clearAllTimers();
-    setInterval.mock.calls = [];
+    const intervalSpy = jest.spyOn(global, 'setInterval');
 
     const wrapper = createTimerElement(
       remainingDays,
@@ -67,23 +68,23 @@ describe('<CountdownTimer>', () => {
       remainingDays,
       remainingHours,
       remainingMinutes,
-      remainingSeconds - 1 // Expect the decremented timeout.
+      remainingSeconds - 1
     );
 
-    // We cannot perform a snapshot match here because the timestamp changes for each call.
-    expect(setInterval.mock.calls.length).toBe(1);
+    expect(intervalSpy).toHaveBeenCalledTimes(1);
 
-    jest.runTimersToTime(1000);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     wrapper.update();
 
     const { params, string } = wrapper.props();
-
-    const renderedTimeFormat = {
+    expect({
       params,
       string,
-    };
+    }).toEqual(expectedTimeFormat);
 
-    expect(renderedTimeFormat).toEqual(expectedTimeFormat);
+    intervalSpy.mockRestore();
   };
 
   it('should render the correct time for < 24h', () => performFormatCheck(0, 0, 0, 5));
@@ -98,42 +99,39 @@ describe('<CountdownTimer>', () => {
     const wrapper = createTimerElement(-1, -2, -3, -5, null);
     const expectedTimeFormat = getFormattedTimeString(0, 0, 0, 0);
 
-    jest.runTimersToTime(1000);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
 
     const { params, string } = wrapper.props();
-    const renderedTimeFormat = {
+    expect({
       params,
       string,
-    };
-
-    expect(renderedTimeFormat).toEqual(expectedTimeFormat);
+    }).toEqual(expectedTimeFormat);
   });
 
   it('should stop at 00:00:00 when the timer expires', () => {
     const wrapper = createTimerElement(0, 0, 0, 1, null);
     const expectedTimeFormat = getFormattedTimeString(0, 0, 0, 0);
 
-    let renderedTimeFormat;
-
-    // Run down to 00:00:00.
-    jest.runTimersToTime(1000);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     wrapper.update();
     let { params, string } = wrapper.props();
-    renderedTimeFormat = {
+    expect({
       params,
       string,
-    };
-    expect(renderedTimeFormat).toEqual(expectedTimeFormat);
+    }).toEqual(expectedTimeFormat);
 
-    // Advance time a bit further and make sure the timer stays at 00:00:00.
-    jest.runTimersToTime(1000);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     ({ params, string } = wrapper.props());
-    renderedTimeFormat = {
+    expect({
       params,
       string,
-    };
-
-    expect(renderedTimeFormat).toEqual(expectedTimeFormat);
+    }).toEqual(expectedTimeFormat);
   });
 
   it('should invoke the callback when the timer expires', () => {
@@ -147,16 +145,19 @@ describe('<CountdownTimer>', () => {
 
     createTimerElement(0, 0, 0, 2, callback);
 
-    // The timer is not expired yet. Make sure the callback is not invoked.
-    jest.runTimersToTime(1000);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     expect(timesCallbackInvoked).toBe(0);
 
-    // The timer should expire by now.
-    jest.runTimersToTime(1000);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     expect(timesCallbackInvoked).toBe(1);
 
-    // Run it again and make sure it won't be called twice.
-    jest.runTimersToTime(1000);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     expect(timesCallbackInvoked).toBe(1);
   });
 
@@ -171,7 +172,9 @@ describe('<CountdownTimer>', () => {
 
     createTimerElement(0, 0, 0, 0, callback);
 
-    jest.runTimersToTime(1000);
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     expect(timesCallbackInvoked).toBe(0);
   });
 });
