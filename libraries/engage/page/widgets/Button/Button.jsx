@@ -3,6 +3,8 @@ import { Button } from '@shopgate/engage/components';
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useNavigation } from '@shopgate/engage/core';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import PropTypes from 'prop-types';
 
 const useStyles = makeStyles()({
   root: {
@@ -16,9 +18,11 @@ const useStyles = makeStyles()({
 
 /**
  * The ButtonWidget is used to display a button.
+ * @param {Object} props The component props.
+ * @param {Function} [props.onClick] The onClick handler.
  * @returns {JSX.Element}
  */
-const ButtonWidget = () => {
+const ButtonWidget = ({ onClick }) => {
   const { classes } = useStyles();
 
   const { config } = useWidget();
@@ -28,10 +32,10 @@ const ButtonWidget = () => {
   const handleClick = useCallback((e) => {
     e.stopPropagation();
 
-    if (!link) return;
+    if (!link || IS_PAGE_PREVIEW_ACTIVE) return onClick();
 
-    push({ pathname: link });
-  }, [link, push]);
+    return push({ pathname: link });
+  }, [link, onClick, push]);
 
   if (!text) return null;
 
@@ -46,6 +50,14 @@ const ButtonWidget = () => {
       </Button>
     </div>
   );
+};
+
+ButtonWidget.propTypes = {
+  onClick: PropTypes.func,
+};
+
+ButtonWidget.defaultProps = {
+  onClick: () => {},
 };
 
 export default ButtonWidget;
