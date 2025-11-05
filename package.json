@@ -33,7 +33,8 @@
     "add-remotes": "node ./scripts/add-remotes.js",
     "remove-remotes": "node ./scripts/remove-remotes.js",
     "clean": "make clean",
-    "test": "jest",
+    "test": "RUN_LONG=true jest",
+    "test:short": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "lint": "eslint --quiet --ignore-pattern extensions --ext .js --ext .jsx --ext .json .",
@@ -43,7 +44,6 @@
     "e2e:checkout": "make e2e-checkout",
     "start-cloud": "sgconnect backend start & sgconnect frontend start",
     "lint-staged": "lint-staged",
-    "postinstall": "patch-package",
     "resetup": "npx lerna clean --yes && rm -rf node_modules && yarn install && npx lerna bootstrap"
   },
   "husky": {
@@ -59,7 +59,7 @@
     }
   },
   "devDependencies": {
-    "@types/jest": "^25.1.5",
+    "@types/jest": "^28.1.1",
     "@types/react": "^16.9.49",
     "coveralls": "^3.0.1",
     "detector": "^2.5.0",
@@ -70,7 +70,6 @@
     "lerna": "^2.9.0",
     "lerna-changelog": "^0.8.2",
     "lint-staged": "^7.2.2",
-    "patch-package": "^6.1.2",
     "react": "~16.14.0",
     "react-dom": "~16.14.0",
     "react-dotdotdot": "~1.3.0",
