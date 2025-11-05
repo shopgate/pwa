@@ -8,8 +8,7 @@ import { label } from './CartItemProductLayoutWideFulfillmentLabel.style';
 import { useCartItemProduct } from './CartItem.hooks';
 
 /**
- * @param {Object} props The component props
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const CartItemProductLayoutWideFulfillmentLabel = () => {
   const { cartItem } = useCartItemProduct();

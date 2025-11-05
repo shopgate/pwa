@@ -78,6 +78,7 @@ const initialOptInFormState = {
 
 /**
  * Checkout Provider
+ * @param {CheckoutProviderProps} props The component props.
  * @returns {JSX.Element}
  */
 const CheckoutProvider = ({
@@ -531,29 +532,15 @@ const CheckoutProvider = ({
 };
 
 CheckoutProvider.propTypes = {
-  billingAddress: PropTypes.shape({
-    customerContactId: PropTypes.string,
-  }).isRequired,
   children: PropTypes.node.isRequired,
   clearCheckoutCampaign: PropTypes.func.isRequired,
   fetchCart: PropTypes.func.isRequired,
   fetchCheckoutOrder: PropTypes.func.isRequired,
-  fulfillmentSlot: PropTypes.shape().isRequired,
   historyReplace: PropTypes.func.isRequired,
   isDataReady: PropTypes.bool.isRequired,
-  order: PropTypes.shape({
-    isOrderable: PropTypes.bool,
-    currencyCode: PropTypes.string,
-  }).isRequired,
   pathPattern: PropTypes.string.isRequired,
   paymentTransactions: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pickupAddress: PropTypes.shape({
-    type: PropTypes.string,
-  }).isRequired,
   prepareCheckout: PropTypes.func.isRequired,
-  shippingAddress: PropTypes.shape({
-    customerContactId: PropTypes.string,
-  }).isRequired,
   shopSettings: PropTypes.shape({
     supportedCountries: PropTypes.arrayOf(PropTypes.string),
     countrySortOrder: PropTypes.arrayOf(PropTypes.string),
@@ -566,23 +553,42 @@ CheckoutProvider.propTypes = {
     latitude: PropTypes.number,
     longitude: PropTypes.number,
   }).isRequired,
+  billingAddress: PropTypes.shape({
+    customerContactId: PropTypes.string,
+  }),
   campaignAttribution: PropTypes.shape(),
+  fulfillmentSlot: PropTypes.shape(),
   isGuestCheckout: PropTypes.bool,
   isPickupContactSelectionEnabled: PropTypes.bool,
   isShippingAddressSelectionEnabled: PropTypes.bool,
+  order: PropTypes.shape({
+    isOrderable: PropTypes.bool,
+    currencyCode: PropTypes.string,
+  }),
   orderInitialized: PropTypes.bool,
   orderReadOnly: PropTypes.bool,
   orderReserveOnly: PropTypes.bool,
+  pickupAddress: PropTypes.shape({
+    type: PropTypes.string,
+  }),
+  shippingAddress: PropTypes.shape({
+    customerContactId: PropTypes.string,
+  }),
 };
 
 CheckoutProvider.defaultProps = {
+  billingAddress: null,
+  campaignAttribution: null,
+  fulfillmentSlot: null,
+  isGuestCheckout: false,
+  isPickupContactSelectionEnabled: false,
+  isShippingAddressSelectionEnabled: false,
+  order: null,
   orderInitialized: false,
   orderReadOnly: false,
   orderReserveOnly: false,
-  isShippingAddressSelectionEnabled: false,
-  isPickupContactSelectionEnabled: false,
-  isGuestCheckout: false,
-  campaignAttribution: null,
+  pickupAddress: null,
+  shippingAddress: null,
 };
 
 export default connect(CheckoutProvider);

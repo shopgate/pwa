@@ -8,7 +8,6 @@ const edgeOffsetHorizontal = themeVariables.gap.xbig;
 const edgeOffsetVertical = themeVariables.gap.xxbig;
 
 export default css({
-  position: 'relative',
   height: '90%',
   width: '100%',
   ':before,:after,>:before,>:after': {

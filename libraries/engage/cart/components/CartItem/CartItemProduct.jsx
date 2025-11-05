@@ -28,7 +28,6 @@ const messageStyles = {
 
 /**
  * The CartProduct component.
- * @param {Object} props The component props.
  * @returns {JSX}
  */
 const CartItemProduct = () => {
