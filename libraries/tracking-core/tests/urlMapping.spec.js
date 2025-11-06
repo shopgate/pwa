@@ -1,7 +1,6 @@
-import chai from 'chai';
-import sgUrlMapper from '../helpers/urlMapping';
+/** @jest-environment jsdom */
 
-const { expect } = chai;
+import sgUrlMapper from '../helpers/urlMapping';
 
 const base = 'http://testshop.shopgate.localdev.cc';
 const pathLive = '/';
@@ -11,38 +10,36 @@ const pathApp = 'sg_app_resources/0123456789/';
 describe('urlMapping', () => {
   it('should test relative url', () => {
     expect(sgUrlMapper('/checkout_payment/payment/change_credit_card').public)
-      .to.equal('checkout_payment_and_shipping/payment/change_credit_card');
+      .toBe('checkout_payment_and_shipping/payment/change_credit_card');
   });
 
   it('should test urls with parameters', () => {
-    const testurl =
+    const testUrl =
       'http://testshop.shopgate.localdev.cc/php/shopgate/register?emos_sid=aaa&emos_vid=aaa&_ga=1.2.3.4__utma=123.123.123&__utmb=123.123.123&__utmc=1.2.3.4&__utmx=-&__utmz=1.2.3.4.5.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)&__utmv=-&__utmk=123456#abc';
 
-    expect(sgUrlMapper(testurl)).to.deep.equal({
+    expect(sgUrlMapper(testUrl)).toEqual({
       public: 'register',
       private: 'register',
     });
 
-    const testurlWithAllowedParam =
-          'http://testshop.shopgate.localdev.cc/php/shopgate/register?_gaFOO=1&emos_sid=aaa&emos_vid=aaa&allow=me&_ga=1.2.3.4__utma=123.123.123&__utmb=123.123.123&__utmc=1.2.3.4&__utmx=-&__utmz=1.2.3.4.5.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)&__utmv=-&__utmk=123456#abc';
+    const testUrlWithAllowedParam =
+      'http://testshop.shopgate.localdev.cc/php/shopgate/register?_gaFOO=1&emos_sid=aaa&emos_vid=aaa&allow=me&_ga=1.2.3.4__utma=123.123.123&__utmb=123.123.123&__utmc=1.2.3.4&__utmx=-&__utmz=1.2.3.4.5.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)&__utmv=-&__utmk=123456#abc';
 
-    expect(sgUrlMapper(testurlWithAllowedParam)).to.deep.equal({
+    expect(sgUrlMapper(testUrlWithAllowedParam)).toEqual({
       public: 'register?_gaFOO=1&allow=me',
       private: 'register',
     });
   });
 
   it('should test cart mapping', () => {
-    // Fake data for empty cart
     const sgDataEmpty = {
       cart: {
         productsCount: 0,
         products: [],
       },
     };
-    expect(sgUrlMapper(`${base}/cart`, sgDataEmpty).public).to.equal('cart_empty');
+    expect(sgUrlMapper(`${base}/cart`, sgDataEmpty).public).toBe('cart_empty');
 
-    // Fake data for cart with one item
     const sgDataFull = {
       cart: {
         productsCount: 1,
@@ -60,27 +57,23 @@ describe('urlMapping', () => {
               taxRate: '0.00',
             },
             tags: [],
-            additionalShippingCosts: {
-              perOrder: '0',
-              perUnit: '0',
-            },
+            additionalShippingCosts: { perOrder: '0', perUnit: '0' },
             quantity: '1',
             stockQuantity: 84,
           },
         ],
       },
     };
-    expect(sgUrlMapper(`${base}/cart`, sgDataFull).public).to.equal('cart');
+
+    expect(sgUrlMapper(`${base}/cart`, sgDataFull).public).toBe('cart');
   });
 
   it('should test favourite list mappings', () => {
-    // Test empty favourite list
     const sgDataEmpty = {
       favouriteList: [],
     };
-    expect(sgUrlMapper(`${base}/favourite_list`, sgDataEmpty).public).to.equal('favourite_list_empty');
+    expect(sgUrlMapper(`${base}/favourite_list`, sgDataEmpty).public).toBe('favourite_list_empty');
 
-    // Test favourite list
     const sgDataFull = {
       favouriteList: {
         products: [
@@ -101,7 +94,7 @@ describe('urlMapping', () => {
         ],
       },
     };
-    expect(sgUrlMapper(`${base}/favourite_list`, sgDataFull).public).to.equal('favourite_list');
+    expect(sgUrlMapper(`${base}/favourite_list`, sgDataFull).public).toBe('favourite_list');
   });
 
   it('should test one-to-one mappings', () => {
@@ -117,28 +110,16 @@ describe('urlMapping', () => {
       ['', 'index'],
     ];
 
-    mappingTests.forEach((path) => {
-      const liveTest = base + pathLive + path[0];
-      const liveAppTest = base + pathLive + pathApp + path[0];
-      const devTest = base + pathDevelopment + path[0];
-      const devAppTest = base + pathDevelopment + pathApp + path[0];
+    mappingTests.forEach(([input, expected]) => {
+      const liveTest = base + pathLive + input;
+      const liveAppTest = base + pathLive + pathApp + input;
+      const devTest = base + pathDevelopment + input;
+      const devAppTest = base + pathDevelopment + pathApp + input;
 
-      expect(sgUrlMapper(liveTest)).to.deep.equal({
-        public: path[1],
-        private: path[1],
-      });
-      expect(sgUrlMapper(liveAppTest)).to.deep.equal({
-        public: path[1],
-        private: path[1],
-      });
-      expect(sgUrlMapper(devTest)).to.deep.equal({
-        public: path[1],
-        private: path[1],
-      });
-      expect(sgUrlMapper(devAppTest)).to.deep.equal({
-        public: path[1],
-        private: path[1],
-      });
+      expect(sgUrlMapper(liveTest)).toEqual({ public: expected, private: expected });
+      expect(sgUrlMapper(liveAppTest)).toEqual({ public: expected, private: expected });
+      expect(sgUrlMapper(devTest)).toEqual({ public: expected, private: expected });
+      expect(sgUrlMapper(devAppTest)).toEqual({ public: expected, private: expected });
     });
   });
 
@@ -152,21 +133,18 @@ describe('urlMapping', () => {
       ['category_show_all_items', 'category_show_all_items/5321'],
     ];
 
-    mappingTests.forEach((path) => {
-      const liveTest = base + pathLive + path[1];
-      const liveAppTest = base + pathLive + pathApp + path[1];
-      const devTest = base + pathDevelopment + path[1];
-      const devAppTest = base + pathDevelopment + pathApp + path[1];
+    mappingTests.forEach(([privatePath, publicPath]) => {
+      const liveTest = base + pathLive + publicPath;
+      const liveAppTest = base + pathLive + pathApp + publicPath;
+      const devTest = base + pathDevelopment + publicPath;
+      const devAppTest = base + pathDevelopment + pathApp + publicPath;
 
-      const expectedData = {
-        public: path[1],
-        private: path[0],
-      };
+      const expectedData = { public: publicPath, private: privatePath };
 
-      expect(sgUrlMapper(devTest)).to.deep.equal(expectedData);
-      expect(sgUrlMapper(devAppTest)).to.deep.equal(expectedData);
-      expect(sgUrlMapper(liveTest)).to.deep.equal(expectedData);
-      expect(sgUrlMapper(liveAppTest)).to.deep.equal(expectedData);
+      expect(sgUrlMapper(devTest)).toEqual(expectedData);
+      expect(sgUrlMapper(devAppTest)).toEqual(expectedData);
+      expect(sgUrlMapper(liveTest)).toEqual(expectedData);
+      expect(sgUrlMapper(liveAppTest)).toEqual(expectedData);
     });
   });
 });
