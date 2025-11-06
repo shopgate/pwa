@@ -57,7 +57,10 @@ describe('urlMapping', () => {
               taxRate: '0.00',
             },
             tags: [],
-            additionalShippingCosts: { perOrder: '0', perUnit: '0' },
+            additionalShippingCosts: {
+              perOrder: '0',
+              perUnit: '0',
+            },
             quantity: '1',
             stockQuantity: 84,
           },
@@ -116,10 +119,22 @@ describe('urlMapping', () => {
       const devTest = base + pathDevelopment + input;
       const devAppTest = base + pathDevelopment + pathApp + input;
 
-      expect(sgUrlMapper(liveTest)).toEqual({ public: expected, private: expected });
-      expect(sgUrlMapper(liveAppTest)).toEqual({ public: expected, private: expected });
-      expect(sgUrlMapper(devTest)).toEqual({ public: expected, private: expected });
-      expect(sgUrlMapper(devAppTest)).toEqual({ public: expected, private: expected });
+      expect(sgUrlMapper(liveTest)).toEqual({
+        public: expected,
+        private: expected,
+      });
+      expect(sgUrlMapper(liveAppTest)).toEqual({
+        public: expected,
+        private: expected,
+      });
+      expect(sgUrlMapper(devTest)).toEqual({
+        public: expected,
+        private: expected,
+      });
+      expect(sgUrlMapper(devAppTest)).toEqual({
+        public: expected,
+        private: expected,
+      });
     });
   });
 
@@ -139,7 +154,10 @@ describe('urlMapping', () => {
       const devTest = base + pathDevelopment + publicPath;
       const devAppTest = base + pathDevelopment + pathApp + publicPath;
 
-      const expectedData = { public: publicPath, private: privatePath };
+      const expectedData = {
+        public: publicPath,
+        private: privatePath,
+      };
 
       expect(sgUrlMapper(devTest)).toEqual(expectedData);
       expect(sgUrlMapper(devAppTest)).toEqual(expectedData);
