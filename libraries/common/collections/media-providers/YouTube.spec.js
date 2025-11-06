@@ -1,5 +1,5 @@
-import { JSDOM } from 'jsdom';
-import URLSearchParams from 'url-search-params';
+/** @jest-environment jsdom */
+
 import { YouTube } from './index';
 
 const videos = [
@@ -19,25 +19,35 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
 }));
 
 /**
- * Creates a DOM container with iframes.
- * @param {Array} srcs A list of video URLs.
- * @return {Object}
+ * Create a fresh HTMLDocument containing iframes with the given srcs.
+ * Returns a Document to match your original call sites.
+ * @param {string[]} srcs A list of video URLs.
+ * @returns {Document}
  */
-const createContainer = (srcs) => {
-  const iframes = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
-  const html = `<div>${iframes}</div>`;
-  return new JSDOM(html).window.document;
+const createDocumentWithIframes = (srcs) => {
+  const doc = document.implementation.createHTMLDocument('test');
+  doc.body.innerHTML = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+  return doc;
 };
 
 /**
- * Creates a mocked document with iframes.
- * @param {Array} srcs A list of video URLs.
- * @return {Object}
+ * Creates a DOM "container" Document (parity with your original helper).
+ * @param {string[]} srcs A list of video URLs.
+ * @returns {Document}
  */
-const createMockedDocument = (srcs) => {
-  const content = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
-  return new JSDOM(`<body>${content}</body>`).window.document;
+const createContainer = (srcs) => {
+  const doc = document.implementation.createHTMLDocument('container');
+  const iframes = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+  doc.body.innerHTML = `<div>${iframes}</div>`;
+  return doc;
 };
+
+/**
+ * Creates a mocked document with iframes (parity with your original helper).
+ * @param {string[]} srcs A list of video URLs.
+ * @returns {Document}
+ */
+const createMockedDocument = srcs => createDocumentWithIframes(srcs);
 
 describe('YouTube media provider', () => {
   let instance;
@@ -80,9 +90,10 @@ describe('YouTube media provider', () => {
     });
 
     it('should not add a container when it does not contain a video', () => {
-      const container = new JSDOM('<p>Some HTML content</p>').window.document;
-      instance.add(container);
+      const doc = document.implementation.createHTMLDocument('plain');
+      doc.body.innerHTML = '<p>Some HTML content</p>';
 
+      instance.add(doc);
       expect(instance.containers.size).toBe(0);
     });
   });
@@ -132,7 +143,7 @@ describe('YouTube media provider', () => {
 
   describe('.applyIframeOptimizations()', () => {
     it('should optimize multiple containers', () => {
-      const document = createMockedDocument([[videos[0], videos[1]]]);
+      const document = createMockedDocument([videos[0], videos[1]]);
 
       const iframesOne = document.querySelectorAll('iframe');
       const iframesTwo = document.querySelectorAll('iframe');
@@ -151,7 +162,7 @@ describe('YouTube media provider', () => {
       const iframes = document.querySelectorAll('iframe');
 
       iframes.forEach(({ src }) => {
-        const [, query] = src.split('?');
+        const [, query = ''] = src.split('?');
         const urlParams = new URLSearchParams(query);
 
         expect(urlParams.get('enablejsapi')).toBe('1');
