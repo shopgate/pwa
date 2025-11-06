@@ -132,9 +132,6 @@ const Widget = ({
             {...(isCustomLegacyWidget ? {
               settings: definition.widgetConfig,
             } : {})}
-            {...(isPreview ? {
-              onClick: handleInteraction,
-            } : {})}
           />
         </Suspense>
       </WidgetProvider>
