@@ -3,7 +3,7 @@
 exports[`<Reviews /> should not render when feature flag is off 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -21,8 +21,8 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
       productActive={true}
       productId="foo"
       reviews={
-        Array [
-          Object {
+        [
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 1,
@@ -30,7 +30,7 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
             "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "",
           },
-          Object {
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 2,
@@ -38,7 +38,7 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
             "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "",
           },
-          Object {
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 3,
@@ -46,7 +46,7 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
             "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "",
           },
-          Object {
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 4,
@@ -60,7 +60,7 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
       <SurroundPortals
         portalName="product.reviews"
         portalProps={
-          Object {
+          {
             "productId": "foo",
           }
         }
@@ -73,7 +73,7 @@ exports[`<Reviews /> should not render when feature flag is off 1`] = `
 exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -91,8 +91,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
       productActive={true}
       productId="foo"
       reviews={
-        Array [
-          Object {
+        [
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 1,
@@ -100,7 +100,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
             "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "",
           },
-          Object {
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 2,
@@ -108,7 +108,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
             "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "",
           },
-          Object {
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 3,
@@ -116,7 +116,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
             "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "",
           },
-          Object {
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 4,
@@ -130,7 +130,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
       <SurroundPortals
         portalName="product.reviews"
         portalProps={
-          Object {
+          {
             "productId": "foo",
           }
         }
@@ -147,8 +147,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
           <List
             productId="foo"
             reviews={
-              Array [
-                Object {
+              [
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 1,
@@ -156,7 +156,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                   "title": "",
                 },
-                Object {
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 2,
@@ -164,7 +164,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                   "title": "",
                 },
-                Object {
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 3,
@@ -172,7 +172,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                   "title": "",
                 },
-                Object {
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 4,
@@ -193,8 +193,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               >
                 <SurroundPortals
                   portalProps={
-                    Object {
-                      "review": Object {
+                    {
+                      "review": {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 1,
@@ -247,19 +247,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -283,19 +283,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -319,19 +319,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -355,19 +355,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -391,19 +391,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -431,19 +431,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -467,19 +467,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -503,19 +503,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -539,19 +539,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -575,19 +575,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -614,7 +614,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   </Text>
                   <Info
                     review={
-                      Object {
+                      {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 1,
@@ -653,8 +653,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               >
                 <SurroundPortals
                   portalProps={
-                    Object {
-                      "review": Object {
+                    {
+                      "review": {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 2,
@@ -707,19 +707,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -743,19 +743,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -779,19 +779,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -815,19 +815,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -851,19 +851,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -891,19 +891,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -927,19 +927,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -963,19 +963,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -999,19 +999,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1035,19 +1035,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1074,7 +1074,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   </Text>
                   <Info
                     review={
-                      Object {
+                      {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 2,
@@ -1113,8 +1113,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               >
                 <SurroundPortals
                   portalProps={
-                    Object {
-                      "review": Object {
+                    {
+                      "review": {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 3,
@@ -1167,19 +1167,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1203,19 +1203,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1239,19 +1239,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1275,19 +1275,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1311,19 +1311,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1351,19 +1351,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1387,19 +1387,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1423,19 +1423,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1459,19 +1459,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1495,19 +1495,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1534,7 +1534,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   </Text>
                   <Info
                     review={
-                      Object {
+                      {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 3,
@@ -1573,8 +1573,8 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               >
                 <SurroundPortals
                   portalProps={
-                    Object {
-                      "review": Object {
+                    {
+                      "review": {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 4,
@@ -1627,19 +1627,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1663,19 +1663,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1699,19 +1699,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1735,19 +1735,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1771,19 +1771,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1811,19 +1811,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1847,19 +1847,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1883,19 +1883,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1919,19 +1919,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1955,19 +1955,19 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -1994,7 +1994,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   </Text>
                   <Info
                     review={
-                      Object {
+                      {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 4,
@@ -2120,7 +2120,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                                       acceptPlainTextWithPlaceholders={false}
                                       className={null}
                                       params={
-                                        Object {
+                                        {
                                           "count": 4,
                                           "dispatch": [Function],
                                           "productId": "foo",
@@ -2161,7 +2161,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
 exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -2179,8 +2179,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
       productActive={true}
       productId="foo"
       reviews={
-        Array [
-          Object {
+        [
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 1,
@@ -2188,7 +2188,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
             "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
             "title": "",
           },
-          Object {
+          {
             "author": "",
             "date": "2017-09-06T12:38:51.000Z",
             "id": 2,
@@ -2202,7 +2202,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
       <SurroundPortals
         portalName="product.reviews"
         portalProps={
-          Object {
+          {
             "productId": "foo",
           }
         }
@@ -2219,8 +2219,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
           <List
             productId="foo"
             reviews={
-              Array [
-                Object {
+              [
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 1,
@@ -2228,7 +2228,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                   "title": "",
                 },
-                Object {
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 2,
@@ -2249,8 +2249,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               >
                 <SurroundPortals
                   portalProps={
-                    Object {
-                      "review": Object {
+                    {
+                      "review": {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 1,
@@ -2303,19 +2303,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2339,19 +2339,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2375,19 +2375,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2411,19 +2411,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2447,19 +2447,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2487,19 +2487,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2523,19 +2523,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2559,19 +2559,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2595,19 +2595,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2631,19 +2631,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2670,7 +2670,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   </Text>
                   <Info
                     review={
-                      Object {
+                      {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 1,
@@ -2709,8 +2709,8 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               >
                 <SurroundPortals
                   portalProps={
-                    Object {
-                      "review": Object {
+                    {
+                      "review": {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 2,
@@ -2763,19 +2763,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2799,19 +2799,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2835,19 +2835,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2871,19 +2871,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2907,19 +2907,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2947,19 +2947,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -2983,19 +2983,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -3019,19 +3019,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -3055,19 +3055,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -3091,19 +3091,19 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                                 <Icon
                                   className=""
                                   color={null}
-                                  content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                  content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="1em"
                                   viewBox="0 0 24 24"
                                 >
                                   <svg
                                     className="css-yys9hb  common__icon"
                                     dangerouslySetInnerHTML={
-                                      Object {
-                                        "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                      {
+                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                       }
                                     }
                                     style={
-                                      Object {
+                                      {
                                         "fill": null,
                                         "fontSize": "1em",
                                       }
@@ -3130,7 +3130,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                   </Text>
                   <Info
                     review={
-                      Object {
+                      {
                         "author": "",
                         "date": "2017-09-06T12:38:51.000Z",
                         "id": 2,
@@ -3184,7 +3184,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
 exports[`<Reviews /> should render when no reviews and rating given 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -3206,7 +3206,7 @@ exports[`<Reviews /> should render when no reviews and rating given 1`] = `
       <SurroundPortals
         portalName="product.reviews"
         portalProps={
-          Object {
+          {
             "productId": "foo",
           }
         }

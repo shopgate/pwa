@@ -3,7 +3,7 @@
 exports[`<ReviewForm /> should render empty 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -21,15 +21,15 @@ exports[`<ReviewForm /> should render empty 1`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={false}
           productId="foo"
-          review={Object {}}
+          review={{}}
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <section
             className="css-rbxhca"
@@ -54,7 +54,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   </Text>
                   <span
                     className={
-                      Object {
+                      {
                         "data-css-yvembi": "",
                       }
                     }
@@ -91,19 +91,19 @@ exports[`<ReviewForm /> should render empty 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -130,19 +130,19 @@ exports[`<ReviewForm /> should render empty 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -169,19 +169,19 @@ exports[`<ReviewForm /> should render empty 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -208,19 +208,19 @@ exports[`<ReviewForm /> should render empty 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -247,19 +247,19 @@ exports[`<ReviewForm /> should render empty 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -294,7 +294,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string=""
                           transform={null}
@@ -340,7 +340,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -362,7 +362,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_author"
                         transform={null}
@@ -378,7 +378,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -401,7 +401,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -426,7 +426,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -490,7 +490,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -516,7 +516,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -561,7 +561,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -583,7 +583,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_title"
                         transform={null}
@@ -599,7 +599,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -622,7 +622,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -647,7 +647,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -711,7 +711,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -737,7 +737,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -782,7 +782,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -804,7 +804,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_text"
                         transform={null}
@@ -820,7 +820,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -843,7 +843,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -868,7 +868,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     >
                       <MultiLineInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -923,7 +923,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -949,7 +949,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -980,7 +980,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.cancel"
                           transform={null}
@@ -1044,7 +1044,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                   <Translate
                                     acceptPlainTextWithPlaceholders={false}
                                     className={null}
-                                    params={Object {}}
+                                    params={{}}
                                     role={null}
                                     string="common.submit"
                                     transform={null}
@@ -1078,7 +1078,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
 exports[`<ReviewForm /> should render form correctly 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -1096,15 +1096,15 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={false}
           productId="foo"
-          review={Object {}}
+          review={{}}
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <section
             className="css-rbxhca"
@@ -1129,7 +1129,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   </Text>
                   <span
                     className={
-                      Object {
+                      {
                         "data-css-yvembi": "",
                       }
                     }
@@ -1166,19 +1166,19 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -1205,19 +1205,19 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -1244,19 +1244,19 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -1283,19 +1283,19 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -1322,19 +1322,19 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -1369,7 +1369,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string=""
                           transform={null}
@@ -1415,7 +1415,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -1437,7 +1437,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_author"
                         transform={null}
@@ -1453,7 +1453,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -1476,7 +1476,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -1501,7 +1501,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -1565,7 +1565,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -1591,7 +1591,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -1636,7 +1636,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -1658,7 +1658,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_title"
                         transform={null}
@@ -1674,7 +1674,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -1697,7 +1697,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -1722,7 +1722,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -1786,7 +1786,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -1812,7 +1812,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -1857,7 +1857,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -1879,7 +1879,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_text"
                         transform={null}
@@ -1895,7 +1895,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -1918,7 +1918,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -1943,7 +1943,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     >
                       <MultiLineInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -1998,7 +1998,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -2024,7 +2024,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -2055,7 +2055,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.cancel"
                           transform={null}
@@ -2119,7 +2119,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                   <Translate
                                     acceptPlainTextWithPlaceholders={false}
                                     className={null}
-                                    params={Object {}}
+                                    params={{}}
                                     role={null}
                                     string="common.submit"
                                     transform={null}
@@ -2153,7 +2153,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
 exports[`<ReviewForm /> should render loading indicator 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -2171,15 +2171,15 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={true}
           productId="foo"
-          review={Object {}}
+          review={{}}
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <LoadingIndicator
             className={null}
@@ -2221,7 +2221,7 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
 exports[`<ReviewForm /> should set form data 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -2239,14 +2239,14 @@ exports[`<ReviewForm /> should set form data 1`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={false}
           productId="foo"
           review={
-            Object {
+            {
               "author": "Jane Doe",
               "date": "2017-09-06T12:38:51.000Z",
               "id": 1,
@@ -2257,7 +2257,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
             }
           }
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <section
             className="css-rbxhca"
@@ -2282,7 +2282,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   </Text>
                   <span
                     className={
-                      Object {
+                      {
                         "data-css-yvembi": "",
                       }
                     }
@@ -2319,19 +2319,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2358,19 +2358,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2397,19 +2397,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2436,19 +2436,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2475,19 +2475,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2518,19 +2518,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2557,19 +2557,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2596,19 +2596,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2635,19 +2635,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2674,19 +2674,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -2718,7 +2718,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string=""
                           transform={null}
@@ -2764,7 +2764,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -2786,7 +2786,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_author"
                         transform={null}
@@ -2802,7 +2802,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -2825,7 +2825,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -2850,7 +2850,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -2914,7 +2914,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -2940,7 +2940,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -2985,7 +2985,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -3007,7 +3007,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_title"
                         transform={null}
@@ -3023,7 +3023,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -3046,7 +3046,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -3071,7 +3071,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -3135,7 +3135,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -3161,7 +3161,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -3206,7 +3206,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -3228,7 +3228,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_text"
                         transform={null}
@@ -3244,7 +3244,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -3267,7 +3267,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -3292,7 +3292,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     >
                       <MultiLineInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -3347,7 +3347,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -3373,7 +3373,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -3404,7 +3404,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.cancel"
                           transform={null}
@@ -3468,7 +3468,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   <Translate
                                     acceptPlainTextWithPlaceholders={false}
                                     className={null}
-                                    params={Object {}}
+                                    params={{}}
                                     role={null}
                                     string="common.submit"
                                     transform={null}
@@ -3502,7 +3502,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
 exports[`<ReviewForm /> should submit with valid review 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -3520,14 +3520,14 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={false}
           productId="foo"
           review={
-            Object {
+            {
               "author": "Jane Doe",
               "date": "2017-09-06T12:38:51.000Z",
               "id": 1,
@@ -3538,7 +3538,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
             }
           }
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <section
             className="css-rbxhca"
@@ -3563,7 +3563,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   </Text>
                   <span
                     className={
-                      Object {
+                      {
                         "data-css-yvembi": "",
                       }
                     }
@@ -3600,19 +3600,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3639,19 +3639,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3678,19 +3678,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3717,19 +3717,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3756,19 +3756,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3799,19 +3799,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3838,19 +3838,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3877,19 +3877,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3916,19 +3916,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3955,19 +3955,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -3999,7 +3999,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string=""
                           transform={null}
@@ -4045,7 +4045,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -4067,7 +4067,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_author"
                         transform={null}
@@ -4083,7 +4083,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -4106,7 +4106,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -4131,7 +4131,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -4195,7 +4195,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -4221,7 +4221,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -4266,7 +4266,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -4288,7 +4288,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_title"
                         transform={null}
@@ -4304,7 +4304,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -4327,7 +4327,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -4352,7 +4352,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -4416,7 +4416,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -4442,7 +4442,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -4487,7 +4487,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -4509,7 +4509,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_text"
                         transform={null}
@@ -4525,7 +4525,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -4548,7 +4548,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -4573,7 +4573,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     >
                       <MultiLineInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -4628,7 +4628,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -4654,7 +4654,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -4685,7 +4685,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.cancel"
                           transform={null}
@@ -4749,7 +4749,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   <Translate
                                     acceptPlainTextWithPlaceholders={false}
                                     className={null}
-                                    params={Object {}}
+                                    params={{}}
                                     role={null}
                                     string="common.submit"
                                     transform={null}
@@ -4783,7 +4783,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
 exports[`<ReviewForm /> should validate fields on change 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -4801,14 +4801,14 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={false}
           productId="foo"
           review={
-            Object {
+            {
               "author": "Jane Doe",
               "date": "2017-09-06T12:38:51.000Z",
               "id": 1,
@@ -4819,7 +4819,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
             }
           }
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <section
             className="css-rbxhca"
@@ -4844,7 +4844,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   </Text>
                   <span
                     className={
-                      Object {
+                      {
                         "data-css-yvembi": "",
                       }
                     }
@@ -4881,19 +4881,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -4920,19 +4920,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -4959,19 +4959,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -4998,19 +4998,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -5037,19 +5037,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -5080,19 +5080,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -5119,19 +5119,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -5158,19 +5158,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -5197,19 +5197,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -5236,19 +5236,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -5280,7 +5280,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string=""
                           transform={null}
@@ -5326,7 +5326,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -5348,7 +5348,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_author"
                         transform={null}
@@ -5364,7 +5364,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -5387,7 +5387,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -5412,7 +5412,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -5476,7 +5476,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -5502,7 +5502,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -5547,7 +5547,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -5569,7 +5569,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_title"
                         transform={null}
@@ -5585,7 +5585,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -5608,7 +5608,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -5633,7 +5633,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -5697,7 +5697,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -5723,7 +5723,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -5768,7 +5768,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -5790,7 +5790,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_text"
                         transform={null}
@@ -5806,7 +5806,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -5829,7 +5829,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -5854,7 +5854,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     >
                       <MultiLineInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -5909,7 +5909,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -5935,7 +5935,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -5966,7 +5966,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.cancel"
                           transform={null}
@@ -6030,7 +6030,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   <Translate
                                     acceptPlainTextWithPlaceholders={false}
                                     className={null}
-                                    params={Object {}}
+                                    params={{}}
                                     role={null}
                                     string="common.submit"
                                     transform={null}
@@ -6064,7 +6064,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
 exports[`<ReviewForm /> should validate fields on change 2`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -6082,14 +6082,14 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={false}
           productId="foo"
           review={
-            Object {
+            {
               "author": "Jane Doe",
               "date": "2017-09-06T12:38:51.000Z",
               "id": 1,
@@ -6100,7 +6100,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
             }
           }
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <section
             className="css-rbxhca"
@@ -6125,7 +6125,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   </Text>
                   <span
                     className={
-                      Object {
+                      {
                         "data-css-yvembi": "",
                       }
                     }
@@ -6162,19 +6162,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6201,19 +6201,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6240,19 +6240,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6279,19 +6279,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6318,19 +6318,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6361,19 +6361,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6400,19 +6400,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6439,19 +6439,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6478,19 +6478,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6517,19 +6517,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -6561,7 +6561,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string=""
                           transform={null}
@@ -6607,7 +6607,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -6629,7 +6629,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_author"
                         transform={null}
@@ -6645,7 +6645,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -6668,7 +6668,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -6693,7 +6693,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -6757,7 +6757,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -6783,7 +6783,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -6828,7 +6828,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -6850,7 +6850,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_title"
                         transform={null}
@@ -6866,7 +6866,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -6889,7 +6889,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -6914,7 +6914,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -6978,7 +6978,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -7004,7 +7004,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -7049,7 +7049,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -7071,7 +7071,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_text"
                         transform={null}
@@ -7087,7 +7087,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": "ariaError-review",
                         "aria-invalid": true,
                       }
@@ -7110,7 +7110,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": "ariaError-review",
                           "aria-invalid": true,
                         }
@@ -7135,7 +7135,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     >
                       <MultiLineInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": "ariaError-review",
                             "aria-invalid": true,
                           }
@@ -7190,7 +7190,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-state-alert, #ff0000)",
                           }
                         }
@@ -7215,7 +7215,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_error_length"
                         transform={null}
@@ -7253,7 +7253,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.cancel"
                           transform={null}
@@ -7317,7 +7317,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   <Translate
                                     acceptPlainTextWithPlaceholders={false}
                                     className={null}
-                                    params={Object {}}
+                                    params={{}}
                                     role={null}
                                     string="common.submit"
                                     transform={null}
@@ -7351,7 +7351,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
 exports[`<ReviewForm /> should validate fields on change 3`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -7369,14 +7369,14 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={false}
           productId="foo"
           review={
-            Object {
+            {
               "author": "Jane Doe",
               "date": "2017-09-06T12:38:51.000Z",
               "id": 1,
@@ -7387,7 +7387,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
             }
           }
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <section
             className="css-rbxhca"
@@ -7412,7 +7412,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   </Text>
                   <span
                     className={
-                      Object {
+                      {
                         "data-css-yvembi": "",
                       }
                     }
@@ -7449,19 +7449,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7488,19 +7488,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7527,19 +7527,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7566,19 +7566,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7605,19 +7605,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7648,19 +7648,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7687,19 +7687,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7726,19 +7726,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7765,19 +7765,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7804,19 +7804,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -7848,7 +7848,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string=""
                           transform={null}
@@ -7894,7 +7894,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -7916,7 +7916,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_author"
                         transform={null}
@@ -7932,7 +7932,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -7955,7 +7955,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -7980,7 +7980,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -8044,7 +8044,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -8070,7 +8070,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -8115,7 +8115,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -8137,7 +8137,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_title"
                         transform={null}
@@ -8153,7 +8153,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -8176,7 +8176,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -8201,7 +8201,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -8265,7 +8265,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -8291,7 +8291,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -8336,7 +8336,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -8358,7 +8358,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_text"
                         transform={null}
@@ -8374,7 +8374,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -8397,7 +8397,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -8422,7 +8422,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     >
                       <MultiLineInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -8477,7 +8477,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -8503,7 +8503,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -8534,7 +8534,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.cancel"
                           transform={null}
@@ -8598,7 +8598,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   <Translate
                                     acceptPlainTextWithPlaceholders={false}
                                     className={null}
-                                    params={Object {}}
+                                    params={{}}
                                     role={null}
                                     string="common.submit"
                                     transform={null}
@@ -8632,7 +8632,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
 exports[`<ReviewForm /> should validate form on submit 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [MockFunction],
       "getActions": [Function],
@@ -8650,15 +8650,15 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
       <Connect(ReviewForm)
         productId="foo"
         submit={[Function]}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <ReviewForm
           authorName="Jane Doe"
           isLoadingUserReview={false}
           productId="foo"
-          review={Object {}}
+          review={{}}
           submit={[Function]}
-          widgetSettings={Object {}}
+          widgetSettings={{}}
         >
           <section
             className="css-rbxhca"
@@ -8683,7 +8683,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   </Text>
                   <span
                     className={
-                      Object {
+                      {
                         "data-css-yvembi": "",
                       }
                     }
@@ -8720,19 +8720,19 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -8759,19 +8759,19 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -8798,19 +8798,19 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -8837,19 +8837,19 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -8876,19 +8876,19 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                               <Icon
                                 className=""
                                 color={null}
-                                content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                 size="2.3em"
                                 viewBox="0 0 24 24"
                               >
                                 <svg
                                   className="css-yys9hb  common__icon"
                                   dangerouslySetInnerHTML={
-                                    Object {
-                                      "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                    {
+                                      "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                     }
                                   }
                                   style={
-                                    Object {
+                                    {
                                       "fill": null,
                                       "fontSize": "2.3em",
                                     }
@@ -8923,7 +8923,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="reviews.review_form_rate_error"
                           transform={null}
@@ -8976,7 +8976,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -8998,7 +8998,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_author"
                         transform={null}
@@ -9014,7 +9014,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": "ariaError-author",
                         "aria-invalid": true,
                       }
@@ -9037,7 +9037,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": "ariaError-author",
                           "aria-invalid": true,
                         }
@@ -9062,7 +9062,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": "ariaError-author",
                             "aria-invalid": true,
                           }
@@ -9126,7 +9126,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-state-alert, #ff0000)",
                           }
                         }
@@ -9151,7 +9151,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_error_author_empty"
                         transform={null}
@@ -9203,7 +9203,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -9225,7 +9225,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_title"
                         transform={null}
@@ -9241,7 +9241,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -9264,7 +9264,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -9289,7 +9289,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -9353,7 +9353,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -9379,7 +9379,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -9424,7 +9424,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -9446,7 +9446,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="reviews.review_form_text"
                         transform={null}
@@ -9462,7 +9462,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -9485,7 +9485,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -9510,7 +9510,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     >
                       <MultiLineInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -9565,7 +9565,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -9591,7 +9591,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -9622,7 +9622,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.cancel"
                           transform={null}
@@ -9686,7 +9686,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                   <Translate
                                     acceptPlainTextWithPlaceholders={false}
                                     className={null}
-                                    params={Object {}}
+                                    params={{}}
                                     role={null}
                                     string="common.submit"
                                     transform={null}

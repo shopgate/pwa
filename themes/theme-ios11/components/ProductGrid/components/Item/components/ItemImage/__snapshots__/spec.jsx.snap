@@ -5,7 +5,7 @@ exports[`<ItemImage /> should render 1`] = `
   <Portal
     name="product-item.image.before"
     props={
-      Object {
+      {
         "productId": "1234",
       }
     }
@@ -13,7 +13,7 @@ exports[`<ItemImage /> should render 1`] = `
   <Portal
     name="product-item.image"
     props={
-      Object {
+      {
         "productId": "1234",
       }
     }
@@ -22,8 +22,8 @@ exports[`<ItemImage /> should render 1`] = `
       alt="FooBar"
       itemProp="image"
       resolutions={
-        Array [
-          Object {
+        [
+          {
             "height": 440,
             "width": 440,
           },
@@ -35,7 +35,7 @@ exports[`<ItemImage /> should render 1`] = `
   <Portal
     name="product-item.image.after"
     props={
-      Object {
+      {
         "productId": "1234",
       }
     }

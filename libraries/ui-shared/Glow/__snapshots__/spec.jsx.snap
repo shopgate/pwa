@@ -8,7 +8,7 @@ exports[`<Glow /> should render with a smile 1`] = `
     disabled={false}
     forwardedRef={null}
     styles={
-      Object {
+      {
         "container": null,
         "glow": null,
         "hover": null,
@@ -23,7 +23,7 @@ exports[`<Glow /> should render with a smile 1`] = `
     >
       <div
         className="css-1bmd5dz"
-        style={Object {}}
+        style={{}}
       />
       <p>
         Glowing!

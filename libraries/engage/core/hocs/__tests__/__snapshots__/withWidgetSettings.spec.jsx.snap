@@ -4,7 +4,7 @@ exports[`engage > core > hocs > withWidgetSettings should merge add the widget s
 <WithWidgetSettings(MockComponent)>
   <MockComponent
     widgetSettings={
-      Object {
+      {
         "some": "setting",
       }
     }

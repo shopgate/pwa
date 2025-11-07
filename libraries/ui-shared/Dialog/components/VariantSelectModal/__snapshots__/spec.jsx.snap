@@ -3,12 +3,12 @@
 exports[`<VariantSelectModal /> should render the actions 1`] = `
 <BasicDialog
   actions={
-    Array [
-      Object {
+    [
+      {
         "action": [Function],
         "label": "dismiss",
       },
-      Object {
+      {
         "action": [Function],
         "label": "confirm",
       },
@@ -19,7 +19,7 @@ exports[`<VariantSelectModal /> should render the actions 1`] = `
   <Translate
     acceptPlainTextWithPlaceholders={false}
     className={null}
-    params={Object {}}
+    params={{}}
     role={null}
     string="This is the message."
     transform={null}
@@ -29,13 +29,13 @@ exports[`<VariantSelectModal /> should render the actions 1`] = `
 
 exports[`<VariantSelectModal /> should render with minimal props 1`] = `
 <BasicDialog
-  actions={Array []}
+  actions={[]}
   title={null}
 >
   <Translate
     acceptPlainTextWithPlaceholders={false}
     className={null}
-    params={Object {}}
+    params={{}}
     role={null}
     string="This is the message."
     transform={null}

@@ -5,7 +5,7 @@ exports[`<CategoryListWidget /> should not render the CategoryListWidget 1`] = `
   fetchCategory={[Function]}
   items={null}
   settings={
-    Object {
+    {
       "categoryNumber": "",
       "headline": "Yay Categories",
       "showImages": false,
@@ -18,13 +18,13 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
 <CategoryListWidget
   fetchCategory={[Function]}
   items={
-    Array [
-      Object {
+    [
+      {
         "id": "1",
         "imageUrl": "/some/url",
         "name": "Headline",
       },
-      Object {
+      {
         "id": "2",
         "imageUrl": "/some/url",
         "name": "Headline",
@@ -32,7 +32,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     ]
   }
   settings={
-    Object {
+    {
       "categoryNumber": "",
       "headline": "Yay Categories",
       "showImages": false,
@@ -58,13 +58,13 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     >
       <CategoryListDefault
         categories={
-          Array [
-            Object {
+          [
+            {
               "id": "1",
               "imageUrl": "/some/url",
               "name": "Headline",
             },
-            Object {
+            {
               "id": "2",
               "imageUrl": "/some/url",
               "name": "Headline",
@@ -72,7 +72,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           ]
         }
         settings={
-          Object {
+          {
             "categoryNumber": "",
             "headline": "Yay Categories",
             "showImages": false,
@@ -81,7 +81,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
       >
         <SheetList
           className={
-            Object {
+            {
               "data-css-tgxhyl": "",
             }
           }
@@ -124,13 +124,13 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     >
       <CategoryGrid
         categories={
-          Array [
-            Object {
+          [
+            {
               "id": "1",
               "imageUrl": "/some/url",
               "name": "Headline",
             },
-            Object {
+            {
               "id": "2",
               "imageUrl": "/some/url",
               "name": "Headline",
@@ -146,7 +146,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         >
           <CategoryGridItem
             category={
-              Object {
+              {
                 "id": "1",
                 "imageUrl": "/some/url",
                 "name": "Headline",
@@ -159,7 +159,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               key="1"
               name="category.item"
               props={
-                Object {
+                {
                   "categoryId": "1",
                 }
               }
@@ -171,7 +171,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   className="css-spwhpg"
                   href="/category/31"
                   state={
-                    Object {
+                    {
                       "categoryId": "1",
                       "title": "Headline",
                     }
@@ -184,7 +184,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       className="css-1fwptkq"
                       href="/category/31"
                       state={
-                        Object {
+                        {
                           "categoryId": "1",
                           "title": "Headline",
                         }
@@ -193,7 +193,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                     <div
                       className="css-16megqv"
                       dangerouslySetInnerHTML={
-                        Object {
+                        {
                           "__html": undefined,
                         }
                       }
@@ -205,7 +205,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
           </CategoryGridItem>
           <CategoryGridItem
             category={
-              Object {
+              {
                 "id": "2",
                 "imageUrl": "/some/url",
                 "name": "Headline",
@@ -218,7 +218,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               key="2"
               name="category.item"
               props={
-                Object {
+                {
                   "categoryId": "2",
                 }
               }
@@ -230,7 +230,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   className="css-spwhpg"
                   href="/category/32"
                   state={
-                    Object {
+                    {
                       "categoryId": "2",
                       "title": "Headline",
                     }
@@ -243,7 +243,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       className="css-1fwptkq"
                       href="/category/32"
                       state={
-                        Object {
+                        {
                           "categoryId": "2",
                           "title": "Headline",
                         }
@@ -252,7 +252,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                     <div
                       className="css-16megqv"
                       dangerouslySetInnerHTML={
-                        Object {
+                        {
                           "__html": undefined,
                         }
                       }

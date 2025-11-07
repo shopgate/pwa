@@ -2,15 +2,15 @@
 
 exports[`<List /> should not render when no reviews given 1`] = `
 <List
-  reviews={Array []}
+  reviews={[]}
 />
 `;
 
 exports[`<List /> should render list with reviews 1`] = `
 <List
   reviews={
-    Array [
-      Object {
+    [
+      {
         "author": "",
         "date": "2017-09-06T12:38:51.000Z",
         "id": "a",
@@ -18,7 +18,7 @@ exports[`<List /> should render list with reviews 1`] = `
         "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
         "title": "",
       },
-      Object {
+      {
         "author": "username123",
         "date": "2017-09-06T12:37:40.000Z",
         "id": "b",
@@ -26,7 +26,7 @@ exports[`<List /> should render list with reviews 1`] = `
         "review": "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet.",
         "title": "Test review 2 ",
       },
-      Object {
+      {
         "author": "Carina Hoffmann",
         "date": "2017-09-06T12:30:23.000Z",
         "id": "c",
@@ -34,7 +34,7 @@ exports[`<List /> should render list with reviews 1`] = `
         "review": "Test review",
         "title": "",
       },
-      Object {
+      {
         "author": "",
         "date": "2017-09-06T12:30:23.000Z",
         "id": "d",
@@ -56,8 +56,8 @@ exports[`<List /> should render list with reviews 1`] = `
       <SurroundPortals
         portalName="product.reviews.entry"
         portalProps={
-          Object {
-            "review": Object {
+          {
+            "review": {
               "author": "",
               "date": "2017-09-06T12:38:51.000Z",
               "id": "a",
@@ -110,19 +110,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -146,19 +146,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -182,19 +182,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -218,19 +218,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -254,19 +254,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -294,19 +294,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -330,19 +330,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -366,19 +366,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -402,19 +402,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -438,19 +438,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -477,7 +477,7 @@ exports[`<List /> should render list with reviews 1`] = `
         </Text>
         <Info
           review={
-            Object {
+            {
               "author": "",
               "date": "2017-09-06T12:38:51.000Z",
               "id": "a",
@@ -517,8 +517,8 @@ exports[`<List /> should render list with reviews 1`] = `
       <SurroundPortals
         portalName="product.reviews.entry"
         portalProps={
-          Object {
-            "review": Object {
+          {
+            "review": {
               "author": "username123",
               "date": "2017-09-06T12:37:40.000Z",
               "id": "b",
@@ -573,19 +573,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -609,19 +609,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -645,19 +645,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -681,19 +681,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -717,19 +717,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -757,19 +757,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -793,19 +793,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -832,7 +832,7 @@ exports[`<List /> should render list with reviews 1`] = `
         </Text>
         <Info
           review={
-            Object {
+            {
               "author": "username123",
               "date": "2017-09-06T12:37:40.000Z",
               "id": "b",
@@ -864,7 +864,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={
-                  Object {
+                  {
                     "author": "username123",
                   }
                 }
@@ -892,8 +892,8 @@ exports[`<List /> should render list with reviews 1`] = `
       <SurroundPortals
         portalName="product.reviews.entry"
         portalProps={
-          Object {
-            "review": Object {
+          {
+            "review": {
               "author": "Carina Hoffmann",
               "date": "2017-09-06T12:30:23.000Z",
               "id": "c",
@@ -946,19 +946,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -982,19 +982,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1018,19 +1018,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1054,19 +1054,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1090,19 +1090,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1130,19 +1130,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1166,19 +1166,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1202,19 +1202,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1241,7 +1241,7 @@ exports[`<List /> should render list with reviews 1`] = `
         </Text>
         <Info
           review={
-            Object {
+            {
               "author": "Carina Hoffmann",
               "date": "2017-09-06T12:30:23.000Z",
               "id": "c",
@@ -1273,7 +1273,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={
-                  Object {
+                  {
                     "author": "Carina Hoffmann",
                   }
                 }
@@ -1301,8 +1301,8 @@ exports[`<List /> should render list with reviews 1`] = `
       <SurroundPortals
         portalName="product.reviews.entry"
         portalProps={
-          Object {
-            "review": Object {
+          {
+            "review": {
               "author": "",
               "date": "2017-09-06T12:30:23.000Z",
               "id": "d",
@@ -1355,19 +1355,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1391,19 +1391,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1427,19 +1427,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1463,19 +1463,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1499,19 +1499,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1539,19 +1539,19 @@ exports[`<List /> should render list with reviews 1`] = `
                       <Icon
                         className=""
                         color={null}
-                        content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                        content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
                         viewBox="0 0 24 24"
                       >
                         <svg
                           className="css-yys9hb  common__icon"
                           dangerouslySetInnerHTML={
-                            Object {
-                              "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                            {
+                              "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                             }
                           }
                           style={
-                            Object {
+                            {
                               "fill": null,
                               "fontSize": "1em",
                             }
@@ -1572,7 +1572,7 @@ exports[`<List /> should render list with reviews 1`] = `
         />
         <Info
           review={
-            Object {
+            {
               "author": "",
               "date": "2017-09-06T12:30:23.000Z",
               "id": "d",

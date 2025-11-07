@@ -17,7 +17,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
   >
     <Swiper
       classNames={
-        Object {
+        {
           "container": "css-1t3kzgn",
         }
       }
@@ -41,24 +41,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -83,24 +83,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -125,24 +125,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -167,24 +167,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -209,24 +209,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -251,24 +251,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -293,24 +293,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -335,24 +335,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -377,24 +377,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -419,24 +419,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -461,24 +461,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -503,24 +503,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -545,24 +545,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -587,24 +587,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -629,24 +629,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -671,24 +671,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -713,24 +713,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -755,24 +755,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -797,24 +797,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -839,24 +839,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -881,24 +881,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -923,24 +923,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -965,24 +965,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1007,24 +1007,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1049,24 +1049,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1091,24 +1091,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1133,24 +1133,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1175,24 +1175,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1217,24 +1217,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1259,24 +1259,24 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1302,7 +1302,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
   >
     <Swiper
       classNames={
-        Object {
+        {
           "container": "css-1t3kzgn",
         }
       }
@@ -1326,24 +1326,24 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1368,24 +1368,24 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1410,24 +1410,24 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1452,24 +1452,24 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1494,24 +1494,24 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1544,7 +1544,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
   >
     <Swiper
       classNames={
-        Object {
+        {
           "container": "css-1t3kzgn",
         }
       }
@@ -1568,24 +1568,24 @@ exports[`<ProductSlider /> should render the headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1610,24 +1610,24 @@ exports[`<ProductSlider /> should render the headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1652,24 +1652,24 @@ exports[`<ProductSlider /> should render the headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1694,24 +1694,24 @@ exports[`<ProductSlider /> should render the headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1736,24 +1736,24 @@ exports[`<ProductSlider /> should render the headline 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1779,7 +1779,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
   >
     <Swiper
       classNames={
-        Object {
+        {
           "container": "css-1t3kzgn",
         }
       }
@@ -1803,24 +1803,24 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1845,24 +1845,24 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1887,24 +1887,24 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1929,24 +1929,24 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },
@@ -1971,24 +1971,24 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
               hidePrice={false}
               hideRating={false}
               product={
-                Object {
+                {
                   "featuredImageBaseUrl": "http://placekitten.com",
                   "featuredImageUrl": "http://placekitten.com/300/300",
                   "id": "1234",
-                  "liveshoppings": Array [
-                    Object {
+                  "liveshoppings": [
+                    {
                       "from": 0,
                       "to": 123456789,
                     },
                   ],
                   "name": "First product",
-                  "price": Object {
+                  "price": {
                     "currency": "EUR",
                     "unitPrice": 100,
                     "unitPriceMin": 0,
                     "unitPriceStriked": 20,
                   },
-                  "rating": Object {
+                  "rating": {
                     "average": 0.5,
                     "count": 100,
                   },

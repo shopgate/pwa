@@ -12,7 +12,7 @@ exports[`<NavDrawerTitle /> should render when a text is passed within the props
 >
   <div
     className={
-      Object {
+      {
         "data-css-1yuoh2h": "",
       }
     }
@@ -20,7 +20,7 @@ exports[`<NavDrawerTitle /> should render when a text is passed within the props
     <Translate
       acceptPlainTextWithPlaceholders={false}
       className={null}
-      params={Object {}}
+      params={{}}
       role={null}
       string="Title"
       transform={null}

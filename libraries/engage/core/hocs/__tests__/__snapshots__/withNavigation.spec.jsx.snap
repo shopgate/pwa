@@ -6,7 +6,7 @@ exports[`engage > core > hocs > withNavigation should inject a single property w
 >
   <MockComponent
     navigation={
-      Object {
+      {
         "historyPop": [Function],
         "historyPush": [Function],
         "historyReplace": [Function],

@@ -5,7 +5,7 @@ exports[`<CategoryListWidget /> should not render the CategoryListWidget 1`] = `
   fetchCategory={[Function]}
   items={null}
   settings={
-    Object {
+    {
       "categoryNumber": "",
       "headline": "Yay Categories",
       "showImages": false,
@@ -18,13 +18,13 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
 <CategoryListWidget
   fetchCategory={[Function]}
   items={
-    Array [
-      Object {
+    [
+      {
         "id": "1",
         "imageUrl": "/some/url",
         "name": "Headline",
       },
-      Object {
+      {
         "id": "2",
         "imageUrl": "/some/url",
         "name": "Headline",
@@ -32,7 +32,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     ]
   }
   settings={
-    Object {
+    {
       "categoryNumber": "",
       "headline": "Yay Categories",
       "showImages": false,

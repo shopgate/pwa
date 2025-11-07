@@ -3,7 +3,7 @@
 exports[`<HtmlWidget /> should render the widget 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -15,7 +15,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
 >
   <Connect(Html)
     settings={
-      Object {
+      {
         "defaultPadding": false,
         "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
       }
@@ -24,21 +24,21 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
     <Html
       navigate={[Function]}
       settings={
-        Object {
+        {
           "defaultPadding": false,
           "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
         }
       }
     >
       <div
-        style={Object {}}
+        style={{}}
       >
         <Connect(HtmlSanitizer)
           className="css-7v4dr8"
           decode={true}
           processStyles={true}
           settings={
-            Object {
+            {
               "handleClick": [Function],
               "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
             }
@@ -51,7 +51,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
             navigate={[Function]}
             processStyles={true}
             settings={
-              Object {
+              {
                 "handleClick": [Function],
                 "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
               }
@@ -61,7 +61,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
           >
             <EmbeddedMedia
               cookieConsentSettings={
-                Object {
+                {
                   "comfortCookiesAccepted": true,
                   "statisticsCookiesAccepted": true,
                 }
@@ -70,7 +70,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
               <div
                 className="css-7v4dr8 common__html-sanitizer"
                 dangerouslySetInnerHTML={
-                  Object {
+                  {
                     "__html": "<h1>Hello World!</h1>",
                   }
                 }
@@ -87,7 +87,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
 exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -99,7 +99,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
 >
   <Connect(Html)
     settings={
-      Object {
+      {
         "defaultPadding": true,
         "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
       }
@@ -108,7 +108,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
     <Html
       navigate={[Function]}
       settings={
-        Object {
+        {
           "defaultPadding": true,
           "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
         }
@@ -116,7 +116,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
     >
       <div
         style={
-          Object {
+          {
             "padding": 16,
           }
         }
@@ -126,7 +126,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
           decode={true}
           processStyles={true}
           settings={
-            Object {
+            {
               "handleClick": [Function],
               "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
             }
@@ -139,7 +139,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
             navigate={[Function]}
             processStyles={true}
             settings={
-              Object {
+              {
                 "handleClick": [Function],
                 "html": "&lt;h1&gt;Hello World!&lt;/h1&gt;",
               }
@@ -149,7 +149,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
           >
             <EmbeddedMedia
               cookieConsentSettings={
-                Object {
+                {
                   "comfortCookiesAccepted": true,
                   "statisticsCookiesAccepted": true,
                 }
@@ -158,7 +158,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
               <div
                 className="css-7v4dr8 common__html-sanitizer"
                 dangerouslySetInnerHTML={
-                  Object {
+                  {
                     "__html": "<h1>Hello World!</h1>",
                   }
                 }

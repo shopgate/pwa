@@ -3,7 +3,7 @@
 exports[`<SelectBox> should render the selectbox with given mock components 1`] = `
 <SelectBox
   className=""
-  classNames={Object {}}
+  classNames={{}}
   defaultText="filter.sort.default"
   duration={225}
   handleSelectionUpdate={[Function]}
@@ -11,16 +11,16 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
   initialValue={null}
   item={[Function]}
   items={
-    Array [
-      Object {
+    [
+      {
         "label": "My item #1",
         "value": "item_1",
       },
-      Object {
+      {
         "label": "My item #2",
         "value": "item_2",
       },
-      Object {
+      {
         "label": "My item #3",
         "value": "item_3",
       },
@@ -44,7 +44,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="filter.sort.default"
           transform={null}
@@ -79,7 +79,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
         duration={225}
         easing={null}
         from={
-          Object {
+          {
             "height": 0,
           }
         }
@@ -88,7 +88,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
         origin="0 0 0"
         set={null}
         to={
-          Object {
+          {
             "height": 0,
           }
         }
@@ -105,7 +105,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
           >
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -132,7 +132,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #1"
                       transform={null}
@@ -150,7 +150,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             </SelectBoxItem>
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -177,7 +177,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #2"
                       transform={null}
@@ -195,7 +195,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             </SelectBoxItem>
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -222,7 +222,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #3"
                       transform={null}
@@ -249,7 +249,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
 exports[`<SelectBox> should render with a default text 1`] = `
 <SelectBox
   className=""
-  classNames={Object {}}
+  classNames={{}}
   defaultText="Foo"
   duration={225}
   handleSelectionUpdate={[Function]}
@@ -257,16 +257,16 @@ exports[`<SelectBox> should render with a default text 1`] = `
   initialValue={null}
   item={[Function]}
   items={
-    Array [
-      Object {
+    [
+      {
         "label": "My item #1",
         "value": "item_1",
       },
-      Object {
+      {
         "label": "My item #2",
         "value": "item_2",
       },
-      Object {
+      {
         "label": "My item #3",
         "value": "item_3",
       },
@@ -290,7 +290,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="Foo"
           transform={null}
@@ -325,7 +325,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
         duration={225}
         easing={null}
         from={
-          Object {
+          {
             "height": 0,
           }
         }
@@ -334,7 +334,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
         origin="0 0 0"
         set={null}
         to={
-          Object {
+          {
             "height": 0,
           }
         }
@@ -351,7 +351,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
           >
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -378,7 +378,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #1"
                       transform={null}
@@ -396,7 +396,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             </SelectBoxItem>
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -423,7 +423,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #2"
                       transform={null}
@@ -441,7 +441,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             </SelectBoxItem>
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -468,7 +468,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #3"
                       transform={null}
@@ -495,7 +495,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
 exports[`<SelectBox> should render with a preselected selection 1`] = `
 <SelectBox
   className=""
-  classNames={Object {}}
+  classNames={{}}
   defaultText="Foo"
   duration={225}
   handleSelectionUpdate={[Function]}
@@ -503,16 +503,16 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
   initialValue="item_2"
   item={[Function]}
   items={
-    Array [
-      Object {
+    [
+      {
         "label": "My item #1",
         "value": "item_1",
       },
-      Object {
+      {
         "label": "My item #2",
         "value": "item_2",
       },
-      Object {
+      {
         "label": "My item #3",
         "value": "item_3",
       },
@@ -536,7 +536,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="My item #2"
           transform={null}
@@ -571,7 +571,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
         duration={225}
         easing={null}
         from={
-          Object {
+          {
             "height": 0,
           }
         }
@@ -580,7 +580,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
         origin="0 0 0"
         set={null}
         to={
-          Object {
+          {
             "height": 0,
           }
         }
@@ -597,7 +597,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
           >
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -624,7 +624,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #1"
                       transform={null}
@@ -642,7 +642,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             </SelectBoxItem>
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -669,7 +669,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #2"
                       transform={null}
@@ -687,7 +687,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             </SelectBoxItem>
             <SelectBoxItem
               classNames={
-                Object {
+                {
                   "selectItem": undefined,
                   "selectItemSelected": undefined,
                 }
@@ -714,7 +714,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="My item #3"
                       transform={null}

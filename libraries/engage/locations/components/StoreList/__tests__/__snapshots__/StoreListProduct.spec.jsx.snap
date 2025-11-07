@@ -6,8 +6,8 @@ exports[`<StoreListProduct /> should render a product without selected variants.
 <SurroundPortals
   portalName="fulfillment-sheet.product"
   portalProps={
-    Object {
-      "product": Object {
+    {
+      "product": {
         "featuredImageBaseUrl": "http://www.some.com",
         "featuredImageUrl": "http://www.some.com&height=200",
         "name": "Test Product",

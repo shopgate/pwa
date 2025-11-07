@@ -4,7 +4,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
 <SurroundPortals
   portalName="filter.reset-button"
   portalProps={
-    Object {
+    {
       "disabled": false,
       "onClick": [MockFunction],
     }
@@ -12,7 +12,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
 >
   <div
     className={
-      Object {
+      {
         "data-css-lg74ao": "",
       }
     }
@@ -36,7 +36,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
 <SurroundPortals
   portalName="filter.reset-button"
   portalProps={
-    Object {
+    {
       "disabled": false,
       "onClick": [Function],
     }
@@ -44,7 +44,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
 >
   <div
     className={
-      Object {
+      {
         "data-css-lg74ao": "",
       }
     }
@@ -68,7 +68,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
 <SurroundPortals
   portalName="filter.reset-button"
   portalProps={
-    Object {
+    {
       "disabled": true,
       "onClick": [Function],
     }
@@ -76,7 +76,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
 >
   <div
     className={
-      Object {
+      {
         "data-css-lg74ao": "",
       }
     }

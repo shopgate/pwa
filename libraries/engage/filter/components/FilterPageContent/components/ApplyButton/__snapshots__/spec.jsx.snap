@@ -4,16 +4,16 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
 <SurroundPortals
   portalName="filter.apply-button"
   portalProps={
-    Object {
+    {
       "disabled": false,
       "onClick": [MockFunction],
-      "widgetSettings": Object {},
+      "widgetSettings": {},
     }
   }
 >
   <div
     className={
-      Object {
+      {
         "data-css-1cqgl9p": "",
       }
     }
@@ -29,7 +29,7 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
       <Text
         string="filter.apply"
         style={
-          Object {
+          {
             "color": undefined,
           }
         }
@@ -43,16 +43,16 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
 <SurroundPortals
   portalName="filter.apply-button"
   portalProps={
-    Object {
+    {
       "disabled": false,
       "onClick": [Function],
-      "widgetSettings": Object {},
+      "widgetSettings": {},
     }
   }
 >
   <div
     className={
-      Object {
+      {
         "data-css-1cqgl9p": "",
       }
     }
@@ -68,7 +68,7 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
       <Text
         string="filter.apply"
         style={
-          Object {
+          {
             "color": undefined,
           }
         }
@@ -82,16 +82,16 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
 <SurroundPortals
   portalName="filter.apply-button"
   portalProps={
-    Object {
+    {
       "disabled": true,
       "onClick": [Function],
-      "widgetSettings": Object {},
+      "widgetSettings": {},
     }
   }
 >
   <div
     className={
-      Object {
+      {
         "data-css-1cqgl9p": "",
       }
     }
@@ -107,7 +107,7 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
       <Text
         string="filter.apply"
         style={
-          Object {
+          {
             "color": undefined,
           }
         }

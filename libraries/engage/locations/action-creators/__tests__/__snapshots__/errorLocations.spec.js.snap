@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > locations > actions-creators errorLocations 1`] = `
-Object {
+{
   "error": [Error: Error],
-  "params": Object {
-    "codes": Array [
+  "params": {
+    "codes": [
       "code1",
       "code2",
     ],

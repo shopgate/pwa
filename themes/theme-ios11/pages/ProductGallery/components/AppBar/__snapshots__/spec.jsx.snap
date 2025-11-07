@@ -3,7 +3,7 @@
 exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -20,7 +20,7 @@ exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
       <DefaultBar
         backgroundColor="rgba(0, 0, 0, 0)"
         classes={
-          Object {
+          {
             "outer": "css-1y95te3",
           }
         }

@@ -3,7 +3,7 @@
 exports[`<Header /> should render empty 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -16,7 +16,7 @@ exports[`<Header /> should render empty 1`] = `
   <Connect(Header)
     productId="foo"
     rating={
-      Object {
+      {
         "average": 0,
         "count": 0,
       }
@@ -26,7 +26,7 @@ exports[`<Header /> should render empty 1`] = `
       dispatch={[Function]}
       productId="foo"
       rating={
-        Object {
+        {
           "average": 0,
           "count": 0,
         }
@@ -38,7 +38,7 @@ exports[`<Header /> should render empty 1`] = `
       >
         <div
           className={
-            Object {
+            {
               "data-css-1ppx0ok": "",
             }
           }
@@ -88,19 +88,19 @@ exports[`<Header /> should render empty 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -124,19 +124,19 @@ exports[`<Header /> should render empty 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -160,19 +160,19 @@ exports[`<Header /> should render empty 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -196,19 +196,19 @@ exports[`<Header /> should render empty 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -232,19 +232,19 @@ exports[`<Header /> should render empty 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -269,7 +269,7 @@ exports[`<Header /> should render empty 1`] = `
           </AverageRating>
           <div
             className={
-              Object {
+              {
                 "data-css-108dizf": "",
               }
             }
@@ -394,7 +394,7 @@ exports[`<Header /> should render empty 1`] = `
 exports[`<Header /> should render rating summary 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -407,7 +407,7 @@ exports[`<Header /> should render rating summary 1`] = `
   <Connect(Header)
     productId="foo"
     rating={
-      Object {
+      {
         "average": 50,
         "count": 4,
       }
@@ -417,7 +417,7 @@ exports[`<Header /> should render rating summary 1`] = `
       dispatch={[Function]}
       productId="foo"
       rating={
-        Object {
+        {
           "average": 50,
           "count": 4,
         }
@@ -479,19 +479,19 @@ exports[`<Header /> should render rating summary 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -515,19 +515,19 @@ exports[`<Header /> should render rating summary 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -551,19 +551,19 @@ exports[`<Header /> should render rating summary 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -587,19 +587,19 @@ exports[`<Header /> should render rating summary 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -623,19 +623,19 @@ exports[`<Header /> should render rating summary 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -663,19 +663,19 @@ exports[`<Header /> should render rating summary 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -699,19 +699,19 @@ exports[`<Header /> should render rating summary 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                          content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                              {
+                                "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -735,19 +735,19 @@ exports[`<Header /> should render rating summary 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs> <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath> <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>"
+                          content="<defs><path id="a" d="M0 0h24v24H0z"/></defs> <clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath> <path clip-path="ul(#b)" d="M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3"/>"
                           size="2.3em"
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<defs><path id=\\"a\\" d=\\"M0 0h24v24H0z\\"/></defs> <clipPath id=\\"b\\"><use xlink:href=\\"#a\\" overflow=\\"visible\\"/></clipPath> <path clip-path=\\"ul(#b)\\" d=\\"M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3\\"/>",
+                              {
+                                "__html": "<defs><path id="a" d="M0 0h24v24H0z"/></defs> <clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath> <path clip-path="ul(#b)" d="M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": "2.3em",
                               }
@@ -769,7 +769,7 @@ exports[`<Header /> should render rating summary 1`] = `
                   acceptPlainTextWithPlaceholders={false}
                   className="css-a7xi3l engage__reviews__rating-count"
                   params={
-                    Object {
+                    {
                       "count": 4,
                       "prominent": false,
                     }
@@ -790,7 +790,7 @@ exports[`<Header /> should render rating summary 1`] = `
           </AverageRating>
           <div
             className={
-              Object {
+              {
                 "data-css-1anve4d": "",
               }
             }
@@ -798,7 +798,7 @@ exports[`<Header /> should render rating summary 1`] = `
             <Translate
               acceptPlainTextWithPlaceholders={false}
               className="css-1nftllw"
-              params={Object {}}
+              params={{}}
               role={null}
               string="reviews.rating"
               transform={null}

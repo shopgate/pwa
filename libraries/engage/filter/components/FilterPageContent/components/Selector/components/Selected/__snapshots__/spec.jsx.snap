@@ -6,7 +6,7 @@ exports[`Filter: <Selected /> should render with selected 1`] = `
 <Fragment>
   <span
     className={
-      Object {
+      {
         "data-css-t8bhwo": "",
       }
     }

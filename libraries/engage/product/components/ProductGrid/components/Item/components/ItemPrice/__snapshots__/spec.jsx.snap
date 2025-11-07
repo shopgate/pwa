@@ -4,7 +4,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
 <SurroundPortals
   portalName="PRODUCT_ITEM_PRICE"
   portalProps={
-    Object {
+    {
       "location": "productGrid",
       "productId": "1234",
     }
@@ -12,9 +12,9 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
 >
   <ProductGridPrice
     product={
-      Object {
+      {
         "id": "1234",
-        "price": Object {},
+        "price": {},
       }
     }
   />

@@ -4,7 +4,7 @@ exports[`<ItemImage /> should render 1`] = `
 <SurroundPortals
   portalName="product-item.image"
   portalProps={
-    Object {
+    {
       "productId": "1234",
     }
   }
@@ -13,8 +13,8 @@ exports[`<ItemImage /> should render 1`] = `
     alt="FooBar"
     itemProp="image"
     resolutions={
-      Array [
-        Object {
+      [
+        {
           "height": 440,
           "width": 440,
         },

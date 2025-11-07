@@ -5,7 +5,7 @@ exports[`<CouponField /> should render a message when the cart does not support 
 exports[`<CouponField /> should render a message when the cart supports coupons 1`] = `
 <div
   className={
-    Object {
+    {
       "data-css-sia9nm": "",
     }
   }
@@ -16,7 +16,7 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
     handleFocusChange={[Function]}
     handleValueChange={[Function]}
     iconStyle={
-      Object {
+      {
         "opacity": 0,
       }
     }
@@ -31,7 +31,7 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
 exports[`<CouponField /> should render as expected without any props 1`] = `
 <div
   className={
-    Object {
+    {
       "data-css-sia9nm": "",
     }
   }
@@ -42,7 +42,7 @@ exports[`<CouponField /> should render as expected without any props 1`] = `
     handleFocusChange={[Function]}
     handleValueChange={[Function]}
     iconStyle={
-      Object {
+      {
         "opacity": 0,
       }
     }

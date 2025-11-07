@@ -4,24 +4,24 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
 <SurroundPortals
   portalName="filter.selector"
   portalProps={
-    Object {
-      "filter": Object {
+    {
+      "filter": {
         "id": "foo",
         "isMultiSelect": false,
         "label": "bar",
-        "values": Array [
-          Object {
+        "values": [
+          {
             "id": "foo",
             "label": "fooLabel",
           },
-          Object {
+          {
             "id": "bar",
             "label": "barLabel",
           },
         ],
       },
       "onChange": [Function],
-      "selectedValueIds": Array [],
+      "selectedValueIds": [],
     }
   }
 >
@@ -34,7 +34,7 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
     >
       <div
         className={
-          Object {
+          {
             "data-css-bb7tjd": "",
           }
         }

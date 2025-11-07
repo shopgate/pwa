@@ -3,7 +3,7 @@
 exports[`<CategoryListContent /> should render 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -27,7 +27,7 @@ exports[`<CategoryListContent /> should render 1`] = `
       <Portal
         name="category.list.before"
         props={
-          Object {
+          {
             "categoryId": "1234",
           }
         }
@@ -35,7 +35,7 @@ exports[`<CategoryListContent /> should render 1`] = `
       <Portal
         name="category.list"
         props={
-          Object {
+          {
             "categoryId": "1234",
           }
         }
@@ -43,7 +43,7 @@ exports[`<CategoryListContent /> should render 1`] = `
       <Portal
         name="category.list.after"
         props={
-          Object {
+          {
             "categoryId": "1234",
           }
         }
@@ -56,7 +56,7 @@ exports[`<CategoryListContent /> should render 1`] = `
 exports[`<CategoryListContent /> should render with CategoryList 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -80,7 +80,7 @@ exports[`<CategoryListContent /> should render with CategoryList 1`] = `
       <Portal
         name="category.list.before"
         props={
-          Object {
+          {
             "categoryId": "1234",
           }
         }
@@ -88,7 +88,7 @@ exports[`<CategoryListContent /> should render with CategoryList 1`] = `
       <Portal
         name="category.list"
         props={
-          Object {
+          {
             "categoryId": "1234",
           }
         }
@@ -106,7 +106,7 @@ exports[`<CategoryListContent /> should render with CategoryList 1`] = `
       <Portal
         name="category.list.after"
         props={
-          Object {
+          {
             "categoryId": "1234",
           }
         }

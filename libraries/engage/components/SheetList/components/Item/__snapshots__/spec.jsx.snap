@@ -24,8 +24,8 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
     <ForwardRef(WithForwardedRef(Glow))
       className={null}
       styles={
-        Object {
-          "hover": Object {
+        {
+          "hover": {
             "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
           },
         }
@@ -37,8 +37,8 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         disabled={false}
         forwardedRef={null}
         styles={
-          Object {
-            "hover": Object {
+          {
+            "hover": {
               "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
             },
           }
@@ -51,7 +51,7 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         >
           <div
             className="css-1bmd5dz"
-            style={Object {}}
+            style={{}}
           />
           <Link
             href="url/to/somewhere"
@@ -301,8 +301,8 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
       <ForwardRef(WithForwardedRef(Glow))
         className={null}
         styles={
-          Object {
-            "hover": Object {
+          {
+            "hover": {
               "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
             },
           }
@@ -314,8 +314,8 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           disabled={false}
           forwardedRef={null}
           styles={
-            Object {
-              "hover": Object {
+            {
+              "hover": {
                 "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
               },
             }
@@ -328,7 +328,7 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           >
             <div
               className="css-1bmd5dz"
-              style={Object {}}
+              style={{}}
             />
             <div
               className="engage__sheet-list__item"

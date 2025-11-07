@@ -9,7 +9,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
   >
     <StoreOpeningHours
       hours={
-        Object {
+        {
           "mon": "09:00 - 17:00",
           "sun": "09:00 - 17:00",
         }
@@ -173,7 +173,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
     </StorePhoneNumber>
     <StoreAddressShort
       address={
-        Object {
+        {
           "city": "Butzbach",
           "code": "code",
           "country": "DE",

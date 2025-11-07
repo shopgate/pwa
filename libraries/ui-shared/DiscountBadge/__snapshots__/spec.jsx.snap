@@ -11,7 +11,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
     aria-hidden={true}
     className="css-7wvaon  theme__discount-badge"
     params={
-      Array [
+      [
         null,
       ]
     }
@@ -31,7 +31,7 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
     aria-hidden={true}
     className="css-7wvaon  theme__discount-badge"
     params={
-      Array [
+      [
         20,
       ]
     }

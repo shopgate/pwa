@@ -16,7 +16,6 @@ describe('Unified', () => {
     });
 
     global.Headers = jest.fn();
-    global.fetch = jest.fn(() => new Promise(() => {}));
     global.console.groupCollapsed = jest.fn();
     global.console.groupEnd = jest.fn();
     window.SGEvent = {};

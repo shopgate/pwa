@@ -45,7 +45,6 @@ describe('GaBase (Jest 28)', () => {
     window.sgData.device.codebase = '1.2.3';
 
     global.Headers = jest.fn();
-    global.fetch = jest.fn(() => new Promise(() => {}));
     console.groupCollapsed = jest.fn();
     console.groupEnd = jest.fn();
     window.SGEvent = {};

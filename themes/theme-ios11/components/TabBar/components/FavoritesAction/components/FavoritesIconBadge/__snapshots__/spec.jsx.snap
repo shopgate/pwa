@@ -5,7 +5,7 @@ exports[`TabBar favorites action - lifecycle should update when number exceeds m
   favoritesCount={9999}
   showWishlistItemsCountBadge={true}
   widgetSettings={
-    Object {
+    {
       "showCounter": true,
     }
   }
@@ -23,7 +23,7 @@ exports[`TabBar favorites action - lifecycle should update when number is change
   favoritesCount={99}
   showWishlistItemsCountBadge={true}
   widgetSettings={
-    Object {
+    {
       "showCounter": true,
     }
   }
@@ -39,7 +39,7 @@ exports[`TabBar favorites action - lifecycle should update when number is change
 exports[`TabBar favorites action should render exact number 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -51,13 +51,13 @@ exports[`TabBar favorites action should render exact number 1`] = `
 >
   <WithWidgetSettings(Connect(FavoritesIconBadge))>
     <Connect(FavoritesIconBadge)
-      widgetSettings={Object {}}
+      widgetSettings={{}}
     >
       <FavoritesIconBadge
         dispatch={[Function]}
         favoritesCount={1}
         showWishlistItemsCountBadge={true}
-        widgetSettings={Object {}}
+        widgetSettings={{}}
       >
         <div
           className="css-qcorc4 theme__tab-bar__favorites-icon-badge theme__badge"
