@@ -22,6 +22,7 @@ jest.mock('@shopgate/engage/product/contexts', () => ({
     Provider: ({ children }) => children,
   },
 }));
+jest.mock('@shopgate/engage/product');
 jest.mock('@shopgate/engage/locations', () => ({
   FulfillmentSelector: ({ children }) => children,
   FulfillmentSheet: ({ children }) => children,

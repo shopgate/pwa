@@ -18,17 +18,9 @@ exports[`<ItemImage /> should render 1`] = `
       }
     }
   >
-    <Connect(WithWidgetSettings(ProductImage))
+    <WithWidgetSettings(ProductImagePure)
       alt="FooBar"
       itemProp="image"
-      resolutions={
-        [
-          {
-            "height": 440,
-            "width": 440,
-          },
-        ]
-      }
       src="http://www.google.com"
     />
   </Portal>
