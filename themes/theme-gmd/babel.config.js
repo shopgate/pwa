@@ -16,10 +16,6 @@ module.exports = (api) => {
       ['@babel/preset-env', {
         modules: false,
         bugfixes: true,
-        targets: {
-          ios: '13.4',
-          chrome: '80',
-        },
         useBuiltIns: 'usage',
         corejs: 3,
       }],

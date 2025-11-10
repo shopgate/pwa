@@ -42,6 +42,7 @@ const addBundleAnalyzer = !!process.env.BUNDLE_ANALYZER;
  */
 const config = {
   mode: ENV,
+  target: ['web', 'browserslist'],
   entry: {
     app: {
       import: [
