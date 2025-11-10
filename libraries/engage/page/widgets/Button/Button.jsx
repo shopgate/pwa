@@ -21,17 +21,19 @@ const useStyles = makeStyles()({
 const ButtonWidget = () => {
   const { classes } = useStyles();
 
-  const { config } = useWidget();
+  const { config, isPreview } = useWidget();
   const { text, link } = config;
   const { push } = useNavigation();
 
   const handleClick = useCallback((e) => {
-    e.stopPropagation();
-
     if (!link) return;
 
+    if (!isPreview) {
+      e.stopPropagation();
+    }
+
     push({ pathname: link });
-  }, [link, push]);
+  }, [link, isPreview, push]);
 
   if (!text) return null;
 
