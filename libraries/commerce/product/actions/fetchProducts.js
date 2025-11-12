@@ -108,6 +108,7 @@ function fetchProducts(options) {
     includeFulfillment = true,
     onBeforeDispatch = () => { },
     resolveCachedProducts = false,
+    calledByFetchProductsById = false,
   } = options;
 
   return (dispatch, getState) => {
@@ -225,6 +226,7 @@ function fetchProducts(options) {
 
         if (
           !isProductIdentifiersProductIdType(params?.productIdType) &&
+          calledByFetchProductsById &&
           Array.isArray(params?.productIds)
         ) {
           const requestIds = params?.productIds;

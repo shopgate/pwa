@@ -14,8 +14,6 @@ import {
 } from '@shopgate/engage/product/selectors/product';
 import {
   LEGAL_MENU,
-  SORT_PRICE_ASC,
-  SORT_PRICE_DESC,
 } from '@shopgate/engage/core/constants';
 import {
   hasNewServices,
@@ -192,7 +190,7 @@ export const makeGetUnifiedCMSPageData = ({ slug }) => {
  */
 const makeGetWidgetProductsResultHash = (type, options, id) => {
   const {
-    value, sort, useDefaultRequestForProductIds, productIdType,
+    value, sort, productIdType,
   } = options;
 
   const transformedSort = transformDisplayOptions(sort);
@@ -224,9 +222,7 @@ const makeGetWidgetProductsResultHash = (type, options, id) => {
             id,
             productIds: value,
             productIdType,
-            ...!useDefaultRequestForProductIds && {
-              sort: transformedSort,
-            },
+            sort: transformedSort,
             ...fulfillmentParams,
           };
 
@@ -282,29 +278,9 @@ export const makeGetWidgetProducts = (type, options, id) => {
     (state, props) => props ?? {},
     getWidgetProductResultsHash,
     getWidgetProductResultsByHash,
-    (state, props, resultsHash, resultsByHash) => {
-      const result = {
-        isFetching: resultsByHash?.isFetching || false,
-        ...getPopulatedProductsResult(state, props, resultsHash, resultsByHash),
-      };
-
-      // Since the getProducts pipeline does not support sorting when a product ID list is
-      // provided, we need to sort the products manually here.
-      if (type === 'productIds') {
-        if (options.sort === SORT_PRICE_ASC) {
-          result.products = result.products.sort(
-            (p1, p2) => p1.price.unitPrice - p2.price.unitPrice
-          );
-        }
-
-        if (options.sort === SORT_PRICE_DESC) {
-          result.products = result.products.sort(
-            (p1, p2) => p2.price.unitPrice - p1.price.unitPrice
-          );
-        }
-      }
-
-      return result;
-    }
+    (state, props, resultsHash, resultsByHash) => ({
+      isFetching: resultsByHash?.isFetching || false,
+      ...getPopulatedProductsResult(state, props, resultsHash, resultsByHash),
+    })
   );
 };
