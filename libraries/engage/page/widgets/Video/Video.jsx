@@ -17,9 +17,10 @@ const useStyles = makeStyles()((_theme, { borderRadius }) => ({
   },
   video: {
     // Add 1px to the width to prevent visible horizontal hairlines on some browsers
-    width: 'calc(100% + 1px)',
+    width: 'calc(100% + 2px)',
   },
 }));
+
 /**
  * The VideoWidget is used to display a video.
  * @returns {JSX.Element}
