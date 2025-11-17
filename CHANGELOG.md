@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.29.2](https://github.com/shopgate/pwa/compare/v7.29.1...v7.29.2) (2025-11-17)
+
+#### :rocket: Enhancement
+* [#1422](https://github.com/shopgate/pwa/pull/1422) Optimize product data fetching for product list widgets based on item number lists ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.29.1](https://github.com/shopgate/pwa/compare/v7.29.0...v7.29.1) (2025-11-07)
 
 #### :rocket: Enhancement
