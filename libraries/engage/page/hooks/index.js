@@ -3,7 +3,6 @@ import {
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { WidgetContext } from '@shopgate/engage/page/components/Widgets';
-import { showInventoryInLists } from '@shopgate/engage/locations/helpers';
 import { ITEMS_PER_LOAD } from '@shopgate/engage/core/constants';
 import { transformDisplayOptions } from '@shopgate/engage/core/helpers';
 import { fetchProductsByQuery } from '@shopgate/engage/product';
@@ -52,16 +51,12 @@ export const useWidgetProducts = (options = {}) => {
   const { code = `${type}_${value}_${limit}_${sort}`, isPreview } = useWidget();
 
   // ###### Products selection ######
-  const showInventoryInProductLists = useSelector(showInventoryInLists);
 
   const selectorOptions = useMemo(() => ({
     sort: transformDisplayOptions(sort),
     value,
     useDefaultRequestForProductIds: true,
-    ...(showInventoryInProductLists && {
-      useDefaultRequestForProductIds: true,
-    }),
-  }), [showInventoryInProductLists, sort, value]);
+  }), [sort, value]);
 
   const getWidgetProducts = useMemo(
     () => makeGetWidgetProducts(type, selectorOptions, code),
@@ -89,10 +84,7 @@ export const useWidgetProducts = (options = {}) => {
     limit,
     sort: transformDisplayOptions(sort),
     useDefaultRequestForProductIds: true,
-    ...(showInventoryInProductLists && {
-      useDefaultRequestForProductIds: true,
-    }),
-  }), [limit, showInventoryInProductLists, sort]);
+  }), [limit, sort]);
 
   /**
    * Callback to dispatch the initial fetch request for products when the hook mounts,
@@ -121,7 +113,7 @@ export const useWidgetProducts = (options = {}) => {
     setOffset(limit);
     // When the result comes from a real pipeline request there will be "totalProductCount".
     // When the result are cached products, it can also be "totalResultCount".
-    setHasNext((result.totalProductCount ?? result.totalResultCount) > limit);
+    setHasNext((result?.totalProductCount ?? result?.totalResultCount) > limit);
   }, [code, dispatch, type, value, limit, baseRequestOptions]);
 
   // Effect to trigger the initial fetch when the component mounts or the parameters change.
@@ -161,7 +153,7 @@ export const useWidgetProducts = (options = {}) => {
     setOffset(offset + limit);
     // When the result comes from a real pipeline request there will be "totalProductCount".
     // When the result are cached products, it can also be "totalResultCount".
-    setHasNext((result.totalProductCount ?? result.totalResultCount) > offset + limit);
+    setHasNext((result?.totalProductCount ?? result?.totalResultCount) > offset + limit);
   }, [
     code,
     dispatch,
