@@ -51,6 +51,9 @@ const useStyles = makeStyles()({
     height: '100%',
     objectFit: 'cover',
   },
+  relative: {
+    position: 'relative',
+  },
 });
 
 /**
@@ -65,6 +68,7 @@ const ResponsiveWidgetImage = ({
   enableParallax = false,
   isBanner = false,
   borderRadius = 0,
+  imageFit,
   ...imgProps
 }) => {
   const { classes, cx } = useStyles();
@@ -109,6 +113,7 @@ const ResponsiveWidgetImage = ({
       className={cx({
         [classes.bannerContainer]: isBanner,
         [classes.container]: !isBanner,
+        [classes.relative]: isBanner && imageFit === 'showFull',
       })}
       style={{
         borderRadius: `${borderRadius}px`,
@@ -122,6 +127,7 @@ const ResponsiveWidgetImage = ({
         loading="lazy"
         className={cx(className, classes.preventSave, classes.image, {
           [classes.banner]: isBanner,
+          [classes.relative]: isBanner && imageFit === 'showFull',
         })}
         onLoad={handleImageLoad}
         style={{
@@ -139,6 +145,7 @@ ResponsiveWidgetImage.propTypes = {
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   className: PropTypes.string,
   enableParallax: PropTypes.bool,
+  imageFit: PropTypes.oneOf(['fillAndCrop', 'showFull']),
   isBanner: PropTypes.bool,
   src: PropTypes.string,
 };
@@ -151,6 +158,7 @@ ResponsiveWidgetImage.defaultProps = {
   enableParallax: false,
   isBanner: false,
   borderRadius: 0,
+  imageFit: 'fillAndCrop',
 };
 
 /**

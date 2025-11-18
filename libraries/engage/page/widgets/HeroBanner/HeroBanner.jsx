@@ -30,6 +30,12 @@ const useStyles = makeStyles()(theme => ({
     top: 0,
     left: 0,
   },
+  relative: {
+    position: 'relative',
+  },
+  absolute: {
+    position: 'absolute',
+  },
 }));
 
 /**
@@ -37,7 +43,7 @@ const useStyles = makeStyles()(theme => ({
  */
 const HeroBanner = () => {
   const {
-    text, backgroundImage, link, borderRadius, parallax,
+    text, backgroundImage, link, borderRadius, parallax, imageFit,
   } = useHeroBannerWidget();
 
   const { cx, classes } = useStyles();
@@ -54,15 +60,22 @@ const HeroBanner = () => {
       <div className={cx(classes.content)}>
         <WidgetRichText
           content={text}
-          className={cx(classes.richText)}
+          className={cx(classes.richText, {
+            [classes.absolute]: imageFit === 'showFull',
+          })}
         />
-        <div className={cx(classes.imageContainer)}>
+        <div className={cx(classes.imageContainer, {
+          [classes.relative]: imageFit === 'showFull',
+        })}
+        >
+
           <ResponsiveWidgetImage
             src={backgroundImage?.url}
             alt={backgroundImage?.alt}
             borderRadius={borderRadius}
             enableParallax={parallax}
             isBanner
+            imageFit={imageFit}
           />
 
         </div>
