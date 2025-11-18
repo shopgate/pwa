@@ -37,6 +37,7 @@ exports[`<WriteReviewLink> should render when current product is set 1`] = `
           <ActionButton
             aria-label="reviews.button_add"
             className=""
+            disableClickDelay={false}
             disabled={false}
             flat={true}
             loading={false}
