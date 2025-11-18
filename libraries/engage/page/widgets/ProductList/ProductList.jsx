@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ActionButton, I18n } from '@shopgate/engage/components';
 import { ProductGrid } from '@shopgate/engage/product/components';
 import { useWidgetProducts } from '@shopgate/engage/page/hooks';
@@ -34,6 +34,7 @@ const ProductListWidget = () => {
     flags,
     showHeadline,
     headline,
+    isPreview,
   } = useProductListWidget();
 
   const {
@@ -44,6 +45,14 @@ const ProductListWidget = () => {
     limit: productCount,
     sort,
   });
+
+  const handleFetchNext = useCallback((e) => {
+    if (isPreview) {
+      // Prevent unintended scroll effects when load more is clicked in preview.
+      e.stopPropagation();
+    }
+    fetchNext();
+  }, [fetchNext, isPreview]);
 
   return (
     <div className={classes.root}>
@@ -60,7 +69,9 @@ const ProductListWidget = () => {
       { hasNext && showLoadMore && (
         <ActionButton
           loading={isFetching}
-          onClick={fetchNext}
+          onClick={handleFetchNext}
+          // Disable click delay in preview mode to enable stopping of propagation.
+          {...(isPreview && { disableClickDelay: true })}
         >
           <I18n.Text string="common.load_more" />
         </ActionButton>

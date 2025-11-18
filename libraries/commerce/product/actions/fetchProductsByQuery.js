@@ -69,15 +69,10 @@ const fetchProductsByQuery = (type, value, options = {}, id = null) => (dispatch
           ...sanitizedOptions,
         };
 
-        // Limit and offset are not fully supported for product requests with productId list
-        delete params.limit;
-        delete params.offset;
-
         return dispatch(fetchProducts({
           params,
           ...id && { id },
           includeFilters: false,
-          includeSort: false,
         }));
       }
 

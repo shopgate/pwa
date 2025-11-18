@@ -214,6 +214,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={true}
               flat={false}
               loading={false}
@@ -779,6 +780,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={false}
               flat={false}
               loading={false}
@@ -1378,6 +1380,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={false}
               flat={false}
               loading={false}
@@ -2120,6 +2123,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={true}
               flat={false}
               loading={false}
@@ -3119,6 +3123,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={false}
               flat={false}
               loading={false}
@@ -3415,6 +3420,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={true}
               flat={false}
               loading={false}
@@ -3968,6 +3974,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={false}
               flat={false}
               loading={false}
