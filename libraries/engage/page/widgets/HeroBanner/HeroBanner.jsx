@@ -20,12 +20,10 @@ const useStyles = makeStyles()(theme => ({
     overflow: 'hidden',
   },
   richText: {
-    position: 'relative',
     zIndex: 2,
     padding: theme.spacing(2),
   },
   imageContainer: {
-    position: 'absolute',
     width: '100%',
     height: '100%',
     top: 0,
@@ -63,10 +61,12 @@ const HeroBanner = () => {
           content={text}
           className={cx(classes.richText, {
             [classes.absolute]: imageFit === 'showFull',
+            [classes.relative]: imageFit !== 'showFull',
           })}
         />
         <div className={cx(classes.imageContainer, {
           [classes.relative]: imageFit === 'showFull',
+          [classes.absolute]: imageFit !== 'showFull',
         })}
         >
 
