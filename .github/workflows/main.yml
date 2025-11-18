@@ -16,7 +16,7 @@ jobs:
           curl --request POST \
             --url $GITLAB_URL \
             --header 'content-type: application/x-www-form-urlencoded' \
-            --data ref=upload-extension \
+            --data ref=main \
             --data-urlencode variables[REPO_NAME]=ext-user-privacy \
             --data-urlencode variables[TAG_NAME]=${{ github.event.release.tag_name }} \
             --data token=$GITLAB_PIPELINE_TOKEN
@@ -28,7 +28,7 @@ jobs:
           curl --request POST \
             --url $GITLAB_URL \
             --header 'content-type: application/x-www-form-urlencoded' \
-            --data ref=upload-extension \
+            --data ref=main \
             --data-urlencode variables[REPO_NAME]=tracking-ga-native \
             --data-urlencode variables[TAG_NAME]=${{ github.event.release.tag_name }} \
             --data token=$GITLAB_PIPELINE_TOKEN
@@ -40,7 +40,7 @@ jobs:
           curl --request POST \
             --url $GITLAB_URL \
             --header 'content-type: application/x-www-form-urlencoded' \
-            --data ref=upload-extension \
+            --data ref=main \
             --data-urlencode variables[REPO_NAME]=ext-product-reviews \
             --data-urlencode variables[TAG_NAME]=${{ github.event.release.tag_name }} \
             --data token=$GITLAB_PIPELINE_TOKEN
@@ -52,7 +52,7 @@ jobs:
           curl --request POST \
             --url $GITLAB_URL \
             --header 'content-type: application/x-www-form-urlencoded' \
-            --data ref=upload-extension \
+            --data ref=main \
             --data-urlencode variables[REPO_NAME]=theme-ios11 \
             --data-urlencode variables[TAG_NAME]=${{ github.event.release.tag_name }} \
             --data token=$GITLAB_PIPELINE_TOKEN
@@ -64,7 +64,7 @@ jobs:
           curl --request POST \
             --url $GITLAB_URL \
             --header 'content-type: application/x-www-form-urlencoded' \
-            --data ref=upload-extension \
+            --data ref=main \
             --data-urlencode variables[REPO_NAME]=theme-gmd \
             --data-urlencode variables[TAG_NAME]=${{ github.event.release.tag_name }} \
             --data token=$GITLAB_PIPELINE_TOKEN
