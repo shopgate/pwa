@@ -17,6 +17,7 @@ const useStyles = makeStyles()(theme => ({
     [theme.breakpoints.up('md')]: {
       minHeight: 400,
     },
+    overflow: 'hidden',
   },
   richText: {
     position: 'relative',
