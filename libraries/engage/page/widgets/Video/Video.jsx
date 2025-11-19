@@ -5,6 +5,9 @@ import {
   usePrevious,
   useAppEventOnReturnFromBackground,
 } from '@shopgate/engage/core/hooks';
+import { ConditionalWrapper } from '@shopgate/engage/components';
+import Link from '@shopgate/pwa-common/components/Link';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import { useVideoWidget } from './hooks';
 import { isHttpsUrl } from '../../helpers';
 
@@ -27,7 +30,7 @@ const useStyles = makeStyles()((_theme, { borderRadius }) => ({
  */
 const Video = () => {
   const {
-    url, muted, loop, controls, autoplay, borderRadius,
+    url, muted, loop, controls, autoplay, borderRadius, link,
   } = useVideoWidget();
 
   const { classes } = useStyles({ borderRadius });
@@ -69,23 +72,32 @@ const Video = () => {
 
   return (
     <div className={classes.root}>
-      <video
-        ref={videoRef}
-        // Set play position to 0.001s to guarantee that there is always a frame shown
-        src={`${url}#t=0.001`}
-        muted={muted}
-        controls={(!autoplay || reduceMotion) ? true : controls}
-        autoPlay={reduceMotion ? false : autoplay}
-        className={classes.video}
-        preload="auto"
-        playsInline
-        loop={loop}
-        aria-hidden
-        onError={() => { setHasError(true); }}
+      <ConditionalWrapper
+        condition={!!link && !controls && !IS_PAGE_PREVIEW_ACTIVE}
+        wrapper={children =>
+          <Link href={link}>
+            { children }
+          </Link>
+        }
       >
-        {/* for a11y reasons there needs to be a track file (but video is aria hidden) */}
-        <track kind="captions" src="" srcLang="de" label="Deutsch" />
-      </video>
+        <video
+          ref={videoRef}
+        // Set play position to 0.001s to guarantee that there is always a frame shown
+          src={`${url}#t=0.001`}
+          muted={muted}
+          controls={(!autoplay || reduceMotion) ? true : controls}
+          autoPlay={reduceMotion ? false : autoplay}
+          className={classes.video}
+          preload="auto"
+          playsInline
+          loop={loop}
+          aria-hidden
+          onError={() => { setHasError(true); }}
+        >
+          {/* for a11y reasons there needs to be a track file (but video is aria hidden) */}
+          <track kind="captions" src="" srcLang="de" label="Deutsch" />
+        </video>
+      </ConditionalWrapper>
     </div>
   );
 };

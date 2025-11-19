@@ -8,6 +8,8 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {boolean} [loop] Whether the video should loop.
  * @property {boolean} [controls] Whether the video should display controls.
  * @property {boolean} [autoplay] Whether the video should autoplay.
+ * @property {string} [borderRadius] The border radius preset.
+ * @property {string} [link] The link URL.
  */
 
 /**
@@ -22,8 +24,9 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 export const useVideoWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
+  console.log('sasa:25: config', config);
   const {
-    url, muted, loop, controls, autoplay, borderRadius, borderRadiusCustom,
+    url, muted, loop, controls, autoplay, borderRadius, borderRadiusCustom, link,
   } = config || {};
 
   const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
@@ -38,5 +41,6 @@ export const useVideoWidget = () => {
     controls,
     autoplay,
     borderRadius: borderRadiusResolved,
+    link,
   };
 };
