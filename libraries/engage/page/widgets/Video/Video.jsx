@@ -16,8 +16,8 @@ const useStyles = makeStyles()((_theme, { borderRadius }) => ({
     borderRadius,
   },
   video: {
-    // Add 1px to the width to prevent visible horizontal hairlines on some browsers
-    width: 'calc(100% + 2px)',
+    // Add additional pixels to the width to prevent visible horizontal hairlines on some browsers
+    width: 'calc(100% + 4px)',
   },
 }));
 
