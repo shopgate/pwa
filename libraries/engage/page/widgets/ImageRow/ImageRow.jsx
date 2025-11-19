@@ -4,7 +4,12 @@ import { Link, ConditionalWrapper, Grid } from '@shopgate/engage/components';
 import { useImageRowWidget } from './hooks';
 import ResponsiveWidgetImage from '../../components/ResponsiveWidgetImage';
 
-const useStyles = makeStyles()((theme, { imageSpacing }) => ({
+const useStyles = makeStyles()((theme, {
+  imageSpacing,
+  slidesPerViewCustomLarge,
+  slidesPerViewCustomMedium,
+  slidesPerViewCustomSmall,
+}) => ({
   imageContainer: {
     width: '100%',
     display: 'flex',
@@ -40,6 +45,17 @@ const useStyles = makeStyles()((theme, { imageSpacing }) => ({
   itemContainerNoWrap: {
     flex: ' 1 1 0%',
   },
+  imageContainerCustom: {
+    [theme.breakpoints.up('lg')]: {
+      flex: `1 1 calc(${100 / slidesPerViewCustomLarge}% - ${imageSpacing}px)`,
+    },
+    [theme.breakpoints.between('sm', 'lg')]: {
+      flex: `1 1 calc(${100 / slidesPerViewCustomMedium}% - ${imageSpacing}px)`,
+    },
+    [theme.breakpoints.down('sm')]: {
+      flex: `1 1 calc(${100 / slidesPerViewCustomSmall}% - ${imageSpacing}px)`,
+    },
+  },
 }));
 
 /**
@@ -48,10 +64,22 @@ const useStyles = makeStyles()((theme, { imageSpacing }) => ({
  */
 const ImageRow = () => {
   const {
-    images, imageWrapping, imageSpacing, borderRadius, parallax,
+    images,
+    imageWrapping,
+    imageSpacing,
+    borderRadius,
+    parallax,
+    slidesPerViewCustomLarge,
+    slidesPerViewCustomMedium,
+    slidesPerViewCustomSmall,
   } = useImageRowWidget();
 
-  const { cx, classes } = useStyles({ imageSpacing });
+  const { cx, classes } = useStyles({
+    imageSpacing,
+    slidesPerViewCustomLarge,
+    slidesPerViewCustomMedium,
+    slidesPerViewCustomSmall,
+  });
 
   if (images.length === 0) return null;
 
@@ -65,6 +93,7 @@ const ImageRow = () => {
             [classes.itemContainerDefault]: imageWrapping === 'responsiveDefault',
             [classes.itemContainerDense]: imageWrapping === 'responsiveDense',
             [classes.itemContainerNoWrap]: imageWrapping === 'responsiveNoWrap',
+            [classes.imageContainerCustom]: imageWrapping === 'responsiveCustom',
           })}
         >
           <ConditionalWrapper
