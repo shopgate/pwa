@@ -24,7 +24,6 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 export const useVideoWidget = () => {
   /** @type {UseWidgetReturnType}  */
   const { config } = useWidget();
-  console.log('sasa:25: config', config);
   const {
     url, muted, loop, controls, autoplay, borderRadius, borderRadiusCustom, link,
   } = config || {};
