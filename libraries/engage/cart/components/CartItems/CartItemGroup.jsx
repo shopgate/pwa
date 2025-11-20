@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import CartItemGroupReservation from './CartItemGroupReservation';
@@ -48,4 +47,4 @@ CartItemGroup.defaultProps = {
   fulfillmentMethod: null,
 };
 
-export default hot(CartItemGroup);
+export default CartItemGroup;

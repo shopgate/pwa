@@ -35,6 +35,10 @@ module.exports = Object.assign({}, jestConfig, {
   moduleNameMapper: {
     '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/fileMock.js',
     '\\.(css|less)$': '<rootDir>/__mocks__/fileMock.js',
+    // Fix issue with Swiper ES module imports that work via "exports" field in package.json
+    '^swiper/react$': '<rootDir>/node_modules/swiper/swiper-react.mjs',
+    // Mock Swiper styles since they are not needed for unit tests
+    '^swiper/css(?:/.*)?$': '<rootDir>/__mocks__/styleMock.js',
   },
   modulePathIgnorePatterns: [
     '<rootDir>/.*/dist/.*',

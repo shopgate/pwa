@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import 'Extensions/portals';
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
@@ -353,4 +352,4 @@ Pages.propTypes = {
   store: PropTypes.shape().isRequired,
 };
 
-export default hot(Pages);
+export default Pages;

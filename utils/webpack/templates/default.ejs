@@ -10,8 +10,14 @@
   <title>
     <%= htmlWebpackPlugin.options.title %>
   </title>
-  <script src="<%= htmlWebpackPlugin.files.chunks.common.entry %>"></script>
-  <% debugger; %>
+  <% if (htmlWebpackPlugin.files && htmlWebpackPlugin.files.css) { %>
+    <% htmlWebpackPlugin.files.css.forEach(function(css) { %>
+      <link rel="stylesheet" href="<%= css %>">
+    <% }) %>
+  <% } %>
+  <% const scripts = htmlWebpackPlugin.files.js; %>
+  <% const vendor = scripts.find(s => s.includes('vendor')); %>
+  <% if (vendor) { %><script src="<%= vendor %>"></script><% } %>
   <script>
     var SGConnect = {
       appId: "<%- htmlWebpackPlugin.options.appId %>"
@@ -25,7 +31,9 @@
 <body>
   <div id="root"></div>
   <div id="portals"></div>
-  <script src="<%= htmlWebpackPlugin.files.chunks.app.entry %>"></script>
+  <% for (const js of scripts) { if (js !== vendor) { %>
+    <script src="<%= js %>"></script>
+  <% }} %>
 </body>
 
 </html>

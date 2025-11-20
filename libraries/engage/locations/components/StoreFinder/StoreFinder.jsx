@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { hot } from 'react-hot-loader/root';
 import { StoreFinderProvider } from '../../providers';
 import StoreFinderSearch from './StoreFinderSearch';
 import StoreFinderLocations from './StoreFinderLocations';
@@ -29,4 +28,4 @@ const StoreFinder = () => {
   );
 };
 
-export default hot(StoreFinder);
+export default StoreFinder;
