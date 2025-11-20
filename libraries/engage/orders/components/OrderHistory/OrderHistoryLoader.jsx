@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader/root';
 import { ITEMS_PER_LOAD } from '@shopgate/pwa-common/constants/DisplayOptions';
 import InfiniteContainer from '@shopgate/pwa-common/components/InfiniteContainer';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
@@ -43,4 +42,4 @@ OrderHistoryLoader.propTypes = {
   ]).isRequired,
 };
 
-export default hot(OrderHistoryLoader);
+export default OrderHistoryLoader;

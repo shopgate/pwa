@@ -11,7 +11,7 @@
     "STRINGS_COULD_NOT_BE_CREATED": "Strings could not be created",
     "INDEXING_TYPE": "Indexing {type}...",
     "INDEXED_TYPE": "... {type} indexed.",
-    "NO_EXTENSIONS_FOUND_FOR_TYPE": "No extensions found for ''{type}''",
+    "NO_EXTENSIONS_FOUND_FOR_TYPE": "No extensions found for \"{type}\"",
     "TYPE_PORTALS": "portals",
     "TYPE_REDUCERS": "reducers",
     "TYPE_SUBSCRIBERS": "subscribers",

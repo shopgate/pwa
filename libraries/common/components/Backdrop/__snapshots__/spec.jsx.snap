@@ -2,37 +2,25 @@
 
 exports[`<Backdrop /> should render 1`] = `
 <Transition
-  childrenStyles={
+  appear={true}
+  enter={true}
+  exit={true}
+  in={true}
+  mountOnEnter={true}
+  nodeRef={
     Object {
-      "appear": Object {
-        "opacity": 0.5,
-        "pointerEvents": "auto",
-      },
-      "base": Object {
-        "background": "#000",
-        "opacity": 0,
-        "pointerEvents": "auto",
-        "transition": "opacity 200ms ease-out",
-        "zIndex": 2,
-      },
-      "enter": Object {
-        "opacity": 0.5,
-        "pointerEvents": "auto",
-      },
-      "leave": Object {
-        "opacity": 0,
-        "pointerEvents": "none",
-      },
+      "current": null,
     }
   }
-  component="div"
+  onEnter={[Function]}
+  onEntered={[Function]}
+  onEntering={[Function]}
+  onExit={[Function]}
+  onExited={[Function]}
+  onExiting={[Function]}
+  timeout={200}
+  unmountOnExit={true}
 >
-  <div
-    aria-hidden={true}
-    className="css-30873t  common__backdrop"
-    data-test-id="Backdrop"
-    key="backdrop"
-    onClick={[Function]}
-  />
+  <Component />
 </Transition>
 `;

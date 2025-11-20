@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, {
   useState, useEffect, useCallback, useMemo,
 } from 'react';
@@ -275,4 +274,4 @@ FulfillmentSelector.defaultProps = {
   userFulfillmentMethod: null,
 };
 
-export default hot(connect(React.memo(FulfillmentSelector)));
+export default connect(React.memo(FulfillmentSelector));

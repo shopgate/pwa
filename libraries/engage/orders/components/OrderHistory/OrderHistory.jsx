@@ -1,5 +1,4 @@
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
 import { Table, TableRow } from './OrderHistoryTable';
 import { List, Row } from './OrderHistoryList';
 import { ResponsiveContainer, NoResults } from '../../../components';
@@ -34,4 +33,4 @@ const OrderHistory = () => {
     </div>
   );
 };
-export default hot(OrderHistory);
+export default OrderHistory;
