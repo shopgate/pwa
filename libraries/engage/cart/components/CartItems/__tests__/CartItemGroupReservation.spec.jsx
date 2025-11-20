@@ -19,7 +19,7 @@ describe('engage > cart > components > CartItemGroupReservation', () => {
   });
 
   it('should render only label', () => {
-    const wrapper = shallow(<CartItemGroupReservation location={location} />);
+    const wrapper = shallow(<CartItemGroupReservation location={location} fulfillmentMethod="BOPIS" />);
     expect(wrapper).toMatchSnapshot();
   });
 
@@ -28,6 +28,7 @@ describe('engage > cart > components > CartItemGroupReservation', () => {
       <CartItemGroupReservation
         // eslint-disable-next-line extra-rules/no-single-line-objects
         location={{ ...location, address: { phoneNumber: '012456789' } }}
+        fulfillmentMethod="BOPIS"
       />
     ));
     expect(wrapper).toMatchSnapshot();

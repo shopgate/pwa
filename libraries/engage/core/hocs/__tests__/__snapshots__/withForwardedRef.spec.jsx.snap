@@ -4,7 +4,7 @@ exports[`engage > core > hocs > withForwardedRef should inject the ref with a cu
 <MockComponent
   className="foo"
   custom={
-    Object {
+    {
       "current": null,
     }
   }
@@ -17,7 +17,7 @@ exports[`engage > core > hocs > withForwardedRef should render 1`] = `
 <MockComponent
   className="foo"
   forwardedRef={
-    Object {
+    {
       "current": null,
     }
   }

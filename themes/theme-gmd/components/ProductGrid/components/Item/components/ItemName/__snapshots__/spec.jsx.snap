@@ -6,7 +6,7 @@ exports[`<ItemName /> should render with minimal props 1`] = `
   name="Foo"
   portalName="product-item.name"
   portalProps={
-    Object {
+    {
       "productId": "1234",
     }
   }

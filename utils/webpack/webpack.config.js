@@ -42,6 +42,7 @@ const addBundleAnalyzer = !!process.env.BUNDLE_ANALYZER;
  */
 const config = {
   mode: ENV,
+  target: ['web', 'browserslist'],
   entry: {
     app: {
       import: [
@@ -228,6 +229,21 @@ const config = {
       {
         test: /\.mjs$/,
         type: 'javascript/auto',
+      },
+      // Special treatment for PWA Extension Kit to ensure compatibility with current Babel setup
+      // https://github.com/shopgate-professional-services/pwa-extension-kit
+      {
+        test: /\.js$/,
+        include: /node_modules\/@shopgate-ps\/pwa-extension-kit/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', { modules: 'commonjs' }],
+              '@babel/preset-react',
+            ],
+          },
+        },
       },
       {
         test: /\.(js|jsx)$/,

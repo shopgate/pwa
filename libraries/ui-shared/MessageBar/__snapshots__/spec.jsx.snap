@@ -3,12 +3,12 @@
 exports[`<MessageBar /> General rendering should be empty if no messages have been set 1`] = `
 <Component
   classNames={
-    Object {
+    {
       "container": null,
       "message": null,
     }
   }
-  messages={Array []}
+  messages={[]}
 >
   <div
     className="css-1gmese ui-shared__message-bar"
@@ -20,14 +20,14 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
 exports[`<MessageBar /> General rendering should render a message as info if type is missing 1`] = `
 <Component
   classNames={
-    Object {
+    {
       "container": null,
       "message": null,
     }
   }
   messages={
-    Array [
-      Object {
+    [
+      {
         "message": "something",
       },
     ]
@@ -54,30 +54,30 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
 exports[`<MessageBar /> Multiple messages rendering should render messages without frontend translation 1`] = `
 <Component
   classNames={
-    Object {
+    {
       "container": null,
       "message": null,
     }
   }
   messages={
-    Array [
-      Object {
+    [
+      {
         "message": "This is some information",
         "type": "info",
       },
-      Object {
+      {
         "message": "This is an error that happened here.",
         "type": "error",
       },
-      Object {
+      {
         "message": "This is just a warning. Nothing to freak out about.",
         "type": "warning",
       },
-      Object {
+      {
         "message": "Normal pre-translated message.",
         "translated": null,
       },
-      Object {
+      {
         "message": "Normal pre-translated message two.",
         "translated": true,
       },
@@ -145,14 +145,14 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
 exports[`<MessageBar /> Multiple messages rendering should render with custom classNames 1`] = `
 <Component
   classNames={
-    Object {
+    {
       "container": "cls-container",
       "message": "cls-message",
     }
   }
   messages={
-    Array [
-      Object {
+    [
+      {
         "message": "This is some information",
       },
     ]
@@ -179,20 +179,20 @@ exports[`<MessageBar /> Multiple messages rendering should render with custom cl
 exports[`<MessageBar /> Multiple messages rendering should translate and render all given messages 1`] = `
 <Component
   classNames={
-    Object {
+    {
       "container": null,
       "message": null,
     }
   }
   messages={
-    Array [
-      Object {
+    [
+      {
         "message": "some.translation.string",
         "translated": false,
       },
-      Object {
+      {
         "message": "Message with messageParams",
-        "messageParams": Object {
+        "messageParams": {
           "myCustomParam1": "-> TEST-VALUE #1 <-",
           "myCustomParam2": "-> TEST-VALUE #2 <-",
         },

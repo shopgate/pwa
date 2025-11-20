@@ -12,7 +12,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
 >
   <Headline
     style={
-      Object {
+      {
         "margin": "24px 20px 16px",
       }
     }
@@ -23,7 +23,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       className="css-18cwfw7 headline theme__headline"
       data-test-id="Headline"
       style={
-        Object {
+        {
           "margin": "24px 20px 16px",
         }
       }
@@ -37,7 +37,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
   </Headline>
   <div
     className={
-      Object {
+      {
         "data-css-13ch7sr": "",
       }
     }
@@ -90,7 +90,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
 >
   <Headline
     style={
-      Object {
+      {
         "margin": "24px 20px 16px",
       }
     }
@@ -99,7 +99,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
   />
   <div
     className={
-      Object {
+      {
         "data-css-13ch7sr": "",
       }
     }

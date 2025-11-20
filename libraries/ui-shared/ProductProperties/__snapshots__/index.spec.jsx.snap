@@ -4,7 +4,7 @@ exports[`<ProductProperties /> should not render when an empty list of propertie
 <Properties
   className={null}
   lineClamp={null}
-  properties={Array []}
+  properties={[]}
 />
 `;
 
@@ -12,7 +12,7 @@ exports[`<ProductProperties /> should not render when no properties are passed 1
 <Properties
   className={null}
   lineClamp={null}
-  properties={Array []}
+  properties={[]}
 />
 `;
 
@@ -21,12 +21,12 @@ exports[`<ProductProperties /> should render as expected when properties are pas
   className={null}
   lineClamp={null}
   properties={
-    Array [
-      Object {
+    [
+      {
         "label": "Label One",
         "value": "Value One",
       },
-      Object {
+      {
         "label": "Label Two",
         "value": "Value Two",
       },
@@ -55,12 +55,12 @@ exports[`<ProductProperties /> should use the ellipsis component when the lineCl
   className={null}
   lineClamp={2}
   properties={
-    Array [
-      Object {
+    [
+      {
         "label": "Label One",
         "value": "Value One",
       },
-      Object {
+      {
         "label": "Label Two",
         "value": "Value Two",
       },

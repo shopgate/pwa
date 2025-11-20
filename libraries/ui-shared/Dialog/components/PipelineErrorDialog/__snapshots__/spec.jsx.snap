@@ -2,19 +2,19 @@
 
 exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
 <PipelineErrorDialog
-  actions={Array []}
+  actions={[]}
   message=""
   params={
-    Object {
+    {
       "code": "123",
       "message": "Error message",
       "pipeline": "fakePipeline",
-      "request": Object {},
+      "request": {},
     }
   }
 >
   <BasicDialog
-    actions={Array []}
+    actions={[]}
     title="modal.title_error"
   >
     <FocusTrap>
@@ -54,7 +54,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="modal.title_error"
                       transform={null}
@@ -80,7 +80,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
                     className={null}
-                    params={Object {}}
+                    params={{}}
                     role={null}
                     string="Error message"
                     transform={null}
@@ -99,7 +99,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                 <Translate
                   acceptPlainTextWithPlaceholders={false}
                   className={null}
-                  params={Object {}}
+                  params={{}}
                   role={null}
                   string="Error message"
                   transform={null}
@@ -122,7 +122,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             className="css-hw75se"
           >
             <Buttons
-              actions={Array []}
+              actions={[]}
             />
           </div>
         </div>
@@ -134,19 +134,19 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
 
 exports[`<PipelineErrorDialog /> should show a custom message if a message is is provided 1`] = `
 <PipelineErrorDialog
-  actions={Array []}
+  actions={[]}
   message="Custom message"
   params={
-    Object {
+    {
       "code": "123",
       "message": "Error message",
       "pipeline": "fakePipeline",
-      "request": Object {},
+      "request": {},
     }
   }
 >
   <BasicDialog
-    actions={Array []}
+    actions={[]}
     title="modal.title_error"
   >
     <FocusTrap>
@@ -186,7 +186,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="modal.title_error"
                       transform={null}
@@ -212,7 +212,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                   <Translate
                     acceptPlainTextWithPlaceholders={false}
                     className={null}
-                    params={Object {}}
+                    params={{}}
                     role={null}
                     string="Custom message"
                     transform={null}
@@ -231,7 +231,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                 <Translate
                   acceptPlainTextWithPlaceholders={false}
                   className={null}
-                  params={Object {}}
+                  params={{}}
                   role={null}
                   string="Custom message"
                   transform={null}
@@ -254,7 +254,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             className="css-hw75se"
           >
             <Buttons
-              actions={Array []}
+              actions={[]}
             />
           </div>
         </div>

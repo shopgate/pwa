@@ -2,9 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Content from './index';
 
-jest.mock('@shopgate/pwa-core', () => ({
-  Conditioner: class {},
-}));
 jest.mock('@shopgate/engage/a11y', () => ({
   Section: ({ children }) => children,
 }));
@@ -25,6 +22,7 @@ jest.mock('@shopgate/engage/product/contexts', () => ({
     Provider: ({ children }) => children,
   },
 }));
+jest.mock('@shopgate/engage/product');
 jest.mock('@shopgate/engage/locations', () => ({
   FulfillmentSelector: ({ children }) => children,
   FulfillmentSheet: ({ children }) => children,

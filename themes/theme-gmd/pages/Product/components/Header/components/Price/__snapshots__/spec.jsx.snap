@@ -36,9 +36,9 @@ exports[`<Price /> should render portals 1`] = `
 <SurroundPortals
   portalName="product.price"
   portalProps={
-    Object {
+    {
       "hasProductVariants": true,
-      "price": Object {
+      "price": {
         "currency": "USD",
         "discount": 0,
         "unitPrice": 90.5,
@@ -51,7 +51,7 @@ exports[`<Price /> should render portals 1`] = `
   <Content
     hasProductVariants={true}
     price={
-      Object {
+      {
         "currency": "USD",
         "discount": 0,
         "unitPrice": 90.5,

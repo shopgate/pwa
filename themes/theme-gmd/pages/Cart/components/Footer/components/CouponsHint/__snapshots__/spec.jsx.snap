@@ -5,7 +5,7 @@ exports[`<CouponsHint /> should render as expected without any props 1`] = `
   <Translate
     acceptPlainTextWithPlaceholders={false}
     className="css-7apcdo"
-    params={Object {}}
+    params={{}}
     role={null}
     string="cart.coupons_not_supported"
     transform={null}

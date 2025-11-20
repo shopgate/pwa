@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<GroupedProperties /> should render as expected 1`] = `
-Array [
+[
   <div
     className={
-      Object {
+      {
         "data-css-fz7184": "",
       }
     }
@@ -30,13 +30,13 @@ Array [
       >
         <Lists
           properties={
-            Array [
-              Object {
+            [
+              {
                 "displayGroup": "Group 1",
                 "label": "Test 1",
                 "name": "test1",
               },
-              Object {
+              {
                 "displayGroup": "Group 1",
                 "label": "Test 2",
                 "name": "test2",
@@ -49,7 +49,7 @@ Array [
   </div>,
   <div
     className={
-      Object {
+      {
         "data-css-fz7184": "",
       }
     }
@@ -75,13 +75,13 @@ Array [
       >
         <Lists
           properties={
-            Array [
-              Object {
+            [
+              {
                 "displayGroup": "Group 2",
                 "label": "Test 3",
                 "name": "test3",
               },
-              Object {
+              {
                 "displayGroup": "Group 2",
                 "label": "Test 4",
                 "name": "test4",

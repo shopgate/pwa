@@ -3,8 +3,8 @@
 exports[`<TextMessageDialog /> should render the actions 1`] = `
 <BasicDialog
   actions={
-    Array [
-      Object {
+    [
+      {
         "action": [Function],
         "label": "fooAction",
       },
@@ -14,7 +14,7 @@ exports[`<TextMessageDialog /> should render the actions 1`] = `
 >
   <span
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "This is the message.",
       }
     }
@@ -24,12 +24,12 @@ exports[`<TextMessageDialog /> should render the actions 1`] = `
 
 exports[`<TextMessageDialog /> should render with minimal props 1`] = `
 <BasicDialog
-  actions={Array []}
+  actions={[]}
   title={null}
 >
   <span
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "This is the message.",
       }
     }
@@ -39,12 +39,12 @@ exports[`<TextMessageDialog /> should render with minimal props 1`] = `
 
 exports[`<TextMessageDialog /> should render with title and message 1`] = `
 <BasicDialog
-  actions={Array []}
+  actions={[]}
   title="This is the title."
 >
   <span
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "This is the message.",
       }
     }
@@ -54,12 +54,12 @@ exports[`<TextMessageDialog /> should render with title and message 1`] = `
 
 exports[`<TextMessageDialog /> should render with title, message and messageParams 1`] = `
 <BasicDialog
-  actions={Array []}
+  actions={[]}
   title="This is the title."
 >
   <span
     dangerouslySetInnerHTML={
-      Object {
+      {
         "__html": "Message with {name}",
       }
     }
