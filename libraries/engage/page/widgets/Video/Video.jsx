@@ -5,9 +5,7 @@ import {
   usePrevious,
   useAppEventOnReturnFromBackground,
 } from '@shopgate/engage/core/hooks';
-import { ConditionalWrapper } from '@shopgate/engage/components';
-import Link from '@shopgate/pwa-common/components/Link';
-import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import { ConditionalWrapper, Link } from '@shopgate/engage/components';
 import { useVideoWidget } from './hooks';
 import { isHttpsUrl } from '../../helpers';
 
@@ -20,7 +18,8 @@ const useStyles = makeStyles()((_theme, { borderRadius }) => ({
   },
   video: {
     // Add additional pixels to the width to prevent visible horizontal hairlines on some browsers
-    width: 'calc(100% + 4px)',
+    width: 'calc(100% + 3px)',
+    display: 'flex',
   },
 }));
 
@@ -40,6 +39,15 @@ const Video = () => {
   const prevUrl = usePrevious(url);
   const isValidUrl = useMemo(() => (url ? isHttpsUrl(url) : false), [url]);
 
+  const showControls = useMemo(() => {
+    if (link) {
+      // When a link is set we never show controls to avoid side effects due to two clickable areas.
+      return false;
+    }
+
+    return (!autoplay || reduceMotion) ? true : controls;
+  }, [autoplay, controls, link, reduceMotion]);
+
   // Resume video playback when app returned from background
   useAppEventOnReturnFromBackground(() => {
     if (!videoRef.current || reduceMotion || !autoplay) {
@@ -50,7 +58,13 @@ const Video = () => {
   });
 
   useEffect(() => {
-    if (!videoRef.current || reduceMotion) {
+    if (!videoRef.current) {
+      return;
+    }
+
+    if (reduceMotion) {
+      // Pause playback when reduced motion settings changed after video was rendered
+      videoRef.current.pause();
       return;
     }
 
@@ -73,7 +87,7 @@ const Video = () => {
   return (
     <div className={classes.root}>
       <ConditionalWrapper
-        condition={!!link && !controls && !IS_PAGE_PREVIEW_ACTIVE}
+        condition={!!link}
         wrapper={children =>
           <Link href={link}>
             { children }
@@ -82,10 +96,10 @@ const Video = () => {
       >
         <video
           ref={videoRef}
-        // Set play position to 0.001s to guarantee that there is always a frame shown
+          // Set play position to 0.001s to guarantee that there is always a frame shown
           src={`${url}#t=0.001`}
           muted={muted}
-          controls={(!autoplay || reduceMotion) ? true : controls}
+          controls={showControls}
           autoPlay={reduceMotion ? false : autoplay}
           className={classes.video}
           preload="auto"
