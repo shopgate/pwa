@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { ConditionalWrapper, Link } from '@shopgate/engage/components';
 import { WidgetRichText, ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -17,6 +17,7 @@ const useStyles = makeStyles()(theme => ({
     [theme.breakpoints.up('md')]: {
       minHeight: 400,
     },
+    overflow: 'hidden',
   },
   richText: {
     position: 'relative',
@@ -37,10 +38,26 @@ const useStyles = makeStyles()(theme => ({
  */
 const HeroBanner = () => {
   const {
-    text, backgroundImage, link, borderRadius, parallax,
+    text, backgroundImage, link, borderRadius, parallax, imageFit,
   } = useHeroBannerWidget();
 
   const { cx, classes } = useStyles();
+  const [aspectRatio, setAspectRatio] = useState(null);
+
+  const contentStyle = useMemo(() => {
+    if (imageFit !== 'showFull') {
+      return null;
+    }
+
+    return {
+      aspectRatio,
+      minHeight: 'unset',
+    };
+  }, [aspectRatio, imageFit]);
+
+  const handleImageRatioChange = useCallback((ratio) => {
+    setAspectRatio(ratio);
+  }, []);
 
   return (
     <ConditionalWrapper
@@ -51,7 +68,7 @@ const HeroBanner = () => {
         </Link>
       )}
     >
-      <div className={cx(classes.content)}>
+      <div className={cx(classes.content)} style={contentStyle}>
         <WidgetRichText
           content={text}
           className={cx(classes.richText)}
@@ -62,7 +79,8 @@ const HeroBanner = () => {
             alt={backgroundImage?.alt}
             borderRadius={borderRadius}
             enableParallax={parallax}
-            isBanner
+            isBanner={imageFit === 'fillAndCrop'}
+            onImageRatioChange={handleImageRatioChange}
           />
 
         </div>
