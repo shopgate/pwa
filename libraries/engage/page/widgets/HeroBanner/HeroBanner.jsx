@@ -38,7 +38,7 @@ const useStyles = makeStyles()(theme => ({
  */
 const HeroBanner = () => {
   const {
-    text, backgroundImage, link, borderRadius, parallax, imageFit,
+    text, backgroundImage, link, borderRadius, parallax, imageFit = 'fillAndCrop',
   } = useHeroBannerWidget();
 
   const { cx, classes } = useStyles();
