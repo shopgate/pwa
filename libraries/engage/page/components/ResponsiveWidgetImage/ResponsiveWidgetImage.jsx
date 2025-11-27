@@ -1,8 +1,13 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useResponsiveValue } from '@shopgate/engage/styles';
 import { useParallax } from 'react-scroll-parallax';
 import { parseImageUrl } from '../../helpers';
+
+/**
+ * @callback OnImageRatioChange
+ * @param {string} ratio - The new image ratio, e.g. "1920/1080".
+ */
 
 /**
  * @typedef {Object} CustomResponsiveImageProps
@@ -12,6 +17,8 @@ import { parseImageUrl } from '../../helpers';
  * be loaded.
  * @property {boolean} [isBanner] Whether the image is used as a banner (full width and height of
  * its container).
+ * @property {OnImageRatioChange} [onImageRatioChange] Called when the aspect ratio of the image
+ * changes.
  */
 
 /** @typedef {import('@shopgate/engage/styles').Theme} Theme */
@@ -65,6 +72,8 @@ const ResponsiveWidgetImage = ({
   enableParallax = false,
   isBanner = false,
   borderRadius = 0,
+  onLoad,
+  onImageRatioChange,
   ...imgProps
 }) => {
   const { classes, cx } = useStyles();
@@ -83,14 +92,18 @@ const ResponsiveWidgetImage = ({
    * We set the aspect ratio of the container based on the image dimensions
    * to prevent white spaces in the layout while the image is moving.
    * The aspect ratio is calculated with the parallaxPercent
-   * @param {Object} event The load event.
+   * @param {React.SyntheticEvent<HTMLImageElement, Event>} event The load event.
    */
   const handleImageLoad = (event) => {
-    const width = event.target.clientWidth;
-    const height = event.target.clientHeight;
+    const width = event.currentTarget.naturalWidth;
+    const height = event.currentTarget.naturalHeight;
 
     setImageWidth(width);
     setImageHeight(height);
+
+    if (typeof onLoad === 'function') {
+      onLoad(event);
+    }
   };
 
   const containerRatio = useMemo(() => {
@@ -103,6 +116,12 @@ const ResponsiveWidgetImage = ({
     xs: src,
     [breakpoint]: src2x,
   });
+
+  useEffect(() => {
+    if (typeof onImageRatioChange === 'function') {
+      onImageRatioChange(containerRatio);
+    }
+  }, [containerRatio, onImageRatioChange]);
 
   return (
     <div
@@ -140,6 +159,8 @@ ResponsiveWidgetImage.propTypes = {
   className: PropTypes.string,
   enableParallax: PropTypes.bool,
   isBanner: PropTypes.bool,
+  onImageRatioChange: PropTypes.func,
+  onLoad: PropTypes.func,
   src: PropTypes.string,
 };
 
@@ -151,6 +172,8 @@ ResponsiveWidgetImage.defaultProps = {
   enableParallax: false,
   isBanner: false,
   borderRadius: 0,
+  onLoad: undefined,
+  onImageRatioChange: undefined,
 };
 
 /**
