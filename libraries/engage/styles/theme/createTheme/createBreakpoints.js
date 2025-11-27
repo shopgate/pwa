@@ -39,7 +39,7 @@ const step = 5;
  * Creates a set of media query functions based on the provided breakpoints.
  */
 const createBreakpoints = () => {
-  /** @type {import('./createBreakpoints').Breakpoints['values]} */
+  /** @type {import('./createBreakpoints').Breakpoints['values']} */
   const values = {
     // Extra small – all mobile phones
     xs: 0,
