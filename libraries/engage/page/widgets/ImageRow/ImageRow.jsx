@@ -65,7 +65,7 @@ const useStyles = makeStyles()((theme, {
 const ImageRow = () => {
   const {
     images,
-    imageWrapping,
+    imageWrapping = 'responsiveDefault',
     imageSpacing,
     borderRadius,
     parallax,
@@ -84,7 +84,7 @@ const ImageRow = () => {
   if (images.length === 0) return null;
 
   return (
-    <Grid className={cx(classes.imageContainer)} component="div">
+    <Grid className={classes.imageContainer} component="div">
       {images.map(img => (
         <Grid.Item
           key={img.url}
@@ -99,7 +99,7 @@ const ImageRow = () => {
           <ConditionalWrapper
             condition={!!img.link}
             wrapper={children => (
-              <Link href={img.link} className={cx(classes.image)}>
+              <Link href={img.link} className={classes.image}>
                 {children}
               </Link>
             )}
@@ -107,7 +107,7 @@ const ImageRow = () => {
             <ResponsiveWidgetImage
               src={img.url}
               alt={img.altText}
-              className={cx(classes.image)}
+              className={classes.image}
               borderRadius={borderRadius}
               enableParallax={parallax}
             />
