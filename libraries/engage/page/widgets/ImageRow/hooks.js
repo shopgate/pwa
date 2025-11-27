@@ -12,6 +12,12 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
  * @property {boolean} [parallax] Whether to apply a parallax effect to the image.
+ * @property {number} [slidesPerViewCustomLarge] Number of slides to show on large screens
+ * (only for 'responsiveCustom' wrapping).
+ * @property {number} [slidesPerViewCustomMedium] Number of slides to show on medium screens
+ * (only for 'responsiveCustom' wrapping).
+ * @property {number} [slidesPerViewCustomSmall] Number of slides to show on small screens
+ * (only for 'responsiveCustom' wrapping).
  */
 
 /**
@@ -35,6 +41,9 @@ export const useImageRowWidget = () => {
     borderRadius,
     borderRadiusCustom,
     parallax,
+    slidesPerViewCustomLarge,
+    slidesPerViewCustomMedium,
+    slidesPerViewCustomSmall,
   } = config || {};
 
   const borderRadiusResolved = resolveBorderRadiusFromWidgetConfig({
@@ -58,5 +67,8 @@ export const useImageRowWidget = () => {
     imageSpacing,
     borderRadius: borderRadiusResolved,
     parallax,
+    slidesPerViewCustomLarge,
+    slidesPerViewCustomMedium,
+    slidesPerViewCustomSmall,
   };
 };
