@@ -81,7 +81,7 @@ const ImageRow = () => {
     slidesPerViewCustomSmall,
   });
 
-  if (images.length === 0) return null;
+  if (!images || images.length === 0) return null;
 
   return (
     <Grid className={classes.imageContainer} component="div">
