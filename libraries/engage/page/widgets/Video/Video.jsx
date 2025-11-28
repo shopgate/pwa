@@ -6,6 +6,7 @@ import {
   useAppEventOnReturnFromBackground,
 } from '@shopgate/engage/core/hooks';
 import { ConditionalWrapper, Link } from '@shopgate/engage/components';
+import PropTypes from 'prop-types';
 import { useVideoWidget } from './hooks';
 import { isHttpsUrl } from '../../helpers';
 
@@ -21,19 +22,54 @@ const useStyles = makeStyles()((_theme, { borderRadius }) => ({
     width: 'calc(100% + 3px)',
     display: 'flex',
   },
+  banner: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+  },
+  bannerContainer: {
+    overflow: 'hidden',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  bannerLinkContainer: {
+    overflow: 'hidden',
+    width: '100%',
+    top: 0,
+    left: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 }));
 
 /**
  * The VideoWidget is used to display a video.
+ * @param {Object} props The component props.
+ * @param {boolean} props.isBanner Whether the video is used in a banner.
  * @returns {JSX.Element}
  */
-const Video = () => {
+const Video = ({ isBanner }) => {
   const {
     url, muted, loop, controls, autoplay, borderRadius, link,
   } = useVideoWidget();
-
-  const { classes } = useStyles({ borderRadius });
   const reduceMotion = useReduceMotion();
+  let autoPlayValue = true;
+  if (reduceMotion) {
+    autoPlayValue = false;
+  }
+  if (!reduceMotion) {
+    autoPlayValue = isBanner ? true : autoplay;
+  }
+
+  const { classes, cx } = useStyles({ borderRadius });
   const [hasError, setHasError] = useState(false);
   const videoRef = React.useRef(null);
   const prevUrl = usePrevious(url);
@@ -50,7 +86,7 @@ const Video = () => {
 
   // Resume video playback when app returned from background
   useAppEventOnReturnFromBackground(() => {
-    if (!videoRef.current || reduceMotion || !autoplay) {
+    if (!videoRef.current || reduceMotion || !autoPlayValue) {
       return;
     }
 
@@ -68,13 +104,13 @@ const Video = () => {
       return;
     }
 
-    if (autoplay) {
+    if (autoPlayValue) {
       videoRef.current.play();
     } else {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
-  }, [autoplay, reduceMotion]);
+  }, [autoPlayValue, reduceMotion]);
 
   useEffect(() => {
     if (!url || url !== prevUrl) {
@@ -85,7 +121,12 @@ const Video = () => {
   if (!url || hasError || !isValidUrl) return null;
 
   return (
-    <div className={classes.root}>
+    <div className={cx({
+      [classes.root]: !isBanner,
+      [classes.bannerContainer]: isBanner && !link,
+      [classes.bannerLinkContainer]: isBanner && link,
+    })}
+    >
       <ConditionalWrapper
         condition={!!link}
         wrapper={children =>
@@ -98,13 +139,13 @@ const Video = () => {
           ref={videoRef}
           // Set play position to 0.001s to guarantee that there is always a frame shown
           src={`${url}#t=0.001`}
-          muted={muted}
-          controls={showControls}
-          autoPlay={reduceMotion ? false : autoplay}
-          className={classes.video}
+          muted={isBanner ? true : muted}
+          controls={isBanner ? false : showControls}
+          autoPlay={autoPlayValue}
+          className={cx(classes.video, { [classes.banner]: isBanner })}
           preload="auto"
           playsInline
-          loop={loop}
+          loop={isBanner ? true : loop}
           aria-hidden
           onError={() => { setHasError(true); }}
         >
@@ -114,6 +155,14 @@ const Video = () => {
       </ConditionalWrapper>
     </div>
   );
+};
+
+Video.propTypes = {
+  isBanner: PropTypes.bool,
+};
+
+Video.defaultProps = {
+  isBanner: false,
 };
 
 export default Video;

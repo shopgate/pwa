@@ -3,6 +3,7 @@ import { ConditionalWrapper, Link } from '@shopgate/engage/components';
 import { WidgetRichText, ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useHeroBannerWidget } from './hooks';
+import Video from '../Video';
 
 const useStyles = makeStyles()(theme => ({
   link: {
@@ -38,10 +39,17 @@ const useStyles = makeStyles()(theme => ({
  */
 const HeroBanner = () => {
   const {
-    text, backgroundImage, link, borderRadius, parallax, imageFit = 'fillAndCrop',
+    text,
+    altText,
+    link,
+    borderRadius,
+    parallax,
+    imageFit = 'fillAndCrop',
+    mediaType,
+    mediaUrl,
   } = useHeroBannerWidget();
 
-  const { cx, classes } = useStyles();
+  const { classes } = useStyles();
   const [aspectRatio, setAspectRatio] = useState(null);
 
   const contentStyle = useMemo(() => {
@@ -63,26 +71,30 @@ const HeroBanner = () => {
     <ConditionalWrapper
       condition={!!link}
       wrapper={children => (
-        <Link href={link} className={cx(classes.link)}>
+        <Link href={link} className={classes.link}>
           {children}
         </Link>
       )}
     >
-      <div className={cx(classes.content)} style={contentStyle}>
+      <div className={classes.content} style={contentStyle}>
         <WidgetRichText
           content={text}
-          className={cx(classes.richText)}
+          className={classes.richText}
         />
-        <div className={cx(classes.imageContainer)}>
-          <ResponsiveWidgetImage
-            src={backgroundImage?.url}
-            alt={backgroundImage?.alt}
-            borderRadius={borderRadius}
-            enableParallax={parallax}
-            isBanner={imageFit === 'fillAndCrop'}
-            onImageRatioChange={handleImageRatioChange}
-          />
-
+        <div className={classes.imageContainer}>
+          {mediaType === 'image' ? (
+            <ResponsiveWidgetImage
+              src={mediaUrl}
+              alt={altText}
+              borderRadius={borderRadius}
+              enableParallax={parallax}
+              isBanner={imageFit === 'fillAndCrop'}
+              onImageRatioChange={handleImageRatioChange}
+            />
+          ) : null}
+          {mediaType === 'video' ? (
+            <Video isBanner />
+          ) : null}
         </div>
       </div>
     </ConditionalWrapper>
