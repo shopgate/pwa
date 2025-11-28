@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.29.4](https://github.com/shopgate/pwa/compare/v7.29.3...v7.29.4) (2025-11-27)
+
+#### :rocket: Enhancement
+* [#1426](https://github.com/shopgate/pwa/pull/1426) Add link wrapper to video widget ([@SaschaKrist](https://github.com/SaschaKrist))
+
+
 ## [v7.29.3](https://github.com/shopgate/pwa/compare/v7.29.1...v7.29.3) (2025-11-20)
 
 #### :rocket: Enhancement
