@@ -60,9 +60,16 @@ const Video = ({ isBanner }) => {
   const {
     url, muted, loop, controls, autoplay, borderRadius, link,
   } = useVideoWidget();
+  const reduceMotion = useReduceMotion();
+  let autoPlayValue = true;
+  if (reduceMotion) {
+    autoPlayValue = false;
+  }
+  if (!reduceMotion) {
+    autoPlayValue = isBanner ? true : autoplay;
+  }
 
   const { classes, cx } = useStyles({ borderRadius });
-  const reduceMotion = useReduceMotion();
   const [hasError, setHasError] = useState(false);
   const videoRef = React.useRef(null);
   const prevUrl = usePrevious(url);
@@ -79,7 +86,7 @@ const Video = ({ isBanner }) => {
 
   // Resume video playback when app returned from background
   useAppEventOnReturnFromBackground(() => {
-    if (!videoRef.current || reduceMotion || !autoplay) {
+    if (!videoRef.current || reduceMotion || !autoPlayValue) {
       return;
     }
 
@@ -97,13 +104,13 @@ const Video = ({ isBanner }) => {
       return;
     }
 
-    if (autoplay) {
+    if (autoPlayValue) {
       videoRef.current.play();
     } else {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
-  }, [autoplay, reduceMotion]);
+  }, [autoPlayValue, reduceMotion]);
 
   useEffect(() => {
     if (!url || url !== prevUrl) {
@@ -112,11 +119,6 @@ const Video = ({ isBanner }) => {
   }, [hasError, prevUrl, url]);
 
   if (!url || hasError || !isValidUrl) return null;
-
-  let autoPlayValue = false;
-  if (!reduceMotion) {
-    autoPlayValue = isBanner ? true : autoplay;
-  }
 
   return (
     <div className={cx({
@@ -139,7 +141,7 @@ const Video = ({ isBanner }) => {
           src={`${url}#t=0.001`}
           muted={isBanner ? true : muted}
           controls={isBanner ? false : showControls}
-          autoPlay={reduceMotion ? false : autoPlayValue}
+          autoPlay={autoPlayValue}
           className={cx(classes.video, { [classes.banner]: isBanner })}
           preload="auto"
           playsInline
