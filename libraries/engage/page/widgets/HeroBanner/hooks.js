@@ -11,6 +11,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
  * @property {boolean} parallax Whether to apply a parallax effect to the image
+ * @property {"fillAndCrop"|"showFull"} imageFit How the image should be displayed
  */
 
 /**
