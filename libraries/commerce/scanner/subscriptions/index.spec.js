@@ -16,6 +16,9 @@ jest.mock('@shopgate/pwa-core/classes/Scanner', () => ({
 jest.mock('../action-creators/scannerFinished', () => jest.fn());
 jest.mock('../actions/handleBarCode');
 jest.mock('../actions/handleQrCode');
+jest.mock('@shopgate/engage/product', () => ({
+  fetchProductsById: jest.fn(),
+}));
 
 describe('scanner subscriptions', () => {
   const subscribe = jest.fn();

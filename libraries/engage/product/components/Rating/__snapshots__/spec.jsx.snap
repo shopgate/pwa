@@ -3,7 +3,7 @@
 exports[`Rating (product header) Rendering should render rating when data is available 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -20,7 +20,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
       dispatch={[Function]}
       productId="foo"
       rating={
-        Object {
+        {
           "average": 50,
           "count": 4,
         }
@@ -46,7 +46,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
               acceptPlainTextWithPlaceholders={false}
               className="css-a7xi3l css-760a0s engage__reviews__rating-count"
               params={
-                Object {
+                {
                   "count": 4,
                   "prominent": true,
                 }

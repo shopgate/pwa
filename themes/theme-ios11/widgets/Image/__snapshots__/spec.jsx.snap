@@ -3,7 +3,7 @@
 exports[`<ImageWidget /> should render the ImageWidget 1`] = `
 <ImageWidget
   settings={
-    Object {
+    {
       "alt": "Alt text",
       "id": "81452",
       "image": "https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg",
@@ -24,7 +24,7 @@ exports[`<ImageWidget /> should render the ImageWidget 1`] = `
 exports[`<ImageWidget /> should render the ImageWidget without link 1`] = `
 <ImageWidget
   settings={
-    Object {
+    {
       "alt": "Alt text",
       "id": "81452",
       "image": "https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg",
@@ -35,7 +35,7 @@ exports[`<ImageWidget /> should render the ImageWidget without link 1`] = `
   <img
     alt="Alt text"
     className={
-      Object {
+      {
         "data-css-1rozygh": "",
       }
     }

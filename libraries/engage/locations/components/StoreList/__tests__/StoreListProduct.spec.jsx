@@ -13,6 +13,7 @@ jest.mock('react', () => ({
   useContext: jest.fn(),
 }));
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/product');
 jest.mock('../../../locations.context', () => 'FulfillmentContext');
 jest.mock('../StoreListProductName', () => function StoreListProductName() { return null; });
 jest.mock('../StoreListProductInfo', () => function StoreListProductInfo() { return null; });

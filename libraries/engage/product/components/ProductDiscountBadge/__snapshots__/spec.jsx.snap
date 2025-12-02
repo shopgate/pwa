@@ -3,7 +3,7 @@
 exports[`<ProductDiscountBadge /> should not render with discount if widgetSetting is false 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -25,9 +25,9 @@ exports[`<ProductDiscountBadge /> should not render with discount if widgetSetti
         className="css-1q31aw2"
         location="productDiscountBadge"
         portalProps={
-          Object {
+          {
             "show": false,
-            "style": Object {},
+            "style": {},
           }
         }
         productId="1234"
@@ -38,11 +38,11 @@ exports[`<ProductDiscountBadge /> should not render with discount if widgetSetti
           <SurroundPortals
             portalName="component.product-badges"
             portalProps={
-              Object {
+              {
                 "location": "productDiscountBadge",
                 "productId": "1234",
                 "show": false,
-                "style": Object {},
+                "style": {},
               }
             }
           />
@@ -56,7 +56,7 @@ exports[`<ProductDiscountBadge /> should not render with discount if widgetSetti
 exports[`<ProductDiscountBadge /> should render with discount 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -78,9 +78,9 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
         className="css-1q31aw2"
         location="productDiscountBadge"
         portalProps={
-          Object {
+          {
             "show": true,
-            "style": Object {
+            "style": {
               "color": "blue",
             },
           }
@@ -93,11 +93,11 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
           <SurroundPortals
             portalName="component.product-badges"
             portalProps={
-              Object {
+              {
                 "location": "productDiscountBadge",
                 "productId": "1234",
                 "show": true,
-                "style": Object {
+                "style": {
                   "color": "blue",
                 },
               }
@@ -109,7 +109,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
               <SurroundPortals
                 portalName="product.discount"
                 portalProps={
-                  Object {
+                  {
                     "discount": 12,
                     "productId": "1234",
                   }
@@ -131,7 +131,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                       aria-hidden={true}
                       className="css-7wvaon css-1dtzobl theme__discount-badge"
                       params={
-                        Array [
+                        [
                           null,
                         ]
                       }
@@ -154,7 +154,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
 exports[`<ProductDiscountBadge /> should render without discount 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -176,9 +176,9 @@ exports[`<ProductDiscountBadge /> should render without discount 1`] = `
         className="css-1q31aw2"
         location="productDiscountBadge"
         portalProps={
-          Object {
+          {
             "show": true,
-            "style": Object {
+            "style": {
               "color": "blue",
             },
           }
@@ -191,11 +191,11 @@ exports[`<ProductDiscountBadge /> should render without discount 1`] = `
           <SurroundPortals
             portalName="component.product-badges"
             portalProps={
-              Object {
+              {
                 "location": "productDiscountBadge",
                 "productId": "1234",
                 "show": true,
-                "style": Object {
+                "style": {
                   "color": "blue",
                 },
               }

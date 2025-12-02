@@ -1,31 +1,35 @@
+/** @typedef {import('@babel/core').ConfigAPI} ConfigAPI */
+/** @typedef {import('@babel/core').TransformOptions} TransformOptions */
+
+/**
+ * @param {ConfigAPI} api The Babel config API object
+ * @returns {TransformOptions}
+ */
 module.exports = (api) => {
+  const isTest = api.env('test');
+  const isProd = api.env('production');
+
   api.cache(true);
 
   return {
-    compact: true,
-    sourceType: 'unambiguous',
     presets: [
       ['@babel/preset-env', {
         modules: false,
+        bugfixes: true,
+        useBuiltIns: 'usage',
+        corejs: 3,
       }],
-      '@babel/preset-react',
+      ['@babel/preset-react', {
+        runtime: 'classic',
+        development: !isProd && !isTest,
+      }],
     ],
+
     plugins: [
       'lodash',
-      '@babel/plugin-proposal-class-properties',
-      ['@babel/plugin-proposal-object-rest-spread', {
-        loose: true,
-      }],
-      ['@babel/plugin-transform-spread', {
-        loose: true,
-      }],
-      '@babel/plugin-proposal-optional-chaining',
-      '@babel/plugin-proposal-export-namespace-from',
-      '@babel/plugin-proposal-export-default-from',
-      'transform-export-extensions',
-      ['@babel/plugin-syntax-dynamic-import', {
-        loose: true,
-      }],
+      ['@babel/plugin-transform-class-properties', { loose: true }],
+      ['@babel/plugin-transform-private-methods', { loose: true }],
+      ['@babel/plugin-transform-private-property-in-object', { loose: true }],
       ['module-resolver', {
         cwd: 'packagejson',
         alias: {
@@ -36,15 +40,16 @@ module.exports = (api) => {
         },
       }],
       ['@babel/plugin-transform-runtime', {
-        helpers: false,
+        helpers: true,
         regenerator: true,
       }],
     ],
+
     env: {
       test: {
         presets: [
-          '@babel/preset-env',
-          '@babel/preset-react',
+          ['@babel/preset-env', { targets: { node: 'current' } }],
+          ['@babel/preset-react', { runtime: 'classic' }],
         ],
       },
       development: {

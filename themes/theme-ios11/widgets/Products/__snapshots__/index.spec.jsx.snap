@@ -3,11 +3,11 @@
 exports[`<ProductWidgets /> should render the products ids widget 1`] = `
 <ProductsIdsWidget
   settings={
-    Object {
+    {
       "headline": "",
       "layout": "grid",
       "productLimit": 6,
-      "queryParams": Array [
+      "queryParams": [
         1,
         2,
         4,
@@ -21,7 +21,7 @@ exports[`<ProductWidgets /> should render the products ids widget 1`] = `
 exports[`<ProductWidgets /> should render the products widget 1`] = `
 <ProductsWidget
   settings={
-    Object {
+    {
       "headline": "",
       "layout": "grid",
       "productLimit": 6,

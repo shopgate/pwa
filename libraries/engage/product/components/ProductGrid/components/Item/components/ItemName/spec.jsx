@@ -6,6 +6,8 @@ jest.mock('@shopgate/engage/product', () => ({
   ProductName: () => null,
 }));
 
+jest.mock('@shopgate/engage/components');
+
 const props = {
   productId: '1234',
   name: 'Foo',

@@ -3,6 +3,8 @@ import React from 'react';
 import { mount } from 'enzyme';
 import FormBuilder from '.';
 
+jest.mock('@shopgate/engage/components');
+
 describe('<FormBuilder />', () => {
   it('should render empty form', () => {
     const wrapper = mount((
@@ -193,23 +195,29 @@ describe('<FormBuilder />', () => {
 
   describe('FormBuilder::elementChangeHandler', () => {
     it('should take the updated state from action listener', () => {
-      // Create mocked Form builder.
       const handleUpdate = jest.fn();
-      const builder = new FormBuilder({
-        validationErrors: [],
-        config: {
-          fields: {
-            foo: {
-              label: 'foo',
-              type: 'text',
-              visible: true,
-              default: 'default',
+      const ref = React.createRef();
+      mount((
+        <FormBuilder
+          ref={ref}
+          validationErrors={[]}
+          config={{
+            fields: {
+              foo: {
+                label: 'foo',
+                type: 'text',
+                visible: true,
+                default: 'default',
+              },
             },
-          },
-        },
-        handleUpdate,
-      });
-      builder.actionListener.notify = () => ({
+          }}
+          name="foo"
+          id="foo"
+          handleUpdate={handleUpdate}
+        />
+      ));
+
+      ref.current.actionListener.notify = () => ({
         formData: {
           foo: 'bar',
         },
@@ -220,7 +228,7 @@ describe('<FormBuilder />', () => {
       });
 
       // Trigger update
-      builder.elementChangeHandler('foo', 'bar');
+      ref.current.elementChangeHandler('foo', 'bar');
 
       // Test
       expect(handleUpdate).toHaveBeenCalledWith({
@@ -231,21 +239,27 @@ describe('<FormBuilder />', () => {
     it('should consider backend validations', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
-      const builder = new FormBuilder({
-        validationErrors: [{}],
-        config: {
-          fields: {
-            foo: {
-              label: 'foo',
-              type: 'text',
-              visible: true,
-              default: 'default',
+      const ref = React.createRef();
+      mount((
+        <FormBuilder
+          ref={ref}
+          validationErrors={[{}]}
+          config={{
+            fields: {
+              foo: {
+                label: 'foo',
+                type: 'text',
+                visible: true,
+                default: 'default',
+              },
             },
-          },
-        },
-        handleUpdate,
-      });
-      builder.actionListener.notify = () => ({
+          }}
+          name="foo"
+          id="foo"
+          handleUpdate={handleUpdate}
+        />
+      ));
+      ref.current.actionListener.notify = () => ({
         formData: {
           foo: 'bar',
         },
@@ -256,7 +270,7 @@ describe('<FormBuilder />', () => {
       });
 
       // Trigger update
-      builder.elementChangeHandler('foo', 'bar');
+      ref.current.elementChangeHandler('foo', 'bar');
 
       // Test
       expect(handleUpdate).toHaveBeenCalledWith({

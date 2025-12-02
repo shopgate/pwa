@@ -1,4 +1,3 @@
-import fetch from 'isomorphic-fetch';
 import { logger } from '../../helpers';
 import event from '../Event';
 

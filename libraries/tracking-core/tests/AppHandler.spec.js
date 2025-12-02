@@ -1,25 +1,23 @@
-/* eslint global-require: "off" */
-import Chai from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-import mochaJsdom from 'mocha-jsdom';
+/** @jest-environment jsdom */
 
-const chai = Chai.use(sinonChai);
-const { expect } = chai;
+/* eslint global-require: "off" */
 
 describe('AppHandler', () => {
   let appHandler;
   let SGAction;
-  mochaJsdom();
 
-  before(() => {
-    global.console.groupCollapsed = () => { };
-    global.console.groupEnd = () => { };
+  beforeAll(() => {
+    // silence console groups during test
+    global.console.groupCollapsed = jest.fn();
+    global.console.groupEnd = jest.fn();
+
+    // minimal globals the code expects
+    global.window = global.window || {};
     window.SGEvent = {};
 
+    // load modules after globals are set
     appHandler = require('../core/AppHandler').default;
-    // eslint-disable-next-line prefer-destructuring
-    SGAction = require('../helpers/helper').SGAction;
+    ({ SGAction } = require('../helpers/helper'));
   });
 
   /**
@@ -84,20 +82,21 @@ describe('AppHandler', () => {
   ];
 
   /**
-   * Helper function to create a spy for a function
+   * Helper: create a spy for a function
    * @param {string} name Name of the function in SGAction
-   * @returns {Object} spy for the given function
+   * @returns {jest.SpyInstance}
    */
-  const getSpy = name => sinon.spy(SGAction, name);
+  const getSpy = name => jest.spyOn(SGAction, name);
 
   /**
-   * Helper function to check if the spy gets called with the correct data
-   * @param {Object} spy Spy object
-   * @param {*} args Arguments which the spy should called with
+   * Helper: check spy and restore
+   * @param {jest.SpyInstance} spy Spy instance
+   * @param {*} args Expected arguments
+   * @returns {void}
    */
   const checkSpy = (spy, args) => {
-    expect(spy).to.have.been.calledWith(args);
-    spy.restore();
+    expect(spy).toHaveBeenCalledWith(args);
+    spy.mockRestore();
   };
 
   it('should send events and add restrictions', () => {

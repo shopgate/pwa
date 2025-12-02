@@ -4,7 +4,7 @@ exports[`engage > core > hocs > withWidgetStyles should merge add the widget set
 <WithWidgetStyles(MockComponent)>
   <MockComponent
     widgetStyles={
-      Object {
+      {
         "some": "style",
       }
     }

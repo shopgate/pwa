@@ -2,6 +2,11 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import SwiperItem from '.';
 
+jest.mock('react', () => ({
+  ...jest.requireActual('react'),
+  useLayoutEffect: jest.requireActual('react').useEffect,
+}));
+
 describe('<SwiperItem />', () => {
   it('should not render without children', () => {
     const wrapper = shallow((

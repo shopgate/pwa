@@ -3,8 +3,8 @@
 exports[`engage > core > providers > AppProvider should initialize as expected 1`] = `
 <ContextProvider
   value={
-    Object {
-      "appConfig": Object {
+    {
+      "appConfig": {
         "some": "prop",
       },
       "isVisible": true,

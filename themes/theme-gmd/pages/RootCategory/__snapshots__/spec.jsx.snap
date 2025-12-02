@@ -8,9 +8,9 @@ exports[`Pages: <RootCategory /> should render  1`] = `
   <SurroundPortals
     portalName="category.list"
     portalProps={
-      Object {
-        "categories": Array [
-          Object {
+      {
+        "categories": [
+          {
             "id": "cat1",
             "name": "Cat Name",
           },
@@ -20,8 +20,8 @@ exports[`Pages: <RootCategory /> should render  1`] = `
   >
     <CategoryList
       categories={
-        Array [
-          Object {
+        [
+          {
             "id": "cat1",
             "name": "Cat Name",
           },

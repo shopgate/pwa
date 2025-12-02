@@ -33,7 +33,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="testlabel"
           transform={null}
@@ -62,7 +62,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="testlabel"
           transform={null}
@@ -86,7 +86,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -128,7 +128,7 @@ exports[`<FormElement /> should render a focused form element 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
             }
           }
@@ -172,7 +172,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -214,7 +214,7 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -256,7 +256,7 @@ exports[`<FormElement /> should show the error message 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-state-alert, #ff0000)",
             }
           }
@@ -280,7 +280,7 @@ exports[`<FormElement /> should show the error message 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="The error text"
           transform={null}
@@ -331,7 +331,7 @@ exports[`<FormElement /> should show the label 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="The label"
           transform={null}
@@ -360,7 +360,7 @@ exports[`<FormElement /> should show the label 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="The label"
           transform={null}
@@ -384,7 +384,7 @@ exports[`<FormElement /> should show the label 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -429,7 +429,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="The placeholder"
           transform={null}
@@ -453,7 +453,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }

@@ -1,3 +1,5 @@
+/* eslint camelcase: "off" */
+
 const sgData = {
   shop: {
     name: 'Offizieller Shopgate Testshop',

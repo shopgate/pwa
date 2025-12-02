@@ -4,14 +4,14 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
 <SurroundPortals
   portalName="component.product-image"
   portalProps={
-    Object {
-      "resolutions": Array [
-        Object {
+    {
+      "resolutions": [
+        {
           "blur": 2,
           "height": 50,
           "width": 50,
         },
-        Object {
+        {
           "height": 440,
           "width": 440,
         },
@@ -39,13 +39,13 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       placeholderSrc={null}
       ratio={null}
       resolutions={
-        Array [
-          Object {
+        [
+          {
             "blur": 2,
             "height": 50,
             "width": 50,
           },
-          Object {
+          {
             "height": 440,
             "width": 440,
           },
@@ -55,7 +55,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       srcmap={null}
       unwrapped={false}
       widgetSettings={
-        Object {
+        {
           "showInnerShadow": true,
         }
       }
@@ -89,14 +89,14 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
 <SurroundPortals
   portalName="component.product-image"
   portalProps={
-    Object {
-      "resolutions": Array [
-        Object {
+    {
+      "resolutions": [
+        {
           "blur": 2,
           "height": 50,
           "width": 50,
         },
-        Object {
+        {
           "height": 440,
           "width": 440,
         },
@@ -124,13 +124,13 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       placeholderSrc={null}
       ratio={null}
       resolutions={
-        Array [
-          Object {
+        [
+          {
             "blur": 2,
             "height": 50,
             "width": 50,
           },
-          Object {
+          {
             "height": 440,
             "width": 440,
           },
@@ -140,7 +140,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       srcmap={null}
       unwrapped={false}
       widgetSettings={
-        Object {
+        {
           "mocked": "widgetSetting",
         }
       }
@@ -160,13 +160,13 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
   placeholderSrc={null}
   ratio={null}
   resolutions={
-    Array [
-      Object {
+    [
+      {
         "blur": 2,
         "height": 50,
         "width": 50,
       },
-      Object {
+      {
         "height": 440,
         "width": 440,
       },
@@ -175,7 +175,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
   src="http://placehold.it/300x300"
   srcmap={null}
   widgetSettings={
-    Object {
+    {
       "showInnerShadow": false,
     }
   }
@@ -249,14 +249,14 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
 <SurroundPortals
   portalName="component.product-image"
   portalProps={
-    Object {
-      "resolutions": Array [
-        Object {
+    {
+      "resolutions": [
+        {
           "blur": 2,
           "height": 50,
           "width": 50,
         },
-        Object {
+        {
           "height": 440,
           "width": 440,
         },
@@ -284,13 +284,13 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       placeholderSrc={null}
       ratio={null}
       resolutions={
-        Array [
-          Object {
+        [
+          {
             "blur": 2,
             "height": 50,
             "width": 50,
           },
-          Object {
+          {
             "height": 440,
             "width": 440,
           },
@@ -300,7 +300,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       srcmap={null}
       unwrapped={false}
       widgetSettings={
-        Object {
+        {
           "mocked": "widgetSetting",
         }
       }

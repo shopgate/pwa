@@ -136,7 +136,7 @@ exports[`<TextField> should focus the input 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -285,7 +285,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -434,7 +434,7 @@ exports[`<TextField> should render a simple text field 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -585,7 +585,7 @@ exports[`<TextField> should render the text field as password 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -734,7 +734,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -885,7 +885,7 @@ exports[`<TextField> should sanitize the input 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -1034,7 +1034,7 @@ exports[`<TextField> should show the error message 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-state-alert, #ff0000)",
               }
             }
@@ -1058,7 +1058,7 @@ exports[`<TextField> should show the error message 1`] = `
           <Translate
             acceptPlainTextWithPlaceholders={false}
             className={null}
-            params={Object {}}
+            params={{}}
             role={null}
             string="This is an error here"
             transform={null}
@@ -1127,7 +1127,7 @@ exports[`<TextField> should show the label 1`] = `
           <Translate
             acceptPlainTextWithPlaceholders={false}
             className={null}
-            params={Object {}}
+            params={{}}
             role={null}
             string="This is the label"
             transform={null}
@@ -1156,7 +1156,7 @@ exports[`<TextField> should show the label 1`] = `
           <Translate
             acceptPlainTextWithPlaceholders={false}
             className={null}
-            params={Object {}}
+            params={{}}
             role={null}
             string="This is the label"
             transform={null}
@@ -1269,7 +1269,7 @@ exports[`<TextField> should show the label 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -1332,7 +1332,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
           <Translate
             acceptPlainTextWithPlaceholders={false}
             className={null}
-            params={Object {}}
+            params={{}}
             role={null}
             string="This is the placeholder text"
             transform={null}
@@ -1445,7 +1445,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -1473,14 +1473,14 @@ exports[`<TextField> should trigger the validation callback 1`] = `
   onFocusChange={[Function]}
   onValidate={
     [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           "",
           true,
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -1541,14 +1541,14 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                 onFocusChange={[Function]}
                 onValidate={
                   [MockFunction] {
-                    "calls": Array [
-                      Array [
+                    "calls": [
+                      [
                         "",
                         true,
                       ],
                     ],
-                    "results": Array [
-                      Object {
+                    "results": [
+                      {
                         "type": "return",
                         "value": undefined,
                       },
@@ -1580,14 +1580,14 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   onSanitize={[Function]}
                   onValidate={
                     [MockFunction] {
-                      "calls": Array [
-                        Array [
+                      "calls": [
+                        [
                           "",
                           true,
                         ],
                       ],
-                      "results": Array [
-                        Object {
+                      "results": [
+                        {
                           "type": "return",
                           "value": undefined,
                         },
@@ -1641,7 +1641,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }

@@ -19,7 +19,7 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
     <div
       aria-hidden={true}
       className={
-        Object {
+        {
           "data-css-hcovq9": "",
         }
       }
@@ -31,7 +31,7 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
     </div>
     <ContextMenu
       classes={
-        Object {
+        {
           "button": "",
           "container": "",
         }
@@ -84,7 +84,7 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
     <div
       aria-hidden={true}
       className={
-        Object {
+        {
           "data-css-hcovq9": "",
         }
       }
@@ -96,7 +96,7 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
     </div>
     <ContextMenu
       classes={
-        Object {
+        {
           "button": "",
           "container": "",
         }
@@ -149,7 +149,7 @@ exports[`<SelectContextChoices /> should render select with no options 1`] = `
     <div
       aria-hidden={true}
       className={
-        Object {
+        {
           "data-css-hcovq9": "",
         }
       }
@@ -161,7 +161,7 @@ exports[`<SelectContextChoices /> should render select with no options 1`] = `
     </div>
     <ContextMenu
       classes={
-        Object {
+        {
           "button": "",
           "container": "",
         }

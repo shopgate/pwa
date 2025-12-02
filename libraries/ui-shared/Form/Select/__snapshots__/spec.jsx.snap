@@ -13,7 +13,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
   name="test-name"
   onChange={[Function]}
   options={
-    Object {
+    {
       "DE": "Germany",
       "US": "United states",
     }
@@ -78,19 +78,19 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         <Icon
           className="css-1h5rpg9"
           color={null}
-          content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+          content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
           size="inherit"
           viewBox="0 0 24 24"
         >
           <svg
             className="css-yys9hb css-1h5rpg9 common__icon"
             dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+              {
+                "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
               }
             }
             style={
-              Object {
+              {
                 "fill": null,
                 "fontSize": "inherit",
               }
@@ -110,7 +110,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -136,7 +136,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
   name="test-name"
   onChange={[Function]}
   options={
-    Object {
+    {
       "DE": "Germany",
       "US": "United states",
     }
@@ -201,19 +201,19 @@ exports[`<Select /> should render select with 2 options 1`] = `
         <Icon
           className="css-1h5rpg9"
           color={null}
-          content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+          content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
           size="inherit"
           viewBox="0 0 24 24"
         >
           <svg
             className="css-yys9hb css-1h5rpg9 common__icon"
             dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+              {
+                "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
               }
             }
             style={
-              Object {
+              {
                 "fill": null,
                 "fontSize": "inherit",
               }
@@ -233,7 +233,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }
@@ -258,7 +258,7 @@ exports[`<Select /> should render select with no options 1`] = `
   multiple={false}
   name="test-name"
   onChange={[Function]}
-  options={Object {}}
+  options={{}}
   placeholder=""
   required={false}
   showErrorText={true}
@@ -304,19 +304,19 @@ exports[`<Select /> should render select with no options 1`] = `
         <Icon
           className="css-1h5rpg9"
           color={null}
-          content="<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />"
+          content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
           size="inherit"
           viewBox="0 0 24 24"
         >
           <svg
             className="css-yys9hb css-1h5rpg9 common__icon"
             dangerouslySetInnerHTML={
-              Object {
-                "__html": "<path d=\\"M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z\\"/><path d=\\"M0 0h24v24H0z\\" fill=\\"none\\" />",
+              {
+                "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
               }
             }
             style={
-              Object {
+              {
                 "fill": null,
                 "fontSize": "inherit",
               }
@@ -336,7 +336,7 @@ exports[`<Select /> should render select with no options 1`] = `
           <div
             className="css-1tpmuef"
             style={
-              Object {
+              {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
                 "transform": "scale3d(0,1,1)",
               }

@@ -17,11 +17,12 @@ jest.mock('redux-logger', () => ({
 const mockedReducer = (state = {}) => state;
 
 describe.skip('streams/user.js', () => {
-  const { dispatch } = configureStore({ mocked: mockedReducer });
+  let dispatch;
   let loginMockSubscriber;
   let updateMockSubscriber;
 
   beforeEach(() => {
+    ({ dispatch } = configureStore({ mocked: mockedReducer }));
     loginMockSubscriber = jest.fn();
     updateMockSubscriber = jest.fn();
 

@@ -3,7 +3,7 @@
 exports[`<ProductProperties /> should not render if no properties where passed 1`] = `
 <Connect(ProductProperties)
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -17,7 +17,7 @@ exports[`<ProductProperties /> should not render if no properties where passed 1
     dispatch={[Function]}
     properties={null}
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -30,7 +30,7 @@ exports[`<ProductProperties /> should not render if no properties where passed 1
     <SurroundPortals
       portalName="product.properties"
       portalProps={
-        Object {
+        {
           "properties": null,
         }
       }
@@ -46,7 +46,7 @@ exports[`<ProductProperties /> should not render if no properties where passed 1
 exports[`<ProductProperties /> should render if properties are passed 1`] = `
 <Connect(ProductProperties)
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -59,14 +59,14 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
   <ProductProperties
     dispatch={[Function]}
     properties={
-      Array [
-        Object {
+      [
+        {
           "displayGroup": "test",
         },
       ]
     }
     store={
-      Object {
+      {
         "clearActions": [Function],
         "dispatch": [Function],
         "getActions": [Function],
@@ -79,9 +79,9 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
     <SurroundPortals
       portalName="product.properties"
       portalProps={
-        Object {
-          "properties": Array [
-            Object {
+        {
+          "properties": [
+            {
               "displayGroup": "test",
             },
           ],
@@ -90,8 +90,8 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
     >
       <Content
         properties={
-          Array [
-            Object {
+          [
+            {
               "displayGroup": "test",
             },
           ]
@@ -111,8 +111,8 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
               <tbody>
                 <Rows
                   properties={
-                    Array [
-                      Object {
+                    [
+                      {
                         "displayGroup": "test",
                       },
                     ]
@@ -131,14 +131,14 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                       <td
                         aria-hidden={true}
                         className={
-                          Object {
+                          {
                             "data-css-fl9ufm": "",
                           }
                         }
                       >
                         <span
                           dangerouslySetInnerHTML={
-                            Object {
+                            {
                               "__html": undefined,
                             }
                           }
@@ -147,7 +147,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                       <td
                         aria-hidden={true}
                         className={
-                          Object {
+                          {
                             "data-css-fl9ufm": "",
                           }
                         }
@@ -155,7 +155,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                       >
                         <span
                           dangerouslySetInnerHTML={
-                            Object {
+                            {
                               "__html": undefined,
                             }
                           }
