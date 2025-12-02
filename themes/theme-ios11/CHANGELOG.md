@@ -1,5 +1,29 @@
 # Changelog
 
+## [v7.29.5](https://github.com/shopgate/pwa/compare/v7.29.4...v7.29.5) (2025-11-28)
+
+#### :rocket: Enhancement
+* [#1427](https://github.com/shopgate/pwa/pull/1427) Add custom line breaks for image row widget ([@SaschaKrist](https://github.com/SaschaKrist))
+
+#### :bug: Bug Fix
+* [#1430](https://github.com/shopgate/pwa/pull/1430) Fix HtmlSanitizer bug with click handling of links ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.29.4](https://github.com/shopgate/pwa/compare/v7.29.3...v7.29.4) (2025-11-27)
+
+#### :rocket: Enhancement
+* [#1426](https://github.com/shopgate/pwa/pull/1426) Add link wrapper to video widget ([@SaschaKrist](https://github.com/SaschaKrist))
+
+
+## [v7.29.3](https://github.com/shopgate/pwa/compare/v7.29.1...v7.29.3) (2025-11-20)
+
+#### :rocket: Enhancement
+* [#1422](https://github.com/shopgate/pwa/pull/1422) Optimize product data fetching for product list widgets based on item number lists ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1421](https://github.com/shopgate/pwa/pull/1421) Fix video widget issues ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.29.1](https://github.com/shopgate/pwa/compare/v7.29.0...v7.29.1) (2025-11-07)
 
 #### :rocket: Enhancement

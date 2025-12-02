@@ -158,7 +158,7 @@ describe('<HtmlSanitizer />', () => {
         target: aTag,
         preventDefault: () => {},
       };
-      wrapper.instance().handleTap(event);
+      wrapper.instance().handleClick(event);
 
       expect(mockedHandleClick).toHaveBeenCalledTimes(1);
       expect(mockedHandleClick).toHaveBeenCalledWith('#follow-me-and-everything-is-alright', '');
@@ -189,7 +189,7 @@ describe('<HtmlSanitizer />', () => {
         target: spanTag,
         preventDefault: () => {},
       };
-      wrapper.instance().handleTap(event);
+      wrapper.instance().handleClick(event);
 
       expect(mockedHandleClick).toHaveBeenCalledTimes(1);
       expect(mockedHandleClick).toHaveBeenCalledWith('#I-ll-be-the-one-to-tuck-you-in-at-night', '_blank');
