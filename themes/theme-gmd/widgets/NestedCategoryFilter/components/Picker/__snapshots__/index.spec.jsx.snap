@@ -329,84 +329,45 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 opacity={20}
               >
                 <Transition
-                  childrenStyles={
+                  appear={true}
+                  enter={true}
+                  exit={true}
+                  in={true}
+                  mountOnEnter={true}
+                  nodeRef={
                     Object {
-                      "appear": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "base": Object {
+                      "current": <div
+                        aria-hidden="true"
+                        class="css-30873t  common__backdrop"
+                        data-test-id="Backdrop"
+                        style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                      />,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <div
+                    aria-hidden={true}
+                    className="css-30873t  common__backdrop"
+                    data-test-id="Backdrop"
+                    onClick={[Function]}
+                    style={
+                      Object {
                         "background": "#000",
-                        "opacity": 0,
+                        "opacity": 0.2,
                         "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
-                      },
-                      "enter": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "leave": Object {
-                        "opacity": 0,
-                        "pointerEvents": "none",
-                      },
+                      }
                     }
-                  }
-                  component="div"
-                >
-                  <TransitionHooks
-                    component="div"
-                  >
-                    <div>
-                      <TransitionChild
-                        childrenAppearStyle={
-                          Object {
-                            "opacity": 0.2,
-                            "pointerEvents": "auto",
-                          }
-                        }
-                        childrenBaseStyle={
-                          Object {
-                            "background": "#000",
-                            "opacity": 0,
-                            "pointerEvents": "auto",
-                            "transition": "opacity 200ms ease-out",
-                            "zIndex": 4,
-                          }
-                        }
-                        childrenEnterStyle={
-                          Object {
-                            "opacity": 0.2,
-                            "pointerEvents": "auto",
-                          }
-                        }
-                        childrenLeaveStyle={
-                          Object {
-                            "opacity": 0,
-                            "pointerEvents": "none",
-                          }
-                        }
-                        key=".$.$backdrop"
-                      >
-                        <div
-                          aria-hidden={true}
-                          className="css-30873t  common__backdrop"
-                          data-test-id="Backdrop"
-                          key="backdrop"
-                          onClick={[Function]}
-                          style={
-                            Object {
-                              "background": "#000",
-                              "opacity": 0,
-                              "pointerEvents": "auto",
-                              "transition": "opacity 200ms ease-out",
-                              "zIndex": 4,
-                            }
-                          }
-                        />
-                      </TransitionChild>
-                    </div>
-                  </TransitionHooks>
+                  />
                 </Transition>
               </Backdrop>
             </section>
@@ -747,84 +708,45 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 opacity={20}
               >
                 <Transition
-                  childrenStyles={
+                  appear={true}
+                  enter={true}
+                  exit={true}
+                  in={true}
+                  mountOnEnter={true}
+                  nodeRef={
                     Object {
-                      "appear": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "base": Object {
+                      "current": <div
+                        aria-hidden="true"
+                        class="css-30873t  common__backdrop"
+                        data-test-id="Backdrop"
+                        style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                      />,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <div
+                    aria-hidden={true}
+                    className="css-30873t  common__backdrop"
+                    data-test-id="Backdrop"
+                    onClick={[Function]}
+                    style={
+                      Object {
                         "background": "#000",
-                        "opacity": 0,
+                        "opacity": 0.2,
                         "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
-                      },
-                      "enter": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "leave": Object {
-                        "opacity": 0,
-                        "pointerEvents": "none",
-                      },
+                      }
                     }
-                  }
-                  component="div"
-                >
-                  <TransitionHooks
-                    component="div"
-                  >
-                    <div>
-                      <TransitionChild
-                        childrenAppearStyle={
-                          Object {
-                            "opacity": 0.2,
-                            "pointerEvents": "auto",
-                          }
-                        }
-                        childrenBaseStyle={
-                          Object {
-                            "background": "#000",
-                            "opacity": 0,
-                            "pointerEvents": "auto",
-                            "transition": "opacity 200ms ease-out",
-                            "zIndex": 4,
-                          }
-                        }
-                        childrenEnterStyle={
-                          Object {
-                            "opacity": 0.2,
-                            "pointerEvents": "auto",
-                          }
-                        }
-                        childrenLeaveStyle={
-                          Object {
-                            "opacity": 0,
-                            "pointerEvents": "none",
-                          }
-                        }
-                        key=".$.$backdrop"
-                      >
-                        <div
-                          aria-hidden={true}
-                          className="css-30873t  common__backdrop"
-                          data-test-id="Backdrop"
-                          key="backdrop"
-                          onClick={[Function]}
-                          style={
-                            Object {
-                              "background": "#000",
-                              "opacity": 0,
-                              "pointerEvents": "auto",
-                              "transition": "opacity 200ms ease-out",
-                              "zIndex": 4,
-                            }
-                          }
-                        />
-                      </TransitionChild>
-                    </div>
-                  </TransitionHooks>
+                  />
                 </Transition>
               </Backdrop>
             </section>
@@ -1205,84 +1127,45 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 opacity={20}
               >
                 <Transition
-                  childrenStyles={
+                  appear={true}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
                     Object {
-                      "appear": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "base": Object {
-                        "background": "#000",
-                        "opacity": 0,
-                        "pointerEvents": "auto",
-                        "transition": "opacity 200ms ease-out",
-                        "zIndex": 4,
-                      },
-                      "enter": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "leave": Object {
-                        "opacity": 0,
-                        "pointerEvents": "none",
-                      },
+                      "current": <div
+                        aria-hidden="true"
+                        class="css-30873t  common__backdrop"
+                        data-test-id="Backdrop"
+                        style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
+                      />,
                     }
                   }
-                  component="div"
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
                 >
-                  <TransitionHooks
-                    component="div"
-                  >
-                    <div>
-                      <TransitionChild
-                        childrenAppearStyle={
-                          Object {
-                            "opacity": 0.2,
-                            "pointerEvents": "auto",
-                          }
-                        }
-                        childrenBaseStyle={
-                          Object {
-                            "background": "#000",
-                            "opacity": 0,
-                            "pointerEvents": "auto",
-                            "transition": "opacity 200ms ease-out",
-                            "zIndex": 4,
-                          }
-                        }
-                        childrenEnterStyle={
-                          Object {
-                            "opacity": 0.2,
-                            "pointerEvents": "auto",
-                          }
-                        }
-                        childrenLeaveStyle={
-                          Object {
-                            "opacity": 0,
-                            "pointerEvents": "none",
-                          }
-                        }
-                        key=".$.$backdrop"
-                      >
-                        <div
-                          aria-hidden={true}
-                          className="css-30873t  common__backdrop"
-                          data-test-id="Backdrop"
-                          key="backdrop"
-                          onClick={[Function]}
-                          style={
-                            Object {
-                              "background": "#000",
-                              "opacity": 0,
-                              "pointerEvents": "auto",
-                              "transition": "opacity 200ms ease-out",
-                              "zIndex": 4,
-                            }
-                          }
-                        />
-                      </TransitionChild>
-                    </div>
-                  </TransitionHooks>
+                  <div
+                    aria-hidden={true}
+                    className="css-30873t  common__backdrop"
+                    data-test-id="Backdrop"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "background": "#000",
+                        "opacity": 0,
+                        "pointerEvents": "none",
+                        "transition": "opacity 200ms ease-out",
+                        "zIndex": 4,
+                      }
+                    }
+                  />
                 </Transition>
               </Backdrop>
             </section>
@@ -1624,84 +1507,45 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 opacity={20}
               >
                 <Transition
-                  childrenStyles={
+                  appear={true}
+                  enter={true}
+                  exit={true}
+                  in={true}
+                  mountOnEnter={true}
+                  nodeRef={
                     Object {
-                      "appear": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "base": Object {
+                      "current": <div
+                        aria-hidden="true"
+                        class="css-30873t  common__backdrop"
+                        data-test-id="Backdrop"
+                        style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                      />,
+                    }
+                  }
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                >
+                  <div
+                    aria-hidden={true}
+                    className="css-30873t  common__backdrop"
+                    data-test-id="Backdrop"
+                    onClick={[Function]}
+                    style={
+                      Object {
                         "background": "#000",
-                        "opacity": 0,
+                        "opacity": 0.2,
                         "pointerEvents": "auto",
                         "transition": "opacity 200ms ease-out",
                         "zIndex": 4,
-                      },
-                      "enter": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "leave": Object {
-                        "opacity": 0,
-                        "pointerEvents": "none",
-                      },
+                      }
                     }
-                  }
-                  component="div"
-                >
-                  <TransitionHooks
-                    component="div"
-                  >
-                    <div>
-                      <TransitionChild
-                        childrenAppearStyle={
-                          Object {
-                            "opacity": 0.2,
-                            "pointerEvents": "auto",
-                          }
-                        }
-                        childrenBaseStyle={
-                          Object {
-                            "background": "#000",
-                            "opacity": 0,
-                            "pointerEvents": "auto",
-                            "transition": "opacity 200ms ease-out",
-                            "zIndex": 4,
-                          }
-                        }
-                        childrenEnterStyle={
-                          Object {
-                            "opacity": 0.2,
-                            "pointerEvents": "auto",
-                          }
-                        }
-                        childrenLeaveStyle={
-                          Object {
-                            "opacity": 0,
-                            "pointerEvents": "none",
-                          }
-                        }
-                        key=".$.$backdrop"
-                      >
-                        <div
-                          aria-hidden={true}
-                          className="css-30873t  common__backdrop"
-                          data-test-id="Backdrop"
-                          key="backdrop"
-                          onClick={[Function]}
-                          style={
-                            Object {
-                              "background": "#000",
-                              "opacity": 0,
-                              "pointerEvents": "auto",
-                              "transition": "opacity 200ms ease-out",
-                              "zIndex": 4,
-                            }
-                          }
-                        />
-                      </TransitionChild>
-                    </div>
-                  </TransitionHooks>
+                  />
                 </Transition>
               </Backdrop>
             </section>
@@ -1842,37 +1686,25 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                 opacity={20}
               >
                 <Transition
-                  childrenStyles={
+                  appear={true}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
                     Object {
-                      "appear": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "base": Object {
-                        "background": "#000",
-                        "opacity": 0,
-                        "pointerEvents": "auto",
-                        "transition": "opacity 200ms ease-out",
-                        "zIndex": 4,
-                      },
-                      "enter": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "leave": Object {
-                        "opacity": 0,
-                        "pointerEvents": "none",
-                      },
+                      "current": null,
                     }
                   }
-                  component="div"
-                >
-                  <TransitionHooks
-                    component="div"
-                  >
-                    <div />
-                  </TransitionHooks>
-                </Transition>
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                />
               </Backdrop>
             </section>
           </Sheet>
@@ -2013,37 +1845,25 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                 opacity={20}
               >
                 <Transition
-                  childrenStyles={
+                  appear={true}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
                     Object {
-                      "appear": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "base": Object {
-                        "background": "#000",
-                        "opacity": 0,
-                        "pointerEvents": "auto",
-                        "transition": "opacity 200ms ease-out",
-                        "zIndex": 4,
-                      },
-                      "enter": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "leave": Object {
-                        "opacity": 0,
-                        "pointerEvents": "none",
-                      },
+                      "current": null,
                     }
                   }
-                  component="div"
-                >
-                  <TransitionHooks
-                    component="div"
-                  >
-                    <div />
-                  </TransitionHooks>
-                </Transition>
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                />
               </Backdrop>
             </section>
           </Sheet>
@@ -2179,37 +1999,25 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                 opacity={20}
               >
                 <Transition
-                  childrenStyles={
+                  appear={true}
+                  enter={true}
+                  exit={true}
+                  in={false}
+                  mountOnEnter={true}
+                  nodeRef={
                     Object {
-                      "appear": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "base": Object {
-                        "background": "#000",
-                        "opacity": 0,
-                        "pointerEvents": "auto",
-                        "transition": "opacity 200ms ease-out",
-                        "zIndex": 4,
-                      },
-                      "enter": Object {
-                        "opacity": 0.2,
-                        "pointerEvents": "auto",
-                      },
-                      "leave": Object {
-                        "opacity": 0,
-                        "pointerEvents": "none",
-                      },
+                      "current": null,
                     }
                   }
-                  component="div"
-                >
-                  <TransitionHooks
-                    component="div"
-                  >
-                    <div />
-                  </TransitionHooks>
-                </Transition>
+                  onEnter={[Function]}
+                  onEntered={[Function]}
+                  onEntering={[Function]}
+                  onExit={[Function]}
+                  onExited={[Function]}
+                  onExiting={[Function]}
+                  timeout={200}
+                  unmountOnExit={true}
+                />
               </Backdrop>
             </section>
           </Sheet>

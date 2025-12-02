@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import StoreListProduct from './StoreListProduct';
 import StoreListSearch from './StoreListSearch';
@@ -16,4 +15,4 @@ const StoreList = () => (
   </React.Fragment>
 );
 
-export default hot(StoreList);
+export default StoreList;

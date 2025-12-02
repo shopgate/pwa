@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Fragment, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
@@ -168,4 +167,4 @@ CheckoutAddress.defaultProps = {
   type: ADDRESS_TYPE_BILLING,
 };
 
-export default hot(CheckoutAddress);
+export default CheckoutAddress;

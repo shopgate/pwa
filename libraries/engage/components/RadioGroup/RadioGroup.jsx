@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
@@ -77,4 +76,4 @@ RadioGroup.defaultProps = {
   component: 'div',
 };
 
-export default hot(RadioGroup);
+export default RadioGroup;

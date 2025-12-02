@@ -49,7 +49,7 @@ module.exports = (api) => {
       },
       development: {
         plugins: [
-          'react-hot-loader/babel',
+
         ],
       },
       production: {

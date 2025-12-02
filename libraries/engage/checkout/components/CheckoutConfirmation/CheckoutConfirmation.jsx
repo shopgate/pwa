@@ -1,5 +1,4 @@
 import React, { useMemo, useEffect, useState } from 'react';
-import { hot } from 'react-hot-loader/root';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { ResponsiveContainer, RippleButton } from '@shopgate/engage/components';
@@ -233,4 +232,4 @@ CheckoutConfirmation.propTypes = {
   onContinueShopping: PropTypes.func.isRequired,
 };
 
-export default hot(connect(CheckoutConfirmation));
+export default connect(CheckoutConfirmation);

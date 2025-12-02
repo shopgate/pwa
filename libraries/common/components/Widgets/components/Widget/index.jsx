@@ -10,7 +10,10 @@ import styles from './style';
 class Widget extends Component {
   static propTypes = {
     config: PropTypes.shape().isRequired,
-    component: PropTypes.func,
+    component: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.elementType,
+    ]),
   };
 
   static defaultProps = {

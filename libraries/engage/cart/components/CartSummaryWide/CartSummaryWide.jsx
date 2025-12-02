@@ -1,5 +1,4 @@
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
 import { i18n } from '@shopgate/engage/core';
 import {
   container, headline, summary, total, grandTotal,
@@ -41,4 +40,4 @@ const CartSummaryWide = () => (
   </div>
 );
 
-export default hot(CartSummaryWide);
+export default CartSummaryWide;

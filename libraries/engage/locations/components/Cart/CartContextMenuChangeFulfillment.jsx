@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader/root';
 import { FulfillmentProvider } from '../../providers';
 import { FulfillmentSheetContent } from '../FulfillmentSheet/FulfillmentSheetContent';
 import CartContextMenuChangeFulfillmentContent from './CartContextMenuChangeFulfillmentContent';
@@ -42,4 +41,4 @@ CartContextMenuChangeFulfillment.propTypes = {
   }).isRequired,
 };
 
-export default hot(CartContextMenuChangeFulfillment);
+export default CartContextMenuChangeFulfillment;

@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -112,4 +111,4 @@ MessageBar.defaultProps = {
   showIcons: false,
 };
 
-export default hot(React.memo(MessageBar));
+export default React.memo(MessageBar);

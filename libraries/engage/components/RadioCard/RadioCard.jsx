@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
@@ -129,4 +128,4 @@ RadioCard.defaultProps = {
   renderCard: CardComponent,
 };
 
-export default hot(RadioCard);
+export default RadioCard;

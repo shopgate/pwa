@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Fragment, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -126,4 +125,4 @@ ForgotPassword.propTypes = {
   resetPassword: PropTypes.func.isRequired,
 };
 
-export default hot(connect(ForgotPassword));
+export default connect(ForgotPassword);
