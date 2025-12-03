@@ -9,6 +9,9 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
  * @property {boolean} parallax Whether to apply a parallax effect to the image
+ * @property {Object} backgroundImage Banner background image
+ * @property {string} backgroundImage.url Banner background image URL
+ * @property {string} backgroundImage.alt Banner background image alt text
  * @property {"fillAndCrop"|"showFull"} imageFit How the image should be displayed
  * @property {"image"|"video"} mediaType The type of media to display
  * @property {string} mediaUrl The URL of the media to display
@@ -30,7 +33,7 @@ export const useHeroBannerWidget = () => {
   const {
     borderRadius,
     borderRadiusCustom,
-    mediaType,
+    mediaType = 'image',
     backgroundImage,
     url,
     ...rest

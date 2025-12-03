@@ -3,7 +3,7 @@ import { ConditionalWrapper, Link } from '@shopgate/engage/components';
 import { WidgetRichText, ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useHeroBannerWidget } from './hooks';
-import Video from '../Video';
+import WidgetVideo from '../../components/WidgetVideo';
 
 const useStyles = makeStyles()(theme => ({
   link: {
@@ -93,7 +93,7 @@ const HeroBanner = () => {
             />
           ) : null}
           {mediaType === 'video' ? (
-            <Video isBanner />
+            <WidgetVideo isBanner url={mediaUrl} borderRadius={borderRadius} />
           ) : null}
         </div>
       </div>
