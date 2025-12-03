@@ -38,10 +38,7 @@ const SheetItem = ({ item, selected, onClick }) => {
 
   return (
     <button
-      className={classNames({
-        [classes.button]: !selected,
-        [classes.buttonSelected]: selected,
-      })}
+      className={classNames(classes.button, { [classes.buttonSelected]: selected })}
       key={item.id}
       value={item.id}
       onClick={onClick}
