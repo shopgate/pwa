@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.29.5](https://github.com/shopgate/pwa/compare/v7.29.4...v7.29.5) (2025-11-28)
+
+#### :rocket: Enhancement
+* [#1427](https://github.com/shopgate/pwa/pull/1427) Add custom line breaks for image row widget ([@SaschaKrist](https://github.com/SaschaKrist))
+
+#### :bug: Bug Fix
+* [#1430](https://github.com/shopgate/pwa/pull/1430) Fix HtmlSanitizer bug with click handling of links ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.29.4](https://github.com/shopgate/pwa/compare/v7.29.3...v7.29.4) (2025-11-27)
 
 #### :rocket: Enhancement
