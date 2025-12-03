@@ -61,13 +61,7 @@ const WidgetVideo = ({
   link,
 }) => {
   const reduceMotion = useReduceMotion();
-  let autoPlayValue = true;
-  if (reduceMotion) {
-    autoPlayValue = false;
-  }
-  if (!reduceMotion) {
-    autoPlayValue = isBanner ? true : autoplay;
-  }
+  const autoplayValue = reduceMotion ? false : isBanner || autoplay;
 
   const { classes, cx } = useStyles({ borderRadius });
   const [hasError, setHasError] = useState(false);
@@ -76,17 +70,17 @@ const WidgetVideo = ({
   const isValidUrl = useMemo(() => (url ? isHttpsUrl(url) : false), [url]);
 
   const showControls = useMemo(() => {
-    if (link) {
+    if (link || isBanner) {
       // When a link is set we never show controls to avoid side effects due to two clickable areas.
       return false;
     }
 
-    return (!autoplay || reduceMotion) ? true : controls;
-  }, [autoplay, controls, link, reduceMotion]);
+    return (!autoplayValue || reduceMotion) ? true : controls;
+  }, [autoplayValue, controls, isBanner, link, reduceMotion]);
 
   // Resume video playback when app returned from background
   useAppEventOnReturnFromBackground(() => {
-    if (!videoRef.current || reduceMotion || !autoPlayValue) {
+    if (!videoRef.current || reduceMotion || !autoplayValue) {
       return;
     }
 
@@ -104,13 +98,13 @@ const WidgetVideo = ({
       return;
     }
 
-    if (autoPlayValue) {
+    if (autoplayValue) {
       videoRef.current.play();
     } else {
       videoRef.current.pause();
       videoRef.current.currentTime = 0;
     }
-  }, [autoPlayValue, reduceMotion]);
+  }, [autoplayValue, reduceMotion]);
 
   useEffect(() => {
     if (!url || url !== prevUrl) {
@@ -135,8 +129,8 @@ const WidgetVideo = ({
           // Set play position to 0.001s to guarantee that there is always a frame shown
           src={`${url}#t=0.001`}
           muted={isBanner ? true : muted}
-          controls={isBanner ? false : showControls}
-          autoPlay={autoPlayValue}
+          controls={showControls}
+          autoPlay={autoplayValue}
           className={cx(classes.video, { [classes.banner]: isBanner })}
           preload="auto"
           playsInline
@@ -154,7 +148,7 @@ const WidgetVideo = ({
 
 WidgetVideo.propTypes = {
   autoplay: PropTypes.bool,
-  borderRadius: PropTypes.string,
+  borderRadius: PropTypes.number,
   controls: PropTypes.bool,
   isBanner: PropTypes.bool,
   link: PropTypes.string,

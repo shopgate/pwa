@@ -4,7 +4,6 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 /**
  * @typedef {Object} HeroBanner
  * @property {string} text Banner text content
- * @property {string} altText Banner background image alt text
  * @property {string} link Optional banner link
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
@@ -14,7 +13,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {string} backgroundImage.alt Banner background image alt text
  * @property {"fillAndCrop"|"showFull"} imageFit How the image should be displayed
  * @property {"image"|"video"} mediaType The type of media to display
- * @property {string} mediaUrl The URL of the media to display
+ * @property {string} url The URL of the media to display
  */
 
 /**
