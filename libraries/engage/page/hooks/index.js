@@ -174,3 +174,33 @@ export const useWidgetProducts = (options = {}) => {
     totalResultCount: widgetProducts.totalProductCount,
   };
 };
+
+/**
+ * Custom hook to manage and persist state in localStorage.
+ * @param {string} key The key under which the value is stored in localStorage.
+ * @returns {[Array, Function]} A tuple containing the stored value and a function to update it.
+ */
+export const useLocalStorage = (key) => {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      return JSON.parse(window.localStorage.getItem(key));
+    } catch (error) {
+      return null;
+    }
+  });
+
+  /**
+   * Sets a new value both in state and in localStorage.
+   * @param {Array} value The new value to store.
+   */
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      //
+    }
+  };
+
+  return [storedValue, setValue];
+};

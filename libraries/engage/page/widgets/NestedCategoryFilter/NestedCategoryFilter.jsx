@@ -6,11 +6,12 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { useRoute } from '@shopgate/engage/core';
+import { useRoute, usePrevious } from '@shopgate/engage/core';
 import { router } from '@virtuous/conductor';
 import CategoryPicker from './components/Picker';
 import { useNestedCategoryFilterWidget } from './hooks';
 import WidgetHeadline from '../../components/WidgetHeadline';
+import { useLocalStorage } from '../../hooks';
 
 const { colors, variables } = themeConfig;
 
@@ -36,7 +37,6 @@ const useStyles = makeStyles()({
 const NestedCategoryFilter = () => {
   const { classes } = useStyles();
   const { state: routeState, id: routeId } = useRoute();
-
   const {
     maxDepth = 3,
     category,
@@ -46,22 +46,37 @@ const NestedCategoryFilter = () => {
     level3Label,
     showHeadline,
     headline,
+    rememberSelection,
   } = useNestedCategoryFilterWidget();
 
-  const [pickers, setPickers] = useState(routeState[code]?.pickers ||
-    [{
+  const prevCategory = usePrevious(category);
+
+  const LOCAL_STORAGE_KEY = `nestedCategoryFilterState-${code}`;
+  const [storedPickers, setStoredPickers] = useLocalStorage(LOCAL_STORAGE_KEY);
+
+  const initialPickers = rememberSelection && storedPickers
+    ? storedPickers : routeState[code]?.pickers
+    ?? [{
       categoryId: category,
       selectedId: null,
-    }]);
+    }];
+
+  const [pickers, setPickers] = useState(initialPickers);
   const [buttonCategoryId, setButtonCategoryId] = useState(null);
 
   useEffect(() => {
-    setPickers([{
-      categoryId: category,
-      selectedId: null,
-    }]);
+    setStoredPickers(pickers);
+  }, [pickers, setStoredPickers]);
+
+  useEffect(() => {
+    if (prevCategory && prevCategory !== category) {
+      setPickers([{
+        categoryId: category,
+        selectedId: null,
+      }]);
+    }
     setButtonCategoryId(null);
-  }, [category]);
+  }, [prevCategory, category]);
 
   useEffect(() => () => {
     router.update(routeId, {
@@ -82,7 +97,7 @@ const NestedCategoryFilter = () => {
     let updatedPickers = pickers.slice(0, selectedIndex + 1);
     updatedPickers[updatedPickers.length - 1].selectedId = subcategoryId;
     // Check if a new picker should be added
-    const limitReached = updatedPickers.length === Number(maxDepth);
+    const limitReached = updatedPickers?.length === Number(maxDepth);
     const appendNewPicker = !!childrenCount && !limitReached;
 
     if (appendNewPicker) {
@@ -98,6 +113,7 @@ const NestedCategoryFilter = () => {
 
   const categoryPickers = useMemo(() => {
     const labels = [level1Label, level2Label, level3Label];
+
     return (
       <div>
         {pickers.slice(0, maxDepth).map((entry, index) => {

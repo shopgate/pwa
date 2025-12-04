@@ -10,6 +10,8 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  * @property {string} level3Label The label for level 3 categories.
  * @property {boolean} showHeadline Whether to show the headline.
  * @property {Object} headline The headline data including text and styles.
+ * @property {boolean} rememberSelection Whether to remember user selection
+ * in order to prefill the widget with the shopper’s last chosen path on future visits .
  */
 
 /**
