@@ -2,9 +2,8 @@ import React, {
   useCallback, useState, useEffect, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchCategory } from '@shopgate/engage/category';
+import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -57,7 +56,7 @@ const CategoryPicker = ({
 }) => {
   const subcategories = useSelector(state => getCategoriesById(state, { categoryId }));
   const dispatch = useDispatch();
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const [sheetIsOpen, setSheetIsOpen] = useState(false);
   const hasSubcategories = Array.isArray(subcategories) && subcategories.length > 0;
@@ -65,7 +64,7 @@ const CategoryPicker = ({
 
   useEffect(() => {
     if (categoryId !== null && subcategories === null) {
-      dispatch(fetchCategory(categoryId));
+      dispatch(fetchCategoryOrRootCategories(categoryId));
     }
   }, [categoryId, dispatch, subcategories]);
 
@@ -105,7 +104,7 @@ const CategoryPicker = ({
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <div
         onClick={handlePickerClick}
-        className={classNames(classes.button, { [classes.buttonDisabled]: disabled })}
+        className={cx(classes.button, { [classes.buttonDisabled]: disabled })}
       >
         {label && <div className={classes.label}>{label}</div>}
         <div className={classes.selection}>{buttonLabel}</div>

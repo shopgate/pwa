@@ -4,7 +4,6 @@ import { useWidget } from '@shopgate/engage/page/hooks';
  * @typedef {Object} NestedCategoryFilter
  * @property {number} [maxDepth=3] The maximum depth of categories to display.
  * @property {string} category The category ID.
- * @property {string} code The widget code.
  * @property {string} level1Label The label for level 1 categories.
  * @property {string} level2Label The label for level 2 categories.
  * @property {string} level3Label The label for level 3 categories.

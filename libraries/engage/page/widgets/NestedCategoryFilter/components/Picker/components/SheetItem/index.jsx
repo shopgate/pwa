@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig } from '@shopgate/engage';
 
 const { colors, variables } = themeConfig;
 const bgColor = colors.darkGray;
@@ -34,12 +33,11 @@ const useStyles = makeStyles()({
  * @return {JSX.Element}
  */
 const SheetItem = ({ item, selected, onClick }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <button
-      className={classNames(classes.button, { [classes.buttonSelected]: selected })}
-      key={item.id}
+      className={cx(classes.button, { [classes.buttonSelected]: selected })}
       value={item.id}
       onClick={onClick}
       type="button"

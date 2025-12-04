@@ -2,16 +2,15 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import { I18n, ButtonLink } from '@shopgate/engage/components';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
+import { bin2hex } from '@shopgate/engage/core/helpers';
+import { CATEGORY_PATH } from '@shopgate/engage/category';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { useRoute, usePrevious } from '@shopgate/engage/core';
+import { themeConfig } from '@shopgate/engage';
+import { useRoute, usePrevious, useLocalStorage } from '@shopgate/engage/core/hooks';
 import { router } from '@virtuous/conductor';
 import CategoryPicker from './components/Picker';
 import { useNestedCategoryFilterWidget } from './hooks';
 import WidgetHeadline from '../../components/WidgetHeadline';
-import { useLocalStorage } from '../../hooks';
 
 const { colors, variables } = themeConfig;
 
@@ -41,12 +40,10 @@ const NestedCategoryFilter = () => {
     maxDepth = 3,
     category,
     code,
-    level1Label,
-    level2Label,
-    level3Label,
     showHeadline,
     headline,
     rememberSelection,
+    ...labels
   } = useNestedCategoryFilterWidget();
 
   const prevCategory = usePrevious(category);
@@ -62,11 +59,14 @@ const NestedCategoryFilter = () => {
     }];
 
   const [pickers, setPickers] = useState(initialPickers);
-  const [buttonCategoryId, setButtonCategoryId] = useState(null);
+  const [buttonCategoryId, setButtonCategoryId] = useState(routeState[code]?.buttonCategoryId
+    || null);
 
   useEffect(() => {
-    setStoredPickers(pickers);
-  }, [pickers, setStoredPickers]);
+    if (rememberSelection) {
+      setStoredPickers(pickers);
+    }
+  }, [pickers, rememberSelection, setStoredPickers]);
 
   useEffect(() => {
     if (prevCategory && prevCategory !== category) {
@@ -111,26 +111,22 @@ const NestedCategoryFilter = () => {
     setButtonCategoryId(!appendNewPicker ? subcategoryId : null);
   }, [maxDepth, pickers]);
 
-  const categoryPickers = useMemo(() => {
-    const labels = [level1Label, level2Label, level3Label];
-
-    return (
-      <div>
-        {pickers.slice(0, maxDepth).map((entry, index) => {
-          const { categoryId, selectedId } = entry;
-          return (
-            <CategoryPicker
-              key={`${categoryId}-${code}`}
-              categoryId={categoryId}
-              selectedId={selectedId}
-              onSelect={handleSelection}
-              label={labels[index] || ''}
-            />
-          );
-        })}
-      </div>
-    );
-  }, [code, handleSelection, level1Label, level2Label, level3Label, maxDepth, pickers]);
+  const categoryPickers = useMemo(() => (
+    <>
+      {pickers.slice(0, maxDepth).map((entry, index) => {
+        const { categoryId, selectedId } = entry;
+        return (
+          <CategoryPicker
+            key={`${categoryId}-${code}`}
+            categoryId={categoryId}
+            selectedId={selectedId}
+            onSelect={handleSelection}
+            label={labels[`level${index + 1}Label`] || ''}
+          />
+        );
+      })}
+    </>
+  ), [code, handleSelection, labels, maxDepth, pickers]);
 
   return (
     <div className={classes.container}>
