@@ -36,6 +36,7 @@ const useStyles = makeStyles()({
 const NestedCategoryFilter = () => {
   const { classes } = useStyles();
   const { state: routeState, id: routeId } = useRoute();
+
   const {
     maxDepth = 3,
     category,
@@ -75,7 +76,6 @@ const NestedCategoryFilter = () => {
         selectedId: null,
       }]);
     }
-    setButtonCategoryId(null);
   }, [prevCategory, category]);
 
   useEffect(() => () => {
