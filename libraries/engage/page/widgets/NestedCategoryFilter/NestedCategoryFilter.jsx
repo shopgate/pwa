@@ -52,12 +52,18 @@ const NestedCategoryFilter = () => {
   const LOCAL_STORAGE_KEY = `nestedCategoryFilterState-${code}`;
   const [storedPickers, setStoredPickers] = useLocalStorage(LOCAL_STORAGE_KEY);
 
-  const initialPickers = rememberSelection && storedPickers
-    ? storedPickers : routeState[code]?.pickers
-    ?? [{
+  const initialPickers = useMemo(() => {
+    if (rememberSelection && storedPickers) {
+      return storedPickers;
+    }
+    if (routeState[code]?.pickers) {
+      return routeState[code].pickers;
+    }
+    return [{
       categoryId: category,
       selectedId: null,
     }];
+  }, [category, code, rememberSelection, routeState, storedPickers]);
 
   const [pickers, setPickers] = useState(initialPickers);
   const [buttonCategoryId, setButtonCategoryId] = useState(routeState[code]?.buttonCategoryId
