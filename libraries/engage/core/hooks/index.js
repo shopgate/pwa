@@ -18,5 +18,5 @@ export {
 } from './useThemeResources';
 export * from './html';
 export { usePrevious } from './usePrevious';
-export { useLocalStorage } from './useLocalStorage';
+export { default as useLocalStorage } from './useLocalStorage';
 export { useResponsiveValue } from '@shopgate/engage/components/ResponsiveContainer/hooks';

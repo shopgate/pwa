@@ -9,7 +9,7 @@ const { appId } = appConfig;
  * @param {string} key The key under which the value is stored in localStorage.
  * @returns {[any, Function]} A tuple containing the stored value and a function to update it.
  */
-export const useLocalStorage = (key) => {
+export default function useLocalStorage(key) {
   const readValue = useCallback(() => {
     try {
       return JSON.parse(window.localStorage.getItem(`${appId}_${key}`));
@@ -38,5 +38,5 @@ export const useLocalStorage = (key) => {
   }, [readValue, setValue]);
 
   return [storedValue, setValue];
-};
+}
 
