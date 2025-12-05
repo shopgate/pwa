@@ -39,7 +39,7 @@ const NestedCategoryFilter = () => {
 
   const {
     maxDepth = 3,
-    category,
+    category = '',
     code,
     showHeadline,
     headline,
@@ -50,45 +50,63 @@ const NestedCategoryFilter = () => {
   const prevCategory = usePrevious(category);
 
   const LOCAL_STORAGE_KEY = `nestedCategoryFilterState-${code}`;
-  const [storedPickers, setStoredPickers] = useLocalStorage(LOCAL_STORAGE_KEY);
+  const [localStorageState, setLocalStorageState] = useLocalStorage(LOCAL_STORAGE_KEY);
 
-  const initialPickers = useMemo(() => {
-    if (rememberSelection && storedPickers) {
-      return storedPickers;
-    }
-    if (routeState[code]?.pickers) {
-      return routeState[code].pickers;
-    }
-    return [{
+  const defaultState = useMemo(() => ({
+    buttonCategoryId: null,
+    pickers: [{
       categoryId: category,
       selectedId: null,
-    }];
-  }, [category, code, rememberSelection, routeState, storedPickers]);
+    }],
+  }), [category]);
 
-  const [pickers, setPickers] = useState(initialPickers);
-  const [buttonCategoryId, setButtonCategoryId] = useState(routeState[code]?.buttonCategoryId
-    || null);
+  const initialState = useMemo(() => {
+    if (
+      rememberSelection &&
+      Array.isArray(localStorageState?.pickers) &&
+      localStorageState.pickers.length > 0
+    ) {
+      const [firstPicker] = localStorageState.pickers;
+      // Only rehydrate state from local storage if the pickers belong to the current category
+      if (firstPicker.categoryId === category) {
+        return localStorageState;
+      }
+    }
+
+    if (routeState[code]) {
+      return routeState[code];
+    }
+
+    return defaultState;
+  }, [category, code, defaultState, localStorageState, rememberSelection, routeState]);
+
+  const [state, setState] = useState(initialState);
 
   useEffect(() => {
+    const stateToPersist = {
+      pickers: state.pickers,
+      buttonCategoryId: state.buttonCategoryId,
+    };
+
     if (rememberSelection) {
-      setStoredPickers(pickers);
+      // Store state in local storage when selection should should survive app restarts
+      setLocalStorageState(stateToPersist);
+    } else {
+      // Store state in route otherwise
+      router.update(routeId, {
+        [code]: stateToPersist,
+      });
     }
-  }, [pickers, rememberSelection, setStoredPickers]);
+  }, [code, rememberSelection, routeId, setLocalStorageState, state]);
 
   useEffect(() => {
-    if (prevCategory && prevCategory !== category) {
-      setPickers([{
-        categoryId: category,
-        selectedId: null,
-      }]);
-    }
-  }, [prevCategory, category]);
+    if (typeof prevCategory === 'undefined') return;
+    if (typeof category === 'undefined') return;
 
-  useEffect(() => () => {
-    router.update(routeId, {
-      [code]: { pickers, buttonCategoryId },
-    });
-  }, [routeId, pickers, buttonCategoryId, code]);
+    if (prevCategory !== category) {
+      setState(defaultState);
+    }
+  }, [prevCategory, category, defaultState, rememberSelection, initialState]);
 
   /**
    * Handles the selection of a subcategory within a category picker.
@@ -97,10 +115,10 @@ const NestedCategoryFilter = () => {
    */
   const handleSelection = useCallback((categoryId, subcategory) => {
     const { id: subcategoryId, childrenCount } = subcategory;
-    const selectedIndex = pickers.findIndex(picker => picker.categoryId === categoryId);
+    const selectedIndex = state.pickers.findIndex(picker => picker.categoryId === categoryId);
 
     // Get all pickers up to the selected picker and update its selectedId
-    let updatedPickers = pickers.slice(0, selectedIndex + 1);
+    let updatedPickers = state.pickers.slice(0, selectedIndex + 1);
     updatedPickers[updatedPickers.length - 1].selectedId = subcategoryId;
     // Check if a new picker should be added
     const limitReached = updatedPickers?.length === Number(maxDepth);
@@ -113,13 +131,15 @@ const NestedCategoryFilter = () => {
       }]);
     }
 
-    setPickers(updatedPickers);
-    setButtonCategoryId(!appendNewPicker ? subcategoryId : null);
-  }, [maxDepth, pickers]);
+    setState({
+      pickers: updatedPickers,
+      buttonCategoryId: !appendNewPicker ? subcategoryId : null,
+    });
+  }, [maxDepth, state]);
 
   const categoryPickers = useMemo(() => (
     <>
-      {pickers.slice(0, maxDepth).map((entry, index) => {
+      {state.pickers.slice(0, maxDepth).map((entry, index) => {
         const { categoryId, selectedId } = entry;
         return (
           <CategoryPicker
@@ -132,7 +152,7 @@ const NestedCategoryFilter = () => {
         );
       })}
     </>
-  ), [code, handleSelection, labels, maxDepth, pickers]);
+  ), [code, handleSelection, labels, maxDepth, state.pickers]);
 
   return (
     <div className={classes.container}>
@@ -143,8 +163,8 @@ const NestedCategoryFilter = () => {
       <div className={classes.buttonContainer}>
         <ButtonLink
           className={classes.button}
-          href={`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`}
-          disabled={!buttonCategoryId}
+          href={`${CATEGORY_PATH}/${bin2hex(state.buttonCategoryId)}`}
+          disabled={!state.buttonCategoryId}
           flat={false}
         >
           <I18n.Text string="common.show_products" />
