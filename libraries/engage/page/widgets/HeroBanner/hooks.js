@@ -23,7 +23,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
 
 // eslint-disable-next-line valid-jsdoc
 /**
- * Hook to access the Image widget configuration and data.
+ * Hook to access the hero banner widget configuration and data.
  */
 export const useHeroBannerWidget = () => {
   /** @type {UseWidgetReturnType}  */
