@@ -1,6 +1,6 @@
 [
   {
-    "code": "@shopgate/widgets/imageWidget",
+    "id": "imageWidget",
     "name": {
       "en-us": "Image",
       "de-de": "Bild"
@@ -168,7 +168,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/imageSliderWidget",
+    "id": "imageSliderWidget",
     "name": {
       "en-us": "Image Slider",
       "de-de": "Bilder-Slider"
@@ -530,7 +530,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/imageRowWidget",
+    "id": "imageRowWidget",
     "name": {
       "en-us": "Image Row/Grid",
       "de-de": "Bilder-Zeile/Raster"
@@ -802,7 +802,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/heroBannerWidget",
+    "id": "heroBannerWidget",
     "name": {
       "en-us": "Hero Banner",
       "de-de": "Hero-Banner"
@@ -1037,7 +1037,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/videoWidget",
+    "id": "videoWidget",
     "name": {
       "en-us": "Video",
       "de-de": "Video"
@@ -1229,7 +1229,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/headlineWidget",
+    "id": "headlineWidget",
     "name": {
       "en-us": "Headline",
       "de-de": "Überschrift"
@@ -1263,7 +1263,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/richTextWidget",
+    "id": "richTextWidget",
     "name": {
       "en-us": "Rich Text",
       "de-de": "Rich Text"
@@ -1292,7 +1292,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/buttonWidget",
+    "id": "buttonWidget",
     "name": {
       "en-us": "Button",
       "de-de": "Button"
@@ -1332,7 +1332,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/productSliderWidget",
+    "id": "productSliderWidget",
     "name": {
       "en-us": "Product slider",
       "de-de": "Produkt-Slider"
@@ -1560,7 +1560,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/productListWidget",
+    "id": "productListWidget",
     "name": {
       "en-us": "Product list",
       "de-de": "Produktliste"
@@ -1754,7 +1754,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/categoryListWidget",
+    "id": "categoryListWidget",
     "name": {
       "en-us": "Category list",
       "de-de": "Kategorie-Liste"
@@ -1843,7 +1843,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/nestedCategoryFilterWidget",
+    "id": "nestedCategoryFilterWidget",
     "name": {
       "en-us": "Nested Category Filter",
       "de-de": "Kategoriefilter"
@@ -2023,7 +2023,7 @@
     ]
   },
   {
-    "code": "@shopgate/widgets/htmlWidget",
+    "id": "htmlWidget",
     "name": {
       "en-us": "HTML",
       "de-de": "HTML"
