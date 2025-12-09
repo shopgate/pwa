@@ -28,16 +28,19 @@ const useStyles = makeStyles()({
  * The SheetItem component.
  * @param {Object} props The component props.
  * @param {Object} props.item The item data.
- * @param {boolean} props.selected Whether the item is selected.
+ * @param {boolean} props.isSelected Whether the item is selected.
  * @param {Function} props.onClick The click handler.
  * @return {JSX.Element}
  */
-const SheetItem = ({ item, selected, onClick }) => {
+const SheetItem = ({ item, isSelected, onClick }) => {
   const { classes, cx } = useStyles();
 
   return (
     <button
-      className={cx(classes.button, { [classes.buttonSelected]: selected })}
+      className={cx(classes.button, { [classes.buttonSelected]: isSelected },
+        isSelected
+          ? 'engage__nested-category-filter__sheet-item__selected'
+          : 'engage__nested-category-filter__sheet-item')}
       value={item.id}
       onClick={onClick}
       type="button"
@@ -52,13 +55,13 @@ SheetItem.propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  isSelected: PropTypes.bool,
   onClick: PropTypes.func,
-  selected: PropTypes.bool,
 };
 
 SheetItem.defaultProps = {
   onClick() { },
-  selected: false,
+  isSelected: false,
 };
 
 export default SheetItem;
