@@ -1,139 +1,135 @@
-import React, { Component } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Transition from 'react-inline-transition-group';
+import { Transition } from 'react-transition-group';
 import { toggleBodyScroll } from '@shopgate/engage/styles/helpers';
 import style from './style';
 
 /**
- * Backdrop component.
+ * Backdrop component
+ * @param {Object} props The component props.
+ * @returns {JSX.Element}
  */
-class Backdrop extends Component {
-  /**
-   * The component prop types.
-   * @type {Object}
-   */
-  static propTypes = {
-    className: PropTypes.string,
-    color: PropTypes.string,
-    duration: PropTypes.number,
-    isVisible: PropTypes.bool,
-    level: PropTypes.number,
-    lockBodyScroll: PropTypes.bool,
-    onClick: PropTypes.func,
-    opacity: PropTypes.number,
-  };
+function Backdrop({
+  className,
+  color,
+  duration,
+  isVisible,
+  level,
+  lockBodyScroll,
+  onClick,
+  opacity,
+}) {
+  // Stable id for body scroll lock
+  const bodyScrollRef = useRef(
+    Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2)
+  );
 
-  /**
-   * The component default props.
-   * @type {Object}
-   */
-  static defaultProps = {
-    className: '',
-    color: '#000',
-    duration: 200,
-    isVisible: false,
-    level: 2,
-    onClick: () => {},
-    opacity: 50,
-    lockBodyScroll: true,
-  };
+  const nodeRef = useRef(null);
 
-  /**
-   * @param {Object} props The component props
-   */
-  constructor(props) {
-    super(props);
+  // Lock / unlock body scroll based on visibility
+  useEffect(() => {
+    if (!lockBodyScroll) return undefined;
 
-    this.bodyScrollRef =
-      Math.random().toString(36).substring(2, 15) +
-      Math.random().toString(36).substring(2, 15);
-  }
+    const refId = bodyScrollRef.current;
 
-  /**
-   * Sets the initial state for the body scroll lock
-   */
-  componentDidMount() {
-    const { isVisible, lockBodyScroll } = this.props;
+    toggleBodyScroll(isVisible, refId);
 
-    if (lockBodyScroll) {
-      toggleBodyScroll(isVisible, this.bodyScrollRef);
-    }
-  }
-
-  /**
-   * Toggles the body scroll lock when the visibility state changes
-   * @param {Object} nextProps The next component props
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { isVisible, lockBodyScroll } = nextProps;
-
-    if (isVisible === this.props.isVisible) {
-      return;
-    }
-
-    if (lockBodyScroll) {
-      toggleBodyScroll(isVisible, this.bodyScrollRef);
-    }
-  }
-
-  /**
-   * Only update when the `isVisible` prop changes.
-   * @param {Object} nextProps The next set of component props.
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return (this.props.isVisible !== nextProps.isVisible);
-  }
-
-  /**
-   * Removes the body scroll lock when the component unmounts
-   */
-  componentWillUnmount() {
-    const { lockBodyScroll } = this.props;
-
-    if (lockBodyScroll) {
-      toggleBodyScroll(false, this.bodyScrollRef);
-    }
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const opacity = (this.props.opacity / 100);
-    const transition = {
-      base: {
-        background: this.props.color,
-        opacity: 0,
-        transition: `opacity ${this.props.duration}ms ease-out`,
-        zIndex: this.props.level,
-        pointerEvents: 'auto',
-      },
-      appear: {
-        opacity,
-        pointerEvents: 'auto',
-      },
-      enter: {
-        opacity,
-        pointerEvents: 'auto',
-      },
-      leave: {
-        opacity: 0,
-        pointerEvents: 'none',
-      },
+    return () => {
+      toggleBodyScroll(false, refId);
     };
+  }, [isVisible, lockBodyScroll]);
 
-    const className = `${style} ${this.props.className} common__backdrop`;
+  const baseStyle = useMemo(() => ({
+    background: color,
+    zIndex: level,
+    transition: `opacity ${duration}ms ease-out`,
+    // start hidden by default; pointer events only when shown
+    opacity: 0,
+    pointerEvents: 'none',
+  }), [color, level, duration]);
 
-    return (
-      <Transition childrenStyles={transition}>
-        {this.props.isVisible ?
-          <div data-test-id="Backdrop" key="backdrop" aria-hidden className={className} onClick={this.props.onClick} /> : null
-        }
-      </Transition>
-    );
-  }
+  const targetOpacity = useMemo(() => (opacity / 100), [opacity]);
+
+  // Map Transition states to inline styles
+  const transitionStyles = useMemo(() => ({
+    entering: {
+      opacity: targetOpacity,
+      pointerEvents: 'auto',
+    },
+    entered: {
+      opacity: targetOpacity,
+      pointerEvents: 'auto',
+    },
+    exiting: {
+      opacity: 0,
+      pointerEvents: 'none',
+    },
+    exited: {
+      opacity: 0,
+      pointerEvents: 'none',
+    },
+    unmounted: {
+      opacity: 0,
+      pointerEvents: 'none',
+    },
+  }), [targetOpacity]);
+
+  const combinedClassName = `${style} ${className} common__backdrop`;
+
+  return (
+    <Transition
+      in={isVisible}
+      timeout={duration}
+      mountOnEnter
+      unmountOnExit
+      appear
+      nodeRef={nodeRef}
+    >
+      {state => (
+        <div
+          ref={nodeRef}
+          data-test-id="Backdrop"
+          aria-hidden
+          className={combinedClassName}
+          onClick={onClick}
+          style={{
+            ...baseStyle,
+            ...transitionStyles[state],
+          }}
+        />
+      )}
+    </Transition>
+  );
 }
 
-export default Backdrop;
+Backdrop.propTypes = {
+  className: PropTypes.string,
+  color: PropTypes.string,
+  duration: PropTypes.number,
+  isVisible: PropTypes.bool,
+  level: PropTypes.number,
+  lockBodyScroll: PropTypes.bool,
+  onClick: PropTypes.func,
+  opacity: PropTypes.number,
+};
+
+Backdrop.defaultProps = {
+  className: '',
+  color: '#000',
+  duration: 200,
+  isVisible: false,
+  level: 2,
+  onClick: () => {},
+  opacity: 50,
+  lockBodyScroll: true,
+};
+
+export default React.memo(Backdrop, (prev, next) =>
+  prev.isVisible === next.isVisible &&
+  prev.className === next.className &&
+  prev.color === next.color &&
+  prev.duration === next.duration &&
+  prev.level === next.level &&
+  prev.lockBodyScroll === next.lockBodyScroll &&
+  prev.opacity === next.opacity &&
+  prev.onClick === next.onClick);

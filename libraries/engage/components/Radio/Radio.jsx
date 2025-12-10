@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -143,4 +142,4 @@ Radio.defaultProps = {
   attributes: null,
 };
 
-export default hot(Radio);
+export default Radio;

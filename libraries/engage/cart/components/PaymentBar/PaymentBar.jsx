@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader/root';
 import { createPortal } from 'react-dom';
 import PaymentBarContent from './PaymentBarContent';
 
@@ -29,4 +28,4 @@ PaymentBar.defaultProps = {
   showSeparator: false,
 };
 
-export default hot(PaymentBar);
+export default PaymentBar;

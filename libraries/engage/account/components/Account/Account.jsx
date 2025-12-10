@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { hot } from 'react-hot-loader/root';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { i18n, useRoute } from '@shopgate/engage/core';
@@ -69,4 +68,4 @@ Account.propTypes = {
   historyReplace: PropTypes.func.isRequired,
 };
 
-export default hot(connect(Account));
+export default connect(Account);

@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import 'react-phone-number-input/style.css';
 import React, {
   useState, useContext, useMemo, useRef, useLayoutEffect, useCallback, Fragment,
@@ -219,4 +218,4 @@ function ReserveFormUnwrapped() {
   );
 }
 
-export const ReserveForm = hot(ReserveFormUnwrapped);
+export const ReserveForm = ReserveFormUnwrapped;

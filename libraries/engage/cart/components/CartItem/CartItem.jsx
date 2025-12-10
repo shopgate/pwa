@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
@@ -79,4 +78,4 @@ CartItem.propTypes = {
   editable: PropTypes.bool,
 };
 
-export default hot(React.memo(CartItem));
+export default React.memo(CartItem);
