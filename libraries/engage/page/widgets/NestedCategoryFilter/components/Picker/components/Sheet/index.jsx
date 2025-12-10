@@ -24,13 +24,13 @@ const CategorySheet = ({
 
   return (
     <SheetDrawer title={label} isOpen={open} onClose={onClose}>
-      <SheetList>
+      <SheetList className="widget__nested-category-filter__sheet-list">
         {items.map(item => (
           <Item
             item={item}
             key={item.id}
             onClick={handleItemClick}
-            selected={item.id === selectedId}
+            isSelected={item.id === selectedId}
           />
         ))}
       </SheetList>

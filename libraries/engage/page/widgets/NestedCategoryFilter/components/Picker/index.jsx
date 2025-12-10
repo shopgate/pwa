@@ -106,7 +106,9 @@ const CategoryPicker = ({
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <div
         onClick={handlePickerClick}
-        className={cx(classes.button, { [classes.buttonDisabled]: disabled })}
+        className={cx(classes.button,
+          { [classes.buttonDisabled]: disabled },
+          'widget__nested-category-filter__category-picker')}
       >
         {label && <div className={classes.label}>{label}</div>}
         <div className={classes.selection}>{buttonLabel}</div>

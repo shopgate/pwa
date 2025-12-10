@@ -34,7 +34,7 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const NestedCategoryFilter = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { state: routeState, id: routeId } = useRoute();
 
   const {
@@ -157,17 +157,17 @@ const NestedCategoryFilter = () => {
   return (
     <div className={classes.container}>
       {(showHeadline && headline) ? (
-        <WidgetHeadline headline={headline} />
+        <WidgetHeadline headline={headline} className="widget__nested-category-filter__headline" />
       ) : null}
       { categoryPickers }
-      <div className={classes.buttonContainer}>
+      <div className={cx(classes.buttonContainer, 'widget__nested-category-filter__button-container')}>
         <ButtonLink
-          className={classes.button}
+          className={cx(classes.button, 'widget__nested-category-filter__CTA-button')}
           href={`${CATEGORY_PATH}/${bin2hex(state.buttonCategoryId)}`}
           disabled={!state.buttonCategoryId}
           flat={false}
         >
-          <I18n.Text string="common.show_products" />
+          <I18n.Text string="common.show_products" className="widget__nested-category-filter__CTA-button__text" />
         </ButtonLink>
       </div>
     </div>
