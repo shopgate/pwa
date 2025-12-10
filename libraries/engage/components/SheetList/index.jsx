@@ -62,7 +62,8 @@ class SheetList extends Component {
 
           return (
             <List.Item
-              className={classNames(itemClasses, childClasses)}
+              className={classNames(itemClasses, childClasses,
+                isSelected ? 'engage__sheet-list__selected-item' : 'engage__sheet-list__item')}
               isSelected={isSelected}
               key={key}
               tabIndex={0}
