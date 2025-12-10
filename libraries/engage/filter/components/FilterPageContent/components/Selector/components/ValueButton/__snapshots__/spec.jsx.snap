@@ -7,11 +7,11 @@ exports[`<ValueButton /> should handle click event 1`] = `
   data-test-id="someid"
   onClick={
     [MockFunction] {
-      "calls": Array [
-        Array [],
+      "calls": [
+        [],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },

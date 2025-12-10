@@ -1,13 +1,10 @@
+/** @jest-environment jsdom */
+
 /* eslint global-require: "off" */
 /* eslint no-unused-expressions: "off" */
-import chai from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-import mochaJsdom from 'mocha-jsdom';
+/* eslint class-methods-use-this: "off" */
 import storageMock from './helpers/localStorage-mock';
 import { sgData } from './data/tracking.testData';
-
-const { expect } = chai;
 
 describe('Core', () => {
   let SgTrackingCore = null;
@@ -40,48 +37,48 @@ describe('Core', () => {
     'loginFailed',
   ];
 
-  // Initializes fake DOM
-  mochaJsdom();
-
-  // Initializes sinon to be used with chai
-  chai.use(sinonChai);
-
   /**
    * Load legacy dependencies
    * and prepare coming tests
    */
-  before(() => {
+  beforeAll(() => {
     // Set globals for legacy code
-    global.localStorage = storageMock();
+    Object.defineProperty(window, 'localStorage', {
+      configurable: true,
+      get: () => storageMock(),
+    });
   });
 
   /**
    * Before running a test clean up globals
    */
   beforeEach(() => {
+    jest.resetModules();
     // Reinitialize to provide a clean core for each test
     SgTrackingCore = require('../core/Core').default.reset().registerFinished();
 
     // Provide clean local storage
-    global.localStorage = storageMock();
+    Object.defineProperty(window, 'localStorage', {
+      configurable: true,
+      get: () => storageMock(),
+    });
   });
 
   /**
    * Makes sure that all events that can be called are also registerable
    */
   it('should compare trackable and registerable events', () => {
-    const registerableEventsFromCore = [];
-    const trackableEventsFromCore = [];
-
-    registerableEventsFromCore.push(...Object.keys(SgTrackingCore.register));
-    trackableEventsFromCore.push(...Object.keys(SgTrackingCore.track));
+    const registerableEventsFromCore = Object.keys(SgTrackingCore.register);
+    const trackableEventsFromCore = Object.keys(SgTrackingCore.track);
 
     const comparable = [...trackableEventsFromCore, 'addTracker', 'removeTracker'];
-    expect(registerableEventsFromCore).to.have.members(comparable);
+
+    // Compare as sets (order-agnostic)
+    expect(registerableEventsFromCore.sort()).toEqual(comparable.sort());
   });
 
   it('should make the core globally available in the window object', () => {
-    expect(window.SgTrackingCore).to.be.equal(SgTrackingCore);
+    expect(window.SgTrackingCore).toBe(SgTrackingCore);
   });
 
   /**
@@ -94,15 +91,14 @@ describe('Core', () => {
    */
   it('should handle basic pub/sub functionality', () => {
     const spies = [];
-    const options = {
-      trackerName: 'mock',
-    };
+    const options = { trackerName: 'mock' };
     const expectedObject = { expected: 'data' };
 
+    // initial call as in original test
     SgTrackingCore.track.pageview();
 
     trackableEvents.forEach((event) => {
-      const spy = sinon.spy();
+      const spy = jest.fn();
       spies.push(spy);
 
       // Subscribe and publish an event
@@ -114,17 +110,17 @@ describe('Core', () => {
       SgTrackingCore.track[event](expectedObject);
 
       // Core should be returned to allow chaining
-      expect(that).to.equal(SgTrackingCore);
+      expect(that).toBe(SgTrackingCore);
 
       // Check parameters
-      expect(spy).to.have.been.calledWith(expectedObject);
+      expect(spy).toHaveBeenCalledWith(expectedObject, expect.any(Object), undefined, undefined);
       // Make sure core is cloning the data instead of passing the original reference
-      expect(spy.getCall(0).args[0]).to.not.equal(expectedObject);
+      expect(spy.mock.calls[0][0]).not.toBe(expectedObject);
     });
 
     // Make sure there have been no duplicated calls
     spies.forEach((spy) => {
-      expect(spy).to.have.been.calledOnce;
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -151,9 +147,9 @@ describe('Core', () => {
     };
 
     trackableEvents.forEach((event) => {
-      const customSpy = sinon.spy();
-      const customSpy2 = sinon.spy();
-      const unifiedSpy = sinon.spy();
+      const customSpy = jest.fn();
+      const customSpy2 = jest.fn();
+      const unifiedSpy = jest.fn();
 
       SgTrackingCore.register[event](unifiedSpy, unifiedTracker);
       SgTrackingCore.register[event](customSpy, customTracker);
@@ -161,17 +157,15 @@ describe('Core', () => {
 
       SgTrackingCore.track[event](sgData);
 
-      expect(unifiedSpy).to.have.been.calledWith(
-        sgData,
-        {
-          shopgate: true,
-          merchant: true,
-        },
-        ['mock']
-      );
+      expect(unifiedSpy.mock.calls[0][0]).toEqual(sgData);
+      expect(unifiedSpy.mock.calls[0][1]).toEqual({
+        shopgate: true,
+        merchant: true,
+      });
+      expect(unifiedSpy.mock.calls[0][2]).toEqual(['mock']);
 
-      expect(customSpy).to.have.been.calledWith(sgData);
-      expect(customSpy2).to.have.been.calledWith(sgData);
+      expect(customSpy.mock.calls[0][0]).toEqual(sgData);
+      expect(customSpy2.mock.calls[0][0]).toEqual(sgData);
     });
   });
 
@@ -187,25 +181,25 @@ describe('Core', () => {
     };
 
     // Create and prepare spies
-    const spyAdd = sinon.spy();
-    const spyRemove = sinon.spy();
+    const spyAdd = jest.fn();
+    const spyRemove = jest.fn();
 
     SgTrackingCore.register.addTracker(spyAdd, options);
     SgTrackingCore.register.removeTracker(spyRemove, options);
 
     // Activates opt out
     SgTrackingCore.optOut(true);
-    expect(spyAdd).to.not.have.been.calledOnce.to.not.throw();
-    expect(spyRemove).to.have.been.called.to.not.throw();
+    expect(spyAdd).not.toHaveBeenCalled();
+    expect(spyRemove).toHaveBeenCalled();
 
     // Reset spies
-    spyAdd.reset();
-    spyRemove.reset();
+    spyAdd.mockClear();
+    spyRemove.mockClear();
 
     // Deactivates opt out
     SgTrackingCore.optOut(false);
-    expect(spyAdd).to.have.been.calledOnce.to.not.throw();
-    expect(spyRemove).to.not.have.been.called.to.not.throw();
+    expect(spyAdd).toHaveBeenCalledTimes(1);
+    expect(spyRemove).not.toHaveBeenCalled();
   });
 
   /**
@@ -218,9 +212,9 @@ describe('Core', () => {
   it('should test merchant/shopgate account restrictions', () => {
     trackableEvents.forEach((event) => {
       // Create spies
-      const spyAll = sinon.spy();
-      const spyShopgateEvent = sinon.spy();
-      const spyMerchantEvent = sinon.spy();
+      const spyAll = jest.fn();
+      const spyShopgateEvent = jest.fn();
+      const spyMerchantEvent = jest.fn();
 
       // Register spies
       SgTrackingCore.register[event](spyAll, { trackerName: 'mock' });
@@ -244,18 +238,18 @@ describe('Core', () => {
       });
 
       // Take assertions
-      expect(spyAll).to.have.been.calledTwice.to.not.throw();
-      expect(spyShopgateEvent).to.have.been.calledOnce.to.not.throw();
-      expect(spyMerchantEvent).to.have.been.calledOnce.to.not.throw();
+      expect(spyAll).toHaveBeenCalledTimes(2);
+      expect(spyShopgateEvent).toHaveBeenCalledTimes(1);
+      expect(spyMerchantEvent).toHaveBeenCalledTimes(1);
     });
   });
 
   it('should test page scope restrictions', () => {
     trackableEvents.forEach((event) => {
       // Create spies
-      const spyAll = sinon.spy();
-      const spyIndex = sinon.spy();
-      const spyCart = sinon.spy();
+      const spyAll = jest.fn();
+      const spyIndex = jest.fn();
+      const spyCart = jest.fn();
 
       // Register spies
       SgTrackingCore.register[event](spyAll, { trackerName: 'mock' });
@@ -270,16 +264,16 @@ describe('Core', () => {
 
       // Track for index
       SgTrackingCore.track[event]({}, 'index');
-      expect(spyIndex).to.have.been.calledOnce;
-      expect(spyCart).to.not.have.been.called;
-      expect(spyAll).to.have.been.calledOnce;
-      spyIndex.reset();
+      expect(spyIndex).toHaveBeenCalledTimes(1);
+      expect(spyCart).not.toHaveBeenCalled();
+      expect(spyAll).toHaveBeenCalledTimes(1);
+      spyIndex.mockClear();
 
       // Track for cart
       SgTrackingCore.track[event]({}, 'cart');
-      expect(spyIndex).to.not.have.been.calledOnce;
-      expect(spyCart).to.have.been.called;
-      expect(spyAll).to.have.been.calledTwice;
+      expect(spyIndex).not.toHaveBeenCalled();
+      expect(spyCart).toHaveBeenCalled();
+      expect(spyAll).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -288,100 +282,100 @@ describe('Core', () => {
    */
   it('should test cross domain tracking', () => {
     // Set global test data
-    global.window.sgData = sgData;
+    window.sgData = sgData;
 
     // Add some econda params
-    global.window.getEmosCrossUrlParams = () => 'emos_mock=1122';
+    window.getEmosCrossUrlParams = () => 'emos_mock=1122';
 
     // "on ready" callback can be called immediately
-    global.window.ga = fn => fn();
+    window.ga = fn => typeof fn === 'function' && fn();
 
     // Get tracker by name is not required for this test
-    global.window.ga.getByName = () => { };
+    window.ga.getByName = () => {};
 
-    // Add some google universal parameters
-    global.window.gaplugins = {
-      Linker() {
-        return {
-          decorate(url) {
-            return `${url}&_ga=1.199239214.1624002396.1440697407`;
-          },
-        };
-      },
-    };
+    /**
+     * Mock Linker class for testing cross domain tracking
+     */
+    class Linker {
+      /**
+       * Decorates a URL with Google Analytics tracking parameters
+       * @param {string} url - The URL to decorate
+       * @returns {string} The decorated URL with GA parameters
+       */
+      decorate(url) {
+        return `${url}&_ga=1.199239214.1624002396.1440697407`;
+      }
+    }
+    window.gaplugins = { Linker };
 
-    const expectedUrl = 'http://testshop.reichhorn.localdev.cc/php/shopgate/index?emos_mock=1122&_ga=1.199239214.1624002396.1440697407';
+    const expectedUrl =
+      'http://testshop.reichhorn.localdev.cc/php/shopgate/index?emos_mock=1122&_ga=1.199239214.1624002396.1440697407';
 
     // Create ga classic spy to check called objects
-    /* eslint-disable no-underscore-dangle, no-multi-assign */
-    global._gaq = global.window._gaq = {};
-    let gaqPush = global._gaq.push = sinon.spy();
-    /* eslint-enable no-underscore-dangle, no-multi-assign */
+    // eslint-disable-next-line no-underscore-dangle
+    window._gaq = {};
+    const gaqPush = jest.fn();
+    // eslint-disable-next-line no-underscore-dangle
+    window._gaq.push = gaqPush;
 
     // Execute cross domain tracking logic
     SgTrackingCore.crossDomainTracking('http://testshop.reichhorn.localdev.cc/php/shopgate/index');
-
-    // Check _gaq calls
-    expect(gaqPush).to.have.been.calledOnce.to.not.throw();
-    expect(gaqPush.getCall(0).args[0][0]).to.equal('merchant_._link');
-    expect(gaqPush.getCall(0).args[0][1]).to.equal(expectedUrl);
-
-    // Execute cross domain tracking logic with form element
-    /* eslint-disable no-underscore-dangle, no-multi-assign */
-    gaqPush = global._gaq.push = sinon.spy();
-    /* eslint-enable no-underscore-dangle, no-multi-assign */
+    expect(gaqPush).toHaveBeenCalledTimes(1);
+    expect(gaqPush.mock.calls[0][0][0]).toBe('merchant_._link');
+    expect(gaqPush.mock.calls[0][0][1]).toBe(expectedUrl);
 
     const element = document.createElement('form');
     element.action = 'http://shopgate.com';
 
-    SgTrackingCore.crossDomainTracking(
-      'http://testshop.reichhorn.localdev.cc/php/shopgate/index',
-      element
-    );
-
-    expect(gaqPush).to.have.been.calledOnce.to.not.throw();
-    expect(gaqPush.getCall(0).args[0][0]).to.equal('merchant_._linkByPost');
-    expect(gaqPush.getCall(0).args[0][1]).to.equal(element);
-
-    // Execute cross domain tracking logic with form and without classic sdk
-    /* eslint-disable no-underscore-dangle */
-    global._gaq = undefined;
-    /* eslint-enable no-underscore-dangle */
+    // eslint-disable-next-line no-underscore-dangle
+    window._gaq.push = jest.fn();
+    // eslint-disable-next-line no-underscore-dangle
+    const gaqPush2 = window._gaq.push;
 
     SgTrackingCore.crossDomainTracking(
       'http://testshop.reichhorn.localdev.cc/php/shopgate/index',
       element
     );
 
-    expect(element.action).to.equal(expectedUrl);
+    expect(gaqPush2).toHaveBeenCalledTimes(1);
+    expect(gaqPush2.mock.calls[0][0][0]).toBe('merchant_._linkByPost');
+    expect(gaqPush2.mock.calls[0][0][1]).toBe(element);
+
+    // without classic sdk
+    // eslint-disable-next-line no-underscore-dangle
+    window._gaq = undefined;
+
+    SgTrackingCore.crossDomainTracking(
+      'http://testshop.reichhorn.localdev.cc/php/shopgate/index',
+      element
+    );
+    expect(element.action).toBe(expectedUrl);
 
     // Redefine window.location as it is simulated using jsdom
     // Otherwise the location.href can't be changed
-    Object.defineProperty(global.window, 'location', {
+    Object.defineProperty(window, 'location', {
       writable: true,
       value: { href: '' },
     });
 
-    // Execute cross domain tracking without ga sdk and without element
     SgTrackingCore.crossDomainTracking('http://testshop.reichhorn.localdev.cc/php/shopgate/index');
-
-    expect(global.window.location.href).to.equal(expectedUrl);
+    expect(window.location.href).toBe(expectedUrl);
   });
 
   it('should test buildAdImageIdentifierName', () => {
     const withTitle = SgTrackingCore.buildAdImageIdentifierName('Title', 123);
-    expect(withTitle).to.equal('Title (id: 123)');
+    expect(withTitle).toBe('Title (id: 123)');
 
     const withoutTitle = SgTrackingCore.buildAdImageIdentifierName(undefined, 123);
-    expect(withoutTitle).to.equal('(id: 123)');
+    expect(withoutTitle).toBe('(id: 123)');
   });
 
   it('should test isOptOut()', () => {
-    expect(SgTrackingCore.isOptOut()).to.be.false;
+    expect(SgTrackingCore.isOptOut()).toBe(false);
     SgTrackingCore.optOut(true);
-    expect(SgTrackingCore.isOptOut()).to.be.true;
+    expect(SgTrackingCore.isOptOut()).toBe(true);
     SgTrackingCore.optOut(false);
-    expect(SgTrackingCore.isOptOut()).to.be.false;
+    expect(SgTrackingCore.isOptOut()).toBe(false);
   });
 
   it('should test getScannerEvents()', () => {
@@ -394,7 +388,6 @@ describe('Core', () => {
       SCAN_USER_LINK_INTERACTION: 'scan_user_link_interaction',
     };
 
-    expect(SgTrackingCore.getScannerEvents()).to.deep.equal(expected);
+    expect(SgTrackingCore.getScannerEvents()).toEqual(expected);
   });
 });
-

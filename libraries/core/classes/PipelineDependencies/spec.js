@@ -12,7 +12,7 @@ jest.mock('../../helpers/logGroup', () => (...args) => mockLogGroup(args));
  * @return {PipelineDependencies}
  */
 const getInstance = () => {
-  const instance = require.requireActual('./index').default;
+  const instance = jest.requireActual('./index').default;
   return instance;
 };
 

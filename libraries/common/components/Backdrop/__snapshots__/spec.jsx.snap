@@ -8,7 +8,7 @@ exports[`<Backdrop /> should render 1`] = `
   in={true}
   mountOnEnter={true}
   nodeRef={
-    Object {
+    {
       "current": null,
     }
   }

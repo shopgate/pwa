@@ -1,6 +1,7 @@
+/** @jest-environment jsdom */
+
 import React from 'react';
 import { mount } from 'enzyme';
-import { JSDOM } from 'jsdom';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
 import HtmlSanitizer from './index';
 
@@ -10,7 +11,7 @@ jest.mock('./connector', () => Cmp => Cmp);
 /**
  * @param {string} html HTML markup.
  * @param {Object} props Component props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const createWrapper = (html, props = {}) => mount((
   <HtmlSanitizer navigate={() => {}} {...props}>
@@ -135,7 +136,9 @@ describe('<HtmlSanitizer />', () => {
     });
 
     it('follows a link from a plain <a>', () => {
-      const doc = new JSDOM('<!doctype html><html><body><div>/<div></body></html>').window.document;
+      // Create a real container element in the current document
+      const attachNode = document.createElement('div');
+      document.body.appendChild(attachNode);
 
       const html = '&lt;a id=&quot;link&quot; href=&quot;#follow-me-and-everything-is-alright&quot;&gt;Plain Link&lt;/a&gt;';
       const wrapper = mount(
@@ -148,12 +151,13 @@ describe('<HtmlSanitizer />', () => {
             {html}
           </HtmlSanitizer>
         ), {
-          attachTo: doc.getElementsByTagName('div')[0],
+          attachTo: attachNode,
         }
       );
 
-      const aTag = doc.getElementsByTagName('a')[0];
+      const aTag = attachNode.getElementsByTagName('a')[0];
       aTag.closest = () => aTag;
+
       const event = {
         target: aTag,
         preventDefault: () => {},
@@ -162,10 +166,13 @@ describe('<HtmlSanitizer />', () => {
 
       expect(mockedHandleClick).toHaveBeenCalledTimes(1);
       expect(mockedHandleClick).toHaveBeenCalledWith('#follow-me-and-everything-is-alright', '');
+      wrapper.unmount();
+      attachNode.remove();
     });
 
     it('follows a link from a <a> with other HTML inside', () => {
-      const doc = new JSDOM('<!doctype html><html><body><div>/<div></body></html>').window.document;
+      const attachNode = document.createElement('div');
+      document.body.appendChild(attachNode);
 
       const html = '&lt;a id=&quot;link&quot; target=&quot;_blank&quot; href=&quot;#I-ll-be-the-one-to-tuck-you-in-at-night&quot;&gt;&lt;span&gt;Span Link&lt;/span&gt;&lt;/a&gt;';
       const wrapper = mount(
@@ -178,13 +185,14 @@ describe('<HtmlSanitizer />', () => {
             {html}
           </HtmlSanitizer>
         ), {
-          attachTo: doc.getElementsByTagName('div')[0],
+          attachTo: attachNode,
         }
       );
 
-      const aTag = doc.getElementsByTagName('a')[0];
-      const spanTag = doc.getElementsByTagName('span')[0];
+      const aTag = attachNode.getElementsByTagName('a')[0];
+      const spanTag = attachNode.getElementsByTagName('span')[0];
       spanTag.closest = () => aTag;
+
       const event = {
         target: spanTag,
         preventDefault: () => {},

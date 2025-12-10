@@ -5,7 +5,7 @@ describe('AuthRoutes', () => {
   const PROTECTED = '/protected';
 
   beforeEach(() => {
-    authRoutes.constructor();
+    authRoutes.routes.clear();
     authRoutes.set('/protected_not_relevant', '/protector_not_relevant');
     authRoutes.set(PROTECTED, PROTECTOR);
   });
@@ -30,7 +30,7 @@ describe('AuthRoutes', () => {
 
   describe('.set()', () => {
     beforeEach(() => {
-      authRoutes.constructor();
+      authRoutes.routes.clear();
     });
 
     it('should only add routes when both method parameters are set', () => {
@@ -57,7 +57,7 @@ describe('AuthRoutes', () => {
 
   describe('.getProtector()', () => {
     beforeEach(() => {
-      authRoutes.constructor();
+      authRoutes.routes.clear();
     });
 
     it('should return a protector for a distinct route', () => {

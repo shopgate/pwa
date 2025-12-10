@@ -5,7 +5,7 @@ exports[`<LiveshoppingWidget /> should not render the widget without any data 1`
 exports[`<LiveshoppingWidget /> should render the widget with a slider for multiple products 1`] = `
 <div
   className={
-    Object {
+    {
       "data-css-1rjsvq5": "",
     }
   }
@@ -21,7 +21,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
       aria-hidden={false}
       autoPlay={false}
       className={null}
-      classNames={Object {}}
+      classNames={{}}
       controls={false}
       disabled={false}
       indicators={true}
@@ -66,7 +66,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
 exports[`<LiveshoppingWidget /> should render the widget with no slider for one product 1`] = `
 <div
   className={
-    Object {
+    {
       "data-css-1rjsvq5": "",
     }
   }

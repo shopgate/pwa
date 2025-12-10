@@ -6,7 +6,7 @@ exports[`<Tier /> Rendering with data should render tier prices when tier prices
   className="css-z8ikop"
   key="3"
   params={
-    Object {
+    {
       "from": 3,
     }
   }

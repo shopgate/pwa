@@ -3,28 +3,28 @@
 exports[`<WidgetGrid /> should not render without a \`config\` prop 1`] = `
 <WidgetGrid
   components={
-    Object {
+    {
       "@shopgate/commerce-widgets/image": [Function],
     }
   }
-  config={Array []}
+  config={[]}
 />
 `;
 
 exports[`<WidgetGrid /> should render with a config 1`] = `
 <WidgetGrid
   components={
-    Object {
+    {
       "@shopgate/commerce-widgets/image": [Function],
     }
   }
   config={
-    Array [
-      Object {
+    [
+      {
         "col": 0,
         "height": 3,
         "row": 0,
-        "settings": Object {
+        "settings": {
           "id": 83535,
           "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
         },
@@ -40,11 +40,11 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
     <Widget
       component={[Function]}
       config={
-        Object {
+        {
           "col": 0,
           "height": 3,
           "row": 0,
-          "settings": Object {
+          "settings": {
             "id": 83535,
             "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
           },
@@ -69,13 +69,13 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
             >
               <Image
                 ratio={
-                  Array [
+                  [
                     12,
                     3,
                   ]
                 }
                 settings={
-                  Object {
+                  {
                     "id": 83535,
                     "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
                   }

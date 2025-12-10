@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > locations > actions-creators requestLocations 1`] = `
-Object {
-  "params": Object {
-    "codes": Array [
+{
+  "params": {
+    "codes": [
       "code1",
     ],
   },

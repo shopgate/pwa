@@ -31,16 +31,16 @@ exports[`<BasicDialog /> should render as expected 1`] = `
       >
         <Buttons
           actions={
-            Array [
-              Object {
+            [
+              {
                 "action": [MockFunction],
                 "label": "action0",
               },
-              Object {
+              {
                 "action": [MockFunction],
                 "label": "action1",
               },
-              Object {
+              {
                 "action": [MockFunction],
                 "label": "action2",
               },
@@ -79,7 +79,7 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
         className="css-hw75se"
       >
         <Buttons
-          actions={Array []}
+          actions={[]}
         />
       </div>
     </div>

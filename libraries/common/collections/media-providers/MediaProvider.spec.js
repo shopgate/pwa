@@ -1,4 +1,5 @@
-import { JSDOM } from 'jsdom';
+/** @jest-environment jsdom */
+
 import { logger, i18n } from '@shopgate/engage/core/helpers';
 import MediaProvider from './MediaProvider';
 import styles from './style';
@@ -14,12 +15,13 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
 
 /**
  * Creates a DOM container with iframes.
- * @param {Array} srcs A list of video URLs.
- * @return {Object}
+ * @param {string[]} srcs A list of video URLs.
+ * @return {Document}
  */
 const createContainer = (srcs) => {
-  const html = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
-  return new JSDOM(html).window.document;
+  const doc = document.implementation.createHTMLDocument('container');
+  doc.body.innerHTML = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+  return doc;
 };
 
 describe('MediaProvider', () => {

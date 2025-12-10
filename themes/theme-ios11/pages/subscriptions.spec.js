@@ -35,6 +35,7 @@ const mockState = {
   client: {
     info: {
       libVersion: SCANNER_MIN_APP_LIB_VERSION,
+      appVersion: '11.0.0',
     },
   },
 };
@@ -67,7 +68,6 @@ describe('Pages Subscriptions', () => {
 
     beforeEach(() => {
       [[stream, callback]] = subscribe.mock.calls;
-      redirects.constructor();
       callback({ dispatch, getState });
     });
 
@@ -117,6 +117,7 @@ describe('Pages Subscriptions', () => {
           client: {
             info: {
               libVersion: '10.0',
+              appVersion: '10.0.0',
             },
           },
         };

@@ -3,7 +3,7 @@
 exports[`Shipping label should render free shipping 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -20,7 +20,7 @@ exports[`Shipping label should render free shipping 1`] = `
       dispatch={[Function]}
       productId="fakeId"
       shipping={
-        Object {
+        {
           "currency": "EUR",
           "price": 0,
         }
@@ -51,7 +51,7 @@ exports[`Shipping label should render free shipping 1`] = `
               <Translate
                 acceptPlainTextWithPlaceholders={false}
                 className={null}
-                params={Object {}}
+                params={{}}
                 role={null}
                 string="shipping.free"
                 transform={null}
@@ -79,7 +79,7 @@ exports[`Shipping label should render free shipping 1`] = `
 exports[`Shipping label should render shipping price 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -96,7 +96,7 @@ exports[`Shipping label should render shipping price 1`] = `
       dispatch={[Function]}
       productId="fakeId"
       shipping={
-        Object {
+        {
           "currency": "EUR",
           "price": 1,
         }
@@ -127,7 +127,7 @@ exports[`Shipping label should render shipping price 1`] = `
               <Translate
                 acceptPlainTextWithPlaceholders={false}
                 className={null}
-                params={Object {}}
+                params={{}}
                 role={null}
                 string="shipping.cost"
                 transform={null}

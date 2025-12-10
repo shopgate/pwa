@@ -3,7 +3,7 @@
 exports[`<ImageSliderWidget /> should map the correct image settings to the components 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -16,15 +16,15 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
   <ImageSliderWidget
     className={null}
     settings={
-      Object {
+      {
         "autostart": false,
         "delay": 7000,
-        "images": Array [
-          Object {
+        "images": [
+          {
             "image": "http://placehold.it/350x150",
             "link": "http://example.com",
           },
-          Object {
+          {
             "image": "http://placehold.it/10x10",
             "link": "http://other.example.com",
           },
@@ -48,7 +48,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
         >
           <img
             className={
-              Object {
+              {
                 "data-css-1rozygh": "",
               }
             }
@@ -66,7 +66,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
         >
           <img
             className={
-              Object {
+              {
                 "data-css-1rozygh": "",
               }
             }
@@ -83,7 +83,7 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
 exports[`<ImageSliderWidget /> should render no slider with just a single image 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -96,11 +96,11 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
   <ImageSliderWidget
     className={null}
     settings={
-      Object {
+      {
         "autostart": false,
         "delay": 7000,
-        "images": Array [
-          Object {
+        "images": [
+          {
             "image": "http://placehold.it/350x150",
             "link": "http://example.com",
           },
@@ -120,7 +120,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
       >
         <img
           className={
-            Object {
+            {
               "data-css-1rozygh": "",
             }
           }
@@ -136,7 +136,7 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
 exports[`<ImageSliderWidget /> should render the images unlinked if no link is set 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -149,11 +149,11 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
   <ImageSliderWidget
     className={null}
     settings={
-      Object {
+      {
         "autostart": false,
         "delay": 7000,
-        "images": Array [
-          Object {
+        "images": [
+          {
             "image": "http://placehold.it/350x150",
             "link": null,
           },
@@ -168,7 +168,7 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
     >
       <img
         className={
-          Object {
+          {
             "data-css-1rozygh": "",
           }
         }
@@ -183,7 +183,7 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
 exports[`<ImageSliderWidget /> should render the images with links 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -196,15 +196,15 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
   <ImageSliderWidget
     className={null}
     settings={
-      Object {
+      {
         "autostart": false,
         "delay": 7000,
-        "images": Array [
-          Object {
+        "images": [
+          {
             "image": "http://placehold.it/350x150",
             "link": null,
           },
-          Object {
+          {
             "image": "http://placehold.it/10x10",
             "link": "http://other.example.com",
           },
@@ -224,7 +224,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
       >
         <img
           className={
-            Object {
+            {
               "data-css-1rozygh": "",
             }
           }
@@ -241,7 +241,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
         >
           <img
             className={
-              Object {
+              {
                 "data-css-1rozygh": "",
               }
             }
@@ -258,7 +258,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
 exports[`<ImageSliderWidget /> should render the slider with the correct number of images 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -271,15 +271,15 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
   <ImageSliderWidget
     className={null}
     settings={
-      Object {
+      {
         "autostart": false,
         "delay": 7000,
-        "images": Array [
-          Object {
+        "images": [
+          {
             "image": "http://placehold.it/350x150",
             "link": "http://example.com",
           },
-          Object {
+          {
             "image": "http://placehold.it/10x10",
             "link": "http://other.example.com",
           },
@@ -303,7 +303,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
         >
           <img
             className={
-              Object {
+              {
                 "data-css-1rozygh": "",
               }
             }
@@ -321,7 +321,7 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
         >
           <img
             className={
-              Object {
+              {
                 "data-css-1rozygh": "",
               }
             }

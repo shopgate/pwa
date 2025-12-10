@@ -4,9 +4,9 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
 <Builder
   className=""
   config={
-    Object {
-      "fields": Object {
-        "foo": Object {
+    {
+      "fields": {
+        "foo": {
           "default": "default",
           "label": "foo",
           "type": "text",
@@ -15,19 +15,19 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   handleUpdate={
     [MockFunction] {
-      "calls": Array [
-        Array [
-          Object {
+      "calls": [
+        [
+          {
             "foo": "default",
           },
           false,
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -37,7 +37,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
   id="foo"
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     onSubmit={[Function]}
@@ -61,7 +61,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
         >
           <TextElement
             element={
-              Object {
+              {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -74,7 +74,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
             errorText=""
             name="foo.foo"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -116,7 +116,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -138,7 +138,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="foo"
                       transform={null}
@@ -154,7 +154,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -177,7 +177,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -202,7 +202,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -266,7 +266,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -308,15 +308,15 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
 <Builder
   className=""
   config={
-    Object {
-      "fields": Object {
-        "bar": Object {
-          "actions": Array [
-            Object {
-              "rules": Array [
-                Object {
+    {
+      "fields": {
+        "bar": {
+          "actions": [
+            {
+              "rules": [
+                {
                   "context": "foo",
-                  "data": Array [
+                  "data": [
                     "abc",
                   ],
                   "type": "notIn",
@@ -328,7 +328,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
           "label": "bar",
           "type": "text",
         },
-        "foo": Object {
+        "foo": {
           "label": "foo",
           "type": "text",
           "visible": true,
@@ -336,11 +336,11 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     onSubmit={[Function]}
@@ -364,7 +364,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
         >
           <TextElement
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -376,7 +376,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
             errorText=""
             name="foo.foo"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -418,7 +418,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -440,7 +440,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="foo"
                       transform={null}
@@ -456,7 +456,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -479,7 +479,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -504,7 +504,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -568,7 +568,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -610,13 +610,13 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
         >
           <TextElement
             element={
-              Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+              {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -635,7 +635,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
             errorText=""
             name="foo.bar"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -677,7 +677,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -699,7 +699,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="bar"
                       transform={null}
@@ -715,7 +715,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -738,7 +738,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -763,7 +763,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -827,7 +827,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -869,15 +869,15 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
 <Builder
   className=""
   config={
-    Object {
-      "fields": Object {
-        "bar": Object {
-          "actions": Array [
-            Object {
-              "rules": Array [
-                Object {
+    {
+      "fields": {
+        "bar": {
+          "actions": [
+            {
+              "rules": [
+                {
                   "context": "foo",
-                  "data": Array [
+                  "data": [
                     "abc",
                   ],
                   "type": "notIn",
@@ -889,7 +889,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
           "label": "bar",
           "type": "text",
         },
-        "foo": Object {
+        "foo": {
           "label": "foo",
           "type": "text",
           "visible": true,
@@ -897,11 +897,11 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     onSubmit={[Function]}
@@ -925,7 +925,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
         >
           <TextElement
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -937,7 +937,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
             errorText=""
             name="foo.foo"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -979,7 +979,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -1001,7 +1001,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="foo"
                       transform={null}
@@ -1017,7 +1017,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -1040,7 +1040,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -1065,7 +1065,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -1129,7 +1129,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -1183,9 +1183,9 @@ exports[`<FormBuilder /> should not render invisible field 1`] = `
 <Builder
   className=""
   config={
-    Object {
-      "fields": Object {
-        "firstName": Object {
+    {
+      "fields": {
+        "firstName": {
           "label": "foo",
           "type": "text",
           "visible": false,
@@ -1193,11 +1193,11 @@ exports[`<FormBuilder /> should not render invisible field 1`] = `
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     onSubmit={[Function]}
@@ -1233,15 +1233,15 @@ exports[`<FormBuilder /> should render empty form 1`] = `
 <Builder
   className=""
   config={
-    Object {
-      "fields": Object {},
+    {
+      "fields": {},
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     onSubmit={[Function]}
@@ -1264,14 +1264,14 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
 <Builder
   className=""
   config={
-    Object {
-      "fields": Object {
-        "firstName": Object {
+    {
+      "fields": {
+        "firstName": {
           "label": "foo",
           "type": "text",
           "visible": true,
         },
-        "lastName": Object {
+        "lastName": {
           "label": "bar",
           "type": "text",
           "visible": true,
@@ -1279,11 +1279,11 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     onSubmit={[Function]}
@@ -1307,7 +1307,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
         >
           <TextElement
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -1319,7 +1319,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
             errorText=""
             name="foo.firstName"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -1361,7 +1361,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -1383,7 +1383,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="foo"
                       transform={null}
@@ -1399,7 +1399,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -1422,7 +1422,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -1447,7 +1447,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -1511,7 +1511,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -1553,7 +1553,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
         >
           <TextElement
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "lastName",
@@ -1565,7 +1565,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
             errorText=""
             name="foo.lastName"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -1607,7 +1607,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -1629,7 +1629,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="bar"
                       transform={null}
@@ -1645,7 +1645,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -1668,7 +1668,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -1693,7 +1693,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -1757,7 +1757,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -1799,19 +1799,19 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
 <Builder
   className=""
   config={
-    Object {
-      "fields": Object {
-        "bar": Object {
-          "actions": Array [
-            Object {
-              "params": Object {
+    {
+      "fields": {
+        "bar": {
+          "actions": [
+            {
+              "params": {
                 "type": "fixed",
                 "value": "cheat",
               },
-              "rules": Array [
-                Object {
+              "rules": [
+                {
                   "context": "foo",
-                  "data": Array [
+                  "data": [
                     "default",
                   ],
                   "type": "notIn",
@@ -1824,7 +1824,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
           "label": "bar",
           "type": "text",
         },
-        "foo": Object {
+        "foo": {
           "default": "default",
           "label": "foo",
           "type": "text",
@@ -1833,11 +1833,11 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     onSubmit={[Function]}
@@ -1861,7 +1861,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
         >
           <TextElement
             element={
-              Object {
+              {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -1874,7 +1874,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
             errorText=""
             name="foo.foo"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -1916,7 +1916,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -1938,7 +1938,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="foo"
                       transform={null}
@@ -1954,7 +1954,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -1977,7 +1977,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -2002,7 +2002,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -2066,7 +2066,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -2108,17 +2108,17 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
         >
           <TextElement
             element={
-              Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+              {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -2138,7 +2138,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
             errorText=""
             name="foo.bar"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -2180,7 +2180,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -2202,7 +2202,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="bar"
                       transform={null}
@@ -2218,7 +2218,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -2241,7 +2241,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -2266,7 +2266,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -2330,7 +2330,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -2372,19 +2372,19 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
 <Builder
   className=""
   config={
-    Object {
-      "fields": Object {
-        "bar": Object {
-          "actions": Array [
-            Object {
-              "params": Object {
+    {
+      "fields": {
+        "bar": {
+          "actions": [
+            {
+              "params": {
                 "type": "fixed",
                 "value": "cheat",
               },
-              "rules": Array [
-                Object {
+              "rules": [
+                {
                   "context": "foo",
-                  "data": Array [
+                  "data": [
                     "default",
                   ],
                   "type": "notIn",
@@ -2397,7 +2397,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
           "label": "bar",
           "type": "text",
         },
-        "foo": Object {
+        "foo": {
           "default": "default",
           "label": "foo",
           "type": "text",
@@ -2406,11 +2406,11 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     onSubmit={[Function]}
@@ -2434,7 +2434,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
         >
           <TextElement
             element={
-              Object {
+              {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -2447,7 +2447,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
             errorText=""
             name="foo.foo"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -2489,7 +2489,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -2511,7 +2511,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="foo"
                       transform={null}
@@ -2527,7 +2527,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -2550,7 +2550,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -2575,7 +2575,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -2639,7 +2639,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }
@@ -2681,17 +2681,17 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
         >
           <TextElement
             element={
-              Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+              {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -2711,7 +2711,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
             errorText=""
             name="foo.bar"
             style={
-              Object {
+              {
                 "field": "",
               }
             }
@@ -2753,7 +2753,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string=""
                       transform={null}
@@ -2775,7 +2775,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <Translate
                       acceptPlainTextWithPlaceholders={false}
                       className={null}
-                      params={Object {}}
+                      params={{}}
                       role={null}
                       string="bar"
                       transform={null}
@@ -2791,7 +2791,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 </Label>
                 <FormElement
                   attributes={
-                    Object {
+                    {
                       "aria-describedby": null,
                       "aria-invalid": false,
                     }
@@ -2814,7 +2814,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 >
                   <_default
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -2839,7 +2839,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   >
                     <SimpleInput
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -2903,7 +2903,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     <div
                       className="css-1tpmuef"
                       style={
-                        Object {
+                        {
                           "borderBottomColor": "var(--color-primary, #fa5400)",
                           "transform": "scale3d(0,1,1)",
                         }

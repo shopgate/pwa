@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import WidgetGrid from './index';
 
 jest.mock('react', () => ({
-  ...require.requireActual('react'),
+  ...jest.requireActual('react'),
   Suspense: function Suspense({ children }) { return children; },
 }));
 

@@ -2,11 +2,11 @@
 
 exports[`<Widgets /> should not wrap a widget which is not a grid and has no height 1`] = `
 <ThemeResourcesProvider
-  components={Object {}}
+  components={{}}
   legacyThemeAPI={null}
   widgets={
-    Object {
-      "v1": Object {
+    {
+      "v1": {
         "@shopgate/commerce-widgets/image": [Function],
         "@shopgate/commerce-widgets/widget-grid": [Function],
       },
@@ -15,11 +15,11 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
 >
   <ThemeResourcesWrapper
     widgets={
-      Array [
-        Object {
+      [
+        {
           "col": 0,
           "row": 0,
-          "settings": Object {
+          "settings": {
             "id": 83535,
             "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
           },
@@ -31,17 +31,17 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
   >
     <Widgets
       themeWidgets={
-        Object {
+        {
           "@shopgate/commerce-widgets/image": [Function],
           "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
       widgets={
-        Array [
-          Object {
+        [
+          {
             "col": 0,
             "row": 0,
-            "settings": Object {
+            "settings": {
               "id": 83535,
               "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
             },
@@ -59,7 +59,7 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
           key="w0"
           row={0}
           settings={
-            Object {
+            {
               "id": 83535,
               "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
             }
@@ -79,11 +79,11 @@ exports[`<Widgets /> should not wrap a widget which is not a grid and has no hei
 
 exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
 <ThemeResourcesProvider
-  components={Object {}}
+  components={{}}
   legacyThemeAPI={null}
   widgets={
-    Object {
-      "v1": Object {
+    {
+      "v1": {
         "@shopgate/commerce-widgets/image": [Function],
         "@shopgate/commerce-widgets/widget-grid": [Function],
       },
@@ -92,15 +92,15 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
 >
   <ThemeResourcesWrapper
     widgets={
-      Array [
-        Object {
-          "settings": Object {
-            "widgets": Array [
-              Object {
+      [
+        {
+          "settings": {
+            "widgets": [
+              {
                 "col": 0,
                 "height": 5,
                 "row": 0,
-                "settings": Object {
+                "settings": {
                   "alt": "",
                   "id": "84961",
                   "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
@@ -118,21 +118,21 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
   >
     <Widgets
       themeWidgets={
-        Object {
+        {
           "@shopgate/commerce-widgets/image": [Function],
           "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
       widgets={
-        Array [
-          Object {
-            "settings": Object {
-              "widgets": Array [
-                Object {
+        [
+          {
+            "settings": {
+              "widgets": [
+                {
                   "col": 0,
                   "height": 5,
                   "row": 0,
-                  "settings": Object {
+                  "settings": {
                     "alt": "",
                     "id": "84961",
                     "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
@@ -153,18 +153,18 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
       >
         <WidgetGrid
           components={
-            Object {
+            {
               "@shopgate/commerce-widgets/image": [Function],
               "@shopgate/commerce-widgets/widget-grid": [Function],
             }
           }
           config={
-            Array [
-              Object {
+            [
+              {
                 "col": 0,
                 "height": 5,
                 "row": 0,
-                "settings": Object {
+                "settings": {
                   "alt": "",
                   "id": "84961",
                   "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
@@ -183,11 +183,11 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
             <Widget
               component={[Function]}
               config={
-                Object {
+                {
                   "col": 0,
                   "height": 5,
                   "row": 0,
-                  "settings": Object {
+                  "settings": {
                     "alt": "",
                     "id": "84961",
                     "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
@@ -214,13 +214,13 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
                     >
                       <Image
                         ratio={
-                          Array [
+                          [
                             12,
                             5,
                           ]
                         }
                         settings={
-                          Object {
+                          {
                             "alt": "",
                             "id": "84961",
                             "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
@@ -247,11 +247,11 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
 
 exports[`<Widgets /> should render only one widget when the second one is not published and third one is invalid 1`] = `
 <ThemeResourcesProvider
-  components={Object {}}
+  components={{}}
   legacyThemeAPI={null}
   widgets={
-    Object {
-      "v1": Object {
+    {
+      "v1": {
         "@shopgate/commerce-widgets/image": [Function],
         "@shopgate/commerce-widgets/widget-grid": [Function],
       },
@@ -260,31 +260,31 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
 >
   <ThemeResourcesWrapper
     widgets={
-      Array [
-        Object {
+      [
+        {
           "col": 0,
           "row": 0,
-          "settings": Object {
+          "settings": {
             "id": 835351,
             "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
           },
           "type": "@shopgate/commerce-widgets/image",
           "width": 12,
         },
-        Object {
+        {
           "col": 0,
           "row": 0,
-          "settings": Object {
+          "settings": {
             "id": 835352,
             "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
           },
           "type": "@shopgate/commerce-widgets/imagefoo",
           "width": 12,
         },
-        Object {
+        {
           "col": 0,
           "row": 0,
-          "settings": Object {
+          "settings": {
             "id": 835353,
             "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
             "published": false,
@@ -297,37 +297,37 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
   >
     <Widgets
       themeWidgets={
-        Object {
+        {
           "@shopgate/commerce-widgets/image": [Function],
           "@shopgate/commerce-widgets/widget-grid": [Function],
         }
       }
       widgets={
-        Array [
-          Object {
+        [
+          {
             "col": 0,
             "row": 0,
-            "settings": Object {
+            "settings": {
               "id": 835351,
               "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
             },
             "type": "@shopgate/commerce-widgets/image",
             "width": 12,
           },
-          Object {
+          {
             "col": 0,
             "row": 0,
-            "settings": Object {
+            "settings": {
               "id": 835352,
               "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
             },
             "type": "@shopgate/commerce-widgets/imagefoo",
             "width": 12,
           },
-          Object {
+          {
             "col": 0,
             "row": 0,
-            "settings": Object {
+            "settings": {
               "id": 835353,
               "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
               "published": false,
@@ -346,7 +346,7 @@ exports[`<Widgets /> should render only one widget when the second one is not pu
           key="w0"
           row={0}
           settings={
-            Object {
+            {
               "id": 835351,
               "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
             }

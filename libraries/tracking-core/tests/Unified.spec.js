@@ -1,25 +1,23 @@
-/* eslint global-require: "off" */
-import chai from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-import mochaJsdom from 'mocha-jsdom';
-import storageMock from './helpers/localStorage-mock';
+/** @jest-environment jsdom */
 
-const { expect } = chai;
-chai.use(sinonChai);
+/* eslint global-require: "off" */
+import storageMock from './helpers/localStorage-mock';
 
 describe('Unified', () => {
   let SgUnifiedTracking;
   let SgTrackingCore;
   let trackingHelper;
-  mochaJsdom();
+  let plugin;
 
-  before(() => {
-    global.localStorage = storageMock();
-    global.Headers = () => {};
-    global.fetch = () => new Promise(() => {});
-    global.console.groupCollapsed = () => {};
-    global.console.groupEnd = () => {};
+  beforeAll(() => {
+    Object.defineProperty(window, 'localStorage', {
+      configurable: true,
+      get: () => storageMock(),
+    });
+
+    global.Headers = jest.fn();
+    global.console.groupCollapsed = jest.fn();
+    global.console.groupEnd = jest.fn();
     window.SGEvent = {};
 
     trackingHelper = require('../helpers/helper');
@@ -38,8 +36,6 @@ describe('Unified', () => {
     'addedPaymentInfo',
   ];
 
-  let plugin = null;
-
   /**
    * Helper to get always the same plugin instance
    */
@@ -48,36 +44,36 @@ describe('Unified', () => {
   }
 
   it('should register for events', () => {
-    const registerSpy = sinon.spy(SgUnifiedTracking.prototype, 'registerHelper');
+    const registerSpy = jest.spyOn(SgUnifiedTracking.prototype, 'registerHelper');
 
     createPluginInstance();
 
-    events.forEach((event) => {
-      expect(registerSpy).to.have.been.calledWith(event);
-    });
-    registerSpy.restore();
+    const calledEvents = registerSpy.mock.calls.map(call => call[0]);
+    expect(calledEvents).toEqual(expect.arrayContaining(events));
+
+    registerSpy.mockRestore();
   });
 
   it('should do ajax requests', () => {
-    const spy = sinon.spy(trackingHelper, 'sendDataRequest');
+    const sendSpy = jest.spyOn(trackingHelper, 'sendDataRequest').mockImplementation(() => {});
 
     createPluginInstance();
 
     // Trigger opt-out
     SgTrackingCore.optOut();
-    expect(spy).to.have.been.calledWith('remove_unified_trackers');
+    expect(sendSpy).toHaveBeenCalledWith('remove_unified_trackers');
 
     // Revert the opt-out
     SgTrackingCore.optOut(false);
-    expect(spy).to.have.been.calledWith('add_unified_trackers');
+    expect(sendSpy).toHaveBeenCalledWith('add_unified_trackers');
 
-    spy.restore();
+    sendSpy.mockRestore();
   });
 
   it('should call SgTrackingAppHandler', () => {
     createPluginInstance();
 
-    const spy = sinon.spy(plugin.appHandler, 'viewContent');
+    const spy = jest.spyOn(plugin.appHandler, 'viewContent').mockImplementation(() => {});
 
     SgTrackingCore.track.viewContent({
       page: {
@@ -86,7 +82,7 @@ describe('Unified', () => {
       },
     });
 
-    expect(spy).to.have.been.calledWith(
+    expect(spy).toHaveBeenCalledWith(
       {
         id: '',
         type: 'startpage',
@@ -97,6 +93,7 @@ describe('Unified', () => {
         trackers: undefined,
       }
     );
-    spy.restore();
+
+    spy.mockRestore();
   });
 });

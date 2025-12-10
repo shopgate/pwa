@@ -3,14 +3,14 @@
 exports[`PriceSlider: <Label /> should render 1`] = `
 <div
   className={
-    Object {
+    {
       "data-css-13azwyo": "",
     }
   }
 >
   <span
     className={
-      Object {
+      {
         "data-css-5e1epi": "",
       }
     }
@@ -27,7 +27,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       <span
         className="css-1iqaz6v"
         style={
-          Object {
+          {
             "minWidth": "5",
           }
         }
@@ -45,7 +45,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       <span
         className="css-1iqaz6v"
         style={
-          Object {
+          {
             "minWidth": "5",
           }
         }
@@ -69,7 +69,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_from"
     className={
-      Object {
+      {
         "data-css-11c61cw": "",
       }
     }
@@ -80,7 +80,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     onClick={[Function]}
     pattern="[0-9]*"
     style={
-      Object {
+      {
         "left": 0,
         "width": "5",
       }
@@ -92,7 +92,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_to"
     className={
-      Object {
+      {
         "data-css-11c61cw": "",
       }
     }
@@ -103,7 +103,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     onClick={[Function]}
     pattern="[0-9]*"
     style={
-      Object {
+      {
         "left": 0,
         "width": "5",
       }

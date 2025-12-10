@@ -14,7 +14,7 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
     />
     <RangeSlider
       classNames={
-        Object {
+        {
           "container": "css-x355v3",
           "handleInner": "css-1aks6z8",
           "handleOuter": "css-nil",
@@ -28,7 +28,7 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
       min={0}
       onChange={[Function]}
       value={
-        Array [
+        [
           0,
           100,
         ]
@@ -52,7 +52,7 @@ exports[`Filter: <PriceSlider /> should render with default props 1`] = `
     />
     <RangeSlider
       classNames={
-        Object {
+        {
           "container": "css-x355v3",
           "handleInner": "css-1aks6z8",
           "handleOuter": "css-nil",
@@ -66,7 +66,7 @@ exports[`Filter: <PriceSlider /> should render with default props 1`] = `
       min={0}
       onChange={[Function]}
       value={
-        Array [
+        [
           0,
           100,
         ]

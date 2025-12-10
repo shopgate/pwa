@@ -3,7 +3,7 @@
 exports[`<ProductCard /> should not render when no product could be found 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -19,7 +19,7 @@ exports[`<ProductCard /> should not render when no product could be found 1`] = 
       product={null}
       render={[Function]}
       shadow={true}
-      style={Object {}}
+      style={{}}
     />
   </Connect(ProductCard)>
 </Provider>
@@ -28,7 +28,7 @@ exports[`<ProductCard /> should not render when no product could be found 1`] = 
 exports[`<ProductCard /> should render as expected 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -44,19 +44,19 @@ exports[`<ProductCard /> should render as expected 1`] = `
     <ProductCard
       dispatch={[Function]}
       product={
-        Object {
+        {
           "featuredImageBaseUrl": null,
           "featuredImageUrl": null,
           "id": "PR0DUCTID",
           "name": "Product Name",
-          "price": Object {
+          "price": {
             "currency": "EUR",
             "discount": 50,
             "info": "Price Info",
             "unitPrice": 5,
             "unitPriceStriked": 10,
           },
-          "rating": Object {
+          "rating": {
             "average": 80,
             "count": 4,
             "reviewCount": 3,
@@ -66,13 +66,13 @@ exports[`<ProductCard /> should render as expected 1`] = `
       productId="PR0DUCTID"
       render={[Function]}
       shadow={true}
-      style={Object {}}
+      style={{}}
     >
       <section
         className="css-5luenq theme__product-card ui-shared__card"
         data-test-id="Product: Product Name"
         style={
-          Object {
+          {
             "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.16)",
           }
         }
@@ -80,19 +80,19 @@ exports[`<ProductCard /> should render as expected 1`] = `
         <ProductCard
           dispatch={[Function]}
           product={
-            Object {
+            {
               "featuredImageBaseUrl": null,
               "featuredImageUrl": null,
               "id": "PR0DUCTID",
               "name": "Product Name",
-              "price": Object {
+              "price": {
                 "currency": "EUR",
                 "discount": 50,
                 "info": "Price Info",
                 "unitPrice": 5,
                 "unitPriceStriked": 10,
               },
-              "rating": Object {
+              "rating": {
                 "average": 80,
                 "count": 4,
                 "reviewCount": 3,
@@ -111,7 +111,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
 exports[`<ProductCard /> should render with a custom render prop 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -128,19 +128,19 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
     <ProductCard
       dispatch={[Function]}
       product={
-        Object {
+        {
           "featuredImageBaseUrl": null,
           "featuredImageUrl": null,
           "id": "PR0DUCTID",
           "name": "Product Name",
-          "price": Object {
+          "price": {
             "currency": "EUR",
             "discount": 50,
             "info": "Price Info",
             "unitPrice": 5,
             "unitPriceStriked": 10,
           },
-          "rating": Object {
+          "rating": {
             "average": 80,
             "count": 4,
             "reviewCount": 3,
@@ -150,13 +150,13 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
       productId="PR0DUCTID"
       render={[Function]}
       shadow={true}
-      style={Object {}}
+      style={{}}
     >
       <section
         className="css-5luenq theme__product-card ui-shared__card"
         data-test-id="Product: Product Name"
         style={
-          Object {
+          {
             "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.16)",
           }
         }

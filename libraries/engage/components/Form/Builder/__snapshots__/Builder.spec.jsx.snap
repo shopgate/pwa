@@ -4,9 +4,9 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
 <Builder
   className={null}
   config={
-    Object {
-      "fields": Object {
-        "foo": Object {
+    {
+      "fields": {
+        "foo": {
           "default": "default",
           "label": "foo",
           "type": "text",
@@ -15,9 +15,9 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   elements={
-    Object {
+    {
       "checkbox": [Function],
       "country": [Function],
       "date": [Function],
@@ -35,17 +35,17 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
   }
   handleUpdate={
     [MockFunction] {
-      "calls": Array [
-        Array [
-          Object {
+      "calls": [
+        [
+          {
             "foo": "default",
           },
           false,
-          Array [],
+          [],
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -55,7 +55,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
   id="foo"
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     className="foo"
@@ -73,8 +73,8 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
         <Portal
           name="foo.foo.before"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -91,8 +91,8 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
         <Portal
           name="foo.foo"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -108,7 +108,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
         >
           <ElementText
             element={
-              Object {
+              {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -162,7 +162,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -184,7 +184,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="foo"
                         transform={null}
@@ -200,7 +200,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -223,7 +223,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -248,7 +248,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -312,7 +312,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -324,7 +324,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
               </TextField>
               <FormHelper
                 element={
-                  Object {
+                  {
                     "custom": false,
                     "default": "default",
                     "handleChange": [Function],
@@ -344,8 +344,8 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   <SurroundPortals
                     portalName="foo.foo.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
+                      {
+                        "element": {
                           "custom": false,
                           "default": "default",
                           "handleChange": [Function],
@@ -367,8 +367,8 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
         <Portal
           name="foo.foo.after"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -392,15 +392,15 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
 <Builder
   className={null}
   config={
-    Object {
-      "fields": Object {
-        "bar": Object {
-          "actions": Array [
-            Object {
-              "rules": Array [
-                Object {
+    {
+      "fields": {
+        "bar": {
+          "actions": [
+            {
+              "rules": [
+                {
                   "context": "foo",
-                  "data": Array [
+                  "data": [
                     "abc",
                   ],
                   "type": "notIn",
@@ -412,7 +412,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
           "label": "bar",
           "type": "text",
         },
-        "foo": Object {
+        "foo": {
           "label": "foo",
           "type": "text",
           "visible": true,
@@ -420,9 +420,9 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   elements={
-    Object {
+    {
       "checkbox": [Function],
       "country": [Function],
       "date": [Function],
@@ -441,7 +441,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     className="foo"
@@ -459,8 +459,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.foo.before"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -476,8 +476,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.foo"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -492,7 +492,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         >
           <ElementText
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -545,7 +545,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -567,7 +567,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="foo"
                         transform={null}
@@ -583,7 +583,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -606,7 +606,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -631,7 +631,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -695,7 +695,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -707,7 +707,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
               </TextField>
               <FormHelper
                 element={
-                  Object {
+                  {
                     "custom": false,
                     "handleChange": [Function],
                     "id": "foo",
@@ -726,8 +726,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   <SurroundPortals
                     portalName="foo.foo.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
+                      {
+                        "element": {
                           "custom": false,
                           "handleChange": [Function],
                           "id": "foo",
@@ -748,8 +748,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.foo.after"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -765,14 +765,14 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.bar.before"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -795,14 +795,14 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.bar"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -824,13 +824,13 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         >
           <ElementText
             element={
-              Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+              {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -890,7 +890,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -912,7 +912,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="bar"
                         transform={null}
@@ -928,7 +928,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -951,7 +951,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -976,7 +976,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -1040,7 +1040,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -1052,13 +1052,13 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
               </TextField>
               <FormHelper
                 element={
-                  Object {
-                    "actions": Array [
-                      Object {
-                        "rules": Array [
-                          Object {
+                  {
+                    "actions": [
+                      {
+                        "rules": [
+                          {
                             "context": "foo",
-                            "data": Array [
+                            "data": [
                               "abc",
                             ],
                             "type": "notIn",
@@ -1084,14 +1084,14 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   <SurroundPortals
                     portalName="foo.bar.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
-                          "actions": Array [
-                            Object {
-                              "rules": Array [
-                                Object {
+                      {
+                        "element": {
+                          "actions": [
+                            {
+                              "rules": [
+                                {
                                   "context": "foo",
-                                  "data": Array [
+                                  "data": [
                                     "abc",
                                   ],
                                   "type": "notIn",
@@ -1119,14 +1119,14 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.bar.after"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -1156,15 +1156,15 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
 <Builder
   className={null}
   config={
-    Object {
-      "fields": Object {
-        "bar": Object {
-          "actions": Array [
-            Object {
-              "rules": Array [
-                Object {
+    {
+      "fields": {
+        "bar": {
+          "actions": [
+            {
+              "rules": [
+                {
                   "context": "foo",
-                  "data": Array [
+                  "data": [
                     "abc",
                   ],
                   "type": "notIn",
@@ -1176,7 +1176,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
           "label": "bar",
           "type": "text",
         },
-        "foo": Object {
+        "foo": {
           "label": "foo",
           "type": "text",
           "visible": true,
@@ -1184,9 +1184,9 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   elements={
-    Object {
+    {
       "checkbox": [Function],
       "country": [Function],
       "date": [Function],
@@ -1205,7 +1205,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     className="foo"
@@ -1223,8 +1223,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.foo.before"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -1240,8 +1240,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.foo"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -1256,7 +1256,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         >
           <ElementText
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -1309,7 +1309,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -1331,7 +1331,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="foo"
                         transform={null}
@@ -1347,7 +1347,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -1370,7 +1370,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -1395,7 +1395,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -1459,7 +1459,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -1471,7 +1471,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
               </TextField>
               <FormHelper
                 element={
-                  Object {
+                  {
                     "custom": false,
                     "handleChange": [Function],
                     "id": "foo",
@@ -1490,8 +1490,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   <SurroundPortals
                     portalName="foo.foo.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
+                      {
+                        "element": {
                           "custom": false,
                           "handleChange": [Function],
                           "id": "foo",
@@ -1512,8 +1512,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.foo.after"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "foo",
@@ -1529,14 +1529,14 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.bar.before"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -1559,14 +1559,14 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.bar"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -1588,13 +1588,13 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         >
           <ElementText
             element={
-              Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+              {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -1620,14 +1620,14 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
         <Portal
           name="foo.bar.after"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "rules": Array [
-                      Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "abc",
                         ],
                         "type": "notIn",
@@ -1657,13 +1657,13 @@ exports[`<Builder /> should render empty form 1`] = `
 <Builder
   className={null}
   config={
-    Object {
-      "fields": Object {},
+    {
+      "fields": {},
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   elements={
-    Object {
+    {
       "checkbox": [Function],
       "country": [Function],
       "date": [Function],
@@ -1682,7 +1682,7 @@ exports[`<Builder /> should render empty form 1`] = `
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     className="foo"
@@ -1706,9 +1706,9 @@ exports[`<Builder /> should render invisible field with visibility prop set to f
 <Builder
   className={null}
   config={
-    Object {
-      "fields": Object {
-        "firstName": Object {
+    {
+      "fields": {
+        "firstName": {
           "label": "foo",
           "type": "text",
           "visible": false,
@@ -1716,9 +1716,9 @@ exports[`<Builder /> should render invisible field with visibility prop set to f
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   elements={
-    Object {
+    {
       "checkbox": [Function],
       "country": [Function],
       "date": [Function],
@@ -1737,7 +1737,7 @@ exports[`<Builder /> should render invisible field with visibility prop set to f
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     className="foo"
@@ -1755,8 +1755,8 @@ exports[`<Builder /> should render invisible field with visibility prop set to f
         <Portal
           name="foo.firstName.before"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -1772,8 +1772,8 @@ exports[`<Builder /> should render invisible field with visibility prop set to f
         <Portal
           name="foo.firstName"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -1788,7 +1788,7 @@ exports[`<Builder /> should render invisible field with visibility prop set to f
         >
           <ElementText
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -1807,8 +1807,8 @@ exports[`<Builder /> should render invisible field with visibility prop set to f
         <Portal
           name="foo.firstName.after"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -1831,14 +1831,14 @@ exports[`<Builder /> should render two text fields 1`] = `
 <Builder
   className={null}
   config={
-    Object {
-      "fields": Object {
-        "firstName": Object {
+    {
+      "fields": {
+        "firstName": {
           "label": "foo",
           "type": "text",
           "visible": true,
         },
-        "lastName": Object {
+        "lastName": {
           "label": "bar",
           "type": "text",
           "visible": true,
@@ -1846,9 +1846,9 @@ exports[`<Builder /> should render two text fields 1`] = `
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   elements={
-    Object {
+    {
       "checkbox": [Function],
       "country": [Function],
       "date": [Function],
@@ -1867,7 +1867,7 @@ exports[`<Builder /> should render two text fields 1`] = `
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     className="foo"
@@ -1885,8 +1885,8 @@ exports[`<Builder /> should render two text fields 1`] = `
         <Portal
           name="foo.firstName.before"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -1902,8 +1902,8 @@ exports[`<Builder /> should render two text fields 1`] = `
         <Portal
           name="foo.firstName"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -1918,7 +1918,7 @@ exports[`<Builder /> should render two text fields 1`] = `
         >
           <ElementText
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -1971,7 +1971,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -1993,7 +1993,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="foo"
                         transform={null}
@@ -2009,7 +2009,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -2032,7 +2032,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -2057,7 +2057,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -2121,7 +2121,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -2133,7 +2133,7 @@ exports[`<Builder /> should render two text fields 1`] = `
               </TextField>
               <FormHelper
                 element={
-                  Object {
+                  {
                     "custom": false,
                     "handleChange": [Function],
                     "id": "firstName",
@@ -2152,8 +2152,8 @@ exports[`<Builder /> should render two text fields 1`] = `
                   <SurroundPortals
                     portalName="foo.firstName.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
+                      {
+                        "element": {
                           "custom": false,
                           "handleChange": [Function],
                           "id": "firstName",
@@ -2174,8 +2174,8 @@ exports[`<Builder /> should render two text fields 1`] = `
         <Portal
           name="foo.firstName.after"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "firstName",
@@ -2191,8 +2191,8 @@ exports[`<Builder /> should render two text fields 1`] = `
         <Portal
           name="foo.lastName.before"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "lastName",
@@ -2208,8 +2208,8 @@ exports[`<Builder /> should render two text fields 1`] = `
         <Portal
           name="foo.lastName"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "lastName",
@@ -2224,7 +2224,7 @@ exports[`<Builder /> should render two text fields 1`] = `
         >
           <ElementText
             element={
-              Object {
+              {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "lastName",
@@ -2277,7 +2277,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -2299,7 +2299,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="bar"
                         transform={null}
@@ -2315,7 +2315,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -2338,7 +2338,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -2363,7 +2363,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -2427,7 +2427,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -2439,7 +2439,7 @@ exports[`<Builder /> should render two text fields 1`] = `
               </TextField>
               <FormHelper
                 element={
-                  Object {
+                  {
                     "custom": false,
                     "handleChange": [Function],
                     "id": "lastName",
@@ -2458,8 +2458,8 @@ exports[`<Builder /> should render two text fields 1`] = `
                   <SurroundPortals
                     portalName="foo.lastName.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
+                      {
+                        "element": {
                           "custom": false,
                           "handleChange": [Function],
                           "id": "lastName",
@@ -2480,8 +2480,8 @@ exports[`<Builder /> should render two text fields 1`] = `
         <Portal
           name="foo.lastName.after"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "handleChange": [Function],
                 "id": "lastName",
@@ -2504,19 +2504,19 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
 <Builder
   className={null}
   config={
-    Object {
-      "fields": Object {
-        "bar": Object {
-          "actions": Array [
-            Object {
-              "params": Object {
+    {
+      "fields": {
+        "bar": {
+          "actions": [
+            {
+              "params": {
                 "type": "fixed",
                 "value": "cheat",
               },
-              "rules": Array [
-                Object {
+              "rules": [
+                {
                   "context": "foo",
-                  "data": Array [
+                  "data": [
                     "default",
                   ],
                   "type": "notIn",
@@ -2529,7 +2529,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
           "label": "bar",
           "type": "text",
         },
-        "foo": Object {
+        "foo": {
           "default": "default",
           "label": "foo",
           "type": "text",
@@ -2538,9 +2538,9 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   elements={
-    Object {
+    {
       "checkbox": [Function],
       "country": [Function],
       "date": [Function],
@@ -2559,7 +2559,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     className="foo"
@@ -2577,8 +2577,8 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
         <Portal
           name="foo.foo.before"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -2595,8 +2595,8 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
         <Portal
           name="foo.foo"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -2612,7 +2612,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
         >
           <ElementText
             element={
-              Object {
+              {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -2666,7 +2666,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -2688,7 +2688,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="foo"
                         transform={null}
@@ -2704,7 +2704,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -2727,7 +2727,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -2752,7 +2752,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -2816,7 +2816,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -2828,7 +2828,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
               </TextField>
               <FormHelper
                 element={
-                  Object {
+                  {
                     "custom": false,
                     "default": "default",
                     "handleChange": [Function],
@@ -2848,8 +2848,8 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   <SurroundPortals
                     portalName="foo.foo.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
+                      {
+                        "element": {
                           "custom": false,
                           "default": "default",
                           "handleChange": [Function],
@@ -2871,8 +2871,8 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
         <Portal
           name="foo.foo.after"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -2889,18 +2889,18 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
         <Portal
           name="foo.bar.before"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -2924,18 +2924,18 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
         <Portal
           name="foo.bar"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -2958,17 +2958,17 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
         >
           <ElementText
             element={
-              Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+              {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -3029,7 +3029,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -3051,7 +3051,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="bar"
                         transform={null}
@@ -3067,7 +3067,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -3090,7 +3090,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -3115,7 +3115,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -3179,7 +3179,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -3191,17 +3191,17 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
               </TextField>
               <FormHelper
                 element={
-                  Object {
-                    "actions": Array [
-                      Object {
-                        "params": Object {
+                  {
+                    "actions": [
+                      {
+                        "params": {
                           "type": "fixed",
                           "value": "cheat",
                         },
-                        "rules": Array [
-                          Object {
+                        "rules": [
+                          {
                             "context": "foo",
-                            "data": Array [
+                            "data": [
                               "default",
                             ],
                             "type": "notIn",
@@ -3228,18 +3228,18 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   <SurroundPortals
                     portalName="foo.bar.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
-                          "actions": Array [
-                            Object {
-                              "params": Object {
+                      {
+                        "element": {
+                          "actions": [
+                            {
+                              "params": {
                                 "type": "fixed",
                                 "value": "cheat",
                               },
-                              "rules": Array [
-                                Object {
+                              "rules": [
+                                {
                                   "context": "foo",
-                                  "data": Array [
+                                  "data": [
                                     "default",
                                   ],
                                   "type": "notIn",
@@ -3268,18 +3268,18 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
         <Portal
           name="foo.bar.after"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -3310,19 +3310,19 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
 <Builder
   className={null}
   config={
-    Object {
-      "fields": Object {
-        "bar": Object {
-          "actions": Array [
-            Object {
-              "params": Object {
+    {
+      "fields": {
+        "bar": {
+          "actions": [
+            {
+              "params": {
                 "type": "fixed",
                 "value": "cheat",
               },
-              "rules": Array [
-                Object {
+              "rules": [
+                {
                   "context": "foo",
-                  "data": Array [
+                  "data": [
                     "default",
                   ],
                   "type": "notIn",
@@ -3335,7 +3335,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
           "label": "bar",
           "type": "text",
         },
-        "foo": Object {
+        "foo": {
           "default": "default",
           "label": "foo",
           "type": "text",
@@ -3344,9 +3344,9 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
       },
     }
   }
-  defaults={Object {}}
+  defaults={{}}
   elements={
-    Object {
+    {
       "checkbox": [Function],
       "country": [Function],
       "date": [Function],
@@ -3365,7 +3365,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
   handleUpdate={[Function]}
   name="foo"
   onSubmit={[Function]}
-  validationErrors={Array []}
+  validationErrors={[]}
 >
   <Form
     className="foo"
@@ -3383,8 +3383,8 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
         <Portal
           name="foo.foo.before"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -3401,8 +3401,8 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
         <Portal
           name="foo.foo"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -3418,7 +3418,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
         >
           <ElementText
             element={
-              Object {
+              {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -3472,7 +3472,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -3494,7 +3494,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="foo"
                         transform={null}
@@ -3510,7 +3510,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -3533,7 +3533,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -3558,7 +3558,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -3622,7 +3622,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -3634,7 +3634,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
               </TextField>
               <FormHelper
                 element={
-                  Object {
+                  {
                     "custom": false,
                     "default": "default",
                     "handleChange": [Function],
@@ -3654,8 +3654,8 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   <SurroundPortals
                     portalName="foo.foo.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
+                      {
+                        "element": {
                           "custom": false,
                           "default": "default",
                           "handleChange": [Function],
@@ -3677,8 +3677,8 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
         <Portal
           name="foo.foo.after"
           props={
-            Object {
-              "element": Object {
+            {
+              "element": {
                 "custom": false,
                 "default": "default",
                 "handleChange": [Function],
@@ -3695,18 +3695,18 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
         <Portal
           name="foo.bar.before"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -3730,18 +3730,18 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
         <Portal
           name="foo.bar"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -3764,17 +3764,17 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
         >
           <ElementText
             element={
-              Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+              {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",
@@ -3835,7 +3835,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string=""
                         transform={null}
@@ -3857,7 +3857,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       <Translate
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
-                        params={Object {}}
+                        params={{}}
                         role={null}
                         string="bar"
                         transform={null}
@@ -3873,7 +3873,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   </Label>
                   <FormElement
                     attributes={
-                      Object {
+                      {
                         "aria-describedby": null,
                         "aria-invalid": false,
                       }
@@ -3896,7 +3896,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <_default
                       attributes={
-                        Object {
+                        {
                           "aria-describedby": null,
                           "aria-invalid": false,
                         }
@@ -3921,7 +3921,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                     >
                       <SimpleInput
                         attributes={
-                          Object {
+                          {
                             "aria-describedby": null,
                             "aria-invalid": false,
                           }
@@ -3985,7 +3985,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                       <div
                         className="css-1tpmuef"
                         style={
-                          Object {
+                          {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
                             "transform": "scale3d(0,1,1)",
                           }
@@ -3997,17 +3997,17 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
               </TextField>
               <FormHelper
                 element={
-                  Object {
-                    "actions": Array [
-                      Object {
-                        "params": Object {
+                  {
+                    "actions": [
+                      {
+                        "params": {
                           "type": "fixed",
                           "value": "cheat",
                         },
-                        "rules": Array [
-                          Object {
+                        "rules": [
+                          {
                             "context": "foo",
-                            "data": Array [
+                            "data": [
                               "default",
                             ],
                             "type": "notIn",
@@ -4034,18 +4034,18 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   <SurroundPortals
                     portalName="foo.bar.formHelper"
                     portalProps={
-                      Object {
-                        "element": Object {
-                          "actions": Array [
-                            Object {
-                              "params": Object {
+                      {
+                        "element": {
+                          "actions": [
+                            {
+                              "params": {
                                 "type": "fixed",
                                 "value": "cheat",
                               },
-                              "rules": Array [
-                                Object {
+                              "rules": [
+                                {
                                   "context": "foo",
-                                  "data": Array [
+                                  "data": [
                                     "default",
                                   ],
                                   "type": "notIn",
@@ -4074,18 +4074,18 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
         <Portal
           name="foo.bar.after"
           props={
-            Object {
-              "element": Object {
-                "actions": Array [
-                  Object {
-                    "params": Object {
+            {
+              "element": {
+                "actions": [
+                  {
+                    "params": {
                       "type": "fixed",
                       "value": "cheat",
                     },
-                    "rules": Array [
-                      Object {
+                    "rules": [
+                      {
                         "context": "foo",
-                        "data": Array [
+                        "data": [
                           "default",
                         ],
                         "type": "notIn",

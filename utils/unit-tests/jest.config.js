@@ -1,11 +1,13 @@
+/** @type {import('jest').Config} */
 module.exports = {
+  testEnvironment: 'jsdom',
+  silent: false,
   moduleFileExtensions: ['js', 'jsx', 'json', 'mjs'],
   moduleNameMapper: {
-    '^.+\\.(css|scss)$': 'identity-obj-proxy',
+    // Mock styles since they are not needed for unit tests
+    '\\.(css|sass)$': '<rootDir>/__mocks__/styleMock.js',
     // Fix issue with Swiper ES module imports that work via "exports" field in package.json
     '^swiper/react$': '<rootDir>/node_modules/swiper/swiper-react.mjs',
-    // Mock Swiper styles since they are not needed for unit tests
-    '^swiper/css(?:/.*)?$': '<rootDir>/__mocks__/styleMock.js',
   },
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
@@ -41,5 +43,7 @@ module.exports = {
   setupFilesAfterEnv: [
     '@shopgate/pwa-unit-test/envSetup.js',
   ],
-  testURL: 'http://localhost',
+  testEnvironmentOptions: {
+    url: 'http://localhost',
+  },
 };

@@ -16,20 +16,20 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
       <Tier
         key="1_2_92.5"
         price={
-          Object {
+          {
             "currency": "USD",
-            "tiers": Array [
-              Object {
+            "tiers": [
+              {
                 "from": 1,
                 "to": 2,
                 "unitPrice": 92.5,
               },
-              Object {
+              {
                 "from": 3,
                 "to": 5,
                 "unitPrice": 77.5,
               },
-              Object {
+              {
                 "from": 6,
                 "to": null,
                 "unitPrice": 68.5,
@@ -38,7 +38,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
           }
         }
         tier={
-          Object {
+          {
             "from": 1,
             "to": 2,
             "unitPrice": 92.5,
@@ -48,20 +48,20 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
       <Tier
         key="3_5_77.5"
         price={
-          Object {
+          {
             "currency": "USD",
-            "tiers": Array [
-              Object {
+            "tiers": [
+              {
                 "from": 1,
                 "to": 2,
                 "unitPrice": 92.5,
               },
-              Object {
+              {
                 "from": 3,
                 "to": 5,
                 "unitPrice": 77.5,
               },
-              Object {
+              {
                 "from": 6,
                 "to": null,
                 "unitPrice": 68.5,
@@ -70,7 +70,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
           }
         }
         tier={
-          Object {
+          {
             "from": 3,
             "to": 5,
             "unitPrice": 77.5,
@@ -80,20 +80,20 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
       <Tier
         key="6__68.5"
         price={
-          Object {
+          {
             "currency": "USD",
-            "tiers": Array [
-              Object {
+            "tiers": [
+              {
                 "from": 1,
                 "to": 2,
                 "unitPrice": 92.5,
               },
-              Object {
+              {
                 "from": 3,
                 "to": 5,
                 "unitPrice": 77.5,
               },
-              Object {
+              {
                 "from": 6,
                 "to": null,
                 "unitPrice": 68.5,
@@ -102,7 +102,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
           }
         }
         tier={
-          Object {
+          {
             "from": 6,
             "to": null,
             "unitPrice": 68.5,

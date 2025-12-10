@@ -56,20 +56,25 @@ describe('<ActionButton />', () => {
     });
 
     describe('Given the component gets clicked', () => {
+      let timeoutSpy;
+
       beforeEach(() => {
+        timeoutSpy = jest.spyOn(global, 'setTimeout');
         renderedElement.find(RippleButton).simulate('click');
       });
 
+      afterEach(() => {
+        timeoutSpy.mockRestore();
+      });
+
       it('should use setTimeout for delaying the onClick handler', () => {
-        expect(setTimeout.mock.calls.length).toBe(1);
-        expect(setTimeout.mock.calls[0][1]).toBe(ActionButton.clickDelay);
+        expect(timeoutSpy).toHaveBeenCalledTimes(1);
+        expect(timeoutSpy.mock.calls[0][1]).toBe(ActionButton.clickDelay);
       });
 
       it('should eventually call the onClick handler', () => {
         jest.runOnlyPendingTimers();
-
-        expect(mockOnClick).toBeCalled();
-        expect(mockOnClick.mock.calls.length).toBe(1);
+        expect(mockOnClick).toHaveBeenCalledTimes(1);
       });
     });
   });

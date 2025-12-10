@@ -23,7 +23,7 @@ exports[`<ProductSlider /> should match snapshot 1`] = `
         <ProductCard
           productId="prod1"
           style={
-            Object {
+            {
               "height": "100%",
               "margin": "0 8px",
             }

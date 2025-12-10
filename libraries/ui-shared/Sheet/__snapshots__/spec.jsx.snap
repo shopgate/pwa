@@ -3,7 +3,7 @@
 exports[`<Sheet /> should open 1`] = `
 <Sheet
   allowClose={true}
-  animation={Object {}}
+  animation={{}}
   backdrop={true}
   className={null}
   contentClassName={null}
@@ -22,7 +22,7 @@ exports[`<Sheet /> should open 1`] = `
   >
     <Drawer
       animation={
-        Object {
+        {
           "duration": 300,
           "in": "css-1ldjh2f",
           "out": "css-171mdnt",
@@ -41,7 +41,7 @@ exports[`<Sheet /> should open 1`] = `
         onAnimationEnd={[Function]}
         role="dialog"
         style={
-          Object {
+          {
             "animationDuration": "300ms",
           }
         }
@@ -94,19 +94,19 @@ exports[`<Sheet /> should open 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                           size={24}
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                              {
+                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": 24,
                               }
@@ -163,7 +163,7 @@ exports[`<Sheet /> should open 1`] = `
               <div
                 className="css-guf25f ui-shared__progress-bar"
                 style={
-                  Object {
+                  {
                     "transform": "scale(1, 0)",
                   }
                 }
@@ -204,7 +204,7 @@ exports[`<Sheet /> should open 1`] = `
         in={true}
         mountOnEnter={true}
         nodeRef={
-          Object {
+          {
             "current": <div
               aria-hidden="true"
               class="css-30873t  common__backdrop"
@@ -228,7 +228,7 @@ exports[`<Sheet /> should open 1`] = `
           data-test-id="Backdrop"
           onClick={[Function]}
           style={
-            Object {
+            {
               "background": "#000",
               "opacity": 0.2,
               "pointerEvents": "auto",
@@ -249,7 +249,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
 >
   <Drawer
     animation={
-      Object {
+      {
         "duration": 300,
         "in": "css-1ldjh2f",
         "out": "css-171mdnt",
@@ -293,7 +293,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
 >
   <Drawer
     animation={
-      Object {
+      {
         "duration": 300,
         "in": "css-1ldjh2f",
         "out": "css-171mdnt",
@@ -337,7 +337,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
 >
   <Drawer
     animation={
-      Object {
+      {
         "duration": 300,
         "in": "css-1ldjh2f",
         "out": "css-171mdnt",
@@ -392,7 +392,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
 exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
 <Sheet
   allowClose={true}
-  animation={Object {}}
+  animation={{}}
   backdrop={true}
   className={null}
   contentClassName={null}
@@ -401,16 +401,16 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   isOpen={true}
   onClose={
     [MockFunction] {
-      "calls": Array [
-        Array [],
-        Array [],
+      "calls": [
+        [],
+        [],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
-        Object {
+        {
           "type": "return",
           "value": undefined,
         },
@@ -428,7 +428,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   >
     <Drawer
       animation={
-        Object {
+        {
           "duration": 300,
           "in": "css-1ldjh2f",
           "out": "css-171mdnt",
@@ -447,7 +447,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         onAnimationEnd={[Function]}
         role="dialog"
         style={
-          Object {
+          {
             "animationDuration": "300ms",
           }
         }
@@ -500,19 +500,19 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                           size={24}
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                              {
+                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": 24,
                               }
@@ -569,7 +569,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               <div
                 className="css-guf25f ui-shared__progress-bar"
                 style={
-                  Object {
+                  {
                     "transform": "scale(1, 0)",
                   }
                 }
@@ -610,7 +610,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         in={false}
         mountOnEnter={true}
         nodeRef={
-          Object {
+          {
             "current": null,
           }
         }
@@ -629,7 +629,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           data-test-id="Backdrop"
           onClick={[Function]}
           style={
-            Object {
+            {
               "background": "#000",
               "opacity": 0,
               "pointerEvents": "none",

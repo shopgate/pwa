@@ -21,11 +21,11 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
             >
               <StockInfo
                 location={
-                  Object {
+                  {
                     "code": "store",
                     "distance": 0.02,
                     "name": "SomeStore",
-                    "operationHours": Object {
+                    "operationHours": {
                       "fri": "8:00am - 4:00pm",
                       "mon": "8:00am - 4:00pm",
                       "sat": "8:00am - 4:00pm",
@@ -85,7 +85,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
     </Grid>
     <StoreHoursToday
       hours={
-        Object {
+        {
           "fri": "8:00am - 4:00pm",
           "mon": "8:00am - 4:00pm",
           "sat": "8:00am - 4:00pm",

@@ -3,8 +3,8 @@
 exports[`<ProductGridPrice /> should render with msrp 1`] = `
 <Component
   product={
-    Object {
-      "price": Object {
+    {
+      "price": {
         "currency": "EUR",
         "discount": 52,
         "info": "",
@@ -18,8 +18,8 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
 >
   <ProductGridPrice
     product={
-      Object {
-        "price": Object {
+      {
+        "price": {
           "currency": "EUR",
           "discount": 52,
           "info": "",
@@ -56,8 +56,8 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
     <PriceInfo
       className="css-117ocmm"
       product={
-        Object {
-          "price": Object {
+        {
+          "price": {
             "currency": "EUR",
             "discount": 52,
             "info": "",
@@ -77,8 +77,8 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
 exports[`<ProductGridPrice /> should render with strike price 1`] = `
 <Component
   product={
-    Object {
-      "price": Object {
+    {
+      "price": {
         "currency": "EUR",
         "discount": 52,
         "info": "",
@@ -92,8 +92,8 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
 >
   <ProductGridPrice
     product={
-      Object {
-        "price": Object {
+      {
+        "price": {
           "currency": "EUR",
           "discount": 52,
           "info": "",
@@ -130,8 +130,8 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
     <PriceInfo
       className="css-117ocmm"
       product={
-        Object {
-          "price": Object {
+        {
+          "price": {
             "currency": "EUR",
             "discount": 52,
             "info": "",
@@ -151,8 +151,8 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
 exports[`<ProductGridPrice /> should render without discounts 1`] = `
 <Component
   product={
-    Object {
-      "price": Object {
+    {
+      "price": {
         "currency": "EUR",
         "discount": 0,
         "info": "PriceInfoString",
@@ -166,8 +166,8 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
 >
   <ProductGridPrice
     product={
-      Object {
-        "price": Object {
+      {
+        "price": {
           "currency": "EUR",
           "discount": 0,
           "info": "PriceInfoString",
@@ -197,8 +197,8 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
     <PriceInfo
       className="css-117ocmm"
       product={
-        Object {
-          "price": Object {
+        {
+          "price": {
             "currency": "EUR",
             "discount": 0,
             "info": "PriceInfoString",

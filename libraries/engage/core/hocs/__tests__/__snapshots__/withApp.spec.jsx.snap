@@ -7,7 +7,7 @@ exports[`engage > core > hocs > withApp should inject a property called "app" in
   <Consumer>
     <MockComponent
       app={
-        Object {
+        {
           "some": "prop",
         }
       }

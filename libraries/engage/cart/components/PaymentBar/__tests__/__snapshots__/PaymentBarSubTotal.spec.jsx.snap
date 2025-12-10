@@ -8,7 +8,7 @@ exports[`<PaymentBarSubTotal> should render line 1`] = `
 >
   <Label
     label="cart.subtotal"
-    labelParams={Object {}}
+    labelParams={{}}
     showSeparator={true}
     suffix={null}
   />

@@ -5,7 +5,7 @@ const TO = '/to';
 
 describe('Redirects', () => {
   beforeEach(() => {
-    redirects.constructor();
+    redirects.redirects.clear();
   });
 
   describe('.get()', () => {

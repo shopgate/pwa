@@ -5,7 +5,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
   <Portal
     name="PRODUCT_ITEM_PRICE_BEFORE"
     props={
-      Object {
+      {
         "location": "productGrid",
         "productId": "1234",
       }
@@ -14,7 +14,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
   <Portal
     name="PRODUCT_ITEM_PRICE"
     props={
-      Object {
+      {
         "location": "productGrid",
         "productId": "1234",
       }
@@ -22,9 +22,9 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
   >
     <ProductGridPrice
       product={
-        Object {
+        {
           "id": "1234",
-          "price": Object {},
+          "price": {},
         }
       }
     />
@@ -32,7 +32,7 @@ exports[`<ItemPrice /> should render with minimal props 1`] = `
   <Portal
     name="PRODUCT_ITEM_PRICE_AFTER"
     props={
-      Object {
+      {
         "location": "productGrid",
         "productId": "1234",
       }

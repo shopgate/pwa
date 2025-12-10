@@ -8,7 +8,7 @@ exports[`engage > core > hocs > withTheme should inject a single property with t
     <MockComponent
       someProp={true}
       theme={
-        Object {
+        {
           "ComponentOne": [Function],
           "ComponentTwo": [Function],
         }

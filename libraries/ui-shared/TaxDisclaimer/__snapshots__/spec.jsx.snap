@@ -4,7 +4,7 @@ exports[`<TaxDisclaimer /> should display null 1`] = `
 <SurroundPortals
   portalName="product.tax-disclaimer"
   portalProps={
-    Object {
+    {
       "showTaxDisclaimer": false,
     }
   }
@@ -15,7 +15,7 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
 <SurroundPortals
   portalName="product.tax-disclaimer"
   portalProps={
-    Object {
+    {
       "showTaxDisclaimer": true,
     }
   }
@@ -28,7 +28,7 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
     <Translate
       acceptPlainTextWithPlaceholders={false}
       className="css-fazkyv"
-      params={Object {}}
+      params={{}}
       role={null}
       string="product.tax_disclaimer"
       transform={null}

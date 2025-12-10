@@ -36,7 +36,7 @@ describe('AppInitialization collection', () => {
   beforeEach(() => {
     jest.clearAllMocks();
 
-    appInitialization.constructor();
+    appInitialization.store.clear();
 
     const store = createMockStore(
       combineReducers({ mockReducer })

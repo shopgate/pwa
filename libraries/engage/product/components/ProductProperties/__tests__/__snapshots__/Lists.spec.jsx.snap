@@ -4,12 +4,12 @@ exports[`<Lists /> should only render simple rows 1`] = `
 <Fragment>
   <Rows
     properties={
-      Array [
-        Object {
+      [
+        {
           "label": "Test 1",
           "name": "test1",
         },
-        Object {
+        {
           "label": "Test 2",
           "name": "test2",
         },

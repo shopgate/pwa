@@ -8,7 +8,7 @@ jest.mock('@shopgate/engage/core');
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/i18n/countries.hooks');
 jest.mock('react', () => ({
-  ...require.requireActual('react'),
+  ...jest.requireActual('react'),
   useContext: jest.fn(),
   memo: component => component,
 }));

@@ -122,7 +122,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
  * Flushes the promise queue.
  * @returns {Promise}
  */
-const flushPromises = () => new Promise(resolve => setImmediate(resolve));
+const flushPromises = () => new Promise(resolve => queueMicrotask(resolve));
 
 describe('Favorites - subscriptions', () => {
   describe('Favorites enabled', () => {

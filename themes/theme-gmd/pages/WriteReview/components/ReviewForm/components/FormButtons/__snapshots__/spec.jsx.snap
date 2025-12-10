@@ -3,7 +3,7 @@
 exports[`<FormButtons /> should render submit and cancel button 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -36,7 +36,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
               <Translate
                 acceptPlainTextWithPlaceholders={false}
                 className={null}
-                params={Object {}}
+                params={{}}
                 role={null}
                 string="common.cancel"
                 transform={null}
@@ -100,7 +100,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                         <Translate
                           acceptPlainTextWithPlaceholders={false}
                           className={null}
-                          params={Object {}}
+                          params={{}}
                           role={null}
                           string="common.submit"
                           transform={null}

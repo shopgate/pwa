@@ -36,7 +36,7 @@ function readJSON(file) {
  */
 function flatten(obj, prefix = '', out = {}) {
   const result = out;
-  // eslint-disable-next-line no-restricted-syntax
+
   for (const [key, value] of Object.entries(obj)) {
     const fullKey = prefix ? `${prefix}.${key}` : key;
     if (value && typeof value === 'object' && !Array.isArray(value)) {

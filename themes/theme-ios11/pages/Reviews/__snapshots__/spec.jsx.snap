@@ -3,7 +3,7 @@
 exports[`<Reviews> page should not crash 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -28,14 +28,14 @@ exports[`<Reviews> page should not crash 1`] = `
             dispatch={[Function]}
             productId="foo"
             rating={
-              Object {
+              {
                 "average": 50,
                 "count": 4,
               }
             }
             reviews={
-              Array [
-                Object {
+              [
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 1,
@@ -43,7 +43,7 @@ exports[`<Reviews> page should not crash 1`] = `
                   "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                   "title": "",
                 },
-                Object {
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 2,
@@ -51,7 +51,7 @@ exports[`<Reviews> page should not crash 1`] = `
                   "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                   "title": "",
                 },
-                Object {
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 3,
@@ -59,7 +59,7 @@ exports[`<Reviews> page should not crash 1`] = `
                   "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                   "title": "",
                 },
-                Object {
+                {
                   "author": "",
                   "date": "2017-09-06T12:38:51.000Z",
                   "id": 4,
@@ -80,7 +80,7 @@ exports[`<Reviews> page should not crash 1`] = `
             <SurroundPortals
               portalName="product.reviews.all"
               portalProps={
-                Object {
+                {
                   "productId": "foo",
                 }
               }
@@ -88,7 +88,7 @@ exports[`<Reviews> page should not crash 1`] = `
               <Component
                 productId="foo"
                 rating={
-                  Object {
+                  {
                     "average": 50,
                     "count": 4,
                   }
@@ -100,8 +100,8 @@ exports[`<Reviews> page should not crash 1`] = `
               <List
                 productId="foo"
                 reviews={
-                  Array [
-                    Object {
+                  [
+                    {
                       "author": "",
                       "date": "2017-09-06T12:38:51.000Z",
                       "id": 1,
@@ -109,7 +109,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                       "title": "",
                     },
-                    Object {
+                    {
                       "author": "",
                       "date": "2017-09-06T12:38:51.000Z",
                       "id": 2,
@@ -117,7 +117,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                       "title": "",
                     },
-                    Object {
+                    {
                       "author": "",
                       "date": "2017-09-06T12:38:51.000Z",
                       "id": 3,
@@ -125,7 +125,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                       "title": "",
                     },
-                    Object {
+                    {
                       "author": "",
                       "date": "2017-09-06T12:38:51.000Z",
                       "id": 4,
@@ -147,8 +147,8 @@ exports[`<Reviews> page should not crash 1`] = `
                     <SurroundPortals
                       portalName="product.reviews.entry"
                       portalProps={
-                        Object {
-                          "review": Object {
+                        {
+                          "review": {
                             "author": "",
                             "date": "2017-09-06T12:38:51.000Z",
                             "id": 1,
@@ -201,19 +201,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -237,19 +237,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -273,19 +273,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -309,19 +309,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -345,19 +345,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -385,19 +385,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -421,19 +421,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -457,19 +457,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -493,19 +493,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -529,19 +529,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -568,7 +568,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       </Text>
                       <Info
                         review={
-                          Object {
+                          {
                             "author": "",
                             "date": "2017-09-06T12:38:51.000Z",
                             "id": 1,
@@ -608,8 +608,8 @@ exports[`<Reviews> page should not crash 1`] = `
                     <SurroundPortals
                       portalName="product.reviews.entry"
                       portalProps={
-                        Object {
-                          "review": Object {
+                        {
+                          "review": {
                             "author": "",
                             "date": "2017-09-06T12:38:51.000Z",
                             "id": 2,
@@ -662,19 +662,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -698,19 +698,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -734,19 +734,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -770,19 +770,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -806,19 +806,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -846,19 +846,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -882,19 +882,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -918,19 +918,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -954,19 +954,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -990,19 +990,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1029,7 +1029,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       </Text>
                       <Info
                         review={
-                          Object {
+                          {
                             "author": "",
                             "date": "2017-09-06T12:38:51.000Z",
                             "id": 2,
@@ -1069,8 +1069,8 @@ exports[`<Reviews> page should not crash 1`] = `
                     <SurroundPortals
                       portalName="product.reviews.entry"
                       portalProps={
-                        Object {
-                          "review": Object {
+                        {
+                          "review": {
                             "author": "",
                             "date": "2017-09-06T12:38:51.000Z",
                             "id": 3,
@@ -1123,19 +1123,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1159,19 +1159,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1195,19 +1195,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1231,19 +1231,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1267,19 +1267,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1307,19 +1307,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1343,19 +1343,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1379,19 +1379,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1415,19 +1415,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1451,19 +1451,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1490,7 +1490,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       </Text>
                       <Info
                         review={
-                          Object {
+                          {
                             "author": "",
                             "date": "2017-09-06T12:38:51.000Z",
                             "id": 3,
@@ -1530,8 +1530,8 @@ exports[`<Reviews> page should not crash 1`] = `
                     <SurroundPortals
                       portalName="product.reviews.entry"
                       portalProps={
-                        Object {
-                          "review": Object {
+                        {
+                          "review": {
                             "author": "",
                             "date": "2017-09-06T12:38:51.000Z",
                             "id": 4,
@@ -1584,19 +1584,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1620,19 +1620,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1656,19 +1656,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1692,19 +1692,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1728,19 +1728,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1768,19 +1768,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1804,19 +1804,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1840,19 +1840,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1876,19 +1876,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1912,19 +1912,19 @@ exports[`<Reviews> page should not crash 1`] = `
                                     <Icon
                                       className=""
                                       color={null}
-                                      content="<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>"
+                                      content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                       size="1em"
                                       viewBox="0 0 24 24"
                                     >
                                       <svg
                                         className="css-yys9hb  common__icon"
                                         dangerouslySetInnerHTML={
-                                          Object {
-                                            "__html": "<path d=\\"M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z\\"/>",
+                                          {
+                                            "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
                                           }
                                         }
                                         style={
-                                          Object {
+                                          {
                                             "fill": null,
                                             "fontSize": "1em",
                                           }
@@ -1951,7 +1951,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       </Text>
                       <Info
                         review={
-                          Object {
+                          {
                             "author": "",
                             "date": "2017-09-06T12:38:51.000Z",
                             "id": 4,
@@ -1998,8 +1998,8 @@ exports[`<Reviews> page should not crash 1`] = `
               </Connect(LoadMore)>
               <ReviewsInfo
                 reviews={
-                  Array [
-                    Object {
+                  [
+                    {
                       "author": "",
                       "date": "2017-09-06T12:38:51.000Z",
                       "id": 1,
@@ -2007,7 +2007,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                       "title": "",
                     },
-                    Object {
+                    {
                       "author": "",
                       "date": "2017-09-06T12:38:51.000Z",
                       "id": 2,
@@ -2015,7 +2015,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                       "title": "",
                     },
-                    Object {
+                    {
                       "author": "",
                       "date": "2017-09-06T12:38:51.000Z",
                       "id": 3,
@@ -2023,7 +2023,7 @@ exports[`<Reviews> page should not crash 1`] = `
                       "review": "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet.",
                       "title": "",
                     },
-                    Object {
+                    {
                       "author": "",
                       "date": "2017-09-06T12:38:51.000Z",
                       "id": 4,

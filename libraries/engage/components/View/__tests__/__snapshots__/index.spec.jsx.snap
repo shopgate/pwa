@@ -5,7 +5,7 @@ exports[`engage > components > view > index should have structured content 1`] =
   aria-hidden={false}
   className="css-296fln engage__view"
   style={
-    Object {
+    {
       "display": "flex",
     }
   }

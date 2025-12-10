@@ -8,7 +8,7 @@ exports[`<Logo /> should render an image 1`] = `
   <img
     alt="Shopgate Connect"
     className={
-      Object {
+      {
         "data-css-e59s49": "",
       }
     }

@@ -13,8 +13,8 @@ exports[`<Image /> should render placeholders if forced to 1`] = `
   onLoad={[Function]}
   ratio={null}
   resolutions={
-    Array [
-      Object {
+    [
+      {
         "height": 440,
         "width": 440,
       },
@@ -42,8 +42,8 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
   onLoad={[Function]}
   ratio={null}
   resolutions={
-    Array [
-      Object {
+    [
+      {
         "height": 440,
         "width": 440,
       },
@@ -63,7 +63,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
       onLoad={[Function]}
       src="foo/bar"
       style={
-        Object {
+        {
           "aspectRatio": "1 / 1",
         }
       }
@@ -79,7 +79,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
         onLoad={[Function]}
         src="foo/bar"
         style={
-          Object {
+          {
             "aspectRatio": "1 / 1",
           }
         }

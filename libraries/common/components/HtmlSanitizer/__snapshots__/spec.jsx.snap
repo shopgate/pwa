@@ -71,13 +71,13 @@ exports[`<HtmlSanitizer /> strips out the script tags 1`] = `
   decode={true}
   navigate={[Function]}
   processStyles={false}
-  settings={Object {}}
+  settings={{}}
   statisticsCookiesAccepted={false}
   wrapper={[Function]}
 >
   <Component
     cookieConsentSettings={
-      Object {
+      {
         "comfortCookiesAccepted": false,
         "statisticsCookiesAccepted": false,
       }
@@ -86,7 +86,7 @@ exports[`<HtmlSanitizer /> strips out the script tags 1`] = `
     <div
       className="common__html-sanitizer"
       dangerouslySetInnerHTML={
-        Object {
+        {
           "__html": "  <p>Foo Bar</p> ",
         }
       }
