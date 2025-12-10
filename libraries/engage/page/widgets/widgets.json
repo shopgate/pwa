@@ -35,6 +35,9 @@
   "@shopgate/widgets/buttonWidget": {
     "path": "@shopgate/engage/page/widgets/Button"
   },
+  "@shopgate/widgets/nestedCategoryFilterWidget": {
+    "path": "@shopgate/engage/page/widgets/NestedCategoryFilter"
+  },
   "@shopgate/widgetsInternal/Placeholder": {
     "path": "@shopgate/engage/page/widgets/Placeholder"
   }

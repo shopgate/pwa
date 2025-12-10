@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.29.6](https://github.com/shopgate/pwa/compare/v7.29.5...v7.29.6) (2025-12-08)
+
+#### :rocket: Enhancement
+* [#1433](https://github.com/shopgate/pwa/pull/1433) Add NestedCategoryFilter widget ([@AylinUenal](https://github.com/AylinUenal))
+* [#1432](https://github.com/shopgate/pwa/pull/1432) Add video option to hero banner ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v7.29.5](https://github.com/shopgate/pwa/compare/v7.29.4...v7.29.5) (2025-11-28)
 
 #### :rocket: Enhancement
