@@ -37,8 +37,7 @@ function CartItemGroupReservation({ location, fulfillmentMethod }) {
           <CartItemGroupReservationLabel
             location={location}
             fulfillmentMethod={fulfillmentMethod}
-          />
-        }
+          />}
         className={accordionToggle}
       >
         <div className={addressDetails}>
@@ -53,7 +52,7 @@ function CartItemGroupReservation({ location, fulfillmentMethod }) {
 CartItemGroupReservation.propTypes = {
   fulfillmentMethod: PropTypes.string,
   location: PropTypes.shape({
-    operationHours: PropTypes.object,
+    operationHours: PropTypes.shape(),
     address: PropTypes.shape({
       phoneNumber: PropTypes.string,
     }),

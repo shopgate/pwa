@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -34,20 +34,18 @@ const ProductInfoBackInStockButton = ({
   const showBackInStockButton = productIsAVariant && productIsNotAvailable && isBackInStockEnabled;
 
   return (
-    <Fragment>
-      <SurroundPortals
-        portalName={PRODUCT_BACK_IN_STOCK}
-        portalProps={{ showBackInStockButton }}
-      >
-        {showBackInStockButton &&
-          <BackInStockButton
-            showAsButton
-            subscription={subscription}
-            isLinkToBackInStockEnabled
-            productId={variantId ?? productId}
-          />}
-      </SurroundPortals>
-    </Fragment>
+    <SurroundPortals
+      portalName={PRODUCT_BACK_IN_STOCK}
+      portalProps={{ showBackInStockButton }}
+    >
+      {showBackInStockButton &&
+      <BackInStockButton
+        showAsButton
+        subscription={subscription}
+        isLinkToBackInStockEnabled
+        productId={variantId ?? productId}
+      />}
+    </SurroundPortals>
   );
 };
 

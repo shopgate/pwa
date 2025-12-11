@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
@@ -54,7 +54,7 @@ function CartContent(props) {
     setIsPaymentBarVisible(!isHidden);
   }
 
-  const contextValue = {
+  const contextValue = useMemo(() => ({
     currency,
     config,
     isUserLoggedIn,
@@ -62,18 +62,18 @@ function CartContent(props) {
     flags,
     hasPromotionCoupons,
     isDirectShipOnly,
-  };
+  }), [currency, isUserLoggedIn, isLoading, flags, hasPromotionCoupons, isDirectShipOnly]);
 
   return (
     <CartContext.Provider value={contextValue}>
       <BackBar title="titles.cart" />
       {(hasItems || hasMessages) && (
-        <Fragment>
+        <>
           {hasMessages && (
             <MessageBar messages={messages} />
           )}
           {hasItems && (
-            <Fragment>
+            <>
               <ProductListTypeProvider type="cart">
                 <SurroundPortals portalName={CART_ITEM_LIST}>
                   {(cartItemsDisplay === 'line') && (
@@ -97,7 +97,7 @@ function CartContent(props) {
                   </CardList>
                   )}
                   {(cartItemsDisplay === 'card') && (
-                  <Fragment>
+                  <>
                     <CartItems
                       cartItems={cartItemsSorted}
                       multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
@@ -106,15 +106,15 @@ function CartContent(props) {
                     <SurroundPortals portalName={CART_COUPON_FIELD}>
                       <CouponField onFocus={togglePaymentBar} />
                     </SurroundPortals>
-                  </Fragment>
+                  </>
                   )}
                 </SurroundPortals>
               </ProductListTypeProvider>
               <PaymentBar visible={isPaymentBarVisible} />
-            </Fragment>
+            </>
           )}
           <Footer />
-        </Fragment>
+        </>
       )}
       {(!isLoading && !hasItems) && (
         <Empty />

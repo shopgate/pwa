@@ -14,7 +14,7 @@ class SelectBox extends Component {
   static propTypes = {
     icon: PropTypes.func.isRequired,
     item: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(PropTypes.object).isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     className: PropTypes.string,
     classNames: PropTypes.objectOf(PropTypes.string),
     defaultText: PropTypes.string,
@@ -41,7 +41,6 @@ class SelectBox extends Component {
   constructor(props) {
     super(props);
 
-    this.dropdownCompleted = false;
     this.state = {
       isOpen: false,
       selected: find(props.items, { value: props.initialValue }),
@@ -64,7 +63,7 @@ class SelectBox extends Component {
    * When dropdown animation is finished.
    */
   onDropdownComplete = () => {
-    this.dropdownCompleted = true;
+
   };
 
   /**
@@ -89,7 +88,6 @@ class SelectBox extends Component {
       return;
     }
 
-    this.dropdownCompleted = false;
     this.setState({
       isOpen: true,
     });
@@ -122,10 +120,10 @@ class SelectBox extends Component {
   };
 
   /** @param {HTMLElement} ref The element */
-  setControlRef = (ref) => { this.controlRef = ref; }
+  setControlRef = (ref) => { this.controlRef = ref; };
 
   /** @param {HTMLElement} ref The element */
-  setFirstItemRef = (ref) => { this.firstItemRef = ref; }
+  setFirstItemRef = (ref) => { this.firstItemRef = ref; };
 
   /**
    * Renders the component
@@ -195,8 +193,7 @@ class SelectBox extends Component {
             onTouchMove={this.handleInteractionOutside}
             type="button"
             aria-hidden
-          />
-        }
+          />}
       </div>
     );
   }

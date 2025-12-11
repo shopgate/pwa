@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 /**
@@ -7,17 +7,12 @@ import PropTypes from 'prop-types';
  * @param {Object} context The component context.
  * @returns {JSX}
  */
-const Placeholder = props => (
-  <Fragment>
-    {props.children}
-  </Fragment>
-);
+const Placeholder = props => props.children;
 
 Placeholder.format = props => <Placeholder {...props} />;
 
 Placeholder.propTypes = {
   children: PropTypes.node.isRequired,
-  // eslint-disable-next-line react/no-unused-prop-types
   forKey: PropTypes.string.isRequired,
 };
 

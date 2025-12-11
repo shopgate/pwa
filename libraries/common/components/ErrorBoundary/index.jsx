@@ -14,15 +14,22 @@ class ErrorBoundary extends PureComponent {
 
   static defaultProps = {
     fallbackUi: null,
-  }
-
-  state = { hasError: false };
+  };
 
   /**
    * @returns {{hasError: boolean}}
    */
   static getDerivedStateFromError() {
     return { hasError: true };
+  }
+
+  /**
+   * Constructor for the ErrorBoundary component.
+   * @param {Object} props - The component props.
+   */
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
   }
 
   /**

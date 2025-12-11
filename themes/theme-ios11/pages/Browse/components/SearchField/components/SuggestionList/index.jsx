@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SurroundPortals } from '@shopgate/engage/components';
@@ -21,14 +21,14 @@ class SuggestionList extends Component {
     searchPhrase: PropTypes.string,
     suggestions: PropTypes.arrayOf(PropTypes.string),
     visible: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     suggestions: [],
     fetching: false,
     visible: false,
     searchPhrase: '',
-  }
+  };
 
   /**
    * @param { Object } nextProps Next props.
@@ -63,9 +63,7 @@ class SuggestionList extends Component {
             visible,
             bottomHeight,
           }}
-        >
-          <Fragment />
-        </SurroundPortals>
+        />
       );
     }
 

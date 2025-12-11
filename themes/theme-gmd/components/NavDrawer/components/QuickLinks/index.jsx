@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import camelCase from 'lodash/camelCase';
 import { themeConfig } from '@shopgate/engage';
 import {
@@ -45,8 +46,16 @@ const QuickLinks = ({ links, navigate }) => (
         </SurroundPortals>
       </NavDrawer.Section>
     </SurroundPortals>
-
   )
 );
+
+QuickLinks.propTypes = {
+  navigate: PropTypes.func.isRequired,
+  links: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+QuickLinks.defaultProps = {
+  links: [],
+};
 
 export default connect(QuickLinks);

@@ -175,11 +175,7 @@ const FulfillmentSelector = (props) => {
   },
   [shopFulfillmentMethods]);
 
-  if (!shopHasRopeMethods) {
-    return null;
-  }
-
-  const context = /** @type {FulfillmentSelectorContextProps} */ ({
+  const context = /** @type {FulfillmentSelectorContextProps} */ useMemo(() => ({
     selection,
     selectedLocation,
     inventory,
@@ -199,7 +195,31 @@ const FulfillmentSelector = (props) => {
     productFulfillmentMethods,
     locationFulfillmentMethods,
     useLocationFulfillmentMethods,
-  });
+  }), [
+    conditioner,
+    fulfillmentPaths,
+    handleChange,
+    inventory,
+    isBOPISEnabled,
+    isDirectShipEnabled,
+    isOrderable,
+    isROPISEnabled,
+    isReady,
+    locationFulfillmentMethods,
+    merchantSettings,
+    preferredLocation,
+    productFulfillmentMethods,
+    productId,
+    selectedLocation,
+    selection,
+    shopFulfillmentMethods,
+    useLocationFulfillmentMethods,
+    userFulfillmentMethod,
+  ]);
+
+  if (!shopHasRopeMethods) {
+    return null;
+  }
 
   return (
     <FulfillmentSelectorContext.Provider value={context}>

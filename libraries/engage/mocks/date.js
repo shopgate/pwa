@@ -11,6 +11,7 @@ export function mockDate(isoDate) {
      */
     constructor() {
       super();
+      // eslint-disable-next-line no-constructor-return
       return new RealDate(isoDate);
     }
   };

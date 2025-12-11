@@ -63,6 +63,7 @@ describe('GaBase (Jest 28)', () => {
     SgTrackingCore.reset();
 
     jest.resetModules();
+    // eslint-disable-next-line import/extensions
     SgTrackingGAPlugin = require('../plugins/trackers/GaBase.js').default;
 
     gaSpy = jest.fn();

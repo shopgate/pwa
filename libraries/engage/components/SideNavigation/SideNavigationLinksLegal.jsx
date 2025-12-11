@@ -20,7 +20,6 @@ const SideNavigationLinksLegal = ({ links }) => {
 };
 
 SideNavigationLinksLegal.propTypes = {
-  isFetching: PropTypes.bool,
   links: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
@@ -29,7 +28,6 @@ SideNavigationLinksLegal.propTypes = {
 
 SideNavigationLinksLegal.defaultProps = {
   links: null,
-  isFetching: false,
 };
 
 export default connect(SideNavigationLinksLegal);

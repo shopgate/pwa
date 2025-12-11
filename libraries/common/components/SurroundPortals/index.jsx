@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Portal from '../Portal';
 import { AFTER, BEFORE } from '../../constants/Portals';
@@ -16,13 +16,13 @@ import { AFTER, BEFORE } from '../../constants/Portals';
  * @returns {JSX.Element}
  */
 const SurroundPortals = ({ portalName, portalProps, children }) => (
-  <Fragment>
+  <>
     <Portal name={`${portalName}.${BEFORE}`} props={portalProps} />
     <Portal name={portalName} props={portalProps}>
       {children}
     </Portal>
     <Portal name={`${portalName}.${AFTER}`} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 SurroundPortals.propTypes = {

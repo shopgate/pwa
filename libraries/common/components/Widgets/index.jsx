@@ -44,7 +44,7 @@ class Widgets extends Component {
    */
   constructor(props) {
     super(props);
-    this.autoReloadInterval = undefined;
+
     if (this.hasSchedulableWidgets()) {
       this.startAutoRerender();
     }

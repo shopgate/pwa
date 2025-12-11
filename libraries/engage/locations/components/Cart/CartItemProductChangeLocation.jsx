@@ -78,7 +78,7 @@ CartItemProductChangeLocation.propTypes = {
   cartItem: PropTypes.shape({
     id: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
-    fulfillment: PropTypes.object,
+    fulfillment: PropTypes.shape(),
     product: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }).isRequired,

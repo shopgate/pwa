@@ -154,7 +154,7 @@ class RangeSlider extends PureComponent {
     const handleCenterX = handleRect.left + (handleDOMElement.offsetWidth / 2);
     // Store the signed distanced between the current touch offset and the handle center.
     this.touchOffset = getTouchPositionX(event) - handleCenterX;
-  }
+  };
 
   /**
    * Processes move events on handles.
@@ -211,7 +211,7 @@ class RangeSlider extends PureComponent {
     this.draggedHandlePixelOffset *= offsetWidth;
 
     this.setState(stateUpdate, this.triggerChangeCallback);
-  }
+  };
 
   /**
    * Processes global touch end events for handles.
@@ -221,7 +221,7 @@ class RangeSlider extends PureComponent {
     this.removeEventListeners();
     this.touchOffset = 0;
     this.draggedHandle = null;
-  }
+  };
 
   /**
    * Processes outer range touch end events.
@@ -244,20 +244,7 @@ class RangeSlider extends PureComponent {
     }
 
     this.handleTouchMove(event);
-  }
-
-  /**
-   * Processes the input field values.
-   * @param {Object} event The change event.
-   */
-  handleInputChange = (event) => {
-    const { max } = this.props;
-    const { value, id } = event.target;
-    const delta = Math.max(0, Math.min(1, value / (max / 100)));
-    const state = id === 'price_from' ? { rangeMin: delta } : { rangeMax: delta };
-
-    this.setState(state);
-  }
+  };
 
   /**
    * Calls the change callback in case of a state update.

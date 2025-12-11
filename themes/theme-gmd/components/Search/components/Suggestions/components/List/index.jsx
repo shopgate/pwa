@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -50,9 +50,7 @@ class SuggestionList extends Component {
             suggestions,
             searchPhrase,
           }}
-        >
-          <Fragment />
-        </SurroundPortals>
+        />
       );
     }
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
@@ -63,7 +63,7 @@ function CartContent(props) {
     setIsPaymentBarVisible(!isHidden);
   }
 
-  const contextValue = {
+  const contextValue = useMemo(() => ({
     currency,
     config,
     isUserLoggedIn,
@@ -71,7 +71,7 @@ function CartContent(props) {
     flags,
     hasPromotionCoupons,
     isDirectShipOnly,
-  };
+  }), [currency, isUserLoggedIn, isLoading, flags, hasPromotionCoupons, isDirectShipOnly]);
 
   return (
     <CartContext.Provider value={contextValue}>
@@ -87,9 +87,9 @@ function CartContent(props) {
         </ResponsiveContainer>
       )}
       {(hasItems || hasMessages) && (
-        <Fragment>
+        <>
           {hasMessages && (
-            <Fragment>
+            <>
               <ResponsiveContainer webOnly breakpoint=">xs">
                 <MessageBar
                   messages={messages}
@@ -104,10 +104,10 @@ function CartContent(props) {
               <ResponsiveContainer appAlways breakpoint="<=xs">
                 <MessageBar messages={messages} raised={cartItemsDisplay === 'card'} />
               </ResponsiveContainer>
-            </Fragment>
+            </>
           )}
           {hasItems && (
-            <Fragment>
+            <>
               <ProductListTypeProvider type="cart">
                 <SurroundPortals portalName={CART_ITEM_LIST}>
                   {(cartItemsDisplay === 'line') && (
@@ -132,7 +132,7 @@ function CartContent(props) {
                   </CardList>
                   )}
                   {(cartItemsDisplay === 'card') && (
-                  <Fragment>
+                  <>
                     <CartItems
                       cartItems={cartItemsSorted}
                       multiLineReservation={flags[FLAG_MULTI_LINE_RESERVE]}
@@ -142,7 +142,7 @@ function CartContent(props) {
                     <SurroundPortals portalName={CART_COUPON_FIELD}>
                       <CouponField onFocus={togglePaymentBar} />
                     </SurroundPortals>
-                  </Fragment>
+                  </>
                   )}
                 </SurroundPortals>
               </ProductListTypeProvider>
@@ -152,12 +152,12 @@ function CartContent(props) {
               <ResponsiveContainer webOnly breakpoint=">xs">
                 <CartSummaryWide />
               </ResponsiveContainer>
-            </Fragment>
+            </>
           )}
           <ResponsiveContainer breakpoint="<=xs" appAlways>
             <Footer />
           </ResponsiveContainer>
-        </Fragment>
+        </>
       )}
       {(!isLoading && !hasItems) && (
         <Empty />

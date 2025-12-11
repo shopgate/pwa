@@ -107,9 +107,6 @@ const FulfillmentProvider = (props) => {
     }
 
     switch (stage) {
-      default:
-      case STAGE_SELECT_STORE:
-        return i18n.text('locations.headline');
       case STAGE_RESERVE_FORM:
         return i18n.text('locations.place_reservation');
       case STAGE_RESPONSE_SUCCESS:
@@ -118,6 +115,9 @@ const FulfillmentProvider = (props) => {
         return i18n.text('locations.error_heading');
       case STAGE_FULFILLMENT_METHOD:
         return i18n.text('locations.change_fulfillment_method');
+      case STAGE_SELECT_STORE:
+      default:
+        return i18n.text('locations.headline');
     }
   }, [props.title, stage]);
 
@@ -148,7 +148,7 @@ const FulfillmentProvider = (props) => {
    * @param {SheetStage} inputStage The stage to check for.
    * @returns {boolean}
    */
-  const isStage = inputStage => inputStage === stage;
+  const isStage = useCallback(inputStage => inputStage === stage, [stage]);
 
   /**
    * Handles opening of the sheet.
@@ -168,7 +168,7 @@ const FulfillmentProvider = (props) => {
    * @param {string|null} productId - The product ID or null if no product is provided.
    * @returns {void}
    */
-  const handleClose = (location = null, productId = null) => {
+  const handleClose = useCallback((location = null, productId = null) => {
     let orderSuccess = true;
 
     if (isStage(STAGE_RESPONSE_ERROR)) {
@@ -192,7 +192,7 @@ const FulfillmentProvider = (props) => {
     setErrors(null);
     setIsChangeFulfillment(false);
     setFulfillmentMethod(null);
-  };
+  }, [errors, isStage, props]);
 
   useEffect(() => {
     UIEvents.addListener(EVENT_SET_OPEN, handleOpen);
@@ -205,7 +205,7 @@ const FulfillmentProvider = (props) => {
    * Handles the sending of the reservation.
    * @param {ReservationFormValues} values The reservation form values.
    */
-  async function sendReservation(values) {
+  const sendReservation = useCallback(async (values) => {
     try {
       const response = await submitReservation(values, product);
 
@@ -227,13 +227,13 @@ const FulfillmentProvider = (props) => {
 
     // Store the user's form in the user data.
     storeFormInput(values);
-  }
+  }, [product, storeFormInput, submitReservation]);
 
   /**
    * @param {Location} location The selected location.
    * @returns {boolean}
    */
-  const confirmSelection = async (location) => {
+  const confirmSelection = useCallback(async (location) => {
     const { code, name } = location;
 
     const ropeCartProducts = cartProducts
@@ -281,13 +281,13 @@ const FulfillmentProvider = (props) => {
     }
 
     return confirmed;
-  };
+  }, [cartProducts, isCart, restrictMultiLocationOrders, showModal, updateProductsInCart]);
 
   /**
    * Handles multiline reservation.
    * @param {Location} location The selected location.
-   * */
-  const handleMultilineReservation = (location) => {
+   */
+  const handleMultilineReservation = useCallback((location) => {
     if (product === null || location.code === null) {
       return;
     }
@@ -315,7 +315,17 @@ const FulfillmentProvider = (props) => {
     }
 
     handleClose(location, product.id);
-  };
+  }, [
+    activeFulfillmentSlot.id,
+    activeFulfillmentSlotLocationCode,
+    cartItem,
+    fulfillmentMethod,
+    fulfillmentSchedulingEnabled,
+    handleClose,
+    isChangeFulfillment,
+    product,
+    updateProductsInCart,
+  ]);
 
   /**
    * Handles quick reservation.
@@ -329,7 +339,7 @@ const FulfillmentProvider = (props) => {
    * @param {Location} location The selected location.
    * @returns {Promise<void>}
    */
-  async function handleSelectLocation(location) {
+  const handleSelectLocation = useCallback(async (location) => {
     if (isLoading) {
       return;
     }
@@ -406,13 +416,24 @@ const FulfillmentProvider = (props) => {
     if (fulfillmentPath === QUICK_RESERVE) {
       handleQuickReservation();
     }
-  }
+  }, [
+    changeOnly,
+    confirmSelection,
+    fulfillmentPath,
+    fulfillmentPaths,
+    handleClose,
+    handleMultilineReservation,
+    isLoading,
+    product,
+    selectLocation,
+    updatePreferredLocation,
+  ]);
 
   /**
    * @param {string} method The selected fulfillment method.
    * @param {Object} item The cart item to change.
    */
-  const handleChangeFulfillmentMethod = (method, item) => {
+  const handleChangeFulfillmentMethod = useCallback((method, item) => {
     logger.assert(item.product.id === product.id, 'Change fulfillment method is called with unexpected product id');
 
     setIsChangeFulfillment(true);
@@ -442,13 +463,13 @@ const FulfillmentProvider = (props) => {
 
       handleClose(null, item.product.id);
     }
-  };
+  }, [handleClose, product.id, updateProductsInCart]);
 
   const handleSelectStoreFinderLocation = useCallback((location) => {
     setStoreFinderLocation(location);
   }, []);
 
-  const context = {
+  const context = useMemo(() => ({
     stage,
     title,
     fulfillmentPath,
@@ -481,7 +502,38 @@ const FulfillmentProvider = (props) => {
     isLoading,
     setIsLoading,
     meta: props.meta || undefined,
-  };
+  }), [
+    changeOnly,
+    enabledFulfillmentMethods,
+    errors,
+    fulfillmentMethods,
+    fulfillmentPath,
+    fulfillmentPaths,
+    handleChangeFulfillmentMethod,
+    handleClose,
+    handleSelectLocation,
+    handleSelectStoreFinderLocation,
+    inventory,
+    isFetching,
+    isLoading,
+    isOpen,
+    isStage,
+    isStoreFinder,
+    locations,
+    noInventory,
+    noLocationSelection,
+    orderNumbers,
+    product,
+    productLocation,
+    props.meta,
+    propsBaseProduct,
+    sendReservation,
+    shopSettings,
+    stage,
+    storeFinderLocation,
+    title,
+    userInput,
+  ]);
 
   return (
     <FulfillmentContext.Provider value={context}>

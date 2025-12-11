@@ -57,7 +57,10 @@ class CartItemCoupon extends React.PureComponent {
     coupon: PropTypes.shape().isRequired,
     currency: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    messages: PropTypes.arrayOf(PropTypes.any).isRequired,
+    messages: PropTypes.arrayOf(PropTypes.shape({
+      message: PropTypes.string,
+      type: PropTypes.string,
+    })).isRequired,
     deleteCoupon: PropTypes.func,
     editable: PropTypes.bool,
   };
