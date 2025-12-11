@@ -50,7 +50,9 @@ class SuggestionList extends Component {
             suggestions,
             searchPhrase,
           }}
-        />
+        >
+          {null}
+        </SurroundPortals>
       );
     }
 

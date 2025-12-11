@@ -63,7 +63,9 @@ class SuggestionList extends Component {
             visible,
             bottomHeight,
           }}
-        />
+        >
+          {null}
+        </SurroundPortals>
       );
     }
 

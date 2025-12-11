@@ -37,7 +37,8 @@ function CartItemGroupReservation({ location, fulfillmentMethod }) {
           <CartItemGroupReservationLabel
             location={location}
             fulfillmentMethod={fulfillmentMethod}
-          />}
+          />
+        }
         className={accordionToggle}
       >
         <div className={addressDetails}>

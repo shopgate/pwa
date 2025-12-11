@@ -89,7 +89,7 @@ module.exports = {
     'react/function-component-definition': 'off',
 
     // ## TBD
-    'react/jsx-curly-newline': 'warn',
+    'react/jsx-curly-newline': 'off',
     'react/jsx-no-bind': 'warn',
 
     // ## ESLint complain makes sense - revisit at the next refactoring

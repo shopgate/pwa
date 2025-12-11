@@ -1,177 +1,171 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SelectContextChoices /> should render select with 1 selected option 1`] = `
-<Fragment>
-  <InfoField
-    className=""
-    errorText=""
-    hasUnderline={true}
-    hasValue={true}
-    label=""
-    leftElement={null}
-    rightElement={
-      <Chevron
-        className="css-1h5rpg9"
-      />
-    }
-    showErrorText={true}
-  >
-    <div
-      aria-hidden={true}
-      className={
-        {
-          "data-css-hcovq9": "",
-        }
+<InfoField
+  className=""
+  errorText=""
+  hasUnderline={true}
+  hasValue={true}
+  label=""
+  leftElement={null}
+  rightElement={
+    <Chevron
+      className="css-1h5rpg9"
+    />
+  }
+  showErrorText={true}
+>
+  <div
+    aria-hidden={true}
+    className={
+      {
+        "data-css-hcovq9": "",
       }
+    }
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    Germany
+  </div>
+  <ContextMenu
+    classes={
+      {
+        "button": "",
+        "container": "",
+      }
+    }
+    disabled={false}
+    isOpened={false}
+    onStateChange={[Function]}
+    scroll={true}
+    showToggle={false}
+  >
+    <Item
+      autoClose={false}
+      className="css-1dw7neb"
+      disabled={false}
+      key="DE"
       onClick={[Function]}
-      role="button"
-      tabIndex="0"
     >
       Germany
-    </div>
-    <ContextMenu
-      classes={
-        {
-          "button": "",
-          "container": "",
-        }
-      }
+    </Item>
+    <Item
+      autoClose={false}
+      className=""
       disabled={false}
-      isOpened={false}
-      onStateChange={[Function]}
-      scroll={true}
-      showToggle={false}
+      key="US"
+      onClick={[Function]}
     >
-      <Item
-        autoClose={false}
-        className="css-1dw7neb"
-        disabled={false}
-        key="DE"
-        onClick={[Function]}
-      >
-        Germany
-      </Item>
-      <Item
-        autoClose={false}
-        className=""
-        disabled={false}
-        key="US"
-        onClick={[Function]}
-      >
-        United states
-      </Item>
-    </ContextMenu>
-  </InfoField>
-</Fragment>
+      United states
+    </Item>
+  </ContextMenu>
+</InfoField>
 `;
 
 exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
-<Fragment>
-  <InfoField
-    className=""
-    errorText=""
-    hasUnderline={true}
-    hasValue={true}
-    label=""
-    leftElement={null}
-    rightElement={
-      <Chevron
-        className="css-1h5rpg9"
-      />
+<InfoField
+  className=""
+  errorText=""
+  hasUnderline={true}
+  hasValue={true}
+  label=""
+  leftElement={null}
+  rightElement={
+    <Chevron
+      className="css-1h5rpg9"
+    />
+  }
+  showErrorText={true}
+>
+  <div
+    aria-hidden={true}
+    className={
+      {
+        "data-css-hcovq9": "",
+      }
     }
-    showErrorText={true}
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
   >
-    <div
-      aria-hidden={true}
-      className={
-        {
-          "data-css-hcovq9": "",
-        }
+    common.please_choose
+  </div>
+  <ContextMenu
+    classes={
+      {
+        "button": "",
+        "container": "",
       }
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
-    >
-      common.please_choose
-    </div>
-    <ContextMenu
-      classes={
-        {
-          "button": "",
-          "container": "",
-        }
-      }
+    }
+    disabled={false}
+    isOpened={false}
+    onStateChange={[Function]}
+    scroll={true}
+    showToggle={false}
+  >
+    <Item
+      autoClose={false}
+      className=""
       disabled={false}
-      isOpened={false}
-      onStateChange={[Function]}
-      scroll={true}
-      showToggle={false}
+      key="DE"
+      onClick={[Function]}
     >
-      <Item
-        autoClose={false}
-        className=""
-        disabled={false}
-        key="DE"
-        onClick={[Function]}
-      >
-        Germany
-      </Item>
-      <Item
-        autoClose={false}
-        className=""
-        disabled={false}
-        key="US"
-        onClick={[Function]}
-      >
-        United states
-      </Item>
-    </ContextMenu>
-  </InfoField>
-</Fragment>
+      Germany
+    </Item>
+    <Item
+      autoClose={false}
+      className=""
+      disabled={false}
+      key="US"
+      onClick={[Function]}
+    >
+      United states
+    </Item>
+  </ContextMenu>
+</InfoField>
 `;
 
 exports[`<SelectContextChoices /> should render select with no options 1`] = `
-<Fragment>
-  <InfoField
-    className=""
-    errorText=""
-    hasUnderline={true}
-    hasValue={true}
-    label=""
-    leftElement={null}
-    rightElement={
-      <Chevron
-        className="css-1h5rpg9"
-      />
-    }
-    showErrorText={true}
-  >
-    <div
-      aria-hidden={true}
-      className={
-        {
-          "data-css-hcovq9": "",
-        }
-      }
-      onClick={[Function]}
-      role="button"
-      tabIndex="0"
-    >
-      common.please_choose
-    </div>
-    <ContextMenu
-      classes={
-        {
-          "button": "",
-          "container": "",
-        }
-      }
-      disabled={false}
-      isOpened={false}
-      onStateChange={[Function]}
-      scroll={true}
-      showToggle={false}
+<InfoField
+  className=""
+  errorText=""
+  hasUnderline={true}
+  hasValue={true}
+  label=""
+  leftElement={null}
+  rightElement={
+    <Chevron
+      className="css-1h5rpg9"
     />
-  </InfoField>
-</Fragment>
+  }
+  showErrorText={true}
+>
+  <div
+    aria-hidden={true}
+    className={
+      {
+        "data-css-hcovq9": "",
+      }
+    }
+    onClick={[Function]}
+    role="button"
+    tabIndex="0"
+  >
+    common.please_choose
+  </div>
+  <ContextMenu
+    classes={
+      {
+        "button": "",
+        "container": "",
+      }
+    }
+    disabled={false}
+    isOpened={false}
+    onStateChange={[Function]}
+    scroll={true}
+    showToggle={false}
+  />
+</InfoField>
 `;
