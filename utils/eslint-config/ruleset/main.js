@@ -1,6 +1,5 @@
 module.exports = {
   extends: 'airbnb',
-  parser: 'babel-eslint',
   env: {
     browser: true,
     node: true,
@@ -9,8 +8,11 @@ module.exports = {
     'cypress/globals': true,
   },
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 2022,
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   rules: {
     // Added this according to: https://eslint.org/docs/rules/camelcase#allow
