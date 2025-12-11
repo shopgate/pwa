@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.30.0](https://github.com/shopgate/pwa/compare/v7.29.6...v7.30.0) (2025-12-11)
+
+#### :rocket: Enhancement
+* [#1434](https://github.com/shopgate/pwa/pull/1434) Add CSS classnames to nested category filter widget ([@AylinUenal](https://github.com/AylinUenal))
+
+#### :house: Internal
+* [#1417](https://github.com/shopgate/pwa/pull/1417) Update webpack to v5 and increased compatibility with newer npm version ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.29.6](https://github.com/shopgate/pwa/compare/v7.29.5...v7.29.6) (2025-12-08)
 
 #### :rocket: Enhancement
