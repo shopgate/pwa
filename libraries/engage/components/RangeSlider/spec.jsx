@@ -1,3 +1,4 @@
+/* eslint-disable function-call-argument-newline */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import RangeSlider from './index';
@@ -226,3 +227,4 @@ describe.skip('<RangeSlider />', () => {
     inst.handleRangeTouch(touchEvent);
   });
 });
+/* eslint-enable function-call-argument-newline */
