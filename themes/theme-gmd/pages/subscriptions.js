@@ -61,7 +61,8 @@ export default function app(subscribe) {
       const hasSupport = hasScannerSupport(getState());
 
       if (!hasSupport) {
-        return resolve(null);
+        resolve(null);
+        return;
       }
 
       const { params: { pathname } } = action;
@@ -70,8 +71,6 @@ export default function app(subscribe) {
         .then((granted) => {
           resolve(granted ? pathname : null);
         });
-
-      return true;
     }));
 
     // set formats for product images

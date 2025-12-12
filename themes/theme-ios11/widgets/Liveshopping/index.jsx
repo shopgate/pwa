@@ -14,7 +14,8 @@ export class LiveshoppingWidget extends Component {
    * Request the product data.
    */
   componentDidMount() {
-    this.props.fetchProducts();
+    const { fetchProducts } = this.props;
+    fetchProducts();
   }
 
   /**

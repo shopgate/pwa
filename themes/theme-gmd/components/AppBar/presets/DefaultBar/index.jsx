@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
@@ -56,13 +56,13 @@ class AppBarDefault extends PureComponent {
   constructor(props) {
     super(props);
 
-    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
-  }
+    this.state = {
+      target: document.getElementById('AppHeader'),
+      pageHeaderTarget: document.getElementById('PageHeaderBelow'),
+      pageHeaderProgressTarget: document.getElementById('PageHeaderProgress'),
+    };
 
-  state = {
-    target: document.getElementById('AppHeader'),
-    pageHeaderTarget: document.getElementById('PageHeaderBelow'),
-    pageHeaderProgressTarget: document.getElementById('PageHeaderProgress'),
+    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
   }
 
   /**
@@ -111,7 +111,6 @@ class AppBarDefault extends PureComponent {
 
     const pageHeaderTarget = document.getElementById('PageHeaderBelow') || null;
     if (this.state.pageHeaderTarget !== pageHeaderTarget) {
-      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ pageHeaderTarget });
     }
 
@@ -161,7 +160,7 @@ class AppBarDefault extends PureComponent {
     if (focusable) {
       focusable.focus();
     }
-  }
+  };
 
   /**
    * Maintains the status bar based on the visibility of the global SearchComponent.
@@ -177,7 +176,7 @@ class AppBarDefault extends PureComponent {
     } else {
       this.updateStatusBar();
     }
-  }
+  };
 
   /**
    * Updates the status bar styling.
@@ -204,19 +203,17 @@ class AppBarDefault extends PureComponent {
     const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-label={__('navigation.open_menu')} />;
     const center = <AppBar.Title title={__(this.props.title || '')} />;
     const right = (
-      <Fragment>
-        <div className={buttons}>
-          <SearchButton onToggle={this.toggleSearch} />
-          <CartButton />
-        </div>
-      </Fragment>
+      <div className={buttons}>
+        <SearchButton onToggle={this.toggleSearch} />
+        <CartButton />
+      </div>
     );
 
     const below = (
-      <Fragment>
+      <>
         {this.props.below}
         <ProgressBar />
-      </Fragment>
+      </>
     );
 
     const appBar = (
@@ -233,18 +230,18 @@ class AppBarDefault extends PureComponent {
     );
 
     const appBarPortal = ReactDOM.createPortal(
-      <Fragment>
+      <>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
           {appBar}
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
-      </Fragment>,
+      </>,
       this.state.target
     );
 
     return (
-      <Fragment>
+      <>
         <ResponsiveContainer appAlways breakpoint="<=xs">
           {appBarPortal}
         </ResponsiveContainer>
@@ -260,7 +257,7 @@ class AppBarDefault extends PureComponent {
             this.state.pageHeaderProgressTarget
           ) : null}
         </ResponsiveContainer>
-      </Fragment>
+      </>
     );
   }
 }

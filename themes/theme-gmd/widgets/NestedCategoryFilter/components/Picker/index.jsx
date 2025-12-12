@@ -19,23 +19,29 @@ class CategoryPicker extends PureComponent {
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
     })),
-  }
+  };
 
   static defaultProps = {
     categoryId: null,
     label: '',
     selectedId: null,
     subcategories: null,
-  }
+  };
 
   static contextTypes = {
     i18n: PropTypes.func,
   };
 
-  state = {
-    sheet: false,
-    disabled: false,
-  };
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      sheet: false,
+      disabled: false,
+    };
+  }
 
   /**
    * Determines the disabled state for the component.
@@ -74,14 +80,14 @@ class CategoryPicker extends PureComponent {
     const subcategory = subcategories.find(val => (val.id === selectedId));
 
     return subcategory.name;
-  }
+  };
 
   /**
    * Closes the sheet.
    */
   closeSheet = () => {
     this.setState({ sheet: false });
-  }
+  };
 
   /**
    * Click handler for the picker button.
@@ -95,7 +101,7 @@ class CategoryPicker extends PureComponent {
     }
 
     this.setState({ sheet: true });
-  }
+  };
 
   /**
    * Selection handler for the sheet.
@@ -106,7 +112,7 @@ class CategoryPicker extends PureComponent {
     const subcategory = subcategories.find(item => item.id === subcategoryId);
     onSelect(categoryId, subcategory);
     this.closeSheet();
-  }
+  };
 
   /**
    * Render method of the component.
@@ -124,7 +130,7 @@ class CategoryPicker extends PureComponent {
     );
 
     return (
-      <Fragment>
+      <>
         <div
           aria-hidden
           onClick={this.handlePickerClick}
@@ -141,7 +147,7 @@ class CategoryPicker extends PureComponent {
           selectedId={selectedId}
           label={label}
         />
-      </Fragment>
+      </>
     );
   }
 }

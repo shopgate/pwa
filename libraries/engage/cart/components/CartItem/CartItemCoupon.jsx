@@ -71,9 +71,15 @@ class CartItemCoupon extends React.PureComponent {
   };
 
   /**
-   * @type {State}
+   * @param {Props} props The component props
    */
-  state = { visible: true };
+  constructor(props) {
+    super(props);
+    /**
+     * @type {State}
+     */
+    this.state = { visible: true };
+  }
 
   /**
    * @returns {Object}

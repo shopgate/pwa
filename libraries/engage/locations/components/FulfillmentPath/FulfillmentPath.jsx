@@ -13,17 +13,17 @@ import {
 import { container, radioGroup } from './FulfillmentPath.style';
 import { FulfillmentPathItem } from './FulfillmentPathItem';
 
+const labelMapping = {
+  [DIRECT_SHIP]: DIRECT_SHIP_LABEL,
+  [ROPIS]: IN_STORE_PICKUP_ROPIS_LABEL,
+  [BOPIS]: IN_STORE_PICKUP_BOPIS_LABEL,
+};
+
 /**
  * Renders the fulfillment path selector stage.
  * @returns {JSX}
  */
 export function FulfillmentPath() {
-  const labelMapping = {
-    [DIRECT_SHIP]: DIRECT_SHIP_LABEL,
-    [ROPIS]: IN_STORE_PICKUP_ROPIS_LABEL,
-    [BOPIS]: IN_STORE_PICKUP_BOPIS_LABEL,
-  };
-
   const {
     product,
     enabledFulfillmentMethods,
@@ -42,7 +42,7 @@ export function FulfillmentPath() {
     const method = Object.keys(labelMapping).find(key => labelMapping[key] === elementName);
     setSelection(method);
     changeFulfillment(method, cartItem);
-  }, [cartItem, changeFulfillment, labelMapping]);
+  }, [cartItem, changeFulfillment]);
 
   return (
     <div className={container}>
