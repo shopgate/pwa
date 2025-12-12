@@ -11,6 +11,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Content = ({ name, longName }) => (
+  // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
   <div className={`${styles.name} product-name`} role="heading">
     {/* This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects */}

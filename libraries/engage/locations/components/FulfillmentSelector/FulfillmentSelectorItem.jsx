@@ -52,10 +52,12 @@ const FulfillmentSelectorItemUnwrapped = ({
   });
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <label
       htmlFor={name}
       className={containerClasses}
       onClick={handleChange}
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
       role="radio"
       aria-checked={checked}
       tabIndex="0"

@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars, jsx-a11y/control-has-associated-label */
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -120,4 +120,4 @@ describe.skip('<ModalContainer />', () => {
   });
 });
 
-/* eslint-enable no-unused-vars */
+/* eslint-enable no-unused-vars, jsx-a11y/control-has-associated-label */
