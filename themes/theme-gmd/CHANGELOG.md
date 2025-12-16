@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.29.7](https://github.com/shopgate/pwa/compare/v7.29.6...v7.29.7) (2025-12-16)
+
+#### :rocket: Enhancement
+* [#1434](https://github.com/shopgate/pwa/pull/1434) Add CSS classnames to nested category filter widget ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v7.29.6](https://github.com/shopgate/pwa/compare/v7.29.5...v7.29.6) (2025-12-08)
 
 #### :rocket: Enhancement
