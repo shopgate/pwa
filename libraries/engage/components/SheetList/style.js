@@ -6,6 +6,7 @@ const { variables, colors } = themeConfig;
 export const IMAGE_SPACE = 72;
 
 const item = css({
+  margin: `0 ${variables.gap.big}px`,
   cursor: 'pointer',
 }).toString();
 

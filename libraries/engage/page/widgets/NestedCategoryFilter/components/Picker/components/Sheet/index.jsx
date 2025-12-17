@@ -1,8 +1,16 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { SheetDrawer, SheetList } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import Item from '../SheetItem';
 
+const useStyles = makeStyles()(({
+  sheetList: {
+    '& li': {
+      margin: 0,
+    },
+  },
+}));
 /**
  * The CategorySheet component.
  * @param {Object} props The component props.
@@ -17,6 +25,7 @@ import Item from '../SheetItem';
 const CategorySheet = ({
   items, label, onClose, open, selectedId, onSelect,
 }) => {
+  const { classes } = useStyles();
   const handleItemClick = useCallback((event) => {
     event.stopPropagation();
     onSelect(event.target.value);
@@ -24,7 +33,7 @@ const CategorySheet = ({
 
   return (
     <SheetDrawer title={label} isOpen={open} onClose={onClose}>
-      <SheetList className="widget__nested-category-filter__sheet-list">
+      <SheetList className={`widget__nested-category-filter__sheet-list ${classes.sheetList}`}>
         {items.map(item => (
           <Item
             item={item}
