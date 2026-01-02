@@ -94,7 +94,6 @@ describe('Core', () => {
     const options = { trackerName: 'mock' };
     const expectedObject = { expected: 'data' };
 
-    // initial call as in original test
     SgTrackingCore.track.pageview();
 
     trackableEvents.forEach((event) => {
