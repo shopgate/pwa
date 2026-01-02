@@ -185,7 +185,9 @@ const config = {
     ...(isDev && addBundleAnalyzer ? [
       new BundleAnalyzerPlugin(),
     ] : []),
-    ...(isDev ? [new ReactRefreshWebpackPlugin()] : []),
+    ...(isDev ? [new ReactRefreshWebpackPlugin({
+      overlay: false,
+    })] : []),
     ...(!isDev ? [
       new CompressionWebpackPlugin({
         filename: '[path][base].gz[query]',
