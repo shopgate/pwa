@@ -1265,8 +1265,8 @@
   {
     "id": "richTextWidget",
     "name": {
-      "en-us": "Rich Text",
-      "de-de": "Rich Text"
+      "en-us": "Text",
+      "de-de": "Text"
     },
     "description": {
       "en-us": "Write and format text with rich styling options.",
