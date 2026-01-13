@@ -32,7 +32,7 @@ import { getProductSearchParamsFromProductsInputConfig } from '@shopgate/engage/
  */
 export const useProductListWidget = () => {
   /** @type {UseWidgetReturnType}  */
-  const { config } = useWidget();
+  const { config, isPreview } = useWidget();
 
   const {
     products,
@@ -65,5 +65,6 @@ export const useProductListWidget = () => {
     flags,
     showHeadline,
     headline,
+    isPreview,
   };
 };

@@ -303,6 +303,7 @@ exports[`<Header /> should render empty 1`] = `
                     <ActionButton
                       aria-label="reviews.button_add"
                       className=""
+                      disableClickDelay={false}
                       disabled={false}
                       flat={true}
                       loading={false}
@@ -841,6 +842,7 @@ exports[`<Header /> should render rating summary 1`] = `
                     <ActionButton
                       aria-label="reviews.button_add"
                       className=""
+                      disableClickDelay={false}
                       disabled={false}
                       flat={true}
                       loading={false}

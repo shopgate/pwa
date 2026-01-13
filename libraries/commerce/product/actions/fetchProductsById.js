@@ -83,6 +83,7 @@ const fetchProductsById = (
       includeFulfillment: localIncludeFulfillment,
       includeFilters: false,
       includeSort: false,
+      calledByFetchProductsById: true,
     }));
   }
 );

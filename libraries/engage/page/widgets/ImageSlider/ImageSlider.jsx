@@ -7,6 +7,7 @@ import { useImageSliderWidget } from './hooks';
 const useStyles = makeStyles()({
   image: {
     width: '100%',
+    minHeight: 1,
   },
 });
 

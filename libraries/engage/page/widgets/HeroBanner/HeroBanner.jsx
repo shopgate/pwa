@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useCallback, useState, useMemo } from 'react';
 import { ConditionalWrapper, Link } from '@shopgate/engage/components';
 import { WidgetRichText, ResponsiveWidgetImage } from '@shopgate/engage/page/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useHeroBannerWidget } from './hooks';
+import WidgetVideo from '../../components/WidgetVideo';
 
 const useStyles = makeStyles()(theme => ({
   link: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles()(theme => ({
     [theme.breakpoints.up('md')]: {
       minHeight: 400,
     },
+    overflow: 'hidden',
   },
   richText: {
     position: 'relative',
@@ -37,34 +39,62 @@ const useStyles = makeStyles()(theme => ({
  */
 const HeroBanner = () => {
   const {
-    text, backgroundImage, link, borderRadius, parallax,
+    text,
+    altText,
+    link,
+    borderRadius,
+    parallax,
+    imageFit = 'fillAndCrop',
+    mediaType,
+    mediaUrl,
   } = useHeroBannerWidget();
 
-  const { cx, classes } = useStyles();
+  const { classes } = useStyles();
+  const [aspectRatio, setAspectRatio] = useState(null);
+
+  const contentStyle = useMemo(() => {
+    if (imageFit !== 'showFull') {
+      return null;
+    }
+
+    return {
+      aspectRatio,
+      minHeight: 'unset',
+    };
+  }, [aspectRatio, imageFit]);
+
+  const handleImageRatioChange = useCallback((ratio) => {
+    setAspectRatio(ratio);
+  }, []);
 
   return (
     <ConditionalWrapper
       condition={!!link}
       wrapper={children => (
-        <Link href={link} className={cx(classes.link)}>
+        <Link href={link} className={classes.link}>
           {children}
         </Link>
       )}
     >
-      <div className={cx(classes.content)}>
+      <div className={classes.content} style={contentStyle}>
         <WidgetRichText
           content={text}
-          className={cx(classes.richText)}
+          className={classes.richText}
         />
-        <div className={cx(classes.imageContainer)}>
-          <ResponsiveWidgetImage
-            src={backgroundImage?.url}
-            alt={backgroundImage?.alt}
-            borderRadius={borderRadius}
-            enableParallax={parallax}
-            isBanner
-          />
-
+        <div className={classes.imageContainer}>
+          {mediaType === 'image' ? (
+            <ResponsiveWidgetImage
+              src={mediaUrl}
+              alt={altText}
+              borderRadius={borderRadius}
+              enableParallax={parallax}
+              isBanner={imageFit === 'fillAndCrop'}
+              onImageRatioChange={handleImageRatioChange}
+            />
+          ) : null}
+          {mediaType === 'video' ? (
+            <WidgetVideo isBanner url={mediaUrl} borderRadius={borderRadius} />
+          ) : null}
         </div>
       </div>
     </ConditionalWrapper>

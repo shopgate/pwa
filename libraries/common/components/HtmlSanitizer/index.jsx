@@ -46,7 +46,6 @@ class HtmlSanitizer extends Component {
    * Registers the event handler for when the user taps inside the html content.
    */
   componentDidMount() {
-    this.htmlContainer.current.addEventListener('click', this.handleTap, true);
     embeddedMedia.add(this.htmlContainer.current);
   }
 
@@ -74,7 +73,6 @@ class HtmlSanitizer extends Component {
    * Removes the event handler.
    */
   componentWillUnmount() {
-    this.htmlContainer.current.removeEventListener('click', this.handleTap, true);
     embeddedMedia.remove(this.htmlContainer.current);
   }
 
@@ -82,25 +80,21 @@ class HtmlSanitizer extends Component {
    * If the user tapped a link element, prevent the default behavior.
    * @param {Object} event The touchstart event.
    */
-  handleTap = (event) => {
+  handleClick = (event) => {
     const linkTag = event.target.closest('a');
 
-    if (linkTag) {
-      const {
-        attributes: {
-          href: { value: href = '' } = {},
-          target: { value: target = '' } = {},
-        } = {},
-      } = linkTag;
+    if (!linkTag) return;
 
-      if (href) {
-        event.preventDefault();
-        if (this.props.settings.handleClick) {
-          this.props.settings.handleClick(href, target);
-        } else {
-          this.props.navigate(href, target);
-        }
-      }
+    const href = linkTag.getAttribute('href');
+    const target = linkTag.getAttribute('target') || '';
+
+    if (!href) return;
+
+    event.preventDefault();
+    if (this.props.settings.handleClick) {
+      this.props.settings.handleClick(href, target);
+    } else {
+      this.props.navigate(href, target);
     }
   };
 
@@ -133,6 +127,7 @@ class HtmlSanitizer extends Component {
           dangerouslySetInnerHTML={innerHTML}
           ref={this.htmlContainer}
           className={classNames(this.props.className, 'common__html-sanitizer')}
+          onClickCapture={this.handleClick}
         />
       </Wrapper>
     );

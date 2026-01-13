@@ -4,6 +4,9 @@ import ProductsWidgets from './index';
 
 jest.mock('./ProductsIdsWidget', () => 'ProductsIdsWidget');
 jest.mock('./ProductsWidget', () => 'ProductsWidget');
+jest.mock('react-redux', () => ({
+  connect: jest.fn(() => component => component),
+}));
 
 describe('<ProductWidgets />', () => {
   const settings = {

@@ -3,6 +3,7 @@
 exports[`<ButtonLink> On click action should create component and open page on click 1`] = `
 <ActionButton
   className=""
+  disableClickDelay={false}
   disabled={false}
   flat={true}
   loading={false}

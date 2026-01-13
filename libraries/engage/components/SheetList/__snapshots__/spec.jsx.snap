@@ -15,14 +15,14 @@ exports[`<SheetList /> should not render invalid children 1`] = `
       role="listbox"
     >
       <ListItem
-        className="css-id5jvr css-171mywc"
+        className="css-id5jvr css-171mywc engage__sheet-list__item"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+          className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -111,14 +111,14 @@ exports[`<SheetList /> should render a child and add styles for list items with 
       role="listbox"
     >
       <ListItem
-        className="css-id5jvr css-1brrprg css-171mywc"
+        className="css-id5jvr css-1brrprg css-171mywc engage__sheet-list__item"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-id5jvr css-1brrprg css-171mywc common__list__list-item css-16gj3o1"
+          className="css-1p5q8vq css-id5jvr css-1brrprg css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -199,14 +199,14 @@ exports[`<SheetList /> should render with two children 1`] = `
       role="listbox"
     >
       <ListItem
-        className="css-id5jvr css-171mywc"
+        className="css-id5jvr css-171mywc engage__sheet-list__item"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+          className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >
@@ -268,14 +268,14 @@ exports[`<SheetList /> should render with two children 1`] = `
         </li>
       </ListItem>
       <ListItem
-        className="css-id5jvr css-171mywc"
+        className="css-id5jvr css-171mywc engage__sheet-list__item"
         isSelected={false}
         key="child-1/.1"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+          className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
           data-test-id="listItem"
           role={null}
         >

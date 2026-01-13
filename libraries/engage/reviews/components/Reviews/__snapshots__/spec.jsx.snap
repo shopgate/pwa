@@ -2053,6 +2053,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                   >
                     <ActionButton
                       className=""
+                      disableClickDelay={false}
                       disabled={false}
                       flat={true}
                       loading={false}

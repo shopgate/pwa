@@ -13,6 +13,7 @@ class ActionButton extends Component {
   static propTypes = {
     ...RippleButton.propTypes,
     onClick: PropTypes.func.isRequired,
+    disableClickDelay: PropTypes.bool,
     loading: PropTypes.bool,
     noGap: PropTypes.bool,
     testId: PropTypes.string,
@@ -25,6 +26,7 @@ class ActionButton extends Component {
     flat: true,
     noGap: false,
     testId: null,
+    disableClickDelay: false,
   };
 
   /**
@@ -48,6 +50,11 @@ class ActionButton extends Component {
    */
   handleClick = (event) => {
     const { clickDelay } = this.constructor;
+
+    if (this.props.disableClickDelay) {
+      this.props.onClick(event);
+      return;
+    }
 
     setTimeout(() => {
       this.props.onClick(event);

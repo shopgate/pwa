@@ -74,6 +74,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
                     "__html": "<h1>Hello World!</h1>",
                   }
                 }
+                onClickCapture={[Function]}
               />
             </EmbeddedMedia>
           </HtmlSanitizer>
@@ -162,6 +163,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
                     "__html": "<h1>Hello World!</h1>",
                   }
                 }
+                onClickCapture={[Function]}
               />
             </EmbeddedMedia>
           </HtmlSanitizer>

@@ -226,6 +226,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={true}
               flat={false}
               loading={false}
@@ -624,14 +625,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-0/.$1-1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -666,14 +667,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-1/.$1-2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -830,6 +831,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={false}
               flat={false}
               loading={false}
@@ -1465,6 +1467,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={false}
               flat={false}
               loading={false}
@@ -1895,14 +1898,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-0/.$1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -1937,14 +1940,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-1/.$2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2258,6 +2261,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={true}
               flat={false}
               loading={false}
@@ -2674,14 +2678,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-0/.$1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -2716,14 +2720,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-1/.$2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3129,14 +3133,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-0/.$1-1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3171,14 +3175,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-1/.$1-2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -3335,6 +3339,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={false}
               flat={false}
               loading={false}
@@ -3643,6 +3648,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={true}
               flat={false}
               loading={false}
@@ -4029,14 +4035,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 role="listbox"
                               >
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-0/.$1"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -4071,14 +4077,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   </li>
                                 </ListItem>
                                 <ListItem
-                                  className="css-id5jvr css-171mywc"
+                                  className="css-id5jvr css-171mywc engage__sheet-list__item"
                                   isSelected={false}
                                   key="child-1/.$2"
                                   role={null}
                                   tabIndex={0}
                                 >
                                   <li
-                                    className="css-1p5q8vq css-id5jvr css-171mywc common__list__list-item css-16gj3o1"
+                                    className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
                                     data-test-id="listItem"
                                     role={null}
                                   >
@@ -4235,6 +4241,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           >
             <ActionButton
               className="css-63oe3q"
+              disableClickDelay={false}
               disabled={false}
               flat={false}
               loading={false}
