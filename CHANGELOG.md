@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.29.9](https://github.com/shopgate/pwa/compare/v7.29.8...v7.29.9) (2026-01-13)
+
+#### :bug: Bug Fix
+* [#1439](https://github.com/shopgate/pwa/pull/1439) Fix progress bar on cart page ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v7.29.7](https://github.com/shopgate/pwa/compare/v7.29.6...v7.29.7) (2025-12-16)
 
 #### :rocket: Enhancement
