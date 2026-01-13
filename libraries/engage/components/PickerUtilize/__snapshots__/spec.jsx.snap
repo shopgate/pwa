@@ -92,7 +92,6 @@ exports[`<Picker /> should render the picker 1`] = `
             </Button>
             <ConnectedReactPortal
               isOpened={true}
-              onClose={[Function]}
             >
               <Component
                 duration={300}
