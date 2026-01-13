@@ -9,7 +9,7 @@ const node = document.getElementById('portals');
  * @param {boolean} props.isOpened Whether the portal is open
  * @param {React.ReactNode} props.children The children to render inside the portal
  * @private
- * @returns {JSX.Element|null}
+ * @returns {React.ReactPortal|null}
  */
 const ConnectedReactPortal = ({ children, isOpened }) => {
   if (!isOpened) return null;
