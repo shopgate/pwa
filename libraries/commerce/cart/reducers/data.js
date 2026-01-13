@@ -17,7 +17,6 @@ const defaultState = {
   productPendingCount: 0,
   flags: {},
   activeFulfillmentSlot: null,
-  isFetching: false,
 };
 
 /**

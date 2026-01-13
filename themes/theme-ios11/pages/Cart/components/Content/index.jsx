@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
   getCartConfig,
   sortCartItems,
@@ -11,14 +12,13 @@ import {
   FLAG_MULTI_LINE_RESERVE,
   CartItemGroup,
   CartItems,
-  CartItem, getCart,
+  CartItem,
 } from '@shopgate/engage/cart';
 import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
 import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { BackBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
 import { ProductListTypeProvider } from '@shopgate/engage/product';
-import { useSelector } from 'react-redux';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
@@ -37,8 +37,9 @@ function CartContent(props) {
     cartItems, messages, isUserLoggedIn, currency, flags, hasPromotionCoupons, isDirectShipOnly,
   } = props;
   const [isPaymentBarVisible, setIsPaymentBarVisible] = React.useState(true);
-  const { isFetching } = useSelector(getCart);
+  const { isLoading: getIsLoading } = React.useContext(LoadingContext);
 
+  const isLoading = getIsLoading(CART_PATH);
   const hasItems = (cartItems.length > 0);
   const hasMessages = (messages.length > 0);
   const cartItemsSorted = sortCartItems(cartItems);
@@ -57,6 +58,7 @@ function CartContent(props) {
     currency,
     config,
     isUserLoggedIn,
+    isLoading,
     flags,
     hasPromotionCoupons,
     isDirectShipOnly,
@@ -114,7 +116,7 @@ function CartContent(props) {
           <Footer />
         </Fragment>
       )}
-      {(!isFetching && !hasItems) && (
+      {(!isLoading && !hasItems) && (
         <Empty />
       )}
       <FulfillmentSheet />
