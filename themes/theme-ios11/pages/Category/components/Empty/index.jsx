@@ -8,6 +8,7 @@ import connect from './connector';
 /**
  * The Empty component for the Category.
  * @param {Object} props The component props.
+ * @param {boolean} props.isVisible Whether the component is visible.
  * @return {JSX}
  */
 const Empty = ({ isVisible, ...props }) => {
