@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
@@ -59,9 +59,9 @@ function CartContent(props) {
    * It's called when the QuantityPicker or CouponField is focused or blurred.
    * @param {boolean} isHidden Tells if the payment bar is hidden or not.
    */
-  function togglePaymentBar(isHidden) {
+  const togglePaymentBar = useCallback((isHidden) => {
     setIsPaymentBarVisible(!isHidden);
-  }
+  }, []);
 
   const contextValue = useMemo(() => ({
     currency,

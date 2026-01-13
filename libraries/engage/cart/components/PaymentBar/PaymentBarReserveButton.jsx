@@ -19,7 +19,7 @@ const PaymentBarReserveButton = ({ historyReset }) => {
   /**
    * Handles the click on the button.
    */
-  function handleClick() {
+  const handleClick = React.useCallback(() => {
     FulfillmentSheet.open({
       stage: STAGE_RESERVE_FORM,
       callback: (_location, _product, orderSuccess) => {
@@ -28,7 +28,7 @@ const PaymentBarReserveButton = ({ historyReset }) => {
         }
       },
     });
-  }
+  }, [historyReset]);
 
   return (
     <SurroundPortals portalName={CART_CHECKOUT_BUTTON} portalProps={{ isActive: orderable }}>
