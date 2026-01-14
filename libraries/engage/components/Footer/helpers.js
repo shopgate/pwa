@@ -108,12 +108,10 @@ const classNamesUseCustomProp = (classList, customProp) => {
     })
     .flatMap(sheet => Array.from(sheet.cssRules || []));
 
-  // eslint-disable-next-line no-restricted-syntax
   for (const rule of allRules) {
     // eslint-disable-next-line no-continue
     if (!rule.selectorText || !rule.cssText.includes(`var(${customProp})`)) continue;
 
-    // eslint-disable-next-line no-restricted-syntax
     for (const className of classList) {
       if (rule.selectorText.includes(`.${className}`)) {
         return true;
@@ -157,7 +155,6 @@ const elementOrDescendantsUseCustomProp = (el, customProp) => {
 
   const descendants = el.querySelectorAll('*');
 
-  // eslint-disable-next-line no-restricted-syntax
   for (const node of descendants) {
     // eslint-disable-next-line no-continue
     if (!(node instanceof Element)) continue;

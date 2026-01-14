@@ -3,19 +3,19 @@
 exports[`<Picker /> Given the component was mounted to the DOM should match snapshot 1`] = `
 <Picker
   buttonComponent={[Function]}
-  buttonProps={Object {}}
+  buttonProps={{}}
   className=""
   disabled={false}
   duration={300}
   forwardedRef={null}
   isOpen={false}
   items={
-    Array [
+    [
       "String only",
-      Object {
+      {
         "value": "Value only",
       },
-      Object {
+      {
         "label": "Value and label",
         "value": "value",
       },
@@ -59,7 +59,6 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
     </PickerButton>
     <ConnectedReactPortal
       isOpened={true}
-      onClose={[Function]}
     >
       <PickerModal
         duration={300}

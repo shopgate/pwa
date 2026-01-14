@@ -13,7 +13,7 @@ exports[`<ProductsWidget /> should render the products in the list view 1`] = `
   />
   <ProductList
     flags={
-      Object {
+      {
         "manufacturer": false,
         "name": true,
         "price": undefined,
@@ -23,8 +23,8 @@ exports[`<ProductsWidget /> should render the products in the list view 1`] = `
     handleGetProducts={[Function]}
     infiniteLoad={false}
     products={
-      Array [
-        Object {},
+      [
+        {},
       ]
     }
     requestHash={null}

@@ -52,12 +52,6 @@ const getPermissionsResponse = (status = PERMISSION_STATUS_GRANTED, data) => [{
   data,
 }];
 
-/**
- * Flushes the promise queue.
- * @returns {Promise}
- */
-const flushPromises = () => new Promise(resolve => setImmediate(resolve));
-
 const customModalOptions = {
   message: 'Modal message',
   confirm: 'Confirm label',
@@ -289,80 +283,104 @@ describe('engage > core > actions > grantPermissions', () => {
     expect(event.addCallbackSpy).not.toHaveBeenCalled();
   });
 
-  it('should resolve with FALSE when the user opened the settings, but did not grant permissions', (done) => {
+  it('should resolve with FALSE when the user opened the settings, but did not grant permissions', async () => {
     getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
     getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
 
-    grantPermissions({
+    // Mock registration of the event listener inside the action.
+    const listenerReady = new Promise((resolve) => {
+      event.addCallbackSpy.mockImplementation((evt) => {
+        if (evt === APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND) {
+          resolve();
+        }
+      });
+    });
+
+    // Start the action.
+    const pending = grantPermissions({
       permissionId,
       useSettingsModal: true,
-    })(dispatch)
-      .then((granted) => {
-        expect(granted).toBe(false);
+    })(dispatch);
 
-        expect(dispatch).toHaveBeenCalledTimes(5);
-        expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
-        expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
-          permissionId,
-          status: PERMISSION_STATUS_DENIED,
-        }));
-        expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
-        expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
-          permissionId,
-          status: PERMISSION_STATUS_DENIED,
-        }));
+    // let microtasks run so the thunk can attach the event listener
+    await listenerReady;
 
-        expect(openAppSettings).toHaveBeenCalledTimes(1);
-        expect(event.removeCallbackSpy).toHaveBeenCalledWith(
-          APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
-          expect.any(Function)
-        );
-        done();
-      });
+    // Simulate the app coming back to foreground.
+    event.call(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND);
+    // Run timers to process any timeouts inside the action.
+    jest.runAllTimers();
 
-    // Flush the promise queue, so that the code inside of promise from the action is executed.
-    flushPromises().then(() => {
-      event.call(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND);
-      jest.runAllTimers();
-    });
+    const granted = await pending;
+
+    expect(granted).toBe(false);
+
+    expect(dispatch).toHaveBeenCalledTimes(5);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_DENIED,
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_DENIED,
+    }));
+
+    expect(openAppSettings).toHaveBeenCalledTimes(1);
+    expect(event.removeCallbackSpy).toHaveBeenCalledWith(
+      APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
+      expect.any(Function)
+    );
   });
 
-  it('should resolve with TRUE when the user opened the settings, and granted permissions', (done) => {
+  it('should resolve with TRUE when the user opened the settings, and granted permissions', async () => {
     getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
     getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_GRANTED));
 
-    grantPermissions({
+    // Mock registration of the event listener inside the action.
+    const listenerReady = new Promise((resolve) => {
+      event.addCallbackSpy.mockImplementation((evt) => {
+        if (evt === APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND) {
+          resolve();
+        }
+      });
+    });
+
+    // Start the action.
+    const pending = grantPermissions({
       permissionId,
       useSettingsModal: true,
-    })(dispatch)
-      .then((granted) => {
-        expect(granted).toBe(true);
-        expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    })(dispatch);
 
-        expect(dispatch).toHaveBeenCalledTimes(5);
-        expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
-        expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
-          permissionId,
-          status: PERMISSION_STATUS_DENIED,
-        }));
-        expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
-        expect(dispatch).toHaveBeenNthCalledWith(5, appPermissionStatusReceived({
-          permissionId,
-          status: PERMISSION_STATUS_GRANTED,
-        }));
-        expect(openAppSettings).toHaveBeenCalledTimes(1);
-        expect(event.removeCallbackSpy).toHaveBeenCalledWith(
-          APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
-          expect.any(Function)
-        );
-        done();
-      });
+    // let microtasks run so the thunk can attach the event listener
+    await listenerReady;
 
-    // Flush the promise queue, so that the code inside of promise from the action is executed.
-    flushPromises().then(() => {
-      event.call(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND);
-      jest.runAllTimers();
-    });
+    // Simulate the app coming back to foreground.
+    event.call(APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND);
+    // Run timers to process any timeouts inside the action.
+    jest.runAllTimers();
+
+    const granted = await pending;
+
+    expect(granted).toBe(true);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+
+    expect(dispatch).toHaveBeenCalledTimes(5);
+    expect(dispatch).toHaveBeenNthCalledWith(1, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(2, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_DENIED,
+    }));
+    expect(dispatch).toHaveBeenNthCalledWith(4, expect.any(Function));
+    expect(dispatch).toHaveBeenNthCalledWith(5, appPermissionStatusReceived({
+      permissionId,
+      status: PERMISSION_STATUS_GRANTED,
+    }));
+    expect(openAppSettings).toHaveBeenCalledTimes(1);
+    expect(event.removeCallbackSpy).toHaveBeenCalledWith(
+      APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
+      expect.any(Function)
+    );
   });
 
   it('should invoke getAppPermissions with a dispatch mock when invoked inside a browser', async () => {

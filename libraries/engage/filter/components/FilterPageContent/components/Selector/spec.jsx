@@ -8,9 +8,7 @@ jest.mock('@shopgate/engage/core', () => ({
     text: string => string,
   },
 }));
-jest.mock('@shopgate/engage/components', () => ({
-  Accordion: ({ children }) => children,
-}));
+jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/filter', () => ({
   FilterItem: ({ children }) => children,
 }));

@@ -61,7 +61,7 @@ import {
 } from './product';
 
 jest.mock('@shopgate/pwa-core/helpers', () => {
-  const original = require.requireActual('@shopgate/pwa-core/helpers');
+  const original = jest.requireActual('@shopgate/pwa-core/helpers');
 
   return {
     ...original,

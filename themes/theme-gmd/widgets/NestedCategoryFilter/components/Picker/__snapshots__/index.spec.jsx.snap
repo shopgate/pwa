@@ -3,7 +3,7 @@
 exports[`<NestedCategoryFilterPicker /> should accept user interaction when the categoryId is an empty string 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -25,14 +25,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
       onSelect={[MockFunction]}
       selectedId={null}
       subcategories={
-        Array [
-          Object {
+        [
+          {
             "childrenCount": 2,
             "id": "1",
             "isFetching": false,
             "name": "Category 1",
           },
-          Object {
+          {
             "childrenCount": 0,
             "id": "2",
             "isFetching": false,
@@ -59,14 +59,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
       </div>
       <CategorySheet
         items={
-          Array [
-            Object {
+          [
+            {
               "childrenCount": 2,
               "id": "1",
               "isFetching": false,
               "name": "Category 1",
             },
-            Object {
+            {
               "childrenCount": 0,
               "id": "2",
               "isFetching": false,
@@ -87,7 +87,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
         >
           <Sheet
             allowClose={true}
-            animation={Object {}}
+            animation={{}}
             backdrop={true}
             className={null}
             contentClassName={null}
@@ -106,7 +106,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             >
               <Drawer
                 animation={
-                  Object {
+                  {
                     "duration": 300,
                     "in": "css-1ldjh2f",
                     "out": "css-171mdnt",
@@ -125,7 +125,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
-                    Object {
+                    {
                       "animationDuration": "300ms",
                     }
                   }
@@ -178,19 +178,19 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                   <Icon
                                     className=""
                                     color={null}
-                                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                     size={24}
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
                                       className="css-yys9hb  common__icon"
                                       dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                        {
+                                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                         }
                                       }
                                       style={
-                                        Object {
+                                        {
                                           "fill": null,
                                           "fontSize": 24,
                                         }
@@ -247,7 +247,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                         <div
                           className="css-guf25f ui-shared__progress-bar"
                           style={
-                            Object {
+                            {
                               "transform": "scale(1, 0)",
                             }
                           }
@@ -270,7 +270,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     >
                       <SheetItem
                         item={
-                          Object {
+                          {
                             "childrenCount": 2,
                             "id": "1",
                             "isFetching": false,
@@ -293,7 +293,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       </SheetItem>
                       <SheetItem
                         item={
-                          Object {
+                          {
                             "childrenCount": 0,
                             "id": "2",
                             "isFetching": false,
@@ -335,7 +335,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                   in={true}
                   mountOnEnter={true}
                   nodeRef={
-                    Object {
+                    {
                       "current": <div
                         aria-hidden="true"
                         class="css-30873t  common__backdrop"
@@ -359,7 +359,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
-                      Object {
+                      {
                         "background": "#000",
                         "opacity": 0.2,
                         "pointerEvents": "auto",
@@ -382,7 +382,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
 exports[`<NestedCategoryFilterPicker /> should handle user interaction as expected 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -404,14 +404,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       onSelect={[MockFunction]}
       selectedId={null}
       subcategories={
-        Array [
-          Object {
+        [
+          {
             "childrenCount": 0,
             "id": "1-1",
             "isFetching": false,
             "name": "Category 1-1",
           },
-          Object {
+          {
             "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
@@ -438,14 +438,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       </div>
       <CategorySheet
         items={
-          Array [
-            Object {
+          [
+            {
               "childrenCount": 0,
               "id": "1-1",
               "isFetching": false,
               "name": "Category 1-1",
             },
-            Object {
+            {
               "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
@@ -466,7 +466,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         >
           <Sheet
             allowClose={true}
-            animation={Object {}}
+            animation={{}}
             backdrop={true}
             className={null}
             contentClassName={null}
@@ -485,7 +485,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             >
               <Drawer
                 animation={
-                  Object {
+                  {
                     "duration": 300,
                     "in": "css-1ldjh2f",
                     "out": "css-171mdnt",
@@ -504,7 +504,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
-                    Object {
+                    {
                       "animationDuration": "300ms",
                     }
                   }
@@ -557,19 +557,19 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   <Icon
                                     className=""
                                     color={null}
-                                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                     size={24}
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
                                       className="css-yys9hb  common__icon"
                                       dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                        {
+                                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                         }
                                       }
                                       style={
-                                        Object {
+                                        {
                                           "fill": null,
                                           "fontSize": 24,
                                         }
@@ -626,7 +626,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         <div
                           className="css-guf25f ui-shared__progress-bar"
                           style={
-                            Object {
+                            {
                               "transform": "scale(1, 0)",
                             }
                           }
@@ -649,7 +649,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     >
                       <SheetItem
                         item={
-                          Object {
+                          {
                             "childrenCount": 0,
                             "id": "1-1",
                             "isFetching": false,
@@ -672,7 +672,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </SheetItem>
                       <SheetItem
                         item={
-                          Object {
+                          {
                             "childrenCount": 1,
                             "id": "1-2",
                             "isFetching": false,
@@ -714,7 +714,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   in={true}
                   mountOnEnter={true}
                   nodeRef={
-                    Object {
+                    {
                       "current": <div
                         aria-hidden="true"
                         class="css-30873t  common__backdrop"
@@ -738,7 +738,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
-                      Object {
+                      {
                         "background": "#000",
                         "opacity": 0.2,
                         "pointerEvents": "auto",
@@ -761,7 +761,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
 exports[`<NestedCategoryFilterPicker /> should handle user interaction as expected 2`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -776,10 +776,10 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
     label="Picker Label"
     onSelect={
       [MockFunction] {
-        "calls": Array [
-          Array [
+        "calls": [
+          [
             "1",
-            Object {
+            {
               "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
@@ -787,8 +787,8 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             },
           ],
         ],
-        "results": Array [
-          Object {
+        "results": [
+          {
             "type": "return",
             "value": undefined,
           },
@@ -802,10 +802,10 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       label="Picker Label"
       onSelect={
         [MockFunction] {
-          "calls": Array [
-            Array [
+          "calls": [
+            [
               "1",
-              Object {
+              {
                 "childrenCount": 1,
                 "id": "1-2",
                 "isFetching": false,
@@ -813,8 +813,8 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               },
             ],
           ],
-          "results": Array [
-            Object {
+          "results": [
+            {
               "type": "return",
               "value": undefined,
             },
@@ -823,14 +823,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       }
       selectedId={null}
       subcategories={
-        Array [
-          Object {
+        [
+          {
             "childrenCount": 0,
             "id": "1-1",
             "isFetching": false,
             "name": "Category 1-1",
           },
-          Object {
+          {
             "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
@@ -857,14 +857,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       </div>
       <CategorySheet
         items={
-          Array [
-            Object {
+          [
+            {
               "childrenCount": 0,
               "id": "1-1",
               "isFetching": false,
               "name": "Category 1-1",
             },
-            Object {
+            {
               "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
@@ -885,7 +885,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         >
           <Sheet
             allowClose={true}
-            animation={Object {}}
+            animation={{}}
             backdrop={true}
             className={null}
             contentClassName={null}
@@ -904,7 +904,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             >
               <Drawer
                 animation={
-                  Object {
+                  {
                     "duration": 300,
                     "in": "css-1ldjh2f",
                     "out": "css-171mdnt",
@@ -923,7 +923,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
-                    Object {
+                    {
                       "animationDuration": "300ms",
                     }
                   }
@@ -976,19 +976,19 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   <Icon
                                     className=""
                                     color={null}
-                                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                     size={24}
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
                                       className="css-yys9hb  common__icon"
                                       dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                        {
+                                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                         }
                                       }
                                       style={
-                                        Object {
+                                        {
                                           "fill": null,
                                           "fontSize": 24,
                                         }
@@ -1045,7 +1045,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         <div
                           className="css-guf25f ui-shared__progress-bar"
                           style={
-                            Object {
+                            {
                               "transform": "scale(1, 0)",
                             }
                           }
@@ -1068,7 +1068,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     >
                       <SheetItem
                         item={
-                          Object {
+                          {
                             "childrenCount": 0,
                             "id": "1-1",
                             "isFetching": false,
@@ -1091,7 +1091,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </SheetItem>
                       <SheetItem
                         item={
-                          Object {
+                          {
                             "childrenCount": 1,
                             "id": "1-2",
                             "isFetching": false,
@@ -1133,7 +1133,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   in={false}
                   mountOnEnter={true}
                   nodeRef={
-                    Object {
+                    {
                       "current": <div
                         aria-hidden="true"
                         class="css-30873t  common__backdrop"
@@ -1157,7 +1157,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
-                      Object {
+                      {
                         "background": "#000",
                         "opacity": 0,
                         "pointerEvents": "none",
@@ -1180,7 +1180,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
 exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcategory within the sheet  1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -1203,14 +1203,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
       onSelect={[MockFunction]}
       selectedId="1-1"
       subcategories={
-        Array [
-          Object {
+        [
+          {
             "childrenCount": 0,
             "id": "1-1",
             "isFetching": false,
             "name": "Category 1-1",
           },
-          Object {
+          {
             "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
@@ -1237,14 +1237,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
       </div>
       <CategorySheet
         items={
-          Array [
-            Object {
+          [
+            {
               "childrenCount": 0,
               "id": "1-1",
               "isFetching": false,
               "name": "Category 1-1",
             },
-            Object {
+            {
               "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
@@ -1265,7 +1265,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
         >
           <Sheet
             allowClose={true}
-            animation={Object {}}
+            animation={{}}
             backdrop={true}
             className={null}
             contentClassName={null}
@@ -1284,7 +1284,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             >
               <Drawer
                 animation={
-                  Object {
+                  {
                     "duration": 300,
                     "in": "css-1ldjh2f",
                     "out": "css-171mdnt",
@@ -1303,7 +1303,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
-                    Object {
+                    {
                       "animationDuration": "300ms",
                     }
                   }
@@ -1356,19 +1356,19 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                   <Icon
                                     className=""
                                     color={null}
-                                    content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                     size={24}
                                     viewBox="0 0 24 24"
                                   >
                                     <svg
                                       className="css-yys9hb  common__icon"
                                       dangerouslySetInnerHTML={
-                                        Object {
-                                          "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                        {
+                                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                         }
                                       }
                                       style={
-                                        Object {
+                                        {
                                           "fill": null,
                                           "fontSize": 24,
                                         }
@@ -1425,7 +1425,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                         <div
                           className="css-guf25f ui-shared__progress-bar"
                           style={
-                            Object {
+                            {
                               "transform": "scale(1, 0)",
                             }
                           }
@@ -1448,7 +1448,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     >
                       <SheetItem
                         item={
-                          Object {
+                          {
                             "childrenCount": 0,
                             "id": "1-1",
                             "isFetching": false,
@@ -1471,7 +1471,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       </SheetItem>
                       <SheetItem
                         item={
-                          Object {
+                          {
                             "childrenCount": 1,
                             "id": "1-2",
                             "isFetching": false,
@@ -1513,7 +1513,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                   in={true}
                   mountOnEnter={true}
                   nodeRef={
-                    Object {
+                    {
                       "current": <div
                         aria-hidden="true"
                         class="css-30873t  common__backdrop"
@@ -1537,7 +1537,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
-                      Object {
+                      {
                         "background": "#000",
                         "opacity": 0.2,
                         "pointerEvents": "auto",
@@ -1560,7 +1560,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
 exports[`<NestedCategoryFilterPicker /> should not accept user interaction when no categoryId was passed 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -1581,14 +1581,14 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
       onSelect={[MockFunction]}
       selectedId={null}
       subcategories={
-        Array [
-          Object {
+        [
+          {
             "childrenCount": 2,
             "id": "1",
             "isFetching": false,
             "name": "Category 1",
           },
-          Object {
+          {
             "childrenCount": 0,
             "id": "2",
             "isFetching": false,
@@ -1615,14 +1615,14 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
       </div>
       <CategorySheet
         items={
-          Array [
-            Object {
+          [
+            {
               "childrenCount": 2,
               "id": "1",
               "isFetching": false,
               "name": "Category 1",
             },
-            Object {
+            {
               "childrenCount": 0,
               "id": "2",
               "isFetching": false,
@@ -1643,7 +1643,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
         >
           <Sheet
             allowClose={true}
-            animation={Object {}}
+            animation={{}}
             backdrop={true}
             className={null}
             contentClassName={null}
@@ -1662,7 +1662,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             >
               <Drawer
                 animation={
-                  Object {
+                  {
                     "duration": 300,
                     "in": "css-1ldjh2f",
                     "out": "css-171mdnt",
@@ -1692,7 +1692,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                   in={false}
                   mountOnEnter={true}
                   nodeRef={
-                    Object {
+                    {
                       "current": null,
                     }
                   }
@@ -1718,7 +1718,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
 exports[`<NestedCategoryFilterPicker /> should render the picker with no initial category selection 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -1740,14 +1740,14 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
       onSelect={[MockFunction]}
       selectedId={null}
       subcategories={
-        Array [
-          Object {
+        [
+          {
             "childrenCount": 0,
             "id": "1-1",
             "isFetching": false,
             "name": "Category 1-1",
           },
-          Object {
+          {
             "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
@@ -1774,14 +1774,14 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
       </div>
       <CategorySheet
         items={
-          Array [
-            Object {
+          [
+            {
               "childrenCount": 0,
               "id": "1-1",
               "isFetching": false,
               "name": "Category 1-1",
             },
-            Object {
+            {
               "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
@@ -1802,7 +1802,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
         >
           <Sheet
             allowClose={true}
-            animation={Object {}}
+            animation={{}}
             backdrop={true}
             className={null}
             contentClassName={null}
@@ -1821,7 +1821,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             >
               <Drawer
                 animation={
-                  Object {
+                  {
                     "duration": 300,
                     "in": "css-1ldjh2f",
                     "out": "css-171mdnt",
@@ -1851,7 +1851,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                   in={false}
                   mountOnEnter={true}
                   nodeRef={
-                    Object {
+                    {
                       "current": null,
                     }
                   }
@@ -1877,7 +1877,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
 exports[`<NestedCategoryFilterPicker /> should render the picker without a label 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -1899,14 +1899,14 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
       onSelect={[MockFunction]}
       selectedId={null}
       subcategories={
-        Array [
-          Object {
+        [
+          {
             "childrenCount": 0,
             "id": "1-1",
             "isFetching": false,
             "name": "Category 1-1",
           },
-          Object {
+          {
             "childrenCount": 1,
             "id": "1-2",
             "isFetching": false,
@@ -1928,14 +1928,14 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
       </div>
       <CategorySheet
         items={
-          Array [
-            Object {
+          [
+            {
               "childrenCount": 0,
               "id": "1-1",
               "isFetching": false,
               "name": "Category 1-1",
             },
-            Object {
+            {
               "childrenCount": 1,
               "id": "1-2",
               "isFetching": false,
@@ -1956,7 +1956,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
         >
           <Sheet
             allowClose={true}
-            animation={Object {}}
+            animation={{}}
             backdrop={true}
             className={null}
             contentClassName={null}
@@ -1975,7 +1975,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             >
               <Drawer
                 animation={
-                  Object {
+                  {
                     "duration": 300,
                     "in": "css-1ldjh2f",
                     "out": "css-171mdnt",
@@ -2005,7 +2005,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                   in={false}
                   mountOnEnter={true}
                   nodeRef={
-                    Object {
+                    {
                       "current": null,
                     }
                   }

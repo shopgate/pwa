@@ -3,7 +3,7 @@
 exports[`<NestedCategoryFilterWidget /> should render the widget for a category which is not the root category 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -17,7 +17,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
     id="widget-id"
     persistedState={null}
     settings={
-      Object {
+      {
         "categoryNumber": "1",
         "headline": "Widget Headline",
         "label_1": "Label One",
@@ -55,14 +55,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             onSelect={[Function]}
             selectedId={null}
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 0,
                   "id": "1-1",
                   "isFetching": false,
                   "name": "Category 1-1",
                 },
-                Object {
+                {
                   "childrenCount": 1,
                   "id": "1-2",
                   "isFetching": false,
@@ -89,14 +89,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 0,
                     "id": "1-1",
                     "isFetching": false,
                     "name": "Category 1-1",
                   },
-                  Object {
+                  {
                     "childrenCount": 1,
                     "id": "1-2",
                     "isFetching": false,
@@ -117,7 +117,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -136,7 +136,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -166,7 +166,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": null,
                           }
                         }
@@ -260,7 +260,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           <Translate
                             acceptPlainTextWithPlaceholders={false}
                             className={null}
-                            params={Object {}}
+                            params={{}}
                             role={null}
                             string="common.show_products"
                             transform={null}
@@ -290,7 +290,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
 exports[`<NestedCategoryFilterWidget /> should render the widget for a category which is not the root category 2`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -304,7 +304,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
     id="widget-id"
     persistedState={null}
     settings={
-      Object {
+      {
         "categoryNumber": "1",
         "headline": "Widget Headline",
         "label_1": "Label One",
@@ -342,14 +342,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             onSelect={[Function]}
             selectedId="1-1"
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 0,
                   "id": "1-1",
                   "isFetching": false,
                   "name": "Category 1-1",
                 },
-                Object {
+                {
                   "childrenCount": 1,
                   "id": "1-2",
                   "isFetching": false,
@@ -376,14 +376,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 0,
                     "id": "1-1",
                     "isFetching": false,
                     "name": "Category 1-1",
                   },
-                  Object {
+                  {
                     "childrenCount": 1,
                     "id": "1-2",
                     "isFetching": false,
@@ -404,7 +404,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -423,7 +423,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -442,7 +442,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
-                          Object {
+                          {
                             "animationDuration": "300ms",
                           }
                         }
@@ -495,19 +495,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                         <Icon
                                           className=""
                                           color={null}
-                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                           size={24}
                                           viewBox="0 0 24 24"
                                         >
                                           <svg
                                             className="css-yys9hb  common__icon"
                                             dangerouslySetInnerHTML={
-                                              Object {
-                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                               }
                                             }
                                             style={
-                                              Object {
+                                              {
                                                 "fill": null,
                                                 "fontSize": 24,
                                               }
@@ -564,7 +564,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               <div
                                 className="css-guf25f ui-shared__progress-bar"
                                 style={
-                                  Object {
+                                  {
                                     "transform": "scale(1, 0)",
                                   }
                                 }
@@ -614,7 +614,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 0,
                                             "id": "1-1",
                                             "isFetching": false,
@@ -656,7 +656,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 1,
                                             "id": "1-2",
                                             "isFetching": false,
@@ -703,7 +703,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": <div
                               aria-hidden="true"
                               class="css-30873t  common__backdrop"
@@ -727,7 +727,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
-                            Object {
+                            {
                               "background": "#000",
                               "opacity": 0,
                               "pointerEvents": "none",
@@ -831,7 +831,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             <Translate
                               acceptPlainTextWithPlaceholders={false}
                               className={null}
-                              params={Object {}}
+                              params={{}}
                               role={null}
                               string="common.show_products"
                               transform={null}
@@ -862,7 +862,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
 exports[`<NestedCategoryFilterWidget /> should render the widget with a persisted state and handle user interaction as expected 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -875,18 +875,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
   <NestedCategoryFilter
     id="widget-id"
     persistedState={
-      Object {
+      {
         "buttonCategoryId": "1-2-1",
-        "pickers": Array [
-          Object {
+        "pickers": [
+          {
             "categoryId": "",
             "selectedId": "1",
           },
-          Object {
+          {
             "categoryId": "1",
             "selectedId": "1-2",
           },
-          Object {
+          {
             "categoryId": "1-2",
             "selectedId": "1-2-1",
           },
@@ -894,7 +894,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
       }
     }
     settings={
-      Object {
+      {
         "categoryNumber": "",
         "headline": "Widget Headline",
         "label_1": "Label One",
@@ -932,14 +932,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             onSelect={[Function]}
             selectedId="1"
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 2,
                   "id": "1",
                   "isFetching": false,
                   "name": "Category 1",
                 },
-                Object {
+                {
                   "childrenCount": 0,
                   "id": "2",
                   "isFetching": false,
@@ -966,14 +966,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 2,
                     "id": "1",
                     "isFetching": false,
                     "name": "Category 1",
                   },
-                  Object {
+                  {
                     "childrenCount": 0,
                     "id": "2",
                     "isFetching": false,
@@ -994,7 +994,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -1013,7 +1013,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -1043,7 +1043,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": null,
                           }
                         }
@@ -1077,14 +1077,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             onSelect={[Function]}
             selectedId="1-2"
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 0,
                   "id": "1-1",
                   "isFetching": false,
                   "name": "Category 1-1",
                 },
-                Object {
+                {
                   "childrenCount": 1,
                   "id": "1-2",
                   "isFetching": false,
@@ -1111,14 +1111,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 0,
                     "id": "1-1",
                     "isFetching": false,
                     "name": "Category 1-1",
                   },
-                  Object {
+                  {
                     "childrenCount": 1,
                     "id": "1-2",
                     "isFetching": false,
@@ -1139,7 +1139,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -1158,7 +1158,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -1188,7 +1188,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": null,
                           }
                         }
@@ -1222,8 +1222,8 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             onSelect={[Function]}
             selectedId="1-2-1"
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 0,
                   "id": "1-2-1",
                   "isFetching": false,
@@ -1245,8 +1245,8 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 0,
                     "id": "1-2-1",
                     "isFetching": false,
@@ -1267,7 +1267,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -1286,7 +1286,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -1316,7 +1316,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": null,
                           }
                         }
@@ -1423,7 +1423,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             <Translate
                               acceptPlainTextWithPlaceholders={false}
                               className={null}
-                              params={Object {}}
+                              params={{}}
                               role={null}
                               string="common.show_products"
                               transform={null}
@@ -1454,7 +1454,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
 exports[`<NestedCategoryFilterWidget /> should render the widget with a persisted state and handle user interaction as expected 2`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -1467,18 +1467,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
   <NestedCategoryFilter
     id="widget-id"
     persistedState={
-      Object {
+      {
         "buttonCategoryId": "1-2-1",
-        "pickers": Array [
-          Object {
+        "pickers": [
+          {
             "categoryId": "",
             "selectedId": "1",
           },
-          Object {
+          {
             "categoryId": "1",
             "selectedId": "1-2",
           },
-          Object {
+          {
             "categoryId": "1-2",
             "selectedId": "1-2-1",
           },
@@ -1486,7 +1486,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
       }
     }
     settings={
-      Object {
+      {
         "categoryNumber": "",
         "headline": "Widget Headline",
         "label_1": "Label One",
@@ -1524,14 +1524,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             onSelect={[Function]}
             selectedId="1"
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 2,
                   "id": "1",
                   "isFetching": false,
                   "name": "Category 1",
                 },
-                Object {
+                {
                   "childrenCount": 0,
                   "id": "2",
                   "isFetching": false,
@@ -1558,14 +1558,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 2,
                     "id": "1",
                     "isFetching": false,
                     "name": "Category 1",
                   },
-                  Object {
+                  {
                     "childrenCount": 0,
                     "id": "2",
                     "isFetching": false,
@@ -1586,7 +1586,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -1605,7 +1605,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -1624,7 +1624,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
-                          Object {
+                          {
                             "animationDuration": "300ms",
                           }
                         }
@@ -1677,19 +1677,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         <Icon
                                           className=""
                                           color={null}
-                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                           size={24}
                                           viewBox="0 0 24 24"
                                         >
                                           <svg
                                             className="css-yys9hb  common__icon"
                                             dangerouslySetInnerHTML={
-                                              Object {
-                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                               }
                                             }
                                             style={
-                                              Object {
+                                              {
                                                 "fill": null,
                                                 "fontSize": 24,
                                               }
@@ -1746,7 +1746,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               <div
                                 className="css-guf25f ui-shared__progress-bar"
                                 style={
-                                  Object {
+                                  {
                                     "transform": "scale(1, 0)",
                                   }
                                 }
@@ -1796,7 +1796,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 2,
                                             "id": "1",
                                             "isFetching": false,
@@ -1838,7 +1838,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 0,
                                             "id": "2",
                                             "isFetching": false,
@@ -1885,7 +1885,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": <div
                               aria-hidden="true"
                               class="css-30873t  common__backdrop"
@@ -1909,7 +1909,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
-                            Object {
+                            {
                               "background": "#000",
                               "opacity": 0,
                               "pointerEvents": "none",
@@ -1940,14 +1940,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             onSelect={[Function]}
             selectedId={null}
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 0,
                   "id": "1-1",
                   "isFetching": false,
                   "name": "Category 1-1",
                 },
-                Object {
+                {
                   "childrenCount": 1,
                   "id": "1-2",
                   "isFetching": false,
@@ -1974,14 +1974,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 0,
                     "id": "1-1",
                     "isFetching": false,
                     "name": "Category 1-1",
                   },
-                  Object {
+                  {
                     "childrenCount": 1,
                     "id": "1-2",
                     "isFetching": false,
@@ -2002,7 +2002,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -2021,7 +2021,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -2051,7 +2051,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": null,
                           }
                         }
@@ -2145,7 +2145,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           <Translate
                             acceptPlainTextWithPlaceholders={false}
                             className={null}
-                            params={Object {}}
+                            params={{}}
                             role={null}
                             string="common.show_products"
                             transform={null}
@@ -2175,7 +2175,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
 exports[`<NestedCategoryFilterWidget /> should render the widget with a persisted state and handle user interaction as expected 3`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -2188,18 +2188,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
   <NestedCategoryFilter
     id="widget-id"
     persistedState={
-      Object {
+      {
         "buttonCategoryId": "1-2-1",
-        "pickers": Array [
-          Object {
+        "pickers": [
+          {
             "categoryId": "",
             "selectedId": "1",
           },
-          Object {
+          {
             "categoryId": "1",
             "selectedId": "1-2",
           },
-          Object {
+          {
             "categoryId": "1-2",
             "selectedId": "1-2-1",
           },
@@ -2207,7 +2207,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
       }
     }
     settings={
-      Object {
+      {
         "categoryNumber": "",
         "headline": "Widget Headline",
         "label_1": "Label One",
@@ -2245,14 +2245,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             onSelect={[Function]}
             selectedId="1"
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 2,
                   "id": "1",
                   "isFetching": false,
                   "name": "Category 1",
                 },
-                Object {
+                {
                   "childrenCount": 0,
                   "id": "2",
                   "isFetching": false,
@@ -2279,14 +2279,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 2,
                     "id": "1",
                     "isFetching": false,
                     "name": "Category 1",
                   },
-                  Object {
+                  {
                     "childrenCount": 0,
                     "id": "2",
                     "isFetching": false,
@@ -2307,7 +2307,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -2326,7 +2326,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -2345,7 +2345,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
-                          Object {
+                          {
                             "animationDuration": "300ms",
                           }
                         }
@@ -2398,19 +2398,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         <Icon
                                           className=""
                                           color={null}
-                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                           size={24}
                                           viewBox="0 0 24 24"
                                         >
                                           <svg
                                             className="css-yys9hb  common__icon"
                                             dangerouslySetInnerHTML={
-                                              Object {
-                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                               }
                                             }
                                             style={
-                                              Object {
+                                              {
                                                 "fill": null,
                                                 "fontSize": 24,
                                               }
@@ -2467,7 +2467,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               <div
                                 className="css-guf25f ui-shared__progress-bar"
                                 style={
-                                  Object {
+                                  {
                                     "transform": "scale(1, 0)",
                                   }
                                 }
@@ -2517,7 +2517,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 2,
                                             "id": "1",
                                             "isFetching": false,
@@ -2559,7 +2559,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 0,
                                             "id": "2",
                                             "isFetching": false,
@@ -2606,7 +2606,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": <div
                               aria-hidden="true"
                               class="css-30873t  common__backdrop"
@@ -2630,7 +2630,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
-                            Object {
+                            {
                               "background": "#000",
                               "opacity": 0,
                               "pointerEvents": "none",
@@ -2661,14 +2661,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             onSelect={[Function]}
             selectedId="1-1"
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 0,
                   "id": "1-1",
                   "isFetching": false,
                   "name": "Category 1-1",
                 },
-                Object {
+                {
                   "childrenCount": 1,
                   "id": "1-2",
                   "isFetching": false,
@@ -2695,14 +2695,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 0,
                     "id": "1-1",
                     "isFetching": false,
                     "name": "Category 1-1",
                   },
-                  Object {
+                  {
                     "childrenCount": 1,
                     "id": "1-2",
                     "isFetching": false,
@@ -2723,7 +2723,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -2742,7 +2742,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -2761,7 +2761,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
-                          Object {
+                          {
                             "animationDuration": "300ms",
                           }
                         }
@@ -2814,19 +2814,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         <Icon
                                           className=""
                                           color={null}
-                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                           size={24}
                                           viewBox="0 0 24 24"
                                         >
                                           <svg
                                             className="css-yys9hb  common__icon"
                                             dangerouslySetInnerHTML={
-                                              Object {
-                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                               }
                                             }
                                             style={
-                                              Object {
+                                              {
                                                 "fill": null,
                                                 "fontSize": 24,
                                               }
@@ -2883,7 +2883,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               <div
                                 className="css-guf25f ui-shared__progress-bar"
                                 style={
-                                  Object {
+                                  {
                                     "transform": "scale(1, 0)",
                                   }
                                 }
@@ -2933,7 +2933,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 0,
                                             "id": "1-1",
                                             "isFetching": false,
@@ -2975,7 +2975,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 1,
                                             "id": "1-2",
                                             "isFetching": false,
@@ -3022,7 +3022,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": <div
                               aria-hidden="true"
                               class="css-30873t  common__backdrop"
@@ -3046,7 +3046,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
-                            Object {
+                            {
                               "background": "#000",
                               "opacity": 0,
                               "pointerEvents": "none",
@@ -3150,7 +3150,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             <Translate
                               acceptPlainTextWithPlaceholders={false}
                               className={null}
-                              params={Object {}}
+                              params={{}}
                               role={null}
                               string="common.show_products"
                               transform={null}
@@ -3181,7 +3181,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
 exports[`<NestedCategoryFilterWidget /> should render the widget without a headline and persisted state 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -3195,7 +3195,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
     id="widget-id"
     persistedState={null}
     settings={
-      Object {
+      {
         "categoryNumber": "",
         "headline": "",
         "label_1": "Label One",
@@ -3227,14 +3227,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             onSelect={[Function]}
             selectedId={null}
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 2,
                   "id": "1",
                   "isFetching": false,
                   "name": "Category 1",
                 },
-                Object {
+                {
                   "childrenCount": 0,
                   "id": "2",
                   "isFetching": false,
@@ -3261,14 +3261,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 2,
                     "id": "1",
                     "isFetching": false,
                     "name": "Category 1",
                   },
-                  Object {
+                  {
                     "childrenCount": 0,
                     "id": "2",
                     "isFetching": false,
@@ -3289,7 +3289,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -3308,7 +3308,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -3338,7 +3338,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": null,
                           }
                         }
@@ -3432,7 +3432,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           <Translate
                             acceptPlainTextWithPlaceholders={false}
                             className={null}
-                            params={Object {}}
+                            params={{}}
                             role={null}
                             string="common.show_products"
                             transform={null}
@@ -3462,7 +3462,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
 exports[`<NestedCategoryFilterWidget /> should render the widget without a headline and persisted state 2`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -3476,7 +3476,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
     id="widget-id"
     persistedState={null}
     settings={
-      Object {
+      {
         "categoryNumber": "",
         "headline": "",
         "label_1": "Label One",
@@ -3508,14 +3508,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             onSelect={[Function]}
             selectedId="2"
             subcategories={
-              Array [
-                Object {
+              [
+                {
                   "childrenCount": 2,
                   "id": "1",
                   "isFetching": false,
                   "name": "Category 1",
                 },
-                Object {
+                {
                   "childrenCount": 0,
                   "id": "2",
                   "isFetching": false,
@@ -3542,14 +3542,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             </div>
             <CategorySheet
               items={
-                Array [
-                  Object {
+                [
+                  {
                     "childrenCount": 2,
                     "id": "1",
                     "isFetching": false,
                     "name": "Category 1",
                   },
-                  Object {
+                  {
                     "childrenCount": 0,
                     "id": "2",
                     "isFetching": false,
@@ -3570,7 +3570,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               >
                 <Sheet
                   allowClose={true}
-                  animation={Object {}}
+                  animation={{}}
                   backdrop={true}
                   className={null}
                   contentClassName={null}
@@ -3589,7 +3589,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                   >
                     <Drawer
                       animation={
-                        Object {
+                        {
                           "duration": 300,
                           "in": "css-1ldjh2f",
                           "out": "css-171mdnt",
@@ -3608,7 +3608,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
-                          Object {
+                          {
                             "animationDuration": "300ms",
                           }
                         }
@@ -3661,19 +3661,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                         <Icon
                                           className=""
                                           color={null}
-                                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                           size={24}
                                           viewBox="0 0 24 24"
                                         >
                                           <svg
                                             className="css-yys9hb  common__icon"
                                             dangerouslySetInnerHTML={
-                                              Object {
-                                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                               }
                                             }
                                             style={
-                                              Object {
+                                              {
                                                 "fill": null,
                                                 "fontSize": 24,
                                               }
@@ -3730,7 +3730,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               <div
                                 className="css-guf25f ui-shared__progress-bar"
                                 style={
-                                  Object {
+                                  {
                                     "transform": "scale(1, 0)",
                                   }
                                 }
@@ -3780,7 +3780,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 2,
                                             "id": "1",
                                             "isFetching": false,
@@ -3822,7 +3822,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                     >
                                       <SheetItem
                                         item={
-                                          Object {
+                                          {
                                             "childrenCount": 0,
                                             "id": "2",
                                             "isFetching": false,
@@ -3869,7 +3869,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                         in={false}
                         mountOnEnter={true}
                         nodeRef={
-                          Object {
+                          {
                             "current": <div
                               aria-hidden="true"
                               class="css-30873t  common__backdrop"
@@ -3893,7 +3893,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           data-test-id="Backdrop"
                           onClick={[Function]}
                           style={
-                            Object {
+                            {
                               "background": "#000",
                               "opacity": 0,
                               "pointerEvents": "none",
@@ -3997,7 +3997,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             <Translate
                               acceptPlainTextWithPlaceholders={false}
                               className={null}
-                              params={Object {}}
+                              params={{}}
                               role={null}
                               string="common.show_products"
                               transform={null}

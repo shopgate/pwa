@@ -151,10 +151,17 @@ describe('<Widgets />', () => {
   });
 
   it('should schedule a re-render when widget is scheduled', () => {
-    const minutesToNextFullHour = 60 - new Date().getMinutes();
-    const msToNextFullHour = minutesToNextFullHour * 60000;
+  // Use a fixed point in time so "next full hour" is deterministic.
+  // Pick a time that's not exactly on the hour.
+    const base = new Date('2023-01-01T10:37:00.000Z');
+    jest.setSystemTime(base);
+
+    const minutesToNextFullHour = 60 - base.getMinutes(); // 23
+    const msToNextFullHour = minutesToNextFullHour * 60000; // 23 * 60_000
+
     const scheduledFromMs = (Date.now() + msToNextFullHour) - 1;
     const scheduledToMs = Date.now() + minutesToNextFullHour + 1000;
+
     /* eslint-disable camelcase */
     const widgets = [
       {
@@ -175,19 +182,29 @@ describe('<Widgets />', () => {
       },
     ];
     /* eslint-enable camelcase */
+
     const wrapper = createWrapper(widgets);
     const instance = wrapper.find('Widgets').instance();
+    const clearSpy = jest.spyOn(global, 'clearTimeout');
 
     instance.forceUpdate = jest.fn();
+
+    // Before the schedule hits, the image should not render yet.
     expect(wrapper.find(Image).exists()).toBe(false);
+
+    // 1) Advance to the next full hour -> first forced update.
     jest.advanceTimersByTime(msToNextFullHour);
     expect(instance.forceUpdate).toHaveBeenCalledTimes(1);
-    // In real life next timeout should be in 60 minutes.
-    // This test has same Date and fake timers.
-    jest.advanceTimersByTime(msToNextFullHour);
+
+    // 2) The component should schedule the next tick for +60 min.
+    jest.advanceTimersByTime(60 * 60000);
     expect(instance.forceUpdate).toHaveBeenCalledTimes(2);
-    instance.componentWillUnmount();
-    expect(clearTimeout).toHaveBeenCalled();
+
+    // Unmount triggers cleanup of any pending timeouts.
+    wrapper.unmount();
+    expect(clearSpy).toHaveBeenCalled();
+
+    clearSpy.mockRestore();
   });
 
   it('should render only wrapper when widgets array is empty', () => {

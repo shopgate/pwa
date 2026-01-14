@@ -27,7 +27,7 @@ exports[`<CartEmpty /> should render 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="cart.empty"
           transform={null}
@@ -56,7 +56,7 @@ exports[`<CartEmpty /> should render 1`] = `
       <Translate
         acceptPlainTextWithPlaceholders={false}
         className={null}
-        params={Object {}}
+        params={{}}
         role={null}
         string="cart.continue"
         transform={null}

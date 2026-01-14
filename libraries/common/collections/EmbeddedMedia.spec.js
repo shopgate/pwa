@@ -16,7 +16,6 @@ describe('EmbeddedMedia collection', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
-    embeddedMedia.constructor();
   });
 
   describe('.constructor()', () => {

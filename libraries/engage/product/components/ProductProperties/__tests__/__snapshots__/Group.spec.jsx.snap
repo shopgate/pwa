@@ -7,7 +7,7 @@ exports[`<Group /> should render a group title row 1`] = `
   <tr>
     <td
       className={
-        Object {
+        {
           "data-css-1o9kcbq": "",
         }
       }
@@ -15,7 +15,7 @@ exports[`<Group /> should render a group title row 1`] = `
     >
       <span
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "Test",
           }
         }

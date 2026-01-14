@@ -36,7 +36,7 @@ exports[`<TextField /> should focus the input 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -58,7 +58,7 @@ exports[`<TextField /> should focus the input 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -67,7 +67,7 @@ exports[`<TextField /> should focus the input 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -90,7 +90,7 @@ exports[`<TextField /> should focus the input 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -115,7 +115,7 @@ exports[`<TextField /> should focus the input 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -179,7 +179,7 @@ exports[`<TextField /> should focus the input 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -205,7 +205,7 @@ exports[`<TextField /> should focus the input 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -252,7 +252,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -274,7 +274,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -283,7 +283,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -306,7 +306,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -331,7 +331,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -395,7 +395,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -421,7 +421,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -468,7 +468,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -490,7 +490,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -499,7 +499,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -522,7 +522,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -547,7 +547,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -611,7 +611,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -637,7 +637,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -684,7 +684,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -706,7 +706,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -715,7 +715,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -738,7 +738,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -763,7 +763,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -827,7 +827,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -853,7 +853,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -900,7 +900,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -922,7 +922,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -931,7 +931,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -954,7 +954,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -979,7 +979,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -1043,7 +1043,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -1069,7 +1069,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1116,7 +1116,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1138,7 +1138,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1147,7 +1147,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": "ariaError-test-input",
           "aria-invalid": false,
         }
@@ -1170,7 +1170,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": "ariaError-test-input",
             "aria-invalid": false,
           }
@@ -1195,7 +1195,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": "ariaError-test-input",
               "aria-invalid": false,
             }
@@ -1259,7 +1259,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-state-alert, #ff0000)",
             }
           }
@@ -1284,7 +1284,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="Custom validation error"
           transform={null}
@@ -1338,7 +1338,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1360,7 +1360,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1369,7 +1369,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -1392,7 +1392,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -1417,7 +1417,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -1481,7 +1481,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -1507,7 +1507,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1554,7 +1554,7 @@ exports[`<TextField /> should show the error message 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1576,7 +1576,7 @@ exports[`<TextField /> should show the error message 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1585,7 +1585,7 @@ exports[`<TextField /> should show the error message 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": "ariaError-test-input",
           "aria-invalid": true,
         }
@@ -1608,7 +1608,7 @@ exports[`<TextField /> should show the error message 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": "ariaError-test-input",
             "aria-invalid": true,
           }
@@ -1633,7 +1633,7 @@ exports[`<TextField /> should show the error message 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": "ariaError-test-input",
               "aria-invalid": true,
             }
@@ -1697,7 +1697,7 @@ exports[`<TextField /> should show the error message 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-state-alert, #ff0000)",
             }
           }
@@ -1722,7 +1722,7 @@ exports[`<TextField /> should show the error message 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="This is an error here"
           transform={null}
@@ -1776,7 +1776,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="This is the hint text"
           transform={null}
@@ -1805,7 +1805,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1814,7 +1814,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -1837,7 +1837,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -1862,7 +1862,7 @@ exports[`<TextField /> should show the hint text 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -1926,7 +1926,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -1952,7 +1952,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -1999,7 +1999,7 @@ exports[`<TextField /> should show the label 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -2021,7 +2021,7 @@ exports[`<TextField /> should show the label 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string="This is the label"
           transform={null}
@@ -2037,7 +2037,7 @@ exports[`<TextField /> should show the label 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -2060,7 +2060,7 @@ exports[`<TextField /> should show the label 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -2085,7 +2085,7 @@ exports[`<TextField /> should show the label 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -2149,7 +2149,7 @@ exports[`<TextField /> should show the label 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -2175,7 +2175,7 @@ exports[`<TextField /> should show the label 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -2202,13 +2202,13 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   onSanitize={[Function]}
   onValidate={
     [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           "",
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -2236,7 +2236,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -2258,7 +2258,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}
@@ -2267,7 +2267,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     </Label>
     <FormElement
       attributes={
-        Object {
+        {
           "aria-describedby": null,
           "aria-invalid": false,
         }
@@ -2290,7 +2290,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     >
       <_default
         attributes={
-          Object {
+          {
             "aria-describedby": null,
             "aria-invalid": false,
           }
@@ -2315,7 +2315,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       >
         <SimpleInput
           attributes={
-            Object {
+            {
               "aria-describedby": null,
               "aria-invalid": false,
             }
@@ -2379,7 +2379,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         <div
           className="css-1tpmuef"
           style={
-            Object {
+            {
               "borderBottomColor": "var(--color-primary, #fa5400)",
               "transform": "scale3d(0,1,1)",
             }
@@ -2405,7 +2405,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         <Translate
           acceptPlainTextWithPlaceholders={false}
           className={null}
-          params={Object {}}
+          params={{}}
           role={null}
           string=""
           transform={null}

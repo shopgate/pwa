@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > locations > actions-creators receiveProductLocations 1`] = `
-Object {
-  "filters": Object {
+{
+  "filters": {
     "productCode": "abc123",
   },
-  "locations": Array [
-    Object {
+  "locations": [
+    {
       "code": "LOC1",
     },
-    Object {
+    {
       "code": "LOC2",
     },
   ],

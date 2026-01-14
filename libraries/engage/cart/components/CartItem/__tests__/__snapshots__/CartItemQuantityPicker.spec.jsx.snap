@@ -154,13 +154,13 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
   hasCatchWeight={false}
   onChange={
     [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           123,
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
@@ -218,20 +218,20 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
   onChange={[Function]}
   onToggleEditMode={
     [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           true,
         ],
-        Array [
+        [
           false,
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
-        Object {
+        {
           "type": "return",
           "value": undefined,
         },
@@ -288,13 +288,13 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
   onChange={[Function]}
   onToggleEditMode={
     [MockFunction] {
-      "calls": Array [
-        Array [
+      "calls": [
+        [
           true,
         ],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },

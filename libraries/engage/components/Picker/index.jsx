@@ -232,7 +232,7 @@ class Picker extends Component {
         aria-haspopup
       >
         {React.createElement(this.props.buttonComponent, buttonProps)}
-        <ConnectedReactPortal onClose={() => this.toggleOpenState(false)} isOpened>
+        <ConnectedReactPortal isOpened>
           {React.createElement(
             this.props.modalComponent,
             modalProps,

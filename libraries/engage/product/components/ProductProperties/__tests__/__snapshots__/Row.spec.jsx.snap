@@ -16,14 +16,14 @@ exports[`<Row /> should render as expected 1`] = `
     <td
       aria-hidden={true}
       className={
-        Object {
+        {
           "data-css-fl9ufm": "",
         }
       }
     >
       <span
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "TestLabel",
           }
         }
@@ -32,7 +32,7 @@ exports[`<Row /> should render as expected 1`] = `
     <td
       aria-hidden={true}
       className={
-        Object {
+        {
           "data-css-fl9ufm": "",
         }
       }
@@ -40,7 +40,7 @@ exports[`<Row /> should render as expected 1`] = `
     >
       <span
         dangerouslySetInnerHTML={
-          Object {
+          {
             "__html": "TestValue",
           }
         }

@@ -4,7 +4,7 @@ exports[`<Widget /> should not render when the \`type\` prop is invalid 1`] = `
 <Widget
   component={null}
   config={
-    Object {
+    {
       "col": 1,
       "height": 6,
       "row": 1,
@@ -19,7 +19,7 @@ exports[`<Widget /> should render an image widget 1`] = `
 <Widget
   component={[Function]}
   config={
-    Object {
+    {
       "col": 1,
       "height": 6,
       "row": 1,
@@ -43,7 +43,7 @@ exports[`<Widget /> should render an image widget 1`] = `
         >
           <MyComponent
             ratio={
-              Array [
+              [
                 12,
                 6,
               ]
@@ -63,7 +63,7 @@ exports[`<Widget /> should render an image widget with offset 1`] = `
   cellSize={100}
   component={[Function]}
   config={
-    Object {
+    {
       "col": 1,
       "height": 6,
       "row": 1,
@@ -87,7 +87,7 @@ exports[`<Widget /> should render an image widget with offset 1`] = `
         >
           <MyComponent
             ratio={
-              Array [
+              [
                 6,
                 6,
               ]

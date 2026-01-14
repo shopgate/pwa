@@ -3,7 +3,7 @@
 exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -19,14 +19,14 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
     <Wrapper
       dispatch={[Function]}
       images={
-        Array [
+        [
           "foo",
           "bar",
         ]
       }
       initialSlide={3}
       product={
-        Object {
+        {
           "id": 123,
         }
       }
@@ -34,14 +34,14 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
       <SurroundPortals
         portalName="product.gallery.images"
         portalProps={
-          Object {
+          {
             "dispatch": [Function],
-            "images": Array [
+            "images": [
               "foo",
               "bar",
             ],
             "initialSlide": 3,
-            "product": Object {
+            "product": {
               "id": 123,
             },
           }
@@ -50,14 +50,14 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
         <ProductGalleryImages
           dispatch={[Function]}
           images={
-            Array [
+            [
               "foo",
               "bar",
             ]
           }
           initialSlide={3}
           product={
-            Object {
+            {
               "id": 123,
             }
           }
@@ -68,7 +68,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
             <Swiper
               className="css-2ypihg"
               classNames={
-                Object {
+                {
                   "container": "css-sa13d4",
                   "indicator": "css-vsp2nx",
                 }
@@ -78,7 +78,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
               initialSlide={3}
               loop={true}
               zoom={
-                Object {
+                {
                   "enabled": true,
                   "maxRatio": 4,
                   "minRation": 1,
@@ -97,12 +97,12 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                     backgroundColor="transparent"
                     classNameImg="css-4kgshc"
                     resolutions={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 1024,
                           "width": 1024,
                         },
-                        Object {
+                        {
                           "height": 2048,
                           "width": 2048,
                         },
@@ -127,12 +127,12 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                     backgroundColor="transparent"
                     classNameImg="css-4kgshc"
                     resolutions={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 1024,
                           "width": 1024,
                         },
-                        Object {
+                        {
                           "height": 2048,
                           "width": 2048,
                         },
@@ -157,7 +157,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
 exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -173,14 +173,14 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
     <Wrapper
       dispatch={[Function]}
       images={
-        Array [
+        [
           "foo",
           "bar",
         ]
       }
       initialSlide={0}
       product={
-        Object {
+        {
           "id": 123,
         }
       }
@@ -188,14 +188,14 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
       <SurroundPortals
         portalName="product.gallery.images"
         portalProps={
-          Object {
+          {
             "dispatch": [Function],
-            "images": Array [
+            "images": [
               "foo",
               "bar",
             ],
             "initialSlide": 0,
-            "product": Object {
+            "product": {
               "id": 123,
             },
           }
@@ -204,14 +204,14 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
         <ProductGalleryImages
           dispatch={[Function]}
           images={
-            Array [
+            [
               "foo",
               "bar",
             ]
           }
           initialSlide={0}
           product={
-            Object {
+            {
               "id": 123,
             }
           }
@@ -222,7 +222,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
             <Swiper
               className="css-2ypihg"
               classNames={
-                Object {
+                {
                   "container": "css-sa13d4",
                   "indicator": "css-vsp2nx",
                 }
@@ -232,7 +232,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
               initialSlide={0}
               loop={true}
               zoom={
-                Object {
+                {
                   "enabled": true,
                   "maxRatio": 4,
                   "minRation": 1,
@@ -251,12 +251,12 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                     backgroundColor="transparent"
                     classNameImg="css-4kgshc"
                     resolutions={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 1024,
                           "width": 1024,
                         },
-                        Object {
+                        {
                           "height": 2048,
                           "width": 2048,
                         },
@@ -281,12 +281,12 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                     backgroundColor="transparent"
                     classNameImg="css-4kgshc"
                     resolutions={
-                      Array [
-                        Object {
+                      [
+                        {
                           "height": 1024,
                           "width": 1024,
                         },
-                        Object {
+                        {
                           "height": 2048,
                           "width": 2048,
                         },

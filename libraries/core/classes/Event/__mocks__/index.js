@@ -3,7 +3,7 @@
  * Due to the structure of the original module it's not possible to spy on method calls, since
  * the spies do not call the original methods.
  */
-const event = require.requireActual('../index').default;
+const event = jest.requireActual('../index').default;
 
 const mockedEvent = jest.genMockFromModule('../index');
 

@@ -199,21 +199,28 @@ describe('<Builder />', () => {
     it('should take the updated state from action listener', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
-      const builder = new Builder({
-        validationErrors: [],
-        config: {
-          fields: {
-            foo: {
-              label: 'foo',
-              type: 'text',
-              visible: true,
-              default: 'default',
+      const ref = React.createRef();
+      mount((
+        <Builder
+          ref={ref}
+          validationErrors={[]}
+          config={{
+            fields: {
+              foo: {
+                label: 'foo',
+                type: 'text',
+                visible: true,
+                default: 'default',
+              },
             },
-          },
-        },
-        handleUpdate,
-      });
-      builder.actionListener.notify = () => ({
+          }}
+          name="foo"
+          id="foo"
+          handleUpdate={handleUpdate}
+        />
+      ));
+
+      ref.current.actionListener.notify = () => ({
         formData: {
           foo: 'bar',
         },
@@ -224,7 +231,7 @@ describe('<Builder />', () => {
       });
 
       // Trigger update
-      builder.elementChangeHandler('foo', 'bar');
+      ref.current.elementChangeHandler('foo', 'bar');
 
       // Test
       expect(handleUpdate).toHaveBeenCalledWith({ foo: 'bar' }, false, []);
@@ -233,23 +240,29 @@ describe('<Builder />', () => {
     it('should forward validation errors from form actions', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
-      const builder = new Builder({
-        validationErrors: [],
-        config: {
-          fields: {
-            foo: {
-              label: 'foo',
-              type: 'text',
-              visible: true,
-              default: 'default',
+      const ref = React.createRef();
+      mount((
+        <Builder
+          ref={ref}
+          validationErrors={[]}
+          config={{
+            fields: {
+              foo: {
+                label: 'foo',
+                type: 'text',
+                visible: true,
+                default: 'default',
+              },
             },
-          },
-        },
-        handleUpdate,
-      });
+          }}
+          name="foo"
+          id="foo"
+          handleUpdate={handleUpdate}
+        />
+      ));
 
       // This mock handler adds a validation error for the field 'foo'
-      builder.actionListener.notify = () => ({
+      ref.current.actionListener.notify = () => ({
         formData: {
           foo: 'bar',
         },
@@ -262,7 +275,7 @@ describe('<Builder />', () => {
       });
 
       // Trigger update
-      builder.elementChangeHandler('foo', 'bar');
+      ref.current.elementChangeHandler('foo', 'bar');
 
       // Test
       expect(handleUpdate).toHaveBeenCalledWith(

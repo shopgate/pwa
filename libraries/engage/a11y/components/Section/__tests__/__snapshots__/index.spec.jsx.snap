@@ -4,7 +4,7 @@ exports[`<Section /> should render hidden when no children rendered 1`] = `
 <Section
   className=""
   title="my.headline"
-  titleParams={Object {}}
+  titleParams={{}}
 >
   <section
     className=""
@@ -17,7 +17,7 @@ exports[`<Section /> should render with a label 1`] = `
   className=""
   title="my.headline"
   titleParams={
-    Object {
+    {
       "some": "params",
     }
   }
@@ -31,7 +31,7 @@ exports[`<Section /> should render with a label 1`] = `
     >
       <span
         className={
-          Object {
+          {
             "data-css-10i921h": "",
           }
         }
@@ -41,7 +41,7 @@ exports[`<Section /> should render with a label 1`] = `
         >
           <Translate
             params={
-              Object {
+              {
                 "some": "params",
               }
             }

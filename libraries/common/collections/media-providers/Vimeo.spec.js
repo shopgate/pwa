@@ -1,4 +1,5 @@
-import { JSDOM } from 'jsdom';
+/** @jest-environment jsdom */
+
 import { Vimeo } from './index';
 
 const videos = [
@@ -16,23 +17,25 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
 }));
 
 /**
- * Creates a DOM container with iframes.
- * @param {Array} srcs A list of video URLs.
- * @return {Object}
+ * Creates a DOM container (Document) with iframes.
+ * @param {string[]} srcs A list of video URLs.
+ * @return {Document}
  */
 const createContainer = (srcs) => {
-  const html = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
-  return new JSDOM(html).window.document;
+  const doc = document.implementation.createHTMLDocument('container');
+  doc.body.innerHTML = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+  return doc;
 };
 
 /**
  * Creates a mocked document with iframes.
- * @param {Array} srcs A list of video URLs.
- * @return {Object}
+ * @param {string[]} srcs A list of video URLs.
+ * @return {Document}
  */
 const createMockedDocument = (srcs) => {
-  const content = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
-  return new JSDOM(`<body>${content}</body>`).window.document;
+  const doc = document.implementation.createHTMLDocument('mocked');
+  doc.body.innerHTML = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+  return doc;
 };
 
 describe('Vimeo media provider', () => {
@@ -48,13 +51,13 @@ describe('Vimeo media provider', () => {
       window.Vimeo = {
         Player: class MockPlayer {
           /** */
-          pause = () => { pauseMock(); }
+          pause = () => {
+            pauseMock();
+          };
         },
       };
-
       return;
     }
-
     delete window.Vimeo;
   };
 
@@ -64,8 +67,7 @@ describe('Vimeo media provider', () => {
    */
   const createInstance = (addPlayer = true) => {
     updatePlayer(addPlayer);
-
-    document.getElementsByTagName('html')[0].innerHTML = '';
+    document.documentElement.innerHTML = '<head></head><body></body>';
     instance = new Vimeo();
     instance.responsify = jest.fn();
   };
@@ -118,8 +120,9 @@ describe('Vimeo media provider', () => {
     });
 
     it('should not add a container when it does not contain a video', () => {
-      const container = new JSDOM('<p>Some HTML content</p>').window.document;
-      instance.add(container);
+      const doc = document.implementation.createHTMLDocument('plain');
+      doc.body.innerHTML = '<p>Some HTML content</p>';
+      instance.add(doc);
 
       expect(instance.containers.size).toBe(0);
     });
@@ -190,21 +193,25 @@ describe('Vimeo media provider', () => {
   <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
       `;
-      const container = new JSDOM(embeddedCode);
-      instance.handleCookieConsent(container.window.document);
-      expect(container.serialize()).toMatchSnapshot();
-      expect(container.window.document.querySelectorAll('script')).toHaveLength(0);
+
+      const doc = document.implementation.createHTMLDocument('embed');
+      doc.documentElement.innerHTML = embeddedCode.trim();
+
+      instance.handleCookieConsent(doc);
+
+      expect(doc.querySelectorAll('script')).toHaveLength(0);
+      expect(doc.body.innerHTML).toMatchSnapshot();
     });
   });
 
   describe('.applyIframeOptimizations()', () => {
     it('should optimize multiple containers', () => {
-      const document = createMockedDocument(videos);
+      const doc = createMockedDocument(videos);
 
-      const iframesOne = document.querySelectorAll('iframe');
-      const iframesTwo = document.querySelectorAll('iframe');
+      const iframesOne = doc.querySelectorAll('iframe');
+      const iframesTwo = doc.querySelectorAll('iframe');
 
-      instance.applyIframeOptimizations(document);
+      instance.applyIframeOptimizations(doc);
 
       expect(instance.responsify).toHaveBeenCalledWith(iframesOne[0]);
       expect(instance.responsify).toHaveBeenCalledWith(iframesTwo[0]);

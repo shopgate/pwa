@@ -7,7 +7,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   onClick={[Function]}
   searchPhrase=""
   suggestions={
-    Array [
+    [
       "foo",
       "foo bar",
       "foo bar buz",
@@ -19,11 +19,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   <SurroundPortals
     portalName="search.suggestions"
     portalProps={
-      Object {
+      {
         "bottomHeight": 10,
         "onClick": [Function],
         "searchPhrase": "",
-        "suggestions": Array [
+        "suggestions": [
           "foo",
           "foo bar",
           "foo bar buz",
@@ -40,7 +40,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         key="foo"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo",
@@ -57,7 +57,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo",
               }
             }
@@ -70,7 +70,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         key="foo bar"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar",
@@ -87,7 +87,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar",
               }
             }
@@ -100,7 +100,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         key="foo bar buz"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar buz",
@@ -117,7 +117,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar buz",
               }
             }
@@ -130,7 +130,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         key="foo bar buz quz"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar buz quz",
@@ -147,7 +147,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -168,7 +168,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   onClick={[Function]}
   searchPhrase=""
   suggestions={
-    Array [
+    [
       "foo bar buz quz",
       "foo bar buz",
       "foo bar",
@@ -180,11 +180,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   <SurroundPortals
     portalName="search.suggestions"
     portalProps={
-      Object {
+      {
         "bottomHeight": 10,
         "onClick": [Function],
         "searchPhrase": "",
-        "suggestions": Array [
+        "suggestions": [
           "foo",
           "foo bar",
           "foo bar buz",
@@ -201,7 +201,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         key="foo"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo",
@@ -218,7 +218,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo",
               }
             }
@@ -231,7 +231,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         key="foo bar"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar",
@@ -248,7 +248,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar",
               }
             }
@@ -261,7 +261,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         key="foo bar buz"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar buz",
@@ -278,7 +278,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar buz",
               }
             }
@@ -291,7 +291,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         key="foo bar buz quz"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar buz quz",
@@ -308,7 +308,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -329,7 +329,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   onClick={[Function]}
   searchPhrase=""
   suggestions={
-    Array [
+    [
       "foo bar buz quz",
       "foo bar buz",
       "foo bar",
@@ -341,11 +341,11 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   <SurroundPortals
     portalName="search.suggestions"
     portalProps={
-      Object {
+      {
         "bottomHeight": 10,
         "onClick": [Function],
         "searchPhrase": "",
-        "suggestions": Array [
+        "suggestions": [
           "foo bar buz quz",
           "foo bar buz",
           "foo bar",
@@ -362,7 +362,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         key="foo bar buz quz"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar buz quz",
@@ -379,7 +379,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar buz quz",
               }
             }
@@ -392,7 +392,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         key="foo bar buz"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar buz",
@@ -409,7 +409,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar buz",
               }
             }
@@ -422,7 +422,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         key="foo bar"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo bar",
@@ -439,7 +439,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo bar",
               }
             }
@@ -452,7 +452,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         key="foo"
         portalName="search.suggestion-item"
         portalProps={
-          Object {
+          {
             "className": "css-crua9x",
             "onClick": [Function],
             "suggestion": "foo",
@@ -469,7 +469,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
           <SurroundPortals
             portalName="search.suggestion-item-content"
             portalProps={
-              Object {
+              {
                 "suggestion": "foo",
               }
             }
@@ -486,7 +486,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
 exports[`<SuggestionList /> should render a list of suggestions 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -507,7 +507,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
       onClick={[Function]}
       searchPhrase=""
       suggestions={
-        Array [
+        [
           "foo",
           "foo bar",
           "foo bar buz",
@@ -519,11 +519,11 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
       <SurroundPortals
         portalName="search.suggestions"
         portalProps={
-          Object {
+          {
             "bottomHeight": 10,
             "onClick": [Function],
             "searchPhrase": "",
-            "suggestions": Array [
+            "suggestions": [
               "foo",
               "foo bar",
               "foo bar buz",
@@ -540,7 +540,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             key="foo"
             portalName="search.suggestion-item"
             portalProps={
-              Object {
+              {
                 "className": "css-crua9x",
                 "onClick": [Function],
                 "suggestion": "foo",
@@ -557,7 +557,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               <SurroundPortals
                 portalName="search.suggestion-item-content"
                 portalProps={
-                  Object {
+                  {
                     "suggestion": "foo",
                   }
                 }
@@ -570,7 +570,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             key="foo bar"
             portalName="search.suggestion-item"
             portalProps={
-              Object {
+              {
                 "className": "css-crua9x",
                 "onClick": [Function],
                 "suggestion": "foo bar",
@@ -587,7 +587,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               <SurroundPortals
                 portalName="search.suggestion-item-content"
                 portalProps={
-                  Object {
+                  {
                     "suggestion": "foo bar",
                   }
                 }
@@ -600,7 +600,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             key="foo bar buz"
             portalName="search.suggestion-item"
             portalProps={
-              Object {
+              {
                 "className": "css-crua9x",
                 "onClick": [Function],
                 "suggestion": "foo bar buz",
@@ -617,7 +617,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               <SurroundPortals
                 portalName="search.suggestion-item-content"
                 portalProps={
-                  Object {
+                  {
                     "suggestion": "foo bar buz",
                   }
                 }
@@ -630,7 +630,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             key="foo bar buz quz"
             portalName="search.suggestion-item"
             portalProps={
-              Object {
+              {
                 "className": "css-crua9x",
                 "onClick": [Function],
                 "suggestion": "foo bar buz quz",
@@ -647,7 +647,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
               <SurroundPortals
                 portalName="search.suggestion-item-content"
                 portalProps={
-                  Object {
+                  {
                     "suggestion": "foo bar buz quz",
                   }
                 }
@@ -675,7 +675,7 @@ exports[`<SuggestionList /> should render portal without suggestions 1`] = `
   <SurroundPortals
     portalName="search.suggestions"
     portalProps={
-      Object {
+      {
         "bottomHeight": 0,
         "onClick": [Function],
         "searchPhrase": "",

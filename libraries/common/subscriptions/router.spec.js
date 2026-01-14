@@ -61,7 +61,7 @@ jest.mock('../actions/router', () => {
   };
 });
 jest.mock('../selectors/router', () => ({
-  ...require.requireActual('../selectors/router'),
+  ...jest.requireActual('../selectors/router'),
   getRouterStackIndex: jest.fn().mockReturnValue(0),
 }));
 jest.mock('../selectors/client', () => ({
@@ -168,7 +168,7 @@ describe('Router subscriptions', () => {
 
     beforeEach(() => {
       [[stream, callback]] = subscribe.mock.calls;
-      redirects.constructor();
+      redirects.redirects.clear();
     });
 
     it('should setup as expected', () => {

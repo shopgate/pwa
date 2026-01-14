@@ -11,7 +11,7 @@ jest.mock('@shopgate/engage/components');
 const createComponent = (mockedShow) => {
   jest.resetModules();
   jest.mock('@shopgate/pwa-common-commerce/market/helpers/showReturnPolicy', () => mockedShow);
-  const ReturnPolicy = require.requireActual('./index').default;
+  const ReturnPolicy = jest.requireActual('./index').default;
 
   return shallow(<ReturnPolicy />);
 };
