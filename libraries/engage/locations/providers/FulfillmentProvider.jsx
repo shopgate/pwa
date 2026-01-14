@@ -316,7 +316,7 @@ const FulfillmentProvider = (props) => {
 
     handleClose(location, product.id);
   }, [
-    activeFulfillmentSlot.id,
+    activeFulfillmentSlot?.id,
     activeFulfillmentSlotLocationCode,
     cartItem,
     fulfillmentMethod,
@@ -463,7 +463,7 @@ const FulfillmentProvider = (props) => {
 
       handleClose(null, item.product.id);
     }
-  }, [handleClose, product.id, updateProductsInCart]);
+  }, [handleClose, product?.id, updateProductsInCart]);
 
   const handleSelectStoreFinderLocation = useCallback((location) => {
     setStoreFinderLocation(location);

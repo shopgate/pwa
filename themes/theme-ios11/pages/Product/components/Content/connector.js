@@ -4,6 +4,7 @@ import {
   getVariantId,
   getProductCurrency,
 } from '@shopgate/pwa-common-commerce/product';
+import { getProductIsFetching } from '@shopgate/engage/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import { getProductFulfillmentMethods } from '@shopgate/engage/locations';
 
@@ -17,6 +18,7 @@ function makeMapStateToProps() {
    * @returns {Object}
  */
   return (state, props) => ({
+    productIsFetching: getProductIsFetching(state, props),
     baseProductId: getBaseProductId(state, props),
     variantId: getVariantId(state, props),
     currency: getProductCurrency(state, props),
