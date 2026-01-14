@@ -1,3 +1,4 @@
+/* eslint-disable no-console, class-methods-use-this, eslint-comments/disable-enable-pair */
 import KeyFigure, {
   KEY_FIGURE_MODE_ADD,
   KEY_FIGURE_METHOD_TIME,
@@ -152,7 +153,11 @@ class BenchmarkController {
         action,
         render: measure[action][current].render + acc.render,
         renderTime: measure[action][current].renderTime + acc.renderTime,
-      }), { action, render: 0, renderTime: 0 }));
+      }), {
+        action,
+        render: 0,
+        renderTime: 0,
+      }));
 
     const sortedAction = this.sortMeasure(actions, a => a.render, b => b.render);
 
@@ -194,7 +199,7 @@ class BenchmarkController {
         }));
 
     return result;
-  }
+  };
 
   /**
    * Prints the most rendering components.

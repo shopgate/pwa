@@ -11,6 +11,7 @@ const { themes, extensions } = repos;
  * @param {string} url The repository URL.
  */
 async function addRemote(name, url) {
+  // eslint-disable-next-line no-useless-catch
   try {
     await exec(`git remote add ${name} ${url}`);
     logger.log(`Added remote to ${name}`);

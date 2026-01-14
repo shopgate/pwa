@@ -16,11 +16,13 @@ module.exports = (on, config) => {
   }
 
   // Build a new config object.
-  const newConfig = Object.assign({}, config, {
-    env: Object.assign({}, config.env, {
+  const newConfig = {
+    ...config,
+    env: {
+      ...config.env,
       ENVIRONMENT: 'staging',
-    }),
-  });
+    },
+  };
 
   // Set the base URL.
   newConfig.baseUrl = `http://${ip}:${port}`;

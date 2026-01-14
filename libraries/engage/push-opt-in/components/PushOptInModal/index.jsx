@@ -44,13 +44,19 @@ const PushOptInModal = ({
 
   // Button event handlers are throttled to prevent multiple clicks
   const handleAllowPushOptIn = useCallback(
-    throttle(allowPushOptIn, 1000, { leading: true, trailing: false }),
-    []
+    throttle(() => allowPushOptIn(), 1000, {
+      leading: true,
+      trailing: false,
+    }),
+    [allowPushOptIn]
   );
 
   const handleDenyPushOptIn = useCallback(
-    throttle(denyPushOptIn, 1000, { leading: true, trailing: false }),
-    []
+    throttle(() => denyPushOptIn(), 1000, {
+      leading: true,
+      trailing: false,
+    }),
+    [denyPushOptIn]
   );
 
   if (!isPushOptInModalVisible) {

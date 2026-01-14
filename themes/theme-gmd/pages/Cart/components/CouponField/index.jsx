@@ -33,8 +33,14 @@ class CouponField extends PureComponent {
     value: '',
   };
 
-  state = {
-    isFocused: false,
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      isFocused: false,
+    };
   }
 
   /**
@@ -59,7 +65,7 @@ class CouponField extends PureComponent {
    */
   setInputRef = (input) => {
     this.inputElement = input;
-  }
+  };
 
   /**
    * Adds a coupon to the cart.

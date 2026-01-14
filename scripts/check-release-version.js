@@ -9,6 +9,7 @@ if (!v || v.length === 0) {
   logger.error('ERROR: No version specified!');
   process.exit(1);
 } else {
+  // eslint-disable-next-line prefer-regex-literals
   const regex = new RegExp(
     /^v{0,1}(0|[1-9]+[0-9]*)\.(0|[1-9]+[0-9]*)\.(0|[1-9]+[0-9]*)(-(alpha|beta|rc)\.[1-9]+[0-9]*){0,1}(\+\w+\.\d+)?$/,
     'g'

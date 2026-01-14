@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { i18n } from '@shopgate/engage/core';
+import { Card } from '@shopgate/engage/components';
 import { getTranslatedOrderStatus } from '../../helpers';
 import {
   tableHeader, tableRow,
 } from './OrderHistoryTable.style';
-import { Card } from '../../../components';
+// import { Card } from '../../../components';
 
 /**
  * The Order History Table Row component

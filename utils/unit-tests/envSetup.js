@@ -65,7 +65,10 @@ global.IntersectionObserver = jest.fn((callback, options) => ({
   }),
   takeRecords: jest.fn(() => []),
   trigger: (entries) => {
-    callback(entries, { disconnect: jest.fn(), unobserve: jest.fn() });
+    callback(entries, {
+      disconnect: jest.fn(),
+      unobserve: jest.fn(),
+    });
   },
 }));
 
