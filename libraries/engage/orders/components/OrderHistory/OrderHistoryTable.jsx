@@ -7,7 +7,6 @@ import { getTranslatedOrderStatus } from '../../helpers';
 import {
   tableHeader, tableRow,
 } from './OrderHistoryTable.style';
-// import { Card } from '../../../components';
 
 /**
  * The Order History Table Row component
