@@ -1,5 +1,5 @@
 {
-  "version": "7.29.6",
+  "version": "7.29.9",
   "id": "@shopgate/theme-gmd",
   "configuration": {
     "appId": {
@@ -471,7 +471,7 @@
           {
             "pattern": "/cart",
             "settings": {
-              "cartItemsDisplay": "card"
+              "cartItemsDisplay": "line"
             }
           }
         ]

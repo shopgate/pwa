@@ -1,0 +1,2070 @@
+[
+  {
+    "id": "imageWidget",
+    "name": {
+      "en-us": "Image",
+      "de-de": "Bild"
+    },
+    "description": {
+      "en-us": "Display a single image with an optional link.",
+      "de-de": "Zeige ein einzelnes Bild mit optionalem Link."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "image",
+        "label": {
+          "en-us": "Image",
+          "de-de": "Bild"
+        },
+        "required": true,
+        "type": "image",
+        "localizable": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "useImageWide",
+        "label": {
+          "en-us": "Different image for wide screens",
+          "de-de": "Anderes Bild für breite Bildschirme"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "imageWide",
+        "label": {
+          "en-us": "Image wide",
+          "de-de": "Bild für breite Bildschirme"
+        },
+        "required": true,
+        "type": "image",
+        "localizable": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "useImageWide": true
+        },
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "link",
+        "label": {
+          "en-us": "Link",
+          "de-de": "Link"
+        },
+        "required": false,
+        "type": "link",
+        "localizable": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "parallax",
+        "label": {
+          "en-us": "Parallax Scrolling",
+          "de-de": "Parallax-Scrolling"
+        },
+        "required": false,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "Enables a parallax scrolling effect where the image moves at a different speed than the page itself, creating a sense of depth.",
+          "de-de": "Aktiviert einen Parallax-Scrolling-Effekt, bei dem sich das Bild mit einer anderen Geschwindigkeit als die Seite selbst bewegt und so ein Gefühl von Tiefe entsteht."
+        },
+        "defaultValue": false
+      },
+      {
+        "code": "borderRadius",
+        "label": {
+          "en-us": "Border Radius",
+          "de-de": "Abrundung der Ecken"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "default",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "default",
+              "label": {
+                "en-us": "Default",
+                "de-de": "Standard"
+              }
+            },
+            {
+              "value": "none",
+              "label": {
+                "en-us": "None",
+                "de-de": "Kein"
+              }
+            },
+            {
+              "value": "rounded",
+              "label": {
+                "en-us": "Rounded",
+                "de-de": "Abgerundet"
+              }
+            },
+            {
+              "value": "custom",
+              "label": {
+                "en-us": "Custom",
+                "de-de": "Benutzerdefiniert"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "borderRadiusCustom",
+        "label": {
+          "en-us": "Custom Border Radius",
+          "de-de": "Benutzerdefinierte Abrundung"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "borderRadius": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 50,
+          "maxNumberOfDecimals": 0
+        },
+        "defaultValue": 16
+      }
+    ]
+  },
+  {
+    "id": "imageSliderWidget",
+    "name": {
+      "en-us": "Image Slider",
+      "de-de": "Bilder-Slider"
+    },
+    "description": {
+      "en-us": "Multiple images in an automatic sliding carousel.",
+      "de-de": "Mehrere Bilder in einem automatischen Karussell."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "images",
+        "label": {
+          "en-us": "Images",
+          "de-de": "Bilder"
+        },
+        "type": "arrayOf",
+        "required": true,
+        "typeSpecificSettings": {
+          "arrayOfWidgetConfigInputGroup": [
+            {
+              "code": "image",
+              "label": {
+                "en-us": "",
+                "de-de": ""
+              },
+              "required": true,
+              "type": "image",
+              "localizable": true,
+              "description": {
+                "en-us": "",
+                "de-de": ""
+              }
+            },
+            {
+              "code": "link",
+              "label": {
+                "en-us": "Link",
+                "de-de": "Link"
+              },
+              "required": false,
+              "type": "link",
+              "localizable": true,
+              "description": {
+                "en-us": "",
+                "de-de": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "slideAutomatic",
+        "label": {
+          "en-us": "Slide automatically",
+          "de-de": "Automatisch wechseln"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": true
+      },
+      {
+        "code": "sliderSpeed",
+        "label": {
+          "en-us": "Slider speed (in milliseconds)",
+          "de-de": "Wechsel-Geschwindigkeit (in Millisekunden)"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "slideAutomatic": true
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1000,
+          "validationMaxValue": 60000
+        },
+        "defaultValue": 7000
+      },
+      {
+        "code": "endlessSlider",
+        "label": {
+          "en-us": "Endless slider",
+          "de-de": "Endlos-Slider"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": true
+      },
+      {
+        "code": "paginationStyle",
+        "label": {
+          "en-us": "Pagination style",
+          "de-de": "Navigationsstil"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "default",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "off",
+              "label": {
+                "en-us": "Off",
+                "de-de": "Aus"
+              }
+            },
+            {
+              "value": "default",
+              "label": {
+                "en-us": "Default",
+                "de-de": "Standard"
+              }
+            },
+            {
+              "value": "bullets",
+              "label": {
+                "en-us": "Bullets",
+                "de-de": "Punkte"
+              }
+            },
+            {
+              "value": "progressbar",
+              "label": {
+                "en-us": "Progress bar",
+                "de-de": "Fortschrittsbalken"
+              }
+            },
+            {
+              "value": "fraction",
+              "label": {
+                "en-us": "Fraction",
+                "de-de": "Zähler"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "imageSpacing",
+        "label": {
+          "en-us": "Image spacing",
+          "de-de": "Bildabstand"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "defaultValue": 0,
+        "description": {
+          "en-us": "Controls the spacing between images inside the widget.",
+          "de-de": "Legt den Abstand zwischen den Bildern innerhalb des Widgets fest."
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 0,
+          "validationMaxValue": 99
+        }
+      },
+      {
+        "code": "slidesPerView",
+        "label": {
+          "en-us": "Slides per View",
+          "de-de": "Bilder pro Ansicht"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "default",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "default",
+              "label": {
+                "en-us": "Default",
+                "de-de": "Standard"
+              }
+            },
+            {
+              "value": "dense",
+              "label": {
+                "en-us": "More images",
+                "de-de": "Mehr Bilder"
+              }
+            },
+            {
+              "value": "custom",
+              "label": {
+                "en-us": "Custom",
+                "de-de": "Benutzerdefiniert"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "slidesPerViewCustomSmall",
+        "label": {
+          "en-us": "Slides per view (small screen width)",
+          "de-de": "Slides per view (kleine Bildschirmgrößen)"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "slidesPerView": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 10,
+          "maxNumberOfDecimals": 2
+        },
+        "defaultValue": 1.4
+      },
+      {
+        "code": "slidesPerViewCustomMedium",
+        "label": {
+          "en-us": "Slides per view (medium screen width)",
+          "de-de": "Slides per view (mittlere Bildschirmgrößen)"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "slidesPerView": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 10,
+          "maxNumberOfDecimals": 2
+        },
+        "defaultValue": 2.5
+      },
+      {
+        "code": "slidesPerViewCustomLarge",
+        "label": {
+          "en-us": "Slides per view (large screen width)",
+          "de-de": "Slides per view (große Bildschirmgrößen)"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "slidesPerView": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 10,
+          "maxNumberOfDecimals": 2
+        },
+        "defaultValue": 3.8
+      },
+      {
+        "code": "borderRadius",
+        "label": {
+          "en-us": "Border Radius",
+          "de-de": "Abrundung der Ecken"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "default",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "default",
+              "label": {
+                "en-us": "Default",
+                "de-de": "Standard"
+              }
+            },
+            {
+              "value": "none",
+              "label": {
+                "en-us": "None",
+                "de-de": "Kein"
+              }
+            },
+            {
+              "value": "rounded",
+              "label": {
+                "en-us": "Rounded",
+                "de-de": "Abgerundet"
+              }
+            },
+            {
+              "value": "custom",
+              "label": {
+                "en-us": "Custom",
+                "de-de": "Benutzerdefiniert"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "borderRadiusCustom",
+        "label": {
+          "en-us": "Custom Border Radius",
+          "de-de": "Benutzerdefinierte Abrundung"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "borderRadius": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 50,
+          "maxNumberOfDecimals": 0
+        },
+        "defaultValue": 16
+      }
+    ]
+  },
+  {
+    "id": "imageRowWidget",
+    "name": {
+      "en-us": "Image Row/Grid",
+      "de-de": "Bilder-Zeile/Raster"
+    },
+    "description": {
+      "en-us": "Use this widget to display multiple images next to each other in one row.",
+      "de-de": "Mehrere Bilder nebeneinander anzeigen."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "images",
+        "label": {
+          "en-us": "Images",
+          "de-de": "Bilder"
+        },
+        "type": "arrayOf",
+        "required": true,
+        "typeSpecificSettings": {
+          "validationMaxEntries": 50,
+          "arrayOfWidgetConfigInputGroup": [
+            {
+              "code": "image",
+              "label": {
+                "en-us": "",
+                "de-de": ""
+              },
+              "required": true,
+              "type": "image",
+              "localizable": true,
+              "description": {
+                "en-us": "",
+                "de-de": ""
+              }
+            },
+            {
+              "code": "link",
+              "label": {
+                "en-us": "Link",
+                "de-de": "Link"
+              },
+              "required": false,
+              "type": "link",
+              "localizable": true,
+              "description": {
+                "en-us": "",
+                "de-de": ""
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "parallax",
+        "label": {
+          "en-us": "Parallax Scrolling",
+          "de-de": "Parallax-Scrolling"
+        },
+        "required": false,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "Enables a parallax scrolling effect where the image moves at a different speed than the page itself, creating a sense of depth.",
+          "de-de": "Aktiviert einen Parallax-Scrolling-Effekt, bei dem sich das Bild mit einer anderen Geschwindigkeit als die Seite selbst bewegt und so ein Gefühl von Tiefe entsteht."
+        },
+        "defaultValue": false
+      },
+      {
+        "code": "imageSpacing",
+        "label": {
+          "en-us": "Image spacing",
+          "de-de": "Bildabstand"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "defaultValue": 0,
+        "description": {
+          "en-us": "Controls the horizontal spacing between images inside the widget.",
+          "de-de": "Legt den Abstand zwischen den Bildern innerhalb des Widgets fest."
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 0,
+          "validationMaxValue": 99
+        }
+      },
+      {
+        "code": "imageWrapping",
+        "label": {
+          "en-us": "Image wrapping",
+          "de-de": "Bildumbruch"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "responsiveDefault",
+        "description": {
+          "en-us": "Controls how images wrap on different screen sizes:<br/><br/>• Responsive (default): 2 per row on smartphones, up to 4 on tablets<br/>• Responsive (more images): 3 per row on smartphones, up to 6 on tablets<br/>• No wrapping: All images in one row<br/><br/>Use the preview on the left to check the layout.",
+          "de-de": "Steuert, wie Bilder auf unterschiedlichen Bildschirmgrößen angeordnet werden:<br/><br/>• Responsiv (Standard): 2 pro Reihe auf Smartphones, bis zu 4 auf Tablets<br/>• Responsiv (mehr Bilder): 3 pro Reihe auf Smartphones, bis zu 6 auf Tablets<br/>• Kein Umbruch: Alle Bilder in einer Reihe<br/><br/>Nutzen Sie die Vorschau links, um das Layout zu überprüfen."
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "responsiveDefault",
+              "label": {
+                "en-us": "Responsive (default)",
+                "de-de": "Responsiv (Standard)"
+              }
+            },
+            {
+              "value": "responsiveDense",
+              "label": {
+                "en-us": "Responsive (more images)",
+                "de-de": "Responsiv (mehr Bilder)"
+              }
+            },
+            {
+              "value": "responsiveNoWrap",
+              "label": {
+                "en-us": "No wrapping",
+                "de-de": "Kein Umbruch"
+              }
+            },
+            {
+              "value": "responsiveCustom",
+              "label": {
+                "en-us": "Custom",
+                "de-de": "Benutzerdefiniert"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "slidesPerViewCustomSmall",
+        "label": {
+          "en-us": "Slides per view (small screen width)",
+          "de-de": "Slides per view (kleine Bildschirmgrößen)"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "imageWrapping": "responsiveCustom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 10
+        },
+        "defaultValue": 2
+      },
+      {
+        "code": "slidesPerViewCustomMedium",
+        "label": {
+          "en-us": "Slides per view (medium screen width)",
+          "de-de": "Slides per view (mittlere Bildschirmgrößen)"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "imageWrapping": "responsiveCustom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 10
+        },
+        "defaultValue": 3
+      },
+      {
+        "code": "slidesPerViewCustomLarge",
+        "label": {
+          "en-us": "Slides per view (large screen width)",
+          "de-de": "Slides per view (große Bildschirmgrößen)"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "imageWrapping": "responsiveCustom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 10
+        },
+        "defaultValue": 4
+      },
+      {
+        "code": "borderRadius",
+        "label": {
+          "en-us": "Border Radius",
+          "de-de": "Abrundung der Ecken"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "default",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "default",
+              "label": {
+                "en-us": "Default",
+                "de-de": "Standard"
+              }
+            },
+            {
+              "value": "none",
+              "label": {
+                "en-us": "None",
+                "de-de": "Kein"
+              }
+            },
+            {
+              "value": "rounded",
+              "label": {
+                "en-us": "Rounded",
+                "de-de": "Abgerundet"
+              }
+            },
+            {
+              "value": "custom",
+              "label": {
+                "en-us": "Custom",
+                "de-de": "Benutzerdefiniert"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "borderRadiusCustom",
+        "label": {
+          "en-us": "Custom Border Radius",
+          "de-de": "Benutzerdefinierte Abrundung"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "borderRadius": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 50,
+          "maxNumberOfDecimals": 0
+        },
+        "defaultValue": 16
+      }
+    ]
+  },
+  {
+    "id": "heroBannerWidget",
+    "name": {
+      "en-us": "Hero Banner",
+      "de-de": "Hero-Banner"
+    },
+    "description": {
+      "en-us": "Display a large banner image with customizable text and an optional link.",
+      "de-de": "Ein großes Bannerbild mit anpassbarem Text und optionalem Link anzeigen."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "mediaType",
+        "label": {
+          "en-us": "Media type",
+          "de-de": "Medientyp"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "image",
+              "label": {
+                "en-us": "Image",
+                "de-de": "Bild"
+              }
+            },
+            {
+              "value": "video",
+              "label": {
+                "en-us": "Video",
+                "de-de": "Video"
+              }
+            }
+          ]
+        },
+        "defaultValue": "image"
+      },
+      {
+        "code": "backgroundImage",
+        "label": {
+          "en-us": "Background image",
+          "de-de": "Hintergrundbild"
+        },
+        "required": true,
+        "type": "image",
+        "localizable": true,
+        "typeSpecificSettings": null,
+        "defaultValue": null,
+        "visibilityConditions": {
+          "mediaType": "image"
+        }
+      },
+      {
+        "code": "imageFit",
+        "label": {
+          "en-us": "Image fit",
+          "de-de": "Bilddarstellung"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "description": {
+          "en-us": "When \"Show Full Image\" is enabled, the full image is displayed inside the banner area. The text content may be cut off if it exceeds the available space.",
+          "de-de": "Wenn \"Bild komplett anzeigen\" aktiviert ist, wird das gesamte Bild angezeigt. Der Text wird evtl. abgeschnitten, falls der Platz im Bild nicht ausreicht."
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "fillAndCrop",
+              "label": {
+                "en-us": "Fit to content & crop",
+                "de-de": "Den Inhalt anpassen & abschneiden"
+              }
+            },
+            {
+              "value": "showFull",
+              "label": {
+                "en-us": "Show Full Image",
+                "de-de": "Bild komplett anzeigen"
+              }
+            }
+          ]
+        },
+        "defaultValue": "fillAndCrop",
+        "visibilityConditions": {
+          "mediaType": "image"
+        }
+      },
+      {
+        "code": "parallax",
+        "label": {
+          "en-us": "Parallax Scrolling",
+          "de-de": "Parallax-Scrolling"
+        },
+        "required": false,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "Enables a parallax scrolling effect where the background image moves at a different speed than the foreground content, creating a sense of depth.",
+          "de-de": "Aktiviert einen Parallax-Scrolling-Effekt, bei dem sich das Hintergrundbild mit einer anderen Geschwindigkeit als der Vordergrund bewegt und so ein Gefühl von Tiefe entsteht."
+        },
+        "defaultValue": false,
+        "visibilityConditions": {
+          "mediaType": "image"
+        }
+      },
+      {
+        "code": "url",
+        "label": {
+          "en-us": "Video URL (MP4)",
+          "de-de": "Video-URL (MP4)"
+        },
+        "required": true,
+        "type": "text",
+        "localizable": true,
+        "description": {
+          "en-us": "Enter the link to your video (a direct MP4 URL - not a YouTube, Vimeo, or similar link).",
+          "de-de": "Geben Sie den Link zu dem Video an (eine direkte MP4-URL - kein Link zu YouTube, Vimeo oder ähnlichen Diensten)."
+        },
+        "visibilityConditions": {
+          "mediaType": "video"
+        },
+        "typeSpecificSettings": {
+          "validationIsHttpsUrl": true
+        },
+        "defaultValue": null
+      },
+      {
+        "code": "text",
+        "label": {
+          "en-us": "Text",
+          "de-de": "Text"
+        },
+        "required": false,
+        "type": "richText",
+        "localizable": true,
+        "typeSpecificSettings": null,
+        "defaultValue": null,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "link",
+        "label": {
+          "en-us": "Link",
+          "de-de": "Link"
+        },
+        "required": false,
+        "type": "link",
+        "localizable": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "borderRadius",
+        "label": {
+          "en-us": "Border Radius",
+          "de-de": "Abrundung der Ecken"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "default",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "default",
+              "label": {
+                "en-us": "Default",
+                "de-de": "Standard"
+              }
+            },
+            {
+              "value": "none",
+              "label": {
+                "en-us": "None",
+                "de-de": "Kein"
+              }
+            },
+            {
+              "value": "rounded",
+              "label": {
+                "en-us": "Rounded",
+                "de-de": "Abgerundet"
+              }
+            },
+            {
+              "value": "custom",
+              "label": {
+                "en-us": "Custom",
+                "de-de": "Benutzerdefiniert"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "borderRadiusCustom",
+        "label": {
+          "en-us": "Custom Border Radius",
+          "de-de": "Benutzerdefinierte Abrundung"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "borderRadius": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 50,
+          "maxNumberOfDecimals": 0
+        },
+        "defaultValue": 16
+      }
+    ]
+  },
+  {
+    "id": "videoWidget",
+    "name": {
+      "en-us": "Video",
+      "de-de": "Video"
+    },
+    "description": {
+      "en-us": "Plays a video",
+      "de-de": "Spielt ein Video ab"
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "url",
+        "label": {
+          "en-us": "Video URL (MP4)",
+          "de-de": "Video-URL (MP4)"
+        },
+        "required": true,
+        "type": "text",
+        "localizable": true,
+        "description": {
+          "en-us": "Enter the link to your video (a direct MP4 URL - not a YouTube, Vimeo, or similar link).",
+          "de-de": "Geben Sie den Link zu dem Video an (eine direkte MP4-URL - kein Link zu YouTube, Vimeo oder ähnlichen Diensten)."
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": {
+          "validationIsHttpsUrl": true
+        },
+        "defaultValue": null
+      },
+      {
+        "code": "autoplay",
+        "label": {
+          "en-us": "Autoplay",
+          "de-de": "Autoplay"
+        },
+        "required": false,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": true
+      },
+      {
+        "code": "controls",
+        "label": {
+          "en-us": "Show controls",
+          "de-de": "Steuerelemente anzeigen"
+        },
+        "visibilityConditions": {
+          "autoplay": true
+        },
+        "required": false,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "Display the player controls (play, pause, volume, etc.) for the viewer. The video can only be linked, if the controls are disabled.",
+          "de-de": "Zeigt dem Benutzer die Steuerelemente (Play, Pause, Lautstärke usw.) an. Das Video kann nur verlinkt werden, wenn die Steuerelemente deaktiviert sind."
+        },
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "muted",
+        "label": {
+          "en-us": "Muted",
+          "de-de": "Stumm"
+        },
+        "required": false,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "Start the video without sound. Often required when autoplay is enabled.",
+          "de-de": "Startet das Video ohne Ton. Wird häufig benötigt, wenn autoplay aktiviert ist."
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": true
+      },
+      {
+        "code": "loop",
+        "label": {
+          "en-us": "Loop",
+          "de-de": "Endlosschleife"
+        },
+        "required": false,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": true
+      },
+      {
+        "code": "borderRadius",
+        "label": {
+          "en-us": "Border Radius",
+          "de-de": "Abrundung der Ecken"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "default",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "default",
+              "label": {
+                "en-us": "Default",
+                "de-de": "Standard"
+              }
+            },
+            {
+              "value": "none",
+              "label": {
+                "en-us": "None",
+                "de-de": "Kein"
+              }
+            },
+            {
+              "value": "rounded",
+              "label": {
+                "en-us": "Rounded",
+                "de-de": "Abgerundet"
+              }
+            },
+            {
+              "value": "custom",
+              "label": {
+                "en-us": "Custom",
+                "de-de": "Benutzerdefiniert"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "borderRadiusCustom",
+        "label": {
+          "en-us": "Custom Border Radius",
+          "de-de": "Benutzerdefinierte Abrundung"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "borderRadius": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 50,
+          "maxNumberOfDecimals": 0
+        },
+        "defaultValue": 16
+      },
+      {
+        "code": "link",
+        "label": {
+          "en-us": "Link",
+          "de-de": "Link"
+        },
+        "required": false,
+        "type": "link",
+        "localizable": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "autoplay": true,
+          "controls": false
+        },
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      }
+    ]
+  },
+  {
+    "id": "headlineWidget",
+    "name": {
+      "en-us": "Headline",
+      "de-de": "Überschrift"
+    },
+    "description": {
+      "en-us": "Add a customizable headline.",
+      "de-de": "Eine anpassbare Überschrift anzeigen."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": true,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h2"
+        },
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "richTextWidget",
+    "name": {
+      "en-us": "Text",
+      "de-de": "Text"
+    },
+    "description": {
+      "en-us": "Write and format text with rich styling options.",
+      "de-de": "Text mit Formatierungen und Gestaltungsmöglichkeiten anzeigen."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "text",
+        "label": {
+          "en-us": "Text",
+          "de-de": "Text"
+        },
+        "required": false,
+        "type": "richText",
+        "localizable": true,
+        "typeSpecificSettings": null,
+        "defaultValue": null,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "buttonWidget",
+    "name": {
+      "en-us": "Button",
+      "de-de": "Button"
+    },
+    "description": {
+      "en-us": "Shows a button.",
+      "de-de": "Zeigt einen Button an."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "text",
+        "label": {
+          "en-us": "Button Text",
+          "de-de": "Button-Text"
+        },
+        "required": true,
+        "type": "text",
+        "localizable": true
+      },
+      {
+        "code": "link",
+        "label": {
+          "en-us": "Link",
+          "de-de": "Link"
+        },
+        "required": true,
+        "type": "link",
+        "localizable": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      }
+    ]
+  },
+  {
+    "id": "productSliderWidget",
+    "name": {
+      "en-us": "Product slider",
+      "de-de": "Produkt-Slider"
+    },
+    "description": {
+      "en-us": "Display multiple products in a sliding carousel.",
+      "de-de": "Mehrere Produkte in einem Karussell anzeigen."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "showHeadline",
+        "label": {
+          "en-us": "Show headline",
+          "de-de": "Überschrift anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": true,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h2"
+        },
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "showHeadline": true
+        }
+      },
+      {
+        "code": "products",
+        "label": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "required": true,
+        "type": "products",
+        "localizable": true,
+        "typeSpecificSettings": null
+      },
+      {
+        "code": "productCount",
+        "label": {
+          "en-us": "Product count",
+          "de-de": "Produktanzahl"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 100
+        },
+        "defaultValue": 20,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "sort",
+        "label": {
+          "en-us": "Sorting",
+          "de-de": "Sortierung"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "relevance",
+              "label": {
+                "en-us": "Relevance",
+                "de-de": "Relevanz"
+              }
+            },
+            {
+              "value": "priceDesc",
+              "label": {
+                "en-us": "Price high to low",
+                "de-de": "Preis hoch zu niedrig"
+              }
+            },
+            {
+              "value": "priceAsc",
+              "label": {
+                "en-us": "Price low to high",
+                "de-de": "Preis niedrig zu hoch"
+              }
+            }
+          ]
+        },
+        "defaultValue": "relevance",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "slideAutomatic",
+        "label": {
+          "en-us": "Slide automatically",
+          "de-de": "Automatisch wechseln"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": true
+      },
+      {
+        "code": "sliderSpeed",
+        "label": {
+          "en-us": "Slider speed (in milliseconds)",
+          "de-de": "Wechselgeschwindigkeit (in Millisekunden)"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "slideAutomatic": true
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1000,
+          "validationMaxValue": 60000
+        },
+        "defaultValue": 7000
+      },
+      {
+        "code": "endlessSlider",
+        "label": {
+          "en-us": "Endless slider",
+          "de-de": "Endlos-Slider"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": true
+      },
+      {
+        "code": "showName",
+        "label": {
+          "en-us": "Show product name",
+          "de-de": "Produktnamen anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "showPrice",
+        "label": {
+          "en-us": "Show price",
+          "de-de": "Preis anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "showRating",
+        "label": {
+          "en-us": "Show rating",
+          "de-de": "Bewertung anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "productListWidget",
+    "name": {
+      "en-us": "Product list",
+      "de-de": "Produktliste"
+    },
+    "description": {
+      "en-us": "Show a list of products in a vertical layout.",
+      "de-de": "Eine Liste von Produkten anzeigen."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "showHeadline",
+        "label": {
+          "en-us": "Show headline",
+          "de-de": "Überschrift anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": true,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h2"
+        },
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "showHeadline": true
+        }
+      },
+      {
+        "code": "products",
+        "label": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "required": true,
+        "type": "products",
+        "localizable": true,
+        "typeSpecificSettings": null,
+        "defaultValue": null,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "productCount",
+        "label": {
+          "en-us": "Product count",
+          "de-de": "Produktanzahl"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 100
+        },
+        "defaultValue": 20,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "sort",
+        "label": {
+          "en-us": "Sorting",
+          "de-de": "Sortierung"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "relevance",
+              "label": {
+                "en-us": "Relevance",
+                "de-de": "Relevanz"
+              }
+            },
+            {
+              "value": "priceDesc",
+              "label": {
+                "en-us": "Price high to low",
+                "de-de": "Preis hoch zu niedrig"
+              }
+            },
+            {
+              "value": "priceAsc",
+              "label": {
+                "en-us": "Price low to high",
+                "de-de": "Preis niedrig zu hoch"
+              }
+            }
+          ]
+        },
+        "defaultValue": "relevance",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "loadMoreButton",
+        "label": {
+          "en-us": "Show \"Load More\" button",
+          "de-de": "\"Mehr laden\"-Button anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "showName",
+        "label": {
+          "en-us": "Show product name",
+          "de-de": "Produktnamen anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "showPrice",
+        "label": {
+          "en-us": "Show price",
+          "de-de": "Preis anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "showRating",
+        "label": {
+          "en-us": "Show rating",
+          "de-de": "Bewertung anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      }
+    ]
+  },
+  {
+    "id": "categoryListWidget",
+    "name": {
+      "en-us": "Category list",
+      "de-de": "Kategorie-Liste"
+    },
+    "description": {
+      "en-us": "Display a list of categories.",
+      "de-de": "Eine Liste von Kategorien anzeigen."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "showHeadline",
+        "label": {
+          "en-us": "Show headline",
+          "de-de": "Überschrift anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": true,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h2"
+        },
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "showHeadline": true
+        }
+      },
+      {
+        "code": "category",
+        "label": {
+          "en-us": "Category",
+          "de-de": "Kategorie"
+        },
+        "required": true,
+        "type": "category",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "showRootCategory": true
+        },
+        "defaultValue": null,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "showImages",
+        "label": {
+          "en-us": "Show category images",
+          "de-de": "Kategoriebilder anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      }
+    ]
+  },
+  {
+    "id": "nestedCategoryFilterWidget",
+    "name": {
+      "en-us": "Nested Category Filter",
+      "de-de": "Kategoriefilter"
+    },
+    "description": {
+      "en-us": "Let shoppers refine by nested categories with up to four levels and a final 'Show products' action.",
+      "de-de": "Ermöglicht die Filterung über bis zu vier verschachtelte Kategorieebenen mit anschließendem „Produkte anzeigen“."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "showHeadline",
+        "label": {
+          "en-us": "Show headline",
+          "de-de": "Überschrift anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": true,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h2"
+        },
+        "visibilityConditions": {
+          "showHeadline": true
+        }
+      },
+      {
+        "code": "category",
+        "label": {
+          "en-us": "Category",
+          "de-de": "Kategorie"
+        },
+        "required": true,
+        "type": "category",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "showRootCategory": true
+        },
+        "description": {
+          "en-us": "Root category for the filter (legacy: “Default category”).",
+          "de-de": "Einstiegskategorie für den Filter (Legacy: „Standardkategorie“)."
+        }
+      },
+      {
+        "code": "maxDepth",
+        "label": {
+          "en-us": "Maximum levels of nesting",
+          "de-de": "Maximale Ebenen der Verschachtelung"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": 1,
+              "label": {
+                "en-us": "1 level",
+                "de-de": "1 Ebene"
+              }
+            },
+            {
+              "value": 2,
+              "label": {
+                "en-us": "2 levels",
+                "de-de": "2 Ebenen"
+              }
+            },
+            {
+              "value": 3,
+              "label": {
+                "en-us": "3 levels",
+                "de-de": "3 Ebenen"
+              }
+            },
+            {
+              "value": 4,
+              "label": {
+                "en-us": "4 levels",
+                "de-de": "4 Ebenen"
+              }
+            }
+          ]
+        },
+        "defaultValue": 3
+      },
+      {
+        "code": "level1Label",
+        "label": {
+          "en-us": "Level 1 category label",
+          "de-de": "Kategoriebezeichnung Ebene 1"
+        },
+        "required": false,
+        "type": "text",
+        "localizable": true
+      },
+      {
+        "code": "level2Label",
+        "label": {
+          "en-us": "Level 2 category label",
+          "de-de": "Kategoriebezeichnung Ebene 2"
+        },
+        "required": false,
+        "type": "text",
+        "localizable": true,
+        "visibilityConditions": {
+          "maxDepth": {
+            "$gte": 2
+          }
+        }
+      },
+      {
+        "code": "level3Label",
+        "label": {
+          "en-us": "Level 3 category label",
+          "de-de": "Kategoriebezeichnung Ebene 3"
+        },
+        "required": false,
+        "type": "text",
+        "localizable": true,
+        "visibilityConditions": {
+          "maxDepth": {
+            "$gte": 3
+          }
+        }
+      },
+      {
+        "code": "level4Label",
+        "label": {
+          "en-us": "Level 4 category label",
+          "de-de": "Kategoriebezeichnung Ebene 4"
+        },
+        "required": false,
+        "type": "text",
+        "localizable": true,
+        "visibilityConditions": {
+          "maxDepth": {
+            "$gte": 4
+          }
+        }
+      },
+      {
+        "code": "rememberSelection",
+        "label": {
+          "en-us": "Remember user selection",
+          "de-de": "Auswahl des Nutzers merken"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "defaultValue": false,
+        "description": {
+          "en-us": "Prefill the widget with the shopper’s last chosen path on future visits (device/session based).",
+          "de-de": "Befüllt das Widget bei späteren Besuchen mit dem zuletzt gewählten Pfad (geräte-/sitzungsbasiert)."
+        }
+      }
+    ]
+  },
+  {
+    "id": "htmlWidget",
+    "name": {
+      "en-us": "HTML",
+      "de-de": "HTML"
+    },
+    "description": {
+      "en-us": "Display custom HTML code.",
+      "de-de": "Eigenen HTML-Code einfügen und darstellen."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "html",
+        "label": {
+          "en-us": "HTML",
+          "de-de": "HTML"
+        },
+        "required": false,
+        "type": "html",
+        "localizable": true,
+        "typeSpecificSettings": null,
+        "defaultValue": null,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "internalDescription",
+        "label": {
+          "en-us": "Internal description (not shown to end-users)",
+          "de-de": "Interne Beschreibung (wird dem Endnutzer nicht angezeigt)"
+        },
+        "description": {
+          "en-us": "Use this field to describe the html widget, so that it is easier for you or your coworkers to later understand what the purpose of this html snippet was.",
+          "de-de": "Nutzen Sie dieses Feld um das HTML-Widget zu beschreiben, damit es für Sie und Ihre Kollegen später einfacher ist den Sinn und Zweck dieses Widgets zu verstehen."
+        },
+        "required": false,
+        "type": "text",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      }
+    ]
+  }
+]

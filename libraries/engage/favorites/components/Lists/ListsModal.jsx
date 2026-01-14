@@ -21,7 +21,10 @@ const styles = {
 
 /**
  * @param {Object} props Props
- * @returns {Object}
+ * @param {'add_list'|'rename_list'} [props.type] The modal type
+ * @param {Function} props.onConfirm The confirm handler
+ * @param {Function} props.onDismiss The dismiss handler
+ * @returns {JSX.Element}
  */
 const ListsModal = ({ type, onConfirm, onDismiss }) => {
   const [input, setInput] = useState('');
@@ -75,7 +78,11 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
 ListsModal.propTypes = {
   onConfirm: PropTypes.func.isRequired,
   onDismiss: PropTypes.func.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
+};
+
+ListsModal.defaultProps = {
+  type: 'add_list',
 };
 
 export default ListsModal;

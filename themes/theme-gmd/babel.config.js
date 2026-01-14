@@ -43,6 +43,15 @@ module.exports = (api) => {
         helpers: true,
         regenerator: true,
       }],
+      // Transpile spread since some extensions might have code that's invalid for native spread
+      // e.g. [...undefined]
+      ['@babel/plugin-transform-spread', {
+        loose: true,
+      }],
+      // Transpile classes since @babel/plugin-transform-spread doesn't work on native classes
+      ['@babel/plugin-transform-classes', {
+        loose: true,
+      }],
     ],
 
     env: {

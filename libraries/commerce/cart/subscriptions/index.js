@@ -85,8 +85,8 @@ export default function cart(subscribe) {
   );
 
   const cartIdle$ = cartReceived$.merge(
-    couponsUpdated$,
-    productsUpdated$
+    couponsUpdated$.switchMap(() => cartReceived$.first()),
+    productsUpdated$.switchMap(() => cartReceived$.first())
   );
 
   /**

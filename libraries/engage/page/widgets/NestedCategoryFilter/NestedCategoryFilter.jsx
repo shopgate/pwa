@@ -155,7 +155,7 @@ const NestedCategoryFilter = () => {
   ), [code, handleSelection, labels, maxDepth, state.pickers]);
 
   return (
-    <div className={classes.container}>
+    <div className={cx(classes.container, 'widget__nested-category-filter__container')}>
       {(showHeadline && headline) ? (
         <WidgetHeadline headline={headline} className="widget__nested-category-filter__headline" />
       ) : null}

@@ -31,7 +31,7 @@ const createDocumentWithIframes = (srcs) => {
 };
 
 /**
- * Creates a DOM "container" Document (parity with your original helper).
+ * Creates a DOM "container" Document.
  * @param {string[]} srcs A list of video URLs.
  * @returns {Document}
  */
@@ -43,7 +43,7 @@ const createContainer = (srcs) => {
 };
 
 /**
- * Creates a mocked document with iframes (parity with your original helper).
+ * Creates a mocked document with iframes.
  * @param {string[]} srcs A list of video URLs.
  * @returns {Document}
  */
