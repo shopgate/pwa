@@ -18,6 +18,7 @@ async function initSubtree(group, name, url) {
     return;
   }
 
+  // eslint-disable-next-line no-useless-catch
   try {
     await exec(`git subtree add --prefix ${prefix} ${url} develop --squash`);
     logger.log(`Added new subtree ${prefix}`);
