@@ -100,9 +100,6 @@ class Search extends Component {
     }
   };
 
-  /**
-   * @param {Event} event The event.
-   */
   reset = () => {
     this.fieldRef.current.value = DEFAULT_QUERY;
     this.setState({ query: DEFAULT_QUERY });
