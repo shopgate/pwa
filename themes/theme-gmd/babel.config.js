@@ -20,7 +20,7 @@ module.exports = (api) => {
         corejs: 3,
       }],
       ['@babel/preset-react', {
-        runtime: 'classic',
+        runtime: 'automatic',
         development: !isProd && !isTest,
       }],
     ],
@@ -58,7 +58,7 @@ module.exports = (api) => {
       test: {
         presets: [
           ['@babel/preset-env', { targets: { node: 'current' } }],
-          ['@babel/preset-react', { runtime: 'classic' }],
+          ['@babel/preset-react', { runtime: 'automatic' }],
         ],
       },
       development: {
