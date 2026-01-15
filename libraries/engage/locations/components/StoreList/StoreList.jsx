@@ -8,11 +8,11 @@ import StoreListLocations from './StoreListLocations';
  * @returns {JSX}
  */
 const StoreList = () => (
-  <React.Fragment>
+  <>
     <StoreListProduct />
     <StoreListSearch />
     <StoreListLocations />
-  </React.Fragment>
+  </>
 );
 
 export default StoreList;

@@ -28,7 +28,7 @@ class Password extends Component {
    */
   togglePasswordVisibility = (isVisible) => {
     this.setState({ isVisible });
-  }
+  };
 
   /**
    * @return {*}

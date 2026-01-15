@@ -64,8 +64,7 @@ const FulfillmentSelectorItemUnwrapped = ({
     >
       {checked
         ? <CheckedIcon className={disabled ? activeIconDisabled : activeIcon} />
-        : <UncheckedIcon className={disabled ? inactiveIconDisabled : inactiveIcon} />
-      }
+        : <UncheckedIcon className={disabled ? inactiveIconDisabled : inactiveIcon} />}
       <input type="radio" checked={checked} name={name} className={radio} readOnly />
       <div className={content}>
         {children}

@@ -20,7 +20,7 @@ const CartItemProductLayoutWide = () => {
   const hasUnitWithDecimals = (product.unit && product.hasCatchWeight) || false;
 
   return (
-    <Fragment>
+    <>
       {!cartIsDirectShipOnly ? (
         <div className={locationColumn}>
           {location?.name }
@@ -37,7 +37,7 @@ const CartItemProductLayoutWide = () => {
           maxDecimals={hasUnitWithDecimals ? 2 : 0}
         />
       </div>
-    </Fragment>
+    </>
   );
 };
 

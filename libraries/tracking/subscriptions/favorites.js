@@ -20,11 +20,11 @@ export default function favorites(subscribe) {
 
       return {
         ...product,
-        // eslint-disable-next-line camelcase
+
         unit_amount_net: product.amount.net * 100,
-        // eslint-disable-next-line camelcase
+
         unit_amount_with_tax: product.amount.gross * 100,
-        // eslint-disable-next-line camelcase
+
         currency_id: product.amount.currency,
       };
     });

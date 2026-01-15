@@ -66,7 +66,7 @@ class CharacteristicSheet extends PureComponent {
   onClose = (e) => {
     this.props.onClose(e);
     this.props.setViewAriaHidden(false);
-  }
+  };
 
   /**
    * @param {Object} event The event object.
@@ -75,7 +75,7 @@ class CharacteristicSheet extends PureComponent {
   handleItemClick = (event, itemId) => {
     event.stopPropagation();
     this.props.onSelect(itemId);
-  }
+  };
 
   /**
    * Renders the availability text inside the sheet item.
@@ -94,7 +94,7 @@ class CharacteristicSheet extends PureComponent {
     };
 
     return <VariantAvailability characteristics={selection} productId={this.props.productId} />;
-  }
+  };
 
   /**
    * @return {JSX}
@@ -113,7 +113,7 @@ class CharacteristicSheet extends PureComponent {
     }
 
     return (
-      <Fragment>
+      <>
         <ResponsiveContainer appAlways breakpoint="xs">
           <SheetDrawer
             title={label}
@@ -170,7 +170,7 @@ class CharacteristicSheet extends PureComponent {
             )}
           </ThemeContext.Consumer>
         </ResponsiveContainer>
-      </Fragment>
+      </>
     );
   }
 }

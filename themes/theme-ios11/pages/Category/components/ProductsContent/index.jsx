@@ -34,7 +34,7 @@ class ProductsContent extends PureComponent {
     return (
       <RouteContext.Consumer>
         {({ state, query, id: routeId }) => (
-          <Fragment>
+          <>
             <Portal name={PRODUCT_LIST_BEFORE} props={portalProps} />
             <Portal name={PRODUCT_LIST} props={portalProps}>
               {hasProducts && (
@@ -49,7 +49,7 @@ class ProductsContent extends PureComponent {
               )}
             </Portal>
             <Portal name={PRODUCT_LIST_AFTER} props={portalProps} />
-          </Fragment>
+          </>
         )}
       </RouteContext.Consumer>
     );

@@ -46,8 +46,7 @@ const MapPriceHint = ({ price, mapPrice }) => {
               className={classNames('engage__product__map-price-hint', defaultStyle, css(styles.hint).toString())}
             />
           )}
-        </TimeBoundary>
-      }
+        </TimeBoundary>}
     </SurroundPortals>
   );
 };

@@ -30,7 +30,7 @@ const AddressBookContact = () => {
   }, [contact, type]);
 
   return (
-    <Fragment>
+    <>
       <ResponsiveContainer webOnly breakpoint=">xs">
         <ResponsiveBackButton />
         <h1 className={styles.headline}>
@@ -40,7 +40,7 @@ const AddressBookContact = () => {
       <AddressBookProvider>
         <ProfileContact />
       </AddressBookProvider>
-    </Fragment>
+    </>
   );
 };
 

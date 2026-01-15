@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import cloneDeep from 'lodash/cloneDeep';
 import buildFilterParamsForFetchFiltersRequest from '../buildFilterParamsForFetchFiltersRequest';
 
@@ -107,4 +106,3 @@ describe('buildFilterParamsForFetchFiltersRequest()', () => {
   });
 });
 
-/* eslint-enable camelcase */

@@ -126,7 +126,7 @@ class SearchField extends Component {
         focused: Trilean.NONE,
       });
     }, 0);
-  }
+  };
 
   /**
    * @param {string} value The updated value.
@@ -239,7 +239,7 @@ class SearchField extends Component {
         type="search"
       />
     );
-  }
+  };
 
   /**
    * Renders the scanner icon
@@ -257,7 +257,7 @@ class SearchField extends Component {
         </button>
       </SurroundPortals>
     );
-  }
+  };
 
   /**
    * Renders the text field.

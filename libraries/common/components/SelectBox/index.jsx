@@ -60,13 +60,6 @@ class SelectBox extends Component {
   }
 
   /**
-   * When dropdown animation is finished.
-   */
-  onDropdownComplete = () => {
-
-  };
-
-  /**
    * Handles any interaction the user does outside of the component.
    * In this case the select gets closed.
    * @param {Object} event The event object.
@@ -165,7 +158,6 @@ class SelectBox extends Component {
         <Dropdown
           className={dropdown}
           isOpen={this.state.isOpen}
-          onComplete={this.onDropdownComplete}
           duration={this.props.duration}
         >
           <ul role="menu" id={buttonLabel} tabIndex="-1">
@@ -193,8 +185,7 @@ class SelectBox extends Component {
             onTouchMove={this.handleInteractionOutside}
             type="button"
             aria-hidden
-          />
-        }
+          />}
       </div>
     );
   }

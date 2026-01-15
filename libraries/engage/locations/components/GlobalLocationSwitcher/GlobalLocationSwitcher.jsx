@@ -42,7 +42,7 @@ const GlobalLocationSwitcher = ({
   }
 
   return (
-    <Fragment>
+    <>
       { renderBar ? (
         <GlobalLocationSwitcherBar
           locationName={locationName}
@@ -56,8 +56,7 @@ const GlobalLocationSwitcher = ({
           standalone={standalone}
           editable={editable}
         />
-      )
-      }
+      )}
 
       { sheetOpen && (
         <FulfillmentSheet
@@ -73,7 +72,7 @@ const GlobalLocationSwitcher = ({
         />
       )}
 
-    </Fragment>
+    </>
   );
 };
 

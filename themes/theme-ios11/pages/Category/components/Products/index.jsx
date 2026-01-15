@@ -38,7 +38,7 @@ class CategoryProducts extends PureComponent {
       offset || this.props.products.length,
       includeCharacteristics
     );
-  }
+  };
 
   /**
    * @returns {JSX}

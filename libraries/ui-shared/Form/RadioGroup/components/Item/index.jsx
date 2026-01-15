@@ -23,7 +23,7 @@ class RadioItem extends PureComponent {
     ]),
     id: PropTypes.string,
     onChange: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     attributes: null,
@@ -31,7 +31,7 @@ class RadioItem extends PureComponent {
     checked: false,
     className: '',
     onChange: () => { },
-  }
+  };
 
   /**
    * Renders the component.

@@ -85,15 +85,14 @@ const CheckoutSection = ({
   editLabel,
   id,
 }) => (
-  <Fragment>
+  <>
     { title && (
       <h3 className={styles.headline} id={id}>{i18n.text(title)}</h3>
     )}
     <Card
       className={classNames(styles.card.toString(), {
         [styles.cardWithForm.toString()]: hasForm,
-      })
-      }
+      })}
       id={!title ? id : null}
     >
       <div className={`${styles.actionsContainer} ${className}`}>
@@ -115,19 +114,15 @@ const CheckoutSection = ({
                   <Fragment key={label}>
                     <tr>
                       <td>
-                        {(
-                          <Fragment>
-                            <span className={classNames({
-                              [styles.labelWithInfoIcon]: !!info,
-                            })}
-                            >
-                              {label}
-                            </span>
-                            { !hasError && (
-                            <CheckoutSectionInfo text={info} />
-                            )}
-                          </Fragment>
-                      )}
+                        <span className={classNames({
+                          [styles.labelWithInfoIcon]: !!info,
+                        })}
+                        >
+                          {label}
+                        </span>
+                        { !hasError && (
+                        <CheckoutSectionInfo text={info} />
+                        )}
                       </td>
                       <td>{text}</td>
                     </tr>
@@ -167,7 +162,7 @@ const CheckoutSection = ({
         </div>
       ) : null}
     </Card>
-  </Fragment>
+  </>
 );
 
 CheckoutSection.propTypes = {

@@ -269,7 +269,7 @@ const UnitQuantityPicker = ({
           onClick={handleDecrement}
           aria-label={i18n.text('product.decrease_quantity')}
         >
-        -
+          -
         </RippleButton>
         <span
           className={styles.inputWrapper({
@@ -322,7 +322,7 @@ const UnitQuantityPicker = ({
           onClick={handleIncrement}
           aria-label={i18n.text('product.increase_quantity')}
         >
-        +
+          +
         </RippleButton>
       </div>
     </>

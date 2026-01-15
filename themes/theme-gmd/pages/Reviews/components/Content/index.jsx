@@ -14,7 +14,7 @@ import connect from './connector';
  * @return {JSX}
  */
 const ReviewsContent = ({ productId, rating, reviews }) => (
-  <Fragment>
+  <>
     <BackBar title="titles.reviews" right={null} />
     <SurroundPortals
       portalName={PRODUCT_REVIEWS_ALL}
@@ -25,7 +25,7 @@ const ReviewsContent = ({ productId, rating, reviews }) => (
       <LoadMoreButton productId={productId} />
       <ReviewsInfo reviews={reviews} />
     </SurroundPortals>
-  </Fragment>
+  </>
 );
 
 ReviewsContent.propTypes = {

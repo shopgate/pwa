@@ -25,32 +25,32 @@ const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
  * @returns {JSX}
  */
 const StoreInfo = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_STORE_INFORMATION_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_STORE_INFORMATION} props={portalProps}>
       <Section title="navigation.store_information">
         { !hasNewServices() && (
-        <Fragment>
+        <>
           <Shipping />
           <Payment />
-        </Fragment>
+        </>
         )}
         { hasNewServices() ? (
           <LegalPages />
         ) : (
-          <Fragment>
+          <>
             <Terms />
             <Privacy />
             {appSupportsCookieConsent() && isCookieConsentActivated && <PrivacySettings />}
             <ReturnPolicy />
             <Imprint />
-          </Fragment>
+          </>
         )}
 
       </Section>
     </Portal>
     <Portal name={NAV_MENU_STORE_INFORMATION_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default StoreInfo;

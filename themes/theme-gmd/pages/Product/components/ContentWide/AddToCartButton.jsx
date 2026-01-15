@@ -25,13 +25,13 @@ class AddToCartButton extends PureComponent {
     isRopeFulfillmentMethodAllowed: PropTypes.bool,
     userLocation: PropTypes.shape(),
     userMethod: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     isRopeFulfillmentMethodAllowed: false,
     userLocation: null,
     userMethod: '',
-  }
+  };
 
   static contextTypes = {
     i18n: PropTypes.func,
@@ -97,7 +97,7 @@ class AddToCartButton extends PureComponent {
         params: { count: this.context.quantity },
       });
     });
-  }
+  };
 
   /**
    * Adds a new product to cart or opens the cart if it already has products in it.
@@ -117,7 +117,7 @@ class AddToCartButton extends PureComponent {
     setTimeout(() => {
       this.locked = false;
     }, 0);
-  }
+  };
 
   /**
    * Renders the animated tick.

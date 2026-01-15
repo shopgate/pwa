@@ -68,11 +68,10 @@ const triggerStripeRequest = async (stripe, req, order, activeTransaction) => {
 
   // Send over to stripe and let it validate.
   const intent = activeTransaction?.checkoutParams?.paymentIntent;
-  /* eslint-disable camelcase */
+
   const result = await stripe.confirmCardPayment(intent,
     { payment_method: event.paymentMethod.id },
     { handleActions: false });
-  /* eslint-enable camelcase */
 
   if (result.error) {
     event.complete('fail');
@@ -140,7 +139,7 @@ const StripeProvider = ({ children }) => {
         error: incomingError,
         paymentIntent,
       } = await stripe.confirmCardPayment(activeTransaction.checkoutParams.paymentIntent, {
-        /* eslint-disable-next-line camelcase */
+
         payment_method: {
           card: elements.getElement(CardNumberElement),
         },

@@ -219,8 +219,7 @@ class AddToCartButton extends Component {
               strokeWidth={5}
               paused={!this.props.isLoading}
             />
-          </div>
-        }
+          </div>}
         <div className={tickIconStyle} style={tickInlineStyle}>
           <TickIcon />
         </div>

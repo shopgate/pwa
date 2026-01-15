@@ -9,7 +9,7 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 class KeyboardConsumer extends PureComponent {
   static propTypes = {
     children: PropTypes.func.isRequired,
-  }
+  };
 
   state = {
     open: false,
@@ -36,7 +36,7 @@ class KeyboardConsumer extends PureComponent {
    */
   handleKeyboardChange = ({ open, overlap, duration }) => {
     this.setState({ open, overlap, duration });
-  }
+  };
 
   /**
    * @returns {JSX}

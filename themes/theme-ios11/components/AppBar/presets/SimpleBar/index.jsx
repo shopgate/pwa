@@ -14,13 +14,13 @@ import DefaultBar from '../DefaultBar';
  */
 function SimpleBar({ title }) {
   return (
-    <Fragment>
+    <>
       <Portal name={APP_BAR_SIMPLE_BEFORE} />
       <Portal name={APP_BAR_SIMPLE}>
         <DefaultBar title={title} right={null} />
       </Portal>
       <Portal name={APP_BAR_SIMPLE_AFTER} />
-    </Fragment>
+    </>
   );
 }
 

@@ -30,7 +30,7 @@ class Product extends PureComponent {
     const productId = state.productId || hex2bin(id);
 
     return <ProductContent productId={productId || null} isVariant={!!state.productId} />;
-  }
+  };
 
   /**
    * @return {JSX.Element}

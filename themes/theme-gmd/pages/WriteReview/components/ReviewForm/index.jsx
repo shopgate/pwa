@@ -29,11 +29,11 @@ class ReviewForm extends PureComponent {
   static propTypes = {
     isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
+
     authorName: PropTypes.string,
     productId: PropTypes.string,
     review: PropTypes.shape(),
-    // eslint-disable-next-line react/no-unused-prop-types
+
     widgetSettings: PropTypes.shape(),
   };
 
@@ -112,7 +112,7 @@ class ReviewForm extends PureComponent {
     }
 
     this.props.submit(this.state, !!this.props.review.rate);
-  }
+  };
 
   /**
    * @param {number} rate The changed rate.
@@ -124,7 +124,7 @@ class ReviewForm extends PureComponent {
       [FIELD_NAME_RATE]: rate,
       validationErrors,
     });
-  }
+  };
 
   /**
    * @param {string} author The review author.
@@ -136,7 +136,7 @@ class ReviewForm extends PureComponent {
       [FIELD_NAME_AUTHOR]: author,
       validationErrors,
     });
-  }
+  };
 
   /**
    * @param {string} title The review title.
@@ -148,7 +148,7 @@ class ReviewForm extends PureComponent {
       [FIELD_NAME_TITLE]: title,
       validationErrors,
     });
-  }
+  };
 
   /**
    * @param {string} review The review content.
@@ -160,7 +160,7 @@ class ReviewForm extends PureComponent {
       [FIELD_NAME_REVIEW]: review,
       validationErrors,
     });
-  }
+  };
 
   /**
    * Validate rate.

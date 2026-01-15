@@ -15,10 +15,10 @@ import ReviewForm from './components/ReviewForm';
 const WriteReview = ({ productId, visible }) => (
   <View>
     {(productId && visible) && (
-      <Fragment>
+      <>
         <BackBar title="titles.reviews" right={null} />
         <ReviewForm productId={productId} />
-      </Fragment>
+      </>
     )}
   </View>
 );

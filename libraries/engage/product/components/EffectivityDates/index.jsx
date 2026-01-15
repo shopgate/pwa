@@ -47,12 +47,11 @@ const EffectivityDates = ({
 
           if (between) {
             return (
-              <Fragment>
+              <>
                 {children}
                 {showExpiringLabel(endDate, settings) &&
-                  <I18n.Text string="product.available.until" params={{ endDate }} className={classNames(hint, hintAddClass)} />
-                }
-              </Fragment>
+                  <I18n.Text string="product.available.until" params={{ endDate }} className={classNames(hint, hintAddClass)} />}
+              </>
             );
           }
 

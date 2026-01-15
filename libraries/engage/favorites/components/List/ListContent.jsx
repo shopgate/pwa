@@ -57,8 +57,7 @@ const ListContent = ({
                   index={index}
                   key={product.id}
                 />
-              ) : null)
-            }
+              ) : null)}
           </ProductProvider>
         ))) : null}
       {!useGetFavoriteIdsPipeline &&
@@ -85,8 +84,7 @@ const ListContent = ({
         onClick={onLoadMore}
       >
         {i18n.text('favorites.load_more_button')}
-      </RippleButton>
-    }
+      </RippleButton>}
   </>
 );
 

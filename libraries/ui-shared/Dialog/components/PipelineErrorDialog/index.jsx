@@ -165,7 +165,7 @@ class PipelineErrorDialog extends Component {
         )}
       </div>
     );
-  }
+  };
 
   /**
    * Renders the regular error message in user mode.
@@ -175,7 +175,7 @@ class PipelineErrorDialog extends Component {
     const { message = '', params = {} } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         { !!params.translated && (
           message || params.message || <I18n.Text string="modal.body_error" />
         )}
@@ -185,9 +185,9 @@ class PipelineErrorDialog extends Component {
             params={params.messageParams || {}}
           />
         )}
-      </React.Fragment>
+      </>
     );
-  }
+  };
 
   /**
    * Renders the error message depending on the current mode.

@@ -20,8 +20,7 @@ const Properties = ({ lineClamp, properties, className }) => {
           {lineClamp &&
             <Ellipsis rows={lineClamp}>
               {`${label}: ${value}`}
-            </Ellipsis>
-          }
+            </Ellipsis>}
           {!lineClamp && `${label}: ${value}`}
         </li>
       ))}

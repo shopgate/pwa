@@ -28,7 +28,7 @@ class Search extends PureComponent {
     }
 
     return <Content searchPhrase={pattern === CATEGORY_ALL_PATTERN ? '*' : searchPhrase} pattern={pattern} />;
-  }
+  };
 
   /**
    * @returns {JSX}

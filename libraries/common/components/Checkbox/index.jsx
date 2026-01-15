@@ -115,7 +115,7 @@ class Checkbox extends Component {
       // Toggle checkbox on "space" - mocks behavior of native checkboxes
       this.handleCheck();
     }
-  }
+  };
 
   /**
    * Renders the checked/unchecked icon.

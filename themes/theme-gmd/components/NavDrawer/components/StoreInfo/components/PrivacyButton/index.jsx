@@ -22,7 +22,7 @@ const LABEL = 'navigation.privacy';
  * @returns {JSX.Element}
  */
 const PrivacyButton = ({ navigate }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_PRIVACY_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_PRIVACY} props={portalProps}>
       <NavDrawer.Item
@@ -33,7 +33,7 @@ const PrivacyButton = ({ navigate }) => (
       />
     </Portal>
     <Portal name={NAV_MENU_PRIVACY_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 PrivacyButton.propTypes = {

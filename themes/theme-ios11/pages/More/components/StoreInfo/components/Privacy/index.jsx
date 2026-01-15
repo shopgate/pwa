@@ -14,13 +14,13 @@ import Item from '../../../Item';
  * @returns {JSX.Element}
  */
 const Privacy = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_PRIVACY_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_PRIVACY} props={portalProps}>
       <Item href={PRIVACY_PATH} label="navigation.privacy" />
     </Portal>
     <Portal name={NAV_MENU_PRIVACY_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default Privacy;

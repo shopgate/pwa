@@ -217,7 +217,7 @@ class PipelineManager {
       ...error,
       code: sanitizedCode,
     };
-  }
+  };
 
   /**
    * Handles a pipeline error.

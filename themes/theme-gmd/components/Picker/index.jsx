@@ -84,7 +84,7 @@ class Picker extends Component {
     if (this.firstSelectableItemRef.current) {
       this.firstSelectableItemRef.current.focus();
     }
-  }
+  };
 
   /**
    * Focuses the first selectable item for screen readers.

@@ -28,8 +28,7 @@ const EmptyFavorites = () => {
         >
           {emptyFavorites
             ? <img src={imageSRC} alt="" />
-            : <Icon />
-          }
+            : <Icon />}
           <I18n.Text string="favorites.empty" className={styles.title} />
         </div>
         <ContinueButton />

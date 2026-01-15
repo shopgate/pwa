@@ -31,8 +31,7 @@ const Content = ({ name, longName }) => (
             dangerouslySetInnerHTML={{ __html: name }}
           />
         </PlaceholderLabel>
-      )
-    }
+      )}
   </div>
 );
 

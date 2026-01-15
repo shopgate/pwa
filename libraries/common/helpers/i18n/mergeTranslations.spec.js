@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import merge from 'lodash/merge';
 import mergeTranslations from './mergeTranslations';
 
@@ -101,4 +100,4 @@ describe('mergeTranslations helper', () => {
     expect(result).toEqual(themeTranslations);
   });
 });
-/* eslint-enable camelcase */
+

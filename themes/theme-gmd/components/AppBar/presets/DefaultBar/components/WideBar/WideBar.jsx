@@ -83,14 +83,14 @@ const WideBar = ({
       )}
     right={null}
     below={
-      <Fragment>
+      <>
         <ResponsiveContainer breakpoint="xs" appAlways>
           <div id="PageHeaderBelow" />
         </ResponsiveContainer>
         <ResponsiveContainer breakpoint=">xs" webOnly>
           <div id="PageHeaderProgress" />
         </ResponsiveContainer>
-      </Fragment>
+      </>
     }
   />
 );

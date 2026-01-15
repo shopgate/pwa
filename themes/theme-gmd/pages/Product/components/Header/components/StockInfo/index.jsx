@@ -13,7 +13,7 @@ import styles from './style';
  * @return {JSX}
  */
 const StockInfo = ({ stock }) => (
-  <Fragment>
+  <>
     <Portal name={portals.PRODUCT_STOCK_INFO_BEFORE} />
     <Portal name={portals.PRODUCT_STOCK_INFO}>
       <PlaceholderLabel className={styles.placeholder} ready={(stock !== null)}>
@@ -28,7 +28,7 @@ const StockInfo = ({ stock }) => (
       </PlaceholderLabel>
     </Portal>
     <Portal name={portals.PRODUCT_STOCK_INFO_AFTER} />
-  </Fragment>
+  </>
 );
 
 StockInfo.propTypes = {

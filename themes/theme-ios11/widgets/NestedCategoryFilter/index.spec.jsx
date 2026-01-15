@@ -1,4 +1,4 @@
-/* eslint-disable extra-rules/no-single-line-objects, camelcase */
+/* eslint-disable extra-rules/no-single-line-objects */
 import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
@@ -193,4 +193,4 @@ describe('<NestedCategoryFilterWidget />', () => {
   });
 });
 
-/* eslint-enable extra-rules/no-single-line-objects, camelcase */
+/* eslint-enable extra-rules/no-single-line-objects */

@@ -32,7 +32,8 @@ const testedExtensions = [
   '@shopgate-theme-config',
 ];
 
-module.exports = Object.assign({}, jestConfig, {
+module.exports = {
+  ...jestConfig,
   collectCoverageFrom: [
     'extensions/*/frontend/**/*.{js,jsx}',
     'libraries/*/**/*.{js,jsx}',
@@ -69,4 +70,4 @@ module.exports = Object.assign({}, jestConfig, {
   modulePathIgnorePatterns: [
     '<rootDir>/.*/dist/.*',
   ],
-});
+};
