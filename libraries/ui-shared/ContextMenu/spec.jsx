@@ -5,6 +5,7 @@ import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import ContextMenu from './index';
 
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/a11y/components');
 
 global.requestAnimationFrame = fn => fn();
 

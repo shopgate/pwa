@@ -28,6 +28,3 @@ jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/theme-gmd/extensions/reducers', () => null);
 jest.mock('@shopgate/theme-ios11/extensions/reducers', () => null);
 
-jest.mock('focus-trap-react', () => ({
-  FocusTrap: ({ children }) => children,
-}));

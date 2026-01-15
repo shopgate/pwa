@@ -4,17 +4,19 @@ import RootCategory from './index';
 
 jest.mock('@shopgate/engage/components');
 jest.mock('Components/AppBar/presets');
-jest.mock('./connector', () => Component => (
-  <Component categories={[{
-    id: 'cat1',
-    name: 'Cat Name',
-  }]}
+jest.mock('./connector', () => Wrapped => props => (
+  <Wrapped
+    {...props}
+    categories={[{
+      id: 'cat1',
+      name: 'Cat Name',
+    }]}
   />
 ));
 
 describe('Pages: <RootCategory />', () => {
   it('should render ', () => {
-    const wrapper = shallow(RootCategory);
+    const wrapper = shallow(<RootCategory />).dive();
     expect(wrapper).toMatchSnapshot();
   });
 });
