@@ -2,18 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import SimpleInput from './components/SimpleInput';
 import MultiLineInput from './components/MultiLineInput';
-import DateInput from './components/DateInput';
-
-/**
- * @returns {boolean}
- */
-const isDateSupported = () => {
-  const input = document.createElement('input');
-  const value = 'a';
-  input.setAttribute('type', 'date');
-  input.setAttribute('value', value);
-  return (input.value !== value);
-};
 
 /**
  * Input component.
@@ -22,10 +10,6 @@ const isDateSupported = () => {
  * @return {JSX}
  */
 const Factory = (props) => {
-  if (props.type === 'date' && !isDateSupported()) {
-    return <DateInput {...props} />;
-  }
-
   if (props.multiLine) {
     return <MultiLineInput {...props} />;
   }
