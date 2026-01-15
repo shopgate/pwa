@@ -1,5 +1,13 @@
 # Changelog
 
+## [v7.30.0](https://github.com/shopgate/pwa/compare/v7.29.9...v7.30.0) (2026-01-15)
+
+#### :house: Internal
+* [#1441](https://github.com/shopgate/pwa/pull/1441) Update ESLint ([@fkloes](https://github.com/fkloes))
+* [#1419](https://github.com/shopgate/pwa/pull/1419) Update Babel and Jest ([@fkloes](https://github.com/fkloes))
+* [#1417](https://github.com/shopgate/pwa/pull/1417) Update webpack to v5 and increased compatibility with newer npm version ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.29.9](https://github.com/shopgate/pwa/compare/v7.29.8...v7.29.9) (2026-01-14)
 
 #### :bug: Bug Fix
