@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// eslint-disable-next-line import/no-unresolved
 import { SwiperSlide } from 'swiper/react';
 import { item } from './styles';
 
