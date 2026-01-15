@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import {
@@ -48,20 +48,29 @@ const CookieConsentModal = ({
   }, [modalImageSVG, modalImageURL]);
 
   // Button event handlers are throttled to prevent multiple clicks
-  const handleAcceptAllCookies = useCallback(
-    throttle(acceptAllCookies, 1000, { leading: true, trailing: false }),
-    []
-  );
+  const handleAcceptAllCookies = useMemo(() => throttle(acceptAllCookies, 1000, {
+    leading: true,
+    trailing: false,
+  }),
+  [acceptAllCookies]);
 
-  const handleAcceptRequiredCookies = useCallback(
-    throttle(acceptRequiredCookies, 1000, { leading: true, trailing: false }),
-    []
-  );
+  const handleAcceptRequiredCookies = useMemo(() => throttle(acceptRequiredCookies, 1000, {
+    leading: true,
+    trailing: false,
+  }),
+  [acceptRequiredCookies]);
 
-  const handleOpenPrivacySettings = useCallback(
-    throttle(openPrivacySettings, 1000, { leading: true, trailing: false }),
-    []
-  );
+  const handleOpenPrivacySettings = useMemo(() => throttle(openPrivacySettings, 1000, {
+    leading: true,
+    trailing: false,
+  }),
+  [openPrivacySettings]);
+
+  useEffect(() => () => {
+    handleAcceptAllCookies.cancel();
+    handleAcceptRequiredCookies.cancel();
+    handleOpenPrivacySettings.cancel();
+  }, [handleAcceptAllCookies, handleAcceptRequiredCookies, handleOpenPrivacySettings]);
 
   if (!isCookieConsentModalVisible) {
     return null;

@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import classNames from 'classnames';
@@ -43,21 +43,22 @@ const PushOptInModal = ({
   }, [modalImageSVG, modalImageURL]);
 
   // Button event handlers are throttled to prevent multiple clicks
-  const handleAllowPushOptIn = useCallback(
-    throttle(() => allowPushOptIn(), 1000, {
-      leading: true,
-      trailing: false,
-    }),
-    [allowPushOptIn]
-  );
+  const handleAllowPushOptIn = useMemo(() => throttle(allowPushOptIn, 1000, {
+    leading: true,
+    trailing: false,
+  }),
+  [allowPushOptIn]);
 
-  const handleDenyPushOptIn = useCallback(
-    throttle(() => denyPushOptIn(), 1000, {
-      leading: true,
-      trailing: false,
-    }),
-    [denyPushOptIn]
-  );
+  const handleDenyPushOptIn = useMemo(() => throttle(denyPushOptIn, 1000, {
+    leading: true,
+    trailing: false,
+  }),
+  [denyPushOptIn]);
+
+  useEffect(() => () => {
+    handleAllowPushOptIn.cancel();
+    handleDenyPushOptIn.cancel();
+  }, [handleAllowPushOptIn, handleDenyPushOptIn]);
 
   if (!isPushOptInModalVisible) {
     return null;
