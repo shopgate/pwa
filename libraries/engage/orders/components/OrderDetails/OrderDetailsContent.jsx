@@ -16,7 +16,7 @@ const OrderDetailsContent = () => {
   } = useOrderDetails();
 
   return (
-    <Fragment>
+    <>
       { (showForm || order || errorMessage) && (
         <div className={headline}>
           <I18n.Text string="titles.order_details" />
@@ -24,7 +24,7 @@ const OrderDetailsContent = () => {
       )}
       <OrderDetailsAuthenticate />
       <OrderDetailsOrder />
-    </Fragment>
+    </>
   );
 };
 

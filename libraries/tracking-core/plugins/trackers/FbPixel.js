@@ -74,7 +74,7 @@ class FbPixel extends BasePlugin {
     FbPixel.sendToFb('PageView');
 
     // Register for some events
-    /* eslint-disable camelcase */
+
     this.register.completedRegistration((data) => {
       FbPixel.sendToFb('CompleteRegistration', {
         content_name: data.registrationMethod,
@@ -208,7 +208,7 @@ class FbPixel extends BasePlugin {
 
     data.items.forEach((item) => {
       value += this.getPrice(item);
-      currency = item.currency; // eslint-disable-line prefer-destructuring
+      currency = item.currency;
     });
 
     const fbParams = {
@@ -224,7 +224,6 @@ class FbPixel extends BasePlugin {
 
     return fbParams;
   }
-  /* eslint-enable camelcase */
 }
 
 window.SgFbPixelTracking = FbPixel;

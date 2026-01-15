@@ -184,7 +184,7 @@ class ViewContent extends Component {
         keyboardHeight: height,
       });
     }
-  }
+  };
 
   /**
    * @return {JSX.Element}
@@ -213,8 +213,7 @@ class ViewContent extends Component {
                 wrapper={children =>
                   <SurroundPortals portalName={VIEW_CONTENT}>
                     {children}
-                  </SurroundPortals>
-                }
+                  </SurroundPortals>}
               >
                 {this.props.children}
               </ConditionalWrapper>

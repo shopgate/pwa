@@ -18,7 +18,7 @@ const ProductGridPrice = ({ product }) => {
   const { price } = product;
 
   return (
-    <Fragment>
+    <>
       <Grid className={`${styles.priceWrapper} engage__product__product-grid-price`} wrap>
         <Grid.Item grow={1}>
           <Price
@@ -59,10 +59,9 @@ const ProductGridPrice = ({ product }) => {
             <Grid.Item>
               {children}
             </Grid.Item>
-          </Grid>
-        }
+          </Grid>}
       />
-    </Fragment>
+    </>
   );
 };
 

@@ -114,10 +114,10 @@ const PaypalPayButton = ({
   }
 
   return (
-    <Fragment>
+    <>
       <h3 className={styles.headline}>{i18n.text('checkout.finalizePayment')}</h3>
       <div ref={button} />
-    </Fragment>
+    </>
   );
 };
 

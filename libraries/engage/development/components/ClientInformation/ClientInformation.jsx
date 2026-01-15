@@ -74,8 +74,7 @@ const ClientInformation = () => {
             isOpen={developmentSettingsVisible}
             onClose={() => setDevelopmentSettingsVisible(false)}
           />
-        </>
-      }
+        </>}
     </div>
   );
 };

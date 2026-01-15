@@ -265,8 +265,7 @@ class Login extends Component {
                       onKeyDown={this.handlePasswordToggleKeyDown}
                       aria-label={this.state.isPasswordVisible
                         ? i18n.text('login.hide_password')
-                        : i18n.text('login.show_password')
-                      }
+                        : i18n.text('login.show_password')}
                       className={styles.toggleButton}
                     >
                       <VisibilityToggleIcon className={classNames(styles.icon, styles.iconRight)} />

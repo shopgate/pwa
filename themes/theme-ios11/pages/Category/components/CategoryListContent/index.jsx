@@ -33,7 +33,7 @@ class CategoryListContent extends PureComponent {
     categoriesFetching: false,
     childrenCount: 6,
     hasChildren: false,
-  }
+  };
 
   /**
    * @returns {JSX}
@@ -44,7 +44,7 @@ class CategoryListContent extends PureComponent {
     } = this.props;
 
     return (
-      <Fragment>
+      <>
         <Portal name={CATEGORY_LIST_BEFORE} props={{ categoryId }} />
         <Portal name={CATEGORY_LIST} props={{ categoryId }}>
           {hasChildren && (
@@ -60,7 +60,7 @@ class CategoryListContent extends PureComponent {
           )}
         </Portal>
         <Portal name={CATEGORY_LIST_AFTER} props={{ categoryId }} />
-      </Fragment>
+      </>
     );
   }
 }

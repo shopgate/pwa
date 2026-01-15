@@ -15,12 +15,12 @@ const Section = ({ children, title }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Headline style={styles.headline} text={title} />
       <div className={styles.list}>
         {children}
       </div>
-    </Fragment>
+    </>
   );
 };
 

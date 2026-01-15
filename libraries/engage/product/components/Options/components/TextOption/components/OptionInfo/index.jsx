@@ -35,8 +35,7 @@ const OptionInfo = ({
       {required &&
         <Grid.Item className={styles.required} aria-hidden>
           <I18n.Text string="common.required" />
-        </Grid.Item>
-      }
+        </Grid.Item>}
       {!!price &&
         <Grid.Item grow={1} className={styles.price} aria-hidden>
           {`${label}: `}
@@ -44,8 +43,7 @@ const OptionInfo = ({
             currency={currency}
             price={price}
           />
-        </Grid.Item>
-      }
+        </Grid.Item>}
       <div hidden id={optionInfoId}>
         { ariaRequired }
         { ariaPrice }

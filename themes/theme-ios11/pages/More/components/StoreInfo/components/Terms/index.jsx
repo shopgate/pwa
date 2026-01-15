@@ -14,13 +14,13 @@ import Item from '../../../Item';
  * @returns {JSX.Element}
  */
 const Terms = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_TERMS_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_TERMS} props={portalProps}>
       <Item href={TERMS_PATH} label="navigation.terms" />
     </Portal>
     <Portal name={NAV_MENU_TERMS_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default Terms;

@@ -20,7 +20,7 @@ function FilterBarContent({ onChipCountUpdate }) {
   const { filters } = state;
 
   return (
-    <Fragment>
+    <>
       <div className={styles}>
         <Sort />
         <FilterButton openFilters={openFilters} />
@@ -32,7 +32,7 @@ function FilterBarContent({ onChipCountUpdate }) {
         scrollTop={scrollTop}
         onChipCountUpdate={onChipCountUpdate}
       />
-    </Fragment>
+    </>
   );
 }
 

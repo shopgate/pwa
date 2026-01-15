@@ -116,7 +116,7 @@ function ReserveFormUnwrapped() {
   }, [picker, someoneElseRef]);
 
   return (
-    <Fragment>
+    <>
       <div className={progressBar}>
         <ProgressBar isVisible={isSubmitting} />
       </div>
@@ -214,7 +214,7 @@ function ReserveFormUnwrapped() {
           {i18n.text('locations.place_reservation')}
         </RippleButton>
       </form>
-    </Fragment>
+    </>
   );
 }
 

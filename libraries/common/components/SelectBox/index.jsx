@@ -193,8 +193,7 @@ class SelectBox extends Component {
             onTouchMove={this.handleInteractionOutside}
             type="button"
             aria-hidden
-          />
-        }
+          />}
       </div>
     );
   }

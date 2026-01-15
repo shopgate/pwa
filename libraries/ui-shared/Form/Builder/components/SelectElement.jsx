@@ -38,7 +38,7 @@ class SelectElement extends PureComponent {
     } = this.props;
 
     return (
-      <Fragment>
+      <>
         <Select
           name={name}
           className={style.fields}
@@ -52,7 +52,7 @@ class SelectElement extends PureComponent {
           translateErrorText={false}
         />
         <Chevron />
-      </Fragment>
+      </>
     );
   }
 }

@@ -28,7 +28,7 @@ jest.mock('../../../helpers', () => ({
 class MockedAppCommandRequest extends AppCommandRequest {
   logGroupSpy = logGroup;
 
-  errorLoggerMock = logger.error
+  errorLoggerMock = logger.error;
 
   hasSGJavaScriptBridgeMock = hasSGJavaScriptBridge;
 

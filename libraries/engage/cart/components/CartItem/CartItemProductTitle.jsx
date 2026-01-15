@@ -65,8 +65,7 @@ export function CartItemProductTitle({ value, productId }) {
           wrapper={children =>
             <TextLink href={`${ITEM_PATH}/${bin2hex(productId)}`}>
               {children}
-            </TextLink>
-          }
+            </TextLink>}
         >
           <ProductName
             name={value}

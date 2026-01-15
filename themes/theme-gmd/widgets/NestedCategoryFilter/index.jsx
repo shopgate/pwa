@@ -22,19 +22,19 @@ class NestedCategoryFilter extends PureComponent {
       categoryNumber: PropTypes.string.isRequired,
       limit: PropTypes.string.isRequired,
       headline: PropTypes.string.isRequired,
-      /* eslint-disable camelcase */
+
       label_1: PropTypes.string.isRequired,
       label_2: PropTypes.string.isRequired,
       label_3: PropTypes.string.isRequired,
       label_4: PropTypes.string.isRequired,
-      /* eslint-enable camelcase */
+
     }).isRequired,
     persistedState: PropTypes.shape(),
-  }
+  };
 
   static defaultProps = {
     persistedState: null,
-  }
+  };
 
   /**
    * The component constructor.
@@ -94,7 +94,7 @@ class NestedCategoryFilter extends PureComponent {
       pickers: updatedPickers,
       buttonCategoryId: !appendNewPicker ? subcategoryId : null,
     });
-  }
+  };
 
   /**
    * Creates the pickers.

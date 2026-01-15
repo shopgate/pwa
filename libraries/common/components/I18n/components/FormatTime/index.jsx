@@ -8,12 +8,12 @@ import { i18n } from '@shopgate/engage/core/helpers/i18n';
  * @returns {JSX}
  */
 const FormatTime = ({ timestamp, format }) => (
-  <Fragment>
+  <>
     {FormatTime.format({
       timestamp,
       format,
     })}
-  </Fragment>
+  </>
 );
 
 FormatTime.format = ({ timestamp, format }) => {

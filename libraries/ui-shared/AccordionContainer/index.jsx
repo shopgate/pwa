@@ -8,11 +8,11 @@ class AccordionContainer extends Component {
   static propTypes = {
     children: PropTypes.func.isRequired,
     open: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     open: false,
-  }
+  };
 
   /**
    * Init
@@ -27,11 +27,11 @@ class AccordionContainer extends Component {
 
   open = () => {
     this.setState({ open: true });
-  }
+  };
 
   close = () => {
     this.setState({ open: false });
-  }
+  };
 
   /**
    * @returns {JSX}

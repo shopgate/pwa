@@ -14,13 +14,13 @@ import Item from '../../../Item';
  * @returns {JSX}
  */
 const Imprint = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_IMPRINT_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_IMPRINT} props={portalProps}>
       <Item href={IMPRINT_PATH} label="navigation.about" />
     </Portal>
     <Portal name={NAV_MENU_IMPRINT_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default Imprint;

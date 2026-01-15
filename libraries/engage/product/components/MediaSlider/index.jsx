@@ -69,8 +69,7 @@ const MediaSlider = ({
                 </Swiper.Item>
               );
             })}
-          </Swiper>
-        }
+          </Swiper>}
       </SurroundPortals>
     </div>
   );

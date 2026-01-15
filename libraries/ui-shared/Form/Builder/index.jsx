@@ -65,14 +65,14 @@ class Builder extends Component {
       path: PropTypes.string,
       message: PropTypes.string,
     })),
-  }
+  };
 
   static defaultProps = {
     className: '',
     defaults: {},
     onSubmit: () => {},
     validationErrors: [],
-  }
+  };
 
   /**
    * Initializes the component.
@@ -348,25 +348,23 @@ class Builder extends Component {
    */
   render() {
     return (
-      <Fragment>
-        <Form onSubmit={this.props.onSubmit}>
-          <div className={this.props.className}>
-            {this.formElements.map(element => (
-              <Fragment key={`${this.props.name}.${element.id}`}>
-                <Portal
-                  name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
-                />
-                <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
-                  { this.renderElement(element) }
-                </Portal>
-                <Portal
-                  name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}
-                />
-              </Fragment>
-            ))}
-          </div>
-        </Form>
-      </Fragment>
+      <Form onSubmit={this.props.onSubmit}>
+        <div className={this.props.className}>
+          {this.formElements.map(element => (
+            <Fragment key={`${this.props.name}.${element.id}`}>
+              <Portal
+                name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${BEFORE}`}
+              />
+              <Portal name={`${sanitize(this.props.name)}.${sanitize(element.id)}`}>
+                { this.renderElement(element) }
+              </Portal>
+              <Portal
+                name={`${sanitize(this.props.name)}.${sanitize(element.id)}.${AFTER}`}
+              />
+            </Fragment>
+          ))}
+        </div>
+      </Form>
     );
   }
 }

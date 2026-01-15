@@ -38,12 +38,12 @@ const CartItemProduct = () => {
     <CardListItem className={cartItemsDisplay === 'card' ? noGap : null}>
       <div ref={cartItemRef} data-test-id="cartItem">
         <ResponsiveContainer appAlways breakpoint="<=xs">
-          <Fragment>
+          <>
             {messages.length > 0 && (
               <MessageBar messages={messages} classNames={messageStyles[cartItemsDisplay]} />
             )}
             <CartItemProductLayout />
-          </Fragment>
+          </>
         </ResponsiveContainer>
         <ResponsiveContainer webOnly breakpoint=">xs">
           <CartItemProductLayoutWide />

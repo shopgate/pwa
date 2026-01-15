@@ -62,7 +62,7 @@ class TabBarFavoritesAction extends Component {
     const ariaLabel = `${i18n.text(label)}. ${ariaCount} `;
 
     return (
-      <Fragment>
+      <>
         <Portal
           name={portals.TAB_BAR_FAVORITES_BEFORE}
           props={{
@@ -97,7 +97,7 @@ class TabBarFavoritesAction extends Component {
             TabBarAction,
           }}
         />
-      </Fragment>
+      </>
     );
   }
 }

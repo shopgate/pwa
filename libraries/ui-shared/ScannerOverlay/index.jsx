@@ -10,11 +10,11 @@ import ScannerBar from './components/ScannerBar';
 class ScannerOverlay extends PureComponent {
   static propTypes = {
     flashlight: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     flashlight: false,
-  }
+  };
 
   /**
    * Initializes the component.
@@ -39,7 +39,7 @@ class ScannerOverlay extends PureComponent {
 
   handleToggleFlashlight = () => {
     this.setState({ flashlight: AppScanner.toggleFlashlight() });
-  }
+  };
 
   /**
    * Render the camera overlay and the bottom bar with its contents.
@@ -47,13 +47,13 @@ class ScannerOverlay extends PureComponent {
    */
   render() {
     return (
-      <Fragment>
+      <>
         <CameraOverlay />
         <ScannerBar
           flashlightState={this.state.flashlight}
           onToggleFlashlight={this.handleToggleFlashlight}
         />
-      </Fragment>
+      </>
     );
   }
 }

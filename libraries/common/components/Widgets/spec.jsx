@@ -162,7 +162,6 @@ describe('<Widgets />', () => {
     const scheduledFromMs = (Date.now() + msToNextFullHour) - 1;
     const scheduledToMs = Date.now() + minutesToNextFullHour + 1000;
 
-    /* eslint-disable camelcase */
     const widgets = [
       {
         col: 0,
@@ -181,7 +180,6 @@ describe('<Widgets />', () => {
         type: '@shopgate/commerce-widgets/image',
       },
     ];
-    /* eslint-enable camelcase */
 
     const wrapper = createWrapper(widgets);
     const instance = wrapper.find('Widgets').instance();

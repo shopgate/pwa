@@ -55,7 +55,7 @@ class Options extends PureComponent {
 
       this.context.setOption(option.id, option.items[0].value, option.items[0].price);
     });
-  }
+  };
 
   /**
    * Renders the component

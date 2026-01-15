@@ -14,7 +14,7 @@ export default class ScannerEventHandler {
    */
   attach = (eventListener) => {
     this.eventListeners.add(eventListener);
-  }
+  };
 
   /**
    * @param {ScannerEventListener} eventListener The event listener to detach from the handler.
@@ -43,5 +43,5 @@ export default class ScannerEventHandler {
 
     // Forward occurring errors only, because there should be no return value from "notify"
     return Promise.all(notifyResults).then(() => {});
-  }
+  };
 }

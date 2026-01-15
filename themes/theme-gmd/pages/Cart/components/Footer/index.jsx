@@ -15,11 +15,11 @@ const Footer = ({ showTaxDisclaimer, showCouponsHint }) => {
   const { flags } = useContext(CartContext);
 
   return (
-    <Fragment>
+    <>
       {!flags[FLAG_MULTI_LINE_RESERVE] && showCouponsHint && <CouponsHint />}
       {flags[FLAG_MULTI_LINE_RESERVE] && <SupplementalContent className={supplementalContent} />}
       {showTaxDisclaimer && <TaxDisclaimer />}
-    </Fragment>
+    </>
   );
 };
 

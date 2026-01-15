@@ -14,7 +14,7 @@ import Item from '../../../Item';
  * @returns {JSX.Element}
  */
 const PrivacySettings = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_PRIVACY_SETTINGS_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_PRIVACY_SETTINGS} props={portalProps}>
       <Item
@@ -23,7 +23,7 @@ const PrivacySettings = () => (
       />
     </Portal>
     <Portal name={NAV_MENU_PRIVACY_SETTINGS_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default PrivacySettings;

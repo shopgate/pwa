@@ -76,7 +76,7 @@ const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
   if (!renderIcon) {
     return (
       <CartTotalLine className={styles.line}>
-        <Fragment>
+        <>
           <div
             className={classNames(styles.textWrapper, {
               [styles.loading]: isLoading,
@@ -84,7 +84,7 @@ const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
             dangerouslySetInnerHTML={{ __html: nl2br(text) }}
           />
           <CartTotalLine.Spacer className={spacer} />
-        </Fragment>
+        </>
       </CartTotalLine>
     );
   }

@@ -44,7 +44,7 @@ class Characteristics extends PureComponent {
         characteristics={characteristics}
       />
     );
-  }
+  };
 
   /**
    * @see ProductCharacteristics.render
@@ -63,7 +63,7 @@ class Characteristics extends PureComponent {
    */
   render() {
     return (
-      <Fragment>
+      <>
         <Portal name={PRODUCT_VARIANT_SELECT_BEFORE} />
         <Portal name={PRODUCT_VARIANT_SELECT}>
           <ProductContext.Consumer>
@@ -71,7 +71,7 @@ class Characteristics extends PureComponent {
           </ProductContext.Consumer>
         </Portal>
         <Portal name={PRODUCT_VARIANT_SELECT_AFTER} />
-      </Fragment>
+      </>
     );
   }
 }

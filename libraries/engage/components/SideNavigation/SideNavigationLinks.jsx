@@ -25,7 +25,7 @@ const SideNavigationLinks = () => {
     currentPathname === WISH_LIST_PATH;
 
   return (
-    <Fragment>
+    <>
       <SideNavigationItem href={CART_PATH} label="navigation.cart" />
       {!isLoggedIn && appConfig.hasFavorites ? (
         <SideNavigationItem href={FAVORITES_PATH} label="navigation.favorites" />
@@ -53,7 +53,7 @@ const SideNavigationLinks = () => {
       ) : (
         <SideNavigationItem href={LOGIN_PATH} label="navigation.login_register" />
       )}
-    </Fragment>
+    </>
   );
 };
 

@@ -193,7 +193,6 @@ describe('Format helpers', () => {
 
   describe('addToWishlist()', () => {
     it('should format event data', () => {
-      /* eslint-disable camelcase */
       const raw = {
         favouriteListProducts: [{
           ...mockBaseProduct,
@@ -202,7 +201,6 @@ describe('Format helpers', () => {
           unit_amount_with_tax: (mockBaseProduct.amount.gross * 100).toString(),
         }],
       };
-      /* eslint-enable camelcase */
 
       const { quantity, brand, ...expectedItems } = expectedProduct;
 

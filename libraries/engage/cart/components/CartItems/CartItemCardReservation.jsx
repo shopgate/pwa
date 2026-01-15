@@ -39,7 +39,7 @@ const CartItemCardReservation = ({ location, fulfillmentMethod }) => {
   }
 
   return (
-    <React.Fragment>
+    <>
       <ResponsiveContainer webOnly breakpoint=">xs">
         { !isOrderDetails && (
           <CartItemCardReservationAccordion
@@ -59,7 +59,7 @@ const CartItemCardReservation = ({ location, fulfillmentMethod }) => {
           />
         )}
       </ResponsiveContainer>
-    </React.Fragment>
+    </>
   );
 };
 

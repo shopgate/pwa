@@ -22,7 +22,7 @@ const LABEL = 'navigation.terms';
  * @returns {JSX.Element}
  */
 const TermsButton = ({ navigate }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_TERMS_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_TERMS} props={portalProps}>
       <NavDrawer.Item
@@ -33,7 +33,7 @@ const TermsButton = ({ navigate }) => (
       />
     </Portal>
     <Portal name={NAV_MENU_TERMS_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 TermsButton.propTypes = {

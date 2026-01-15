@@ -213,8 +213,7 @@ function StoreListSearch({
           classNames={{
             icon: iconClass,
           }}
-        />
-      }
+        />}
     </SurroundPortals>
   );
 }

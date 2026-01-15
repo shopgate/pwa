@@ -40,7 +40,7 @@ class BrowserConnector {
 
     const query = Object.keys(input).map(key => (`${key}=${input[key]}`)).join('&');
     return `?${query}`;
-  }
+  };
 
   /**
    * @return {string}
@@ -212,7 +212,7 @@ class BrowserConnector {
     });
 
     return this;
-  }
+  };
 }
 
 export default BrowserConnector;

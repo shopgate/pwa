@@ -14,7 +14,7 @@ import AppContext from '../contexts/AppContext';
 class AppProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
-  }
+  };
 
   /**
    * @param {Object} props The component props.
@@ -55,14 +55,14 @@ class AppProvider extends Component {
    */
   setVisible = () => {
     this.setIsVisible(true);
-  }
+  };
 
   /**
    * Sets the isVisible state to TRUE.
    */
   setHidden = () => {
     this.setIsVisible(false);
-  }
+  };
 
   /**
    * Sets the isVisible state. It indicates if Engage is visible,

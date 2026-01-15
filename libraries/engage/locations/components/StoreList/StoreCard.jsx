@@ -15,10 +15,10 @@ export function StoreCard() {
   }
 
   return (
-    <Fragment>
+    <>
       <StoreHeader />
       <StoreDetails />
       <StoreSelectLocationButton />
-    </Fragment>
+    </>
   );
 }

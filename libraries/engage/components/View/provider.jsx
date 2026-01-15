@@ -23,7 +23,7 @@ class ViewProvider extends Component {
   static propTypes = {
     children: PropTypes.node.isRequired,
     modalCount: PropTypes.number.isRequired,
-  }
+  };
 
   /**
    * @param {Object} props The component props.
@@ -79,35 +79,35 @@ class ViewProvider extends Component {
   handleModalShow = () => {
     this.activeElement = document.activeElement;
     this.setAriaHidden(true);
-  }
+  };
 
   handleModalHide = () => {
     if (this.activeElement && this.activeElement.focus) {
       this.activeElement.focus();
     }
     this.setAriaHidden(false);
-  }
+  };
 
   /**
    * @param {number} value The new top value;
    */
   setTop = (value) => {
     this.set('top', value);
-  }
+  };
 
   /**
    * @param {number} value The new bottom value;
    */
   setBottom = (value) => {
     this.set('bottom', value);
-  }
+  };
 
   /**
    * @param {boolean} value The new aria hidden value;
    */
   setAriaHidden = (value) => {
     this.set('ariaHidden', value);
-  }
+  };
 
   /**
    * @param {Object} ref A React reference to the page content wrapper.
@@ -116,7 +116,7 @@ class ViewProvider extends Component {
     this.set('contentRef', ref);
     // Delay to dispatch actual DOM node - implemented with CCP-2358
     delay(() => emitScrollEvents(ref.current), 250);
-  }
+  };
 
   /**
    * @return {Object}
@@ -132,7 +132,7 @@ class ViewProvider extends Component {
     if (current) {
       current.scrollTop = value;
     }
-  }
+  };
 
   /**
    * @param {string} property The state property to set.
@@ -144,7 +144,7 @@ class ViewProvider extends Component {
         [property]: value,
       });
     }
-  }
+  };
 
   /**
    * @returns {JSX}

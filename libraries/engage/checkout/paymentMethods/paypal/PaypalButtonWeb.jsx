@@ -71,7 +71,7 @@ const PaypalButton = ({
   }, [marks]);
 
   return (
-    <Fragment>
+    <>
       {marks.map(([, fundingSource], index) => {
         const isButtonActive = fundingSource === paypal.FUNDING.PAYPAL && !activeFundingSource
           ? active
@@ -87,7 +87,7 @@ const PaypalButton = ({
           </Button>
         );
       })}
-    </Fragment>
+    </>
   );
 };
 

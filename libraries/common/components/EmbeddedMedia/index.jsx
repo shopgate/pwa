@@ -44,7 +44,7 @@ const EmbeddedMedia = ({ children, cookieConsentSettings }) => {
   }));
 
   return (
-    <Fragment>
+    <>
       <Helmet
         script={scripts}
         // Helmet doesn't support `onload` in script objects so we have to hack in our own
@@ -53,7 +53,7 @@ const EmbeddedMedia = ({ children, cookieConsentSettings }) => {
         }
       />
       {children}
-    </Fragment>
+    </>
   );
 };
 

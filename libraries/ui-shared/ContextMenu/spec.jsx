@@ -23,13 +23,13 @@ describe('<ContextMenu />', () => {
             onClick={mockItemAClick}
             className="menu-active-item"
           >
-            {'Item A'}
+            Item A
           </ContextMenu.Item>
           <ContextMenu.Item
             onClick={mockItemBClick}
             className="menu-active-item"
           >
-            {'Item B'}
+            Item B
           </ContextMenu.Item>
         </ContextMenu>
       ));
@@ -43,7 +43,7 @@ describe('<ContextMenu />', () => {
             onClick={mockItemAClick}
             className="menu-active-item"
           >
-            {'Item A'}
+            Item A
           </ContextMenu.Item>
         </ContextMenu>
       ));

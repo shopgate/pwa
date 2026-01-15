@@ -14,11 +14,11 @@ class AddToCartButton extends PureComponent {
     itemCount: PropTypes.number.isRequired,
     openCart: PropTypes.func.isRequired,
     onReset: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     onReset: () => { },
-  }
+  };
 
   static contextTypes = {
     i18n: PropTypes.func,
@@ -68,7 +68,7 @@ class AddToCartButton extends PureComponent {
     });
 
     openCart();
-  }
+  };
 
   /**
    * Renders the component.
