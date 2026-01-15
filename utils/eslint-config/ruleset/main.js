@@ -166,5 +166,9 @@ module.exports = {
       '.json',
       '.jsx',
     ],
+    'import/resolver': {
+      exports: {},
+      node: {},
+    },
   },
 };
