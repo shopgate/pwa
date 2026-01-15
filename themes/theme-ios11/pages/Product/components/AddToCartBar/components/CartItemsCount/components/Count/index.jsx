@@ -60,7 +60,7 @@ class Count extends Component {
 
   handleOnExited = () => {
     this.setState({ in: true });
-  }
+  };
 
   /**
    * Render the component.

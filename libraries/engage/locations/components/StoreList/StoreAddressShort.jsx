@@ -36,7 +36,7 @@ export function StoreAddressShort({ address, showFull }) {
     >
       <StoreDetailsLine icon={LocationIcon} linked>
         { showFull && (
-          <Fragment>
+          <>
             <p className={detailsPrimary}>
               {address.street}
             </p>
@@ -55,7 +55,7 @@ export function StoreAddressShort({ address, showFull }) {
                 {address.street4}
               </p>
             )}
-          </Fragment>
+          </>
         )}
 
         <Ellipsis rows={1} className={detailsPrimary}>

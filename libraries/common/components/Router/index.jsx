@@ -76,12 +76,12 @@ class Router extends React.Component {
     children: PropTypes.node.isRequired,
     history: PropTypes.func,
     isUserLoggedIn: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     history: null,
     isUserLoggedIn: false,
-  }
+  };
 
   static Push = OrigRouter.Push;
 
@@ -102,6 +102,8 @@ class Router extends React.Component {
     if (typeof props.history === 'function') {
       router.constructor(props.history);
     }
+
+    this.contextValue = null;
 
     this.state = {
       prev: null,
@@ -181,6 +183,7 @@ class Router extends React.Component {
         },
       });
 
+      // eslint-disable-next-line react/no-will-update-set-state
       this.setState({
         initialRouteProtected: false,
       });
@@ -208,13 +211,13 @@ class Router extends React.Component {
   getHistoryLocation = () => {
     const { hash, pathname, search } = router.history.location;
     return sanitizeLink(`${pathname}${search}${hash}`);
-  }
+  };
 
   /**
    * Determines if the current route is a protected route
    * @returns {null|string}
    */
-  getRouteProtector = () => authRoutes.getProtector(this.getHistoryLocation())
+  getRouteProtector = () => authRoutes.getProtector(this.getHistoryLocation());
 
   /**
    * @param {Object} data Data for the update method
@@ -238,7 +241,7 @@ class Router extends React.Component {
       next: next.id,
       updated: Date.now(),
     });
-  }
+  };
 
   /**
    * @returns {JSX}
@@ -259,8 +262,24 @@ class Router extends React.Component {
 
     const stack = Array.from(routeStack.getAll());
 
+    const nextContextValue = {
+      prev,
+      next,
+      stack,
+    };
+
+    // Only update the reference if something actually changed.
+    if (
+      !this.contextValue ||
+      this.contextValue.prev !== prev ||
+      this.contextValue.next !== next ||
+      this.contextValue.stack !== stack
+    ) {
+      this.contextValue = nextContextValue;
+    }
+
     return (
-      <RouterContext.Provider value={{ prev, next, stack }}>
+      <RouterContext.Provider value={this.contextValue}>
         {children}
       </RouterContext.Provider>
     );

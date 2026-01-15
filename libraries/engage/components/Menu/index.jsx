@@ -50,21 +50,6 @@ class Menu extends Component {
   }
 
   /**
-   * Handles any menu toggling interactions.
-   * @param {Object} [e] Event
-   */
-  handleMenuToggle = (e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
-    if (this.props.contextRef?.current) {
-      this.props.onClose();
-    }
-  };
-
-  /**
    * Renders the component.
    * @returns {JSX}
    */

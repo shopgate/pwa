@@ -26,7 +26,7 @@ class TimeBoundary extends Component {
   static defaultProps = {
     end: null,
     start: null,
-  }
+  };
 
   /**
    * @inheritDoc
@@ -61,7 +61,7 @@ class TimeBoundary extends Component {
     if (this.intervalSubscription) {
       this.intervalSubscription.unsubscribe();
     }
-  }
+  };
 
   /**
    * Check time boundary.
@@ -82,16 +82,16 @@ class TimeBoundary extends Component {
       // already after, stop timer
       this.clear();
     }
-  }
+  };
 
   /**
    * @returns {JSX}
    */
   render() {
     return (
-      <Fragment>
+      <>
         {this.props.children(this.state)}
-      </Fragment>
+      </>
     );
   }
 }

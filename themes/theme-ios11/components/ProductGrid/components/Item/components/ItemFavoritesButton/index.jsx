@@ -31,7 +31,7 @@ class ItemFavoritesButton extends PureComponent {
     const props = { productId };
 
     return (
-      <Fragment>
+      <>
         <Portal name={PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_FAVORITES_BUTTON} props={props}>
           <div className={styles} data-test-id="favorites">
@@ -44,7 +44,7 @@ class ItemFavoritesButton extends PureComponent {
           </div>
         </Portal>
         <Portal name={PRODUCT_ITEM_FAVORITES_BUTTON_AFTER} props={props} />
-      </Fragment>
+      </>
     );
   }
 }

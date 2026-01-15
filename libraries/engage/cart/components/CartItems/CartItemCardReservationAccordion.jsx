@@ -27,8 +27,7 @@ const CartItemCardReservationAccordion = ({
       <CartItemCardReservationLabel
         location={location}
         fulfillmentMethod={fulfillmentMethod}
-      />
-    }
+      />}
   >
     <div className={accordionContent}>
       <div className={locationAddress}>

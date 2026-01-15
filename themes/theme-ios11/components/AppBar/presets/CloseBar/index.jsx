@@ -19,13 +19,13 @@ function CloseBar({ goBack, ...props }) {
   const left = <DefaultBar.Icon aria-label={i18n.text('common.close')} icon={CrossIcon} onClick={goBack} />;
 
   return (
-    <Fragment>
+    <>
       <Portal name={APP_BAR_CLOSE_BEFORE} />
       <Portal name={APP_BAR_CLOSE}>
         <DefaultBar left={left} right={null} {...props} />
       </Portal>
       <Portal name={APP_BAR_CLOSE_AFTER} />
-    </Fragment>
+    </>
   );
 }
 

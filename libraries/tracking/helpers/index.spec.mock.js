@@ -1,3 +1,4 @@
+/* eslint-disable extra-rules/no-single-line-objects */
 export const checkoutOrder = {
   orderNumber: '1292',
   externalCode: null,
@@ -328,3 +329,5 @@ export const checkoutOrder = {
     },
   },
 };
+
+/* eslint-enable extra-rules/no-single-line-objects */

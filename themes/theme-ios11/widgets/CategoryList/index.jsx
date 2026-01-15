@@ -58,7 +58,7 @@ class CategoryListWidget extends Component {
     }
 
     return (
-      <Fragment>
+      <>
         {(settings.headline) && <Headline text={settings.headline} />}
         <SheetList hasImages={settings.showImages}>
           {items.map((item) => {
@@ -81,7 +81,7 @@ class CategoryListWidget extends Component {
             );
           })}
         </SheetList>
-      </Fragment>
+      </>
     );
   }
 }

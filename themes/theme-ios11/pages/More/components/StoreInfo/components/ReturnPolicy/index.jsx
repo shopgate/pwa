@@ -15,7 +15,7 @@ import Item from '../../../Item';
  * @returns {JSX.Element}
  */
 const ReturnPolicy = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_RETURN_POLICY_BEFORE} props={portalProps} />
     {showReturnPolicy && (
       <Portal name={NAV_MENU_RETURN_POLICY} props={portalProps}>
@@ -23,7 +23,7 @@ const ReturnPolicy = () => (
       </Portal>
     )}
     <Portal name={NAV_MENU_RETURN_POLICY_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default ReturnPolicy;

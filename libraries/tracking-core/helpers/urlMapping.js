@@ -2,8 +2,6 @@
  * Data modifier for urls
  */
 
-/* eslint-disable camelcase */
-
 // Contains a list of url parameter names that will be removed from the url
 const urlParameterBlacklist = [
   // Tracking parameters that come after switching from http to https
@@ -146,4 +144,3 @@ function sgTrackingUrlMapper(url, data) {
 
 export default sgTrackingUrlMapper;
 
-/* eslint-enable camelcase */

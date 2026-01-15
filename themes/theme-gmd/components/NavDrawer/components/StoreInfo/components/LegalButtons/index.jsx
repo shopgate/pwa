@@ -68,8 +68,7 @@ const LegalButtons = ({ legalPages, navigate }) => {
           wrapper={children =>
             <SurroundPortals portalName={portalName} portalProps={portalProps}>
               {children}
-            </SurroundPortals>
-          }
+            </SurroundPortals>}
         >
           <NavDrawer.Item
             label={label}

@@ -14,13 +14,13 @@ import Item from '../../../Item';
  * @returns {JSX.Element}
  */
 const Payment = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_PAYMENT_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_PAYMENT} props={portalProps}>
       <Item href={PAYMENT_PATH} label="navigation.payment" />
     </Portal>
     <Portal name={NAV_MENU_PAYMENT_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default Payment;

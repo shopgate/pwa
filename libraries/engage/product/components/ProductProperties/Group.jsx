@@ -9,6 +9,7 @@ import { subgroup } from './style';
  */
 const Group = ({ group }) => (
   <tr>
+    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
     <td colSpan="2" className={subgroup}>
       <span dangerouslySetInnerHTML={{ __html: group }} />
     </td>

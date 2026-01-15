@@ -19,7 +19,7 @@ const LABEL = 'navigation.categories';
  * @returns {JSX}
  */
 const CategoryButton = ({ navigate }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_CATEGORIES_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_CATEGORIES} props={portalProps}>
       <NavDrawer.Item
@@ -30,7 +30,7 @@ const CategoryButton = ({ navigate }) => (
       />
     </Portal>
     <Portal name={NAV_MENU_CATEGORIES_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 CategoryButton.propTypes = {

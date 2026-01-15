@@ -15,6 +15,7 @@ const getRegisterUrl = (url, redirect = '') => {
   const redirectTo = (redirect && !redirect.startsWith(CHECKOUT_PATH)) ? redirect : INDEX_PATH;
 
   // Build the callback data.
+
   parsed.query.sgcloud_callback_data = JSON.stringify({ redirectTo });
 
   // Explicitly check if we are about to be redirected to the checkout.

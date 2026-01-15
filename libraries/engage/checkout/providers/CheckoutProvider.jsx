@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 import React, {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
@@ -119,9 +118,9 @@ const CheckoutProvider = ({
   const [validationRules, setValidationRules] = useState(selfPickupConstraints);
   const [updateOptIns, setUpdateOptIns] = useState(false);
 
-  const defaultOptInFormState = {
+  const defaultOptInFormState = useMemo(() => ({
     ...initialOptInFormState,
-  };
+  }), []);
 
   const optInFormState = useFormState(
     defaultOptInFormState,
@@ -539,7 +538,7 @@ CheckoutProvider.propTypes = {
   historyReplace: PropTypes.func.isRequired,
   isDataReady: PropTypes.bool.isRequired,
   pathPattern: PropTypes.string.isRequired,
-  paymentTransactions: PropTypes.arrayOf(PropTypes.object).isRequired,
+  paymentTransactions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   prepareCheckout: PropTypes.func.isRequired,
   shopSettings: PropTypes.shape({
     supportedCountries: PropTypes.arrayOf(PropTypes.string),
@@ -547,7 +546,7 @@ CheckoutProvider.propTypes = {
   }).isRequired,
   showModal: PropTypes.func.isRequired,
   submitCheckoutOrder: PropTypes.func.isRequired,
-  taxLines: PropTypes.arrayOf(PropTypes.object).isRequired,
+  taxLines: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   updateCheckoutOrder: PropTypes.func.isRequired,
   userLocation: PropTypes.shape({
     latitude: PropTypes.number,
@@ -592,4 +591,4 @@ CheckoutProvider.defaultProps = {
 };
 
 export default connect(CheckoutProvider);
-/* eslint-enable no-unused-expressions */
+

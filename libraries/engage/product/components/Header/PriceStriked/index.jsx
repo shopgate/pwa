@@ -28,19 +28,19 @@ const PriceStriked = ({ price }) => {
   } = useWidgetSettings('@shopgate/engage/product/components/Header/PriceStriked');
 
   return (
-    <Fragment>
+    <>
       <Portal name={PRODUCT_PRICE_STRIKED_BEFORE} />
       <Portal name={PRODUCT_PRICE_STRIKED}>
         <PlaceholderLabel className={styles.placeholder} ready={(price !== null)}>
           {(price && price.msrp > 0 && price.unitPrice !== price.msrp) && (
-            <Fragment>
+            <>
               {!!msrpLabel && (<I18n.Text string={msrpLabel} className={styles.msrp} />)}
               <StrikePrice
                 className={styles.msrpStriked}
                 value={price.msrp}
                 currency={price.currency}
               />
-            </Fragment>
+            </>
           )}
           {(price &&
             !price.msrp &&
@@ -57,7 +57,7 @@ const PriceStriked = ({ price }) => {
         </PlaceholderLabel>
       </Portal>
       <Portal name={PRODUCT_PRICE_STRIKED_AFTER} />
-    </Fragment>
+    </>
   );
 };
 

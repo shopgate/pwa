@@ -20,7 +20,7 @@ class IntersectionVisibility extends Component {
    */
   static buildThresholdList = steps => (
     Array(steps).fill(0).map((v, i) => (i + 1) / steps)
-  )
+  );
 
   static propTypes = {
     children: PropTypes.func.isRequired,
@@ -29,7 +29,7 @@ class IntersectionVisibility extends Component {
 
   static defaultProps = {
     thresholds: IntersectionVisibility.buildThresholdList(10),
-  }
+  };
 
   state = {
     visible: true,
@@ -69,7 +69,7 @@ class IntersectionVisibility extends Component {
     if (this.io) {
       this.io.observe(this.node);
     }
-  }
+  };
 
   /**
    * @param {IntersectionObserverEntry[]} entries first entry

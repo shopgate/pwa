@@ -22,7 +22,7 @@ const LABEL = 'navigation.about';
  * @returns {JSX.Element}
  */
 const ImprintButton = ({ navigate }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_IMPRINT_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_IMPRINT} props={portalProps}>
       <NavDrawer.Item
@@ -33,7 +33,7 @@ const ImprintButton = ({ navigate }) => (
       />
     </Portal>
     <Portal name={NAV_MENU_IMPRINT_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 ImprintButton.propTypes = {

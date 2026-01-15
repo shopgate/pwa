@@ -79,6 +79,7 @@ export const Ellipsis = ({ children }) => children;
 /** @returns {ReactElement} */
 export const SurroundPortals = ({ children }) => children;
 /** @returns {ReactElement} */
+// eslint-disable-next-line react/prop-types
 export const Portal = ({ children }) => children || null; // null for portals like before, after
 export const Accordion = ({ children }) => children;
 export const AccordionContainer = ({ children, open = false }) => children({

@@ -30,8 +30,7 @@ const ProductName = ({
     wrapper={children =>
       <SurroundPortals portalName={portalName} portalProps={portalProps}>
         {children}
-      </SurroundPortals>
-    }
+      </SurroundPortals>}
   >
     <div
       className={classNames(styles.wrapper, className, 'engage__product__product-name')}

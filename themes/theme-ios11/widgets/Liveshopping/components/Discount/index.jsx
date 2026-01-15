@@ -19,7 +19,7 @@ function LiveshoppingDiscount({ discount, productId }) {
   const props = { productId };
 
   return (
-    <Fragment>
+    <>
       <Portal name={PRODUCT_ITEM_DISCOUNT_BEFORE} props={props} />
       <Portal name={PRODUCT_ITEM_DISCOUNT} props={props}>
         <DiscountBadge
@@ -30,7 +30,7 @@ function LiveshoppingDiscount({ discount, productId }) {
         />
       </Portal>
       <Portal name={PRODUCT_ITEM_DISCOUNT_AFTER} props={props} />
-    </Fragment>
+    </>
   );
 }
 

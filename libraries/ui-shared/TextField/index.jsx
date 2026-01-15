@@ -225,8 +225,7 @@ class TextField extends Component {
             errorText={errorText}
             translate={translateErrorText}
             elementName={name}
-          />
-        }
+          />}
       </div>
     );
   }

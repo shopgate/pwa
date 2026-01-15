@@ -64,9 +64,9 @@ const PrivacySettings = ({
               a11yFallbackText={`${i18n.text(settingsComfortTitle || 'cookieSettings.comfortTitle')}. ${i18n.text(settingsComfortText || 'cookieSettings.comfort')}`}
             >
               <span className={styles.title}>
-                {<I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />}
+                <I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />
               </span>
-              <span>{<I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} />}</span>
+              <span><I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} /></span>
             </Switch>
           </Grid.Item>
         ) : null}
@@ -77,9 +77,9 @@ const PrivacySettings = ({
             a11yFallbackText={`${i18n.text(settingsStatisticsTitle || 'cookieSettings.statisticsTitle')}. ${i18n.text(settingsStatisticsText || 'cookieSettings.statistics')}`}
           >
             <span className={styles.title}>
-              {<I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />}
+              <I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />
             </span>
-            <span>{<I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} />}</span>
+            <span><I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} /></span>
           </Switch>
         </Grid.Item>
         <Grid.Item component="div" className={styles.switchWrapper}>
@@ -89,9 +89,9 @@ const PrivacySettings = ({
             a11yFallbackText={`${i18n.text(settingsRequiredTitle || 'cookieSettings.requiredTitle')}. ${i18n.text(settingsRequiredText || 'cookieSettings.required')}`}
           >
             <span className={styles.title}>
-              {<I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />}
+              <I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />
             </span>
-            <span>{<I18n.Text string={settingsRequiredText || 'cookieSettings.required'} />}</span>
+            <span><I18n.Text string={settingsRequiredText || 'cookieSettings.required'} /></span>
           </Switch>
         </Grid.Item>
       </Grid.Item>

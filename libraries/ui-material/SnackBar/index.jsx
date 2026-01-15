@@ -14,11 +14,11 @@ class SnackBar extends Component {
   static propTypes = {
     removeToast: PropTypes.func.isRequired,
     toasts: PropTypes.arrayOf(PropTypes.shape()),
-  }
+  };
 
   static defaultProps = {
     toasts: null,
-  }
+  };
 
   static contextTypes = {
     i18n: PropTypes.func,
@@ -74,11 +74,11 @@ class SnackBar extends Component {
     clearTimeout(this.timer);
     this.props.toasts[0].action();
     this.hide();
-  }
+  };
 
   handleEntered = () => {
     this.timer = setTimeout(this.hide, this.props.toasts[0].duration || 2500);
-  }
+  };
 
   handleRest = () => {
     if (this.state.visible) {
@@ -87,11 +87,11 @@ class SnackBar extends Component {
     }
 
     this.props.removeToast();
-  }
+  };
 
   hide = () => {
     this.setState({ visible: false });
-  }
+  };
 
   /**
    * Calculates the required amount of rows for the snack bar.

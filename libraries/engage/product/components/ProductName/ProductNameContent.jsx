@@ -14,8 +14,7 @@ const ProductNameContent = ({ name, ellipsis, rows }) => (
         <span>
           {children}
         </span>
-      </Ellipsis>
-    }
+      </Ellipsis>}
   >
     <span dangerouslySetInnerHTML={{ __html: name }} />
   </ConditionalWrapper>

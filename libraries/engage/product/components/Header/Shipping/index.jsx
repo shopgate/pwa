@@ -17,7 +17,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Shipping = ({ shipping }) => (
-  <Fragment>
+  <>
     <Portal name={PRODUCT_SHIPPING_BEFORE} />
     <Portal name={PRODUCT_SHIPPING}>
       <PlaceholderLabel className={styles.placeholder} ready={(shipping !== null)}>
@@ -27,7 +27,7 @@ const Shipping = ({ shipping }) => (
       </PlaceholderLabel>
     </Portal>
     <Portal name={PRODUCT_SHIPPING_AFTER} />
-  </Fragment>
+  </>
 );
 
 Shipping.propTypes = {

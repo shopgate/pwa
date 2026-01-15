@@ -15,7 +15,7 @@ class SearchButton extends PureComponent {
 
   static defaultProps = {
     onToggle: () => { },
-  }
+  };
 
   /**
    * @param {Object} props The component props.
@@ -34,16 +34,16 @@ class SearchButton extends PureComponent {
 
   onOpen = () => {
     this.props.onToggle(true);
-  }
+  };
 
   onClose = () => {
     this.props.onToggle(false);
-  }
+  };
 
   handleOnClick = () => {
     UIEvents.emit(TOGGLE_SEARCH, true);
     this.onOpen();
-  }
+  };
 
   /**
    * @returns {JSX}

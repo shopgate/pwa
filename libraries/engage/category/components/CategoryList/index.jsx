@@ -71,8 +71,7 @@ const CategoryList = ({
           </Portal>
         </div>
         :
-        null
-      }
+        null}
       {categories.map(category => (
         <Portal key={category.id} name={CATEGORY_ITEM} props={{ categoryId: category.id }}>
           <SheetList.Item

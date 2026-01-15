@@ -27,11 +27,11 @@ class SearchContent extends Component {
     showFilterBar: PropTypes.bool.isRequired,
     showNoResults: PropTypes.bool.isRequired,
     pattern: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     pattern: null,
-  }
+  };
 
   /**
    * @param {Object} nextProps The next component props.
@@ -47,7 +47,7 @@ class SearchContent extends Component {
 
   showSearch = () => {
     UIEvents.emit(TOGGLE_SEARCH);
-  }
+  };
 
   /**
    * @param {string} categoryName Name of the category
@@ -63,7 +63,7 @@ class SearchContent extends Component {
         below={<Bar showFilterBar={showFilterBar} />}
       />
     );
-  }
+  };
 
   /**
    * @return {JSX}
@@ -76,7 +76,7 @@ class SearchContent extends Component {
     return (
       <RouteContext.Consumer>
         {({ state, query, id: routeId }) => (
-          <Fragment>
+          <>
             <ResponsiveContainer appAlways breakpoint="<=xs">
               { this.getAppBar(state.categoryName) }
             </ResponsiveContainer>
@@ -112,7 +112,7 @@ class SearchContent extends Component {
                 </SurroundPortals>
               )}
             </SurroundPortals>
-          </Fragment>
+          </>
         )}
       </RouteContext.Consumer>
     );

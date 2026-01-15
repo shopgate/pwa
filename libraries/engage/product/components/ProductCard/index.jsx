@@ -77,17 +77,16 @@ function ProductCard(props) {
     >
       {isBeta() && product.featuredMedia
         ? <FeaturedMedia
-          type={product.featuredMedia.type}
-          url={product.featuredMedia.url}
-          altText={product.featuredMedia.altText}
+            type={product.featuredMedia.type}
+            url={product.featuredMedia.url}
+            altText={product.featuredMedia.altText}
         />
         : <ProductImage
-          src={product.featuredImageBaseUrl}
-          resolutions={gridResolutions}
-          alt={product.name}
-          itemProp="image"
-        />
-      }
+            src={product.featuredImageBaseUrl}
+            resolutions={gridResolutions}
+            alt={product.name}
+            itemProp="image"
+        />}
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
         <div className={styles.badgeWrapper}>

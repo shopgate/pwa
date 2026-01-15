@@ -76,7 +76,7 @@ export function FulfillmentSelectorLocation() {
   const isRopeMethodEnabled = (isROPISEnabled || isBOPISEnabled || selectionAvailableForProduct);
 
   return (
-    <Fragment>
+    <>
       <SurroundPortals
         portalName={PRODUCT_FULFILLMENT_SELECTOR_LOCATION}
         portalProps={{
@@ -130,6 +130,6 @@ export function FulfillmentSelectorLocation() {
         show={!!isRopeMethodEnabled && (!!usedLocation && !!inventory && !isOrderable)}
         productId={productId}
       />
-    </Fragment>
+    </>
   );
 }

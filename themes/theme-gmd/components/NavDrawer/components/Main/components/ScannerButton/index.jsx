@@ -29,8 +29,7 @@ const ScannerButton = ({ hasScannerSupport, navigate }) => (
       icon={BarcodeScannerIcon}
       onClick={navigate(getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE), LABEL)}
       testId="navDrawerScannerButton"
-    />
-      }
+    />}
   </SurroundPortals>
 );
 

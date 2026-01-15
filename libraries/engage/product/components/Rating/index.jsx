@@ -64,8 +64,7 @@ const Rating = ({ rating }) => {
       >
         <RatingStars value={rating.average} display="big" />
         <RatingCount count={rating.count} prominent />
-      </div>
-        }
+      </div>}
     </SurroundPortals>
   );
 };

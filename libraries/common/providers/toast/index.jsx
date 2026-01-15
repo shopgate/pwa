@@ -19,7 +19,7 @@ class ToastProvider extends Component {
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element),
     ]).isRequired,
-  }
+  };
 
   /**
    * @param {Object} props The component props.
@@ -80,7 +80,7 @@ class ToastProvider extends Component {
     }
 
     this.setState({ toasts });
-  }
+  };
 
   /**
    * Removes the first toast from the list.
@@ -90,13 +90,13 @@ class ToastProvider extends Component {
     toasts.shift();
 
     this.setState({ toasts });
-  }
+  };
 
   flushToasts = () => {
     if (this.state.toasts.length) {
       this.setState({ toasts: [] });
     }
-  }
+  };
 
   /**
    * @returns {JSX}

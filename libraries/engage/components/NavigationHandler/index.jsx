@@ -26,7 +26,7 @@ class NavigationHandler extends React.PureComponent {
     push: () => { },
     replace: () => { },
     reset: () => { },
-  }
+  };
 
   /**
    * @param {Object} props The component props.

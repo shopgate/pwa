@@ -24,7 +24,7 @@ const webCheckoutLogin = (user, password) => (dispatch) => {
     .setMethod('POST')
     .setTimeout(20000)
     .setPayload({
-      // eslint-disable-next-line camelcase
+
       form_type: 'customer_login',
       customer: {
         email: user,

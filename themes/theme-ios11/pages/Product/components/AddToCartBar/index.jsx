@@ -81,11 +81,11 @@ class AddToCartBar extends Component {
 
   handleShow = () => {
     this.setState({ visible: true });
-  }
+  };
 
   handleHide = () => {
     this.setState({ visible: false });
-  }
+  };
 
   /**
    * @param {number} count count
@@ -94,7 +94,7 @@ class AddToCartBar extends Component {
     this.setState(prevState => ({
       added: (prevState.added + count),
     }));
-  }
+  };
 
   /**
    * @param {number} count count
@@ -103,11 +103,11 @@ class AddToCartBar extends Component {
     this.setState(prevState => ({
       added: (prevState.added > 0 ? prevState.added - count : 0),
     }));
-  }
+  };
 
   handleReset = () => {
     this.setState({ added: 0 });
-  }
+  };
 
   /**
    * Handles the button click.
@@ -175,11 +175,11 @@ class AddToCartBar extends Component {
 
       setTimeout(this.resetClicked, 250);
     });
-  }
+  };
 
   resetClicked = () => {
     this.setState({ clicked: false });
-  }
+  };
 
   /**
    * @return {JSX}

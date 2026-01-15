@@ -91,8 +91,7 @@ class Checkbox extends PureComponent {
             <div className={classNames(style.labelWrapper, 'label')}>
               <I18n.Text className={style.label} string={label} />
             </div>
-          ) : label
-          }
+          ) : label}
         />
       </FormElement>
     );

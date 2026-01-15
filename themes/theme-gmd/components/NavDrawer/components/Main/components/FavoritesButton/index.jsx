@@ -28,7 +28,7 @@ const FavoritesButton = ({ navigate, count, showWishlistItemsCountBadge }) => {
   const ariaLabel = showWishlistItemsCountBadge ? `${i18n.text(LABEL)}. ${i18n.text('common.products')}: ${count}.` : '';
 
   return (
-    <Fragment>
+    <>
       <Portal name={NAV_MENU_FAVORITES_BEFORE} props={portalProps} />
       <Portal name={NAV_MENU_FAVORITES} props={portalProps}>
         <NavDrawer.Item
@@ -41,7 +41,7 @@ const FavoritesButton = ({ navigate, count, showWishlistItemsCountBadge }) => {
         />
       </Portal>
       <Portal name={NAV_MENU_FAVORITES_AFTER} props={portalProps} />
-    </Fragment>
+    </>
   );
 };
 

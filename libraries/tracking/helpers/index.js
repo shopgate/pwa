@@ -329,7 +329,7 @@ export const buildScannerUtmUrl = ({
   const { location } = scannerRoute;
 
   const newPath = new URL(location, 'http://scanner.com');
-  /* eslint-disable camelcase */
+
   const utms = {
     utm_source: source,
     utm_medium: medium,
@@ -337,7 +337,6 @@ export const buildScannerUtmUrl = ({
     utm_term: term,
     utm_content: utmContent || referer,
   };
-  /* eslint-enable camelcase */
 
   Object.keys(utms).forEach((utm) => {
     if (!newPath.searchParams.has(utm) && utms[utm]) {

@@ -22,7 +22,7 @@ const LABEL = 'navigation.payment';
  * @returns {JSX.Element}
  */
 const PaymentButton = ({ navigate }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_PAYMENT_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_PAYMENT} props={portalProps}>
       <NavDrawer.Item
@@ -33,7 +33,7 @@ const PaymentButton = ({ navigate }) => (
       />
     </Portal>
     <Portal name={NAV_MENU_PAYMENT_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 PaymentButton.propTypes = {

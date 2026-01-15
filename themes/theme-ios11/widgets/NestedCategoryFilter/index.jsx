@@ -16,7 +16,6 @@ import styles from './style';
 class NestedCategoryFilter extends PureComponent {
   static contextType = RouteContext;
 
-  /* eslint-disable camelcase */
   static propTypes = {
     id: PropTypes.string.isRequired,
     settings: PropTypes.shape({
@@ -29,12 +28,11 @@ class NestedCategoryFilter extends PureComponent {
       label_4: PropTypes.string.isRequired,
     }).isRequired,
     persistedState: PropTypes.shape(),
-  }
-  /* eslint-enable camelcase */
+  };
 
   static defaultProps = {
     persistedState: null,
-  }
+  };
 
   /**
    * The component constructor.
@@ -94,7 +92,7 @@ class NestedCategoryFilter extends PureComponent {
       pickers: updatedPickers,
       buttonCategoryId: !appendNewPicker ? subcategoryId : null,
     });
-  }
+  };
 
   /**
    * Creates the pickers.

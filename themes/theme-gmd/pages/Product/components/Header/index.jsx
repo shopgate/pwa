@@ -34,7 +34,7 @@ class ProductHeader extends PureComponent {
         </Section>
       </div>
     );
-  }
+  };
 
   /**
    * @returns {JSX}

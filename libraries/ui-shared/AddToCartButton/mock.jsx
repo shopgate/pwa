@@ -21,6 +21,7 @@ export const MockedAddToCartButton = class extends Component {
    */
   render() {
     return (
+      // eslint-disable-next-line jsx-a11y/control-has-associated-label
       <button onClick={this.props.onClick} type="button" />
     );
   }

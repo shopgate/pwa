@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import AppScanner from '@shopgate/pwa-core/classes/Scanner';
 import connect from './connector';
@@ -15,13 +15,13 @@ class ScannerContainer extends PureComponent {
     children: PropTypes.node,
     scannerDidClose: PropTypes.func,
     scannerDidOpen: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     children: null,
     scannerDidClose: () => {},
     scannerDidOpen: () => {},
-  }
+  };
 
   /**
    * Starts up the app scanner.
@@ -53,11 +53,7 @@ class ScannerContainer extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    return (
-      <Fragment>
-        {this.props.hasScannerSupport && this.props.children}
-      </Fragment>
-    );
+    return this.props.hasScannerSupport && this.props.children;
   }
 }
 

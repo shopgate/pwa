@@ -19,8 +19,7 @@ function LiveShoppingPrice({ price }) {
           className={styles.priceStriked}
           value={priceStriked}
           currency={price.currency}
-        />
-      }
+        />}
       <Price
         discounted={priceStriked > 0}
         className={priceStriked > 0 ? styles.price : ''}

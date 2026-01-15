@@ -67,7 +67,7 @@ const styles = {
 const wrapStripeElement = Element => class extends React.Component {
   onChange = () => {
     this.props.onChange({ target: { value: ' ' } });
-  }
+  };
 
   /** Render
    * @returns {JSX} */

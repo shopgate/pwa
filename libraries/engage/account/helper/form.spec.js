@@ -90,7 +90,7 @@ describe('Form helpers', () => {
             },
           },
           attributes: {
-            // eslint-disable-next-line camelcase
+
             attribute_acme: 'validation.checkField',
           },
         },

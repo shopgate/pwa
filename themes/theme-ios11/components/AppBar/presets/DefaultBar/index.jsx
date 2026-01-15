@@ -42,8 +42,14 @@ class AppBarDefault extends PureComponent {
     i18n: PropTypes.func,
   };
 
-  state = {
-    target: document.getElementById('AppHeader'),
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      target: document.getElementById('AppHeader'),
+    };
   }
 
   /**
@@ -142,7 +148,7 @@ class AppBarDefault extends PureComponent {
     );
 
     return ReactDOM.createPortal(
-      <Fragment>
+      <>
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
           <AppBar
@@ -155,7 +161,7 @@ class AppBarDefault extends PureComponent {
           />
         </Portal>
         <Portal name={APP_BAR_DEFAULT_AFTER} />
-      </Fragment>,
+      </>,
       this.state.target
     );
   }

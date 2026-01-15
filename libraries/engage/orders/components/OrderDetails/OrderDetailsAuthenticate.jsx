@@ -57,7 +57,7 @@ const OrderDetailsAuthenticate = () => {
   }
 
   return (
-    <Fragment>
+    <>
       <ResponsiveContainer appAlways breakpoint="<=xs">
         { messages && (
         <MessageBar
@@ -78,11 +78,11 @@ const OrderDetailsAuthenticate = () => {
           )}
         </ResponsiveContainer>
         { showForm && (
-        <Fragment>
+        <>
           <p>
             <I18n.Text string="order_details.authenticate.instructions" />
             { !isUserLoggedIn && (
-            <Fragment>
+            <>
               {' '}
               <Link
                 className={loginLink}
@@ -92,7 +92,7 @@ const OrderDetailsAuthenticate = () => {
               >
                 <I18n.Text string="order_details.authenticate.or_login" />
               </Link>
-            </Fragment>
+            </>
             )}
           </p>
 
@@ -115,11 +115,11 @@ const OrderDetailsAuthenticate = () => {
               {i18n.text('common.submit')}
             </RippleButton>
           </div>
-        </Fragment>
+        </>
         )}
 
       </div>
-    </Fragment>
+    </>
 
   );
 };

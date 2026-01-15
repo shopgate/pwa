@@ -33,10 +33,16 @@ class Characteristic extends PureComponent {
     selected: null,
   };
 
-  state = {
-    highlight: false,
-    sheet: false,
-  };
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      highlight: false,
+      sheet: false,
+    };
+  }
 
   /**
    * @param {Object} nextProps The next component props.
@@ -57,7 +63,7 @@ class Characteristic extends PureComponent {
     const value = this.props.values.find(val => (val.id === this.props.selected));
 
     return value.label;
-  }
+  };
 
   /**
    * @param {Object} event The event object.
@@ -70,7 +76,7 @@ class Characteristic extends PureComponent {
     }
 
     this.setState({ sheet: true });
-  }
+  };
 
   /**
    * @param {string} valueId The ID of the selected value.
@@ -82,11 +88,11 @@ class Characteristic extends PureComponent {
     });
 
     this.closeSheet();
-  }
+  };
 
   closeSheet = () => {
     this.setState({ sheet: false });
-  }
+  };
 
   sheetDidClose = () => {
     if (this.props.charRef && this.props.charRef.current) {
@@ -97,7 +103,7 @@ class Characteristic extends PureComponent {
 
   removeHighlight = () => {
     this.setState({ highlight: false });
-  }
+  };
 
   /**
    * Renders the transition contents.
@@ -144,7 +150,7 @@ class Characteristic extends PureComponent {
         </ResponsiveContainer>
       </div>
     );
-  }
+  };
 
   /**
    * @return {JSX}
@@ -158,7 +164,7 @@ class Characteristic extends PureComponent {
     const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
 
     return (
-      <Fragment>
+      <>
         <Transition in={this.state.highlight} timeout={500} onEntered={this.removeHighlight}>
           {this.transitionRenderer}
         </Transition>
@@ -173,7 +179,7 @@ class Characteristic extends PureComponent {
           open={this.state.sheet}
           selectedValue={selected}
         />
-      </Fragment>
+      </>
     );
   }
 }

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { PAGE_CONTENT } from '@shopgate/engage/core/constants';
 import {
@@ -45,11 +45,11 @@ function PageContent({
   const Component = isCmsV2Enabled ? WidgetsV2 : WidgetsV1;
 
   return (
-    <Fragment>
+    <>
       <BarComponent
         center={center}
         title={hasError ? i18n.text('titles.page_not_found') : title}
-        {...!isCookieConsentHandled && { right: (<></>) }}
+        {...!isCookieConsentHandled && { right: (null) }}
       />
       <SurroundPortals
         portalName={PAGE_CONTENT}
@@ -63,7 +63,7 @@ function PageContent({
           )}
         </div>
       </SurroundPortals>
-    </Fragment>
+    </>
   );
 }
 

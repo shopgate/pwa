@@ -26,13 +26,13 @@ function BackBar({ goBack, prevTitle, ...props }) {
   />;
 
   return (
-    <Fragment>
+    <>
       <Portal name={APP_BAR_BACK_BEFORE} />
       <Portal name={APP_BAR_BACK}>
         <DefaultBar left={left} {...props} />
       </Portal>
       <Portal name={APP_BAR_BACK_AFTER} />
-    </Fragment>
+    </>
   );
 }
 

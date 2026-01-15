@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
 import connect from './connector';
 import styles from './style';
@@ -16,5 +17,9 @@ const CartButtonBadge = ({ count }) => (
     </span>
   )
 );
+
+CartButtonBadge.propTypes = {
+  count: PropTypes.number.isRequired,
+};
 
 export default connect(memo(CartButtonBadge));
