@@ -63,7 +63,7 @@ describe('Builder/helpers/buildFormElements', () => {
           ...formElementConfig,
           type: ELEMENT_TYPE_COUNTRY,
         },
-        // eslint-disable-next-line camelcase
+
         country_2: {
           ...formElementConfig,
           type: ELEMENT_TYPE_COUNTRY,

@@ -23,12 +23,12 @@ class Route extends React.Component {
     pattern: PropTypes.string.isRequired,
     cache: PropTypes.bool,
     transform: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     cache: false,
     transform: null,
-  }
+  };
 
   /**
    * @param {Object} props The component props.

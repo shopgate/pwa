@@ -31,14 +31,14 @@ const UserMenu = ({
   };
 
   return (
-    <Fragment>
+    <>
       <Portal name={portals.USER_MENU_CONTAINER_BEFORE} props={portalProps} />
       <Portal name={portals.USER_MENU_CONTAINER} props={portalProps}>
         { isLoggedIn && <LoggedIn logout={logout} />}
         { !isLoggedIn && <LoggedOut />}
       </Portal>
       <Portal name={portals.USER_MENU_CONTAINER_AFTER} props={portalProps} />
-    </Fragment>
+    </>
   );
 };
 

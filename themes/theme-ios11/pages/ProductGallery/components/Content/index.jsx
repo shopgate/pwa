@@ -16,8 +16,7 @@ const Content = ({ productId, initialSlide }) => (
     <ProductListEntryProvider productId={productId}>
       {isBeta()
         ? <MediaSlider productId={productId} initialSlide={initialSlide} />
-        : <ImageSlider productId={productId} initialSlide={initialSlide} />
-      }
+        : <ImageSlider productId={productId} initialSlide={initialSlide} />}
     </ProductListEntryProvider>
   </ProductListTypeProvider>
 );

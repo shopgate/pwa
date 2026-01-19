@@ -160,7 +160,7 @@ export const makeGetUnifiedCMSPageData = ({ slug }) => {
           isFetching: pageV2?.isFetching ?? false,
           expires: pageV2?.expires ?? null,
           title: pageV2?.data?.pageTitle || pageV2?.data?.name || '',
-          widgets: pageV2?.data?.dropzones?.['cmsWidgetList'] ?? [],
+          widgets: pageV2?.data?.dropzones?.cmsWidgetList ?? [],
           cmsVersion: 2,
           hasError: pageV2?.hasError ?? false,
         };

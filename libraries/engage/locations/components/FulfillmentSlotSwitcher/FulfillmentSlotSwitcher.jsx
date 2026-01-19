@@ -1,6 +1,4 @@
-import React, {
-  Fragment, useCallback,
-} from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import FulfillmentSlotSwitcherDefault from './FulfillmentSlotSwitcherDefault';
@@ -45,27 +43,22 @@ const FulfillmentSlotSwitcher = ({
     return null;
   }
 
-  return (
-    <Fragment>
-      { renderBar ? (
-        <div className={card ? styles.card : undefined}>
-          <FulfillmentSlotSwitcherBar
-            fulfillmentSlot={isFulfillmentSlotValid ? fulfillmentSlot : null}
-            handleChange={handleOpen}
-            standalone={standalone}
-            editable={editable}
-          />
-        </div>
-      ) : (
-        <FulfillmentSlotSwitcherDefault
-          fulfillmentSlot={isFulfillmentSlotValid ? fulfillmentSlot : null}
-          handleChange={handleOpen}
-          standalone={standalone}
-          editable={editable}
-        />
-      )
-      }
-    </Fragment>
+  return renderBar ? (
+    <div className={card ? styles.card : undefined}>
+      <FulfillmentSlotSwitcherBar
+        fulfillmentSlot={isFulfillmentSlotValid ? fulfillmentSlot : null}
+        handleChange={handleOpen}
+        standalone={standalone}
+        editable={editable}
+      />
+    </div>
+  ) : (
+    <FulfillmentSlotSwitcherDefault
+      fulfillmentSlot={isFulfillmentSlotValid ? fulfillmentSlot : null}
+      handleChange={handleOpen}
+      standalone={standalone}
+      editable={editable}
+    />
   );
 };
 

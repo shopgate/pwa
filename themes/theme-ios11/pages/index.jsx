@@ -95,7 +95,7 @@ const globalLocationSelectorAllowList = [
  * @returns {JSX}
  */
 const Pages = ({ store }) => {
-  const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
+  const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
 
   const theme = useMemo(() => {
     const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);

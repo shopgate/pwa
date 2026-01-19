@@ -12,7 +12,7 @@ import Rows from './Rows';
  * @return {JSX}
  */
 const Lists = ({ properties }) => (
-  <React.Fragment>
+  <>
     <Rows properties={getPropertiesWithoutSubgroup(properties)} />
     {getSubgroupsFromProperties(properties).map(group => (
       <React.Fragment key={group}>
@@ -20,7 +20,7 @@ const Lists = ({ properties }) => (
         <Rows properties={getPropertiesBySubgroup(properties, group)} />
       </React.Fragment>
     ))}
-  </React.Fragment>
+  </>
 );
 
 Lists.propTypes = {

@@ -54,7 +54,7 @@ export class Scanner {
     this.flashlightEnabled = false;
 
     this.closeHandler = null;
-  }
+  };
 
   /**
    * Adds an event listener to the scanner.
@@ -62,7 +62,7 @@ export class Scanner {
    */
   addListener = (eventListener) => {
     this.eventHandler.attach(eventListener);
-  }
+  };
 
   /**
    * @param {ScannerEventListener} eventListener The event listener to remove.
@@ -159,7 +159,7 @@ export class Scanner {
     this.running = this.type !== SCANNER_TYPE_IMAGE;
 
     this.closeHandler = closeHandler || null;
-  }
+  };
 
   /**
    * Starts the Scanner if it is opened and not already running.
@@ -177,7 +177,7 @@ export class Scanner {
       this.running = true;
       startAppScanner();
     }
-  }
+  };
 
   /**
    * Stops the scanner if it is opened and running.
@@ -193,7 +193,7 @@ export class Scanner {
       this.running = false;
       stopAppScanner();
     }
-  }
+  };
 
   /**
    * Close the app scanner.
@@ -213,7 +213,7 @@ export class Scanner {
     closeAppScanner();
 
     this.reset();
-  }
+  };
 
   /**
    * Switches between the flashlight being on or off. The return result might not always
@@ -237,7 +237,7 @@ export class Scanner {
     setAppScannerFlashlightMode(this.flashlightEnabled);
 
     return this.flashlightEnabled;
-  }
+  };
 
   /**
    * Because opening the scanner can fail silently, this is a way to check if it was
@@ -299,7 +299,7 @@ export class Scanner {
       // Force restart when a handler throws an error.
       this.start();
     }
-  }
+  };
 }
 
 export default new Scanner();

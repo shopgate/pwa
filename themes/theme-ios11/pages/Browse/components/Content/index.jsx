@@ -16,12 +16,12 @@ import RootCategories from '../RootCategories';
 const BrowseContent = ({ pageId, query }, context) => {
   const { __ } = context.i18n();
   return (
-    <Fragment>
+    <>
       <BackBar />
       <Headline text={__('titles.browse')} tag="h1" />
       <SearchField pageId={pageId} query={query} />
       <RootCategories />
-    </Fragment>
+    </>
   );
 };
 

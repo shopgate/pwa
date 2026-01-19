@@ -39,7 +39,7 @@ class ScannerEventListener {
 
     this.handler = handler;
     return this;
-  }
+  };
 
   /**
    * Checks if the event fits to the handler.
@@ -74,7 +74,7 @@ class ScannerEventListener {
    */
   attach = () => {
     AppScanner.addListener(this);
-  }
+  };
 
   /**
    * Checks the event to see, if the listener is interested in it and call it's handler.
@@ -95,7 +95,7 @@ class ScannerEventListener {
         `but it returned "${handlerResult}"`
       );
     }
-  }
+  };
 }
 
 export default ScannerEventListener;

@@ -58,6 +58,7 @@ const Wrapper = ({
 );
 
 Wrapper.propTypes = {
+  children: PropTypes.node.isRequired,
   substitutionPreferencesEnabled: PropTypes.bool.isRequired,
 };
 

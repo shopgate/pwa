@@ -51,8 +51,7 @@ const GuestCheckoutPickup = () => {
         <span>
           {pickupAddress.middleName?.length
             ? `${pickupAddress.firstName} ${pickupAddress.middleName} ${pickupAddress.lastName}`
-            : `${pickupAddress.firstName} ${pickupAddress.lastName}`
-          }
+            : `${pickupAddress.firstName} ${pickupAddress.lastName}`}
         </span>
         <span>{pickupAddress.emailAddress}</span>
         <span>{pickupAddress.mobile}</span>

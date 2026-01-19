@@ -69,9 +69,12 @@ CartItem.propTypes = {
   item: PropTypes.shape({
     type: PropTypes.string.isRequired,
     id: PropTypes.string,
-    product: PropTypes.object,
-    coupon: PropTypes.any,
-    messages: PropTypes.array,
+    product: PropTypes.shape(),
+    coupon: PropTypes.shape(),
+    messages: PropTypes.arrayOf(PropTypes.shape({
+      message: PropTypes.string,
+      type: PropTypes.string,
+    })),
   }).isRequired,
   onFocus: PropTypes.func.isRequired,
   currencyOverride: PropTypes.string,

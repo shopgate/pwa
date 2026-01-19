@@ -1,4 +1,6 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {
+  useState, useCallback, useEffect, useMemo,
+} from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
@@ -39,14 +41,15 @@ const RadioGroup = ({
     }
   }, [onChange]);
 
+  const contextValue = useMemo(() => ({
+    name,
+    onChange: handleChange,
+    value,
+    disabled,
+  }), [disabled, handleChange, name, value]);
+
   return (
-    <RadioGroupContext.Provider value={{
-      name,
-      onChange: handleChange,
-      value,
-      disabled,
-    }}
-    >
+    <RadioGroupContext.Provider value={contextValue}>
       <Component role="radiogroup" className={classNames(styles.root, classes.root)}>
         { children }
       </Component>

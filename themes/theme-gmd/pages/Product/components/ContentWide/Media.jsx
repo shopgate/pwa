@@ -223,8 +223,7 @@ const Media = ({
                   />
                 </div>
               )))
-              : null
-            }
+              : null}
           </div>
         </ProductListEntryProvider>
       </ProductListTypeProvider>

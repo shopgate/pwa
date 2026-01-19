@@ -32,9 +32,9 @@ const CartItemProductPriceCaption = ({ className }) => {
 
   return (
     <span className={classNames(caption, className)}>
-    (
+      (
       <I18n.Text string={label} />
-)
+      )
     </span>
   );
 };

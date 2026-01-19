@@ -31,7 +31,7 @@ const { cookieConsent: { isCookieConsentActivated } = {} } = appConfig;
  * @returns {JSX.Element}
  */
 const StoreInfo = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_STORE_INFORMATION_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_STORE_INFORMATION} props={portalProps}>
       <Portal name={NAV_MENU_STORE_INFORMATION_MORE_BEFORE} props={portalProps} />
@@ -51,20 +51,20 @@ const StoreInfo = () => (
           { hasNewServices() ? (
             <LegalButtons />
           ) : (
-            <Fragment>
+            <>
               <TermsButton />
               <PrivacyButton />
               {appSupportsCookieConsent() && isCookieConsentActivated && <PrivacySettingsButton />}
               {showReturnPolicy && <ReturnsButton />}
               <ImprintButton />
-            </Fragment>
+            </>
           )}
         </NavDrawerSection>
       </Portal>
       <Portal name={NAV_MENU_STORE_INFORMATION_ABOUT_AFTER} props={portalProps} />
     </Portal>
     <Portal name={NAV_MENU_STORE_INFORMATION_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default StoreInfo;

@@ -10,6 +10,7 @@ const { themes, extensions } = repos;
  * @param {string} name The remote name.
  */
 async function removeRemote(name) {
+  // eslint-disable-next-line no-useless-catch
   try {
     await exec(`git remote remove ${name}`);
     logger.log(`Removed remote ${name}`);

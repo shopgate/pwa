@@ -54,8 +54,7 @@ const OrderQuantityHint = ({ stock, product, className }) => {
                 unit,
               }}
             />
-          </div>
-          }
+          </div>}
         {showContent && stock && !!stock.maxOrderQuantity &&
           <div className={hint}>
             <I18n.Text
@@ -65,8 +64,7 @@ const OrderQuantityHint = ({ stock, product, className }) => {
                 unit,
               }}
             />
-          </div>
-        }
+          </div>}
       </SurroundPortals>
     </div>
   );

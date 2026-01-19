@@ -90,7 +90,7 @@ class ActionListener {
         });
       });
     });
-  }
+  };
 
   /**
    * Attaches one or possibly multiple action listeners for the given rule
@@ -130,7 +130,7 @@ class ActionListener {
     }
 
     this.register(rule.context, actionListener);
-  }
+  };
 
   /**
    * Action listener creator to check all related rules before calling any further action listeners
@@ -146,7 +146,7 @@ class ActionListener {
     }
 
     return actionListener(prevState, nextState);
-  }
+  };
 
   /**
    * Action listener creator to handle "updateCountryChange" action
@@ -171,7 +171,7 @@ class ActionListener {
         : Object.keys(this.getProvincesList(countryValue))[0];
     }
     return newState;
-  }
+  };
 
   /**
    * Action listener creator to handle "setVisibility" actions
@@ -206,7 +206,7 @@ class ActionListener {
     }
 
     return newState;
-  }
+  };
 
   /**
    * Action listener creator to handle "setValue" actions
@@ -285,7 +285,7 @@ class ActionListener {
     }
 
     return newState;
-  }
+  };
 
   /**
    * Action listener creator to handle "transform" actions
@@ -371,7 +371,7 @@ class ActionListener {
     }
 
     return newState;
-  }
+  };
 
   /**
    * Evaluates all action rules of a given element action
@@ -455,7 +455,7 @@ class ActionListener {
     });
 
     return result;
-  }
+  };
 
   /**
    * Creates a concat function that defines how to concatenate action rule results
@@ -471,7 +471,7 @@ class ActionListener {
       default:
         return prev && next;
     }
-  }
+  };
 
   /**
    * Adds a "action" listener to a given context element
@@ -484,7 +484,7 @@ class ActionListener {
       this.actionListeners[elementId] = [];
     }
     this.actionListeners[elementId].push(handler);
-  }
+  };
 
   /**
    * Takes an element id, the state to work with and optional data and notifies all "action"
@@ -505,7 +505,7 @@ class ActionListener {
       });
     }
     return newState;
-  }
+  };
 }
 
 export default ActionListener;

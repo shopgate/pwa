@@ -37,10 +37,9 @@ const SheetItem = ({ item, isSelected, onClick }) => {
 
   return (
     <button
-      className={cx(classes.button, { [classes.buttonSelected]: isSelected },
-        isSelected
-          ? 'engage__nested-category-filter__sheet-item__selected'
-          : 'engage__nested-category-filter__sheet-item')}
+      className={cx(classes.button, { [classes.buttonSelected]: isSelected }, isSelected
+        ? 'engage__nested-category-filter__sheet-item__selected'
+        : 'engage__nested-category-filter__sheet-item')}
       value={item.id}
       onClick={onClick}
       type="button"

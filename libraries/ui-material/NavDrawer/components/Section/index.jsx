@@ -16,12 +16,12 @@ const NavDrawerSection = ({
     return null;
   }
   return (
-    <Fragment>
+    <>
       {dividerTop && (<Divider />)}
       <Title text={title} />
       {children}
       {dividerBottom && (<Divider />)}
-    </Fragment>
+    </>
   );
 };
 

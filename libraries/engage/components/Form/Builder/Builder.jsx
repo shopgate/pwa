@@ -65,7 +65,7 @@ class Builder extends Component {
     [ELEMENT_TYPE_DATE]: ElementText,
     [ELEMENT_TYPE_PHONE]: ElementText,
     [ELEMENT_TYPE_PHONE_PICKER]: ElementPhoneNumber,
-  }
+  };
 
   static propTypes = {
     config: PropTypes.shape().isRequired,
@@ -82,7 +82,7 @@ class Builder extends Component {
       path: PropTypes.string,
       message: PropTypes.string,
     })),
-  }
+  };
 
   static defaultProps = {
     className: null,
@@ -90,7 +90,7 @@ class Builder extends Component {
     elements: Builder.defaultElements,
     onSubmit: () => { },
     validationErrors: [],
-  }
+  };
 
   /**
    * Initializes the component.

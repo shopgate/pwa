@@ -176,10 +176,10 @@ const CartItemProductProvider = ({
 CartItemProductProvider.propTypes = {
   cartItem: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    product: PropTypes.object.isRequired,
+    product: PropTypes.shape().isRequired,
     quantity: PropTypes.number.isRequired,
-    fulfillment: PropTypes.object,
-    messages: PropTypes.array.isRequired,
+    fulfillment: PropTypes.shape(),
+    messages: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     status: PropTypes.string,
     subStatus: PropTypes.string,
     orderedQuantity: PropTypes.number,
@@ -189,7 +189,7 @@ CartItemProductProvider.propTypes = {
     promoAmount: PropTypes.number,
     discountAmount: PropTypes.number,
     extendedPrice: PropTypes.number,
-    appliedPromotions: PropTypes.array,
+    appliedPromotions: PropTypes.arrayOf(PropTypes.shape()),
     flags: PropTypes.shape({
       disableLink: PropTypes.bool,
       disableQuantityField: PropTypes.bool,

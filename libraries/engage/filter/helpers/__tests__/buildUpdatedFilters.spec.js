@@ -1,7 +1,7 @@
 import set from 'lodash/set';
 import cloneDeep from 'lodash/cloneDeep';
 import buildUpdatedFilters from '../buildUpdatedFilters';
-/* eslint-disable camelcase */
+
 const mockedFilter = {
   display_amount: {
     id: 'display_amount',
@@ -22,7 +22,6 @@ const mockedFilter = {
     }],
   },
 };
-/* eslint-enable camelcase */
 
 describe('buildUpdatedFilters()', () => {
   it('should update filters as expected', () => {

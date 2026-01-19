@@ -19,14 +19,6 @@ const CLOSE = 'navdrawer_close';
  * The NavDrawer component
  */
 class NavDrawer extends Component {
-  static close = () => {
-    UIEvents.emit(CLOSE);
-  }
-
-  static open = () => {
-    UIEvents.emit(OPEN);
-  }
-
   static EVENT_OPEN = OPEN;
 
   static EVENT_CLOSE = CLOSE;
@@ -35,22 +27,30 @@ class NavDrawer extends Component {
 
   static Item = Item;
 
-  static Section = Section
+  static Section = Section;
 
   static Title = Title;
+
+  static close = () => {
+    UIEvents.emit(CLOSE);
+  };
+
+  static open = () => {
+    UIEvents.emit(OPEN);
+  };
 
   static propTypes = {
     children: PropTypes.node.isRequired,
     'aria-hidden': PropTypes.bool,
     onClose: PropTypes.func,
     onOpen: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     'aria-hidden': false,
     onClose: noop,
     onOpen: noop,
-  }
+  };
 
   /**
    * @param {Object} props The component props.
@@ -90,13 +90,13 @@ class NavDrawer extends Component {
 
   onEntering = () => {
     this.props.onOpen();
-  }
+  };
 
   onEntered = () => {
     if (this.a11yCloseRef.current) {
       this.a11yCloseRef.current.focus();
     }
-  }
+  };
 
   onExited = () => {
     this.contentRef.current.scrollTop = 0;
@@ -105,11 +105,11 @@ class NavDrawer extends Component {
       // Focus the element that triggered the NavDrawer after it closes
       this.triggerElement.focus();
     }
-  }
+  };
 
   onExiting = () => {
     this.props.onClose();
-  }
+  };
 
   open = () => {
     // Save a reference to the element that triggered the NavDrawer
@@ -118,20 +118,20 @@ class NavDrawer extends Component {
     this.setState({
       open: true,
     });
-  }
+  };
 
   close = () => {
     this.setState({
       open: false,
     });
-  }
+  };
 
   /**
    * @returns {JSX}
    */
   render() {
     return (
-      <Fragment>
+      <>
         <Transition
           onEntering={this.onEntering}
           onEntered={this.onEntered}
@@ -167,7 +167,7 @@ class NavDrawer extends Component {
           onClick={this.close}
           opacity={20}
         />
-      </Fragment>
+      </>
     );
   }
 }

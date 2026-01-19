@@ -25,7 +25,7 @@ const LABEL = 'navigation.cart';
 const CartButton = ({ navigate, count }) => {
   const ariaLabel = `${i18n.text(LABEL)}. ${i18n.text('common.products')}: ${count}.`;
   return (
-    <Fragment>
+    <>
       <Portal name={NAV_MENU_CART_BEFORE} props={portalProps} />
       <Portal name={NAV_MENU_CART} props={portalProps}>
         <NavDrawer.Item
@@ -38,7 +38,7 @@ const CartButton = ({ navigate, count }) => {
         />
       </Portal>
       <Portal name={NAV_MENU_CART_AFTER} props={portalProps} />
-    </Fragment>
+    </>
   );
 };
 

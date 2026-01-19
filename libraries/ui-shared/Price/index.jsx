@@ -61,34 +61,49 @@ const Price = (props, context) => {
    * The unitPriceMin contains the lowest of these prices and will be
    * displayed with a 'From' prefix.
    */
+  const priceContent = useMemo(() => {
+    let result = null;
+
+    if (showFromPrice) {
+      result = (
+        <I18n.Text aria-hidden string="price.from">
+          <I18n.Price
+            currency={props.currency}
+            fractions={props.fractions}
+            forKey="price"
+            price={props.unitPriceMin}
+          />
+        </I18n.Text>
+      );
+    } else if (props.allowFree && props.unitPrice === 0) {
+      result = <I18n.Text string="price.free" />;
+    } else {
+      result = (
+        <I18n.Price
+          currency={props.currency}
+          fractions={props.fractions}
+          price={props.unitPrice}
+        />
+      );
+    }
+
+    return result;
+  }, [
+    props.allowFree,
+    props.currency,
+    props.fractions,
+    props.unitPrice,
+    props.unitPriceMin,
+    showFromPrice,
+  ]);
+
   return (
     <div
       className={containerClasses}
       data-test-id={`minPrice: ${props.unitPriceMin} price: ${props.unitPrice} currency: ${props.currency}`}
     >
       <span aria-label={__('price.label', { price: ariaPrice })}>
-        {showFromPrice ? (
-          <I18n.Text aria-hidden string="price.from">
-            <I18n.Price
-              currency={props.currency}
-              fractions={props.fractions}
-              forKey="price"
-              price={props.unitPriceMin}
-            />
-          </I18n.Text>
-        ) : (
-          <>
-            { props.allowFree && props.unitPrice === 0 ? (
-              <I18n.Text string="price.free" />
-            ) : (
-              <I18n.Price
-                currency={props.currency}
-                fractions={props.fractions}
-                price={props.unitPrice}
-              />
-            )}
-          </>
-        )}
+        {priceContent}
       </span>
       {props.taxDisclaimer && showDisclaimer ? (
         <div className={styles.disclaimer}>

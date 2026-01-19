@@ -6,7 +6,7 @@ describe('<InfoField>', () => {
   it('should render info field', () => {
     const wrapper = shallow((
       <InfoField>
-        {'Some info text'}
+        Some info text
       </InfoField>
     ));
     expect(wrapper).toMatchSnapshot();

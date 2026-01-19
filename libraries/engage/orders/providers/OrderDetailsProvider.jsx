@@ -46,7 +46,7 @@ const OrderDetailsProvider = ({
   const [showForm, setShowForm] = useState(!isUserLoggedIn);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const orderTokenCookie = [`shopgate_order_token_${orderId}`];
+  const orderTokenCookie = useMemo(() => [`shopgate_order_token_${orderId}`], [orderId]);
   const [cookies, setCookie] = useCookies([orderTokenCookie]);
   const orderToken = cookies[orderTokenCookie];
 

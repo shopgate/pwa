@@ -179,7 +179,7 @@ const Typography = React.forwardRef((props, ref) => {
           [classes.gutterBottom]: gutterBottom,
           'engage__typography__gutter-bottom': gutterBottom,
           [classes.paragraph]: paragraph,
-          // eslint-disable-next-line camelcase
+
           engage__typography__paragraph: paragraph,
           [classes[`align${capitalize(align)}`]]: align !== 'inherit',
           [classes[`display${capitalize(display)}`]]: display !== 'initial',

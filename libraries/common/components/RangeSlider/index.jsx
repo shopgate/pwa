@@ -143,7 +143,7 @@ class RangeSlider extends Component {
     const handleCenterX = handleRect.left + (handleDOMElement.offsetWidth / 2);
     // Store the signed distanced between the current touch offset and the handle center.
     this.touchOffset = getTouchPositionX(event) - handleCenterX;
-  }
+  };
 
   /**
    * Processes move events on handles.
@@ -196,7 +196,7 @@ class RangeSlider extends Component {
     this.draggedHandlePixelOffset *= this.domElement.offsetWidth;
 
     this.setState(stateUpdate, this.triggerChangeCallback);
-  }
+  };
 
   /**
    * Processes global touch end events for handles.
@@ -205,7 +205,7 @@ class RangeSlider extends Component {
   handleTouchEnd = () => {
     this.touchOffset = 0;
     this.draggedHandle = null;
-  }
+  };
 
   /**
    * Processes outer range touch end events.
@@ -224,7 +224,7 @@ class RangeSlider extends Component {
     }
 
     this.handleTouchMove(event);
-  }
+  };
 
   /**
    * Calls the change callback in case of a state update.

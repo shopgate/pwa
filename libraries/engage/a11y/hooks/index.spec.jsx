@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { mount } from 'enzyme';
 import { combineReducers } from 'redux';
 import { Provider as StoreProvider } from 'react-redux';
@@ -15,6 +16,10 @@ import { increaseModalCount, decreaseModalCount } from '../action-creators';
 const MockComponent = ({ isVisible }) => {
   useTrackModalState(isVisible);
   return null;
+};
+
+MockComponent.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
 };
 
 /**

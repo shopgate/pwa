@@ -54,7 +54,7 @@ class Filter extends PureComponent {
         }}
       />
     );
-  }
+  };
 
   /**
    * @returns {JSX.Element}

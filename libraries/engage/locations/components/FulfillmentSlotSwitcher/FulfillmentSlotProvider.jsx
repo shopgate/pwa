@@ -48,7 +48,6 @@ const FulfillmentSlotProvider = ({ setFulfillmentSlot, isFulfillmentScheduling }
 
     if (promiseRef.current?.resolve) {
       setTimeout(() => {
-        // eslint-disable-next-line no-unused-expressions
         promiseRef.current?.resolve(slot);
         promiseRef.current = null;
       }, 10);

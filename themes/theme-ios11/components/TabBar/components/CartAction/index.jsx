@@ -42,7 +42,7 @@ class TabBarCartAction extends Component {
     const ariaLabel = `${i18n.text(label)}. ${i18n.text('common.products')}: ${cartProductCount}.`;
 
     return (
-      <Fragment>
+      <>
         <Portal name={portals.TAB_BAR_CART_BEFORE} props={this.props} />
         <Portal
           name={portals.TAB_BAR_CART}
@@ -71,7 +71,7 @@ class TabBarCartAction extends Component {
             TabBarAction,
           }}
         />
-      </Fragment>
+      </>
     );
   }
 }

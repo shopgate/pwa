@@ -42,7 +42,7 @@ class CategoryProducts extends PureComponent {
       offset || this.props.products.length,
       includeCharacteristics
     );
-  }
+  };
 
   /**
    * @returns {JSX}
@@ -55,7 +55,7 @@ class CategoryProducts extends PureComponent {
     const hasProducts = Array.isArray(products) && products.length > 0;
 
     return (
-      <Fragment>
+      <>
         { (categoryHasChildren && hasProducts) && (
           <ResponsiveContainer webOnly breakpoint=">xs">
             <hr className={separator} />
@@ -68,7 +68,7 @@ class CategoryProducts extends PureComponent {
           requestHash={hash}
           scope="category"
         />
-      </Fragment>
+      </>
 
     );
   }

@@ -25,29 +25,29 @@ class SearchProducts extends PureComponent {
    * @param {number} offset The offset for the fetching.
    * @returns {Promise}
    */
-   fetchProducts = offset => this.props.getProducts(
-     this.props.searchPhrase,
-     this.props.sort,
-     offset || this.props.products.length
-   )
+  fetchProducts = offset => this.props.getProducts(
+    this.props.searchPhrase,
+    this.props.sort,
+    offset || this.props.products.length
+  );
 
-   /**
+  /**
    * @returns {JSX}
    */
-   render() {
-     if (!this.props.products) {
-       return null;
-     }
+  render() {
+    if (!this.props.products) {
+      return null;
+    }
 
-     return (
-       <ProductGrid
-         handleGetProducts={this.fetchProducts}
-         products={this.props.products}
-         totalProductCount={this.props.totalProductCount}
-         requestHash={this.props.hash}
-       />
-     );
-   }
+    return (
+      <ProductGrid
+        handleGetProducts={this.fetchProducts}
+        products={this.props.products}
+        totalProductCount={this.props.totalProductCount}
+        requestHash={this.props.hash}
+      />
+    );
+  }
 }
 
 export default connect(SearchProducts);

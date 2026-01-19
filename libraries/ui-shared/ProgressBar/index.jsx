@@ -36,7 +36,7 @@ class ProgressBar extends Component {
    */
   static show = (pattern) => {
     UIEvents.emit(ProgressBar.PROGRESS_BAR_SHOW, pattern);
-  }
+  };
 
   /**
    * Hides the progress bar.
@@ -44,7 +44,7 @@ class ProgressBar extends Component {
    */
   static hide = (pattern) => {
     UIEvents.emit(ProgressBar.PROGRESS_BAR_HIDE, pattern);
-  }
+  };
 
   static propTypes = {
     isVisible: PropTypes.bool,

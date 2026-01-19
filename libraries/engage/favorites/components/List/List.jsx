@@ -136,8 +136,7 @@ const FavoriteList = ({
             renderLabel={() =>
               <ListAccordionLabel
                 title={name}
-              />
-              }
+              />}
             chevronPosition="left"
             startOpened
           >

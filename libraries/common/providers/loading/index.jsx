@@ -15,7 +15,7 @@ class LoadingProvider extends Component {
 
   static propTypes = {
     children: PropTypes.node.isRequired,
-  }
+  };
 
   /**
    * Adds or increases the loading counter for a path.
@@ -48,6 +48,7 @@ class LoadingProvider extends Component {
     super(props);
 
     this.loading = {};
+    this.contextValue = null;
     this.state = { loading: {} };
 
     UIEvents.addListener(this.constructor.SET, this.setLoading);
@@ -81,7 +82,7 @@ class LoadingProvider extends Component {
     this.setState({
       loading: newLoading,
     });
-  }
+  };
 
   /**
    * Resets the loading counter for a path.
@@ -95,7 +96,7 @@ class LoadingProvider extends Component {
     this.setState({
       loading: remaining,
     });
-  }
+  };
 
   /**
    * Decreases the loading counter for a path.
@@ -123,7 +124,7 @@ class LoadingProvider extends Component {
     this.setState({
       loading: newLoading,
     });
-  }
+  };
 
   /**
    * Checks if a path is loading.
@@ -133,21 +134,27 @@ class LoadingProvider extends Component {
   isLoading = (path) => {
     const { loading } = this.state;
     return !!loading[path];
-  }
+  };
 
   /**
    * @return {JSX}
    */
   render() {
-    const value = {
-      loading: this.state.loading,
+    const { loading } = this.state;
+
+    const nextValue = {
+      loading,
       setLoading: this.setLoading,
       unsetLoading: this.unsetLoading,
       isLoading: this.isLoading,
     };
 
+    if (!this.contextValue || this.contextValue.loading !== loading) {
+      this.contextValue = nextValue;
+    }
+
     return (
-      <LoadingContext.Provider value={value}>
+      <LoadingContext.Provider value={this.contextValue}>
         {this.props.children}
       </LoadingContext.Provider>
     );

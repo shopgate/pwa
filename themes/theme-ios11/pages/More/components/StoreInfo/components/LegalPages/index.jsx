@@ -48,8 +48,7 @@ const LegalPages = ({ legalPages }) => {
           wrapper={children =>
             <SurroundPortals portalName={portalName} portalProps={portalProps}>
               {children}
-            </SurroundPortals>
-          }
+            </SurroundPortals>}
         >
           <Item
             label={label}

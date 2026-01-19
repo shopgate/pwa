@@ -134,8 +134,7 @@ const StoreDetails = () => {
           <div className={styles.header}>
             {isRouteLocationPreferred ?
               i18n.text('location.myStore') :
-              i18n.text('location.makeMyStore')
-          }
+              i18n.text('location.makeMyStore')}
           </div>
         </div>
       </ConditionalWrapper>
@@ -178,8 +177,7 @@ const StoreDetails = () => {
               <span>
                 {i18n.text('location.makeMyStore')}
               </span>
-            </Button>
-            }
+            </Button>}
             {isComingSoon && (
             <div className={styles.comingSoon}>
               {i18n.text('location.comingSoon')}

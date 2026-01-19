@@ -36,7 +36,7 @@ import * as styles from './style';
  * @returns {JSX}
  */
 const ProductInfo = ({ productId, options, isROPEActive }) => (
-  <Fragment>
+  <>
     <Portal name={PRODUCT_INFO_BEFORE} />
     <Portal name={PRODUCT_INFO}>
       <Grid component="div" className="theme__product__header__product-info">
@@ -67,8 +67,7 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
             {!isROPEActive &&
             <div className={styles.productInfo}>
               <StockInfo productId={productId} />
-            </div>
-              }
+            </div>}
           </Portal>
         </Grid.Item>
         <Grid.Item component="div" className={`${styles.priceContainer} theme__product__header__product-info__row2`}>
@@ -94,7 +93,7 @@ const ProductInfo = ({ productId, options, isROPEActive }) => (
       </Grid.Item>
     </Portal>
     <Portal name={PRODUCT_INFO_AFTER} />
-  </Fragment>
+  </>
 );
 
 ProductInfo.propTypes = {

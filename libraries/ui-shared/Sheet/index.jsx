@@ -146,7 +146,7 @@ class Sheet extends Component {
    */
   handleSearchInput = (value) => {
     this.setState({ query: value });
-  }
+  };
 
   /**
    * Renders the component.
@@ -200,8 +200,7 @@ class Sheet extends Component {
               shadow={this.state.scrolled}
               title={this.props.title}
               allowClose={allowClose}
-            />
-          }
+            />}
           <div className={styles.progressBarContainer}>
             <ProgressBar isVisible={this.props.isLoading} />
           </div>
@@ -219,8 +218,7 @@ class Sheet extends Component {
             level={4}
             onClick={allowClose ? this.handleClose : () => {}}
             opacity={20}
-          />
-        }
+          />}
       </section>
     );
   }

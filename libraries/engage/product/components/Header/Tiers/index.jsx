@@ -21,7 +21,7 @@ const Tiers = ({ price }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Portal name={PRODUCT_TIERS_BEFORE} />
       <Portal name={PRODUCT_TIERS}>
         <div className={`${styles.wrapper} engage__product__header__tiers`}>
@@ -29,7 +29,7 @@ const Tiers = ({ price }) => {
         </div>
       </Portal>
       <Portal name={PRODUCT_TIERS_AFTER} />
-    </Fragment>
+    </>
   );
 };
 

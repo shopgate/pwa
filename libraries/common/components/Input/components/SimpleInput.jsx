@@ -101,6 +101,7 @@ class SimpleInput extends Component {
     }
   }
 
+  /* eslint-disable react/no-unused-class-component-methods */
   /**
    * @returns {boolean} Whether the current value of the input field is valid.
    */
@@ -114,6 +115,7 @@ class SimpleInput extends Component {
   get isFocused() {
     return this.state.isFocused;
   }
+  /* eslint-enable react/no-unused-class-component-methods */
 
   /**
    * @returns {string} The current value of the input field.

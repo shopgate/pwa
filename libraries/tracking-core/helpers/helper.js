@@ -298,7 +298,7 @@ export class SGLink {
     }
 
     return outputUrl;
-  }
+  };
 
   /**
    * Sets utm param from event.

@@ -1,4 +1,4 @@
-import React, { useState, useCallback, Fragment } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import pick from 'lodash/pick';
 import { i18n } from '@shopgate/engage/core';
@@ -35,46 +35,44 @@ const SelectContextChoices = ({
   const values = hasValue ? Object.values(pick(options, value)) : [];
 
   return (
-    <Fragment>
-      <InfoField
-        className={className}
-        label={label}
-        errorText={errorText}
-        showErrorText={showErrorText}
-        hasValue
-        rightElement={<Chevron className={styles.chevron} />}
+    <InfoField
+      className={className}
+      label={label}
+      errorText={errorText}
+      showErrorText={showErrorText}
+      hasValue
+      rightElement={<Chevron className={styles.chevron} />}
+    >
+      <div
+        role="button"
+        onClick={() => setOpened(true)}
+        aria-hidden
+        tabIndex="0"
+        className={styles.toggle}
       >
-        <div
-          role="button"
-          onClick={() => setOpened(true)}
-          aria-hidden
-          tabIndex="0"
-          className={styles.toggle}
-        >
-          {!hasValue && (placeholder || i18n.text('common.please_choose'))}
-          {hasValue && values.join(', ')}
-        </div>
+        {!hasValue && (placeholder || i18n.text('common.please_choose'))}
+        {hasValue && values.join(', ')}
+      </div>
 
-        <ContextMenu
-          isOpened={opened}
-          onStateChange={onMenuChange}
-          showToggle={false}
-          scroll
-        >
-          {Object.keys(options).map(key => (
-            <ContextMenu.Item
-              key={key}
-              autoClose={false}
-              onClick={() => onItemClick(key)}
-              className={hasValue && value.includes(key) ? styles.itemSelected : ''}
-            >
-              {options[key]}
-            </ContextMenu.Item>
-          ))}
-        </ContextMenu>
+      <ContextMenu
+        isOpened={opened}
+        onStateChange={onMenuChange}
+        showToggle={false}
+        scroll
+      >
+        {Object.keys(options).map(key => (
+          <ContextMenu.Item
+            key={key}
+            autoClose={false}
+            onClick={() => onItemClick(key)}
+            className={hasValue && value.includes(key) ? styles.itemSelected : ''}
+          >
+            {options[key]}
+          </ContextMenu.Item>
+        ))}
+      </ContextMenu>
 
-      </InfoField>
-    </Fragment>
+    </InfoField>
   );
 };
 

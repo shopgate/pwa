@@ -1,6 +1,5 @@
 module.exports = {
   extends: 'airbnb',
-  parser: 'babel-eslint',
   env: {
     browser: true,
     node: true,
@@ -9,18 +8,13 @@ module.exports = {
     'cypress/globals': true,
   },
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 2022,
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   rules: {
-    // Added this according to: https://eslint.org/docs/rules/camelcase#allow
-    camelcase: ['error', {
-      allow: [
-        'UNSAFE_componentWillMount',
-        'UNSAFE_componentWillReceiveProps',
-        'UNSAFE_componentWillUpdate',
-      ],
-    }],
     'capitalized-comments': 0,
     'comma-dangle': ['error', {
       arrays: 'always-multiline',
@@ -95,7 +89,77 @@ module.exports = {
     }],
     'operator-linebreak': 0,
     'implicit-arrow-linebreak': 0,
+
+    // ## Fixes of Airbnb rules for our use cases
+
+    // Error on inconsistent line breaks in function parentheses
+    'function-paren-newline': ['error', 'consistent'],
+    'no-restricted-exports': [
+      'warn',
+      {
+      // Allow export { default } from '...';
+        restrictDefaultExports: { defaultFrom: false },
+      },
+    ],
+    // Just warn about non-camelcase variables since sometimes they are required (e.g., API data)
+    camelcase: 'warn',
+    // Just warn about class methods that don't use 'this' to avoid heavy refactoring
+    'class-methods-use-this': 'warn',
+    // Just warn about unexpected side effects by using async functions as Promise executors
+    'no-async-promise-executor': 'warn',
+    // Just warn about circular dependencies since they are hard to avoid completely
+    'import/no-cycle': 'warn',
+
+    // Omit parentheses when there is only one argument to an arrow function
+    'arrow-parens': [
+      'error',
+      'as-needed',
+      { requireForBlockBody: true },
+    ],
+
+    // ## ESLint complain makes sense - revisit at the next refactoring
+
+    // In functions parameters with default values should be last - violated e.g. in reducers where
+    // state = initialState is the first parameter, but the action parameter has no default value.
+    'default-param-last': 'warn',
+    // In switch statements, require 'default' case to be last
+    'default-case-last': 'warn',
+    // Return values of Promise executor functions don't make sense
+    'no-promise-executor-return': 'warn',
+    // Prefer Object spread over Object.assign
+    'prefer-object-spread': 'warn',
+    // Catch blocks that only rethrow the caught error are redundant
+    'no-useless-catch': 'warn',
+    // Prefer regex literals over RegExp constructor
+    'prefer-regex-literals': 'warn',
+
+    // ## Autofixable - can be removed when ESLint update pull request is merged
+    indent: 'warn',
+    semi: ['warn', 'always'],
   },
+  // Overrides for files that are tests or mocks
+  overrides: [
+    {
+      files: [
+        '**/*.spec.js',
+        '**/*.spec.jsx',
+        '**/*.test.js',
+        '**/*.test.jsx',
+        '**/*.mock.js',
+        '**/*.mock.jsx',
+        '**/spec.js',
+        '**/spec.jsx',
+        '**/mock.js',
+        '**/mock.jsx',
+      ],
+      rules: {
+        // Allow more than one class per file in test files
+        'max-classes-per-file': 'off',
+        // Allow non-camelcase names in test files (e.g., snake_case from API)
+        camelcase: 'off',
+      },
+    },
+  ],
   settings: {
     'import/extensions': [
       '.js',

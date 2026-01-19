@@ -100,7 +100,7 @@ export default function favorites(subscribe) {
     // Nothing to do, when the store already contains the item
     const activeProductInList = getFavoritesProducts(state)
       .byList[action.listId]
-        ?.items.find(({ productId }) => productId === action.productId);
+      ?.items.find(({ productId }) => productId === action.productId);
 
     if (activeProductInList && !wishlistItemQuantityEnabled) {
       // Call cancel action with "zero" count, because request was even dispatched

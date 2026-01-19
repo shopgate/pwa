@@ -13,10 +13,10 @@ import ProductGalleryAppBar from './components/AppBar';
 const ProductGallery = ({ productId, initialSlide }) => (
   <View>
     {!!productId && (
-      <Fragment>
+      <>
         <ProductGalleryAppBar />
         <ProductGalleryContent productId={productId} initialSlide={initialSlide} />
-      </Fragment>
+      </>
     )}
   </View>
 );

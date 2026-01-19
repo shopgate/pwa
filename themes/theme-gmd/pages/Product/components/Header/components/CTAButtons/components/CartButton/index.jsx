@@ -30,17 +30,23 @@ class CartButton extends Component {
     isRopeFulfillmentMethodAllowed: PropTypes.bool,
     userLocation: PropTypes.shape(),
     userMethod: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     isRopeFulfillmentMethodAllowed: false,
     userLocation: null,
     userMethod: null,
-  }
-
-  state = {
-    clicked: false,
   };
+
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      clicked: false,
+    };
+  }
 
   /**
    * Only update when the clicked state has changed.
@@ -146,14 +152,14 @@ class CartButton extends Component {
         params: { count: this.context.quantity },
       });
     });
-  }
+  };
 
   /**
    * Reset the state to make the button clickable again.
    */
   resetClicked = () => {
     this.setState({ clicked: false });
-  }
+  };
 
   /**
    * @returns {JSX}

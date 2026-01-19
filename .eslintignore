@@ -5,6 +5,7 @@ coverage
 /trustedPipelines/
 /themes/*/extensions/
 /themes/*/e2e/
+/themes/*/public/
 !/extensions/@shopgate-product-reviews
 !/extensions/@shopgate-tracking-native
 !/extensions/@shopgate-user-privacy
