@@ -19,7 +19,11 @@ const MockComponent = ({ isVisible }) => {
 };
 
 MockComponent.propTypes = {
-  isVisible: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool,
+};
+
+MockComponent.defaultProps = {
+  isVisible: undefined,
 };
 
 /**

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo } from 'react';
+import React, { memo, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -27,74 +27,73 @@ function RippleAnimation({
 }) {
   const nodeRef = useRef(null);
 
-  // Trigger the animation immediately
-  const inProp = true;
+  const baseStyle = useMemo(
+    () => ({
+      backgroundColor: color,
+      height: size,
+      width: size,
+      left: x,
+      top: y,
+      opacity: 0.25,
+      transform: 'translate3d(-50%, -50%, 0) scale3d(0, 0, 1)',
+      transition: `opacity ${duration}ms cubic-bezier(0.25, 0.1, 0.25, 1), transform ${duration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
+      willChange: 'transform, opacity',
+    }),
+    [color, size, x, y, duration]
+  );
 
-  const baseStyle = useMemo(() => ({
-    position: 'absolute',
-    backgroundColor: color,
-    height: size,
-    width: size,
-    left: x,
-    top: y,
-    borderRadius: '50%',
-    transform: 'translate3d(-50%, -50%, 0) scale3d(0, 0, 1)',
-    opacity: 0.25,
-    transition: `opacity ${duration}ms cubic-bezier(0.25, 0.1, 0.25, 1), transform ${duration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
-    pointerEvents: 'none',
-  }), [color, duration, size, x, y]);
-
-  const transitionStyles = useMemo(() => ({
-    entering: {
+  const activeStyle = useMemo(
+    () => ({
       transform: 'translate3d(-50%, -50%, 0) scale3d(1, 1, 1)',
       opacity: 0,
-    },
-    entered: {
-      transform: 'translate3d(-50%, -50%, 0) scale3d(1, 1, 1)',
-      opacity: 0,
-    },
-    exiting: {},
-    exited: {},
-    unmounted: {},
-  }), []);
+    }),
+    []
+  );
 
-  // Run callback when transition ends
-  useEffect(() => {
-    const el = nodeRef.current;
-    if (!el) return undefined;
-
-    /**
-     * Handles the transition end event and calls onComplete for relevant properties.
-     * @param {TransitionEvent} e - The transition event object
-     */
-    const handleEnd = (e) => {
-      // Only handle transform or opacity transitions
-      if (e.propertyName === 'transform' || e.propertyName === 'opacity') {
-        onComplete();
-      }
-    };
-
-    el.addEventListener('transitionend', handleEnd);
-    return () => el.removeEventListener('transitionend', handleEnd);
-  }, [onComplete]);
+  /**
+   * Resolves ripple animation styles for a given transition state.
+   *
+   * @param {string} state React Transition state.
+   * @returns {React.CSSProperties} Computed inline styles.
+   */
+  const getStyleForState = (state) => {
+    // Transition states: 'entering', 'entered', 'exiting', 'exited'
+    if (state === 'entering' || state === 'entered') {
+      return {
+        ...baseStyle,
+        ...activeStyle,
+      };
+    }
+    return baseStyle;
+  };
 
   return (
     <Transition
-      in={inProp}
-      timeout={duration}
+      in
+      timeout={{
+        appear: duration,
+        enter: duration,
+        exit: 0,
+      }}
       appear
       mountOnEnter
       unmountOnExit
       nodeRef={nodeRef}
+      onEnter={() => {
+        // Force layout/reflow so Safari & Chrome reliably apply the transition
+        // before switching to the "entering" styles.
+        if (nodeRef.current) {
+          // eslint-disable-next-line no-unused-expressions
+          nodeRef.current.offsetHeight;
+        }
+      }}
+      onEntered={onComplete}
     >
       {state => (
         <div
           ref={nodeRef}
           className={style.ripple}
-          style={{
-            ...baseStyle,
-            ...transitionStyles[state],
-          }}
+          style={getStyleForState(state)}
         />
       )}
     </Transition>
@@ -119,4 +118,4 @@ RippleAnimation.defaultProps = {
   y: 0,
 };
 
-export default React.memo(RippleAnimation);
+export default memo(RippleAnimation);

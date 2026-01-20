@@ -20,13 +20,13 @@ module.exports = (api) => {
         corejs: 3,
       }],
       ['@babel/preset-react', {
-        runtime: 'classic',
+        runtime: 'automatic',
         development: !isProd && !isTest,
       }],
     ],
 
     plugins: [
-      'lodash',
+      '@sigmacomputing/babel-plugin-lodash',
       ['@babel/plugin-transform-class-properties', { loose: true }],
       ['@babel/plugin-transform-private-methods', { loose: true }],
       ['@babel/plugin-transform-private-property-in-object', { loose: true }],
@@ -58,7 +58,7 @@ module.exports = (api) => {
       test: {
         presets: [
           ['@babel/preset-env', { targets: { node: 'current' } }],
-          ['@babel/preset-react', { runtime: 'classic' }],
+          ['@babel/preset-react', { runtime: 'automatic' }],
         ],
       },
       development: {

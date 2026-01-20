@@ -11,14 +11,12 @@ import {
   Pagination,
   Zoom,
 } from 'swiper/modules';
-/* eslint-disable import/no-unresolved */
 import { Swiper as OriginalSwiper } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/a11y';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/zoom';
-/* eslint-enable import/no-unresolved */
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import SwiperItem from './components/SwiperItem';
 import {

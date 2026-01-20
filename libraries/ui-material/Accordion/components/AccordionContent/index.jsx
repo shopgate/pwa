@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useSpring, animated } from 'react-spring';
-import useMeasure from 'react-use/lib/useMeasure';
+import { useMeasure } from 'react-use';
 import * as styles from './style';
 
 /**

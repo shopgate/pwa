@@ -6,8 +6,8 @@
   "license": "Apache-2.0",
   "devDependencies": {
     "@shopgate/pwa-common": "7.29.9",
-    "react": "~16.14.0",
-    "react-dom": "~16.14.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "redux": "^4.2.1"
   },
   "dependencies": {
@@ -17,9 +17,9 @@
     "prop-types": "~15.8.1",
     "react-spring": "^8.0.27",
     "react-transition-group": "^3.0.0",
-    "react-use": "~13.12.2"
+    "react-use": "^17.6.0"
   },
   "peerDependencies": {
-    "react": "~16.14.0"
+    "react": "^16.0.0 || ^17.0.0"
   }
 }

@@ -11,8 +11,8 @@
     "@shopgate/pwa-core": "7.29.9",
     "lint-staged": "^12.5.0",
     "prop-types": "~15.8.1",
-    "react": "~16.14.0",
-    "react-dom": "~16.14.0"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "dependencies": {
     "lodash": "^4.17.21"
