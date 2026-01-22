@@ -1,5 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
-import CryptoJs from 'crypto-js';
+import { hashString } from '../hash';
 import { embeddedMedia } from '../../collections';
 import {
   getExternalScripts,
@@ -25,7 +25,7 @@ import decodeHTML from './decodeHTML';
  * @returns {string} The HTML without any script tags.
  */
 const parseHTML = (html, decode, settings, processStyles = false, cookieConsentSettings = {}) => {
-  const id = CryptoJs.MD5(JSON.stringify(settings)).toString();
+  const id = hashString(JSON.stringify(settings));
   const container = getDOMContainer(`html-sanitizer-${id}`);
 
   const cookieConsent = {

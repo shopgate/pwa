@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import classNames from 'classnames';
-import CryptoJs from 'crypto-js';
+import { hashString } from '@shopgate/pwa-common/helpers/hash';
 import sortBy from 'lodash/sortBy';
 import uniqBy from 'lodash/uniqBy';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -56,7 +56,7 @@ const styles = {
 /**
  * Hashes a shipping method
  * @param {Object} method A shipping method
- * @returns {string}
+ * @returns {string|null}
  */
 const hashShippingMethod = (method) => {
   if (!method) {
@@ -64,7 +64,7 @@ const hashShippingMethod = (method) => {
   }
 
   const { code, serviceLevel: { code: serviceLevelCode, carrier: { code: carrierCode } } } = method;
-  return CryptoJs.MD5(`${code} ${serviceLevelCode} ${carrierCode}`).toString();
+  return hashString(`${code} ${serviceLevelCode} ${carrierCode}`);
 };
 
 /**
