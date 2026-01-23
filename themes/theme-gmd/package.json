@@ -55,7 +55,7 @@
     "redux-mock-store": "^1.5.4",
     "reselect": "^4.1.8",
     "smoothscroll-polyfill": "^0.4.3",
-    "tss-react": "^4.9.18",
+    "tss-react": "^4.9.20",
     "webpack": "^5.102.1",
     "webpack-cli": "^5.1.4"
   },
