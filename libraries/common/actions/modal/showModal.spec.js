@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import { logger } from '@shopgate/pwa-core/helpers';
 import showModal, { getModalId } from './showModal';
 import { CREATE_MODAL } from '../../constants/ActionTypes';

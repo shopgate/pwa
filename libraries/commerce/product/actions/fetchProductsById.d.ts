@@ -1,6 +1,4 @@
-// fetchProductsById.d.ts
-
-import { ThunkAction } from 'redux-thunk';
+import type { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
 
 export interface FetchProductsResult {

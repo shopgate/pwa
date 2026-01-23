@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import {
   SET_VIEW_TITLE,
   REQUEST_PAGE_CONFIG,
