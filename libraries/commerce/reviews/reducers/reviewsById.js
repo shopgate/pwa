@@ -11,7 +11,7 @@ import {
  * @param {Object} action The current redux action.
  * @return {Object} The new state.
  */
-function reviewsById(state = {}, action) {
+function reviewsById(state = {}, action = {}) {
   switch (action.type) {
     case RECEIVE_PRODUCT_REVIEWS:
     case RECEIVE_REVIEWS: {

@@ -21,7 +21,7 @@ export const defaultState = {
  */
 export default function search(
   state = defaultState,
-  action
+  action = {}
 ) {
   switch (action.type) {
     case SET_USER_SEARCH_COUNTRY_CODE:

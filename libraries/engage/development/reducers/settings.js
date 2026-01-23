@@ -25,8 +25,7 @@ const initialState = {
  * @param {Object} action The redux action.
  * @returns {Object}
  */
-export default function settingsReducer(state = initialState, action) {
-  /* eslint-disable no-param-reassign */
+export default function settingsReducer(state = initialState, action = {}) {
   const producer = produce(/** @param {DevToolsSettingsState} draft The draft */ (draft) => {
     switch (action.type) {
       case DEVELOPMENT_TOOLS_TOGGLE_INSETS: {
@@ -52,7 +51,6 @@ export default function settingsReducer(state = initialState, action) {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
   return producer(state);
 }
 

@@ -15,7 +15,7 @@ import {
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-const childrenByCategoryId = (state = {}, action) => {
+const childrenByCategoryId = (state = {}, action = {}) => {
   switch (action.type) {
     case REQUEST_CATEGORY:
     case REQUEST_CATEGORY_CHILDREN:

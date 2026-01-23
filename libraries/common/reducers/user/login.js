@@ -23,7 +23,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function userLoginReducer(state = defaultState, action) {
+export default function userLoginReducer(state = defaultState, action = {}) {
   switch (action.type) {
     case APP_DID_START:
       return {

@@ -47,30 +47,20 @@ const defaultState = {
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export default function shopSettings(state = defaultState, action) {
-  /* eslint-disable no-param-reassign */
-  const producer = produce((draft) => {
-    switch (action.type) {
-      case RECEIVE_SHOP_SETTINGS: {
-        Object.keys(action.settings).forEach((key) => {
-          draft[key] = action.settings[key];
-        });
+export default function shopSettings(state = defaultState, action = {}) {
+  switch (action.type) {
+    case ERROR_SHOP_SETTINGS:
+      return {
+        ...defaultState,
+        ...state,
+      };
 
-        break;
-      }
-      case ERROR_SHOP_SETTINGS: {
-        draft = {
-          ...defaultState,
-          ...state,
-        };
+    case RECEIVE_SHOP_SETTINGS:
+      return produce(state, (draft) => {
+        Object.assign(draft, action.settings);
+      });
 
-        break;
-      }
-      default:
-        break;
-    }
-  });
-
-  /* eslint-enable no-param-reassign */
-  return producer(state);
+    default:
+      return state;
+  }
 }

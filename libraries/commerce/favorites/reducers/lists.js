@@ -1,14 +1,14 @@
 import { produce } from 'immer';
 import {
-  RECEIVE_FAVORITES_LISTS,
-  SUCCESS_ADD_FAVORITES_LIST,
-  SUCCESS_UPDATE_FAVORITES_LIST,
-  SUCCESS_REMOVE_FAVORITES_LIST,
-  OPEN_FAVORITE_LIST_CHOOSER,
+  CLOSE_FAVORITE_COMMENT_DIALOG,
   CLOSE_FAVORITE_LIST_CHOOSER,
   FAVORITES_LIFETIME,
   OPEN_FAVORITE_COMMENT_DIALOG,
-  CLOSE_FAVORITE_COMMENT_DIALOG,
+  OPEN_FAVORITE_LIST_CHOOSER,
+  RECEIVE_FAVORITES_LISTS,
+  SUCCESS_ADD_FAVORITES_LIST,
+  SUCCESS_REMOVE_FAVORITES_LIST,
+  SUCCESS_UPDATE_FAVORITES_LIST,
 } from '../constants';
 
 /**
@@ -22,9 +22,8 @@ const lists = (state = {
   lists: [],
   chooser: null,
   commentDialog: null,
-}, action) => {
-  /* eslint-disable no-param-reassign */
-  const newState = produce(state, (draft) => {
+}, action = {}) =>
+  produce(state, (draft) => {
     switch (action.type) {
       case OPEN_FAVORITE_LIST_CHOOSER: {
         draft.chooser = {
@@ -82,8 +81,5 @@ const lists = (state = {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
-  return newState;
-};
 
 export default lists;

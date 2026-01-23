@@ -40,8 +40,7 @@ const initialState = {
  * @param {Object} action The redux action.
  * @returns {Object}
  */
-export default function checkoutReducer(state = initialState, action) {
-  /* eslint-disable no-param-reassign */
+export default function checkoutReducer(state = initialState, action = {}) {
   const producer = produce((draft) => {
     switch (action.type) {
       case FETCH_CHECKOUT_ORDER: {
@@ -99,6 +98,5 @@ export default function checkoutReducer(state = initialState, action) {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
   return producer(state);
 }

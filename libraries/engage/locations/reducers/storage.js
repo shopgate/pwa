@@ -38,8 +38,6 @@ const initialState = {
   fulfillmentSlotsByLocation: {},
 };
 
-/* eslint-disable no-param-reassign */
-
 /**
  * Stores a list of locations and updates the store.
  * @param {Object} draft Draft
@@ -58,7 +56,7 @@ const storeLocationData = (draft, locations) => {
   });
 };
 
-export default (state = initialState, action) => {
+export default (state = initialState, action = {}) => {
   const producer = produce((draft) => {
     switch (action.type) {
       case REQUEST_LOCATIONS:
@@ -159,5 +157,3 @@ export default (state = initialState, action) => {
   });
   return producer(state);
 };
-
-/* eslint-enable no-param-reassign */

@@ -12,8 +12,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export default function a11y(state = defaultState, action) {
-  /* eslint-disable no-param-reassign */
+export default function a11y(state = defaultState, action = {}) {
   const producer = produce((draft) => {
     switch (action.type) {
       case A11Y_INCREASE_MODAL_COUNT: {
@@ -34,7 +33,6 @@ export default function a11y(state = defaultState, action) {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
 
   return producer(state);
 }

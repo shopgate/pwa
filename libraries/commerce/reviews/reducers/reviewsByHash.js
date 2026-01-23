@@ -12,7 +12,7 @@ import {
  * @param {Object} action The current redux action.
  * @return {Object} The new state.
  */
-function reviewsByHash(state = {}, action) {
+function reviewsByHash(state = {}, action = {}) {
   switch (action.type) {
     case REQUEST_REVIEWS:
       return {

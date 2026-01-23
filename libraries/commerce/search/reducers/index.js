@@ -14,7 +14,7 @@ const initialState = {
  * @param {Object} action The action object.
  * @return {Object} The updated search suggestions data.
  */
-const search = (state = initialState, action) => {
+const search = (state = initialState, action = {}) => {
   switch (action.type) {
     case REQUEST_SEARCH_SUGGESTIONS:
       return {

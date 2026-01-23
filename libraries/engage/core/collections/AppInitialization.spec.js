@@ -16,7 +16,7 @@ const defaultState = {
  * @param {Object} action Redux action
  * @returns {Object}
  */
-const mockReducer = (state = defaultState, action) => {
+const mockReducer = (state = defaultState, action = {}) => {
   switch (action.type) {
     case SET_INITIALIZED: {
       return {

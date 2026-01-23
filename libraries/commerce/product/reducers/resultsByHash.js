@@ -19,7 +19,7 @@ import {
  * @param {Object} action The current redux action.
  * @return {Object} The new state.
  */
-export default function resultsByHash(state = {}, action) {
+export default function resultsByHash(state = {}, action = {}) {
   switch (action.type) {
     case REQUEST_PRODUCTS:
       return {

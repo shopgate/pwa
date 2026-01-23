@@ -79,8 +79,7 @@ const defaultState = {};
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export function pageV2(state = defaultState, action) {
-  /* eslint-disable no-param-reassign */
+export function pageV2(state = defaultState, action = {}) {
   const producer = produce((draft) => {
     const { pageType, pageSlug, data } = action || {};
 
@@ -141,8 +140,6 @@ export function pageV2(state = defaultState, action) {
         break;
     }
   });
-
-  /* eslint-enable no-param-reassign */
 
   return producer(state);
 }

@@ -11,7 +11,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-const cookieSettingsReducer = (state = defaultState, action) => {
+const cookieSettingsReducer = (state = defaultState, action = {}) => {
   switch (action.type) {
     case UPDATE_COOKIE_CONSENT: {
       return {
