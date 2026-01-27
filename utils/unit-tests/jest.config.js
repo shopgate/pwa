@@ -12,6 +12,7 @@ module.exports = {
   transform: {
     '^.+\\.jsx?$': 'babel-jest',
     '^.+\\.mjs$': 'babel-jest',
+    '^.+\\.[jt]sx?$': 'babel-jest',
   },
   snapshotSerializers: [
     'enzyme-to-json/serializer',
@@ -24,7 +25,7 @@ module.exports = {
     '/config/',
   ],
   transformIgnorePatterns: [
-    '/node_modules/',
+    'node_modules/(?!(swiper|dom7|intl-messageformat|@formatjs|tslib)/)',
   ],
   unmockedModulePathPatterns: [
     'node_modules/react/',

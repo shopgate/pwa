@@ -34,6 +34,11 @@ const testedExtensions = [
 
 module.exports = {
   ...jestConfig,
+  // Ensure Jest recognizes and loads .mjs files
+  moduleFileExtensions: [
+    ...(jestConfig.moduleFileExtensions || []),
+    'mjs',
+  ],
   collectCoverageFrom: [
     'extensions/*/frontend/**/*.{js,jsx}',
     'libraries/*/**/*.{js,jsx}',
@@ -44,6 +49,12 @@ module.exports = {
     '!themes/*/e2e/**/*.js',
     '!**/dist/**',
   ],
+  transform: {
+    // Transpile JS/TS files
+    '^.+\\.[jt]sx?$': 'babel-jest',
+    // Also transpile .mjs files from dependencies like swiper
+    '^.+\\.mjs$': 'babel-jest',
+  },
   testPathIgnorePatterns: [
     '/node_modules/',
     '/themes/*/extensions/',
@@ -54,7 +65,7 @@ module.exports = {
     ...skipPatterns,
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!(swiper|dom7)/)',
+    'node_modules/(?!(swiper|dom7|intl-messageformat|@formatjs)/)',
     '/themes/*/extensions/',
     '/themes/*/e2e/',
     '/dist/',
