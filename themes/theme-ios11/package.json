@@ -16,11 +16,11 @@
     "postinstall": "npx rimraf ../../.cache-loader"
   },
   "dependencies": {
-    "@babel/core": "^7.28.5",
+    "@babel/core": "^7.28.6",
     "@babel/plugin-transform-runtime": "^7.28.5",
-    "@babel/preset-env": "^7.28.5",
+    "@babel/preset-env": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
-    "@babel/runtime": "^7.28.4",
+    "@babel/runtime": "^7.28.6",
     "@emotion/react": "^11.14.0",
     "@shopgate/engage": "7.29.9",
     "@shopgate/pwa-common": "7.29.9",
@@ -43,7 +43,7 @@
     "core-js": "^3.46.0",
     "css-spring": "git+https://github.com/shopgate/css-spring.git#master",
     "glamor": "^2.20.40",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "prop-types": "~15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -54,7 +54,7 @@
     "redux": "^5.0.1",
     "redux-mock-store": "^1.5.4",
     "reselect": "^4.1.8",
-    "smoothscroll-polyfill": "^0.4.3",
+    "smoothscroll-polyfill": "^0.4.4",
     "tss-react": "^4.9.20",
     "webpack": "^5.102.1",
     "webpack-cli": "^5.1.4"
