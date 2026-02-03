@@ -2,7 +2,7 @@ import {
   getSubTotal,
   getCartProducts,
   getDiscountsAmount,
-} from '@shopgate/pwa-common-commerce/cart/selectors/index';
+} from '@shopgate/pwa-common-commerce/cart';
 import getCart from './cart';
 
 jest.mock('@shopgate/pwa-common-commerce/cart/selectors/index', () => ({
