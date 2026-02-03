@@ -392,7 +392,7 @@
         "code": "slidesPerViewCustomSmall",
         "label": {
           "en-us": "Slides per view (small screen width)",
-          "de-de": "Slides per view (kleine Bildschirmgrößen)"
+          "de-de": "Bilder pro Ansicht (kleine Bildschirmgrößen)"
         },
         "required": true,
         "type": "number",
@@ -415,7 +415,7 @@
         "code": "slidesPerViewCustomMedium",
         "label": {
           "en-us": "Slides per view (medium screen width)",
-          "de-de": "Slides per view (mittlere Bildschirmgrößen)"
+          "de-de": "Bilder pro Ansicht (mittlere Bildschirmgrößen)"
         },
         "required": true,
         "type": "number",
@@ -438,7 +438,7 @@
         "code": "slidesPerViewCustomLarge",
         "label": {
           "en-us": "Slides per view (large screen width)",
-          "de-de": "Slides per view (große Bildschirmgrößen)"
+          "de-de": "Bilder pro Ansicht (große Bildschirmgrößen)"
         },
         "required": true,
         "type": "number",
@@ -666,8 +666,8 @@
       {
         "code": "slidesPerViewCustomSmall",
         "label": {
-          "en-us": "Slides per view (small screen width)",
-          "de-de": "Slides per view (kleine Bildschirmgrößen)"
+          "en-us": "Images per row (small screen width)",
+          "de-de": "Bilder pro Zeile (kleine Bildschirmgrößen)"
         },
         "required": true,
         "type": "number",
@@ -688,8 +688,8 @@
       {
         "code": "slidesPerViewCustomMedium",
         "label": {
-          "en-us": "Slides per view (medium screen width)",
-          "de-de": "Slides per view (mittlere Bildschirmgrößen)"
+          "en-us": "Images per row (medium screen width)",
+          "de-de": "Bilder pro Zeile (mittlere Bildschirmgrößen)"
         },
         "required": true,
         "type": "number",
@@ -710,8 +710,8 @@
       {
         "code": "slidesPerViewCustomLarge",
         "label": {
-          "en-us": "Slides per view (large screen width)",
-          "de-de": "Slides per view (große Bildschirmgrößen)"
+          "en-us": "Images per row (large screen width)",
+          "de-de": "Bilder pro Zeile (große Bildschirmgrößen)"
         },
         "required": true,
         "type": "number",
