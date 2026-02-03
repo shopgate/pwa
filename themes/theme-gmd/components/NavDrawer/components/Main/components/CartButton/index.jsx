@@ -6,7 +6,7 @@ import {
   NAV_MENU_CART_BEFORE,
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import ShoppingCartIcon from '@shopgate/pwa-ui-shared/icons/ShoppingCartIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import { i18n } from '@shopgate/engage/core/helpers';
