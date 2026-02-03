@@ -11,7 +11,13 @@ describe('<SearchBar />', () => {
 
     expect(wrapper).toMatchSnapshot();
     // Update input
-    wrapper.find('input').first().simulate('change', { target: { name: 'search', value: 'asdf' } });
+    wrapper.find('input').first().simulate('change', {
+      target:
+        {
+          name: 'search',
+          value: 'asdf',
+        },
+    });
     // Should call with updated state.
     expect(handleChange).toHaveBeenCalledWith('asdf');
   });

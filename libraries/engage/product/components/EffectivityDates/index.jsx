@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { css } from 'glamor';
@@ -20,12 +20,12 @@ import connect from './connector';
 const EffectivityDates = ({
   dates, children, productNotAvailable, productId,
 }) => {
+  const settings = useWidgetSettings('@shopgate/engage/product/EffectivityDates');
+  const styles = useWidgetStyles('@shopgate/engage/product/EffectivityDates');
+
   if (!isBeta() || !dates) {
     return children;
   }
-
-  const settings = useWidgetSettings('@shopgate/engage/product/EffectivityDates');
-  const styles = useWidgetStyles('@shopgate/engage/product/EffectivityDates');
 
   const startDate = dates.startDate ? new Date(dates.startDate) : null;
   const endDate = dates.endDate ? new Date(dates.endDate) : null;
@@ -35,7 +35,11 @@ const EffectivityDates = ({
   return (
     <SurroundPortals
       portalName={PRODUCT_EFFECTIVITY_DATES}
-      portalProps={{ dates, productNotAvailable, productId }}
+      portalProps={{
+        dates,
+        productNotAvailable,
+        productId,
+      }}
     >
       <TimeBoundary start={startDate} end={endDate}>
         {({ before, between, after }) => {

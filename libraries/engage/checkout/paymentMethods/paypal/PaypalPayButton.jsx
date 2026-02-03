@@ -1,5 +1,5 @@
 import React, {
-  useLayoutEffect, useEffect, useRef, useState, Fragment,
+  useLayoutEffect, useEffect, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
@@ -8,7 +8,7 @@ import {
   getThemeSettings, showModal, MODAL_PIPELINE_ERROR,
 } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
-import { i18n } from '../../../core/helpers/i18n';
+import { i18n } from '../../../core';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
 
@@ -43,7 +43,10 @@ const PaypalPayButton = ({
   // paypal unfortunately doesn't allow updating button props.
   const formActions = useRef({});
   useEffect(() => {
-    formActions.current = { onSubmit, onValidate };
+    formActions.current = {
+      onSubmit,
+      onValidate,
+    };
   }, [onSubmit, onValidate]);
 
   // Trigger rendering the paypal button whenever a property changes.

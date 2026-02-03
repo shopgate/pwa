@@ -5,4 +5,4 @@ export default css({
   height: 44,
   overflow: 'hidden',
   width: 44,
-});
+}).toString();

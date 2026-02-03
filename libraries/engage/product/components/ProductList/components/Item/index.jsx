@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Grid from '@shopgate/pwa-common/components/Grid';
-import Image from '@shopgate/pwa-common/components/Image';
-import Link from '@shopgate/pwa-common/components/Link';
+import {
+  Image, Link, Grid, Availability,
+} from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/category/constants/Portals';
@@ -10,12 +10,11 @@ import {
   ITEM_PATH,
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_ALERT,
-} from '@shopgate/pwa-common-commerce/product/constants/index';
+} from '@shopgate/pwa-common-commerce/product';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import Manufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
-import { Availability } from '@shopgate/engage/components';
 import { PriceInfo, ProductName, ProductBadges } from '@shopgate/engage/product';
 import { i18n } from '@shopgate/engage/core';
 import styles from './style';
@@ -122,11 +121,17 @@ const Item = ({ display, product }) => (
         <>
           <Portal
             name={portals.PRODUCT_ITEM_PRICE_BEFORE}
-            props={{ productId: product.id, location: 'productList' }}
+            props={{
+              productId: product.id,
+              location: 'productList',
+            }}
           />
           <Portal
             name={portals.PRODUCT_ITEM_PRICE}
-            props={{ productId: product.id, location: 'productList' }}
+            props={{
+              productId: product.id,
+              location: 'productList',
+            }}
           >
             <Grid.Item grow={1} className={styles.priceContainer}>
               <Portal
@@ -164,7 +169,10 @@ const Item = ({ display, product }) => (
           </Portal>
           <Portal
             name={portals.PRODUCT_ITEM_PRICE_AFTER}
-            props={{ productId: product.id, location: 'productList' }}
+            props={{
+              productId: product.id,
+              location: 'productList',
+            }}
           />
         </>
       )}

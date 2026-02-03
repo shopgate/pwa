@@ -14,7 +14,10 @@ import styles from './style';
 const FilterResetButton = ({ disabled, onClick }) => (
   <SurroundPortals
     portalName={PORTAL_FILTER_RESET_BUTTON}
-    portalProps={{ disabled, onClick }}
+    portalProps={{
+      disabled,
+      onClick,
+    }}
   >
     <div className={styles}>
       <Button

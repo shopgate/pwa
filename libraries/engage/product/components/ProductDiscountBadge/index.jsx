@@ -32,7 +32,13 @@ const ProductDiscountBadge = ({ productId, discount }) => {
     >
       { pdp.show && discount ? (
         <div className={`${styles.container} ${css(pdp.style)} theme__product__product-discount`}>
-          <SurroundPortals portalName={PRODUCT_DISCOUNT} portalProps={{ productId, discount }}>
+          <SurroundPortals
+            portalName={PRODUCT_DISCOUNT}
+            portalProps={{
+              productId,
+              discount,
+            }}
+          >
             <DiscountBadge className={styles.badge} text={`-${discount}%`} />
           </SurroundPortals>
         </div>

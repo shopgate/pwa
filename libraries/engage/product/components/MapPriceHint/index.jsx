@@ -21,16 +21,15 @@ const defaultStyle = css({
  * @return {JSX}
  */
 const MapPriceHint = ({ price, mapPrice }) => {
-  if (!isBeta()) {
-    return null;
-  }
-
+  const styles = useWidgetStyles('@shopgate/engage/product/MapPrice');
   const settings = useWidgetSettings('@shopgate/engage/product/MapPrice');
   if (!settings.showHint || !settings.hint) {
     return null;
   }
 
-  const styles = useWidgetStyles('@shopgate/engage/product/MapPrice');
+  if (!isBeta()) {
+    return null;
+  }
 
   return (
     <SurroundPortals portalName={PRODUCT_MAP_PRICE}>

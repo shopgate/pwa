@@ -19,7 +19,14 @@ import connect from './connector';
  */
 function Description({ html, navigate, ...props }) {
   return (
-    <SurroundPortals portalName={PRODUCT_DESCRIPTION} portalProps={{ html, navigate, ...props }}>
+    <SurroundPortals
+      portalName={PRODUCT_DESCRIPTION}
+      portalProps={{
+        html,
+        navigate,
+        ...props,
+      }}
+    >
       {(html !== '') && (
         <div className={`${container} engage__product__description`}>
           <div className={classNames(title, 'theme__description_heading')}>

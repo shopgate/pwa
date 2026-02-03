@@ -71,7 +71,11 @@ const products = (state = {
 
         list.expires = Date.now() + FAVORITES_LIFETIME;
         list.items = action.items.map(({ quantity, notes, product }) =>
-          ({ quantity, notes, productId: product.id }));
+          ({
+            quantity,
+            notes,
+            productId: product.id,
+          }));
         list.ready = true;
         // `syncCount` stays untouched because this is not considered to be a sync.
         break;

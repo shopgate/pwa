@@ -160,7 +160,10 @@ class Sheet extends Component {
         child,
         // Only add onClose prop to other components
         typeof child.type === 'function' && this.props.onClose !== null ? (
-          { onClose: this.props.onClose, query: this.state.query }
+          {
+            onClose: this.props.onClose,
+            query: this.state.query,
+          }
         ) : {}
       )
     ));

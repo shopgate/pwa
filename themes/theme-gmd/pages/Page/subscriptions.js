@@ -30,7 +30,10 @@ export default function page(subscribe) {
           return;
         }
 
-        const { hash, expired } = getProductsResult(state, queryType, { sort, value }, id);
+        const { hash, expired } = getProductsResult(state, queryType, {
+          sort,
+          value,
+        }, id);
 
         if (expired) {
           dispatch(expireProductsByHash(hash));

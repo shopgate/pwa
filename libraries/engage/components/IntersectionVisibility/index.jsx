@@ -31,11 +31,18 @@ class IntersectionVisibility extends Component {
     thresholds: IntersectionVisibility.buildThresholdList(10),
   };
 
-  state = {
-    visible: true,
-    ratio: 1,
-    entries: null,
-  };
+  /**
+   * Initializes the component state.
+   * @param {Object} props The components props.
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      visible: true,
+      ratio: 1,
+      entries: null,
+    };
+  }
 
   /**
    * Start the observer when the component is mounted

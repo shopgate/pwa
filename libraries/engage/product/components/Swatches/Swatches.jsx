@@ -15,6 +15,8 @@ const WIDGET_ID = '@shopgate/engage/product/Swatches';
  * @returns {JSX}
  */
 const Swatches = ({ productId, characteristics }) => {
+  const settings = useWidgetSettings(WIDGET_ID);
+
   if (!isBeta()) {
     return null;
   }
@@ -22,8 +24,6 @@ const Swatches = ({ productId, characteristics }) => {
   if (!characteristics) {
     return null;
   }
-
-  const settings = useWidgetSettings(WIDGET_ID);
 
   let swatches = characteristics.filter(c => c.swatch === true);
   if (settings.filter && settings.filter.length) {
