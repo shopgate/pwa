@@ -16,7 +16,7 @@
   ],
   "dependencies": {
     "react-cookie": "^4.0.3",
-    "reselect": "^4.1.8"
+    "reselect": "^5.1.1"
   },
   "devDependencies": {
     "@shopgate/pwa-common": "7.29.9",

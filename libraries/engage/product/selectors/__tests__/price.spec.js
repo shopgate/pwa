@@ -13,7 +13,11 @@ describe('engage > product > selectors > price', () => {
   describe('makeGetProductPriceData()', () => {
     let getProductPriceDataWrapped;
     beforeEach(() => {
-      getProductPriceDataWrapped = wrapMemoizedSelector(makeGetProductPriceData());
+      // makeGetProductPriceData() is a passthrough to getProductPriceData.
+      // We don't wrap it with wrapMemoizedSelector here, because in this test
+      // we mock getProductPriceData with `mockReturnValueOnce`, and the wrapper
+      // intentionally calls the selector twice with the same args.
+      getProductPriceDataWrapped = makeGetProductPriceData();
     });
 
     it('should return null', () => {

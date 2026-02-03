@@ -71,36 +71,46 @@ export const getStoreFinderSearchRadius = createSelector(
  * @param {Function} getFilters Has to retrieve the filters.
  * @returns {Object}
  */
-export const makeGetFilteredLocations = getFilters => createSelector(
-  getLocationsStorage,
-  getFilters,
-  (storage, filters) => {
-    // Get base locations.
-    const key = generateSortedHash(filters);
-    const codes = storage.locationsByFilter[key] || [];
-    const locations = codes.map(code => storage.locationsByCode[code]);
+export const makeGetFilteredLocations = (getFilters) => {
+  // Memoize the filters object so the input selector is referentially stable
+  // when called with the same (state, props) arguments.
+  const getMemoizedFilters = createSelector(
+    state => state,
+    (state, props) => props,
+    (state, props) => getFilters(state, props)
+  );
 
-    // Enhance with inventory data.
-    const { productCode } = filters;
-    if (!productCode) {
-      return locations;
-    }
-    return locations.map((location) => {
-      const pair = generateSortedHash({
-        productCode,
-        locationCode: location.code,
-      });
-      const inventory = storage.inventoriesByCodePair[pair] || null;
-      if (inventory) {
-        return {
-          ...location,
-          inventory,
-        };
+  return createSelector(
+    getLocationsStorage,
+    getMemoizedFilters,
+    (storage, filters) => {
+      // Get base locations.
+      const key = generateSortedHash(filters);
+      const codes = storage.locationsByFilter[key] || [];
+      const locations = codes.map(code => storage.locationsByCode[code]);
+
+      // Enhance with inventory data.
+      const { productCode } = filters;
+      if (!productCode) {
+        return locations;
       }
-      return location;
-    });
-  }
-);
+      return locations.map((location) => {
+        const pair = generateSortedHash({
+          productCode,
+          locationCode: location.code,
+        });
+        const inventory = storage.inventoriesByCodePair[pair] || null;
+        if (inventory) {
+          return {
+            ...location,
+            inventory,
+          };
+        }
+        return location;
+      });
+    }
+  );
+};
 
 /**
  * Creates a selector that retrieves active filter.

@@ -275,7 +275,7 @@ export const makeGetWidgetProducts = (type, options, id) => {
 
   return createSelector(
     state => state,
-    (state, props) => props ?? {},
+    (state, props) => props,
     getWidgetProductResultsHash,
     getWidgetProductResultsByHash,
     (state, props, resultsHash, resultsByHash) => ({
