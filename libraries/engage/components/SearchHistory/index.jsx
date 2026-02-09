@@ -35,7 +35,7 @@ const useStyles = makeStyles()({
  */
 const SearchHistory = ({ history, onSelect, onClear }) => {
   const { classes } = useStyles();
-  if (history.length === 0) {
+  if (!history || history?.length === 0) {
     return null;
   }
 

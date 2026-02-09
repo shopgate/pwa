@@ -280,6 +280,8 @@ class SearchField extends Component {
   render() {
     const { focused } = this.state;
 
+    const showHistory = this.props.searchHistory && this.props.searchHistory.length > 0;
+
     return (
       <div className="theme__browse__search-field" data-test-id="SearchField">
         <div className={styles.container}>
@@ -294,8 +296,7 @@ class SearchField extends Component {
             {this.renderCancelButton()}
           </div>
         </div>
-        {focused !== Trilean.NONE && <div className={styles.overlay} />}
-        {focused !== Trilean.NONE && (
+        {focused !== Trilean.NONE && showHistory && (
           <div className={styles.historyOverlay}>
             <SearchHistory
               history={this.props.searchHistory}
