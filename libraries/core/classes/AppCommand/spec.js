@@ -27,9 +27,21 @@ jest.mock('../../helpers/logGroup', () => function logGroup(...args) {
   mockedLogGroup(...args);
 });
 
-// Mock of the DevServer bridge.
 let mockedBridgeDispatch = jest.fn();
-jest.mock('../DevServerBridge', () => () => ({ dispatchCommandsForVersion: mockedBridgeDispatch }));
+
+/* eslint-disable require-jsdoc, class-methods-use-this */
+jest.mock('../DevServerBridge', () => {
+  class DevServerBridge {
+    dispatchCommandsForVersion(...args) {
+      return mockedBridgeDispatch(...args);
+    }
+  }
+  return {
+    __esModule: true,
+    default: DevServerBridge,
+  };
+});
+/* eslint-enable require-jsdoc, class-methods-use-this */
 
 // Mock of the client information web storage.
 let mockedClientInformation = null;

@@ -11,7 +11,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
     className="ui-material__accordion-content css-apm51k"
     id="some-id"
     style={
-      Object {
+      {
         "hook": "useSpring return value",
       }
     }
@@ -21,7 +21,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
       className="ui-material__accordion-content css-apm51k"
       id="some-id"
       style={
-        Object {
+        {
           "hook": "useSpring return value",
         }
       }
@@ -53,7 +53,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
     className="ui-material__accordion-content css-apm51k"
     id="some-id"
     style={
-      Object {
+      {
         "hook": "useSpring return value",
       }
     }
@@ -63,7 +63,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
       className="ui-material__accordion-content css-apm51k"
       id="some-id"
       style={
-        Object {
+        {
           "hook": "useSpring return value",
         }
       }

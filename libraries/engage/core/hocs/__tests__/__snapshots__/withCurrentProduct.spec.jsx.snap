@@ -6,10 +6,10 @@ exports[`engage > core > hocs > withCurrentProduct should inject a single proper
 >
   <MockComponent
     product={
-      Object {
+      {
         "id": "123",
         "name": "acme",
-        "price": Object {
+        "price": {
           "currency": "EUR",
           "unitPrice": 22.95,
           "unitPriceStriked": 25.95,
@@ -29,7 +29,7 @@ exports[`engage > core > hocs > withCurrentProduct should inject the context pro
     id="123"
     name="acme"
     price={
-      Object {
+      {
         "currency": "EUR",
         "unitPrice": 22.95,
         "unitPriceStriked": 25.95,

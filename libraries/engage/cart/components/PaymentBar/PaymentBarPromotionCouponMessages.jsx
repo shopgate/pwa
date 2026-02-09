@@ -45,7 +45,7 @@ const PaymentBarPromotionCouponMessages = ({ messages }) => {
 
   return messages.map(({ message, additionalParams, type }) => (
     <CartTotalLine className={styles.line} key={message}>
-      <Fragment>
+      <>
         <CartTotalLine.Spacer className={spacer} />
         <div className={classNames(styles.message, {
           [styles.loading]: isLoading,
@@ -56,7 +56,7 @@ const PaymentBarPromotionCouponMessages = ({ messages }) => {
         >
           {errorBehavior.getErrorMessage(message, additionalParams)}
         </div>
-      </Fragment>
+      </>
     </CartTotalLine>
   ));
 };

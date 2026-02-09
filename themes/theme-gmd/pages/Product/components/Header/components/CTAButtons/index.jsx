@@ -24,7 +24,7 @@ import connect from './connector';
  * @returns {JSX}
  */
 const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
-  <Fragment>
+  <>
     <Portal name={PRODUCT_CTAS_BEFORE} />
     <Portal name={PRODUCT_CTAS}>
       <div className={classNames(styles.buttons, 'theme__product__header__cta-buttons')}>
@@ -48,7 +48,7 @@ const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
       </div>
     </Portal>
     <Portal name={PRODUCT_CTAS_AFTER} />
-  </Fragment>
+  </>
 );
 
 CTAButtons.propTypes = {

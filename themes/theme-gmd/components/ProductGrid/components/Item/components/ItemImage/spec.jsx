@@ -3,6 +3,7 @@ import { shallow } from 'enzyme';
 import ItemImage from './index';
 
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/product');
 
 describe('<ItemImage />', () => {
   it('should render', () => {

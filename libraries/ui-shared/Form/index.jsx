@@ -9,11 +9,11 @@ class Form extends PureComponent {
   static propTypes = {
     children: PropTypes.node.isRequired,
     onSubmit: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     onSubmit: () => {},
-  }
+  };
 
   /**
    * Initializes the form component.
@@ -40,7 +40,7 @@ class Form extends PureComponent {
     }
 
     this.props.onSubmit();
-  }
+  };
 
   /**
    * Handles form submits by key.
@@ -51,7 +51,7 @@ class Form extends PureComponent {
     if (event.which === 13) {
       this.handleSubmit(event);
     }
-  }
+  };
 
   /**
    * Renders the component.

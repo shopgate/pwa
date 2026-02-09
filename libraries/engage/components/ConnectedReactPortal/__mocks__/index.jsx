@@ -9,10 +9,12 @@ const ConnectedReactPortal = ({ children, isOpened }) => (isOpened ? children : 
 
 ConnectedReactPortal.propTypes = {
   children: PropTypes.node,
+  isOpened: PropTypes.bool,
 };
 
 ConnectedReactPortal.defaultProps = {
   children: null,
+  isOpened: false,
 };
 
 export default ConnectedReactPortal;

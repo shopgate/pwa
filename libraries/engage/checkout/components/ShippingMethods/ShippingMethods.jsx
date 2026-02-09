@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
@@ -221,4 +220,4 @@ ShippingMethods.defaultProps = {
   orderHasDirectShipItems: false,
 };
 
-export default hot(connect(ShippingMethods));
+export default connect(ShippingMethods);

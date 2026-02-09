@@ -1,12 +1,6 @@
-import React, { Fragment } from 'react';
-
 /**
  * @return {null}
  */
-const Loading = () => (
-  <Fragment>
-    {null}
-  </Fragment>
-);
+const Loading = () => null;
 
 export default Loading;

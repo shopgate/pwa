@@ -78,12 +78,13 @@ class Conditioner {
           const conditionResult = await condition.conditioner();
           if (conditionResult === false) {
             logger.warn('conditioner failed', i, condition, this.conditions);
-            return resolve(false);
+            resolve(false);
+            return;
           }
         }
-        return resolve(true);
+        resolve(true);
       } catch (error) {
-        return reject(error);
+        reject(error);
       }
     });
   }

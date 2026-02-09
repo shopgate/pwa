@@ -215,6 +215,7 @@ class Changelog extends LernaChangelog {
  * Main async method
  */
 async function run() {
+  // eslint-disable-next-line no-useless-catch
   try {
     // Find last release: Get tags, filter out wrong tags and pre-releases, then take last one.
     const { stdout } = // get last filtered tag, sorted by version numbers in ascending order

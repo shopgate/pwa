@@ -121,8 +121,7 @@ const WidgetVideo = ({
         wrapper={children =>
           <Link href={link}>
             { children }
-          </Link>
-        }
+          </Link>}
       >
         <video
           ref={videoRef}

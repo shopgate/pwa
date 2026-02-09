@@ -78,7 +78,7 @@ export function CartItemProductLayout() {
   }, [cartItem, isCheckoutConfirmation, isOrderDetails]);
 
   return (
-    <React.Fragment>
+    <>
       <Grid className={classNames(styles.item, {
         [styles.itemInactive]: !isActive,
       })}
@@ -139,8 +139,7 @@ export function CartItemProductLayout() {
               wrapper={children =>
                 <Link tagName="a" href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
                   {children}
-                </Link>
-              }
+                </Link>}
             >
               <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={portalProps}>
                 <ProductImage src={product.featuredImageBaseUrl || product.featuredImageUrl} />
@@ -173,6 +172,6 @@ export function CartItemProductLayout() {
         cartItem={cartItem}
         registerAction={registerFulfillmentAction}
       />
-    </React.Fragment>
+    </>
   );
 }

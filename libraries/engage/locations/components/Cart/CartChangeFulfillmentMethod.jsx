@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import connect from './CartChangeFulfillmentMethod.connector';
@@ -36,9 +36,9 @@ const CartChangeFulfillmentMethod = ({
   /**
    * Handles closing of the sheet.
    */
-  function handleClose() {
+  const handleClose = useCallback(() => {
     setOpened(false);
-  }
+  }, []);
 
   if (!opened) {
     return null;

@@ -70,7 +70,7 @@ const CartItemProductLayoutWide = () => {
     : getLineItemActiveStatus(cartItem?.status, cartItem?.subStatus);
 
   return (
-    <Fragment>
+    <>
       <div className={classNames(container, {
         [containerInactive]: !isActive,
       })}
@@ -84,8 +84,7 @@ const CartItemProductLayoutWide = () => {
             wrapper={children =>
               <TextLink href={`${ITEM_PATH}/${bin2hex(product.id)}`}>
                 {children}
-              </TextLink>
-            }
+              </TextLink>}
           >
             <ProductName
               name={product.name}
@@ -181,7 +180,7 @@ const CartItemProductLayoutWide = () => {
           }}
         />
       )}
-    </Fragment>
+    </>
   );
 };
 

@@ -46,13 +46,13 @@ const Item = ({ display, product }) => (
         <ProductBadges location="productList" productId={product.id}>
           {/* DISCOUNT */}
           {!!product.price.discount && (
-          <Fragment>
+          <>
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT_BEFORE} props={{ productId: product.id }} />
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT} props={{ productId: product.id }}>
               <DiscountBadge className={styles.discount} text={`-${product.price.discount}%`} />
             </Portal>
             <Portal name={portals.PRODUCT_ITEM_DISCOUNT_AFTER} props={{ productId: product.id }} />
-          </Fragment>
+          </>
           )}
         </ProductBadges>
       </Grid.Item>
@@ -69,7 +69,7 @@ const Item = ({ display, product }) => (
 
         {/* MANUFACTURER */}
         {(!display || (display.manufacturer && product.manufacturer)) && (
-          <Fragment>
+          <>
             <Portal
               name={portals.PRODUCT_ITEM_MANUFACTURER_BEFORE}
               props={{ productId: product.id }}
@@ -81,12 +81,12 @@ const Item = ({ display, product }) => (
               name={portals.PRODUCT_ITEM_MANUFACTURER_AFTER}
               props={{ productId: product.id }}
             />
-          </Fragment>
+          </>
         )}
 
         {/* AVAILABILITY */}
         {product.availability && (
-          <Fragment>
+          <>
             <Portal
               name={portals.PRODUCT_ITEM_AVAILABILITY_BEFORE}
               props={{ productId: product.id }}
@@ -102,15 +102,14 @@ const Item = ({ display, product }) => (
               name={portals.PRODUCT_ITEM_AVAILABILITY_AFTER}
               props={{ productId: product.id }}
             />
-          </Fragment>
+          </>
         )}
 
         {(!product.availability || product.availability.state === AVAILABILITY_STATE_OK) && (
           <Availability
             state={!product.stock || product.stock.orderable
               ? AVAILABILITY_STATE_OK
-              : AVAILABILITY_STATE_ALERT
-            }
+              : AVAILABILITY_STATE_ALERT}
             text={i18n.text('product.available.not')}
             showWhenAvailable={false}
           />
@@ -120,7 +119,7 @@ const Item = ({ display, product }) => (
 
       {/* PRICE - STRIKE PRICE - PRICE INFO */}
       {(!display || display.price) && (
-        <Fragment>
+        <>
           <Portal
             name={portals.PRODUCT_ITEM_PRICE_BEFORE}
             props={{ productId: product.id, location: 'productList' }}
@@ -167,7 +166,7 @@ const Item = ({ display, product }) => (
             name={portals.PRODUCT_ITEM_PRICE_AFTER}
             props={{ productId: product.id, location: 'productList' }}
           />
-        </Fragment>
+        </>
       )}
       <Grid.Item shrink={0} className={styles.favouriteContainer} />
     </Grid>

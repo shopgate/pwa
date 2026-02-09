@@ -1,5 +1,5 @@
 const Enzyme = require('enzyme');
-const Adapter = require('enzyme-adapter-react-16');
+const Adapter = require('@wojtekmaj/enzyme-adapter-react-17');
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -28,6 +28,3 @@ jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/theme-gmd/extensions/reducers', () => null);
 jest.mock('@shopgate/theme-ios11/extensions/reducers', () => null);
 
-jest.mock('focus-trap-react', () => ({
-  FocusTrap: ({ children }) => children,
-}));

@@ -25,12 +25,12 @@ export const FulfillmentSelectorDirectShip = () => {
 
   if (selected && !isOrderable) {
     return (
-      <React.Fragment>
+      <>
         <div>
           {i18n.text(DIRECT_SHIP_LABEL)}
         </div>
         <FulfillmentSelectorImpossibleError />
-      </React.Fragment>
+      </>
     );
   }
 

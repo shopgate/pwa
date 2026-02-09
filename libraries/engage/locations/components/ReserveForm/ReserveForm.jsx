@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import 'react-phone-number-input/style.css';
 import React, {
   useState, useContext, useMemo, useRef, useLayoutEffect, useCallback, Fragment,
@@ -117,7 +116,7 @@ function ReserveFormUnwrapped() {
   }, [picker, someoneElseRef]);
 
   return (
-    <Fragment>
+    <>
       <div className={progressBar}>
         <ProgressBar isVisible={isSubmitting} />
       </div>
@@ -215,8 +214,8 @@ function ReserveFormUnwrapped() {
           {i18n.text('locations.place_reservation')}
         </RippleButton>
       </form>
-    </Fragment>
+    </>
   );
 }
 
-export const ReserveForm = hot(ReserveFormUnwrapped);
+export const ReserveForm = ReserveFormUnwrapped;

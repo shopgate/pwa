@@ -103,8 +103,7 @@ const StoreFinderMap = () => {
 
     const deltaLat = (distanceToBoundaryInKm / EARTH_RADIUS_KM) * (180 / Math.PI);
     const deltaLng = (distanceToBoundaryInKm / EARTH_RADIUS_KM)
-      * (180 / Math.PI)
-      / Math.cos(latInRadians);
+      * ((180 / Math.PI) / Math.cos(latInRadians));
 
     return [
       [lat - deltaLat, lng - deltaLng],

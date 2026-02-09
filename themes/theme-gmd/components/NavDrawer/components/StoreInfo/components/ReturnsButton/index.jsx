@@ -22,7 +22,7 @@ const LABEL = 'navigation.return_policy';
  * @returns {JSX.Element}
  */
 const ReturnsButton = ({ navigate }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_RETURN_POLICY_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_RETURN_POLICY} props={portalProps}>
       <NavDrawer.Item
@@ -33,7 +33,7 @@ const ReturnsButton = ({ navigate }) => (
       />
     </Portal>
     <Portal name={NAV_MENU_RETURN_POLICY_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 ReturnsButton.propTypes = {

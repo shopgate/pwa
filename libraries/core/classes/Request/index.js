@@ -42,7 +42,7 @@ class Request {
    */
   createEventCallbackName = (callbackKey) => {
     this.callbackName = `${callbackKey}:${this.serial}`;
-  }
+  };
 
   /**
    * Returns the event callback name.

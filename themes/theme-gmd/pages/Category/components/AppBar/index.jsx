@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { DefaultBar } from 'Components/AppBar/presets';
@@ -10,26 +10,23 @@ import connect from './connector';
  * @returns {JSX}
  */
 function CategoryAppBar({ filtersShown, title }) {
-  /**
-   * @returns {JSX}
-   */
-  const BarComponent = () => (
+  const bar = useMemo(() => (
     <DefaultBar
       title={title}
       below={<PageTitleBar />}
       shadow={!filtersShown}
     />
-  );
+  ), [title, filtersShown]);
 
   return (
-    <Fragment>
+    <>
       <ResponsiveContainer appAlways breakpoint="<=xs">
-        <BarComponent />
+        {bar}
       </ResponsiveContainer>
       <ResponsiveContainer webOnly breakpoint=">xs">
-        <BarComponent />
+        {bar}
       </ResponsiveContainer>
-    </Fragment>
+    </>
   );
 }
 

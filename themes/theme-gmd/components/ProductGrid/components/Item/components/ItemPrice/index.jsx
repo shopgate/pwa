@@ -25,13 +25,13 @@ const ItemPrice = ({ display, product }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <Portal name={PRODUCT_ITEM_PRICE_BEFORE} props={props} />
       <Portal name={PRODUCT_ITEM_PRICE} props={props}>
         <ProductGridPrice product={product} />
       </Portal>
       <Portal name={PRODUCT_ITEM_PRICE_AFTER} props={props} />
-    </Fragment>
+    </>
   );
 };
 

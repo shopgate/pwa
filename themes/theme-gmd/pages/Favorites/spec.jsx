@@ -17,7 +17,7 @@ const mockedStore = configureStore([]);
 jest.mock('@shopgate/engage/components');
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => {
-  const originalConfig = require.requireActual('@shopgate/pwa-common/helpers/config');
+  const originalConfig = jest.requireActual('@shopgate/pwa-common/helpers/config');
   return ({
     ...originalConfig,
     get hasFavorites() { return true; },

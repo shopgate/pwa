@@ -3,7 +3,7 @@
 exports[`engage > components > view > provider should initialize and provider context 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -19,10 +19,10 @@ exports[`engage > components > view > provider should initialize and provider co
     >
       <Provider
         value={
-          Object {
+          {
             "ariaHidden": false,
             "bottom": 0,
-            "contentRef": Object {
+            "contentRef": {
               "current": null,
             },
             "getContentRef": [Function],
@@ -48,7 +48,7 @@ exports[`engage > components > view > provider should initialize and provider co
 exports[`engage > components > view > provider should toggle aria-hidden context value when modalCount redux state changes 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -64,10 +64,10 @@ exports[`engage > components > view > provider should toggle aria-hidden context
     >
       <Provider
         value={
-          Object {
+          {
             "ariaHidden": false,
             "bottom": 0,
-            "contentRef": Object {
+            "contentRef": {
               "current": null,
             },
             "getContentRef": [Function],

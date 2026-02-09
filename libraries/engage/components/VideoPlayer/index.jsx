@@ -9,14 +9,20 @@ import { UI_VISIBILITY_CHANGE } from '@shopgate/pwa-common/constants/ui';
  * @returns {JSX}
  */
 class VideoPlayer extends PureComponent {
-  static propTypes = ReactPlayer.propTypes
+  static propTypes = ReactPlayer.propTypes;
 
-  static defaultProps = ReactPlayer.defaultProps
+  static defaultProps = ReactPlayer.defaultProps;
 
-  state = {
-    ready: false,
-    playing: this.props.playing,
-    userPaused: false,
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      ready: false,
+      playing: props.playing,
+      userPaused: false,
+    };
   }
 
   /**
@@ -47,12 +53,12 @@ class VideoPlayer extends PureComponent {
   /** @returns {boolean} */
   getPlayingState = () => (
     (this.state.ready && !this.state.userPaused) && this.state.playing
-  )
+  );
 
   /** @returns {void} */
   handleReady = () => {
     this.setState({ ready: true });
-  }
+  };
 
   /**
    * Not allowed autoplay error (User gesture permission)
@@ -62,7 +68,7 @@ class VideoPlayer extends PureComponent {
     if (error && error.name === 'NotAllowedError') {
       this.setState({ playing: false });
     }
-  }
+  };
 
   /** @returns {undefined} */
   handlePause = () => {
@@ -73,7 +79,7 @@ class VideoPlayer extends PureComponent {
         playing: false,
       });
     }
-  }
+  };
 
   /** @returns {undefined} */
   handlePlay = () => {
@@ -83,12 +89,12 @@ class VideoPlayer extends PureComponent {
         playing: true,
       });
     }
-  }
+  };
 
   /** @returns {undefined} */
   handleVisibilityChange = () => {
     this.setState({ playing: false });
-  }
+  };
 
   /**
    * @returns {JSX}

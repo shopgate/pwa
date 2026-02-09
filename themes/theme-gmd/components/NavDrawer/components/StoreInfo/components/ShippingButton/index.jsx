@@ -22,7 +22,7 @@ const LABEL = 'navigation.shipping';
  * @returns {JSX.Element}
  */
 const ShippingButton = ({ navigate }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_SHIPPING_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_SHIPPING} props={portalProps}>
       <NavDrawer.Item
@@ -33,7 +33,7 @@ const ShippingButton = ({ navigate }) => (
       />
     </Portal>
     <Portal name={NAV_MENU_SHIPPING_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 ShippingButton.propTypes = {

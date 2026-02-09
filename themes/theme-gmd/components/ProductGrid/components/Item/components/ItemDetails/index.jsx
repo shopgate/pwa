@@ -83,8 +83,7 @@ const ItemDetails = ({ product, display, productListTypeMeta }) => {
           <Availability
             state={!stock || stock.orderable
               ? AVAILABILITY_STATE_OK
-              : AVAILABILITY_STATE_ALERT
-            }
+              : AVAILABILITY_STATE_ALERT}
             text={i18n.text('product.available.not')}
             showWhenAvailable={false}
           />

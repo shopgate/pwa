@@ -29,13 +29,13 @@ class ProductCharacteristics extends Component {
       characteristics: PropTypes.arrayOf(PropTypes.shape()),
       products: PropTypes.arrayOf(PropTypes.shape()),
     }),
-  }
+  };
 
   static defaultProps = {
     finishTimeout: 0,
     variantId: null,
     variants: null,
-  }
+  };
 
   /**
    * @param {Object} props The component props.
@@ -85,7 +85,7 @@ class ProductCharacteristics extends Component {
         this.refsStore[char.id] = React.createRef();
       });
     }
-  }
+  };
 
   /**
    * Checks if all selections have been made.
@@ -128,7 +128,7 @@ class ProductCharacteristics extends Component {
     }
 
     return selected;
-  }
+  };
 
   checkSelectedCharacteristics = () => {
     const { characteristics } = this.state;
@@ -158,7 +158,7 @@ class ProductCharacteristics extends Component {
     setTimeout(() => {
       this.props.navigate(products[0].id);
     }, finishTimeout);
-  }
+  };
 
   /**
    * Stores a selected characteristic into the local state.
@@ -186,7 +186,7 @@ class ProductCharacteristics extends Component {
         highlight: null,
       };
     }, this.checkSelectedCharacteristics);
-  }
+  };
 
   /**
    * @param {Object} selections The selections stored in the state.
@@ -232,14 +232,14 @@ class ProductCharacteristics extends Component {
         selected: selectedValue === value.id,
       });
     });
-  }
+  };
 
   /**
    * Resets the highlight state
    */
   resetHighlight = () => {
     this.setState({ highlight: null });
-  }
+  };
 
   /**
    * Finds the first unselected characteristic.

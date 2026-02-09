@@ -143,9 +143,9 @@ const RegistrationProvider = ({
   );
 
   // Default form states
-  const defaultBaseFormState = {
+  const defaultBaseFormState = useMemo(() => ({
     ...initialBaseFormState,
-  };
+  }), []);
 
   const defaultBillingFormState = useMemo(() => ({
     ...initialBillingFormState,

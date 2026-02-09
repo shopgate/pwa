@@ -5,7 +5,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
   html={null}
   navigate={[Function]}
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -18,10 +18,10 @@ exports[`<Description /> should not render if no data is available 1`] = `
   <SurroundPortals
     portalName="PRODUCT_DESCRIPTION"
     portalProps={
-      Object {
+      {
         "html": null,
         "navigate": [Function],
-        "store": Object {
+        "store": {
           "clearActions": [Function],
           "dispatch": [Function],
           "getActions": [Function],
@@ -50,7 +50,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
       >
         <div
           className={
-            Object {
+            {
               "data-css-1rl1l79": "",
             }
           }
@@ -58,7 +58,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
         >
           <HtmlSanitizer
             settings={
-              Object {
+              {
                 "handleClick": [Function],
                 "html": null,
               }
@@ -76,7 +76,7 @@ exports[`<Description /> should render description if data is available 1`] = `
   html="<h1>foo</h1>"
   navigate={[Function]}
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],
@@ -89,10 +89,10 @@ exports[`<Description /> should render description if data is available 1`] = `
   <SurroundPortals
     portalName="PRODUCT_DESCRIPTION"
     portalProps={
-      Object {
+      {
         "html": "<h1>foo</h1>",
         "navigate": [Function],
-        "store": Object {
+        "store": {
           "clearActions": [Function],
           "dispatch": [Function],
           "getActions": [Function],
@@ -121,7 +121,7 @@ exports[`<Description /> should render description if data is available 1`] = `
       >
         <div
           className={
-            Object {
+            {
               "data-css-1rl1l79": "",
             }
           }
@@ -129,7 +129,7 @@ exports[`<Description /> should render description if data is available 1`] = `
         >
           <HtmlSanitizer
             settings={
-              Object {
+              {
                 "handleClick": [Function],
                 "html": "<h1>foo</h1>",
               }

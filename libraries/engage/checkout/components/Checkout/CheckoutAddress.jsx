@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Fragment, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
@@ -114,18 +113,17 @@ const CheckoutAddress = ({ type }) => {
         editLabel={editLabel}
       >
         { address ? (
-          <Fragment>
+          <>
             <span>
               {address.middleName?.length
                 ? `${address.firstName} ${address.middleName} ${address.lastName}`
-                : `${address.firstName} ${address.lastName}`
-              }
+                : `${address.firstName} ${address.lastName}`}
             </span>
             { (type === ADDRESS_TYPE_BILLING && isGuestCheckout && orderReserveOnly) && (
-              <Fragment>
+              <>
                 <span>{address.emailAddress}</span>
                 <span>{address.mobile}</span>
-              </Fragment>
+              </>
             )}
             <span>{address.address1}</span>
             {address.address2?.length ? (
@@ -150,7 +148,7 @@ const CheckoutAddress = ({ type }) => {
                   })}
                 </span>
               ) : null}
-          </Fragment>
+          </>
         ) : (
           <Link href={selectAddressLink} className={styles.link}>
             {i18n.text(`checkout.${type}.select_address`)}
@@ -168,4 +166,4 @@ CheckoutAddress.defaultProps = {
   type: ADDRESS_TYPE_BILLING,
 };
 
-export default hot(CheckoutAddress);
+export default CheckoutAddress;

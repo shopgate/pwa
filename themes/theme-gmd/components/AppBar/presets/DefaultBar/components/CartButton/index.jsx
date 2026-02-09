@@ -33,7 +33,8 @@ class CartButton extends PureComponent {
    */
   get badge() {
     const { count } = this.props;
-    return () => <Badge style={this.style.badge} count={count} />;
+    const { badge } = this.style;
+    return () => <Badge style={badge} count={count} />;
   }
 
   /**

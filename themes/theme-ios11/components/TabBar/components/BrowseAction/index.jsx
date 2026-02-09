@@ -33,7 +33,7 @@ class TabBarBrowseAction extends Component {
    */
   render() {
     return (
-      <Fragment>
+      <>
         <Portal
           name={portals.TAB_BAR_BROWSE_BEFORE}
           props={{
@@ -65,7 +65,7 @@ class TabBarBrowseAction extends Component {
             TabBarAction,
           }}
         />
-      </Fragment>
+      </>
     );
   }
 }

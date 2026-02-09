@@ -42,13 +42,13 @@ const FloatingActionButton = (props) => {
   );
 
   return (
-    // eslint-disable-next-line react/button-has-type
     <button
       className={classes}
       disabled={disabled}
       onClick={onClick}
       ref={ref}
       style={{ background }}
+      // eslint-disable-next-line react/button-has-type
       type={type}
       data-test-id={props.testId}
     >

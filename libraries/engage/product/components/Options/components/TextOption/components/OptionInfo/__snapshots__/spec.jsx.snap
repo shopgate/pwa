@@ -43,7 +43,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
     <Translate
       acceptPlainTextWithPlaceholders={false}
       className={null}
-      params={Object {}}
+      params={{}}
       role={null}
       string="common.required"
       transform={null}

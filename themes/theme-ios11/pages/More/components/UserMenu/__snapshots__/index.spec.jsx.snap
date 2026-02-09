@@ -3,7 +3,7 @@
 exports[`<UserMenu /> should render additional links when logged in and new services are enabled 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -21,7 +21,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
     <Portal
       name="user-menu.container.before"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": true,
@@ -33,7 +33,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
     <Portal
       name="user-menu.container"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": true,
@@ -48,7 +48,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
         <SurroundPortals
           portalName="nav-menu.my-account"
           portalProps={
-            Object {
+            {
               "Item": [Function],
             }
           }
@@ -61,7 +61,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
             >
               <Headline
                 style={
-                  Object {
+                  {
                     "margin": "24px 20px 16px",
                   }
                 }
@@ -72,7 +72,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   className="css-18cwfw7 headline theme__headline"
                   data-test-id="Headline"
                   style={
-                    Object {
+                    {
                       "margin": "24px 20px 16px",
                     }
                   }
@@ -86,7 +86,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
               </Headline>
               <div
                 className={
-                  Object {
+                  {
                     "data-css-13ch7sr": "",
                   }
                 }
@@ -151,7 +151,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                 <SurroundPortals
                   portalName="nav-menu.logout"
                   portalProps={
-                    Object {
+                    {
                       "Item": [Function],
                     }
                   }
@@ -186,7 +186,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
     <Portal
       name="user-menu.container.after"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": true,
@@ -202,7 +202,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
 exports[`<UserMenu /> should render as expected when the user is logged in 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -220,7 +220,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
     <Portal
       name="user-menu.container.before"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [MockFunction],
           "isLoggedIn": true,
@@ -232,7 +232,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
     <Portal
       name="user-menu.container"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [MockFunction],
           "isLoggedIn": true,
@@ -247,7 +247,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
         <SurroundPortals
           portalName="nav-menu.my-account"
           portalProps={
-            Object {
+            {
               "Item": [Function],
             }
           }
@@ -260,7 +260,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
             >
               <Headline
                 style={
-                  Object {
+                  {
                     "margin": "24px 20px 16px",
                   }
                 }
@@ -271,7 +271,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   className="css-18cwfw7 headline theme__headline"
                   data-test-id="Headline"
                   style={
-                    Object {
+                    {
                       "margin": "24px 20px 16px",
                     }
                   }
@@ -285,7 +285,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
               </Headline>
               <div
                 className={
-                  Object {
+                  {
                     "data-css-13ch7sr": "",
                   }
                 }
@@ -293,7 +293,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 <SurroundPortals
                   portalName="nav-menu.logout"
                   portalProps={
-                    Object {
+                    {
                       "Item": [Function],
                     }
                   }
@@ -328,7 +328,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
     <Portal
       name="user-menu.container.after"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [MockFunction],
           "isLoggedIn": true,
@@ -344,7 +344,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
 exports[`<UserMenu /> should render as expected when the user is logged out and the buttons are disabled 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -362,7 +362,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
     <Portal
       name="user-menu.container.before"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": false,
@@ -374,7 +374,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
     <Portal
       name="user-menu.container"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": false,
@@ -446,7 +446,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
     <Portal
       name="user-menu.container.after"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": false,
@@ -462,7 +462,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
 exports[`<UserMenu /> should render as expected when the user is logged out and the buttons are enabled 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -480,7 +480,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
     <Portal
       name="user-menu.container.before"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": false,
@@ -492,7 +492,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
     <Portal
       name="user-menu.container"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": false,
@@ -564,7 +564,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
     <Portal
       name="user-menu.container.after"
       props={
-        Object {
+        {
           "entries": null,
           "handleLogout": [Function],
           "isLoggedIn": false,

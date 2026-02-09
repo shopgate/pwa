@@ -35,7 +35,6 @@ class ProductContent extends PureComponent {
     baseProductId: PropTypes.string,
     currency: PropTypes.string,
     fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
-    // eslint-disable-next-line react/no-unused-prop-types
     isVariant: PropTypes.bool,
     productId: PropTypes.string,
     productIsFetching: PropTypes.bool,
@@ -72,6 +71,17 @@ class ProductContent extends PureComponent {
       characteristics: null,
       quantity: 1,
     };
+
+    this.memoizedContextValue = {
+      ...this.state,
+      ...this.baseContextValue,
+      isFetching: props.productIsFetching,
+      setOption: this.setOption,
+      setQuantity: this.setQuantity,
+      setCharacteristics: this.setCharacteristics,
+    };
+    this.lastState = this.state;
+    this.lastIsFetching = props.productIsFetching;
   }
 
   /**
@@ -80,7 +90,7 @@ class ProductContent extends PureComponent {
    * @param {Object} nextProps The next component props.
    */
   UNSAFE_componentWillReceiveProps(nextProps) {
-    let productId = nextProps.baseProductId ? nextProps.baseProductId : nextProps.productId;
+    let productId = nextProps.baseProductId || nextProps.productId;
     let { variantId } = nextProps;
     const productIdChanged = this.props.productId !== nextProps.productId;
 
@@ -145,23 +155,38 @@ class ProductContent extends PureComponent {
         ...characteristics,
       } : null,
     }));
-  }
+  };
+
+  /**
+   * Gets the memoized context value for the ProductContext.
+   * @returns {Object} The memoized context value containing state and methods.
+   */
+  getMemoizedContextValue = () => {
+    const isFetching = this.props.productIsFetching;
+
+    if (this.lastState !== this.state || this.lastIsFetching !== isFetching) {
+      this.lastState = this.state;
+      this.lastIsFetching = isFetching;
+
+      this.memoizedContextValue = {
+        ...this.state,
+        ...this.baseContextValue,
+        isFetching,
+        setOption: this.setOption,
+        setQuantity: this.setQuantity,
+        setCharacteristics: this.setCharacteristics,
+      };
+    }
+
+    return this.memoizedContextValue;
+  };
 
   /**
    * @return {JSX}
    */
   render() {
-    const contextValue = {
-      ...this.state,
-      ...this.baseContextValue,
-      isFetching: this.props.productIsFetching,
-      setOption: this.setOption,
-      quantity: this.state.quantity,
-      setQuantity: this.setQuantity,
-      setCharacteristics: this.setCharacteristics,
-    };
-
     const { productId, variantId } = this.state;
+    const contextValue = this.getMemoizedContextValue();
 
     return (
       <div data-test-id={productId}>

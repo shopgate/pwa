@@ -17,7 +17,7 @@ import styles from './style';
  * @return {JSX}
  */
 const Manufacturer = ({ manufacturer }) => (
-  <Fragment>
+  <>
     <Portal name={PRODUCT_MANUFACTURER_BEFORE} />
     <Portal name={PRODUCT_MANUFACTURER}>
       <div className={styles.infoContainer} data-test-id={`manufacturer: ${manufacturer}`}>
@@ -27,7 +27,7 @@ const Manufacturer = ({ manufacturer }) => (
       </div>
     </Portal>
     <Portal name={PRODUCT_MANUFACTURER_AFTER} />
-  </Fragment>
+  </>
 );
 
 Manufacturer.propTypes = {

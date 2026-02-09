@@ -3,7 +3,7 @@
 exports[`<Quicklinks /> should not render when no quicklinks are there 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -15,7 +15,7 @@ exports[`<Quicklinks /> should not render when no quicklinks are there 1`] = `
   <Connect(Quicklinks)>
     <Quicklinks
       dispatch={[Function]}
-      entries={Array []}
+      entries={[]}
       isBackInStockEnabled={false}
     />
   </Connect(Quicklinks)>
@@ -25,7 +25,7 @@ exports[`<Quicklinks /> should not render when no quicklinks are there 1`] = `
 exports[`<Quicklinks /> should render quicklinks 1`] = `
 <Provider
   store={
-    Object {
+    {
       "@@observable": [Function],
       "dispatch": [Function],
       "getState": [Function],
@@ -38,12 +38,12 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
     <Quicklinks
       dispatch={[Function]}
       entries={
-        Array [
-          Object {
+        [
+          {
             "label": "Some Label",
             "url": "/some/url",
           },
-          Object {
+          {
             "label": "Another Label",
             "url": "/another/url",
           },
@@ -54,7 +54,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
       <SurroundPortals
         portalName="nav-menu.quick-links"
         portalProps={
-          Object {
+          {
             "Headline": [Function],
             "Item": [Function],
             "Section": [Function],
@@ -66,7 +66,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
         >
           <Headline
             style={
-              Object {
+              {
                 "margin": "24px 20px 16px",
               }
             }
@@ -77,7 +77,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
               className="css-18cwfw7 headline theme__headline"
               data-test-id="Headline"
               style={
-                Object {
+                {
                   "margin": "24px 20px 16px",
                 }
               }
@@ -91,7 +91,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
           </Headline>
           <div
             className={
-              Object {
+              {
                 "data-css-13ch7sr": "",
               }
             }
@@ -99,7 +99,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             <SurroundPortals
               portalName="nav-menu.quick-links.items"
               portalProps={
-                Object {
+                {
                   "Headline": [Function],
                   "Item": [Function],
                   "Section": [Function],

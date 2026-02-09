@@ -64,8 +64,7 @@ function LiveshoppingItem({
                     className={styles.badgesPortal}
                   >
                     {price.discount > 0 &&
-                    <Discount discount={price.discount} productId={productId} />
-                      }
+                    <Discount discount={price.discount} productId={productId} />}
                   </ProductBadges>
                   <ProductName
                     name={name}
@@ -74,8 +73,7 @@ function LiveshoppingItem({
                     rows={2}
                   />
                   {timeout &&
-                  <CountdownTimer className={styles.timer} timeout={timeout / 1000} />
-                      }
+                  <CountdownTimer className={styles.timer} timeout={timeout / 1000} />}
                 </div>
                 <Price price={price} />
               </Grid.Item>

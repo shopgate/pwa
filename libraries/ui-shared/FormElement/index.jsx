@@ -85,7 +85,8 @@ class FormElement extends Component {
         style.formElement,
         className,
         'formElement',
-        'ui-shared__form-element', {
+        'ui-shared__form-element',
+        {
           disabled,
         }
       )}
@@ -96,8 +97,7 @@ class FormElement extends Component {
             placeholder={placeholder || label}
             hasLeftElement={hasLeftElement}
             aria-hidden
-          />
-        }
+          />}
 
         {label &&
           <Label
@@ -107,17 +107,14 @@ class FormElement extends Component {
             isFocused={isFocused}
             isFloating={this.isLabelFloating}
             hasErrorMessage={this.hasErrorMessage}
-          />
-        }
+          />}
 
         {this.props.children}
 
         {this.props.hasUnderline &&
-          <Underline isFocused={isFocused} hasErrorMessage={this.hasErrorMessage} />
-        }
+          <Underline isFocused={isFocused} hasErrorMessage={this.hasErrorMessage} />}
         {errorText && showErrorText &&
-          <ErrorText errorText={errorText} translate={translateErrorText} elementName={htmlFor} />
-        }
+          <ErrorText errorText={errorText} translate={translateErrorText} elementName={htmlFor} />}
       </div>
     );
   }

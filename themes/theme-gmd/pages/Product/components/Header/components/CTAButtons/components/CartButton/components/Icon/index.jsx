@@ -13,12 +13,17 @@ class CartButtonIcon extends PureComponent {
   static propTypes = {
     disabled: PropTypes.bool.isRequired,
     onSuccess: PropTypes.func.isRequired,
-    // eslint-disable-next-line react/no-unused-prop-types
     success: PropTypes.bool.isRequired,
-  }
+  };
 
-  state = {
-    success: false,
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      success: false,
+    };
   }
 
   /**
@@ -38,7 +43,7 @@ class CartButtonIcon extends PureComponent {
   reset = () => {
     this.setState({ success: false });
     this.props.onSuccess();
-  }
+  };
 
   /**
    * @returns {JSX}

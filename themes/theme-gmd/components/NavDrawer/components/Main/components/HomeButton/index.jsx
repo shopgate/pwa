@@ -19,7 +19,7 @@ const LABEL = 'navigation.home';
  * @returns {JSX}
  */
 const HomeButton = ({ navigate }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_HOME_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_HOME} props={portalProps}>
       <NavDrawer.Item
@@ -30,7 +30,7 @@ const HomeButton = ({ navigate }) => (
       />
     </Portal>
     <Portal name={NAV_MENU_HOME_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 HomeButton.propTypes = {

@@ -33,7 +33,7 @@ class ItemImage extends PureComponent {
     const props = { productId };
 
     return (
-      <Fragment>
+      <>
         <Portal name={PRODUCT_ITEM_IMAGE_BEFORE} props={props} />
         <Portal name={PRODUCT_ITEM_IMAGE} props={props}>
           <ProductImage
@@ -44,7 +44,7 @@ class ItemImage extends PureComponent {
           />
         </Portal>
         <Portal name={PRODUCT_ITEM_IMAGE_AFTER} props={props} />
-      </Fragment>
+      </>
     );
   }
 }

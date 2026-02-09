@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, {
   useState, useEffect, useCallback, useMemo,
 } from 'react';
@@ -176,11 +175,7 @@ const FulfillmentSelector = (props) => {
   },
   [shopFulfillmentMethods]);
 
-  if (!shopHasRopeMethods) {
-    return null;
-  }
-
-  const context = /** @type {FulfillmentSelectorContextProps} */ ({
+  const context = /** @type {FulfillmentSelectorContextProps} */ useMemo(() => ({
     selection,
     selectedLocation,
     inventory,
@@ -200,7 +195,31 @@ const FulfillmentSelector = (props) => {
     productFulfillmentMethods,
     locationFulfillmentMethods,
     useLocationFulfillmentMethods,
-  });
+  }), [
+    conditioner,
+    fulfillmentPaths,
+    handleChange,
+    inventory,
+    isBOPISEnabled,
+    isDirectShipEnabled,
+    isOrderable,
+    isROPISEnabled,
+    isReady,
+    locationFulfillmentMethods,
+    merchantSettings,
+    preferredLocation,
+    productFulfillmentMethods,
+    productId,
+    selectedLocation,
+    selection,
+    shopFulfillmentMethods,
+    useLocationFulfillmentMethods,
+    userFulfillmentMethod,
+  ]);
+
+  if (!shopHasRopeMethods) {
+    return null;
+  }
 
   return (
     <FulfillmentSelectorContext.Provider value={context}>
@@ -275,4 +294,4 @@ FulfillmentSelector.defaultProps = {
   userFulfillmentMethod: null,
 };
 
-export default hot(connect(React.memo(FulfillmentSelector)));
+export default connect(React.memo(FulfillmentSelector));

@@ -60,7 +60,7 @@ const StripeButton = ({
   }, [order, publishableKey]);
 
   return (
-    <Fragment>
+    <>
       <Button {...props} onChange={() => onChange(null)} active={active && !subMethod}>
         {i18n.text('checkout.payment.buttons.stripe')}
       </Button>
@@ -82,7 +82,7 @@ const StripeButton = ({
           <img className={styles.mark} alt="GooglePay" src={googlePayLogo} />
         </Button>
       ) : null}
-    </Fragment>
+    </>
   );
 };
 

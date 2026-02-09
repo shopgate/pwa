@@ -54,7 +54,6 @@ class InfiniteContainer extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.domElement = null;
     this.domScrollContainer = null;
     /**
      * 10ms was chosen because, on the one hand, it prevents the scroll event from flooding but,
@@ -463,7 +462,7 @@ class InfiniteContainer extends Component {
     );
 
     return (
-      <div ref={(elementRef) => { this.domElement = elementRef; }} className="common__infinite-container">
+      <div className="common__infinite-container">
         <div>
           {content}
         </div>

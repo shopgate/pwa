@@ -68,7 +68,6 @@ class AppInitialization {
     const results = [];
     const errors = [];
 
-    // eslint-disable-next-line no-restricted-syntax
     for (const handler of Array.from(this.store.values())) {
       // Take care that rejecting handlers don't break the app
       try {

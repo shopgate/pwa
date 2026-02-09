@@ -91,6 +91,8 @@ CartItemProductPriceList.propTypes = {
   classes: PropTypes.shape({
     price: PropTypes.string,
     priceStriked: PropTypes.string,
+    promo: PropTypes.string,
+    entry: PropTypes.string,
   }),
   isSubtotal: PropTypes.bool,
   showLabels: PropTypes.bool,

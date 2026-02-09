@@ -172,7 +172,7 @@ class ErrorManager {
     }
 
     return typeof message === 'string' || typeof message === 'function';
-  }
+  };
 }
 /** @type {ErrorManager} */
 export default new ErrorManager();

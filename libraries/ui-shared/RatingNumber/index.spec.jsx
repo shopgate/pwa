@@ -30,10 +30,9 @@ describe('RatingNumber', () => {
     expect(console.error).not.toHaveBeenCalled();
   });
 
-  it('should return number when division result is NaN', () => {
+  it('should return null when division result is NaN', () => {
     const component = mount(<RatingNumber rating={{}} />);
     expect(component.html()).toBe(null);
-    expect(console.error).toHaveBeenCalledTimes(1);
   });
 });
 

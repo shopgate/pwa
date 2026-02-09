@@ -16,7 +16,7 @@ class RouteNotFound extends React.Component {
       PropTypes.string,
       PropTypes.elementType,
     ]).isRequired,
-  }
+  };
 
   /**
    * @returns {Object}

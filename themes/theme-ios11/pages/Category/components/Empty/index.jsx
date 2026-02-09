@@ -16,13 +16,13 @@ const Empty = ({ isVisible, ...props }) => {
   }
 
   return (
-    <Fragment>
+    <>
       <Portal name={portals.NO_RESULTS_CONTENT_BEFORE} />
       <Portal name={portals.NO_RESULTS_CONTENT}>
         <NoResults {...props} />
       </Portal>
       <Portal name={portals.NO_RESULTS_CONTENT_AFTER} />
-    </Fragment>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@
 exports[`<WriteReviewLink> should render when current product is set 1`] = `
 <Provider
   store={
-    Object {
+    {
       "clearActions": [Function],
       "dispatch": [Function],
       "getActions": [Function],

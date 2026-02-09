@@ -24,7 +24,7 @@ class Category extends PureComponent {
     }
 
     return <CategoryContent categoryId={hex2bin(id) || null} />;
-  }
+  };
 
   /**
    * @returns {JSX}

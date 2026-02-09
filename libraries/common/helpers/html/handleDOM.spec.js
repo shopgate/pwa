@@ -1,10 +1,12 @@
-import { JSDOM } from 'jsdom';
+/** @jest-environment jsdom */
+
 import {
   handleYouTube,
   getStyles,
 } from './handleDOM';
 
 const mockedEvent = jest.fn();
+
 jest.mock('@shopgate/pwa-core/classes/Event', () => ({
   addCallback(...args) {
     mockedEvent(...args);
@@ -19,21 +21,34 @@ describe('handleDOM', () => {
       'https://youtube.com/fooo?controls=0&enablejsapi=0',
       'https://youtube.com/fooo',
     ];
-    it('should sanitize youtube iframes', () => {
-      const html = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
-      const dom = new JSDOM(html);
-      handleYouTube(dom.window.document);
 
-      const iframes = dom.window.document.querySelectorAll('iframe');
-      iframes.forEach((iframeConstantForLinter) => {
-        const ifr = iframeConstantForLinter;
-        ifr.contentWindow.postMessage = postMessageMock;
-        const newSrc = ifr.src;
-        expect(newSrc.includes('enablejsapi=1')).toBe(true);
-        expect(newSrc.includes('controls=1')).toBe(true);
+    it('should sanitize youtube iframes', () => {
+      const container = document.createElement('div');
+      container.innerHTML = srcs.map(src => `<iframe src="${src}"></iframe>`).join('');
+
+      handleYouTube(container);
+
+      const iframes = container.querySelectorAll('iframe');
+
+      iframes.forEach((iframe) => {
+        // Ensure postMessage exists
+        if (!iframe.contentWindow) {
+          Object.defineProperty(iframe, 'contentWindow', {
+            value: { postMessage: postMessageMock },
+            configurable: true,
+          });
+        } else {
+          // eslint-disable-next-line no-param-reassign
+          iframe.contentWindow.postMessage = postMessageMock;
+        }
+
+        const newSrc = iframe.getAttribute('src');
+        expect(newSrc).toContain('enablejsapi=1');
+        expect(newSrc).toContain('controls=1');
       });
       expect(mockedEvent).toHaveBeenCalledTimes(2);
     });
+
     it('should call stopPlayer', () => {
       mockedEvent.mock.calls[0][1]();
       mockedEvent.mock.calls[1][1]();
@@ -41,10 +56,13 @@ describe('handleDOM', () => {
       expect(postMessageMock).toHaveBeenCalledWith('{"event":"command","func":"stopVideo","args":""}', '*');
     });
   });
+
   describe('getStyles', () => {
     it('should get styles', () => {
-      const dom = new JSDOM('<style>body { background: red;}</style>');
-      const styles = getStyles(dom.window.document);
+      const container = document.createElement('div');
+      container.innerHTML = '<style>body { background: red;}</style>';
+      const styles = getStyles(container);
+
       expect(styles.length).toBe(1);
     });
   });

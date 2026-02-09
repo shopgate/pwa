@@ -7,11 +7,11 @@ exports[`engage > core > hocs > withRoute should inject a single property with t
   <Consumer>
     <MockComponent
       route={
-        Object {
+        {
           "id": "32d55",
           "pathname": "/",
           "pattern": "/",
-          "state": Object {},
+          "state": {},
         }
       }
       someProp={true}
@@ -30,7 +30,7 @@ exports[`engage > core > hocs > withRoute should inject the context properties i
       pathname="/"
       pattern="/"
       someProp={true}
-      state={Object {}}
+      state={{}}
     />
   </Consumer>
 </WithRoute(MockComponent)>

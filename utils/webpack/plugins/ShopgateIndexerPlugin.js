@@ -76,7 +76,6 @@ function readConfig(options) {
   const exports = [exportsStart]; // Holds the export strings.
 
   if (type === TYPE_PORTALS || type === TYPE_WIDGETS || type === TYPE_WIDGETS_V2) {
-    imports.push('import { hot } from \'react-hot-loader/root\';');
     imports.push('import { lazy } from \'react\';');
     imports.push('');
   }
@@ -107,11 +106,7 @@ function readConfig(options) {
       return;
     }
 
-    if (isPortalsOrWidgets) {
-      exports.push(`  '${id}': hot(${variableName}),`);
-    } else {
-      exports.push(`  '${id}': ${variableName},`);
-    }
+    exports.push(`  '${id}': ${variableName},`);
   });
 
   if (importsEnd) {

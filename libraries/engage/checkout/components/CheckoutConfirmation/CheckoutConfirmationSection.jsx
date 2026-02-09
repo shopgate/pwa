@@ -107,15 +107,14 @@ const CheckoutConfirmationSegment = ({
   const isString = typeof content === 'string';
 
   return (
-    <Fragment>
-      <div className={classNames(styles.wrapper, className)}>
-        <h3 className={styles.headline}>{i18n.text(title)}</h3>
-        <Card className={classNames(styles.card, {
-          [styles.cardWithForm]: hasForm,
-        })}
-        >
-          {isString && (<span>{content}</span>)}
-          {!isString && !isSummary && (
+    <div className={classNames(styles.wrapper, className)}>
+      <h3 className={styles.headline}>{i18n.text(title)}</h3>
+      <Card className={classNames(styles.card, {
+        [styles.cardWithForm]: hasForm,
+      })}
+      >
+        {isString && (<span>{content}</span>)}
+        {!isString && !isSummary && (
           <dl className={styles.list}>
             {content.map(({ label, text, link }) => (
               <Fragment key={label || text}>
@@ -134,25 +133,25 @@ const CheckoutConfirmationSegment = ({
               </Fragment>
             ))}
           </dl>
-          )}
-          {children}
-          {isSummary && (
-            <table className={styles.table}>
-              <tbody>
-                {content.map(({ label, text }) => (
-                  <tr key={label || text}>
-                    { label && (
-                      <td>{i18n.text(label)}</td>
-                    )}
-                    <td dangerouslySetInnerHTML={{ __html: text }} />
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </Card>
-      </div>
-    </Fragment>
+        )}
+        {children}
+        {isSummary && (
+        <table className={styles.table}>
+          <tbody>
+            {content.map(({ label, text }) => (
+              <tr key={label || text}>
+                { label && (
+                <td>{i18n.text(label)}</td>
+                )}
+                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                <td dangerouslySetInnerHTML={{ __html: text }} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        )}
+      </Card>
+    </div>
   );
 };
 

@@ -107,7 +107,9 @@ const ResponsiveWidgetImage = ({
   };
 
   const containerRatio = useMemo(() => {
-    const heightReduction = enableParallax ? (imageHeight / 100 * (parallaxPercent + 7)) : 0;
+    const heightReduction = enableParallax
+      ? ((imageHeight / 100) * (parallaxPercent + 7))
+      : 0;
     return `${imageWidth}/${imageHeight - heightReduction}`;
   }, [enableParallax, imageHeight, imageWidth]);
 

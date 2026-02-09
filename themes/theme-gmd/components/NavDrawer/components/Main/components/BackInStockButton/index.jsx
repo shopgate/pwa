@@ -20,7 +20,7 @@ const LABEL = 'navigation.back_in_stock';
  * @returns {JSX.Element}
  */
 const BackInStockButton = ({ navigate, isBackInStockEnabled }) => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_BACK_IN_STOCK_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_BACK_IN_STOCK} props={portalProps}>
       { isBackInStockEnabled &&
@@ -31,11 +31,10 @@ const BackInStockButton = ({ navigate, isBackInStockEnabled }) => (
         aria-hidden
         onClick={navigate(BACK_IN_STOCK_PATTERN, LABEL)}
         testId="navDrawerBackInStockButton"
-      />
-      }
+      />}
     </Portal>
     <Portal name={NAV_MENU_BACK_IN_STOCK_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 BackInStockButton.propTypes = {

@@ -7,7 +7,7 @@ exports[`<CartEmptyIcon /> should render 1`] = `
 >
   <circle
     className={
-      Object {
+      {
         "data-css-4gyzyg": "",
       }
     }
@@ -17,7 +17,7 @@ exports[`<CartEmptyIcon /> should render 1`] = `
   />
   <ellipse
     className={
-      Object {
+      {
         "data-css-1fnid0t": "",
       }
     }
@@ -28,7 +28,7 @@ exports[`<CartEmptyIcon /> should render 1`] = `
   />
   <g
     className={
-      Object {
+      {
         "data-css-15i6kln": "",
       }
     }
@@ -54,7 +54,7 @@ exports[`<CartEmptyIcon /> should render 1`] = `
   </g>
   <g
     className={
-      Object {
+      {
         "data-css-rmsnpj": "",
       }
     }

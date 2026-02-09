@@ -14,13 +14,13 @@ import Item from '../../../Item';
  * @returns {JSX.Element}
  */
 const Shipping = () => (
-  <Fragment>
+  <>
     <Portal name={NAV_MENU_SHIPPING_BEFORE} props={portalProps} />
     <Portal name={NAV_MENU_SHIPPING} props={portalProps}>
       <Item href={SHIPPING_PATH} label="navigation.shipping" />
     </Portal>
     <Portal name={NAV_MENU_SHIPPING_AFTER} props={portalProps} />
-  </Fragment>
+  </>
 );
 
 export default Shipping;

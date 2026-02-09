@@ -5,7 +5,7 @@ exports[`<ItemDetails /> should render additional components with new services 1
   className="css-sr2jsa theme__product-grid__item__item-details"
   href=""
   state={
-    Object {
+    {
       "title": "Foo",
     }
   }
@@ -48,10 +48,10 @@ exports[`<ItemDetails /> should render additional components with new services 1
     />
     <StockInfoLists
       product={
-        Object {
+        {
           "id": "1234",
           "name": "Foo",
-          "price": Object {},
+          "price": {},
         }
       }
     />
@@ -61,10 +61,10 @@ exports[`<ItemDetails /> should render additional components with new services 1
       <ItemPrice
         display={null}
         product={
-          Object {
+          {
             "id": "1234",
             "name": "Foo",
-            "price": Object {},
+            "price": {},
           }
         }
       />
@@ -78,7 +78,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
   className="css-sr2jsa theme__product-grid__item__item-details"
   href=""
   state={
-    Object {
+    {
       "title": "Foo",
     }
   }
@@ -120,10 +120,10 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       <ItemPrice
         display={null}
         product={
-          Object {
+          {
             "id": "1234",
             "name": "Foo",
-            "price": Object {},
+            "price": {},
           }
         }
       />

@@ -13,6 +13,7 @@ const { themes, extensions } = repos;
 async function synchRepo(remote, pathname) {
   const cmd = `git subtree push --prefix=${pathname} ${remote} master`;
 
+  // eslint-disable-next-line no-useless-catch
   try {
     await exec(cmd);
     logger.log(`Synched master of ${pathname}`);

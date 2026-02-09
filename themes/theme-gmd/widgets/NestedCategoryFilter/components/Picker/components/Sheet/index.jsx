@@ -32,7 +32,7 @@ class CategorySheet extends PureComponent {
   handleItemClick = (event) => {
     event.stopPropagation();
     this.props.onSelect(event.target.value);
-  }
+  };
 
   /**
    * Render method of the component.

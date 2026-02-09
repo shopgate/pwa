@@ -1,3 +1,3 @@
-import { FocusTrap } from 'focus-trap-react';
+import FocusTrap from 'focus-trap-react';
 
 export default FocusTrap;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { i18n } from '@shopgate/engage/core';
+import { CardList, Link } from '@shopgate/engage/components';
 import { getTranslatedOrderStatus } from '../../helpers';
 import {
   card,
@@ -11,7 +12,6 @@ import {
   rightAlign,
   cardContent,
 } from './OrderHistoryList.style';
-import { CardList, Link } from '../../../components';
 import { getOrderDetailsRoute } from '../../helpers/orderDetails';
 
 /**
@@ -25,7 +25,7 @@ export const Row = props => (
       <div className={column}>
         <span className={orderNumber}>
           {i18n.text('orders.header.orderNumber')}
-            :&nbsp;
+          :&nbsp;
           {props.orderNumber}
         </span>
         <span>
@@ -41,7 +41,7 @@ export const Row = props => (
         </span>
         <span>
           {i18n.text('orders.header.status')}
-            :&nbsp;
+          :&nbsp;
           {getTranslatedOrderStatus(props.status)}
         </span>
       </div>

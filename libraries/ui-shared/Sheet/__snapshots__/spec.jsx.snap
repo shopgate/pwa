@@ -3,7 +3,7 @@
 exports[`<Sheet /> should open 1`] = `
 <Sheet
   allowClose={true}
-  animation={Object {}}
+  animation={{}}
   backdrop={true}
   className={null}
   contentClassName={null}
@@ -22,7 +22,7 @@ exports[`<Sheet /> should open 1`] = `
   >
     <Drawer
       animation={
-        Object {
+        {
           "duration": 300,
           "in": "css-1ldjh2f",
           "out": "css-171mdnt",
@@ -41,7 +41,7 @@ exports[`<Sheet /> should open 1`] = `
         onAnimationEnd={[Function]}
         role="dialog"
         style={
-          Object {
+          {
             "animationDuration": "300ms",
           }
         }
@@ -94,19 +94,19 @@ exports[`<Sheet /> should open 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                           size={24}
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                              {
+                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": 24,
                               }
@@ -163,7 +163,7 @@ exports[`<Sheet /> should open 1`] = `
               <div
                 className="css-guf25f ui-shared__progress-bar"
                 style={
-                  Object {
+                  {
                     "transform": "scale(1, 0)",
                   }
                 }
@@ -198,84 +198,45 @@ exports[`<Sheet /> should open 1`] = `
       opacity={20}
     >
       <Transition
-        childrenStyles={
-          Object {
-            "appear": Object {
-              "opacity": 0.2,
-              "pointerEvents": "auto",
-            },
-            "base": Object {
+        appear={true}
+        enter={true}
+        exit={true}
+        in={true}
+        mountOnEnter={true}
+        nodeRef={
+          {
+            "current": <div
+              aria-hidden="true"
+              class="css-30873t  common__backdrop"
+              data-test-id="Backdrop"
+              style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+            />,
+          }
+        }
+        onEnter={[Function]}
+        onEntered={[Function]}
+        onEntering={[Function]}
+        onExit={[Function]}
+        onExited={[Function]}
+        onExiting={[Function]}
+        timeout={200}
+        unmountOnExit={true}
+      >
+        <div
+          aria-hidden={true}
+          className="css-30873t  common__backdrop"
+          data-test-id="Backdrop"
+          onClick={[Function]}
+          style={
+            {
               "background": "#000",
-              "opacity": 0,
+              "opacity": 0.2,
               "pointerEvents": "auto",
               "transition": "opacity 200ms ease-out",
               "zIndex": 4,
-            },
-            "enter": Object {
-              "opacity": 0.2,
-              "pointerEvents": "auto",
-            },
-            "leave": Object {
-              "opacity": 0,
-              "pointerEvents": "none",
-            },
+            }
           }
-        }
-        component="div"
-      >
-        <TransitionHooks
-          component="div"
-        >
-          <div>
-            <TransitionChild
-              childrenAppearStyle={
-                Object {
-                  "opacity": 0.2,
-                  "pointerEvents": "auto",
-                }
-              }
-              childrenBaseStyle={
-                Object {
-                  "background": "#000",
-                  "opacity": 0,
-                  "pointerEvents": "auto",
-                  "transition": "opacity 200ms ease-out",
-                  "zIndex": 4,
-                }
-              }
-              childrenEnterStyle={
-                Object {
-                  "opacity": 0.2,
-                  "pointerEvents": "auto",
-                }
-              }
-              childrenLeaveStyle={
-                Object {
-                  "opacity": 0,
-                  "pointerEvents": "none",
-                }
-              }
-              key=".$.$backdrop"
-            >
-              <div
-                aria-hidden={true}
-                className="css-30873t  common__backdrop"
-                data-test-id="Backdrop"
-                key="backdrop"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "background": "#000",
-                    "opacity": 0,
-                    "pointerEvents": "auto",
-                    "transition": "opacity 200ms ease-out",
-                    "zIndex": 4,
-                  }
-                }
-              />
-            </TransitionChild>
-          </div>
-        </TransitionHooks>
+        />
       </Transition>
     </Backdrop>
   </section>
@@ -288,7 +249,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
 >
   <Drawer
     animation={
-      Object {
+      {
         "duration": 300,
         "in": "css-1ldjh2f",
         "out": "css-171mdnt",
@@ -332,7 +293,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
 >
   <Drawer
     animation={
-      Object {
+      {
         "duration": 300,
         "in": "css-1ldjh2f",
         "out": "css-171mdnt",
@@ -376,7 +337,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
 >
   <Drawer
     animation={
-      Object {
+      {
         "duration": 300,
         "in": "css-1ldjh2f",
         "out": "css-171mdnt",
@@ -431,7 +392,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
 exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
 <Sheet
   allowClose={true}
-  animation={Object {}}
+  animation={{}}
   backdrop={true}
   className={null}
   contentClassName={null}
@@ -440,16 +401,16 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   isOpen={true}
   onClose={
     [MockFunction] {
-      "calls": Array [
-        Array [],
-        Array [],
+      "calls": [
+        [],
+        [],
       ],
-      "results": Array [
-        Object {
+      "results": [
+        {
           "type": "return",
           "value": undefined,
         },
-        Object {
+        {
           "type": "return",
           "value": undefined,
         },
@@ -467,7 +428,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
   >
     <Drawer
       animation={
-        Object {
+        {
           "duration": 300,
           "in": "css-1ldjh2f",
           "out": "css-171mdnt",
@@ -486,7 +447,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         onAnimationEnd={[Function]}
         role="dialog"
         style={
-          Object {
+          {
             "animationDuration": "300ms",
           }
         }
@@ -539,19 +500,19 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                         <Icon
                           className=""
                           color={null}
-                          content="<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>"
+                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                           size={24}
                           viewBox="0 0 24 24"
                         >
                           <svg
                             className="css-yys9hb  common__icon"
                             dangerouslySetInnerHTML={
-                              Object {
-                                "__html": "<path d=\\"M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z\\"/>",
+                              {
+                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                               }
                             }
                             style={
-                              Object {
+                              {
                                 "fill": null,
                                 "fontSize": 24,
                               }
@@ -608,7 +569,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               <div
                 className="css-guf25f ui-shared__progress-bar"
                 style={
-                  Object {
+                  {
                     "transform": "scale(1, 0)",
                   }
                 }
@@ -643,84 +604,40 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       opacity={20}
     >
       <Transition
-        childrenStyles={
-          Object {
-            "appear": Object {
-              "opacity": 0.2,
-              "pointerEvents": "auto",
-            },
-            "base": Object {
-              "background": "#000",
-              "opacity": 0,
-              "pointerEvents": "auto",
-              "transition": "opacity 200ms ease-out",
-              "zIndex": 4,
-            },
-            "enter": Object {
-              "opacity": 0.2,
-              "pointerEvents": "auto",
-            },
-            "leave": Object {
-              "opacity": 0,
-              "pointerEvents": "none",
-            },
+        appear={true}
+        enter={true}
+        exit={true}
+        in={false}
+        mountOnEnter={true}
+        nodeRef={
+          {
+            "current": null,
           }
         }
-        component="div"
+        onEnter={[Function]}
+        onEntered={[Function]}
+        onEntering={[Function]}
+        onExit={[Function]}
+        onExited={[Function]}
+        onExiting={[Function]}
+        timeout={200}
+        unmountOnExit={true}
       >
-        <TransitionHooks
-          component="div"
-        >
-          <div>
-            <TransitionChild
-              childrenAppearStyle={
-                Object {
-                  "opacity": 0.2,
-                  "pointerEvents": "auto",
-                }
-              }
-              childrenBaseStyle={
-                Object {
-                  "background": "#000",
-                  "opacity": 0,
-                  "pointerEvents": "auto",
-                  "transition": "opacity 200ms ease-out",
-                  "zIndex": 4,
-                }
-              }
-              childrenEnterStyle={
-                Object {
-                  "opacity": 0.2,
-                  "pointerEvents": "auto",
-                }
-              }
-              childrenLeaveStyle={
-                Object {
-                  "opacity": 0,
-                  "pointerEvents": "none",
-                }
-              }
-              key=".$.$backdrop"
-            >
-              <div
-                aria-hidden={true}
-                className="css-30873t  common__backdrop"
-                data-test-id="Backdrop"
-                key="backdrop"
-                onClick={[Function]}
-                style={
-                  Object {
-                    "background": "#000",
-                    "opacity": 0,
-                    "pointerEvents": "auto",
-                    "transition": "opacity 200ms ease-out",
-                    "zIndex": 4,
-                  }
-                }
-              />
-            </TransitionChild>
-          </div>
-        </TransitionHooks>
+        <div
+          aria-hidden={true}
+          className="css-30873t  common__backdrop"
+          data-test-id="Backdrop"
+          onClick={[Function]}
+          style={
+            {
+              "background": "#000",
+              "opacity": 0,
+              "pointerEvents": "none",
+              "transition": "opacity 200ms ease-out",
+              "zIndex": 4,
+            }
+          }
+        />
       </Transition>
     </Backdrop>
   </section>

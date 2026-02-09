@@ -57,7 +57,10 @@ class CartItemCoupon extends React.PureComponent {
     coupon: PropTypes.shape().isRequired,
     currency: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    messages: PropTypes.arrayOf(PropTypes.any).isRequired,
+    messages: PropTypes.arrayOf(PropTypes.shape({
+      message: PropTypes.string,
+      type: PropTypes.string,
+    })).isRequired,
     deleteCoupon: PropTypes.func,
     editable: PropTypes.bool,
   };
@@ -68,9 +71,15 @@ class CartItemCoupon extends React.PureComponent {
   };
 
   /**
-   * @type {State}
+   * @param {Props} props The component props
    */
-  state = { visible: true };
+  constructor(props) {
+    super(props);
+    /**
+     * @type {State}
+     */
+    this.state = { visible: true };
+  }
 
   /**
    * @returns {Object}

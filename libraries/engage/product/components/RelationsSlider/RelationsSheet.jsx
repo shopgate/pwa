@@ -27,7 +27,7 @@ const RelationsSheet = memo(({ products: { products } }) => {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <Button onClick={handleOpen} flat className={showMore}>
         <I18n.Text string="product.relations.showMore" />
       </Button>
@@ -36,7 +36,7 @@ const RelationsSheet = memo(({ products: { products } }) => {
           <ProductGrid products={products} infiniteLoad={false} />
         </div>
       </SheetDrawer>
-    </Fragment>
+    </>
   );
 });
 

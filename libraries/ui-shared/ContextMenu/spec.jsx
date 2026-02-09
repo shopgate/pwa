@@ -5,6 +5,7 @@ import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import ContextMenu from './index';
 
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/a11y/components');
 
 global.requestAnimationFrame = fn => fn();
 
@@ -23,13 +24,13 @@ describe('<ContextMenu />', () => {
             onClick={mockItemAClick}
             className="menu-active-item"
           >
-            {'Item A'}
+            Item A
           </ContextMenu.Item>
           <ContextMenu.Item
             onClick={mockItemBClick}
             className="menu-active-item"
           >
-            {'Item B'}
+            Item B
           </ContextMenu.Item>
         </ContextMenu>
       ));
@@ -43,7 +44,7 @@ describe('<ContextMenu />', () => {
             onClick={mockItemAClick}
             className="menu-active-item"
           >
-            {'Item A'}
+            Item A
           </ContextMenu.Item>
         </ContextMenu>
       ));

@@ -143,7 +143,6 @@ const Subscription = ({
           </div>
         </div>
         <div className={classNames(styles.baseContainerRow)}>
-          {/* eslint-disable-next-line react/prop-types */}
           {product?.characteristics?.map(({ label, value }) =>
             <div
               key={label + value}

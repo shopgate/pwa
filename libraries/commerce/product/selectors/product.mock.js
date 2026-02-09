@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash/cloneDeep';
-/* eslint-disable camelcase */
+
 export const mockedRouterState = {
   currentRoute: null,
   stack: [],
@@ -343,4 +343,3 @@ export const mockedVariantStateVariantsFetching = cloneDeep(mockedVariantStateCo
 delete mockedVariantStateVariantsFetching.product.productsById.product_2;
 delete mockedVariantStateVariantsFetching.product.productsById.product_3;
 
-/* eslint-enable camelcase */

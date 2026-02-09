@@ -29,7 +29,7 @@ class TextOption extends PureComponent {
   static defaultProps = {
     info: null,
     value: null,
-  }
+  };
 
   /**
    * @param {Object} props The component props.
@@ -50,14 +50,14 @@ class TextOption extends PureComponent {
    */
   setRef = (ref) => {
     this.ref = ref;
-  }
+  };
 
   /**
    * Remove highlight state
    */
   removeHighlight = () => {
     this.setState({ highlight: false });
-  }
+  };
 
   /**
    * Checks if required input is done.
@@ -75,7 +75,7 @@ class TextOption extends PureComponent {
     this.ref.scrollIntoView({ behavior: 'smooth' });
     this.setState({ highlight: true });
     return false;
-  }
+  };
 
   /**
    * @returns {JSX}
@@ -96,7 +96,7 @@ class TextOption extends PureComponent {
         <InfoIcon size={24} className={styles.infoIcon} />
       </div>
     );
-  }
+  };
 
   /**
    * Handles form submits by key.
@@ -107,16 +107,16 @@ class TextOption extends PureComponent {
     if (event.which === 13) {
       this.ref.blur();
     }
-  }
+  };
 
   /**
    * @param {string} val value.
    */
   handleChange = (val) => {
     this.props.onChange(this.props.id, val, this.props.price);
-  }
+  };
 
-  handleDebounced = debounce(this.handleChange, 300)
+  handleDebounced = debounce(this.handleChange, 300);
 
   /**
    * @return {JSX}
@@ -135,7 +135,7 @@ class TextOption extends PureComponent {
       <div className={styles.row}>
         <Transition in={this.state.highlight} timeout={700} onEntered={this.removeHighlight}>
           {state => (
-            <Fragment>
+            <>
               <div className={styles.wrapper} style={transition[state]}>
                 <TextField
                   setRef={this.setRef}
@@ -161,7 +161,7 @@ class TextOption extends PureComponent {
                 info={info}
                 optionInfoId={optionInfoId}
               />
-            </Fragment>
+            </>
           )}
         </Transition>
       </div>

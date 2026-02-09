@@ -7,7 +7,7 @@ exports[`<ItemDiscount /> should render with discount 1`] = `
   <Portal
     name="product-item.discount.before"
     props={
-      Object {
+      {
         "productId": "1234",
       }
     }
@@ -15,7 +15,7 @@ exports[`<ItemDiscount /> should render with discount 1`] = `
   <Portal
     name="product-item.discount"
     props={
-      Object {
+      {
         "productId": "1234",
       }
     }
@@ -30,7 +30,7 @@ exports[`<ItemDiscount /> should render with discount 1`] = `
   <Portal
     name="product-item.discount.after"
     props={
-      Object {
+      {
         "productId": "1234",
       }
     }

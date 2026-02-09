@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import 'Extensions/portals';
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
@@ -96,7 +95,7 @@ const globalLocationSelectorAllowList = [
  * @returns {JSX}
  */
 const Pages = ({ store }) => {
-  const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha;
+  const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
 
   const theme = useMemo(() => {
     const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);
@@ -334,4 +333,4 @@ Pages.propTypes = {
   store: PropTypes.shape().isRequired,
 };
 
-export default hot(Pages);
+export default Pages;

@@ -34,14 +34,14 @@ class ProductHeader extends PureComponent {
         </Section>
       </div>
     );
-  }
+  };
 
   /**
    * @returns {JSX.Element}
    */
   render() {
     return (
-      <Fragment>
+      <>
         <Portal name={PRODUCT_HEADER_BEFORE} />
         <Portal name={PRODUCT_HEADER}>
           <ProductContext.Consumer>
@@ -49,7 +49,7 @@ class ProductHeader extends PureComponent {
           </ProductContext.Consumer>
         </Portal>
         <Portal name={PRODUCT_HEADER_AFTER} />
-      </Fragment>
+      </>
     );
   }
 }

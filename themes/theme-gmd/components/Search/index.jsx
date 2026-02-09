@@ -22,11 +22,11 @@ class Search extends Component {
     historyPush: PropTypes.func.isRequired,
     historyReplace: PropTypes.func.isRequired,
     route: PropTypes.shape(),
-  }
+  };
 
   static defaultProps = {
     route: null,
-  }
+  };
 
   /**
    * @param {Object} props The component props.
@@ -74,7 +74,7 @@ class Search extends Component {
    */
   close = () => {
     this.toggle(false);
-  }
+  };
 
   /**
    * @param {boolean} visible The next visible state.
@@ -98,15 +98,12 @@ class Search extends Component {
     if (wasVisible && !visible) {
       UIEvents.emit(SEARCH_CLOSED);
     }
-  }
+  };
 
-  /**
-   * @param {Event} event The event.
-   */
   reset = () => {
     this.fieldRef.current.value = DEFAULT_QUERY;
     this.setState({ query: DEFAULT_QUERY });
-  }
+  };
 
   /**
    * @param {Event} event The event.
@@ -146,15 +143,7 @@ class Search extends Component {
     } else {
       this.props.historyPush({ pathname: location });
     }
-  }
-
-  /**
-   * @param {MouseEvent} event The event of the click.
-   */
-  handleClick = (event) => {
-    event.preventDefault();
-    UIEvents.emit(TOGGLE_SEARCH, false);
-  }
+  };
 
   /**
    * @returns {JSX}

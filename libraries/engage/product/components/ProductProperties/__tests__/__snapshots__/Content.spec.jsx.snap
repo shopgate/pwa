@@ -8,23 +8,23 @@ exports[`<Content /> should render grouped properties 1`] = `
 >
   <GroupedProperties
     groups={
-      Array [
-        Object {
+      [
+        {
           "htmlOnly": false,
           "key": "Group 1",
           "label": null,
-          "properties": Array [
-            Object {
+          "properties": [
+            {
               "displayGroup": "Group 1",
               "label": "Test 1",
               "name": "test1",
             },
-            Object {
+            {
               "displayGroup": "Group 1",
               "label": "Test 2",
               "name": "test2",
             },
-            Object {
+            {
               "customDisplayGroupName": "Custom Name Ignored",
               "displayGroup": "Group 1",
               "name": "test3",
@@ -32,29 +32,29 @@ exports[`<Content /> should render grouped properties 1`] = `
             },
           ],
         },
-        Object {
+        {
           "htmlOnly": false,
           "key": "Group 2",
           "label": null,
-          "properties": Array [
-            Object {
+          "properties": [
+            {
               "displayGroup": "Group 2",
               "label": "Test 3",
               "name": "test3",
             },
-            Object {
+            {
               "displayGroup": "Group 2",
               "label": "Test 4",
               "name": "test4",
             },
           ],
         },
-        Object {
+        {
           "htmlOnly": true,
           "key": "custom-Custom Name",
           "label": "Custom Name",
-          "properties": Array [
-            Object {
+          "properties": [
+            {
               "customDisplayGroupName": "Custom Name",
               "displayGroup": "custom",
               "name": "html",
@@ -76,34 +76,34 @@ exports[`<Content /> should render simple rows if not in beta 1`] = `
 >
   <Rows
     properties={
-      Array [
-        Object {
+      [
+        {
           "displayGroup": "Group 1",
           "label": "Test 1",
           "name": "test1",
         },
-        Object {
+        {
           "displayGroup": "Group 1",
           "label": "Test 2",
           "name": "test2",
         },
-        Object {
+        {
           "customDisplayGroupName": "Custom Name Ignored",
           "displayGroup": "Group 1",
           "name": "test3",
           "type": "html",
         },
-        Object {
+        {
           "displayGroup": "Group 2",
           "label": "Test 3",
           "name": "test3",
         },
-        Object {
+        {
           "displayGroup": "Group 2",
           "label": "Test 4",
           "name": "test4",
         },
-        Object {
+        {
           "customDisplayGroupName": "Custom Name",
           "displayGroup": "custom",
           "name": "html",
@@ -123,8 +123,8 @@ exports[`<Content /> should render simple rows of no groups could be found 1`] =
 >
   <Rows
     properties={
-      Array [
-        Object {
+      [
+        {
           "label": "Test 1",
           "name": "test1",
         },

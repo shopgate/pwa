@@ -44,7 +44,7 @@ const GuestRegistrationContent = () => {
   }, [guestRegistrationEditMode, orderReserveOnly]);
 
   return (
-    <Fragment>
+    <>
       <CheckoutHeader
         stepFrom={!guestRegistrationEditMode ? 1 : null}
         stepTo={!guestRegistrationEditMode ? 2 : null}
@@ -58,7 +58,7 @@ const GuestRegistrationContent = () => {
         <RegistrationFormPickup />
       </div>
       <RegistrationFormActions isGuest />
-    </Fragment>
+    </>
   );
 };
 

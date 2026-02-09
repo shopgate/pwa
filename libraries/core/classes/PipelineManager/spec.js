@@ -36,14 +36,37 @@ const PIPELINE_DEPENDENCY = 'PIPELINE_DEPENDENCY';
  */
 const createRequest = (pipelineName = PIPELINE_NAME) => new PipelineRequest(pipelineName);
 
+/**
+ * Resets the pipeline sequence instance
+ */
+const resetPipelineSequence = () => {
+  pipelineSequence.sequence = [];
+};
+
+/**
+ * Resets the pipeline dependencies instance
+ */
+const resetPipelineDependencies = () => {
+  pipelineDependencies.dependencies = {};
+};
+
+/**
+ * Resets the pipeline manager instance
+ */
+const resetPipelineManager = () => {
+  pipelineManager.requests.clear();
+  pipelineManager.pipelines.clear();
+  pipelineManager.suppressedErrors = [];
+};
+
 describe('PipelineManager', () => {
   let request;
 
   beforeEach(() => {
     // Reset modules.
-    pipelineSequence.constructor();
-    pipelineDependencies.constructor();
-    pipelineManager.constructor();
+    resetPipelineSequence();
+    resetPipelineDependencies();
+    resetPipelineManager();
 
     // Generate a request and add it to the manager. It can be used for most of the tests.
     request = createRequest();
@@ -65,7 +88,7 @@ describe('PipelineManager', () => {
 
   describe('.constructor()', () => {
     it('should work as expected', () => {
-      pipelineManager.constructor();
+      resetPipelineManager();
       expect(pipelineManager.requests.size).toBe(0);
       expect(pipelineManager.pipelines.size).toBe(0);
       expect(pipelineManager.suppressedErrors).toHaveLength(0);
@@ -125,7 +148,7 @@ describe('PipelineManager', () => {
       const createRequestCallbackSpy = jest.spyOn(pipelineManager, 'createRequestCallback');
       const sendRequestSpy = jest.spyOn(pipelineManager, 'sendRequest');
 
-      pipelineManager.constructor();
+      resetPipelineManager();
       const result = pipelineManager.add(request);
 
       expect(result).toBeInstanceOf(Promise);
@@ -154,7 +177,7 @@ describe('PipelineManager', () => {
 
     it('should resolve when a pipeline response comes in', () => {
       const response = { succcess: true };
-      pipelineManager.constructor();
+      resetPipelineManager();
       const handler = pipelineManager.add(request);
 
       expect(request.callback).toBeInstanceOf(Function);
@@ -172,7 +195,7 @@ describe('PipelineManager', () => {
       const expected = new Error(error.message);
       expected.code = error.code;
 
-      pipelineManager.constructor();
+      resetPipelineManager();
       const handler = pipelineManager.add(request);
 
       expect(request.callback).toBeInstanceOf(Function);
@@ -349,7 +372,7 @@ describe('PipelineManager', () => {
     jest.useFakeTimers();
 
     it('should handle timeouts like expected', (done) => {
-      pipelineManager.constructor();
+      resetPipelineManager();
       request.setRetries(1);
       const promise = pipelineManager.add(request);
 
@@ -483,7 +506,7 @@ describe('PipelineManager', () => {
 
   describe('.handleResult()', () => {
     beforeEach(() => {
-      pipelineManager.constructor();
+      resetPipelineManager();
       request = createRequest().setResponseProcessed(PROCESS_SEQUENTIAL);
       pipelineManager.add(request);
       request.resolve = jest.fn();
@@ -539,8 +562,8 @@ describe('PipelineManager', () => {
     let handleResultSpy;
 
     beforeEach(() => {
-      pipelineManager.constructor();
-      pipelineSequence.constructor();
+      resetPipelineManager();
+      resetPipelineSequence();
 
       handleResultSpy = jest.spyOn(pipelineManager, 'handleResult');
 
@@ -600,7 +623,7 @@ describe('PipelineManager', () => {
     let decrementSpy;
 
     beforeEach(() => {
-      pipelineManager.constructor();
+      resetPipelineManager();
       handleResultSpy = jest.spyOn(pipelineManager, 'handleResult');
       decrementSpy = jest.spyOn(pipelineManager, 'decrementPipelineOngoing');
       requests = [1, 2, 3, 4].map(() =>
@@ -634,7 +657,7 @@ describe('PipelineManager', () => {
   describe('.sendRequest()', () => {
     beforeEach(() => {
       // Reset the manager to remove the request from the global beforeEach.
-      pipelineManager.constructor();
+      resetPipelineManager();
     });
 
     it('should ignore invalid serial', () => {

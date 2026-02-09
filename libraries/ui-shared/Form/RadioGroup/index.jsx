@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -27,7 +26,7 @@ class RadioGroup extends Component {
     showErrorText: PropTypes.bool,
     translateErrorText: PropTypes.bool,
     value: PropTypes.string,
-  }
+  };
 
   static defaultProps = {
     onChange: () => { },
@@ -41,7 +40,7 @@ class RadioGroup extends Component {
     translateErrorText: true,
     value: null,
     showErrorText: true,
-  }
+  };
 
   /**
    * Initializes the component.
@@ -73,7 +72,7 @@ class RadioGroup extends Component {
       this.setState({ value: name });
     }
     this.props.onChange(name);
-  }
+  };
 
   /**
    * Renders the component.
@@ -117,12 +116,11 @@ class RadioGroup extends Component {
               checked: this.state.value === child.props.name,
               onChange: this.handleChange,
             });
-          })
-          }
+          })}
         </div>
       </FormElement>
     );
   }
 }
 
-export default hot(RadioGroup);
+export default RadioGroup;

@@ -28,9 +28,15 @@ class Selector extends PureComponent {
     selected: null,
   };
 
-  state = {
-    selected: this.props.selected || [],
-  };
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      selected: props.selected || [],
+    };
+  }
 
   /**
    * @param {Object} nextProps The new incoming props.
@@ -63,7 +69,7 @@ class Selector extends PureComponent {
     // Set it if it wasn't selected already.
     this.setState({ selected: newSelected });
     onChange(id, newSelected);
-  }
+  };
 
   /**
    * Filter value change handler for the portal props. Invokes handleClick method with a mocked
@@ -72,7 +78,7 @@ class Selector extends PureComponent {
    */
   handlePortalChange = (updatedId) => {
     this.handleClick({ target: { value: updatedId } });
-  }
+  };
 
   /**
    * @param {Object} props The send render props.
@@ -89,7 +95,7 @@ class Selector extends PureComponent {
         selected={<Selected values={values} selected={selected} />}
       />
     );
-  }
+  };
 
   /**
    * @returns {JSX}

@@ -1,4 +1,4 @@
-// Mock some underlying classes to avoid faulty code exection.
+// Mock some underlying classes to avoid faulty code execution.
 jest.mock('../../DevServerBridge', () => { });
 jest.mock('../../../commands/getWebStorageEntry', () => { });
 
@@ -7,8 +7,8 @@ const privateMethods = ['constructor', 'logCommand'];
 
 describe('AppCommand mock', () => {
   describe('check if the mock provides all "public" methods', () => {
-    const OriginalAppCommand = require.requireActual('../index').default;
-    const MockedAppCommand = require.requireMock('../index').default;
+    const OriginalAppCommand = jest.requireActual('../index').default;
+    const MockedAppCommand = jest.requireMock('../index').default;
 
     // Collect the "public" methods from the original class.
     const publicMethods = Object.getOwnPropertyNames(OriginalAppCommand.prototype)

@@ -1,8 +1,7 @@
 import React from 'react';
-import { hot } from 'react-hot-loader/root';
+import { ResponsiveContainer, NoResults } from '@shopgate/engage/components';
 import { Table, TableRow } from './OrderHistoryTable';
 import { List, Row } from './OrderHistoryList';
-import { ResponsiveContainer, NoResults } from '../../../components';
 import OrderHistoryLoader from './OrderHistoryLoader';
 import { useOrderHistory } from '../../hooks';
 import { root, noResult } from './OrderHistory.style';
@@ -34,4 +33,4 @@ const OrderHistory = () => {
     </div>
   );
 };
-export default hot(OrderHistory);
+export default OrderHistory;

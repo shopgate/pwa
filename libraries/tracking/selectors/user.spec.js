@@ -7,7 +7,6 @@ import {
 
 import { makeGetUser } from './user';
 
-const mockDefaultStrategy = 'default';
 const mockUserData = {
   id: 'abc123',
   firstName: 'John',
@@ -21,7 +20,7 @@ const { isFetching, loginType, ...mockTrackableData } = mockUserData;
 const mockLoginStrategy = DEFAULT_LOGIN_STRATEGY;
 
 jest.mock('@shopgate/engage/user', () => ({
-  DEFAULT_LOGIN_STRATEGY: mockDefaultStrategy,
+  DEFAULT_LOGIN_STRATEGY: 'default',
   isUserLoggedIn: jest.fn(),
   getUserData: jest.fn(),
   makeGetLoginStrategy: jest.fn(),

@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Fragment, useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -66,7 +65,7 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
         <I18n.Text string="login.forgot_password" />
       </div>
       { !showSuccess ? (
-        <Fragment>
+        <>
           <div className={subline}>
             <I18n.Text string="login.reset_password.subline" />
           </div>
@@ -90,9 +89,9 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
               </RippleButton>
             </div>
           </form>
-        </Fragment>
+        </>
       ) : (
-        <Fragment>
+        <>
           <div className={resetInstructions}>
             <span
               /* eslint-disable react/no-danger */
@@ -115,7 +114,7 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
               <I18n.Text string="login.reset_password.back_to_login" />
             </RippleButton>
           </div>
-        </Fragment>
+        </>
       )}
     </div>
   );
@@ -126,4 +125,4 @@ ForgotPassword.propTypes = {
   resetPassword: PropTypes.func.isRequired,
 };
 
-export default hot(connect(ForgotPassword));
+export default connect(ForgotPassword);

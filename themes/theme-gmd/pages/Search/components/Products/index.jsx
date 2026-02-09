@@ -30,7 +30,7 @@ class SearchProducts extends PureComponent {
     this.props.searchPhrase,
     this.props.sort,
     offset || this.props.products.length
-  )
+  );
 
   /**
    * @returns {JSX}

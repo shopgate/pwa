@@ -166,7 +166,10 @@ export default class KeyFigure {
       const time = performance.now() - timing.start;
 
       // Add exclusive timer.
-      this.measure.exclusiveTimers.push({ key, time });
+      this.measure.exclusiveTimers.push({
+        key,
+        time,
+      });
 
       // Calculate measure.
       const currentMeasure = {

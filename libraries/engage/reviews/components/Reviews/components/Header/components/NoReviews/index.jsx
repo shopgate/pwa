@@ -14,10 +14,10 @@ const NoReviews = ({ productId }) => (
     <AverageRating productId={productId} />
     <div className={styles.noReviews}>
       {appConfig.showWriteReview && (
-        <Fragment>
+        <>
           <I18n.Text string="reviews.no_reviews" />
           <WriteReviewLink productId={productId} />
-        </Fragment>
+        </>
       )}
     </div>
   </div>

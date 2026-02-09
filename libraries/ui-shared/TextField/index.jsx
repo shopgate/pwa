@@ -1,4 +1,3 @@
-import { hot } from 'react-hot-loader/root';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -226,11 +225,10 @@ class TextField extends Component {
             errorText={errorText}
             translate={translateErrorText}
             elementName={name}
-          />
-        }
+          />}
       </div>
     );
   }
 }
 
-export default hot(TextField);
+export default TextField;

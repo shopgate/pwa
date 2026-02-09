@@ -49,7 +49,6 @@ export class CartItemQuantityPicker extends React.Component {
   constructor(props) {
     super(props);
 
-    this.regex = /^([0-9.,]+)$/;
     this.input = React.createRef();
   }
 
@@ -84,27 +83,7 @@ export class CartItemQuantityPicker extends React.Component {
     }
   }
 
-  regex;
-
   input;
-
-  defaultQuantity = 1;
-
-  /**
-   * Returns the initial quantity based on the props.
-   * If the props are set to 0 or lower, it will fall back to 1.
-   * @return {number}
-   */
-  get initialQuantity() {
-    if (
-      this.props.quantity
-      && (this.props.quantity === 0 || this.props.quantity < this.defaultQuantity)
-    ) {
-      return this.defaultQuantity;
-    }
-
-    return this.props.quantity || this.defaultQuantity;
-  }
 
   /**
    * Handles the input click event.
