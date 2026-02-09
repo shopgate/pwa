@@ -87,6 +87,19 @@ const overlay = css({
   outline: 'none',
 }).toString();
 
+const historyOverlay = css({
+  background: themeColors.light,
+  position: 'absolute',
+  left: 0,
+  width: '100%',
+  top: 124,
+  bottom: 0,
+  zIndex: 3,
+  overflow: 'hidden',
+  outline: 'none',
+  padding: 16,
+}).toString();
+
 export default {
   container,
   inputWrapper,
@@ -99,4 +112,5 @@ export default {
   icon,
   scannerIcon,
   overlay,
+  historyOverlay,
 };

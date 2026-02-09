@@ -415,6 +415,8 @@
     "label": "Vyhledávání",
     "cancel": "Zrušit",
     "placeholder": "Vyhledávání",
+    "deleteHistory": "Smazat historii vyhledávání",
+    "history_announcement": "Historie vyhledávání",
     "no_result": {
       "heading": "Oops!",
       "body": "Vaše hledání \"{searchPhrase}\" nevrátilo žádné výsledky."

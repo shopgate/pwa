@@ -415,6 +415,8 @@
     "label": "Buscar",
     "cancel": "Cancelar",
     "placeholder": "Buscar",
+    "deleteHistory": "Borrar historial de búsqueda",
+    "history_announcement": "Historial de búsqueda",
     "no_result": {
       "heading": "Oops!",
       "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultados."

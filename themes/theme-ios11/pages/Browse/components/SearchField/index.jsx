@@ -22,6 +22,7 @@ import {
   SurroundPortals,
   MagnifierIcon,
   BarcodeScannerIcon,
+  SearchHistory,
 } from '@shopgate/engage/components';
 import { SCANNER_ICON } from '@shopgate/engage/scanner/constants';
 import TabBar from 'Components/TabBar';
@@ -36,9 +37,12 @@ const SUGGESTIONS_MIN = 1;
  */
 class SearchField extends Component {
   static propTypes = {
+    addSearchHistory: PropTypes.func.isRequired,
+    clearSearchHistory: PropTypes.func.isRequired,
     fetchSuggestions: PropTypes.func.isRequired,
     openScanner: PropTypes.func.isRequired,
     pageId: PropTypes.string.isRequired,
+    searchHistory: PropTypes.arrayOf(PropTypes.string).isRequired,
     submitSearch: PropTypes.func.isRequired,
     name: PropTypes.string,
     query: PropTypes.string,
@@ -112,9 +116,6 @@ class SearchField extends Component {
     });
   };
 
-  /**
-   * @param {Event} event The event.
-   */
   reset = () => {
     setTimeout(() => {
       /*
@@ -175,6 +176,7 @@ class SearchField extends Component {
       return;
     }
 
+    this.props.addSearchHistory(query);
     router.update(this.props.pageId, { query });
 
     this.setState({ focused: Trilean.FALSE }, () => {
@@ -185,6 +187,18 @@ class SearchField extends Component {
       this.input.blur();
       this.props.submitSearch(query);
     });
+  };
+
+  handleClearHistory = () => {
+    this.props.clearSearchHistory();
+  };
+
+  /**
+   * Handles the selection of a search history entry.
+   * @param {string} entry The search history entry.
+   */
+  handleSelectHistory = (entry) => {
+    this.handleSubmit({ preventDefault: () => {} }, entry);
   };
 
   /**
@@ -281,6 +295,15 @@ class SearchField extends Component {
           </div>
         </div>
         {focused !== Trilean.NONE && <div className={styles.overlay} />}
+        {focused !== Trilean.NONE && (
+          <div className={styles.historyOverlay}>
+            <SearchHistory
+              history={this.props.searchHistory}
+              onClear={this.handleClearHistory}
+              onSelect={this.handleSelectHistory}
+            />
+          </div>
+        )}
         <SuggestionList
           visible={focused !== Trilean.NONE}
           searchPhrase={this.state.query}
