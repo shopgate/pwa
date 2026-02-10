@@ -66,12 +66,12 @@ describe('engage > product > selectors > variants', () => {
     });
 
     it('should return null', () => {
-      getProductVariants.mockReturnValue(null);
+      getProductVariants.mockReturnValueOnce(null);
       expect(getProductByCharacteristic({}, { characteristics: null })).toEqual(null);
     });
 
     it('should return a product with one selected characteristic', () => {
-      getProductVariants.mockReturnValue(mockedState);
+      getProductVariants.mockReturnValueOnce(mockedState);
       expect(getProductByCharacteristic({}, {
         characteristics: {
           size: 'XL',
@@ -80,7 +80,7 @@ describe('engage > product > selectors > variants', () => {
     });
 
     it('should return a product with all selected characteristics', () => {
-      getProductVariants.mockReturnValue(mockedState);
+      getProductVariants.mockReturnValueOnce(mockedState);
       expect(getProductByCharacteristic({}, {
         characteristics: {
           size: 'XL',
@@ -102,12 +102,12 @@ describe('engage > product > selectors > variants', () => {
     });
 
     it('should return null', () => {
-      getProductVariants.mockReturnValue(null);
+      getProductVariants.mockReturnValueOnce(null);
       expect(getCharacteristicFeaturedImage({}, { characteristics: null })).toEqual(null);
     });
 
     it('should return a featured image URL', () => {
-      getProductVariants.mockReturnValue(mockedState);
+      getProductVariants.mockReturnValueOnce(mockedState);
 
       expect(getCharacteristicFeaturedImage({}, {
         characteristics: {
@@ -130,12 +130,12 @@ describe('engage > product > selectors > variants', () => {
     });
 
     it('should return null', () => {
-      getProductVariants.mockReturnValue(null);
+      getProductVariants.mockReturnValueOnce(null);
       expect(getCharacteristicsFeaturedMedia({}, { characteristics: null })).toEqual(null);
     });
 
     it('should return featured media', () => {
-      getProductVariants.mockReturnValue(mockedState);
+      getProductVariants.mockReturnValueOnce(mockedState);
 
       expect(getCharacteristicsFeaturedMedia({}, {
         characteristics: {
@@ -153,7 +153,7 @@ describe('engage > product > selectors > variants', () => {
     });
 
     it('should return featured media when the media types matches', () => {
-      getProductVariants.mockReturnValue(mockedState);
+      getProductVariants.mockReturnValueOnce(mockedState);
       expect(getCharacteristicsFeaturedMedia({}, {
         characteristics: {
           size: 'XL',
@@ -171,7 +171,7 @@ describe('engage > product > selectors > variants', () => {
     });
 
     it('should return null when the media type does not match', () => {
-      getProductVariants.mockReturnValue(mockedState);
+      getProductVariants.mockReturnValueOnce(mockedState);
 
       expect(getCharacteristicsFeaturedMedia({}, {
         characteristics: {

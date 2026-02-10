@@ -1,5 +1,4 @@
-import { logger } from '@shopgate/pwa-core';
-import { hashString } from '../../helpers/hash';
+import { hashString, logger } from '@shopgate/pwa-core/helpers';
 import { createModal } from '../../action-creators/modal';
 import { mutable } from '../../helpers/redux';
 import { getModalById } from '../../selectors/modal';

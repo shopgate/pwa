@@ -49,17 +49,17 @@ describe('User selectors', () => {
     });
 
     it('should return NULL when the user is not logged in', () => {
-      isUserLoggedIn.mockReturnValue(false);
+      isUserLoggedIn.mockReturnValueOnce(false);
       expect(getUser({})).toBeNull();
     });
 
     it('should return NULL when no user data is available', () => {
-      getUserData.mockReturnValue(null);
+      getUserData.mockReturnValueOnce(null);
       expect(getUser({})).toBeNull();
     });
 
     it('should return NULL when the user data does not contain trackable properties', () => {
-      getUserData.mockReturnValue({
+      getUserData.mockReturnValueOnce({
         isFetching: false,
         loginType: 'userGuest',
       });
@@ -67,7 +67,7 @@ describe('User selectors', () => {
     });
 
     it('should return the expected data when a special login strategy was used', () => {
-      getLoginStrategy.mockReturnValue('special');
+      getLoginStrategy.mockReturnValueOnce('special');
       expect(getUser({})).toEqual({
         ...mockTrackableData,
         type: 'special',
@@ -75,7 +75,7 @@ describe('User selectors', () => {
     });
 
     it('should return the expected data when the login type is userGuest', () => {
-      getUserData.mockReturnValue({
+      getUserData.mockReturnValueOnce({
         ...mockUserData,
         loginType: 'userGuest',
       });
@@ -86,7 +86,7 @@ describe('User selectors', () => {
     });
 
     it('should return the expected data when the login type is userAccount', () => {
-      getUserData.mockReturnValue({
+      getUserData.mockReturnValueOnce({
         ...mockUserData,
         loginType: 'userAccount',
       });
@@ -97,7 +97,7 @@ describe('User selectors', () => {
     });
 
     it('should return the expected data when an unknown login type is set', () => {
-      getUserData.mockReturnValue({
+      getUserData.mockReturnValueOnce({
         ...mockUserData,
         loginType: 'unknown',
       });

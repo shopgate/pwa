@@ -1,6 +1,5 @@
-import { hashString } from '@shopgate/pwa-common/helpers/hash';
 import RequestManager from '../RequestManager';
-import { logger } from '../../helpers';
+import { hashString, logger } from '../../helpers';
 
 // The default request manager does not cache or treat requests in any special way.
 const defaultRequestManager = new RequestManager();

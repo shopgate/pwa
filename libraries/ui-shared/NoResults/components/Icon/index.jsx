@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { hashString } from '@shopgate/pwa-common/helpers/hash';
+import { hashString } from '@shopgate/pwa-core/helpers';
 import styles from './style';
 
 /**

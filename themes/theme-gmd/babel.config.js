@@ -14,7 +14,7 @@ module.exports = (api) => {
   return {
     presets: [
       ['@babel/preset-env', {
-        modules: isTest ? 'auto' : false,
+        modules: false,
         bugfixes: true,
         useBuiltIns: 'usage',
         corejs: 3,

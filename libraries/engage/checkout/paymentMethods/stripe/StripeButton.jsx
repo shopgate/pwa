@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import Button from '../../components/PaymentMethodButton';
-import { i18n } from '../../../core';
+import { i18n } from '../../../core/helpers/i18n';
 import { loadSdk } from './sdk';
 import { useCheckoutContext } from '../../hooks/common';
 import connect from './StripeButton.connector';

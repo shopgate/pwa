@@ -8,7 +8,7 @@ import {
   getThemeSettings, showModal, MODAL_PIPELINE_ERROR,
 } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
-import { i18n } from '../../../core';
+import { i18n } from '../../../core/helpers/i18n';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
 

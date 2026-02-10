@@ -1,5 +1,4 @@
-import { logger } from '@shopgate/pwa-core/helpers';
-import { hashString } from '../hash';
+import { hashString, logger } from '@shopgate/pwa-core/helpers';
 import { embeddedMedia } from '../../collections';
 import {
   getExternalScripts,

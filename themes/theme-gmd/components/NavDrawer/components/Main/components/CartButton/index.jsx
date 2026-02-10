@@ -27,9 +27,7 @@ const LABEL = 'navigation.cart';
 const CartButton = ({ navigate, count }) => {
   const ariaLabel = `${i18n.text(LABEL)}. ${i18n.text('common.products')}: ${count}.`;
 
-  const handleClick = useCallback(() => {
-    navigate(CART_PATH, LABEL);
-  }, [navigate]);
+  const handleClick = useCallback(() => navigate(CART_PATH, LABEL), [navigate]);
 
   return (
     <>
@@ -40,7 +38,7 @@ const CartButton = ({ navigate, count }) => {
           label={LABEL}
           aria-label={ariaLabel}
           icon={ShoppingCartIcon}
-          onClick={handleClick}
+          onClick={handleClick()}
           testId="navDrawerCartButton"
         />
       </Portal>

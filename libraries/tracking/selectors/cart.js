@@ -5,7 +5,7 @@ import {
   getCurrency,
   getCartProducts,
   getDiscountsAmount,
-} from '@shopgate/pwa-common-commerce/cart';
+} from '@shopgate/pwa-common-commerce/cart/selectors/index';
 import {
   convertPriceToString,
   formatCartProductData,

@@ -38,7 +38,7 @@
     "react-leaflet": "^3.2.5",
     "react-phone-number-input": "^3.4.14",
     "react-player": "1.11.0",
-    "react-portal": "^4.3.0",
+    "react-portal": "^3.1.0",
     "react-scroll-parallax": "^3.5.0",
     "tss-react": "^4.9.20",
     "validate.js": "^0.13.1"

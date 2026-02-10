@@ -6,9 +6,10 @@ import { getProductPriceData } from '@shopgate/pwa-common-commerce/product';
  * @returns {Function}
  */
 export function makeGetProductPriceData() {
-  // The underlying getProductPriceData is already a selector; we can return it directly
-  // instead of wrapping it in another createSelector that simply returns its input.
-  return getProductPriceData;
+  return createSelector(
+    getProductPriceData,
+    price => price
+  );
 }
 
 /**
