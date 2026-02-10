@@ -15,6 +15,7 @@
     "connect"
   ],
   "dependencies": {
+    "crypto-js": "3.1.9-1",
     "detector": "^2.5.0",
     "lodash": "^4.17.23",
     "mobile-detect": "^1.4.3"

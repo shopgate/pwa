@@ -272,10 +272,11 @@ const makeGetWidgetProductResultsByHash = (type, options, id) => {
 export const makeGetWidgetProducts = (type, options, id) => {
   const getWidgetProductResultsHash = makeGetWidgetProductsResultHash(type, options, id);
   const getWidgetProductResultsByHash = makeGetWidgetProductResultsByHash(type, options, id);
+  const emptyObject = {};
 
   return createSelector(
     state => state,
-    (state, props) => props,
+    (state, props) => props ?? emptyObject,
     getWidgetProductResultsHash,
     getWidgetProductResultsByHash,
     (state, props, resultsHash, resultsByHash) => ({

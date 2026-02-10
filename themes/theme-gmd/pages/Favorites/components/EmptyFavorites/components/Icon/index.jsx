@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { hashString } from '@shopgate/pwa-core/helpers';
+import CryptoJs from 'crypto-js';
 import styles from './style';
 
 /**
@@ -9,7 +9,7 @@ import styles from './style';
 export const EmptyFavoritesIcon = () => {
   const filterId = useMemo(() => {
     const prefix = 'empty-favorite-list-shadow';
-    const hash = hashString(`${prefix}-${Date.now() + Math.random()}`);
+    const hash = CryptoJs.MD5(`${prefix}-${Date.now() + Math.random()}`).toString();
     return `${prefix}-${hash}`;
   }, []);
 

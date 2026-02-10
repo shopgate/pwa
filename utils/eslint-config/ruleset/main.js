@@ -15,6 +15,12 @@ module.exports = {
     },
   },
   rules: {
+    'no-param-reassign': ['error', {
+      props: true,
+      ignorePropertyModificationsFor: [
+        'draft',
+      ],
+    }],
     'capitalized-comments': 0,
     'comma-dangle': ['error', {
       arrays: 'always-multiline',

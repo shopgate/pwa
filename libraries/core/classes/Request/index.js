@@ -1,5 +1,6 @@
+import CryptoJs from 'crypto-js';
 import RequestManager from '../RequestManager';
-import { hashString, logger } from '../../helpers';
+import { logger } from '../../helpers';
 
 // The default request manager does not cache or treat requests in any special way.
 const defaultRequestManager = new RequestManager();
@@ -31,7 +32,7 @@ class Request {
    */
   createSerial(serialKey) {
     if (!this.serial) {
-      this.serial = hashString(`${serialKey}${Date.now() + Math.random()}`);
+      this.serial = CryptoJs.MD5(`${serialKey}${Date.now() + Math.random()}`).toString();
     }
   }
 
