@@ -23,7 +23,10 @@ export function makeGetConfig() {
    * @param {Object} state The application state.
    * @returns {Object}
    */
-  return getState;
+  return createSelector(
+    getState,
+    state => state
+  );
 }
 
 /**

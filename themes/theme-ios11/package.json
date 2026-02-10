@@ -53,7 +53,7 @@
     "react-transition-group": "^3.0.0",
     "redux": "^5.0.1",
     "redux-mock-store": "^1.5.4",
-    "reselect": "^5.1.1",
+    "reselect": "^4.1.8",
     "smoothscroll-polyfill": "^0.4.4",
     "tss-react": "^4.9.20",
     "webpack": "^5.102.1",

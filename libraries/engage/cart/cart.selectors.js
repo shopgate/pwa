@@ -44,7 +44,10 @@ const cartItemsSelector = state => state.cart.data.items;
  * @param {Object} state The current state.
  * @return {Array} The cart items.
  */
-const getCartItems = cartItemsSelector;
+const getCartItems = createSelector(
+  cartItemsSelector,
+  cartItems => cartItems
+);
 
 /**
  * Selects the products from the cart.
