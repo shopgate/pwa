@@ -2,23 +2,23 @@ import { produce } from 'immer';
 import isNumber from 'lodash/isNumber';
 import isString from 'lodash/isString';
 import {
-  REQUEST_ADD_FAVORITES,
-  SUCCESS_ADD_FAVORITES,
   CANCEL_REQUEST_SYNC_FAVORITES,
   ERROR_ADD_FAVORITES,
-  REQUEST_REMOVE_FAVORITES,
-  SUCCESS_REMOVE_FAVORITES,
-  ERROR_REMOVE_FAVORITES,
-  REQUEST_FAVORITES,
   ERROR_FETCH_FAVORITES,
-  SUCCESS_REMOVE_FAVORITES_LIST,
-  SUCCESS_ADD_FAVORITES_LIST,
-  RECEIVE_FAVORITES,
-  FAVORITES_LIFETIME,
-  SUCCESS_UPDATE_FAVORITES,
-  REQUEST_UPDATE_FAVORITES,
+  ERROR_REMOVE_FAVORITES,
   ERROR_UPDATE_FAVORITES,
+  FAVORITES_LIFETIME,
+  RECEIVE_FAVORITES,
   RECEIVE_FAVORITES_LISTS,
+  REQUEST_ADD_FAVORITES,
+  REQUEST_FAVORITES,
+  REQUEST_REMOVE_FAVORITES,
+  REQUEST_UPDATE_FAVORITES,
+  SUCCESS_ADD_FAVORITES,
+  SUCCESS_ADD_FAVORITES_LIST,
+  SUCCESS_REMOVE_FAVORITES,
+  SUCCESS_REMOVE_FAVORITES_LIST,
+  SUCCESS_UPDATE_FAVORITES,
 } from '../constants';
 
 /**
@@ -29,9 +29,8 @@ import {
  */
 const products = (state = {
   byList: {},
-}, action) => {
-  /* eslint-disable no-param-reassign */
-  const producedState = produce(state, (draft) => {
+}, action = {}) =>
+  produce(state, (draft) => {
     switch (action.type) {
       // Handle a new favorites request.
       case REQUEST_FAVORITES: {
@@ -64,7 +63,7 @@ const products = (state = {
          *       case only fetching state will be updated and the received data will be discarded.
          *       A new fetch request will be queued as soon as the sync is done, which will recover
          *       discarded data.
-        */
+         */
         list.isFetching = false;
         if (list.ready && (isSynching || isOngoing)) {
           return;
@@ -72,7 +71,11 @@ const products = (state = {
 
         list.expires = Date.now() + FAVORITES_LIFETIME;
         list.items = action.items.map(({ quantity, notes, product }) =>
-          ({ quantity, notes, productId: product.id }));
+          ({
+            quantity,
+            notes,
+            productId: product.id,
+          }));
         list.ready = true;
         // `syncCount` stays untouched because this is not considered to be a sync.
         break;
@@ -235,8 +238,5 @@ const products = (state = {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
-  return producedState;
-};
 
 export default products;

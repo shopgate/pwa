@@ -7,7 +7,7 @@ import {
   FETCH_CUSTOMER,
   FETCH_CUSTOMER_SUCCESS,
   FETCH_CUSTOMER_ERROR,
-} from '../constants/actions';
+} from '../constants';
 
 const initialState = {
   customer: {
@@ -26,8 +26,7 @@ const initialState = {
  * @param {Object} action The redux action.
  * @returns {Object}
  */
-export default function checkoutReducer(state = initialState, action) {
-  /* eslint-disable no-param-reassign */
+export default function checkoutReducer(state = initialState, action = {}) {
   const producer = produce((draft) => {
     switch (action.type) {
       case FETCH_CUSTOMER_CONTACTS: {
@@ -72,6 +71,5 @@ export default function checkoutReducer(state = initialState, action) {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
   return producer(state);
 }

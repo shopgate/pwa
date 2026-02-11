@@ -15,7 +15,7 @@ import handleCategoryCollection from './helpers/handleCategoryCollection';
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-const categoriesById = (state = {}, action) => {
+const categoriesById = (state = {}, action = {}) => {
   switch (action.type) {
     case REQUEST_CATEGORY:
       return {

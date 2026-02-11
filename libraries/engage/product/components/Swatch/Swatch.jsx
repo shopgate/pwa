@@ -12,11 +12,11 @@ export const WIDGET_ID = '@shopgate/engage/product/Swatch';
  * @returns {JSX}
  */
 const Swatch = ({ swatch }) => {
+  const styles = useWidgetStyles(WIDGET_ID);
+
   if (!swatch) {
     return null;
   }
-
-  const styles = useWidgetStyles(WIDGET_ID);
 
   const classNames = {
     swatch: styles && styles.swatch ? css(styles.swatch).toString() : null,

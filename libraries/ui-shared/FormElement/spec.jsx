@@ -12,15 +12,31 @@ describe('<FormElement />', () => {
     'should render a form element with no children': { props: {} },
     'should render a form element with 1 child': { props: { children: [<input key="test-key" />] } },
     'should render a focused form element': { props: { isFocused: true } },
-    'should show the label': { props: { label: 'The label' }, find: 'Label', equal: 'The label' },
-    'should show the error message': { props: { errorText: 'The error text' }, find: 'ErrorText', equal: 'The error text' },
-    'should show the placeholder text': { props: { placeholder: 'The placeholder' }, find: 'Placeholder', equal: 'The placeholder' },
+    'should show the label': {
+      props: { label: 'The label' },
+      find: 'Label',
+      equal: 'The label',
+    },
+    'should show the error message': {
+      props: { errorText: 'The error text' },
+      find: 'ErrorText',
+      equal: 'The error text',
+    },
+    'should show the placeholder text': {
+      props: { placeholder: 'The placeholder' },
+      find: 'Placeholder',
+      equal: 'The placeholder',
+    },
   };
 
   Object.keys(tests).forEach((test) => {
     it(test, () => {
       const testFixtures = tests[test];
-      const wrapper = mount(<FormElement {...{ ...inputProps, ...testFixtures.props }} />);
+      const wrapper = mount(<FormElement {...{
+        ...inputProps,
+        ...testFixtures.props,
+      }}
+      />);
       expect(wrapper).toMatchSnapshot();
       if (testFixtures.find) {
         expect(wrapper.find(testFixtures.find).find('Translate').props().string).toEqual(testFixtures.equal);

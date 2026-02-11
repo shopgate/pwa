@@ -17,8 +17,10 @@ const defaultState = {};
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-const ordersByNumber = (state = defaultState, action) => {
-  /* eslint-disable no-param-reassign */
+const ordersByNumber = (state = defaultState, action = {}) => {
+  if (action.type === CLEAR_ORDERS) {
+    return defaultState;
+  }
   const producer = produce((draft) => {
     switch (action.type) {
       case REQUEST_ORDER_DETAILS: {
@@ -67,18 +69,11 @@ const ordersByNumber = (state = defaultState, action) => {
         break;
       }
 
-      case CLEAR_ORDERS: {
-        return defaultState;
-      }
-
       default:
         break;
     }
-
-    return undefined;
   });
 
-  /* eslint-enable no-param-reassign */
   return producer(state);
 };
 

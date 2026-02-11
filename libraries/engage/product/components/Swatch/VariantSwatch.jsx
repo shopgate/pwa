@@ -13,11 +13,11 @@ const WIDGET_ID = '@shopgate/engage/product/VariantSwatch';
  * @returns {JSX}
  */
 const VariantSwatch = ({ swatch, onClick }) => {
+  const styles = useWidgetStyles(WIDGET_ID);
+
   if (!swatch) {
     return null;
   }
-
-  const styles = useWidgetStyles(WIDGET_ID);
 
   const classNames = {
     swatch: styles && styles.swatch ? css(styles.swatch).toString() : null,

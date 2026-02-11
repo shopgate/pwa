@@ -16,7 +16,7 @@ export const imageColumn = css({
   marginRight: variables.gap.small,
   flexShrink: 0,
   flexGrow: 0,
-});
+}).toString();
 
 export const column = css({
   display: 'flex',

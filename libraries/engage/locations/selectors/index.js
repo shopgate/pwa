@@ -25,12 +25,15 @@ export const getProductFulfillmentMethods = createSelector(
   }
 );
 
+const EMPTY_OBJ = {};
+const EMPTY_ARRAY = [];
+
 /**
  * Gets the location state.
  * @param {Object} state State.
  * @return {Object}
  */
-const getLocationsState = state => state.locations || {};
+const getLocationsState = state => state.locations || EMPTY_OBJ;
 
 /**
  * Gets the location storage state.
@@ -44,7 +47,7 @@ export const getLocationsStorage = state => state.locations.storage;
  * @param {Object} state State.
  * @return {Object}
  */
-const getUserState = state => state.locations.user || {};
+const getUserState = state => state.locations.user || EMPTY_OBJ;
 
 /**
  * Retrieves the store finder search.
@@ -132,13 +135,15 @@ export const getActiveFilter = createSelector(
  * @returns {Object}
  */
 export const makeGetLocationsForProduct = (getProductCode) => {
-  /* eslint-disable require-jsdoc */
-  const getFilters = (state, props) => ({
-    productCode: getProductCode(state, props),
-    ...pickBy(getActiveFilter(state)),
-  });
+  const getFilters = createSelector(
+    getProductCode,
+    getActiveFilter,
+    (productCode, activeFilter) => ({
+      productCode,
+      ...activeFilter,
+    })
+  );
 
-  /* eslint-enable require-jsdoc */
   return makeGetFilteredLocations(getFilters);
 };
 
@@ -147,13 +152,15 @@ export const makeGetLocationsForProduct = (getProductCode) => {
  * @returns {Object}
  */
 export const makeGetLocationsForStoreFinder = () => {
-  /* eslint-disable require-jsdoc */
-  const getFilters = state => ({
-    enableInLocationFinder: true,
-    ...pickBy(getStoreFinderSearch(state)),
-    ...pickBy(getActiveFilter(state)),
-  });
-  /* eslint-enable require-jsdoc */
+  const getFilters = createSelector(
+    getStoreFinderSearch,
+    getActiveFilter,
+    (search, activeFilter) => ({
+      enableInLocationFinder: true,
+      ...pickBy(search || EMPTY_OBJ),
+      ...activeFilter,
+    })
+  );
 
   return makeGetFilteredLocations(getFilters);
 };
@@ -330,7 +337,7 @@ export const makeGetLocationFulfillmentMethods = (getLocationCode) => {
   const getLocation = makeGetLocation(getLocationCode);
   return createSelector(
     getLocation,
-    location => location?.supportedFulfillmentMethods || []
+    location => location?.supportedFulfillmentMethods || EMPTY_ARRAY
   );
 };
 
@@ -633,15 +640,19 @@ export const getProductAlternativeLocations = createSelector(
  * @returns {Function}
  */
 export const makeGetNearbyLocationsByLocationCode = (locationCode) => {
-  const getFilteredLocationsForRoute = makeGetFilteredLocations((state) => {
-    const routeLocation = makeGetLocation(() => locationCode)(state);
-    return ({
+  const getRouteLocation = makeGetLocation(() => locationCode);
+
+  const getFilters = createSelector(
+    getRouteLocation,
+    routeLocation => ({
       latitude: routeLocation?.latitude,
       longitude: routeLocation?.longitude,
       limit: NEARBY_LOCATIONS_LIMIT,
       radius: NEARBY_LOCATIONS_RADIUS,
-    });
-  });
+    })
+  );
+
+  const getFilteredLocationsForRoute = makeGetFilteredLocations(getFilters);
 
   return createSelector(
     getFilteredLocationsForRoute,
@@ -653,4 +664,3 @@ export const makeGetNearbyLocationsByLocationCode = (locationCode) => {
     }
   );
 };
-

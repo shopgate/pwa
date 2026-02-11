@@ -5,8 +5,8 @@ import { hasNewServices } from '@shopgate/engage/core/helpers';
 import {
   getProducts,
   getProductId,
-} from '../../product/selectors/product';
-import { getKnownRelatives } from '../../product/selectors/variants';
+  getKnownRelatives,
+} from '../../product';
 
 const defaultIds = [];
 
@@ -125,7 +125,10 @@ export const makeGetFavorites = getListCode => createSelector(
   getProducts,
   (favItems, listId, products) => {
     const items = favItems?.byList[listId]?.items || [];
-    return items.map(item => ({ ...item, product: products[item.productId]?.productData }));
+    return items.map(item => ({
+      ...item,
+      product: products[item.productId]?.productData,
+    }));
   }
 );
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import Button from '../../components/PaymentMethodButton';
@@ -16,8 +16,12 @@ const styles = {
 };
 
 /**
- * Stripe
+ * Stripe Payment Button Component
  * @param {Object} props Props
+ * @param {string} props.publishableKey Publishable Key
+ * @param {Function} props.onChange onChange handler
+ * @param {boolean} props.active Whether the method is active
+ * @param {Object} props.activePaymentMeta Active payment meta
  * @returns {JSX}
  */
 const StripeButton = ({
@@ -68,7 +72,10 @@ const StripeButton = ({
         <Button
           {...props}
           active={!!(active && subMethod)}
-          onChange={() => onChange({ stripeRequest, stripeRequestType })}
+          onChange={() => onChange({
+            stripeRequest,
+            stripeRequestType,
+          })}
         >
           <img className={styles.mark} alt="ApplePay" src={applePayLogo} />
         </Button>
@@ -77,7 +84,10 @@ const StripeButton = ({
         <Button
           {...props}
           active={!!(active && subMethod)}
-          onChange={() => onChange({ stripeRequest, stripeRequestType })}
+          onChange={() => onChange({
+            stripeRequest,
+            stripeRequestType,
+          })}
         >
           <img className={styles.mark} alt="GooglePay" src={googlePayLogo} />
         </Button>

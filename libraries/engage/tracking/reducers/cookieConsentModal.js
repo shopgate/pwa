@@ -13,7 +13,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-const cookieConsentModalReducer = (state = defaultState, action) => {
+const cookieConsentModalReducer = (state = defaultState, action = {}) => {
   switch (action.type) {
     case SHOW_COOKIE_CONSENT_MODAL: {
       return {

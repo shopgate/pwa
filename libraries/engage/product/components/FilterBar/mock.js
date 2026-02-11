@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import {
   FILTER_TYPE_SINGLE_SELECT,
   FILTER_TYPE_MULTISELECT,

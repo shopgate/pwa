@@ -12,7 +12,7 @@ import {
  * @param {Object} action The action object.
  * @returns {Object}
  */
-export default function imagesByProductId(state = {}, action) {
+export default function imagesByProductId(state = {}, action = {}) {
   switch (action.type) {
     case REQUEST_PRODUCT_IMAGES:
       return {

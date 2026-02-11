@@ -11,7 +11,7 @@ import {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function config(state = {}, action) {
+export default function config(state = {}, action = {}) {
   switch (action.type) {
     case REQUEST_CORE_CONFIG:
       return {

@@ -8,7 +8,6 @@ import {
 
 /**
  * Creates a selector that retrieves user tracking data from the store.
- * @param {string} name The name of the desired parameter.
  * @returns {Function}
  */
 export function makeGetUser() {

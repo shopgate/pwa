@@ -11,7 +11,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-const pushOptInModalReducer = (state = defaultState, action) => {
+const pushOptInModalReducer = (state = defaultState, action = {}) => {
   switch (action.type) {
     case SHOW_PUSH_OPT_IN_MODAL: {
       return {

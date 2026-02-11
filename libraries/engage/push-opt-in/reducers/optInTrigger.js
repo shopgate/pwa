@@ -28,7 +28,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-const pushOptInReducer = (state = defaultState, action) => {
+const pushOptInReducer = (state = defaultState, action = {}) => {
   switch (action.type) {
     case PUSH_OPT_IN_INCREASE_APP_START_COUNT: {
       return {

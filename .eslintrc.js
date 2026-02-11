@@ -6,4 +6,12 @@ module.exports = {
       'babel-module': {},
     },
   },
+  rules: {
+    'no-param-reassign': ['warn', {
+      props: true,
+      ignorePropertyModificationsFor: [
+        'draft',
+      ],
+    }],
+  },
 };

@@ -11,11 +11,18 @@ class KeyboardConsumer extends PureComponent {
     children: PropTypes.func.isRequired,
   };
 
-  state = {
-    open: false,
-    overlap: 0,
-    duration: 0,
-  };
+  /**
+   * Initializes the component state.
+   * @param {Object} props The components props.
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+      overlap: 0,
+      duration: 0,
+    };
+  }
 
   /**
    * Listen to keyboard changes as soon as the component mounts.
@@ -35,7 +42,11 @@ class KeyboardConsumer extends PureComponent {
    * Stores current keyboard state.
    */
   handleKeyboardChange = ({ open, overlap, duration }) => {
-    this.setState({ open, overlap, duration });
+    this.setState({
+      open,
+      overlap,
+      duration,
+    });
   };
 
   /**

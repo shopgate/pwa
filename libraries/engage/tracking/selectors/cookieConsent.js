@@ -111,12 +111,14 @@ export const getIsCookieConsentActivated = createSelector(
   () => isCookieConsentActivated && appSupportsCookieConsent()
 );
 
+const EMPTY_OBJECT = {};
+
 /**
  * Creates a meta data object for tracking opt in tracking events
  */
 export const getCookieConsentTrackingMeta = createSelector(
   getIsCookieConsentActivated,
-  (_, props = {}) => props,
+  (_, props = EMPTY_OBJECT) => props,
   (isActivated, states) => ({
     permission: 'tracking',
     usesSoftTrackingOptIn: isActivated,

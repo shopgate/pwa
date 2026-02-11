@@ -12,7 +12,7 @@ import {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function mediaByProductId(state = {}, action) {
+export default function mediaByProductId(state = {}, action = {}) {
   switch (action.type) {
     case REQUEST_PRODUCT_MEDIA:
       return {

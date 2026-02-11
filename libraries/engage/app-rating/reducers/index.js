@@ -33,7 +33,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = defaultState, action) => {
+export default (state = defaultState, action = {}) => {
   switch (action.type) {
     case APP_RATING_INCREASE_APP_START_COUNT: {
       return {

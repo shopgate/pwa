@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import {
   TextLink,
@@ -125,7 +125,11 @@ const CartItemProductLayoutWide = () => {
             <SurroundPortals
               portalName={CART_ITEM_QUANTITY_PICKER}
               portalProps={{
-                product, cartItem, isOrderDetails, handleUpdate, isEditable,
+                product,
+                cartItem,
+                isOrderDetails,
+                handleUpdate,
+                isEditable,
               }}
             >
               <CartUnitQuantityPicker

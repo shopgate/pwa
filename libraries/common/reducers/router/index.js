@@ -18,7 +18,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @returns {Object}
  */
-export default function router(state = defaultState, action) {
+export default function router(state = defaultState, action = {}) {
   switch (action.type) {
     case ROUTE_WILL_LEAVE:
     case ROUTE_DID_LEAVE: {

@@ -33,7 +33,10 @@ describe('<Header />', () => {
   it('should render empty', () => {
     const productId = mockProductId;
     const { rating } = mockedStateWithoutReview.product.productsById[productId].productData;
-    header = createComponent(mockedStateWithoutReview, { productId, rating });
+    header = createComponent(mockedStateWithoutReview, {
+      productId,
+      rating,
+    });
 
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
@@ -44,7 +47,10 @@ describe('<Header />', () => {
   it('should render rating summary', () => {
     const productId = mockProductId;
     const { rating } = mockedStateWithAll.product.productsById[productId].productData;
-    header = createComponent(mockedStateWithAll, { productId, rating });
+    header = createComponent(mockedStateWithAll, {
+      productId,
+      rating,
+    });
     expect(header.find('Header').exists()).toBe(true);
     expect(header).toMatchSnapshot();
     expect(header.find('RatingStars').prop('value')).toEqual(rating.average);

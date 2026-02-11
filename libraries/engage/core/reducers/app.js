@@ -14,8 +14,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export default function app(state = defaultState, action) {
-  /* eslint-disable no-param-reassign */
+export default function app(state = defaultState, action = {}) {
   const producer = produce((draft) => {
     switch (action.type) {
       case PWA_DID_APPEAR: {
@@ -30,7 +29,6 @@ export default function app(state = defaultState, action) {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
 
   return producer(state);
 }

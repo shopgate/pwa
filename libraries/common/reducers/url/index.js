@@ -14,7 +14,7 @@ const defaultState = {};
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function urlReducer(state = defaultState, action) {
+export default function urlReducer(state = defaultState, action = {}) {
   switch (action.type) {
     case REQUEST_URL:
       return {

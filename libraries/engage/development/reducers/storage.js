@@ -22,8 +22,7 @@ const initialState = {
  * @param {Object} action The redux action.
  * @returns {Object}
  */
-export default function storageReducer(state = initialState, action) {
-  /* eslint-disable no-param-reassign */
+export default function storageReducer(state = initialState, action = {}) {
   const producer = produce(/** @param {DevToolsStorageState} draft The draft */ (draft) => {
     if (!isDev) {
       return;
@@ -38,7 +37,6 @@ export default function storageReducer(state = initialState, action) {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
   return producer(state);
 }
 

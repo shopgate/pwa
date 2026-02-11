@@ -1,5 +1,5 @@
 import configureStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
+import { thunk } from 'redux-thunk';
 import { REQUEST_CATEGORY } from '@shopgate/pwa-common-commerce/category/constants';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import {

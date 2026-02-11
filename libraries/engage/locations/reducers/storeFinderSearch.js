@@ -11,8 +11,7 @@ export const defaultState = {
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-const storeFinderSearch = (state = defaultState, action) => {
-  /* eslint-disable no-param-reassign */
+const storeFinderSearch = (state = defaultState, action = {}) => {
   const producer = produce((draft) => {
     switch (action.type) {
       case SET_STORE_FINDER_SEARCH_RADIUS: {
@@ -23,11 +22,8 @@ const storeFinderSearch = (state = defaultState, action) => {
       default:
         break;
     }
-
-    return undefined;
   });
 
-  /* eslint-enable no-param-reassign */
   return producer(state);
 };
 

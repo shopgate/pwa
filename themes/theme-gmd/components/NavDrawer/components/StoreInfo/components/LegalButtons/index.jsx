@@ -38,6 +38,16 @@ const pageTestIdMapping = {
 };
 
 /**
+ * Creates an icon component.
+ * @param {string} icon The icon name.
+ * @returns {JSX}
+ */
+const getIcon = (icon) => {
+  const content = icons?.[icon] || icons.description;
+  return props => (<Icon {...props} content={content} />);
+};
+
+/**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
@@ -45,16 +55,6 @@ const LegalButtons = ({ legalPages, navigate }) => {
   if (!legalPages) {
     return null;
   }
-
-  /**
-   * Creates an icon component.
-   * @param {string} icon The icon name.
-   * @returns {JSX}
-   */
-  const getIcon = (icon) => {
-    const content = icons?.[icon] || icons.description;
-    return props => (<Icon {...props} content={content} />);
-  };
 
   return (
     legalPages.map(({ url, label, icon }) => {

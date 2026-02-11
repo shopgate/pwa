@@ -12,7 +12,7 @@ import formatOptions from './helpers/formatOptions';
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function optionsByProductId(state = {}, action) {
+export default function optionsByProductId(state = {}, action = {}) {
   switch (action.type) {
     case REQUEST_PRODUCT_OPTIONS:
       return {

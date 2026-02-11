@@ -49,11 +49,7 @@ exports[`<Description /> should not render if no data is available 1`] = `
         ready={false}
       >
         <div
-          className={
-            {
-              "data-css-1rl1l79": "",
-            }
-          }
+          className="css-1rl1l79"
           data-test-id="description"
         >
           <HtmlSanitizer
@@ -120,11 +116,7 @@ exports[`<Description /> should render description if data is available 1`] = `
         ready={true}
       >
         <div
-          className={
-            {
-              "data-css-1rl1l79": "",
-            }
-          }
+          className="css-1rl1l79"
           data-test-id="description"
         >
           <HtmlSanitizer

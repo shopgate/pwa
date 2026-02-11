@@ -12,8 +12,7 @@ const defaultState = {
  * @param {Object} action The redux action.
  * @returns {Object}
  */
-export default (state = defaultState, action) => {
-  /* eslint-disable no-param-reassign */
+export default (state = defaultState, action = {}) => {
   const producer = produce((draft) => {
     switch (action.type) {
       case SET_COUPON_FIELD_VALUE: {
@@ -30,7 +29,6 @@ export default (state = defaultState, action) => {
         break;
     }
   });
-  /* eslint-enable no-param-reassign */
   return producer(state);
 };
 

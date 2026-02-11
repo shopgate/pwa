@@ -11,11 +11,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
   }
 >
   <div
-    className={
-      {
-        "data-css-lg74ao": "",
-      }
-    }
+    className="css-lg74ao"
   >
     <Button
       disabled={false}
@@ -43,11 +39,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
   }
 >
   <div
-    className={
-      {
-        "data-css-lg74ao": "",
-      }
-    }
+    className="css-lg74ao"
   >
     <Button
       disabled={false}
@@ -75,11 +67,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
   }
 >
   <div
-    className={
-      {
-        "data-css-lg74ao": "",
-      }
-    }
+    className="css-lg74ao"
   >
     <Button
       disabled={true}

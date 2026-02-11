@@ -13,7 +13,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function clientConnectivityReducer(state = defaultState, action) {
+export default function clientConnectivityReducer(state = defaultState, action = {}) {
   switch (action.type) {
     case RECEIVE_CLIENT_CONNECTIVITY:
       return {

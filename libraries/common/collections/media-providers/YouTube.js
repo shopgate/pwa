@@ -1,4 +1,3 @@
-import URLSearchParams from 'url-search-params';
 import MediaProvider from './MediaProvider';
 
 /* eslint-disable class-methods-use-this */

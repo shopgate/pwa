@@ -2,6 +2,9 @@ import { createSelector } from 'reselect';
 import { isObject } from '../helpers/validation';
 import authRoutes from '../collections/AuthRoutes';
 
+const EMPTY_OBJECT = {};
+const EMPTY_ARRAY = [];
+
 /**
  * @param {Object} state The application state.
  * @return {Object}
@@ -14,7 +17,7 @@ export const getRouterState = state => state.router;
  */
 export const getRouterStack = createSelector(
   getRouterState,
-  state => (state && state.stack ? state.stack : [])
+  state => (state && state.stack ? state.stack : EMPTY_ARRAY)
 );
 
 /**
@@ -24,7 +27,7 @@ export const getRouterStack = createSelector(
 export const getCurrentRoute = createSelector(
   getRouterState,
   getRouterStack,
-  (state, props = {}) => props.routeId,
+  (state, props = EMPTY_OBJECT) => props.routeId,
   (router, stack, routeId) => {
     if (!router || !router.currentRoute) {
       return null;
@@ -120,7 +123,7 @@ export const getCurrentState = createSelector(
  */
 export function makeIsLastStackEntry() {
   return createSelector(
-    (state, props = {}) => props.routeId,
+    (state, props = EMPTY_OBJECT) => props.routeId,
     getRouterStack,
     (routeId, stack) => {
       const index = stack.findIndex(entry => entry.id === routeId);
@@ -135,7 +138,7 @@ export function makeIsLastStackEntry() {
  */
 export function makeGetPrevRoute() {
   return createSelector(
-    (state, props = {}) => props.routeId,
+    (state, props = EMPTY_OBJECT) => props.routeId,
     getRouterStack,
     (routeId, stack) => {
       const routeIndex = stack.findIndex(entry => entry.id === routeId);

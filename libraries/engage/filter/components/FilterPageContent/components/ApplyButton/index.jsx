@@ -19,7 +19,11 @@ const FilterApplyButton = ({ disabled, onClick, widgetSettings }) => {
   return (
     <SurroundPortals
       portalName={PORTAL_FILTER_APPLY_BUTTON}
-      portalProps={{ disabled, onClick, widgetSettings }}
+      portalProps={{
+        disabled,
+        onClick,
+        widgetSettings,
+      }}
     >
       <div className={styles.wrapper}>
         <Button

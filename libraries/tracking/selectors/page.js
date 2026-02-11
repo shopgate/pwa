@@ -58,7 +58,6 @@ const getPageTrackingName = createSelector(
 
 /**
  * Creates a selector that retrieves a page config for the current route from the store.
- * @param {string} name The name of the desired parameter.
  * @returns {Function}
  */
 export const makeGetRoutePageConfig = () => {

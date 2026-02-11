@@ -26,7 +26,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default (state = defaultState, action) => {
+export default (state = defaultState, action = {}) => {
   switch (action.type) {
     case ADD_PRODUCTS_TO_CART:
     case ERROR_ADD_PRODUCTS_TO_CART: {

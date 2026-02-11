@@ -26,7 +26,7 @@ const initialState = {
  * @param {Object} action The redux action.
  * @returns {Object}
  */
-export default (state = initialState, action) => {
+export default (state = initialState, action = {}) => {
   switch (action.type) {
     case FETCH_BACK_IN_STOCK_SUBSCRIPTIONS: {
       return {

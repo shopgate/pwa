@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   NAV_MENU_CART,
@@ -6,10 +6,10 @@ import {
   NAV_MENU_CART_BEFORE,
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import ShoppingCartIcon from '@shopgate/pwa-ui-shared/icons/ShoppingCartIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import connect from '../../../../connector';
 import connectBadge from './components/Badge/connector';
 import Badge from './components/Badge';
@@ -18,12 +18,17 @@ import portalProps from '../../../../portalProps';
 const LABEL = 'navigation.cart';
 
 /**
+ * The Cart Button component.
+ * @param {Object} props The component props.
  * @param {Function} props.navigate The navigate action.
  * @param {Function} props.count The cart item count.
  * @returns {JSX}
  */
 const CartButton = ({ navigate, count }) => {
   const ariaLabel = `${i18n.text(LABEL)}. ${i18n.text('common.products')}: ${count}.`;
+
+  const handleClick = useCallback(() => navigate(CART_PATH, LABEL)(), [navigate]);
+
   return (
     <>
       <Portal name={NAV_MENU_CART_BEFORE} props={portalProps} />
@@ -33,7 +38,7 @@ const CartButton = ({ navigate, count }) => {
           label={LABEL}
           aria-label={ariaLabel}
           icon={ShoppingCartIcon}
-          onClick={navigate(CART_PATH, LABEL)}
+          onClick={handleClick}
           testId="navDrawerCartButton"
         />
       </Portal>

@@ -9,7 +9,7 @@ import { STORE_FORM_INPUT } from '../constants';
  * @param {Object} [action.input] The input data to store.
  * @returns {UserLocationState} The new state.
  */
-const formInput = (state = {}, action) => {
+const formInput = (state = {}, action = {}) => {
   switch (action.type) {
     case STORE_FORM_INPUT:
       return {

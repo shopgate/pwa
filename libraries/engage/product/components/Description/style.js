@@ -37,7 +37,7 @@ export const content = css({
     padding: '.35em',
     position: 'relative',
   },
-});
+}).toString();
 
 export const placeholder = css({
   height: '0.875rem',

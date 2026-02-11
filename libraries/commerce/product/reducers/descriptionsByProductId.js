@@ -12,7 +12,7 @@ import {
  * @param {Object} action The action object.
  * @return {Object} The new state.
  */
-export default function descriptionsByProductId(state = {}, action) {
+export default function descriptionsByProductId(state = {}, action = {}) {
   switch (action.type) {
     case REQUEST_PRODUCT_DESCRIPTION:
       return {

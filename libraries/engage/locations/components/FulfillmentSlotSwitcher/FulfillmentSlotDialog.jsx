@@ -141,9 +141,15 @@ const getMonthDay = (time) => {
  */
 const getRange = (from, to) => {
   const [fromHours, fromMinutes] = from.split(':').map(x => parseInt(x, 10));
-  const fromMoment = moment().set({ hours: fromHours, minutes: fromMinutes });
+  const fromMoment = moment().set({
+    hours: fromHours,
+    minutes: fromMinutes,
+  });
   const [toHours, toMinutes] = to.split(':').map(x => parseInt(x, 10));
-  const toMoment = moment().set({ hours: toHours, minutes: toMinutes });
+  const toMoment = moment().set({
+    hours: toHours,
+    minutes: toMinutes,
+  });
   return `${fromMoment.format('LT')} - ${toMoment.format('LT')}`;
 };
 

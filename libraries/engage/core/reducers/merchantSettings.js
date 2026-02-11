@@ -27,8 +27,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export default function merchantSettings(state = defaultState, action) {
-  /* eslint-disable no-param-reassign */
+export default function merchantSettings(state = defaultState, action = {}) {
   const producer = produce((draft) => {
     switch (action.type) {
       case RECEIVE_MERCHANT_SETTINGS: {
@@ -43,6 +42,5 @@ export default function merchantSettings(state = defaultState, action) {
     }
   });
 
-  /* eslint-enable no-param-reassign */
   return producer(state);
 }

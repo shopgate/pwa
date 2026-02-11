@@ -1,12 +1,17 @@
 import { createSelector } from 'reselect';
 
+// Use a shared empty object so selectors that fall back to "no config"
+// remain referentially stable across calls with the same state value.
+// Fixes reselect warning about selector returning new value each time.
+const EMPTY_CONFIG = {};
+
 /**
  * Retrieves the config state from the store.
  * @param {Object} state The current application state.
  * @return {Object} The locations state.
  */
 function getState(state) {
-  return state?.settings?.config || {};
+  return state?.settings?.config || EMPTY_CONFIG;
 }
 
 /**

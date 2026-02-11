@@ -13,7 +13,7 @@ import handleReceivedCategories from './helpers/handleReceivedCategories';
  * @param {Object} action The action object.
  * @return {Object} The store data.
  */
-const rootCategories = (state = {}, action) => {
+const rootCategories = (state = {}, action = {}) => {
   switch (action.type) {
     case REQUEST_ROOT_CATEGORIES:
       return {
