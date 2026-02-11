@@ -3,6 +3,7 @@ import { isObject } from '../helpers/validation';
 import authRoutes from '../collections/AuthRoutes';
 
 const EMPTY_OBJECT = {};
+const EMPTY_ARRAY = [];
 
 /**
  * @param {Object} state The application state.
@@ -16,7 +17,7 @@ export const getRouterState = state => state.router;
  */
 export const getRouterStack = createSelector(
   getRouterState,
-  state => (state && state.stack ? state.stack : [])
+  state => (state && state.stack ? state.stack : EMPTY_ARRAY)
 );
 
 /**
