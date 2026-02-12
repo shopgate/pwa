@@ -6,16 +6,16 @@ import {
 import {
   PERMISSION_ID_CAMERA,
   PERMISSION_ID_LOCATION,
-  STATUS_GRANTED,
-  STATUS_DENIED,
-  STATUS_NOT_DETERMINED,
+  PERMISSION_STATUS_GRANTED,
+  PERMISSION_STATUS_DENIED,
+  PERMISSION_STATUS_NOT_DETERMINED,
 } from '@shopgate/pwa-core/constants/AppPermissions';
 import { createMockedPermissions } from '../appPermissions';
 
 /* eslint-disable extra-rules/no-single-line-objects */
 const expectedDefault = [
-  { permissionId: PERMISSION_ID_CAMERA, status: STATUS_GRANTED },
-  { permissionId: PERMISSION_ID_LOCATION, status: STATUS_GRANTED },
+  { permissionId: PERMISSION_ID_CAMERA, status: PERMISSION_STATUS_GRANTED },
+  { permissionId: PERMISSION_ID_LOCATION, status: PERMISSION_STATUS_GRANTED },
 ];
 /* eslint-enable extra-rules/no-single-line-objects */
 
@@ -23,7 +23,7 @@ describe('Create mocked permissions helper for App permissions', () => {
   let instance;
 
   beforeEach(() => {
-    instance = createMockedPermissions(STATUS_GRANTED);
+    instance = createMockedPermissions(PERMISSION_STATUS_GRANTED);
   });
 
   describe('Browser APIs not available', () => {
@@ -66,7 +66,7 @@ describe('Create mocked permissions helper for App permissions', () => {
       it('should not call the browser apis when no location permissions are requested', async () => {
         /* eslint-disable extra-rules/no-single-line-objects */
         const expected = [
-          { permissionId: PERMISSION_ID_CAMERA, status: STATUS_GRANTED },
+          { permissionId: PERMISSION_ID_CAMERA, status: PERMISSION_STATUS_GRANTED },
         ];
         /* eslint-enable extra-rules/no-single-line-objects */
         const params = { permissionIds: [PERMISSION_ID_CAMERA] };
@@ -79,8 +79,8 @@ describe('Create mocked permissions helper for App permissions', () => {
       it('should mock permissions with the correct permissions api state', async () => {
         /* eslint-disable extra-rules/no-single-line-objects */
         const expected = [
-          { permissionId: PERMISSION_ID_CAMERA, status: STATUS_GRANTED },
-          { permissionId: PERMISSION_ID_LOCATION, status: STATUS_NOT_DETERMINED },
+          { permissionId: PERMISSION_ID_CAMERA, status: PERMISSION_STATUS_GRANTED },
+          { permissionId: PERMISSION_ID_LOCATION, status: PERMISSION_STATUS_NOT_DETERMINED },
         ];
         /* eslint-enable extra-rules/no-single-line-objects */
         const params = { permissionIds: [PERMISSION_ID_CAMERA, PERMISSION_ID_LOCATION] };
@@ -96,7 +96,7 @@ describe('Create mocked permissions helper for App permissions', () => {
       it('should not call the browser apis when no location permissions are requested', async () => {
         /* eslint-disable extra-rules/no-single-line-objects */
         const expected = [
-          { permissionId: PERMISSION_ID_CAMERA, status: STATUS_GRANTED },
+          { permissionId: PERMISSION_ID_CAMERA, status: PERMISSION_STATUS_GRANTED },
         ];
         /* eslint-enable extra-rules/no-single-line-objects */
         const params = {
@@ -132,8 +132,8 @@ describe('Create mocked permissions helper for App permissions', () => {
 
         /* eslint-disable extra-rules/no-single-line-objects */
         const expected = [
-          { permissionId: PERMISSION_ID_CAMERA, status: STATUS_GRANTED },
-          { permissionId: PERMISSION_ID_LOCATION, status: STATUS_DENIED },
+          { permissionId: PERMISSION_ID_CAMERA, status: PERMISSION_STATUS_GRANTED },
+          { permissionId: PERMISSION_ID_LOCATION, status: PERMISSION_STATUS_DENIED },
         ];
         /* eslint-enable extra-rules/no-single-line-objects */
 
