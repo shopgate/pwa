@@ -18,7 +18,9 @@ const mockedGeolocationRequestDispatch = jest.fn().mockResolvedValue(mockedPosit
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
 }));
-jest.mock('../grantGeolocationPermissions', () => jest.fn().mockResolvedValue(true));
+jest.mock('../grantGeolocationPermissions', () => jest.fn().mockResolvedValue({
+  success: true,
+}));
 jest.mock('../../classes/GeolocationRequest', () => class Foo {
   // eslint-disable-next-line require-jsdoc, extra-rules/potential-point-free
   constructor(...args) {

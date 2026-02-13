@@ -28,6 +28,9 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
         confirm: 'permissions.access_denied.settings_button',
         dismiss: 'modal.dismiss',
       },
+      permissionOptions: {
+        usage: 'whenInUse',
+      },
     });
   });
 
@@ -55,6 +58,9 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
         message: 'permissions.access_denied.geolocation_message',
         confirm: 'permissions.access_denied.settings_button',
         dismiss: 'Dismiss label',
+      },
+      permissionOptions: {
+        usage: 'whenInUse',
       },
     });
   });
@@ -84,6 +90,9 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
       requestPermissions: true,
       resolveWithData: false,
       modal: customModalOptions,
+      permissionOptions: {
+        usage: 'whenInUse',
+      },
     });
   });
 });

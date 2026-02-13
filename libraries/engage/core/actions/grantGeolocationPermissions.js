@@ -12,8 +12,9 @@ import grantPermissions from './grantPermissions';
  * shall be presented, which redirects to the app settings.
  * @param {boolean} [options.requestPermissions=true] When set to TRUE the logic will not
  * attempt to request permissions, if they are not granted or determined yet.
- * @param {boolean} [options.resolveWithData=false] If set to TRUE, the promise will resolve
- * with data if available.
+ * @param {boolean} [options.resolveWithData=true] When set to TRUE the promise will resolve with
+ * an object containing the permission status and whether the opt-in dialog was shown,
+ * instead of a boolean value.
  * @param {Object} [options.modal={}] Options for the settings modal.
  * @param {string} options.modal.title Modal title.
  * @param {string} options.modal.message Modal message.

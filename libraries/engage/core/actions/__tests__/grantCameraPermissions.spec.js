@@ -19,6 +19,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledTimes(3);
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
+      resolveWithData: false,
       useSettingsModal: false,
       modal: {
         title: null,
@@ -45,6 +46,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledTimes(3);
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
+      resolveWithData: false,
       useSettingsModal: true,
       modal: {
         title: 'Modal title',
@@ -68,6 +70,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
 
     const result = grantCameraPermissions({
       useSettingsModal: true,
+      resolveWithData: false,
       modal: customModalOptions,
     })(dispatch);
     expect(result).toEqual(grantPermissions());
@@ -76,6 +79,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledTimes(3);
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
+      resolveWithData: false,
       useSettingsModal: true,
       modal: customModalOptions,
     });

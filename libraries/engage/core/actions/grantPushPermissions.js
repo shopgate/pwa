@@ -22,12 +22,16 @@ import grantPermissions from './grantPermissions';
  * @param {string} options.modal.dismiss Label for the dismiss button.
  * @param {Object} options.modal.params Additional parameters for i18n strings.
  * @param {Object} [options.meta={}] Additional meta data used for opt-in tracking actions
+ * @param {boolean} [options.resolveWithData=true] When set to TRUE the promise will resolve with
+ * an object containing the permission status and whether the opt-in dialog was shown,
+ * instead of a boolean value.
  * @return { Function } A redux thunk.
  */
 const grantPushPermissions = (options = {}) => (dispatch) => {
   const {
     useSettingsModal = true,
     useRationaleModal = false,
+    resolveWithData = false,
     modal = {},
     rationaleModal = {},
     meta = {},
@@ -35,6 +39,7 @@ const grantPushPermissions = (options = {}) => (dispatch) => {
 
   return dispatch(grantPermissions({
     permissionId: PERMISSION_ID_PUSH,
+    resolveWithData,
     useSettingsModal,
     useRationaleModal,
     modal: {

@@ -31,7 +31,8 @@ import { createMockedPermissions } from '../helpers/appPermissions';
  * @param {Object} [options.permissionOptions={}] Additional options for the permission request.
  * @param {boolean} [options.useSettingsModal=false] Whether in case of declined permissions a modal
  * shall be presented, which redirects to the app settings.
- * @param {boolean} [options.useRationaleModal=false] Whether a rational modal should be shown
+ * @param {boolean} [options.useRationaleModal=false] Whether a rational modal should be shown that
+ * describes why the permission is needed before requesting the permission.
  * @param {Object} [options.rationaleModal={}] Options for the rationale modal.
  * @param {string} options.rationaleModal.title Modal title.
  * @param {string} options.rationaleModal.message Modal message.
@@ -46,8 +47,9 @@ import { createMockedPermissions } from '../helpers/appPermissions';
  * @param {Object} options.modal.params Additional parameters for i18n strings.
  * @param {boolean} [options.requestPermissions=true] If set to TRUE no permissions will be
  * requested if not already granted,
- * @param {boolean} [options.resolveWithData=false] If set to TRUE the Promise will resolve with
- * data if available (e.g. geolocation).
+ * @param {boolean} [options.resolveWithData=true] When set to TRUE the promise will resolve with
+ * an object containing the permission status and whether the opt-in dialog was shown,
+ * instead of a boolean value.
  * @param {Object} [options.meta={}] Additional meta data used for opt-in tracking actions
  * @return { Function } A redux thunk.
  */
@@ -82,7 +84,10 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
   if (!availablePermissionsIds.includes(permissionId)) {
     logger.error('grandPermissions: %s is no valid permission id', permissionId);
-    resolve(false);
+    resolve(resolveWithData ? {
+      success: false,
+      optInRequested: false,
+    } : false);
     return;
   }
 
@@ -106,14 +111,22 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
   // Stop the process when the permission type is not supported.
   if (status === PERMISSION_STATUS_NOT_SUPPORTED) {
-    resolve(false);
+    resolve(resolveWithData ? {
+      success: false,
+      optInRequested: false,
+      status,
+    } : false);
     return;
   }
 
   // The user never seen the permissions dialog yet, or temporary denied the permissions (Android).
   if (status === PERMISSION_STATUS_NOT_DETERMINED || upgradeLocationPermissions) {
     if (!requestPermissions) {
-      resolve(false);
+      resolve(resolveWithData ? {
+        success: false,
+        optInRequested: false,
+        status,
+      } : false);
       return;
     }
 
@@ -133,7 +146,12 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
       }));
 
       if (requestAllowed === false) {
-        resolve(false);
+        resolve(resolveWithData ? {
+          success: false,
+          optInRequested: false,
+          status,
+          reason: 'rationaleDeclined',
+        } : false);
         return;
       }
     }
@@ -158,20 +176,33 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
     // The user denied the permissions within the native dialog.
     if ([PERMISSION_STATUS_DENIED, PERMISSION_STATUS_NOT_DETERMINED].includes(status)) {
-      resolve(false);
+      resolve(resolveWithData ? {
+        success: false,
+        optInRequested: true,
+        status,
+      } : false);
       return;
     }
   }
 
   if (status === PERMISSION_STATUS_GRANTED) {
-    resolve(resolveWithData && data ? data : true);
+    resolve(resolveWithData ? {
+      success: true,
+      optInRequested: true,
+      status,
+      data,
+    } : true);
     return;
   }
 
   // The user permanently denied the permissions before.
   if (status === PERMISSION_STATUS_DENIED) {
     if (!useSettingsModal) {
-      resolve(false);
+      resolve(resolveWithData ? {
+        success: false,
+        optInRequested: true,
+        status,
+      } : false);
       return;
     }
 
@@ -186,7 +217,12 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
     // The user just closed the modal.
     if (!openSettings) {
-      resolve(false);
+      resolve(resolveWithData ? {
+        success: false,
+        optInRequested: true,
+        reason: 'openSettingsDeclined',
+        status,
+      } : false);
       return;
     }
 
@@ -200,6 +236,11 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
       })));
 
       resolve(status === PERMISSION_STATUS_GRANTED);
+      resolve(resolveWithData ? {
+        success: status === PERMISSION_STATUS_GRANTED,
+        optInRequested: true,
+        status,
+      } : status === PERMISSION_STATUS_GRANTED);
     };
 
     /**

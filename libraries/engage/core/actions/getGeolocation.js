@@ -18,17 +18,17 @@ import GeolocationRequest from '../classes/GeolocationRequest';
  * @return { Function } A redux thunk.
  */
 const getGeolocation = (options = {}) => async (dispatch) => {
-  const granted = await dispatch(grantGeolocationPermissions({
+  const result = await dispatch(grantGeolocationPermissions({
     resolveWithData: true,
     ...options,
   }));
 
-  if (typeof granted === 'object') {
+  if (result?.data) {
     // Other than the app, within browsers we might already have a geolocation.
-    return Promise.resolve(granted);
+    return Promise.resolve(result.data);
   }
 
-  if (!granted) {
+  if (!result.success) {
     const error = new Error('Geolocation permissions not granted.');
     error.code = GEOLOCATION_ERROR_DENIED;
     throw error;

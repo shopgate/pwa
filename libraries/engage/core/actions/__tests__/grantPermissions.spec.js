@@ -411,10 +411,15 @@ describe('engage > core > actions > grantPermissions', () => {
         resolveWithData: true,
       })(dispatch);
 
-      expect(result).toEqual(dataMock);
+      expect(result).toEqual({
+        success: true,
+        status: PERMISSION_STATUS_GRANTED,
+        optInRequested: true,
+        data: dataMock,
+      });
     });
 
-    it('should resolve with TRUE if option is set but no data was returned', async () => {
+    it('should resolve without data if option is set but no data was returned', async () => {
       getAppPermissions.mockResolvedValue(getPermissionsResponse(PERMISSION_STATUS_NOT_DETERMINED));
       requestAppPermissions.mockResolvedValue(getPermissionsResponse(
         PERMISSION_STATUS_GRANTED,
@@ -426,7 +431,11 @@ describe('engage > core > actions > grantPermissions', () => {
         resolveWithData: true,
       })(dispatch);
 
-      expect(result).toEqual(true);
+      expect(result).toEqual({
+        success: true,
+        status: PERMISSION_STATUS_GRANTED,
+        optInRequested: true,
+      });
     });
   });
 });
