@@ -67,6 +67,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   } = options;
 
   let dispatchMock;
+  let optInRequested = false;
 
   if (!hasSGJavaScriptBridge() || hasWebBridge()) {
     /**
@@ -86,18 +87,17 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     logger.error('grandPermissions: %s is no valid permission id', permissionId);
     resolve(resolveWithData ? {
       success: false,
-      optInRequested: false,
+      optInRequested,
     } : false);
     return;
   }
 
   let status;
-  let statusOptions;
+  let appPermissionOptions;
   let data;
 
   // Check the current status of the camera permissions.
-  // eslint-disable-next-line prefer-const
-  ({ status, options: statusOptions } = await dispatch(requestAppPermissionStatus({
+  ({ status, options: appPermissionOptions } = await dispatch(requestAppPermissionStatus({
     permissionId,
     dispatchMock,
   })));
@@ -107,14 +107,15 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   // permissions.
   const upgradeLocationPermissions = status === PERMISSION_STATUS_GRANTED &&
     permissionOptions?.usage === PERMISSION_USAGE_ALWAYS &&
-    statusOptions?.usage === PERMISSION_USAGE_WHEN_IN_USE;
+    appPermissionOptions?.usage === PERMISSION_USAGE_WHEN_IN_USE;
 
   // Stop the process when the permission type is not supported.
   if (status === PERMISSION_STATUS_NOT_SUPPORTED) {
     resolve(resolveWithData ? {
       success: false,
-      optInRequested: false,
+      optInRequested,
       status,
+      ...appPermissionOptions ? { options: appPermissionOptions } : {},
     } : false);
     return;
   }
@@ -124,8 +125,9 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     if (!requestPermissions) {
       resolve(resolveWithData ? {
         success: false,
-        optInRequested: false,
+        optInRequested,
         status,
+        ...appPermissionOptions ? { options: appPermissionOptions } : {},
       } : false);
       return;
     }
@@ -148,9 +150,10 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
       if (requestAllowed === false) {
         resolve(resolveWithData ? {
           success: false,
-          optInRequested: false,
+          optInRequested,
           status,
           reason: 'rationaleDeclined',
+          ...appPermissionOptions ? { options: appPermissionOptions } : {},
         } : false);
         return;
       }
@@ -162,11 +165,13 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     }));
 
     // Trigger the native permissions dialog.
-    ({ status, data } = await dispatch(requestAppPermission({
+    ({ status, data, options: appPermissionOptions } = await dispatch(requestAppPermission({
       permissionId,
       dispatchMock,
       ...permissionOptions ? { options: permissionOptions } : {},
     })));
+
+    optInRequested = true;
 
     dispatch(hardOptInSelected({
       permissionId,
@@ -180,6 +185,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
         success: false,
         optInRequested: true,
         status,
+        ...appPermissionOptions ? { options: appPermissionOptions } : {},
       } : false);
       return;
     }
@@ -188,9 +194,10 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   if (status === PERMISSION_STATUS_GRANTED) {
     resolve(resolveWithData ? {
       success: true,
-      optInRequested: true,
+      optInRequested,
       status,
-      data,
+      ...appPermissionOptions ? { options: appPermissionOptions } : {},
+      ...data !== undefined ? { data } : {},
     } : true);
     return;
   }
@@ -200,8 +207,9 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     if (!useSettingsModal) {
       resolve(resolveWithData ? {
         success: false,
-        optInRequested: true,
+        optInRequested,
         status,
+        ...appPermissionOptions ? { options: appPermissionOptions } : {},
       } : false);
       return;
     }
@@ -219,9 +227,10 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     if (!openSettings) {
       resolve(resolveWithData ? {
         success: false,
-        optInRequested: true,
+        optInRequested,
         reason: 'openSettingsDeclined',
         status,
+        ...appPermissionOptions ? { options: appPermissionOptions } : {},
       } : false);
       return;
     }
@@ -238,8 +247,9 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
       resolve(status === PERMISSION_STATUS_GRANTED);
       resolve(resolveWithData ? {
         success: status === PERMISSION_STATUS_GRANTED,
-        optInRequested: true,
+        optInRequested,
         status,
+        ...appPermissionOptions ? { options: appPermissionOptions } : {},
       } : status === PERMISSION_STATUS_GRANTED);
     };
 
