@@ -1,4 +1,4 @@
-import { PERMISSION_ID_LOCATION } from '@shopgate/engage/core/constants';
+import { PERMISSION_ID_LOCATION, PERMISSION_USAGE_WHEN_IN_USE } from '@shopgate/engage/core/constants';
 import { hasWebBridge } from '@shopgate/engage/core';
 import grantPermissions from './grantPermissions';
 
@@ -7,6 +7,7 @@ import grantPermissions from './grantPermissions';
  * If not already happened, the user will be prompted to grant permissions.
  * The action returns a promise which resolves with a boolean value, that indicates the state.
  * @param {Object} options Action options.
+ * @param {'whenInUse'|'always'} [options.usage] The usage type for the location permission.
  * @param {boolean} [options.useSettingsModal=false] Whether in case of declined permissions a modal
  * shall be presented, which redirects to the app settings.
  * @param {boolean} [options.requestPermissions=true] When set to TRUE the logic will not
@@ -27,10 +28,12 @@ const grantGeolocationPermissions = (options = {}) => (dispatch) => {
     modal = {},
     requestPermissions = true,
     resolveWithData = false,
+    usage = PERMISSION_USAGE_WHEN_IN_USE,
   } = options;
 
   return dispatch(grantPermissions({
     permissionId: PERMISSION_ID_LOCATION,
+    ...usage ? { permissionOptions: { usage } } : {},
     requestPermissions,
     resolveWithData,
     useSettingsModal,

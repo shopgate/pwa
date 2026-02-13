@@ -8,10 +8,10 @@ import { GEOLOCATION_DEFAULT_TIMEOUT } from '../constants/geolocationRequest';
 class GeolocationRequest {
   /**
    * Constructor
-   * @param {boolean} [useBrowserAPI=true] Wether the browser API or app commands a supposed to
+   * @param {boolean} [useBrowserAPI=false] Wether the browser API or app commands a supposed to
    * be used to determine the geolocation.
    */
-  constructor(useBrowserAPI = true) {
+  constructor(useBrowserAPI = false) {
     this.useBrowserAPI = useBrowserAPI;
 
     this.options = {

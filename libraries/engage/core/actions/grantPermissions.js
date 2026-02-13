@@ -6,6 +6,8 @@ import {
   PERMISSION_STATUS_GRANTED,
   PERMISSION_STATUS_NOT_DETERMINED,
   PERMISSION_STATUS_NOT_SUPPORTED,
+  PERMISSION_USAGE_WHEN_IN_USE,
+  PERMISSION_USAGE_ALWAYS,
   APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
   availablePermissionsIds,
 } from '@shopgate/engage/core/constants';
@@ -26,6 +28,7 @@ import { createMockedPermissions } from '../helpers/appPermissions';
  * The action returns a promise which resolves with a boolean value, that indicates the state.
  * @param {Object} options Action options.
  * @param {string} options.permissionId The id of the permission to request.
+ * @param {Object} [options.permissionOptions={}] Additional options for the permission request.
  * @param {boolean} [options.useSettingsModal=false] Whether in case of declined permissions a modal
  * shall be presented, which redirects to the app settings.
  * @param {boolean} [options.useRationaleModal=false] Whether a rational modal should be shown
@@ -51,6 +54,7 @@ import { createMockedPermissions } from '../helpers/appPermissions';
 const grantPermissions = (options = {}) => dispatch => new Promise(async (resolve) => {
   const {
     permissionId,
+    permissionOptions,
     useSettingsModal = false,
     useRationaleModal = false,
     rationaleModal: rationaleModalOptions = {},
@@ -83,13 +87,22 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   }
 
   let status;
+  let statusOptions;
   let data;
 
   // Check the current status of the camera permissions.
-  ({ status } = await dispatch(requestAppPermissionStatus({
+  // eslint-disable-next-line prefer-const
+  ({ status, options: statusOptions } = await dispatch(requestAppPermissionStatus({
     permissionId,
     dispatchMock,
   })));
+
+  // When the location permission is requested for "always" usage and the permissions where already
+  // granted for "whenInUse" we need to trigger the permission request again to get extended
+  // permissions.
+  const upgradeLocationPermissions = status === PERMISSION_STATUS_GRANTED &&
+    permissionOptions?.usage === PERMISSION_USAGE_ALWAYS &&
+    statusOptions?.usage === PERMISSION_USAGE_WHEN_IN_USE;
 
   // Stop the process when the permission type is not supported.
   if (status === PERMISSION_STATUS_NOT_SUPPORTED) {
@@ -98,7 +111,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   }
 
   // The user never seen the permissions dialog yet, or temporary denied the permissions (Android).
-  if (status === PERMISSION_STATUS_NOT_DETERMINED) {
+  if (status === PERMISSION_STATUS_NOT_DETERMINED || upgradeLocationPermissions) {
     if (!requestPermissions) {
       resolve(false);
       return;
@@ -134,6 +147,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
     ({ status, data } = await dispatch(requestAppPermission({
       permissionId,
       dispatchMock,
+      ...permissionOptions ? { options: permissionOptions } : {},
     })));
 
     dispatch(hardOptInSelected({
