@@ -16,12 +16,11 @@ const grantAppTrackingTransparencyPermission = (options = {}) => (dispatch) => {
   const {
     meta = {},
     modal = {},
-    resolveWithData = false,
+    ...rest
   } = options;
 
   return dispatch(grantPermissions({
     permissionId: PERMISSION_ID_APP_TRACKING_TRANSPARENCY,
-    resolveWithData,
     meta,
     modal: {
       message: 'permissions.access_denied.trackingMessage',
@@ -29,6 +28,7 @@ const grantAppTrackingTransparencyPermission = (options = {}) => (dispatch) => {
       dismiss: 'modal.dismiss',
       ...modal,
     },
+    ...rest,
   }));
 };
 

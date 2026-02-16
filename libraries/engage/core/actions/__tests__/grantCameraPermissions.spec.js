@@ -6,20 +6,20 @@ jest.mock('../grantPermissions', () => jest.fn().mockReturnValue('grantPermissio
 
 describe('engage > core > actions > grantCameraPermissions', () => {
   const dispatch = jest.fn(action => action);
+  const getState = jest.fn(() => {});
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should dispatch as expected without options', () => {
-    const result = grantCameraPermissions()(dispatch);
+    const result = grantCameraPermissions()(dispatch, getState);
     expect(result).toEqual(grantPermissions());
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(grantPermissions());
     expect(grantPermissions).toHaveBeenCalledTimes(3);
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
-      resolveWithData: false,
       useSettingsModal: false,
       modal: {
         title: null,
@@ -39,14 +39,13 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     const result = grantCameraPermissions({
       useSettingsModal: true,
       modal: customModalOptions,
-    })(dispatch);
+    })(dispatch, getState);
     expect(result).toEqual(grantPermissions());
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(grantPermissions());
     expect(grantPermissions).toHaveBeenCalledTimes(3);
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
-      resolveWithData: false,
       useSettingsModal: true,
       modal: {
         title: 'Modal title',
@@ -70,16 +69,14 @@ describe('engage > core > actions > grantCameraPermissions', () => {
 
     const result = grantCameraPermissions({
       useSettingsModal: true,
-      resolveWithData: false,
       modal: customModalOptions,
-    })(dispatch);
+    })(dispatch, getState);
     expect(result).toEqual(grantPermissions());
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(grantPermissions());
     expect(grantPermissions).toHaveBeenCalledTimes(3);
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
-      resolveWithData: false,
       useSettingsModal: true,
       modal: customModalOptions,
     });

@@ -38,6 +38,10 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
   hasWebBridge: jest.fn().mockReturnValue(false),
 }));
+jest.mock('@shopgate/engage/core/selectors', () => ({
+  getIsAndroidApp: jest.fn().mockReturnValue(false),
+}));
+
 jest.mock('../../helpers/appPermissions', () => ({
   createMockedPermissions: jest.fn().mockReturnValue('mockPermissions'),
 }));
@@ -69,6 +73,7 @@ describe('engage > core > actions > grantPermissions', () => {
 
     return result;
   });
+  const getState = jest.fn(() => {});
   jest.useFakeTimers();
 
   beforeAll(() => {
@@ -85,7 +90,7 @@ describe('engage > core > actions > grantPermissions', () => {
   const permissionId = PERMISSION_ID_CAMERA;
 
   it('should resolve with TRUE when the permissions are granted', async () => {
-    const granted = await grantPermissions({ permissionId })(dispatch);
+    const granted = await grantPermissions({ permissionId })(dispatch, getState);
 
     expect(granted).toBe(true);
     expect(getAppPermissions).toHaveBeenCalledWith([permissionId], undefined);
@@ -103,7 +108,7 @@ describe('engage > core > actions > grantPermissions', () => {
   });
 
   it('should resolve with FALSE when called with an invalid permissionId', async () => {
-    const granted = await grantPermissions({ permissionId: 'unknownId' })(dispatch);
+    const granted = await grantPermissions({ permissionId: 'unknownId' })(dispatch, getState);
     expect(granted).toBe(false);
     expect(getAppPermissions).not.toHaveBeenCalled();
     expect(requestAppPermissions).not.toHaveBeenCalled();
@@ -117,7 +122,7 @@ describe('engage > core > actions > grantPermissions', () => {
     getAppPermissions
       .mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_NOT_SUPPORTED));
 
-    const granted = await grantPermissions({ permissionId })(dispatch);
+    const granted = await grantPermissions({ permissionId })(dispatch, getState);
     expect(granted).toBe(false);
     expect(getAppPermissions).toHaveBeenCalledWith([permissionId], undefined);
     expect(requestAppPermissions).not.toHaveBeenCalled();
@@ -138,7 +143,7 @@ describe('engage > core > actions > grantPermissions', () => {
     getAppPermissions
       .mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_NOT_DETERMINED));
 
-    const granted = await grantPermissions({ permissionId })(dispatch);
+    const granted = await grantPermissions({ permissionId })(dispatch, getState);
     expect(granted).toBe(true);
     expect(getAppPermissions).toHaveBeenCalledWith([permissionId], undefined);
     expect(requestAppPermissions).toHaveBeenCalledWith([{ permissionId }], undefined);
@@ -175,7 +180,7 @@ describe('engage > core > actions > grantPermissions', () => {
       .mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_NOT_DETERMINED));
     requestAppPermissions.mockResolvedValue(getPermissionsResponse(PERMISSION_STATUS_DENIED));
 
-    const granted = await grantPermissions({ permissionId })(dispatch);
+    const granted = await grantPermissions({ permissionId })(dispatch, getState);
     expect(granted).toBe(false);
 
     expect(dispatch).toHaveBeenCalledTimes(6);
@@ -210,7 +215,7 @@ describe('engage > core > actions > grantPermissions', () => {
     requestAppPermissions
       .mockResolvedValue(getPermissionsResponse(PERMISSION_STATUS_NOT_DETERMINED));
 
-    const granted = await grantPermissions({ permissionId })(dispatch);
+    const granted = await grantPermissions({ permissionId })(dispatch, getState);
     expect(granted).toBe(false);
 
     expect(dispatch).toHaveBeenCalledTimes(6);
@@ -242,7 +247,7 @@ describe('engage > core > actions > grantPermissions', () => {
   it('should resolve with FALSE when the permissions are denied, and no settings modal is about to be shown', async () => {
     getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
 
-    const granted = await grantPermissions({ permissionId })(dispatch);
+    const granted = await grantPermissions({ permissionId })(dispatch, getState);
     expect(granted).toBe(false);
 
     expect(dispatch).toHaveBeenCalledTimes(2);
@@ -265,7 +270,7 @@ describe('engage > core > actions > grantPermissions', () => {
       permissionId,
       useSettingsModal: true,
       modal: customModalOptions,
-    })(dispatch);
+    })(dispatch, getState);
     expect(granted).toBe(false);
 
     expect(dispatch).toHaveBeenCalledTimes(3);
@@ -300,7 +305,7 @@ describe('engage > core > actions > grantPermissions', () => {
     const pending = grantPermissions({
       permissionId,
       useSettingsModal: true,
-    })(dispatch);
+    })(dispatch, getState);
 
     // let microtasks run so the thunk can attach the event listener
     await listenerReady;
@@ -350,7 +355,7 @@ describe('engage > core > actions > grantPermissions', () => {
     const pending = grantPermissions({
       permissionId,
       useSettingsModal: true,
-    })(dispatch);
+    })(dispatch, getState);
 
     // let microtasks run so the thunk can attach the event listener
     await listenerReady;
@@ -388,7 +393,7 @@ describe('engage > core > actions > grantPermissions', () => {
 
     const result = await grantPermissions({
       permissionId,
-    })(dispatch);
+    })(dispatch, getState);
 
     expect(result).toBe(true);
     expect(getAppPermissions).toHaveBeenCalledWith([permissionId], createMockedPermissions());
@@ -409,7 +414,7 @@ describe('engage > core > actions > grantPermissions', () => {
       const result = await grantPermissions({
         permissionId,
         resolveWithData: true,
-      })(dispatch);
+      })(dispatch, getState);
 
       expect(result).toEqual({
         success: true,
@@ -429,7 +434,7 @@ describe('engage > core > actions > grantPermissions', () => {
       const result = await grantPermissions({
         permissionId,
         resolveWithData: true,
-      })(dispatch);
+      })(dispatch, getState);
 
       expect(result).toEqual({
         success: true,
