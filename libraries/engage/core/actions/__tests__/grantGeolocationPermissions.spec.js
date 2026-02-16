@@ -28,9 +28,6 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
         confirm: 'permissions.access_denied.settings_button',
         dismiss: 'modal.dismiss',
       },
-      permissionOptions: {
-        usage: 'whenInUse',
-      },
     });
   });
 
@@ -58,9 +55,6 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
         message: 'permissions.access_denied.geolocation_message',
         confirm: 'permissions.access_denied.settings_button',
         dismiss: 'Dismiss label',
-      },
-      permissionOptions: {
-        usage: 'whenInUse',
       },
     });
   });
@@ -90,8 +84,28 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
       requestPermissions: true,
       resolveWithData: false,
       modal: customModalOptions,
+    });
+  });
+
+  it('should dispatch as expected with background location options', () => {
+    const result = grantGeolocationPermissions({
+      requireBackgroundAccess: true,
+    })(dispatch);
+    expect(result).toEqual(grantPermissions());
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(grantPermissions).toHaveBeenCalledWith({
+      permissionId: PERMISSION_ID_LOCATION,
+      useSettingsModal: false,
+      requestPermissions: true,
+      resolveWithData: false,
+      modal: {
+        title: null,
+        message: 'permissions.access_denied.geolocationMessageBackground',
+        confirm: 'permissions.access_denied.settings_button',
+        dismiss: 'modal.dismiss',
+      },
       permissionOptions: {
-        usage: 'whenInUse',
+        usage: 'always',
       },
     });
   });
