@@ -5,6 +5,7 @@ import { getIsAndroidApp } from '@shopgate/engage/core/selectors';
 import {
   PERMISSION_ID_LOCATION,
   PERMISSION_ID_BACKGROUND_LOCATION,
+  PERMISSION_ID_CAMERA,
   PERMISSION_STATUS_DENIED,
   PERMISSION_STATUS_GRANTED,
   PERMISSION_STATUS_NOT_DETERMINED,
@@ -23,6 +24,14 @@ import {
 import requestAppPermission from './requestAppPermission';
 import requestAppPermissionStatus from './requestAppPermissionStatus';
 import { createMockedPermissions } from '../helpers/appPermissions';
+
+// List of permissions that need a timing based user interaction check on Android, since we can't
+// reliably handle this in the native layer.
+const ANDROID_PERMISSIONS_WITH_USER_INTERACTION_CHECK = [
+  PERMISSION_ID_LOCATION,
+  PERMISSION_ID_BACKGROUND_LOCATION,
+  PERMISSION_ID_CAMERA,
+];
 
 /**
  * Determines the current state of a specific permission for an app feature. If not already
@@ -72,13 +81,6 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
   let optInRequested = false;
 
   const isAndroidApp = getIsAndroidApp(getState());
-
-  // Since location requests on both platforms allow an opt-in for a single app session, we might
-  // apply special logic for them.
-  const isLocationPermissionRequest = [
-    PERMISSION_ID_LOCATION,
-    PERMISSION_ID_BACKGROUND_LOCATION,
-  ].includes(permissionId);
 
   if (!hasSGJavaScriptBridge() || hasWebBridge()) {
     /**
@@ -193,11 +195,14 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
      * We can only guess that the user interacted with the dialog and if we might need to show
      * the settings modal.
      *
-     * Additionally, at location permissions requests on Android we can't prevent that the
-     * getPermissions request returns "notDetermined" since there is an user option to as for
-     * location permissions every time its needed. So we also need to try a user interaction guess.
+     * Additionally, at some permissions requests on Android we can't prevent that the
+     * getPermissions request returns "notDetermined" since there is an user option to ask for
+     * permission acceptance every time its needed. So we also need to try a user interaction guess.
      */
-    if (upgradeLocationPermission || (isAndroidApp && isLocationPermissionRequest)) {
+    if (
+      upgradeLocationPermission ||
+      (isAndroidApp && ANDROID_PERMISSIONS_WITH_USER_INTERACTION_CHECK.includes(permissionId))
+    ) {
       wasUserInteraction = (new Date().getTime() - tsBeforeRequest) > 1000;
     }
 

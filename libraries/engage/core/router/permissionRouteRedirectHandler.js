@@ -72,7 +72,7 @@ export const permissionRouteRedirectHandler = async ({ action, dispatch }) => {
     default:
       logger.warn('Unknown permission request route', pathname);
   }
-  console.warn('Permission request result', result);
+
   if (result?.status === PERMISSION_STATUS_GRANTED && result?.optInRequested === false) {
     dispatch(showModal({
       message: grantedMessage,
