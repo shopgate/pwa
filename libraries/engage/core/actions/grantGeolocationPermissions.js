@@ -26,6 +26,7 @@ import grantPermissions from './grantPermissions';
  */
 const grantGeolocationPermissions = (options = {}) => (dispatch) => {
   const {
+    permissionId,
     useSettingsModal = false,
     modal = {},
     requestPermissions = true,

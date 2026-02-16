@@ -36,7 +36,11 @@ const ANDROID_PERMISSIONS_WITH_USER_INTERACTION_CHECK = [
 /**
  * Determines the current state of a specific permission for an app feature. If not already
  * happened, the user will be prompted to grant permissions.
+ *
  * The action returns a promise which resolves with a boolean value, that indicates the state.
+ *
+ * When the "resolveWithData" option is set to TRUE, the promise will resolve with an object
+ * containing the permission status and additional data, instead of a boolean value.
  * @param {Object} options Action options.
  * @param {string} options.permissionId The id of the permission to request.
  * @param {Object} [options.permissionOptions={}] Additional options for the permission request.
@@ -165,7 +169,6 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
           success: false,
           optInRequested,
           status,
-          reason: 'rationaleDeclined',
           ...appPermissionOptions ? { options: appPermissionOptions } : {},
         } : false);
         return;
@@ -278,7 +281,6 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
       resolve(resolveWithData ? {
         success: false,
         optInRequested,
-        reason: 'openSettingsDeclined',
         status,
         ...appPermissionOptions ? { options: appPermissionOptions } : {},
       } : false);

@@ -17,12 +17,27 @@ import {
 } from '../actions';
 
 /**
+ * @typedef {import('redux-thunk').ThunkDispatch<
+ *   import('../store').RootState,
+ *   any,
+ *   import('redux').AnyAction
+ * >} AppDispatch
+ */
+
+/**
+ * @typedef {import('../actions/grantPermissions').GrantPermissionsResult} GrantPermissionsResult
+ */
+
+/**
  * Handler for redirect collection handlers related to permission requests.
- * @param {Object} params Handler params
+ * @param {{ action: any, dispatch: AppDispatch }} params Handler params
  */
 export const permissionRouteRedirectHandler = async ({ action, dispatch }) => {
   const { route: { pathname } = {} } = action;
 
+  /**
+   * @type {GrantPermissionsResult | undefined}
+   */
   let result;
   let grantedMessage;
 

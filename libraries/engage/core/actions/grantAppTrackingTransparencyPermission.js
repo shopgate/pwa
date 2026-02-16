@@ -17,6 +17,7 @@ import grantPermissions from './grantPermissions';
  */
 const grantAppTrackingTransparencyPermission = (options = {}) => (dispatch) => {
   const {
+    permissionId,
     meta = {},
     modal = {},
     ...rest

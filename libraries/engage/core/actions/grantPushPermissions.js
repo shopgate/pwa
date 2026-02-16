@@ -29,6 +29,7 @@ import grantPermissions from './grantPermissions';
  */
 const grantPushPermissions = (options = {}) => (dispatch) => {
   const {
+    permissionId,
     useSettingsModal = true,
     useRationaleModal = false,
     modal = {},
