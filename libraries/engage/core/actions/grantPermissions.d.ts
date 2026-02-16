@@ -18,6 +18,14 @@ type PermissionUsage =
   | typeof import('@shopgate/engage/core/constants').PERMISSION_USAGE_ALWAYS
   | typeof import('@shopgate/engage/core/constants').PERMISSION_USAGE_WHEN_IN_USE
 
+export interface PermissionMeta {
+  permission: 'push' | 'location' | 'backgroundLocation' | 'camera' | 'tracking' ;
+  context: string;
+  contextCounter?: number;
+  usesSoftPushOptIn?: boolean;
+  usesSoftTrackingOptIn?: boolean;
+}
+
 export interface PermissionModalOptions {
   /**
    * Modal title.
@@ -89,7 +97,7 @@ export interface GrantPermissionsOptions {
   /**
    * Meta data used for opt-in tracking actions.
    */
-  meta?: Record<string, unknown>;
+  meta?: PermissionMeta & Record<string, unknown>;
 }
 
 export interface GrantPermissionsResult {

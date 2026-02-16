@@ -1,7 +1,8 @@
 import type { UnknownAction } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
-export type { GrantPermissionsOptions, GrantPermissionsResult } from './grantPermissions'
+import type { GrantPermissionsOptions, GrantPermissionsResult } from './grantPermissions';
+export type { GrantPermissionsOptions, GrantPermissionsResult };
 
 type GeolocationOptions = {
   /**

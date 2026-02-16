@@ -41,11 +41,19 @@ export const permissionRouteRedirectHandler = async ({ action, dispatch }) => {
   let result;
   let grantedMessage;
 
+  const metaBase = {
+    context: 'permissionRoute',
+  };
+
   switch (pathname) {
     case PERMISSION_REQUEST_ROUTE_LOCATION: {
       result = await dispatch(grantGeolocationPermissions({
         useSettingsModal: true,
         resolveWithData: true,
+        meta: {
+          ...metaBase,
+          permission: 'location',
+        },
       }));
       grantedMessage = 'permissions.accessGranted.locationMessage';
       break;
@@ -55,6 +63,10 @@ export const permissionRouteRedirectHandler = async ({ action, dispatch }) => {
         useSettingsModal: true,
         requireBackgroundAccess: true,
         resolveWithData: true,
+        meta: {
+          ...metaBase,
+          permission: 'backgroundLocation',
+        },
       }));
       grantedMessage = 'permissions.accessGranted.backgroundLocationMessage';
       break;
@@ -63,6 +75,10 @@ export const permissionRouteRedirectHandler = async ({ action, dispatch }) => {
       result = await dispatch(grantPushPermissions({
         useSettingsModal: true,
         resolveWithData: true,
+        meta: {
+          ...metaBase,
+          permission: 'push',
+        },
       }));
       grantedMessage = 'permissions.accessGranted.pushMessage';
       break;
@@ -71,6 +87,10 @@ export const permissionRouteRedirectHandler = async ({ action, dispatch }) => {
       result = await dispatch(grantAppTrackingTransparencyPermission({
         useSettingsModal: true,
         resolveWithData: true,
+        meta: {
+          ...metaBase,
+          permission: 'tracking',
+        },
       }));
       grantedMessage = 'permissions.accessGranted.trackingMessage';
       break;
@@ -79,6 +99,10 @@ export const permissionRouteRedirectHandler = async ({ action, dispatch }) => {
       result = await dispatch(grantCameraPermissions({
         useSettingsModal: true,
         resolveWithData: true,
+        meta: {
+          ...metaBase,
+          permission: 'camera',
+        },
       }));
       grantedMessage = 'permissions.accessGranted.cameraMessage';
       break;

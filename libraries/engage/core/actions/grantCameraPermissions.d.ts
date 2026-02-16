@@ -1,7 +1,8 @@
 import type { UnknownAction } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
-export type { GrantPermissionsOptions, GrantPermissionsResult } from './grantPermissions'
+export type { GrantPermissionsOptions, GrantPermissionsResult } from './grantPermissions';
+export type { GrantPermissionsOptions, GrantPermissionsResult };
 
 /**
  * Determines the current state of the camera permissions.
