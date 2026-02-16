@@ -608,14 +608,14 @@
       "push_message": "This feature requires access to push notifications. Please allow access in the settings.",
       "geolocation_message": "To find stores near you, please go to Settings and enable location permissions.",
       "geolocationMessageBackground": "For this feature, the app needs access to your location even when the app is closed. Please change the permission in Settings to \"Always\".",
-      "trackingMessage": "This feature requires tracking permissions. Please allow access in the settings."
+      "trackingMessage": "This feature requires app-tracking. Please allow access in the settings."
     },
     "accessGranted": {
       "cameraMessage": "Camera permissions are already given.",
       "pushMessage": "Push notification permissions are already given.",
       "locationMessage": "Location permissions are already given.",
       "backgroundLocationMessage": "Background location permissions are already given.",
-      "trackingMessage": "Tracking permissions are already given."
+      "trackingMessage": "App-tracking permissions are already given."
     }
   },
   "checkout": {
