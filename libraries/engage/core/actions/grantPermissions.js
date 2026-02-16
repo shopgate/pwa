@@ -1,12 +1,14 @@
 import event from '@shopgate/pwa-core/classes/Event';
 import { openAppSettings } from '@shopgate/engage/core/commands';
 import { showModal } from '@shopgate/engage/core/actions';
+import { getIsAndroidApp } from '@shopgate/engage/core/selectors';
 import {
+  PERMISSION_ID_LOCATION,
+  PERMISSION_ID_BACKGROUND_LOCATION,
   PERMISSION_STATUS_DENIED,
   PERMISSION_STATUS_GRANTED,
   PERMISSION_STATUS_NOT_DETERMINED,
   PERMISSION_STATUS_NOT_SUPPORTED,
-  PERMISSION_USAGE_WHEN_IN_USE,
   PERMISSION_USAGE_ALWAYS,
   APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND,
   availablePermissionsIds,
@@ -53,7 +55,7 @@ import { createMockedPermissions } from '../helpers/appPermissions';
  * @param {Object} [options.meta={}] Additional meta data used for opt-in tracking actions
  * @return { Function } A redux thunk.
  */
-const grantPermissions = (options = {}) => dispatch => new Promise(async (resolve) => {
+const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(async (resolve) => {
   const {
     permissionId,
     permissionOptions,
@@ -68,6 +70,15 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
   let dispatchMock;
   let optInRequested = false;
+
+  const isAndroidApp = getIsAndroidApp(getState());
+
+  // Since location requests on both platforms allow an opt-in for a single app session, we might
+  // apply special logic for them.
+  const isLocationPermissionRequest = [
+    PERMISSION_ID_LOCATION,
+    PERMISSION_ID_BACKGROUND_LOCATION,
+  ].includes(permissionId);
 
   if (!hasSGJavaScriptBridge() || hasWebBridge()) {
     /**
@@ -105,9 +116,9 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   // When the location permission is requested for "always" usage and the permissions where already
   // granted for "whenInUse" we need to trigger the permission request again to get extended
   // permissions.
-  const upgradeLocationPermissions = status === PERMISSION_STATUS_GRANTED &&
+  const upgradeLocationPermission = permissionId === PERMISSION_ID_LOCATION &&
     permissionOptions?.usage === PERMISSION_USAGE_ALWAYS &&
-    appPermissionOptions?.usage === PERMISSION_USAGE_WHEN_IN_USE;
+    status === PERMISSION_STATUS_GRANTED;
 
   // Stop the process when the permission type is not supported.
   if (status === PERMISSION_STATUS_NOT_SUPPORTED) {
@@ -121,7 +132,7 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
   }
 
   // The user never seen the permissions dialog yet, or temporary denied the permissions (Android).
-  if (status === PERMISSION_STATUS_NOT_DETERMINED || upgradeLocationPermissions) {
+  if (status === PERMISSION_STATUS_NOT_DETERMINED || upgradeLocationPermission) {
     if (!requestPermissions) {
       resolve(resolveWithData ? {
         success: false,
@@ -164,6 +175,8 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
       meta,
     }));
 
+    const tsBeforeRequest = new Date().getTime();
+
     // Trigger the native permissions dialog.
     ({ status, data, options: appPermissionOptions } = await dispatch(requestAppPermission({
       permissionId,
@@ -171,7 +184,24 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
       ...permissionOptions ? { options: permissionOptions } : {},
     })));
 
-    optInRequested = true;
+    let wasUserInteraction = true;
+
+    /**
+     * On iOS it's not possible to get "notDetermined" status for "always" location permissions.
+     * So we might run into this decision branch of the code for when "always" permissions are
+     * requested, even if we don't know if a dialog will be shown.
+     * We can only guess that the user interacted with the dialog and if we might need to show
+     * the settings modal.
+     *
+     * Additionally, at location permissions requests on Android we can't prevent that the
+     * getPermissions request returns "notDetermined" since there is an user option to as for
+     * location permissions every time its needed. So we also need to try a user interaction guess.
+     */
+    if (upgradeLocationPermission || (isAndroidApp && isLocationPermissionRequest)) {
+      wasUserInteraction = (new Date().getTime() - tsBeforeRequest) > 1000;
+    }
+
+    optInRequested = wasUserInteraction;
 
     dispatch(hardOptInSelected({
       permissionId,
@@ -181,13 +211,15 @@ const grantPermissions = (options = {}) => dispatch => new Promise(async (resolv
 
     // The user denied the permissions within the native dialog.
     if ([PERMISSION_STATUS_DENIED, PERMISSION_STATUS_NOT_DETERMINED].includes(status)) {
-      resolve(resolveWithData ? {
-        success: false,
-        optInRequested: true,
-        status,
-        ...appPermissionOptions ? { options: appPermissionOptions } : {},
-      } : false);
-      return;
+      if (wasUserInteraction) {
+        resolve(resolveWithData ? {
+          success: false,
+          optInRequested,
+          status,
+          ...appPermissionOptions ? { options: appPermissionOptions } : {},
+        } : false);
+        return;
+      }
     }
   }
 

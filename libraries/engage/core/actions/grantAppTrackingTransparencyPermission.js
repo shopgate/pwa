@@ -15,6 +15,7 @@ import grantPermissions from './grantPermissions';
 const grantAppTrackingTransparencyPermission = (options = {}) => (dispatch) => {
   const {
     meta = {},
+    modal = {},
     resolveWithData = false,
   } = options;
 
@@ -22,6 +23,12 @@ const grantAppTrackingTransparencyPermission = (options = {}) => (dispatch) => {
     permissionId: PERMISSION_ID_APP_TRACKING_TRANSPARENCY,
     resolveWithData,
     meta,
+    modal: {
+      message: 'permissions.access_denied.trackingMessage',
+      confirm: 'permissions.access_denied.settings_button',
+      dismiss: 'modal.dismiss',
+      ...modal,
+    },
   }));
 };
 

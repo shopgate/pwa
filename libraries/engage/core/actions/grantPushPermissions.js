@@ -46,6 +46,7 @@ const grantPushPermissions = (options = {}) => (dispatch) => {
       title: null,
       message: 'permissions.access_denied.push_message',
       confirm: 'permissions.access_denied.settings_button',
+      dismiss: 'modal.dismiss',
       ...modal,
     },
     rationaleModal,
