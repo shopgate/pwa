@@ -7,7 +7,6 @@ import {
   PERMISSION_REQUEST_ROUTE_PUSH,
   PERMISSION_REQUEST_ROUTE_TRACKING,
   PERMISSION_REQUEST_ROUTE_CAMERA,
-  PERMISSION_USAGE_ALWAYS,
   PERMISSION_STATUS_GRANTED,
 } from '../constants';
 import {
@@ -39,7 +38,7 @@ export const permissionRouteRedirectHandler = async ({ action, dispatch }) => {
     case PERMISSION_REQUEST_ROUTE_LOCATION_BACKGROUND: {
       result = await dispatch(grantGeolocationPermissions({
         useSettingsModal: true,
-        usage: PERMISSION_USAGE_ALWAYS,
+        requireBackgroundAccess: true,
         resolveWithData: true,
       }));
       grantedMessage = 'permissions.accessGranted.backgroundLocationMessage';
