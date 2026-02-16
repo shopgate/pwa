@@ -617,7 +617,15 @@
       "settings_button": "Impostazioni aperte",
       "camera_message": "Questa funzione richiede l'accesso alla tua fotocamera. Consenti l'accesso nelle impostazioni per favore.",
       "push_message": "Questa funzione richiede l'accesso alle notifiche push. Consentire l'accesso nelle impostazioni.",
-      "geolocation_message": "Per trovare negozi vicino a te, vai su Impostazioni e abilita i permessi di accesso alla localizzazione."
+      "geolocation_message": "Per trovare negozi vicino a te, vai su Impostazioni e abilita i permessi di accesso alla localizzazione.",
+      "trackingMessage": "Questa funzione richiede i permessi di tracciamento. Si prega di consentire l'accesso nelle impostazioni."
+    },
+    "accessGranted": {
+      "cameraMessage": "I permessi della fotocamera sono già stati concessi.",
+      "pushMessage": "I permessi delle notifiche push sono già stati concessi.",
+      "locationMessage": "I permessi di localizzazione sono già stati concessi.",
+      "backgroundLocationMessage": "I permessi di localizzazione in background sono già stati concessi.",
+      "trackingMessage": "I permessi di tracciamento sono già stati concessi."
     }
   },
   "checkout": {

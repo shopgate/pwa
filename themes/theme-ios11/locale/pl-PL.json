@@ -616,7 +616,15 @@
       "settings_button": "Przejdź do ustawień",
       "camera_message": "Ta funkcja wymaga dostępu do aparatu. W ustawieniach należy zezwolić na dostęp.",
       "push_message": "Powiadomienia push dla tej aplikacji zostały wyłączone. Przejdź do ustawień urządzenia, aby je aktywować.",
-      "geolocation_message": "Potrzebujemy dostępu do lokalizacji, aby pokazać pobliskie sklepy."
+      "geolocation_message": "Potrzebujemy dostępu do lokalizacji, aby pokazać pobliskie sklepy.",
+      "trackingMessage": "Ta funkcja wymaga uprawnień do śledzenia. Zezwól na dostęp w ustawieniach."
+    },
+    "accessGranted": {
+      "cameraMessage": "Uprawnienia do aparatu zostały już przyznane.",
+      "pushMessage": "Uprawnienia do powiadomień push zostały już przyznane.",
+      "locationMessage": "Uprawnienia do lokalizacji zostały już przyznane.",
+      "backgroundLocationMessage": "Uprawnienia do lokalizacji w tle zostały już przyznane.",
+      "trackingMessage": "Uprawnienia do śledzenia zostały już przyznane."
     }
   },
   "checkout": {

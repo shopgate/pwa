@@ -617,7 +617,15 @@
       "settings_button": "Beállítások megnyitása",
       "camera_message": "Ez a funkció hozzáférést igényel a kamerához. Kérjük, engedélyezze a hozzáférést a beállításokban.",
       "push_message": "Ön letiltotta a push értesítéseket ehhez az alkalmazáshoz. Kérjük, engedélyezze őket a készülék beállításaiban.",
-      "geolocation_message": "Hozzáférésre van szükségünk a helymeghatározáshoz, hogy megmutathassuk a közeli üzleteket."
+      "geolocation_message": "Hozzáférésre van szükségünk a helymeghatározáshoz, hogy megmutathassuk a közeli üzleteket.",
+      "trackingMessage": "Ez a funkció nyomkövetési engedélyeket igényel. Kérjük, engedélyezze a hozzáférést a beállításokban."
+    },
+    "accessGranted": {
+      "cameraMessage": "Kamera engedélyek már megadva.",
+      "pushMessage": "Push értesítési engedélyek már megadva.",
+      "locationMessage": "Helymeghatározási engedélyek már megadva.",
+      "backgroundLocationMessage": "Háttérbeli helymeghatározási engedélyek már megadva.",
+      "trackingMessage": "Nyomkövetési engedélyek már megadva."
     }
   },
   "checkout": {

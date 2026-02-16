@@ -606,7 +606,15 @@
       "settings_button": "Aller dans paramètres",
       "camera_message": "Cette fonctionnalité nécessite un accès à votre appareil photo. Veuillez autoriser l'accès dans la fonction paramètres.",
       "push_message": "Cette fonctionnalité nécessite l'accès aux notifications push. Veuillez autoriser l'accès dans les paramètres.",
-      "geolocation_message": "Pour trouver des magasins près de chez vous, allez dans Paramètres et activez l’autorisation de géolocalisation."
+      "geolocation_message": "Pour trouver des magasins près de chez vous, allez dans Paramètres et activez l’autorisation de géolocalisation.",
+      "trackingMessage": "Cette fonctionnalité nécessite des autorisations de suivi. Veuillez autoriser l'accès dans les paramètres."
+    },
+    "accessGranted": {
+      "cameraMessage": "Les autorisations d'accès à la caméra ont déjà été accordées.",
+      "pushMessage": "Les autorisations de notifications push ont déjà été accordées.",
+      "locationMessage": "Les autorisations de géolocalisation ont déjà été accordées.",
+      "backgroundLocationMessage": "Les autorisations de géolocalisation en arrière-plan ont déjà été accordées.",
+      "trackingMessage": "Les autorisations de suivi ont déjà été accordées."
     }
   },
   "checkout": {

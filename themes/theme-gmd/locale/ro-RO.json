@@ -606,7 +606,15 @@
       "settings_button": "Deschideți setările",
       "camera_message": "Această funcție necesită acces la cameră. Vă rugăm să permiteți accesul în setări.",
       "push_message": "Ați dezactivat notificările push pentru această aplicație. Vă rugăm să accesați setările dispozitivului dvs. pentru a le activa.",
-      "geolocation_message": "Avem nevoie de acces la locație pentru a afișa magazinele din apropiere."
+      "geolocation_message": "Avem nevoie de acces la locație pentru a afișa magazinele din apropiere.",
+      "trackingMessage": "Această funcție necesită permisiuni de urmărire. Vă rugăm să permiteți accesul în setări."
+    },
+    "accessGranted": {
+      "cameraMessage": "Permisiunile pentru cameră au fost deja acordate.",
+      "pushMessage": "Permisiunile pentru notificările push au fost deja acordate.",
+      "locationMessage": "Permisiunile pentru locație au fost deja acordate.",
+      "backgroundLocationMessage": "Permisiunile pentru locația în fundal au fost deja acordate.",
+      "trackingMessage": "Permisiunile pentru urmărire au fost deja acordate."
     }
   },
   "checkout": {
