@@ -20,15 +20,10 @@ import grantPermissions from './grantPermissions';
  * @return { Function } A redux thunk.
  */
 const grantCameraPermissions = (options = {}) => (dispatch) => {
-  const {
-    useSettingsModal = false,
-    resolveWithData = false,
-    modal = {},
-  } = options;
+  const { useSettingsModal = false, modal = {}, ...rest } = options;
 
   return dispatch(grantPermissions({
     permissionId: PERMISSION_ID_CAMERA,
-    resolveWithData,
     useSettingsModal,
     modal: {
       title: null,
@@ -37,6 +32,7 @@ const grantCameraPermissions = (options = {}) => (dispatch) => {
       dismiss: 'common.close',
       ...modal,
     },
+    ...rest,
   }));
 };
 

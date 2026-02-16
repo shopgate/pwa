@@ -31,15 +31,14 @@ const grantPushPermissions = (options = {}) => (dispatch) => {
   const {
     useSettingsModal = true,
     useRationaleModal = false,
-    resolveWithData = false,
     modal = {},
     rationaleModal = {},
     meta = {},
+    ...rest
   } = options;
 
   return dispatch(grantPermissions({
     permissionId: PERMISSION_ID_PUSH,
-    resolveWithData,
     useSettingsModal,
     useRationaleModal,
     modal: {
@@ -51,6 +50,7 @@ const grantPushPermissions = (options = {}) => (dispatch) => {
     },
     rationaleModal,
     meta,
+    ...rest,
   }));
 };
 

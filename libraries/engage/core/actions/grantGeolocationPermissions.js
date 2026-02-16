@@ -30,6 +30,7 @@ const grantGeolocationPermissions = (options = {}) => (dispatch) => {
     requestPermissions = true,
     resolveWithData = false,
     usage = PERMISSION_USAGE_WHEN_IN_USE,
+    ...rest
   } = options;
 
   return dispatch(grantPermissions({
@@ -45,6 +46,7 @@ const grantGeolocationPermissions = (options = {}) => (dispatch) => {
       dismiss: 'modal.dismiss',
       ...modal,
     },
+    ...rest,
   }));
 };
 
