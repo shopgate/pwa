@@ -617,6 +617,7 @@
       "camera_message": "Den här funktionen kräver åtkomst till kameran. Vänligen tillåt åtkomst i inställningarna.",
       "push_message": "Du har inaktiverat push-meddelanden för den här appen. Gå till inställningarna på din enhet för att aktivera dem.",
       "geolocation_message": "Vi behöver tillgång till platsen för att visa närliggande butiker.",
+      "geolocationMessageBackground": "ör denna funktion behöver appen åtkomst till din plats även när appen är stängd. Vänligen ändra behörigheten i Inställningar till \"Alltid\".",
       "trackingMessage": "Den här funktionen kräver spårningsbehörigheter. Vänligen tillåt åtkomst i inställningarna."
     },
     "accessGranted": {

@@ -607,6 +607,7 @@
       "camera_message": "Ez a funkció hozzáférést igényel a kamerához. Kérjük, engedélyezze a hozzáférést a beállításokban.",
       "push_message": "Ön letiltotta a push értesítéseket ehhez az alkalmazáshoz. Kérjük, engedélyezze őket a készülék beállításaiban.",
       "geolocation_message": "Hozzáférésre van szükségünk a helymeghatározáshoz, hogy megmutathassuk a közeli üzleteket.",
+      "geolocationMessageBackground": "Ehhez a funkcióhoz az alkalmazásnak hozzáférésre van szüksége a helyzetéhez még akkor is, ha az alkalmazás zárva van. Kérjük, módosítsa az engedélyt a Beállításokban \"Mindig\" értékre.",
       "trackingMessage": "Ez a funkció nyomkövetési engedélyeket igényel. Kérjük, engedélyezze a hozzáférést a beállításokban."
     },
     "accessGranted": {

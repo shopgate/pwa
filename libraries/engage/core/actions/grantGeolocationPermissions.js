@@ -42,7 +42,7 @@ const grantGeolocationPermissions = (options = {}) => (dispatch) => {
     useSettingsModal,
     modal: {
       title: null,
-      message: 'permissions.access_denied.geolocation_message',
+      message: `permissions.access_denied.${requireBackgroundAccess ? 'geolocationMessageBackground' : 'geolocation_message'}`,
       confirm: !hasWebBridge() ? 'permissions.access_denied.settings_button' : null,
       dismiss: 'modal.dismiss',
       ...modal,
