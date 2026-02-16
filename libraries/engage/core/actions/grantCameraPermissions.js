@@ -14,9 +14,6 @@ import grantPermissions from './grantPermissions';
  * @param {string} options.modal.confirm Label for the confirm button.
  * @param {string} options.modal.dismiss Label for the dismiss button.
  * @param {Object} options.modal.params Additional parameters for i18n strings.
- * @param {boolean} [options.resolveWithData=true] When set to TRUE the promise will resolve with
- * an object containing the permission status and whether the opt-in dialog was shown,
- * instead of a boolean value.
  * @return { Function } A redux thunk.
  */
 const grantCameraPermissions = (options = {}) => (dispatch) => {
