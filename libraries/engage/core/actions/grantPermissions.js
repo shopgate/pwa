@@ -177,10 +177,17 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
       meta,
     }));
 
-    const tsBeforeRequest = new Date().getTime();
+    const tsBeforeRequest = Date.now();
+
+    let nativeRequestDuration;
 
     // Trigger the native permissions dialog.
-    ({ status, data, options: appPermissionOptions } = await dispatch(requestAppPermission({
+    ({
+      status,
+      data,
+      options: appPermissionOptions,
+      duration: nativeRequestDuration,
+    } = await dispatch(requestAppPermission({
       permissionId,
       dispatchMock,
       ...permissionOptions ? { options: permissionOptions } : {},
@@ -203,7 +210,13 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
       upgradeLocationPermission ||
       (isAndroidApp && ANDROID_PERMISSIONS_WITH_USER_INTERACTION_CHECK.includes(permissionId))
     ) {
-      wasUserInteraction = (new Date().getTime() - tsBeforeRequest) > 1000;
+      // When available, use the duration of the native request as heuristic for user interaction.
+      // It's more accurate, since it won't include the time that communication with the app takes.
+      const requestDuration = typeof nativeRequestDuration === 'number'
+        ? nativeRequestDuration
+        : (Date.now() - tsBeforeRequest);
+
+      wasUserInteraction = requestDuration > 1000;
     }
 
     optInRequested = wasUserInteraction;

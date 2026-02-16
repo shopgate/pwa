@@ -35,7 +35,9 @@ const requestAppPermission = ({
   }
 
   const [
-    { status, options, data } = { status: PERMISSION_STATUS_NOT_SUPPORTED },
+    {
+      status, options, data, duration,
+    } = { status: PERMISSION_STATUS_NOT_SUPPORTED },
   ] = await requestAppPermissions([{
     permissionId,
     ...requestOptions ? { options: requestOptions } : {},
@@ -51,6 +53,7 @@ const requestAppPermission = ({
     status,
     options,
     data,
+    duration,
   };
 };
 
