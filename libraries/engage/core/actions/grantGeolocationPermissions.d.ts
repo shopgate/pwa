@@ -6,7 +6,10 @@ export type { GrantPermissionsOptions, GrantPermissionsResult };
 
 type GeolocationOptions = {
   /**
-   * Whether to request background location access (if supported by the platform).
+   * Whether to request background location access.
+   *
+   * **Note:** Since background location access will cause extended reviews by Google and Apple,
+   * this feature needs to be explicitly enabled by Shopgate.
    */
   requireBackgroundAccess?: boolean;
 }
