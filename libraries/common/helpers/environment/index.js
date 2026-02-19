@@ -14,5 +14,5 @@ module.exports = {
   isStaging: (env === ENV_KEY_STAGING),
   isRemote: !!process.env.REMOTE,
   isWindows: /win/i.test(userAgent),
-  isLinux: /linux/i.test(userAgent),
+  isLinux: /linux/i.test(userAgent) && !/android/i.test(userAgent),
 };
