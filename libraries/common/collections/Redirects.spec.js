@@ -43,6 +43,9 @@ describe('Redirects', () => {
         handler: TO,
         pathParams: {},
         queryParams: {},
+        options: {
+          showLoading: true,
+        },
       });
     });
 
@@ -56,6 +59,9 @@ describe('Redirects', () => {
           id: 'abc123',
         },
         queryParams: {},
+        options: {
+          showLoading: true,
+        },
       });
     });
 
@@ -73,6 +79,22 @@ describe('Redirects', () => {
         },
         queryParams: {
           some: 'param',
+        },
+        options: {
+          showLoading: true,
+        },
+      });
+    });
+
+    it('should get a redirect with showLoading set to false', () => {
+      redirects.set(FROM, TO, { showLoading: false });
+      expect(redirects.getRedirectExtended(FROM)).toEqual({
+        matcher: FROM,
+        handler: TO,
+        pathParams: {},
+        queryParams: {},
+        options: {
+          showLoading: false,
         },
       });
     });
@@ -99,6 +121,15 @@ describe('Redirects', () => {
     it('should forcefully add a redirect', () => {
       redirects.set(FROM, TO);
       redirects.set(FROM, '/somewhere_else', true);
+      expect(redirects.redirects.size).toEqual(1);
+      expect(redirects.get(FROM)).toEqual('/somewhere_else');
+    });
+
+    it('should forcefully add a redirect when options object is used', () => {
+      redirects.set(FROM, TO);
+      redirects.set(FROM, '/somewhere_else', {
+        override: true,
+      });
       expect(redirects.redirects.size).toEqual(1);
       expect(redirects.get(FROM)).toEqual('/somewhere_else');
     });
