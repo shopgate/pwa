@@ -219,7 +219,7 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
         ? nativeRequestDuration
         : (Date.now() - tsBeforeRequest);
 
-      wasUserInteraction = requestDuration > 1000;
+      wasUserInteraction = requestDuration > 1300;
     }
 
     optInRequested = wasUserInteraction;
@@ -315,7 +315,16 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
     setTimeout(() => {
       openAppSettings();
     }, 0);
+
+    return;
   }
+
+  resolve(resolveWithData ? {
+    success: false,
+    optInRequested,
+    status,
+    ...appPermissionOptions ? { options: appPermissionOptions } : {},
+  } : false);
 });
 
 export default grantPermissions;
