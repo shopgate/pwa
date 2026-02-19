@@ -39,11 +39,36 @@ export default function app(subscribe) {
     }
 
     // Register redirects for app permission request routes
-    redirects.set(PERMISSION_REQUEST_ROUTE_LOCATION, permissionRouteRedirectHandler);
-    redirects.set(PERMISSION_REQUEST_ROUTE_LOCATION_BACKGROUND, permissionRouteRedirectHandler);
-    redirects.set(PERMISSION_REQUEST_ROUTE_PUSH, permissionRouteRedirectHandler);
-    redirects.set(PERMISSION_REQUEST_ROUTE_TRACKING, permissionRouteRedirectHandler);
-    redirects.set(PERMISSION_REQUEST_ROUTE_CAMERA, permissionRouteRedirectHandler);
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_LOCATION,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_LOCATION_BACKGROUND,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_PUSH,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_TRACKING,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_CAMERA,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_CAMERA,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
   });
 
   subscribe(reloadApp$, () => {
