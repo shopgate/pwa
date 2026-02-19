@@ -8,7 +8,7 @@ import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { themeConfig } from '@shopgate/engage';
-import { isDev, isWindows } from '@shopgate/engage/core/helpers';
+import { isWindows, isLinux } from '@shopgate/engage/core/helpers';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
 import { Route, Router } from '@shopgate/pwa-common/components';
@@ -77,7 +77,15 @@ import { themeComponents, legacyThemeAPI } from '../themeApi';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 
-const devFontsUrl = 'https://connect.shopgate.com/assets/fonts/roboto/font.css';
+const fallbackFontsUrl = 'https://connect.shopgate.com/assets/fonts/roboto/font.css';
+
+// Add fallback font on known OS that don't have default iOS theme fonts available
+const needsFallbackFont = isWindows || isLinux;
+
+// Include Roboto font as a fallback when other fonts are not available
+const fontFamily = (themeConfig.typography.family || '').includes('Roboto')
+  ? themeConfig.typography.family
+  : `${(themeConfig.typography.family || '')}, Roboto`;
 
 new ThemeConfigResolver().resolveAll();
 
@@ -102,7 +110,7 @@ const Pages = ({ store }) => {
 
     return createTheme({
       typography: {
-        fontFamily: themeConfig.typography.family,
+        fontFamily,
         ...extendedTypography,
       },
     });
@@ -311,9 +319,9 @@ const Pages = ({ store }) => {
                           {React.Children.map(routePortals, Component => Component)}
                         </Router>
                         {/** Load the Roboto for Windows developers so that they see a nice font */}
-                        {isDev && isWindows && (
+                        {needsFallbackFont && (
                         <Helmet>
-                          <link href={devFontsUrl} rel="stylesheet" />
+                          <link href={fallbackFontsUrl} rel="stylesheet" />
                         </Helmet>
                         )}
                       </Viewport>
