@@ -219,7 +219,7 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
         ? nativeRequestDuration
         : (Date.now() - tsBeforeRequest);
 
-      wasUserInteraction = requestDuration > 1300;
+      wasUserInteraction = requestDuration > 1000;
     }
 
     optInRequested = wasUserInteraction;
