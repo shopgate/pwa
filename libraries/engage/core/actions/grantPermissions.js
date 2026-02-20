@@ -271,8 +271,8 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
     const openSettings = await dispatch(showModal({
       title: modalOptions.title || null,
       message: modalOptions.message,
-      confirm: modalOptions.confirm,
-      dismiss: modalOptions.dismiss,
+      confirm: modalOptions.confirm ?? 'permissions.access_denied.settings_button',
+      dismiss: modalOptions.dismiss ?? 'modal.dismiss',
       params: modalOptions.params,
     }));
 

@@ -56,41 +56,47 @@ export interface GrantPermissionsOptions {
   permissionId: PermissionId;
 
   /**
-   * Additional options for the permission request (forwarded to native).
+   * Additional options for the permission request.
    */
   permissionOptions?: Record<string, unknown>;
 
   /**
-   * Whether in case of declined permissions a modal shall redirect to app settings.
+   * Whether in case of declined permissions a modal shall be presented, which redirects to the app settings.
    * Options for the settings modal can be set via `modal` property.
+   * @default false
    */
   useSettingsModal?: boolean;
 
   /**
    * Whether a rationale modal should be shown before requesting the permission.
    * Options for the rationale modal can be set via `rationaleModal` property.
+   * @default false
    */
   useRationaleModal?: boolean;
 
   /**
    * Options for the rationale modal.
+   * @default {}
    */
   rationaleModal?: PermissionModalOptions;
 
   /**
    * Options for the settings modal.
+   * @default {}
    */
   modal?: PermissionModalOptions;
 
   /**
-   * If TRUE, no permissions will be requested if not already granted.
-   * (I.e. only check status.)
+   * If set to TRUE no permissions will be requested if not already granted. Otherwise only
+   * the current permission status will be checked without prompting the user.
+   * @default false
    */
   requestPermissions?: boolean;
 
   /**
-   * If TRUE, resolves with a data object instead of a boolean.
-   * Note: your JS default currently sets `resolveWithData = false`.
+   * When set to TRUE the promise will resolve with an object
+   * containing the permission status and additional data, instead of a boolean value.
+   * @default false
    */
   resolveWithData?: boolean;
 
