@@ -54,12 +54,12 @@ const ANDROID_PERMISSIONS_WITH_USER_INTERACTION_CHECK = [
  * @param {string} options.rationaleModal.confirm Label for the confirm button.
  * @param {string} options.rationaleModal.dismiss Label for the dismiss button.
  * @param {Object} options.rationaleModal.params Additional parameters for i18n strings.
- * @param {Object} [options.modal={}] Options for the settings modal.
- * @param {string} options.modal.title Modal title.
- * @param {string} options.modal.message Modal message.
- * @param {string} options.modal.confirm Label for the confirm button.
- * @param {string} options.modal.dismiss Label for the dismiss button.
- * @param {Object} options.modal.params Additional parameters for i18n strings.
+ * @param {Object} [options.settingsModal={}] Options for the settings modal.
+ * @param {string} options.settingsModal.title Modal title.
+ * @param {string} options.settingsModal.message Modal message.
+ * @param {string} options.settingsModal.confirm Label for the confirm button.
+ * @param {string} options.settingsModal.dismiss Label for the dismiss button.
+ * @param {Object} options.settingsModal.params Additional parameters for i18n strings.
  * @param {boolean} [options.requestPermissions=true] If set to TRUE no permissions will be
  * requested if not already granted,
  * @param {boolean} [options.resolveWithData=true] When set to TRUE the promise will resolve with
@@ -75,11 +75,20 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
     useSettingsModal = false,
     useRationaleModal = false,
     rationaleModal: rationaleModalOptions = {},
-    modal: modalOptions = {},
+    settingsModal,
+    // @deprecated options, to be removed in future major release
+    modal,
     requestPermissions = true,
     resolveWithData = false,
     meta = {},
   } = options;
+
+  if (modal) {
+    logger.warn('grantPermissions: The "modal" option is deprecated and will be removed in the future. Please use the "settingsModal" option instead.');
+  }
+
+  // In case the deprecated "modal" option is used, we want to use this for the settings modal, to
+  const settingsModalOptions = settingsModal || modal || {};
 
   let dispatchMock;
   let optInRequested = false;
@@ -269,11 +278,11 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
 
     // Present a modal that describes the situation, and allows the user to enter the app settings.
     const openSettings = await dispatch(showModal({
-      title: modalOptions.title || null,
-      message: modalOptions.message,
-      confirm: modalOptions.confirm ?? 'permissions.access_denied.settings_button',
-      dismiss: modalOptions.dismiss ?? 'modal.dismiss',
-      params: modalOptions.params,
+      title: settingsModalOptions.title || null,
+      message: settingsModalOptions.message,
+      confirm: settingsModalOptions.confirm ?? 'permissions.access_denied.settings_button',
+      dismiss: settingsModalOptions.dismiss ?? 'modal.dismiss',
+      params: settingsModalOptions.params,
     }));
 
     // The user just closed the modal.

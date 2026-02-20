@@ -53,8 +53,8 @@ describe('engage > core > actions > getGeolocation', () => {
   it('should pass through the options to the grantGeolocationPermissions action call', async () => {
     const options = {
       useSettingsModal: true,
-      resolveWithData: false,
-      modal: {
+      resolveWithData: true,
+      settingsModal: {
         message: 'Modal message',
         confirm: 'Confirm label',
       },

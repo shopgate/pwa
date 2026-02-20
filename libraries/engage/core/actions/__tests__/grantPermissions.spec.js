@@ -269,7 +269,7 @@ describe('engage > core > actions > grantPermissions', () => {
     const granted = await grantPermissions({
       permissionId,
       useSettingsModal: true,
-      modal: customModalOptions,
+      settingsModal: customModalOptions,
     })(dispatch, getState);
     expect(granted).toBe(false);
 

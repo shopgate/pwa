@@ -22,7 +22,7 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
       useSettingsModal: false,
       requestPermissions: true,
       resolveWithData: false,
-      modal: {
+      settingsModal: {
         title: null,
         message: 'permissions.access_denied.geolocation_message',
         confirm: 'permissions.access_denied.settings_button',
@@ -39,7 +39,7 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
 
     const result = grantGeolocationPermissions({
       useSettingsModal: true,
-      modal: customModalOptions,
+      settingsModal: customModalOptions,
     })(dispatch);
     expect(result).toEqual(grantPermissions());
     expect(dispatch).toHaveBeenCalledTimes(1);
@@ -50,7 +50,7 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
       useSettingsModal: true,
       requestPermissions: true,
       resolveWithData: false,
-      modal: {
+      settingsModal: {
         title: 'Modal title',
         message: 'permissions.access_denied.geolocation_message',
         confirm: 'permissions.access_denied.settings_button',
@@ -72,7 +72,7 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
 
     const result = grantGeolocationPermissions({
       useSettingsModal: true,
-      modal: customModalOptions,
+      settingsModal: customModalOptions,
     })(dispatch);
     expect(result).toEqual(grantPermissions());
     expect(dispatch).toHaveBeenCalledTimes(1);
@@ -83,7 +83,7 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
       useSettingsModal: true,
       requestPermissions: true,
       resolveWithData: false,
-      modal: customModalOptions,
+      settingsModal: customModalOptions,
     });
   });
 
@@ -98,7 +98,7 @@ describe('engage > core > actions > grantGeolocationPermissions', () => {
       useSettingsModal: false,
       requestPermissions: true,
       resolveWithData: false,
-      modal: {
+      settingsModal: {
         title: null,
         message: 'permissions.access_denied.geolocationMessageBackground',
         confirm: 'permissions.access_denied.settings_button',

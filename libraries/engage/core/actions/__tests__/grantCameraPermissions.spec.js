@@ -21,7 +21,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
       useSettingsModal: false,
-      modal: {
+      settingsModal: {
         title: null,
         message: 'permissions.access_denied.camera_message',
         confirm: 'permissions.access_denied.settings_button',
@@ -38,7 +38,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
 
     const result = grantCameraPermissions({
       useSettingsModal: true,
-      modal: customModalOptions,
+      settingsModal: customModalOptions,
     })(dispatch, getState);
     expect(result).toEqual(grantPermissions());
     expect(dispatch).toHaveBeenCalledTimes(1);
@@ -47,7 +47,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
       useSettingsModal: true,
-      modal: {
+      settingsModal: {
         title: 'Modal title',
         message: 'permissions.access_denied.camera_message',
         confirm: 'permissions.access_denied.settings_button',
@@ -69,7 +69,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
 
     const result = grantCameraPermissions({
       useSettingsModal: true,
-      modal: customModalOptions,
+      settingsModal: customModalOptions,
     })(dispatch, getState);
     expect(result).toEqual(grantPermissions());
     expect(dispatch).toHaveBeenCalledTimes(1);
@@ -78,7 +78,7 @@ describe('engage > core > actions > grantCameraPermissions', () => {
     expect(grantPermissions).toHaveBeenCalledWith({
       permissionId: PERMISSION_ID_CAMERA,
       useSettingsModal: true,
-      modal: customModalOptions,
+      settingsModal: customModalOptions,
     });
   });
 });

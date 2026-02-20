@@ -8,31 +8,35 @@ import grantPermissions from './grantPermissions';
  * @param {Object} options Action options.
  * @param {boolean} [options.useSettingsModal=false] Whether in case of declined permissions a modal
  * shall be presented, which redirects to the app settings.
- * @param {Object} [options.modal={}] Options for the settings modal.
- * @param {string} options.modal.title Modal title.
- * @param {string} options.modal.message Modal message.
- * @param {string} options.modal.confirm Label for the confirm button.
- * @param {string} options.modal.dismiss Label for the dismiss button.
- * @param {Object} options.modal.params Additional parameters for i18n strings.
+ * @param {Object} [options.settingsModal={}] Options for the settings modal.
+ * @param {string} options.settingsModal.title Modal title.
+ * @param {string} options.settingsModal.message Modal message.
+ * @param {string} options.settingsModal.confirm Label for the confirm button.
+ * @param {string} options.settingsModal.dismiss Label for the dismiss button.
+ * @param {Object} options.settingsModal.params Additional parameters for i18n strings.
  * @return { Function } A redux thunk.
  */
 const grantCameraPermissions = (options = {}) => (dispatch) => {
   const {
     permissionId,
     useSettingsModal = false,
-    modal = {},
+    settingsModal,
+    // @deprecated options, to be removed in future major release
+    modal,
     ...rest
   } = options;
+
+  const settingsModalOptions = settingsModal || modal || {};
 
   return dispatch(grantPermissions({
     permissionId: PERMISSION_ID_CAMERA,
     useSettingsModal,
-    modal: {
+    settingsModal: {
       title: null,
       message: 'permissions.access_denied.camera_message',
       confirm: 'permissions.access_denied.settings_button',
       dismiss: 'common.close',
-      ...modal,
+      ...settingsModalOptions,
     },
     ...rest,
   }));

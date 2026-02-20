@@ -84,6 +84,13 @@ export interface GrantPermissionsOptions {
    * Options for the settings modal.
    * @default {}
    */
+  settingsModal?: PermissionModalOptions;
+
+  /**
+   * Options for the settings modal.
+   * @deprecated use `settingsModal` instead
+   * @default {}
+   */
   modal?: PermissionModalOptions;
 
   /**

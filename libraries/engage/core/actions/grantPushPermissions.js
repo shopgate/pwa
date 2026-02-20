@@ -15,12 +15,12 @@ import grantPermissions from './grantPermissions';
  * @param {string} options.rationaleModal.confirm Label for the confirm button.
  * @param {string} options.rationaleModal.dismiss Label for the dismiss button.
  * @param {Object} options.rationaleModal.params Additional parameters for i18n strings.
- * @param {Object} [options.modal={}] Options for the settings modal.
- * @param {string} options.modal.title Modal title.
- * @param {string} options.modal.message Modal message.
- * @param {string} options.modal.confirm Label for the confirm button.
- * @param {string} options.modal.dismiss Label for the dismiss button.
- * @param {Object} options.modal.params Additional parameters for i18n strings.
+ * @param {Object} [options.settingsModal={}] Options for the settings modal.
+ * @param {string} options.settingsModal.title Modal title.
+ * @param {string} options.settingsModal.message Modal message.
+ * @param {string} options.settingsModal.confirm Label for the confirm button.
+ * @param {string} options.settingsModal.dismiss Label for the dismiss button.
+ * @param {Object} options.settingsModal.params Additional parameters for i18n strings.
  * @param {Object} [options.meta={}] Additional meta data used for opt-in tracking actions
  * @param {boolean} [options.resolveWithData=true] When set to TRUE the promise will resolve with
  * an object containing the permission status and whether the opt-in dialog was shown,
@@ -32,22 +32,24 @@ const grantPushPermissions = (options = {}) => (dispatch) => {
     permissionId,
     useSettingsModal = true,
     useRationaleModal = false,
-    modal = {},
+    settingsModal = {},
     rationaleModal = {},
     meta = {},
     ...rest
   } = options;
 
+  const settingsModalOptions = settingsModal || {};
+
   return dispatch(grantPermissions({
     permissionId: PERMISSION_ID_PUSH,
     useSettingsModal,
     useRationaleModal,
-    modal: {
+    settingsModal: {
       title: null,
       message: 'permissions.access_denied.push_message',
       confirm: 'permissions.access_denied.settings_button',
       dismiss: 'modal.dismiss',
-      ...modal,
+      ...settingsModalOptions,
     },
     rationaleModal,
     meta,
