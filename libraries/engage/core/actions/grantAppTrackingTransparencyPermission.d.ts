@@ -1,8 +1,9 @@
 import type { UnknownAction } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
-export type { GrantPermissionsOptions, GrantPermissionsResult } from './grantPermissions';
-export type { GrantPermissionsOptions, GrantPermissionsResult };
+import type { GrantPermissionsOptions, GrantPermissionsResult } from './grantPermissions';
+
+export type GrantAppTrackingTransparencyPermissionsResult = GrantPermissionsResult;
 
 /**
  * Determines the current state of the app tracking transparency permissions.
@@ -14,11 +15,11 @@ export type { GrantPermissionsOptions, GrantPermissionsResult };
  * containing the permission status and additional data, instead of a boolean value.
  */
 declare function grantAppTrackingTransparencyPermission<State = unknown>(
-  options: Omit<GrantPermissionsOptions, 'permissionId'> & { resolveWithData: true }
-): ThunkAction<Promise<GrantPermissionsResult>, State, unknown, UnknownAction>;
+  options: Omit<GrantPermissionsOptions, 'permissionId'|'permissionOptions'> & { resolveWithData: true }
+): ThunkAction<Promise<GrantAppTrackingTransparencyPermissionsResult>, State, unknown, UnknownAction>;
 
 declare function grantAppTrackingTransparencyPermission<State = unknown>(
-  options?: Omit<GrantPermissionsOptions, 'permissionId'> & { resolveWithData?: false | undefined }
+  options?: Omit<GrantPermissionsOptions, 'permissionId'|'permissionOptions'> & { resolveWithData?: false | undefined }
 ): ThunkAction<Promise<boolean>, State, unknown, UnknownAction>;
 
 export default grantAppTrackingTransparencyPermission;

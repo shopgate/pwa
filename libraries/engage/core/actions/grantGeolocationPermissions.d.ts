@@ -2,7 +2,8 @@ import type { UnknownAction } from 'redux';
 import type { ThunkAction } from 'redux-thunk';
 
 import type { GrantPermissionsOptions, GrantPermissionsResult } from './grantPermissions';
-export type { GrantPermissionsOptions, GrantPermissionsResult };
+
+export type GrantGeolocationPermissionsResult = GrantPermissionsResult;
 
 type GeolocationOptions = {
   /**
@@ -14,7 +15,7 @@ type GeolocationOptions = {
   requireBackgroundAccess?: boolean;
 }
 
-type GeolocationGrantOptions = Omit<GrantPermissionsOptions, 'permissionId'> & GeolocationOptions;
+type GeolocationGrantOptions = Omit<GrantPermissionsOptions, 'permissionId'|'permissionOptions'> & GeolocationOptions;
 
 /**
  * Determines the current state of the geolocation permissions.
@@ -27,7 +28,7 @@ type GeolocationGrantOptions = Omit<GrantPermissionsOptions, 'permissionId'> & G
  */
 declare function grantGeolocationPermissions<State = unknown>(
   options: GeolocationGrantOptions & { resolveWithData: true }
-): ThunkAction<Promise<GrantPermissionsResult>, State, unknown, UnknownAction>;
+): ThunkAction<Promise<GrantGeolocationPermissionsResult>, State, unknown, UnknownAction>;
 
 declare function grantGeolocationPermissions<State = unknown>(
   options?: GeolocationGrantOptions & { resolveWithData?: false | undefined }
