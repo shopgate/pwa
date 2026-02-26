@@ -32,7 +32,11 @@ export const createTheme = (options = {}) => {
 
   /** @type {ColorSchemeThemes} */
   const colorSchemeThemes = Object.entries(colorSchemes).reduce((acc, [type, scheme]) => {
-    acc[type] = createThemeFromColorScheme(merge(defaultScheme, scheme));
+    acc[type] = createThemeFromColorScheme(merge(
+      { palette: { mode: type } },
+      defaultScheme,
+      scheme
+    ));
     return acc;
   }, {});
 
@@ -46,6 +50,7 @@ export const createTheme = (options = {}) => {
   return {
     ...currentTheme,
     ...cssVars,
+    defaultColorScheme,
     breakpoints,
     spacing,
     transitions,

@@ -1,7 +1,8 @@
 import React, {
-  createContext, memo, useState, useMemo, useEffect,
+  createContext, memo, useMemo, useLayoutEffect,
 } from 'react';
 import PropTypes from 'prop-types';
+import { useLocalStorage } from '@shopgate/engage/core/hooks';
 
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 
@@ -29,14 +30,18 @@ const ThemeProvider = ({
   children,
   theme,
 }) => {
-  const [activeColorScheme, setActiveColorScheme] = useState('light');
+  const [
+    activeColorScheme,
+    setActiveColorScheme,
+  ] = useLocalStorage('persistedColorScheme', { initialValue: theme.defaultColorScheme });
 
   const colorSchemeContextValue = useMemo(() => ({
     mode: activeColorScheme,
     setMode: setActiveColorScheme,
-  }), [activeColorScheme]);
+  }), [activeColorScheme, setActiveColorScheme]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (!activeColorScheme) return;
     const root = document.documentElement;
     root.classList.remove('light', 'dark');
     root.classList.add(activeColorScheme);

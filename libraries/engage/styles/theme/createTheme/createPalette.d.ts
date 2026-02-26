@@ -1,3 +1,5 @@
+import { type DefaultColorScheme } from '../createTheme'
+
 type ColorPartialKeys =
   | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
   | 'A100' | 'A200' | 'A400' | 'A700';
@@ -22,6 +24,7 @@ interface PaletteColorWithContrast extends PaletteColor {
 type PaletteColor<WithContrast extends boolean = false> =
   BasePaletteColor & (WithContrast extends true ? { contrastText: string } : {});
 export interface Palette {
+  mode: 'light' | 'dark';
   primary: PaletteColor<true>;
   secondary: PaletteColor<true>;
   error: PaletteColor;
@@ -30,9 +33,10 @@ export interface Palette {
   cta: PaletteColor<true>;
   text: TypeText;
   grey: ColorPartial;
+  getContrastText: (background: string) => string;
 }
 
-export type PaletteOptions = Palette & {
+export type PaletteOptions = Partial<Omit<Palette, 'getContrastText'>> & {
   /**
    * The tonal offset is used to calculate the light and dark variants of a color if they are not provided.
    */

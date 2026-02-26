@@ -15,7 +15,7 @@ export interface ColorSchemeOptions {
 }
 
 export interface ThemeOptions {
-  defaultColorScheme?: DefaultColorScheme;
+  defaultColorScheme?: 'light' | 'dark';
   palette?: Palette;
   typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
   colorSchemes?: Record<DefaultColorScheme, ColorSchemeOptions>;
@@ -33,7 +33,10 @@ export interface BaseTheme {
 }
 
 export interface Theme extends BaseTheme {
-
+  /**
+   * The default color scheme to use when the user has not specified a preference.
+   */
+  defaultColorScheme?: 'light' | 'dark';
   /**
    * API to simplify the use of media queries.
    */

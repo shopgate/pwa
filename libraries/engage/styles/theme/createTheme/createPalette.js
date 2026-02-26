@@ -236,6 +236,9 @@ const createPalette = (inputPalette) => {
       main: '',
       contrastText: '',
     },
+    background: {
+      default: '',
+    },
     text: {
       primary: '',
       secondary: '',

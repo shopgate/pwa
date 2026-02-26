@@ -22,7 +22,7 @@ export interface ColorSchemeContextValue {
   /**
    * The current color scheme (e.g., 'light' or 'dark')
    */
-  mode: DefaultColorScheme;
+  mode: 'light' | 'dark';
   /**
    * Function to update the color scheme
    */

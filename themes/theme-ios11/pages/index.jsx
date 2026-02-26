@@ -1,11 +1,11 @@
 import 'Extensions/portals';
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { CacheProvider } from '@emotion/react';
 import { emotionCache } from '@shopgate/engage/styles/tss';
 import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
-import { createLegacyPalette } from '@shopgate/engage/styles/theme/createLegacyPalette';
+import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { themeConfig } from '@shopgate/engage';
@@ -102,29 +102,29 @@ const Pages = ({ store }) => {
     const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);
 
     return createTheme({
+      ...createDefaultThemeOptions(),
       typography: {
         fontFamily: themeConfig.typography.family,
         ...extendedTypography,
       },
-      colorSchemes: {
-        light: {
-          palette: createLegacyPalette(),
-        },
-        dark: {
-          palette: {
-            primary: {
-              main: '#ff0000',
-            },
-          },
-        },
-      },
     });
+  }, []);
+
+  // Add theme class to root element - can't be done via Helmet because it will always replace
+  // the entire class list instead of extending it.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.add('theme-ios11');
+
+    return () => {
+      root.classList.remove('theme-ios11');
+    };
   }, []);
 
   return (
     <App store={store}>
       <Helmet>
-        <html lang={appConfig.language.substring(0, 2)} className="theme-ios11" />
+        <html lang={appConfig.language.substring(0, 2)} />
         {recaptchaEnabled && googleCloudSiteKey ? (
           <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
         ) : null }
