@@ -16,12 +16,11 @@ interface BasePaletteColor {
 }
 
 interface PaletteColorWithContrast extends PaletteColor {
-  contrast: string;
+  contrastText: string;
 }
 
 type PaletteColor<WithContrast extends boolean = false> =
-  BasePaletteColor & (WithContrast extends true ? { contrast: string } : {});
-
+  BasePaletteColor & (WithContrast extends true ? { contrastText: string } : {});
 export interface Palette {
   primary: PaletteColor<true>;
   secondary: PaletteColor<true>;
@@ -33,4 +32,15 @@ export interface Palette {
   grey: ColorPartial;
 }
 
-export default function createPalette(): Palette;
+export type PaletteOptions = Palette & {
+  /**
+   * The tonal offset is used to calculate the light and dark variants of a color if they are not provided.
+   */
+  tonalOffset?: number;
+  /**
+   * The contrast threshold is used to determine which contrast text color to use for a given background
+   */
+  contrastThreshold?: number;
+}
+
+export default function createPalette(paletteOptions: PaletteOptions): Palette;

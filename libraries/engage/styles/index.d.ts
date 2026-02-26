@@ -6,6 +6,7 @@ export {
   useMediaQuery,
   useResponsiveValue,
   useTheme,
+  useColorScheme,
   Theme,
 } from './theme';
 export {

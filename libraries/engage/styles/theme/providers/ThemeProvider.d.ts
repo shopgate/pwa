@@ -16,3 +16,15 @@ export interface ThemeProviderProps<Theme = Theme> {
 export default function ThemeProvider<T = Theme>(
   props: ThemeProviderProps<T>
 ): React.ReactElement<ThemeProviderProps<T>>;
+
+
+export interface ColorSchemeContextValue {
+  /**
+   * The current color scheme (e.g., 'light' or 'dark')
+   */
+  mode: DefaultColorScheme;
+  /**
+   * Function to update the color scheme
+   */
+  setMode: React.Dispatch<React.SetStateAction<DefaultColorScheme>>;
+}

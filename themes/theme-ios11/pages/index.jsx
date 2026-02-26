@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { CacheProvider } from '@emotion/react';
 import { emotionCache } from '@shopgate/engage/styles/tss';
 import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
+import { createLegacyPalette } from '@shopgate/engage/styles/theme/createLegacyPalette';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { themeConfig } from '@shopgate/engage';
@@ -104,6 +105,18 @@ const Pages = ({ store }) => {
       typography: {
         fontFamily: themeConfig.typography.family,
         ...extendedTypography,
+      },
+      colorSchemes: {
+        light: {
+          palette: createLegacyPalette(),
+        },
+        dark: {
+          palette: {
+            primary: {
+              main: '#ff0000',
+            },
+          },
+        },
       },
     });
   }, []);
@@ -304,6 +317,10 @@ const Pages = ({ store }) => {
                           <Route
                             pattern={STORE_DETAILS_PATTERN}
                             component={routes.StoreDetails}
+                          />
+                          <Route
+                            pattern="/theme-demo"
+                            component={routes.ThemeDemo}
                           />
                           <Route.NotFound
                             component={PageNotFound}

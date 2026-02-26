@@ -1,5 +1,5 @@
 import React, {
-  createContext, useEffect, useState,
+  createContext, useEffect, useState, memo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@shopgate/engage/styles';
@@ -66,4 +66,4 @@ ActiveBreakpointProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default ActiveBreakpointProvider;
+export default memo(ActiveBreakpointProvider);

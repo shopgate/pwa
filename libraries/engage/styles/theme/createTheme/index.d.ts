@@ -7,15 +7,33 @@ import { type ZIndex } from './zIndex';
 
 export { type Breakpoint } from './createBreakpoints'
 
-export interface ThemeOptions {
+export type DefaultColorScheme = 'light' | 'dark';
+
+export interface ColorSchemeOptions {
+  palette?: Palette;
   typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
 }
 
-export interface Theme {
+export interface ThemeOptions {
+  defaultColorScheme?: DefaultColorScheme;
+  palette?: Palette;
+  typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
+  colorSchemes?: Record<DefaultColorScheme, ColorSchemeOptions>;
+}
+
+export interface BaseTheme {
   /**
    * The palette defines the theme colors.
    */
   palette: Palette;
+  /**
+   * Font styles for multiple typography variants.
+   */
+  typography: Typography;
+}
+
+export interface Theme extends BaseTheme {
+
   /**
    * API to simplify the use of media queries.
    */
@@ -29,13 +47,11 @@ export interface Theme {
    */
   transitions: Transitions;
   /**
-   * Font styles for multiple typography variants.
-   */
-  typography: Typography;
-  /**
    * Reference to z-index values for multiple components.
    */
   zIndex: ZIndex;
 }
+
+export type ColorSchemeThemes = Record<DefaultColorScheme, BaseTheme>
 
 export function createTheme(options?: ThemeOptions): Theme;

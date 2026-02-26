@@ -5,4 +5,5 @@ export {
   useMediaQuery,
   useResponsiveValue,
   useTheme,
+  useColorScheme,
 } from './hooks';
