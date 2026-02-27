@@ -45,7 +45,13 @@ export const createTheme = (options = {}) => {
   const getColorSchemeSelector = createGetColorSchemeSelector(colorSchemeSelector);
   const setActiveColorScheme = createSetActiveColorScheme(colorSchemeSelector);
 
-  const cssVars = createCssVarsForColorSchemeThemes(colorSchemeThemes, { getColorSchemeSelector });
+  const {
+    cssVarsTheme,
+    generateStyleSheets,
+  } = createCssVarsForColorSchemeThemes(
+    colorSchemeThemes,
+    { getColorSchemeSelector }
+  );
 
   const currentTheme = colorSchemeThemes[defaultColorScheme] ?? colorSchemeThemes.light;
 
@@ -54,7 +60,7 @@ export const createTheme = (options = {}) => {
 
   return {
     ...currentTheme,
-    ...cssVars,
+    ...cssVarsTheme,
     defaultColorScheme,
     breakpoints,
     spacing,
@@ -62,5 +68,6 @@ export const createTheme = (options = {}) => {
     zIndex,
     getColorSchemeSelector,
     setActiveColorScheme,
+    generateStyleSheets,
   };
 };

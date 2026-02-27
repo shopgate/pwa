@@ -4,47 +4,19 @@ import { cssVarsParser } from './helpers';
 /** @typedef {import('./index').ColorSchemeThemes} ColorSchemeThemes */
 /** @typedef {import('./index').BaseTheme} BaseTheme */
 /** @typedef {import('./helpers').GetColorSchemeSelector} GetColorSchemeSelector */
-
-const STYLE_TAG_ID = 'sg-theme-stylesheet';
-
-/**
- * Injects the generated CSS variables into a style tag in the document head.
- * @param {Array} styleSheets An array of style sheet objects containing CSS variable declarations.
- */
-const injectStyleSheets = (styleSheets) => {
-  let styleTag = document.getElementById(STYLE_TAG_ID);
-
-  if (styleTag) {
-    styleTag.remove();
-  }
-
-  styleTag = document.createElement('style');
-  styleTag.setAttribute('id', STYLE_TAG_ID);
-
-  const cssContent = styleSheets
-    .map((sheet) => {
-      const selector = Object.keys(sheet)[0];
-      const declarations = Object.entries(sheet[selector])
-        .map(([key, value]) => `${key}: ${value};`)
-        .join('\n');
-      return `${selector} {\n${declarations}\n}`;
-    })
-    .join('\n');
-
-  styleTag.textContent = cssContent;
-  document.head.appendChild(styleTag);
-};
+/** @typedef {import('./createCssVarsForColorSchemeThemes')
+ * .CreateCssVarsForColorSchemeThemesOptions} CreateCssVarsForColorSchemeThemesOptions */
+/** @typedef {import('./createCssVarsForColorSchemeThemes')
+ * .CreateCssVarsForColorSchemeThemesReturnValue} CreateCssVarsForColorSchemeThemesReturnValue */
 
 /**
  * Generates CSS variables for each color scheme theme, to be used in the CSS of the application.
  * This allows for dynamic theming based on the active color scheme.
- * @param {ColorSchemeThemes} colorSchemes The themes for each color scheme.
- * @param {Object} options Options for generating CSS variables, such as prefix and skip function.
- * @param {GetColorSchemeSelector} options.getColorSchemeSelector A function to generate the CSS
- * selector for a given color scheme.
- * @returns {BaseTheme}
+ * @param {ColorSchemeThemes} colorSchemes The default themes by each color scheme.
+ * @param {CreateCssVarsForColorSchemeThemesOptions} options Helper Options
+ * @returns {CreateCssVarsForColorSchemeThemesReturnValue}
  */
-const createCssVarsForColorSchemeThemes = (colorSchemes, options) => {
+export default function createCssVarsForColorSchemeThemes(colorSchemes, options) {
   const { getColorSchemeSelector } = options || {};
 
   const colorSchemeMap = [];
@@ -67,9 +39,8 @@ const createCssVarsForColorSchemeThemes = (colorSchemes, options) => {
     });
   });
 
-  injectStyleSheets(styleSheets);
-
-  return merge(colorSchemes.light, colorSchemeMap.light.vars);
-};
-
-export default createCssVarsForColorSchemeThemes;
+  return {
+    cssVarsTheme: merge(colorSchemes.light, colorSchemeMap.light.vars),
+    generateStyleSheets: () => styleSheets,
+  };
+}

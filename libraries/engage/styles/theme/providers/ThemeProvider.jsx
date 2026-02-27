@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { useLocalStorage } from '@shopgate/engage/core/hooks';
+import { GlobalStyles } from '@shopgate/engage/styles';
 
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 
@@ -47,12 +48,15 @@ const ThemeProvider = ({
     theme.setActiveColorScheme(activeColorScheme);
   }, [activeColorScheme, theme]);
 
+  const styleSheets = useMemo(() => theme.generateStyleSheets(), [theme]);
+
   return (
     <ColorSchemeContext.Provider value={colorSchemeContextValue}>
       <ThemeContext.Provider value={theme}>
         <ActiveBreakpointProvider>
           {children}
         </ActiveBreakpointProvider>
+        <GlobalStyles styles={styleSheets} />
       </ThemeContext.Provider>
     </ColorSchemeContext.Provider>
   );

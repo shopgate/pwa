@@ -52,14 +52,6 @@ const Entry = ({ entry }) => {
 
   // Determine text color
   const color = useMemo(() => {
-    // For now use contrastText color when available
-    if (entry.group.contrastText && entry.name !== 'contrastText') {
-      return entry.group.contrastText;
-    }
-    // Compute color when no contrastText is available
-    // return (entry.group.getContrastText || theme.palette.getContrastText)(entry.value);
-    // return typeof theme.palette.getContrastText === 'function' && entry.value
-
     if (!entry.value) {
       return '#fff';
     }
@@ -69,8 +61,6 @@ const Entry = ({ entry }) => {
       : '#fff';
   }, [
     entry.value,
-    entry.name,
-    entry.group.contrastText,
     theme.palette,
   ]);
 
@@ -141,7 +131,7 @@ const Palette = () => {
 
         return {
           headline: groupTitle,
-          entries: subEntries,
+          entries: subEntries.filter(({ name }) => name !== 'contrastText'),
         };
       }),
     [theme.palette]

@@ -5,7 +5,7 @@ import { type Spacing } from './createSpacing';
 import { type Transitions } from './transitions';
 import { type ZIndex } from './zIndex';
 import { type GetColorSchemeSelector, type ActiveColorSchemeSwitcher } from './helpers';
-
+import { type CreateCssVarsForColorSchemeThemesReturnValue} from './createCssVarsForColorSchemeThemes';
 
 export { type Breakpoint } from './createBreakpoints'
 
@@ -60,7 +60,7 @@ export interface Theme extends BaseTheme {
 
 export type ColorSchemeThemes = Record<DefaultColorScheme, BaseTheme>
 
-export type ThemeInternal = Theme & {
+export type ThemeInternal = Theme & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {
   /**
    * Function that generates a CSS selector string for a given color scheme.
    */
