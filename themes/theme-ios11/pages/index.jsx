@@ -1,5 +1,5 @@
 import 'Extensions/portals';
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { CacheProvider } from '@emotion/react';
@@ -110,21 +110,10 @@ const Pages = ({ store }) => {
     });
   }, []);
 
-  // Add theme class to root element - can't be done via Helmet because it will always replace
-  // the entire class list instead of extending it.
-  useEffect(() => {
-    const root = document.documentElement;
-    root.classList.add('theme-ios11');
-
-    return () => {
-      root.classList.remove('theme-ios11');
-    };
-  }, []);
-
   return (
     <App store={store}>
       <Helmet>
-        <html lang={appConfig.language.substring(0, 2)} />
+        <html lang={appConfig.language.substring(0, 2)} className="theme-ios11" />
         {recaptchaEnabled && googleCloudSiteKey ? (
           <script src={`https://www.google.com/recaptcha/enterprise.js?render=${googleCloudSiteKey}`} />
         ) : null }

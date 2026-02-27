@@ -7,6 +7,7 @@ import { useLocalStorage } from '@shopgate/engage/core/hooks';
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 
 /** @typedef {import('../index').Theme} Theme */
+/** @typedef {import('../createTheme').ThemeInternal} ThemeInternal */
 
 /** @type {import('react').Context<Theme>} */
 export const ThemeContext = createContext();
@@ -22,7 +23,7 @@ export const ColorSchemeContext = createContext({
 /**
  * The ThemeProvider component provides the theme context to its children.
  * @param {Object} props The component props
- * @param {Theme} props.theme The theme object to provide
+ * @param {ThemeInternal} props.theme The theme object to provide
  * @param {React.ReactNode} props.children The children to render within the provider
  * @returns {JSX.Element} The ThemeProvider component
  */
@@ -42,10 +43,9 @@ const ThemeProvider = ({
 
   useLayoutEffect(() => {
     if (!activeColorScheme) return;
-    const root = document.documentElement;
-    root.classList.remove('light', 'dark');
-    root.classList.add(activeColorScheme);
-  }, [activeColorScheme]);
+
+    theme.setActiveColorScheme(activeColorScheme);
+  }, [activeColorScheme, theme]);
 
   return (
     <ColorSchemeContext.Provider value={colorSchemeContextValue}>

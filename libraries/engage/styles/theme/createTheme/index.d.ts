@@ -4,6 +4,8 @@ import { type Breakpoints } from './createBreakpoints';
 import { type Spacing } from './createSpacing';
 import { type Transitions } from './transitions';
 import { type ZIndex } from './zIndex';
+import { type GetColorSchemeSelector, type ActiveColorSchemeSwitcher } from './helpers';
+
 
 export { type Breakpoint } from './createBreakpoints'
 
@@ -16,6 +18,7 @@ export interface ColorSchemeOptions {
 
 export interface ThemeOptions {
   defaultColorScheme?: 'light' | 'dark';
+  colorSchemeSelector?: 'data' | 'class';
   palette?: Palette;
   typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
   colorSchemes?: Record<DefaultColorScheme, ColorSchemeOptions>;
@@ -56,5 +59,16 @@ export interface Theme extends BaseTheme {
 }
 
 export type ColorSchemeThemes = Record<DefaultColorScheme, BaseTheme>
+
+export type ThemeInternal = Theme & {
+  /**
+   * Function that generates a CSS selector string for a given color scheme.
+   */
+  getColorSchemeSelector?: GetColorSchemeSelector;
+  /**
+   * Function that switches the color scheme by the corresponding selector type.
+   */
+  setActiveColorScheme?: ActiveColorSchemeSwitcher;
+};
 
 export function createTheme(options?: ThemeOptions): Theme;

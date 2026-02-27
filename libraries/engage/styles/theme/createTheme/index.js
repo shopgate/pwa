@@ -5,6 +5,7 @@ import transitions from './transitions';
 import zIndex from './zIndex';
 import createThemeFromColorScheme from './createThemeFromColorScheme';
 import createCssVarsForColorSchemeThemes from './createCssVarsForColorSchemeThemes';
+import { createGetColorSchemeSelector, createSetActiveColorScheme } from './helpers';
 
 /** @typedef {import('./index').ThemeOptions} ThemeOptions */
 /** @typedef {import('./index').BaseTheme} BaseTheme */
@@ -20,6 +21,7 @@ import createCssVarsForColorSchemeThemes from './createCssVarsForColorSchemeThem
 export const createTheme = (options = {}) => {
   const {
     defaultColorScheme = 'light',
+    colorSchemeSelector = 'data',
     palette: paletteInput = {},
     typography: typographyInput = {},
     colorSchemes = { light: {} },
@@ -40,7 +42,10 @@ export const createTheme = (options = {}) => {
     return acc;
   }, {});
 
-  const cssVars = createCssVarsForColorSchemeThemes(colorSchemeThemes);
+  const getColorSchemeSelector = createGetColorSchemeSelector(colorSchemeSelector);
+  const setActiveColorScheme = createSetActiveColorScheme(colorSchemeSelector);
+
+  const cssVars = createCssVarsForColorSchemeThemes(colorSchemeThemes, { getColorSchemeSelector });
 
   const currentTheme = colorSchemeThemes[defaultColorScheme] ?? colorSchemeThemes.light;
 
@@ -55,5 +60,7 @@ export const createTheme = (options = {}) => {
     spacing,
     transitions,
     zIndex,
+    getColorSchemeSelector,
+    setActiveColorScheme,
   };
 };

@@ -3,6 +3,7 @@ import { cssVarsParser } from './helpers';
 
 /** @typedef {import('./index').ColorSchemeThemes} ColorSchemeThemes */
 /** @typedef {import('./index').BaseTheme} BaseTheme */
+/** @typedef {import('./helpers').GetColorSchemeSelector} GetColorSchemeSelector */
 
 const STYLE_TAG_ID = 'sg-theme-stylesheet';
 
@@ -38,12 +39,18 @@ const injectStyleSheets = (styleSheets) => {
  * Generates CSS variables for each color scheme theme, to be used in the CSS of the application.
  * This allows for dynamic theming based on the active color scheme.
  * @param {ColorSchemeThemes} colorSchemes The themes for each color scheme.
+ * @param {Object} options Options for generating CSS variables, such as prefix and skip function.
+ * @param {GetColorSchemeSelector} options.getColorSchemeSelector A function to generate the CSS
+ * selector for a given color scheme.
  * @returns {BaseTheme}
  */
-const createCssVarsForColorSchemeThemes = (colorSchemes) => {
+const createCssVarsForColorSchemeThemes = (colorSchemes, options) => {
+  const { getColorSchemeSelector } = options || {};
+
   const colorSchemeMap = [];
   const styleSheets = [];
 
+  // Create CSS variables for each color scheme and generate corresponding style sheets
   Object.entries(colorSchemes).forEach(([schemeName, theme]) => {
     const { css, vars, varsWithDefaults } = cssVarsParser(theme);
 
@@ -54,7 +61,7 @@ const createCssVarsForColorSchemeThemes = (colorSchemes) => {
     };
 
     styleSheets.push({
-      [`${schemeName === 'light' ? ':root, ' : ''}.${schemeName}`]: {
+      [`${schemeName === 'light' ? ':root, ' : ''}${getColorSchemeSelector(schemeName)}`]: {
         ...css,
       },
     });
