@@ -1,30 +1,28 @@
-import React, {
+import {
   createContext, useEffect, useState, memo,
 } from 'react';
-import PropTypes from 'prop-types';
 import { useTheme } from '@shopgate/engage/styles';
+import { type Breakpoint } from '..';
+
+export const ActiveBreakpointContext = createContext<Breakpoint | undefined>('' as Breakpoint);
+
+type ActiveBreakpointProviderProps = {
+  children: React.ReactNode;
+};
 
 /**
- * @typedef {import('..').Breakpoint} Breakpoint
+ * Provides the current active breakpoint to child components.
+ * @param props The component props
+ * @returns The ActiveBreakpointProvider component
  */
-
-/** @type {import('react').Context<Breakpoint>} */
-export const ActiveBreakpointContext = createContext(undefined);
-
-/**
- * @param {Object} props The component props
- * @param {React.ReactNode} props.children The children to render within the provider
- * @returns {JSX.Element} The ActiveBreakpointProvider component
- */
-const ActiveBreakpointProvider = ({ children }) => {
+const ActiveBreakpointProvider = ({ children }: ActiveBreakpointProviderProps) => {
   const theme = useTheme();
 
   // ['xl', 'lg', ..., 'xs']
   const breakpoints = [...theme.breakpoints.keys].reverse();
 
   /**
-   * Retrieve the initial breakpoint based on the current window size.
-   * @returns {Breakpoint|undefined} The initial breakpoint based on the current window size.
+   * Returns the initial active breakpoint based on the current window size.
    */
   const getInitialBreakpoint = () => {
     if (typeof window === 'undefined') return undefined;
@@ -32,8 +30,7 @@ const ActiveBreakpointProvider = ({ children }) => {
       window.matchMedia(theme.breakpoints.up(bp).replace(/^@media( ?)/m, '')).matches);
   };
 
-  /** @type {[Breakpoint, React.Dispatch<React.SetStateAction<Breakpoint>>]} */
-  const [active, setActive] = useState(getInitialBreakpoint);
+  const [active, setActive] = useState<Breakpoint | undefined>(getInitialBreakpoint);
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
@@ -60,10 +57,6 @@ const ActiveBreakpointProvider = ({ children }) => {
       {children}
     </ActiveBreakpointContext.Provider>
   );
-};
-
-ActiveBreakpointProvider.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default memo(ActiveBreakpointProvider);

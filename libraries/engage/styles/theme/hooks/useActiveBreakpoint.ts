@@ -1,4 +1,5 @@
-import { Breakpoint } from '..';
+import { useContext } from 'react';
+import { ActiveBreakpointContext } from '../providers/ActiveBreakpointProvider';
 
 /**
  * Returns the active breakpoint for the current window size.
@@ -15,4 +16,6 @@ import { Breakpoint } from '..';
  * }
  * ```
  */
-export default function useActiveBreakpoint(): Breakpoint;
+const useActiveBreakpoint = () => useContext(ActiveBreakpointContext);
+
+export default useActiveBreakpoint;

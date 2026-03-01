@@ -10,6 +10,7 @@ export const emotionCache = createCache({
 });
 
 export const { tss } = createTss({
+  // @ts-expect-error - We are sure about the type here
   useContext: useTheme,
 });
 

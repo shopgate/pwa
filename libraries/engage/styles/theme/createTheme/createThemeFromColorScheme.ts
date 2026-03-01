@@ -1,15 +1,12 @@
 import createPalette from './createPalette';
 import createTypography from './createTypography';
-
-/** @typedef {import('./index').ColorSchemeOptions} ColorSchemeOptions */
-/** @typedef {import('./index').BaseTheme} BaseTheme */
+import type { ColorSchemeOptions, BaseTheme } from './types';
 
 /**
  * Creates a theme object for a given color scheme (light or dark).
- * @param {ColorSchemeOptions} colorScheme The color scheme options.
- * @returns {BaseTheme}
+ * @param colorScheme The color scheme options.
  */
-const createThemeFromColorScheme = (colorScheme) => {
+const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): BaseTheme => {
   const {
     palette: paletteInput = {},
     typography: typographyInput = {},

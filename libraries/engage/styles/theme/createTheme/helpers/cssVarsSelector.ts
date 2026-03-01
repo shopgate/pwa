@@ -1,14 +1,14 @@
-import { DefaultColorScheme } from '../'
+import type { ColorSchemeName, ColorSchemeSelectorType } from '..';
 
 /**
  * Function that generates a CSS selector string for a given color scheme.
  */
-export type GetColorSchemeSelector = (colorScheme: DefaultColorScheme) => string;
+export type GetColorSchemeSelector = (colorScheme: ColorSchemeName) => string;
 
 /**
  * Function that switches the color scheme by the corresponding selector type.
  */
-export type ActiveColorSchemeSwitcher = (colorScheme: DefaultColorScheme) => void;
+export type ActiveColorSchemeSwitcher = (colorScheme: ColorSchemeName) => void;
 
 /**
  * Creates a function that generates a CSS selector string for a given color scheme,
@@ -19,8 +19,16 @@ export type ActiveColorSchemeSwitcher = (colorScheme: DefaultColorScheme) => voi
  * @returns A function that generates the corresponding selector string.
  */
 export function createGetColorSchemeSelector(
-  selectorType: 'data' | 'class'
-): GetColorSchemeSelector;
+  selectorType: ColorSchemeSelectorType
+): GetColorSchemeSelector {
+  return (colorScheme) => {
+    if (selectorType === 'data') {
+      return `[data-sg-color-scheme="${colorScheme}"]`;
+    }
+
+    return `.${colorScheme}`;
+  };
+}
 
 /**
  * Creates a function that switches the color scheme, based on the specified selector type
@@ -31,6 +39,16 @@ export function createGetColorSchemeSelector(
  * @returns A function that switches the color scheme by the corresponding selector type.
  */
 export function createSetActiveColorScheme(
-  selectorType: 'data' | 'class'
-): ActiveColorSchemeSwitcher;
+  selectorType: ColorSchemeSelectorType
+): ActiveColorSchemeSwitcher {
+  return (colorScheme) => {
+    const root = document.documentElement;
 
+    if (selectorType === 'data') {
+      root.setAttribute('data-sg-color-scheme', colorScheme);
+    } else {
+      root.classList.remove('light', 'dark');
+      root.classList.add(colorScheme);
+    }
+  };
+}

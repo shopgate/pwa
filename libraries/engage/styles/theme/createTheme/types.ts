@@ -1,15 +1,21 @@
-import { type Palette } from './createPalette'
+import { type Palette } from './createPalette';
 import { type Typography, type TypographyOptions } from './createTypography';
 import { type Breakpoints } from './createBreakpoints';
 import { type Spacing } from './createSpacing';
 import { type Transitions } from './transitions';
 import { type ZIndex } from './zIndex';
 import { type GetColorSchemeSelector, type ActiveColorSchemeSwitcher } from './helpers';
-import { type CreateCssVarsForColorSchemeThemesReturnValue} from './createCssVarsForColorSchemeThemes';
+import { type CreateCssVarsForColorSchemeThemesReturnValue } from './createCssVarsForColorSchemeThemes';
 
-export { type Breakpoint } from './createBreakpoints'
+export type { Breakpoint } from './createBreakpoints';
 
-export type DefaultColorScheme = 'light' | 'dark';
+const colorSchemes = ['light', 'dark'] as const;
+
+export type ColorSchemeName = (typeof colorSchemes)[number];
+
+const selectorTypes = ['data', 'class'] as const;
+
+export type ColorSchemeSelectorType = (typeof selectorTypes)[number];
 
 export interface ColorSchemeOptions {
   palette?: Palette;
@@ -17,11 +23,11 @@ export interface ColorSchemeOptions {
 }
 
 export interface ThemeOptions {
-  defaultColorScheme?: 'light' | 'dark';
-  colorSchemeSelector?: 'data' | 'class';
+  defaultColorScheme?: ColorSchemeName;
+  colorSchemeSelector?: ColorSchemeSelectorType;
   palette?: Palette;
   typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
-  colorSchemes?: Record<DefaultColorScheme, ColorSchemeOptions>;
+  colorSchemes?: Record<ColorSchemeName, ColorSchemeOptions>;
 }
 
 export interface BaseTheme {
@@ -39,7 +45,7 @@ export interface Theme extends BaseTheme {
   /**
    * The default color scheme to use when the user has not specified a preference.
    */
-  defaultColorScheme?: 'light' | 'dark';
+  defaultColorScheme?: ColorSchemeName;
   /**
    * API to simplify the use of media queries.
    */
@@ -58,17 +64,15 @@ export interface Theme extends BaseTheme {
   zIndex: ZIndex;
 }
 
-export type ColorSchemeThemes = Record<DefaultColorScheme, BaseTheme>
+export type ColorSchemeThemes = Record<ColorSchemeName, BaseTheme>
 
 export type ThemeInternal = Theme & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {
   /**
    * Function that generates a CSS selector string for a given color scheme.
    */
-  getColorSchemeSelector?: GetColorSchemeSelector;
+  getColorSchemeSelector: GetColorSchemeSelector;
   /**
    * Function that switches the color scheme by the corresponding selector type.
    */
-  setActiveColorScheme?: ActiveColorSchemeSwitcher;
+  setActiveColorScheme: ActiveColorSchemeSwitcher;
 };
-
-export function createTheme(options?: ThemeOptions): Theme;

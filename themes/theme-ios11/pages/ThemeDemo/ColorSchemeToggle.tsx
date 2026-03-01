@@ -2,7 +2,7 @@ import { useColorScheme } from '@shopgate/engage/styles';
 import { Switch } from '@shopgate/engage/components';
 
 /**
- * @returns {JSX.Element}
+ * Provides a toggle switch to change between light and dark color schemes.
  */
 const ColorSchemeToggle = () => {
   const { mode, setMode } = useColorScheme();

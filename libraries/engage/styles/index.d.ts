@@ -7,7 +7,7 @@ export {
   useResponsiveValue,
   useTheme,
   useColorScheme,
-  Theme,
+  type Theme,
 } from './theme';
 export {
   makeStyles,

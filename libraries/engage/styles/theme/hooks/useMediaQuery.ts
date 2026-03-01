@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import useTheme from './useTheme';
+import { type Theme } from '..';
 
 /**
  * React hook to check if a media query matches the current viewport.
@@ -7,7 +8,7 @@ import useTheme from './useTheme';
  * @param {string} query A media query string, e.g. '(min-width: 600px)'
  * @returns {boolean} Returns true if the media query matches, false otherwise.
  */
-const useMediaQueryInternal = (query) => {
+const useMediaQueryInternal = (query: string): boolean => {
   const [match, setMatch] = useState(() => window.matchMedia(query).matches);
 
   useEffect(() => {
@@ -30,10 +31,6 @@ const useMediaQueryInternal = (query) => {
 };
 
 /**
- * @typedef {import('./useTheme').Theme} Theme
- */
-
-/**
  * @callback ThemeFn
  * @param {Theme} theme The current theme object.
  */
@@ -41,11 +38,34 @@ const useMediaQueryInternal = (query) => {
 /**
  * Creates a media query hook that can be used to check if a media query matches the current
  * viewport.
- * @param {string|ThemeFn} queryInput The media query string or a function that receives the theme
+ * @param queryInput The media query string or a function that receives the theme
  * and returns a media query string.
- * @returns {boolean} Returns true if the media query matches, false otherwise.
+ * @returns Returns true if the media query matches, false otherwise.
+ *
+ * @example Use the useTheme hook to get access to the breakpoint helper functions:
+ * ```js
+ * import React from 'react';
+ * import { useTheme, useMediaQuery } from '@shopgate/engage/styles';
+ *
+ * export default function MyComponent() {
+ *   const theme = useTheme();
+ *   const matches = useMediaQuery(theme.breakpoints.up('sm'));
+ *
+ *   return (<span>{`theme.breakpoints.up('sm') matches: ${matches}`}</span>)
+ * }
+ *```
+ * @example Alternatively, you can use a callback function, accepting the theme as a first argument:
+ * ```js
+ * import React from 'react';
+ * import { useMediaQuery } from '@shopgate/engage/styles';
+ *
+ * export default function MyComponent() {
+ *   const matches = useMediaQuery((theme) => theme.breakpoints.up('sm'));
+ *
+ *   return (<span>{`theme.breakpoints.up('sm') matches: ${matches}`}</span>)
+ * }
  */
-const useMediaQuery = (queryInput) => {
+const useMediaQuery = (queryInput: string | ((theme: Theme) => string)): boolean => {
   const theme = useTheme();
 
   let query = typeof queryInput === 'function' ? queryInput(theme) : queryInput;

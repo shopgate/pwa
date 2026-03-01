@@ -1,37 +1,45 @@
-import React, {
+import {
   createContext, memo, useMemo, useLayoutEffect,
 } from 'react';
-import PropTypes from 'prop-types';
 import { useLocalStorage } from '@shopgate/engage/core/hooks';
 import { GlobalStyles } from '@shopgate/engage/styles';
-
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
+import { type Theme, type ThemeInternal, type ColorSchemeName } from '../createTheme';
 
-/** @typedef {import('../index').Theme} Theme */
-/** @typedef {import('../createTheme').ThemeInternal} ThemeInternal */
+export interface ColorSchemeContextValue {
+  /**
+   * The current color scheme (e.g., 'light' or 'dark')
+   */
+  mode: ColorSchemeName;
+  /**
+   * Function to update the color scheme
+   */
+  setMode: React.Dispatch<React.SetStateAction<ColorSchemeName>>;
+}
 
-/** @type {import('react').Context<Theme>} */
-export const ThemeContext = createContext();
+export const ThemeContext = createContext<Theme>({ } as Theme);
 
-/** @typedef {import('./ThemeProvider').ColorSchemeContextValue} ColorSchemeContextValue */
-
-/** @type {import('react').Context<ColorSchemeContextValue>} */
-export const ColorSchemeContext = createContext({
+export const ColorSchemeContext = createContext<ColorSchemeContextValue>({
   mode: 'light',
   setMode: () => '',
 });
 
+type ThemeProviderProps = {
+  /**
+   * The theme object to provide to the context.
+   */
+  theme: ThemeInternal;
+  children: React.ReactNode;
+}
+
 /**
  * The ThemeProvider component provides the theme context to its children.
- * @param {Object} props The component props
- * @param {ThemeInternal} props.theme The theme object to provide
- * @param {React.ReactNode} props.children The children to render within the provider
- * @returns {JSX.Element} The ThemeProvider component
+ * @param props The component props
  */
 const ThemeProvider = ({
   children,
   theme,
-}) => {
+}: ThemeProviderProps) => {
   const [
     activeColorScheme,
     setActiveColorScheme,
@@ -51,6 +59,7 @@ const ThemeProvider = ({
   const styleSheets = useMemo(() => theme.generateStyleSheets(), [theme]);
 
   return (
+    // @ts-expect-error The input theme contains more properties than exposed to the Theme type
     <ColorSchemeContext.Provider value={colorSchemeContextValue}>
       <ThemeContext.Provider value={theme}>
         <ActiveBreakpointProvider>
@@ -60,11 +69,6 @@ const ThemeProvider = ({
       </ThemeContext.Provider>
     </ColorSchemeContext.Provider>
   );
-};
-
-ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-  theme: PropTypes.shape().isRequired,
 };
 
 export default memo(ThemeProvider);

@@ -6,19 +6,23 @@ import zIndex from './zIndex';
 import createThemeFromColorScheme from './createThemeFromColorScheme';
 import createCssVarsForColorSchemeThemes from './createCssVarsForColorSchemeThemes';
 import { createGetColorSchemeSelector, createSetActiveColorScheme } from './helpers';
+import {
+  type ThemeOptions,
+  type BaseTheme,
+  type ColorSchemeThemes,
+  type ThemeInternal,
+} from './types';
 
-/** @typedef {import('./index').ThemeOptions} ThemeOptions */
-/** @typedef {import('./index').BaseTheme} BaseTheme */
-/** @typedef {import('./index').DefaultColorScheme} DefaultColorScheme */
-/** @typedef {import('./index').ColorSchemeThemes} ColorSchemeThemes */
+export type {
+  Theme, ThemeInternal, Breakpoint, ColorSchemeName, ColorSchemeSelectorType,
+} from './types';
 
-// eslint-disable-next-line valid-jsdoc
 /**
  * Creates a theme object for the ThemeProvider.
- * @param {ThemeOptions} options The theme options.
+ * @param options The theme options.
  * @returns The theme object
  */
-export const createTheme = (options = {}) => {
+export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
   const {
     defaultColorScheme = 'light',
     colorSchemeSelector = 'data',
@@ -27,20 +31,23 @@ export const createTheme = (options = {}) => {
     colorSchemes = { light: {} },
   } = options;
 
-  const defaultScheme = merge({
+  const defaultScheme: BaseTheme = merge({
     paletteInput,
     typographyInput,
+  // @ts-expect-error - Sure about the type here
   }, colorSchemes[defaultColorScheme] ?? {});
 
-  /** @type {ColorSchemeThemes} */
-  const colorSchemeThemes = Object.entries(colorSchemes).reduce((acc, [type, scheme]) => {
-    acc[type] = createThemeFromColorScheme(merge(
-      { palette: { mode: type } },
-      defaultScheme,
-      scheme
-    ));
-    return acc;
-  }, {});
+  const colorSchemeThemes: ColorSchemeThemes = Object
+    .entries(colorSchemes)
+    .reduce((acc, [type, scheme]) => {
+      // @ts-expect-error - Sure about the type here
+      acc[type] = createThemeFromColorScheme(merge(
+        { palette: { mode: type } },
+        defaultScheme,
+        scheme
+      ));
+      return acc;
+    }, {} as ColorSchemeThemes);
 
   const getColorSchemeSelector = createGetColorSchemeSelector(colorSchemeSelector);
   const setActiveColorScheme = createSetActiveColorScheme(colorSchemeSelector);
