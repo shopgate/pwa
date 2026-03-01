@@ -1,6 +1,6 @@
 import useTheme from './useTheme';
 import useActiveBreakpoint from './useActiveBreakpoint';
-import { Breakpoint } from '..';
+import type { Breakpoint } from '../createTheme';
 
 type BreakpointValueMap<T> = Partial<Record<Breakpoint, T>>;
 

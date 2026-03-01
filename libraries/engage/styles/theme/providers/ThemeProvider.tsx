@@ -1,7 +1,7 @@
 import {
   createContext, memo, useMemo, useLayoutEffect,
 } from 'react';
-import { useLocalStorage } from '@shopgate/engage/core/hooks';
+import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
 import { GlobalStyles } from '@shopgate/engage/styles';
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 import { type Theme, type ThemeInternal, type ColorSchemeName } from '../createTheme';
