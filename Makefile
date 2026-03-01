@@ -140,13 +140,18 @@ else
 endif
 		$(call finalize-release)
 
+define NL
+
+
+endef
+
 release-dry-run:
 	@echo "Purging dist"
-	$(foreach library, $(LIBRARIES), $(call clean-npm-package, libraries, $(library)))
+	$(foreach library, $(LIBRARIES), $(call clean-npm-package, libraries, $(library))$(NL))
 	@echo "Running babel"
-	$(foreach library, $(LIBRARIES), $(call build-npm-package, libraries, $(library)))
+	$(foreach library, $(LIBRARIES), $(call build-npm-package, libraries, $(library))$(NL))
 	@echo "Normalizing dist"
-	$(foreach library, $(LIBRARIES), $(call normalize-build, libraries, $(library)))
+	$(foreach library, $(LIBRARIES), $(call normalize-build, libraries, $(library))$(NL))
 	@echo "You can check dist folder"
 
 release-normalize:
@@ -335,16 +340,23 @@ define release-npm-packages
 endef
 
 define build-publish-npm-package
-		$(call build-npm-package, $(strip $(1)), $(strip $(2)))
-		$(call normalize-build, $(strip $(1)), $(strip $(2)))
-		$(call publish-npm-package, $(strip $(1)), $(strip $(2)), dist)
-		$(call clean-npm-package, $(strip $(1)), $(strip $(2)))
+		$(call build-npm-package, $(strip $(1)), $(strip $(2)))$(NL)
+		$(call normalize-build, $(strip $(1)), $(strip $(2)))$(NL)
+		$(call publish-npm-package, $(strip $(1)), $(strip $(2)),dist)$(NL)
+		$(call clean-npm-package, $(strip $(1)), $(strip $(2)))$(NL)
 endef
 
 define build-npm-package
-		@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
-		@BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ --out-dir ./$(strip $(1))/$(strip $(2))/dist --copy-files --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
-
+	@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
+	@BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ \
+		--out-dir ./$(strip $(1))/$(strip $(2))/dist \
+		--extensions ".js,.jsx,.ts,.tsx" \
+		--copy-files \
+		--ignore "**/*.d.ts","**/*.d.tsx","**/node_modules/**",tests,spec.js,spec.jsx,spec.ts,spec.tsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+	@if [ -f "./$(strip $(1))/$(strip $(2))/tsconfig.build.json" ]; then \
+		echo "> Generating types for './$(strip $(1))/$(strip $(2))' npm package"; \
+		./node_modules/.bin/tsc -p "./$(strip $(1))/$(strip $(2))/tsconfig.build.json"; \
+	fi;
 endef
 
 # tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;

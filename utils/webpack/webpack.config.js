@@ -70,7 +70,7 @@ const config = {
     publicPath: isDev ? '/' : (process.env.publicPath || './'),
   },
   resolve: {
-    extensions: ['.json', '.js', '.jsx', '.mjs'],
+    extensions: ['.json', '.js', '.jsx', '.ts', '.tsx', '.mjs'],
     /**
      * Aliases for module resolution. They guarantee that whenever one of the bundled modules
      * uses in import to one of the packages, it will always resolve to the version of the core.
@@ -247,7 +247,7 @@ const config = {
         },
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts|tsx)$/,
         exclude: new RegExp(`node_modules\\b(?!\\${path.sep}@shopgate)\\b.*`),
         use: [
           {

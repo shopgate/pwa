@@ -18,7 +18,6 @@ const convertLogArgs = (args) => {
 
 /**
  * The logging wrapper for the console.
- * @type {Object}
  */
 export const logger = {
   ...console,

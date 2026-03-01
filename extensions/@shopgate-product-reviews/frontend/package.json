@@ -9,6 +9,7 @@
     "@shopgate/pwa-common": "7.30.0",
     "@shopgate/pwa-common-commerce": "7.30.0",
     "@shopgate/pwa-core": "7.30.0",
+    "@types/lodash": "^4.17.24",
     "lint-staged": "^12.5.0",
     "prop-types": "~15.8.1",
     "react": "^17.0.2",

@@ -21,6 +21,7 @@
     "@babel/plugin-transform-runtime": "^7.28.5",
     "@babel/preset-env": "^7.28.6",
     "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
     "@babel/runtime": "^7.28.6",
     "@emotion/react": "^11.14.0",
     "@shopgate/engage": "7.30.0",
@@ -56,6 +57,7 @@
     "reselect": "^4.1.8",
     "smoothscroll-polyfill": "^0.4.4",
     "tss-react": "^4.9.20",
+    "typescript": "^5.9.3",
     "webpack": "^5.102.1",
     "webpack-cli": "^5.1.4"
   },
@@ -63,6 +65,7 @@
     "@shopgate/eslint-config": "7.30.0",
     "@shopgate/pwa-e2e-test": "7.30.0",
     "@shopgate/pwa-unit-test": "7.30.0",
+    "@types/lodash": "^4.17.24",
     "@types/react": "^17.0.39",
     "eslint": "^8.57.1",
     "eslint-import-resolver-babel-module": "^5.3.2",
