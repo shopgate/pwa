@@ -1,4 +1,5 @@
 import merge from 'lodash/merge';
+import type { CSSInterpolation } from 'tss-react';
 import { cssVarsParser } from './helpers';
 import type { ColorSchemeThemes, BaseTheme, ColorSchemeName } from './types';
 import type { GetColorSchemeSelector } from './helpers';
@@ -18,7 +19,7 @@ export type CreateCssVarsForColorSchemeThemesReturnValue = {
    * @returns An array of style sheet objects. Contains one entry per color scheme plus
    * global styles.
    */
-  generateStyleSheets: () => Array<Record<string, unknown>>;
+  generateStyleSheets: () => CSSInterpolation;
 }
 
 /**
@@ -43,7 +44,7 @@ export default function createCssVarsForColorSchemeThemes(
     varsWithDefaults: Record<string, unknown>;
   }>;
 
-  const styleSheets: Array<Record<string, unknown>> = [];
+  const styleSheets: CSSInterpolation = [];
 
   // Create CSS variables for each color scheme and generate corresponding style sheets
   // @ts-expect-error - Sure about the type here
@@ -59,11 +60,13 @@ export default function createCssVarsForColorSchemeThemes(
       varsWithDefaults,
     };
 
-    styleSheets.push({
-      [`${schemeName === 'light' ? ':root, ' : ''}${getColorSchemeSelector(schemeName)}`]: {
-        ...css,
-      },
-    });
+    if (Array.isArray(styleSheets)) {
+      styleSheets.push({
+        [`${schemeName === 'light' ? ':root, ' : ''}${getColorSchemeSelector(schemeName)}`]: {
+          ...css,
+        },
+      });
+    }
   });
 
   return {
