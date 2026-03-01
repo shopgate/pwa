@@ -355,7 +355,7 @@ define build-npm-package
 		--ignore "**/*.d.ts","**/*.d.tsx","**/node_modules/**",tests,spec.js,spec.jsx,spec.ts,spec.tsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
 	@if [ -f "./$(strip $(1))/$(strip $(2))/tsconfig.build.json" ]; then \
 		echo "> Generating types for './$(strip $(1))/$(strip $(2))' npm package"; \
-		./node_modules/.bin/tsc -p "./$(strip $(1))/$(strip $(2))/tsconfig.build.json"; \
+		./node_modules/.bin/tsc -p "./$(strip $(1))/$(strip $(2))/tsconfig.build.json" --noCheck; \
 	fi;
 endef
 
