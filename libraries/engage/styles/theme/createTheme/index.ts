@@ -14,7 +14,12 @@ import {
 } from './types';
 
 export type {
-  Theme, ThemeInternal, Breakpoint, ColorSchemeName, ColorSchemeSelectorType,
+  Theme,
+  ThemeInternal,
+  ThemeOptions,
+  Breakpoint,
+  ColorSchemeName,
+  ColorSchemeSelectorType,
 } from './types';
 
 /**

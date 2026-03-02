@@ -102,6 +102,12 @@ export interface Theme extends BaseTheme {
    * Reference to z-index values for multiple components.
    */
   zIndex: ZIndex;
+  /**
+   * An object that contains the CSS variable references for the theme properties.
+   * It has the same structure as the theme, but the values are CSS variable references
+   * (e.g., `var(--sg-palette-primary-main)`) instead of actual color values.
+   */
+  vars: BaseTheme;
 }
 
 /**

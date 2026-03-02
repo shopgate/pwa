@@ -56,11 +56,16 @@ const Entry = ({ entry }) => {
       return '#fff';
     }
 
+    if (entry?.group?.contrastText) {
+      return entry.group.contrastText;
+    }
+
     return typeof theme.palette.getContrastText === 'function'
       ? theme.palette.getContrastText(entry.value)
       : '#fff';
   }, [
     entry.value,
+    entry.group,
     theme.palette,
   ]);
 

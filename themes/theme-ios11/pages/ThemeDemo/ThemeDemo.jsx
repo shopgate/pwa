@@ -4,6 +4,7 @@ import { DefaultBar } from 'Components/AppBar/presets';
 import { makeStyles } from '@shopgate/engage/styles';
 import Palette from './Palette';
 import ColorSchemeToggle from './ColorSchemeToggle';
+import CSSColorOverride from './CSSColorOverride';
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -28,6 +29,7 @@ const ThemeDemo = () => {
       <DefaultBar title="Theme Demo" />
       <div className={classes.root}>
         <ColorSchemeToggle />
+        <CSSColorOverride />
         <Palette />
       </div>
     </View>

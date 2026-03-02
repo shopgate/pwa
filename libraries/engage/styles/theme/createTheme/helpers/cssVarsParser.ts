@@ -142,9 +142,11 @@ type CssVarsParserOptions = {
  *
  * @param theme A theme-like object to be parsed
  * @param options Options for parsing the theme
- * @returns `css` is the stylesheet, `vars` is an object to get css variable (same structure as theme), `varsWithDefaults` is an object to get css variable with fallback values (same structure as theme).
+ * @returns `css` is the stylesheet, `vars` is an object to get css variable (same structure as theme), `varsWithDefaults`
+ * is an object to get css variable with fallback values (same structure as theme), `varsRaw` is an object to get the raw css
+ * variable name (same structure as theme).
  * @example
- * const { css, vars } = parser({
+ * const { css, vars, varsRaw } = parser({
  *   fontSize: 12,
  *   lineHeight: 1.2,
  *   palette: { primary: { 500: 'var(--color)' } }
@@ -152,6 +154,7 @@ type CssVarsParserOptions = {
  *
  * console.log(css) // { '--foo-fontSize': '12px', '--foo-lineHeight': 1.2, '--foo-palette-primary-500': 'var(--color)' }
  * console.log(vars) // { fontSize: 'var(--foo-fontSize)', lineHeight: 'var(--foo-lineHeight)', palette: { primary: { 500: 'var(--foo-palette-primary-500)' } } }
+ * console.log(varsRaw) // { fontSize: '--foo-fontSize', lineHeight: '--foo-lineHeight', palette: { primary: { 500: '--foo-palette-primary-500' } } }
  */
 export default function cssVarsParser<T extends object>(
   theme: object,
@@ -159,7 +162,8 @@ export default function cssVarsParser<T extends object>(
 ): {
   css: Record<string, string | number>;
   vars: T;
-  varsWithDefaults: Record<string, unknown>;
+  varsWithDefaults: T;
+  varNames: T;
 } {
   const {
     prefix = 'sg',
@@ -167,7 +171,8 @@ export default function cssVarsParser<T extends object>(
   } = options || {};
   const css = {};
   const vars: T = {} as T;
-  const varsWithDefaults = {};
+  const varsWithDefaults: T = {} as T;
+  const varNames: T = {} as T;
 
   walkObjectDeep(
     theme,
@@ -178,13 +183,36 @@ export default function cssVarsParser<T extends object>(
           const cssVar = `--${prefix ? `${prefix}-` : ''}${keys.join('-')}`;
           const resolvedValue = getCssValue(keys, value);
 
+          // Add the current css variable to the `css` object (--varName: value)
           Object.assign(css, { [cssVar]: resolvedValue });
-          // @ts-expect-error - We are sure about the type here
-          assignNestedKeys(vars, keys, `var(${cssVar})`, arrayKeys);
+
+          // Add the reference to the current css variable to the `vars` object
+          // e.g. ({ palette: { primary: { main: 'var(--varName)' } } })
           assignNestedKeys(
+            // @ts-expect-error - We are sure about the type here
+            vars,
+            keys,
+            `var(${cssVar})`,
+            arrayKeys
+          );
+
+          // Add the reference to the current css variable with fallback value to the `varsWithDefaults` object
+          // e.g. ({ palette: { primary: { main: 'var(--varName, fallbackValue)' } } })
+          assignNestedKeys(
+            // @ts-expect-error - We are sure about the type here
             varsWithDefaults,
             keys,
             `var(${cssVar}, ${resolvedValue})`,
+            arrayKeys
+          );
+
+          // Add the raw css variable name to the `varNames` object
+          // e.g. ({ palette: { primary: { main: '--varName' } } })
+          assignNestedKeys(
+            // @ts-expect-error - We are sure about the type here
+            varNames,
+            keys,
+            cssVar,
             arrayKeys
           );
         }
@@ -197,5 +225,6 @@ export default function cssVarsParser<T extends object>(
     css,
     vars,
     varsWithDefaults,
+    varNames,
   };
 }

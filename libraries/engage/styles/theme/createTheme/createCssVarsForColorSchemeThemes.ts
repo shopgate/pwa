@@ -15,7 +15,7 @@ export type CreateCssVarsForColorSchemeThemesReturnValue = {
    * A theme object that has the shape of the color schemes, but references CSS variables instead
    * of actual color values.
    */
-  cssVarsTheme: BaseTheme;
+  cssVarsTheme: BaseTheme & { vars: BaseTheme };
   /**
    * Generates the style sheets for the color schemes of the theme.
    * @returns An array of style sheet objects. Contains one entry per color scheme plus
@@ -43,11 +43,13 @@ export default function createCssVarsForColorSchemeThemes(
   const colorSchemeMap: Record<ColorSchemeName, {
     css: Record<string, string | number>;
     vars: BaseTheme;
-    varsWithDefaults: Record<string, unknown>;
+    varsWithDefaults: BaseTheme;
+    varNames: BaseTheme;
   }> = {} as Record<ColorSchemeName, {
     css: Record<string, string | number>;
     vars: BaseTheme;
-    varsWithDefaults: Record<string, unknown>;
+    varsWithDefaults: BaseTheme;
+    varNames: BaseTheme;
   }>;
 
   const styleSheets: CSSInterpolation = [];
@@ -57,7 +59,9 @@ export default function createCssVarsForColorSchemeThemes(
   Object.keys(colorSchemes).forEach((schemeName: ColorSchemeName) => {
     const theme = colorSchemes[schemeName];
 
-    const { css, vars, varsWithDefaults } = cssVarsParser<BaseTheme>(theme, {
+    const {
+      css, vars, varsWithDefaults, varNames,
+    } = cssVarsParser<BaseTheme>(theme, {
       prefix: cssVarPrefix,
     });
 
@@ -65,6 +69,7 @@ export default function createCssVarsForColorSchemeThemes(
       css,
       vars,
       varsWithDefaults,
+      varNames,
     };
 
     if (Array.isArray(styleSheets)) {
@@ -77,7 +82,11 @@ export default function createCssVarsForColorSchemeThemes(
   });
 
   return {
-    cssVarsTheme: merge(colorSchemes.light, colorSchemeMap.light.vars),
+    cssVarsTheme: merge(
+      colorSchemes.light,
+      colorSchemeMap.light.vars,
+      { vars: colorSchemeMap.light.varNames }
+    ),
     generateStyleSheets: () => styleSheets,
   };
 }
