@@ -46,6 +46,8 @@ module.exports = {
             'ExportDefaultDeclaration > FunctionDeclaration',
             // export default class Foo {}
             'ExportDefaultDeclaration > ClassDeclaration',
+            // const Foo = () => {}; export default Foo;
+            'Program > VariableDeclaration > VariableDeclarator > ArrowFunctionExpression',
           ],
         }],
 
@@ -88,6 +90,11 @@ module.exports = {
       rules: {
         'react/prop-types': 'off',
         'react/require-default-props': 'off',
+        'jsdoc/require-param-description': 'warn',
+        // JSDoc for params is not needed for React components, as already covered by TS.
+        'jsdoc/require-param': 'off',
+        // JSDoc for return values is not needed for React components, as already covered by TS.
+        'jsdoc/require-returns': 'off',
       },
     },
   ],
