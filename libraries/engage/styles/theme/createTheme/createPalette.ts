@@ -1,6 +1,5 @@
 import merge from 'lodash/merge';
 import isPlainObject from 'lodash/isPlainObject';
-import { getCSSCustomProp } from '../../helpers/cssCustomProperties';
 import {
   isColor,
   toHsl,
@@ -38,35 +37,33 @@ type GetContrastTextOptions = {
   /**
    * Text color for light background
    */
-  textColorLight?: string;
+  textContrastColorLight?: string;
   /**
    * Text color for dark backgrounds
    */
-  textColorDark?: string;
+  textContrastColorDark?: string;
 }
 
 /**
  * Retrieves a text color that matches a passed background color.
  * @param options The options for getting the contrast text color.
- * @param options.background Background color to be checked
- * @param options.threshold Threshold for the contrast check
- * @param options.textColorLight Text color for light background
- * @param options.textColorDark Text color for dark backgrounds
  * @returns The matching contrast text color
  */
-const getContrastText = ({
-  background,
-  threshold,
-  textColorLight = defaultTextLight.primary,
-  textColorDark = defaultTextDark.primary,
-}: GetContrastTextOptions): string => {
+const getContrastText = (options: GetContrastTextOptions): string => {
+  const {
+    background,
+    threshold,
+    textContrastColorLight = defaultTextLight.primary,
+    textContrastColorDark = defaultTextDark.primary,
+  } = options ?? {};
+
   if (!isColor(background)) {
-    return textColorLight;
+    return textContrastColorLight;
   }
 
-  const contrastValue = getContrastRatio(background, textColorDark, '#fff');
+  const contrastValue = getContrastRatio(background, textContrastColorDark, '#fff');
 
-  return contrastValue >= threshold ? textColorDark : textColorLight;
+  return contrastValue >= threshold ? textContrastColorDark : textContrastColorLight;
 };
 
 type AddSubColorOptions = {
@@ -87,17 +84,16 @@ type AddSubColorOptions = {
 /**
  * Adds a light or dark variant to a color intent if not already provided.
  * @param options The options for adding the sub color.
- * @param options.intent The color intent to augment.
- * @param options.direction The direction of the variant to add ('light' or 'dark').
- * @param options.tonalOffset The tonal offset to use when calculating the variant color.
  * @returns The augmented color intent with the new variant added if it was
  * missing.
  */
-const addSubColor = ({
-  intent,
-  direction,
-  tonalOffset,
-}: AddSubColorOptions): AugmentedPaletteColor => {
+const addSubColor = (options: AddSubColorOptions): AugmentedPaletteColor => {
+  const {
+    intent,
+    direction,
+    tonalOffset,
+  } = options ?? {};
+
   const tonalOffsetLight = tonalOffset;
   const tonalOffsetDark = tonalOffset * 1.5;
 
@@ -132,23 +128,30 @@ type AugmentColorOptions = {
    * The contrast threshold to use when calculating the contrast text color. Defaults to 3.
    */
   contrastThreshold: number;
+  /**
+   * Text color for light background
+   */
+  textContrastColorLight?: string;
+  /**
+   * Text color for dark backgrounds
+   */
+  textContrastColorDark?: string;
 };
 
 /**
  * Creates an augmented color object with "main", "dark" and "light" color + contrast text helper
  * @param options The options for augmenting the color.
- * @param options.color The color object to augment.
- * @param [options.tonalOffset=0.2] The tonal offset to use when calculating light and dark
- * variants.
- * @param [options.contrastThreshold=3] The contrast threshold to use when calculating the
- * contrast text color.
  * @returns The augmented color object.
  */
-const augmentColor = ({
-  color,
-  tonalOffset = 0.2,
-  contrastThreshold = 3,
-}: AugmentColorOptions): AugmentedPaletteColor | unknown => {
+const augmentColor = (options: AugmentColorOptions): AugmentedPaletteColor | unknown => {
+  const {
+    color,
+    tonalOffset = 0.2,
+    contrastThreshold = 3,
+    textContrastColorLight,
+    textContrastColorDark,
+  } = options ?? {};
+
   if (!color?.main || !isColor(color.main)) {
     return color;
   }
@@ -171,11 +174,14 @@ const augmentColor = ({
     result.contrastText = getContrastText({
       background: result.main,
       threshold: contrastThreshold,
+      textContrastColorLight,
+      textContrastColorDark,
     });
   }
 
   return result;
 };
+
 /**
  * Recursively transforms all color values in the palette using the provided transform function.
  * @param palette The palette to transform.
@@ -227,18 +233,15 @@ type ExtendPaletteOptions = {
  * Unifies color values in the palette to HSL and adds light/dark variants and contrast text
  * where missing.
  * @param options The options for extending the palette.
- * @param options.palette The palette to extend.
- * @param options.tonalOffset The tonal offset to use when calculating light and dark
- * variants.
- * @param options.contrastThreshold The contrast threshold to use when calculating the
- * contrast text color.
  * @returns The extended palette.
  */
-export const extendPalette = ({
-  palette,
-  tonalOffset,
-  contrastThreshold,
-}: ExtendPaletteOptions): PaletteOptions => {
+export const extendPalette = (options: ExtendPaletteOptions): PaletteOptions => {
+  const {
+    palette,
+    tonalOffset,
+    contrastThreshold,
+  } = options ?? {};
+
   if (!isPlainObject(palette)) {
     return palette;
   }
@@ -254,6 +257,8 @@ export const extendPalette = ({
         color: value,
         tonalOffset,
         contrastThreshold,
+        textContrastColorLight: palette?.text?.contrastLight,
+        textContrastColorDark: palette?.text?.contrastDark,
       });
       return acc;
     }, {}) as PaletteOptions;
@@ -279,27 +284,7 @@ const createPalette = (inputPalette: PaletteOptions): Palette => {
     contrastThreshold,
   }) as Palette;
 
-  /**
-   * @param background The color to get the contrast text color for.
-   * @returns The contrast text color for the given background color.
-   */
-  const getContrastTextFn = (background: string) => {
-    let backgroundColor = background;
-
-    if ((background ?? '').startsWith('var(')) {
-      backgroundColor = getCSSCustomProp(background.replace(/^var\((--.+)\)$/, '$1'));
-    }
-
-    return getContrastText({
-      background: backgroundColor,
-      threshold: contrastThreshold,
-    });
-  };
-
-  return {
-    ...mergedPalette,
-    getContrastText: getContrastTextFn,
-  };
+  return mergedPalette;
 };
 
 export default createPalette;

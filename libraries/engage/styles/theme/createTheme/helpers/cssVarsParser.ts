@@ -71,7 +71,6 @@ const walkObjectDeep = <Value, T = Record<string, unknown>>(
   callback: (keys: Array<string>, value: Value, arrayKeys: Array<string>) => void,
   shouldSkipPaths?: (keys: Array<string>) => boolean
 ) => {
-  /* eslint-disable-next-line require-jsdoc */
   function recurse(
     // @ts-expect-error - We are sure about the type here
     object,

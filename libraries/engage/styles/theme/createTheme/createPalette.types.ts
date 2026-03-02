@@ -113,6 +113,8 @@ export const paletteSchema = {
     primary: '',
     secondary: '',
     tertiary: '',
+    contrastLight: '',
+    contrastDark: '',
   },
   grey,
 } as const;
@@ -143,6 +145,16 @@ interface PaletteDocs {
    * Color scheme for the successful completion of an action that the user triggered
    */
   success: AugmentedPaletteColor;
+  text: {
+    /**
+     * Text color to be used on a light background
+     */
+    contrastLight: string;
+    /**
+     * Text color to be used on a dark background
+     */
+    contrastDark: string;
+  }
   /**
    * Colors to be used for the background of various elements
    */
@@ -175,15 +187,6 @@ interface PaletteOptionsExtensions {
   contrastThreshold?: number;
 }
 
-interface PaletteHelpers {
-  /**
-   * Helper function to get a text color that contrasts with a given background color.
-   * @param background The background color to get a contrast text color for.
-   * @returns A text color that contrasts with the given background color.
-   */
-  getContrastText: (background: string) => string;
-}
-
 // The palette options type represents the palette input that can be provided to createTheme
 export type PaletteOptions = PaletteInputFromSchema<typeof paletteSchema>
   & PaletteDocs
@@ -191,5 +194,4 @@ export type PaletteOptions = PaletteInputFromSchema<typeof paletteSchema>
 
 // The final palette type represents the palette after theme creation
 export type Palette = PaletteFromSchema<typeof paletteSchema>
-  & PaletteDocs
-  & PaletteHelpers;
+  & PaletteDocs;
