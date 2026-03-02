@@ -29,6 +29,8 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         text: {
           primary: '#212121',
+          contrastDark: '#fff',
+          contrastLight: '#212121',
         },
       },
     },
@@ -45,6 +47,8 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         text: {
           primary: '#fff',
+          contrastDark: '#fff',
+          contrastLight: '#212121',
         },
       },
     },

@@ -60,13 +60,10 @@ const Entry = ({ entry }) => {
       return entry.group.contrastText;
     }
 
-    return typeof theme.palette.getContrastText === 'function'
-      ? theme.palette.getContrastText(entry.value)
-      : '#fff';
+    return 'transparent';
   }, [
     entry.value,
     entry.group,
-    theme.palette,
   ]);
 
   const { classes } = useStyles();
