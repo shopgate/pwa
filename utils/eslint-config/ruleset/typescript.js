@@ -21,13 +21,51 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
 
         'valid-jsdoc': 'off',
-        'jsdoc/require-jsdoc': ['warn', { publicOnly: true }],
+        // Require JSDoc only for "public" (exported) APIs.
+        'jsdoc/require-jsdoc': ['warn', {
+          publicOnly: true,
+          require: {
+            ArrowFunctionExpression: true,
+            FunctionDeclaration: true,
+            ClassDeclaration: true,
+            MethodDefinition: true,
+          },
+        }],
+        // Require JSDoc Description only for "public" (exported) APIs.
+        'jsdoc/require-description': ['warn', {
+          contexts: [
+          // export function foo() {}
+            'ExportNamedDeclaration > FunctionDeclaration',
+            // export const foo = () => {}
+            'ExportNamedDeclaration VariableDeclarator > ArrowFunctionExpression',
+            // export class Foo {}
+            'ExportNamedDeclaration > ClassDeclaration',
+            // export default function foo() {}
+            // export default function () {}
+            'ExportDefaultDeclaration > FunctionDeclaration',
+            // export default class Foo {}
+            'ExportDefaultDeclaration > ClassDeclaration',
+          ],
+        }],
 
-        'jsdoc/require-description': 'warn',
-        'jsdoc/check-tag-names': 'warn',
+        'jsdoc/require-param': 'warn',
+        // When @param is provided, it also needs to be described
+        'jsdoc/require-param-description': 'warn',
+
+        'jsdoc/require-returns': 'warn',
+        // When @returns is provided, it also needs to be described
+        'jsdoc/require-returns-description': 'warn',
+
+        // Disallow usage of JSDoc types for params. That's already done by TS
         'jsdoc/no-types': 'error',
-        'jsdoc/require-param': 'off',
-        'jsdoc/require-returns': 'off',
+        // Check if JSDoc only contains valid tags e.g. @example or @deprecated
+        'jsdoc/check-tag-names': 'warn',
+        // Check if param names match function names
+        'jsdoc/check-param-names': 'warn',
+        // Reports invalid alignment of JSDoc block asterisks.
+        'jsdoc/check-alignment': 'warn',
+        'jsdoc/check-line-alignment': 'warn',
+        'jsdoc/sort-tags': 'warn',
 
         'react/jsx-filename-extension': [
           'error',
