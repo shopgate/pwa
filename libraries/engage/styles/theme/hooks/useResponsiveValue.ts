@@ -9,6 +9,8 @@ type BreakpointValueMap<T> = Partial<Record<Breakpoint, T>>;
  * It is also responsive to window resizing and returning the appropriate value according to the
  * new window size.
  * @param values The responsive values object
+ * @returns The value for the current breakpoint, or `undefined` if no value is found for
+ * the current breakpoint or any smaller breakpoint.
  * @example
  * ```js
  * import React from 'react';

@@ -1,7 +1,7 @@
 /**
  * @file Helper function to parse a theme-like object to generate matching CSS variables.
  * Heavily inspired by Material UI's implementation:
- * {@link https://github.com/mui/material-ui/blob/master/packages/mui-system/src/cssVars/cssVarsParser.ts}
+ * @see https://github.com/mui/material-ui/blob/master/packages/mui-system/src/cssVars/cssVarsParser.ts
  */
 
 type NestedRecord<V = unknown> = {
@@ -15,19 +15,17 @@ type NestedRecord<V = unknown> = {
  * @param keys An array of keys to create the nested object
  * @param value The value to be assigned to the deepest key
  * @param arrayKeys An array of keys that are arrays, so the function will create
- *  array instead of object when it encounters these keys
- *
+ * array instead of object when it encounters these keys
  * @example
  * const source = {}
  * assignNestedKeys(source, ['palette', 'primary'], 'var(--palette-primary)')
  * console.log(source) // { palette: { primary: 'var(--palette-primary)' } }
- *
  * @example
  * const source = { palette: { primary: 'var(--palette-primary)' } }
  * assignNestedKeys(source, ['palette', 'secondary'], 'var(--palette-secondary)')
  * console.log(source) // { palette: { primary: 'var(--palette-primary)', secondary: 'var(--palette-secondary)' } }
  */
-export const assignNestedKeys = <
+const assignNestedKeys = <
   T extends Record<string, unknown> | null | undefined | string = NestedRecord,
   Value = unknown,
 >(
@@ -64,12 +62,11 @@ export const assignNestedKeys = <
  * - the value of the deepest key is NOT `undefined` | `null`
  * @param shouldSkipPaths A function that will be called before traversing the object,
  * if it returns true, the current path will be skipped
- *
  * @example
  * walkObjectDeep({ palette: { primary: { main: '#000000' } } }, console.log)
  * // ['palette', 'primary', 'main'] '#000000'
  */
-export const walkObjectDeep = <Value, T = Record<string, unknown>>(
+const walkObjectDeep = <Value, T = Record<string, unknown>>(
   obj: T,
   callback: (keys: Array<string>, value: Value, arrayKeys: Array<string>) => void,
   shouldSkipPaths?: (keys: Array<string>) => boolean
@@ -109,7 +106,7 @@ export const walkObjectDeep = <Value, T = Record<string, unknown>>(
  * @param keys The keys of the value, used to determine if the value is unitless or not
  * @param value The value to be converted to a CSS value, if it's a number
  * and not unitless, it will be converted to a string with 'px' unit
- * @returns
+ * @returns The CSS value with unit if needed
  */
 const getCssValue = (keys: string[], value: string | number) => {
   if (typeof value === 'number') {
@@ -146,7 +143,6 @@ type CssVarsParserOptions = {
  * @param theme A theme-like object to be parsed
  * @param options Options for parsing the theme
  * @returns `css` is the stylesheet, `vars` is an object to get css variable (same structure as theme), `varsWithDefaults` is an object to get css variable with fallback values (same structure as theme).
- *
  * @example
  * const { css, vars } = parser({
  *   fontSize: 12,
@@ -157,8 +153,8 @@ type CssVarsParserOptions = {
  * console.log(css) // { '--foo-fontSize': '12px', '--foo-lineHeight': 1.2, '--foo-palette-primary-500': 'var(--color)' }
  * console.log(vars) // { fontSize: 'var(--foo-fontSize)', lineHeight: 'var(--foo-lineHeight)', palette: { primary: { 500: 'var(--foo-palette-primary-500)' } } }
  */
-export default function cssVarsParser<T extends Record<string, unknown>>(
-  theme: Record<string, unknown>,
+export default function cssVarsParser<T extends object>(
+  theme: object,
   options?: CssVarsParserOptions
 ): {
   css: Record<string, string | number>;
@@ -183,7 +179,7 @@ export default function cssVarsParser<T extends Record<string, unknown>>(
           const resolvedValue = getCssValue(keys, value);
 
           Object.assign(css, { [cssVar]: resolvedValue });
-
+          // @ts-expect-error - We are sure about the type here
           assignNestedKeys(vars, keys, `var(${cssVar})`, arrayKeys);
           assignNestedKeys(
             varsWithDefaults,

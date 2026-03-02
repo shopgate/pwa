@@ -17,16 +17,56 @@ const selectorTypes = ['data', 'class'] as const;
 
 export type ColorSchemeSelectorType = (typeof selectorTypes)[number];
 
-export interface ColorSchemeOptions {
-  palette?: Palette;
-  typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
-}
+/**
+ * Available options for creating a color scheme object. Color schemes can be used to generate
+ * multiple themes with different color palettes and typography, which can be switched
+ * dynamically based on user preference or system settings.
+ */
+export type ColorSchemeOptions = Pick<ThemeOptions, 'palette' | 'typography'>;
 
 export interface ThemeOptions {
+  /**
+   * The default color scheme to use when the user has not specified a preference.
+   * @default 'light'
+   */
   defaultColorScheme?: ColorSchemeName;
+  /**
+   * The type of selector to use for applying color schemes. Possible values are 'data' for
+   * data attributes (e.g., `data-color-scheme="dark"`) and 'class' for CSS classes
+   * (e.g., `class="dark"`).
+   * @default 'data'
+   */
   colorSchemeSelector?: ColorSchemeSelectorType;
+  /**
+   * Prefix for the generated CSS variables. For example, if the prefix is 'sg', a theme property
+   * like `palette.primary.main` will generate a CSS variable `--sg-palette-primary-main`.
+   * @default 'sg'
+   */
+  cssVarPrefix?: string;
+  /**
+   * The palette defines the theme colors.
+   */
   palette?: Palette;
+  /**
+   * Font styles for multiple typography variants.
+   */
   typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
+  /**
+   * The color schemes to generate themes for. Each key is a color scheme name (e.g., 'light', 'dark'),
+   * and the value is an object that can contain palette and typography options specific to that color scheme.
+   * If a color scheme is not provided, it will inherit from the default scheme.
+   * @example
+   * colorSchemes: {
+   *   light: {
+   *     palette: { mode: 'light', primary: { main: '#000000' } },
+   *     typography: { fontSize: 14 }
+   *   },
+   *   dark: {
+   *     palette: { mode: 'dark', primary: { main: '#ffffff' } },
+   *     typography: { fontSize: 14 }
+   *   }
+   * }
+   */
   colorSchemes?: Record<ColorSchemeName, ColorSchemeOptions>;
 }
 
@@ -64,6 +104,10 @@ export interface Theme extends BaseTheme {
   zIndex: ZIndex;
 }
 
+/**
+ * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
+ * and the value is a theme object that contains e.g. the palette and typography for that color scheme.
+ */
 export type ColorSchemeThemes = Record<ColorSchemeName, BaseTheme>
 
 export type ThemeInternal = Theme & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {

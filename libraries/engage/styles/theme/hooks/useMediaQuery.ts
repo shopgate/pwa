@@ -5,8 +5,8 @@ import { type Theme } from '..';
 /**
  * React hook to check if a media query matches the current viewport.
  * Doesn't accept media query strings that start with '@media'.
- * @param {string} query A media query string, e.g. '(min-width: 600px)'
- * @returns {boolean} Returns true if the media query matches, false otherwise.
+ * @param query A media query string, e.g. '(min-width: 600px)'
+ * @returns Returns true if the media query matches, false otherwise.
  */
 const useMediaQueryInternal = (query: string): boolean => {
   const [match, setMatch] = useState(() => window.matchMedia(query).matches);
@@ -41,16 +41,13 @@ const useMediaQueryInternal = (query: string): boolean => {
  * @param queryInput The media query string or a function that receives the theme
  * and returns a media query string.
  * @returns Returns true if the media query matches, false otherwise.
- *
  * @example Use the useTheme hook to get access to the breakpoint helper functions:
  * ```js
  * import React from 'react';
  * import { useTheme, useMediaQuery } from '@shopgate/engage/styles';
- *
  * export default function MyComponent() {
  *   const theme = useTheme();
  *   const matches = useMediaQuery(theme.breakpoints.up('sm'));
- *
  *   return (<span>{`theme.breakpoints.up('sm') matches: ${matches}`}</span>)
  * }
  *```

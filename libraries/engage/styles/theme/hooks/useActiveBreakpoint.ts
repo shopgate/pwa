@@ -3,7 +3,7 @@ import { ActiveBreakpointContext } from '../providers/ActiveBreakpointProvider';
 
 /**
  * Returns the active breakpoint for the current window size.
- *
+ * @returns The name of the active breakpoint, or `null` if no breakpoint is active.
  * @example
  * ```js
  * import React from 'react';

@@ -26,6 +26,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
   const {
     defaultColorScheme = 'light',
     colorSchemeSelector = 'data',
+    cssVarPrefix = 'sg',
     palette: paletteInput = {},
     typography: typographyInput = {},
     colorSchemes = { light: {} },
@@ -57,7 +58,10 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     generateStyleSheets,
   } = createCssVarsForColorSchemeThemes(
     colorSchemeThemes,
-    { getColorSchemeSelector }
+    {
+      getColorSchemeSelector,
+      cssVarPrefix,
+    }
   );
 
   const currentTheme = colorSchemeThemes[defaultColorScheme] ?? colorSchemeThemes.light;

@@ -31,7 +31,7 @@ export const isColor = (value: unknown) => {
  * with alpha channel.
  * @returns Contrast value
  *
- * {@link https://www.w3.org/TR/WCAG20/#relativeluminancedef}
+ * @see https://www.w3.org/TR/WCAG20/#relativeluminancedef
  */
 export const getContrastRatio = (
   color: string,

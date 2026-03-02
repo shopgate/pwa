@@ -1,12 +1,14 @@
 import merge from 'lodash/merge';
 import type { CSSInterpolation } from 'tss-react';
 import { cssVarsParser } from './helpers';
-import type { ColorSchemeThemes, BaseTheme, ColorSchemeName } from './types';
+import type {
+  ColorSchemeThemes, BaseTheme, ColorSchemeName, ThemeOptions,
+} from './types';
 import type { GetColorSchemeSelector } from './helpers';
 
 type CreateCssVarsForColorSchemeThemesOptions = {
   getColorSchemeSelector: GetColorSchemeSelector;
-}
+} & Pick<ThemeOptions, 'cssVarPrefix'>;
 
 export type CreateCssVarsForColorSchemeThemesReturnValue = {
   /**
@@ -27,12 +29,16 @@ export type CreateCssVarsForColorSchemeThemesReturnValue = {
  * This allows for dynamic theming based on the active color scheme.
  * @param colorSchemes The default themes by each color scheme.
  * @param options Options for generating CSS variables, such as prefix and skip function.
+ * @returns The generated CSS variables theme and a function to generate the corresponding style sheets.
  */
 export default function createCssVarsForColorSchemeThemes(
   colorSchemes: ColorSchemeThemes,
   options: CreateCssVarsForColorSchemeThemesOptions
 ): CreateCssVarsForColorSchemeThemesReturnValue {
-  const { getColorSchemeSelector } = options || {};
+  const {
+    getColorSchemeSelector,
+    cssVarPrefix,
+  } = options || {};
 
   const colorSchemeMap: Record<ColorSchemeName, {
     css: Record<string, string | number>;
@@ -51,8 +57,9 @@ export default function createCssVarsForColorSchemeThemes(
   Object.keys(colorSchemes).forEach((schemeName: ColorSchemeName) => {
     const theme = colorSchemes[schemeName];
 
-    // @ts-expect-error - Sure about the type here
-    const { css, vars, varsWithDefaults } = cssVarsParser<BaseTheme>(theme);
+    const { css, vars, varsWithDefaults } = cssVarsParser<BaseTheme>(theme, {
+      prefix: cssVarPrefix,
+    });
 
     colorSchemeMap[schemeName] = {
       css,
