@@ -7,14 +7,26 @@ type ColorPartialKeys =
 type ColorPartial = Record<ColorPartialKeys, string>;
 
 
+/**
+ * Colors of the text palette
+ */
 interface TypeText {
   primary: string;
   secondary: string;
   tertiary: string;
 }
 
+/**
+ * Colors of the background palette
+ */
+interface TypeBackground {
+  default: string;
+}
+
 interface BasePaletteColor {
   main: string;
+  light: string;
+  dark: string;
 }
 
 interface PaletteColorWithContrast extends PaletteColor {
@@ -23,15 +35,17 @@ interface PaletteColorWithContrast extends PaletteColor {
 
 type PaletteColor<WithContrast extends boolean = false> =
   BasePaletteColor & (WithContrast extends true ? { contrastText: string } : {});
+
 export interface Palette {
-  mode: 'light' | 'dark';
+  mode: ColorSchemeName;
   primary: PaletteColor<true>;
   secondary: PaletteColor<true>;
-  error: PaletteColor;
-  warning: PaletteColor;
-  success: PaletteColor;
+  error: PaletteColor<true>;
+  warning: PaletteColor<true>;
+  success: PaletteColor<true>;
   cta: PaletteColor<true>;
   text: TypeText;
+  background: TypeBackground;
   grey: ColorPartial;
   getContrastText: (background: string) => string;
 }

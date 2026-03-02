@@ -17,6 +17,11 @@ const selectorTypes = ['data', 'class'] as const;
 
 export type ColorSchemeSelectorType = (typeof selectorTypes)[number];
 
+type DeepPartial<T> =
+  T extends object
+    ? { [K in keyof T]?: DeepPartial<T[K]> }
+    : T;
+
 /**
  * Available options for creating a color scheme object. Color schemes can be used to generate
  * multiple themes with different color palettes and typography, which can be switched
@@ -46,7 +51,7 @@ export interface ThemeOptions {
   /**
    * The palette defines the theme colors.
    */
-  palette?: Palette;
+  palette?: DeepPartial<Palette>;
   /**
    * Font styles for multiple typography variants.
    */
@@ -67,7 +72,7 @@ export interface ThemeOptions {
    *   }
    * }
    */
-  colorSchemes?: Record<ColorSchemeName, ColorSchemeOptions>;
+  colorSchemes?: Record<ColorSchemeName, DeepPartial<ColorSchemeOptions>>;
 }
 
 export interface BaseTheme {
