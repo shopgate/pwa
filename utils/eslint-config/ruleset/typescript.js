@@ -21,6 +21,7 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],
 
         'valid-jsdoc': 'off',
+        'require-jsdoc': 'off',
         // Require JSDoc only for "public" (exported) APIs.
         'jsdoc/require-jsdoc': ['warn', {
           publicOnly: true,

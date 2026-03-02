@@ -35,6 +35,8 @@ type ThemeProviderProps = {
 /**
  * The ThemeProvider component provides the theme context to its children.
  * @param props The component props
+ * @param props.children
+ * @param props.theme
  */
 const ThemeProvider = ({
   children,

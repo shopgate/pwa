@@ -52,7 +52,6 @@ export const loadCustomStyles = () => new Promise((resolve) => {
   linkTag.id = id;
 
   linkTag.onload = () => {
-    console.warn('THEME: custom styles loaded');
     initCSSCustomProps();
     resolve();
   };

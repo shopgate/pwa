@@ -1,11 +1,11 @@
-import { type Palette } from './createPalette';
-import { type Typography, type TypographyOptions } from './createTypography';
-import { type Breakpoints } from './createBreakpoints';
-import { type Spacing } from './createSpacing';
-import { type Transitions } from './transitions';
-import { type ZIndex } from './zIndex';
-import { type GetColorSchemeSelector, type ActiveColorSchemeSwitcher } from './helpers';
-import { type CreateCssVarsForColorSchemeThemesReturnValue } from './createCssVarsForColorSchemeThemes';
+import type { PaletteOptions, Palette } from './createPalette';
+import type { Typography, TypographyOptions } from './createTypography';
+import type { Breakpoints } from './createBreakpoints';
+import type { Spacing } from './createSpacing';
+import type { Transitions } from './transitions';
+import type { ZIndex } from './zIndex';
+import type { GetColorSchemeSelector, ActiveColorSchemeSwitcher } from './helpers';
+import type { CreateCssVarsForColorSchemeThemesReturnValue } from './createCssVarsForColorSchemeThemes';
 
 export type { Breakpoint } from './createBreakpoints';
 
@@ -51,7 +51,7 @@ export interface ThemeOptions {
   /**
    * The palette defines the theme colors.
    */
-  palette?: DeepPartial<Palette>;
+  palette?: DeepPartial<PaletteOptions>;
   /**
    * Font styles for multiple typography variants.
    */
