@@ -1,10 +1,12 @@
 import merge from 'lodash/merge';
+import { Theme } from '@emotion/react';
 import createBreakpoints from './createBreakpoints';
 import createSpacing from './createSpacing';
 import transitions from './transitions';
 import zIndex from './zIndex';
 import createThemeFromColorScheme from './createThemeFromColorScheme';
 import createCssVarsForColorSchemeThemes from './createCssVarsForColorSchemeThemes';
+import applyStyles from './applyStyles';
 import { createGetColorSchemeSelector, createSetActiveColorScheme } from './helpers';
 import {
   type ThemeOptions,
@@ -34,17 +36,17 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     cssVarPrefix = 'sg',
     palette: paletteInput = {},
     typography: typographyInput = {},
-    colorSchemes = { light: {} },
+    colorSchemes: colorSchemesInput = { light: {} },
   } = options;
 
   const defaultScheme: BaseTheme = merge({
     paletteInput,
     typographyInput,
   // @ts-expect-error - Sure about the type here
-  }, colorSchemes[defaultColorScheme] ?? {});
+  }, colorSchemesInput[defaultColorScheme] ?? {});
 
-  const colorSchemeThemes: ColorSchemeThemes = Object
-    .entries(colorSchemes)
+  const colorSchemes: ColorSchemeThemes = Object
+    .entries(colorSchemesInput)
     .reduce((acc, [type, scheme]) => {
       // @ts-expect-error - Sure about the type here
       acc[type] = createThemeFromColorScheme(merge(
@@ -62,19 +64,20 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     cssVarsTheme,
     generateStyleSheets,
   } = createCssVarsForColorSchemeThemes(
-    colorSchemeThemes,
+    colorSchemes,
     {
       getColorSchemeSelector,
       cssVarPrefix,
     }
   );
 
-  const currentTheme = colorSchemeThemes[defaultColorScheme] ?? colorSchemeThemes.light;
+  const currentTheme = colorSchemes[defaultColorScheme] ?? colorSchemes.light;
 
   const breakpoints = createBreakpoints();
   const spacing = createSpacing();
 
-  return {
+  // @ts-expect-error applyStyles is added to the theme object after its creation
+  const theme: ThemeInternal = {
     ...currentTheme,
     ...cssVarsTheme,
     defaultColorScheme,
@@ -82,8 +85,13 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     spacing,
     transitions,
     zIndex,
+    colorSchemes,
     getColorSchemeSelector,
     setActiveColorScheme,
     generateStyleSheets,
   };
+
+  theme.applyStyles = applyStyles;
+
+  return theme;
 };

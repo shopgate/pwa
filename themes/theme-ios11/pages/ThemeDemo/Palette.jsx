@@ -28,6 +28,11 @@ const useStyles = makeStyles()(theme => ({
     borderColor: theme.palette.grey[500],
     borderWidth: 1,
     borderStyle: 'solid',
+    ...theme.applyStyles('dark', {
+      '& *': {
+        fontWeight: 'bold',
+      },
+    }),
   },
   entryText: {
 
