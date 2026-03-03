@@ -5,10 +5,10 @@ const useStyles = makeStyles()(theme => ({
     '--sg-palette-price-color': theme.palette.primary.main,
   },
   price: {
-    color: 'var(--sg-palette-price-color)',
+    color: theme.components.price.color,
   },
   card: {
-    '--sg-palette-price-color': theme.palette.secondary.main,
+    [theme.vars.components.price.color]: theme.palette.secondary.main,
     height: 100,
     width: 100,
     backgroundColor: '#fff',
@@ -22,9 +22,6 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
-/**
- * @returns The component content
- */
 const Price = () => {
   const { classes } = useStyles();
 
@@ -36,7 +33,7 @@ const Price = () => {
 };
 
 /**
- * @returns The component content
+ * The CSSColorOverride component demonstrates how to override component token values using CSS variables.
  */
 const CSSColorOverride = () => {
   const { classes } = useStyles();

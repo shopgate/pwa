@@ -1,5 +1,6 @@
 import createPalette from './createPalette';
 import createTypography from './createTypography';
+import createComponents from './createComponents';
 import type { ColorSchemeOptions, BaseTheme } from './types';
 
 /**
@@ -11,14 +12,17 @@ const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): BaseTheme 
   const {
     palette: paletteInput = {},
     typography: typographyInput = {},
+    components: componentsInput = {},
   } = colorScheme;
 
   const palette = createPalette(paletteInput);
   const typography = createTypography(palette, typographyInput);
+  const components = createComponents(componentsInput);
 
   return {
     palette,
     typography,
+    components,
   };
 };
 

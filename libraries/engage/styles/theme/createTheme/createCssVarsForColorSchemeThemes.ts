@@ -1,6 +1,7 @@
 import merge from 'lodash/merge';
 import type { CSSInterpolation } from 'tss-react';
 import { cssVarsParser } from './helpers';
+import { resolveComponentsValues } from './createComponents';
 import type {
   ColorSchemeThemes, BaseTheme, ColorSchemeName, ThemeOptions,
 } from './types';
@@ -57,22 +58,43 @@ export default function createCssVarsForColorSchemeThemes(
   // Create CSS variables for each color scheme and generate corresponding style sheets
   // @ts-expect-error - Sure about the type here
   Object.keys(colorSchemes).forEach((schemeName: ColorSchemeName) => {
-    const theme = colorSchemes[schemeName];
+    const {
+      components: componentsInput,
+      ...rest
+    } = colorSchemes[schemeName];
 
+    // Create CSS variables for the theme - skip components since they contain mappings
+    // to the generated CSS variables.
     const {
       css, vars, varsWithDefaults, varNames,
-    } = cssVarsParser<BaseTheme>(theme, {
+    } = cssVarsParser<BaseTheme>(rest, {
+      prefix: cssVarPrefix,
+    });
+
+    // Resolve component token values to actual CSS variable references
+    // (e.g., var(--sg-palette-primary-main))
+    const resolvedComponents = resolveComponentsValues(componentsInput, vars);
+
+    const {
+      css: componentsCss,
+      vars: componentsVars,
+      varsWithDefaults: componentsVarsWithDefaults,
+      varNames: componentsVarNames,
+    } = cssVarsParser<BaseTheme>({
+      components: resolvedComponents,
+    }, {
       prefix: cssVarPrefix,
     });
 
     colorSchemeMap[schemeName] = {
-      css,
-      vars,
-      varsWithDefaults,
-      varNames,
+      css: merge(css, componentsCss),
+      vars: merge(vars, componentsVars),
+      varsWithDefaults: merge(varsWithDefaults, componentsVarsWithDefaults),
+      varNames: merge(varNames, componentsVarNames),
     };
 
     if (Array.isArray(styleSheets)) {
+      // Create a style sheet selector for the color scheme with the generated CSS variables
       styleSheets.push({
         [`${schemeName === 'light' ? ':root, ' : ''}${getColorSchemeSelector(schemeName)}`]: {
           ...css,

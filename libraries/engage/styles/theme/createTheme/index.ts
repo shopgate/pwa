@@ -1,5 +1,4 @@
 import merge from 'lodash/merge';
-import { Theme } from '@emotion/react';
 import createBreakpoints from './createBreakpoints';
 import createSpacing from './createSpacing';
 import transitions from './transitions';
@@ -17,6 +16,7 @@ import {
 
 export type {
   Theme,
+  BaseTheme,
   ThemeInternal,
   ThemeOptions,
   Breakpoint,

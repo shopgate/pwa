@@ -75,6 +75,10 @@ export interface ThemeOptions {
    * }
    */
   colorSchemes?: Record<ColorSchemeName, DeepPartial<ColorSchemeOptions>>;
+  /**
+   *  Component specific styling tokes.
+   */
+  components?: ComponentsOptions;
 }
 
 export interface BaseTheme {
@@ -86,6 +90,10 @@ export interface BaseTheme {
    * Font styles for multiple typography variants.
    */
   typography: Typography;
+  /**
+   * Component specific styling tokes.
+   */
+  components: Components;
 }
 
 export interface Theme extends BaseTheme {
