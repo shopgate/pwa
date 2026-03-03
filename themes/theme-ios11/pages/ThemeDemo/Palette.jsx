@@ -8,7 +8,7 @@ const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    gap: theme.spacing(2),
+    gap: theme.spacing(1),
   },
   group: {
     display: 'flex',
@@ -18,23 +18,23 @@ const useStyles = makeStyles()(theme => ({
   },
   entry: {
     display: 'flex',
-    flexDirection: 'column',
-    height: 80,
-    width: 80,
-    padding: theme.spacing(2),
+    gap: theme.spacing(1),
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  color: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 40,
+    width: 40,
+    border: `1px solid ${theme.palette.grey[400]}`,
     borderRadius: 8,
-    borderColor: theme.palette.grey[500],
-    borderWidth: 1,
-    borderStyle: 'solid',
     ...theme.applyStyles('dark', {
-      '& *': {
-        fontWeight: 'bold',
-      },
+      borderColor: '#fff',
     }),
   },
-  entryText: {
+  entryName: {
 
   },
 }));
@@ -53,47 +53,24 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const Entry = ({ entry }) => {
-  const theme = useTheme();
-
-  // Determine text color
-  const color = useMemo(() => {
-    if (!entry.value) {
-      return '#fff';
-    }
-
-    if (entry?.group?.contrastText) {
-      return entry.group.contrastText;
-    }
-
-    return 'transparent';
-  }, [
-    entry.value,
-    entry.group,
-  ]);
-
   const { classes } = useStyles();
 
   return (
-    <div
-      className={classes.entry}
-      style={{ backgroundColor: entry.name === 'contrastText' ? theme.palette.grey[500] : entry.value }}
-    >
-      {entry.name ? (
+    <div className={classes.entry}>
+      <div className={classes.color} style={{ background: entry.value }}>
+        {entry?.group?.contrastText && (
         <Typography
           variant="caption"
           className={classes.entryText}
-          style={{ color }}
+          style={{ color: entry.group.contrastText }}
         >
-          {entry.name}
+          Text
         </Typography>
-      ) : null}
-      {/* <Typography
-        variant="caption"
-        className={classes.entryText}
-        style={{ color }}
-      >
-        {entry.value.toLowerCase()}
-      </Typography> */}
+        )}
+      </div>
+      <div className={classes.entryName}>
+        {entry.name}
+      </div>
     </div>
   );
 };
@@ -122,7 +99,7 @@ const Palette = () => {
           subEntries = Object.entries(group)
             .filter(([, innerGroup]) => typeof innerGroup === 'string')
             .map(([name, value]) => ({
-              name,
+              name: `${groupTitle}.${name}`,
               value,
               group,
             }));
@@ -138,7 +115,7 @@ const Palette = () => {
 
         return {
           headline: groupTitle,
-          entries: subEntries.filter(({ name }) => name !== 'contrastText'),
+          entries: subEntries.filter(({ name }) => !name.includes('contrastText')),
         };
       }),
     [theme.palette]
@@ -148,7 +125,7 @@ const Palette = () => {
     <div className={classes.root}>
       {entries.map(({ headline, entries: subEntries }) => (
         <Fragment key={headline}>
-          <Typography variant="h3" gutterBottom>{startCase(headline)}</Typography>
+          <Typography variant="h4" gutterBottom>{startCase(headline)}</Typography>
           <div className={classes.group}>
             {subEntries.map(entry => (
               <Entry key={`${entry.name}${entry.value}`} entry={entry} />
