@@ -34,9 +34,6 @@ type ThemeProviderProps = {
 
 /**
  * The ThemeProvider component provides the theme context to its children.
- * @param props The component props
- * @param props.children
- * @param props.theme
  */
 const ThemeProvider = ({
   children,
@@ -45,7 +42,7 @@ const ThemeProvider = ({
   const [
     activeColorScheme,
     setActiveColorScheme,
-  ] = useLocalStorage('persistedColorScheme', { initialValue: theme.defaultColorScheme });
+  ] = useLocalStorage<ColorSchemeName>('persistedColorScheme', { initialValue: theme.defaultColorScheme });
 
   const colorSchemeContextValue = useMemo(() => ({
     mode: activeColorScheme,

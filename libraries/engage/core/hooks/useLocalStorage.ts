@@ -4,17 +4,37 @@ import {
 
 import { appConfig } from '@shopgate/engage';
 
+// @ts-expect-error - appConfig is not typed yet
 const { appId } = appConfig;
 
 /**
- * Custom hook to manage and persist state in localStorage.
- * @param {string} key The key under which the value is stored in localStorage.
- * @param {Object} options Optional configuration object.
- * @param {*} options.initialValue The initial value to use if there is no value in localStorage.
- * @param {boolean} options.sync Whether to sync state across multiple tabs/windows.
- * @returns {[any, Function]} A tuple containing the stored value and a function to update it.
+ * Options for useLocalStorage.
  */
-export default function useLocalStorage(key, options = {}) {
+interface UseLocalStorageOptions<T> {
+  /**
+   * Fallback value used when nothing is stored or when parsing fails.
+   */
+  initialValue?: T;
+
+  /**
+   * Whether to sync value changes across tabs via the StorageEvent listener.
+   * @default true
+   */
+  sync?: boolean;
+}
+
+type SetValueAction<T> = T | null | ((prev: T | null) => T | null);
+
+/**
+ * Custom hook to manage and persist state in localStorage.
+ * @param key The key under which the value is stored in localStorage.
+ * @param options Optional configuration object.
+ * @returns A tuple containing the stored value and a function to update it.
+ */
+export default function useLocalStorage<T>(
+  key: string,
+  options: UseLocalStorageOptions<T> = {}
+): readonly [T | null, (value: SetValueAction<T>) => void] {
   const { initialValue = null, sync = true } = options;
 
   const storageKey = useMemo(() => `${appId}_${key}`, [key]);
@@ -29,11 +49,11 @@ export default function useLocalStorage(key, options = {}) {
     }
   }, [storageKey, initialValue]);
 
-  const [storedValue, setStoredValue] = useState(readValue);
+  const [storedValue, setStoredValue] = useState<T|null>(readValue);
 
   /**
    * Sets a new value both in state and in localStorage.
-   * @param {any} value The new value to store.
+   * @param value The new value to store.
    */
   const setValue = useCallback((value) => {
     try {
@@ -68,10 +88,9 @@ export default function useLocalStorage(key, options = {}) {
      * - This event does NOT fire in the same tab that performed the update.
      * - `event.newValue` is null when the key was removed.
      *
-     * @param {StorageEvent} event The native storage event.
-     * @returns {void}
+     * @param event The native storage event.
      */
-    const handleStorageChange = (event) => {
+    const handleStorageChange = (event: StorageEvent) => {
       if (event.key !== storageKey) return;
 
       try {
