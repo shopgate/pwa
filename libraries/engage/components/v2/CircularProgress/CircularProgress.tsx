@@ -66,7 +66,9 @@ const circularDash = keyframes({
   },
 });
 
-const useStyles = makeStyles<CircularProgressProps>()((theme, props) => {
+const useStyles = makeStyles<CircularProgressProps>({
+  name: 'CircularProgress',
+})((theme, props) => {
   const { color } = props;
 
   let cssColor = 'inherit';
