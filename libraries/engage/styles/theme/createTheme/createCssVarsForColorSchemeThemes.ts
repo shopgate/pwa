@@ -1,11 +1,11 @@
 import merge from 'lodash/merge';
 import type { CSSInterpolation } from 'tss-react';
-import { cssVarsParser } from './helpers';
+import { cssVarsParser, cssVarsColorAugmentation } from './helpers';
+import type { GetColorSchemeSelector } from './helpers';
 import { resolveComponentsValues } from './createComponents';
 import type {
   ColorSchemeThemes, BaseTheme, ColorSchemeName, ThemeOptions,
 } from './types';
-import type { GetColorSchemeSelector } from './helpers';
 
 type CreateCssVarsForColorSchemeThemesOptions = {
   getColorSchemeSelector: GetColorSchemeSelector;
@@ -65,11 +65,13 @@ export default function createCssVarsForColorSchemeThemes(
 
     // Create CSS variables for the theme - skip components since they contain mappings
     // to the generated CSS variables.
+    // Also convert colors with a "main" property to have light and dark variants via css color-mix
     const {
       css, vars, varsWithDefaults, varNames,
-    } = cssVarsParser<BaseTheme>(rest, {
+    } = cssVarsColorAugmentation(cssVarsParser<BaseTheme>(rest, {
       prefix: cssVarPrefix,
-    });
+      // @ts-expect-error - We are sure about the type here
+    }), rest);
 
     // Resolve component token values to actual CSS variable references
     // (e.g., var(--sg-palette-primary-main))

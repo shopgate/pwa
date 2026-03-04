@@ -3,7 +3,8 @@ import isPlainObject from 'lodash/isPlainObject';
 import {
   isColor,
   toHsl,
-  addLightness,
+  lighten,
+  darken,
   getContrastRatio,
 } from '../utils';
 import type { AugmentedPaletteColor, Palette } from './createPalette.types';
@@ -100,15 +101,12 @@ const addSubColor = (options: AddSubColorOptions): AugmentedPaletteColor => {
   const result = { ...intent };
 
   if (!intent[direction]) {
-    // @ts-expect-error - We are sure about the type here
-    const [, , light] = toHsl(intent.main, 'array');
-
     if (direction === 'light') {
       // @ts-expect-error - We are sure about the type here
-      result.light = addLightness(intent.main, light + (100 - light) * tonalOffsetLight) as string;
+      result.light = lighten(intent.main, tonalOffsetLight) as string;
     } else if (direction === 'dark') {
       // @ts-expect-error - We are sure about the type here
-      result.dark = addLightness(intent.main, light * (1 - tonalOffsetDark)) as string;
+      result.dark = darken(intent.main, tonalOffsetDark) as string;
     }
   }
 

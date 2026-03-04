@@ -30,7 +30,6 @@ export const isColor = (value: unknown) => {
  * @param [background='#fff'] Optional background color which is used for source colors
  * with alpha channel.
  * @returns Contrast value
- *
  * @see https://www.w3.org/TR/WCAG20/#relativeluminancedef
  */
 export const getContrastRatio = (
@@ -80,7 +79,7 @@ const createReturnValue = (color: ColorInstance, type: ColorType) => {
 /**
  * Converts a passed color to a hex(a) color
  * @param color The color to convert.
- * @param [returnType='hex'] The type of return value to create.
+ * @param returnType The type of return value to create. Defaults to 'hex'.
  * @returns The desired color value
  */
 export const toHex = (
@@ -91,7 +90,7 @@ export const toHex = (
 /**
  * Converts a passed color to an RGB color
  * @param color The color to convert.
- * @param [returnType='rgb'] The type of return value to create.
+ * @param returnType The type of return value to create. Defaults to 'rgb'.
  * @returns The desired color value
  */
 export const toRgb = (
@@ -102,7 +101,7 @@ export const toRgb = (
 /**
  * Converts a passed color to an HSL color
  * @param color The color to convert.
- * @param [returnType='hsl'] The type of return value to create.
+ * @param returnType The type of return value to create. Defaults to 'hsl'.
  * @returns The desired color value
  */
 export const toHsl = (
@@ -114,7 +113,7 @@ export const toHsl = (
  * Adds hsl lightness to a color
  * @param color The color to modify.
  * @param value The hsl lightness value to add.
- * @param [type='hsl'] The type of return value to create.
+ * @param type The type of return value to create. Defaults to 'hsl'.
  * @returns The desired color value
  */
 export const addLightness = (
@@ -122,3 +121,28 @@ export const addLightness = (
   value: number,
   type: ColorType = 'hsl'
 ) => createReturnValue(Color(color).lightness(value), type);
+/**
+ * Lightens a color by a given offset
+ * @param color The color to modify.
+ * @param totalOffset The total offset to lighten the color by.
+ * @param type The type of return value to create. Defaults to 'hsl'.
+ * @returns The desired color value
+ */
+export const lighten = (
+  color: ColorInstance,
+  totalOffset: number,
+  type: ColorType = 'hsl'
+) => createReturnValue(Color(color).lighten(totalOffset), type);
+
+/**
+ * Darkens a color by a given offset
+ * @param color The color to modify.
+ * @param totalOffset The total offset to darken the color by.
+ * @param type The type of return value to create. Defaults to 'hsl'.
+ * @returns The desired color value
+ */
+export const darken = (
+  color: ColorInstance,
+  totalOffset: number,
+  type: ColorType = 'hsl'
+) => createReturnValue(Color(color).darken(totalOffset), type);

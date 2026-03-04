@@ -131,6 +131,29 @@ type CssVarsParserOptions = {
   shouldSkipGeneratingVar?: (objectPathKeys: Array<string>, value: string | number) => boolean;
 };
 
+export type CssVarsParserReturnValue<T> = {
+  /**
+   * An object containing the CSS variables as keys and their corresponding values
+   * For example: { '--sg-palette-primary-main': '#000000' }
+   */
+  css: Record<string, string | number>;
+  /**
+   * An object with the same structure as the input theme, but with values replaced by CSS variable references.
+   * For example: { palette: { primary: { main: 'var(--sg-palette-primary-main)' } }
+   */
+  vars: T;
+  /**
+   * An object with the same structure as the input theme, but with values replaced by CSS variable references with fallback values.
+   * For example: { palette: { primary: { main: 'var(--sg-palette-primary-main, #000000)' } }
+   */
+  varsWithDefaults: T;
+  /**
+   * An object with the same structure as the input theme, but with values replaced by the raw CSS variable names.
+   * For example: { palette: { primary: { main: '--sg-palette-primary-main' } }
+   */
+  varNames: T;
+};
+
 /**
  * Helper function to parse a theme-like object to generate matching CSS variables.
  * It will return an object containing `css`, `vars`, and `varsWithDefaults`.
@@ -158,12 +181,7 @@ type CssVarsParserOptions = {
 export default function cssVarsParser<T extends object>(
   theme: object,
   options?: CssVarsParserOptions
-): {
-  css: Record<string, string | number>;
-  vars: T;
-  varsWithDefaults: T;
-  varNames: T;
-} {
+): CssVarsParserReturnValue<T> {
   const {
     prefix = 'sg',
     shouldSkipGeneratingVar,

@@ -94,6 +94,28 @@ export interface BaseTheme {
    * Component specific styling tokes.
    */
   components: Components;
+  /**
+   * Adds an alpha value to a color, returning a new color string with the applied alpha.
+   * @param color The color to modify.
+   * @param coefficient The alpha coefficient to apply, either a number or a string representing a CSS calculation.
+   * @returns A string representing the color with the applied alpha value.
+   */
+  alpha(color: string, coefficient: number | string): string;
+  /**
+   * Lightens a color by a given coefficient, returning a new color string with the applied lightening.
+   * @param color The color to modify.
+   * @param coefficient The coefficient to apply, either a number or a string representing a CSS calculation.
+   * @returns A string representing the lightened color.
+   */
+  lighten(color: string, coefficient?: number | string): string;
+  /**
+   * Darkens a color by a given coefficient, returning a new color string with the applied darkening.
+   * @param color The color to modify.
+   * @param coefficient The coefficient to apply, either a number or a string representing a CSS calculation.
+   * Defaults to `0.2` if not provided.
+   * @returns A string representing the darkened color.
+   */
+  darken(color: string, coefficient?: number | string): string;
 }
 
 export interface Theme extends BaseTheme {
