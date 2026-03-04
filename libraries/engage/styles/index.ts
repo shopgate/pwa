@@ -8,6 +8,7 @@ export {
   useTheme,
   useColorScheme,
   type Theme,
+  type PaletteColorsWithMain,
 } from './theme';
 export {
   makeStyles,

@@ -13,7 +13,7 @@ import type { ColorSchemeName, ThemeOptions } from '.';
 
 type PaletteOptions = ThemeOptions['palette'];
 
-export type { Palette, PaletteOptions } from './createPalette.types';
+export type { Palette, PaletteOptions, PaletteColorsWithMain } from './createPalette.types';
 
 const defaultTextLight = {
   primary: '#202020',

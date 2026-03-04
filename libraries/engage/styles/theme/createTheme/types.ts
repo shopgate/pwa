@@ -10,6 +10,7 @@ import type { GetColorSchemeSelector, ActiveColorSchemeSwitcher } from './helper
 import type { CreateCssVarsForColorSchemeThemesReturnValue } from './createCssVarsForColorSchemeThemes';
 
 export type { Breakpoint } from './createBreakpoints';
+export type { PaletteColorsWithMain } from './createPalette';
 
 const colorSchemes = ['light', 'dark'] as const;
 

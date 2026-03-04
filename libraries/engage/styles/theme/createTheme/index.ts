@@ -22,6 +22,7 @@ export type {
   Breakpoint,
   ColorSchemeName,
   ColorSchemeSelectorType,
+  PaletteColorsWithMain,
 } from './types';
 
 /**

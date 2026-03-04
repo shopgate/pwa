@@ -77,6 +77,13 @@ type PaletteInputFromSchema<T> =
         : { [K in keyof T]: PaletteInputFromSchema<T[K]> })
     : string;
 
+type PaletteKeysWithMain<T> = {
+  [K in keyof T]-?: T[K] extends { main: unknown } ? K : never
+}[keyof T];
+
+// Creates a type with only the keys of the palette that have a "main" color
+export type PaletteColorsWithMain = PaletteKeysWithMain<PaletteFromSchema<typeof paletteSchema>>;
+
 const grey = {
   50: '#fafafa',
   100: '#f5f5f5',
@@ -154,7 +161,7 @@ interface PaletteDocs {
      * Text color to be used on a dark background
      */
     contrastDark: string;
-  }
+  };
   /**
    * Colors to be used for the background of various elements
    */
@@ -163,7 +170,7 @@ interface PaletteDocs {
      * The color used for the background of the application
      */
     default: string;
-  },
+  };
   /**
    * Palette with grey colors, intended for backgrounds, borders, and dividers.
    * The numbers represent the lightness of the color,
