@@ -1,10 +1,12 @@
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
+import { RIPPLE_PRESS_MS, RIPPLE_RELEASE_MS } from './constants';
 
-const rippleAnimation = keyframes({
-  to: {
-    transform: 'scale(4)',
-    opacity: 0,
-  },
+const ripplePress = keyframes({
+  to: { transform: 'scale(2.5)' },
+});
+
+const rippleRelease = keyframes({
+  to: { opacity: 0 },
 });
 
 const useStyles = makeStyles({
@@ -17,40 +19,46 @@ const useStyles = makeStyles({
     borderRadius: 'inherit',
     pointerEvents: 'none',
   },
-
-  ripple: {
+  rippleBase: {
     position: 'absolute',
     borderRadius: '50%',
-    transform: 'scale(0)',
     backgroundColor: 'currentColor',
-    opacity: 0.2,
-    animation: `${rippleAnimation} 550ms ease-out`,
+    opacity: 0.18,
+    transform: 'scale(0)',
+    willChange: 'transform, opacity',
+  },
+  pressing: {
+    animation: `${ripplePress} ${RIPPLE_PRESS_MS}ms ease-out forwards`,
+  },
+  releasing: {
+    // keep scale, fade out
+    animation: `${rippleRelease} ${RIPPLE_RELEASE_MS}ms ease-out forwards`,
   },
 }));
 
-interface RippleProps {
-  ripples: {
-    key: number;
-    x: number;
-    y: number;
-    size: number;
-  }[];
-}
+type RippleModel = {
+  key: number;
+  x: number;
+  y: number;
+  size: number;
+  state: 'pressing' | 'releasing';
+};
 
 /**
  * The Ripple component renders the ripple effect for button interactions.
  */
-const Ripple = (props: RippleProps) => {
-  const { ripples } = props;
-
-  const { classes } = useStyles();
+export function Ripple({ ripples }: { ripples: RippleModel[] }) {
+  const { classes, cx } = useStyles();
 
   return (
     <span className={classes.container}>
       {ripples.map(r => (
         <span
           key={r.key}
-          className={classes.ripple}
+          className={cx(
+            classes.rippleBase,
+            r.state === 'pressing' ? classes.pressing : classes.releasing
+          )}
           style={{
             width: r.size,
             height: r.size,
@@ -61,6 +69,6 @@ const Ripple = (props: RippleProps) => {
       ))}
     </span>
   );
-};
+}
 
 export default Ripple;

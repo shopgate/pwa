@@ -32,9 +32,9 @@ const ThemeDemo = () => {
     <View noContentPortal>
       <DefaultBar title="Theme Demo" />
       <div className={classes.root}>
+        <ColorSchemeToggle />
         <Buttons />
         <Misc />
-        <ColorSchemeToggle />
         <CSSColorOverride />
         <Palette />
       </div>

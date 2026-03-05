@@ -2,7 +2,7 @@ import { forwardRef } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import Ripple from './Ripple';
-import { useRipple } from './hooks';
+import { usePressRipple } from './hooks';
 
 const useStyles = makeStyles({
   name: 'ButtonBase',
@@ -65,24 +65,49 @@ const supportedButtonTypes = ['button', 'submit', 'reset'];
 const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) => {
   const {
     disabled = false,
-    disableRipple = false,
+    disableRipple: disableRippleProp = false,
     type = 'button',
     onPointerDown,
+    onPointerUp,
+    onPointerLeave,
+    onPointerCancel,
     className,
     children,
     ...other
   } = props;
 
   const { classes, cx } = useStyles();
-  const { ripples, createRipple } = useRipple();
+  const {
+    ripples, start, end,
+  } = usePressRipple();
   const reduceMotion = useReduceMotion();
 
-  const handlePointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
-    if (!disableRipple && !disabled) {
-      createRipple(e);
-    }
+  const disableRipple = disableRippleProp || reduceMotion;
 
+  const handlePointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (disabled) return;
+
+    // ensure we get the matching pointerup
+    e.currentTarget.setPointerCapture?.(e.pointerId);
+
+    if (!disableRipple) start(e);
     onPointerDown?.(e);
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!disableRipple) end(e.pointerId);
+    onPointerUp?.(e);
+  };
+
+  const handlePointerCancel = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!disableRipple) end(e.pointerId);
+    onPointerCancel?.(e);
+  };
+
+  const handlePointerLeave = (e: React.PointerEvent<HTMLButtonElement>) => {
+    // If you prefer: only end if no pointer capture; but simplest is to end.
+    if (!disableRipple) end(e.pointerId);
+    onPointerLeave?.(e);
   };
 
   return (
@@ -91,6 +116,9 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
       className={cx(classes.root, className)}
       disabled={disabled}
       onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerCancel}
+      onPointerLeave={handlePointerLeave}
       // eslint-disable-next-line react/button-has-type
       type={supportedButtonTypes.includes(type) ? type : 'button'}
       {...other}
