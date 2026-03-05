@@ -92,16 +92,7 @@ const useStyles = makeStyles<UseStylesProps>({
 
   return {
     root: {
-      ...theme.typography.button,
-      fontSize: 'var(--sg-button-font-size)',
-      boxSizing: 'border-box',
-      minWidth: 64,
-      padding: '6px 16px',
-      transition: theme.transitions.create(['background-color', 'box-shadow', 'border'], {
-        duration: theme.transitions.duration.short,
-      }),
-      borderRadius: theme.shape.borderRadius,
-
+      '--sg-button-border-radius': theme.components.button.borderRadius,
       '--sg-button-font-size': theme.typography.button.fontSize,
 
       '--sg-button-variant-textColor': cssColor,
@@ -118,6 +109,15 @@ const useStyles = makeStyles<UseStylesProps>({
       '--sg-button-variant-containedDisabledBg': theme.palette.action.disabledBackground,
 
       '--sg-button-icon-size': theme.vars.typography.button.fontSize,
+      ...theme.typography.button,
+      fontSize: 'var(--sg-button-font-size)',
+      boxSizing: 'border-box',
+      minWidth: 64,
+      padding: '6px 16px',
+      transition: theme.transitions.create(['background-color', 'box-shadow', 'border'], {
+        duration: theme.transitions.duration.short,
+      }),
+      borderRadius: 'var(--sg-button-border-radius)',
 
       '&:hover': {
         '--sg-button-variant-textBg': theme.alpha(cssColor, 0.1),

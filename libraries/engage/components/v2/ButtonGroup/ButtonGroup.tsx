@@ -70,10 +70,14 @@ const useStyles = makeStyles<UseStylesProps>({
 
   return {
     root: {
-      display: 'inline-flex',
-      borderRadius: theme.shape.borderRadius,
       '--sg-button-group-color': cssColor,
       '--sg-button-group-disabledColor': theme.palette.action.disabled,
+      '&& button': {
+        // Override button border radius with group border radius
+        [theme.vars.components.button.borderRadius]: theme.components.buttonGroup.borderRadius,
+      },
+      display: 'inline-flex',
+      borderRadius: theme.components.buttonGroup.borderRadius,
     },
     contained: {
       boxShadow: theme.shadows[2],

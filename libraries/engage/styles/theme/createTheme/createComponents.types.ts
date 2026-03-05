@@ -1,3 +1,4 @@
+import { button } from '../../../locations/components/ReserveForm/ReserveForm.style';
 import type { BaseTheme } from './index';
 
 type Theme = Omit<BaseTheme, 'components'>;
@@ -21,7 +22,8 @@ type Leaf = string | number | boolean | null | undefined;
  */
 export type ComponentTokenValue<TTheme> =
   | string
-  | ((theme: TTheme) => string);
+  | number
+  | ((theme: TTheme) => string | number);
 
 /**
  * Derives the **resolved** components type from `componentsSchema`.
@@ -87,6 +89,12 @@ export const componentsSchema = {
   price: {
     color: '',
   },
+  button: {
+    borderRadius: '',
+  },
+  buttonGroup: {
+    borderRadius: '',
+  },
 } as const;
 
 /**
@@ -100,6 +108,12 @@ export const componentsSchema = {
 export const componentsDefaults = {
   price: {
     color: t => t.palette.primary.main,
+  },
+  button: {
+    borderRadius: t => t.shape.borderRadius,
+  },
+  buttonGroup: {
+    borderRadius: t => t.shape.borderRadius,
   },
 } satisfies ComponentsDefaults;
 
