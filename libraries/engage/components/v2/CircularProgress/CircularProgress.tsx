@@ -40,6 +40,10 @@ export interface CircularProgressProps {
    * Custom class name for the circular progress
    */
   className?: string;
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes?: Partial<ReturnType<typeof useStyles>['classes']>;
 }
 
 const circularRotate = keyframes({
@@ -130,7 +134,7 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>((prop
     ...other
   } = props;
 
-  const { classes, cx } = useStyles({ color });
+  const { classes, cx } = useStyles({ color }, { props: { classes: props.classes } });
 
   const circleStyle: React.CSSProperties = {};
   const rootStyle: React.CSSProperties = {};
