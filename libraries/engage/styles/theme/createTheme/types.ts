@@ -8,6 +8,8 @@ import type { ZIndex } from './zIndex';
 import type { ApplyStyles } from './applyStyles';
 import type { GetColorSchemeSelector, ActiveColorSchemeSwitcher } from './helpers';
 import type { CreateCssVarsForColorSchemeThemesReturnValue } from './createCssVarsForColorSchemeThemes';
+import type { Shape, ShapeOptions } from './createShape';
+import type { Shadows } from './shadows';
 
 export type { Breakpoint } from './createBreakpoints';
 export type { PaletteColorsWithMain } from './createPalette';
@@ -30,7 +32,7 @@ type DeepPartial<T> =
  * multiple themes with different color palettes and typography, which can be switched
  * dynamically based on user preference or system settings.
  */
-export type ColorSchemeOptions = Pick<ThemeOptions, 'palette' | 'typography' | 'components'>;
+export type ColorSchemeOptions = Pick<ThemeOptions, 'palette' | 'typography' | 'components' | 'shape'>;
 
 export interface ThemeOptions {
   /**
@@ -59,6 +61,7 @@ export interface ThemeOptions {
    * Font styles for multiple typography variants.
    */
   typography?: TypographyOptions | ((palette: Palette) => TypographyOptions);
+  shape?: ShapeOptions;
   /**
    * The color schemes to generate themes for. Each key is a color scheme name (e.g., 'light', 'dark'),
    * and the value is an object that can contain palette and typography options specific to that color scheme.
@@ -95,6 +98,11 @@ export interface BaseTheme {
    * Component specific styling tokes.
    */
   components: Components;
+  shape: Shape;
+  /**
+   * Pre-defined shadow styles for different elevation levels, following Material Design guidelines.
+   */
+  shadows: Shadows;
   /**
    * Adds an alpha value to a color, returning a new color string with the applied alpha.
    * @param color The color to modify.

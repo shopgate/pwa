@@ -17,6 +17,11 @@ export interface ButtonProps extends ButtonBaseProps {
    */
   color?: PaletteColorsWithMain;
   /**
+   * If `true`, no elevation is used.
+   * @default false
+   */
+  disableElevation?: boolean;
+  /**
    * Element placed before the children.
    */
   startIcon?: React.ReactNode;
@@ -90,7 +95,7 @@ const useStyles = makeStyles<OwnProps<ButtonProps, Omit<ButtonBaseProps, 'color'
       transition: theme.transitions.create(['background-color', 'box-shadow', 'border'], {
         duration: theme.transitions.duration.short,
       }),
-      borderRadius: 4,
+      borderRadius: theme.shape.borderRadius,
 
       '--sg-button-font-size': theme.typography.button.fontSize,
 
@@ -153,16 +158,35 @@ const useStyles = makeStyles<OwnProps<ButtonProps, Omit<ButtonBaseProps, 'color'
     contained: {
       color: 'var(--sg-button-variant-containedColor)',
       background: 'var(--sg-button-variant-containedBg)',
+      boxShadow: theme.shadows[2],
       '&:hover': {
         background: theme.darken('var(--sg-button-variant-containedBg)'),
+        boxShadow: theme.shadows[4],
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           background: 'var(--sg-button-variant-containedBg)',
+          boxShadow: theme.shadows[2],
         },
+      },
+      '&:active': {
+        boxShadow: theme.shadows[8],
       },
       '&:disabled': {
         color: 'var(--sg-button-variant-containedDisabledColor)',
         backgroundColor: 'var(--sg-button-variant-containedDisabledBg)',
+        boxShadow: theme.shadows[0],
+      },
+    },
+    disableElevation: {
+      boxShadow: 'none',
+      '&:hover': {
+        boxShadow: 'none',
+      },
+      '&:active': {
+        boxShadow: 'none',
+      },
+      '&$disabled': {
+        boxShadow: 'none',
       },
     },
     label: {
@@ -288,6 +312,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     size = 'medium',
     disabled = false,
     fullWidth = false,
+    disableElevation = false,
     className,
     children,
     ...other
@@ -344,6 +369,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         [classes.large]: size === 'large',
         [classes.disabled]: disabled || loading,
         [classes.fullWidth]: fullWidth,
+        [classes.disableElevation]: disableElevation,
       })}
       disabled={disabled || loading}
       {...other}

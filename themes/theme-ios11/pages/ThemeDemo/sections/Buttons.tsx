@@ -34,6 +34,7 @@ const Buttons = () => {
   const [loading, setLoading] = useState(false);
   const [showStartIcon, setShowStartIcon] = useState(true);
   const [showEndIcon, setShowEndIcon] = useState(false);
+  const [disableElevation, setDisableElevation] = useState(false);
   const [loadingPosition, setLoadingPosition] = useState<'start' | 'center' | 'end'>('center');
 
   const startIcon = useMemo(() => (showStartIcon ? <PhoneIcon /> : null), [showStartIcon]);
@@ -49,17 +50,34 @@ const Buttons = () => {
         <SectionRow className={classes.settings}>
           <div>
             <div>
-              <Switch checked={loading} onChange={() => setLoading(!loading)}>
+              <Switch
+                checked={disableElevation}
+                onChange={() => setDisableElevation(!disableElevation)}
+              >
+                Disable Elevation
+              </Switch>
+            </div>
+            <div>
+              <Switch
+                checked={loading}
+                onChange={() => setLoading(!loading)}
+              >
                 Loading
               </Switch>
             </div>
             <div>
-              <Switch checked={showStartIcon} onChange={() => setShowStartIcon(!showStartIcon)}>
+              <Switch
+                checked={showStartIcon}
+                onChange={() => setShowStartIcon(!showStartIcon)}
+              >
                 Start Icon
               </Switch>
             </div>
             <div>
-              <Switch checked={showEndIcon} onChange={() => setShowEndIcon(!showEndIcon)}>
+              <Switch
+                checked={showEndIcon}
+                onChange={() => setShowEndIcon(!showEndIcon)}
+              >
                 End Icon
               </Switch>
             </div>
@@ -81,6 +99,7 @@ const Buttons = () => {
           <Button
             variant="contained"
             color="secondary"
+            disableElevation={disableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loadingPosition={loadingPosition}
@@ -91,6 +110,7 @@ const Buttons = () => {
           <Button
             variant="outlined"
             color="error"
+            disableElevation={disableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -101,6 +121,7 @@ const Buttons = () => {
           <Button
             variant="text"
             color="primary"
+            disableElevation={disableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -114,6 +135,7 @@ const Buttons = () => {
           <Button
             variant="contained"
             color="secondary"
+            disableElevation={disableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}

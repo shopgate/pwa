@@ -1,6 +1,8 @@
 import createPalette from './createPalette';
 import createTypography from './createTypography';
 import createComponents from './createComponents';
+import createShape from './createShape';
+import shadows from './shadows';
 import type { ColorSchemeOptions, BaseTheme } from './types';
 
 /**
@@ -58,17 +60,21 @@ const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): BaseTheme 
     palette: paletteInput = {},
     typography: typographyInput = {},
     components: componentsInput = {},
+    shape: shapeInput = {},
   } = colorScheme;
 
   const palette = createPalette(paletteInput);
 
   const typography = createTypography(palette, typographyInput);
   const components = createComponents(componentsInput);
+  const shape = createShape(shapeInput);
 
   const theme = {
     palette,
     typography,
     components,
+    shape,
+    shadows,
     alpha,
     lighten,
     darken,
