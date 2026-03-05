@@ -140,6 +140,9 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:hover': {
         borderColor: 'var(--sg-button-group-color)',
       },
+      '&:disabled': {
+        borderColor: 'var(--sg-button-group-disabledColor) !important',
+      },
     },
     groupedOutlinedHorizontal: {
       '&:not(:first-of-type)': {
@@ -161,17 +164,23 @@ const useStyles = makeStyles<UseStylesProps>({
 
     },
     groupedTextHorizontal: {
-      '&:not(:last-of-type)': {
+      '&&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: `${theme.lighten('var(--sg-button-group-color)', 0.5)} !important`,
+        borderRightColor: `${theme.lighten('var(--sg-button-group-color)', 0.5)}`,
+        '&:disabled': {
+          borderRightColor: 'var(--sg-button-group-disabledColor)',
+        },
       },
     },
     groupedTextVertical: {
-      '&:not(:last-of-type)': {
+      '&&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: `${theme.lighten('var(--sg-button-group-color)', 0.5)} !important`,
+        borderBottomColor: `${theme.lighten('var(--sg-button-group-color)', 0.5)}`,
+        '&:disabled': {
+          borderBottomColor: 'var(--sg-button-group-disabledColor)',
+        },
       },
     },
     /* eslint-enable tss-unused-classes/unused-classes */
