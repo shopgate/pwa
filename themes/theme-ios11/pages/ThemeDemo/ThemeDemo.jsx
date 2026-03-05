@@ -5,6 +5,10 @@ import { makeStyles } from '@shopgate/engage/styles';
 import Palette from './Palette';
 import ColorSchemeToggle from './ColorSchemeToggle';
 import CSSColorOverride from './CSSColorOverride';
+import {
+  Buttons,
+  Misc,
+} from './sections';
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -28,6 +32,8 @@ const ThemeDemo = () => {
     <View noContentPortal>
       <DefaultBar title="Theme Demo" />
       <div className={classes.root}>
+        <Buttons />
+        <Misc />
         <ColorSchemeToggle />
         <CSSColorOverride />
         <Palette />

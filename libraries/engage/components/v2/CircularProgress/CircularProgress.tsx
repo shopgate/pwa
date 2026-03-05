@@ -86,8 +86,8 @@ const useStyles = makeStyles<CircularProgressProps>({
   return {
     root: {
       display: 'inline-block',
-      '--circle-color': cssColor,
-      color: 'var(--circle-color)',
+      '--sg-circular-progress-circle-color': cssColor,
+      color: 'var(--sg-circular-progress-circle-color)',
     },
     svg: {
       display: 'block',

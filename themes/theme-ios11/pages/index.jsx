@@ -316,7 +316,7 @@ const Pages = ({ store }) => {
                             component={routes.StoreDetails}
                           />
                           <Route
-                            pattern="/theme-demo"
+                            pattern="/shopgate-theme-demo"
                             component={routes.ThemeDemo}
                           />
                           <Route.NotFound

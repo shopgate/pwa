@@ -124,6 +124,11 @@ export const paletteSchema = {
     contrastDark: '',
   },
   grey,
+  action: {
+    disabled: 'rgba(0, 0, 0, 0.26)',
+    disabledBackground: 'rgba(0, 0, 0, 0.12)',
+    disabledOpacity: 0.38,
+  },
 } as const;
 
 /**
