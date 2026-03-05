@@ -9,6 +9,7 @@ import {
 } from '@shopgate/engage/components';
 import {
   Button,
+  ButtonGroup,
 } from '@shopgate/engage/components/v2';
 import {
   Section,
@@ -36,6 +37,8 @@ const Buttons = () => {
   const [showEndIcon, setShowEndIcon] = useState(false);
   const [disableElevation, setDisableElevation] = useState(false);
   const [loadingPosition, setLoadingPosition] = useState<'start' | 'center' | 'end'>('center');
+
+  const [groupDisabled, setGroupDisabled] = useState(false);
 
   const startIcon = useMemo(() => (showStartIcon ? <PhoneIcon /> : null), [showStartIcon]);
   const endIcon = useMemo(() => (showEndIcon ? <TimeIcon /> : null), [showEndIcon]);
@@ -179,6 +182,90 @@ const Buttons = () => {
           <Button variant="text" size="large">
             Large
           </Button>
+        </SectionRow>
+      </SubSection>
+      <SubSection title="Button Groups">
+        <SectionRow>
+          <div>
+            <Switch
+              checked={groupDisabled}
+              onChange={() => setGroupDisabled(!groupDisabled)}
+            >
+              Disable Groups
+            </Switch>
+          </div>
+        </SectionRow>
+        <SectionRow>
+          <ButtonGroup
+            variant="contained"
+            color="primary"
+            disabled={groupDisabled}
+          >
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+        </SectionRow>
+        <SectionRow>
+          <ButtonGroup
+            variant="outlined"
+            color="primary"
+            disabled={groupDisabled}
+          >
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+        </SectionRow>
+        <SectionRow>
+          <ButtonGroup
+            variant="text"
+            color="primary"
+            disabled={groupDisabled}
+          >
+            <Button>One</Button>
+            <Button>Two</Button>
+            <Button>Three</Button>
+          </ButtonGroup>
+        </SectionRow>
+        <SectionRow>
+          <div>
+            <ButtonGroup
+              variant="contained"
+              color="primary"
+              orientation="vertical"
+              disabled={groupDisabled}
+            >
+              <Button>One</Button>
+              <Button>Two</Button>
+              <Button>Three</Button>
+            </ButtonGroup>
+          </div>
+          <div>
+            <ButtonGroup
+              variant="outlined"
+              color="primary"
+              orientation="vertical"
+              disabled={groupDisabled}
+            >
+              <Button>One</Button>
+              <Button>Two</Button>
+              <Button>Three</Button>
+            </ButtonGroup>
+          </div>
+          <div>
+            <ButtonGroup
+              variant="text"
+              color="primary"
+              orientation="vertical"
+              disabled={groupDisabled}
+            >
+              <Button>One</Button>
+              <Button>Two</Button>
+              <Button>Three</Button>
+            </ButtonGroup>
+          </div>
+
         </SectionRow>
       </SubSection>
     </Section>

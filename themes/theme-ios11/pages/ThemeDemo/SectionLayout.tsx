@@ -19,6 +19,7 @@ const useStyles = makeStyles()(theme => ({
     gap: theme.spacing(2),
     alignItems: 'center',
     justifyContent: 'center',
+
   },
   rowColumn: {
     flexDirection: 'column',
@@ -26,7 +27,8 @@ const useStyles = makeStyles()(theme => ({
   subSection: {
     display: 'flex',
     flexDirection: 'column',
-    gap: theme.spacing(1),
+    gap: theme.spacing(2),
+    width: '100%',
   },
 }));
 

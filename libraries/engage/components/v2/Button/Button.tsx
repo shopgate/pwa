@@ -9,6 +9,7 @@ import type { ButtonBaseProps } from '../ButtonBase';
 export interface ButtonProps extends ButtonBaseProps {
   /**
    * The variant to use.
+   * @default 'contained'
    */
   variant?: 'contained' | 'outlined' | 'text';
   /**
@@ -60,7 +61,11 @@ export interface ButtonProps extends ButtonBaseProps {
   classes?: Partial<ReturnType<typeof useStyles>['classes']>;
 }
 
-const useStyles = makeStyles<OwnProps<ButtonProps, Omit<ButtonBaseProps, 'color' | 'variant' | 'fullWidth' | 'size' | 'loading-position' | 'loading'>>>({
+type UseStylesProps = OwnProps<
+  ButtonProps,
+  Omit<ButtonBaseProps, 'color'>>
+
+const useStyles = makeStyles<UseStylesProps>({
   name: 'Button',
 })((theme, props) => {
   const {
