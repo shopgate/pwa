@@ -9,11 +9,13 @@ import { getCategoriesById } from './selectors';
 /**
  * @typedef {Object} CategoryListWidgetConfig
  * @property {string} category The parent category ID to display categories for.
- * @property {string} [sort] The sort order for categories
+ * @property {'relevance' | 'nameAsc' | 'nameDesc'} [sort] The sort order for categories
  * @property {boolean} [showImages] Whether to display images for categories.
  * @property {boolean} [showHeadline] Whether to show the headline.
  * @property {Object} [headline] The headline to be displayed.
  */
+
+const EMPTY_ARRAY = [];
 
 /**
  * @typedef {ReturnType< typeof import('@shopgate/engage/page/hooks')
@@ -31,13 +33,11 @@ export const useCategoryListWidget = () => {
 
   const {
     category,
-    sort,
+    sort = 'relevance',
     showImages,
     showHeadline = false,
     headline,
   } = config;
-
-  const sortCC = useMemo(() => camelCase(sort), [sort]);
 
   // Get the parent category object from the selected category
   const parentCategory = useSelector(state =>
@@ -49,17 +49,21 @@ export const useCategoryListWidget = () => {
 
   const sortedCategories = useMemo(() => {
     if (!categories) {
-      return [];
+      return EMPTY_ARRAY;
     }
 
-    if (sortCC === 'relevance') {
-      return categories;
-    }
-    const isAsc = sortCC === 'nameAsc';
+    /** @type {CategoryListWidgetConfig['sort']} */
+    const sortCC = camelCase(sort);
 
-    return [...categories].sort((a, b) =>
-      a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) * (isAsc ? 1 : -1));
-  }, [categories, sortCC]);
+    if (sortCC === 'nameAsc' || sortCC === 'nameDesc') {
+      const dir = sortCC === 'nameAsc' ? 1 : -1;
+
+      return [...categories].sort((a, b) =>
+        a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }) * dir);
+    }
+
+    return categories;
+  }, [categories, sort]);
 
   useEffect(() => {
     dispatch(fetchCategoryOrRootCategories(category));

@@ -9,6 +9,7 @@ module.exports = {
         requiredFirst: true,
       },
     ],
+    'react/react-in-jsx-scope': 'off',
     'react/destructuring-assignment': 'off',
     'react/jsx-wrap-multilines': 'off',
     'jsx-a11y/label-has-for': 'off',
