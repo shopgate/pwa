@@ -21,15 +21,18 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
    */
   orientation?: 'horizontal' | 'vertical';
   /**
-   * If true, no elevation is used.
+   * If true, no elevation is used for contained buttons.
+   * @default false
    */
   disableElevation?: boolean;
   /**
    * The color of the component.
+   * @default 'default'
    */
-  color?: PaletteColorsWithMain;
+  color?: PaletteColorsWithMain | 'default';
   /**
    * If true, the buttons will take up the full width of their container.
+   * @default false
    */
   fullWidth?: boolean;
   /**
@@ -58,14 +61,19 @@ type UseStylesProps = OwnProps<
 const useStyles = makeStyles<UseStylesProps>({
   name: 'ButtonGroup',
 })((theme, props) => {
-  const { color } = props;
+  const { color, variant } = props;
 
   let cssColor = '';
 
-  if (color) {
-    cssColor = theme.palette?.[color]?.main
+  if (color !== 'default') {
+    cssColor = color && theme.palette?.[color]?.main
       ? theme.palette[color].main
       : theme.palette.primary.main;
+  } else if (variant === 'contained') {
+    // eslint-disable-next-line prefer-destructuring
+    cssColor = theme.palette.grey[200];
+  } else {
+    cssColor = theme.palette.text.contrastLight;
   }
 
   return {
@@ -203,13 +211,16 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
     fullWidth = false,
     disableRipple = false,
     disabled = false,
-    color = 'primary',
+    color = 'default',
     className,
     children,
     ...other
   } = props;
 
-  const { classes, cx } = useStyles({ color }, { props: { classes: props.classes } });
+  const { classes, cx } = useStyles({
+    color,
+    variant,
+  }, { props: { classes: props.classes } });
 
   const buttonClassName = cx(
     classes.grouped,

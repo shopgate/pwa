@@ -151,35 +151,35 @@ const Buttons = () => {
       </SubSection>
       <SubSection title="Sizes">
         <SectionRow>
-          <Button variant="contained" size="small">
+          <Button variant="contained" size="small" color="primary">
             Small
           </Button>
-          <Button variant="contained" size="medium">
+          <Button variant="contained" size="medium" color="primary">
             Medium
           </Button>
-          <Button variant="contained" size="large">
+          <Button variant="contained" size="large" color="primary">
             Large
           </Button>
         </SectionRow>
         <SectionRow>
-          <Button variant="outlined" size="small">
+          <Button variant="outlined" size="small" color="primary">
             Small
           </Button>
-          <Button variant="outlined" size="medium">
+          <Button variant="outlined" size="medium" color="primary">
             Medium
           </Button>
-          <Button variant="outlined" size="large">
+          <Button variant="outlined" size="large" color="primary">
             Large
           </Button>
         </SectionRow>
         <SectionRow>
-          <Button variant="text" size="small">
+          <Button variant="text" size="small" color="primary">
             Small
           </Button>
-          <Button variant="text" size="medium">
+          <Button variant="text" size="medium" color="primary">
             Medium
           </Button>
-          <Button variant="text" size="large">
+          <Button variant="text" size="large" color="primary">
             Large
           </Button>
         </SectionRow>

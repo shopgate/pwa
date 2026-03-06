@@ -14,11 +14,11 @@ export interface ButtonProps extends ButtonBaseProps {
   variant?: 'contained' | 'outlined' | 'text';
   /**
    * The color of the component.
-   * @default 'primary'
+   * @default 'default'
    */
-  color?: PaletteColorsWithMain;
+  color?: PaletteColorsWithMain | 'default';
   /**
-   * If `true`, no elevation is used.
+   * If `true`, no elevatioon is used for contained buttons.
    * @default false
    */
   disableElevation?: boolean;
@@ -80,14 +80,20 @@ const useStyles = makeStyles<UseStylesProps>({
   let cssColor = '';
   let contrastText = '';
 
-  if (color) {
-    cssColor = theme.palette?.[color]?.main
+  if (color !== 'default') {
+    cssColor = color && theme.palette?.[color]?.main
       ? theme.palette[color].main
       : theme.palette.primary.main;
 
-    contrastText = theme.palette?.[color]?.contrastText
+    contrastText = color && theme.palette?.[color]?.contrastText
       ? theme.palette[color].contrastText
       : theme.palette.primary.contrastText;
+  } else if (variant === 'contained') {
+    // eslint-disable-next-line prefer-destructuring
+    cssColor = theme.palette.grey[200];
+    contrastText = theme.palette.text.contrastLight;
+  } else {
+    cssColor = theme.palette.text.contrastLight;
   }
 
   return {
@@ -311,7 +317,7 @@ const useStyles = makeStyles<UseStylesProps>({
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     variant = 'contained',
-    color = 'primary',
+    color = 'default',
     startIcon: startIconProp,
     endIcon: endIconProp,
     loading = false,
@@ -329,6 +335,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { classes, cx } = useStyles({
     color,
     size,
+    variant,
     loadingPosition,
     loading,
     fullWidth,
