@@ -7,7 +7,7 @@ import type {
   Components,
   ComponentsFromSchema,
 } from './createComponents.types';
-import { componentsDefaults } from './createComponents.types';
+import { componentsDefaults, componentsSchema } from './createComponents.types';
 
 export type { ComponentsOptions, Components } from './createComponents.types';
 
@@ -50,7 +50,12 @@ export function resolveComponentsValues<TTheme, TInput>(
  * @returns The components object
  */
 const createComponents = (inputComponents: ComponentsOptions): Components => {
-  const mergedComponents = merge({}, componentsDefaults, inputComponents) as Components;
+  const mergedComponents = merge(
+    {},
+    componentsSchema,
+    componentsDefaults,
+    inputComponents
+  ) as Components;
   return mergedComponents;
 };
 

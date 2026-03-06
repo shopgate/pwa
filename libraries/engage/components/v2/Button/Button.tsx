@@ -92,36 +92,39 @@ const useStyles = makeStyles<UseStylesProps>({
 
   return {
     root: {
-      '--sg-button-border-radius': theme.components.button.borderRadius,
-      '--sg-button-font-size': theme.typography.button.fontSize,
+      '--accent-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
+      '--text-color': `var(${theme.vars.components.button.textColor}, ${contrastText})`,
+      '--border-radius': `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
 
-      '--sg-button-variant-textColor': cssColor,
-      '--sg-button-variant-textDisabledColor': theme.palette.action.disabled,
+      '--font-size': theme.typography.button.fontSize,
 
-      '--sg-button-variant-outlinedColor': cssColor,
-      '--sg-button-variant-outlinedBorder': cssColor,
-      '--sg-button-variant-outlinedDisabledColor': theme.palette.action.disabled,
-      '--sg-button-variant-outlinedDisabledBorder': theme.palette.action.disabled,
+      '--variant-textColor': 'var(--accent-color)',
+      '--variant-textDisabledColor': theme.palette.action.disabled,
 
-      '--sg-button-variant-containedColor': contrastText,
-      '--sg-button-variant-containedBg': cssColor,
-      '--sg-button-variant-containedDisabledColor': theme.palette.action.disabled,
-      '--sg-button-variant-containedDisabledBg': theme.palette.action.disabledBackground,
+      '--variant-outlinedColor': 'var(--accent-color)',
+      '--variant-outlinedBorder': 'var(--accent-color)',
+      '--variant-outlinedDisabledColor': theme.palette.action.disabled,
+      '--variant-outlinedDisabledBorder': theme.palette.action.disabled,
 
-      '--sg-button-icon-size': theme.vars.typography.button.fontSize,
+      '--variant-containedColor': 'var(--text-color)',
+      '--variant-containedBg': 'var(--accent-color)',
+      '--variant-containedDisabledColor': theme.palette.action.disabled,
+      '--variant-containedDisabledBg': theme.palette.action.disabledBackground,
+
+      '--icon-size': theme.vars.typography.button.fontSize,
       ...theme.typography.button,
-      fontSize: 'var(--sg-button-font-size)',
+      fontSize: 'var(--font-size)',
       boxSizing: 'border-box',
       minWidth: 64,
       padding: '6px 16px',
       transition: theme.transitions.create(['background-color', 'box-shadow', 'border'], {
         duration: theme.transitions.duration.short,
       }),
-      borderRadius: 'var(--sg-button-border-radius)',
+      borderRadius: 'var(--border-radius)',
 
       '&:hover': {
-        '--sg-button-variant-textBg': theme.alpha(cssColor, 0.1),
-        '--sg-button-variant-outlinedBg': theme.alpha(cssColor, 0.1),
+        '--variant-textBg': theme.alpha(cssColor, 0.1),
+        '--variant-outlinedBg': theme.alpha(cssColor, 0.1),
         textDecoration: 'none',
         '&:disabled': {
           backgroundColor: 'transparent',
@@ -136,40 +139,40 @@ const useStyles = makeStyles<UseStylesProps>({
       }),
     },
     small: {
-      '--sg-button-font-size': `calc(${theme.typography.button.fontSize} * 0.875)`,
+      '--font-size': `calc(${theme.typography.button.fontSize} * 0.875)`,
       padding: '4px 10px',
     },
     large: {
-      '--sg-button-font-size': `calc(${theme.typography.button.fontSize} * 1.125)`,
+      '--font-size': `calc(${theme.typography.button.fontSize} * 1.125)`,
       padding: '8px 22px',
     },
     disabled: {},
     text: {
-      color: 'var(--sg-button-variant-textColor)',
-      background: 'var(--sg-button-variant-textBg)',
+      color: 'var(--variant-textColor)',
+      background: 'var(--variant-textBg)',
       '&:disabled': {
-        color: 'var(--sg-button-variant-textDisabledColor)',
+        color: 'var(--variant-textDisabledColor)',
       },
     },
     outlined: {
-      color: 'var(--sg-button-variant-outlinedColor)',
-      border: '1px solid var(--sg-button-variant-outlinedBorder)',
-      background: 'var(--sg-button-variant-outlinedBg)',
+      color: 'var(--variant-outlinedColor)',
+      border: '1px solid var(--variant-outlinedBorder)',
+      background: 'var(--variant-outlinedBg)',
       '&:disabled': {
-        border: '1px solid var(--sg-button-variant-outlinedDisabledBorder)',
-        color: 'var(--sg-button-variant-outlinedDisabledColor)',
+        border: '1px solid var(--variant-outlinedDisabledBorder)',
+        color: 'var(--variant-outlinedDisabledColor)',
       },
     },
     contained: {
-      color: 'var(--sg-button-variant-containedColor)',
-      background: 'var(--sg-button-variant-containedBg)',
+      color: 'var(--variant-containedColor)',
+      background: 'var(--variant-containedBg)',
       boxShadow: theme.shadows[2],
       '&:hover': {
-        background: theme.darken('var(--sg-button-variant-containedBg)'),
+        background: theme.darken('var(--variant-containedBg)'),
         boxShadow: theme.shadows[4],
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
-          background: 'var(--sg-button-variant-containedBg)',
+          background: 'var(--variant-containedBg)',
           boxShadow: theme.shadows[2],
         },
       },
@@ -177,8 +180,8 @@ const useStyles = makeStyles<UseStylesProps>({
         boxShadow: theme.shadows[8],
       },
       '&:disabled': {
-        color: 'var(--sg-button-variant-containedDisabledColor)',
-        backgroundColor: 'var(--sg-button-variant-containedDisabledBg)',
+        color: 'var(--variant-containedDisabledColor)',
+        backgroundColor: 'var(--variant-containedDisabledBg)',
         boxShadow: theme.shadows[0],
       },
     },
@@ -214,7 +217,7 @@ const useStyles = makeStyles<UseStylesProps>({
       width: '100%',
     },
     icon: {
-      fontSize: 'calc(var(--sg-button-font-size) * 1.4)',
+      fontSize: 'calc(var(--font-size) * 1.4)',
     },
     startIcon: {
       flexShrink: 0,

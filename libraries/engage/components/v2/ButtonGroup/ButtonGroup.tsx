@@ -70,8 +70,8 @@ const useStyles = makeStyles<UseStylesProps>({
 
   return {
     root: {
-      '--sg-button-group-color': cssColor,
-      '--sg-button-group-disabledColor': theme.palette.action.disabled,
+      '--accent-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
+      '--disabledColor': theme.palette.action.disabled,
       '&& button': {
         // Override button border radius with group border radius
         [theme.vars.components.button.borderRadius]: theme.components.buttonGroup.borderRadius,
@@ -123,9 +123,9 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: theme.darken('var(--sg-button-group-color)'),
+        borderRightColor: theme.darken('var(accent-color)'),
         '&:disabled': {
-          borderRightColor: 'var(--sg-button-group-disabledColor)',
+          borderRightColor: 'var(--disabledColor)',
         },
       },
     },
@@ -133,19 +133,19 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: theme.darken('var(--sg-button-group-color)'),
+        borderBottomColor: theme.darken('var(accent-color)'),
         '&:disabled': {
-          borderBottomColor: 'var(--sg-button-group-disabledColor)',
+          borderBottomColor: 'var(--disabledColor)',
         },
       },
     },
     groupedOutlined: {
-      borderColor: `${theme.lighten('var(--sg-button-group-color)', 0.5)} !important`,
+      borderColor: `${theme.lighten('var(accent-color)', 0.5)} !important`,
       '&:hover': {
-        borderColor: 'var(--sg-button-group-color)',
+        borderColor: 'var(accent-color)',
       },
       '&:disabled': {
-        borderColor: 'var(--sg-button-group-disabledColor) !important',
+        borderColor: 'var(--disabledColor) !important',
       },
     },
     groupedOutlinedHorizontal: {
@@ -171,9 +171,9 @@ const useStyles = makeStyles<UseStylesProps>({
       '&&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: `${theme.lighten('var(--sg-button-group-color)', 0.5)}`,
+        borderRightColor: `${theme.lighten('var(accent-color)', 0.5)}`,
         '&:disabled': {
-          borderRightColor: 'var(--sg-button-group-disabledColor)',
+          borderRightColor: 'var(--disabledColor)',
         },
       },
     },
@@ -181,9 +181,9 @@ const useStyles = makeStyles<UseStylesProps>({
       '&&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: `${theme.lighten('var(--sg-button-group-color)', 0.5)}`,
+        borderBottomColor: `${theme.lighten('var(accent-color)', 0.5)}`,
         '&:disabled': {
-          borderBottomColor: 'var(--sg-button-group-disabledColor)',
+          borderBottomColor: 'var(--disabledColor)',
         },
       },
     },

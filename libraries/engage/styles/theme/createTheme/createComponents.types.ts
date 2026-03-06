@@ -91,6 +91,8 @@ export const componentsSchema = {
   },
   button: {
     borderRadius: '',
+    color: '',
+    textColor: '',
   },
   buttonGroup: {
     borderRadius: '',
@@ -109,9 +111,6 @@ export const componentsDefaults = {
   price: {
     color: t => t.palette.primary.main,
   },
-  button: {
-    borderRadius: t => t.shape.borderRadius,
-  },
   buttonGroup: {
     borderRadius: t => t.shape.borderRadius,
   },
@@ -119,7 +118,7 @@ export const componentsDefaults = {
 
 /** Internal defaults type (must cover full schema). */
 export type ComponentsDefaults =
-  ComponentsDefaultsFromSchema<typeof componentsSchema, Theme>;
+  ComponentsOverrideFromSchema<typeof componentsSchema, Theme>;
 
 // The components options type represents the components input that can be provided to createTheme
 export type ComponentsOptions =
