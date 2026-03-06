@@ -607,8 +607,8 @@
       "camera_message": "Questa funzione richiede l'accesso alla tua fotocamera. Consenti l'accesso nelle impostazioni per favore.",
       "push_message": "Questa funzione richiede l'accesso alle notifiche push. Consentire l'accesso nelle impostazioni.",
       "geolocation_message": "Per trovare negozi vicino a te, vai su Impostazioni e abilita i permessi di accesso alla localizzazione.",
-      "geolocationMessageBackground": "Per questa funzione, l'app ha bisogno di accedere alla tua posizione anche quando l'app è chiusa. Modifica il permesso nelle Impostazioni su \"Sempre\".",
-      "trackingMessage": "Questa funzione richiede i permessi di tracciamento. Si prega di consentire l'accesso nelle impostazioni."
+      "geolocationMessageBackground": "Per questa funzione, l’app ha bisogno di accedere alla Sua posizione anche quando l’app è chiusa. La preghiamo di modificare il permesso nelle Impostazioni su \"Sempre\".",
+      "trackingMessage": "Questa funzione richiede il tracciamento delle app. La preghiamo di consentire l’accesso nelle Impostazioni."
     },
     "accessGranted": {
       "cameraMessage": "I permessi della fotocamera sono già stati concessi.",
