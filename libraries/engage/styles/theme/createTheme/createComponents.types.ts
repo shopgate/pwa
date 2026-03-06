@@ -94,9 +94,6 @@ export const componentsSchema = {
     color: '',
     textColor: '',
   },
-  buttonGroup: {
-    borderRadius: '',
-  },
 } as const;
 
 /**
@@ -110,9 +107,6 @@ export const componentsSchema = {
 export const componentsDefaults = {
   price: {
     color: t => t.palette.primary.main,
-  },
-  buttonGroup: {
-    borderRadius: t => t.shape.borderRadius,
   },
 } satisfies ComponentsDefaults;
 

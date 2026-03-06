@@ -74,10 +74,10 @@ const useStyles = makeStyles<UseStylesProps>({
       '--disabledColor': theme.palette.action.disabled,
       '&& button': {
         // Override button border radius with group border radius
-        [theme.vars.components.button.borderRadius]: theme.components.buttonGroup.borderRadius,
+        // [theme.vars.components.button.borderRadius]: theme.components.buttonGroup.borderRadius,
       },
       display: 'inline-flex',
-      borderRadius: theme.components.buttonGroup.borderRadius,
+      borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
     },
     contained: {
       boxShadow: theme.shadows[2],
@@ -123,7 +123,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: theme.darken('var(accent-color)'),
+        borderRightColor: theme.darken('var(--accent-color)'),
         '&:disabled': {
           borderRightColor: 'var(--disabledColor)',
         },
@@ -133,16 +133,16 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: theme.darken('var(accent-color)'),
+        borderBottomColor: theme.darken('var(--accent-color)'),
         '&:disabled': {
           borderBottomColor: 'var(--disabledColor)',
         },
       },
     },
     groupedOutlined: {
-      borderColor: `${theme.lighten('var(accent-color)', 0.5)} !important`,
+      borderColor: `${theme.lighten('var(--accent-color)', 0.5)} !important`,
       '&:hover': {
-        borderColor: 'var(accent-color)',
+        borderColor: 'var(--accent-color)',
       },
       '&:disabled': {
         borderColor: 'var(--disabledColor) !important',
@@ -171,7 +171,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: `${theme.lighten('var(accent-color)', 0.5)}`,
+        borderRightColor: `${theme.lighten('var(--accent-color)', 0.5)}`,
         '&:disabled': {
           borderRightColor: 'var(--disabledColor)',
         },
@@ -181,7 +181,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: `${theme.lighten('var(accent-color)', 0.5)}`,
+        borderBottomColor: `${theme.lighten('var(--accent-color)', 0.5)}`,
         '&:disabled': {
           borderBottomColor: 'var(--disabledColor)',
         },
