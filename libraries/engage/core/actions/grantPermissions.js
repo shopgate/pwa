@@ -68,7 +68,11 @@ const ANDROID_PERMISSIONS_WITH_USER_INTERACTION_CHECK = [
  * @param {Object} [options.meta={}] Additional meta data used for opt-in tracking actions
  * @return { Function } A redux thunk.
  */
-const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(async (resolve) => {
+const grantPermissions = (options = {}) => (
+  dispatch,
+  getState
+  // eslint-disable-next-line no-async-promise-executor
+) => new Promise(async (resolve) => {
   const {
     permissionId,
     permissionOptions,
@@ -305,7 +309,6 @@ const grantPermissions = (options = {}) => (dispatch, getState) => new Promise(a
         permissionId,
       })));
 
-      resolve(status === PERMISSION_STATUS_GRANTED);
       resolve(resolveWithData ? {
         success: status === PERMISSION_STATUS_GRANTED,
         optInRequested,

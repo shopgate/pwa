@@ -20,7 +20,7 @@ const grantAppTrackingTransparencyPermission = (options = {}) => (dispatch) => {
     permissionId,
     meta = {},
     settingsModal,
-    // @deprecated options, to be removed in future major release
+    // @deprecated modal setting, to be removed in future major release
     modal,
     ...rest
   } = options;

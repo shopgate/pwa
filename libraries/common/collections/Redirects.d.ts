@@ -1,7 +1,7 @@
 export type RedirectHandler =
   | string
-  | Promise<string>
-  | ((...args: any[]) => string | Promise<string>);
+  | Promise<string | null>
+  | ((...args: any[]) => string | Promise<string | null> | null);
 
 export type RedirectOptions = {
   /**
@@ -56,22 +56,22 @@ export class Redirects {
    * @param pathname The pathname to check.
    */
   getRedirectExtended(pathname: string): RedirectExtendedData | null;
-  /**
-   * Adds a redirect handler to the collection.
-   * @param from The link to redirect from. Route patterns are also supported.
-   * @param to redirect / handle to create a dynamic link
-   * @param force Whether or not to forcefully set the redirect.
-   */
-  set(from?: string | null, to?: RedirectHandler | null, force?: boolean): void;
 
   /**
    * Adds a redirect handler to the collection.
    * @param from The link to redirect from. Route patterns are also supported.
    * @param to redirect / handle to create a dynamic link
    * @param options Additional options for the redirect.
-   * @param force Whether or not to forcefully set the redirect.
    */
-  set(from?: string | null, to?: RedirectHandler | null, options?: RedirectOptions, force?: boolean): void;
+  set(from: string | null, to: RedirectHandler | null, options?: RedirectOptions): void;
+  /**
+   * Adds a redirect handler to the collection.
+   * @param from The link to redirect from. Route patterns are also supported.
+   * @param to redirect / handle to create a dynamic link
+   * @param force Whether or not to forcefully set the redirect.
+   * @deprecated Please refactor to use an options object as the third parameter.
+   */
+  set(from: string | null, to: RedirectHandler | null, force?: boolean): void;
 
   /**
    * Removes a specified element from the internal "redirects" Map object.
