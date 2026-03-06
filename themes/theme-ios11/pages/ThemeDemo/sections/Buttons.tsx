@@ -101,7 +101,7 @@ const Buttons = () => {
         <SectionRow>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             disableElevation={disableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
@@ -112,7 +112,7 @@ const Buttons = () => {
           </Button>
           <Button
             variant="outlined"
-            color="error"
+            color="primary"
             disableElevation={disableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
