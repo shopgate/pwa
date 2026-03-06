@@ -28,10 +28,10 @@ const useStyles = makeStyles({
     textDecoration: 'none',
     color: 'inherit',
     '&::-moz-focus-inner': {
-      borderStyle: 'none', // Remove Firefox dotted outline.
+      borderStyle: 'none',
     },
     '&:disabled': {
-      pointerEvents: 'none', // Disable link interactions
+      pointerEvents: 'none',
       cursor: 'default',
     },
   },
@@ -49,13 +49,13 @@ export interface ButtonBaseProps extends React.ButtonHTMLAttributes<HTMLButtonEl
    */
   disableRipple?: boolean;
   /**
-   * Custom class name for the button
+   * Custom class name for the button.
    */
   className?: string;
   children: React.ReactNode;
 }
 
-const supportedButtonTypes = ['button', 'submit', 'reset'];
+const supportedButtonTypes = ['button', 'submit', 'reset'] as const;
 
 /**
  * The ButtonBase component serves as a foundational button element that can be extended with
@@ -77,37 +77,48 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
   } = props;
 
   const { classes, cx } = useStyles();
-  const {
-    ripples, start, end,
-  } = usePressRipple();
+  const { ripples, start, end } = usePressRipple();
   const reduceMotion = useReduceMotion();
 
   const disableRipple = disableRippleProp || reduceMotion;
 
-  const handlePointerDown = (e: React.PointerEvent<HTMLButtonElement>) => {
-    if (disabled) return;
+  const handlePointerDown = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (disabled) {
+      onPointerDown?.(event);
+      return;
+    }
 
-    // ensure we get the matching pointerup
-    e.currentTarget.setPointerCapture?.(e.pointerId);
+    event.currentTarget.setPointerCapture?.(event.pointerId);
 
-    if (!disableRipple) start(e);
-    onPointerDown?.(e);
+    if (!disableRipple) {
+      start(event);
+    }
+
+    onPointerDown?.(event);
   };
 
-  const handlePointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
-    if (!disableRipple) end(e.pointerId);
-    onPointerUp?.(e);
+  const handlePointerUp = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (!disableRipple) {
+      end(event.pointerId);
+    }
+
+    onPointerUp?.(event);
   };
 
-  const handlePointerCancel = (e: React.PointerEvent<HTMLButtonElement>) => {
-    if (!disableRipple) end(e.pointerId);
-    onPointerCancel?.(e);
+  const handlePointerCancel = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (!disableRipple) {
+      end(event.pointerId);
+    }
+
+    onPointerCancel?.(event);
   };
 
-  const handlePointerLeave = (e: React.PointerEvent<HTMLButtonElement>) => {
-    // If you prefer: only end if no pointer capture; but simplest is to end.
-    if (!disableRipple) end(e.pointerId);
-    onPointerLeave?.(e);
+  const handlePointerLeave = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (!disableRipple && event.buttons === 1) {
+      end(event.pointerId);
+    }
+
+    onPointerLeave?.(event);
   };
 
   return (
@@ -120,11 +131,11 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
       onPointerCancel={handlePointerCancel}
       onPointerLeave={handlePointerLeave}
       // eslint-disable-next-line react/button-has-type
-      type={supportedButtonTypes.includes(type) ? type : 'button'}
+      type={supportedButtonTypes.includes(type as (typeof supportedButtonTypes)[number]) ? type : 'button'}
       {...other}
     >
       {children}
-      {!disableRipple && !reduceMotion && <Ripple ripples={ripples} />}
+      {!disableRipple && <Ripple ripples={ripples} />}
     </button>
   );
 });

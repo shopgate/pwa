@@ -1,21 +1,22 @@
 import { useState, useCallback, useRef } from 'react';
 import { RIPPLE_PRESS_MS, RIPPLE_RELEASE_MS, RIPPLE_MIN_VISIBLE_MS } from './constants';
 
-type RippleState = 'pressing' | 'releasing';
-
 interface Ripple {
   key: number;
   pointerId: number;
   x: number;
   y: number;
   size: number;
-  state: RippleState;
 }
 
 /**
- * Custom hook to manage ripple effects for button interactions.
- * It calculates the position and size of the ripple based on the user's click or touch event.
- * @returns An object containing the current ripples and a function to create a new ripple.
+ * Manages the active ripple queue.
+ *
+ * A ripple is added on pointer down and removed on pointer up/cancel/leave.
+ * Removal is delayed so very quick taps still show the full press animation.
+ *
+ * The actual exit animation is handled by react-transition-group in the Ripple component.
+ * @returns An object containing the active ripples and functions to start and end ripples.
  */
 export function usePressRipple() {
   const [ripples, setRipples] = useState<Ripple[]>([]);
@@ -24,23 +25,27 @@ export function usePressRipple() {
 
   const start = useCallback((event: React.PointerEvent<HTMLElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
 
-    const x = event.clientX - rect.left - size / 2;
-    const y = event.clientY - rect.top - size / 2;
+    const rippleX = Math.round(event.clientX - rect.left);
+    const rippleY = Math.round(event.clientY - rect.top);
+
+    const sizeX = Math.max(rect.width - rippleX, rippleX) * 2 + 2;
+    const sizeY = Math.max(rect.height - rippleY, rippleY) * 2 + 2;
+    const rippleSize = Math.sqrt(sizeX ** 2 + sizeY ** 2);
 
     startedAtByPointer.current.set(event.pointerId, performance.now());
 
     keySeq.current += 1;
+    const key = keySeq.current;
+
     setRipples(prev => [
       ...prev,
       {
-        key: keySeq.current,
+        key,
         pointerId: event.pointerId,
-        x,
-        y,
-        size,
-        state: 'pressing',
+        x: rippleX,
+        y: rippleY,
+        size: rippleSize,
       },
     ]);
   }, []);
@@ -53,16 +58,8 @@ export function usePressRipple() {
     const delay = Math.max(0, Math.max(RIPPLE_PRESS_MS, RIPPLE_MIN_VISIBLE_MS) - elapsed);
 
     window.setTimeout(() => {
-      setRipples(prev =>
-        prev.map(r => (r.pointerId === pointerId ? {
-          ...r,
-          state: 'releasing',
-        } : r)));
-
-      window.setTimeout(() => {
-        setRipples(prev => prev.filter(r => r.pointerId !== pointerId));
-        startedAtByPointer.current.delete(pointerId);
-      }, RIPPLE_RELEASE_MS);
+      setRipples(prev => prev.filter(r => r.pointerId !== pointerId));
+      startedAtByPointer.current.delete(pointerId);
     }, delay);
   }, []);
 

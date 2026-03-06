@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "Apache-2.0",
   "devDependencies": {
+    "@types/react-transition-group": "^4.4.12",
     "@shopgate/pwa-common": "7.30.0",
     "@types/color": "^4.2.0",
     "react": "^17.0.2",
@@ -17,7 +18,7 @@
     "glamor": "^2.20.40",
     "prop-types": "~15.8.1",
     "react-spring": "^8.0.27",
-    "react-transition-group": "^3.0.0",
+    "react-transition-group": "^4.4.5",
     "react-use": "^17.6.0"
   },
   "peerDependencies": {
