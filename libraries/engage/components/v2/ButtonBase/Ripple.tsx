@@ -2,23 +2,24 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { TransitionGroup } from 'react-transition-group';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
 import { RIPPLE_PRESS_MS, RIPPLE_RELEASE_MS } from './constants';
+import type { RippleItem as RippleModel } from './hooks';
 
 const useEnhancedEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect;
 
-const rippleEnter = keyframes({
+const enterKeyframe = keyframes({
   '0%': {
     transform: 'scale(0)',
     opacity: 0.1,
   },
   '100%': {
     transform: 'scale(1)',
-    opacity: 0.18,
+    opacity: 0.3,
   },
 });
 
-const rippleExit = keyframes({
+const exitKeyframe = keyframes({
   '0%': {
-    opacity: 0.18,
+    opacity: 1,
   },
   '100%': {
     opacity: 0,
@@ -29,22 +30,24 @@ const useStyles = makeStyles({
   name: 'ButtonBaseRipple',
 })(() => ({
   container: {
-    position: 'absolute',
-    inset: 0,
     overflow: 'hidden',
-    borderRadius: 'inherit',
     pointerEvents: 'none',
+    position: 'absolute',
+    zIndex: 0,
+    inset: 0,
+    borderRadius: 'inherit',
   },
   ripple: {
-    position: 'absolute',
     opacity: 0,
-    transform: 'scale(1)',
+    position: 'absolute',
   },
   rippleVisible: {
-    opacity: 0.18,
-    animation: `${rippleEnter} ${RIPPLE_PRESS_MS}ms ease-out forwards`,
+    opacity: 0.3,
+    transform: 'scale(1)',
+    animation: `${enterKeyframe} ${RIPPLE_PRESS_MS}ms ease-in-out`,
   },
   child: {
+    opacity: 1,
     display: 'block',
     width: '100%',
     height: '100%',
@@ -52,18 +55,12 @@ const useStyles = makeStyles({
     backgroundColor: 'currentColor',
   },
   childLeaving: {
-    animation: `${rippleExit} ${RIPPLE_RELEASE_MS}ms ease-out forwards`,
+    opacity: 0,
+    animation: `${exitKeyframe} ${RIPPLE_RELEASE_MS}ms ease-in-out`,
   },
 }));
 
-type RippleModel = {
-  key: number;
-  x: number;
-  y: number;
-  size: number;
-};
-
-interface RippleItemProps {
+interface RippleNodeProps {
   rippleX: number;
   rippleY: number;
   rippleSize: number;
@@ -71,23 +68,25 @@ interface RippleItemProps {
   onExited?: () => void;
 }
 
-function RippleItem({
+function RippleNode({
   rippleX,
   rippleY,
   rippleSize,
-  in: inProp,
+  in: inProp = true,
   onExited,
-}: RippleItemProps) {
+}: RippleNodeProps) {
   const { classes, cx } = useStyles();
   const [leaving, setLeaving] = useState(false);
 
   useEnhancedEffect(() => {
-    if (inProp === false) {
+    if (!inProp) {
       setLeaving(true);
+    }
+  }, [inProp]);
 
-      const timeoutId = window.setTimeout(() => {
-        onExited?.();
-      }, RIPPLE_RELEASE_MS);
+  useEffect(() => {
+    if (!inProp && onExited) {
+      const timeoutId = window.setTimeout(onExited, RIPPLE_RELEASE_MS);
 
       return () => {
         window.clearTimeout(timeoutId);
@@ -112,17 +111,21 @@ function RippleItem({
   );
 }
 
+interface RippleProps {
+  ripples: RippleModel[];
+}
+
 /**
  * The Ripple component renders the ripple effect for button interactions.
  */
-function Ripple({ ripples }: { ripples: RippleModel[] }) {
+export default function Ripple({ ripples }: RippleProps) {
   const { classes } = useStyles();
 
   return (
     <span className={classes.container}>
-      <TransitionGroup component={null}>
+      <TransitionGroup component={null} exit>
         {ripples.map(ripple => (
-          <RippleItem
+          <RippleNode
             key={ripple.key}
             rippleX={ripple.x}
             rippleY={ripple.y}
@@ -133,5 +136,3 @@ function Ripple({ ripples }: { ripples: RippleModel[] }) {
     </span>
   );
 }
-
-export default Ripple;

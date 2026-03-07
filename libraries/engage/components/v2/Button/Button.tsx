@@ -18,7 +18,7 @@ export interface ButtonProps extends ButtonBaseProps {
    */
   color?: PaletteColorsWithMain | 'default';
   /**
-   * If `true`, no elevatioon is used for contained buttons.
+   * If `true`, no elevation is used for contained buttons.
    * @default false
    */
   disableElevation?: boolean;
@@ -183,7 +183,7 @@ const useStyles = makeStyles<UseStylesProps>({
         },
       },
       '&:active': {
-        boxShadow: theme.shadows[8],
+        boxShadow: theme.shadows[6],
       },
       '&:disabled': {
         color: 'var(--variant-containedDisabledColor)',

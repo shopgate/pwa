@@ -83,14 +83,8 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
   const disableRipple = disableRippleProp || reduceMotion;
 
   const handlePointerDown = (event: React.PointerEvent<HTMLButtonElement>) => {
-    if (disabled) {
-      onPointerDown?.(event);
-      return;
-    }
-
-    event.currentTarget.setPointerCapture?.(event.pointerId);
-
-    if (!disableRipple) {
+    if (!disabled && !disableRipple) {
+      event.currentTarget.setPointerCapture?.(event.pointerId);
       start(event);
     }
 

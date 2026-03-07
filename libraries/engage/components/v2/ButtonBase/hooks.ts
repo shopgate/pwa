@@ -1,7 +1,7 @@
-import { useState, useCallback, useRef } from 'react';
-import { RIPPLE_PRESS_MS, RIPPLE_RELEASE_MS, RIPPLE_MIN_VISIBLE_MS } from './constants';
+import { useCallback, useRef, useState } from 'react';
+import { RIPPLE_MIN_VISIBLE_MS } from './constants';
 
-interface Ripple {
+export interface RippleItem {
   key: number;
   pointerId: number;
   x: number;
@@ -19,29 +19,29 @@ interface Ripple {
  * @returns An object containing the active ripples and functions to start and end ripples.
  */
 export function usePressRipple() {
-  const [ripples, setRipples] = useState<Ripple[]>([]);
-  const keySeq = useRef(0);
+  const [ripples, setRipples] = useState<RippleItem[]>([]);
+  const nextKey = useRef(0);
   const startedAtByPointer = useRef(new Map<number, number>());
 
   const start = useCallback((event: React.PointerEvent<HTMLElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
+    const element = event.currentTarget;
+    const rect = element.getBoundingClientRect();
 
     const rippleX = Math.round(event.clientX - rect.left);
     const rippleY = Math.round(event.clientY - rect.top);
 
-    const sizeX = Math.max(rect.width - rippleX, rippleX) * 2 + 2;
-    const sizeY = Math.max(rect.height - rippleY, rippleY) * 2 + 2;
+    const sizeX = Math.max(element.clientWidth - rippleX, rippleX) * 2 + 2;
+    const sizeY = Math.max(element.clientHeight - rippleY, rippleY) * 2 + 2;
     const rippleSize = Math.sqrt(sizeX ** 2 + sizeY ** 2);
 
     startedAtByPointer.current.set(event.pointerId, performance.now());
 
-    keySeq.current += 1;
-    const key = keySeq.current;
+    nextKey.current += 1;
 
     setRipples(prev => [
       ...prev,
       {
-        key,
+        key: nextKey.current,
         pointerId: event.pointerId,
         x: rippleX,
         y: rippleY,
@@ -52,13 +52,15 @@ export function usePressRipple() {
 
   const end = useCallback((pointerId: number) => {
     const startedAt = startedAtByPointer.current.get(pointerId);
-    if (startedAt == null) return;
+    if (startedAt == null) {
+      return;
+    }
 
     const elapsed = performance.now() - startedAt;
-    const delay = Math.max(0, Math.max(RIPPLE_PRESS_MS, RIPPLE_MIN_VISIBLE_MS) - elapsed);
+    const delay = Math.max(0, RIPPLE_MIN_VISIBLE_MS - elapsed);
 
     window.setTimeout(() => {
-      setRipples(prev => prev.filter(r => r.pointerId !== pointerId));
+      setRipples(prev => prev.filter(ripple => ripple.pointerId !== pointerId));
       startedAtByPointer.current.delete(pointerId);
     }, delay);
   }, []);
@@ -73,7 +75,5 @@ export function usePressRipple() {
     start,
     end,
     clearAll,
-    RIPPLE_PRESS_MS,
-    RIPPLE_RELEASE_MS,
   };
 }
