@@ -24,6 +24,11 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'space-between',
     gap: theme.spacing(1),
   },
+  switchGroup: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(1),
+  },
   sizeRadioButtons: {
     display: 'flex',
     flexDirection: 'row',
@@ -74,7 +79,7 @@ const Buttons = () => {
     <Section title="Buttons">
       <SubSection title="Variants">
         <SectionRow className={classes.settings}>
-          <div>
+          <div className={classes.switchGroup}>
             <div>
               <Switch
                 checked={disableElevation}
