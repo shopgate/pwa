@@ -24,6 +24,24 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'space-between',
     gap: theme.spacing(1),
   },
+  sizeRadioButtons: {
+    display: 'flex',
+    flexDirection: 'row',
+    gap: theme.spacing(1),
+    justifyContent: 'center',
+    paddingBottom: 0,
+    '& .placeholder': {
+      display: 'none',
+    },
+    '& .label': {
+      paddingBottom: 'none',
+    },
+    '& .radioGroup': {
+      display: 'flex',
+      flexDirection: 'row',
+      gap: theme.spacing(1),
+    },
+  },
 }));
 
 /**
@@ -37,6 +55,7 @@ const Buttons = () => {
   const [showEndIcon, setShowEndIcon] = useState(false);
   const [disableElevation, setDisableElevation] = useState(false);
   const [loadingPosition, setLoadingPosition] = useState<'start' | 'center' | 'end'>('center');
+  const [groupSize, setGroupSize] = useState<'small' | 'medium' | 'large'>('medium');
 
   const [groupDisabled, setGroupDisabled] = useState(false);
 
@@ -45,6 +64,10 @@ const Buttons = () => {
 
   const handleLoadingPositionChange = useCallback((update: 'start' | 'center' | 'end') => {
     setLoadingPosition(update);
+  }, []);
+
+  const handleGroupSizeChange = useCallback((update: 'small' | 'medium' | 'large') => {
+    setGroupSize(update);
   }, []);
 
   return (
@@ -151,35 +174,116 @@ const Buttons = () => {
       </SubSection>
       <SubSection title="Sizes">
         <SectionRow>
-          <Button variant="contained" size="small" color="primary">
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Small
           </Button>
-          <Button variant="contained" size="medium" color="primary">
+          <Button
+            variant="contained"
+            size="medium"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Medium
           </Button>
-          <Button variant="contained" size="large" color="primary">
+          <Button
+            variant="contained"
+            size="large"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Large
           </Button>
         </SectionRow>
         <SectionRow>
-          <Button variant="outlined" size="small" color="primary">
+          <Button
+            variant="outlined"
+            size="small"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Small
           </Button>
-          <Button variant="outlined" size="medium" color="primary">
+          <Button
+            variant="outlined"
+            size="medium"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Medium
           </Button>
-          <Button variant="outlined" size="large" color="primary">
+          <Button
+            variant="outlined"
+            size="large"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Large
           </Button>
         </SectionRow>
         <SectionRow>
-          <Button variant="text" size="small" color="primary">
+          <Button
+            variant="text"
+            size="small"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Small
           </Button>
-          <Button variant="text" size="medium" color="primary">
+          <Button
+            variant="text"
+            size="medium"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Medium
           </Button>
-          <Button variant="text" size="large" color="primary">
+          <Button
+            variant="text"
+            size="large"
+            color="primary"
+            disableElevation={disableElevation}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
             Large
           </Button>
         </SectionRow>
@@ -194,12 +298,25 @@ const Buttons = () => {
               Disable Groups
             </Switch>
           </div>
+          <RadioGroup
+            label="Group Size"
+            name="group-size"
+            value={groupSize}
+            onChange={handleGroupSizeChange}
+            className={classes.sizeRadioButtons}
+          >
+            <RadioGroupItem label="Small" name="small" />
+            <RadioGroupItem label="Medium" name="medium" />
+            <RadioGroupItem label="Large" name="large" />
+          </RadioGroup>
         </SectionRow>
         <SectionRow>
           <ButtonGroup
             variant="contained"
             color="primary"
+            size={groupSize}
             disabled={groupDisabled}
+            disableElevation={disableElevation}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -210,7 +327,9 @@ const Buttons = () => {
           <ButtonGroup
             variant="outlined"
             color="primary"
+            size={groupSize}
             disabled={groupDisabled}
+            disableElevation={disableElevation}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -221,7 +340,9 @@ const Buttons = () => {
           <ButtonGroup
             variant="text"
             color="primary"
+            size={groupSize}
             disabled={groupDisabled}
+            disableElevation={disableElevation}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -234,7 +355,9 @@ const Buttons = () => {
               variant="contained"
               color="primary"
               orientation="vertical"
+              size={groupSize}
               disabled={groupDisabled}
+              disableElevation={disableElevation}
             >
               <Button>One</Button>
               <Button>Two</Button>
@@ -246,7 +369,9 @@ const Buttons = () => {
               variant="outlined"
               color="primary"
               orientation="vertical"
+              size={groupSize}
               disabled={groupDisabled}
+              disableElevation={disableElevation}
             >
               <Button>One</Button>
               <Button>Two</Button>
@@ -258,7 +383,9 @@ const Buttons = () => {
               variant="text"
               color="primary"
               orientation="vertical"
+              size={groupSize}
               disabled={groupDisabled}
+              disableElevation={disableElevation}
             >
               <Button>One</Button>
               <Button>Two</Button>

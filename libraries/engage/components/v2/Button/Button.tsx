@@ -249,7 +249,7 @@ const useStyles = makeStyles<UseStylesProps>({
       marginRight: -4,
       marginLeft: 8,
       ...(size === 'small' && {
-        marginLeft: -2,
+        marginRight: -2,
       }),
       ...(loading && loadingPosition === 'end' && {
         transition: theme.transitions.create('opacity', {
@@ -294,8 +294,8 @@ const useStyles = makeStyles<UseStylesProps>({
       ...(loadingPosition === 'end' && size === 'small' && {
         right: 10,
       }),
-      ...(variant === 'text' && loadingPosition === 'end' && {
-        right: 6,
+      ...(loadingPosition === 'end' && size === 'large' && {
+        right: 20,
       }),
       ...(loadingPosition === 'start' && fullWidth && {
         position: 'relative',
