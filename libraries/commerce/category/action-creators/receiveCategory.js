@@ -12,7 +12,6 @@ const receiveCategory = (categoryId, categoryData, categoryChildren) => ({
   categoryId,
   categoryData,
   categoryChildren,
-  products: [],
 });
 
 export default receiveCategory;

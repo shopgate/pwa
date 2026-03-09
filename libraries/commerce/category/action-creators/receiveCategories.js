@@ -8,7 +8,6 @@ import { RECEIVE_CATEGORIES } from '../constants';
 const receiveCategories = categories => ({
   type: RECEIVE_CATEGORIES,
   categories,
-  products: [],
 });
 
 export default receiveCategories;
