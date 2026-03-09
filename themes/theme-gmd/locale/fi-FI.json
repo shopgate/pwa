@@ -607,8 +607,8 @@
       "camera_message": "Tämä toiminto vaatii kameran käyttöoikeuden. Salli pääsy asetuksissa.",
       "push_message": "Olet poistanut push-ilmoitukset käytöstä tämän sovelluksen osalta. Ota ne käyttöön laitteesi asetuksissa.",
       "geolocation_message": "Tarvitsemme pääsyn sijaintiin, jotta voimme näyttää lähellä olevat kaupat.",
-      "geolocationMessageBackground": "Tätä toimintoa varten sovellus tarvitsee pääsyn sijaintiisi myös silloin, kun sovellus on suljettu. Muuta lupa Asetuksissa arvoon \"Aina\".",
-      "trackingMessage": "Tämä toiminto vaatii sovellusseurantaa. Salli pääsy Asetuksissa."
+      "geolocationMessageBackground": "Tämä toiminto edellyttää, että sovelluksella on pääsy sijaintiisi, vaikka sovellus on suljettuna. Muuta oikeus asetuksissa \"Aina\".",
+      "trackingMessage": "Tämä toiminto edellyttää sovelluksen seurantaa. Salli pääsy asetuksissa."
     },
     "accessGranted": {
       "cameraMessage": "Kameran käyttöoikeudet on jo myönnetty.",

@@ -607,8 +607,8 @@
       "camera_message": "Tato funkce vyžaduje přístup k fotoaparátu. Povolte prosím přístup v nastavení.",
       "push_message": "Pro tuto aplikaci jste zakázali push oznámení. Přejděte prosím do nastavení svého zařízení a povolte je.",
       "geolocation_message": "Pro zobrazení okolních obchodů potřebujeme přístup k poloze.",
-      "geolocationMessageBackground": "Pro tuto funkci potřebuje aplikace přístup k vaší poloze i tehdy, když je aplikace zavřená. Změňte prosím oprávnění v Nastavení na \"Vždy\".",
-      "trackingMessage": "Tato funkce vyžaduje sledování aplikací. Povolte prosím přístup v Nastavení."
+      "geolocationMessageBackground": "Pro tuto funkci potřebuje aplikace přístup k vaší poloze, i když je aplikace zavřená. Změňte prosím oprávnění v nastavení na \"Vždy\".",
+      "trackingMessage": "Tato funkce vyžaduje sledování aplikace. Povolte prosím přístup v nastavení."
     },
     "accessGranted": {
       "cameraMessage": "Přístup k fotoaparátu je již povolen.",

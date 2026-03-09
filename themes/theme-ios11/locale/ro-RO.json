@@ -618,8 +618,8 @@
       "camera_message": "Această funcție necesită acces la cameră. Vă rugăm să permiteți accesul în setări.",
       "push_message": "Ați dezactivat notificările push pentru această aplicație. Vă rugăm să accesați setările dispozitivului dvs. pentru a le activa.",
       "geolocation_message": "Avem nevoie de acces la locație pentru a afișa magazinele din apropiere.",
-      "geolocationMessageBackground": "Pentru această funcție, aplicația are nevoie de acces la locația dumneavoastră chiar și atunci când aplicația este închisă. Vă rugăm să modificați permisiunea în Setări la \"Întotdeauna\".",
-      "trackingMessage": "Această funcție necesită urmărirea aplicațiilor. Vă rugăm să permiteți accesul în Setări."
+      "geolocationMessageBackground": "Pentru această funcție, aplicația necesită acces la locația dumneavoastră, chiar și atunci când aplicația este închisă. Vă rugăm să modificați permisiunea în setări la \"Totdeauna\".",
+      "trackingMessage": "Această funcție necesită urmărire prin intermediul aplicației. Vă rugăm să permiteți accesul în setări."
     },
     "accessGranted": {
       "cameraMessage": "Permisiunile pentru cameră au fost deja acordate.",

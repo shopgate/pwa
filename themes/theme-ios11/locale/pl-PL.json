@@ -617,8 +617,8 @@
       "camera_message": "Ta funkcja wymaga dostępu do aparatu. W ustawieniach należy zezwolić na dostęp.",
       "push_message": "Powiadomienia push dla tej aplikacji zostały wyłączone. Przejdź do ustawień urządzenia, aby je aktywować.",
       "geolocation_message": "Potrzebujemy dostępu do lokalizacji, aby pokazać pobliskie sklepy.",
-      "geolocationMessageBackground": "Aby ta funkcja działała, aplikacja potrzebuje dostępu do Twojej lokalizacji także wtedy, gdy aplikacja jest zamknięta. Proszę zmienić uprawnienie w Ustawieniach na \"Zawsze\".",
-      "trackingMessage": "Ta funkcja wymaga śledzenia aplikacji. Proszę zezwolić na dostęp w Ustawieniach."
+      "geolocationMessageBackground": "Aby korzystać z tej funkcji, aplikacja potrzebuje dostępu do Pana/Pani lokalizacji, nawet gdy aplikacja jest zamknięta. Proszę zmienić uprawnienie w ustawieniach na \"Zawsze\".",
+      "trackingMessage": "Ta funkcja wymaga śledzenia aplikacji. Proszę zezwolić na dostęp w ustawieniach."
     },
     "accessGranted": {
       "cameraMessage": "Uprawnienia do aparatu zostały już przyznane.",

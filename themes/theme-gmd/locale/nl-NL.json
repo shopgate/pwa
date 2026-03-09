@@ -607,8 +607,8 @@
       "camera_message": "Deze functie vereist toegang tot uw camera. Gelieve toegang te verlenen in de instellingen.",
       "push_message": "Deze functie vereist toegang tot pushmeldingen. Sta toegang toe in de instellingen.",
       "geolocation_message": "Ga naar Instellingen en schakel locatiemachtigingen in om winkels bij u in de buurt te vinden.",
-      "geolocationMessageBackground": "Voor deze functie heeft de app toegang tot uw locatie nodig, ook wanneer de app is gesloten. Wijzig de toestemming in de instellingen naar \"Altijd\".",
-      "trackingMessage": "Deze functie vereist app-tracking. Sta de toegang toe in de instellingen."
+      "geolocationMessageBackground": "Voor deze functie heeft de app toegang nodig tot uw locatie, ook wanneer de app is gesloten. Wijzig de toestemming in de instellingen naar \"Altijd\".",
+      "trackingMessage": "Deze functie vereist app-tracking. Sta toegang toe in de instellingen."
     },
     "accessGranted": {
       "cameraMessage": "Cameramachtigingen zijn al verleend.",
