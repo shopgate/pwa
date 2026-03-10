@@ -10,7 +10,7 @@ import {
   ITEM_PATH,
   AVAILABILITY_STATE_OK,
   AVAILABILITY_STATE_ALERT,
-} from '@shopgate/pwa-common-commerce/product';
+} from '@shopgate/pwa-common-commerce/product/constants/index';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';

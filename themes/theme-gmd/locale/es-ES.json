@@ -608,7 +608,16 @@
       "settings_button": "Vaya a configuración",
       "camera_message": "Esta característica requiere acceso a su cámara. Por favor, permita el acceso desde la configuración.",
       "push_message": "Esta función requiere acceso a las notificaciones push. Por favor, permita el acceso en la configuración.",
-      "geolocation_message": "Para encontrar tiendas cerca de donde está, vaya a Configuración y habilite los permisos de ubicación."
+      "geolocation_message": "Para encontrar tiendas cerca de donde está, vaya a Configuración y habilite los permisos de ubicación.",
+      "geolocationMessageBackground": "Para esta función, la aplicación necesita acceso a su ubicación, incluso cuando la aplicación está cerrada. Por favor, cambie el permiso en Ajustes a \"Siempre\".",
+      "trackingMessage": "Esta función requiere el seguimiento de la aplicación. Por favor, permita el acceso en Ajustes."
+    },
+    "accessGranted": {
+      "cameraMessage": "Los permisos de la cámara ya han sido otorgados.",
+      "pushMessage": "Los permisos de notificaciones push ya han sido otorgados.",
+      "locationMessage": "Los permisos de ubicación ya han sido otorgados.",
+      "backgroundLocationMessage": "Los permisos de ubicación en segundo plano ya han sido otorgados.",
+      "trackingMessage": "Los permisos de seguimiento ya han sido otorgados."
     }
   },
   "checkout": {

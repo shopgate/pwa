@@ -28,21 +28,6 @@ export const availablePermissionsIds = [
  * Permission usages.
  */
 
-/**
- * @deprecated Use PERMISSION_USAGE_ALWAYS instead
- */
-export const USAGE_ALWAYS = 'always';
-
-/**
- * @deprecated Use PERMISSION_USAGE_WHEN_IN_USE instead
- */
-export const USAGE_WHEN_IN_USE = 'whenInUse';
-
-export const availableUsages = [
-  USAGE_ALWAYS,
-  USAGE_WHEN_IN_USE,
-];
-
 export const PERMISSION_USAGE_ALWAYS = 'always';
 export const PERMISSION_USAGE_WHEN_IN_USE = 'whenInUse';
 
@@ -52,42 +37,39 @@ export const availablePermissionUsages = [
 ];
 
 /**
+ * @deprecated Use PERMISSION_USAGE_ALWAYS instead
+ */
+export const USAGE_ALWAYS = PERMISSION_USAGE_ALWAYS;
+
+/**
+ * @deprecated Use PERMISSION_USAGE_WHEN_IN_USE instead
+ */
+export const USAGE_WHEN_IN_USE = PERMISSION_USAGE_WHEN_IN_USE;
+
+/**
+ * @deprecated Use availablePermissionUsages instead
+ */
+export const availableUsages = availablePermissionUsages;
+
+/**
  * Permission statuses
  */
 
 /**
- * @deprecated Use PERMISSION_STATUS_DENIED instead
+ * User has denied the permission and will not be asked again.
  */
-export const STATUS_DENIED = 'denied';
-
-/**
- * @deprecated Use PERMISSION_STATUS_GRANTED instead
- */
-export const STATUS_GRANTED = 'granted';
-
-/**
- * @deprecated Use PERMISSION_STATUS_NOT_DETERMINED instead
- */
-export const STATUS_NOT_DETERMINED = 'notDetermined';
-
-/**
- * @deprecated Use PERMISSION_STATUS_NOT_SUPPORTED instead
- */
-export const STATUS_NOT_SUPPORTED = 'notSupported';
-
-/**
- * @deprecated Use availablePermissionStatuses instead
- */
-export const availableStatuses = [
-  STATUS_DENIED,
-  STATUS_GRANTED,
-  STATUS_NOT_DETERMINED,
-  STATUS_NOT_SUPPORTED,
-];
-
 export const PERMISSION_STATUS_DENIED = 'denied';
+/**
+ * User has granted the permission.
+ */
 export const PERMISSION_STATUS_GRANTED = 'granted';
+/**
+ * User has not yet made a choice regarding the permission.
+ */
 export const PERMISSION_STATUS_NOT_DETERMINED = 'notDetermined';
+/**
+ * The permission is not supported on the current device.
+ */
 export const PERMISSION_STATUS_NOT_SUPPORTED = 'notSupported';
 
 export const availablePermissionStatuses = [
@@ -96,3 +78,28 @@ export const availablePermissionStatuses = [
   PERMISSION_STATUS_NOT_DETERMINED,
   PERMISSION_STATUS_NOT_SUPPORTED,
 ];
+
+/**
+ * @deprecated Use PERMISSION_STATUS_DENIED instead
+ */
+export const STATUS_DENIED = PERMISSION_STATUS_DENIED;
+
+/**
+ * @deprecated Use PERMISSION_STATUS_GRANTED instead
+ */
+export const STATUS_GRANTED = PERMISSION_STATUS_GRANTED;
+
+/**
+ * @deprecated Use PERMISSION_STATUS_NOT_DETERMINED instead
+ */
+export const STATUS_NOT_DETERMINED = PERMISSION_STATUS_NOT_DETERMINED;
+
+/**
+ * @deprecated Use PERMISSION_STATUS_NOT_SUPPORTED instead
+ */
+export const STATUS_NOT_SUPPORTED = PERMISSION_STATUS_NOT_SUPPORTED;
+
+/**
+ * @deprecated Use availablePermissionStatuses instead
+ */
+export const availableStatuses = availablePermissionStatuses;

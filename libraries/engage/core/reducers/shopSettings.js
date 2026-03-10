@@ -48,19 +48,27 @@ const defaultState = {
  * @returns {Object} The new state.
  */
 export default function shopSettings(state = defaultState, action = {}) {
-  switch (action.type) {
-    case ERROR_SHOP_SETTINGS:
-      return {
-        ...defaultState,
-        ...state,
-      };
+  const producer = produce((draft) => {
+    switch (action.type) {
+      case RECEIVE_SHOP_SETTINGS: {
+        Object.keys(action.settings).forEach((key) => {
+          draft[key] = action.settings[key];
+        });
 
-    case RECEIVE_SHOP_SETTINGS:
-      return produce(state, (draft) => {
-        Object.assign(draft, action.settings);
-      });
+        break;
+      }
+      case ERROR_SHOP_SETTINGS: {
+        Object.assign(draft, {
+          ...defaultState,
+          ...state,
+        });
 
-    default:
-      return state;
-  }
+        break;
+      }
+      default:
+        break;
+    }
+  });
+
+  return producer(state);
 }

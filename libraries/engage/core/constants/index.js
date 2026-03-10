@@ -85,3 +85,33 @@ export const EMPTY_OBJECT = Object.freeze({});
  * unnecessary re-renders.
  */
 export const EMPTY_ARRAY = Object.freeze([]);
+
+/**
+ * Virtual route to trigger a location permission request to the app.
+ */
+export const PERMISSION_REQUEST_ROUTE_LOCATION = '/permissions/location';
+/**
+ * Virtual route to trigger a background location permission request to the app.
+ */
+export const PERMISSION_REQUEST_ROUTE_LOCATION_BACKGROUND = '/permissions/location_background';
+/**
+ * Virtual route to trigger a push permission request to the app.
+ */
+export const PERMISSION_REQUEST_ROUTE_PUSH = '/permissions/push';
+/**
+ * Virtual route to trigger an app tracking transparency permission request to the app.
+ */
+export const PERMISSION_REQUEST_ROUTE_TRACKING = '/permissions/tracking';
+
+/**
+ * Virtual route to trigger a camera permission request to the app.
+ */
+export const PERMISSION_REQUEST_ROUTE_CAMERA = '/permissions/camera';
+
+export const PERMISSION_REQUEST_ROUTES = [
+  PERMISSION_REQUEST_ROUTE_LOCATION,
+  PERMISSION_REQUEST_ROUTE_LOCATION_BACKGROUND,
+  PERMISSION_REQUEST_ROUTE_PUSH,
+  PERMISSION_REQUEST_ROUTE_TRACKING,
+  PERMISSION_REQUEST_ROUTE_CAMERA,
+];

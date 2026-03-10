@@ -3,8 +3,6 @@ import {
   useScrollContainer,
   hasWebBridge,
   isIOSTheme,
-  isWindows,
-  isDev,
 } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/engage';
 
@@ -38,8 +36,8 @@ css.global('html', {
   minHeight: '100%',
 });
 
-// Include Roboto font on Windows in dev mode on iOS theme, so that developers see nice fonts.
-const fontSuffix = isDev && iosThemeActive && isWindows && !(typography.family ?? '').includes('Roboto')
+// Include Roboto font as a fallback to the iOS theme when other fonts are not available
+const fontSuffix = iosThemeActive && !(typography.family || '').includes('Roboto')
   ? ', Roboto'
   : '';
 

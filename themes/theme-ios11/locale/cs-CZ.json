@@ -619,7 +619,16 @@
       "settings_button": "Otevřít nastavení",
       "camera_message": "Tato funkce vyžaduje přístup k fotoaparátu. Povolte prosím přístup v nastavení.",
       "push_message": "Pro tuto aplikaci jste zakázali push oznámení. Přejděte prosím do nastavení svého zařízení a povolte je.",
-      "geolocation_message": "Pro zobrazení okolních obchodů potřebujeme přístup k poloze."
+      "geolocation_message": "Pro zobrazení okolních obchodů potřebujeme přístup k poloze.",
+      "geolocationMessageBackground": "Pro tuto funkci potřebuje aplikace přístup k vaší poloze, i když je aplikace zavřená. Změňte prosím oprávnění v nastavení na \"Vždy\".",
+      "trackingMessage": "Tato funkce vyžaduje sledování aplikace. Povolte prosím přístup v nastavení."
+    },
+    "accessGranted": {
+      "cameraMessage": "Přístup k fotoaparátu je již povolen.",
+      "pushMessage": "Push oznámení jsou již povolena.",
+      "locationMessage": "Přístup k poloze je již povolen.",
+      "backgroundLocationMessage": "Přístup k poloze na pozadí je již povolen.",
+      "trackingMessage": "Sledování je již povoleno."
     }
   },
   "checkout": {

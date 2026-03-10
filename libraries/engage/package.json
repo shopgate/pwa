@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/engage",
-  "version": "7.29.9",
+  "version": "7.30.0",
   "description": "Shopgate's ENGAGE library.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -17,12 +17,12 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@shopgate/native-modules": "1.0.0-beta.25",
-    "@shopgate/pwa-common": "7.29.9",
-    "@shopgate/pwa-common-commerce": "7.29.9",
-    "@shopgate/pwa-core": "7.29.9",
-    "@shopgate/pwa-ui-ios": "7.29.9",
-    "@shopgate/pwa-ui-material": "7.29.9",
-    "@shopgate/pwa-ui-shared": "7.29.9",
+    "@shopgate/pwa-common": "7.30.0",
+    "@shopgate/pwa-common-commerce": "7.30.0",
+    "@shopgate/pwa-core": "7.30.0",
+    "@shopgate/pwa-ui-ios": "7.30.0",
+    "@shopgate/pwa-ui-material": "7.30.0",
+    "@shopgate/pwa-ui-shared": "7.30.0",
     "@stripe/react-stripe-js": "^1.16.5",
     "@stripe/stripe-js": "^1.44.1",
     "@virtuous/conductor": "~2.5.0",
@@ -38,7 +38,7 @@
     "react-leaflet": "^3.2.5",
     "react-phone-number-input": "^3.4.14",
     "react-player": "1.11.0",
-    "react-portal": "^4.3.0",
+    "react-portal": "^3.1.0",
     "react-scroll-parallax": "^3.5.0",
     "tss-react": "^4.9.20",
     "validate.js": "^0.13.1"
@@ -49,10 +49,11 @@
     "lodash": "^4.17.23",
     "prop-types": "~15.8.1",
     "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-redux": "^8.1.3",
     "redux-thunk": "^3.1.0",
     "redux": "^5.0.1",
     "redux-mock-store": "^1.5.4",
-    "reselect": "^5.1.1"
+    "reselect": "^4.1.8"
   }
 }

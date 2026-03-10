@@ -1,4 +1,4 @@
-import { hashString } from '@shopgate/pwa-common/helpers/hash';
+import CryptoJs from 'crypto-js';
 import RequestManager from '../RequestManager';
 import { logger } from '../../helpers';
 
@@ -32,7 +32,7 @@ class Request {
    */
   createSerial(serialKey) {
     if (!this.serial) {
-      this.serial = hashString(`${serialKey}${Date.now() + Math.random()}`);
+      this.serial = CryptoJs.MD5(`${serialKey}${Date.now() + Math.random()}`).toString();
     }
   }
 

@@ -1,10 +1,10 @@
 {
   "name": "@shopgate/theme-config",
-  "version": "7.29.9",
+  "version": "7.30.0",
   "description": "Provides the theme configurations for Catalog 2.0",
   "license": "Apache-2.0",
   "devDependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.23"
   },
   "peerDependencies": {
     "@shopgate/pwa-common": ">=7.20.0"

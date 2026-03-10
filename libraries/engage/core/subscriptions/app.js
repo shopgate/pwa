@@ -1,5 +1,5 @@
 import { appWillStart$ } from '@shopgate/engage/core/streams';
-import { configuration } from '@shopgate/engage/core/collections';
+import { configuration, redirects } from '@shopgate/engage/core/collections';
 import {
   hasNewServices,
   appSupportsAndroidEdgeToEdge,
@@ -9,9 +9,17 @@ import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/con
 import { appConfig } from '@shopgate/engage';
 import { reloadApp$ } from '../streams';
 import { reloadApp } from '../action-creators';
+import {
+  PERMISSION_REQUEST_ROUTE_LOCATION,
+  PERMISSION_REQUEST_ROUTE_LOCATION_BACKGROUND,
+  PERMISSION_REQUEST_ROUTE_PUSH,
+  PERMISSION_REQUEST_ROUTE_TRACKING,
+  PERMISSION_REQUEST_ROUTE_CAMERA,
+} from '../constants';
+
+import { permissionRouteRedirectHandler } from '../router/permissionRouteRedirectHandler';
 
 const { androidNavigationBarDefaultColor } = appConfig;
-
 /**
  * App subscriptions
  * @param {Function} subscribe The subscribe function
@@ -29,6 +37,38 @@ export default function app(subscribe) {
       // Set the navigation bar color for android devices with edge-to-edge screens
       updateAndroidNavigationBarColor({ color: androidNavigationBarDefaultColor });
     }
+
+    // Register redirects for app permission request routes
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_LOCATION,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_LOCATION_BACKGROUND,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_PUSH,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_TRACKING,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_CAMERA,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
+    redirects.set(
+      PERMISSION_REQUEST_ROUTE_CAMERA,
+      permissionRouteRedirectHandler,
+      { showLoading: false }
+    );
   });
 
   subscribe(reloadApp$, () => {

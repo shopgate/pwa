@@ -6,8 +6,8 @@ import {
   getDeviceInformation,
   getPlatform,
   getDeviceModel,
-  isAndroid,
-  isIos,
+  getIsAndroid,
+  getIsIos,
   getPageInsets,
   getIsConnected,
   getClientConnectivityNetwork,
@@ -186,36 +186,36 @@ describe('Client selectors', () => {
       });
     });
 
-    describe('isAndroid()', () => {
+    describe('getIsAndroid()', () => {
       it('should return false if the client state is not ready yet', () => {
-        const result = isAndroid(createMockState({}));
+        const result = getIsAndroid(createMockState({}));
         expect(result).toBe(false);
       });
 
       it('should return false on iOS devices', () => {
-        const result = isAndroid(createMockState(mockedStateIPhoneX));
+        const result = getIsAndroid(createMockState(mockedStateIPhoneX));
         expect(result).toBe(false);
       });
 
       it('should return true on Android devices', () => {
-        const result = isAndroid(createMockState(mockedStateAndroid));
+        const result = getIsAndroid(createMockState(mockedStateAndroid));
         expect(result).toBe(true);
       });
     });
 
-    describe('isIos()', () => {
+    describe('getIsIos()', () => {
       it('should return false if the client state is not ready yet', () => {
-        const result = isIos(createMockState({}));
+        const result = getIsIos(createMockState({}));
         expect(result).toBe(false);
       });
 
       it('should return false on Android devices', () => {
-        const result = isIos(createMockState(mockedStateAndroid));
+        const result = getIsIos(createMockState(mockedStateAndroid));
         expect(result).toBe(false);
       });
 
       it('should return true on iOS devices', () => {
-        const result = isIos(createMockState(mockedStateIPhoneX));
+        const result = getIsIos(createMockState(mockedStateIPhoneX));
         expect(result).toBe(true);
       });
     });

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { hashString } from '@shopgate/pwa-common/helpers/hash';
+import CryptoJs from 'crypto-js';
 import styles from './style';
 
 /**
@@ -11,7 +11,7 @@ import styles from './style';
 const NoResultIcon = (props) => {
   const filterId = useMemo(() => {
     const prefix = 'no-search-results-shadow';
-    const hash = hashString(`${prefix}-${Date.now() + Math.random()}`);
+    const hash = CryptoJs.MD5(`${prefix}-${Date.now() + Math.random()}`).toString();
     return `${prefix}-${hash}`;
   }, []);
 

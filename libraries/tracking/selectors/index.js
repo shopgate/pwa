@@ -29,8 +29,7 @@ export const makeGetTrackingData = () => {
     getRouteCategory,
     getRouteProduct,
     getRoutePageConfig,
-    (state, props = {}) => props.pattern,
-    (page, cart, favorites, search, category, product, pageConfig, pattern) => createPageviewData({
+    (page, cart, favorites, search, category, product, pageConfig) => createPageviewData({
       page,
       cart,
       favorites,
@@ -38,7 +37,6 @@ export const makeGetTrackingData = () => {
       category,
       product,
       pageConfig,
-      pattern,
     })
   );
 };

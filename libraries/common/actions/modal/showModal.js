@@ -1,5 +1,5 @@
+import CryptoJs from 'crypto-js';
 import { logger } from '@shopgate/pwa-core';
-import { hashString } from '../../helpers/hash';
 import { createModal } from '../../action-creators/modal';
 import { mutable } from '../../helpers/redux';
 import { getModalById } from '../../selectors/modal';
@@ -8,9 +8,9 @@ import promiseMap from './promiseMap';
 /**
  * Creates a runtime unique modal id.
  * @param {Object} options The modal options.
- * @returns {string}
+ * @returns {number}
  */
-export const getModalId = options => hashString(JSON.stringify(options));
+export const getModalId = options => CryptoJs.MD5(JSON.stringify(options)).toString();
 
 /**
  * The modal defaults.

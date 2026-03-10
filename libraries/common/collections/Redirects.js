@@ -10,6 +10,7 @@ class Redirects {
    */
   constructor() {
     this.redirects = new Map();
+    this.redirectOptions = new Map();
     this.matcher = pathMatch({
       sensitive: false,
       strict: false,
@@ -102,6 +103,13 @@ class Redirects {
       result.pathParams = matcherResult;
     }
 
+    const options = {
+      showLoading: true,
+      ...this.redirectOptions.get(pathname),
+    };
+
+    result.options = options;
+
     return result;
   }
 
@@ -109,21 +117,31 @@ class Redirects {
    * Adds a redirect handler to the collection.
    * @param {string} from The link to redirect from. Route patterns are also supported.
    * @param {string|Function|Promise} to redirect / handle to create a dynamic link.
-   * @param {boolean} force Whether or not to forcefully set the redirect.
+   * @param {Object} forceOrOptions Additional options for the redirect.
    */
-  set(from = null, to = null, force = false) {
+  set(from = null, to = null, forceOrOptions = false) {
     if (!from || !to) {
       return;
     }
 
-    if (!force && this.redirects.has(from)) {
+    const options = typeof forceOrOptions === 'object'
+      ? forceOrOptions
+      : null;
+
+    const forceFlag = typeof forceOrOptions === 'boolean'
+      ? forceOrOptions
+      : forceOrOptions?.override;
+
+    if (!forceFlag && this.redirects.has(from)) {
       return;
     }
 
     this.redirects.set(from, to);
-  }
 
-  /* eslint-disable extra-rules/potential-point-free */
+    if (options) {
+      this.redirectOptions.set(from, options);
+    }
+  }
 
   /**
    * Removes a specified element from the internal "redirects" Map object.
@@ -131,9 +149,8 @@ class Redirects {
    */
   unset(pathname) {
     this.redirects.delete(pathname);
+    this.redirectOptions.delete(pathname);
   }
-
-  /* eslint-enable extra-rules/potential-point-free */
 }
 
 export default new Redirects();

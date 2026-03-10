@@ -44,6 +44,7 @@ const requestAppPermissionStatus = ({
 
   return {
     status,
+    options,
   };
 };
 

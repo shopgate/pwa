@@ -1,20 +1,20 @@
 {
   "name": "@shopgate/product-reviews",
-  "version": "7.29.9",
+  "version": "7.30.0",
   "description": "Shopgate Connect Product Reviews extension.",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@shopgate/engage": "7.29.9",
-    "@shopgate/eslint-config": "7.29.9",
-    "@shopgate/pwa-common": "7.29.9",
-    "@shopgate/pwa-common-commerce": "7.29.9",
-    "@shopgate/pwa-core": "7.29.9",
+    "@shopgate/engage": "7.30.0",
+    "@shopgate/eslint-config": "7.30.0",
+    "@shopgate/pwa-common": "7.30.0",
+    "@shopgate/pwa-common-commerce": "7.30.0",
+    "@shopgate/pwa-core": "7.30.0",
     "lint-staged": "^12.5.0",
     "prop-types": "~15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.23"
   }
 }

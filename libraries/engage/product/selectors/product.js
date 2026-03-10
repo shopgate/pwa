@@ -8,11 +8,16 @@ import { filterProperties } from './helpers';
  */
 
 /**
+ * Shared empty product state to keep the fallback referentially stable.
+ */
+const EMPTY_PRODUCT_STATE = {};
+
+/**
  * Retrieves the product state from the store.
  * @param {Object} state The current application state.
  * @return {Object} The product state.
  */
-export const getProductState = state => state.product || {};
+export const getProductState = state => state.product || EMPTY_PRODUCT_STATE;
 
 /**
  * Selects the product properties state.
