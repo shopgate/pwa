@@ -173,13 +173,17 @@ export default function routerSubscriptions(subscribe) {
       matcher,
       pathParams,
       queryParams,
+      options,
     } = redirects.getRedirectExtended(location) || {};
     /* eslint-enable prefer-const */
 
     if (redirect) {
       if (typeof redirect === 'function' || redirect instanceof Promise) {
         const { pathname } = getCurrentRoute(state);
-        LoadingProvider.setLoading(pathname);
+
+        if (options.showLoading) {
+          LoadingProvider.setLoading(pathname);
+        }
 
         const pattern = router.findPattern(location.split('?')[0]);
         const { transform } = router.patterns[pattern] || {};
@@ -214,7 +218,9 @@ export default function routerSubscriptions(subscribe) {
           logger.error(e);
         }
 
-        LoadingProvider.unsetLoading(pathname);
+        if (options.showLoading) {
+          LoadingProvider.unsetLoading(pathname);
+        }
 
         if (!redirect) {
           return;

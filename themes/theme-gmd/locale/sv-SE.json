@@ -606,7 +606,16 @@
       "settings_button": "Öppna inställningar",
       "camera_message": "Den här funktionen kräver åtkomst till kameran. Vänligen tillåt åtkomst i inställningarna.",
       "push_message": "Du har inaktiverat push-meddelanden för den här appen. Gå till inställningarna på din enhet för att aktivera dem.",
-      "geolocation_message": "Vi behöver tillgång till platsen för att visa närliggande butiker."
+      "geolocation_message": "Vi behöver tillgång till platsen för att visa närliggande butiker.",
+      "geolocationMessageBackground": "För denna funktion behöver appen åtkomst till er plats även när appen är stängd. Vänligen ändra behörigheten i inställningarna till \"Alltid\".",
+      "trackingMessage": "Denna funktion kräver appspårning. Vänligen tillåt åtkomst i inställningarna."
+    },
+    "accessGranted": {
+      "cameraMessage": "Kamerabehörigheter har redan beviljats.",
+      "pushMessage": "Push-meddelande behörigheter har redan beviljats.",
+      "locationMessage": "Platsbehörigheter har redan beviljats.",
+      "backgroundLocationMessage": "Bakgrundsplatsbehörigheter har redan beviljats.",
+      "trackingMessage": "Spårningsbehörigheter har redan beviljats."
     }
   },
   "checkout": {

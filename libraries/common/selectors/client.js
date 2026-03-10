@@ -121,11 +121,29 @@ export const getDeviceModel = createSelector(
 );
 
 /**
+ * Selector to check if the PWA is currently running inside the Android app.
+ * Unlike the `getIsAndroid` selector, this selector will return false if the PWA
+ * is running in a web browser on an Android device.
+ * @param {Object} state The application state.
+ * @return {boolean}
+ */
+export const getIsAndroidApp = createSelector(
+  getPlatform,
+  (platform) => {
+    if (hasWebBridge()) {
+      return false;
+    }
+
+    return platform === OS_ANDROID;
+  }
+);
+
+/**
  * Check if the platform is Android.
  * @param {Object} state The application state.
  * @return {boolean}
  */
-export const isAndroid = createSelector(
+export const getIsAndroid = createSelector(
   getPlatform,
   (platform) => {
     if (hasWebBridge()) {
@@ -137,14 +155,42 @@ export const isAndroid = createSelector(
 );
 
 /**
+ * @deprecated Use `getIsAndroid` instead.
+ */
+export const isAndroid = getIsAndroid;
+
+/**
+ * Selector to check if the PWA is currently running inside the iOS app.
+ * Unlike the `getIsIos` selector, this selector will return false if the PWA
+ * is running in a web browser on an iOS device.
+ * @param {Object} state The application state.
+ * @return {boolean}
+ */
+export const getIsIosApp = createSelector(
+  getPlatform,
+  (platform) => {
+    if (hasWebBridge()) {
+      return false;
+    }
+
+    return platform === OS_IOS;
+  }
+);
+
+/**
  * Check if the platform is iOS.
  * @param {Object} state The application state.
  * @return {boolean}
  */
-export const isIos = createSelector(
+export const getIsIos = createSelector(
   getPlatform,
   platform => platform === OS_IOS
 );
+
+/**
+ * @deprecated Use `getIsIos` instead.
+ */
+export const isIos = getIsIos;
 
 /**
  * Checks if the currently stored lib version is one that supports the scanner.
