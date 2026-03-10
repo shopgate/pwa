@@ -23,6 +23,7 @@ module.exports = (api) => {
         runtime: 'automatic',
         development: !isProd && !isTest,
       }],
+      ['@babel/preset-typescript', { }],
     ],
 
     plugins: [
@@ -59,6 +60,7 @@ module.exports = (api) => {
         presets: [
           ['@babel/preset-env', { targets: { node: 'current' } }],
           ['@babel/preset-react', { runtime: 'automatic' }],
+          ['@babel/preset-typescript'],
         ],
       },
       development: {

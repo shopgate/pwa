@@ -3,6 +3,7 @@ module.exports = {
     './main',
     './react',
     './extras',
+    './typescript',
   ].map(require.resolve),
   rules: {},
 };

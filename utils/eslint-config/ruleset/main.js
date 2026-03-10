@@ -163,15 +163,25 @@ module.exports = {
     {
       files: [
         '**/*.spec.js',
+        '**/*.spec.ts',
         '**/*.spec.jsx',
+        '**/*.spec.tsx',
         '**/*.test.js',
+        '**/*.test.ts',
         '**/*.test.jsx',
+        '**/*.test.tsx',
         '**/*.mock.js',
+        '**/*.mock.ts',
         '**/*.mock.jsx',
+        '**/*.mock.tsx',
         '**/spec.js',
+        '**/spec.ts',
         '**/spec.jsx',
+        '**/spec.tsx',
         '**/mock.js',
+        '**/mock.ts',
         '**/mock.jsx',
+        '**/mock.tsx',
       ],
       rules: {
         // Allow more than one class per file in test files
@@ -182,14 +192,22 @@ module.exports = {
     },
   ],
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
     'import/extensions': [
       '.js',
       '.json',
       '.jsx',
+      '.ts',
+      '.tsx',
     ],
     'import/resolver': {
       exports: {},
-      node: {},
+      node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'] },
+      typescript: {
+        alwaysTryTypes: true,
+      },
     },
   },
 };
