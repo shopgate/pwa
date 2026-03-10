@@ -10,7 +10,7 @@ const useStyles = makeStyles()({
     textDecoration: 'underline',
   },
   listEntry: {
-    marginBottom: 8,
+    padding: '0px 8px 10px 30px',
   },
   srOnly: {
     border: '0',
