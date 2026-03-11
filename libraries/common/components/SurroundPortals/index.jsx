@@ -10,7 +10,7 @@ import { AFTER, BEFORE } from '../../constants/Portals';
  * with a ".before" and ".after" suffix.
  *
  * @param {Object} props The component props
- * @param {string} props.portalName Name for the main portal
+ * @param {strin|null} props.portalName Name for the main portal
  * @param {Object} props.portalProps Props that are assigned to the portals
  * @param {React.ReactNode} props.children Component children
  * @returns {JSX.Element}

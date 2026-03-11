@@ -47,7 +47,7 @@ const ProductName = ({
   <ConditionalWrapper
     condition={!!portalName}
     wrapper={(children: React.ReactNode) => (
-      <SurroundPortals portalName={portalName!} portalProps={portalProps ?? undefined}>
+      <SurroundPortals portalName={portalName} portalProps={portalProps ?? undefined}>
         {children}
       </SurroundPortals>
     )}
