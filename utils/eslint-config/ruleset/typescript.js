@@ -3,7 +3,7 @@ module.exports = {
     {
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
-      plugins: ['@typescript-eslint', 'jsdoc', '@stylistic'],
+      plugins: ['@typescript-eslint', 'jsdoc'],
       extends: [
         'plugin:@typescript-eslint/recommended',
       ],
@@ -83,11 +83,11 @@ module.exports = {
           ignoreTemplateLiterals: true,
         }],
 
-        '@stylistic/object-curly-spacing': ['warn', 'always'],
-        '@stylistic/type-annotation-spacing': 'warn',
-        '@stylistic/type-generic-spacing': 'warn',
-        '@stylistic/type-named-tuple-spacing': 'warn',
-        '@stylistic/member-delimiter-style': 'warn',
+        // '@stylistic/object-curly-spacing': ['warn', 'always'],
+        // '@stylistic/type-annotation-spacing': 'warn',
+        // '@stylistic/type-generic-spacing': 'warn',
+        // '@stylistic/type-named-tuple-spacing': 'warn',
+        // '@stylistic/member-delimiter-style': 'warn',
       },
     },
     // Rules for  React components in .tsx files
