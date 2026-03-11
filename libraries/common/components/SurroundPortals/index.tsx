@@ -3,7 +3,7 @@ import Portal from '../Portal';
 import { AFTER, BEFORE } from '../../constants/Portals';
 
 export interface SurroundPortalsProps {
-  portalName: string;
+  portalName: string | null;
   portalProps?: Record<string, unknown> | null;
   children?: React.ReactNode;
 }
@@ -17,7 +17,7 @@ export interface SurroundPortalsProps {
  * @returns The SurroundPortals component.
  */
 const SurroundPortals = ({
-  portalName,
+  portalName = null,
   portalProps = null,
   children = null,
 }: SurroundPortalsProps) => (
