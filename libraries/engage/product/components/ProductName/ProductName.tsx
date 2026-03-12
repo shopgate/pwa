@@ -31,7 +31,6 @@ const styles = {
 
 /**
  * The ProductName component.
- * @returns The ProductName component.
  */
 const ProductName = ({
   name = null,
