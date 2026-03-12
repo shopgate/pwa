@@ -19,7 +19,7 @@ const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
  * The styles for the error label.
  */
 const labelError = css({
-  color: `var(--color-state-alert, ${colors.error})`,
+  color: 'var(--color-state-alert)',
 }).toString();
 
 /**
@@ -54,7 +54,7 @@ const label = css({
   lineHeight: '19px',
   pointerEvents: 'none',
   userSelect: 'none',
-  color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+  color: 'var(--color-text-medium-emphasis)',
   transformOrigin: 'left top 0px',
   willChange: 'transform, color',
   transition: `transform ${easing}, color ${easing}`,

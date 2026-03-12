@@ -115,7 +115,7 @@ const primary = (disabled, flat) => {
     }
 
     // Regular enabled button style.
-    return createButtonStyles(`var(--color-secondary-contrast, ${colors.accentContrast})`, `var(--color-secondary, ${colors.accent})`);
+    return createButtonStyles('var(--color-secondary-contrast)', 'var(--color-secondary)');
   }
 
   if (disabled) {
@@ -124,7 +124,7 @@ const primary = (disabled, flat) => {
   }
 
   // Flat enabled button style.
-  return createButtonStyles(`var(--color-secondary, ${colors.accent})`, null);
+  return createButtonStyles('var(--color-secondary)', null);
 };
 
 /**
@@ -141,7 +141,7 @@ const secondary = (disabled, flat) => {
     }
 
     // Regular enabled button style.
-    return createButtonStyles(`var(--color-primary-contrast, ${colors.primaryContrast})`, `var(--color-primary, ${colors.primary})`);
+    return createButtonStyles('var(--color-primary-contrast)', 'var(--color-primary)');
   }
 
   if (disabled) {
@@ -150,7 +150,7 @@ const secondary = (disabled, flat) => {
   }
 
   // Flat enabled button style.
-  return createButtonStyles(`var(--color-primary, ${colors.primary})`, null);
+  return createButtonStyles('var(--color-primary)', null);
 };
 
 export default {

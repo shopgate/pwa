@@ -1,5 +1,4 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * The style object for a one line text element with an ellipsis on overflow.
@@ -19,7 +18,7 @@ const error = css({
   bottom: 2,
   fontSize: 12,
   lineHeight: '14px',
-  color: `var(--color-state-alert, ${themeConfig.colors.error})`,
+  color: 'var(--color-state-alert)',
   ...ellipsisLine,
 }).toString();
 

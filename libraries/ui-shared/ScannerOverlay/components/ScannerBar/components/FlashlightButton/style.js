@@ -1,5 +1,4 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const button = css({
   alignItems: 'center',
@@ -22,7 +21,7 @@ const iconWrapper = css({
 
 const icon = css({
   boxSizing: 'content-box',
-  color: `var(--color-secondary, ${themeConfig.colors.accent})`,
+  color: 'var(--color-secondary)',
 }).toString();
 
 export default {

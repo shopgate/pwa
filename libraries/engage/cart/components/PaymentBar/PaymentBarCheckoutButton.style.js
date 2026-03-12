@@ -5,8 +5,8 @@ const { colors } = themeConfig;
 
 export const button = css({
   width: '100%',
-  background: `var(--color-button-cta, ${colors.cta})`,
-  color: `var(--color-button-cta-contrast, ${colors.ctaContrast})!important`,
+  background: 'var(--color-button-cta)',
+  color: 'var(--color-button-cta-contrast)!important',
 }).toString();
 
 export const disabledButton = css({

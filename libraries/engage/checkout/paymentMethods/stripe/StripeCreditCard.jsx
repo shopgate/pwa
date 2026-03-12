@@ -22,7 +22,7 @@ const styles = {
     flexDirection: 'column',
     flex: '0 0 auto',
     ' .formElement': {
-      background: `var(--color-background-accent, ${colors.shade8})`,
+      background: 'var(--color-background-accent)',
       padding: 0,
       marginBottom: 38,
       borderTopLeftRadius: 4,

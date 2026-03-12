@@ -10,7 +10,7 @@ const baseIcon = {
 
 const checkedIcon = css({
   ...baseIcon,
-  color: `var(--color-secondary, ${colors.accent})`,
+  color: 'var(--color-secondary)',
 }).toString();
 
 const uncheckedIcon = css({

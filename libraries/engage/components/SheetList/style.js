@@ -18,8 +18,8 @@ const itemNotLast = css({
 }).toString();
 
 const itemSelected = css({
-  background: `var(--color-background-accent, ${colors.shade7})`,
-  boxShadow: `-${variables.gap.bigger}px 0 0 var(--color-background-accent, ${colors.shade7}), ${variables.gap.bigger}px 0 0 var(--color-background-accent, ${colors.shade7})`,
+  background: 'var(--color-background-accent)',
+  boxShadow: `-${variables.gap.bigger}px 0 0 var(--color-background-accent), ${variables.gap.bigger}px 0 0 var(--color-background-accent)`,
   marginTop: -1,
 }).toString();
 

@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables, colors } = themeConfig;
+const { variables } = themeConfig;
 
 export const container = css({
   overflow: 'auto',
@@ -10,5 +10,5 @@ export const container = css({
 });
 
 export const label = css({
-  color: `var(--color-text-high-emphasis, ${colors.accent})`,
+  color: 'var(--color-text-high-emphasis)',
 });

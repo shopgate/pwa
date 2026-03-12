@@ -1,7 +1,4 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 export const container = css({
   fontSize: '0.875rem',
@@ -32,7 +29,7 @@ export const content = css({
     paddingLeft: '1.2em',
   },
   ' a': {
-    color: `var(--color-primary, ${colors.primary})`,
+    color: 'var(--color-primary)',
     margin: '-.35em',
     padding: '.35em',
     position: 'relative',

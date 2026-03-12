@@ -1,9 +1,8 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 export default css({
   bottom: 2,
-  color: `var(--color-state-alert, ${themeConfig.colors.error})`,
+  color: 'var(--color-state-alert)',
   fontSize: 12,
   lineHeight: '14px',
   overflow: 'hidden',

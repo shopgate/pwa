@@ -1,14 +1,14 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const size = variables.gap.big * 1.125;
 
 export default css({
-  backgroundColor: `var(--color-primary, ${colors.primary})`,
+  backgroundColor: 'var(--color-primary)',
   borderRadius: size,
-  color: `var(--color-primary-contrast, ${colors.primaryContrast})`,
+  color: 'var(--color-primary-contrast)',
   fontSize: 12,
   fontWeight: 700,
   height: size,

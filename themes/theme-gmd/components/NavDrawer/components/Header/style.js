@@ -1,15 +1,15 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const container = css({
-  color: `var(--color-secondary-contrast, ${colors.accentContrast})`,
+  color: 'var(--color-secondary-contrast)',
   marginBottom: 4,
 }).toString();
 
 const loggedIn = css({
-  background: `var(--color-secondary, ${colors.accent})`,
+  background: 'var(--color-secondary)',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'center',

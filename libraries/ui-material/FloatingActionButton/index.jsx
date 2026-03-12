@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import colors from '../colors';
 import styles from './style';
 
 const SIZE_BIG = 'big';
@@ -71,7 +70,7 @@ FloatingActionButton.propTypes = {
 };
 
 FloatingActionButton.defaultProps = {
-  background: `var(--color-primary, ${colors.primary})`,
+  background: 'var(--color-primary)',
   className: null,
   disabled: false,
   onClick: () => { },

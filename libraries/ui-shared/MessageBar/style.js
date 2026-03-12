@@ -20,8 +20,8 @@ const messageBase = {
 };
 
 const info = css(messageBase, {
-  background: `var(--color-secondary, ${colors.accent})`,
-  color: `var(--color-secondary-contrast, ${colors.accentContrast})`,
+  background: 'var(--color-secondary)',
+  color: 'var(--color-secondary-contrast)',
 }).toString();
 
 const error = css(messageBase, {

@@ -20,6 +20,6 @@ export const inactive = css({
 });
 
 export const active = css(inactive, {
-  borderColor: `var(--color-secondary, ${themeColors.accent})`,
-  color: `var(--color-secondary, ${themeColors.accent})`,
+  borderColor: 'var(--color-secondary)',
+  color: 'var(--color-secondary)',
 });

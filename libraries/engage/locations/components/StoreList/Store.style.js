@@ -8,7 +8,7 @@ const baseCardPadding = `${gap.small}px ${gap.big}px`;
 const gapM = gap.small + gap.xsmall;
 
 export const stores = css({
-  background: `var(--color-background-accent, ${themeColors.background})`,
+  background: 'var(--color-background-accent)',
   padding: `${gapM}px ${gapM}px ${gap.big}px`,
   fontSize: '0.875rem',
   boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
@@ -47,7 +47,7 @@ export const storeName = css({
 
 export const storeDistance = css({
   whiteSpace: 'nowrap',
-  color: `var(--color-text-medium-emphasis, ${themeColors.gray})`,
+  color: 'var(--color-text-medium-emphasis)',
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     fontSize: '0.875rem',
   },
@@ -63,13 +63,13 @@ export const storeDetailsAccordion = css({
 }).toString();
 
 export const storeHoursToday = css({
-  color: `var(--color-text-medium-emphasis, ${themeColors.gray})`,
+  color: 'var(--color-text-medium-emphasis)',
 }).toString();
 
 export const address = css({
   display: 'flex',
   flexFlow: 'row nowrap',
-  color: `var(--color-text-medium-emphasis, ${themeColors.gray})`,
+  color: 'var(--color-text-medium-emphasis)',
   marginBottom: 4,
 }).toString();
 
@@ -113,12 +113,12 @@ export const openingHoursDay = css({
 
 export const detailsPrimary = css({
   margin: 0,
-  color: `var(--color-primary, ${themeColors.primary})`,
+  color: 'var(--color-primary)',
   lineHeight: '1.375rem',
 }).toString();
 
 export const detailsSecondary = css({
-  color: `var(--color-text-medium-emphasis, ${themeColors.shade11})`,
+  color: 'var(--color-text-medium-emphasis)',
   fontSize: '0.75rem',
 }).toString();
 
@@ -137,7 +137,7 @@ export const selectLocationButton = css({
   width: '100%',
   fontSize: '.875rem !important',
   ':not(:disabled)': {
-    background: `var(--color-primary, ${themeColors.primary})!important`,
-    color: `var(--color-primary-contrast, ${themeColors.primaryContrast})!important`,
+    background: 'var(--color-primary)!important',
+    color: 'var(--color-primary-contrast)!important',
   },
 });

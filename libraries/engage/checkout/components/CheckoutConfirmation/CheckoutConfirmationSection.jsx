@@ -28,7 +28,7 @@ const styles = {
     } : {}),
   }),
   link: css({
-    color: `var(--color-primary, ${colors.primary}) !important`,
+    color: 'var(--color-primary) !important',
   }).toString(),
   card: css({
     fontSize: '0.875rem',

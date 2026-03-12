@@ -32,7 +32,7 @@ const container = css({
   left: 0,
   right: 0,
   margin: '0 auto',
-  color: `var(--color-text-high-emphasis, ${themeConfig.colors.dark})`,
+  color: 'var(--color-text-high-emphasis)',
   [responsiveMediaQuery('>sm', { webOnly: true })]: {
     position: 'initial',
   },

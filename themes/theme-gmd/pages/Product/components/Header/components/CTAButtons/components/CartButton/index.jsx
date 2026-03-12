@@ -67,10 +67,10 @@ class CartButton extends Component {
    */
   get color() {
     if (this.state.clicked) {
-      return `var(--color-button-cta-contrast, ${colors.light})`;
+      return 'var(--color-button-cta-contrast)';
     }
 
-    return (this.props.disabled && !this.props.loading) ? colors.shade5 : `var(--color-button-cta, ${colors.primary})`;
+    return (this.props.disabled && !this.props.loading) ? colors.shade5 : 'var(--color-button-cta)';
   }
 
   /**
@@ -80,7 +80,7 @@ class CartButton extends Component {
     if (this.props.loading) {
       return (
         <IndicatorCircle
-          color={`var(--color-button-cta-contrast, ${colors.primaryContrast})`}
+          color="var(--color-button-cta-contrast)"
           strokeWidth={4}
           paused={false}
         />

@@ -70,12 +70,12 @@ const getMessageColors = (sourceColor, textColor) => {
  * @returns {string}
  */
 export const info = () => css(messageBase, {
-  background: `var(--color-secondary, ${themeColors.accent})`,
-  color: `var(--color-secondary-contrast, ${themeColors.accentContrast})`,
+  background: 'var(--color-secondary)',
+  color: 'var(--color-secondary-contrast)',
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     ...getMessageColors(getCSSCustomProp('--color-secondary') || themeColors.accent),
     ' > svg': {
-      color: `var(--color-secondary, ${themeColors.accent})`,
+      color: 'var(--color-secondary)',
     },
   },
 }).toString();
