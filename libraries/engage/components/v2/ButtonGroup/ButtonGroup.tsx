@@ -131,7 +131,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: theme.darken('var(--button-croup-color)'),
+        borderRightColor: theme.darken('var(--button-group-color)'),
         '&:disabled': {
           borderRightColor: 'var(--disabledColor)',
         },
@@ -141,16 +141,16 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: theme.darken('var(--button-croup-color)'),
+        borderBottomColor: theme.darken('var(--button-group-color)'),
         '&:disabled': {
           borderBottomColor: 'var(--disabledColor)',
         },
       },
     },
     groupedOutlined: {
-      borderColor: `${theme.lighten('var(--button-croup-color)', 0.5)} !important`,
+      borderColor: `${theme.lighten('var(--button-group-color)', 0.5)} !important`,
       '&:hover': {
-        borderColor: 'var(--button-croup-color)',
+        borderColor: 'var(--button-group-color)',
       },
       '&:disabled': {
         borderColor: 'var(--disabledColor) !important',
@@ -179,7 +179,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: `${theme.lighten('var(--button-croup-color)', 0.5)}`,
+        borderRightColor: `${theme.lighten('var(--button-group-color)', 0.5)}`,
         '&:disabled': {
           borderRightColor: 'var(--disabledColor)',
         },
@@ -189,7 +189,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: `${theme.lighten('var(--button-croup-color)', 0.5)}`,
+        borderBottomColor: `${theme.lighten('var(--button-group-color)', 0.5)}`,
         '&:disabled': {
           borderBottomColor: 'var(--disabledColor)',
         },
