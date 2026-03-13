@@ -78,6 +78,36 @@ export type ComponentsOverrideFromSchema<TSchema, TTheme> =
   : TSchema extends object
     ? { [K in keyof TSchema]?: ComponentsOverrideFromSchema<TSchema[K], TTheme> }
     : ComponentTokenValue<TTheme>;
+
+/**
+ * Derives the flattened component vars type from `componentsSchema`.
+ *
+ * Each top-level component entry is mapped to its `vars` section.
+ * Leaf values become `string`.
+ *
+ * Example:
+ * {
+ *   price: {
+ *     vars: {
+ *       color: '';
+ *     }
+ *   }
+ * }
+ *
+ * becomes:
+ * {
+ *   price: {
+ *     color: string;
+ *   }
+ * }
+ */
+export type ComponentVarsFromSchema<TSchema> = {
+  [K in keyof TSchema]:
+    TSchema[K] extends { vars: infer TVars }
+      ? ComponentsFromSchema<TVars>
+      : never;
+};
+
 /**
  * Schema that defines the shape of the components object.
  *
@@ -126,3 +156,4 @@ export type ComponentsOptions =
 // The components type represents the components after theme creation
 export type Components = ComponentsFromSchema<typeof componentsSchema>;
 
+export type ComponentVars = ComponentVarsFromSchema<typeof componentsSchema>;

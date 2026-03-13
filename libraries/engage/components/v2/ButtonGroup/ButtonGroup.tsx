@@ -78,14 +78,14 @@ const useStyles = makeStyles<UseStylesProps>({
 
   return {
     root: {
-      '--button-group-color': `var(${theme.vars.components.button.vars.color}, ${cssColor})`,
+      '--button-group-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
       '--disabledColor': theme.palette.action.disabled,
       '&& button': {
         // Override button border radius with group border radius
         // [theme.vars.components.button.borderRadius]: theme.components.buttonGroup.borderRadius,
       },
       display: 'inline-flex',
-      borderRadius: `var(${theme.vars.components.button.vars.borderRadius}, ${theme.shape.borderRadius})`,
+      borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
     },
     contained: {
       boxShadow: theme.shadows[2],

@@ -1,6 +1,6 @@
 import type { PaletteOptions, Palette } from './createPalette';
 import type { Typography, TypographyOptions } from './createTypography';
-import type { Components, ComponentsOptions } from './createComponents';
+import type { Components, ComponentsOptions, ComponentVars } from './createComponents';
 import type { Breakpoints } from './createBreakpoints';
 import type { Spacing } from './createSpacing';
 import type { Transitions } from './transitions';
@@ -153,7 +153,7 @@ export interface Theme extends BaseTheme {
    * It has the same structure as the theme, but the values are CSS variable references
    * (e.g., `var(--sg-palette-primary-main)`) instead of actual color values.
    */
-  vars: BaseTheme;
+  vars: Omit<BaseTheme, 'components'> & { components: ComponentVars};
   /**
    * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
    * and the value is a theme object that contains e.g. the palette and typography for that color scheme.

@@ -98,9 +98,9 @@ const useStyles = makeStyles<UseStylesProps>({
 
   return {
     root: {
-      '--button-color': `var(${theme.vars.components.button.vars.color}, ${cssColor})`,
-      '--text-color': `var(${theme.vars.components.button.vars.textColor}, ${contrastText})`,
-      '--border-radius': `var(${theme.vars.components.button.vars.borderRadius}, ${theme.shape.borderRadius})`,
+      '--button-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
+      '--text-color': `var(${theme.vars.components.button.textColor}, ${contrastText})`,
+      '--border-radius': `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
 
       '--font-size': theme.typography.button.fontSize,
 

@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 import type { CSSInterpolation } from 'tss-react';
 import { cssVarsParser, cssVarsColorAugmentation } from './helpers';
 import type { GetColorSchemeSelector } from './helpers';
-import { resolveComponentsValues } from './createComponents';
+import { resolveComponentsValues, flattenComponentVars } from './createComponents';
 import type {
   ColorSchemeThemes, BaseTheme, ColorSchemeName, ThemeOptions,
 } from './types';
@@ -74,8 +74,7 @@ export default function createCssVarsForColorSchemeThemes(
     }), rest);
 
     // Resolve component token values to actual CSS variable references
-    // (e.g., var(--sg-palette-primary-main))
-    const resolvedComponents = resolveComponentsValues(componentsInput, vars);
+    const resolvedComponents = flattenComponentVars(resolveComponentsValues(componentsInput, vars));
 
     const {
       css: componentsCss,
