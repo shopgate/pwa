@@ -80,10 +80,6 @@ const useStyles = makeStyles<UseStylesProps>({
     root: {
       '--button-group-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
       '--disabledColor': theme.palette.action.disabled,
-      '&& button': {
-        // Override button border radius with group border radius
-        // [theme.vars.components.button.borderRadius]: theme.components.buttonGroup.borderRadius,
-      },
       display: 'inline-flex',
       borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
     },
