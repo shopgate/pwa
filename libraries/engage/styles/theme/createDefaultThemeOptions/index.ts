@@ -28,9 +28,8 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           default: '#fff',
         },
         text: {
-          primary: '#212121',
-          contrastDark: '#fff',
-          contrastLight: '#212121',
+          primary: getCSSCustomProp('--color-text-high-emphasis'),
+          secondary: getCSSCustomProp('--color-text-medium-emphasis'),
         },
       },
     },
@@ -47,8 +46,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         text: {
           primary: '#fff',
-          contrastDark: '#fff',
-          contrastLight: '#212121',
+          secondary: '#808080',
         },
       },
     },
