@@ -27,9 +27,9 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   disableElevation?: boolean;
   /**
    * The color of the component.
-   * @default 'default'
+   * @default 'inherit'
    */
-  color?: PaletteColorsWithMain | 'default';
+  color?: PaletteColorsWithMain | 'inherit';
   /**
    * If true, the buttons will take up the full width of their container.
    * @default false
@@ -65,7 +65,7 @@ const useStyles = makeStyles<UseStylesProps>({
 
   let cssColor = '';
 
-  if (color !== 'default') {
+  if (color !== 'inherit') {
     cssColor = color && theme.palette?.[color]?.main
       ? theme.palette[color].main
       : theme.palette.primary.main;
@@ -73,19 +73,19 @@ const useStyles = makeStyles<UseStylesProps>({
     // eslint-disable-next-line prefer-destructuring
     cssColor = theme.palette.grey[200];
   } else {
-    cssColor = theme.palette.text.contrastLight;
+    cssColor = 'currentColor';
   }
 
   return {
     root: {
-      '--accent-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
+      '--button-group-color': `var(${theme.vars.components.button.vars.color}, ${cssColor})`,
       '--disabledColor': theme.palette.action.disabled,
       '&& button': {
         // Override button border radius with group border radius
         // [theme.vars.components.button.borderRadius]: theme.components.buttonGroup.borderRadius,
       },
       display: 'inline-flex',
-      borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
+      borderRadius: `var(${theme.vars.components.button.vars.borderRadius}, ${theme.shape.borderRadius})`,
     },
     contained: {
       boxShadow: theme.shadows[2],
@@ -131,7 +131,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: theme.darken('var(--accent-color)'),
+        borderRightColor: theme.darken('var(--button-croup-color)'),
         '&:disabled': {
           borderRightColor: 'var(--disabledColor)',
         },
@@ -141,16 +141,16 @@ const useStyles = makeStyles<UseStylesProps>({
       '&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: theme.darken('var(--accent-color)'),
+        borderBottomColor: theme.darken('var(--button-croup-color)'),
         '&:disabled': {
           borderBottomColor: 'var(--disabledColor)',
         },
       },
     },
     groupedOutlined: {
-      borderColor: `${theme.lighten('var(--accent-color)', 0.5)} !important`,
+      borderColor: `${theme.lighten('var(--button-croup-color)', 0.5)} !important`,
       '&:hover': {
-        borderColor: 'var(--accent-color)',
+        borderColor: 'var(--button-croup-color)',
       },
       '&:disabled': {
         borderColor: 'var(--disabledColor) !important',
@@ -179,7 +179,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: `${theme.lighten('var(--accent-color)', 0.5)}`,
+        borderRightColor: `${theme.lighten('var(--button-croup-color)', 0.5)}`,
         '&:disabled': {
           borderRightColor: 'var(--disabledColor)',
         },
@@ -189,7 +189,7 @@ const useStyles = makeStyles<UseStylesProps>({
       '&&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: `${theme.lighten('var(--accent-color)', 0.5)}`,
+        borderBottomColor: `${theme.lighten('var(--button-croup-color)', 0.5)}`,
         '&:disabled': {
           borderBottomColor: 'var(--disabledColor)',
         },
@@ -211,7 +211,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
     fullWidth = false,
     disableRipple = false,
     disabled = false,
-    color = 'default',
+    color = 'inherit',
     className,
     children,
     ...other
