@@ -1,10 +1,9 @@
 import React, { forwardRef } from 'react';
 import capitalize from 'lodash/capitalize';
 import { makeStyles } from '@shopgate/engage/styles';
-import type { OwnProps } from '@shopgate/engage/types/react';
 import type { PaletteColorsWithMain } from '@shopgate/engage/styles';
 
-export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
+interface ButtonGroupOwnProps {
   /**
    * The variant to use.
    * @default 'contained'
@@ -53,12 +52,9 @@ export interface ButtonGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-type UseStylesProps = OwnProps<
-  ButtonGroupProps,
-  Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>
->;
+export type ButtonGroupProps = ButtonGroupOwnProps & React.HTMLAttributes<HTMLDivElement>
 
-const useStyles = makeStyles<UseStylesProps>({
+const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
   name: 'ButtonGroup',
 })((theme, props) => {
   const { color, variant } = props;

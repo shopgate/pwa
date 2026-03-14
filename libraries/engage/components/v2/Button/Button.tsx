@@ -1,12 +1,11 @@
 import { forwardRef } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import type { OwnProps } from '@shopgate/engage/types/react';
 import type { PaletteColorsWithMain } from '@shopgate/engage/styles';
 import CircularProgress from '../CircularProgress';
 import ButtonBase from '../ButtonBase';
 import type { ButtonBaseProps } from '../ButtonBase';
 
-export interface ButtonProps extends ButtonBaseProps {
+interface ButtonOwnProps {
   /**
    * The variant to use.
    * @default 'contained'
@@ -61,11 +60,9 @@ export interface ButtonProps extends ButtonBaseProps {
   classes?: Partial<ReturnType<typeof useStyles>['classes']>;
 }
 
-type UseStylesProps = OwnProps<
-  ButtonProps,
-  Omit<ButtonBaseProps, 'color'>>
+export type ButtonProps = ButtonOwnProps & ButtonBaseProps;
 
-const useStyles = makeStyles<UseStylesProps>({
+const useStyles = makeStyles<ButtonOwnProps>({
   name: 'Button',
 })((theme, props) => {
   const {
@@ -339,7 +336,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loadingPosition,
     loading,
     fullWidth,
-  });
+  }, { props: { classes: props.classes } });
 
   const loadingIndicator = loadingIndicatorProp ?? (
     <CircularProgress color="inherit" size={16} />
