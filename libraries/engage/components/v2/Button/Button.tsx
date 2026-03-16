@@ -1,12 +1,11 @@
 import { forwardRef } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import type { OwnProps } from '@shopgate/engage/types/react';
 import type { PaletteColorsWithMain } from '@shopgate/engage/styles';
 import CircularProgress from '../CircularProgress';
 import ButtonBase from '../ButtonBase';
 import type { ButtonBaseProps } from '../ButtonBase';
 
-export interface ButtonProps extends ButtonBaseProps {
+interface ButtonOwnProps {
   /**
    * The variant to use.
    * @default 'contained'
@@ -14,9 +13,9 @@ export interface ButtonProps extends ButtonBaseProps {
   variant?: 'contained' | 'outlined' | 'text';
   /**
    * The color of the component.
-   * @default 'default'
+   * @default 'inherit'
    */
-  color?: PaletteColorsWithMain | 'default';
+  color?: PaletteColorsWithMain | 'inherit';
   /**
    * If `true`, no elevation is used for contained buttons.
    * @default false
@@ -61,11 +60,9 @@ export interface ButtonProps extends ButtonBaseProps {
   classes?: Partial<ReturnType<typeof useStyles>['classes']>;
 }
 
-type UseStylesProps = OwnProps<
-  ButtonProps,
-  Omit<ButtonBaseProps, 'color'>>
+export type ButtonProps = ButtonOwnProps & ButtonBaseProps;
 
-const useStyles = makeStyles<UseStylesProps>({
+const useStyles = makeStyles<ButtonOwnProps>({
   name: 'Button',
 })((theme, props) => {
   const {
@@ -80,7 +77,7 @@ const useStyles = makeStyles<UseStylesProps>({
   let cssColor = '';
   let contrastText = '';
 
-  if (color !== 'default') {
+  if (color !== 'inherit') {
     cssColor = color && theme.palette?.[color]?.main
       ? theme.palette[color].main
       : theme.palette.primary.main;
@@ -91,29 +88,29 @@ const useStyles = makeStyles<UseStylesProps>({
   } else if (variant === 'contained') {
     // eslint-disable-next-line prefer-destructuring
     cssColor = theme.palette.grey[200];
-    contrastText = theme.palette.text.contrastLight;
+    contrastText = 'inherit';
   } else {
-    cssColor = theme.palette.text.contrastLight;
+    cssColor = 'currentColor';
   }
 
   return {
     root: {
-      '--accent-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
+      '--button-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
       '--text-color': `var(${theme.vars.components.button.textColor}, ${contrastText})`,
       '--border-radius': `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
 
       '--font-size': theme.typography.button.fontSize,
 
-      '--variant-textColor': 'var(--accent-color)',
+      '--variant-textColor': 'var(--button-color)',
       '--variant-textDisabledColor': theme.palette.action.disabled,
 
-      '--variant-outlinedColor': 'var(--accent-color)',
-      '--variant-outlinedBorder': 'var(--accent-color)',
+      '--variant-outlinedColor': 'var(--button-color)',
+      '--variant-outlinedBorder': 'var(--button-color)',
       '--variant-outlinedDisabledColor': theme.palette.action.disabled,
       '--variant-outlinedDisabledBorder': theme.palette.action.disabled,
 
       '--variant-containedColor': 'var(--text-color)',
-      '--variant-containedBg': 'var(--accent-color)',
+      '--variant-containedBg': 'var(--button-color)',
       '--variant-containedDisabledColor': theme.palette.action.disabled,
       '--variant-containedDisabledBg': theme.palette.action.disabledBackground,
 
@@ -317,7 +314,7 @@ const useStyles = makeStyles<UseStylesProps>({
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     variant = 'contained',
-    color = 'default',
+    color = 'inherit',
     startIcon: startIconProp,
     endIcon: endIconProp,
     loading = false,
@@ -339,7 +336,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loadingPosition,
     loading,
     fullWidth,
-  });
+  }, { props: { classes: props.classes } });
 
   const loadingIndicator = loadingIndicatorProp ?? (
     <CircularProgress color="inherit" size={16} />

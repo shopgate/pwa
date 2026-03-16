@@ -1,4 +1,3 @@
-import { button } from '../../../locations/components/ReserveForm/ReserveForm.style';
 import type { BaseTheme } from './index';
 
 type Theme = Omit<BaseTheme, 'components'>;
@@ -79,6 +78,36 @@ export type ComponentsOverrideFromSchema<TSchema, TTheme> =
   : TSchema extends object
     ? { [K in keyof TSchema]?: ComponentsOverrideFromSchema<TSchema[K], TTheme> }
     : ComponentTokenValue<TTheme>;
+
+/**
+ * Derives the flattened component vars type from `componentsSchema`.
+ *
+ * Each top-level component entry is mapped to its `vars` section.
+ * Leaf values become `string`.
+ *
+ * Example:
+ * {
+ *   price: {
+ *     vars: {
+ *       color: '';
+ *     }
+ *   }
+ * }
+ *
+ * becomes:
+ * {
+ *   price: {
+ *     color: string;
+ *   }
+ * }
+ */
+export type ComponentVarsFromSchema<TSchema> = {
+  [K in keyof TSchema]:
+    TSchema[K] extends { vars: infer TVars }
+      ? ComponentsFromSchema<TVars>
+      : never;
+};
+
 /**
  * Schema that defines the shape of the components object.
  *
@@ -87,12 +116,16 @@ export type ComponentsOverrideFromSchema<TSchema, TTheme> =
  */
 export const componentsSchema = {
   price: {
-    color: '',
+    vars: {
+      color: '',
+    },
   },
   button: {
-    borderRadius: '',
-    color: '',
-    textColor: '',
+    vars: {
+      borderRadius: '',
+      color: '',
+      textColor: '',
+    },
   },
 } as const;
 
@@ -106,7 +139,9 @@ export const componentsSchema = {
  */
 export const componentsDefaults = {
   price: {
-    color: t => t.palette.primary.main,
+    vars: {
+      color: t => t.palette.primary.main,
+    },
   },
 } satisfies ComponentsDefaults;
 
@@ -121,3 +156,4 @@ export type ComponentsOptions =
 // The components type represents the components after theme creation
 export type Components = ComponentsFromSchema<typeof componentsSchema>;
 
+export type ComponentVars = ComponentVarsFromSchema<typeof componentsSchema>;

@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-export interface ButtonBaseProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonBaseOwnProps {
   /**
    * If true, the button will be disabled and not respond to user interactions.
    * @default false
@@ -52,8 +52,14 @@ export interface ButtonBaseProps extends React.ButtonHTMLAttributes<HTMLButtonEl
    * Custom class name for the button.
    */
   className?: string;
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes?: Partial<ReturnType<typeof useStyles>['classes']>;
   children: React.ReactNode;
 }
+
+export type ButtonBaseProps = ButtonBaseOwnProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const supportedButtonTypes = ['button', 'submit', 'reset'] as const;
 
@@ -76,7 +82,7 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
     ...other
   } = props;
 
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles(undefined, { props: { classes: props.classes } });
   const { ripples, start, end } = usePressRipple();
   const reduceMotion = useReduceMotion();
 

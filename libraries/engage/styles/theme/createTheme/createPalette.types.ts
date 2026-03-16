@@ -119,15 +119,11 @@ export const paletteSchema = {
   text: {
     primary: '',
     secondary: '',
-    tertiary: '',
-    contrastLight: '',
-    contrastDark: '',
   },
   grey,
   action: {
-    disabled: 'rgba(0, 0, 0, 0.26)',
-    disabledBackground: 'rgba(0, 0, 0, 0.12)',
-    disabledOpacity: 0.38,
+    disabled: '#808080',
+    disabledBackground: '#CCCCCC',
   },
 } as const;
 
@@ -157,16 +153,6 @@ interface PaletteDocs {
    * Color scheme for the successful completion of an action that the user triggered
    */
   success: AugmentedPaletteColor;
-  text: {
-    /**
-     * Text color to be used on a light background
-     */
-    contrastLight: string;
-    /**
-     * Text color to be used on a dark background
-     */
-    contrastDark: string;
-  };
   /**
    * Colors to be used for the background of various elements
    */

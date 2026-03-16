@@ -255,8 +255,6 @@ export const extendPalette = (options: ExtendPaletteOptions): PaletteOptions => 
         color: value,
         tonalOffset,
         contrastThreshold,
-        textContrastColorLight: palette?.text?.contrastLight,
-        textContrastColorDark: palette?.text?.contrastDark,
       });
       return acc;
     }, {}) as PaletteOptions;
