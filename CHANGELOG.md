@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.30.1](https://github.com/shopgate/pwa/compare/v7.30.0...v7.30.1) (2026-03-04)
+
+#### :rocket: Enhancement
+* [#1449](https://github.com/shopgate/pwa/pull/1449) Add Roboto as fallback font on Windows and Linux in iOS theme ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1450](https://github.com/shopgate/pwa/pull/1450) Fix CategoryList sorting when sort config is not set ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.30.0](https://github.com/shopgate/pwa/compare/v7.29.9...v7.30.0) (2026-02-09)
 
 #### :house: Internal
