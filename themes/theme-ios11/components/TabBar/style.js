@@ -14,10 +14,10 @@ css.global(':root', {
   '--tab-bar-floating-min-height': '59px',
 
   '--tab-bar-item-default-color': colors.shade11,
-  '--tab-bar-item-highlighted-color': `var(--color-secondary, ${colors.accent})`,
+  '--tab-bar-item-highlighted-color': 'var(--color-secondary)',
 
-  '--tab-bar-item-badge-color': `var(--color-secondary-contrast, ${colors.light})`,
-  '--tab-bar-item-badge-background': `var(--color-secondary, ${colors.accent})`,
+  '--tab-bar-item-badge-color': 'var(--color-secondary-contrast)',
+  '--tab-bar-item-badge-background': 'var(--color-secondary)',
   '--tab-bar-item-badge-border-radius': `${variables.gap.small}px`,
   '--tab-bar-item-badge-top': `-${variables.gap.small}px`,
   '--tab-bar-item-badge-left': 'calc(50% + 20px)',
