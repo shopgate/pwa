@@ -5,7 +5,7 @@ import CircularProgress from '../CircularProgress';
 import ButtonBase from '../ButtonBase';
 import type { ButtonBaseProps } from '../ButtonBase';
 
-interface ButtonOwnProps {
+export interface ButtonOwnProps {
   /**
    * The variant to use.
    * @default 'contained'

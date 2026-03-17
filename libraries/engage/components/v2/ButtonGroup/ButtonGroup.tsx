@@ -3,7 +3,7 @@ import capitalize from 'lodash/capitalize';
 import { makeStyles } from '@shopgate/engage/styles';
 import type { PaletteColorsWithMain } from '@shopgate/engage/styles';
 
-interface ButtonGroupOwnProps {
+export interface ButtonGroupOwnProps {
   /**
    * The variant to use.
    * @default 'contained'

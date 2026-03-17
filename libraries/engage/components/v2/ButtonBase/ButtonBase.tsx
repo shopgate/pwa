@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
 });
 
-interface ButtonBaseOwnProps {
+export interface ButtonBaseOwnProps {
   /**
    * If true, the button will be disabled and not respond to user interactions.
    * @default false
