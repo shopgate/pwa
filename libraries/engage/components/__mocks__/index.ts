@@ -1,5 +1,14 @@
+/* eslint-disable
+  jsdoc/require-jsdoc,
+  jsdoc/require-param,
+  jsdoc/require-description,
+  jsdoc/require-returns-description,
+  jsdoc/no-types,
+  @typescript-eslint/ban-ts-comment
+*/
+// @ts-nocheck We don't care about type checking in mocks
+
 import noop from 'lodash/noop';
-/* eslint-disable require-jsdoc */
 import UISharedSheet from '@shopgate/pwa-ui-shared/Sheet';
 import UISharedDiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 
@@ -130,4 +139,11 @@ export const I18n = {
 export { default as View, ViewContext } from '../View/__mocks__/index';
 export { default as ConnectedReactPortal } from '../ConnectedReactPortal/__mocks__/index';
 
-/* eslint-enable require-jsdoc */
+/* eslint-enable
+  jsdoc/require-jsdoc,
+  jsdoc/require-param,
+  jsdoc/require-description,
+  jsdoc/require-returns-description,
+  jsdoc/no-types,
+  @typescript-eslint/ban-ts-comment
+*/

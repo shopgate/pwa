@@ -15,10 +15,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       key="1"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -26,10 +23,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       key="2"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -37,10 +31,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       key="3"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -48,10 +39,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       key="4"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -59,10 +47,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       key="5"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>
@@ -87,10 +72,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       key="1"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -98,10 +80,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       key="2"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -109,10 +88,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       key="3"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -120,10 +96,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       key="4"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -131,10 +104,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       key="5"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>
@@ -146,10 +116,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       key="6"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -157,10 +124,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       key="7"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -168,10 +132,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       key="2"
     >
       <StarHalfIcon
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>
@@ -193,10 +154,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="1"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -204,10 +162,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="2"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -215,10 +170,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="3"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -226,10 +178,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="4"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -237,10 +186,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="5"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>
@@ -252,10 +198,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="6"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -263,10 +206,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="7"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -274,10 +214,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="8"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -285,10 +222,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="9"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -296,10 +230,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       key="10"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>
@@ -323,10 +254,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -337,10 +265,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -351,10 +276,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -365,10 +287,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -379,10 +298,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>
@@ -397,10 +313,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -411,10 +324,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -425,10 +335,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -439,10 +346,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -453,10 +357,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>
@@ -480,10 +381,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -494,10 +392,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -508,10 +403,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -522,10 +414,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -536,10 +425,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>
@@ -554,10 +440,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -568,10 +451,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -582,10 +462,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       role="button"
     >
       <Star
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
     <div
@@ -593,10 +470,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       key="3"
     >
       <StarHalfIcon
-        className=""
-        color={null}
         size="1em"
-        viewBox="0 0 24 24"
       />
     </div>
   </div>

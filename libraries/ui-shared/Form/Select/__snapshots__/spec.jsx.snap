@@ -77,13 +77,10 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       >
         <Icon
           className="css-1h5rpg9"
-          color={null}
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
-          size="inherit"
-          viewBox="0 0 24 24"
         >
           <svg
-            className="css-yys9hb css-1h5rpg9 common__icon"
+            className="css-1n8b10t-root common__icon css-1h5rpg9"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
@@ -91,7 +88,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
             }
             style={
               {
-                "fill": null,
+                "fill": undefined,
                 "fontSize": "inherit",
               }
             }
@@ -200,13 +197,10 @@ exports[`<Select /> should render select with 2 options 1`] = `
       >
         <Icon
           className="css-1h5rpg9"
-          color={null}
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
-          size="inherit"
-          viewBox="0 0 24 24"
         >
           <svg
-            className="css-yys9hb css-1h5rpg9 common__icon"
+            className="css-1n8b10t-root common__icon css-1h5rpg9"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
@@ -214,7 +208,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
             }
             style={
               {
-                "fill": null,
+                "fill": undefined,
                 "fontSize": "inherit",
               }
             }
@@ -303,13 +297,10 @@ exports[`<Select /> should render select with no options 1`] = `
       >
         <Icon
           className="css-1h5rpg9"
-          color={null}
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
-          size="inherit"
-          viewBox="0 0 24 24"
         >
           <svg
-            className="css-yys9hb css-1h5rpg9 common__icon"
+            className="css-1n8b10t-root common__icon css-1h5rpg9"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
@@ -317,7 +308,7 @@ exports[`<Select /> should render select with no options 1`] = `
             }
             style={
               {
-                "fill": null,
+                "fill": undefined,
                 "fontSize": "inherit",
               }
             }

@@ -80,20 +80,14 @@ exports[`<Header /> should render empty 1`] = `
                       key="1"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -101,7 +95,7 @@ exports[`<Header /> should render empty 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -116,20 +110,14 @@ exports[`<Header /> should render empty 1`] = `
                       key="2"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -137,7 +125,7 @@ exports[`<Header /> should render empty 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -152,20 +140,14 @@ exports[`<Header /> should render empty 1`] = `
                       key="3"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -173,7 +155,7 @@ exports[`<Header /> should render empty 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -188,20 +170,14 @@ exports[`<Header /> should render empty 1`] = `
                       key="4"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -209,7 +185,7 @@ exports[`<Header /> should render empty 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -224,20 +200,14 @@ exports[`<Header /> should render empty 1`] = `
                       key="5"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -245,7 +215,7 @@ exports[`<Header /> should render empty 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -472,20 +442,14 @@ exports[`<Header /> should render rating summary 1`] = `
                       key="1"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -493,7 +457,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -508,20 +472,14 @@ exports[`<Header /> should render rating summary 1`] = `
                       key="2"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -529,7 +487,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -544,20 +502,14 @@ exports[`<Header /> should render rating summary 1`] = `
                       key="3"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -565,7 +517,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -580,20 +532,14 @@ exports[`<Header /> should render rating summary 1`] = `
                       key="4"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -601,7 +547,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -616,20 +562,14 @@ exports[`<Header /> should render rating summary 1`] = `
                       key="5"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -637,7 +577,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -656,20 +596,14 @@ exports[`<Header /> should render rating summary 1`] = `
                       key="6"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -677,7 +611,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -692,20 +626,14 @@ exports[`<Header /> should render rating summary 1`] = `
                       key="7"
                     >
                       <Star
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -713,7 +641,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
@@ -728,20 +656,14 @@ exports[`<Header /> should render rating summary 1`] = `
                       key="2"
                     >
                       <StarHalfIcon
-                        className=""
-                        color={null}
                         size="2.3em"
-                        viewBox="0 0 24 24"
                       >
                         <Icon
-                          className=""
-                          color={null}
                           content="<defs><path id="a" d="M0 0h24v24H0z"/></defs> <clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath> <path clip-path="ul(#b)" d="M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3"/>"
                           size="2.3em"
-                          viewBox="0 0 24 24"
                         >
                           <svg
-                            className="css-yys9hb  common__icon"
+                            className="css-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<defs><path id="a" d="M0 0h24v24H0z"/></defs> <clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath> <path clip-path="ul(#b)" d="M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3"/>",
@@ -749,7 +671,7 @@ exports[`<Header /> should render rating summary 1`] = `
                             }
                             style={
                               {
-                                "fill": null,
+                                "fill": undefined,
                                 "fontSize": "2.3em",
                               }
                             }
