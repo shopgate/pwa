@@ -67,7 +67,6 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
 exports[`<ProductImage /> should apply an inner shadow to the placeholder if turned off via the widget settings 1`] = `
 <SurroundPortals
   portalName="component.product-image"
-  portalProps={null}
 >
   <div
     className="css-y5kkpq css-3hjqnz"
@@ -185,7 +184,6 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
 exports[`<ProductImage /> should not apply an inner shadow to the placeholder if turned off via the app config 1`] = `
 <SurroundPortals
   portalName="component.product-image"
-  portalProps={null}
 >
   <div
     className="css-y5kkpq"
@@ -206,7 +204,6 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
 exports[`<ProductImage /> should not apply an inner shadow to the placeholder if turned off via the widget settings 1`] = `
 <SurroundPortals
   portalName="component.product-image"
-  portalProps={null}
 >
   <div
     className="css-y5kkpq"
@@ -227,7 +224,6 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
 exports[`<ProductImage /> should render a placeholder if no src prop is provided 1`] = `
 <SurroundPortals
   portalName="component.product-image"
-  portalProps={null}
 >
   <div
     className="css-y5kkpq"

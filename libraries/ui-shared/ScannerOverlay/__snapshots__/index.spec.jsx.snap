@@ -7,7 +7,6 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
   <CameraOverlay>
     <SurroundPortals
       portalName="scanner.camera"
-      portalProps={null}
     >
       <Portal
         name="scanner.camera.before"

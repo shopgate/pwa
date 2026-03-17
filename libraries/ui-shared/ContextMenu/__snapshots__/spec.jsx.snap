@@ -33,14 +33,10 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
       >
         <Icon
           aria-hidden={true}
-          className=""
-          color={null}
           content="<path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>"
-          size="inherit"
-          viewBox="0 0 24 24"
         >
           <svg
-            className="css-yys9hb  common__icon"
+            className="css-1n8b10t-root common__icon"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>",
@@ -48,7 +44,7 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
             }
             style={
               {
-                "fill": null,
+                "fill": undefined,
                 "fontSize": "inherit",
               }
             }

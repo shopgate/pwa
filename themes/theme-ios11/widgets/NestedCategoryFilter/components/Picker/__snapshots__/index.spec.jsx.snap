@@ -176,14 +176,11 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                   size={24}
                                 >
                                   <Icon
-                                    className=""
-                                    color={null}
                                     content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                     size={24}
-                                    viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="css-yys9hb  common__icon"
+                                      className="css-1n8b10t-root common__icon"
                                       dangerouslySetInnerHTML={
                                         {
                                           "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
@@ -191,7 +188,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                       }
                                       style={
                                         {
-                                          "fill": null,
+                                          "fill": undefined,
                                           "fontSize": 24,
                                         }
                                       }
@@ -555,14 +552,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   size={24}
                                 >
                                   <Icon
-                                    className=""
-                                    color={null}
                                     content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                     size={24}
-                                    viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="css-yys9hb  common__icon"
+                                      className="css-1n8b10t-root common__icon"
                                       dangerouslySetInnerHTML={
                                         {
                                           "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
@@ -570,7 +564,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                       }
                                       style={
                                         {
-                                          "fill": null,
+                                          "fill": undefined,
                                           "fontSize": 24,
                                         }
                                       }
@@ -974,14 +968,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                   size={24}
                                 >
                                   <Icon
-                                    className=""
-                                    color={null}
                                     content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                     size={24}
-                                    viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="css-yys9hb  common__icon"
+                                      className="css-1n8b10t-root common__icon"
                                       dangerouslySetInnerHTML={
                                         {
                                           "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
@@ -989,7 +980,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                       }
                                       style={
                                         {
-                                          "fill": null,
+                                          "fill": undefined,
                                           "fontSize": 24,
                                         }
                                       }
@@ -1354,14 +1345,11 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                   size={24}
                                 >
                                   <Icon
-                                    className=""
-                                    color={null}
                                     content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                     size={24}
-                                    viewBox="0 0 24 24"
                                   >
                                     <svg
-                                      className="css-yys9hb  common__icon"
+                                      className="css-1n8b10t-root common__icon"
                                       dangerouslySetInnerHTML={
                                         {
                                           "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
@@ -1369,7 +1357,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                       }
                                       style={
                                         {
-                                          "fill": null,
+                                          "fill": undefined,
                                           "fontSize": 24,
                                         }
                                       }
