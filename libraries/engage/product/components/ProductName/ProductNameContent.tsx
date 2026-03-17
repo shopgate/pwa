@@ -26,6 +26,7 @@ const ProductNameContent = ({
       </Ellipsis>
     )}
   >
+    {/* eslint-disable-next-line react/no-danger */}
     <span dangerouslySetInnerHTML={{ __html: name || '' }} />
   </ConditionalWrapper>
 );

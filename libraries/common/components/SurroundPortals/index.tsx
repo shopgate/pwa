@@ -3,8 +3,15 @@ import Portal from '../Portal';
 import { AFTER, BEFORE } from '../../constants/Portals';
 
 export interface SurroundPortalsProps {
-  portalName: string | null;
-  portalProps?: Record<string, unknown> | null;
+  /**
+   * The name of the main portal.
+   * The additional portals will be named `${portalName}.before` and `${portalName}.after`.
+   */
+  portalName: string;
+  /**
+   * Optional props to be passed to all three portals.
+   */
+  portalProps?: Record<string, unknown>;
   children?: React.ReactNode;
 }
 
@@ -17,9 +24,9 @@ export interface SurroundPortalsProps {
  * @returns The SurroundPortals component.
  */
 const SurroundPortals = ({
-  portalName = null,
-  portalProps = null,
-  children = null,
+  portalName,
+  portalProps,
+  children,
 }: SurroundPortalsProps) => (
   <>
     <Portal name={`${portalName}.${BEFORE}`} props={portalProps} />

@@ -9,15 +9,15 @@ import {
 import ProductNameContent from './ProductNameContent';
 
 export interface ProductNameProps {
-  name?: string | null;
-  className?: string | null;
-  testId?: string | null;
+  name: string;
+  className?: string;
+  testId?: string;
   ellipsis?: boolean;
-  portalName?: string | null;
-  portalProps?: Record<string, unknown> | null;
-  itemProp?: string | null;
-  rows?: number | null;
-  style?: React.CSSProperties | null;
+  portalName?: string;
+  portalProps?: Record<string, unknown>;
+  itemProp?: string;
+  rows?: number;
+  style?: React.CSSProperties;
 }
 
 const styles = {
@@ -33,29 +33,29 @@ const styles = {
  * The ProductName component.
  */
 const ProductName = ({
-  name = null,
-  className = null,
-  testId = null,
-  ellipsis = true,
-  portalName = null,
-  portalProps = null,
-  itemProp = null,
-  rows = null,
-  style = null,
+  name,
+  className,
+  testId,
+  ellipsis,
+  portalName,
+  portalProps,
+  itemProp,
+  rows,
+  style,
 }: ProductNameProps) => (
   <ConditionalWrapper
     condition={!!portalName}
     wrapper={(children: React.ReactNode) => (
-      <SurroundPortals portalName={portalName} portalProps={portalProps ?? undefined}>
+      <SurroundPortals portalName={portalName ?? ''} portalProps={portalProps}>
         {children}
       </SurroundPortals>
     )}
   >
     <div
       className={classNames(styles.wrapper, className, 'engage__product__product-name')}
-      style={style ?? undefined}
-      itemProp={itemProp ?? undefined}
-      data-test-id={testId ?? undefined}
+      style={style}
+      itemProp={itemProp}
+      data-test-id={testId}
       aria-label={`${name}.`}
     >
       <ProductNameContent name={name} ellipsis={ellipsis} rows={rows} />
