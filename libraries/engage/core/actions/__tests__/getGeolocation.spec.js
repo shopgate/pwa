@@ -18,7 +18,9 @@ const mockedGeolocationRequestDispatch = jest.fn().mockResolvedValue(mockedPosit
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
 }));
-jest.mock('../grantGeolocationPermissions', () => jest.fn().mockResolvedValue(true));
+jest.mock('../grantGeolocationPermissions', () => jest.fn().mockResolvedValue({
+  success: true,
+}));
 jest.mock('../../classes/GeolocationRequest', () => class Foo {
   // eslint-disable-next-line require-jsdoc, extra-rules/potential-point-free
   constructor(...args) {
@@ -51,8 +53,8 @@ describe('engage > core > actions > getGeolocation', () => {
   it('should pass through the options to the grantGeolocationPermissions action call', async () => {
     const options = {
       useSettingsModal: true,
-      resolveWithData: false,
-      modal: {
+      resolveWithData: true,
+      settingsModal: {
         message: 'Modal message',
         confirm: 'Confirm label',
       },

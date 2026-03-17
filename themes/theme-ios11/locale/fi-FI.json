@@ -617,7 +617,16 @@
       "settings_button": "Avaa asetukset",
       "camera_message": "Tämä toiminto vaatii kameran käyttöoikeuden. Salli pääsy asetuksissa.",
       "push_message": "Olet poistanut push-ilmoitukset käytöstä tämän sovelluksen osalta. Ota ne käyttöön laitteesi asetuksissa.",
-      "geolocation_message": "Tarvitsemme pääsyn sijaintiin, jotta voimme näyttää lähellä olevat kaupat."
+      "geolocation_message": "Tarvitsemme pääsyn sijaintiin, jotta voimme näyttää lähellä olevat kaupat.",
+      "geolocationMessageBackground": "Tämä toiminto edellyttää, että sovelluksella on pääsy sijaintiisi, vaikka sovellus on suljettuna. Muuta oikeus asetuksissa \"Aina\".",
+      "trackingMessage": "Tämä toiminto edellyttää sovelluksen seurantaa. Salli pääsy asetuksissa."
+    },
+    "accessGranted": {
+      "cameraMessage": "Kameran käyttöoikeudet on jo myönnetty.",
+      "pushMessage": "Push-ilmoitusoikeudet on jo myönnetty.",
+      "locationMessage": "Sijaintioikeudet on jo myönnetty.",
+      "backgroundLocationMessage": "Taustasijaintioikeudet on jo myönnetty.",
+      "trackingMessage": "Seuranta-oikeudet on jo myönnetty."
     }
   },
   "checkout": {

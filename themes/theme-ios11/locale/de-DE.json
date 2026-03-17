@@ -617,7 +617,16 @@
       "settings_button": "Einstellungen öffnen",
       "camera_message": "Diese Funktion benötigt Zugriff auf die Kamera. Bitte erlauben Sie den Zugriff in den Einstellungen.",
       "push_message": "Sie haben Push-Benachrichtigungen für diese App deaktiviert. Bitte gehen Sie in die Einstellungen Ihres Gerätes, um sie zu aktivieren.",
-      "geolocation_message": "Wir benötigen Zugriff auf den Standort, um Filialen in der Nähe zu zeigen."
+      "geolocation_message": "Wir benötigen Zugriff auf den Standort, um Filialen in der Nähe zu zeigen.",
+      "geolocationMessageBackground": "Für diese Funktion benötigt die App Zugriff auf Ihren Standort, auch wenn die App geschlossen ist. Bitte ändern Sie die Berechtigung in den Einstellungen auf \"Immer\".",
+      "trackingMessage": "Diese Funktion benötigt App-Tracking. Bitte erlauben Sie den Zugriff in den Einstellungen."
+    },
+    "accessGranted": {
+      "cameraMessage": "Kamerazugriff ist bereits aktiviert.",
+      "pushMessage": "Push-Benachrichtigungen sind bereits aktiviert.",
+      "locationMessage": "Standortzugriff ist bereits aktiviert.",
+      "backgroundLocationMessage": "Hintergrund-Standortzugriff ist bereits aktiviert.",
+      "trackingMessage": "Tracking ist bereits aktiviert."
     }
   },
   "checkout": {
