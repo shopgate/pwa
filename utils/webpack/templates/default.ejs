@@ -10,6 +10,7 @@
   <title>
     <%= htmlWebpackPlugin.options.title %>
   </title>
+  <meta name="emotion-insertion-point" content="" />
   <% if (htmlWebpackPlugin.files && htmlWebpackPlugin.files.css) { %>
     <% htmlWebpackPlugin.files.css.forEach(function(css) { %>
       <link rel="stylesheet" href="<%= css %>">

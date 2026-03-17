@@ -28,6 +28,7 @@
     "workbox-webpack-plugin": "6.5.4"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.24",
     "rxjs": "~5.5.12",
     "webpack-dev-server": "4.15.2"
   }
