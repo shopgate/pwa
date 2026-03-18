@@ -107,9 +107,6 @@ export const styles = theme => ({
   colorTextSecondary: {
     color: theme.palette.text.secondary,
   },
-  colorTextTertiary: {
-    color: theme.palette.text.tertiary,
-  },
   /* Styles applied to the root element if `color="error"`. */
   colorError: {
     color: theme.palette.error.main,
@@ -204,7 +201,6 @@ Typography.propTypes = {
     'secondary',
     'textPrimary',
     'textSecondary',
-    'textTertiary',
     'error',
     'warning',
     'success',

@@ -108,51 +108,26 @@ const grey = {
  * theme palette.
  */
 export const paletteSchema = {
-  primary: { main: '' },
-  secondary: { main: '' },
-  error: { main: '' },
-  warning: { main: '' },
-  success: { main: '' },
-  background: {
-    default: '',
-  },
-  text: {
-    primary: '',
-    secondary: '',
-  },
-  grey,
-  action: {
-    disabled: '#808080',
-    disabledBackground: '#CCCCCC',
-  },
-} as const;
-
-/**
- * Interface to extend the palette type with documentation comments.
- *
- * When a documentation of a specific palette color seems to be useful, it can be added here.
- */
-interface PaletteDocs {
   /**
    * Color scheme for primary interface elements
    */
-  primary: AugmentedPaletteColor;
+  primary: { main: '' },
   /**
    * Color scheme for secondary interface elements
    */
-  secondary: AugmentedPaletteColor;
+  secondary: { main: '' },
   /**
    * Color scheme for elements that the user should be made aware of
    */
-  error: AugmentedPaletteColor;
+  error: { main: '' },
   /**
    * Color scheme for potentially dangerous actions or important messages
    */
-  warning: AugmentedPaletteColor;
+  warning: { main: '' },
   /**
    * Color scheme for the successful completion of an action that the user triggered
    */
-  success: AugmentedPaletteColor;
+  success: { main: '' },
   /**
    * Colors to be used for the background of various elements
    */
@@ -160,14 +135,22 @@ interface PaletteDocs {
     /**
      * The color used for the background of the application
      */
-    default: string;
-  };
+    default: '',
+  },
+  text: {
+    primary: '',
+    secondary: '',
+  },
   /**
    * Palette with grey colors, intended for backgrounds, borders, and dividers.
    * The numbers represent the lightness of the color,
    */
-  grey: ColorPartial;
-}
+  grey,
+  action: {
+    disabled: '#808080',
+    disabledBackground: '#CCCCCC',
+  },
+} as const;
 
 /**
  * Additional settings for the palette
@@ -187,9 +170,7 @@ interface PaletteOptionsExtensions {
 
 // The palette options type represents the palette input that can be provided to createTheme
 export type PaletteOptions = PaletteInputFromSchema<typeof paletteSchema>
-  & PaletteDocs
   & PaletteOptionsExtensions;
 
 // The final palette type represents the palette after theme creation
 export type Palette = PaletteFromSchema<typeof paletteSchema>
-  & PaletteDocs;
