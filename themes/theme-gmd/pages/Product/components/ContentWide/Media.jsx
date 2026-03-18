@@ -9,8 +9,7 @@ import {
   ProductListTypeProvider,
   ProductListEntryProvider,
 } from '@shopgate/engage/product';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
-import { css } from 'glamor';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import connect from './Media.connector';
 
 const {
@@ -18,59 +17,59 @@ const {
   GalleryImage: galleryResolutions,
 } = getProductImageSettings();
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     paddingRight: 32,
     width: '100%',
-  }).toString(),
-  image: css({
+  },
+  image: {
     cursor: 'pointer',
-  }).toString(),
-  gallery: css({
+  },
+  gallery: {
     display: 'flex',
     paddingTop: 16,
     width: 'calc(100% + 16px)',
     margin: -8,
     flexWrap: 'wrap',
-  }).toString(),
-  item: css({
+  },
+  item: {
     cursor: 'pointer',
     margin: 8,
     width: 'calc(33.3% - 16px)',
     [responsiveMediaQuery('<=md')]: {
       width: 'calc(50% - 16px)',
     },
-  }).toString(),
-  modalContainer: css({
+  },
+  modalContainer: {
     display: 'flex',
     width: '100vw',
     height: '100vh',
     justifyContent: 'center',
     alignItems: 'center',
-  }).toString(),
-  modal: css({
+  },
+  modal: {
     minWidth: 400,
     maxWidth: 600,
     width: '50%',
-  }).toString(),
-  modalGallery: css({
+  },
+  modalGallery: {
     display: 'flex',
     flexDirection: 'row',
     margin: '16px -7px -7px -7px',
     flexWrap: 'wrap',
-  }).toString(),
-  modalPreview: css({
+  },
+  modalPreview: {
     cursor: 'pointer',
     width: 'calc(12.5% - 14px)',
     [responsiveMediaQuery('<=sm')]: {
       width: 'calc(20% - 14px)',
     },
     margin: 7,
-  }).toString(),
-  modalPreviewActive: css({
+  },
+  modalPreviewActive: {
     border: '2px solid var(--color-primary)',
-  }).toString(),
-  leftArrow: css({
+  },
+  leftArrow: {
     zIndex: 10,
     width: 50,
     height: 50,
@@ -83,8 +82,8 @@ const styles = {
     color: '#fff',
     fontSize: 28,
     cursor: 'pointer',
-  }).toString(),
-  rightArrow: css({
+  },
+  rightArrow: {
     zIndex: 10,
     width: 50,
     height: 50,
@@ -98,8 +97,8 @@ const styles = {
     fontSize: 28,
     transform: 'scaleX(-1)',
     cursor: 'pointer',
-  }).toString(),
-};
+  },
+});
 
 /**
  * Media
@@ -112,6 +111,7 @@ const Media = ({
   productId,
   variantId,
 }) => {
+  const { classes } = useStyles();
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -146,7 +146,7 @@ const Media = ({
   /* eslint-disable jsx-a11y/click-events-have-key-events */
   /* eslint-disable jsx-a11y/no-static-element-interactions */
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       {galleryOpen ? (
         <Modal>
           <ProductListTypeProvider type="productGallery">
@@ -157,28 +157,28 @@ const Media = ({
                 opacity={80}
                 onClick={() => setGalleryOpen(false)}
               />
-              <div className={styles.modalContainer}>
+              <div className={classes.modalContainer}>
                 <Ripple
                   onClick={() => handleNextPrev(-1)}
                   color="#fff"
-                  className={styles.leftArrow}
+                  className={classes.leftArrow}
                 >
                   <ArrowIcon />
                 </Ripple>
-                <div className={styles.modal}>
-                  <div className={styles.modalActive}>
+                <div className={classes.modal}>
+                  <div className={classes.modalActive}>
                     <ProductImage
                       onClick={() => handleOpenGallery(0)}
                       src={images[imageIndex]}
                       resolutions={galleryResolutions}
                     />
                   </div>
-                  <div className={styles.modalGallery}>
+                  <div className={classes.modalGallery}>
                     {images.map((image, index) => (
                       <div
                         key={image}
                         onClick={() => handleOpenGallery(index)}
-                        className={`${styles.modalPreview} ${index === imageIndex && styles.modalPreviewActive}`}
+                        className={`${classes.modalPreview} ${index === imageIndex && classes.modalPreviewActive}`}
                       >
                         <ProductImage
                           src={image}
@@ -191,7 +191,7 @@ const Media = ({
                 <Ripple
                   onClick={() => handleNextPrev(1)}
                   color="#fff"
-                  className={styles.rightArrow}
+                  className={classes.rightArrow}
                 >
                   <ArrowIcon />
                 </Ripple>
@@ -204,18 +204,18 @@ const Media = ({
         <ProductListEntryProvider productId={variantId || productId}>
           <div onClick={() => handleOpenGallery(0)}>
             <ProductImage
-              className={styles.image}
+              className={classes.image}
               src={featuredImage}
               resolutions={pdpResolutions}
             />
           </div>
-          <div className={styles.gallery}>
+          <div className={classes.gallery}>
             {images.length > 1
               ? (images.slice(1).map((image, index) => (
                 <div
                   key={image}
                   onClick={() => handleOpenGallery(index + 1)}
-                  className={styles.item}
+                  className={classes.item}
                 >
                   <ProductImage
                     src={image}

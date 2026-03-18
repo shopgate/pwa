@@ -1,48 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { css } from 'glamor';
 import { errorBehavior } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { variables } = themeConfig;
 
-const styles = {
-  wrapper: css({
+const useStyles = makeStyles()({
+  wrapper: {
     paddingTop: variables.gap.xsmall,
-  }).toString(),
-  message: css({
+  },
+  message: {
     fontSize: ' 0.75rem',
-  }).toString(),
-  error: css({
+  },
+  error: {
     color: 'var(--color-state-alert)',
-  }).toString(),
-  warning: css({
+  },
+  warning: {
     color: 'var(--color-state-warning)',
-  }).toString(),
-  info: css({
+  },
+  info: {
     color: 'var(--color-state-ok)',
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props The component props
  * @returns {JSX}
  */
 const CheckoutSectionMessages = ({ messages }) => {
+  const { classes } = useStyles();
+
   if (!Array.isArray(messages) || messages.length === 0) {
     return null;
   }
 
   return (
-    <ul className={styles.wrapper}>
+    <ul className={classes.wrapper}>
       {messages.map(({ message, additionalParams, type }) => (
         <li
           key={message}
-          className={classNames(styles.message, {
-            [styles.error]: type === 'error',
-            [styles.warning]: type === 'warning',
-            [styles.info]: type === 'info',
+          className={classNames(classes.message, {
+            [classes.error]: type === 'error',
+            [classes.warning]: type === 'warning',
+            [classes.info]: type === 'info',
           })}
         >
           {errorBehavior.getErrorMessage(message, additionalParams)}

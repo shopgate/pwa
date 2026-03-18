@@ -1,9 +1,9 @@
 import React, { Fragment, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/engage';
 import { Link } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useProfileContext } from '../../../account/components/Profile/Profile.provider';
 import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
@@ -17,26 +17,26 @@ import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
 const { variables } = themeConfig;
 
-export const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
-  }).toString(),
-  card: css({
+  },
+  card: {
     display: 'flex',
     flexDirection: 'column',
     fontSize: 15,
     margin: '8px 0',
-  }).toString(),
-  link: css({
+  },
+  link: {
     fontSize: '0.875rem',
     color: 'var(--color-primary)',
     textTransform: 'uppercase',
     textAlign: 'center',
-  }).toString(),
-};
+  },
+});
 
 /**
  * CheckoutAddress
@@ -44,6 +44,7 @@ export const styles = {
  * @returns {JSX}
  */
 const CheckoutAddress = ({ type }) => {
+  const { classes } = useStyles();
   const {
     billingAddress,
     shippingAddress,
@@ -105,9 +106,9 @@ const CheckoutAddress = ({ type }) => {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <Section
-        className={styles.card}
+        className={classes.card}
         title={headline}
         editLink={editLink}
         editLabel={editLabel}
@@ -150,7 +151,7 @@ const CheckoutAddress = ({ type }) => {
               ) : null}
           </>
         ) : (
-          <Link href={selectAddressLink} className={styles.link}>
+          <Link href={selectAddressLink} className={classes.link}>
             {i18n.text(`checkout.${type}.select_address`)}
           </Link>)}
       </Section>

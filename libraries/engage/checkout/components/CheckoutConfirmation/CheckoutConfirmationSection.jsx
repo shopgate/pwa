@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react';
-import { css } from 'glamor';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Card, TextLink } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 
 const { colors, variables } = themeConfig;
-const styles = {
-  wrapper: css({
+const useStyles = makeStyles()({
+  wrapper: {
     padding: `${variables.gap.bigger}px ${variables.gap.big}px 0 ${variables.gap.big}px`,
-  }).toString(),
-  headline: css({
+  },
+  headline: {
     color: colors.shade3,
     fontSize: '1rem',
     fontWeight: 'normal',
@@ -26,11 +26,11 @@ const styles = {
       color: 'var(--color-text-high-emphasis)',
       textTransform: 'none',
     } : {}),
-  }),
-  link: css({
+  },
+  link: {
     color: 'var(--color-primary) !important',
-  }).toString(),
-  card: css({
+  },
+  card: {
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
     margin: 0,
@@ -41,18 +41,18 @@ const styles = {
       background: 'var(--color-background-accent)',
       boxShadow: 'none',
     } : {}),
-  }).toString(),
-  cardWithForm: css({
+  },
+  cardWithForm: {
     ...(!isIOSTheme() ? {
       background: 'inherit',
       boxShadow: 'none',
       padding: 0,
     } : {}),
-  }).toString(),
-  list: css({
+  },
+  list: {
     margin: 0,
-  }),
-  listTitle: css({
+  },
+  listTitle: {
     fontSize: '0.625rem',
     lineHeight: '1rem',
     fontWeight: 'bold',
@@ -62,16 +62,16 @@ const styles = {
     ':not(:first-child)': {
       paddingTop: variables.gap.xsmall * 3,
     },
-  }),
-  listEntry: css({
+  },
+  listEntry: {
     fontSize: '0.875rem',
     lineHeight: '1.5rem',
     marginLeft: 0,
     whiteSpace: 'pre-line',
     wordBreak: 'break-all',
     color: 'var(--color-text-medium-emphasis)',
-  }),
-  table: css({
+  },
+  table: {
     color: 'var(--color-text-high-emphasis)',
     ' td': {
       padding: `${variables.gap.xsmall}px 0`,
@@ -90,8 +90,8 @@ const styles = {
       borderTop: '1px solid #979797',
       fontWeight: 'bold',
     },
-  }),
-};
+  },
+});
 
 /**
  * CheckoutConfirmationSegment component
@@ -100,6 +100,8 @@ const styles = {
 const CheckoutConfirmationSegment = ({
   title, content, children, hasForm, isSummary, className,
 }) => {
+  const { classes } = useStyles();
+
   if (!content) {
     return null;
   }
@@ -107,28 +109,28 @@ const CheckoutConfirmationSegment = ({
   const isString = typeof content === 'string';
 
   return (
-    <div className={classNames(styles.wrapper, className)}>
-      <h3 className={styles.headline}>{i18n.text(title)}</h3>
-      <Card className={classNames(styles.card, {
-        [styles.cardWithForm]: hasForm,
+    <div className={classNames(classes.wrapper, className)}>
+      <h3 className={classes.headline}>{i18n.text(title)}</h3>
+      <Card className={classNames(classes.card, {
+        [classes.cardWithForm]: hasForm,
       })}
       >
         {isString && (<span>{content}</span>)}
         {!isString && !isSummary && (
-          <dl className={styles.list}>
+          <dl className={classes.list}>
             {content.map(({ label, text, link }) => (
               <Fragment key={label || text}>
                 { label && (
-                  <dt className={styles.listTitle}>{i18n.text(label)}</dt>
+                  <dt className={classes.listTitle}>{i18n.text(label)}</dt>
                 )}
                 { link ? (
-                  <dd className={styles.listEntry}>
-                    <TextLink href={link} className={styles.link}>
+                  <dd className={classes.listEntry}>
+                    <TextLink href={link} className={classes.link}>
                       <span dangerouslySetInnerHTML={{ __html: text }} />
                     </TextLink>
                   </dd>
                 ) : (
-                  <dd className={styles.listEntry} dangerouslySetInnerHTML={{ __html: text }} />
+                  <dd className={classes.listEntry} dangerouslySetInnerHTML={{ __html: text }} />
                 )}
               </Fragment>
             ))}
@@ -136,7 +138,7 @@ const CheckoutConfirmationSegment = ({
         )}
         {children}
         {isSummary && (
-        <table className={styles.table}>
+        <table className={classes.table}>
           <tbody>
             {content.map(({ label, text }) => (
               <tr key={label || text}>

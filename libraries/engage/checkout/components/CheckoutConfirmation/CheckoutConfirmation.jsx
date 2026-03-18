@@ -1,8 +1,7 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { ResponsiveContainer, RippleButton } from '@shopgate/engage/components';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartItems } from '@shopgate/engage/cart';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from '@shopgate/engage/core';
@@ -20,89 +19,85 @@ import connect from './CheckoutConfirmation.connector';
 
 const { variables } = themeConfig;
 
-const style = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     flexDirection: 'row',
-  }),
-  main: css({
+  },
+  main: {
     flex: 1,
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       paddingRight: 16,
     },
-  }),
-  side: css({
+  },
+  side: {
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       marginTop: 134,
       marginLeft: variables.gap.big * -1,
       flex: 0.45,
     },
-  }),
-  cartItems: css({
+  },
+  cartItems: {
     marginBottom: 32,
-  }),
-  container: css({
+  },
+  container: {
     padding: `${variables.gap.big}px ${variables.gap.small * 1.5}px 0 ${variables.gap.xbig}px`,
     [responsiveMediaQuery('<sm')]: {
       paddingLeft: variables.gap.big,
     },
-  }),
-  backButtonContainer: css({
+  },
+  backButtonContainer: {
     paddingLeft: variables.gap.big,
     display: 'none',
     [responsiveMediaQuery('>=sm', { webOnly: true })]: {
       display: 'block',
     },
-  }),
-  heading: css({
+  },
+  heading: {
     fontSize: '2.125rem',
     fontWeight: 'normal',
     margin: 0,
     lineHeight: '2.25rem',
     paddingBottom: variables.gap.xbig,
-  }),
-  yourItemsHeading: css({
-    fontSize: '1.25rem',
-    fontWeight: 'bold',
-    margin: `${variables.gap.bigger}px 0 0`,
-  }),
-  instructions: css({
+  },
+  instructions: {
     marginBottom: variables.gap.xbig,
-  }),
-  body: css({
+  },
+  body: {
     border: 0,
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
-  }),
-  orderNum: css({
+  },
+  orderNum: {
     padding: 0,
     fontSize: '1.25rem',
     fontWeight: 500,
     lineHeight: '1.5rem',
     margin: `0 0 ${variables.gap.big}px`,
     border: 0,
-  }),
-  button: css({
+  },
+  button: {
     flex: '0 0 auto !important',
     borderRadius: '2px !important',
     minWidth: '50% !important',
     [responsiveMediaQuery('<md')]: {
       width: '100%',
     },
-  }),
-  buttonWrapper: css({
+  },
+  buttonWrapper: {
     padding: variables.gap.big,
-  }),
-  supplementalWrapper: css({
+  },
+  supplementalWrapper: {
     padding: `${variables.gap.xbig}px ${variables.gap.big}px`,
-  }).toString(),
-};
+  },
+});
 
 /**
  * CheckoutConfirmation component
  * @returns {JSX}
  */
 const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckoutOrder }) => {
+  const { classes } = useStyles();
   const { state: { order }, query } = useRoute();
   const [orderData, setOrderData] = useState(null);
 
@@ -146,33 +141,33 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
   }
 
   return (
-    <div className={style.root}>
-      <div className={style.main}>
-        <div className={style.backButtonContainer}>
+    <div className={classes.root}>
+      <div className={classes.main}>
+        <div className={classes.backButtonContainer}>
           <ResponsiveBackButton label="checkout.success.continue" onClick={onContinueShopping} />
         </div>
-        <div className={style.container}>
-          <h2 className={style.heading}>
+        <div className={classes.container}>
+          <h2 className={classes.heading}>
             {i18n.text('checkout.success.title')}
           </h2>
-          <p className={style.orderNum}>
+          <p className={classes.orderNum}>
             {i18n.text('checkout.success.order_date', { date: i18n.date(new Date(date).getTime(), 'short') })}
             {' | '}
             {i18n.text('checkout.success.order_number', { orderNumber })}
           </p>
 
-          <div className={style.instructions}>
-            <p className={style.body}>
+          <div className={classes.instructions}>
+            <p className={classes.body}>
               {i18n.text('checkout.success.instructions_1')}
             </p>
-            <p className={style.body}>
+            <p className={classes.body}>
               {i18n.text('checkout.success.instructions_2')}
             </p>
           </div>
 
         </div>
 
-        <div className={style.cartItems}>
+        <div className={classes.cartItems}>
           <CartItems
             cartItems={cartItems}
             onFocus={() => { }}
@@ -194,13 +189,13 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
             <CheckoutConfirmationBilledTo order={orderData} />
           ) }
           <CheckoutConfirmationOrderSummary order={orderData} />
-          <SupplementalContent className={style.supplementalWrapper} />
+          <SupplementalContent className={classes.supplementalWrapper} />
         </ResponsiveContainer>
-        <div className={style.buttonWrapper}>
+        <div className={classes.buttonWrapper}>
           <RippleButton
             type="secondary"
             disabled={false}
-            className={style.button.toString()}
+            className={classes.button}
             onClick={onContinueShopping}
           >
             {i18n.text('checkout.success.continue')}
@@ -208,7 +203,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
         </div>
 
       </div>
-      <div className={style.side}>
+      <div className={classes.side}>
         <ResponsiveContainer breakpoint=">=md" webOnly>
           <CheckoutConfirmationPickUpContact order={orderData} />
           <CheckoutConfirmationPickupNotes order={orderData} />
@@ -219,7 +214,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
             <CheckoutConfirmationBilledTo order={orderData} />
           ) }
           <CheckoutConfirmationOrderSummary order={orderData} />
-          <SupplementalContent className={style.supplementalWrapper} />
+          <SupplementalContent className={classes.supplementalWrapper} />
         </ResponsiveContainer>
       </div>
     </div>

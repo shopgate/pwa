@@ -1,40 +1,40 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import classNames from 'classnames';
 import { i18n } from '@shopgate/engage/core';
 import { Image } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '@shopgate/engage/checkout/hooks/common';
 import ShippingMethodIcon from '@shopgate/pwa-ui-shared/icons/ShippingMethodIcon';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     alignItems: 'center',
     fontSize: 15,
-  }).toString(),
-  rootDisabled: css({
+  },
+  rootDisabled: {
     opacity: 0.5,
-  }).toString(),
-  imageContainer: css({
+  },
+  imageContainer: {
     width: 32,
     heigh: 32,
     marginRight: 8,
     flexShrink: 0,
-  }).toString(),
-  image: css({
+  },
+  image: {
     width: '100%',
     height: '100%',
-  }).toString(),
-  label: css({
+  },
+  label: {
     display: 'flex',
     width: '100%',
     justifyContent: 'space-between',
-  }).toString(),
-  name: css({
+  },
+  name: {
     marginRight: 8,
-  }).toString(),
-};
+  },
+});
 
 /**
  * The shipping methods component.
@@ -42,23 +42,24 @@ const styles = {
  * @returns {JSX}
  */
 const ShippingMethod = ({ shippingMethod }) => {
+  const { classes } = useStyles();
   const { currencyCode } = useCheckoutContext();
   const { serviceLevel } = shippingMethod;
   const [useImage, setUseImage] = useState(!!serviceLevel?.iconUrl);
 
   return (
-    <div className={classNames(styles.root)}>
-      <div className={styles.imageContainer}>
+    <div className={classNames(classes.root)}>
+      <div className={classes.imageContainer}>
         { useImage ? (
           <Image
-            className={styles.image}
+            className={classes.image}
             src={serviceLevel?.iconUrl}
             onError={() => setUseImage(false)}
           />
-        ) : <ShippingMethodIcon className={styles.image} />}
+        ) : <ShippingMethodIcon className={classes.image} />}
       </div>
-      <div className={styles.label}>
-        <span className={styles.name}>
+      <div className={classes.label}>
+        <span className={classes.name}>
           {serviceLevel?.name}
         </span>
         <span>

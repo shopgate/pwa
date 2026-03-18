@@ -1,8 +1,8 @@
 import React from 'react';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder, SurroundPortals } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
+import { makeStyles } from '@shopgate/engage/styles';
 import generateFormConfig from './CheckoutPickupContactForm.config';
 import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
@@ -10,24 +10,15 @@ import { CHECKOUT_PICKUP_CONTACT_FORM } from '../../constants';
 
 const { variables } = themeConfig;
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: 16,
     paddingTop: 0,
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',
-  }).toString(),
-  h1: css({
-    fontSize: 24,
-    marginBottom: 4,
-    color: 'var(--color-text-high-emphasis)',
-  }).toString(),
-  h2: css({
-    fontSize: 16,
-
-  }).toString(),
-  form: css({
+  },
+  form: {
     ' .pickupFormPickupPerson': {
       marginTop: variables.gap.small,
     },
@@ -46,14 +37,15 @@ const styles = {
       },
     },
     ...StylePresets.OUTLINED_FORM_FIELDS,
-  }).toString(),
-};
+  },
+});
 
 /**
  * PickupContactForm
  * @returns {JSX}
  */
 const PickupContactForm = () => {
+  const { classes } = useStyles();
   const {
     supportedCountries,
     countrySortOrder,
@@ -83,10 +75,10 @@ const PickupContactForm = () => {
 
   return (
     <SurroundPortals portalName={CHECKOUT_PICKUP_CONTACT_FORM}>
-      <div className={styles.root}>
+      <div className={classes.root}>
         <Section title="checkout.pickup_contact.headline" hasForm>
           <FormBuilder
-            className={styles.form}
+            className={classes.form}
             name="PickupForm"
             config={formConfig}
             defaults={defaultPickupPersonState}

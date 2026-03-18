@@ -1,7 +1,6 @@
 import React from 'react';
-import { css } from 'glamor';
 import { ResponsiveContainer } from '@shopgate/engage/components';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Header from '../Checkout/CheckoutHeader';
 import { GUEST_CHECKOUT_PAYMENT_PATTERN } from '../../constants/routes';
 import CheckoutProvider from '../../providers/CheckoutProvider';
@@ -15,60 +14,64 @@ import PickupNotes from './GuestCheckoutPickupNotes';
 import GuestCheckoutOptIn from './GuestCheckoutOptIn';
 import { ShippingMethods } from '../ShippingMethods';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     flexDirection: 'row',
-  }),
-  main: css({
+  },
+  main: {
     flex: 1,
     paddingTop: 16,
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       paddingRight: 16,
       paddingTop: 0,
     },
-  }),
-  side: css({
+  },
+  side: {
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       flex: 0.6,
     },
-  }),
-};
+  },
+});
 
 /**
  * The Cart component.
  * @returns {JSX}
  */
-const GuestCheckout = () => (
-  <CheckoutProvider
-    pathPattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
-    orderInitialized
-    orderReadOnly
-    isGuestCheckout
-  >
-    <Header stepFrom={2} stepTo={2} />
-    <div className={styles.root}>
-      <div className={styles.main}>
-        <Pickup />
-        <PickupNotes />
-        <Address type={ADDRESS_TYPE_BILLING} />
-        <Address type={ADDRESS_TYPE_SHIPPING} />
-        <GuestCheckoutOptIn />
-        <ShippingMethods />
-        <PaymentProvider />
-        <ResponsiveContainer breakpoint="<md" appAlways>
-          <Summary />
-        </ResponsiveContainer>
-        <Actions />
+const GuestCheckout = () => {
+  const { classes } = useStyles();
+
+  return (
+    <CheckoutProvider
+      pathPattern={GUEST_CHECKOUT_PAYMENT_PATTERN}
+      orderInitialized
+      orderReadOnly
+      isGuestCheckout
+    >
+      <Header stepFrom={2} stepTo={2} />
+      <div className={classes.root}>
+        <div className={classes.main}>
+          <Pickup />
+          <PickupNotes />
+          <Address type={ADDRESS_TYPE_BILLING} />
+          <Address type={ADDRESS_TYPE_SHIPPING} />
+          <GuestCheckoutOptIn />
+          <ShippingMethods />
+          <PaymentProvider />
+          <ResponsiveContainer breakpoint="<md" appAlways>
+            <Summary />
+          </ResponsiveContainer>
+          <Actions />
+        </div>
+        <div className={classes.side}>
+          <ResponsiveContainer breakpoint=">=md" webOnly>
+            <Summary />
+          </ResponsiveContainer>
+        </div>
       </div>
-      <div className={styles.side}>
-        <ResponsiveContainer breakpoint=">=md" webOnly>
-          <Summary />
-        </ResponsiveContainer>
-      </div>
-    </div>
-  </CheckoutProvider>
-);
+    </CheckoutProvider>
+  );
+};
 
 export default GuestCheckout;
 

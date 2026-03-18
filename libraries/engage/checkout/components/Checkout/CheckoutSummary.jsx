@@ -1,38 +1,39 @@
 import React, { useMemo } from 'react';
-import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import TimeIcon from '@shopgate/pwa-ui-shared/icons/TimeIcon';
 import moment from 'moment';
 import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: 16,
     paddingTop: 0,
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
-  }).toString(),
-  card: css({
+  },
+  card: {
     marginTop: 8,
-  }).toString(),
-  time: css({
+  },
+  time: {
     marginBottom: 4,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-  }).toString(),
-  timeText: css({
+  },
+  timeText: {
     marginLeft: 8,
-  }),
-};
+  },
+});
 
 /**
  * Billing
  * @returns {JSX}
  */
 const Billing = () => {
+  const { classes } = useStyles();
   const { taxLines, fulfillmentSlot } = useCheckoutContext();
 
   const content = useMemo(() => taxLines
@@ -57,12 +58,12 @@ const Billing = () => {
     }), [taxLines]);
 
   return (
-    <div className={styles.root}>
-      <Section className={styles.card} title="checkout.summary.headline" content={content}>
+    <div className={classes.root}>
+      <Section className={classes.card} title="checkout.summary.headline" content={content}>
         {fulfillmentSlot ? (
-          <div className={styles.time}>
+          <div className={classes.time}>
             <TimeIcon size={20} />
-            <span className={styles.timeText}>
+            <span className={classes.timeText}>
               {moment(fulfillmentSlot?.date, 'YYYY-MM-DD').format('ll')}
               {' '}
               {moment(fulfillmentSlot?.from, 'HH:mm').format('LT')}

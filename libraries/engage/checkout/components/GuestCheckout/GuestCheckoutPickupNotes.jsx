@@ -1,32 +1,33 @@
 import React, { useMemo, useCallback } from 'react';
-import { css } from 'glamor';
 import { FormBuilder } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
+import { makeStyles } from '@shopgate/engage/styles';
 import generateFormConfig from './GuestCheckoutPickupNotes.config';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: '16px 16px 0',
     paddingTop: 0,
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',
-  }).toString(),
-  form: css({
+  },
+  form: {
     ' .textField': {
       marginBottom: '16px !important',
     },
     ...StylePresets.OUTLINED_FORM_FIELDS,
-  }).toString(),
-};
+  },
+});
 
 /**
  * GuestCheckoutPickupNotes
  * @returns {JSX}
  */
 const GuestCheckoutPickupNotes = () => {
+  const { classes } = useStyles();
   const {
     defaultPickupPersonState,
     formValidationErrors,
@@ -48,10 +49,10 @@ const GuestCheckoutPickupNotes = () => {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <Section title="" hasForm>
         <FormBuilder
-          className={styles.form}
+          className={classes.form}
           name="PickupNotesForm"
           config={formConfig}
           defaults={defaultPickupPersonState}

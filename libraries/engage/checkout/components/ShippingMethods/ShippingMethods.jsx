@@ -2,13 +2,13 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import classNames from 'classnames';
 import CryptoJs from 'crypto-js';
 import sortBy from 'lodash/sortBy';
 import uniqBy from 'lodash/uniqBy';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   RadioGroupV2 as RadioGroup, RadioCard, MessageBar,
 } from '@shopgate/engage/components';
@@ -18,40 +18,35 @@ import connect from './connector';
 
 const { variables } = themeConfig;
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: `0 ${variables.gap.big}px ${variables.gap.xbig}px`,
-  }).toString(),
-  headline: css({
+  },
+  headline: {
     fontSize: '1.25rem',
     fontWeight: 'normal',
     padding: `0 ${variables.gap.small}px 0 0`,
     margin: `0 0 ${variables.gap.small}px 0`,
     color: 'var(--color-text-high-emphasis)',
     textTransform: 'none',
-  }).toString(),
-  container: css({
+  },
+  container: {
     border: '1px solid #eaeaea',
     ' li:nth-child(2n)': {
       background: 'var(--color-background-accent)',
     },
-  }).toString(),
-  containerSingle: css({
+  },
+  containerSingle: {
     padding: variables.gap.small,
-  }).toString(),
-  card: css({
+  },
+  card: {
     display: 'flex',
     alignItems: 'center',
-  }).toString(),
-  errorMessage: css({
+  },
+  errorMessage: {
     margin: 0,
-  }).toString(),
-  iOSCard: css({
-    width: '100%',
-    overflow: 'hidden',
-    marginBottom: variables.gap.big,
-  }).toString(),
-};
+  },
+});
 
 /**
  * Hashes a shipping method
@@ -68,28 +63,11 @@ const hashShippingMethod = (method) => {
 };
 
 /**
- * Custom replacement for the wrapper component of the RadioCard
- * @param {Object} props The component props
- * @returns {JSX}
- */
-const CardComponent = ({ children }) => (
-  <li className={styles.card}>
-    { children}
-  </li>
-);
-
-CardComponent.propTypes = {
-  children: PropTypes.node,
-};
-CardComponent.defaultProps = {
-  children: null,
-};
-
-/**
  * The shipping methods component.
  * @returns {JSX}
  */
 const ShippingMethods = ({ orderHasDirectShipItems }) => {
+  const { classes } = useStyles();
   const {
     shippingAddress, updateShippingMethod, isLoading, order,
   } = useCheckoutContext();
@@ -100,6 +78,24 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
   } = shippingAddress?.orderSegment || {};
 
   const [selectedHash, setSelectedHash] = useState(hashShippingMethod(selectedShippingMethod));
+
+  /**
+   * Custom replacement for the wrapper component of the RadioCard
+   * @param {Object} props The component props
+   * @returns {JSX}
+   */
+  const CardComponent = ({ children }) => (
+    <li className={classes.card}>
+      { children}
+    </li>
+  );
+
+  CardComponent.propTypes = {
+    children: PropTypes.node,
+  };
+  CardComponent.defaultProps = {
+    children: null,
+  };
 
   useEffect(() => {
     // Update the selected hash when the selected shipping method updates
@@ -162,8 +158,8 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
 
   if (shippingMethods.length === 0) {
     return (
-      <div className={styles.root}>
-        <h3 className={styles.headline}>
+      <div className={classes.root}>
+        <h3 className={classes.headline}>
           {i18n.text('checkout.shippingMethod.title')}
         </h3>
 
@@ -172,7 +168,7 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
             type: 'error',
             message: i18n.text(`checkout.shippingMethod.errors.${!shippingAddress ? 'noShippingAddress' : 'invalidShippingAddress'}`),
           }]}
-          classNames={{ container: styles.errorMessage }}
+          classNames={{ container: classes.errorMessage }}
           showIcons
         />
       </div>
@@ -180,12 +176,12 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
   }
 
   return (
-    <div className={styles.root}>
-      <h3 className={styles.headline}>
+    <div className={classes.root}>
+      <h3 className={classes.headline}>
         {i18n.text('checkout.shippingMethod.title')}
       </h3>
       { shippingMethods.length === 1 ? (
-        <div className={classNames(styles.container, styles.containerSingle)}>
+        <div className={classNames(classes.container, classes.containerSingle)}>
           <ShippingMethod shippingMethod={shippingMethods[0]} />
         </div>
       ) : (
@@ -194,7 +190,7 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
           value={selectedHash}
           onChange={onChange}
           component="ul"
-          classes={{ root: styles.container }}
+          classes={{ root: classes.container }}
           disabled={isLoading}
         >
           { shippingMethods.map(shippingMethod => (

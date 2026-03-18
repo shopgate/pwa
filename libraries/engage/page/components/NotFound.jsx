@@ -1,39 +1,39 @@
 import React, { useCallback } from 'react';
-import { css } from 'glamor';
 import { useDispatch } from 'react-redux';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { I18n } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { historyPop, historyResetTo } from '@shopgate/pwa-common/actions/router';
 import { i18n, INDEX_PATH } from '../../core';
 
 const { variables } = themeConfig;
 
-const styles = {
-  wrapper: css({
+const useStyles = makeStyles()({
+  wrapper: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
     textAlign: 'center',
     padding: variables.gap.big,
     paddingTop: variables.gap.xxbig,
-  }).toString(),
-  text: css({
+  },
+  text: {
     fontSize: '1.5rem',
-  }).toString(),
-  button: css({
+  },
+  button: {
     width: '100%',
     maxWidth: 250,
-  }).toString(),
-  buttonContainer: css({
+  },
+  buttonContainer: {
     flexGrow: '0',
     padding: `${variables.emptyPage.buttonVerticalGap}px ${variables.gap.big}px`,
     display: 'flex',
     flexDirection: 'column',
     gap: variables.gap.big,
     alignItems: 'center',
-  }).toString(),
-};
+  },
+});
 
 /**
  * The NotFoundPage component renders a "Page Not Found" view
@@ -41,6 +41,7 @@ const styles = {
  * @returns {JSX.Element}
  */
 const NotFound = () => {
+  const { classes } = useStyles();
   const dispatch = useDispatch();
 
   const handleBack = useCallback(() => {
@@ -52,13 +53,13 @@ const NotFound = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.wrapper}>
-      <I18n.Text className={styles.text} string="page.not_found" />
-      <div className={styles.buttonContainer}>
-        <RippleButton onClick={handleBack} className={styles.button} type="secondary">
+    <div className={classes.wrapper}>
+      <I18n.Text className={classes.text} string="page.not_found" />
+      <div className={classes.buttonContainer}>
+        <RippleButton onClick={handleBack} className={classes.button} type="secondary">
           <I18n.Text string="common.back" />
         </RippleButton>
-        <RippleButton onClick={handleHome} className={styles.button} type="secondary">
+        <RippleButton onClick={handleHome} className={classes.button} type="secondary">
           <I18n.Text string="navigation.back" params={{ title: i18n.text('navigation.home') }} />
         </RippleButton>
       </div>

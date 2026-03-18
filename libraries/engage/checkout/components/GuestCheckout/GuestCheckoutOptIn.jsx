@@ -1,9 +1,9 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder, SurroundPortals } from '@shopgate/engage/components';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { StylePresets } from '@shopgate/engage/components/Form';
+import { makeStyles } from '@shopgate/engage/styles';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import generateFormConfig from './GuestCheckoutOptIn.config';
@@ -11,28 +11,26 @@ import { CHECKOUT_MARKETING_OPTIN } from '../../constants';
 
 const { variables } = themeConfig;
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: `0 ${variables.gap.big}px`,
     ...(!isIOSTheme() ? {
       paddingBottom: variables.gap.xbig,
     } : {}),
-  }).toString(),
-  form: css({
+  },
+  form: {
     ' .guestCheckoutOptInMarketingOptIn .checkbox': {
       paddingBottom: 0,
     },
     ...StylePresets.OUTLINED_FORM_FIELDS,
-  }).toString(),
-  section: css({
-    margin: variables.gap.big,
-  }).toString(),
-};
+  },
+});
 
 /**
  * @returns {JSX}
  */
 const GuestCheckoutOptIn = () => {
+  const { classes } = useStyles();
   const {
     defaultOptInFormState,
     optInFormSetValues,
@@ -55,10 +53,10 @@ const GuestCheckoutOptIn = () => {
 
   return (
     <SurroundPortals portalName={CHECKOUT_MARKETING_OPTIN}>
-      <div className={styles.root}>
+      <div className={classes.root}>
         <Section hasForm>
           <FormBuilder
-            className={styles.form}
+            className={classes.form}
             name="GuestCheckoutOptIn"
             config={formConfig}
             defaults={defaultOptInFormState}

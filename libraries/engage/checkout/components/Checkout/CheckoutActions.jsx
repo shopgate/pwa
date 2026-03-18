@@ -1,26 +1,27 @@
 import React from 'react';
-import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '../../hooks/common';
 import { SupplementalContent } from '../SupplementalContent';
 import { CHECKOUT_ACTIONS } from '../../constants';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: 16,
     paddingTop: 0,
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
-  }).toString(),
-};
+  },
+});
 
 /**
  * PickupContactForm
  * @returns {JSX}
  */
 const Actions = () => {
+  const { classes } = useStyles();
   const {
     handleSubmitOrder,
     handleValidation,
@@ -40,7 +41,7 @@ const Actions = () => {
 
   return (
     <SurroundPortals portalName={CHECKOUT_ACTIONS}>
-      <div className={styles.root}>
+      <div className={classes.root}>
         {PaymentButton ? (
           <PaymentButton
             onSubmit={handleSubmitOrder}
