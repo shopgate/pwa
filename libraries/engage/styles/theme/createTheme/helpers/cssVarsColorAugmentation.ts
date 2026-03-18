@@ -11,15 +11,15 @@ function addAugmentationToVars(
 
   Object.keys(augmentedPalette).forEach((key) => {
     // @ts-expect-error - We are sure about the type here
-    const color = augmentedPalette[key];
+    const paletteEntry = augmentedPalette[key];
 
-    if (color && typeof color === 'object' && color.main) {
+    if (paletteEntry && typeof paletteEntry === 'object' && paletteEntry.main) {
       // @ts-expect-error - We are sure about the type here
       augmentedPalette[key] = {
-        ...color,
+        ...paletteEntry,
         // Inject css color-mix function to create light and dark variants of the main color
-        light: theme.lighten(color.main),
-        dark: theme.darken(color.main),
+        light: theme.lighten(paletteEntry.main),
+        dark: theme.darken(paletteEntry.main),
       };
     }
   });

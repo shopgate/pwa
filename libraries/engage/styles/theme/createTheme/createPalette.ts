@@ -275,7 +275,7 @@ const createPalette = (inputPalette: PaletteOptions): Palette => {
   } = inputPalette ?? {};
 
   const mergedPalette = extendPalette({
-    palette: merge(paletteSchema, paletteOptions),
+    palette: merge({}, paletteSchema, paletteOptions),
     tonalOffset,
     contrastThreshold,
   }) as Palette;

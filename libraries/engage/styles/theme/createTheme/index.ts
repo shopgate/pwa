@@ -40,9 +40,9 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     colorSchemes: colorSchemesInput = { light: {} },
   } = options;
 
-  const defaultScheme: BaseTheme = merge({
-    paletteInput,
-    typographyInput,
+  const defaultScheme: BaseTheme = merge({}, {
+    palette: paletteInput,
+    typography: typographyInput,
   // @ts-expect-error - Sure about the type here
   }, colorSchemesInput[defaultColorScheme] ?? {});
 
@@ -51,6 +51,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     .reduce((acc, [type, scheme]) => {
       // @ts-expect-error - Sure about the type here
       acc[type] = createThemeFromColorScheme(merge(
+        {},
         { palette: { mode: type } },
         defaultScheme,
         scheme

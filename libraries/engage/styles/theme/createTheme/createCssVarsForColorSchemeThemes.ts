@@ -88,17 +88,17 @@ export default function createCssVarsForColorSchemeThemes(
     });
 
     colorSchemeMap[schemeName] = {
-      css: merge(css, componentsCss),
-      vars: merge(vars, componentsVars),
-      varsWithDefaults: merge(varsWithDefaults, componentsVarsWithDefaults),
-      varNames: merge(varNames, componentsVarNames),
+      css: merge({}, css, componentsCss),
+      vars: merge({}, vars, componentsVars),
+      varsWithDefaults: merge({}, varsWithDefaults, componentsVarsWithDefaults),
+      varNames: merge({}, varNames, componentsVarNames),
     };
 
     if (Array.isArray(styleSheets)) {
       // Create a style sheet selector for the color scheme with the generated CSS variables
       styleSheets.push({
         [`${schemeName === 'light' ? ':root, ' : ''}${getColorSchemeSelector(schemeName)}`]: {
-          ...css,
+          ...colorSchemeMap[schemeName].css,
         },
       });
     }
@@ -106,6 +106,7 @@ export default function createCssVarsForColorSchemeThemes(
 
   return {
     cssVarsTheme: merge(
+      {},
       colorSchemes.light,
       colorSchemeMap.light.vars,
       { vars: colorSchemeMap.light.varNames }
