@@ -35,12 +35,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
     },
     dark: {
       palette: {
-        primary: {
-          main: '#F7ED00',
-        },
-        secondary: {
-          main: '#00F7AA',
-        },
         background: {
           default: '#000',
         },
