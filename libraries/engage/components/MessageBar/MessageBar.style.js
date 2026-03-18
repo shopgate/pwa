@@ -73,7 +73,7 @@ export const info = () => css(messageBase, {
   background: 'var(--color-secondary)',
   color: 'var(--color-secondary-contrast)',
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
-    ...getMessageColors(getCSSCustomProp('--color-secondary') || themeColors.accent),
+    ...getMessageColors(getCSSCustomProp('--color-secondary')),
     ' > svg': {
       color: 'var(--color-secondary)',
     },
