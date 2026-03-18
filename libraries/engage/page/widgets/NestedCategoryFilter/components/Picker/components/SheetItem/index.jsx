@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/engage';
 
-const { colors, variables } = themeConfig;
-const bgColor = colors.darkGray;
+const { variables } = themeConfig;
+
 const boxShadowOffset = variables.gap.bigger;
 
 const useStyles = makeStyles()({
@@ -16,8 +16,8 @@ const useStyles = makeStyles()({
     color: 'var(--color-text-high-emphasis)',
   },
   buttonSelected: {
-    background: `var(--color-background-accent, ${bgColor})`,
-    boxShadow: `-${boxShadowOffset}px 0px 0px var(--color-background-accent, ${bgColor}), ${boxShadowOffset}px 0px 0px var(--color-background-accent,${bgColor})`,
+    background: 'var(--color-background-accent)',
+    boxShadow: `-${boxShadowOffset}px 0px 0px var(--color-background-accent), ${boxShadowOffset}px 0px 0px var(--color-background-accent)`,
     margin: '-1px 0',
     paddingTop: 17,
     paddingBottom: 17,

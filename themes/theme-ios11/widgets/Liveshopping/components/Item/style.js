@@ -36,7 +36,7 @@ const priceStriked = css({
 }).toString();
 
 const price = css({
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
   fontSize: '1.25rem',
   lineHeight: 1,
 }).toString();
@@ -58,7 +58,7 @@ const title = css({
 
 const timer = css({
   fontSize: '0.875rem',
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
   fontStyle: 'italic',
   fontWeight: 500,
 }).toString();

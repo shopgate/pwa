@@ -11,7 +11,7 @@ const buttonDefaults = {
   textAlign: 'left',
   lineHeight: 1.2,
   outline: 'none',
-  background: `var(--color-background-accent, ${colors.shade8})`,
+  background: 'var(--color-background-accent)',
   color: 'var(--color-text-high-emphasis)',
 };
 

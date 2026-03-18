@@ -17,7 +17,7 @@ const greyStyle = css({
 
 const prominentStyle = css({
   ...main,
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
 }).toString();
 
 export {

@@ -1,5 +1,4 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const container = css({
   display: 'flex',
@@ -16,7 +15,7 @@ const disclaimer = css({
 }).toString();
 
 const discounted = css({
-  color: `var(--color-primary, ${themeConfig.colors.primary})`,
+  color: 'var(--color-primary)',
 }).toString();
 
 export default {

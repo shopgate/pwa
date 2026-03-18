@@ -11,6 +11,7 @@ import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchCli
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { appInitialization, configuration } from '@shopgate/engage/core/collections';
 import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/constants';
+import { loadCustomStyles } from '@shopgate/engage/styles';
 import {
   getAppBaseUrl,
   isDev,
@@ -166,7 +167,8 @@ export const initialize = async (locales, reducers, subscribers) => {
   store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
 
   try {
-    await fetchSettings(store);
+    const promises = [fetchSettings(store), loadCustomStyles()];
+    await Promise.all(promises);
   } catch (e) {
     // Nothing to see here.
   }

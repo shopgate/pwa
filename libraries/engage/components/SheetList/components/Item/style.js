@@ -11,8 +11,8 @@ const disabled = css({
 }).toString();
 
 const selected = css({
-  background: `var(--color-background-accent, ${colors.shade7})`,
-  boxShadow: `-16px 0 0 0 var(--color-background-accent, ${colors.shade7}) !important`,
+  background: 'var(--color-background-accent)',
+  boxShadow: '-16px 0 0 0 var(--color-background-accent) !important',
 }).toString();
 
 const title = css({

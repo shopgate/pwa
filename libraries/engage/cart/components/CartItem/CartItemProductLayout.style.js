@@ -65,7 +65,7 @@ const properties = css({
   wordBreak: 'break-word',
   alignSelf: 'flex-start',
   fontSize: '0.875rem',
-  color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+  color: 'var(--color-text-medium-emphasis)',
   lineHeight: 1.3,
   /**
    * When the properties column has content, apply a max width to the price column
@@ -87,7 +87,7 @@ const itemInactive = css({
 }).toString();
 
 const orderDetailsSubtotalLabel = css({
-  color: `var(--color-text-low-emphasis, ${colors.shade9})`,
+  color: 'var(--color-text-low-emphasis)',
 }).toString();
 
 export default {

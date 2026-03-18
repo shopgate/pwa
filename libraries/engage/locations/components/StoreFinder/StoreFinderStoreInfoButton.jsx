@@ -5,7 +5,7 @@ import { RippleButton } from '@shopgate/engage/components';
 import { historyPush } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
 import { css } from 'glamor';
-import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { StoreContext } from './Store.context';
 import { i18n } from '../../../core';
 import { StoreFinderContext } from '../../locations.context';
@@ -18,8 +18,8 @@ const styles = {
     width: '100%',
     fontSize: '.875rem !important',
     ':not(:disabled)': {
-      background: `var(--color-primary, ${themeColors.primary})!important`,
-      color: `var(--color-primary-contrast, ${themeColors.primaryContrast})!important`,
+      background: 'var(--color-primary)!important',
+      color: 'var(--color-primary-contrast)!important',
     },
   }),
   showStoreInfoButtonWrapper: css({

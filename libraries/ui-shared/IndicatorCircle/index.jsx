@@ -43,7 +43,7 @@ IndicatorCircle.propTypes = {
 };
 
 IndicatorCircle.defaultProps = {
-  color: `var(--color-secondary, ${themeConfig.colors.accent})`,
+  color: 'var(--color-secondary)',
   paused: false,
   size: themeConfig.variables.loadingIndicator.size,
   strokeWidth: themeConfig.variables.loadingIndicator.strokeWidth,

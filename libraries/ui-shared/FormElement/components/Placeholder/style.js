@@ -1,6 +1,5 @@
 import { css } from 'glamor';
 import classNames from 'classnames';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * The style object for a one line text element with an ellipsis on overflow.
@@ -21,7 +20,7 @@ const placeholder = css({
   position: 'absolute',
   pointerEvents: 'none',
   top: 24,
-  color: `var(--color-text-medium-emphasis, ${themeConfig.colors.shade6})`,
+  color: 'var(--color-text-medium-emphasis)',
   willChange: 'transform',
   transition: `opacity ${easing}`,
   ...ellipsisLine,

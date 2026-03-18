@@ -1,12 +1,11 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 export const hint = css({
-  color: `var(--color-state-ok, ${themeConfig.colors.success})`,
+  color: 'var(--color-state-ok)',
   fontSize: '0.75rem',
 }).toString();
 
 export const notAvailable = css({
-  color: `var(--color-state-alert, ${themeConfig.colors.error})`,
+  color: 'var(--color-state-alert)',
   fontSize: '0.75rem',
 }).toString();

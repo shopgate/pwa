@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const container = css({
   flexGrow: 1,
@@ -18,7 +18,7 @@ const subline = css({
   fontSize: '1.125rem',
   marginBottom: variables.gap.big * 1.5,
   marginTop: 4,
-  color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+  color: 'var(--color-text-medium-emphasis)',
 });
 
 const form = css({
@@ -55,14 +55,14 @@ const noAccount = css({
 
 const signup = css({
   display: 'inline-block',
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
   width: 'auto',
   margin: '-.35em 0 -.35em -.35em',
   padding: '.35em',
 }).toString();
 
 const icon = css({
-  fill: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+  fill: 'var(--color-text-medium-emphasis)',
   width: '24px',
   height: '24px',
 }).toString();

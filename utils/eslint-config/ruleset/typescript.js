@@ -15,7 +15,14 @@ module.exports = {
 
         '@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
         '@typescript-eslint/no-shadow': 'warn',
-        '@typescript-eslint/no-use-before-define': 'warn',
+        '@typescript-eslint/no-use-before-define': [
+          'error',
+          {
+            functions: false,
+            classes: true,
+            variables: false,
+          },
+        ],
 
         // Common TS ergonomics (tune as you like)
         '@typescript-eslint/consistent-type-imports': ['warn', { prefer: 'type-imports' }],

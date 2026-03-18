@@ -33,7 +33,7 @@ const input = css({
     transition: 'transform 0.3s',
   },
   ':checked': {
-    backgroundColor: themeConfig.colors.accent,
+    backgroundColor: 'var(--color-secondary)',
   },
   ':checked::before': {
     transform: 'translateX(20px)',

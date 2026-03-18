@@ -26,7 +26,7 @@ const label = css({
 }).toString();
 
 const active = css({
-  color: `var(--color-primary, ${themeConfig.colors.primary})`,
+  color: 'var(--color-primary)',
 }).toString();
 
 export default {

@@ -1,15 +1,6 @@
 import { merge } from 'lodash';
 import { isDev } from '@shopgate/engage/core/helpers';
 
-/**
- * Round a number to a fixed precision of five decimal places.
- * @param {number} value The value to round.
- * @returns {number} The rounded value.
- */
-function round(value) {
-  return Math.round(value * 1e5) / 1e5;
-}
-
 const caseAllCaps = {
   textTransform: 'uppercase',
 };
@@ -26,11 +17,15 @@ const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 export default function createTypography(palette, typography) {
   const {
     fontFamily = defaultFontFamily,
-    fontSize = 16,
+    // The default font size of the Material Specification.
+    fontSize = 14,
     fontWeightLight = 300,
     fontWeightRegular = 400,
     fontWeightMedium = 500,
     fontWeightBold = 700,
+    // Tell the theme what's the font-size on the html element.
+    // 16px is the default font-size used by browsers.
+    htmlFontSize = 16,
     // Apply the CSS properties to all the variants.
     allVariants,
     pxToRem: pxToRem2,
@@ -43,12 +38,14 @@ export default function createTypography(palette, typography) {
     }
   }
 
+  const coef = fontSize / 14;
+
   /**
    * Calculates a rem value for a passed pixel value.
    * @param {number} size The source value in pixels.
    * @returns {string} The result value in rem.
    */
-  const pxToRem = (size => `${round(size / fontSize)}rem`);
+  const pxToRem = (size => `${(size / htmlFontSize) * coef}rem`);
 
   /**
    * Creates a typography variant object.

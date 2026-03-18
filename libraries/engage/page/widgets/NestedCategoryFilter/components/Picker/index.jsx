@@ -14,7 +14,7 @@ const { colors } = themeConfig;
 
 const useStyles = makeStyles()({
   button: {
-    background: `var(--color-background-accent, ${colors.overlay})`,
+    background: 'var(--color-background-accent)',
     color: 'var(--color-text-high-emphasis)',
     display: 'flex',
     flexDirection: 'column',

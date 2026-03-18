@@ -48,7 +48,7 @@ export const phoneField = css({
 
 export const phoneFieldError = css({
   ' input.PhoneInputInput': {
-    borderBottom: `2px solid var(--color-state-alert, ${colors.error}) !important`,
+    borderBottom: '2px solid var(--color-state-alert) !important',
     paddingBottom: (variables.gap.xsmall * 1.5) - 1,
   },
 });
@@ -59,7 +59,7 @@ export const phoneFieldErrorText = css({
   bottom: 2,
   fontSize: '0.75rem',
   lineHeight: 0.875,
-  color: `var(--color-state-alert, ${colors.error})`,
+  color: 'var(--color-state-alert)',
   overflow: 'hidden',
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',

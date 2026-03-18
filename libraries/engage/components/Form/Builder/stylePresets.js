@@ -50,7 +50,7 @@ export const OUTLINED_FORM_FIELDS = {
   },
   ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {
     paddingBottom: 8,
-    background: `var(--color-background-accent, ${colors.shade8})`,
+    background: 'var(--color-background-accent)',
     padding: 0,
     marginBottom: 32,
     borderTopLeftRadius: 4,
@@ -58,7 +58,7 @@ export const OUTLINED_FORM_FIELDS = {
     borderBottom: `1px solid ${colors.shade12}`,
   },
   ' .phonePickerError': {
-    borderBottom: `2px solid var(--color-state-alert, ${colors.error})`,
+    borderBottom: '2px solid var(--color-state-alert)',
   },
   ' .phonePickerFocused:not(.phonePickerError)': {
     borderBottom: '2px solid var(--color-primary)',

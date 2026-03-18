@@ -31,3 +31,5 @@ export const AccountContact = lazy(() => import('./Account/Contact'));
 export const StoreFinder = lazy(() => import('./StoreFinder'));
 export const StoreDetails = lazy(() => import('./StoreDetails'));
 export const PagePreview = lazy(() => import('./PagePreview'));
+
+export const ThemeDemo = lazy(() => import('./ThemeDemo'));

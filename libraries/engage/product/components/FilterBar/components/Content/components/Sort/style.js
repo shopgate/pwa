@@ -2,7 +2,7 @@ import { css } from 'glamor';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { shadows, colors, variables } = themeConfig;
+const { shadows, variables } = themeConfig;
 
 const button = css({
   color: 'inherit',
@@ -38,7 +38,7 @@ const dropdown = css({
   zIndex: 2,
   top: '100%',
   left: 0,
-  background: `var(--color-background-accent, ${colors.background})`,
+  background: 'var(--color-background-accent)',
   boxShadow: shadows.filter.sort,
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     top: 'inherit',
@@ -51,7 +51,7 @@ const selectItem = css({
   overflow: 'hidden',
   textAlign: 'left',
   width: '100%',
-  color: `var(--color-text-high-emphasis, ${colors.dark})`,
+  color: 'var(--color-text-high-emphasis)',
   ':first-child': {
     marginTop: variables.gap.big / 2,
   },

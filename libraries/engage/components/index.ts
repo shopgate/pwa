@@ -18,8 +18,7 @@ export { default as ErrorBoundary } from '@shopgate/pwa-common/components/ErrorB
 export { default as Grid } from '@shopgate/pwa-common/components/Grid';
 export { default as HtmlSanitizer } from '@shopgate/pwa-common/components/HtmlSanitizer';
 export { default as I18n } from '@shopgate/pwa-common/components/I18n';
-export { default as Icon } from '@shopgate/pwa-common/components/Icon';
-export type { IconProps } from '@shopgate/pwa-common/components/Icon';
+export { default as Icon, type IconProps } from '@shopgate/pwa-common/components/Icon';
 export { default as Image } from '@shopgate/pwa-common/components/Image';
 export { default as InfiniteContainer } from '@shopgate/pwa-common/components/InfiniteContainer';
 export { default as Input } from '@shopgate/pwa-common/components/Input';

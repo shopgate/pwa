@@ -2,7 +2,7 @@ import { css } from 'glamor';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 /**
  * Generate css for grid view
@@ -18,7 +18,7 @@ export const styles = columns => css({
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     padding: variables.gap.big,
   },
-  background: `var(--page-background-color, '${colors.background}')`,
+  background: 'var(--page-background-color)',
   ...columns <= 2 && {
     ' > *': {
       [`:nth-child(${columns}n)`]: {

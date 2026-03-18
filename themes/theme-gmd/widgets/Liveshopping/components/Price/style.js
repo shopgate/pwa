@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const grid = css({
   alignItems: 'flex-end',
@@ -15,7 +15,7 @@ const priceStriked = css({
 }).toString();
 
 const price = css({
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
   fontSize: '1.25rem',
   lineHeight: 1,
 }).toString();

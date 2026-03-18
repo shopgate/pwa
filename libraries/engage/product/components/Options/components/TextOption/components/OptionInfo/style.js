@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const info = css({
   marginTop: variables.gap.xsmall,
@@ -9,7 +9,7 @@ const info = css({
 }).toString();
 
 const required = css({
-  color: `var(--color-text-medium-emphasis, ${colors.shade9})`,
+  color: 'var(--color-text-medium-emphasis)',
   fontSize: '0.825rem',
 }).toString();
 

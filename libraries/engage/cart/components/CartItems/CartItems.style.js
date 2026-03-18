@@ -4,7 +4,7 @@ import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config
 const { gap } = themeVariables;
 
 export const items = css({
-  background: `var(--color-background-accent, ${themeColors.background})`,
+  background: 'var(--color-background-accent)',
   padding: `${gap.small * 1.5}px ${gap.small * 1.5}px ${gap.big}px`,
   marginBottom: `-${gap.small * 1.5}px`,
 });
