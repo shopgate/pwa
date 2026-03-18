@@ -39,7 +39,7 @@ const input = css({
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
 const icon = css({
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
   fontSize: '1.875rem',
   position: 'absolute',
   transition: `opacity ${easing}`,

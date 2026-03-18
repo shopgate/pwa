@@ -32,7 +32,7 @@ const item = css({
 }).toString();
 
 const link = css({
-  color: themeColors.accent,
+  color: 'var(--color-secondary)',
   textDecoration: 'underline',
 }).toString();
 

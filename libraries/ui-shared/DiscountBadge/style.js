@@ -1,11 +1,10 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors } = themeConfig;
 const badge = {
-  background: `var(--color-primary, ${colors.primary})`,
+  background: 'var(--color-primary)',
   borderRadius: 2,
-  color: `var(--color-primary-contrast, ${colors.primaryContrast})`,
+  color: 'var(--color-primary-contrast)',
   padding: 5,
   width: '100%',
   fontWeight: 700,

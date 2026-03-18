@@ -3,7 +3,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { StylePresets } from '@shopgate/engage/components/Form';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const container = css({
   flexGrow: 1,
@@ -26,7 +26,7 @@ const headline = css({
 
 const subline = css({
   fontSize: '1.125rem',
-  color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+  color: 'var(--color-text-medium-emphasis)',
   marginBottom: variables.gap.big,
   marginTop: 4,
 });
@@ -45,7 +45,7 @@ const form = css({
 const input = css({
   width: '100%',
   ' .label': {
-    color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+    color: 'var(--color-text-medium-emphasis)',
   },
   ' .simpleInput': {
     color: 'var(--color-text-high-emphasis)',
@@ -74,14 +74,14 @@ const noAccount = css({
 
 const signup = css({
   display: 'inline-block',
-  color: `var(--color-primary, ${colors.primary}) !important`,
+  color: 'var(--color-primary) !important',
   width: 'auto',
   margin: '-.35em 0 -.35em -.35em',
   padding: '.35em',
 }).toString();
 
 const icon = css({
-  fill: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+  fill: 'var(--color-text-medium-emphasis)',
   width: '24px',
   height: '24px',
 }).toString();

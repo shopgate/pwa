@@ -10,8 +10,8 @@ export const container = css({
 
 export const button = css({
   width: '100%',
-  background: `var(--color-button-cta, ${colors.cta})`,
-  color: `var(--color-button-cta-contrast, ${colors.ctaContrast})!important`,
+  background: 'var(--color-button-cta)',
+  color: 'var(--color-button-cta-contrast)!important',
   borderRadius: 4,
   margin: `${variables.gap.big}px 0`,
 }).toString();

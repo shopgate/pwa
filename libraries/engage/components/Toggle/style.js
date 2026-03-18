@@ -1,7 +1,4 @@
 import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 export const container = css({
   position: 'relative',
@@ -21,12 +18,12 @@ export const label = css({
 
 export const checkbox = css({
   [`:checked ~ .${label}`]: {
-    background: `var(--color-primary, ${colors.primary})`,
+    background: 'var(--color-primary)',
     opacity: 0.5,
   },
   ':checked ~ div': {
     left: 20,
-    background: `var(--color-primary, ${colors.primary})`,
+    background: 'var(--color-primary)',
   },
   [`:disabled ~ .${label}`]: {
     background: '#D5D5D5',

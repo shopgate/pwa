@@ -28,8 +28,8 @@ const root = css({
 });
 
 const rootSelected = css(button, {
-  background: `var(--color-background-accent, ${colors.darkGray})`,
-  boxShadow: `-16px 0 0 var(--color-background-accent, ${colors.darkGray}), 16px 0 0 var(--color-background-accent, ${colors.darkGray})`,
+  background: 'var(--color-background-accent)',
+  boxShadow: '-16px 0 0 var(--color-background-accent), 16px 0 0 var(--color-background-accent)',
   margin: '-1px 0',
   paddingTop: 17,
   paddingBottom: 17,

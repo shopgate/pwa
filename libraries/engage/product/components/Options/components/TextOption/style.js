@@ -8,7 +8,7 @@ const row = css({
 }).toString();
 
 const wrapper = css({
-  backgroundColor: `var(--color-background-accent, ${colors.shade8})`,
+  backgroundColor: 'var(--color-background-accent)',
   padding: `${variables.gap.small}px ${variables.gap.big}px`,
   minHeight: 56,
 }).toString();

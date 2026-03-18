@@ -33,7 +33,7 @@ const styles = {
     alignItems: 'center',
     width: '100%',
     fontSize: 16,
-    backgroundColor: `var(--color-background-accent, ${colors.shade8})`,
+    backgroundColor: 'var(--color-background-accent)',
     ...(inputColor && { color: `${inputColor} !important` }),
     ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
     ' .quantity-label': {

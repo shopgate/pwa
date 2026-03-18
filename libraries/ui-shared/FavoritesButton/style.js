@@ -9,7 +9,7 @@ const buttonProto = {
   padding: 0,
   fontSize: 20,
   lineHeight: 1,
-  color: `var(--color-secondary, ${themeColors.accent})`,
+  color: 'var(--color-secondary)',
   outline: 0,
 };
 

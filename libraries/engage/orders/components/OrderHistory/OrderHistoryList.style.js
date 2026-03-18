@@ -10,7 +10,7 @@ export const orderNumber = css({
 });
 
 export const list = css({
-  background: `var(--color-background-accent, ${themeColors.background})`,
+  background: 'var(--color-background-accent)',
   marginBottom: `-${variables.gap.small * 1.5}px`,
 });
 

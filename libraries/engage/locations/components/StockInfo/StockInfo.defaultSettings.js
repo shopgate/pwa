@@ -1,4 +1,3 @@
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import {
   AVAILABILITY_TYPE_AVAILABLE,
   AVAILABILITY_TYPE_LIMITED_AVAILABILITY,
@@ -14,7 +13,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: 'locations.stock_info.availableInventory',
-    availabilityTextColor: `var(--color-state-ok, ${themeColors.success})`,
+    availabilityTextColor: 'var(--color-state-ok)',
   },
   [AVAILABILITY_TYPE_COMING_SOON]: {
     comingSoon: true,
@@ -23,7 +22,7 @@ export default {
     includeInventoryBlind: true,
     includeNoRecordStores: true,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_COMING_SOON}`,
-    availabilityTextColor: `var(--color-state-warning, ${themeColors.warning})`,
+    availabilityTextColor: 'var(--color-state-warning)',
   },
   [AVAILABILITY_TYPE_LIMITED_AVAILABILITY]: {
     visibleInventoryFrom: 1,
@@ -31,7 +30,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_LIMITED_AVAILABILITY}`,
-    availabilityTextColor: `var(--color-state-warning, ${themeColors.warning})`,
+    availabilityTextColor: 'var(--color-state-warning)',
   },
   [AVAILABILITY_TYPE_NOT_AVAILABLE]: {
     visibleInventoryFrom: 0,
@@ -39,7 +38,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_NOT_AVAILABLE}`,
-    availabilityTextColor: `var(--color-state-alert, ${themeColors.error})`,
+    availabilityTextColor: 'var(--color-state-alert)',
     allowOrderingToStore: true,
   },
   [AVAILABILITY_TYPE_CUSTOM_AVAILABILITY]: {
@@ -48,7 +47,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: true,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_CUSTOM_AVAILABILITY}`,
-    availabilityTextColor: `var(--color-state-alert, ${themeColors.error})`,
+    availabilityTextColor: 'var(--color-state-alert)',
     allowOrderingToStore: true,
   },
   maxNumberOfVisibleInventory: 100,

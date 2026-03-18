@@ -26,7 +26,7 @@ const innerElement = css({
   ':before': {
     content: '""',
     position: 'absolute',
-    background: `var(--color-secondary, ${colors.accent})`,
+    background: 'var(--color-secondary)',
     top: 0,
     left: 0,
     bottom: 0,
@@ -35,7 +35,7 @@ const innerElement = css({
   ':after': {
     content: '""',
     position: 'absolute',
-    background: `var(--color-secondary, ${colors.accent})`,
+    background: 'var(--color-secondary)',
     top: 0,
     left: 0,
     bottom: 0,

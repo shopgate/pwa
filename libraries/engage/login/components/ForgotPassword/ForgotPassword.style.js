@@ -3,7 +3,7 @@ import { responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { StylePresets } from '@shopgate/engage/components/Form';
 
-const { variables, colors } = themeConfig;
+const { variables } = themeConfig;
 
 export const container = css({
   flexGrow: 1,
@@ -27,7 +27,7 @@ export const headline = css({
 
 export const subline = css({
   fontSize: '1.125rem',
-  color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+  color: 'var(--color-text-medium-emphasis)',
   marginBottom: variables.gap.big,
   marginTop: 4,
 });
@@ -51,10 +51,10 @@ export const button = css({
 
 export const input = css({
   ' .label': {
-    color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+    color: 'var(--color-text-medium-emphasis)',
   },
   ' .placeholder': {
-    color: `var(--color-text-medium-emphasis, ${colors.shade6})`,
+    color: 'var(--color-text-medium-emphasis)',
   },
   ' .simpleInput': {
     color: 'var(--color-text-heigh-emphasis)',

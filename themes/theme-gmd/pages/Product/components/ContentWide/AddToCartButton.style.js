@@ -5,8 +5,8 @@ const { colors, variables } = themeConfig;
 
 const button = css({
   cursor: 'pointer',
-  background: `var(--color-button-cta, ${colors.cta})`,
-  color: `var(--color-button-cta-contrast, ${colors.ctaContrast})`,
+  background: 'var(--color-button-cta)',
+  color: 'var(--color-button-cta-contrast)',
   fontSize: 16,
   fontWeight: 700,
   borderRadius: 5,
@@ -32,7 +32,7 @@ const icon = css({
   marginTop: -24,
   marginRight: -24,
   '& svg': {
-    fill: `var(--color-button-cta-contrast, ${colors.ctaContrast})`,
+    fill: 'var(--color-button-cta-contrast)',
   },
 });
 

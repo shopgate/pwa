@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables, colors } = themeConfig;
+const { variables } = themeConfig;
 
 export const radioContainer = css({
   display: 'flex',
@@ -29,11 +29,11 @@ export const inactiveIconDisabled = css(icon, {
 }).toString();
 
 export const activeIcon = css(icon, {
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
 }).toString();
 
 export const activeIconDisabled = css(icon, {
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
   opacity: 0.3,
 }).toString();
 

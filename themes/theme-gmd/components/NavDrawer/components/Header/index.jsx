@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 import styles from './style';
-
-const { colors } = themeConfig;
 
 /**
  * The NavDrawerHeader component.
@@ -20,12 +17,12 @@ const NavDrawerHeader = ({
   if (!isLoggedIn) {
     return (
       <NavDrawer.Item
-        icon={props => <AccountBoxIcon color={`var(--color-primary-contrast, ${colors.light})`} {...props} />}
+        icon={props => <AccountBoxIcon color="var(--color-primary-contrast)" {...props} />}
         label="navigation.login_register"
         onClick={openLogin}
         style={{
-          background: `var(--color-primary, ${colors.primary})`,
-          color: `var(--color-primary-contrast, ${colors.light})`,
+          background: 'var(--color-primary)',
+          color: 'var(--color-primary-contrast)',
         }}
         testId="navDrawerLoginButton"
       />

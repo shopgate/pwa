@@ -9,12 +9,12 @@ const wrapper = css({
   width: '100%',
   justifyContent: 'center',
   textAlign: 'center',
-  background: `var(--page-background-color, ${themeConfig.colors.shade8})`,
+  background: 'var(--page-background-color)',
 }).toString();
 
 const icon = css({
   width: 216,
-  color: `var(--color-primary, ${themeConfig.colors.primary})`,
+  color: 'var(--color-primary)',
 }).toString();
 
 const headline = css({

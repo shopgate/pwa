@@ -1,7 +1,7 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 export const container = css({
   fontWeight: 500,
@@ -21,7 +21,7 @@ export const reviewsLine = css({
 });
 
 export const averageRatingNumber = css({
-  color: `var(--color-primary, ${colors.primary})`,
+  color: 'var(--color-primary)',
   marginLeft: variables.gap.small,
 }).toString();
 
