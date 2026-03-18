@@ -1,4 +1,4 @@
-import {
+import React, {
   createContext, useEffect, useState, memo,
 } from 'react';
 import { useTheme } from '@shopgate/engage/styles';
@@ -6,13 +6,8 @@ import { type Breakpoint } from '..';
 
 export const ActiveBreakpointContext = createContext<Breakpoint | undefined>('' as Breakpoint);
 
-type ActiveBreakpointProviderProps = {
-  children: React.ReactNode;
-};
-
 /**
  * Provides the current active breakpoint to child components.
- * @param props The component props
  * @returns The ActiveBreakpointProvider component
  */
 const ActiveBreakpointProvider = ({ children }: ActiveBreakpointProviderProps) => {
@@ -57,6 +52,10 @@ const ActiveBreakpointProvider = ({ children }: ActiveBreakpointProviderProps) =
       {children}
     </ActiveBreakpointContext.Provider>
   );
+};
+
+type ActiveBreakpointProviderProps = {
+  children: React.ReactNode;
 };
 
 export default memo(ActiveBreakpointProvider);

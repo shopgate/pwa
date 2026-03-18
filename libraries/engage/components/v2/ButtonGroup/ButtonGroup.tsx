@@ -3,56 +3,70 @@ import capitalize from 'lodash/capitalize';
 import { makeStyles } from '@shopgate/engage/styles';
 import type { PaletteColorsWithMain } from '@shopgate/engage/styles';
 
-export interface ButtonGroupOwnProps {
-  /**
-   * The variant to use.
-   * @default 'contained'
-   */
-  variant?: 'contained' | 'outlined' | 'text';
-  /**
-   * The size of the component.
-   * @default 'medium'
-   */
-  size?: 'small' | 'medium' | 'large';
-  /**
-   * The orientation of the buttons in the group.
-   * @default 'horizontal'
-   */
-  orientation?: 'horizontal' | 'vertical';
-  /**
-   * If true, no elevation is used for contained buttons.
-   * @default false
-   */
-  disableElevation?: boolean;
-  /**
-   * The color of the component.
-   * @default 'inherit'
-   */
-  color?: PaletteColorsWithMain | 'inherit';
-  /**
-   * If true, the buttons will take up the full width of their container.
-   * @default false
-   */
-  fullWidth?: boolean;
-  /**
-   * If true, the ripple effect will be disabled.
-   * @default false
-   */
-  disableRipple?: boolean;
-  /**
-   * If true, the buttons will be disabled.
-   * @default false
-   */
-  disabled?: boolean;
-  className?: string;
-  /**
-   * Override or extend the styles applied to the component.
-   */
-  classes?: Partial<ReturnType<typeof useStyles>['classes']>;
-  children: React.ReactNode;
-}
+/**
+ * The ButtonGroup component can be used to group related buttons.
+ */
+const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
+  const {
+    variant = 'contained',
+    size = 'medium',
+    orientation = 'horizontal',
+    disableElevation = false,
+    fullWidth = false,
+    disableRipple = false,
+    disabled = false,
+    color = 'inherit',
+    className,
+    children,
+    ...other
+  } = props;
 
-export type ButtonGroupProps = ButtonGroupOwnProps & React.HTMLAttributes<HTMLDivElement>
+  const { classes, cx } = useStyles({
+    color,
+    variant,
+  }, { props: { classes: props.classes } });
+
+  const buttonClassName = cx(
+    classes.grouped,
+    classes[`grouped${capitalize(orientation)}`],
+    classes[`grouped${capitalize(variant)}`],
+    classes[`grouped${capitalize(variant)}${capitalize(orientation)}`],
+    {
+      [classes.disabled]: disabled,
+    }
+  );
+
+  return (
+    <div
+      role="group"
+      className={cx(classes.root, {
+        [classes.contained]: variant === 'contained',
+        [classes.vertical]: orientation === 'vertical',
+        [classes.fullWidth]: fullWidth,
+        [classes.disableElevation]: disableElevation,
+      }, className)}
+      ref={ref}
+      {...other}
+    >
+      {React.Children.map(children, (child) => {
+        if (!React.isValidElement(child)) {
+          return null;
+        }
+
+        return React.cloneElement(child, {
+          className: cx(buttonClassName, child.props.className),
+          color: child.props.color || color,
+          disabled: child.props.disabled || disabled,
+          disableElevation: child.props.disableElevation || disableElevation,
+          disableRipple,
+          fullWidth,
+          size: child.props.size || size,
+          variant: child.props.variant || variant,
+        });
+      })}
+    </div>
+  );
+});
 
 const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
   name: 'ButtonGroup',
@@ -191,69 +205,55 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
   };
 });
 
-/**
- * The ButtonGroup component can be used to group related buttons.
- */
-const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) => {
-  const {
-    variant = 'contained',
-    size = 'medium',
-    orientation = 'horizontal',
-    disableElevation = false,
-    fullWidth = false,
-    disableRipple = false,
-    disabled = false,
-    color = 'inherit',
-    className,
-    children,
-    ...other
-  } = props;
+export interface ButtonGroupOwnProps {
+  /**
+   * The variant to use.
+   * @default 'contained'
+   */
+  variant?: 'contained' | 'outlined' | 'text';
+  /**
+   * The size of the component.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium' | 'large';
+  /**
+   * The orientation of the buttons in the group.
+   * @default 'horizontal'
+   */
+  orientation?: 'horizontal' | 'vertical';
+  /**
+   * If true, no elevation is used for contained buttons.
+   * @default false
+   */
+  disableElevation?: boolean;
+  /**
+   * The color of the component.
+   * @default 'inherit'
+   */
+  color?: PaletteColorsWithMain | 'inherit';
+  /**
+   * If true, the buttons will take up the full width of their container.
+   * @default false
+   */
+  fullWidth?: boolean;
+  /**
+   * If true, the ripple effect will be disabled.
+   * @default false
+   */
+  disableRipple?: boolean;
+  /**
+   * If true, the buttons will be disabled.
+   * @default false
+   */
+  disabled?: boolean;
+  className?: string;
+  /**
+   * Override or extend the styles applied to the component.
+   */
+  classes?: Partial<ReturnType<typeof useStyles>['classes']>;
+  children: React.ReactNode;
+}
 
-  const { classes, cx } = useStyles({
-    color,
-    variant,
-  }, { props: { classes: props.classes } });
-
-  const buttonClassName = cx(
-    classes.grouped,
-    classes[`grouped${capitalize(orientation)}`],
-    classes[`grouped${capitalize(variant)}`],
-    classes[`grouped${capitalize(variant)}${capitalize(orientation)}`],
-    {
-      [classes.disabled]: disabled,
-    }
-  );
-
-  return (
-    <div
-      role="group"
-      className={cx(classes.root, {
-        [classes.contained]: variant === 'contained',
-        [classes.vertical]: orientation === 'vertical',
-        [classes.fullWidth]: fullWidth,
-        [classes.disableElevation]: disableElevation,
-      }, className)}
-      ref={ref}
-      {...other}
-    >
-      {React.Children.map(children, (child) => {
-        if (!React.isValidElement(child)) {
-          return null;
-        }
-
-        return React.cloneElement(child, {
-          className: cx(buttonClassName, child.props.className),
-          color: child.props.color || color,
-          disabled: child.props.disabled || disabled,
-          disableElevation: child.props.disableElevation || disableElevation,
-          disableRipple,
-          fullWidth,
-          size: child.props.size || size,
-          variant: child.props.variant || variant,
-        });
-      })}
-    </div>
-  );
-});
+export type ButtonGroupProps = ButtonGroupOwnProps & React.HTMLAttributes<HTMLDivElement>
 
 export default ButtonGroup;

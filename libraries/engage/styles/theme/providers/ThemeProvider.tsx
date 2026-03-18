@@ -24,14 +24,6 @@ export const ColorSchemeContext = createContext<ColorSchemeContextValue>({
   setMode: () => '',
 });
 
-type ThemeProviderProps = {
-  /**
-   * The theme object to provide to the context.
-   */
-  theme: ThemeInternal;
-  children: React.ReactNode;
-}
-
 /**
  * The ThemeProvider component provides the theme context to its children.
  */
@@ -69,5 +61,13 @@ const ThemeProvider = ({
     </ColorSchemeContext.Provider>
   );
 };
+
+type ThemeProviderProps = {
+  /**
+   * The theme object to provide to the context.
+   */
+  theme: ThemeInternal;
+  children: React.ReactNode;
+}
 
 export default memo(ThemeProvider);
