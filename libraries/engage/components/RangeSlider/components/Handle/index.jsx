@@ -1,7 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cxs from 'classnames';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  root: {
+    top: '50%',
+    position: 'absolute',
+    cursor: 'pointer',
+    ':first-child': {
+      left: 0,
+      transform: 'translate(-50%, -50%)',
+    },
+
+    ':last-child': {
+      left: 'auto',
+      right: 0,
+      transform: 'translate(50%, -50%)',
+    },
+  },
+});
 
 /**
  * The range slider handle component.
@@ -16,6 +34,7 @@ const RangeSliderHandle = (props) => {
   const {
     active, index, onTouchStart, classNames, useMouseEvents,
   } = props;
+  const { classes } = useStyles();
 
   const style = { zIndex: Number(active) || 0 };
   const eventHandler = {
@@ -24,7 +43,7 @@ const RangeSliderHandle = (props) => {
 
   return (
     <div
-      className={cxs(classNames.handleOuter, styles, 'engage__range-slider__handle')}
+      className={cxs(classNames.handleOuter, classes.root, 'engage__range-slider__handle')}
       style={style}
       {...eventHandler}
     >

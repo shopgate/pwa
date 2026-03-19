@@ -1,9 +1,40 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Button from '@shopgate/pwa-ui-shared/Button';
-import { root, wrapper } from './Tab.style';
 import { ViewContext } from '../../View';
+
+const useStyles = makeStyles()({
+  root: {
+    '&&': {
+      maxWidth: 200,
+      minWidth: 72,
+      position: 'relative',
+      boxSizing: 'border-box',
+      minHeight: 48,
+      flexShrink: 0,
+      flexGrow: 1,
+      padding: '6px 6px',
+      overflow: 'hidden',
+      whiteSpace: 'normal',
+      textAlign: 'center',
+    },
+    [responsiveMediaQuery('<=xs', { appAlways: true })]: {
+      flexShrink: 1,
+      flexGrow: 1,
+      flexBasis: 0,
+      maxWidth: 'none',
+    },
+  },
+  wrapper: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+    flexDirection: 'column',
+  },
+});
 
 /**
  * Tab component
@@ -11,6 +42,7 @@ import { ViewContext } from '../../View';
  * @returns {JSX}
  */
 const Tab = (props) => {
+  const { classes } = useStyles();
   const {
     className,
     disabled = false,
@@ -51,7 +83,7 @@ const Tab = (props) => {
     <Button
       flat
       type={selected ? 'secondary' : 'regular'}
-      className={classNames(root, className)}
+      className={classNames(classes.root, className)}
       role="tab"
       aria-selected={selected}
       disabled={disabled}
@@ -59,7 +91,7 @@ const Tab = (props) => {
       onFocus={handleFocus}
       tabIndex={selected ? 0 : -1}
     >
-      <span className={wrapper}>
+      <span className={classes.wrapper}>
         {label}
       </span>
       {indicator}

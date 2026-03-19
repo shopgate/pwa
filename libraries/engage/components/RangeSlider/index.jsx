@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import cxs from 'classnames';
-import styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
 import Handle from './components/Handle';
 import { isTouchDevice } from '../../core';
 import {
@@ -18,7 +18,11 @@ import {
  */
 class RangeSlider extends PureComponent {
   static propTypes = {
-    animationSpeed: PropTypes.number, // The animation speed of the handles in px/sec.
+    animationSpeed: PropTypes.number,
+    classes: PropTypes.shape({
+      outerRange: PropTypes.string,
+      range: PropTypes.string,
+    }), // The animation speed of the handles in px/sec.
     classNames: PropTypes.shape({
       container: PropTypes.string, // The container style.
       handleInner: PropTypes.string, // The inner handle style.
@@ -36,6 +40,10 @@ class RangeSlider extends PureComponent {
   };
 
   static defaultProps = {
+    classes: {
+      outerRange: '',
+      range: '',
+    },
     animationSpeed: 500,
     classNames: {},
     easing: 'linear',
@@ -274,6 +282,7 @@ class RangeSlider extends PureComponent {
    */
   render() {
     const { classNames, animationSpeed } = this.props;
+    const classes = withStyles.getClasses(this.props);
     const speed = Math.round(((1000 / animationSpeed) * this.draggedHandlePixelOffset));
     const rangeStyle = getRangeStyle(
       this.state.rangeMin,
@@ -283,8 +292,8 @@ class RangeSlider extends PureComponent {
 
     return (
       <div className={cxs(classNames.container, 'engage__range-slider')} onMouseDown={this.handleRangeTouch} aria-hidden>
-        <div className={cxs(classNames.outerRange, styles.outerRange)} ref={this.domElement}>
-          <div className={cxs(classNames.range, styles.range)} style={rangeStyle}>
+        <div className={cxs(classNames.outerRange, classes.outerRange)} ref={this.domElement}>
+          <div className={cxs(classNames.range, classes.range)} style={rangeStyle}>
             <Handle
               index={0}
               onTouchStart={this.handleTouchStart}
@@ -306,4 +315,17 @@ class RangeSlider extends PureComponent {
   }
 }
 
-export default RangeSlider;
+export default withStyles(
+  RangeSlider,
+  {
+    outerRange: {
+      minHeight: 1,
+      position: 'relative',
+    },
+    range: {
+      left: 0,
+      right: 0,
+      position: 'absolute',
+    },
+  }
+);

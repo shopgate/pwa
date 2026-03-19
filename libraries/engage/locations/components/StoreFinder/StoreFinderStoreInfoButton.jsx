@@ -1,5 +1,4 @@
 import React, { useCallback, useContext } from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { RippleButton } from '@shopgate/engage/components';
 import { historyPush } from '@shopgate/engage/core';
@@ -56,7 +55,7 @@ const StoreFinderStoreInfoButton = ({ openStoreDetail }) => {
     <div className={classes.showStoreInfoButtonWrapper}>
       <RippleButton
         onClick={handleClick}
-        className={classNames(classes.showStoreInfoButton)}
+        className={classes.showStoreInfoButton}
         disabled={isLoading}
       >
         {i18n.text('locations.store_info')}
