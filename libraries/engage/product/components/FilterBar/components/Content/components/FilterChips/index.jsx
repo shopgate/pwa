@@ -2,12 +2,25 @@ import React, { useCallback, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import { router } from '@virtuous/conductor';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { Chip, ChipLayout } from '@shopgate/engage/components';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
 import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
-import { container, label } from './style';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  container: {
+    overflow: 'auto',
+    padding: `0 ${variables.gap.small * 1.5}px`,
+    width: '100%',
+  },
+  label: {
+    color: 'var(--color-text-high-emphasis)',
+  },
+});
 
 /**
  * The FilterChips component.
@@ -22,6 +35,7 @@ const FilterChips = ({
   currentPathname,
   onChipCountUpdate,
 }) => {
+  const { classes } = useStyles();
   const handleRemove = useCallback((id, value) => {
     const { [id]: selected, ...rest } = filters;
 
@@ -96,7 +110,7 @@ const FilterChips = ({
               removeLabel={removeLabel}
               editLabel={editLabel}
             >
-              <span className={label}>
+              <span className={classes.label}>
                 {pricesFormatted}
               </span>
             </Chip>
@@ -123,7 +137,7 @@ const FilterChips = ({
                 removeLabel={removeLabel}
                 editLabel={editLabel}
               >
-                <span className={label}>
+                <span className={classes.label}>
                   {filterFormatted}
                 </span>
               </Chip>
@@ -146,7 +160,7 @@ const FilterChips = ({
   }
 
   return (
-    <div className={`${container} theme__filter-bar__filter-chips`}>
+    <div className={`${classes.container} theme__filter-bar__filter-chips`}>
       <ChipLayout
         moreLabel="filter.more"
         handleMoreButton={openFilters}

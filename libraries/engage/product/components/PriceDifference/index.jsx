@@ -1,8 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Price from '@shopgate/pwa-ui-shared/Price';
-import styles from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  positive: {
+    color: colors.shade4,
+    ':before': {
+      content: '"+"',
+    },
+  },
+  negative: {
+    color: 'var(--color-primary)',
+  },
+});
 
 /**
  * The price difference component
@@ -13,6 +28,8 @@ import styles from './style';
  * @return {JSX}
  */
 const PriceDifference = ({ className, currency, difference }) => {
+  const { classes } = useStyles();
+
   if (difference === 0) {
     return null;
   }
@@ -20,8 +37,8 @@ const PriceDifference = ({ className, currency, difference }) => {
   const priceClassName = classNames(
     className,
     {
-      [styles.positive]: difference > 0,
-      [styles.negative]: difference < 0,
+      [classes.positive]: difference > 0,
+      [classes.negative]: difference < 0,
     }
   );
 

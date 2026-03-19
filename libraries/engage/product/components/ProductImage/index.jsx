@@ -3,17 +3,92 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import classnames from 'classnames';
 import { logger } from '@shopgate/pwa-core';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeConfig, themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { withStyles } from '@shopgate/engage/styles';
 import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import ProductImagePlaceholder from './ProductImagePlaceholder';
-import styles from './style';
 import connect from './connector';
 
 const { colors } = themeConfig;
+
+const placeholderIconScale = 0.65;
+
+/**
+ * Derives the image aspect ratio from explicit ratio props or the largest resolution.
+ * @param {Object} props The component props.
+ * @param {number[]} [props.ratio] Optional width/height ratio tuple.
+ * @param {Array<{ width: number, height: number }>} props.resolutions Available image resolutions.
+ * @returns {string} The computed ratio as a fixed decimal string.
+ */
+const getImageRatio = ({ ratio, resolutions } = {}) => {
+  if (Array.isArray(ratio) && ratio.length === 2 && ratio[0]) {
+    const [x, y] = ratio;
+    return ((y / x)).toFixed(3);
+  }
+
+  if (Array.isArray(resolutions) && resolutions.length > 0) {
+    const { width, height } = resolutions[resolutions.length - 1];
+
+    if (width && height) {
+      return ((height / width)).toFixed(3);
+    }
+  }
+
+  return '1.000';
+};
+
+/**
+ * Creates the ProductImage class names based on the current component props.
+ * @param {Object} _ Unused theme argument from `withStyles`.
+ * @param {Object} props The component props.
+ * @returns {Object} The style object for `withStyles`.
+ */
+const styles = (_, props) => ({
+  placeholderContainer: {
+    position: 'relative',
+    width: '100%',
+    ':before': {
+      display: 'block',
+      content: '""',
+      width: '100%',
+      paddingTop: `${100 * getImageRatio(props)}%`,
+    },
+  },
+  placeholderContent: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    top: 0,
+    textAlign: 'center',
+  },
+  placeholder: {
+    position: 'absolute',
+    width: `${placeholderIconScale * 100}% !important`,
+    height: `${placeholderIconScale * 100}% !important`,
+    top: `${(1.0 - placeholderIconScale) * 50}%`,
+    left: `${(1.0 - placeholderIconScale) * 50}%`,
+    color: themeColors.placeholder,
+  },
+  innerShadow: {
+    position: 'relative',
+    overflow: 'hidden',
+    ':after': {
+      display: 'block',
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      boxShadow: themeShadows.productImage,
+      pointerEvents: 'none',
+    },
+  },
+});
 
 /**
  * The product image component.
@@ -28,6 +103,12 @@ class ProductImage extends Component {
   static propTypes = {
     alt: PropTypes.string,
     animating: PropTypes.bool,
+    classes: PropTypes.shape({
+      innerShadow: PropTypes.string,
+      placeholder: PropTypes.string,
+      placeholderContainer: PropTypes.string,
+      placeholderContent: PropTypes.string,
+    }),
     className: PropTypes.string,
     forcePlaceholder: PropTypes.bool,
     highestResolutionLoaded: PropTypes.func,
@@ -48,6 +129,7 @@ class ProductImage extends Component {
     alt: null,
     animating: true,
     className: null,
+    classes: {},
     forcePlaceholder: false,
     highestResolutionLoaded: () => { },
     noBackground: false,
@@ -118,27 +200,14 @@ class ProductImage extends Component {
   };
 
   /**
-   * Sets the image ratio based on width and height.
-   * @return {number} The image ratio.
-   */
-  getImageRatio = () => {
-    if (this.props.ratio) {
-      const [x, y] = this.props.ratio;
-      return ((y / x)).toFixed(3);
-    }
-
-    const { width, height } = this.props.resolutions[this.props.resolutions.length - 1];
-    return ((height / width)).toFixed(3);
-  };
-
-  /**
    * Renders the component.
    * @returns {JSX.Element}
    */
   render() {
     const {
-      noBackground, className, placeholderSrc,
+      noBackground, className, placeholderSrc, classes,
     } = this.props;
+    const { classes: ignoredClasses, ...imageProps } = this.props;
     let { showInnerShadow } = this.props.widgetSettings;
 
     if (typeof showInnerShadow === 'undefined') {
@@ -150,8 +219,8 @@ class ProductImage extends Component {
       return (
         <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
           <div
-            className={classnames(styles.placeholderContainer(this.getImageRatio()), {
-              [styles.innerShadow]: showInnerShadow,
+            className={classnames(classes.placeholderContainer, {
+              [classes.innerShadow]: showInnerShadow,
               [className]: !!className,
             })}
           >
@@ -162,8 +231,8 @@ class ProductImage extends Component {
                 noBackground={noBackground}
               />
             ) : (
-              <div aria-hidden className={styles.placeholderContent} data-test-id="placeHolder">
-                <PlaceholderIcon className={styles.placeholder} />
+              <div aria-hidden className={classes.placeholderContent} data-test-id="placeHolder">
+                <PlaceholderIcon className={classes.placeholder} />
               </div>
             )}
           </div>
@@ -182,8 +251,8 @@ class ProductImage extends Component {
       >
         <div className={`${className} engage__product__product-image`}>
           <Image
-            {...this.props}
-            className={showInnerShadow ? styles.innerShadow : ''}
+            {...imageProps}
+            className={showInnerShadow ? classes.innerShadow : ''}
             backgroundColor={noBackground ? 'transparent' : colors.light}
             onError={this.imageLoadingFailed}
             aria-hidden={!this.props.alt}
@@ -196,4 +265,4 @@ class ProductImage extends Component {
 
 export { ProductImage as UnwrappedProductImage };
 
-export default connect(withWidgetSettings(ProductImage, '@shopgate/engage/product/ProductImage'));
+export default connect(withWidgetSettings(withStyles(ProductImage, styles), '@shopgate/engage/product/ProductImage'));

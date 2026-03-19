@@ -2,7 +2,6 @@ import React, {
   useState, useEffect, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getStatusBarStyleStorage } from '@shopgate/engage/development/selectors';
@@ -72,7 +71,7 @@ const SimulatedInsetTop = ({
   onClick,
   ...props
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   // State to hold the current time string for the status bar
   const [time, setTime] = useState(getTime());
 
@@ -88,7 +87,7 @@ const SimulatedInsetTop = ({
   const { statusBarStyle } = useSelector(getStatusBarStyleStorage);
 
   const containerClasses = useMemo(
-    () => classNames(classes.container, {
+    () => cx(classes.container, {
       [classes.containerHighlight]: highlightInset,
       [classes.styleDark]: statusBarStyle === 'dark',
       [classes.styleLight]: statusBarStyle === 'light',
@@ -101,7 +100,7 @@ const SimulatedInsetTop = ({
     <div
       aria-hidden
       role="presentation"
-      className={classNames(containerClasses)}
+      className={containerClasses}
       {...props}
       onClick={onClick}
     >

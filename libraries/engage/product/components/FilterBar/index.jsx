@@ -6,12 +6,18 @@ import { ResponsiveContainer } from '@shopgate/engage/components';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/engage';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
+import { makeStyles } from '@shopgate/engage/styles';
 import Provider from './FilterBarProvider';
 import Content from './components/Content';
 import Modal from './components/FilterModal';
-import styles from './style';
 
 const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  root: {
+    transition: 'transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+  },
+});
 
 /**
  * The FilterBar component.
@@ -19,6 +25,7 @@ const { colors } = themeConfig;
  * @returns {JSX}
  */
 function FilterBar({ filters, categoryId }) {
+  const { classes } = useStyles();
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
   const handleChipCountUpdate = useCallback((count) => {
@@ -43,7 +50,7 @@ function FilterBar({ filters, categoryId }) {
   );
 
   return (
-    <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={style}>
+    <div className={`${classes.root} theme__filter-bar`} data-test-id="filterBar" style={style}>
       <SortProvider scope={sortScope}>
         <Provider>
           <Content onChipCountUpdate={handleChipCountUpdate} />

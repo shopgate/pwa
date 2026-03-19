@@ -1,8 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import noop from 'lodash/noop';
+import { makeStyles } from '@shopgate/engage/styles';
 import UnitQuantityPicker from './UnitQuantityPicker';
-import { small, big } from './styles';
+
+const useStyles = makeStyles()({
+  small: {
+    width: 120,
+  },
+  big: {
+    width: 170,
+  },
+});
 
 /**
  * @param {Object} props The component props.
@@ -11,6 +21,7 @@ import { small, big } from './styles';
 const CartUnitQuantityPicker = ({
   unit, value, onChange, classNames, hasCatchWeight,
 }) => {
+  const { classes } = useStyles();
   const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
 
   const {
@@ -20,7 +31,10 @@ const CartUnitQuantityPicker = ({
 
   return (
     <UnitQuantityPicker
-      className={!hasUnitWithDecimals ? withDecimals : withoutDecimals}
+      className={cx(
+        !hasUnitWithDecimals ? classes.big : classes.small,
+        !hasUnitWithDecimals ? withDecimals : withoutDecimals
+      )}
       unit={hasUnitWithDecimals ? unit : null}
       maxDecimals={hasUnitWithDecimals ? 2 : 0}
       incrementStep={hasUnitWithDecimals ? 0.25 : 1}
@@ -45,10 +59,7 @@ CartUnitQuantityPicker.propTypes = {
 CartUnitQuantityPicker.defaultProps = {
   unit: null,
   onChange: noop,
-  classNames: {
-    withDecimals: big,
-    withoutDecimals: small,
-  },
+  classNames: {},
   hasCatchWeight: false,
 };
 
