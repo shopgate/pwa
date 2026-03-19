@@ -1,9 +1,16 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Availability, SurroundPortals } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY } from '@shopgate/pwa-common-commerce/product';
 import connect from './VariantAvailability.connector';
-import styles from './VariantAvailability.style';
+
+const useStyles = makeStyles()({
+  availability: {
+    float: 'right',
+    pointerEvents: 'none',
+  },
+});
 
 /**
  * The VariantAvailability component.
@@ -11,6 +18,8 @@ import styles from './VariantAvailability.style';
  * @returns {JSX}
  */
 const VariantAvailability = ({ availability }) => {
+  const { classes } = useStyles();
+
   if (!availability) {
     return null;
   }
@@ -21,7 +30,7 @@ const VariantAvailability = ({ availability }) => {
       portalName={PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY}
       portalProps={availability}
     >
-      <Availability className={styles} state={state} text={text} />
+      <Availability className={classes.availability} state={state} text={text} />
     </SurroundPortals>
   );
 };

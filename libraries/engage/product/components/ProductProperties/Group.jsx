@@ -1,20 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { subgroup } from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables: { gap } = {} } = themeConfig;
+
+const useStyles = makeStyles()({
+  subgroup: {
+    paddingTop: gap.small,
+    fontWeight: 600,
+    textTransform: 'uppercase',
+    fontSize: '0.75rem',
+  },
+});
 
 /**
  * Renders a product properties group header.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Group = ({ group }) => (
-  <tr>
-    {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-    <td colSpan="2" className={subgroup}>
-      <span dangerouslySetInnerHTML={{ __html: group }} />
-    </td>
-  </tr>
-);
+const Group = ({ group }) => {
+  const { classes } = useStyles();
+
+  return (
+    <tr>
+      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+      <td colSpan="2" className={classes.subgroup}>
+        <span dangerouslySetInnerHTML={{ __html: group }} />
+      </td>
+    </tr>
+  );
+};
 
 Group.propTypes = {
   group: PropTypes.string.isRequired,

@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -6,9 +6,23 @@ import {
   PRODUCT_TIERS_AFTER,
   PRODUCT_TIERS_BEFORE,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { makeStyles } from '@shopgate/engage/styles';
 import Tier from './components/Tier';
 import connect from './connector';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  wrapper: {
+    marginTop: 4,
+    fontSize: '0.875rem',
+  },
+  tier: {
+    display: 'block',
+    lineHeight: 1.35,
+  },
+  price: {
+    fontWeight: 500,
+  },
+});
 
 /**
  * The Tiers component.
@@ -16,6 +30,8 @@ import styles from './style';
  * @return {JSX}
  */
 const Tiers = ({ price }) => {
+  const { classes } = useStyles();
+
   if (!(price && price.tiers && price.tiers.length > 0)) {
     return null;
   }
@@ -24,8 +40,18 @@ const Tiers = ({ price }) => {
     <>
       <Portal name={PRODUCT_TIERS_BEFORE} />
       <Portal name={PRODUCT_TIERS}>
-        <div className={`${styles.wrapper} engage__product__header__tiers`}>
-          {price.tiers.map(tier => <Tier tier={tier} price={price} key={`${Object.values(tier).join('_')}`} />)}
+        <div className={`${classes.wrapper} engage__product__header__tiers`}>
+          {price.tiers.map(tier => (
+            <Tier
+              tier={tier}
+              price={price}
+              classes={{
+                tier: classes.tier,
+                price: classes.price,
+              }}
+              key={`${Object.values(tier).join('_')}`}
+            />
+          ))}
         </div>
       </Portal>
       <Portal name={PRODUCT_TIERS_AFTER} />

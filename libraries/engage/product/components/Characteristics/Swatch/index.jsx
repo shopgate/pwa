@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 import { VariantSwatch } from '@shopgate/engage/product/components';
-import styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import transition from '../transition';
+
+const { colors } = themeConfig;
 
 /**
  * A single characteristic swatch type.
@@ -21,10 +24,20 @@ class Swatch extends PureComponent {
     label: PropTypes.string.isRequired,
     select: PropTypes.func.isRequired,
     values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    classes: PropTypes.shape({
+      items: PropTypes.string,
+      label: PropTypes.string,
+      labelDisabled: PropTypes.string,
+    }),
     selected: PropTypes.string,
   };
 
   static defaultProps = {
+    classes: {
+      items: '',
+      label: '',
+      labelDisabled: '',
+    },
     selected: null,
   };
 
@@ -77,6 +90,7 @@ class Swatch extends PureComponent {
     const {
       id, disabled, charRef, label, values,
     } = this.props;
+    const classes = withStyles.getClasses(this.props);
 
     const swatch = {
       id,
@@ -90,7 +104,7 @@ class Swatch extends PureComponent {
           {state => (
             <div
               aria-hidden
-              className={classNames(styles.label, { [styles.labelDisabled]: disabled })}
+              className={classNames(classes.label, { [classes.labelDisabled]: disabled })}
               ref={charRef}
               style={transition[state]}
               data-test-id={label}
@@ -99,7 +113,7 @@ class Swatch extends PureComponent {
             </div>
           )}
         </Transition>
-        <div className={styles.items}>
+        <div className={classes.items}>
           <VariantSwatch swatch={swatch} onClick={this.handleItemSelection} />
         </div>
       </>
@@ -107,4 +121,26 @@ class Swatch extends PureComponent {
   }
 }
 
-export default Swatch;
+export default withStyles(
+  Swatch,
+  () => ({
+    label: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      minHeight: 56,
+      outline: 0,
+      padding: '12px 16px',
+      transition: 'background 250ms ease-in, color 250ms ease-in',
+      fontWeight: 500,
+      lineHeight: 1.125,
+    },
+    labelDisabled: {
+      color: colors.shade4,
+    },
+    items: {
+      padding: '0 16px',
+      marginBottom: 16,
+    },
+  })
+);

@@ -1,12 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals, Swiper } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_MEDIA } from '@shopgate/pwa-common-commerce/product';
 import { MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '../../constants';
 import MediaImage from './components/MediaImage';
 import MediaVideo from './components/MediaVideo';
 import connect from './connector';
-import { container } from './style';
+
+const useStyles = makeStyles()({
+  container: {
+    transform: 'translate3d(0, 0, 0)',
+    position: 'relative',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+});
 
 const typeRenders = {
   [MEDIA_TYPE_IMAGE]: MediaImage,
@@ -26,6 +37,7 @@ const MediaSlider = ({
   className,
   paginationType,
 }) => {
+  const { classes } = useStyles();
   let currentSlide = 0;
 
   /**
@@ -48,7 +60,7 @@ const MediaSlider = ({
   }
 
   return (
-    <div className={container}>
+    <div className={classes.container}>
       <SurroundPortals portalName={PRODUCT_MEDIA}>
         {media &&
           <Swiper

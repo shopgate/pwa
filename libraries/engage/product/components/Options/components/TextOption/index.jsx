@@ -1,14 +1,17 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import debounce from 'lodash/debounce';
 import { TextField, InfoIcon } from '@shopgate/engage/components';
 import { withShowModal } from '@shopgate/engage/core/hocs';
+import { withStyles } from '@shopgate/engage/styles';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import transition from '@shopgate/engage/product/components/Characteristics/transition';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import OptionInformation from './components/OptionInfo';
-import styles from './style';
+
+const { colors, variables } = themeConfig;
 
 /**
  * The TextOption component
@@ -22,11 +25,23 @@ class TextOption extends PureComponent {
     price: PropTypes.number.isRequired,
     required: PropTypes.bool.isRequired,
     showModal: PropTypes.func.isRequired,
+    classes: PropTypes.shape({
+      element: PropTypes.string,
+      infoIcon: PropTypes.string,
+      row: PropTypes.string,
+      wrapper: PropTypes.string,
+    }),
     info: PropTypes.string,
     value: PropTypes.string,
   };
 
   static defaultProps = {
+    classes: {
+      element: '',
+      infoIcon: '',
+      row: '',
+      wrapper: '',
+    },
     info: null,
     value: null,
   };
@@ -84,7 +99,10 @@ class TextOption extends PureComponent {
     if (!this.props.info) {
       return null;
     }
-    const { label, info, showModal } = this.props;
+    const {
+      label, info, showModal,
+    } = this.props;
+    const classes = withStyles.getClasses(this.props);
     return (
       <div
         onClick={() => showModal({
@@ -93,7 +111,7 @@ class TextOption extends PureComponent {
         })}
         aria-hidden
       >
-        <InfoIcon size={24} className={styles.infoIcon} />
+        <InfoIcon size={24} className={classes.infoIcon} />
       </div>
     );
   };
@@ -130,13 +148,14 @@ class TextOption extends PureComponent {
       price,
       info,
     } = this.props;
+    const classes = withStyles.getClasses(this.props);
     const optionInfoId = id;
     return (
-      <div className={styles.row}>
+      <div className={classes.row}>
         <Transition in={this.state.highlight} timeout={700} onEntered={this.removeHighlight}>
           {state => (
             <>
-              <div className={styles.wrapper} style={transition[state]}>
+              <div className={classes.wrapper} style={transition[state]}>
                 <TextField
                   setRef={this.setRef}
                   name={`text_${id}`}
@@ -148,7 +167,7 @@ class TextOption extends PureComponent {
                   rightElement={this.infoIcon()}
                   data-test-id={label}
                   hasUnderline={false}
-                  className={styles.element}
+                  className={classes.element}
                   attributes={{
                     'aria-describedby': optionInfoId,
                   }}
@@ -169,10 +188,41 @@ class TextOption extends PureComponent {
   }
 }
 
+const StyledTextOption = withStyles(
+  TextOption,
+  () => ({
+    row: {
+      marginBottom: variables.gap.small,
+    },
+    wrapper: {
+      backgroundColor: 'var(--color-background-accent)',
+      padding: `${variables.gap.small}px ${variables.gap.big}px`,
+      minHeight: 56,
+    },
+    element: {
+      paddingBottom: 0,
+      '& label': {
+        fontWeight: 400,
+        color: 'var(--color-text-high-emphasis, inherit)',
+      },
+      '& input': {
+        fontWeight: 500,
+        color: 'var(--color-text-high-emphasis)',
+      },
+      '& .placeholder': {
+        color: 'var(--color-text-low-emphasis)',
+      },
+    },
+    infoIcon: {
+      color: colors.shade9,
+    },
+  })
+);
+
 export default withShowModal(props => (
   <ProductContext.Consumer>
     {({ conditioner }) => (
-      <TextOption conditioner={conditioner} {...props} />
+      <StyledTextOption conditioner={conditioner} {...props} />
     )}
   </ProductContext.Consumer>
 ));

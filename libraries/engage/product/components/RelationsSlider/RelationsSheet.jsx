@@ -1,18 +1,34 @@
 import React, {
-  useState, useCallback, Fragment, memo,
+  useState, useCallback, memo,
 } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useWidgetSettings, useTheme } from '../../../core';
 import { SheetDrawer, I18n, Button } from '../../../components';
 import { WIDGET_ID } from './constants';
-import { showMore, sheet } from './style';
 import connect from './RelationsSheet.connector';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  showMore: {
+    position: 'absolute !important',
+    top: `-${variables.gap.small / 2}`,
+    right: 0,
+    padding: `${variables.gap.small / 2}px 0 !important`,
+  },
+  sheet: {
+    maxHeight: `calc(100vh - ${variables.navigator.height}px)`,
+  },
+});
 
 /**
  * Shows a Sheet Drawer with all related products.
  * @returns {JSX}
  */
 const RelationsSheet = memo(({ products: { products } }) => {
+  const { classes } = useStyles();
   const [show, setShow] = useState(false);
   const { headline } = useWidgetSettings(WIDGET_ID);
   const { ProductGrid } = useTheme();
@@ -28,11 +44,11 @@ const RelationsSheet = memo(({ products: { products } }) => {
 
   return (
     <>
-      <Button onClick={handleOpen} flat className={showMore}>
+      <Button onClick={handleOpen} flat className={classes.showMore}>
         <I18n.Text string="product.relations.showMore" />
       </Button>
       <SheetDrawer isOpen={show} title={headline} onClose={handleClose}>
-        <div className={sheet}>
+        <div className={classes.sheet}>
           <ProductGrid products={products} infiniteLoad={false} />
         </div>
       </SheetDrawer>

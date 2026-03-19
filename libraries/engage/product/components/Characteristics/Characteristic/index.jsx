@@ -1,10 +1,11 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 import { ResponsiveContainer, ArrowDropIcon } from '@shopgate/engage/components';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import Sheet from './components/Sheet';
-import styles from './style';
 import transition from '../transition';
 
 /**
@@ -22,6 +23,13 @@ class Characteristic extends PureComponent {
     label: PropTypes.string.isRequired,
     select: PropTypes.func.isRequired,
     values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    classes: PropTypes.shape({
+      arrow: PropTypes.string,
+      button: PropTypes.string,
+      buttonDisabled: PropTypes.string,
+      label: PropTypes.string,
+      selection: PropTypes.string,
+    }),
     selected: PropTypes.string,
   };
 
@@ -30,6 +38,13 @@ class Characteristic extends PureComponent {
   };
 
   static defaultProps = {
+    classes: {
+      arrow: '',
+      button: '',
+      buttonDisabled: '',
+      label: '',
+      selection: '',
+    },
     selected: null,
   };
 
@@ -115,11 +130,12 @@ class Characteristic extends PureComponent {
     const {
       disabled, selected, charRef, label,
     } = this.props;
+    const classes = withStyles.getClasses(this.props);
     const translatedLabel = __('product.pick_an_attribute', [label]);
     const buttonLabel = this.getButtonLabel(translatedLabel);
-    const classes = classNames(
-      styles.button,
-      { [styles.buttonDisabled]: disabled },
+    const buttonClasses = classNames(
+      classes.button,
+      { [classes.buttonDisabled]: disabled },
       'theme__product__characteristic'
     );
 
@@ -129,22 +145,22 @@ class Characteristic extends PureComponent {
         aria-disabled={disabled}
         aria-haspopup={!disabled}
         tabIndex={0}
-        className={classes}
+        className={buttonClasses}
         onClick={this.handleButtonClick}
         onKeyDown={() => { }}
         ref={charRef}
         style={transition[state]}
         data-test-id={label}
       >
-        {selected && <div className={`${styles.label} theme__product__characteristic__label`}>{label}</div>}
+        {selected && <div className={`${classes.label} theme__product__characteristic__label`}>{label}</div>}
         <div
-          className={`${styles.selection} theme__product__characteristic__selection`}
+          className={`${classes.selection} theme__product__characteristic__selection`}
           {...selected && { 'data-selected': true }}
         >
           {buttonLabel}
         </div>
         <ResponsiveContainer breakpoint=">xs" webOnly>
-          <div className={styles.arrow}>
+          <div className={classes.arrow}>
             <ArrowDropIcon />
           </div>
         </ResponsiveContainer>
@@ -184,4 +200,39 @@ class Characteristic extends PureComponent {
   }
 }
 
-export default Characteristic;
+export default withStyles(
+  Characteristic,
+  () => ({
+    button: {
+      background: 'var(--color-background-accent)',
+      color: 'var(--color-text-high-emphasis)',
+      position: 'relative',
+      cursor: 'pointer',
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      minHeight: 56,
+      outline: 0,
+      padding: '12px 16px',
+      marginBottom: 8,
+      transition: 'background 250ms ease-in, color 250ms ease-in',
+    },
+    buttonDisabled: {
+      color: `${themeColors.shade4} !important`,
+    },
+    label: {
+      fontSize: 12,
+      marginTop: -2,
+      marginBottom: 4,
+    },
+    selection: {
+      fontWeight: 500,
+      lineHeight: 1.125,
+    },
+    arrow: {
+      position: 'absolute',
+      right: 32,
+      fontSize: 20,
+    },
+  })
+);
