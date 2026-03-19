@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { i18n, historyPush } from '@shopgate/engage/core';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { RippleButton } from '@shopgate/engage/components';
 import AddressCard from './ProfileAddressCard';
 import { useProfileContext } from './Profile.provider';
@@ -17,20 +16,20 @@ const mapDispatchToProps = dispatch => ({
   push: props => dispatch(historyPush(props)),
 });
 
-const styles = {
-  title: css({
+const useStyles = makeStyles()({
+  title: {
     color: 'var(--color-text-high-emphasis)',
     lineHeight: 2.5,
     fontSize: 17,
     fontWeight: '600',
-  }).toString(),
-  container: css({
+  },
+  container: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     margin: -4,
-  }).toString(),
-  button: css({
+  },
+  button: {
     '&&': {
       marginTop: 8,
       marginRight: 16,
@@ -44,32 +43,33 @@ const styles = {
         marginRight: 0,
       },
     },
-  }).toString(),
-  ripple: css({
+  },
+  ripple: {
     padding: '8px 16px',
-  }).toString(),
-  actions: css({
+  },
+  actions: {
     display: 'flex',
     justifyContent: 'flex-end',
     flexDirection: 'row',
     [responsiveMediaQuery('<md', { webOnly: false })]: {
       flex: 1,
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * @returns {JSX}
  */
 const ProfileAddressBook = ({ push }) => {
+  const { classes } = useStyles();
   const { contacts, deleteContact, editContact } = useProfileContext();
 
   return (
     <div>
-      <span className={styles.title}>
+      <span className={classes.title}>
         {i18n.text('account.profile.address_book.title')}
       </span>
-      <div className={styles.container}>
+      <div className={classes.container}>
         {contacts && contacts.map(contact => (
           <AddressCard
             key={contact.id}
@@ -79,10 +79,10 @@ const ProfileAddressBook = ({ push }) => {
           />
         ))}
       </div>
-      <div className={styles.actions}>
+      <div className={classes.actions}>
         <RippleButton
-          className={styles.button}
-          rippleClassName={styles.ripple}
+          className={classes.button}
+          rippleClassName={classes.ripple}
           type="primary"
           onClick={() => push({ pathname: PROFILE_ADDRESS_PATH })}
         >

@@ -1,8 +1,8 @@
 import React from 'react';
-import { css } from 'glamor';
 import { connect } from 'react-redux';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getPreferredLocation, makeGetLocationInventory } from '../../selectors';
 import { I18n, SurroundPortals } from '../../../components';
 import { StockInfo } from '../StockInfo';
@@ -26,20 +26,20 @@ const makeMapStateToProps = () => {
   });
 };
 
-const styles = {
-  wrapper: css({
+const useStyles = makeStyles()({
+  wrapper: {
     flexDirection: 'row',
     alignItems: 'flex-end',
     fontSize: '0.65rem',
-  }),
-  text: css({
+  },
+  text: {
     margin: '0 !important',
 
-  }).toString(),
-  location: css({
+  },
+  location: {
     marginLeft: '0 !important',
-  }),
-};
+  },
+});
 
 /**
  * Renders visible stock information based on the given location.
@@ -49,6 +49,7 @@ const styles = {
 const StockInfoLists = ({
   preferredLocation, product, inventory, showStockInfo,
 }) => {
+  const { classes } = useStyles();
   if (!showStockInfo || !preferredLocation) {
     return null;
   }
@@ -61,17 +62,17 @@ const StockInfoLists = ({
   /* eslint-disable jsx-a11y/aria-role */
   return (
     <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO_LIST} portalProps={portalProps}>
-      <div className={styles.wrapper} role="text">
+      <div className={classes.wrapper} role="text">
         <PlaceholderLabel ready={!!inventory}>
           <StockInfo product={product} location={preferredLocation} />
           {' '}
           <I18n.Text
             string="locations.stock_info.pick_up_at"
             params={{ storeName: '' }}
-            className={styles.text}
+            className={classes.text}
           />
           {' '}
-          <span className={styles.location}>{preferredLocation.name}</span>
+          <span className={classes.location}>{preferredLocation.name}</span>
         </PlaceholderLabel>
       </div>
     </SurroundPortals>

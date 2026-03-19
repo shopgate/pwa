@@ -1,10 +1,20 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useWidgetStyles } from '../../../core';
 import SwatchContent from './SwatchContent';
 
 export const WIDGET_ID = '@shopgate/engage/product/Swatch';
+
+const useStyles = makeStyles()((_, {
+  swatchStyle,
+  itemStyle,
+  itemSelectedStyle,
+}) => ({
+  swatch: swatchStyle || {},
+  item: itemStyle || {},
+  itemSelected: itemSelectedStyle || {},
+}));
 
 /**
  * The swatch component.
@@ -13,15 +23,20 @@ export const WIDGET_ID = '@shopgate/engage/product/Swatch';
  */
 const Swatch = ({ swatch }) => {
   const styles = useWidgetStyles(WIDGET_ID);
+  const { classes } = useStyles({
+    swatchStyle: styles?.swatch,
+    itemStyle: styles?.item,
+    itemSelectedStyle: styles?.itemSelected,
+  });
 
   if (!swatch) {
     return null;
   }
 
   const classNames = {
-    swatch: styles && styles.swatch ? css(styles.swatch).toString() : null,
-    item: styles && styles.item ? css(styles.item).toString() : null,
-    itemSelected: styles && styles.itemSelected ? css(styles.itemSelected).toString() : null,
+    swatch: classes.swatch,
+    item: classes.item,
+    itemSelected: classes.itemSelected,
   };
 
   return (

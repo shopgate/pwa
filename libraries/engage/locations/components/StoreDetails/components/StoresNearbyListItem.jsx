@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import { Button } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { historyPush } from '@shopgate/engage/core';
@@ -9,12 +9,12 @@ import formatDistance from '../../../helpers/formatDistance';
 import { STORE_DETAILS_PATH } from '../../../constants';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
-const styles = {
-  button: css({
+const useStyles = makeStyles()({
+  button: {
     fontSize: '14px !important',
     padding: '0px !important',
-  }).toString(),
-  locationRow: css({
+  },
+  locationRow: {
     borderBottom: '1px solid #e8e8e8',
     borderTop: '1px solid #e8e8e8',
     '> td:first-child > div': {
@@ -23,40 +23,40 @@ const styles = {
     '> td:last-child > div': {
       paddingRight: 0,
     },
-  }),
-  distance: css({
+  },
+  distance: {
     textWrapMode: 'nowrap',
     alignContent: 'center',
     verticalAlign: 'middle',
     fontWeight: '500',
-  }),
-  makeMyStore: css({
+  },
+  makeMyStore: {
     textWrapMode: 'nowrap',
     alignContent: 'center',
     verticalAlign: 'middle',
-  }),
-  storeInfo: css({
+  },
+  storeInfo: {
     textWrapMode: 'nowrap',
     alignContent: 'center',
     verticalAlign: 'middle',
-  }),
-  name: css({
+  },
+  name: {
     textAlign: 'start',
-  }),
-  cellContainer: css({
+  },
+  cellContainer: {
     padding: '8px',
     textAlign: 'end',
-  }),
-  cell: css({
+  },
+  cell: {
     verticalAlign: 'middle',
-  }),
-  buttonContainer: css({
+  },
+  buttonContainer: {
     display: 'flex',
     gap: '4px 16px',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
-  }),
-};
+  },
+});
 
 /**
 * Shows a location in a row
@@ -65,6 +65,7 @@ const styles = {
 * @returns {JSX}
 */
 const StoresNearbyListItem = ({ location }) => {
+  const { classes } = useStyles();
   const dispatch = useDispatch();
   const { preferredLocation, selectLocation } = useContext(StoreDetailsContext);
   const {
@@ -82,38 +83,38 @@ const StoresNearbyListItem = ({ location }) => {
   };
 
   return (
-    <tr className={styles.locationRow}>
-      <td className={styles.cell}>
-        <div className={styles.cellContainer}>
-          <div className={styles.name}>
+    <tr className={classes.locationRow}>
+      <td className={classes.cell}>
+        <div className={classes.cellContainer}>
+          <div className={classes.name}>
             {name}
           </div>
         </div>
       </td>
-      <td className={styles.cell}>
-        <div className={styles.cellContainer}>
-          <div className={styles.distance}>
+      <td className={classes.cell}>
+        <div className={classes.cellContainer}>
+          <div className={classes.distance}>
             {formatDistance(distance || 0, unitSystem === 'imperial') }
           </div>
         </div>
       </td>
-      <td className={styles.cell}>
-        <div className={styles.cellContainer}>
-          <div className={styles.buttonContainer}>
-            <div className={styles.makeMyStore}>
+      <td className={classes.cell}>
+        <div className={classes.cellContainer}>
+          <div className={classes.buttonContainer}>
+            <div className={classes.makeMyStore}>
               {(!isComingSoon) && (
-                <Button className={styles.button} onClick={() => selectLocation(location, true)} role="button" type="primary" flat disabled={isPreferredLocation} wrapContent={false}>
+                <Button className={classes.button} onClick={() => selectLocation(location, true)} role="button" type="primary" flat disabled={isPreferredLocation} wrapContent={false}>
                     {`${i18n.text('location.makeMyStore')}`}
                 </Button>
               )}
               {isComingSoon && (
-                <Button className={styles.button} role="button" type="primary" flat disabled wrapContent={false}>
+                <Button className={classes.button} role="button" type="primary" flat disabled wrapContent={false}>
                   {i18n.text('location.comingSoon')}
                 </Button>
               )}
             </div>
-            <div className={styles.storeInfo}>
-              <Button className={styles.button} role="button" type="primary" flat onClick={() => openStoreDetails(code)} wrapContent={false}>
+            <div className={classes.storeInfo}>
+              <Button className={classes.button} role="button" type="primary" flat onClick={() => openStoreDetails(code)} wrapContent={false}>
                 {i18n.text('locations.details')}
               </Button>
             </div>

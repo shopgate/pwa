@@ -1,19 +1,18 @@
 import React, { useMemo, useCallback, forwardRef } from 'react';
-import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { FormBuilder, RippleButton } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { useProfileContext } from './Profile.provider';
 import generateFormConfig from './Profile.config';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     flexDirection: 'column',
     marginBottom: 16,
-  }).toString(),
-  form: css({
+  },
+  form: {
     ...StylePresets.OUTLINED_FORM_FIELDS,
     ...StylePresets.TWO_COLUMN_LAYOUT,
     ' .container-checkbox': {
@@ -21,8 +20,8 @@ const styles = {
         marginRight: '50%',
       },
     },
-  }).toString(),
-  button: css({
+  },
+  button: {
     '&&': {
       marginTop: 8,
       marginRight: 16,
@@ -35,8 +34,8 @@ const styles = {
         marginRight: 0,
       },
     },
-  }).toString(),
-  buttonDelete: css({
+  },
+  buttonDelete: {
     '&&': {
       marginTop: 8,
       marginRight: 16,
@@ -51,11 +50,11 @@ const styles = {
         marginRight: 0,
       },
     },
-  }).toString(),
-  ripple: css({
+  },
+  ripple: {
     padding: '8px 16px',
-  }).toString(),
-  actions: css({
+  },
+  actions: {
     display: 'flex',
     justifyContent: 'flex-end',
     flexDirection: 'row',
@@ -63,13 +62,14 @@ const styles = {
       marginTop: 8,
       flexDirection: 'column-reverse',
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * @returns {JSX}
  */
 const ProfileForm = forwardRef((_, ref) => {
+  const { classes } = useStyles();
   const {
     formState,
     customer,
@@ -103,27 +103,27 @@ const ProfileForm = forwardRef((_, ref) => {
   }
 
   return (
-    <div className={styles.root} ref={ref}>
+    <div className={classes.root} ref={ref}>
       <FormBuilder
         name="ProfileForm"
-        className={styles.form}
+        className={classes.form}
         config={formConfig}
         defaults={customer}
         validationErrors={validationErrors}
         handleUpdate={handleUpdate}
       />
-      <div className={styles.actions}>
+      <div className={classes.actions}>
         <RippleButton
-          className={styles.buttonDelete}
-          rippleClassName={styles.ripple}
+          className={classes.buttonDelete}
+          rippleClassName={classes.ripple}
           type="primary"
           onClick={deleteCustomer}
         >
           {i18n.text('account.profile.delete')}
         </RippleButton>
         <RippleButton
-          className={styles.button}
-          rippleClassName={styles.ripple}
+          className={classes.button}
+          rippleClassName={classes.ripple}
           type="primary"
           onClick={saveForm}
         >

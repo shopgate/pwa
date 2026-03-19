@@ -1,27 +1,28 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { i18n } from '@shopgate/engage/core';
 import { Toggle } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { ELEMENT_ID_SHIPPING_CONTACT_TOGGLE } from '../../constants';
 import { useRegistration } from '../../hooks';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     justifyContent: 'space-between',
     paddingBottom: 24,
-  }).toString(),
-  label: css({
+  },
+  label: {
     paddingRight: 8,
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props The component props
  * @returns {JSX.Element}
  */
 const RegistrationFormToggle = ({ isGuest }) => {
+  const { classes } = useStyles();
   const {
     isShippingAddressSelectionEnabled,
     isShippingFormVisible,
@@ -37,10 +38,10 @@ const RegistrationFormToggle = ({ isGuest }) => {
   }
 
   return (
-    <div className={styles.root} id={ELEMENT_ID_SHIPPING_CONTACT_TOGGLE}>
+    <div className={classes.root} id={ELEMENT_ID_SHIPPING_CONTACT_TOGGLE}>
       <label
         aria-hidden
-        className={styles.label}
+        className={classes.label}
         htmlFor="toggle-shipping-form"
         id="toggle-shipping-form-label"
       >

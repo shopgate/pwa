@@ -1,19 +1,18 @@
 import React, { useContext, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import classNames from 'classnames';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { i18n } from '@shopgate/engage/core';
 import { CrossIcon } from '@shopgate/engage/components';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import PaymentBarPromotionCouponMessages from './PaymentBarPromotionCouponMessages';
 import { CartContext } from '../../cart.context';
 import PaymentBarPromotionalText from './PaymentBarPromotionalText';
 import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarPromotionCoupons.connector';
 
-const styles = {
-  icon: css({
+const useStyles = makeStyles()({
+  icon: {
     backgroundColor: '#898989',
     color: '#fff',
     borderRadius: 32,
@@ -24,11 +23,11 @@ const styles = {
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       padding: 3,
     },
-  }).toString(),
-  withMessages: css({
+  },
+  withMessages: {
     paddingBottom: '0px !important',
-  }).toString(),
-};
+  },
+});
 
 /**
  * @returns {JSX}
@@ -36,6 +35,7 @@ const styles = {
 const PaymentBarPromotionCoupons = ({
   coupons, className, deleteCoupon, showSeparator,
 }) => {
+  const { classes } = useStyles();
   const { isLoading, currency } = useContext(CartContext);
 
   return coupons.map((coupon) => {
@@ -54,7 +54,7 @@ const PaymentBarPromotionCoupons = ({
         <CartTotalLine
           isDisabled={isLoading}
           className={classNames(className, {
-            [styles.withMessages]: !!messages.length,
+            [classes.withMessages]: !!messages.length,
           })}
         >
           <CartTotalLine.Label
@@ -67,7 +67,7 @@ const PaymentBarPromotionCoupons = ({
           )}
           <CartTotalLine.Spacer className={spacer}>
             <div
-              className={styles.icon}
+              className={classes.icon}
               onClick={() => { deleteCoupon(code); }}
               onKeyDown={() => { deleteCoupon(code); }}
               role="button"

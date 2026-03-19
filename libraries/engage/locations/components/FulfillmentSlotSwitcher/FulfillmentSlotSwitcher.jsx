@@ -1,13 +1,13 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import FulfillmentSlotSwitcherDefault from './FulfillmentSlotSwitcherDefault';
 import FulfillmentSlotSwitcherBar from './FulfillmentSlotSwitcherBar';
 import connect from './FulfillmentSlotSwitcher.connector';
 import { forceOpenFulfillmentSlotDialog } from './FulfillmentSlotProvider';
 
-const styles = {
-  card: css({
+const useStyles = makeStyles()({
+  card: {
     boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
     marginBottom: 16,
     ' > div > div': {
@@ -19,8 +19,8 @@ const styles = {
       background: '#fff',
       border: '1px solid #eaeaea',
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * @returns {JSX}
@@ -34,6 +34,7 @@ const FulfillmentSlotSwitcher = ({
   card,
   editable,
 }) => {
+  const { classes } = useStyles();
   // Handle sheet.
   const handleOpen = useCallback(() => {
     forceOpenFulfillmentSlotDialog();
@@ -44,7 +45,7 @@ const FulfillmentSlotSwitcher = ({
   }
 
   return renderBar ? (
-    <div className={card ? styles.card : undefined}>
+    <div className={card ? classes.card : undefined}>
       <FulfillmentSlotSwitcherBar
         fulfillmentSlot={isFulfillmentSlotValid ? fulfillmentSlot : null}
         handleChange={handleOpen}

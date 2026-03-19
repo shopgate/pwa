@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { connect } from 'react-redux';
 import { RippleButton } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core';
 import { toggleFavoriteWithListChooser } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import {
@@ -13,7 +13,6 @@ import { getWishlistItemQuantityEnabled } from '@shopgate/engage/core/selectors/
 import appConfig from '@shopgate/pwa-common/helpers/config';
 
 /**
- * @param {Object} state State.
  * @returns {Object}
  */
 const makeMapStateToProps = () => {
@@ -33,8 +32,8 @@ const mapDispatchToProps = dispatch => ({
   toggle: productId => dispatch(toggleFavoriteWithListChooser(productId)),
 });
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     '&&': {
       margin: '0 0px 16px 16px',
       backgroundColor: '#fff',
@@ -45,11 +44,11 @@ const styles = {
       textTransform: 'none',
       padding: 0,
     },
-  }).toString(),
-  ripple: css({
+  },
+  ripple: {
     padding: '8px 16px',
-  }).toString(),
-};
+  },
+});
 
 /** @returns {JSX} */
 const FavoriteButtonWide = ({
@@ -59,6 +58,7 @@ const FavoriteButtonWide = ({
   hasMultipleLists,
   wishlistItemQuantityEnabled,
 }) => {
+  const { classes } = useStyles();
   const label = useMemo(() => {
     // When wishlist item quantity is active, items cannot be removed via the button
     if (!isOnList || wishlistItemQuantityEnabled) {
@@ -76,8 +76,8 @@ const FavoriteButtonWide = ({
 
   return (
     <RippleButton
-      className={styles.root}
-      rippleClassName={styles.ripple}
+      className={classes.root}
+      rippleClassName={classes.ripple}
       type="primary"
       onClick={() => toggle(productId)}
     >

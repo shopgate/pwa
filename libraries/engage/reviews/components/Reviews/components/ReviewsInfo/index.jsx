@@ -1,24 +1,24 @@
 import React from 'react';
-import { css } from 'glamor';
 import classNames from 'classnames';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Link } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     textAlign: 'center',
     marginTop: 8,
     fontSize: '.875rem',
     fontWeight: 300,
     lineHeight: 1.5,
     padding: '0 1rem 1rem',
-  }).toString(),
-  link: css({
+  },
+  link: {
     textAlign: 'center',
     fontWeight: 600,
     marginTop: 8,
-  }).toString(),
-};
+  },
+});
 
 const {
   reviewsInfo: {
@@ -33,16 +33,17 @@ const {
  * @returns {JSX.Element}
  */
 const ReviewsInfo = () => {
+  const { classes } = useStyles();
   if (!text) {
     return null;
   }
 
   return (
-    <div className={classNames(styles.root, 'engage__reviews__review_info_text')}>
+    <div className={classNames(classes.root, 'engage__reviews__review_info_text')}>
       <div>
         {text}
         { linkText && linkUrl && (
-          <Link href={linkUrl} className={styles.link}>
+          <Link href={linkUrl} className={classes.link}>
             {linkText}
           </Link>
         )}

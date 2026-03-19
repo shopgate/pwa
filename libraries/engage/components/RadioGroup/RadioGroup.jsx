@@ -2,23 +2,23 @@ import React, {
   useState, useCallback, useEffect, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import RadioGroupContext from './RadioGroup.context';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     flexDirection: 'column',
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props The component props
  * @returns {JSX}
  */
 const RadioGroup = ({
-  classes,
+  classes: classNamesProp,
   children,
   name,
   disabled,
@@ -27,6 +27,7 @@ const RadioGroup = ({
   onChange,
   component: Component,
 }) => {
+  const { classes } = useStyles();
   const [value, setValue] = useState(valueProp || defaultValue);
 
   useEffect(() => {
@@ -50,7 +51,7 @@ const RadioGroup = ({
 
   return (
     <RadioGroupContext.Provider value={contextValue}>
-      <Component role="radiogroup" className={classNames(styles.root, classes.root)}>
+      <Component role="radiogroup" className={classNames(classes.root, classNamesProp.root)}>
         { children }
       </Component>
 

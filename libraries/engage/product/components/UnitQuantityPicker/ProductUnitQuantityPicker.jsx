@@ -1,6 +1,5 @@
 import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import classNames from 'classnames';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
@@ -8,22 +7,28 @@ import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/p
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { withCurrentProduct } from '@shopgate/engage/core/hocs';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
+import { makeStyles } from '@shopgate/engage/styles';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
-import { small, big } from './styles';
 
 const { variables } = themeConfig;
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: variables.gap.big,
-  }),
-  title: css({
+  },
+  title: {
     fontSize: '1rem',
     fontWeight: 500,
     marginBottom: '0.5rem',
-  }).toString(),
-};
+  },
+  pickerSmall: {
+    width: 120,
+  },
+  pickerBig: {
+    width: 170,
+  },
+});
 
 /**
  * Renders the quantity picker enriched with current product data.
@@ -33,7 +38,7 @@ const styles = {
 const ProductUnitQuantityPicker = ({
   children,
   className,
-  classes,
+  classes: customClasses,
   product,
   disabled,
   stockInfo,
@@ -41,6 +46,7 @@ const ProductUnitQuantityPicker = ({
   quantityLabel,
   hideHeadline,
 }) => {
+  const { classes } = useStyles();
   const { show = hasNewServices() } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
 
   const { quantity, setQuantity } = useContext(ProductContext);
@@ -72,16 +78,16 @@ const ProductUnitQuantityPicker = ({
 
   return (
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
-      <div className={classNames(styles.root, className)}>
+      <div className={classNames(classes.root, className)}>
         <div>
           {!hideHeadline && (
-            <div className={styles.title}>
+            <div className={classes.title}>
               <I18n.Text string="product.sections.quantity" />
             </div>
           )}
           <UnitQuantityPicker
-            // eslint-disable-next-line no-nested-ternary
-            className={classes?.picker ? classes.picker : (hasUnitWithDecimals ? big : small)}
+            className={customClasses?.picker
+              || (hasUnitWithDecimals ? classes.pickerBig : classes.pickerSmall)}
             unit={hasUnitWithDecimals ? unit : null}
             maxDecimals={hasUnitWithDecimals ? 2 : 0}
             incrementStep={hasUnitWithDecimals ? 0.25 : 1}

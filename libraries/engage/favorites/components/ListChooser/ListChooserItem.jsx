@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { css } from 'glamor';
 import {
   makeIsProductOnSpecificFavoriteList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getWishlistItemQuantityEnabled } from '../../../core/selectors/shopSettings';
 
 /**
@@ -24,37 +24,38 @@ const makeMapStateToProps = () => {
   });
 };
 
-const styles = {
-  remove: css({
+const useStyles = makeStyles()({
+  remove: {
     color: 'var(--color-state-alert)',
-  }).toString(),
-  add: css({
+  },
+  add: {
     color: 'var(--color-state-ok)',
     whiteSpace: 'noWrap',
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */
 const ListChooserItem = ({ isOnList, wishlistItemQuantityEnabled }) => {
+  const { classes } = useStyles();
   if (wishlistItemQuantityEnabled && isOnList) {
     return (
-      <span className={styles.add}>
+      <span className={classes.add}>
         {i18n.text('favorites.list_chooser.add_more')}
       </span>);
   }
 
   if (isOnList) {
     return (
-      <span className={styles.remove}>
+      <span className={classes.remove}>
         {i18n.text('favorites.list_chooser.remove')}
       </span>);
   }
 
   return (
-    <span className={styles.add}>
+    <span className={classes.add}>
       {i18n.text('favorites.list_chooser.add')}
     </span>);
 };

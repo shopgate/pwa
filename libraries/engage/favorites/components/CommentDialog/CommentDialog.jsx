@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getCommentDialogSettings } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { i18n, usePrevious } from '@shopgate/engage/core';
 import {
@@ -39,22 +39,22 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     flexDirection: 'column',
-  }),
-  input: css({
+  },
+  input: {
     textAlign: 'left',
     fontSize: '1rem',
-  }).toString(),
-  characterCount: css({
+  },
+  characterCount: {
     textAlign: 'right',
     marginTop: -16,
     fontSize: '0.875rem',
     color: 'var(--color-text-medium-emphasis)',
-  }).toString(),
-};
+  },
+});
 
 const MAX_CHARACTER_COUNT = 250;
 
@@ -65,6 +65,7 @@ const MAX_CHARACTER_COUNT = 250;
 const CommentDialog = ({
   settings, close, updateFavoriteItem,
 }) => {
+  const { classes } = useStyles();
   const isVisible = !!settings;
   const { productId, listId, item } = settings || {};
   const prevProdId = usePrevious(productId);
@@ -137,7 +138,7 @@ const CommentDialog = ({
         confirm: i18n.text('favorites.comment_modal.confirm'),
       }}
     >
-      <div className={styles.root}>
+      <div className={classes.root}>
         <TextField
           name="name"
           {...isIos ? {
@@ -147,13 +148,13 @@ const CommentDialog = ({
           }}
           onChange={handleChange}
           value={value}
-          className={styles.input}
+          className={classes.input}
           attributes={attributes}
           multiLine
           tabIndex={0}
         />
         <I18n.Text
-          className={styles.characterCount}
+          className={classes.characterCount}
           string="favorites.comment_modal.characterCount"
           aria-hidden
           params={{

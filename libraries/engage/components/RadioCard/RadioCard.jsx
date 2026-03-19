@@ -1,44 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import Card from '@shopgate/pwa-ui-shared/Card';
 import { useRadioGroup } from '../RadioGroup';
 import Radio from '../Radio';
 
 const { variables } = themeConfig;
 
-const styles = {
-  card: css({
+const useStyles = makeStyles()({
+  card: {
     borderRadius: 4,
     padding: '8px 8px 8px 4px',
     display: 'flex',
     alignItems: 'center',
-  }).toString(),
-  content: css({
+  },
+  content: {
     padding: `${variables.gap.small}px ${variables.gap.small}px ${variables.gap.small}px 0`,
     width: '100%',
-  }).toString(),
-  contentDisabled: css({
+  },
+  contentDisabled: {
     opacity: 0.5,
     pointerEvents: 'none',
-  }).toString(),
-  radio: css({
+  },
+  radio: {
     alignItems: 'center',
-  }).toString(),
-};
+  },
+});
 
 /**
  * The default card component
  * @param {Object} props The component props
  * @returns {JSX}
  */
-const CardComponent = ({ children, className }) => (
-  <Card className={classNames(styles.card, className)}>
-    {children}
-  </Card>
-);
+const CardComponent = ({ children, className }) => {
+  const { classes, cx } = useStyles();
+  return (
+    <Card className={cx(classes.card, className)}>
+      {children}
+    </Card>);
+};
 
 CardComponent.propTypes = {
   children: PropTypes.node,
@@ -63,9 +64,10 @@ const RadioCard = ({
   disabled: disabledProp,
   value,
   attributes,
-  classes,
+  classes: classNamesProp,
   renderCard: RenderCard,
 }) => {
+  const { classes, cx } = useStyles();
   const radioGroup = useRadioGroup();
   let name = nameProp;
   let disabled = disabledProp;
@@ -81,7 +83,7 @@ const RadioCard = ({
   }
 
   return (
-    <RenderCard className={classes.root}>
+    <RenderCard className={classNamesProp.root}>
       <Radio
         name={name}
         value={value}
@@ -89,13 +91,13 @@ const RadioCard = ({
         disabled={disabled}
         checked={checked}
         attributes={attributes}
-        classes={{ root: styles.radio }}
+        classes={{ root: classes.radio }}
       />
       <label
         htmlFor={`${name}_${value}`}
-        className={classNames(styles.content, {
-          [styles.contentDisabled]: disabled,
-          [classes.disabled]: disabled,
+        className={cx(classes.content, {
+          [classes.contentDisabled]: disabled,
+          [classNamesProp.disabled]: disabled,
         })}
       >
         { children }

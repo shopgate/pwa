@@ -1,11 +1,21 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useWidgetStyles } from '../../../core';
 import SwatchContent from './SwatchContent';
 
 const WIDGET_ID = '@shopgate/engage/product/VariantSwatch';
+
+const useStyles = makeStyles()((_, {
+  swatchStyle,
+  itemStyle,
+  itemSelectedStyle,
+}) => ({
+  swatch: swatchStyle || {},
+  item: itemStyle || {},
+  itemSelected: itemSelectedStyle || {},
+}));
 
 /**
  * The variant swatch component.
@@ -14,15 +24,20 @@ const WIDGET_ID = '@shopgate/engage/product/VariantSwatch';
  */
 const VariantSwatch = ({ swatch, onClick }) => {
   const styles = useWidgetStyles(WIDGET_ID);
+  const { classes } = useStyles({
+    swatchStyle: styles?.swatch,
+    itemStyle: styles?.item,
+    itemSelectedStyle: styles?.itemSelected,
+  });
 
   if (!swatch) {
     return null;
   }
 
   const classNames = {
-    swatch: styles && styles.swatch ? css(styles.swatch).toString() : null,
-    item: styles && styles.item ? css(styles.item).toString() : null,
-    itemSelected: styles && styles.itemSelected ? css(styles.itemSelected).toString() : null,
+    swatch: classes.swatch,
+    item: classes.item,
+    itemSelected: classes.itemSelected,
   };
 
   return (

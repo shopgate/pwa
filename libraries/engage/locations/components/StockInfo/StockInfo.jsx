@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { css } from 'glamor';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
 import defaultsDeep from 'lodash/defaultsDeep';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { makeGetLocationInventory } from '../../selectors';
 import { getThemeSettings } from '../../../core';
 import { SurroundPortals } from '../../../components';
@@ -11,6 +10,18 @@ import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants';
 import { getAvailabilitySettings } from '../../helpers';
 import defaultSettings from './StockInfo.defaultSettings';
 import { StockInfoInventory } from './StockInfoInventory';
+
+const useStyles = makeStyles()((_, { classNameProp, availabilityTextColor }) => ({
+  defaultClassName: {
+    color: availabilityTextColor,
+    fontSize: '0.75rem',
+    margin: 0,
+    ':not(:empty) ~ *': {
+      marginLeft: 14,
+    },
+  },
+  classNameProp: classNameProp || {},
+}));
 
 /**
  * Creates a mapper for redux.
@@ -38,14 +49,10 @@ const StockInfoUnwrapped = ({ location, inventory, className }) => {
   const { availabilityText = '', availabilityTextColor = 'inherit', comingSoon = false } =
     getAvailabilitySettings(settings, location, inventory);
 
-  const defaultClassName = css({
-    color: availabilityTextColor,
-    fontSize: '0.75rem',
-    margin: 0,
-    ':not(:empty) ~ *': {
-      marginLeft: 14,
-    },
-  }).toString();
+  const { classes, cx } = useStyles({
+    classNameProp: className,
+    availabilityTextColor,
+  });
 
   const portalProps = React.useMemo(() => ({
     location,
@@ -67,7 +74,7 @@ const StockInfoUnwrapped = ({ location, inventory, className }) => {
 
   return (
     <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO} portalProps={portalProps}>
-      <span className={classNames(defaultClassName, css(className).toString())}>
+      <span className={cx(classes.defaultClassName, classes.classNameProp)}>
         <StockInfoInventory
           availabilityText={availabilityText}
           comingSoon={comingSoon}

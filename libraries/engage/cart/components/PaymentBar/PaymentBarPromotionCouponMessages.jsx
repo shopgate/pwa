@@ -1,57 +1,56 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { css } from 'glamor';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { errorBehavior } from '@shopgate/engage/core';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
 import { spacer } from './PaymentBarContent.style';
 
-const styles = {
-  line: css({
+const useStyles = makeStyles()({
+  line: {
     justifyContent: 'start',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       fontSize: '0.75rem',
       paddingBottom: 3,
     },
-  }).toString(),
-  message: css({
+  },
+  message: {
     order: 2,
-  }).toString(),
-  error: css({
+  },
+  error: {
     color: 'var(--color-state-alert)',
-  }).toString(),
-  warning: css({
+  },
+  warning: {
     color: 'var(--color-state-warning)',
-  }).toString(),
-  info: css({
+  },
+  info: {
     color: 'var(--color-state-ok)',
-  }).toString(),
-  loading: css({
+  },
+  loading: {
     opacity: 0.4,
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props The components props
  * @returns {JSX}
  */
 const PaymentBarPromotionCouponMessages = ({ messages }) => {
+  const { classes, cx } = useStyles();
   const { isLoading } = useContext(CartContext);
   if (!messages.length) {
     return null;
   }
 
   return messages.map(({ message, additionalParams, type }) => (
-    <CartTotalLine className={styles.line} key={message}>
+    <CartTotalLine className={classes.line} key={message}>
       <>
         <CartTotalLine.Spacer className={spacer} />
-        <div className={classNames(styles.message, {
-          [styles.loading]: isLoading,
-          [styles.error]: type === 'error',
-          [styles.warning]: type === 'warning',
-          [styles.info]: type === 'info',
+        <div className={cx(classes.message, {
+          [classes.loading]: isLoading,
+          [classes.error]: type === 'error',
+          [classes.warning]: type === 'warning',
+          [classes.info]: type === 'info',
         })}
         >
           {errorBehavior.getErrorMessage(message, additionalParams)}

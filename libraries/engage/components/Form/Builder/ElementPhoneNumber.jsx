@@ -14,20 +14,15 @@ import fr from 'react-phone-number-input/locale/fr';
 import pt from 'react-phone-number-input/locale/pt';
 import flags from 'react-phone-number-input/flags';
 import { useCountriesNames } from '@shopgate/engage/i18n';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
+import { makeStyles } from '@shopgate/engage/styles';
 import Label from '@shopgate/pwa-ui-shared/TextField/components/Label';
 import FormHelper from './FormHelper';
 
 const { variables, colors } = themeConfig;
 
-const styles = {
-  formField: css({
-    width: '100%',
-    marginBottom: '0px !important',
-  }).toString(),
-
-  phoneField: css({
+const useStyles = makeStyles()({
+  phoneField: {
     position: 'relative',
     width: '100%',
     paddingTop: variables.gap.big * 0.75,
@@ -45,28 +40,15 @@ const styles = {
         paddingBottom: (variables.gap.xsmall * 1.5) - 1,
       },
     },
-  }),
+  },
 
-  phoneFieldError: css({
+  phoneFieldError: {
     ' input.PhoneInputInput': {
       borderBottom: '2px solid var(--color-state-alert)',
       paddingBottom: (variables.gap.xsmall * 1.5) - 1,
     },
-  }).toString(),
-
-  phoneFieldErrorText: css({
-    position: 'absolute',
-    width: '100%',
-    bottom: '-10px',
-    fontSize: '0.75rem',
-    lineHeight: 0.875,
-    color: 'var(--color-state-alert)',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    marginLeft: '38px',
-  }),
-};
+  },
+});
 
 const builtInCountries = getCountries();
 const locales = {
@@ -83,6 +65,7 @@ const locales = {
  * @returns {JSX.Element}
  */
 const UnwrappedElementPhoneNumber = React.memo((props) => {
+  const { classes } = useStyles();
   const {
     element,
     name,
@@ -203,8 +186,8 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
     phonePickerError: !!errorText,
     validationError: !!errorText,
     phonePickerFocused: isFocused,
-    [styles.phoneField]: true,
-    [styles.phoneFieldError]: !!errorText,
+    [classes.phoneField]: true,
+    [classes.phoneFieldError]: !!errorText,
   });
 
   if (!visible) {

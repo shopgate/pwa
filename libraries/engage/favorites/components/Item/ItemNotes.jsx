@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { connect } from 'react-redux';
 import {
   i18n,
 } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getWishlistItemNotesEnabled } from '../../../core/selectors/shopSettings';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-  }),
-  addCommentButton: css({
+  },
+  addCommentButton: {
     fontSize: 17,
     color: 'var(--color-secondary)',
     fontWeight: 500,
@@ -23,23 +23,23 @@ const styles = {
     paddingLeft: 0,
     paddingRight: 0,
     textAlign: 'left',
-  }),
-  comment: css({
+  },
+  comment: {
     fontSize: 17,
     color: 'var(--color-text-high-emphasis)',
     fontWeight: 500,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-  }),
-  notes: css({
+  },
+  notes: {
     paddingRight: 4,
     fontStyle: 'italic',
-  }),
-  buttons: css({
+  },
+  buttons: {
     whiteSpace: 'nowrap',
-  }),
-};
+  },
+});
 
 /**
  * @return {Function} The extended component props.
@@ -60,34 +60,35 @@ const ItemNotes = ({
   onClickDeleteComment,
   notesButtonRef,
 }) => {
+  const { classes } = useStyles();
   if (!wishlistItemNotesEnabled) {
     return null;
   }
   /* eslint-disable jsx-a11y/aria-role */
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       {notes && (
         <span role="text">
-          <span className={styles.comment}>
+          <span className={classes.comment}>
             {`${i18n.text('favorites.comments.notes')}: `}
           </span>
-          <span className={styles.notes}>{`"${notes}"`}</span>
+          <span className={classes.notes}>{`"${notes}"`}</span>
         </span>
       )}
 
-      <span className={styles.buttons}>
+      <span className={classes.buttons}>
         {/*
           Slightly uncommon approach, but we want to re-use this button to increase
           screen reader support. This approach takes care that there is always one DOM element
           with the "notesId" that can be focused when closing the CommentDialog modal.
         */}
-        <button type="button" onClick={onClickOpenComment} className={styles.addCommentButton} ref={notesButtonRef}>
+        <button type="button" onClick={onClickOpenComment} className={classes.addCommentButton} ref={notesButtonRef}>
           {notes ? i18n.text('favorites.comments.edit') : i18n.text('favorites.comments.add')}
         </button>
         { notes && (
           <>
             <span aria-hidden> | </span>
-            <button type="button" onClick={onClickDeleteComment} className={styles.addCommentButton}>
+            <button type="button" onClick={onClickDeleteComment} className={classes.addCommentButton}>
               {i18n.text('favorites.comments.delete')}
             </button>
           </>

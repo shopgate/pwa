@@ -1,7 +1,6 @@
 import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { css } from 'glamor';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { i18n } from '@shopgate/engage/core';
@@ -20,7 +19,7 @@ import { openSheet } from '@shopgate/engage/locations/providers/FulfillmentProvi
 import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
 import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
 import { getPreferredLocation, getPreferredFulfillmentMethod, getUserSearch } from '@shopgate/engage/locations/selectors';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
 import { fetchProductLocations } from '@shopgate/engage/locations/actions';
 
@@ -34,8 +33,6 @@ import {
 } from '../../constants/Portals';
 
 /**
- * @param {Object} state State
- * @param {Object} props Props
  * @returns {Object}
  */
 const makeMapStateToProps = () => {
@@ -65,13 +62,13 @@ const mapDispatchToProps = dispatch => ({
   fetchLocations: (productId, params) => dispatch(fetchProductLocations(productId, params)),
 });
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       margin: 8,
     },
-  }),
-  addButton: css({
+  },
+  addButton: {
     width: 'calc(100% - 32px)',
     margin: 16,
     backgroundColor: 'var(--color-primary)',
@@ -80,8 +77,8 @@ const styles = {
       width: 240,
       float: 'right',
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props Props
@@ -103,6 +100,7 @@ const FavoriteLists = ({
   fetchLocations,
   hasMultipleFavoritesListsSupport,
 }) => {
+  const { classes } = useStyles();
   // Add to cart state.
   const promiseRef = useRef(null);
   const [activeProductId, setActiveProductId] = useState(null);
@@ -272,7 +270,7 @@ const FavoriteLists = ({
   }
 
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       {lists.map(list => (
         <SurroundPortals key={list.id} portalName={FAVORITES_LIST} portalProps={list}>
           <List
@@ -310,7 +308,7 @@ const FavoriteLists = ({
         {hasMultipleFavoritesListsSupport ? (
           <RippleButton
             type="primary"
-            className={styles.addButton}
+            className={classes.addButton}
             onClick={openAddModal}
             disabled={false}
           >

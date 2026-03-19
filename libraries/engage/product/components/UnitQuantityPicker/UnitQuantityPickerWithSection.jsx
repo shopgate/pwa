@@ -1,30 +1,30 @@
 import React, { useMemo } from 'react';
-import { css } from 'glamor';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { withCurrentProduct, withWidgetSettings } from '@shopgate/engage/core/hocs';
 import { Section } from '@shopgate/engage/a11y/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { makeGetCurrentProductPropertyByLabel } from '@shopgate/engage/product/selectors/product';
 import ProductUnitQuantityPicker from './ProductUnitQuantityPicker';
 import OrderQuantityHint from '../OrderQuantityHint';
 
-const styles = {
-  quantityPicker: css({
+const useStyles = makeStyles()({
+  quantityPicker: {
     display: 'flex',
     flexDirection: 'column',
-  }).toString(),
-  quantityPickerPicker: css({
+  },
+  quantityPickerPicker: {
     width: '100%',
-  }).toString(),
-  quantityHint: css({
+  },
+  quantityHint: {
     '&:not(:empty)': {
       paddingTop: 8,
       marginBottom: -4,
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * A Quantity Picker with unit support.
@@ -35,6 +35,7 @@ const UnitQuantityPickerWithSection = ({
   variantId,
   productProperty,
 }) => {
+  const { classes } = useStyles();
   const { show = hasNewServices() } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
 
   const quantityLabel = useMemo(() => {
@@ -57,15 +58,15 @@ const UnitQuantityPickerWithSection = ({
   return (
     <Section title="product.sections.quantity">
       <ProductUnitQuantityPicker
-        className={styles.quantityPicker}
-        classes={{ picker: styles.quantityPickerPicker }}
+        className={classes.quantityPicker}
+        classes={{ picker: classes.quantityPickerPicker }}
         size="large"
         quantityLabel={quantityLabel}
         hideHeadline
       >
         <OrderQuantityHint
           productId={variantId || productId}
-          className={styles.quantityHint}
+          className={classes.quantityHint}
         />
       </ProductUnitQuantityPicker>
     </Section>

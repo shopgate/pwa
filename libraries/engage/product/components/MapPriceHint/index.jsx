@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import classNames from 'classnames';
 import {
   SurroundPortals,
@@ -8,13 +7,17 @@ import {
   TimeBoundary,
 } from '@shopgate/engage/components';
 import { isBeta, useWidgetSettings, useWidgetStyles } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_MAP_PRICE } from '@shopgate/engage/product';
 import { showHint } from './helpers';
 import connect from './connector';
 
-const defaultStyle = css({
-  fontSize: '0.75rem',
-}).toString();
+const useStyles = makeStyles()((_, { hintStyle }) => ({
+  defaultStyle: {
+    fontSize: '0.75rem',
+  },
+  hintStyle: hintStyle || {},
+}));
 
 /**
  * The Product Map Price Hint component.
@@ -23,6 +26,8 @@ const defaultStyle = css({
 const MapPriceHint = ({ price, mapPrice }) => {
   const styles = useWidgetStyles('@shopgate/engage/product/MapPrice');
   const settings = useWidgetSettings('@shopgate/engage/product/MapPrice');
+  const { classes, cx } = useStyles({ hintStyle: styles?.hint });
+
   if (!settings.showHint || !settings.hint) {
     return null;
   }
@@ -42,7 +47,7 @@ const MapPriceHint = ({ price, mapPrice }) => {
             between &&
             <I18n.Text
               string={settings.hint}
-              className={classNames('engage__product__map-price-hint', defaultStyle, css(styles.hint).toString())}
+              className={classNames('engage__product__map-price-hint', cx(classes.defaultStyle, classes.hintStyle))}
             />
           )}
         </TimeBoundary>}

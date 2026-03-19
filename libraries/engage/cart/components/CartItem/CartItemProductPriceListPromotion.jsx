@@ -1,10 +1,9 @@
 import React, { useMemo, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { css } from 'glamor';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { showModal } from '@shopgate/engage/core';
 import { deleteCouponsFromCart } from '@shopgate/engage/cart';
 import { I18n, CrossIcon, InfoIcon } from '@shopgate/engage/components';
@@ -13,13 +12,13 @@ import { useCartItem } from './CartItem.hooks';
 
 const { variables } = themeConfig;
 
-const styles = {
-  container: css({
+const useStyles = makeStyles()({
+  container: {
     flex: '0 1 auto',
     color: 'var(--color-secondary)',
     paddingRight: 8,
-  }).toString(),
-  deleteIcon: css({
+  },
+  deleteIcon: {
     backgroundColor: '#898989',
     color: '#fff',
     borderRadius: 32,
@@ -31,8 +30,8 @@ const styles = {
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       padding: 3,
     },
-  }).toString(),
-  infoIconWrapper: css({
+  },
+  infoIconWrapper: {
     cursor: 'pointer',
     color: 'var(--color-primary)',
     fontSize: '1.5rem',
@@ -44,14 +43,14 @@ const styles = {
       fontSize: '1.375rem',
       paddingBottom: 0,
     },
-  }).toString(),
-  icon: css({
+  },
+  icon: {
     display: 'inline',
-  }).toString(),
-  loading: css({
+  },
+  loading: {
     opacity: 0.5,
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Function} dispatch The redux dispatch function.
@@ -74,6 +73,7 @@ const mapDispatchToProps = dispatch => ({
  * @returns {JSX.Element}
  */
 const PromotionalTextInfoIcon = ({ text, showText }) => {
+  const { classes } = useStyles();
   const { isLoading } = useContext(CartContext);
 
   if (!text) {
@@ -84,13 +84,13 @@ const PromotionalTextInfoIcon = ({ text, showText }) => {
     <span
       onClick={() => showText(text)}
       onKeyDown={() => showText(text)}
-      className={classNames(styles.infoIconWrapper, {
-        [styles.loading]: isLoading,
+      className={classNames(classes.infoIconWrapper, {
+        [classes.loading]: isLoading,
       })}
       role="button"
       tabIndex={0}
     >
-      <InfoIcon className={styles.icon} />
+      <InfoIcon className={classes.icon} />
     </span>
   );
 };
@@ -111,6 +111,7 @@ PromotionalTextInfoIcon.defaultProps = {
 const CartItemProductPriceListPromotion = ({
   isCoupon, isPromo, deleteCoupon, showTextModal, className,
 }) => {
+  const { classes } = useStyles();
   const { cartItem = {} } = useCartItem();
   const appliedPromotions = cartItem?.appliedPromotions;
 
@@ -138,7 +139,7 @@ const CartItemProductPriceListPromotion = ({
     const promotionalText = promo?.promotionalText;
     const name = promo?.name;
     return (
-      <div className={classNames(styles.container, className)}>
+      <div className={classNames(classes.container, className)}>
         { name }
         <PromotionalTextInfoIcon text={promotionalText} showText={showText} />
       </div>
@@ -150,9 +151,9 @@ const CartItemProductPriceListPromotion = ({
     const code = coupon?.coupon?.code;
 
     return (
-      <div className={classNames(styles.container, className)}>
+      <div className={classNames(classes.container, className)}>
         <span
-          className={styles.deleteIcon}
+          className={classes.deleteIcon}
           onClick={() => { deleteCoupon(code); }}
           onKeyDown={() => { deleteCoupon(code); }}
           role="button"

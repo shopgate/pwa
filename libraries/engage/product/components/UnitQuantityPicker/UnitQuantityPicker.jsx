@@ -5,54 +5,59 @@ import PropTypes from 'prop-types';
 import { i18n, hasNewServices } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { css } from 'glamor';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
 
 const { variables, colors } = themeConfig;
 
-const styles = {
-  root: css({
-    display: 'flex',
-    flexDirection: 'row',
-    position: 'relative',
-    zIndex: 5,
-  }).toString(),
-  backdrop: css({
-    zIndex: 4,
-    top: 0,
-    left: 0,
-    height: '100%',
-    width: '100%',
-    position: 'fixed',
-  }),
-  inputWrapper: ({ inputColor, inputBgColor }) => css({
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    fontSize: 16,
-    backgroundColor: 'var(--color-background-accent)',
-    ...(inputColor && { color: `${inputColor} !important` }),
-    ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
-    ' .quantity-label': {
-      paddingLeft: variables.gap.small,
-      paddingRight: 4,
-      textAlign: 'center',
+const useStyles = makeStyles()((_, {
+  inputColor,
+  inputBgColor,
+  buttonColor,
+  buttonBgColor,
+  size = 'default',
+  hasLabel,
+}) => {
+  const fontWeight = size === 'large' ? 600 : 'normal';
+  const sizeValue = size === 'large' ? 36 : 28;
 
-      width: 'calc(100% - 32px)',
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
+  return {
+    root: {
+      display: 'flex',
+      flexDirection: 'row',
+      position: 'relative',
+      zIndex: 5,
     },
-  }),
-  input: ({
-    inputColor, inputBgColor, hasLabel, size,
-  }) => {
-    const fontWeight = size === 'large' ? 600 : 'normal';
+    backdrop: {
+      zIndex: 4,
+      top: 0,
+      left: 0,
+      height: '100%',
+      width: '100%',
+      position: 'fixed',
+    },
+    inputWrapper: {
+      display: 'flex',
+      alignItems: 'center',
+      width: '100%',
+      fontSize: 16,
+      backgroundColor: 'var(--color-background-accent)',
+      ...(inputColor && { color: `${inputColor} !important` }),
+      ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
+      ' .quantity-label': {
+        paddingLeft: variables.gap.small,
+        paddingRight: 4,
+        textAlign: 'center',
 
-    return css({
+        width: 'calc(100% - 32px)',
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+      },
+    },
+    input: {
       padding: `0 ${variables.gap.small}px`,
       textAlign: hasLabel ? 'left' : 'center',
       fontWeight,
@@ -65,12 +70,8 @@ const styles = {
       '&:focus:not(:focus-visible)': {
         outline: 'none',
       },
-    }).toString();
-  },
-  button: ({ size = 'default', buttonColor, buttonBgColor }) => {
-    const sizeValue = size === 'large' ? 36 : 28;
-
-    return css({
+    },
+    button: {
       width: sizeValue,
       ' &&': {
         minWidth: sizeValue,
@@ -82,29 +83,29 @@ const styles = {
         ...(buttonColor && { color: `${buttonColor} !important` }),
         ...(buttonBgColor && { backgroundColor: `${buttonBgColor} !important` }),
       },
-    });
-  },
-  buttonRipple: css({
-    padding: 0,
-  }).toString(),
-  buttonNoRadiusLeft: css({
-    ' &&': {
-      borderTopLeftRadius: 0,
-      borderBottomLeftRadius: 0,
     },
-  }).toString(),
-  buttonNoRadiusRight: css({
-    ' &&': {
-      borderTopRightRadius: 0,
-      borderBottomRightRadius: 0,
-    },
-  }).toString(),
-  disabled: css({
-    ' > div': {
+    buttonRipple: {
       padding: 0,
     },
-  }).toString(),
-};
+    buttonNoRadiusLeft: {
+      ' &&': {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0,
+      },
+    },
+    buttonNoRadiusRight: {
+      ' &&': {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0,
+      },
+    },
+    disabled: {
+      ' > div': {
+        padding: 0,
+      },
+    },
+  };
+});
 
 /**
  * A Quantity Picker with unit support.
@@ -156,6 +157,14 @@ const UnitQuantityPicker = ({
   } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
 
   const [isFocused, setIsFocused] = useState(false);
+  const { classes, cx } = useStyles({
+    inputColor,
+    inputBgColor,
+    buttonColor,
+    buttonBgColor,
+    size,
+    hasLabel: showLabel && !!quantityLabel,
+  });
 
   const inputRef = useRef(null);
 
@@ -248,22 +257,18 @@ const UnitQuantityPicker = ({
       { isFocused && (
         // Show hidden backdrop when focused to avoid side effects when user blurs the input
         // e.g. opening links unintended
-        <div className={styles.backdrop} />
+        <div className={classes.backdrop} />
       )}
-      <div className={`${styles.root} ${className}`}>
+      <div className={`${classes.root} ${className}`}>
         <RippleButton
           type="secondary"
           disabled={!allowDecrement || disabled}
-          rippleClassName={styles.buttonRipple}
-          className={classNames(
-            styles.button({
-              size,
-              buttonColor,
-              buttonBgColor,
-            }),
-            styles.buttonNoRadiusRight,
+          rippleClassName={classes.buttonRipple}
+          className={cx(
+            classes.button,
+            classes.buttonNoRadiusRight,
             {
-              [styles.disabled]: !allowDecrement || disabled,
+              [classes.disabled]: !allowDecrement || disabled,
             }
           )}
           onClick={handleDecrement}
@@ -272,10 +277,7 @@ const UnitQuantityPicker = ({
           -
         </RippleButton>
         <span
-          className={styles.inputWrapper({
-            inputColor,
-            inputBgColor,
-          })}
+          className={classes.inputWrapper}
         >
           {quantityLabel && showLabel && (
             <span aria-hidden className="quantity-label">
@@ -283,12 +285,7 @@ const UnitQuantityPicker = ({
             </span>
           )}
           <QuantityInput
-            className={styles.input({
-              inputColor,
-              inputBgColor,
-              hasLabel: showLabel && !!quantityLabel,
-              size,
-            })}
+            className={classes.input}
             value={value}
             onChange={onChange}
             maxDecimals={maxDecimals}
@@ -307,16 +304,12 @@ const UnitQuantityPicker = ({
         <RippleButton
           type="secondary"
           disabled={!allowIncrement || disabled}
-          rippleClassName={styles.buttonRipple}
-          className={classNames(
-            styles.button({
-              size,
-              buttonColor,
-              buttonBgColor,
-            }),
-            styles.buttonNoRadiusLeft,
+          rippleClassName={classes.buttonRipple}
+          className={cx(
+            classes.button,
+            classes.buttonNoRadiusLeft,
             {
-              [styles.disabled]: !allowIncrement || disabled,
+              [classes.disabled]: !allowIncrement || disabled,
             }
           )}
           onClick={handleIncrement}

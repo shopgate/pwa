@@ -4,20 +4,20 @@ import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { Dialog, TextField } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
 import { themeName } from '@shopgate/pwa-common/helpers/config';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 
 const isIos = themeName.includes('ios');
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     flexDirection: 'column',
-  }),
-  input: css({
+  },
+  input: {
     textAlign: 'left',
     fontSize: '1rem',
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props Props
@@ -27,6 +27,7 @@ const styles = {
  * @returns {JSX.Element}
  */
 const ListsModal = ({ type, onConfirm, onDismiss }) => {
+  const { classes } = useStyles();
   const [input, setInput] = useState('');
   const [error, setError] = useState(null);
 
@@ -55,7 +56,7 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
         confirm: i18n.text(`favorites.${type}_modal.confirm`),
       }}
     >
-      <div className={styles.root}>
+      <div className={classes.root}>
         <span>{i18n.text(`favorites.${type}_modal.message`)}</span>
         <TextField
           name="name"
@@ -68,7 +69,7 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
           onChange={onChange}
           value={input}
           errorText={error || undefined}
-          className={styles.input}
+          className={classes.input}
         />
       </div>
     </Dialog>

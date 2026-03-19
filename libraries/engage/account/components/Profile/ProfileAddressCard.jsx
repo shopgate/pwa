@@ -1,9 +1,8 @@
 import React from 'react';
-import { css } from 'glamor';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { i18n } from '@shopgate/engage/core';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
   useAddressBook,
   ADDRESS_TYPE_BILLING,
@@ -12,8 +11,8 @@ import {
 import { RippleButton, Card, ContextMenu } from '@shopgate/engage/components';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: 16,
     display: 'flex',
     flexDirection: 'column',
@@ -21,16 +20,16 @@ const styles = {
     [responsiveMediaQuery('<md', { webOnly: false })]: {
       width: '100%',
     },
-  }).toString(),
-  contextMenu: css({
+  },
+  contextMenu: {
     marginRight: -8,
     marginBottom: 4,
-  }).toString(),
-  header: css({
+  },
+  header: {
     display: 'flex',
     flexDirection: 'row',
-  }).toString(),
-  body: css({
+  },
+  body: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -38,39 +37,33 @@ const styles = {
     [responsiveMediaQuery('<md', { webOnly: false })]: {
       flexDirection: 'column',
     },
-  }).toString(),
-  column: css({
+  },
+  column: {
     display: 'flex',
     flexDirection: 'column',
-  }).toString(),
-  selectButtonColumn: css({
+  },
+  selectButtonColumn: {
     justifyContent: 'flex-end',
     paddingLeft: 8,
     [responsiveMediaQuery('<md', { webOnly: false })]: {
       paddingLeft: 0,
     },
-  }).toString(),
-  name: css({
+  },
+  name: {
     color: 'var(--color-text-high-emphasis)',
     flex: 1,
     fontSize: 16,
     fontWeight: '600',
-  }).toString(),
-  others: css({
+  },
+  others: {
     color: 'var(--color-text-medium-emphasis)',
     fontSize: 16,
-  }),
-  defaultLabel: css({
+  },
+  defaultLabel: {
     color: 'var(--color-text-low-emphasis)',
     fontSize: 15,
-  }).toString(),
-  selectedLabel: css({
-    color: 'var(--color-text-high-emphasis)',
-    fontSize: 15,
-    fontWeight: 500,
-    paddingTop: 8,
-  }).toString(),
-  button: css({
+  },
+  button: {
     '&&:disabled': {
       padding: '8px 0',
     },
@@ -81,11 +74,11 @@ const styles = {
       padding: 0,
       textTransform: 'none',
     },
-  }).toString(),
-  ripple: css({
+  },
+  ripple: {
     padding: '8px 16px',
-  }).toString(),
-};
+  },
+});
 
 /**
  * @returns {JSX}
@@ -93,17 +86,18 @@ const styles = {
 const ProfileAddressCard = ({
   contact, deleteContact, editContact, selectContact, selected,
 }) => {
+  const { classes } = useStyles();
   const { isCheckout, type } = useAddressBook();
 
   return (
-    <Card className={styles.root}>
-      <div className={styles.header}>
-        <span className={styles.name}>
+    <Card className={classes.root}>
+      <div className={classes.header}>
+        <span className={classes.name}>
           {contact.middleName
             ? `${contact.firstName} ${contact.middleName} ${contact.lastName}`
             : `${contact.firstName} ${contact.lastName}`}
         </span>
-        <ContextMenu classes={{ container: styles.contextMenu }}>
+        <ContextMenu classes={{ container: classes.contextMenu }}>
           <ContextMenu.Item onClick={editContact}>
             {i18n.text('account.profile.address_book.context.edit')}
           </ContextMenu.Item>
@@ -112,10 +106,10 @@ const ProfileAddressCard = ({
           </ContextMenu.Item>
         </ContextMenu>
       </div>
-      <div className={styles.body}>
-        <div className={styles.column}>
+      <div className={classes.body}>
+        <div className={classes.column}>
           {!isCheckout && contact.emailAddress ? (
-            <span className={styles.others}>
+            <span className={classes.others}>
               {contact.emailAddress}
             </span>
           ) : null}
@@ -123,7 +117,7 @@ const ProfileAddressCard = ({
         contact.region ||
         contact.city ||
         contact.country ? (
-          <span className={styles.others}>
+          <span className={classes.others}>
             {i18n.text('checkout.billing.address', {
               postalCode: contact.postalCode || '',
               region: iso3166?.[contact.country]?.divisions?.[contact.region] || contact.region || '',
@@ -133,46 +127,46 @@ const ProfileAddressCard = ({
           </span>
             ) : null}
           {contact.address1 ? (
-            <span className={styles.others}>
+            <span className={classes.others}>
               {contact.address1}
             </span>
           ) : null}
           {contact.address2 ? (
-            <span className={styles.others}>
+            <span className={classes.others}>
               {contact.address2}
             </span>
           ) : null}
           {contact.address3 ? (
-            <span className={styles.others}>
+            <span className={classes.others}>
               {contact.address3}
             </span>
           ) : null}
           {contact.address4 ? (
-            <span className={styles.others}>
+            <span className={classes.others}>
               {contact.address4}
             </span>
           ) : null}
           {!isCheckout && contact.mobile ? (
-            <span className={styles.others}>
+            <span className={classes.others}>
               {contact.mobile}
             </span>
           ) : null}
           {(!isCheckout || type === ADDRESS_TYPE_BILLING) && contact.isDefaultBilling ? (
-            <span className={styles.defaultLabel}>
+            <span className={classes.defaultLabel}>
               {i18n.text('account.profile.address_book.default_billing')}
             </span>
           ) : null}
           {(!isCheckout || type === ADDRESS_TYPE_SHIPPING) && contact.isDefaultShipping ? (
-            <span className={styles.defaultLabel}>
+            <span className={classes.defaultLabel}>
               {i18n.text('account.profile.address_book.default_shipping')}
             </span>
           ) : null}
         </div>
-        <div className={classNames(styles.column, styles.selectButtonColumn)}>
+        <div className={classNames(classes.column, classes.selectButtonColumn)}>
           { isCheckout ? (
             <RippleButton
-              className={styles.button}
-              rippleClassName={styles.ripple}
+              className={classes.button}
+              rippleClassName={classes.ripple}
               type="secondary"
               disabled={selected}
               onClick={selectContact}

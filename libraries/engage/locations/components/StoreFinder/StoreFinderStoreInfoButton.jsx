@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { RippleButton } from '@shopgate/engage/components';
 import { historyPush } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { StoreContext } from './Store.context';
 import { i18n } from '../../../core';
@@ -13,19 +13,19 @@ import { STORE_DETAILS_PATH } from '../../constants';
 
 const { gap } = themeVariables;
 
-const styles = {
-  showStoreInfoButton: css({
+const useStyles = makeStyles()({
+  showStoreInfoButton: {
     width: '100%',
     fontSize: '.875rem !important',
     ':not(:disabled)': {
       background: 'var(--color-primary)!important',
       color: 'var(--color-primary-contrast)!important',
     },
-  }),
-  showStoreInfoButtonWrapper: css({
+  },
+  showStoreInfoButtonWrapper: {
     padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
-  }),
-};
+  },
+});
 
 /**
  * @param {Function} dispatch The dispatch function.
@@ -43,6 +43,7 @@ const mapDispatchToProps = dispatch => ({
  * @returns {JSX}
  */
 const StoreFinderStoreInfoButton = ({ openStoreDetail }) => {
+  const { classes } = useStyles();
   const store = useContext(StoreContext);
   const { isLoading } = useContext(StoreFinderContext);
 
@@ -52,10 +53,10 @@ const StoreFinderStoreInfoButton = ({ openStoreDetail }) => {
   }, [openStoreDetail, store]);
 
   return (
-    <div className={styles.showStoreInfoButtonWrapper}>
+    <div className={classes.showStoreInfoButtonWrapper}>
       <RippleButton
         onClick={handleClick}
-        className={classNames(styles.showStoreInfoButton)}
+        className={classNames(classes.showStoreInfoButton)}
         disabled={isLoading}
       >
         {i18n.text('locations.store_info')}

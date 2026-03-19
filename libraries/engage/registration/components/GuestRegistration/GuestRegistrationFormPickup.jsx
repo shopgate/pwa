@@ -1,8 +1,8 @@
 import React, { useMemo, useCallback } from 'react';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
+import { makeStyles } from '@shopgate/engage/styles';
 import { ELEMENT_ID_PICKUP_CONTACT } from '../../constants';
 import generateFormConfig from './GuestRegistrationFormPickup.config';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
@@ -10,13 +10,13 @@ import { useRegistration } from '../../hooks';
 
 const { variables } = themeConfig;
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',
-  }).toString(),
-  form: css({
+  },
+  form: {
     ' .guestFormPickupPerson': {
       marginTop: variables.gap.small,
     },
@@ -35,14 +35,15 @@ const styles = {
       },
     },
     ...StylePresets.OUTLINED_FORM_FIELDS,
-  }).toString(),
-};
+  },
+});
 
 /**
  * PickupContactForm
  * @returns {JSX}
  */
 const GuestRegistrationFormPickup = () => {
+  const { classes } = useStyles();
   const {
     supportedCountries,
     countrySortOrder,
@@ -80,10 +81,10 @@ const GuestRegistrationFormPickup = () => {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <Section title={headline} hasForm id={ELEMENT_ID_PICKUP_CONTACT}>
         <FormBuilder
-          className={styles.form}
+          className={classes.form}
           name="GuestForm"
           config={formConfig}
           defaults={defaultPickupFormState}

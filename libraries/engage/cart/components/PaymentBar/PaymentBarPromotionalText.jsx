@@ -1,11 +1,9 @@
-import React, { Fragment, useCallback, useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
 import { nl2br, showModal as showModalAction } from '@shopgate/engage/core';
 import { InfoIcon } from '@shopgate/engage/components';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { spacer } from './PaymentBarContent.style';
@@ -17,24 +15,21 @@ const mapDispatchToProps = {
 
 const { variables } = themeConfig;
 
-const styles = {
-  textWrapper: css({
+const useStyles = makeStyles()({
+  textWrapper: {
     padding: `${variables.gap.xsmall}px 0`,
     color: 'var(--color-state-alert)',
     order: 3,
-  }).toString(),
-  line: css({
+  },
+  line: {
     justifyContent: 'start',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       fontSize: '0.75rem',
       paddingBottom: 3,
       verticalAlign: 'text-bottom',
     },
-  }).toString(),
-  message: css({
-    order: 2,
-  }).toString(),
-  iconWrapper: css({
+  },
+  iconWrapper: {
     cursor: 'pointer',
     color: 'var(--color-primary)',
     fontSize: '1.5rem',
@@ -45,20 +40,21 @@ const styles = {
       fontSize: '1.375rem',
       paddingBottom: 0,
     },
-  }).toString(),
-  icon: css({
+  },
+  icon: {
     display: 'inline',
-  }).toString(),
-  loading: css({
+  },
+  loading: {
     opacity: 0.5,
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props The component props
  * @returns {JSX}
  */
 const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
+  const { classes, cx } = useStyles();
   const { isLoading } = useContext(CartContext);
   const showText = useCallback(() => {
     showModal({
@@ -75,11 +71,11 @@ const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
 
   if (!renderIcon) {
     return (
-      <CartTotalLine className={styles.line}>
+      <CartTotalLine className={classes.line}>
         <>
           <div
-            className={classNames(styles.textWrapper, {
-              [styles.loading]: isLoading,
+            className={cx(classes.textWrapper, {
+              [classes.loading]: isLoading,
             })}
             dangerouslySetInnerHTML={{ __html: nl2br(text) }}
           />
@@ -93,13 +89,13 @@ const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
     <span
       onClick={showText}
       onKeyDown={showText}
-      className={classNames(styles.iconWrapper, {
-        [styles.loading]: isLoading,
+      className={cx(classes.iconWrapper, {
+        [classes.loading]: isLoading,
       })}
       role="button"
       tabIndex={0}
     >
-      <InfoIcon className={styles.icon} />
+      <InfoIcon className={classes.icon} />
     </span>
   );
 };
