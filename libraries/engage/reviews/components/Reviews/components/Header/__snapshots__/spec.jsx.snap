@@ -227,7 +227,7 @@ exports[`<Header /> should render empty 1`] = `
                     </div>
                   </div>
                   <div
-                    className="css-1m683rn rating-stars-filled"
+                    className="css-16bht0q rating-stars-filled"
                   />
                 </div>
               </RatingStars>
@@ -310,13 +310,13 @@ exports[`<Header /> should render empty 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button css-19qtnye  ui-shared__ripple-button"
+                              className="ui-shared__button css-k7u7lv  ui-shared__ripple-button"
                               disabled={false}
                               onClick={[Function]}
                               testId="Button"
                             >
                               <button
-                                className="ui-shared__button css-19qtnye  ui-shared__ripple-button css-1rn65c0 common__button"
+                                className="ui-shared__button css-k7u7lv  ui-shared__ripple-button css-1rn65c0 common__button"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
@@ -589,7 +589,7 @@ exports[`<Header /> should render rating summary 1`] = `
                     </div>
                   </div>
                   <div
-                    className="css-1m683rn rating-stars-filled"
+                    className="css-16bht0q rating-stars-filled"
                   >
                     <div
                       className="css-ntfpo9 css-q4owmg"
@@ -732,7 +732,7 @@ exports[`<Header /> should render rating summary 1`] = `
               >
                 reviews.rating
                 <RatingNumber
-                  className="css-1lvzoef"
+                  className="css-1t6w7m8"
                   key=".0"
                   rating={50}
                 >
@@ -801,13 +801,13 @@ exports[`<Header /> should render rating summary 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button css-19qtnye  ui-shared__ripple-button"
+                              className="ui-shared__button css-k7u7lv  ui-shared__ripple-button"
                               disabled={false}
                               onClick={[Function]}
                               testId="Button"
                             >
                               <button
-                                className="ui-shared__button css-19qtnye  ui-shared__ripple-button css-1rn65c0 common__button"
+                                className="ui-shared__button css-k7u7lv  ui-shared__ripple-button css-1rn65c0 common__button"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}

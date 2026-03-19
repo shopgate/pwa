@@ -36,7 +36,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             grow={1}
           >
             <Text
-              className="css-1mv6qvu"
+              className="css-1p484xy"
               string="locations.hours_details"
             >
               locations.hours_details
@@ -155,13 +155,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             >
               <div
                 aria-hidden={true}
-                className="css-ajdtgl"
+                className="css-21570k"
               >
                 06033123
               </div>
               <Text
                 aria-hidden={true}
-                className="css-1mv6qvu"
+                className="css-1p484xy"
                 string="locations.phone"
               >
                 locations.phone
@@ -214,19 +214,19 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               grow={1}
             >
               <p
-                className="css-ajdtgl"
+                className="css-21570k"
               >
                 Marktplatz 12
               </p>
               <Ellipsis
-                className="css-ajdtgl"
+                className="css-21570k"
                 rows={1}
               >
                 locations.address
               </Ellipsis>
               <Text
                 aria-label=": locations.map_open"
-                className="css-1mv6qvu"
+                className="css-1p484xy"
                 string="locations.map_open"
               >
                 locations.map_open

@@ -35,7 +35,7 @@ exports[`<PaymentBarCheckoutButton /> should render enabled button 1`] = `
   tabIndex={0}
 >
   <RippleButton
-    className="css-1g94fbj"
+    className="css-lrjx39"
     disabled={false}
     flat={false}
     onClick={null}

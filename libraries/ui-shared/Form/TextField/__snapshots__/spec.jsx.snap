@@ -1035,7 +1035,7 @@ exports[`<TextField> should show the error message 1`] = `
             className="css-1tpmuef"
             style={
               {
-                "borderBottomColor": "var(--color-state-alert, #ff0000)",
+                "borderBottomColor": "var(--color-state-alert)",
               }
             }
           />
@@ -1052,7 +1052,7 @@ exports[`<TextField> should show the error message 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="css-1tzi51f errorText"
+          className="css-68xh0w errorText"
           id="ariaError-test-input"
         >
           <Translate
@@ -1122,7 +1122,7 @@ exports[`<TextField> should show the label 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-qq9d2l placeholder"
+          className="css-1ppmfxj placeholder"
         >
           <Translate
             acceptPlainTextWithPlaceholders={false}
@@ -1327,7 +1327,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-qq9d2l placeholder"
+          className="css-1ppmfxj placeholder"
         >
           <Translate
             acceptPlainTextWithPlaceholders={false}

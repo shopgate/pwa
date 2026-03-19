@@ -386,7 +386,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-1m683rn rating-stars-filled"
+                            className="css-16bht0q rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -565,7 +565,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     }
                   >
                     <div
-                      className="css-focklv"
+                      className="css-1awuizp"
                       role="text"
                     >
                       <ReviewDate
@@ -786,7 +786,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-1m683rn rating-stars-filled"
+                            className="css-16bht0q rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -965,7 +965,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     }
                   >
                     <div
-                      className="css-focklv"
+                      className="css-1awuizp"
                       role="text"
                     >
                       <ReviewDate
@@ -1186,7 +1186,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-1m683rn rating-stars-filled"
+                            className="css-16bht0q rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -1365,7 +1365,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     }
                   >
                     <div
-                      className="css-focklv"
+                      className="css-1awuizp"
                       role="text"
                     >
                       <ReviewDate
@@ -1586,7 +1586,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-1m683rn rating-stars-filled"
+                            className="css-16bht0q rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -1765,7 +1765,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     }
                   >
                     <div
-                      className="css-focklv"
+                      className="css-1awuizp"
                       role="text"
                     >
                       <ReviewDate
@@ -1850,13 +1850,13 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button css-19qtnye  ui-shared__ripple-button"
+                              className="ui-shared__button css-k7u7lv  ui-shared__ripple-button"
                               disabled={false}
                               onClick={[Function]}
                               testId="Button"
                             >
                               <button
-                                className="ui-shared__button css-19qtnye  ui-shared__ripple-button css-1rn65c0 common__button"
+                                className="ui-shared__button css-k7u7lv  ui-shared__ripple-button css-1rn65c0 common__button"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
@@ -2203,7 +2203,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </div>
                           </div>
                           <div
-                            className="css-1m683rn rating-stars-filled"
+                            className="css-16bht0q rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -2382,7 +2382,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     }
                   >
                     <div
-                      className="css-focklv"
+                      className="css-1awuizp"
                       role="text"
                     >
                       <ReviewDate
@@ -2603,7 +2603,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </div>
                           </div>
                           <div
-                            className="css-1m683rn rating-stars-filled"
+                            className="css-16bht0q rating-stars-filled"
                           >
                             <div
                               className="css-kdb68h css-q4owmg"
@@ -2782,7 +2782,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                     }
                   >
                     <div
-                      className="css-focklv"
+                      className="css-1awuizp"
                       role="text"
                     >
                       <ReviewDate

@@ -95,7 +95,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
       </div>
       <div>
         <button
-          className="css-1sdx55c css-gyrv08"
+          className="css-pimol9 css-gyrv08"
           onClick={[Function]}
           type="button"
         >
@@ -212,7 +212,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
       </div>
       <div>
         <button
-          className="css-1sdx55c"
+          className="css-pimol9"
           onClick={[Function]}
           type="button"
         >
