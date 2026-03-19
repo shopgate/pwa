@@ -13,6 +13,9 @@ export {
 export {
   makeStyles,
   withStyles,
+  useStyles,
+  css,
+  cx,
   tss,
   GlobalStyles,
   keyframes,
