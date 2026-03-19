@@ -2,21 +2,30 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_REVIEWS_ENTRY } from '@shopgate/engage/product';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Title from './components/Title';
 import Rating from './components/Rating';
 import Text from './components/Text';
 import Info from './components/Info';
-import styles from './style';
+
+const { colors, variables } = themeConfig;
 
 /**
  * Review List Component.
  */
 class List extends PureComponent {
   static propTypes = {
+    classes: PropTypes.shape({
+      item: PropTypes.string,
+    }),
     reviews: PropTypes.arrayOf(PropTypes.shape()),
   };
 
   static defaultProps = {
+    classes: {
+      item: '',
+    },
     reviews: null,
   };
 
@@ -25,6 +34,7 @@ class List extends PureComponent {
    */
   render() {
     const { reviews } = this.props;
+    const classes = withStyles.getClasses(this.props);
 
     if (!reviews || reviews.length === 0) {
       return null;
@@ -33,7 +43,7 @@ class List extends PureComponent {
     return (
       <ul className="engage__reviews__list">
         { reviews.map(review => (
-          <li key={review.id} className={styles} data-test-id={`reviewTitle: ${review.title}`}>
+          <li key={review.id} className={classes.item} data-test-id={`reviewTitle: ${review.title}`}>
             <SurroundPortals portalName={PRODUCT_REVIEWS_ENTRY} portalProps={{ review }}>
               <Title title={review.title} />
               <Rating rate={review.rate} />
@@ -47,4 +57,13 @@ class List extends PureComponent {
   }
 }
 
-export default List;
+export default withStyles(
+  List,
+  () => ({
+    item: {
+      marginLeft: variables.gap.big,
+      padding: `${variables.gap.big}px ${variables.gap.big}px ${variables.gap.big}px 0`,
+      borderTop: `1px solid ${colors.shade7}`,
+    },
+  })
+);

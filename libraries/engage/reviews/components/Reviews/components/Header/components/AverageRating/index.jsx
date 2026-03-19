@@ -2,11 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import { Link } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import RatingCount from '../../../RatingCount';
-import { container } from './style';
+
+const useStyles = makeStyles()({
+  container: {
+    alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    marginBottom: 8,
+  },
+});
 
 /**
  * The average rating and number of ratings for a product.
@@ -17,6 +27,8 @@ import { container } from './style';
  * @returns {JSX.Element}
  */
 const AverageRating = ({ average, count, productId }) => {
+  const { classes } = useStyles();
+
   if (!productId) {
     return null;
   }
@@ -27,7 +39,7 @@ const AverageRating = ({ average, count, productId }) => {
       tagName="a"
       href={`${ITEM_PATH}/${bin2hex(productId)}/write_review`}
       disabled={!appConfig.showWriteReview}
-      className={container}
+      className={classes.container}
       itemProp="item"
       itemScope
       itemType="http://schema.org/Review"

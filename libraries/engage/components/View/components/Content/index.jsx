@@ -10,11 +10,12 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { useScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
+import { withStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
 import ParallaxProvider from './components/ParallaxProvider';
-import { container, containerInner } from './style';
 
 /**
  * The ViewContent component.
@@ -26,6 +27,10 @@ class ViewContent extends Component {
     setContentRef: PropTypes.func.isRequired,
     visible: PropTypes.bool.isRequired,
     children: PropTypes.node,
+    classes: PropTypes.shape({
+      container: PropTypes.string,
+      containerInner: PropTypes.string,
+    }),
     className: PropTypes.string,
     noContentPortal: PropTypes.bool,
     noKeyboardListener: PropTypes.bool,
@@ -33,6 +38,10 @@ class ViewContent extends Component {
   };
 
   static defaultProps = {
+    classes: {
+      container: '',
+      containerInner: '',
+    },
     className: '',
     children: null,
     noScrollOnKeyboard: false,
@@ -190,15 +199,17 @@ class ViewContent extends Component {
    * @return {JSX.Element}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
+
     return (
       <ParallaxProvider viewVisible={this.props.visible}>
         <article
-          className={`${container} engage__view__content ${this.props.className}`}
+          className={`${classes.container} engage__view__content ${this.props.className}`}
           ref={this.scrollContainer ? this.ref : null}
           style={this.style}
           role="none"
         >
-          <div className={containerInner}>
+          <div className={classes.containerInner}>
             {/** Class of this div is needed by the ParallaxProvider component */}
             <div className="engage__view__content__scrollable-content">
               <Helmet title={appConfig.shopName} />
@@ -226,10 +237,49 @@ class ViewContent extends Component {
   }
 }
 
+const StyledViewContent = withStyles(
+  ViewContent,
+  () => ({
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      width: '100vw',
+      ...(useScrollContainer() ? {
+        bottom: 0,
+        top: 0,
+        overflowScrolling: 'touch',
+        position: 'absolute',
+        WebkitOverflowScrolling: 'touch',
+        ...(IS_PAGE_PREVIEW_ACTIVE && {
+          scrollbarWidth: 'thin',
+          backgroundColor: 'var(--page-background-color)',
+        }),
+      } : {
+        height: '100%',
+        backgroundColor: 'var(--page-background-color)',
+      }),
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        width: 'var(--page-content-width)',
+      },
+    },
+    containerInner: {
+      ...(isIOs && useScrollContainer() ? {
+        minHeight: 'calc(100% + var(--extra-ios-scroll-space, 0px))',
+      } : {}),
+      ':after': {
+        content: "''",
+        display: 'block',
+        pointerEvents: 'none',
+        paddingBottom: 'calc(var(--page-content-offset-bottom) + var(--keyboard-height))',
+      },
+    },
+  })
+);
+
 export default props => (
   <RouteContext.Consumer>
     {({ visible, pattern = '', is404 = false }) => (
-      <ViewContent {...props} visible={visible} className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`} />
+      <StyledViewContent {...props} visible={visible} className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`} />
     )}
   </RouteContext.Consumer>
 );

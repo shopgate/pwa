@@ -1,27 +1,49 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import AverageRating from '../AverageRating';
 import WriteReviewLink from '../WriteReviewLink';
-import * as styles from './style';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  container: {
+    fontWeight: 500,
+    margin: 0,
+  },
+  noReviews: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: variables.gap.small,
+    padding: `0 ${variables.gap.small}px`,
+    textAlign: 'center',
+  },
+});
 
 /**
  * @return {JSX.Element}
  */
-const NoReviews = ({ productId }) => (
-  <div className={styles.container}>
-    <AverageRating productId={productId} />
-    <div className={styles.noReviews}>
-      {appConfig.showWriteReview && (
-        <>
-          <I18n.Text string="reviews.no_reviews" />
-          <WriteReviewLink productId={productId} />
-        </>
-      )}
+const NoReviews = ({ productId }) => {
+  const { classes } = useStyles();
+
+  return (
+    <div className={classes.container}>
+      <AverageRating productId={productId} />
+      <div className={classes.noReviews}>
+        {appConfig.showWriteReview && (
+          <>
+            <I18n.Text string="reviews.no_reviews" />
+            <WriteReviewLink productId={productId} />
+          </>
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 NoReviews.propTypes = {
   productId: PropTypes.string,

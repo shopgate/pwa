@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
-import styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const outerGap = themeConfig.variables.gap.small;
 
 /**
  * The Context Menu Position component.
@@ -9,6 +12,9 @@ import styles from './style';
 class Position extends Component {
   static propTypes = {
     children: PropTypes.node,
+    classes: PropTypes.shape({
+      container: PropTypes.string,
+    }),
     offset: PropTypes.shape({
       top: PropTypes.number,
       left: PropTypes.number,
@@ -16,6 +22,9 @@ class Position extends Component {
   };
 
   static defaultProps = {
+    classes: {
+      container: '',
+    },
     children: null,
     offset: {
       top: 0,
@@ -48,7 +57,7 @@ class Position extends Component {
     const height = window.innerHeight;
 
     // Get the outer gap from styles
-    const gap = styles.outerGap;
+    const gap = outerGap;
 
     // Calculate clamped menu position
     const left = clamp(offset.left, 0, width - bounds.width - (gap * 2));
@@ -64,12 +73,22 @@ class Position extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
+
     return (
-      <div ref={(ref) => { this.elementRef = ref; }} className={styles.container}>
+      <div ref={(ref) => { this.elementRef = ref; }} className={classes.container}>
         {this.props.children}
       </div>
     );
   }
 }
 
-export default Position;
+export default withStyles(
+  Position,
+  () => ({
+    container: {
+      position: 'absolute',
+      margin: outerGap,
+    },
+  })
+);

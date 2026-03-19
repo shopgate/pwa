@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withForwardedRef } from '@shopgate/engage/core';
+import { withStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
-import styles from './style';
+
+const { colors, variables } = themeConfig;
+const IMAGE_SPACE = 72;
+const glowHover = {
+  boxShadow: `-${variables.gap.bigger}px 0 0 ${colors.shade8}, ${variables.gap.bigger}px 0 0 ${colors.shade8}`,
+};
 
 /**
  * The list item component.
@@ -13,6 +20,14 @@ import styles from './style';
 class Item extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    classes: PropTypes.shape({
+      description: PropTypes.string,
+      disabled: PropTypes.string,
+      grid: PropTypes.string,
+      image: PropTypes.string,
+      selected: PropTypes.string,
+      title: PropTypes.string,
+    }),
     className: PropTypes.string,
     description: PropTypes.string,
     forwardedRef: PropTypes.shape(),
@@ -29,6 +44,14 @@ class Item extends Component {
   };
 
   static defaultProps = {
+    classes: {
+      description: '',
+      disabled: '',
+      grid: '',
+      image: '',
+      selected: '',
+      title: '',
+    },
     className: null,
     description: null,
     forwardedRef: null,
@@ -67,14 +90,15 @@ class Item extends Component {
       isDisabled, isSelected, title, image, rightComponent,
       leftComponent, forwardedRef, description,
     } = this.props;
+    const classes = withStyles.getClasses(this.props);
 
     const gridStyles = {
-      [styles.grid]: true,
-      [styles.selected]: isSelected,
+      [classes.grid]: true,
+      [classes.selected]: isSelected,
     };
     const titleStyles = {
-      [styles.title]: true,
-      [styles.disabled]: isDisabled,
+      [classes.title]: true,
+      [classes.disabled]: isDisabled,
     };
 
     const ref = isNested ? null : forwardedRef;
@@ -83,7 +107,7 @@ class Item extends Component {
       <div data-test-id={this.props.testId} ref={ref} className="engage__sheet-list__item">
         <Grid className={classNames(gridStyles)} component="div">
           {(image !== null) && (
-            <div className={styles.image}>
+            <div className={classes.image}>
               {image}
             </div>
           )}
@@ -98,7 +122,7 @@ class Item extends Component {
             </div>
             { description && (
               <div
-                className={styles.description}
+                className={classes.description}
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             )}
@@ -143,7 +167,7 @@ class Item extends Component {
         <Glow
           ref={forwardedRef}
           className={className}
-          styles={{ hover: styles.glowHover }}
+          styles={{ hover: glowHover }}
         >
           <LinkComponent href={link} onClick={onClick} state={linkState} tabIndex={0}>
             {this.renderContent()}
@@ -162,7 +186,7 @@ class Item extends Component {
         role="option"
         aria-selected={isSelected}
       >
-        <Glow className={className} styles={{ hover: styles.glowHover }}>
+        <Glow className={className} styles={{ hover: glowHover }}>
           {this.renderContent()}
         </Glow>
       </div>
@@ -170,4 +194,58 @@ class Item extends Component {
   }
 }
 
-export default withForwardedRef(Item);
+export default withForwardedRef(withStyles(
+  Item,
+  () => ({
+    disabled: {
+      color: colors.shade5,
+      cursor: 'not-allowed',
+    },
+    selected: {
+      background: 'var(--color-background-accent)',
+      boxShadow: '-16px 0 0 0 var(--color-background-accent) !important',
+    },
+    title: {
+      width: '100%',
+      marginTop: variables.gap.xsmall,
+      paddingRight: variables.gap.big,
+      hyphens: 'auto',
+      overflowWrap: 'break-word',
+      wordBreak: 'break-word',
+      color: 'var(--color-text-high-emphasis)',
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        padding: variables.gap.big,
+        margin: 0,
+        fontSize: '1.25rem',
+        lineHeight: '1.5rem',
+      },
+    },
+    description: {
+      display: 'none',
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        display: 'block',
+        color: 'var(--color-text-medium-emphasis)',
+        fontSize: '0.875rem',
+        lineHeight: '1.25rem',
+        fontWeight: 'initial',
+        paddingTop: variables.gap.small,
+      },
+    },
+    grid: {
+      alignItems: 'center',
+      minHeight: 56,
+      padding: `${variables.gap.small}px 0`,
+      position: 'relative',
+      zIndex: 2,
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        padding: 0,
+      },
+    },
+    image: {
+      alignSelf: 'flex-start',
+      flexShrink: 0,
+      margin: `0 ${variables.gap.big}px 0 ${-IMAGE_SPACE + variables.gap.big}px`,
+      width: 40,
+    },
+  })
+));

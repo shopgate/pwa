@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SheetList, Picker as BasePicker, Sheet } from '@shopgate/engage/components';
 import { ViewContext } from '@shopgate/engage/components/View';
 import Button from './components/Button';
-import styles from './style';
+
+const { variables } = themeConfig;
 
 /**
  * The template version of the Picker component.
@@ -15,12 +18,18 @@ class PickerUtilize extends Component {
     setViewAriaHidden: PropTypes.func.isRequired,
     buttonComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
     buttonProps: PropTypes.shape(),
+    classes: PropTypes.shape({
+      root: PropTypes.string,
+    }),
     clickDelay: PropTypes.number,
     hasButton: PropTypes.bool,
     sheetProps: PropTypes.shape(),
   };
 
   static defaultProps = {
+    classes: {
+      root: '',
+    },
     buttonComponent: null,
     buttonProps: {},
     /**
@@ -104,11 +113,12 @@ class PickerUtilize extends Component {
     const {
       hasButton, sheetProps: ignore, ...restProps
     } = this.props;
+    const classes = withStyles.getClasses(this.props);
 
     return (
       <BasePicker
         {...restProps}
-        className={`${hasButton ? styles : ''} engage__picker-utilize`}
+        className={`${hasButton ? classes.root : ''} engage__picker-utilize`}
         modalComponent={this.modalComponent}
         buttonProps={this.props.buttonProps}
         buttonComponent={this.props.buttonComponent || Button}
@@ -120,10 +130,21 @@ class PickerUtilize extends Component {
   }
 }
 
+const StyledPickerUtilize = withStyles(
+  PickerUtilize,
+  () => ({
+    root: {
+      display: 'flex',
+      marginBottom: variables.gap.small,
+      minHeight: 56,
+    },
+  })
+);
+
 export default props => (
   <ViewContext.Consumer>
     {({ setAriaHidden }) => (
-      <PickerUtilize {...props} setViewAriaHidden={setAriaHidden} />
+      <StyledPickerUtilize {...props} setViewAriaHidden={setAriaHidden} />
     )}
   </ViewContext.Consumer>
 );

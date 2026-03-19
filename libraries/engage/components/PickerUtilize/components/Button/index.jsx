@@ -1,6 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors, variables } = themeConfig;
+
+const buttonDefaults = {
+  display: 'block',
+  width: '100%',
+  padding: `${variables.gap.small}px ${variables.gap.big}px`,
+  fontFamily: 'inherit',
+  textAlign: 'left',
+  lineHeight: 1.2,
+  outline: 'none',
+  background: colors.shade8,
+};
+
+const useStyles = makeStyles()({
+  button: {
+    ...buttonDefaults,
+  },
+  buttonDisabled: {
+    ...buttonDefaults,
+    color: colors.shade4,
+  },
+  label: {
+    display: 'block',
+    fontWeight: 500,
+    ':not(:only-child)': {
+      fontWeight: 400,
+      fontSize: '0.75rem',
+      marginBottom: 4,
+    },
+  },
+  value: {
+    display: 'block',
+    fontWeight: 500,
+  },
+});
 
 /**
  * The Picker Button component.
@@ -9,16 +46,20 @@ import styles from './style';
  */
 const Button = ({
   disabled, label, openList, value,
-}) => (
-  <button
-    className={`${disabled ? styles.buttonDisabled : styles.button}`}
-    onClick={openList}
-    type="button"
-  >
-    <span className={styles.label}>{label}</span>
-    {value && <span className={styles.value}>{value}</span>}
-  </button>
-);
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <button
+      className={`${disabled ? classes.buttonDisabled : classes.button}`}
+      onClick={openList}
+      type="button"
+    >
+      <span className={classes.label}>{label}</span>
+      {value && <span className={classes.value}>{value}</span>}
+    </button>
+  );
+};
 
 Button.propTypes = {
   label: PropTypes.oneOfType([

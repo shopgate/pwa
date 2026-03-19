@@ -42,55 +42,6 @@ const getImageRatio = ({ ratio, resolutions } = {}) => {
 };
 
 /**
- * Creates the ProductImage class names based on the current component props.
- * @param {Object} _ Unused theme argument from `withStyles`.
- * @param {Object} props The component props.
- * @returns {Object} The style object for `withStyles`.
- */
-const styles = (_, props) => ({
-  placeholderContainer: {
-    position: 'relative',
-    width: '100%',
-    ':before': {
-      display: 'block',
-      content: '""',
-      width: '100%',
-      paddingTop: `${100 * getImageRatio(props)}%`,
-    },
-  },
-  placeholderContent: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    top: 0,
-    textAlign: 'center',
-  },
-  placeholder: {
-    position: 'absolute',
-    width: `${placeholderIconScale * 100}% !important`,
-    height: `${placeholderIconScale * 100}% !important`,
-    top: `${(1.0 - placeholderIconScale) * 50}%`,
-    left: `${(1.0 - placeholderIconScale) * 50}%`,
-    color: themeColors.placeholder,
-  },
-  innerShadow: {
-    position: 'relative',
-    overflow: 'hidden',
-    ':after': {
-      display: 'block',
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-      boxShadow: themeShadows.productImage,
-      pointerEvents: 'none',
-    },
-  },
-});
-
-/**
  * The product image component.
  * This component will behave like the core Image component with the additional
  * feature of showing a placeholder in case no src property has been passed
@@ -205,8 +156,9 @@ class ProductImage extends Component {
    */
   render() {
     const {
-      noBackground, className, placeholderSrc, classes,
+      noBackground, className, placeholderSrc,
     } = this.props;
+    const classes = withStyles.getClasses(this.props);
     const { classes: ignoredClasses, ...imageProps } = this.props;
     let { showInnerShadow } = this.props.widgetSettings;
 
@@ -265,4 +217,48 @@ class ProductImage extends Component {
 
 export { ProductImage as UnwrappedProductImage };
 
-export default connect(withWidgetSettings(withStyles(ProductImage, styles), '@shopgate/engage/product/ProductImage'));
+export default connect(withWidgetSettings(withStyles(
+  ProductImage,
+  (_, props) => ({
+    placeholderContainer: {
+      position: 'relative',
+      width: '100%',
+      ':before': {
+        display: 'block',
+        content: '""',
+        width: '100%',
+        paddingTop: `${100 * getImageRatio(props)}%`,
+      },
+    },
+    placeholderContent: {
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      top: 0,
+      textAlign: 'center',
+    },
+    placeholder: {
+      position: 'absolute',
+      width: `${placeholderIconScale * 100}% !important`,
+      height: `${placeholderIconScale * 100}% !important`,
+      top: `${(1.0 - placeholderIconScale) * 50}%`,
+      left: `${(1.0 - placeholderIconScale) * 50}%`,
+      color: themeColors.placeholder,
+    },
+    innerShadow: {
+      position: 'relative',
+      overflow: 'hidden',
+      ':after': {
+        display: 'block',
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        boxShadow: themeShadows.productImage,
+        pointerEvents: 'none',
+      },
+    },
+  })
+), '@shopgate/engage/product/ProductImage'));

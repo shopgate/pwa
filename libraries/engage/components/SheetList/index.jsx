@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/engage';
 import List from '@shopgate/pwa-common/components/List';
 import Item from './components/Item';
-import styles from './style';
+
+const { variables, colors } = themeConfig;
+const IMAGE_SPACE = 72;
 
 /**
  * The SheetList component.
@@ -14,12 +18,26 @@ class SheetList extends Component {
 
   static propTypes = {
     children: PropTypes.node,
+    classes: PropTypes.shape({
+      innerContainer: PropTypes.string,
+      item: PropTypes.string,
+      itemNotLast: PropTypes.string,
+      itemSelected: PropTypes.string,
+      itemWithImage: PropTypes.string,
+    }),
     className: PropTypes.oneOfType([PropTypes.string, PropTypes.shape()]),
     hasImages: PropTypes.bool,
     testId: PropTypes.string,
   };
 
   static defaultProps = {
+    classes: {
+      innerContainer: '',
+      item: '',
+      itemNotLast: '',
+      itemSelected: '',
+      itemWithImage: '',
+    },
     children: null,
     className: null,
     hasImages: false,
@@ -34,14 +52,15 @@ class SheetList extends Component {
     const {
       children, className, hasImages, testId,
     } = this.props;
+    const classes = withStyles.getClasses(this.props);
 
     if (!React.Children.count(children)) {
       return null;
     }
 
     const itemClasses = {
-      [styles.item]: true,
-      [styles.itemWithImage]: hasImages,
+      [classes.item]: true,
+      [classes.itemWithImage]: hasImages,
     };
 
     return (
@@ -56,8 +75,8 @@ class SheetList extends Component {
           const { isSelected } = child.props;
 
           const childClasses = {
-            [styles.itemSelected]: isSelected,
-            [styles.itemNotLast]: !isSelected,
+            [classes.itemSelected]: isSelected,
+            [classes.itemNotLast]: !isSelected,
           };
 
           return (
@@ -67,7 +86,7 @@ class SheetList extends Component {
               key={key}
               tabIndex={0}
             >
-              <div className={styles.innerContainer} data-test-id={testId}>
+              <div className={classes.innerContainer} data-test-id={testId}>
                 {child}
               </div>
             </List.Item>
@@ -78,4 +97,30 @@ class SheetList extends Component {
   }
 }
 
-export default SheetList;
+export default withStyles(
+  SheetList,
+  () => ({
+    item: {
+      margin: `0 ${variables.gap.big}px`,
+      cursor: 'pointer',
+    },
+    itemNotLast: {
+      '&:not(:last-child)': {
+        boxShadow: `0 1px 0 0 ${colors.darkGray}`,
+        marginBottom: 1,
+      },
+    },
+    itemSelected: {
+      background: 'var(--color-background-accent)',
+      boxShadow: `-${variables.gap.bigger}px 0 0 var(--color-background-accent), ${variables.gap.bigger}px 0 0 var(--color-background-accent)`,
+      marginTop: -1,
+    },
+    itemWithImage: {
+      marginLeft: IMAGE_SPACE,
+    },
+    innerContainer: {
+      minHeight: 56,
+      position: 'relative',
+    },
+  })
+);

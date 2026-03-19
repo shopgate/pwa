@@ -1,14 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
+import { useScrollContainer } from '@shopgate/engage/core/helpers';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { setPageBackgroundColor } from '../../styles';
 import Content from './components/Content';
 import ViewProvider from './provider';
 import { ViewContext } from './context';
-import styles from './style';
 
 const { colors } = themeConfig;
+
+const useStyles = makeStyles()((_, { inScrollContainer }) => ({
+  root: inScrollContainer ? {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: 1,
+  } : {
+    height: '100%',
+  },
+}));
 
 // api: import { ViewContext } from '@shopgate/engage/components/View';
 export { ViewContext };
@@ -27,6 +41,9 @@ function ViewContainer({
   noContentPortal,
   noKeyboardListener,
 }) {
+  const inScrollContainer = useScrollContainer();
+  const { classes } = useStyles({ inScrollContainer });
+
   if (visible) {
     setPageBackgroundColor(background);
   }
@@ -39,7 +56,7 @@ function ViewContainer({
     <ViewProvider>
       <ViewContext.Consumer>
         {({ setContentRef, ariaHidden: ariaHiddenContext }) => (
-          <section className={`${styles} engage__view`} style={style} aria-hidden={ariaHidden || ariaHiddenContext}>
+          <section className={`${classes.root} engage__view`} style={style} aria-hidden={ariaHidden || ariaHiddenContext}>
             <Content
               noScrollOnKeyboard={noScrollOnKeyboard}
               noKeyboardListener={noKeyboardListener}

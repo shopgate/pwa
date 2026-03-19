@@ -1,6 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  root: {
+    fontSize: 14,
+    fontStyle: 'italic',
+    whiteSpace: 'pre-line',
+  },
+});
 
 /**
  * Review Text Component
@@ -8,12 +16,14 @@ import styles from './style';
  * @returns {JSX|null}
  */
 const Text = ({ review }) => {
+  const { classes } = useStyles();
+
   if (!review) {
     return null;
   }
 
   return (
-    <div className={styles}>{`"${review}"`}</div>
+    <div className={classes.root}>{`"${review}"`}</div>
   );
 };
 
