@@ -97,7 +97,7 @@ class SheetList extends Component {
   }
 }
 
-export default withStyles(
+const StyledSheetList = withStyles(
   SheetList,
   () => ({
     item: {
@@ -124,3 +124,7 @@ export default withStyles(
     },
   })
 );
+
+StyledSheetList.Item = Item;
+
+export default StyledSheetList;

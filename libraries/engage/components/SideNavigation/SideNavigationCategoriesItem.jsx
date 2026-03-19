@@ -6,14 +6,44 @@ import ArrowDrop from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 // eslint-disable-next-line import/no-cycle
 import SideNavigationCategoriesItemChildren from './SideNavigationCategoriesItemChildren';
 import SideNavigationItem from './SideNavigationItem';
 import connect from './SideNavigationCategoriesItem.connector';
-import {
-  chevronButton, chevronUp, chevronDown, progressBar, open,
-} from './SideNavigationCategoriesItem.style';
 import { useSideNavigation } from './SideNavigation.hooks';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  chevronButton: {
+    flexShrink: 0,
+    outline: 0,
+    margin: `0 -${variables.gap.big}px 0 ${variables.gap.small}px`,
+    fontSize: '1.6em',
+    color: '#373D41',
+    position: 'relative',
+  },
+  chevronDown: {
+    transformOrigin: 'center center',
+    transition: 'transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    transform: 'rotateZ(0deg)',
+  },
+  chevronUp: {
+    transformOrigin: 'center center',
+    transition: 'transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    transform: 'rotateZ(180deg)',
+  },
+  progressBar: {
+    position: 'absolute',
+    overflow: 'hidden',
+    width: '100%',
+    bottom: 0,
+    height: 3,
+  },
+  open: {},
+});
 
 /**
  * The SideNavigationCategoriesItem component.
@@ -34,6 +64,7 @@ const SideNavigationCategoriesItem = ({
   fetchCategory,
   level,
 }) => {
+  const { classes } = useStyles();
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const {
@@ -64,14 +95,17 @@ const SideNavigationCategoriesItem = ({
   const buttonRight = useMemo(() => {
     if (!maxNestingReached && hasSubcategories) {
       return (
-        <button type="button" onClick={handleClick} className={chevronButton}>
-          <ArrowDrop className={(isOpen && subcategories ? chevronUp : chevronDown).toString()} />
+        <button type="button" onClick={handleClick} className={classes.chevronButton}>
+          <ArrowDrop
+            className={isOpen && subcategories ? classes.chevronUp : classes.chevronDown}
+          />
         </button>
       );
     }
 
     return null;
-  }, [handleClick, hasSubcategories, isOpen, maxNestingReached, subcategories]);
+  }, [classes.chevronButton, classes.chevronDown, classes.chevronUp,
+    handleClick, hasSubcategories, isOpen, maxNestingReached, subcategories]);
 
   if (!category) {
     return null;
@@ -84,10 +118,10 @@ const SideNavigationCategoriesItem = ({
       level={level}
       buttonRight={buttonRight}
       forceActive={activeCategoryId === categoryId}
-      className={level === 0 && isOpen ? open : null}
+      className={level === 0 && isOpen ? classes.open : null}
     >
       { isLoading && (
-        <div className={progressBar}>
+        <div className={classes.progressBar}>
           <ProgressBar />
         </div>
       )}

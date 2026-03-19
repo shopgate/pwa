@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import * as styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * The value button component.
@@ -25,11 +26,12 @@ class ValueButton extends PureComponent {
    * @returns {string}
    */
   get className() {
+    const classes = withStyles.getClasses(this.props);
     const { isActive } = this.props;
 
     return classNames({
-      [styles.inactive]: !isActive,
-      [styles.active]: isActive,
+      [classes.inactive]: !isActive,
+      [classes.active]: isActive,
     });
   }
 
@@ -57,4 +59,43 @@ class ValueButton extends PureComponent {
   }
 }
 
-export default ValueButton;
+export default withStyles(
+  ValueButton,
+  () => ({
+    inactive: {
+      border: `1px solid ${themeColors.darkGray}`,
+      borderRadius: 2,
+      color: 'inherit',
+      height: 42,
+      marginLeft: 8,
+      marginBottom: 8,
+      maxWidth: '100%',
+      minWidth: 42,
+      outline: 0,
+      overflow: 'hidden',
+      padding: '0 8px',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      transition: 'color 100ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+      willChange: 'color, border-color',
+    },
+    active: {
+      border: `1px solid ${themeColors.darkGray}`,
+      borderRadius: 2,
+      color: 'var(--color-secondary)',
+      height: 42,
+      marginLeft: 8,
+      marginBottom: 8,
+      maxWidth: '100%',
+      minWidth: 42,
+      outline: 0,
+      overflow: 'hidden',
+      padding: '0 8px',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      transition: 'color 100ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+      willChange: 'color, border-color',
+      borderColor: 'var(--color-secondary)',
+    },
+  })
+);

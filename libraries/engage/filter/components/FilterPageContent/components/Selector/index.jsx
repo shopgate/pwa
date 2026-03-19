@@ -2,12 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion, SurroundPortals } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
+import { withStyles } from '@shopgate/engage/styles';
 import { FilterItem } from '@shopgate/engage/filter';
 import { PORTAL_FILTER_SELECTOR } from '@shopgate/engage/filter/constants';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
-import * as styles from './style';
 
 /**
  * The selector component.
@@ -101,6 +101,7 @@ class Selector extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const {
       values, id, label, multi,
     } = this.props;
@@ -125,9 +126,9 @@ class Selector extends PureComponent {
             renderLabel={this.renderLabel}
             testId={id}
             handleLabel={i18n.text('filter.filter_by', { label })}
-            className={styles.accordion}
+            className={classes.accordion}
           >
-            <div className={styles.content}>
+            <div className={classes.content}>
               {values.map(value => (
                 <ValueButton
                   key={value.id}
@@ -145,4 +146,15 @@ class Selector extends PureComponent {
   }
 }
 
-export default Selector;
+export default withStyles(
+  Selector,
+  () => ({
+    accordion: {
+      overflow: 'hidden',
+    },
+    content: {
+      marginLeft: -8,
+      marginBottom: -8,
+    },
+  })
+);

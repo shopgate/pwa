@@ -1,18 +1,126 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import Color from 'color';
+import { makeStyles, responsiveMediaQuery, getCSSCustomProp } from '@shopgate/engage/styles';
+import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { i18n, errorBehavior } from '@shopgate/engage/core/helpers';
 import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
 import WarningIcon from '@shopgate/pwa-ui-shared/icons/WarningIcon';
-
-import * as styles from './MessageBar.style';
 
 const iconMapping = {
   info: InfoIcon,
   warning: WarningIcon,
   error: StopIcon,
 };
+
+const containerBase = {
+  background: themeColors.background,
+  display: 'flex',
+  flexDirection: 'column',
+  flexShrink: 0,
+  overflow: 'hidden',
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    fontWeight: 'normal',
+    border: 'none',
+    borderRadius: 'inherit',
+    margin: themeVariables.gap.big,
+    boxShadow: 'none',
+    background: 'none',
+  },
+};
+
+const messageBase = {
+  padding: `${themeVariables.gap.big}px ${themeVariables.gap.big}px`,
+  fontSize: '0.875rem',
+  lineHeight: 1.3,
+  fontWeight: 500,
+  ':not(:last-child)': {
+    marginBottom: themeVariables.gap.small * 0.5,
+  },
+  ' > svg': {
+    fontSize: '1.5rem !important',
+  },
+  [responsiveMediaQuery('>xs', { webOnly: true })]: {
+    padding: `${themeVariables.gap.small * 1.5}px ${themeVariables.gap.big}px`,
+    fontWeight: 'normal',
+    border: '1px solid',
+    borderRadius: 4,
+    ':not(:last-child)': {
+      marginBottom: themeVariables.gap.small,
+    },
+  },
+};
+
+/**
+ * @param {string} sourceColor Source color.
+ * @param {string} [textColor] Optional text color.
+ * @returns {{ background: string, color: string, borderColor: string }}
+ */
+const getMessageColors = (sourceColor, textColor) => ({
+  background: Color(sourceColor).fade(0.9).toString(),
+  color: textColor || 'var(--color-text-height-emphasis)',
+  borderColor: sourceColor,
+});
+
+const useStyles = makeStyles()((_, { secondaryColor }) => ({
+  container: {
+    ...containerBase,
+  },
+  containerRaised: {
+    ...containerBase,
+    borderRadius: '0 0 5px 5px',
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    zIndex: 10,
+  },
+  info: {
+    ...messageBase,
+    background: 'var(--color-secondary)',
+    color: 'var(--color-secondary-contrast)',
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      ...getMessageColors(secondaryColor || themeColors.secondary || '#000'),
+      ' > svg': {
+        color: 'var(--color-secondary)',
+      },
+    },
+  },
+  error: {
+    ...messageBase,
+    background: themeColors.error,
+    color: themeColors.light,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      ...getMessageColors(themeColors.error),
+      ' > svg': {
+        color: themeColors.error,
+      },
+    },
+  },
+  warning: {
+    ...messageBase,
+    background: themeColors.warning,
+    color: themeColors.light,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      ...getMessageColors(themeColors.warning),
+      ' > svg': {
+        color: themeColors.warning,
+      },
+    },
+  },
+  withIcon: {
+    display: 'flex',
+    minWidth: '100%',
+    alignItems: 'center',
+  },
+  icon: {
+    flexGrow: 0,
+    flexShrink: 0,
+  },
+  messageToIcon: {
+    flexGrow: 1,
+    paddingLeft: themeVariables.gap.big,
+  },
+}));
 
 /**
  * The MessageBar component.
@@ -26,13 +134,16 @@ const iconMapping = {
 const MessageBar = ({
   messages, classNames, raised, showIcons,
 }) => {
+  const secondaryColor = getCSSCustomProp('--color-secondary');
+  const { classes } = useStyles({ secondaryColor });
   const containerClass = React.useMemo(() => {
     if (raised) {
-      return classnames(styles.containerRaised, classNames.containerRaised);
+      return classnames(classes.containerRaised, classNames.containerRaised);
     }
 
-    return classnames(styles.container, classNames.container);
-  }, [classNames.container, classNames.containerRaised, raised]);
+    return classnames(classes.container, classNames.container);
+  }, [classNames.container, classNames.containerRaised, raised,
+    classes.container, classes.containerRaised]);
 
   return (
     <div
@@ -62,20 +173,20 @@ const MessageBar = ({
           <div
             key={`${type}-${message}`}
             className={classnames(
-              (styles[type] ? styles[type]() : null),
+              (classes[type] || null),
               classNames.message,
-              Icon ? styles.withIcon : null
+              Icon ? classes.withIcon : null
             )}
             aria-live="assertive"
             aria-atomic="true"
           >
             {Icon && (
-              <Icon className={classnames(classNames.icon, styles.icon)} />
+              <Icon className={classnames(classNames.icon, classes.icon)} />
             )}
             <span className="sr-only">
               {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
             </span>
-            <span aria-hidden className={Icon ? styles.messageToIcon : null}>
+            <span aria-hidden className={Icon ? classes.messageToIcon : null}>
               {messageOutput}
             </span>
           </div>

@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
 
 const { variables } = themeConfig;
 
@@ -26,6 +26,13 @@ export const CHIP_MINIMUM_WIDTH = 60;
 class ChipLayout extends Component {
   static propTypes = {
     children: PropTypes.node,
+    classes: PropTypes.shape({
+      container: PropTypes.string,
+      layout: PropTypes.string,
+      moreButton: PropTypes.string,
+      moreButtonInverted: PropTypes.string,
+      moreButtonWrapper: PropTypes.string,
+    }),
     handleMoreButton: PropTypes.func,
     invertMoreButton: PropTypes.bool,
     maxRows: PropTypes.number,
@@ -36,6 +43,13 @@ class ChipLayout extends Component {
   };
 
   static defaultProps = {
+    classes: {
+      container: '',
+      layout: '',
+      moreButton: '',
+      moreButtonInverted: '',
+      moreButtonWrapper: '',
+    },
     children: null,
     handleMoreButton: () => { },
     invertMoreButton: false,
@@ -78,11 +92,13 @@ class ChipLayout extends Component {
    * @return {string} The store button class name.
    */
   get moreButtonStyles() {
+    const classes = withStyles.getClasses(this.props);
+
     if (this.props.invertMoreButton) {
-      return styles.moreButtonInverted;
+      return classes.moreButtonInverted;
     }
 
-    return styles.moreButton;
+    return classes.moreButton;
   }
 
   /**
@@ -160,18 +176,20 @@ class ChipLayout extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
+
     return (
       <div
         ref={(element) => { this.containerRef = element; }}
-        className={`${styles.container(this.maxContentHeight)} engage__chip-layout`}
+        className={`${classes.container} engage__chip-layout`}
       >
-        <div ref={(element) => { this.layoutRef = element; }} className={styles.layout}>
+        <div ref={(element) => { this.layoutRef = element; }} className={classes.layout}>
           {this.props.children}
         </div>
 
         <div
           ref={(element) => { this.moreButtonRef = element; }}
-          className={styles.moreButtonWrapper}
+          className={classes.moreButtonWrapper}
         >
           <RippleButton
             fill
@@ -187,4 +205,43 @@ class ChipLayout extends Component {
   }
 }
 
-export default ChipLayout;
+export default withStyles(
+  ChipLayout,
+  (_, props) => ({
+    container: {
+      position: 'relative',
+      maxHeight: (CHIP_ROW_HEIGHT * props.maxRows) + 8,
+      overflow: 'hidden',
+      marginBottom: variables.gap.small,
+    },
+    layout: {
+      display: 'flex',
+      alignContent: 'flex-start',
+      flexWrap: 'wrap',
+      padding: '8px 5px',
+      overflow: 'hidden',
+    },
+    moreButtonWrapper: {
+      position: 'absolute',
+      right: 0,
+      bottom: 6,
+      marginLeft: 'auto',
+    },
+    moreButton: {
+      marginLeft: 'auto',
+      outline: 0,
+      padding: 9,
+      fontSize: '0.8rem',
+      fontWeight: 500,
+      textTransform: 'uppercase',
+    },
+    moreButtonInverted: {
+      marginLeft: 'auto',
+      outline: 0,
+      padding: 9,
+      fontSize: '0.8rem',
+      fontWeight: 500,
+      textTransform: 'uppercase',
+    },
+  })
+);

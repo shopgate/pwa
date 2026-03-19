@@ -2,11 +2,46 @@ import React, { useMemo, memo } from 'react';
 import classNames from 'classnames';
 import Link from '@shopgate/pwa-common/components/Link';
 import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';
-import {
-  getIndentation, item, itemActive, link, linkActive, list,
-} from './SideNavigationItem.style';
 import { useSideNavigation } from './SideNavigation.hooks';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()((_, { level }) => ({
+  indentation: {
+    paddingLeft: level * variables.gap.big,
+  },
+  list: {
+    position: 'relative',
+  },
+  item: {
+    alignItems: 'center',
+    display: 'flex',
+    textAlign: 'left',
+    outline: 0,
+    padding: variables.gap.big,
+    position: 'relative',
+    width: '100%',
+    lineHeight: '1.45em',
+  },
+  itemActive: {
+    background: 'var(--color-side-navigation-active-background)',
+  },
+  link: {
+    flexGrow: 1,
+    textAlign: 'left',
+    outline: 0,
+    color: 'var(--color-text-high-emphasis)',
+    ':hover': {
+      color: 'var(--color-primary)',
+    },
+  },
+  linkActive: {
+    color: 'var(--color-primary) !important',
+  },
+}));
 
 /**
  * SideNavigationItem component.
@@ -33,6 +68,7 @@ const SideNavigationItem = ({
   href,
   label,
 }) => {
+  const { classes } = useStyles({ level });
   const { currentPathname } = useSideNavigation();
   const isActive = useMemo(() => !forceInactive && (currentPathname === href || forceActive), [
     currentPathname,
@@ -42,17 +78,17 @@ const SideNavigationItem = ({
   ]);
 
   return (
-    <li className={classNames(list, className)}>
-      <div className={classNames(item, {
-        [itemActive]: isActive,
+    <li className={classNames(classes.list, className)}>
+      <div className={classNames(classes.item, {
+        [classes.itemActive]: isActive,
       })}
       >
         { href ? (
           <Link
             tag="a"
             href={href}
-            className={classNames(link, getIndentation(level), {
-              [linkActive]: isActive,
+            className={classNames(classes.link, classes.indentation, {
+              [classes.linkActive]: isActive,
             })}
           >
             {i18n.text(label)}
@@ -60,8 +96,8 @@ const SideNavigationItem = ({
         ) : (
           <button
             type="button"
-            className={classNames(link, getIndentation(level), {
-              [linkActive]: isActive,
+            className={classNames(classes.link, classes.indentation, {
+              [classes.linkActive]: isActive,
             })}
             onClick={onClick}
           >

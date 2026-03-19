@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import * as styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
 
 /**
  * The filter selected component.
@@ -34,6 +34,7 @@ class Selected extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     if (!this.props.selected || this.props.selected.length === 0) {
       return null;
     }
@@ -44,8 +45,8 @@ class Selected extends PureComponent {
       <>
         {items.map((item, index) => (
           <Fragment key={item}>
-            <span className={styles.elipsed}>{item}</span>
-            {(index < items.length - 1) ? <span className={styles.comma}>, </span> : ''}
+            <span className={classes.elipsed}>{item}</span>
+            {(index < items.length - 1) ? <span className={classes.comma}>, </span> : ''}
           </Fragment>
         ))}
       </>
@@ -53,4 +54,20 @@ class Selected extends PureComponent {
   }
 }
 
-export default Selected;
+export default withStyles(
+  Selected,
+  () => ({
+    elipsed: {
+      maxWidth: '95%',
+      overflow: 'hidden',
+      textAlign: 'right',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    },
+    comma: {
+      ' + span': {
+        marginLeft: '0.65ch',
+      },
+    },
+  })
+);

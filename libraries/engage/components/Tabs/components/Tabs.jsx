@@ -165,11 +165,11 @@ const Tabs = (props) => {
       )}
     >
       <div
-        className={classNames(classes.fixed)}
+        className={classes.fixed}
         ref={tabsRef}
       >
         <div
-          className={classNames(classes.flexContainer)}
+          className={classes.flexContainer}
           ref={tabListRef}
           role="tablist"
         >

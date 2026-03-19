@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import * as styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
 
 /**
  * The toggle component.
@@ -22,12 +22,13 @@ class Toggle extends PureComponent {
    * @returns {string}
    */
   get className() {
+    const classes = withStyles.getClasses(this.props);
     const { open } = this.props;
 
     return classNames({
-      [styles.label]: true,
-      [styles.open]: open,
-      [styles.closed]: !open,
+      [classes.label]: true,
+      [classes.open]: open,
+      [classes.closed]: !open,
     });
   }
 
@@ -35,19 +36,53 @@ class Toggle extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const { label, selected } = this.props;
 
     return (
-      <div className={styles.toggle}>
+      <div className={classes.toggle}>
         <span className={this.className}>
           {label}
         </span>
         {selected && (
-          <span className={styles.selected}>{selected}</span>
+          <span className={classes.selected}>{selected}</span>
         )}
       </div>
     );
   }
 }
 
-export default Toggle;
+export default withStyles(
+  Toggle,
+  () => ({
+    toggle: {
+      display: 'flex',
+      flexFlow: 'row no-wrap',
+      alignContent: 'stretch',
+      alignItems: 'flex-start',
+    },
+    label: {
+      whiteSpace: 'no-wrap',
+      flexShrink: 0,
+      flexGrow: 1,
+      textAlign: 'left',
+      maxWidth: '50%',
+      minWidth: '35%',
+      paddingRight: '16px',
+    },
+    selected: {
+      display: 'flex',
+      flexFlow: 'row wrap',
+      flexGrow: 1,
+      justifyContent: 'flex-end',
+      minWidth: '50%',
+      maxWidth: '65%',
+    },
+    closed: {
+      fontWeight: 'normal',
+    },
+    open: {
+      fontWeight: 'bold',
+    },
+  })
+);

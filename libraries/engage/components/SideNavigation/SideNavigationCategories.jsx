@@ -1,10 +1,32 @@
 import React, { useEffect } from 'react';
 import { LoadingIndicator } from '@shopgate/pwa-ui-shared';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import SideNavigationCategoriesItemChildren from './SideNavigationCategoriesItemChildren';
 import connect from './SideNavigationCategories.connector';
-import { list, loadingIndicator } from './SideNavigationCategories.style';
-import { item } from './SideNavigationItem.style';
+
+const { colors, variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  list: {
+    borderBottom: `1px solid ${colors.shade7}`,
+  },
+  loadingIndicator: {
+    padding: 0,
+    margin: 'auto',
+  },
+  item: {
+    alignItems: 'center',
+    display: 'flex',
+    textAlign: 'left',
+    outline: 0,
+    padding: variables.gap.big,
+    position: 'relative',
+    width: '100%',
+    lineHeight: '1.45em',
+  },
+});
 
 /**
  * The SideNavigationCategories component.
@@ -21,6 +43,7 @@ const SideNavigationCategories = ({
   fetchCategory,
   rootCategoriesFetching,
 }) => {
+  const { classes } = useStyles();
   useEffect(() => {
     if (!subcategories) {
       fetchCategory(categoryId);
@@ -29,8 +52,8 @@ const SideNavigationCategories = ({
 
   if (!subcategories && rootCategoriesFetching) {
     return (
-      <li className={item}>
-        <LoadingIndicator className={loadingIndicator} />
+      <li className={classes.item}>
+        <LoadingIndicator className={classes.loadingIndicator} />
       </li>
     );
   }
@@ -40,7 +63,7 @@ const SideNavigationCategories = ({
   }
 
   return (
-    <li className={list}>
+    <li className={classes.list}>
       <SideNavigationCategoriesItemChildren level={0} subcategories={subcategories} />
     </li>
   );
