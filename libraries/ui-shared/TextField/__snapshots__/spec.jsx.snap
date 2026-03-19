@@ -52,7 +52,7 @@ exports[`<TextField /> should focus the input 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -199,7 +199,7 @@ exports[`<TextField /> should focus the input 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -268,7 +268,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -415,7 +415,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -484,7 +484,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -631,7 +631,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -700,7 +700,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -847,7 +847,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -916,7 +916,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+        className="css-udxgne css-16msjt6 css-1fekhao label floating"
         htmlFor="test-input"
       >
         <Translate
@@ -1063,7 +1063,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1132,7 +1132,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1260,7 +1260,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           className="css-1tpmuef"
           style={
             {
-              "borderBottomColor": "var(--color-state-alert, #ff0000)",
+              "borderBottomColor": "var(--color-state-alert)",
             }
           }
         />
@@ -1278,7 +1278,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1354,7 +1354,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1501,7 +1501,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1570,7 +1570,7 @@ exports[`<TextField /> should show the error message 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1698,7 +1698,7 @@ exports[`<TextField /> should show the error message 1`] = `
           className="css-1tpmuef"
           style={
             {
-              "borderBottomColor": "var(--color-state-alert, #ff0000)",
+              "borderBottomColor": "var(--color-state-alert)",
             }
           }
         />
@@ -1716,7 +1716,7 @@ exports[`<TextField /> should show the error message 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1799,7 +1799,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -1946,7 +1946,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -2015,7 +2015,7 @@ exports[`<TextField /> should show the label 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -2169,7 +2169,7 @@ exports[`<TextField /> should show the label 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -2252,7 +2252,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-xrreyh css-1fekhao label"
+        className="css-udxgne css-1fekhao label"
         htmlFor="test-input"
       >
         <Translate
@@ -2399,7 +2399,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-of8bei errorText"
+        className="css-7t8drq errorText"
         id="ariaError-test-input"
       >
         <Translate

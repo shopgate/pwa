@@ -132,7 +132,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                    className="css-udxgne css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -286,7 +286,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.foo"
                   />
                 </ErrorText>
@@ -434,7 +434,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-1fekhao label"
+                    className="css-udxgne css-1fekhao label"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -588,7 +588,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.foo"
                   />
                 </ErrorText>
@@ -693,7 +693,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-1fekhao label"
+                    className="css-udxgne css-1fekhao label"
                     htmlFor="foo.bar"
                   >
                     <Translate
@@ -847,7 +847,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.bar"
                   />
                 </ErrorText>
@@ -995,7 +995,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                    className="css-udxgne css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -1149,7 +1149,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.foo"
                   />
                 </ErrorText>
@@ -1377,7 +1377,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-1fekhao label"
+                    className="css-udxgne css-1fekhao label"
                     htmlFor="foo.firstName"
                   >
                     <Translate
@@ -1531,7 +1531,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.firstName"
                   />
                 </ErrorText>
@@ -1623,7 +1623,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-1fekhao label"
+                    className="css-udxgne css-1fekhao label"
                     htmlFor="foo.lastName"
                   >
                     <Translate
@@ -1777,7 +1777,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.lastName"
                   />
                 </ErrorText>
@@ -1932,7 +1932,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                    className="css-udxgne css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -2086,7 +2086,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.foo"
                   />
                 </ErrorText>
@@ -2196,7 +2196,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                    className="css-udxgne css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.bar"
                   >
                     <Translate
@@ -2350,7 +2350,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.bar"
                   />
                 </ErrorText>
@@ -2505,7 +2505,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                    className="css-udxgne css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.foo"
                   >
                     <Translate
@@ -2659,7 +2659,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.foo"
                   />
                 </ErrorText>
@@ -2769,7 +2769,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                    className="css-udxgne css-16msjt6 css-1fekhao label floating"
                     htmlFor="foo.bar"
                   >
                     <Translate
@@ -2923,7 +2923,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="css-of8bei errorText"
+                    className="css-7t8drq errorText"
                     id="ariaError-foo.bar"
                   />
                 </ErrorText>

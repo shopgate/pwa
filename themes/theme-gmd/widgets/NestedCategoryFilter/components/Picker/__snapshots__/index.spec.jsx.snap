@@ -43,7 +43,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
     >
       <div
         aria-hidden={true}
-        className="css-1xsdpry"
+        className="css-3vcrlh"
         onClick={[Function]}
       >
         <div
@@ -112,7 +112,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1rtxert"
+                className="css-1447nbj"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -121,7 +121,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               >
                 <div
                   aria-modal={true}
-                  className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-1447nbj css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -250,7 +250,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           }
                         >
                           <div
-                            className="css-p3pdmf"
+                            className="css-1sisfcf"
                           />
                         </div>
                       </Transition>
@@ -419,7 +419,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
     >
       <div
         aria-hidden={true}
-        className="css-1xsdpry"
+        className="css-3vcrlh"
         onClick={[Function]}
       >
         <div
@@ -488,7 +488,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1rtxert"
+                className="css-1447nbj"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -497,7 +497,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               >
                 <div
                   aria-modal={true}
-                  className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-1447nbj css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -626,7 +626,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           }
                         >
                           <div
-                            className="css-p3pdmf"
+                            className="css-1sisfcf"
                           />
                         </div>
                       </Transition>
@@ -835,7 +835,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
     >
       <div
         aria-hidden={true}
-        className="css-1xsdpry"
+        className="css-3vcrlh"
         onClick={[Function]}
       >
         <div
@@ -904,7 +904,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1rtxert"
+                className="css-1447nbj"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -913,7 +913,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               >
                 <div
                   aria-modal={true}
-                  className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
+                  className="css-1447nbj css-1rg7udn css-171mdnt common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -1042,7 +1042,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           }
                         >
                           <div
-                            className="css-p3pdmf"
+                            className="css-1sisfcf"
                           />
                         </div>
                       </Transition>
@@ -1212,7 +1212,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
     >
       <div
         aria-hidden={true}
-        className="css-1xsdpry"
+        className="css-3vcrlh"
         onClick={[Function]}
       >
         <div
@@ -1281,7 +1281,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1rtxert"
+                className="css-1447nbj"
                 isOpen={true}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1290,7 +1290,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               >
                 <div
                   aria-modal={true}
-                  className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
+                  className="css-1447nbj css-1rg7udn css-1ldjh2f common__drawer"
                   onAnimationEnd={[Function]}
                   role="dialog"
                   style={
@@ -1419,7 +1419,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           }
                         >
                           <div
-                            className="css-p3pdmf"
+                            className="css-1sisfcf"
                           />
                         </div>
                       </Transition>
@@ -1448,7 +1448,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                         selected={true}
                       >
                         <button
-                          className="css-1ekqwzo"
+                          className="css-11xl8on"
                           key="1-1"
                           onClick={[Function]}
                           type="button"
@@ -1587,7 +1587,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
     >
       <div
         aria-hidden={true}
-        className="css-1xsdpry css-1d1wwrp"
+        className="css-3vcrlh css-1d1wwrp"
         onClick={[Function]}
       >
         <div
@@ -1656,7 +1656,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1rtxert"
+                className="css-1447nbj"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1746,7 +1746,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
     >
       <div
         aria-hidden={true}
-        className="css-1xsdpry"
+        className="css-3vcrlh"
         onClick={[Function]}
       >
         <div
@@ -1815,7 +1815,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1rtxert"
+                className="css-1447nbj"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}
@@ -1905,7 +1905,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
     >
       <div
         aria-hidden={true}
-        className="css-1xsdpry"
+        className="css-3vcrlh"
         onClick={[Function]}
       >
         <div
@@ -1969,7 +1969,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                     "out": "css-171mdnt",
                   }
                 }
-                className="css-1rtxert"
+                className="css-1447nbj"
                 isOpen={false}
                 onClose={[Function]}
                 onDidClose={[Function]}

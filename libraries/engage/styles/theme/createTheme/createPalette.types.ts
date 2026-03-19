@@ -2,7 +2,7 @@ type ColorPartialKeys =
   | 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900
   | 'A100' | 'A200' | 'A400' | 'A700';
 
-type ColorPartial = Record<ColorPartialKeys, string>;
+export type ColorPartial = Record<ColorPartialKeys, string>;
 
 /**
  * Represents a color with variants that are derived from the main color. Also includes a contrast

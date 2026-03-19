@@ -81,7 +81,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -150,7 +150,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -376,7 +376,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -445,7 +445,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -454,7 +454,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     >
                       <div
                         aria-modal={true}
-                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1447nbj css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -583,7 +583,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 }
                               >
                                 <div
-                                  className="css-p3pdmf"
+                                  className="css-1sisfcf"
                                 />
                               </div>
                             </Transition>
@@ -639,7 +639,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1qqi0nj"
+                                          className="css-lybumu"
                                           key="1-1"
                                           onClick={[Function]}
                                           type="button"
@@ -814,13 +814,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-mk0dpu css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-mk0dpu css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -971,7 +971,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -1040,7 +1040,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1116,7 +1116,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -1185,7 +1185,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1255,7 +1255,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -1313,7 +1313,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1414,13 +1414,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-mk0dpu css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-mk0dpu css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1571,7 +1571,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -1640,7 +1640,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -1649,7 +1649,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1447nbj css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -1778,7 +1778,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 }
                               >
                                 <div
-                                  className="css-p3pdmf"
+                                  className="css-1sisfcf"
                                 />
                               </div>
                             </Transition>
@@ -1834,7 +1834,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1qqi0nj"
+                                          className="css-lybumu"
                                           key="1"
                                           onClick={[Function]}
                                           type="button"
@@ -1984,7 +1984,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -2053,7 +2053,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2297,7 +2297,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -2366,7 +2366,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2375,7 +2375,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1447nbj css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -2504,7 +2504,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 }
                               >
                                 <div
-                                  className="css-p3pdmf"
+                                  className="css-1sisfcf"
                                 />
                               </div>
                             </Transition>
@@ -2560,7 +2560,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1qqi0nj"
+                                          className="css-lybumu"
                                           key="1"
                                           onClick={[Function]}
                                           type="button"
@@ -2710,7 +2710,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -2779,7 +2779,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -2788,7 +2788,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     >
                       <div
                         aria-modal={true}
-                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1447nbj css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -2917,7 +2917,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 }
                               >
                                 <div
-                                  className="css-p3pdmf"
+                                  className="css-1sisfcf"
                                 />
                               </div>
                             </Transition>
@@ -2973,7 +2973,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1qqi0nj"
+                                          className="css-lybumu"
                                           key="1-1"
                                           onClick={[Function]}
                                           type="button"
@@ -3148,13 +3148,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-mk0dpu css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-mk0dpu css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3275,7 +3275,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -3344,7 +3344,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -3558,7 +3558,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           >
             <div
               aria-hidden={true}
-              className="css-1qafxgk"
+              className="css-kloldt"
               onClick={[Function]}
             >
               <div
@@ -3627,7 +3627,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           "out": "css-171mdnt",
                         }
                       }
-                      className="css-1rtxert"
+                      className="css-1447nbj"
                       isOpen={false}
                       onClose={[Function]}
                       onDidClose={[Function]}
@@ -3636,7 +3636,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     >
                       <div
                         aria-modal={true}
-                        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
+                        className="css-1447nbj css-1rg7udn css-171mdnt common__drawer"
                         onAnimationEnd={[Function]}
                         role="dialog"
                         style={
@@ -3765,7 +3765,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 }
                               >
                                 <div
-                                  className="css-p3pdmf"
+                                  className="css-1sisfcf"
                                 />
                               </div>
                             </Transition>
@@ -3863,7 +3863,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                         selected={true}
                                       >
                                         <button
-                                          className="css-1qqi0nj"
+                                          className="css-lybumu"
                                           key="2"
                                           onClick={[Function]}
                                           type="button"
@@ -3996,13 +3996,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button"
+                      className="ui-shared__button css-mk0dpu css-63oe3q ui-shared__ripple-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="ui-shared__button css-13b58x4 css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
+                        className="ui-shared__button css-mk0dpu css-63oe3q ui-shared__ripple-button css-1rn65c0 common__button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}

@@ -48,7 +48,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="css-v3axxa"
+      className="css-1fufar"
       key="info-something"
     >
       <span
@@ -111,7 +111,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="css-v3axxa"
+      className="css-1fufar"
       key="info-This is some information"
     >
       <span
@@ -165,7 +165,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="css-v3axxa"
+      className="css-1fufar"
       key="info-Normal pre-translated message."
     >
       <span
@@ -183,7 +183,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="css-v3axxa"
+      className="css-1fufar"
       key="info-Normal pre-translated message two."
     >
       <span
@@ -238,7 +238,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="css-v3axxa"
+      className="css-1fufar"
       key="info-some.translation.string"
     >
       <span
@@ -258,7 +258,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="css-v3axxa"
+      className="css-1fufar"
       key="info-Message with messageParams"
     >
       <span
@@ -302,7 +302,7 @@ exports[`<MessageBar /> should render with custom classNames 1`] = `
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="css-v3axxa cls-message"
+      className="css-1fufar cls-message"
       key="info-This is some information"
     >
       <span

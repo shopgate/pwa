@@ -28,7 +28,7 @@ exports[`<Sheet /> should open 1`] = `
           "out": "css-171mdnt",
         }
       }
-      className="css-1rtxert"
+      className="css-1447nbj"
       isOpen={true}
       onClose={[Function]}
       onDidClose={[Function]}
@@ -37,7 +37,7 @@ exports[`<Sheet /> should open 1`] = `
     >
       <div
         aria-modal={true}
-        className="css-1rtxert css-1rg7udn css-1ldjh2f common__drawer"
+        className="css-1447nbj css-1rg7udn css-1ldjh2f common__drawer"
         onAnimationEnd={[Function]}
         role="dialog"
         style={
@@ -166,7 +166,7 @@ exports[`<Sheet /> should open 1`] = `
                 }
               >
                 <div
-                  className="css-p3pdmf"
+                  className="css-1sisfcf"
                 />
               </div>
             </Transition>
@@ -252,7 +252,7 @@ exports[`<Sheet /> should render closed without content 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1rtxert"
+    className="css-1447nbj"
     isOpen={false}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -296,7 +296,7 @@ exports[`<Sheet /> should render opened without content 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1rtxert"
+    className="css-1447nbj"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -340,7 +340,7 @@ exports[`<Sheet /> should render with content and title 1`] = `
         "out": "css-171mdnt",
       }
     }
-    className="css-1rtxert"
+    className="css-1447nbj"
     isOpen={true}
     onClose={[Function]}
     onDidClose={[Function]}
@@ -431,7 +431,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
           "out": "css-171mdnt",
         }
       }
-      className="css-1rtxert"
+      className="css-1447nbj"
       isOpen={false}
       onClose={[Function]}
       onDidClose={[Function]}
@@ -440,7 +440,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     >
       <div
         aria-modal={true}
-        className="css-1rtxert css-1rg7udn css-171mdnt common__drawer"
+        className="css-1447nbj css-1rg7udn css-171mdnt common__drawer"
         onAnimationEnd={[Function]}
         role="dialog"
         style={
@@ -569,7 +569,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 }
               >
                 <div
-                  className="css-p3pdmf"
+                  className="css-1sisfcf"
                 />
               </div>
             </Transition>

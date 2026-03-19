@@ -242,7 +242,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           </div>
                         </div>
                         <div
-                          className="css-1m683rn rating-stars-filled"
+                          className="css-16bht0q rating-stars-filled"
                         />
                       </div>
                     </RatingStars>
@@ -258,7 +258,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         aria-atomic="true"
                         aria-hidden={false}
                         aria-live="assertive"
-                        className="css-c6548q css-of8bei errorText"
+                        className="css-c6548q css-7t8drq errorText"
                         id="ariaError-null"
                       >
                         <Translate
@@ -326,7 +326,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="author"
                     >
                       <Translate
@@ -480,7 +480,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-author"
                     >
                       <Translate
@@ -547,7 +547,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="title"
                     >
                       <Translate
@@ -701,7 +701,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-title"
                     >
                       <Translate
@@ -768,7 +768,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="review"
                     >
                       <Translate
@@ -913,7 +913,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-review"
                     >
                       <Translate
@@ -984,13 +984,13 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-13b58x4  ui-shared__ripple-button"
+                            className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-13b58x4  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -1287,7 +1287,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           </div>
                         </div>
                         <div
-                          className="css-1m683rn rating-stars-filled"
+                          className="css-16bht0q rating-stars-filled"
                         />
                       </div>
                     </RatingStars>
@@ -1303,7 +1303,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         aria-atomic="true"
                         aria-hidden={false}
                         aria-live="assertive"
-                        className="css-c6548q css-of8bei errorText"
+                        className="css-c6548q css-7t8drq errorText"
                         id="ariaError-null"
                       >
                         <Translate
@@ -1371,7 +1371,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="author"
                     >
                       <Translate
@@ -1525,7 +1525,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-author"
                     >
                       <Translate
@@ -1592,7 +1592,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="title"
                     >
                       <Translate
@@ -1746,7 +1746,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-title"
                     >
                       <Translate
@@ -1813,7 +1813,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="review"
                     >
                       <Translate
@@ -1958,7 +1958,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-review"
                     >
                       <Translate
@@ -2029,13 +2029,13 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-13b58x4  ui-shared__ripple-button"
+                            className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-13b58x4  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -2125,10 +2125,10 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
             className={null}
           >
             <div
-              className="css-h0xg2o loading-indicator ui-shared__loading-indicator"
+              className="css-1mmn13d loading-indicator ui-shared__loading-indicator"
             >
               <IndicatorCircle
-                color="var(--color-secondary, #5ccee3)"
+                color="var(--color-secondary)"
                 paused={false}
                 size={32}
                 strokeWidth={3}
@@ -2142,7 +2142,7 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <circle
-                    className="css-1u0o3o9"
+                    className="css-1f1klyc"
                     cx="50"
                     cy="50"
                     r="20"
@@ -2410,7 +2410,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                         </div>
                         <div
-                          className="css-1m683rn rating-stars-filled"
+                          className="css-16bht0q rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
@@ -2592,7 +2592,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         aria-atomic="true"
                         aria-hidden={false}
                         aria-live="assertive"
-                        className="css-c6548q css-of8bei errorText"
+                        className="css-c6548q css-7t8drq errorText"
                         id="ariaError-null"
                       >
                         <Translate
@@ -2660,7 +2660,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -2814,7 +2814,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-author"
                     >
                       <Translate
@@ -2881,7 +2881,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -3035,7 +3035,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-title"
                     >
                       <Translate
@@ -3102,7 +3102,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -3247,7 +3247,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-review"
                     >
                       <Translate
@@ -3318,13 +3318,13 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-13b58x4  ui-shared__ripple-button"
+                            className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-13b58x4  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -3631,7 +3631,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                         </div>
                         <div
-                          className="css-1m683rn rating-stars-filled"
+                          className="css-16bht0q rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
@@ -3813,7 +3813,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         aria-atomic="true"
                         aria-hidden={false}
                         aria-live="assertive"
-                        className="css-c6548q css-of8bei errorText"
+                        className="css-c6548q css-7t8drq errorText"
                         id="ariaError-null"
                       >
                         <Translate
@@ -3881,7 +3881,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -4035,7 +4035,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-author"
                     >
                       <Translate
@@ -4102,7 +4102,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -4256,7 +4256,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-title"
                     >
                       <Translate
@@ -4323,7 +4323,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -4468,7 +4468,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-review"
                     >
                       <Translate
@@ -4539,13 +4539,13 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-13b58x4  ui-shared__ripple-button"
+                            className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-13b58x4  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -4852,7 +4852,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                         </div>
                         <div
-                          className="css-1m683rn rating-stars-filled"
+                          className="css-16bht0q rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
@@ -5034,7 +5034,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         aria-atomic="true"
                         aria-hidden={false}
                         aria-live="assertive"
-                        className="css-c6548q css-of8bei errorText"
+                        className="css-c6548q css-7t8drq errorText"
                         id="ariaError-null"
                       >
                         <Translate
@@ -5102,7 +5102,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -5256,7 +5256,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-author"
                     >
                       <Translate
@@ -5323,7 +5323,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -5477,7 +5477,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-title"
                     >
                       <Translate
@@ -5544,7 +5544,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -5689,7 +5689,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-review"
                     >
                       <Translate
@@ -5760,13 +5760,13 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-13b58x4  ui-shared__ripple-button"
+                            className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-13b58x4  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -6073,7 +6073,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                         </div>
                         <div
-                          className="css-1m683rn rating-stars-filled"
+                          className="css-16bht0q rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
@@ -6255,7 +6255,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         aria-atomic="true"
                         aria-hidden={false}
                         aria-live="assertive"
-                        className="css-c6548q css-of8bei errorText"
+                        className="css-c6548q css-7t8drq errorText"
                         id="ariaError-null"
                       >
                         <Translate
@@ -6323,7 +6323,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -6477,7 +6477,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-author"
                     >
                       <Translate
@@ -6544,7 +6544,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -6698,7 +6698,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-title"
                     >
                       <Translate
@@ -6765,7 +6765,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -6891,7 +6891,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         className="css-1tpmuef"
                         style={
                           {
-                            "borderBottomColor": "var(--color-state-alert, #ff0000)",
+                            "borderBottomColor": "var(--color-state-alert)",
                           }
                         }
                       />
@@ -6909,7 +6909,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-review"
                     >
                       <Translate
@@ -6987,13 +6987,13 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-13b58x4  ui-shared__ripple-button"
+                            className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-13b58x4  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -7300,7 +7300,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                         </div>
                         <div
-                          className="css-1m683rn rating-stars-filled"
+                          className="css-16bht0q rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
@@ -7482,7 +7482,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         aria-atomic="true"
                         aria-hidden={false}
                         aria-live="assertive"
-                        className="css-c6548q css-of8bei errorText"
+                        className="css-c6548q css-7t8drq errorText"
                         id="ariaError-null"
                       >
                         <Translate
@@ -7550,7 +7550,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="author"
                     >
                       <Translate
@@ -7704,7 +7704,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-author"
                     >
                       <Translate
@@ -7771,7 +7771,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="title"
                     >
                       <Translate
@@ -7925,7 +7925,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-title"
                     >
                       <Translate
@@ -7992,7 +7992,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="review"
                     >
                       <Translate
@@ -8137,7 +8137,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-review"
                     >
                       <Translate
@@ -8208,13 +8208,13 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-13b58x4  ui-shared__ripple-button"
+                            className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-13b58x4  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
@@ -8511,7 +8511,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           </div>
                         </div>
                         <div
-                          className="css-1m683rn rating-stars-filled"
+                          className="css-16bht0q rating-stars-filled"
                         />
                       </div>
                     </RatingStars>
@@ -8527,7 +8527,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         aria-atomic="true"
                         aria-hidden={false}
                         aria-live="assertive"
-                        className="css-c6548q css-of8bei errorText"
+                        className="css-c6548q css-7t8drq errorText"
                         id="ariaError-null"
                       >
                         <Translate
@@ -8602,7 +8602,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="author"
                     >
                       <Translate
@@ -8737,7 +8737,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         className="css-1tpmuef"
                         style={
                           {
-                            "borderBottomColor": "var(--color-state-alert, #ff0000)",
+                            "borderBottomColor": "var(--color-state-alert)",
                           }
                         }
                       />
@@ -8755,7 +8755,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-author"
                     >
                       <Translate
@@ -8829,7 +8829,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="title"
                     >
                       <Translate
@@ -8983,7 +8983,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-title"
                     >
                       <Translate
@@ -9050,7 +9050,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="review"
                     >
                       <Translate
@@ -9195,7 +9195,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       aria-atomic="true"
                       aria-hidden={false}
                       aria-live="assertive"
-                      className="css-of8bei errorText"
+                      className="css-7t8drq errorText"
                       id="ariaError-review"
                     >
                       <Translate
@@ -9266,13 +9266,13 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           wrapContent={false}
                         >
                           <Button
-                            className="ui-shared__button css-13b58x4  ui-shared__ripple-button"
+                            className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
                             disabled={false}
                             onClick={null}
                             testId="sendReviewButton"
                           >
                             <button
-                              className="ui-shared__button css-13b58x4  ui-shared__ripple-button css-1rn65c0 common__button"
+                              className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
                               data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}

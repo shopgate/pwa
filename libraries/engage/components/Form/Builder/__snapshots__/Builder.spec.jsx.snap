@@ -178,7 +178,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -561,7 +561,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -906,7 +906,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="foo_bar"
                     >
                       <Translate
@@ -1325,7 +1325,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -1987,7 +1987,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="foo_firstName"
                     >
                       <Translate
@@ -2293,7 +2293,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-1fekhao label"
+                      className="css-udxgne css-1fekhao label"
                       htmlFor="foo_lastName"
                     >
                       <Translate
@@ -2682,7 +2682,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -3045,7 +3045,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_bar"
                     >
                       <Translate
@@ -3488,7 +3488,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_foo"
                     >
                       <Translate
@@ -3851,7 +3851,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-xrreyh css-16msjt6 css-1fekhao label floating"
+                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
                       htmlFor="foo_bar"
                     >
                       <Translate

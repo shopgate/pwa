@@ -52,7 +52,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn rating-stars-filled"
+    className="css-16bht0q rating-stars-filled"
   />
 </div>
 `;
@@ -109,7 +109,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn rating-stars-filled"
+    className="css-16bht0q rating-stars-filled"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -191,7 +191,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn rating-stars-filled"
+    className="css-16bht0q rating-stars-filled"
   >
     <div
       className="css-kdb68h css-q4owmg"
@@ -303,7 +303,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn rating-stars-filled"
+    className="css-16bht0q rating-stars-filled"
   >
     <div
       aria-hidden={true}
@@ -430,7 +430,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
   </div>
   <div
-    className="css-1m683rn rating-stars-filled"
+    className="css-16bht0q rating-stars-filled"
   >
     <div
       aria-hidden={true}

@@ -6,7 +6,7 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
 <div
   className={
     {
-      "data-css-sia9nm": "",
+      "data-css-1qhicu2": "",
     }
   }
 >
@@ -32,7 +32,7 @@ exports[`<CouponField /> should render as expected without any props 1`] = `
 <div
   className={
     {
-      "data-css-sia9nm": "",
+      "data-css-1qhicu2": "",
     }
   }
 >

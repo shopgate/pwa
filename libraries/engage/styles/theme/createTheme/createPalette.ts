@@ -252,6 +252,7 @@ export const extendPalette = (options: ExtendPaletteOptions): PaletteOptions => 
     .reduce((acc, [key, value]) => {
       // @ts-expect-error - We are sure about the type here
       acc[key] = augmentColor({
+        // @ts-expect-error - We are sure about the type here
         color: value,
         tonalOffset,
         contrastThreshold,
