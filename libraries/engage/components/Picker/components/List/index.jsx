@@ -1,7 +1,22 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  button: {
+    display: 'block',
+    width: '100%',
+    padding: '10px 20px',
+    outline: 'none',
+    textAlign: 'left',
+  },
+  active: {
+    button: {
+      fontWeight: 'bold',
+    },
+  },
+});
 
 /**
  * The default button for the Picker component.
@@ -9,6 +24,7 @@ import styles from './style';
  * @returns {JSX} The button component.
  */
 const PickerList = (props) => {
+  const { classes } = useStyles();
   const {
     items, onClose, onSelect, selectedIndex, query,
   } = props;
@@ -30,11 +46,11 @@ const PickerList = (props) => {
         <li
           key={item.value}
           className={classNames({
-            [styles.active]: currentIndex === selectedIndex,
+            [classes.active]: currentIndex === selectedIndex,
           })}
         >
           <button
-            className={styles.button}
+            className={classes.button}
             disabled={item.disabled}
             onClick={() => {
               onSelect(item.value);

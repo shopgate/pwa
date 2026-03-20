@@ -1,22 +1,29 @@
 import React from 'react';
 import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core';
 import { IN_STORE_PICKUP_ROPIS_LABEL } from '../../constants';
-import { itemRowDisabled } from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
+
+const useStyles = makeStyles()({
+  itemRowDisabled: {
+    opacity: 0.3,
+  },
+});
 
 /**
  * Renders the FulfillmentSelectorROPIS components.
  * @returns {JSX}
  */
 export function FulfillmentSelectorROPIS() {
+  const { classes } = useStyles();
   const { isROPISEnabled, isReady } = useFulfillmentSelectorState();
-  const classes = classNames({
-    [itemRowDisabled.toString()]: !isReady || !isROPISEnabled,
+  const className = classNames({
+    [classes.itemRowDisabled]: !isReady || !isROPISEnabled,
   });
 
   return (
-    <div className={classes}>
+    <div className={className}>
       {i18n.text(IN_STORE_PICKUP_ROPIS_LABEL)}
     </div>
   );

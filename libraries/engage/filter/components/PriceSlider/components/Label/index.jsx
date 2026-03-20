@@ -2,12 +2,65 @@ import React, {
   memo, useState, useEffect, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import { I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import styles from '../../style';
+import { responsiveMediaQuery } from '../../../../../styles';
 
 const { currency } = appConfig;
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  price: {
+    color: 'var(--color-secondary)',
+    display: 'inline-block',
+    fontWeight: 500,
+    textAlign: 'center',
+  },
+  editableContainer: {
+    position: 'relative',
+  },
+  editableField: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    textAlign: 'center',
+    background: 'transparent',
+    zIndex: 2,
+    textIndent: -800,
+    outline: 'none',
+    padding: 0,
+    margin: 0,
+    border: '1px solid transparent',
+    borderRadius: 3,
+    lineHeight: 1,
+    ':focus': {
+      background: colors.light,
+      textIndent: 0,
+      borderColor: colors.shade5,
+    },
+    [responsiveMediaQuery('>=xs', { webOnly: true })]: {
+      borderColor: 'var(--color-primary)',
+      padding: '4px 0',
+      top: -4,
+      ':focus': {
+        borderColor: 'var(--color-primary)',
+      },
+    },
+  },
+  srOnly: {
+    position: 'absolute',
+    width: 1,
+    height: 1,
+    padding: 0,
+    margin: -1,
+    overflow: 'hidden',
+    clip: 'rect(0, 0, 0, 0)',
+    whiteSpace: 'nowrap',
+    border: 0,
+  },
+});
 
 /**
  * The filter price range slider label component.
@@ -15,6 +68,7 @@ const { currency } = appConfig;
 * @returns {JSX.Element}
  */
 function Label(props) {
+  const { classes } = useStyles();
   const {
     priceLength, priceMax, priceMin, onChange,
   } = props;
@@ -73,8 +127,8 @@ function Label(props) {
   }).format('0').replace('0.00', '');
 
   return (
-    <div className={styles.editableContainer}>
-      <span className={styles.srOnly}>
+    <div className={classes.editableContainer}>
+      <span className={classes.srOnly}>
         {i18n.text('price.range', {
           fromPrice: i18n.price(priceMin, currency, false),
           toPrice: i18n.price(priceMax, currency, false),
@@ -82,12 +136,12 @@ function Label(props) {
       </span>
       <I18n.Text string="price.range" aria-hidden>
         <I18n.Placeholder forKey="fromPrice">
-          <span className={styles.price} style={{ minWidth: priceLength }} ref={minRef}>
+          <span className={classes.price} style={{ minWidth: priceLength }} ref={minRef}>
             <I18n.Price price={priceMin} currency={currency} fractions={false} />
           </span>
         </I18n.Placeholder>
         <I18n.Placeholder forKey="toPrice">
-          <span className={styles.price} style={{ minWidth: priceLength }} ref={maxRef}>
+          <span className={classes.price} style={{ minWidth: priceLength }} ref={maxRef}>
             <I18n.Price price={priceMax} currency={currency} fractions={false} />
           </span>
         </I18n.Placeholder>
@@ -108,7 +162,7 @@ function Label(props) {
           width: priceLength,
           left: minOffset,
         }}
-        className={styles.editableField}
+        className={classes.editableField}
         aria-label={i18n.text('price.range_from')}
         aria-describedby="price-slider-currency-label"
       />
@@ -125,7 +179,7 @@ function Label(props) {
           width: priceLength,
           left: maxOffset,
         }}
-        className={styles.editableField}
+        className={classes.editableField}
         aria-label={i18n.text('price.range_to')}
         aria-describedby="price-slider-currency-label"
       />

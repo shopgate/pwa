@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { UIEvents, i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { SheetList } from '@shopgate/engage/components';
 import SheetDrawer from '../../../components/SheetDrawer';
 import { QUICK_RESERVE, MULTI_LINE_RESERVE } from '../../constants';
-import { sheetDrawer } from './FulfillmentPathSelector.style';
+
+const useStyles = makeStyles()({
+  sheetDrawer: {
+    boxShadow: '0 0 0 9999px rgba(0, 0, 0, 0.25)',
+  },
+});
 
 let callback = null;
 const EVENT_SET_OPEN = 'FulfillmentPathSelector.setOpen';
@@ -13,6 +19,7 @@ const EVENT_SET_OPEN = 'FulfillmentPathSelector.setOpen';
  * @returns {JSX.Element}
  */
 function FulfillmentPathSelector() {
+  const { classes } = useStyles();
   const [isOpen, setIsOpen] = React.useState(false);
 
   /**
@@ -72,7 +79,7 @@ function FulfillmentPathSelector() {
     <SheetDrawer
       isOpen={isOpen}
       title={i18n.text('locations.choose_reservation_type')}
-      className={sheetDrawer}
+      className={classes.sheetDrawer}
       onDidClose={handleClose}
     >
       <SheetList>

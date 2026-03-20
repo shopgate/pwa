@@ -3,11 +3,51 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { RippleButton, I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-
-import {
-  wrapper, inner, innerStandalone, heading, name, button,
-} from './FulfillmentSlotSwitcherBar.style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { getTimeSlotDisplayText } from './time';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  wrapper: {
+    fontSize: '0.875rem',
+    color: 'var(--color-text-high-emphasis)',
+    background: 'var(--color-background-accent)',
+  },
+  inner: {
+    display: 'flex',
+    flexShrink: 0,
+    margin: `0 ${variables.gap.big}px`,
+    borderBottom: '1px solid #eaeaea',
+    alignItems: 'center',
+    height: variables.filterbar.height,
+  },
+  innerStandalone: {
+    borderBottom: 'none',
+  },
+  heading: {
+    paddingRight: variables.gap.small,
+    ':after': {
+      content: '":"',
+    },
+  },
+  name: {
+    fontWeight: 500,
+  },
+  button: {
+    marginLeft: 'auto',
+    letterSpacing: '0.05em',
+    padding: `${variables.gap.xsmall * 0.75}px 0 !important`,
+    ' *': {
+      fontSize: '0.875rem',
+      textTransform: 'initial',
+      padding: '0 !important',
+      color: 'var(--color-text-high-emphasis)',
+      fontWeight: 500,
+    },
+  },
+});
 
 /**
  * @returns {JSX}
@@ -15,19 +55,20 @@ import { getTimeSlotDisplayText } from './time';
 const FulfillmentSlotSwitcherBar = ({
   fulfillmentSlot, handleChange, standalone, editable,
 }) => {
+  const { classes } = useStyles();
   const displayTime = useMemo(() => getTimeSlotDisplayText(fulfillmentSlot), [fulfillmentSlot]);
   return (
-    <div className={wrapper}>
-      <div className={classNames(inner, { [innerStandalone]: standalone })}>
-        <span className={heading}>
+    <div className={classes.wrapper}>
+      <div className={classNames(classes.inner, { [classes.innerStandalone]: standalone })}>
+        <span className={classes.heading}>
           {i18n.text('locations.your_current_timeslot.heading')}
         </span>
-        <span className={name}>{displayTime}</span>
+        <span className={classes.name}>{displayTime}</span>
         { editable && (
           <RippleButton
             onClick={handleChange}
             type="secondary"
-            className={button}
+            className={classes.button}
             flat
           >
             <I18n.Text string="locations.your_current_location.change" />

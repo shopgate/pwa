@@ -2,16 +2,41 @@ import React, { useEffect, memo } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withWidgetSettings } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeVariables, themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 import { provideProductAlternativeLocation } from '../../action-creators';
 import { StockInfo } from '../StockInfo';
-import { locationName, alternativeLocation as gridClassName } from './FulfillmentSelectorLocation.style';
-import { itemColumn, itemSpacer } from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { PRODUCT_FULFILLMENT_SELECTOR_ALTERNATIVE_LOCATION } from '../../constants/Portals';
 import { getProductAlternativeLocations } from '../../selectors';
 import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  locationName: {
+    color: 'var(--color-text-medium-emphasis)',
+  },
+  gridClassName: {
+    fontSize: '0.825rem',
+    padding: `0 ${themeVariables.gap.big}px ${themeVariables.gap.small}px ${themeVariables.gap.big * 3}px`,
+  },
+  itemColumn: {
+    display: 'block',
+    width: '50%',
+    '&:first-of-type': {
+      paddingRight: variables.gap.small,
+    },
+    '&:last-of-type': {
+      textAlign: 'right',
+    },
+  },
+  itemSpacer: {
+    marginLeft: 16,
+  },
+});
 
 /**
  * The FulfillmentSelectorLocation component
@@ -20,6 +45,7 @@ import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
 function FulfillmentSelectorAlternativeLocation({
   productId, show, alternativeLocations, provideAlternativeLocation, widgetSettings,
 }) {
+  const { classes } = useStyles();
   const { merchantSettings = {}, selectedLocation } = useFulfillmentSelectorState();
   const { alternativeLocationOnPDP: { radius = 50 } = {} } = widgetSettings || {};
 
@@ -61,19 +87,19 @@ function FulfillmentSelectorAlternativeLocation({
       }}
     >
       {alternativeLocation && (
-        <Grid component="div" className={gridClassName}>
+        <Grid component="div" className={classes.gridClassName}>
           <ResponsiveContainer appAlways breakpoint="xs">
-            <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-              <div className={locationName}>{alternativeLocation.name}</div>
+            <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
+              <div className={classes.locationName}>{alternativeLocation.name}</div>
             </Grid.Item>
-            <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+            <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
               <StockInfo productId={productId} location={alternativeLocation} />
             </Grid.Item>
           </ResponsiveContainer>
           <ResponsiveContainer webOnly breakpoint=">xs">
-            <div className={locationName}>
+            <div className={classes.locationName}>
               {alternativeLocation.name}
-              <span className={itemSpacer}>
+              <span className={classes.itemSpacer}>
                 <StockInfo productId={productId} location={alternativeLocation} />
               </span>
             </div>

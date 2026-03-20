@@ -1,22 +1,68 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
-import {
-  radioContainer,
-  disabled as radioContainerDisabled,
-  activeIcon,
-  activeIconDisabled,
-  inactiveIcon,
-  inactiveIconDisabled,
-  radio,
-  content,
-} from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 
 /** @typedef {import('./FulfillmentSelector.types').Selection} Selection */
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  radioContainer: {
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    padding: `${variables.gap.xsmall}px 0`,
+  },
+  disabled: {
+    cursor: 'not-allowed',
+  },
+  inactiveIcon: {
+    width: 24,
+    height: 24,
+    flexShrink: 0,
+    marginTop: '-1px',
+    marginRight: variables.gap.small,
+    color: 'var(--color-text-medium-emphasis)',
+  },
+  inactiveIconDisabled: {
+    width: 24,
+    height: 24,
+    flexShrink: 0,
+    marginTop: '-1px',
+    marginRight: variables.gap.small,
+    color: 'var(--color-text-medium-emphasis)',
+    opacity: 0.3,
+  },
+  activeIcon: {
+    width: 24,
+    height: 24,
+    flexShrink: 0,
+    marginTop: '-1px',
+    marginRight: variables.gap.small,
+    color: 'var(--color-primary)',
+  },
+  activeIconDisabled: {
+    width: 24,
+    height: 24,
+    flexShrink: 0,
+    marginTop: '-1px',
+    marginRight: variables.gap.small,
+    color: 'var(--color-primary)',
+    opacity: 0.3,
+  },
+  radio: {
+    display: 'none',
+  },
+  content: {
+    flexGrow: 1,
+    color: 'var(--color-text-high-emphasis)',
+  },
+});
 
 /**
  * Renders a fulfillment selector radio item.
@@ -30,6 +76,7 @@ import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 const FulfillmentSelectorItemUnwrapped = ({
   name, children, onChange, disabled,
 }) => {
+  const { classes } = useStyles();
   const { selection } = useFulfillmentSelectorState();
   const checked = selection === name;
 
@@ -47,8 +94,8 @@ const FulfillmentSelectorItemUnwrapped = ({
     onChange(name);
   };
 
-  const containerClasses = classNames(radioContainer.toString(), {
-    [radioContainerDisabled.toString()]: disabled,
+  const containerClasses = classNames(classes.radioContainer, {
+    [classes.disabled]: disabled,
   });
 
   return (
@@ -63,10 +110,12 @@ const FulfillmentSelectorItemUnwrapped = ({
       tabIndex="0"
     >
       {checked
-        ? <CheckedIcon className={disabled ? activeIconDisabled : activeIcon} />
-        : <UncheckedIcon className={disabled ? inactiveIconDisabled : inactiveIcon} />}
-      <input type="radio" checked={checked} name={name} className={radio} readOnly />
-      <div className={content}>
+        ? <CheckedIcon className={disabled ? classes.activeIconDisabled : classes.activeIcon} />
+        : <UncheckedIcon
+            className={disabled ? classes.inactiveIconDisabled : classes.inactiveIcon}
+        />}
+      <input type="radio" checked={checked} name={name} className={classes.radio} readOnly />
+      <div className={classes.content}>
         {children}
       </div>
     </label>

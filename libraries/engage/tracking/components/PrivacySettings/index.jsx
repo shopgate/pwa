@@ -3,11 +3,48 @@ import {
   Button, Grid, I18n, Link, Switch, ConditionalWrapper,
 } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { appConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core';
 import classNames from 'classnames';
-import styles from './style';
 import connect from './connector';
+
+const useStyles = makeStyles()({
+  button: {
+    marginTop: '20px',
+  },
+  container: {
+    flexDirection: 'column',
+    height: '100vh',
+    textAlign: 'center',
+    padding: '30px',
+    justifyContent: 'center',
+    display: 'flex',
+  },
+  buttonWrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginBottom: '30px',
+  },
+  item: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  link: {
+    color: 'var(--color-secondary)',
+    textDecoration: 'underline',
+  },
+  switchWrapper: {
+    marginBottom: '25px',
+    display: 'flex',
+    textAlign: 'left',
+    justifyContent: 'space-between',
+  },
+  title: {
+    fontWeight: 'bold',
+    display: 'block',
+  },
+});
 
 /**
  * The PrivacySettings component.
@@ -20,6 +57,7 @@ const PrivacySettings = ({
   statisticsCookiesAcceptedState,
   privacyPolicyLink,
 }) => {
+  const { classes } = useStyles();
   const {
     cookieConsent: {
       settingsComfortText,
@@ -54,52 +92,52 @@ const PrivacySettings = ({
   }, [acceptAllCookies]);
 
   return (
-    <Grid component="div" className={styles.container}>
-      <Grid.Item component="div" className={styles.item}>
+    <Grid component="div" className={classes.container}>
+      <Grid.Item component="div" className={classes.item}>
         {showComfortCookiesToggle ? (
-          <Grid.Item component="div" className={styles.switchWrapper}>
+          <Grid.Item component="div" className={classes.switchWrapper}>
             <Switch
               onChange={handleChangeComfortCookies}
               checked={areComfortCookiesSelected}
               a11yFallbackText={`${i18n.text(settingsComfortTitle || 'cookieSettings.comfortTitle')}. ${i18n.text(settingsComfortText || 'cookieSettings.comfort')}`}
             >
-              <span className={styles.title}>
+              <span className={classes.title}>
                 <I18n.Text string={settingsComfortTitle || 'cookieSettings.comfortTitle'} />
               </span>
               <span><I18n.Text string={settingsComfortText || 'cookieSettings.comfort'} /></span>
             </Switch>
           </Grid.Item>
         ) : null}
-        <Grid.Item component="div" className={styles.switchWrapper}>
+        <Grid.Item component="div" className={classes.switchWrapper}>
           <Switch
             onChange={handleChangeStatisticsCookies}
             checked={areStatisticsCookiesSelected}
             a11yFallbackText={`${i18n.text(settingsStatisticsTitle || 'cookieSettings.statisticsTitle')}. ${i18n.text(settingsStatisticsText || 'cookieSettings.statistics')}`}
           >
-            <span className={styles.title}>
+            <span className={classes.title}>
               <I18n.Text string={settingsStatisticsTitle || 'cookieSettings.statisticsTitle'} />
             </span>
             <span><I18n.Text string={settingsStatisticsText || 'cookieSettings.statistics'} /></span>
           </Switch>
         </Grid.Item>
-        <Grid.Item component="div" className={styles.switchWrapper}>
+        <Grid.Item component="div" className={classes.switchWrapper}>
           <Switch
             disabled
             checked
             a11yFallbackText={`${i18n.text(settingsRequiredTitle || 'cookieSettings.requiredTitle')}. ${i18n.text(settingsRequiredText || 'cookieSettings.required')}`}
           >
-            <span className={styles.title}>
+            <span className={classes.title}>
               <I18n.Text string={settingsRequiredTitle || 'cookieSettings.requiredTitle'} />
             </span>
             <span><I18n.Text string={settingsRequiredText || 'cookieSettings.required'} /></span>
           </Switch>
         </Grid.Item>
       </Grid.Item>
-      <Grid.Item component="div" className={styles.buttonWrapper}>
+      <Grid.Item component="div" className={classes.buttonWrapper}>
         <Button
           onClick={() => handleAcceptAllCookies()}
           type="primary"
-          className={classNames(styles.button, 'privacy-settings__button-accept-all')}
+          className={classNames(classes.button, 'privacy-settings__button-accept-all')}
         >
           <I18n.Text string="cookieConsentModal.buttonAcceptAll" />
         </Button>
@@ -109,7 +147,7 @@ const PrivacySettings = ({
             statisticsCookiesAccepted: areStatisticsCookiesSelected,
           })}
           type="simple"
-          className={classNames(styles.button, 'privacy-settings__button-accept-selected')}
+          className={classNames(classes.button, 'privacy-settings__button-accept-selected')}
         >
           <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />
         </Button>
@@ -125,7 +163,7 @@ const PrivacySettings = ({
                 </Link>
               )}
             >
-              <I18n.Text string="cookieConsentModal.privacyText" className={styles.link} />
+              <I18n.Text string="cookieConsentModal.privacyText" className={classes.link} />
             </ConditionalWrapper>
           </I18n.Placeholder>
         </I18n.Text>

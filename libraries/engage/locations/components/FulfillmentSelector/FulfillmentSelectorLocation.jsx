@@ -1,7 +1,9 @@
-import React, { useCallback, useMemo, Fragment } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import classNames from 'classnames';
 import intersection from 'lodash/intersection';
 import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeVariables, themeColors, themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   ROPIS,
   BOPIS,
@@ -13,19 +15,54 @@ import { ChangeLocationButton } from '../ChangeLocationButton';
 import { StockInfo } from '../StockInfo';
 import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossibleError';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
-import { container, unavailable, locationName } from './FulfillmentSelectorLocation.style';
-import {
-  itemRow, itemColumn, itemSpacer,
-} from './FulfillmentSelectorItem.style';
 import { PRODUCT_FULFILLMENT_SELECTOR_LOCATION } from '../../constants/Portals';
 import { FulfillmentSelectorLocationMethodNotAvailable } from './FulfillmentSelectorLocationMethodNotAvailable';
 import FulfillmentSelectorAlternativeLocation from './FulfillmentSelectorAlternativeLocation';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  container: {
+    fontSize: '0.75rem',
+    padding: `0 ${themeVariables.gap.big}px ${themeVariables.gap.small}px ${themeVariables.gap.big * 3}px`,
+    marginTop: `-${themeVariables.gap.small}px`,
+    flexDirection: 'column',
+  },
+  unavailable: {
+    color: themeColors.dark,
+    fontSize: '0.625rem',
+    textTransform: 'uppercase',
+    letterSpacing: '0.05em',
+    opacity: 0.5,
+  },
+  locationName: {
+    color: 'var(--color-text-medium-emphasis)',
+  },
+  itemRow: {
+    alignContent: 'stretch',
+    alignItems: 'baseline',
+  },
+  itemColumn: {
+    display: 'block',
+    width: '50%',
+    '&:first-of-type': {
+      paddingRight: variables.gap.small,
+    },
+    '&:last-of-type': {
+      textAlign: 'right',
+    },
+  },
+  itemSpacer: {
+    marginLeft: 16,
+  },
+});
 
 /**
  * The FulfillmentSelectorLocation component
  * @returns {JSX}
  */
 export function FulfillmentSelectorLocation() {
+  const { classes } = useStyles();
   const {
     selection,
     preferredLocation,
@@ -86,21 +123,21 @@ export function FulfillmentSelectorLocation() {
         }}
       >
         {(isRopeMethodEnabled && isOrderable && usedLocation) && (
-          <Grid className={classNames(itemRow, container)} component="div">
+          <Grid className={classNames(classes.itemRow, classes.container)} component="div">
             <Grid component="div">
               <ResponsiveContainer appAlways breakpoint="xs">
-                <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
-                  <div className={locationName}>{usedLocation.name}</div>
+                <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
+                  <div className={classes.locationName}>{usedLocation.name}</div>
                 </Grid.Item>
-                <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+                <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
                   <StockInfo productId={productId} location={usedLocation} />
                 </Grid.Item>
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
                 <div>
-                  <div className={locationName}>{usedLocation.name}</div>
+                  <div className={classes.locationName}>{usedLocation.name}</div>
                 </div>
-                <div className={itemSpacer}>
+                <div className={classes.itemSpacer}>
                   <StockInfo productId={productId} location={usedLocation} />
                 </div>
               </ResponsiveContainer>
@@ -112,15 +149,15 @@ export function FulfillmentSelectorLocation() {
           </Grid>
         )}
         {(isRopeMethodEnabled && selected && !isOrderable) && (
-          <div className={container}>
-            <div className={locationName}>{usedLocation?.name || ''}</div>
+          <div className={classes.container}>
+            <div className={classes.locationName}>{usedLocation?.name || ''}</div>
             <FulfillmentSelectorImpossibleError />
             <ChangeLocationButton onClick={handleChangeLocation} />
           </div>
         )}
         {/* eslint-disable-next-line no-constant-condition */}
         {false && !isRopeMethodEnabled ? (
-          <div className={classNames(unavailable, container)}>
+          <div className={classNames(classes.unavailable, classes.container)}>
             {i18n.text('locations.no_available')}
           </div>
         ) : null}

@@ -2,6 +2,8 @@ import React, {
   useState, useEffect, useCallback, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 import {
   DIRECT_SHIP,
@@ -19,8 +21,15 @@ import { FulfillmentSelectorBOPIS } from './FulfillmentSelectorBOPIS';
 import { FulfillmentSelectorROPIS } from './FulfillmentSelectorROPIS';
 import { FulfillmentSelectorAddToCart } from './FulfillmentSelectorAddToCart';
 import { FulfillmentSelectorLocation } from './FulfillmentSelectorLocation';
-import { container } from './FulfillmentSelector.style';
 import connect from './FulfillmentSelector.connector';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  container: {
+    padding: `${variables.gap.small}px ${variables.gap.big}px`,
+  },
+});
 
 /* eslint-disable max-len */
 /** @typedef {import('./FulfillmentSelector.types').FulfillmentSelectorContextProps} FulfillmentSelectorContextProps */
@@ -40,6 +49,7 @@ import connect from './FulfillmentSelector.connector';
  * @returns {JSX.Element|null}
  */
 const FulfillmentSelector = (props) => {
+  const { classes } = useStyles();
   const {
     productId,
     merchantSettings,
@@ -224,7 +234,7 @@ const FulfillmentSelector = (props) => {
   return (
     <FulfillmentSelectorContext.Provider value={context}>
       <SurroundPortals portalName={PRODUCT_FULFILLMENT_SELECTOR}>
-        <div className={container} role="radiogroup" tabIndex="0">
+        <div className={classes.container} role="radiogroup" tabIndex="0">
           <FulfillmentSelectorHeader />
           {shopFulfillmentMethods.includes(DIRECT_SHIP) && (
             <FulfillmentSelectorItem

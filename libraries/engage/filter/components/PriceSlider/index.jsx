@@ -1,10 +1,13 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { RangeSlider } from '@shopgate/engage/components';
 import { FilterItem } from '@shopgate/engage/filter';
 import Label from './components/Label';
-import styles from './style';
+
+const { shadows, colors, variables } = themeConfig;
 
 /**
  * The PriceSlider component.
@@ -74,6 +77,7 @@ class PriceSlider extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const { min, max } = this.props;
 
     /**
@@ -92,7 +96,7 @@ class PriceSlider extends PureComponent {
 
     return (
       <FilterItem>
-        <div className={styles.wrapper} data-test-id="priceRangeSlider">
+        <div className={classes.wrapper} data-test-id="priceRangeSlider">
           <Label
             priceLength={priceLength}
             priceMax={priceMax}
@@ -100,7 +104,13 @@ class PriceSlider extends PureComponent {
             onChange={this.onChange}
           />
           <RangeSlider
-            classNames={styles.rangeSlider}
+            classNames={{
+              container: classes.rangeSliderContainer,
+              outerRange: classes.rangeSliderOuterRange,
+              range: classes.rangeSliderRange,
+              handleInner: classes.rangeSliderHandleInner,
+              handleOuter: classes.rangeSliderHandleOuter,
+            }}
             easing={this.props.useLinearEasing ? 'linear' : 'exponential'}
             factor={3}
             max={max}
@@ -114,4 +124,35 @@ class PriceSlider extends PureComponent {
   }
 }
 
-export default PriceSlider;
+export default withStyles(
+  PriceSlider,
+  () => ({
+    wrapper: {
+      padding: `${variables.gap.big * 0.75}px ${variables.gap.big}px`,
+    },
+    rangeSliderContainer: {
+      paddingTop: variables.gap.big,
+      paddingBottom: variables.gap.big,
+    },
+    rangeSliderOuterRange: {
+      background: colors.darkGray,
+      height: 8,
+      position: 'relative',
+    },
+    rangeSliderRange: {
+      background: 'var(--color-secondary)',
+      position: 'absolute',
+      height: '100%',
+      marginLeft: variables.gap.small,
+      marginRight: variables.gap.small,
+    },
+    rangeSliderHandleInner: {
+      background: colors.light,
+      boxShadow: shadows.filter.priceSlider,
+      borderRadius: '50%',
+      width: variables.gap.big * 1.5,
+      height: variables.gap.big * 1.5,
+    },
+    rangeSliderHandleOuter: {},
+  })
+);
