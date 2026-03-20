@@ -1,5 +1,6 @@
 import createCache from '@emotion/cache';
 import { createMakeAndWithStyles, createTss } from 'tss-react';
+import { createCssAndCx } from 'tss-react/cssAndCx';
 import { useTheme } from '@shopgate/engage/styles';
 
 export { GlobalStyles, keyframes } from 'tss-react';
@@ -33,9 +34,15 @@ export const emotionCache = createCache({
 export const { tss } = createTss({
   // @ts-expect-error - We are sure about the type here
   useContext: useTheme,
+  cache: emotionCache,
 });
 
 // Create makeStyles and withStyles functions for tss-react package
-export const { makeStyles, withStyles } = createMakeAndWithStyles({
+export const { makeStyles, withStyles, useStyles } = createMakeAndWithStyles({
   useTheme,
+  cache: emotionCache,
+});
+
+export const { cx, css } = createCssAndCx({
+  cache: emotionCache,
 });
