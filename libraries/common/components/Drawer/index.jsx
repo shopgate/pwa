@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import styles from './style';
+import { withStyles, keyframes } from '@shopgate/engage/styles';
+
+const duration = 150;
+const easing = 'ease';
+
+const slideInBaseDrawer = keyframes({
+  '0%': { transform: 'translateY(100%)' },
+  '100%': { transform: 'translateY(0)' },
+});
+
+const slideOutBaseDrawer = keyframes({
+  '0%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(100%)' },
+});
 
 /**
  * Drawer component.
@@ -122,12 +135,14 @@ class Drawer extends Component {
     } = this.props;
     const { active } = this.state;
 
-    const animationIn = animation.in || styles.animation.in;
-    const animationOut = animation.out || styles.animation.out;
+    const classes = withStyles.getClasses(this.props);
+
+    const animationIn = animation.in || classes.animationIn;
+    const animationOut = animation.out || classes.animationOut;
 
     const combinedClassName = classNames(
       className,
-      styles.container,
+      classes.container,
       { [animationIn]: isOpen },
       { [animationOut]: !isOpen },
       'common__drawer'
@@ -147,9 +162,9 @@ class Drawer extends Component {
           this.handleAnimationEnd();
           // clear any residual animation style to fix a11y issue on Android
           // (focus ring is misaligned)
-          if (this.sheetRef?.style) {
-            this.sheetRef.style.animation = '';
-            this.sheetRef.style.transform = 'none';
+          if (this.sheetRef?.current?.style) {
+            this.sheetRef.current.style.animation = '';
+            this.sheetRef.current.style.transform = 'none';
           }
         }}
         role="dialog"
@@ -162,4 +177,17 @@ class Drawer extends Component {
   }
 }
 
-export default Drawer;
+export default withStyles(Drawer, {
+  container: {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    zIndex: 5,
+  },
+  animationIn: {
+    animation: `${slideInBaseDrawer} ${duration}ms 1 forwards ${easing}`,
+  },
+  animationOut: {
+    animation: `${slideOutBaseDrawer} ${duration}ms 1 forwards ${easing}`,
+  },
+});

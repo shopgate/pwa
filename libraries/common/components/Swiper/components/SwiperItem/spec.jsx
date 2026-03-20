@@ -16,7 +16,9 @@ describe('<SwiperItem />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toEqual('<div class="swiper-slide css-10a4qrv" data-test-id="Slider"><div></div></div>');
+    expect(wrapper.html()).toMatch(
+      /^<div class="swiper-slide css-[^"]+" data-test-id="Slider"><div><\/div><\/div>$/
+    );
   });
 
   it('should add custom className', () => {
@@ -27,6 +29,8 @@ describe('<SwiperItem />', () => {
     ));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toEqual('<div class="swiper-slide css-10a4qrv test" data-test-id="Slider"><div></div></div>');
+    expect(wrapper.html()).toMatch(
+      /^<div class="swiper-slide css-[^"]+ test" data-test-id="Slider"><div><\/div><\/div>$/
+    );
   });
 });

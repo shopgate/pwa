@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import style from './style';
+import { withStyles } from '@shopgate/engage/styles';
 
 /**
  * The button component.
@@ -30,8 +30,10 @@ class Button extends Component {
       children, testId, className, disabled, onClick, ...props
     } = this.props;
 
+    const classes = withStyles.getClasses(this.props);
+
     const buttonProps = {
-      className: `${className} ${style} common__button`,
+      className: `${className} ${classes.root} common__button`,
       disabled,
       onClick: disabled ? null : onClick,
       ...props,
@@ -54,4 +56,10 @@ class Button extends Component {
   }
 }
 
-export default Button;
+export default withStyles(Button, {
+  root: {
+    '&:focus': {
+      outline: 0,
+    },
+  },
+});

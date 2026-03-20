@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';
 import sortBy from 'lodash/sortBy';
+import { withStyles } from '@shopgate/engage/styles';
 import Widget from '../Widget';
-import styles from './style';
 import shouldShowWidget from '../../helpers/shouldShowWidget';
 
 /**
@@ -35,6 +35,7 @@ class WidgetGrid extends Component {
    */
   render() {
     const { components, config } = this.props;
+    const classes = withStyles.getClasses(this.props);
 
     if (!config.length) {
       return null;
@@ -45,7 +46,7 @@ class WidgetGrid extends Component {
     const widgets = sortBy(config, ['row']).filter(w => shouldShowWidget(w.settings));
 
     return (
-      <div className={`${styles} common__widgets__widget-grid`}>
+      <div className={`${classes.root} common__widgets__widget-grid`}>
         {Object.keys(widgets).map((key) => {
           const widget = widgets[key];
           const widgetKey = `w${key}`;
@@ -64,4 +65,12 @@ class WidgetGrid extends Component {
   }
 }
 
-export default WidgetGrid;
+export default withStyles(WidgetGrid, {
+  root: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gridAutoRows: 'auto',
+    gridAutoFlow: 'row dense',
+    position: 'relative',
+  },
+});
