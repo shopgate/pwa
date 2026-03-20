@@ -1,8 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { RippleButton, I18n, SurroundPortals } from '@shopgate/engage/components';
-import { button, ripple } from './ChangeLocationButton.style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { PRODUCT_FULFILLMENT_CHANGE_LOCATION } from '../../constants/Portals';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  button: {
+    fontSize: '0.625rem !important',
+    letterSpacing: '0.05em',
+    padding: `${variables.gap.xsmall * 0.75}px 0 !important`,
+    ' *': {
+      padding: '0 !important',
+    },
+  },
+  ripple: {
+    padding: 0,
+  },
+});
 
 /**
  * Renders the Change Location button.
@@ -11,26 +28,30 @@ import { PRODUCT_FULFILLMENT_CHANGE_LOCATION } from '../../constants/Portals';
  * @param {boolean} [props.disabled=false] Whether the button is disabled.
  * @returns {JSX.Element} The rendered component.
  */
-export const ChangeLocationButtonUnwrapped = ({ onClick, disabled }) => (
-  <SurroundPortals
-    portalName={PRODUCT_FULFILLMENT_CHANGE_LOCATION}
-    portalProps={{
-      onClick,
-      disabled,
-    }}
-  >
-    <RippleButton
-      onClick={onClick}
-      className={button}
-      disabled={disabled}
-      rippleClassName={ripple}
-      type="secondary"
-      flat
+export const ChangeLocationButtonUnwrapped = ({ onClick, disabled }) => {
+  const { classes } = useStyles();
+
+  return (
+    <SurroundPortals
+      portalName={PRODUCT_FULFILLMENT_CHANGE_LOCATION}
+      portalProps={{
+        onClick,
+        disabled,
+      }}
     >
-      <I18n.Text string="locations.change_location" />
-    </RippleButton>
-  </SurroundPortals>
-);
+      <RippleButton
+        onClick={onClick}
+        className={classes.button}
+        disabled={disabled}
+        rippleClassName={classes.ripple}
+        type="secondary"
+        flat
+      >
+        <I18n.Text string="locations.change_location" />
+      </RippleButton>
+    </SurroundPortals>
+  );
+};
 
 ChangeLocationButtonUnwrapped.propTypes = {
   onClick: PropTypes.func.isRequired,

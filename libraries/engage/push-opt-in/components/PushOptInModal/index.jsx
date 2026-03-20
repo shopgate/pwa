@@ -2,14 +2,52 @@ import React, { useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   Grid, I18n, Button, Modal,
 } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
 import pushImage from './push-opt-in.svg';
-import styles from './style';
 import connect from './connector';
 import { svgToDataUrl } from '../../../core';
+
+const useStyles = makeStyles()(theme => ({
+  modalContent: {
+    width: '100%',
+  },
+  modalLayout: {
+    backgroundColor: theme.colors.lightOverlay,
+  },
+  container: {
+    backgroundColor: theme.colors.lightOverlay,
+    textAlign: 'center',
+    padding: '30px',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: '1.35rem',
+    paddingTop: '30px',
+    paddingBottom: '30px',
+  },
+  item: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  image: {
+    width: '80%',
+    maxWidth: 400,
+  },
+  button: {
+    marginTop: '30px',
+  },
+  buttonText: {
+    color: theme.colors.gray,
+  },
+}));
 
 /**
  * The Push opt-in modal component.
@@ -19,6 +57,7 @@ import { svgToDataUrl } from '../../../core';
 const PushOptInModal = ({
   isPushOptInModalVisible, allowPushOptIn, denyPushOptIn,
 }) => {
+  const { classes } = useStyles();
   const {
     pushOptIn: {
       modalMessage,
@@ -67,21 +106,21 @@ const PushOptInModal = ({
   return (
     <Modal
       classes={{
-        content: styles.modalContent,
-        layout: styles.modalLayout,
+        content: classes.modalContent,
+        layout: classes.modalLayout,
       }}
     >
       <Grid
-        className={classNames(styles.container, 'push-opt-in-modal__container')}
+        className={classNames(classes.container, 'push-opt-in-modal__container')}
         role="alertdialog"
         aria-modal
         aria-labelledby="pushOptInDialogTitle"
         aria-describedby="pushOptInDialogMessage"
       >
-        <Grid.Item className={styles.item}>
-          <img src={imageSRC} className={classNames(styles.image, 'push-opt-in-modal__image')} alt="" aria-hidden="true" />
+        <Grid.Item className={classes.item}>
+          <img src={imageSRC} className={classNames(classes.image, 'push-opt-in-modal__image')} alt="" aria-hidden="true" />
           <I18n.Text
-            className={classNames(styles.title, 'push-opt-in-modal__title')}
+            className={classNames(classes.title, 'push-opt-in-modal__title')}
             string={modalTitle || 'pushOptInModal.title'}
             id="pushOptInDialogTitle"
           />
@@ -90,11 +129,11 @@ const PushOptInModal = ({
             string={modalMessage || 'pushOptInModal.message'}
             id="pushOptInDialogMessage"
           />
-          <Button onClick={handleAllowPushOptIn} type="primary" className={classNames(styles.button, 'push-opt-in-modal__button-allow')}>
+          <Button onClick={handleAllowPushOptIn} type="primary" className={classNames(classes.button, 'push-opt-in-modal__button-allow')}>
             <I18n.Text string={modalButtonAllow || 'pushOptInModal.buttonAllow'} />
           </Button>
-          <Button onClick={handleDenyPushOptIn} type="plain" className={classNames(styles.button, 'push-opt-in-modal__button-deny')}>
-            <I18n.Text string={modalButtonDeny || 'pushOptInModal.buttonDeny'} className={styles.buttonText} />
+          <Button onClick={handleDenyPushOptIn} type="plain" className={classNames(classes.button, 'push-opt-in-modal__button-deny')}>
+            <I18n.Text string={modalButtonDeny || 'pushOptInModal.buttonDeny'} className={classes.buttonText} />
           </Button>
         </Grid.Item>
       </Grid>

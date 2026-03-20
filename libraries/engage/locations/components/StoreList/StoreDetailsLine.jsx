@@ -2,9 +2,28 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Grid } from '@shopgate/engage/components';
-import {
-  detailsLine, detailsIcon, detailsIconLinked, details,
-} from './Store.style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeVariables } from '@shopgate/pwa-common/helpers/config';
+
+const { gap } = themeVariables;
+const gapM = gap.small + gap.xsmall;
+
+const useStyles = makeStyles()({
+  detailsLine: {
+    marginTop: gapM,
+  },
+  detailsIcon: {
+    color: 'var(--color-text-medium-emphasis)',
+    fontSize: '1.4rem',
+    padding: `${gap.xsmall}px ${gap.big}px 0 0`,
+  },
+  detailsIconLinked: {
+    color: 'var(--color-primary)',
+  },
+  details: {
+    paddingTop: gap.xsmall,
+  },
+});
 
 /**
  * Renders a single store headline.
@@ -15,12 +34,16 @@ import {
  * @returns {JSX.Element}
  */
 export function StoreDetailsLine({ icon: Icon, children, linked }) {
+  const { classes } = useStyles();
   return (
-    <Grid className={detailsLine}>
-      <Grid.Item shrink={0} className={classNames(detailsIcon, { [detailsIconLinked]: linked })}>
+    <Grid className={classes.detailsLine}>
+      <Grid.Item
+        shrink={0}
+        className={classNames(classes.detailsIcon, { [classes.detailsIconLinked]: linked })}
+      >
         <Icon aria-hidden />
       </Grid.Item>
-      <Grid.Item grow={1} className={details}>
+      <Grid.Item grow={1} className={classes.details}>
         {children}
       </Grid.Item>
     </Grid>

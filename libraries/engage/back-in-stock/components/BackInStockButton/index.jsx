@@ -2,15 +2,53 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   Link, CheckedIcon, Button, NotificationIcon,
 } from '@shopgate/engage/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import { i18n } from '@shopgate/engage/core';
-import styles from './style';
 import connect from './connector';
 
 const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  button: {
+    lineHeight: '16.5px',
+    color: themeConfig.colors.warning,
+    width: '100%',
+  },
+  backInStockMessageContainer: {
+    lineHeight: '16.5px',
+    display: 'flex',
+    alignItems: 'center',
+    width: 'auto',
+  },
+  rightAligned: {
+    display: 'inline-block',
+    textAlign: 'right',
+  },
+  backInStockMessage: {
+    verticalAlign: 'middle',
+    fontSize: '0.875rem',
+  },
+  buttonText: {
+    fontSize: '0.875rem',
+  },
+  icon: {
+    marginRight: 4,
+    marginTop: -1,
+    verticalAlign: 'middle',
+    flexShrink: 0,
+    alignSelf: 'flex-start',
+    display: 'inline-flex',
+  },
+  iconCentered: {
+    alignSelf: 'center',
+    marginLeft: '-2px',
+    marginRight: '8px',
+  },
+});
 /**
  * This component renders a button to subscribe a product or a hint
  * that the product is already subscribed
@@ -34,6 +72,7 @@ const BackInStockButton = ({
   alignRight,
   showAsButton,
 }) => {
+  const { classes } = useStyles();
   const handleClick = useCallback(async (event) => {
     if (stopPropagation) {
       event.stopPropagation();
@@ -63,16 +102,16 @@ const BackInStockButton = ({
         href={BACK_IN_STOCK_PATTERN}
         disabled={!isLinkToBackInStockEnabled}
         className={classNames(
-          styles.backInStockMessageContainer,
-          { [styles.rightAligned]: alignRight }
+          classes.backInStockMessageContainer,
+          { [classes.rightAligned]: alignRight }
         )}
         tag="span"
       >
         <CheckedIcon
           color={colors.success}
-          className={alignRight ? styles.icon : classNames(styles.iconCentered, styles.icon)}
+          className={alignRight ? classes.icon : classNames(classes.iconCentered, classes.icon)}
         />
-        <span className={styles.backInStockMessage}>{i18n.text('back_in_stock.we_will_remind_you')}</span>
+        <span className={classes.backInStockMessage}>{i18n.text('back_in_stock.we_will_remind_you')}</span>
       </Link>
     );
   }
@@ -83,9 +122,9 @@ const BackInStockButton = ({
         type="primary"
         tabIndex={0}
         onClick={handleClick}
-        className={styles.button}
+        className={classes.button}
       >
-        <span className={styles.buttonText}>
+        <span className={classes.buttonText}>
           {i18n.text('back_in_stock.get_notified')}
         </span>
       </Button>
@@ -98,12 +137,12 @@ const BackInStockButton = ({
       tabIndex={0}
       onClick={handleClick}
       className={classNames(
-        styles.button,
-        { [styles.rightAligned]: alignRight }
+        classes.button,
+        { [classes.rightAligned]: alignRight }
       )}
     >
-      <NotificationIcon color={colors.primary} className={styles.icon} />
-      <span className={styles.buttonText}>
+      <NotificationIcon color={colors.primary} className={classes.icon} />
+      <span className={classes.buttonText}>
         {i18n.text('back_in_stock.get_notified')}
       </span>
     </a>

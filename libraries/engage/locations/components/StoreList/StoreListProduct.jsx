@@ -1,17 +1,41 @@
 import React, { useContext } from 'react';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
 import { ProductImage } from '../../../product';
 import { FulfillmentContext } from '../../locations.context';
 import StoreListProductName from './StoreListProductName';
 import StoreListProductInfo from './StoreListProductInfo';
-import * as styles from './StoreListProduct.style';
 import { SurroundPortals } from '../../../components';
 import { FULFILLMENT_SHEET_PRODUCT } from '../../constants/Portals';
+
+const useStyles = makeStyles()({
+  productContainer: {
+    padding: `${themeVariables.gap.bigger}px ${themeVariables.gap.bigger}px ${themeVariables.gap.small}px`,
+    boxShadow: `inset 0 1px 0 ${themeColors.shade7}`,
+  },
+  productContainerInner: {
+    display: 'flex',
+    flexFlow: 'row nowrap',
+  },
+  productImage: {
+    flex: '0 0 auto',
+    width: '2.5rem',
+    height: '2.5rem',
+    background: themeColors.placeholder,
+    marginRight: themeVariables.gap.bigger,
+  },
+  productContent: {
+    flexGrow: 1,
+    display: 'block',
+  },
+});
 
 /**
  * Renders the product information of the store list.
  * @returns {JSX.Element}
  */
 function StoreListProduct() {
+  const { classes } = useStyles();
   const { product } = useContext(FulfillmentContext);
   if (!product) {
     return null;
@@ -23,12 +47,12 @@ function StoreListProduct() {
       portalName={FULFILLMENT_SHEET_PRODUCT}
       portalProps={{ product }}
     >
-      <div className={styles.productContainer} role="text">
-        <div className={styles.productContainerInner}>
-          <div className={styles.productImage}>
+      <div className={classes.productContainer} role="text">
+        <div className={classes.productContainerInner}>
+          <div className={classes.productImage}>
             <ProductImage src={product.featuredImageBaseUrl} />
           </div>
-          <div className={styles.productContent}>
+          <div className={classes.productContent}>
             <StoreListProductName />
             <StoreListProductInfo />
           </div>
