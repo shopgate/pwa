@@ -1,12 +1,11 @@
 import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { nl2br, showModal as showModalAction } from '@shopgate/engage/core';
+import { nl2br, showModal as showModalAction, isIOSTheme } from '@shopgate/engage/core';
 import { InfoIcon } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
-import { spacer } from './PaymentBarContent.style';
 import { CartContext } from '../../cart.context';
 
 const mapDispatchToProps = {
@@ -47,6 +46,11 @@ const useStyles = makeStyles()({
   loading: {
     opacity: 0.5,
   },
+  spacer: {
+    width: isIOSTheme() ? 27 : 32,
+    order: 1,
+    flexShrink: 0,
+  },
 });
 
 /**
@@ -79,7 +83,7 @@ const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
             })}
             dangerouslySetInnerHTML={{ __html: nl2br(text) }}
           />
-          <CartTotalLine.Spacer className={spacer} />
+          <CartTotalLine.Spacer className={classes.spacer} />
         </>
       </CartTotalLine>
     );

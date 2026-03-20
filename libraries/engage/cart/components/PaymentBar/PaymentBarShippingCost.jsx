@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { isIOSTheme } from '@shopgate/engage/core';
 import {
   CART_PAYMENT_BAR_TOTALS_SHIPPING,
   getShippingLine,
 } from '@shopgate/pwa-common-commerce/cart';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
-import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarShippingCost.connector';
+
+const useStyles = makeStyles()({
+  spacer: {
+    width: isIOSTheme() ? 27 : 32,
+    order: 1,
+    flexShrink: 0,
+  },
+});
 
 /**
  * The PaymentBarShippingCost component.
@@ -19,6 +28,7 @@ import connect from './PaymentBarShippingCost.connector';
  * @returns {JSX.Element|null} The rendered component.
  */
 const PaymentBarShippingCost = ({ shippingCost, showSeparator, className }) => {
+  const { classes } = useStyles();
   const {
     currency, isLoading, isUserLoggedIn, config, hasPromotionCoupons,
   } = React.useContext(CartContext);
@@ -41,7 +51,7 @@ const PaymentBarShippingCost = ({ shippingCost, showSeparator, className }) => {
           />
           <CartTotalLine.Hint hint={shippingLine.hint} />
           { hasPromotionCoupons && (
-            <CartTotalLine.Spacer className={spacer} />
+            <CartTotalLine.Spacer className={classes.spacer} />
           )}
         </CartTotalLine>
       )}

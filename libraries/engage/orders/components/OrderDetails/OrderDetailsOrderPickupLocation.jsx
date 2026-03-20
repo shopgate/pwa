@@ -1,15 +1,25 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n, generateGoogleMapsDirectionsUrl } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { CheckoutConfirmationSection } from '../../../checkout/components';
 import connect from './OrderDetailsOrderPickupLocation.connector';
-import { locationName } from './OrderDetailsOrderPickupLocation.style';
+
+const useStyles = makeStyles()({
+  locationName: {
+    margin: 0,
+    color: 'var(--color-text-high-emphasis)',
+    fontSize: '1rem',
+    fontWeight: 500,
+  },
+});
 
 /**
  * OrderDetailsPickupLocation component
  * @returns {JSX}
  */
 const OrderDetailsPickupLocation = ({ location, className }) => {
+  const { classes } = useStyles();
   const content = useMemo(() => {
     if (!location) {
       return null;
@@ -18,7 +28,7 @@ const OrderDetailsPickupLocation = ({ location, className }) => {
     const { name, address } = location;
     const mapsUrl = generateGoogleMapsDirectionsUrl(address);
     const entries = [{
-      text: `<h4 class="${locationName}">${name}</h4>`,
+      text: `<h4 class="${classes.locationName}">${name}</h4>`,
     }];
 
     const formattedAddress = [
@@ -46,7 +56,7 @@ const OrderDetailsPickupLocation = ({ location, className }) => {
     }
 
     return entries;
-  }, [location]);
+  }, [classes.locationName, location]);
 
   if (!location) {
     return null;

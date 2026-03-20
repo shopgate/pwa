@@ -1,4 +1,6 @@
 import React, { useState, useCallback } from 'react';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { Availability } from '@shopgate/engage/product';
 import { RadioGroup } from '../../../components';
 import { useFulfillmentState } from '../../locations.hooks';
@@ -10,8 +12,21 @@ import {
   ROPIS,
   BOPIS,
 } from '../../constants';
-import { container, radioGroup } from './FulfillmentPath.style';
 import { FulfillmentPathItem } from './FulfillmentPathItem';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  container: {
+    padding: `0 ${variables.gap.big}px`,
+  },
+  radioGroup: {
+    // Removes the vertical padding applied by default around radio groups
+    paddingTop: 0,
+    paddingBottom: 0,
+    transition: 'opacity 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+  },
+});
 
 const labelMapping = {
   [DIRECT_SHIP]: DIRECT_SHIP_LABEL,
@@ -24,6 +39,7 @@ const labelMapping = {
  * @returns {JSX}
  */
 export function FulfillmentPath() {
+  const { classes } = useStyles();
   const {
     product,
     enabledFulfillmentMethods,
@@ -45,12 +61,12 @@ export function FulfillmentPath() {
   }, [cartItem, changeFulfillment]);
 
   return (
-    <div className={container}>
+    <div className={classes.container}>
       <RadioGroup
         name="cartItem.fulfillment_selector"
         value={selection}
         onChange={handleChange}
-        className={radioGroup}
+        className={classes.radioGroup}
         isControlled
         direction="column"
       >

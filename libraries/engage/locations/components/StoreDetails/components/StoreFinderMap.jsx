@@ -10,13 +10,26 @@ import '../../../assets/leaflet.css';
 import 'leaflet-gesture-handling/dist/leaflet-gesture-handling.css';
 import Leaflet from 'leaflet';
 import { renderToString } from 'react-dom/server';
+import { makeStyles } from '@shopgate/engage/styles';
 import MapMarkerIcon from '@shopgate/pwa-ui-shared/icons/MapMarkerIcon';
 import { historyPush } from '@shopgate/engage/core';
-import {
-  container, markerSelected,
-} from './StoreFinderMap.style';
 import { MAP_RADIUS_KM } from '../../../constants';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
+
+const useStyles = makeStyles()({
+  container: {
+    height: '100%',
+    width: '100%',
+  },
+  markerSelected: {
+    ' svg': {
+      height: 40,
+      width: 40,
+      fontSize: '1.5rem',
+      color: 'var(--color-primary)',
+    },
+  },
+});
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 
@@ -24,6 +37,7 @@ Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
  * @returns {JSX.Element}
  */
 const StoreFinderMap = () => {
+  const { classes } = useStyles();
   const mapContainerRef = useRef(null);
   const dispatch = useDispatch();
 
@@ -61,9 +75,9 @@ const StoreFinderMap = () => {
 
   const markerIconSelected = useMemo(() => Leaflet.divIcon({
     html: iconHTML,
-    className: markerSelected,
+    className: classes.markerSelected,
     iconSize: [40, 40],
-  }), [iconHTML]);
+  }), [classes.markerSelected, iconHTML]);
 
   const { code, latitude, longitude } = routeLocation || {};
 
@@ -128,11 +142,11 @@ const StoreFinderMap = () => {
   }
 
   return (
-    <div className={container} aria-hidden ref={mapContainerRef}>
+    <div className={classes.container} aria-hidden ref={mapContainerRef}>
       <MapContainer
         center={viewport}
         bounds={bounds}
-        className={container}
+        className={classes.container}
         whenCreated={handleMapCreated}
       >
         {debug && (

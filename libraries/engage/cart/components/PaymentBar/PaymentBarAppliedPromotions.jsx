@@ -1,16 +1,25 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, isIOSTheme } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
 import PaymentBarPromotionalText from './PaymentBarPromotionalText';
-import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarAppliedPromotions.connector';
+
+const useStyles = makeStyles()({
+  spacer: {
+    width: isIOSTheme() ? 27 : 32,
+    order: 1,
+    flexShrink: 0,
+  },
+});
 
 /**
  * @returns {JSX}
  */
 const PaymentBarAppliedPromotions = ({ promotions, className, showSeparator }) => {
+  const { classes } = useStyles();
   const { isLoading, currency, hasPromotionCoupons } = useContext(CartContext);
 
   return promotions.map((promotion) => {
@@ -32,7 +41,7 @@ const PaymentBarAppliedPromotions = ({ promotions, className, showSeparator }) =
         />
         <CartTotalLine.Amount amount={amount} currency={currency} />
         { hasPromotionCoupons && (
-          <CartTotalLine.Spacer className={spacer} />
+          <CartTotalLine.Spacer className={classes.spacer} />
         )}
       </CartTotalLine>
     );

@@ -1,7 +1,9 @@
 import 'react-phone-number-input/style.css';
 import React, {
-  useState, useContext, useMemo, useRef, useLayoutEffect, useCallback, Fragment,
+  useState, useContext, useMemo, useRef, useLayoutEffect, useCallback,
 } from 'react';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   TextField, RippleButton, RadioGroup, RadioGroupItem, ProgressBar,
 } from '@shopgate/engage/components';
@@ -10,9 +12,46 @@ import { useFormState } from '../../../core/hooks/useFormState';
 import { FulfillmentContext } from '../../locations.context';
 import { ReserveFormPhone } from './ReserveFormPhone';
 import { constraints } from './ReserveForm.constraints';
-import {
-  form, fieldset, formField, formHeading, pickerSwitch, pickerItem, button, progressBar,
-} from './ReserveForm.style';
+
+const { variables, colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  form: {
+    background: colors.background,
+    padding: `${variables.gap.small * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.big}px`,
+    boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
+  },
+  formHeading: {
+    fontSize: '1.125rem',
+    fontWeight: 'bold',
+    margin: `0 0 ${variables.gap.small}px`,
+  },
+  fieldset: {
+    padding: 0,
+    margin: `0 0 ${variables.gap.big}px`,
+    border: 0,
+  },
+  formField: {
+    width: '100%',
+    paddingBottom: variables.gap.small,
+  },
+  pickerSwitch: {
+    marginTop: '-1rem',
+  },
+  pickerItem: {
+    paddingRight: variables.gap.xbig,
+    ':last-of-type': {
+      paddingRight: 0,
+    },
+  },
+  button: {
+    width: '100%',
+  },
+  progressBar: {
+    height: '4px',
+    position: 'relative',
+  },
+});
 
 // eslint-disable-next-line max-len
 /** @typedef {import('@shopgate/engage/locations/locations.types').ReservationFormValues} ReservationFormValues */
@@ -51,6 +90,7 @@ const determinePickupPerson = (userInput) => {
  * @returns {JSX.Element}
  */
 function ReserveFormUnwrapped() {
+  const { classes } = useStyles();
   const { sendReservation, userInput } = useContext(FulfillmentContext);
   const [picker, setPicker] = useState(determinePickupPerson(userInput));
 
@@ -117,17 +157,17 @@ function ReserveFormUnwrapped() {
 
   return (
     <>
-      <div className={progressBar}>
+      <div className={classes.progressBar}>
         <ProgressBar isVisible={isSubmitting} />
       </div>
-      <form onSubmit={handleSubmit} className={form}>
-        <fieldset className={fieldset}>
+      <form onSubmit={handleSubmit} className={classes.form}>
+        <fieldset className={classes.fieldset}>
           <TextField
             name="firstName"
             value={values.firstName}
             onChange={handleChange}
             label={i18n.text('locations.firstName')}
-            className={formField}
+            className={classes.formField}
             errorText={i18n.text(validationErrors.firstName)}
           />
           <TextField
@@ -135,7 +175,7 @@ function ReserveFormUnwrapped() {
             value={values.lastName}
             onChange={handleChange}
             label={i18n.text('locations.lastName')}
-            className={formField}
+            className={classes.formField}
             errorText={i18n.text(validationErrors.lastName)}
           />
           <ReserveFormPhone
@@ -150,35 +190,35 @@ function ReserveFormUnwrapped() {
             value={values.email}
             onChange={handleChange}
             label={i18n.text('locations.emailAddress')}
-            className={formField}
+            className={classes.formField}
             errorText={i18n.text(validationErrors.email)}
           />
         </fieldset>
-        <p className={formHeading}>
+        <p className={classes.formHeading}>
           {i18n.text('locations.who_will_pickup')}
         </p>
-        <div className={pickerSwitch}>
+        <div className={classes.pickerSwitch}>
           <RadioGroup name="picker" direction="row" value={picker} onChange={setPicker}>
             <RadioGroupItem
               label={i18n.text('locations.me')}
               name={PICKUP_PERSON_ME}
-              className={pickerItem}
+              className={classes.pickerItem}
             />
             <RadioGroupItem
               label={i18n.text('locations.someone_else')}
               name={PICKUP_PERSON_OTHER}
-              className={pickerItem}
+              className={classes.pickerItem}
             />
           </RadioGroup>
         </div>
         {(picker === PICKUP_PERSON_OTHER) && (
-          <fieldset className={fieldset} ref={someoneElseRef}>
+          <fieldset className={classes.fieldset} ref={someoneElseRef}>
             <TextField
               name="firstName2"
               value={values.firstName2}
               onChange={handleChange}
               label={i18n.text('locations.firstName')}
-              className={formField}
+              className={classes.formField}
               errorText={i18n.text(validationErrors.firstName2)}
             />
             <TextField
@@ -186,7 +226,7 @@ function ReserveFormUnwrapped() {
               value={values.lastName2}
               onChange={handleChange}
               label={i18n.text('locations.lastName')}
-              className={formField}
+              className={classes.formField}
               errorText={i18n.text(validationErrors.lastName2)}
             />
             <ReserveFormPhone
@@ -201,7 +241,7 @@ function ReserveFormUnwrapped() {
               value={values.email2}
               onChange={handleChange}
               label={i18n.text('locations.emailAddress')}
-              className={formField}
+              className={classes.formField}
               errorText={i18n.text(validationErrors.email2)}
             />
           </fieldset>
@@ -209,7 +249,7 @@ function ReserveFormUnwrapped() {
         <RippleButton
           type="secondary"
           disabled={changed || valid === false || isSubmitting}
-          className={button}
+          className={classes.button}
         >
           {i18n.text('locations.place_reservation')}
         </RippleButton>

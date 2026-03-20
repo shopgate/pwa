@@ -2,13 +2,12 @@ import React, { useContext, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, isIOSTheme } from '@shopgate/engage/core';
 import { CrossIcon } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import PaymentBarPromotionCouponMessages from './PaymentBarPromotionCouponMessages';
 import { CartContext } from '../../cart.context';
 import PaymentBarPromotionalText from './PaymentBarPromotionalText';
-import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarPromotionCoupons.connector';
 
 const useStyles = makeStyles()({
@@ -26,6 +25,11 @@ const useStyles = makeStyles()({
   },
   withMessages: {
     paddingBottom: '0px !important',
+  },
+  spacer: {
+    width: isIOSTheme() ? 27 : 32,
+    order: 1,
+    flexShrink: 0,
   },
 });
 
@@ -65,7 +69,7 @@ const PaymentBarPromotionCoupons = ({
           { amount && (
           <CartTotalLine.Amount amount={amount} currency={currency} />
           )}
-          <CartTotalLine.Spacer className={spacer}>
+          <CartTotalLine.Spacer className={classes.spacer}>
             <div
               className={classes.icon}
               onClick={() => { deleteCoupon(code); }}

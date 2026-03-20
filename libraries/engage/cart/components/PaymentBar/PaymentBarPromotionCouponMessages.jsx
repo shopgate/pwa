@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
-import { errorBehavior } from '@shopgate/engage/core';
+import { errorBehavior, isIOSTheme } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
-import { spacer } from './PaymentBarContent.style';
 
 const useStyles = makeStyles()({
   line: {
@@ -29,6 +28,11 @@ const useStyles = makeStyles()({
   loading: {
     opacity: 0.4,
   },
+  spacer: {
+    width: isIOSTheme() ? 27 : 32,
+    order: 1,
+    flexShrink: 0,
+  },
 });
 
 /**
@@ -45,7 +49,7 @@ const PaymentBarPromotionCouponMessages = ({ messages }) => {
   return messages.map(({ message, additionalParams, type }) => (
     <CartTotalLine className={classes.line} key={message}>
       <>
-        <CartTotalLine.Spacer className={spacer} />
+        <CartTotalLine.Spacer className={classes.spacer} />
         <div className={cx(classes.message, {
           [classes.loading]: isLoading,
           [classes.error]: type === 'error',

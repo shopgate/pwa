@@ -1,7 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { I18n } from '../../../components';
-import styles from './styles';
+
+const useStyles = makeStyles()({
+  hiddenLiveRegion: {
+    clip: 'rect(1px, 1px, 1px, 1px)',
+    height: '1px',
+    margin: 0,
+    overflow: 'hidden',
+    padding: 0,
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    width: '1px',
+    zIndex: -1000,
+  },
+});
 
 /**
  * The LiveMessage component can be used to broadcast "aria-live" messages to assistive technology.
@@ -10,11 +24,15 @@ import styles from './styles';
  * @param {string} 'aria-live' The aria-live type.
  * @returns {JSX}
  */
-const LiveMessage = ({ message, params, 'aria-live': ariaLive }) => (
-  <div className={styles} role="log" aria-live={ariaLive}>
-    <I18n.Text string={message} params={params} />
-  </div>
-);
+const LiveMessage = ({ message, params, 'aria-live': ariaLive }) => {
+  const { classes } = useStyles();
+
+  return (
+    <div className={classes.hiddenLiveRegion} role="log" aria-live={ariaLive}>
+      <I18n.Text string={message} params={params} />
+    </div>
+  );
+};
 
 LiveMessage.propTypes = {
   message: PropTypes.string.isRequired,

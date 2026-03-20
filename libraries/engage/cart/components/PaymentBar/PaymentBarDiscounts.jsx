@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { isIOSTheme } from '@shopgate/engage/core';
 import { CART_PAYMENT_BAR_TOTALS_DISCOUNTS } from '@shopgate/pwa-common-commerce/cart';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
-import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarDiscounts.connector';
+
+const useStyles = makeStyles()({
+  spacer: {
+    width: isIOSTheme() ? 27 : 32,
+    order: 1,
+    flexShrink: 0,
+  },
+});
 
 /**
  * The Discounts component.
@@ -16,6 +25,7 @@ import connect from './PaymentBarDiscounts.connector';
  * @returns {JSX.Element|null} The rendered component or null.
  */
 function PaymentBarDiscounts({ discounts, showSeparator, className }) {
+  const { classes } = useStyles();
   const { currency, isLoading, hasPromotionCoupons } = React.useContext(CartContext);
 
   if (!discounts) {
@@ -38,7 +48,7 @@ function PaymentBarDiscounts({ discounts, showSeparator, className }) {
           />
           <CartTotalLine.Amount amount={-amount} currency={currency} />
           {hasPromotionCoupons && (
-            <CartTotalLine.Spacer className={spacer} />
+            <CartTotalLine.Spacer className={classes.spacer} />
           )}
         </CartTotalLine>
       ))}

@@ -1,11 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { Toggle } from '@shopgate/engage/components';
-import {
-  root, checkbox, rightSpace, text,
-} from './style';
 import connect from './connector';
+
+const { gap } = themeVariables;
+
+const useStyles = makeStyles()({
+  root: {
+    padding: gap.big,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'baseline',
+    flex: 1,
+  },
+  checkbox: {
+    marginLeft: 8,
+  },
+  text: {
+    flexGrow: 0,
+  },
+  rightSpace: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'baseline',
+    flexGrow: 0,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      flex: 0,
+    },
+  },
+});
 
 /**
  * Renders the cart reservation card label.
@@ -14,22 +42,26 @@ import connect from './connector';
  */
 const Substitution = ({
   id, onChange, checked, className, label, disabled,
-}) => (
-  <div className={classNames(root, className)}>
-    <label aria-hidden className={text} htmlFor={id} id={`${id}-label`}>
-      {label}
-    </label>
-    <div className={rightSpace}>
-      <Toggle
-        className={checkbox}
-        checked={checked}
-        id={id}
-        onChange={onChange}
-        disabled={disabled}
-      />
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <div className={classNames(classes.root, className)}>
+      <label aria-hidden className={classes.text} htmlFor={id} id={`${id}-label`}>
+        {label}
+      </label>
+      <div className={classes.rightSpace}>
+        <Toggle
+          className={classes.checkbox}
+          checked={checked}
+          id={id}
+          onChange={onChange}
+          disabled={disabled}
+        />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 Substitution.propTypes = {
   id: PropTypes.string.isRequired,

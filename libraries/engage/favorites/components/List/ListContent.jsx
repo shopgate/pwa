@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
 import {
   ProductListTypeProvider,
@@ -11,7 +12,22 @@ import {
 } from '@shopgate/engage/components';
 import { getUseGetFavoriteIdsPipeline } from '@shopgate/engage/favorites';
 import ListItemWrapper from './ListItemWrapper';
-import styles from './styles';
+
+const useStyles = makeStyles()({
+  divider: {
+    height: 1,
+    width: 'calc(100% + 32px)',
+    backgroundColor: 'rgb(234, 234, 234)',
+    marginLeft: -16,
+    marginRight: -16,
+    marginBottom: 16,
+  },
+  loadMoreButton: {
+    width: 'calc(100% - 32px)',
+    margin: '16px 16px 0 16px',
+    borderRadius: 5,
+  },
+});
 
 /**
  * @param {Object} state State
@@ -34,33 +50,36 @@ const ListContent = ({
   useGetFavoriteIdsPipeline,
   showLoadMoreButton,
   onLoadMore,
-}) => (
-  <>
-    <div className={styles.divider} />
-    {items.length === 0 ? (
-      <span>{i18n.text('favorites.empty')}</span>
-    ) : null}
-    <ProductListTypeProvider type="favoritesList">
-      {/** The getFavoriteIds pipeline doesn't return full products, but only product ids. The
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <>
+      <div className={classes.divider} />
+      {items.length === 0 ? (
+        <span>{i18n.text('favorites.empty')}</span>
+      ) : null}
+      <ProductListTypeProvider type="favoritesList">
+        {/** The getFavoriteIds pipeline doesn't return full products, but only product ids. The
       ProductProvider requests missing products and provides it to the ListItemWrapper */}
-      { useGetFavoriteIdsPipeline
-        ? (items.map(({ productId }, index) => (
-          <ProductProvider productId={productId} key={productId}>
-            {({ product }) => (
-              product ? (
-                <ListItemWrapper
-                  listId={listId}
-                  product={product}
-                  items={items}
-                  addToCart={addToCart}
-                  removeItem={removeItem}
-                  index={index}
-                  key={product.id}
-                />
-              ) : null)}
-          </ProductProvider>
-        ))) : null}
-      {!useGetFavoriteIdsPipeline &&
+        { useGetFavoriteIdsPipeline
+          ? (items.map(({ productId }, index) => (
+            <ProductProvider productId={productId} key={productId}>
+              {({ product }) => (
+                product ? (
+                  <ListItemWrapper
+                    listId={listId}
+                    product={product}
+                    items={items}
+                    addToCart={addToCart}
+                    removeItem={removeItem}
+                    index={index}
+                    key={product.id}
+                  />
+                ) : null)}
+            </ProductProvider>
+          ))) : null}
+        {!useGetFavoriteIdsPipeline &&
           items
             .filter(({ product }) => product)
             .map(({ product, notes, quantity }, index) => (
@@ -76,17 +95,18 @@ const ListContent = ({
                 key={product.id}
               />
             ))}
-    </ProductListTypeProvider>
-    {showLoadMoreButton &&
-      <RippleButton
-        type="primary"
-        className={styles.loadMoreButton}
-        onClick={onLoadMore}
-      >
-        {i18n.text('favorites.load_more_button')}
-      </RippleButton>}
-  </>
-);
+      </ProductListTypeProvider>
+      {showLoadMoreButton &&
+        <RippleButton
+          type="primary"
+          className={classes.loadMoreButton}
+          onClick={onLoadMore}
+        >
+          {i18n.text('favorites.load_more_button')}
+        </RippleButton>}
+    </>
+  );
+};
 
 ListContent.propTypes = {
   addToCart: PropTypes.func.isRequired,

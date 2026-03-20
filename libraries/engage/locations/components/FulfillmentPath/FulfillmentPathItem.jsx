@@ -1,8 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import radioGroupStyles from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item/style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '../../../core';
 import { RadioGroupItem } from '../../../components';
-import { radioItem, itemLabel } from './FulfillmentPath.style';
+
+const { variables, colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  radioItem: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: `${variables.gap.big}px 0`,
+    boxShadow: `0 1px 0 ${colors.darkGray}`,
+  },
+  itemLabel: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    marginBottom: 0,
+  },
+});
 
 /**
  * Renders a RadioItem element to be used by the FulfillmentPathSelector component.
@@ -12,19 +33,23 @@ import { radioItem, itemLabel } from './FulfillmentPath.style';
  * @param {string} props.name The name of the radio item.
  * @returns {JSX.Element} The rendered component.
  */
-export const FulfillmentPathItem = ({ name, children, ...rest }) => (
-  <RadioGroupItem
-    {...rest}
-    name={name}
-    className={radioItem}
-    label={(
-      <div className={itemLabel}>
-        <span>{i18n.text(name)}</span>
-        {children}
-      </div>
-    )}
-  />
-);
+export const FulfillmentPathItem = ({ name, children, ...rest }) => {
+  const { classes } = useStyles();
+
+  return (
+    <RadioGroupItem
+      {...rest}
+      name={name}
+      className={classes.radioItem}
+      label={(
+        <div className={classNames(radioGroupStyles.label, classes.itemLabel)}>
+          <span>{i18n.text(name)}</span>
+          {children}
+        </div>
+      )}
+    />
+  );
+};
 
 FulfillmentPathItem.propTypes = {
   name: PropTypes.string.isRequired,

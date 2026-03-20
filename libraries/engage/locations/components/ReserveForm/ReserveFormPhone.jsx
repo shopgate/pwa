@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core';
 import { parsePhoneNumber } from 'react-phone-number-input';
 import PhoneInput from 'react-phone-number-input/mobile';
@@ -16,10 +18,52 @@ import flags from 'react-phone-number-input/flags';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import { FulfillmentContext } from '../../locations.context';
-import {
-  formField, phoneField, phoneFieldError, phoneFieldErrorText,
-} from './ReserveForm.style';
 import connect from './ReserveFormPhone.connector';
+
+const { variables, colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  formField: {
+    width: '100%',
+    paddingBottom: variables.gap.small,
+  },
+  phoneField: {
+    position: 'relative',
+    width: '100%',
+    paddingTop: variables.gap.big * 0.75,
+    paddingBottom: variables.gap.big * 1.25,
+    marginBottom: variables.gap.small,
+    ' input.PhoneInputInput': {
+      outline: 'none',
+      fontSize: '1rem',
+      lineHeight: '1.1875rem',
+      borderRadius: 0,
+      paddingBottom: variables.gap.xsmall * 1.5,
+      borderBottom: `1px solid ${colors.shade12}`,
+      '&:focus': {
+        borderBottom: `2px solid ${colors.primary}`,
+        paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+      },
+    },
+  },
+  phoneFieldError: {
+    ' input.PhoneInputInput': {
+      borderBottom: '2px solid var(--color-state-alert) !important',
+      paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+    },
+  },
+  phoneFieldErrorText: {
+    position: 'absolute',
+    width: '100%',
+    bottom: 2,
+    fontSize: '0.75rem',
+    lineHeight: 0.875,
+    color: 'var(--color-state-alert)',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+  },
+});
 
 /**
  * @typedef {import('./ReserveFormPhone.types').OwnProps} OwnProps
@@ -45,6 +89,7 @@ const locales = {
  * @returns {JSX.Element}
  */
 const ReserveFormPhoneUnwrapped = memo((props) => {
+  const { classes } = useStyles();
   const {
     name,
     value,
@@ -127,8 +172,8 @@ const ReserveFormPhoneUnwrapped = memo((props) => {
   }, [name, onChange]);
 
   const phoneClasses = classnames({
-    [phoneField]: true,
-    [phoneFieldError]: !!errorText,
+    [classes.phoneField]: true,
+    [classes.phoneFieldError]: !!errorText,
   });
 
   if (!countries || countries.length === 0) {
@@ -138,7 +183,7 @@ const ReserveFormPhoneUnwrapped = memo((props) => {
         value={value}
         onChange={onChange}
         label={label}
-        className={formField}
+        className={classes.formField}
         errorText={errorText}
       />
     );
@@ -158,7 +203,7 @@ const ReserveFormPhoneUnwrapped = memo((props) => {
         labels={labels}
       />
       {!!errorText && (
-        <div className={phoneFieldErrorText}>
+        <div className={classes.phoneFieldErrorText}>
           {errorText}
         </div>
       )}
