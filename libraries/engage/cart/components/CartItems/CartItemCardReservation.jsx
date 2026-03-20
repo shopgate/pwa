@@ -2,13 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { every, isEmpty } from 'lodash';
 import { ResponsiveContainer } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { useCartItem } from '../CartItem';
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
 import connect from './CartItem.connector';
 import { CartItemCardReservationAccordion } from './CartItemCardReservationAccordion';
-import {
-  accordionToggle,
-} from './CartItemCard.style';
+
+const { gap } = themeVariables;
+
+const useStyles = makeStyles()({
+  accordionToggle: {
+    padding: `${gap.big * 1.25}px ${gap.big}px`,
+  },
+});
 
 // eslint-disable-next-line max-len
 /** @typedef {import('@shopgate/engage/locations/locations.types').OptionalLocationAware} OptionalLocationAware */
@@ -19,6 +26,7 @@ import {
  * @returns {JSX.Element}
  */
 const CartItemCardReservation = ({ location, fulfillmentMethod }) => {
+  const { classes } = useStyles();
   const { isOrderDetails } = useCartItem();
 
   if (!location) {
@@ -32,7 +40,7 @@ const CartItemCardReservation = ({ location, fulfillmentMethod }) => {
     && (!location.address || !location.address.street)
   ) {
     return (
-      <div className={accordionToggle}>
+      <div className={classes.accordionToggle}>
         <CartItemCardReservationLabel location={location} fulfillmentMethod={fulfillmentMethod} />
       </div>
     );

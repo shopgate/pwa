@@ -1,6 +1,8 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   CART_ITEM_IMAGE,
   CART_ITEM_NAME,
@@ -14,9 +16,32 @@ import { CartItemCouponFreeShipping } from './CartItemCouponFreeShipping';
 import { CartItemCouponTitle } from './CartItemCouponTitle';
 import { CartItemCouponCode } from './CartItemCouponCode';
 import { CartItemCouponDelete } from './CartItemCouponDelete';
-import {
-  item, icon, content, contentLast,
-} from './CartItemCouponLayout.style';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  item: {
+    fontSize: '0.875rem',
+    padding: `${variables.gap.small / 2}px ${variables.gap.big}px`,
+  },
+  icon: {
+    fontSize: '3rem',
+    flexShrink: 0,
+    margin: '5px 12px 0 12px',
+  },
+  content: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingLeft: variables.gap.big,
+    paddingTop: variables.gap.small,
+    paddingBottom: variables.gap.small,
+    // Ensure long coupon codes do not break layout.
+    minWidth: 0,
+  },
+  contentLast: {
+    alignItems: 'flex-end',
+  },
+});
 
 /**
  * The CouponLayout component.
@@ -31,16 +56,17 @@ import {
  * @returns {JSX.Element}
  */
 export function CartItemCouponLayout(props, context) {
+  const { classes, cx } = useStyles();
   const { coupon, currency, handleDelete } = props;
 
   return (
-    <Grid className={item}>
-      <Grid.Item className={icon}>
+    <Grid className={classes.item}>
+      <Grid.Item className={classes.icon}>
         <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={context}>
           <CartItemCouponIcon />
         </SurroundPortals>
       </Grid.Item>
-      <Grid.Item className={content} grow={1}>
+      <Grid.Item className={classes.content} grow={1}>
         <SurroundPortals portalName={CART_ITEM_NAME} portalProps={context}>
           <CartItemCouponTitle value={coupon.label} />
         </SurroundPortals>
@@ -48,7 +74,7 @@ export function CartItemCouponLayout(props, context) {
           <CartItemCouponCode value={coupon.code} />
         </SurroundPortals>
       </Grid.Item>
-      <Grid.Item className={`${content} ${contentLast}`} grow={1} shrink={0}>
+      <Grid.Item className={cx(classes.content, classes.contentLast)} grow={1} shrink={0}>
         {context.editable && (
           <CartItemCouponDelete handleDelete={handleDelete} />
         )}

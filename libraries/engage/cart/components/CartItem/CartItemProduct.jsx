@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { MessageBar, ResponsiveContainer } from '@shopgate/engage/components';

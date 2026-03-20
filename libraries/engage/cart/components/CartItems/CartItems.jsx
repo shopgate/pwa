@@ -1,12 +1,34 @@
 import React from 'react';
 import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';
 import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
 import { CartItemCard } from './CartItemCard';
-import { items, card } from './CartItems.style';
 import CartItemsSubstitution from './CartItemsSubstitution';
+
+const { gap } = themeVariables;
+
+const useStyles = makeStyles()({
+  items: {
+    background: 'var(--color-background-accent)',
+    padding: `${gap.small * 1.5}px ${gap.small * 1.5}px ${gap.big}px`,
+    marginBottom: `-${gap.small * 1.5}px`,
+  },
+  card: {
+    background: themeColors.light,
+    marginBottom: gap.small * 1.5,
+    ':last-of-type': {
+      marginBottom: 0,
+    },
+    border: `1px solid ${themeColors.shade7}`,
+    boxSizing: 'border-box',
+    boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
+    borderRadius: 5,
+  },
+});
 
 /**
  * @typedef {import('../../../cart/cart.types').Item} Item
@@ -35,6 +57,7 @@ const CartItems = ({
   currencyOverride,
   isDirectShipOnly,
 }) => {
+  const { classes } = useStyles();
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
@@ -50,7 +73,7 @@ const CartItems = ({
         />
       </ResponsiveContainer>
 
-      <CardList className={items}>
+      <CardList className={classes.items}>
         {!isOrderDetails ? (
           <ResponsiveContainer appAlways breakpoint="<=xs">
             <FulfillmentSlotSwitcher renderBar card editable={editable} />
@@ -58,11 +81,11 @@ const CartItems = ({
         ) : null}
         {editable && !isDirectShipOnly && (
           <ResponsiveContainer breakpoint="<=xs" appAlways>
-            <CartItemsSubstitution cartItems={cartItems} wrapCard className={card} />
+            <CartItemsSubstitution cartItems={cartItems} wrapCard className={classes.card} />
           </ResponsiveContainer>
         )}
         {cartItems.map(item => (
-          <CardList.Item className={card} key={item.id}>
+          <CardList.Item className={classes.card} key={item.id}>
             <CartItemProvider
               cartItem={item}
               isEditable={editable}

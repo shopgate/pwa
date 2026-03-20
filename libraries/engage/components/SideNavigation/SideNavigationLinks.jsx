@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';

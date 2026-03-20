@@ -5,12 +5,8 @@ import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart';
 import { getPageSettings } from '@shopgate/engage/core/config';
+import { withStyles } from '@shopgate/engage/styles';
 import { MessageBar, CardList } from '@shopgate/engage/components';
-import {
-  container,
-  cartItemTransitionDuration as duration,
-  getCartItemTransitionStyle as getTransitionStyle,
-} from './CartItemCoupon.style';
 import {
   messagesContainerCard,
   messagesCard,
@@ -19,6 +15,34 @@ import {
 } from './CartItem.style';
 import connect from './CartItemCoupon.connector';
 import { CartItemCouponLayout } from './CartItemCouponLayout';
+
+const duration = 300;
+
+const defaultTransitionStyle = {
+  transition: `height ${duration}ms cubic-bezier(0.25, 0.1, 0.25, 1)`,
+  opacity: 1,
+};
+
+const transitionStyles = {
+  exited: {
+    height: 0,
+    opacity: 0,
+  },
+  exiting: {
+    height: 0,
+    opacity: 0,
+  },
+};
+
+/**
+ * Creates an object with style attributes to enable a cart item transition.
+ * @param {string} state A state of the react-transition-group/Transition component.
+ * @return {Object}
+ */
+const getTransitionStyle = state => ({
+  ...defaultTransitionStyle,
+  ...transitionStyles[state],
+});
 
 /**
  * @typedef {import('./CartItemCoupon.types').OwnProps} OwnProps
@@ -138,6 +162,7 @@ class CartItemCoupon extends React.PureComponent {
    * @returns {JSX.Element}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const { coupon, currency, messages } = this.props;
     const { visible } = this.state;
     const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
@@ -152,7 +177,7 @@ class CartItemCoupon extends React.PureComponent {
             style={getTransitionStyle(state)}
           >
             <div
-              className={container}
+              className={classes.container}
               ref={(el) => { this.cardElement = el; }}
             >
               <CardList.Item>
@@ -176,4 +201,8 @@ class CartItemCoupon extends React.PureComponent {
   }
 }
 
-export default connect(CartItemCoupon);
+export default connect(withStyles(CartItemCoupon, () => ({
+  container: {
+    marginBottom: 4,
+  },
+})));

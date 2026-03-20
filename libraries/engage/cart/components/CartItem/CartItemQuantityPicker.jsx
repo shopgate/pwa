@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import QuantityInput from '@shopgate/engage/components/QuantityInput';
-import { inputStyle } from './CartItemQuantityPicker.style';
+
+const { colors, variables } = themeConfig;
 
 /**
  * @typedef {Object} Props
@@ -139,6 +142,7 @@ export class CartItemQuantityPicker extends React.Component {
    * @return {JSX.Element}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const { unit, hasCatchWeight } = this.props;
     const hasCustomUnit = (unit && hasCatchWeight) || false;
 
@@ -146,7 +150,7 @@ export class CartItemQuantityPicker extends React.Component {
       <form onSubmit={this.handleSubmitForm} className="theme__cart__product__quantity-picker">
         <QuantityInput
           ref={this.input}
-          className={inputStyle.toString()}
+          className={classes.inputStyle}
           value={this.props.quantity}
           onClick={this.handleInputClick}
           onFocus={this.handleInputFocus}
@@ -161,3 +165,18 @@ export class CartItemQuantityPicker extends React.Component {
     );
   }
 }
+
+export default withStyles(CartItemQuantityPicker, () => ({
+  inputStyle: {
+    border: 'none',
+    background: colors.placeholder,
+    display: 'block',
+    fontSize: '0.75rem',
+    lineHeight: 1,
+    textAlign: 'center',
+    padding: `${variables.gap.small * 0.75}px ${variables.gap.small}px`,
+    outline: 0,
+    width: '100%',
+    borderRadius: 4,
+  },
+}));

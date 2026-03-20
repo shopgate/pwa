@@ -1,4 +1,4 @@
-import React, { Fragment, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n, generateGoogleMapsDirectionsUrl } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
