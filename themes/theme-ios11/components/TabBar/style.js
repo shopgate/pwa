@@ -1,10 +1,11 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
 import { isAndroidOs } from '@shopgate/engage/core/helpers';
+import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
 
 const { colors, shadows, variables } = themeConfig;
 
-css.global(':root', {
+insertGlobalRule(':root', {
   '--tab-bar-background': colors.lightOverlay,
   '--tab-bar-box-shadow': shadows.tabBar,
   '--tab-bar-min-height': `${variables.tabBar.height}px`,

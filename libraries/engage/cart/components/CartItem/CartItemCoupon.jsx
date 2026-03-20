@@ -6,15 +6,12 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart';
 import { getPageSettings } from '@shopgate/engage/core/config';
 import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { MessageBar, CardList } from '@shopgate/engage/components';
-import {
-  messagesContainerCard,
-  messagesCard,
-  messagesContainerLine,
-  messagesLine,
-} from './CartItem.style';
 import connect from './CartItemCoupon.connector';
 import { CartItemCouponLayout } from './CartItemCouponLayout';
+
+const { colors, variables } = themeConfig;
 
 const duration = 300;
 
@@ -55,17 +52,6 @@ const getTransitionStyle = state => ({
  * @typedef {Object} State
  * @property {boolean} visible Whether the coupon is visible.
  */
-
-const messageStyles = {
-  card: {
-    container: messagesContainerCard,
-    message: messagesCard,
-  },
-  line: {
-    container: messagesContainerLine,
-    message: messagesLine,
-  },
-};
 
 /**
  * The Coupon component.
@@ -166,7 +152,16 @@ class CartItemCoupon extends React.PureComponent {
     const { coupon, currency, messages } = this.props;
     const { visible } = this.state;
     const { cartItemsDisplay = 'line' } = getPageSettings(CART_PATH);
-    const messageStyle = messageStyles[cartItemsDisplay];
+    const messageStyle = {
+      card: {
+        container: classes.messagesContainerCard,
+        message: classes.messagesCard,
+      },
+      line: {
+        container: classes.messagesContainerLine,
+        message: classes.messagesLine,
+      },
+    }[cartItemsDisplay];
 
     return (
       <Transition in={visible} timeout={duration} onExited={this.deleteCoupon}>
@@ -204,5 +199,22 @@ class CartItemCoupon extends React.PureComponent {
 export default connect(withStyles(CartItemCoupon, () => ({
   container: {
     marginBottom: 4,
+  },
+  messagesContainerCard: {
+    background: colors.light,
+    padding: `0 0 ${variables.gap.big}px 0`,
+  },
+  messagesCard: {
+    borderRadius: '5px 5px 0 0',
+    padding: `${variables.gap.small}px ${variables.gap.big * 0.875}px`,
+  },
+  messagesContainerLine: {
+    background: colors.light,
+    padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
+  },
+  messagesLine: {
+    borderRadius: 4,
+    padding: `${variables.gap.big / 2}px ${variables.gap.big}px`,
+    lineHeight: 1.125,
   },
 })));

@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   TextLink,
   ProductProperties,
@@ -25,30 +27,130 @@ import { CartItemProductLayoutWideFulfillmentLabel } from './CartItemProductLayo
 import CartItemProductLayoutWideOrderDetails from './CartItemProductLayoutWideOrderDetails';
 import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
-import {
-  container,
-  containerInactive,
-  imageColumn,
-  detailsColumn,
-  priceColumnWide,
-  productName,
-  productProperties,
-  column,
-  quantityPicker,
-  quantityPickerDisabled,
-  price,
-  priceInfo,
-  priceListEntry,
-  priceListPromo,
-  contextMenu,
-  messageContainer,
-  messageContainerRope,
-} from './CartItemProductLayoutWide.style';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()((_theme, _params, classes) => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: variables.gap.big,
+  },
+  imageColumn: {
+    width: 120,
+    height: 120,
+    marginRight: variables.gap.small,
+    flexShrink: 0,
+    flexGrow: 0,
+  },
+  column: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexShrink: 1,
+    flexGrow: 1,
+    flexBasis: 0,
+    padding: `0 ${variables.gap.small}px`,
+    ':last-child': {
+      paddingRight: 0,
+    },
+  },
+  detailsColumn: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    flexDirection: 'column',
+    flexShrink: 1,
+    flexGrow: 3,
+    flexBasis: 0,
+    padding: `0 ${variables.gap.small}px`,
+    ':last-child': {
+      paddingRight: 0,
+    },
+  },
+  priceColumnWide: {
+    display: 'flex',
+    alignItems: 'flex-end',
+    flexDirection: 'column',
+    flexShrink: 1,
+    flexGrow: 4,
+    flexBasis: 0,
+    padding: `0 ${variables.gap.small}px`,
+    ':last-child': {
+      paddingRight: 0,
+    },
+  },
+  productName: {
+    fontSize: '1.25rem',
+    lineHeight: '1.5rem',
+    fontWeight: 500,
+    wordBreak: ['keep-all', 'break-word'],
+    hyphens: 'auto',
+  },
+  productProperties: {
+    paddingTop: variables.gap.small,
+    color: 'var(--color-text-low-emphasis)',
+    fontSize: '1rem',
+  },
+  quantityPicker: {
+    width: 140,
+  },
+  quantityPickerDisabled: {
+    padding: `0 ${variables.gap.small}px`,
+    textAlign: 'center',
+    fontSize: '1.25rem',
+    lineHeight: '1.625rem',
+    height: 28,
+    width: '100%',
+    fontWeight: 500,
+    color: 'var(--color-text-high-emphasis)',
+    whiteSpace: 'nowrap',
+  },
+  containerInactive: {
+    color: 'var(--color-text-low-emphasis)',
+    [` .${classes.quantityPickerDisabled}`]: {
+      color: 'var(--color-text-low-emphasis)',
+    },
+    [` .${classes.imageColumn}`]: {
+      opacity: 0.7,
+    },
+  },
+  price: {
+    fontSize: '1.25rem !important',
+    lineHeight: '1.625rem  !important',
+  },
+  priceListEntry: {
+    flexDirection: 'column-reverse !important',
+  },
+  priceListPromo: {
+    paddingRight: 0,
+    alignSelf: 'flex-end',
+  },
+  priceInfo: {
+    wordBreak: 'break-word',
+    fontSize: '0.75rem',
+    lineHeight: '0.875rem',
+    color: 'var(--color-text-low-emphasis)',
+    padding: `${variables.gap.xsmall}px 0`,
+  },
+  contextMenu: {
+    marginTop: `-${variables.gap.xsmall * 3}px`,
+    marginRight: `-${variables.gap.big}px`,
+  },
+  messageContainer: {
+    marginTop: 0,
+  },
+  messageContainerRope: {
+    marginTop: 0,
+    marginBottom: 0,
+  },
+}));
 
 /**
  * @returns {JSX}
  */
 const CartItemProductLayoutWide = () => {
+  const { classes } = useStyles();
   const {
     merchantFulfillmentMethodsCount, isOrderDetails, cartHasLineItemPromotions,
   } = useCartItem();
@@ -71,14 +173,14 @@ const CartItemProductLayoutWide = () => {
 
   return (
     <>
-      <div className={classNames(container, {
-        [containerInactive]: !isActive,
+      <div className={classNames(classes.container, {
+        [classes.containerInactive]: !isActive,
       })}
       >
-        <div className={imageColumn}>
+        <div className={classes.imageColumn}>
           <ProductImage src={product.featuredImageBaseUrl || product.featuredImageUrl} />
         </div>
-        <div className={detailsColumn}>
+        <div className={classes.detailsColumn}>
           <ConditionalWrapper
             condition={isEditable && isLinkable}
             wrapper={children =>
@@ -88,7 +190,7 @@ const CartItemProductLayoutWide = () => {
           >
             <ProductName
               name={product.name}
-              className={productName}
+              className={classes.productName}
               portalName={CART_ITEM_NAME}
               portalProps={context}
               testId={product.name}
@@ -96,7 +198,7 @@ const CartItemProductLayoutWide = () => {
           </ConditionalWrapper>
 
           <ProductProperties
-            className={productProperties}
+            className={classes.productProperties}
             properties={product.properties}
             lineClamp={2}
           />
@@ -104,23 +206,23 @@ const CartItemProductLayoutWide = () => {
             <CartItemProductLayoutWideFulfillmentLabel />
           )}
         </div>
-        <div className={cartHasLineItemPromotions ? priceColumnWide : column}>
+        <div className={cartHasLineItemPromotions ? classes.priceColumnWide : classes.column}>
           <CartItemProductPriceList
             cartItem={cartItem}
             classes={{
-              price,
-              priceStriked: price,
-              entry: priceListEntry,
-              promo: priceListPromo,
+              price: classes.price,
+              priceStriked: classes.price,
+              entry: classes.priceListEntry,
+              promo: classes.priceListPromo,
             }}
           />
-          <PriceInfo product={product} currency={currency} className={priceInfo} />
+          <PriceInfo product={product} currency={currency} className={classes.priceInfo} />
           <CartItemProductPriceCaption />
         </div>
         { isOrderDetails && (
           <CartItemProductLayoutWideOrderDetails />
         )}
-        <div className={column}>
+        <div className={classes.column}>
           { isEditable && allowQuantityChange ? (
             <SurroundPortals
               portalName={CART_ITEM_QUANTITY_PICKER}
@@ -139,14 +241,14 @@ const CartItemProductLayoutWide = () => {
                 hasCatchWeight={product.hasCatchWeight}
                 onChange={handleUpdate}
                 classNames={{
-                  withDecimals: quantityPicker,
-                  withoutDecimals: quantityPicker,
+                  withDecimals: classes.quantityPicker,
+                  withoutDecimals: classes.quantityPicker,
                 }}
               />
             </SurroundPortals>
           ) : (
             <QuantityLabel
-              className={quantityPickerDisabled}
+              className={classes.quantityPickerDisabled}
               value={isOrderDetails ? cartItem.orderedQuantity : cartItem.quantity}
               unit={hasUnitWithDecimals ? product.unit : null}
               maxDecimals={hasUnitWithDecimals ? 2 : 0}
@@ -156,21 +258,21 @@ const CartItemProductLayoutWide = () => {
             <CartItemProductLayoutWideRemoveItem />
           )}
         </div>
-        <div className={column}>
+        <div className={classes.column}>
           <CartItemProductPriceList
             isSubtotal
             cartItem={cartItem}
             classes={{
-              price,
-              priceStriked: price,
-              entry: priceListEntry,
-              promo: priceListPromo,
+              price: classes.price,
+              priceStriked: classes.price,
+              entry: classes.priceListEntry,
+              promo: classes.priceListPromo,
             }}
           />
           <CartItemProductPriceCaption />
         </div>
         { isEditable && merchantFulfillmentMethodsCount > 1 && (
-          <div className={contextMenu}>
+          <div className={classes.contextMenu}>
             <CartContextMenuChangeFulfillment cartItem={cartItem} />
           </div>
         )}
@@ -180,7 +282,9 @@ const CartItemProductLayoutWide = () => {
           messages={messages}
           showIcons
           classNames={{
-            container: cartItem.fulfillment ? messageContainerRope : messageContainer,
+            container: cartItem.fulfillment
+              ? classes.messageContainerRope
+              : classes.messageContainer,
           }}
         />
       )}

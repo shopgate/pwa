@@ -1,30 +1,30 @@
-import { css } from 'glamor';
 import { rem } from '@shopgate/pwa-common/helpers/style';
+import { insertGlobalRule } from '../utils/globalStyles';
 
-css.global('a', {
+insertGlobalRule('a', {
   color: 'inherit',
   textDecoration: 'none',
   WebkitTextDecorationSkip: 'objects',
 });
 
-css.global('a:hover, a:focus, a:active, [tabindex]', {
+insertGlobalRule('a:hover, a:focus, a:active, [tabindex]', {
   outline: 0,
 });
 
-css.global('ol, ul', {
+insertGlobalRule('ol, ul', {
   listStyle: 'none',
   margin: 0,
   paddingLeft: 0,
 });
 
-css.global('b, strong', {
+insertGlobalRule('b, strong', {
   fontWeight: 700,
 });
 
-css.global('small', {
+insertGlobalRule('small', {
   fontSize: rem(13),
 });
 
-css.global('sub, sup', {
+insertGlobalRule('sub, sup', {
   lineHeight: 0,
 });

@@ -11,50 +11,54 @@ import connect from './connector';
 import cookieImage from './tracking-opt-in.svg';
 import { svgToDataUrl } from '../../../core';
 
-const useStyles = makeStyles()(theme => ({
-  modalContent: {
-    width: '100%',
-  },
-  modalLayout: {
-    backgroundColor: theme.colors.lightOverlay,
-  },
-  container: {
-    backgroundColor: theme.colors.lightOverlay,
-    padding: '30px',
-    justifyContent: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: 'center',
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: '1.35rem',
-    paddingTop: '30px',
-    paddingBottom: '30px',
-  },
-  item: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  link: {
-    color: 'var(--color-secondary)',
-    textDecoration: 'underline',
-  },
-  image: {
-    width: '60%',
-    maxWidth: 400,
-  },
-  button: {
-    marginTop: '20px',
-  },
-  buttonWrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: '30px',
-    width: '100%',
-  },
-}));
+const useStyles = makeStyles()((theme) => {
+  const overlayColor = theme?.colors?.lightOverlay || 'var(--color-background)';
+
+  return ({
+    modalContent: {
+      width: '100%',
+    },
+    modalLayout: {
+      backgroundColor: overlayColor,
+    },
+    container: {
+      backgroundColor: overlayColor,
+      padding: '30px',
+      justifyContent: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      textAlign: 'center',
+    },
+    title: {
+      fontWeight: 'bold',
+      fontSize: '1.35rem',
+      paddingTop: '30px',
+      paddingBottom: '30px',
+    },
+    item: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    link: {
+      color: 'var(--color-secondary)',
+      textDecoration: 'underline',
+    },
+    image: {
+      width: '60%',
+      maxWidth: 400,
+    },
+    button: {
+      marginTop: '20px',
+    },
+    buttonWrapper: {
+      display: 'flex',
+      flexDirection: 'column',
+      marginBottom: '30px',
+      width: '100%',
+    },
+  });
+});
 
 /**
  * The cookie consent modal component.

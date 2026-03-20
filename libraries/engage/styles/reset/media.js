@@ -1,25 +1,25 @@
-import { css } from 'glamor';
+import { insertGlobalRule } from '../utils/globalStyles';
 
-css.global('audio:not([controls])', {
+insertGlobalRule('audio:not([controls])', {
   display: 'none',
   height: 0,
 });
 
-css.global('figure', {
+insertGlobalRule('figure', {
   margin: 0,
 });
 
-css.global('iframe', {
+insertGlobalRule('iframe', {
   border: 0,
   display: 'block',
   width: '100%',
 });
 
-css.global('img, svg', {
+insertGlobalRule('img, svg', {
   display: 'block',
   maxWidth: '100%',
 });
 
-css.global('progress', {
+insertGlobalRule('progress', {
   verticalAlign: 'baseline',
 });

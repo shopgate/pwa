@@ -11,43 +11,48 @@ import pushImage from './push-opt-in.svg';
 import connect from './connector';
 import { svgToDataUrl } from '../../../core';
 
-const useStyles = makeStyles()(theme => ({
-  modalContent: {
-    width: '100%',
-  },
-  modalLayout: {
-    backgroundColor: theme.colors.lightOverlay,
-  },
-  container: {
-    backgroundColor: theme.colors.lightOverlay,
-    textAlign: 'center',
-    padding: '30px',
-    justifyContent: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: '1.35rem',
-    paddingTop: '30px',
-    paddingBottom: '30px',
-  },
-  item: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  image: {
-    width: '80%',
-    maxWidth: 400,
-  },
-  button: {
-    marginTop: '30px',
-  },
-  buttonText: {
-    color: theme.colors.gray,
-  },
-}));
+const useStyles = makeStyles()((theme) => {
+  const overlayColor = theme?.colors?.lightOverlay || 'var(--color-background)';
+  const secondaryTextColor = theme?.colors?.gray || 'var(--color-text-low-emphasis)';
+
+  return ({
+    modalContent: {
+      width: '100%',
+    },
+    modalLayout: {
+      backgroundColor: overlayColor,
+    },
+    container: {
+      backgroundColor: overlayColor,
+      textAlign: 'center',
+      padding: '30px',
+      justifyContent: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+    },
+    title: {
+      fontWeight: 'bold',
+      fontSize: '1.35rem',
+      paddingTop: '30px',
+      paddingBottom: '30px',
+    },
+    item: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    image: {
+      width: '80%',
+      maxWidth: 400,
+    },
+    button: {
+      marginTop: '30px',
+    },
+    buttonText: {
+      color: secondaryTextColor,
+    },
+  });
+});
 
 /**
  * The Push opt-in modal component.

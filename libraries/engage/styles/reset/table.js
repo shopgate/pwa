@@ -1,10 +1,10 @@
-import { css } from 'glamor';
+import { insertGlobalRule } from '../utils/globalStyles';
 
-css.global('table', {
+insertGlobalRule('table', {
   borderCollapse: 'collapse',
   minWidth: '100%',
 });
 
-css.global('td, th', {
+insertGlobalRule('td, th', {
   verticalAlign: 'top',
 });

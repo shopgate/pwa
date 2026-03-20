@@ -1,33 +1,33 @@
-import { css } from 'glamor';
 import {
   useScrollContainer,
   hasWebBridge,
   isIOSTheme,
 } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/engage';
+import { insertGlobalRaw, insertGlobalRule } from '../utils/globalStyles';
 
 const { typography } = themeConfig;
 const iosThemeActive = isIOSTheme();
 
-css.global('*, *:before, *:after', {
+insertGlobalRule('*, *:before, *:after', {
   boxSizing: 'border-box',
 });
 
-css.global('*', {
+insertGlobalRule('*', {
   touchAction: 'manipulation',
 });
 
-css.global('::-moz-focus-inner', {
+insertGlobalRule('::-moz-focus-inner', {
   border: 0,
 });
 
-css.global('html, body', {
+insertGlobalRule('html, body', {
   WebkitTapHighlightColor: 'transparent',
   width: '100%',
   height: '100%',
 });
 
-css.global('html', {
+insertGlobalRule('html', {
   overflow: useScrollContainer() ? 'hidden' : 'inherit',
   MozOsxFontSmoothing: 'grayscale',
   WebkitFontSmoothing: 'antialiased',
@@ -41,7 +41,7 @@ const fontSuffix = iosThemeActive && !(typography.family || '').includes('Roboto
   ? ', Roboto'
   : '';
 
-css.global('body', {
+insertGlobalRule('body', {
   font: `${typography.rootSize}px/${typography.lineHeight} ${typography.family}${fontSuffix}`,
   overflow: 'auto',
   margin: 0,
@@ -51,16 +51,16 @@ css.global('body', {
   color: 'var(--color-text-high-emphasis)',
 });
 
-css.global('[data-pattern]', {
+insertGlobalRule('[data-pattern]', {
   height: '100% !important',
 });
 
-css.global('html, body', {
+insertGlobalRule('html, body', {
   backgroundColor: 'var(--page-background-color)',
 });
 
 if (hasWebBridge() && !iosThemeActive) {
-  css.insert(`@media(min-width: 600px) {
+  insertGlobalRaw(`@media(min-width: 600px) {
     html, body {
       background-color: var(--color-background-gutter-body, var(--page-background-color))
     }
@@ -68,6 +68,6 @@ if (hasWebBridge() && !iosThemeActive) {
 }
 
 // since iOS 15 button has a default color of blue rgb(0, 122, 255);
-css.global('button', {
+insertGlobalRule('button', {
   color: 'inherit',
 });

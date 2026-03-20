@@ -1,7 +1,7 @@
-import { css } from 'glamor';
+import { insertGlobalRule } from '../styles/utils/globalStyles';
 
 // global class for screen readers only, visually hidden
-css.global('.sr-only', {
+insertGlobalRule('.sr-only', {
   border: '0',
   clip: 'rect(0 0 0 0)',
   height: '1px',

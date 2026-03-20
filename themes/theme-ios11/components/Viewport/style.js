@@ -1,11 +1,12 @@
 import { css } from 'glamor';
 import { useScrollContainer, hasWebBridge } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
 
 const { colors } = themeConfig;
 const defaultBackgroundColor = colors.light;
 
-css.global('html', {
+insertGlobalRule('html', {
   '--page-background-color': defaultBackgroundColor,
   '--tabbar-height': '0px',
   '--app-bar-height': '0px',

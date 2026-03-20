@@ -2,22 +2,22 @@
  * @deprecated used @shopgate/engage/styles instead
  */
 
-import { css } from 'glamor';
+import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
 import { themeConfig } from '../../helpers/config';
 
 const { typography } = themeConfig;
 
-css.global('*, *:before, *:after', {
+insertGlobalRule('*, *:before, *:after', {
   boxSizing: 'border-box',
 });
 
-css.global('html, body', {
+insertGlobalRule('html, body', {
   WebkitTapHighlightColor: 'transparent',
   width: '100%',
   height: '100%',
 });
 
-css.global('html', {
+insertGlobalRule('html', {
   overflow: 'hidden',
   MozOsxFontSmoothing: 'grayscale',
   WebkitFontSmoothing: 'antialiased',
@@ -26,7 +26,7 @@ css.global('html', {
   minHeight: '100%',
 });
 
-css.global('body', {
+insertGlobalRule('body', {
   font: `${typography.rootSize}px/${typography.lineHeight} ${typography.family}`,
   overflow: 'auto',
   margin: 0,
@@ -34,6 +34,6 @@ css.global('body', {
   WebkitUserSelect: 'none',
 });
 
-css.global('[data-pattern]', {
+insertGlobalRule('[data-pattern]', {
   height: '100% !important',
 });

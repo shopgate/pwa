@@ -2,17 +2,17 @@
  * @deprecated used @shopgate/engage/styles instead
  */
 
-import { css } from 'glamor';
+import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
 
 /**
  * 1. Correct the inability to style clickable types in iOS and Safari.
  */
-css.global('button, html [type="button"], [type="reset"], [type="submit"]', {
+insertGlobalRule('button, html [type="button"], [type="reset"], [type="submit"]', {
   WebkitAppearance: 'button',
 });
 
 // since iOS 15 button has a default color of blue rgb(0, 122, 255);
-css.global('button', {
+insertGlobalRule('button', {
   color: 'inherit',
 });
 
@@ -20,7 +20,7 @@ css.global('button', {
  * 1. Change font properties to `inherit` in Safari.
  * 2. Correct the inability to style clickable types in iOS and Safari.
  */
-css.global('::-webkit-file-upload-button', {
+insertGlobalRule('::-webkit-file-upload-button', {
   font: 'inherit',
   WebkitAppearance: 'button',
 });
@@ -28,44 +28,44 @@ css.global('::-webkit-file-upload-button', {
 /**
  * Remove the inner padding and cancel buttons in Chrome and Safari for OS X.
  */
-css.global('::-webkit-search-cancel-button, ::-webkit-search-decoration', {
+insertGlobalRule('::-webkit-search-cancel-button, ::-webkit-search-decoration', {
   WebkitAppearance: 'none',
 });
 
-css.global('button, input, select, textarea', {
+insertGlobalRule('button, input, select, textarea', {
   background: 'transparent',
   border: 0,
   fontSize: '1em',
   margin: 0,
 });
 
-css.global('input, select, textarea', {
+insertGlobalRule('input, select, textarea', {
   fontFamily: 'inherit',
 });
 
-css.global('button, textarea', {
+insertGlobalRule('button, textarea', {
   fontFamily: 'inherit',
   lineHeight: 'inherit',
 });
 
-css.global('button', {
+insertGlobalRule('button', {
   borderRadius: 0,
 });
 
-css.global('button, label, [type="checkbox"], [type="radio"]', {
+insertGlobalRule('button, label, [type="checkbox"], [type="radio"]', {
   cursor: 'pointer',
 });
 
-css.global('label', {
+insertGlobalRule('label', {
   display: 'inline-block',
 });
 
-css.global('textarea', {
+insertGlobalRule('textarea', {
   minHeight: '5em',
   maxWidth: '100%',
   resize: 'none',
 });
 
-css.global('[type="search"]', {
+insertGlobalRule('[type="search"]', {
   WebkitAppearance: 'textfield',
 });
