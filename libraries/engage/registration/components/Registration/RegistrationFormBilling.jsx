@@ -1,11 +1,26 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormBuilder } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { StylePresets } from '@shopgate/engage/components/Form';
 import { useRegistration } from '../../hooks';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { ELEMENT_ID_BILLING_CONTACT } from '../../constants';
 import generateFormConfig from './RegistrationFormBilling.config';
-import { form, section } from './RegistrationContent.style';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  form: {
+    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ' .registrationOptInMarketingOptIn': {
+      paddingTop: 0,
+      paddingBottom: variables.gap.big,
+    },
+  },
+  section: {},
+});
 
 /**
  * The RegistrationFormBilling component.
@@ -13,6 +28,7 @@ import { form, section } from './RegistrationContent.style';
  * @returns {JSX.Element}
  */
 const RegistrationFormBilling = ({ isGuest }) => {
+  const { classes } = useStyles();
   const {
     supportedCountries,
     countrySortOrder,
@@ -61,9 +77,9 @@ const RegistrationFormBilling = ({ isGuest }) => {
   }
 
   return (
-    <Section title={title} className={section} hasForm id={ELEMENT_ID_BILLING_CONTACT}>
+    <Section title={title} className={classes.section} hasForm id={ELEMENT_ID_BILLING_CONTACT}>
       <FormBuilder
-        className={form}
+        className={classes.form}
         name="RegistrationBilling"
         config={formConfig}
         defaults={defaultBillingFormState}

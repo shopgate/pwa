@@ -1,9 +1,27 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n, isIOSTheme } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { RippleButton } from '@shopgate/engage/components';
 import { useRegistration } from '../../hooks';
-import { submitButton, submitButtonContainer } from './RegistrationContent.style';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  submitButtonContainer: {
+    margin: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+    ...(!isIOSTheme() ? {
+      '@media(min-width: 768px)': {
+        width: `calc(50% - ${variables.gap.big}px)`,
+      },
+    } : null),
+  },
+  submitButton: {
+    width: '100%',
+    marginTop: 8,
+  },
+});
 
 /**
  * PickupContactForm
@@ -11,6 +29,7 @@ import { submitButton, submitButtonContainer } from './RegistrationContent.style
  * @returns {JSX}
  */
 const RegisterFormActions = ({ isGuest }) => {
+  const { classes } = useStyles();
   const {
     handleSubmit,
     isLocked,
@@ -33,12 +52,12 @@ const RegisterFormActions = ({ isGuest }) => {
   }, [guestRegistrationEditMode, isGuest, orderNeedsPayment]);
 
   return (
-    <div className={submitButtonContainer}>
+    <div className={classes.submitButtonContainer}>
       <RippleButton
         type="secondary"
         onClick={handleSubmit}
         disabled={isLocked}
-        className={submitButton}
+        className={classes.submitButton}
       >
         {i18n.text(label)}
       </RippleButton>

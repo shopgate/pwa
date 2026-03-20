@@ -1,5 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { FulfillmentContext } from '../../locations.context';
 import {
   STAGE_SELECT_STORE,
@@ -13,7 +15,17 @@ import { StoreList } from '../StoreList';
 import { ReserveForm } from '../ReserveForm';
 import { ReservationSuccess, ReservationError } from '../ReservationResponses';
 import { FulfillmentPath } from '../FulfillmentPath';
-import { sheet } from './FulfillmentSheet.style';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  sheet: {
+    maxHeight: `calc(var(--vh-100, 100vh) - ${variables.navigator.height}px)`,
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      maxHeight: `calc(var(--vh-80, 80vh) - ${variables.navigator.height}px)`,
+    },
+  },
+});
 
 /**
  * Renders the content of the fulfillment sheet.
@@ -22,6 +34,7 @@ import { sheet } from './FulfillmentSheet.style';
  * @return {JSX.Element}
  */
 export const FulfillmentSheetContent = ({ allowClose = true }) => {
+  const { classes } = useStyles();
   const {
     isStage, title, isOpen, handleClose, isLoading,
   } = React.useContext(FulfillmentContext);
@@ -34,7 +47,7 @@ export const FulfillmentSheetContent = ({ allowClose = true }) => {
       allowClose={allowClose}
       isLoading={isLoading}
     >
-      <div className={sheet}>
+      <div className={classes.sheet}>
         {isStage(STAGE_SELECT_STORE) && (
           <StoreList />
         )}

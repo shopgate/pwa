@@ -1,7 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { Link, I18n } from '@shopgate/engage/components';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  hiddenNavigation: {
+    clip: 'rect(1px, 1px, 1px, 1px)',
+    height: '1px',
+    margin: 0,
+    overflow: 'hidden',
+    padding: 0,
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    width: '1px',
+    zIndex: -1000,
+  },
+});
 
 /**
  * @param {Object} props component props.
@@ -11,6 +25,7 @@ import styles from './style';
  * @returns {JSX}
  */
 const Navigation = ({ title, entries }, context) => {
+  const { classes } = useStyles();
   const { __ } = context.i18n();
   if (!entries || !entries.length) {
     return null;
@@ -18,7 +33,7 @@ const Navigation = ({ title, entries }, context) => {
 
   return (
     <nav aria-label={title ? __(title) : null}>
-      <ul className={styles}>
+      <ul className={classes.hiddenNavigation}>
         {entries.map(({ title: entryTitle, link }) => (
           <li key={link}>
             <Link href={link}>

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -10,7 +12,21 @@ import { i18n } from '@shopgate/engage/core';
 import { getShowAllProductsFilters } from '@shopgate/engage/category';
 import { SheetList, TextLink } from '@shopgate/engage/components';
 import CategoryImage from '../CategoryImage';
-import styles from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  sheet: {
+    background: colors.light,
+  },
+  showAllProducts: {
+    fontWeight: 700,
+  },
+  image: {
+    width: '30px',
+    marginRight: 8,
+  },
+});
 
 /**
  * The CategoryList component.
@@ -31,13 +47,14 @@ const CategoryList = ({
   showImages,
   showLeftSideImages,
 }) => {
+  const { classes } = useStyles();
   if (!categories || !categories.length) {
     if (prerender === 0) {
       return null;
     }
 
     return (
-      <SheetList className={classNames(styles.sheet, 'engage__category__category-list')}>
+      <SheetList className={classNames(classes.sheet, 'engage__category__category-list')}>
         {Array(Math.min(prerender, 8)).fill('').map((val, index) => {
           const key = `placeholder-${index}`;
           return <Placeholder height={20} key={key} left={0} top={18} width={220} />;
@@ -49,9 +66,9 @@ const CategoryList = ({
   const filters = getShowAllProductsFilters(parentCategory);
 
   return (
-    <SheetList className={classNames(styles.sheet, 'engage__category__category-list')}>
+    <SheetList className={classNames(classes.sheet, 'engage__category__category-list')}>
       {showAllProducts ?
-        <div className={classNames(styles.showAllProducts, 'engage__category__category-show-all-products')}>
+        <div className={classNames(classes.showAllProducts, 'engage__category__category-show-all-products')}>
           <Portal
             key={parentCategory.id}
             name="category.show-all-products"
@@ -85,12 +102,12 @@ const CategoryList = ({
             testId={category.name}
             rightComponent={
                 showImages
-                  ? <CategoryImage className={styles.image} src={category.imageUrl} />
+                  ? <CategoryImage className={classes.image} src={category.imageUrl} />
                   : null
               }
             leftComponent={
                 showLeftSideImages
-                  ? <CategoryImage className={styles.image} src={category.imageUrl} />
+                  ? <CategoryImage className={classes.image} src={category.imageUrl} />
                   : null
               }
             linkComponent={TextLink}
