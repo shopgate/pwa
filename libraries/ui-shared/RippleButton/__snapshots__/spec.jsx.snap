@@ -1,244 +1,459 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
-<RippleButton
+<RippleButtonWithStyles
   className=""
   disabled={true}
   flat={false}
-  onClick={null}
   rippleClassName=""
   rippleSize={null}
   testId="Button"
   type="primary"
   wrapContent={true}
 >
-  <Button
-    className=" ui-shared__ripple-button"
+  <RippleButton
+    className=""
+    classes={
+      {
+        "contentWrapper": "css-p1t6ie-RippleButton-contentWrapper",
+      }
+    }
     disabled={true}
     flat={false}
-    onClick={null}
+    rippleClassName=""
+    rippleSize={null}
     testId="Button"
     type="primary"
     wrapContent={true}
   >
-    <Button
-      className="ui-shared__button css-10t88aj  ui-shared__ripple-button"
+    <ButtonWithStyles
+      className=" ui-shared__ripple-button"
       disabled={true}
-      onClick={null}
+      flat={false}
       testId="Button"
+      type="primary"
+      wrapContent={true}
     >
-      <button
-        className="ui-shared__button css-10t88aj  ui-shared__ripple-button css-1rn65c0 common__button"
-        data-test-id="Button"
+      <Button
+        className=" ui-shared__ripple-button"
+        classes={
+          {
+            "button": "css-uy2be8-Button-button",
+            "content": "css-8oymua-Button-content",
+            "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+          }
+        }
         disabled={true}
-        onClick={null}
+        flat={false}
+        testId="Button"
+        type="primary"
+        wrapContent={true}
       >
-        <div
-          className="css-kwqjom"
+        <ButtonWithStyles
+          className="ui-shared__button css-uy2be8-Button-button  ui-shared__ripple-button"
+          classes={
+            {
+              "button": "css-uy2be8-Button-button",
+              "content": "css-8oymua-Button-content",
+              "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+            }
+          }
+          disabled={true}
+          testId="Button"
         >
-          Press me
-        </div>
-      </button>
-    </Button>
-  </Button>
-</RippleButton>
+          <Button
+            className="ui-shared__button css-uy2be8-Button-button  ui-shared__ripple-button"
+            classes={
+              {
+                "button": "css-uy2be8-Button-button",
+                "content": "css-8oymua-Button-content",
+                "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+                "root": "css-18hbw04-Button-root",
+              }
+            }
+            disabled={true}
+            onClick={null}
+            testId="Button"
+          >
+            <button
+              className="ui-shared__button css-uy2be8-Button-button  ui-shared__ripple-button ui-shared__button ui-shared__ripple-button css-16lne2g-Button-root-Button-button common__button"
+              classes={
+                {
+                  "button": "css-uy2be8-Button-button",
+                  "content": "css-8oymua-Button-content",
+                  "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+                  "root": "css-18hbw04-Button-root",
+                }
+              }
+              data-test-id="Button"
+              disabled={true}
+              onClick={null}
+            >
+              <div
+                className="css-8oymua-Button-content"
+              >
+                Press me
+              </div>
+            </button>
+          </Button>
+        </ButtonWithStyles>
+      </Button>
+    </ButtonWithStyles>
+  </RippleButton>
+</RippleButtonWithStyles>
 `;
 
 exports[`<RippleButton /> should render as a primary ripple button 1`] = `
-<RippleButton
+<RippleButtonWithStyles
   className=""
-  disabled={false}
   flat={false}
-  onClick={null}
   rippleClassName=""
   rippleSize={null}
   testId="Button"
   type="primary"
   wrapContent={true}
 >
-  <Button
-    className=" ui-shared__ripple-button"
-    disabled={false}
+  <RippleButton
+    className=""
+    classes={
+      {
+        "contentWrapper": "css-p1t6ie-RippleButton-contentWrapper",
+      }
+    }
     flat={false}
-    onClick={null}
+    rippleClassName=""
+    rippleSize={null}
     testId="Button"
     type="primary"
-    wrapContent={false}
+    wrapContent={true}
   >
-    <Button
-      className="ui-shared__button css-cifbew  ui-shared__ripple-button"
-      disabled={false}
-      onClick={null}
+    <ButtonWithStyles
+      className=" ui-shared__ripple-button"
+      flat={false}
       testId="Button"
+      type="primary"
+      wrapContent={false}
     >
-      <button
-        className="ui-shared__button css-cifbew  ui-shared__ripple-button css-1rn65c0 common__button"
-        data-test-id="Button"
-        disabled={false}
-        onClick={null}
+      <Button
+        className=" ui-shared__ripple-button"
+        classes={
+          {
+            "button": "css-16ta6rw-Button-button",
+            "content": "css-xq2oa7-Button-content",
+            "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+          }
+        }
+        flat={false}
+        testId="Button"
+        type="primary"
+        wrapContent={false}
       >
-        <Ripple
-          className="css-1fscwua "
-          color="#000"
-          disabled={false}
-          fill={true}
-          onClick={[Function]}
-          onComplete={[Function]}
-          overflow={true}
-          size={null}
+        <ButtonWithStyles
+          className="ui-shared__button css-16ta6rw-Button-button  ui-shared__ripple-button"
+          classes={
+            {
+              "button": "css-16ta6rw-Button-button",
+              "content": "css-xq2oa7-Button-content",
+              "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+            }
+          }
+          testId="Button"
         >
-          <div
-            className="ui-shared__ripple css-1fscwua "
-            data-test-id="Ripple"
-            onClick={[Function]}
-            style={null}
+          <Button
+            className="ui-shared__button css-16ta6rw-Button-button  ui-shared__ripple-button"
+            classes={
+              {
+                "button": "css-16ta6rw-Button-button",
+                "content": "css-xq2oa7-Button-content",
+                "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+                "root": "css-18hbw04-Button-root",
+              }
+            }
+            disabled={false}
+            onClick={null}
+            testId="Button"
           >
-            Press me
-          </div>
-        </Ripple>
-      </button>
-    </Button>
-  </Button>
-</RippleButton>
+            <button
+              className="ui-shared__button css-16ta6rw-Button-button  ui-shared__ripple-button ui-shared__button ui-shared__ripple-button css-1a2wu6i-Button-root-Button-button common__button"
+              classes={
+                {
+                  "button": "css-16ta6rw-Button-button",
+                  "content": "css-xq2oa7-Button-content",
+                  "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+                  "root": "css-18hbw04-Button-root",
+                }
+              }
+              data-test-id="Button"
+              disabled={false}
+              onClick={null}
+            >
+              <Ripple
+                className="css-p1t6ie-RippleButton-contentWrapper "
+                color="#000"
+                disabled={false}
+                fill={true}
+                onClick={[Function]}
+                onComplete={[Function]}
+                overflow={true}
+                size={null}
+              >
+                <div
+                  className="ui-shared__ripple css-p1t6ie-RippleButton-contentWrapper "
+                  data-test-id="Ripple"
+                  onClick={[Function]}
+                  style={null}
+                >
+                  Press me
+                </div>
+              </Ripple>
+            </button>
+          </Button>
+        </ButtonWithStyles>
+      </Button>
+    </ButtonWithStyles>
+  </RippleButton>
+</RippleButtonWithStyles>
 `;
 
 exports[`<RippleButton /> should render as a regular ripple button effect if type is omitted 1`] = `
-<Button
-  className=" ui-shared__ripple-button"
-  disabled={false}
+<RippleButton
+  className=""
+  classes={
+    {
+      "contentWrapper": "css-p1t6ie-RippleButton-contentWrapper",
+    }
+  }
   flat={false}
-  onClick={null}
+  rippleClassName=""
+  rippleSize={null}
   testId="Button"
   type="primary"
-  wrapContent={false}
+  wrapContent={true}
 >
-  <Ripple
-    className="css-1fscwua "
-    color="#000"
-    disabled={false}
-    fill={true}
-    onClick={[Function]}
-    onComplete={[Function]}
-    overflow={true}
-    size={null}
-  >
-    Press me
-  </Ripple>
-</Button>
+  Press me
+</RippleButton>
 `;
 
 exports[`<RippleButton /> should render as a regular ripple button if type is explicitly defined 1`] = `
-<RippleButton
+<RippleButtonWithStyles
   className=""
-  disabled={false}
   flat={false}
-  onClick={null}
   rippleClassName=""
   rippleSize={null}
   testId="Button"
   type="regular"
   wrapContent={true}
 >
-  <Button
-    className=" ui-shared__ripple-button"
-    disabled={false}
+  <RippleButton
+    className=""
+    classes={
+      {
+        "contentWrapper": "css-p1t6ie-RippleButton-contentWrapper",
+      }
+    }
     flat={false}
-    onClick={null}
+    rippleClassName=""
+    rippleSize={null}
     testId="Button"
     type="regular"
-    wrapContent={false}
+    wrapContent={true}
   >
-    <Button
-      className="ui-shared__button css-1a50m4j  ui-shared__ripple-button"
-      disabled={false}
-      onClick={null}
+    <ButtonWithStyles
+      className=" ui-shared__ripple-button"
+      flat={false}
       testId="Button"
+      type="regular"
+      wrapContent={false}
     >
-      <button
-        className="ui-shared__button css-1a50m4j  ui-shared__ripple-button css-1rn65c0 common__button"
-        data-test-id="Button"
-        disabled={false}
-        onClick={null}
+      <Button
+        className=" ui-shared__ripple-button"
+        classes={
+          {
+            "button": "css-lxh1to-Button-button",
+            "content": "css-136auiv-Button-content",
+            "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+          }
+        }
+        flat={false}
+        testId="Button"
+        type="regular"
+        wrapContent={false}
       >
-        <Ripple
-          className="css-1fscwua "
-          color="#000"
-          disabled={false}
-          fill={true}
-          onClick={[Function]}
-          onComplete={[Function]}
-          overflow={true}
-          size={null}
+        <ButtonWithStyles
+          className="ui-shared__button css-lxh1to-Button-button  ui-shared__ripple-button"
+          classes={
+            {
+              "button": "css-lxh1to-Button-button",
+              "content": "css-136auiv-Button-content",
+              "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+            }
+          }
+          testId="Button"
         >
-          <div
-            className="ui-shared__ripple css-1fscwua "
-            data-test-id="Ripple"
-            onClick={[Function]}
-            style={null}
+          <Button
+            className="ui-shared__button css-lxh1to-Button-button  ui-shared__ripple-button"
+            classes={
+              {
+                "button": "css-lxh1to-Button-button",
+                "content": "css-136auiv-Button-content",
+                "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+                "root": "css-18hbw04-Button-root",
+              }
+            }
+            disabled={false}
+            onClick={null}
+            testId="Button"
           >
-            Press me
-          </div>
-        </Ripple>
-      </button>
-    </Button>
-  </Button>
-</RippleButton>
+            <button
+              className="ui-shared__button css-lxh1to-Button-button  ui-shared__ripple-button ui-shared__button ui-shared__ripple-button css-20dlot-Button-root-Button-button common__button"
+              classes={
+                {
+                  "button": "css-lxh1to-Button-button",
+                  "content": "css-136auiv-Button-content",
+                  "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+                  "root": "css-18hbw04-Button-root",
+                }
+              }
+              data-test-id="Button"
+              disabled={false}
+              onClick={null}
+            >
+              <Ripple
+                className="css-p1t6ie-RippleButton-contentWrapper "
+                color="#000"
+                disabled={false}
+                fill={true}
+                onClick={[Function]}
+                onComplete={[Function]}
+                overflow={true}
+                size={null}
+              >
+                <div
+                  className="ui-shared__ripple css-p1t6ie-RippleButton-contentWrapper "
+                  data-test-id="Ripple"
+                  onClick={[Function]}
+                  style={null}
+                >
+                  Press me
+                </div>
+              </Ripple>
+            </button>
+          </Button>
+        </ButtonWithStyles>
+      </Button>
+    </ButtonWithStyles>
+  </RippleButton>
+</RippleButtonWithStyles>
 `;
 
 exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
-<RippleButton
+<RippleButtonWithStyles
   className=""
-  disabled={false}
   flat={false}
-  onClick={null}
   rippleClassName=""
   rippleSize={null}
   testId="Button"
   type="secondary"
   wrapContent={true}
 >
-  <Button
-    className=" ui-shared__ripple-button"
-    disabled={false}
+  <RippleButton
+    className=""
+    classes={
+      {
+        "contentWrapper": "css-p1t6ie-RippleButton-contentWrapper",
+      }
+    }
     flat={false}
-    onClick={null}
+    rippleClassName=""
+    rippleSize={null}
     testId="Button"
     type="secondary"
-    wrapContent={false}
+    wrapContent={true}
   >
-    <Button
-      className="ui-shared__button css-mk0dpu  ui-shared__ripple-button"
-      disabled={false}
-      onClick={null}
+    <ButtonWithStyles
+      className=" ui-shared__ripple-button"
+      flat={false}
       testId="Button"
+      type="secondary"
+      wrapContent={false}
     >
-      <button
-        className="ui-shared__button css-mk0dpu  ui-shared__ripple-button css-1rn65c0 common__button"
-        data-test-id="Button"
-        disabled={false}
-        onClick={null}
+      <Button
+        className=" ui-shared__ripple-button"
+        classes={
+          {
+            "button": "css-10h5wwx-Button-button",
+            "content": "css-1fwglzq-Button-content",
+            "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+          }
+        }
+        flat={false}
+        testId="Button"
+        type="secondary"
+        wrapContent={false}
       >
-        <Ripple
-          className="css-1fscwua "
-          color="#000"
-          disabled={false}
-          fill={true}
-          onClick={[Function]}
-          onComplete={[Function]}
-          overflow={true}
-          size={null}
+        <ButtonWithStyles
+          className="ui-shared__button css-10h5wwx-Button-button  ui-shared__ripple-button"
+          classes={
+            {
+              "button": "css-10h5wwx-Button-button",
+              "content": "css-1fwglzq-Button-content",
+              "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+            }
+          }
+          testId="Button"
         >
-          <div
-            className="ui-shared__ripple css-1fscwua "
-            data-test-id="Ripple"
-            onClick={[Function]}
-            style={null}
+          <Button
+            className="ui-shared__button css-10h5wwx-Button-button  ui-shared__ripple-button"
+            classes={
+              {
+                "button": "css-10h5wwx-Button-button",
+                "content": "css-1fwglzq-Button-content",
+                "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+                "root": "css-18hbw04-Button-root",
+              }
+            }
+            disabled={false}
+            onClick={null}
+            testId="Button"
           >
-            Press me
-          </div>
-        </Ripple>
-      </button>
-    </Button>
-  </Button>
-</RippleButton>
+            <button
+              className="ui-shared__button css-10h5wwx-Button-button  ui-shared__ripple-button ui-shared__button ui-shared__ripple-button css-17fhe9u-Button-root-Button-button common__button"
+              classes={
+                {
+                  "button": "css-10h5wwx-Button-button",
+                  "content": "css-1fwglzq-Button-content",
+                  "contentWrapper": "css-1c9zfd8-Button-contentWrapper",
+                  "root": "css-18hbw04-Button-root",
+                }
+              }
+              data-test-id="Button"
+              disabled={false}
+              onClick={null}
+            >
+              <Ripple
+                className="css-p1t6ie-RippleButton-contentWrapper "
+                color="#000"
+                disabled={false}
+                fill={true}
+                onClick={[Function]}
+                onComplete={[Function]}
+                overflow={true}
+                size={null}
+              >
+                <div
+                  className="ui-shared__ripple css-p1t6ie-RippleButton-contentWrapper "
+                  data-test-id="Ripple"
+                  onClick={[Function]}
+                  style={null}
+                >
+                  Press me
+                </div>
+              </Ripple>
+            </button>
+          </Button>
+        </ButtonWithStyles>
+      </Button>
+    </ButtonWithStyles>
+  </RippleButton>
+</RippleButtonWithStyles>
 `;

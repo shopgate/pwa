@@ -1,34 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Glow /> should render with a smile 1`] = `
-<ForwardRef(WithForwardedRef(Glow))>
-  <Glow
-    className={null}
-    color="#f7f7f7"
-    disabled={false}
+<ForwardRef(WithForwardedRef(GlowWithStyles))>
+  <GlowWithStyles
     forwardedRef={null}
-    styles={
-      {
-        "container": null,
-        "glow": null,
-        "hover": null,
-      }
-    }
   >
-    <div
-      className="css-13azwyo ui-shared__glow"
+    <Glow
+      className={null}
+      classes={
+        {
+          "container": "css-1ur4jxl-Glow-container",
+          "glow": "css-yivd8o-Glow-glow",
+        }
+      }
+      color="#f7f7f7"
       disabled={false}
-      onClick={[Function]}
-      style={null}
+      forwardedRef={null}
+      styles={
+        {
+          "container": null,
+          "glow": null,
+          "hover": null,
+        }
+      }
     >
       <div
-        className="css-1bmd5dz"
-        style={{}}
-      />
-      <p>
-        Glowing!
-      </p>
-    </div>
-  </Glow>
-</ForwardRef(WithForwardedRef(Glow))>
+        className="css-1ur4jxl-Glow-container ui-shared__glow"
+        classes={
+          {
+            "container": "css-1ur4jxl-Glow-container",
+            "glow": "css-yivd8o-Glow-glow",
+          }
+        }
+        disabled={false}
+        onClick={[Function]}
+        style={null}
+      >
+        <div
+          className="css-yivd8o-Glow-glow"
+          style={{}}
+        />
+        <p>
+          Glowing!
+        </p>
+      </div>
+    </Glow>
+  </GlowWithStyles>
+</ForwardRef(WithForwardedRef(GlowWithStyles))>
 `;

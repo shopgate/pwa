@@ -5,8 +5,8 @@ import clamp from 'lodash/clamp';
 import { shift } from '@shopgate/pwa-common/helpers/data';
 import { getOffset } from '@shopgate/pwa-common/helpers/dom';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { withStyles } from '@shopgate/engage/styles';
 import RippleAnimation from './components/RippleAnimation';
-import style from './style';
 
 /**
  * The ripple component.
@@ -233,8 +233,10 @@ class Ripple extends PureComponent {
       return null;
     }
 
+    const { container } = withStyles.getClasses(this.props);
+
     return (
-      <div className={style.container}>
+      <div className={container}>
         {this.state.ripples}
       </div>
     );
@@ -263,4 +265,13 @@ class Ripple extends PureComponent {
   }
 }
 
-export default Ripple;
+export default withStyles(Ripple, {
+  container: {
+    position: 'absolute',
+    zIndex: 0,
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+  },
+});

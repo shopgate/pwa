@@ -11,7 +11,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   messages={[]}
 >
   <div
-    className="css-1gmese ui-shared__message-bar"
+    className="css-1bqu23d-container ui-shared__message-bar"
     role={null}
   />
 </Component>
@@ -34,11 +34,11 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   }
 >
   <div
-    className="css-1gmese ui-shared__message-bar"
+    className="css-1bqu23d-container ui-shared__message-bar"
     role="alert"
   >
     <div
-      className="css-1uhnwge"
+      className="css-1xu8x4k-info"
       key="info-something"
     >
       <span
@@ -85,11 +85,11 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   }
 >
   <div
-    className="css-1gmese ui-shared__message-bar"
+    className="css-1bqu23d-container ui-shared__message-bar"
     role="alert"
   >
     <div
-      className="css-1uhnwge"
+      className="css-1xu8x4k-info"
       key="info-This is some information"
     >
       <span
@@ -99,7 +99,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-1t4ceri"
+      className="css-bsrzfp-error"
       key="error-This is an error that happened here."
     >
       <span
@@ -109,7 +109,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-y06bhm"
+      className="css-nzses1-warning"
       key="warning-This is just a warning. Nothing to freak out about."
     >
       <span
@@ -119,7 +119,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-1uhnwge"
+      className="css-1xu8x4k-info"
       key="info-Normal pre-translated message."
     >
       <span
@@ -129,7 +129,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
       </span>
     </div>
     <div
-      className="css-1uhnwge"
+      className="css-1xu8x4k-info"
       key="info-Normal pre-translated message two."
     >
       <span
@@ -159,11 +159,11 @@ exports[`<MessageBar /> Multiple messages rendering should render with custom cl
   }
 >
   <div
-    className="css-1gmese cls-container ui-shared__message-bar"
+    className="css-1bqu23d-container cls-container ui-shared__message-bar"
     role="alert"
   >
     <div
-      className="cls-message css-1uhnwge"
+      className="cls-message css-1xu8x4k-info"
       key="info-This is some information"
     >
       <span
@@ -202,11 +202,11 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   }
 >
   <div
-    className="css-1gmese ui-shared__message-bar"
+    className="css-1bqu23d-container ui-shared__message-bar"
     role="alert"
   >
     <div
-      className="css-1uhnwge"
+      className="css-1xu8x4k-info"
       key="info-some.translation.string"
     >
       <span
@@ -216,7 +216,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
       </span>
     </div>
     <div
-      className="css-1uhnwge"
+      className="css-1xu8x4k-info"
       key="info-Message with messageParams"
     >
       <span

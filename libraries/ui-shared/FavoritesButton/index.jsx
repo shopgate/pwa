@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { withStyles } from '@shopgate/engage/styles';
 import HeartIcon from '../icons/HeartIcon';
 import HeartOutlineIcon from '../icons/HeartOutlineIcon';
 import HeartPlusOutlineIcon from '../icons/HeartPlusOutlineIcon';
 import HeartPlus from '../icons/HeartPlusIcon';
 import Ripple from '../Ripple';
-import styles from './style';
 import connect from './connector';
+
+const buttonProto = {
+  display: 'block',
+  position: 'relative',
+  background: themeColors.light,
+  borderRadius: '50%',
+  padding: 0,
+  fontSize: 20,
+  lineHeight: 1,
+  color: 'var(--color-secondary)',
+  outline: 0,
+};
 
 /**
  * The favorites button component.
@@ -141,18 +153,21 @@ class FavoritesButton extends Component {
     if (!appConfig.hasFavorites) {
       return null;
     }
-    const className = this.props.noShadow ? styles.buttonFlat : styles.button;
+
+    const classes = withStyles.getClasses(this.props);
+    const buttonClass = this.props.noShadow ? classes.buttonFlat : classes.button;
+
     return (
       <button
         aria-label={this.getLabel()}
         aria-hidden={this.props['aria-hidden']}
-        className={`ui-shared__favorites-button ${className} ${this.props.className}`}
+        className={`ui-shared__favorites-button ${buttonClass} ${this.props.className}`}
         onClick={this.handleClick}
         data-test-id="favoriteButton"
         type="button"
       >
         <Ripple
-          className={`${styles.ripple} ${this.props.rippleClassName}`}
+          className={`${classes.ripple} ${this.props.rippleClassName}`}
           onComplete={this.onRippleComplete}
         >
           {this.renderIcon()}
@@ -162,4 +177,21 @@ class FavoritesButton extends Component {
   }
 }
 
-export default connect(FavoritesButton);
+const StyledFavoritesButton = withStyles(FavoritesButton, {
+  buttonFlat: {
+    ...buttonProto,
+  },
+  button: {
+    ...buttonProto,
+    boxShadow: themeShadows.buttons.elevated,
+  },
+  ripple: {
+    padding: 6,
+  },
+});
+
+StyledFavoritesButton.propTypes = FavoritesButton.propTypes;
+StyledFavoritesButton.defaultProps = FavoritesButton.defaultProps;
+StyledFavoritesButton.contextTypes = FavoritesButton.contextTypes;
+
+export default connect(StyledFavoritesButton);

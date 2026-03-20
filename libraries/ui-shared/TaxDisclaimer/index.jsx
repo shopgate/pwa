@@ -6,13 +6,26 @@ import {
 import I18n from '@shopgate/pwa-common/components/I18n';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const useStyles = makeStyles()(() => ({
+  text: {
+    background: themeConfig.colors.background,
+    display: 'block',
+    fontSize: 12,
+    padding: `20px ${themeConfig.variables.gap.big}px`,
+    textAlign: 'left',
+  },
+}));
 
 /**
  * TaxDisclaimer component.
  * @returns {Function}
  */
 const TaxDisclaimer = () => {
+  const { classes } = useStyles();
+
   // Added with PWA 6 - CCP-2372
   const {
     show,
@@ -29,7 +42,7 @@ const TaxDisclaimer = () => {
     >
       {showDisclaimer && (
       <div data-test-id="taxDisclaimer" aria-hidden className="ui-shared__tax-disclaimer">
-        <I18n.Text className={styles} string={text || 'product.tax_disclaimer'} />
+        <I18n.Text className={classes.text} string={text || 'product.tax_disclaimer'} />
       </div>
       )}
     </SurroundPortals>

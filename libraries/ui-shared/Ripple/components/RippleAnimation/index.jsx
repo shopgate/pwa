@@ -2,7 +2,15 @@ import React, { memo, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import style from '../../style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(() => ({
+  ripple: {
+    position: 'absolute',
+    borderRadius: '50%',
+    transformOrigin: '50% 50% 0',
+  },
+}));
 
 /**
  * The RippleAnimation component
@@ -25,6 +33,7 @@ function RippleAnimation({
   x,
   y,
 }) {
+  const { classes } = useStyles();
   const nodeRef = useRef(null);
 
   const baseStyle = useMemo(
@@ -92,7 +101,7 @@ function RippleAnimation({
       {state => (
         <div
           ref={nodeRef}
-          className={style.ripple}
+          className={classes.ripple}
           style={getStyleForState(state)}
         />
       )}

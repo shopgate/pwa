@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import BaseButton from '@shopgate/pwa-common/components/Button';
+import { withStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Ripple from '../Ripple';
 import Button from '../Button';
-import style from '../Button/style';
+
+const buttonContentPadding = `0 ${themeConfig.variables.gap.big}px 0`;
+
+const BUTTON_TYPES = [
+  'plain',
+  'regular',
+  'simple',
+  'primary',
+  'secondary',
+];
 
 /**
  * The ripple button component is a special derivation of the basic button component
@@ -10,17 +22,27 @@ import style from '../Button/style';
  */
 class RippleButton extends Component {
   static propTypes = {
-    ...Button.propTypes,
+    ...BaseButton.propTypes,
+    className: PropTypes.string,
+    flat: PropTypes.bool,
+    nativeType: PropTypes.oneOf(['button', 'submit', 'reset']),
     rippleClassName: PropTypes.string,
     rippleSize: PropTypes.number,
     testId: PropTypes.string,
+    type: PropTypes.oneOf(BUTTON_TYPES),
+    wrapContent: PropTypes.bool,
   };
 
   static defaultProps = {
-    ...Button.defaultProps,
+    ...BaseButton.defaultProps,
+    className: '',
+    flat: false,
+    type: 'primary',
+    wrapContent: true,
+    testId: 'Button',
     rippleClassName: '',
     rippleSize: null,
-    testId: 'Button',
+    nativeType: undefined,
   };
 
   /**
@@ -35,6 +57,7 @@ class RippleButton extends Component {
       flat: this.props.flat,
       type: this.props.type,
       wrapContent: false,
+      nativeType: this.props.nativeType,
       'aria-label': this.props['aria-label'],
       'aria-haspopup': this.props['aria-haspopup'],
     };
@@ -54,8 +77,10 @@ class RippleButton extends Component {
       );
     }
 
+    const classes = withStyles.getClasses(this.props);
+
     const rippleProps = {
-      className: `${style.contentWrapper} ${this.props.rippleClassName}`,
+      className: `${classes.contentWrapper} ${this.props.rippleClassName}`,
       fill: true,
       size: this.props.rippleSize,
       overflow: true,
@@ -71,4 +96,13 @@ class RippleButton extends Component {
   }
 }
 
-export default RippleButton;
+const StyledRippleButton = withStyles(RippleButton, () => ({
+  contentWrapper: {
+    padding: buttonContentPadding,
+  },
+}));
+
+StyledRippleButton.propTypes = RippleButton.propTypes;
+StyledRippleButton.defaultProps = RippleButton.defaultProps;
+
+export default StyledRippleButton;

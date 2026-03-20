@@ -1,6 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const useStyles = makeStyles()(() => ({
+  label: {
+    background: themeConfig.colors.dark,
+    opacity: 0.1,
+    width: '100%',
+    height: 16,
+    marginBottom: 12,
+  },
+}));
 
 /**
  * Placeholder for one line texts.
@@ -10,9 +21,11 @@ import styles from './style';
 const PlaceholderLabel = ({
   children, className, ready, style,
 }) => {
+  const { classes } = useStyles();
+
   if (!ready) {
     return (
-      <div style={style} className={`${styles.label} ${className} ui-shared__placeholder-label`} />
+      <div style={style} className={`${classes.label} ${className} ui-shared__placeholder-label`} />
     );
   }
 

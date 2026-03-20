@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
 
 /**
  * The placeholder component.
@@ -32,10 +32,17 @@ class Placeholder extends PureComponent {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
+
     return (
-      <div className={`${styles} ui-shared__placeholder`} style={this.props} />
+      <div className={`${classes.root} ui-shared__placeholder`} style={this.props} />
     );
   }
 }
 
-export default Placeholder;
+export default withStyles(Placeholder, {
+  root: {
+    background: 'var(--color-background-accent)',
+    position: 'relative',
+  },
+});

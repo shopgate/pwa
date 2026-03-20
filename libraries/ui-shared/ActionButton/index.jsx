@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withStyles, cx } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import IndicatorCircle from '../IndicatorCircle';
 import RippleButton from '../RippleButton';
-import styles from './style';
+
+const halfGapBig = themeConfig.variables.gap.big / 2;
 
 /**
  * The action button component.
@@ -66,18 +69,23 @@ class ActionButton extends Component {
    * @returns {JSX}
    */
   render() {
-    const containerClass = this.props.noGap ? styles.noGapContainer : styles.container;
+    const classes = withStyles.getClasses(this.props);
 
     if (this.props.loading) {
       return (
-        <div className={styles.containerCircle}>
+        <div className={classes.containerCircle}>
           <IndicatorCircle />
         </div>
       );
     }
 
+    const containerClass = this.props.noGap ? classes.noGap : classes.withGap;
+
     return (
-      <div className={`ui-shared__action-button ${containerClass}`} data-test-id={this.props.testId}>
+      <div
+        className={cx('ui-shared__action-button', containerClass)}
+        data-test-id={this.props.testId}
+      >
         <RippleButton {...this.buttonProps} onClick={this.handleClick}>
           {this.props.children}
         </RippleButton>
@@ -86,4 +94,22 @@ class ActionButton extends Component {
   }
 }
 
-export default ActionButton;
+const StyledActionButton = withStyles(ActionButton, {
+  withGap: {
+    textAlign: 'center',
+    margin: `${halfGapBig}px 0`,
+  },
+  noGap: {
+    textAlign: 'center',
+  },
+  containerCircle: {
+    textAlign: 'center',
+    margin: `${halfGapBig + 5}px 0`,
+  },
+});
+
+StyledActionButton.propTypes = ActionButton.propTypes;
+StyledActionButton.defaultProps = ActionButton.defaultProps;
+StyledActionButton.clickDelay = ActionButton.clickDelay;
+
+export default StyledActionButton;

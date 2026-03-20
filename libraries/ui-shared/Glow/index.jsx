@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withForwardedRef } from '@shopgate/engage/core';
+import { withStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import styles from './style';
 
 /**
  * Renders a glowing component that is visible when the user interacts with the element.
@@ -75,6 +75,8 @@ class Glow extends Component {
       children, styles: propStyles, forwardedRef, className, color, ...rest
     } = this.props;
 
+    const classes = withStyles.getClasses(this.props);
+
     let innerInlineStyles;
     if (this.state.hover) {
       innerInlineStyles = {
@@ -93,12 +95,12 @@ class Glow extends Component {
     return (
       <div
         {...rest}
-        className={classNames(styles.container, className, 'ui-shared__glow')}
+        className={classNames(classes.container, className, 'ui-shared__glow')}
         onClick={this.handleTouchTap}
         style={propStyles.container}
         ref={forwardedRef}
       >
-        <div className={styles.glow} style={innerInlineStyles} />
+        <div className={classes.glow} style={innerInlineStyles} />
         {children}
       </div>
     );
@@ -107,4 +109,20 @@ class Glow extends Component {
   }
 }
 
-export default withForwardedRef(Glow);
+const StyledGlow = withStyles(Glow, {
+  container: {
+    position: 'relative',
+  },
+  glow: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: '100%',
+    height: '100%',
+    background: 'transparent',
+    transition: 'background 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    zIndex: 0,
+  },
+});
+
+export default withForwardedRef(StyledGlow);

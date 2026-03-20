@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(() => ({
+  root: {
+    color: 'var(--color-primary)',
+  },
+}));
 
 /**
  * The manufacturer component.
@@ -9,11 +15,15 @@ import styles from './style';
  * @param {string} [props.className] CSS classes.
  * @return {JSX}
  */
-const Manufacturer = ({ className, text }) => (
-  <div className={`${styles} ${className} ui-shared__manufacturer`}>
-    <span dangerouslySetInnerHTML={{ __html: text }} />
-  </div>
-);
+const Manufacturer = ({ className, text }) => {
+  const { classes } = useStyles();
+
+  return (
+    <div className={`${classes.root} ${className} ui-shared__manufacturer`}>
+      <span dangerouslySetInnerHTML={{ __html: text }} />
+    </div>
+  );
+};
 
 Manufacturer.propTypes = {
   text: PropTypes.string.isRequired,

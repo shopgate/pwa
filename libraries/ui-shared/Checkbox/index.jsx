@@ -1,33 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import BaseCheckbox from '@shopgate/pwa-common/components/Checkbox';
 import CheckedIcon from '../icons/CheckedIcon';
 import UncheckedIcon from '../icons/UncheckedIcon';
-import styles from './style';
+
+const useStyles = makeStyles()(() => ({
+  icon: {
+    width: 24,
+    height: 24,
+    flexShrink: 0,
+  },
+  checkedIcon: {
+    color: 'var(--color-secondary)',
+  },
+  uncheckedIcon: {
+    color: themeConfig.colors.shade6,
+  },
+}));
 
 /**
  * The checkbox template component.
  * @param {Object} props The component props
  * @param {string} props.className Class for the underlying Checkbox component
- * @param {string} props.checkedClassName Class for checked icon.
- * @param {string} props.unCheckedClassName Class for unchecked icon.
+ * @param {string} [props.checkedClassName] Extra class for checked icon; default: secondary color.
+ * @param {string} [props.unCheckedClassName] Extra class for unchecked icon; default: shade6.
  * @returns {JSX.Element}
  */
 const Checkbox = ({
-  checkedClassName, unCheckedClassName, className, ...props
-}) => (
-  <BaseCheckbox
-    {...props}
-    className={`ui-shared__checkbox ${className}`}
-    checkedIcon={
-      <CheckedIcon className={classNames(styles.icon, checkedClassName, 'checkedIcon')} />
-    }
-    uncheckedIcon={
-      <UncheckedIcon className={classNames(styles.icon, unCheckedClassName, 'uncheckedIcon')} />
-    }
-  />
-);
+  checkedClassName,
+  unCheckedClassName,
+  className,
+  ...props
+}) => {
+  const { classes } = useStyles();
+
+  // Legacy default: theme classes for checked/unchecked unless props are passed.
+  // `??` keeps an explicit '' from restoring defaults (like old classNames(icon, '', …)).
+  const checkedCls = checkedClassName ?? classes.checkedIcon;
+  const uncheckedCls = unCheckedClassName ?? classes.uncheckedIcon;
+
+  return (
+    <BaseCheckbox
+      {...props}
+      className={`ui-shared__checkbox ${className}`}
+      checkedIcon={
+        <CheckedIcon className={classNames(classes.icon, checkedCls, 'checkedIcon')} />
+      }
+      uncheckedIcon={
+        <UncheckedIcon className={classNames(classes.icon, uncheckedCls, 'uncheckedIcon')} />
+      }
+    />
+  );
+};
 
 Checkbox.propTypes = {
   checkedClassName: PropTypes.string,
@@ -36,9 +63,9 @@ Checkbox.propTypes = {
 };
 
 Checkbox.defaultProps = {
-  checkedClassName: styles.checkedIcon,
   className: '',
-  unCheckedClassName: styles.uncheckedIcon,
+  checkedClassName: undefined,
+  unCheckedClassName: undefined,
 };
 
 export default Checkbox;

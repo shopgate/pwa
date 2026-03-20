@@ -2,35 +2,57 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
+import { makeStyles } from '@shopgate/engage/styles';
 import IndicatorCircle from '../IndicatorCircle';
-import { container, imgContainer } from './style';
 
 const {
   loadingIndicator: { imgSrc: loadingImageSrc } = {},
 } = themeConfig.variables;
 
+const useStyles = makeStyles()(() => ({
+  container: {
+    display: 'block',
+    padding: '1em',
+    textAlign: 'center',
+    fontSize: '1.5em',
+    color: 'var(--color-secondary)',
+  },
+  imgContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    '& img': {
+      maxWidth: '50vw',
+      maxHeight: '50vh',
+    },
+  },
+}));
+
 /**
  * Renders a loading indicator.
  * @returns {JSX}
  */
-const LoadingIndicator = ({ className }) => (
-  <div className={classNames(
-    className,
-    {
-      [container]: !loadingImageSrc,
-      [imgContainer]: !!loadingImageSrc,
-    },
-    'loading-indicator',
-    'ui-shared__loading-indicator'
-  )}
-  >
-    { loadingImageSrc ? (
-      <img src={loadingImageSrc} alt="" />
-    ) : (
-      <IndicatorCircle />
+const LoadingIndicator = ({ className }) => {
+  const { classes } = useStyles();
+
+  return (
+    <div className={classNames(
+      className,
+      {
+        [classes.container]: !loadingImageSrc,
+        [classes.imgContainer]: !!loadingImageSrc,
+      },
+      'loading-indicator',
+      'ui-shared__loading-indicator'
     )}
-  </div>
-);
+    >
+      { loadingImageSrc ? (
+        <img src={loadingImageSrc} alt="" />
+      ) : (
+        <IndicatorCircle />
+      )}
+    </div>
+  );
+};
 
 LoadingIndicator.propTypes = {
   className: PropTypes.string,
@@ -41,4 +63,3 @@ LoadingIndicator.defaultProps = {
 };
 
 export default LoadingIndicator;
-
