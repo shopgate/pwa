@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@shopgate/engage/styles';
 import Transition from '../Transition';
-import styles from './style';
 import transitions from './transitions';
 
 /**
@@ -67,6 +67,7 @@ class Dropdown extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     let transitionProps;
 
     if (this.props.isOpen) {
@@ -83,7 +84,7 @@ class Dropdown extends Component {
         duration={this.props.duration}
         easing={this.props.easing}
       >
-        <div className={`${styles} ${this.props.className} common__dropdown`} aria-hidden={!this.props.isOpen}>
+        <div className={`${classes.container} ${this.props.className} common__dropdown`} aria-hidden={!this.props.isOpen}>
           {this.props.children}
         </div>
       </Transition>
@@ -91,4 +92,8 @@ class Dropdown extends Component {
   }
 }
 
-export default Dropdown;
+export default withStyles(Dropdown, () => ({
+  container: {
+    overflow: 'hidden',
+  },
+}));

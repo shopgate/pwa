@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { hasWebBridge } from '@shopgate/engage/core';
+import { withStyles } from '@shopgate/engage/styles';
 import connect from './connector';
-import styles from './style';
 
 /**
  * Link component.
@@ -83,6 +83,7 @@ class Link extends Component {
    * @returns {JSX.Element}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const {
       tag,
       className,
@@ -106,7 +107,7 @@ class Link extends Component {
 
     return (
       <Tag
-        className={`${styles} ${className} common__link`}
+        className={`${classes.link} ${className} common__link`}
         onClick={this.handleOpenLink}
         onKeyDown={this.handleKeyDown}
         role={role}
@@ -124,4 +125,14 @@ class Link extends Component {
 
 export const Disconnected = Link;
 
-export default connect(Link);
+export default connect(withStyles(Link, () => ({
+  link: {
+    padding: 0,
+    margin: 0,
+    border: 'none',
+    textAlign: 'left',
+    alignItems: 'stretch',
+    width: '100%',
+    cursor: 'pointer',
+  },
+})));

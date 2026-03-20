@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  item: {
+    display: 'block',
+  },
+});
 
 /**
  * The select item component.
@@ -8,14 +14,18 @@ import styles from './style';
  * @param {React.Children} props.children - Some content to display inside.
  * @returns {JSX}
  */
-const SelectItem = props => (
-  <div
-    className={`${styles} ${props.className}`}
-    onTouchEnd={() => props.onSelect(props.value, props.label)}
-  >
-    {props.label}
-  </div>
-);
+const SelectItem = (props) => {
+  const { classes } = useStyles();
+
+  return (
+    <div
+      className={`${classes.item} ${props.className}`}
+      onTouchEnd={() => props.onSelect(props.value, props.label)}
+    >
+      {props.label}
+    </div>
+  );
+};
 
 /**
  * The component prop types.

@@ -5,11 +5,25 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import noop from 'lodash/noop';
 import { themeConfig } from '@shopgate/engage';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getFullImageSource } from '@shopgate/engage/core/helpers';
-import styles from './style';
 import ImageInner from './ImageInner';
 
 const { colors: themeColors } = themeConfig;
+
+const useStyles = makeStyles()((_theme, { background, paddingTop }) => ({
+  container: {
+    background,
+    position: 'relative',
+    zIndex: 0,
+    ':before': {
+      display: 'block',
+      content: '""',
+      width: '100%',
+      paddingTop,
+    },
+  },
+}));
 
 /**
  * Calculates the Greatest Common Divisor (GCD) of two numbers using the Euclidean algorithm.
@@ -145,6 +159,11 @@ const Image = ({
     };
   }, [ratio, resolutions]);
 
+  const { classes } = useStyles({
+    background: backgroundColor,
+    paddingTop: paddingHackRatio,
+  });
+
   if (unwrapped) {
     if (!(src && !parentRendersPlaceholder)) return null;
 
@@ -170,10 +189,8 @@ const Image = ({
     );
   }
 
-  const containerStyle = styles.container(backgroundColor, paddingHackRatio);
-
   return (
-    <div className={classNames(containerStyle, className, 'common__image__container')}>
+    <div className={classNames(classes.container, className, 'common__image__container')}>
       {src && !parentRendersPlaceholder && (
       <ImageInner
         ref={imgRef}

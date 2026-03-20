@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@shopgate/engage/styles';
 import { objectWithoutProps } from '../../../../helpers/data';
-import styles from './style';
 
 /**
  * The grid item component.
@@ -26,15 +27,11 @@ class GridItem extends Component {
    * @returns {Object} The composed props.
    */
   getProps() {
-    let { className } = this.props;
-
-    if (this.props.grow !== 0) {
-      className += ` ${styles.grow(this.props.grow)}`;
-    }
-
-    if (this.props.shrink !== 1) {
-      className += ` ${styles.shrink(this.props.shrink)}`;
-    }
+    const classes = withStyles.getClasses(this.props);
+    const { grow, shrink } = this.props;
+    const className = classNames(this.props.className, classes.root, {
+      'common__grid__item--custom-flex': grow !== 0 || shrink !== 1,
+    });
 
     const props = {
       ...this.props,
@@ -45,6 +42,7 @@ class GridItem extends Component {
       'component',
       'grow',
       'shrink',
+      'classes',
     ]);
   }
 
@@ -57,4 +55,12 @@ class GridItem extends Component {
   }
 }
 
-export default GridItem;
+export default withStyles(
+  GridItem,
+  (_theme, props) => ({
+    root: {
+      ...(props.grow !== 0 ? { flexGrow: props.grow } : {}),
+      ...(props.shrink !== 1 ? { flexShrink: props.shrink } : {}),
+    },
+  })
+);

@@ -1,6 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  item: {
+    display: 'block',
+    position: 'relative',
+  },
+  unselected: {
+    zIndex: 1,
+  },
+  selected: {
+    zIndex: 2,
+  },
+});
 
 /**
  * The ListItem component.
@@ -12,20 +26,25 @@ const ListItem = ({
   isSelected,
   role,
 }) => {
+  const { classes } = useStyles();
   if (!React.Children.count(children)) {
     return null;
   }
 
-  let classes = styles.item;
-
-  if (className) {
-    classes += ` ${className}`;
-  }
-
-  // Add selected or unselected styling.
-  classes += ` common__list__list-item ${isSelected ? styles.selected : styles.unselected}`;
-
-  return <li className={classes} data-test-id="listItem" role={role}>{children}</li>;
+  return (
+    <li
+      className={classNames(
+        classes.item,
+        className,
+        'common__list__list-item',
+        isSelected ? classes.selected : classes.unselected
+      )}
+      data-test-id="listItem"
+      role={role}
+    >
+      {children}
+    </li>
+  );
 };
 
 ListItem.propTypes = {

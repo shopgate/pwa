@@ -1,6 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  root: {
+    top: '50%',
+    position: 'absolute',
+    ':first-child': {
+      left: 0,
+      transform: 'translate(-50%, -50%)',
+    },
+    ':last-child': {
+      left: 'auto',
+      right: 0,
+      transform: 'translate(50%, -50%)',
+    },
+  },
+});
 
 /**
  * The range slider handle component.
@@ -16,15 +32,19 @@ const RangeSliderHandle = ({
   index,
   onTouchStart,
   classNames,
-}) => (
-  <div
-    className={`${classNames.handleOuter || ''} ${styles}`}
-    style={{ zIndex: Number(active) || 0 }}
-    onTouchStart={event => onTouchStart(event, index)}
-  >
-    <div className={classNames.handleInner || ''} />
-  </div>
-);
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <div
+      className={`${classNames.handleOuter || ''} ${classes.root}`}
+      style={{ zIndex: Number(active) || 0 }}
+      onTouchStart={event => onTouchStart(event, index)}
+    >
+      <div className={classNames.handleInner || ''} />
+    </div>
+  );
+};
 
 RangeSliderHandle.propTypes = {
   index: PropTypes.number.isRequired,

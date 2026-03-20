@@ -1,7 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  button: {
+    display: 'block',
+    width: '100%',
+    padding: '10px 20px',
+    outline: 'none',
+    textAlign: 'left',
+  },
+  active: {
+    '& button': {
+      fontWeight: 'bold',
+    },
+  },
+});
 
 /**
  * The default button for the Picker component.
@@ -12,28 +27,32 @@ const PickerList = ({
   onClose,
   onSelect,
   selectedIndex,
-}) => (
-  <ul className="common__picker__list">
-    {items.map((item, currentIndex) => (
-      <li
-        key={item.value}
-        className={classNames({ [styles.active]: currentIndex === selectedIndex })}
-      >
-        <button
-          className={styles.button}
-          disabled={item.disabled}
-          onClick={() => {
-            onSelect(item.value);
-            onClose();
-          }}
-          type="button"
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <ul className="common__picker__list">
+      {items.map((item, currentIndex) => (
+        <li
+          key={item.value}
+          className={classNames({ [classes.active]: currentIndex === selectedIndex })}
         >
-          {item.label}
-        </button>
-      </li>
-    ))}
-  </ul>
-);
+          <button
+            className={classes.button}
+            disabled={item.disabled}
+            onClick={() => {
+              onSelect(item.value);
+              onClose();
+            }}
+            type="button"
+          >
+            {item.label}
+          </button>
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 PickerList.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape()).isRequired,

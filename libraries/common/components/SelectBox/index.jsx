@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import find from 'lodash/find';
+import { withStyles } from '@shopgate/engage/styles';
 import Dropdown from '../Dropdown';
 import I18n from '../I18n';
 import SelectBoxItem from './components/Item';
-import styles from './style';
 
 /**
  * The select box component.
@@ -123,6 +123,7 @@ class SelectBox extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const Icon = this.props.icon;
     const {
       icon,
@@ -180,7 +181,7 @@ class SelectBox extends Component {
         </Dropdown>
         {this.state.isOpen &&
           <button
-            className={styles.overlay}
+            className={classes.overlay}
             onClick={this.handleInteractionOutside}
             onTouchMove={this.handleInteractionOutside}
             type="button"
@@ -191,4 +192,15 @@ class SelectBox extends Component {
   }
 }
 
-export default SelectBox;
+export default withStyles(SelectBox, () => ({
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    overflow: 'auto',
+    zIndex: 1,
+    outline: 0,
+  },
+}));

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
 import SelectItem from './components/Item';
 
 const DEFAULT_PLACEHOLDER_TEXT = 'Select ...';
@@ -171,13 +171,14 @@ class Select extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const hasSelection = this.state.selected && this.state.selected.value !== undefined;
 
     const selectedLabel = (hasSelection) ?
       this.state.selected.label : this.props.placeholder;
 
     const items = (this.state.isOpen) ? (
-      <div className={styles.items}>
+      <div className={classes.items}>
         {this.props.items.map((item) => {
           const normalizedItem = normalizeItem(item);
           const selected = hasSelection && this.state.selected.value === normalizedItem.value;
@@ -196,12 +197,12 @@ class Select extends Component {
     ) : null;
 
     return (
-      <div className={`${styles.container} ${this.props.className} common_select`} ref={(ref) => { this.domElement = ref; }}>
+      <div className={`${classes.container} ${this.props.className} common_select`} ref={(ref) => { this.domElement = ref; }}>
         <div onTouchStart={this.toggleOpenState}>
           <span>
             {selectedLabel}
           </span>
-          <span className={styles.selectHandle}>
+          <span className={classes.selectHandle}>
             &#9662;
           </span>
         </div>
@@ -211,4 +212,16 @@ class Select extends Component {
   }
 }
 
-export default Select;
+export default withStyles(Select, () => ({
+  container: {
+    margin: 0,
+    padding: 0,
+  },
+  selectHandle: {
+    float: 'right',
+  },
+  items: {
+    position: 'absolute',
+    width: '100%',
+  },
+}));

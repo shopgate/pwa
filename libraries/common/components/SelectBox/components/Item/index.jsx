@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { withStyles } from '@shopgate/engage/styles';
 import I18n from '../../../I18n';
-import { item } from './style';
 
 /**
  * The SelectBoxItem component.
@@ -37,12 +37,13 @@ class SelectBoxItem extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     const Wrapper = this.props.wrapper;
     const { selectItem, selectItemSelected } = this.props.classNames;
 
     return (
       <li
-        className={classNames(selectItem, item, {
+        className={classNames(selectItem, classes.item, {
           [selectItemSelected]: this.props.isSelected,
         })}
         onKeyUp={() => { }}
@@ -61,4 +62,8 @@ class SelectBoxItem extends Component {
   }
 }
 
-export default SelectBoxItem;
+export default withStyles(SelectBoxItem, () => ({
+  item: {
+    cursor: 'pointer',
+  },
+}));

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { logger } from '@shopgate/pwa-core/helpers';
-import styles from './style';
+import { withStyles } from '@shopgate/engage/styles';
 import RangeSliderHandle from './components/Handle';
 import {
   generateLinearEasingCallback,
@@ -272,6 +272,7 @@ class RangeSlider extends Component {
    * @returns {JSX}
    */
   render() {
+    const classes = withStyles.getClasses(this.props);
     // Calculate the animation speed.
     const animationSpeed = Math.round((
       (1000 / this.props.animationSpeed) * this.draggedHandlePixelOffset
@@ -288,10 +289,10 @@ class RangeSlider extends Component {
         onTouchStart={this.handleRangeTouch}
       >
         <div
-          className={`${this.props.classNames.outerRange || ''} ${styles.outerRange}`}
+          className={`${this.props.classNames.outerRange || ''} ${classes.outerRange}`}
           ref={(ref) => { this.domElement = ref; }}
         >
-          <div className={`${this.props.classNames.range || ''} ${styles.range}`} style={rangeStyle}>
+          <div className={`${this.props.classNames.range || ''} ${classes.range}`} style={rangeStyle}>
             {this.makeHandle(0)}
             {this.makeHandle(1)}
           </div>
@@ -301,4 +302,14 @@ class RangeSlider extends Component {
   }
 }
 
-export default RangeSlider;
+export default withStyles(RangeSlider, () => ({
+  outerRange: {
+    minHeight: 1,
+    position: 'relative',
+  },
+  range: {
+    left: 0,
+    right: 0,
+    position: 'absolute',
+  },
+}));
