@@ -1,45 +1,50 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { i18n } from '@shopgate/engage/core';
+
+const useStyles = makeStyles()({
+  form: {
+    display: 'flex',
+    flexGrow: 1,
+  },
+  field: {
+    outline: 0,
+    padding: '0 16px',
+    width: '100%',
+  },
+});
 
 /**
  * The AppBarField component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class AppBarField extends PureComponent {
-  static propTypes = {
-    fieldRef: PropTypes.shape(),
-    onChange: PropTypes.func,
-    onSubmit: PropTypes.func,
-  };
+function AppBarField({ fieldRef, onChange, onSubmit }) {
+  const { classes } = useStyles();
 
-  static defaultProps = {
-    fieldRef: null,
-    onChange: null,
-    onSubmit: null,
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { fieldRef, onChange, onSubmit } = this.props;
-    const { __ } = this.context.i18n();
-
-    return (
-      <form className={styles.form} onSubmit={onSubmit}>
-        <input
-          className={styles.field}
-          onChange={onChange}
-          placeholder={__('search.placeholder')}
-          ref={fieldRef}
-        />
-      </form>
-    );
-  }
+  return (
+    <form className={classes.form} onSubmit={onSubmit}>
+      <input
+        className={classes.field}
+        onChange={onChange}
+        placeholder={i18n.text('search.placeholder')}
+        ref={fieldRef}
+      />
+    </form>
+  );
 }
+
+AppBarField.propTypes = {
+  fieldRef: PropTypes.shape(),
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+};
+
+AppBarField.defaultProps = {
+  fieldRef: null,
+  onChange: null,
+  onSubmit: null,
+};
 
 export default AppBarField;
