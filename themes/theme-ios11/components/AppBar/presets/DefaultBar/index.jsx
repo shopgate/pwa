@@ -1,4 +1,6 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, {
+  Fragment, useState, useEffect, useRef, memo, useContext,
+} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
@@ -9,7 +11,7 @@ import {
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import {
-  withRoute, withWidgetSettings, withApp, INDEX_PATH, router,
+  withRoute, withWidgetSettings, withApp, INDEX_PATH, router, i18n,
 } from '@shopgate/engage/core';
 import { ViewContext } from '@shopgate/engage/components/View';
 import AppBarIcon from './components/Icon';
@@ -18,170 +20,146 @@ import connect from './connector';
 
 /**
  * The AppBarDefault component.
+ * @param {Object} props The component properties.
+ * @returns {JSX.Element|null}
  */
-class AppBarDefault extends PureComponent {
-  static propTypes = {
-    app: PropTypes.shape().isRequired,
-    resetStatusBar: PropTypes.func.isRequired,
-    route: PropTypes.shape().isRequired,
-    setFocus: PropTypes.bool.isRequired,
-    updateStatusBar: PropTypes.func.isRequired,
-    widgetSettings: PropTypes.shape().isRequired,
-    'aria-hidden': PropTypes.bool,
-    below: PropTypes.node,
-    title: PropTypes.string,
-  };
+const AppBarDefault = (props) => {
+  const { ariaHidden } = useContext(ViewContext);
+  const {
+    app,
+    resetStatusBar,
+    route,
+    setFocus: shouldSetFocusOnMount,
+    updateStatusBar: updateStatusBarAction,
+    widgetSettings,
+    below,
+    title,
+  } = props;
 
-  static defaultProps = {
-    'aria-hidden': null,
-    below: null,
-    title: null,
-  };
+  const [target, setTarget] = useState(() => document.getElementById('AppHeader'));
+  const prevRouteVisibleRef = useRef(route.visible);
+  const prevAppVisibleRef = useRef(app.isVisible);
+  const prevTitleRef = useRef(title);
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * @param {Object} props The component props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      target: document.getElementById('AppHeader'),
-    };
-  }
-
-  /**
-   * Sets the target if it hasn't been set before.
-   */
-  componentDidMount() {
-    let { target } = this.state;
-
-    if (!target) {
-      target = document.getElementById('AppHeader');
-      this.setState({ target: target || null });
+  useEffect(() => {
+    let nextTarget = target;
+    if (!nextTarget) {
+      nextTarget = document.getElementById('AppHeader') || null;
+      setTarget(nextTarget);
     }
 
-    if (this.props.setFocus && target) {
-    // Set the focus to the app bar title or else to the first focusable element for screen readers.
-      const focusable = target.querySelector('.theme__app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
-
+    if (shouldSetFocusOnMount && nextTarget) {
+      const focusable = nextTarget.querySelector('.theme__app-bar__title')
+        || nextTarget.querySelector(
+          'button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])'
+        );
       if (focusable) {
         focusable.focus();
       }
     }
 
-    if (this.props.route.visible) {
-      this.updateStatusBar();
+    if (route.visible) {
+      const { pathname } = route;
+      updateStatusBarAction(widgetSettings, pathname === INDEX_PATH);
 
-      if (this.props.title) {
-        const { __ } = this.context.i18n();
-        if (this.props.route.state.title !== this.props.title) {
-          router.update(this.props.route.id, { title: __(this.props.title) });
-        }
+      if (title && route.state.title !== title) {
+        router.update(route.id, { title: i18n.text(title) });
       }
     }
-  }
+    /* eslint-disable-next-line react-hooks/exhaustive-deps --
+     * mount: DOM target + initial status bar only */
+  }, []);
 
-  /**
-   * Syncs the colors of the device status bar with the colors of the AppBar when it came visible.
-   * @param {Object} prevProps The previous component props.
-   */
-  componentDidUpdate(prevProps) {
-    if (!this.props.route.visible) {
-      // Only visible app bars trigger color syncing.
+  useEffect(() => {
+    if (!route.visible) {
+      prevRouteVisibleRef.current = route.visible;
+      prevAppVisibleRef.current = app.isVisible;
+      prevTitleRef.current = title;
       return;
     }
 
     const routeDidEnter =
-      prevProps.route.visible === false && this.props.route.visible === true;
+      prevRouteVisibleRef.current === false && route.visible === true;
     const engageDidEnter =
-      prevProps.app.isVisible === false && this.props.app.isVisible === true;
+      prevAppVisibleRef.current === false && app.isVisible === true;
     const engageWillLeave =
-      prevProps.app.isVisible === true && this.props.app.isVisible === false;
+      prevAppVisibleRef.current === true && app.isVisible === false;
 
     if (routeDidEnter || engageDidEnter) {
-      // Sync the colors of the app bar when the route with the bar came visible.
-      this.updateStatusBar();
+      const { pathname } = route;
+      updateStatusBarAction(widgetSettings, pathname === INDEX_PATH);
     }
 
     if (engageWillLeave) {
-      // Reset the status bar when Engage goes into the background.
-      this.props.resetStatusBar();
+      resetStatusBar();
     }
 
-    if (prevProps.title !== this.props.title && this.props.route.state.title !== this.props.title) {
-      const { __ } = this.context.i18n();
-      router.update(this.props.route.id, { title: __(this.props.title) });
-    }
-  }
-
-  /**
-   * Updates the status bar styling.
-   */
-  updateStatusBar() {
-    const { pathname } = this.props.route;
-    /**
-     * The settings for the startpage need to be preserved within the statusbar to optimize
-     * the initial rendering at the app start.
-     */
-    this.props.updateStatusBar(this.props.widgetSettings, pathname === INDEX_PATH);
-  }
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    if (!this.props.route.visible || !this.state.target) {
-      return null;
+    if (prevTitleRef.current !== title && route.state.title !== title) {
+      router.update(route.id, { title: i18n.text(title || '') });
     }
 
-    const { background, color } = this.props.widgetSettings;
-    const { __ } = this.context.i18n();
-    const center = <AppBar.Title title={__(this.props.title || '')} />;
-    const below = (
-      <Fragment key="below">
-        {this.props.below}
-        <ProgressBar />
-      </Fragment>
-    );
+    prevRouteVisibleRef.current = route.visible;
+    prevAppVisibleRef.current = app.isVisible;
+    prevTitleRef.current = title;
+  }, [
+    app.isVisible,
+    resetStatusBar,
+    route,
+    title,
+    updateStatusBarAction,
+    widgetSettings,
+  ]);
 
-    return ReactDOM.createPortal(
-      <>
-        <Portal name={APP_BAR_DEFAULT_BEFORE} />
-        <Portal name={APP_BAR_DEFAULT}>
-          <AppBar
-            backgroundColor={background}
-            textColor={color}
-            center={center}
-            {...this.props}
-            below={below}
-            aria-hidden={this.props['aria-hidden']}
-          />
-        </Portal>
-        <Portal name={APP_BAR_DEFAULT_AFTER} />
-      </>,
-      this.state.target
-    );
+  if (!route.visible || !target) {
+    return null;
   }
-}
 
-/**
- * The AppBarDefaultWithContext component.
- * @param {Object} props The component props.
- * @returns {JSX}
- */
-const AppBarDefaultWithContext = props => (
-  <ViewContext.Consumer>
-    {({ ariaHidden }) => (
-      <AppBarDefault {...props} aria-hidden={ariaHidden} />
-    )}
-  </ViewContext.Consumer>
-);
+  const { background, color } = widgetSettings;
+  const center = <AppBar.Title title={i18n.text(title || '')} />;
+  const belowContent = (
+    <Fragment key="below">
+      {below}
+      <ProgressBar />
+    </Fragment>
+  );
+
+  return ReactDOM.createPortal(
+    <>
+      <Portal name={APP_BAR_DEFAULT_BEFORE} />
+      <Portal name={APP_BAR_DEFAULT}>
+        <AppBar
+          backgroundColor={background}
+          textColor={color}
+          center={center}
+          {...props}
+          below={belowContent}
+          aria-hidden={ariaHidden}
+        />
+      </Portal>
+      <Portal name={APP_BAR_DEFAULT_AFTER} />
+    </>,
+    target
+  );
+};
+
+AppBarDefault.propTypes = {
+  app: PropTypes.shape().isRequired,
+  resetStatusBar: PropTypes.func.isRequired,
+  route: PropTypes.shape().isRequired,
+  setFocus: PropTypes.bool.isRequired,
+  updateStatusBar: PropTypes.func.isRequired,
+  widgetSettings: PropTypes.shape().isRequired,
+  below: PropTypes.node,
+  title: PropTypes.string,
+};
+
+AppBarDefault.defaultProps = {
+  below: null,
+  title: null,
+};
 
 const WrappedComponent = withApp(withWidgetSettings(
-  withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }),
+  withRoute(connect(memo(AppBarDefault)), { prop: 'route' }),
   '@shopgate/engage/components/AppBar'
 ));
 

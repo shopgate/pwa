@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { CacheProvider } from '@emotion/react';
 import { emotionCache } from '@shopgate/engage/styles/tss';
-import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
+import {
+  ThemeProvider, createTheme, makeStyles, responsiveMediaQuery,
+} from '@shopgate/engage/styles';
 import { ThemeConfigResolver, AppProvider, hasWebBridge } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { themeConfig } from '@shopgate/engage';
@@ -81,7 +83,42 @@ import PageNotFound from './404';
 import * as routes from './routes';
 import { routesTransforms } from './routesTransforms';
 import { themeComponents, legacyThemeAPI } from '../themeApi';
-import { navigation, navigationHidden, content } from './index.style';
+import { DESKTOP_MENU_BAR_WIDTH } from '../constants';
+
+const { colors } = themeConfig;
+
+const useLayoutStyles = makeStyles()({
+  navigation: {
+    flexShrink: 0,
+    display: 'none',
+    zIndex: 1,
+    width: `${DESKTOP_MENU_BAR_WIDTH}px`,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      borderRight: `1px solid ${colors.shade7}`,
+      display: 'block',
+      backgroundColor: 'var(--page-background-color)',
+    },
+  },
+  navigationHidden: {
+    flexShrink: 0,
+    display: 'none',
+    zIndex: 1,
+    width: `${DESKTOP_MENU_BAR_WIDTH}px`,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      border: 'none',
+      display: 'block',
+      backgroundColor: 'var(--page-background-color)',
+    },
+  },
+  content: {
+    zIndex: 1,
+    backgroundColor: 'var(--page-background-color)',
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      position: 'relative',
+      width: 'var(--page-content-width)',
+    },
+  },
+});
 
 const devFontsUrl = 'https://connect.shopgate.com/assets/fonts/roboto/font.css';
 
@@ -111,6 +148,7 @@ const globalLocationSelectorAllowList = [
  * @returns {JSX.Element}
  */
 const Pages = ({ store }) => {
+  const { classes } = useLayoutStyles();
   const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
 
   const theme = useMemo(() => {
@@ -166,12 +204,12 @@ const Pages = ({ store }) => {
                         />
                         <SideNavigation
                           classNames={{
-                            visible: navigation,
-                            hidden: navigationHidden,
+                            visible: classes.navigation,
+                            hidden: classes.navigationHidden,
                           }}
                           routePatternBlacklist={sideNavigationBlacklist}
                         />
-                        <div className={content}>
+                        <div className={classes.content}>
                           <Router history={history}>
                             <Route
                               pattern={INDEX_PATH}

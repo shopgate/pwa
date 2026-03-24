@@ -1,74 +1,99 @@
-import React, { PureComponent } from 'react';
+import React, {
+  useState, useRef, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
+import { i18n } from '@shopgate/engage/core';
 import { Ripple } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Icon from '../Header/components/CTAButtons/components/CartButton/components/Icon';
-import styles from './AddToCartButton.style';
 import inject from './AddToCartButton.injector';
 import connect from './AddToCartButton.connector';
 
+const { colors, variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  button: {
+    cursor: 'pointer',
+    background: 'var(--color-button-cta)',
+    color: 'var(--color-button-cta-contrast)',
+    fontSize: 16,
+    fontWeight: 700,
+    borderRadius: 5,
+    outline: 0,
+    textAlign: 'center',
+    transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    margin: '16px 0px 16px 16px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    padding: `${(variables.gap.big * 0.75)}px ${variables.gap.big * 0.6}px ${(variables.gap.big * 0.75)}px`,
+  },
+  disabled: {
+    background: colors.shade5,
+    color: colors.light,
+    cursor: 'not-allowed',
+    fontSize: 16,
+    fontWeight: 700,
+    borderRadius: 5,
+    outline: 0,
+    textAlign: 'center',
+    transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    margin: '16px 0px 16px 16px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    padding: `${(variables.gap.big * 0.75)}px ${variables.gap.big * 0.6}px ${(variables.gap.big * 0.75)}px`,
+  },
+  icon: {
+    height: 32,
+    marginTop: -24,
+    marginRight: -24,
+    '& svg': {
+      fill: 'var(--color-button-cta-contrast)',
+    },
+  },
+  iconDisabled: {
+    '& svg': {
+      fill: '#fff',
+    },
+  },
+});
+
 /**
- * The AddToCartButton component.
+ * Wide layout add-to-cart control on the product page.
+ * @param {Object} props Component props from connector and injector.
+ * @returns {JSX.Element}
  */
-class AddToCartButton extends PureComponent {
-  static propTypes = {
-    addToCart: PropTypes.func.isRequired,
-    conditioner: PropTypes.shape().isRequired,
-    disabled: PropTypes.bool.isRequired,
-    loading: PropTypes.bool.isRequired,
-    options: PropTypes.shape().isRequired,
-    productId: PropTypes.string.isRequired,
-    quantity: PropTypes.number.isRequired,
-    isRopeFulfillmentMethodAllowed: PropTypes.bool,
-    userLocation: PropTypes.shape(),
-    userMethod: PropTypes.string,
-  };
+const AddToCartButton = ({
+  addToCart,
+  conditioner,
+  disabled,
+  loading,
+  options,
+  productId,
+  quantity,
+  isRopeFulfillmentMethodAllowed,
+  userLocation,
+  userMethod,
+}) => {
+  const { classes } = useStyles();
+  const [success, setSuccess] = useState(false);
+  const lockedRef = useRef(false);
 
-  static defaultProps = {
-    isRopeFulfillmentMethodAllowed: false,
-    userLocation: null,
-    userMethod: '',
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.locked = false;
-    this.state = {
-      opened: false,
-      success: false,
-    };
-  }
-
-  addToCart = () => {
-    const {
-      conditioner,
-      productId,
-      quantity,
-      options,
-      userLocation,
-      userMethod,
-      isRopeFulfillmentMethodAllowed,
-      addToCart,
-    } = this.props;
-
+  const runAddToCart = useCallback(() => {
     conditioner.check().then((fulfilled) => {
       if (!fulfilled) {
         return;
       }
 
-      this.setState({ success: true });
+      setSuccess(true);
 
       const addToCartData = {
         productId,
@@ -76,7 +101,6 @@ class AddToCartButton extends PureComponent {
         quantity,
       };
 
-      // Add the user location for ROPIS if it is set.
       if (
         userLocation !== null
         && userMethod !== DIRECT_SHIP
@@ -94,76 +118,78 @@ class AddToCartButton extends PureComponent {
       addToCart(addToCartData);
 
       broadcastLiveMessage('product.adding_item', {
-        params: { count: this.context.quantity },
+        params: { count: quantity },
       });
     });
-  };
+  }, [
+    addToCart,
+    conditioner,
+    isRopeFulfillmentMethodAllowed,
+    options,
+    productId,
+    quantity,
+    userLocation,
+    userMethod,
+  ]);
 
-  /**
-   * Adds a new product to cart or opens the cart if it already has products in it.
-   */
-  handleClick = async () => {
-    const {
-      disabled,
-      loading,
-    } = this.props;
-
-    if (this.locked || disabled || loading) {
+  const handleClick = useCallback(async () => {
+    if (lockedRef.current || disabled || loading) {
       return;
     }
 
-    this.locked = true;
-    await this.addToCart();
+    lockedRef.current = true;
+    await runAddToCart();
     setTimeout(() => {
-      this.locked = false;
+      lockedRef.current = false;
     }, 0);
-  };
+  }, [disabled, loading, runAddToCart]);
 
-  /**
-   * Renders the animated tick.
-   * @returns {JSX}
-   */
-  renderIcon() {
-    return (
-      <div className={classNames(styles.icon, {
-        [styles.iconDisabled]: this.props.disabled,
+  const handleIconSuccess = useCallback(() => {
+    setSuccess(false);
+  }, []);
+
+  return (
+    <Ripple
+      fill
+      className={disabled ? classes.disabled : classes.button}
+      onClick={handleClick}
+      disabled={disabled}
+      data-test-id="addToCartBarButton"
+      aria-label={i18n.text('product.add_to_cart')}
+      type="button"
+    >
+      <I18n.Text string="product.add_to_cart" />
+      <div className={classNames(classes.icon, {
+        [classes.iconDisabled]: disabled,
       })}
       >
         <Icon
-          disabled={this.props.disabled}
-          success={this.state.success}
-          onSuccess={() => { this.setState({ success: false }); }}
+          disabled={disabled}
+          success={success}
+          onSuccess={handleIconSuccess}
         />
       </div>
-    );
-  }
+    </Ripple>
+  );
+};
 
-  /**
-   * Renders the component.
-   * @return {JSX}
-   */
-  render() {
-    const { disabled } = this.props;
-    const { __ } = this.context.i18n();
-    const style = this.state.opened ? { width: '40%' } : null;
-    const className = disabled ? styles.disabled.toString() : styles.button.toString();
+AddToCartButton.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  conditioner: PropTypes.shape().isRequired,
+  disabled: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  options: PropTypes.shape().isRequired,
+  productId: PropTypes.string.isRequired,
+  quantity: PropTypes.number.isRequired,
+  isRopeFulfillmentMethodAllowed: PropTypes.bool,
+  userLocation: PropTypes.shape(),
+  userMethod: PropTypes.string,
+};
 
-    return (
-      <Ripple
-        fill
-        className={className}
-        style={style}
-        onClick={this.handleClick}
-        disabled={disabled}
-        data-test-id="addToCartBarButton"
-        aria-label={__('product.add_to_cart')}
-        type="button"
-      >
-        <I18n.Text string="product.add_to_cart" />
-        {this.renderIcon()}
-      </Ripple>
-    );
-  }
-}
+AddToCartButton.defaultProps = {
+  isRopeFulfillmentMethodAllowed: false,
+  userLocation: null,
+  userMethod: '',
+};
 
 export default inject(connect(AddToCartButton));

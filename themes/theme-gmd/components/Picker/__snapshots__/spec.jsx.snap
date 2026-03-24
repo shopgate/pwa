@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Picker /> should render the picker 1`] = `
-<_default
+<Picker
   label="Picker label"
 >
   <Consumer>
-    <Picker
+    <PickerInner
       buttonComponent={null}
       buttonProps={{}}
       clickDelay={150}
@@ -17,26 +17,23 @@ exports[`<Picker /> should render the picker 1`] = `
       <ForwardRef(WithForwardedRef(Picker))
         buttonComponent={[Function]}
         buttonProps={{}}
-        className="css-kdzjuz"
-        clickDelay={150}
+        className="tss-1nsf4dv-root"
         label="Picker label"
         listComponent={[Function]}
         modalComponent={[Function]}
         onClose={[Function]}
-        setViewAriaHidden={[MockFunction]}
       >
         <Picker
           buttonComponent={[Function]}
           buttonProps={{}}
-          className="css-kdzjuz"
-          clickDelay={150}
+          className="tss-1nsf4dv-root"
           disabled={false}
           duration={300}
           forwardedRef={
             {
               "current": <div
                 aria-haspopup="true"
-                class="css-kdzjuz engage__picker"
+                class="tss-1nsf4dv-root engage__picker"
                 role="button"
                 tabindex="0"
               >
@@ -63,12 +60,11 @@ exports[`<Picker /> should render the picker 1`] = `
           onClose={[Function]}
           onSelect={[Function]}
           placeholder="Pick ..."
-          setViewAriaHidden={[MockFunction]}
           value={null}
         >
           <div
             aria-haspopup={true}
-            className="css-kdzjuz engage__picker"
+            className="tss-1nsf4dv-root engage__picker"
             role="button"
             tabIndex={0}
           >
@@ -118,7 +114,7 @@ exports[`<Picker /> should render the picker 1`] = `
           </div>
         </Picker>
       </ForwardRef(WithForwardedRef(Picker))>
-    </Picker>
+    </PickerInner>
   </Consumer>
-</_default>
+</Picker>
 `;
