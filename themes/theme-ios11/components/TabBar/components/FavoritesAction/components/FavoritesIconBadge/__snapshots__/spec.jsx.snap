@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TabBar favorites action - lifecycle should update when number exceeds maximum 1`] = `
+exports[`TabBar favorites action - behavior should cap display at MAX when number exceeds maximum 1`] = `
 <FavoritesIconBadge
   favoritesCount={9999}
   showWishlistItemsCountBadge={true}
@@ -11,14 +11,14 @@ exports[`TabBar favorites action - lifecycle should update when number exceeds m
   }
 >
   <div
-    className="css-qcorc4 theme__tab-bar__favorites-icon-badge theme__badge"
+    className="tss-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
   >
     999+
   </div>
 </FavoritesIconBadge>
 `;
 
-exports[`TabBar favorites action - lifecycle should update when number is changed 1`] = `
+exports[`TabBar favorites action - behavior should show count when number is changed 1`] = `
 <FavoritesIconBadge
   favoritesCount={99}
   showWishlistItemsCountBadge={true}
@@ -29,7 +29,7 @@ exports[`TabBar favorites action - lifecycle should update when number is change
   }
 >
   <div
-    className="css-qcorc4 theme__tab-bar__favorites-icon-badge theme__badge"
+    className="tss-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
   >
     99
   </div>
@@ -49,8 +49,8 @@ exports[`TabBar favorites action should render exact number 1`] = `
     }
   }
 >
-  <WithWidgetSettings(Connect(FavoritesIconBadge))>
-    <Connect(FavoritesIconBadge)
+  <WithWidgetSettings(Connect(Component))>
+    <Connect(Component)
       widgetSettings={{}}
     >
       <FavoritesIconBadge
@@ -60,12 +60,12 @@ exports[`TabBar favorites action should render exact number 1`] = `
         widgetSettings={{}}
       >
         <div
-          className="css-qcorc4 theme__tab-bar__favorites-icon-badge theme__badge"
+          className="tss-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
         >
           1
         </div>
       </FavoritesIconBadge>
-    </Connect(FavoritesIconBadge)>
-  </WithWidgetSettings(Connect(FavoritesIconBadge))>
+    </Connect(Component)>
+  </WithWidgetSettings(Connect(Component))>
 </Provider>
 `;

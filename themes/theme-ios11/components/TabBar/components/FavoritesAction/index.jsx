@@ -1,8 +1,9 @@
-import React, { Component, Fragment } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import Portal from '@shopgate/pwa-common/components/Portal';
+import { makeStyles } from '@shopgate/engage/styles';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
-import Portal from '@shopgate/pwa-common/components/Portal';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import FavoritesIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import { i18n } from '@shopgate/engage/core';
@@ -11,95 +12,101 @@ import FavoritesIconBadge from './components/FavoritesIconBadge'; // eslint-disa
 import TabBarAction from '../TabBarAction';
 import connect from '../connector';
 import connectBadge from './components/FavoritesIconBadge/connector';
-import styles from './style';
+
+const useIconStyles = makeStyles()({
+  icon: {
+    height: 24,
+    width: 24,
+  },
+});
+
+const defaultWidgetSettings = { showCounter: true };
 
 /**
  * The tab bar favorites action.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class TabBarFavoritesAction extends Component {
-  static propTypes = {
-    historyPush: PropTypes.func.isRequired,
-    path: PropTypes.string.isRequired,
-    showWishlistItemsCountBadge: PropTypes.bool.isRequired,
-    widgetSettings: PropTypes.shape({
-      showCounter: PropTypes.bool,
-    }),
-    ...TabBarAction.propTypes,
-  };
+const TabBarFavoritesAction = (props) => {
+  const { classes } = useIconStyles();
+  const {
+    favoritesCount,
+    historyPush,
+    label,
+    showWishlistItemsCountBadge,
+    widgetSettings = defaultWidgetSettings,
+    ...tabBarActionProps
+  } = props;
 
-  static defaultProps = {
-    widgetSettings: {
-      showCounter: true,
-    },
-    ...TabBarAction.defaultProps,
-  };
+  const handleClick = useCallback(() => {
+    historyPush({ pathname: FAVORITES_PATH });
+  }, [historyPush]);
 
-  /**
-   * Handles the click action.
-   */
-  handleClick = () => {
-    this.props.historyPush({ pathname: FAVORITES_PATH });
-  };
+  const showCounter = (hasNewServices() && showWishlistItemsCountBadge)
+    || (!hasNewServices() && (widgetSettings.showCounter ?? defaultWidgetSettings.showCounter));
 
-  /**
-   * Renders the component.
-   * @return {JSX}
-   */
-  render() {
-    const showCounter =
-    (hasNewServices() && this.props.showWishlistItemsCountBadge) ||
-    (!hasNewServices() &&
-      (this.props.widgetSettings.showCounter ??
-        TabBarFavoritesAction.defaultProps.widgetSettings.showCounter));
-
-    // Remove some props that are not meant for the TabBarAction component.
-    const {
-      showWishlistItemsCountBadge, favoritesCount, widgetSettings, ...tabBarActionProps
-    } = this.props;
-
-    const { label } = this.props;
+  const ariaLabel = useMemo(() => {
     const ariaCount = showCounter ? `${i18n.text('common.products')}: ${favoritesCount}.` : '';
-    const ariaLabel = `${i18n.text(label)}. ${ariaCount} `;
+    return `${i18n.text(label)}. ${ariaCount} `;
+  }, [favoritesCount, label, showCounter]);
 
-    return (
-      <>
-        <Portal
-          name={portals.TAB_BAR_FAVORITES_BEFORE}
-          props={{
-            ...this.props,
-            TabBarAction,
-          }}
-        />
-        <Portal
-          name={portals.TAB_BAR_FAVORITES}
-          props={{
-            ...this.props,
-            TabBarAction,
-          }}
+  return (
+    <>
+      <Portal
+        name={portals.TAB_BAR_FAVORITES_BEFORE}
+        props={{
+          ...props,
+          TabBarAction,
+        }}
+      />
+      <Portal
+        name={portals.TAB_BAR_FAVORITES}
+        props={{
+          ...props,
+          TabBarAction,
+        }}
+      >
+        <TabBarAction
+          {...tabBarActionProps}
+          aria-label={ariaLabel}
+          icon={(
+            <Portal name={portals.TAB_BAR_FAVORITES_ICON}>
+              <FavoritesIcon className={classes.icon} />
+            </Portal>
+          )}
+          onClick={handleClick}
         >
-          <TabBarAction
-            {...tabBarActionProps}
-            aria-label={ariaLabel}
-            icon={(
-              <Portal name={portals.TAB_BAR_FAVORITES_ICON}>
-                <FavoritesIcon className={styles} />
-              </Portal>
-            )}
-            onClick={this.handleClick}
-          >
-            <FavoritesIconBadge />
-          </TabBarAction>
-        </Portal>
-        <Portal
-          name={portals.TAB_BAR_FAVORITES_AFTER}
-          props={{
-            ...this.props,
-            TabBarAction,
-          }}
-        />
-      </>
-    );
-  }
-}
+          <FavoritesIconBadge />
+        </TabBarAction>
+      </Portal>
+      <Portal
+        name={portals.TAB_BAR_FAVORITES_AFTER}
+        props={{
+          ...props,
+          TabBarAction,
+        }}
+      />
+    </>
+  );
+};
 
-export default withWidgetSettings(connect(connectBadge(TabBarFavoritesAction)), '@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge');
+TabBarFavoritesAction.propTypes = {
+  favoritesCount: PropTypes.number.isRequired,
+  historyPush: PropTypes.func.isRequired,
+  path: PropTypes.string.isRequired,
+  showWishlistItemsCountBadge: PropTypes.bool.isRequired,
+  widgetSettings: PropTypes.shape({
+    showCounter: PropTypes.bool,
+  }),
+  ...TabBarAction.propTypes,
+};
+
+TabBarFavoritesAction.defaultProps = {
+  widgetSettings: defaultWidgetSettings,
+  ...TabBarAction.defaultProps,
+};
+
+export default withWidgetSettings(
+  connect(connectBadge(memo(TabBarFavoritesAction))),
+  '@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge'
+);

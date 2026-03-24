@@ -1,14 +1,51 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
-import styles, { itemDetails, itemImage, badgesPortal } from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  root: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    background: colors.light,
+    fontSize: 14,
+    height: '100%',
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      flexDirection: 'row-reverse',
+      border: `1px solid ${colors.shade7}`,
+    },
+  },
+  itemDetails: {
+    position: 'relative',
+    flexGrow: 2,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      width: '66%',
+    },
+  },
+  itemImage: {
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      width: '33%',
+    },
+  },
+  badgesPortal: {
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      left: 'initial',
+      right: 5,
+      width: 'inherit',
+    },
+  },
+});
 
 /**
  * The Product Grid Item component.
@@ -16,10 +53,11 @@ import styles, { itemDetails, itemImage, badgesPortal } from './style';
  * @return {JSX.Element}
  */
 const Item = ({ product, display }) => {
+  const { classes } = useStyles();
   const { meta } = useProductListType();
 
   return (
-    <div className={`${styles} theme__product-grid__item`}>
+    <div className={`${classes.root} theme__product-grid__item`}>
       <Link
         tag="a"
         role="none"
@@ -28,7 +66,7 @@ const Item = ({ product, display }) => {
           title: product.name,
           ...meta,
         }}
-        className={itemImage}
+        className={classes.itemImage}
       >
         {isBeta() && product.featuredMedia
           ? <FeaturedMedia
@@ -41,13 +79,13 @@ const Item = ({ product, display }) => {
               imageUrl={product.featuredImageBaseUrl}
           />}
       </Link>
-      <ProductBadges location="productGrid" productId={product.id} className={badgesPortal}>
+      <ProductBadges location="productGrid" productId={product.id} className={classes.badgesPortal}>
         <ItemDiscount
           productId={product.id}
           discount={product.price.discount || null}
         />
       </ProductBadges>
-      <div className={itemDetails}>
+      <div className={classes.itemDetails}>
         <ItemDetails
           product={product}
           display={display}

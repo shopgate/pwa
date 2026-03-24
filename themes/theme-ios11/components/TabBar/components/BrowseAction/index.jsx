@@ -1,73 +1,75 @@
-import React, { Component, Fragment } from 'react';
+import React, { memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
-import { BROWSE_PATH } from 'Pages/Browse/constants';
+import { makeStyles } from '@shopgate/engage/styles';
 import BrowseIcon from '@shopgate/pwa-ui-shared/icons/BrowseIcon';
+import { BROWSE_PATH } from 'Pages/Browse/constants';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import connect from '../connector';
-import styles from './style';
+
+const useIconStyles = makeStyles()({
+  icon: {
+    height: 24,
+    width: 24,
+  },
+});
 
 /**
  * The tab bar browse action.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class TabBarBrowseAction extends Component {
-  static propTypes = {
-    historyPush: PropTypes.func.isRequired,
-    path: PropTypes.string.isRequired,
-    ...TabBarAction.propTypes,
-  };
+const TabBarBrowseAction = (props) => {
+  const { classes } = useIconStyles();
+  const { historyPush } = props;
+  const handleClick = useCallback(() => {
+    historyPush({ pathname: BROWSE_PATH });
+  }, [historyPush]);
 
-  static defaultProps = TabBarAction.defaultProps;
-
-  /**
-   * Handles the click action.
-   */
-  handleClick = () => {
-    this.props.historyPush({ pathname: BROWSE_PATH });
-  };
-
-  /**
-   * Renders the component.
-   * @return {JSX}
-   */
-  render() {
-    return (
-      <>
-        <Portal
-          name={portals.TAB_BAR_BROWSE_BEFORE}
-          props={{
-            ...this.props,
-            TabBarAction,
-          }}
+  return (
+    <>
+      <Portal
+        name={portals.TAB_BAR_BROWSE_BEFORE}
+        props={{
+          ...props,
+          TabBarAction,
+        }}
+      />
+      <Portal
+        name={portals.TAB_BAR_BROWSE}
+        props={{
+          ...props,
+          TabBarAction,
+        }}
+      >
+        <TabBarAction
+          {...props}
+          icon={(
+            <Portal name={portals.TAB_BAR_BROWSE_ICON}>
+              <BrowseIcon className={classes.icon} />
+            </Portal>
+          )}
+          onClick={handleClick}
         />
-        <Portal
-          name={portals.TAB_BAR_BROWSE}
-          props={{
-            ...this.props,
-            TabBarAction,
-          }}
-        >
-          <TabBarAction
-            {...this.props}
-            icon={(
-              <Portal name={portals.TAB_BAR_BROWSE_ICON}>
-                <BrowseIcon className={styles} />
-              </Portal>
-            )}
-            onClick={this.handleClick}
-          />
-        </Portal>
-        <Portal
-          name={portals.TAB_BAR_BROWSE_AFTER}
-          props={{
-            ...this.props,
-            TabBarAction,
-          }}
-        />
-      </>
-    );
-  }
-}
+      </Portal>
+      <Portal
+        name={portals.TAB_BAR_BROWSE_AFTER}
+        props={{
+          ...props,
+          TabBarAction,
+        }}
+      />
+    </>
+  );
+};
 
-export default connect(TabBarBrowseAction);
+TabBarBrowseAction.propTypes = {
+  historyPush: PropTypes.func.isRequired,
+  path: PropTypes.string.isRequired,
+  ...TabBarAction.propTypes,
+};
+
+TabBarBrowseAction.defaultProps = TabBarAction.defaultProps;
+
+export default connect(memo(TabBarBrowseAction));
