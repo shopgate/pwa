@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, CartIcon } from '@shopgate/pwa-ui-ios';
 import { Portal } from '@shopgate/pwa-common/components';
@@ -8,9 +8,18 @@ import {
   APP_BAR_CART_BUTTON_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { withWidgetSettings, i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import Badge from './components/CartBadge';
 import connect from './connector';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  root: {
+    flexShrink: 0,
+    height: 44,
+    overflow: 'hidden',
+    width: 44,
+  },
+});
 
 /**
  * @returns {JSX}
@@ -21,70 +30,59 @@ const Icon = () => (
 
 /**
  * The CartButton component.
+ * @param {Object} props Component props.
+ * @param {number} props.count Cart item count.
+ * @param {Function} props.navigate Opens the cart.
+ * @param {Object} props.widgetSettings App bar widget settings.
+ * @returns {JSX.Element}
  */
-class CartButton extends PureComponent {
-  static propTypes = {
-    count: PropTypes.number.isRequired,
-    navigate: PropTypes.func.isRequired,
-    widgetSettings: PropTypes.shape().isRequired,
-  };
+const CartButton = ({ count, navigate, widgetSettings }) => {
+  const { classes } = useStyles();
 
-  /**
-   * @returns {JSX}
-   */
-  get badge() {
-    const { count } = this.props;
-    const { badge } = this.style;
-    return () => <Badge style={badge} count={count} />;
-  }
+  const {
+    buttonCartBackground,
+    buttonCartColor,
+    buttonCartBadgeBackground,
+    buttonCartBadgeColor,
+  } = widgetSettings;
 
-  /**
-   * @returns {JSX}
-   */
-  get style() {
-    const {
-      buttonCartBackground,
-      buttonCartColor,
-      buttonCartBadgeBackground,
-      buttonCartBadgeColor,
-    } = this.props.widgetSettings;
+  const iconStyle = useMemo(() => ({
+    background: buttonCartBackground,
+    color: buttonCartColor,
+  }), [buttonCartBackground, buttonCartColor]);
 
-    return {
-      icon: {
-        background: buttonCartBackground,
-        color: buttonCartColor,
-      },
-      badge: {
-        background: buttonCartBadgeBackground,
-        color: buttonCartBadgeColor,
-      },
-    };
-  }
+  const badgeStyle = useMemo(() => ({
+    background: buttonCartBadgeBackground,
+    color: buttonCartBadgeColor,
+  }), [buttonCartBadgeBackground, buttonCartBadgeColor]);
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { navigate } = this.props;
+  const renderBadge = useCallback(() => (
+    <Badge style={badgeStyle} count={count} />
+  ), [badgeStyle, count]);
 
-    return (
-      <Fragment key="cart">
-        <Portal name={APP_BAR_CART_BUTTON_BEFORE} />
-        <Portal name={APP_BAR_CART_BUTTON}>
-          <div className={styles} data-test-id="CartButton">
-            <AppBar.Icon
-              {...this.style.icon}
-              badge={this.badge}
-              icon={Icon}
-              onClick={navigate}
-              aria-label={i18n.text('navigation.cart')}
-            />
-          </div>
-        </Portal>
-        <Portal name={APP_BAR_CART_BUTTON_AFTER} />
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment key="cart">
+      <Portal name={APP_BAR_CART_BUTTON_BEFORE} />
+      <Portal name={APP_BAR_CART_BUTTON}>
+        <div className={classes.root} data-test-id="CartButton">
+          <AppBar.Icon
+            {...iconStyle}
+            badge={renderBadge}
+            icon={Icon}
+            onClick={navigate}
+            aria-label={i18n.text('navigation.cart')}
+          />
+        </div>
+      </Portal>
+      <Portal name={APP_BAR_CART_BUTTON_AFTER} />
+    </Fragment>
+  );
+};
+
+CartButton.propTypes = {
+  count: PropTypes.number.isRequired,
+  navigate: PropTypes.func.isRequired,
+  widgetSettings: PropTypes.shape().isRequired,
+};
 
 export default withWidgetSettings(connect(CartButton), '@shopgate/engage/components/AppBar');

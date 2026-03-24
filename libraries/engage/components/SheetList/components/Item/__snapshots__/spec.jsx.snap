@@ -1,304 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SheetList.Item /> should render with a link 1`] = `
-<ForwardRef(WithForwardedRef(Item))
+<ForwardRef(WithForwardedRef(ItemWithStyles))
   link="url/to/somewhere"
   title="My Title"
 >
-  <Item
-    className={null}
-    description={null}
+  <ItemWithStyles
     forwardedRef={null}
-    image={null}
-    isDisabled={false}
-    isSelected={false}
-    leftComponent={null}
     link="url/to/somewhere"
-    linkComponent={[Function]}
-    linkState={null}
-    onClick={null}
-    rightComponent={null}
-    testId={null}
     title="My Title"
   >
-    <ForwardRef(WithForwardedRef(Glow))
+    <Item
       className={null}
-      styles={
+      classes={
         {
-          "hover": {
-            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
-          },
+          "description": "tss-14slm4s-Item-description",
+          "disabled": "tss-1ot0pf5-Item-disabled",
+          "grid": "tss-1l68gs0-Item-grid",
+          "image": "tss-wlqzfe-Item-image",
+          "selected": "tss-v08ox0-Item-selected",
+          "title": "tss-1wzwt5u-Item-title",
         }
       }
+      description={null}
+      forwardedRef={null}
+      image={null}
+      isDisabled={false}
+      isSelected={false}
+      leftComponent={null}
+      link="url/to/somewhere"
+      linkComponent={[Function]}
+      linkState={null}
+      onClick={null}
+      rightComponent={null}
+      testId={null}
+      title="My Title"
     >
-      <Glow
-        className={null}
-        color="#f7f7f7"
-        disabled={false}
-        forwardedRef={null}
-        styles={
-          {
-            "hover": {
-              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
-            },
-          }
-        }
-      >
-        <div
-          className="css-13azwyo ui-shared__glow"
-          disabled={false}
-          onClick={[Function]}
-        >
-          <div
-            className="css-1bmd5dz"
-            style={{}}
-          />
-          <Link
-            href="url/to/somewhere"
-            onClick={null}
-            state={null}
-            tabIndex={0}
-          >
-            <div />
-          </Link>
-        </div>
-      </Glow>
-    </ForwardRef(WithForwardedRef(Glow))>
-  </Item>
-</ForwardRef(WithForwardedRef(Item))>
-`;
-
-exports[`<SheetList.Item /> should render with a right component 1`] = `
-<ForwardRef(WithForwardedRef(Item))
-  rightComponent={
-    <span>
-      I\`m a span.
-    </span>
-  }
-  title="My Title"
->
-  <Item
-    className={null}
-    description={null}
-    forwardedRef={null}
-    image={null}
-    isDisabled={false}
-    isSelected={false}
-    leftComponent={null}
-    link={null}
-    linkComponent={[Function]}
-    linkState={null}
-    onClick={null}
-    rightComponent={
-      <span>
-        I\`m a span.
-      </span>
-    }
-    testId={null}
-    title="My Title"
-  >
-    <div
-      className="engage__sheet-list__item"
-      data-test-id={null}
-    >
-      <Grid
-        className="css-1ojce65"
-        component="div"
-        wrap={false}
-      >
-        <div
-          className="css-1ojce65 css-h7r55a common__grid"
-        >
-          <GridItem
-            className="css-1tp5o1f"
-            component="div"
-            grow={1}
-            shrink={1}
-          >
-            <div
-              className="css-1tp5o1f css-1gs0ko2"
-            >
-              <div>
-                My Title
-              </div>
-            </div>
-          </GridItem>
-          <GridItem
-            className=""
-            component="div"
-            grow={1}
-            shrink={1}
-          >
-            <div
-              className=" css-1gs0ko2"
-            >
-              <span>
-                I\`m a span.
-              </span>
-            </div>
-          </GridItem>
-        </div>
-      </Grid>
-    </div>
-  </Item>
-</ForwardRef(WithForwardedRef(Item))>
-`;
-
-exports[`<SheetList.Item /> should render with a title but no image 1`] = `
-<ForwardRef(WithForwardedRef(Item))
-  title="My Title"
->
-  <Item
-    className={null}
-    description={null}
-    forwardedRef={null}
-    image={null}
-    isDisabled={false}
-    isSelected={false}
-    leftComponent={null}
-    link={null}
-    linkComponent={[Function]}
-    linkState={null}
-    onClick={null}
-    rightComponent={null}
-    testId={null}
-    title="My Title"
-  >
-    <div
-      className="engage__sheet-list__item"
-      data-test-id={null}
-    >
-      <Grid
-        className="css-1ojce65"
-        component="div"
-        wrap={false}
-      >
-        <div
-          className="css-1ojce65 css-h7r55a common__grid"
-        >
-          <GridItem
-            className="css-1tp5o1f"
-            component="div"
-            grow={1}
-            shrink={1}
-          >
-            <div
-              className="css-1tp5o1f css-1gs0ko2"
-            >
-              <div>
-                My Title
-              </div>
-            </div>
-          </GridItem>
-        </div>
-      </Grid>
-    </div>
-  </Item>
-</ForwardRef(WithForwardedRef(Item))>
-`;
-
-exports[`<SheetList.Item /> should render with an image 1`] = `
-<ForwardRef(WithForwardedRef(Item))
-  image={
-    <img
-      alt="Alternative text"
-      src="url/to/image"
-    />
-  }
-  title="My Title"
->
-  <Item
-    className={null}
-    description={null}
-    forwardedRef={null}
-    image={
-      <img
-        alt="Alternative text"
-        src="url/to/image"
-      />
-    }
-    isDisabled={false}
-    isSelected={false}
-    leftComponent={null}
-    link={null}
-    linkComponent={[Function]}
-    linkState={null}
-    onClick={null}
-    rightComponent={null}
-    testId={null}
-    title="My Title"
-  >
-    <div
-      className="engage__sheet-list__item"
-      data-test-id={null}
-    >
-      <Grid
-        className="css-1ojce65"
-        component="div"
-        wrap={false}
-      >
-        <div
-          className="css-1ojce65 css-h7r55a common__grid"
-        >
-          <div
-            className="css-1mhrjzj"
-          >
-            <img
-              alt="Alternative text"
-              src="url/to/image"
-            />
-          </div>
-          <GridItem
-            className="css-1tp5o1f"
-            component="div"
-            grow={1}
-            shrink={1}
-          >
-            <div
-              className="css-1tp5o1f css-1gs0ko2"
-            >
-              <div>
-                My Title
-              </div>
-            </div>
-          </GridItem>
-        </div>
-      </Grid>
-    </div>
-  </Item>
-</ForwardRef(WithForwardedRef(Item))>
-`;
-
-exports[`<SheetList.Item /> should render with an onClick element 1`] = `
-<ForwardRef(WithForwardedRef(Item))
-  onClick={[Function]}
-  title="My Title"
->
-  <Item
-    className={null}
-    description={null}
-    forwardedRef={null}
-    image={null}
-    isDisabled={false}
-    isSelected={false}
-    leftComponent={null}
-    link={null}
-    linkComponent={[Function]}
-    linkState={null}
-    onClick={[Function]}
-    rightComponent={null}
-    testId={null}
-    title="My Title"
-  >
-    <div
-      aria-selected={false}
-      data-test-id={null}
-      onClick={[Function]}
-      onKeyPress={[Function]}
-      role="option"
-      tabIndex={0}
-    >
-      <ForwardRef(WithForwardedRef(Glow))
+      <ForwardRef(WithForwardedRef(GlowWithStyles))
         className={null}
         styles={
           {
@@ -308,10 +46,8 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           }
         }
       >
-        <Glow
+        <GlowWithStyles
           className={null}
-          color="#f7f7f7"
-          disabled={false}
           forwardedRef={null}
           styles={
             {
@@ -321,156 +57,778 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
             }
           }
         >
-          <div
-            className="css-13azwyo ui-shared__glow"
+          <Glow
+            className={null}
+            classes={
+              {
+                "container": "tss-1ur4jxl-Glow-container",
+                "glow": "tss-yivd8o-Glow-glow",
+              }
+            }
+            color="#f7f7f7"
             disabled={false}
-            onClick={[Function]}
+            forwardedRef={null}
+            styles={
+              {
+                "hover": {
+                  "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                },
+              }
+            }
           >
             <div
-              className="css-1bmd5dz"
-              style={{}}
-            />
-            <div
-              className="engage__sheet-list__item"
-              data-test-id={null}
+              className="tss-1ur4jxl-Glow-container ui-shared__glow"
+              classes={
+                {
+                  "container": "tss-1ur4jxl-Glow-container",
+                  "glow": "tss-yivd8o-Glow-glow",
+                }
+              }
+              disabled={false}
+              onClick={[Function]}
             >
-              <Grid
-                className="css-1ojce65"
+              <div
+                className="tss-yivd8o-Glow-glow"
+                style={{}}
+              />
+              <Link
+                href="url/to/somewhere"
+                onClick={null}
+                state={null}
+                tabIndex={0}
+              >
+                <div />
+              </Link>
+            </div>
+          </Glow>
+        </GlowWithStyles>
+      </ForwardRef(WithForwardedRef(GlowWithStyles))>
+    </Item>
+  </ItemWithStyles>
+</ForwardRef(WithForwardedRef(ItemWithStyles))>
+`;
+
+exports[`<SheetList.Item /> should render with a right component 1`] = `
+<ForwardRef(WithForwardedRef(ItemWithStyles))
+  rightComponent={
+    <span>
+      I\`m a span.
+    </span>
+  }
+  title="My Title"
+>
+  <ItemWithStyles
+    forwardedRef={null}
+    rightComponent={
+      <span>
+        I\`m a span.
+      </span>
+    }
+    title="My Title"
+  >
+    <Item
+      className={null}
+      classes={
+        {
+          "description": "tss-14slm4s-Item-description",
+          "disabled": "tss-1ot0pf5-Item-disabled",
+          "grid": "tss-1l68gs0-Item-grid",
+          "image": "tss-wlqzfe-Item-image",
+          "selected": "tss-v08ox0-Item-selected",
+          "title": "tss-1wzwt5u-Item-title",
+        }
+      }
+      description={null}
+      forwardedRef={null}
+      image={null}
+      isDisabled={false}
+      isSelected={false}
+      leftComponent={null}
+      link={null}
+      linkComponent={[Function]}
+      linkState={null}
+      onClick={null}
+      rightComponent={
+        <span>
+          I\`m a span.
+        </span>
+      }
+      testId={null}
+      title="My Title"
+    >
+      <div
+        className="engage__sheet-list__item"
+        data-test-id={null}
+      >
+        <GridWithStyles
+          className="tss-1l68gs0-Item-grid"
+          component="div"
+        >
+          <Grid
+            className="tss-1l68gs0-Item-grid"
+            classes={
+              {
+                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                "root": "tss-ttd1ja-Grid-root",
+                "wrap": "tss-xzd4nf-Grid-wrap",
+              }
+            }
+            component="div"
+            wrap={false}
+          >
+            <div
+              className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
+              classes={
+                {
+                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                  "root": "tss-ttd1ja-Grid-root",
+                  "wrap": "tss-xzd4nf-Grid-wrap",
+                }
+              }
+            >
+              <GridItemWithStyles
+                className="tss-1wzwt5u-Item-title"
                 component="div"
-                wrap={false}
+                grow={1}
+              >
+                <GridItem
+                  className="tss-3bxdgt-GridItem-root-Item-title"
+                  classes={
+                    {
+                      "root": "tss-rttrxi-GridItem-root",
+                    }
+                  }
+                  component="div"
+                  grow={1}
+                  shrink={1}
+                >
+                  <div
+                    className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
+                  >
+                    <div>
+                      My Title
+                    </div>
+                  </div>
+                </GridItem>
+              </GridItemWithStyles>
+              <GridItemWithStyles
+                component="div"
+                grow={1}
+              >
+                <GridItem
+                  className="tss-rttrxi-GridItem-root"
+                  classes={
+                    {
+                      "root": "tss-rttrxi-GridItem-root",
+                    }
+                  }
+                  component="div"
+                  grow={1}
+                  shrink={1}
+                >
+                  <div
+                    className="tss-rttrxi-GridItem-root tss-rttrxi-GridItem-root common__grid__item--custom-flex"
+                  >
+                    <span>
+                      I\`m a span.
+                    </span>
+                  </div>
+                </GridItem>
+              </GridItemWithStyles>
+            </div>
+          </Grid>
+        </GridWithStyles>
+      </div>
+    </Item>
+  </ItemWithStyles>
+</ForwardRef(WithForwardedRef(ItemWithStyles))>
+`;
+
+exports[`<SheetList.Item /> should render with a title but no image 1`] = `
+<ForwardRef(WithForwardedRef(ItemWithStyles))
+  title="My Title"
+>
+  <ItemWithStyles
+    forwardedRef={null}
+    title="My Title"
+  >
+    <Item
+      className={null}
+      classes={
+        {
+          "description": "tss-14slm4s-Item-description",
+          "disabled": "tss-1ot0pf5-Item-disabled",
+          "grid": "tss-1l68gs0-Item-grid",
+          "image": "tss-wlqzfe-Item-image",
+          "selected": "tss-v08ox0-Item-selected",
+          "title": "tss-1wzwt5u-Item-title",
+        }
+      }
+      description={null}
+      forwardedRef={null}
+      image={null}
+      isDisabled={false}
+      isSelected={false}
+      leftComponent={null}
+      link={null}
+      linkComponent={[Function]}
+      linkState={null}
+      onClick={null}
+      rightComponent={null}
+      testId={null}
+      title="My Title"
+    >
+      <div
+        className="engage__sheet-list__item"
+        data-test-id={null}
+      >
+        <GridWithStyles
+          className="tss-1l68gs0-Item-grid"
+          component="div"
+        >
+          <Grid
+            className="tss-1l68gs0-Item-grid"
+            classes={
+              {
+                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                "root": "tss-ttd1ja-Grid-root",
+                "wrap": "tss-xzd4nf-Grid-wrap",
+              }
+            }
+            component="div"
+            wrap={false}
+          >
+            <div
+              className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
+              classes={
+                {
+                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                  "root": "tss-ttd1ja-Grid-root",
+                  "wrap": "tss-xzd4nf-Grid-wrap",
+                }
+              }
+            >
+              <GridItemWithStyles
+                className="tss-1wzwt5u-Item-title"
+                component="div"
+                grow={1}
+              >
+                <GridItem
+                  className="tss-3bxdgt-GridItem-root-Item-title"
+                  classes={
+                    {
+                      "root": "tss-rttrxi-GridItem-root",
+                    }
+                  }
+                  component="div"
+                  grow={1}
+                  shrink={1}
+                >
+                  <div
+                    className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
+                  >
+                    <div>
+                      My Title
+                    </div>
+                  </div>
+                </GridItem>
+              </GridItemWithStyles>
+            </div>
+          </Grid>
+        </GridWithStyles>
+      </div>
+    </Item>
+  </ItemWithStyles>
+</ForwardRef(WithForwardedRef(ItemWithStyles))>
+`;
+
+exports[`<SheetList.Item /> should render with an image 1`] = `
+<ForwardRef(WithForwardedRef(ItemWithStyles))
+  image={
+    <img
+      alt="Alternative text"
+      src="url/to/image"
+    />
+  }
+  title="My Title"
+>
+  <ItemWithStyles
+    forwardedRef={null}
+    image={
+      <img
+        alt="Alternative text"
+        src="url/to/image"
+      />
+    }
+    title="My Title"
+  >
+    <Item
+      className={null}
+      classes={
+        {
+          "description": "tss-14slm4s-Item-description",
+          "disabled": "tss-1ot0pf5-Item-disabled",
+          "grid": "tss-1l68gs0-Item-grid",
+          "image": "tss-wlqzfe-Item-image",
+          "selected": "tss-v08ox0-Item-selected",
+          "title": "tss-1wzwt5u-Item-title",
+        }
+      }
+      description={null}
+      forwardedRef={null}
+      image={
+        <img
+          alt="Alternative text"
+          src="url/to/image"
+        />
+      }
+      isDisabled={false}
+      isSelected={false}
+      leftComponent={null}
+      link={null}
+      linkComponent={[Function]}
+      linkState={null}
+      onClick={null}
+      rightComponent={null}
+      testId={null}
+      title="My Title"
+    >
+      <div
+        className="engage__sheet-list__item"
+        data-test-id={null}
+      >
+        <GridWithStyles
+          className="tss-1l68gs0-Item-grid"
+          component="div"
+        >
+          <Grid
+            className="tss-1l68gs0-Item-grid"
+            classes={
+              {
+                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                "root": "tss-ttd1ja-Grid-root",
+                "wrap": "tss-xzd4nf-Grid-wrap",
+              }
+            }
+            component="div"
+            wrap={false}
+          >
+            <div
+              className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
+              classes={
+                {
+                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                  "root": "tss-ttd1ja-Grid-root",
+                  "wrap": "tss-xzd4nf-Grid-wrap",
+                }
+              }
+            >
+              <div
+                className="tss-wlqzfe-Item-image"
+              >
+                <img
+                  alt="Alternative text"
+                  src="url/to/image"
+                />
+              </div>
+              <GridItemWithStyles
+                className="tss-1wzwt5u-Item-title"
+                component="div"
+                grow={1}
+              >
+                <GridItem
+                  className="tss-3bxdgt-GridItem-root-Item-title"
+                  classes={
+                    {
+                      "root": "tss-rttrxi-GridItem-root",
+                    }
+                  }
+                  component="div"
+                  grow={1}
+                  shrink={1}
+                >
+                  <div
+                    className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
+                  >
+                    <div>
+                      My Title
+                    </div>
+                  </div>
+                </GridItem>
+              </GridItemWithStyles>
+            </div>
+          </Grid>
+        </GridWithStyles>
+      </div>
+    </Item>
+  </ItemWithStyles>
+</ForwardRef(WithForwardedRef(ItemWithStyles))>
+`;
+
+exports[`<SheetList.Item /> should render with an onClick element 1`] = `
+<ForwardRef(WithForwardedRef(ItemWithStyles))
+  onClick={[Function]}
+  title="My Title"
+>
+  <ItemWithStyles
+    forwardedRef={null}
+    onClick={[Function]}
+    title="My Title"
+  >
+    <Item
+      className={null}
+      classes={
+        {
+          "description": "tss-14slm4s-Item-description",
+          "disabled": "tss-1ot0pf5-Item-disabled",
+          "grid": "tss-1l68gs0-Item-grid",
+          "image": "tss-wlqzfe-Item-image",
+          "selected": "tss-v08ox0-Item-selected",
+          "title": "tss-1wzwt5u-Item-title",
+        }
+      }
+      description={null}
+      forwardedRef={null}
+      image={null}
+      isDisabled={false}
+      isSelected={false}
+      leftComponent={null}
+      link={null}
+      linkComponent={[Function]}
+      linkState={null}
+      onClick={[Function]}
+      rightComponent={null}
+      testId={null}
+      title="My Title"
+    >
+      <div
+        aria-selected={false}
+        data-test-id={null}
+        onClick={[Function]}
+        onKeyPress={[Function]}
+        role="option"
+        tabIndex={0}
+      >
+        <ForwardRef(WithForwardedRef(GlowWithStyles))
+          className={null}
+          styles={
+            {
+              "hover": {
+                "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+              },
+            }
+          }
+        >
+          <GlowWithStyles
+            className={null}
+            forwardedRef={null}
+            styles={
+              {
+                "hover": {
+                  "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                },
+              }
+            }
+          >
+            <Glow
+              className={null}
+              classes={
+                {
+                  "container": "tss-1ur4jxl-Glow-container",
+                  "glow": "tss-yivd8o-Glow-glow",
+                }
+              }
+              color="#f7f7f7"
+              disabled={false}
+              forwardedRef={null}
+              styles={
+                {
+                  "hover": {
+                    "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                  },
+                }
+              }
+            >
+              <div
+                className="tss-1ur4jxl-Glow-container ui-shared__glow"
+                classes={
+                  {
+                    "container": "tss-1ur4jxl-Glow-container",
+                    "glow": "tss-yivd8o-Glow-glow",
+                  }
+                }
+                disabled={false}
+                onClick={[Function]}
               >
                 <div
-                  className="css-1ojce65 css-h7r55a common__grid"
+                  className="tss-yivd8o-Glow-glow"
+                  style={{}}
+                />
+                <div
+                  className="engage__sheet-list__item"
+                  data-test-id={null}
                 >
-                  <GridItem
-                    className="css-1tp5o1f"
+                  <GridWithStyles
+                    className="tss-1l68gs0-Item-grid"
                     component="div"
-                    grow={1}
-                    shrink={1}
                   >
-                    <div
-                      className="css-1tp5o1f css-1gs0ko2"
+                    <Grid
+                      className="tss-1l68gs0-Item-grid"
+                      classes={
+                        {
+                          "noWrap": "tss-18pnfnt-Grid-noWrap",
+                          "root": "tss-ttd1ja-Grid-root",
+                          "wrap": "tss-xzd4nf-Grid-wrap",
+                        }
+                      }
+                      component="div"
+                      wrap={false}
                     >
-                      <div>
-                        My Title
+                      <div
+                        className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
+                        classes={
+                          {
+                            "noWrap": "tss-18pnfnt-Grid-noWrap",
+                            "root": "tss-ttd1ja-Grid-root",
+                            "wrap": "tss-xzd4nf-Grid-wrap",
+                          }
+                        }
+                      >
+                        <GridItemWithStyles
+                          className="tss-1wzwt5u-Item-title"
+                          component="div"
+                          grow={1}
+                        >
+                          <GridItem
+                            className="tss-3bxdgt-GridItem-root-Item-title"
+                            classes={
+                              {
+                                "root": "tss-rttrxi-GridItem-root",
+                              }
+                            }
+                            component="div"
+                            grow={1}
+                            shrink={1}
+                          >
+                            <div
+                              className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
+                            >
+                              <div>
+                                My Title
+                              </div>
+                            </div>
+                          </GridItem>
+                        </GridItemWithStyles>
                       </div>
-                    </div>
-                  </GridItem>
+                    </Grid>
+                  </GridWithStyles>
                 </div>
-              </Grid>
-            </div>
-          </div>
-        </Glow>
-      </ForwardRef(WithForwardedRef(Glow))>
-    </div>
-  </Item>
-</ForwardRef(WithForwardedRef(Item))>
+              </div>
+            </Glow>
+          </GlowWithStyles>
+        </ForwardRef(WithForwardedRef(GlowWithStyles))>
+      </div>
+    </Item>
+  </ItemWithStyles>
+</ForwardRef(WithForwardedRef(ItemWithStyles))>
 `;
 
 exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
-<ForwardRef(WithForwardedRef(Item))
+<ForwardRef(WithForwardedRef(ItemWithStyles))
   isDisabled={true}
   title="My Title"
 >
-  <Item
-    className={null}
-    description={null}
+  <ItemWithStyles
     forwardedRef={null}
-    image={null}
     isDisabled={true}
-    isSelected={false}
-    leftComponent={null}
-    link={null}
-    linkComponent={[Function]}
-    linkState={null}
-    onClick={null}
-    rightComponent={null}
-    testId={null}
     title="My Title"
   >
-    <div
-      className="engage__sheet-list__item"
-      data-test-id={null}
+    <Item
+      className={null}
+      classes={
+        {
+          "description": "tss-14slm4s-Item-description",
+          "disabled": "tss-1ot0pf5-Item-disabled",
+          "grid": "tss-1l68gs0-Item-grid",
+          "image": "tss-wlqzfe-Item-image",
+          "selected": "tss-v08ox0-Item-selected",
+          "title": "tss-1wzwt5u-Item-title",
+        }
+      }
+      description={null}
+      forwardedRef={null}
+      image={null}
+      isDisabled={true}
+      isSelected={false}
+      leftComponent={null}
+      link={null}
+      linkComponent={[Function]}
+      linkState={null}
+      onClick={null}
+      rightComponent={null}
+      testId={null}
+      title="My Title"
     >
-      <Grid
-        className="css-1ojce65"
-        component="div"
-        wrap={false}
+      <div
+        className="engage__sheet-list__item"
+        data-test-id={null}
       >
-        <div
-          className="css-1ojce65 css-h7r55a common__grid"
+        <GridWithStyles
+          className="tss-1l68gs0-Item-grid"
+          component="div"
         >
-          <GridItem
-            className="css-1tp5o1f css-4va972"
+          <Grid
+            className="tss-1l68gs0-Item-grid"
+            classes={
+              {
+                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                "root": "tss-ttd1ja-Grid-root",
+                "wrap": "tss-xzd4nf-Grid-wrap",
+              }
+            }
             component="div"
-            grow={1}
-            shrink={1}
+            wrap={false}
           >
             <div
-              className="css-1tp5o1f css-4va972 css-1gs0ko2"
+              className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
+              classes={
+                {
+                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                  "root": "tss-ttd1ja-Grid-root",
+                  "wrap": "tss-xzd4nf-Grid-wrap",
+                }
+              }
             >
-              <div>
-                My Title
-              </div>
+              <GridItemWithStyles
+                className="tss-1wzwt5u-Item-title tss-1ot0pf5-Item-disabled"
+                component="div"
+                grow={1}
+              >
+                <GridItem
+                  className="tss-12f2hpu-GridItem-root-Item-title-Item-disabled"
+                  classes={
+                    {
+                      "root": "tss-rttrxi-GridItem-root",
+                    }
+                  }
+                  component="div"
+                  grow={1}
+                  shrink={1}
+                >
+                  <div
+                    className="tss-12f2hpu-GridItem-root-Item-title-Item-disabled tss-12f2hpu-GridItem-root-Item-title-Item-disabled common__grid__item--custom-flex"
+                  >
+                    <div>
+                      My Title
+                    </div>
+                  </div>
+                </GridItem>
+              </GridItemWithStyles>
             </div>
-          </GridItem>
-        </div>
-      </Grid>
-    </div>
-  </Item>
-</ForwardRef(WithForwardedRef(Item))>
+          </Grid>
+        </GridWithStyles>
+      </div>
+    </Item>
+  </ItemWithStyles>
+</ForwardRef(WithForwardedRef(ItemWithStyles))>
 `;
 
 exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
-<ForwardRef(WithForwardedRef(Item))
+<ForwardRef(WithForwardedRef(ItemWithStyles))
   isSelected={true}
   title="My Title"
 >
-  <Item
-    className={null}
-    description={null}
+  <ItemWithStyles
     forwardedRef={null}
-    image={null}
-    isDisabled={false}
     isSelected={true}
-    leftComponent={null}
-    link={null}
-    linkComponent={[Function]}
-    linkState={null}
-    onClick={null}
-    rightComponent={null}
-    testId={null}
     title="My Title"
   >
-    <div
-      className="engage__sheet-list__item"
-      data-test-id={null}
+    <Item
+      className={null}
+      classes={
+        {
+          "description": "tss-14slm4s-Item-description",
+          "disabled": "tss-1ot0pf5-Item-disabled",
+          "grid": "tss-1l68gs0-Item-grid",
+          "image": "tss-wlqzfe-Item-image",
+          "selected": "tss-v08ox0-Item-selected",
+          "title": "tss-1wzwt5u-Item-title",
+        }
+      }
+      description={null}
+      forwardedRef={null}
+      image={null}
+      isDisabled={false}
+      isSelected={true}
+      leftComponent={null}
+      link={null}
+      linkComponent={[Function]}
+      linkState={null}
+      onClick={null}
+      rightComponent={null}
+      testId={null}
+      title="My Title"
     >
-      <Grid
-        className="css-1ojce65 css-1m9e0oa"
-        component="div"
-        wrap={false}
+      <div
+        className="engage__sheet-list__item"
+        data-test-id={null}
       >
-        <div
-          className="css-1ojce65 css-1m9e0oa css-h7r55a common__grid"
+        <GridWithStyles
+          className="tss-1l68gs0-Item-grid tss-v08ox0-Item-selected"
+          component="div"
         >
-          <GridItem
-            className="css-1tp5o1f"
+          <Grid
+            className="tss-1l68gs0-Item-grid tss-v08ox0-Item-selected"
+            classes={
+              {
+                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                "root": "tss-ttd1ja-Grid-root",
+                "wrap": "tss-xzd4nf-Grid-wrap",
+              }
+            }
             component="div"
-            grow={1}
-            shrink={1}
+            wrap={false}
           >
             <div
-              className="css-1tp5o1f css-1gs0ko2"
+              className="tss-1l68gs0-Item-grid tss-v08ox0-Item-selected tss-145ld0x-Grid-root-Item-grid-Item-selected common__grid tss-18pnfnt-Grid-noWrap"
+              classes={
+                {
+                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                  "root": "tss-ttd1ja-Grid-root",
+                  "wrap": "tss-xzd4nf-Grid-wrap",
+                }
+              }
             >
-              <div>
-                My Title
-              </div>
+              <GridItemWithStyles
+                className="tss-1wzwt5u-Item-title"
+                component="div"
+                grow={1}
+              >
+                <GridItem
+                  className="tss-3bxdgt-GridItem-root-Item-title"
+                  classes={
+                    {
+                      "root": "tss-rttrxi-GridItem-root",
+                    }
+                  }
+                  component="div"
+                  grow={1}
+                  shrink={1}
+                >
+                  <div
+                    className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
+                  >
+                    <div>
+                      My Title
+                    </div>
+                  </div>
+                </GridItem>
+              </GridItemWithStyles>
             </div>
-          </GridItem>
-        </div>
-      </Grid>
-    </div>
-  </Item>
-</ForwardRef(WithForwardedRef(Item))>
+          </Grid>
+        </GridWithStyles>
+      </div>
+    </Item>
+  </ItemWithStyles>
+</ForwardRef(WithForwardedRef(ItemWithStyles))>
 `;

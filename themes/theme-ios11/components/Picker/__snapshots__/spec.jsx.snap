@@ -41,11 +41,11 @@ exports[`<Picker /> should render the picker 1`] = `
                 tabindex="0"
               >
                 <button
-                  class="css-3ijyk3"
+                  class="tss-1x7vpzn-button"
                   type="button"
                 >
                   <span
-                    class="css-1358lbd"
+                    class="tss-1yi6h5v-label"
                   >
                     Pick ...
                   </span>
@@ -79,12 +79,12 @@ exports[`<Picker /> should render the picker 1`] = `
               value=""
             >
               <button
-                className="css-3ijyk3"
+                className="tss-1x7vpzn-button"
                 onClick={[Function]}
                 type="button"
               >
                 <span
-                  className="css-1358lbd"
+                  className="tss-1yi6h5v-label"
                 >
                   Pick ...
                 </span>

@@ -24,23 +24,23 @@ const useStyles = makeStyles()((_theme, { columns }) => {
       '& > *': {
         padding: 2,
         width: `${100 / columns}%`,
-        [`&:nth-child(${columns}n)`]: {
+        [`&:nth-of-type(${columns}n)`]: {
           paddingRight: 0,
         },
-        [`&:nth-child(${columns}n+1)`]: {
+        [`&:nth-of-type(${columns}n+1)`]: {
           paddingLeft: 0,
         },
-        [`&:nth-child(-n+${columns})`]: {
+        [`&:nth-of-type(-n+${columns})`]: {
           paddingTop: 0,
         },
         [responsiveMediaQuery('>xs', { webOnly: true })]: {
-          '&:nth-child(even)': {
+          '&:nth-of-type(even)': {
             padding: `0 0 ${variables.gap.big}px ${variables.gap.small}px`,
           },
-          '&:nth-child(odd)': {
+          '&:nth-of-type(odd)': {
             padding: `0 ${variables.gap.small}px ${variables.gap.big}px 0`,
           },
-          '&:nth-child(2n+1):nth-last-child(-n+2), &:nth-child(2n+1):nth-last-child(-n+2) ~ li': {
+          '&:nth-of-type(2n+1):nth-last-of-type(-n+2), &:nth-of-type(2n+1):nth-last-of-type(-n+2) ~ li': {
             paddingBottom: 0,
           },
         },

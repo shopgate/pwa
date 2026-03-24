@@ -12,7 +12,9 @@ describe('<GridItem />', () => {
     const wrapper = shallow(<GridItem component="section" />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.type()).toEqual('section');
+    // Default export is withStyles(GridItem); shallow root is the styled wrapper.
+    // Dive once to reach the dynamic tag from React.createElement(component, ...).
+    expect(wrapper.dive().type()).toEqual('section');
   });
 
   it('should add custom classes on demand', () => {

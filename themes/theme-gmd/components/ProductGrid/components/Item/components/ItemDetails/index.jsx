@@ -33,7 +33,7 @@ const useStyles = makeStyles()({
         '& > *:empty': {
           display: 'none',
         },
-        '& > *:first-child[style*="display:none"] + *:not([style*="display:none"])': {
+        '& > *:first-of-type[style*="display:none"] + *:not([style*="display:none"])': {
           paddingTop: 8,
         },
       },
@@ -41,7 +41,7 @@ const useStyles = makeStyles()({
   },
   itemNameLink: {
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      '& > *:not(:first-child)': {
+      '& > *:not(:first-of-type)': {
         paddingTop: 8,
       },
     },
@@ -64,7 +64,7 @@ const useStyles = makeStyles()({
       '& ul > li': {
         flexGrow: 'inherit',
         lineHeight: '1.5rem',
-        '&:first-child': {
+        '&:first-of-type': {
           marginRight: variables.gap.big,
         },
       },

@@ -5,120 +5,141 @@ exports[`<Picker /> should render the picker 1`] = `
   label="Picker label"
 >
   <Consumer>
-    <PickerUtilize
-      buttonComponent={null}
-      buttonProps={{}}
-      clickDelay={150}
-      hasButton={true}
+    <PickerUtilizeWithStyles
       label="Picker label"
       setViewAriaHidden={[MockFunction]}
-      sheetProps={{}}
     >
-      <ForwardRef(WithForwardedRef(Picker))
-        buttonComponent={[Function]}
+      <PickerUtilize
+        buttonComponent={null}
         buttonProps={{}}
-        className="css-kdzjuz engage__picker-utilize"
+        className="tss-djduhy-PickerUtilize-root"
+        classes={
+          {
+            "root": "tss-djduhy-PickerUtilize-root",
+          }
+        }
         clickDelay={150}
+        hasButton={true}
         label="Picker label"
-        listComponent={[Function]}
-        modalComponent={[Function]}
-        onClose={[Function]}
         setViewAriaHidden={[MockFunction]}
+        sheetProps={{}}
       >
-        <Picker
+        <ForwardRef(WithForwardedRef(Picker))
           buttonComponent={[Function]}
           buttonProps={{}}
-          className="css-kdzjuz engage__picker-utilize"
-          clickDelay={150}
-          disabled={false}
-          duration={300}
-          forwardedRef={
+          className="tss-djduhy-PickerUtilize-root engage__picker-utilize"
+          classes={
             {
-              "current": <div
-                aria-haspopup="true"
-                class="css-kdzjuz engage__picker-utilize engage__picker"
-                role="button"
-                tabindex="0"
-              >
-                <button
-                  class="css-164ggb6"
-                  type="button"
-                >
-                  <span
-                    class="css-1358lbd"
-                  >
-                    Pick ...
-                  </span>
-                  
-                </button>
-              </div>,
+              "root": "tss-djduhy-PickerUtilize-root",
             }
           }
-          isOpen={false}
-          items={[]}
+          clickDelay={150}
           label="Picker label"
           listComponent={[Function]}
           modalComponent={[Function]}
-          onChange={[Function]}
           onClose={[Function]}
-          onSelect={[Function]}
-          placeholder="Pick ..."
           setViewAriaHidden={[MockFunction]}
-          value={null}
         >
-          <div
-            aria-haspopup={true}
-            className="css-kdzjuz engage__picker-utilize engage__picker"
-            role="button"
-            tabIndex={0}
-          >
-            <Button
-              disabled={false}
-              label="Pick ..."
-              openList={[Function]}
-              value=""
-            >
-              <button
-                className="css-164ggb6"
-                onClick={[Function]}
-                type="button"
-              >
-                <span
-                  className="css-1358lbd"
+          <Picker
+            buttonComponent={[Function]}
+            buttonProps={{}}
+            className="tss-djduhy-PickerUtilize-root engage__picker-utilize"
+            classes={
+              {
+                "root": "tss-djduhy-PickerUtilize-root",
+              }
+            }
+            clickDelay={150}
+            disabled={false}
+            duration={300}
+            forwardedRef={
+              {
+                "current": <div
+                  aria-haspopup="true"
+                  class="tss-djduhy-PickerUtilize-root engage__picker-utilize engage__picker"
+                  role="button"
+                  tabindex="0"
                 >
-                  Pick ...
-                </span>
-              </button>
-            </Button>
-            <ConnectedReactPortal
-              isOpened={true}
+                  <button
+                    class="tss-5zgxuh-button"
+                    type="button"
+                  >
+                    <span
+                      class="tss-1mg745j-label"
+                    >
+                      Pick ...
+                    </span>
+                    
+                  </button>
+                </div>,
+              }
+            }
+            isOpen={false}
+            items={[]}
+            label="Picker label"
+            listComponent={[Function]}
+            modalComponent={[Function]}
+            onChange={[Function]}
+            onClose={[Function]}
+            onSelect={[Function]}
+            placeholder="Pick ..."
+            setViewAriaHidden={[MockFunction]}
+            value={null}
+          >
+            <div
+              aria-haspopup={true}
+              className="tss-djduhy-PickerUtilize-root engage__picker-utilize engage__picker"
+              role="button"
+              tabIndex={0}
             >
-              <Component
-                duration={300}
-                isOpen={false}
-                onClose={[Function]}
+              <Button
+                disabled={false}
+                label="Pick ..."
+                openList={[Function]}
+                value=""
               >
-                <Sheet
+                <button
+                  className="tss-5zgxuh-button"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <span
+                    className="tss-1mg745j-label"
+                  >
+                    Pick ...
+                  </span>
+                </button>
+              </Button>
+              <ConnectedReactPortal
+                isOpened={true}
+              >
+                <Component
                   duration={300}
                   isOpen={false}
                   onClose={[Function]}
-                  onDidOpen={[Function]}
-                  title="Picker label"
                 >
-                  <Component
-                    items={[]}
-                    onSelect={[Function]}
-                    selectedIndex={-1}
+                  <Sheet
+                    duration={300}
+                    isOpen={false}
+                    onClose={[Function]}
+                    onDidOpen={[Function]}
+                    title="Picker label"
                   >
-                    <SheetList />
-                  </Component>
-                </Sheet>
-              </Component>
-            </ConnectedReactPortal>
-          </div>
-        </Picker>
-      </ForwardRef(WithForwardedRef(Picker))>
-    </PickerUtilize>
+                    <Component
+                      items={[]}
+                      onSelect={[Function]}
+                      selectedIndex={-1}
+                    >
+                      <SheetList />
+                    </Component>
+                  </Sheet>
+                </Component>
+              </ConnectedReactPortal>
+            </div>
+          </Picker>
+        </ForwardRef(WithForwardedRef(Picker))>
+      </PickerUtilize>
+    </PickerUtilizeWithStyles>
   </Consumer>
 </_default>
 `;

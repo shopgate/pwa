@@ -22,18 +22,20 @@ exports[`<ProductDiscountBadge /> should not render with discount if widgetSetti
       productId="1234"
     >
       <ProductBadges
-        className="css-1q31aw2"
+        className="tss-nay627-portal"
         location="productDiscountBadge"
         portalProps={
           {
             "show": false,
-            "style": {},
+            "style": {
+              "label": "customStyle",
+            },
           }
         }
         productId="1234"
       >
         <div
-          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+          className="tss-qql6jy-root tss-nay627-portal product_badges product_badges__product-discount-badge"
         >
           <SurroundPortals
             portalName="component.product-badges"
@@ -42,7 +44,9 @@ exports[`<ProductDiscountBadge /> should not render with discount if widgetSetti
                 "location": "productDiscountBadge",
                 "productId": "1234",
                 "show": false,
-                "style": {},
+                "style": {
+                  "label": "customStyle",
+                },
               }
             }
           />
@@ -75,20 +79,21 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
       productId="1234"
     >
       <ProductBadges
-        className="css-1q31aw2"
+        className="tss-nay627-portal"
         location="productDiscountBadge"
         portalProps={
           {
             "show": true,
             "style": {
               "color": "blue",
+              "label": "customStyle",
             },
           }
         }
         productId="1234"
       >
         <div
-          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+          className="tss-qql6jy-root tss-nay627-portal product_badges product_badges__product-discount-badge"
         >
           <SurroundPortals
             portalName="component.product-badges"
@@ -99,12 +104,13 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                 "show": true,
                 "style": {
                   "color": "blue",
+                  "label": "customStyle",
                 },
               }
             }
           >
             <div
-              className="css-1bgf2js css-icjsl7 theme__product__product-discount"
+              className="tss-1qgq0ze-container tss-1u5v8e-customStyle theme__product__product-discount"
             >
               <SurroundPortals
                 portalName="product.discount"
@@ -116,7 +122,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                 }
               >
                 <DiscountBadge
-                  className="css-1dtzobl"
+                  className="tss-j2p5xi-badge"
                   discount={null}
                   display="small"
                   text="-12%"
@@ -129,7 +135,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                   >
                     <Text
                       aria-hidden={true}
-                      className="css-1huo0k0 css-1dtzobl theme__discount-badge"
+                      className="tss-yzhxh7-small tss-j2p5xi-badge theme__discount-badge"
                       params={
                         [
                           null,
@@ -173,20 +179,21 @@ exports[`<ProductDiscountBadge /> should render without discount 1`] = `
       productId="1234"
     >
       <ProductBadges
-        className="css-1q31aw2"
+        className="tss-nay627-portal"
         location="productDiscountBadge"
         portalProps={
           {
             "show": true,
             "style": {
               "color": "blue",
+              "label": "customStyle",
             },
           }
         }
         productId="1234"
       >
         <div
-          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+          className="tss-qql6jy-root tss-nay627-portal product_badges product_badges__product-discount-badge"
         >
           <SurroundPortals
             portalName="component.product-badges"
@@ -197,6 +204,7 @@ exports[`<ProductDiscountBadge /> should render without discount 1`] = `
                 "show": true,
                 "style": {
                   "color": "blue",
+                  "label": "customStyle",
                 },
               }
             }

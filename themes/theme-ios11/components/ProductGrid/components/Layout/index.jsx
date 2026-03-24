@@ -17,10 +17,10 @@ const useStyles = makeStyles()((_theme, { columns }) => ({
       '& > *': {
         padding: '0px 8px',
         width: `${100 / columns}%`,
-        [`&:nth-child(${columns}n)`]: {
+        [`&:nth-of-type(${columns}n)`]: {
           paddingRight: 0,
         },
-        [`&:nth-child(${columns}n+1)`]: {
+        [`&:nth-of-type(${columns}n+1)`]: {
           paddingLeft: 0,
         },
       },

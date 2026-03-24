@@ -3,8 +3,8 @@
 exports[`engage > locations > StoreList > StoreDetails should render as expected 1`] = `
 <StoreDetails>
   <Accordion
-    className="css-o08ho"
-    contentClassName="css-kxm41v"
+    className="tss-1f6rbn9-storeDetailsAccordion"
+    contentClassName="tss-jej6wb-storeDetailsBody"
     renderLabel={[Function]}
   >
     <StoreOpeningHours
@@ -21,10 +21,10 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
         linked={false}
       >
         <Grid
-          className="css-kmhio2"
+          className="tss-31v86g-detailsLine"
         >
           <Grid.Item
-            className="css-90mgzt"
+            className="tss-105dt1h-detailsIcon"
             shrink={0}
           >
             <TimeIcon
@@ -32,17 +32,17 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             />
           </Grid.Item>
           <Grid.Item
-            className="css-1s3c85m"
+            className="tss-13b33k8-details"
             grow={1}
           >
             <Text
-              className="css-1p484xy"
+              className="tss-1i25451-detailsSecondary"
               string="locations.hours_details"
             >
               locations.hours_details
             </Text>
             <div
-              className="css-kckwte"
+              className="tss-1nae00d-openingHours"
             >
               <table>
                 <tbody>
@@ -53,13 +53,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                   >
                     <tr
                       aria-label="locations.mon: 09:00 - 17:00"
-                      className="css-9shxm7"
+                      className="tss-15f20he-openingHoursRow"
                       role="row"
                       tabIndex={0}
                     >
                       <td
                         aria-hidden={true}
-                        className="css-1ppc7ry"
+                        className="tss-1xfudo9-openingHoursDay"
                       >
                         locations.mon
                       </td>
@@ -102,13 +102,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                   >
                     <tr
                       aria-label="locations.sun: 09:00 - 17:00"
-                      className="css-9shxm7"
+                      className="tss-15f20he-openingHoursRow"
                       role="row"
                       tabIndex={0}
                     >
                       <td
                         aria-hidden={true}
-                        className="css-1ppc7ry"
+                        className="tss-1xfudo9-openingHoursDay"
                       >
                         locations.sun
                       </td>
@@ -139,10 +139,10 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           linked={true}
         >
           <Grid
-            className="css-kmhio2"
+            className="tss-31v86g-detailsLine"
           >
             <Grid.Item
-              className="css-90mgzt css-1ynyzke"
+              className="tss-105dt1h-detailsIcon tss-1d18q4q-detailsIconLinked"
               shrink={0}
             >
               <PhoneIcon
@@ -150,18 +150,18 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               />
             </Grid.Item>
             <Grid.Item
-              className="css-1s3c85m"
+              className="tss-13b33k8-details"
               grow={1}
             >
               <div
                 aria-hidden={true}
-                className="css-21570k"
+                className="tss-zsrto7-detailsPrimary"
               >
                 06033123
               </div>
               <Text
                 aria-hidden={true}
-                className="css-1p484xy"
+                className="tss-1i25451-detailsSecondary"
                 string="locations.phone"
               >
                 locations.phone
@@ -199,10 +199,10 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           linked={true}
         >
           <Grid
-            className="css-kmhio2"
+            className="tss-31v86g-detailsLine"
           >
             <Grid.Item
-              className="css-90mgzt css-1ynyzke"
+              className="tss-105dt1h-detailsIcon tss-1d18q4q-detailsIconLinked"
               shrink={0}
             >
               <LocationIcon
@@ -210,23 +210,23 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               />
             </Grid.Item>
             <Grid.Item
-              className="css-1s3c85m"
+              className="tss-13b33k8-details"
               grow={1}
             >
               <p
-                className="css-21570k"
+                className="tss-zsrto7-detailsPrimary"
               >
                 Marktplatz 12
               </p>
               <Ellipsis
-                className="css-21570k"
+                className="tss-zsrto7-detailsPrimary"
                 rows={1}
               >
                 locations.address
               </Ellipsis>
               <Text
                 aria-label=": locations.map_open"
-                className="css-1p484xy"
+                className="tss-1i25451-detailsSecondary"
                 string="locations.map_open"
               >
                 locations.map_open

@@ -42,7 +42,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
             text="navigation.welcome_message"
           >
             <h1
-              className="css-18cwfw7 headline theme__headline"
+              className="headline theme__headline tss-17bm8av-root-h1"
               data-test-id="Headline"
               style={
                 {
@@ -135,7 +135,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         text="navigation.your_account"
                       >
                         <h2
-                          className="css-18cwfw7 headline theme__headline"
+                          className="headline theme__headline tss-1ajnxxp-root-h2"
                           data-test-id="Headline"
                           style={
                             {
@@ -173,7 +173,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             testId="logoutButton"
                           >
                             <button
-                              className="css-1hj8a57"
+                              className="tss-1lse86s-root"
                               data-test-id="logoutButton"
                               onClick={[Function]}
                               type="button"
@@ -245,7 +245,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   text="navigation.store_information"
                 >
                   <h2
-                    className="css-18cwfw7 headline theme__headline"
+                    className="headline theme__headline tss-1ajnxxp-root-h2"
                     data-test-id="Headline"
                     style={
                       {
@@ -296,7 +296,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/shipping"
                           role="button"
                         >
@@ -348,7 +348,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/payment"
                           role="button"
                         >
@@ -400,7 +400,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/terms"
                           role="button"
                         >
@@ -452,7 +452,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/privacy"
                           role="button"
                         >
@@ -526,7 +526,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/imprint"
                           role="button"
                         >
@@ -620,7 +620,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
             text="login.headline"
           >
             <h1
-              className="css-18cwfw7 headline theme__headline"
+              className="headline theme__headline tss-17bm8av-root-h1"
               data-test-id="Headline"
               style={
                 {
@@ -674,10 +674,10 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     data-test-id="userMenu"
                   >
                     <Grid
-                      className="css-az18cj theme__more-page__user-menu__container"
+                      className="tss-mxubgw-grid theme__more-page__user-menu__container"
                     >
                       <Grid.Item
-                        className="css-mzzsxh theme__more-page__login-button__container"
+                        className="tss-u59bcx-gridItem theme__more-page__login-button__container"
                       >
                         <Link
                           disabled={false}
@@ -685,7 +685,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           tabIndex={0}
                         >
                           <Button
-                            className="css-6f03lb theme__more-page__login-button"
+                            className="tss-sv9uio-button theme__more-page__login-button"
                             disabled={false}
                             testId="UserMenuLogin"
                             type="secondary"
@@ -699,7 +699,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         </Link>
                       </Grid.Item>
                       <Grid.Item
-                        className="css-mzzsxh theme__more-page-register-button__container"
+                        className="tss-u59bcx-gridItem theme__more-page-register-button__container"
                       >
                         <Link
                           disabled={false}
@@ -707,7 +707,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           tabIndex={0}
                         >
                           <Button
-                            className="css-6f03lb theme__more-page-register-button"
+                            className="tss-sv9uio-button theme__more-page-register-button"
                             disabled={false}
                             testId="UserMenuRegister"
                             type="secondary"
@@ -785,7 +785,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                   text="navigation.store_information"
                 >
                   <h2
-                    className="css-18cwfw7 headline theme__headline"
+                    className="headline theme__headline tss-1ajnxxp-root-h2"
                     data-test-id="Headline"
                     style={
                       {
@@ -836,7 +836,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/shipping"
                           role="button"
                         >
@@ -888,7 +888,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/payment"
                           role="button"
                         >
@@ -940,7 +940,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/terms"
                           role="button"
                         >
@@ -992,7 +992,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/privacy"
                           role="button"
                         >
@@ -1066,7 +1066,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="css-1hj8a57"
+                          className="tss-1lse86s-root"
                           href="/page/imprint"
                           role="button"
                         >

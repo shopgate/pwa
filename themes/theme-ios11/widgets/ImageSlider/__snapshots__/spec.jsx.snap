@@ -43,16 +43,12 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
         key="http://placehold.it/350x150"
       >
         <Link
-          className="css-63oe3q"
+          className="tss-19odm6p-link"
           data-test-id="withLink"
           href="http://example.com"
         >
           <img
-            className={
-              {
-                "data-css-1rozygh": "",
-              }
-            }
+            className="tss-1ev82td-image"
             data-test-id="link : undefined"
             src="http://placehold.it/350x150"
           />
@@ -62,16 +58,12 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
         key="http://placehold.it/10x10"
       >
         <Link
-          className="css-63oe3q"
+          className="tss-19odm6p-link"
           data-test-id="withLink"
           href="http://other.example.com"
         >
           <img
-            className={
-              {
-                "data-css-1rozygh": "",
-              }
-            }
+            className="tss-1ev82td-image"
             data-test-id="link : undefined"
             src="http://placehold.it/10x10"
           />
@@ -116,16 +108,12 @@ exports[`<ImageSliderWidget /> should render no slider with just a single image 
       className=""
     >
       <Link
-        className="css-63oe3q"
+        className="tss-19odm6p-link"
         data-test-id="withLink"
         href="http://example.com"
       >
         <img
-          className={
-            {
-              "data-css-1rozygh": "",
-            }
-          }
+          className="tss-1ev82td-image"
           data-test-id="link : undefined"
           src="http://placehold.it/350x150"
         />
@@ -169,11 +157,7 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
       className=""
     >
       <img
-        className={
-          {
-            "data-css-1rozygh": "",
-          }
-        }
+        className="tss-1ev82td-image"
         data-test-id="link : undefined"
         src="http://placehold.it/350x150"
       />
@@ -225,11 +209,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
         key="http://placehold.it/350x150"
       >
         <img
-          className={
-            {
-              "data-css-1rozygh": "",
-            }
-          }
+          className="tss-1ev82td-image"
           data-test-id="link : undefined"
           src="http://placehold.it/350x150"
         />
@@ -238,16 +218,12 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
         key="http://placehold.it/10x10"
       >
         <Link
-          className="css-63oe3q"
+          className="tss-19odm6p-link"
           data-test-id="withLink"
           href="http://other.example.com"
         >
           <img
-            className={
-              {
-                "data-css-1rozygh": "",
-              }
-            }
+            className="tss-1ev82td-image"
             data-test-id="link : undefined"
             src="http://placehold.it/10x10"
           />
@@ -301,16 +277,12 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
         key="http://placehold.it/350x150"
       >
         <Link
-          className="css-63oe3q"
+          className="tss-19odm6p-link"
           data-test-id="withLink"
           href="http://example.com"
         >
           <img
-            className={
-              {
-                "data-css-1rozygh": "",
-              }
-            }
+            className="tss-1ev82td-image"
             data-test-id="link : undefined"
             src="http://placehold.it/350x150"
           />
@@ -320,16 +292,12 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
         key="http://placehold.it/10x10"
       >
         <Link
-          className="css-63oe3q"
+          className="tss-19odm6p-link"
           data-test-id="withLink"
           href="http://other.example.com"
         >
           <img
-            className={
-              {
-                "data-css-1rozygh": "",
-              }
-            }
+            className="tss-1ev82td-image"
             data-test-id="link : undefined"
             src="http://placehold.it/10x10"
           />

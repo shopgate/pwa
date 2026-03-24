@@ -2,18 +2,10 @@
 
 exports[`PriceSlider: <Label /> should render 1`] = `
 <div
-  className={
-    {
-      "data-css-13azwyo": "",
-    }
-  }
+  className="tss-4iy9ul-editableContainer"
 >
   <span
-    className={
-      {
-        "data-css-5e1epi": "",
-      }
-    }
+    className="tss-b9l18s-srOnly"
   >
     price.range
   </span>
@@ -25,7 +17,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="fromPrice"
     >
       <span
-        className="css-n1hyyi"
+        className="tss-1whxrbt-price"
         style={
           {
             "minWidth": "5",
@@ -43,7 +35,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="toPrice"
     >
       <span
-        className="css-n1hyyi"
+        className="tss-1whxrbt-price"
         style={
           {
             "minWidth": "5",
@@ -68,11 +60,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_from"
-    className={
-      {
-        "data-css-11c61cw": "",
-      }
-    }
+    className="tss-1s37zvn-editableField"
     id="priceMin"
     inputMode="numeric"
     name="priceMin"
@@ -91,11 +79,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_to"
-    className={
-      {
-        "data-css-11c61cw": "",
-      }
-    }
+    className="tss-1s37zvn-editableField"
     id="priceMax"
     inputMode="numeric"
     name="priceMax"

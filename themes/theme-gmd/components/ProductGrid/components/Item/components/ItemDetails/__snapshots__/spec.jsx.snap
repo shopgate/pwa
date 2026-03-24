@@ -2,7 +2,7 @@
 
 exports[`<ItemDetails /> should render additional components with new services 1`] = `
 <Link
-  className="css-sr2jsa theme__product-grid__item__item-details"
+  className="tss-frmcd-details theme__product-grid__item__item-details"
   href=""
   state={
     {
@@ -17,7 +17,7 @@ exports[`<ItemDetails /> should render additional components with new services 1
     />
   </div>
   <div
-    className="css-nfstwl"
+    className="tss-ktmcgw-itemNameLink"
   >
     <ItemName
       display={null}
@@ -26,7 +26,7 @@ exports[`<ItemDetails /> should render additional components with new services 1
     />
   </div>
   <div
-    className="css-1mm725o"
+    className="tss-12ctkzi-propertiesLink"
   >
     <ShortDescription
       shortDescription={null}
@@ -35,7 +35,7 @@ exports[`<ItemDetails /> should render additional components with new services 1
       productId="1234"
     />
     <OrderQuantityHint
-      className="css-1s3c85m"
+      className="tss-r3y429-quantityHint"
       productId="1234"
     />
     <EffectivityDates
@@ -56,7 +56,7 @@ exports[`<ItemDetails /> should render additional components with new services 1
       }
     />
     <div
-      className="css-193sdzn"
+      className="tss-1ra6wy3-itemPrice"
     >
       <ItemPrice
         display={null}
@@ -75,7 +75,7 @@ exports[`<ItemDetails /> should render additional components with new services 1
 
 exports[`<ItemDetails /> should render with minimal props 1`] = `
 <Link
-  className="css-sr2jsa theme__product-grid__item__item-details"
+  className="tss-frmcd-details theme__product-grid__item__item-details"
   href=""
   state={
     {
@@ -90,7 +90,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     />
   </div>
   <div
-    className="css-nfstwl"
+    className="tss-ktmcgw-itemNameLink"
   >
     <ItemName
       display={null}
@@ -99,7 +99,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     />
   </div>
   <div
-    className="css-1mm725o"
+    className="tss-12ctkzi-propertiesLink"
   >
     <ShortDescription
       shortDescription={null}
@@ -108,14 +108,14 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
       productId="1234"
     />
     <OrderQuantityHint
-      className="css-1s3c85m"
+      className="tss-r3y429-quantityHint"
       productId="1234"
     />
     <EffectivityDates
       productId="1234"
     />
     <div
-      className="css-193sdzn"
+      className="tss-1ra6wy3-itemPrice"
     >
       <ItemPrice
         display={null}

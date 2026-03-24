@@ -17,19 +17,13 @@ exports[`<InfoField> should render info field 1`] = `
   showErrorText={true}
   translateErrorText={true}
 >
-  <Grid
-    className=""
-    component="ul"
-    wrap={false}
-  >
-    <GridItem
+  <GridWithStyles>
+    <GridItemWithStyles
       className="css-1klwfzq info-field"
-      component="li"
       grow={1}
-      shrink={1}
     >
       Some info text
-    </GridItem>
-  </Grid>
+    </GridItemWithStyles>
+  </GridWithStyles>
 </FormElement>
 `;

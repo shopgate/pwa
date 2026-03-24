@@ -30,7 +30,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
         portalName="product.rating"
       >
         <div
-          className="css-1w47iqp"
+          className="tss-1urk15m-container"
           onClick={[Function]}
           role="presentation"
         >
@@ -44,7 +44,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
           >
             <Translate
               acceptPlainTextWithPlaceholders={false}
-              className="css-a7xi3l css-x45jcv engage__reviews__rating-count"
+              className="tss-ee426l-greyStyle tss-1db8b2x-prominentStyle engage__reviews__rating-count"
               params={
                 {
                   "count": 4,
@@ -56,7 +56,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
               transform={null}
             >
               <span
-                className="css-a7xi3l css-x45jcv engage__reviews__rating-count"
+                className="tss-ee426l-greyStyle tss-1db8b2x-prominentStyle engage__reviews__rating-count"
                 role={null}
               >
                 reviews.review_count

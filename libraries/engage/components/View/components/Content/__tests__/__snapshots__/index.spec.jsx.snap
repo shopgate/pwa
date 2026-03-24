@@ -1,59 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > components > view > components > content should render content 1`] = `
-<ParallaxProvider
-  viewVisible={true}
->
-  <article
-    className="css-ytqxab engage__view__content route_"
-    role="none"
-    style={
-      {
-        "--extra-ios-scroll-space": "12px",
-        "--keyboard-height": "0px",
-        "overflow": "auto",
-      }
+<ViewContent
+  className="route_"
+  classes={
+    {
+      "container": "tss-rzjddf-ViewContent-container",
+      "containerInner": "tss-18u4w7t-ViewContent-containerInner",
     }
-  >
-    <div
-      className={
-        {
-          "data-css-18u3fb9": "",
-        }
-      }
-    >
-      <div
-        className="engage__view__content__scrollable-content"
-      >
-        <HelmetWrapper
-          defer={true}
-          encodeSpecialCharacters={true}
-          title="Test Shop"
-        />
-        <ViewAbove />
-        <ResponsiveContainer
-          appAlways={false}
-          appOnly={false}
-          breakpoint=">xs"
-          webAlways={false}
-          webOnly={true}
-        >
-          <div
-            id="PageHeaderBelow"
-          />
-        </ResponsiveContainer>
-        <ConditionalWrapper
-          condition={true}
-          wrapper={[Function]}
-          wrapperFalsy={null}
-        >
-          <div>
-            Page #1
-          </div>
-        </ConditionalWrapper>
-        <ViewBelow />
-      </div>
-    </div>
-  </article>
-</ParallaxProvider>
+  }
+  noContentPortal={false}
+  noKeyboardListener={false}
+  noScrollOnKeyboard={false}
+  setContentRef={[MockFunction]}
+  visible={true}
+>
+  <div>
+    Page #1
+  </div>
+</ViewContent>
 `;

@@ -9,8 +9,8 @@ exports[`<Glow /> should render with a smile 1`] = `
       className={null}
       classes={
         {
-          "container": "css-1ur4jxl-Glow-container",
-          "glow": "css-yivd8o-Glow-glow",
+          "container": "tss-1ur4jxl-Glow-container",
+          "glow": "tss-yivd8o-Glow-glow",
         }
       }
       color="#f7f7f7"
@@ -25,11 +25,11 @@ exports[`<Glow /> should render with a smile 1`] = `
       }
     >
       <div
-        className="css-1ur4jxl-Glow-container ui-shared__glow"
+        className="tss-1ur4jxl-Glow-container ui-shared__glow"
         classes={
           {
-            "container": "css-1ur4jxl-Glow-container",
-            "glow": "css-yivd8o-Glow-glow",
+            "container": "tss-1ur4jxl-Glow-container",
+            "glow": "tss-yivd8o-Glow-glow",
           }
         }
         disabled={false}
@@ -37,7 +37,7 @@ exports[`<Glow /> should render with a smile 1`] = `
         style={null}
       >
         <div
-          className="css-yivd8o-Glow-glow"
+          className="tss-yivd8o-Glow-glow"
           style={{}}
         />
         <p>

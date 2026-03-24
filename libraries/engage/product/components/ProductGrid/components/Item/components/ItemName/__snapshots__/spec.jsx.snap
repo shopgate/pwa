@@ -2,7 +2,7 @@
 
 exports[`<ItemName /> should render with minimal props 1`] = `
 <ProductName
-  className="css-1ykint2-root theme__product-grid__item__item-name"
+  className="tss-1ykint2-root theme__product-grid__item__item-name"
   name="Foo"
   portalName="product-item.name"
   portalProps={

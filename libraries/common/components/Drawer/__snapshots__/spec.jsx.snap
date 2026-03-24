@@ -16,9 +16,9 @@ exports[`<Drawer /> should add custom classes 1`] = `
     className="custom-class-name"
     classes={
       {
-        "animationIn": "css-25le8d-Drawer-animationIn",
-        "animationOut": "css-1lx1x7x-Drawer-animationOut",
-        "container": "css-2b150r-Drawer-container",
+        "animationIn": "tss-25le8d-Drawer-animationIn",
+        "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+        "container": "tss-2b150r-Drawer-container",
       }
     }
     isOpen={true}
@@ -29,7 +29,7 @@ exports[`<Drawer /> should add custom classes 1`] = `
   >
     <div
       aria-modal={true}
-      className="custom-class-name css-2b150r-Drawer-container css-25le8d-Drawer-animationIn common__drawer"
+      className="custom-class-name tss-2b150r-Drawer-container tss-25le8d-Drawer-animationIn common__drawer"
       onAnimationEnd={[Function]}
       role="dialog"
       style={{}}
@@ -57,9 +57,9 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
     className="custom-class-name"
     classes={
       {
-        "animationIn": "css-25le8d-Drawer-animationIn",
-        "animationOut": "css-1lx1x7x-Drawer-animationOut",
-        "container": "css-2b150r-Drawer-container",
+        "animationIn": "tss-25le8d-Drawer-animationIn",
+        "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+        "container": "tss-2b150r-Drawer-container",
       }
     }
     isOpen={true}
@@ -70,7 +70,7 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
   >
     <div
       aria-modal={true}
-      className="custom-class-name css-2b150r-Drawer-container css-25le8d-Drawer-animationIn common__drawer"
+      className="custom-class-name tss-2b150r-Drawer-container tss-25le8d-Drawer-animationIn common__drawer"
       onAnimationEnd={[Function]}
       role="dialog"
       style={{}}
@@ -98,9 +98,9 @@ exports[`<Drawer /> should execute callback when drawer open animation did end 1
     className="custom-class-name"
     classes={
       {
-        "animationIn": "css-25le8d-Drawer-animationIn",
-        "animationOut": "css-1lx1x7x-Drawer-animationOut",
-        "container": "css-2b150r-Drawer-container",
+        "animationIn": "tss-25le8d-Drawer-animationIn",
+        "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+        "container": "tss-2b150r-Drawer-container",
       }
     }
     isOpen={false}
@@ -124,9 +124,9 @@ exports[`<Drawer /> should render 1`] = `
   className=""
   classes={
     {
-      "animationIn": "css-25le8d-Drawer-animationIn",
-      "animationOut": "css-1lx1x7x-Drawer-animationOut",
-      "container": "css-2b150r-Drawer-container",
+      "animationIn": "tss-25le8d-Drawer-animationIn",
+      "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+      "container": "tss-2b150r-Drawer-container",
     }
   }
   isOpen={false}

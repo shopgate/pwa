@@ -11,7 +11,7 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
   }
 >
   <div
-    className="css-lg74ao"
+    className="tss-e8nrsd-buttonContainer"
   >
     <Button
       disabled={false}
@@ -39,7 +39,7 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
   }
 >
   <div
-    className="css-lg74ao"
+    className="tss-e8nrsd-buttonContainer"
   >
     <Button
       disabled={false}
@@ -67,7 +67,7 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
   }
 >
   <div
-    className="css-lg74ao"
+    className="tss-e8nrsd-buttonContainer"
   >
     <Button
       disabled={true}

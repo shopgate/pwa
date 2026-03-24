@@ -2,16 +2,12 @@
 
 exports[`<Logo /> should render an image 1`] = `
 <div
-  className="css-ivdtm0 engage__logo"
+  className="tss-1t6nwxt-container engage__logo"
   onClick={[Function]}
 >
   <img
     alt="Shopgate Connect"
-    className={
-      {
-        "data-css-e59s49": "",
-      }
-    }
+    className="tss-1eebh38-image"
     src="https://example.com/logo"
   />
 </div>

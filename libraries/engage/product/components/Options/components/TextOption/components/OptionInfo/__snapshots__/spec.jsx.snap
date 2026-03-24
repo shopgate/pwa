@@ -1,15 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<OptionInfo /> should render price element 1`] = `
-<ul
-  className="css-jy6f7q css-h7r55a common__grid"
+<Grid
+  className="tss-16b3gbi-info"
+  classes={
+    {
+      "noWrap": "tss-18pnfnt-Grid-noWrap",
+      "root": "tss-ttd1ja-Grid-root",
+      "wrap": "tss-xzd4nf-Grid-wrap",
+    }
+  }
+  component="ul"
+  wrap={false}
 >
-  <GridItem
+  <GridItemWithStyles
     aria-hidden={true}
-    className="css-1bia360"
-    component="li"
+    className="tss-wzlmdo-price"
     grow={1}
-    shrink={1}
   >
     Label: 
     <FormatPrice
@@ -18,7 +25,7 @@ exports[`<OptionInfo /> should render price element 1`] = `
       fractions={true}
       price={10}
     />
-  </GridItem>
+  </GridItemWithStyles>
   <div
     hidden={true}
     id="some-id"
@@ -26,19 +33,25 @@ exports[`<OptionInfo /> should render price element 1`] = `
     price.label
     Some Text
   </div>
-</ul>
+</Grid>
 `;
 
 exports[`<OptionInfo /> should render required element 1`] = `
-<ul
-  className="css-jy6f7q css-h7r55a common__grid"
+<Grid
+  className="tss-16b3gbi-info"
+  classes={
+    {
+      "noWrap": "tss-18pnfnt-Grid-noWrap",
+      "root": "tss-ttd1ja-Grid-root",
+      "wrap": "tss-xzd4nf-Grid-wrap",
+    }
+  }
+  component="ul"
+  wrap={false}
 >
-  <GridItem
+  <GridItemWithStyles
     aria-hidden={true}
-    className="css-1rrzpjg"
-    component="li"
-    grow={0}
-    shrink={1}
+    className="tss-10mixir-required"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
@@ -48,7 +61,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
       string="common.required"
       transform={null}
     />
-  </GridItem>
+  </GridItemWithStyles>
   <div
     hidden={true}
     id="some-id"
@@ -56,5 +69,5 @@ exports[`<OptionInfo /> should render required element 1`] = `
     common.required
     Some Text
   </div>
-</ul>
+</Grid>
 `;

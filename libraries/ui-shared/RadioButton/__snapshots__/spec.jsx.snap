@@ -8,7 +8,7 @@ exports[`RadioButton should render selected RadioButton 1`] = `
     checked={true}
     checkedIcon={
       <RadioChecked
-        className="css-ec0ojk"
+        className="tss-1ee86jc-checkedIcon"
       />
     }
     disabled={false}
@@ -17,7 +17,7 @@ exports[`RadioButton should render selected RadioButton 1`] = `
     onCheck={[Function]}
     uncheckedIcon={
       <RadioUnchecked
-        className="css-1gf5nsk"
+        className="tss-11cpk1a-uncheckedIcon"
       />
     }
   >
@@ -30,14 +30,14 @@ exports[`RadioButton should render selected RadioButton 1`] = `
       tabIndex={0}
     >
       <RadioChecked
-        className="css-ec0ojk"
+        className="tss-1ee86jc-checkedIcon"
       >
         <Icon
-          className="css-ec0ojk"
+          className="tss-1ee86jc-checkedIcon"
           content="<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>"
         >
           <svg
-            className="css-1n8b10t-root common__icon css-ec0ojk"
+            className="common__icon tss-lks04k-root-checkedIcon"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>",
@@ -64,7 +64,7 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
   <Checkbox
     checkedIcon={
       <RadioChecked
-        className="css-ec0ojk"
+        className="tss-1ee86jc-checkedIcon"
       />
     }
     disabled={false}
@@ -73,7 +73,7 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
     onCheck={[Function]}
     uncheckedIcon={
       <RadioUnchecked
-        className="css-1gf5nsk"
+        className="tss-11cpk1a-uncheckedIcon"
       />
     }
   >
@@ -85,14 +85,14 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
       tabIndex={0}
     >
       <RadioUnchecked
-        className="css-1gf5nsk"
+        className="tss-11cpk1a-uncheckedIcon"
       >
         <Icon
-          className="css-1gf5nsk"
+          className="tss-11cpk1a-uncheckedIcon"
           content="<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>"
         >
           <svg
-            className="css-1n8b10t-root common__icon css-1gf5nsk"
+            className="common__icon tss-kvzpvq-root-uncheckedIcon"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>",

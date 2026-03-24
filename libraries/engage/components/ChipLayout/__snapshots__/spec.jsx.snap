@@ -1,451 +1,664 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ChipsLayout /> should render with one chip 1`] = `
-<ChipLayout
-  handleMoreButton={[Function]}
-  invertMoreButton={false}
-  maxRows={2}
-  moreLabel="more"
-  pathname=""
->
-  <div
-    className="css-1hor112 engage__chip-layout"
+<ChipLayoutWithStyles>
+  <ChipLayout
+    classes={
+      {
+        "container": "tss-1hc3dux-ChipLayout-container",
+        "layout": "tss-1094jkh-ChipLayout-layout",
+        "moreButton": "tss-vc0sk0-ChipLayout-moreButton",
+        "moreButtonInverted": "tss-ty5l5v-ChipLayout-moreButtonInverted",
+        "moreButtonWrapper": "tss-1ia9vrm-ChipLayout-moreButtonWrapper",
+      }
+    }
+    handleMoreButton={[Function]}
+    invertMoreButton={false}
+    maxRows={2}
+    moreLabel="more"
+    pathname=""
   >
     <div
-      className="css-1ck9rgi"
+      className="tss-1hc3dux-ChipLayout-container engage__chip-layout"
     >
-      <Chip
-        editLabel={null}
-        id="some-id"
-        invert={false}
-        onClick={[Function]}
-        onRemove={[Function]}
-        removable={true}
-        removeLabel={null}
+      <div
+        className="tss-1094jkh-ChipLayout-layout"
       >
-        <div
-          className="ui-shared__chip css-151hpn9"
-          data-test-id="some-id"
+        <Chip
+          editLabel={null}
+          id="some-id"
+          invert={false}
+          onClick={[Function]}
+          onRemove={[Function]}
+          removable={true}
+          removeLabel={null}
         >
-          <Button
-            aria-label={null}
-            className="css-39vnpz"
-            disabled={false}
-            onClick={[Function]}
-            testId="removeFilter"
+          <div
+            className="ui-shared__chip css-151hpn9"
+            data-test-id="some-id"
           >
-            <button
+            <ButtonWithStyles
               aria-label={null}
-              className="css-39vnpz css-1rn65c0 common__button"
-              data-test-id="removeFilter"
-              disabled={false}
+              className="css-39vnpz"
               onClick={[Function]}
+              testId="removeFilter"
             >
-              <ResponsiveContainer
-                appAlways={true}
-                appOnly={false}
-                breakpoint="<=xs"
-                webAlways={false}
-                webOnly={false}
+              <Button
+                aria-label={null}
+                className="tss-18hbw04-Button-root css-39vnpz"
+                classes={
+                  {
+                    "root": "tss-18hbw04-Button-root",
+                  }
+                }
+                disabled={false}
+                onClick={[Function]}
+                testId="removeFilter"
               >
-                <Cross
-                  size={16}
+                <button
+                  aria-label={null}
+                  className="tss-18hbw04-Button-root css-39vnpz tss-18hbw04-Button-root css-39vnpz common__button"
+                  classes={
+                    {
+                      "root": "tss-18hbw04-Button-root",
+                    }
+                  }
+                  data-test-id="removeFilter"
+                  disabled={false}
+                  onClick={[Function]}
                 >
-                  <Icon
-                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                    size={16}
+                  <ResponsiveContainer
+                    appAlways={true}
+                    appOnly={false}
+                    breakpoint="<=xs"
+                    webAlways={false}
+                    webOnly={false}
                   >
-                    <svg
-                      className="css-1n8b10t-root common__icon"
-                      dangerouslySetInnerHTML={
-                        {
-                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                        }
-                      }
-                      style={
-                        {
-                          "fill": undefined,
-                          "fontSize": 16,
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Cross>
-              </ResponsiveContainer>
-              <ResponsiveContainer
-                appAlways={false}
-                appOnly={false}
-                breakpoint=">xs"
-                webAlways={false}
-                webOnly={true}
-              />
-            </button>
-          </Button>
-          <Button
-            aria-label={null}
-            className="css-hb5pev"
-            disabled={false}
-            onClick={[Function]}
-            testId="Button"
-          >
-            <button
+                    <Cross
+                      size={16}
+                    >
+                      <Icon
+                        content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                        size={16}
+                      >
+                        <svg
+                          className="tss-1n8b10t-root common__icon"
+                          dangerouslySetInnerHTML={
+                            {
+                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
+                            }
+                          }
+                          style={
+                            {
+                              "fill": undefined,
+                              "fontSize": 16,
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </Cross>
+                  </ResponsiveContainer>
+                  <ResponsiveContainer
+                    appAlways={false}
+                    appOnly={false}
+                    breakpoint=">xs"
+                    webAlways={false}
+                    webOnly={true}
+                  />
+                </button>
+              </Button>
+            </ButtonWithStyles>
+            <ButtonWithStyles
               aria-label={null}
-              className="css-hb5pev css-1rn65c0 common__button"
-              data-test-id="Button"
-              disabled={false}
+              className="css-hb5pev"
               onClick={[Function]}
             >
-              foo
-            </button>
-          </Button>
-        </div>
-      </Chip>
-    </div>
-    <div
-      className="css-shibib"
-    >
-      <RippleButton
-        className="css-18twdlt"
-        disabled={false}
-        fill={true}
-        flat={false}
-        onClick={[Function]}
-        rippleClassName=""
-        rippleSize={null}
-        testId="Button"
-        type="plain"
-        wrapContent={true}
+              <Button
+                aria-label={null}
+                className="tss-18hbw04-Button-root css-hb5pev"
+                classes={
+                  {
+                    "root": "tss-18hbw04-Button-root",
+                  }
+                }
+                disabled={false}
+                onClick={[Function]}
+                testId="Button"
+              >
+                <button
+                  aria-label={null}
+                  className="tss-18hbw04-Button-root css-hb5pev tss-18hbw04-Button-root css-hb5pev common__button"
+                  classes={
+                    {
+                      "root": "tss-18hbw04-Button-root",
+                    }
+                  }
+                  data-test-id="Button"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  foo
+                </button>
+              </Button>
+            </ButtonWithStyles>
+          </div>
+        </Chip>
+      </div>
+      <div
+        className="tss-1ia9vrm-ChipLayout-moreButtonWrapper"
       >
-        <Button
-          className="css-18twdlt ui-shared__ripple-button"
-          disabled={false}
+        <RippleButtonWithStyles
+          className="tss-vc0sk0-ChipLayout-moreButton"
+          fill={true}
           flat={false}
           onClick={[Function]}
+          rippleClassName=""
+          rippleSize={null}
           testId="Button"
           type="plain"
-          wrapContent={false}
+          wrapContent={true}
         >
-          <Button
-            className="ui-shared__button css-1xxwysr css-18twdlt ui-shared__ripple-button"
-            disabled={false}
+          <RippleButton
+            className="tss-vc0sk0-ChipLayout-moreButton"
+            classes={
+              {
+                "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
+              }
+            }
+            fill={true}
+            flat={false}
             onClick={[Function]}
+            rippleClassName=""
+            rippleSize={null}
             testId="Button"
+            type="plain"
+            wrapContent={true}
           >
-            <button
-              className="ui-shared__button css-1xxwysr css-18twdlt ui-shared__ripple-button css-1rn65c0 common__button"
-              data-test-id="Button"
-              disabled={false}
+            <Button
+              className="tss-vc0sk0-ChipLayout-moreButton ui-shared__ripple-button"
+              flat={false}
               onClick={[Function]}
+              testId="Button"
+              type="plain"
+              wrapContent={false}
             >
-              <Ripple
-                className="css-1fscwua "
-                color="#000"
-                disabled={false}
-                fill={true}
+              <ButtonWithStyles
+                className="ui-shared__button css-1xxwysr tss-vc0sk0-ChipLayout-moreButton ui-shared__ripple-button"
                 onClick={[Function]}
-                onComplete={[Function]}
-                overflow={true}
-                size={null}
+                testId="Button"
+                type="button"
               >
-                <div
-                  className="ui-shared__ripple css-1fscwua "
-                  data-test-id="Ripple"
+                <Button
+                  className="ui-shared__button css-1xxwysr ui-shared__ripple-button tss-1e545om-Button-root-ChipLayout-moreButton"
+                  classes={
+                    {
+                      "root": "tss-18hbw04-Button-root",
+                    }
+                  }
+                  disabled={false}
                   onClick={[Function]}
-                  style={null}
+                  testId="Button"
+                  type="button"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
-                    className={null}
-                    params={{}}
-                    role={null}
-                    string="more"
-                    transform={null}
+                  <button
+                    className="ui-shared__button css-1xxwysr ui-shared__ripple-button tss-1e545om-Button-root-ChipLayout-moreButton ui-shared__button css-1xxwysr ui-shared__ripple-button tss-1e545om-Button-root-ChipLayout-moreButton common__button"
+                    classes={
+                      {
+                        "root": "tss-18hbw04-Button-root",
+                      }
+                    }
+                    data-test-id="Button"
+                    disabled={false}
+                    onClick={[Function]}
+                    type="button"
                   >
-                    <span
-                      className={null}
-                      role={null}
+                    <RippleWithStyles
+                      className="tss-p1t6ie-RippleButton-contentWrapper "
+                      fill={true}
+                      overflow={true}
+                      size={null}
                     >
-                      more
-                    </span>
-                  </Translate>
-                </div>
-              </Ripple>
-            </button>
-          </Button>
-        </Button>
-      </RippleButton>
+                      <Ripple
+                        className="tss-p1t6ie-RippleButton-contentWrapper "
+                        classes={
+                          {
+                            "container": "tss-1dfkr3n-Ripple-container",
+                          }
+                        }
+                        color="#000"
+                        disabled={false}
+                        fill={true}
+                        onClick={[Function]}
+                        onComplete={[Function]}
+                        overflow={true}
+                        size={null}
+                      >
+                        <div
+                          className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
+                          data-test-id="Ripple"
+                          onClick={[Function]}
+                          style={null}
+                        >
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="more"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              more
+                            </span>
+                          </Translate>
+                        </div>
+                      </Ripple>
+                    </RippleWithStyles>
+                  </button>
+                </Button>
+              </ButtonWithStyles>
+            </Button>
+          </RippleButton>
+        </RippleButtonWithStyles>
+      </div>
     </div>
-  </div>
-</ChipLayout>
+  </ChipLayout>
+</ChipLayoutWithStyles>
 `;
 
 exports[`<ChipsLayout /> should render with two chips 1`] = `
-<ChipLayout
-  handleMoreButton={[Function]}
-  invertMoreButton={false}
-  maxRows={2}
-  moreLabel="more"
-  pathname=""
->
-  <div
-    className="css-1hor112 engage__chip-layout"
+<ChipLayoutWithStyles>
+  <ChipLayout
+    classes={
+      {
+        "container": "tss-1hc3dux-ChipLayout-container",
+        "layout": "tss-1094jkh-ChipLayout-layout",
+        "moreButton": "tss-vc0sk0-ChipLayout-moreButton",
+        "moreButtonInverted": "tss-ty5l5v-ChipLayout-moreButtonInverted",
+        "moreButtonWrapper": "tss-1ia9vrm-ChipLayout-moreButtonWrapper",
+      }
+    }
+    handleMoreButton={[Function]}
+    invertMoreButton={false}
+    maxRows={2}
+    moreLabel="more"
+    pathname=""
   >
     <div
-      className="css-1ck9rgi"
+      className="tss-1hc3dux-ChipLayout-container engage__chip-layout"
     >
-      <Chip
-        editLabel={null}
-        id="some-id"
-        invert={false}
-        onClick={[Function]}
-        onRemove={[Function]}
-        removable={true}
-        removeLabel={null}
+      <div
+        className="tss-1094jkh-ChipLayout-layout"
       >
-        <div
-          className="ui-shared__chip css-151hpn9"
-          data-test-id="some-id"
+        <Chip
+          editLabel={null}
+          id="some-id"
+          invert={false}
+          onClick={[Function]}
+          onRemove={[Function]}
+          removable={true}
+          removeLabel={null}
         >
-          <Button
-            aria-label={null}
-            className="css-39vnpz"
-            disabled={false}
-            onClick={[Function]}
-            testId="removeFilter"
+          <div
+            className="ui-shared__chip css-151hpn9"
+            data-test-id="some-id"
           >
-            <button
+            <ButtonWithStyles
               aria-label={null}
-              className="css-39vnpz css-1rn65c0 common__button"
-              data-test-id="removeFilter"
-              disabled={false}
+              className="css-39vnpz"
               onClick={[Function]}
+              testId="removeFilter"
             >
-              <ResponsiveContainer
-                appAlways={true}
-                appOnly={false}
-                breakpoint="<=xs"
-                webAlways={false}
-                webOnly={false}
+              <Button
+                aria-label={null}
+                className="tss-18hbw04-Button-root css-39vnpz"
+                classes={
+                  {
+                    "root": "tss-18hbw04-Button-root",
+                  }
+                }
+                disabled={false}
+                onClick={[Function]}
+                testId="removeFilter"
               >
-                <Cross
-                  size={16}
+                <button
+                  aria-label={null}
+                  className="tss-18hbw04-Button-root css-39vnpz tss-18hbw04-Button-root css-39vnpz common__button"
+                  classes={
+                    {
+                      "root": "tss-18hbw04-Button-root",
+                    }
+                  }
+                  data-test-id="removeFilter"
+                  disabled={false}
+                  onClick={[Function]}
                 >
-                  <Icon
-                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                    size={16}
+                  <ResponsiveContainer
+                    appAlways={true}
+                    appOnly={false}
+                    breakpoint="<=xs"
+                    webAlways={false}
+                    webOnly={false}
                   >
-                    <svg
-                      className="css-1n8b10t-root common__icon"
-                      dangerouslySetInnerHTML={
-                        {
-                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                        }
-                      }
-                      style={
-                        {
-                          "fill": undefined,
-                          "fontSize": 16,
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Cross>
-              </ResponsiveContainer>
-              <ResponsiveContainer
-                appAlways={false}
-                appOnly={false}
-                breakpoint=">xs"
-                webAlways={false}
-                webOnly={true}
-              />
-            </button>
-          </Button>
-          <Button
-            aria-label={null}
-            className="css-hb5pev"
-            disabled={false}
-            onClick={[Function]}
-            testId="Button"
-          >
-            <button
+                    <Cross
+                      size={16}
+                    >
+                      <Icon
+                        content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                        size={16}
+                      >
+                        <svg
+                          className="tss-1n8b10t-root common__icon"
+                          dangerouslySetInnerHTML={
+                            {
+                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
+                            }
+                          }
+                          style={
+                            {
+                              "fill": undefined,
+                              "fontSize": 16,
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </Cross>
+                  </ResponsiveContainer>
+                  <ResponsiveContainer
+                    appAlways={false}
+                    appOnly={false}
+                    breakpoint=">xs"
+                    webAlways={false}
+                    webOnly={true}
+                  />
+                </button>
+              </Button>
+            </ButtonWithStyles>
+            <ButtonWithStyles
               aria-label={null}
-              className="css-hb5pev css-1rn65c0 common__button"
-              data-test-id="Button"
-              disabled={false}
+              className="css-hb5pev"
               onClick={[Function]}
             >
-              foo
-            </button>
-          </Button>
-        </div>
-      </Chip>
-      <Chip
-        editLabel={null}
-        id="some-other-id"
-        invert={false}
-        onClick={[Function]}
-        onRemove={[Function]}
-        removable={true}
-        removeLabel={null}
-      >
-        <div
-          className="ui-shared__chip css-151hpn9"
-          data-test-id="some-other-id"
+              <Button
+                aria-label={null}
+                className="tss-18hbw04-Button-root css-hb5pev"
+                classes={
+                  {
+                    "root": "tss-18hbw04-Button-root",
+                  }
+                }
+                disabled={false}
+                onClick={[Function]}
+                testId="Button"
+              >
+                <button
+                  aria-label={null}
+                  className="tss-18hbw04-Button-root css-hb5pev tss-18hbw04-Button-root css-hb5pev common__button"
+                  classes={
+                    {
+                      "root": "tss-18hbw04-Button-root",
+                    }
+                  }
+                  data-test-id="Button"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  foo
+                </button>
+              </Button>
+            </ButtonWithStyles>
+          </div>
+        </Chip>
+        <Chip
+          editLabel={null}
+          id="some-other-id"
+          invert={false}
+          onClick={[Function]}
+          onRemove={[Function]}
+          removable={true}
+          removeLabel={null}
         >
-          <Button
-            aria-label={null}
-            className="css-39vnpz"
-            disabled={false}
-            onClick={[Function]}
-            testId="removeFilter"
+          <div
+            className="ui-shared__chip css-151hpn9"
+            data-test-id="some-other-id"
           >
-            <button
+            <ButtonWithStyles
               aria-label={null}
-              className="css-39vnpz css-1rn65c0 common__button"
-              data-test-id="removeFilter"
-              disabled={false}
+              className="css-39vnpz"
               onClick={[Function]}
+              testId="removeFilter"
             >
-              <ResponsiveContainer
-                appAlways={true}
-                appOnly={false}
-                breakpoint="<=xs"
-                webAlways={false}
-                webOnly={false}
+              <Button
+                aria-label={null}
+                className="tss-18hbw04-Button-root css-39vnpz"
+                classes={
+                  {
+                    "root": "tss-18hbw04-Button-root",
+                  }
+                }
+                disabled={false}
+                onClick={[Function]}
+                testId="removeFilter"
               >
-                <Cross
-                  size={16}
+                <button
+                  aria-label={null}
+                  className="tss-18hbw04-Button-root css-39vnpz tss-18hbw04-Button-root css-39vnpz common__button"
+                  classes={
+                    {
+                      "root": "tss-18hbw04-Button-root",
+                    }
+                  }
+                  data-test-id="removeFilter"
+                  disabled={false}
+                  onClick={[Function]}
                 >
-                  <Icon
-                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                    size={16}
+                  <ResponsiveContainer
+                    appAlways={true}
+                    appOnly={false}
+                    breakpoint="<=xs"
+                    webAlways={false}
+                    webOnly={false}
                   >
-                    <svg
-                      className="css-1n8b10t-root common__icon"
-                      dangerouslySetInnerHTML={
-                        {
-                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                        }
-                      }
-                      style={
-                        {
-                          "fill": undefined,
-                          "fontSize": 16,
-                        }
-                      }
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    />
-                  </Icon>
-                </Cross>
-              </ResponsiveContainer>
-              <ResponsiveContainer
-                appAlways={false}
-                appOnly={false}
-                breakpoint=">xs"
-                webAlways={false}
-                webOnly={true}
-              />
-            </button>
-          </Button>
-          <Button
-            aria-label={null}
-            className="css-hb5pev"
-            disabled={false}
-            onClick={[Function]}
-            testId="Button"
-          >
-            <button
+                    <Cross
+                      size={16}
+                    >
+                      <Icon
+                        content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                        size={16}
+                      >
+                        <svg
+                          className="tss-1n8b10t-root common__icon"
+                          dangerouslySetInnerHTML={
+                            {
+                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
+                            }
+                          }
+                          style={
+                            {
+                              "fill": undefined,
+                              "fontSize": 16,
+                            }
+                          }
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        />
+                      </Icon>
+                    </Cross>
+                  </ResponsiveContainer>
+                  <ResponsiveContainer
+                    appAlways={false}
+                    appOnly={false}
+                    breakpoint=">xs"
+                    webAlways={false}
+                    webOnly={true}
+                  />
+                </button>
+              </Button>
+            </ButtonWithStyles>
+            <ButtonWithStyles
               aria-label={null}
-              className="css-hb5pev css-1rn65c0 common__button"
-              data-test-id="Button"
-              disabled={false}
+              className="css-hb5pev"
               onClick={[Function]}
             >
-              bar
-            </button>
-          </Button>
-        </div>
-      </Chip>
-    </div>
-    <div
-      className="css-shibib"
-    >
-      <RippleButton
-        className="css-18twdlt"
-        disabled={false}
-        fill={true}
-        flat={false}
-        onClick={[Function]}
-        rippleClassName=""
-        rippleSize={null}
-        testId="Button"
-        type="plain"
-        wrapContent={true}
+              <Button
+                aria-label={null}
+                className="tss-18hbw04-Button-root css-hb5pev"
+                classes={
+                  {
+                    "root": "tss-18hbw04-Button-root",
+                  }
+                }
+                disabled={false}
+                onClick={[Function]}
+                testId="Button"
+              >
+                <button
+                  aria-label={null}
+                  className="tss-18hbw04-Button-root css-hb5pev tss-18hbw04-Button-root css-hb5pev common__button"
+                  classes={
+                    {
+                      "root": "tss-18hbw04-Button-root",
+                    }
+                  }
+                  data-test-id="Button"
+                  disabled={false}
+                  onClick={[Function]}
+                >
+                  bar
+                </button>
+              </Button>
+            </ButtonWithStyles>
+          </div>
+        </Chip>
+      </div>
+      <div
+        className="tss-1ia9vrm-ChipLayout-moreButtonWrapper"
       >
-        <Button
-          className="css-18twdlt ui-shared__ripple-button"
-          disabled={false}
+        <RippleButtonWithStyles
+          className="tss-vc0sk0-ChipLayout-moreButton"
+          fill={true}
           flat={false}
           onClick={[Function]}
+          rippleClassName=""
+          rippleSize={null}
           testId="Button"
           type="plain"
-          wrapContent={false}
+          wrapContent={true}
         >
-          <Button
-            className="ui-shared__button css-1xxwysr css-18twdlt ui-shared__ripple-button"
-            disabled={false}
+          <RippleButton
+            className="tss-vc0sk0-ChipLayout-moreButton"
+            classes={
+              {
+                "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
+              }
+            }
+            fill={true}
+            flat={false}
             onClick={[Function]}
+            rippleClassName=""
+            rippleSize={null}
             testId="Button"
+            type="plain"
+            wrapContent={true}
           >
-            <button
-              className="ui-shared__button css-1xxwysr css-18twdlt ui-shared__ripple-button css-1rn65c0 common__button"
-              data-test-id="Button"
-              disabled={false}
+            <Button
+              className="tss-vc0sk0-ChipLayout-moreButton ui-shared__ripple-button"
+              flat={false}
               onClick={[Function]}
+              testId="Button"
+              type="plain"
+              wrapContent={false}
             >
-              <Ripple
-                className="css-1fscwua "
-                color="#000"
-                disabled={false}
-                fill={true}
+              <ButtonWithStyles
+                className="ui-shared__button css-1xxwysr tss-vc0sk0-ChipLayout-moreButton ui-shared__ripple-button"
                 onClick={[Function]}
-                onComplete={[Function]}
-                overflow={true}
-                size={null}
+                testId="Button"
+                type="button"
               >
-                <div
-                  className="ui-shared__ripple css-1fscwua "
-                  data-test-id="Ripple"
+                <Button
+                  className="ui-shared__button css-1xxwysr ui-shared__ripple-button tss-1e545om-Button-root-ChipLayout-moreButton"
+                  classes={
+                    {
+                      "root": "tss-18hbw04-Button-root",
+                    }
+                  }
+                  disabled={false}
                   onClick={[Function]}
-                  style={null}
+                  testId="Button"
+                  type="button"
                 >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
-                    className={null}
-                    params={{}}
-                    role={null}
-                    string="more"
-                    transform={null}
+                  <button
+                    className="ui-shared__button css-1xxwysr ui-shared__ripple-button tss-1e545om-Button-root-ChipLayout-moreButton ui-shared__button css-1xxwysr ui-shared__ripple-button tss-1e545om-Button-root-ChipLayout-moreButton common__button"
+                    classes={
+                      {
+                        "root": "tss-18hbw04-Button-root",
+                      }
+                    }
+                    data-test-id="Button"
+                    disabled={false}
+                    onClick={[Function]}
+                    type="button"
                   >
-                    <span
-                      className={null}
-                      role={null}
+                    <RippleWithStyles
+                      className="tss-p1t6ie-RippleButton-contentWrapper "
+                      fill={true}
+                      overflow={true}
+                      size={null}
                     >
-                      more
-                    </span>
-                  </Translate>
-                </div>
-              </Ripple>
-            </button>
-          </Button>
-        </Button>
-      </RippleButton>
+                      <Ripple
+                        className="tss-p1t6ie-RippleButton-contentWrapper "
+                        classes={
+                          {
+                            "container": "tss-1dfkr3n-Ripple-container",
+                          }
+                        }
+                        color="#000"
+                        disabled={false}
+                        fill={true}
+                        onClick={[Function]}
+                        onComplete={[Function]}
+                        overflow={true}
+                        size={null}
+                      >
+                        <div
+                          className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
+                          data-test-id="Ripple"
+                          onClick={[Function]}
+                          style={null}
+                        >
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="more"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              more
+                            </span>
+                          </Translate>
+                        </div>
+                      </Ripple>
+                    </RippleWithStyles>
+                  </button>
+                </Button>
+              </ButtonWithStyles>
+            </Button>
+          </RippleButton>
+        </RippleButtonWithStyles>
+      </div>
     </div>
-  </div>
-</ChipLayout>
+  </ChipLayout>
+</ChipLayoutWithStyles>
 `;

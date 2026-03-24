@@ -14,23 +14,43 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
   <Layout
     columns={2}
   >
-    <Grid
-      className="css-1ctgdf4 theme__product-grid"
-      component="ul"
+    <GridWithStyles
+      className="tss-rjc6yt-grid theme__product-grid"
       data-test-id="productGrid"
       wrap={true}
     >
-      <ul
-        className="css-1ctgdf4 theme__product-grid css-h7r55a common__grid css-u7q1iu"
+      <Grid
+        className="tss-rjc6yt-grid theme__product-grid"
+        classes={
+          {
+            "noWrap": "tss-18pnfnt-Grid-noWrap",
+            "root": "tss-ttd1ja-Grid-root",
+            "wrap": "tss-xzd4nf-Grid-wrap",
+          }
+        }
+        component="ul"
         data-test-id="productGrid"
+        wrap={true}
       >
-        <ProductListTypeProvider
-          meta={null}
-          subType={null}
-          type="productGrid"
-        />
-      </ul>
-    </Grid>
+        <ul
+          className="tss-rjc6yt-grid theme__product-grid theme__product-grid tss-4lrki9-Grid-root-grid common__grid tss-xzd4nf-Grid-wrap"
+          classes={
+            {
+              "noWrap": "tss-18pnfnt-Grid-noWrap",
+              "root": "tss-ttd1ja-Grid-root",
+              "wrap": "tss-xzd4nf-Grid-wrap",
+            }
+          }
+          data-test-id="productGrid"
+        >
+          <ProductListTypeProvider
+            meta={null}
+            subType={null}
+            type="productGrid"
+          />
+        </ul>
+      </Grid>
+    </GridWithStyles>
   </Layout>
 </ProductGrid>
 `;

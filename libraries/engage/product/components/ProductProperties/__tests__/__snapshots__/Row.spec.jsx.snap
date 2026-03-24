@@ -15,11 +15,7 @@ exports[`<Row /> should render as expected 1`] = `
   >
     <td
       aria-hidden={true}
-      className={
-        {
-          "data-css-fl9ufm": "",
-        }
-      }
+      className="tss-15jjn2r-tableCell"
     >
       <span
         dangerouslySetInnerHTML={
@@ -31,11 +27,7 @@ exports[`<Row /> should render as expected 1`] = `
     </td>
     <td
       aria-hidden={true}
-      className={
-        {
-          "data-css-fl9ufm": "",
-        }
-      }
+      className="tss-15jjn2r-tableCell"
       data-test-id="property: TestValue"
     >
       <span

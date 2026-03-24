@@ -4,9 +4,9 @@ exports[`<CouponField /> should render a message when the cart does not support 
 
 exports[`<CouponField /> should render a message when the cart supports coupons 1`] = `
 <div
-  className={
+  style={
     {
-      "data-css-1qhicu2": "",
+      "background": "var(--color-background-accent)",
     }
   }
 >
@@ -30,9 +30,9 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
 
 exports[`<CouponField /> should render as expected without any props 1`] = `
 <div
-  className={
+  style={
     {
-      "data-css-1qhicu2": "",
+      "background": "var(--color-background-accent)",
     }
   }
 >

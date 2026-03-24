@@ -136,8 +136,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
 `;
 
 exports[`<Select /> renders with implicit items (closed) 1`] = `
-<Select
-  className=""
+<SelectWithStyles
   items={
     [
       "a",
@@ -148,27 +147,48 @@ exports[`<Select /> renders with implicit items (closed) 1`] = `
       "f",
     ]
   }
-  onChange={[Function]}
-  placeholder="Select ..."
-  value={null}
 >
-  <div
-    className="css-7c9av6  common_select"
+  <Select
+    className=""
+    classes={
+      {
+        "container": "tss-18dvm4l-Select-container",
+        "items": "tss-1pwqwld-Select-items",
+        "selectHandle": "tss-yive34-Select-selectHandle",
+      }
+    }
+    items={
+      [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+      ]
+    }
+    onChange={[Function]}
+    placeholder="Select ..."
+    value={null}
   >
     <div
-      onTouchStart={[Function]}
+      className="tss-18dvm4l-Select-container  common_select"
     >
-      <span>
-        Select ...
-      </span>
-      <span
-        className="css-jf1dde"
+      <div
+        onTouchStart={[Function]}
       >
-        ▾
-      </span>
+        <span>
+          Select ...
+        </span>
+        <span
+          className="tss-yive34-Select-selectHandle"
+        >
+          ▾
+        </span>
+      </div>
     </div>
-  </div>
-</Select>
+  </Select>
+</SelectWithStyles>
 `;
 
 exports[`<Select /> renders with implicit items (opened) 1`] = `

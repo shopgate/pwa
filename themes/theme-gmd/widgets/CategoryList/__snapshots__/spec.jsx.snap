@@ -40,14 +40,14 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
   }
 >
   <div
-    className="css-1tgouoh"
+    className="tss-1toq9zt-container"
     data-test-id="categoryList"
   >
     <Headline
       text="Yay Categories"
     >
       <h3
-        className="css-1qqc6wr headline theme__headline"
+        className="tss-1mu7f0p-root headline theme__headline"
       >
         Yay Categories
       </h3>
@@ -80,11 +80,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         }
       >
         <SheetList
-          className={
-            {
-              "data-css-tgxhyl": "",
-            }
-          }
+          className="tss-ocpive-sheetList"
           hasImages={false}
         >
           <SheetList.Item
@@ -94,7 +90,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             linkComponent={[Function]}
             rightComponent={
               <Connect(CategoryImage)
-                className="css-j7qxnf"
+                className="tss-1ca4g9e-image"
                 src="/some/url"
               />
             }
@@ -108,7 +104,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             linkComponent={[Function]}
             rightComponent={
               <Connect(CategoryImage)
-                className="css-j7qxnf"
+                className="tss-1ca4g9e-image"
                 src="/some/url"
               />
             }
@@ -137,12 +133,12 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             },
           ]
         }
-        className="css-1bhtb1n"
+        className="tss-1tflf41-grid"
         prerender={0}
         showImages={false}
       >
         <ul
-          className="css-tj07nj css-1bhtb1n engage__category__category-grid"
+          className="css-tj07nj tss-1tflf41-grid engage__category__category-grid"
         >
           <CategoryGridItem
             category={

@@ -27,7 +27,7 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
-      className="css-fazkyv"
+      className="tss-1k4g5cy-text"
       params={{}}
       role={null}
       string="product.tax_disclaimer"

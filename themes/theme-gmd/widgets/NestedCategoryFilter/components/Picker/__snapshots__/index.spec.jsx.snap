@@ -104,7 +104,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
             <section
               className="ui-shared__sheet css-1owavz5"
             >
-              <Drawer
+              <DrawerWithStyles
                 animation={
                   {
                     "duration": 300,
@@ -119,202 +119,267 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 onDidOpen={[Function]}
                 onOpen={[Function]}
               >
-                <div
-                  aria-modal={true}
-                  className="css-1447nbj css-1rg7udn css-1ldjh2f common__drawer"
-                  onAnimationEnd={[Function]}
-                  role="dialog"
-                  style={
+                <Drawer
+                  animation={
                     {
-                      "animationDuration": "300ms",
+                      "duration": 300,
+                      "in": "css-1ldjh2f",
+                      "out": "css-171mdnt",
                     }
                   }
-                  tabIndex={-1}
+                  className="css-1447nbj"
+                  classes={
+                    {
+                      "animationIn": "tss-25le8d-Drawer-animationIn",
+                      "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+                      "container": "tss-2b150r-Drawer-container",
+                    }
+                  }
+                  isOpen={true}
+                  onClose={[Function]}
+                  onDidClose={[Function]}
+                  onDidOpen={[Function]}
+                  onOpen={[Function]}
                 >
-                  <Header
-                    allowClose={true}
-                    handleChange={[Function]}
-                    onToggleClose={[Function]}
-                    shadow={false}
-                    showSearch={false}
-                    title="Picker Label"
+                  <div
+                    aria-modal={true}
+                    className="css-1447nbj tss-2b150r-Drawer-container css-1ldjh2f common__drawer"
+                    onAnimationEnd={[Function]}
+                    role="dialog"
+                    style={
+                      {
+                        "animationDuration": "300ms",
+                      }
+                    }
+                    tabIndex={-1}
                   >
-                    <div
-                      className=""
+                    <Header
+                      allowClose={true}
+                      handleChange={[Function]}
+                      onToggleClose={[Function]}
+                      shadow={false}
+                      showSearch={false}
+                      title="Picker Label"
                     >
-                      <Grid
-                        className="css-1hncgty"
-                        component="div"
-                        wrap={false}
+                      <div
+                        className=""
                       >
-                        <div
-                          className="css-1hncgty css-h7r55a common__grid"
+                        <GridWithStyles
+                          className="css-1hncgty"
+                          component="div"
+                          wrap={false}
                         >
-                          <button
-                            aria-label="common.close"
-                            className="css-r4gt00"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <Ripple
-                              className="css-ugy6xl"
-                              color="#000"
-                              disabled={false}
-                              fill={false}
-                              onClick={[Function]}
-                              onComplete={[Function]}
-                              overflow={false}
-                              size={null}
-                            >
-                              <div
-                                className="ui-shared__ripple css-ugy6xl"
-                                data-test-id="Ripple"
-                                onClick={[Function]}
-                                style={null}
-                              >
-                                <Cross
-                                  size={24}
-                                >
-                                  <Icon
-                                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                    size={24}
-                                  >
-                                    <svg
-                                      className="css-1n8b10t-root common__icon"
-                                      dangerouslySetInnerHTML={
-                                        {
-                                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                        }
-                                      }
-                                      style={
-                                        {
-                                          "fill": undefined,
-                                          "fontSize": 24,
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Cross>
-                              </div>
-                            </Ripple>
-                          </button>
-                          <GridItem
-                            className="css-1mjy0de"
+                          <Grid
+                            className="css-1hncgty"
+                            classes={
+                              {
+                                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                                "root": "tss-ttd1ja-Grid-root",
+                                "wrap": "tss-xzd4nf-Grid-wrap",
+                              }
+                            }
                             component="div"
-                            grow={1}
-                            role="heading"
-                            shrink={1}
-                            tabIndex={0}
+                            wrap={false}
                           >
                             <div
-                              className="css-1mjy0de css-1gs0ko2"
-                              role="heading"
-                              tabIndex={0}
+                              className="css-1hncgty tss-ttd1ja-Grid-root css-1hncgty common__grid tss-18pnfnt-Grid-noWrap"
+                              classes={
+                                {
+                                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                                  "root": "tss-ttd1ja-Grid-root",
+                                  "wrap": "tss-xzd4nf-Grid-wrap",
+                                }
+                              }
                             >
-                              Picker Label
+                              <button
+                                aria-label="common.close"
+                                className="css-r4gt00"
+                                onClick={[Function]}
+                                type="button"
+                              >
+                                <RippleWithStyles
+                                  className="css-ugy6xl"
+                                >
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    classes={
+                                      {
+                                        "container": "tss-1dfkr3n-Ripple-container",
+                                      }
+                                    }
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
+                                    onClick={[Function]}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
+                                  >
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
+                                    >
+                                      <Cross
+                                        size={24}
+                                      >
+                                        <Icon
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                                          size={24}
+                                        >
+                                          <svg
+                                            className="tss-1n8b10t-root common__icon"
+                                            dangerouslySetInnerHTML={
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
+                                              }
+                                            }
+                                            style={
+                                              {
+                                                "fill": undefined,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </RippleWithStyles>
+                              </button>
+                              <GridItemWithStyles
+                                className="css-1mjy0de"
+                                component="div"
+                                grow={1}
+                                role="heading"
+                                tabIndex={0}
+                              >
+                                <GridItem
+                                  className="tss-rttrxi-GridItem-root css-1mjy0de"
+                                  classes={
+                                    {
+                                      "root": "tss-rttrxi-GridItem-root",
+                                    }
+                                  }
+                                  component="div"
+                                  grow={1}
+                                  role="heading"
+                                  shrink={1}
+                                  tabIndex={0}
+                                >
+                                  <div
+                                    className="tss-rttrxi-GridItem-root css-1mjy0de tss-rttrxi-GridItem-root css-1mjy0de common__grid__item--custom-flex"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Picker Label
+                                  </div>
+                                </GridItem>
+                              </GridItemWithStyles>
                             </div>
-                          </GridItem>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Header>
-                  <div
-                    className="css-13azwyo"
-                  >
-                    <ProgressBar
-                      isVisible={false}
+                          </Grid>
+                        </GridWithStyles>
+                      </div>
+                    </Header>
+                    <div
+                      className="css-13azwyo"
                     >
-                      <Transition
-                        appear={false}
-                        enter={true}
-                        exit={true}
-                        in={false}
-                        mountOnEnter={false}
-                        onEnter={[Function]}
-                        onEntered={[Function]}
-                        onEntering={[Function]}
-                        onExit={[Function]}
-                        onExited={[Function]}
-                        onExiting={[Function]}
-                        timeout={150}
-                        unmountOnExit={false}
+                      <ProgressBar
+                        isVisible={false}
                       >
-                        <div
-                          className="css-guf25f ui-shared__progress-bar"
-                          style={
-                            {
-                              "transform": "scale(1, 0)",
-                            }
-                          }
+                        <Transition
+                          appear={false}
+                          enter={true}
+                          exit={true}
+                          in={false}
+                          mountOnEnter={false}
+                          onEnter={[Function]}
+                          onEntered={[Function]}
+                          onEntering={[Function]}
+                          onExit={[Function]}
+                          onExited={[Function]}
+                          onExiting={[Function]}
+                          timeout={150}
+                          unmountOnExit={false}
                         >
                           <div
-                            className="css-1sisfcf"
-                          />
-                        </div>
-                      </Transition>
-                    </ProgressBar>
-                  </div>
-                  <div
-                    className="css-1pp3d82"
-                    onScroll={[Function]}
-                  >
-                    <SheetList
-                      key=".0"
-                      onClose={[Function]}
-                      query=""
+                            className="css-guf25f ui-shared__progress-bar"
+                            style={
+                              {
+                                "transform": "scale(1, 0)",
+                              }
+                            }
+                          >
+                            <div
+                              className="css-1sisfcf"
+                            />
+                          </div>
+                        </Transition>
+                      </ProgressBar>
+                    </div>
+                    <div
+                      className="css-1pp3d82"
+                      onScroll={[Function]}
                     >
-                      <SheetItem
-                        item={
-                          {
-                            "childrenCount": 2,
-                            "id": "1",
-                            "isFetching": false,
-                            "name": "Category 1",
-                          }
-                        }
-                        key="1"
-                        onClick={[Function]}
-                        selected={false}
+                      <SheetList
+                        key=".0"
+                        onClose={[Function]}
+                        query=""
                       >
-                        <button
-                          className="css-zwdy34"
+                        <SheetItem
+                          item={
+                            {
+                              "childrenCount": 2,
+                              "id": "1",
+                              "isFetching": false,
+                              "name": "Category 1",
+                            }
+                          }
                           key="1"
                           onClick={[Function]}
-                          type="button"
-                          value="1"
+                          selected={false}
                         >
-                          Category 1
-                        </button>
-                      </SheetItem>
-                      <SheetItem
-                        item={
-                          {
-                            "childrenCount": 0,
-                            "id": "2",
-                            "isFetching": false,
-                            "name": "Category 2",
+                          <button
+                            className="tss-1rm4ebj-button"
+                            key="1"
+                            onClick={[Function]}
+                            type="button"
+                            value="1"
+                          >
+                            Category 1
+                          </button>
+                        </SheetItem>
+                        <SheetItem
+                          item={
+                            {
+                              "childrenCount": 0,
+                              "id": "2",
+                              "isFetching": false,
+                              "name": "Category 2",
+                            }
                           }
-                        }
-                        key="2"
-                        onClick={[Function]}
-                        selected={false}
-                      >
-                        <button
-                          className="css-zwdy34"
                           key="2"
                           onClick={[Function]}
-                          type="button"
-                          value="2"
+                          selected={false}
                         >
-                          Category 2
-                        </button>
-                      </SheetItem>
-                    </SheetList>
+                          <button
+                            className="tss-1rm4ebj-button"
+                            key="2"
+                            onClick={[Function]}
+                            type="button"
+                            value="2"
+                          >
+                            Category 2
+                          </button>
+                        </SheetItem>
+                      </SheetList>
+                    </div>
                   </div>
-                </div>
-              </Drawer>
+                </Drawer>
+              </DrawerWithStyles>
               <Backdrop
                 className=""
                 color="#000"
@@ -335,7 +400,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                     {
                       "current": <div
                         aria-hidden="true"
-                        class="css-30873t  common__backdrop"
+                        class="tss-1tlnanp-backdrop  common__backdrop"
                         data-test-id="Backdrop"
                         style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                       />,
@@ -352,7 +417,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 >
                   <div
                     aria-hidden={true}
-                    className="css-30873t  common__backdrop"
+                    className="tss-1tlnanp-backdrop  common__backdrop"
                     data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
@@ -480,7 +545,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             <section
               className="ui-shared__sheet css-1owavz5"
             >
-              <Drawer
+              <DrawerWithStyles
                 animation={
                   {
                     "duration": 300,
@@ -495,202 +560,267 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 onDidOpen={[Function]}
                 onOpen={[Function]}
               >
-                <div
-                  aria-modal={true}
-                  className="css-1447nbj css-1rg7udn css-1ldjh2f common__drawer"
-                  onAnimationEnd={[Function]}
-                  role="dialog"
-                  style={
+                <Drawer
+                  animation={
                     {
-                      "animationDuration": "300ms",
+                      "duration": 300,
+                      "in": "css-1ldjh2f",
+                      "out": "css-171mdnt",
                     }
                   }
-                  tabIndex={-1}
+                  className="css-1447nbj"
+                  classes={
+                    {
+                      "animationIn": "tss-25le8d-Drawer-animationIn",
+                      "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+                      "container": "tss-2b150r-Drawer-container",
+                    }
+                  }
+                  isOpen={true}
+                  onClose={[Function]}
+                  onDidClose={[Function]}
+                  onDidOpen={[Function]}
+                  onOpen={[Function]}
                 >
-                  <Header
-                    allowClose={true}
-                    handleChange={[Function]}
-                    onToggleClose={[Function]}
-                    shadow={false}
-                    showSearch={false}
-                    title="Picker Label"
+                  <div
+                    aria-modal={true}
+                    className="css-1447nbj tss-2b150r-Drawer-container css-1ldjh2f common__drawer"
+                    onAnimationEnd={[Function]}
+                    role="dialog"
+                    style={
+                      {
+                        "animationDuration": "300ms",
+                      }
+                    }
+                    tabIndex={-1}
                   >
-                    <div
-                      className=""
+                    <Header
+                      allowClose={true}
+                      handleChange={[Function]}
+                      onToggleClose={[Function]}
+                      shadow={false}
+                      showSearch={false}
+                      title="Picker Label"
                     >
-                      <Grid
-                        className="css-1hncgty"
-                        component="div"
-                        wrap={false}
+                      <div
+                        className=""
                       >
-                        <div
-                          className="css-1hncgty css-h7r55a common__grid"
+                        <GridWithStyles
+                          className="css-1hncgty"
+                          component="div"
+                          wrap={false}
                         >
-                          <button
-                            aria-label="common.close"
-                            className="css-r4gt00"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <Ripple
-                              className="css-ugy6xl"
-                              color="#000"
-                              disabled={false}
-                              fill={false}
-                              onClick={[Function]}
-                              onComplete={[Function]}
-                              overflow={false}
-                              size={null}
-                            >
-                              <div
-                                className="ui-shared__ripple css-ugy6xl"
-                                data-test-id="Ripple"
-                                onClick={[Function]}
-                                style={null}
-                              >
-                                <Cross
-                                  size={24}
-                                >
-                                  <Icon
-                                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                    size={24}
-                                  >
-                                    <svg
-                                      className="css-1n8b10t-root common__icon"
-                                      dangerouslySetInnerHTML={
-                                        {
-                                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                        }
-                                      }
-                                      style={
-                                        {
-                                          "fill": undefined,
-                                          "fontSize": 24,
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Cross>
-                              </div>
-                            </Ripple>
-                          </button>
-                          <GridItem
-                            className="css-1mjy0de"
+                          <Grid
+                            className="css-1hncgty"
+                            classes={
+                              {
+                                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                                "root": "tss-ttd1ja-Grid-root",
+                                "wrap": "tss-xzd4nf-Grid-wrap",
+                              }
+                            }
                             component="div"
-                            grow={1}
-                            role="heading"
-                            shrink={1}
-                            tabIndex={0}
+                            wrap={false}
                           >
                             <div
-                              className="css-1mjy0de css-1gs0ko2"
-                              role="heading"
-                              tabIndex={0}
+                              className="css-1hncgty tss-ttd1ja-Grid-root css-1hncgty common__grid tss-18pnfnt-Grid-noWrap"
+                              classes={
+                                {
+                                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                                  "root": "tss-ttd1ja-Grid-root",
+                                  "wrap": "tss-xzd4nf-Grid-wrap",
+                                }
+                              }
                             >
-                              Picker Label
+                              <button
+                                aria-label="common.close"
+                                className="css-r4gt00"
+                                onClick={[Function]}
+                                type="button"
+                              >
+                                <RippleWithStyles
+                                  className="css-ugy6xl"
+                                >
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    classes={
+                                      {
+                                        "container": "tss-1dfkr3n-Ripple-container",
+                                      }
+                                    }
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
+                                    onClick={[Function]}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
+                                  >
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
+                                    >
+                                      <Cross
+                                        size={24}
+                                      >
+                                        <Icon
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                                          size={24}
+                                        >
+                                          <svg
+                                            className="tss-1n8b10t-root common__icon"
+                                            dangerouslySetInnerHTML={
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
+                                              }
+                                            }
+                                            style={
+                                              {
+                                                "fill": undefined,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </RippleWithStyles>
+                              </button>
+                              <GridItemWithStyles
+                                className="css-1mjy0de"
+                                component="div"
+                                grow={1}
+                                role="heading"
+                                tabIndex={0}
+                              >
+                                <GridItem
+                                  className="tss-rttrxi-GridItem-root css-1mjy0de"
+                                  classes={
+                                    {
+                                      "root": "tss-rttrxi-GridItem-root",
+                                    }
+                                  }
+                                  component="div"
+                                  grow={1}
+                                  role="heading"
+                                  shrink={1}
+                                  tabIndex={0}
+                                >
+                                  <div
+                                    className="tss-rttrxi-GridItem-root css-1mjy0de tss-rttrxi-GridItem-root css-1mjy0de common__grid__item--custom-flex"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Picker Label
+                                  </div>
+                                </GridItem>
+                              </GridItemWithStyles>
                             </div>
-                          </GridItem>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Header>
-                  <div
-                    className="css-13azwyo"
-                  >
-                    <ProgressBar
-                      isVisible={false}
+                          </Grid>
+                        </GridWithStyles>
+                      </div>
+                    </Header>
+                    <div
+                      className="css-13azwyo"
                     >
-                      <Transition
-                        appear={false}
-                        enter={true}
-                        exit={true}
-                        in={false}
-                        mountOnEnter={false}
-                        onEnter={[Function]}
-                        onEntered={[Function]}
-                        onEntering={[Function]}
-                        onExit={[Function]}
-                        onExited={[Function]}
-                        onExiting={[Function]}
-                        timeout={150}
-                        unmountOnExit={false}
+                      <ProgressBar
+                        isVisible={false}
                       >
-                        <div
-                          className="css-guf25f ui-shared__progress-bar"
-                          style={
-                            {
-                              "transform": "scale(1, 0)",
-                            }
-                          }
+                        <Transition
+                          appear={false}
+                          enter={true}
+                          exit={true}
+                          in={false}
+                          mountOnEnter={false}
+                          onEnter={[Function]}
+                          onEntered={[Function]}
+                          onEntering={[Function]}
+                          onExit={[Function]}
+                          onExited={[Function]}
+                          onExiting={[Function]}
+                          timeout={150}
+                          unmountOnExit={false}
                         >
                           <div
-                            className="css-1sisfcf"
-                          />
-                        </div>
-                      </Transition>
-                    </ProgressBar>
-                  </div>
-                  <div
-                    className="css-1pp3d82"
-                    onScroll={[Function]}
-                  >
-                    <SheetList
-                      key=".0"
-                      onClose={[Function]}
-                      query=""
+                            className="css-guf25f ui-shared__progress-bar"
+                            style={
+                              {
+                                "transform": "scale(1, 0)",
+                              }
+                            }
+                          >
+                            <div
+                              className="css-1sisfcf"
+                            />
+                          </div>
+                        </Transition>
+                      </ProgressBar>
+                    </div>
+                    <div
+                      className="css-1pp3d82"
+                      onScroll={[Function]}
                     >
-                      <SheetItem
-                        item={
-                          {
-                            "childrenCount": 0,
-                            "id": "1-1",
-                            "isFetching": false,
-                            "name": "Category 1-1",
-                          }
-                        }
-                        key="1-1"
-                        onClick={[Function]}
-                        selected={false}
+                      <SheetList
+                        key=".0"
+                        onClose={[Function]}
+                        query=""
                       >
-                        <button
-                          className="css-zwdy34"
+                        <SheetItem
+                          item={
+                            {
+                              "childrenCount": 0,
+                              "id": "1-1",
+                              "isFetching": false,
+                              "name": "Category 1-1",
+                            }
+                          }
                           key="1-1"
                           onClick={[Function]}
-                          type="button"
-                          value="1-1"
+                          selected={false}
                         >
-                          Category 1-1
-                        </button>
-                      </SheetItem>
-                      <SheetItem
-                        item={
-                          {
-                            "childrenCount": 1,
-                            "id": "1-2",
-                            "isFetching": false,
-                            "name": "Category 1-2",
+                          <button
+                            className="tss-1rm4ebj-button"
+                            key="1-1"
+                            onClick={[Function]}
+                            type="button"
+                            value="1-1"
+                          >
+                            Category 1-1
+                          </button>
+                        </SheetItem>
+                        <SheetItem
+                          item={
+                            {
+                              "childrenCount": 1,
+                              "id": "1-2",
+                              "isFetching": false,
+                              "name": "Category 1-2",
+                            }
                           }
-                        }
-                        key="1-2"
-                        onClick={[Function]}
-                        selected={false}
-                      >
-                        <button
-                          className="css-zwdy34"
                           key="1-2"
                           onClick={[Function]}
-                          type="button"
-                          value="1-2"
+                          selected={false}
                         >
-                          Category 1-2
-                        </button>
-                      </SheetItem>
-                    </SheetList>
+                          <button
+                            className="tss-1rm4ebj-button"
+                            key="1-2"
+                            onClick={[Function]}
+                            type="button"
+                            value="1-2"
+                          >
+                            Category 1-2
+                          </button>
+                        </SheetItem>
+                      </SheetList>
+                    </div>
                   </div>
-                </div>
-              </Drawer>
+                </Drawer>
+              </DrawerWithStyles>
               <Backdrop
                 className=""
                 color="#000"
@@ -711,7 +841,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     {
                       "current": <div
                         aria-hidden="true"
-                        class="css-30873t  common__backdrop"
+                        class="tss-1tlnanp-backdrop  common__backdrop"
                         data-test-id="Backdrop"
                         style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                       />,
@@ -728,7 +858,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-hidden={true}
-                    className="css-30873t  common__backdrop"
+                    className="tss-1tlnanp-backdrop  common__backdrop"
                     data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
@@ -896,7 +1026,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
             <section
               className="ui-shared__sheet"
             >
-              <Drawer
+              <DrawerWithStyles
                 animation={
                   {
                     "duration": 300,
@@ -911,202 +1041,267 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 onDidOpen={[Function]}
                 onOpen={[Function]}
               >
-                <div
-                  aria-modal={true}
-                  className="css-1447nbj css-1rg7udn css-171mdnt common__drawer"
-                  onAnimationEnd={[Function]}
-                  role="dialog"
-                  style={
+                <Drawer
+                  animation={
                     {
-                      "animationDuration": "300ms",
+                      "duration": 300,
+                      "in": "css-1ldjh2f",
+                      "out": "css-171mdnt",
                     }
                   }
-                  tabIndex={-1}
+                  className="css-1447nbj"
+                  classes={
+                    {
+                      "animationIn": "tss-25le8d-Drawer-animationIn",
+                      "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+                      "container": "tss-2b150r-Drawer-container",
+                    }
+                  }
+                  isOpen={false}
+                  onClose={[Function]}
+                  onDidClose={[Function]}
+                  onDidOpen={[Function]}
+                  onOpen={[Function]}
                 >
-                  <Header
-                    allowClose={true}
-                    handleChange={[Function]}
-                    onToggleClose={[Function]}
-                    shadow={false}
-                    showSearch={false}
-                    title="Picker Label"
+                  <div
+                    aria-modal={true}
+                    className="css-1447nbj tss-2b150r-Drawer-container css-171mdnt common__drawer"
+                    onAnimationEnd={[Function]}
+                    role="dialog"
+                    style={
+                      {
+                        "animationDuration": "300ms",
+                      }
+                    }
+                    tabIndex={-1}
                   >
-                    <div
-                      className=""
+                    <Header
+                      allowClose={true}
+                      handleChange={[Function]}
+                      onToggleClose={[Function]}
+                      shadow={false}
+                      showSearch={false}
+                      title="Picker Label"
                     >
-                      <Grid
-                        className="css-1hncgty"
-                        component="div"
-                        wrap={false}
+                      <div
+                        className=""
                       >
-                        <div
-                          className="css-1hncgty css-h7r55a common__grid"
+                        <GridWithStyles
+                          className="css-1hncgty"
+                          component="div"
+                          wrap={false}
                         >
-                          <button
-                            aria-label="common.close"
-                            className="css-r4gt00"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <Ripple
-                              className="css-ugy6xl"
-                              color="#000"
-                              disabled={false}
-                              fill={false}
-                              onClick={[Function]}
-                              onComplete={[Function]}
-                              overflow={false}
-                              size={null}
-                            >
-                              <div
-                                className="ui-shared__ripple css-ugy6xl"
-                                data-test-id="Ripple"
-                                onClick={[Function]}
-                                style={null}
-                              >
-                                <Cross
-                                  size={24}
-                                >
-                                  <Icon
-                                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                    size={24}
-                                  >
-                                    <svg
-                                      className="css-1n8b10t-root common__icon"
-                                      dangerouslySetInnerHTML={
-                                        {
-                                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                        }
-                                      }
-                                      style={
-                                        {
-                                          "fill": undefined,
-                                          "fontSize": 24,
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Cross>
-                              </div>
-                            </Ripple>
-                          </button>
-                          <GridItem
-                            className="css-1mjy0de"
+                          <Grid
+                            className="css-1hncgty"
+                            classes={
+                              {
+                                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                                "root": "tss-ttd1ja-Grid-root",
+                                "wrap": "tss-xzd4nf-Grid-wrap",
+                              }
+                            }
                             component="div"
-                            grow={1}
-                            role="heading"
-                            shrink={1}
-                            tabIndex={0}
+                            wrap={false}
                           >
                             <div
-                              className="css-1mjy0de css-1gs0ko2"
-                              role="heading"
-                              tabIndex={0}
+                              className="css-1hncgty tss-ttd1ja-Grid-root css-1hncgty common__grid tss-18pnfnt-Grid-noWrap"
+                              classes={
+                                {
+                                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                                  "root": "tss-ttd1ja-Grid-root",
+                                  "wrap": "tss-xzd4nf-Grid-wrap",
+                                }
+                              }
                             >
-                              Picker Label
+                              <button
+                                aria-label="common.close"
+                                className="css-r4gt00"
+                                onClick={[Function]}
+                                type="button"
+                              >
+                                <RippleWithStyles
+                                  className="css-ugy6xl"
+                                >
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    classes={
+                                      {
+                                        "container": "tss-1dfkr3n-Ripple-container",
+                                      }
+                                    }
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
+                                    onClick={[Function]}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
+                                  >
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
+                                    >
+                                      <Cross
+                                        size={24}
+                                      >
+                                        <Icon
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                                          size={24}
+                                        >
+                                          <svg
+                                            className="tss-1n8b10t-root common__icon"
+                                            dangerouslySetInnerHTML={
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
+                                              }
+                                            }
+                                            style={
+                                              {
+                                                "fill": undefined,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </RippleWithStyles>
+                              </button>
+                              <GridItemWithStyles
+                                className="css-1mjy0de"
+                                component="div"
+                                grow={1}
+                                role="heading"
+                                tabIndex={0}
+                              >
+                                <GridItem
+                                  className="tss-rttrxi-GridItem-root css-1mjy0de"
+                                  classes={
+                                    {
+                                      "root": "tss-rttrxi-GridItem-root",
+                                    }
+                                  }
+                                  component="div"
+                                  grow={1}
+                                  role="heading"
+                                  shrink={1}
+                                  tabIndex={0}
+                                >
+                                  <div
+                                    className="tss-rttrxi-GridItem-root css-1mjy0de tss-rttrxi-GridItem-root css-1mjy0de common__grid__item--custom-flex"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Picker Label
+                                  </div>
+                                </GridItem>
+                              </GridItemWithStyles>
                             </div>
-                          </GridItem>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Header>
-                  <div
-                    className="css-13azwyo"
-                  >
-                    <ProgressBar
-                      isVisible={false}
+                          </Grid>
+                        </GridWithStyles>
+                      </div>
+                    </Header>
+                    <div
+                      className="css-13azwyo"
                     >
-                      <Transition
-                        appear={false}
-                        enter={true}
-                        exit={true}
-                        in={false}
-                        mountOnEnter={false}
-                        onEnter={[Function]}
-                        onEntered={[Function]}
-                        onEntering={[Function]}
-                        onExit={[Function]}
-                        onExited={[Function]}
-                        onExiting={[Function]}
-                        timeout={150}
-                        unmountOnExit={false}
+                      <ProgressBar
+                        isVisible={false}
                       >
-                        <div
-                          className="css-guf25f ui-shared__progress-bar"
-                          style={
-                            {
-                              "transform": "scale(1, 0)",
-                            }
-                          }
+                        <Transition
+                          appear={false}
+                          enter={true}
+                          exit={true}
+                          in={false}
+                          mountOnEnter={false}
+                          onEnter={[Function]}
+                          onEntered={[Function]}
+                          onEntering={[Function]}
+                          onExit={[Function]}
+                          onExited={[Function]}
+                          onExiting={[Function]}
+                          timeout={150}
+                          unmountOnExit={false}
                         >
                           <div
-                            className="css-1sisfcf"
-                          />
-                        </div>
-                      </Transition>
-                    </ProgressBar>
-                  </div>
-                  <div
-                    className="css-1pp3d82"
-                    onScroll={[Function]}
-                  >
-                    <SheetList
-                      key=".0"
-                      onClose={[Function]}
-                      query=""
+                            className="css-guf25f ui-shared__progress-bar"
+                            style={
+                              {
+                                "transform": "scale(1, 0)",
+                              }
+                            }
+                          >
+                            <div
+                              className="css-1sisfcf"
+                            />
+                          </div>
+                        </Transition>
+                      </ProgressBar>
+                    </div>
+                    <div
+                      className="css-1pp3d82"
+                      onScroll={[Function]}
                     >
-                      <SheetItem
-                        item={
-                          {
-                            "childrenCount": 0,
-                            "id": "1-1",
-                            "isFetching": false,
-                            "name": "Category 1-1",
-                          }
-                        }
-                        key="1-1"
-                        onClick={[Function]}
-                        selected={false}
+                      <SheetList
+                        key=".0"
+                        onClose={[Function]}
+                        query=""
                       >
-                        <button
-                          className="css-zwdy34"
+                        <SheetItem
+                          item={
+                            {
+                              "childrenCount": 0,
+                              "id": "1-1",
+                              "isFetching": false,
+                              "name": "Category 1-1",
+                            }
+                          }
                           key="1-1"
                           onClick={[Function]}
-                          type="button"
-                          value="1-1"
+                          selected={false}
                         >
-                          Category 1-1
-                        </button>
-                      </SheetItem>
-                      <SheetItem
-                        item={
-                          {
-                            "childrenCount": 1,
-                            "id": "1-2",
-                            "isFetching": false,
-                            "name": "Category 1-2",
+                          <button
+                            className="tss-1rm4ebj-button"
+                            key="1-1"
+                            onClick={[Function]}
+                            type="button"
+                            value="1-1"
+                          >
+                            Category 1-1
+                          </button>
+                        </SheetItem>
+                        <SheetItem
+                          item={
+                            {
+                              "childrenCount": 1,
+                              "id": "1-2",
+                              "isFetching": false,
+                              "name": "Category 1-2",
+                            }
                           }
-                        }
-                        key="1-2"
-                        onClick={[Function]}
-                        selected={false}
-                      >
-                        <button
-                          className="css-zwdy34"
                           key="1-2"
                           onClick={[Function]}
-                          type="button"
-                          value="1-2"
+                          selected={false}
                         >
-                          Category 1-2
-                        </button>
-                      </SheetItem>
-                    </SheetList>
+                          <button
+                            className="tss-1rm4ebj-button"
+                            key="1-2"
+                            onClick={[Function]}
+                            type="button"
+                            value="1-2"
+                          >
+                            Category 1-2
+                          </button>
+                        </SheetItem>
+                      </SheetList>
+                    </div>
                   </div>
-                </div>
-              </Drawer>
+                </Drawer>
+              </DrawerWithStyles>
               <Backdrop
                 className=""
                 color="#000"
@@ -1127,7 +1322,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                     {
                       "current": <div
                         aria-hidden="true"
-                        class="css-30873t  common__backdrop"
+                        class="tss-1tlnanp-backdrop  common__backdrop"
                         data-test-id="Backdrop"
                         style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                       />,
@@ -1144,7 +1339,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-hidden={true}
-                    className="css-30873t  common__backdrop"
+                    className="tss-1tlnanp-backdrop  common__backdrop"
                     data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
@@ -1273,7 +1468,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
             <section
               className="ui-shared__sheet css-1owavz5"
             >
-              <Drawer
+              <DrawerWithStyles
                 animation={
                   {
                     "duration": 300,
@@ -1288,202 +1483,267 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 onDidOpen={[Function]}
                 onOpen={[Function]}
               >
-                <div
-                  aria-modal={true}
-                  className="css-1447nbj css-1rg7udn css-1ldjh2f common__drawer"
-                  onAnimationEnd={[Function]}
-                  role="dialog"
-                  style={
+                <Drawer
+                  animation={
                     {
-                      "animationDuration": "300ms",
+                      "duration": 300,
+                      "in": "css-1ldjh2f",
+                      "out": "css-171mdnt",
                     }
                   }
-                  tabIndex={-1}
+                  className="css-1447nbj"
+                  classes={
+                    {
+                      "animationIn": "tss-25le8d-Drawer-animationIn",
+                      "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+                      "container": "tss-2b150r-Drawer-container",
+                    }
+                  }
+                  isOpen={true}
+                  onClose={[Function]}
+                  onDidClose={[Function]}
+                  onDidOpen={[Function]}
+                  onOpen={[Function]}
                 >
-                  <Header
-                    allowClose={true}
-                    handleChange={[Function]}
-                    onToggleClose={[Function]}
-                    shadow={false}
-                    showSearch={false}
-                    title="Picker Label"
+                  <div
+                    aria-modal={true}
+                    className="css-1447nbj tss-2b150r-Drawer-container css-1ldjh2f common__drawer"
+                    onAnimationEnd={[Function]}
+                    role="dialog"
+                    style={
+                      {
+                        "animationDuration": "300ms",
+                      }
+                    }
+                    tabIndex={-1}
                   >
-                    <div
-                      className=""
+                    <Header
+                      allowClose={true}
+                      handleChange={[Function]}
+                      onToggleClose={[Function]}
+                      shadow={false}
+                      showSearch={false}
+                      title="Picker Label"
                     >
-                      <Grid
-                        className="css-1hncgty"
-                        component="div"
-                        wrap={false}
+                      <div
+                        className=""
                       >
-                        <div
-                          className="css-1hncgty css-h7r55a common__grid"
+                        <GridWithStyles
+                          className="css-1hncgty"
+                          component="div"
+                          wrap={false}
                         >
-                          <button
-                            aria-label="common.close"
-                            className="css-r4gt00"
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <Ripple
-                              className="css-ugy6xl"
-                              color="#000"
-                              disabled={false}
-                              fill={false}
-                              onClick={[Function]}
-                              onComplete={[Function]}
-                              overflow={false}
-                              size={null}
-                            >
-                              <div
-                                className="ui-shared__ripple css-ugy6xl"
-                                data-test-id="Ripple"
-                                onClick={[Function]}
-                                style={null}
-                              >
-                                <Cross
-                                  size={24}
-                                >
-                                  <Icon
-                                    content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                    size={24}
-                                  >
-                                    <svg
-                                      className="css-1n8b10t-root common__icon"
-                                      dangerouslySetInnerHTML={
-                                        {
-                                          "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                        }
-                                      }
-                                      style={
-                                        {
-                                          "fill": undefined,
-                                          "fontSize": 24,
-                                        }
-                                      }
-                                      viewBox="0 0 24 24"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    />
-                                  </Icon>
-                                </Cross>
-                              </div>
-                            </Ripple>
-                          </button>
-                          <GridItem
-                            className="css-1mjy0de"
+                          <Grid
+                            className="css-1hncgty"
+                            classes={
+                              {
+                                "noWrap": "tss-18pnfnt-Grid-noWrap",
+                                "root": "tss-ttd1ja-Grid-root",
+                                "wrap": "tss-xzd4nf-Grid-wrap",
+                              }
+                            }
                             component="div"
-                            grow={1}
-                            role="heading"
-                            shrink={1}
-                            tabIndex={0}
+                            wrap={false}
                           >
                             <div
-                              className="css-1mjy0de css-1gs0ko2"
-                              role="heading"
-                              tabIndex={0}
+                              className="css-1hncgty tss-ttd1ja-Grid-root css-1hncgty common__grid tss-18pnfnt-Grid-noWrap"
+                              classes={
+                                {
+                                  "noWrap": "tss-18pnfnt-Grid-noWrap",
+                                  "root": "tss-ttd1ja-Grid-root",
+                                  "wrap": "tss-xzd4nf-Grid-wrap",
+                                }
+                              }
                             >
-                              Picker Label
+                              <button
+                                aria-label="common.close"
+                                className="css-r4gt00"
+                                onClick={[Function]}
+                                type="button"
+                              >
+                                <RippleWithStyles
+                                  className="css-ugy6xl"
+                                >
+                                  <Ripple
+                                    className="css-ugy6xl"
+                                    classes={
+                                      {
+                                        "container": "tss-1dfkr3n-Ripple-container",
+                                      }
+                                    }
+                                    color="#000"
+                                    disabled={false}
+                                    fill={false}
+                                    onClick={[Function]}
+                                    onComplete={[Function]}
+                                    overflow={false}
+                                    size={null}
+                                  >
+                                    <div
+                                      className="ui-shared__ripple css-ugy6xl"
+                                      data-test-id="Ripple"
+                                      onClick={[Function]}
+                                      style={null}
+                                    >
+                                      <Cross
+                                        size={24}
+                                      >
+                                        <Icon
+                                          content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                                          size={24}
+                                        >
+                                          <svg
+                                            className="tss-1n8b10t-root common__icon"
+                                            dangerouslySetInnerHTML={
+                                              {
+                                                "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
+                                              }
+                                            }
+                                            style={
+                                              {
+                                                "fill": undefined,
+                                                "fontSize": 24,
+                                              }
+                                            }
+                                            viewBox="0 0 24 24"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                          />
+                                        </Icon>
+                                      </Cross>
+                                    </div>
+                                  </Ripple>
+                                </RippleWithStyles>
+                              </button>
+                              <GridItemWithStyles
+                                className="css-1mjy0de"
+                                component="div"
+                                grow={1}
+                                role="heading"
+                                tabIndex={0}
+                              >
+                                <GridItem
+                                  className="tss-rttrxi-GridItem-root css-1mjy0de"
+                                  classes={
+                                    {
+                                      "root": "tss-rttrxi-GridItem-root",
+                                    }
+                                  }
+                                  component="div"
+                                  grow={1}
+                                  role="heading"
+                                  shrink={1}
+                                  tabIndex={0}
+                                >
+                                  <div
+                                    className="tss-rttrxi-GridItem-root css-1mjy0de tss-rttrxi-GridItem-root css-1mjy0de common__grid__item--custom-flex"
+                                    role="heading"
+                                    tabIndex={0}
+                                  >
+                                    Picker Label
+                                  </div>
+                                </GridItem>
+                              </GridItemWithStyles>
                             </div>
-                          </GridItem>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Header>
-                  <div
-                    className="css-13azwyo"
-                  >
-                    <ProgressBar
-                      isVisible={false}
+                          </Grid>
+                        </GridWithStyles>
+                      </div>
+                    </Header>
+                    <div
+                      className="css-13azwyo"
                     >
-                      <Transition
-                        appear={false}
-                        enter={true}
-                        exit={true}
-                        in={false}
-                        mountOnEnter={false}
-                        onEnter={[Function]}
-                        onEntered={[Function]}
-                        onEntering={[Function]}
-                        onExit={[Function]}
-                        onExited={[Function]}
-                        onExiting={[Function]}
-                        timeout={150}
-                        unmountOnExit={false}
+                      <ProgressBar
+                        isVisible={false}
                       >
-                        <div
-                          className="css-guf25f ui-shared__progress-bar"
-                          style={
-                            {
-                              "transform": "scale(1, 0)",
-                            }
-                          }
+                        <Transition
+                          appear={false}
+                          enter={true}
+                          exit={true}
+                          in={false}
+                          mountOnEnter={false}
+                          onEnter={[Function]}
+                          onEntered={[Function]}
+                          onEntering={[Function]}
+                          onExit={[Function]}
+                          onExited={[Function]}
+                          onExiting={[Function]}
+                          timeout={150}
+                          unmountOnExit={false}
                         >
                           <div
-                            className="css-1sisfcf"
-                          />
-                        </div>
-                      </Transition>
-                    </ProgressBar>
-                  </div>
-                  <div
-                    className="css-1pp3d82"
-                    onScroll={[Function]}
-                  >
-                    <SheetList
-                      key=".0"
-                      onClose={[Function]}
-                      query=""
+                            className="css-guf25f ui-shared__progress-bar"
+                            style={
+                              {
+                                "transform": "scale(1, 0)",
+                              }
+                            }
+                          >
+                            <div
+                              className="css-1sisfcf"
+                            />
+                          </div>
+                        </Transition>
+                      </ProgressBar>
+                    </div>
+                    <div
+                      className="css-1pp3d82"
+                      onScroll={[Function]}
                     >
-                      <SheetItem
-                        item={
-                          {
-                            "childrenCount": 0,
-                            "id": "1-1",
-                            "isFetching": false,
-                            "name": "Category 1-1",
-                          }
-                        }
-                        key="1-1"
-                        onClick={[Function]}
-                        selected={true}
+                      <SheetList
+                        key=".0"
+                        onClose={[Function]}
+                        query=""
                       >
-                        <button
-                          className="css-11xl8on"
+                        <SheetItem
+                          item={
+                            {
+                              "childrenCount": 0,
+                              "id": "1-1",
+                              "isFetching": false,
+                              "name": "Category 1-1",
+                            }
+                          }
                           key="1-1"
                           onClick={[Function]}
-                          type="button"
-                          value="1-1"
+                          selected={true}
                         >
-                          Category 1-1
-                        </button>
-                      </SheetItem>
-                      <SheetItem
-                        item={
-                          {
-                            "childrenCount": 1,
-                            "id": "1-2",
-                            "isFetching": false,
-                            "name": "Category 1-2",
+                          <button
+                            className="tss-1mcy32m-buttonSelected"
+                            key="1-1"
+                            onClick={[Function]}
+                            type="button"
+                            value="1-1"
+                          >
+                            Category 1-1
+                          </button>
+                        </SheetItem>
+                        <SheetItem
+                          item={
+                            {
+                              "childrenCount": 1,
+                              "id": "1-2",
+                              "isFetching": false,
+                              "name": "Category 1-2",
+                            }
                           }
-                        }
-                        key="1-2"
-                        onClick={[Function]}
-                        selected={false}
-                      >
-                        <button
-                          className="css-zwdy34"
                           key="1-2"
                           onClick={[Function]}
-                          type="button"
-                          value="1-2"
+                          selected={false}
                         >
-                          Category 1-2
-                        </button>
-                      </SheetItem>
-                    </SheetList>
+                          <button
+                            className="tss-1rm4ebj-button"
+                            key="1-2"
+                            onClick={[Function]}
+                            type="button"
+                            value="1-2"
+                          >
+                            Category 1-2
+                          </button>
+                        </SheetItem>
+                      </SheetList>
+                    </div>
                   </div>
-                </div>
-              </Drawer>
+                </Drawer>
+              </DrawerWithStyles>
               <Backdrop
                 className=""
                 color="#000"
@@ -1504,7 +1764,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     {
                       "current": <div
                         aria-hidden="true"
-                        class="css-30873t  common__backdrop"
+                        class="tss-1tlnanp-backdrop  common__backdrop"
                         data-test-id="Backdrop"
                         style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                       />,
@@ -1521,7 +1781,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 >
                   <div
                     aria-hidden={true}
-                    className="css-30873t  common__backdrop"
+                    className="tss-1tlnanp-backdrop  common__backdrop"
                     data-test-id="Backdrop"
                     onClick={[Function]}
                     style={
@@ -1648,7 +1908,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
             <section
               className="ui-shared__sheet"
             >
-              <Drawer
+              <DrawerWithStyles
                 animation={
                   {
                     "duration": 300,
@@ -1662,7 +1922,30 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                 onDidClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
-              />
+              >
+                <Drawer
+                  animation={
+                    {
+                      "duration": 300,
+                      "in": "css-1ldjh2f",
+                      "out": "css-171mdnt",
+                    }
+                  }
+                  className="css-1447nbj"
+                  classes={
+                    {
+                      "animationIn": "tss-25le8d-Drawer-animationIn",
+                      "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+                      "container": "tss-2b150r-Drawer-container",
+                    }
+                  }
+                  isOpen={false}
+                  onClose={[Function]}
+                  onDidClose={[Function]}
+                  onDidOpen={[Function]}
+                  onOpen={[Function]}
+                />
+              </DrawerWithStyles>
               <Backdrop
                 className=""
                 color="#000"
@@ -1807,7 +2090,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
             <section
               className="ui-shared__sheet"
             >
-              <Drawer
+              <DrawerWithStyles
                 animation={
                   {
                     "duration": 300,
@@ -1821,7 +2104,30 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                 onDidClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
-              />
+              >
+                <Drawer
+                  animation={
+                    {
+                      "duration": 300,
+                      "in": "css-1ldjh2f",
+                      "out": "css-171mdnt",
+                    }
+                  }
+                  className="css-1447nbj"
+                  classes={
+                    {
+                      "animationIn": "tss-25le8d-Drawer-animationIn",
+                      "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+                      "container": "tss-2b150r-Drawer-container",
+                    }
+                  }
+                  isOpen={false}
+                  onClose={[Function]}
+                  onDidClose={[Function]}
+                  onDidOpen={[Function]}
+                  onOpen={[Function]}
+                />
+              </DrawerWithStyles>
               <Backdrop
                 className=""
                 color="#000"
@@ -1961,7 +2267,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
             <section
               className="ui-shared__sheet"
             >
-              <Drawer
+              <DrawerWithStyles
                 animation={
                   {
                     "duration": 300,
@@ -1975,7 +2281,30 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                 onDidClose={[Function]}
                 onDidOpen={[Function]}
                 onOpen={[Function]}
-              />
+              >
+                <Drawer
+                  animation={
+                    {
+                      "duration": 300,
+                      "in": "css-1ldjh2f",
+                      "out": "css-171mdnt",
+                    }
+                  }
+                  className="css-1447nbj"
+                  classes={
+                    {
+                      "animationIn": "tss-25le8d-Drawer-animationIn",
+                      "animationOut": "tss-1lx1x7x-Drawer-animationOut",
+                      "container": "tss-2b150r-Drawer-container",
+                    }
+                  }
+                  isOpen={false}
+                  onClose={[Function]}
+                  onDidClose={[Function]}
+                  onDidOpen={[Function]}
+                  onOpen={[Function]}
+                />
+              </DrawerWithStyles>
               <Backdrop
                 className=""
                 color="#000"

@@ -33,10 +33,10 @@ exports[`<Description /> should not render if no data is available 1`] = `
     }
   >
     <div
-      className="css-1gp4e0e engage__product__description"
+      className="tss-15t3g79-container engage__product__description"
     >
       <div
-        className="css-1qs89bq theme__description_heading"
+        className="tss-1kw0nvw-title theme__description_heading"
       >
         <Text
           string="product.description_heading"
@@ -45,11 +45,11 @@ exports[`<Description /> should not render if no data is available 1`] = `
         </Text>
       </div>
       <PlaceholderParagraph
-        className="css-11lvu0k"
+        className="tss-125u37g-placeholder"
         ready={false}
       >
         <div
-          className="css-1liqdzi"
+          className="tss-1lsbam4-content"
           data-test-id="description"
         >
           <HtmlSanitizer
@@ -100,10 +100,10 @@ exports[`<Description /> should render description if data is available 1`] = `
     }
   >
     <div
-      className="css-1gp4e0e engage__product__description"
+      className="tss-15t3g79-container engage__product__description"
     >
       <div
-        className="css-1qs89bq theme__description_heading"
+        className="tss-1kw0nvw-title theme__description_heading"
       >
         <Text
           string="product.description_heading"
@@ -112,11 +112,11 @@ exports[`<Description /> should render description if data is available 1`] = `
         </Text>
       </div>
       <PlaceholderParagraph
-        className="css-11lvu0k"
+        className="tss-125u37g-placeholder"
         ready={true}
       >
         <div
-          className="css-1liqdzi"
+          className="tss-1lsbam4-content"
           data-test-id="description"
         >
           <HtmlSanitizer

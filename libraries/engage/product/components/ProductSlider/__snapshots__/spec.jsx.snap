@@ -14,7 +14,7 @@ exports[`<ProductSlider /> should match snapshot 1`] = `
     slidesPerView={2.3}
   >
     <Swiper.Item
-      className="css-90ryaa"
+      className="tss-14dn61s-container"
       key="prod1"
     >
       <ProductListEntryProvider

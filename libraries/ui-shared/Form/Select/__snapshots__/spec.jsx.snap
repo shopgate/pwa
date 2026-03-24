@@ -80,7 +80,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
         >
           <svg
-            className="css-1n8b10t-root common__icon css-1h5rpg9"
+            className="tss-1n8b10t-root common__icon css-1h5rpg9"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
@@ -200,7 +200,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
         >
           <svg
-            className="css-1n8b10t-root common__icon css-1h5rpg9"
+            className="tss-1n8b10t-root common__icon css-1h5rpg9"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
@@ -300,7 +300,7 @@ exports[`<Select /> should render select with no options 1`] = `
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
         >
           <svg
-            className="css-1n8b10t-root common__icon css-1h5rpg9"
+            className="tss-1n8b10t-root common__icon css-1h5rpg9"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",

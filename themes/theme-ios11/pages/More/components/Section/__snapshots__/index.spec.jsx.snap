@@ -20,7 +20,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
     text="Headline"
   >
     <h2
-      className="css-18cwfw7 headline theme__headline"
+      className="headline theme__headline tss-1ajnxxp-root-h2"
       data-test-id="Headline"
       style={
         {
@@ -50,7 +50,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="css-1hj8a57"
+        className="tss-1lse86s-root"
         href="/link/one"
         role="button"
       >
@@ -69,7 +69,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="css-1hj8a57"
+        className="tss-1lse86s-root"
         href="/link/two"
         role="button"
       >
@@ -112,7 +112,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="css-1hj8a57"
+        className="tss-1lse86s-root"
         href="/link/one"
         role="button"
       >
@@ -131,7 +131,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="css-1hj8a57"
+        className="tss-1lse86s-root"
         href="/link/two"
         role="button"
       >

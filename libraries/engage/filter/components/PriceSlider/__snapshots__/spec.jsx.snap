@@ -1,77 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
-<FilterItem>
-  <div
-    className="css-vafydm"
-    data-test-id="priceRangeSlider"
-  >
-    <Label
-      onChange={[Function]}
-      priceLength="3ch"
-      priceMax={1}
-      priceMin={0}
-    />
-    <RangeSlider
-      classNames={
-        {
-          "container": "css-x355v3",
-          "handleInner": "css-1aks6z8",
-          "handleOuter": "css-nil",
-          "outerRange": "css-19d9uwb",
-          "range": "css-117nhon",
-        }
-      }
-      easing="exponential"
-      factor={3}
-      max={100}
-      min={0}
-      onChange={[Function]}
-      value={
-        [
-          0,
-          100,
-        ]
-      }
-    />
-  </div>
-</FilterItem>
+<PriceSlider
+  classes={
+    {
+      "rangeSliderContainer": "tss-19chdeb-PriceSlider-rangeSliderContainer",
+      "rangeSliderHandleInner": "tss-4z30eu-PriceSlider-rangeSliderHandleInner",
+      "rangeSliderHandleOuter": "tss-173ivhj-PriceSlider-rangeSliderHandleOuter",
+      "rangeSliderOuterRange": "tss-im1gf-PriceSlider-rangeSliderOuterRange",
+      "rangeSliderRange": "tss-tl8tkl-PriceSlider-rangeSliderRange",
+      "wrapper": "tss-1qrpeu7-PriceSlider-wrapper",
+    }
+  }
+  id="foo"
+  max={100}
+  min={0}
+  onChange={[Function]}
+  useLinearEasing={false}
+  value={null}
+  values={
+    [
+      5,
+      50,
+    ]
+  }
+/>
 `;
 
 exports[`Filter: <PriceSlider /> should render with default props 1`] = `
-<FilterItem>
-  <div
-    className="css-vafydm"
-    data-test-id="priceRangeSlider"
-  >
-    <Label
-      onChange={[Function]}
-      priceLength="3ch"
-      priceMax={1}
-      priceMin={0}
-    />
-    <RangeSlider
-      classNames={
-        {
-          "container": "css-x355v3",
-          "handleInner": "css-1aks6z8",
-          "handleOuter": "css-nil",
-          "outerRange": "css-19d9uwb",
-          "range": "css-117nhon",
-        }
-      }
-      easing="exponential"
-      factor={3}
-      max={100}
-      min={0}
-      onChange={[Function]}
-      value={
-        [
-          0,
-          100,
-        ]
-      }
-    />
-  </div>
-</FilterItem>
+<PriceSlider
+  classes={
+    {
+      "rangeSliderContainer": "tss-19chdeb-PriceSlider-rangeSliderContainer",
+      "rangeSliderHandleInner": "tss-4z30eu-PriceSlider-rangeSliderHandleInner",
+      "rangeSliderHandleOuter": "tss-173ivhj-PriceSlider-rangeSliderHandleOuter",
+      "rangeSliderOuterRange": "tss-im1gf-PriceSlider-rangeSliderOuterRange",
+      "rangeSliderRange": "tss-tl8tkl-PriceSlider-rangeSliderRange",
+      "wrapper": "tss-1qrpeu7-PriceSlider-wrapper",
+    }
+  }
+  id="foo"
+  max={100}
+  min={0}
+  onChange={[Function]}
+  useLinearEasing={false}
+  value={null}
+/>
 `;

@@ -9,7 +9,7 @@ exports[`<Item /> should render as a button when no href, but a click handler is
   testId={null}
 >
   <button
-    className="css-1hj8a57"
+    className="tss-1lse86s-root"
     data-test-id={null}
     onClick={[Function]}
     type="button"
@@ -32,7 +32,7 @@ exports[`<Item /> should render as a link when an href is passed to the props 1`
   testId={null}
 >
   <Link
-    className="css-1hj8a57"
+    className="tss-1lse86s-root"
     href="/some/link"
     role="button"
   >

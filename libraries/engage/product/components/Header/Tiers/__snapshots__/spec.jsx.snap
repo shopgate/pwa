@@ -11,9 +11,15 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
     props={null}
   >
     <div
-      className="css-ipvvc7 engage__product__header__tiers"
+      className="tss-1du56tt-wrapper engage__product__header__tiers"
     >
       <Tier
+        classes={
+          {
+            "price": "tss-z2q7om-price",
+            "tier": "tss-myao6a-tier",
+          }
+        }
         key="1_2_92.5"
         price={
           {
@@ -46,6 +52,12 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
         }
       />
       <Tier
+        classes={
+          {
+            "price": "tss-z2q7om-price",
+            "tier": "tss-myao6a-tier",
+          }
+        }
         key="3_5_77.5"
         price={
           {
@@ -78,6 +90,12 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
         }
       />
       <Tier
+        classes={
+          {
+            "price": "tss-z2q7om-price",
+            "tier": "tss-myao6a-tier",
+          }
+        }
         key="6__68.5"
         price={
           {

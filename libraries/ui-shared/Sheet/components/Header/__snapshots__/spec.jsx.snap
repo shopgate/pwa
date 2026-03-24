@@ -4,7 +4,7 @@ exports[`<Header /> should render with correct title 1`] = `
 <div
   className=""
 >
-  <Grid
+  <GridWithStyles
     className="css-1hncgty"
     component="div"
     wrap={false}
@@ -15,31 +15,23 @@ exports[`<Header /> should render with correct title 1`] = `
       onClick={[Function]}
       type="button"
     >
-      <Ripple
+      <RippleWithStyles
         className="css-ugy6xl"
-        color="#000"
-        disabled={false}
-        fill={false}
-        onClick={[Function]}
-        onComplete={[Function]}
-        overflow={false}
-        size={null}
       >
         <Cross
           size={24}
         />
-      </Ripple>
+      </RippleWithStyles>
     </button>
-    <GridItem
+    <GridItemWithStyles
       className="css-1mjy0de"
       component="div"
       grow={1}
       role="heading"
-      shrink={1}
       tabIndex={0}
     >
       My Title
-    </GridItem>
-  </Grid>
+    </GridItemWithStyles>
+  </GridWithStyles>
 </div>
 `;

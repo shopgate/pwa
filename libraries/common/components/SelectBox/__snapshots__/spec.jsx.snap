@@ -1,14 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SelectBox> should render the selectbox with given mock components 1`] = `
-<SelectBox
-  className=""
-  classNames={{}}
-  defaultText="filter.sort.default"
-  duration={225}
-  handleSelectionUpdate={[Function]}
+<SelectBoxWithStyles
   icon={[Function]}
-  initialValue={null}
   item={[Function]}
   items={
     [
@@ -26,235 +20,332 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
       },
     ]
   }
-  testId={null}
 >
-  <div
-    className=" common__select-box"
-    data-test-id={null}
+  <SelectBox
+    className=""
+    classNames={{}}
+    classes={
+      {
+        "overlay": "tss-1w7gnva-SelectBox-overlay",
+      }
+    }
+    defaultText="filter.sort.default"
+    duration={225}
+    handleSelectionUpdate={[Function]}
+    icon={[Function]}
+    initialValue={null}
+    item={[Function]}
+    items={
+      [
+        {
+          "label": "My item #1",
+          "value": "item_1",
+        },
+        {
+          "label": "My item #2",
+          "value": "item_2",
+        },
+        {
+          "label": "My item #3",
+          "value": "item_3",
+        },
+      ]
+    }
+    testId={null}
   >
-    <button
-      aria-controls="filter.sort.default"
-      aria-expanded={null}
-      aria-haspopup={true}
-      data-test-id="filter.sort.default"
-      onClick={[Function]}
-      type="button"
+    <div
+      className=" common__select-box"
+      data-test-id={null}
     >
-      <span>
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string="filter.sort.default"
-          transform={null}
-        >
-          <span
+      <button
+        aria-controls="filter.sort.default"
+        aria-expanded={null}
+        aria-haspopup={true}
+        data-test-id="filter.sort.default"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
+            params={{}}
             role={null}
+            string="filter.sort.default"
+            transform={null}
           >
-            filter.sort.default
-          </span>
-        </Translate>
-      </span>
-      <div
-        className=""
-      >
-        <MockIconComponent>
-          <span
-            id="icon"
-          />
-        </MockIconComponent>
-      </div>
-    </button>
-    <Dropdown
-      className=""
-      duration={225}
-      easing={null}
-      isOpen={false}
-      onComplete={[Function]}
-      onStart={[Function]}
-    >
-      <Transition
-        duration={225}
-        easing={null}
-        from={
-          {
-            "height": 0,
-          }
-        }
-        onComplete={[Function]}
-        onStart={[Function]}
-        origin="0 0 0"
-        set={null}
-        to={
-          {
-            "height": 0,
-          }
-        }
-      >
+            <span
+              className={null}
+              role={null}
+            >
+              filter.sort.default
+            </span>
+          </Translate>
+        </span>
         <div
-          aria-hidden={true}
-          className="css-rdsogp  common__dropdown"
-          key=".0"
+          className=""
         >
-          <ul
-            id="filter.sort.default"
-            role="menu"
-            tabIndex="-1"
-          >
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={null}
-              handleSelectionUpdate={[Function]}
-              isSelected={false}
-              key="item_1"
-              label="My item #1"
-              value="item_1"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={false}
-                className="css-dw3c54"
-                data-test-id="My item #1"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #1"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #1
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={null}
-              handleSelectionUpdate={[Function]}
-              isSelected={false}
-              key="item_2"
-              label="My item #2"
-              value="item_2"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={false}
-                className="css-dw3c54"
-                data-test-id="My item #2"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #2"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #2
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={null}
-              handleSelectionUpdate={[Function]}
-              isSelected={false}
-              key="item_3"
-              label="My item #3"
-              value="item_3"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={false}
-                className="css-dw3c54"
-                data-test-id="My item #3"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #3"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #3
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-          </ul>
+          <MockIconComponent>
+            <span
+              id="icon"
+            />
+          </MockIconComponent>
         </div>
-      </Transition>
-    </Dropdown>
-  </div>
-</SelectBox>
+      </button>
+      <DropdownWithStyles
+        duration={225}
+        isOpen={false}
+      >
+        <Dropdown
+          className=""
+          classes={
+            {
+              "container": "tss-gi3kfa-Dropdown-container",
+            }
+          }
+          duration={225}
+          easing={null}
+          isOpen={false}
+          onComplete={[Function]}
+          onStart={[Function]}
+        >
+          <Transition
+            duration={225}
+            easing={null}
+            from={
+              {
+                "height": 0,
+              }
+            }
+            onComplete={[Function]}
+            onStart={[Function]}
+            origin="0 0 0"
+            set={null}
+            to={
+              {
+                "height": 0,
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              className="tss-gi3kfa-Dropdown-container  common__dropdown"
+              key=".0"
+            >
+              <ul
+                id="filter.sort.default"
+                role="menu"
+                tabIndex="-1"
+              >
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={null}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={false}
+                  key="item_1"
+                  label="My item #1"
+                  value="item_1"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={null}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={false}
+                    label="My item #1"
+                    value="item_1"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={false}
+                      className="tss-1p8in91-SelectBoxItem-item"
+                      data-test-id="My item #1"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="-1"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #1"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #1
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={null}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={false}
+                  key="item_2"
+                  label="My item #2"
+                  value="item_2"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={null}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={false}
+                    label="My item #2"
+                    value="item_2"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={false}
+                      className="tss-1p8in91-SelectBoxItem-item"
+                      data-test-id="My item #2"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="-1"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #2"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #2
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={null}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={false}
+                  key="item_3"
+                  label="My item #3"
+                  value="item_3"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={null}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={false}
+                    label="My item #3"
+                    value="item_3"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={false}
+                      className="tss-1p8in91-SelectBoxItem-item"
+                      data-test-id="My item #3"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="-1"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #3"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #3
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+              </ul>
+            </div>
+          </Transition>
+        </Dropdown>
+      </DropdownWithStyles>
+    </div>
+  </SelectBox>
+</SelectBoxWithStyles>
 `;
 
 exports[`<SelectBox> should render with a default text 1`] = `
-<SelectBox
-  className=""
-  classNames={{}}
+<SelectBoxWithStyles
   defaultText="Foo"
-  duration={225}
-  handleSelectionUpdate={[Function]}
   icon={[Function]}
-  initialValue={null}
   item={[Function]}
   items={
     [
@@ -272,233 +363,331 @@ exports[`<SelectBox> should render with a default text 1`] = `
       },
     ]
   }
-  testId={null}
 >
-  <div
-    className=" common__select-box"
-    data-test-id={null}
+  <SelectBox
+    className=""
+    classNames={{}}
+    classes={
+      {
+        "overlay": "tss-1w7gnva-SelectBox-overlay",
+      }
+    }
+    defaultText="Foo"
+    duration={225}
+    handleSelectionUpdate={[Function]}
+    icon={[Function]}
+    initialValue={null}
+    item={[Function]}
+    items={
+      [
+        {
+          "label": "My item #1",
+          "value": "item_1",
+        },
+        {
+          "label": "My item #2",
+          "value": "item_2",
+        },
+        {
+          "label": "My item #3",
+          "value": "item_3",
+        },
+      ]
+    }
+    testId={null}
   >
-    <button
-      aria-controls="Foo"
-      aria-expanded={null}
-      aria-haspopup={true}
-      data-test-id="Foo"
-      onClick={[Function]}
-      type="button"
+    <div
+      className=" common__select-box"
+      data-test-id={null}
     >
-      <span>
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string="Foo"
-          transform={null}
-        >
-          <span
+      <button
+        aria-controls="Foo"
+        aria-expanded={null}
+        aria-haspopup={true}
+        data-test-id="Foo"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
+            params={{}}
             role={null}
+            string="Foo"
+            transform={null}
           >
-            Foo
-          </span>
-        </Translate>
-      </span>
-      <div
-        className=""
-      >
-        <MockIconComponent>
-          <span
-            id="icon"
-          />
-        </MockIconComponent>
-      </div>
-    </button>
-    <Dropdown
-      className=""
-      duration={225}
-      easing={null}
-      isOpen={false}
-      onComplete={[Function]}
-      onStart={[Function]}
-    >
-      <Transition
-        duration={225}
-        easing={null}
-        from={
-          {
-            "height": 0,
-          }
-        }
-        onComplete={[Function]}
-        onStart={[Function]}
-        origin="0 0 0"
-        set={null}
-        to={
-          {
-            "height": 0,
-          }
-        }
-      >
+            <span
+              className={null}
+              role={null}
+            >
+              Foo
+            </span>
+          </Translate>
+        </span>
         <div
-          aria-hidden={true}
-          className="css-rdsogp  common__dropdown"
-          key=".0"
+          className=""
         >
-          <ul
-            id="Foo"
-            role="menu"
-            tabIndex="-1"
-          >
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={null}
-              handleSelectionUpdate={[Function]}
-              isSelected={false}
-              key="item_1"
-              label="My item #1"
-              value="item_1"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={false}
-                className="css-dw3c54"
-                data-test-id="My item #1"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #1"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #1
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={null}
-              handleSelectionUpdate={[Function]}
-              isSelected={false}
-              key="item_2"
-              label="My item #2"
-              value="item_2"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={false}
-                className="css-dw3c54"
-                data-test-id="My item #2"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #2"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #2
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={null}
-              handleSelectionUpdate={[Function]}
-              isSelected={false}
-              key="item_3"
-              label="My item #3"
-              value="item_3"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={false}
-                className="css-dw3c54"
-                data-test-id="My item #3"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #3"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #3
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-          </ul>
+          <MockIconComponent>
+            <span
+              id="icon"
+            />
+          </MockIconComponent>
         </div>
-      </Transition>
-    </Dropdown>
-  </div>
-</SelectBox>
+      </button>
+      <DropdownWithStyles
+        duration={225}
+        isOpen={false}
+      >
+        <Dropdown
+          className=""
+          classes={
+            {
+              "container": "tss-gi3kfa-Dropdown-container",
+            }
+          }
+          duration={225}
+          easing={null}
+          isOpen={false}
+          onComplete={[Function]}
+          onStart={[Function]}
+        >
+          <Transition
+            duration={225}
+            easing={null}
+            from={
+              {
+                "height": 0,
+              }
+            }
+            onComplete={[Function]}
+            onStart={[Function]}
+            origin="0 0 0"
+            set={null}
+            to={
+              {
+                "height": 0,
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              className="tss-gi3kfa-Dropdown-container  common__dropdown"
+              key=".0"
+            >
+              <ul
+                id="Foo"
+                role="menu"
+                tabIndex="-1"
+              >
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={null}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={false}
+                  key="item_1"
+                  label="My item #1"
+                  value="item_1"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={null}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={false}
+                    label="My item #1"
+                    value="item_1"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={false}
+                      className="tss-1p8in91-SelectBoxItem-item"
+                      data-test-id="My item #1"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="-1"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #1"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #1
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={null}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={false}
+                  key="item_2"
+                  label="My item #2"
+                  value="item_2"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={null}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={false}
+                    label="My item #2"
+                    value="item_2"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={false}
+                      className="tss-1p8in91-SelectBoxItem-item"
+                      data-test-id="My item #2"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="-1"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #2"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #2
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={null}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={false}
+                  key="item_3"
+                  label="My item #3"
+                  value="item_3"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={null}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={false}
+                    label="My item #3"
+                    value="item_3"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={false}
+                      className="tss-1p8in91-SelectBoxItem-item"
+                      data-test-id="My item #3"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="-1"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #3"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #3
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+              </ul>
+            </div>
+          </Transition>
+        </Dropdown>
+      </DropdownWithStyles>
+    </div>
+  </SelectBox>
+</SelectBoxWithStyles>
 `;
 
 exports[`<SelectBox> should render with a preselected selection 1`] = `
-<SelectBox
-  className=""
-  classNames={{}}
+<SelectBoxWithStyles
   defaultText="Foo"
-  duration={225}
-  handleSelectionUpdate={[Function]}
   icon={[Function]}
   initialValue="item_2"
   item={[Function]}
@@ -518,222 +707,324 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
       },
     ]
   }
-  testId={null}
 >
-  <div
-    className=" common__select-box"
-    data-test-id={null}
+  <SelectBox
+    className=""
+    classNames={{}}
+    classes={
+      {
+        "overlay": "tss-1w7gnva-SelectBox-overlay",
+      }
+    }
+    defaultText="Foo"
+    duration={225}
+    handleSelectionUpdate={[Function]}
+    icon={[Function]}
+    initialValue="item_2"
+    item={[Function]}
+    items={
+      [
+        {
+          "label": "My item #1",
+          "value": "item_1",
+        },
+        {
+          "label": "My item #2",
+          "value": "item_2",
+        },
+        {
+          "label": "My item #3",
+          "value": "item_3",
+        },
+      ]
+    }
+    testId={null}
   >
-    <button
-      aria-controls="My item #2"
-      aria-expanded={null}
-      aria-haspopup={true}
-      data-test-id="My item #2"
-      onClick={[Function]}
-      type="button"
+    <div
+      className=" common__select-box"
+      data-test-id={null}
     >
-      <span>
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string="My item #2"
-          transform={null}
-        >
-          <span
+      <button
+        aria-controls="My item #2"
+        aria-expanded={null}
+        aria-haspopup={true}
+        data-test-id="My item #2"
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
+            params={{}}
             role={null}
+            string="My item #2"
+            transform={null}
           >
-            My item #2
-          </span>
-        </Translate>
-      </span>
-      <div
-        className=""
-      >
-        <MockIconComponent>
-          <span
-            id="icon"
-          />
-        </MockIconComponent>
-      </div>
-    </button>
-    <Dropdown
-      className=""
-      duration={225}
-      easing={null}
-      isOpen={false}
-      onComplete={[Function]}
-      onStart={[Function]}
-    >
-      <Transition
-        duration={225}
-        easing={null}
-        from={
-          {
-            "height": 0,
-          }
-        }
-        onComplete={[Function]}
-        onStart={[Function]}
-        origin="0 0 0"
-        set={null}
-        to={
-          {
-            "height": 0,
-          }
-        }
-      >
+            <span
+              className={null}
+              role={null}
+            >
+              My item #2
+            </span>
+          </Translate>
+        </span>
         <div
-          aria-hidden={true}
-          className="css-rdsogp  common__dropdown"
-          key=".0"
+          className=""
         >
-          <ul
-            id="My item #2"
-            role="menu"
-            tabIndex="-1"
-          >
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={null}
-              handleSelectionUpdate={[Function]}
-              isSelected={false}
-              key="item_1"
-              label="My item #1"
-              value="item_1"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={false}
-                className="css-dw3c54"
-                data-test-id="My item #1"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #1"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #1
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={[Function]}
-              handleSelectionUpdate={[Function]}
-              isSelected={true}
-              key="item_2"
-              label="My item #2"
-              value="item_2"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={true}
-                className="css-dw3c54 undefined"
-                data-test-id="My item #2"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="0"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #2"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #2
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-            <SelectBoxItem
-              classNames={
-                {
-                  "selectItem": undefined,
-                  "selectItemSelected": undefined,
-                }
-              }
-              forwardedRef={null}
-              handleSelectionUpdate={[Function]}
-              isSelected={false}
-              key="item_3"
-              label="My item #3"
-              value="item_3"
-              wrapper={[Function]}
-            >
-              <li
-                aria-current={false}
-                className="css-dw3c54"
-                data-test-id="My item #3"
-                onClick={[Function]}
-                onKeyUp={[Function]}
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <MockItemComponent>
-                  <div>
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="My item #3"
-                      transform={null}
-                    >
-                      <span
-                        className={null}
-                        role={null}
-                      >
-                        My item #3
-                      </span>
-                    </Translate>
-                  </div>
-                </MockItemComponent>
-              </li>
-            </SelectBoxItem>
-          </ul>
+          <MockIconComponent>
+            <span
+              id="icon"
+            />
+          </MockIconComponent>
         </div>
-      </Transition>
-    </Dropdown>
-  </div>
-</SelectBox>
+      </button>
+      <DropdownWithStyles
+        duration={225}
+        isOpen={false}
+      >
+        <Dropdown
+          className=""
+          classes={
+            {
+              "container": "tss-gi3kfa-Dropdown-container",
+            }
+          }
+          duration={225}
+          easing={null}
+          isOpen={false}
+          onComplete={[Function]}
+          onStart={[Function]}
+        >
+          <Transition
+            duration={225}
+            easing={null}
+            from={
+              {
+                "height": 0,
+              }
+            }
+            onComplete={[Function]}
+            onStart={[Function]}
+            origin="0 0 0"
+            set={null}
+            to={
+              {
+                "height": 0,
+              }
+            }
+          >
+            <div
+              aria-hidden={true}
+              className="tss-gi3kfa-Dropdown-container  common__dropdown"
+              key=".0"
+            >
+              <ul
+                id="My item #2"
+                role="menu"
+                tabIndex="-1"
+              >
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={null}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={false}
+                  key="item_1"
+                  label="My item #1"
+                  value="item_1"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={null}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={false}
+                    label="My item #1"
+                    value="item_1"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={false}
+                      className="tss-1p8in91-SelectBoxItem-item"
+                      data-test-id="My item #1"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="-1"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #1"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #1
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={[Function]}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={true}
+                  key="item_2"
+                  label="My item #2"
+                  value="item_2"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={[Function]}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={true}
+                    label="My item #2"
+                    value="item_2"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={true}
+                      className="tss-1p8in91-SelectBoxItem-item undefined"
+                      data-test-id="My item #2"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="0"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #2"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #2
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+                <SelectBoxItemWithStyles
+                  classNames={
+                    {
+                      "selectItem": undefined,
+                      "selectItemSelected": undefined,
+                    }
+                  }
+                  forwardedRef={null}
+                  handleSelectionUpdate={[Function]}
+                  isSelected={false}
+                  key="item_3"
+                  label="My item #3"
+                  value="item_3"
+                  wrapper={[Function]}
+                >
+                  <SelectBoxItem
+                    classNames={
+                      {
+                        "selectItem": undefined,
+                        "selectItemSelected": undefined,
+                      }
+                    }
+                    classes={
+                      {
+                        "item": "tss-1p8in91-SelectBoxItem-item",
+                      }
+                    }
+                    forwardedRef={null}
+                    handleSelectionUpdate={[Function]}
+                    isSelected={false}
+                    label="My item #3"
+                    value="item_3"
+                    wrapper={[Function]}
+                  >
+                    <li
+                      aria-current={false}
+                      className="tss-1p8in91-SelectBoxItem-item"
+                      data-test-id="My item #3"
+                      onClick={[Function]}
+                      onKeyUp={[Function]}
+                      role="menuitem"
+                      tabIndex="-1"
+                    >
+                      <MockItemComponent>
+                        <div>
+                          <Translate
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
+                            string="My item #3"
+                            transform={null}
+                          >
+                            <span
+                              className={null}
+                              role={null}
+                            >
+                              My item #3
+                            </span>
+                          </Translate>
+                        </div>
+                      </MockItemComponent>
+                    </li>
+                  </SelectBoxItem>
+                </SelectBoxItemWithStyles>
+              </ul>
+            </div>
+          </Transition>
+        </Dropdown>
+      </DropdownWithStyles>
+    </div>
+  </SelectBox>
+</SelectBoxWithStyles>
 `;

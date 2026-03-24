@@ -17,13 +17,13 @@ export const grid = css({
 export const gridItem = css({
   width: '50%',
   display: 'flex',
-  ':nth-child(even)': {
+  ':nth-of-type(even)': {
     padding: `0 0 ${big}px ${small}px`,
   },
-  ':nth-child(odd)': {
+  ':nth-of-type(odd)': {
     padding: `0 ${small}px ${big}px 0`,
   },
-  '&:nth-child(2n+1):nth-last-child(-n+2), &:nth-child(2n+1):nth-last-child(-n+2) ~ li': {
+  '&:nth-of-type(2n+1):nth-last-of-type(-n+2), &:nth-of-type(2n+1):nth-last-of-type(-n+2) ~ li': {
     paddingBottom: 0,
   },
 

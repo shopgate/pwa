@@ -74,7 +74,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             text="navigation.more_menu"
           >
             <h2
-              className="css-18cwfw7 headline theme__headline"
+              className="headline theme__headline tss-1ajnxxp-root-h2"
               data-test-id="Headline"
               style={
                 {
@@ -115,7 +115,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 testId={null}
               >
                 <Link
-                  className="css-1hj8a57"
+                  className="tss-1lse86s-root"
                   href="/some/url"
                   role="button"
                 >
@@ -135,7 +135,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 testId={null}
               >
                 <Link
-                  className="css-1hj8a57"
+                  className="tss-1lse86s-root"
                   href="/another/url"
                   role="button"
                 >

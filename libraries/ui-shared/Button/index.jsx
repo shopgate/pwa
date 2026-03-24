@@ -21,6 +21,7 @@ class Button extends Component {
     ...BaseButton.propTypes,
     className: PropTypes.string,
     flat: PropTypes.bool,
+    nativeType: PropTypes.oneOf(['button', 'submit', 'reset']),
     testId: PropTypes.string,
     type: PropTypes.oneOf(buttonTypes),
     wrapContent: PropTypes.bool,
@@ -30,6 +31,7 @@ class Button extends Component {
     ...BaseButton.defaultProps,
     className: '',
     flat: false,
+    nativeType: undefined,
     type: 'primary',
     wrapContent: true,
     testId: 'Button',
@@ -63,13 +65,22 @@ class Button extends Component {
    */
   get buttonProps() {
     const {
-      className, disabled, onClick, testId, type, wrapContent, flat, ...rest
+      className,
+      disabled,
+      onClick,
+      testId,
+      type,
+      wrapContent,
+      flat,
+      nativeType,
+      ...rest
     } = this.props;
 
     const buttonProps = {
       className,
       disabled,
       onClick,
+      type: nativeType || 'button',
       ...rest,
     };
 

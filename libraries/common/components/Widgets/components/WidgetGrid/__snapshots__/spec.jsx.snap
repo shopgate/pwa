@@ -1,18 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<WidgetGrid /> should not render without a \`config\` prop 1`] = `
-<WidgetGrid
+<WidgetGridWithStyles
   components={
     {
       "@shopgate/commerce-widgets/image": [Function],
     }
   }
-  config={[]}
-/>
+>
+  <WidgetGrid
+    className="tss-106do1t-WidgetGrid-root"
+    classes={
+      {
+        "root": "tss-106do1t-WidgetGrid-root",
+      }
+    }
+    components={
+      {
+        "@shopgate/commerce-widgets/image": [Function],
+      }
+    }
+    config={[]}
+  />
+</WidgetGridWithStyles>
 `;
 
 exports[`<WidgetGrid /> should render with a config 1`] = `
-<WidgetGrid
+<WidgetGridWithStyles
   components={
     {
       "@shopgate/commerce-widgets/image": [Function],
@@ -34,12 +48,20 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
     ]
   }
 >
-  <div
-    className="css-jldvt6 common__widgets__widget-grid"
-  >
-    <Widget
-      component={[Function]}
-      config={
+  <WidgetGrid
+    className="tss-106do1t-WidgetGrid-root"
+    classes={
+      {
+        "root": "tss-106do1t-WidgetGrid-root",
+      }
+    }
+    components={
+      {
+        "@shopgate/commerce-widgets/image": [Function],
+      }
+    }
+    config={
+      [
         {
           "col": 0,
           "height": 3,
@@ -50,44 +72,75 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
           },
           "type": "@shopgate/commerce-widgets/image",
           "width": 12,
-        }
-      }
-      key="w0"
+        },
+      ]
+    }
+  >
+    <div
+      className="tss-106do1t-WidgetGrid-root common__widgets__widget-grid"
     >
-      <GridItem
-        className="common__widgets__widget css-1v59zcp"
-        component="div"
-        grow={0}
-        shrink={1}
+      <Widget
+        component={[Function]}
+        config={
+          {
+            "col": 0,
+            "height": 3,
+            "row": 0,
+            "settings": {
+              "id": 83535,
+              "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+            },
+            "type": "@shopgate/commerce-widgets/image",
+            "width": 12,
+          }
+        }
+        key="w0"
       >
-        <div
+        <GridItemWithStyles
           className="common__widgets__widget css-1v59zcp"
+          component="div"
         >
-          <div>
-            <Suspense
-              fallback={<Loading />}
+          <GridItem
+            className="tss-sd75mx-GridItem-root common__widgets__widget css-1v59zcp"
+            classes={
+              {
+                "root": "tss-sd75mx-GridItem-root",
+              }
+            }
+            component="div"
+            grow={0}
+            shrink={1}
+          >
+            <div
+              className="tss-sd75mx-GridItem-root common__widgets__widget css-1v59zcp tss-sd75mx-GridItem-root common__widgets__widget css-1v59zcp"
             >
-              <Image
-                ratio={
-                  [
-                    12,
-                    3,
-                  ]
-                }
-                settings={
-                  {
-                    "id": 83535,
-                    "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
-                  }
-                }
-              >
-                <div />
-              </Image>
-            </Suspense>
-          </div>
-        </div>
-      </GridItem>
-    </Widget>
-  </div>
-</WidgetGrid>
+              <div>
+                <Suspense
+                  fallback={<Loading />}
+                >
+                  <Image
+                    ratio={
+                      [
+                        12,
+                        3,
+                      ]
+                    }
+                    settings={
+                      {
+                        "id": 83535,
+                        "image": "https://data.shopgate.com/shop_widget_images/23836/92204c0f264ac30d6836994c2fb64eb1.min.jpeg",
+                      }
+                    }
+                  >
+                    <div />
+                  </Image>
+                </Suspense>
+              </div>
+            </div>
+          </GridItem>
+        </GridItemWithStyles>
+      </Widget>
+    </div>
+  </WidgetGrid>
+</WidgetGridWithStyles>
 `;

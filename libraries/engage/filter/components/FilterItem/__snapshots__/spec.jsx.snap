@@ -2,11 +2,7 @@
 
 exports[`Filter: <Item /> should render 1`] = `
 <div
-  className={
-    {
-      "data-css-qsx8t9": "",
-    }
-  }
+  className="tss-kg1iko-item"
 >
   <div>
     Some
