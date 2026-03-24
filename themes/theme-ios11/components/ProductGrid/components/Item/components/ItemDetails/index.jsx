@@ -12,9 +12,22 @@ import {
 import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import { Availability, Link } from '@shopgate/engage/components';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
-import * as styles from './style';
+
+const useStyles = makeStyles()({
+  details: {
+    lineHeight: 1.2,
+    '&:not(:empty)': {
+      padding: '12px 0 30px',
+    },
+  },
+  quantityHint: {
+    paddingTop: 8,
+  },
+});
+
 /**
  * The Product Grid Item Detail component.
  * @param {Object} props The component props.
@@ -24,6 +37,7 @@ import * as styles from './style';
  * @returns {JSX.Element}
  */
 const ItemDetails = ({ product, display, productListTypeMeta }) => {
+  const { classes } = useStyles();
   const { id: productId, name = null, stock = null } = product;
 
   const hasNewServices = useMemo(() => checkHasNewServices(), []);
@@ -34,7 +48,7 @@ const ItemDetails = ({ product, display, productListTypeMeta }) => {
 
   return (
     <Link
-      className={`${styles.details} theme__product-grid__item__item-details`}
+      className={`${classes.details} theme__product-grid__item__item-details`}
       tabIndex={0}
       href={getProductRoute(productId)}
       state={{
@@ -60,7 +74,7 @@ const ItemDetails = ({ product, display, productListTypeMeta }) => {
         This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects
       */}
-      <OrderQuantityHint productId={productId} className={styles.quantityHint} />
+      <OrderQuantityHint productId={productId} className={classes.quantityHint} />
 
       {/* This feature is currently in BETA testing.
       It should only be used for approved BETA Client Projects */}

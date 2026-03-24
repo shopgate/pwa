@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Portal, DiscountBadge } from '@shopgate/engage/components';
 import {
@@ -7,7 +7,18 @@ import {
   PRODUCT_ITEM_DISCOUNT_AFTER,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { i18n } from '@shopgate/engage/core/helpers';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  root: {
+    fontWeight: 500,
+    marginBottom: variables.gap.small,
+    width: 'auto',
+  },
+});
 
 /**
  * The LiveshoppingDiscount component.
@@ -16,20 +27,21 @@ import styles from './style';
  * @returns {JSX}
  */
 function LiveshoppingDiscount({ discount, productId }) {
-  const props = { productId };
+  const { classes } = useStyles();
+  const portalProps = { productId };
 
   return (
     <>
-      <Portal name={PRODUCT_ITEM_DISCOUNT_BEFORE} props={props} />
-      <Portal name={PRODUCT_ITEM_DISCOUNT} props={props}>
+      <Portal name={PRODUCT_ITEM_DISCOUNT_BEFORE} props={portalProps} />
+      <Portal name={PRODUCT_ITEM_DISCOUNT} props={portalProps}>
         <DiscountBadge
           text={i18n.text('liveshopping.discount_badge', [discount])}
           discount={discount}
           display="big"
-          className={styles}
+          className={classes.root}
         />
       </Portal>
-      <Portal name={PRODUCT_ITEM_DISCOUNT_AFTER} props={props} />
+      <Portal name={PRODUCT_ITEM_DISCOUNT_AFTER} props={portalProps} />
     </>
   );
 }

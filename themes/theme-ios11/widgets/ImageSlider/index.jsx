@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, Link } from '@shopgate/engage/components';
-import { image as imgStyle, link as linkStyle } from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  link: {
+    width: '100%',
+  },
+  image: {
+    display: 'block',
+    width: '100%',
+  },
+});
 
 /**
  * Core image slider widget.
@@ -9,15 +19,17 @@ import { image as imgStyle, link as linkStyle } from './style';
  * @returns {JSX}
  */
 const ImageSliderWidget = ({ settings, className }) => {
+  const { classes } = useStyles();
+
   // If only one image, don't show a swiper.
   if (settings.images.length === 1) {
     const image = settings.images[0];
-    const img = <img src={image.image} alt={image.alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
+    const img = <img src={image.image} alt={image.alt} className={classes.image} data-test-id={`link : ${settings.link}`} />;
 
     if (image.link) {
       return (
         <div className={className}>
-          <Link href={image.link} className={linkStyle} data-test-id="withLink">
+          <Link href={image.link} className={classes.link} data-test-id="withLink">
             {img}
           </Link>
         </div>
@@ -43,12 +55,12 @@ const ImageSliderWidget = ({ settings, className }) => {
       loop={settings.loop}
     >
       {settings.images.map(({ image, alt, link }) => {
-        const img = <img src={image} alt={alt} className={imgStyle} data-test-id={`link : ${settings.link}`} />;
+        const img = <img src={image} alt={alt} className={classes.image} data-test-id={`link : ${settings.link}`} />;
 
         if (link) {
           return (
             <Swiper.Item key={image}>
-              <Link href={link} className={linkStyle} data-test-id="withLink">
+              <Link href={link} className={classes.link} data-test-id="withLink">
                 {img}
               </Link>
             </Swiper.Item>

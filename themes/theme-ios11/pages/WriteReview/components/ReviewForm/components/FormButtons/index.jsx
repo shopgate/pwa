@@ -4,8 +4,15 @@ import I18n from '@shopgate/pwa-common/components/I18n';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import buttonStyles from '@shopgate/pwa-ui-shared/Button/style';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
+
+const useStyles = makeStyles()({
+  buttonLine: {
+    float: 'right',
+    marginTop: '14',
+  },
+});
 
 /**
  * The form buttons component.
@@ -13,9 +20,11 @@ import connect from './connector';
  * @returns {JSX}
  */
 const FormButtons = (props) => {
+  const { classes } = useStyles();
   const buttonStyle = buttonStyles.regular(false);
+
   return (
-    <div className={styles.buttonLine}>
+    <div className={classes.buttonLine}>
       <button
         type="button"
         className={`${buttonStyle.button} ${buttonStyle.content}`}

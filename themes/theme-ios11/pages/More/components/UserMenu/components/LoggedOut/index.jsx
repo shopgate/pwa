@@ -8,44 +8,67 @@ import {
   LOGIN_PATH,
   REGISTER_PATH,
 } from '@shopgate/engage/user';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  grid: {
+    flexWrap: 'wrap',
+    padding: '0 15px',
+  },
+  gridItem: {
+    flexGrow: 1,
+    marginBottom: 8,
+    minWidth: '50%',
+    padding: '0 5px',
+  },
+  button: {
+    width: '100%',
+    '& *': {
+      textAlign: 'center',
+    },
+  },
+});
 
 /**
  * @param {Object} props The component props.
  * @param {boolean} isDisabled whether the button is disabled
  * @returns {JSX.Element}
  */
-const LoggedOut = ({ isDisabled }) => (
-  <div data-test-id="userMenu">
-    <Grid className={classnames(styles.grid, 'theme__more-page__user-menu__container')}>
-      <Grid.Item className={classnames(styles.gridItem, 'theme__more-page__login-button__container')}>
-        <Link tabIndex={0} href={LOGIN_PATH} disabled={isDisabled}>
-          <Button
-            type="secondary"
-            className={classnames(styles.button, 'theme__more-page__login-button')}
-            testId="UserMenuLogin"
-            disabled={isDisabled}
-          >
-            <I18n.Text string="login.button" />
-          </Button>
-        </Link>
-      </Grid.Item>
-      <Grid.Item className={classnames(styles.gridItem, 'theme__more-page-register-button__container')}>
-        <Link tabIndex={0} href={REGISTER_PATH} disabled={isDisabled}>
-          <Button
-            type="secondary"
-            className={classnames(styles.button, 'theme__more-page-register-button')}
-            testId="UserMenuRegister"
-            disabled={isDisabled}
-          >
-            <I18n.Text string="login.signup" />
-          </Button>
-        </Link>
-      </Grid.Item>
-    </Grid>
-  </div>
-);
+const LoggedOut = ({ isDisabled }) => {
+  const { classes } = useStyles();
+
+  return (
+    <div data-test-id="userMenu">
+      <Grid className={classnames(classes.grid, 'theme__more-page__user-menu__container')}>
+        <Grid.Item className={classnames(classes.gridItem, 'theme__more-page__login-button__container')}>
+          <Link tabIndex={0} href={LOGIN_PATH} disabled={isDisabled}>
+            <Button
+              type="secondary"
+              className={classnames(classes.button, 'theme__more-page__login-button')}
+              testId="UserMenuLogin"
+              disabled={isDisabled}
+            >
+              <I18n.Text string="login.button" />
+            </Button>
+          </Link>
+        </Grid.Item>
+        <Grid.Item className={classnames(classes.gridItem, 'theme__more-page-register-button__container')}>
+          <Link tabIndex={0} href={REGISTER_PATH} disabled={isDisabled}>
+            <Button
+              type="secondary"
+              className={classnames(classes.button, 'theme__more-page-register-button')}
+              testId="UserMenuRegister"
+              disabled={isDisabled}
+            >
+              <I18n.Text string="login.signup" />
+            </Button>
+          </Link>
+        </Grid.Item>
+      </Grid>
+    </div>
+  );
+};
 
 LoggedOut.propTypes = {
   isDisabled: PropTypes.bool.isRequired,
