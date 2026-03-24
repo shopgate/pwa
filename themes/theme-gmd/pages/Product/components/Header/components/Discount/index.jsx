@@ -2,8 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  placeholder: {
+    height: 20,
+    width: '50px',
+    display: 'inline-block',
+  },
+  discount: {
+    width: 40,
+    display: 'inline-block',
+  },
+});
 
 /**
  * The Discount component.
@@ -11,14 +23,16 @@ import styles from './style';
  * @return {JSX}
  */
 const Discount = ({ price }) => {
+  const { classes } = useStyles();
+
   if (price && typeof price.discount === 'undefined') {
     return null;
   }
 
   return (
-    <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
+    <PlaceholderLabel ready={(price !== null)} className={classes.placeholder}>
       {!!(price && price.discount) && (
-        <div className={`${styles.discount} theme__product__header__discount`}>
+        <div className={`${classes.discount} theme__product__header__discount`}>
           <DiscountBadge text={`-${price.discount}%`} />
         </div>
       )}

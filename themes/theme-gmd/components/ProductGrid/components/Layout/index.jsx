@@ -1,18 +1,76 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import { styles } from './style';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()((_theme, { columns }) => {
+  const grid = {
+    [responsiveMediaQuery('<=xs')]: {
+      '&:not(:empty)': {
+        paddingBottom: 2,
+      },
+    },
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      padding: variables.gap.big,
+    },
+    background: 'var(--page-background-color)',
+  };
+
+  if (columns <= 2) {
+    Object.assign(grid, {
+      '& > *': {
+        padding: 2,
+        width: `${100 / columns}%`,
+        [`&:nth-child(${columns}n)`]: {
+          paddingRight: 0,
+        },
+        [`&:nth-child(${columns}n+1)`]: {
+          paddingLeft: 0,
+        },
+        [`&:nth-child(-n+${columns})`]: {
+          paddingTop: 0,
+        },
+        [responsiveMediaQuery('>xs', { webOnly: true })]: {
+          '&:nth-child(even)': {
+            padding: `0 0 ${variables.gap.big}px ${variables.gap.small}px`,
+          },
+          '&:nth-child(odd)': {
+            padding: `0 ${variables.gap.small}px ${variables.gap.big}px 0`,
+          },
+          '&:nth-child(2n+1):nth-last-child(-n+2), &:nth-child(2n+1):nth-last-child(-n+2) ~ li': {
+            paddingBottom: 0,
+          },
+        },
+      },
+    });
+  } else {
+    Object.assign(grid, {
+      display: 'grid',
+      gridGap: '4px',
+      gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    });
+  }
+
+  return { grid };
+});
 
 /**
  * The product grid layout component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Layout = ({ children, columns }) => (
-  <Grid wrap className={styles(columns)} data-test-id="productGrid">
-    {children}
-  </Grid>
-);
+const Layout = ({ children, columns }) => {
+  const { classes } = useStyles({ columns });
+
+  return (
+    <Grid wrap className={classes.grid} data-test-id="productGrid">
+      {children}
+    </Grid>
+  );
+};
 
 Layout.propTypes = {
   columns: PropTypes.number.isRequired,

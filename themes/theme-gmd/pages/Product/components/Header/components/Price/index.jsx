@@ -9,8 +9,24 @@ import {
   Price as PriceBase,
 } from '@shopgate/engage/components';
 import { ProductContext } from '@shopgate/engage/product/contexts';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import connect from './connector';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  placeholder: {
+    height: 20,
+    width: '50px',
+    display: 'inline-block',
+  },
+  price: {
+    fontSize: '1.25rem',
+    justifyContent: 'flex-end',
+    lineHeight: 1,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      justifyContent: 'flex-start',
+    },
+  },
+});
 
 /**
  * Calculate total price to show with additions
@@ -34,26 +50,29 @@ const getTotalPrice = (price, additions) => {
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Content = ({ price, hasProductVariants, showTaxDisclaimer }) => (
+const Content = ({ price, hasProductVariants, showTaxDisclaimer }) => {
+  const { classes } = useStyles();
 
-  <ProductContext.Consumer>
-    {({ optionsPrices }) => (
-      <PlaceholderLabel ready={(price !== null)} className={styles.placeholder}>
-        {(price && typeof price.unitPrice === 'number') && (
-          <PriceBase
-            className={styles.price}
-            currency={price.currency}
-            discounted={!!price.discount}
-            taxDisclaimer={showTaxDisclaimer}
-            unitPrice={getTotalPrice(price.unitPrice, optionsPrices)}
-            unitPriceMin={hasProductVariants ? price.unitPriceMin : 0}
-            unitPriceMax={hasProductVariants ? price.unitPriceMax : undefined}
-          />
-        )}
-      </PlaceholderLabel>
-    )}
-  </ProductContext.Consumer>
-);
+  return (
+    <ProductContext.Consumer>
+      {({ optionsPrices }) => (
+        <PlaceholderLabel ready={(price !== null)} className={classes.placeholder}>
+          {(price && typeof price.unitPrice === 'number') && (
+            <PriceBase
+              className={classes.price}
+              currency={price.currency}
+              discounted={!!price.discount}
+              taxDisclaimer={showTaxDisclaimer}
+              unitPrice={getTotalPrice(price.unitPrice, optionsPrices)}
+              unitPriceMin={hasProductVariants ? price.unitPriceMin : 0}
+              unitPriceMax={hasProductVariants ? price.unitPriceMax : undefined}
+            />
+          )}
+        </PlaceholderLabel>
+      )}
+    </ProductContext.Consumer>
+  );
+};
 
 Content.propTypes = {
   hasProductVariants: PropTypes.bool,

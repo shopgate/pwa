@@ -27,12 +27,32 @@ import { ProductListTypeProvider } from '@shopgate/engage/product';
 import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { SimpleBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
 import connect from './connector';
-import styles, { wideHeaderMessagesWithItems, headerContainer, subscription } from './style';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  cardList: {
+    marginTop: 4,
+  },
+  wideHeaderMessagesWithItems: {
+    marginTop: variables.gap.big * -1,
+  },
+  headerContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'baseline',
+  },
+  subscription: {
+    marginRight: 14,
+  },
+});
 
 const config = getCartConfig();
 
@@ -45,6 +65,7 @@ function CartContent(props) {
   const {
     cartItems, messages, isUserLoggedIn, currency, flags, hasPromotionCoupons, isDirectShipOnly,
   } = props;
+  const { classes } = useStyles();
   const [isPaymentBarVisible, setIsPaymentBarVisible] = React.useState(true);
   const { isLoading: getIsLoading } = React.useContext(LoadingContext);
 
@@ -73,15 +94,20 @@ function CartContent(props) {
     isDirectShipOnly,
   }), [currency, isUserLoggedIn, isLoading, flags, hasPromotionCoupons, isDirectShipOnly]);
 
+  const messageBarWideClassNames = hasItems ? {
+    container: classes.wideHeaderMessagesWithItems,
+    containerRaised: classes.wideHeaderMessagesWithItems,
+  } : {};
+
   return (
     <CartContext.Provider value={contextValue}>
       <SimpleBar title="titles.cart" />
       { hasItems && (
         <ResponsiveContainer webOnly breakpoint=">xs">
-          <div className={headerContainer}>
+          <div className={classes.headerContainer}>
             <CartHeaderWide />
             { !isDirectShipOnly && (
-              <CartItemsSubstitution className={subscription} cartItems={cartItems} />
+              <CartItemsSubstitution className={classes.subscription} cartItems={cartItems} />
             )}
           </div>
         </ResponsiveContainer>
@@ -95,10 +121,7 @@ function CartContent(props) {
                   messages={messages}
                   raised={cartItemsDisplay === 'card'}
                   showIcons
-                  classNames={hasItems ? {
-                    container: wideHeaderMessagesWithItems,
-                    containerRaised: wideHeaderMessagesWithItems,
-                  } : {}}
+                  classNames={messageBarWideClassNames}
                 />
               </ResponsiveContainer>
               <ResponsiveContainer appAlways breakpoint="<=xs">
@@ -111,7 +134,7 @@ function CartContent(props) {
               <ProductListTypeProvider type="cart">
                 <SurroundPortals portalName={CART_ITEM_LIST}>
                   {(cartItemsDisplay === 'line') && (
-                  <CardList className={styles}>
+                  <CardList className={classes.cardList}>
                     {cartItemsSorted.map(cartItem => (
                       <CartItemGroup
                         key={cartItem.id}

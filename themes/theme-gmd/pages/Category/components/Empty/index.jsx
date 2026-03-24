@@ -1,10 +1,18 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
+import { useScrollContainer } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
-import { wrapper } from './style';
+
+const useStyles = makeStyles()({
+  withTopPadding: {
+    paddingTop: 100,
+  },
+});
 
 /**
  * The Empty component for the Category.
@@ -12,6 +20,9 @@ import { wrapper } from './style';
  * @return {JSX}
  */
 const Empty = ({ isVisible, ...props }) => {
+  const { classes } = useStyles();
+  const hasScrollContainer = useScrollContainer();
+
   if (!isVisible) {
     return null;
   }
@@ -20,7 +31,10 @@ const Empty = ({ isVisible, ...props }) => {
     <>
       <Portal name={portals.NO_RESULTS_CONTENT_BEFORE} />
       <Portal name={portals.NO_RESULTS_CONTENT}>
-        <NoResults {...props} className={wrapper} />
+        <NoResults
+          {...props}
+          className={classNames({ [classes.withTopPadding]: !hasScrollContainer })}
+        />
       </Portal>
       <Portal name={portals.NO_RESULTS_CONTENT_AFTER} />
     </>

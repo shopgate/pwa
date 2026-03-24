@@ -15,13 +15,13 @@ import { getLiveshoppingTimeout } from './helpers';
 
 const { colors, variables } = themeConfig;
 
-const cardStyle = {
-  margin: '5px 15px 10px',
-};
-
 const paneBase = {
   width: '50%',
   background: colors.light,
+};
+
+const liveshoppingCardStyle = {
+  margin: '5px 15px 10px',
 };
 
 const useStyles = makeStyles()({
@@ -83,7 +83,7 @@ function LiveshoppingItem({
   return (
     <ProductCard
       productId={productId}
-      style={cardStyle}
+      style={liveshoppingCardStyle}
       render={({ product, url }) => {
         const {
           featuredImageBaseUrl,
