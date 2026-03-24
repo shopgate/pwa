@@ -1,46 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Grid /> should add custom classes on demand 1`] = `
-<Grid
-  className="custom-class-name"
-  classes={
-    {
-      "noWrap": "tss-18pnfnt-Grid-noWrap",
-      "root": "tss-ttd1ja-Grid-root",
-      "wrap": "tss-xzd4nf-Grid-wrap",
-    }
-  }
-  component="ul"
-  wrap={false}
+<ul
+  className="custom-class-name tss-pauvta-root common__grid tss-i2x46h-noWrap"
 />
 `;
 
 exports[`<Grid /> should be able to render a custom tag 1`] = `
-<Grid
-  className=""
-  classes={
-    {
-      "noWrap": "tss-18pnfnt-Grid-noWrap",
-      "root": "tss-ttd1ja-Grid-root",
-      "wrap": "tss-xzd4nf-Grid-wrap",
-    }
-  }
-  component="article"
-  wrap={false}
+<article
+  className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
 />
 `;
 
 exports[`<Grid /> should render without any further props 1`] = `
-<Grid
-  className=""
-  classes={
-    {
-      "noWrap": "tss-18pnfnt-Grid-noWrap",
-      "root": "tss-ttd1ja-Grid-root",
-      "wrap": "tss-xzd4nf-Grid-wrap",
-    }
-  }
-  component="ul"
-  wrap={false}
+<ul
+  className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
 />
 `;

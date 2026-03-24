@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Button /> should render as a primary button 1`] = `
-<ButtonWithStyles
+<Button
   className="ui-shared__button css-cifbew "
+  disabled={false}
+  onClick={null}
   testId="Button"
   type="button"
 >
@@ -11,12 +13,14 @@ exports[`<Button /> should render as a primary button 1`] = `
   >
     Press me
   </div>
-</ButtonWithStyles>
+</Button>
 `;
 
 exports[`<Button /> should render as a regular button if type is explicitly defined 1`] = `
-<ButtonWithStyles
+<Button
   className="ui-shared__button css-1a50m4j "
+  disabled={false}
+  onClick={null}
   testId="Button"
   type="button"
 >
@@ -25,12 +29,14 @@ exports[`<Button /> should render as a regular button if type is explicitly defi
   >
     Press me
   </div>
-</ButtonWithStyles>
+</Button>
 `;
 
 exports[`<Button /> should render as a regular button if type is omitted 1`] = `
-<ButtonWithStyles
+<Button
   className="ui-shared__button css-cifbew "
+  disabled={false}
+  onClick={null}
   testId="Button"
   type="button"
 >
@@ -39,12 +45,14 @@ exports[`<Button /> should render as a regular button if type is omitted 1`] = `
   >
     Press me
   </div>
-</ButtonWithStyles>
+</Button>
 `;
 
 exports[`<Button /> should render as a secondary button 1`] = `
-<ButtonWithStyles
+<Button
   className="ui-shared__button css-mk0dpu "
+  disabled={false}
+  onClick={null}
   testId="Button"
   type="button"
 >
@@ -53,5 +61,5 @@ exports[`<Button /> should render as a secondary button 1`] = `
   >
     Press me
   </div>
-</ButtonWithStyles>
+</Button>
 `;

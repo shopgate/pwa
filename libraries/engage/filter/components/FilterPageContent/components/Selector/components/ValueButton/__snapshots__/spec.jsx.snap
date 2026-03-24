@@ -1,16 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ValueButton /> should handle click event 1`] = `
-<ValueButton
-  classes={
-    {
-      "active": "tss-9cghc6-ValueButton-active",
-      "inactive": "tss-105ceck-ValueButton-inactive",
-    }
-  }
-  id="someid"
-  isActive={false}
-  label="somelabel"
+<button
+  aria-checked={false}
+  className="tss-77e381-inactive"
+  data-test-id="someid"
   onClick={
     [MockFunction] {
       "calls": [
@@ -24,35 +18,38 @@ exports[`<ValueButton /> should handle click event 1`] = `
       ],
     }
   }
-/>
+  role="checkbox"
+  type="button"
+  value="someid"
+>
+  somelabel
+</button>
 `;
 
 exports[`<ValueButton /> should render as active 1`] = `
-<ValueButton
-  classes={
-    {
-      "active": "tss-9cghc6-ValueButton-active",
-      "inactive": "tss-105ceck-ValueButton-inactive",
-    }
-  }
-  id="someid"
-  isActive={true}
-  label="somelabel"
+<button
+  aria-checked={true}
+  className="tss-h4u6fa-active"
+  data-test-id="someid"
   onClick={[Function]}
-/>
+  role="checkbox"
+  type="button"
+  value="someid"
+>
+  somelabel
+</button>
 `;
 
 exports[`<ValueButton /> should render as inactive 1`] = `
-<ValueButton
-  classes={
-    {
-      "active": "tss-9cghc6-ValueButton-active",
-      "inactive": "tss-105ceck-ValueButton-inactive",
-    }
-  }
-  id="someid"
-  isActive={false}
-  label="somelabel"
+<button
+  aria-checked={false}
+  className="tss-77e381-inactive"
+  data-test-id="someid"
   onClick={[Function]}
-/>
+  role="checkbox"
+  type="button"
+  value="someid"
+>
+  somelabel
+</button>
 `;

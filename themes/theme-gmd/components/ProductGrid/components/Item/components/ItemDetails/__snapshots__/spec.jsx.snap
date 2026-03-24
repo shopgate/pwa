@@ -2,7 +2,7 @@
 
 exports[`<ItemDetails /> should render additional components with new services 1`] = `
 <Link
-  className="tss-frmcd-details theme__product-grid__item__item-details"
+  className="tss-1ped664-details theme__product-grid__item__item-details"
   href=""
   state={
     {
@@ -17,7 +17,7 @@ exports[`<ItemDetails /> should render additional components with new services 1
     />
   </div>
   <div
-    className="tss-ktmcgw-itemNameLink"
+    className="tss-20ym90-itemNameLink"
   >
     <ItemName
       display={null}
@@ -75,7 +75,7 @@ exports[`<ItemDetails /> should render additional components with new services 1
 
 exports[`<ItemDetails /> should render with minimal props 1`] = `
 <Link
-  className="tss-frmcd-details theme__product-grid__item__item-details"
+  className="tss-1ped664-details theme__product-grid__item__item-details"
   href=""
   state={
     {
@@ -90,7 +90,7 @@ exports[`<ItemDetails /> should render with minimal props 1`] = `
     />
   </div>
   <div
-    className="tss-ktmcgw-itemNameLink"
+    className="tss-20ym90-itemNameLink"
   >
     <ItemName
       display={null}

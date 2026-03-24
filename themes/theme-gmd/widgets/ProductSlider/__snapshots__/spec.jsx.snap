@@ -1,10 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductSlider /> should call the products callback on mount 1`] = `""`;
-
 exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] = `
 <div
-  className="css-1b16rjo theme__widgets__product-slider"
+  className="tss-kx1zsl-slider theme__widgets__product-slider"
 >
   <Headline
     text="Lorem ipsum"
@@ -16,7 +14,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     <Swiper
       classNames={
         {
-          "container": "css-1t3kzgn",
+          "container": "tss-16j18l2-sliderContainer",
         }
       }
       controls={false}
@@ -32,7 +30,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -74,7 +72,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -116,7 +114,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -158,7 +156,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -200,7 +198,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -242,7 +240,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -284,7 +282,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -326,7 +324,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -368,7 +366,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -410,7 +408,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -452,7 +450,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -494,7 +492,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -536,7 +534,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -578,7 +576,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -620,7 +618,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -662,7 +660,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -704,7 +702,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -746,7 +744,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -788,7 +786,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -830,7 +828,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -872,7 +870,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -914,7 +912,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -956,7 +954,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -998,7 +996,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1040,7 +1038,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1082,7 +1080,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1124,7 +1122,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1166,7 +1164,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1208,7 +1206,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1250,7 +1248,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1292,7 +1290,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
 
 exports[`<ProductSlider /> should not render an empty headline 1`] = `
 <div
-  className="css-1b16rjo theme__widgets__product-slider"
+  className="tss-kx1zsl-slider theme__widgets__product-slider"
 >
   <ProductListTypeProvider
     subType="widgets"
@@ -1301,7 +1299,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
     <Swiper
       classNames={
         {
-          "container": "css-1t3kzgn",
+          "container": "tss-16j18l2-sliderContainer",
         }
       }
       controls={false}
@@ -1317,7 +1315,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1359,7 +1357,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1401,7 +1399,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1443,7 +1441,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1485,7 +1483,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1529,7 +1527,7 @@ exports[`<ProductSlider /> should not render the widget without any data 1`] = `
 
 exports[`<ProductSlider /> should render the headline 1`] = `
 <div
-  className="css-1b16rjo theme__widgets__product-slider"
+  className="tss-kx1zsl-slider theme__widgets__product-slider"
 >
   <Headline
     text="Lorem ipsum"
@@ -1541,7 +1539,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     <Swiper
       classNames={
         {
-          "container": "css-1t3kzgn",
+          "container": "tss-16j18l2-sliderContainer",
         }
       }
       controls={false}
@@ -1557,7 +1555,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1599,7 +1597,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1641,7 +1639,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1683,7 +1681,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1725,7 +1723,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1767,7 +1765,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
 
 exports[`<ProductSlider /> should render the widget with data 1`] = `
 <div
-  className="css-1b16rjo theme__widgets__product-slider"
+  className="tss-kx1zsl-slider theme__widgets__product-slider"
 >
   <ProductListTypeProvider
     subType="widgets"
@@ -1776,7 +1774,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
     <Swiper
       classNames={
         {
-          "container": "css-1t3kzgn",
+          "container": "tss-16j18l2-sliderContainer",
         }
       }
       controls={false}
@@ -1792,7 +1790,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1834,7 +1832,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1876,7 +1874,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1918,7 +1916,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}
@@ -1960,7 +1958,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="css-1art29b"
+            className="tss-1bcrc3u-card"
           >
             <ProductCard
               hideName={false}

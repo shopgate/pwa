@@ -68,6 +68,7 @@ const TabBarFavoritesAction = (props) => {
       >
         <TabBarAction
           {...tabBarActionProps}
+          label={label}
           aria-label={ariaLabel}
           icon={(
             <Portal name={portals.TAB_BAR_FAVORITES_ICON}>

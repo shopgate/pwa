@@ -1,65 +1,58 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 
-/**
- * The button component.
- */
-class Button extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    onClick: PropTypes.func,
-    testId: PropTypes.string,
-  };
-
-  static defaultProps = {
-    className: '',
-    disabled: false,
-    onClick: null,
-    testId: 'Button',
-  };
-
-  /**
-   * Getter for the calculated button props.
-   * @returns {Object}
-   */
-  get buttonProps() {
-    const {
-      children, testId, className, disabled, onClick, ...props
-    } = this.props;
-
-    const classes = withStyles.getClasses(this.props);
-
-    const buttonProps = {
-      className: `${className} ${classes.root} common__button`,
-      disabled,
-      onClick: disabled ? null : onClick,
-      ...props,
-    };
-
-    return buttonProps;
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX.Element}
-   */
-  render() {
-    return (
-      // eslint-disable-next-line react/button-has-type
-      <button data-test-id={this.props.testId} {...this.buttonProps}>
-        {this.props.children}
-      </button>
-    );
-  }
-}
-
-export default withStyles(Button, {
+const useStyles = makeStyles()(() => ({
   root: {
     '&:focus': {
       outline: 0,
     },
   },
-});
+}));
+
+/**
+ * The button component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
+ */
+const Button = ({
+  children,
+  className,
+  disabled,
+  onClick,
+  testId,
+  ...rest
+}) => {
+  const { classes } = useStyles();
+
+  const buttonProps = {
+    className: `${className} ${classes.root} common__button`,
+    disabled,
+    onClick: disabled ? null : onClick,
+    ...rest,
+  };
+
+  return (
+    // eslint-disable-next-line react/button-has-type
+    <button data-test-id={testId} {...buttonProps}>
+      {children}
+    </button>
+  );
+};
+
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  testId: PropTypes.string,
+};
+
+Button.defaultProps = {
+  className: '',
+  disabled: false,
+  onClick: null,
+  testId: 'Button',
+};
+
+export default Button;

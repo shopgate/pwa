@@ -4,7 +4,7 @@ exports[`<ProductsWidget /> should render the grid only when products are receiv
 
 exports[`<ProductsWidget /> should render the products in the list view 1`] = `
 <div
-  className="css-13tch1f"
+  className="tss-18qprnl-listView"
 >
   <Headline
     text=""
@@ -20,11 +20,7 @@ exports[`<ProductsWidget /> should render the products in the list view 1`] = `
     }
     handleGetProducts={[Function]}
     infiniteLoad={false}
-    products={
-      [
-        {},
-      ]
-    }
+    products={[]}
     requestHash={null}
     scope="widgets"
     totalProductCount={null}

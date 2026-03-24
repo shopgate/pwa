@@ -4,7 +4,7 @@ exports[`<Header /> should render with correct title 1`] = `
 <div
   className=""
 >
-  <GridWithStyles
+  <Grid
     className="css-1hncgty"
     component="div"
     wrap={false}
@@ -23,15 +23,16 @@ exports[`<Header /> should render with correct title 1`] = `
         />
       </RippleWithStyles>
     </button>
-    <GridItemWithStyles
+    <GridItem
       className="css-1mjy0de"
       component="div"
       grow={1}
       role="heading"
+      shrink={1}
       tabIndex={0}
     >
       My Title
-    </GridItemWithStyles>
-  </GridWithStyles>
+    </GridItem>
+  </Grid>
 </div>
 `;

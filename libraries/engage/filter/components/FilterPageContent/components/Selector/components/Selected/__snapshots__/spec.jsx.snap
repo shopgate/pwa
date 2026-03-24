@@ -1,53 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Filter: <Selected /> should not render without selected 1`] = `
-<Selected
-  classes={
-    {
-      "comma": "tss-9tugnl-Selected-comma",
-      "elipsed": "tss-18z0c8i-Selected-elipsed",
-    }
-  }
-  selected={null}
-  values={
-    [
-      {
-        "id": "foo",
-        "label": "fooLabel",
-      },
-      {
-        "id": "bar",
-        "label": "barLabel",
-      },
-    ]
-  }
-/>
-`;
+exports[`Filter: <Selected /> should not render without selected 1`] = `""`;
 
 exports[`Filter: <Selected /> should render with selected 1`] = `
-<Selected
-  classes={
-    {
-      "comma": "tss-9tugnl-Selected-comma",
-      "elipsed": "tss-18z0c8i-Selected-elipsed",
-    }
-  }
-  selected={
-    [
-      "foo",
-    ]
-  }
-  values={
-    [
-      {
-        "id": "foo",
-        "label": "fooLabel",
-      },
-      {
-        "id": "bar",
-        "label": "barLabel",
-      },
-    ]
-  }
-/>
+<Fragment>
+  <span
+    className="tss-4wcraw-elipsed"
+  >
+    fooLabel
+  </span>
+</Fragment>
 `;

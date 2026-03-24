@@ -51,7 +51,7 @@ const useStyles = makeStyles()({
     textAlign: 'left',
     width: '100%',
     color: 'var(--color-text-high-emphasis)',
-    ':first-child': {
+    ':first-of-type': {
       marginTop: variables.gap.big / 2,
     },
     ':last-child': {

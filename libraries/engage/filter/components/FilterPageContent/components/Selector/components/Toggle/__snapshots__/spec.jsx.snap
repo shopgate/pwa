@@ -2,15 +2,15 @@
 
 exports[`<Toggle /> should render with selected 1`] = `
 <div
-  class="tss-ht45pd-Toggle-toggle"
+  class="tss-1a4ev5x-toggle"
 >
   <span
-    class="tss-1vnrng6-Toggle-label tss-1mmtf61-Toggle-closed"
+    class="tss-1ynmaeh-label tss-1j4fmvj-closed"
   >
     somelabel
   </span>
   <span
-    class="tss-19z9tok-Toggle-selected"
+    class="tss-guvefl-selected"
   >
     Some, Thing, Selected
   </span>
@@ -19,15 +19,15 @@ exports[`<Toggle /> should render with selected 1`] = `
 
 exports[`<Toggle /> should render with selected as open 1`] = `
 <div
-  class="tss-ht45pd-Toggle-toggle"
+  class="tss-1a4ev5x-toggle"
 >
   <span
-    class="tss-1vnrng6-Toggle-label tss-opof2z-Toggle-open"
+    class="tss-1ynmaeh-label tss-1tsp0up-open"
   >
     somelabel
   </span>
   <span
-    class="tss-19z9tok-Toggle-selected"
+    class="tss-guvefl-selected"
   >
     Some, Thing, Selected
   </span>
@@ -36,10 +36,10 @@ exports[`<Toggle /> should render with selected as open 1`] = `
 
 exports[`<Toggle /> should render without selected 1`] = `
 <div
-  class="tss-ht45pd-Toggle-toggle"
+  class="tss-1a4ev5x-toggle"
 >
   <span
-    class="tss-1vnrng6-Toggle-label tss-1mmtf61-Toggle-closed"
+    class="tss-1ynmaeh-label tss-1j4fmvj-closed"
   >
     somelabel
   </span>
@@ -48,10 +48,10 @@ exports[`<Toggle /> should render without selected 1`] = `
 
 exports[`<Toggle /> should render without selected as open 1`] = `
 <div
-  class="tss-ht45pd-Toggle-toggle"
+  class="tss-1a4ev5x-toggle"
 >
   <span
-    class="tss-1vnrng6-Toggle-label tss-opof2z-Toggle-open"
+    class="tss-1ynmaeh-label tss-1tsp0up-open"
   >
     somelabel
   </span>

@@ -1,88 +1,79 @@
-import React, { PureComponent } from 'react';
+import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(() => ({
+  toggle: {
+    display: 'flex',
+    flexFlow: 'row no-wrap',
+    alignContent: 'stretch',
+    alignItems: 'flex-start',
+  },
+  label: {
+    whiteSpace: 'no-wrap',
+    flexShrink: 0,
+    flexGrow: 1,
+    textAlign: 'left',
+    maxWidth: '50%',
+    minWidth: '35%',
+    paddingRight: '16px',
+  },
+  selected: {
+    display: 'flex',
+    flexFlow: 'row wrap',
+    flexGrow: 1,
+    justifyContent: 'flex-end',
+    minWidth: '50%',
+    maxWidth: '65%',
+  },
+  closed: {
+    fontWeight: 'normal',
+  },
+  open: {
+    fontWeight: 'bold',
+  },
+}));
 
 /**
  * The toggle component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Toggle extends PureComponent {
-  static propTypes = {
-    label: PropTypes.node.isRequired,
-    open: PropTypes.bool,
-    selected: PropTypes.node,
-  };
+const Toggle = ({
+  label,
+  open,
+  selected,
+}) => {
+  const { classes } = useStyles();
 
-  static defaultProps = {
-    open: false,
-    selected: null,
-  };
+  const labelClassName = useMemo(() => classNames({
+    [classes.label]: true,
+    [classes.open]: open,
+    [classes.closed]: !open,
+  }), [classes.closed, classes.label, classes.open, open]);
 
-  /**
-   * @returns {string}
-   */
-  get className() {
-    const classes = withStyles.getClasses(this.props);
-    const { open } = this.props;
+  return (
+    <div className={classes.toggle}>
+      <span className={labelClassName}>
+        {label}
+      </span>
+      {selected && (
+        <span className={classes.selected}>{selected}</span>
+      )}
+    </div>
+  );
+};
 
-    return classNames({
-      [classes.label]: true,
-      [classes.open]: open,
-      [classes.closed]: !open,
-    });
-  }
+Toggle.propTypes = {
+  label: PropTypes.node.isRequired,
+  open: PropTypes.bool,
+  selected: PropTypes.node,
+};
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const classes = withStyles.getClasses(this.props);
-    const { label, selected } = this.props;
+Toggle.defaultProps = {
+  open: false,
+  selected: null,
+};
 
-    return (
-      <div className={classes.toggle}>
-        <span className={this.className}>
-          {label}
-        </span>
-        {selected && (
-          <span className={classes.selected}>{selected}</span>
-        )}
-      </div>
-    );
-  }
-}
-
-export default withStyles(
-  Toggle,
-  () => ({
-    toggle: {
-      display: 'flex',
-      flexFlow: 'row no-wrap',
-      alignContent: 'stretch',
-      alignItems: 'flex-start',
-    },
-    label: {
-      whiteSpace: 'no-wrap',
-      flexShrink: 0,
-      flexGrow: 1,
-      textAlign: 'left',
-      maxWidth: '50%',
-      minWidth: '35%',
-      paddingRight: '16px',
-    },
-    selected: {
-      display: 'flex',
-      flexFlow: 'row wrap',
-      flexGrow: 1,
-      justifyContent: 'flex-end',
-      minWidth: '50%',
-      maxWidth: '65%',
-    },
-    closed: {
-      fontWeight: 'normal',
-    },
-    open: {
-      fontWeight: 'bold',
-    },
-  })
-);
+export default memo(Toggle);

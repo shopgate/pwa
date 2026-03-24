@@ -53,6 +53,7 @@ const TabBarCartAction = (props) => {
       >
         <TabBarAction
           {...tabBarActionProps}
+          label={label}
           aria-label={ariaLabel}
           icon={(
             <Portal name={portals.TAB_BAR_CART_ICON}>

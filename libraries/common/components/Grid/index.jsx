@@ -1,62 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { objectWithoutProps } from '../../helpers/data';
 import GridItem from './components/Item';
 
-/**
- * The grid component.
- */
-class Grid extends Component {
-  static Item = GridItem;
-
-  static propTypes = {
-    className: PropTypes.string,
-    component: PropTypes.string,
-    wrap: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    className: '',
-    component: 'ul',
-    wrap: false,
-  };
-
-  /**
-   * Composes the props.
-   * @returns {Object} The composed props.
-   */
-  getProps() {
-    const classes = withStyles.getClasses(this.props);
-    let className = `${this.props.className} ${classes.root} common__grid`;
-
-    if (this.props.wrap) {
-      className += ` ${classes.wrap}`;
-    } else {
-      className += ` ${classes.noWrap}`;
-    }
-
-    const props = {
-      ...this.props,
-      className,
-    };
-
-    return objectWithoutProps(props, [
-      'wrap',
-      'component',
-    ]);
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    return React.createElement(this.props.component, this.getProps());
-  }
-}
-
-const StyledGrid = withStyles(Grid, () => ({
+const useStyles = makeStyles()(() => ({
   root: {
     display: 'flex',
     minWidth: '100%',
@@ -69,6 +17,49 @@ const StyledGrid = withStyles(Grid, () => ({
   },
 }));
 
-StyledGrid.Item = GridItem;
+/**
+ * The grid component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
+ */
+const Grid = ({
+  className,
+  component,
+  wrap,
+  ...rest
+}) => {
+  const { classes } = useStyles();
+  let composedClassName = `${className} ${classes.root} common__grid`;
 
-export default StyledGrid;
+  if (wrap) {
+    composedClassName += ` ${classes.wrap}`;
+  } else {
+    composedClassName += ` ${classes.noWrap}`;
+  }
+
+  const props = objectWithoutProps(
+    {
+      ...rest,
+      className: composedClassName,
+    },
+    ['wrap', 'component']
+  );
+
+  return React.createElement(component, props);
+};
+
+Grid.Item = GridItem;
+
+Grid.propTypes = {
+  className: PropTypes.string,
+  component: PropTypes.string,
+  wrap: PropTypes.bool,
+};
+
+Grid.defaultProps = {
+  className: '',
+  component: 'ul',
+  wrap: false,
+};
+
+export default Grid;

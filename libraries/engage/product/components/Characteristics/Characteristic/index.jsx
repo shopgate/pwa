@@ -1,138 +1,120 @@
-import React, { PureComponent } from 'react';
+import React, {
+  useState, useEffect, useCallback, memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 import { ResponsiveContainer, ArrowDropIcon } from '@shopgate/engage/components';
-import { withStyles } from '@shopgate/engage/styles';
+import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import Sheet from './components/Sheet';
 import transition from '../transition';
 
+const useStyles = makeStyles()(() => ({
+  button: {
+    background: 'var(--color-background-accent)',
+    color: 'var(--color-text-high-emphasis)',
+    position: 'relative',
+    cursor: 'pointer',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    minHeight: 56,
+    outline: 0,
+    padding: '12px 16px',
+    marginBottom: 8,
+    transition: 'background 250ms ease-in, color 250ms ease-in',
+  },
+  buttonDisabled: {
+    color: `${themeColors.shade4} !important`,
+  },
+  label: {
+    fontSize: 12,
+    marginTop: -2,
+    marginBottom: 4,
+  },
+  selection: {
+    fontWeight: 500,
+    lineHeight: 1.125,
+  },
+  arrow: {
+    position: 'absolute',
+    right: 32,
+    fontSize: 20,
+  },
+}));
+
 /**
  * A single characteristic.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Characteristic extends PureComponent {
-  static propTypes = {
-    charRef: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.shape(),
-    ]).isRequired,
-    disabled: PropTypes.bool.isRequired,
-    highlight: PropTypes.bool.isRequired,
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    select: PropTypes.func.isRequired,
-    values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    classes: PropTypes.shape({
-      arrow: PropTypes.string,
-      button: PropTypes.string,
-      buttonDisabled: PropTypes.string,
-      label: PropTypes.string,
-      selection: PropTypes.string,
-    }),
-    selected: PropTypes.string,
-  };
+const Characteristic = ({
+  charRef,
+  disabled,
+  highlight: highlightProp,
+  id,
+  label: displayLabel,
+  select,
+  values,
+  selected,
+}) => {
+  const { classes } = useStyles();
+  const [highlight, setHighlight] = useState(false);
+  const [sheet, setSheet] = useState(false);
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
+  useEffect(() => {
+    setHighlight(highlightProp);
+  }, [highlightProp]);
 
-  static defaultProps = {
-    classes: {
-      arrow: '',
-      button: '',
-      buttonDisabled: '',
-      label: '',
-      selection: '',
-    },
-    selected: null,
-  };
-
-  /**
-   * @param {Object} props The component props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      highlight: false,
-      sheet: false,
-    };
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({ highlight: nextProps.highlight });
-  }
-
-  /**
-   * @param {string} defaultLabel The default button label.
-   * @return {string}
-   */
-  getButtonLabel = (defaultLabel) => {
-    if (!this.props.selected) {
+  const getButtonLabel = useCallback((defaultLabel) => {
+    if (!selected) {
       return defaultLabel;
     }
 
-    const value = this.props.values.find(val => (val.id === this.props.selected));
+    const value = values.find(val => (val.id === selected));
 
     return value.label;
-  };
+  }, [selected, values]);
 
-  /**
-   * @param {Object} event The event object.
-   */
-  handleButtonClick = (event) => {
+  const handleButtonClick = useCallback((event) => {
     event.preventDefault();
 
-    if (this.props.disabled) {
+    if (disabled) {
       return;
     }
 
-    this.setState({ sheet: true });
-  };
+    setSheet(true);
+  }, [disabled]);
 
-  /**
-   * @param {string} valueId The ID of the selected value.
-   */
-  handleItemSelection = (valueId) => {
-    this.props.select({
-      id: this.props.id,
+  const handleItemSelection = useCallback((valueId) => {
+    select({
+      id,
       value: valueId,
     });
 
-    this.closeSheet();
-  };
+    setSheet(false);
+  }, [id, select]);
 
-  closeSheet = () => {
-    this.setState({ sheet: false });
-  };
+  const closeSheet = useCallback(() => {
+    setSheet(false);
+  }, []);
 
-  sheetDidClose = () => {
-    if (this.props.charRef && this.props.charRef.current) {
-      // Focus the element that triggered the CharacteristicsSheet after it closes
-      this.props.charRef.current.focus();
+  const sheetDidClose = useCallback(() => {
+    if (charRef && charRef.current) {
+      charRef.current.focus();
     }
-  };
+  }, [charRef]);
 
-  removeHighlight = () => {
-    this.setState({ highlight: false });
-  };
+  const removeHighlight = useCallback(() => {
+    setHighlight(false);
+  }, []);
 
-  /**
-   * Renders the transition contents.
-   * @param {string} state The current transition state.
-   * @returns {JSX}
-   */
-  transitionRenderer = (state) => {
-    const { __ } = this.context.i18n();
-    const {
-      disabled, selected, charRef, label,
-    } = this.props;
-    const classes = withStyles.getClasses(this.props);
-    const translatedLabel = __('product.pick_an_attribute', [label]);
-    const buttonLabel = this.getButtonLabel(translatedLabel);
+  const translatedLabel = i18n.text('product.pick_an_attribute', [displayLabel]);
+
+  const transitionRenderer = useCallback((state) => {
+    const buttonLabel = getButtonLabel(translatedLabel);
     const buttonClasses = classNames(
       classes.button,
       { [classes.buttonDisabled]: disabled },
@@ -146,13 +128,13 @@ class Characteristic extends PureComponent {
         aria-haspopup={!disabled}
         tabIndex={0}
         className={buttonClasses}
-        onClick={this.handleButtonClick}
+        onClick={handleButtonClick}
         onKeyDown={() => { }}
         ref={charRef}
         style={transition[state]}
-        data-test-id={label}
+        data-test-id={displayLabel}
       >
-        {selected && <div className={`${classes.label} theme__product__characteristic__label`}>{label}</div>}
+        {selected && <div className={`${classes.label} theme__product__characteristic__label`}>{displayLabel}</div>}
         <div
           className={`${classes.selection} theme__product__characteristic__selection`}
           {...selected && { 'data-selected': true }}
@@ -166,73 +148,57 @@ class Characteristic extends PureComponent {
         </ResponsiveContainer>
       </div>
     );
-  };
+  }, [
+    charRef,
+    classes.arrow,
+    classes.button,
+    classes.buttonDisabled,
+    classes.label,
+    classes.selection,
+    disabled,
+    displayLabel,
+    getButtonLabel,
+    handleButtonClick,
+    selected,
+    translatedLabel,
+  ]);
 
-  /**
-   * @return {JSX}
-   */
-  render() {
-    const { __ } = this.context.i18n();
-    const {
-      id, selected, values, charRef,
-    } = this.props;
-    const displayLabel = this.props.label;
-    const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
+  return (
+    <>
+      <Transition in={highlight} timeout={500} onEntered={removeHighlight}>
+        {transitionRenderer}
+      </Transition>
+      <Sheet
+        charId={id}
+        contextRef={charRef}
+        items={values}
+        label={translatedLabel}
+        onClose={closeSheet}
+        onDidClose={sheetDidClose}
+        onSelect={handleItemSelection}
+        open={sheet}
+        selectedValue={selected}
+      />
+    </>
+  );
+};
 
-    return (
-      <>
-        <Transition in={this.state.highlight} timeout={500} onEntered={this.removeHighlight}>
-          {this.transitionRenderer}
-        </Transition>
-        <Sheet
-          charId={id}
-          contextRef={charRef}
-          items={values}
-          label={translatedLabel}
-          onClose={this.closeSheet}
-          onDidClose={this.sheetDidClose}
-          onSelect={this.handleItemSelection}
-          open={this.state.sheet}
-          selectedValue={selected}
-        />
-      </>
-    );
-  }
-}
+Characteristic.propTypes = {
+  charRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape(),
+  ]).isRequired,
+  disabled: PropTypes.bool.isRequired,
+  highlight: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  select: PropTypes.func.isRequired,
+  values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  selected: PropTypes.string,
+};
 
-export default withStyles(
-  Characteristic,
-  () => ({
-    button: {
-      background: 'var(--color-background-accent)',
-      color: 'var(--color-text-high-emphasis)',
-      position: 'relative',
-      cursor: 'pointer',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      minHeight: 56,
-      outline: 0,
-      padding: '12px 16px',
-      marginBottom: 8,
-      transition: 'background 250ms ease-in, color 250ms ease-in',
-    },
-    buttonDisabled: {
-      color: `${themeColors.shade4} !important`,
-    },
-    label: {
-      fontSize: 12,
-      marginTop: -2,
-      marginBottom: 4,
-    },
-    selection: {
-      fontWeight: 500,
-      lineHeight: 1.125,
-    },
-    arrow: {
-      position: 'absolute',
-      right: 32,
-      fontSize: 20,
-    },
-  })
-);
+Characteristic.defaultProps = {
+  selected: null,
+};
+
+export default memo(Characteristic);

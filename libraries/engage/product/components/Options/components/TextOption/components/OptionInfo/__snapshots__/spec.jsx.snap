@@ -1,22 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<OptionInfo /> should render price element 1`] = `
-<Grid
-  className="tss-16b3gbi-info"
-  classes={
-    {
-      "noWrap": "tss-18pnfnt-Grid-noWrap",
-      "root": "tss-ttd1ja-Grid-root",
-      "wrap": "tss-xzd4nf-Grid-wrap",
-    }
-  }
-  component="ul"
-  wrap={false}
+<ul
+  className="tss-16b3gbi-info tss-pauvta-root common__grid tss-i2x46h-noWrap"
 >
-  <GridItemWithStyles
+  <GridItem
     aria-hidden={true}
     className="tss-wzlmdo-price"
+    component="li"
     grow={1}
+    shrink={1}
   >
     Label: 
     <FormatPrice
@@ -25,7 +18,7 @@ exports[`<OptionInfo /> should render price element 1`] = `
       fractions={true}
       price={10}
     />
-  </GridItemWithStyles>
+  </GridItem>
   <div
     hidden={true}
     id="some-id"
@@ -33,25 +26,19 @@ exports[`<OptionInfo /> should render price element 1`] = `
     price.label
     Some Text
   </div>
-</Grid>
+</ul>
 `;
 
 exports[`<OptionInfo /> should render required element 1`] = `
-<Grid
-  className="tss-16b3gbi-info"
-  classes={
-    {
-      "noWrap": "tss-18pnfnt-Grid-noWrap",
-      "root": "tss-ttd1ja-Grid-root",
-      "wrap": "tss-xzd4nf-Grid-wrap",
-    }
-  }
-  component="ul"
-  wrap={false}
+<ul
+  className="tss-16b3gbi-info tss-pauvta-root common__grid tss-i2x46h-noWrap"
 >
-  <GridItemWithStyles
+  <GridItem
     aria-hidden={true}
     className="tss-10mixir-required"
+    component="li"
+    grow={0}
+    shrink={1}
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
@@ -61,7 +48,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
       string="common.required"
       transform={null}
     />
-  </GridItemWithStyles>
+  </GridItem>
   <div
     hidden={true}
     id="some-id"
@@ -69,5 +56,5 @@ exports[`<OptionInfo /> should render required element 1`] = `
     common.required
     Some Text
   </div>
-</Grid>
+</ul>
 `;

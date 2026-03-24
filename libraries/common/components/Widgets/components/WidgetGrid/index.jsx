@@ -1,71 +1,11 @@
-import React, { Component } from 'react';
-import isEqual from 'lodash/isEqual';
+import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import sortBy from 'lodash/sortBy';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import Widget from '../Widget';
 import shouldShowWidget from '../../helpers/shouldShowWidget';
 
-/**
- * The WidgetGrid component.
- */
-class WidgetGrid extends Component {
-  static propTypes = {
-    components: PropTypes.shape().isRequired,
-    config: PropTypes.arrayOf(PropTypes.shape()),
-  };
-
-  static defaultProps = {
-    config: [],
-  };
-
-  /**
-   * @param {Object} nextProps The next component props.
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    if (!isEqual(this.props.components, nextProps.components)) return true;
-    if (!isEqual(this.props.config, nextProps.config)) return true;
-    return false;
-  }
-
-  /**
-   * Render the component.
-   * @return {JSX}
-   */
-  render() {
-    const { components, config } = this.props;
-    const classes = withStyles.getClasses(this.props);
-
-    if (!config.length) {
-      return null;
-    }
-
-    // TODO: This should not happen within every render call.
-    // Sort the widgets by row. This has to happen to take care of the z-index flow.
-    const widgets = sortBy(config, ['row']).filter(w => shouldShowWidget(w.settings));
-
-    return (
-      <div className={`${classes.root} common__widgets__widget-grid`}>
-        {Object.keys(widgets).map((key) => {
-          const widget = widgets[key];
-          const widgetKey = `w${key}`;
-          // Map to the correct widget component using the `type` key inside the widget.
-          const WidgetComponent = components[widget.type];
-          return (
-            <Widget
-              config={widget}
-              component={WidgetComponent}
-              key={widgetKey}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
-
-export default withStyles(WidgetGrid, {
+const useStyles = makeStyles()(() => ({
   root: {
     display: 'grid',
     gridTemplateColumns: 'repeat(12, 1fr)',
@@ -73,4 +13,49 @@ export default withStyles(WidgetGrid, {
     gridAutoFlow: 'row dense',
     position: 'relative',
   },
-});
+}));
+
+/**
+ * The WidgetGrid component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element|null}
+ */
+const WidgetGrid = ({ components, config }) => {
+  const { classes } = useStyles();
+
+  const widgets = useMemo(() => (
+    sortBy(config, ['row']).filter(w => shouldShowWidget(w.settings))
+  ), [config]);
+
+  if (!config.length) {
+    return null;
+  }
+
+  return (
+    <div className={`${classes.root} common__widgets__widget-grid`}>
+      {Object.keys(widgets).map((key) => {
+        const widget = widgets[key];
+        const widgetKey = `w${key}`;
+        const WidgetComponent = components[widget.type];
+        return (
+          <Widget
+            config={widget}
+            component={WidgetComponent}
+            key={widgetKey}
+          />
+        );
+      })}
+    </div>
+  );
+};
+
+WidgetGrid.propTypes = {
+  components: PropTypes.shape().isRequired,
+  config: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+WidgetGrid.defaultProps = {
+  config: [],
+};
+
+export default memo(WidgetGrid);

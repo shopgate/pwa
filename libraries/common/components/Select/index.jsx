@@ -1,218 +1,13 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useEffect, useRef, useCallback, memo,
+} from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import SelectItem from './components/Item';
 
 const DEFAULT_PLACEHOLDER_TEXT = 'Select ...';
 
-/**
- * Finds an item in a list of items by value.
- * @param {Array} items - The list of items.
- * @param {*} value - The value to look for.
- * @returns {*} The found item or undefined.
- */
-const findItemByValue = (items, value) => (
-  items.filter(item => item.value === value).shift()
-);
-
-/**
- * Converts an item of any type (e.g. string or number)
- * to an object representation containing value and label properties.
- * @param {*} item - An item of any type.
- * @returns {Object} An object representation of the item.
- */
-const normalizeItem = item => ({
-  value: item.value || item,
-  label: item.label || item.value || item,
-});
-
-/**
- * The select component.
- * @param {Object} props - The component props.
- * @param {React.Children} props.children - Some content to display inside.
- */
-class Select extends Component {
-  /**
-   * The component prop types.
-   * @type {Object}
-   */
-  static propTypes = {
-    className: PropTypes.string,
-    items: PropTypes.arrayOf((
-      PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-        PropTypes.object,
-      ])
-    )),
-    onChange: PropTypes.func,
-    placeholder: PropTypes.string,
-    value: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.number,
-    ]),
-  };
-
-  /**
-   * The component default props.
-   * @type {Object}
-   */
-  static defaultProps = {
-    className: '',
-    items: [],
-    onChange: () => {},
-    placeholder: DEFAULT_PLACEHOLDER_TEXT,
-    value: null,
-  };
-
-  /**
-   * The constructor.
-   * @param {Object} props - The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selected: null,
-      isOpen: false,
-    };
-    this.domElement = null;
-
-    if (props.value) {
-      this.state.selected = normalizeItem((
-        findItemByValue(props.items, props.value)
-      ));
-    }
-  }
-
-  /**
-   * Adds event listener when the component is mounted.
-   */
-  componentDidMount() {
-    document.addEventListener('touchstart', this.handleInteractionOutside);
-  }
-
-  /**
-   * Updates the selected item when the value prop changes.
-   * @param {Object} nextProps - The next props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (
-      !this.state.selected ||
-      nextProps.value !== this.state.selected.value
-    ) {
-      this.state.selected = normalizeItem((
-        findItemByValue(nextProps.items, nextProps.value)
-      ));
-    }
-  }
-
-  /**
-   * Removes event listener when the component will unmount.
-   */
-  componentWillUnmount() {
-    document.removeEventListener('touchstart', this.handleInteractionOutside);
-  }
-
-  /**
-   * Triggers the onChange callback if the selected value has changed.
-   * @param {Object} nextState - The next state.
-   */
-  triggerChangeCallback = (nextState) => {
-    if (
-      this.state.selected &&
-      this.state.selected.value === nextState.selected.value
-    ) {
-      return;
-    }
-
-    if (this.props.onChange instanceof Function) {
-      this.props.onChange(nextState.selected.value);
-    }
-  };
-
-  /**
-   * Handles any interaction the user does outside of the component.
-   * In this case the select gets closed.
-   * @param {Event} event - The event of the user interaction (e.g. TouchEvent).
-   */
-  handleInteractionOutside = (event) => {
-    if (!this.domElement.contains(event.target)) {
-      this.setState({ isOpen: false });
-    }
-  };
-
-  /**
-   * Gets called when a new item is selected
-   * @param {*} value - The selected value.
-   * @param {string} label - The selected label.
-   */
-  handleItemSelect = (value, label) => {
-    const stateUpdate = {
-      selected: {
-        label,
-        value,
-      },
-      isOpen: false,
-    };
-    this.triggerChangeCallback(stateUpdate);
-    this.setState(stateUpdate);
-  };
-
-  /**
-   * Toggles the open state of the component.
-   */
-  toggleOpenState = () => {
-    this.setState(({ isOpen }) => ({ isOpen: !isOpen }));
-  };
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const classes = withStyles.getClasses(this.props);
-    const hasSelection = this.state.selected && this.state.selected.value !== undefined;
-
-    const selectedLabel = (hasSelection) ?
-      this.state.selected.label : this.props.placeholder;
-
-    const items = (this.state.isOpen) ? (
-      <div className={classes.items}>
-        {this.props.items.map((item) => {
-          const normalizedItem = normalizeItem(item);
-          const selected = hasSelection && this.state.selected.value === normalizedItem.value;
-
-          return (
-            <SelectItem
-              key={normalizedItem.value}
-              value={normalizedItem.value}
-              label={normalizedItem.label}
-              selected={selected}
-              onSelect={this.handleItemSelect}
-            />
-          );
-        })}
-      </div>
-    ) : null;
-
-    return (
-      <div className={`${classes.container} ${this.props.className} common_select`} ref={(ref) => { this.domElement = ref; }}>
-        <div onTouchStart={this.toggleOpenState}>
-          <span>
-            {selectedLabel}
-          </span>
-          <span className={classes.selectHandle}>
-            &#9662;
-          </span>
-        </div>
-        {items}
-      </div>
-    );
-  }
-}
-
-export default withStyles(Select, () => ({
+const useStyles = makeStyles()(() => ({
   container: {
     margin: 0,
     padding: 0,
@@ -225,3 +20,163 @@ export default withStyles(Select, () => ({
     width: '100%',
   },
 }));
+
+/**
+ * Finds an item in a list of items by value.
+ * @param {Array} items The list of items.
+ * @param {*} value The value to look for.
+ * @returns {*} The found item or undefined.
+ */
+const findItemByValue = (items, value) => (
+  items.filter(item => item.value === value).shift()
+);
+
+/**
+ * Converts an item of any type (e.g. string or number)
+ * to an object representation containing value and label properties.
+ * @param {*} item An item of any type.
+ * @returns {Object} An object representation of the item.
+ */
+const normalizeItem = item => ({
+  value: item.value || item,
+  label: item.label || item.value || item,
+});
+
+/**
+ * The select component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
+ */
+const Select = ({
+  className,
+  items,
+  onChange,
+  placeholder,
+  value,
+}) => {
+  const { classes } = useStyles();
+  const domElement = useRef(null);
+
+  const [selected, setSelected] = useState(() => {
+    if (!value) {
+      return null;
+    }
+    return normalizeItem(findItemByValue(items, value));
+  });
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (!value) {
+      setSelected(null);
+      return;
+    }
+    const next = normalizeItem(findItemByValue(items, value));
+    setSelected((prev) => {
+      if (!prev || prev.value !== next?.value) {
+        return next;
+      }
+      return prev;
+    });
+  }, [value, items]);
+
+  useEffect(() => {
+    // eslint-disable-next-line require-jsdoc
+    const handleInteractionOutside = (event) => {
+      if (domElement.current && !domElement.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('touchstart', handleInteractionOutside);
+    return () => document.removeEventListener('touchstart', handleInteractionOutside);
+  }, []);
+
+  const triggerChangeCallback = useCallback((nextSelected) => {
+    if (selected && selected.value === nextSelected.value) {
+      return;
+    }
+    if (onChange instanceof Function) {
+      onChange(nextSelected.value);
+    }
+  }, [onChange, selected]);
+
+  const handleItemSelect = useCallback((itemValue, label) => {
+    const stateUpdate = {
+      label,
+      value: itemValue,
+    };
+    triggerChangeCallback(stateUpdate);
+    setSelected(stateUpdate);
+    setIsOpen(false);
+  }, [triggerChangeCallback]);
+
+  const toggleOpenState = useCallback(() => {
+    setIsOpen(open => !open);
+  }, []);
+
+  const hasSelection = selected && selected.value !== undefined;
+
+  const selectedLabel = (hasSelection)
+    ? selected.label
+    : placeholder;
+
+  const itemsMarkup = (isOpen) ? (
+    <div className={classes.items}>
+      {items.map((item) => {
+        const normalizedItem = normalizeItem(item);
+        const itemSelected = hasSelection && selected.value === normalizedItem.value;
+
+        return (
+          <SelectItem
+            key={normalizedItem.value}
+            value={normalizedItem.value}
+            label={normalizedItem.label}
+            selected={itemSelected}
+            onSelect={handleItemSelect}
+          />
+        );
+      })}
+    </div>
+  ) : null;
+
+  return (
+    <div className={`${classes.container} ${className} common_select`} ref={domElement}>
+      <div onTouchStart={toggleOpenState} role="presentation">
+        <span>
+          {selectedLabel}
+        </span>
+        <span className={classes.selectHandle}>
+          &#9662;
+        </span>
+      </div>
+      {itemsMarkup}
+    </div>
+  );
+};
+
+Select.propTypes = {
+  className: PropTypes.string,
+  items: PropTypes.arrayOf((
+    PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+      PropTypes.object,
+    ])
+  )),
+  onChange: PropTypes.func,
+  placeholder: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
+};
+
+Select.defaultProps = {
+  className: '',
+  items: [],
+  onChange: () => {},
+  placeholder: DEFAULT_PLACEHOLDER_TEXT,
+  value: null,
+};
+
+export default memo(Select);

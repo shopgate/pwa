@@ -49,8 +49,8 @@ exports[`TabBar favorites action should render exact number 1`] = `
     }
   }
 >
-  <WithWidgetSettings(Connect(Component))>
-    <Connect(Component)
+  <WithWidgetSettings(Connect(FavoritesIconBadge))>
+    <Connect(FavoritesIconBadge)
       widgetSettings={{}}
     >
       <FavoritesIconBadge
@@ -65,7 +65,7 @@ exports[`TabBar favorites action should render exact number 1`] = `
           1
         </div>
       </FavoritesIconBadge>
-    </Connect(Component)>
-  </WithWidgetSettings(Connect(Component))>
+    </Connect(FavoritesIconBadge)>
+  </WithWidgetSettings(Connect(FavoritesIconBadge))>
 </Provider>
 `;

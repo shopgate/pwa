@@ -1,99 +1,82 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import Transition from '../Transition';
 import transitions from './transitions';
 
-/**
- * This component slides it's child content up or down based on it's isOpen property.
- * @returns {JSX}
- */
-class Dropdown extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    duration: PropTypes.number,
-    easing: PropTypes.string,
-    isOpen: PropTypes.bool,
-    onComplete: PropTypes.func,
-    onStart: PropTypes.func,
-  };
-
-  static defaultProps = {
-    className: '',
-    children: null,
-    duration: 150,
-    easing: null,
-    isOpen: false,
-    onComplete: () => { },
-    onStart: () => { },
-  };
-
-  /**
-   * Constructor
-   * @param {Object} props Props of the Component
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      initialRender: true,
-    };
-  }
-
-  /**
-   * Update the initialRender state if the isOpen state changes from false to true
-   * @param {Object} nextProps The new props
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.isOpen === false && nextProps.isOpen === true) {
-      this.setState({
-        initialRender: false,
-      });
-    }
-  }
-
-  /**
-   * Only update the component if isOpen changed
-   * @param {Object} nextProps The new props
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return this.props.isOpen !== nextProps.isOpen;
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const classes = withStyles.getClasses(this.props);
-    let transitionProps;
-
-    if (this.props.isOpen) {
-      transitionProps = this.state.initialRender ? transitions.initialOpen : transitions.open;
-    } else {
-      transitionProps = this.state.initialRender ? transitions.initialClose : transitions.close;
-    }
-
-    return (
-      <Transition
-        {...transitionProps}
-        onComplete={this.props.onComplete}
-        onStart={this.props.onStart}
-        duration={this.props.duration}
-        easing={this.props.easing}
-      >
-        <div className={`${classes.container} ${this.props.className} common__dropdown`} aria-hidden={!this.props.isOpen}>
-          {this.props.children}
-        </div>
-      </Transition>
-    );
-  }
-}
-
-export default withStyles(Dropdown, () => ({
+const useStyles = makeStyles()(() => ({
   container: {
     overflow: 'hidden',
   },
 }));
+
+/**
+ * This component slides it's child content up or down based on it's isOpen property.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
+ */
+const Dropdown = ({
+  children,
+  className,
+  duration,
+  easing,
+  isOpen,
+  onComplete,
+  onStart,
+}) => {
+  const { classes } = useStyles();
+  const [initialRender, setInitialRender] = useState(true);
+
+  useEffect(() => {
+    if (isOpen === true) {
+      setInitialRender(false);
+    }
+  }, [isOpen]);
+
+  let transitionProps;
+  if (isOpen && initialRender) {
+    transitionProps = transitions.initialOpen;
+  } else if (isOpen) {
+    transitionProps = transitions.open;
+  } else if (initialRender) {
+    transitionProps = transitions.initialClose;
+  } else {
+    transitionProps = transitions.close;
+  }
+
+  return (
+    <Transition
+      {...transitionProps}
+      onComplete={onComplete}
+      onStart={onStart}
+      duration={duration}
+      easing={easing}
+    >
+      <div className={`${classes.container} ${className} common__dropdown`} aria-hidden={!isOpen}>
+        {children}
+      </div>
+    </Transition>
+  );
+};
+
+Dropdown.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  duration: PropTypes.number,
+  easing: PropTypes.string,
+  isOpen: PropTypes.bool,
+  onComplete: PropTypes.func,
+  onStart: PropTypes.func,
+};
+
+Dropdown.defaultProps = {
+  className: '',
+  children: null,
+  duration: 150,
+  easing: null,
+  isOpen: false,
+  onComplete: () => {},
+  onStart: () => {},
+};
+
+export default memo(Dropdown, (prev, next) => prev.isOpen === next.isOpen);

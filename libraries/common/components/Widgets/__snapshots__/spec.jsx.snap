@@ -151,7 +151,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
       <div
         className="common__widgets"
       >
-        <WidgetGridWithStyles
+        <WidgetGrid
           components={
             {
               "@shopgate/commerce-widgets/image": [Function],
@@ -177,21 +177,12 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
           }
           key="w0"
         >
-          <WidgetGrid
-            className="tss-106do1t-WidgetGrid-root"
-            classes={
-              {
-                "root": "tss-106do1t-WidgetGrid-root",
-              }
-            }
-            components={
-              {
-                "@shopgate/commerce-widgets/image": [Function],
-                "@shopgate/commerce-widgets/widget-grid": [Function],
-              }
-            }
-            config={
-              [
+          <div
+            className="tss-nupkh5-root common__widgets__widget-grid"
+          >
+            <Widget
+              component={[Function]}
+              config={
                 {
                   "col": 0,
                   "height": 5,
@@ -204,83 +195,50 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
                   },
                   "type": "@shopgate/commerce-widgets/image",
                   "width": 12,
-                },
-              ]
-            }
-          >
-            <div
-              className="tss-106do1t-WidgetGrid-root common__widgets__widget-grid"
-            >
-              <Widget
-                component={[Function]}
-                config={
-                  {
-                    "col": 0,
-                    "height": 5,
-                    "row": 0,
-                    "settings": {
-                      "alt": "",
-                      "id": "84961",
-                      "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
-                      "link": "/category/",
-                    },
-                    "type": "@shopgate/commerce-widgets/image",
-                    "width": 12,
-                  }
                 }
-                key="w0"
+              }
+              key="w0"
+            >
+              <GridItem
+                className="common__widgets__widget css-14cdwhd"
+                component="div"
+                grow={0}
+                shrink={1}
               >
-                <GridItemWithStyles
-                  className="common__widgets__widget css-14cdwhd"
-                  component="div"
+                <div
+                  className="common__widgets__widget css-14cdwhd tss-5qovnk-root"
                 >
-                  <GridItem
-                    className="tss-sd75mx-GridItem-root common__widgets__widget css-14cdwhd"
-                    classes={
-                      {
-                        "root": "tss-sd75mx-GridItem-root",
-                      }
-                    }
-                    component="div"
-                    grow={0}
-                    shrink={1}
-                  >
-                    <div
-                      className="tss-sd75mx-GridItem-root common__widgets__widget css-14cdwhd tss-sd75mx-GridItem-root common__widgets__widget css-14cdwhd"
+                  <div>
+                    <Suspense
+                      fallback={<Loading />}
                     >
-                      <div>
-                        <Suspense
-                          fallback={<Loading />}
-                        >
-                          <Image
-                            ratio={
-                              [
-                                12,
-                                5,
-                              ]
-                            }
-                            settings={
-                              {
-                                "alt": "",
-                                "id": "84961",
-                                "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
-                                "link": "/category/",
-                              }
-                            }
-                          >
-                            <img
-                              alt=""
-                            />
-                          </Image>
-                        </Suspense>
-                      </div>
-                    </div>
-                  </GridItem>
-                </GridItemWithStyles>
-              </Widget>
-            </div>
-          </WidgetGrid>
-        </WidgetGridWithStyles>
+                      <Image
+                        ratio={
+                          [
+                            12,
+                            5,
+                          ]
+                        }
+                        settings={
+                          {
+                            "alt": "",
+                            "id": "84961",
+                            "image": "https://data.shopgate.com/shop_widget_images/23836/aedc545959f55e3f73851eca0ed40a75.min.jpeg",
+                            "link": "/category/",
+                          }
+                        }
+                      >
+                        <img
+                          alt=""
+                        />
+                      </Image>
+                    </Suspense>
+                  </div>
+                </div>
+              </GridItem>
+            </Widget>
+          </div>
+        </WidgetGrid>
       </div>
     </Widgets>
   </ThemeResourcesWrapper>

@@ -37,121 +37,95 @@ exports[`<TextField> should focus the input 1`] = `
     <div
       className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -212,121 +186,95 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     <div
       className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value="foobar"
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value="foobar"
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -387,121 +335,95 @@ exports[`<TextField> should render a simple text field 1`] = `
     <div
       className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -563,122 +485,96 @@ exports[`<TextField> should render the text field as password 1`] = `
     <div
       className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                password={true}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={true}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    password={true}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={true}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="password"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="password"
+                    value=""
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -739,121 +635,95 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     <div
       className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value="FooBar"
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value="FooBar"
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value="FooBar"
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value="FooBar"
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value="FooBar"
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value="FooBar"
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -915,122 +785,96 @@ exports[`<TextField> should sanitize the input 1`] = `
     <div
       className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                onSanitize={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    onSanitize={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value="FOOBAR"
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value="FOOBAR"
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -1091,121 +935,95 @@ exports[`<TextField> should show the error message 1`] = `
     <div
       className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={true}
         isFocused={false}
@@ -1352,121 +1170,95 @@ exports[`<TextField> should show the label 1`] = `
           </Translate>
         </label>
       </Label>
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -1554,121 +1346,95 @@ exports[`<TextField> should show the placeholder text 1`] = `
           </Translate>
         </div>
       </Placeholder>
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
-                  }
-                }
-                component="li"
-                grow={1}
-                shrink={1}
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={[Function]}
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={[Function]}
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}
@@ -1745,152 +1511,126 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     <div
       className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
     >
-      <GridWithStyles>
-        <Grid
-          className=""
-          classes={
-            {
-              "noWrap": "tss-18pnfnt-Grid-noWrap",
-              "root": "tss-ttd1ja-Grid-root",
-              "wrap": "tss-xzd4nf-Grid-wrap",
-            }
-          }
-          component="ul"
-          wrap={false}
+      <Grid
+        className=""
+        component="ul"
+        wrap={false}
+      >
+        <ul
+          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
         >
-          <ul
-            className=" tss-ttd1ja-Grid-root common__grid tss-18pnfnt-Grid-noWrap"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
+          <GridItem
+            className="css-1kppfx4"
+            component="li"
+            grow={1}
+            shrink={1}
           >
-            <GridItemWithStyles
-              className="css-1kppfx4"
-              grow={1}
+            <li
+              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
             >
-              <GridItem
-                className="tss-rttrxi-GridItem-root css-1kppfx4"
-                classes={
-                  {
-                    "root": "tss-rttrxi-GridItem-root",
+              <_default
+                attributes={null}
+                className="
+                css-keangt 
+                
+              "
+                maxLength=""
+                multiLine={false}
+                name="test-input"
+                onChange={[Function]}
+                onFocusChange={[Function]}
+                onValidate={
+                  [MockFunction] {
+                    "calls": [
+                      [
+                        "",
+                        true,
+                      ],
+                    ],
+                    "results": [
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                    ],
                   }
                 }
-                component="li"
-                grow={1}
-                shrink={1}
+                type="text"
+                validateOnBlur={true}
+                value=""
               >
-                <li
-                  className="tss-rttrxi-GridItem-root css-1kppfx4 tss-rttrxi-GridItem-root css-1kppfx4 common__grid__item--custom-flex"
+                <SimpleInput
+                  attributes={null}
+                  autoComplete={false}
+                  autoCorrect={false}
+                  className="
+                css-keangt 
+                
+              "
+                  disabled={false}
+                  id={null}
+                  inputComponent="input"
+                  isControlled={false}
+                  maxLength=""
+                  multiLine={false}
+                  name="test-input"
+                  onChange={[Function]}
+                  onFocusChange={[Function]}
+                  onKeyPress={[Function]}
+                  onSanitize={[Function]}
+                  onValidate={
+                    [MockFunction] {
+                      "calls": [
+                        [
+                          "",
+                          true,
+                        ],
+                      ],
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
+                    }
+                  }
+                  password={false}
+                  required={false}
+                  setRef={[Function]}
+                  type="text"
+                  validateOnBlur={true}
+                  value=""
                 >
-                  <_default
-                    attributes={null}
+                  <input
+                    autoComplete="off"
+                    autoCorrect="off"
                     className="
                 css-keangt 
                 
-              "
-                    maxLength=""
-                    multiLine={false}
-                    name="test-input"
-                    onChange={[Function]}
-                    onFocusChange={[Function]}
-                    onValidate={
-                      [MockFunction] {
-                        "calls": [
-                          [
-                            "",
-                            true,
-                          ],
-                        ],
-                        "results": [
-                          {
-                            "type": "return",
-                            "value": undefined,
-                          },
-                        ],
-                      }
-                    }
-                    type="text"
-                    validateOnBlur={true}
-                    value=""
-                  >
-                    <SimpleInput
-                      attributes={null}
-                      autoComplete={false}
-                      autoCorrect={false}
-                      className="
-                css-keangt 
-                
-              "
-                      disabled={false}
-                      id={null}
-                      inputComponent="input"
-                      isControlled={false}
-                      maxLength=""
-                      multiLine={false}
-                      name="test-input"
-                      onChange={[Function]}
-                      onFocusChange={[Function]}
-                      onKeyPress={[Function]}
-                      onSanitize={[Function]}
-                      onValidate={
-                        [MockFunction] {
-                          "calls": [
-                            [
-                              "",
-                              true,
-                            ],
-                          ],
-                          "results": [
-                            {
-                              "type": "return",
-                              "value": undefined,
-                            },
-                          ],
-                        }
-                      }
-                      password={false}
-                      required={false}
-                      setRef={[Function]}
-                      type="text"
-                      validateOnBlur={true}
-                      value=""
-                    >
-                      <input
-                        autoComplete="off"
-                        autoCorrect="off"
-                        className="
-                css-keangt 
-                
                simpleInput common__simple-input"
-                        disabled={false}
-                        id={null}
-                        inputMode={null}
-                        maxLength=""
-                        min={null}
-                        name="test-input"
-                        onBlur={[Function]}
-                        onChange={[Function]}
-                        onFocus={[Function]}
-                        onInput={null}
-                        onKeyPress={[Function]}
-                        pattern={null}
-                        required={false}
-                        step={null}
-                        type="text"
-                        value=""
-                      />
-                    </SimpleInput>
-                  </_default>
-                </li>
-              </GridItem>
-            </GridItemWithStyles>
-          </ul>
-        </Grid>
-      </GridWithStyles>
+                    disabled={false}
+                    id={null}
+                    inputMode={null}
+                    maxLength=""
+                    min={null}
+                    name="test-input"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onInput={null}
+                    onKeyPress={[Function]}
+                    pattern={null}
+                    required={false}
+                    step={null}
+                    type="text"
+                    value=""
+                  />
+                </SimpleInput>
+              </_default>
+            </li>
+          </GridItem>
+        </ul>
+      </Grid>
       <Underline
         hasErrorMessage={false}
         isFocused={false}

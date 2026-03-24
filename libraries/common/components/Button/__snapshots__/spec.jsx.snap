@@ -1,73 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Button /> should not trigger the click event when disabled 1`] = `
-<Button
-  className="tss-18hbw04-Button-root"
-  classes={
-    {
-      "root": "tss-18hbw04-Button-root",
-    }
-  }
+<button
+  className=" tss-16c9pag-root common__button"
+  data-test-id="Button"
   disabled={true}
-  onClick={
-    [MockFunction] {
-      "calls": [
-        [],
-      ],
-      "results": [
-        {
-          "type": "return",
-          "value": undefined,
-        },
-      ],
-    }
-  }
-  testId="Button"
+  onClick={null}
 >
   My content
-</Button>
+</button>
 `;
 
 exports[`<Button /> should render the button 1`] = `
-<Button
-  className="tss-18hbw04-Button-root"
-  classes={
-    {
-      "root": "tss-18hbw04-Button-root",
-    }
-  }
+<button
+  className=" tss-16c9pag-root common__button"
+  data-test-id="Button"
   disabled={false}
   onClick={null}
-  testId="Button"
 >
   My content
-</Button>
+</button>
 `;
 
 exports[`<Button /> should render the button in disabled state 1`] = `
-<Button
-  className="tss-18hbw04-Button-root"
-  classes={
-    {
-      "root": "tss-18hbw04-Button-root",
-    }
-  }
+<button
+  className=" tss-16c9pag-root common__button"
+  data-test-id="Button"
   disabled={true}
   onClick={null}
-  testId="Button"
 >
   My content
-</Button>
+</button>
 `;
 
 exports[`<Button /> should trigger the click event 1`] = `
-<Button
-  className="tss-18hbw04-Button-root"
-  classes={
-    {
-      "root": "tss-18hbw04-Button-root",
-    }
-  }
+<button
+  className=" tss-16c9pag-root common__button"
+  data-test-id="Button"
   disabled={false}
   onClick={
     [MockFunction] {
@@ -82,8 +51,7 @@ exports[`<Button /> should trigger the click event 1`] = `
       ],
     }
   }
-  testId="Button"
 >
   My content
-</Button>
+</button>
 `;

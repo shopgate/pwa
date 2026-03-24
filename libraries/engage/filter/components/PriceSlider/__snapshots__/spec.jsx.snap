@@ -1,49 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
-<PriceSlider
-  classes={
-    {
-      "rangeSliderContainer": "tss-19chdeb-PriceSlider-rangeSliderContainer",
-      "rangeSliderHandleInner": "tss-4z30eu-PriceSlider-rangeSliderHandleInner",
-      "rangeSliderHandleOuter": "tss-173ivhj-PriceSlider-rangeSliderHandleOuter",
-      "rangeSliderOuterRange": "tss-im1gf-PriceSlider-rangeSliderOuterRange",
-      "rangeSliderRange": "tss-tl8tkl-PriceSlider-rangeSliderRange",
-      "wrapper": "tss-1qrpeu7-PriceSlider-wrapper",
-    }
-  }
-  id="foo"
-  max={100}
-  min={0}
-  onChange={[Function]}
-  useLinearEasing={false}
-  value={null}
-  values={
-    [
-      5,
-      50,
-    ]
-  }
-/>
+<FilterItem>
+  <div
+    className="tss-1167cjk-wrapper"
+    data-test-id="priceRangeSlider"
+  >
+    <Label
+      onChange={[Function]}
+      priceLength="3ch"
+      priceMax={1}
+      priceMin={0}
+    />
+    <RangeSlider
+      classNames={
+        {
+          "container": "tss-shctl2-rangeSliderContainer",
+          "handleInner": "tss-p3et0u-rangeSliderHandleInner",
+          "handleOuter": "tss-dlsvg8-rangeSliderHandleOuter",
+          "outerRange": "tss-a7xmlr-rangeSliderOuterRange",
+          "range": "tss-q7l2tr-rangeSliderRange",
+        }
+      }
+      easing="exponential"
+      factor={3}
+      max={100}
+      min={0}
+      onChange={[Function]}
+      value={
+        [
+          0,
+          100,
+        ]
+      }
+    />
+  </div>
+</FilterItem>
 `;
 
 exports[`Filter: <PriceSlider /> should render with default props 1`] = `
-<PriceSlider
-  classes={
-    {
-      "rangeSliderContainer": "tss-19chdeb-PriceSlider-rangeSliderContainer",
-      "rangeSliderHandleInner": "tss-4z30eu-PriceSlider-rangeSliderHandleInner",
-      "rangeSliderHandleOuter": "tss-173ivhj-PriceSlider-rangeSliderHandleOuter",
-      "rangeSliderOuterRange": "tss-im1gf-PriceSlider-rangeSliderOuterRange",
-      "rangeSliderRange": "tss-tl8tkl-PriceSlider-rangeSliderRange",
-      "wrapper": "tss-1qrpeu7-PriceSlider-wrapper",
-    }
-  }
-  id="foo"
-  max={100}
-  min={0}
-  onChange={[Function]}
-  useLinearEasing={false}
-  value={null}
-/>
+<FilterItem>
+  <div
+    className="tss-1167cjk-wrapper"
+    data-test-id="priceRangeSlider"
+  >
+    <Label
+      onChange={[Function]}
+      priceLength="3ch"
+      priceMax={1}
+      priceMin={0}
+    />
+    <RangeSlider
+      classNames={
+        {
+          "container": "tss-shctl2-rangeSliderContainer",
+          "handleInner": "tss-p3et0u-rangeSliderHandleInner",
+          "handleOuter": "tss-dlsvg8-rangeSliderHandleOuter",
+          "outerRange": "tss-a7xmlr-rangeSliderOuterRange",
+          "range": "tss-q7l2tr-rangeSliderRange",
+        }
+      }
+      easing="exponential"
+      factor={3}
+      max={100}
+      min={0}
+      onChange={[Function]}
+      value={
+        [
+          0,
+          100,
+        ]
+      }
+    />
+  </div>
+</FilterItem>
 `;

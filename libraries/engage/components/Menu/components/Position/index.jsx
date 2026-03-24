@@ -1,94 +1,76 @@
-import React, { Component } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const outerGap = themeConfig.variables.gap.small;
 
+const useStyles = makeStyles()(() => ({
+  container: {
+    position: 'absolute',
+    margin: outerGap,
+  },
+}));
+
 /**
  * The Context Menu Position component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Position extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    classes: PropTypes.shape({
-      container: PropTypes.string,
-    }),
-    offset: PropTypes.shape({
-      top: PropTypes.number,
-      left: PropTypes.number,
-    }),
-  };
+const Position = ({
+  children,
+  offset,
+}) => {
+  const { classes } = useStyles();
+  const elementRef = useRef(null);
 
-  static defaultProps = {
-    classes: {
-      container: '',
-    },
-    children: null,
-    offset: {
-      top: 0,
-      left: 0,
-    },
-  };
+  useEffect(() => {
+    const el = elementRef.current;
+    if (!el) {
+      return;
+    }
 
-  /**
-   * The Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
+    const [child] = el.childNodes;
+    if (!child) {
+      return;
+    }
 
-    this.elementRef = null;
-  }
-
-  /**
-   * Calculate and apply the correct menu position after mounting.
-   */
-  componentDidMount() {
-    const { offset } = this.props;
-
-    // Get ref to the actual child DOM element and calculate bounding rect.
-    const [child] = this.elementRef.childNodes;
     const bounds = child.getBoundingClientRect();
-
-    // Get window dimensions
     const width = window.innerWidth;
     const height = window.innerHeight;
-
-    // Get the outer gap from styles
     const gap = outerGap;
 
-    // Calculate clamped menu position
     const left = clamp(offset.left, 0, width - bounds.width - (gap * 2));
     const top = clamp(offset.top - gap, 0, height - bounds.height - (gap * 2));
 
-    // Assign position directly w/o re-rendering the component
-    this.elementRef.style.left = `${left}px`;
-    this.elementRef.style.top = `${top}px`;
-  }
+    el.style.left = `${left}px`;
+    el.style.top = `${top}px`;
+    /* eslint-disable-next-line react-hooks/exhaustive-deps --
+     * match legacy componentDidMount: position once */
+  }, []);
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const classes = withStyles.getClasses(this.props);
+  return (
+    <div ref={elementRef} className={classes.container}>
+      {children}
+    </div>
+  );
+};
 
-    return (
-      <div ref={(ref) => { this.elementRef = ref; }} className={classes.container}>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+Position.propTypes = {
+  children: PropTypes.node,
+  offset: PropTypes.shape({
+    top: PropTypes.number,
+    left: PropTypes.number,
+  }),
+};
 
-export default withStyles(
-  Position,
-  () => ({
-    container: {
-      position: 'absolute',
-      margin: outerGap,
-    },
-  })
-);
+Position.defaultProps = {
+  children: null,
+  offset: {
+    top: 0,
+    left: 0,
+  },
+};
+
+export default Position;

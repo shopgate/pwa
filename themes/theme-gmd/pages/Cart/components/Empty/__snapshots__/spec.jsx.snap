@@ -44,6 +44,7 @@ exports[`<CartEmpty /> should render 1`] = `
   >
     <RippleButtonWithStyles
       className="tss-1fwzktp-button"
+      disabled={false}
       flat={false}
       onClick={[Function]}
       rippleClassName=""

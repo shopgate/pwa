@@ -76,7 +76,7 @@ const useStyles = makeStyles()({
     background: 'var(--tab-bar-background)',
     minHeight: 'var(--tab-bar-floating-min-height)',
     padding: '4px 0',
-    marginBottom: `max(16px, calc(var(--safe-area-inset-bottom) + ${isAndroidOs() ? '8px' : '0px'}))`,
+    marginBottom: `max(16px, calc(var(--safe-area-inset-bottom) + ${isAndroidOs ? '8px' : '0px'}))`,
     borderRadius: 'var(--tab-bar-floating-border-radius)',
     boxShadow: 'var(--tab-bar-floating-box-shadow)',
   },

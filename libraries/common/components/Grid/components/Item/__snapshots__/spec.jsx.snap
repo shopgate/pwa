@@ -1,43 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<GridItem /> should add custom classes on demand 1`] = `
-<GridItem
-  className="tss-sd75mx-GridItem-root custom-class-name"
-  classes={
-    {
-      "root": "tss-sd75mx-GridItem-root",
-    }
-  }
-  component="li"
-  grow={0}
-  shrink={1}
+<li
+  className="custom-class-name tss-5qovnk-root"
 />
 `;
 
 exports[`<GridItem /> should be able to render a custom tag 1`] = `
-<GridItem
-  className="tss-sd75mx-GridItem-root"
-  classes={
-    {
-      "root": "tss-sd75mx-GridItem-root",
-    }
-  }
-  component="section"
-  grow={0}
-  shrink={1}
+<section
+  className="tss-5qovnk-root"
 />
 `;
 
 exports[`<GridItem /> should render without any further props 1`] = `
-<GridItem
-  className="tss-sd75mx-GridItem-root"
-  classes={
-    {
-      "root": "tss-sd75mx-GridItem-root",
-    }
-  }
-  component="li"
-  grow={0}
-  shrink={1}
+<li
+  className="tss-5qovnk-root"
 />
 `;

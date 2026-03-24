@@ -1,29 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <Selector /> should render with minimum props 1`] = `
-<Selector
-  classes={
+<SurroundPortals
+  portalName="filter.selector"
+  portalProps={
     {
-      "accordion": "tss-amc0k5-Selector-accordion",
-      "content": "tss-1t3nc55-Selector-content",
+      "filter": {
+        "id": "foo",
+        "isMultiSelect": false,
+        "label": "bar",
+        "values": [
+          {
+            "id": "foo",
+            "label": "fooLabel",
+          },
+          {
+            "id": "bar",
+            "label": "barLabel",
+          },
+        ],
+      },
+      "onChange": [Function],
+      "selectedValueIds": [],
     }
   }
-  id="foo"
-  label="bar"
-  multi={false}
-  onChange={[Function]}
-  selected={null}
-  values={
-    [
-      {
-        "id": "foo",
-        "label": "fooLabel",
-      },
-      {
-        "id": "bar",
-        "label": "barLabel",
-      },
-    ]
-  }
-/>
+>
+  <FilterItem>
+    <Accordion
+      className="tss-v3twtx-accordion"
+      handleLabel="filter.filter_by"
+      renderLabel={[Function]}
+      testId="foo"
+    >
+      <div
+        className="tss-zw23ax-content"
+      >
+        <ValueButton
+          id="foo"
+          isActive={false}
+          key="foo"
+          label="fooLabel"
+          onClick={[Function]}
+        />
+        <ValueButton
+          id="bar"
+          isActive={false}
+          key="bar"
+          label="barLabel"
+          onClick={[Function]}
+        />
+      </div>
+    </Accordion>
+  </FilterItem>
+</SurroundPortals>
 `;

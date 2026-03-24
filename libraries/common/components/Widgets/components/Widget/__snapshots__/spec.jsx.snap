@@ -28,43 +28,33 @@ exports[`<Widget /> should render an image widget 1`] = `
     }
   }
 >
-  <GridItemWithStyles
+  <GridItem
     className="common__widgets__widget css-11tky1j"
     component="div"
+    grow={0}
+    shrink={1}
   >
-    <GridItem
-      className="tss-sd75mx-GridItem-root common__widgets__widget css-11tky1j"
-      classes={
-        {
-          "root": "tss-sd75mx-GridItem-root",
-        }
-      }
-      component="div"
-      grow={0}
-      shrink={1}
+    <div
+      className="common__widgets__widget css-11tky1j tss-5qovnk-root"
     >
-      <div
-        className="tss-sd75mx-GridItem-root common__widgets__widget css-11tky1j tss-sd75mx-GridItem-root common__widgets__widget css-11tky1j"
-      >
-        <div>
-          <Suspense
-            fallback={<Loading />}
+      <div>
+        <Suspense
+          fallback={<Loading />}
+        >
+          <MyComponent
+            ratio={
+              [
+                12,
+                6,
+              ]
+            }
           >
-            <MyComponent
-              ratio={
-                [
-                  12,
-                  6,
-                ]
-              }
-            >
-              <div />
-            </MyComponent>
-          </Suspense>
-        </div>
+            <div />
+          </MyComponent>
+        </Suspense>
       </div>
-    </GridItem>
-  </GridItemWithStyles>
+    </div>
+  </GridItem>
 </Widget>
 `;
 
@@ -82,42 +72,32 @@ exports[`<Widget /> should render an image widget with offset 1`] = `
     }
   }
 >
-  <GridItemWithStyles
+  <GridItem
     className="common__widgets__widget css-1fy9kc8"
     component="div"
+    grow={0}
+    shrink={1}
   >
-    <GridItem
-      className="tss-sd75mx-GridItem-root common__widgets__widget css-1fy9kc8"
-      classes={
-        {
-          "root": "tss-sd75mx-GridItem-root",
-        }
-      }
-      component="div"
-      grow={0}
-      shrink={1}
+    <div
+      className="common__widgets__widget css-1fy9kc8 tss-5qovnk-root"
     >
-      <div
-        className="tss-sd75mx-GridItem-root common__widgets__widget css-1fy9kc8 tss-sd75mx-GridItem-root common__widgets__widget css-1fy9kc8"
-      >
-        <div>
-          <Suspense
-            fallback={<Loading />}
+      <div>
+        <Suspense
+          fallback={<Loading />}
+        >
+          <MyComponent
+            ratio={
+              [
+                6,
+                6,
+              ]
+            }
           >
-            <MyComponent
-              ratio={
-                [
-                  6,
-                  6,
-                ]
-              }
-            >
-              <div />
-            </MyComponent>
-          </Suspense>
-        </div>
+            <div />
+          </MyComponent>
+        </Suspense>
       </div>
-    </GridItem>
-  </GridItemWithStyles>
+    </div>
+  </GridItem>
 </Widget>
 `;

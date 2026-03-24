@@ -39,12 +39,7 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
     }
     label=""
     listComponent={[Function]}
-    modalComponent={
-      {
-        "$$typeof": Symbol(react.forward_ref),
-        "render": [Function],
-      }
-    }
+    modalComponent={[Function]}
     onChange={[MockFunction]}
     onClose={[Function]}
     onSelect={[MockFunction]}
@@ -81,26 +76,11 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
       <ConnectedReactPortal
         isOpened={true}
       >
-        <PickerModalWithStyles
+        <PickerModal
           duration={300}
           isOpen={false}
           onClose={[Function]}
-        >
-          <PickerModal
-            classes={
-              {
-                "backgroundBase": "tss-1pr4xbh-PickerModal-backgroundBase",
-                "backgroundInactive": "tss-1cfz8gl-PickerModal-backgroundInactive",
-                "containerBase": "tss-101zrw5-PickerModal-containerBase",
-                "containerInactive": "tss-beexdo-PickerModal-containerInactive",
-                "wrapper": "tss-1w44vts-PickerModal-wrapper",
-              }
-            }
-            duration={300}
-            isOpen={false}
-            onClose={[Function]}
-          />
-        </PickerModalWithStyles>
+        />
       </ConnectedReactPortal>
     </div>
   </Picker>

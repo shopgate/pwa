@@ -160,84 +160,44 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
         className="engage__sheet-list__item"
         data-test-id={null}
       >
-        <GridWithStyles
+        <Grid
           className="tss-1l68gs0-Item-grid"
           component="div"
+          wrap={false}
         >
-          <Grid
-            className="tss-1l68gs0-Item-grid"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
-            component="div"
-            wrap={false}
+          <div
+            className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
           >
-            <div
-              className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
-              classes={
-                {
-                  "noWrap": "tss-18pnfnt-Grid-noWrap",
-                  "root": "tss-ttd1ja-Grid-root",
-                  "wrap": "tss-xzd4nf-Grid-wrap",
-                }
-              }
+            <GridItem
+              className="tss-1wzwt5u-Item-title"
+              component="div"
+              grow={1}
+              shrink={1}
             >
-              <GridItemWithStyles
-                className="tss-1wzwt5u-Item-title"
-                component="div"
-                grow={1}
+              <div
+                className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
               >
-                <GridItem
-                  className="tss-3bxdgt-GridItem-root-Item-title"
-                  classes={
-                    {
-                      "root": "tss-rttrxi-GridItem-root",
-                    }
-                  }
-                  component="div"
-                  grow={1}
-                  shrink={1}
-                >
-                  <div
-                    className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
-                  >
-                    <div>
-                      My Title
-                    </div>
-                  </div>
-                </GridItem>
-              </GridItemWithStyles>
-              <GridItemWithStyles
-                component="div"
-                grow={1}
+                <div>
+                  My Title
+                </div>
+              </div>
+            </GridItem>
+            <GridItem
+              className=""
+              component="div"
+              grow={1}
+              shrink={1}
+            >
+              <div
+                className="tss-xljr6b-root common__grid__item--custom-flex"
               >
-                <GridItem
-                  className="tss-rttrxi-GridItem-root"
-                  classes={
-                    {
-                      "root": "tss-rttrxi-GridItem-root",
-                    }
-                  }
-                  component="div"
-                  grow={1}
-                  shrink={1}
-                >
-                  <div
-                    className="tss-rttrxi-GridItem-root tss-rttrxi-GridItem-root common__grid__item--custom-flex"
-                  >
-                    <span>
-                      I\`m a span.
-                    </span>
-                  </div>
-                </GridItem>
-              </GridItemWithStyles>
-            </div>
-          </Grid>
-        </GridWithStyles>
+                <span>
+                  I\`m a span.
+                </span>
+              </div>
+            </GridItem>
+          </div>
+        </Grid>
       </div>
     </Item>
   </ItemWithStyles>
@@ -282,60 +242,30 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
         className="engage__sheet-list__item"
         data-test-id={null}
       >
-        <GridWithStyles
+        <Grid
           className="tss-1l68gs0-Item-grid"
           component="div"
+          wrap={false}
         >
-          <Grid
-            className="tss-1l68gs0-Item-grid"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
-            component="div"
-            wrap={false}
+          <div
+            className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
           >
-            <div
-              className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
-              classes={
-                {
-                  "noWrap": "tss-18pnfnt-Grid-noWrap",
-                  "root": "tss-ttd1ja-Grid-root",
-                  "wrap": "tss-xzd4nf-Grid-wrap",
-                }
-              }
+            <GridItem
+              className="tss-1wzwt5u-Item-title"
+              component="div"
+              grow={1}
+              shrink={1}
             >
-              <GridItemWithStyles
-                className="tss-1wzwt5u-Item-title"
-                component="div"
-                grow={1}
+              <div
+                className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
               >
-                <GridItem
-                  className="tss-3bxdgt-GridItem-root-Item-title"
-                  classes={
-                    {
-                      "root": "tss-rttrxi-GridItem-root",
-                    }
-                  }
-                  component="div"
-                  grow={1}
-                  shrink={1}
-                >
-                  <div
-                    className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
-                  >
-                    <div>
-                      My Title
-                    </div>
-                  </div>
-                </GridItem>
-              </GridItemWithStyles>
-            </div>
-          </Grid>
-        </GridWithStyles>
+                <div>
+                  My Title
+                </div>
+              </div>
+            </GridItem>
+          </div>
+        </Grid>
       </div>
     </Item>
   </ItemWithStyles>
@@ -397,68 +327,38 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
         className="engage__sheet-list__item"
         data-test-id={null}
       >
-        <GridWithStyles
+        <Grid
           className="tss-1l68gs0-Item-grid"
           component="div"
+          wrap={false}
         >
-          <Grid
-            className="tss-1l68gs0-Item-grid"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
-            component="div"
-            wrap={false}
+          <div
+            className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
           >
             <div
-              className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
-              classes={
-                {
-                  "noWrap": "tss-18pnfnt-Grid-noWrap",
-                  "root": "tss-ttd1ja-Grid-root",
-                  "wrap": "tss-xzd4nf-Grid-wrap",
-                }
-              }
+              className="tss-wlqzfe-Item-image"
+            >
+              <img
+                alt="Alternative text"
+                src="url/to/image"
+              />
+            </div>
+            <GridItem
+              className="tss-1wzwt5u-Item-title"
+              component="div"
+              grow={1}
+              shrink={1}
             >
               <div
-                className="tss-wlqzfe-Item-image"
+                className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
               >
-                <img
-                  alt="Alternative text"
-                  src="url/to/image"
-                />
+                <div>
+                  My Title
+                </div>
               </div>
-              <GridItemWithStyles
-                className="tss-1wzwt5u-Item-title"
-                component="div"
-                grow={1}
-              >
-                <GridItem
-                  className="tss-3bxdgt-GridItem-root-Item-title"
-                  classes={
-                    {
-                      "root": "tss-rttrxi-GridItem-root",
-                    }
-                  }
-                  component="div"
-                  grow={1}
-                  shrink={1}
-                >
-                  <div
-                    className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
-                  >
-                    <div>
-                      My Title
-                    </div>
-                  </div>
-                </GridItem>
-              </GridItemWithStyles>
-            </div>
-          </Grid>
-        </GridWithStyles>
+            </GridItem>
+          </div>
+        </Grid>
       </div>
     </Item>
   </ItemWithStyles>
@@ -568,60 +468,30 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
                   className="engage__sheet-list__item"
                   data-test-id={null}
                 >
-                  <GridWithStyles
+                  <Grid
                     className="tss-1l68gs0-Item-grid"
                     component="div"
+                    wrap={false}
                   >
-                    <Grid
-                      className="tss-1l68gs0-Item-grid"
-                      classes={
-                        {
-                          "noWrap": "tss-18pnfnt-Grid-noWrap",
-                          "root": "tss-ttd1ja-Grid-root",
-                          "wrap": "tss-xzd4nf-Grid-wrap",
-                        }
-                      }
-                      component="div"
-                      wrap={false}
+                    <div
+                      className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
                     >
-                      <div
-                        className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
-                        classes={
-                          {
-                            "noWrap": "tss-18pnfnt-Grid-noWrap",
-                            "root": "tss-ttd1ja-Grid-root",
-                            "wrap": "tss-xzd4nf-Grid-wrap",
-                          }
-                        }
+                      <GridItem
+                        className="tss-1wzwt5u-Item-title"
+                        component="div"
+                        grow={1}
+                        shrink={1}
                       >
-                        <GridItemWithStyles
-                          className="tss-1wzwt5u-Item-title"
-                          component="div"
-                          grow={1}
+                        <div
+                          className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
                         >
-                          <GridItem
-                            className="tss-3bxdgt-GridItem-root-Item-title"
-                            classes={
-                              {
-                                "root": "tss-rttrxi-GridItem-root",
-                              }
-                            }
-                            component="div"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <div
-                              className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
-                            >
-                              <div>
-                                My Title
-                              </div>
-                            </div>
-                          </GridItem>
-                        </GridItemWithStyles>
-                      </div>
-                    </Grid>
-                  </GridWithStyles>
+                          <div>
+                            My Title
+                          </div>
+                        </div>
+                      </GridItem>
+                    </div>
+                  </Grid>
                 </div>
               </div>
             </Glow>
@@ -673,60 +543,30 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
         className="engage__sheet-list__item"
         data-test-id={null}
       >
-        <GridWithStyles
+        <Grid
           className="tss-1l68gs0-Item-grid"
           component="div"
+          wrap={false}
         >
-          <Grid
-            className="tss-1l68gs0-Item-grid"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
-            component="div"
-            wrap={false}
+          <div
+            className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
           >
-            <div
-              className="tss-1l68gs0-Item-grid tss-slkqtn-Grid-root-Item-grid common__grid tss-18pnfnt-Grid-noWrap"
-              classes={
-                {
-                  "noWrap": "tss-18pnfnt-Grid-noWrap",
-                  "root": "tss-ttd1ja-Grid-root",
-                  "wrap": "tss-xzd4nf-Grid-wrap",
-                }
-              }
+            <GridItem
+              className="tss-1wzwt5u-Item-title tss-1ot0pf5-Item-disabled"
+              component="div"
+              grow={1}
+              shrink={1}
             >
-              <GridItemWithStyles
-                className="tss-1wzwt5u-Item-title tss-1ot0pf5-Item-disabled"
-                component="div"
-                grow={1}
+              <div
+                className="tss-1wzwt5u-Item-title tss-1ot0pf5-Item-disabled tss-xljr6b-root common__grid__item--custom-flex"
               >
-                <GridItem
-                  className="tss-12f2hpu-GridItem-root-Item-title-Item-disabled"
-                  classes={
-                    {
-                      "root": "tss-rttrxi-GridItem-root",
-                    }
-                  }
-                  component="div"
-                  grow={1}
-                  shrink={1}
-                >
-                  <div
-                    className="tss-12f2hpu-GridItem-root-Item-title-Item-disabled tss-12f2hpu-GridItem-root-Item-title-Item-disabled common__grid__item--custom-flex"
-                  >
-                    <div>
-                      My Title
-                    </div>
-                  </div>
-                </GridItem>
-              </GridItemWithStyles>
-            </div>
-          </Grid>
-        </GridWithStyles>
+                <div>
+                  My Title
+                </div>
+              </div>
+            </GridItem>
+          </div>
+        </Grid>
       </div>
     </Item>
   </ItemWithStyles>
@@ -773,60 +613,30 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
         className="engage__sheet-list__item"
         data-test-id={null}
       >
-        <GridWithStyles
+        <Grid
           className="tss-1l68gs0-Item-grid tss-v08ox0-Item-selected"
           component="div"
+          wrap={false}
         >
-          <Grid
-            className="tss-1l68gs0-Item-grid tss-v08ox0-Item-selected"
-            classes={
-              {
-                "noWrap": "tss-18pnfnt-Grid-noWrap",
-                "root": "tss-ttd1ja-Grid-root",
-                "wrap": "tss-xzd4nf-Grid-wrap",
-              }
-            }
-            component="div"
-            wrap={false}
+          <div
+            className="tss-1l68gs0-Item-grid tss-v08ox0-Item-selected tss-pauvta-root common__grid tss-i2x46h-noWrap"
           >
-            <div
-              className="tss-1l68gs0-Item-grid tss-v08ox0-Item-selected tss-145ld0x-Grid-root-Item-grid-Item-selected common__grid tss-18pnfnt-Grid-noWrap"
-              classes={
-                {
-                  "noWrap": "tss-18pnfnt-Grid-noWrap",
-                  "root": "tss-ttd1ja-Grid-root",
-                  "wrap": "tss-xzd4nf-Grid-wrap",
-                }
-              }
+            <GridItem
+              className="tss-1wzwt5u-Item-title"
+              component="div"
+              grow={1}
+              shrink={1}
             >
-              <GridItemWithStyles
-                className="tss-1wzwt5u-Item-title"
-                component="div"
-                grow={1}
+              <div
+                className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
               >
-                <GridItem
-                  className="tss-3bxdgt-GridItem-root-Item-title"
-                  classes={
-                    {
-                      "root": "tss-rttrxi-GridItem-root",
-                    }
-                  }
-                  component="div"
-                  grow={1}
-                  shrink={1}
-                >
-                  <div
-                    className="tss-3bxdgt-GridItem-root-Item-title tss-3bxdgt-GridItem-root-Item-title common__grid__item--custom-flex"
-                  >
-                    <div>
-                      My Title
-                    </div>
-                  </div>
-                </GridItem>
-              </GridItemWithStyles>
-            </div>
-          </Grid>
-        </GridWithStyles>
+                <div>
+                  My Title
+                </div>
+              </div>
+            </GridItem>
+          </div>
+        </Grid>
       </div>
     </Item>
   </ItemWithStyles>
