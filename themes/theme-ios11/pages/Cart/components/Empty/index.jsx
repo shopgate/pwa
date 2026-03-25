@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { themeConfig } from '@shopgate/engage';

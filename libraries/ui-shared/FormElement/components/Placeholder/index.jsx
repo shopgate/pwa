@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';

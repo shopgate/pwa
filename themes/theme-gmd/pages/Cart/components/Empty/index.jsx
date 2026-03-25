@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
@@ -23,7 +23,9 @@ const useStyles = makeStyles()({
     flexDirection: 'column',
     textAlign: 'center',
     height: '100%',
-    ...(useScrollContainer() ? {} : { paddingTop: 100 }),
+  },
+  wrapperNoScrollContainer: {
+    paddingTop: 100,
   },
   container: {
     display: 'flex',
@@ -55,11 +57,17 @@ const useStyles = makeStyles()({
  * @return {JSX.Element}
  */
 const Empty = ({ goBackHistory }) => {
-  const { classes } = useStyles();
+  const hasScrollContainer = useScrollContainer();
+  const { classes, cx } = useStyles();
   const imageSRC = useMemo(() => svgToDataUrl(emptyCart), []);
 
   return (
-    <div className={classes.wrapper}>
+    <div
+      className={cx(
+        classes.wrapper,
+        !hasScrollContainer && classes.wrapperNoScrollContainer
+      )}
+    >
       <Portal name={portals.CART_EMPTY_BEFORE} />
       <Portal name={portals.CART_EMPTY}>
         <div className={classes.container}>

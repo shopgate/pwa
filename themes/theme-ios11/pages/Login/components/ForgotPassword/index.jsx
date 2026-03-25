@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import Link from '@shopgate/pwa-common/components/Link';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';

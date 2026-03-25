@@ -9,6 +9,7 @@ import { i18n, usePrevious } from '@shopgate/engage/core';
 import {
   Dialog,
   TextField,
+  I18n,
 } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import {
@@ -16,7 +17,6 @@ import {
 } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import { themeName } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-import I18n from '@shopgate/pwa-common/components/I18n';
 
 const isIos = themeName.includes('ios');
 

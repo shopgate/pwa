@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n, CardList, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig, themeColors, themeName } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { CardList, Link } from '@shopgate/engage/components';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { getOrderDetailsRoute } from '../../helpers/orderDetails';
 

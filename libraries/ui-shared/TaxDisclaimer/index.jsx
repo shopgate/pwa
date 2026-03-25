@@ -3,7 +3,7 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import {
   PRODUCT_TAX_DISCLAIMER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
 import { makeStyles } from '@shopgate/engage/styles';

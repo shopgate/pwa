@@ -74,6 +74,7 @@ const useStyles = makeStyles()((_, { secondaryColor }) => ({
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     zIndex: 10,
   },
+  // eslint-disable-next-line tss-unused-classes/unused-classes
   info: {
     ...messageBase,
     background: 'var(--color-secondary)',
@@ -85,6 +86,7 @@ const useStyles = makeStyles()((_, { secondaryColor }) => ({
       },
     },
   },
+  // eslint-disable-next-line tss-unused-classes/unused-classes
   error: {
     ...messageBase,
     background: themeColors.error,
@@ -96,6 +98,7 @@ const useStyles = makeStyles()((_, { secondaryColor }) => ({
       },
     },
   },
+  // eslint-disable-next-line tss-unused-classes/unused-classes
   warning: {
     ...messageBase,
     background: themeColors.warning,

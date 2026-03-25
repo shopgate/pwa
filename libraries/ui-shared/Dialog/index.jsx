@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from '@shopgate/pwa-common/components/Modal';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import {
   DIALOG_TEXT_MESSAGE,
   MODAL_VARIANT_SELECT,

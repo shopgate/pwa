@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
 import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
 import { makeStyles } from '@shopgate/engage/styles';

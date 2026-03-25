@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import Button from '@shopgate/pwa-ui-shared/Button';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -13,6 +13,7 @@ const useStyles = makeStyles()({
 });
 
 /**
+ * Buttons component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */

@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n, ResponsiveContainer } from '@shopgate/engage/components';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { i18n, useRoute } from '@shopgate/engage/core';
-import { ResponsiveContainer } from '@shopgate/engage/components';
 import OrderHistory from '../../../orders/components/OrderHistory';
 import OrderHistoryProvider from '../../../orders/providers/OrderHistoryProvider';
 import { Tabs, Tab, TabPanel } from '../../../components/Tabs';

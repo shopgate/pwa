@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 export const duration = 200;
