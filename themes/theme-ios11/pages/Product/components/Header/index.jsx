@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React from 'react';
 import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_HEADER,
@@ -8,24 +8,38 @@ import {
 import { Section } from '@shopgate/engage/a11y';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { Rating } from '@shopgate/engage/product/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import CTAButtons from './components/CTAButtons';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
-import styles from './style';
+
+const useStyles = makeStyles()(() => ({
+  content: {
+    position: 'relative',
+    padding: themeVariables.gap.big,
+  },
+}));
 
 /**
- * The product header component.
+ * Product header component.
+ * @returns {JSX.Element}
  */
-class ProductHeader extends PureComponent {
+const ProductHeader = () => {
+  const { classes, cx } = useStyles();
+
   /**
-   * @param {Object} props The consumer props.
+   * @param {Object} params Params from product context.
+   * @param {string} params.productId Product id.
+   * @param {string} [params.variantId] Variant id.
+   * @param {Object} [params.options] Options.
    * @returns {JSX.Element}
    */
-  consumeRenderer = ({ productId, variantId, options }) => {
+  const consumeRenderer = ({ productId, variantId, options }) => {
     const id = variantId || productId;
 
     return (
-      <div className={`${styles.content} theme__product__header`}>
+      <div className={cx(classes.content, 'theme__product__header')}>
         <CTAButtons productId={id} />
         <Section title="product.sections.information">
           <Rating productId={productId} />
@@ -36,22 +50,17 @@ class ProductHeader extends PureComponent {
     );
   };
 
-  /**
-   * @returns {JSX.Element}
-   */
-  render() {
-    return (
-      <>
-        <Portal name={PRODUCT_HEADER_BEFORE} />
-        <Portal name={PRODUCT_HEADER}>
-          <ProductContext.Consumer>
-            {this.consumeRenderer}
-          </ProductContext.Consumer>
-        </Portal>
-        <Portal name={PRODUCT_HEADER_AFTER} />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Portal name={PRODUCT_HEADER_BEFORE} />
+      <Portal name={PRODUCT_HEADER}>
+        <ProductContext.Consumer>
+          {consumeRenderer}
+        </ProductContext.Consumer>
+      </Portal>
+      <Portal name={PRODUCT_HEADER_AFTER} />
+    </>
+  );
+};
 
 export default ProductHeader;

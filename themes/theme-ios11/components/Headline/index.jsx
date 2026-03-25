@@ -28,16 +28,22 @@ const useStyles = makeStyles()({
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Headline = ({ tag: Tag, style, text }) => {
+const Headline = ({
+  tag: Tag, style, text, className: classNameProp,
+}) => {
   const { classes, cx } = useStyles();
 
   if (!text.length) {
     return null;
   }
 
+  const rootClass = classNameProp != null && classNameProp !== ''
+    ? classNameProp
+    : classes.root;
+
   return (
     <Tag
-      className={cx(classes.root, classes[Tag], 'headline', 'theme__headline')}
+      className={cx(classes[Tag], 'headline', 'theme__headline', rootClass)}
       style={style}
       data-test-id="Headline"
     >
@@ -47,12 +53,14 @@ const Headline = ({ tag: Tag, style, text }) => {
 };
 
 Headline.propTypes = {
+  className: PropTypes.string,
   style: PropTypes.shape(),
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4']),
   text: PropTypes.string,
 };
 
 Headline.defaultProps = {
+  className: null,
   style: null,
   tag: 'h2',
   text: '',

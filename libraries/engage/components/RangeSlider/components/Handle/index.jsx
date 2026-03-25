@@ -8,12 +8,12 @@ const useStyles = makeStyles()({
     top: '50%',
     position: 'absolute',
     cursor: 'pointer',
-    ':first-child': {
+    ':first-of-type': {
       left: 0,
       transform: 'translate(-50%, -50%)',
     },
 
-    ':last-child': {
+    ':last-of-type': {
       left: 'auto',
       right: 0,
       transform: 'translate(50%, -50%)',

@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import SuggestionList from './components/SuggestionList';
 import SearchField from './index';
-import styles from './style';
 
 jest.mock('@virtuous/conductor', () => ({
   router: {
@@ -58,7 +57,7 @@ describe('pages / Browse / components / SearchField', () => {
       expect(wrapper).toMatchSnapshot();
       expect(wrapper.find('input').prop('value')).toEqual('foo');
       // Reset button should be initially hidden
-      expect(wrapper.find(`button.${styles.button}.${styles.hidden}`)).toExist();
+      expect(wrapper.find('[data-test-id="search-field-cancel"]').prop('aria-hidden')).toBe(true);
     });
 
     it('should show suggestions when focused', () => {
@@ -74,36 +73,38 @@ describe('pages / Browse / components / SearchField', () => {
       expect(wrapper).toMatchSnapshot();
 
       expect(wrapper.find(SuggestionList).prop('searchPhrase')).toEqual('foo');
-      expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
+      expect(wrapper.find('[data-test-id="search-field-scanner"]').exists()).toBe(false);
       // Reset button should be visible
-      expect(wrapper.find(`button.${styles.button}`)).toExist();
-      expect(wrapper.find(`button.${styles.button}.${styles.hidden}`)).not.toExist();
+      expect(wrapper.find('[data-test-id="search-field-cancel"]').prop('aria-hidden')).toBe(false);
     });
 
     it('should submit search', () => {
+      jest.useFakeTimers();
       const wrapper = createWrapper({ submitSearch });
 
       // Change search and submit.
       wrapper.find('input').simulate('change', { target: { value: 'foo bar' } });
       wrapper.find('form').simulate('submit');
+      jest.runAllTimers();
       wrapper.update();
 
       expect(submitSearch).toHaveBeenCalledWith('foo bar');
+      jest.useRealTimers();
     });
   });
 
   describe('Check scanner icon and action', () => {
     it('should not render when the scanner is not supported', () => {
       const wrapper = createWrapper();
-      expect(wrapper.find(`button.${styles.scannerIcon}`)).not.toExist();
+      expect(wrapper.find('[data-test-id="search-field-scanner"]').exists()).toBe(false);
     });
 
     it('should open the scanner', () => {
       const wrapper = createWrapper({
         showScannerIcon: true,
       });
-      expect(wrapper.find(`button.${styles.scannerIcon}`)).toExist();
-      wrapper.find(`button.${styles.scannerIcon}`).simulate('click');
+      expect(wrapper.find('[data-test-id="search-field-scanner"]').exists()).toBe(true);
+      wrapper.find('[data-test-id="search-field-scanner"]').simulate('click');
       expect(openScanner).toHaveBeenCalledTimes(1);
     });
   });

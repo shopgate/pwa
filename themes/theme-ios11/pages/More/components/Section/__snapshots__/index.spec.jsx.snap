@@ -11,22 +11,15 @@ exports[`<Section /> should render with a headline and items 1`] = `
   title="Headline"
 >
   <Headline
-    style={
-      {
-        "margin": "24px 20px 16px",
-      }
-    }
+    className="tss-4b37q4-headline"
+    style={null}
     tag="h2"
     text="Headline"
   >
     <h2
-      className="headline theme__headline tss-1ajnxxp-root-h2"
+      className="headline theme__headline tss-10zp3hj-h2-headline"
       data-test-id="Headline"
-      style={
-        {
-          "margin": "24px 20px 16px",
-        }
-      }
+      style={null}
     >
       <Text
         string="Headline"
@@ -36,11 +29,8 @@ exports[`<Section /> should render with a headline and items 1`] = `
     </h2>
   </Headline>
   <div
-    className={
-      {
-        "data-css-13ch7sr": "",
-      }
-    }
+    className="tss-1sqpupb-list"
+    data-test-id="more-section-list"
   >
     <MoreMenuItem
       className={null}
@@ -89,20 +79,14 @@ exports[`<Section /> should render without a headline but items 1`] = `
   title=""
 >
   <Headline
-    style={
-      {
-        "margin": "24px 20px 16px",
-      }
-    }
+    className="tss-4b37q4-headline"
+    style={null}
     tag="h2"
     text=""
   />
   <div
-    className={
-      {
-        "data-css-13ch7sr": "",
-      }
-    }
+    className="tss-1sqpupb-list"
+    data-test-id="more-section-list"
   >
     <MoreMenuItem
       className={null}

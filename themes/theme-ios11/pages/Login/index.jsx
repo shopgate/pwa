@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
@@ -11,6 +13,7 @@ import {
   PersonIcon, LockIcon, VisibilityIcon, VisibilityOffIcon,
 } from '@shopgate/engage/components';
 import { validate, i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import {
   PAGE_LOGIN_BEFORE,
@@ -23,13 +26,12 @@ import {
   PAGE_LOGIN_FORM,
   PAGE_LOGIN_FORM_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CloseBar } from 'Components/AppBar/presets';
-import classNames from 'classnames';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
-import styles from './style';
 
-const defaultState = {
+const defaultFormState = {
   login: '',
   password: '',
   loginError: '',
@@ -62,252 +64,282 @@ const passwordConstraints = {
   },
 };
 
+const useStyles = makeStyles()(() => {
+  const { variables } = themeConfig;
+  return {
+    container: {
+      flexGrow: 1,
+      padding: `${variables.gap.small * 3}px ${variables.gap.big}px`,
+    },
+    headline: {
+      fontSize: '2rem',
+      lineHeight: 1.2,
+      fontWeight: 700,
+    },
+    subline: {
+      fontSize: '1.125rem',
+      marginBottom: variables.gap.big * 1.5,
+      marginTop: 4,
+      color: 'var(--color-text-medium-emphasis)',
+    },
+    form: {
+      paddingTop: variables.gap.big * 1.5,
+      '--form-element-left-offset': '30px',
+    },
+    input: {
+      width: '100%',
+      ' .simpleInput': {
+        color: 'var(--color-text-high-emphasis)',
+      },
+    },
+    forgotWrapper: {
+      textAlign: 'right',
+      fontSize: '0.75rem',
+      marginTop: -variables.gap.big,
+      marginBottom: variables.gap.big,
+    },
+    buttonWrapper: {
+      paddingTop: variables.gap.big * 2,
+      paddingBottom: variables.gap.big * 1.5,
+    },
+    button: {
+      width: '100%',
+    },
+    noAccount: {
+      marginRight: variables.gap.small * 0.5,
+    },
+    signup: {
+      display: 'inline-block',
+      color: 'var(--color-primary)',
+      width: 'auto',
+      margin: '-.35em 0 -.35em -.35em',
+      padding: '.35em',
+    },
+    icon: {
+      fill: 'var(--color-text-medium-emphasis)',
+      width: '24px',
+      height: '24px',
+    },
+    iconLeft: {
+      marginRight: variables.gap.xsmall,
+    },
+    iconRight: {
+      marginLeft: variables.gap.xsmall,
+    },
+    toggleButton: {
+      padding: '4px',
+      margin: '-4px 0',
+    },
+  };
+});
+
 /**
- * The login view component.
+ * iOS login view.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Login extends Component {
-  static propTypes = {
-    login: PropTypes.func.isRequired,
-    visible: PropTypes.bool.isRequired,
-    isDisabled: PropTypes.bool,
-    isLoading: PropTypes.bool,
-    redirect: PropTypes.shape(),
-    validate: PropTypes.bool,
-  };
+const Login = ({
+  login: loginAction,
+  visible,
+  isDisabled,
+  isLoading,
+  redirect,
+  validate: validateProp,
+}) => {
+  const { classes, cx } = useStyles();
+  const [state, setState] = useState(defaultFormState);
+  const userFieldRef = useRef(null);
+  const passwordFieldRef = useRef(null);
+  const prevVisibleRef = useRef(visible);
 
-  static defaultProps = {
-    isDisabled: false,
-    isLoading: false,
-    redirect: {},
-    validate: true,
-  };
-
-  /**
-   * Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.userField = null;
-    this.passwordField = null;
-
-    this.state = defaultState;
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    /**
-     * Reset the form values when the page is not visible to the user.
-     */
-    if (this.props.visible && !nextProps.visible) {
-      this.setState(defaultState);
+  useEffect(() => {
+    if (prevVisibleRef.current && !visible) {
+      setState(defaultFormState);
     }
-  }
+    prevVisibleRef.current = visible;
+  }, [visible]);
 
-  /**
-   * Stores the reference to the username input field.
-   * @param {Object} input The input field reference.
-   */
-  setUserFieldRef = (input) => {
-    this.userField = input;
-  };
+  const setUserFieldRef = useCallback((input) => {
+    userFieldRef.current = input;
+  }, []);
 
-  /**
-   * Stores the reference to the password input field.
-   * @param {Object} input The input field reference.
-   */
-  setPasswordFieldRef = (input) => {
-    this.passwordField = input;
-  };
+  const setPasswordFieldRef = useCallback((input) => {
+    passwordFieldRef.current = input;
+  }, []);
 
-  /**
-   * Handles change of the email input field.
-   * @param {string} login The login username.
-   */
-  handleEmailChange = (login) => {
-    this.setState(() => {
-      const { valid } = validate({ login }, loginConstraints);
-
+  const handleEmailChange = useCallback((loginVal) => {
+    setState((prev) => {
+      const { valid } = validate({ login: loginVal }, loginConstraints);
       return {
-        login,
+        ...prev,
+        login: loginVal,
         loginError: !valid ? 'validation.email' : '',
       };
     });
-  };
+  }, []);
 
-  /**
-   * Handles change of the password input field.
-   * @param {string} password The login password.
-   */
-  handlePasswordChange = (password) => {
-    this.setState(() => {
-      const { valid } = validate({ password }, passwordConstraints);
-
+  const handlePasswordChange = useCallback((passwordVal) => {
+    setState((prev) => {
+      const { valid } = validate({ password: passwordVal }, passwordConstraints);
       return {
-        password,
+        ...prev,
+        password: passwordVal,
         passwordError: !valid ? 'validation.checkField' : '',
       };
     });
-  };
+  }, []);
 
-  /**
-   * Handles submitting the login form.
-   * @param {Object} event The event object.
-   */
-  handleSubmitForm = (event) => {
+  const handleSubmitForm = useCallback((event) => {
     event.preventDefault();
+    userFieldRef.current?.blur();
+    passwordFieldRef.current?.blur();
 
-    // Blur all the fields.
-    this.userField.blur();
-    this.passwordField.blur();
-
-    if (this.props.validate && (this.state.loginError || this.state.passwordError)) {
-      // Start showing errors after first submit when configured
-      this.setState({ showErrors: true });
+    if (validateProp && (state.loginError || state.passwordError)) {
+      setState(prev => ({
+        ...prev,
+        showErrors: true,
+      }));
       return;
     }
 
-    const { redirect = {} } = this.props;
-    this.props.login(this.state, redirect);
-  };
+    loginAction(state, redirect || {});
+  }, [validateProp, state, loginAction, redirect]);
 
-  /**
-   * Toggles the visibility of the password input field.
-   */
-  togglePasswordVisibility = () => {
-    this.setState(prevState => ({
-      isPasswordVisible: !prevState.isPasswordVisible,
+  const togglePasswordVisibility = useCallback(() => {
+    setState(prev => ({
+      ...prev,
+      isPasswordVisible: !prev.isPasswordVisible,
     }));
-  };
+  }, []);
 
-  /**
-   * Handles keyboard interaction for toggling password visibility.
-   * @param {KeyboardEvent} e The keyboard event.
-   */
-  handlePasswordToggleKeyDown = (e) => {
+  const handlePasswordToggleKeyDown = useCallback((e) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      this.togglePasswordVisibility();
+      togglePasswordVisibility();
     }
-  };
+  }, [togglePasswordVisibility]);
 
-  /**
-   * Renders the component.
-   * @return {JSX.Element}
-   */
-  render() {
-    const isCheckout = this.props.redirect?.location === CHECKOUT_PATH;
-    const { isLoading, isDisabled } = this.props;
-    const {
-      login, showErrors, loginError, password, passwordError,
-    } = this.state;
+  const {
+    login, showErrors, loginError, password, passwordError, isPasswordVisible,
+  } = state;
 
-    const hasLoginError = showErrors && loginError.length > 0;
-    const hasPasswordError = showErrors && passwordError.length > 0;
+  const hasLoginError = showErrors && loginError.length > 0;
+  const hasPasswordError = showErrors && passwordError.length > 0;
+  const VisibilityToggleIcon = isPasswordVisible ? VisibilityOffIcon : VisibilityIcon;
+  const isCheckout = redirect?.location === CHECKOUT_PATH;
 
-    const VisibilityToggleIcon = this.state.isPasswordVisible ? VisibilityOffIcon : VisibilityIcon;
-
-    return (
-      <View>
-        <CloseBar shadow={false} />
-        <section className={styles.container} data-test-id="LoginPage">
-          <Portal name={PAGE_LOGIN_BEFORE} />
-          <Portal name={PAGE_LOGIN}>
-            <div className={classNames(styles.headline, 'theme__headline')}>
-              <I18n.Text string="login.headline" />
-            </div>
-            <div className={classNames(styles.subline, 'theme__sub-headline')}>
-              <I18n.Text string="login.subline" />
-            </div>
-            <Portal name={PAGE_LOGIN_FORM_BEFORE} />
-            <Portal name={PAGE_LOGIN_FORM}>
-              { /* No validate, browsers reject IDN emails! */}
-              <form onSubmit={this.handleSubmitForm} noValidate className={styles.form}>
-                <TextField
-                  required
-                  type="email"
-                  name="email"
-                  className={styles.input}
-                  label="login.email"
-                  onChange={this.handleEmailChange}
-                  value={login}
-                  setRef={this.setUserFieldRef}
-                  errorText={showErrors ? loginError : ''}
-                  attributes={{
-                    'aria-invalid': hasLoginError,
-                    'aria-describedby': hasLoginError ? 'ariaError-email' : null,
-                  }}
-                  leftElement={<PersonIcon className={classNames(styles.icon, styles.iconLeft)} />}
-                />
-                <TextField
-                  required
-                  type={this.state.isPasswordVisible ? 'text' : 'password'}
-                  name="password"
-                  className={styles.input}
-                  label="login.password"
-                  onChange={this.handlePasswordChange}
-                  value={password}
-                  setRef={this.setPasswordFieldRef}
-                  errorText={showErrors ? passwordError : ''}
-                  attributes={{
-                    'aria-invalid': hasPasswordError,
-                    'aria-describedby': hasPasswordError ? 'ariaError-password' : null,
-                  }}
-                  leftElement={<LockIcon className={classNames(styles.icon, styles.iconLeft)} />}
-                  rightElement={
-                    <div
-                      role="button"
-                      tabIndex={0}
-                      onClick={this.togglePasswordVisibility}
-                      onKeyDown={this.handlePasswordToggleKeyDown}
-                      aria-label={this.state.isPasswordVisible
-                        ? i18n.text('login.hide_password')
-                        : i18n.text('login.show_password')}
-                      className={styles.toggleButton}
-                    >
-                      <VisibilityToggleIcon className={classNames(styles.icon, styles.iconRight)} />
-                    </div>
-                  }
-                />
-                <div className={styles.forgotWrapper}>
-                  <ForgotPassword />
-                </div>
-                <div className={styles.buttonWrapper} data-test-id="LoginButton">
-                  <RippleButton
-                    className={styles.button}
-                    type="secondary"
-                    disabled={isLoading || isDisabled}
+  return (
+    <View>
+      <CloseBar shadow={false} />
+      <section className={classes.container} data-test-id="LoginPage">
+        <Portal name={PAGE_LOGIN_BEFORE} />
+        <Portal name={PAGE_LOGIN}>
+          <div className={cx(classes.headline, 'theme__headline')}>
+            <I18n.Text string="login.headline" />
+          </div>
+          <div className={cx(classes.subline, 'theme__sub-headline')}>
+            <I18n.Text string="login.subline" />
+          </div>
+          <Portal name={PAGE_LOGIN_FORM_BEFORE} />
+          <Portal name={PAGE_LOGIN_FORM}>
+            <form onSubmit={handleSubmitForm} noValidate className={classes.form}>
+              <TextField
+                required
+                type="email"
+                name="email"
+                className={classes.input}
+                label="login.email"
+                onChange={handleEmailChange}
+                value={login}
+                setRef={setUserFieldRef}
+                errorText={showErrors ? loginError : ''}
+                attributes={{
+                  'aria-invalid': hasLoginError,
+                  'aria-describedby': hasLoginError ? 'ariaError-email' : null,
+                }}
+                leftElement={<PersonIcon className={cx(classes.icon, classes.iconLeft)} />}
+              />
+              <TextField
+                required
+                type={isPasswordVisible ? 'text' : 'password'}
+                name="password"
+                className={classes.input}
+                label="login.password"
+                onChange={handlePasswordChange}
+                value={password}
+                setRef={setPasswordFieldRef}
+                errorText={showErrors ? passwordError : ''}
+                attributes={{
+                  'aria-invalid': hasPasswordError,
+                  'aria-describedby': hasPasswordError ? 'ariaError-password' : null,
+                }}
+                leftElement={<LockIcon className={cx(classes.icon, classes.iconLeft)} />}
+                rightElement={(
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    onClick={togglePasswordVisibility}
+                    onKeyDown={handlePasswordToggleKeyDown}
+                    aria-label={isPasswordVisible
+                      ? i18n.text('login.hide_password')
+                      : i18n.text('login.show_password')}
+                    className={classes.toggleButton}
                   >
-                    <I18n.Text string="login.button" />
-                  </RippleButton>
-                </div>
-              </form>
-            </Portal>
-            <Portal name={PAGE_LOGIN_FORM_AFTER} />
-            <div>
-              <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
-              <Portal name={PAGE_LOGIN_REGISTER_LINK}>
-                <I18n.Text string="login.no_account" className={styles.noAccount} />
-                <Link
-                  href={`${REGISTER_PATH}${isCheckout ? '?checkout=1' : ''}`}
-                  className={styles.signup}
+                    <VisibilityToggleIcon className={cx(classes.icon, classes.iconRight)} />
+                  </div>
+                )}
+              />
+              <div className={classes.forgotWrapper}>
+                <ForgotPassword />
+              </div>
+              <div className={classes.buttonWrapper} data-test-id="LoginButton">
+                <RippleButton
+                  className={classes.button}
+                  type="secondary"
                   disabled={isLoading || isDisabled}
                 >
-                  <I18n.Text string="login.signup" />
-                </Link>
-              </Portal>
-              <Portal name={PAGE_LOGIN_REGISTER_LINK_AFTER} />
-            </div>
+                  <I18n.Text string="login.button" />
+                </RippleButton>
+              </div>
+            </form>
           </Portal>
-          <Portal name={PAGE_LOGIN_AFTER} />
-        </section>
-      </View>
-    );
-  }
-}
+          <Portal name={PAGE_LOGIN_FORM_AFTER} />
+          <div>
+            <Portal name={PAGE_LOGIN_REGISTER_LINK_BEFORE} />
+            <Portal name={PAGE_LOGIN_REGISTER_LINK}>
+              <I18n.Text string="login.no_account" className={classes.noAccount} />
+              <Link
+                href={`${REGISTER_PATH}${isCheckout ? '?checkout=1' : ''}`}
+                className={classes.signup}
+                disabled={isLoading || isDisabled}
+              >
+                <I18n.Text string="login.signup" />
+              </Link>
+            </Portal>
+            <Portal name={PAGE_LOGIN_REGISTER_LINK_AFTER} />
+          </div>
+        </Portal>
+        <Portal name={PAGE_LOGIN_AFTER} />
+      </section>
+    </View>
+  );
+};
+
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  redirect: PropTypes.shape(),
+  validate: PropTypes.bool,
+};
+
+Login.defaultProps = {
+  isDisabled: false,
+  isLoading: false,
+  redirect: {},
+  validate: true,
+};
 
 export default connect(props => (
   <RouteContext.Consumer>

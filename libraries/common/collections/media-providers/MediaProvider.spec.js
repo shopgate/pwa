@@ -1,8 +1,7 @@
 /** @jest-environment jsdom */
 
 import { logger, i18n } from '@shopgate/engage/core/helpers';
-import MediaProvider from './MediaProvider';
-import styles from './style';
+import MediaProvider, { mediaProviderResponsiveContainerClass } from './MediaProvider';
 
 jest.mock('@shopgate/engage/core/helpers', () => ({
   logger: {
@@ -94,7 +93,7 @@ describe('MediaProvider', () => {
       expect(dom).toMatchSnapshot();
       expect(container.getAttribute('height')).toBeNull();
       expect(container.getAttribute('width')).toBeNull();
-      expect(container.closest('div').className).toBe(styles.responsiveContainer.toString());
+      expect(container.closest('div').className).toBe(mediaProviderResponsiveContainerClass);
     });
 
     it('should not responsify already responsive element', () => {
@@ -108,7 +107,7 @@ describe('MediaProvider', () => {
       expect(dom).toMatchSnapshot();
       expect(container.getAttribute('height')).toBeNull();
       expect(container.getAttribute('width')).toBeNull();
-      expect(container.closest('div').className).toBe(styles.responsiveContainer.toString());
+      expect(container.closest('div').className).toBe(mediaProviderResponsiveContainerClass);
     });
   });
 

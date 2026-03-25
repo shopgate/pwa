@@ -44,7 +44,7 @@ const useStyles = makeStyles()({
       whiteSpace: 'pre-wrap',
       paddingLeft: variables.gap.xsmall,
     },
-    ' tr:nth-last-child(2) td': {
+    ' tr:nth-last-of-type(2) td': {
       paddingBottom: 8,
     },
     ' tr:last-child td': {

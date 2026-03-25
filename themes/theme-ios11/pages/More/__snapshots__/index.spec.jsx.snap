@@ -33,22 +33,15 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
             <div />
           </BackBar>
           <Headline
-            style={
-              {
-                "margin": "24px 20px 16px",
-              }
-            }
+            className="tss-ndxtd1-welcomeHeadline"
+            style={null}
             tag="h1"
             text="navigation.welcome_message"
           >
             <h1
-              className="headline theme__headline tss-17bm8av-root-h1"
+              className="headline theme__headline tss-154pink-h1-welcomeHeadline"
               data-test-id="Headline"
-              style={
-                {
-                  "margin": "24px 20px 16px",
-                }
-              }
+              style={null}
             >
               <Text
                 string="navigation.welcome_message"
@@ -126,22 +119,15 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       title="navigation.your_account"
                     >
                       <Headline
-                        style={
-                          {
-                            "margin": "24px 20px 16px",
-                          }
-                        }
+                        className="tss-4b37q4-headline"
+                        style={null}
                         tag="h2"
                         text="navigation.your_account"
                       >
                         <h2
-                          className="headline theme__headline tss-1ajnxxp-root-h2"
+                          className="headline theme__headline tss-10zp3hj-h2-headline"
                           data-test-id="Headline"
-                          style={
-                            {
-                              "margin": "24px 20px 16px",
-                            }
-                          }
+                          style={null}
                         >
                           <Text
                             string="navigation.your_account"
@@ -151,11 +137,8 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         </h2>
                       </Headline>
                       <div
-                        className={
-                          {
-                            "data-css-13ch7sr": "",
-                          }
-                        }
+                        className="tss-1sqpupb-list"
+                        data-test-id="more-section-list"
                       >
                         <SurroundPortals
                           portalName="nav-menu.logout"
@@ -236,22 +219,15 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                 title="navigation.store_information"
               >
                 <Headline
-                  style={
-                    {
-                      "margin": "24px 20px 16px",
-                    }
-                  }
+                  className="tss-4b37q4-headline"
+                  style={null}
                   tag="h2"
                   text="navigation.store_information"
                 >
                   <h2
-                    className="headline theme__headline tss-1ajnxxp-root-h2"
+                    className="headline theme__headline tss-10zp3hj-h2-headline"
                     data-test-id="Headline"
-                    style={
-                      {
-                        "margin": "24px 20px 16px",
-                      }
-                    }
+                    style={null}
                   >
                     <Text
                       string="navigation.store_information"
@@ -261,11 +237,8 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   </h2>
                 </Headline>
                 <div
-                  className={
-                    {
-                      "data-css-13ch7sr": "",
-                    }
-                  }
+                  className="tss-1sqpupb-list"
+                  data-test-id="more-section-list"
                 >
                   <Shipping>
                     <Portal
@@ -611,22 +584,15 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
             <div />
           </BackBar>
           <Headline
-            style={
-              {
-                "margin": "24px 20px 16px",
-              }
-            }
+            className="tss-ndxtd1-welcomeHeadline"
+            style={null}
             tag="h1"
             text="login.headline"
           >
             <h1
-              className="headline theme__headline tss-17bm8av-root-h1"
+              className="headline theme__headline tss-154pink-h1-welcomeHeadline"
               data-test-id="Headline"
-              style={
-                {
-                  "margin": "24px 20px 16px",
-                }
-              }
+              style={null}
             >
               <Text
                 string="login.headline"
@@ -776,22 +742,15 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                 title="navigation.store_information"
               >
                 <Headline
-                  style={
-                    {
-                      "margin": "24px 20px 16px",
-                    }
-                  }
+                  className="tss-4b37q4-headline"
+                  style={null}
                   tag="h2"
                   text="navigation.store_information"
                 >
                   <h2
-                    className="headline theme__headline tss-1ajnxxp-root-h2"
+                    className="headline theme__headline tss-10zp3hj-h2-headline"
                     data-test-id="Headline"
-                    style={
-                      {
-                        "margin": "24px 20px 16px",
-                      }
-                    }
+                    style={null}
                   >
                     <Text
                       string="navigation.store_information"
@@ -801,11 +760,8 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                   </h2>
                 </Headline>
                 <div
-                  className={
-                    {
-                      "data-css-13ch7sr": "",
-                    }
-                  }
+                  className="tss-1sqpupb-list"
+                  data-test-id="more-section-list"
                 >
                   <Shipping>
                     <Portal

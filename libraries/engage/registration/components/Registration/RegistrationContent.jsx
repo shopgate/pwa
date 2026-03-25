@@ -21,7 +21,7 @@ const useStyles = makeStyles()({
     ...(!isIOSTheme() ? {
       '@media(min-width: 768px)': {
         flexDirection: 'row-reverse',
-        '> :not(:first-child)': {
+        '> :not(:first-of-type)': {
           marginRight: variables.gap.big,
         },
       },

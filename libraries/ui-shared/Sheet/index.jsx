@@ -235,7 +235,10 @@ SheetView.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   contentClassName: PropTypes.string,
-  title: Header.propTypes.title,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]),
 };
 
 SheetView.defaultProps = {
@@ -269,7 +272,10 @@ class Sheet extends Component {
     onDidOpen: PropTypes.func,
     onOpen: PropTypes.func,
     showSearch: PropTypes.bool,
-    title: Header.propTypes.title,
+    title: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.element,
+    ]),
   };
 
   static defaultProps = {

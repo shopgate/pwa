@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -7,6 +7,8 @@ import {
 } from '@shopgate/pwa-common/constants/Portals';
 import { ClientInformation } from '@shopgate/engage/development/components';
 import { View } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
 import Quicklinks from './components/Quicklinks';
@@ -14,62 +16,53 @@ import StoreInfo from './components/StoreInfo';
 import UserMenu from './components/UserMenu';
 import portalProps from './portalProps';
 import connect from './connector';
-import styles from './style';
+
+const useStyles = makeStyles()(() => ({
+  welcomeHeadline: {
+    margin: '24px 20px 16px',
+  },
+}));
 
 /**
- * The More component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class More extends Component {
-  static propTypes = {
-    isLoggedIn: PropTypes.bool,
-    logout: PropTypes.func,
-    user: PropTypes.shape(),
-  };
+const More = (props) => {
+  const { classes } = useStyles();
+  const { isLoggedIn, user } = props;
 
-  static defaultProps = {
-    isLoggedIn: false,
-    logout: () => { },
-    user: null,
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * @returns {string}
-   */
-  get welcomeMessage() {
-    const { isLoggedIn, user } = this.props;
-    const { __ } = this.context.i18n();
-
-    if (isLoggedIn) {
-      return __('navigation.welcome_message', { name: user.firstName });
+  const welcomeMessage = useMemo(() => {
+    if (isLoggedIn && user) {
+      return i18n.text('navigation.welcome_message', { name: user.firstName });
     }
+    return i18n.text('login.headline');
+  }, [isLoggedIn, user]);
 
-    return __('login.headline');
-  }
+  return (
+    <View aria-hidden={false}>
+      <BackBar right={null} />
+      <Headline className={classes.welcomeHeadline} tag="h1" text={welcomeMessage} />
+      {!isLoggedIn && <UserMenu {...props} />}
+      <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />
+      {isLoggedIn && <UserMenu {...props} />}
+      <Quicklinks />
+      <StoreInfo />
+      <Portal name={NAV_MENU_CONTENT_AFTER} props={portalProps} />
+      <ClientInformation />
+    </View>
+  );
+};
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { isLoggedIn } = this.props;
+More.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  logout: PropTypes.func,
+  user: PropTypes.shape(),
+};
 
-    return (
-      <View aria-hidden={false}>
-        <BackBar right={null} />
-        <Headline style={styles.headline} tag="h1" text={this.welcomeMessage} />
-        {!isLoggedIn && <UserMenu {...this.props} />}
-        <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />
-        {isLoggedIn && <UserMenu {...this.props} />}
-        <Quicklinks />
-        <StoreInfo />
-        <Portal name={NAV_MENU_CONTENT_AFTER} props={portalProps} />
-        <ClientInformation />
-      </View>
-    );
-  }
-}
+More.defaultProps = {
+  isLoggedIn: false,
+  logout: () => { },
+  user: null,
+};
 
 export default connect(More);

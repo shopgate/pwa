@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import {
   PRODUCT_HEADER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
@@ -6,24 +6,41 @@ import { Section } from '@shopgate/engage/a11y';
 import { ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import { Rating } from '@shopgate/engage/product/components';
 import { ProductContext } from '@shopgate/engage/product/contexts';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 import CTAButtons from './components/CTAButtons';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
-import styles from './style';
+
+const useStyles = makeStyles()(() => ({
+  content: {
+    position: 'relative',
+    padding: themeVariables.gap.big,
+    borderTop: `${themeColors.placeholder} 2px solid`,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      borderTop: 'none',
+    },
+  },
+}));
 
 /**
- * The product header component.
+ * @returns {JSX.Element}
  */
-class ProductHeader extends PureComponent {
+const ProductHeader = () => {
+  const { classes, cx } = useStyles();
+
   /**
-   * @param {Object} props The consumer props.
-   * @returns {JSX}
+   * @param {Object} params Params from product context.
+   * @param {string} params.productId Product id.
+   * @param {string} [params.variantId] Variant id.
+   * @param {Object} [params.options] Options.
+   * @returns {JSX.Element}
    */
-  consumeRenderer = ({ productId, variantId, options }) => {
+  const consumeRenderer = ({ productId, variantId, options }) => {
     const id = variantId || productId;
 
     return (
-      <div className={`${styles.content} theme__product__header`}>
+      <div className={cx(classes.content, 'theme__product__header')}>
         <ResponsiveContainer breakpoint="xs" appAlways>
           <CTAButtons productId={id} />
         </ResponsiveContainer>
@@ -36,18 +53,13 @@ class ProductHeader extends PureComponent {
     );
   };
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <SurroundPortals portalName={PRODUCT_HEADER}>
-        <ProductContext.Consumer>
-          {this.consumeRenderer}
-        </ProductContext.Consumer>
-      </SurroundPortals>
-    );
-  }
-}
+  return (
+    <SurroundPortals portalName={PRODUCT_HEADER}>
+      <ProductContext.Consumer>
+        {consumeRenderer}
+      </ProductContext.Consumer>
+    </SurroundPortals>
+  );
+};
 
 export default ProductHeader;

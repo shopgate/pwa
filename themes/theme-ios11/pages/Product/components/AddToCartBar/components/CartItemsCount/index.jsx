@@ -1,108 +1,111 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import CheckIcon from '@shopgate/pwa-ui-shared/icons/CheckIcon';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Count from './components/Count';
-import styles, { duration, durationShort, transition } from './style';
 import connect from './connector';
 
+const { variables } = themeConfig;
+
+export const duration = 200;
+export const durationShort = 50;
+
+export const transition = {
+  entering: {
+    opacity: 0,
+    transform: 'translate3d(0, 100%, 0)',
+    transition: `opacity ${duration}ms, transform ${duration}ms cubic-bezier(0.07,0.29,0.31,1.34)`,
+  },
+  entered: {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
+    transition: `opacity ${duration}ms, transform ${duration}ms cubic-bezier(0.07,0.29,0.31,1.34)`,
+  },
+  exited: {
+    opacity: 0,
+    transform: 'translate3d(0, 100%, 0)',
+  },
+  exiting: {
+    opacity: 0,
+    transform: 'translate3d(0, 0, 0)',
+  },
+};
+
+const useStyles = makeStyles()(() => ({
+  container: {
+    alignItems: 'center',
+    display: 'flex',
+    flexGrow: 1,
+    overflow: 'hidden',
+    transform: 'translate3d(0, 100%, 0)',
+    willChange: 'transform',
+    lineHeight: 1.25,
+  },
+  check: {
+    fontSize: '1.2rem',
+    paddingRight: variables.gap.small,
+  },
+}));
+
 /**
- * The cart items count component.
- * @extends Component
+ * Cart items count component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class CartItemsCount extends Component {
-  static propTypes = {
-    itemCount: PropTypes.number.isRequired,
-    hasCatchWeight: PropTypes.bool,
-    unit: PropTypes.string,
-  };
+const CartItemsCount = ({
+  itemCount,
+  hasCatchWeight,
+  unit,
+}) => {
+  const { classes } = useStyles();
+  const [numItems, setNumItems] = useState(itemCount);
+  const [isVisible, setIsVisible] = useState(itemCount > 0);
 
-  static defaultProps = {
-    unit: null,
-    hasCatchWeight: false,
-  };
-
-  /**
-   * Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      numItems: props.itemCount,
-      isVisible: props.itemCount > 0,
-    };
-  }
-
-  /**
-   * Decides on how to animate when the component props change.
-   * @param {Object} nextProps Incoming component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const numItems = nextProps.itemCount;
-
-    if (numItems === 0) {
-      // When there are no items, reset this element to hide.
-      this.setState({
-        isVisible: false,
-        numItems,
-      });
-    } else if (!this.state.isVisible && numItems > 0) {
-      // Set to visible when is currently invisible and has items.
-      this.setState({
-        isVisible: true,
-        numItems,
-      });
-    } else if (this.state.numItems !== numItems) {
-      // Just update the value if the number of items changed.
-      this.setState({
-        numItems,
-      });
+  useEffect(() => {
+    if (itemCount === 0) {
+      setIsVisible(false);
+      setNumItems(0);
+      return;
     }
-  }
+    setIsVisible(true);
+    setNumItems(itemCount);
+  }, [itemCount]);
 
-  /**
-   * Only update if the cart product count changed.
-   * @param {Object} nextProps The next props.
-   * @param {Object} nextState The next state.
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.state.isVisible !== nextState.isVisible
-      || this.state.numItems !== nextState.numItems
-    );
-  }
-
-  /**
-   * Renders the component.
-   * @return {JSX}
-   */
-  render() {
-    return (
-      <Transition
-        in={this.state.isVisible}
-        timeout={{
-          enter: duration,
-          exit: durationShort,
-        }}
-      >
-        {state => (
-          <div className={styles.container} style={transition[state]} aria-hidden>
-            <div className={styles.check}>
-              <CheckIcon />
-            </div>
-            <Count
-              unit={this.props.unit}
-              hasCatchWeight={this.props.hasCatchWeight}
-              count={this.state.numItems}
-            />
+  return (
+    <Transition
+      in={isVisible}
+      timeout={{
+        enter: duration,
+        exit: durationShort,
+      }}
+    >
+      {state => (
+        <div className={classes.container} style={transition[state]} aria-hidden>
+          <div className={classes.check}>
+            <CheckIcon />
           </div>
-        )}
-      </Transition>
-    );
-  }
-}
+          <Count
+            unit={unit}
+            hasCatchWeight={hasCatchWeight}
+            count={numItems}
+          />
+        </div>
+      )}
+    </Transition>
+  );
+};
+
+CartItemsCount.propTypes = {
+  itemCount: PropTypes.number.isRequired,
+  hasCatchWeight: PropTypes.bool,
+  unit: PropTypes.string,
+};
+
+CartItemsCount.defaultProps = {
+  unit: null,
+  hasCatchWeight: false,
+};
 
 export default connect(CartItemsCount);

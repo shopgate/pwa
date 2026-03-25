@@ -1,155 +1,136 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, {
+  useCallback, useEffect, useMemo, useState,
+} from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import Sheet from './components/Sheet';
 import connect from './connector';
-import styles from './style';
+
+const useStyles = makeStyles()(() => ({
+  button: {
+    background: 'var(--color-background-accent)',
+    color: 'var(--color-text-high-emphasis)',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    minHeight: 56,
+    outline: 0,
+    padding: '12px 16px',
+    marginBottom: 8,
+    transition: 'background 250ms ease-in, color 250ms ease-in',
+    cursor: 'pointer',
+  },
+  buttonDisabled: {
+    color: themeColors.shade4,
+    cursor: 'not-allowed',
+  },
+  label: {
+    fontSize: 12,
+    marginTop: -2,
+    marginBottom: 4,
+  },
+  selection: {
+    fontWeight: 500,
+    lineHeight: 1.125,
+  },
+}));
 
 /**
- * The CategoryPicker component.
+ * Category picker component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class CategoryPicker extends PureComponent {
-  static propTypes = {
-    fetchCategory: PropTypes.func.isRequired,
-    onSelect: PropTypes.func.isRequired,
-    categoryId: PropTypes.string,
-    label: PropTypes.string,
-    selectedId: PropTypes.string,
-    subcategories: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    })),
-  };
+const CategoryPicker = ({
+  fetchCategory,
+  onSelect,
+  categoryId,
+  label,
+  selectedId,
+  subcategories,
+}) => {
+  const { classes, cx } = useStyles();
+  const [sheet, setSheet] = useState(false);
 
-  static defaultProps = {
-    categoryId: null,
-    label: '',
-    selectedId: null,
-    subcategories: null,
-  };
+  const disabled = useMemo(() => (
+    !Array.isArray(subcategories) || subcategories.length === 0 || categoryId === null
+  ), [subcategories, categoryId]);
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * @param {Object} props The component props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      sheet: false,
-      disabled: false,
-    };
-  }
-
-  /**
-   * Determines the disabled state for the component.
-   * @param {Object} props The component props.
-   * @return {Object}
-   */
-  static getDerivedStateFromProps(props) {
-    const hasSubcategories = Array.isArray(props.subcategories) && props.subcategories.length > 0;
-
-    return {
-      disabled: !hasSubcategories || props.categoryId === null,
-    };
-  }
-
-  /**
-   * Get the category data for the category once the component has mounted.
-   */
-  componentDidMount() {
-    const { categoryId, subcategories, fetchCategory } = this.props;
+  useEffect(() => {
     if (categoryId !== null && subcategories === null) {
       fetchCategory(categoryId);
     }
-  }
+  }, [categoryId, subcategories, fetchCategory]);
 
-  /**
-   * @param {string} defaultLabel The default button label.
-   * @return {string}
-   */
-  getPickerLabel = (defaultLabel) => {
-    const { subcategories, selectedId } = this.props;
-
-    if (!selectedId) {
+  const getPickerLabel = useCallback((defaultLabel) => {
+    if (!selectedId || !subcategories) {
       return defaultLabel;
     }
+    const subcategory = subcategories.find(val => val.id === selectedId);
+    return subcategory ? subcategory.name : defaultLabel;
+  }, [selectedId, subcategories]);
 
-    const subcategory = subcategories.find(val => (val.id === selectedId));
+  const closeSheet = useCallback(() => setSheet(false), []);
 
-    return subcategory.name;
-  };
-
-  /**
-   * Closes the sheet.
-   */
-  closeSheet = () => {
-    this.setState({ sheet: false });
-  };
-
-  /**
-   * Click handler for the picker button.
-   * @param {Object} event The event object.
-   */
-  handlePickerClick = (event) => {
+  const handlePickerClick = useCallback((event) => {
     event.preventDefault();
-
-    if (this.state.disabled) {
+    if (disabled) {
       return;
     }
+    setSheet(true);
+  }, [disabled]);
 
-    this.setState({ sheet: true });
-  };
-
-  /**
-   * Selection handler for the sheet.
-   * @param {string} subcategoryId The selected subcategoryId.
-   */
-  handleSheetSelect = (subcategoryId) => {
-    const { categoryId, subcategories, onSelect } = this.props;
+  const handleSheetSelect = useCallback((subcategoryId) => {
     const subcategory = subcategories.find(item => item.id === subcategoryId);
     onSelect(categoryId, subcategory);
-    this.closeSheet();
-  };
+    closeSheet();
+  }, [categoryId, subcategories, onSelect, closeSheet]);
 
-  /**
-   * Render method of the component.
-   * @returns {JSX}
-   */
-  render() {
-    const { __ } = this.context.i18n();
-    const { selectedId, subcategories, label } = this.props;
-    const { disabled } = this.state;
+  const buttonLabel = getPickerLabel(i18n.text('common.please_choose'));
+  const pickerClasses = cx(classes.button, disabled && classes.buttonDisabled);
 
-    const buttonLabel = this.getPickerLabel(__('common.please_choose'));
-    const pickerClasses = classNames(
-      styles.button,
-      { [styles.buttonDisabled]: disabled }
-    );
+  return (
+    <>
+      <div
+        aria-hidden
+        data-test-id="nested-picker-trigger"
+        aria-disabled={disabled}
+        onClick={handlePickerClick}
+        className={pickerClasses}
+      >
+        {label && <div className={classes.label} data-test-id="nested-picker-label">{label}</div>}
+        <div className={classes.selection} data-test-id="nested-picker-selection">{buttonLabel}</div>
+      </div>
+      <Sheet
+        items={subcategories || []}
+        onSelect={handleSheetSelect}
+        onClose={closeSheet}
+        open={sheet}
+        selectedId={selectedId}
+        label={label}
+      />
+    </>
+  );
+};
 
-    return (
-      <>
-        <div
-          aria-hidden
-          onClick={this.handlePickerClick}
-          className={pickerClasses}
-        >
-          {label && <div className={styles.label}>{label}</div>}
-          <div className={styles.selection}>{buttonLabel}</div>
-        </div>
-        <Sheet
-          items={subcategories || []}
-          onSelect={this.handleSheetSelect}
-          onClose={this.closeSheet}
-          open={this.state.sheet}
-          selectedId={selectedId}
-          label={label}
-        />
-      </>
-    );
-  }
-}
+CategoryPicker.propTypes = {
+  fetchCategory: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  categoryId: PropTypes.string,
+  label: PropTypes.string,
+  selectedId: PropTypes.string,
+  subcategories: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  })),
+};
+
+CategoryPicker.defaultProps = {
+  categoryId: null,
+  label: '',
+  selectedId: null,
+  subcategories: null,
+};
 
 export default connect(CategoryPicker);

@@ -71,14 +71,12 @@ describe('<ReviewForm />', () => {
     comp.update();
     expect(comp).toMatchSnapshot();
 
-    const errors = comp.find('ReviewForm').instance().state.validationErrors;
     const author = comp.findWhere(c => (
       c.length && c.name() === 'TextField' && c.prop('name') === 'author'
     ));
 
     expect(comp.find('RatingScale').prop('value')).toEqual(0);
     expect(comp.find('RatingScale').prop('errorText')).toBeDefined();
-    expect(errors.rate).toBeDefined();
 
     expect(author.prop('value')).toBeFalsy();
     expect(author.prop('errorText')).toBeDefined();
@@ -107,19 +105,19 @@ describe('<ReviewForm />', () => {
     expect(comp).toMatchSnapshot();
 
     // Check validation with to long review
-    const errors1 = comp.find('ReviewForm').instance().state.validationErrors;
     const review = comp.findWhere(c => (
       c.length && c.name() === 'TextField' && c.prop('name') === 'review'
     ));
-    expect(errors1.review).toBeDefined();
+    expect(review.prop('errorText')).toBeDefined();
 
     // Check validation with changed, shorter review
     review.find('textarea').simulate('change', { target: { value: 'Lorem ipsum dolor sit amet' } });
     comp.update();
     expect(comp).toMatchSnapshot();
 
-    const errors2 = comp.find('ReviewForm').instance().state.validationErrors;
-    expect(errors2.review).toBeFalsy();
+    expect(comp.findWhere(c => (
+      c.length && c.name() === 'TextField' && c.prop('name') === 'review'
+    )).prop('errorText')).toBeFalsy();
 
     const longAuthor = new Array(256).fill('a').join('');
     comp.find('input[name="author"]').simulate('change', {
@@ -127,19 +125,24 @@ describe('<ReviewForm />', () => {
         value: longAuthor,
       },
     });
-    const errors3 = comp.find('ReviewForm').instance().state.validationErrors;
-    expect(errors3.author).toBeTruthy();
+    comp.update();
+    expect(comp.findWhere(c => (
+      c.length && c.name() === 'TextField' && c.prop('name') === 'author'
+    )).prop('errorText')).toBeTruthy();
     comp.find('input[name="author"]').simulate('change', {
       target: {
         value: 'Author',
       },
     });
+    comp.update();
 
-    const errors4 = comp.find('ReviewForm').instance().state.validationErrors;
-    expect(errors4.author).toBeFalsy();
+    expect(comp.findWhere(c => (
+      c.length && c.name() === 'TextField' && c.prop('name') === 'author'
+    )).prop('errorText')).toBeFalsy();
 
     comp.find('RatingScale').find('[role="button"]').first().simulate('click');
-    expect(comp.find('ReviewForm').instance().state.rate).toBe(20);
+    comp.update();
+    expect(comp.find('RatingScale').prop('value')).toBe(20);
   });
 
   it('should submit with valid review', () => {
@@ -148,7 +151,9 @@ describe('<ReviewForm />', () => {
 
     comp.find('form').simulate('submit');
     comp.update();
-    const errors = comp.find('ReviewForm').instance().state.validationErrors;
-    expect(Object.keys(errors).length).toBe(0);
+    expect(comp.find('RatingScale').prop('errorText')).toBeFalsy();
+    expect(comp.findWhere(c => (
+      c.length && c.name() === 'TextField' && c.prop('name') === 'author'
+    )).prop('errorText')).toBeFalsy();
   });
 });

@@ -1,0 +1,42 @@
+/* Plain CSS for embedded media wrappers (replaces Emotion css() in MediaProvider). */
+.common__media-provider_responsive-container {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding: 56.25% 0 0 0;
+  font-size: 0.875rem;
+  box-sizing: border-box;
+}
+
+.common__media-provider_responsive-container iframe,
+.common__media-provider_responsive-container object,
+.common__media-provider_responsive-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.common__media-provider_cookie-consent-message-container {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 16px;
+  line-height: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 16px;
+  top: 0;
+  box-sizing: border-box;
+}
+
+.common__media-provider_cookie-consent-icon {
+  display: block;
+  height: 40px;
+  width: auto;
+  margin: 0 auto;
+}

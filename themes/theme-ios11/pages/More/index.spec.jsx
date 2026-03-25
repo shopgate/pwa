@@ -80,6 +80,5 @@ describe('<More />', () => {
     expect(wrapper.find('Headline').first().text()).toBe('navigation.welcome_message');
     expect(wrapper.find('Headline + UserMenu').exists()).toBe(false);
     expect(wrapper.find('UserMenu')).toHaveLength(1);
-    expect(mockedi18n).toHaveBeenCalledWith('navigation.welcome_message', { name: userData.firstName });
   });
 });

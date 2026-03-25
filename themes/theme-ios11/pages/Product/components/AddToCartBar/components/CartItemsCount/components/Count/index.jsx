@@ -1,98 +1,124 @@
-import React, { Component } from 'react';
+import React, { useCallback, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import styles, { duration, transition } from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+export const duration = 200;
+
+export const transition = {
+  entering: {
+    opacity: 0,
+    transform: 'translate3d(0, 100%, 0)',
+  },
+  entered: {
+    opacity: 1,
+    transform: 'translate3d(0, 0, 0)',
+  },
+  exited: {
+    opacity: 0,
+    transform: 'translate3d(0, 100%, 0)',
+  },
+  exiting: {
+    opacity: 0,
+    transform: 'translate3d(0, 100%, 0)',
+    transition: 'transform 50ms linear',
+  },
+};
+
+const useStyles = makeStyles()(() => ({
+  container: {
+    transition: `transform ${duration}ms cubic-bezier(0.07,0.29,0.31,1.34), opacity ${duration}ms linear`,
+  },
+}));
 
 /**
- * The Count component.
+ * Reducer for transition visibility vs displayed item count.
+ * @param {Object} state Current state with `in` and `numItems`.
+ * @param {Object} action Dispatched action with `type` and optional `count`.
+ * @returns {Object} Next state.
  */
-class Count extends Component {
-  static propTypes = {
-    count: PropTypes.number.isRequired,
-    hasCatchWeight: PropTypes.bool,
-    unit: PropTypes.string,
-  };
-
-  static defaultProps = {
-    unit: null,
-    hasCatchWeight: false,
-  };
-
-  /**
-   * Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      in: true,
-      numItems: props.count,
+const reducer = (state, action) => {
+  if (action.type === 'countChanged') {
+    return {
+      ...state,
+      in: false,
+      numItems: action.count,
     };
   }
+  if (action.type === 'exited') {
+    return {
+      ...state,
+      in: true,
+    };
+  }
+  return state;
+};
 
-  /**
-   * Sets the animation state if props change.
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.count !== nextProps.count) {
-      this.setState({
-        in: false,
-        numItems: nextProps.count,
+/**
+ * Count component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
+ */
+const Count = ({ count, hasCatchWeight, unit }) => {
+  const { classes } = useStyles();
+  const [state, dispatch] = useReducer(reducer, {
+    in: true,
+    numItems: count,
+  });
+
+  useEffect(() => {
+    if (count !== state.numItems) {
+      dispatch({
+        type: 'countChanged',
+        count,
       });
     }
-  }
+  }, [count, state.numItems]);
 
-  /**
-   * Only update if the cart product count changed.
-   * @param {Object} nextProps The next props.
-   * @param {Object} nextState The next state.
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.state.in !== nextState.in ||
-      this.state.numItems !== nextState.numItems
-    );
-  }
+  const handleOnExited = useCallback(() => {
+    dispatch({ type: 'exited' });
+  }, []);
 
-  handleOnExited = () => {
-    this.setState({ in: true });
-  };
+  return (
+    <Transition
+      in={state.in}
+      onExited={handleOnExited}
+      timeout={state.in ? duration : 0}
+    >
+      {transitionStatus => (
+        <div className={classes.container} style={transition[transitionStatus]}>
+          {((unit && hasCatchWeight) || false) ? (
+            <I18n.Text
+              string="product.item_added_unit"
+              params={{
+                unit,
+                count: state.numItems,
+              }}
+            />
+          ) : (
+            <I18n.Text
+              string="product.item_added"
+              params={{
+                count: state.numItems,
+              }}
+            />
+          )}
+        </div>
+      )}
+    </Transition>
+  );
+};
 
-  /**
-   * Render the component.
-   * @return {JSX}
-   */
-  render() {
-    const { unit, hasCatchWeight } = this.props;
+Count.propTypes = {
+  count: PropTypes.number.isRequired,
+  hasCatchWeight: PropTypes.bool,
+  unit: PropTypes.string,
+};
 
-    return (
-      <Transition
-        in={this.state.in}
-        onExited={this.handleOnExited}
-        timeout={this.state.in ? duration : 0}
-      >
-        {state => (
-          <div className={styles.container} style={transition[state]}>
-            {((unit && hasCatchWeight) || false) ? (
-              <I18n.Text
-                string="product.item_added_unit"
-                params={{
-                  unit,
-                  count: this.state.numItems,
-                }}
-              />
-            ) : (
-              <I18n.Text string="product.item_added" params={{ count: this.state.numItems }} />
-            )}
-          </div>
-        )}
-      </Transition>
-    );
-  }
-}
+Count.defaultProps = {
+  unit: null,
+  hasCatchWeight: false,
+};
 
 export default Count;
