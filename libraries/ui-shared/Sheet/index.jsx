@@ -5,13 +5,244 @@ import classNames from 'classnames';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles, keyframes, responsiveMediaQuery } from '@shopgate/engage/styles';
 import ProgressBar from '../ProgressBar';
 import Header from './components/Header';
-import styles from './style';
 
 export const SHEET_EVENTS = {
   OPEN: 'Sheet.open',
   CLOSE: 'Sheet.close',
+};
+
+const duration = 300;
+const easing = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
+
+const slideInSheetDrawer = keyframes({
+  '0%': { transform: 'translateY(100%)' },
+  '100%': { transform: 'translateY(0)' },
+});
+
+const fadeInSheetDrawer = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
+const slideOutSheetDrawer = keyframes({
+  '0%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(100%)' },
+});
+
+const fadeOutSheetDrawer = keyframes({
+  '0%': { opacity: 1 },
+  '100%': { opacity: 0 },
+});
+
+const useStyles = makeStyles()({
+  section: {
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '80%',
+      position: 'fixed',
+      left: 0,
+      right: 0,
+      top: 0,
+      bottom: 0,
+      margin: 'auto',
+      zIndex: 100,
+    },
+  },
+  container: {
+    bottom: 0,
+    background: themeConfig.colors.light,
+    width: '100vw',
+    [responsiveMediaQuery('<xl', { appOnly: true })]: {
+      maxWidth: 640,
+    },
+    left: 0,
+    right: 0,
+    margin: '0 auto',
+    color: 'var(--color-text-high-emphasis)',
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      position: 'initial',
+    },
+    [responsiveMediaQuery('>md', { webOnly: true })]: {
+      width: '60%',
+    },
+  },
+  containerFullScreen: {
+    height: [
+      `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px)`,
+      `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px - var(--safe-area-inset-top))`,
+    ],
+  },
+  progressBarContainer: {
+    position: 'relative',
+  },
+  sheetShadow: {
+    boxShadow: themeConfig.shadows.sheet,
+  },
+  content: {
+    maxHeight: [
+      `calc(var(--vh-100, 100vh) - ${themeConfig.variables.navigator.height}px)`,
+      `calc(var(--vh-100, 100vh) - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+    ],
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      maxHeight: [
+        `calc(var(--vh-80, 80vh) - ${themeConfig.variables.navigator.height}px)`,
+        `calc(var(--vh-80, 80vh) - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+      ],
+    },
+    paddingBottom: [
+      'var(--safe-area-inset-bottom)',
+    ],
+    overflowY: 'scroll',
+    WebkitOverflowScrolling: 'touch',
+  },
+  drawerAnimIn: {
+    [responsiveMediaQuery('<=sm', { appAlways: true })]: {
+      animation: `${slideInSheetDrawer} ${duration}ms 1 both ${easing}`,
+    },
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      animation: `${fadeInSheetDrawer} ${duration}ms 1 both ${easing}`,
+    },
+  },
+  drawerAnimOut: {
+    [responsiveMediaQuery('<=sm', { appAlways: true })]: {
+      animation: `${slideOutSheetDrawer} ${duration}ms 1 both ${easing}`,
+    },
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      animation: `${fadeOutSheetDrawer} ${duration}ms 1 both ${easing}`,
+    },
+  },
+});
+
+/**
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
+ */
+const SheetView = ({
+  allowClose,
+  animationFromParent,
+  backdrop,
+  children,
+  className,
+  contentClassName,
+  contentRef,
+  duration: durationProp,
+  isLoading,
+  isOpen,
+  onClose,
+  onDidClose,
+  onDidOpen,
+  onOpen,
+  onScroll,
+  scrolled,
+  showSearch,
+  title,
+  handleSearchInput,
+}) => {
+  const { classes } = useStyles();
+
+  const animation = {
+    duration: durationProp,
+    in: classes.drawerAnimIn,
+    out: classes.drawerAnimOut,
+    ...animationFromParent,
+  };
+
+  const drawerClassNames = classNames(
+    classes.container,
+    { [className]: className }
+  );
+
+  const contentClassNames = classNames(
+    classes.content,
+    { [classes.containerFullScreen]: showSearch },
+    { [contentClassName]: contentClassName },
+    { [classes.sheetShadow]: !backdrop }
+  );
+
+  return (
+    <section
+      className={classNames('ui-shared__sheet', {
+        [classes.section]: isOpen,
+      })}
+    >
+      <Drawer
+        className={drawerClassNames}
+        isOpen={isOpen}
+        onDidOpen={onDidOpen}
+        onDidClose={onDidClose}
+        onOpen={onOpen}
+        onClose={onClose}
+        animation={animation}
+      >
+        {title && (
+          <Header
+            showSearch={showSearch}
+            handleChange={handleSearchInput}
+            onToggleClose={onClose}
+            shadow={scrolled}
+            title={title}
+            allowClose={allowClose}
+          />
+        )}
+        <div className={classes.progressBarContainer}>
+          <ProgressBar isVisible={isLoading} />
+        </div>
+        <div
+          ref={contentRef}
+          onScroll={onScroll}
+          className={contentClassNames}
+        >
+          {children}
+        </div>
+      </Drawer>
+      {backdrop && (
+        <Backdrop
+          isVisible={isOpen}
+          level={4}
+          onClick={allowClose ? onClose : () => {}}
+          opacity={20}
+        />
+      )}
+    </section>
+  );
+};
+
+SheetView.propTypes = {
+  allowClose: PropTypes.bool.isRequired,
+  animationFromParent: PropTypes.shape({
+    in: PropTypes.string,
+    out: PropTypes.string,
+  }).isRequired,
+  backdrop: PropTypes.bool.isRequired,
+  contentRef: PropTypes.shape().isRequired,
+  duration: PropTypes.number.isRequired,
+  handleSearchInput: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onDidClose: PropTypes.func.isRequired,
+  onDidOpen: PropTypes.func.isRequired,
+  onOpen: PropTypes.func.isRequired,
+  onScroll: PropTypes.func.isRequired,
+  scrolled: PropTypes.bool.isRequired,
+  showSearch: PropTypes.bool.isRequired,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  contentClassName: PropTypes.string,
+  title: Header.propTypes.title,
+};
+
+SheetView.defaultProps = {
+  children: null,
+  className: null,
+  contentClassName: null,
+  title: '',
 };
 
 /**
@@ -20,10 +251,6 @@ export const SHEET_EVENTS = {
 class Sheet extends Component {
   static Header = Header;
 
-  /**
-   * The component prop types.
-   * @type {Object}
-   */
   static propTypes = {
     allowClose: PropTypes.bool,
     animation: PropTypes.shape({
@@ -45,10 +272,6 @@ class Sheet extends Component {
     title: Header.propTypes.title,
   };
 
-  /**
-   * The component default props.
-   * @type {Object}
-   */
   static defaultProps = {
     animation: {},
     backdrop: true,
@@ -68,7 +291,6 @@ class Sheet extends Component {
   };
 
   /**
-   * The constructor.
    * @param {Object} props The component props.
    */
   constructor(props) {
@@ -84,7 +306,6 @@ class Sheet extends Component {
   }
 
   /**
-   * Change isOpen state for new incoming props.
    * @param {Object} nextProps The next component props.
    */
   UNSAFE_componentWillReceiveProps({ isOpen }) {
@@ -93,9 +314,6 @@ class Sheet extends Component {
     }
   }
 
-  /**
-   * Close the Sheet.
-   */
   handleScroll = throttle(() => {
     const scrolled = this.content.current.scrollTop !== 0;
 
@@ -104,21 +322,6 @@ class Sheet extends Component {
     }
   }, 10);
 
-  /**
-   * Getter for the animation props of the Sheet.
-   * @returns {Object}
-   */
-  get animationProps() {
-    return {
-      duration: this.props.duration,
-      ...styles.drawerAnimation,
-      ...this.props.animation,
-    };
-  }
-
-  /**
-   * Close the Sheet.
-   */
   handleClose = () => {
     this.props.onClose();
 
@@ -128,28 +331,24 @@ class Sheet extends Component {
     });
   };
 
-  /** The Sheet is opened */
   handleDidOpen = () => {
     UIEvents.emit(SHEET_EVENTS.OPEN);
     this.props.onDidOpen();
   };
 
-  /** The Sheet is closed */
   handleDidClose = () => {
     UIEvents.emit(SHEET_EVENTS.CLOSE);
     this.props.onDidClose();
   };
 
   /**
-   * New value from SearchBar
-   * @param {string} value .
+   * @param {string} value Search query from the sheet header.
    */
   handleSearchInput = (value) => {
     this.setState({ query: value });
   };
 
   /**
-   * Renders the component.
    * @returns {JSX}
    */
   render() {
@@ -158,7 +357,6 @@ class Sheet extends Component {
     const children = React.Children.map(this.props.children, child => (
       React.cloneElement(
         child,
-        // Only add onClose prop to other components
         typeof child.type === 'function' && this.props.onClose !== null ? (
           {
             onClose: this.props.onClose,
@@ -168,61 +366,29 @@ class Sheet extends Component {
       )
     ));
 
-    const drawerClassNames = classNames(
-      styles.container,
-      { [this.props.className]: this.props.className }
-    );
-
-    const contentClassNames = classNames(
-      styles.content,
-      { [styles.containerFullScreen]: this.props.showSearch },
-      { [this.props.contentClassName]: this.props.contentClassName },
-      { [styles.shadow]: !this.props.backdrop }
-    );
-
     return (
-      <section
-        className={classNames('ui-shared__sheet', {
-          [styles.section]: this.state.isOpen,
-        })}
+      <SheetView
+        allowClose={allowClose}
+        animationFromParent={this.props.animation}
+        backdrop={this.props.backdrop}
+        className={this.props.className}
+        contentClassName={this.props.contentClassName}
+        contentRef={this.content}
+        duration={this.props.duration}
+        handleSearchInput={this.handleSearchInput}
+        isLoading={this.props.isLoading}
+        isOpen={this.state.isOpen}
+        onClose={this.handleClose}
+        onDidClose={this.handleDidClose}
+        onDidOpen={this.handleDidOpen}
+        onOpen={this.props.onOpen}
+        onScroll={this.handleScroll}
+        scrolled={this.state.scrolled}
+        showSearch={this.props.showSearch}
+        title={this.props.title}
       >
-        <Drawer
-          className={drawerClassNames}
-          isOpen={this.state.isOpen}
-          onDidOpen={this.handleDidOpen}
-          onDidClose={this.handleDidClose}
-          onOpen={this.props.onOpen}
-          onClose={this.handleClose}
-          animation={this.animationProps}
-        >
-          {this.props.title &&
-            <Sheet.Header
-              showSearch={this.props.showSearch}
-              handleChange={this.handleSearchInput}
-              onToggleClose={this.handleClose}
-              shadow={this.state.scrolled}
-              title={this.props.title}
-              allowClose={allowClose}
-            />}
-          <div className={styles.progressBarContainer}>
-            <ProgressBar isVisible={this.props.isLoading} />
-          </div>
-          <div
-            ref={this.content}
-            onScroll={this.handleScroll}
-            className={contentClassNames}
-          >
-            {children}
-          </div>
-        </Drawer>
-        {this.props.backdrop &&
-          <Backdrop
-            isVisible={this.state.isOpen}
-            level={4}
-            onClick={allowClose ? this.handleClose : () => {}}
-            opacity={20}
-          />}
-      </section>
+        {children}
+      </SheetView>
     );
   }
 }

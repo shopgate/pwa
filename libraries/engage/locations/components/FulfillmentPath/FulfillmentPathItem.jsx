@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import radioGroupStyles from '@shopgate/pwa-ui-shared/Form/RadioGroup/components/Item/style';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '../../../core';
@@ -23,6 +21,13 @@ const useStyles = makeStyles()({
     alignItems: 'baseline',
     marginBottom: 0,
   },
+  radioGroupLabel: {
+    flex: 1,
+    fontSize: '1rem',
+    lineHeight: 1.5,
+    marginLeft: variables.gap.small,
+    marginBottom: variables.gap.small,
+  },
 });
 
 /**
@@ -34,7 +39,7 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element} The rendered component.
  */
 export const FulfillmentPathItem = ({ name, children, ...rest }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <RadioGroupItem
@@ -42,7 +47,7 @@ export const FulfillmentPathItem = ({ name, children, ...rest }) => {
       name={name}
       className={classes.radioItem}
       label={(
-        <div className={classNames(radioGroupStyles.label, classes.itemLabel)}>
+        <div className={cx(classes.radioGroupLabel, classes.itemLabel)}>
           <span>{i18n.text(name)}</span>
           {children}
         </div>

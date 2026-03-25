@@ -7,7 +7,7 @@ import {
   Link, CheckedIcon, Button, NotificationIcon,
 } from '@shopgate/engage/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import connect from './connector';
 
 const { colors } = themeConfig;

@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import groupBy from 'lodash/groupBy';
 import { SheetDrawer, Button } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { getActiveFulfillmentSlot } from '@shopgate/engage/cart/cart.selectors';
 import { makeGetFulfillmentSlotsForLocation, getPreferredLocation } from '../../selectors';
 import fetchFulfillmentSlots from '../../actions/fetchFulfillmentSlots';

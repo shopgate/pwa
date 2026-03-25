@@ -16,7 +16,7 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import Manufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import { PriceInfo, ProductName, ProductBadges } from '@shopgate/engage/product';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 

@@ -2,8 +2,7 @@ import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { i18n } from '@shopgate/engage/core';
+import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import {
   getFavoritesLists,
   isInitialLoading,

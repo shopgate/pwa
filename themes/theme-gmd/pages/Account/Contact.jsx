@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from '@shopgate/engage/components';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { BackBar } from 'Components/AppBar/presets';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import Content from '@shopgate/engage/account/components/ProfileContact';
 
 /**

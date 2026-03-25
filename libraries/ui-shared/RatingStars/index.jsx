@@ -1,15 +1,50 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import times from 'lodash/times';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import StarIcon from '../icons/StarIcon';
 import StarHalfIcon from '../icons/StarHalfIcon';
-import styles from './style';
 import { RATING_SCALE_DIVISOR } from './constants';
 
-/**
- * The available style keys for the rating stars.
- */
-const availableStyles = styles.iconStyles;
+const DISPLAY_KEYS = ['small', 'big', 'large'];
+
+const ICON_SIZES = {
+  small: '1em',
+  big: '1.24em',
+  large: '2.3em',
+};
+
+const useStyles = makeStyles()({
+  container: {
+    position: 'relative',
+  },
+  icon: {
+    display: 'inline-block',
+    verticalAlign: 'top',
+    outline: 0,
+  },
+  iconGapSmall: {
+    marginRight: '0.1em',
+  },
+  iconGapBig: {
+    marginRight: '0.12em',
+  },
+  iconGapLarge: {
+    marginRight: '0.23em',
+  },
+  emptyStars: {
+    color: themeConfig.colors.shade7,
+  },
+  filledStars: {
+    position: 'absolute',
+    color: 'var(--color-primary)',
+    top: 0,
+  },
+});
+
 const numStars = 5;
 
 /**
@@ -17,152 +52,120 @@ const numStars = 5;
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-class RatingStars extends Component {
-  static propTypes = {
-    value: PropTypes.number.isRequired,
-    className: PropTypes.string,
-    display: PropTypes.oneOf(Object.keys(availableStyles)),
-    isSelectable: PropTypes.bool,
-    onSelection: PropTypes.func,
-  };
-
-  /**
-   * Context types definition.
-   * @type {{i18n: function}}
-   */
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  static defaultProps = {
-    className: '',
-    display: 'small',
-    isSelectable: false,
-    onSelection: () => {
-    },
-  };
-
-  /**
-   * Only update the component if the star rating changed.
-   * @param {Object} nextProps The next component props.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return nextProps.value !== this.props.value;
-  }
-
-  /**
-   * Returns textual version of stars for screen readers.
-   * @param {number} stars Number of stars.
-   * @returns {string}
-   */
-  getTextualFinal(stars) {
-    const { __ } = this.context.i18n();
-    return __('reviews.rating_stars', {
+const RatingStars = ({
+  value,
+  className,
+  display,
+  isSelectable,
+  onSelection,
+}) => {
+  const { classes } = useStyles();
+  const ratedStars = value / RATING_SCALE_DIVISOR;
+  const numFullStars = Math.floor(ratedStars);
+  const numHalfStars = Math.ceil(ratedStars - numFullStars);
+  const size = ICON_SIZES[display];
+  const getTextualFinal = useCallback(stars => (
+    i18n.text('reviews.rating_stars', {
       rate: stars,
       maxRate: numStars,
-    });
-  }
+    })
+  ), []);
 
-  /**
-   * Returns text for call to a
-   * @param {number} stars Number of stars.
-   * @returns {string}
-   */
-  getTextualCTA(stars) {
-    const { __ } = this.context.i18n();
-    return __('reviews.press_to_rate_with_x_stars', { rate: stars });
-  }
+  const getTextualCTA = useCallback(stars => (
+    i18n.text('reviews.press_to_rate_with_x_stars', { rate: stars })
+  ), []);
 
-  /**
-   * Handles click on RatingStars.
-   * @param {Object} e SyntheticEvent.
-   * @param {number} pos Position/Index of clicked RatingStar.
-   */
-  handleSelection(e, pos) {
-    const { onSelection } = this.props;
+  const handleSelection = useCallback((e, pos) => {
     e.target.value = pos * RATING_SCALE_DIVISOR;
     onSelection(e);
-  }
+  }, [onSelection]);
 
-  /**
-   * Renders the component.
-   * @returns {JSX.Element}
-   */
-  render() {
-    const { value, isSelectable } = this.props;
-    const ratedStars = value / RATING_SCALE_DIVISOR;
-    const numFullStars = Math.floor(ratedStars);
-    const numHalfStars = Math.ceil(ratedStars - numFullStars);
+  const iconClassName = classNames(
+    classes.icon,
+    display === 'small' && classes.iconGapSmall,
+    display === 'big' && classes.iconGapBig,
+    display === 'large' && classes.iconGapLarge
+  );
+  const rootClassName = classNames(classes.container, className, 'ui-shared__rating-stars');
 
-    const size = styles.iconStyles[this.props.display].iconSize;
+  const emptyStars = [
+    ...times(numStars, (i) => {
+      const pos = i + 1;
+      const starProps = {
+        className: iconClassName,
+        key: pos,
+        ...(isSelectable) && {
+          'aria-label': getTextualCTA(pos),
+          role: 'button',
+          onClick: e => handleSelection(e, pos),
+        },
+      };
 
-    const className = [styles.container, this.props.className, 'ui-shared__rating-stars'].join(' ');
-    const iconClassName = [styles.iconStyles[this.props.display].iconStyle, styles.icon].join(' ');
-
-    const emptyStars = [
-      ...times(numStars, (i) => {
-        const pos = i + 1;
-        const starProps = {
-          className: iconClassName,
-          key: pos,
-          ...(isSelectable) && {
-            'aria-label': this.getTextualCTA(pos),
-            role: 'button',
-            onClick: e => this.handleSelection(e, pos),
-          },
-        };
-
-        return (
-          <div {...starProps}>
-            <StarIcon size={size} />
-          </div>
-        );
-      }),
-    ];
-
-    const filledStars = [
-      ...times(numFullStars, (i) => {
-        const pos = i + 1;
-        const starProps = {
-          className: iconClassName,
-          key: numStars + pos,
-          ...(isSelectable) && {
-            'aria-hidden': true, // Aria hidden since it's basically a duplicate for a screen reader.
-            role: 'button',
-            onClick: e => this.handleSelection(e, pos),
-          },
-        };
-
-        return (
-          <div {...starProps}>
-            <StarIcon size={size} />
-          </div>
-        );
-      }),
-      ...times(numHalfStars, i => (
-        <div className={iconClassName} key={i + numFullStars}>
-          <StarHalfIcon size={size} />
+      return (
+        <div {...starProps}>
+          <StarIcon size={size} />
         </div>
-      )),
-    ];
+      );
+    }),
+  ];
 
-    return (
-      <div
-        role={isSelectable ? undefined : 'img'}
-        className={className}
-        aria-label={this.getTextualFinal(ratedStars)}
-        data-test-id={`ratedStars: ${ratedStars}`}
-      >
-        <div className={`${styles.emptyStars} rating-stars-empty`}>
-          {emptyStars}
+  const filledStars = [
+    ...times(numFullStars, (i) => {
+      const pos = i + 1;
+      const starProps = {
+        className: iconClassName,
+        key: numStars + pos,
+        ...(isSelectable) && {
+          'aria-hidden': true,
+          role: 'button',
+          onClick: e => handleSelection(e, pos),
+        },
+      };
+
+      return (
+        <div {...starProps}>
+          <StarIcon size={size} />
         </div>
-        <div className={`${styles.filledStars} rating-stars-filled`}>
-          {filledStars}
-        </div>
+      );
+    }),
+    ...times(numHalfStars, i => (
+      <div className={iconClassName} key={i + numFullStars}>
+        <StarHalfIcon size={size} />
       </div>
-    );
-  }
-}
+    )),
+  ];
+
+  return (
+    <div
+      role={isSelectable ? undefined : 'img'}
+      className={rootClassName}
+      aria-label={getTextualFinal(ratedStars)}
+      data-test-id={`ratedStars: ${ratedStars}`}
+    >
+      <div className={classNames(classes.emptyStars, 'rating-stars-empty')}>
+        {emptyStars}
+      </div>
+      <div className={classNames(classes.filledStars, 'rating-stars-filled')}>
+        {filledStars}
+      </div>
+    </div>
+  );
+};
+
+RatingStars.propTypes = {
+  value: PropTypes.number.isRequired,
+  className: PropTypes.string,
+  display: PropTypes.oneOf(DISPLAY_KEYS),
+  isSelectable: PropTypes.bool,
+  onSelection: PropTypes.func,
+};
+
+RatingStars.defaultProps = {
+  className: '',
+  display: 'small',
+  isSelectable: false,
+  onSelection: () => {
+  },
+};
 
 export default RatingStars;

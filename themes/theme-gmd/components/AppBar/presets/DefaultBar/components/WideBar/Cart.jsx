@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { Ripple } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CartIcon } from '@shopgate/pwa-ui-shared';

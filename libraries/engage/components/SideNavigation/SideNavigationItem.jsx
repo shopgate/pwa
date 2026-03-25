@@ -1,7 +1,7 @@
 import React, { useMemo, memo } from 'react';
 import classNames from 'classnames';
 import Link from '@shopgate/pwa-common/components/Link';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';

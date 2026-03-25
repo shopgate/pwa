@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import styles from './style';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()({
+  hint: {
+    paddingLeft: variables.gap.small,
+    order: 5,
+  },
+});
 
 /**
  * The Hint component.
@@ -9,12 +19,14 @@ import styles from './style';
  * @return {JSX|null}
  */
 const Hint = ({ hint }) => {
+  const { classes } = useStyles();
+
   if (hint === null) {
     return null;
   }
 
   return (
-    <div className={styles.hint}>
+    <div className={classes.hint}>
       <I18n.Text string={hint} />
     </div>
   );

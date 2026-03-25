@@ -1,4 +1,4 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { generateCustomerAttributesFields } from '@shopgate/engage/account/helper/form';
 
 /**

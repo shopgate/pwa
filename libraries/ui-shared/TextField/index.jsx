@@ -1,234 +1,205 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useCallback, useMemo,
+} from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import Underline from './components/Underline';
 import ErrorText from './components/ErrorText';
 import Hint from './components/Hint';
-import styles from './style';
 import FormElement from './components/FormElement/index';
+
+const bluredDateSelector = 'input[type="date"]:in-range:not(:focus)';
+const webkitDateFields = [
+  '::-webkit-datetime-edit-year-field',
+  '::-webkit-datetime-edit-month-field',
+  '::-webkit-datetime-edit-day-field',
+  '::-webkit-datetime-edit-text',
+].map(suffix => `& ${bluredDateSelector}${suffix}`).join(', ');
+
+const useStyles = makeStyles()({
+  input: {
+    position: 'relative',
+    paddingBottom: themeConfig.variables.gap.big,
+    width: '100%',
+    '& input[type="date"]': {
+      minHeight: '1.3rem',
+      appearance: 'none',
+      paddingLeft: 0,
+      marginLeft: 0,
+    },
+    [webkitDateFields]: {
+      padding: 0,
+      color: 'transparent',
+    },
+  },
+  multiLine: {
+    position: 'relative',
+    width: '100%',
+  },
+});
 
 /**
  * A component that provides a styled text field for user input in material design.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class TextField extends Component {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    className: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.shape(),
-    ]),
-    disabled: PropTypes.bool,
-    errorText: PropTypes.node,
-    hintText: PropTypes.node,
-    /* eslint-disable-next-line react/forbid-prop-types */
-    inputComponent: PropTypes.any,
-    isControlled: PropTypes.bool,
-    label: PropTypes.node,
-    multiLine: PropTypes.bool,
-    onChange: PropTypes.func,
-    onFocusChange: PropTypes.func,
-    onSanitize: PropTypes.func,
-    onValidate: PropTypes.func,
-    password: PropTypes.bool,
-    required: PropTypes.bool,
-    setRef: PropTypes.func,
-    showErrorText: PropTypes.bool,
-    translateErrorText: PropTypes.bool,
-    type: PropTypes.string,
-    value: PropTypes.string,
-  };
+const TextField = ({
+  name,
+  className,
+  disabled,
+  errorText,
+  hintText,
+  inputComponent,
+  isControlled,
+  label,
+  multiLine,
+  onChange,
+  onFocusChange,
+  onSanitize,
+  onValidate,
+  password,
+  required,
+  setRef,
+  showErrorText,
+  translateErrorText,
+  type,
+  value,
+}) => {
+  const { classes } = useStyles();
+  const [isFocused, setIsFocused] = useState(false);
+  const [validationError, setValidationError] = useState(null);
 
-  static defaultProps = {
-    className: '',
-    errorText: '',
-    showErrorText: true,
-    setRef: () => { },
-    hintText: '',
-    isControlled: false,
-    label: '',
-    multiLine: false,
-    onChange: () => { },
-    onFocusChange: () => { },
-    onSanitize: value => value,
-    onValidate: () => true,
-    required: false,
-    password: false,
-    translateErrorText: true,
-    type: 'text',
-    value: '',
-    inputComponent: 'input',
-    disabled: false,
-  };
+  const handleFocusChange = useCallback((focused) => {
+    setIsFocused(focused);
+    onFocusChange(focused);
+  }, [onFocusChange]);
 
-  /**
-   * Creates a new text field component.
-   * @param {Object} props The component properties.
-   */
-  constructor(props) {
-    super(props);
+  const handleChange = useCallback((v, event) => {
+    onChange(v, event);
+  }, [onChange]);
 
-    this.state = {
-      isFocused: false,
-      validationError: null,
-    };
-  }
+  const handleValidate = useCallback((v) => {
+    const ve = onValidate(v);
 
-  /**
-   * @returns {boolean} Whether the text field is currently focused.
-   */
-  get isFocused() {
-    return this.state.isFocused;
-  }
+    if (ve !== true && ve) {
+      setValidationError(ve);
+    } else {
+      setValidationError(prev => (prev ? null : prev));
+    }
 
-  /**
-   * @returns {boolean} Whether the label is currently floating.
-   */
-  get isLabelFloating() {
-    // On Firefox empty date inputs always show a placeholder with date pattern
-    if (navigator.userAgent.includes('Firefox') && this.props.type === 'date') {
+    return ve === true;
+  }, [onValidate]);
+
+  const isLabelFloating = useMemo(() => {
+    if (typeof navigator !== 'undefined' && navigator.userAgent.includes('Firefox') && type === 'date') {
       return true;
     }
+    return isFocused || !!value;
+  }, [isFocused, value, type]);
 
-    return this.isFocused || !!this.props.value;
-  }
+  const isHintVisible = isFocused && !value;
+  const hasErrorMessage = !!(validationError || errorText);
 
-  /**
-   * @returns {boolean} Whether the hint text is currently visible.
-   */
-  get isHintVisible() {
-    return this.isFocused && !this.props.value;
-  }
+  const containerClass = multiLine ? classes.multiLine : classes.input;
 
-  /**
-   * @return {boolean} Whether the error message is set.
-   */
-  get hasErrorMessage() {
-    return !!(this.state.validationError || this.props.errorText);
-  }
-
-  /**
-   * Internal focus event handler.
-   * @param {boolean} isFocused Whether the input component is focused.
-   */
-  handleFocusChange = (isFocused) => {
-    this.setState({
-      isFocused,
-    });
-    this.props.onFocusChange(isFocused);
-  };
-
-  /**
-   * Updates the state if the input value has been changed.
-   * @param {string} value The entered text.
-   * @param {Object} event The original event object.
-   */
-  handleChange = (value, event) => {
-    this.props.onChange(value, event);
-  };
-
-  /**
-   * Updates the validation error text if required.
-   * @param {string} value The entered text.
-   * @param {boolean} isInitial Whether this is the initial value of the input field.
-   * @return {boolean} Whether the validation was successful.
-   */
-  handleValidate = (value, isInitial) => {
-    const validationError = this.props.onValidate(value);
-
-    if (validationError !== true && validationError) {
-      /**
-       * An error message was returned by the validation callback. Update the state.
-       * Because the validation is performed when the component is constructed, we need to make
-       * sure we're not calling setState() in this situation.
-       */
-      if (!isInitial) {
-        this.setState({ validationError });
-      } else {
-        this.state.validationError = validationError;
-      }
-    } else if (this.state.validationError) {
-      // There was no error, clear the state variable.
-      this.setState({ validationError: null });
-    }
-
-    // Forward the boolean result to the input field.
-    return validationError === true;
-  };
-
-  /**
-   * Renders the text field.
-   * @return {JSX.Element}
-   */
-  render() {
-    const styleType = this.props.multiLine ? 'multiLine' : 'input';
-    const style = styles.container[styleType];
-    const {
-      multiLine,
-      className,
+  return (
+    <div className={classNames(containerClass, className, 'textField', 'ui-shared__text-field', {
       disabled,
-      hintText,
-      name,
-      label,
-      setRef,
-      onSanitize,
-      password,
-      type,
-      value,
-      isControlled,
-      inputComponent,
-      showErrorText,
-      errorText,
-      translateErrorText,
-      required,
-    } = this.props;
+    })}
+    >
+      <Hint visible={isHintVisible} hintText={hintText} />
+      <Label
+        name={name}
+        label={label}
+        isFocused={isFocused}
+        isFloating={isLabelFloating}
+        hasErrorMessage={hasErrorMessage}
+      />
+      <FormElement
+        id={name}
+        multiLine={multiLine}
+        name={name}
+        setRef={setRef}
+        onFocusChange={handleFocusChange}
+        onChange={handleChange}
+        onSanitize={onSanitize}
+        onValidate={handleValidate}
+        password={password}
+        type={type}
+        value={value}
+        isControlled={isControlled}
+        inputComponent={inputComponent}
+        disabled={disabled}
+        required={required}
+        attributes={{
+          'aria-invalid': !!errorText,
+          'aria-describedby': hasErrorMessage ? `ariaError-${name}` : null,
+        }}
+      />
 
-    return (
-      <div className={classNames(style, className, 'textField', 'ui-shared__text-field', {
-        disabled,
-      })}
-      >
-        <Hint visible={this.isHintVisible} hintText={hintText} />
-        <Label
-          name={name}
-          label={label}
-          isFocused={this.isFocused}
-          isFloating={this.isLabelFloating}
-          hasErrorMessage={this.hasErrorMessage}
+      <Underline isFocused={isFocused} hasErrorMessage={hasErrorMessage} />
+      {showErrorText && (
+        <ErrorText
+          validationError={validationError}
+          errorText={errorText}
+          translate={translateErrorText}
+          elementName={name}
         />
-        <FormElement
-          id={name}
-          multiLine={multiLine}
-          name={name}
-          setRef={setRef}
-          onFocusChange={this.handleFocusChange}
-          onChange={this.handleChange}
-          onSanitize={onSanitize}
-          onValidate={this.handleValidate}
-          password={password}
-          type={type}
-          value={value}
-          isControlled={isControlled}
-          inputComponent={inputComponent}
-          disabled={disabled}
-          required={required}
-          attributes={{
-            'aria-invalid': !!errorText,
-            'aria-describedby': this.hasErrorMessage ? `ariaError-${name}` : null,
-          }}
-        />
+      )}
+    </div>
+  );
+};
 
-        <Underline isFocused={this.isFocused} hasErrorMessage={this.hasErrorMessage} />
-        {showErrorText &&
-          <ErrorText
-            validationError={this.state.validationError}
-            errorText={errorText}
-            translate={translateErrorText}
-            elementName={name}
-          />}
-      </div>
-    );
-  }
-}
+TextField.propTypes = {
+  name: PropTypes.string.isRequired,
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.shape(),
+  ]),
+  disabled: PropTypes.bool,
+  errorText: PropTypes.node,
+  hintText: PropTypes.node,
+  /* eslint-disable-next-line react/forbid-prop-types */
+  inputComponent: PropTypes.any,
+  isControlled: PropTypes.bool,
+  label: PropTypes.node,
+  multiLine: PropTypes.bool,
+  onChange: PropTypes.func,
+  onFocusChange: PropTypes.func,
+  onSanitize: PropTypes.func,
+  onValidate: PropTypes.func,
+  password: PropTypes.bool,
+  required: PropTypes.bool,
+  setRef: PropTypes.func,
+  showErrorText: PropTypes.bool,
+  translateErrorText: PropTypes.bool,
+  type: PropTypes.string,
+  value: PropTypes.string,
+};
+
+TextField.defaultProps = {
+  className: '',
+  errorText: '',
+  showErrorText: true,
+  setRef: () => { },
+  hintText: '',
+  isControlled: false,
+  label: '',
+  multiLine: false,
+  onChange: () => { },
+  onFocusChange: () => { },
+  onSanitize: value => value,
+  onValidate: () => true,
+  required: false,
+  password: false,
+  translateErrorText: true,
+  type: 'text',
+  value: '',
+  inputComponent: 'input',
+  disabled: false,
+};
 
 export default TextField;

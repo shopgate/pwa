@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion, SurroundPortals } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { FilterItem } from '@shopgate/engage/filter';
 import { PORTAL_FILTER_SELECTOR } from '@shopgate/engage/filter/constants';

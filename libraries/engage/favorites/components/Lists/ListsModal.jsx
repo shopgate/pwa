@@ -1,8 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import { Dialog, TextField } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
 import { themeName } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 

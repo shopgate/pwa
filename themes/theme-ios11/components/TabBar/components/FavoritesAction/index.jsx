@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { makeStyles } from '@shopgate/engage/styles';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
+import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import FavoritesIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
-import { i18n } from '@shopgate/engage/core';
 import * as portals from '../../constants';
 import FavoritesIconBadge from './components/FavoritesIconBadge'; // eslint-disable-line import/no-named-as-default
 import TabBarAction from '../TabBarAction';

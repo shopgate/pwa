@@ -5,7 +5,7 @@ import { router } from '@virtuous/conductor';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { Chip, ChipLayout } from '@shopgate/engage/components';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
@@ -149,7 +149,7 @@ const FilterChips = ({
     });
 
     return entries;
-  }, [filters, handleRemove, openFilters]);
+  }, [classes.label, filters, handleRemove, openFilters]);
 
   useEffect(() => {
     onChipCountUpdate(chips.length);

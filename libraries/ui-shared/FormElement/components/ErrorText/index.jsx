@@ -1,8 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  root: {
+    bottom: 2,
+    color: 'var(--color-state-alert)',
+    fontSize: 12,
+    lineHeight: '14px',
+    overflow: 'hidden',
+    position: 'absolute',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    width: '100%',
+  },
+});
 
 /**
  * Error message component.
@@ -11,18 +24,22 @@ import styles from './style';
  */
 const ErrorText = ({
   className, errorText, translate, elementName, ariaHidden,
-}) => (
-  <div
-    id={`ariaError-${elementName}`}
-    className={classNames(className, styles, 'errorText')}
-    aria-live="assertive"
-    aria-atomic="true"
-    aria-hidden={ariaHidden}
-  >
-    {translate && <I18n.Text string={errorText} />}
-    {!translate && errorText}
-  </div>
-);
+}) => {
+  const { classes, cx } = useStyles();
+
+  return (
+    <div
+      id={`ariaError-${elementName}`}
+      className={cx(className, classes.root, 'errorText')}
+      aria-live="assertive"
+      aria-atomic="true"
+      aria-hidden={ariaHidden}
+    >
+      {translate && <I18n.Text string={errorText} />}
+      {!translate && errorText}
+    </div>
+  );
+};
 
 ErrorText.propTypes = {
   ariaHidden: PropTypes.bool,

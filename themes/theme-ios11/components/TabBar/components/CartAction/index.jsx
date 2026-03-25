@@ -4,7 +4,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import CartIcon from '@shopgate/pwa-ui-ios/icons/CartIcon';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
 import CartItemBadge from './components/CartItemBadge';

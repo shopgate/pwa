@@ -1,72 +1,77 @@
-import React, { Component, Suspense } from 'react';
+import React, { Suspense, memo } from 'react';
 import PropTypes from 'prop-types';
-import isEqual from 'lodash/isEqual';
+import { makeStyles } from '@shopgate/engage/styles';
 import Loading from '../../../Loading';
 import Grid from '../../../Grid';
-import styles from './style';
+
+const useStyles = makeStyles()((
+  _t,
+  {
+    col,
+    row,
+    width,
+    height,
+  }
+) => ({
+  widgetCell: {
+    gridColumnStart: col + 1,
+    gridColumnEnd: col + width + 1,
+    gridRowStart: row + 1,
+    gridRowEnd: row + height + 1,
+  },
+}));
+
 /**
- * The widget component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element|null}
  */
-class Widget extends Component {
-  static propTypes = {
-    config: PropTypes.shape().isRequired,
-    component: PropTypes.oneOfType([
-      PropTypes.func,
-      PropTypes.elementType,
-    ]),
-  };
+const Widget = ({ config, component: Comp }) => {
+  const {
+    col,
+    row,
+    height,
+    settings,
+    width,
+  } = config;
 
-  static defaultProps = {
-    component: null,
-  };
+  const { classes } = useStyles({
+    col,
+    row,
+    width,
+    height,
+  });
 
-  /**
-   * @param {Object} nextProps The next component props.
-   * @return {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    if (this.props.component !== nextProps.component) return true;
-    if (!isEqual(this.props.config, nextProps.config)) return true;
-    return false;
+  if (!Comp) {
+    return null;
   }
 
-  /**
-   * @return {JSX}
-   */
-  render() {
-    const {
-      col,
-      row,
-      height,
-      settings,
-      width,
-    } = this.props.config;
+  return (
+    <Grid.Item
+      className={`common__widgets__widget ${classes.widgetCell}`}
+      component="div"
+    >
+      <div>
+        <Suspense fallback={<Loading />}>
+          {React.createElement(Comp, {
+            settings,
+            ratio: [width, height],
+          })}
+        </Suspense>
+      </div>
+    </Grid.Item>
+  );
+};
 
-    if (!this.props.component) {
-      return null;
-    }
+Widget.propTypes = {
+  config: PropTypes.shape().isRequired,
+  component: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.elementType,
+  ]),
+};
 
-    return (
-      <Grid.Item
-        className={`common__widgets__widget ${styles.widgetCell({
-          col,
-          row,
-          height,
-          width,
-        })}`}
-        component="div"
-      >
-        <div className={styles.content}>
-          <Suspense fallback={<Loading />}>
-            {React.createElement(this.props.component, {
-              settings,
-              ratio: [width, height],
-            })}
-          </Suspense>
-        </div>
-      </Grid.Item>
-    );
-  }
-}
+Widget.defaultProps = {
+  component: null,
+};
 
-export default Widget;
+export default memo(Widget);

@@ -1,84 +1,143 @@
-import React, { Component } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import spring from 'css-spring';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { withForwardedRef } from '@shopgate/engage/core';
+import { keyframes, makeStyles } from '@shopgate/engage/styles';
 import CartPlusIcon from '../icons/CartPlusIcon';
 import TickIcon from '../icons/TickIcon';
 import IndicatorCircle from '../IndicatorCircle';
-import styles from './style';
+
+const DEFAULT_BUTTON_SIZE = 40;
+const DEFAULT_ICON_SIZE = 20;
+
+const springOptions = {
+  stiffness: 381.47,
+  damping: 15,
+};
+
+const springFromTopKeyframes = keyframes(spring(
+  { transform: 'translate3d(0, 300%, 0)' },
+  { transform: 'translate3d(0, -50%, 0)' },
+  springOptions
+));
+
+const springFromBottomKeyframes = keyframes(spring(
+  { transform: 'translate3d(0, -300%, 0)' },
+  { transform: 'translate3d(0, -50%, 0)' },
+  springOptions
+));
+
+const springToTopKeyframes = keyframes(spring(
+  { transform: 'translate3d(0, -50%, 0)' },
+  { transform: 'translate3d(0, 300%, 0)' },
+  springOptions
+));
+
+const springToBottomKeyframes = keyframes(spring(
+  { transform: 'translate3d(0, -50%, 0)' },
+  { transform: 'translate3d(0, -300%, 0)' },
+  springOptions
+));
+
+const useStyles = makeStyles()({
+  springFromBottom: {
+    animation: `${springFromBottomKeyframes} 600ms`,
+  },
+  springFromTop: {
+    animation: `${springFromTopKeyframes} 600ms`,
+  },
+  springToTop: {
+    animation: `${springToTopKeyframes} 600ms`,
+  },
+  springToBottom: {
+    animation: `${springToBottomKeyframes} 600ms`,
+  },
+  icon: {
+    transition: 'opacity 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+    opacity: 1,
+    position: 'absolute',
+  },
+  spinnerIcon: {
+    left: '50%',
+    top: '50%',
+    marginTop: -(themeConfig.variables.loadingIndicator.size) / 2,
+    marginLeft: -(themeConfig.variables.loadingIndicator.size) / 2,
+  },
+  buttonReady: {
+    background: `var(--color-button-cta, ${themeConfig.colors.cta})`,
+    color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
+  },
+  buttonSuccess: {
+    background: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
+    color: `var(--color-button-cta, ${themeConfig.colors.cta})`,
+  },
+  buttonDisabled: {
+    background: themeConfig.colors.shade5,
+    color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
+    boxShadow: themeConfig.shadows.buttons.disabled,
+  },
+});
+
+/**
+ * @param {number} bSize .
+ * @param {number} iSize .
+ * @returns {Object}
+ */
+const getWrapperStyle = (bSize, iSize) => ({
+  transition: 'background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+  borderRadius: '50%',
+  width: bSize,
+  height: bSize,
+  position: 'relative',
+  fontSize: iSize,
+  outline: 0,
+  paddingLeft: (bSize - iSize) / 2,
+  paddingRight: (bSize - iSize) / 2,
+  zIndex: 2,
+  overflow: 'hidden',
+  flexShrink: 0,
+});
 
 /**
  * AddToCartButton component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class AddToCartButton extends Component {
-  static propTypes = {
-    isDisabled: PropTypes.bool.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    onClick: PropTypes.func.isRequired,
-    'aria-hidden': PropTypes.bool,
-    'aria-label': PropTypes.string,
-    buttonSize: PropTypes.number,
-    className: PropTypes.string,
-    forwardedRef: PropTypes.shape(),
-    iconSize: PropTypes.number,
-    noShadow: PropTypes.bool,
-    onReset: PropTypes.func,
-  };
-
-  static defaultProps = {
-    'aria-hidden': false,
-    'aria-label': null,
-    buttonSize: styles.buttonSize,
-    className: null,
-    forwardedRef: null,
-    iconSize: styles.iconSize,
-    noShadow: false,
-    onReset: () => { },
-  };
+const AddToCartButton = ({
+  'aria-hidden': ariaHidden,
+  'aria-label': ariaLabel,
+  buttonSize,
+  className,
+  forwardedRef,
+  iconSize,
+  isDisabled,
+  isLoading,
+  onClick,
+  onReset,
+}) => {
+  const { classes, cx } = useStyles();
+  const [showCheckmark, setShowCheckmark] = useState(null);
 
   /**
-   * Constructor for the AddToCartButton component.
-   * @param {Object} props Props for the component.
+   * @param {Event} e Click event.
    */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showCheckmark: null,
-    };
-  }
-
-  /**
-   * Handles the button click.
-   * - Show checkmark.
-   * - Add to cart.
-   * - Wait 900ms.
-   * - Show cart icon again.
-   * @param {Event} e Event
-   */
-  handleClick = (e) => {
-    // Ignore clicks when check mark or loading spinner is shown or the button is disabled.
-    if (this.state.showCheckmark || this.props.isLoading || this.props.isDisabled) {
+  const handleClick = useCallback((e) => {
+    if (showCheckmark || isLoading || isDisabled) {
       return;
     }
 
-    /** */
+    /** Completes the success checkmark animation cycle. */
     const handleCompletion = () => {
-      this.setState({
-        showCheckmark: true,
-      });
-
+      setShowCheckmark(true);
       setTimeout(() => {
-        this.setState({
-          showCheckmark: false,
-        });
+        setShowCheckmark(false);
       }, 900);
     };
 
-    const result = this.props.onClick(e);
+    const result = onClick(e);
 
     if (result === false) {
-      // Do not trigger animation when adding to cart was aborted by the parent component (PWA-2764)
       return;
     }
 
@@ -95,144 +154,121 @@ class AddToCartButton extends Component {
     }
 
     handleCompletion();
-  };
+  }, [showCheckmark, isLoading, isDisabled, onClick]);
 
-  /**
-   * Handles the cart animation end event.
-   * Resets the showCheckmark state to null in order to
-   * prevent the icon from animating after changing visibility
-   * of the view.
-   * This is caused by CSS animations that get re-applied when
-   * setting an element from hidden (display: none) to visible.
-   */
-  handleCartAnimationEnd = () => {
-    if (this.state.showCheckmark === false) {
-      this.setState({
-        showCheckmark: null,
-      });
+  const handleCartAnimationEnd = useCallback(() => {
+    if (showCheckmark === false) {
+      setShowCheckmark(null);
     }
+    onReset();
+  }, [showCheckmark, onReset]);
 
-    this.props.onReset();
-  };
+  let buttonStateClass = classes.buttonReady;
+  let tickIconClass = classes.icon;
+  let cartPlusIconClass = classes.icon;
 
-  /**
-   * Renders the component
-   * @returns {JSX}
-   */
-  render() {
-    // Set initial base styles
-    let buttonStyle = styles.buttonReady;
-    let tickIconStyle = styles.icon;
-    let cartPlusIconStyle = styles.icon;
+  const iconOpacity = isLoading ? { opacity: 0 } : { opacity: 1 };
+  const spinnerInlineStyle = isLoading ? { opacity: 1 } : { opacity: 0 };
 
-    // Depending on the isLoading prop we only show the spinner or the other way around.
-    const iconOpacity = this.props.isLoading ? { opacity: 0 } : { opacity: 1 };
-    const spinnerInlineStyle = this.props.isLoading ? { opacity: 1 } : { opacity: 0 };
+  let tickInlineStyle = showCheckmark === null ? {
+    transform: 'translate3d(0, 300%, 0)',
+    ...iconOpacity,
+  } : null;
 
-    /**
-     * The initial positions for the icons:
-     * Tick icon stays hidden on top, Cart icon stays visibly at the center
-     */
-    let tickInlineStyle = this.state.showCheckmark === null ? {
-      transform: 'translate3d(0, 300%, 0)',
-      ...iconOpacity,
-    } : null;
+  let cartInlineStyle = showCheckmark === null ? {
+    transform: 'translate3d(0, -50%, 0)',
+    ...iconOpacity,
+  } : null;
 
-    let cartInlineStyle = this.state.showCheckmark === null ? {
+  if (isDisabled && !isLoading) {
+    buttonStateClass = classes.buttonDisabled;
+  } else if (showCheckmark) {
+    tickIconClass = cx(classes.icon, classes.springFromBottom);
+    cartPlusIconClass = cx(classes.icon, classes.springToTop);
+    buttonStateClass = classes.buttonSuccess;
+    tickInlineStyle = {
       transform: 'translate3d(0, -50%, 0)',
       ...iconOpacity,
-    } : null;
-
-    if (this.props.isDisabled && !this.props.isLoading) {
-      buttonStyle = styles.buttonDisabled;
-    } else if (this.state.showCheckmark) {
-      /**
-       * When checkmark should be shown, we start the spring transition
-       * Tick icon springs in, and cart icon springs out.
-       */
-      tickIconStyle += ` ${styles.springFromBottom}`;
-      cartPlusIconStyle += ` ${styles.springToTop}`;
-      buttonStyle = styles.buttonSuccess;
-      /**
-       * After the keyframe animation is done the transform values are reset
-       * We add the inline style to make sure the icons stay where they are even after the animation
-       */
-      tickInlineStyle = {
-        transform: 'translate3d(0, -50%, 0)',
-        ...iconOpacity,
-      };
-      cartInlineStyle = {
-        transform: 'translate3d(0, -300%, 0)',
-        ...iconOpacity,
-      };
-    } else if (this.state.showCheckmark !== null) {
-      /**
-       * When checkmark should no longer be shown we start the spring out transition.
-       * Tick icon springs out, cart icon spring in.
-       * We don't want a animation when we initially go to the page therefore this only happens
-       * after the user pressed the button.
-       */
-      tickIconStyle += ` ${styles.springToBottom}`;
-      cartPlusIconStyle += ` ${styles.springFromTop}`;
-      /**
-       * After the keyframe animation is done the transform values are reset
-       * We add the inline style to make sure the icons stay where they are even after the animation
-       */
-      cartInlineStyle = {
-        transform: 'translate3d(0, -50%, 0)',
-        ...iconOpacity,
-      };
-      tickInlineStyle = {
-        transform: 'translate3d(0, -300%, 0)',
-        ...iconOpacity,
-      };
-    }
-
-    let className = styles.buttonWrapper(this.props.buttonSize, this.props.iconSize);
-
-    if (this.props.noShadow) {
-      className = styles.buttonWrapperNoShadow(this.props.buttonSize, this.props.iconSize);
-    }
-
-    return (
-      <button
-        data-test-id="addToCartButton"
-        className={`ui-shared__add-to-cart-button ${this.props.className} ${className} ${buttonStyle}`}
-        onClick={this.handleClick}
-        aria-hidden={this.props['aria-hidden']}
-        aria-label={this.props['aria-label']}
-        aria-disabled={this.props.isDisabled}
-        ref={this.props.forwardedRef}
-        type="button"
-      >
-        {
-          /**
-           * This svg must not be rendered when never visible
-           * When rendered, even hidden or with paused animation, the GPU goes crazy on
-           * favorites when there are many of them.
-           */
-        }
-        {this.props.isLoading &&
-          <div className={`${styles.icon} ${styles.spinnerIcon}`} style={spinnerInlineStyle}>
-            <IndicatorCircle
-              color={themeConfig.colors.primaryContrast}
-              strokeWidth={5}
-              paused={!this.props.isLoading}
-            />
-          </div>}
-        <div className={tickIconStyle} style={tickInlineStyle}>
-          <TickIcon />
-        </div>
-        <div
-          className={cartPlusIconStyle}
-          style={cartInlineStyle}
-          onAnimationEnd={this.handleCartAnimationEnd}
-        >
-          <CartPlusIcon />
-        </div>
-      </button>
-    );
+    };
+    cartInlineStyle = {
+      transform: 'translate3d(0, -300%, 0)',
+      ...iconOpacity,
+    };
+  } else if (showCheckmark !== null) {
+    tickIconClass = cx(classes.icon, classes.springToBottom);
+    cartPlusIconClass = cx(classes.icon, classes.springFromTop);
+    cartInlineStyle = {
+      transform: 'translate3d(0, -50%, 0)',
+      ...iconOpacity,
+    };
+    tickInlineStyle = {
+      transform: 'translate3d(0, -300%, 0)',
+      ...iconOpacity,
+    };
   }
-}
+
+  const wrapperStyle = getWrapperStyle(buttonSize, iconSize);
+
+  return (
+    <button
+      data-test-id="addToCartButton"
+      className={cx(
+        'ui-shared__add-to-cart-button',
+        className,
+        buttonStateClass
+      )}
+      style={wrapperStyle}
+      onClick={handleClick}
+      aria-hidden={ariaHidden}
+      aria-label={ariaLabel}
+      aria-disabled={isDisabled}
+      ref={forwardedRef}
+      type="button"
+    >
+      {isLoading && (
+        <div className={cx(classes.icon, classes.spinnerIcon)} style={spinnerInlineStyle}>
+          <IndicatorCircle
+            color={themeConfig.colors.primaryContrast}
+            strokeWidth={5}
+            paused={!isLoading}
+          />
+        </div>
+      )}
+      <div className={tickIconClass} style={tickInlineStyle}>
+        <TickIcon />
+      </div>
+      <div
+        className={cartPlusIconClass}
+        style={cartInlineStyle}
+        onAnimationEnd={handleCartAnimationEnd}
+      >
+        <CartPlusIcon />
+      </div>
+    </button>
+  );
+};
+
+AddToCartButton.propTypes = {
+  isDisabled: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  'aria-hidden': PropTypes.bool,
+  'aria-label': PropTypes.string,
+  buttonSize: PropTypes.number,
+  className: PropTypes.string,
+  forwardedRef: PropTypes.shape(),
+  iconSize: PropTypes.number,
+  onReset: PropTypes.func,
+};
+
+AddToCartButton.defaultProps = {
+  'aria-hidden': false,
+  'aria-label': null,
+  buttonSize: DEFAULT_BUTTON_SIZE,
+  className: null,
+  forwardedRef: null,
+  iconSize: DEFAULT_ICON_SIZE,
+  onReset: () => { },
+};
 
 export default withForwardedRef(AddToCartButton);

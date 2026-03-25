@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import BaseButton from '@shopgate/pwa-common/components/Button';
-import styles from './style';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const { colors } = themeConfig;
+
+const buttonPadding = `0 ${themeConfig.variables.gap.big}px 0`;
 
 const buttonTypes = [
   'plain',
@@ -12,100 +17,146 @@ const buttonTypes = [
 ];
 
 /**
- * The basic button component. This components applies Material Design styles and acts as
- * base to more feature-rich button components such as ActionButton and RippleButton, but can
- * also be used as standalone component or any other kind of new button.
+ * @param {string} text Text color.
+ * @param {string|null} background Fill color.
+ * @returns {Object} JSS for root button.
  */
-class Button extends Component {
-  static propTypes = {
-    ...BaseButton.propTypes,
-    className: PropTypes.string,
-    flat: PropTypes.bool,
-    nativeType: PropTypes.oneOf(['button', 'submit', 'reset']),
-    testId: PropTypes.string,
-    type: PropTypes.oneOf(buttonTypes),
-    wrapContent: PropTypes.bool,
-  };
+const baseButton = (text, background) => ({
+  position: 'relative',
+  display: 'inline-block',
+  outline: 0,
+  color: text,
+  backgroundColor: background,
+  minWidth: 64,
+  overflow: 'hidden',
+  ':disabled': {
+    cursor: 'not-allowed',
+  },
+  ...themeConfig.variables.buttonBase,
+});
 
-  static defaultProps = {
-    ...BaseButton.defaultProps,
-    className: '',
-    flat: false,
-    nativeType: undefined,
-    type: 'primary',
-    wrapContent: true,
-    testId: 'Button',
-  };
+/**
+ * @param {string} textColor Text color.
+ * @param {string|null} fillColor Fill color.
+ * @returns {Object} Object with `button` and `content` style maps.
+ */
+const pairFromColors = (textColor, fillColor) => ({
+  button: baseButton(textColor, fillColor),
+  content: {
+    padding: buttonPadding,
+    color: textColor,
+  },
+});
 
-  /**
-   * Getter for style depending on prop type.
-   * @returns {Object}
-   */
-  get style() {
-    const { flat, disabled } = this.props;
-
-    switch (this.props.type) {
-      case 'plain':
-        return styles.plain();
-      case 'regular':
-        return styles.regular(disabled);
-      case 'simple':
-        return styles.simple(disabled);
-      default:
-      case 'primary':
-        return styles.primary(disabled, flat);
-      case 'secondary':
-        return styles.secondary(disabled, flat);
-    }
-  }
-
-  /**
-   * Getter for the calculated button props.
-   * @returns {Object}
-   */
-  get buttonProps() {
-    const {
-      className,
-      disabled,
-      onClick,
-      testId,
-      type,
-      wrapContent,
-      flat,
-      nativeType,
-      ...rest
-    } = this.props;
-
-    const buttonProps = {
-      className,
-      disabled,
-      onClick,
-      type: nativeType || 'button',
-      ...rest,
+const useStyles = makeStyles()((_t, { type, flat, disabled }) => {
+  if (type === 'plain') {
+    return {
+      button: {
+        padding: 0,
+        outline: 0,
+        border: 0,
+        textAlign: 'left',
+      },
     };
-
-    return buttonProps;
   }
 
-  /**
-   * Renders the component.
-   * @return {JSX}
-   */
-  render() {
-    const { style } = this;
-
-    const content = this.props.wrapContent ? (
-      <div className={style.content}>
-        {this.props.children}
-      </div>
-    ) : this.props.children;
-
-    return (
-      <BaseButton {...this.buttonProps} className={`ui-shared__button ${style.button} ${this.props.className}`} testId={this.props.testId}>
-        {content}
-      </BaseButton>
-    );
+  if (type === 'simple') {
+    return disabled
+      ? pairFromColors(themeConfig.colors.shade4, themeConfig.colors.shade7)
+      : pairFromColors(themeConfig.colors.dark, themeConfig.colors.shade7);
   }
-}
+
+  if (type === 'regular') {
+    return disabled
+      ? pairFromColors(colors.shade4, null)
+      : pairFromColors(colors.dark, null);
+  }
+
+  if (type === 'secondary') {
+    if (!flat) {
+      return disabled
+        ? pairFromColors(colors.shade4, colors.shade7)
+        : pairFromColors('var(--color-primary-contrast)', 'var(--color-primary)');
+    }
+    return disabled
+      ? pairFromColors(colors.shade4, null)
+      : pairFromColors('var(--color-primary)', null);
+  }
+
+  if (!flat) {
+    return disabled
+      ? pairFromColors(colors.shade4, colors.shade7)
+      : pairFromColors('var(--color-secondary-contrast)', 'var(--color-secondary)');
+  }
+
+  return disabled
+    ? pairFromColors(colors.shade4, null)
+    : pairFromColors('var(--color-secondary)', null);
+});
+
+/**
+ * The basic button component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
+ */
+const Button = (props) => {
+  const {
+    className,
+    flat,
+    disabled,
+    nativeType,
+    testId,
+    type,
+    wrapContent,
+    children,
+    onClick,
+    ...rest
+  } = props;
+
+  const { classes } = useStyles({
+    type,
+    flat,
+    disabled,
+  });
+
+  const content = wrapContent ? (
+    <div {...(classes.content ? { className: classes.content } : {})}>
+      {children}
+    </div>
+  ) : children;
+
+  return (
+    <BaseButton
+      {...rest}
+      className={`ui-shared__button ${classes.button} ${className}`}
+      disabled={disabled}
+      onClick={onClick}
+      type={nativeType || 'button'}
+      testId={testId}
+    >
+      {content}
+    </BaseButton>
+  );
+};
+
+Button.propTypes = {
+  ...BaseButton.propTypes,
+  className: PropTypes.string,
+  flat: PropTypes.bool,
+  nativeType: PropTypes.oneOf(['button', 'submit', 'reset']),
+  testId: PropTypes.string,
+  type: PropTypes.oneOf(buttonTypes),
+  wrapContent: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  ...BaseButton.defaultProps,
+  className: '',
+  flat: false,
+  nativeType: undefined,
+  type: 'primary',
+  wrapContent: true,
+  testId: 'Button',
+};
 
 export default Button;

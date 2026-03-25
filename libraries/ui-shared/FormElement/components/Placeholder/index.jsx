@@ -2,7 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
+
+const ellipsisLine = {
+  overflow: 'hidden',
+  width: '100%',
+  whiteSpace: 'nowrap',
+  textOverflow: 'ellipsis',
+};
+
+const useStyles = makeStyles()({
+  placeholder: {
+    position: 'absolute',
+    pointerEvents: 'none',
+    top: 24,
+    color: 'var(--color-text-medium-emphasis)',
+    willChange: 'transform',
+    transition: `opacity ${easing}`,
+    ...ellipsisLine,
+  },
+  placeholderInactive: {
+    opacity: 0,
+  },
+  leftOffset: {
+    left: 'var(--form-element-left-offset, 26px)',
+    width: 'calc(100% - var(--form-element-left-offset, 26px))',
+  },
+});
 
 /**
  * The form element placeholder component.
@@ -17,14 +45,25 @@ const Placeholder = ({
   visible,
   'aria-hidden': ariaHidden,
   hasLeftElement,
-}) => (
-  <div
-    className={classNames(styles.placeholderStyles(visible, hasLeftElement), 'placeholder')}
-    aria-hidden={ariaHidden}
-  >
-    <I18n.Text string={placeholder} />
-  </div>
-);
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <div
+      className={classNames(
+        classes.placeholder,
+        {
+          [classes.placeholderInactive]: !visible,
+          [classes.leftOffset]: hasLeftElement,
+        },
+        'placeholder'
+      )}
+      aria-hidden={ariaHidden}
+    >
+      <I18n.Text string={placeholder} />
+    </div>
+  );
+};
 
 Placeholder.propTypes = {
   'aria-hidden': PropTypes.bool,

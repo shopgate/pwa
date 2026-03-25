@@ -7,7 +7,7 @@ import CryptoJs from 'crypto-js';
 import sortBy from 'lodash/sortBy';
 import uniqBy from 'lodash/uniqBy';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   RadioGroupV2 as RadioGroup, RadioCard, MessageBar,

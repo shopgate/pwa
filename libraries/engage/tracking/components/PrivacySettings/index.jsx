@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { appConfig } from '@shopgate/engage';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import classNames from 'classnames';
 import connect from './connector';
 

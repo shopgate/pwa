@@ -1,11 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import { makeStyles } from '@shopgate/engage/styles';
 import FormElement from '../../FormElement';
-import style from './style';
+
+const useStyles = makeStyles()({
+  info: {
+    paddingTop: 24,
+  },
+  element: {
+    marginTop: 16,
+  },
+});
 
 /**
- * @param {Object} props .
+ * @param {Object} props Props.
  * @returns {JSX}
  */
 const InfoField = (props) => {
@@ -13,6 +22,7 @@ const InfoField = (props) => {
     className, label, errorText, leftElement, rightElement,
     hasUnderline, children, hasValue, showErrorText,
   } = props;
+  const { classes } = useStyles();
 
   return (
     <FormElement
@@ -25,11 +35,11 @@ const InfoField = (props) => {
       showErrorText={showErrorText}
     >
       <Grid>
-        {leftElement && <Grid.Item grow={0} className={style.element}>{leftElement}</Grid.Item>}
-        <Grid.Item grow={1} className={`${style.info} info-field`}>
+        {leftElement && <Grid.Item grow={0} className={classes.element}>{leftElement}</Grid.Item>}
+        <Grid.Item grow={1} className={`${classes.info} info-field`}>
           {children}
         </Grid.Item>
-        {rightElement && <Grid.Item grow={0} className={style.element}>{rightElement}</Grid.Item>}
+        {rightElement && <Grid.Item grow={0} className={classes.element}>{rightElement}</Grid.Item>}
       </Grid>
     </FormElement>
   );
@@ -45,9 +55,7 @@ InfoField.propTypes = {
   hasUnderline: PropTypes.bool,
   hasValue: PropTypes.bool,
   label: PropTypes.node,
-  /** Element to place left of text input (leading icon) */
   leftElement: PropTypes.node,
-  /** Element to place right of text input (trailing icon) */
   rightElement: PropTypes.node,
   showErrorText: PropTypes.bool,
 };

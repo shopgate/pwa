@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { themeConfig } from '@shopgate/engage';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { TextField } from '@shopgate/engage/components';
 import { getCSSCustomProp, makeStyles } from '@shopgate/engage/styles';
 import {

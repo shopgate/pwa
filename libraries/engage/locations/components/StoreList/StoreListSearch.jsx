@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
 import {

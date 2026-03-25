@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PriceStriked, Tiers } from '@shopgate/engage/product/components/Header';
 import { ProductContext } from '@shopgate/engage/product/contexts';

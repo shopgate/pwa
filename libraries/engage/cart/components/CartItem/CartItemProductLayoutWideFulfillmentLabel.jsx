@@ -4,7 +4,7 @@ import {
   BOPIS,
   ROPIS,
 } from '@shopgate/engage/locations';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { useCartItemProduct } from './CartItem.hooks';
 
 const useStyles = makeStyles()({

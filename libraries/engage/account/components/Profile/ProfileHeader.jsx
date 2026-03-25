@@ -1,5 +1,5 @@
 import React from 'react';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useProfileContext } from './Profile.provider';
 

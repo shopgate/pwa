@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Availability } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { AVAILABILITY_STATE_ALERT } from '@shopgate/engage/product';
 import { ROPIS, BOPIS } from '../../constants';
 

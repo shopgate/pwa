@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import TimeIcon from '@shopgate/pwa-ui-shared/icons/TimeIcon';
 import moment from 'moment';

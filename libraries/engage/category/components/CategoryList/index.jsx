@@ -8,7 +8,7 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { Placeholder } from '@shopgate/pwa-ui-shared';
 import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { getShowAllProductsFilters } from '@shopgate/engage/category';
 import { SheetList, TextLink } from '@shopgate/engage/components';
 import CategoryImage from '../CategoryImage';

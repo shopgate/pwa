@@ -4,7 +4,7 @@ import moment from 'moment';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import TimeIcon from '@shopgate/pwa-ui-shared/icons/TimeIcon';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { useOrderDetails } from '../../hooks';

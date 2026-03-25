@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {
   makeIsProductOnSpecificFavoriteList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getWishlistItemQuantityEnabled } from '../../../core/selectors/shopSettings';
 

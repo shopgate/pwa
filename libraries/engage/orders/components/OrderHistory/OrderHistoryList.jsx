@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import I18n from '@shopgate/pwa-common/components/I18n';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig, themeColors, themeName } from '@shopgate/pwa-common/helpers/config';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { CardList, Link } from '@shopgate/engage/components';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { getOrderDetailsRoute } from '../../helpers/orderDetails';

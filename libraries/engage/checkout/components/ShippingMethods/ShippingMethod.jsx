@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { Image } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '@shopgate/engage/checkout/hooks/common';

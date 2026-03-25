@@ -17,7 +17,6 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
     isDisabled={false}
     isLoading={true}
     isOrderable={true}
-    noShadow={false}
     onClick={[MockFunction]}
     onReset={[Function]}
   >
@@ -25,13 +24,29 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1vypr3k"
+      className="ui-shared__add-to-cart-button tss-wd65dq-buttonReady"
       data-test-id="addToCartButton"
       onClick={[Function]}
+      style={
+        {
+          "borderRadius": "50%",
+          "flexShrink": 0,
+          "fontSize": 20,
+          "height": 40,
+          "outline": 0,
+          "overflow": "hidden",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "position": "relative",
+          "transition": "background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+          "width": 40,
+          "zIndex": 2,
+        }
+      }
       type="button"
     >
       <div
-        className="css-rukjns css-1gleer"
+        className="tss-4825tr-icon tss-107eefh-spinnerIcon"
         style={
           {
             "opacity": 1,
@@ -62,7 +77,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
         </IndicatorCircle>
       </div>
       <div
-        className="css-rukjns"
+        className="tss-4825tr-icon"
         style={
           {
             "opacity": 0,
@@ -94,7 +109,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
         </Tick>
       </div>
       <div
-        className="css-rukjns"
+        className="tss-4825tr-icon"
         onAnimationEnd={[Function]}
         style={
           {
@@ -162,7 +177,6 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
     isDisabled={false}
     isLoading={false}
     isOrderable={true}
-    noShadow={false}
     onClick={
       [MockFunction] {
         "calls": [
@@ -184,13 +198,29 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1hx8uyq"
+      className="ui-shared__add-to-cart-button tss-ut1w4n-buttonSuccess"
       data-test-id="addToCartButton"
       onClick={[Function]}
+      style={
+        {
+          "borderRadius": "50%",
+          "flexShrink": 0,
+          "fontSize": 20,
+          "height": 40,
+          "outline": 0,
+          "overflow": "hidden",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "position": "relative",
+          "transition": "background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+          "width": 40,
+          "zIndex": 2,
+        }
+      }
       type="button"
     >
       <div
-        className="css-rukjns css-1tg5aiu"
+        className="tss-4825tr-icon tss-hmu2ss-springFromBottom"
         style={
           {
             "opacity": 1,
@@ -222,7 +252,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
         </Tick>
       </div>
       <div
-        className="css-rukjns css-1kfuvpr"
+        className="tss-4825tr-icon tss-11lhx15-springToTop"
         onAnimationEnd={[Function]}
         style={
           {
@@ -290,7 +320,6 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
     isDisabled={false}
     isLoading={false}
     isOrderable={true}
-    noShadow={false}
     onClick={
       [MockFunction] {
         "calls": [
@@ -312,13 +341,29 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button null css-1e8v7r2 css-1hx8uyq"
+      className="ui-shared__add-to-cart-button tss-ut1w4n-buttonSuccess"
       data-test-id="addToCartButton"
       onClick={[Function]}
+      style={
+        {
+          "borderRadius": "50%",
+          "flexShrink": 0,
+          "fontSize": 20,
+          "height": 40,
+          "outline": 0,
+          "overflow": "hidden",
+          "paddingLeft": 10,
+          "paddingRight": 10,
+          "position": "relative",
+          "transition": "background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)",
+          "width": 40,
+          "zIndex": 2,
+        }
+      }
       type="button"
     >
       <div
-        className="css-rukjns css-1tg5aiu"
+        className="tss-4825tr-icon tss-hmu2ss-springFromBottom"
         style={
           {
             "opacity": 1,
@@ -350,7 +395,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
         </Tick>
       </div>
       <div
-        className="css-rukjns css-1kfuvpr"
+        className="tss-4825tr-icon tss-11lhx15-springToTop"
         onAnimationEnd={[Function]}
         style={
           {

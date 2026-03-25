@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { LocationIcon } from '@shopgate/engage/components';
 import { BOPIS } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';

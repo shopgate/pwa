@@ -3,10 +3,9 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { I18n } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
-import { responsiveMediaQuery } from '../../../../../styles';
+import { i18n } from '@shopgate/engage/core/helpers';
 
 const { currency } = appConfig;
 const { colors } = themeConfig;

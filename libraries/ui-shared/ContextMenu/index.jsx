@@ -7,32 +7,63 @@ import { ConnectedReactPortal } from '@shopgate/engage/components';
 import classNames from 'classnames';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { FocusTrap } from '@shopgate/engage/a11y/components';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
 import Item from './components/Item';
-import styles from './style';
 import ContextMenuProvider from './ContextMenuProvider';
+
+const useStyles = makeStyles()({
+  container: {
+    position: 'relative',
+  },
+  button: {
+    display: 'block',
+    fontSize: '1.5rem',
+    outline: 0,
+    padding: 0,
+    color: 'inherit',
+  },
+  disabled: {
+    cursor: 'not-allowed',
+  },
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 10,
+  },
+  menu: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    padding: `${themeConfig.variables.gap.small}px 0`,
+    minWidth: 130,
+    background: themeConfig.colors.light,
+    borderRadius: 2,
+    boxShadow: themeConfig.shadows.contextMenu,
+  },
+  scrollable: {
+    maxHeight: '30vh',
+    overflowY: 'auto',
+  },
+});
 
 /**
  * The Context Menu component.
-  * @param {Object} props The component props.
-  * @param {Object} props.children The menu items.
-  * @param {Object} props.classes The classes for the container and button.
-  * @param {string} props.classes.container The class name for the container.
-  * @param {string} props.classes.button The class name for the button.
-  * @param {boolean} props.disabled Whether the menu is disabled.
-  * @param {boolean} props.isOpened Whether the menu is opened.
-  * @param {Function} props.onStateChange A callback that is called when the menu state changes.
-  * @param {boolean} props.scroll Whether the menu should be scrollable.
-  * @param {boolean} props.showToggle Whether the toggle button should be shown.
-  * @returns {JSX}
-  */
+ * @param {Object} props The component props.
+ * @returns {JSX}
+ */
 const ContextMenu = (props) => {
   const {
-    children, classes, disabled, showToggle, scroll, isOpened, onStateChange,
+    children, classes: parentClasses, disabled, showToggle, scroll, isOpened, onStateChange,
   } = props;
 
+  const { classes } = useStyles();
   const [active, setActive] = useState(isOpened);
   const elementRef = useRef(null);
   const menuRef = useRef(null);
@@ -49,10 +80,6 @@ const ContextMenu = (props) => {
     }
   }, [active]);
 
-  /**
-   * Handles the menu toggle.
-   * @param {Object} e The event object.
-  */
   const handleMenuToggle = useCallback((e) => {
     if (e) {
       e.preventDefault();
@@ -69,9 +96,9 @@ const ContextMenu = (props) => {
     }
   }, [onStateChange]);
 
-  const offset = elementRef.current ?
-    elementRef.current.getBoundingClientRect() :
-    {
+  const offset = elementRef.current
+    ? elementRef.current.getBoundingClientRect()
+    : {
       top: 0,
       left: 0,
     };
@@ -81,12 +108,12 @@ const ContextMenu = (props) => {
     <div
       data-test-id="contextMenu"
       ref={elementRef}
-      className={classNames(styles.container, classes.container, 'ui-shared__context-menu')}
+      className={classNames(classes.container, parentClasses.container, 'ui-shared__context-menu')}
     >
       {showToggle && (
         <button
-          className={classNames(styles.button, classes.button, {
-            [styles.disabled]: disabled,
+          className={classNames(classes.button, parentClasses.button, {
+            [classes.disabled]: disabled,
           })}
           onClick={handleMenuToggle}
           disabled={disabled}
@@ -101,12 +128,12 @@ const ContextMenu = (props) => {
       )}
       <ConnectedReactPortal isOpened={active}>
         <FocusTrap active={active}>
-          <div className={styles.overlay}>
+          <div className={classes.overlay}>
             <Backdrop isVisible level={0} opacity={0} onClick={handleMenuToggle} />
             <Position offset={offset}>
               <ContextMenuProvider handleMenuToggle={handleMenuToggle}>
                 <div
-                  className={classNames(styles.menu, { [styles.scrollable]: useScroll })}
+                  className={classNames(classes.menu, { [classes.scrollable]: useScroll })}
                   ref={menuRef}
                   tabIndex="-1"
                   aria-modal="true"

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { LoadingIndicator, Accordion, Card } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/hooks';
 import Subscription from '../Subscription';

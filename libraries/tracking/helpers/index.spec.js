@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import core from '@shopgate/tracking-core/core/Core';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import {
   createScannerEventData,
   buildScannerUtmUrl,

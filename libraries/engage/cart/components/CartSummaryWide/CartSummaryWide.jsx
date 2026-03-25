@@ -1,5 +1,5 @@
 import React from 'react';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import PaymentBarSubTotal from '../PaymentBar/PaymentBarSubTotal';

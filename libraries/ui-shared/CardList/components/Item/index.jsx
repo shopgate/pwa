@@ -1,7 +1,16 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import ListItem from '@shopgate/pwa-common/components/List/components/Item';
-import styles from './style';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  root: {
+    background: themeConfig.colors.light,
+    marginBottom: themeConfig.variables.gap.small / 2,
+    position: 'relative',
+  },
+});
 
 /**
  * The Card List Item component implemented as class so that ref prop is available.
@@ -9,12 +18,14 @@ import styles from './style';
  * @return {JSX}
  */
 const Item = ({ children, className, isSelected }) => {
+  const { classes, cx } = useStyles();
+
   if (!Children.count(children)) {
     return null;
   }
 
   return (
-    <ListItem className={`${styles} ${className}`} isSelected={isSelected}>
+    <ListItem className={cx(classes.root, className)} isSelected={isSelected}>
       {children}
     </ListItem>
   );

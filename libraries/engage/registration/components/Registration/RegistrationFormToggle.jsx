@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { Toggle } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { ELEMENT_ID_SHIPPING_CONTACT_TOGGLE } from '../../constants';
