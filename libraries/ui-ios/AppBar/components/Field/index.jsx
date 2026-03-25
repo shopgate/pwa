@@ -20,7 +20,7 @@ const useStyles = makeStyles()({
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */
-function AppBarField({ fieldRef, onChange, onSubmit }) {
+const AppBarField = ({ fieldRef, onChange, onSubmit }) => {
   const { classes } = useStyles();
 
   return (
@@ -33,7 +33,7 @@ function AppBarField({ fieldRef, onChange, onSubmit }) {
       />
     </form>
   );
-}
+};
 
 AppBarField.propTypes = {
   fieldRef: PropTypes.shape(),
