@@ -9,12 +9,18 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import RatingCount from '../../../RatingCount';
 
 const useStyles = makeStyles()({
+  /**
+   * `Link` adds alignItems: stretch + width 100%. Higher specificity keeps stars centered on PDP.
+   */
   container: {
-    alignItems: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    marginBottom: 8,
+    '&&': {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 8,
+      textAlign: 'center',
+    },
   },
 });
 

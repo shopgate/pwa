@@ -20,10 +20,13 @@ const ICON_SIZES = {
 const useStyles = makeStyles()({
   container: {
     position: 'relative',
+    display: 'inline-block',
+    verticalAlign: 'middle',
+    maxWidth: '100%',
   },
   icon: {
     display: 'inline-block',
-    verticalAlign: 'top',
+    verticalAlign: 'middle',
     outline: 0,
   },
   iconGapSmall: {
@@ -37,11 +40,18 @@ const useStyles = makeStyles()({
   },
   emptyStars: {
     color: themeConfig.colors.shade7,
+    display: 'inline-flex',
+    alignItems: 'center',
+    flexWrap: 'nowrap',
   },
   filledStars: {
     position: 'absolute',
-    color: 'var(--color-primary)',
+    left: 0,
     top: 0,
+    color: 'var(--color-primary)',
+    display: 'inline-flex',
+    alignItems: 'center',
+    flexWrap: 'nowrap',
   },
 });
 

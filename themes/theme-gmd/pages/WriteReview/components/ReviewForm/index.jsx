@@ -1,6 +1,4 @@
-import React, {
-  useCallback, useEffect, useRef, useState,
-} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
@@ -22,83 +20,95 @@ import connect from './connector';
 
 const { variables } = themeConfig;
 
-const VALIDATION_LENGTHS = {
-  [FIELD_NAME_AUTHOR]: DEFAULT_FORM_MAX_LENGTH,
-  [FIELD_NAME_TITLE]: DEFAULT_FORM_MAX_LENGTH,
-  [FIELD_NAME_REVIEW]: REVIEW_TEXT_MAX_LENGTH,
-};
-
 const useStyles = makeStyles()(() => ({
   container: {
     margin: `${variables.gap.big}px`,
   },
 }));
 
-/**
- * @param {Object} scope Form field slice.
- * @param {Object} prevErrors Previous validation map.
- * @returns {Object}
- */
-const validateRate = (scope, prevErrors) => {
-  const next = { ...prevErrors };
-  if (!scope[FIELD_NAME_RATE]) {
-    next[FIELD_NAME_RATE] = i18n.text('reviews.review_form_rate_error');
-  } else {
-    delete next[FIELD_NAME_RATE];
-  }
-  return next;
+const VALIDATION_LENGTHS = {
+  [FIELD_NAME_AUTHOR]: DEFAULT_FORM_MAX_LENGTH,
+  [FIELD_NAME_TITLE]: DEFAULT_FORM_MAX_LENGTH,
+  [FIELD_NAME_REVIEW]: REVIEW_TEXT_MAX_LENGTH,
 };
 
 /**
  * @param {string} field Field key.
- * @param {Object} scope Form field slice.
- * @param {Object} prevErrors Previous validation map.
+ * @param {Object} scope Source values (state slice or override).
+ * @param {Object} validationErrors Previous error map.
  * @returns {Object}
  */
-const validateFieldLength = (field, scope, prevErrors) => {
-  const next = { ...prevErrors };
+const applyValidateLength = (field, scope, validationErrors) => {
+  const next = { ...validationErrors };
   const length = VALIDATION_LENGTHS[field];
+
   if (length && scope[field] && scope[field].length >= length) {
     next[field] = i18n.text('reviews.review_form_error_length', { length });
   } else {
     delete next[field];
   }
+
   return next;
 };
 
 /**
- * Full validation for submit (matches legacy getter order / rules).
- * @param {Object} state Form state including validationErrors.
+ * @param {Object} scope Source values.
+ * @param {Object} validationErrors Previous error map.
  * @returns {Object}
  */
-const computeSubmitValidationErrors = (state) => {
-  const errors = {};
-  if (!state[FIELD_NAME_RATE]) {
-    errors[FIELD_NAME_RATE] = i18n.text('reviews.review_form_rate_error');
+const applyValidateAuthor = (scope, validationErrors) => {
+  const next = { ...validationErrors };
+  const length = VALIDATION_LENGTHS[FIELD_NAME_AUTHOR];
+
+  if (!scope[FIELD_NAME_AUTHOR] || !scope[FIELD_NAME_AUTHOR].length) {
+    next[FIELD_NAME_AUTHOR] = i18n.text('reviews.review_form_error_author_empty');
+  } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
+    next[FIELD_NAME_AUTHOR] = i18n.text('reviews.review_form_error_length', { length });
+  } else {
+    delete next[FIELD_NAME_AUTHOR];
   }
-  const author = state[FIELD_NAME_AUTHOR];
-  const authorLen = VALIDATION_LENGTHS[FIELD_NAME_AUTHOR];
-  if (!author || !author.length) {
-    errors[FIELD_NAME_AUTHOR] = i18n.text('reviews.review_form_error_author_empty');
-  } else if (authorLen && author.length > authorLen) {
-    errors[FIELD_NAME_AUTHOR] = i18n.text('reviews.review_form_error_length', { length: authorLen });
-  }
-  if (authorLen && author && author.length >= authorLen) {
-    errors[FIELD_NAME_AUTHOR] = i18n.text('reviews.review_form_error_length', { length: authorLen });
-  }
-  const titleLen = VALIDATION_LENGTHS[FIELD_NAME_TITLE];
-  if (titleLen && state[FIELD_NAME_TITLE] && state[FIELD_NAME_TITLE].length >= titleLen) {
-    errors[FIELD_NAME_TITLE] = i18n.text('reviews.review_form_error_length', { length: titleLen });
-  }
-  const reviewLen = VALIDATION_LENGTHS[FIELD_NAME_REVIEW];
-  if (reviewLen && state[FIELD_NAME_REVIEW] && state[FIELD_NAME_REVIEW].length >= reviewLen) {
-    errors[FIELD_NAME_REVIEW] = i18n.text('reviews.review_form_error_length', { length: reviewLen });
-  }
-  return errors;
+
+  return next;
 };
 
 /**
- * Review form component.
+ * Legacy class used `scope.rate` (see handleRatingChange({ rate })).
+ * @param {Object} scope Source values.
+ * @param {Object} validationErrors Previous error map.
+ * @returns {Object}
+ */
+const applyValidateRate = (scope, validationErrors) => {
+  const next = { ...validationErrors };
+
+  if (!scope.rate) {
+    next[FIELD_NAME_RATE] = i18n.text('reviews.review_form_rate_error');
+  } else {
+    delete next[FIELD_NAME_RATE];
+  }
+
+  return next;
+};
+
+/**
+ * Matches legacy `formValid` getter order: rate, author, length(author|title|review).
+ * @param {Object} state Form state including validationErrors.
+ * @returns {{ validationErrors: Object, valid: boolean }}
+ */
+const computeFormValidation = (state) => {
+  let validationErrors = { ...state.validationErrors };
+  validationErrors = applyValidateRate(state, validationErrors);
+  validationErrors = applyValidateAuthor(state, validationErrors);
+  validationErrors = applyValidateLength(FIELD_NAME_AUTHOR, state, validationErrors);
+  validationErrors = applyValidateLength(FIELD_NAME_TITLE, state, validationErrors);
+  validationErrors = applyValidateLength(FIELD_NAME_REVIEW, state, validationErrors);
+  return {
+    validationErrors,
+    valid: !Object.keys(validationErrors).length,
+  };
+};
+
+/**
+ * Review form (functional equivalent of legacy PureComponent + UNSAFE_componentWillReceiveProps).
  * @param {Object} props Props.
  * @returns {JSX.Element|null}
  */
@@ -111,18 +121,19 @@ const ReviewForm = ({
   widgetSettings,
 }) => {
   const { classes } = useStyles();
-  const skipFirstPropsSync = useRef(true);
   const [formState, setFormState] = useState(() => ({
     ...review,
     productId,
     validationErrors: {},
   }));
 
+  /**
+   * `getUserReviewForProduct` returns a new object when `reviewsById` changes; depending on
+   * `review` by reference would re-sync on unrelated review entities. Match server payload only.
+   */
+  const reviewFingerprint = JSON.stringify(review ?? {});
+
   useEffect(() => {
-    if (skipFirstPropsSync.current) {
-      skipFirstPropsSync.current = false;
-      return;
-    }
     const author = review[FIELD_NAME_AUTHOR];
     const prefilledAuthor = widgetSettings.prefillAuthor !== false ? authorName : '';
     setFormState(prev => ({
@@ -131,19 +142,23 @@ const ReviewForm = ({
       ...review,
       ...(!prev[FIELD_NAME_AUTHOR] && { [FIELD_NAME_AUTHOR]: (author || prefilledAuthor) }),
     }));
-  }, [productId, review, authorName, widgetSettings]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [productId, authorName, widgetSettings, reviewFingerprint]);
 
   const handleSubmit = useCallback((event) => {
     event.preventDefault();
     setFormState((prev) => {
-      const validationErrors = computeSubmitValidationErrors(prev);
-      if (Object.keys(validationErrors).length) {
+      const { valid, validationErrors } = computeFormValidation(prev);
+      if (!valid) {
         return {
           ...prev,
           validationErrors,
         };
       }
-      submit(prev, !!review.rate);
+      submit({
+        ...prev,
+        validationErrors: {},
+      }, !!review.rate);
       return {
         ...prev,
         validationErrors: {},
@@ -153,10 +168,10 @@ const ReviewForm = ({
 
   const handleRatingChange = useCallback((rate) => {
     setFormState((prev) => {
-      const validationErrors = validateRate(
+      const validationErrors = applyValidateRate(
         {
           ...prev,
-          [FIELD_NAME_RATE]: rate,
+          rate,
         },
         { ...prev.validationErrors }
       );
@@ -170,7 +185,7 @@ const ReviewForm = ({
 
   const handleAuthorChange = useCallback((author) => {
     setFormState((prev) => {
-      const validationErrors = validateFieldLength(
+      const validationErrors = applyValidateLength(
         FIELD_NAME_AUTHOR,
         { [FIELD_NAME_AUTHOR]: author },
         { ...prev.validationErrors }
@@ -185,7 +200,7 @@ const ReviewForm = ({
 
   const handleTitleChange = useCallback((title) => {
     setFormState((prev) => {
-      const validationErrors = validateFieldLength(
+      const validationErrors = applyValidateLength(
         FIELD_NAME_TITLE,
         { [FIELD_NAME_TITLE]: title },
         { ...prev.validationErrors }
@@ -200,7 +215,7 @@ const ReviewForm = ({
 
   const handleReviewChange = useCallback((reviewText) => {
     setFormState((prev) => {
-      const validationErrors = validateFieldLength(
+      const validationErrors = applyValidateLength(
         FIELD_NAME_REVIEW,
         { [FIELD_NAME_REVIEW]: reviewText },
         { ...prev.validationErrors }
@@ -217,7 +232,7 @@ const ReviewForm = ({
     return null;
   }
 
-  if (isLoadingUserReview && !formState[FIELD_NAME_RATE]) {
+  if (isLoadingUserReview && !formState.rate) {
     return <LoadingIndicator />;
   }
 
