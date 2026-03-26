@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import Drawer from '@shopgate/pwa-common/components/Drawer';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Sheet, { SHEET_EVENTS } from './index';
@@ -48,8 +49,9 @@ describe('<Sheet />', () => {
     expect(onDidOpen).not.toHaveBeenCalled();
 
     wrapper.setProps({ isOpen: true });
+    wrapper.update();
     expect(onOpen).toHaveBeenCalled();
-    wrapper.find('Drawer').simulate('animationEnd');
+    wrapper.find(Drawer).simulate('animationEnd');
     expect(onDidOpen).toHaveBeenCalled();
     expect(UIEvents.emit).nthCalledWith(1, SHEET_EVENTS.OPEN);
   });
@@ -72,18 +74,18 @@ describe('<Sheet />', () => {
       // Wait until the drawer is closed and has updated it's state.
       setTimeout(() => {
         resolve();
-      }, wrapper.find('Drawer').prop('animation').duration);
+      }, wrapper.find(Drawer).prop('animation').duration);
     }).then(() => {
       // Check if onClose callback was called.
       expect(onCloseSpy).toHaveBeenCalled();
 
       // Check if the Drawer component was closed.
-      expect(wrapper.find('Drawer').prop('isOpen')).not.toBeTruthy();
+      expect(wrapper.find(Drawer).prop('isOpen')).not.toBeTruthy();
 
       expect(wrapper).toMatchSnapshot();
 
-      wrapper.find('Drawer').simulate('animationEnd');
-      expect(UIEvents.emit).nthCalledWith(2, SHEET_EVENTS.CLOSE);
+      wrapper.find(Drawer).simulate('animationEnd');
+      expect(UIEvents.emit).lastCalledWith(SHEET_EVENTS.CLOSE);
     });
   });
 
@@ -98,7 +100,7 @@ describe('<Sheet />', () => {
 
     wrapper.setProps({ isOpen: true });
     wrapper.update();
-    expect(wrapper.find('Drawer').prop('isOpen')).toBeTruthy();
+    expect(wrapper.find(Drawer).prop('isOpen')).toBeTruthy();
     expect(wrapper).toMatchSnapshot();
   });
 });

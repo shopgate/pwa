@@ -1,131 +1,10 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { hasWebBridge } from '@shopgate/engage/core';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-/**
- * Link component.
- * @param {Object} props Props for the component.
- * @returns {JSX}
- */
-class Link extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    historyPush: PropTypes.func.isRequired,
-    historyReplace: PropTypes.func.isRequired,
-    href: PropTypes.string.isRequired,
-    'aria-hidden': PropTypes.bool,
-    'aria-label': PropTypes.string,
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    replace: PropTypes.bool,
-    role: PropTypes.string,
-    state: PropTypes.shape(),
-    tabIndex: PropTypes.number,
-    tag: PropTypes.string,
-    target: PropTypes.string,
-  };
-
-  static defaultProps = {
-    'aria-hidden': null,
-    'aria-label': null,
-    className: '',
-    disabled: false,
-    replace: false,
-    role: 'link',
-    tag: 'div',
-    tabIndex: null,
-    target: null,
-    state: {},
-  };
-
-  /**
-   * Opens the link.
-   * @param {Event} e An event object.
-   */
-  handleOpenLink = (e) => {
-    e.preventDefault();
-    if (this.props.disabled) {
-      return;
-    }
-
-    const params = {
-      pathname: this.props.href,
-      state: {
-        ...(this.props.state || {}),
-        ...(this.props.target ? { target: this.props.target } : {}),
-      },
-    };
-
-    // setTimeout prevents double click while VoiceOver is active
-    setTimeout(() => {
-      if (this.props.replace) {
-        this.props.historyReplace(params);
-      } else {
-        this.props.historyPush(params);
-      }
-    }, 0);
-  };
-
-  /**
-   * key listener for screen readers
-   * @param {Object} event The event object
-   */
-  handleKeyDown = (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      this.handleOpenLink(event);
-    }
-  };
-
-  /**
-   * Renders the component.
-   * @returns {JSX.Element}
-   */
-  render() {
-    const classes = withStyles.getClasses(this.props);
-    const {
-      tag,
-      className,
-      href,
-      children,
-      role,
-      'aria-label': ariaLabel,
-      'aria-hidden': ariaHidden,
-      tabIndex,
-    } = this.props;
-
-    let Tag = tag;
-
-    if (!hasWebBridge() && tag === 'a') {
-      /**
-       * Don't use link tags on apps. Sometimes links are really opened since the preventDefault
-       * doesn't work as expected which results in white pages.
-       */
-      Tag = 'span';
-    }
-
-    return (
-      <Tag
-        className={`${classes.link} ${className} common__link`}
-        onClick={this.handleOpenLink}
-        onKeyDown={this.handleKeyDown}
-        role={role}
-        data-test-id={`link: ${href}`}
-        aria-label={ariaLabel}
-        tabIndex={tabIndex}
-        aria-hidden={ariaHidden}
-        href={href && Tag === 'a' ? href : null}
-      >
-        {children}
-      </Tag>
-    );
-  }
-}
-
-export const Disconnected = Link;
-
-export default connect(withStyles(Link, () => ({
+const useStyles = makeStyles()({
   link: {
     padding: 0,
     margin: 0,
@@ -135,4 +14,113 @@ export default connect(withStyles(Link, () => ({
     width: '100%',
     cursor: 'pointer',
   },
-})));
+});
+
+/**
+ * Link component.
+ * @param {Object} props Props for the component.
+ * @returns {JSX.Element}
+ */
+const Link = ({
+  children,
+  historyPush,
+  historyReplace,
+  href,
+  'aria-hidden': ariaHidden,
+  'aria-label': ariaLabel,
+  className,
+  disabled,
+  replace,
+  role,
+  state,
+  tabIndex,
+  tag,
+  target,
+}) => {
+  const { classes } = useStyles();
+
+  const handleOpenLink = useCallback((e) => {
+    e.preventDefault();
+    if (disabled) {
+      return;
+    }
+
+    const params = {
+      pathname: href,
+      state: {
+        ...(state || {}),
+        ...(target ? { target } : {}),
+      },
+    };
+
+    setTimeout(() => {
+      if (replace) {
+        historyReplace(params);
+      } else {
+        historyPush(params);
+      }
+    }, 0);
+  }, [disabled, href, historyPush, historyReplace, replace, state, target]);
+
+  const handleKeyDown = useCallback((event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      handleOpenLink(event);
+    }
+  }, [handleOpenLink]);
+
+  let Tag = tag;
+
+  if (!hasWebBridge() && tag === 'a') {
+    Tag = 'span';
+  }
+
+  return (
+    <Tag
+      className={`${classes.link} ${className} common__link`}
+      onClick={handleOpenLink}
+      onKeyDown={handleKeyDown}
+      role={role}
+      data-test-id={`link: ${href}`}
+      aria-label={ariaLabel}
+      tabIndex={tabIndex}
+      aria-hidden={ariaHidden}
+      href={href && Tag === 'a' ? href : null}
+    >
+      {children}
+    </Tag>
+  );
+};
+
+Link.propTypes = {
+  children: PropTypes.node.isRequired,
+  historyPush: PropTypes.func.isRequired,
+  historyReplace: PropTypes.func.isRequired,
+  href: PropTypes.string.isRequired,
+  'aria-hidden': PropTypes.bool,
+  'aria-label': PropTypes.string,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  replace: PropTypes.bool,
+  role: PropTypes.string,
+  state: PropTypes.shape(),
+  tabIndex: PropTypes.number,
+  tag: PropTypes.string,
+  target: PropTypes.string,
+};
+
+Link.defaultProps = {
+  'aria-hidden': null,
+  'aria-label': null,
+  className: '',
+  disabled: false,
+  replace: false,
+  role: 'link',
+  tag: 'div',
+  tabIndex: null,
+  target: null,
+  state: {},
+};
+
+export const Disconnected = Link;
+
+export default connect(Link);

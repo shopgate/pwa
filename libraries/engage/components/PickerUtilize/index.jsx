@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useRef, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SheetList, Picker as BasePicker, Sheet } from '@shopgate/engage/components';
 import { ViewContext } from '@shopgate/engage/components/View';
@@ -8,143 +8,116 @@ import Button from './components/Button';
 
 const { variables } = themeConfig;
 
+const useStyles = makeStyles()({
+  root: {
+    display: 'flex',
+    marginBottom: variables.gap.small,
+    minHeight: 56,
+  },
+});
+
 /**
  * The template version of the Picker component.
  * @param {Object} props The same component props as in the base Picker component.
+ * @returns {JSX.Element}
  */
-class PickerUtilize extends Component {
-  static propTypes = {
-    label: PropTypes.string.isRequired,
-    setViewAriaHidden: PropTypes.func.isRequired,
-    buttonComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
-    buttonProps: PropTypes.shape(),
-    classes: PropTypes.shape({
-      root: PropTypes.string,
-    }),
-    clickDelay: PropTypes.number,
-    hasButton: PropTypes.bool,
-    sheetProps: PropTypes.shape(),
-  };
+const PickerUtilize = ({
+  label,
+  setViewAriaHidden,
+  buttonComponent,
+  buttonProps,
+  clickDelay,
+  hasButton,
+  sheetProps,
+  ...restProps
+}) => {
+  const { classes } = useStyles();
+  const pickerRef = useRef(null);
+  const firstSelectableItemRef = useRef(null);
 
-  static defaultProps = {
-    classes: {
-      root: '',
-    },
-    buttonComponent: null,
-    buttonProps: {},
-    /**
-     * Time in ms that delays picker interaction in order
-     * to let animations complete first.
-     */
-    clickDelay: 150,
-    hasButton: true,
-    sheetProps: {},
-  };
-
-  /**
-   * Constructor
-   * @param {Object} props Props of the component
-   */
-  constructor(props) {
-    super(props);
-
-    this.modalComponent = sheetProps => (
-      <Sheet
-        {...{
-          ...this.props.sheetProps,
-          ...sheetProps,
-        }}
-        title={this.props.label}
-        onDidOpen={this.onDidOpen}
-      />
-    );
-
-    this.pickerRef = React.createRef();
-    this.firstSelectableItemRef = React.createRef();
-
-    this.listComponent = prps => (
-      <SheetList>
-        {prps.items.map((item, index) => (
-          <SheetList.Item
-            key={item.value}
-            title={item.label}
-            onClick={() => {
-              setTimeout(() => {
-                prps.onSelect(item.value);
-                prps.onClose();
-              }, this.props.clickDelay);
-            }}
-            isDisabled={item.disabled}
-            isSelected={index === prps.selectedIndex}
-            rightComponent={item.rightComponent}
-            testId={item.label}
-            ref={index === prps.selectedIndex ? this.firstSelectableItemRef : null}
-          />
-        ))}
-      </SheetList>
-    );
-  }
-
-  /**
-   * Focuses the picker button for screen readers.
-   */
-  onDidOpen = () => {
-    this.props.setViewAriaHidden(true);
-    if (this.firstSelectableItemRef.current) {
-      this.firstSelectableItemRef.current.focus();
+  const onDidOpen = useCallback(() => {
+    setViewAriaHidden(true);
+    if (firstSelectableItemRef.current) {
+      firstSelectableItemRef.current.focus();
     }
-  };
+  }, [setViewAriaHidden]);
 
-  /**
-   * Focuses the first selectable item for screen readers.
-   */
-  onClose = () => {
-    this.props.setViewAriaHidden(false);
-    if (this.pickerRef.current) {
-      this.pickerRef.current.focus();
+  const onClose = useCallback(() => {
+    setViewAriaHidden(false);
+    if (pickerRef.current) {
+      pickerRef.current.focus();
     }
-  };
+  }, [setViewAriaHidden]);
 
-  /**
-   * Render
-   * @returns {JSX}
-   */
-  render() {
-    const {
-      hasButton, sheetProps: ignore, ...restProps
-    } = this.props;
-    const classes = withStyles.getClasses(this.props);
+  const modalComponent = useCallback(sheetPropsInner => (
+    <Sheet
+      {...{
+        ...sheetProps,
+        ...sheetPropsInner,
+      }}
+      title={label}
+      onDidOpen={onDidOpen}
+    />
+  ), [label, onDidOpen, sheetProps]);
 
-    return (
-      <BasePicker
-        {...restProps}
-        className={`${hasButton ? classes.root : ''} engage__picker-utilize`}
-        modalComponent={this.modalComponent}
-        buttonProps={this.props.buttonProps}
-        buttonComponent={this.props.buttonComponent || Button}
-        listComponent={this.listComponent}
-        onClose={this.onClose}
-        ref={this.pickerRef}
-      />
-    );
-  }
-}
+  const listComponent = useCallback(prps => (
+    <SheetList>
+      {prps.items.map((item, index) => (
+        <SheetList.Item
+          key={item.value}
+          title={item.label}
+          onClick={() => {
+            setTimeout(() => {
+              prps.onSelect(item.value);
+              prps.onClose();
+            }, clickDelay);
+          }}
+          isDisabled={item.disabled}
+          isSelected={index === prps.selectedIndex}
+          rightComponent={item.rightComponent}
+          testId={item.label}
+          ref={index === prps.selectedIndex ? firstSelectableItemRef : null}
+        />
+      ))}
+    </SheetList>
+  ), [clickDelay]);
 
-const StyledPickerUtilize = withStyles(
-  PickerUtilize,
-  () => ({
-    root: {
-      display: 'flex',
-      marginBottom: variables.gap.small,
-      minHeight: 56,
-    },
-  })
-);
+  return (
+    <BasePicker
+      {...restProps}
+      className={`${hasButton ? classes.root : ''} engage__picker-utilize`}
+      modalComponent={modalComponent}
+      buttonProps={buttonProps}
+      buttonComponent={buttonComponent || Button}
+      listComponent={listComponent}
+      onClose={onClose}
+      ref={pickerRef}
+    />
+  );
+};
+
+PickerUtilize.propTypes = {
+  label: PropTypes.string.isRequired,
+  setViewAriaHidden: PropTypes.func.isRequired,
+  buttonComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  buttonProps: PropTypes.shape(),
+  clickDelay: PropTypes.number,
+  hasButton: PropTypes.bool,
+  sheetProps: PropTypes.shape(),
+};
+
+PickerUtilize.defaultProps = {
+  buttonComponent: null,
+  buttonProps: {},
+  clickDelay: 150,
+  hasButton: true,
+  sheetProps: {},
+};
 
 export default props => (
   <ViewContext.Consumer>
     {({ setAriaHidden }) => (
-      <StyledPickerUtilize {...props} setViewAriaHidden={setAriaHidden} />
+      <PickerUtilize {...props} setViewAriaHidden={setAriaHidden} />
     )}
   </ViewContext.Consumer>
 );

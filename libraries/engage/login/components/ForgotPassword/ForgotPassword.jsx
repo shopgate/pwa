@@ -154,6 +154,7 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
               <RippleButton
                 className={classes.button}
                 type="secondary"
+                nativeType="submit"
                 disabled={loading}
               >
                 <I18n.Text string="common.submit" />

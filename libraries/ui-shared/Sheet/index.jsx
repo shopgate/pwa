@@ -1,4 +1,10 @@
-import React, { Component } from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import classNames from 'classnames';
@@ -250,153 +256,154 @@ SheetView.defaultProps = {
 
 /**
  * Sheet component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Sheet extends Component {
-  static Header = Header;
+const Sheet = ({
+  allowClose,
+  animation,
+  backdrop,
+  children: childrenProp,
+  className,
+  contentClassName,
+  duration: sheetDuration,
+  isLoading,
+  isOpen: isOpenFromProps,
+  onClose,
+  onDidClose,
+  onDidOpen,
+  onOpen,
+  showSearch,
+  title,
+}) => {
+  const contentRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(isOpenFromProps);
+  const prevIsOpenPropRef = useRef(isOpenFromProps);
 
-  static propTypes = {
-    allowClose: PropTypes.bool,
-    animation: PropTypes.shape({
-      in: PropTypes.string,
-      out: PropTypes.string,
-    }),
-    backdrop: PropTypes.bool,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    contentClassName: PropTypes.string,
-    duration: PropTypes.number,
-    isLoading: PropTypes.bool,
-    isOpen: PropTypes.bool,
-    onClose: PropTypes.func,
-    onDidClose: PropTypes.func,
-    onDidOpen: PropTypes.func,
-    onOpen: PropTypes.func,
-    showSearch: PropTypes.bool,
-    title: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element,
-    ]),
-  };
-
-  static defaultProps = {
-    animation: {},
-    backdrop: true,
-    children: null,
-    className: null,
-    contentClassName: null,
-    duration: 300,
-    isOpen: false,
-    isLoading: false,
-    onClose: () => { },
-    onDidClose: () => { },
-    onDidOpen: () => { },
-    onOpen: () => { },
-    title: '',
-    showSearch: false,
-    allowClose: true,
-  };
-
-  /**
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.content = React.createRef();
-
-    this.state = {
-      isOpen: props.isOpen,
-      scrolled: false,
-      query: '',
-    };
-  }
-
-  /**
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps({ isOpen }) {
-    if (this.state.isOpen !== isOpen) {
-      this.setState({ isOpen });
+  if (prevIsOpenPropRef.current !== isOpenFromProps) {
+    prevIsOpenPropRef.current = isOpenFromProps;
+    if (isOpen !== isOpenFromProps) {
+      setIsOpen(isOpenFromProps);
     }
   }
 
-  handleScroll = throttle(() => {
-    const scrolled = this.content.current.scrollTop !== 0;
+  const [scrolled, setScrolled] = useState(false);
+  const [query, setQuery] = useState('');
 
-    if (this.state.scrolled !== scrolled) {
-      this.setState({ scrolled });
-    }
-  }, 10);
+  const handleScroll = useMemo(
+    () => throttle(() => {
+      const node = contentRef.current;
+      if (!node) {
+        return;
+      }
+      const nextScrolled = node.scrollTop !== 0;
+      setScrolled(prev => (prev === nextScrolled ? prev : nextScrolled));
+    }, 10),
+    []
+  );
 
-  handleClose = () => {
-    this.props.onClose();
+  useEffect(() => () => {
+    handleScroll.cancel();
+  }, [handleScroll]);
 
-    this.setState({
-      isOpen: false,
-      scrolled: false,
-    });
-  };
+  const handleClose = useCallback(() => {
+    onClose();
+    setIsOpen(false);
+    setScrolled(false);
+  }, [onClose]);
 
-  handleDidOpen = () => {
+  const handleDidOpen = useCallback(() => {
     UIEvents.emit(SHEET_EVENTS.OPEN);
-    this.props.onDidOpen();
-  };
+    onDidOpen();
+  }, [onDidOpen]);
 
-  handleDidClose = () => {
+  const handleDidClose = useCallback(() => {
     UIEvents.emit(SHEET_EVENTS.CLOSE);
-    this.props.onDidClose();
-  };
+    onDidClose();
+  }, [onDidClose]);
 
-  /**
-   * @param {string} value Search query from the sheet header.
-   */
-  handleSearchInput = (value) => {
-    this.setState({ query: value });
-  };
+  const handleSearchInput = useCallback((value) => {
+    setQuery(value);
+  }, []);
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { allowClose } = this.props;
+  const children = React.Children.map(childrenProp, child => (
+    React.cloneElement(
+      child,
+      typeof child.type === 'function' && onClose !== null ? {
+        onClose,
+        query,
+      } : {}
+    )
+  ));
 
-    const children = React.Children.map(this.props.children, child => (
-      React.cloneElement(
-        child,
-        typeof child.type === 'function' && this.props.onClose !== null ? (
-          {
-            onClose: this.props.onClose,
-            query: this.state.query,
-          }
-        ) : {}
-      )
-    ));
+  return (
+    <SheetView
+      allowClose={allowClose}
+      animationFromParent={animation}
+      backdrop={backdrop}
+      className={className}
+      contentClassName={contentClassName}
+      contentRef={contentRef}
+      duration={sheetDuration}
+      handleSearchInput={handleSearchInput}
+      isLoading={isLoading}
+      isOpen={isOpen}
+      onClose={handleClose}
+      onDidClose={handleDidClose}
+      onDidOpen={handleDidOpen}
+      onOpen={onOpen}
+      onScroll={handleScroll}
+      scrolled={scrolled}
+      showSearch={showSearch}
+      title={title}
+    >
+      {children}
+    </SheetView>
+  );
+};
 
-    return (
-      <SheetView
-        allowClose={allowClose}
-        animationFromParent={this.props.animation}
-        backdrop={this.props.backdrop}
-        className={this.props.className}
-        contentClassName={this.props.contentClassName}
-        contentRef={this.content}
-        duration={this.props.duration}
-        handleSearchInput={this.handleSearchInput}
-        isLoading={this.props.isLoading}
-        isOpen={this.state.isOpen}
-        onClose={this.handleClose}
-        onDidClose={this.handleDidClose}
-        onDidOpen={this.handleDidOpen}
-        onOpen={this.props.onOpen}
-        onScroll={this.handleScroll}
-        scrolled={this.state.scrolled}
-        showSearch={this.props.showSearch}
-        title={this.props.title}
-      >
-        {children}
-      </SheetView>
-    );
-  }
-}
+Sheet.Header = Header;
+
+Sheet.propTypes = {
+  allowClose: PropTypes.bool,
+  animation: PropTypes.shape({
+    in: PropTypes.string,
+    out: PropTypes.string,
+  }),
+  backdrop: PropTypes.bool,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  contentClassName: PropTypes.string,
+  duration: PropTypes.number,
+  isLoading: PropTypes.bool,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  onDidClose: PropTypes.func,
+  onDidOpen: PropTypes.func,
+  onOpen: PropTypes.func,
+  showSearch: PropTypes.bool,
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]),
+};
+
+Sheet.defaultProps = {
+  animation: {},
+  backdrop: true,
+  children: null,
+  className: null,
+  contentClassName: null,
+  duration: 300,
+  isOpen: false,
+  isLoading: false,
+  onClose: () => { },
+  onDidClose: () => { },
+  onDidOpen: () => { },
+  onOpen: () => { },
+  title: '',
+  showSearch: false,
+  allowClose: true,
+};
 
 export default Sheet;

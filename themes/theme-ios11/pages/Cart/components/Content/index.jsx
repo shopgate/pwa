@@ -1,4 +1,6 @@
-import React, { useMemo, useCallback } from 'react';
+import React, {
+  useMemo, useCallback, useEffect, useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
@@ -45,6 +47,14 @@ function CartContent(props) {
   const { classes } = useStyles();
   const [isPaymentBarVisible, setIsPaymentBarVisible] = React.useState(true);
   const { isLoading: getIsLoading } = React.useContext(LoadingContext);
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   const isLoading = getIsLoading(CART_PATH);
   const hasItems = (cartItems.length > 0);
@@ -58,6 +68,9 @@ function CartContent(props) {
    * @param {boolean} isHidden Tells if the payment bar is hidden or not.
    */
   const togglePaymentBar = useCallback((isHidden) => {
+    if (!isMountedRef.current) {
+      return;
+    }
     setIsPaymentBarVisible(!isHidden);
   }, []);
 

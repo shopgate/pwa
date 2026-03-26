@@ -8,6 +8,7 @@ import {
   CART_ITEM_NAME,
   CART_ITEM_COUPON_CODE,
   CART_ITEM_PRICE,
+  CART_ITEM_TYPE_COUPON,
 } from '@shopgate/pwa-common-commerce/cart';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { CartItemCouponIcon } from './CartItemCouponIcon';
@@ -18,6 +19,13 @@ import { CartItemCouponCode } from './CartItemCouponCode';
 import { CartItemCouponDelete } from './CartItemCouponDelete';
 
 const { variables } = themeConfig;
+
+/** @type {React.Context<{ cartItemId: string, type: string, editable?: boolean }>} */
+export const CartItemCouponLayoutContext = React.createContext({
+  cartItemId: '',
+  type: CART_ITEM_TYPE_COUPON,
+  editable: true,
+});
 
 const useStyles = makeStyles()({
   item: {
@@ -44,18 +52,15 @@ const useStyles = makeStyles()({
 });
 
 /**
- * The CouponLayout component.
+ * The CartItemCouponLayout component.
  * @param {Object} props The component properties.
  * @param {Object} props.coupon The coupon details.
  * @param {string} props.currency The currency to display.
  * @param {Function} [props.handleDelete] The delete handler function.
- * @param {Object} context The component context.
- * @param {string} context.cartItemId The cart item ID.
- * @param {string} context.type The type of the cart item.
- * @param {boolean} [context.editable] Whether the item is editable.
  * @returns {JSX.Element}
  */
-export function CartItemCouponLayout(props, context) {
+export function CartItemCouponLayout(props) {
+  const context = React.useContext(CartItemCouponLayoutContext);
   const { classes, cx } = useStyles();
   const { coupon, currency, handleDelete } = props;
 
@@ -105,10 +110,4 @@ CartItemCouponLayout.propTypes = {
   }).isRequired,
   currency: PropTypes.string.isRequired,
   handleDelete: PropTypes.func,
-};
-
-CartItemCouponLayout.contextTypes = {
-  cartItemId: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  editable: PropTypes.bool,
 };

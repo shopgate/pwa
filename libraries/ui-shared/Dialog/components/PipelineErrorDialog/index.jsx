@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useRef, useCallback, useEffect,
+} from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import BasicDialog from '../BasicDialog';
@@ -14,196 +16,155 @@ const requiredTapsToSwitchModes = 10;
 const switchModeTapTimeout = 4000 / requiredTapsToSwitchModes;
 
 /**
+ * Checks the input to be truthy, "0" or "false" and enables it to be rendered then.
+ * @param {Object|string|number|boolean} value The value to be checked if it should be rendered.
+ * @returns {boolean}
+ */
+const checkValue = value => !!value || value === 0 || value === false;
+
+/**
  * This component displays a pipeline error dialog.
  * The special behaviour of this message is that the user may tap the message body
  * ten times until it reveals additional information about the error that occurred.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class PipelineErrorDialog extends Component {
-  static propTypes = {
-    actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    params: PropTypes.shape({
-      entityId: PropTypes.string,
-      code: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-      ]), // The error code as string.
-      message: PropTypes.string.isRequired, // The error message reported by the pipeline.
-      messageParams: PropTypes.shape(), // A list of key/value pairs (paramName: paramValue)
-      translated: PropTypes.bool,
-      pipeline: PropTypes.string.isRequired, // The identifier of the pipeline.
-      request: PropTypes.shape().isRequired, // The request as sent to the server.
-    }).isRequired,
-    message: PropTypes.string,
-  };
+const PipelineErrorDialog = ({ actions, params, message }) => {
+  const [devMode, setDevMode] = useState(false);
+  const tapTimeoutRef = useRef(null);
+  const tapCounterRef = useRef(0);
 
-  static defaultProps = {
-    message: '',
-  };
+  const handleTapTimeout = useCallback(() => {
+    tapCounterRef.current = 0;
+  }, []);
 
-  /**
-   * Creates the component.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
+  const handleClick = useCallback(() => {
+    tapCounterRef.current += 1;
 
-    this.tapTimeout = null;
-    this.tapCounter = 0;
-
-    this.state = {
-      devMode: false, // Indicating whether we are in dev mode.
-    };
-  }
-
-  /**
-   * @return {string} The title based on the current state of the dialog.
-   */
-  get title() {
-    return this.state.devMode
-      ? 'Pipeline Error'
-      : 'modal.title_error';
-  }
-
-  /**
-   * @return {JSX} The content component based on the the current state of the dialog.
-   */
-  get content() {
-    return this.state.devMode ? this.renderDevErrorMessage() : this.renderUserErrorMessage();
-  }
-
-  /**
-   * Clears the tap counter once the
-   */
-  handleTapTimeout = () => {
-    this.tapCounter = 0;
-  };
-
-  /**
-   * User tapped the message, increase the tap counter and switch view modes if required.
-   */
-  handleClick = () => {
-    this.tapCounter += 1;
-
-    if (this.tapTimeout) {
-      // Clear the timeout.
-      clearTimeout(this.tapTimeout);
+    if (tapTimeoutRef.current) {
+      clearTimeout(tapTimeoutRef.current);
     }
 
-    if (this.tapCounter >= requiredTapsToSwitchModes) {
-      // Switch modes and reset the tap counter.
-      this.tapCounter = 0;
-
-      this.setState(({ devMode }) => ({
-        devMode: !devMode,
-      }));
+    if (tapCounterRef.current >= requiredTapsToSwitchModes) {
+      tapCounterRef.current = 0;
+      setDevMode(prev => !prev);
     } else {
-      this.tapTimeout = setTimeout(this.handleTapTimeout, switchModeTapTimeout);
+      tapTimeoutRef.current = setTimeout(handleTapTimeout, switchModeTapTimeout);
     }
-  };
+  }, [handleTapTimeout]);
+
+  useEffect(() => () => {
+    if (tapTimeoutRef.current) {
+      clearTimeout(tapTimeoutRef.current);
+    }
+  }, []);
+
+  const title = devMode ? 'Pipeline Error' : 'modal.title_error';
 
   /**
-   * Renders the error message in developer mode.
-   * @returns {JSX}
+   * @returns {JSX.Element}
    */
-  renderDevErrorMessage = () => {
-    /**
-     * Checks the input to be truthy, "0" or "false" and enables it to be rendered then.
-     * @param {Object|string|number|boolean} value The value to be checked if it should be rendered.
-     * @returns {boolean}
-     */
-    const checkValue = value => !!value || value === 0 || value === false;
-    const { params } = this.props;
+  const renderDevErrorMessage = () => (
+    <div aria-hidden>
+      <span>
+        <strong>Pipeline:</strong>
+        <span>{` ${params.pipeline}`}</span>
+        <br />
+      </span>
+      { checkValue(params.entityId) && (
+        <span>
+          <strong>Entity id:</strong>
+          <span>{` ${params.entityId}`}</span>
+          <br />
+        </span>
+      )}
+      { checkValue(params.code) && (
+        <span>
+          <strong>Code:</strong>
+          <span>{` ${params.code}`}</span>
+          <br />
+        </span>
+      )}
+      <span>
+        <strong>Message:</strong>
+        <span>{` ${params.message}`}</span>
+        <br />
+      </span>
+      { checkValue(params.translated) && (
+        <span>
+          <strong>Message Translated:</strong>
+          <span>{` ${params.translated.toString()}`}</span>
+          <br />
+        </span>
+      )}
+      { checkValue(params.messageParams) && (
+        <p>
+          <strong>Message Params:</strong>
+          <br />
+          <span>{JSON.stringify(params.messageParams, null, ' ')}</span>
+          <br />
+        </p>
+      )}
+      { checkValue(params.request) && (
+        <p>
+          <strong>Request Params:</strong>
+          <br />
+          <span>{JSON.stringify(params.request, null, ' ')}</span>
+          <br />
+        </p>
+      )}
+    </div>
+  );
 
-    return (
-      <div aria-hidden>
-        <span>
-          <strong>Pipeline:</strong>
-          <span>{` ${params.pipeline}`}</span>
-          <br />
-        </span>
-        { checkValue(params.entityId) && (
-          <span>
-            <strong>Entity id:</strong>
-            <span>{` ${params.entityId}`}</span>
-            <br />
-          </span>
-        )}
-        { checkValue(params.code) && (
-          <span>
-            <strong>Code:</strong>
-            <span>{` ${params.code}`}</span>
-            <br />
-          </span>
-        )}
-        <span>
-          <strong>Message:</strong>
-          <span>{` ${params.message}`}</span>
-          <br />
-        </span>
-        { checkValue(params.translated) && (
-          <span>
-            <strong>Message Translated:</strong>
-            <span>{` ${params.translated.toString()}`}</span>
-            <br />
-          </span>
-        )}
-        { checkValue(params.messageParams) && (
-          <p>
-            <strong>Message Params:</strong>
-            <br />
-            <span>{JSON.stringify(params.messageParams, null, ' ')}</span>
-            <br />
-          </p>
-        )}
-        { checkValue(params.request) && (
-          <p>
-            <strong>Request Params:</strong>
-            <br />
-            <span>{JSON.stringify(params.request, null, ' ')}</span>
-            <br />
-          </p>
-        )}
+  /**
+   * @returns {JSX.Element}
+   */
+  const renderUserErrorMessage = () => (
+    <>
+      { !!params.translated && (
+        message || params.message || <I18n.Text string="modal.body_error" />
+      )}
+      { !params.translated && (
+        <I18n.Text
+          string={message || params.message || 'modal.body_error'}
+          params={params.messageParams || {}}
+        />
+      )}
+    </>
+  );
+
+  const content = devMode ? renderDevErrorMessage() : renderUserErrorMessage();
+
+  return (
+    <BasicDialog title={title} actions={actions}>
+      {/* eslint-disable-next-line max-len */}
+      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
+      <div onClick={handleClick}>
+        {content}
       </div>
-    );
-  };
+    </BasicDialog>
+  );
+};
 
-  /**
-   * Renders the regular error message in user mode.
-   * @returns {JSX}
-   */
-  renderUserErrorMessage = () => {
-    const { message = '', params = {} } = this.props;
+PipelineErrorDialog.propTypes = {
+  actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  params: PropTypes.shape({
+    entityId: PropTypes.string,
+    code: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
+    message: PropTypes.string.isRequired,
+    messageParams: PropTypes.shape(),
+    translated: PropTypes.bool,
+    pipeline: PropTypes.string.isRequired,
+    request: PropTypes.shape(),
+  }).isRequired,
+  message: PropTypes.string,
+};
 
-    return (
-      <>
-        { !!params.translated && (
-          message || params.message || <I18n.Text string="modal.body_error" />
-        )}
-        { !params.translated && (
-          <I18n.Text
-            string={message || params.message || 'modal.body_error'}
-            params={params.messageParams || {}}
-          />
-        )}
-      </>
-    );
-  };
-
-  /**
-   * Renders the error message depending on the current mode.
-   * @return {JSX}
-   */
-  render() {
-    return (
-      <BasicDialog title={this.title} actions={this.props.actions}>
-        {/* eslint-disable-next-line max-len */}
-        {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
-        <div onClick={this.handleClick}>
-          {this.content}
-        </div>
-      </BasicDialog>
-    );
-  }
-}
+PipelineErrorDialog.defaultProps = {
+  message: '',
+};
 
 export default PipelineErrorDialog;

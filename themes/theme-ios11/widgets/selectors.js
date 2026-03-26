@@ -83,8 +83,8 @@ const getResultHash = (state, type, params, id) => {
     default:
   }
 
-  // Generate the hash string.
-  return generateResultHash(hashParams, true, false);
+  // Include sort in the hash only when it is set (matches engage page widget selectors).
+  return generateResultHash(hashParams, !!hashParams.sort, false);
 };
 
 /**

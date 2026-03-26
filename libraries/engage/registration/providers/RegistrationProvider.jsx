@@ -68,8 +68,8 @@ const convertValidationErrors = validationErrors => Object
  * Registration Provider
  * @param {React.ReactNode} children Child components.
  * @param {Object} shopSettings Shop settings object.
- * @param {Object} userLocation User location object.
- * @param {Object} customerAttributes Customer attributes object.
+ * @param {Object|null|undefined} userLocation User location address (optional).
+ * @param {Array} customerAttributes Merchant customer attributes list.
  * @param {boolean} isDataReady Indicates if data is ready.
  * @param {string} registrationMode Registration mode.
  * @param {boolean} [cartHasDirectShipItems=false] Indicates if the cart has direct ship items.
@@ -391,7 +391,7 @@ const RegistrationProvider = ({
 
 RegistrationProvider.propTypes = {
   children: PropTypes.node.isRequired,
-  customerAttributes: PropTypes.shape().isRequired,
+  customerAttributes: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   isDataReady: PropTypes.bool.isRequired,
   registrationMode: PropTypes.string.isRequired,
   shopSettings: PropTypes.shape({
@@ -399,19 +399,20 @@ RegistrationProvider.propTypes = {
     countrySortOrder: PropTypes.arrayOf(PropTypes.string),
   }).isRequired,
   submitRegistration: PropTypes.func.isRequired,
-  userLocation: PropTypes.shape({
-    country: PropTypes.string,
-    region: PropTypes.string,
-  }).isRequired,
   cartHasDirectShipItems: PropTypes.bool,
   formContainerRef: PropTypes.shape(),
   numberOfAddressLines: PropTypes.number,
+  userLocation: PropTypes.shape({
+    country: PropTypes.string,
+    region: PropTypes.string,
+  }),
 };
 
 RegistrationProvider.defaultProps = {
   formContainerRef: null,
   cartHasDirectShipItems: false,
   numberOfAddressLines: null,
+  userLocation: null,
 };
 
 export default connect(RegistrationProvider);

@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import React, {
+  useCallback, useRef, useMemo, memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import appConfig, { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
-import { withStyles } from '@shopgate/engage/styles';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
 import HeartIcon from '../icons/HeartIcon';
 import HeartOutlineIcon from '../icons/HeartOutlineIcon';
 import HeartPlusOutlineIcon from '../icons/HeartPlusOutlineIcon';
@@ -21,163 +24,7 @@ const buttonProto = {
   outline: 0,
 };
 
-/**
- * The favorites button component.
- */
-class FavoritesButton extends Component {
-  static propTypes = {
-    active: PropTypes.bool,
-    addFavorites: PropTypes.func,
-    'aria-hidden': PropTypes.bool,
-    className: PropTypes.string,
-    loadWishlistOnAppStartEnabled: PropTypes.bool,
-    noShadow: PropTypes.bool,
-    // When true, button would react on click only once.
-    once: PropTypes.bool,
-    onRippleComplete: PropTypes.func,
-    productId: PropTypes.string,
-    removeFavorites: PropTypes.func,
-    removeThrottle: PropTypes.number,
-    removeWithRelatives: PropTypes.bool,
-    rippleClassName: PropTypes.string,
-    wishlistItemQuantityEnabled: PropTypes.bool,
-  };
-
-  /**
-   * Context types definition.
-   * @type {{i18n: shim}}
-   */
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  static defaultProps = {
-    active: false,
-    addFavorites: () => {},
-    'aria-hidden': null,
-    className: '',
-    noShadow: false,
-    once: false,
-    onRippleComplete: () => {},
-    productId: null,
-    removeFavorites: () => {},
-    removeThrottle: 0,
-    removeWithRelatives: false,
-    rippleClassName: '',
-    wishlistItemQuantityEnabled: false,
-    loadWishlistOnAppStartEnabled: true,
-  };
-
-  /**
-   * Construct and init state
-   * @param {Object} props Component props
-   */
-  constructor(props) {
-    super(props);
-    this.clickedOnce = false;
-  }
-
-  /**
-   * Callback for the moment when the ripple animation is done.
-   */
-  onRippleComplete = () => {
-    this.props.onRippleComplete(this.props.active);
-  };
-
-  /**
-   * Returns text for aria-label.
-   * @returns {string}
-   */
-  getLabel() {
-    const { __ } = this.context.i18n();
-    const lang = this.props.active ? 'favorites.remove' : 'favorites.add';
-    return __(lang);
-  }
-
-  /**
-   * Adds or removes a given product ID from the favorite list.
-   * @param {Object} event The click event object.
-   */
-  handleClick = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
-
-    if (this.props.once && this.clickedOnce) {
-      return;
-    }
-
-    this.clickedOnce = true;
-
-    if (!this.props.productId) {
-      return;
-    }
-
-    // When wishlist item quantity is active, items cannot be removed via the button
-    if (!this.props.active || this.props.wishlistItemQuantityEnabled) {
-      this.props.addFavorites(this.props.productId);
-    } else {
-      setTimeout(() => {
-        this.props.removeFavorites(this.props.productId, this.props.removeWithRelatives);
-      }, this.props.removeThrottle);
-    }
-  };
-
-  /**
-   * Renders the heart icon as filled or outlined, depending on the favorite button being active.
-   * @returns {JSX}
-   */
-  renderIcon() {
-    if (
-      !this.props.loadWishlistOnAppStartEnabled ||
-      (this.props.wishlistItemQuantityEnabled && !this.props.active)
-    ) {
-      return <HeartPlusOutlineIcon />;
-    }
-
-    if (this.props.wishlistItemQuantityEnabled && this.props.active) {
-      return <HeartPlus />;
-    }
-
-    if (this.props.active) {
-      return <HeartIcon />;
-    }
-
-    return <HeartOutlineIcon />;
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX|null}
-   */
-  render() {
-    if (!appConfig.hasFavorites) {
-      return null;
-    }
-
-    const classes = withStyles.getClasses(this.props);
-    const buttonClass = this.props.noShadow ? classes.buttonFlat : classes.button;
-
-    return (
-      <button
-        aria-label={this.getLabel()}
-        aria-hidden={this.props['aria-hidden']}
-        className={`ui-shared__favorites-button ${buttonClass} ${this.props.className}`}
-        onClick={this.handleClick}
-        data-test-id="favoriteButton"
-        type="button"
-      >
-        <Ripple
-          className={`${classes.ripple} ${this.props.rippleClassName}`}
-          onComplete={this.onRippleComplete}
-        >
-          {this.renderIcon()}
-        </Ripple>
-      </button>
-    );
-  }
-}
-
-const StyledFavoritesButton = withStyles(FavoritesButton, {
+const useStyles = makeStyles()({
   buttonFlat: {
     ...buttonProto,
   },
@@ -190,8 +37,144 @@ const StyledFavoritesButton = withStyles(FavoritesButton, {
   },
 });
 
-StyledFavoritesButton.propTypes = FavoritesButton.propTypes;
-StyledFavoritesButton.defaultProps = FavoritesButton.defaultProps;
-StyledFavoritesButton.contextTypes = FavoritesButton.contextTypes;
+/**
+ * The favorites button component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element|null}
+ */
+const FavoritesButton = ({
+  active,
+  addFavorites,
+  'aria-hidden': ariaHidden,
+  className,
+  loadWishlistOnAppStartEnabled,
+  noShadow,
+  once,
+  onRippleComplete,
+  productId,
+  removeFavorites,
+  removeThrottle,
+  removeWithRelatives,
+  rippleClassName,
+  wishlistItemQuantityEnabled,
+}) => {
+  const { classes, cx } = useStyles();
+  const clickedOnceRef = useRef(false);
 
-export default connect(StyledFavoritesButton);
+  const handleRippleComplete = useCallback(() => {
+    onRippleComplete(active);
+  }, [onRippleComplete, active]);
+
+  const handleClick = useCallback((event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (once && clickedOnceRef.current) {
+      return;
+    }
+
+    clickedOnceRef.current = true;
+
+    if (!productId) {
+      return;
+    }
+
+    if (!active || wishlistItemQuantityEnabled) {
+      addFavorites(productId);
+    } else {
+      setTimeout(() => {
+        removeFavorites(productId, removeWithRelatives);
+      }, removeThrottle);
+    }
+  }, [
+    once,
+    productId,
+    active,
+    wishlistItemQuantityEnabled,
+    addFavorites,
+    removeFavorites,
+    removeWithRelatives,
+    removeThrottle,
+  ]);
+
+  const icon = useMemo(() => {
+    if (
+      !loadWishlistOnAppStartEnabled ||
+      (wishlistItemQuantityEnabled && !active)
+    ) {
+      return <HeartPlusOutlineIcon />;
+    }
+
+    if (wishlistItemQuantityEnabled && active) {
+      return <HeartPlus />;
+    }
+
+    if (active) {
+      return <HeartIcon />;
+    }
+
+    return <HeartOutlineIcon />;
+  }, [loadWishlistOnAppStartEnabled, wishlistItemQuantityEnabled, active]);
+
+  if (!appConfig.hasFavorites) {
+    return null;
+  }
+
+  const buttonClass = noShadow ? classes.buttonFlat : classes.button;
+  const ariaLabel = i18n.text(active ? 'favorites.remove' : 'favorites.add');
+
+  return (
+    <button
+      aria-label={ariaLabel}
+      aria-hidden={ariaHidden}
+      className={cx('ui-shared__favorites-button', buttonClass, className)}
+      onClick={handleClick}
+      data-test-id="favoriteButton"
+      type="button"
+    >
+      <Ripple
+        className={cx(classes.ripple, rippleClassName)}
+        onComplete={handleRippleComplete}
+      >
+        {icon}
+      </Ripple>
+    </button>
+  );
+};
+
+FavoritesButton.propTypes = {
+  active: PropTypes.bool,
+  addFavorites: PropTypes.func,
+  'aria-hidden': PropTypes.bool,
+  className: PropTypes.string,
+  loadWishlistOnAppStartEnabled: PropTypes.bool,
+  noShadow: PropTypes.bool,
+  // When true, button would react on click only once.
+  once: PropTypes.bool,
+  onRippleComplete: PropTypes.func,
+  productId: PropTypes.string,
+  removeFavorites: PropTypes.func,
+  removeThrottle: PropTypes.number,
+  removeWithRelatives: PropTypes.bool,
+  rippleClassName: PropTypes.string,
+  wishlistItemQuantityEnabled: PropTypes.bool,
+};
+
+FavoritesButton.defaultProps = {
+  active: false,
+  addFavorites: () => {},
+  'aria-hidden': null,
+  className: '',
+  noShadow: false,
+  once: false,
+  onRippleComplete: () => {},
+  productId: null,
+  removeFavorites: () => {},
+  removeThrottle: 0,
+  removeWithRelatives: false,
+  rippleClassName: '',
+  wishlistItemQuantityEnabled: false,
+  loadWishlistOnAppStartEnabled: true,
+};
+
+export default connect(memo(FavoritesButton));

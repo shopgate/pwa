@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import classNames from 'classnames';
 
 /**
@@ -129,6 +129,8 @@ export const styles = theme => ({
   },
 });
 
+const useTypographyStyles = makeStyles()(styles);
+
 const defaultVariantMapping = {
   h1: 'h1',
   h2: 'h2',
@@ -143,6 +145,7 @@ const defaultVariantMapping = {
 };
 
 const Typography = React.forwardRef((props, ref) => {
+  const { classes } = useTypographyStyles();
   const {
     align = 'inherit',
     className,
@@ -154,7 +157,6 @@ const Typography = React.forwardRef((props, ref) => {
     paragraph = false,
     variant = 'body1',
     variantMapping = defaultVariantMapping,
-    classes,
     ...other
   } = props;
 
@@ -190,7 +192,6 @@ const Typography = React.forwardRef((props, ref) => {
 });
 
 Typography.propTypes = {
-  classes: PropTypes.shape().isRequired,
   align: PropTypes.oneOf(['inherit', 'left', 'center', 'right', 'justify']),
   children: PropTypes.node,
   className: PropTypes.string,
@@ -244,4 +245,4 @@ Typography.defaultProps = {
   variantMapping: defaultVariantMapping,
 };
 
-export default withStyles(Typography, styles);
+export default Typography;
