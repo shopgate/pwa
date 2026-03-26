@@ -33,7 +33,12 @@ const FormButtons = (props) => {
       >
         <I18n.Text string="common.cancel" />
       </Button>
-      <RippleButton type="secondary" disabled={props.isLoading} testId="sendReviewButton">
+      <RippleButton
+        type="secondary"
+        disabled={props.isLoading}
+        nativeType="submit"
+        testId="sendReviewButton"
+      >
         <I18n.Text string="common.submit" />
       </RippleButton>
     </div>
