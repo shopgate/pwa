@@ -12,16 +12,14 @@ import {
   PRODUCT_CTAS_FAVORITES_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
-const { variables } = themeConfig;
 const iconSize = 24;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   buttons: {
     position: 'absolute',
-    right: variables.gap.big,
+    right: theme.spacing(2),
     top: -20,
     display: 'flex',
     justifyContent: 'flex-end',
@@ -34,7 +32,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: 8,
   },
-});
+}));
 
 /**
  * Renders CTA buttons for product page (add to cart + toggle favorites).

@@ -13,33 +13,33 @@ import { FulfillmentContext } from '../../locations.context';
 import { ReserveFormPhone } from './ReserveFormPhone';
 import { constraints } from './ReserveForm.constraints';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   form: {
     background: colors.background,
-    padding: `${variables.gap.small * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.big}px`,
+    padding: theme.spacing(1.5, 1.5, 2),
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   formHeading: {
     fontSize: '1.125rem',
     fontWeight: 'bold',
-    margin: `0 0 ${variables.gap.small}px`,
+    margin: theme.spacing(0, 0, 1),
   },
   fieldset: {
     padding: 0,
-    margin: `0 0 ${variables.gap.big}px`,
+    margin: theme.spacing(0, 0, 2),
     border: 0,
   },
   formField: {
     width: '100%',
-    paddingBottom: variables.gap.small,
+    paddingBottom: theme.spacing(1),
   },
   pickerSwitch: {
     marginTop: '-1rem',
   },
   pickerItem: {
-    paddingRight: variables.gap.xbig,
+    paddingRight: theme.spacing(4),
     ':last-of-type': {
       paddingRight: 0,
     },
@@ -51,8 +51,7 @@ const useStyles = makeStyles()({
     height: '4px',
     position: 'relative',
   },
-});
-
+}));
 // eslint-disable-next-line max-len
 /** @typedef {import('@shopgate/engage/locations/locations.types').ReservationFormValues} ReservationFormValues */
 

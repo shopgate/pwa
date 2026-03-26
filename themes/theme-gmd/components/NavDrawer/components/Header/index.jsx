@@ -16,7 +16,7 @@ const ellipsis = {
   whiteSpace: 'nowrap',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     color: 'var(--color-secondary-contrast)',
     marginBottom: 4,
@@ -27,8 +27,8 @@ const useStyles = makeStyles()({
     flexDirection: 'column',
     justifyContent: 'center',
     minHeight: variables.navigator.height,
-    padding: `${variables.gap.small + 1}px ${variables.gap.big}px ${variables.gap.small - 1}px`,
-    paddingTop: `calc(${variables.gap.small + 1}px + var(--safe-area-inset-top))`,
+    padding: `${theme.spacing(1) + 1}px ${theme.spacing(2)}px ${theme.spacing(1) - 1}px`,
+    paddingTop: `calc(${theme.spacing(1) + 1}px + var(--safe-area-inset-top))`,
   },
   welcome: {
     fontSize: 16,
@@ -38,7 +38,7 @@ const useStyles = makeStyles()({
   mail: {
     ...ellipsis,
   },
-});
+}));
 
 /**
  * The NavDrawerHeader component.

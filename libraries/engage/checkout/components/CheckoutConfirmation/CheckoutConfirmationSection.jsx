@@ -7,17 +7,17 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 
-const { colors, variables } = themeConfig;
-const useStyles = makeStyles()({
+const { colors } = themeConfig;
+const useStyles = makeStyles()(theme => ({
   wrapper: {
-    padding: `${variables.gap.bigger}px ${variables.gap.big}px 0 ${variables.gap.big}px`,
+    padding: theme.spacing(2.5, 2, 0, 2),
   },
   headline: {
     color: colors.shade3,
     fontSize: '1rem',
     fontWeight: 'normal',
     textTransform: 'uppercase',
-    paddingBottom: variables.gap.small,
+    paddingBottom: theme.spacing(1),
     margin: 0,
     ...(!isIOSTheme() ? {
       fontSize: '1.25rem',
@@ -34,7 +34,7 @@ const useStyles = makeStyles()({
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
     margin: 0,
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     color: 'var(--color-text-medium-emphasis)',
     flex: '1 0 auto',
     ...(!isIOSTheme() ? {
@@ -60,7 +60,7 @@ const useStyles = makeStyles()({
     textTransform: 'uppercase',
     color: 'var(--color-text-high-emphasis)',
     ':not(:first-child)': {
-      paddingTop: variables.gap.xsmall * 3,
+      paddingTop: theme.spacing(1.5),
     },
   },
   listEntry: {
@@ -74,12 +74,12 @@ const useStyles = makeStyles()({
   table: {
     color: 'var(--color-text-high-emphasis)',
     ' td': {
-      padding: `${variables.gap.xsmall}px 0`,
+      padding: theme.spacing(0.5, 0),
     },
     ' td:last-child': {
       textAlign: 'right',
       whiteSpace: 'pre-wrap',
-      paddingLeft: variables.gap.xsmall,
+      paddingLeft: theme.spacing(0.5),
     },
     ' tr:nth-last-child(2) td': {
       paddingBottom: 8,
@@ -91,7 +91,7 @@ const useStyles = makeStyles()({
       fontWeight: 'bold',
     },
   },
-});
+}));
 
 /**
  * CheckoutConfirmationSegment component

@@ -11,10 +11,10 @@ import Icon from './components/Icon';
 const { variables, svgImages = {} } = themeConfig || {};
 const { emptyFavorites = '' } = svgImages || {};
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     flexGrow: 1,
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     paddingBottom: variables.emptyPage.buttonVerticalGap,
     display: 'flex',
     flexDirection: 'column',
@@ -32,7 +32,7 @@ const useStyles = makeStyles()({
     paddingTop: variables.emptyPage.titleTopGap,
     textAlign: 'center',
   },
-});
+}));
 
 /**
  * The Empty Favorites component

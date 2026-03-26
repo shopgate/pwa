@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import CheckoutHeader from '../../../checkout/components/Checkout/CheckoutHeader';
 import RegistrationFormBilling from '../Registration/RegistrationFormBilling';
@@ -10,11 +9,9 @@ import RegistrationFormActions from '../Registration/RegistrationFormActions';
 import RegistrationFormPickup from './GuestRegistrationFormPickup';
 import { useRegistration } from '../../hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
+    padding: theme.spacing(2, 2, 0),
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',
@@ -23,7 +20,7 @@ const useStyles = makeStyles()({
       paddingRight: 0,
     },
   },
-});
+}));
 
 /**
  * The GuestRegistrationContent component.

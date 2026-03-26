@@ -9,7 +9,7 @@ import Buttons from './components/Buttons';
 
 const outerGap = 40;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
     display: 'flex',
@@ -29,19 +29,19 @@ const useStyles = makeStyles()({
     },
   },
   content: {
-    padding: themeConfig.variables.gap.small * 3,
+    padding: theme.spacing(3),
     overflowY: 'auto',
   },
   actions: {
     alignSelf: 'flex-end',
-    padding: themeConfig.variables.gap.small,
+    padding: theme.spacing(1),
   },
   innerActions: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
   },
-});
+}));
 
 /**
  * This component renders a basic dialog in Google Material Design.

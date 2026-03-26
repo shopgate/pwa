@@ -12,14 +12,14 @@ import PaymentBarPromotionCoupons from '../PaymentBar/PaymentBarPromotionCoupons
 import CartSummaryWideCheckoutButton from './CartSummaryWideCheckoutButton';
 import CartSummaryWideFooter from './CartSummaryWideFooter';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
     alignSelf: 'flex-end',
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     width: 420,
   },
   headline: {
@@ -29,24 +29,24 @@ const useStyles = makeStyles()({
   },
   summary: {
     background: 'var(--color-background-accent)',
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
   },
   total: {
     fontSize: '1rem',
-    padding: `${variables.gap.small}px 0`,
+    padding: theme.spacing(1, 0),
     color: 'var(--color-text-high-emphasis)',
   },
   grandTotal: {
     fontSize: '1.25rem !important',
     fontWeight: 500,
     borderTop: `1px solid ${colors.shade4}`,
-    padding: `${variables.gap.small}px 0`,
+    padding: theme.spacing(1, 0),
     color: 'var(--color-text-high-emphasis)',
     '&:last-child': {
       paddingBottom: 0,
     },
   },
-});
+}));
 
 /**
  * The cart summary component for wide screens.

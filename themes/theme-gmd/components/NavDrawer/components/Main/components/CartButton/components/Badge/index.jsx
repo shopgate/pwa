@@ -2,27 +2,26 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
-const { variables } = themeConfig;
-const size = variables.gap.big * 1.125;
-
-const useStyles = makeStyles()({
-  badge: {
-    backgroundColor: 'var(--color-primary)',
-    borderRadius: size,
-    color: 'var(--color-primary-contrast)',
-    fontSize: 12,
-    fontWeight: 700,
-    height: size,
-    minWidth: size,
-    padding: `0 ${variables.gap.small * 0.625}px`,
-    position: 'absolute',
-    right: 16,
-    textAlign: 'center',
-    top: 19,
-  },
+const useStyles = makeStyles()((theme) => {
+  const size = theme.spacing(2) * 1.125;
+  return {
+    badge: {
+      backgroundColor: 'var(--color-primary)',
+      borderRadius: size,
+      color: 'var(--color-primary-contrast)',
+      fontSize: 12,
+      fontWeight: 700,
+      height: size,
+      minWidth: size,
+      padding: theme.spacing(0, 0.625),
+      position: 'absolute',
+      right: 16,
+      textAlign: 'center',
+      top: 19,
+    },
+  };
 });
 
 /**

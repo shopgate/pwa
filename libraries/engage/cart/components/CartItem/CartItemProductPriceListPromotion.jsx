@@ -2,7 +2,6 @@ import React, { useMemo, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { showModal } from '@shopgate/engage/core';
 import { deleteCouponsFromCart } from '@shopgate/engage/cart';
@@ -10,9 +9,7 @@ import { I18n, CrossIcon, InfoIcon } from '@shopgate/engage/components';
 import { CartContext } from '../../cart.context';
 import { useCartItem } from './CartItem.hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     flex: '0 1 auto',
     color: 'var(--color-secondary)',
@@ -23,7 +20,7 @@ const useStyles = makeStyles()({
     color: '#fff',
     borderRadius: 32,
     padding: 4,
-    marginRight: variables.gap.small,
+    marginRight: theme.spacing(1),
     cursor: 'pointer',
     fontSize: '0.75rem',
     display: 'inline-flex',
@@ -38,7 +35,7 @@ const useStyles = makeStyles()({
     display: 'inline-flex',
     verticalAlign: 'bottom',
     paddingBottom: 1,
-    marginLeft: variables.gap.small,
+    marginLeft: theme.spacing(1),
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       fontSize: '1.375rem',
       paddingBottom: 0,
@@ -50,7 +47,7 @@ const useStyles = makeStyles()({
   loading: {
     opacity: 0.5,
   },
-});
+}));
 
 /**
  * @param {Function} dispatch The redux dispatch function.

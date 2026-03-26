@@ -20,36 +20,36 @@ import { useCountriesNames } from '@shopgate/engage/i18n';
 import { FulfillmentContext } from '../../locations.context';
 import connect from './ReserveFormPhone.connector';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   formField: {
     width: '100%',
-    paddingBottom: variables.gap.small,
+    paddingBottom: theme.spacing(1),
   },
   phoneField: {
     position: 'relative',
     width: '100%',
-    paddingTop: variables.gap.big * 0.75,
-    paddingBottom: variables.gap.big * 1.25,
-    marginBottom: variables.gap.small,
+    paddingTop: theme.spacing(1.5),
+    paddingBottom: theme.spacing(2.5),
+    marginBottom: theme.spacing(1),
     ' input.PhoneInputInput': {
       outline: 'none',
       fontSize: '1rem',
       lineHeight: '1.1875rem',
       borderRadius: 0,
-      paddingBottom: variables.gap.xsmall * 1.5,
+      paddingBottom: theme.spacing(0.75),
       borderBottom: `1px solid ${colors.shade12}`,
       '&:focus': {
         borderBottom: `2px solid ${colors.primary}`,
-        paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+        paddingBottom: theme.spacing(0.75) - 1,
       },
     },
   },
   phoneFieldError: {
     ' input.PhoneInputInput': {
       borderBottom: '2px solid var(--color-state-alert) !important',
-      paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+      paddingBottom: theme.spacing(0.75) - 1,
     },
   },
   phoneFieldErrorText: {
@@ -63,7 +63,7 @@ const useStyles = makeStyles()({
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
   },
-});
+}));
 
 /**
  * @typedef {import('./ReserveFormPhone.types').OwnProps} OwnProps

@@ -18,7 +18,7 @@ import { MessageBar, CardList } from '@shopgate/engage/components';
 import connect from './CartItemCoupon.connector';
 import { CartItemCouponLayout, CartItemCouponLayoutContext } from './CartItemCouponLayout';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
 const duration = 300;
 
@@ -48,25 +48,25 @@ const getTransitionStyle = state => ({
   ...transitionStyles[state],
 });
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     marginBottom: 4,
   },
   messagesContainerCard: {
     background: colors.light,
-    padding: `0 0 ${variables.gap.big}px 0`,
+    padding: theme.spacing(0, 0, 2, 0),
   },
   messagesCard: {
     borderRadius: '5px 5px 0 0',
-    padding: `${variables.gap.small}px ${variables.gap.big * 0.875}px`,
+    padding: theme.spacing(1, 1.75),
   },
   messagesContainerLine: {
     background: colors.light,
-    padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
+    padding: theme.spacing(2, 2, 0),
   },
   messagesLine: {
     borderRadius: 4,
-    padding: `${variables.gap.big / 2}px ${variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
     lineHeight: 1.125,
   },
 }));

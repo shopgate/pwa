@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
     fontSize: '0.7rem',
@@ -15,15 +12,15 @@ const useStyles = makeStyles()({
     fontWeight: 700,
     background: 'var(--color-primary)',
     color: 'var(--color-primary-contrast)',
-    borderRadius: variables.gap.small,
-    height: variables.gap.big,
-    minWidth: variables.gap.big,
-    paddingLeft: (variables.gap.small / 2),
-    paddingRight: (variables.gap.small / 2),
+    borderRadius: theme.spacing(1),
+    height: theme.spacing(2),
+    minWidth: theme.spacing(2),
+    paddingLeft: (theme.spacing(0.5)),
+    paddingRight: (theme.spacing(0.5)),
     top: 6,
     right: 4,
   },
-});
+}));
 
 /**
  * The CartButtonBadge component.

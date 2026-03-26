@@ -1,25 +1,22 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, cx } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import IndicatorCircle from '../IndicatorCircle';
 import RippleButton from '../RippleButton';
 
-const halfGapBig = themeConfig.variables.gap.big / 2;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   withGap: {
     textAlign: 'center',
-    margin: `${halfGapBig}px 0`,
+    margin: theme.spacing(1, 0),
   },
   noGap: {
     textAlign: 'center',
   },
   containerCircle: {
     textAlign: 'center',
-    margin: `${halfGapBig + 5}px 0`,
+    margin: `${theme.spacing(1) + 5}px 0`,
   },
-});
+}));
 
 const CLICK_DELAY = 300;
 

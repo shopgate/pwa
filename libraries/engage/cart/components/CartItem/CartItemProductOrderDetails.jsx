@@ -3,16 +3,13 @@ import classNames from 'classnames';
 import { QuantityLabel, I18n, Price } from '@shopgate/engage/components';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
 import { createCartItemPrices } from '../../cart.helpers';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    paddingTop: variables.gap.small,
+    paddingTop: theme.spacing(1),
   },
   quantityLabel: {
     textAlign: 'center',
@@ -34,7 +31,7 @@ const useStyles = makeStyles()({
       content: '" "',
     },
   },
-});
+}));
 
 /**
  * @returns {JSX.Element}

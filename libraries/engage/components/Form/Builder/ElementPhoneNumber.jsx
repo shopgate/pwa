@@ -19,25 +19,25 @@ import { makeStyles } from '@shopgate/engage/styles';
 import Label from '@shopgate/pwa-ui-shared/TextField/components/Label';
 import FormHelper from './FormHelper';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   phoneField: {
     position: 'relative',
     width: '100%',
-    paddingTop: variables.gap.big * 0.75,
-    paddingBottom: variables.gap.big * 1.25,
+    paddingTop: theme.spacing(1.5),
+    paddingBottom: theme.spacing(2.5),
 
     ' input.PhoneInputInput': {
       outline: 'none',
       fontSize: '1rem',
       lineHeight: '1.1875rem',
       borderRadius: 0,
-      paddingBottom: variables.gap.xsmall * 1.5,
+      paddingBottom: theme.spacing(0.75),
       borderBottom: `1px solid ${colors.shade12}`,
       '&:focus': {
         borderBottom: `2px solid ${colors.primary}`,
-        paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+        paddingBottom: theme.spacing(0.75) - 1,
       },
     },
   },
@@ -45,10 +45,10 @@ const useStyles = makeStyles()({
   phoneFieldError: {
     ' input.PhoneInputInput': {
       borderBottom: '2px solid var(--color-state-alert)',
-      paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+      paddingBottom: theme.spacing(0.75) - 1,
     },
   },
-});
+}));
 
 const builtInCountries = getCountries();
 const locales = {

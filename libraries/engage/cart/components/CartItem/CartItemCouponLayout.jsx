@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   CART_ITEM_IMAGE,
   CART_ITEM_NAME,
@@ -18,8 +17,6 @@ import { CartItemCouponTitle } from './CartItemCouponTitle';
 import { CartItemCouponCode } from './CartItemCouponCode';
 import { CartItemCouponDelete } from './CartItemCouponDelete';
 
-const { variables } = themeConfig;
-
 /** @type {React.Context<{ cartItemId: string, type: string, editable?: boolean }>} */
 export const CartItemCouponLayoutContext = React.createContext({
   cartItemId: '',
@@ -27,10 +24,10 @@ export const CartItemCouponLayoutContext = React.createContext({
   editable: true,
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   item: {
     fontSize: '0.875rem',
-    padding: `${variables.gap.small / 2}px ${variables.gap.big}px`,
+    padding: theme.spacing(0.5, 2),
   },
   icon: {
     fontSize: '3rem',
@@ -40,16 +37,16 @@ const useStyles = makeStyles()({
   content: {
     display: 'flex',
     flexDirection: 'column',
-    paddingLeft: variables.gap.big,
-    paddingTop: variables.gap.small,
-    paddingBottom: variables.gap.small,
+    paddingLeft: theme.spacing(2),
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
     // Ensure long coupon codes do not break layout.
     minWidth: 0,
   },
   contentLast: {
     alignItems: 'flex-end',
   },
-});
+}));
 
 /**
  * The CartItemCouponLayout component.

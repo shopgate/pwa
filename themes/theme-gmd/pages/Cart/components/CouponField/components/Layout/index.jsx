@@ -6,19 +6,19 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CouponFieldIcon from './components/CouponFieldIcon';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     background: colors.light,
-    padding: `${variables.gap.small}px ${variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
   },
   wrapperCard: {
     background: colors.light,
-    padding: `${variables.gap.small}px ${variables.gap.big}px`,
-    margin: `${variables.gap.small * 1.5}px ${variables.gap.small * 1.5}px ${variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
+    margin: theme.spacing(1.5, 1.5, 2),
     border: `1px solid ${colors.shade7}`,
     boxSizing: 'border-box',
     boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
@@ -44,7 +44,7 @@ const useStyles = makeStyles()({
     top: 14,
     right: 0,
   },
-});
+}));
 
 /**
  * The Coupon Field Layout component.

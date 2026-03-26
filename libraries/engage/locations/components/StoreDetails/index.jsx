@@ -1,5 +1,4 @@
 import React from 'react';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import StoreDetails from './components/StoreDetails';
 import StoreLocationMap from './components/StoreLocationMap';
@@ -7,11 +6,11 @@ import StoresNearby from './components/StoresNearby';
 import FindMoreStores from './components/FindMoreStores';
 import { StoreDetailsProvider } from '../../providers';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   page: {
-    padding: `${themeConfig.variables.gap.small}px ${themeConfig.variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
   },
-});
+}));
 
 /**
  * The StoreDetailsContent component.

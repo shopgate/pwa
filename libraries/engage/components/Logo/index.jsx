@@ -8,7 +8,7 @@ import connect from './connector';
 
 const { variables } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     alignItems: 'center',
     display: 'flex',
@@ -17,12 +17,12 @@ const useStyles = makeStyles()({
   image: {
     margin: '0 auto',
     maxHeight: variables.navigator.height,
-    maxWidth: `calc(var(--page-content-width) - ${(variables.navigator.height * 3) + variables.gap.xbig}px)`,
+    maxWidth: `calc(var(--page-content-width) - ${(variables.navigator.height * 3) + theme.spacing(4)}px)`,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
   },
-});
+}));
 
 /**
  * The Logo component.

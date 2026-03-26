@@ -4,13 +4,10 @@ import { I18n } from '@shopgate/engage/components';
 import ErrorText from '@shopgate/pwa-ui-shared/TextField/components/ErrorText';
 import RatingStars from '@shopgate/pwa-ui-shared/RatingStars';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   ratingLine: {
-    marginBottom: variables.gap.bigger,
+    marginBottom: theme.spacing(2.5),
     position: 'relative',
     display: 'flex',
     justifyContent: 'space-between',
@@ -32,7 +29,7 @@ const useStyles = makeStyles()({
     bottom: '-1.5em',
     lineHeight: 'initial',
   },
-});
+}));
 
 /**
  * The rating scale component.

@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   TextLink,
   ProductProperties,
@@ -28,19 +27,17 @@ import CartItemProductLayoutWideOrderDetails from './CartItemProductLayoutWideOr
 import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()((_theme, _params, classes) => ({
+const useStyles = makeStyles()((theme, _params, classes) => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
   },
   imageColumn: {
     width: 120,
     height: 120,
-    marginRight: variables.gap.small,
+    marginRight: theme.spacing(1),
     flexShrink: 0,
     flexGrow: 0,
   },
@@ -51,7 +48,7 @@ const useStyles = makeStyles()((_theme, _params, classes) => ({
     flexShrink: 1,
     flexGrow: 1,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     ':last-child': {
       paddingRight: 0,
     },
@@ -63,7 +60,7 @@ const useStyles = makeStyles()((_theme, _params, classes) => ({
     flexShrink: 1,
     flexGrow: 3,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     ':last-child': {
       paddingRight: 0,
     },
@@ -75,7 +72,7 @@ const useStyles = makeStyles()((_theme, _params, classes) => ({
     flexShrink: 1,
     flexGrow: 4,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     ':last-child': {
       paddingRight: 0,
     },
@@ -88,7 +85,7 @@ const useStyles = makeStyles()((_theme, _params, classes) => ({
     hyphens: 'auto',
   },
   productProperties: {
-    paddingTop: variables.gap.small,
+    paddingTop: theme.spacing(1),
     color: 'var(--color-text-low-emphasis)',
     fontSize: '1rem',
   },
@@ -96,7 +93,7 @@ const useStyles = makeStyles()((_theme, _params, classes) => ({
     width: 140,
   },
   quantityPickerDisabled: {
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     textAlign: 'center',
     fontSize: '1.25rem',
     lineHeight: '1.625rem',
@@ -131,11 +128,11 @@ const useStyles = makeStyles()((_theme, _params, classes) => ({
     fontSize: '0.75rem',
     lineHeight: '0.875rem',
     color: 'var(--color-text-low-emphasis)',
-    padding: `${variables.gap.xsmall}px 0`,
+    padding: theme.spacing(0.5, 0),
   },
   contextMenu: {
-    marginTop: `-${variables.gap.xsmall * 3}px`,
-    marginRight: `-${variables.gap.big}px`,
+    marginTop: theme.spacing(-1.5),
+    marginRight: theme.spacing(-2),
   },
   messageContainer: {
     marginTop: 0,

@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   hint: {
-    paddingLeft: variables.gap.small,
+    paddingLeft: theme.spacing(1),
     order: 5,
   },
-});
+}));
 
 /**
  * The Hint component.

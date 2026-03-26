@@ -6,7 +6,6 @@ import classNames from 'classnames';
 import CryptoJs from 'crypto-js';
 import sortBy from 'lodash/sortBy';
 import uniqBy from 'lodash/uniqBy';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
@@ -16,17 +15,15 @@ import { useCheckoutContext } from '@shopgate/engage/checkout/hooks/common';
 import ShippingMethod from './ShippingMethod';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    padding: `0 ${variables.gap.big}px ${variables.gap.xbig}px`,
+    padding: theme.spacing(0, 2, 4),
   },
   headline: {
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    padding: `0 ${variables.gap.small}px 0 0`,
-    margin: `0 0 ${variables.gap.small}px 0`,
+    padding: theme.spacing(0, 1, 0, 0),
+    margin: theme.spacing(0, 0, 1, 0),
     color: 'var(--color-text-high-emphasis)',
     textTransform: 'none',
   },
@@ -37,7 +34,7 @@ const useStyles = makeStyles()({
     },
   },
   containerSingle: {
-    padding: variables.gap.small,
+    padding: theme.spacing(1),
   },
   card: {
     display: 'flex',
@@ -46,7 +43,7 @@ const useStyles = makeStyles()({
   errorMessage: {
     margin: 0,
   },
-});
+}));
 
 /**
  * Hashes a shipping method

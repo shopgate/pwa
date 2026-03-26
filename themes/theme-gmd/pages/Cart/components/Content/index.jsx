@@ -30,21 +30,18 @@ import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { SimpleBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   cardList: {
     marginTop: 4,
   },
   wideHeaderMessagesWithItems: {
-    marginTop: variables.gap.big * -1,
+    marginTop: -theme.spacing(2),
   },
   headerContainer: {
     display: 'flex',
@@ -54,7 +51,7 @@ const useStyles = makeStyles()({
   subscription: {
     marginRight: 14,
   },
-});
+}));
 
 const config = getCartConfig();
 

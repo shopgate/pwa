@@ -9,15 +9,14 @@ import { Section } from '@shopgate/engage/a11y';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { Rating } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import CTAButtons from './components/CTAButtons';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   content: {
     position: 'relative',
-    padding: themeVariables.gap.big,
+    padding: theme.spacing(2),
   },
 }));
 

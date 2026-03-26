@@ -9,7 +9,7 @@ import Ripple from '../../../Ripple';
 import CrossIcon from '../../../icons/CrossIcon';
 import SearchBar from './components/SearchBar';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     position: 'relative',
     zIndex: 2,
@@ -41,7 +41,7 @@ const useStyles = makeStyles()({
     fontWeight: 500,
     position: 'relative',
     alignItems: 'center',
-    padding: `0 ${themeConfig.variables.gap.big}px`,
+    padding: theme.spacing(0, 2),
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
@@ -50,7 +50,7 @@ const useStyles = makeStyles()({
   headerShadow: {
     boxShadow: themeConfig.shadows.material,
   },
-});
+}));
 
 /**
  * @param {Object} props Props.

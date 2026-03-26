@@ -9,7 +9,7 @@ import { getTimeSlotDisplayText } from './time';
 
 const { variables } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     fontSize: '0.875rem',
     color: 'var(--color-text-high-emphasis)',
@@ -18,7 +18,7 @@ const useStyles = makeStyles()({
   inner: {
     display: 'flex',
     flexShrink: 0,
-    margin: `0 ${variables.gap.big}px`,
+    margin: theme.spacing(0, 2),
     borderBottom: '1px solid #eaeaea',
     alignItems: 'center',
     height: variables.filterbar.height,
@@ -27,7 +27,7 @@ const useStyles = makeStyles()({
     borderBottom: 'none',
   },
   heading: {
-    paddingRight: variables.gap.small,
+    paddingRight: theme.spacing(1),
     ':after': {
       content: '":"',
     },
@@ -38,7 +38,7 @@ const useStyles = makeStyles()({
   button: {
     marginLeft: 'auto',
     letterSpacing: '0.05em',
-    padding: `${variables.gap.xsmall * 0.75}px 0 !important`,
+    padding: [theme.spacing(0.375, 0), '!important'],
     ' *': {
       fontSize: '0.875rem',
       textTransform: 'initial',
@@ -47,7 +47,7 @@ const useStyles = makeStyles()({
       fontWeight: 500,
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}

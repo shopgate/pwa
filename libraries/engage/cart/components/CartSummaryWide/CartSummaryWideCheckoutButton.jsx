@@ -10,9 +10,9 @@ import PropTypes from 'prop-types';
 import { CartContext } from '../../cart.context';
 import connect from './CartSummaryWideCheckoutButton.connector';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
@@ -22,13 +22,13 @@ const useStyles = makeStyles()({
     background: 'var(--color-button-cta)',
     color: 'var(--color-button-cta-contrast)!important',
     borderRadius: 4,
-    margin: `${variables.gap.big}px 0`,
+    margin: theme.spacing(2, 0),
   },
   disabledButton: {
     background: colors.shade7,
     color: `${colors.shade4}!important`,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props

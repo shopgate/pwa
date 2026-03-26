@@ -2,16 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { RippleButton, I18n, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { PRODUCT_FULFILLMENT_CHANGE_LOCATION } from '../../constants/Portals';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     fontSize: '0.625rem !important',
     letterSpacing: '0.05em',
-    padding: `${variables.gap.xsmall * 0.75}px 0 !important`,
+    padding: [theme.spacing(0.375, 0), '!important'],
     ' *': {
       padding: '0 !important',
     },
@@ -19,7 +16,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: 0,
   },
-});
+}));
 
 /**
  * Renders the Change Location button.

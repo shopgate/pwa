@@ -1,6 +1,6 @@
 import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   RatingStars,
   SurroundPortals,
@@ -12,16 +12,15 @@ import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
 const { hasReviews } = appConfig;
-const { variables } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     alignItems: 'center',
     lineHeight: '12px',
-    marginBottom: variables.gap.small,
+    marginBottom: theme.spacing(1),
   },
-});
+}));
 
 /**
  * Scrolls page to reviews excerpt.

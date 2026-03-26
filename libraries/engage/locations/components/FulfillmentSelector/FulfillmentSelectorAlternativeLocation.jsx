@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withWidgetSettings } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables, themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 import { provideProductAlternativeLocation } from '../../action-creators';
@@ -13,21 +12,19 @@ import { PRODUCT_FULFILLMENT_SELECTOR_ALTERNATIVE_LOCATION } from '../../constan
 import { getProductAlternativeLocations } from '../../selectors';
 import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   locationName: {
     color: 'var(--color-text-medium-emphasis)',
   },
   gridClassName: {
     fontSize: '0.825rem',
-    padding: `0 ${themeVariables.gap.big}px ${themeVariables.gap.small}px ${themeVariables.gap.big * 3}px`,
+    padding: theme.spacing(0, 2, 1, 6),
   },
   itemColumn: {
     display: 'block',
     width: '50%',
     '&:first-of-type': {
-      paddingRight: variables.gap.small,
+      paddingRight: theme.spacing(1),
     },
     '&:last-of-type': {
       textAlign: 'right',
@@ -36,7 +33,7 @@ const useStyles = makeStyles()({
   itemSpacer: {
     marginLeft: 16,
   },
-});
+}));
 
 /**
  * The FulfillmentSelectorLocation component

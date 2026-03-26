@@ -3,13 +3,10 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { errorBehavior } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
-    paddingTop: variables.gap.xsmall,
+    paddingTop: theme.spacing(0.5),
   },
   message: {
     fontSize: ' 0.75rem',
@@ -23,7 +20,7 @@ const useStyles = makeStyles()({
   info: {
     color: 'var(--color-state-ok)',
   },
-});
+}));
 
 /**
  * @param {Object} props The component props

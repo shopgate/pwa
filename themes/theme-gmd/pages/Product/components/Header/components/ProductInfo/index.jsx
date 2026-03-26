@@ -26,7 +26,6 @@ import {
   PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Manufacturer from '../Manufacturer';
 import Price from '../Price';
 import PriceInfo from '../PriceInfo';
@@ -34,25 +33,23 @@ import TaxDisclaimer from '../TaxDisclaimer';
 import StockInfo from '../StockInfo';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   productInfo: {
-    marginTop: `${variables.gap.small / 2}px`,
+    marginTop: theme.spacing(0.5),
     '&:not(:last-child)': {
-      marginBottom: `${variables.gap.small / 2}px`,
+      marginBottom: theme.spacing(0.5),
     },
   },
   backInStockButton: {
     '&:not(:empty)': {
-      marginTop: `${variables.gap.small}px`,
+      marginTop: theme.spacing(1),
     },
   },
   priceContainer: {
     textAlign: 'right',
-    marginLeft: variables.gap.big,
+    marginLeft: theme.spacing(2),
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

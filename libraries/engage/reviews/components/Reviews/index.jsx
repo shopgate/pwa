@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_REVIEWS } from '@shopgate/engage/product';
@@ -10,13 +10,11 @@ import AllReviewsLink from './components/AllReviewsLink';
 import ReviewsInfo from './components/ReviewsInfo';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    marginBottom: variables.gap.small,
+    marginBottom: theme.spacing(1),
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

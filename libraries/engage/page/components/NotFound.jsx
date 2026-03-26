@@ -3,20 +3,17 @@ import { useDispatch } from 'react-redux';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { historyPop, historyResetTo } from '@shopgate/pwa-common/actions/router';
 import { i18n, INDEX_PATH } from '../../core';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'column',
     textAlign: 'center',
-    padding: variables.gap.big,
-    paddingTop: variables.gap.xxbig,
+    padding: theme.spacing(2),
+    paddingTop: theme.spacing(8),
   },
   text: {
     fontSize: '1.5rem',
@@ -27,13 +24,13 @@ const useStyles = makeStyles()({
   },
   buttonContainer: {
     flexGrow: '0',
-    padding: `${variables.emptyPage.buttonVerticalGap}px ${variables.gap.big}px`,
+    padding: theme.spacing(3, 2),
     display: 'flex',
     flexDirection: 'column',
-    gap: variables.gap.big,
+    gap: theme.spacing(2),
     alignItems: 'center',
   },
-});
+}));
 
 /**
  * The NotFoundPage component renders a "Page Not Found" view

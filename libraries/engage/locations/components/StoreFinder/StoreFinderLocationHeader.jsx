@@ -2,7 +2,6 @@ import React, { useContext, useMemo } from 'react';
 import { Grid, LocationIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { StoreContext } from './Store.context';
 import { StoreFinderContext } from '../../locations.context';
 import { StoreDistance } from '../StoreList/StoreDistance';
@@ -10,11 +9,9 @@ import { StoreHoursToday } from '../StoreList/StoreHoursToday';
 import { StoreAddress } from '../StoreList/StoreAddress';
 import StoreFinderLocationHeaderPhoneNumber from './StoreFinderLocationHeaderPhoneNumber';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
     color: 'var(--color-text-low-emphasis)',
@@ -34,7 +31,7 @@ const useStyles = makeStyles()({
     fontSize: '0.875rem',
     lineHeight: '1.5rem',
     ' > *:not(:last-child)': {
-      paddingBottom: variables.gap.xsmall,
+      paddingBottom: theme.spacing(0.5),
       paddingTop: 0,
     },
   },
@@ -44,7 +41,7 @@ const useStyles = makeStyles()({
       paddingTop: 0,
     },
     ' > *:not(:last-child)': {
-      paddingBottom: variables.gap.xsmall,
+      paddingBottom: theme.spacing(0.5),
       paddingTop: 0,
     },
   },
@@ -75,14 +72,14 @@ const useStyles = makeStyles()({
   },
   storeDistance: {
     lineHeight: '1.65rem',
-    paddingLeft: variables.gap.small,
+    paddingLeft: theme.spacing(1),
   },
   storeHoursToday: {
     ' > *': {
       color: 'var(--color-text-low-emphasis)',
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}

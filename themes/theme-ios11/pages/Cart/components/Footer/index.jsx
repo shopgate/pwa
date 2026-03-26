@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import { FLAG_MULTI_LINE_RESERVE, CartContext, SupplementalContent } from '@shopgate/engage/cart';
 import TaxDisclaimer from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CouponsHint from './components/CouponsHint';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   supplementalContent: {
-    padding: `${variables.gap.big}px !important`,
+    padding: [theme.spacing(2), '!important'],
   },
-});
+}));
 
 /**
  * The Footer component.

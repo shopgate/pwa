@@ -1,16 +1,13 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     fontWeight: 500,
-    marginBottom: variables.gap.xsmall,
+    marginBottom: theme.spacing(0.5),
   },
-});
+}));
 
 /**
  * Renders the fulfillment selector title.

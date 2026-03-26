@@ -4,13 +4,13 @@ import ListItem from '@shopgate/pwa-common/components/List/components/Item';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     background: themeConfig.colors.light,
-    marginBottom: themeConfig.variables.gap.small / 2,
+    marginBottom: theme.spacing(0.5),
     position: 'relative',
   },
-});
+}));
 
 /**
  * The Card List Item component implemented as class so that ref prop is available.

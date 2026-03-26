@@ -2,18 +2,15 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n, isIOSTheme } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { RippleButton } from '@shopgate/engage/components';
 import { useRegistration } from '../../hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   submitButtonContainer: {
-    margin: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+    margin: theme.spacing(0, 2, 2),
     ...(!isIOSTheme() ? {
       '@media(min-width: 768px)': {
-        width: `calc(50% - ${variables.gap.big}px)`,
+        width: `calc(50% - ${theme.spacing(2)}px)`,
       },
     } : null),
   },
@@ -21,7 +18,7 @@ const useStyles = makeStyles()({
     width: '100%',
     marginTop: 8,
   },
-});
+}));
 
 /**
  * PickupContactForm

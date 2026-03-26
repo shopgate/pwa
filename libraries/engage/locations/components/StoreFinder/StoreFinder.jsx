@@ -1,13 +1,10 @@
 import React, { useRef } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { StoreFinderProvider } from '../../providers';
 import StoreFinderSearch from './StoreFinderSearch';
 import StoreFinderLocations from './StoreFinderLocations';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'grid',
     gridTemplateColumns: '1fr',
@@ -17,7 +14,7 @@ const useStyles = makeStyles()({
   },
   storeSearch: {
     gridArea: 'search',
-    padding: `${variables.gap.big}px 4px 0 4px`,
+    padding: theme.spacing(2, 0.5, 0, 0.5),
     ' select': {
       color: 'var(--color-text-medium-emphasis)',
     },
@@ -28,7 +25,7 @@ const useStyles = makeStyles()({
     overflow: 'hidden',
     padding: '0 12px 8px 12px',
   },
-});
+}));
 
 /**
  * @returns {JSX.Element}

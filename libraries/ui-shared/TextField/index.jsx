@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import Underline from './components/Underline';
@@ -19,10 +18,10 @@ const webkitDateFields = [
   '::-webkit-datetime-edit-text',
 ].map(suffix => `& ${bluredDateSelector}${suffix}`).join(', ');
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   input: {
     position: 'relative',
-    paddingBottom: themeConfig.variables.gap.big,
+    paddingBottom: theme.spacing(2),
     width: '100%',
     '& input[type="date"]': {
       minHeight: '1.3rem',
@@ -39,7 +38,7 @@ const useStyles = makeStyles()({
     position: 'relative',
     width: '100%',
   },
-});
+}));
 
 /**
  * A component that provides a styled text field for user input in material design.

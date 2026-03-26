@@ -13,10 +13,10 @@ import ContinueButton from './components/ContinueButton';
 const { svgImages = {}, variables } = themeConfig || {};
 const { emptyFavorites = '' } = svgImages || {};
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     flexGrow: 1,
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     paddingBottom: variables.emptyPage.buttonVerticalGap,
     display: 'flex',
     flexDirection: 'column',
@@ -36,7 +36,7 @@ const useStyles = makeStyles()({
   title: {
     paddingTop: variables.emptyPage.titleTopGap,
   },
-});
+}));
 
 /**
  * The Empty Favorites component

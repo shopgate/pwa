@@ -6,12 +6,12 @@ import { themeConfig } from '@shopgate/engage';
 import List from '@shopgate/pwa-common/components/List';
 import Item from './components/Item';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 const IMAGE_SPACE = 72;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   item: {
-    margin: `0 ${variables.gap.big}px`,
+    margin: theme.spacing(0, 2),
     cursor: 'pointer',
   },
   itemNotLast: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles()({
   },
   itemSelected: {
     background: 'var(--color-background-accent)',
-    boxShadow: `-${variables.gap.bigger}px 0 0 var(--color-background-accent), ${variables.gap.bigger}px 0 0 var(--color-background-accent)`,
+    boxShadow: `${-theme.spacing(2.5)}px 0 0 var(--color-background-accent), ${theme.spacing(2.5)}px 0 0 var(--color-background-accent)`,
     marginTop: -1,
   },
   itemWithImage: {
@@ -32,7 +32,7 @@ const useStyles = makeStyles()({
     minHeight: 56,
     position: 'relative',
   },
-});
+}));
 
 /**
  * The SheetList component.

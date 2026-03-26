@@ -5,15 +5,15 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()(() => {
+const useStyles = makeStyles()((theme) => {
   const messageBase = {
-    padding: `${variables.gap.small}px ${variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
     fontSize: '0.875rem',
     fontWeight: 500,
     '&:not(:last-child)': {
-      marginBottom: variables.gap.small * 0.5,
+      marginBottom: theme.spacing(0.5),
     },
   };
 

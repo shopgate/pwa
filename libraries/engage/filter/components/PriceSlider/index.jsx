@@ -9,15 +9,15 @@ import { RangeSlider } from '@shopgate/engage/components';
 import { FilterItem } from '@shopgate/engage/filter';
 import Label from './components/Label';
 
-const { shadows, colors, variables } = themeConfig;
+const { shadows, colors } = themeConfig;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
-    padding: `${variables.gap.big * 0.75}px ${variables.gap.big}px`,
+    padding: theme.spacing(1.5, 2),
   },
   rangeSliderContainer: {
-    paddingTop: variables.gap.big,
-    paddingBottom: variables.gap.big,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   rangeSliderOuterRange: {
     background: colors.darkGray,
@@ -28,15 +28,15 @@ const useStyles = makeStyles()(() => ({
     background: 'var(--color-secondary)',
     position: 'absolute',
     height: '100%',
-    marginLeft: variables.gap.small,
-    marginRight: variables.gap.small,
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
   rangeSliderHandleInner: {
     background: colors.light,
     boxShadow: shadows.filter.priceSlider,
     borderRadius: '50%',
-    width: variables.gap.big * 1.5,
-    height: variables.gap.big * 1.5,
+    width: theme.spacing(3),
+    height: theme.spacing(3),
   },
   rangeSliderHandleOuter: {},
 }));

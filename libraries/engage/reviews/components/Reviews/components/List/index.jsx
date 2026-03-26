@@ -9,12 +9,12 @@ import Rating from './components/Rating';
 import Text from './components/Text';
 import Info from './components/Info';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   item: {
-    marginLeft: variables.gap.big,
-    padding: `${variables.gap.big}px ${variables.gap.big}px ${variables.gap.big}px 0`,
+    marginLeft: theme.spacing(2),
+    padding: theme.spacing(2, 2, 2, 0),
     borderTop: `1px solid ${colors.shade7}`,
   },
 }));

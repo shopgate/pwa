@@ -7,20 +7,17 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ProgressBar } from '@shopgate/pwa-ui-shared';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 // eslint-disable-next-line import/no-cycle
 import SideNavigationCategoriesItemChildren from './SideNavigationCategoriesItemChildren';
 import SideNavigationItem from './SideNavigationItem';
 import connect from './SideNavigationCategoriesItem.connector';
 import { useSideNavigation } from './SideNavigation.hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   chevronButton: {
     flexShrink: 0,
     outline: 0,
-    margin: `0 -${variables.gap.big}px 0 ${variables.gap.small}px`,
+    margin: theme.spacing(0, -2, 0, 1),
     fontSize: '1.6em',
     color: '#373D41',
     position: 'relative',
@@ -43,7 +40,7 @@ const useStyles = makeStyles()({
     height: 3,
   },
   open: {},
-});
+}));
 
 /**
  * The SideNavigationCategoriesItem component.

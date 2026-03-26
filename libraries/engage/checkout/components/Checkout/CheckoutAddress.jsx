@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/engage';
 import { Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useProfileContext } from '../../../account/components/Profile/Profile.provider';
@@ -15,11 +14,9 @@ import {
 import { ADDRESS_TYPE_BILLING, ADDRESS_TYPE_SHIPPING } from '../../constants';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+    padding: theme.spacing(0, 2, 2),
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
@@ -36,7 +33,7 @@ const useStyles = makeStyles()({
     textTransform: 'uppercase',
     textAlign: 'center',
   },
-});
+}));
 
 /**
  * CheckoutAddress

@@ -3,9 +3,9 @@ import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     '& + span': {
       paddingTop: 0,
@@ -13,10 +13,10 @@ const useStyles = makeStyles()({
     background: colors.background,
     display: 'block',
     fontSize: 12,
-    padding: `20px ${variables.gap.big}px`,
+    padding: theme.spacing(2.5, 2),
     textAlign: 'left',
   },
-});
+}));
 
 /**
  * The CouponsHint components

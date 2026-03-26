@@ -2,12 +2,9 @@ import React from 'react';
 import { QuantityLabel } from '@shopgate/engage/components';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   column: {
     display: 'flex',
     alignItems: 'center',
@@ -15,7 +12,7 @@ const useStyles = makeStyles()({
     flexShrink: 1,
     flexGrow: 1,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     ':last-child': {
       paddingRight: 0,
     },
@@ -27,7 +24,7 @@ const useStyles = makeStyles()({
     flexShrink: 1,
     flexGrow: 2,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     ':last-child': {
       paddingRight: 0,
     },
@@ -42,7 +39,7 @@ const useStyles = makeStyles()({
     flexShrink: 1,
     flexGrow: 1,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     ':last-child': {
       paddingRight: 0,
     },
@@ -50,7 +47,7 @@ const useStyles = makeStyles()({
     lineHeight: '1.625rem',
   },
   quantityPickerDisabled: {
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     textAlign: 'center',
     fontSize: '1.25rem',
     lineHeight: '1.625rem',
@@ -60,7 +57,7 @@ const useStyles = makeStyles()({
     color: 'var(--color-text-high-emphasis)',
     whiteSpace: 'nowrap',
   },
-});
+}));
 
 /**
  * @returns {JSX.Element}

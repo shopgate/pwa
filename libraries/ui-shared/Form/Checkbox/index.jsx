@@ -4,10 +4,9 @@ import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import UICheckbox from '@shopgate/pwa-ui-shared/Checkbox';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     marginLeft: -2,
     cursor: 'pointer',
@@ -19,12 +18,12 @@ const useStyles = makeStyles()({
     lineHeight: 1.6,
   },
   labelWrapper: {
-    marginLeft: themeConfig.variables.gap.xbig,
+    marginLeft: theme.spacing(4),
   },
   checked: {
     color: 'var(--color-primary)',
   },
-});
+}));
 
 /**
  * A component that provides a styled checkbox field.

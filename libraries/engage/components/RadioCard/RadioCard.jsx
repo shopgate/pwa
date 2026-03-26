@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Card from '@shopgate/pwa-ui-shared/Card';
 import { useRadioGroup } from '../RadioGroup';
 import Radio from '../Radio';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   card: {
     borderRadius: 4,
     padding: '8px 8px 8px 4px',
@@ -16,7 +13,7 @@ const useStyles = makeStyles()({
     alignItems: 'center',
   },
   content: {
-    padding: `${variables.gap.small}px ${variables.gap.small}px ${variables.gap.small}px 0`,
+    padding: theme.spacing(1, 1, 1, 0),
     width: '100%',
   },
   contentDisabled: {
@@ -26,7 +23,7 @@ const useStyles = makeStyles()({
   radio: {
     alignItems: 'center',
   },
-});
+}));
 
 /**
  * The default card component

@@ -9,12 +9,12 @@ import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   text: {
     background: themeConfig.colors.background,
     display: 'block',
     fontSize: 12,
-    padding: `20px ${themeConfig.variables.gap.big}px`,
+    padding: theme.spacing(2.5, 2),
     textAlign: 'left',
   },
 }));

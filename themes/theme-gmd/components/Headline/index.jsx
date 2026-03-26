@@ -1,22 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     fontSize: 18,
-    padding: `${variables.gap.big}px 0 0`,
+    padding: theme.spacing(2, 0, 0),
     marginTop: 0,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       padding: 0,
-      margin: `${variables.gap.big * 2}px 0 ${variables.gap.big}px`,
+      margin: theme.spacing(4, 0, 2),
     },
     textAlign: 'center',
   },
-});
+}));
 
 /**
  * The headline component.

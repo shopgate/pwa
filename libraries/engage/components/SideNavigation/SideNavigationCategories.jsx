@@ -6,9 +6,9 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import SideNavigationCategoriesItemChildren from './SideNavigationCategoriesItemChildren';
 import connect from './SideNavigationCategories.connector';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   list: {
     borderBottom: `1px solid ${colors.shade7}`,
   },
@@ -21,12 +21,12 @@ const useStyles = makeStyles()({
     display: 'flex',
     textAlign: 'left',
     outline: 0,
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     position: 'relative',
     width: '100%',
     lineHeight: '1.45em',
   },
-});
+}));
 
 /**
  * The SideNavigationCategories component.

@@ -4,16 +4,13 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   grid: {
     alignItems: 'flex-end',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    marginTop: variables.gap.small,
+    marginTop: theme.spacing(1),
   },
   priceStriked: {
     fontSize: '0.875rem',
@@ -23,7 +20,7 @@ const useStyles = makeStyles()({
     fontSize: '1.25rem',
     lineHeight: 1,
   },
-});
+}));
 
 /**
  * @param {Object} price The product price.

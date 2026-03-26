@@ -5,15 +5,15 @@ import { I18n } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   title: {
     fontSize: '1.25em',
     lineHeight: themeConfig.typography.lineHeight,
     fontWeight: 500,
-    paddingBottom: themeConfig.variables.gap.small,
+    paddingBottom: theme.spacing(1),
     marginTop: '-.25em',
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

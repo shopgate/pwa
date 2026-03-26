@@ -7,9 +7,9 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import QuantityInput from '@shopgate/engage/components/QuantityInput';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   inputStyle: {
     border: 'none',
     background: colors.placeholder,
@@ -17,7 +17,7 @@ const useStyles = makeStyles()(() => ({
     fontSize: '0.75rem',
     lineHeight: 1,
     textAlign: 'center',
-    padding: `${variables.gap.small * 0.75}px ${variables.gap.small}px`,
+    padding: theme.spacing(0.75, 1),
     outline: 0,
     width: '100%',
     borderRadius: 4,

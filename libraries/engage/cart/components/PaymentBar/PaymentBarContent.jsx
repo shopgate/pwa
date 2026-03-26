@@ -19,9 +19,9 @@ import PaymentBarCheckoutButton from './PaymentBarCheckoutButton';
 import PaymentBarPromotionCoupons from './PaymentBarPromotionCoupons';
 import PaymentBarAppliedPromotions from './PaymentBarAppliedPromotions';
 
-const { colors, variables, shadows } = themeConfig;
+const { colors, shadows } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     background: colors.light,
     boxShadow: shadows.cart.paymentBar,
@@ -30,7 +30,7 @@ const useStyles = makeStyles()({
     paddingBottom: 'var(--safe-area-inset-bottom)',
   },
   container: {
-    padding: isIOSTheme() ? variables.gap.small : variables.gap.big,
+    padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
     paddingBottom: 0,
     lineHeight: 1.45,
     flexWrap: 'wrap',
@@ -45,11 +45,11 @@ const useStyles = makeStyles()({
   checkoutButtonContainer: {
     background: colors.light,
     alignItems: 'center',
-    padding: isIOSTheme() ? variables.gap.small : variables.gap.big,
+    padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
     position: 'relative',
     zIndex: 2,
   },
-});
+}));
 
 /**
  * The PaymentBarContent component.

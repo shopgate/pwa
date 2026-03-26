@@ -2,25 +2,22 @@ import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormBuilder } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { useRegistration } from '../../hooks';
 import { ELEMENT_ID_CUSTOMER_ATTRIBUTES } from '../../constants';
 import generateFormConfig from './RegistrationFormExtra.config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   form: {
     ...StylePresets.OUTLINED_FORM_FIELDS,
     ' .registrationOptInMarketingOptIn': {
       paddingTop: 0,
-      paddingBottom: variables.gap.big,
+      paddingBottom: theme.spacing(2),
     },
   },
   section: {},
-});
+}));
 
 /**
  * The RegistrationFormExtra component.

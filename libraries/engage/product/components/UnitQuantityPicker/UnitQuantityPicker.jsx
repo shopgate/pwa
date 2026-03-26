@@ -10,9 +10,9 @@ import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()((_, {
+const useStyles = makeStyles()((theme, {
   inputColor,
   inputBgColor,
   buttonColor,
@@ -47,7 +47,7 @@ const useStyles = makeStyles()((_, {
       ...(inputColor && { color: `${inputColor} !important` }),
       ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
       ' .quantity-label': {
-        paddingLeft: variables.gap.small,
+        paddingLeft: theme.spacing(1),
         paddingRight: 4,
         textAlign: 'center',
 
@@ -58,7 +58,7 @@ const useStyles = makeStyles()((_, {
       },
     },
     input: {
-      padding: `0 ${variables.gap.small}px`,
+      padding: theme.spacing(0, 1),
       textAlign: hasLabel ? 'left' : 'center',
       fontWeight,
       height: '100%',

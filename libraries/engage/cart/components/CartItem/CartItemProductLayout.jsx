@@ -26,12 +26,12 @@ import CartItemProductOrderDetails from './CartItemProductOrderDetails';
 import CartItemProductPriceList from './CartItemProductPriceList';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 const leftColumnWidth = 72;
 
-const useStyles = makeStyles()((_theme, _params, classes) => ({
+const useStyles = makeStyles()((theme, _params, classes) => ({
   item: {
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     // Row is DOM reversed for a11y navigation.
     flexDirection: 'row-reverse',
   },
@@ -40,19 +40,19 @@ const useStyles = makeStyles()((_theme, _params, classes) => ({
   },
   image: {
     background: colors.placeholder,
-    marginBottom: variables.gap.small * 1.25,
+    marginBottom: theme.spacing(1.25),
     height: leftColumnWidth,
     width: leftColumnWidth,
   },
   content: {
     display: 'flex',
     flexDirection: 'column',
-    paddingLeft: variables.gap.big,
+    paddingLeft: theme.spacing(2),
   },
   info: {
     fontSize: '0.875rem',
-    marginTop: variables.gap.big * 0.875,
-    marginBottom: variables.gap.small * 0.25,
+    marginTop: theme.spacing(1.75),
+    marginBottom: theme.spacing(1) * 0.25,
     flexGrow: 1,
     alignItems: 'flex-end',
     justifyContent: 'space-between',

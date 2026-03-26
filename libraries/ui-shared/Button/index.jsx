@@ -6,8 +6,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const { colors } = themeConfig;
 
-const buttonPadding = `0 ${themeConfig.variables.gap.big}px 0`;
-
 const buttonTypes = [
   'plain',
   'regular',
@@ -38,17 +36,18 @@ const baseButton = (text, background) => ({
 /**
  * @param {string} textColor Text color.
  * @param {string|null} fillColor Fill color.
+ * @param {Object} theme Theme with spacing().
  * @returns {Object} Object with `button` and `content` style maps.
  */
-const pairFromColors = (textColor, fillColor) => ({
+const pairFromColors = (textColor, fillColor, theme) => ({
   button: baseButton(textColor, fillColor),
   content: {
-    padding: buttonPadding,
+    padding: theme.spacing(0, 2, 0),
     color: textColor,
   },
 });
 
-const useStyles = makeStyles()((_t, { type, flat, disabled }) => {
+const useStyles = makeStyles()((theme, { type, flat, disabled }) => {
   if (type === 'plain') {
     return {
       button: {
@@ -62,36 +61,36 @@ const useStyles = makeStyles()((_t, { type, flat, disabled }) => {
 
   if (type === 'simple') {
     return disabled
-      ? pairFromColors(themeConfig.colors.shade4, themeConfig.colors.shade7)
-      : pairFromColors(themeConfig.colors.dark, themeConfig.colors.shade7);
+      ? pairFromColors(themeConfig.colors.shade4, themeConfig.colors.shade7, theme)
+      : pairFromColors(themeConfig.colors.dark, themeConfig.colors.shade7, theme);
   }
 
   if (type === 'regular') {
     return disabled
-      ? pairFromColors(colors.shade4, null)
-      : pairFromColors(colors.dark, null);
+      ? pairFromColors(colors.shade4, null, theme)
+      : pairFromColors(colors.dark, null, theme);
   }
 
   if (type === 'secondary') {
     if (!flat) {
       return disabled
-        ? pairFromColors(colors.shade4, colors.shade7)
-        : pairFromColors('var(--color-primary-contrast)', 'var(--color-primary)');
+        ? pairFromColors(colors.shade4, colors.shade7, theme)
+        : pairFromColors('var(--color-primary-contrast)', 'var(--color-primary)', theme);
     }
     return disabled
-      ? pairFromColors(colors.shade4, null)
-      : pairFromColors('var(--color-primary)', null);
+      ? pairFromColors(colors.shade4, null, theme)
+      : pairFromColors('var(--color-primary)', null, theme);
   }
 
   if (!flat) {
     return disabled
-      ? pairFromColors(colors.shade4, colors.shade7)
-      : pairFromColors('var(--color-secondary-contrast)', 'var(--color-secondary)');
+      ? pairFromColors(colors.shade4, colors.shade7, theme)
+      : pairFromColors('var(--color-secondary-contrast)', 'var(--color-secondary)', theme);
   }
 
   return disabled
-    ? pairFromColors(colors.shade4, null)
-    : pairFromColors('var(--color-secondary)', null);
+    ? pairFromColors(colors.shade4, null, theme)
+    : pairFromColors('var(--color-secondary)', null, theme);
 });
 
 /**

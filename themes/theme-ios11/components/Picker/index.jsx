@@ -5,18 +5,15 @@ import PropTypes from 'prop-types';
 import { SheetList, Picker as BasePicker, Sheet } from '@shopgate/engage/components';
 import { ViewContext } from '@shopgate/engage/components/View';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Button from './components/Button';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
-    marginBottom: variables.gap.small,
+    marginBottom: theme.spacing(1),
     minHeight: 56,
   },
-});
+}));
 
 /**
  * The template version of the Picker component (inner).

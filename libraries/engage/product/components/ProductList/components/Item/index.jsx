@@ -20,31 +20,26 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const elementPadding = variables.gap.big / 2;
-const containerPaddingSidewards = {
-  padding: elementPadding,
-};
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   listItemContainer: {
-    padding: elementPadding,
+    padding: theme.spacing(1),
     background: colors.light,
   },
   imageContainer: {
-    ...containerPaddingSidewards,
+    padding: theme.spacing(1),
     width: 40,
     minHeight: 40,
     boxSizing: 'content-box',
   },
   titleContainer: {
-    ...containerPaddingSidewards,
+    padding: theme.spacing(1),
     lineHeight: 1.35,
     width: '50%',
   },
   priceContainer: {
-    ...containerPaddingSidewards,
+    padding: theme.spacing(1),
     lineHeight: 1.35,
     textAlign: 'right',
   },
@@ -70,7 +65,7 @@ const useStyles = makeStyles()({
   discount: {
     minWidth: 40,
   },
-});
+}));
 
 /**
  * The Product List Item component.

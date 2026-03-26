@@ -1,16 +1,14 @@
 import React from 'react';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { SCANNER_CAMERA } from '@shopgate/pwa-common-commerce/scanner/constants/Portals';
-import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const edgeHeight = 45;
 const edgeWidth = 35;
 const edgeBorderWidth = 3;
-const edgeOffsetHorizontal = themeVariables.gap.xbig;
-const edgeOffsetVertical = themeVariables.gap.xxbig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     height: '90%',
     width: '100%',
@@ -24,27 +22,27 @@ const useStyles = makeStyles()({
       borderColor: themeColors.light,
     },
     ':before': {
-      top: edgeOffsetVertical,
-      left: edgeOffsetHorizontal,
+      top: theme.spacing(8),
+      left: theme.spacing(4),
       borderWidth: `${edgeBorderWidth}px 0 0 ${edgeBorderWidth}px`,
     },
     ':after': {
-      top: edgeOffsetVertical,
-      right: edgeOffsetHorizontal,
+      top: theme.spacing(8),
+      right: theme.spacing(4),
       borderWidth: `${edgeBorderWidth}px ${edgeBorderWidth}px 0 0`,
     },
     '>:before': {
-      bottom: edgeOffsetVertical,
-      left: edgeOffsetHorizontal,
+      bottom: theme.spacing(8),
+      left: theme.spacing(4),
       borderWidth: `0 0 ${edgeBorderWidth}px ${edgeBorderWidth}px`,
     },
     '>:after': {
-      bottom: edgeOffsetVertical,
-      right: edgeOffsetHorizontal,
+      bottom: theme.spacing(8),
+      right: theme.spacing(4),
       borderWidth: `0 ${edgeBorderWidth}px ${edgeBorderWidth}px 0`,
     },
   },
-});
+}));
 
 /**
  * @returns {JSX.Element}

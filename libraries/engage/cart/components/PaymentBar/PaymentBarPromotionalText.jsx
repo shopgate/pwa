@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { nl2br, showModal as showModalAction, isIOSTheme } from '@shopgate/engage/core';
 import { InfoIcon } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
 
@@ -12,11 +11,9 @@ const mapDispatchToProps = {
   showModal: showModalAction,
 };
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   textWrapper: {
-    padding: `${variables.gap.xsmall}px 0`,
+    padding: theme.spacing(0.5, 0),
     color: 'var(--color-state-alert)',
     order: 3,
   },
@@ -51,7 +48,7 @@ const useStyles = makeStyles()({
     order: 1,
     flexShrink: 0,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props

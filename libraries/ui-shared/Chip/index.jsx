@@ -3,31 +3,31 @@ import PropTypes from 'prop-types';
 import Button from '@shopgate/pwa-common/components/Button';
 import ResponsiveContainer from '@shopgate/engage/components/ResponsiveContainer';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import CrossIcon from '../icons/CrossIcon';
 
 /**
  * @param {boolean} hasRemoveButton Whether this chip has a remove button.
+ * @param {Object} theme Theme with spacing().
  * @returns {Object} Shared layout fields for the chip root.
  */
-const chipBase = (hasRemoveButton = true) => ({
+const chipBase = (hasRemoveButton, theme) => ({
   display: 'flex',
   alignItems: 'center',
   borderRadius: 26,
   outline: 0,
   height: 26,
-  paddingRight: themeConfig.variables.gap.small,
-  paddingLeft: themeConfig.variables.gap.small * (hasRemoveButton ? 0.5 : 1),
+  paddingRight: theme.spacing(1),
+  paddingLeft: hasRemoveButton ? theme.spacing(0.5) : theme.spacing(1),
   marginRight: 5,
   marginTop: 4,
   marginBottom: 4,
   minWidth: 0,
 });
 
-const useStyles = makeStyles()((_theme, { removable, invert }) => ({
+const useStyles = makeStyles()((theme, { removable, invert }) => ({
   chip: {
-    ...chipBase(removable),
+    ...chipBase(removable, theme),
     ...(hasNewServices()
       ? {
         backgroundColor: invert
@@ -58,8 +58,8 @@ const useStyles = makeStyles()((_theme, { removable, invert }) => ({
     },
   },
   name: {
-    paddingLeft: (themeConfig.variables.gap.small * 0.5),
-    paddingRight: (themeConfig.variables.gap.small * 0.5),
+    paddingLeft: (theme.spacing(0.5)),
+    paddingRight: (theme.spacing(0.5)),
     paddingTop: 3,
     paddingBottom: 3,
     fontSize: 12,

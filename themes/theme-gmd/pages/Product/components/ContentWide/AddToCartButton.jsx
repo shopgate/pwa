@@ -13,9 +13,9 @@ import Icon from '../Header/components/CTAButtons/components/CartButton/componen
 import inject from './AddToCartButton.injector';
 import connect from './AddToCartButton.connector';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     cursor: 'pointer',
     background: 'var(--color-button-cta)',
@@ -31,7 +31,7 @@ const useStyles = makeStyles()({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    padding: `${(variables.gap.big * 0.75)}px ${variables.gap.big * 0.6}px ${(variables.gap.big * 0.75)}px`,
+    padding: theme.spacing(1.5, 1.2, 1.5),
   },
   disabled: {
     background: colors.shade5,
@@ -48,7 +48,7 @@ const useStyles = makeStyles()({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    padding: `${(variables.gap.big * 0.75)}px ${variables.gap.big * 0.6}px ${(variables.gap.big * 0.75)}px`,
+    padding: theme.spacing(1.5, 1.2, 1.5),
   },
   icon: {
     height: 32,
@@ -63,7 +63,7 @@ const useStyles = makeStyles()({
       fill: '#fff',
     },
   },
-});
+}));
 
 /**
  * Wide layout add-to-cart control on the product page.

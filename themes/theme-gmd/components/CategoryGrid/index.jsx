@@ -1,21 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, cx } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CategoryGridItem from './CategoryGridItem';
 import CategoryGridItemPlaceholder from './CategoryGridItemPlaceholder';
 
-const { variables } = themeConfig;
-const { big } = variables.gap;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   grid: {
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'row',
-    padding: `0 ${big}px ${big}px ${big}px`,
+    padding: theme.spacing(0, 2, 2, 2),
   },
-});
+}));
 
 /**
  * The CategoryGrid component.

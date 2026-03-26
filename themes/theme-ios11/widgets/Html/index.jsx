@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import HtmlSanitizer from '@shopgate/pwa-common/components/HtmlSanitizer';
+import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const { variables } = themeConfig;
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
+  withDefaultPadding: {
+    padding: theme.spacing(2),
+  },
   root: {
     '& h1, & h2, & h3, & h4, & h5, & h6, & p, & ul, & ol': {
       margin: '1rem 0',
@@ -66,7 +69,7 @@ const useStyles = makeStyles()({
       height: 0,
     },
   },
-});
+}));
 
 /**
  * The custom HTML widget.
@@ -81,9 +84,8 @@ const Html = ({ settings, navigate }) => {
 
   return (
     <div
-      style={{
-        ...(settings.defaultPadding && { padding: variables.gap.big }),
-      }}
+      className={classNames(settings.defaultPadding && classes.withDefaultPadding)}
+      data-test-default-padding={settings.defaultPadding || undefined}
     >
       <HtmlSanitizer
         className={classes.root}

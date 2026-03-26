@@ -18,15 +18,15 @@ import transition from '@shopgate/engage/product/components/Characteristics/tran
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import OptionInformation from './components/OptionInfo';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   row: {
-    marginBottom: variables.gap.small,
+    marginBottom: theme.spacing(1),
   },
   wrapper: {
     backgroundColor: 'var(--color-background-accent)',
-    padding: `${variables.gap.small}px ${variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
     minHeight: 56,
   },
   element: {

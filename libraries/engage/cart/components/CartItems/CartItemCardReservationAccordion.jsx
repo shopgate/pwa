@@ -3,26 +3,24 @@ import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/engage/components';
 import { StoreAddress, StoreOpeningHours } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   accordionContent: {
-    paddingLeft: themeVariables.gap.xbig * 1.25,
+    paddingLeft: theme.spacing(5),
   },
   accordionToggle: {
-    padding: `${themeVariables.gap.big * 1.25}px ${themeVariables.gap.big}px`,
+    padding: theme.spacing(2.5, 2),
   },
   locationAddress: {
     fontSize: '0.85rem',
     color: 'var(--color-text-low-emphasis)',
   },
   locationHours: {
-    paddingTop: themeVariables.gap.big,
+    paddingTop: theme.spacing(2),
     fontSize: '0.85rem',
   },
-});
-
+}));
 // eslint-disable-next-line max-len
 /** @typedef {import('@shopgate/engage/locations/locations.types').OptionalLocationAware} OptionalLocationAware */
 

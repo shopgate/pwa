@@ -3,40 +3,42 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const buttonDefaults = {
-  display: 'block',
-  width: '100%',
-  padding: `${variables.gap.small}px ${variables.gap.big}px`,
-  fontFamily: 'inherit',
-  textAlign: 'left',
-  lineHeight: 1.2,
-  outline: 'none',
-  background: colors.shade8,
-};
-
-const useStyles = makeStyles()({
-  button: {
-    ...buttonDefaults,
-  },
-  buttonDisabled: {
-    ...buttonDefaults,
-    color: colors.shade4,
-  },
-  label: {
+const useStyles = makeStyles()((theme) => {
+  const buttonDefaults = {
     display: 'block',
-    fontWeight: 500,
-    ':not(:only-child)': {
-      fontWeight: 400,
-      fontSize: '0.75rem',
-      marginBottom: 4,
+    width: '100%',
+    padding: theme.spacing(1, 2),
+    fontFamily: 'inherit',
+    textAlign: 'left',
+    lineHeight: 1.2,
+    outline: 'none',
+    background: colors.shade8,
+  };
+
+  return {
+    button: {
+      ...buttonDefaults,
     },
-  },
-  value: {
-    display: 'block',
-    fontWeight: 500,
-  },
+    buttonDisabled: {
+      ...buttonDefaults,
+      color: colors.shade4,
+    },
+    label: {
+      display: 'block',
+      fontWeight: 500,
+      ':not(:only-child)': {
+        fontWeight: 400,
+        fontSize: '0.75rem',
+        marginBottom: 4,
+      },
+    },
+    value: {
+      display: 'block',
+      fontWeight: 500,
+    },
+  };
 });
 
 /**

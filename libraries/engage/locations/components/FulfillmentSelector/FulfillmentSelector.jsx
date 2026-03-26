@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 import {
   DIRECT_SHIP,
@@ -23,14 +22,11 @@ import { FulfillmentSelectorAddToCart } from './FulfillmentSelectorAddToCart';
 import { FulfillmentSelectorLocation } from './FulfillmentSelectorLocation';
 import connect from './FulfillmentSelector.connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    padding: `${variables.gap.small}px ${variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
   },
-});
-
+}));
 /* eslint-disable max-len */
 /** @typedef {import('./FulfillmentSelector.types').FulfillmentSelectorContextProps} FulfillmentSelectorContextProps */
 /** @typedef {import('./FulfillmentSelector.types').OwnProps} OwnProps */

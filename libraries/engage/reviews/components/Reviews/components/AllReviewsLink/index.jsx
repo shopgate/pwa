@@ -6,20 +6,17 @@ import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index
 import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/constants';
 import ButtonLink from '@shopgate/pwa-ui-shared/ButtonLink';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     justifyContent: 'flex-end',
     textAlign: 'right',
-    marginTop: -variables.gap.small,
-    marginBottom: -variables.gap.big,
+    marginTop: -theme.spacing(1),
+    marginBottom: -theme.spacing(2),
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

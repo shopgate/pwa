@@ -2,16 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, Card } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getTranslatedOrderStatus } from '../../helpers';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   tableHeader: {
     '& > th': {
-      padding: variables.gap.big,
+      padding: theme.spacing(2),
       fontWeight: 500,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
@@ -26,10 +23,10 @@ const useStyles = makeStyles()({
       backgroundColor: 'rgba(0,0,0,.04)',
     },
     '& > td': {
-      padding: variables.gap.big,
+      padding: theme.spacing(2),
     },
   },
-});
+}));
 
 /**
  * The Order History Table Row component

@@ -7,19 +7,18 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { getOrderDetailsRoute } from '../../helpers/orderDetails';
 
-const { variables } = themeConfig;
 const isIOS = themeName.includes('ios');
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   orderNumber: {
     fontWeight: 500,
   },
   list: {
     background: 'var(--color-background-accent)',
-    marginBottom: `-${variables.gap.small * 1.5}px`,
+    marginBottom: theme.spacing(-1.5),
   },
   cardContent: {
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -32,7 +31,7 @@ const useStyles = makeStyles()({
     textAlign: 'right',
   },
   card: {
-    marginBottom: variables.gap.small * 1.5,
+    marginBottom: theme.spacing(1.5),
     ':last-of-type': {
       marginBottom: 0,
     },
@@ -41,7 +40,7 @@ const useStyles = makeStyles()({
     boxShadow: themeConfig.shadows.productCard,
     borderRadius: isIOS ? 10 : 2,
   },
-});
+}));
 
 /**
  * The Order History List Item component

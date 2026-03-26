@@ -1,5 +1,4 @@
 import React from 'react';
-import { themeConfig } from '@shopgate/engage';
 import { FormBuilder, SurroundPortals } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -8,9 +7,7 @@ import Section from './CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import { CHECKOUT_PICKUP_CONTACT_FORM } from '../../constants';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     padding: 16,
     paddingTop: 0,
@@ -20,17 +17,17 @@ const useStyles = makeStyles()({
   },
   form: {
     ' .pickupFormPickupPerson': {
-      marginTop: variables.gap.small,
+      marginTop: theme.spacing(1),
     },
     ' .pickupFormPickupPerson .me': {
-      marginRight: variables.gap.big,
+      marginRight: theme.spacing(2),
     },
     ' .pickupFormPickupPerson .label span': {
       color: 'var(--color-text-high-emphasis)',
       fontWeight: 'bold',
     },
     ' .pickupFormPickupPerson .radioGroup': {
-      marginTop: variables.gap.small,
+      marginTop: theme.spacing(1),
       flexDirection: 'row',
       ' .uncheckedIcon': {
         color: 'var(--color-text-medium-emphasis)',
@@ -38,7 +35,7 @@ const useStyles = makeStyles()({
     },
     ...StylePresets.OUTLINED_FORM_FIELDS,
   },
-});
+}));
 
 /**
  * PickupContactForm

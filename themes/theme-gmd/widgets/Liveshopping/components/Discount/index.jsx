@@ -8,17 +8,14 @@ import {
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     fontWeight: 500,
-    marginBottom: variables.gap.small,
+    marginBottom: theme.spacing(1),
     width: 'auto',
   },
-});
+}));
 
 /**
  * The LiveshoppingDiscount component.

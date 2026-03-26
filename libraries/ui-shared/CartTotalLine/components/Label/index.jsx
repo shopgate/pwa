@@ -2,21 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   label: {
     flexGrow: 1,
-    paddingRight: variables.gap.small,
+    paddingRight: theme.spacing(1),
     order: 3,
   },
   labelWithSuffix: {
-    paddingRight: variables.gap.small,
+    paddingRight: theme.spacing(1),
   },
-});
+}));
 
 /**
  * The ShippingCostsLabel component.

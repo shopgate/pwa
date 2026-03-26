@@ -4,16 +4,13 @@ import React, {
 import ArrowDrop from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import SideNavigationItem from './SideNavigationItem';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   chevronButton: {
     flexShrink: 0,
     outline: 0,
-    margin: `0 -${variables.gap.big}px 0 ${variables.gap.small}px`,
+    margin: theme.spacing(0, -2, 0, 1),
     fontSize: '1.6em',
     color: '#373D41',
     position: 'relative',
@@ -29,7 +26,7 @@ const useStyles = makeStyles()({
     transform: 'rotateZ(180deg)',
   },
   open: {},
-});
+}));
 
 /**
  * The SideNavigationCategoriesItem component

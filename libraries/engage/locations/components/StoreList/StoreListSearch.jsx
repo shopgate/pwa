@@ -10,7 +10,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import {
   InfoIcon,
   LocatorIcon,
@@ -24,7 +24,7 @@ import { FulfillmentContext, StoreFinderContext } from '../../locations.context'
 import connect from './StoreListSearch.connector';
 import { FULFILLMENT_SHEET_SEARCH } from '../../constants/Portals';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     padding: '0 12px 8px 12px',
     background: themeColors.light,
@@ -39,7 +39,7 @@ const useStyles = makeStyles()({
   countriesCell: {
     gridArea: 'countries',
     maxWidth: 160,
-    paddingRight: themeVariables.gap.small,
+    paddingRight: theme.spacing(1),
   },
   inputCell: {
     gridArea: 'input',
@@ -48,7 +48,7 @@ const useStyles = makeStyles()({
     gridArea: 'radius',
     ':not(:empty)': {
       height: 38,
-      marginTop: themeVariables.gap.small,
+      marginTop: theme.spacing(1),
     },
   },
   selectContainer: {
@@ -62,7 +62,7 @@ const useStyles = makeStyles()({
       position: 'absolute',
       display: 'block',
       top: '50%',
-      right: themeVariables.gap.small * 1.5,
+      right: theme.spacing(1.5),
       transform: 'translate3d(0, -25%, 0)',
       width: 5,
       height: 5,
@@ -73,7 +73,7 @@ const useStyles = makeStyles()({
   select: {
     appearance: 'none',
     border: `1px solid ${themeColors.shade7}`,
-    padding: `0 ${themeVariables.gap.bigger + themeVariables.gap.small * 1.5}px 0 ${themeVariables.gap.big * 0.75}px`,
+    padding: theme.spacing(0, 4, 0, 1.5),
     color: themeColors.shade11,
     fontSize: '1rem',
     borderRadius: 4,
@@ -107,7 +107,7 @@ const useStyles = makeStyles()({
   iconClass: {
     fontSize: '1.25rem !important',
   },
-});
+}));
 
 /**
  * @param {Function} getProductLocations getProductLocations.

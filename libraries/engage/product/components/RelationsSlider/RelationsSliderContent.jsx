@@ -2,39 +2,36 @@ import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { Swiper, Card } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import ProductCard from '../ProductCard';
 import RelationsSheet from './RelationsSheet';
 import { useWidgetSettings, useCurrentProduct } from '../../../core';
 import connect from './RelationsSlider.connector';
 import { WIDGET_ID } from './constants';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
   },
   headline: {
     fontSize: '1rem',
     fontWeight: 500,
-    padding: `0 ${variables.gap.big}px ${variables.gap.small}px`,
+    padding: theme.spacing(0, 2, 1),
     margin: 0,
   },
   sliderContainer: {
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
-    padding: `${variables.gap.small}px 0 ${variables.gap.big}px`,
+    padding: theme.spacing(1, 0, 2),
   },
   sliderItem: {
     paddingBottom: 10,
   },
   card: {
     height: '100%',
-    margin: `0 ${variables.gap.small}px`,
+    margin: theme.spacing(0, 1),
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

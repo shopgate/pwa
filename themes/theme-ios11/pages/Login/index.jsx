@@ -26,7 +26,6 @@ import {
   PAGE_LOGIN_FORM,
   PAGE_LOGIN_FORM_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CloseBar } from 'Components/AppBar/presets';
 import connect from './connector';
 import ForgotPassword from './components/ForgotPassword';
@@ -64,74 +63,71 @@ const passwordConstraints = {
   },
 };
 
-const useStyles = makeStyles()(() => {
-  const { variables } = themeConfig;
-  return {
-    container: {
-      flexGrow: 1,
-      padding: `${variables.gap.small * 3}px ${variables.gap.big}px`,
+const useStyles = makeStyles()(theme => ({
+  container: {
+    flexGrow: 1,
+    padding: theme.spacing(3, 2),
+  },
+  headline: {
+    fontSize: '2rem',
+    lineHeight: 1.2,
+    fontWeight: 700,
+  },
+  subline: {
+    fontSize: '1.125rem',
+    marginBottom: theme.spacing(3),
+    marginTop: 4,
+    color: 'var(--color-text-medium-emphasis)',
+  },
+  form: {
+    paddingTop: theme.spacing(3),
+    '--form-element-left-offset': '30px',
+  },
+  input: {
+    width: '100%',
+    ' .simpleInput': {
+      color: 'var(--color-text-high-emphasis)',
     },
-    headline: {
-      fontSize: '2rem',
-      lineHeight: 1.2,
-      fontWeight: 700,
-    },
-    subline: {
-      fontSize: '1.125rem',
-      marginBottom: variables.gap.big * 1.5,
-      marginTop: 4,
-      color: 'var(--color-text-medium-emphasis)',
-    },
-    form: {
-      paddingTop: variables.gap.big * 1.5,
-      '--form-element-left-offset': '30px',
-    },
-    input: {
-      width: '100%',
-      ' .simpleInput': {
-        color: 'var(--color-text-high-emphasis)',
-      },
-    },
-    forgotWrapper: {
-      textAlign: 'right',
-      fontSize: '0.75rem',
-      marginTop: -variables.gap.big,
-      marginBottom: variables.gap.big,
-    },
-    buttonWrapper: {
-      paddingTop: variables.gap.big * 2,
-      paddingBottom: variables.gap.big * 1.5,
-    },
-    button: {
-      width: '100%',
-    },
-    noAccount: {
-      marginRight: variables.gap.small * 0.5,
-    },
-    signup: {
-      display: 'inline-block',
-      color: 'var(--color-primary)',
-      width: 'auto',
-      margin: '-.35em 0 -.35em -.35em',
-      padding: '.35em',
-    },
-    icon: {
-      fill: 'var(--color-text-medium-emphasis)',
-      width: '24px',
-      height: '24px',
-    },
-    iconLeft: {
-      marginRight: variables.gap.xsmall,
-    },
-    iconRight: {
-      marginLeft: variables.gap.xsmall,
-    },
-    toggleButton: {
-      padding: '4px',
-      margin: '-4px 0',
-    },
-  };
-});
+  },
+  forgotWrapper: {
+    textAlign: 'right',
+    fontSize: '0.75rem',
+    marginTop: -theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
+  buttonWrapper: {
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(3),
+  },
+  button: {
+    width: '100%',
+  },
+  noAccount: {
+    marginRight: theme.spacing(0.5),
+  },
+  signup: {
+    display: 'inline-block',
+    color: 'var(--color-primary)',
+    width: 'auto',
+    margin: '-.35em 0 -.35em -.35em',
+    padding: '.35em',
+  },
+  icon: {
+    fill: 'var(--color-text-medium-emphasis)',
+    width: '24px',
+    height: '24px',
+  },
+  iconLeft: {
+    marginRight: theme.spacing(0.5),
+  },
+  iconRight: {
+    marginLeft: theme.spacing(0.5),
+  },
+  toggleButton: {
+    padding: '4px',
+    margin: '-4px 0',
+  },
+}));
 
 /**
  * iOS login view.

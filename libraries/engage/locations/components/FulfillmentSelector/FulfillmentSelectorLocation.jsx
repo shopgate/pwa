@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import intersection from 'lodash/intersection';
 import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables, themeColors, themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import {
   ROPIS,
   BOPIS,
@@ -19,13 +19,11 @@ import { PRODUCT_FULFILLMENT_SELECTOR_LOCATION } from '../../constants/Portals';
 import { FulfillmentSelectorLocationMethodNotAvailable } from './FulfillmentSelectorLocationMethodNotAvailable';
 import FulfillmentSelectorAlternativeLocation from './FulfillmentSelectorAlternativeLocation';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     fontSize: '0.75rem',
-    padding: `0 ${themeVariables.gap.big}px ${themeVariables.gap.small}px ${themeVariables.gap.big * 3}px`,
-    marginTop: `-${themeVariables.gap.small}px`,
+    padding: theme.spacing(0, 2, 1, 6),
+    marginTop: theme.spacing(-1),
     flexDirection: 'column',
   },
   unavailable: {
@@ -46,7 +44,7 @@ const useStyles = makeStyles()({
     display: 'block',
     width: '50%',
     '&:first-of-type': {
-      paddingRight: variables.gap.small,
+      paddingRight: theme.spacing(1),
     },
     '&:last-of-type': {
       textAlign: 'right',
@@ -55,7 +53,7 @@ const useStyles = makeStyles()({
   itemSpacer: {
     marginLeft: 16,
   },
-});
+}));
 
 /**
  * The FulfillmentSelectorLocation component

@@ -9,19 +9,18 @@ import {
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
-const { small, big } = variables.gap;
+const { colors } = themeConfig;
 const minImageSize = 110;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   gridItem: {
     width: '50%',
     display: 'flex',
     ':nth-of-type(even)': {
-      padding: `0 0 ${big}px ${small}px`,
+      padding: theme.spacing(0, 0, 2, 1),
     },
     ':nth-of-type(odd)': {
-      padding: `0 ${small}px ${big}px 0`,
+      padding: theme.spacing(0, 1, 2, 0),
     },
     '&:nth-of-type(2n+1):nth-last-of-type(-n+2), &:nth-of-type(2n+1):nth-last-of-type(-n+2) ~ li': {
       paddingBottom: 0,
@@ -36,7 +35,7 @@ const useStyles = makeStyles()({
   },
   gridItemColumnLeft: {
     flex: 1,
-    padding: big,
+    padding: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
   },
@@ -58,7 +57,7 @@ const useStyles = makeStyles()({
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
     fontWeight: 'initial',
-    paddingTop: variables.gap.small,
+    paddingTop: theme.spacing(1),
     ':empty': {
       display: 'none',
     },
@@ -71,7 +70,7 @@ const useStyles = makeStyles()({
       maxWidth: 'inherit !important',
     },
   },
-});
+}));
 
 /**
  * The CategoryGridItem component

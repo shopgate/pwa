@@ -1,15 +1,12 @@
 import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
-import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 
-const outerGap = themeConfig.variables.gap.small;
-
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'absolute',
-    margin: outerGap,
+    margin: theme.spacing(1),
   },
 }));
 
@@ -22,8 +19,10 @@ const Position = ({
   children,
   offset,
 }) => {
+  const theme = useTheme();
   const { classes } = useStyles();
   const elementRef = useRef(null);
+  const gap = theme.spacing(1);
 
   useEffect(() => {
     const el = elementRef.current;
@@ -39,7 +38,6 @@ const Position = ({
     const bounds = child.getBoundingClientRect();
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const gap = outerGap;
 
     const left = clamp(offset.left, 0, width - bounds.width - (gap * 2));
     const top = clamp(offset.top - gap, 0, height - bounds.height - (gap * 2));

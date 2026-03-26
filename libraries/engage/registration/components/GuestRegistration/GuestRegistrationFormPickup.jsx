@@ -1,5 +1,4 @@
 import React, { useMemo, useCallback } from 'react';
-import { themeConfig } from '@shopgate/engage';
 import { FormBuilder } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -8,9 +7,7 @@ import generateFormConfig from './GuestRegistrationFormPickup.config';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { useRegistration } from '../../hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flex: '0 0 auto',
@@ -18,17 +15,17 @@ const useStyles = makeStyles()({
   },
   form: {
     ' .guestFormPickupPerson': {
-      marginTop: variables.gap.small,
+      marginTop: theme.spacing(1),
     },
     ' .guestFormPickupPerson .me': {
-      marginRight: variables.gap.big,
+      marginRight: theme.spacing(2),
     },
     ' .guestFormPickupPerson .label span': {
       color: 'var(--color-text-high-emphasis)',
       fontWeight: 'bold',
     },
     ' .guestFormPickupPerson .radioGroup': {
-      marginTop: variables.gap.small,
+      marginTop: theme.spacing(1),
       flexDirection: 'row',
       ' .uncheckedIcon': {
         color: 'var(--color-text-medium-emphasis)',
@@ -36,7 +33,7 @@ const useStyles = makeStyles()({
     },
     ...StylePresets.OUTLINED_FORM_FIELDS,
   },
-});
+}));
 
 /**
  * PickupContactForm

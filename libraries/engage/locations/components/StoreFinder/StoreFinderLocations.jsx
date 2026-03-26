@@ -6,10 +6,9 @@ import { StoreFinderContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
 import StoreFinderLocation from './StoreFinderLocation';
 
-const { colors, variables } = themeConfig;
-const gapM = variables.gap.small + variables.gap.xsmall;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     paddingTop: 2,
     borderTop: 'none',
@@ -26,10 +25,10 @@ const useStyles = makeStyles()({
     boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)',
     borderRadius: 3,
     ':not(:last-child)': {
-      marginBottom: gapM,
+      marginBottom: theme.spacing(1.5),
     },
   },
-});
+}));
 
 /**
  * @param {Object} props The component props

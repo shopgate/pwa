@@ -20,20 +20,20 @@ import ListAccordionLabel from './ListAccordionLabel';
 import ListContent from './ListContent';
 import ListAccordionHeader from './ListAccordionHeader';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     margin: '8px 8px 10px',
   },
   rootNoFavoritesLists: {
     background: colors.light,
     flexGrow: 1,
-    paddingBottom: variables.gap.small,
+    paddingBottom: theme.spacing(1),
     paddingLeft: '16px',
     paddingRight: '16px',
   },
-});
+}));
 
 /**
  * @param {Object} _ State

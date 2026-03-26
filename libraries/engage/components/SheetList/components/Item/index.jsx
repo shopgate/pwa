@@ -1,20 +1,17 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withForwardedRef } from '@shopgate/engage/core';
-import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery, useTheme } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 const IMAGE_SPACE = 72;
-const glowHover = {
-  boxShadow: `-${variables.gap.bigger}px 0 0 ${colors.shade8}, ${variables.gap.bigger}px 0 0 ${colors.shade8}`,
-};
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   disabled: {
     color: colors.shade5,
     cursor: 'not-allowed',
@@ -25,14 +22,14 @@ const useStyles = makeStyles()({
   },
   title: {
     width: '100%',
-    marginTop: variables.gap.xsmall,
-    paddingRight: variables.gap.big,
+    marginTop: theme.spacing(0.5),
+    paddingRight: theme.spacing(2),
     hyphens: 'auto',
     overflowWrap: 'break-word',
     wordBreak: 'break-word',
     color: 'var(--color-text-high-emphasis)',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      padding: variables.gap.big,
+      padding: theme.spacing(2),
       margin: 0,
       fontSize: '1.25rem',
       lineHeight: '1.5rem',
@@ -46,13 +43,13 @@ const useStyles = makeStyles()({
       fontSize: '0.875rem',
       lineHeight: '1.25rem',
       fontWeight: 'initial',
-      paddingTop: variables.gap.small,
+      paddingTop: theme.spacing(1),
     },
   },
   grid: {
     alignItems: 'center',
     minHeight: 56,
-    padding: `${variables.gap.small}px 0`,
+    padding: theme.spacing(1, 0),
     position: 'relative',
     zIndex: 2,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
@@ -62,10 +59,10 @@ const useStyles = makeStyles()({
   image: {
     alignSelf: 'flex-start',
     flexShrink: 0,
-    margin: `0 ${variables.gap.big}px 0 ${-IMAGE_SPACE + variables.gap.big}px`,
+    margin: theme.spacing(0, 2, 0, (-IMAGE_SPACE + theme.spacing(2)) / 8),
     width: 40,
   },
-});
+}));
 
 /**
  * The list item component.
@@ -88,6 +85,10 @@ const Item = ({
   rightComponent,
   testId,
 }) => {
+  const theme = useTheme();
+  const glowHover = useMemo(() => ({
+    boxShadow: `${-theme.spacing(2.5)}px 0 0 ${colors.shade8}, ${theme.spacing(2.5)}px 0 0 ${colors.shade8}`,
+  }), [theme]);
   const { classes } = useStyles();
 
   const renderContent = useCallback((isNested = true) => {

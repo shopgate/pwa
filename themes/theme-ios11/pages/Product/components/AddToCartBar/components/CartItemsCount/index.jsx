@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import CheckIcon from '@shopgate/pwa-ui-shared/icons/CheckIcon';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Count from './components/Count';
 import connect from './connector';
-
-const { variables } = themeConfig;
 
 export const duration = 200;
 export const durationShort = 50;
@@ -33,7 +30,7 @@ export const transition = {
   },
 };
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     alignItems: 'center',
     display: 'flex',
@@ -45,7 +42,7 @@ const useStyles = makeStyles()(() => ({
   },
   check: {
     fontSize: '1.2rem',
-    paddingRight: variables.gap.small,
+    paddingRight: theme.spacing(1),
   },
 }));
 

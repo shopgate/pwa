@@ -9,19 +9,19 @@ import Headline from 'Components/Headline';
 import connect from './connector';
 import CategoryListDefault from './CategoryListDefault';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     background: colors.light,
   },
   grid: {
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      marginTop: variables.gap.big,
+      marginTop: theme.spacing(2),
       paddingBottom: 0,
     },
   },
-});
+}));
 
 /**
  * Mirrors legacy `shouldComponentUpdate` for `memo` (return `true` when props are equal).

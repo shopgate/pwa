@@ -9,7 +9,7 @@ import connect from './connector';
 
 const { colors, variables } = themeConfig;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   buttonLine: {
     float: 'right',
     marginTop: '14',
@@ -24,7 +24,7 @@ const useStyles = makeStyles()(() => ({
     overflow: 'hidden',
     border: 0,
     ...variables.buttonBase,
-    padding: `0 ${variables.gap.big}px 0`,
+    padding: theme.spacing(0, 2, 0),
     '&:disabled': {
       cursor: 'not-allowed',
     },

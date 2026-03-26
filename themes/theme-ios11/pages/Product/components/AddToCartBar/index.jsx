@@ -20,10 +20,10 @@ import AddMoreButton from './components/AddMoreButton';
 import CartItemsCount from './components/CartItemsCount';
 import connect from './connector';
 
-const { colors, variables, shadows } = themeConfig;
+const { colors, shadows } = themeConfig;
 const barHeight = 46;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     background: colors.light,
     boxShadow: shadows.cart.paymentBar,
@@ -33,7 +33,7 @@ const useStyles = makeStyles()(() => ({
     paddingBottom: 'var(--safe-area-inset-bottom)',
   },
   innerContainer: {
-    padding: variables.gap.small,
+    padding: theme.spacing(1),
   },
   base: {
     height: barHeight,
@@ -44,7 +44,7 @@ const useStyles = makeStyles()(() => ({
     display: 'flex',
     height: '100%',
     maxWidth: '60%',
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
   },
 }));
 

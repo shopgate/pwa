@@ -4,26 +4,26 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { LocationIcon, ResponsiveContainer } from '@shopgate/engage/components';
 import { BOPIS, CartItemProductChangeLocation } from '@shopgate/engage/locations';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { useCartItem } from '../CartItem';
 import CartItemCardReservationLabelChangeStore from './CartItemCardReservationLabelChangeStore';
 /** @typedef {import('@shopgate/engage/locations/locations.types').LocationAware} LocationAware */
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   address: {
     display: 'flex',
     flexFlow: 'row nowrap',
   },
   addressIcon: {
     fontSize: '1.25rem',
-    marginRight: themeVariables.gap.big * 1.25,
+    marginRight: theme.spacing(2.5),
     flexShrink: 0,
     color: 'var(--color-text-heigh-emphasis)',
   },
   titles: {
     marginTop: -3,
     marginBottom: -2,
-    paddingRight: themeVariables.gap.big * 2,
+    paddingRight: theme.spacing(4),
   },
   name: {
     fontSize: '0.85rem',
@@ -37,7 +37,7 @@ const useStyles = makeStyles()({
     fontSize: '0.75rem',
     color: themeColors.shade11,
   },
-});
+}));
 
 /**
  * Renders the cart reservation card label.

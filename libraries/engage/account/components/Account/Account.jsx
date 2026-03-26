@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, ResponsiveContainer } from '@shopgate/engage/components';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { i18n, useRoute } from '@shopgate/engage/core';
 import OrderHistory from '../../../orders/components/OrderHistory';
@@ -12,12 +12,10 @@ import connect from './Account.connector';
 import { TabContext } from '../../../components/Tabs/TabContext';
 import Profile from '../Profile';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   title: {
     fontSize: '1.5rem',
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
   },
   tabs: {
     width: '100%',
@@ -34,9 +32,9 @@ const useStyles = makeStyles()({
     zIndex: 100,
   },
   tabPanel: {
-    padding: variables.gap.small,
+    padding: theme.spacing(1),
   },
-});
+}));
 
 /**
  * The Tabs components

@@ -2,11 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BaseButton from '@shopgate/pwa-common/components/Button';
 import { makeStyles, cx } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Ripple from '../Ripple';
 import Button from '../Button';
-
-const buttonContentPadding = `0 ${themeConfig.variables.gap.big}px 0`;
 
 const BUTTON_TYPES = [
   'plain',
@@ -16,11 +13,11 @@ const BUTTON_TYPES = [
   'secondary',
 ];
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   contentWrapper: {
-    padding: buttonContentPadding,
+    padding: theme.spacing(0, 2, 0),
   },
-});
+}));
 
 /**
  * The ripple button component is a special derivation of the basic button component

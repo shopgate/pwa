@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import { RippleButton, I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { getTimeSlotDisplayText } from './time';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
     fontSize: '0.875rem',
-    padding: `0 ${variables.gap.big}px`,
+    padding: theme.spacing(0, 2),
     flexShrink: 0,
   },
   heading: {
@@ -26,12 +23,12 @@ const useStyles = makeStyles()({
   button: {
     fontSize: '0.625rem !important',
     letterSpacing: '0.05em',
-    padding: `${variables.gap.xsmall * 0.75}px 0 !important`,
+    padding: [theme.spacing(0.375, 0), '!important'],
     ' *': {
       padding: '0 !important',
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}

@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import { RippleButton, I18n, ArrowIcon } from '@shopgate/engage/components';
 import { useNavigation } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
-    padding: `${variables.gap.xbig}px ${variables.gap.big}px ${variables.gap.big}px ${variables.gap.big}px`,
+    padding: theme.spacing(4, 2, 2, 2),
   },
   button: {
     fontSize: '0.875rem !important',
@@ -24,11 +21,11 @@ const useStyles = makeStyles()({
     display: 'inline-block',
     fontSize: '1.375rem !important',
     alignSelf: 'center',
-    marginRight: variables.gap.xsmall,
+    marginRight: theme.spacing(0.5),
     marginLeft: -3,
     marginTop: -2,
   },
-});
+}));
 
 /**
  * A back button  for the desktop checkout pages.

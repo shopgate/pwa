@@ -15,7 +15,7 @@ import Position from './components/Position';
 import Item from './components/Item';
 import ContextMenuProvider from './ContextMenuProvider';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
   },
@@ -41,7 +41,7 @@ const useStyles = makeStyles()({
     position: 'absolute',
     top: 0,
     left: 0,
-    padding: `${themeConfig.variables.gap.small}px 0`,
+    padding: theme.spacing(1, 0),
     minWidth: 130,
     background: themeConfig.colors.light,
     borderRadius: 2,
@@ -51,7 +51,7 @@ const useStyles = makeStyles()({
     maxHeight: '30vh',
     overflowY: 'auto',
   },
-});
+}));
 
 /**
  * The Context Menu component.

@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   RippleButton, I18n, ArrowIcon,
 } from '@shopgate/engage/components';
@@ -10,12 +9,10 @@ import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { i18n, EUSERNOTFOUND } from '@shopgate/engage/core';
 import connect from './ForgotPassword.connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     flexGrow: 1,
-    padding: `${variables.gap.small * 3}px ${variables.gap.big}px`,
+    padding: theme.spacing(3, 2),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       width: '50%',
     },
@@ -24,7 +21,7 @@ const useStyles = makeStyles()({
     fontSize: '2.1875rem',
     lineHeight: 1,
     fontWeight: 500,
-    paddingBottom: variables.gap.big,
+    paddingBottom: theme.spacing(2),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       fontSize: '2rem',
       fontWeight: 'normal',
@@ -33,19 +30,19 @@ const useStyles = makeStyles()({
   subline: {
     fontSize: '1.125rem',
     color: 'var(--color-text-medium-emphasis)',
-    marginBottom: variables.gap.big,
+    marginBottom: theme.spacing(2),
     marginTop: 4,
   },
   form: {
     paddingTop: 24,
     ...StylePresets.OUTLINED_FORM_FIELDS,
     ' .simpleInput': {
-      paddingLeft: variables.gap.big,
+      paddingLeft: theme.spacing(2),
     },
   },
   buttonContainer: {
-    paddingTop: variables.gap.big * 2,
-    paddingBottom: variables.gap.big * 1.5,
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(3),
   },
   button: {
     width: '100%',
@@ -62,7 +59,7 @@ const useStyles = makeStyles()({
     },
   },
   resetInstructions: {
-    paddingTop: variables.gap.big,
+    paddingTop: theme.spacing(2),
     display: 'flex',
     alignItems: 'center',
   },
@@ -71,7 +68,7 @@ const useStyles = makeStyles()({
     color: 'var(--color-secondary)',
   },
   goBackButtonContainer: {
-    padding: `${variables.gap.big}px 0`,
+    padding: theme.spacing(2, 0),
   },
   goBackButton: {
     fontSize: '0.875rem !important',
@@ -85,11 +82,11 @@ const useStyles = makeStyles()({
     display: 'inline-block',
     fontSize: '1.375rem !important',
     alignSelf: 'center',
-    marginRight: variables.gap.xsmall,
+    marginRight: theme.spacing(0.5),
     marginLeft: -3,
     marginTop: -2,
   },
-});
+}));
 
 /**
  * The ForgotPassword component.

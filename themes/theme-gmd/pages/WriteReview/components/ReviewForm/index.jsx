@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import RatingScale from './components/RatingScale';
@@ -18,11 +17,9 @@ import {
 } from './constants';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
-    margin: `${variables.gap.big}px`,
+    margin: theme.spacing(2),
   },
 }));
 

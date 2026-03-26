@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 import { i18n } from '@shopgate/engage/core/helpers';
 import TimeIcon from '@shopgate/pwa-ui-shared/icons/TimeIcon';
@@ -11,11 +10,9 @@ import { useOrderDetails } from '../../hooks';
 import { Button } from '../../../components';
 import { ORDER_STATUS_SUBMITTED } from '../../constants';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
-    padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
+    padding: theme.spacing(2, 2, 0),
   },
   instructions: {},
   body: {
@@ -29,7 +26,7 @@ const useStyles = makeStyles()({
     fontSize: '1.25rem',
     fontWeight: 500,
     lineHeight: '1.5rem',
-    margin: `0 0 ${variables.gap.big}px`,
+    margin: theme.spacing(0, 0, 2),
     border: 0,
   },
   subline: {
@@ -51,7 +48,7 @@ const useStyles = makeStyles()({
   timeIcon: {
     marginRight: 8,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props

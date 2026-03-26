@@ -13,20 +13,17 @@ import { Link, Availability } from '@shopgate/engage/components';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
 import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import ShortDescription from '../ShortDescription';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   details: {
     lineHeight: 1.35,
     '&:not(:empty)': {
       padding: '12px 16px',
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
-        padding: variables.gap.big,
+        padding: theme.spacing(2),
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
@@ -58,14 +55,14 @@ const useStyles = makeStyles()({
   },
   itemPrice: {
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      paddingTop: variables.gap.small,
+      paddingTop: theme.spacing(1),
       marginTop: 'auto',
       fontSize: '1.125rem',
       '& ul > li': {
         flexGrow: 'inherit',
         lineHeight: '1.5rem',
         '&:first-of-type': {
-          marginRight: variables.gap.big,
+          marginRight: theme.spacing(2),
         },
       },
     },
@@ -76,7 +73,7 @@ const useStyles = makeStyles()({
   quantityHint: {
     paddingTop: 4,
   },
-});
+}));
 
 /**
  * The item details component.

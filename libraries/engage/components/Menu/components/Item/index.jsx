@@ -6,11 +6,11 @@ import Color from 'color';
 import { makeStyles, getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const useStyles = makeStyles()((_, { background }) => ({
+const useStyles = makeStyles()((theme, { background }) => ({
   item: {
     position: 'relative',
     whiteSpace: 'nowrap',
-    padding: `${themeConfig.variables.gap.big * 0.875}px ${themeConfig.variables.gap.big * 1.375}px`,
+    padding: theme.spacing(1.75, 2.75),
     lineHeight: 1,
     zIndex: 1,
     cursor: 'pointer',

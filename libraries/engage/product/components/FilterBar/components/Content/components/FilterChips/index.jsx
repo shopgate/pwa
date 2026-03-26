@@ -2,25 +2,23 @@ import React, { useCallback, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import { router } from '@virtuous/conductor';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Chip, ChipLayout } from '@shopgate/engage/components';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     overflow: 'auto',
-    padding: `0 ${variables.gap.small * 1.5}px`,
+    padding: theme.spacing(0, 1.5),
     width: '100%',
   },
   label: {
     color: 'var(--color-text-high-emphasis)',
   },
-});
+}));
 
 /**
  * The FilterChips component.

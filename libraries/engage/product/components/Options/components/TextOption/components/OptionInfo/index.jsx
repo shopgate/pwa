@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import { Grid, I18n } from '@shopgate/engage/components';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   info: {
-    marginTop: variables.gap.xsmall,
-    padding: `0 ${variables.gap.big}px`,
+    marginTop: theme.spacing(0.5),
+    padding: theme.spacing(0, 2),
   },
   required: {
     color: 'var(--color-text-medium-emphasis)',
@@ -20,7 +17,7 @@ const useStyles = makeStyles()({
     textAlign: 'right',
     fontSize: '0.825rem',
   },
-});
+}));
 
 /**
  * The text option info component

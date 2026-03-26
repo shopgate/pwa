@@ -5,10 +5,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { I18n } from '@shopgate/engage/components';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { makeStyles } from '@shopgate/engage/styles';
-
-const { variables } = themeConfig;
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 
 /**
  * The height of one row.
@@ -22,12 +19,12 @@ export const CHIP_ROW_HEIGHT = 34;
  */
 export const CHIP_MINIMUM_WIDTH = 60;
 
-const useStyles = makeStyles()((_theme, { maxRows }) => ({
+const useStyles = makeStyles()((theme, { maxRows }) => ({
   container: {
     position: 'relative',
     maxHeight: (CHIP_ROW_HEIGHT * maxRows) + 8,
     overflow: 'hidden',
-    marginBottom: variables.gap.small,
+    marginBottom: theme.spacing(1),
   },
   layout: {
     display: 'flex',
@@ -73,6 +70,7 @@ const ChipLayout = ({
   moreLabel,
   pathname,
 }) => {
+  const theme = useTheme();
   const { classes, cx } = useStyles({ maxRows });
   const containerRef = useRef(null);
   const layoutRef = useRef(null);
@@ -121,7 +119,7 @@ const ChipLayout = ({
         return true;
       }
 
-      const buttonSpaceRequired = moreBtnEl.clientWidth + variables.gap.big;
+      const buttonSpaceRequired = moreBtnEl.clientWidth + theme.spacing(2);
       const elementRight = containerEl.clientWidth -
         (element.offsetLeft + element.clientWidth);
       const spaceDiff = buttonSpaceRequired - elementRight;
@@ -140,7 +138,7 @@ const ChipLayout = ({
       element.setAttribute('style', 'display: none');
       return true;
     });
-  }, [maxContentHeight]);
+  }, [maxContentHeight, theme]);
 
   const processHiddenElementsDebounced = useMemo(
     () => debounce(processHiddenElements, 50),

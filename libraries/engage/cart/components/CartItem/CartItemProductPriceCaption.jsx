@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   ROPIS,
 //  BOPIS,
@@ -10,16 +9,14 @@ import {
 import { I18n } from '@shopgate/engage/components';
 import { useCartItemProduct } from './CartItem.hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   caption: {
     fontSize: '0.75rem',
     lineHeight: '0.875rem',
     color: 'var(--color-text-low-emphasis)',
-    paddingTop: variables.gap.xsmall,
+    paddingTop: theme.spacing(0.5),
   },
-});
+}));
 
 /**
  * @returns {JSX.Element}

@@ -13,7 +13,7 @@ import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
 const paneBase = {
   width: '50%',
@@ -24,7 +24,7 @@ const liveshoppingCardStyle = {
   margin: '5px 15px 10px',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   image: {
     ...paneBase,
   },
@@ -45,7 +45,7 @@ const useStyles = makeStyles()({
     fontWeight: '500',
     lineHeight: 1.15,
     marginTop: 1,
-    marginBottom: variables.gap.small * 0.5,
+    marginBottom: theme.spacing(0.5),
   },
   timer: {
     fontSize: '0.875rem',
@@ -64,7 +64,7 @@ const useStyles = makeStyles()({
       paddingLeft: 0,
     },
   },
-});
+}));
 
 /**
  * The LiveShoppingItem component.

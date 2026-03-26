@@ -17,7 +17,7 @@ const { variables } = commonThemeConfig;
 const { svgImages = {} } = themeConfig || {};
 const { emptyCart = '' } = svgImages || {};
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
@@ -44,12 +44,12 @@ const useStyles = makeStyles()({
   },
   buttonContainer: {
     flexGrow: '0',
-    padding: `${variables.emptyPage.buttonVerticalGap}px ${variables.gap.big}px`,
+    padding: theme.spacing(3, 2),
   },
   button: {
     width: '100%',
   },
-});
+}));
 
 /**
  * The Cart Empty component.

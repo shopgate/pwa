@@ -1,5 +1,4 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
-import { themeConfig } from '@shopgate/engage';
 import { FormBuilder, SurroundPortals } from '@shopgate/engage/components';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { StylePresets } from '@shopgate/engage/components/Form';
@@ -9,13 +8,11 @@ import { useCheckoutContext } from '../../hooks/common';
 import generateFormConfig from './GuestCheckoutOptIn.config';
 import { CHECKOUT_MARKETING_OPTIN } from '../../constants';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    padding: `0 ${variables.gap.big}px`,
+    padding: theme.spacing(0, 2),
     ...(!isIOSTheme() ? {
-      paddingBottom: variables.gap.xbig,
+      paddingBottom: theme.spacing(4),
     } : {}),
   },
   form: {
@@ -24,7 +21,7 @@ const useStyles = makeStyles()({
     },
     ...StylePresets.OUTLINED_FORM_FIELDS,
   },
-});
+}));
 
 /**
  * @returns {JSX}

@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { ResponsiveContainer, Logo } from '@shopgate/engage/components';
 import { GlobalLocationSwitcher, FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
@@ -10,9 +9,7 @@ import Search from './Search';
 import Cart from './Cart';
 import connect from './WideBar.connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     height: DESKTOP_MENU_BAR_HEIGHT,
     width: '100%',
@@ -27,13 +24,13 @@ const useStyles = makeStyles()({
     flexWrap: 'wrap',
     overflow: 'hidden',
     maxWidth: MAX_DESKTOP_WIDTH,
-    height: `calc(${DESKTOP_MENU_BAR_HEIGHT}px - ${variables.gap.small}px)`,
+    height: `calc(${DESKTOP_MENU_BAR_HEIGHT}px - ${theme.spacing(1)}px)`,
     justifyContent: 'flex-end',
     flexGrow: 1,
     padding: '0 12px',
   },
   logo: {
-    padding: `${variables.gap.small - 1}px 0`,
+    padding: `${theme.spacing(1) - 1}px 0`,
     display: 'block',
     cursor: 'pointer',
     flex: 0,
@@ -43,14 +40,14 @@ const useStyles = makeStyles()({
     },
   },
   right: {
-    padding: `${variables.gap.small - 1}px 0`,
+    padding: `${theme.spacing(1) - 1}px 0`,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginLeft: 'auto',
   },
-});
+}));
 
 /**
  * Renders a wide app bar for desktop and tablets.

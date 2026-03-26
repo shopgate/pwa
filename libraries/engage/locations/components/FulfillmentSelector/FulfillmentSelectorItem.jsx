@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
@@ -10,13 +9,11 @@ import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 
 /** @typedef {import('./FulfillmentSelector.types').Selection} Selection */
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   radioContainer: {
     display: 'flex',
     flexFlow: 'row nowrap',
-    padding: `${variables.gap.xsmall}px 0`,
+    padding: theme.spacing(0.5, 0),
   },
   disabled: {
     cursor: 'not-allowed',
@@ -26,7 +23,7 @@ const useStyles = makeStyles()({
     height: 24,
     flexShrink: 0,
     marginTop: '-1px',
-    marginRight: variables.gap.small,
+    marginRight: theme.spacing(1),
     color: 'var(--color-text-medium-emphasis)',
   },
   inactiveIconDisabled: {
@@ -34,7 +31,7 @@ const useStyles = makeStyles()({
     height: 24,
     flexShrink: 0,
     marginTop: '-1px',
-    marginRight: variables.gap.small,
+    marginRight: theme.spacing(1),
     color: 'var(--color-text-medium-emphasis)',
     opacity: 0.3,
   },
@@ -43,7 +40,7 @@ const useStyles = makeStyles()({
     height: 24,
     flexShrink: 0,
     marginTop: '-1px',
-    marginRight: variables.gap.small,
+    marginRight: theme.spacing(1),
     color: 'var(--color-primary)',
   },
   activeIconDisabled: {
@@ -51,7 +48,7 @@ const useStyles = makeStyles()({
     height: 24,
     flexShrink: 0,
     marginTop: '-1px',
-    marginRight: variables.gap.small,
+    marginRight: theme.spacing(1),
     color: 'var(--color-primary)',
     opacity: 0.3,
   },
@@ -62,7 +59,7 @@ const useStyles = makeStyles()({
     flexGrow: 1,
     color: 'var(--color-text-high-emphasis)',
   },
-});
+}));
 
 /**
  * Renders a fulfillment selector radio item.

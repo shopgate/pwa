@@ -1,20 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import Underline from './components/Underline';
 import ErrorText from './components/ErrorText';
 import Placeholder from './components/Placeholder';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   formElement: {
     position: 'relative',
-    paddingBottom: themeConfig.variables.gap.big,
+    paddingBottom: theme.spacing(2),
     width: '100%',
   },
-});
+}));
 
 /**
  * A component that provides a styled form element in material design.

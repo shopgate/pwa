@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { I18n, RatingNumber } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import AverageRating from '../AverageRating';
 import WriteReviewLink from '../WriteReviewLink';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     fontWeight: 500,
     margin: 0,
@@ -17,23 +15,23 @@ const useStyles = makeStyles()({
   withTopGapContainer: {
     fontWeight: 500,
     margin: 0,
-    marginTop: variables.gap.xbig,
+    marginTop: theme.spacing(4),
   },
   reviewsLine: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    padding: `0 0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 0, 1),
     marginBottom: -2,
   },
   averageRatingNumber: {
     color: 'var(--color-primary)',
-    marginLeft: variables.gap.small,
+    marginLeft: theme.spacing(1),
   },
   averageRatingText: {
-    marginLeft: variables.gap.big,
+    marginLeft: theme.spacing(2),
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

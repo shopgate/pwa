@@ -2,7 +2,6 @@ import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/engage';
 import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { withCurrentProduct } from '@shopgate/engage/core/hocs';
@@ -11,11 +10,9 @@ import { makeStyles } from '@shopgate/engage/styles';
 import UnitQuantityPicker from './UnitQuantityPicker';
 import connect from './ProductUnitQuantityPicker.connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
   },
   title: {
     fontSize: '1rem',
@@ -28,7 +25,7 @@ const useStyles = makeStyles()({
   pickerBig: {
     width: 170,
   },
-});
+}));
 
 /**
  * Renders the quantity picker enriched with current product data.

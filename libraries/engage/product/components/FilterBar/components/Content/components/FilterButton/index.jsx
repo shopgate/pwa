@@ -8,7 +8,7 @@ import {
 
 const { variables } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     color: 'inherit',
     fontSize: '1.5rem',
@@ -29,7 +29,7 @@ const useStyles = makeStyles()({
     fontSize: '0.875rem',
     fontWeight: '500',
     lineHeight: 1,
-    paddingRight: variables.gap.small,
+    paddingRight: theme.spacing(1),
   },
   filterButtonRipple: {
     display: 'flex',
@@ -40,7 +40,7 @@ const useStyles = makeStyles()({
     margin: 0,
     padding: '6px 10px',
   },
-});
+}));
 
 /**
  * The Filter Bar Content Filter Button component.

@@ -9,7 +9,7 @@ import Icon from './components/Icon';
 const { svgImages = {} } = themeConfig || {};
 const { noResultsImage = '' } = svgImages || {};
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     alignItems: 'center',
     display: 'flex',
@@ -30,10 +30,10 @@ const useStyles = makeStyles()({
     marginTop: 30,
   },
   text: {
-    marginTop: themeConfig.variables.gap.big,
-    padding: `0 ${themeConfig.variables.gap.big}px`,
+    marginTop: theme.spacing(2),
+    padding: theme.spacing(0, 2),
   },
-});
+}));
 
 /**
  * The NoResults component.

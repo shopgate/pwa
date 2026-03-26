@@ -11,17 +11,17 @@ import connect from './RelationsSheet.connector';
 
 const { variables } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   showMore: {
     position: 'absolute !important',
-    top: `-${variables.gap.small / 2}`,
+    top: -theme.spacing(0.5),
     right: 0,
-    padding: `${variables.gap.small / 2}px 0 !important`,
+    padding: [theme.spacing(0.5, 0), '!important'],
   },
   sheet: {
     maxHeight: `calc(100vh - ${variables.navigator.height}px)`,
   },
-});
+}));
 
 /**
  * Shows a Sheet Drawer with all related products.

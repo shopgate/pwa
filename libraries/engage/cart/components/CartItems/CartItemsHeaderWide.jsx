@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './CartItemsHeaderWide.connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   header: {
     display: 'flex',
     flexDirection: 'row',
@@ -16,7 +13,7 @@ const useStyles = makeStyles()({
     fontWeight: 500,
     fontSize: '1rem',
     lineHeight: '1.5rem',
-    padding: `0 ${variables.gap.big}px ${variables.gap.small}px ${variables.gap.big}px`,
+    padding: theme.spacing(0, 2, 1, 2),
   },
   column: {
     display: 'flex',
@@ -25,10 +22,10 @@ const useStyles = makeStyles()({
     flexShrink: 0,
     flexGrow: 1,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     textAlign: 'center',
     ':last-child': {
-      paddingRight: variables.gap.small,
+      paddingRight: theme.spacing(1),
     },
   },
   priceColumnWide: {
@@ -38,7 +35,7 @@ const useStyles = makeStyles()({
   imageColumn: {
     flexGrow: 0,
     width: 120,
-    margin: `0 ${variables.gap.small}px 0 ${variables.gap.big}px`,
+    margin: theme.spacing(0, 1, 0, 2),
     paddingLeft: 0,
   },
   detailsColumn: {
@@ -48,7 +45,7 @@ const useStyles = makeStyles()({
     flexShrink: 1,
     flexGrow: 3,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     textAlign: 'center',
   },
   locationColumn: {
@@ -58,10 +55,10 @@ const useStyles = makeStyles()({
     flexShrink: 0,
     flexGrow: 2,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     textAlign: 'center',
     ':last-child': {
-      paddingRight: variables.gap.small,
+      paddingRight: theme.spacing(1),
     },
   },
   quantityPickerColumn: {
@@ -71,10 +68,10 @@ const useStyles = makeStyles()({
     flexShrink: 0,
     flexGrow: 1,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     textAlign: 'center',
     ':last-child': {
-      paddingRight: variables.gap.small,
+      paddingRight: theme.spacing(1),
     },
     ' > *': {
       width: 140,
@@ -88,19 +85,19 @@ const useStyles = makeStyles()({
     flexShrink: 0,
     flexGrow: 1,
     flexBasis: 0,
-    padding: `0 ${variables.gap.small}px`,
+    padding: theme.spacing(0, 1),
     textAlign: 'center',
     ':last-child': {
-      paddingRight: variables.gap.small,
+      paddingRight: theme.spacing(1),
     },
     ' > *': {
       textAlign: 'center',
     },
   },
   contextMenuColumn: {
-    width: variables.gap.xbig + variables.gap.small,
+    width: theme.spacing(4) + theme.spacing(1),
   },
-});
+}));
 
 /**
  * The CartItemsHeaderWide component.

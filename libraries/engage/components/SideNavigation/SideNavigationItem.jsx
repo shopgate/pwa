@@ -3,15 +3,12 @@ import classNames from 'classnames';
 import Link from '@shopgate/pwa-common/components/Link';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';
 import { useSideNavigation } from './SideNavigation.hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()((_, { level }) => ({
+const useStyles = makeStyles()((theme, { level }) => ({
   indentation: {
-    paddingLeft: level * variables.gap.big,
+    paddingLeft: level * theme.spacing(2),
   },
   list: {
     position: 'relative',
@@ -21,7 +18,7 @@ const useStyles = makeStyles()((_, { level }) => ({
     display: 'flex',
     textAlign: 'left',
     outline: 0,
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     position: 'relative',
     width: '100%',
     lineHeight: '1.45em',

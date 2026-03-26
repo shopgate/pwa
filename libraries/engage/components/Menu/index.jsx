@@ -9,7 +9,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Position from './components/Position';
 import Item from './components/Item';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   overlay: {
     position: 'fixed',
     top: 0,
@@ -22,7 +22,7 @@ const useStyles = makeStyles()(() => ({
     position: 'absolute',
     top: 0,
     left: 0,
-    padding: `${themeConfig.variables.gap.small}px 0`,
+    padding: theme.spacing(1, 0),
     minWidth: 130,
     background: themeConfig.colors.light,
     borderRadius: 2,

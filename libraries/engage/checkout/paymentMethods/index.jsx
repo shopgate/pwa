@@ -9,7 +9,6 @@ import React, {
 import { connect, useStore } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { getPaymentMethods } from '../selectors/payment';
 import { getCheckoutOrder } from '../selectors/order';
 import CheckoutContext from '../providers/CheckoutProvider.context';
@@ -42,13 +41,11 @@ const mapDispatchToProps = dispatch => ({
   fetchOrder: () => dispatch(fetchCheckoutOrder()),
 });
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   headline: {
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    margin: `0 0 ${variables.gap.small}px 0`,
+    margin: theme.spacing(0, 0, 1, 0),
     marginLeft: 16,
     marginRight: 8,
     color: 'var(--color-text-high-emphasis)',
@@ -65,7 +62,7 @@ const useStyles = makeStyles()({
     display: 'flex',
     flexDirection: 'row',
   },
-});
+}));
 
 /**
  * PaymentMethodProvider

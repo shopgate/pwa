@@ -2,10 +2,10 @@ import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import connector from './StoreListSearchRadius.connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   selectContainer: {
     position: 'relative',
     display: 'flex',
@@ -17,7 +17,7 @@ const useStyles = makeStyles()({
       position: 'absolute',
       display: 'block',
       top: '50%',
-      right: themeVariables.gap.small * 1.5,
+      right: theme.spacing(1.5),
       transform: 'translate3d(0, -25%, 0)',
       width: 5,
       height: 5,
@@ -28,7 +28,7 @@ const useStyles = makeStyles()({
   select: {
     appearance: 'none',
     border: `1px solid ${themeColors.shade7}`,
-    padding: `0 ${themeVariables.gap.bigger + themeVariables.gap.small * 1.5}px 0 ${themeVariables.gap.big * 0.75}px`,
+    padding: theme.spacing(0, 4, 0, 1.5),
     color: themeColors.shade11,
     fontSize: '1rem',
     borderRadius: 4,
@@ -36,7 +36,7 @@ const useStyles = makeStyles()({
     outline: 0,
   },
   option: {},
-});
+}));
 
 /**
  * @param {Object} props The component props

@@ -2,11 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()((_theme, { columns }) => {
+const useStyles = makeStyles()((theme, { columns }) => {
   const grid = {
     [responsiveMediaQuery('<=xs')]: {
       '&:not(:empty)': {
@@ -14,7 +11,7 @@ const useStyles = makeStyles()((_theme, { columns }) => {
       },
     },
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      padding: variables.gap.big,
+      padding: theme.spacing(2),
     },
     background: 'var(--page-background-color)',
   };
@@ -35,10 +32,10 @@ const useStyles = makeStyles()((_theme, { columns }) => {
         },
         [responsiveMediaQuery('>xs', { webOnly: true })]: {
           '&:nth-of-type(even)': {
-            padding: `0 0 ${variables.gap.big}px ${variables.gap.small}px`,
+            padding: theme.spacing(0, 0, 2, 1),
           },
           '&:nth-of-type(odd)': {
-            padding: `0 ${variables.gap.small}px ${variables.gap.big}px 0`,
+            padding: theme.spacing(0, 1, 2, 0),
           },
           '&:nth-of-type(2n+1):nth-last-of-type(-n+2), &:nth-of-type(2n+1):nth-last-of-type(-n+2) ~ li': {
             paddingBottom: 0,

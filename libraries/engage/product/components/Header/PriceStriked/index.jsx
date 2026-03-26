@@ -17,9 +17,9 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   placeholder: {
     height: 16,
     width: '70%',
@@ -29,13 +29,13 @@ const useStyles = makeStyles()({
   msrp: {
     color: colors.shade11,
     fontSize: '0.875rem',
-    marginRight: variables.gap.small / 2,
+    marginRight: theme.spacing(0.5),
   },
   msrpStriked: {
     display: 'inline',
     fontSize: '0.875rem',
   },
-});
+}));
 
 /**
  * The PriceStriked component.

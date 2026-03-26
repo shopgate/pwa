@@ -6,12 +6,9 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
-const { colors, variables } = themeConfig;
-const padYTop = (variables.gap.big * 0.75) - 1;
-const padX = variables.gap.big * 0.6;
-const padYBottom = (variables.gap.big * 0.75) + 1;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   button: {
     position: 'absolute',
     right: 0,
@@ -26,7 +23,7 @@ const useStyles = makeStyles()(() => ({
     width: '100%',
     outline: 0,
     transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    padding: `${padYTop}px ${padX}px ${padYBottom}px`,
+    padding: `${theme.spacing(1.5) - 1}px ${theme.spacing(1.2)}px ${theme.spacing(1.5) + 1}px`,
     ':disabled': {
       cursor: 'not-allowed',
     },

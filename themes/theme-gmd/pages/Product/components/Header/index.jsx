@@ -7,15 +7,15 @@ import { ResponsiveContainer, SurroundPortals } from '@shopgate/engage/component
 import { Rating } from '@shopgate/engage/product/components';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import CTAButtons from './components/CTAButtons';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   content: {
     position: 'relative',
-    padding: themeVariables.gap.big,
+    padding: theme.spacing(2),
     borderTop: `${themeColors.placeholder} 2px solid`,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       borderTop: 'none',

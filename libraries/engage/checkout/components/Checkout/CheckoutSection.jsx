@@ -3,18 +3,15 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Card, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CheckoutSectionInfo from './CheckoutSectionInfo';
 import CheckoutSectionMessages from './CheckoutSectionMessages';
 import { i18n } from '../../../core/helpers/i18n';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   headline: {
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    margin: `0 0 ${variables.gap.small}px 0`,
+    margin: theme.spacing(0, 0, 1, 0),
     color: 'var(--color-text-high-emphasis)',
     textTransform: 'none',
   },
@@ -24,10 +21,10 @@ const useStyles = makeStyles()({
     fontSize: 15,
     width: '100%',
     overflow: 'inherit !important',
-    marginBottom: variables.gap.big,
+    marginBottom: theme.spacing(2),
     boxShadow: 'none',
     background: 'var(--color-background-accent)',
-    padding: `${variables.gap.small}px ${variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
     margin: 0,
   },
   cardWithForm: {
@@ -37,12 +34,12 @@ const useStyles = makeStyles()({
   },
   table: {
     ' td': {
-      padding: `${variables.gap.xsmall}px 0`,
+      padding: theme.spacing(0.5, 0),
     },
     ' td:last-child': {
       textAlign: 'right',
       whiteSpace: 'pre-wrap',
-      paddingLeft: variables.gap.xsmall,
+      paddingLeft: theme.spacing(0.5),
     },
     ' tr:nth-last-of-type(2) td': {
       paddingBottom: 8,
@@ -67,9 +64,9 @@ const useStyles = makeStyles()({
     paddingTop: 8,
   },
   labelWithInfoIcon: {
-    paddingRight: variables.gap.small,
+    paddingRight: theme.spacing(1),
   },
-});
+}));
 
 /**
  * CheckoutSection component

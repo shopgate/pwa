@@ -1,13 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import StoreListSearch from '../StoreList/StoreListSearch';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    paddingBottom: themeVariables.gap.small,
+    paddingBottom: theme.spacing(1),
   },
-});
+}));
 
 /**
  * @returns {JSX}

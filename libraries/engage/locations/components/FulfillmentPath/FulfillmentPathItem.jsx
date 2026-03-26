@@ -5,13 +5,13 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '../../../core';
 import { RadioGroupItem } from '../../../components';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   radioItem: {
     display: 'flex',
     alignItems: 'center',
-    padding: `${variables.gap.big}px 0`,
+    padding: theme.spacing(2, 0),
     boxShadow: `0 1px 0 ${colors.darkGray}`,
   },
   itemLabel: {
@@ -25,10 +25,10 @@ const useStyles = makeStyles()({
     flex: 1,
     fontSize: '1rem',
     lineHeight: 1.5,
-    marginLeft: variables.gap.small,
-    marginBottom: variables.gap.small,
+    marginLeft: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
-});
+}));
 
 /**
  * Renders a RadioItem element to be used by the FulfillmentPathSelector component.

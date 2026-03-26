@@ -6,14 +6,14 @@ import { CategoryImage } from '@shopgate/engage/category';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   sheetList: {
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       ' > li': {
         boxShadow: 'none !important',
-        padding: `${variables.gap.small}px 0`,
+        padding: theme.spacing(1, 0),
         '&:first-of-type': {
           paddingTop: 0,
         },
@@ -34,11 +34,11 @@ const useStyles = makeStyles()({
         position: 'inherit',
         width: 'inherit !important',
         maxWidth: 'inherit !important',
-        height: variables.gap.xxbig,
+        height: theme.spacing(8),
       },
     },
   },
-});
+}));
 
 /**
  * The CategoryListDefault component

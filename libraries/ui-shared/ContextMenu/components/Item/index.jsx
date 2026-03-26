@@ -9,7 +9,7 @@ import { useContextMenu } from '../../ContextMenu.hooks';
 
 const CLOSE_DELAY = 250;
 
-const useStyles = makeStyles()((_t, { disabled }) => {
+const useStyles = makeStyles()((theme, { disabled }) => {
   let background = themeConfig.colors.shade8;
   const customPropColor = getCSSCustomProp('--color-primary');
 
@@ -22,7 +22,7 @@ const useStyles = makeStyles()((_t, { disabled }) => {
       position: 'relative',
       whiteSpace: 'nowrap',
       marginBottom: 2,
-      padding: `${themeConfig.variables.gap.big * 0.875}px ${themeConfig.variables.gap.big * 1.375}px`,
+      padding: theme.spacing(1.75, 2.75),
       lineHeight: 1,
       zIndex: 1,
       color: disabled ? 'var(--color-text-low-emphasis)' : 'inherits',

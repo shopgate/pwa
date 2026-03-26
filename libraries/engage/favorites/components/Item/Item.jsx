@@ -47,7 +47,6 @@ import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import AvailableText from '@shopgate/pwa-ui-shared/Availability';
@@ -61,8 +60,6 @@ import {
   FAVORITES_NOTES,
   FAVORITES_QUANTITY,
 } from '../../constants/Portals';
-
-const { variables } = themeConfig;
 
 /**
  * @return {Function} The extended component props.
@@ -94,7 +91,7 @@ const mapDispatchToProps = dispatch => ({
   openCommentDialog: (productId, listId) => dispatch(openFavoritesCommentDialog(productId, listId)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     position: 'relative',
@@ -152,7 +149,7 @@ const useStyles = makeStyles()({
     fontSize: '0.875rem',
     lineHeight: '0.875rem',
     color: 'var(--color-text-low-emphasis)',
-    padding: `${variables.gap.xsmall}px 0`,
+    padding: theme.spacing(0.5, 0),
   },
   titleWrapper: {
     display: 'flex',
@@ -173,7 +170,7 @@ const useStyles = makeStyles()({
     flexShrink: 0,
     alignItems: 'flex-start',
   },
-});
+}));
 
 /**
  * Favorite Item component

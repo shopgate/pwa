@@ -7,7 +7,7 @@ import Item from './components/Item';
 
 const { shadows, variables } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     color: 'inherit',
     outline: 0,
@@ -52,10 +52,10 @@ const useStyles = makeStyles()({
     width: '100%',
     color: 'var(--color-text-high-emphasis)',
     ':first-of-type': {
-      marginTop: variables.gap.big / 2,
+      marginTop: theme.spacing(1),
     },
     ':last-child': {
-      marginBottom: variables.gap.big / 2,
+      marginBottom: theme.spacing(1),
     },
   },
   selectItemSelected: {
@@ -64,7 +64,7 @@ const useStyles = makeStyles()({
   selectBox: {
     flexGrow: 2,
   },
-});
+}));
 
 /**
  * The Sort component.

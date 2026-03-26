@@ -2,13 +2,12 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import Button from '@shopgate/pwa-ui-shared/Button';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import classNames from 'classnames';
 
 const borderColor = 'rgba(0,0,0,0.2)';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     '&& > *': {
       color: 'var(--color-button-dialog-ios, #1a73e8)',
@@ -21,7 +20,7 @@ const useStyles = makeStyles()({
       paddingBottom: 10,
     },
     marginBottom: -1,
-    marginRight: `-${themeVariables.gap.small / 2}px`,
+    marginRight: theme.spacing(-0.5),
     '&:not(:last-child)': {
       borderRadius: '0 !important',
       borderRight: `0.5px solid ${borderColor}`,
@@ -38,7 +37,7 @@ const useStyles = makeStyles()({
     textOverflow: 'ellipsis',
     display: 'block',
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

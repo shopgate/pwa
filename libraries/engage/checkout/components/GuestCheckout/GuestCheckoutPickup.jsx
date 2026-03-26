@@ -1,16 +1,13 @@
 import React, { useMemo } from 'react';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import { GUEST_CHECKOUT_PATTERN } from '../../constants/routes';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import { ADDRESS_TYPE_PICKUP } from '../../constants';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+    padding: theme.spacing(0, 2, 2),
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
@@ -21,7 +18,7 @@ const useStyles = makeStyles()({
     fontSize: 15,
     margin: '8px 0 12px 0',
   },
-});
+}));
 
 /**
  * GuestCheckoutPickup

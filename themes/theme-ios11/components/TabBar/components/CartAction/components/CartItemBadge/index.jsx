@@ -1,13 +1,10 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import connect from './connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
     background: 'var(--tab-bar-item-badge-background)',
@@ -16,15 +13,15 @@ const useStyles = makeStyles()({
     lineHeight: 1.5,
     fontWeight: 'bold',
     borderRadius: 'var(--tab-bar-item-badge-border-radius)',
-    height: variables.gap.big,
+    height: theme.spacing(2),
     top: 'var(--tab-bar-item-badge-top)',
-    paddingLeft: variables.gap.small / 2,
-    paddingRight: variables.gap.small / 2,
-    minWidth: variables.gap.big,
+    paddingLeft: theme.spacing(0.5),
+    paddingRight: theme.spacing(0.5),
+    minWidth: theme.spacing(2),
     transform: 'translateX(-50%)',
     left: 'var(--tab-bar-item-badge-left)',
   },
-});
+}));
 
 /**
  * The cart item badge component.

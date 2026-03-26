@@ -1,17 +1,14 @@
 import React, { useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 
-const outerGap = themeConfig.variables.gap.small;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'absolute',
-    margin: outerGap,
+    margin: theme.spacing(1),
   },
-});
+}));
 
 /**
  * The Context Menu Position component.
@@ -19,6 +16,8 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const Position = ({ children, offset }) => {
+  const theme = useTheme();
+  const gap = theme.spacing(1);
   const { classes } = useStyles();
   const elementRef = useRef(null);
 
@@ -35,14 +34,13 @@ const Position = ({ children, offset }) => {
     const bounds = child.getBoundingClientRect();
     const width = window.innerWidth;
     const height = window.innerHeight;
-    const gap = outerGap;
 
     const left = clamp(offset.left, 0, width - bounds.width - (gap * 2));
     const top = clamp(offset.top - gap, 0, height - bounds.height - (gap * 2));
 
     elementRef.current.style.left = `${left}px`;
     elementRef.current.style.top = `${top}px`;
-  }, [offset]);
+  }, [offset, gap]);
 
   return (
     <div ref={elementRef} className={classes.container}>

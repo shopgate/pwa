@@ -1,6 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   I18n, ContextMenu,
 } from '@shopgate/engage/components';
@@ -11,26 +10,22 @@ import {
 } from '../../constants';
 import { useFulfillmentState } from '../../locations.hooks';
 
-const { variables } = themeConfig;
-const menuToggleSize = variables.gap.big * 2;
-const menuToggleFontSize = variables.gap.big * 1.5;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   menuToggleContainer: {
-    margin: variables.gap.small,
+    margin: theme.spacing(1),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       marginLeft: 0,
     },
   },
   menuToggleButton: {
-    height: menuToggleSize,
-    width: menuToggleSize,
-    fontSize: menuToggleFontSize,
+    height: theme.spacing(4),
+    width: theme.spacing(4),
+    fontSize: theme.spacing(3),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
-});
+}));
 
 /**
  * The CartContextMenuChangeFulfillmentContent component renders a context menu which enables

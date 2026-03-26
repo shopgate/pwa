@@ -1,17 +1,14 @@
 import React from 'react';
 import FavoriteLists from '@shopgate/engage/favorites/components/Lists';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     flexGrow: 1,
-    paddingTop: variables.gap.xsmall,
-    paddingBottom: variables.gap.xxbig,
+    paddingTop: theme.spacing(0.5),
+    paddingBottom: theme.spacing(8),
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

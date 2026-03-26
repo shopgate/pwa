@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import AverageRating from '../AverageRating';
 import WriteReviewLink from '../WriteReviewLink';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     fontWeight: 500,
     margin: 0,
@@ -18,11 +16,11 @@ const useStyles = makeStyles()({
     justifyContent: 'space-between',
     flexDirection: 'column',
     alignItems: 'center',
-    marginTop: variables.gap.small,
-    padding: `0 ${variables.gap.small}px`,
+    marginTop: theme.spacing(1),
+    padding: theme.spacing(0, 1),
     textAlign: 'center',
   },
-});
+}));
 
 /**
  * @return {JSX.Element}

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { ResponsiveContainer, RippleButton } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartItems } from '@shopgate/engage/cart';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useRoute } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 import { convertLineItemsToCartItems, isReserveOnlyOrder, isDirectShipOnlyOrder } from '../../helpers';
@@ -17,9 +16,7 @@ import CheckoutConfirmationOrderSummary from './CheckoutConfirmationOrderSummary
 import { SupplementalContent } from '../SupplementalContent';
 import connect from './CheckoutConfirmation.connector';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
@@ -33,7 +30,7 @@ const useStyles = makeStyles()({
   side: {
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       marginTop: 134,
-      marginLeft: variables.gap.big * -1,
+      marginLeft: -theme.spacing(2),
       flex: 0.45,
     },
   },
@@ -41,13 +38,13 @@ const useStyles = makeStyles()({
     marginBottom: 32,
   },
   container: {
-    padding: `${variables.gap.big}px ${variables.gap.small * 1.5}px 0 ${variables.gap.xbig}px`,
+    padding: theme.spacing(2, 1.5, 0, 4),
     [responsiveMediaQuery('<sm')]: {
-      paddingLeft: variables.gap.big,
+      paddingLeft: theme.spacing(2),
     },
   },
   backButtonContainer: {
-    paddingLeft: variables.gap.big,
+    paddingLeft: theme.spacing(2),
     display: 'none',
     [responsiveMediaQuery('>=sm', { webOnly: true })]: {
       display: 'block',
@@ -58,10 +55,10 @@ const useStyles = makeStyles()({
     fontWeight: 'normal',
     margin: 0,
     lineHeight: '2.25rem',
-    paddingBottom: variables.gap.xbig,
+    paddingBottom: theme.spacing(4),
   },
   instructions: {
-    marginBottom: variables.gap.xbig,
+    marginBottom: theme.spacing(4),
   },
   body: {
     border: 0,
@@ -73,7 +70,7 @@ const useStyles = makeStyles()({
     fontSize: '1.25rem',
     fontWeight: 500,
     lineHeight: '1.5rem',
-    margin: `0 0 ${variables.gap.big}px`,
+    margin: theme.spacing(0, 0, 2),
     border: 0,
   },
   button: {
@@ -85,12 +82,12 @@ const useStyles = makeStyles()({
     },
   },
   buttonWrapper: {
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
   },
   supplementalWrapper: {
-    padding: `${variables.gap.xbig}px ${variables.gap.big}px`,
+    padding: theme.spacing(4, 2),
   },
-});
+}));
 
 /**
  * CheckoutConfirmation component

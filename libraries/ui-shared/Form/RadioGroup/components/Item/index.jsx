@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { camelCase } from 'lodash';
 import { I18n, CheckedIcon, UncheckedIcon } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     marginLeft: -1,
@@ -24,13 +23,13 @@ const useStyles = makeStyles()({
     flex: 1,
     fontSize: '1rem',
     lineHeight: 1.5,
-    marginLeft: themeConfig.variables.gap.small,
-    marginBottom: themeConfig.variables.gap.small,
+    marginLeft: theme.spacing(1),
+    marginBottom: theme.spacing(1),
   },
   active: {
     color: 'var(--color-primary)',
   },
-});
+}));
 
 /**
  * RadioItem component.

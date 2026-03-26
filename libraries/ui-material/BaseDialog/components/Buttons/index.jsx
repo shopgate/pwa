@@ -2,15 +2,14 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import Button from '@shopgate/pwa-ui-shared/Button';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
-    marginRight: `-${themeConfig.variables.gap.small / 2}px`,
+    marginRight: theme.spacing(-0.5),
     textAlign: 'right',
   },
-});
+}));
 
 /**
  * Buttons component.

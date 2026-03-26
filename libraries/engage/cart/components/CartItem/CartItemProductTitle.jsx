@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   Grid, I18n, ContextMenu, SurroundPortals, TextLink,
 } from '@shopgate/engage/components';
@@ -19,11 +18,7 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import { ConditionalWrapper } from '../../../components';
 
-const { variables } = themeConfig;
-const menuToggleSize = variables.gap.big * 2;
-const menuToggleFontSize = variables.gap.big * 1.5;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   title: {
     fontWeight: 500,
     lineHeight: 1.125,
@@ -31,21 +26,21 @@ const useStyles = makeStyles()({
     hyphens: 'auto',
   },
   menuContainer: {
-    marginTop: `-${variables.gap.big}px`,
-    marginRight: `-${variables.gap.big}px`,
+    marginTop: theme.spacing(-2),
+    marginRight: theme.spacing(-2),
   },
   menuToggleContainer: {
-    margin: variables.gap.small,
+    margin: theme.spacing(1),
   },
   menuToggleButton: {
-    height: menuToggleSize,
-    width: menuToggleSize,
-    fontSize: menuToggleFontSize,
+    height: theme.spacing(4),
+    width: theme.spacing(4),
+    fontSize: theme.spacing(3),
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
   },
-});
+}));
 
 /**
  * The Cart Product Title component.

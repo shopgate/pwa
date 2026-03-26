@@ -2,16 +2,13 @@ import React from 'react';
 import { useRoute } from '@shopgate/engage/core';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     fontSize: '1.5rem',
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
   },
-});
+}));
 
 /**
  * @returns {JSX}

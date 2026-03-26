@@ -12,16 +12,13 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { getProductRoute, ProductImage } from '@shopgate/engage/product';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { themeConfig } from '@shopgate/engage';
 import { BackInStockButton } from '@shopgate/engage/back-in-stock/components';
 import {
   getThemeSettings, i18n,
 } from '@shopgate/engage/core';
 import { useBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     position: 'relative',
@@ -56,7 +53,7 @@ const useStyles = makeStyles()({
     fontSize: '0.875rem',
     lineHeight: '0.875rem',
     color: 'var(--color-text-low-emphasis)',
-    padding: `${variables.gap.xsmall}px 0`,
+    padding: theme.spacing(0.5, 0),
     textAlign: 'right',
   },
   titleContainer: {
@@ -80,7 +77,7 @@ const useStyles = makeStyles()({
   ripple: {
     minWidth: '17px',
   },
-});
+}));
 
 /**
  * Renders on single Back in Stock subscription

@@ -4,17 +4,14 @@ import { connect } from 'react-redux';
 import { InfoIcon } from '@shopgate/engage/components';
 import { nl2br, showModal as showModalAction } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const mapDispatchToProps = {
   showModal: showModalAction,
 };
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   textWrapper: {
-    paddingTop: variables.gap.xsmall,
+    paddingTop: theme.spacing(0.5),
     fontSize: '0.75rem',
     color: 'var(--color-state-alert)',
   },
@@ -28,7 +25,7 @@ const useStyles = makeStyles()({
       fontSize: '1.375rem',
     },
   },
-});
+}));
 
 /**
  * @param {Object} props The components props
@@ -52,6 +49,7 @@ const CheckoutSectionInfo = ({ text, showModal, renderIcon }) => {
 
   if (!renderIcon) {
     return (
+      // eslint-disable-next-line react/no-danger
       <div className={classes.textWrapper} dangerouslySetInnerHTML={{ __html: nl2br(text) }} />
     );
   }

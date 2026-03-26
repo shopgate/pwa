@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CartItems } from '@shopgate/engage/cart';
 import {
   CheckoutConfirmationPickUpContact,
@@ -15,14 +14,12 @@ import { useOrderDetails } from '../../hooks';
 import OrderDetailsOrderHeader from './OrderDetailsOrderHeader';
 import OrderDetailsOrderPickupLocation from './OrderDetailsOrderPickupLocation';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    padding: `${variables.gap.big}px 0`,
+    padding: theme.spacing(2, 0),
   },
   contactsWrapper: {
-    paddingBottom: variables.gap.big,
+    paddingBottom: theme.spacing(2),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       display: 'flex',
     },
@@ -32,19 +29,19 @@ const useStyles = makeStyles()({
       width: '50%',
       display: 'flex',
       flexDirection: 'column',
-      paddingLeft: variables.gap.small,
-      paddingRight: variables.gap.small,
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1),
       ':first-child': {
-        paddingLeft: variables.gap.big,
+        paddingLeft: theme.spacing(2),
       },
       ':last-child': {
-        paddingRight: variables.gap.big,
+        paddingRight: theme.spacing(2),
       },
     },
   },
   cartWrapper: {
-    paddingTop: variables.gap.big,
-    paddingBottom: variables.gap.big,
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
   },
   summaryWrapper: {
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
@@ -59,12 +56,12 @@ const useStyles = makeStyles()({
     },
   },
   supplemental: {
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       width: '50%',
     },
   },
-});
+}));
 
 /**
  * The OrderDetailsOrder component

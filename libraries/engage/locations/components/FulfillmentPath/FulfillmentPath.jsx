@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { Availability } from '@shopgate/engage/product';
 import { RadioGroup } from '../../../components';
 import { useFulfillmentState } from '../../locations.hooks';
@@ -14,11 +13,9 @@ import {
 } from '../../constants';
 import { FulfillmentPathItem } from './FulfillmentPathItem';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    padding: `0 ${variables.gap.big}px`,
+    padding: theme.spacing(0, 2),
   },
   radioGroup: {
     // Removes the vertical padding applied by default around radio groups
@@ -26,7 +23,7 @@ const useStyles = makeStyles()({
     paddingBottom: 0,
     transition: 'opacity 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
   },
-});
+}));
 
 const labelMapping = {
   [DIRECT_SHIP]: DIRECT_SHIP_LABEL,

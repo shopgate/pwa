@@ -1,16 +1,13 @@
 import React from 'react';
 import { RippleButton, I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useCartItemProduct } from './CartItem.hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     fontSize: '0.875rem !important',
     letterSpacing: '0.05em',
-    padding: `${variables.gap.big}px 0 !important`,
+    padding: [theme.spacing(2, 0), '!important'],
     ' *': {
       padding: '0 !important',
     },
@@ -18,7 +15,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: 0,
   },
-});
+}));
 
 /**
  * @returns {JSX.Element}

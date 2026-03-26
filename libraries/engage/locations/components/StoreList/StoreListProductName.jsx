@@ -1,16 +1,15 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { Ellipsis } from '../../../components';
 import { FulfillmentContext } from '../../locations.context';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   productName: {
     fontSize: '1.25rem',
     fontWeight: 600,
-    marginBottom: themeVariables.gap.small,
+    marginBottom: theme.spacing(1),
   },
-});
+}));
 
 /**
  * Renders the product's name.
@@ -25,6 +24,7 @@ function StoreListProductName() {
 
   return (
     <div className={classes.productName}>
+      {/* eslint-disable-next-line react/no-danger */}
       <Ellipsis><span dangerouslySetInnerHTML={{ __html: baseProduct.name }} /></Ellipsis>
     </div>
   );

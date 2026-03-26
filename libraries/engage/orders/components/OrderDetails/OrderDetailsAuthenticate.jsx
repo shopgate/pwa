@@ -1,6 +1,5 @@
 import React, { useMemo, useCallback } from 'react';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   FormBuilder, I18n, Link, RippleButton, MessageBar, ResponsiveContainer,
 } from '@shopgate/engage/components';
@@ -9,11 +8,9 @@ import { StylePresets } from '@shopgate/engage/components/Form';
 import generateFormConfig from './OrderDetailsAuthenticateForm.config';
 import { useOrderDetails } from '../../hooks';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
+    padding: theme.spacing(2, 2, 0),
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',
@@ -36,7 +33,7 @@ const useStyles = makeStyles()({
   messageBarContainer: {
     margin: 0,
   },
-});
+}));
 
 /**
  * @returns {JSX}
