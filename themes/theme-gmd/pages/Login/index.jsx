@@ -314,7 +314,6 @@ const Login = ({
                 <RippleButton
                   className={classes.button}
                   type="secondary"
-                  nativeType="submit"
                   disabled={isLoading || isDisabled}
                 >
                   <I18n.Text string="login.button" />

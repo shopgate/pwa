@@ -85,8 +85,8 @@ describe('<ReviewForm />', () => {
     expect(comp.find('RatingScale').prop('value')).toEqual(0);
     expect(comp.find('RatingScale').prop('errorText')).toBeDefined();
 
-    expect(author.prop('value')).toBeFalsy();
-    expect(author.prop('errorText')).toBeDefined();
+    expect(author.prop('value')).toEqual('Jane Doe');
+    expect(author.prop('errorText')).toBeFalsy();
   });
 
   it('should set form data', () => {

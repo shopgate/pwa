@@ -33,7 +33,6 @@ const RippleButton = ({
   className,
   disabled,
   flat,
-  nativeType,
   onClick,
   rippleClassName,
   rippleSize,
@@ -51,7 +50,6 @@ const RippleButton = ({
     flat,
     type,
     wrapContent: false,
-    nativeType,
     'aria-label': ariaLabel,
     'aria-haspopup': ariaHaspopup,
   };
@@ -84,7 +82,6 @@ RippleButton.propTypes = {
   ...BaseButton.propTypes,
   className: PropTypes.string,
   flat: PropTypes.bool,
-  nativeType: PropTypes.oneOf(['button', 'submit', 'reset']),
   rippleClassName: PropTypes.string,
   rippleSize: PropTypes.number,
   testId: PropTypes.string,
@@ -101,7 +98,6 @@ RippleButton.defaultProps = {
   testId: 'Button',
   rippleClassName: '',
   rippleSize: null,
-  nativeType: undefined,
 };
 
 export default RippleButton;

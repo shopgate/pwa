@@ -2,14 +2,13 @@
 
 exports[`<Button /> should render as a primary button 1`] = `
 <Button
-  className="ui-shared__button css-cifbew "
+  className="ui-shared__button tss-hgw3or-button "
   disabled={false}
   onClick={null}
   testId="Button"
-  type="button"
 >
   <div
-    className="css-1vbmsgf"
+    className="tss-1c5ghbj-content"
   >
     Press me
   </div>
@@ -18,14 +17,13 @@ exports[`<Button /> should render as a primary button 1`] = `
 
 exports[`<Button /> should render as a regular button if type is explicitly defined 1`] = `
 <Button
-  className="ui-shared__button css-1a50m4j "
+  className="ui-shared__button tss-1cs55nz-button "
   disabled={false}
   onClick={null}
   testId="Button"
-  type="button"
 >
   <div
-    className="css-1vphhlq"
+    className="tss-7ia9r1-content"
   >
     Press me
   </div>
@@ -34,14 +32,13 @@ exports[`<Button /> should render as a regular button if type is explicitly defi
 
 exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 <Button
-  className="ui-shared__button css-cifbew "
+  className="ui-shared__button tss-hgw3or-button "
   disabled={false}
   onClick={null}
   testId="Button"
-  type="button"
 >
   <div
-    className="css-1vbmsgf"
+    className="tss-1c5ghbj-content"
   >
     Press me
   </div>
@@ -50,14 +47,13 @@ exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 
 exports[`<Button /> should render as a secondary button 1`] = `
 <Button
-  className="ui-shared__button css-mk0dpu "
+  className="ui-shared__button tss-x945ka-button "
   disabled={false}
   onClick={null}
   testId="Button"
-  type="button"
 >
   <div
-    className="css-nhaw1b"
+    className="tss-15qwb42-content"
   >
     Press me
   </div>

@@ -65,15 +65,15 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="tss-p4e9kp-container ui-shared__rating-stars"
+                        className="tss-1tckjm8-container ui-shared__rating-stars"
                         data-test-id="ratedStars: 0"
                       >
                         <div
-                          className="tss-ckws8t-emptyStars rating-stars-empty"
+                          className="tss-170uo4n-emptyStars rating-stars-empty"
                         >
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="1"
                             onClick={[Function]}
                             role="button"
@@ -106,7 +106,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="2"
                             onClick={[Function]}
                             role="button"
@@ -139,7 +139,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="3"
                             onClick={[Function]}
                             role="button"
@@ -172,7 +172,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="4"
                             onClick={[Function]}
                             role="button"
@@ -205,7 +205,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="5"
                             onClick={[Function]}
                             role="button"
@@ -238,7 +238,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           </div>
                         </div>
                         <div
-                          className="tss-1a3jay-filledStars rating-stars-filled"
+                          className="tss-8o0m3k-filledStars rating-stars-filled"
                         />
                       </div>
                     </RatingStars>
@@ -257,13 +257,8 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         className="errorText tss-1iseh44-error-error"
                         id="ariaError-null"
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
+                        <Text
                           string=""
-                          transform={null}
                         />
                       </div>
                     </ErrorText>
@@ -291,7 +286,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                 showErrorText={true}
                 translateErrorText={true}
                 type="text"
-                value=""
+                value="Jane Doe"
               >
                 <div
                   className="tss-1i5dsir-input textField ui-shared__text-field"
@@ -303,43 +298,28 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
                   <Label
                     hasErrorMessage={false}
-                    isFloating={false}
+                    isFloating={true}
                     isFocused={false}
                     label="reviews.review_form_author"
                     name="author"
                   >
                     <label
                       aria-hidden={true}
-                      className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
+                      className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_author"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_author
-                        </span>
-                      </Translate>
+                        reviews.review_form_author
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -363,7 +343,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     required={false}
                     setRef={[Function]}
                     type="text"
-                    value=""
+                    value="Jane Doe"
                   >
                     <_default
                       attributes={
@@ -388,7 +368,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
-                      value=""
+                      value="Jane Doe"
                     >
                       <SimpleInput
                         attributes={
@@ -417,7 +397,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
-                        value=""
+                        value="Jane Doe"
                       >
                         <input
                           aria-describedby={null}
@@ -440,7 +420,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           required={false}
                           step={null}
                           type="text"
-                          value=""
+                          value="Jane Doe"
                         />
                       </SimpleInput>
                     </_default>
@@ -479,13 +459,8 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -524,13 +499,8 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -546,21 +516,11 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
                       htmlFor="title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_title"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_title
-                        </span>
-                      </Translate>
+                        reviews.review_form_title
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -700,13 +660,8 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -745,13 +700,8 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -767,21 +717,11 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
                       htmlFor="review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_text"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_text
-                        </span>
-                      </Translate>
+                        reviews.review_form_text
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -912,13 +852,8 @@ exports[`<ReviewForm /> should render empty 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -937,53 +872,19 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     <div
                       className="tss-15ekmou-buttonLine"
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={false}
-                        nativeType="button"
+                      <button
+                        className="tss-4cw4vm-cancelButton"
+                        data-test-id="reviewCancelButton"
                         onClick={[Function]}
-                        testId="reviewCancelButton"
-                        type="regular"
-                        wrapContent={true}
+                        type="button"
                       >
-                        <Button
-                          className="ui-shared__button tss-1cs55nz-button "
-                          disabled={false}
-                          onClick={[Function]}
-                          testId="reviewCancelButton"
-                          type="button"
+                        <Text
+                          string="common.cancel"
                         >
-                          <button
-                            className="ui-shared__button tss-1cs55nz-button  tss-16c9pag-root common__button"
-                            data-test-id="reviewCancelButton"
-                            disabled={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <div
-                              className="tss-7ia9r1-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.cancel"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.cancel
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                      <RippleButtonWithStyles
+                          common.cancel
+                        </Text>
+                      </button>
+                      <RippleButton
                         className=""
                         disabled={false}
                         flat={false}
@@ -994,95 +895,54 @@ exports[`<ReviewForm /> should render empty 1`] = `
                         type="secondary"
                         wrapContent={true}
                       >
-                        <RippleButton
-                          className=""
-                          classes={
-                            {
-                              "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                            }
-                          }
+                        <Button
+                          className=" ui-shared__ripple-button"
                           disabled={false}
                           flat={false}
                           onClick={null}
-                          rippleClassName=""
-                          rippleSize={null}
                           testId="sendReviewButton"
                           type="secondary"
-                          wrapContent={true}
+                          wrapContent={false}
                         >
                           <Button
-                            className=" ui-shared__ripple-button"
+                            className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
                             disabled={false}
-                            flat={false}
                             onClick={null}
                             testId="sendReviewButton"
-                            type="secondary"
-                            wrapContent={false}
                           >
-                            <Button
-                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
+                            <button
+                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
+                              data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
-                              testId="sendReviewButton"
-                              type="button"
                             >
-                              <button
-                                className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                data-test-id="sendReviewButton"
+                              <Ripple
+                                className="tss-1hy7q46-contentWrapper"
+                                color="#000"
                                 disabled={false}
-                                onClick={null}
-                                type="button"
+                                fill={true}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={true}
+                                size={null}
                               >
-                                <RippleWithStyles
-                                  className="tss-p1t6ie-RippleButton-contentWrapper "
-                                  fill={true}
-                                  overflow={true}
-                                  size={null}
+                                <div
+                                  className="ui-shared__ripple tss-1hy7q46-contentWrapper"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={null}
                                 >
-                                  <Ripple
-                                    className="tss-p1t6ie-RippleButton-contentWrapper "
-                                    classes={
-                                      {
-                                        "container": "tss-1dfkr3n-Ripple-container",
-                                      }
-                                    }
-                                    color="#000"
-                                    disabled={false}
-                                    fill={true}
-                                    onClick={[Function]}
-                                    onComplete={[Function]}
-                                    overflow={true}
-                                    size={null}
+                                  <Text
+                                    string="common.submit"
                                   >
-                                    <div
-                                      className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                      data-test-id="Ripple"
-                                      onClick={[Function]}
-                                      style={null}
-                                    >
-                                      <Translate
-                                        acceptPlainTextWithPlaceholders={false}
-                                        className={null}
-                                        params={{}}
-                                        role={null}
-                                        string="common.submit"
-                                        transform={null}
-                                      >
-                                        <span
-                                          className={null}
-                                          role={null}
-                                        >
-                                          common.submit
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Ripple>
-                                </RippleWithStyles>
-                              </button>
-                            </Button>
+                                    common.submit
+                                  </Text>
+                                </div>
+                              </Ripple>
+                            </button>
                           </Button>
-                        </RippleButton>
-                      </RippleButtonWithStyles>
+                        </Button>
+                      </RippleButton>
                     </div>
                   </FormButtons>
                 </Component>
@@ -1161,15 +1021,15 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="tss-p4e9kp-container ui-shared__rating-stars"
+                        className="tss-1tckjm8-container ui-shared__rating-stars"
                         data-test-id="ratedStars: 0"
                       >
                         <div
-                          className="tss-ckws8t-emptyStars rating-stars-empty"
+                          className="tss-170uo4n-emptyStars rating-stars-empty"
                         >
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="1"
                             onClick={[Function]}
                             role="button"
@@ -1202,7 +1062,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="2"
                             onClick={[Function]}
                             role="button"
@@ -1235,7 +1095,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="3"
                             onClick={[Function]}
                             role="button"
@@ -1268,7 +1128,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="4"
                             onClick={[Function]}
                             role="button"
@@ -1301,7 +1161,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="5"
                             onClick={[Function]}
                             role="button"
@@ -1334,7 +1194,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           </div>
                         </div>
                         <div
-                          className="tss-1a3jay-filledStars rating-stars-filled"
+                          className="tss-8o0m3k-filledStars rating-stars-filled"
                         />
                       </div>
                     </RatingStars>
@@ -1353,13 +1213,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         className="errorText tss-1iseh44-error-error"
                         id="ariaError-null"
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
+                        <Text
                           string=""
-                          transform={null}
                         />
                       </div>
                     </ErrorText>
@@ -1387,7 +1242,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                 showErrorText={true}
                 translateErrorText={true}
                 type="text"
-                value=""
+                value="Jane Doe"
               >
                 <div
                   className="tss-1i5dsir-input textField ui-shared__text-field"
@@ -1399,43 +1254,28 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
                   <Label
                     hasErrorMessage={false}
-                    isFloating={false}
+                    isFloating={true}
                     isFocused={false}
                     label="reviews.review_form_author"
                     name="author"
                   >
                     <label
                       aria-hidden={true}
-                      className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
+                      className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_author"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_author
-                        </span>
-                      </Translate>
+                        reviews.review_form_author
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -1459,7 +1299,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     required={false}
                     setRef={[Function]}
                     type="text"
-                    value=""
+                    value="Jane Doe"
                   >
                     <_default
                       attributes={
@@ -1484,7 +1324,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
-                      value=""
+                      value="Jane Doe"
                     >
                       <SimpleInput
                         attributes={
@@ -1513,7 +1353,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
-                        value=""
+                        value="Jane Doe"
                       >
                         <input
                           aria-describedby={null}
@@ -1536,7 +1376,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           required={false}
                           step={null}
                           type="text"
-                          value=""
+                          value="Jane Doe"
                         />
                       </SimpleInput>
                     </_default>
@@ -1575,13 +1415,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -1620,13 +1455,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -1642,21 +1472,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
                       htmlFor="title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_title"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_title
-                        </span>
-                      </Translate>
+                        reviews.review_form_title
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -1796,13 +1616,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -1841,13 +1656,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -1863,21 +1673,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
                       htmlFor="review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_text"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_text
-                        </span>
-                      </Translate>
+                        reviews.review_form_text
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -2008,13 +1808,8 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -2033,53 +1828,19 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     <div
                       className="tss-15ekmou-buttonLine"
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={false}
-                        nativeType="button"
+                      <button
+                        className="tss-4cw4vm-cancelButton"
+                        data-test-id="reviewCancelButton"
                         onClick={[Function]}
-                        testId="reviewCancelButton"
-                        type="regular"
-                        wrapContent={true}
+                        type="button"
                       >
-                        <Button
-                          className="ui-shared__button tss-1cs55nz-button "
-                          disabled={false}
-                          onClick={[Function]}
-                          testId="reviewCancelButton"
-                          type="button"
+                        <Text
+                          string="common.cancel"
                         >
-                          <button
-                            className="ui-shared__button tss-1cs55nz-button  tss-16c9pag-root common__button"
-                            data-test-id="reviewCancelButton"
-                            disabled={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <div
-                              className="tss-7ia9r1-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.cancel"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.cancel
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                      <RippleButtonWithStyles
+                          common.cancel
+                        </Text>
+                      </button>
+                      <RippleButton
                         className=""
                         disabled={false}
                         flat={false}
@@ -2090,95 +1851,54 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                         type="secondary"
                         wrapContent={true}
                       >
-                        <RippleButton
-                          className=""
-                          classes={
-                            {
-                              "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                            }
-                          }
+                        <Button
+                          className=" ui-shared__ripple-button"
                           disabled={false}
                           flat={false}
                           onClick={null}
-                          rippleClassName=""
-                          rippleSize={null}
                           testId="sendReviewButton"
                           type="secondary"
-                          wrapContent={true}
+                          wrapContent={false}
                         >
                           <Button
-                            className=" ui-shared__ripple-button"
+                            className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
                             disabled={false}
-                            flat={false}
                             onClick={null}
                             testId="sendReviewButton"
-                            type="secondary"
-                            wrapContent={false}
                           >
-                            <Button
-                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
+                            <button
+                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
+                              data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
-                              testId="sendReviewButton"
-                              type="button"
                             >
-                              <button
-                                className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                data-test-id="sendReviewButton"
+                              <Ripple
+                                className="tss-1hy7q46-contentWrapper"
+                                color="#000"
                                 disabled={false}
-                                onClick={null}
-                                type="button"
+                                fill={true}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={true}
+                                size={null}
                               >
-                                <RippleWithStyles
-                                  className="tss-p1t6ie-RippleButton-contentWrapper "
-                                  fill={true}
-                                  overflow={true}
-                                  size={null}
+                                <div
+                                  className="ui-shared__ripple tss-1hy7q46-contentWrapper"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={null}
                                 >
-                                  <Ripple
-                                    className="tss-p1t6ie-RippleButton-contentWrapper "
-                                    classes={
-                                      {
-                                        "container": "tss-1dfkr3n-Ripple-container",
-                                      }
-                                    }
-                                    color="#000"
-                                    disabled={false}
-                                    fill={true}
-                                    onClick={[Function]}
-                                    onComplete={[Function]}
-                                    overflow={true}
-                                    size={null}
+                                  <Text
+                                    string="common.submit"
                                   >
-                                    <div
-                                      className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                      data-test-id="Ripple"
-                                      onClick={[Function]}
-                                      style={null}
-                                    >
-                                      <Translate
-                                        acceptPlainTextWithPlaceholders={false}
-                                        className={null}
-                                        params={{}}
-                                        role={null}
-                                        string="common.submit"
-                                        transform={null}
-                                      >
-                                        <span
-                                          className={null}
-                                          role={null}
-                                        >
-                                          common.submit
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Ripple>
-                                </RippleWithStyles>
-                              </button>
-                            </Button>
+                                    common.submit
+                                  </Text>
+                                </div>
+                              </Ripple>
+                            </button>
                           </Button>
-                        </RippleButton>
-                      </RippleButtonWithStyles>
+                        </Button>
+                      </RippleButton>
                     </div>
                   </FormButtons>
                 </Component>
@@ -2335,15 +2055,15 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="tss-p4e9kp-container ui-shared__rating-stars"
+                        className="tss-1tckjm8-container ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
                       >
                         <div
-                          className="tss-ckws8t-emptyStars rating-stars-empty"
+                          className="tss-170uo4n-emptyStars rating-stars-empty"
                         >
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="1"
                             onClick={[Function]}
                             role="button"
@@ -2376,7 +2096,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="2"
                             onClick={[Function]}
                             role="button"
@@ -2409,7 +2129,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="3"
                             onClick={[Function]}
                             role="button"
@@ -2442,7 +2162,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="4"
                             onClick={[Function]}
                             role="button"
@@ -2475,7 +2195,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="5"
                             onClick={[Function]}
                             role="button"
@@ -2508,11 +2228,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                         </div>
                         <div
-                          className="tss-1a3jay-filledStars rating-stars-filled"
+                          className="tss-8o0m3k-filledStars rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="6"
                             onClick={[Function]}
                             role="button"
@@ -2545,7 +2265,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="7"
                             onClick={[Function]}
                             role="button"
@@ -2578,7 +2298,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="8"
                             onClick={[Function]}
                             role="button"
@@ -2611,7 +2331,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="9"
                             onClick={[Function]}
                             role="button"
@@ -2644,7 +2364,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="10"
                             onClick={[Function]}
                             role="button"
@@ -2693,13 +2413,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         className="errorText tss-1iseh44-error-error"
                         id="ariaError-null"
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
+                        <Text
                           string=""
-                          transform={null}
                         />
                       </div>
                     </ErrorText>
@@ -2739,13 +2454,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -2761,21 +2471,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_author"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_author
-                        </span>
-                      </Translate>
+                        reviews.review_form_author
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -2915,13 +2615,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -2960,13 +2655,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -2982,21 +2672,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_title"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_title
-                        </span>
-                      </Translate>
+                        reviews.review_form_title
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -3136,13 +2816,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -3181,13 +2856,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -3203,21 +2873,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_text"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_text
-                        </span>
-                      </Translate>
+                        reviews.review_form_text
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -3348,13 +3008,8 @@ exports[`<ReviewForm /> should set form data 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -3373,53 +3028,19 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     <div
                       className="tss-15ekmou-buttonLine"
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={false}
-                        nativeType="button"
+                      <button
+                        className="tss-4cw4vm-cancelButton"
+                        data-test-id="reviewCancelButton"
                         onClick={[Function]}
-                        testId="reviewCancelButton"
-                        type="regular"
-                        wrapContent={true}
+                        type="button"
                       >
-                        <Button
-                          className="ui-shared__button tss-1cs55nz-button "
-                          disabled={false}
-                          onClick={[Function]}
-                          testId="reviewCancelButton"
-                          type="button"
+                        <Text
+                          string="common.cancel"
                         >
-                          <button
-                            className="ui-shared__button tss-1cs55nz-button  tss-16c9pag-root common__button"
-                            data-test-id="reviewCancelButton"
-                            disabled={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <div
-                              className="tss-7ia9r1-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.cancel"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.cancel
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                      <RippleButtonWithStyles
+                          common.cancel
+                        </Text>
+                      </button>
+                      <RippleButton
                         className=""
                         disabled={false}
                         flat={false}
@@ -3430,95 +3051,54 @@ exports[`<ReviewForm /> should set form data 1`] = `
                         type="secondary"
                         wrapContent={true}
                       >
-                        <RippleButton
-                          className=""
-                          classes={
-                            {
-                              "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                            }
-                          }
+                        <Button
+                          className=" ui-shared__ripple-button"
                           disabled={false}
                           flat={false}
                           onClick={null}
-                          rippleClassName=""
-                          rippleSize={null}
                           testId="sendReviewButton"
                           type="secondary"
-                          wrapContent={true}
+                          wrapContent={false}
                         >
                           <Button
-                            className=" ui-shared__ripple-button"
+                            className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
                             disabled={false}
-                            flat={false}
                             onClick={null}
                             testId="sendReviewButton"
-                            type="secondary"
-                            wrapContent={false}
                           >
-                            <Button
-                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
+                            <button
+                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
+                              data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
-                              testId="sendReviewButton"
-                              type="button"
                             >
-                              <button
-                                className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                data-test-id="sendReviewButton"
+                              <Ripple
+                                className="tss-1hy7q46-contentWrapper"
+                                color="#000"
                                 disabled={false}
-                                onClick={null}
-                                type="button"
+                                fill={true}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={true}
+                                size={null}
                               >
-                                <RippleWithStyles
-                                  className="tss-p1t6ie-RippleButton-contentWrapper "
-                                  fill={true}
-                                  overflow={true}
-                                  size={null}
+                                <div
+                                  className="ui-shared__ripple tss-1hy7q46-contentWrapper"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={null}
                                 >
-                                  <Ripple
-                                    className="tss-p1t6ie-RippleButton-contentWrapper "
-                                    classes={
-                                      {
-                                        "container": "tss-1dfkr3n-Ripple-container",
-                                      }
-                                    }
-                                    color="#000"
-                                    disabled={false}
-                                    fill={true}
-                                    onClick={[Function]}
-                                    onComplete={[Function]}
-                                    overflow={true}
-                                    size={null}
+                                  <Text
+                                    string="common.submit"
                                   >
-                                    <div
-                                      className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                      data-test-id="Ripple"
-                                      onClick={[Function]}
-                                      style={null}
-                                    >
-                                      <Translate
-                                        acceptPlainTextWithPlaceholders={false}
-                                        className={null}
-                                        params={{}}
-                                        role={null}
-                                        string="common.submit"
-                                        transform={null}
-                                      >
-                                        <span
-                                          className={null}
-                                          role={null}
-                                        >
-                                          common.submit
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Ripple>
-                                </RippleWithStyles>
-                              </button>
-                            </Button>
+                                    common.submit
+                                  </Text>
+                                </div>
+                              </Ripple>
+                            </button>
                           </Button>
-                        </RippleButton>
-                      </RippleButtonWithStyles>
+                        </Button>
+                      </RippleButton>
                     </div>
                   </FormButtons>
                 </Component>
@@ -3607,15 +3187,15 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="tss-p4e9kp-container ui-shared__rating-stars"
+                        className="tss-1tckjm8-container ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
                       >
                         <div
-                          className="tss-ckws8t-emptyStars rating-stars-empty"
+                          className="tss-170uo4n-emptyStars rating-stars-empty"
                         >
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="1"
                             onClick={[Function]}
                             role="button"
@@ -3648,7 +3228,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="2"
                             onClick={[Function]}
                             role="button"
@@ -3681,7 +3261,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="3"
                             onClick={[Function]}
                             role="button"
@@ -3714,7 +3294,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="4"
                             onClick={[Function]}
                             role="button"
@@ -3747,7 +3327,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="5"
                             onClick={[Function]}
                             role="button"
@@ -3780,11 +3360,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                         </div>
                         <div
-                          className="tss-1a3jay-filledStars rating-stars-filled"
+                          className="tss-8o0m3k-filledStars rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="6"
                             onClick={[Function]}
                             role="button"
@@ -3817,7 +3397,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="7"
                             onClick={[Function]}
                             role="button"
@@ -3850,7 +3430,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="8"
                             onClick={[Function]}
                             role="button"
@@ -3883,7 +3463,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="9"
                             onClick={[Function]}
                             role="button"
@@ -3916,7 +3496,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="10"
                             onClick={[Function]}
                             role="button"
@@ -3965,13 +3545,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         className="errorText tss-1iseh44-error-error"
                         id="ariaError-null"
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
+                        <Text
                           string=""
-                          transform={null}
                         />
                       </div>
                     </ErrorText>
@@ -4011,13 +3586,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -4033,21 +3603,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_author"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_author
-                        </span>
-                      </Translate>
+                        reviews.review_form_author
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -4187,13 +3747,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -4232,13 +3787,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -4254,21 +3804,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_title"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_title
-                        </span>
-                      </Translate>
+                        reviews.review_form_title
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -4408,13 +3948,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -4453,13 +3988,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -4475,21 +4005,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_text"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_text
-                        </span>
-                      </Translate>
+                        reviews.review_form_text
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -4620,13 +4140,8 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -4645,53 +4160,19 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     <div
                       className="tss-15ekmou-buttonLine"
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={false}
-                        nativeType="button"
+                      <button
+                        className="tss-4cw4vm-cancelButton"
+                        data-test-id="reviewCancelButton"
                         onClick={[Function]}
-                        testId="reviewCancelButton"
-                        type="regular"
-                        wrapContent={true}
+                        type="button"
                       >
-                        <Button
-                          className="ui-shared__button tss-1cs55nz-button "
-                          disabled={false}
-                          onClick={[Function]}
-                          testId="reviewCancelButton"
-                          type="button"
+                        <Text
+                          string="common.cancel"
                         >
-                          <button
-                            className="ui-shared__button tss-1cs55nz-button  tss-16c9pag-root common__button"
-                            data-test-id="reviewCancelButton"
-                            disabled={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <div
-                              className="tss-7ia9r1-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.cancel"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.cancel
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                      <RippleButtonWithStyles
+                          common.cancel
+                        </Text>
+                      </button>
+                      <RippleButton
                         className=""
                         disabled={false}
                         flat={false}
@@ -4702,95 +4183,54 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                         type="secondary"
                         wrapContent={true}
                       >
-                        <RippleButton
-                          className=""
-                          classes={
-                            {
-                              "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                            }
-                          }
+                        <Button
+                          className=" ui-shared__ripple-button"
                           disabled={false}
                           flat={false}
                           onClick={null}
-                          rippleClassName=""
-                          rippleSize={null}
                           testId="sendReviewButton"
                           type="secondary"
-                          wrapContent={true}
+                          wrapContent={false}
                         >
                           <Button
-                            className=" ui-shared__ripple-button"
+                            className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
                             disabled={false}
-                            flat={false}
                             onClick={null}
                             testId="sendReviewButton"
-                            type="secondary"
-                            wrapContent={false}
                           >
-                            <Button
-                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
+                            <button
+                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
+                              data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
-                              testId="sendReviewButton"
-                              type="button"
                             >
-                              <button
-                                className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                data-test-id="sendReviewButton"
+                              <Ripple
+                                className="tss-1hy7q46-contentWrapper"
+                                color="#000"
                                 disabled={false}
-                                onClick={null}
-                                type="button"
+                                fill={true}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={true}
+                                size={null}
                               >
-                                <RippleWithStyles
-                                  className="tss-p1t6ie-RippleButton-contentWrapper "
-                                  fill={true}
-                                  overflow={true}
-                                  size={null}
+                                <div
+                                  className="ui-shared__ripple tss-1hy7q46-contentWrapper"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={null}
                                 >
-                                  <Ripple
-                                    className="tss-p1t6ie-RippleButton-contentWrapper "
-                                    classes={
-                                      {
-                                        "container": "tss-1dfkr3n-Ripple-container",
-                                      }
-                                    }
-                                    color="#000"
-                                    disabled={false}
-                                    fill={true}
-                                    onClick={[Function]}
-                                    onComplete={[Function]}
-                                    overflow={true}
-                                    size={null}
+                                  <Text
+                                    string="common.submit"
                                   >
-                                    <div
-                                      className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                      data-test-id="Ripple"
-                                      onClick={[Function]}
-                                      style={null}
-                                    >
-                                      <Translate
-                                        acceptPlainTextWithPlaceholders={false}
-                                        className={null}
-                                        params={{}}
-                                        role={null}
-                                        string="common.submit"
-                                        transform={null}
-                                      >
-                                        <span
-                                          className={null}
-                                          role={null}
-                                        >
-                                          common.submit
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Ripple>
-                                </RippleWithStyles>
-                              </button>
-                            </Button>
+                                    common.submit
+                                  </Text>
+                                </div>
+                              </Ripple>
+                            </button>
                           </Button>
-                        </RippleButton>
-                      </RippleButtonWithStyles>
+                        </Button>
+                      </RippleButton>
                     </div>
                   </FormButtons>
                 </Component>
@@ -4879,15 +4319,15 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="tss-p4e9kp-container ui-shared__rating-stars"
+                        className="tss-1tckjm8-container ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
                       >
                         <div
-                          className="tss-ckws8t-emptyStars rating-stars-empty"
+                          className="tss-170uo4n-emptyStars rating-stars-empty"
                         >
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="1"
                             onClick={[Function]}
                             role="button"
@@ -4920,7 +4360,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="2"
                             onClick={[Function]}
                             role="button"
@@ -4953,7 +4393,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="3"
                             onClick={[Function]}
                             role="button"
@@ -4986,7 +4426,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="4"
                             onClick={[Function]}
                             role="button"
@@ -5019,7 +4459,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="5"
                             onClick={[Function]}
                             role="button"
@@ -5052,11 +4492,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                         </div>
                         <div
-                          className="tss-1a3jay-filledStars rating-stars-filled"
+                          className="tss-8o0m3k-filledStars rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="6"
                             onClick={[Function]}
                             role="button"
@@ -5089,7 +4529,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="7"
                             onClick={[Function]}
                             role="button"
@@ -5122,7 +4562,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="8"
                             onClick={[Function]}
                             role="button"
@@ -5155,7 +4595,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="9"
                             onClick={[Function]}
                             role="button"
@@ -5188,7 +4628,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="10"
                             onClick={[Function]}
                             role="button"
@@ -5237,13 +4677,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         className="errorText tss-1iseh44-error-error"
                         id="ariaError-null"
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
+                        <Text
                           string=""
-                          transform={null}
                         />
                       </div>
                     </ErrorText>
@@ -5283,13 +4718,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -5305,21 +4735,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_author"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_author
-                        </span>
-                      </Translate>
+                        reviews.review_form_author
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -5459,13 +4879,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -5504,13 +4919,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -5526,21 +4936,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_title"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_title
-                        </span>
-                      </Translate>
+                        reviews.review_form_title
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -5680,13 +5080,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -5725,13 +5120,8 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -5747,21 +5137,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_text"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_text
-                        </span>
-                      </Translate>
+                        reviews.review_form_text
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -5891,21 +5271,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_error_length"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_error_length
-                        </span>
-                      </Translate>
+                        reviews.review_form_error_length
+                      </Text>
                     </div>
                   </ErrorText>
                 </div>
@@ -5923,53 +5293,19 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     <div
                       className="tss-15ekmou-buttonLine"
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={false}
-                        nativeType="button"
+                      <button
+                        className="tss-4cw4vm-cancelButton"
+                        data-test-id="reviewCancelButton"
                         onClick={[Function]}
-                        testId="reviewCancelButton"
-                        type="regular"
-                        wrapContent={true}
+                        type="button"
                       >
-                        <Button
-                          className="ui-shared__button tss-1cs55nz-button "
-                          disabled={false}
-                          onClick={[Function]}
-                          testId="reviewCancelButton"
-                          type="button"
+                        <Text
+                          string="common.cancel"
                         >
-                          <button
-                            className="ui-shared__button tss-1cs55nz-button  tss-16c9pag-root common__button"
-                            data-test-id="reviewCancelButton"
-                            disabled={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <div
-                              className="tss-7ia9r1-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.cancel"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.cancel
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                      <RippleButtonWithStyles
+                          common.cancel
+                        </Text>
+                      </button>
+                      <RippleButton
                         className=""
                         disabled={false}
                         flat={false}
@@ -5980,95 +5316,54 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                         type="secondary"
                         wrapContent={true}
                       >
-                        <RippleButton
-                          className=""
-                          classes={
-                            {
-                              "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                            }
-                          }
+                        <Button
+                          className=" ui-shared__ripple-button"
                           disabled={false}
                           flat={false}
                           onClick={null}
-                          rippleClassName=""
-                          rippleSize={null}
                           testId="sendReviewButton"
                           type="secondary"
-                          wrapContent={true}
+                          wrapContent={false}
                         >
                           <Button
-                            className=" ui-shared__ripple-button"
+                            className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
                             disabled={false}
-                            flat={false}
                             onClick={null}
                             testId="sendReviewButton"
-                            type="secondary"
-                            wrapContent={false}
                           >
-                            <Button
-                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
+                            <button
+                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
+                              data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
-                              testId="sendReviewButton"
-                              type="button"
                             >
-                              <button
-                                className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                data-test-id="sendReviewButton"
+                              <Ripple
+                                className="tss-1hy7q46-contentWrapper"
+                                color="#000"
                                 disabled={false}
-                                onClick={null}
-                                type="button"
+                                fill={true}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={true}
+                                size={null}
                               >
-                                <RippleWithStyles
-                                  className="tss-p1t6ie-RippleButton-contentWrapper "
-                                  fill={true}
-                                  overflow={true}
-                                  size={null}
+                                <div
+                                  className="ui-shared__ripple tss-1hy7q46-contentWrapper"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={null}
                                 >
-                                  <Ripple
-                                    className="tss-p1t6ie-RippleButton-contentWrapper "
-                                    classes={
-                                      {
-                                        "container": "tss-1dfkr3n-Ripple-container",
-                                      }
-                                    }
-                                    color="#000"
-                                    disabled={false}
-                                    fill={true}
-                                    onClick={[Function]}
-                                    onComplete={[Function]}
-                                    overflow={true}
-                                    size={null}
+                                  <Text
+                                    string="common.submit"
                                   >
-                                    <div
-                                      className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                      data-test-id="Ripple"
-                                      onClick={[Function]}
-                                      style={null}
-                                    >
-                                      <Translate
-                                        acceptPlainTextWithPlaceholders={false}
-                                        className={null}
-                                        params={{}}
-                                        role={null}
-                                        string="common.submit"
-                                        transform={null}
-                                      >
-                                        <span
-                                          className={null}
-                                          role={null}
-                                        >
-                                          common.submit
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Ripple>
-                                </RippleWithStyles>
-                              </button>
-                            </Button>
+                                    common.submit
+                                  </Text>
+                                </div>
+                              </Ripple>
+                            </button>
                           </Button>
-                        </RippleButton>
-                      </RippleButtonWithStyles>
+                        </Button>
+                      </RippleButton>
                     </div>
                   </FormButtons>
                 </Component>
@@ -6157,15 +5452,15 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="tss-p4e9kp-container ui-shared__rating-stars"
+                        className="tss-1tckjm8-container ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
                       >
                         <div
-                          className="tss-ckws8t-emptyStars rating-stars-empty"
+                          className="tss-170uo4n-emptyStars rating-stars-empty"
                         >
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="1"
                             onClick={[Function]}
                             role="button"
@@ -6198,7 +5493,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="2"
                             onClick={[Function]}
                             role="button"
@@ -6231,7 +5526,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="3"
                             onClick={[Function]}
                             role="button"
@@ -6264,7 +5559,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="4"
                             onClick={[Function]}
                             role="button"
@@ -6297,7 +5592,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="5"
                             onClick={[Function]}
                             role="button"
@@ -6330,11 +5625,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                         </div>
                         <div
-                          className="tss-1a3jay-filledStars rating-stars-filled"
+                          className="tss-8o0m3k-filledStars rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="6"
                             onClick={[Function]}
                             role="button"
@@ -6367,7 +5662,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="7"
                             onClick={[Function]}
                             role="button"
@@ -6400,7 +5695,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="8"
                             onClick={[Function]}
                             role="button"
@@ -6433,7 +5728,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="9"
                             onClick={[Function]}
                             role="button"
@@ -6466,7 +5761,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="10"
                             onClick={[Function]}
                             role="button"
@@ -6515,13 +5810,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         className="errorText tss-1iseh44-error-error"
                         id="ariaError-null"
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
+                        <Text
                           string=""
-                          transform={null}
                         />
                       </div>
                     </ErrorText>
@@ -6561,13 +5851,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -6583,21 +5868,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_author"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_author
-                        </span>
-                      </Translate>
+                        reviews.review_form_author
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -6737,13 +6012,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -6782,13 +6052,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -6804,21 +6069,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_title"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_title
-                        </span>
-                      </Translate>
+                        reviews.review_form_title
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -6958,13 +6213,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -7003,13 +6253,8 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -7025,21 +6270,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_text"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_text
-                        </span>
-                      </Translate>
+                        reviews.review_form_text
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -7169,21 +6404,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_error_length"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_error_length
-                        </span>
-                      </Translate>
+                        reviews.review_form_error_length
+                      </Text>
                     </div>
                   </ErrorText>
                 </div>
@@ -7201,53 +6426,19 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     <div
                       className="tss-15ekmou-buttonLine"
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={false}
-                        nativeType="button"
+                      <button
+                        className="tss-4cw4vm-cancelButton"
+                        data-test-id="reviewCancelButton"
                         onClick={[Function]}
-                        testId="reviewCancelButton"
-                        type="regular"
-                        wrapContent={true}
+                        type="button"
                       >
-                        <Button
-                          className="ui-shared__button tss-1cs55nz-button "
-                          disabled={false}
-                          onClick={[Function]}
-                          testId="reviewCancelButton"
-                          type="button"
+                        <Text
+                          string="common.cancel"
                         >
-                          <button
-                            className="ui-shared__button tss-1cs55nz-button  tss-16c9pag-root common__button"
-                            data-test-id="reviewCancelButton"
-                            disabled={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <div
-                              className="tss-7ia9r1-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.cancel"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.cancel
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                      <RippleButtonWithStyles
+                          common.cancel
+                        </Text>
+                      </button>
+                      <RippleButton
                         className=""
                         disabled={false}
                         flat={false}
@@ -7258,95 +6449,54 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                         type="secondary"
                         wrapContent={true}
                       >
-                        <RippleButton
-                          className=""
-                          classes={
-                            {
-                              "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                            }
-                          }
+                        <Button
+                          className=" ui-shared__ripple-button"
                           disabled={false}
                           flat={false}
                           onClick={null}
-                          rippleClassName=""
-                          rippleSize={null}
                           testId="sendReviewButton"
                           type="secondary"
-                          wrapContent={true}
+                          wrapContent={false}
                         >
                           <Button
-                            className=" ui-shared__ripple-button"
+                            className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
                             disabled={false}
-                            flat={false}
                             onClick={null}
                             testId="sendReviewButton"
-                            type="secondary"
-                            wrapContent={false}
                           >
-                            <Button
-                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
+                            <button
+                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
+                              data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
-                              testId="sendReviewButton"
-                              type="button"
                             >
-                              <button
-                                className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                data-test-id="sendReviewButton"
+                              <Ripple
+                                className="tss-1hy7q46-contentWrapper"
+                                color="#000"
                                 disabled={false}
-                                onClick={null}
-                                type="button"
+                                fill={true}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={true}
+                                size={null}
                               >
-                                <RippleWithStyles
-                                  className="tss-p1t6ie-RippleButton-contentWrapper "
-                                  fill={true}
-                                  overflow={true}
-                                  size={null}
+                                <div
+                                  className="ui-shared__ripple tss-1hy7q46-contentWrapper"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={null}
                                 >
-                                  <Ripple
-                                    className="tss-p1t6ie-RippleButton-contentWrapper "
-                                    classes={
-                                      {
-                                        "container": "tss-1dfkr3n-Ripple-container",
-                                      }
-                                    }
-                                    color="#000"
-                                    disabled={false}
-                                    fill={true}
-                                    onClick={[Function]}
-                                    onComplete={[Function]}
-                                    overflow={true}
-                                    size={null}
+                                  <Text
+                                    string="common.submit"
                                   >
-                                    <div
-                                      className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                      data-test-id="Ripple"
-                                      onClick={[Function]}
-                                      style={null}
-                                    >
-                                      <Translate
-                                        acceptPlainTextWithPlaceholders={false}
-                                        className={null}
-                                        params={{}}
-                                        role={null}
-                                        string="common.submit"
-                                        transform={null}
-                                      >
-                                        <span
-                                          className={null}
-                                          role={null}
-                                        >
-                                          common.submit
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Ripple>
-                                </RippleWithStyles>
-                              </button>
-                            </Button>
+                                    common.submit
+                                  </Text>
+                                </div>
+                              </Ripple>
+                            </button>
                           </Button>
-                        </RippleButton>
-                      </RippleButtonWithStyles>
+                        </Button>
+                      </RippleButton>
                     </div>
                   </FormButtons>
                 </Component>
@@ -7435,15 +6585,15 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="tss-p4e9kp-container ui-shared__rating-stars"
+                        className="tss-1tckjm8-container ui-shared__rating-stars"
                         data-test-id="ratedStars: 5"
                       >
                         <div
-                          className="tss-ckws8t-emptyStars rating-stars-empty"
+                          className="tss-170uo4n-emptyStars rating-stars-empty"
                         >
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="1"
                             onClick={[Function]}
                             role="button"
@@ -7476,7 +6626,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="2"
                             onClick={[Function]}
                             role="button"
@@ -7509,7 +6659,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="3"
                             onClick={[Function]}
                             role="button"
@@ -7542,7 +6692,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="4"
                             onClick={[Function]}
                             role="button"
@@ -7575,7 +6725,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="5"
                             onClick={[Function]}
                             role="button"
@@ -7608,11 +6758,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                         </div>
                         <div
-                          className="tss-1a3jay-filledStars rating-stars-filled"
+                          className="tss-8o0m3k-filledStars rating-stars-filled"
                         >
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="6"
                             onClick={[Function]}
                             role="button"
@@ -7645,7 +6795,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="7"
                             onClick={[Function]}
                             role="button"
@@ -7678,7 +6828,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="8"
                             onClick={[Function]}
                             role="button"
@@ -7711,7 +6861,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="9"
                             onClick={[Function]}
                             role="button"
@@ -7744,7 +6894,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           </div>
                           <div
                             aria-hidden={true}
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="10"
                             onClick={[Function]}
                             role="button"
@@ -7793,13 +6943,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         className="errorText tss-1iseh44-error-error"
                         id="ariaError-null"
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
+                        <Text
                           string=""
-                          transform={null}
                         />
                       </div>
                     </ErrorText>
@@ -7839,13 +6984,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -7861,21 +7001,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_author"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_author
-                        </span>
-                      </Translate>
+                        reviews.review_form_author
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -8015,13 +7145,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -8060,13 +7185,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -8082,21 +7202,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_title"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_title
-                        </span>
-                      </Translate>
+                        reviews.review_form_title
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -8236,13 +7346,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -8281,13 +7386,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -8303,21 +7403,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_text"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_text
-                        </span>
-                      </Translate>
+                        reviews.review_form_text
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -8448,13 +7538,8 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -8473,53 +7558,19 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     <div
                       className="tss-15ekmou-buttonLine"
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={false}
-                        nativeType="button"
+                      <button
+                        className="tss-4cw4vm-cancelButton"
+                        data-test-id="reviewCancelButton"
                         onClick={[Function]}
-                        testId="reviewCancelButton"
-                        type="regular"
-                        wrapContent={true}
+                        type="button"
                       >
-                        <Button
-                          className="ui-shared__button tss-1cs55nz-button "
-                          disabled={false}
-                          onClick={[Function]}
-                          testId="reviewCancelButton"
-                          type="button"
+                        <Text
+                          string="common.cancel"
                         >
-                          <button
-                            className="ui-shared__button tss-1cs55nz-button  tss-16c9pag-root common__button"
-                            data-test-id="reviewCancelButton"
-                            disabled={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <div
-                              className="tss-7ia9r1-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.cancel"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.cancel
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                      <RippleButtonWithStyles
+                          common.cancel
+                        </Text>
+                      </button>
+                      <RippleButton
                         className=""
                         disabled={false}
                         flat={false}
@@ -8530,95 +7581,54 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                         type="secondary"
                         wrapContent={true}
                       >
-                        <RippleButton
-                          className=""
-                          classes={
-                            {
-                              "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                            }
-                          }
+                        <Button
+                          className=" ui-shared__ripple-button"
                           disabled={false}
                           flat={false}
                           onClick={null}
-                          rippleClassName=""
-                          rippleSize={null}
                           testId="sendReviewButton"
                           type="secondary"
-                          wrapContent={true}
+                          wrapContent={false}
                         >
                           <Button
-                            className=" ui-shared__ripple-button"
+                            className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
                             disabled={false}
-                            flat={false}
                             onClick={null}
                             testId="sendReviewButton"
-                            type="secondary"
-                            wrapContent={false}
                           >
-                            <Button
-                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
+                            <button
+                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
+                              data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
-                              testId="sendReviewButton"
-                              type="button"
                             >
-                              <button
-                                className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                data-test-id="sendReviewButton"
+                              <Ripple
+                                className="tss-1hy7q46-contentWrapper"
+                                color="#000"
                                 disabled={false}
-                                onClick={null}
-                                type="button"
+                                fill={true}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={true}
+                                size={null}
                               >
-                                <RippleWithStyles
-                                  className="tss-p1t6ie-RippleButton-contentWrapper "
-                                  fill={true}
-                                  overflow={true}
-                                  size={null}
+                                <div
+                                  className="ui-shared__ripple tss-1hy7q46-contentWrapper"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={null}
                                 >
-                                  <Ripple
-                                    className="tss-p1t6ie-RippleButton-contentWrapper "
-                                    classes={
-                                      {
-                                        "container": "tss-1dfkr3n-Ripple-container",
-                                      }
-                                    }
-                                    color="#000"
-                                    disabled={false}
-                                    fill={true}
-                                    onClick={[Function]}
-                                    onComplete={[Function]}
-                                    overflow={true}
-                                    size={null}
+                                  <Text
+                                    string="common.submit"
                                   >
-                                    <div
-                                      className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                      data-test-id="Ripple"
-                                      onClick={[Function]}
-                                      style={null}
-                                    >
-                                      <Translate
-                                        acceptPlainTextWithPlaceholders={false}
-                                        className={null}
-                                        params={{}}
-                                        role={null}
-                                        string="common.submit"
-                                        transform={null}
-                                      >
-                                        <span
-                                          className={null}
-                                          role={null}
-                                        >
-                                          common.submit
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Ripple>
-                                </RippleWithStyles>
-                              </button>
-                            </Button>
+                                    common.submit
+                                  </Text>
+                                </div>
+                              </Ripple>
+                            </button>
                           </Button>
-                        </RippleButton>
-                      </RippleButtonWithStyles>
+                        </Button>
+                      </RippleButton>
                     </div>
                   </FormButtons>
                 </Component>
@@ -8697,15 +7707,15 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     >
                       <div
                         aria-label="reviews.rating_stars"
-                        className="tss-p4e9kp-container ui-shared__rating-stars"
+                        className="tss-1tckjm8-container ui-shared__rating-stars"
                         data-test-id="ratedStars: 0"
                       >
                         <div
-                          className="tss-ckws8t-emptyStars rating-stars-empty"
+                          className="tss-170uo4n-emptyStars rating-stars-empty"
                         >
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="1"
                             onClick={[Function]}
                             role="button"
@@ -8738,7 +7748,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="2"
                             onClick={[Function]}
                             role="button"
@@ -8771,7 +7781,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="3"
                             onClick={[Function]}
                             role="button"
@@ -8804,7 +7814,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="4"
                             onClick={[Function]}
                             role="button"
@@ -8837,7 +7847,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           </div>
                           <div
                             aria-label="reviews.press_to_rate_with_x_stars"
-                            className="tss-xt5heo-icon tss-1i3xs02-iconGapLarge"
+                            className="tss-14pcrjo-icon tss-1i3xs02-iconGapLarge"
                             key="5"
                             onClick={[Function]}
                             role="button"
@@ -8870,7 +7880,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           </div>
                         </div>
                         <div
-                          className="tss-1a3jay-filledStars rating-stars-filled"
+                          className="tss-8o0m3k-filledStars rating-stars-filled"
                         />
                       </div>
                     </RatingStars>
@@ -8889,21 +7899,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         className="errorText tss-1iseh44-error-error"
                         id="ariaError-null"
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
+                        <Text
                           string="reviews.review_form_rate_error"
-                          transform={null}
                         >
-                          <span
-                            className={null}
-                            role={null}
-                          >
-                            reviews.review_form_rate_error
-                          </span>
-                        </Translate>
+                          reviews.review_form_rate_error
+                        </Text>
                       </div>
                     </ErrorText>
                   </span>
@@ -8912,7 +7912,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
               <TextField
                 className=""
                 disabled={false}
-                errorText="reviews.review_form_error_author_empty"
+                errorText=""
                 hintText=""
                 id="author"
                 inputComponent="input"
@@ -8930,7 +7930,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                 showErrorText={true}
                 translateErrorText={true}
                 type="text"
-                value=""
+                value="Jane Doe"
               >
                 <div
                   className="tss-1i5dsir-input textField ui-shared__text-field"
@@ -8942,50 +7942,35 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
                   <Label
-                    hasErrorMessage={true}
-                    isFloating={false}
+                    hasErrorMessage={false}
+                    isFloating={true}
                     isFocused={false}
                     label="reviews.review_form_author"
                     name="author"
                   >
                     <label
                       aria-hidden={true}
-                      className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
+                      className="tss-pg61ut-label tss-1htzgz4-labelFloating tss-1i3zwex-labelRegular label floating"
                       htmlFor="author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_author"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_author
-                        </span>
-                      </Translate>
+                        reviews.review_form_author
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
                     attributes={
                       {
-                        "aria-describedby": "ariaError-author",
-                        "aria-invalid": true,
+                        "aria-describedby": null,
+                        "aria-invalid": false,
                       }
                     }
                     disabled={false}
@@ -9002,13 +7987,13 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     required={false}
                     setRef={[Function]}
                     type="text"
-                    value=""
+                    value="Jane Doe"
                   >
                     <_default
                       attributes={
                         {
-                          "aria-describedby": "ariaError-author",
-                          "aria-invalid": true,
+                          "aria-describedby": null,
+                          "aria-invalid": false,
                         }
                       }
                       className="tss-1w45uhc-input"
@@ -9027,13 +8012,13 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       setRef={[Function]}
                       type="text"
                       validateOnBlur={true}
-                      value=""
+                      value="Jane Doe"
                     >
                       <SimpleInput
                         attributes={
                           {
-                            "aria-describedby": "ariaError-author",
-                            "aria-invalid": true,
+                            "aria-describedby": null,
+                            "aria-invalid": false,
                           }
                         }
                         autoComplete={false}
@@ -9056,11 +8041,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         setRef={[Function]}
                         type="text"
                         validateOnBlur={true}
-                        value=""
+                        value="Jane Doe"
                       >
                         <input
-                          aria-describedby="ariaError-author"
-                          aria-invalid={true}
+                          aria-describedby={null}
+                          aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
                           className="tss-1w45uhc-input simpleInput common__simple-input"
@@ -9079,13 +8064,13 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           required={false}
                           step={null}
                           type="text"
-                          value=""
+                          value="Jane Doe"
                         />
                       </SimpleInput>
                     </_default>
                   </FormElement>
                   <Underline
-                    hasErrorMessage={true}
+                    hasErrorMessage={false}
                     isFocused={false}
                   >
                     <div
@@ -9096,7 +8081,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         className="tss-ll3grb-underline"
                         style={
                           {
-                            "borderBottomColor": "var(--color-state-alert)",
+                            "borderBottomColor": "var(--color-primary, #fa5400)",
+                            "transform": "scale3d(0,1,1)",
                           }
                         }
                       />
@@ -9106,7 +8092,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     ariaHidden={false}
                     className=""
                     elementName="author"
-                    errorText="reviews.review_form_error_author_empty"
+                    errorText=""
                     translate={true}
                     validationError={null}
                   >
@@ -9117,21 +8103,9 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-author"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
-                        string="reviews.review_form_error_author_empty"
-                        transform={null}
-                      >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_error_author_empty
-                        </span>
-                      </Translate>
+                      <Text
+                        string=""
+                      />
                     </div>
                   </ErrorText>
                 </div>
@@ -9169,13 +8143,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -9191,21 +8160,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
                       htmlFor="title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_title"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_title
-                        </span>
-                      </Translate>
+                        reviews.review_form_title
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -9345,13 +8304,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-title"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -9390,13 +8344,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <div
                       className="tss-1mt0tl9-hint tss-12vba41-hintInactive hint"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </Hint>
@@ -9412,21 +8361,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="tss-pg61ut-label tss-1i3zwex-labelRegular label"
                       htmlFor="review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string="reviews.review_form_text"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          reviews.review_form_text
-                        </span>
-                      </Translate>
+                        reviews.review_form_text
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -9557,13 +8496,8 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                       className="tss-73l1he-error errorText"
                       id="ariaError-review"
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
-                        className={null}
-                        params={{}}
-                        role={null}
+                      <Text
                         string=""
-                        transform={null}
                       />
                     </div>
                   </ErrorText>
@@ -9582,53 +8516,19 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     <div
                       className="tss-15ekmou-buttonLine"
                     >
-                      <Button
-                        className=""
-                        disabled={false}
-                        flat={false}
-                        nativeType="button"
+                      <button
+                        className="tss-4cw4vm-cancelButton"
+                        data-test-id="reviewCancelButton"
                         onClick={[Function]}
-                        testId="reviewCancelButton"
-                        type="regular"
-                        wrapContent={true}
+                        type="button"
                       >
-                        <Button
-                          className="ui-shared__button tss-1cs55nz-button "
-                          disabled={false}
-                          onClick={[Function]}
-                          testId="reviewCancelButton"
-                          type="button"
+                        <Text
+                          string="common.cancel"
                         >
-                          <button
-                            className="ui-shared__button tss-1cs55nz-button  tss-16c9pag-root common__button"
-                            data-test-id="reviewCancelButton"
-                            disabled={false}
-                            onClick={[Function]}
-                            type="button"
-                          >
-                            <div
-                              className="tss-7ia9r1-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.cancel"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.cancel
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                      <RippleButtonWithStyles
+                          common.cancel
+                        </Text>
+                      </button>
+                      <RippleButton
                         className=""
                         disabled={false}
                         flat={false}
@@ -9639,95 +8539,54 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                         type="secondary"
                         wrapContent={true}
                       >
-                        <RippleButton
-                          className=""
-                          classes={
-                            {
-                              "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                            }
-                          }
+                        <Button
+                          className=" ui-shared__ripple-button"
                           disabled={false}
                           flat={false}
                           onClick={null}
-                          rippleClassName=""
-                          rippleSize={null}
                           testId="sendReviewButton"
                           type="secondary"
-                          wrapContent={true}
+                          wrapContent={false}
                         >
                           <Button
-                            className=" ui-shared__ripple-button"
+                            className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
                             disabled={false}
-                            flat={false}
                             onClick={null}
                             testId="sendReviewButton"
-                            type="secondary"
-                            wrapContent={false}
                           >
-                            <Button
-                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button"
+                            <button
+                              className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
+                              data-test-id="sendReviewButton"
                               disabled={false}
                               onClick={null}
-                              testId="sendReviewButton"
-                              type="button"
                             >
-                              <button
-                                className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                data-test-id="sendReviewButton"
+                              <Ripple
+                                className="tss-1hy7q46-contentWrapper"
+                                color="#000"
                                 disabled={false}
-                                onClick={null}
-                                type="button"
+                                fill={true}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={true}
+                                size={null}
                               >
-                                <RippleWithStyles
-                                  className="tss-p1t6ie-RippleButton-contentWrapper "
-                                  fill={true}
-                                  overflow={true}
-                                  size={null}
+                                <div
+                                  className="ui-shared__ripple tss-1hy7q46-contentWrapper"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={null}
                                 >
-                                  <Ripple
-                                    className="tss-p1t6ie-RippleButton-contentWrapper "
-                                    classes={
-                                      {
-                                        "container": "tss-1dfkr3n-Ripple-container",
-                                      }
-                                    }
-                                    color="#000"
-                                    disabled={false}
-                                    fill={true}
-                                    onClick={[Function]}
-                                    onComplete={[Function]}
-                                    overflow={true}
-                                    size={null}
+                                  <Text
+                                    string="common.submit"
                                   >
-                                    <div
-                                      className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                      data-test-id="Ripple"
-                                      onClick={[Function]}
-                                      style={null}
-                                    >
-                                      <Translate
-                                        acceptPlainTextWithPlaceholders={false}
-                                        className={null}
-                                        params={{}}
-                                        role={null}
-                                        string="common.submit"
-                                        transform={null}
-                                      >
-                                        <span
-                                          className={null}
-                                          role={null}
-                                        >
-                                          common.submit
-                                        </span>
-                                      </Translate>
-                                    </div>
-                                  </Ripple>
-                                </RippleWithStyles>
-                              </button>
-                            </Button>
+                                    common.submit
+                                  </Text>
+                                </div>
+                              </Ripple>
+                            </button>
                           </Button>
-                        </RippleButton>
-                      </RippleButtonWithStyles>
+                        </Button>
+                      </RippleButton>
                     </div>
                   </FormButtons>
                 </Component>

@@ -26,14 +26,12 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
       disabled={true}
       onClick={null}
       testId="Button"
-      type="button"
     >
       <button
         className="ui-shared__button tss-u02dqw-button  ui-shared__ripple-button tss-16c9pag-root common__button"
         data-test-id="Button"
         disabled={true}
         onClick={null}
-        type="button"
       >
         <div
           className="tss-p9yt3o-content"
@@ -72,14 +70,12 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
       disabled={false}
       onClick={null}
       testId="Button"
-      type="button"
     >
       <button
         className="ui-shared__button tss-hgw3or-button  ui-shared__ripple-button tss-16c9pag-root common__button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
-        type="button"
       >
         <Ripple
           className="tss-1hy7q46-contentWrapper"
@@ -132,14 +128,12 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
       disabled={false}
       onClick={null}
       testId="Button"
-      type="button"
     >
       <button
         className="ui-shared__button tss-hgw3or-button  ui-shared__ripple-button tss-16c9pag-root common__button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
-        type="button"
       >
         <Ripple
           className="tss-1hy7q46-contentWrapper"
@@ -192,14 +186,12 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
       disabled={false}
       onClick={null}
       testId="Button"
-      type="button"
     >
       <button
         className="ui-shared__button tss-1cs55nz-button  ui-shared__ripple-button tss-16c9pag-root common__button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
-        type="button"
       >
         <Ripple
           className="tss-1hy7q46-contentWrapper"
@@ -252,14 +244,12 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
       disabled={false}
       onClick={null}
       testId="Button"
-      type="button"
     >
       <button
         className="ui-shared__button tss-x945ka-button  ui-shared__ripple-button tss-16c9pag-root common__button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
-        type="button"
       >
         <Ripple
           className="tss-1hy7q46-contentWrapper"

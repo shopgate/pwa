@@ -104,7 +104,6 @@ const Button = (props) => {
     className,
     flat,
     disabled,
-    nativeType,
     testId,
     type,
     wrapContent,
@@ -131,7 +130,6 @@ const Button = (props) => {
       className={`ui-shared__button ${classes.button} ${className}`}
       disabled={disabled}
       onClick={onClick}
-      type={nativeType || 'button'}
       testId={testId}
     >
       {content}
@@ -143,7 +141,6 @@ Button.propTypes = {
   ...BaseButton.propTypes,
   className: PropTypes.string,
   flat: PropTypes.bool,
-  nativeType: PropTypes.oneOf(['button', 'submit', 'reset']),
   testId: PropTypes.string,
   type: PropTypes.oneOf(buttonTypes),
   wrapContent: PropTypes.bool,
@@ -153,7 +150,6 @@ Button.defaultProps = {
   ...BaseButton.defaultProps,
   className: '',
   flat: false,
-  nativeType: undefined,
   type: 'primary',
   wrapContent: true,
   testId: 'Button',
