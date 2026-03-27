@@ -10,16 +10,16 @@ const ellipsisLine = {
   textOverflow: 'ellipsis',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   error: {
     position: 'absolute',
     bottom: 2,
     fontSize: 12,
     lineHeight: '14px',
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
     ...ellipsisLine,
   },
-});
+}));
 
 /**
  * Error message component.

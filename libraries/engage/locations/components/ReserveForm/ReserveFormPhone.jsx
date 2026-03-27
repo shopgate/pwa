@@ -48,7 +48,7 @@ const useStyles = makeStyles()(theme => ({
   },
   phoneFieldError: {
     ' input.PhoneInputInput': {
-      borderBottom: '2px solid var(--color-state-alert) !important',
+      borderBottom: `2px solid ${theme.palette.error.main} !important`,
       paddingBottom: theme.spacing(0.75) - 1,
     },
   },
@@ -58,7 +58,7 @@ const useStyles = makeStyles()(theme => ({
     bottom: 2,
     fontSize: '0.75rem',
     lineHeight: 0.875,
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',

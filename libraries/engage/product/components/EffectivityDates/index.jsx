@@ -12,14 +12,14 @@ import { PRODUCT_EFFECTIVITY_DATES } from '@shopgate/pwa-common-commerce/product
 import { showExpiringLabel, showScheduledLabel } from './helpers';
 import connect from './connector';
 
-const useStyles = makeStyles()((_, { hintStyle }) => ({
+const useStyles = makeStyles()((theme, { hintStyle }) => ({
   hint: {
-    color: 'var(--color-state-ok)',
+    color: theme.palette.success.main,
     fontSize: '0.75rem',
     ...(hintStyle || {}),
   },
   notAvailable: {
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
     fontSize: '0.75rem',
   },
 }));

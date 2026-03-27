@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   form: {
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ...StylePresets.getOutlinedFormFields(theme),
   },
   submitButton: {
     width: '100%',

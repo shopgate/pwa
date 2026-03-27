@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     bottom: 2,
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
     fontSize: 12,
     lineHeight: '14px',
     overflow: 'hidden',
@@ -15,7 +15,7 @@ const useStyles = makeStyles()({
     whiteSpace: 'nowrap',
     width: '100%',
   },
-});
+}));
 
 /**
  * Error message component.

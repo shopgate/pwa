@@ -92,7 +92,7 @@ const useStyles = makeStyles()(theme => ({
     paddingTop: theme.spacing(3),
     '--form-element-left-offset': '30px',
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
-      ...StylePresets.OUTLINED_FORM_FIELDS,
+      ...StylePresets.getOutlinedFormFields(theme),
       ' .simpleInput': {
         paddingLeft: theme.spacing(2),
       },

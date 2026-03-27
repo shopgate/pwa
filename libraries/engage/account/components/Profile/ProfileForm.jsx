@@ -6,14 +6,14 @@ import { StylePresets } from '@shopgate/engage/components/Form';
 import { useProfileContext } from './Profile.provider';
 import generateFormConfig from './Profile.config';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     marginBottom: 16,
   },
   form: {
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ...StylePresets.getOutlinedFormFields(theme),
     ...StylePresets.TWO_COLUMN_LAYOUT,
     ' .container-checkbox': {
       [responsiveMediaQuery('>=md', { webOnly: false })]: {
@@ -39,9 +39,9 @@ const useStyles = makeStyles()({
     '&&': {
       marginTop: 8,
       marginRight: 16,
-      border: '1px solid var(--color-state-alert)',
+      border: `1px solid ${theme.palette.error.main}`,
       backgroundColor: '#fff',
-      color: 'var(--color-state-alert)',
+      color: theme.palette.error.main,
       borderRadius: 5,
       fontSize: 14,
       textTransform: 'none',
@@ -63,7 +63,7 @@ const useStyles = makeStyles()({
       flexDirection: 'column-reverse',
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}

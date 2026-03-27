@@ -12,13 +12,13 @@ const useStyles = makeStyles()(theme => ({
     fontSize: ' 0.75rem',
   },
   error: {
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
   },
   warning: {
-    color: 'var(--color-state-warning)',
+    color: theme.palette.warning.main,
   },
   info: {
-    color: 'var(--color-state-ok)',
+    color: theme.palette.success.main,
   },
 }));
 

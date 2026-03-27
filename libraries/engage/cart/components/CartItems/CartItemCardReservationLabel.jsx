@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: '1.25rem',
     marginRight: theme.spacing(2.5),
     flexShrink: 0,
-    color: 'var(--color-text-heigh-emphasis)',
+    color: theme.palette.text.primary,
   },
   titles: {
     marginTop: -3,

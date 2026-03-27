@@ -43,12 +43,12 @@ const mapDispatchToProps = dispatch => ({
   })),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     margin: 16,
   },
   form: {
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ...StylePresets.getOutlinedFormFields(theme),
     ...StylePresets.TWO_COLUMN_LAYOUT,
     ' .profileAddressFormRegion': {
       [responsiveMediaQuery('>=md', { webOnly: false })]: {
@@ -82,7 +82,7 @@ const useStyles = makeStyles()({
       flex: 1,
     },
   },
-});
+}));
 
 /**
  * @param {Object} props Props.

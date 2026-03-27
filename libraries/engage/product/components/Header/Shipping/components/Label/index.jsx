@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   text: {
-    color: 'var(--color-state-ok)',
+    color: theme.palette.success.main,
   },
-});
+}));
 
 /**
  * The Shipping Label component.

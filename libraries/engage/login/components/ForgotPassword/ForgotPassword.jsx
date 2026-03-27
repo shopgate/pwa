@@ -35,7 +35,7 @@ const useStyles = makeStyles()(theme => ({
   },
   form: {
     paddingTop: 24,
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ...StylePresets.getOutlinedFormFields(theme),
     ' .simpleInput': {
       paddingLeft: theme.spacing(2),
     },
@@ -55,7 +55,7 @@ const useStyles = makeStyles()(theme => ({
       color: 'var(--color-text-medium-emphasis)',
     },
     ' .simpleInput': {
-      color: 'var(--color-text-heigh-emphasis)',
+      color: theme.palette.text.primary,
     },
   },
   resetInstructions: {

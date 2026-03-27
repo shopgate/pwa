@@ -2,13 +2,13 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import defaultsDeep from 'lodash/defaultsDeep';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { makeGetLocationInventory } from '../../selectors';
 import { getThemeSettings } from '../../../core';
 import { SurroundPortals } from '../../../components';
 import { PRODUCT_LOCATION_STOCK_INFO } from '../../constants';
 import { getAvailabilitySettings } from '../../helpers';
-import defaultSettings from './StockInfo.defaultSettings';
+import { createStockInfoDefaultSettings } from './StockInfo.defaultSettings';
 import { StockInfoInventory } from './StockInfoInventory';
 
 const useStyles = makeStyles()((_, { classNameProp, availabilityTextColor }) => ({
@@ -43,8 +43,12 @@ const makeMapStateToProps = () => {
  * @return {JSX}
  */
 const StockInfoUnwrapped = ({ location, inventory, className }) => {
+  const theme = useTheme();
   const { locationStockInfo } = getThemeSettings('product') || {};
-  const settings = defaultsDeep(locationStockInfo, defaultSettings);
+  const settings = React.useMemo(
+    () => defaultsDeep(locationStockInfo, createStockInfoDefaultSettings(theme)),
+    [locationStockInfo, theme]
+  );
 
   const { availabilityText = '', availabilityTextColor = 'inherit', comingSoon = false } =
     getAvailabilitySettings(settings, location, inventory);

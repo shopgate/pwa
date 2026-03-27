@@ -16,7 +16,7 @@ const ellipsisLine = {
   textOverflow: 'ellipsis',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   label: {
     position: 'absolute',
     left: 0,
@@ -40,9 +40,9 @@ const useStyles = makeStyles()({
     color: colors.focus,
   },
   labelError: {
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
   },
-});
+}));
 
 /**
  * Renders the label element.

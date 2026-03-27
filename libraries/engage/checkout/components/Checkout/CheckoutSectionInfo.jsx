@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
   textWrapper: {
     paddingTop: theme.spacing(0.5),
     fontSize: '0.75rem',
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
   },
   iconWrapper: {
     cursor: 'pointer',

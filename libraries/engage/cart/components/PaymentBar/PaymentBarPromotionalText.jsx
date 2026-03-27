@@ -14,7 +14,7 @@ const mapDispatchToProps = {
 const useStyles = makeStyles()(theme => ({
   textWrapper: {
     padding: theme.spacing(0.5, 0),
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
     order: 3,
   },
   line: {
@@ -78,6 +78,7 @@ const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
             className={cx(classes.textWrapper, {
               [classes.loading]: isLoading,
             })}
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: nl2br(text) }}
           />
           <CartTotalLine.Spacer className={classes.spacer} />

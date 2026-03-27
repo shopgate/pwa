@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
     ' .guestCheckoutOptInMarketingOptIn .checkbox': {
       paddingBottom: 0,
     },
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ...StylePresets.getOutlinedFormFields(theme),
   },
 }));
 

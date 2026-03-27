@@ -5,7 +5,7 @@ import { errorBehavior, isIOSTheme } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   line: {
     justifyContent: 'start',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
@@ -17,13 +17,13 @@ const useStyles = makeStyles()({
     order: 2,
   },
   error: {
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
   },
   warning: {
-    color: 'var(--color-state-warning)',
+    color: theme.palette.warning.main,
   },
   info: {
-    color: 'var(--color-state-ok)',
+    color: theme.palette.success.main,
   },
   loading: {
     opacity: 0.4,
@@ -33,7 +33,7 @@ const useStyles = makeStyles()({
     order: 1,
     flexShrink: 0,
   },
-});
+}));
 
 /**
  * @param {Object} props The components props

@@ -6,7 +6,7 @@ import generateFormConfig from './GuestCheckoutPickupNotes.config';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     padding: '16px 16px 0',
     paddingTop: 0,
@@ -18,9 +18,9 @@ const useStyles = makeStyles()({
     ' .textField': {
       marginBottom: '16px !important',
     },
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ...StylePresets.getOutlinedFormFields(theme),
   },
-});
+}));
 
 /**
  * GuestCheckoutPickupNotes

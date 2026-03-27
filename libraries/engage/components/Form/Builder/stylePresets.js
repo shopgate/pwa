@@ -24,7 +24,12 @@ export const TWO_COLUMN_LAYOUT = {
   },
 };
 
-export const OUTLINED_FORM_FIELDS = {
+/**
+ * Outlined form field styles
+ * @param {Object} theme Engage theme from `makeStyles()(theme => …)`.
+ * @returns {Object}
+ */
+export const getOutlinedFormFields = theme => ({
   ' .formHelper': {
     minHeight: 32,
     ' .errorText': {
@@ -58,7 +63,7 @@ export const OUTLINED_FORM_FIELDS = {
     borderBottom: `1px solid ${colors.shade12}`,
   },
   ' .phonePickerError': {
-    borderBottom: '2px solid var(--color-state-alert)',
+    borderBottom: `2px solid ${theme.palette.error.main}`,
   },
   ' .phonePickerFocused:not(.phonePickerError)': {
     borderBottom: '2px solid var(--color-primary)',
@@ -149,4 +154,4 @@ export const OUTLINED_FORM_FIELDS = {
   ' .placeholder': {
     color: colors.shade12,
   },
-};
+});

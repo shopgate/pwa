@@ -44,7 +44,7 @@ const useStyles = makeStyles()(theme => ({
 
   phoneFieldError: {
     ' input.PhoneInputInput': {
-      borderBottom: '2px solid var(--color-state-alert)',
+      borderBottom: `2px solid ${theme.palette.error.main}`,
       paddingBottom: theme.spacing(0.75) - 1,
     },
   },

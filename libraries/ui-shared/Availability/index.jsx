@@ -7,20 +7,20 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   base: {
     fontSize: '0.875rem',
   },
   stateOk: {
-    color: 'var(--color-state-ok)',
+    color: theme.palette.success.main,
   },
   stateWarning: {
-    color: 'var(--color-state-warning)',
+    color: theme.palette.warning.main,
   },
   stateAlert: {
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
   },
-});
+}));
 
 /**
  * This component renders the availability text for a product

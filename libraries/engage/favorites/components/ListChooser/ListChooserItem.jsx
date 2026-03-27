@@ -24,15 +24,15 @@ const makeMapStateToProps = () => {
   });
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   remove: {
-    color: 'var(--color-state-alert)',
+    color: theme.palette.error.main,
   },
   add: {
-    color: 'var(--color-state-ok)',
+    color: theme.palette.success.main,
     whiteSpace: 'noWrap',
   },
-});
+}));
 
 /**
  * @param {Object} props Props.

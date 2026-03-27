@@ -31,7 +31,7 @@ const useStyles = makeStyles()(theme => ({
         color: 'var(--color-text-medium-emphasis)',
       },
     },
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ...StylePresets.getOutlinedFormFields(theme),
   },
 }));
 

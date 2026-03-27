@@ -10,7 +10,7 @@ import generateFormConfig from './RegistrationFormExtra.config';
 
 const useStyles = makeStyles()(theme => ({
   form: {
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+    ...StylePresets.getOutlinedFormFields(theme),
     ' .registrationOptInMarketingOptIn': {
       paddingTop: 0,
       paddingBottom: theme.spacing(2),
