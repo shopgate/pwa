@@ -12,6 +12,26 @@ import Layout from './components/Layout';
 export const WIDGET_ID = '@shopgate/engage/product/ProductGrid';
 
 /**
+ * Resolves the infinite-scroll loading indicator from optional Redux-driven fetch state.
+ * @param {boolean|undefined} resultIsFetching Redux isFetching when wired; else undefined.
+ * @param {Array} products Current product list.
+ * @param {number|null|undefined} totalProductCount Total count from the store.
+ * @param {string|null|undefined} requestHash Result hash for the list request.
+ * @returns {JSX.Element|null}
+ */
+const getListLoadingIndicator = (resultIsFetching, products, totalProductCount, requestHash) => {
+  if (typeof resultIsFetching !== 'boolean') {
+    return <LoadingIndicator />;
+  }
+  const waitingForFirstPayload =
+    !products.length && totalProductCount === null && !!requestHash;
+  if (resultIsFetching || waitingForFirstPayload) {
+    return <LoadingIndicator />;
+  }
+  return null;
+};
+
+/**
  * The Product Grid component.
  * @param {Object} props The component props.
  * @param {Array} props.products The list of products to display.
@@ -30,6 +50,7 @@ export const WIDGET_ID = '@shopgate/engage/product/ProductGrid';
  * loading is enabled.
  * @param {string} props.requestHash The hash for the current request. Needed when infinite loading
  * is enabled
+ * @param {boolean} [props.resultIsFetching] When set, loading indicator follows Redux fetch state.
  * @returns {JSX.Element}
  */
 const ProductGrid = ({
@@ -41,8 +62,15 @@ const ProductGrid = ({
   requestHash,
   scope,
   meta,
+  resultIsFetching,
 }) => {
   const { columns = 2 } = useWidgetSettings(WIDGET_ID) || {};
+  const listLoadingIndicator = getListLoadingIndicator(
+    resultIsFetching,
+    products,
+    totalProductCount,
+    requestHash
+  );
 
   if (!infiniteLoad) {
     return (
@@ -76,7 +104,7 @@ const ProductGrid = ({
             iterator={Iterator}
             loader={handleGetProducts}
             items={products}
-            loadingIndicator={<LoadingIndicator />}
+            loadingIndicator={listLoadingIndicator}
             totalItems={totalProductCount}
             initialLimit={ITEMS_PER_LOAD}
             limit={ITEMS_PER_LOAD}
@@ -100,6 +128,7 @@ ProductGrid.propTypes = {
   meta: PropTypes.shape(),
   products: PropTypes.arrayOf(PropTypes.shape()),
   requestHash: PropTypes.string,
+  resultIsFetching: PropTypes.bool,
   /**
    * Optional scope of the component. Will be used as subType property of the ProductListTypeContext
    * and is intended as a description in which "context" the component is used.
@@ -118,6 +147,7 @@ ProductGrid.defaultProps = {
   totalProductCount: null,
   scope: null,
   meta: null,
+  resultIsFetching: undefined,
 };
 
 export default ProductGrid;

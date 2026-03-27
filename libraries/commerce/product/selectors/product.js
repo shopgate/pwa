@@ -878,6 +878,7 @@ export const getPopulatedProductsResult = (state, props, hash, result) => {
   let products = [];
   let totalProductCount = !hash ? 0 : null;
   const expired = !!(result && result.expires && result.expires > 0 && result.expires < Date.now());
+  const isFetching = !!(result && result.isFetching);
 
   if (result && result.products) {
     totalProductCount = result.totalResultCount;
@@ -890,6 +891,7 @@ export const getPopulatedProductsResult = (state, props, hash, result) => {
     sort,
     hash,
     expired,
+    isFetching,
   };
 };
 
