@@ -890,6 +890,7 @@ export const getPopulatedProductsResult = (state, props, hash, result) => {
     sort,
     hash,
     expired,
+    isFetching: !!(result && result.isFetching),
   };
 };
 
