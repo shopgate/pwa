@@ -91,14 +91,14 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   },
   itemInactive: {
     ' *': {
-      color: 'var(--color-text-low-emphasis) !important',
+      color: `${theme.palette.text.secondary} !important`,
     },
     [` .${classes.image}`]: {
       opacity: 0.7,
     },
   },
   orderDetailsSubtotalLabel: {
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
   },
 }));
 

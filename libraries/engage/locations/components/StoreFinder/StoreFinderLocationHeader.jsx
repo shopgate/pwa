@@ -14,12 +14,12 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     ' > *': {
       margin: 0,
     },
     ' svg': {
-      color: 'var(--color-text-low-emphasis)',
+      color: theme.palette.text.secondary,
     },
     ' li': {
       paddingTop: 0,
@@ -48,7 +48,7 @@ const useStyles = makeStyles()(theme => ({
   storeName: {
     fontSize: '1rem',
     fontWeight: 500,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   myStoreWrapper: {
     display: 'flex',
@@ -76,7 +76,7 @@ const useStyles = makeStyles()(theme => ({
   },
   storeHoursToday: {
     ' > *': {
-      color: 'var(--color-text-low-emphasis)',
+      color: theme.palette.text.secondary,
     },
   },
 }));

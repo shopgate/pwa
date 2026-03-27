@@ -5,7 +5,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   list: {
-    background: theme.palette.background,
+    background: theme.palette.background.default,
   },
 }));
 

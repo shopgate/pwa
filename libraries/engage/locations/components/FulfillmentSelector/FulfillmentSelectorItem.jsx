@@ -57,7 +57,7 @@ const useStyles = makeStyles()(theme => ({
   },
   content: {
     flexGrow: 1,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
 }));
 

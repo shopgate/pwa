@@ -1,16 +1,13 @@
 import React from 'react';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   root: {
     '& + span': {
       paddingTop: 0,
     },
-    background: colors.background,
+    background: theme.palette.background.default,
     display: 'block',
     fontSize: 12,
     padding: theme.spacing(2.5, 2),

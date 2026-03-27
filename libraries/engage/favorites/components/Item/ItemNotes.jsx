@@ -7,7 +7,7 @@ import {
 import { makeStyles } from '@shopgate/engage/styles';
 import { getWishlistItemNotesEnabled } from '../../../core/selectors/shopSettings';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -26,7 +26,7 @@ const useStyles = makeStyles()({
   },
   comment: {
     fontSize: 17,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     fontWeight: 500,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
@@ -39,7 +39,7 @@ const useStyles = makeStyles()({
   buttons: {
     whiteSpace: 'nowrap',
   },
-});
+}));
 
 /**
  * @return {Function} The extended component props.

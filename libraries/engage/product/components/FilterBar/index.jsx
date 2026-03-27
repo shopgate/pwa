@@ -6,7 +6,7 @@ import { ResponsiveContainer } from '@shopgate/engage/components';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/engage';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import Provider from './FilterBarProvider';
 import Content from './components/Content';
 import Modal from './components/FilterModal';
@@ -24,7 +24,8 @@ const useStyles = makeStyles()({
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function FilterBar({ filters, categoryId }) {
+const FilterBar = ({ filters, categoryId }) => {
+  const theme = useTheme();
   const { classes } = useStyles();
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
@@ -38,11 +39,11 @@ function FilterBar({ filters, categoryId }) {
       : 'var(--color-background-accent)',
     color: active
       ? 'var(--color-primary)'
-      : 'var(--color-text-high-emphasis)',
+      : theme.palette.text.primary,
   } : {
-    background: active ? 'var(--color-secondary)' : colors.background,
+    background: active ? 'var(--color-secondary)' : theme.palette.background.default,
     color: active ? 'var(--color-secondary-contrast)' : colors.dark,
-  }), [active]);
+  }), [active, theme]);
 
   const sortScope = useMemo(
     () => (categoryId ? SORT_SCOPE_CATEGORY : SORT_SCOPE_SEARCH),
@@ -61,7 +62,7 @@ function FilterBar({ filters, categoryId }) {
       </SortProvider>
     </div>
   );
-}
+};
 
 FilterBar.propTypes = {
   categoryId: PropTypes.string,

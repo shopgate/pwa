@@ -2,20 +2,17 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { getGroupsFromProperties } from './helpers/getGroupsFromProperties';
 import GroupedProperties from './GroupedProperties';
 import Wrapper from './Wrapper';
 import Rows from './Rows';
 
-const { variables: { gap } = {}, colors = {} } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   groupsContainer: {
-    borderBottom: `3px solid ${colors.background}`,
-    marginBottom: gap.small * 1.5,
+    borderBottom: `3px solid ${theme.palette.background.default}`,
+    marginBottom: theme.spacing(1.5),
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

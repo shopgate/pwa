@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
   },
   name: {
     fontWeight: 500,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   button: {
     fontSize: '0.625rem !important',

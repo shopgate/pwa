@@ -7,7 +7,7 @@ import connect from './SupplementalContent.connector';
 const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'block',
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: 12,
     lineHeight: 'unset',
     padding: theme.spacing(2, 0),

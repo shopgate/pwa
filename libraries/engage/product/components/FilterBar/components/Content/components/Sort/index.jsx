@@ -50,7 +50,7 @@ const useStyles = makeStyles()(theme => ({
     overflow: 'hidden',
     textAlign: 'left',
     width: '100%',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     ':first-of-type': {
       marginTop: theme.spacing(1),
     },
@@ -84,7 +84,15 @@ const Sort = () => {
         icon={ArrowDropIcon}
         item={Item}
         className={`${classes.selectBox} theme__filter-bar__sort`}
-        classNames={classes}
+        classNames={{
+          button: classes.button,
+          selection: classes.selection,
+          icon: classes.icon,
+          iconOpen: classes.iconOpen,
+          dropdown: classes.dropdown,
+          selectItem: classes.selectItem,
+          selectItemSelected: classes.selectItemSelected,
+        }}
         testId="sorting"
       />
     </SurroundPortals>

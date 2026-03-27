@@ -34,14 +34,14 @@ const useStyles = makeStyles()(theme => ({
   total: {
     fontSize: '1rem',
     padding: theme.spacing(1, 0),
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   grandTotal: {
     fontSize: '1.25rem !important',
     fontWeight: 500,
     borderTop: `1px solid ${colors.shade4}`,
     padding: theme.spacing(1, 0),
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     '&:last-child': {
       paddingBottom: 0,
     },

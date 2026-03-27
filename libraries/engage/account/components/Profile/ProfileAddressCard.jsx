@@ -11,7 +11,7 @@ import {
 import { RippleButton, Card, ContextMenu } from '@shopgate/engage/components';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     padding: 16,
     display: 'flex',
@@ -50,7 +50,7 @@ const useStyles = makeStyles()({
     },
   },
   name: {
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     flex: 1,
     fontSize: 16,
     fontWeight: '600',
@@ -60,7 +60,7 @@ const useStyles = makeStyles()({
     fontSize: 16,
   },
   defaultLabel: {
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: 15,
   },
   button: {
@@ -78,7 +78,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: '8px 16px',
   },
-});
+}));
 
 /**
  * @returns {JSX}

@@ -54,7 +54,7 @@ const useStyles = makeStyles()(theme => ({
     height: 28,
     width: '100%',
     fontWeight: 500,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     whiteSpace: 'nowrap',
   },
 }));

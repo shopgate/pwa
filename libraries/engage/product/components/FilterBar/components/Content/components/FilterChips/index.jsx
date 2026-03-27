@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
   },
   label: {
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
 }));
 

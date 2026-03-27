@@ -28,7 +28,7 @@ import { CHECKOUT_CONFIRMATION_PATTERN } from '../constants/routes';
  * @property {Object} fulfillmentSlot - The fulfillment slot.
  * @property {Object} pickupAddress - The pickup address.
  * @property {Array} taxLines - The tax lines.
- * @property {Object} userLocation - The user location.
+ * @property {Object|null} [userLocation=null] - Preferred location for phone picker defaults; may be absent.
  * @property {boolean} isDataReady - Indicates if the data is ready.
  * @property {boolean} [orderReserveOnly=false] - Indicates if the order is reserve-only.
  * @property {boolean} [isShippingAddressSelectionEnabled=false] - Indicates if shipping address selection is enabled.
@@ -548,10 +548,6 @@ CheckoutProvider.propTypes = {
   submitCheckoutOrder: PropTypes.func.isRequired,
   taxLines: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   updateCheckoutOrder: PropTypes.func.isRequired,
-  userLocation: PropTypes.shape({
-    latitude: PropTypes.number,
-    longitude: PropTypes.number,
-  }).isRequired,
   billingAddress: PropTypes.shape({
     customerContactId: PropTypes.string,
   }),
@@ -573,10 +569,18 @@ CheckoutProvider.propTypes = {
   shippingAddress: PropTypes.shape({
     customerContactId: PropTypes.string,
   }),
+  userLocation: PropTypes.oneOfType([
+    PropTypes.shape({
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+    }),
+    PropTypes.oneOf([null]),
+  ]),
 };
 
 CheckoutProvider.defaultProps = {
   billingAddress: null,
+  userLocation: null,
   campaignAttribution: null,
   fulfillmentSlot: null,
   isGuestCheckout: false,

@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: '1.25rem',
     fontWeight: 'normal',
     margin: theme.spacing(0, 0, 1, 0),
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     textTransform: 'none',
   },
   card: {

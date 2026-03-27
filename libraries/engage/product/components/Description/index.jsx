@@ -8,7 +8,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import classNames from 'classnames';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     fontSize: '0.875rem',
     padding: '0.8125rem 1rem 1rem',
@@ -17,13 +17,13 @@ const useStyles = makeStyles()({
     fontSize: '1rem',
     fontWeight: 500,
     marginBottom: '0.5rem',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   content: {
     lineHeight: 1.7,
     overflow: 'hidden',
     wordBreak: ['break-all', 'break-word'],
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     hyphens: 'auto',
     ' ul': {
       listStyle: 'disc',
@@ -36,7 +36,7 @@ const useStyles = makeStyles()({
       paddingLeft: '1.2em',
     },
     ' a': {
-      color: 'var(--color-primary)',
+      color: theme.palette.primary.main,
       margin: '-.35em',
       padding: '.35em',
       position: 'relative',
@@ -45,7 +45,7 @@ const useStyles = makeStyles()({
   placeholder: {
     height: '0.875rem',
   },
-});
+}));
 
 /**
  * The product description.

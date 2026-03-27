@@ -23,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
       fontSize: '1.25rem',
       lineHeight: '1.5rem',
       fontWeight: 500,
-      color: 'var(--color-text-high-emphasis)',
+      color: theme.palette.text.primary,
       textTransform: 'none',
     } : {}),
   },
@@ -58,7 +58,7 @@ const useStyles = makeStyles()(theme => ({
     fontWeight: 'bold',
     letterSpacing: '1.5px',
     textTransform: 'uppercase',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     ':not(:first-child)': {
       paddingTop: theme.spacing(1.5),
     },
@@ -72,7 +72,7 @@ const useStyles = makeStyles()(theme => ({
     color: 'var(--color-text-medium-emphasis)',
   },
   table: {
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     ' td': {
       padding: theme.spacing(0.5, 0),
     },
@@ -108,6 +108,7 @@ const CheckoutConfirmationSegment = ({
 
   const isString = typeof content === 'string';
 
+  /* eslint-disable react/no-danger */
   return (
     <div className={classNames(classes.wrapper, className)}>
       <h3 className={classes.headline}>{i18n.text(title)}</h3>
@@ -120,10 +121,10 @@ const CheckoutConfirmationSegment = ({
           <dl className={classes.list}>
             {content.map(({ label, text, link }) => (
               <Fragment key={label || text}>
-                { label && (
+                {label && (
                   <dt className={classes.listTitle}>{i18n.text(label)}</dt>
                 )}
-                { link ? (
+                {link ? (
                   <dd className={classes.listEntry}>
                     <TextLink href={link} className={classes.link}>
                       <span dangerouslySetInnerHTML={{ __html: text }} />
@@ -138,24 +139,26 @@ const CheckoutConfirmationSegment = ({
         )}
         {children}
         {isSummary && (
-        <table className={classes.table}>
-          <tbody>
-            {content.map(({ label, text }) => (
-              <tr key={label || text}>
-                { label && (
-                <td>{i18n.text(label)}</td>
-                )}
-                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                <td dangerouslySetInnerHTML={{ __html: text }} />
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <table className={classes.table}>
+            <tbody>
+              {content.map(({ label, text }) => (
+                <tr key={label || text}>
+                  {label && (
+                    <td>{i18n.text(label)}</td>
+                  )}
+                  {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                  <td dangerouslySetInnerHTML={{ __html: text }} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
       </Card>
     </div>
   );
 };
+
+/* eslint-enable react/no-danger */
 
 CheckoutConfirmationSegment.propTypes = {
   title: PropTypes.string.isRequired,

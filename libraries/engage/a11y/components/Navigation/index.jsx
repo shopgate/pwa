@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { Link, I18n } from '@shopgate/engage/components';
 
 const useStyles = makeStyles()({
@@ -21,18 +22,16 @@ const useStyles = makeStyles()({
  * @param {Object} props component props.
  * @param {string} props.title Navigation title.
  * @param {Array} props.entries Navigation entries.
- * @param {Object} context  The component context.
  * @returns {JSX}
  */
-const Navigation = ({ title, entries }, context) => {
+const Navigation = ({ title, entries }) => {
   const { classes } = useStyles();
-  const { __ } = context.i18n();
   if (!entries || !entries.length) {
     return null;
   }
 
   return (
-    <nav aria-label={title ? __(title) : null}>
+    <nav aria-label={title ? i18n.text(title) : null}>
       <ul className={classes.hiddenNavigation}>
         {entries.map(({ title: entryTitle, link }) => (
           <li key={link}>
@@ -57,10 +56,6 @@ Navigation.propTypes = {
 Navigation.defaultProps = {
   title: null,
   entries: [],
-};
-
-Navigation.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default Navigation;

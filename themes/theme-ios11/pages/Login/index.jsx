@@ -86,7 +86,7 @@ const useStyles = makeStyles()(theme => ({
   input: {
     width: '100%',
     ' .simpleInput': {
-      color: 'var(--color-text-high-emphasis)',
+      color: theme.palette.text.primary,
     },
   },
   forgotWrapper: {

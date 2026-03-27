@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
   },
   column: {
     margin: theme.spacing(2),
-    ':not(:first-child)': {
+    ':not(:first-of-type)': {
       marginLeft: 0,
     },
   },

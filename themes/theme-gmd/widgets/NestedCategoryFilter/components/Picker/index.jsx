@@ -8,10 +8,10 @@ import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import Sheet from './components/Sheet';
 import connect from './connector';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   button: {
     background: 'var(--color-background-accent)',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',

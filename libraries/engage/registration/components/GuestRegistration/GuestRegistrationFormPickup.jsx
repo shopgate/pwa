@@ -21,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: theme.spacing(2),
     },
     ' .guestFormPickupPerson .label span': {
-      color: 'var(--color-text-high-emphasis)',
+      color: theme.palette.text.primary,
       fontWeight: 'bold',
     },
     ' .guestFormPickupPerson .radioGroup': {

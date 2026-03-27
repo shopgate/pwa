@@ -10,17 +10,4 @@ const mapStateToProps = (state, props) => ({
   rating: getProductRating(state, props),
 });
 
-/**
- * @param {Object} next The next component props.
- * @param {Object} prev The previous component props.
- * @return {boolean}
- */
-const areStatePropsEqual = (next, prev) => {
-  if (!prev.rating && next.rating) {
-    return false;
-  }
-
-  return true;
-};
-
-export default connect(mapStateToProps, null, null, { areStatePropsEqual });
+export default connect(mapStateToProps);

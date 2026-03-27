@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
     height: themeConfig.variables.navigator.height,
     position: 'relative',
     zIndex: 2,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   closeIcon: {
     display: 'flex',

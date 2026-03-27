@@ -13,7 +13,7 @@ import { svgToDataUrl } from '../../../core';
 
 const useStyles = makeStyles()((theme) => {
   const overlayColor = theme?.colors?.lightOverlay || 'var(--color-background)';
-  const secondaryTextColor = theme?.colors?.gray || 'var(--color-text-low-emphasis)';
+  const secondaryTextColor = theme?.colors?.gray || theme.palette.text.secondary;
 
   return ({
     modalContent: {

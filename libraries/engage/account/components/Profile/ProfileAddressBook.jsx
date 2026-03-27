@@ -16,9 +16,9 @@ const mapDispatchToProps = dispatch => ({
   push: props => dispatch(historyPush(props)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   title: {
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     lineHeight: 2.5,
     fontSize: 17,
     fontWeight: '600',
@@ -55,7 +55,7 @@ const useStyles = makeStyles()({
       flex: 1,
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}

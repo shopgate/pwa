@@ -86,7 +86,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   },
   productProperties: {
     paddingTop: theme.spacing(1),
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: '1rem',
   },
   quantityPicker: {
@@ -100,13 +100,13 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     height: 28,
     width: '100%',
     fontWeight: 500,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     whiteSpace: 'nowrap',
   },
   containerInactive: {
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     [` .${classes.quantityPickerDisabled}`]: {
-      color: 'var(--color-text-low-emphasis)',
+      color: theme.palette.text.secondary,
     },
     [` .${classes.imageColumn}`]: {
       opacity: 0.7,
@@ -127,7 +127,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     wordBreak: 'break-word',
     fontSize: '0.75rem',
     lineHeight: '0.875rem',
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     padding: theme.spacing(0.5, 0),
   },
   contextMenu: {

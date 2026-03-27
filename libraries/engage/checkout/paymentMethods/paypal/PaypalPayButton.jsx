@@ -12,15 +12,15 @@ import { i18n } from '../../../core/helpers/i18n';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   headline: {
     fontSize: '1.25rem',
     fontWeight: 'normal',
     margin: '12px 0 12px 0',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     textTransform: 'none',
   },
-});
+}));
 
 /**
  * Paypal Pay button

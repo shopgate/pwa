@@ -19,7 +19,7 @@ const useStyles = makeStyles()((theme) => {
 
   return {
     container: {
-      background: colors.background,
+      background: theme.palette.background.default,
       display: 'flex',
       flexDirection: 'column',
       flexShrink: 0,
@@ -31,12 +31,12 @@ const useStyles = makeStyles()((theme) => {
     },
     error: {
       ...messageBase,
-      background: colors.error,
+      background: theme.palette.error.main,
       color: colors.light,
     },
     warning: {
       ...messageBase,
-      background: colors.warning,
+      background: theme.palette.warning.main,
       color: colors.light,
     },
   };

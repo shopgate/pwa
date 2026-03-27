@@ -15,6 +15,28 @@ import { useCheckoutContext } from '@shopgate/engage/checkout/hooks/common';
 import ShippingMethod from './ShippingMethod';
 import connect from './connector';
 
+/**
+ * List item wrapper for shipping radio cards. Defined at module scope so RadioCard always receives
+ * a stable renderCard component type.
+ * @param {Object} props Props.
+ * @param {React.ReactNode} props.children Child content.
+ * @param {string} [props.className] Class from RadioCard (maps to classes.root).
+ * @returns {JSX.Element}
+ */
+const ShippingMethodRadioListItem = ({ children, className }) => (
+  <li className={className}>{children}</li>
+);
+
+ShippingMethodRadioListItem.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+};
+
+ShippingMethodRadioListItem.defaultProps = {
+  children: null,
+  className: undefined,
+};
+
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(0, 2, 4),
@@ -24,7 +46,7 @@ const useStyles = makeStyles()(theme => ({
     fontWeight: 'normal',
     padding: theme.spacing(0, 1, 0, 0),
     margin: theme.spacing(0, 0, 1, 0),
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     textTransform: 'none',
   },
   container: {
@@ -75,24 +97,6 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
   } = shippingAddress?.orderSegment || {};
 
   const [selectedHash, setSelectedHash] = useState(hashShippingMethod(selectedShippingMethod));
-
-  /**
-   * Custom replacement for the wrapper component of the RadioCard
-   * @param {Object} props The component props
-   * @returns {JSX}
-   */
-  const CardComponent = ({ children }) => (
-    <li className={classes.card}>
-      { children}
-    </li>
-  );
-
-  CardComponent.propTypes = {
-    children: PropTypes.node,
-  };
-  CardComponent.defaultProps = {
-    children: null,
-  };
 
   useEffect(() => {
     // Update the selected hash when the selected shipping method updates
@@ -192,7 +196,8 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
         >
           { shippingMethods.map(shippingMethod => (
             <RadioCard
-              renderCard={CardComponent}
+              renderCard={ShippingMethodRadioListItem}
+              classes={{ root: classes.card }}
               value={shippingMethod.hash}
               key={shippingMethod.hash}
             >

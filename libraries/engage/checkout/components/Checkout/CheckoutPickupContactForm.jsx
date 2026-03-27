@@ -23,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: theme.spacing(2),
     },
     ' .pickupFormPickupPerson .label span': {
-      color: 'var(--color-text-high-emphasis)',
+      color: theme.palette.text.primary,
       fontWeight: 'bold',
     },
     ' .pickupFormPickupPerson .radioGroup': {

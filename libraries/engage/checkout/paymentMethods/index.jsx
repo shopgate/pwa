@@ -48,7 +48,7 @@ const useStyles = makeStyles()(theme => ({
     margin: theme.spacing(0, 0, 1, 0),
     marginLeft: 16,
     marginRight: 8,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     textTransform: 'none',
   },
   section: {

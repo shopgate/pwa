@@ -15,7 +15,7 @@ const useStyles = makeStyles()((theme) => {
     lineHeight: 1.2,
     outline: 'none',
     background: 'var(--color-background-accent)',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   };
 
   return {

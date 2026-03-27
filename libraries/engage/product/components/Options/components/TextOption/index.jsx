@@ -37,10 +37,10 @@ const useStyles = makeStyles()(theme => ({
     },
     '& input': {
       fontWeight: 500,
-      color: 'var(--color-text-high-emphasis)',
+      color: theme.palette.text.primary,
     },
     '& .placeholder': {
-      color: 'var(--color-text-low-emphasis)',
+      color: theme.palette.text.secondary,
     },
   },
   infoIcon: {

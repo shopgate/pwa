@@ -44,7 +44,7 @@ const fadeOutSheetDrawer = keyframes({
   '100%': { opacity: 0 },
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   section: {
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       display: 'flex',
@@ -70,7 +70,7 @@ const useStyles = makeStyles()({
     left: 0,
     right: 0,
     margin: '0 auto',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       position: 'initial',
     },
@@ -123,7 +123,7 @@ const useStyles = makeStyles()({
       animation: `${fadeOutSheetDrawer} ${duration}ms 1 both ${easing}`,
     },
   },
-});
+}));
 
 /**
  * @param {Object} props Props.

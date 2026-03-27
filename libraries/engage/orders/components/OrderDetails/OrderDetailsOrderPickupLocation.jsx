@@ -5,14 +5,14 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { CheckoutConfirmationSection } from '../../../checkout/components';
 import connect from './OrderDetailsOrderPickupLocation.connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   locationName: {
     margin: 0,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     fontSize: '1rem',
     fontWeight: 500,
   },
-});
+}));
 
 /**
  * OrderDetailsPickupLocation component

@@ -1,14 +1,11 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '../../../core/helpers/i18n';
 import { FulfillmentContext } from '../../locations.context';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   container: {
-    background: colors.background,
+    background: theme.palette.background.default,
     padding: theme.spacing(2, 1.5, 16),
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },

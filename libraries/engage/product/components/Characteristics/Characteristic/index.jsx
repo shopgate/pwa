@@ -11,10 +11,10 @@ import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import Sheet from './components/Sheet';
 import transition from '../transition';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   button: {
     background: 'var(--color-background-accent)',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     position: 'relative',
     cursor: 'pointer',
     display: 'flex',

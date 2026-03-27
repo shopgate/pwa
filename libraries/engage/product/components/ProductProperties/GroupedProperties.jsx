@@ -3,18 +3,15 @@ import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/pwa-ui-material';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Lists from './Lists';
 import ListsHTML from './ListsHTML';
 import Wrapper from './Wrapper';
 
-const { colors = {} } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   accordion: {
-    borderTop: `3px solid ${colors.background}`,
+    borderTop: `3px solid ${theme.palette.background.default}`,
   },
-});
+}));
 
 /**
  * Renders the properties as groups.

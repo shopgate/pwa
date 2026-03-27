@@ -25,7 +25,7 @@ const useStyles = makeStyles()((theme, { disabled }) => {
       padding: theme.spacing(1.75, 2.75),
       lineHeight: 1,
       zIndex: 1,
-      color: disabled ? 'var(--color-text-low-emphasis)' : 'inherits',
+      color: disabled ? theme.palette.text.secondary : 'inherits',
       ...(!disabled ? {
         cursor: 'pointer',
         '&:hover': {

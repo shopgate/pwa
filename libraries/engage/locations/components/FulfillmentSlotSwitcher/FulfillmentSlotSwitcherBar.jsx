@@ -12,7 +12,7 @@ const { variables } = themeConfig;
 const useStyles = makeStyles()(theme => ({
   wrapper: {
     fontSize: '0.875rem',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     background: 'var(--color-background-accent)',
   },
   inner: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles()(theme => ({
       fontSize: '0.875rem',
       textTransform: 'initial',
       padding: '0 !important',
-      color: 'var(--color-text-high-emphasis)',
+      color: theme.palette.text.primary,
       fontWeight: 500,
     },
   },

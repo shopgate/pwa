@@ -14,7 +14,7 @@ import StripeContext from './StripeProvider.context';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     padding: '0 16px',
     display: 'flex',
@@ -29,7 +29,7 @@ const useStyles = makeStyles()({
       borderBottom: `1px solid ${colors.shade12}`,
     },
     ' .formElement label': {
-      color: 'var(--color-text-low-emphasis)',
+      color: theme.palette.text.secondary,
       paddingLeft: 24,
     },
     ' .underline': {
@@ -55,7 +55,7 @@ const useStyles = makeStyles()({
   expiry: {
     flex: 1,
   },
-});
+}));
 
 /* eslint-disable react/prop-types */
 /**

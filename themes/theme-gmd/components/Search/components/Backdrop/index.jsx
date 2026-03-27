@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    background: colors.background,
+    background: theme.palette.background.default,
     bottom: 0,
     left: 0,
     position: 'absolute',
@@ -15,7 +12,7 @@ const useStyles = makeStyles()({
     top: 0,
     width: '100%',
   },
-});
+}));
 
 /**
  * The SuggestionsBackdrop component.

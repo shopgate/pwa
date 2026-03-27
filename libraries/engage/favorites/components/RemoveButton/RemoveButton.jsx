@@ -5,11 +5,11 @@ import { Ripple } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     borderRadius: '50%',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     fontSize: '1.5rem',
     padding: '0 8px 8px 8px',
     lineHeight: 1,
@@ -21,7 +21,7 @@ const useStyles = makeStyles()({
   ripple: {
     flexShrink: 0,
   },
-});
+}));
 
 /**
  * The remove favorites button component.

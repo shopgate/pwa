@@ -30,7 +30,7 @@ const useStyles = makeStyles()((theme, { level }) => ({
     flexGrow: 1,
     textAlign: 'left',
     outline: 0,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     ':hover': {
       color: 'var(--color-primary)',
     },

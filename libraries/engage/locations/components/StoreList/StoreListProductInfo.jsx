@@ -5,17 +5,17 @@ import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { ProductGridPrice } from '../../../product';
 import { FulfillmentContext } from '../../locations.context';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   productInfo: {
     alignItems: 'flex-end',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   productInfoLeft: {
     fontSize: '0.875rem',
     color: themeColors.shade11,
   },
   priceInfo: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     flexGrow: 0,
     textAlign: 'right',
     wordBreak: 'break-word',
@@ -23,7 +23,7 @@ const useStyles = makeStyles()({
       flexDirection: 'column-reverse',
     },
   },
-});
+}));
 
 /**
  * Renders the product information of the store list.

@@ -8,7 +8,7 @@ const useStyles = makeStyles()(theme => ({
     padding: 16,
     textAlign: 'left',
     width: '100%',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   buttonSelected: {
     background: 'var(--color-background-accent)',

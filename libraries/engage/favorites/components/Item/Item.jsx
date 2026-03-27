@@ -61,6 +61,8 @@ import {
   FAVORITES_QUANTITY,
 } from '../../constants/Portals';
 
+const EMPTY_CHARACTERISTICS = [];
+
 /**
  * @return {Function} The extended component props.
  */
@@ -148,7 +150,7 @@ const useStyles = makeStyles()(theme => ({
     wordBreak: 'break-word',
     fontSize: '0.875rem',
     lineHeight: '0.875rem',
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     padding: theme.spacing(0.5, 0),
   },
   titleWrapper: {
@@ -199,7 +201,7 @@ const FavoriteItem = ({
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
   const hasStrikePrice = typeof specialPrice === 'number' && specialPrice > defaultPrice;
-  const characteristics = product?.characteristics || [];
+  const characteristics = product?.characteristics ?? EMPTY_CHARACTERISTICS;
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
   const notesButtonRef = useRef();

@@ -7,6 +7,7 @@ import { emotionCache } from '@shopgate/engage/styles/tss';
 import {
   ThemeProvider, createTheme, makeStyles, responsiveMediaQuery,
 } from '@shopgate/engage/styles';
+import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
 import { ThemeConfigResolver, AppProvider, hasWebBridge } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { themeConfig } from '@shopgate/engage';
@@ -155,6 +156,7 @@ const Pages = ({ store }) => {
     const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);
 
     return createTheme({
+      ...createDefaultThemeOptions(),
       typography: {
         fontFamily: themeConfig.typography.family,
         ...extendedTypography,

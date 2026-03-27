@@ -3,7 +3,7 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useProfileContext } from './Profile.provider';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     marginTop: 8,
     [responsiveMediaQuery('<md')]: {
@@ -12,11 +12,11 @@ const useStyles = makeStyles()({
     },
   },
   title: {
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     fontSize: 17,
     fontWeight: '600',
   },
-});
+}));
 
 /**
  * @returns {JSX}

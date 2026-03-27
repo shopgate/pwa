@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
   },
   locationAddress: {
     fontSize: '0.85rem',
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
   },
   locationHours: {
     paddingTop: theme.spacing(2),

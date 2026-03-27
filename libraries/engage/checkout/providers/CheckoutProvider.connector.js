@@ -44,7 +44,7 @@ function makeMapStateToProps() {
     paymentTransactions: getCheckoutPaymentTransactions(state),
     fulfillmentSlot: getCheckoutFulfillmentSlot(state),
     shopSettings: getShopSettings(state),
-    userLocation: getPreferredLocationAddress(state),
+    userLocation: getPreferredLocationAddress(state) ?? null,
     billingAddress: getCheckoutBillingAddress(state),
     shippingAddress: getCheckoutShippingAddress(state),
     pickupAddress: getCheckoutPickupAddress(state),

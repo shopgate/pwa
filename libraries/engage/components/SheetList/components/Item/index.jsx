@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
     hyphens: 'auto',
     overflowWrap: 'break-word',
     wordBreak: 'break-word',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       padding: theme.spacing(2),
       margin: 0,

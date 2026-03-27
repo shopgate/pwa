@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
   caption: {
     fontSize: '0.75rem',
     lineHeight: '0.875rem',
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     paddingTop: theme.spacing(0.5),
   },
 }));

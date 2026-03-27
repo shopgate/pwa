@@ -8,7 +8,7 @@ import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     outline: 0,
     textAlign: 'left',
@@ -18,7 +18,7 @@ const useStyles = makeStyles()({
     display: 'flex',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   buttonDisabled: {
     outline: 0,
@@ -46,7 +46,7 @@ const useStyles = makeStyles()({
     display: 'flex',
     justifyContent: 'space-between',
     flexWrap: 'wrap',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     background: 'var(--color-background-accent)',
     boxShadow: '-16px 0 0 var(--color-background-accent), 16px 0 0 var(--color-background-accent)',
     margin: '-1px 0',
@@ -76,7 +76,7 @@ const useStyles = makeStyles()({
       textAlign: 'right',
     },
   },
-});
+}));
 
 /**
  * The SheetItem component.

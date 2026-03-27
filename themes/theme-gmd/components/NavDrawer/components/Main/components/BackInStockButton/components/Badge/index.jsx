@@ -1,14 +1,11 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   badge: {
-    background: colors.primary,
+    background: theme.palette.primary.main,
     borderRadius: '50%',
     content: ' ',
     display: 'block',
@@ -18,7 +15,7 @@ const useStyles = makeStyles()({
     top: 23,
     width: 8,
   },
-});
+}));
 
 /**
  * @param {number} visible Whether or not the user has back in stock subscriptions.
