@@ -28,3 +28,5 @@ jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/theme-gmd/extensions/reducers', () => null);
 jest.mock('@shopgate/theme-ios11/extensions/reducers', () => null);
 
+// Mock the useTheme hook to prevent failing tests due to missing theme object
+jest.mock('@shopgate/engage/styles/theme/hooks/useTheme')
