@@ -6,7 +6,6 @@ import React, {
   memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import omit from 'lodash/omit';
 import { logger } from '@shopgate/pwa-core';
 import appConfig, { themeConfig, themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
@@ -46,7 +45,7 @@ const getImageRatio = ({ ratio, resolutions } = {}) => {
   return '1.000';
 };
 
-const useStyles = makeStyles()((_, { ratio }) => ({
+const useStyles = makeStyles()((theme, { ratio }) => ({
   placeholderContainer: {
     position: 'relative',
     width: '100%',
@@ -98,7 +97,6 @@ const useStyles = makeStyles()((_, { ratio }) => ({
  * @returns {JSX.Element}
  */
 const ProductImage = (props) => {
-  const rest = omit(props, ['classes']);
   const {
     alt,
     className,
@@ -109,7 +107,7 @@ const ProductImage = (props) => {
     src,
     srcmap,
     widgetSettings,
-  } = rest;
+  } = props;
 
   const ratioValue = Number.parseFloat(
     getImageRatio({
@@ -183,7 +181,7 @@ const ProductImage = (props) => {
     >
       <div className={cx(className, 'engage__product__product-image')}>
         <Image
-          {...rest}
+          {...props}
           className={showInnerShadow ? classes.innerShadow : ''}
           backgroundColor={noBackground ? 'transparent' : colors.light}
           onError={imageLoadingFailedHandler}
@@ -197,7 +195,6 @@ const ProductImage = (props) => {
 ProductImage.propTypes = {
   alt: PropTypes.string,
   animating: PropTypes.bool,
-  classes: PropTypes.shape(),
   className: PropTypes.string,
   forcePlaceholder: PropTypes.bool,
   highestResolutionLoaded: PropTypes.func,
@@ -217,7 +214,6 @@ ProductImage.propTypes = {
 ProductImage.defaultProps = {
   alt: null,
   animating: true,
-  classes: {},
   className: null,
   forcePlaceholder: false,
   highestResolutionLoaded: () => { },
