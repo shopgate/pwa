@@ -8,7 +8,7 @@ import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   supplementalContent: {
-    padding: [theme.spacing(2), '!important'],
+    padding: `${theme.spacing(2)}px !important`,
   },
 }));
 

@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'absolute !important',
     top: theme.spacing(-0.5),
     right: 0,
-    padding: [theme.spacing(0.5, 0), '!important'],
+    padding: `${theme.spacing(0.5, 0)} !important`,
   },
   sheet: {
     maxHeight: `calc(100vh - ${variables.navigator.height}px)`,

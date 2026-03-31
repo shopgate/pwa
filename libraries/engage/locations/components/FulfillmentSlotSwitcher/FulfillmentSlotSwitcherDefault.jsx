@@ -23,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
   button: {
     fontSize: '0.625rem !important',
     letterSpacing: '0.05em',
-    padding: [theme.spacing(0.375, 0), '!important'],
+    padding: `${theme.spacing(0.375, 0)} !important`,
     ' *': {
       padding: '0 !important',
     },
