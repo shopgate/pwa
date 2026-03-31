@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useRef, useCallback,
+  useState, useEffect, useRef, useCallback, memo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
@@ -151,4 +151,4 @@ Drawer.defaultProps = {
   onDidOpen: () => {},
 };
 
-export default Drawer;
+export default memo(Drawer);

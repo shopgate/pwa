@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -55,4 +55,4 @@ Button.defaultProps = {
   testId: 'Button',
 };
 
-export default Button;
+export default memo(Button);

@@ -51,7 +51,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   info: {
     fontSize: '0.875rem',
     marginTop: theme.spacing(1.75),
-    marginBottom: theme.spacing(1) * 0.25,
+    marginBottom: theme.spacing(0.25),
     flexGrow: 1,
     alignItems: 'flex-end',
     justifyContent: 'space-between',
