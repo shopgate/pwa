@@ -59,9 +59,9 @@ function ScrollHeaderBase({
   onlyShowAtTop = false,
   onlyShowAtTopOffset = 0,
   onChange,
-  classes,
+  classes: classesProp = {},
 }, ref) {
-  const { classes: internalClasses, cx } = useStyles();
+  const { classes, cx } = useStyles();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
 
   useScrollDirectionChange({
@@ -88,9 +88,9 @@ function ScrollHeaderBase({
   return (
     <div
       ref={ref}
-      className={cx(internalClasses.root, internalClasses.transition, className, {
-        [cx(internalClasses.scrolledIn, classes?.scrolledIn)]: !shouldHideHeader,
-        [cx(internalClasses.scrolledOut, classes?.scrolledOut)]: shouldHideHeader,
+      className={cx(classes.root, classes.transition, className, {
+        [cx(classes.scrolledIn, classesProp?.scrolledIn)]: !shouldHideHeader,
+        [cx(classes.scrolledOut, classesProp?.scrolledOut)]: shouldHideHeader,
       })}
     >
       {children}
