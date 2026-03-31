@@ -88,7 +88,7 @@ const Chip = (props) => {
   const {
     removable, children, id, onClick, onRemove, invert, removeLabel, editLabel,
   } = props;
-  const { classes } = useStyles({
+  const { classes, cx } = useStyles({
     removable,
     invert,
   });
@@ -103,7 +103,7 @@ const Chip = (props) => {
   });
 
   return (
-    <div ref={ref} className={`ui-shared__chip ${classes.chip}`} data-test-id={id}>
+    <div ref={ref} className={cx('ui-shared__chip', classes.chip)} data-test-id={id}>
       {removable && (
         <Button
           className={classes.removeButton}

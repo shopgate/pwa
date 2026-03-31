@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import noop from 'lodash/noop';
 import { AccordionContainer, ChevronIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -88,7 +87,7 @@ const Accordion = (props) => {
     renderAdditionalHeaderContent,
   } = props;
 
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!renderLabel || !children) {
     return null;
@@ -109,7 +108,7 @@ const Accordion = (props) => {
           return (
             <>
               <div
-                className={classnames(
+                className={cx(
                   'ui-material__accordion-title',
                   className,
                   classes.toggle
@@ -122,7 +121,7 @@ const Accordion = (props) => {
                   aria-expanded={open}
                   aria-controls={controlsId}
                   aria-label={handleLabel}
-                  className={classnames(
+                  className={cx(
                     classes.labelContainer,
                     {
                       [classes.toggleLeftAligned]: chevronPosition === 'left',
@@ -131,7 +130,7 @@ const Accordion = (props) => {
                 >
                   {renderLabel({ open })}
                   <div
-                    className={classnames(
+                    className={cx(
                       classes.chevronContainer,
                       chevronClassName,
                       { [classes.clickable]: openWithChevron }

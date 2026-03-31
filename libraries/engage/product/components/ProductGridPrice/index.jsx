@@ -33,12 +33,12 @@ const useStyles = makeStyles()({
  * @return {JSX.Element}
  */
 const ProductGridPrice = ({ product }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { price } = product;
 
   return (
     <>
-      <Grid className={`${classes.priceWrapper} engage__product__product-grid-price`} wrap>
+      <Grid className={cx(classes.priceWrapper, 'engage__product__product-grid-price')} wrap>
         <Grid.Item grow={1}>
           <Price
             currency={price.currency}

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import {
   SurroundPortals,
   I18n,
@@ -47,7 +46,7 @@ const MapPriceHint = ({ price, mapPrice }) => {
             between &&
             <I18n.Text
               string={settings.hint}
-              className={classNames('engage__product__map-price-hint', cx(classes.defaultStyle, classes.hintStyle))}
+              className={cx('engage__product__map-price-hint', cx(classes.defaultStyle, classes.hintStyle))}
             />
           )}
         </TimeBoundary>}

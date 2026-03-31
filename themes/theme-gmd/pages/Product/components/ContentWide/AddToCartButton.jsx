@@ -2,7 +2,6 @@ import React, {
   useState, useRef, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n, Ripple } from '@shopgate/engage/components';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -82,7 +81,7 @@ const AddToCartButton = ({
   userLocation,
   userMethod,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [success, setSuccess] = useState(false);
   const lockedRef = useRef(false);
 
@@ -158,7 +157,7 @@ const AddToCartButton = ({
       type="button"
     >
       <I18n.Text string="product.add_to_cart" />
-      <div className={classNames(classes.icon, {
+      <div className={cx(classes.icon, {
         [classes.iconDisabled]: disabled,
       })}
       >

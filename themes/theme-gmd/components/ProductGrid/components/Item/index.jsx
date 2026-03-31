@@ -53,11 +53,11 @@ const useStyles = makeStyles()({
  * @return {JSX.Element}
  */
 const Item = ({ product, display }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { meta } = useProductListType();
 
   return (
-    <div className={`${classes.root} theme__product-grid__item`}>
+    <div className={cx(classes.root, 'theme__product-grid__item')}>
       <Link
         tag="a"
         role="none"

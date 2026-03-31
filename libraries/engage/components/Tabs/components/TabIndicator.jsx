@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -20,11 +19,11 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const TabIndicator = ({ className, ...other }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <span
-      className={classNames(classes.root, className)}
+      className={cx(classes.root, className)}
       {...other}
     />
   );

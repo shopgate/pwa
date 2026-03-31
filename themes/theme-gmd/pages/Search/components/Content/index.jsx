@@ -1,6 +1,5 @@
 import React, { memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { UIEvents } from '@shopgate/pwa-core';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
 import { AppBar } from '@shopgate/pwa-ui-material';
@@ -35,7 +34,7 @@ const SearchContent = memo(({
   showFilterBar,
   pattern,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const hasScrollContainer = useScrollContainer();
 
   const showSearch = useCallback(() => {
@@ -79,7 +78,7 @@ const SearchContent = memo(({
                 <NoResults
                   headlineText="search.no_result.heading"
                   bodyText="search.no_result.body"
-                  className={classNames({ [classes.withTopPadding]: !hasScrollContainer })}
+                  className={cx({ [classes.withTopPadding]: !hasScrollContainer })}
                   {...pattern !== CATEGORY_ALL_PATTERN ? {
                     headlineText: 'search.no_result.heading',
                     bodyText: 'search.no_result.body',

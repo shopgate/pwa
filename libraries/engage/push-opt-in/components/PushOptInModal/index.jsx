@@ -1,7 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   Grid, I18n, Button, Modal,
@@ -62,7 +61,7 @@ const useStyles = makeStyles()((theme) => {
 const PushOptInModal = ({
   isPushOptInModalVisible, allowPushOptIn, denyPushOptIn,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     pushOptIn: {
       modalMessage,
@@ -116,28 +115,28 @@ const PushOptInModal = ({
       }}
     >
       <Grid
-        className={classNames(classes.container, 'push-opt-in-modal__container')}
+        className={cx(classes.container, 'push-opt-in-modal__container')}
         role="alertdialog"
         aria-modal
         aria-labelledby="pushOptInDialogTitle"
         aria-describedby="pushOptInDialogMessage"
       >
         <Grid.Item className={classes.item}>
-          <img src={imageSRC} className={classNames(classes.image, 'push-opt-in-modal__image')} alt="" aria-hidden="true" />
+          <img src={imageSRC} className={cx(classes.image, 'push-opt-in-modal__image')} alt="" aria-hidden="true" />
           <I18n.Text
-            className={classNames(classes.title, 'push-opt-in-modal__title')}
+            className={cx(classes.title, 'push-opt-in-modal__title')}
             string={modalTitle || 'pushOptInModal.title'}
             id="pushOptInDialogTitle"
           />
           <I18n.Text
-            className={classNames('push-opt-in-modal__message')}
+            className={cx('push-opt-in-modal__message')}
             string={modalMessage || 'pushOptInModal.message'}
             id="pushOptInDialogMessage"
           />
-          <Button onClick={handleAllowPushOptIn} type="primary" className={classNames(classes.button, 'push-opt-in-modal__button-allow')}>
+          <Button onClick={handleAllowPushOptIn} type="primary" className={cx(classes.button, 'push-opt-in-modal__button-allow')}>
             <I18n.Text string={modalButtonAllow || 'pushOptInModal.buttonAllow'} />
           </Button>
-          <Button onClick={handleDenyPushOptIn} type="plain" className={classNames(classes.button, 'push-opt-in-modal__button-deny')}>
+          <Button onClick={handleDenyPushOptIn} type="plain" className={cx(classes.button, 'push-opt-in-modal__button-deny')}>
             <I18n.Text string={modalButtonDeny || 'pushOptInModal.buttonDeny'} className={classes.buttonText} />
           </Button>
         </Grid.Item>

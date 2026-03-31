@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { I18n, RatingNumber } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -40,11 +39,11 @@ const useStyles = makeStyles()(theme => ({
 const ReviewsExcerpt = ({
   productId, average, count, withTopGap,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div
-      className={classNames('engage__reviews__reviews-excerpt', {
+      className={cx('engage__reviews__reviews-excerpt', {
         [classes.withTopGapContainer]: withTopGap,
         [classes.container]: !withTopGap,
       })}

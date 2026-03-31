@@ -20,7 +20,7 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const Password = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [isVisible, setIsVisible] = useState(false);
 
   const togglePasswordVisibility = useCallback((visible) => {
@@ -30,7 +30,7 @@ const Password = (props) => {
   return (
     <TextField
       {...props}
-      className={`ui-shared__form__password ${props.className || ''}`}
+      className={cx('ui-shared__form__password', props.className || '')}
       rightElement={(
         <ToggleIcon
           on={isVisible}

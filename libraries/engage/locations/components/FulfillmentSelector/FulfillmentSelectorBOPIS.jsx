@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { IN_STORE_PICKUP_BOPIS_LABEL } from '../../constants';
@@ -16,9 +15,9 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 export const FulfillmentSelectorBOPIS = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { isBOPISEnabled, isReady } = useFulfillmentSelectorState();
-  const className = classNames({
+  const className = cx({
     [classes.itemRowDisabled]: !isReady || !isBOPISEnabled,
   });
 

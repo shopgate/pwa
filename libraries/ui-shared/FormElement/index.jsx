@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import Underline from './components/Underline';
@@ -37,14 +36,14 @@ const FormElement = ({
   showErrorText,
   translateErrorText,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const isLabelFloating = !labelStatic && (isFocused || hasValue);
   const isPlaceholderVisible = !isFocused && !hasValue;
   const hasErrorMessage = !!errorText;
 
   return (
-    <div className={classNames(
+    <div className={cx(
       classes.formElement,
       className,
       'formElement',

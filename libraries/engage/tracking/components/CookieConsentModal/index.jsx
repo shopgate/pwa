@@ -6,7 +6,6 @@ import {
   Grid, I18n, Button, Modal, Link, ConditionalWrapper,
 } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
-import classNames from 'classnames';
 import connect from './connector';
 import cookieImage from './tracking-opt-in.svg';
 import { svgToDataUrl } from '../../../core';
@@ -72,7 +71,7 @@ const CookieConsentModal = ({
   openPrivacySettings,
   privacyPolicyLink,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     cookieConsent: {
       modalMessage,
@@ -135,22 +134,22 @@ const CookieConsentModal = ({
     >
       <Grid
         component="div"
-        className={classNames(classes.container, 'cookie-consent-modal__container')}
+        className={cx(classes.container, 'cookie-consent-modal__container')}
         role="alertdialog"
         aria-modal
         aria-labelledby="cookieConsentDialogTitle"
         aria-describedby="cookieConsentDialogMessage"
       >
         <Grid.Item component="div" className={classes.item}>
-          <img src={imageSRC} className={classNames(classes.image, 'cookie-consent-modal__image')} alt="" aria-hidden="true" />
+          <img src={imageSRC} className={cx(classes.image, 'cookie-consent-modal__image')} alt="" aria-hidden="true" />
           <I18n.Text
-            className={classNames(classes.title, 'cookie-consent-modal__title')}
+            className={cx(classes.title, 'cookie-consent-modal__title')}
             string={modalTitle || 'cookieConsentModal.title'}
             id="cookieConsentDialogTitle"
           />
           <I18n.Text
             string={modalMessage || 'cookieConsentModal.message'}
-            className={classNames('cookie-consent-modal__message')}
+            className={cx('cookie-consent-modal__message')}
             acceptPlainTextWithPlaceholders
             id="cookieConsentDialogMessage"
           >
@@ -172,7 +171,7 @@ const CookieConsentModal = ({
             <Button
               onClick={handleAcceptAllCookies}
               type="primary"
-              className={classNames(classes.button, 'cookie-consent-modal__button-accept-all')}
+              className={cx(classes.button, 'cookie-consent-modal__button-accept-all')}
             >
               <I18n.Text string={modalButtonAcceptAll || 'cookieConsentModal.buttonAcceptAll'} />
             </Button>
@@ -180,7 +179,7 @@ const CookieConsentModal = ({
               <Button
                 onClick={handleAcceptRequiredCookies}
                 type="simple"
-                className={classNames(classes.button, 'cookie-consent-modal__button-accept-required')}
+                className={cx(classes.button, 'cookie-consent-modal__button-accept-required')}
               >
                 <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
               </Button>
@@ -188,7 +187,7 @@ const CookieConsentModal = ({
             <Button
               onClick={handleOpenPrivacySettings}
               type="simple"
-              className={classNames(classes.button, 'cookie-consent-modal__button-open-settings')}
+              className={cx(classes.button, 'cookie-consent-modal__button-open-settings')}
             >
               <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />
             </Button>

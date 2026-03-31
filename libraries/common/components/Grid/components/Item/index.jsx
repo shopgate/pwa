@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { objectWithoutProps } from '../../../../helpers/data';
 
@@ -23,11 +22,11 @@ const GridItem = ({
   shrink,
   ...rest
 }) => {
-  const { classes } = useStyles({
+  const { classes, cx } = useStyles({
     grow,
     shrink,
   });
-  const composedClassName = classNames(
+  const composedClassName = cx(
     className,
     classes.root,
     {

@@ -4,7 +4,6 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { themeConfig } from '@shopgate/engage';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig as commonThemeConfig } from '@shopgate/pwa-common/helpers/config';
 import Icon from './components/Icon';
@@ -42,7 +41,7 @@ const useStyles = makeStyles()({
  * @return {JSX.Element}
  */
 const Empty = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const imageSRC = useMemo(() => svgToDataUrl(emptyCart), []);
 
   return (
@@ -50,7 +49,7 @@ const Empty = () => {
       <Portal name={portals.CART_EMPTY_BEFORE} />
       <Portal name={portals.CART_EMPTY}>
         <div className={classes.container}>
-          <div className={classNames(classes.icon, 'empty-cart__image')}>
+          <div className={cx(classes.icon, 'empty-cart__image')}>
             {emptyCart ? <img src={imageSRC} alt="" /> : <Icon />}
           </div>
           <div className={classes.title} data-test-id="emptyCartPlaceHolderString">

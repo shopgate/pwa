@@ -1,6 +1,5 @@
 import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(() => ({
@@ -45,13 +44,13 @@ const Toggle = ({
   open,
   selected,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
-  const labelClassName = useMemo(() => classNames({
+  const labelClassName = useMemo(() => cx({
     [classes.label]: true,
     [classes.open]: open,
     [classes.closed]: !open,
-  }), [classes.closed, classes.label, classes.open, open]);
+  }), [classes.closed, classes.label, classes.open, open, cx]);
 
   return (
     <div className={classes.toggle}>

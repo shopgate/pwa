@@ -1,6 +1,5 @@
 import React, { useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withForwardedRef } from '@shopgate/engage/core/hocs';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -91,7 +90,7 @@ const SheetItem = ({
   rightComponent: Right,
   selected,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const getStyle = useCallback(selectable => (
     selectable ? classes.button : classes.buttonDisabled
@@ -107,7 +106,7 @@ const SheetItem = ({
   }), [forwardedRef, getStyle, item.id, item.selectable, onClick]);
 
   return (
-    <div className={classNames(classes.root, {
+    <div className={cx(classes.root, {
       [classes.rootSelected]: selected,
     })}
     >

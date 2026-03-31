@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -41,7 +40,7 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const FloatingActionButton = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     background,
     children,
@@ -55,7 +54,7 @@ const FloatingActionButton = (props) => {
     testId,
   } = props;
 
-  const rootClass = classNames(
+  const rootClass = cx(
     'floating-action-button',
     'ui-material__floating-action-button',
     classes.button,

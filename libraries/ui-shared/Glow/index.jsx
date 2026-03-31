@@ -2,7 +2,6 @@ import React, {
   useState, useRef, useEffect, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -41,7 +40,7 @@ const Glow = ({
   },
   ...rest
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [hover, setHover] = useState(false);
   const timeoutRef = useRef(null);
 
@@ -74,7 +73,7 @@ const Glow = ({
   return (
     <div
       {...rest}
-      className={classNames(classes.container, className, 'ui-shared__glow')}
+      className={cx(classes.container, className, 'ui-shared__glow')}
       onClick={handleTouchTap}
       style={propStyles.container}
       ref={forwardedRef}

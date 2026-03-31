@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -56,9 +55,9 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 function PaymentBarContent({ showSeparator }) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   return (
-    <div className={classNames(classes.wrapper, 'theme__cart__payment-bar')}>
+    <div className={cx(classes.wrapper, 'theme__cart__payment-bar')}>
       <SurroundPortals portalName={CART_PAYMENT_BAR}>
         <Grid className={classes.container}>
           <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS}>

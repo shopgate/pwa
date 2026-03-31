@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Color from 'color';
 import { makeStyles, responsiveMediaQuery, getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
@@ -140,15 +139,15 @@ const MessageBar = ({
   messages, classNames, raised, showIcons,
 }) => {
   const secondaryColor = getCSSCustomProp('--color-secondary');
-  const { classes } = useStyles({ secondaryColor });
+  const { classes, cx } = useStyles({ secondaryColor });
   const containerClass = React.useMemo(() => {
     if (raised) {
-      return classnames(classes.containerRaised, classNames.containerRaised);
+      return cx(classes.containerRaised, classNames.containerRaised);
     }
 
-    return classnames(classes.container, classNames.container);
+    return cx(classes.container, classNames.container);
   }, [classNames.container, classNames.containerRaised, raised,
-    classes.container, classes.containerRaised]);
+    classes.container, classes.containerRaised, cx]);
 
   return (
     <div
@@ -177,7 +176,7 @@ const MessageBar = ({
         return (
           <div
             key={`${type}-${message}`}
-            className={classnames(
+            className={cx(
               (classes[type] || null),
               classNames.message,
               Icon ? classes.withIcon : null
@@ -186,7 +185,7 @@ const MessageBar = ({
             aria-atomic="true"
           >
             {Icon && (
-              <Icon className={classnames(classNames.icon, classes.icon)} />
+              <Icon className={cx(classNames.icon, classes.icon)} />
             )}
             <span className="sr-only">
               {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}

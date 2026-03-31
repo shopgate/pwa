@@ -56,7 +56,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const ProductInfo = ({ productId, options, isROPEActive }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <>
@@ -90,7 +90,7 @@ const ProductInfo = ({ productId, options, isROPEActive }) => {
             </Portal>
           </Grid.Item>
           <ResponsiveContainer breakpoint="xs" appAlways>
-            <Grid.Item component="div" className={`${classes.priceContainer} theme__product__header__product-info__row2`}>
+            <Grid.Item component="div" className={cx(classes.priceContainer, 'theme__product__header__product-info__row2')}>
               <Portal name={PRODUCT_INFO_ROW2}>
                 <div>
                   <PriceStriked productId={productId} options={options} />

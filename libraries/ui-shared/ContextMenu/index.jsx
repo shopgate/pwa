@@ -4,7 +4,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
-import classNames from 'classnames';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { FocusTrap } from '@shopgate/engage/a11y/components';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -63,7 +62,7 @@ const ContextMenu = (props) => {
     children, classes: parentClasses, disabled, showToggle, scroll, isOpened, onStateChange,
   } = props;
 
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [active, setActive] = useState(isOpened);
   const elementRef = useRef(null);
   const menuRef = useRef(null);
@@ -108,11 +107,11 @@ const ContextMenu = (props) => {
     <div
       data-test-id="contextMenu"
       ref={elementRef}
-      className={classNames(classes.container, parentClasses.container, 'ui-shared__context-menu')}
+      className={cx(classes.container, parentClasses.container, 'ui-shared__context-menu')}
     >
       {showToggle && (
         <button
-          className={classNames(classes.button, parentClasses.button, {
+          className={cx(classes.button, parentClasses.button, {
             [classes.disabled]: disabled,
           })}
           onClick={handleMenuToggle}
@@ -133,7 +132,7 @@ const ContextMenu = (props) => {
             <Position offset={offset}>
               <ContextMenuProvider handleMenuToggle={handleMenuToggle}>
                 <div
-                  className={classNames(classes.menu, { [classes.scrollable]: useScroll })}
+                  className={cx(classes.menu, { [classes.scrollable]: useScroll })}
                   ref={menuRef}
                   tabIndex="-1"
                   aria-modal="true"

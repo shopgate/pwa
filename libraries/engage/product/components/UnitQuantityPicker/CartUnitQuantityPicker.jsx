@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cx from 'classnames';
 import noop from 'lodash/noop';
 import { makeStyles } from '@shopgate/engage/styles';
 import UnitQuantityPicker from './UnitQuantityPicker';
@@ -21,7 +20,7 @@ const useStyles = makeStyles()({
 const CartUnitQuantityPicker = ({
   unit, value, onChange, classNames, hasCatchWeight,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
 
   const {

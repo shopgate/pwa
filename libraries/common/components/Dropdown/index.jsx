@@ -24,7 +24,7 @@ const Dropdown = ({
   onComplete,
   onStart,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [initialRender, setInitialRender] = useState(true);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const Dropdown = ({
       duration={duration}
       easing={easing}
     >
-      <div className={`${classes.container} ${className} common__dropdown`} aria-hidden={!isOpen}>
+      <div className={cx(classes.container, className, 'common__dropdown')} aria-hidden={!isOpen}>
         {children}
       </div>
     </Transition>

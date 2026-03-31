@@ -1,5 +1,4 @@
 import React, { useContext, useMemo } from 'react';
-import classNames from 'classnames';
 import { SurroundPortals, I18n, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -36,11 +35,11 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const CartSummaryWideCheckoutButton = ({ isOrderable }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { isLoading } = useContext(CartContext);
   const isActive = useMemo(() => (isOrderable && !isLoading), [isLoading, isOrderable]);
 
-  const buttonClassName = classNames(classes.button, {
+  const buttonClassName = cx(classes.button, {
     [classes.disabledButton]: !isActive,
   });
 

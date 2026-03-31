@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import Button from '@shopgate/pwa-common/components/Button';
@@ -61,7 +60,7 @@ const TabBarAction = ({
   children,
   ...props
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { showLabels = true } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
   // Remove some props that are not meant for the Button component.
@@ -70,7 +69,7 @@ const TabBarAction = ({
     dispatch, historyPush, path, type, ...buttonProps
   } = props;
 
-  const className = classNames(
+  const className = cx(
     'theme__tab-bar__tab-bar-action',
     classes.container,
     { [classes.highlighted]: isHighlighted },
@@ -91,7 +90,7 @@ const TabBarAction = ({
       {...buttonProps}
     >
       {Icon}
-      <div className={classNames(classes.label, 'theme__tab-bar__tab-bar-action__label')} data-test-id={label}>
+      <div className={cx(classes.label, 'theme__tab-bar__tab-bar-action__label')} data-test-id={label}>
         {showLabels && <I18n.Text string={label} />}
       </div>
       {children}

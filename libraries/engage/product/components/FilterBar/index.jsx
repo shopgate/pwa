@@ -26,7 +26,7 @@ const useStyles = makeStyles()({
  */
 const FilterBar = ({ filters, categoryId }) => {
   const theme = useTheme();
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
   const handleChipCountUpdate = useCallback((count) => {
@@ -51,7 +51,7 @@ const FilterBar = ({ filters, categoryId }) => {
   );
 
   return (
-    <div className={`${classes.root} theme__filter-bar`} data-test-id="filterBar" style={style}>
+    <div className={cx(classes.root, 'theme__filter-bar')} data-test-id="filterBar" style={style}>
       <SortProvider scope={sortScope}>
         <Provider>
           <Content onChipCountUpdate={handleChipCountUpdate} />

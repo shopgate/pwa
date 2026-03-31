@@ -2,7 +2,6 @@ import React, {
   useState, useEffect, useRef, useMemo, useCallback, useReducer, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import cxs from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import Handle from './components/Handle';
 import { isTouchDevice } from '../../core';
@@ -45,7 +44,7 @@ const RangeSlider = ({
   resolution,
   value,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const domElement = useRef(null);
   const draggedHandle = useRef(null);
   const touchOffset = useRef(0);
@@ -270,9 +269,9 @@ const RangeSlider = ({
   );
 
   return (
-    <div className={cxs(classNames.container, 'engage__range-slider')} onMouseDown={handleRangeTouch} aria-hidden>
-      <div className={cxs(classNames.outerRange, classes.outerRange)} ref={domElement}>
-        <div className={cxs(classNames.range, classes.range)} style={rangeStyle}>
+    <div className={cx(classNames.container, 'engage__range-slider')} onMouseDown={handleRangeTouch} aria-hidden>
+      <div className={cx(classNames.outerRange, classes.outerRange)} ref={domElement}>
+        <div className={cx(classNames.range, classes.range)} style={rangeStyle}>
           <Handle
             index={0}
             onTouchStart={handleTouchStart}

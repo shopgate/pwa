@@ -38,7 +38,7 @@ const useStyles = makeStyles()({
 const AddMoreButton = ({
   handleAddToCart, disabled, loading, onReset, visible, forwardedRef,
 }, context) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { __ } = context.i18n();
 
   return (
@@ -47,7 +47,7 @@ const AddMoreButton = ({
       onReset={onReset}
       isDisabled={disabled}
       isLoading={loading}
-      className={`${classes.container} theme__product__add-to-cart-bar__add-more-button`}
+      className={cx(classes.container, 'theme__product__add-to-cart-bar__add-more-button')}
       aria-hidden={!visible}
       aria-label={__('product.add_to_cart')}
       ref={forwardedRef}

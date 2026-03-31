@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
@@ -47,14 +46,14 @@ const CategoryList = ({
   showImages,
   showLeftSideImages,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   if (!categories || !categories.length) {
     if (prerender === 0) {
       return null;
     }
 
     return (
-      <SheetList className={classNames(classes.sheet, 'engage__category__category-list')}>
+      <SheetList className={cx(classes.sheet, 'engage__category__category-list')}>
         {Array(Math.min(prerender, 8)).fill('').map((val, index) => {
           const key = `placeholder-${index}`;
           return <Placeholder height={20} key={key} left={0} top={18} width={220} />;
@@ -66,9 +65,9 @@ const CategoryList = ({
   const filters = getShowAllProductsFilters(parentCategory);
 
   return (
-    <SheetList className={classNames(classes.sheet, 'engage__category__category-list')}>
+    <SheetList className={cx(classes.sheet, 'engage__category__category-list')}>
       {showAllProducts ?
-        <div className={classNames(classes.showAllProducts, 'engage__category__category-show-all-products')}>
+        <div className={cx(classes.showAllProducts, 'engage__category__category-show-all-products')}>
           <Portal
             key={parentCategory.id}
             name="category.show-all-products"

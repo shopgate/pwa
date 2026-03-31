@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { themeConfig, themeName } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -23,10 +22,10 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const Card = ({ className, children, id }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classNames('ui-shared__card', classes.root, className)} id={id}>
+    <div className={cx('ui-shared__card', classes.root, className)} id={id}>
       {children}
     </div>
   );

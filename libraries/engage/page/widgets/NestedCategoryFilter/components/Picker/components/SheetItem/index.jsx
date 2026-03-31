@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonSelected: {
     background: 'var(--color-background-accent)',
-    boxShadow: `${-theme.spacing(2.5)}px 0px 0px var(--color-background-accent), ${theme.spacing(2.5)}px 0px 0px var(--color-background-accent)`,
+    boxShadow: `${theme.spacing(-2.5)}px 0px 0px var(--color-background-accent), ${theme.spacing(2.5)}px 0px 0px var(--color-background-accent)`,
     margin: '-1px 0',
     paddingTop: 17,
     paddingBottom: 17,

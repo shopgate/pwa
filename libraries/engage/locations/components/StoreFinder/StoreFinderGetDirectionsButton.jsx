@@ -1,6 +1,5 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { i18n, generateGoogleMapsDirectionsUrl } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import { RippleButton } from '@shopgate/engage/components';
@@ -21,7 +20,7 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const StoreFinderGetDirectionsButton = ({ address, openMap, className }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const url = useMemo(() => address && generateGoogleMapsDirectionsUrl(address), [address]);
 
   const handleClick = useCallback(() => {
@@ -33,7 +32,7 @@ const StoreFinderGetDirectionsButton = ({ address, openMap, className }) => {
   }
 
   return (
-    <div className={classNames(classes.container, className)}>
+    <div className={cx(classes.container, className)}>
       <RippleButton
         onClick={handleClick}
         className={classes.button}

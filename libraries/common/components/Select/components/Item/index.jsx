@@ -15,11 +15,11 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const SelectItem = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div
-      className={`${classes.item} ${props.className}`}
+      className={cx(classes.item, props.className)}
       onTouchEnd={() => props.onSelect(props.value, props.label)}
     >
       {props.label}

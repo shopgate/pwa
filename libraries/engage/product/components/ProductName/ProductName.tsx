@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
   ConditionalWrapper,
@@ -42,7 +41,7 @@ const ProductName = ({
   rows,
   style,
 }: ProductNameProps) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <ConditionalWrapper
@@ -54,7 +53,7 @@ const ProductName = ({
       )}
     >
       <div
-        className={classNames(classes.wrapper, className, 'engage__product__product-name')}
+        className={cx(classes.wrapper, className, 'engage__product__product-name')}
         style={style}
         itemProp={itemProp}
         data-test-id={testId}

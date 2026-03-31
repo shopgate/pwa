@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import debounce from '../debounce';
 import ownerWindow from '../ownerWindow';
@@ -31,7 +30,7 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const Tabs = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     children: childrenProp,
     className,
@@ -159,7 +158,7 @@ const Tabs = (props) => {
 
   return (
     <div
-      className={classNames(
+      className={cx(
         classes.root,
         className
       )}

@@ -15,11 +15,11 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const Label = ({ className, price, currency }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     // eslint-disable-next-line jsx-a11y/aria-role
-    <div role="text" className={`${className} ${classes.text}`}>
+    <div role="text" className={cx(className, classes.text)}>
       {price > 0 ? (
         <I18n.Text string="shipping.cost">
           <I18n.Price forKey="price" price={price} currency={currency} />

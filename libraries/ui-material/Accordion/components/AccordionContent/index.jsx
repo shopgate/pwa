@@ -1,6 +1,5 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { useSpring, animated } from 'react-spring';
 import { useMeasure } from 'react-use';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -25,11 +24,11 @@ const AccordionContent = (props) => {
   const {
     children, open, id, className,
   } = props;
-  const { classes } = useStyles();
-  const [contentHeight, setContentHeight] = React.useState(0);
+  const { classes, cx } = useStyles();
+  const [contentHeight, setContentHeight] = useState(0);
   const [ref, { height }] = useMeasure();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setContentHeight(height);
     window.addEventListener('resize', setContentHeight(height));
     return () => {
@@ -47,9 +46,9 @@ const AccordionContent = (props) => {
   });
 
   return (
-    <animated.div className={classnames('ui-material__accordion-content', classes.content)} style={expand} id={id} aria-hidden={!open}>
+    <animated.div className={cx('ui-material__accordion-content', classes.content)} style={expand} id={id} aria-hidden={!open}>
       <div ref={ref}>
-        <div className={classnames(classes.contentInner, className)}>
+        <div className={cx(classes.contentInner, className)}>
           {children}
         </div>
       </div>

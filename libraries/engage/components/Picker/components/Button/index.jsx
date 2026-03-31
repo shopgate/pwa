@@ -24,10 +24,10 @@ const useStyles = makeStyles()({
  * @returns {JSX} The button component.
  */
 const PickerButton = ({ value, label, openList }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <button className={`${classes.button} engage__picker__button`} onClick={openList} type="button">
+    <button className={cx(classes.button, 'engage__picker__button')} onClick={openList} type="button">
       <span className={classes.label}>{label}</span>
       {value !== null && (
         <span className={classes.value}>{value}</span>

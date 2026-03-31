@@ -7,7 +7,6 @@ import {
   getWeekDaysOrder,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
-import classNames from 'classnames';
 import moment from 'moment';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 import GetDirectionsButton from './GetDirectionsButton';
@@ -90,7 +89,7 @@ const useStyles = makeStyles()({
   * @returns {JSX}
   */
 const StoreDetails = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     selectLocation,
     routeLocation,
@@ -173,7 +172,7 @@ const StoreDetails = () => {
               onClick={() => selectLocation(routeLocation, true)}
               role="button"
               type="plain"
-              className={classNames(classes.makeMyStoreButton)}
+              className={classes.makeMyStoreButton}
             >
               <span>
                 {i18n.text('location.makeMyStore')}
@@ -195,7 +194,7 @@ const StoreDetails = () => {
               <div className={classes.phoneNumber}>
                 <Link
                   href={`tel:${address.phoneNumber}`}
-                  className={classNames(classes.phoneNumber)}
+                  className={classes.phoneNumber}
                   target="_blank"
                   role="button"
                   aria-label={address.phoneNumber}
@@ -227,7 +226,7 @@ const StoreDetails = () => {
                     tabIndex={0}
                   >
                     <td
-                      className={classNames(classes.storeHoursWeekday, {
+                      className={cx(classes.storeHoursWeekday, {
                         [classes.bold]: weekDay === currentDay,
                       })}
                       aria-hidden
@@ -235,7 +234,7 @@ const StoreDetails = () => {
                       {`${i18n.text(`locations.${weekDay}`)}:`}
                     </td>
                     <td
-                      className={classNames(classes.storeHoursOpeningTime, {
+                      className={cx(classes.storeHoursOpeningTime, {
                         [classes.bold]: weekDay === currentDay,
                       })}
                       aria-hidden

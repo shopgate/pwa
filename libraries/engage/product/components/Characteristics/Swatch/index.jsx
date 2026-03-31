@@ -2,7 +2,6 @@ import React, {
   useState, useEffect, useCallback, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 import { VariantSwatch } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -47,7 +46,7 @@ const Swatch = ({
   values,
   selected,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [highlight, setHighlight] = useState(false);
 
   useEffect(() => {
@@ -86,7 +85,7 @@ const Swatch = ({
         {state => (
           <div
             aria-hidden
-            className={classNames(classes.label, { [classes.labelDisabled]: disabled })}
+            className={cx(classes.label, { [classes.labelDisabled]: disabled })}
             ref={charRef}
             style={transition[state]}
             data-test-id={label}

@@ -92,7 +92,7 @@ const useStyles = makeStyles()(theme => ({
   forgotWrapper: {
     textAlign: 'right',
     fontSize: '0.75rem',
-    marginTop: -theme.spacing(2),
+    marginTop: theme.spacing(-2),
     marginBottom: theme.spacing(2),
   },
   buttonWrapper: {

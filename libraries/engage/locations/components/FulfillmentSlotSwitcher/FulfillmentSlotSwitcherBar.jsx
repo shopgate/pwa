@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { RippleButton, I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -55,11 +54,11 @@ const useStyles = makeStyles()(theme => ({
 const FulfillmentSlotSwitcherBar = ({
   fulfillmentSlot, handleChange, standalone, editable,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const displayTime = useMemo(() => getTimeSlotDisplayText(fulfillmentSlot), [fulfillmentSlot]);
   return (
     <div className={classes.wrapper}>
-      <div className={classNames(classes.inner, { [classes.innerStandalone]: standalone })}>
+      <div className={cx(classes.inner, { [classes.innerStandalone]: standalone })}>
         <span className={classes.heading}>
           {i18n.text('locations.your_current_timeslot.heading')}
         </span>

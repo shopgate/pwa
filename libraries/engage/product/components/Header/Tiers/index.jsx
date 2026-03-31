@@ -30,7 +30,7 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const Tiers = ({ price }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!(price && price.tiers && price.tiers.length > 0)) {
     return null;
@@ -40,7 +40,7 @@ const Tiers = ({ price }) => {
     <>
       <Portal name={PRODUCT_TIERS_BEFORE} />
       <Portal name={PRODUCT_TIERS}>
-        <div className={`${classes.wrapper} engage__product__header__tiers`}>
+        <div className={cx(classes.wrapper, 'engage__product__header__tiers')}>
           {price.tiers.map(tier => (
             <Tier
               tier={tier}

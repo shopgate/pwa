@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Link } from '@shopgate/engage/components';
 
@@ -22,9 +21,9 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const TextLink = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
-  return <Link {...props} className={classNames(props.className, classes.link)} tag="a" role="link" tabIndex={0} />;
+  return <Link {...props} className={cx(props.className, classes.link)} tag="a" role="link" tabIndex={0} />;
 };
 
 TextLink.propTypes = {

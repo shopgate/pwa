@@ -23,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 function Reviews({ productId, productActive, reviews }) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <SurroundPortals
@@ -31,7 +31,7 @@ function Reviews({ productId, productActive, reviews }) {
       portalProps={{ productId }}
     >
       {(appConfig.hasReviews && productActive) && (
-        <div className={`${classes.container} engage__reviews__reviews`} data-test-id="reviewSection">
+        <div className={cx(classes.container, 'engage__reviews__reviews')} data-test-id="reviewSection">
           <Header productId={productId} />
           <List productId={productId} reviews={reviews} />
           <AllReviewsLink productId={productId} />

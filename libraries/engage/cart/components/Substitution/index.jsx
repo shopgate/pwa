@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { Toggle } from '@shopgate/engage/components';
@@ -43,10 +42,10 @@ const useStyles = makeStyles()({
 const Substitution = ({
   id, onChange, checked, className, label, disabled,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classNames(classes.root, className)}>
+    <div className={cx(classes.root, className)}>
       <label aria-hidden className={classes.text} htmlFor={id} id={`${id}-label`}>
         {label}
       </label>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
@@ -73,7 +72,7 @@ const useStyles = makeStyles()(theme => ({
 const FulfillmentSelectorItemUnwrapped = ({
   name, children, onChange, disabled,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { selection } = useFulfillmentSelectorState();
   const checked = selection === name;
 
@@ -91,7 +90,7 @@ const FulfillmentSelectorItemUnwrapped = ({
     onChange(name);
   };
 
-  const containerClasses = classNames(classes.radioContainer, {
+  const containerClasses = cx(classes.radioContainer, {
     [classes.disabled]: disabled,
   });
 

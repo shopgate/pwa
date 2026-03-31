@@ -33,11 +33,11 @@ const RangeSliderHandle = ({
   onTouchStart,
   classNames,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div
-      className={`${classNames.handleOuter || ''} ${classes.root}`}
+      className={cx(classNames.handleOuter || '', classes.root)}
       style={{ zIndex: Number(active) || 0 }}
       onTouchStart={event => onTouchStart(event, index)}
     >

@@ -22,10 +22,10 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const Headline = ({ text }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    text.length ? <h3 className={`${classes.root} headline theme__headline`}>{text}</h3> : null
+    text.length ? <h3 className={cx(classes.root, 'headline theme__headline')}>{text}</h3> : null
   );
 };
 

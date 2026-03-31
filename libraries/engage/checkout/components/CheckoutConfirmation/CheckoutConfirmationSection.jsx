@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Card, TextLink } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -100,7 +99,7 @@ const useStyles = makeStyles()(theme => ({
 const CheckoutConfirmationSegment = ({
   title, content, children, hasForm, isSummary, className,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!content) {
     return null;
@@ -110,9 +109,9 @@ const CheckoutConfirmationSegment = ({
 
   /* eslint-disable react/no-danger */
   return (
-    <div className={classNames(classes.wrapper, className)}>
+    <div className={cx(classes.wrapper, className)}>
       <h3 className={classes.headline}>{i18n.text(title)}</h3>
-      <Card className={classNames(classes.card, {
+      <Card className={cx(classes.card, {
         [classes.cardWithForm]: hasForm,
       })}
       >

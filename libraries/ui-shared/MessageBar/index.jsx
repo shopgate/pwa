@@ -1,5 +1,4 @@
 import React, { memo } from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -51,11 +50,11 @@ const useStyles = makeStyles()((theme) => {
  * @deprecated Please import from `@shopgate/engage/components` instead.
  */
 const MessageBar = memo(({ messages, classNames: classNamesProp }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div
-      className={classnames(classes.container, classNamesProp.container, 'ui-shared__message-bar')}
+      className={cx(classes.container, classNamesProp.container, 'ui-shared__message-bar')}
       role={messages.length > 0 ? 'alert' : null}
     >
       {messages.map((item) => {
@@ -78,7 +77,7 @@ const MessageBar = memo(({ messages, classNames: classNamesProp }) => {
         return (
           <div
             key={`${type}-${message}`}
-            className={classnames(classNamesProp.message, typeClass)}
+            className={cx(classNamesProp.message, typeClass)}
           >
             <span aria-hidden>
               {messageOutput}

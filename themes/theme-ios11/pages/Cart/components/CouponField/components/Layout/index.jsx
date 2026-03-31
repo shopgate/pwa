@@ -52,12 +52,12 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const Layout = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { cartItemsDisplay = 'line' } = usePageSettings();
 
   return (
     <div className={cartItemsDisplay === 'line' ? classes.wrapper : classes.wrapperCard}>
-      <form className={`${classes.container} theme__cart__coupon`} onSubmit={props.handleAddCoupon} data-test-id="couponField">
+      <form className={cx(classes.container, 'theme__cart__coupon')} onSubmit={props.handleAddCoupon} data-test-id="couponField">
         <TextField
           disabled={props.isLoading}
           name="coupon-code-field"

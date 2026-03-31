@@ -37,7 +37,7 @@ const FavoritesIconBadge = ({
   showWishlistItemsCountBadge = true,
   widgetSettings = defaultWidgetSettings,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!showWishlistItemsCountBadge || favoritesCount === 0) {
     return null;
@@ -50,7 +50,7 @@ const FavoritesIconBadge = ({
     : favoritesCount;
 
   return (
-    <div className={`${classes.root} theme__tab-bar__favorites-icon-badge theme__badge`}>
+    <div className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge theme__badge')}>
       {showCounter !== false ? number : ''}
     </div>
   );

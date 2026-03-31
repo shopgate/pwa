@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import noop from 'lodash/noop';
@@ -29,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX}
  */
 const Logo = ({ className, onClick, showLogo }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!showLogo) {
     return null;
@@ -40,7 +39,7 @@ const Logo = ({ className, onClick, showLogo }) => {
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     <div
       onClick={onClick}
-      className={classNames(classes.container, className, 'engage__logo')}
+      className={cx(classes.container, className, 'engage__logo')}
     >
       <img
         className={classes.image}

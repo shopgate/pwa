@@ -72,7 +72,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const Sort = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { activeOption, options, updateRoute } = useSort();
 
   return (
@@ -83,7 +83,7 @@ const Sort = () => {
         initialValue={activeOption}
         icon={ArrowDropIcon}
         item={Item}
-        className={`${classes.selectBox} theme__filter-bar__sort`}
+        className={cx(classes.selectBox, 'theme__filter-bar__sort')}
         classNames={{
           button: classes.button,
           selection: classes.selection,

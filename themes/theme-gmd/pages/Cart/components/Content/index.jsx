@@ -41,7 +41,7 @@ const useStyles = makeStyles()(theme => ({
     marginTop: 4,
   },
   wideHeaderMessagesWithItems: {
-    marginTop: -theme.spacing(2),
+    marginTop: theme.spacing(-2),
   },
   headerContainer: {
     display: 'flex',

@@ -2,7 +2,6 @@ import React, {
   useMemo, useCallback, useEffect, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import cls from 'classnames';
 import {
   A11y,
   Autoplay,
@@ -141,7 +140,7 @@ const Swiper = ({
   paginationType: paginationTypeProp,
   ...swiperProps
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
@@ -191,7 +190,7 @@ const Swiper = ({
       Zoom,
       ...(Array.isArray(additionalModules) ? additionalModules : []),
     ],
-    className: cls(
+    className: cx(
       classes.innerContainer,
       classNames.container,
       { [classes.zoomFix]: swiperProps?.zoom }
@@ -233,6 +232,7 @@ const Swiper = ({
     children.length,
     disabled,
     handleSlideChange,
+    cx,
   ]);
 
   useEffect(() => {
@@ -311,7 +311,7 @@ const Swiper = ({
   );
 
   return (
-    <div className={cls(classes.container, className, 'common__swiper')} aria-hidden={ariaHidden}>
+    <div className={cx(classes.container, className, 'common__swiper')} aria-hidden={ariaHidden}>
       <OriginalSwiper
         aria-live="off"
         a11y={{ enabled: false }}
@@ -324,8 +324,8 @@ const Swiper = ({
         {children}
         {hasControls && (
           <>
-            <div className={`swiper-button-next ${classes.buttonNext}`} />
-            <div className={`swiper-button-prev ${classes.buttonPrev}`} />
+            <div className={cx('swiper-button-next', classes.buttonNext)} />
+            <div className={cx('swiper-button-prev', classes.buttonPrev)} />
           </>
         )}
       </OriginalSwiper>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import {
   isBeta,
   useWidgetSettings,
@@ -33,7 +32,7 @@ const EffectivityDates = ({
 }) => {
   const settings = useWidgetSettings('@shopgate/engage/product/EffectivityDates');
   const styles = useWidgetStyles('@shopgate/engage/product/EffectivityDates');
-  const { classes } = useStyles({ hintStyle: styles?.hint });
+  const { classes, cx } = useStyles({ hintStyle: styles?.hint });
 
   if (!isBeta() || !dates) {
     return children;
@@ -73,7 +72,7 @@ const EffectivityDates = ({
             productNotAvailable();
 
             return showExpiringLabel(endDate, settings)
-              ? <I18n.Text string="product.available.not" className={classNames(classes.hint, classes.notAvailable)} />
+              ? <I18n.Text string="product.available.not" className={cx(classes.hint, classes.notAvailable)} />
               : children;
           }
           return children;

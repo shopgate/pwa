@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './CartItemsHeaderWide.connector';
@@ -116,7 +115,7 @@ const CartItemsHeaderWide = ({
   hasLineItemPromotions,
   isDirectShipOnly,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div className={classes.header}>
@@ -124,7 +123,7 @@ const CartItemsHeaderWide = ({
         <I18n.Text string="cart.items" />
       </div>
       <div className={classes.detailsColumn} />
-      <div className={classNames(classes.column, {
+      <div className={cx(classes.column, {
         [classes.priceColumnWide]: hasLineItemPromotions,
       })}
       >

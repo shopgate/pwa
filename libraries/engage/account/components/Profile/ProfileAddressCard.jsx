@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
@@ -86,7 +85,7 @@ const useStyles = makeStyles()(theme => ({
 const ProfileAddressCard = ({
   contact, deleteContact, editContact, selectContact, selected,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { isCheckout, type } = useAddressBook();
 
   return (
@@ -162,7 +161,7 @@ const ProfileAddressCard = ({
             </span>
           ) : null}
         </div>
-        <div className={classNames(classes.column, classes.selectButtonColumn)}>
+        <div className={cx(classes.column, classes.selectButtonColumn)}>
           { isCheckout ? (
             <RippleButton
               className={classes.button}

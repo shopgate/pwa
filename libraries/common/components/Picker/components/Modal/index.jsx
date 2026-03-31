@@ -2,7 +2,6 @@ import React, {
   useState, useEffect, useRef, useCallback, cloneElement,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
@@ -70,7 +69,7 @@ const useStyles = makeStyles()(() => ({
  * @returns {JSX.Element|null}
  */
 const PickerModal = ({ children, isOpen, onClose }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [active, setActive] = useState(isOpen);
   const timeoutRef = useRef(null);
 
@@ -96,18 +95,18 @@ const PickerModal = ({ children, isOpen, onClose }) => {
     return null;
   }
 
-  const backgroundClassName = classNames(
+  const backgroundClassName = cx(
     classes.backgroundBase,
     { [classes.backgroundInactive]: !active }
   );
 
-  const containerClassName = classNames(
+  const containerClassName = cx(
     classes.containerBase,
     { [classes.containerInactive]: !active }
   );
 
   return (
-    <div className={`${classes.wrapper} common__picker__modal`}>
+    <div className={cx(classes.wrapper, 'common__picker__modal')}>
       <div
         aria-hidden
         className={backgroundClassName}

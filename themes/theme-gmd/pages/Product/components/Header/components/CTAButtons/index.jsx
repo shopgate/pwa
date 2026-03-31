@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -45,13 +44,13 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const CTAButtons = ({ isFavorite, productId, isProductActive }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <>
       <Portal name={PRODUCT_CTAS_BEFORE} />
       <Portal name={PRODUCT_CTAS}>
-        <div className={classNames(classes.buttons, 'theme__product__header__cta-buttons')}>
+        <div className={cx(classes.buttons, 'theme__product__header__cta-buttons')}>
           <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
           <Portal name={PRODUCT_CTAS_FAVORITES}>
             { isProductActive && (

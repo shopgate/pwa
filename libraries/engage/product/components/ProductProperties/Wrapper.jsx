@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import cxs from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
@@ -26,11 +25,11 @@ const useStyles = makeStyles()({
 const Wrapper = ({
   children, dense, groupName, htmlOnly,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div
-      className={cxs('engage__product__product-property-group', {
+      className={cx('engage__product__product-property-group', {
         [classes.container]: !dense,
         [classes.containerDense]: dense,
       })}

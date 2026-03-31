@@ -30,7 +30,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element|null}
  */
 const CartItemBadge = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!props.cartProductCount) {
     return null;
@@ -43,7 +43,7 @@ const CartItemBadge = (props) => {
   }
 
   return (
-    <div className={`${classes.root} theme__tab-bar__cart-item-badge theme__badge`}>
+    <div className={cx(classes.root, 'theme__tab-bar__cart-item-badge theme__badge')}>
       {cartProductCount}
     </div>
   );

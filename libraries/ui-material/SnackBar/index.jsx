@@ -90,7 +90,7 @@ const calcRows = (message, actionLabel) => {
  * @returns {JSX.Element}
  */
 const SnackBar = ({ removeToast, toasts: toastsProp }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const toasts = useMemo(() => toastsProp || [], [toastsProp]);
   const [visible, setVisible] = useState(true);
   const visibleRef = useRef(visible);
@@ -150,7 +150,7 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
 
   return (
     <div
-      className={`${classes.container} ui-material__snack-bar`}
+      className={cx(classes.container, 'ui-material__snack-bar')}
       style={{ '--snack-bar-height': `${snackBarHeight}px` }}
     >
       <Spring

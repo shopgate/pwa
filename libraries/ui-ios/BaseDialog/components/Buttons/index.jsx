@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import Button from '@shopgate/pwa-ui-shared/Button';
 import { makeStyles } from '@shopgate/engage/styles';
-import classNames from 'classnames';
 
 const borderColor = 'rgba(0,0,0,0.2)';
 
@@ -44,14 +43,14 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const Buttons = ({ actions }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return actions.map(({
     label, action, type = 'normal', disabled = false,
   }) => (
     <Button
       key={label}
-      className={classNames(classes.button, type === 'primary' && classes.buttonPrimary)}
+      className={cx(classes.button, type === 'primary' && classes.buttonPrimary)}
       type="primary"
       onClick={action}
       disabled={disabled}

@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   ROPIS,
@@ -22,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const CartItemProductPriceCaption = ({ className }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { cartItem } = useCartItemProduct();
 
   const label = useMemo(() => {
@@ -41,7 +40,7 @@ const CartItemProductPriceCaption = ({ className }) => {
   }
 
   return (
-    <span className={classNames(classes.caption, className)}>
+    <span className={cx(classes.caption, className)}>
       (
       <I18n.Text string={label} />
       )

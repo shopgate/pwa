@@ -1,6 +1,5 @@
 import React, { useState, forwardRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useScrollDirectionChange } from '@shopgate/engage/core/hooks';
 
@@ -62,7 +61,7 @@ function ScrollHeaderBase({
   onChange,
   classes,
 }, ref) {
-  const { classes: internalClasses } = useStyles();
+  const { classes: internalClasses, cx } = useStyles();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
 
   useScrollDirectionChange({
@@ -89,9 +88,9 @@ function ScrollHeaderBase({
   return (
     <div
       ref={ref}
-      className={classNames(internalClasses.root, internalClasses.transition, className, {
-        [classNames(internalClasses.scrolledIn, classes?.scrolledIn)]: !shouldHideHeader,
-        [classNames(internalClasses.scrolledOut, classes?.scrolledOut)]: shouldHideHeader,
+      className={cx(internalClasses.root, internalClasses.transition, className, {
+        [cx(internalClasses.scrolledIn, classes?.scrolledIn)]: !shouldHideHeader,
+        [cx(internalClasses.scrolledOut, classes?.scrolledOut)]: shouldHideHeader,
       })}
     >
       {children}

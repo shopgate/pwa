@@ -1,6 +1,5 @@
 import React, { useEffect, useState, memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Color from 'color';
 import Transition from 'react-transition-group/Transition';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
@@ -95,7 +94,7 @@ const useStyles = makeStyles()({
  * This component will show the current progress in a linear bar.
  */
 const ProgressBar = memo(({ isVisible }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [isAnimating, setIsAnimating] = useState(isVisible);
   const [visible, setVisible] = useState(isVisible);
 
@@ -132,7 +131,7 @@ const ProgressBar = memo(({ isVisible }) => {
           }}
         >
           <div
-            className={classNames(
+            className={cx(
               classes.innerElement,
               isAnimating && classes.animating
             )}

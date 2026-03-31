@@ -33,7 +33,7 @@ const FilterChips = ({
   currentPathname,
   onChipCountUpdate,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const handleRemove = useCallback((id, value) => {
     const { [id]: selected, ...rest } = filters;
 
@@ -158,7 +158,7 @@ const FilterChips = ({
   }
 
   return (
-    <div className={`${classes.container} theme__filter-bar__filter-chips`}>
+    <div className={cx(classes.container, 'theme__filter-bar__filter-chips')}>
       <ChipLayout
         moreLabel="filter.more"
         handleMoreButton={openFilters}

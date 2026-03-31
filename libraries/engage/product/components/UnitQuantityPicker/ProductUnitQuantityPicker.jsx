@@ -1,6 +1,5 @@
 import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
@@ -43,7 +42,7 @@ const ProductUnitQuantityPicker = ({
   quantityLabel,
   hideHeadline,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { show = hasNewServices() } = useWidgetSettings('@shopgate/engage/product/components/UnitQuantityPicker');
 
   const { quantity, setQuantity } = useContext(ProductContext);
@@ -75,7 +74,7 @@ const ProductUnitQuantityPicker = ({
 
   return (
     <SurroundPortals portalName={PRODUCT_UNIT_QUANTITY_PICKER}>
-      <div className={classNames(classes.root, className)}>
+      <div className={cx(classes.root, className)}>
         <div>
           {!hideHeadline && (
             <div className={classes.title}>

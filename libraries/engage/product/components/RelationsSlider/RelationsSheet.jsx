@@ -14,7 +14,7 @@ const { variables } = themeConfig;
 const useStyles = makeStyles()(theme => ({
   showMore: {
     position: 'absolute !important',
-    top: -theme.spacing(0.5),
+    top: theme.spacing(-0.5),
     right: 0,
     padding: [theme.spacing(0.5, 0), '!important'],
   },

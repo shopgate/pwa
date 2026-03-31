@@ -43,9 +43,7 @@ const ProductDiscountBadge = ({ productId, discount }) => {
       style: {},
     },
   } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge') || {};
-  const {
-    classes,
-  } = useStyles({ customStyle: pdp?.style });
+  const { classes, cx } = useStyles({ customStyle: pdp?.style });
 
   return (
     <ProductBadges
@@ -57,7 +55,7 @@ const ProductDiscountBadge = ({ productId, discount }) => {
       }}
     >
       { pdp.show && discount ? (
-        <div className={`${classes.container} ${classes.customStyle} theme__product__product-discount`}>
+        <div className={cx(classes.container, classes.customStyle, 'theme__product__product-discount')}>
           <SurroundPortals
             portalName={PRODUCT_DISCOUNT}
             portalProps={{

@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { appConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core/helpers';
-import classNames from 'classnames';
 import connect from './connector';
 
 const useStyles = makeStyles()({
@@ -57,7 +56,7 @@ const PrivacySettings = ({
   statisticsCookiesAcceptedState,
   privacyPolicyLink,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     cookieConsent: {
       settingsComfortText,
@@ -137,7 +136,7 @@ const PrivacySettings = ({
         <Button
           onClick={() => handleAcceptAllCookies()}
           type="primary"
-          className={classNames(classes.button, 'privacy-settings__button-accept-all')}
+          className={cx(classes.button, 'privacy-settings__button-accept-all')}
         >
           <I18n.Text string="cookieConsentModal.buttonAcceptAll" />
         </Button>
@@ -147,7 +146,7 @@ const PrivacySettings = ({
             statisticsCookiesAccepted: areStatisticsCookiesSelected,
           })}
           type="simple"
-          className={classNames(classes.button, 'privacy-settings__button-accept-selected')}
+          className={cx(classes.button, 'privacy-settings__button-accept-selected')}
         >
           <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />
         </Button>

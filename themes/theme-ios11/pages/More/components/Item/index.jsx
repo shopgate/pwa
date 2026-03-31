@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, I18n } from '@shopgate/engage/components';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
@@ -28,8 +27,8 @@ const useStyles = makeStyles()({
 function MoreMenuItem({
   href, label, onClick, testId, className,
 }) {
-  const { classes } = useStyles();
-  const rootClass = classNames(classes.root, className);
+  const { classes, cx } = useStyles();
+  const rootClass = cx(classes.root, className);
 
   if (!href && onClick) {
     return (

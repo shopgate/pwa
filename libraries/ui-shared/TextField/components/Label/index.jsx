@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -50,14 +49,14 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX}
  */
 const Label = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label
       htmlFor={props.name}
       aria-hidden
-      className={classNames(
+      className={cx(
         classes.label,
         {
           [classes.labelFloating]: props.isFloating,

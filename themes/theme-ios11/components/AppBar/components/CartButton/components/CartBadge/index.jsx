@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const CartButtonBadge = ({ count, style }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const settings = useWidgetSettings('@shopgate/engage/components/AppBar');
 
   if (!count) {
@@ -42,7 +42,7 @@ const CartButtonBadge = ({ count, style }) => {
   const productCount = count > CART_MAX_ITEMS ? `${CART_MAX_ITEMS}+` : count;
 
   return (
-    <div style={badgeStyle} className={`${classes.root} theme__app-bar__cart-button-badge theme__badge`} data-test-id="badge">{productCount}</div>
+    <div style={badgeStyle} className={cx(classes.root, 'theme__app-bar__cart-button-badge theme__badge')} data-test-id="badge">{productCount}</div>
   );
 };
 

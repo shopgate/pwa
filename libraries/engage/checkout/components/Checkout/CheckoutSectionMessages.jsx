@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { errorBehavior } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -27,7 +26,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const CheckoutSectionMessages = ({ messages }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!Array.isArray(messages) || messages.length === 0) {
     return null;
@@ -38,7 +37,7 @@ const CheckoutSectionMessages = ({ messages }) => {
       {messages.map(({ message, additionalParams, type }) => (
         <li
           key={message}
-          className={classNames(classes.message, {
+          className={cx(classes.message, {
             [classes.error]: type === 'error',
             [classes.warning]: type === 'warning',
             [classes.info]: type === 'info',

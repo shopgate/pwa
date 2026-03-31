@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import IndicatorCircle from '../IndicatorCircle';
@@ -32,10 +31,10 @@ const useStyles = makeStyles()(() => ({
  * @returns {JSX}
  */
 const LoadingIndicator = ({ className }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classNames(
+    <div className={cx(
       className,
       {
         [classes.container]: !loadingImageSrc,

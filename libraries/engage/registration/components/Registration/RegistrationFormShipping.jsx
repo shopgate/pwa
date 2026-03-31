@@ -1,6 +1,5 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { FormBuilder } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { StylePresets } from '@shopgate/engage/components/Form';
@@ -29,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const RegistrationFormShipping = ({ isGuest }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     supportedCountries,
     countrySortOrder,
@@ -63,7 +62,7 @@ const RegistrationFormShipping = ({ isGuest }) => {
   return (
     <Section
       title="registration.headlines.shipping_address"
-      className={classNames(classes.section, classes.shippingFormSection)}
+      className={cx(classes.section, classes.shippingFormSection)}
       hasForm
       id={ELEMENT_ID_SHIPPING_CONTACT}
     >

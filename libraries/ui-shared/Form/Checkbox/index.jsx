@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import UICheckbox from '@shopgate/pwa-ui-shared/Checkbox';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
@@ -41,11 +40,11 @@ const Checkbox = ({
   checkboxClassName,
   ...restProps
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <FormElement
-      className={classNames(className, classes.root, 'checkbox', 'ui-shared__form__checkbox')}
+      className={cx(className, classes.root, 'checkbox', 'ui-shared__form__checkbox')}
       htmlFor={name}
       errorText={errorText}
       translateErrorText={translateErrorText}
@@ -63,7 +62,7 @@ const Checkbox = ({
         unCheckedClassName={className}
         labelPosition="right"
         label={typeof label === 'string' ? (
-          <div className={classNames(classes.labelWrapper, 'label')}>
+          <div className={cx(classes.labelWrapper, 'label')}>
             <I18n.Text className={classes.label} string={label} />
           </div>
         ) : label}

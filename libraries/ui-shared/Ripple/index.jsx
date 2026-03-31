@@ -39,7 +39,7 @@ const Ripple = ({
   overflow,
   size,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [{ ripples, hasRipples }, setRippleState] = useState({
     ripples: [],
     nextKey: 0,
@@ -181,7 +181,7 @@ const Ripple = ({
   return (
     <div
       ref={rootRef}
-      className={`ui-shared__ripple ${className}`}
+      className={cx('ui-shared__ripple', className)}
       data-test-id="Ripple"
       onClick={handleClick}
       style={containerStyle}

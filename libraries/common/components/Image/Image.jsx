@@ -2,7 +2,6 @@ import React, {
   useMemo, useState, useEffect, useRef, useCallback, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import noop from 'lodash/noop';
 import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -159,7 +158,7 @@ const Image = ({
     };
   }, [ratio, resolutions]);
 
-  const { classes } = useStyles({
+  const { classes, cx } = useStyles({
     background: backgroundColor,
     paddingTop: paddingHackRatio,
   });
@@ -171,7 +170,7 @@ const Image = ({
       <ImageInner
         ref={imgRef}
         src={sources.main}
-        className={classNames(classNameImg)}
+        className={cx(classNameImg)}
         style={{
           aspectRatio,
           ...(isInView && sources.preview && {
@@ -190,12 +189,12 @@ const Image = ({
   }
 
   return (
-    <div className={classNames(classes.container, className, 'common__image__container')}>
+    <div className={cx(classes.container, className, 'common__image__container')}>
       {src && !parentRendersPlaceholder && (
       <ImageInner
         ref={imgRef}
         src={sources.main}
-        className={classNames(classNameImg)}
+        className={cx(classNameImg)}
         style={{
           aspectRatio,
           ...(isInView && sources.preview && {

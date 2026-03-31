@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import {
   Grid, I18n, Link, Button,
 } from '@shopgate/engage/components';
@@ -36,16 +35,16 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const LoggedOut = ({ isDisabled }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div data-test-id="userMenu">
-      <Grid className={classnames(classes.grid, 'theme__more-page__user-menu__container')}>
-        <Grid.Item className={classnames(classes.gridItem, 'theme__more-page__login-button__container')}>
+      <Grid className={cx(classes.grid, 'theme__more-page__user-menu__container')}>
+        <Grid.Item className={cx(classes.gridItem, 'theme__more-page__login-button__container')}>
           <Link tabIndex={0} href={LOGIN_PATH} disabled={isDisabled}>
             <Button
               type="secondary"
-              className={classnames(classes.button, 'theme__more-page__login-button')}
+              className={cx(classes.button, 'theme__more-page__login-button')}
               testId="UserMenuLogin"
               disabled={isDisabled}
             >
@@ -53,11 +52,11 @@ const LoggedOut = ({ isDisabled }) => {
             </Button>
           </Link>
         </Grid.Item>
-        <Grid.Item className={classnames(classes.gridItem, 'theme__more-page-register-button__container')}>
+        <Grid.Item className={cx(classes.gridItem, 'theme__more-page-register-button__container')}>
           <Link tabIndex={0} href={REGISTER_PATH} disabled={isDisabled}>
             <Button
               type="secondary"
-              className={classnames(classes.button, 'theme__more-page-register-button')}
+              className={cx(classes.button, 'theme__more-page-register-button')}
               testId="UserMenuRegister"
               disabled={isDisabled}
             >

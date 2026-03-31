@@ -1,5 +1,4 @@
 import React, { useCallback, useMemo } from 'react';
-import classNames from 'classnames';
 import intersection from 'lodash/intersection';
 import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -60,7 +59,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 export function FulfillmentSelectorLocation() {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     selection,
     preferredLocation,
@@ -121,7 +120,7 @@ export function FulfillmentSelectorLocation() {
         }}
       >
         {(isRopeMethodEnabled && isOrderable && usedLocation) && (
-          <Grid className={classNames(classes.itemRow, classes.container)} component="div">
+          <Grid className={cx(classes.itemRow, classes.container)} component="div">
             <Grid component="div">
               <ResponsiveContainer appAlways breakpoint="xs">
                 <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
@@ -155,7 +154,7 @@ export function FulfillmentSelectorLocation() {
         )}
         {/* eslint-disable-next-line no-constant-condition */}
         {false && !isRopeMethodEnabled ? (
-          <div className={classNames(classes.unavailable, classes.container)}>
+          <div className={cx(classes.unavailable, classes.container)}>
             {i18n.text('locations.no_available')}
           </div>
         ) : null}

@@ -3,7 +3,6 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { MagnifierIcon, LocatorIcon, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
-import classNames from 'classnames';
 import { STORE_FINDER_PATTERN } from '../../../constants';
 
 const useStyles = makeStyles()({
@@ -87,7 +86,7 @@ const FindMoreStores = () => {
           </div>
           <Link
             href={STORE_FINDER_PATTERN}
-            className={classNames(classes.inputOverlay)}
+            className={classes.inputOverlay}
             role="button"
             aria-label={i18n.text('location.findMoreStores')}
           >

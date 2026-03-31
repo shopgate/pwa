@@ -1,5 +1,4 @@
 import React, { useMemo, memo } from 'react';
-import classNames from 'classnames';
 import Link from '@shopgate/pwa-common/components/Link';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -65,7 +64,7 @@ const SideNavigationItem = ({
   href,
   label,
 }) => {
-  const { classes } = useStyles({ level });
+  const { classes, cx } = useStyles({ level });
   const { currentPathname } = useSideNavigation();
   const isActive = useMemo(() => !forceInactive && (currentPathname === href || forceActive), [
     currentPathname,
@@ -75,8 +74,8 @@ const SideNavigationItem = ({
   ]);
 
   return (
-    <li className={classNames(classes.list, className)}>
-      <div className={classNames(classes.item, {
+    <li className={cx(classes.list, className)}>
+      <div className={cx(classes.item, {
         [classes.itemActive]: isActive,
       })}
       >
@@ -84,7 +83,7 @@ const SideNavigationItem = ({
           <Link
             tag="a"
             href={href}
-            className={classNames(classes.link, classes.indentation, {
+            className={cx(classes.link, classes.indentation, {
               [classes.linkActive]: isActive,
             })}
           >
@@ -93,7 +92,7 @@ const SideNavigationItem = ({
         ) : (
           <button
             type="button"
-            className={classNames(classes.link, classes.indentation, {
+            className={cx(classes.link, classes.indentation, {
               [classes.linkActive]: isActive,
             })}
             onClick={onClick}

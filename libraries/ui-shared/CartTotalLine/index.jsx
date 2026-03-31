@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
@@ -38,7 +37,7 @@ const useStyles = makeStyles()({
 const CartTotalLine = ({
   children, type, isDisabled, className,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!children) {
     return null;
@@ -53,7 +52,7 @@ const CartTotalLine = ({
 
   return (
     <div
-      className={classNames(
+      className={cx(
         className,
         `ui-shared__cart-total-line ui-shared__cart-${type}-line`,
         classes.line,

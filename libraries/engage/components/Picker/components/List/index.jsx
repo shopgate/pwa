@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -24,7 +23,7 @@ const useStyles = makeStyles()({
  * @returns {JSX} The button component.
  */
 const PickerList = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     items, onClose, onSelect, selectedIndex, query,
   } = props;
@@ -45,7 +44,7 @@ const PickerList = (props) => {
       {filteredItems.map((item, currentIndex) => (
         <li
           key={item.value}
-          className={classNames({
+          className={cx({
             [classes.active]: currentIndex === selectedIndex,
           })}
         >

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Image from '@shopgate/pwa-common/components/Image';
 import appConfig, { themeShadows } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -33,7 +32,7 @@ const useStyles = makeStyles()({
 const MediaImage = ({
   url, altText, className, resolutions,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [placeholder, setPlaceholderEnabled] = useState(!url);
 
   const {
@@ -42,7 +41,7 @@ const MediaImage = ({
 
   useEffect(() => setPlaceholderEnabled(!url), [url]);
 
-  const mergedClassName = classnames(className, {
+  const mergedClassName = cx(className, {
     [classes.innerShadow]: showInnerShadow,
   });
 

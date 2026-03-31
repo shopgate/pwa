@@ -48,7 +48,7 @@ const DiscountBadge = ({
   display,
   discount,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const displayClass = display === 'big' ? classes.big : classes.small;
 
   return (
@@ -59,7 +59,7 @@ const DiscountBadge = ({
       tabIndex={-1}
     >
       <I18n.Text
-        className={`${displayClass} ${className} theme__discount-badge`}
+        className={cx(displayClass, className, 'theme__discount-badge')}
         string={text}
         params={[discount]}
         aria-hidden

@@ -27,7 +27,7 @@ export const WIDGET_ID = '@shopgate/engage/product/ProductSlider';
  * @returns {JSX.Element}
  */
 function ProductSlider(props) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     autoplay,
     className,
@@ -54,7 +54,7 @@ function ProductSlider(props) {
             delay,
           },
         }}
-        className={`${className} engage__product__product-slider`}
+        className={cx(className, 'engage__product__product-slider')}
         controls={false}
         indicators={false}
         freeMode={!snap}

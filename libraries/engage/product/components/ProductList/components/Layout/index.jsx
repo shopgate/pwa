@@ -15,10 +15,10 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX}
  */
 const Layout = ({ children }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <List className={`${classes.list} engage__product__product-list`} itemScope itemType="http://schema.org/ItemList" data-test-id="productList">
+    <List className={cx(classes.list, 'engage__product__product-list')} itemScope itemType="http://schema.org/ItemList" data-test-id="productList">
       {children}
     </List>
   );

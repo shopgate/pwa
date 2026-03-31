@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import classNames from 'classnames';
 import { QuantityLabel, I18n, Price } from '@shopgate/engage/components';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -37,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const CartItemProductOrderDetails = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { location, cartItem, cartIsDirectShipOnly } = useCartItem();
   const { product, currency } = useCartItemProduct();
 
@@ -68,7 +67,7 @@ const CartItemProductOrderDetails = () => {
       <li>
         <I18n.Text string="cart.fulfilled_quantity" className={classes.label} />
         <QuantityLabel
-          className={classNames(classes.quantityLabel, classes.labelValue)}
+          className={cx(classes.quantityLabel, classes.labelValue)}
           value={cartItem.quantity}
           unit={hasUnitWithDecimals ? product.unit : null}
           maxDecimals={hasUnitWithDecimals ? 2 : 0}
@@ -77,7 +76,7 @@ const CartItemProductOrderDetails = () => {
       <li>
         <I18n.Text string="cart.ordered_quantity" className={classes.label} />
         <QuantityLabel
-          className={classNames(classes.quantityLabel, classes.labelValue)}
+          className={cx(classes.quantityLabel, classes.labelValue)}
           value={cartItem.orderedQuantity}
           unit={hasUnitWithDecimals ? product.unit : null}
           maxDecimals={hasUnitWithDecimals ? 2 : 0}

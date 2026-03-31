@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { Image } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -12,9 +11,6 @@ const useStyles = makeStyles()({
     display: 'flex',
     alignItems: 'center',
     fontSize: 15,
-  },
-  rootDisabled: {
-    opacity: 0.5,
   },
   imageContainer: {
     width: 32,
@@ -48,7 +44,7 @@ const ShippingMethod = ({ shippingMethod }) => {
   const [useImage, setUseImage] = useState(!!serviceLevel?.iconUrl);
 
   return (
-    <div className={classNames(classes.root)}>
+    <div className={classes.root}>
       <div className={classes.imageContainer}>
         { useImage ? (
           <Image

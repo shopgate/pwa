@@ -23,7 +23,7 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const Discount = ({ price }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (price && typeof price.discount === 'undefined') {
     return null;
@@ -32,7 +32,7 @@ const Discount = ({ price }) => {
   return (
     <PlaceholderLabel ready={(price !== null)} className={classes.placeholder}>
       {!!(price && price.discount) && (
-        <div className={`${classes.discount} theme__product__header__discount`}>
+        <div className={cx(classes.discount, 'theme__product__header__discount')}>
           <DiscountBadge text={`-${price.discount}%`} />
         </div>
       )}

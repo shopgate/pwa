@@ -21,11 +21,11 @@ const useStyles = makeStyles()(() => ({
 const PlaceholderLabel = ({
   children, className, ready, style,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!ready) {
     return (
-      <div style={style} className={`${classes.label} ${className} ui-shared__placeholder-label`} />
+      <div style={style} className={cx(classes.label, className, 'ui-shared__placeholder-label')} />
     );
   }
 

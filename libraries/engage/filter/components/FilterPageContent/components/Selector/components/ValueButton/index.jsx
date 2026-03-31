@@ -1,6 +1,5 @@
 import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
@@ -53,12 +52,12 @@ const ValueButton = ({
   label,
   onClick,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
-  const buttonClassName = useMemo(() => classNames({
+  const buttonClassName = useMemo(() => cx({
     [classes.inactive]: !isActive,
     [classes.active]: isActive,
-  }), [classes.active, classes.inactive, isActive]);
+  }), [classes.active, classes.inactive, isActive, cx]);
 
   return (
     <button

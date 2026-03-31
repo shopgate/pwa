@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery, useTheme } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -87,9 +86,9 @@ const Item = ({
 }) => {
   const theme = useTheme();
   const glowHover = useMemo(() => ({
-    boxShadow: `${-theme.spacing(2.5)}px 0 0 ${colors.shade8}, ${theme.spacing(2.5)}px 0 0 ${colors.shade8}`,
+    boxShadow: `${theme.spacing(-2.5)}px 0 0 ${colors.shade8}, ${theme.spacing(2.5)}px 0 0 ${colors.shade8}`,
   }), [theme]);
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const renderContent = useCallback((isNested = true) => {
     const gridStyles = {
@@ -105,7 +104,7 @@ const Item = ({
 
     return (
       <div data-test-id={testId} ref={ref} className="engage__sheet-list__item">
-        <Grid className={classNames(gridStyles)} component="div">
+        <Grid className={cx(gridStyles)} component="div">
           {(image !== null) && (
             <div className={classes.image}>
               {image}
@@ -116,7 +115,7 @@ const Item = ({
               {leftComponent}
             </Grid.Item>
           )}
-          <Grid.Item className={classNames(titleStyles)} component="div" grow={1}>
+          <Grid.Item className={cx(titleStyles)} component="div" grow={1}>
             <div>
               {title}
             </div>
@@ -147,6 +146,7 @@ const Item = ({
     rightComponent,
     testId,
     title,
+    cx,
   ]);
 
   if (isDisabled || (!link && !onClick)) {

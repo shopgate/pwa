@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
@@ -34,7 +33,7 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabels }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { isOrderDetails, isCheckoutConfirmation } = useCartItem();
   const context = useCartItemProduct();
   const { currency, cartItem } = context;
@@ -55,7 +54,7 @@ const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabe
         const isLast = index === prices.length - 1;
         return (
           /* eslint-disable react/no-array-index-key */
-          <li key={`total_${index}`} className={classNames(classes.priceListEntry, customClasses?.entry)}>
+          <li key={`total_${index}`} className={cx(classes.priceListEntry, customClasses?.entry)}>
             { (showLabels || !isSubtotal) && (
               <CartItemProductPriceListPromotion
                 isCoupon={isCoupon}
@@ -65,13 +64,13 @@ const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabe
             )}
             { !isLast ? (
               <PriceStriked
-                className={classNames(classes.priceStriked, customClasses?.priceStriked)}
+                className={cx(classes.priceStriked, customClasses?.priceStriked)}
                 value={price}
                 currency={currency}
               />
             ) : (
               <Price
-                className={classNames(classes.price, customClasses?.price)}
+                className={cx(classes.price, customClasses?.price)}
                 unitPrice={price}
                 currency={currency}
                 discounted={prices.length > 1 || price === 0}

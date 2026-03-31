@@ -34,7 +34,7 @@ const Widget = ({ config, component: Comp }) => {
     width,
   } = config;
 
-  const { classes } = useStyles({
+  const { classes, cx } = useStyles({
     col,
     row,
     width,
@@ -47,7 +47,7 @@ const Widget = ({ config, component: Comp }) => {
 
   return (
     <Grid.Item
-      className={`common__widgets__widget ${classes.widgetCell}`}
+      className={cx('common__widgets__widget', classes.widgetCell)}
       component="div"
     >
       <div>

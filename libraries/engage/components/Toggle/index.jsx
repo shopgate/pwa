@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -71,7 +70,7 @@ const useStyles = makeStyles()({
 const Toggle = ({
   id, checked, className, onChange, disabled,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div className={className}>
@@ -87,14 +86,14 @@ const Toggle = ({
           aria-labelledby={`${id}-label`}
         />
         <div
-          className={classNames(
+          className={cx(
             classes.label,
             checked && classes.labelChecked,
             disabled && classes.labelDisabled
           )}
         />
         <div
-          className={classNames(
+          className={cx(
             classes.thumb,
             checked && classes.thumbChecked,
             disabled && classes.thumbDisabled

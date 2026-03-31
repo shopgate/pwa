@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import HtmlSanitizer from '@shopgate/pwa-common/components/HtmlSanitizer';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
@@ -79,12 +78,12 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const Html = ({ settings, navigate }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { html } = settings;
 
   return (
     <div
-      className={classNames(settings.defaultPadding && classes.withDefaultPadding)}
+      className={cx(settings.defaultPadding && classes.withDefaultPadding)}
       data-test-default-padding={settings.defaultPadding || undefined}
     >
       <HtmlSanitizer

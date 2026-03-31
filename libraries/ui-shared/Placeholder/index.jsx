@@ -21,7 +21,7 @@ const Placeholder = ({
   width,
   ...rest
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const style = {
     height,
@@ -33,7 +33,7 @@ const Placeholder = ({
 
   return (
     <div
-      className={`${classes.root} ui-shared__placeholder`}
+      className={cx(classes.root, 'ui-shared__placeholder')}
       style={style}
     />
   );

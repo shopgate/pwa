@@ -111,7 +111,7 @@ const Media = ({
   productId,
   variantId,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
 
@@ -178,7 +178,10 @@ const Media = ({
                       <div
                         key={image}
                         onClick={() => handleOpenGallery(index)}
-                        className={`${classes.modalPreview} ${index === imageIndex && classes.modalPreviewActive}`}
+                        className={cx(
+                          classes.modalPreview,
+                          index === imageIndex && classes.modalPreviewActive
+                        )}
                       >
                         <ProductImage
                           src={image}

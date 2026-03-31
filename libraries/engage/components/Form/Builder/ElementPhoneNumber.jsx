@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { camelCase, upperCase, isEqual } from 'lodash';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { parsePhoneNumber } from 'react-phone-number-input';
@@ -65,7 +64,7 @@ const locales = {
  * @returns {JSX.Element}
  */
 const UnwrappedElementPhoneNumber = React.memo((props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     element,
     name,
@@ -179,7 +178,7 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
     handleChange(phoneValue, { target: { name } });
   }, [handleChange, name]);
 
-  const phoneClasses = classnames('textField', {
+  const phoneClasses = cx('textField', {
     simpleInput: !hasCountrySelect,
     [camelCase(name)]: true,
     phonePicker: true,
@@ -198,7 +197,7 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
 
   return (
     <div
-      className={classnames(
+      className={cx(
         'formBuilderField',
         'engage__form-phone-number',
         { validationError: !!errorText }

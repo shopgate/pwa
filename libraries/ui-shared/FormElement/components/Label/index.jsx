@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -59,13 +58,13 @@ const useStyles = makeStyles()(theme => ({
 const Label = ({
   hasErrorMessage, htmlFor, isFloating, isFocused, label, labelStatic,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     /* eslint-disable-next-line jsx-a11y/label-has-associated-control */
     <label
       htmlFor={htmlFor}
-      className={classNames(
+      className={cx(
         {
           [classes.label]: !labelStatic,
           [classes.labelStatic]: labelStatic,

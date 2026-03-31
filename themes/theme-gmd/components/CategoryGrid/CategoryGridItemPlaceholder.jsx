@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Placeholder, Image } from '@shopgate/engage/components';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
@@ -60,12 +59,12 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const CategoryGridItemPlaceholder = ({ showImages }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <li className={classes.gridItem}>
       <div className={classes.gridItemInner}>
-        <div className={classNames(classes.gridItemColumnLeft, classes.placeholder)}>
+        <div className={cx(classes.gridItemColumnLeft, classes.placeholder)}>
           <Placeholder height="25px" width="80%" />
         </div>
         { showImages && (

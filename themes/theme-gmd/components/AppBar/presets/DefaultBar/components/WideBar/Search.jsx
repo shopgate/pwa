@@ -40,8 +40,8 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const Search = ({ search, routeSearchPhrase, isCheckout }) => {
-  const { classes } = useStyles();
-  // Focus state.
+  const { classes, cx } = useStyles();
+
   const [focus, setFocus] = useState(false);
   const handleOnFocus = useCallback(() => {
     setFocus(true);
@@ -77,7 +77,7 @@ const Search = ({ search, routeSearchPhrase, isCheckout }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className={`${classes.root} ${focus && classes.rootFocused}`}>
+      <div className={cx(classes.root, focus && classes.rootFocused)}>
         <input
           value={searchPhrase}
           onChange={handleSetSearch}

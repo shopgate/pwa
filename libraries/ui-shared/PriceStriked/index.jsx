@@ -1,6 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -62,7 +61,7 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const PriceStriked = ({ className, currency, value }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [angle, setAngle] = useState(null);
   const elementRef = useRef(null);
 
@@ -75,7 +74,7 @@ const PriceStriked = ({ className, currency, value }) => {
   return (
     <>
       <div
-        className={classNames(
+        className={cx(
           classes.root,
           angle != null && classes.strikeActive,
           className,

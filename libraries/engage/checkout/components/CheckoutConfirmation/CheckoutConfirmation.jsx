@@ -30,7 +30,7 @@ const useStyles = makeStyles()(theme => ({
   side: {
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       marginTop: 134,
-      marginLeft: -theme.spacing(2),
+      marginLeft: theme.spacing(-2),
       flex: 0.45,
     },
   },

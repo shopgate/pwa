@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { FAVORITES_EMPTY } from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
@@ -43,19 +42,19 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX.Element}
  */
 const EmptyFavorites = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const hasScrollContainer = useScrollContainer();
   const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites), []);
 
   return (
     <div
-      className={classNames(classes.container, {
+      className={cx(classes.container, {
         [classes.containerWithTopPadding]: !hasScrollContainer,
       })}
     >
       <SurroundPortals portalName={FAVORITES_EMPTY}>
         <div
-          className={classNames(classes.iconContainer, 'empty-favorites__image')}
+          className={cx(classes.iconContainer, 'empty-favorites__image')}
           data-test-id="emptyFavComponent"
         >
           {emptyFavorites

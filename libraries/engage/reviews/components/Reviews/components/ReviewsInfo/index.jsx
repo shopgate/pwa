@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -33,13 +32,13 @@ const {
  * @returns {JSX.Element}
  */
 const ReviewsInfo = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   if (!text) {
     return null;
   }
 
   return (
-    <div className={classNames(classes.root, 'engage__reviews__review_info_text')}>
+    <div className={cx(classes.root, 'engage__reviews__review_info_text')}>
       <div>
         {text}
         { linkText && linkUrl && (

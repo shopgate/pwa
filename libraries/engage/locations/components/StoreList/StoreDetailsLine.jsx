@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { Grid } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeVariables } from '@shopgate/pwa-common/helpers/config';
@@ -34,12 +33,12 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 export function StoreDetailsLine({ icon: Icon, children, linked }) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   return (
     <Grid className={classes.detailsLine}>
       <Grid.Item
         shrink={0}
-        className={classNames(classes.detailsIcon, { [classes.detailsIconLinked]: linked })}
+        className={cx(classes.detailsIcon, { [classes.detailsIconLinked]: linked })}
       >
         <Icon aria-hidden />
       </Grid.Item>

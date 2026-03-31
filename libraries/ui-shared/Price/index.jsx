@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -36,7 +35,7 @@ const useStyles = makeStyles()({
  * @return {JSX.Element}
  */
 const Price = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   // Added with PWA 6 - CCP-2372
   const {
     show,
@@ -46,7 +45,7 @@ const Price = (props) => {
   // use widget setting if set to true/false, otherwise use market logic
   const showDisclaimer = typeof show === 'boolean' ? show : showTaxDisclaimer;
 
-  const containerClasses = classNames(
+  const containerClasses = cx(
     classes.container,
     props.className,
     {

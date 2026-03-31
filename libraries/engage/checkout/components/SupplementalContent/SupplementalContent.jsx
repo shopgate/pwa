@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './SupplementalContent.connector';
@@ -37,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const SupplementalContent = ({ text, className }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   if (!text) {
     return null;
   }
@@ -45,7 +44,7 @@ const SupplementalContent = ({ text, className }) => {
   /* eslint-disable react/no-danger */
   return (
     <div
-      className={classNames(classes.wrapper, className)}
+      className={cx(classes.wrapper, className)}
       dangerouslySetInnerHTML={{ __html: text }}
     />
   );

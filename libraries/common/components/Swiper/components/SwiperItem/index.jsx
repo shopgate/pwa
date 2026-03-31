@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { SwiperSlide } from 'swiper/react';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -21,10 +20,10 @@ const useStyles = makeStyles()(() => ({
  * @returns {React.Node}
  */
 function SwiperItem({ children, className, ...slideProps }) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <SwiperSlide {...slideProps} className={classNames(classes.item, className)} data-test-id="Slider">
+    <SwiperSlide {...slideProps} className={cx(classes.item, className)} data-test-id="Slider">
       {children}
     </SwiperSlide>
   );

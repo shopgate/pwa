@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import { themeConfig, themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -50,7 +49,7 @@ const useStyles = makeStyles()({
 const ProductImagePlaceholder = ({
   src, showInnerShadow, noBackground,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
   const srcLoaded = useLoadImage(src);
@@ -72,7 +71,7 @@ const ProductImagePlaceholder = ({
     };
   }, [src, noBackground, srcLoaded]);
 
-  const contentClasses = classnames(classes.placeholderContent, {
+  const contentClasses = cx(classes.placeholderContent, {
     [classes.innerShadow]: showInnerShadow,
   });
 

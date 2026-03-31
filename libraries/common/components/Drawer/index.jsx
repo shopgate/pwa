@@ -2,7 +2,6 @@ import React, {
   useState, useEffect, useRef, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
 
 const duration = 150;
@@ -48,7 +47,7 @@ const Drawer = ({
   onDidClose,
   onDidOpen,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [active, setActive] = useState(isOpen);
   const sheetRef = useRef(null);
   const isFirstIsOpenSync = useRef(true);
@@ -84,7 +83,7 @@ const Drawer = ({
   const animationIn = animation.in || classes.animationIn;
   const animationOut = animation.out || classes.animationOut;
 
-  const combinedClassName = classNames(
+  const combinedClassName = cx(
     className,
     classes.container,
     { [animationIn]: isOpen },

@@ -2,7 +2,6 @@ import React, {
   useState, useEffect, useRef, useCallback, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import find from 'lodash/find';
 import { makeStyles } from '@shopgate/engage/styles';
 import Dropdown from '../Dropdown';
@@ -39,7 +38,7 @@ const SelectBox = ({
   initialValue,
   testId,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(() => find(items, { value: initialValue }));
   const controlRef = useRef(null);
@@ -105,7 +104,7 @@ const SelectBox = ({
   const buttonLabel = selected ? selected.label : defaultText;
 
   return (
-    <div className={`${className} common__select-box`} data-test-id={testId}>
+    <div className={cx(className, 'common__select-box')} data-test-id={testId}>
       <button
         className={button}
         onClick={handleOpenList}
@@ -119,7 +118,7 @@ const SelectBox = ({
         <span className={selection}>
           <I18n.Text string={buttonLabel} />
         </span>
-        <div className={classNames(iconClass, { [iconOpen]: (isOpen && iconOpen !== null) })}>
+        <div className={cx(iconClass, { [iconOpen]: (isOpen && iconOpen !== null) })}>
           <Icon />
         </div>
       </button>

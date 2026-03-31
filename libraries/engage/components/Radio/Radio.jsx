@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
@@ -62,7 +61,7 @@ const Radio = ({
   value: valueProp,
   attributes,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const radioGroup = useRadioGroup();
 
   let name = nameProp;
@@ -84,7 +83,7 @@ const Radio = ({
   }
 
   return (
-    <span className={classNames(classes.root, classNamesProp.root)}>
+    <span className={cx(classes.root, classNamesProp.root)}>
       <Ripple className={classes.ripple} color="var(--color-primary)">
         <input
           className={classes.input}
@@ -97,7 +96,7 @@ const Radio = ({
           id={`${name}_${valueProp}`}
           {...attributes}
         />
-        <div className={classNames(
+        <div className={cx(
           classes.radioContainer,
           {
             [classes.radioDisabled]: disabledProp,
@@ -106,7 +105,7 @@ const Radio = ({
         )}
         >
           {checked && (
-            <CheckedIcon className={classNames(
+            <CheckedIcon className={cx(
               classes.radio,
               classes.radioChecked,
               classNamesProp.radioChecked,
@@ -115,7 +114,7 @@ const Radio = ({
             />
           )}
           {!checked && (
-            <UncheckedIcon className={classNames(classes.radio, classNamesProp.radioUnchecked, 'uncheckedIcon')} />
+            <UncheckedIcon className={cx(classes.radio, classNamesProp.radioUnchecked, 'uncheckedIcon')} />
           )}
         </div>
       </Ripple>

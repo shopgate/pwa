@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const Content = ({ properties }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const groups = useMemo(() => getGroupsFromProperties(properties), [properties]);
 
   if (!properties) {
@@ -40,7 +40,7 @@ const Content = ({ properties }) => {
     It should only be used for approved BETA Client Projects
   */
   return (
-    <div className={`${classes.groupsContainer} engage__product__product-properties`}>
+    <div className={cx(classes.groupsContainer, 'engage__product__product-properties')}>
       <GroupedProperties groups={groups} />
     </div>
   );

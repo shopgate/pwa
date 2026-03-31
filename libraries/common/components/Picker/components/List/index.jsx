@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -28,14 +27,14 @@ const PickerList = ({
   onSelect,
   selectedIndex,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <ul className="common__picker__list">
       {items.map((item, currentIndex) => (
         <li
           key={item.value}
-          className={classNames({ [classes.active]: currentIndex === selectedIndex })}
+          className={cx({ [classes.active]: currentIndex === selectedIndex })}
         >
           <button
             className={classes.button}

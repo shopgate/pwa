@@ -13,8 +13,8 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     justifyContent: 'flex-end',
     textAlign: 'right',
-    marginTop: -theme.spacing(1),
-    marginBottom: -theme.spacing(2),
+    marginTop: theme.spacing(-1),
+    marginBottom: theme.spacing(-2),
   },
 }));
 
@@ -23,14 +23,14 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const AllReviewsLink = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!props.productId || props.count <= REVIEW_PREVIEW_COUNT) {
     return null;
   }
 
   return (
-    <div className={`${classes.container} engage__reviews__all-reviews-link`} data-test-id="showAllReviewsButton">
+    <div className={cx(classes.container, 'engage__reviews__all-reviews-link')} data-test-id="showAllReviewsButton">
       <ButtonLink href={`${ITEM_PATH}/${bin2hex(props.productId)}/reviews`}>
         <I18n.Text string="reviews.button_all" params={props} />
       </ButtonLink>

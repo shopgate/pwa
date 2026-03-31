@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
@@ -20,7 +19,7 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const Empty = ({ isVisible, ...props }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const hasScrollContainer = useScrollContainer();
 
   if (!isVisible) {
@@ -33,7 +32,7 @@ const Empty = ({ isVisible, ...props }) => {
       <Portal name={portals.NO_RESULTS_CONTENT}>
         <NoResults
           {...props}
-          className={classNames({ [classes.withTopPadding]: !hasScrollContainer })}
+          className={cx({ [classes.withTopPadding]: !hasScrollContainer })}
         />
       </Portal>
       <Portal name={portals.NO_RESULTS_CONTENT_AFTER} />

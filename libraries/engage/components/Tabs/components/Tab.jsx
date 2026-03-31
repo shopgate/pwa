@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Button from '@shopgate/pwa-ui-shared/Button';
 import { ViewContext } from '../../View';
@@ -42,7 +41,7 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const Tab = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     className,
     disabled = false,
@@ -83,7 +82,7 @@ const Tab = (props) => {
     <Button
       flat
       type={selected ? 'secondary' : 'regular'}
-      className={classNames(classes.root, className)}
+      className={cx(classes.root, className)}
       role="tab"
       aria-selected={selected}
       disabled={disabled}

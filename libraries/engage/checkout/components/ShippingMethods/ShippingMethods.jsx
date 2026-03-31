@@ -2,7 +2,6 @@ import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import CryptoJs from 'crypto-js';
 import sortBy from 'lodash/sortBy';
 import uniqBy from 'lodash/uniqBy';
@@ -86,7 +85,7 @@ const hashShippingMethod = (method) => {
  * @returns {JSX}
  */
 const ShippingMethods = ({ orderHasDirectShipItems }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     shippingAddress, updateShippingMethod, isLoading, order,
   } = useCheckoutContext();
@@ -182,7 +181,7 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
         {i18n.text('checkout.shippingMethod.title')}
       </h3>
       { shippingMethods.length === 1 ? (
-        <div className={classNames(classes.container, classes.containerSingle)}>
+        <div className={cx(classes.container, classes.containerSingle)}>
           <ShippingMethod shippingMethod={shippingMethods[0]} />
         </div>
       ) : (

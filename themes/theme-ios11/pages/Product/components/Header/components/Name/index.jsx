@@ -32,11 +32,11 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const Content = ({ longName, name }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-    <div className={`${classes.name} product-name`} role="heading">
+    <div className={cx(classes.name, 'product-name')} role="heading">
       {/* This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects */}
       { isBeta()
@@ -44,6 +44,7 @@ const Content = ({ longName, name }) => {
           <PlaceholderLabel className={classes.placeholder} ready={(longName !== null)}>
             <span
               data-test-id={`name: ${longName}`}
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{ __html: longName }}
             />
           </PlaceholderLabel>
@@ -52,6 +53,7 @@ const Content = ({ longName, name }) => {
           <PlaceholderLabel className={classes.placeholder} ready={(name !== null)}>
             <span
               data-test-id={`name: ${name}`}
+              // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{ __html: name }}
             />
           </PlaceholderLabel>

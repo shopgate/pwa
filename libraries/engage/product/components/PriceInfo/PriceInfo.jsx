@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { ConditionalWrapper } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -23,7 +22,7 @@ const useStyles = makeStyles()({
 const PriceInfo = ({
   product, className, wrapper, displayPricePerMeasureUnit, currency: externalCurrency,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { price = {}, unitPriceRefValue, unitPriceRefUom } = product || {};
   const { pricePerMeasureUnit, info, currency } = price;
 
@@ -69,9 +68,10 @@ const PriceInfo = ({
       wrapper={wrapper}
     >
       <div
-        className={classNames(classes.container, className, 'engage__product__price-info', {
+        className={cx(classes.container, className, 'engage__product__price-info', {
           [classes.noWrap]: content !== info,
         })}
+        // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: content }}
         data-test-id={`priceInfo: ${content}`}
       />

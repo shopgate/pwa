@@ -53,12 +53,12 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX.Element} The rendered dialog.
  */
 const BasicDialog = ({ children, actions, title }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <FocusTrap>
       <div
-        className={`${classes.container} ui-material__base-dialog`}
+        className={cx(classes.container, 'ui-material__base-dialog')}
         data-test-id="basicDialog"
         role="alertdialog"
         aria-modal

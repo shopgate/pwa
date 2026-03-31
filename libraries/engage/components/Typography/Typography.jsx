@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import classNames from 'classnames';
 
 /**
  * Capitalizes the first letter of a string.
@@ -145,7 +144,7 @@ const defaultVariantMapping = {
 };
 
 const Typography = React.forwardRef((props, ref) => {
-  const { classes } = useTypographyStyles();
+  const { classes, cx } = useTypographyStyles();
   const {
     align = 'inherit',
     className,
@@ -167,7 +166,7 @@ const Typography = React.forwardRef((props, ref) => {
 
   return (
     <Component
-      className={classNames(
+      className={cx(
         classes.root,
         'engage__typography',
         {

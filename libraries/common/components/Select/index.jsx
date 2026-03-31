@@ -54,7 +54,7 @@ const Select = ({
   placeholder,
   value,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const domElement = useRef(null);
 
   const [selected, setSelected] = useState(() => {
@@ -140,7 +140,7 @@ const Select = ({
   ) : null;
 
   return (
-    <div className={`${classes.container} ${className} common_select`} ref={domElement}>
+    <div className={cx(classes.container, className, 'common_select')} ref={domElement}>
       <div onTouchStart={toggleOpenState} role="presentation">
         <span>
           {selectedLabel}

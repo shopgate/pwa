@@ -259,7 +259,7 @@ const UnitQuantityPicker = ({
         // e.g. opening links unintended
         <div className={classes.backdrop} />
       )}
-      <div className={`${classes.root} ${className}`}>
+      <div className={cx(classes.root, className)}>
         <RippleButton
           type="secondary"
           disabled={!allowDecrement || disabled}

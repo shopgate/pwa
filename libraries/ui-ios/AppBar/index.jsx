@@ -1,6 +1,5 @@
 import React, { useMemo, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, setCSSCustomProp } from '@shopgate/engage/styles';
@@ -55,7 +54,7 @@ const AppBar = ({
   backgroundColor,
   textColor,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const contentRef = useRef(null);
   const style = useMemo(() => ({
     background: backgroundColor,
@@ -75,7 +74,7 @@ const AppBar = ({
     };
   }, [contentRef, observer]);
 
-  const sectionClasses = classnames(classes.outer, parentClasses.outer, 'ui-ios__app-bar');
+  const sectionClasses = cx(classes.outer, parentClasses.outer, 'ui-ios__app-bar');
 
   return (
     <section
@@ -86,7 +85,7 @@ const AppBar = ({
       ref={contentRef}
     >
       <SurroundPortals portalName={APP_BAR_CONTENT}>
-        <div className={classnames(classes.inner, parentClasses.inner)}>
+        <div className={cx(classes.inner, parentClasses.inner)}>
           <Left elements={left} />
           <Center elements={center} />
           <Right elements={right} />

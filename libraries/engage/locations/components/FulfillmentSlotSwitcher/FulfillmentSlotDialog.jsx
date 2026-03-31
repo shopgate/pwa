@@ -1,7 +1,6 @@
 import React, {
   Fragment, useState, useMemo, useEffect, useCallback,
 } from 'react';
-import classnames from 'classnames';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -177,7 +176,7 @@ const FulfillmentSlotSheet = ({
   allowClose,
   fulfillmentSlot,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   // Group by date.
   const groupedSlots = useMemo(
     () => groupBy(fulfillmentSlots, 'date'),
@@ -277,7 +276,7 @@ const FulfillmentSlotSheet = ({
             <button
               type="button"
               key={date}
-              className={classnames(
+              className={cx(
                 classes.button,
                 classes.buttonDate,
                 {
@@ -305,7 +304,7 @@ const FulfillmentSlotSheet = ({
                   type="button"
                   key={`${slot.from}-${slot.to}`}
                   onClick={() => setSelectedSlot(slot.id)}
-                  className={classnames(
+                  className={cx(
                     classes.button,
                     {
                       [classes.buttonDisabled]: slot.status !== 'active',

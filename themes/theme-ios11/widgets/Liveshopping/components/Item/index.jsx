@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Link from '@shopgate/pwa-common/components/Link';
@@ -77,7 +76,7 @@ function LiveshoppingItem({
   productId,
   hasPagination,
 }) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { ProductCard } = useThemeComponents();
 
   return (
@@ -98,7 +97,7 @@ function LiveshoppingItem({
           <Link
             href={url}
             state={{ title: name }}
-            className={classNames({ [classes.linkPagination]: hasPagination })}
+            className={cx({ [classes.linkPagination]: hasPagination })}
           >
             <Grid>
               <Grid.Item className={classes.image}>
@@ -108,7 +107,7 @@ function LiveshoppingItem({
                   alt={name}
                 />
               </Grid.Item>
-              <Grid.Item className={classNames(classes.infoPane, {
+              <Grid.Item className={cx(classes.infoPane, {
                 [classes.infoPanePagination]: hasPagination,
               })}
               >

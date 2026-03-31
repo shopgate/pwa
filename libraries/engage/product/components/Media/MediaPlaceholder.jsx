@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
@@ -40,10 +39,10 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const MediaPlaceholder = ({ className }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classnames(classes.placeholderContainer, className)}>
+    <div className={cx(classes.placeholderContainer, className)}>
       <div className={classes.placeholderContent} data-test-id="placeHolder">
         <PlaceholderIcon className={classes.placeholderIcon} />
       </div>

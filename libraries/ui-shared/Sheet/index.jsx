@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
-import classNames from 'classnames';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
@@ -150,7 +149,7 @@ const SheetView = ({
   title,
   handleSearchInput,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const animation = {
     duration: durationProp,
@@ -159,12 +158,12 @@ const SheetView = ({
     ...animationFromParent,
   };
 
-  const drawerClassNames = classNames(
+  const drawerClassNames = cx(
     classes.container,
     { [className]: className }
   );
 
-  const contentClassNames = classNames(
+  const contentClassNames = cx(
     classes.content,
     { [classes.containerFullScreen]: showSearch },
     { [contentClassName]: contentClassName },
@@ -173,7 +172,7 @@ const SheetView = ({
 
   return (
     <section
-      className={classNames('ui-shared__sheet', {
+      className={cx('ui-shared__sheet', {
         [classes.section]: isOpen,
       })}
     >

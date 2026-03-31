@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -36,10 +35,10 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const Hint = ({ hintText, visible }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classNames(classes.hint, { [classes.hintInactive]: !visible }, 'hint')}>
+    <div className={cx(classes.hint, { [classes.hintInactive]: !visible }, 'hint')}>
       <I18n.Text string={hintText} />
     </div>
   );

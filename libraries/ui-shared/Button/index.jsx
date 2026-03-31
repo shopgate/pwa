@@ -111,7 +111,7 @@ const Button = (props) => {
     ...rest
   } = props;
 
-  const { classes } = useStyles({
+  const { classes, cx } = useStyles({
     type,
     flat,
     disabled,
@@ -126,7 +126,7 @@ const Button = (props) => {
   return (
     <BaseButton
       {...rest}
-      className={`ui-shared__button ${classes.button} ${className}`}
+      className={cx('ui-shared__button', classes.button, className)}
       disabled={disabled}
       onClick={onClick}
       testId={testId}

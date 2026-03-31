@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Card, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -82,7 +81,7 @@ const CheckoutSection = ({
   editLabel,
   id,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <>
@@ -90,12 +89,12 @@ const CheckoutSection = ({
         <h3 className={classes.headline} id={id}>{i18n.text(title)}</h3>
       )}
       <Card
-        className={classNames(classes.card, {
+        className={cx(classes.card, {
           [classes.cardWithForm]: hasForm,
         })}
         id={!title ? id : null}
       >
-        <div className={classNames(classes.actionsContainer, className)}>
+        <div className={cx(classes.actionsContainer, className)}>
           {children || null}
           {content && (
             <table className={classes.table}>
@@ -114,7 +113,7 @@ const CheckoutSection = ({
                     <Fragment key={label}>
                       <tr>
                         <td>
-                          <span className={classNames({
+                          <span className={cx({
                             [classes.labelWithInfoIcon]: !!info,
                           })}
                           >

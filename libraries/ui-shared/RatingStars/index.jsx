@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import times from 'lodash/times';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -69,7 +68,7 @@ const RatingStars = ({
   isSelectable,
   onSelection,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const ratedStars = value / RATING_SCALE_DIVISOR;
   const numFullStars = Math.floor(ratedStars);
   const numHalfStars = Math.ceil(ratedStars - numFullStars);
@@ -90,13 +89,13 @@ const RatingStars = ({
     onSelection(e);
   }, [onSelection]);
 
-  const iconClassName = classNames(
+  const iconClassName = cx(
     classes.icon,
     display === 'small' && classes.iconGapSmall,
     display === 'big' && classes.iconGapBig,
     display === 'large' && classes.iconGapLarge
   );
-  const rootClassName = classNames(classes.container, className, 'ui-shared__rating-stars');
+  const rootClassName = cx(classes.container, className, 'ui-shared__rating-stars');
 
   const emptyStars = [
     ...times(numStars, (i) => {
@@ -152,10 +151,10 @@ const RatingStars = ({
       aria-label={getTextualFinal(ratedStars)}
       data-test-id={`ratedStars: ${ratedStars}`}
     >
-      <div className={classNames(classes.emptyStars, 'rating-stars-empty')}>
+      <div className={cx(classes.emptyStars, 'rating-stars-empty')}>
         {emptyStars}
       </div>
-      <div className={classNames(classes.filledStars, 'rating-stars-filled')}>
+      <div className={cx(classes.filledStars, 'rating-stars-filled')}>
         {filledStars}
       </div>
     </div>

@@ -5,7 +5,6 @@ import {
 } from '@shopgate/engage/components';
 import { PRODUCT_DESCRIPTION } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
-import classNames from 'classnames';
 import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -55,7 +54,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 function Description({ html, navigate, ...props }) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <SurroundPortals
@@ -67,8 +66,8 @@ function Description({ html, navigate, ...props }) {
       }}
     >
       {(html !== '') && (
-        <div className={`${classes.container} engage__product__description`}>
-          <div className={classNames(classes.title, 'theme__description_heading')}>
+        <div className={cx(classes.container, 'engage__product__description')}>
+          <div className={cx(classes.title, 'theme__description_heading')}>
             <I18n.Text string="product.description_heading" />
           </div>
           <PlaceholderParagraph className={classes.placeholder} ready={!!html}>

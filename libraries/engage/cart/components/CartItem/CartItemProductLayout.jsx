@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
@@ -107,7 +106,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
  * @returns {JSX.Element}
  */
 export function CartItemProductLayout() {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   // Added with PWA 6 - CCP-2372
   const {
     show,
@@ -157,7 +156,7 @@ export function CartItemProductLayout() {
 
   return (
     <>
-      <Grid className={classNames(classes.item, {
+      <Grid className={cx(classes.item, {
         [classes.itemInactive]: !isActive,
       })}
       >
@@ -200,7 +199,7 @@ export function CartItemProductLayout() {
             )}
           </Grid>
           { showLineItemPromotions && (
-            <Grid className={classNames(classes.info, classes.promotionLine)}>
+            <Grid className={cx(classes.info, classes.promotionLine)}>
               <Grid.Item />
               <Grid.Item className={classes.promotionLineItem}>
                 <CartItemProductPriceList isSubtotal showLabels />

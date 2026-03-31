@@ -2,7 +2,6 @@ import React, {
   useMemo, useEffect, useCallback, useState, useRef, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { KeyboardConsumer, SurroundPortals } from '@shopgate/engage/components';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -141,7 +140,7 @@ const TabBar = ({
   path,
   modalCount,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   useTabBarScrollObserver(isVisibleProp);
 
   const {
@@ -247,7 +246,7 @@ const TabBar = ({
     };
     const transitionClasses = transitionsMap[transition] || transitionsMap.fade;
 
-    const container = classNames(
+    const container = cx(
       'theme__tab-bar__container',
       classes.tabBarContainerBase,
       transitionClasses.base,
@@ -264,7 +263,7 @@ const TabBar = ({
       }
     );
 
-    const component = classNames(
+    const component = cx(
       'theme__tab-bar',
       // Backwards compatibility to prevent broken custom styling that addressed class of the Grid
       // component
@@ -300,6 +299,7 @@ const TabBar = ({
     transition,
     transitionVisibility,
     variant,
+    cx,
   ]);
 
   return (

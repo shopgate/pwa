@@ -21,7 +21,7 @@ const useStyles = makeStyles()(() => ({
  * @returns {JSX.Element|null}
  */
 const WidgetGrid = ({ components, config }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const widgets = useMemo(() => (
     sortBy(config, ['row']).filter(w => shouldShowWidget(w.settings))
@@ -32,7 +32,7 @@ const WidgetGrid = ({ components, config }) => {
   }
 
   return (
-    <div className={`${classes.root} common__widgets__widget-grid`}>
+    <div className={cx(classes.root, 'common__widgets__widget-grid')}>
       {Object.keys(widgets).map((key) => {
         const widget = widgets[key];
         const widgetKey = `w${key}`;

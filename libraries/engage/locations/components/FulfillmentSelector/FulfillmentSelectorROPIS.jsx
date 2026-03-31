@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core';
 import { IN_STORE_PICKUP_ROPIS_LABEL } from '../../constants';
@@ -16,9 +15,9 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 export function FulfillmentSelectorROPIS() {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { isROPISEnabled, isReady } = useFulfillmentSelectorState();
-  const className = classNames({
+  const className = cx({
     [classes.itemRowDisabled]: !isReady || !isROPISEnabled,
   });
 

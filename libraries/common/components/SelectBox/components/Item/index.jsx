@@ -1,5 +1,4 @@
 import React, { useCallback, memo } from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import I18n from '../../../I18n';
@@ -24,7 +23,7 @@ const SelectBoxItem = ({
   classNames: classNamesProp,
   forwardedRef,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { selectItem, selectItemSelected } = classNamesProp;
 
   const onSelect = useCallback(() => {
@@ -33,7 +32,7 @@ const SelectBoxItem = ({
 
   return (
     <li
-      className={classNames(selectItem, classes.item, {
+      className={cx(selectItem, classes.item, {
         [selectItemSelected]: isSelected,
       })}
       onKeyUp={() => {}}

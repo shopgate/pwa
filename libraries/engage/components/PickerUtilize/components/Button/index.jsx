@@ -49,11 +49,11 @@ const useStyles = makeStyles()((theme) => {
 const Button = ({
   disabled, label, openList, value,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <button
-      className={`${disabled ? classes.buttonDisabled : classes.button}`}
+      className={cx(disabled ? classes.buttonDisabled : classes.button)}
       onClick={openList}
       type="button"
     >

@@ -1,6 +1,5 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { getAbsoluteHeight, useScrollContainer } from '@shopgate/engage/core/helpers';
@@ -27,7 +26,7 @@ const useStyles = makeStyles()((_, { inScrollContainer }) => ({
  */
 const Footer = ({ children }) => {
   const inScrollContainer = useScrollContainer();
-  const { classes } = useStyles({ inScrollContainer });
+  const { classes, cx } = useStyles({ inScrollContainer });
   const footerRef = useRef(null);
 
   const performFooterUpdate = useCallback(() => {
@@ -78,7 +77,7 @@ const Footer = ({ children }) => {
   }, [performFooterUpdate]);
 
   return (
-    <div className={classNames(classes.footer, 'engage__footer')}>
+    <div className={cx(classes.footer, 'engage__footer')}>
       <div id={APP_FOOTER_ID} ref={footerRef}>
         {children}
       </div>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '../../hooks/common';
 
@@ -46,13 +45,13 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const PaymentMethodButton = ({ children, active, onChange }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { isLocked } = useCheckoutContext();
   return (
     <button
       type="button"
       disabled={isLocked}
-      className={classNames(classes.root, { [classes.active]: active })}
+      className={cx(classes.root, { [classes.active]: active })}
       onClick={() => onChange()}
     >
       {children}

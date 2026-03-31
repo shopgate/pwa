@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { RippleButton, I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -49,11 +48,11 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const GlobalLocationSwitcherBar = ({ locationName, handleChange, standalone }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div className={classes.wrapper}>
-      <div className={classNames(classes.inner, { [classes.innerStandalone]: standalone })}>
+      <div className={cx(classes.inner, { [classes.innerStandalone]: standalone })}>
         <span aria-label={`${i18n.text('locations.your_current_location.heading')}: ${locationName}`}>
           <span className={classes.heading}>
             {`${i18n.text('locations.your_current_location.heading')}:`}

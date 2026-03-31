@@ -2,7 +2,6 @@ import React, {
   useState, useCallback, useEffect, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import RadioGroupContext from './RadioGroup.context';
 
@@ -27,7 +26,7 @@ const RadioGroup = ({
   onChange,
   component: Component,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [value, setValue] = useState(valueProp || defaultValue);
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const RadioGroup = ({
 
   return (
     <RadioGroupContext.Provider value={contextValue}>
-      <Component role="radiogroup" className={classNames(classes.root, classNamesProp.root)}>
+      <Component role="radiogroup" className={cx(classes.root, classNamesProp.root)}>
         { children }
       </Component>
 

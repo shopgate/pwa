@@ -96,7 +96,7 @@ setViewportHeight();
 const Viewport = ({
   children, enableWebIndexing, favicon, googleSiteVerificationCode,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [hidden, setHidden] = useState(false);
 
   return (
@@ -115,7 +115,7 @@ const Viewport = ({
         </Helmet>
       )}
       <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
-      <div className={`${classes.viewport} theme__viewport`} aria-hidden={hidden} tabIndex="-1">
+      <div className={cx(classes.viewport, 'theme__viewport')} aria-hidden={hidden} tabIndex="-1">
         <LiveMessenger />
         <header className={classes.header} id="AppHeader">
           <ResponsiveContainer webOnly breakpoint=">xs">

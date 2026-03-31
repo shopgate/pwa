@@ -22,7 +22,7 @@ const InfoField = (props) => {
     className, label, errorText, leftElement, rightElement,
     hasUnderline, children, hasValue, showErrorText,
   } = props;
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <FormElement
@@ -36,7 +36,7 @@ const InfoField = (props) => {
     >
       <Grid>
         {leftElement && <Grid.Item grow={0} className={classes.element}>{leftElement}</Grid.Item>}
-        <Grid.Item grow={1} className={`${classes.info} info-field`}>
+        <Grid.Item grow={1} className={cx(classes.info, 'info-field')}>
           {children}
         </Grid.Item>
         {rightElement && <Grid.Item grow={0} className={classes.element}>{rightElement}</Grid.Item>}

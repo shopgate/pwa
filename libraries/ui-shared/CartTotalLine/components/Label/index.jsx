@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -23,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
 const Label = ({
   label, showSeparator, labelParams, suffix,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!label) {
     return <div className={classes.label} />;
@@ -34,7 +33,7 @@ const Label = ({
       <I18n.Text
         string={label}
         params={labelParams}
-        className={classNames({
+        className={cx({
           [classes.labelWithSuffix]: !!suffix,
         })}
       />

@@ -1,7 +1,6 @@
 import React, { useMemo, useContext, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { showModal } from '@shopgate/engage/core';
 import { deleteCouponsFromCart } from '@shopgate/engage/cart';
@@ -70,7 +69,7 @@ const mapDispatchToProps = dispatch => ({
  * @returns {JSX.Element}
  */
 const PromotionalTextInfoIcon = ({ text, showText }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { isLoading } = useContext(CartContext);
 
   if (!text) {
@@ -81,7 +80,7 @@ const PromotionalTextInfoIcon = ({ text, showText }) => {
     <span
       onClick={() => showText(text)}
       onKeyDown={() => showText(text)}
-      className={classNames(classes.infoIconWrapper, {
+      className={cx(classes.infoIconWrapper, {
         [classes.loading]: isLoading,
       })}
       role="button"
@@ -108,7 +107,7 @@ PromotionalTextInfoIcon.defaultProps = {
 const CartItemProductPriceListPromotion = ({
   isCoupon, isPromo, deleteCoupon, showTextModal, className,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { cartItem = {} } = useCartItem();
   const appliedPromotions = cartItem?.appliedPromotions;
 
@@ -136,7 +135,7 @@ const CartItemProductPriceListPromotion = ({
     const promotionalText = promo?.promotionalText;
     const name = promo?.name;
     return (
-      <div className={classNames(classes.container, className)}>
+      <div className={cx(classes.container, className)}>
         { name }
         <PromotionalTextInfoIcon text={promotionalText} showText={showText} />
       </div>
@@ -148,7 +147,7 @@ const CartItemProductPriceListPromotion = ({
     const code = coupon?.coupon?.code;
 
     return (
-      <div className={classNames(classes.container, className)}>
+      <div className={cx(classes.container, className)}>
         <span
           className={classes.deleteIcon}
           onClick={() => { deleteCoupon(code); }}

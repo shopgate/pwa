@@ -16,10 +16,11 @@ const useStyles = makeStyles()(() => ({
  * @return {JSX}
  */
 const Manufacturer = ({ className, text }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={`${classes.root} ${className} ui-shared__manufacturer`}>
+    <div className={cx(classes.root, className, 'ui-shared__manufacturer')}>
+      {/* eslint-disable-next-line react/no-danger */}
       <span dangerouslySetInnerHTML={{ __html: text }} />
     </div>
   );

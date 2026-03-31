@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { camelCase } from 'lodash';
 import { I18n, CheckedIcon, UncheckedIcon } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -39,28 +38,28 @@ const useStyles = makeStyles()(theme => ({
 const RadioItem = ({
   label: ItemLabel, name, onChange, checked, className, attributes, id,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { disabled } = attributes || {};
 
   return (
     <label
-      className={classNames(
+      className={cx(
         classes.container, className, { [classes.disabled]: !!disabled }, camelCase(name), 'radioItem'
       )}
       htmlFor={id || name}
     >
       {checked && (
         <CheckedIcon
-          className={classNames(classes.active, classes.icon, 'checkedIcon')}
+          className={cx(classes.active, classes.icon, 'checkedIcon')}
         />
       )}
       {!checked && (
         <UncheckedIcon
-          className={classNames(classes.icon, 'uncheckedIcon')}
+          className={cx(classes.icon, 'uncheckedIcon')}
         />
       )}
       <input
-        className={classNames('sr-only', 'input')}
+        className={cx('sr-only', 'input')}
         checked={checked}
         id={id || name}
         type="radio"
@@ -73,7 +72,7 @@ const RadioItem = ({
         string={ItemLabel}
         aria-hidden
         id={`${id || name}-label`}
-        className={classNames(classes.label, 'label')}
+        className={cx(classes.label, 'label')}
       />
     </label>
   );

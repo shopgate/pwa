@@ -4,7 +4,6 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { FAVORITES_EMPTY } from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import Icon from './components/Icon';
 
@@ -39,14 +38,14 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX.Element}
  */
 const EmptyFavorites = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites), []);
 
   return (
     <div className={classes.container}>
       <SurroundPortals portalName={FAVORITES_EMPTY}>
         <div
-          className={classNames(classes.iconContainer, 'empty-favorites__image')}
+          className={cx(classes.iconContainer, 'empty-favorites__image')}
           data-test-id="emptyFavComponent"
         >
           {emptyFavorites

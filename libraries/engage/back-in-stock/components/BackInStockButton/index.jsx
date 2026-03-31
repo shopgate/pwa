@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
@@ -72,7 +71,7 @@ const BackInStockButton = ({
   alignRight,
   showAsButton,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const handleClick = useCallback(async (event) => {
     if (stopPropagation) {
       event.stopPropagation();
@@ -101,7 +100,7 @@ const BackInStockButton = ({
       <Link
         href={BACK_IN_STOCK_PATTERN}
         disabled={!isLinkToBackInStockEnabled}
-        className={classNames(
+        className={cx(
           classes.backInStockMessageContainer,
           { [classes.rightAligned]: alignRight }
         )}
@@ -109,7 +108,7 @@ const BackInStockButton = ({
       >
         <CheckedIcon
           color={colors.success}
-          className={alignRight ? classes.icon : classNames(classes.iconCentered, classes.icon)}
+          className={alignRight ? classes.icon : cx(classes.iconCentered, classes.icon)}
         />
         <span className={classes.backInStockMessage}>{i18n.text('back_in_stock.we_will_remind_you')}</span>
       </Link>
@@ -136,7 +135,7 @@ const BackInStockButton = ({
       role="button"
       tabIndex={0}
       onClick={handleClick}
-      className={classNames(
+      className={cx(
         classes.button,
         { [classes.rightAligned]: alignRight }
       )}

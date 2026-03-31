@@ -7,7 +7,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import omit from 'lodash/omit';
-import classnames from 'classnames';
 import { logger } from '@shopgate/pwa-core';
 import appConfig, { themeConfig, themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
@@ -118,7 +117,7 @@ const ProductImage = (props) => {
       resolutions,
     })
   ) || 1;
-  const { classes } = useStyles({ ratio: ratioValue });
+  const { classes, cx } = useStyles({ ratio: ratioValue });
 
   const [showPlaceholder, setShowPlaceholder] = useState(
     !src && (srcmap === null || srcmap.length === 0)
@@ -153,7 +152,7 @@ const ProductImage = (props) => {
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
         <div
-          className={classnames(classes.placeholderContainer, {
+          className={cx(classes.placeholderContainer, {
             [classes.innerShadow]: showInnerShadow,
             [className]: !!className,
           })}
@@ -182,7 +181,7 @@ const ProductImage = (props) => {
         resolutions,
       }}
     >
-      <div className={`${className} engage__product__product-image`}>
+      <div className={cx(className, 'engage__product__product-image')}>
         <Image
           {...rest}
           className={showInnerShadow ? classes.innerShadow : ''}

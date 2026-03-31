@@ -29,7 +29,7 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const Shipping = ({ shipping }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <>
@@ -37,7 +37,7 @@ const Shipping = ({ shipping }) => {
       <Portal name={PRODUCT_SHIPPING}>
         <PlaceholderLabel className={classes.placeholder} ready={(shipping !== null)}>
           {shipping && typeof shipping.price !== 'undefined' && shipping.price !== null && (
-            <Label className={`${classes.shipping} engage__product__header__shipping`} price={shipping.price} currency={shipping.currency} />
+            <Label className={cx(classes.shipping, 'engage__product__header__shipping')} price={shipping.price} currency={shipping.currency} />
           )}
         </PlaceholderLabel>
       </Portal>

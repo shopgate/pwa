@@ -2,7 +2,6 @@ import React, {
   useMemo, useContext, memo, useCallback,
 } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -89,7 +88,7 @@ const locales = {
  * @returns {JSX.Element}
  */
 const ReserveFormPhoneUnwrapped = memo((props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     name,
     value,
@@ -171,7 +170,7 @@ const ReserveFormPhoneUnwrapped = memo((props) => {
     onChange(phoneValue, { target: { name } });
   }, [name, onChange]);
 
-  const phoneClasses = classnames({
+  const phoneClasses = cx({
     [classes.phoneField]: true,
     [classes.phoneFieldError]: !!errorText,
   });

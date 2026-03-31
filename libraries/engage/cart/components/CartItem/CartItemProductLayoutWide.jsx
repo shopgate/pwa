@@ -1,5 +1,4 @@
 import React from 'react';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   TextLink,
@@ -147,7 +146,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
  * @returns {JSX}
  */
 const CartItemProductLayoutWide = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     merchantFulfillmentMethodsCount, isOrderDetails, cartHasLineItemPromotions,
   } = useCartItem();
@@ -170,7 +169,7 @@ const CartItemProductLayoutWide = () => {
 
   return (
     <>
-      <div className={classNames(classes.container, {
+      <div className={cx(classes.container, {
         [classes.containerInactive]: !isActive,
       })}
       >

@@ -28,7 +28,7 @@ const PickerUtilize = ({
   sheetProps,
   ...restProps
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const pickerRef = useRef(null);
   const firstSelectableItemRef = useRef(null);
 
@@ -82,7 +82,7 @@ const PickerUtilize = ({
   return (
     <BasePicker
       {...restProps}
-      className={`${hasButton ? classes.root : ''} engage__picker-utilize`}
+      className={cx(hasButton ? classes.root : '', 'engage__picker-utilize')}
       modalComponent={modalComponent}
       buttonProps={buttonProps}
       buttonComponent={buttonComponent || Button}

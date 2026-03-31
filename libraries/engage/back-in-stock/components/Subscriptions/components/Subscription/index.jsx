@@ -11,7 +11,6 @@ import {
 import { makeStyles } from '@shopgate/engage/styles';
 import { getProductRoute, ProductImage } from '@shopgate/engage/product';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { BackInStockButton } from '@shopgate/engage/back-in-stock/components';
 import {
   getThemeSettings, i18n,
@@ -137,7 +136,7 @@ const Subscription = ({
             </button>
           </div>
         </div>
-        <div className={classNames(classes.baseContainerRow)}>
+        <div className={classes.baseContainerRow}>
           {product?.characteristics?.map(({ label, value }) =>
             <div
               key={label + value}

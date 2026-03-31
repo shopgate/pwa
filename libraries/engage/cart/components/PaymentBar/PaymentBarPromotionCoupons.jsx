@@ -1,6 +1,5 @@
 import React, { useContext, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { i18n, isIOSTheme } from '@shopgate/engage/core';
 import { CrossIcon } from '@shopgate/engage/components';
@@ -39,7 +38,7 @@ const useStyles = makeStyles()({
 const PaymentBarPromotionCoupons = ({
   coupons, className, deleteCoupon, showSeparator,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { isLoading, currency } = useContext(CartContext);
 
   return coupons.map((coupon) => {
@@ -57,7 +56,7 @@ const PaymentBarPromotionCoupons = ({
       <Fragment key={`promotion-coupon-${code}-${amount}`}>
         <CartTotalLine
           isDisabled={isLoading}
-          className={classNames(className, {
+          className={cx(className, {
             [classes.withMessages]: !!messages.length,
           })}
         >

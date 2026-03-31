@@ -50,7 +50,6 @@ import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import AvailableText from '@shopgate/pwa-ui-shared/Availability';
-import classNames from 'classnames';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
 import ItemQuantity from './ItemQuantity';
@@ -194,7 +193,7 @@ const FavoriteItem = ({
   updateFavoriteItem,
   openCommentDialog,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const currency = product.price?.currency || 'EUR';
@@ -320,18 +319,18 @@ const FavoriteItem = ({
   return (
     <ProductListEntryProvider productId={product.id}>
       <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
-        <div className={classNames(classes.root, 'engage__favorites__item')}>
+        <div className={cx(classes.root, 'engage__favorites__item')}>
           <Link
-            className={classNames(classes.imageContainer, 'engage__favorites__item__image-container')}
+            className={cx(classes.imageContainer, 'engage__favorites__item__image-container')}
             component="div"
             href={productLink}
             aria-hidden
           >
-            <ProductImage className={classNames('engage__favorites__item__image')} src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+            <ProductImage className={cx('engage__favorites__item__image')} src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
           </Link>
 
-          <div className={classNames(classes.infoContainer, 'engage__favorites__item__info-container')}>
-            <div className={classNames(classes.infoContainerRow)}>
+          <div className={cx(classes.infoContainer, 'engage__favorites__item__info-container')}>
+            <div className={classes.infoContainerRow}>
               <div className={classes.titleWrapper}>
                 <SurroundPortals
                   portalName={FAVORITES_PRODUCT_NAME}
@@ -340,7 +339,7 @@ const FavoriteItem = ({
                   <TextLink
                     href={productLink}
                     tag="span"
-                    className={classNames(classes.titleContainer, 'engage__favorites__item__title-container')}
+                    className={cx(classes.titleContainer, 'engage__favorites__item__title-container')}
                   >
                     <span
                       className={classes.title}

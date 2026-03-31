@@ -63,7 +63,7 @@ const RangeSlider = ({
   resolution,
   value,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const invertedEase = useMemo(() => (
     {
@@ -272,14 +272,14 @@ const RangeSlider = ({
 
   return (
     <div
-      className={`${classNames.container || ''} common__range-slider`}
+      className={cx(classNames.container || '', 'common__range-slider')}
       onTouchStart={handleRangeTouch}
     >
       <div
-        className={`${classNames.outerRange || ''} ${classes.outerRange}`}
+        className={cx(classNames.outerRange || '', classes.outerRange)}
         ref={domElementRef}
       >
-        <div className={`${classNames.range || ''} ${classes.range}`} style={rangeStyle}>
+        <div className={cx(classNames.range || '', classes.range)} style={rangeStyle}>
           <RangeSliderHandle
             index={0}
             onTouchStart={handleTouchStart}

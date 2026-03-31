@@ -48,9 +48,9 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX}
  */
 function FilterButton({ openFilters }) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   return (
-    <button className={`${classes.button} theme__filter-bar__filter-button`} onClick={openFilters} data-test-id="filterButton" type="button">
+    <button className={cx(classes.button, 'theme__filter-bar__filter-button')} onClick={openFilters} data-test-id="filterButton" type="button">
       <Ripple className={classes.filterButtonRipple} fill>
         <Grid component="div">
           <Grid.Item className={classes.filterButton} component="div">

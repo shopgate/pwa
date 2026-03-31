@@ -37,7 +37,7 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const ItemDetails = ({ product, display, productListTypeMeta }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { id: productId, name = null, stock = null } = product;
 
   const hasNewServices = useMemo(() => checkHasNewServices(), []);
@@ -48,7 +48,7 @@ const ItemDetails = ({ product, display, productListTypeMeta }) => {
 
   return (
     <Link
-      className={`${classes.details} theme__product-grid__item__item-details`}
+      className={cx(classes.details, 'theme__product-grid__item__item-details')}
       tabIndex={0}
       href={getProductRoute(productId)}
       state={{

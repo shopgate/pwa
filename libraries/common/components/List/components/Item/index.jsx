@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -26,14 +25,14 @@ const ListItem = ({
   isSelected,
   role,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   if (!React.Children.count(children)) {
     return null;
   }
 
   return (
     <li
-      className={classNames(
+      className={cx(
         classes.item,
         className,
         'common__list__list-item',

@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Input from '@shopgate/pwa-common/components/Input';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
@@ -82,7 +81,7 @@ const TextField = (allProps) => {
     ...props
   } = allProps;
 
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocusChange = useCallback((focused) => {
@@ -94,7 +93,7 @@ const TextField = (allProps) => {
 
   return (
     <FormElement
-      className={`${className} ui-shared__form__text-field`}
+      className={cx(className, 'ui-shared__form__text-field')}
       htmlFor={props.name}
       placeholder={placeholder}
       label={label}
@@ -110,7 +109,7 @@ const TextField = (allProps) => {
           <Input
             {...props}
             onFocusChange={handleFocusChange}
-            className={classNames(
+            className={cx(
               inputTypeClass,
               leftElement && classes.leftOffset
             )}

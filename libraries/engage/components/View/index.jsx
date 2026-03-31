@@ -42,7 +42,7 @@ function ViewContainer({
   noKeyboardListener,
 }) {
   const inScrollContainer = useScrollContainer();
-  const { classes } = useStyles({ inScrollContainer });
+  const { classes, cx } = useStyles({ inScrollContainer });
 
   if (visible) {
     setPageBackgroundColor(background);
@@ -56,7 +56,7 @@ function ViewContainer({
     <ViewProvider>
       <ViewContext.Consumer>
         {({ setContentRef, ariaHidden: ariaHiddenContext }) => (
-          <section className={`${classes.root} engage__view`} style={style} aria-hidden={ariaHidden || ariaHiddenContext}>
+          <section className={cx(classes.root, 'engage__view')} style={style} aria-hidden={ariaHidden || ariaHiddenContext}>
             <Content
               noScrollOnKeyboard={noScrollOnKeyboard}
               noKeyboardListener={noKeyboardListener}

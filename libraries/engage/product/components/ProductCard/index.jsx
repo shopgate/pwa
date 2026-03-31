@@ -58,7 +58,7 @@ const location = 'productCard';
  * @return {JSX.Element}
  */
 function ProductCard(props) {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     product, hidePrice, hideRating, hideName, titleRows, url,
   } = props;
@@ -116,7 +116,7 @@ function ProductCard(props) {
         )}
       </ProductBadges>
       {!(hidePrice && hideRating && hideName) && (
-        <div className={`${classes.details} engage__product-card__information`}>
+        <div className={cx(classes.details, 'engage__product-card__information')}>
             {showRatings && <RatingStars value={product.rating.average} />}
           {/*
             This feature is currently in BETA testing.

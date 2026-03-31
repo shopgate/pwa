@@ -38,10 +38,10 @@ const useStyles = makeStyles()((_theme, { columns }) => ({
  * @returns {JSX}
  */
 const Layout = ({ children, columns }) => {
-  const { classes } = useStyles({ columns });
+  const { classes, cx } = useStyles({ columns });
 
   return (
-    <Grid wrap className={`${classes.grid} theme__product-grid`} data-test-id="productGrid">
+    <Grid wrap className={cx(classes.grid, 'theme__product-grid')} data-test-id="productGrid">
       {children}
     </Grid>
   );

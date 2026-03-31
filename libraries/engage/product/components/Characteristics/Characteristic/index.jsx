@@ -2,7 +2,6 @@ import React, {
   useState, useEffect, useCallback, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Transition from 'react-transition-group/Transition';
 import { ResponsiveContainer, ArrowDropIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -60,7 +59,7 @@ const Characteristic = ({
   values,
   selected,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [highlight, setHighlight] = useState(false);
   const [sheet, setSheet] = useState(false);
 
@@ -115,7 +114,7 @@ const Characteristic = ({
 
   const transitionRenderer = useCallback((state) => {
     const buttonLabel = getButtonLabel(translatedLabel);
-    const buttonClasses = classNames(
+    const buttonClasses = cx(
       classes.button,
       { [classes.buttonDisabled]: disabled },
       'theme__product__characteristic'
@@ -134,9 +133,9 @@ const Characteristic = ({
         style={transition[state]}
         data-test-id={displayLabel}
       >
-        {selected && <div className={`${classes.label} theme__product__characteristic__label`}>{displayLabel}</div>}
+        {selected && <div className={cx(classes.label, 'theme__product__characteristic__label')}>{displayLabel}</div>}
         <div
-          className={`${classes.selection} theme__product__characteristic__selection`}
+          className={cx(classes.selection, 'theme__product__characteristic__selection')}
           {...selected && { 'data-selected': true }}
         >
           {buttonLabel}
@@ -161,6 +160,7 @@ const Characteristic = ({
     handleButtonClick,
     selected,
     translatedLabel,
+    cx,
   ]);
 
   return (

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -46,11 +45,11 @@ const Placeholder = ({
   'aria-hidden': ariaHidden,
   hasLeftElement,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div
-      className={classNames(
+      className={cx(
         classes.placeholder,
         {
           [classes.placeholderInactive]: !visible,

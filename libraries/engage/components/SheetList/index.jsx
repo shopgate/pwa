@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/engage';
 import List from '@shopgate/pwa-common/components/List';
@@ -22,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
   },
   itemSelected: {
     background: 'var(--color-background-accent)',
-    boxShadow: `${-theme.spacing(2.5)}px 0 0 var(--color-background-accent), ${theme.spacing(2.5)}px 0 0 var(--color-background-accent)`,
+    boxShadow: `${theme.spacing(-2.5)}px 0 0 var(--color-background-accent), ${theme.spacing(2.5)}px 0 0 var(--color-background-accent)`,
     marginTop: -1,
   },
   itemWithImage: {
@@ -46,7 +45,7 @@ const SheetList = ({
   hasImages,
   testId,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!React.Children.count(children)) {
     return null;
@@ -58,7 +57,7 @@ const SheetList = ({
   };
 
   return (
-    <List className={`${className} engage__sheet-list`} role="listbox">
+    <List className={cx(className, 'engage__sheet-list')} role="listbox">
       {React.Children.map(children, (child, index) => {
         if (!React.isValidElement(child)) {
           return null;
@@ -73,7 +72,7 @@ const SheetList = ({
 
         return (
           <List.Item
-            className={classNames(itemClasses, childClasses, isSelected ? 'engage__sheet-list__selected-item' : 'engage__sheet-list__item')}
+            className={cx(itemClasses, childClasses, isSelected ? 'engage__sheet-list__selected-item' : 'engage__sheet-list__item')}
             isSelected={isSelected}
             key={key}
             tabIndex={0}

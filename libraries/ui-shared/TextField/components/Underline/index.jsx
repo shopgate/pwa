@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import color from 'color';
 import { getCSSCustomProp, makeStyles, useTheme } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -55,10 +54,10 @@ const getUnderlineStyle = (focused, hasError, errorColor) => {
  */
 const Underline = (props) => {
   const theme = useTheme();
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classNames(classes.underlineWrapper, 'underline')} aria-hidden>
+    <div className={cx(classes.underlineWrapper, 'underline')} aria-hidden>
       <div
         className={classes.underline}
         style={getUnderlineStyle(

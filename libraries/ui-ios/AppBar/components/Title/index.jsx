@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -26,7 +25,7 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element|null}
  */
 const AppBarTitle = ({ title }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!title) {
     return null;
@@ -34,12 +33,13 @@ const AppBarTitle = ({ title }) => {
 
   return (
     <div
-      className={classNames(classes.root, 'theme__app-bar__title')}
+      className={cx(classes.root, 'theme__app-bar__title')}
       role="heading"
       aria-level="1"
       aria-live="polite"
       tabIndex={-1}
       data-test-id={`title: ${title}`}
+      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: title }}
     />
   );

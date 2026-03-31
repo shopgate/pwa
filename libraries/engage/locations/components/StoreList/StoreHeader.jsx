@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import classNames from 'classnames';
 import { Grid, ResponsiveContainer } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeVariables } from '@shopgate/pwa-common/helpers/config';
@@ -33,7 +32,7 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 export function StoreHeader() {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const store = useContext(StoreContext);
   const { product } = useContext(FulfillmentContext);
   const isAvailable = isProductAvailable(store, store?.inventory);
@@ -42,7 +41,7 @@ export function StoreHeader() {
 
   return (
     <div
-      className={classNames(classes.storeHeader, { [classes.disabled]: !isAvailable })}
+      className={cx(classes.storeHeader, { [classes.disabled]: !isAvailable })}
     >
       <Grid>
         <Grid.Item grow={1} className={classes.storeName}>

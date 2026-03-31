@@ -57,7 +57,7 @@ const IndicatorCircle = ({
   strokeWidth,
   paused,
 }) => {
-  const { classes } = useStyles({
+  const { classes, cx } = useStyles({
     paused,
     color,
     strokeWidth,
@@ -65,7 +65,7 @@ const IndicatorCircle = ({
 
   return (
     <svg
-      className={`${classes.spinner} ui-shared__indicator-circle`}
+      className={cx(classes.spinner, 'ui-shared__indicator-circle')}
       viewBox="25 25 50 50"
       width={size}
       height={size}

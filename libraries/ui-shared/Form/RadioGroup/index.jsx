@@ -2,7 +2,6 @@ import React, {
   Children, cloneElement, useCallback, useEffect, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -56,7 +55,7 @@ const RadioGroup = ({
 
   return (
     <FormElement
-      className={classNames(className, 'radioGroup', 'ui-shared__form__radio-group', {
+      className={cx(className, 'radioGroup', 'ui-shared__form__radio-group', {
         disabled,
       })}
       label={label}

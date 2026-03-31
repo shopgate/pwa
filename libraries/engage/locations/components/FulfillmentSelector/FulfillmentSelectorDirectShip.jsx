@@ -1,5 +1,4 @@
 import * as React from 'react';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Grid } from '@shopgate/engage/components';
 import { i18n } from '../../../core';
@@ -33,14 +32,14 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 export const FulfillmentSelectorDirectShip = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     productId, selection, isOrderable, isDirectShipEnabled, isReady,
   } = useFulfillmentSelectorState();
 
-  const rowClasses = React.useMemo(() => classNames(classes.itemRow, {
+  const rowClasses = React.useMemo(() => cx(classes.itemRow, {
     [classes.itemRowDisabled]: !isReady || !isDirectShipEnabled,
-  }), [classes.itemRow, classes.itemRowDisabled, isDirectShipEnabled, isReady]);
+  }), [classes.itemRow, classes.itemRowDisabled, isDirectShipEnabled, isReady, cx]);
 
   const selected = (selection === DIRECT_SHIP);
 

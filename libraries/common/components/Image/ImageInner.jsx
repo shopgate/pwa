@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import noop from 'lodash/noop';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -31,14 +30,14 @@ const ImageInner = forwardRef(({
   onError,
   style,
 }, ref) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <img
       ref={ref}
       loading={lazy ? 'lazy' : 'eager'}
       src={src}
-      className={classNames(
+      className={cx(
         className,
         classes.image,
         'common__image'

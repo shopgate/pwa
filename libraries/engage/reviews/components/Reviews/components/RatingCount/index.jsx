@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -27,7 +26,7 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const RatingCount = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (!props.count) {
     return null;
@@ -37,7 +36,7 @@ const RatingCount = (props) => {
     <I18n.Text
       string="reviews.review_count"
       params={props}
-      className={classNames({
+      className={cx({
         [classes.greyStyle]: true,
         [classes.prominentStyle]: props.prominent,
       }, 'engage__reviews__rating-count')}

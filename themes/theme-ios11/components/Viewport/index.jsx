@@ -56,10 +56,10 @@ setViewportHeight();
  * @returns {JSX}
  */
 const Viewport = (props) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <main className={`${classes.viewport} theme__viewport`} role="main" itemScope itemProp="http://schema.org/MobileApplication">
+    <main className={cx(classes.viewport, 'theme__viewport')} role="main" itemScope itemProp="http://schema.org/MobileApplication">
       <LiveMessenger />
       <header className={classes.header} id="AppHeader" />
       <section className={classes.content} id="AppContent">

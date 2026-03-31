@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -41,10 +40,10 @@ const SimulatedInsetBottom = ({
   onClick,
   ...props
 }) => {
-  const { classes } = useStyles();
-  const containerClasses = useMemo(() => classNames(classes.container, {
+  const { classes, cx } = useStyles();
+  const containerClasses = useMemo(() => cx(classes.container, {
     [classes.containerHighlight]: highlightInset,
-  }), [highlightInset]);
+  }), [highlightInset, classes.container, classes.containerHighlight, cx]);
 
   return (
     <div

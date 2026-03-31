@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { createPortal } from 'react-dom';
 import { useTrackModalState } from '@shopgate/engage/a11y/hooks';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import classNames from 'classnames';
 
 const useStyles = makeStyles()({
   container: {
@@ -44,21 +43,21 @@ const useStyles = makeStyles()({
 const Modal = forwardRef(({
   children, classes: customClasses, ...props
 }, ref) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   // Track modal visibility for accessibility purposes.
   useTrackModalState();
 
   return (
     createPortal((
       <div
-        className={classNames(classes.container, customClasses?.container, 'common__modal')}
+        className={cx(classes.container, customClasses?.container, 'common__modal')}
         role="alertdialog"
         aria-modal
         {...props}
         ref={ref}
       >
-        <div className={classNames(classes.layout, customClasses?.layout)}>
-          <div className={classNames(classes.content, customClasses?.content)}>
+        <div className={cx(classes.layout, customClasses?.layout)}>
+          <div className={cx(classes.content, customClasses?.content)}>
             {children}
           </div>
         </div>

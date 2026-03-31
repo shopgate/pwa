@@ -2,7 +2,6 @@ import React, {
   useState, useCallback, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import Underline from './components/Underline';
@@ -67,7 +66,7 @@ const TextField = ({
   type,
   value,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [isFocused, setIsFocused] = useState(false);
   const [validationError, setValidationError] = useState(null);
 
@@ -105,7 +104,7 @@ const TextField = ({
   const containerClass = multiLine ? classes.multiLine : classes.input;
 
   return (
-    <div className={classNames(containerClass, className, 'textField', 'ui-shared__text-field', {
+    <div className={cx(containerClass, className, 'textField', 'ui-shared__text-field', {
       disabled,
     })}
     >

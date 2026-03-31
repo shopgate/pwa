@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import BaseCheckbox from '@shopgate/pwa-common/components/Checkbox';
@@ -35,22 +34,22 @@ const Checkbox = ({
   className,
   ...props
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   // Legacy default: theme classes for checked/unchecked unless props are passed.
-  // `??` keeps an explicit '' from restoring defaults (like old classNames(icon, '', …)).
+  // `??` keeps an explicit '' from restoring defaults (like old cx(icon, '', …)).
   const checkedCls = checkedClassName ?? classes.checkedIcon;
   const uncheckedCls = unCheckedClassName ?? classes.uncheckedIcon;
 
   return (
     <BaseCheckbox
       {...props}
-      className={`ui-shared__checkbox ${className}`}
+      className={cx('ui-shared__checkbox', className)}
       checkedIcon={
-        <CheckedIcon className={classNames(classes.icon, checkedCls, 'checkedIcon')} />
+        <CheckedIcon className={cx(classes.icon, checkedCls, 'checkedIcon')} />
       }
       uncheckedIcon={
-        <UncheckedIcon className={classNames(classes.icon, uncheckedCls, 'uncheckedIcon')} />
+        <UncheckedIcon className={cx(classes.icon, uncheckedCls, 'uncheckedIcon')} />
       }
     />
   );

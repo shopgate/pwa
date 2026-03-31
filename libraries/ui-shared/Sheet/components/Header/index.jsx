@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -64,10 +63,10 @@ const Header = ({
   shadow,
   showSearch,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classNames({ [classes.headerShadow]: shadow })}>
+    <div className={cx({ [classes.headerShadow]: shadow })}>
       <Grid className={classes.wrapper} component="div" wrap={false}>
         {allowClose ? (
           <button

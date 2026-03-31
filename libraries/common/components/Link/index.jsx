@@ -37,7 +37,7 @@ const Link = ({
   tag,
   target,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const handleOpenLink = useCallback((e) => {
     e.preventDefault();
@@ -76,7 +76,7 @@ const Link = ({
 
   return (
     <Tag
-      className={`${classes.link} ${className} common__link`}
+      className={cx(classes.link, className, 'common__link')}
       onClick={handleOpenLink}
       onKeyDown={handleKeyDown}
       role={role}

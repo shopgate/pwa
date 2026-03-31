@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Price from '@shopgate/pwa-ui-shared/Price';
@@ -28,13 +27,13 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const PriceDifference = ({ className, currency, difference }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (difference === 0) {
     return null;
   }
 
-  const priceClassName = classNames(
+  const priceClassName = cx(
     className,
     {
       [classes.positive]: difference > 0,
