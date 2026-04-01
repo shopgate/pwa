@@ -1,10 +1,11 @@
-import { insertGlobalRule } from '../utils/globalStyles';
+import { injectGlobal } from '..';
 
-insertGlobalRule('table', {
-  borderCollapse: 'collapse',
-  minWidth: '100%',
-});
-
-insertGlobalRule('td, th', {
-  verticalAlign: 'top',
+injectGlobal({
+  table: {
+    borderCollapse: 'collapse',
+    minWidth: '100%',
+  },
+  'td, th': {
+    verticalAlign: 'top',
+  },
 });

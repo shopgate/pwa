@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
@@ -72,10 +72,10 @@ export function CartItemProductTitle({ value, productId }) {
     invokeFulfillmentAction('changeFulfillment');
   }, [invokeFulfillmentAction]);
 
-  const contextMenuClasses = {
+  const contextMenuClasses = useMemo(() => ({
     button: classes.menuToggleButton,
     container: classes.menuToggleContainer,
-  };
+  }), [classes.menuToggleButton, classes.menuToggleContainer]);
 
   return (
     <Grid>

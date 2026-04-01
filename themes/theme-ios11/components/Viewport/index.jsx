@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { makeStyles, setViewportHeight } from '@shopgate/engage/styles';
-import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
+import { injectGlobal, makeStyles, setViewportHeight } from '@shopgate/engage/styles';
 import { Footer } from '@shopgate/engage/components';
 import { LiveMessenger } from '@shopgate/engage/a11y';
 import { useScrollContainer, hasWebBridge } from '@shopgate/engage/core';
@@ -12,10 +11,12 @@ import TabBar from 'Components/TabBar';
 const { colors } = themeConfig;
 const defaultBackgroundColor = colors.light;
 
-insertGlobalRule('html', {
-  '--page-background-color': defaultBackgroundColor,
-  '--tabbar-height': '0px',
-  '--app-bar-height': '0px',
+injectGlobal({
+  html: {
+    '--page-background-color': defaultBackgroundColor,
+    '--tabbar-height': '0px',
+    '--app-bar-height': '0px',
+  },
 });
 
 const useStyles = makeStyles()({

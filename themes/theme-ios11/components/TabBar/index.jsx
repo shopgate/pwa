@@ -4,9 +4,8 @@ import React, {
 import PropTypes from 'prop-types';
 import { KeyboardConsumer, SurroundPortals } from '@shopgate/engage/components';
 import { UIEvents } from '@shopgate/engage/core/events';
-import { makeStyles } from '@shopgate/engage/styles';
+import { injectGlobal, makeStyles } from '@shopgate/engage/styles';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
-import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
 import { isAndroidOs } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings, useElementSize } from '@shopgate/engage/core/hooks';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -22,23 +21,25 @@ import visibleTabs from './tabs';
 
 const { colors, shadows, variables } = themeConfig;
 
-insertGlobalRule(':root', {
-  '--tab-bar-background': colors.lightOverlay,
-  '--tab-bar-box-shadow': shadows.tabBar,
-  '--tab-bar-min-height': `${variables.tabBar.height}px`,
+injectGlobal({
+  ':root': {
+    '--tab-bar-background': colors.lightOverlay,
+    '--tab-bar-box-shadow': shadows.tabBar,
+    '--tab-bar-min-height': `${variables.tabBar.height}px`,
 
-  '--tab-bar-floating-border-radius': '16px',
-  '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.24)',
-  '--tab-bar-floating-min-height': '59px',
+    '--tab-bar-floating-border-radius': '16px',
+    '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.24)',
+    '--tab-bar-floating-min-height': '59px',
 
-  '--tab-bar-item-default-color': colors.shade11,
-  '--tab-bar-item-highlighted-color': 'var(--color-secondary)',
+    '--tab-bar-item-default-color': colors.shade11,
+    '--tab-bar-item-highlighted-color': 'var(--color-secondary)',
 
-  '--tab-bar-item-badge-color': 'var(--color-secondary-contrast)',
-  '--tab-bar-item-badge-background': 'var(--color-secondary)',
-  '--tab-bar-item-badge-border-radius': `${variables.gap.small}px`,
-  '--tab-bar-item-badge-top': `-${variables.gap.small}px`,
-  '--tab-bar-item-badge-left': 'calc(50% + 20px)',
+    '--tab-bar-item-badge-color': 'var(--color-secondary-contrast)',
+    '--tab-bar-item-badge-background': 'var(--color-secondary)',
+    '--tab-bar-item-badge-border-radius': `${variables.gap.small}px`,
+    '--tab-bar-item-badge-top': `-${variables.gap.small}px`,
+    '--tab-bar-item-badge-left': 'calc(50% + 20px)',
+  },
 });
 
 const useStyles = makeStyles()({

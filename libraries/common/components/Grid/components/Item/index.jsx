@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { objectWithoutProps } from '../../../../helpers/data';
 
 const useStyles = makeStyles()((_theme, { grow, shrink }) => ({
   root: {
@@ -26,23 +25,12 @@ const GridItem = ({
     grow,
     shrink,
   });
-  const composedClassName = cx(
-    className,
-    classes.root,
-    {
-      'common__grid__item--custom-flex': grow !== 0 || shrink !== 1,
-    }
-  );
+  const composedClassName = cx(className, classes.root);
 
-  const props = objectWithoutProps(
-    {
-      ...rest,
-      className: composedClassName,
-    },
-    ['classes']
-  );
-
-  return React.createElement(component, props);
+  return React.createElement(component, {
+    ...rest,
+    className: composedClassName,
+  });
 };
 
 GridItem.propTypes = {

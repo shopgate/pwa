@@ -56,7 +56,7 @@ function insertWithoutScoping(
  * @param args Styles to apply globally
  * @example
  * injectGlobal({
- *   body { margin: 0 }
+ *   body: { margin: 0 }
  * });
  */
 export const injectGlobal = (

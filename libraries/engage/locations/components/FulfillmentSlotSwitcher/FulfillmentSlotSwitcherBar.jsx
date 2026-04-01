@@ -37,7 +37,7 @@ const useStyles = makeStyles()(theme => ({
   button: {
     marginLeft: 'auto',
     letterSpacing: '0.05em',
-    padding: [theme.spacing(0.375, 0), '!important'],
+    padding: `${theme.spacing(0.375, 0)} !important`,
     ' *': {
       fontSize: '0.875rem',
       textTransform: 'initial',
