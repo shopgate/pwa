@@ -29,7 +29,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         text: {
           primary: getCSSCustomProp('--color-text-high-emphasis'),
-          secondary: getCSSCustomProp('--color-text-medium-emphasis'),
+          secondary: getCSSCustomProp('--color-text-low-emphasis'),
         },
       },
     },

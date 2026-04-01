@@ -25,8 +25,23 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
+ * @typedef {Object} Props
+ * @property {string} label Label for the checkbox
+ * @property {string} name Name for the form element that's used as "htmlFor" attribute to create
+ * a connection between label and checkbox elements.
+ * @property {string} [checkboxClassName] Class name for the underlying Checkbox component
+ * @property {string} [className] Class name for the underlying FormElement component
+ * @property {boolean} [defaultChecked] Whether the checkbox is checked by default
+ * @property {boolean} [disabled] Whether the checkbox is disabled (default `false`)
+ * @property {string} [errorText] An error text for the form element
+ * @property {boolean} [showErrorText] Whether to show the error text when present (default `true`)
+ * @property {boolean} [translateErrorText] Whether `errorText` is a translation key
+ * @property {Function} [onChange] Change handler for the checkbox
+ */
+
+/**
  * A component that provides a styled checkbox field.
- * @param {Object} props Props.
+ * @extends {React.Component<Props>}
  * @returns {JSX.Element}
  */
 const Checkbox = ({

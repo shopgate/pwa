@@ -24,7 +24,7 @@ const checkValue = value => !!value || value === 0 || value === false;
 
 /**
  * This component displays a pipeline error dialog.
- * The special behaviour of this message is that the user may tap the message body
+ * The special behavior of this message is that the user may tap the message body
  * ten times until it reveals additional information about the error that occurred.
  * @param {Object} props Props.
  * @returns {JSX.Element}

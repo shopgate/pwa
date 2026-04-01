@@ -17,7 +17,7 @@ const webkitDateFields = [
   '::-webkit-datetime-edit-month-field',
   '::-webkit-datetime-edit-day-field',
   '::-webkit-datetime-edit-text',
-].map(suffix => `& ${bluredDateSelector}${suffix}`).join(', ');
+].map(suffix => `${bluredDateSelector}${suffix}`).join(', ');
 
 const useStyles = makeStyles()({
   container: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles()({
       paddingLeft: 0,
       marginLeft: 0,
     },
-    [webkitDateFields]: {
+    [`& ${webkitDateFields}`]: {
       padding: 0,
       color: 'transparent',
     },
