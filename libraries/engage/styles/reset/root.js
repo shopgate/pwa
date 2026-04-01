@@ -5,7 +5,6 @@ import {
 } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/engage';
 import { injectGlobal } from '..';
-import { insertGlobalRaw } from '../utils/globalStyles';
 
 const { typography } = themeConfig;
 const iosThemeActive = isIOSTheme();
@@ -49,15 +48,15 @@ injectGlobal({
   '[data-pattern]': {
     height: '100% !important',
   },
+  // since iOS 15 button has a default color of blue rgb(0, 122, 255);
   button: {
     color: 'inherit',
   },
+  ...hasWebBridge() && !iosThemeActive && {
+    '@media (min-width: 600px)': {
+      html: {
+        backgroundColor: 'var(--color-background-gutter-body, var(--page-background-color))',
+      },
+    },
+  },
 });
-
-if (hasWebBridge() && !iosThemeActive) {
-  insertGlobalRaw(`@media(min-width: 600px) {
-    html, body {
-      background-color: var(--color-background-gutter-body, var(--page-background-color))
-    }
-  }`);
-}

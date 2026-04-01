@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
-const useStyles = makeStyles()(() => ({
-  inactive: {
+const useStyles = makeStyles()(() => {
+  const inactive = {
     border: `1px solid ${themeColors.darkGray}`,
     borderRadius: 2,
     color: 'inherit',
@@ -20,26 +20,17 @@ const useStyles = makeStyles()(() => ({
     whiteSpace: 'nowrap',
     transition: 'color 100ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
     willChange: 'color, border-color',
-  },
-  active: {
-    border: `1px solid ${themeColors.darkGray}`,
-    borderRadius: 2,
-    color: 'var(--color-secondary)',
-    height: 42,
-    marginLeft: 8,
-    marginBottom: 8,
-    maxWidth: '100%',
-    minWidth: 42,
-    outline: 0,
-    overflow: 'hidden',
-    padding: '0 8px',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    transition: 'color 100ms cubic-bezier(0.25, 0.1, 0.25, 1), border-color 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    willChange: 'color, border-color',
-    borderColor: 'var(--color-secondary)',
-  },
-}));
+  };
+
+  return {
+    inactive,
+    active: {
+      ...inactive,
+      borderColor: 'var(--color-secondary)',
+      color: 'var(--color-secondary)',
+    },
+  };
+});
 
 /**
  * The value button component.
