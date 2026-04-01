@@ -5,12 +5,12 @@ import Helmet from 'react-helmet';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge, useScrollContainer } from '@shopgate/engage/core';
 import {
+  injectGlobal,
   makeStyles,
   responsiveMediaQuery,
   setPageContentWidth,
   setViewportHeight,
 } from '@shopgate/engage/styles';
-import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import NavDrawer from 'Components/NavDrawer';
@@ -23,10 +23,12 @@ import connect from './connector';
 const { colors } = themeConfig;
 const defaultBackgroundColor = colors.background;
 
-insertGlobalRule('html', {
-  '--page-background-color': defaultBackgroundColor,
-  '--tabbar-height': '0px',
-  '--app-bar-height': '0px',
+injectGlobal({
+  html: {
+    '--page-background-color': defaultBackgroundColor,
+    '--tabbar-height': '0px',
+    '--app-bar-height': '0px',
+  },
 });
 
 const useStyles = makeStyles()({

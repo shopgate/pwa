@@ -2,13 +2,14 @@
  * @deprecated used @shopgate/engage/styles instead
  */
 
-import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
+import { injectGlobal } from '@shopgate/engage/styles';
 
-insertGlobalRule('table', {
-  borderCollapse: 'collapse',
-  minWidth: '100%',
-});
-
-insertGlobalRule('td, th', {
-  verticalAlign: 'top',
+injectGlobal({
+  table: {
+    borderCollapse: 'collapse',
+    minWidth: '100%',
+  },
+  'td, th': {
+    verticalAlign: 'top',
+  },
 });

@@ -2,28 +2,26 @@
  * @deprecated used @shopgate/engage/styles/reset instead
  */
 
-import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
+import { injectGlobal } from '@shopgate/engage/styles';
 
-insertGlobalRule('audio:not([controls])', {
-  display: 'none',
-  height: 0,
-});
-
-insertGlobalRule('figure', {
-  margin: 0,
-});
-
-insertGlobalRule('iframe', {
-  border: 0,
-  display: 'block',
-  width: '100%',
-});
-
-insertGlobalRule('img, svg', {
-  display: 'block',
-  maxWidth: '100%',
-});
-
-insertGlobalRule('progress', {
-  verticalAlign: 'baseline',
+injectGlobal({
+  'audio:not([controls])': {
+    display: 'none',
+    height: 0,
+  },
+  figure: {
+    margin: 0,
+  },
+  iframe: {
+    border: 0,
+    display: 'block',
+    width: '100%',
+  },
+  'img, svg': {
+    display: 'block',
+    maxWidth: '100%',
+  },
+  progress: {
+    verticalAlign: 'baseline',
+  },
 });

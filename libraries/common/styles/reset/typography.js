@@ -2,33 +2,30 @@
  * @deprecated used @shopgate/engage/styles instead
  */
 
-import { insertGlobalRule } from '@shopgate/engage/styles/utils/globalStyles';
+import { injectGlobal } from '@shopgate/engage/styles';
 import { rem } from '../../helpers/style';
 
-insertGlobalRule('a', {
-  color: 'inherit',
-  textDecoration: 'none',
-  WebkitTextDecorationSkip: 'objects',
-});
-
-insertGlobalRule('a:hover, a:focus, a:active, [tabindex]', {
-  outline: 0,
-});
-
-insertGlobalRule('ol, ul', {
-  listStyle: 'none',
-  margin: 0,
-  paddingLeft: 0,
-});
-
-insertGlobalRule('b, strong', {
-  fontWeight: 700,
-});
-
-insertGlobalRule('small', {
-  fontSize: rem(13),
-});
-
-insertGlobalRule('sub, sup', {
-  lineHeight: 0,
+injectGlobal({
+  a: {
+    color: 'inherit',
+    textDecoration: 'none',
+    WebkitTextDecorationSkip: 'objects',
+  },
+  'a:hover, a:focus, a:active, [tabindex]': {
+    outline: 0,
+  },
+  'ol, ul': {
+    listStyle: 'none',
+    margin: 0,
+    paddingLeft: 0,
+  },
+  'b, strong': {
+    fontWeight: 700,
+  },
+  small: {
+    fontSize: rem(13),
+  },
+  'sub, sup': {
+    lineHeight: 0,
+  },
 });
