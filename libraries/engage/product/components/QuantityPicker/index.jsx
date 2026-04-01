@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
+import { css } from '@shopgate/engage/styles';
 import { logger } from '../../../core/helpers';
 import { useWidgetStyles } from '../../../core/hooks';
 import { I18n, SheetDrawer, SheetList } from '../../../components';
 import { useQuantityRange } from './hooks';
-
-const useStyles = makeStyles()((_, { sheetStyle }) => ({
-  sheet: sheetStyle || {},
-}));
 
 let deprecationWarning =
   'QuantityPicker is deprecated in favor of the UnitQuantityPicker component.\nUnitQuantityPicker now additionally supports units and floating point values.';
@@ -88,7 +84,6 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
   }, [promiseResolve, resolveValue]);
 
   const styles = useWidgetStyles('@shopgate/engage/product/QuantityPicker');
-  const { classes } = useStyles({ sheetStyle: styles?.sheet });
   const quantityRange = useQuantityRange(stock);
 
   if (!stock) {
@@ -106,7 +101,7 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
       title={<I18n.Text string="product.quantity" />}
       isOpen={opened}
       onClose={handleCloseSheet}
-      contentClassName={classes.sheet}
+      contentClassName={css(styles.sheet)}
     >
       <SheetList>
         {items.map(item => (

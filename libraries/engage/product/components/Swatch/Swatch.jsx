@@ -1,20 +1,10 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
+import { css } from '@shopgate/engage/styles';
 import { useWidgetStyles } from '../../../core';
 import SwatchContent from './SwatchContent';
 
 export const WIDGET_ID = '@shopgate/engage/product/Swatch';
-
-const useStyles = makeStyles()((_, {
-  swatchStyle,
-  itemStyle,
-  itemSelectedStyle,
-}) => ({
-  swatch: swatchStyle || {},
-  item: itemStyle || {},
-  itemSelected: itemSelectedStyle || {},
-}));
 
 /**
  * The swatch component.
@@ -23,20 +13,15 @@ const useStyles = makeStyles()((_, {
  */
 const Swatch = ({ swatch }) => {
   const styles = useWidgetStyles(WIDGET_ID);
-  const { classes } = useStyles({
-    swatchStyle: styles?.swatch,
-    itemStyle: styles?.item,
-    itemSelectedStyle: styles?.itemSelected,
-  });
 
   if (!swatch) {
     return null;
   }
 
   const classNames = {
-    swatch: classes.swatch,
-    item: classes.item,
-    itemSelected: classes.itemSelected,
+    swatch: styles && styles.swatch ? css(styles.swatch) : null,
+    item: styles && styles.item ? css(styles.item) : null,
+    itemSelected: styles && styles.itemSelected ? css(styles.itemSelected) : null,
   };
 
   return (

@@ -519,7 +519,7 @@ GuestRegistrationProvider.defaultProps = {
   children: null,
   customer: null,
   formContainerRef: null,
-  userLocation: null,
+  userLocation: undefined,
   billingAddress: null,
   shippingAddress: null,
   pickupAddress: null,

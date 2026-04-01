@@ -14,26 +14,6 @@ import Layout from './components/Layout';
 export const WIDGET_ID = '@shopgate/engage/product/ProductGrid';
 
 /**
- * Resolves the infinite-scroll loading indicator from optional Redux-driven fetch state.
- * @param {boolean|undefined} resultIsFetching Redux isFetching when wired; else undefined.
- * @param {Array} products Current product list.
- * @param {number|null|undefined} totalProductCount Total count from the store.
- * @param {string|null|undefined} requestHash Result hash for the list request.
- * @returns {JSX.Element|null}
- */
-const getListLoadingIndicator = (resultIsFetching, products, totalProductCount, requestHash) => {
-  if (typeof resultIsFetching !== 'boolean') {
-    return <LoadingIndicator />;
-  }
-  const waitingForFirstPayload =
-    !products.length && totalProductCount === null && !!requestHash;
-  if (resultIsFetching || waitingForFirstPayload) {
-    return <LoadingIndicator />;
-  }
-  return null;
-};
-
-/**
  * The Product Grid component.
  * @param {Object} props The component props.
  * @param {Array} props.products The list of products to display.
@@ -65,7 +45,6 @@ const ProductGrid = ({
   scope,
   meta,
   className,
-  resultIsFetching,
 }) => {
   const { getContentRef } = useContext(ViewContext);
 
@@ -73,13 +52,6 @@ const ProductGrid = ({
     xs: 2,
     md: 4,
   });
-
-  const listLoadingIndicator = getListLoadingIndicator(
-    resultIsFetching,
-    products,
-    totalProductCount,
-    requestHash
-  );
 
   if (!infiniteLoad) {
     return (
@@ -113,7 +85,7 @@ const ProductGrid = ({
         loader={handleGetProducts}
         items={products}
         columns={columns}
-        loadingIndicator={listLoadingIndicator}
+        loadingIndicator={<LoadingIndicator />}
         totalItems={totalProductCount}
         initialLimit={ITEMS_PER_LOAD}
         limit={ITEMS_PER_LOAD}
@@ -136,7 +108,6 @@ ProductGrid.propTypes = {
   meta: PropTypes.shape(),
   products: PropTypes.arrayOf(PropTypes.shape()),
   requestHash: PropTypes.string,
-  resultIsFetching: PropTypes.bool,
   scope: PropTypes.string,
   totalProductCount: PropTypes.number,
 };
@@ -151,7 +122,6 @@ ProductGrid.defaultProps = {
   scope: null,
   meta: null,
   className: null,
-  resultIsFetching: undefined,
 };
 
 export default ProductGrid;

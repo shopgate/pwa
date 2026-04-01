@@ -8,7 +8,7 @@ import { useWidgetSettings } from '@shopgate/engage/core';
 import ProductBadges from '../ProductBadges';
 import connect from './connector';
 
-const useStyles = makeStyles()((_, { customStyle }) => ({
+const useStyles = makeStyles()(() => ({
   portal: {
     top: 12,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
@@ -29,7 +29,6 @@ const useStyles = makeStyles()((_, { customStyle }) => ({
       fontSize: 14,
     },
   },
-  customStyle: customStyle || {},
 }));
 
 /**
@@ -43,7 +42,7 @@ const ProductDiscountBadge = ({ productId, discount }) => {
       style: {},
     },
   } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge') || {};
-  const { classes, cx } = useStyles({ customStyle: pdp?.style });
+  const { classes, cx, css } = useStyles();
 
   return (
     <ProductBadges
@@ -55,7 +54,7 @@ const ProductDiscountBadge = ({ productId, discount }) => {
       }}
     >
       { pdp.show && discount ? (
-        <div className={cx(classes.container, classes.customStyle, 'theme__product__product-discount')}>
+        <div className={cx(classes.container, css(pdp.style), 'theme__product__product-discount')}>
           <SurroundPortals
             portalName={PRODUCT_DISCOUNT}
             portalProps={{

@@ -20,20 +20,17 @@ const useStyles = makeStyles()({
 const CartUnitQuantityPicker = ({
   unit, value, onChange, classNames, hasCatchWeight,
 }) => {
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   const hasUnitWithDecimals = (unit && hasCatchWeight) || false;
 
   const {
-    withDecimals,
-    withoutDecimals,
+    withDecimals = classes.big,
+    withoutDecimals = classes.small,
   } = classNames;
 
   return (
     <UnitQuantityPicker
-      className={cx(
-        !hasUnitWithDecimals ? classes.big : classes.small,
-        !hasUnitWithDecimals ? withDecimals : withoutDecimals
-      )}
+      className={!hasUnitWithDecimals ? withDecimals : withoutDecimals}
       unit={hasUnitWithDecimals ? unit : null}
       maxDecimals={hasUnitWithDecimals ? 2 : 0}
       incrementStep={hasUnitWithDecimals ? 0.25 : 1}

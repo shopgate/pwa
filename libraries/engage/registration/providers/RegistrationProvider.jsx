@@ -68,7 +68,7 @@ const convertValidationErrors = validationErrors => Object
  * Registration Provider
  * @param {React.ReactNode} children Child components.
  * @param {Object} shopSettings Shop settings object.
- * @param {Object|null|undefined} userLocation User location address (optional).
+ * @param {Object} [userLocation] User location address (optional).
  * @param {Array} customerAttributes Merchant customer attributes list.
  * @param {boolean} isDataReady Indicates if data is ready.
  * @param {string} registrationMode Registration mode.
@@ -412,7 +412,7 @@ RegistrationProvider.defaultProps = {
   formContainerRef: null,
   cartHasDirectShipItems: false,
   numberOfAddressLines: null,
-  userLocation: null,
+  userLocation: undefined,
 };
 
 export default connect(RegistrationProvider);

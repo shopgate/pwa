@@ -5,53 +5,50 @@ import { makeStyles } from '@shopgate/engage/styles';
 import {
   Grid, I18n, Button, Modal,
 } from '@shopgate/engage/components';
-import { appConfig } from '@shopgate/engage';
+import { appConfig, themeConfig } from '@shopgate/engage';
 import pushImage from './push-opt-in.svg';
 import connect from './connector';
 import { svgToDataUrl } from '../../../core';
 
-const useStyles = makeStyles()((theme) => {
-  const overlayColor = theme?.colors?.lightOverlay || 'var(--color-background)';
-  const secondaryTextColor = theme?.colors?.gray || theme.palette.text.secondary;
+const { colors } = themeConfig;
 
-  return ({
-    modalContent: {
-      width: '100%',
-    },
-    modalLayout: {
-      backgroundColor: overlayColor,
-    },
-    container: {
-      backgroundColor: overlayColor,
-      textAlign: 'center',
-      padding: '30px',
-      justifyContent: 'center',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    title: {
-      fontWeight: 'bold',
-      fontSize: '1.35rem',
-      paddingTop: '30px',
-      paddingBottom: '30px',
-    },
-    item: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    image: {
-      width: '80%',
-      maxWidth: 400,
-    },
-    button: {
-      marginTop: '30px',
-    },
-    buttonText: {
-      color: secondaryTextColor,
-    },
-  });
-});
+const useStyles = makeStyles()(() => ({
+  modalContent: {
+    width: '100%',
+  },
+  modalLayout: {
+    backgroundColor: colors.lightOverlay,
+  },
+  container: {
+    backgroundColor: colors.lightOverlay,
+    textAlign: 'center',
+    padding: '30px',
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize: '1.35rem',
+    paddingTop: '30px',
+    paddingBottom: '30px',
+  },
+  item: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  image: {
+    width: '80%',
+    maxWidth: 400,
+  },
+  button: {
+    marginTop: '30px',
+  },
+  buttonText: {
+    color: colors.gray,
+  },
+}));
 
 /**
  * The Push opt-in modal component.

@@ -41,7 +41,7 @@ const FilterBar = ({ filters, categoryId }) => {
       ? 'var(--color-primary)'
       : theme.palette.text.primary,
   } : {
-    background: active ? 'var(--color-secondary)' : theme.palette.background.default,
+    background: active ? 'var(--color-secondary)' : colors.background,
     color: active ? 'var(--color-secondary-contrast)' : colors.dark,
   }), [active, theme]);
 

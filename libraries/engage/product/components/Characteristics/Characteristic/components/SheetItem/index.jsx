@@ -7,8 +7,8 @@ import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()(theme => ({
-  button: {
+const useStyles = makeStyles()((theme) => {
+  const buttonBase = {
     outline: 0,
     textAlign: 'left',
     paddingLeft: 0,
@@ -18,64 +18,55 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'space-between',
     flexWrap: 'wrap',
     color: theme.palette.text.primary,
-  },
-  buttonDisabled: {
-    outline: 0,
-    textAlign: 'left',
-    paddingLeft: 0,
-    paddingRight: 0,
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    color: colors.shade4,
-  },
-  root: {
-    padding: '16px 0',
-    [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      padding: '8px 16px',
+  };
+
+  return {
+    button: {
+      ...buttonBase,
     },
-  },
-  rootSelected: {
-    outline: 0,
-    textAlign: 'left',
-    paddingLeft: 0,
-    paddingRight: 0,
-    width: '100%',
-    display: 'flex',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
-    color: theme.palette.text.primary,
-    background: 'var(--color-background-accent)',
-    boxShadow: '-16px 0 0 var(--color-background-accent), 16px 0 0 var(--color-background-accent)',
-    margin: '-1px 0',
-    paddingTop: 17,
-    paddingBottom: 17,
-    fontWeight: 500,
-    [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      margin: 0,
-      paddingTop: 8,
-      paddingBottom: 8,
-      padding: '8px 16px',
-      boxShadow: 'none',
+    buttonDisabled: {
+      ...buttonBase,
+      color: colors.shade4,
     },
-  },
-  mainRow: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: '4px 8px',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
-  mainRowRight: {
-    marginLeft: 'auto',
-  },
-  bottomRow: {
-    '&:not(:empty)': {
-      textAlign: 'right',
+    root: {
+      padding: '16px 0',
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        padding: '8px 16px',
+      },
     },
-  },
-}));
+    rootSelected: {
+      ...buttonBase,
+      background: 'var(--color-background-accent)',
+      boxShadow: '-16px 0 0 var(--color-background-accent), 16px 0 0 var(--color-background-accent)',
+      margin: '-1px 0',
+      paddingTop: 17,
+      paddingBottom: 17,
+      fontWeight: 500,
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        margin: 0,
+        paddingTop: 8,
+        paddingBottom: 8,
+        padding: '8px 16px',
+        boxShadow: 'none',
+      },
+    },
+    mainRow: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '4px 8px',
+      justifyContent: 'space-between',
+      width: '100%',
+    },
+    mainRowRight: {
+      marginLeft: 'auto',
+    },
+    bottomRow: {
+      '&:not(:empty)': {
+        textAlign: 'right',
+      },
+    },
+  };
+});
 
 /**
  * The SheetItem component.
@@ -92,18 +83,25 @@ const SheetItem = ({
 }) => {
   const { classes, cx } = useStyles();
 
-  const getStyle = useCallback(selectable => (
-    selectable ? classes.button : classes.buttonDisabled
-  ), [classes.button, classes.buttonDisabled]);
-
   const buildProps = useCallback(() => ({
-    className: `${getStyle(item.selectable)} theme__product__characteristic__option`,
+    className: cx({
+      [classes.button]: item.selectable,
+      [classes.buttonDisabled]: !item.selectable,
+    }, 'theme__product__characteristic__option'),
     key: item.id,
     ref: forwardedRef,
     value: item.id,
     'aria-hidden': !item.selectable,
     ...(item.selectable ? { onClick: event => onClick(event, item.id) } : {}),
-  }), [forwardedRef, getStyle, item.id, item.selectable, onClick]);
+  }), [
+    forwardedRef,
+    item.id,
+    item.selectable,
+    onClick,
+    classes.button,
+    classes.buttonDisabled,
+    cx,
+  ]);
 
   return (
     <div className={cx(classes.root, {
