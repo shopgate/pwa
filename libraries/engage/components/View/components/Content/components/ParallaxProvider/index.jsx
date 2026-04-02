@@ -7,7 +7,7 @@ import {
   useParallaxController,
 } from 'react-scroll-parallax';
 import { useElementSize } from '@shopgate/engage/core/hooks';
-import { useScrollContainer } from '@shopgate/engage/core/helpers';
+import { applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import { ViewContext } from '@shopgate/engage/components/View';
 
@@ -52,7 +52,7 @@ const ParallaxProvider = ({
 
   // Determine if a scroll container is used. If false PWA is in curbside website mode and window
   // is used as scroll container.
-  const scrollContainerUsed = useScrollContainer();
+  const scrollContainerUsed = applyScrollContainer();
 
   const { contentRef: viewRef } = useContext(ViewContext);
 

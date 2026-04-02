@@ -5,9 +5,16 @@ import { makeStyles } from '@shopgate/engage/styles';
 import PropTypes from 'prop-types';
 import { useSideNavigation } from './SideNavigation.hooks';
 
+/**
+ * @param {Object} theme Theme object
+ * @param {number} level Side navigation nesting depth.
+ * @returns {number|string}  padding for the level.
+ */
+const getIndentationPadding = (theme, level) => level * theme.spacing(2);
+
 const useStyles = makeStyles()((theme, { level }) => ({
   indentation: {
-    paddingLeft: level * theme.spacing(2),
+    paddingLeft: getIndentationPadding(theme, level),
   },
   list: {
     position: 'relative',

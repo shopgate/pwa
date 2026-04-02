@@ -16,7 +16,7 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
-import { useScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
+import { applyScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
 import { makeStyles, cx, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
@@ -76,7 +76,7 @@ const ViewContent = ({
   noScrollOnKeyboard,
 }) => {
   const routeContext = useContext(RouteContext);
-  const scrollContainer = useScrollContainer();
+  const scrollContainer = applyScrollContainer();
   const { classes } = useStyles();
   const ref = useRef((() => {
     if (scrollContainer) {

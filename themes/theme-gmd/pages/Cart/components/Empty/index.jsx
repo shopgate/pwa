@@ -5,8 +5,7 @@ import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { themeConfig } from '@shopgate/engage';
-import { useScrollContainer } from '@shopgate/engage/core';
-import { svgToDataUrl } from '@shopgate/engage/core/helpers';
+import { applyScrollContainer, svgToDataUrl } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig as commonThemeConfig } from '@shopgate/pwa-common/helpers/config';
 import Icon from './components/Icon';
@@ -56,7 +55,6 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX.Element}
  */
 const Empty = ({ goBackHistory }) => {
-  const hasScrollContainer = useScrollContainer();
   const { classes, cx } = useStyles();
   const imageSRC = useMemo(() => svgToDataUrl(emptyCart), []);
 
@@ -64,7 +62,7 @@ const Empty = ({ goBackHistory }) => {
     <div
       className={cx(
         classes.wrapper,
-        !hasScrollContainer && classes.wrapperNoScrollContainer
+        !applyScrollContainer() && classes.wrapperNoScrollContainer
       )}
     >
       <Portal name={portals.CART_EMPTY_BEFORE} />

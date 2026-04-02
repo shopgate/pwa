@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common/constants/Portals';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
-import { useScrollContainer } from '@shopgate/engage/core';
+import { applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
@@ -20,7 +20,6 @@ const useStyles = makeStyles()({
  */
 const Empty = ({ isVisible, ...props }) => {
   const { classes, cx } = useStyles();
-  const hasScrollContainer = useScrollContainer();
 
   if (!isVisible) {
     return null;
@@ -32,7 +31,7 @@ const Empty = ({ isVisible, ...props }) => {
       <Portal name={portals.NO_RESULTS_CONTENT}>
         <NoResults
           {...props}
-          className={cx({ [classes.withTopPadding]: !hasScrollContainer })}
+          className={cx({ [classes.withTopPadding]: !applyScrollContainer() })}
         />
       </Portal>
       <Portal name={portals.NO_RESULTS_CONTENT_AFTER} />

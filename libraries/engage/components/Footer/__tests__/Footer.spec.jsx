@@ -32,7 +32,7 @@ jest.mock('@shopgate/engage/core/events', () => ({
 }));
 jest.mock('@shopgate/engage/core/helpers', () => ({
   getAbsoluteHeight: jest.fn(),
-  useScrollContainer: jest.fn().mockReturnValue(false),
+  applyScrollContainer: jest.fn().mockReturnValue(false),
 }));
 jest.mock('../helpers', () => ({
   getElementBackgroundColor: jest.fn(),

@@ -1,5 +1,5 @@
 import {
-  useScrollContainer,
+  applyScrollContainer,
   hasWebBridge,
   isIOSTheme,
 } from '@shopgate/engage/core/helpers';
@@ -26,7 +26,7 @@ injectGlobal({
     backgroundColor: 'var(--page-background-color)',
   },
   html: {
-    overflow: useScrollContainer() ? 'hidden' : 'inherit',
+    overflow: applyScrollContainer() ? 'hidden' : 'inherit',
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
     MsTextSizeAdjust: '100%',

@@ -1,4 +1,5 @@
 import React from 'react';
+import type { CSSObject } from 'tss-react';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
   ConditionalWrapper,
@@ -21,9 +22,9 @@ export interface ProductNameProps {
 const useStyles = makeStyles()({
   wrapper: {
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      wordBreak: 'keep-all',
-      hyphens: 'none',
-    },
+      wordBreak: 'keep-all !important',
+      hyphens: 'none !important',
+    } as unknown as CSSObject,
   },
 });
 
