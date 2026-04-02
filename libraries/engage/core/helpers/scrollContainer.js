@@ -12,4 +12,4 @@ export const applyScrollContainer = () => IS_PAGE_PREVIEW_ACTIVE || !hasWebBridg
  * @deprecated use applyScrollContainer instead
  * @returns {boolean}
  */
-export const useScrollContainer = () => applyScrollContainer();
+export const useScrollContainer = applyScrollContainer;

@@ -42,9 +42,6 @@ const useStyles = makeStyles()(theme => ({
   labelRegular: {
     opacity: 0,
   },
-  labelFocus: {
-    color: themeConfig.colors.focus,
-  },
   labelError: {
     color: theme.palette.error.main,
   },
@@ -73,7 +70,6 @@ const Label = ({
           // static, never apply opacity: 0 — JSS rule order differs from glamor injection order.
           [classes.labelRegular]:
             !labelStatic && !isFloating && !isFocused,
-          [classes.labelFocus]: !hasErrorMessage && isFocused,
           [classes.labelError]: hasErrorMessage && isFocused,
         },
         'label',
