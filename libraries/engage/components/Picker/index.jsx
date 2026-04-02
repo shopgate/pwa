@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { cx } from '@shopgate/engage/styles';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
 import { withForwardedRef } from '../../core';
 import PickerModal from './components/Modal';
@@ -226,7 +227,7 @@ class Picker extends Component {
     return (
       <div
         role="button"
-        className={`${this.props.className} engage__picker`}
+        className={cx(this.props.className, 'engage__picker')}
         ref={this.props.forwardedRef}
         tabIndex={0}
         aria-haspopup

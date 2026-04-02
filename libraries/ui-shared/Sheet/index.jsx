@@ -151,12 +151,17 @@ const SheetView = ({
 }) => {
   const { classes, cx } = useStyles();
 
-  const animation = {
+  const animation = useMemo(() => ({
     duration: durationProp,
     in: classes.drawerAnimIn,
     out: classes.drawerAnimOut,
     ...animationFromParent,
-  };
+  }), [
+    durationProp,
+    classes.drawerAnimIn,
+    classes.drawerAnimOut,
+    animationFromParent,
+  ]);
 
   const drawerClassNames = cx(
     classes.container,
