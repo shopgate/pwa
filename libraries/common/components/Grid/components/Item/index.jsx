@@ -25,7 +25,7 @@ const GridItem = ({
     grow,
     shrink,
   });
-  const composedClassName = cx(className, classes.root);
+  const composedClassName = cx(classes.root, className);
 
   return React.createElement(component, {
     ...rest,

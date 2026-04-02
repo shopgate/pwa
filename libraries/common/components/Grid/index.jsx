@@ -30,10 +30,10 @@ const Grid = ({
 }) => {
   const { classes, cx } = useStyles();
 
-  const composedClassName = cx(classes.root, className, 'common__grid', {
+  const composedClassName = cx(classes.root, 'common__grid', {
     [classes.wrap]: wrap,
     [classes.noWrap]: !wrap,
-  });
+  }, className);
 
   const props = objectWithoutProps(
     {
