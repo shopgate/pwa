@@ -28,14 +28,12 @@ const Grid = ({
   wrap,
   ...rest
 }) => {
-  const { classes } = useStyles();
-  let composedClassName = `${className} ${classes.root} common__grid`;
+  const { classes, cx } = useStyles();
 
-  if (wrap) {
-    composedClassName += ` ${classes.wrap}`;
-  } else {
-    composedClassName += ` ${classes.noWrap}`;
-  }
+  const composedClassName = cx(classes.root, className, 'common__grid', {
+    [classes.wrap]: wrap,
+    [classes.noWrap]: !wrap,
+  });
 
   const props = objectWithoutProps(
     {
