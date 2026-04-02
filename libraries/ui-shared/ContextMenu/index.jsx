@@ -55,7 +55,16 @@ const useStyles = makeStyles()(theme => ({
 /**
  * The Context Menu component.
  * @param {Object} props The component props.
- * @returns {JSX}
+ * @param {Object} props.children The menu items.
+ * @param {Object} props.classes The classes for the container and button.
+ * @param {string} props.classes.container The class name for the container.
+ * @param {string} props.classes.button The class name for the button.
+ * @param {boolean} props.disabled Whether the menu is disabled.
+ * @param {boolean} props.isOpened Whether the menu is opened.
+ * @param {Function} props.onStateChange A callback that is called when the menu state changes.
+ * @param {boolean} props.scroll Whether the menu should be scrollable.
+ * @param {boolean} props.showToggle Whether the toggle button should be shown.
+ * @returns {JSX.Element}
  */
 const ContextMenu = (props) => {
   const {
