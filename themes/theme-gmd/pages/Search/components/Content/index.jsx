@@ -13,7 +13,8 @@ import { ProductFilters } from '@shopgate/engage/product/components';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from 'Components/PageTitleBar';
-import { VIEW_CONTENT, useScrollContainer } from '@shopgate/engage/core';
+import { VIEW_CONTENT } from '@shopgate/engage/core';
+import { applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import Products from '../Products';
 import connect from './connector';
@@ -35,7 +36,6 @@ const SearchContent = memo(({
   pattern,
 }) => {
   const { classes, cx } = useStyles();
-  const hasScrollContainer = useScrollContainer();
 
   const showSearch = useCallback(() => {
     UIEvents.emit(TOGGLE_SEARCH);
@@ -78,7 +78,7 @@ const SearchContent = memo(({
                 <NoResults
                   headlineText="search.no_result.heading"
                   bodyText="search.no_result.body"
-                  className={cx({ [classes.withTopPadding]: !hasScrollContainer })}
+                  className={cx({ [classes.withTopPadding]: !applyScrollContainer() })}
                   {...pattern !== CATEGORY_ALL_PATTERN ? {
                     headlineText: 'search.no_result.heading',
                     bodyText: 'search.no_result.body',

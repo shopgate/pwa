@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
-import { useScrollContainer } from '@shopgate/engage/core/helpers';
+import { applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { setPageBackgroundColor } from '../../styles';
 import Content from './components/Content';
@@ -11,8 +11,8 @@ import { ViewContext } from './context';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()((_, { inScrollContainer }) => ({
-  root: inScrollContainer ? {
+const useStyles = makeStyles()(() => ({
+  root: applyScrollContainer() ? {
     position: 'absolute',
     top: 0,
     left: 0,
@@ -41,8 +41,7 @@ function ViewContainer({
   noContentPortal,
   noKeyboardListener,
 }) {
-  const inScrollContainer = useScrollContainer();
-  const { classes, cx } = useStyles({ inScrollContainer });
+  const { classes, cx } = useStyles();
 
   if (visible) {
     setPageBackgroundColor(background);

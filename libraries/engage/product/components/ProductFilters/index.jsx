@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings, useRoute, useResponsiveValue } from '@shopgate/engage/core/hooks';
-import { useScrollContainer } from '@shopgate/engage/core';
+import { applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { ResponsiveContainer, ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
 import { GlobalLocationSwitcher, FulfillmentSlotSwitcher } from '@shopgate/engage/locations/components';
 import { themeConfig } from '@shopgate/engage';
@@ -10,9 +10,9 @@ import FilterBar from '@shopgate/engage/product/components/FilterBar';
 
 const { variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
-const useStyles = makeStyles()((_, { inScrollContainer }) => ({
+const useStyles = makeStyles()(() => ({
   filters: {
-    ...(inScrollContainer ? { top: 0 } : { top: 44 }),
+    ...(applyScrollContainer() ? { top: 0 } : { top: 44 }),
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       top: 64,
       marginBottom: 16,
@@ -40,8 +40,7 @@ const useStyles = makeStyles()((_, { inScrollContainer }) => ({
 const ProductFilters = ({
   categoryId, showFilters, hasSubcategories, searchPhrase,
 }) => {
-  const inScrollContainer = useScrollContainer();
-  const { classes } = useStyles({ inScrollContainer });
+  const { classes } = useStyles();
   const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
   const { state } = useRoute();
 

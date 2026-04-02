@@ -3,8 +3,7 @@ import { I18n } from '@shopgate/engage/components';
 import { FAVORITES_EMPTY } from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { svgToDataUrl } from '@shopgate/engage/core/helpers';
-import { useScrollContainer } from '@shopgate/engage/core';
+import { svgToDataUrl, applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import Icon from './components/Icon';
 import ContinueButton from './components/ContinueButton';
@@ -43,13 +42,12 @@ const useStyles = makeStyles()(theme => ({
  */
 const EmptyFavorites = () => {
   const { classes, cx } = useStyles();
-  const hasScrollContainer = useScrollContainer();
   const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites), []);
 
   return (
     <div
       className={cx(classes.container, {
-        [classes.containerWithTopPadding]: !hasScrollContainer,
+        [classes.containerWithTopPadding]: !applyScrollContainer(),
       })}
     >
       <SurroundPortals portalName={FAVORITES_EMPTY}>

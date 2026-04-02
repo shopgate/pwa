@@ -4,7 +4,7 @@ import debounce from 'lodash/debounce';
 import { injectGlobal, makeStyles, setViewportHeight } from '@shopgate/engage/styles';
 import { Footer } from '@shopgate/engage/components';
 import { LiveMessenger } from '@shopgate/engage/a11y';
-import { useScrollContainer, hasWebBridge } from '@shopgate/engage/core';
+import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import TabBar from 'Components/TabBar';
 
@@ -24,7 +24,7 @@ const useStyles = makeStyles()({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    overflow: useScrollContainer() ? 'hidden' : 'inherit',
+    overflow: applyScrollContainer() ? 'hidden' : 'inherit',
     position: 'relative',
     width: '100vw',
   },

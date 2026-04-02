@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import Helmet from 'react-helmet';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
-import { hasWebBridge, useScrollContainer } from '@shopgate/engage/core';
+import { hasWebBridge, applyScrollContainer } from '@shopgate/engage/core';
 import {
   injectGlobal,
   makeStyles,
@@ -36,7 +36,7 @@ const useStyles = makeStyles()({
     display: 'flex',
     flexDirection: 'column',
     minHeight: '100vh',
-    overflow: useScrollContainer() ? 'hidden' : 'inherit',
+    overflow: applyScrollContainer() ? 'hidden' : 'inherit',
     position: 'relative',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       width: '100vw',
