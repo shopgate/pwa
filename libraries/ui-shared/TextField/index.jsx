@@ -1,5 +1,5 @@
 import React, {
-  useState, useCallback, useMemo,
+  useState, useCallback, useMemo, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -69,29 +69,67 @@ const TextField = ({
   const { classes, cx } = useStyles();
   const [isFocused, setIsFocused] = useState(false);
   const [validationError, setValidationError] = useState(null);
+  /**
+   * Mirrors validation errors set during initial validate (Input constructor) without setState,
+   * so Underline / ErrorText (rendered after FormElement) still see the message in the same pass.
+   */
+  const syncValidationErrorRef = useRef(null);
 
+  /**
+   * Internal focus event handler.
+   * @param {boolean} focused Whether the input component is focused.
+   */
   const handleFocusChange = useCallback((focused) => {
     setIsFocused(focused);
     onFocusChange(focused);
   }, [onFocusChange]);
 
+  /**
+   * Updates the state if the input value has been changed.
+   * @param {string} v The entered text.
+   * @param {Object} event The original event object.
+   */
   const handleChange = useCallback((v, event) => {
     onChange(v, event);
   }, [onChange]);
 
-  const handleValidate = useCallback((v) => {
-    const ve = onValidate(v);
+  /**
+   * Updates the validation error text if required.
+   * @param {string} enteredValue The entered text.
+   * @param {boolean} isInitial Whether this is the initial value of the input field.
+   * @returns {boolean} Whether the validation was successful.
+   */
+  const handleValidate = useCallback((enteredValue, isInitial) => {
+    const validationErr = onValidate(enteredValue);
 
-    if (ve !== true && ve) {
-      setValidationError(ve);
+    if (validationErr !== true && validationErr) {
+      syncValidationErrorRef.current = validationErr;
+      /**
+       * An error message was returned by the validation callback. Update the state.
+       * Because the validation is performed when the component is constructed, we need to make
+       * sure we're not calling setState() in this situation.
+       */
+      if (!isInitial) {
+        setValidationError(validationErr);
+      }
     } else {
-      setValidationError(prev => (prev ? null : prev));
+      // There was no error, clear the state variable.
+      setValidationError((prev) => {
+        const hadSyncError = syncValidationErrorRef.current !== null;
+        if (prev !== null || hadSyncError) {
+          syncValidationErrorRef.current = null;
+          return null;
+        }
+        return prev;
+      });
     }
 
-    return ve === true;
+    // Forward the boolean result to the input field.
+    return validationErr === true;
   }, [onValidate]);
 
   const isLabelFloating = useMemo(() => {
+    // On Firefox empty date inputs always show a placeholder with date pattern
     if (typeof navigator !== 'undefined' && navigator.userAgent.includes('Firefox') && type === 'date') {
       return true;
     }
@@ -99,7 +137,8 @@ const TextField = ({
   }, [isFocused, value, type]);
 
   const isHintVisible = isFocused && !value;
-  const hasErrorMessage = !!(validationError || errorText);
+  const displayValidationError = validationError || syncValidationErrorRef.current;
+  const hasErrorMessage = !!(displayValidationError || errorText);
 
   const containerClass = multiLine ? classes.multiLine : classes.input;
 
@@ -141,7 +180,7 @@ const TextField = ({
       <Underline isFocused={isFocused} hasErrorMessage={hasErrorMessage} />
       {showErrorText && (
         <ErrorText
-          validationError={validationError}
+          validationError={displayValidationError}
           errorText={errorText}
           translate={translateErrorText}
           elementName={name}

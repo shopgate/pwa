@@ -69,7 +69,10 @@ const Label = ({
           [classes.label]: !labelStatic,
           [classes.labelStatic]: labelStatic,
           [classes.labelFloating]: isFloating,
-          [classes.labelRegular]: !isFocused,
+          // Hide label only when placeholder is shown (empty + blurred). When floating or
+          // static, never apply opacity: 0 — JSS rule order differs from glamor injection order.
+          [classes.labelRegular]:
+            !labelStatic && !isFloating && !isFocused,
           [classes.labelFocus]: !hasErrorMessage && isFocused,
           [classes.labelError]: hasErrorMessage && isFocused,
         },

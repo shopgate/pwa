@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()((theme, params, classes) => ({
   container: {
     position: 'relative',
     marginBottom: -4,
@@ -16,27 +16,6 @@ const useStyles = makeStyles()({
     cursor: 'pointer',
     bottom: -4,
     transition: 'all .3s ease',
-  },
-  labelChecked: {
-    background: 'var(--color-primary)',
-    opacity: 0.5,
-  },
-  labelDisabled: {
-    background: '#D5D5D5',
-    pointerEvents: 'none',
-    filter: 'none',
-  },
-  checkbox: {
-    // a11y configuration: hide visually but keep interactive
-    position: 'absolute',
-    opacity: 0,
-    width: '100%',
-    height: '100%',
-    top: 0,
-    left: 0,
-    margin: 0,
-    zIndex: 2,
-    cursor: 'pointer',
   },
   thumb: {
     position: 'absolute',
@@ -52,16 +31,36 @@ const useStyles = makeStyles()({
     pointerEvents: 'none',
     zIndex: 100,
   },
-  thumbChecked: {
-    left: 20,
-    background: 'var(--color-primary)',
+  checkbox: {
+    [`&:checked ~ .${classes.label}`]: {
+      background: 'var(--color-primary)',
+      opacity: 0.5,
+    },
+    [`&:checked ~ .${classes.thumb}`]: {
+      left: 20,
+      background: 'var(--color-primary)',
+    },
+    [`&:disabled ~ .${classes.label}`]: {
+      background: '#D5D5D5',
+      pointerEvents: 'none',
+      filter: 'none',
+    },
+    [`&:disabled ~ .${classes.thumb}`]: {
+      background: '#BCBDBC',
+      filter: 'none',
+    },
+    // a11y configuration: hide visually but keep interactive
+    position: 'absolute',
+    opacity: 0,
+    width: '100%',
+    height: '100%',
+    top: 0,
+    left: 0,
+    margin: 0,
+    zIndex: 2,
+    cursor: 'pointer',
   },
-  thumbDisabled: {
-    background: '#BCBDBC',
-    filter: 'none',
-  },
-});
-
+}));
 /**
  * The Toggle component
  * @param {Object} props The component props
@@ -70,7 +69,7 @@ const useStyles = makeStyles()({
 const Toggle = ({
   id, checked, className, onChange, disabled,
 }) => {
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
 
   return (
     <div className={className}>
@@ -85,20 +84,8 @@ const Toggle = ({
           disabled={disabled}
           aria-labelledby={`${id}-label`}
         />
-        <div
-          className={cx(
-            classes.label,
-            checked && classes.labelChecked,
-            disabled && classes.labelDisabled
-          )}
-        />
-        <div
-          className={cx(
-            classes.thumb,
-            checked && classes.thumbChecked,
-            disabled && classes.thumbDisabled
-          )}
-        />
+        <div className={classes.label} />
+        <div className={classes.thumb} />
       </div>
     </div>
   );
