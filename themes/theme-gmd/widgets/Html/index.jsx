@@ -57,7 +57,7 @@ const useStyles = makeStyles()(theme => ({
       borderLeft: `.25rem solid ${colors.shade6}`,
       fontStyle: 'italic',
     },
-    '& > :first-of-type': {
+    '& > :first-child': {
       marginTop: 0,
     },
     '&::after': {

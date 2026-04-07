@@ -1,167 +1,220 @@
-import React, {
-  useState, useEffect, useRef, useCallback, memo,
-} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ProductList } from '@shopgate/engage/product/components';
 import { ActionButton, I18n } from '@shopgate/engage/components';
 import { transformDisplayOptions } from '@shopgate/engage/core/helpers';
+import { css } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/engage';
 import Headline from 'Components/Headline';
 import ProductGrid from 'Components/ProductGrid';
-import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
-  listView: {
-    background: colors.light,
-    overflow: 'auto',
-    '> ul > li:first-of-type': {
-      paddingTop: 0,
-    },
-    '> ul > li:last-of-type': {
-      paddingBottom: 0,
-    },
+const listView = css({
+  background: colors.light,
+  overflow: 'auto',
+  '> ul > li:first-child': {
+    paddingTop: 0,
+  },
+  '> ul > li:last-child': {
+    paddingBottom: 0,
   },
 });
 
 /**
  * The product widget component.
- * @param {Object} props Component props.
- * @returns {JSX.Element|null}
  */
-const ProductsWidget = ({
-  getProducts,
-  hash,
-  id,
-  isFetching,
-  products,
-  settings,
-  totalProductCount,
-}) => {
-  const { classes } = useStyles();
-  const productList = products || [];
-  const [productCount, setProductCount] = useState(() => productList.length);
-  const prevProductsLenRef = useRef(productList.length);
-  const prevHashRef = useRef(hash);
-  const prevQueryParamsRef = useRef(JSON.stringify(settings.queryParams));
-
-  const fetchProducts = useCallback((settingsOverride, init = false) => {
-    const s = settingsOverride || settings;
-    const offset = init ? 0 : productCount;
-
-    getProducts(
-      s.queryType,
-      s.queryParams,
-      {
-        limit: s.productLimit,
-        offset,
-        sort: transformDisplayOptions(s.sortOrder),
-      },
-      id
-    );
-  }, [getProducts, id, productCount, settings]);
-
-  useEffect(() => {
-    if (productList.length === 0) {
-      fetchProducts(null, true);
-    }
-    /* Mount-only initial fetch; mirrors legacy componentDidMount. */
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const len = productList.length;
-    const total = totalProductCount;
-
-    if (len !== prevProductsLenRef.current || len === total) {
-      const capped = total != null ? Math.min(len, total) : len;
-      setProductCount(capped);
-    }
-    prevProductsLenRef.current = len;
-  }, [productList.length, totalProductCount]);
-
-  useEffect(() => {
-    const qp = JSON.stringify(settings.queryParams);
-    const qpChanged = qp !== prevQueryParamsRef.current;
-    const hashChanged = hash !== prevHashRef.current;
-    const empty = productList.length === 0;
-
-    if (hashChanged || (qpChanged && empty)) {
-      fetchProducts(settings);
-    }
-
-    prevQueryParamsRef.current = qp;
-    prevHashRef.current = hash;
-  }, [hash, settings, settings.queryParams, productList.length, fetchProducts]);
-
-  if (!productList.length) {
-    return null;
-  }
-
-  const productSlice = productList.slice(0, productCount);
-  const {
-    headline,
-    layout,
-    showName,
-    showPrice,
-    showReviews,
-  } = settings;
-
-  const isList = layout === 'list';
-
-  const flags = {
-    name: isList ? true : showName,
-    price: showPrice,
-    reviews: showReviews,
-    ...(isList && { manufacturer: false }),
+class ProductsWidget extends Component {
+  static propTypes = {
+    getProducts: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
+    settings: PropTypes.shape().isRequired,
+    hash: PropTypes.string,
+    isFetching: PropTypes.bool,
+    products: PropTypes.arrayOf(PropTypes.shape()),
+    totalProductCount: PropTypes.number,
   };
 
-  const ProductComponent = isList ? ProductList : ProductGrid;
+  static defaultProps = {
+    isFetching: null,
+    products: null,
+    totalProductCount: null,
+    hash: null,
+  };
 
-  const hasAllProducts = totalProductCount !== null && productList.length >= totalProductCount;
+  /**
+   * Constructor.
+   * @param {Object} props The component props.
+   */
+  constructor(props) {
+    super(props);
 
-  const moreButton = settings.showLoadMore && !hasAllProducts ? (
-    <ActionButton
-      loading={isFetching}
-      onClick={() => fetchProducts()}
-    >
-      <I18n.Text string="common.load_more" />
-    </ActionButton>
-  ) : null;
+    this.productCount = props.products.length;
+  }
 
-  return (
-    <div {...(isList ? { className: classes.listView } : {})}>
-      <Headline text={headline} />
-      <ProductComponent
-        flags={flags}
-        infiniteLoad={false}
-        products={productSlice}
-        scope="widgets"
-      />
-      {moreButton}
-    </div>
+  /**
+   * Request the products when the component mounts.
+   */
+  componentDidMount() {
+    const { products = [] } = this.props;
+    if (products.length === 0) {
+      this.getProducts(null, true);
+    }
+  }
+
+  /**
+   * When we receive new products then we can adjust the state.
+   * @param {Object} nextProps The next set of component props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    // Set the total product count.
+    this.totalProductCount = nextProps.totalProductCount;
+
+    /**
+     * Only update to stop 'fetching' when we receive new products or
+     * if we have received all expected products.
+     */
+    if (
+      this.props.products.length !== nextProps.products.length ||
+      nextProps.products.length === this.totalProductCount
+    ) {
+      this.productCount = Math.min(nextProps.products.length, this.totalProductCount);
+    }
+    // React to case when widget settings change after component mounted
+    if ((JSON.stringify(this.props.settings.queryParams)
+      !== JSON.stringify(nextProps.settings.queryParams)
+      && (!nextProps.products || !nextProps.products.length)) ||
+      nextProps.hash !== this.props.hash) {
+      this.getProducts(nextProps.settings);
+    }
+  }
+
+  /**
+   * Only update when we are fetching products or we have new products.
+   * @param {Object} nextProps The next set of component props.
+   * @returns {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    return (
+      this.props.isFetching !== nextProps.isFetching ||
+      this.props.products.length !== nextProps.products.length
+    );
+  }
+
+  /**
+   * Build the params for requesting products and then make the request.
+   * @param {Object} [settings] Widget settings object
+   * @param {boolean} [init=false] true if requested is caused by didMount
+   */
+  getProducts = (settings, init = false) => {
+    const { getProducts, id } = this.props;
+    const {
+      productLimit,
+      queryParams,
+      queryType,
+      sortOrder,
+    } = settings || this.props.settings;
+
+    const sort = transformDisplayOptions(sortOrder);
+
+    const options = {
+      limit: productLimit,
+      offset: !init ? this.productCount : 0,
+      sort,
+    };
+
+    getProducts(queryType, queryParams, options, id);
+  };
+
+  /**
+   * More products click handler
+   */
+  handleClickMore = () => {
+    this.getProducts();
+  };
+
+  /**
+   * Determines whether or not we already have all products.
+   * @returns {boolean}
+   */
+  hasAllProducts = () => (
+    this.props.totalProductCount !== null &&
+    this.props.products.length >= this.props.totalProductCount
   );
-};
 
-ProductsWidget.propTypes = {
-  getProducts: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  settings: PropTypes.shape().isRequired,
-  hash: PropTypes.string,
-  isFetching: PropTypes.bool,
-  products: PropTypes.arrayOf(PropTypes.shape()),
-  totalProductCount: PropTypes.number,
-};
+  /**
+   * Renders a 'Load More' button if there are more products to load.
+   * @returns {JSX}
+   */
+  renderMoreButton = () => {
+    if (
+      !this.props.settings.showLoadMore ||
+      this.hasAllProducts()
+    ) {
+      return null;
+    }
 
-ProductsWidget.defaultProps = {
-  isFetching: null,
-  products: null,
-  totalProductCount: null,
-  hash: null,
-};
+    return (
+      <ActionButton
+        loading={this.props.isFetching}
+        onClick={this.handleClickMore}
+      >
+        <I18n.Text string="common.load_more" />
+      </ActionButton>
+    );
+  };
 
-export default connect(memo(ProductsWidget));
+  /**
+   * The render function.
+   * @returns {JSX|null}
+   */
+  render() {
+    const { products } = this.props;
+
+    // Don't render if we don't have any products.
+    if (!products || !products.length) {
+      return null;
+    }
+
+    // Only show the number of products that we want, not everything coming via props.
+    const productSlice = products.slice(0, this.productCount);
+    const {
+      headline,
+      layout,
+      showName,
+      showPrice,
+      showReviews,
+    } = this.props.settings;
+
+    const isList = layout === 'list';
+
+    // Flags to enable/disable elements when displaying the products.
+    const flags = {
+      name: isList ? true : showName,
+      price: showPrice,
+      reviews: showReviews,
+      ...(isList && { manufacturer: false }),
+    };
+
+    // Determine which component to render.
+    const ProductComponent = isList ? ProductList : ProductGrid;
+
+    return (
+      <div {...isList ? { className: listView } : {}}>
+        <Headline text={headline} />
+        <ProductComponent
+          flags={flags}
+          infiniteLoad={false}
+          products={productSlice}
+          scope="widgets"
+        />
+        {this.renderMoreButton()}
+      </div>
+    );
+  }
+}
+
+export default connect(ProductsWidget);
 
 export { ProductsWidget as UnwrappedProductsWidget };

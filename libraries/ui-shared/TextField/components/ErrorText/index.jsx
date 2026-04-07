@@ -34,7 +34,7 @@ const ErrorText = ({
   return (
     <div
       id={`ariaError-${elementName}`}
-      className={cx(className, classes.error, 'errorText')}
+      className={cx(classes.error, className, 'errorText')}
       aria-live="assertive"
       aria-atomic="true"
       aria-hidden={ariaHidden}
