@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
 import { withForwardedRef } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
@@ -37,9 +38,8 @@ const useStyles = makeStyles()({
  */
 const AddMoreButton = ({
   handleAddToCart, disabled, loading, onReset, visible, forwardedRef,
-}, context) => {
+}) => {
   const { classes, cx } = useStyles();
-  const { __ } = context.i18n();
 
   return (
     <AddToCartButton
@@ -49,7 +49,7 @@ const AddMoreButton = ({
       isLoading={loading}
       className={cx(classes.container, 'theme__product__add-to-cart-bar__add-more-button')}
       aria-hidden={!visible}
-      aria-label={__('product.add_to_cart')}
+      aria-label={i18n.text('product.add_to_cart')}
       ref={forwardedRef}
     />
   );
@@ -67,10 +67,6 @@ AddMoreButton.propTypes = {
 AddMoreButton.defaultProps = {
   onReset: () => {},
   forwardedRef: null,
-};
-
-AddMoreButton.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default withForwardedRef(AddMoreButton);

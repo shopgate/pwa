@@ -8,7 +8,7 @@ const { colors } = themeConfig;
 
 const useStyles = makeStyles()({
   root: {
-    '&:first-of-type': {
+    '&:first-child': {
       boxShadow: '0 0 0 0',
     },
     boxShadow: `0 -1px 0 0 ${colors.darkGray}`,
@@ -27,19 +27,18 @@ const useStyles = makeStyles()({
 function MoreMenuItem({
   href, label, onClick, testId, className,
 }) {
-  const { classes, cx } = useStyles();
-  const rootClass = cx(classes.root, className);
+  const { classes } = useStyles();
 
   if (!href && onClick) {
     return (
-      <button className={rootClass} onClick={onClick} data-test-id={testId} type="button">
+      <button className={className || classes.root} onClick={onClick} data-test-id={testId} type="button">
         <I18n.Text string={label} />
       </button>
     );
   }
 
   return (
-    <Link className={rootClass} href={href} role="button">
+    <Link className={className || classes.root} href={href} role="button">
       <I18n.Text string={label} />
     </Link>
   );

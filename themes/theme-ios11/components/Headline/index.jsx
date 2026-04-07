@@ -6,20 +6,20 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()({
   root: {
     margin: '12px 16px',
-  },
-  h1: {
-    fontSize: 34,
-  },
-  h2: {
-    fontSize: 22,
-  },
-  h3: {
-    fontSize: 22,
-    textAlign: 'center',
-  },
-  h4: {
-    fontSize: 17,
-    textAlign: 'center',
+    'h1&': {
+      fontSize: 34,
+    },
+    'h2&': {
+      fontSize: 22,
+    },
+    'h3&': {
+      fontSize: 22,
+      textAlign: 'center',
+    },
+    'h4&': {
+      fontSize: 17,
+      textAlign: 'center',
+    },
   },
 });
 
@@ -29,7 +29,7 @@ const useStyles = makeStyles()({
  * @returns {JSX}
  */
 const Headline = ({
-  tag: Tag, style, text, className: classNameProp,
+  tag: Tag, style, text,
 }) => {
   const { classes, cx } = useStyles();
 
@@ -37,13 +37,9 @@ const Headline = ({
     return null;
   }
 
-  const rootClass = classNameProp != null && classNameProp !== ''
-    ? classNameProp
-    : classes.root;
-
   return (
     <Tag
-      className={cx(classes[Tag], 'headline', 'theme__headline', rootClass)}
+      className={cx(classes.root, 'headline', 'theme__headline')}
       style={style}
       data-test-id="Headline"
     >
@@ -53,14 +49,12 @@ const Headline = ({
 };
 
 Headline.propTypes = {
-  className: PropTypes.string,
   style: PropTypes.shape(),
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4']),
   text: PropTypes.string,
 };
 
 Headline.defaultProps = {
-  className: null,
   style: null,
   tag: 'h2',
   text: '',

@@ -5,13 +5,14 @@ import Headline from 'Components/Headline';
 import Item from '../Item';
 
 const useStyles = makeStyles()(() => ({
-  headline: {
-    margin: '24px 20px 16px',
-  },
   list: {
     margin: '0 20px 8px',
   },
 }));
+
+const headline = {
+  margin: '24px 20px 16px',
+};
 
 /**
  * Section component.
@@ -27,7 +28,7 @@ const Section = ({ children, title }) => {
 
   return (
     <>
-      <Headline className={classes.headline} text={title} />
+      <Headline style={headline} text={title} />
       <div className={classes.list} data-test-id="more-section-list">
         {children}
       </div>

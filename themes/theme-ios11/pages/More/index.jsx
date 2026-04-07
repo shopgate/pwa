@@ -8,7 +8,6 @@ import {
 import { ClientInformation } from '@shopgate/engage/development/components';
 import { View } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import { makeStyles } from '@shopgate/engage/styles';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
 import Quicklinks from './components/Quicklinks';
@@ -17,18 +16,15 @@ import UserMenu from './components/UserMenu';
 import portalProps from './portalProps';
 import connect from './connector';
 
-const useStyles = makeStyles()(() => ({
-  welcomeHeadline: {
-    margin: '24px 20px 16px',
-  },
-}));
+const headline = {
+  margin: '24px 20px 16px',
+};
 
 /**
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */
 const More = (props) => {
-  const { classes } = useStyles();
   const { isLoggedIn, user } = props;
 
   const welcomeMessage = useMemo(() => {
@@ -41,7 +37,7 @@ const More = (props) => {
   return (
     <View aria-hidden={false}>
       <BackBar right={null} />
-      <Headline className={classes.welcomeHeadline} tag="h1" text={welcomeMessage} />
+      <Headline style={headline} tag="h1" text={welcomeMessage} />
       {!isLoggedIn && <UserMenu {...props} />}
       <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />
       {isLoggedIn && <UserMenu {...props} />}

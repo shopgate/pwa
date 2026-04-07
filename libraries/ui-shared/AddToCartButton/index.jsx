@@ -214,8 +214,8 @@ const AddToCartButton = ({
       data-test-id="addToCartButton"
       className={cx(
         'ui-shared__add-to-cart-button',
-        className,
-        buttonStateClass
+        buttonStateClass,
+        className
       )}
       style={wrapperStyle}
       onClick={handleClick}
