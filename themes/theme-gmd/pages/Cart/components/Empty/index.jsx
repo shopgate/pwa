@@ -7,12 +7,10 @@ import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { themeConfig } from '@shopgate/engage';
 import { applyScrollContainer, svgToDataUrl } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig as commonThemeConfig } from '@shopgate/pwa-common/helpers/config';
 import Icon from './components/Icon';
 import connect from './connector';
 
-const { variables } = commonThemeConfig;
-const { svgImages = {} } = themeConfig || {};
+const { svgImages = {}, variables } = themeConfig || {};
 const { emptyCart = '' } = svgImages || {};
 
 const useStyles = makeStyles()(theme => ({

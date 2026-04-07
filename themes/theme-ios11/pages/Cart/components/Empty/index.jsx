@@ -5,11 +5,9 @@ import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { themeConfig } from '@shopgate/engage';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig as commonThemeConfig } from '@shopgate/pwa-common/helpers/config';
 import Icon from './components/Icon';
 
-const { variables } = commonThemeConfig;
-const { svgImages = {} } = themeConfig || {};
+const { svgImages = {}, variables } = themeConfig || {};
 const { emptyCart = '' } = svgImages || {};
 
 const useStyles = makeStyles()({
