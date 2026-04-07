@@ -200,7 +200,7 @@ const RangeSlider = ({
       queueMicrotask(() => triggerChangeCallback(next));
       return next;
     });
-  }, [triggerChangeCallback]);
+  }, [triggerChangeCallback, min, max]);
 
   const handleTouchEnd = useCallback(() => {
     removeEventListeners();

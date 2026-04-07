@@ -23,10 +23,10 @@ const Button = ({
   testId,
   ...rest
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const buttonProps = {
-    className: `${className} ${classes.root} common__button`,
+    className: cx(classes.root, 'common__button', className),
     disabled,
     onClick: disabled ? null : onClick,
     ...rest,

@@ -52,20 +52,7 @@ const StockInfoUnwrapped = ({ location, inventory, className }) => {
   const { availabilityText = '', availabilityTextColor = 'inherit', comingSoon = false } =
     getAvailabilitySettings(settings, location, inventory);
 
-  const { classes, cx, css } = useStyles({ availabilityTextColor });
-
-  /**
-   * Matches pre–makeStyles: classNames(defaultClassName, css(className).toString()).
-   * String class names are passed through; objects are turned into an Emotion class via css().
-   */
-  let customClassName;
-  if (className == null) {
-    customClassName = undefined;
-  } else if (typeof className === 'string') {
-    customClassName = className;
-  } else {
-    customClassName = css(className);
-  }
+  const { classes, cx } = useStyles({ availabilityTextColor });
 
   const portalProps = React.useMemo(() => ({
     location,
@@ -87,7 +74,7 @@ const StockInfoUnwrapped = ({ location, inventory, className }) => {
 
   return (
     <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO} portalProps={portalProps}>
-      <span className={cx(classes.defaultClassName, customClassName)}>
+      <span className={cx(classes.defaultClassName, className)}>
         <StockInfoInventory
           availabilityText={availabilityText}
           comingSoon={comingSoon}

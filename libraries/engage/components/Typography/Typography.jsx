@@ -128,7 +128,9 @@ export const styles = theme => ({
   },
 });
 
-const useTypographyStyles = makeStyles()(styles);
+const useTypographyStyles = makeStyles({
+  name: 'Typography',
+})(styles);
 
 const defaultVariantMapping = {
   h1: 'h1',

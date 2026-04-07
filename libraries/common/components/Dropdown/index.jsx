@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useLayoutEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import Transition from '../Transition';
@@ -11,7 +11,7 @@ const useStyles = makeStyles()(() => ({
 }));
 
 /**
- * This component slides it's child content up or down based on it's isOpen property.
+ * This component slides its child content up or down based on its isOpen property.
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */
@@ -27,7 +27,7 @@ const Dropdown = ({
   const { classes, cx } = useStyles();
   const [initialRender, setInitialRender] = useState(true);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (isOpen === true) {
       setInitialRender(false);
     }

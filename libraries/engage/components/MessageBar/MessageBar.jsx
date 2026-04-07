@@ -21,7 +21,7 @@ const iconMapping = {
  */
 const getMessageColors = (sourceColor, textColor) => ({
   background: Color(sourceColor).fade(0.9).toString(),
-  color: textColor || 'var(--color-text-height-emphasis)',
+  color: textColor || 'var(--color-text-high-emphasis)',
   borderColor: sourceColor,
 });
 
@@ -80,7 +80,7 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
       background: 'var(--color-secondary)',
       color: 'var(--color-secondary-contrast)',
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
-        ...getMessageColors(secondaryColor || themeColors.secondary || '#000'),
+        ...getMessageColors(secondaryColor),
         ' > svg': {
           color: 'var(--color-secondary)',
         },
