@@ -144,10 +144,10 @@ const defaultVariantMapping = {
 };
 
 const Typography = React.forwardRef((props, ref) => {
-  const { classes, cx } = useTypographyStyles();
   const {
     align = 'inherit',
     className,
+    classes: classesOverrides,
     color = 'initial',
     component,
     display = 'initial',
@@ -158,6 +158,10 @@ const Typography = React.forwardRef((props, ref) => {
     variantMapping = defaultVariantMapping,
     ...other
   } = props;
+
+  const { classes, cx } = useTypographyStyles(undefined, {
+    props: { classes: classesOverrides },
+  });
 
   const Component =
     component ||
@@ -193,6 +197,7 @@ const Typography = React.forwardRef((props, ref) => {
 Typography.propTypes = {
   align: PropTypes.oneOf(['inherit', 'left', 'center', 'right', 'justify']),
   children: PropTypes.node,
+  classes: PropTypes.shape(),
   className: PropTypes.string,
   color: PropTypes.oneOf([
     'initial',
@@ -233,6 +238,7 @@ Typography.propTypes = {
 Typography.defaultProps = {
   align: 'inherit',
   children: null,
+  classes: undefined,
   className: undefined,
   color: 'initial',
   component: null,

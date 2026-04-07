@@ -51,6 +51,10 @@ const Drawer = ({
   const [active, setActive] = useState(isOpen);
   const sheetRef = useRef(null);
   const isFirstIsOpenSync = useRef(true);
+  const onOpenRef = useRef(onOpen);
+  const onCloseRef = useRef(onClose);
+  onOpenRef.current = onOpen;
+  onCloseRef.current = onClose;
 
   useEffect(() => {
     if (isFirstIsOpenSync.current) {
@@ -58,12 +62,12 @@ const Drawer = ({
       return;
     }
     if (isOpen) {
-      onOpen();
+      onOpenRef.current();
       setActive(true);
     } else {
-      onClose();
+      onCloseRef.current();
     }
-  }, [isOpen, onOpen, onClose]);
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen && sheetRef.current) {
