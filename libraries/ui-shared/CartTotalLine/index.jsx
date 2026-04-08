@@ -53,13 +53,13 @@ const CartTotalLine = ({
   return (
     <div
       className={cx(
-        className,
         `ui-shared__cart-total-line ui-shared__cart-${type}-line`,
         classes.line,
         {
           [classes.disabled]: isDisabled,
           [typeClass]: true,
-        }
+        },
+        className
       )}
       data-test-id={`${type}CartTotal`}
     >

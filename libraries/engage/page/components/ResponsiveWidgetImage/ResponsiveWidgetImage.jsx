@@ -141,9 +141,9 @@ const ResponsiveWidgetImage = ({
         ref={parallax.ref}
         alt={alt}
         loading="lazy"
-        className={cx(className, classes.preventSave, classes.image, {
+        className={cx(classes.preventSave, classes.image, {
           [classes.banner]: isBanner,
-        })}
+        }, className)}
         onLoad={handleImageLoad}
         style={{
           ...(enableParallax && isBanner ? { height: `${100 + parallaxPercent * 2}%` } : {}),
