@@ -12,7 +12,7 @@ const { colors, variables } = themeConfig;
 const useStyles = makeStyles()(theme => ({
   buttonLine: {
     float: 'right',
-    marginTop: '14',
+    marginTop: 14,
   },
   cancelButton: {
     position: 'relative',
