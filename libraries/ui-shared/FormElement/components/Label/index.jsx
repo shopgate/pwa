@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
@@ -21,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: '19px',
     pointerEvents: 'none',
     userSelect: 'none',
-    color: themeConfig.colors.shade12,
+    color: 'var(--color-text-medium-emphasis)',
     transformOrigin: 'left top 0px',
     willChange: 'transform, color',
     overflow: 'visible',
@@ -33,7 +32,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: '19px',
     pointerEvents: 'none',
     userSelect: 'none',
-    color: themeConfig.colors.shade12,
+    color: 'var(--color-text-medium-emphasis)',
   },
   labelFloating: {
     transform: 'translate3d(0, -22px, 0) scale3d(0.75, 0.75, 0.75)',

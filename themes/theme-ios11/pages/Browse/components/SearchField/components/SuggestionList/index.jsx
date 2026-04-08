@@ -11,9 +11,8 @@ import {
 import connect from './connector';
 
 const { colors } = themeConfig;
-const dividerColor = colors.dividers || colors.shade7;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()((theme, { bottomHeight }) => ({
   list: {
     fontSize: 16,
     fontWeight: 400,
@@ -26,8 +25,10 @@ const useStyles = makeStyles()(() => ({
     backgroundColor: colors.light,
     overflowY: 'scroll',
     zIndex: 3,
-    borderTop: `0.5px ${dividerColor} solid`,
     paddingTop: 5,
+    ...typeof bottomHeight === 'number' && {
+      paddingBottom: bottomHeight,
+    },
   },
   item: {
     alignItems: 'center',
@@ -42,36 +43,6 @@ const useStyles = makeStyles()(() => ({
 }));
 
 /**
- * @param {Object} prevProps Previous props.
- * @param {Object} nextProps Next props.
- * @returns {boolean} True if render can be skipped (props effectively unchanged for this UI).
- */
-const areSuggestionListPropsEqual = (prevProps, nextProps) => {
-  if (prevProps.visible !== nextProps.visible) {
-    return false;
-  }
-  if (!nextProps.visible) {
-    return true;
-  }
-  if (prevProps.bottomHeight !== nextProps.bottomHeight) {
-    return false;
-  }
-  if (prevProps.onClick !== nextProps.onClick) {
-    return false;
-  }
-  if (nextProps.fetching) {
-    return true;
-  }
-  if (prevProps.searchPhrase !== nextProps.searchPhrase) {
-    return false;
-  }
-  if (prevProps.suggestions !== nextProps.suggestions) {
-    return false;
-  }
-  return true;
-};
-
-/**
  * Suggestion list component.
  * @param {Object} props Props.
  * @returns {JSX.Element|null}
@@ -83,7 +54,7 @@ const SuggestionList = ({
   suggestions,
   visible,
 }) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx } = useStyles({ bottomHeight });
 
   if (!visible) {
     return null;
@@ -118,7 +89,6 @@ const SuggestionList = ({
           'theme__browse__search-field__suggestion-list',
           classes.list
         )}
-        style={{ paddingBottom: bottomHeight }}
       >
         {suggestions.map(suggestion => (
           <SurroundPortals
@@ -165,6 +135,19 @@ SuggestionList.defaultProps = {
   searchPhrase: '',
 };
 
-export { SuggestionList as UnwrappedSuggestionList };
+/**
+ * @param {Object} prevProps Previous props.
+ * @param {Object} nextProps Next props.
+ * @returns {boolean} True if render can be skipped (props effectively unchanged for this UI).
+ */
+const areEqual = (prevProps, nextProps) => !(
+  (nextProps.fetching === false && nextProps.suggestions) ||
+  (prevProps.visible !== nextProps.visible) ||
+  (prevProps.searchPhrase !== nextProps.searchPhrase)
+);
 
-export default connect(memo(SuggestionList, areSuggestionListPropsEqual));
+const MemoizedSuggestionList = memo(SuggestionList, areEqual);
+
+export { MemoizedSuggestionList as UnwrappedSuggestionList };
+
+export default connect(MemoizedSuggestionList);

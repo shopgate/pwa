@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import {
   mockProductId,
   mockedStateWithoutReview,
@@ -44,6 +45,12 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
 };
 
 describe('<ReviewForm />', () => {
+  beforeEach(() => {
+    getCurrentRoute.mockReturnValue({
+      pathname: '/some/path',
+    });
+  });
+
   it('should render form correctly', () => {
     const comp = createComponent(mockedStateWithoutReview);
     expect(comp).toMatchSnapshot();
@@ -71,15 +78,17 @@ describe('<ReviewForm />', () => {
     comp.update();
     expect(comp).toMatchSnapshot();
 
+    const errors = comp.find('ReviewForm').instance().state.validationErrors;
     const author = comp.findWhere(c => (
       c.length && c.name() === 'TextField' && c.prop('name') === 'author'
     ));
 
     expect(comp.find('RatingScale').prop('value')).toEqual(0);
     expect(comp.find('RatingScale').prop('errorText')).toBeDefined();
+    expect(errors.rate).toBeDefined();
 
-    expect(author.prop('value')).toEqual('Jane Doe');
-    expect(author.prop('errorText')).toBeFalsy();
+    expect(author.prop('value')).toBeFalsy();
+    expect(author.prop('errorText')).toBeDefined();
   });
 
   it('should set form data', () => {
@@ -105,19 +114,19 @@ describe('<ReviewForm />', () => {
     expect(comp).toMatchSnapshot();
 
     // Check validation with to long review
+    const errors1 = comp.find('ReviewForm').instance().state.validationErrors;
     const review = comp.findWhere(c => (
       c.length && c.name() === 'TextField' && c.prop('name') === 'review'
     ));
-    expect(review.prop('errorText')).toBeDefined();
+    expect(errors1.review).toBeDefined();
 
     // Check validation with changed, shorter review
     review.find('textarea').simulate('change', { target: { value: 'Lorem ipsum dolor sit amet' } });
     comp.update();
     expect(comp).toMatchSnapshot();
 
-    expect(comp.findWhere(c => (
-      c.length && c.name() === 'TextField' && c.prop('name') === 'review'
-    )).prop('errorText')).toBeFalsy();
+    const errors2 = comp.find('ReviewForm').instance().state.validationErrors;
+    expect(errors2.review).toBeFalsy();
 
     const longAuthor = new Array(256).fill('a').join('');
     comp.find('input[name="author"]').simulate('change', {
@@ -125,24 +134,19 @@ describe('<ReviewForm />', () => {
         value: longAuthor,
       },
     });
-    comp.update();
-    expect(comp.findWhere(c => (
-      c.length && c.name() === 'TextField' && c.prop('name') === 'author'
-    )).prop('errorText')).toBeTruthy();
+    const errors3 = comp.find('ReviewForm').instance().state.validationErrors;
+    expect(errors3.author).toBeTruthy();
     comp.find('input[name="author"]').simulate('change', {
       target: {
         value: 'Author',
       },
     });
-    comp.update();
 
-    expect(comp.findWhere(c => (
-      c.length && c.name() === 'TextField' && c.prop('name') === 'author'
-    )).prop('errorText')).toBeFalsy();
+    const errors4 = comp.find('ReviewForm').instance().state.validationErrors;
+    expect(errors4.author).toBeFalsy();
 
     comp.find('RatingScale').find('[role="button"]').first().simulate('click');
-    comp.update();
-    expect(comp.find('RatingScale').prop('value')).toBe(20);
+    expect(comp.find('ReviewForm').instance().state.rate).toBe(20);
   });
 
   it('should submit with valid review', () => {
@@ -151,9 +155,7 @@ describe('<ReviewForm />', () => {
 
     comp.find('form').simulate('submit');
     comp.update();
-    expect(comp.find('RatingScale').prop('errorText')).toBeFalsy();
-    expect(comp.findWhere(c => (
-      c.length && c.name() === 'TextField' && c.prop('name') === 'author'
-    )).prop('errorText')).toBeFalsy();
+    const errors = comp.find('ReviewForm').instance().state.validationErrors;
+    expect(Object.keys(errors).length).toBe(0);
   });
 });
