@@ -59,7 +59,7 @@ const Checkbox = ({
 
   return (
     <FormElement
-      className={cx(className, classes.root, 'checkbox', 'ui-shared__form__checkbox')}
+      className={cx(classes.root, 'checkbox', 'ui-shared__form__checkbox', className)}
       htmlFor={name}
       errorText={errorText}
       translateErrorText={translateErrorText}

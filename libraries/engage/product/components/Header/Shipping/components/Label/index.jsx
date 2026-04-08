@@ -19,7 +19,7 @@ const Label = ({ className, price, currency }) => {
 
   return (
     // eslint-disable-next-line jsx-a11y/aria-role
-    <div role="text" className={cx(className, classes.text)}>
+    <div role="text" className={cx(classes.text, className)}>
       {price > 0 ? (
         <I18n.Text string="shipping.cost">
           <I18n.Price forKey="price" price={price} currency={currency} />

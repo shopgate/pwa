@@ -38,9 +38,9 @@ const ImageInner = forwardRef(({
       loading={lazy ? 'lazy' : 'eager'}
       src={src}
       className={cx(
-        className,
         classes.image,
-        'common__image'
+        'common__image',
+        className
       )}
       alt={alt}
       aria-label={alt}

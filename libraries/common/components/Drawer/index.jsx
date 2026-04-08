@@ -88,11 +88,11 @@ const Drawer = ({
   const animationOut = animation.out || classes.animationOut;
 
   const combinedClassName = cx(
-    className,
     classes.container,
     { [animationIn]: isOpen },
     { [animationOut]: !isOpen },
-    'common__drawer'
+    'common__drawer',
+    className
   );
 
   const style = {};
@@ -149,10 +149,10 @@ Drawer.defaultProps = {
   children: null,
   className: '',
   isOpen: false,
-  onOpen: () => {},
-  onClose: () => {},
-  onDidClose: () => {},
-  onDidOpen: () => {},
+  onOpen: () => { },
+  onClose: () => { },
+  onDidClose: () => { },
+  onDidOpen: () => { },
 };
 
 export default memo(Drawer);

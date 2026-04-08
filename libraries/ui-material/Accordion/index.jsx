@@ -110,8 +110,8 @@ const Accordion = (props) => {
               <div
                 className={cx(
                   'ui-material__accordion-title',
-                  className,
-                  classes.toggle
+                  classes.toggle,
+                  className
                 )}
                 data-test-id={testId}
               >
@@ -142,7 +142,7 @@ const Accordion = (props) => {
                   </div>
                 </div>
                 {renderAdditionalHeaderContent && (
-                <div>{renderAdditionalHeaderContent()}</div>
+                  <div>{renderAdditionalHeaderContent()}</div>
                 )}
               </div>
               <AccordionContent

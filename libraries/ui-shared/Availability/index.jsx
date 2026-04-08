@@ -51,7 +51,7 @@ const Availability = ({
 
   return (
     <div
-      className={cx('ui-shared__availability', className, classes.base, stateClass)}
+      className={cx('ui-shared__availability', classes.base, stateClass, className)}
       data-test-id={`availabilityText: ${text}`}
     >
       {text}
