@@ -78,6 +78,7 @@ const ViewContent = ({
   const routeContext = useContext(RouteContext);
   const scrollContainer = applyScrollContainer();
   const { classes } = useStyles();
+
   const ref = useRef((() => {
     if (scrollContainer) {
       return null;
@@ -87,6 +88,7 @@ const ViewContent = ({
     }
     return null;
   })());
+
   const [keyboardHeight, setKeyboardHeight] = useState(0);
   const [isInputFocused, setIsInputFocused] = useState(false);
 
@@ -139,8 +141,9 @@ const ViewContent = ({
     }
   }, [noKeyboardListener, visible, keyboardHeight]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, handleKeyboardChange);
+
     return () => {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       const node = ref.current;
@@ -153,6 +156,7 @@ const ViewContent = ({
       router.update(routeContext.id, {
         scrollTop,
       }, false);
+
       event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, handleKeyboardChange);
     };
   }, [handleKeyboardChange, routeContext.id]);

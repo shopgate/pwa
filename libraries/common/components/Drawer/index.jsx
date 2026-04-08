@@ -91,8 +91,8 @@ const Drawer = ({
     classes.container,
     { [animationIn]: isOpen },
     { [animationOut]: !isOpen },
-    'common__drawer',
-    className
+    className,
+    'common__drawer'
   );
 
   const style = {};
@@ -149,10 +149,10 @@ Drawer.defaultProps = {
   children: null,
   className: '',
   isOpen: false,
-  onOpen: () => { },
-  onClose: () => { },
-  onDidClose: () => { },
-  onDidOpen: () => { },
+  onOpen: () => {},
+  onClose: () => {},
+  onDidClose: () => {},
+  onDidOpen: () => {},
 };
 
 export default memo(Drawer);
