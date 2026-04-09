@@ -1,53 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ActionButton /> Given the component was mounted to the DOM Given the loading prop is set to true should match snapshot 1`] = `
-<ActionButton
-  className=""
-  classes={
-    {
-      "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-      "noGap": "tss-1zr2s7-ActionButton-noGap",
-      "withGap": "tss-1jype1y-ActionButton-withGap",
-    }
-  }
-  disableClickDelay={false}
-  disabled={false}
-  flat={true}
-  loading={true}
-  noGap={false}
-  onClick={[MockFunction]}
-  rippleClassName=""
-  rippleSize={null}
-  testId={null}
-  type="primary"
-  wrapContent={true}
+<div
+  className="sg-stwow3-containerCircle"
 >
-  Action Button
-</ActionButton>
+  <IndicatorCircle
+    color="var(--color-secondary)"
+    paused={false}
+    size={32}
+    strokeWidth={3}
+  />
+</div>
 `;
 
 exports[`<ActionButton /> Given the component was mounted to the DOM should match snapshot 1`] = `
-<ActionButton
-  className=""
-  classes={
-    {
-      "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-      "noGap": "tss-1zr2s7-ActionButton-noGap",
-      "withGap": "tss-1jype1y-ActionButton-withGap",
-    }
-  }
-  disableClickDelay={false}
-  disabled={false}
-  flat={true}
-  loading={false}
-  noGap={false}
-  onClick={[MockFunction]}
-  rippleClassName=""
-  rippleSize={null}
-  testId={null}
-  type="primary"
-  wrapContent={true}
+<div
+  className="ui-shared__action-button sg-berhvi-withGap"
+  data-test-id={null}
 >
-  Action Button
-</ActionButton>
+  <RippleButton
+    className=""
+    disabled={false}
+    flat={true}
+    onClick={[Function]}
+    rippleClassName=""
+    rippleSize={null}
+    testId="Button"
+    type="primary"
+    wrapContent={true}
+  >
+    Action Button
+  </RippleButton>
+</div>
 `;

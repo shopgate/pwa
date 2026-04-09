@@ -11,11 +11,7 @@ exports[`<NavDrawerTitle /> should render when a text is passed within the props
   text="Title"
 >
   <div
-    className={
-      {
-        "data-css-1yuoh2h": "",
-      }
-    }
+    className="sg-1w30xpn-root"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}

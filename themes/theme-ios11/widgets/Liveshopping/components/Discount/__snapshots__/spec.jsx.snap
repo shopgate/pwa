@@ -22,7 +22,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
     }
   >
     <DiscountBadge
-      className="tss-xqn6d8-root"
+      className="sg-xqn6d8-root"
       discount={50}
       display="big"
       text="liveshopping.discount_badge"
@@ -34,14 +34,17 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
         tabIndex={-1}
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
           aria-hidden={true}
-          className="tss-1ee04vz-big tss-xqn6d8-root theme__discount-badge"
+          className="theme__discount-badge sg-7s2hqk-big-root"
           params={
             [
               50,
             ]
           }
+          role={null}
           string="liveshopping.discount_badge"
+          transform={null}
         >
           liveshopping.discount_badge
         </Text>

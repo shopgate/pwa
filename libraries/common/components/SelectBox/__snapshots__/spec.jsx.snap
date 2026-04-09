@@ -29,7 +29,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
   testId={null}
 >
   <div
-    className=" common__select-box"
+    className="common__select-box"
     data-test-id={null}
   >
     <button
@@ -95,7 +95,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
       >
         <div
           aria-hidden={true}
-          className="tss-10s440c-container  common__dropdown"
+          className="sg-10s440c-container common__dropdown"
           key=".0"
         >
           <ul
@@ -120,7 +120,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             >
               <li
                 aria-current={false}
-                className="tss-1gerhl1-item"
+                className="sg-1gerhl1-item"
                 data-test-id="My item #1"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -165,7 +165,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             >
               <li
                 aria-current={false}
-                className="tss-1gerhl1-item"
+                className="sg-1gerhl1-item"
                 data-test-id="My item #2"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -210,7 +210,7 @@ exports[`<SelectBox> should render the selectbox with given mock components 1`] 
             >
               <li
                 aria-current={false}
-                className="tss-1gerhl1-item"
+                className="sg-1gerhl1-item"
                 data-test-id="My item #3"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -275,7 +275,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
   testId={null}
 >
   <div
-    className=" common__select-box"
+    className="common__select-box"
     data-test-id={null}
   >
     <button
@@ -341,7 +341,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
       >
         <div
           aria-hidden={true}
-          className="tss-10s440c-container  common__dropdown"
+          className="sg-10s440c-container common__dropdown"
           key=".0"
         >
           <ul
@@ -366,7 +366,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             >
               <li
                 aria-current={false}
-                className="tss-1gerhl1-item"
+                className="sg-1gerhl1-item"
                 data-test-id="My item #1"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -411,7 +411,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             >
               <li
                 aria-current={false}
-                className="tss-1gerhl1-item"
+                className="sg-1gerhl1-item"
                 data-test-id="My item #2"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -456,7 +456,7 @@ exports[`<SelectBox> should render with a default text 1`] = `
             >
               <li
                 aria-current={false}
-                className="tss-1gerhl1-item"
+                className="sg-1gerhl1-item"
                 data-test-id="My item #3"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -521,7 +521,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
   testId={null}
 >
   <div
-    className=" common__select-box"
+    className="common__select-box"
     data-test-id={null}
   >
     <button
@@ -587,7 +587,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
       >
         <div
           aria-hidden={true}
-          className="tss-10s440c-container  common__dropdown"
+          className="sg-10s440c-container common__dropdown"
           key=".0"
         >
           <ul
@@ -612,7 +612,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             >
               <li
                 aria-current={false}
-                className="tss-1gerhl1-item"
+                className="sg-1gerhl1-item"
                 data-test-id="My item #1"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -657,7 +657,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             >
               <li
                 aria-current={true}
-                className="tss-1gerhl1-item undefined"
+                className="sg-1gerhl1-item undefined"
                 data-test-id="My item #2"
                 onClick={[Function]}
                 onKeyUp={[Function]}
@@ -702,7 +702,7 @@ exports[`<SelectBox> should render with a preselected selection 1`] = `
             >
               <li
                 aria-current={false}
-                className="tss-1gerhl1-item"
+                className="sg-1gerhl1-item"
                 data-test-id="My item #3"
                 onClick={[Function]}
                 onKeyUp={[Function]}

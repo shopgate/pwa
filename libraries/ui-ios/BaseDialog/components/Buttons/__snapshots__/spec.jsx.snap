@@ -5,7 +5,7 @@ exports[`<Buttons /> should not render if no actions are passed 1`] = `null`;
 exports[`<Buttons /> should render buttons 1`] = `
 [
   <Button
-    className="css-pgpsmg "
+    className="sg-sy6zi9-button"
     disabled={false}
     flat={true}
     key="action0"
@@ -16,7 +16,7 @@ exports[`<Buttons /> should render buttons 1`] = `
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
-      className="css-56or1u"
+      className="sg-zwni6m-buttonText"
       params={{}}
       role={null}
       string="action0"
@@ -24,7 +24,7 @@ exports[`<Buttons /> should render buttons 1`] = `
     />
   </Button>,
   <Button
-    className="css-pgpsmg "
+    className="sg-sy6zi9-button"
     disabled={false}
     flat={true}
     key="action1"
@@ -35,7 +35,7 @@ exports[`<Buttons /> should render buttons 1`] = `
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
-      className="css-56or1u"
+      className="sg-zwni6m-buttonText"
       params={{}}
       role={null}
       string="action1"
@@ -43,7 +43,7 @@ exports[`<Buttons /> should render buttons 1`] = `
     />
   </Button>,
   <Button
-    className="css-pgpsmg "
+    className="sg-sy6zi9-button"
     disabled={false}
     flat={true}
     key="action2"
@@ -54,7 +54,7 @@ exports[`<Buttons /> should render buttons 1`] = `
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
-      className="css-56or1u"
+      className="sg-zwni6m-buttonText"
       params={{}}
       role={null}
       string="action2"

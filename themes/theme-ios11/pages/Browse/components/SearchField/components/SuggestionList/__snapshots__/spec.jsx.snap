@@ -34,26 +34,21 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     }
   >
     <div
-      className="theme__browse__search-field__suggestion-list tss-17hkp00-list"
-      style={
-        {
-          "paddingBottom": 10,
-        }
-      }
+      className="theme__browse__search-field__suggestion-list sg-si84rp-list"
     >
       <SurroundPortals
         key="foo"
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo"
           onClick={[Function]}
           type="button"
@@ -76,14 +71,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar"
           onClick={[Function]}
           type="button"
@@ -106,14 +101,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar buz",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar buz"
           onClick={[Function]}
           type="button"
@@ -136,14 +131,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar buz quz",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar buz quz"
           onClick={[Function]}
           type="button"
@@ -200,26 +195,21 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     }
   >
     <div
-      className="theme__browse__search-field__suggestion-list tss-17hkp00-list"
-      style={
-        {
-          "paddingBottom": 10,
-        }
-      }
+      className="theme__browse__search-field__suggestion-list sg-si84rp-list"
     >
       <SurroundPortals
         key="foo bar buz quz"
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar buz quz",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar buz quz"
           onClick={[Function]}
           type="button"
@@ -242,14 +232,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar buz",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar buz"
           onClick={[Function]}
           type="button"
@@ -272,14 +262,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar"
           onClick={[Function]}
           type="button"
@@ -302,14 +292,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo"
           onClick={[Function]}
           type="button"
@@ -366,26 +356,21 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     }
   >
     <div
-      className="theme__browse__search-field__suggestion-list tss-17hkp00-list"
-      style={
-        {
-          "paddingBottom": 10,
-        }
-      }
+      className="theme__browse__search-field__suggestion-list sg-si84rp-list"
     >
       <SurroundPortals
         key="foo bar buz quz"
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar buz quz",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar buz quz"
           onClick={[Function]}
           type="button"
@@ -408,14 +393,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar buz",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar buz"
           onClick={[Function]}
           type="button"
@@ -438,14 +423,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo bar",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo bar"
           onClick={[Function]}
           type="button"
@@ -468,14 +453,14 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
         portalName="search.suggestion-item"
         portalProps={
           {
-            "className": "tss-10b07ty-item",
+            "className": "sg-10b07ty-item",
             "onClick": [Function],
             "suggestion": "foo",
           }
         }
       >
         <button
-          className="tss-10b07ty-item"
+          className="sg-10b07ty-item"
           data-test-id="searchSuggestion foo"
           onClick={[Function]}
           type="button"
@@ -549,26 +534,21 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         }
       >
         <div
-          className="theme__browse__search-field__suggestion-list tss-17hkp00-list"
-          style={
-            {
-              "paddingBottom": 10,
-            }
-          }
+          className="theme__browse__search-field__suggestion-list sg-si84rp-list"
         >
           <SurroundPortals
             key="foo"
             portalName="search.suggestion-item"
             portalProps={
               {
-                "className": "tss-10b07ty-item",
+                "className": "sg-10b07ty-item",
                 "onClick": [Function],
                 "suggestion": "foo",
               }
             }
           >
             <button
-              className="tss-10b07ty-item"
+              className="sg-10b07ty-item"
               data-test-id="searchSuggestion foo"
               onClick={[Function]}
               type="button"
@@ -591,14 +571,14 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             portalName="search.suggestion-item"
             portalProps={
               {
-                "className": "tss-10b07ty-item",
+                "className": "sg-10b07ty-item",
                 "onClick": [Function],
                 "suggestion": "foo bar",
               }
             }
           >
             <button
-              className="tss-10b07ty-item"
+              className="sg-10b07ty-item"
               data-test-id="searchSuggestion foo bar"
               onClick={[Function]}
               type="button"
@@ -621,14 +601,14 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             portalName="search.suggestion-item"
             portalProps={
               {
-                "className": "tss-10b07ty-item",
+                "className": "sg-10b07ty-item",
                 "onClick": [Function],
                 "suggestion": "foo bar buz",
               }
             }
           >
             <button
-              className="tss-10b07ty-item"
+              className="sg-10b07ty-item"
               data-test-id="searchSuggestion foo bar buz"
               onClick={[Function]}
               type="button"
@@ -651,14 +631,14 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
             portalName="search.suggestion-item"
             portalProps={
               {
-                "className": "tss-10b07ty-item",
+                "className": "sg-10b07ty-item",
                 "onClick": [Function],
                 "suggestion": "foo bar buz quz",
               }
             }
           >
             <button
-              className="tss-10b07ty-item"
+              className="sg-10b07ty-item"
               data-test-id="searchSuggestion foo bar buz quz"
               onClick={[Function]}
               type="button"

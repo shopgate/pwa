@@ -37,7 +37,7 @@ exports[`<Header /> should render empty 1`] = `
         productId="foo"
       >
         <div
-          className="tss-1p31f2r-container"
+          className="sg-1p31f2r-container"
         >
           <AverageRating
             average={0}
@@ -45,7 +45,7 @@ exports[`<Header /> should render empty 1`] = `
             productId="foo"
           >
             <Link
-              className="tss-1c2egx7-container"
+              className="sg-16m0zyl-container"
               data-test-id="ratedStarsAverage"
               disabled={false}
               href="/item/666f6f/write_review"
@@ -64,15 +64,15 @@ exports[`<Header /> should render empty 1`] = `
               >
                 <div
                   aria-label="reviews.rating_stars"
-                  className="css-13azwyo  ui-shared__rating-stars"
+                  className="sg-1tckjm8-container ui-shared__rating-stars"
                   data-test-id="ratedStars: 0"
                   role="img"
                 >
                   <div
-                    className="css-4s85e9 rating-stars-empty"
+                    className="sg-170uo4n-emptyStars rating-stars-empty"
                   >
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="1"
                     >
                       <Star
@@ -83,7 +83,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -102,7 +102,7 @@ exports[`<Header /> should render empty 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="2"
                     >
                       <Star
@@ -113,7 +113,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -132,7 +132,7 @@ exports[`<Header /> should render empty 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="3"
                     >
                       <Star
@@ -143,7 +143,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -162,7 +162,7 @@ exports[`<Header /> should render empty 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="4"
                     >
                       <Star
@@ -173,7 +173,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -192,7 +192,7 @@ exports[`<Header /> should render empty 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="5"
                     >
                       <Star
@@ -203,7 +203,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -223,7 +223,7 @@ exports[`<Header /> should render empty 1`] = `
                     </div>
                   </div>
                   <div
-                    className="css-16bht0q rating-stars-filled"
+                    className="sg-8o0m3k-filledStars rating-stars-filled"
                   />
                 </div>
               </RatingStars>
@@ -234,10 +234,15 @@ exports[`<Header /> should render empty 1`] = `
             </Link>
           </AverageRating>
           <div
-            className="tss-10mf5he-noReviews"
+            className="sg-j878ir-noReviews"
           >
             <Text
+              acceptPlainTextWithPlaceholders={false}
+              className={null}
+              params={{}}
+              role={null}
               string="reviews.no_reviews"
+              transform={null}
             >
               reviews.no_reviews
             </Text>
@@ -262,7 +267,7 @@ exports[`<Header /> should render empty 1`] = `
                     navigate={[Function]}
                     noGap={true}
                   >
-                    <ActionButtonWithStyles
+                    <ActionButton
                       aria-label="reviews.button_add"
                       className=""
                       disableClickDelay={false}
@@ -277,125 +282,80 @@ exports[`<Header /> should render empty 1`] = `
                       type="secondary"
                       wrapContent={true}
                     >
-                      <ActionButton
-                        aria-label="reviews.button_add"
-                        className=""
-                        classes={
-                          {
-                            "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                            "noGap": "tss-1zr2s7-ActionButton-noGap",
-                            "withGap": "tss-1jype1y-ActionButton-withGap",
-                          }
-                        }
-                        disableClickDelay={false}
-                        disabled={false}
-                        flat={true}
-                        loading={false}
-                        noGap={true}
-                        onClick={[Function]}
-                        rippleClassName=""
-                        rippleSize={null}
-                        testId={null}
-                        type="secondary"
-                        wrapContent={true}
+                      <div
+                        className="ui-shared__action-button sg-id1nq4-noGap"
+                        data-test-id={null}
                       >
-                        <div
-                          className="ui-shared__action-button tss-1zr2s7-ActionButton-noGap"
-                          data-test-id={null}
+                        <RippleButton
+                          aria-label="reviews.button_add"
+                          className=""
+                          disabled={false}
+                          flat={true}
+                          onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
+                          testId="Button"
+                          type="secondary"
+                          wrapContent={true}
                         >
-                          <RippleButtonWithStyles
-                            className=""
+                          <Button
+                            aria-label="reviews.button_add"
+                            className=" ui-shared__ripple-button"
                             disabled={false}
                             flat={true}
                             onClick={[Function]}
-                            rippleClassName=""
-                            rippleSize={null}
                             testId="Button"
                             type="secondary"
-                            wrapContent={true}
+                            wrapContent={false}
                           >
-                            <RippleButton
-                              className=""
-                              classes={
-                                {
-                                  "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                                }
-                              }
+                            <Button
+                              aria-label="reviews.button_add"
+                              className="ui-shared__button sg-1uz0bre-button ui-shared__ripple-button"
                               disabled={false}
-                              flat={true}
                               onClick={[Function]}
-                              rippleClassName=""
-                              rippleSize={null}
                               testId="Button"
-                              type="secondary"
-                              wrapContent={true}
                             >
-                              <Button
-                                className=" ui-shared__ripple-button"
+                              <button
+                                aria-label="reviews.button_add"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-1w8dk5h-root-button"
+                                data-test-id="Button"
                                 disabled={false}
-                                flat={true}
                                 onClick={[Function]}
-                                testId="Button"
-                                type="secondary"
-                                wrapContent={false}
                               >
-                                <Button
-                                  className="ui-shared__button css-k7u7lv  ui-shared__ripple-button"
+                                <Ripple
+                                  className="sg-fpa50s-contentWrapper"
+                                  color="#000"
                                   disabled={false}
+                                  fill={true}
                                   onClick={[Function]}
-                                  testId="Button"
-                                  type="button"
+                                  onComplete={[Function]}
+                                  overflow={true}
+                                  size={null}
                                 >
-                                  <button
-                                    className="ui-shared__button css-k7u7lv  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                    data-test-id="Button"
-                                    disabled={false}
+                                  <div
+                                    className="ui-shared__ripple sg-fpa50s-contentWrapper"
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
-                                    type="button"
+                                    style={null}
                                   >
-                                    <RippleWithStyles
-                                      className="tss-p1t6ie-RippleButton-contentWrapper "
-                                      fill={true}
-                                      overflow={true}
-                                      size={null}
+                                    <Text
+                                      acceptPlainTextWithPlaceholders={false}
+                                      className={null}
+                                      params={{}}
+                                      role={null}
+                                      string="reviews.button_add"
+                                      transform={null}
                                     >
-                                      <Ripple
-                                        className="tss-p1t6ie-RippleButton-contentWrapper "
-                                        classes={
-                                          {
-                                            "container": "tss-1dfkr3n-Ripple-container",
-                                          }
-                                        }
-                                        color="#000"
-                                        disabled={false}
-                                        fill={true}
-                                        onClick={[Function]}
-                                        onComplete={[Function]}
-                                        overflow={true}
-                                        size={null}
-                                      >
-                                        <div
-                                          className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                          data-test-id="Ripple"
-                                          onClick={[Function]}
-                                          style={null}
-                                        >
-                                          <Text
-                                            string="reviews.button_add"
-                                          >
-                                            reviews.button_add
-                                          </Text>
-                                        </div>
-                                      </Ripple>
-                                    </RippleWithStyles>
-                                  </button>
-                                </Button>
-                              </Button>
-                            </RippleButton>
-                          </RippleButtonWithStyles>
-                        </div>
-                      </ActionButton>
-                    </ActionButtonWithStyles>
+                                      reviews.button_add
+                                    </Text>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
+                          </Button>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
                   </ButtonLink>
                 </Connect(ButtonLink)>
               </div>
@@ -448,7 +408,7 @@ exports[`<Header /> should render rating summary 1`] = `
         withTopGap={false}
       >
         <div
-          className="engage__reviews__reviews-excerpt tss-1p31f2r-container"
+          className="engage__reviews__reviews-excerpt sg-1p31f2r-container"
           id="reviewsExcerpt"
         >
           <AverageRating
@@ -457,7 +417,7 @@ exports[`<Header /> should render rating summary 1`] = `
             productId="foo"
           >
             <Link
-              className="tss-1c2egx7-container"
+              className="sg-16m0zyl-container"
               data-test-id="ratedStarsAverage"
               disabled={false}
               href="/item/666f6f/write_review"
@@ -476,15 +436,15 @@ exports[`<Header /> should render rating summary 1`] = `
               >
                 <div
                   aria-label="reviews.rating_stars"
-                  className="css-13azwyo  ui-shared__rating-stars"
+                  className="sg-1tckjm8-container ui-shared__rating-stars"
                   data-test-id="ratedStars: 2.5"
                   role="img"
                 >
                   <div
-                    className="css-4s85e9 rating-stars-empty"
+                    className="sg-170uo4n-emptyStars rating-stars-empty"
                   >
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="1"
                     >
                       <Star
@@ -495,7 +455,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -514,7 +474,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="2"
                     >
                       <Star
@@ -525,7 +485,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -544,7 +504,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="3"
                     >
                       <Star
@@ -555,7 +515,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -574,7 +534,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="4"
                     >
                       <Star
@@ -585,7 +545,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -604,7 +564,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="5"
                     >
                       <Star
@@ -615,7 +575,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -635,10 +595,10 @@ exports[`<Header /> should render rating summary 1`] = `
                     </div>
                   </div>
                   <div
-                    className="css-16bht0q rating-stars-filled"
+                    className="sg-8o0m3k-filledStars rating-stars-filled"
                   >
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="6"
                     >
                       <Star
@@ -649,7 +609,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -668,7 +628,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="7"
                     >
                       <Star
@@ -679,7 +639,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -698,7 +658,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="2"
                     >
                       <StarHalfIcon
@@ -709,7 +669,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="tss-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<defs><path id="a" d="M0 0h24v24H0z"/></defs> <clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath> <path clip-path="ul(#b)" d="M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3"/>",
@@ -734,9 +694,9 @@ exports[`<Header /> should render rating summary 1`] = `
                 count={4}
                 prominent={false}
               >
-                <Translate
+                <Text
                   acceptPlainTextWithPlaceholders={false}
-                  className="tss-ee426l-greyStyle engage__reviews__rating-count"
+                  className="sg-ee426l-greyStyle engage__reviews__rating-count"
                   params={
                     {
                       "count": 4,
@@ -747,41 +707,24 @@ exports[`<Header /> should render rating summary 1`] = `
                   string="reviews.review_count"
                   transform={null}
                 >
-                  <span
-                    className="tss-ee426l-greyStyle engage__reviews__rating-count"
-                    role={null}
-                  >
-                    reviews.review_count
-                  </span>
-                </Translate>
+                  reviews.review_count
+                </Text>
               </RatingCount>
             </Link>
           </AverageRating>
           <div
-            className="tss-1fbozmi-reviewsLine"
+            className="sg-1gye89q-reviewsLine"
           >
-            <Translate
+            <Text
               acceptPlainTextWithPlaceholders={false}
-              className="tss-15ijniw-averageRatingText"
+              className="sg-15ijniw-averageRatingText"
               params={{}}
               role={null}
               string="reviews.rating"
               transform={null}
             >
-              <span
-                className="tss-15ijniw-averageRatingText"
-                role={null}
-              >
-                reviews.rating
-                <RatingNumber
-                  className="tss-13t6pfh-averageRatingNumber"
-                  key=".0"
-                  rating={50}
-                >
-                  50
-                </RatingNumber>
-              </span>
-            </Translate>
+              reviews.rating
+            </Text>
             <WriteReviewLink
               productId="foo"
             >
@@ -803,7 +746,7 @@ exports[`<Header /> should render rating summary 1`] = `
                     navigate={[Function]}
                     noGap={true}
                   >
-                    <ActionButtonWithStyles
+                    <ActionButton
                       aria-label="reviews.button_add"
                       className=""
                       disableClickDelay={false}
@@ -818,125 +761,80 @@ exports[`<Header /> should render rating summary 1`] = `
                       type="secondary"
                       wrapContent={true}
                     >
-                      <ActionButton
-                        aria-label="reviews.button_add"
-                        className=""
-                        classes={
-                          {
-                            "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                            "noGap": "tss-1zr2s7-ActionButton-noGap",
-                            "withGap": "tss-1jype1y-ActionButton-withGap",
-                          }
-                        }
-                        disableClickDelay={false}
-                        disabled={false}
-                        flat={true}
-                        loading={false}
-                        noGap={true}
-                        onClick={[Function]}
-                        rippleClassName=""
-                        rippleSize={null}
-                        testId={null}
-                        type="secondary"
-                        wrapContent={true}
+                      <div
+                        className="ui-shared__action-button sg-id1nq4-noGap"
+                        data-test-id={null}
                       >
-                        <div
-                          className="ui-shared__action-button tss-1zr2s7-ActionButton-noGap"
-                          data-test-id={null}
+                        <RippleButton
+                          aria-label="reviews.button_add"
+                          className=""
+                          disabled={false}
+                          flat={true}
+                          onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
+                          testId="Button"
+                          type="secondary"
+                          wrapContent={true}
                         >
-                          <RippleButtonWithStyles
-                            className=""
+                          <Button
+                            aria-label="reviews.button_add"
+                            className=" ui-shared__ripple-button"
                             disabled={false}
                             flat={true}
                             onClick={[Function]}
-                            rippleClassName=""
-                            rippleSize={null}
                             testId="Button"
                             type="secondary"
-                            wrapContent={true}
+                            wrapContent={false}
                           >
-                            <RippleButton
-                              className=""
-                              classes={
-                                {
-                                  "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                                }
-                              }
+                            <Button
+                              aria-label="reviews.button_add"
+                              className="ui-shared__button sg-1uz0bre-button ui-shared__ripple-button"
                               disabled={false}
-                              flat={true}
                               onClick={[Function]}
-                              rippleClassName=""
-                              rippleSize={null}
                               testId="Button"
-                              type="secondary"
-                              wrapContent={true}
                             >
-                              <Button
-                                className=" ui-shared__ripple-button"
+                              <button
+                                aria-label="reviews.button_add"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-1w8dk5h-root-button"
+                                data-test-id="Button"
                                 disabled={false}
-                                flat={true}
                                 onClick={[Function]}
-                                testId="Button"
-                                type="secondary"
-                                wrapContent={false}
                               >
-                                <Button
-                                  className="ui-shared__button css-k7u7lv  ui-shared__ripple-button"
+                                <Ripple
+                                  className="sg-fpa50s-contentWrapper"
+                                  color="#000"
                                   disabled={false}
+                                  fill={true}
                                   onClick={[Function]}
-                                  testId="Button"
-                                  type="button"
+                                  onComplete={[Function]}
+                                  overflow={true}
+                                  size={null}
                                 >
-                                  <button
-                                    className="ui-shared__button css-k7u7lv  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                    data-test-id="Button"
-                                    disabled={false}
+                                  <div
+                                    className="ui-shared__ripple sg-fpa50s-contentWrapper"
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
-                                    type="button"
+                                    style={null}
                                   >
-                                    <RippleWithStyles
-                                      className="tss-p1t6ie-RippleButton-contentWrapper "
-                                      fill={true}
-                                      overflow={true}
-                                      size={null}
+                                    <Text
+                                      acceptPlainTextWithPlaceholders={false}
+                                      className={null}
+                                      params={{}}
+                                      role={null}
+                                      string="reviews.button_add"
+                                      transform={null}
                                     >
-                                      <Ripple
-                                        className="tss-p1t6ie-RippleButton-contentWrapper "
-                                        classes={
-                                          {
-                                            "container": "tss-1dfkr3n-Ripple-container",
-                                          }
-                                        }
-                                        color="#000"
-                                        disabled={false}
-                                        fill={true}
-                                        onClick={[Function]}
-                                        onComplete={[Function]}
-                                        overflow={true}
-                                        size={null}
-                                      >
-                                        <div
-                                          className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                          data-test-id="Ripple"
-                                          onClick={[Function]}
-                                          style={null}
-                                        >
-                                          <Text
-                                            string="reviews.button_add"
-                                          >
-                                            reviews.button_add
-                                          </Text>
-                                        </div>
-                                      </Ripple>
-                                    </RippleWithStyles>
-                                  </button>
-                                </Button>
-                              </Button>
-                            </RippleButton>
-                          </RippleButtonWithStyles>
-                        </div>
-                      </ActionButton>
-                    </ActionButtonWithStyles>
+                                      reviews.button_add
+                                    </Text>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
+                          </Button>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
                   </ButtonLink>
                 </Connect(ButtonLink)>
               </div>

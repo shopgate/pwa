@@ -45,12 +45,17 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     text="Yay Categories"
   >
     <h2
-      className="headline theme__headline tss-1ajnxxp-root-h2"
+      className="sg-1e76cvh-root headline theme__headline"
       data-test-id="Headline"
       style={null}
     >
       <Text
+        acceptPlainTextWithPlaceholders={false}
+        className={null}
+        params={{}}
+        role={null}
         string="Yay Categories"
+        transform={null}
       >
         Yay Categories
       </Text>

@@ -33,18 +33,30 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
             <div />
           </BackBar>
           <Headline
-            className="tss-ndxtd1-welcomeHeadline"
-            style={null}
+            style={
+              {
+                "margin": "24px 20px 16px",
+              }
+            }
             tag="h1"
             text="navigation.welcome_message"
           >
             <h1
-              className="headline theme__headline tss-154pink-h1-welcomeHeadline"
+              className="sg-1e76cvh-root headline theme__headline"
               data-test-id="Headline"
-              style={null}
+              style={
+                {
+                  "margin": "24px 20px 16px",
+                }
+              }
             >
               <Text
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={{}}
+                role={null}
                 string="navigation.welcome_message"
+                transform={null}
               >
                 navigation.welcome_message
               </Text>
@@ -119,25 +131,37 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                       title="navigation.your_account"
                     >
                       <Headline
-                        className="tss-4b37q4-headline"
-                        style={null}
+                        style={
+                          {
+                            "margin": "24px 20px 16px",
+                          }
+                        }
                         tag="h2"
                         text="navigation.your_account"
                       >
                         <h2
-                          className="headline theme__headline tss-10zp3hj-h2-headline"
+                          className="sg-1e76cvh-root headline theme__headline"
                           data-test-id="Headline"
-                          style={null}
+                          style={
+                            {
+                              "margin": "24px 20px 16px",
+                            }
+                          }
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.your_account"
+                            transform={null}
                           >
                             navigation.your_account
                           </Text>
                         </h2>
                       </Headline>
                       <div
-                        className="tss-1sqpupb-list"
+                        className="sg-1sqpupb-list"
                         data-test-id="more-section-list"
                       >
                         <SurroundPortals
@@ -156,13 +180,18 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             testId="logoutButton"
                           >
                             <button
-                              className="tss-1lse86s-root"
+                              className="sg-1lse86s-root"
                               data-test-id="logoutButton"
                               onClick={[Function]}
                               type="button"
                             >
                               <Text
+                                acceptPlainTextWithPlaceholders={false}
+                                className={null}
+                                params={{}}
+                                role={null}
                                 string="navigation.logout"
+                                transform={null}
                               >
                                 navigation.logout
                               </Text>
@@ -219,25 +248,37 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                 title="navigation.store_information"
               >
                 <Headline
-                  className="tss-4b37q4-headline"
-                  style={null}
+                  style={
+                    {
+                      "margin": "24px 20px 16px",
+                    }
+                  }
                   tag="h2"
                   text="navigation.store_information"
                 >
                   <h2
-                    className="headline theme__headline tss-10zp3hj-h2-headline"
+                    className="sg-1e76cvh-root headline theme__headline"
                     data-test-id="Headline"
-                    style={null}
+                    style={
+                      {
+                        "margin": "24px 20px 16px",
+                      }
+                    }
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="navigation.store_information"
+                      transform={null}
                     >
                       navigation.store_information
                     </Text>
                   </h2>
                 </Headline>
                 <div
-                  className="tss-1sqpupb-list"
+                  className="sg-1sqpupb-list"
                   data-test-id="more-section-list"
                 >
                   <Shipping>
@@ -269,12 +310,17 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/shipping"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.shipping"
+                            transform={null}
                           >
                             navigation.shipping
                           </Text>
@@ -321,12 +367,17 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/payment"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.payment"
+                            transform={null}
                           >
                             navigation.payment
                           </Text>
@@ -373,12 +424,17 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/terms"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.terms"
+                            transform={null}
                           >
                             navigation.terms
                           </Text>
@@ -425,12 +481,17 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/privacy"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.privacy"
+                            transform={null}
                           >
                             navigation.privacy
                           </Text>
@@ -499,12 +560,17 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/imprint"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.about"
+                            transform={null}
                           >
                             navigation.about
                           </Text>
@@ -584,18 +650,30 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
             <div />
           </BackBar>
           <Headline
-            className="tss-ndxtd1-welcomeHeadline"
-            style={null}
+            style={
+              {
+                "margin": "24px 20px 16px",
+              }
+            }
             tag="h1"
             text="login.headline"
           >
             <h1
-              className="headline theme__headline tss-154pink-h1-welcomeHeadline"
+              className="sg-1e76cvh-root headline theme__headline"
               data-test-id="Headline"
-              style={null}
+              style={
+                {
+                  "margin": "24px 20px 16px",
+                }
+              }
             >
               <Text
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={{}}
+                role={null}
                 string="login.headline"
+                transform={null}
               >
                 login.headline
               </Text>
@@ -640,10 +718,10 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                     data-test-id="userMenu"
                   >
                     <Grid
-                      className="tss-mxubgw-grid theme__more-page__user-menu__container"
+                      className="sg-mxubgw-grid theme__more-page__user-menu__container"
                     >
                       <Grid.Item
-                        className="tss-u59bcx-gridItem theme__more-page__login-button__container"
+                        className="sg-u59bcx-gridItem theme__more-page__login-button__container"
                       >
                         <Link
                           disabled={false}
@@ -651,13 +729,18 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           tabIndex={0}
                         >
                           <Button
-                            className="tss-sv9uio-button theme__more-page__login-button"
+                            className="sg-sv9uio-button theme__more-page__login-button"
                             disabled={false}
                             testId="UserMenuLogin"
                             type="secondary"
                           >
                             <Text
+                              acceptPlainTextWithPlaceholders={false}
+                              className={null}
+                              params={{}}
+                              role={null}
                               string="login.button"
+                              transform={null}
                             >
                               login.button
                             </Text>
@@ -665,7 +748,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         </Link>
                       </Grid.Item>
                       <Grid.Item
-                        className="tss-u59bcx-gridItem theme__more-page-register-button__container"
+                        className="sg-u59bcx-gridItem theme__more-page-register-button__container"
                       >
                         <Link
                           disabled={false}
@@ -673,13 +756,18 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           tabIndex={0}
                         >
                           <Button
-                            className="tss-sv9uio-button theme__more-page-register-button"
+                            className="sg-sv9uio-button theme__more-page-register-button"
                             disabled={false}
                             testId="UserMenuRegister"
                             type="secondary"
                           >
                             <Text
+                              acceptPlainTextWithPlaceholders={false}
+                              className={null}
+                              params={{}}
+                              role={null}
                               string="login.signup"
+                              transform={null}
                             >
                               login.signup
                             </Text>
@@ -742,25 +830,37 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                 title="navigation.store_information"
               >
                 <Headline
-                  className="tss-4b37q4-headline"
-                  style={null}
+                  style={
+                    {
+                      "margin": "24px 20px 16px",
+                    }
+                  }
                   tag="h2"
                   text="navigation.store_information"
                 >
                   <h2
-                    className="headline theme__headline tss-10zp3hj-h2-headline"
+                    className="sg-1e76cvh-root headline theme__headline"
                     data-test-id="Headline"
-                    style={null}
+                    style={
+                      {
+                        "margin": "24px 20px 16px",
+                      }
+                    }
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="navigation.store_information"
+                      transform={null}
                     >
                       navigation.store_information
                     </Text>
                   </h2>
                 </Headline>
                 <div
-                  className="tss-1sqpupb-list"
+                  className="sg-1sqpupb-list"
                   data-test-id="more-section-list"
                 >
                   <Shipping>
@@ -792,12 +892,17 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/shipping"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.shipping"
+                            transform={null}
                           >
                             navigation.shipping
                           </Text>
@@ -844,12 +949,17 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/payment"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.payment"
+                            transform={null}
                           >
                             navigation.payment
                           </Text>
@@ -896,12 +1006,17 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/terms"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.terms"
+                            transform={null}
                           >
                             navigation.terms
                           </Text>
@@ -948,12 +1063,17 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/privacy"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.privacy"
+                            transform={null}
                           >
                             navigation.privacy
                           </Text>
@@ -1022,12 +1142,17 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="tss-1lse86s-root"
+                          className="sg-1lse86s-root"
                           href="/page/imprint"
                           role="button"
                         >
                           <Text
+                            acceptPlainTextWithPlaceholders={false}
+                            className={null}
+                            params={{}}
+                            role={null}
                             string="navigation.about"
+                            transform={null}
                           >
                             navigation.about
                           </Text>

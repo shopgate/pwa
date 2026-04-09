@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ButtonLink> On click action should create component and open page on click 1`] = `
-<ActionButtonWithStyles
+<ActionButton
   className=""
   disableClickDelay={false}
   disabled={false}
@@ -16,5 +16,5 @@ exports[`<ButtonLink> On click action should create component and open page on c
   wrapContent={true}
 >
   Text inside
-</ActionButtonWithStyles>
+</ActionButton>
 `;

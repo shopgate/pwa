@@ -3,7 +3,7 @@
 exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
 <FilterItem>
   <div
-    className="tss-1167cjk-wrapper"
+    className="sg-1167cjk-wrapper"
     data-test-id="priceRangeSlider"
   >
     <Label
@@ -15,11 +15,11 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
     <RangeSlider
       classNames={
         {
-          "container": "tss-shctl2-rangeSliderContainer",
-          "handleInner": "tss-p3et0u-rangeSliderHandleInner",
-          "handleOuter": "tss-dlsvg8-rangeSliderHandleOuter",
-          "outerRange": "tss-a7xmlr-rangeSliderOuterRange",
-          "range": "tss-q7l2tr-rangeSliderRange",
+          "container": "sg-shctl2-rangeSliderContainer",
+          "handleInner": "sg-p3et0u-rangeSliderHandleInner",
+          "handleOuter": "sg-dlsvg8-rangeSliderHandleOuter",
+          "outerRange": "sg-a7xmlr-rangeSliderOuterRange",
+          "range": "sg-q7l2tr-rangeSliderRange",
         }
       }
       easing="exponential"
@@ -41,7 +41,7 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
 exports[`Filter: <PriceSlider /> should render with default props 1`] = `
 <FilterItem>
   <div
-    className="tss-1167cjk-wrapper"
+    className="sg-1167cjk-wrapper"
     data-test-id="priceRangeSlider"
   >
     <Label
@@ -53,11 +53,11 @@ exports[`Filter: <PriceSlider /> should render with default props 1`] = `
     <RangeSlider
       classNames={
         {
-          "container": "tss-shctl2-rangeSliderContainer",
-          "handleInner": "tss-p3et0u-rangeSliderHandleInner",
-          "handleOuter": "tss-dlsvg8-rangeSliderHandleOuter",
-          "outerRange": "tss-a7xmlr-rangeSliderOuterRange",
-          "range": "tss-q7l2tr-rangeSliderRange",
+          "container": "sg-shctl2-rangeSliderContainer",
+          "handleInner": "sg-p3et0u-rangeSliderHandleInner",
+          "handleOuter": "sg-dlsvg8-rangeSliderHandleOuter",
+          "outerRange": "sg-a7xmlr-rangeSliderOuterRange",
+          "range": "sg-q7l2tr-rangeSliderRange",
         }
       }
       easing="exponential"

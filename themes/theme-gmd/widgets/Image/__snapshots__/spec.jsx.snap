@@ -12,7 +12,7 @@ exports[`<ImageWidget /> should render the ImageWidget 1`] = `
   }
 >
   <Link
-    className="tss-19odm6p-link"
+    className="sg-19odm6p-link"
     data-test-id="link"
     href="/category/3339"
   >
@@ -34,7 +34,7 @@ exports[`<ImageWidget /> should render the ImageWidget without link 1`] = `
 >
   <img
     alt="Alt text"
-    className="tss-1ev82td-image"
+    className="sg-1ev82td-image"
     data-test-id="imageWidget: "
     src="https://data.shopgate.com/shop_widget_images/22874/1a2a3d3.min.jpeg"
   />

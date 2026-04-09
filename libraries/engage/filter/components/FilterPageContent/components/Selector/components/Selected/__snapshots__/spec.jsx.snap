@@ -5,7 +5,7 @@ exports[`Filter: <Selected /> should not render without selected 1`] = `""`;
 exports[`Filter: <Selected /> should render with selected 1`] = `
 <Fragment>
   <span
-    className="tss-4wcraw-elipsed"
+    className="sg-4wcraw-elipsed"
   >
     fooLabel
   </span>

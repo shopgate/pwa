@@ -15,13 +15,13 @@ exports[`<ProductGrid /> should render the original layout 1`] = `
     columns={2}
   >
     <Grid
-      className="tss-b6uh55-grid theme__product-grid"
+      className="sg-b6uh55-grid theme__product-grid"
       component="ul"
       data-test-id="productGrid"
       wrap={true}
     >
       <ul
-        className="tss-b6uh55-grid theme__product-grid tss-pauvta-root common__grid tss-qg5yc9-wrap"
+        className="common__grid theme__product-grid sg-13swnn1-root-wrap-grid"
         data-test-id="productGrid"
       >
         <ProductListTypeProvider

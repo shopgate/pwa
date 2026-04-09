@@ -32,7 +32,7 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
     }
   >
     <Grid
-      className="tss-6kym9u-priceWrapper engage__product__product-grid-price"
+      className="sg-6kym9u-priceWrapper engage__product__product-grid-price"
       wrap={true}
     >
       <Grid.Item
@@ -47,14 +47,14 @@ exports[`<ProductGridPrice /> should render with msrp 1`] = `
       </Grid.Item>
       <Grid.Item>
         <PriceStriked
-          className="tss-w8bfvv-strikedPrice"
+          className="sg-w8bfvv-strikedPrice"
           currency="EUR"
           value={22.95}
         />
       </Grid.Item>
     </Grid>
     <PriceInfo
-      className="tss-d5gejk-basicPrice"
+      className="sg-d5gejk-basicPrice"
       product={
         {
           "price": {
@@ -106,7 +106,7 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
     }
   >
     <Grid
-      className="tss-6kym9u-priceWrapper engage__product__product-grid-price"
+      className="sg-6kym9u-priceWrapper engage__product__product-grid-price"
       wrap={true}
     >
       <Grid.Item
@@ -121,14 +121,14 @@ exports[`<ProductGridPrice /> should render with strike price 1`] = `
       </Grid.Item>
       <Grid.Item>
         <PriceStriked
-          className="tss-w8bfvv-strikedPrice"
+          className="sg-w8bfvv-strikedPrice"
           currency="EUR"
           value={22.95}
         />
       </Grid.Item>
     </Grid>
     <PriceInfo
-      className="tss-d5gejk-basicPrice"
+      className="sg-d5gejk-basicPrice"
       product={
         {
           "price": {
@@ -180,7 +180,7 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
     }
   >
     <Grid
-      className="tss-6kym9u-priceWrapper engage__product__product-grid-price"
+      className="sg-6kym9u-priceWrapper engage__product__product-grid-price"
       wrap={true}
     >
       <Grid.Item
@@ -195,7 +195,7 @@ exports[`<ProductGridPrice /> should render without discounts 1`] = `
       </Grid.Item>
     </Grid>
     <PriceInfo
-      className="tss-d5gejk-basicPrice"
+      className="sg-d5gejk-basicPrice"
       product={
         {
           "price": {

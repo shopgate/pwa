@@ -2,11 +2,11 @@
 
 exports[`<Price /> should not pass unitPriceMin for non variants 1`] = `
 <PlaceholderLabel
-  className="tss-plrn8f-placeholder"
+  className="sg-plrn8f-placeholder"
   ready={true}
 >
   <Price
-    className="tss-1bilxxj-price"
+    className="sg-1bilxxj-price"
     currency="USD"
     discounted={false}
     taxDisclaimer={true}
@@ -18,11 +18,11 @@ exports[`<Price /> should not pass unitPriceMin for non variants 1`] = `
 
 exports[`<Price /> should pass unitPriceMin for variants 1`] = `
 <PlaceholderLabel
-  className="tss-plrn8f-placeholder"
+  className="sg-plrn8f-placeholder"
   ready={true}
 >
   <Price
-    className="tss-1bilxxj-price"
+    className="sg-1bilxxj-price"
     currency="USD"
     discounted={false}
     taxDisclaimer={true}

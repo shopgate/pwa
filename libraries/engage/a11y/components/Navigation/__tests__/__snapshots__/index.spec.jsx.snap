@@ -27,7 +27,7 @@ exports[`<Navigation /> should render with an aria label and entries 1`] = `
     aria-label="Navigation Title"
   >
     <ul
-      className="tss-dmchcx-hiddenNavigation"
+      className="sg-dmchcx-hiddenNavigation"
     >
       <li
         key="/some-link"

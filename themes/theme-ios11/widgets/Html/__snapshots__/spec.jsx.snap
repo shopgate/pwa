@@ -34,7 +34,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
         style={{}}
       >
         <Connect(HtmlSanitizer)
-          className="tss-1ctmxjj-root"
+          className="sg-1ctmxjj-root"
           decode={true}
           processStyles={true}
           settings={
@@ -45,7 +45,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
           }
         >
           <HtmlSanitizer
-            className="tss-1ctmxjj-root"
+            className="sg-1ctmxjj-root"
             comfortCookiesAccepted={true}
             decode={true}
             navigate={[Function]}
@@ -68,7 +68,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
               }
             >
               <div
-                className="tss-1ctmxjj-root common__html-sanitizer"
+                className="sg-1ctmxjj-root common__html-sanitizer"
                 dangerouslySetInnerHTML={
                   {
                     "__html": "<h1>Hello World!</h1>",
@@ -123,7 +123,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
         }
       >
         <Connect(HtmlSanitizer)
-          className="tss-1ctmxjj-root"
+          className="sg-1ctmxjj-root"
           decode={true}
           processStyles={true}
           settings={
@@ -134,7 +134,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
           }
         >
           <HtmlSanitizer
-            className="tss-1ctmxjj-root"
+            className="sg-1ctmxjj-root"
             comfortCookiesAccepted={true}
             decode={true}
             navigate={[Function]}
@@ -157,7 +157,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
               }
             >
               <div
-                className="tss-1ctmxjj-root common__html-sanitizer"
+                className="sg-1ctmxjj-root common__html-sanitizer"
                 dangerouslySetInnerHTML={
                   {
                     "__html": "<h1>Hello World!</h1>",

@@ -23,27 +23,27 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
     data-test-id="SearchField"
   >
     <div
-      className="css-1121wol"
+      className="sg-1rysuq4-container"
     >
       <div
-        className="css-1utu657"
+        className="sg-19czy0f-inputWrapper"
       >
         <form
           onSubmit={[Function]}
         >
           <label
-            className="css-19t1ju7"
+            className="sg-9d4lwt-label"
             htmlFor="search"
           >
             <div
-              className="css-tfmeke"
+              className="sg-1c2gis-icon"
             >
               <Magnifier>
                 <Icon
                   content="<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>"
                 >
                   <svg
-                    className="tss-1n8b10t-root common__icon"
+                    className="sg-1n8b10t-root common__icon"
                     dangerouslySetInnerHTML={
                       {
                         "__html": "<path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>",
@@ -79,7 +79,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
           </label>
           <_default
             autoComplete={false}
-            className="css-11ngaym"
+            className="sg-1oqqane-input"
             name="search"
             onChange={[Function]}
             type="search"
@@ -89,7 +89,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="css-11ngaym"
+              className="sg-1oqqane-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -111,7 +111,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="css-11ngaym simpleInput common__simple-input"
+                className="sg-1oqqane-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}

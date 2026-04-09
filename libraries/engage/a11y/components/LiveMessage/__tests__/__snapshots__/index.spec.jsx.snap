@@ -3,7 +3,7 @@
 exports[`<LiveMessage /> should render a polite simple message 1`] = `
 <div
   aria-live="polite"
-  className="tss-1pj3g40-hiddenLiveRegion"
+  className="sg-1pj3g40-hiddenLiveRegion"
   role="log"
 >
   <Translate
@@ -16,7 +16,7 @@ exports[`<LiveMessage /> should render a polite simple message 1`] = `
 exports[`<LiveMessage /> should render an assertive message with params  1`] = `
 <div
   aria-live="assertive"
-  className="tss-1pj3g40-hiddenLiveRegion"
+  className="sg-1pj3g40-hiddenLiveRegion"
   role="log"
 >
   <Translate

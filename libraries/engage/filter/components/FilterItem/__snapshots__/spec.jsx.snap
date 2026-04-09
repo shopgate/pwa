@@ -2,7 +2,7 @@
 
 exports[`Filter: <Item /> should render 1`] = `
 <div
-  className="tss-kg1iko-item"
+  className="sg-kg1iko-item"
 >
   <div>
     Some

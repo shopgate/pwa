@@ -2,18 +2,18 @@
 
 exports[`<Grid /> should add custom classes on demand 1`] = `
 <ul
-  className="custom-class-name tss-pauvta-root common__grid tss-i2x46h-noWrap"
+  className="common__grid custom-class-name sg-190r8b9-root-noWrap"
 />
 `;
 
 exports[`<Grid /> should be able to render a custom tag 1`] = `
 <article
-  className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+  className="common__grid sg-190r8b9-root-noWrap"
 />
 `;
 
 exports[`<Grid /> should render without any further props 1`] = `
 <ul
-  className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+  className="common__grid sg-190r8b9-root-noWrap"
 />
 `;

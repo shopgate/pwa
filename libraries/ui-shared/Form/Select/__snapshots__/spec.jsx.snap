@@ -26,7 +26,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
   value="DE"
 >
   <FormElement
-    className=" ui-shared__form__select"
+    className="ui-shared__form__select"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -42,12 +42,12 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
     >
       <select
         aria-describedby={null}
         aria-invalid={false}
-        className="css-1xdqvez select"
+        className="sg-5x7qyf-select select"
         disabled={false}
         id="test-name"
         name="test-name"
@@ -73,14 +73,14 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         </option>
       </select>
       <Chevron
-        className="css-1h5rpg9"
+        className="sg-pez732-chevron"
       >
         <Icon
-          className="css-1h5rpg9"
+          className="sg-pez732-chevron"
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
         >
           <svg
-            className="tss-1n8b10t-root common__icon css-1h5rpg9"
+            className="common__icon sg-1ix3ppp-root-chevron"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
@@ -102,10 +102,10 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="sg-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="sg-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -146,7 +146,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__select"
+    className="ui-shared__form__select"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -162,12 +162,12 @@ exports[`<Select /> should render select with 2 options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
     >
       <select
         aria-describedby={null}
         aria-invalid={false}
-        className="css-1xdqvez select"
+        className="sg-5x7qyf-select select"
         disabled={false}
         id="test-name"
         name="test-name"
@@ -193,14 +193,14 @@ exports[`<Select /> should render select with 2 options 1`] = `
         </option>
       </select>
       <Chevron
-        className="css-1h5rpg9"
+        className="sg-pez732-chevron"
       >
         <Icon
-          className="css-1h5rpg9"
+          className="sg-pez732-chevron"
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
         >
           <svg
-            className="tss-1n8b10t-root common__icon css-1h5rpg9"
+            className="common__icon sg-1ix3ppp-root-chevron"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
@@ -222,10 +222,10 @@ exports[`<Select /> should render select with 2 options 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="sg-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="sg-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -261,7 +261,7 @@ exports[`<Select /> should render select with no options 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__select"
+    className="ui-shared__form__select"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -277,12 +277,12 @@ exports[`<Select /> should render select with no options 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__select formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
     >
       <select
         aria-describedby={null}
         aria-invalid={false}
-        className="css-1xdqvez select"
+        className="sg-5x7qyf-select select"
         disabled={false}
         id="test-name"
         name="test-name"
@@ -293,14 +293,14 @@ exports[`<Select /> should render select with no options 1`] = `
         value=""
       />
       <Chevron
-        className="css-1h5rpg9"
+        className="sg-pez732-chevron"
       >
         <Icon
-          className="css-1h5rpg9"
+          className="sg-pez732-chevron"
           content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
         >
           <svg
-            className="tss-1n8b10t-root common__icon css-1h5rpg9"
+            className="common__icon sg-1ix3ppp-root-chevron"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
@@ -322,10 +322,10 @@ exports[`<Select /> should render select with no options 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="sg-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="sg-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",

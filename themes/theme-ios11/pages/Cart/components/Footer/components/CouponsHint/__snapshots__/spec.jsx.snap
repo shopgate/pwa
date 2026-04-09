@@ -4,14 +4,14 @@ exports[`<CouponsHint /> should render as expected without any props 1`] = `
 <CouponsHint>
   <Translate
     acceptPlainTextWithPlaceholders={false}
-    className="tss-bd8pcn-root"
+    className="sg-79nx3u-root"
     params={{}}
     role={null}
     string="cart.coupons_not_supported"
     transform={null}
   >
     <span
-      className="tss-bd8pcn-root"
+      className="sg-79nx3u-root"
       role={null}
     >
       cart.coupons_not_supported

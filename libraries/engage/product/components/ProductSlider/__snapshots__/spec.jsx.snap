@@ -7,14 +7,14 @@ exports[`<ProductSlider /> should match snapshot 1`] = `
   type="productSlider"
 >
   <Swiper
-    className="null engage__product__product-slider"
+    className="engage__product__product-slider"
     controls={false}
     freeMode={true}
     indicators={false}
     slidesPerView={2.3}
   >
     <Swiper.Item
-      className="tss-14dn61s-container"
+      className="sg-14dn61s-container"
       key="prod1"
     >
       <ProductListEntryProvider

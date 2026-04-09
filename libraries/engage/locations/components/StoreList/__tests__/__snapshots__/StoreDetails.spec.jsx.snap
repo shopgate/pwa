@@ -3,8 +3,8 @@
 exports[`engage > locations > StoreList > StoreDetails should render as expected 1`] = `
 <StoreDetails>
   <Accordion
-    className="tss-1f6rbn9-storeDetailsAccordion"
-    contentClassName="tss-jej6wb-storeDetailsBody"
+    className="sg-1f6rbn9-storeDetailsAccordion"
+    contentClassName="sg-jej6wb-storeDetailsBody"
     renderLabel={[Function]}
   >
     <StoreOpeningHours
@@ -21,10 +21,10 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
         linked={false}
       >
         <Grid
-          className="tss-31v86g-detailsLine"
+          className="sg-31v86g-detailsLine"
         >
           <Grid.Item
-            className="tss-105dt1h-detailsIcon"
+            className="sg-105dt1h-detailsIcon"
             shrink={0}
           >
             <TimeIcon
@@ -32,17 +32,21 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             />
           </Grid.Item>
           <Grid.Item
-            className="tss-13b33k8-details"
+            className="sg-13b33k8-details"
             grow={1}
           >
             <Text
-              className="tss-1i25451-detailsSecondary"
+              acceptPlainTextWithPlaceholders={false}
+              className="sg-1i25451-detailsSecondary"
+              params={{}}
+              role={null}
               string="locations.hours_details"
+              transform={null}
             >
               locations.hours_details
             </Text>
             <div
-              className="tss-1nae00d-openingHours"
+              className="sg-1nae00d-openingHours"
             >
               <table>
                 <tbody>
@@ -53,13 +57,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                   >
                     <tr
                       aria-label="locations.mon: 09:00 - 17:00"
-                      className="tss-15f20he-openingHoursRow"
+                      className="sg-15f20he-openingHoursRow"
                       role="row"
                       tabIndex={0}
                     >
                       <td
                         aria-hidden={true}
-                        className="tss-1xfudo9-openingHoursDay"
+                        className="sg-1xfudo9-openingHoursDay"
                       >
                         locations.mon
                       </td>
@@ -102,13 +106,13 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
                   >
                     <tr
                       aria-label="locations.sun: 09:00 - 17:00"
-                      className="tss-15f20he-openingHoursRow"
+                      className="sg-15f20he-openingHoursRow"
                       role="row"
                       tabIndex={0}
                     >
                       <td
                         aria-hidden={true}
-                        className="tss-1xfudo9-openingHoursDay"
+                        className="sg-1xfudo9-openingHoursDay"
                       >
                         locations.sun
                       </td>
@@ -139,10 +143,10 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           linked={true}
         >
           <Grid
-            className="tss-31v86g-detailsLine"
+            className="sg-31v86g-detailsLine"
           >
             <Grid.Item
-              className="tss-105dt1h-detailsIcon tss-1d18q4q-detailsIconLinked"
+              className="sg-burank-detailsIcon-detailsIconLinked"
               shrink={0}
             >
               <PhoneIcon
@@ -150,19 +154,23 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               />
             </Grid.Item>
             <Grid.Item
-              className="tss-13b33k8-details"
+              className="sg-13b33k8-details"
               grow={1}
             >
               <div
                 aria-hidden={true}
-                className="tss-zsrto7-detailsPrimary"
+                className="sg-zsrto7-detailsPrimary"
               >
                 06033123
               </div>
               <Text
+                acceptPlainTextWithPlaceholders={false}
                 aria-hidden={true}
-                className="tss-1i25451-detailsSecondary"
+                className="sg-1i25451-detailsSecondary"
+                params={{}}
+                role={null}
                 string="locations.phone"
+                transform={null}
               >
                 locations.phone
               </Text>
@@ -199,10 +207,10 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           linked={true}
         >
           <Grid
-            className="tss-31v86g-detailsLine"
+            className="sg-31v86g-detailsLine"
           >
             <Grid.Item
-              className="tss-105dt1h-detailsIcon tss-1d18q4q-detailsIconLinked"
+              className="sg-burank-detailsIcon-detailsIconLinked"
               shrink={0}
             >
               <LocationIcon
@@ -210,24 +218,28 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               />
             </Grid.Item>
             <Grid.Item
-              className="tss-13b33k8-details"
+              className="sg-13b33k8-details"
               grow={1}
             >
               <p
-                className="tss-zsrto7-detailsPrimary"
+                className="sg-zsrto7-detailsPrimary"
               >
                 Marktplatz 12
               </p>
               <Ellipsis
-                className="tss-zsrto7-detailsPrimary"
+                className="sg-zsrto7-detailsPrimary"
                 rows={1}
               >
                 locations.address
               </Ellipsis>
               <Text
+                acceptPlainTextWithPlaceholders={false}
                 aria-label=": locations.map_open"
-                className="tss-1i25451-detailsSecondary"
+                className="sg-1i25451-detailsSecondary"
+                params={{}}
+                role={null}
                 string="locations.map_open"
+                transform={null}
               >
                 locations.map_open
               </Text>

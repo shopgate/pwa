@@ -140,7 +140,7 @@ exports[`<Reviews> page should not crash 1`] = `
                   className="engage__reviews__list"
                 >
                   <li
-                    className="tss-1sn0hxb-item"
+                    className="sg-4bfwpo-item"
                     data-test-id="reviewTitle: "
                     key="1"
                   >
@@ -163,17 +163,17 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="tss-m3j5n0-root"
+                          className="sg-m3j5n0-root"
                         />
                       </Title>
                       <Rating
                         rate={100}
                       >
                         <div
-                          className="tss-1wudg9u-container"
+                          className="sg-1wudg9u-container"
                         >
                           <RatingStars
-                            className="tss-1uyeoj6-stars"
+                            className="sg-1uyeoj6-stars"
                             display="small"
                             isSelectable={false}
                             onSelection={[Function]}
@@ -181,15 +181,15 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
                               <div
-                                className="css-4s85e9 rating-stars-empty"
+                                className="sg-170uo4n-emptyStars rating-stars-empty"
                               >
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="1"
                                 >
                                   <Star
@@ -200,7 +200,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -219,7 +219,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="2"
                                 >
                                   <Star
@@ -230,7 +230,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -249,7 +249,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="3"
                                 >
                                   <Star
@@ -260,7 +260,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -279,7 +279,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="4"
                                 >
                                   <Star
@@ -290,7 +290,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -309,7 +309,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="5"
                                 >
                                   <Star
@@ -320,7 +320,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -340,10 +340,10 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="css-16bht0q rating-stars-filled"
+                                className="sg-8o0m3k-filledStars rating-stars-filled"
                               >
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="6"
                                 >
                                   <Star
@@ -354,7 +354,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -373,7 +373,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="7"
                                 >
                                   <Star
@@ -384,7 +384,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -403,7 +403,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="8"
                                 >
                                   <Star
@@ -414,7 +414,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -433,7 +433,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="9"
                                 >
                                   <Star
@@ -444,7 +444,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -463,7 +463,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="10"
                                 >
                                   <Star
@@ -474,7 +474,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -501,7 +501,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
                         <div
-                          className="tss-78jqgy-root"
+                          className="sg-78jqgy-root"
                         >
                           "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                         </div>
@@ -519,18 +519,18 @@ exports[`<Reviews> page should not crash 1`] = `
                         }
                       >
                         <div
-                          className="tss-ustu6l-root"
+                          className="sg-ustu6l-root"
                           role="text"
                         >
                           <ReviewDate
                             date="2017-09-06T12:38:51.000Z"
                           >
-                            <FormatDate
+                            <Date
                               format="long"
                               timestamp={1504701531000}
                             >
-                              d
-                            </FormatDate>
+                              1504701531000-long
+                            </Date>
                           </ReviewDate>
                            
                           <Author
@@ -541,7 +541,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="tss-1sn0hxb-item"
+                    className="sg-4bfwpo-item"
                     data-test-id="reviewTitle: "
                     key="2"
                   >
@@ -564,17 +564,17 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="tss-m3j5n0-root"
+                          className="sg-m3j5n0-root"
                         />
                       </Title>
                       <Rating
                         rate={100}
                       >
                         <div
-                          className="tss-1wudg9u-container"
+                          className="sg-1wudg9u-container"
                         >
                           <RatingStars
-                            className="tss-1uyeoj6-stars"
+                            className="sg-1uyeoj6-stars"
                             display="small"
                             isSelectable={false}
                             onSelection={[Function]}
@@ -582,15 +582,15 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
                               <div
-                                className="css-4s85e9 rating-stars-empty"
+                                className="sg-170uo4n-emptyStars rating-stars-empty"
                               >
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="1"
                                 >
                                   <Star
@@ -601,7 +601,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -620,7 +620,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="2"
                                 >
                                   <Star
@@ -631,7 +631,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -650,7 +650,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="3"
                                 >
                                   <Star
@@ -661,7 +661,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -680,7 +680,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="4"
                                 >
                                   <Star
@@ -691,7 +691,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -710,7 +710,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="5"
                                 >
                                   <Star
@@ -721,7 +721,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -741,10 +741,10 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="css-16bht0q rating-stars-filled"
+                                className="sg-8o0m3k-filledStars rating-stars-filled"
                               >
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="6"
                                 >
                                   <Star
@@ -755,7 +755,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -774,7 +774,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="7"
                                 >
                                   <Star
@@ -785,7 +785,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -804,7 +804,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="8"
                                 >
                                   <Star
@@ -815,7 +815,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -834,7 +834,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="9"
                                 >
                                   <Star
@@ -845,7 +845,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -864,7 +864,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="10"
                                 >
                                   <Star
@@ -875,7 +875,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -902,7 +902,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
                         <div
-                          className="tss-78jqgy-root"
+                          className="sg-78jqgy-root"
                         >
                           "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                         </div>
@@ -920,18 +920,18 @@ exports[`<Reviews> page should not crash 1`] = `
                         }
                       >
                         <div
-                          className="tss-ustu6l-root"
+                          className="sg-ustu6l-root"
                           role="text"
                         >
                           <ReviewDate
                             date="2017-09-06T12:38:51.000Z"
                           >
-                            <FormatDate
+                            <Date
                               format="long"
                               timestamp={1504701531000}
                             >
-                              d
-                            </FormatDate>
+                              1504701531000-long
+                            </Date>
                           </ReviewDate>
                            
                           <Author
@@ -942,7 +942,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="tss-1sn0hxb-item"
+                    className="sg-4bfwpo-item"
                     data-test-id="reviewTitle: "
                     key="3"
                   >
@@ -965,17 +965,17 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="tss-m3j5n0-root"
+                          className="sg-m3j5n0-root"
                         />
                       </Title>
                       <Rating
                         rate={100}
                       >
                         <div
-                          className="tss-1wudg9u-container"
+                          className="sg-1wudg9u-container"
                         >
                           <RatingStars
-                            className="tss-1uyeoj6-stars"
+                            className="sg-1uyeoj6-stars"
                             display="small"
                             isSelectable={false}
                             onSelection={[Function]}
@@ -983,15 +983,15 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
                               <div
-                                className="css-4s85e9 rating-stars-empty"
+                                className="sg-170uo4n-emptyStars rating-stars-empty"
                               >
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="1"
                                 >
                                   <Star
@@ -1002,7 +1002,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1021,7 +1021,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="2"
                                 >
                                   <Star
@@ -1032,7 +1032,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1051,7 +1051,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="3"
                                 >
                                   <Star
@@ -1062,7 +1062,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1081,7 +1081,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="4"
                                 >
                                   <Star
@@ -1092,7 +1092,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1111,7 +1111,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="5"
                                 >
                                   <Star
@@ -1122,7 +1122,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1142,10 +1142,10 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="css-16bht0q rating-stars-filled"
+                                className="sg-8o0m3k-filledStars rating-stars-filled"
                               >
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="6"
                                 >
                                   <Star
@@ -1156,7 +1156,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1175,7 +1175,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="7"
                                 >
                                   <Star
@@ -1186,7 +1186,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1205,7 +1205,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="8"
                                 >
                                   <Star
@@ -1216,7 +1216,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1235,7 +1235,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="9"
                                 >
                                   <Star
@@ -1246,7 +1246,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1265,7 +1265,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="10"
                                 >
                                   <Star
@@ -1276,7 +1276,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1303,7 +1303,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
                         <div
-                          className="tss-78jqgy-root"
+                          className="sg-78jqgy-root"
                         >
                           "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                         </div>
@@ -1321,18 +1321,18 @@ exports[`<Reviews> page should not crash 1`] = `
                         }
                       >
                         <div
-                          className="tss-ustu6l-root"
+                          className="sg-ustu6l-root"
                           role="text"
                         >
                           <ReviewDate
                             date="2017-09-06T12:38:51.000Z"
                           >
-                            <FormatDate
+                            <Date
                               format="long"
                               timestamp={1504701531000}
                             >
-                              d
-                            </FormatDate>
+                              1504701531000-long
+                            </Date>
                           </ReviewDate>
                            
                           <Author
@@ -1343,7 +1343,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="tss-1sn0hxb-item"
+                    className="sg-4bfwpo-item"
                     data-test-id="reviewTitle: "
                     key="4"
                   >
@@ -1366,17 +1366,17 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="tss-m3j5n0-root"
+                          className="sg-m3j5n0-root"
                         />
                       </Title>
                       <Rating
                         rate={100}
                       >
                         <div
-                          className="tss-1wudg9u-container"
+                          className="sg-1wudg9u-container"
                         >
                           <RatingStars
-                            className="tss-1uyeoj6-stars"
+                            className="sg-1uyeoj6-stars"
                             display="small"
                             isSelectable={false}
                             onSelection={[Function]}
@@ -1384,15 +1384,15 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
                               <div
-                                className="css-4s85e9 rating-stars-empty"
+                                className="sg-170uo4n-emptyStars rating-stars-empty"
                               >
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="1"
                                 >
                                   <Star
@@ -1403,7 +1403,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1422,7 +1422,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="2"
                                 >
                                   <Star
@@ -1433,7 +1433,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1452,7 +1452,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="3"
                                 >
                                   <Star
@@ -1463,7 +1463,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1482,7 +1482,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="4"
                                 >
                                   <Star
@@ -1493,7 +1493,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1512,7 +1512,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="5"
                                 >
                                   <Star
@@ -1523,7 +1523,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1543,10 +1543,10 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="css-16bht0q rating-stars-filled"
+                                className="sg-8o0m3k-filledStars rating-stars-filled"
                               >
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="6"
                                 >
                                   <Star
@@ -1557,7 +1557,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1576,7 +1576,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="7"
                                 >
                                   <Star
@@ -1587,7 +1587,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1606,7 +1606,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="8"
                                 >
                                   <Star
@@ -1617,7 +1617,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1636,7 +1636,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="9"
                                 >
                                   <Star
@@ -1647,7 +1647,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1666,7 +1666,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                   </Star>
                                 </div>
                                 <div
-                                  className="css-kdb68h css-q4owmg"
+                                  className="sg-1jcir28-icon-iconGapSmall"
                                   key="10"
                                 >
                                   <Star
@@ -1677,7 +1677,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                       size="1em"
                                     >
                                       <svg
-                                        className="tss-1n8b10t-root common__icon"
+                                        className="sg-1n8b10t-root common__icon"
                                         dangerouslySetInnerHTML={
                                           {
                                             "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1704,7 +1704,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
                         <div
-                          className="tss-78jqgy-root"
+                          className="sg-78jqgy-root"
                         >
                           "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                         </div>
@@ -1722,18 +1722,18 @@ exports[`<Reviews> page should not crash 1`] = `
                         }
                       >
                         <div
-                          className="tss-ustu6l-root"
+                          className="sg-ustu6l-root"
                           role="text"
                         >
                           <ReviewDate
                             date="2017-09-06T12:38:51.000Z"
                           >
-                            <FormatDate
+                            <Date
                               format="long"
                               timestamp={1504701531000}
                             >
-                              d
-                            </FormatDate>
+                              1504701531000-long
+                            </Date>
                           </ReviewDate>
                            
                           <Author

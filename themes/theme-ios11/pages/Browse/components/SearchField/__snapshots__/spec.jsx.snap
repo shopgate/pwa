@@ -15,28 +15,28 @@ exports[`pages / Browse / components / SearchField Check search field should ren
     data-test-id="SearchField"
   >
     <div
-      className="tss-15v3opi-container"
+      className="sg-15v3opi-container"
     >
       <div
-        className="tss-19czy0f-inputWrapper"
+        className="sg-19czy0f-inputWrapper"
       >
         <form
           action="."
           onSubmit={[Function]}
         >
           <label
-            className="tss-9d4lwt-label"
+            className="sg-9d4lwt-label"
             htmlFor="search"
           >
             <div
-              className="tss-dfe17v-icon"
+              className="sg-dfe17v-icon"
             >
               <MagnifierIcon />
             </div>
           </label>
           <_default
             autoComplete={false}
-            className="tss-1oqqane-input"
+            className="sg-1oqqane-input"
             onChange={[Function]}
             onFocusChange={[Function]}
             onSubmit={[Function]}
@@ -48,7 +48,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="tss-1oqqane-input"
+              className="sg-1oqqane-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -71,7 +71,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="tss-1oqqane-input simpleInput common__simple-input"
+                className="sg-1oqqane-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}
@@ -96,7 +96,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
       <div>
         <button
           aria-hidden={true}
-          className="tss-16w71l0-button-hidden"
+          className="sg-16w71l0-button-hidden"
           data-test-id="search-field-cancel"
           onClick={[Function]}
           type="button"
@@ -134,28 +134,28 @@ exports[`pages / Browse / components / SearchField Check search field should sho
     data-test-id="SearchField"
   >
     <div
-      className="tss-15v3opi-container"
+      className="sg-15v3opi-container"
     >
       <div
-        className="tss-19czy0f-inputWrapper"
+        className="sg-19czy0f-inputWrapper"
       >
         <form
           action="."
           onSubmit={[Function]}
         >
           <label
-            className="tss-9d4lwt-label"
+            className="sg-9d4lwt-label"
             htmlFor="search"
           >
             <div
-              className="tss-dfe17v-icon"
+              className="sg-dfe17v-icon"
             >
               <MagnifierIcon />
             </div>
           </label>
           <_default
             autoComplete={false}
-            className="tss-1oqqane-input"
+            className="sg-1oqqane-input"
             onChange={[Function]}
             onFocusChange={[Function]}
             onSubmit={[Function]}
@@ -167,7 +167,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="tss-1oqqane-input"
+              className="sg-1oqqane-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -190,7 +190,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="tss-1oqqane-input simpleInput common__simple-input"
+                className="sg-1oqqane-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}
@@ -215,7 +215,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
       <div>
         <button
           aria-hidden={false}
-          className="tss-1a9h8im-button"
+          className="sg-1a9h8im-button"
           data-test-id="search-field-cancel"
           onClick={[Function]}
           type="button"
@@ -229,7 +229,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
       </div>
     </div>
     <div
-      className="tss-1lsj22t-overlay"
+      className="sg-1lsj22t-overlay"
     />
     <Component
       bottomHeight={0}

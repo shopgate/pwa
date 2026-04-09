@@ -2,22 +2,27 @@
 
 exports[`PriceSlider: <Label /> should render 1`] = `
 <div
-  className="tss-4iy9ul-editableContainer"
+  className="sg-4iy9ul-editableContainer"
 >
   <span
-    className="tss-b9l18s-srOnly"
+    className="sg-b9l18s-srOnly"
   >
     price.range
   </span>
   <Text
+    acceptPlainTextWithPlaceholders={false}
     aria-hidden={true}
+    className={null}
+    params={{}}
+    role={null}
     string="price.range"
+    transform={null}
   >
     <Placeholder
       forKey="fromPrice"
     >
       <span
-        className="tss-1whxrbt-price"
+        className="sg-1whxrbt-price"
         style={
           {
             "minWidth": "5",
@@ -25,6 +30,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
         }
       >
         <Price
+          className={null}
           currency="USD"
           fractions={false}
           price={25}
@@ -35,7 +41,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="toPrice"
     >
       <span
-        className="tss-1whxrbt-price"
+        className="sg-1whxrbt-price"
         style={
           {
             "minWidth": "5",
@@ -43,6 +49,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
         }
       >
         <Price
+          className={null}
           currency="USD"
           fractions={false}
           price={999}
@@ -60,7 +67,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_from"
-    className="tss-1s37zvn-editableField"
+    className="sg-1s37zvn-editableField"
     id="priceMin"
     inputMode="numeric"
     name="priceMin"
@@ -79,7 +86,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_to"
-    className="tss-1s37zvn-editableField"
+    className="sg-1s37zvn-editableField"
     id="priceMax"
     inputMode="numeric"
     name="priceMax"

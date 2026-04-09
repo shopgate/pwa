@@ -11,7 +11,7 @@ const insertionPoint = document.querySelector(
   'meta[name="emotion-insertion-point"]'
 ) as HTMLMetaElement;
 
-export const CLASS_PREFIX = 'tss';
+export const CLASS_PREFIX = 'sg';
 
 export const emotionCache = createCache({
   // All tss-react styles will be prefixed with `.tss-*` instead of `.css-*`

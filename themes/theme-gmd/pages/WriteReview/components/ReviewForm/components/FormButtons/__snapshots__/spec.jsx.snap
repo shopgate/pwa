@@ -25,10 +25,10 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
           pathname={null}
         >
           <div
-            className="tss-99a97b-buttonLine"
+            className="sg-99a97b-buttonLine"
           >
             <button
-              className="tss-x29o6s-cancelButton"
+              className="sg-x29o6s-cancelButton"
               data-test-id="reviewCancelButton"
               onClick={[Function]}
               type="button"
@@ -70,19 +70,19 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 wrapContent={false}
               >
                 <Button
-                  className="ui-shared__button tss-x945ka-button ui-shared__ripple-button"
+                  className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
                   disabled={false}
                   onClick={null}
                   testId="sendReviewButton"
                 >
                   <button
-                    className="common__button ui-shared__button ui-shared__ripple-button tss-1y4oqzg-root-button"
+                    className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
                     data-test-id="sendReviewButton"
                     disabled={false}
                     onClick={null}
                   >
                     <Ripple
-                      className="tss-fpa50s-contentWrapper"
+                      className="sg-fpa50s-contentWrapper"
                       color="#000"
                       disabled={false}
                       fill={true}
@@ -92,7 +92,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                       size={null}
                     >
                       <div
-                        className="ui-shared__ripple tss-fpa50s-contentWrapper"
+                        className="ui-shared__ripple sg-fpa50s-contentWrapper"
                         data-test-id="Ripple"
                         onClick={[Function]}
                         style={null}

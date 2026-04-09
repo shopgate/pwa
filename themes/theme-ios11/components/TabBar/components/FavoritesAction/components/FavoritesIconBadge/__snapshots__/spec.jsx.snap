@@ -11,7 +11,7 @@ exports[`TabBar favorites action - behavior should cap display at MAX when numbe
   }
 >
   <div
-    className="tss-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
+    className="sg-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
   >
     999+
   </div>
@@ -29,7 +29,7 @@ exports[`TabBar favorites action - behavior should show count when number is cha
   }
 >
   <div
-    className="tss-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
+    className="sg-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
   >
     99
   </div>
@@ -60,7 +60,7 @@ exports[`TabBar favorites action should render exact number 1`] = `
         widgetSettings={{}}
       >
         <div
-          className="tss-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
+          className="sg-1a2kjyc-root theme__tab-bar__favorites-icon-badge theme__badge"
         >
           1
         </div>

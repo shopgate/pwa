@@ -4,11 +4,7 @@ exports[`<CouponField /> should render a message when the cart does not support 
 
 exports[`<CouponField /> should render a message when the cart supports coupons 1`] = `
 <div
-  style={
-    {
-      "background": "var(--color-background-accent)",
-    }
-  }
+  className="sg-1o932yb-container"
 >
   <Layout
     error=""
@@ -30,11 +26,7 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
 
 exports[`<CouponField /> should render as expected without any props 1`] = `
 <div
-  style={
-    {
-      "background": "var(--color-background-accent)",
-    }
-  }
+  className="sg-1o932yb-container"
 >
   <Layout
     error=""

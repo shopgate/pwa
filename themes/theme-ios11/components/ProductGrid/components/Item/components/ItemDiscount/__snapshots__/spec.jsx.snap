@@ -2,7 +2,7 @@
 
 exports[`<ItemDiscount /> should render with discount 1`] = `
 <div
-  className="tss-jzkkka-root theme__product-grid__item__item-discount"
+  className="sg-jzkkka-root theme__product-grid__item__item-discount"
 >
   <Portal
     name="product-item.discount.before"

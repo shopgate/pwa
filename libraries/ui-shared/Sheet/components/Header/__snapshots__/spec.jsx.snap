@@ -5,26 +5,33 @@ exports[`<Header /> should render with correct title 1`] = `
   className=""
 >
   <Grid
-    className="css-1hncgty"
+    className="sg-uz2gz-wrapper"
     component="div"
     wrap={false}
   >
     <button
       aria-label="common.close"
-      className="css-r4gt00"
+      className="sg-cb4y3g-closeButton"
       onClick={[Function]}
       type="button"
     >
-      <RippleWithStyles
-        className="css-ugy6xl"
+      <Ripple
+        className="sg-8ivrra-closeIcon"
+        color="#000"
+        disabled={false}
+        fill={false}
+        onClick={[Function]}
+        onComplete={[Function]}
+        overflow={false}
+        size={null}
       >
         <Cross
           size={24}
         />
-      </RippleWithStyles>
+      </Ripple>
     </button>
     <GridItem
-      className="css-1mjy0de"
+      className="sg-1gh7dpa-title"
       component="div"
       grow={1}
       role="heading"

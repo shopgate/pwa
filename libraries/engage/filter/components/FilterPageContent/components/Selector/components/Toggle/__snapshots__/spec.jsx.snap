@@ -2,15 +2,15 @@
 
 exports[`<Toggle /> should render with selected 1`] = `
 <div
-  class="tss-1a4ev5x-toggle"
+  class="sg-1a4ev5x-toggle"
 >
   <span
-    class="tss-1ynmaeh-label tss-1j4fmvj-closed"
+    class="sg-3akxav-label-closed"
   >
     somelabel
   </span>
   <span
-    class="tss-guvefl-selected"
+    class="sg-guvefl-selected"
   >
     Some, Thing, Selected
   </span>
@@ -19,15 +19,15 @@ exports[`<Toggle /> should render with selected 1`] = `
 
 exports[`<Toggle /> should render with selected as open 1`] = `
 <div
-  class="tss-1a4ev5x-toggle"
+  class="sg-1a4ev5x-toggle"
 >
   <span
-    class="tss-1ynmaeh-label tss-1tsp0up-open"
+    class="sg-y39g3w-label-open"
   >
     somelabel
   </span>
   <span
-    class="tss-guvefl-selected"
+    class="sg-guvefl-selected"
   >
     Some, Thing, Selected
   </span>
@@ -36,10 +36,10 @@ exports[`<Toggle /> should render with selected as open 1`] = `
 
 exports[`<Toggle /> should render without selected 1`] = `
 <div
-  class="tss-1a4ev5x-toggle"
+  class="sg-1a4ev5x-toggle"
 >
   <span
-    class="tss-1ynmaeh-label tss-1j4fmvj-closed"
+    class="sg-3akxav-label-closed"
   >
     somelabel
   </span>
@@ -48,10 +48,10 @@ exports[`<Toggle /> should render without selected 1`] = `
 
 exports[`<Toggle /> should render without selected as open 1`] = `
 <div
-  class="tss-1a4ev5x-toggle"
+  class="sg-1a4ev5x-toggle"
 >
   <span
-    class="tss-1ynmaeh-label tss-1tsp0up-open"
+    class="sg-y39g3w-label-open"
   >
     somelabel
   </span>

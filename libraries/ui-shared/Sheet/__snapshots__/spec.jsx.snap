@@ -26,7 +26,7 @@ exports[`<Sheet /> should open 1`] = `
     contentRef={
       {
         "current": <div
-          class="tss-12f1i2r-content"
+          class="sg-12f1i2r-content"
         >
           <div>
             Test
@@ -48,17 +48,17 @@ exports[`<Sheet /> should open 1`] = `
     title="Test-Title"
   >
     <section
-      className="ui-shared__sheet tss-18ghh1t-section"
+      className="ui-shared__sheet sg-18ghh1t-section"
     >
       <Drawer
         animation={
           {
             "duration": 300,
-            "in": "tss-1qtpl1n-drawerAnimIn",
-            "out": "tss-1uynekm-drawerAnimOut",
+            "in": "sg-1qtpl1n-drawerAnimIn",
+            "out": "sg-1uynekm-drawerAnimOut",
           }
         }
-        className="tss-bfa6v5-container"
+        className="sg-omro4t-container"
         isOpen={true}
         onClose={[Function]}
         onDidClose={[Function]}
@@ -67,7 +67,7 @@ exports[`<Sheet /> should open 1`] = `
       >
         <div
           aria-modal={true}
-          className="tss-bfa6v5-container tss-dxx72o-container tss-1qtpl1n-drawerAnimIn common__drawer"
+          className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
           onAnimationEnd={[Function]}
           role="dialog"
           style={
@@ -89,74 +89,70 @@ exports[`<Sheet /> should open 1`] = `
               className=""
             >
               <Grid
-                className="tss-uz2gz-wrapper"
+                className="sg-uz2gz-wrapper"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                  className="common__grid sg-1dxmo4l-root-noWrap-wrapper"
                 >
                   <button
                     aria-label="common.close"
-                    className="tss-tnekr1-closeButton"
+                    className="sg-cb4y3g-closeButton"
                     onClick={[Function]}
                     type="button"
                   >
-                    <RippleWithStyles
-                      className="tss-8ivrra-closeIcon"
+                    <Ripple
+                      className="sg-8ivrra-closeIcon"
+                      color="#000"
+                      disabled={false}
+                      fill={false}
+                      onClick={[Function]}
+                      onComplete={[Function]}
+                      overflow={false}
+                      size={null}
                     >
-                      <Ripple
-                        className="tss-8ivrra-closeIcon"
-                        classes={
+                      <div
+                        className="ui-shared__ripple sg-8ivrra-closeIcon"
+                        data-test-id="Ripple"
+                        onClick={[Function]}
+                        style={
                           {
-                            "container": "tss-1dfkr3n-Ripple-container",
+                            "overflow": "hidden",
+                            "position": "relative",
                           }
                         }
-                        color="#000"
-                        disabled={false}
-                        fill={false}
-                        onClick={[Function]}
-                        onComplete={[Function]}
-                        overflow={false}
-                        size={null}
                       >
-                        <div
-                          className="ui-shared__ripple tss-8ivrra-closeIcon"
-                          data-test-id="Ripple"
-                          onClick={[Function]}
-                          style={null}
+                        <Cross
+                          size={24}
                         >
-                          <Cross
+                          <Icon
+                            content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                             size={24}
                           >
-                            <Icon
-                              content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                              size={24}
-                            >
-                              <svg
-                                className="tss-1n8b10t-root common__icon"
-                                dangerouslySetInnerHTML={
-                                  {
-                                    "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                  }
+                            <svg
+                              className="sg-1n8b10t-root common__icon"
+                              dangerouslySetInnerHTML={
+                                {
+                                  "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                 }
-                                style={
-                                  {
-                                    "fill": undefined,
-                                    "fontSize": 24,
-                                  }
+                              }
+                              style={
+                                {
+                                  "fill": undefined,
+                                  "fontSize": 24,
                                 }
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              />
-                            </Icon>
-                          </Cross>
-                        </div>
-                      </Ripple>
-                    </RippleWithStyles>
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Cross>
+                      </div>
+                    </Ripple>
                   </button>
                   <GridItem
-                    className="tss-u1j3gu-title"
+                    className="sg-1gh7dpa-title"
                     component="div"
                     grow={1}
                     role="heading"
@@ -164,7 +160,7 @@ exports[`<Sheet /> should open 1`] = `
                     tabIndex={0}
                   >
                     <div
-                      className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                      className="sg-1yim49x-root-title"
                       role="heading"
                       tabIndex={0}
                     >
@@ -176,7 +172,7 @@ exports[`<Sheet /> should open 1`] = `
             </div>
           </Header>
           <div
-            className="tss-1h0yrl3-progressBarContainer"
+            className="sg-1h0yrl3-progressBarContainer"
           >
             <ProgressBar
               isVisible={false}
@@ -221,14 +217,14 @@ exports[`<Sheet /> should open 1`] = `
                   }
                 >
                   <div
-                    className="tss-hmfbp5-innerElement"
+                    className="sg-hmfbp5-innerElement"
                   />
                 </div>
               </Transition>
             </ProgressBar>
           </div>
           <div
-            className="tss-12f1i2r-content"
+            className="sg-12f1i2r-content"
             onScroll={[Function]}
           >
             <div
@@ -259,7 +255,7 @@ exports[`<Sheet /> should open 1`] = `
             {
               "current": <div
                 aria-hidden="true"
-                class="tss-1tlnanp-backdrop  common__backdrop"
+                class="sg-1tlnanp-backdrop  common__backdrop"
                 data-test-id="Backdrop"
                 style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
               />,
@@ -276,7 +272,7 @@ exports[`<Sheet /> should open 1`] = `
         >
           <div
             aria-hidden={true}
-            className="tss-1tlnanp-backdrop  common__backdrop"
+            className="sg-1tlnanp-backdrop  common__backdrop"
             data-test-id="Backdrop"
             onClick={[Function]}
             style={
@@ -426,7 +422,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     contentRef={
       {
         "current": <div
-          class="tss-12f1i2r-content"
+          class="sg-12f1i2r-content"
         >
           <div>
             Test
@@ -454,11 +450,11 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         animation={
           {
             "duration": 300,
-            "in": "tss-1qtpl1n-drawerAnimIn",
-            "out": "tss-1uynekm-drawerAnimOut",
+            "in": "sg-1qtpl1n-drawerAnimIn",
+            "out": "sg-1uynekm-drawerAnimOut",
           }
         }
-        className="tss-bfa6v5-container"
+        className="sg-omro4t-container"
         isOpen={false}
         onClose={[Function]}
         onDidClose={[Function]}
@@ -467,7 +463,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       >
         <div
           aria-modal={true}
-          className="tss-bfa6v5-container tss-dxx72o-container tss-1uynekm-drawerAnimOut common__drawer"
+          className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
           onAnimationEnd={[Function]}
           role="dialog"
           style={
@@ -489,79 +485,70 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
               className=""
             >
               <Grid
-                className="tss-uz2gz-wrapper"
+                className="sg-uz2gz-wrapper"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                  className="common__grid sg-1dxmo4l-root-noWrap-wrapper"
                 >
                   <button
                     aria-label="common.close"
-                    className="tss-tnekr1-closeButton"
+                    className="sg-cb4y3g-closeButton"
                     onClick={[Function]}
                     type="button"
                   >
-                    <RippleWithStyles
-                      className="tss-8ivrra-closeIcon"
+                    <Ripple
+                      className="sg-8ivrra-closeIcon"
+                      color="#000"
+                      disabled={false}
+                      fill={false}
+                      onClick={[Function]}
+                      onComplete={[Function]}
+                      overflow={false}
+                      size={null}
                     >
-                      <Ripple
-                        className="tss-8ivrra-closeIcon"
-                        classes={
+                      <div
+                        className="ui-shared__ripple sg-8ivrra-closeIcon"
+                        data-test-id="Ripple"
+                        onClick={[Function]}
+                        style={
                           {
-                            "container": "tss-1dfkr3n-Ripple-container",
+                            "overflow": "hidden",
+                            "position": "relative",
                           }
                         }
-                        color="#000"
-                        disabled={false}
-                        fill={false}
-                        onClick={[Function]}
-                        onComplete={[Function]}
-                        overflow={false}
-                        size={null}
                       >
-                        <div
-                          className="ui-shared__ripple tss-8ivrra-closeIcon"
-                          data-test-id="Ripple"
-                          onClick={[Function]}
-                          style={
-                            {
-                              "overflow": "hidden",
-                              "position": "relative",
-                            }
-                          }
+                        <Cross
+                          size={24}
                         >
-                          <Cross
+                          <Icon
+                            content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                             size={24}
                           >
-                            <Icon
-                              content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                              size={24}
-                            >
-                              <svg
-                                className="tss-1n8b10t-root common__icon"
-                                dangerouslySetInnerHTML={
-                                  {
-                                    "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                  }
+                            <svg
+                              className="sg-1n8b10t-root common__icon"
+                              dangerouslySetInnerHTML={
+                                {
+                                  "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                 }
-                                style={
-                                  {
-                                    "fill": undefined,
-                                    "fontSize": 24,
-                                  }
+                              }
+                              style={
+                                {
+                                  "fill": undefined,
+                                  "fontSize": 24,
                                 }
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                              />
-                            </Icon>
-                          </Cross>
-                        </div>
-                      </Ripple>
-                    </RippleWithStyles>
+                              }
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            />
+                          </Icon>
+                        </Cross>
+                      </div>
+                    </Ripple>
                   </button>
                   <GridItem
-                    className="tss-u1j3gu-title"
+                    className="sg-1gh7dpa-title"
                     component="div"
                     grow={1}
                     role="heading"
@@ -569,7 +556,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                     tabIndex={0}
                   >
                     <div
-                      className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                      className="sg-1yim49x-root-title"
                       role="heading"
                       tabIndex={0}
                     >
@@ -581,7 +568,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             </div>
           </Header>
           <div
-            className="tss-1h0yrl3-progressBarContainer"
+            className="sg-1h0yrl3-progressBarContainer"
           >
             <ProgressBar
               isVisible={false}
@@ -626,14 +613,14 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   }
                 >
                   <div
-                    className="tss-hmfbp5-innerElement"
+                    className="sg-hmfbp5-innerElement"
                   />
                 </div>
               </Transition>
             </ProgressBar>
           </div>
           <div
-            className="tss-12f1i2r-content"
+            className="sg-12f1i2r-content"
             onScroll={[Function]}
           >
             <div
@@ -676,7 +663,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
         >
           <div
             aria-hidden={true}
-            className="tss-1tlnanp-backdrop  common__backdrop"
+            className="sg-1tlnanp-backdrop  common__backdrop"
             data-test-id="Backdrop"
             onClick={[Function]}
             style={

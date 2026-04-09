@@ -40,14 +40,14 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
   }
 >
   <div
-    className="tss-1toq9zt-container"
+    className="sg-1toq9zt-container"
     data-test-id="categoryList"
   >
     <Headline
       text="Yay Categories"
     >
       <h3
-        className="tss-1mu7f0p-root headline theme__headline"
+        className="sg-1raa9c7-root headline theme__headline"
       >
         Yay Categories
       </h3>
@@ -80,7 +80,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
         }
       >
         <SheetList
-          className="tss-fwabft-sheetList"
+          className="sg-btkliy-sheetList"
           hasImages={false}
         >
           <SheetList.Item
@@ -90,7 +90,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             linkComponent={[Function]}
             rightComponent={
               <Connect(CategoryImage)
-                className="tss-1ca4g9e-image"
+                className="sg-1ca4g9e-image"
                 src="/some/url"
               />
             }
@@ -104,7 +104,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             linkComponent={[Function]}
             rightComponent={
               <Connect(CategoryImage)
-                className="tss-1ca4g9e-image"
+                className="sg-1ca4g9e-image"
                 src="/some/url"
               />
             }
@@ -133,12 +133,12 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
             },
           ]
         }
-        className="tss-1tflf41-grid"
+        className="sg-1tflf41-grid"
         prerender={0}
         showImages={false}
       >
         <ul
-          className="engage__category__category-grid tss-bxi79p-grid-grid"
+          className="engage__category__category-grid sg-vj2y5p-grid-grid"
         >
           <CategoryGridItem
             category={
@@ -161,10 +161,10 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               }
             >
               <li
-                className="tss-dnw2rx-gridItem"
+                className="sg-1fo7gbz-gridItem"
               >
                 <Link
-                  className="tss-1gcac8x-gridItemInner"
+                  className="sg-1gcac8x-gridItemInner"
                   href="/category/31"
                   state={
                     {
@@ -174,10 +174,10 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   }
                 >
                   <div
-                    className="tss-1qzo4ck-gridItemColumnLeft"
+                    className="sg-1qzo4ck-gridItemColumnLeft"
                   >
                     <TextLink
-                      className="tss-12mfzuv-categoryTitle"
+                      className="sg-12mfzuv-categoryTitle"
                       href="/category/31"
                       state={
                         {
@@ -187,7 +187,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       }
                     />
                     <div
-                      className="tss-xdzmgq-categoryDescription"
+                      className="sg-xdzmgq-categoryDescription"
                       dangerouslySetInnerHTML={
                         {
                           "__html": undefined,
@@ -220,10 +220,10 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
               }
             >
               <li
-                className="tss-dnw2rx-gridItem"
+                className="sg-1fo7gbz-gridItem"
               >
                 <Link
-                  className="tss-1gcac8x-gridItemInner"
+                  className="sg-1gcac8x-gridItemInner"
                   href="/category/32"
                   state={
                     {
@@ -233,10 +233,10 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                   }
                 >
                   <div
-                    className="tss-1qzo4ck-gridItemColumnLeft"
+                    className="sg-1qzo4ck-gridItemColumnLeft"
                   >
                     <TextLink
-                      className="tss-12mfzuv-categoryTitle"
+                      className="sg-12mfzuv-categoryTitle"
                       href="/category/32"
                       state={
                         {
@@ -246,7 +246,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       }
                     />
                     <div
-                      className="tss-xdzmgq-categoryDescription"
+                      className="sg-xdzmgq-categoryDescription"
                       dangerouslySetInnerHTML={
                         {
                           "__html": undefined,

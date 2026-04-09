@@ -11,25 +11,37 @@ exports[`<Section /> should render with a headline and items 1`] = `
   title="Headline"
 >
   <Headline
-    className="tss-4b37q4-headline"
-    style={null}
+    style={
+      {
+        "margin": "24px 20px 16px",
+      }
+    }
     tag="h2"
     text="Headline"
   >
     <h2
-      className="headline theme__headline tss-10zp3hj-h2-headline"
+      className="sg-1e76cvh-root headline theme__headline"
       data-test-id="Headline"
-      style={null}
+      style={
+        {
+          "margin": "24px 20px 16px",
+        }
+      }
     >
       <Text
+        acceptPlainTextWithPlaceholders={false}
+        className={null}
+        params={{}}
+        role={null}
         string="Headline"
+        transform={null}
       >
         Headline
       </Text>
     </h2>
   </Headline>
   <div
-    className="tss-1sqpupb-list"
+    className="sg-1sqpupb-list"
     data-test-id="more-section-list"
   >
     <MoreMenuItem
@@ -40,12 +52,17 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="tss-1lse86s-root"
+        className="sg-1lse86s-root"
         href="/link/one"
         role="button"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="Item One"
+          transform={null}
         >
           Item One
         </Text>
@@ -59,12 +76,17 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="tss-1lse86s-root"
+        className="sg-1lse86s-root"
         href="/link/two"
         role="button"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="Item Two"
+          transform={null}
         >
           Item Two
         </Text>
@@ -79,13 +101,16 @@ exports[`<Section /> should render without a headline but items 1`] = `
   title=""
 >
   <Headline
-    className="tss-4b37q4-headline"
-    style={null}
+    style={
+      {
+        "margin": "24px 20px 16px",
+      }
+    }
     tag="h2"
     text=""
   />
   <div
-    className="tss-1sqpupb-list"
+    className="sg-1sqpupb-list"
     data-test-id="more-section-list"
   >
     <MoreMenuItem
@@ -96,12 +121,17 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="tss-1lse86s-root"
+        className="sg-1lse86s-root"
         href="/link/one"
         role="button"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="Item One"
+          transform={null}
         >
           Item One
         </Text>
@@ -115,12 +145,17 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="tss-1lse86s-root"
+        className="sg-1lse86s-root"
         href="/link/two"
         role="button"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="Item Two"
+          transform={null}
         >
           Item Two
         </Text>

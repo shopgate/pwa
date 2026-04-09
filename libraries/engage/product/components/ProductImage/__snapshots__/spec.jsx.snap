@@ -28,7 +28,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       animating={true}
       aria-hidden={true}
       backgroundColor="#fff"
-      className="tss-ff8tgd-innerShadow"
+      className="sg-ff8tgd-innerShadow"
       classNameImg=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
@@ -69,7 +69,7 @@ exports[`<ProductImage /> should apply an inner shadow to the placeholder if tur
   portalName="component.product-image"
 >
   <div
-    className="tss-7iqvdv-placeholderContainer-innerShadow"
+    className="sg-7iqvdv-placeholderContainer-innerShadow"
   >
     <ProductImagePlaceholder
       noBackground={false}
@@ -213,7 +213,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalName="component.product-image"
 >
   <div
-    className="tss-rvs4ak-placeholderContainer"
+    className="sg-rvs4ak-placeholderContainer"
   >
     <ProductImagePlaceholder
       noBackground={false}
@@ -229,7 +229,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalName="component.product-image"
 >
   <div
-    className="tss-rvs4ak-placeholderContainer"
+    className="sg-rvs4ak-placeholderContainer"
   >
     <ProductImagePlaceholder
       noBackground={false}
@@ -245,15 +245,15 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
   portalName="component.product-image"
 >
   <div
-    className="tss-rvs4ak-placeholderContainer"
+    className="sg-rvs4ak-placeholderContainer"
   >
     <div
       aria-hidden={true}
-      className="tss-1k7fitm-placeholderContent"
+      className="sg-1k7fitm-placeholderContent"
       data-test-id="placeHolder"
     >
       <Placeholder
-        className="tss-1k233yj-placeholder"
+        className="sg-1k233yj-placeholder"
       />
     </div>
   </div>

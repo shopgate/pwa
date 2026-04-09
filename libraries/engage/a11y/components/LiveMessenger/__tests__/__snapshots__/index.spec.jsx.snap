@@ -12,7 +12,7 @@ exports[`<LiveMessenger /> should render 1`] = `
     >
       <div
         aria-live="assertive"
-        className="tss-1pj3g40-hiddenLiveRegion"
+        className="sg-1pj3g40-hiddenLiveRegion"
         role="log"
       >
         <Translate
@@ -28,7 +28,7 @@ exports[`<LiveMessenger /> should render 1`] = `
     >
       <div
         aria-live="polite"
-        className="tss-1pj3g40-hiddenLiveRegion"
+        className="sg-1pj3g40-hiddenLiveRegion"
         role="log"
       >
         <Translate

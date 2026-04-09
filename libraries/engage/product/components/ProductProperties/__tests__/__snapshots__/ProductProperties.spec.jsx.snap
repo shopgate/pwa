@@ -103,7 +103,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
           htmlOnly={false}
         >
           <div
-            className="engage__product__product-property-group tss-vtyyyx-container"
+            className="engage__product__product-property-group sg-vtyyyx-container"
             data-group-name=""
           >
             <table>
@@ -119,8 +119,9 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                   }
                 >
                   <Row
-                    key="undefined-undefined"
+                    key="undefined-"
                     type={null}
+                    value=""
                   >
                     <tr
                       aria-label=": "
@@ -130,7 +131,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                     >
                       <td
                         aria-hidden={true}
-                        className="tss-15jjn2r-tableCell"
+                        className="sg-15jjn2r-tableCell"
                       >
                         <span
                           dangerouslySetInnerHTML={
@@ -142,13 +143,13 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
                       </td>
                       <td
                         aria-hidden={true}
-                        className="tss-15jjn2r-tableCell"
-                        data-test-id="property: undefined"
+                        className="sg-15jjn2r-tableCell"
+                        data-test-id="property: "
                       >
                         <span
                           dangerouslySetInnerHTML={
                             {
-                              "__html": undefined,
+                              "__html": "",
                             }
                           }
                         />

@@ -30,7 +30,7 @@ exports[`<Section /> should render with a label 1`] = `
       tag="span"
     >
       <span
-        className="tss-1plkyt0-root"
+        className="sg-1plkyt0-root"
       >
         <h2
           id="my-headline"

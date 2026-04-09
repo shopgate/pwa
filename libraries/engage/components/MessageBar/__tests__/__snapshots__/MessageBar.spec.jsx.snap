@@ -15,7 +15,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   showIcons={false}
 >
   <div
-    className="tss-1iqmfe8-container"
+    className="sg-1iqmfe8-container"
     role={null}
   />
 </MessageBar>
@@ -42,13 +42,13 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   showIcons={false}
 >
   <div
-    className="tss-1iqmfe8-container"
+    className="sg-1iqmfe8-container"
     role="alert"
   >
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-1v7f54-info"
+      className="sg-1p0g3fp-info"
       key="info-something"
     >
       <span
@@ -105,13 +105,13 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   showIcons={false}
 >
   <div
-    className="tss-1iqmfe8-container"
+    className="sg-1iqmfe8-container"
     role="alert"
   >
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-1v7f54-info"
+      className="sg-1p0g3fp-info"
       key="info-This is some information"
     >
       <span
@@ -129,7 +129,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-o6yyjt-error"
+      className="sg-xrm7yz-error"
       key="error-This is an error that happened here."
     >
       <span
@@ -147,7 +147,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-5wfzmu-warning"
+      className="sg-lcqo5b-warning"
       key="warning-This is just a warning. Nothing to freak out about."
     >
       <span
@@ -165,7 +165,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-1v7f54-info"
+      className="sg-1p0g3fp-info"
       key="info-Normal pre-translated message."
     >
       <span
@@ -183,7 +183,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-1v7f54-info"
+      className="sg-1p0g3fp-info"
       key="info-Normal pre-translated message two."
     >
       <span
@@ -232,13 +232,13 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   showIcons={false}
 >
   <div
-    className="tss-1iqmfe8-container"
+    className="sg-1iqmfe8-container"
     role="alert"
   >
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-1v7f54-info"
+      className="sg-1p0g3fp-info"
       key="info-some.translation.string"
     >
       <span
@@ -258,7 +258,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-1v7f54-info"
+      className="sg-1p0g3fp-info"
       key="info-Message with messageParams"
     >
       <span
@@ -296,13 +296,13 @@ exports[`<MessageBar /> should render with custom classNames 1`] = `
   showIcons={false}
 >
   <div
-    className="tss-1iqmfe8-container cls-container"
+    className="sg-1iqmfe8-container cls-container"
     role="alert"
   >
     <div
       aria-atomic="true"
       aria-live="assertive"
-      className="tss-1v7f54-info cls-message"
+      className="sg-1p0g3fp-info cls-message"
       key="info-This is some information"
     >
       <span

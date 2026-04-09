@@ -8,11 +8,10 @@ exports[`<PaymentBarCheckoutButton /> should render disabled button 1`] = `
   role="button"
   tabIndex={0}
 >
-  <RippleButtonWithStyles
-    className="tss-1vdkzbz-disabledButton"
+  <RippleButton
+    className="sg-1vdkzbz-disabledButton"
     disabled={true}
     flat={false}
-    onClick={null}
     rippleClassName=""
     rippleSize={null}
     testId="Button"
@@ -20,9 +19,14 @@ exports[`<PaymentBarCheckoutButton /> should render disabled button 1`] = `
     wrapContent={true}
   >
     <Text
+      acceptPlainTextWithPlaceholders={false}
+      className={null}
+      params={{}}
+      role={null}
       string="cart.checkout"
+      transform={null}
     />
-  </RippleButtonWithStyles>
+  </RippleButton>
 </Link>
 `;
 
@@ -34,11 +38,10 @@ exports[`<PaymentBarCheckoutButton /> should render enabled button 1`] = `
   role="button"
   tabIndex={0}
 >
-  <RippleButtonWithStyles
-    className="tss-16oxzxm-button"
+  <RippleButton
+    className="sg-16oxzxm-button"
     disabled={false}
     flat={false}
-    onClick={null}
     rippleClassName=""
     rippleSize={null}
     testId="Button"
@@ -46,8 +49,13 @@ exports[`<PaymentBarCheckoutButton /> should render enabled button 1`] = `
     wrapContent={true}
   >
     <Text
+      acceptPlainTextWithPlaceholders={false}
+      className={null}
+      params={{}}
+      role={null}
       string="cart.checkout"
+      transform={null}
     />
-  </RippleButtonWithStyles>
+  </RippleButton>
 </Link>
 `;

@@ -27,13 +27,13 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
 >
   <FilterItem>
     <Accordion
-      className="tss-v3twtx-accordion"
+      className="sg-v3twtx-accordion"
       handleLabel="filter.filter_by"
       renderLabel={[Function]}
       testId="foo"
     >
       <div
-        className="tss-zw23ax-content"
+        className="sg-zw23ax-content"
       >
         <ValueButton
           id="foo"

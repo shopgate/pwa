@@ -35,17 +35,17 @@ exports[`Shipping label should render free shipping 1`] = `
         props={null}
       >
         <PlaceholderLabel
-          className="tss-o9yu1e-placeholder"
+          className="sg-o9yu1e-placeholder"
           ready={true}
           style={null}
         >
           <Label
-            className="tss-1i5pmhm-shipping engage__product__header__shipping"
+            className="sg-1i5pmhm-shipping engage__product__header__shipping"
             currency="EUR"
             price={0}
           >
             <div
-              className="tss-1i5pmhm-shipping engage__product__header__shipping tss-gsoqs4-text"
+              className="engage__product__header__shipping sg-jglulr-text-shipping"
               role="text"
             >
               <Translate
@@ -111,17 +111,17 @@ exports[`Shipping label should render shipping price 1`] = `
         props={null}
       >
         <PlaceholderLabel
-          className="tss-o9yu1e-placeholder"
+          className="sg-o9yu1e-placeholder"
           ready={true}
           style={null}
         >
           <Label
-            className="tss-1i5pmhm-shipping engage__product__header__shipping"
+            className="sg-1i5pmhm-shipping engage__product__header__shipping"
             currency="EUR"
             price={1}
           >
             <div
-              className="tss-1i5pmhm-shipping engage__product__header__shipping tss-gsoqs4-text"
+              className="engage__product__header__shipping sg-jglulr-text-shipping"
               role="text"
             >
               <Translate

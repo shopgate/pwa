@@ -35,7 +35,7 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
   }
 >
   <div
-    className="tss-nupkh5-root common__widgets__widget-grid"
+    className="sg-nupkh5-root common__widgets__widget-grid"
   >
     <Widget
       component={[Function]}
@@ -55,13 +55,13 @@ exports[`<WidgetGrid /> should render with a config 1`] = `
       key="w0"
     >
       <GridItem
-        className="common__widgets__widget tss-2igu7n-widgetCell"
+        className="common__widgets__widget sg-2igu7n-widgetCell"
         component="div"
         grow={0}
         shrink={1}
       >
         <div
-          className="common__widgets__widget tss-zzcgfx-root-widgetCell"
+          className="common__widgets__widget sg-zzcgfx-root-widgetCell"
         >
           <div>
             <Suspense

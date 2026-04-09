@@ -3,11 +3,11 @@
 exports[`engage > cart > components > CartItemGroupReservation should render accordion 1`] = `
 <CardListItem>
   <Accordion
-    className="tss-i7tpew-accordionToggle"
+    className="sg-i7tpew-accordionToggle"
     renderLabel={[Function]}
   >
     <div
-      className="tss-h5vm8p-addressDetails"
+      className="sg-h5vm8p-addressDetails"
     >
       <StoreOpeningHours />
       <StorePhoneNumber
@@ -34,7 +34,7 @@ exports[`engage > cart > components > CartItemGroupReservation should render acc
 
 exports[`engage > cart > components > CartItemGroupReservation should render only label 1`] = `
 <CardListItem
-  className="tss-148h0d1-simpleLabel"
+  className="sg-148h0d1-simpleLabel"
 >
   <CartItemGroupReservationLabel
     fulfillmentMethod="BOPIS"

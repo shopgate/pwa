@@ -44,18 +44,18 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="tss-1t3yptj-button"
+        className="sg-tky32e-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
         <div
-          className="tss-1pccjd4-label"
+          className="sg-1pccjd4-label"
           data-test-id="nested-picker-label"
         >
           Picker Label
         </div>
         <div
-          className="tss-2yv5tj-selection"
+          className="sg-2yv5tj-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -114,17 +114,17 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               contentRef={
                 {
                   "current": <div
-                    class="tss-12f1i2r-content"
+                    class="sg-12f1i2r-content"
                   >
                     <button
-                      class="tss-1rm4ebj-button"
+                      class="sg-1yjeh22-button"
                       type="button"
                       value="1"
                     >
                       Category 1
                     </button>
                     <button
-                      class="tss-1rm4ebj-button"
+                      class="sg-1yjeh22-button"
                       type="button"
                       value="2"
                     >
@@ -147,17 +147,17 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               title="Picker Label"
             >
               <section
-                className="ui-shared__sheet tss-18ghh1t-section"
+                className="ui-shared__sheet sg-18ghh1t-section"
               >
                 <Drawer
                   animation={
                     {
                       "duration": 300,
-                      "in": "tss-1qtpl1n-drawerAnimIn",
-                      "out": "tss-1uynekm-drawerAnimOut",
+                      "in": "sg-1qtpl1n-drawerAnimIn",
+                      "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="tss-bfa6v5-container"
+                  className="sg-omro4t-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -166,7 +166,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 >
                   <div
                     aria-modal={true}
-                    className="tss-bfa6v5-container tss-dxx72o-container tss-1qtpl1n-drawerAnimIn common__drawer"
+                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -188,74 +188,70 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                         className=""
                       >
                         <Grid
-                          className="tss-uz2gz-wrapper"
+                          className="sg-uz2gz-wrapper"
                           component="div"
                           wrap={false}
                         >
                           <div
-                            className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                            className="common__grid sg-1dxmo4l-root-noWrap-wrapper"
                           >
                             <button
                               aria-label="common.close"
-                              className="tss-tnekr1-closeButton"
+                              className="sg-cb4y3g-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
-                              <RippleWithStyles
-                                className="tss-8ivrra-closeIcon"
+                              <Ripple
+                                className="sg-8ivrra-closeIcon"
+                                color="#000"
+                                disabled={false}
+                                fill={false}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={false}
+                                size={null}
                               >
-                                <Ripple
-                                  className="tss-8ivrra-closeIcon"
-                                  classes={
+                                <div
+                                  className="ui-shared__ripple sg-8ivrra-closeIcon"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={
                                     {
-                                      "container": "tss-1dfkr3n-Ripple-container",
+                                      "overflow": "hidden",
+                                      "position": "relative",
                                     }
                                   }
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
-                                  onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
                                 >
-                                  <div
-                                    className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                    data-test-id="Ripple"
-                                    onClick={[Function]}
-                                    style={null}
+                                  <Cross
+                                    size={24}
                                   >
-                                    <Cross
+                                    <Icon
+                                      content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                       size={24}
                                     >
-                                      <Icon
-                                        content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                        size={24}
-                                      >
-                                        <svg
-                                          className="tss-1n8b10t-root common__icon"
-                                          dangerouslySetInnerHTML={
-                                            {
-                                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                            }
+                                      <svg
+                                        className="sg-1n8b10t-root common__icon"
+                                        dangerouslySetInnerHTML={
+                                          {
+                                            "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                           }
-                                          style={
-                                            {
-                                              "fill": undefined,
-                                              "fontSize": 24,
-                                            }
+                                        }
+                                        style={
+                                          {
+                                            "fill": undefined,
+                                            "fontSize": 24,
                                           }
-                                          viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </RippleWithStyles>
+                                        }
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      />
+                                    </Icon>
+                                  </Cross>
+                                </div>
+                              </Ripple>
                             </button>
                             <GridItem
-                              className="tss-u1j3gu-title"
+                              className="sg-1gh7dpa-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -263,7 +259,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                               tabIndex={0}
                             >
                               <div
-                                className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                className="sg-1yim49x-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
@@ -275,7 +271,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       </div>
                     </Header>
                     <div
-                      className="tss-1h0yrl3-progressBarContainer"
+                      className="sg-1h0yrl3-progressBarContainer"
                     >
                       <ProgressBar
                         isVisible={false}
@@ -320,14 +316,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             }
                           >
                             <div
-                              className="tss-hmfbp5-innerElement"
+                              className="sg-hmfbp5-innerElement"
                             />
                           </div>
                         </Transition>
                       </ProgressBar>
                     </div>
                     <div
-                      className="tss-12f1i2r-content"
+                      className="sg-12f1i2r-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -349,7 +345,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           selected={false}
                         >
                           <button
-                            className="tss-1rm4ebj-button"
+                            className="sg-1yjeh22-button"
                             key="1"
                             onClick={[Function]}
                             type="button"
@@ -372,7 +368,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           selected={false}
                         >
                           <button
-                            className="tss-1rm4ebj-button"
+                            className="sg-1yjeh22-button"
                             key="2"
                             onClick={[Function]}
                             type="button"
@@ -405,7 +401,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       {
                         "current": <div
                           aria-hidden="true"
-                          class="tss-1tlnanp-backdrop  common__backdrop"
+                          class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
                           style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
@@ -422,7 +418,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                   >
                     <div
                       aria-hidden={true}
-                      className="tss-1tlnanp-backdrop  common__backdrop"
+                      className="sg-1tlnanp-backdrop  common__backdrop"
                       data-test-id="Backdrop"
                       onClick={[Function]}
                       style={
@@ -491,18 +487,18 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="tss-1t3yptj-button"
+        className="sg-tky32e-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
         <div
-          className="tss-1pccjd4-label"
+          className="sg-1pccjd4-label"
           data-test-id="nested-picker-label"
         >
           Picker Label
         </div>
         <div
-          className="tss-2yv5tj-selection"
+          className="sg-2yv5tj-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -561,17 +557,17 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               contentRef={
                 {
                   "current": <div
-                    class="tss-12f1i2r-content"
+                    class="sg-12f1i2r-content"
                   >
                     <button
-                      class="tss-1rm4ebj-button"
+                      class="sg-1yjeh22-button"
                       type="button"
                       value="1-1"
                     >
                       Category 1-1
                     </button>
                     <button
-                      class="tss-1rm4ebj-button"
+                      class="sg-1yjeh22-button"
                       type="button"
                       value="1-2"
                     >
@@ -594,17 +590,17 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               title="Picker Label"
             >
               <section
-                className="ui-shared__sheet tss-18ghh1t-section"
+                className="ui-shared__sheet sg-18ghh1t-section"
               >
                 <Drawer
                   animation={
                     {
                       "duration": 300,
-                      "in": "tss-1qtpl1n-drawerAnimIn",
-                      "out": "tss-1uynekm-drawerAnimOut",
+                      "in": "sg-1qtpl1n-drawerAnimIn",
+                      "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="tss-bfa6v5-container"
+                  className="sg-omro4t-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -613,7 +609,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-modal={true}
-                    className="tss-bfa6v5-container tss-dxx72o-container tss-1qtpl1n-drawerAnimIn common__drawer"
+                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -635,74 +631,70 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         className=""
                       >
                         <Grid
-                          className="tss-uz2gz-wrapper"
+                          className="sg-uz2gz-wrapper"
                           component="div"
                           wrap={false}
                         >
                           <div
-                            className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                            className="common__grid sg-1dxmo4l-root-noWrap-wrapper"
                           >
                             <button
                               aria-label="common.close"
-                              className="tss-tnekr1-closeButton"
+                              className="sg-cb4y3g-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
-                              <RippleWithStyles
-                                className="tss-8ivrra-closeIcon"
+                              <Ripple
+                                className="sg-8ivrra-closeIcon"
+                                color="#000"
+                                disabled={false}
+                                fill={false}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={false}
+                                size={null}
                               >
-                                <Ripple
-                                  className="tss-8ivrra-closeIcon"
-                                  classes={
+                                <div
+                                  className="ui-shared__ripple sg-8ivrra-closeIcon"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={
                                     {
-                                      "container": "tss-1dfkr3n-Ripple-container",
+                                      "overflow": "hidden",
+                                      "position": "relative",
                                     }
                                   }
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
-                                  onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
                                 >
-                                  <div
-                                    className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                    data-test-id="Ripple"
-                                    onClick={[Function]}
-                                    style={null}
+                                  <Cross
+                                    size={24}
                                   >
-                                    <Cross
+                                    <Icon
+                                      content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                       size={24}
                                     >
-                                      <Icon
-                                        content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                        size={24}
-                                      >
-                                        <svg
-                                          className="tss-1n8b10t-root common__icon"
-                                          dangerouslySetInnerHTML={
-                                            {
-                                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                            }
+                                      <svg
+                                        className="sg-1n8b10t-root common__icon"
+                                        dangerouslySetInnerHTML={
+                                          {
+                                            "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                           }
-                                          style={
-                                            {
-                                              "fill": undefined,
-                                              "fontSize": 24,
-                                            }
+                                        }
+                                        style={
+                                          {
+                                            "fill": undefined,
+                                            "fontSize": 24,
                                           }
-                                          viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </RippleWithStyles>
+                                        }
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      />
+                                    </Icon>
+                                  </Cross>
+                                </div>
+                              </Ripple>
                             </button>
                             <GridItem
-                              className="tss-u1j3gu-title"
+                              className="sg-1gh7dpa-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -710,7 +702,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               tabIndex={0}
                             >
                               <div
-                                className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                className="sg-1yim49x-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
@@ -722,7 +714,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </div>
                     </Header>
                     <div
-                      className="tss-1h0yrl3-progressBarContainer"
+                      className="sg-1h0yrl3-progressBarContainer"
                     >
                       <ProgressBar
                         isVisible={false}
@@ -767,14 +759,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             }
                           >
                             <div
-                              className="tss-hmfbp5-innerElement"
+                              className="sg-hmfbp5-innerElement"
                             />
                           </div>
                         </Transition>
                       </ProgressBar>
                     </div>
                     <div
-                      className="tss-12f1i2r-content"
+                      className="sg-12f1i2r-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -796,7 +788,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           selected={false}
                         >
                           <button
-                            className="tss-1rm4ebj-button"
+                            className="sg-1yjeh22-button"
                             key="1-1"
                             onClick={[Function]}
                             type="button"
@@ -819,7 +811,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           selected={false}
                         >
                           <button
-                            className="tss-1rm4ebj-button"
+                            className="sg-1yjeh22-button"
                             key="1-2"
                             onClick={[Function]}
                             type="button"
@@ -852,7 +844,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       {
                         "current": <div
                           aria-hidden="true"
-                          class="tss-1tlnanp-backdrop  common__backdrop"
+                          class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
                           style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
@@ -869,7 +861,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   >
                     <div
                       aria-hidden={true}
-                      className="tss-1tlnanp-backdrop  common__backdrop"
+                      className="sg-1tlnanp-backdrop  common__backdrop"
                       data-test-id="Backdrop"
                       onClick={[Function]}
                       style={
@@ -978,18 +970,18 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="tss-1t3yptj-button"
+        className="sg-tky32e-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
         <div
-          className="tss-1pccjd4-label"
+          className="sg-1pccjd4-label"
           data-test-id="nested-picker-label"
         >
           Picker Label
         </div>
         <div
-          className="tss-2yv5tj-selection"
+          className="sg-2yv5tj-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -1048,17 +1040,17 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               contentRef={
                 {
                   "current": <div
-                    class="tss-12f1i2r-content"
+                    class="sg-12f1i2r-content"
                   >
                     <button
-                      class="tss-1rm4ebj-button"
+                      class="sg-1yjeh22-button"
                       type="button"
                       value="1-1"
                     >
                       Category 1-1
                     </button>
                     <button
-                      class="tss-1rm4ebj-button"
+                      class="sg-1yjeh22-button"
                       type="button"
                       value="1-2"
                     >
@@ -1087,11 +1079,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   animation={
                     {
                       "duration": 300,
-                      "in": "tss-1qtpl1n-drawerAnimIn",
-                      "out": "tss-1uynekm-drawerAnimOut",
+                      "in": "sg-1qtpl1n-drawerAnimIn",
+                      "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="tss-bfa6v5-container"
+                  className="sg-omro4t-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1100,7 +1092,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-modal={true}
-                    className="tss-bfa6v5-container tss-dxx72o-container tss-1uynekm-drawerAnimOut common__drawer"
+                    className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1122,79 +1114,70 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                         className=""
                       >
                         <Grid
-                          className="tss-uz2gz-wrapper"
+                          className="sg-uz2gz-wrapper"
                           component="div"
                           wrap={false}
                         >
                           <div
-                            className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                            className="common__grid sg-1dxmo4l-root-noWrap-wrapper"
                           >
                             <button
                               aria-label="common.close"
-                              className="tss-tnekr1-closeButton"
+                              className="sg-cb4y3g-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
-                              <RippleWithStyles
-                                className="tss-8ivrra-closeIcon"
+                              <Ripple
+                                className="sg-8ivrra-closeIcon"
+                                color="#000"
+                                disabled={false}
+                                fill={false}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={false}
+                                size={null}
                               >
-                                <Ripple
-                                  className="tss-8ivrra-closeIcon"
-                                  classes={
+                                <div
+                                  className="ui-shared__ripple sg-8ivrra-closeIcon"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={
                                     {
-                                      "container": "tss-1dfkr3n-Ripple-container",
+                                      "overflow": "hidden",
+                                      "position": "relative",
                                     }
                                   }
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
-                                  onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
                                 >
-                                  <div
-                                    className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                    data-test-id="Ripple"
-                                    onClick={[Function]}
-                                    style={
-                                      {
-                                        "overflow": "hidden",
-                                        "position": "relative",
-                                      }
-                                    }
+                                  <Cross
+                                    size={24}
                                   >
-                                    <Cross
+                                    <Icon
+                                      content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                       size={24}
                                     >
-                                      <Icon
-                                        content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                        size={24}
-                                      >
-                                        <svg
-                                          className="tss-1n8b10t-root common__icon"
-                                          dangerouslySetInnerHTML={
-                                            {
-                                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                            }
+                                      <svg
+                                        className="sg-1n8b10t-root common__icon"
+                                        dangerouslySetInnerHTML={
+                                          {
+                                            "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                           }
-                                          style={
-                                            {
-                                              "fill": undefined,
-                                              "fontSize": 24,
-                                            }
+                                        }
+                                        style={
+                                          {
+                                            "fill": undefined,
+                                            "fontSize": 24,
                                           }
-                                          viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </RippleWithStyles>
+                                        }
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      />
+                                    </Icon>
+                                  </Cross>
+                                </div>
+                              </Ripple>
                             </button>
                             <GridItem
-                              className="tss-u1j3gu-title"
+                              className="sg-1gh7dpa-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -1202,7 +1185,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               tabIndex={0}
                             >
                               <div
-                                className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                className="sg-1yim49x-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
@@ -1214,7 +1197,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </div>
                     </Header>
                     <div
-                      className="tss-1h0yrl3-progressBarContainer"
+                      className="sg-1h0yrl3-progressBarContainer"
                     >
                       <ProgressBar
                         isVisible={false}
@@ -1259,14 +1242,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             }
                           >
                             <div
-                              className="tss-hmfbp5-innerElement"
+                              className="sg-hmfbp5-innerElement"
                             />
                           </div>
                         </Transition>
                       </ProgressBar>
                     </div>
                     <div
-                      className="tss-12f1i2r-content"
+                      className="sg-12f1i2r-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -1288,7 +1271,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           selected={false}
                         >
                           <button
-                            className="tss-1rm4ebj-button"
+                            className="sg-1yjeh22-button"
                             key="1-1"
                             onClick={[Function]}
                             type="button"
@@ -1311,7 +1294,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           selected={false}
                         >
                           <button
-                            className="tss-1rm4ebj-button"
+                            className="sg-1yjeh22-button"
                             key="1-2"
                             onClick={[Function]}
                             type="button"
@@ -1344,7 +1327,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       {
                         "current": <div
                           aria-hidden="true"
-                          class="tss-1tlnanp-backdrop  common__backdrop"
+                          class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
                           style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                         />,
@@ -1361,7 +1344,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                   >
                     <div
                       aria-hidden={true}
-                      className="tss-1tlnanp-backdrop  common__backdrop"
+                      className="sg-1tlnanp-backdrop  common__backdrop"
                       data-test-id="Backdrop"
                       onClick={[Function]}
                       style={
@@ -1431,18 +1414,18 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="tss-1t3yptj-button"
+        className="sg-tky32e-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
         <div
-          className="tss-1pccjd4-label"
+          className="sg-1pccjd4-label"
           data-test-id="nested-picker-label"
         >
           Picker Label
         </div>
         <div
-          className="tss-2yv5tj-selection"
+          className="sg-2yv5tj-selection"
           data-test-id="nested-picker-selection"
         >
           Category 1-1
@@ -1501,17 +1484,17 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               contentRef={
                 {
                   "current": <div
-                    class="tss-12f1i2r-content"
+                    class="sg-12f1i2r-content"
                   >
                     <button
-                      class="tss-1mcy32m-buttonSelected"
+                      class="sg-150wio3-buttonSelected"
                       type="button"
                       value="1-1"
                     >
                       Category 1-1
                     </button>
                     <button
-                      class="tss-1rm4ebj-button"
+                      class="sg-1yjeh22-button"
                       type="button"
                       value="1-2"
                     >
@@ -1534,17 +1517,17 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               title="Picker Label"
             >
               <section
-                className="ui-shared__sheet tss-18ghh1t-section"
+                className="ui-shared__sheet sg-18ghh1t-section"
               >
                 <Drawer
                   animation={
                     {
                       "duration": 300,
-                      "in": "tss-1qtpl1n-drawerAnimIn",
-                      "out": "tss-1uynekm-drawerAnimOut",
+                      "in": "sg-1qtpl1n-drawerAnimIn",
+                      "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="tss-bfa6v5-container"
+                  className="sg-omro4t-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1553,7 +1536,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 >
                   <div
                     aria-modal={true}
-                    className="tss-bfa6v5-container tss-dxx72o-container tss-1qtpl1n-drawerAnimIn common__drawer"
+                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1575,74 +1558,70 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                         className=""
                       >
                         <Grid
-                          className="tss-uz2gz-wrapper"
+                          className="sg-uz2gz-wrapper"
                           component="div"
                           wrap={false}
                         >
                           <div
-                            className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                            className="common__grid sg-1dxmo4l-root-noWrap-wrapper"
                           >
                             <button
                               aria-label="common.close"
-                              className="tss-tnekr1-closeButton"
+                              className="sg-cb4y3g-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
-                              <RippleWithStyles
-                                className="tss-8ivrra-closeIcon"
+                              <Ripple
+                                className="sg-8ivrra-closeIcon"
+                                color="#000"
+                                disabled={false}
+                                fill={false}
+                                onClick={[Function]}
+                                onComplete={[Function]}
+                                overflow={false}
+                                size={null}
                               >
-                                <Ripple
-                                  className="tss-8ivrra-closeIcon"
-                                  classes={
+                                <div
+                                  className="ui-shared__ripple sg-8ivrra-closeIcon"
+                                  data-test-id="Ripple"
+                                  onClick={[Function]}
+                                  style={
                                     {
-                                      "container": "tss-1dfkr3n-Ripple-container",
+                                      "overflow": "hidden",
+                                      "position": "relative",
                                     }
                                   }
-                                  color="#000"
-                                  disabled={false}
-                                  fill={false}
-                                  onClick={[Function]}
-                                  onComplete={[Function]}
-                                  overflow={false}
-                                  size={null}
                                 >
-                                  <div
-                                    className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                    data-test-id="Ripple"
-                                    onClick={[Function]}
-                                    style={null}
+                                  <Cross
+                                    size={24}
                                   >
-                                    <Cross
+                                    <Icon
+                                      content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                       size={24}
                                     >
-                                      <Icon
-                                        content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                        size={24}
-                                      >
-                                        <svg
-                                          className="tss-1n8b10t-root common__icon"
-                                          dangerouslySetInnerHTML={
-                                            {
-                                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                            }
+                                      <svg
+                                        className="sg-1n8b10t-root common__icon"
+                                        dangerouslySetInnerHTML={
+                                          {
+                                            "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                           }
-                                          style={
-                                            {
-                                              "fill": undefined,
-                                              "fontSize": 24,
-                                            }
+                                        }
+                                        style={
+                                          {
+                                            "fill": undefined,
+                                            "fontSize": 24,
                                           }
-                                          viewBox="0 0 24 24"
-                                          xmlns="http://www.w3.org/2000/svg"
-                                        />
-                                      </Icon>
-                                    </Cross>
-                                  </div>
-                                </Ripple>
-                              </RippleWithStyles>
+                                        }
+                                        viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      />
+                                    </Icon>
+                                  </Cross>
+                                </div>
+                              </Ripple>
                             </button>
                             <GridItem
-                              className="tss-u1j3gu-title"
+                              className="sg-1gh7dpa-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -1650,7 +1629,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                               tabIndex={0}
                             >
                               <div
-                                className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                className="sg-1yim49x-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
@@ -1662,7 +1641,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       </div>
                     </Header>
                     <div
-                      className="tss-1h0yrl3-progressBarContainer"
+                      className="sg-1h0yrl3-progressBarContainer"
                     >
                       <ProgressBar
                         isVisible={false}
@@ -1707,14 +1686,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             }
                           >
                             <div
-                              className="tss-hmfbp5-innerElement"
+                              className="sg-hmfbp5-innerElement"
                             />
                           </div>
                         </Transition>
                       </ProgressBar>
                     </div>
                     <div
-                      className="tss-12f1i2r-content"
+                      className="sg-12f1i2r-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -1736,7 +1715,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           selected={true}
                         >
                           <button
-                            className="tss-1mcy32m-buttonSelected"
+                            className="sg-150wio3-buttonSelected"
                             key="1-1"
                             onClick={[Function]}
                             type="button"
@@ -1759,7 +1738,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           selected={false}
                         >
                           <button
-                            className="tss-1rm4ebj-button"
+                            className="sg-1yjeh22-button"
                             key="1-2"
                             onClick={[Function]}
                             type="button"
@@ -1792,7 +1771,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       {
                         "current": <div
                           aria-hidden="true"
-                          class="tss-1tlnanp-backdrop  common__backdrop"
+                          class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
                           style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
@@ -1809,7 +1788,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                   >
                     <div
                       aria-hidden={true}
-                      className="tss-1tlnanp-backdrop  common__backdrop"
+                      className="sg-1tlnanp-backdrop  common__backdrop"
                       data-test-id="Backdrop"
                       onClick={[Function]}
                       style={
@@ -1877,18 +1856,18 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
       <div
         aria-disabled={true}
         aria-hidden={true}
-        className="tss-1kxw2sq-button-buttonDisabled"
+        className="sg-hlwkfd-button-buttonDisabled"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
         <div
-          className="tss-1pccjd4-label"
+          className="sg-1pccjd4-label"
           data-test-id="nested-picker-label"
         >
           Picker Label
         </div>
         <div
-          className="tss-2yv5tj-selection"
+          className="sg-2yv5tj-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -1969,11 +1948,11 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                   animation={
                     {
                       "duration": 300,
-                      "in": "tss-1qtpl1n-drawerAnimIn",
-                      "out": "tss-1uynekm-drawerAnimOut",
+                      "in": "sg-1qtpl1n-drawerAnimIn",
+                      "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="tss-bfa6v5-container"
+                  className="sg-omro4t-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2065,18 +2044,18 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="tss-1t3yptj-button"
+        className="sg-tky32e-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
         <div
-          className="tss-1pccjd4-label"
+          className="sg-1pccjd4-label"
           data-test-id="nested-picker-label"
         >
           Picker Label
         </div>
         <div
-          className="tss-2yv5tj-selection"
+          className="sg-2yv5tj-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -2157,11 +2136,11 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                   animation={
                     {
                       "duration": 300,
-                      "in": "tss-1qtpl1n-drawerAnimIn",
-                      "out": "tss-1uynekm-drawerAnimOut",
+                      "in": "sg-1qtpl1n-drawerAnimIn",
+                      "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="tss-bfa6v5-container"
+                  className="sg-omro4t-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2253,12 +2232,12 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="tss-1t3yptj-button"
+        className="sg-tky32e-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
         <div
-          className="tss-2yv5tj-selection"
+          className="sg-2yv5tj-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -2339,11 +2318,11 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                   animation={
                     {
                       "duration": 300,
-                      "in": "tss-1qtpl1n-drawerAnimIn",
-                      "out": "tss-1uynekm-drawerAnimOut",
+                      "in": "sg-1qtpl1n-drawerAnimIn",
+                      "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="tss-bfa6v5-container"
+                  className="sg-omro4t-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}

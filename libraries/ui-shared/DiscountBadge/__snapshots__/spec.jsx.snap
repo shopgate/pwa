@@ -8,14 +8,17 @@ exports[`<DiscountBadge /> should render the text 1`] = `
   tabIndex={-1}
 >
   <Text
+    acceptPlainTextWithPlaceholders={false}
     aria-hidden={true}
-    className="tss-yzhxh7-small  theme__discount-badge"
+    className="sg-yzhxh7-small theme__discount-badge"
     params={
       [
         null,
       ]
     }
+    role={null}
     string="foo"
+    transform={null}
   />
 </div>
 `;
@@ -28,14 +31,17 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
   tabIndex={-1}
 >
   <Text
+    acceptPlainTextWithPlaceholders={false}
     aria-hidden={true}
-    className="tss-yzhxh7-small  theme__discount-badge"
+    className="sg-yzhxh7-small theme__discount-badge"
     params={
       [
         20,
       ]
     }
+    role={null}
     string="SAVE {0}%"
+    transform={null}
   />
 </div>
 `;

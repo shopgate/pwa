@@ -3,7 +3,7 @@
 exports[`<Footer /> should render the component 1`] = `
 <Footer>
   <div
-    className="tss-1cehq2z-footer engage__footer"
+    className="sg-1cehq2z-footer engage__footer"
   >
     <div
       id="AppFooter"

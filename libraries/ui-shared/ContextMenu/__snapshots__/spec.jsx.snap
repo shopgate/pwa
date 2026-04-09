@@ -15,7 +15,7 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
   showToggle={true}
 >
   <div
-    className="css-13azwyo ui-shared__context-menu"
+    className="sg-p4e9kp-container ui-shared__context-menu"
     data-test-id="contextMenu"
   >
     <button
@@ -23,7 +23,7 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
       aria-expanded={null}
       aria-haspopup="true"
       aria-label="navigation.open_menu"
-      className="css-1jsppqd"
+      className="sg-jzqegf-button"
       disabled={false}
       onClick={[Function]}
       type="button"
@@ -36,7 +36,7 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
           content="<path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>"
         >
           <svg
-            className="tss-1n8b10t-root common__icon"
+            className="sg-1n8b10t-root common__icon"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M0 0h24v24H0z" fill="none"/><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>",
@@ -63,7 +63,7 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
 
 exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
 <div
-  className="css-13azwyo ui-shared__context-menu"
+  className="sg-p4e9kp-container ui-shared__context-menu"
   data-test-id="contextMenu"
 >
   <button
@@ -71,7 +71,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
     aria-expanded={true}
     aria-haspopup="true"
     aria-label="navigation.open_menu"
-    className="css-1jsppqd"
+    className="sg-jzqegf-button"
     disabled={false}
     onClick={[Function]}
     type="button"
@@ -87,7 +87,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
       active={true}
     >
       <div
-        className="css-dvvqn2"
+        className="sg-a7e1pr-overlay"
       >
         <Backdrop
           className=""
@@ -112,7 +112,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
           >
             <div
               aria-modal="true"
-              className="css-1uoznzv"
+              className="sg-t84e2f-menu"
               role="dialog"
               tabIndex="-1"
             >
@@ -151,7 +151,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
 
 exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] = `
 <div
-  className="css-13azwyo ui-shared__context-menu"
+  className="sg-p4e9kp-container ui-shared__context-menu"
   data-test-id="contextMenu"
 >
   <ConnectedReactPortal
@@ -161,7 +161,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] 
       active={true}
     >
       <div
-        className="css-dvvqn2"
+        className="sg-a7e1pr-overlay"
       >
         <Backdrop
           className=""
@@ -186,7 +186,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] 
           >
             <div
               aria-modal="true"
-              className="css-1uoznzv"
+              className="sg-t84e2f-menu"
               role="dialog"
               tabIndex="-1"
             >

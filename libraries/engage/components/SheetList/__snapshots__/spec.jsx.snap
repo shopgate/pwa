@@ -1,448 +1,342 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SheetList /> should not render invalid children 1`] = `
-<SheetListWithStyles>
-  <SheetList
-    className={null}
-    classes={
-      {
-        "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-        "item": "tss-10ao2s8-SheetList-item",
-        "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-        "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-        "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-      }
-    }
-    hasImages={false}
-    testId={null}
+<SheetList
+  className={null}
+  hasImages={false}
+  testId={null}
+>
+  <List
+    className="engage__sheet-list"
+    role="listbox"
   >
-    <List
-      className="null engage__sheet-list"
+    <ul
+      className="engage__sheet-list common_list"
       role="listbox"
     >
-      <ul
-        className="null engage__sheet-list common_list"
-        role="listbox"
+      <ListItem
+        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+        isSelected={false}
+        key="child-0/.0"
+        role={null}
+        tabIndex={0}
       >
-        <ListItem
-          className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-          isSelected={false}
-          key="child-0/.0"
+        <li
+          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+          data-test-id="listItem"
           role={null}
-          tabIndex={0}
         >
-          <li
-            className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-            data-test-id="listItem"
-            role={null}
+          <div
+            className="sg-1cl0k0e-innerContainer"
+            data-test-id={null}
           >
-            <div
-              className="tss-1adanqp-SheetList-innerContainer"
-              data-test-id={null}
+            <ForwardRef(WithForwardedRef(Item))
+              title="List Item"
             >
-              <ForwardRef(WithForwardedRef(ItemWithStyles))
+              <Item
+                className={null}
+                description={null}
+                forwardedRef={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                leftComponent={null}
+                link={null}
+                linkComponent={[Function]}
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId={null}
                 title="List Item"
               >
-                <ItemWithStyles
-                  forwardedRef={null}
-                  title="List Item"
+                <div
+                  className="engage__sheet-list__item"
+                  data-test-id={null}
                 >
-                  <Item
-                    className={null}
-                    classes={
-                      {
-                        "description": "tss-14slm4s-Item-description",
-                        "disabled": "tss-1ot0pf5-Item-disabled",
-                        "grid": "tss-1l68gs0-Item-grid",
-                        "image": "tss-wlqzfe-Item-image",
-                        "selected": "tss-v08ox0-Item-selected",
-                        "title": "tss-1wzwt5u-Item-title",
-                      }
-                    }
-                    description={null}
-                    forwardedRef={null}
-                    image={null}
-                    isDisabled={false}
-                    isSelected={false}
-                    leftComponent={null}
-                    link={null}
-                    linkComponent={[Function]}
-                    linkState={null}
-                    onClick={null}
-                    rightComponent={null}
-                    testId={null}
-                    title="List Item"
+                  <Grid
+                    className="sg-oxesat-grid"
+                    component="div"
+                    wrap={false}
                   >
                     <div
-                      className="engage__sheet-list__item"
-                      data-test-id={null}
+                      className="common__grid sg-1m2nk0b-root-noWrap-grid"
                     >
-                      <Grid
-                        className="tss-1l68gs0-Item-grid"
+                      <GridItem
+                        className="sg-h6motv-title"
                         component="div"
-                        wrap={false}
+                        grow={1}
+                        shrink={1}
                       >
                         <div
-                          className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                          className="sg-427d4o-root-title"
                         >
-                          <GridItem
-                            className="tss-1wzwt5u-Item-title"
-                            component="div"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <div
-                              className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
-                            >
-                              <div>
-                                List Item
-                              </div>
-                            </div>
-                          </GridItem>
+                          <div>
+                            List Item
+                          </div>
                         </div>
-                      </Grid>
+                      </GridItem>
                     </div>
-                  </Item>
-                </ItemWithStyles>
-              </ForwardRef(WithForwardedRef(ItemWithStyles))>
-            </div>
-          </li>
-        </ListItem>
-      </ul>
-    </List>
-  </SheetList>
-</SheetListWithStyles>
+                  </Grid>
+                </div>
+              </Item>
+            </ForwardRef(WithForwardedRef(Item))>
+          </div>
+        </li>
+      </ListItem>
+    </ul>
+  </List>
+</SheetList>
 `;
 
 exports[`<SheetList /> should not render without children 1`] = `
-<SheetListWithStyles>
-  <SheetList
-    className={null}
-    classes={
-      {
-        "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-        "item": "tss-10ao2s8-SheetList-item",
-        "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-        "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-        "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-      }
-    }
-    hasImages={false}
-    testId={null}
-  />
-</SheetListWithStyles>
+<SheetList
+  className={null}
+  hasImages={false}
+  testId={null}
+/>
 `;
 
 exports[`<SheetList /> should render a child and add styles for list items with images 1`] = `
-<SheetListWithStyles
+<SheetList
+  className={null}
   hasImages={true}
+  testId={null}
 >
-  <SheetList
-    className={null}
-    classes={
-      {
-        "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-        "item": "tss-10ao2s8-SheetList-item",
-        "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-        "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-        "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-      }
-    }
-    hasImages={true}
-    testId={null}
+  <List
+    className="engage__sheet-list"
+    role="listbox"
   >
-    <List
-      className="null engage__sheet-list"
+    <ul
+      className="engage__sheet-list common_list"
       role="listbox"
     >
-      <ul
-        className="null engage__sheet-list common_list"
-        role="listbox"
+      <ListItem
+        className="engage__sheet-list__item sg-wjbn21-item-itemWithImage-itemNotLast"
+        isSelected={false}
+        key="child-0/.0"
+        role={null}
+        tabIndex={0}
       >
-        <ListItem
-          className="tss-10ao2s8-SheetList-item tss-1km5zk-SheetList-itemWithImage tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-          isSelected={false}
-          key="child-0/.0"
+        <li
+          className="engage__sheet-list__item common__list__list-item sg-nbvjw8-item-item-itemWithImage-itemNotLast-unselected"
+          data-test-id="listItem"
           role={null}
-          tabIndex={0}
         >
-          <li
-            className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-1km5zk-SheetList-itemWithImage tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-            data-test-id="listItem"
-            role={null}
+          <div
+            className="sg-1cl0k0e-innerContainer"
+            data-test-id={null}
           >
-            <div
-              className="tss-1adanqp-SheetList-innerContainer"
-              data-test-id={null}
+            <ForwardRef(WithForwardedRef(Item))
+              title="List Item"
             >
-              <ForwardRef(WithForwardedRef(ItemWithStyles))
+              <Item
+                className={null}
+                description={null}
+                forwardedRef={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                leftComponent={null}
+                link={null}
+                linkComponent={[Function]}
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId={null}
                 title="List Item"
               >
-                <ItemWithStyles
-                  forwardedRef={null}
-                  title="List Item"
+                <div
+                  className="engage__sheet-list__item"
+                  data-test-id={null}
                 >
-                  <Item
-                    className={null}
-                    classes={
-                      {
-                        "description": "tss-14slm4s-Item-description",
-                        "disabled": "tss-1ot0pf5-Item-disabled",
-                        "grid": "tss-1l68gs0-Item-grid",
-                        "image": "tss-wlqzfe-Item-image",
-                        "selected": "tss-v08ox0-Item-selected",
-                        "title": "tss-1wzwt5u-Item-title",
-                      }
-                    }
-                    description={null}
-                    forwardedRef={null}
-                    image={null}
-                    isDisabled={false}
-                    isSelected={false}
-                    leftComponent={null}
-                    link={null}
-                    linkComponent={[Function]}
-                    linkState={null}
-                    onClick={null}
-                    rightComponent={null}
-                    testId={null}
-                    title="List Item"
+                  <Grid
+                    className="sg-oxesat-grid"
+                    component="div"
+                    wrap={false}
                   >
                     <div
-                      className="engage__sheet-list__item"
-                      data-test-id={null}
+                      className="common__grid sg-1m2nk0b-root-noWrap-grid"
                     >
-                      <Grid
-                        className="tss-1l68gs0-Item-grid"
+                      <GridItem
+                        className="sg-h6motv-title"
                         component="div"
-                        wrap={false}
+                        grow={1}
+                        shrink={1}
                       >
                         <div
-                          className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                          className="sg-427d4o-root-title"
                         >
-                          <GridItem
-                            className="tss-1wzwt5u-Item-title"
-                            component="div"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <div
-                              className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
-                            >
-                              <div>
-                                List Item
-                              </div>
-                            </div>
-                          </GridItem>
+                          <div>
+                            List Item
+                          </div>
                         </div>
-                      </Grid>
+                      </GridItem>
                     </div>
-                  </Item>
-                </ItemWithStyles>
-              </ForwardRef(WithForwardedRef(ItemWithStyles))>
-            </div>
-          </li>
-        </ListItem>
-      </ul>
-    </List>
-  </SheetList>
-</SheetListWithStyles>
+                  </Grid>
+                </div>
+              </Item>
+            </ForwardRef(WithForwardedRef(Item))>
+          </div>
+        </li>
+      </ListItem>
+    </ul>
+  </List>
+</SheetList>
 `;
 
 exports[`<SheetList /> should render with two children 1`] = `
-<SheetListWithStyles>
-  <SheetList
-    className={null}
-    classes={
-      {
-        "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-        "item": "tss-10ao2s8-SheetList-item",
-        "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-        "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-        "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-      }
-    }
-    hasImages={false}
-    testId={null}
+<SheetList
+  className={null}
+  hasImages={false}
+  testId={null}
+>
+  <List
+    className="engage__sheet-list"
+    role="listbox"
   >
-    <List
-      className="null engage__sheet-list"
+    <ul
+      className="engage__sheet-list common_list"
       role="listbox"
     >
-      <ul
-        className="null engage__sheet-list common_list"
-        role="listbox"
+      <ListItem
+        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+        isSelected={false}
+        key="child-0/.0"
+        role={null}
+        tabIndex={0}
       >
-        <ListItem
-          className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-          isSelected={false}
-          key="child-0/.0"
+        <li
+          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+          data-test-id="listItem"
           role={null}
-          tabIndex={0}
         >
-          <li
-            className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-            data-test-id="listItem"
-            role={null}
+          <div
+            className="sg-1cl0k0e-innerContainer"
+            data-test-id={null}
           >
-            <div
-              className="tss-1adanqp-SheetList-innerContainer"
-              data-test-id={null}
+            <ForwardRef(WithForwardedRef(Item))
+              title="List Item"
             >
-              <ForwardRef(WithForwardedRef(ItemWithStyles))
+              <Item
+                className={null}
+                description={null}
+                forwardedRef={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                leftComponent={null}
+                link={null}
+                linkComponent={[Function]}
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId={null}
                 title="List Item"
               >
-                <ItemWithStyles
-                  forwardedRef={null}
-                  title="List Item"
+                <div
+                  className="engage__sheet-list__item"
+                  data-test-id={null}
                 >
-                  <Item
-                    className={null}
-                    classes={
-                      {
-                        "description": "tss-14slm4s-Item-description",
-                        "disabled": "tss-1ot0pf5-Item-disabled",
-                        "grid": "tss-1l68gs0-Item-grid",
-                        "image": "tss-wlqzfe-Item-image",
-                        "selected": "tss-v08ox0-Item-selected",
-                        "title": "tss-1wzwt5u-Item-title",
-                      }
-                    }
-                    description={null}
-                    forwardedRef={null}
-                    image={null}
-                    isDisabled={false}
-                    isSelected={false}
-                    leftComponent={null}
-                    link={null}
-                    linkComponent={[Function]}
-                    linkState={null}
-                    onClick={null}
-                    rightComponent={null}
-                    testId={null}
-                    title="List Item"
+                  <Grid
+                    className="sg-oxesat-grid"
+                    component="div"
+                    wrap={false}
                   >
                     <div
-                      className="engage__sheet-list__item"
-                      data-test-id={null}
+                      className="common__grid sg-1m2nk0b-root-noWrap-grid"
                     >
-                      <Grid
-                        className="tss-1l68gs0-Item-grid"
+                      <GridItem
+                        className="sg-h6motv-title"
                         component="div"
-                        wrap={false}
+                        grow={1}
+                        shrink={1}
                       >
                         <div
-                          className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                          className="sg-427d4o-root-title"
                         >
-                          <GridItem
-                            className="tss-1wzwt5u-Item-title"
-                            component="div"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <div
-                              className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
-                            >
-                              <div>
-                                List Item
-                              </div>
-                            </div>
-                          </GridItem>
+                          <div>
+                            List Item
+                          </div>
                         </div>
-                      </Grid>
+                      </GridItem>
                     </div>
-                  </Item>
-                </ItemWithStyles>
-              </ForwardRef(WithForwardedRef(ItemWithStyles))>
-            </div>
-          </li>
-        </ListItem>
-        <ListItem
-          className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-          isSelected={false}
-          key="child-1/.1"
+                  </Grid>
+                </div>
+              </Item>
+            </ForwardRef(WithForwardedRef(Item))>
+          </div>
+        </li>
+      </ListItem>
+      <ListItem
+        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+        isSelected={false}
+        key="child-1/.1"
+        role={null}
+        tabIndex={0}
+      >
+        <li
+          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+          data-test-id="listItem"
           role={null}
-          tabIndex={0}
         >
-          <li
-            className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-            data-test-id="listItem"
-            role={null}
+          <div
+            className="sg-1cl0k0e-innerContainer"
+            data-test-id={null}
           >
-            <div
-              className="tss-1adanqp-SheetList-innerContainer"
-              data-test-id={null}
+            <ForwardRef(WithForwardedRef(Item))
+              title="List Item"
             >
-              <ForwardRef(WithForwardedRef(ItemWithStyles))
+              <Item
+                className={null}
+                description={null}
+                forwardedRef={null}
+                image={null}
+                isDisabled={false}
+                isSelected={false}
+                leftComponent={null}
+                link={null}
+                linkComponent={[Function]}
+                linkState={null}
+                onClick={null}
+                rightComponent={null}
+                testId={null}
                 title="List Item"
               >
-                <ItemWithStyles
-                  forwardedRef={null}
-                  title="List Item"
+                <div
+                  className="engage__sheet-list__item"
+                  data-test-id={null}
                 >
-                  <Item
-                    className={null}
-                    classes={
-                      {
-                        "description": "tss-14slm4s-Item-description",
-                        "disabled": "tss-1ot0pf5-Item-disabled",
-                        "grid": "tss-1l68gs0-Item-grid",
-                        "image": "tss-wlqzfe-Item-image",
-                        "selected": "tss-v08ox0-Item-selected",
-                        "title": "tss-1wzwt5u-Item-title",
-                      }
-                    }
-                    description={null}
-                    forwardedRef={null}
-                    image={null}
-                    isDisabled={false}
-                    isSelected={false}
-                    leftComponent={null}
-                    link={null}
-                    linkComponent={[Function]}
-                    linkState={null}
-                    onClick={null}
-                    rightComponent={null}
-                    testId={null}
-                    title="List Item"
+                  <Grid
+                    className="sg-oxesat-grid"
+                    component="div"
+                    wrap={false}
                   >
                     <div
-                      className="engage__sheet-list__item"
-                      data-test-id={null}
+                      className="common__grid sg-1m2nk0b-root-noWrap-grid"
                     >
-                      <Grid
-                        className="tss-1l68gs0-Item-grid"
+                      <GridItem
+                        className="sg-h6motv-title"
                         component="div"
-                        wrap={false}
+                        grow={1}
+                        shrink={1}
                       >
                         <div
-                          className="tss-1l68gs0-Item-grid tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                          className="sg-427d4o-root-title"
                         >
-                          <GridItem
-                            className="tss-1wzwt5u-Item-title"
-                            component="div"
-                            grow={1}
-                            shrink={1}
-                          >
-                            <div
-                              className="tss-1wzwt5u-Item-title tss-xljr6b-root common__grid__item--custom-flex"
-                            >
-                              <div>
-                                List Item
-                              </div>
-                            </div>
-                          </GridItem>
+                          <div>
+                            List Item
+                          </div>
                         </div>
-                      </Grid>
+                      </GridItem>
                     </div>
-                  </Item>
-                </ItemWithStyles>
-              </ForwardRef(WithForwardedRef(ItemWithStyles))>
-            </div>
-          </li>
-        </ListItem>
-      </ul>
-    </List>
-  </SheetList>
-</SheetListWithStyles>
+                  </Grid>
+                </div>
+              </Item>
+            </ForwardRef(WithForwardedRef(Item))>
+          </div>
+        </li>
+      </ListItem>
+    </ul>
+  </List>
+</SheetList>
 `;
