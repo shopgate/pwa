@@ -85,6 +85,7 @@ export default function resultsByHash(state = {}, action = {}) {
           ...state[action.hash],
           products: [],
           expires: 0,
+          totalResultCount: null,
         },
       };
     }
