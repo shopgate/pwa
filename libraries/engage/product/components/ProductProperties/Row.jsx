@@ -36,9 +36,11 @@ const Row = ({ label, value, type }) => {
       tabIndex={0}
     >
       <td className={classes.tableCell} aria-hidden>
+        { /* eslint-disable-next-line react/no-danger */}
         <span dangerouslySetInnerHTML={{ __html: label }} />
       </td>
       <td className={classes.tableCell} data-test-id={`property: ${value}`} aria-hidden>
+        { /* eslint-disable-next-line react/no-danger */}
         <span dangerouslySetInnerHTML={{ __html: value }} />
       </td>
     </tr>

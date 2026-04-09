@@ -93,7 +93,7 @@ const SimulatedInsetTop = ({
       [classes.styleLight]: statusBarStyle === 'light',
       [classes.styleNone]: statusBarStyle === 'none',
     }),
-    [highlightInset, statusBarStyle]
+    [highlightInset, statusBarStyle, classes, cx]
   );
 
   return (

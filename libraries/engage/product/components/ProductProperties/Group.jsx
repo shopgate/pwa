@@ -24,8 +24,8 @@ const Group = ({ group }) => {
 
   return (
     <tr>
-      {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
       <td colSpan="2" className={classes.subgroup}>
+        {/* eslint-disable-next-line react/no-danger */}
         <span dangerouslySetInnerHTML={{ __html: group }} />
       </td>
     </tr>

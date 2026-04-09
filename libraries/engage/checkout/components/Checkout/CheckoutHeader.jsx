@@ -47,7 +47,10 @@ const CheckoutTitle = ({
         </h1>
         {stepFrom !== null ? (
           <h2 className={classes.step}>
-            {i18n.text('checkout.steps', { from: stepFrom, to: stepTo })}
+            {i18n.text('checkout.steps', {
+              from: stepFrom,
+              to: stepTo,
+            })}
           </h2>
         ) : null}
       </div>

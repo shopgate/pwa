@@ -49,10 +49,16 @@ const RangeSlider = ({
   const draggedHandle = useRef(null);
   const touchOffset = useRef(0);
   const draggedHandlePixelOffset = useRef(0);
-  const stateRef = useRef({ rangeMin: 0, rangeMax: 1 });
+  const stateRef = useRef({
+    rangeMin: 0,
+    rangeMax: 1,
+  });
   const moveRef = useRef(() => { });
   const endRef = useRef(() => { });
-  const docListenersRef = useRef({ onMove: null, onEnd: null });
+  const docListenersRef = useRef({
+    onMove: null,
+    onEnd: null,
+  });
   const [, forceActiveRender] = useReducer(x => x + 1, 0);
 
   const ease = useMemo(() => (
@@ -195,7 +201,10 @@ const RangeSlider = ({
     draggedHandlePixelOffset.current *= offsetWidth;
 
     setState((prev) => {
-      const next = { ...prev, ...stateUpdate };
+      const next = {
+        ...prev,
+        ...stateUpdate,
+      };
       stateRef.current = next;
       queueMicrotask(() => triggerChangeCallback(next));
       return next;

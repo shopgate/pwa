@@ -22,6 +22,7 @@ const PriceInfo = ({ className, text }) => {
   return (
     <div
       className={cx(classes.root, className, 'ui-shared__price-info')}
+      // eslint-disable-next-line react/no-danger
       dangerouslySetInnerHTML={{ __html: text }}
       data-test-id={`priceInfo: ${text}`}
     />

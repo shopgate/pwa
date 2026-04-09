@@ -191,6 +191,7 @@ module.exports = {
         // Don't require JSDoc in test/mock files
         'require-jsdoc': 'off',
         'valid-jsdoc': 'off',
+        'no-console': 'off',
       },
     },
   ],

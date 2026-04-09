@@ -63,12 +63,6 @@ const useStyles = makeStyles()({
   priceColumn: {
     flex: 1,
   },
-  orderQuantityHintColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignSelf: 'flex-end',
-    alignItems: 'flex-end',
-  },
   quantityPicker: {
     display: 'flex',
     flexDirection: 'column',

@@ -25,6 +25,7 @@ const ShortDescription = ({ shortDescription }) => {
   }
 
   return (
+    // eslint-disable-next-line react/no-danger
     <div className={classes.wrapper} dangerouslySetInnerHTML={{ __html: shortDescription }} />
   );
 };
