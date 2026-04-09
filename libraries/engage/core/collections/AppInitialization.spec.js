@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/engage/core';
 import appInitialization from './AppInitialization';
@@ -143,5 +142,3 @@ describe('AppInitialization collection', () => {
     });
   });
 });
-
-/* eslint-enable require-jsdoc */

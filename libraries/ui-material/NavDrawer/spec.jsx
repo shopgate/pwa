@@ -1,4 +1,4 @@
-/* eslint-disable global-require, require-jsdoc, extra-rules/no-single-line-objects */
+/* eslint-disable global-require, extra-rules/no-single-line-objects */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
@@ -128,4 +128,4 @@ describe('NavDrawer', () => {
     expect(wrapper.find(Transition).prop('in')).toEqual(false);
   });
 });
-/* eslint-enable global-require, require-jsdoc, extra-rules/no-single-line-objects */
+/* eslint-enable global-require, extra-rules/no-single-line-objects */

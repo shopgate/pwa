@@ -14,7 +14,7 @@ const mutationConstructorSpy = jest.fn();
 const mutationObserveSpy = jest.fn();
 const mutationDisconnectSpy = jest.fn();
 
-/* eslint-disable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */
+/* eslint-disable extra-rules/potential-point-free, class-methods-use-this */
 global.MutationObserver = class {
   constructor(callback) { mutationConstructorSpy(callback); }
 
@@ -22,7 +22,7 @@ global.MutationObserver = class {
 
   disconnect() { mutationDisconnectSpy(); }
 };
-/* eslint-enable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this */
+/* eslint-enable extra-rules/potential-point-free, class-methods-use-this */
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/core/events', () => ({
   UIEvents: {

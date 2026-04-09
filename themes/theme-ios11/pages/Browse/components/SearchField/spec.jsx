@@ -31,7 +31,6 @@ describe('pages / Browse / components / SearchField', () => {
   let openScanner;
   let fetchSuggestions;
 
-  // eslint-disable-next-line require-jsdoc
   const createWrapper = props => mount((
     <SearchField
       pageId="1234"

@@ -25,55 +25,55 @@ function FulfillmentPathSelector() {
   /**
    * Handles opening of the sheet.
    */
-  function handleOpen() {
+  const handleOpen = React.useCallback(() => {
     setIsOpen(true);
-  }
+  }, []);
 
   React.useEffect(() => {
     UIEvents.addListener(EVENT_SET_OPEN, handleOpen);
     return () => {
       UIEvents.removeListener(EVENT_SET_OPEN, handleOpen);
     };
-  }, []);
+  }, [handleOpen]);
 
   /**
    * @param {string} value The selected value.
    */
-  function handleSelect(value) {
+  const handleSelect = React.useCallback((value) => {
     if (callback !== null) {
       callback(value);
     }
     setIsOpen(false);
     callback = null;
-  }
+  }, []);
 
   /**
    * @param {Object} event The click event.
    */
-  function handleQuickReserve(event) {
+  const handleQuickReserve = React.useCallback((event) => {
     event.preventDefault();
     handleSelect(QUICK_RESERVE);
-  }
+  }, [handleSelect]);
 
   /**
    * @param {Object} event The click event.
    */
-  function handleReserveToCart(event) {
+  const handleReserveToCart = React.useCallback((event) => {
     event.preventDefault();
     handleSelect(MULTI_LINE_RESERVE);
-  }
+  }, [handleSelect]);
 
   /**
    * Handles the case when the sheet is closed manually.
    */
-  function handleClose() {
+  const handleClose = React.useCallback(() => {
     if (callback !== null) {
       callback('');
     }
 
     setIsOpen(false);
     callback = null;
-  }
+  }, []);
 
   return (
     <SheetDrawer

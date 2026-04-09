@@ -8,12 +8,11 @@ import AppBarIcon from '@shopgate/pwa-ui-ios/AppBar/components/Icon';
 import AppBar from './index';
 
 jest.mock('Components/AppBar/presets/DefaultBar', () => {
-  // eslint-disable-next-line require-jsdoc, no-shadow
+  // eslint-disable-next-line no-shadow
   const DefaultBar = () => null;
   return DefaultBar;
 });
 jest.mock('@shopgate/pwa-ui-shared', () => {
-  // eslint-disable-next-line require-jsdoc
   const ArrowIcon = () => null;
   return {
     ArrowIcon,

@@ -67,7 +67,6 @@ describe('<SheetList.Item />', () => {
   it('should render with an onClick element', () => {
     const spy = jest.fn();
 
-    // eslint-disable-next-line require-jsdoc
     const clickHandler = () => {
       /**
        * The spy can't be assigned directly to the event, since the snapshot gets too big

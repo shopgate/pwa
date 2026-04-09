@@ -11,7 +11,6 @@ jest.mock('@shopgate/engage/core', () => ({
 }));
 
 jest.mock('@shopgate/engage/components', () => {
-  // eslint-disable-next-line require-jsdoc
   function Swiper({ children }) { return children; }
   Swiper.Item = function SwiperItem({ children }) { return children; };
   return {

@@ -245,7 +245,7 @@ describe('AppCommandRequest', () => {
 
   describe('custom event payload handling', () => {
     it('should work as expected with custom handlers for event payload', (done) => {
-      /* eslint-disable class-methods-use-this, require-jsdoc */
+      /* eslint-disable class-methods-use-this */
       class CustomRequest extends AppCommandRequest {
         getResponseLogPayload(number, string, serial) {
           return [number, string, serial];
@@ -255,7 +255,7 @@ describe('AppCommandRequest', () => {
           resolve([number, string, serial]);
         }
       }
-      /* eslint-enable class-methods-use-this, require-jsdoc */
+      /* eslint-enable class-methods-use-this */
 
       instance = new CustomRequest('CustomCommand', 'CustomEvent');
       instance.dispatch().then((response) => {
@@ -278,13 +278,13 @@ describe('AppCommandRequest', () => {
     });
 
     it('should throw an error when custom response handler rejects', (done) => {
-      /* eslint-disable class-methods-use-this, require-jsdoc */
+      /* eslint-disable class-methods-use-this */
       class CustomRequest extends AppCommandRequest {
         onResponse(resolve, reject) {
           reject(new Error('Fatal Error'));
         }
       }
-      /* eslint-enable class-methods-use-this, require-jsdoc */
+      /* eslint-enable class-methods-use-this */
 
       instance = new CustomRequest('CustomCommand', 'CustomEvent');
 

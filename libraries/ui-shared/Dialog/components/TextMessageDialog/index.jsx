@@ -14,6 +14,7 @@ const TextMessageDialog = ({
   actions, message, title, params, children,
 }) => (
   <BasicDialog title={title} actions={actions}>
+    {/* eslint-disable-next-line react/no-danger */}
     <span dangerouslySetInnerHTML={{ __html: nl2br(i18n.text(message, params)) }} />
     {children}
   </BasicDialog>

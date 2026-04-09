@@ -22,7 +22,6 @@ jest.mock('./components/StoreInfo/components/LegalPages', () => function LegalPa
   return null;
 });
 
-/* eslint-disable require-jsdoc */
 jest.mock('@shopgate/engage/development/components/ClientInformation', () => {
   const ClientInformation = () => (<div />);
   return ClientInformation;
@@ -32,7 +31,6 @@ jest.mock('./components/Quicklinks', () => {
   const Quicklinks = () => <div />;
   return Quicklinks;
 });
-/* eslint-enable require-jsdoc */
 
 const store = createMockStore();
 

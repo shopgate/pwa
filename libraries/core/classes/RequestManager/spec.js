@@ -10,7 +10,7 @@ import {
   PROPAGATE_SINGLE,
 } from '../../constants/RequestManagerModes';
 
-/* eslint-disable require-jsdoc, no-unused-vars, class-methods-use-this */
+/* eslint-disable no-unused-vars, class-methods-use-this */
 class SuccessfulRequest extends Request {
   constructor(manager, payload = 42, timeout = 1000) {
     super(manager);
@@ -49,7 +49,7 @@ class NeverResolvingRequest extends Request {
     this.manager.handleError(this, reject);
   }
 }
-/* eslint-enable require-jsdoc, no-unused-vars, class-methods-use-this */
+/* eslint-enable no-unused-vars, class-methods-use-this */
 
 describe.skip('RequestManager', () => {
   jest.useFakeTimers();
