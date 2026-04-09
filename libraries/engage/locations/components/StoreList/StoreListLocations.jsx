@@ -1,26 +1,23 @@
 import React, { useContext } from 'react';
 import { CardList, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import { FulfillmentContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
 import { StoreCard } from './StoreCard';
 import { FULFILLMENT_SHEET_STORE_LIST } from '../../constants/Portals';
 
-const { gap } = themeVariables;
-const gapM = gap.small + gap.xsmall;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   stores: {
     background: 'var(--color-background-accent)',
-    padding: `${gapM}px ${gapM}px ${gap.big}px`,
+    padding: theme.spacing(1.5, 1.5, 2),
     fontSize: '0.875rem',
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   storeCard: {
     background: themeColors.light,
-    marginBottom: gapM,
+    marginBottom: theme.spacing(1.5),
     ':last-of-type': {
       marginBottom: 0,
     },
@@ -33,7 +30,7 @@ const useStyles = makeStyles()({
     margin: '10px 0',
     height: 36,
   },
-});
+}));
 
 /**
  * Renders the locations.

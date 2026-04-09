@@ -2,27 +2,23 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Grid } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 
-const { gap } = themeVariables;
-const gapM = gap.small + gap.xsmall;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   detailsLine: {
-    marginTop: gapM,
+    marginTop: theme.spacing(1.5),
   },
   detailsIcon: {
     color: 'var(--color-text-medium-emphasis)',
     fontSize: '1.4rem',
-    padding: `${gap.xsmall}px ${gap.big}px 0 0`,
+    padding: theme.spacing(0.5, 2, 0, 0),
   },
   detailsIconLinked: {
     color: 'var(--color-primary)',
   },
   details: {
-    paddingTop: gap.xsmall,
+    paddingTop: theme.spacing(0.5),
   },
-});
+}));
 
 /**
  * Renders a single store headline.

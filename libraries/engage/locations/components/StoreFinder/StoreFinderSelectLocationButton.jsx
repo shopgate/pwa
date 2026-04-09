@@ -1,16 +1,13 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { RippleButton } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { StoreContext } from './Store.context';
-import { i18n } from '../../../core';
+import { i18n } from '../../../core/helpers';
 import { StoreFinderContext } from '../../locations.context';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   selectLocationButtonWrapper: {
-    padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
+    padding: theme.spacing(0, 2, 1, 2),
   },
   selectLocationButton: {
     width: '100%',
@@ -20,7 +17,7 @@ const useStyles = makeStyles()({
       color: 'var(--color-primary-contrast)!important',
     },
   },
-});
+}));
 
 /**
  * The StoreFinderSelectLocationButton component.

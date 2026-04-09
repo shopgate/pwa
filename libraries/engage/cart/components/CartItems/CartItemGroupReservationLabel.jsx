@@ -4,12 +4,9 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { LocationIcon } from '@shopgate/engage/components';
 import { BOPIS } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 /** @typedef {import('@shopgate/engage/locations/locations.types').LocationAware} LocationAware */
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   address: {
     display: 'flex',
     flexFlow: 'row nowrap',
@@ -17,14 +14,13 @@ const useStyles = makeStyles()({
   },
   addressIcon: {
     fontSize: '1.25rem',
-    padding: `${gap.small}px ${gap.small}px 0 0`,
-    paddingTop: gap.small,
+    padding: theme.spacing(1, 1, 0, 0),
     flexShrink: 0,
   },
   title: {
     fontWeight: 600,
   },
-});
+}));
 
 /**
  * Renders the cart reservation group label.

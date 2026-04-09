@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 import { every, isEmpty } from 'lodash';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { useCartItem } from '../CartItem';
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
 import connect from './CartItem.connector';
 import { CartItemCardReservationAccordion } from './CartItemCardReservationAccordion';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   accordionToggle: {
-    padding: `${gap.big * 1.25}px ${gap.big}px`,
+    padding: theme.spacing(2.5, 2),
   },
-});
+}));
 
 // eslint-disable-next-line max-len
 /** @typedef {import('@shopgate/engage/locations/locations.types').OptionalLocationAware} OptionalLocationAware */
@@ -49,7 +46,7 @@ const CartItemCardReservation = ({ location, fulfillmentMethod }) => {
   return (
     <>
       <ResponsiveContainer webOnly breakpoint=">xs">
-        { !isOrderDetails && (
+        {!isOrderDetails && (
           <CartItemCardReservationAccordion
             openWithChevron
             location={location}
@@ -59,7 +56,7 @@ const CartItemCardReservation = ({ location, fulfillmentMethod }) => {
         )}
       </ResponsiveContainer>
       <ResponsiveContainer appAlways breakpoint="<=xs">
-        { !isOrderDetails && (
+        {!isOrderDetails && (
           <CartItemCardReservationAccordion
             location={location}
             fulfillmentMethod={fulfillmentMethod}

@@ -1,16 +1,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { StoreContext } from './Store.context';
 import { FulfillmentContext } from '../../locations.context';
 import { StockInfo } from '../StockInfo';
 import { LocationIcon } from '../../../components';
-import { i18n } from '../../../core';
+import { i18n } from '../../../core/helpers';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     flexFlow: 'row nowrap',
@@ -20,7 +17,7 @@ const useStyles = makeStyles()({
   addressIcon: {
     color: 'var(--color-text-medium-emphasis)',
     fontSize: '1.4rem',
-    padding: `${gap.xsmall}px ${gap.big}px 0 0`,
+    padding: theme.spacing(0.5, 2, 0, 0),
   },
   stockInfoContainer: {
     marginTop: 8,
@@ -28,7 +25,7 @@ const useStyles = makeStyles()({
       display: 'none',
     },
   },
-});
+}));
 
 /**
  * Renders the pickup location's address information.
