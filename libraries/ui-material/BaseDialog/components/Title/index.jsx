@@ -1,8 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { I18n, Ellipsis } from '@shopgate/engage/components';
+import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
