@@ -18,6 +18,10 @@ export const isCategoryEmpty = createSelector(
       return false;
     }
 
+    if (productCount === 0) {
+      return true;
+    }
+
     if (isFetching) {
       return false;
     }
