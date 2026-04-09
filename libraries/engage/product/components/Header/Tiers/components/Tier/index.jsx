@@ -1,12 +1,25 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  tier: {
+    display: 'block',
+    lineHeight: 1.35,
+  },
+  price: {
+    fontWeight: 500,
+  },
+});
 
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Tier = ({ tier, price, classes }) => {
+const Tier = ({ tier, price }) => {
+  const { classes } = useStyles();
+
   // Skip tier with quantity 1
   if (tier.from <= 1) {
     return null;
@@ -26,17 +39,6 @@ const Tier = ({ tier, price, classes }) => {
 Tier.propTypes = {
   price: PropTypes.shape().isRequired,
   tier: PropTypes.shape().isRequired,
-  classes: PropTypes.shape({
-    price: PropTypes.string,
-    tier: PropTypes.string,
-  }),
-};
-
-Tier.defaultProps = {
-  classes: {
-    price: '',
-    tier: '',
-  },
 };
 
 export default memo(Tier);

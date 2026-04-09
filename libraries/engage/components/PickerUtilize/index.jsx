@@ -82,6 +82,7 @@ const PickerUtilize = ({
   return (
     <BasePicker
       {...restProps}
+      label={label}
       className={cx(hasButton ? classes.root : '', 'engage__picker-utilize')}
       modalComponent={modalComponent}
       buttonProps={buttonProps}

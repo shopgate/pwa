@@ -4,17 +4,12 @@ import { I18n } from '@shopgate/engage/components';
 
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/styles', () => ({
-  makeStyles: () => function mockUseStylesFactory(defs) {
+  makeStyles: () => function mockUseStylesFactory() {
     return function useStylesMock() {
-      const keys = Object.keys(defs);
-      const classes = keys.reduce((acc, key) => {
-        acc[key] = `mock-class-${key}`;
-        return acc;
-      }, {});
-      const cx = (...parts) => parts.filter(Boolean).join(' ');
       return {
-        classes,
-        cx,
+        classes: {
+          text: 'mock-class-text',
+        },
       };
     };
   },

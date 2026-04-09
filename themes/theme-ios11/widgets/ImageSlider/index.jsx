@@ -60,7 +60,7 @@ const ImageSliderWidget = ({ settings, className }) => {
         if (link) {
           return (
             <Swiper.Item key={image}>
-              <Link href={link} className={classes.link} data-test-id="withLink">
+              <Link href={link} className={classes.link}>
                 {img}
               </Link>
             </Swiper.Item>

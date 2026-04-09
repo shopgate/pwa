@@ -18,6 +18,7 @@ exports[`<Picker /> should render the picker 1`] = `
         buttonComponent={[Function]}
         buttonProps={{}}
         className="sg-1nsf4dv-root engage__picker-utilize"
+        label="Picker label"
         listComponent={[Function]}
         modalComponent={[Function]}
         onClose={[Function]}
@@ -52,7 +53,7 @@ exports[`<Picker /> should render the picker 1`] = `
           }
           isOpen={false}
           items={[]}
-          label=""
+          label="Picker label"
           listComponent={[Function]}
           modalComponent={[Function]}
           onChange={[Function]}

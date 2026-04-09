@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -6,13 +6,108 @@ import {
   SEARCH_SUGGESTION_ITEM,
   SEARCH_SUGGESTION_ITEM_CONTENT,
 } from '@shopgate/engage/search';
-import { makeStyles } from '@shopgate/engage/styles';
+import { withStyles, cx } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+/**
+ * The SuggestionList component.
+ */
+class SuggestionList extends Component {
+  static propTypes = {
+    classes: PropTypes.shape({
+      list: PropTypes.string,
+      item: PropTypes.string,
+    }).isRequired,
+    onClick: PropTypes.func.isRequired,
+    fetching: PropTypes.bool,
+    searchPhrase: PropTypes.string,
+    suggestions: PropTypes.arrayOf(PropTypes.string),
+  };
+
+  static defaultProps = {
+    fetching: false,
+    searchPhrase: null,
+    suggestions: [],
+  };
+
+  /**
+   * @param { Object } nextProps Next props.
+   * @return {boolean}
+   */
+  shouldComponentUpdate(nextProps) {
+    return (nextProps.fetching === false && nextProps.suggestions) ||
+      (nextProps.searchPhrase !== this.props.searchPhrase);
+  }
+
+  /**
+   * @return {JSX}
+   */
+  render() {
+    const {
+      onClick, suggestions, searchPhrase, classes,
+    } = this.props;
+
+    if (!suggestions) {
+      return (
+        <SurroundPortals
+          portalName={SEARCH_SUGGESTIONS}
+          portalProps={{
+            onClick,
+            suggestions,
+            searchPhrase,
+          }}
+        >
+          {null}
+        </SurroundPortals>
+      );
+    }
+
+    return (
+      <SurroundPortals
+        portalName={SEARCH_SUGGESTIONS}
+        portalProps={{
+          onClick,
+          suggestions,
+          searchPhrase,
+        }}
+      >
+        <div className={cx(classes.list, 'theme__search__suggestion-list')}>
+          {suggestions.map(suggestion => (
+            <SurroundPortals
+              portalName={SEARCH_SUGGESTION_ITEM}
+              portalProps={{
+                className: classes.item,
+                onClick,
+                suggestion,
+              }}
+              key={suggestion}
+            >
+              <button
+                type="button"
+                className={classes.item}
+                onClick={onClick}
+                value={suggestion}
+                data-test-id={`searchSuggestion ${suggestion}`}
+              >
+                <SurroundPortals
+                  portalName={SEARCH_SUGGESTION_ITEM_CONTENT}
+                  portalProps={{ suggestion }}
+                >
+                  {suggestion}
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+          ))}
+        </div>
+      </SurroundPortals>
+    );
+  }
+}
+
+const StyledSuggestionList = withStyles(SuggestionList, () => ({
   list: {
     fontSize: 14,
     fontWeight: 400,
@@ -30,103 +125,8 @@ const useStyles = makeStyles()({
     width: '100%',
     textAlign: 'left',
   },
-});
+}));
 
-/**
- * Mirrors legacy `shouldComponentUpdate` for `memo` (return `true` when props are equal).
- * @param {Object} prev Previous props.
- * @param {Object} next Next props.
- * @returns {boolean}
- */
-const suggestionListPropsAreEqual = (prev, next) => {
-  const shouldUpdate = (next.fetching === false && next.suggestions)
-    || (next.searchPhrase !== prev.searchPhrase);
-  return !shouldUpdate;
-};
+export { StyledSuggestionList as UnwrappedSuggestionList };
 
-/**
- * The SuggestionList component.
- */
-const SuggestionList = memo(({
-  onClick,
-  searchPhrase,
-  suggestions,
-}) => {
-  const { classes, cx } = useStyles();
-
-  if (!suggestions) {
-    return (
-      <SurroundPortals
-        portalName={SEARCH_SUGGESTIONS}
-        portalProps={{
-          onClick,
-          suggestions,
-          searchPhrase,
-        }}
-      >
-        {null}
-      </SurroundPortals>
-    );
-  }
-
-  return (
-    <SurroundPortals
-      portalName={SEARCH_SUGGESTIONS}
-      portalProps={{
-        onClick,
-        suggestions,
-        searchPhrase,
-      }}
-    >
-      <div className={cx(classes.list, 'theme__search__suggestion-list')}>
-        {suggestions.map(suggestion => (
-          <SurroundPortals
-            portalName={SEARCH_SUGGESTION_ITEM}
-            portalProps={{
-              className: classes.item,
-              onClick,
-              suggestion,
-            }}
-            key={suggestion}
-          >
-            <button
-              type="button"
-              className={classes.item}
-              onClick={onClick}
-              value={suggestion}
-              data-test-id={`searchSuggestion ${suggestion}`}
-            >
-              <SurroundPortals
-                portalName={SEARCH_SUGGESTION_ITEM_CONTENT}
-                portalProps={{ suggestion }}
-              >
-                {suggestion}
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-        ))}
-      </div>
-    </SurroundPortals>
-  );
-}, suggestionListPropsAreEqual);
-
-SuggestionList.displayName = 'SuggestionList';
-
-SuggestionList.propTypes = {
-  onClick: PropTypes.func.isRequired,
-  /* Used by suggestionListPropsAreEqual (connected props). */
-  // eslint-disable-next-line react/no-unused-prop-types
-  fetching: PropTypes.bool,
-  searchPhrase: PropTypes.string,
-  suggestions: PropTypes.arrayOf(PropTypes.string),
-};
-
-SuggestionList.defaultProps = {
-  fetching: false,
-  searchPhrase: null,
-  suggestions: [],
-};
-
-export { SuggestionList as UnwrappedSuggestionList };
-
-export default connect(SuggestionList);
+export default connect(StyledSuggestionList);

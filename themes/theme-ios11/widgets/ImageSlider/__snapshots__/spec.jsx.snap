@@ -44,7 +44,6 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
       >
         <Link
           className="sg-19odm6p-link"
-          data-test-id="withLink"
           href="http://example.com"
         >
           <img
@@ -59,7 +58,6 @@ exports[`<ImageSliderWidget /> should map the correct image settings to the comp
       >
         <Link
           className="sg-19odm6p-link"
-          data-test-id="withLink"
           href="http://other.example.com"
         >
           <img
@@ -219,7 +217,6 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
       >
         <Link
           className="sg-19odm6p-link"
-          data-test-id="withLink"
           href="http://other.example.com"
         >
           <img
@@ -278,7 +275,6 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
       >
         <Link
           className="sg-19odm6p-link"
-          data-test-id="withLink"
           href="http://example.com"
         >
           <img
@@ -293,7 +289,6 @@ exports[`<ImageSliderWidget /> should render the slider with the correct number 
       >
         <Link
           className="sg-19odm6p-link"
-          data-test-id="withLink"
           href="http://other.example.com"
         >
           <img

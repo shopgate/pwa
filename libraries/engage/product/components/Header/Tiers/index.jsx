@@ -15,13 +15,6 @@ const useStyles = makeStyles()({
     marginTop: 4,
     fontSize: '0.875rem',
   },
-  tier: {
-    display: 'block',
-    lineHeight: 1.35,
-  },
-  price: {
-    fontWeight: 500,
-  },
 });
 
 /**
@@ -45,10 +38,6 @@ const Tiers = ({ price }) => {
             <Tier
               tier={tier}
               price={price}
-              classes={{
-                tier: classes.tier,
-                price: classes.price,
-              }}
               key={`${Object.values(tier).join('_')}`}
             />
           ))}
