@@ -23,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
     outline: 0,
     transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    padding: `${theme.spacing(1.5) - 1}px ${theme.spacing(1.2)}px ${theme.spacing(1.5) + 1}px`,
+    padding: theme.spacing(1.375, 1.2, 1.625),
     ':disabled': {
       cursor: 'not-allowed',
     },

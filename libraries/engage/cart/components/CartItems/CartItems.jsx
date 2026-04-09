@@ -2,24 +2,22 @@ import React from 'react';
 import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';
 import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
 import { CartItemCard } from './CartItemCard';
 import CartItemsSubstitution from './CartItemsSubstitution';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   items: {
     background: 'var(--color-background-accent)',
-    padding: `${gap.small * 1.5}px ${gap.small * 1.5}px ${gap.big}px`,
-    marginBottom: `-${gap.small * 1.5}px`,
+    padding: theme.spacing(1.5, 1.5, 2),
+    marginBottom: theme.spacing(-1.5),
   },
   card: {
     background: themeColors.light,
-    marginBottom: gap.small * 1.5,
+    marginBottom: theme.spacing(1.5),
     ':last-of-type': {
       marginBottom: 0,
     },
@@ -28,7 +26,7 @@ const useStyles = makeStyles()({
     boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
     borderRadius: 5,
   },
-});
+}));
 
 /**
  * @typedef {import('../../../cart/cart.types').Item} Item

@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { Toggle } from '@shopgate/engage/components';
 import connect from './connector';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    padding: gap.big,
+    padding: theme.spacing(2),
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
@@ -32,7 +29,7 @@ const useStyles = makeStyles()({
       flex: 0,
     },
   },
-});
+}));
 
 /**
  * Renders the cart reservation card label.

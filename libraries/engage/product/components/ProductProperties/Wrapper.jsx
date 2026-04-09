@@ -1,21 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables: { gap } = {} } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     fontSize: '0.875rem',
-    padding: `0 ${gap.big}px ${gap.big}px`,
-    marginBottom: gap.small * 1.5,
+    padding: theme.spacing(0, 2, 2),
+    marginBottom: theme.spacing(1.5),
   },
   containerDense: {
     padding: 0,
     marginBottom: 0,
   },
-});
+}));
 
 /**
  * Renders the general properties wrapper table.
@@ -35,7 +32,7 @@ const Wrapper = ({
       })}
       data-group-name={groupName.toLowerCase()}
     >
-      { htmlOnly ? children : (
+      {htmlOnly ? children : (
         <table>
           <thead />
           <tbody>

@@ -4,26 +4,23 @@ import { every, isEmpty } from 'lodash';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { Accordion } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { StoreOpeningHours, StorePhoneNumber } from '@shopgate/engage/locations';
 import { CartItemGroupReservationLabel } from './CartItemGroupReservationLabel';
 import connect from './CartItem.connector';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   accordionToggle: {
-    paddingTop: gap.xsmall,
-    paddingBottom: gap.xsmall,
+    paddingTop: theme.spacing(0.5),
+    paddingBottom: theme.spacing(0.5),
   },
   simpleLabel: {
-    padding: `${gap.xsmall}px ${gap.xbig}px ${gap.xsmall}px ${gap.big}px`,
+    padding: theme.spacing(0.5, 4, 0.5, 2),
   },
   addressDetails: {
     fontSize: '0.875rem',
-    paddingLeft: gap.xbig,
+    paddingLeft: theme.spacing(4),
   },
-});
+}));
 
 // eslint-disable-next-line max-len
 /** @typedef {import('@shopgate/engage/locations/locations.types').OptionalLocationAware} OptionalLocationAware */

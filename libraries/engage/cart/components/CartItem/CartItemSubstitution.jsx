@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import {
   BOPIS,
   ROPIS,
@@ -11,14 +11,12 @@ import connect from './CartItemSubstitution.connector';
 import { useCartItem } from './CartItem.hooks';
 import Substitution, { SubstitutionWrapper } from '../Substitution';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    padding: gap.big,
+    padding: theme.spacing(2),
     borderTop: `1px solid ${themeColors.shade7}`,
   },
-});
+}));
 
 /**
  * Renders the cart reservation card label.

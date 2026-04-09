@@ -4,15 +4,12 @@ import { RippleButton } from '@shopgate/engage/components';
 import { historyPush } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { StoreContext } from './Store.context';
 import { i18n } from '../../../core';
 import { StoreFinderContext } from '../../locations.context';
 import { STORE_DETAILS_PATH } from '../../constants';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   showStoreInfoButton: {
     width: '100%',
     fontSize: '.875rem !important',
@@ -22,9 +19,9 @@ const useStyles = makeStyles()({
     },
   },
   showStoreInfoButtonWrapper: {
-    padding: `0 ${gap.big}px ${gap.small}px ${gap.big}px`,
+    padding: theme.spacing(0, 2, 1, 2),
   },
-});
+}));
 
 /**
  * @param {Function} dispatch The dispatch function.

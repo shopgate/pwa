@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Grid, ResponsiveContainer } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { isProductAvailable } from '../../helpers';
 import { FulfillmentContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
@@ -10,13 +9,10 @@ import { StoreHoursToday } from './StoreHoursToday';
 import { StoreSelectLocationButton } from './StoreSelectLocationButton';
 import { StockInfo } from '../StockInfo';
 
-const { gap } = themeVariables;
-const baseCardPadding = `${gap.small}px ${gap.big}px`;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   storeHeader: {
     cursor: 'pointer',
-    padding: `${baseCardPadding} ${gap.xsmall}px`,
+    padding: theme.spacing(1, 2, 1, 0.5),
   },
   storeName: {
     fontSize: '1rem',
@@ -25,7 +21,7 @@ const useStyles = makeStyles()({
   disabled: {
     cursor: 'not-allowed',
   },
-});
+}));
 
 /**
  * Renders a single store headline.

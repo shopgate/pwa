@@ -1,13 +1,10 @@
 import React from 'react';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { LocalShippingIcon } from '../../../components';
 import { i18n } from '../../../core';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   address: {
     display: 'flex',
     flexFlow: 'row nowrap',
@@ -15,14 +12,14 @@ const useStyles = makeStyles()({
   },
   shippingIcon: {
     fontSize: '1.25rem',
-    padding: `${gap.small}px ${gap.big}px ${gap.small}px 0`,
+    padding: theme.spacing(1, 2, 1, 0),
     transform: 'rotateY(180deg)',
   },
   shippingTitle: {
     fontWeight: 600,
-    padding: gap.small,
+    padding: theme.spacing(1),
   },
-});
+}));
 
 /**
  * Renders the cart item group.

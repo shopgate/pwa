@@ -3,25 +3,22 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()((theme) => {
-  const size = theme.spacing(2) * 1.125;
-  return {
-    badge: {
-      backgroundColor: 'var(--color-primary)',
-      borderRadius: size,
-      color: 'var(--color-primary-contrast)',
-      fontSize: 12,
-      fontWeight: 700,
-      height: size,
-      minWidth: size,
-      padding: theme.spacing(0, 0.625),
-      position: 'absolute',
-      right: 16,
-      textAlign: 'center',
-      top: 19,
-    },
-  };
-});
+const useStyles = makeStyles()(theme => ({
+  badge: {
+    backgroundColor: 'var(--color-primary)',
+    borderRadius: theme.spacing(18),
+    color: 'var(--color-primary-contrast)',
+    fontSize: 12,
+    fontWeight: 700,
+    height: theme.spacing(18),
+    minWidth: theme.spacing(18),
+    padding: theme.spacing(0, 0.625),
+    position: 'absolute',
+    right: 16,
+    textAlign: 'center',
+    top: 19,
+  },
+}));
 
 /**
  * @param {Object} props The component props.

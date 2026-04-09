@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
-import { i18n } from '../../../core';
+import { i18n } from '../../../core/helpers';
 
-const { gap } = themeVariables;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   openingHoursRow: {
     display: 'table-row',
   },
   openingHoursDay: {
     display: 'table-cell',
-    paddingRight: gap.big,
+    paddingRight: theme.spacing(2),
   },
-});
+}));
 
 /**
  * Renders a single opening hours line.

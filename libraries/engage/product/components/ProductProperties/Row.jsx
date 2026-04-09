@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { variables: { gap } = {} } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   tableCell: {
     maxWidth: 100,
-    padding: `${gap.xsmall * 0.5}px ${gap.small}px`,
+    padding: theme.spacing(0.25, 1),
     overflowWrap: 'break-word',
     ':first-of-type': {
       paddingLeft: 0,
@@ -17,7 +14,7 @@ const useStyles = makeStyles()({
       paddingRight: 0,
     },
   },
-});
+}));
 
 /**
  * Renders a single properties row.
