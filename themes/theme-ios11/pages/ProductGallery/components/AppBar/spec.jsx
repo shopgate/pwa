@@ -12,7 +12,13 @@ jest.mock('Components/AppBar/presets/DefaultBar', () => {
   const DefaultBar = () => null;
   return DefaultBar;
 });
-jest.mock('@shopgate/pwa-ui-ios/AppBar/components/Icon');
+jest.mock('@shopgate/pwa-ui-shared', () => {
+  // eslint-disable-next-line require-jsdoc
+  const ArrowIcon = () => null;
+  return {
+    ArrowIcon,
+  };
+});
 
 jest.mock('@shopgate/engage/components');
 

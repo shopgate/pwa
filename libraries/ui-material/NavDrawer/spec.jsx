@@ -1,6 +1,7 @@
 /* eslint-disable global-require, require-jsdoc, extra-rules/no-single-line-objects */
 import React from 'react';
 import { shallow, mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
 import Transition from 'react-transition-group/Transition';
 
 jest.unmock('@shopgate/pwa-core');
@@ -102,13 +103,13 @@ describe('NavDrawer', () => {
       </NavDrawer>
     ));
 
-    NavDrawer.open();
+    act(() => { NavDrawer.open(); });
     wrapper.update();
     expect(wrapper.find(Transition).prop('in')).toEqual(true);
     expect(onOpen).toHaveBeenCalled();
     expect(onClose).not.toHaveBeenCalled();
 
-    NavDrawer.close();
+    act(() => { NavDrawer.close(); });
     wrapper.update();
     expect(wrapper.find(Transition).prop('in')).toEqual(false);
     expect(onClose).toHaveBeenCalled();
@@ -117,12 +118,12 @@ describe('NavDrawer', () => {
   it('should close when Backdrop is clicked', () => {
     const wrapper = mount(<NavDrawer>Content</NavDrawer>);
 
-    NavDrawer.open();
+    act(() => { NavDrawer.open(); });
     wrapper.update();
     expect(wrapper.find(Transition).prop('in')).toEqual(true);
 
     const backdrop = wrapper.find('[data-test-id="NavDrawerBackdrop"]');
-    backdrop.simulate('click');
+    act(() => { backdrop.simulate('click'); });
     wrapper.update();
     expect(wrapper.find(Transition).prop('in')).toEqual(false);
   });

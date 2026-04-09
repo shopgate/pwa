@@ -35,7 +35,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         text="Widget Headline"
       >
         <h3
-          className="tss-1mu7f0p-root headline theme__headline"
+          className="tss-1raa9c7-root headline theme__headline"
         >
           Widget Headline
         </h3>
@@ -74,7 +74,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -170,7 +170,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -217,7 +217,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="tss-1msasxr-buttonContainer"
+        className="tss-10snq43-buttonContainer"
       >
         <Connect(ButtonLink)
           className="tss-1fwzktp-button"
@@ -233,7 +233,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             navigate={[Function]}
             noGap={false}
           >
-            <ActionButtonWithStyles
+            <ActionButton
               className="tss-1fwzktp-button"
               disableClickDelay={false}
               disabled={true}
@@ -247,108 +247,57 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               type="secondary"
               wrapContent={true}
             >
-              <ActionButton
-                className="tss-1fwzktp-button"
-                classes={
-                  {
-                    "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                    "noGap": "tss-1zr2s7-ActionButton-noGap",
-                    "withGap": "tss-1jype1y-ActionButton-withGap",
-                  }
-                }
-                disableClickDelay={false}
-                disabled={true}
-                flat={false}
-                loading={false}
-                noGap={false}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                testId={null}
-                type="secondary"
-                wrapContent={true}
+              <div
+                className="ui-shared__action-button tss-berhvi-withGap"
+                data-test-id={null}
               >
-                <div
-                  className="ui-shared__action-button tss-1jype1y-ActionButton-withGap"
-                  data-test-id={null}
+                <RippleButton
+                  className="tss-1fwzktp-button"
+                  disabled={true}
+                  flat={false}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId="Button"
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButtonWithStyles
-                    className="tss-1fwzktp-button"
+                  <Button
+                    className="tss-1fwzktp-button ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
                     testId="Button"
                     type="secondary"
                     wrapContent={true}
                   >
-                    <RippleButton
-                      className="tss-1fwzktp-button"
-                      classes={
-                        {
-                          "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                        }
-                      }
+                    <Button
+                      className="ui-shared__button ui-shared__ripple-button tss-mi87rq-button-button"
                       disabled={true}
-                      flat={false}
                       onClick={[Function]}
-                      rippleClassName=""
-                      rippleSize={null}
                       testId="Button"
-                      type="secondary"
-                      wrapContent={true}
                     >
-                      <Button
-                        className="tss-1fwzktp-button ui-shared__ripple-button"
+                      <button
+                        className="common__button ui-shared__button ui-shared__ripple-button tss-10aenfk-root-button-button"
+                        data-test-id="Button"
                         disabled={true}
-                        flat={false}
-                        onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={true}
+                        onClick={null}
                       >
-                        <Button
-                          className="ui-shared__button tss-u02dqw-button tss-1fwzktp-button ui-shared__ripple-button"
-                          disabled={true}
-                          onClick={[Function]}
-                          testId="Button"
-                          type="button"
+                        <div
+                          className="tss-1vtrm1i-content"
                         >
-                          <button
-                            className="ui-shared__button tss-u02dqw-button tss-1fwzktp-button ui-shared__ripple-button tss-16c9pag-root common__button"
-                            data-test-id="Button"
-                            disabled={true}
-                            onClick={null}
-                            type="button"
+                          <Text
+                            string="common.show_products"
                           >
-                            <div
-                              className="tss-p9yt3o-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.show_products"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.show_products
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </RippleButtonWithStyles>
-                </div>
-              </ActionButton>
-            </ActionButtonWithStyles>
+                            common.show_products
+                          </Text>
+                        </div>
+                      </button>
+                    </Button>
+                  </Button>
+                </RippleButton>
+              </div>
+            </ActionButton>
           </ButtonLink>
         </Connect(ButtonLink)>
       </div>
@@ -392,7 +341,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         text="Widget Headline"
       >
         <h3
-          className="tss-1mu7f0p-root headline theme__headline"
+          className="tss-1raa9c7-root headline theme__headline"
         >
           Widget Headline
         </h3>
@@ -431,7 +380,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -504,18 +453,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                           class="tss-12f1i2r-content"
                         >
                           <ul
-                            class="null engage__sheet-list common_list"
+                            class="engage__sheet-list common_list"
                             role="listbox"
                           >
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1mcy32m-buttonSelected"
+                                  class="tss-150wio3-buttonSelected"
                                   type="button"
                                   value="1-1"
                                 >
@@ -524,14 +473,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               </div>
                             </li>
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1rm4ebj-button"
+                                  class="tss-1yjeh22-button"
                                   type="button"
                                   value="1-2"
                                 >
@@ -567,7 +516,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -576,7 +525,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       >
                         <div
                           aria-modal={true}
-                          className="tss-bfa6v5-container tss-dxx72o-container tss-1uynekm-drawerAnimOut common__drawer"
+                          className="common__drawer tss-1wgf7aq-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -603,74 +552,65 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 wrap={false}
                               >
                                 <div
-                                  className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                                  className="common__grid tss-1dxmo4l-root-noWrap-wrapper"
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="tss-tnekr1-closeButton"
+                                    className="tss-cb4y3g-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
-                                    <RippleWithStyles
+                                    <Ripple
                                       className="tss-8ivrra-closeIcon"
+                                      color="#000"
+                                      disabled={false}
+                                      fill={false}
+                                      onClick={[Function]}
+                                      onComplete={[Function]}
+                                      overflow={false}
+                                      size={null}
                                     >
-                                      <Ripple
-                                        className="tss-8ivrra-closeIcon"
-                                        classes={
+                                      <div
+                                        className="ui-shared__ripple tss-8ivrra-closeIcon"
+                                        data-test-id="Ripple"
+                                        onClick={[Function]}
+                                        style={
                                           {
-                                            "container": "tss-1dfkr3n-Ripple-container",
+                                            "overflow": "hidden",
+                                            "position": "relative",
                                           }
                                         }
-                                        color="#000"
-                                        disabled={false}
-                                        fill={false}
-                                        onClick={[Function]}
-                                        onComplete={[Function]}
-                                        overflow={false}
-                                        size={null}
                                       >
-                                        <div
-                                          className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                          data-test-id="Ripple"
-                                          onClick={[Function]}
-                                          style={
-                                            {
-                                              "overflow": "hidden",
-                                              "position": "relative",
-                                            }
-                                          }
+                                        <Cross
+                                          size={24}
                                         >
-                                          <Cross
+                                          <Icon
+                                            content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                             size={24}
                                           >
-                                            <Icon
-                                              content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                              size={24}
-                                            >
-                                              <svg
-                                                className="tss-1n8b10t-root common__icon"
-                                                dangerouslySetInnerHTML={
-                                                  {
-                                                    "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                                  }
+                                            <svg
+                                              className="tss-1n8b10t-root common__icon"
+                                              dangerouslySetInnerHTML={
+                                                {
+                                                  "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                                 }
-                                                style={
-                                                  {
-                                                    "fill": undefined,
-                                                    "fontSize": 24,
-                                                  }
+                                              }
+                                              style={
+                                                {
+                                                  "fill": undefined,
+                                                  "fontSize": 24,
                                                 }
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                              />
-                                            </Icon>
-                                          </Cross>
-                                        </div>
-                                      </Ripple>
-                                    </RippleWithStyles>
+                                              }
+                                              viewBox="0 0 24 24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </Cross>
+                                      </div>
+                                    </Ripple>
                                   </button>
                                   <GridItem
-                                    className="tss-u1j3gu-title"
+                                    className="tss-1gh7dpa-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -678,7 +618,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                      className="tss-1yim49x-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
@@ -745,119 +685,109 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             className="tss-12f1i2r-content"
                             onScroll={[Function]}
                           >
-                            <SheetListWithStyles
+                            <SheetList
+                              className={null}
+                              hasImages={false}
                               key=".0"
+                              onClose={[Function]}
+                              query=""
+                              testId={null}
                             >
-                              <SheetList
-                                className={null}
-                                classes={
-                                  {
-                                    "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-                                    "item": "tss-10ao2s8-SheetList-item",
-                                    "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-                                    "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-                                    "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-                                  }
-                                }
-                                hasImages={false}
-                                testId={null}
+                              <List
+                                className="engage__sheet-list"
+                                role="listbox"
                               >
-                                <List
-                                  className="null engage__sheet-list"
+                                <ul
+                                  className="engage__sheet-list common_list"
                                   role="listbox"
                                 >
-                                  <ul
-                                    className="null engage__sheet-list common_list"
-                                    role="listbox"
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-0/.$1-1"
+                                    role={null}
+                                    tabIndex={0}
                                   >
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-0/.$1-1"
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 0,
-                                                "id": "1-1",
-                                                "isFetching": false,
-                                                "name": "Category 1-1",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 0,
+                                              "id": "1-1",
+                                              "isFetching": false,
+                                              "name": "Category 1-1",
                                             }
+                                          }
+                                          key="1-1"
+                                          onClick={[Function]}
+                                          selected={true}
+                                        >
+                                          <button
+                                            className="tss-150wio3-buttonSelected"
                                             key="1-1"
                                             onClick={[Function]}
-                                            selected={true}
+                                            type="button"
+                                            value="1-1"
                                           >
-                                            <button
-                                              className="tss-1mcy32m-buttonSelected"
-                                              key="1-1"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="1-1"
-                                            >
-                                              Category 1-1
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-1/.$1-2"
+                                            Category 1-1
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-1/.$1-2"
+                                    role={null}
+                                    tabIndex={0}
+                                  >
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 1,
-                                                "id": "1-2",
-                                                "isFetching": false,
-                                                "name": "Category 1-2",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 1,
+                                              "id": "1-2",
+                                              "isFetching": false,
+                                              "name": "Category 1-2",
                                             }
+                                          }
+                                          key="1-2"
+                                          onClick={[Function]}
+                                          selected={false}
+                                        >
+                                          <button
+                                            className="tss-1yjeh22-button"
                                             key="1-2"
                                             onClick={[Function]}
-                                            selected={false}
+                                            type="button"
+                                            value="1-2"
                                           >
-                                            <button
-                                              className="tss-1rm4ebj-button"
-                                              key="1-2"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="1-2"
-                                            >
-                                              Category 1-2
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                  </ul>
-                                </List>
-                              </SheetList>
-                            </SheetListWithStyles>
+                                            Category 1-2
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                </ul>
+                              </List>
+                            </SheetList>
                           </div>
                         </div>
                       </Drawer>
@@ -922,7 +852,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="tss-1msasxr-buttonContainer"
+        className="tss-10snq43-buttonContainer"
       >
         <Connect(ButtonLink)
           className="tss-1fwzktp-button"
@@ -938,7 +868,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             navigate={[Function]}
             noGap={false}
           >
-            <ActionButtonWithStyles
+            <ActionButton
               className="tss-1fwzktp-button"
               disableClickDelay={false}
               disabled={false}
@@ -952,134 +882,71 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               type="secondary"
               wrapContent={true}
             >
-              <ActionButton
-                className="tss-1fwzktp-button"
-                classes={
-                  {
-                    "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                    "noGap": "tss-1zr2s7-ActionButton-noGap",
-                    "withGap": "tss-1jype1y-ActionButton-withGap",
-                  }
-                }
-                disableClickDelay={false}
-                disabled={false}
-                flat={false}
-                loading={false}
-                noGap={false}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                testId={null}
-                type="secondary"
-                wrapContent={true}
+              <div
+                className="ui-shared__action-button tss-berhvi-withGap"
+                data-test-id={null}
               >
-                <div
-                  className="ui-shared__action-button tss-1jype1y-ActionButton-withGap"
-                  data-test-id={null}
+                <RippleButton
+                  className="tss-1fwzktp-button"
+                  disabled={false}
+                  flat={false}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId="Button"
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButtonWithStyles
-                    className="tss-1fwzktp-button"
+                  <Button
+                    className="tss-1fwzktp-button ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
                     testId="Button"
                     type="secondary"
-                    wrapContent={true}
+                    wrapContent={false}
                   >
-                    <RippleButton
-                      className="tss-1fwzktp-button"
-                      classes={
-                        {
-                          "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                        }
-                      }
+                    <Button
+                      className="ui-shared__button ui-shared__ripple-button tss-1w1fdno-button-button"
                       disabled={false}
-                      flat={false}
                       onClick={[Function]}
-                      rippleClassName=""
-                      rippleSize={null}
                       testId="Button"
-                      type="secondary"
-                      wrapContent={true}
                     >
-                      <Button
-                        className="tss-1fwzktp-button ui-shared__ripple-button"
+                      <button
+                        className="common__button ui-shared__button ui-shared__ripple-button tss-bxjzsu-root-button-button"
+                        data-test-id="Button"
                         disabled={false}
-                        flat={false}
                         onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={false}
                       >
-                        <Button
-                          className="ui-shared__button tss-x945ka-button tss-1fwzktp-button ui-shared__ripple-button"
+                        <Ripple
+                          className="tss-fpa50s-contentWrapper"
+                          color="#000"
                           disabled={false}
+                          fill={true}
                           onClick={[Function]}
-                          testId="Button"
-                          type="button"
+                          onComplete={[Function]}
+                          overflow={true}
+                          size={null}
                         >
-                          <button
-                            className="ui-shared__button tss-x945ka-button tss-1fwzktp-button ui-shared__ripple-button tss-16c9pag-root common__button"
-                            data-test-id="Button"
-                            disabled={false}
+                          <div
+                            className="ui-shared__ripple tss-fpa50s-contentWrapper"
+                            data-test-id="Ripple"
                             onClick={[Function]}
-                            type="button"
+                            style={null}
                           >
-                            <RippleWithStyles
-                              className="tss-p1t6ie-RippleButton-contentWrapper "
-                              fill={true}
-                              overflow={true}
-                              size={null}
+                            <Text
+                              string="common.show_products"
                             >
-                              <Ripple
-                                className="tss-p1t6ie-RippleButton-contentWrapper "
-                                classes={
-                                  {
-                                    "container": "tss-1dfkr3n-Ripple-container",
-                                  }
-                                }
-                                color="#000"
-                                disabled={false}
-                                fill={true}
-                                onClick={[Function]}
-                                onComplete={[Function]}
-                                overflow={true}
-                                size={null}
-                              >
-                                <div
-                                  className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                  data-test-id="Ripple"
-                                  onClick={[Function]}
-                                  style={null}
-                                >
-                                  <Translate
-                                    acceptPlainTextWithPlaceholders={false}
-                                    className={null}
-                                    params={{}}
-                                    role={null}
-                                    string="common.show_products"
-                                    transform={null}
-                                  >
-                                    <span
-                                      className={null}
-                                      role={null}
-                                    >
-                                      common.show_products
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </Ripple>
-                            </RippleWithStyles>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </RippleButtonWithStyles>
-                </div>
-              </ActionButton>
-            </ActionButtonWithStyles>
+                              common.show_products
+                            </Text>
+                          </div>
+                        </Ripple>
+                      </button>
+                    </Button>
+                  </Button>
+                </RippleButton>
+              </div>
+            </ActionButton>
           </ButtonLink>
         </Connect(ButtonLink)>
       </div>
@@ -1141,7 +1008,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h3
-          className="tss-1mu7f0p-root headline theme__headline"
+          className="tss-1raa9c7-root headline theme__headline"
         >
           Widget Headline
         </h3>
@@ -1180,7 +1047,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -1276,7 +1143,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1354,7 +1221,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -1450,7 +1317,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1522,7 +1389,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -1606,7 +1473,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1653,7 +1520,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="tss-1msasxr-buttonContainer"
+        className="tss-10snq43-buttonContainer"
       >
         <Connect(ButtonLink)
           className="tss-1fwzktp-button"
@@ -1669,7 +1536,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             navigate={[Function]}
             noGap={false}
           >
-            <ActionButtonWithStyles
+            <ActionButton
               className="tss-1fwzktp-button"
               disableClickDelay={false}
               disabled={false}
@@ -1683,134 +1550,71 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               type="secondary"
               wrapContent={true}
             >
-              <ActionButton
-                className="tss-1fwzktp-button"
-                classes={
-                  {
-                    "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                    "noGap": "tss-1zr2s7-ActionButton-noGap",
-                    "withGap": "tss-1jype1y-ActionButton-withGap",
-                  }
-                }
-                disableClickDelay={false}
-                disabled={false}
-                flat={false}
-                loading={false}
-                noGap={false}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                testId={null}
-                type="secondary"
-                wrapContent={true}
+              <div
+                className="ui-shared__action-button tss-berhvi-withGap"
+                data-test-id={null}
               >
-                <div
-                  className="ui-shared__action-button tss-1jype1y-ActionButton-withGap"
-                  data-test-id={null}
+                <RippleButton
+                  className="tss-1fwzktp-button"
+                  disabled={false}
+                  flat={false}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId="Button"
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButtonWithStyles
-                    className="tss-1fwzktp-button"
+                  <Button
+                    className="tss-1fwzktp-button ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
                     testId="Button"
                     type="secondary"
-                    wrapContent={true}
+                    wrapContent={false}
                   >
-                    <RippleButton
-                      className="tss-1fwzktp-button"
-                      classes={
-                        {
-                          "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                        }
-                      }
+                    <Button
+                      className="ui-shared__button ui-shared__ripple-button tss-1w1fdno-button-button"
                       disabled={false}
-                      flat={false}
                       onClick={[Function]}
-                      rippleClassName=""
-                      rippleSize={null}
                       testId="Button"
-                      type="secondary"
-                      wrapContent={true}
                     >
-                      <Button
-                        className="tss-1fwzktp-button ui-shared__ripple-button"
+                      <button
+                        className="common__button ui-shared__button ui-shared__ripple-button tss-bxjzsu-root-button-button"
+                        data-test-id="Button"
                         disabled={false}
-                        flat={false}
                         onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={false}
                       >
-                        <Button
-                          className="ui-shared__button tss-x945ka-button tss-1fwzktp-button ui-shared__ripple-button"
+                        <Ripple
+                          className="tss-fpa50s-contentWrapper"
+                          color="#000"
                           disabled={false}
+                          fill={true}
                           onClick={[Function]}
-                          testId="Button"
-                          type="button"
+                          onComplete={[Function]}
+                          overflow={true}
+                          size={null}
                         >
-                          <button
-                            className="ui-shared__button tss-x945ka-button tss-1fwzktp-button ui-shared__ripple-button tss-16c9pag-root common__button"
-                            data-test-id="Button"
-                            disabled={false}
+                          <div
+                            className="ui-shared__ripple tss-fpa50s-contentWrapper"
+                            data-test-id="Ripple"
                             onClick={[Function]}
-                            type="button"
+                            style={null}
                           >
-                            <RippleWithStyles
-                              className="tss-p1t6ie-RippleButton-contentWrapper "
-                              fill={true}
-                              overflow={true}
-                              size={null}
+                            <Text
+                              string="common.show_products"
                             >
-                              <Ripple
-                                className="tss-p1t6ie-RippleButton-contentWrapper "
-                                classes={
-                                  {
-                                    "container": "tss-1dfkr3n-Ripple-container",
-                                  }
-                                }
-                                color="#000"
-                                disabled={false}
-                                fill={true}
-                                onClick={[Function]}
-                                onComplete={[Function]}
-                                overflow={true}
-                                size={null}
-                              >
-                                <div
-                                  className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                  data-test-id="Ripple"
-                                  onClick={[Function]}
-                                  style={null}
-                                >
-                                  <Translate
-                                    acceptPlainTextWithPlaceholders={false}
-                                    className={null}
-                                    params={{}}
-                                    role={null}
-                                    string="common.show_products"
-                                    transform={null}
-                                  >
-                                    <span
-                                      className={null}
-                                      role={null}
-                                    >
-                                      common.show_products
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </Ripple>
-                            </RippleWithStyles>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </RippleButtonWithStyles>
-                </div>
-              </ActionButton>
-            </ActionButtonWithStyles>
+                              common.show_products
+                            </Text>
+                          </div>
+                        </Ripple>
+                      </button>
+                    </Button>
+                  </Button>
+                </RippleButton>
+              </div>
+            </ActionButton>
           </ButtonLink>
         </Connect(ButtonLink)>
       </div>
@@ -1872,7 +1676,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h3
-          className="tss-1mu7f0p-root headline theme__headline"
+          className="tss-1raa9c7-root headline theme__headline"
         >
           Widget Headline
         </h3>
@@ -1911,7 +1715,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -1984,18 +1788,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           class="tss-12f1i2r-content"
                         >
                           <ul
-                            class="null engage__sheet-list common_list"
+                            class="engage__sheet-list common_list"
                             role="listbox"
                           >
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1mcy32m-buttonSelected"
+                                  class="tss-150wio3-buttonSelected"
                                   type="button"
                                   value="1"
                                 >
@@ -2004,14 +1808,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               </div>
                             </li>
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1rm4ebj-button"
+                                  class="tss-1yjeh22-button"
                                   type="button"
                                   value="2"
                                 >
@@ -2047,7 +1851,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -2056,7 +1860,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="tss-bfa6v5-container tss-dxx72o-container tss-1uynekm-drawerAnimOut common__drawer"
+                          className="common__drawer tss-1wgf7aq-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -2083,74 +1887,65 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 wrap={false}
                               >
                                 <div
-                                  className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                                  className="common__grid tss-1dxmo4l-root-noWrap-wrapper"
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="tss-tnekr1-closeButton"
+                                    className="tss-cb4y3g-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
-                                    <RippleWithStyles
+                                    <Ripple
                                       className="tss-8ivrra-closeIcon"
+                                      color="#000"
+                                      disabled={false}
+                                      fill={false}
+                                      onClick={[Function]}
+                                      onComplete={[Function]}
+                                      overflow={false}
+                                      size={null}
                                     >
-                                      <Ripple
-                                        className="tss-8ivrra-closeIcon"
-                                        classes={
+                                      <div
+                                        className="ui-shared__ripple tss-8ivrra-closeIcon"
+                                        data-test-id="Ripple"
+                                        onClick={[Function]}
+                                        style={
                                           {
-                                            "container": "tss-1dfkr3n-Ripple-container",
+                                            "overflow": "hidden",
+                                            "position": "relative",
                                           }
                                         }
-                                        color="#000"
-                                        disabled={false}
-                                        fill={false}
-                                        onClick={[Function]}
-                                        onComplete={[Function]}
-                                        overflow={false}
-                                        size={null}
                                       >
-                                        <div
-                                          className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                          data-test-id="Ripple"
-                                          onClick={[Function]}
-                                          style={
-                                            {
-                                              "overflow": "hidden",
-                                              "position": "relative",
-                                            }
-                                          }
+                                        <Cross
+                                          size={24}
                                         >
-                                          <Cross
+                                          <Icon
+                                            content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                             size={24}
                                           >
-                                            <Icon
-                                              content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                              size={24}
-                                            >
-                                              <svg
-                                                className="tss-1n8b10t-root common__icon"
-                                                dangerouslySetInnerHTML={
-                                                  {
-                                                    "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                                  }
+                                            <svg
+                                              className="tss-1n8b10t-root common__icon"
+                                              dangerouslySetInnerHTML={
+                                                {
+                                                  "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                                 }
-                                                style={
-                                                  {
-                                                    "fill": undefined,
-                                                    "fontSize": 24,
-                                                  }
+                                              }
+                                              style={
+                                                {
+                                                  "fill": undefined,
+                                                  "fontSize": 24,
                                                 }
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                              />
-                                            </Icon>
-                                          </Cross>
-                                        </div>
-                                      </Ripple>
-                                    </RippleWithStyles>
+                                              }
+                                              viewBox="0 0 24 24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </Cross>
+                                      </div>
+                                    </Ripple>
                                   </button>
                                   <GridItem
-                                    className="tss-u1j3gu-title"
+                                    className="tss-1gh7dpa-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -2158,7 +1953,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                      className="tss-1yim49x-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
@@ -2225,119 +2020,109 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             className="tss-12f1i2r-content"
                             onScroll={[Function]}
                           >
-                            <SheetListWithStyles
+                            <SheetList
+                              className={null}
+                              hasImages={false}
                               key=".0"
+                              onClose={[Function]}
+                              query=""
+                              testId={null}
                             >
-                              <SheetList
-                                className={null}
-                                classes={
-                                  {
-                                    "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-                                    "item": "tss-10ao2s8-SheetList-item",
-                                    "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-                                    "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-                                    "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-                                  }
-                                }
-                                hasImages={false}
-                                testId={null}
+                              <List
+                                className="engage__sheet-list"
+                                role="listbox"
                               >
-                                <List
-                                  className="null engage__sheet-list"
+                                <ul
+                                  className="engage__sheet-list common_list"
                                   role="listbox"
                                 >
-                                  <ul
-                                    className="null engage__sheet-list common_list"
-                                    role="listbox"
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-0/.$1"
+                                    role={null}
+                                    tabIndex={0}
                                   >
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-0/.$1"
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 2,
-                                                "id": "1",
-                                                "isFetching": false,
-                                                "name": "Category 1",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 2,
+                                              "id": "1",
+                                              "isFetching": false,
+                                              "name": "Category 1",
                                             }
+                                          }
+                                          key="1"
+                                          onClick={[Function]}
+                                          selected={true}
+                                        >
+                                          <button
+                                            className="tss-150wio3-buttonSelected"
                                             key="1"
                                             onClick={[Function]}
-                                            selected={true}
+                                            type="button"
+                                            value="1"
                                           >
-                                            <button
-                                              className="tss-1mcy32m-buttonSelected"
-                                              key="1"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="1"
-                                            >
-                                              Category 1
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-1/.$2"
+                                            Category 1
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-1/.$2"
+                                    role={null}
+                                    tabIndex={0}
+                                  >
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 0,
-                                                "id": "2",
-                                                "isFetching": false,
-                                                "name": "Category 2",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 0,
+                                              "id": "2",
+                                              "isFetching": false,
+                                              "name": "Category 2",
                                             }
+                                          }
+                                          key="2"
+                                          onClick={[Function]}
+                                          selected={false}
+                                        >
+                                          <button
+                                            className="tss-1yjeh22-button"
                                             key="2"
                                             onClick={[Function]}
-                                            selected={false}
+                                            type="button"
+                                            value="2"
                                           >
-                                            <button
-                                              className="tss-1rm4ebj-button"
-                                              key="2"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="2"
-                                            >
-                                              Category 2
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                  </ul>
-                                </List>
-                              </SheetList>
-                            </SheetListWithStyles>
+                                            Category 2
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                </ul>
+                              </List>
+                            </SheetList>
                           </div>
                         </div>
                       </Drawer>
@@ -2433,7 +2218,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -2529,7 +2314,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -2576,7 +2361,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="tss-1msasxr-buttonContainer"
+        className="tss-10snq43-buttonContainer"
       >
         <Connect(ButtonLink)
           className="tss-1fwzktp-button"
@@ -2592,7 +2377,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             navigate={[Function]}
             noGap={false}
           >
-            <ActionButtonWithStyles
+            <ActionButton
               className="tss-1fwzktp-button"
               disableClickDelay={false}
               disabled={true}
@@ -2606,108 +2391,57 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               type="secondary"
               wrapContent={true}
             >
-              <ActionButton
-                className="tss-1fwzktp-button"
-                classes={
-                  {
-                    "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                    "noGap": "tss-1zr2s7-ActionButton-noGap",
-                    "withGap": "tss-1jype1y-ActionButton-withGap",
-                  }
-                }
-                disableClickDelay={false}
-                disabled={true}
-                flat={false}
-                loading={false}
-                noGap={false}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                testId={null}
-                type="secondary"
-                wrapContent={true}
+              <div
+                className="ui-shared__action-button tss-berhvi-withGap"
+                data-test-id={null}
               >
-                <div
-                  className="ui-shared__action-button tss-1jype1y-ActionButton-withGap"
-                  data-test-id={null}
+                <RippleButton
+                  className="tss-1fwzktp-button"
+                  disabled={true}
+                  flat={false}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId="Button"
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButtonWithStyles
-                    className="tss-1fwzktp-button"
+                  <Button
+                    className="tss-1fwzktp-button ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
                     testId="Button"
                     type="secondary"
                     wrapContent={true}
                   >
-                    <RippleButton
-                      className="tss-1fwzktp-button"
-                      classes={
-                        {
-                          "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                        }
-                      }
+                    <Button
+                      className="ui-shared__button ui-shared__ripple-button tss-mi87rq-button-button"
                       disabled={true}
-                      flat={false}
                       onClick={[Function]}
-                      rippleClassName=""
-                      rippleSize={null}
                       testId="Button"
-                      type="secondary"
-                      wrapContent={true}
                     >
-                      <Button
-                        className="tss-1fwzktp-button ui-shared__ripple-button"
+                      <button
+                        className="common__button ui-shared__button ui-shared__ripple-button tss-10aenfk-root-button-button"
+                        data-test-id="Button"
                         disabled={true}
-                        flat={false}
-                        onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={true}
+                        onClick={null}
                       >
-                        <Button
-                          className="ui-shared__button tss-u02dqw-button tss-1fwzktp-button ui-shared__ripple-button"
-                          disabled={true}
-                          onClick={[Function]}
-                          testId="Button"
-                          type="button"
+                        <div
+                          className="tss-1vtrm1i-content"
                         >
-                          <button
-                            className="ui-shared__button tss-u02dqw-button tss-1fwzktp-button ui-shared__ripple-button tss-16c9pag-root common__button"
-                            data-test-id="Button"
-                            disabled={true}
-                            onClick={null}
-                            type="button"
+                          <Text
+                            string="common.show_products"
                           >
-                            <div
-                              className="tss-p9yt3o-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.show_products"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.show_products
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </RippleButtonWithStyles>
-                </div>
-              </ActionButton>
-            </ActionButtonWithStyles>
+                            common.show_products
+                          </Text>
+                        </div>
+                      </button>
+                    </Button>
+                  </Button>
+                </RippleButton>
+              </div>
+            </ActionButton>
           </ButtonLink>
         </Connect(ButtonLink)>
       </div>
@@ -2769,7 +2503,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         text="Widget Headline"
       >
         <h3
-          className="tss-1mu7f0p-root headline theme__headline"
+          className="tss-1raa9c7-root headline theme__headline"
         >
           Widget Headline
         </h3>
@@ -2808,7 +2542,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -2881,18 +2615,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           class="tss-12f1i2r-content"
                         >
                           <ul
-                            class="null engage__sheet-list common_list"
+                            class="engage__sheet-list common_list"
                             role="listbox"
                           >
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1mcy32m-buttonSelected"
+                                  class="tss-150wio3-buttonSelected"
                                   type="button"
                                   value="1"
                                 >
@@ -2901,14 +2635,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               </div>
                             </li>
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1rm4ebj-button"
+                                  class="tss-1yjeh22-button"
                                   type="button"
                                   value="2"
                                 >
@@ -2944,7 +2678,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -2953,7 +2687,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="tss-bfa6v5-container tss-dxx72o-container tss-1uynekm-drawerAnimOut common__drawer"
+                          className="common__drawer tss-1wgf7aq-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -2980,74 +2714,65 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 wrap={false}
                               >
                                 <div
-                                  className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                                  className="common__grid tss-1dxmo4l-root-noWrap-wrapper"
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="tss-tnekr1-closeButton"
+                                    className="tss-cb4y3g-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
-                                    <RippleWithStyles
+                                    <Ripple
                                       className="tss-8ivrra-closeIcon"
+                                      color="#000"
+                                      disabled={false}
+                                      fill={false}
+                                      onClick={[Function]}
+                                      onComplete={[Function]}
+                                      overflow={false}
+                                      size={null}
                                     >
-                                      <Ripple
-                                        className="tss-8ivrra-closeIcon"
-                                        classes={
+                                      <div
+                                        className="ui-shared__ripple tss-8ivrra-closeIcon"
+                                        data-test-id="Ripple"
+                                        onClick={[Function]}
+                                        style={
                                           {
-                                            "container": "tss-1dfkr3n-Ripple-container",
+                                            "overflow": "hidden",
+                                            "position": "relative",
                                           }
                                         }
-                                        color="#000"
-                                        disabled={false}
-                                        fill={false}
-                                        onClick={[Function]}
-                                        onComplete={[Function]}
-                                        overflow={false}
-                                        size={null}
                                       >
-                                        <div
-                                          className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                          data-test-id="Ripple"
-                                          onClick={[Function]}
-                                          style={
-                                            {
-                                              "overflow": "hidden",
-                                              "position": "relative",
-                                            }
-                                          }
+                                        <Cross
+                                          size={24}
                                         >
-                                          <Cross
+                                          <Icon
+                                            content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                             size={24}
                                           >
-                                            <Icon
-                                              content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                              size={24}
-                                            >
-                                              <svg
-                                                className="tss-1n8b10t-root common__icon"
-                                                dangerouslySetInnerHTML={
-                                                  {
-                                                    "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                                  }
+                                            <svg
+                                              className="tss-1n8b10t-root common__icon"
+                                              dangerouslySetInnerHTML={
+                                                {
+                                                  "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                                 }
-                                                style={
-                                                  {
-                                                    "fill": undefined,
-                                                    "fontSize": 24,
-                                                  }
+                                              }
+                                              style={
+                                                {
+                                                  "fill": undefined,
+                                                  "fontSize": 24,
                                                 }
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                              />
-                                            </Icon>
-                                          </Cross>
-                                        </div>
-                                      </Ripple>
-                                    </RippleWithStyles>
+                                              }
+                                              viewBox="0 0 24 24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </Cross>
+                                      </div>
+                                    </Ripple>
                                   </button>
                                   <GridItem
-                                    className="tss-u1j3gu-title"
+                                    className="tss-1gh7dpa-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -3055,7 +2780,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                      className="tss-1yim49x-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
@@ -3122,119 +2847,109 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             className="tss-12f1i2r-content"
                             onScroll={[Function]}
                           >
-                            <SheetListWithStyles
+                            <SheetList
+                              className={null}
+                              hasImages={false}
                               key=".0"
+                              onClose={[Function]}
+                              query=""
+                              testId={null}
                             >
-                              <SheetList
-                                className={null}
-                                classes={
-                                  {
-                                    "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-                                    "item": "tss-10ao2s8-SheetList-item",
-                                    "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-                                    "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-                                    "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-                                  }
-                                }
-                                hasImages={false}
-                                testId={null}
+                              <List
+                                className="engage__sheet-list"
+                                role="listbox"
                               >
-                                <List
-                                  className="null engage__sheet-list"
+                                <ul
+                                  className="engage__sheet-list common_list"
                                   role="listbox"
                                 >
-                                  <ul
-                                    className="null engage__sheet-list common_list"
-                                    role="listbox"
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-0/.$1"
+                                    role={null}
+                                    tabIndex={0}
                                   >
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-0/.$1"
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 2,
-                                                "id": "1",
-                                                "isFetching": false,
-                                                "name": "Category 1",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 2,
+                                              "id": "1",
+                                              "isFetching": false,
+                                              "name": "Category 1",
                                             }
+                                          }
+                                          key="1"
+                                          onClick={[Function]}
+                                          selected={true}
+                                        >
+                                          <button
+                                            className="tss-150wio3-buttonSelected"
                                             key="1"
                                             onClick={[Function]}
-                                            selected={true}
+                                            type="button"
+                                            value="1"
                                           >
-                                            <button
-                                              className="tss-1mcy32m-buttonSelected"
-                                              key="1"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="1"
-                                            >
-                                              Category 1
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-1/.$2"
+                                            Category 1
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-1/.$2"
+                                    role={null}
+                                    tabIndex={0}
+                                  >
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 0,
-                                                "id": "2",
-                                                "isFetching": false,
-                                                "name": "Category 2",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 0,
+                                              "id": "2",
+                                              "isFetching": false,
+                                              "name": "Category 2",
                                             }
+                                          }
+                                          key="2"
+                                          onClick={[Function]}
+                                          selected={false}
+                                        >
+                                          <button
+                                            className="tss-1yjeh22-button"
                                             key="2"
                                             onClick={[Function]}
-                                            selected={false}
+                                            type="button"
+                                            value="2"
                                           >
-                                            <button
-                                              className="tss-1rm4ebj-button"
-                                              key="2"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="2"
-                                            >
-                                              Category 2
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                  </ul>
-                                </List>
-                              </SheetList>
-                            </SheetListWithStyles>
+                                            Category 2
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                </ul>
+                              </List>
+                            </SheetList>
                           </div>
                         </div>
                       </Drawer>
@@ -3330,7 +3045,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -3403,18 +3118,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                           class="tss-12f1i2r-content"
                         >
                           <ul
-                            class="null engage__sheet-list common_list"
+                            class="engage__sheet-list common_list"
                             role="listbox"
                           >
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1mcy32m-buttonSelected"
+                                  class="tss-150wio3-buttonSelected"
                                   type="button"
                                   value="1-1"
                                 >
@@ -3423,14 +3138,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               </div>
                             </li>
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1rm4ebj-button"
+                                  class="tss-1yjeh22-button"
                                   type="button"
                                   value="1-2"
                                 >
@@ -3466,7 +3181,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -3475,7 +3190,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="tss-bfa6v5-container tss-dxx72o-container tss-1uynekm-drawerAnimOut common__drawer"
+                          className="common__drawer tss-1wgf7aq-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -3502,74 +3217,65 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 wrap={false}
                               >
                                 <div
-                                  className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                                  className="common__grid tss-1dxmo4l-root-noWrap-wrapper"
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="tss-tnekr1-closeButton"
+                                    className="tss-cb4y3g-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
-                                    <RippleWithStyles
+                                    <Ripple
                                       className="tss-8ivrra-closeIcon"
+                                      color="#000"
+                                      disabled={false}
+                                      fill={false}
+                                      onClick={[Function]}
+                                      onComplete={[Function]}
+                                      overflow={false}
+                                      size={null}
                                     >
-                                      <Ripple
-                                        className="tss-8ivrra-closeIcon"
-                                        classes={
+                                      <div
+                                        className="ui-shared__ripple tss-8ivrra-closeIcon"
+                                        data-test-id="Ripple"
+                                        onClick={[Function]}
+                                        style={
                                           {
-                                            "container": "tss-1dfkr3n-Ripple-container",
+                                            "overflow": "hidden",
+                                            "position": "relative",
                                           }
                                         }
-                                        color="#000"
-                                        disabled={false}
-                                        fill={false}
-                                        onClick={[Function]}
-                                        onComplete={[Function]}
-                                        overflow={false}
-                                        size={null}
                                       >
-                                        <div
-                                          className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                          data-test-id="Ripple"
-                                          onClick={[Function]}
-                                          style={
-                                            {
-                                              "overflow": "hidden",
-                                              "position": "relative",
-                                            }
-                                          }
+                                        <Cross
+                                          size={24}
                                         >
-                                          <Cross
+                                          <Icon
+                                            content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                             size={24}
                                           >
-                                            <Icon
-                                              content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                              size={24}
-                                            >
-                                              <svg
-                                                className="tss-1n8b10t-root common__icon"
-                                                dangerouslySetInnerHTML={
-                                                  {
-                                                    "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                                  }
+                                            <svg
+                                              className="tss-1n8b10t-root common__icon"
+                                              dangerouslySetInnerHTML={
+                                                {
+                                                  "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                                 }
-                                                style={
-                                                  {
-                                                    "fill": undefined,
-                                                    "fontSize": 24,
-                                                  }
+                                              }
+                                              style={
+                                                {
+                                                  "fill": undefined,
+                                                  "fontSize": 24,
                                                 }
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                              />
-                                            </Icon>
-                                          </Cross>
-                                        </div>
-                                      </Ripple>
-                                    </RippleWithStyles>
+                                              }
+                                              viewBox="0 0 24 24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </Cross>
+                                      </div>
+                                    </Ripple>
                                   </button>
                                   <GridItem
-                                    className="tss-u1j3gu-title"
+                                    className="tss-1gh7dpa-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -3577,7 +3283,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                      className="tss-1yim49x-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
@@ -3644,119 +3350,109 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             className="tss-12f1i2r-content"
                             onScroll={[Function]}
                           >
-                            <SheetListWithStyles
+                            <SheetList
+                              className={null}
+                              hasImages={false}
                               key=".0"
+                              onClose={[Function]}
+                              query=""
+                              testId={null}
                             >
-                              <SheetList
-                                className={null}
-                                classes={
-                                  {
-                                    "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-                                    "item": "tss-10ao2s8-SheetList-item",
-                                    "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-                                    "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-                                    "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-                                  }
-                                }
-                                hasImages={false}
-                                testId={null}
+                              <List
+                                className="engage__sheet-list"
+                                role="listbox"
                               >
-                                <List
-                                  className="null engage__sheet-list"
+                                <ul
+                                  className="engage__sheet-list common_list"
                                   role="listbox"
                                 >
-                                  <ul
-                                    className="null engage__sheet-list common_list"
-                                    role="listbox"
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-0/.$1-1"
+                                    role={null}
+                                    tabIndex={0}
                                   >
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-0/.$1-1"
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 0,
-                                                "id": "1-1",
-                                                "isFetching": false,
-                                                "name": "Category 1-1",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 0,
+                                              "id": "1-1",
+                                              "isFetching": false,
+                                              "name": "Category 1-1",
                                             }
+                                          }
+                                          key="1-1"
+                                          onClick={[Function]}
+                                          selected={true}
+                                        >
+                                          <button
+                                            className="tss-150wio3-buttonSelected"
                                             key="1-1"
                                             onClick={[Function]}
-                                            selected={true}
+                                            type="button"
+                                            value="1-1"
                                           >
-                                            <button
-                                              className="tss-1mcy32m-buttonSelected"
-                                              key="1-1"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="1-1"
-                                            >
-                                              Category 1-1
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-1/.$1-2"
+                                            Category 1-1
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-1/.$1-2"
+                                    role={null}
+                                    tabIndex={0}
+                                  >
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 1,
-                                                "id": "1-2",
-                                                "isFetching": false,
-                                                "name": "Category 1-2",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 1,
+                                              "id": "1-2",
+                                              "isFetching": false,
+                                              "name": "Category 1-2",
                                             }
+                                          }
+                                          key="1-2"
+                                          onClick={[Function]}
+                                          selected={false}
+                                        >
+                                          <button
+                                            className="tss-1yjeh22-button"
                                             key="1-2"
                                             onClick={[Function]}
-                                            selected={false}
+                                            type="button"
+                                            value="1-2"
                                           >
-                                            <button
-                                              className="tss-1rm4ebj-button"
-                                              key="1-2"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="1-2"
-                                            >
-                                              Category 1-2
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                  </ul>
-                                </List>
-                              </SheetList>
-                            </SheetListWithStyles>
+                                            Category 1-2
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                </ul>
+                              </List>
+                            </SheetList>
                           </div>
                         </div>
                       </Drawer>
@@ -3821,7 +3517,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="tss-1msasxr-buttonContainer"
+        className="tss-10snq43-buttonContainer"
       >
         <Connect(ButtonLink)
           className="tss-1fwzktp-button"
@@ -3837,7 +3533,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             navigate={[Function]}
             noGap={false}
           >
-            <ActionButtonWithStyles
+            <ActionButton
               className="tss-1fwzktp-button"
               disableClickDelay={false}
               disabled={false}
@@ -3851,134 +3547,71 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               type="secondary"
               wrapContent={true}
             >
-              <ActionButton
-                className="tss-1fwzktp-button"
-                classes={
-                  {
-                    "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                    "noGap": "tss-1zr2s7-ActionButton-noGap",
-                    "withGap": "tss-1jype1y-ActionButton-withGap",
-                  }
-                }
-                disableClickDelay={false}
-                disabled={false}
-                flat={false}
-                loading={false}
-                noGap={false}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                testId={null}
-                type="secondary"
-                wrapContent={true}
+              <div
+                className="ui-shared__action-button tss-berhvi-withGap"
+                data-test-id={null}
               >
-                <div
-                  className="ui-shared__action-button tss-1jype1y-ActionButton-withGap"
-                  data-test-id={null}
+                <RippleButton
+                  className="tss-1fwzktp-button"
+                  disabled={false}
+                  flat={false}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId="Button"
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButtonWithStyles
-                    className="tss-1fwzktp-button"
+                  <Button
+                    className="tss-1fwzktp-button ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
                     testId="Button"
                     type="secondary"
-                    wrapContent={true}
+                    wrapContent={false}
                   >
-                    <RippleButton
-                      className="tss-1fwzktp-button"
-                      classes={
-                        {
-                          "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                        }
-                      }
+                    <Button
+                      className="ui-shared__button ui-shared__ripple-button tss-1w1fdno-button-button"
                       disabled={false}
-                      flat={false}
                       onClick={[Function]}
-                      rippleClassName=""
-                      rippleSize={null}
                       testId="Button"
-                      type="secondary"
-                      wrapContent={true}
                     >
-                      <Button
-                        className="tss-1fwzktp-button ui-shared__ripple-button"
+                      <button
+                        className="common__button ui-shared__button ui-shared__ripple-button tss-bxjzsu-root-button-button"
+                        data-test-id="Button"
                         disabled={false}
-                        flat={false}
                         onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={false}
                       >
-                        <Button
-                          className="ui-shared__button tss-x945ka-button tss-1fwzktp-button ui-shared__ripple-button"
+                        <Ripple
+                          className="tss-fpa50s-contentWrapper"
+                          color="#000"
                           disabled={false}
+                          fill={true}
                           onClick={[Function]}
-                          testId="Button"
-                          type="button"
+                          onComplete={[Function]}
+                          overflow={true}
+                          size={null}
                         >
-                          <button
-                            className="ui-shared__button tss-x945ka-button tss-1fwzktp-button ui-shared__ripple-button tss-16c9pag-root common__button"
-                            data-test-id="Button"
-                            disabled={false}
+                          <div
+                            className="ui-shared__ripple tss-fpa50s-contentWrapper"
+                            data-test-id="Ripple"
                             onClick={[Function]}
-                            type="button"
+                            style={null}
                           >
-                            <RippleWithStyles
-                              className="tss-p1t6ie-RippleButton-contentWrapper "
-                              fill={true}
-                              overflow={true}
-                              size={null}
+                            <Text
+                              string="common.show_products"
                             >
-                              <Ripple
-                                className="tss-p1t6ie-RippleButton-contentWrapper "
-                                classes={
-                                  {
-                                    "container": "tss-1dfkr3n-Ripple-container",
-                                  }
-                                }
-                                color="#000"
-                                disabled={false}
-                                fill={true}
-                                onClick={[Function]}
-                                onComplete={[Function]}
-                                overflow={true}
-                                size={null}
-                              >
-                                <div
-                                  className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                  data-test-id="Ripple"
-                                  onClick={[Function]}
-                                  style={null}
-                                >
-                                  <Translate
-                                    acceptPlainTextWithPlaceholders={false}
-                                    className={null}
-                                    params={{}}
-                                    role={null}
-                                    string="common.show_products"
-                                    transform={null}
-                                  >
-                                    <span
-                                      className={null}
-                                      role={null}
-                                    >
-                                      common.show_products
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </Ripple>
-                            </RippleWithStyles>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </RippleButtonWithStyles>
-                </div>
-              </ActionButton>
-            </ActionButtonWithStyles>
+                              common.show_products
+                            </Text>
+                          </div>
+                        </Ripple>
+                      </button>
+                    </Button>
+                  </Button>
+                </RippleButton>
+              </div>
+            </ActionButton>
           </ButtonLink>
         </Connect(ButtonLink)>
       </div>
@@ -4055,7 +3688,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -4151,7 +3784,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -4198,7 +3831,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="tss-1msasxr-buttonContainer"
+        className="tss-10snq43-buttonContainer"
       >
         <Connect(ButtonLink)
           className="tss-1fwzktp-button"
@@ -4214,7 +3847,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             navigate={[Function]}
             noGap={false}
           >
-            <ActionButtonWithStyles
+            <ActionButton
               className="tss-1fwzktp-button"
               disableClickDelay={false}
               disabled={true}
@@ -4228,108 +3861,57 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               type="secondary"
               wrapContent={true}
             >
-              <ActionButton
-                className="tss-1fwzktp-button"
-                classes={
-                  {
-                    "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                    "noGap": "tss-1zr2s7-ActionButton-noGap",
-                    "withGap": "tss-1jype1y-ActionButton-withGap",
-                  }
-                }
-                disableClickDelay={false}
-                disabled={true}
-                flat={false}
-                loading={false}
-                noGap={false}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                testId={null}
-                type="secondary"
-                wrapContent={true}
+              <div
+                className="ui-shared__action-button tss-berhvi-withGap"
+                data-test-id={null}
               >
-                <div
-                  className="ui-shared__action-button tss-1jype1y-ActionButton-withGap"
-                  data-test-id={null}
+                <RippleButton
+                  className="tss-1fwzktp-button"
+                  disabled={true}
+                  flat={false}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId="Button"
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButtonWithStyles
-                    className="tss-1fwzktp-button"
+                  <Button
+                    className="tss-1fwzktp-button ui-shared__ripple-button"
                     disabled={true}
                     flat={false}
                     onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
                     testId="Button"
                     type="secondary"
                     wrapContent={true}
                   >
-                    <RippleButton
-                      className="tss-1fwzktp-button"
-                      classes={
-                        {
-                          "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                        }
-                      }
+                    <Button
+                      className="ui-shared__button ui-shared__ripple-button tss-mi87rq-button-button"
                       disabled={true}
-                      flat={false}
                       onClick={[Function]}
-                      rippleClassName=""
-                      rippleSize={null}
                       testId="Button"
-                      type="secondary"
-                      wrapContent={true}
                     >
-                      <Button
-                        className="tss-1fwzktp-button ui-shared__ripple-button"
+                      <button
+                        className="common__button ui-shared__button ui-shared__ripple-button tss-10aenfk-root-button-button"
+                        data-test-id="Button"
                         disabled={true}
-                        flat={false}
-                        onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={true}
+                        onClick={null}
                       >
-                        <Button
-                          className="ui-shared__button tss-u02dqw-button tss-1fwzktp-button ui-shared__ripple-button"
-                          disabled={true}
-                          onClick={[Function]}
-                          testId="Button"
-                          type="button"
+                        <div
+                          className="tss-1vtrm1i-content"
                         >
-                          <button
-                            className="ui-shared__button tss-u02dqw-button tss-1fwzktp-button ui-shared__ripple-button tss-16c9pag-root common__button"
-                            data-test-id="Button"
-                            disabled={true}
-                            onClick={null}
-                            type="button"
+                          <Text
+                            string="common.show_products"
                           >
-                            <div
-                              className="tss-p9yt3o-content"
-                            >
-                              <Translate
-                                acceptPlainTextWithPlaceholders={false}
-                                className={null}
-                                params={{}}
-                                role={null}
-                                string="common.show_products"
-                                transform={null}
-                              >
-                                <span
-                                  className={null}
-                                  role={null}
-                                >
-                                  common.show_products
-                                </span>
-                              </Translate>
-                            </div>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </RippleButtonWithStyles>
-                </div>
-              </ActionButton>
-            </ActionButtonWithStyles>
+                            common.show_products
+                          </Text>
+                        </div>
+                      </button>
+                    </Button>
+                  </Button>
+                </RippleButton>
+              </div>
+            </ActionButton>
           </ButtonLink>
         </Connect(ButtonLink)>
       </div>
@@ -4406,7 +3988,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="tss-1t3yptj-button"
+              className="tss-tky32e-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -4479,18 +4061,18 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                           class="tss-12f1i2r-content"
                         >
                           <ul
-                            class="null engage__sheet-list common_list"
+                            class="engage__sheet-list common_list"
                             role="listbox"
                           >
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1rm4ebj-button"
+                                  class="tss-1yjeh22-button"
                                   type="button"
                                   value="1"
                                 >
@@ -4499,14 +4081,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               </div>
                             </li>
                             <li
-                              class="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
+                              class="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
-                                class="tss-1adanqp-SheetList-innerContainer"
+                                class="tss-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="tss-1mcy32m-buttonSelected"
+                                  class="tss-150wio3-buttonSelected"
                                   type="button"
                                   value="2"
                                 >
@@ -4542,7 +4124,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             "out": "tss-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="tss-bfa6v5-container"
+                        className="tss-omro4t-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -4551,7 +4133,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       >
                         <div
                           aria-modal={true}
-                          className="tss-bfa6v5-container tss-dxx72o-container tss-1uynekm-drawerAnimOut common__drawer"
+                          className="common__drawer tss-1wgf7aq-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -4578,74 +4160,65 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 wrap={false}
                               >
                                 <div
-                                  className="tss-uz2gz-wrapper tss-pauvta-root common__grid tss-i2x46h-noWrap"
+                                  className="common__grid tss-1dxmo4l-root-noWrap-wrapper"
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="tss-tnekr1-closeButton"
+                                    className="tss-cb4y3g-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
-                                    <RippleWithStyles
+                                    <Ripple
                                       className="tss-8ivrra-closeIcon"
+                                      color="#000"
+                                      disabled={false}
+                                      fill={false}
+                                      onClick={[Function]}
+                                      onComplete={[Function]}
+                                      overflow={false}
+                                      size={null}
                                     >
-                                      <Ripple
-                                        className="tss-8ivrra-closeIcon"
-                                        classes={
+                                      <div
+                                        className="ui-shared__ripple tss-8ivrra-closeIcon"
+                                        data-test-id="Ripple"
+                                        onClick={[Function]}
+                                        style={
                                           {
-                                            "container": "tss-1dfkr3n-Ripple-container",
+                                            "overflow": "hidden",
+                                            "position": "relative",
                                           }
                                         }
-                                        color="#000"
-                                        disabled={false}
-                                        fill={false}
-                                        onClick={[Function]}
-                                        onComplete={[Function]}
-                                        overflow={false}
-                                        size={null}
                                       >
-                                        <div
-                                          className="ui-shared__ripple tss-8ivrra-closeIcon"
-                                          data-test-id="Ripple"
-                                          onClick={[Function]}
-                                          style={
-                                            {
-                                              "overflow": "hidden",
-                                              "position": "relative",
-                                            }
-                                          }
+                                        <Cross
+                                          size={24}
                                         >
-                                          <Cross
+                                          <Icon
+                                            content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                             size={24}
                                           >
-                                            <Icon
-                                              content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
-                                              size={24}
-                                            >
-                                              <svg
-                                                className="tss-1n8b10t-root common__icon"
-                                                dangerouslySetInnerHTML={
-                                                  {
-                                                    "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                                  }
+                                            <svg
+                                              className="tss-1n8b10t-root common__icon"
+                                              dangerouslySetInnerHTML={
+                                                {
+                                                  "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
                                                 }
-                                                style={
-                                                  {
-                                                    "fill": undefined,
-                                                    "fontSize": 24,
-                                                  }
+                                              }
+                                              style={
+                                                {
+                                                  "fill": undefined,
+                                                  "fontSize": 24,
                                                 }
-                                                viewBox="0 0 24 24"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                              />
-                                            </Icon>
-                                          </Cross>
-                                        </div>
-                                      </Ripple>
-                                    </RippleWithStyles>
+                                              }
+                                              viewBox="0 0 24 24"
+                                              xmlns="http://www.w3.org/2000/svg"
+                                            />
+                                          </Icon>
+                                        </Cross>
+                                      </div>
+                                    </Ripple>
                                   </button>
                                   <GridItem
-                                    className="tss-u1j3gu-title"
+                                    className="tss-1gh7dpa-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -4653,7 +4226,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="tss-u1j3gu-title tss-xljr6b-root common__grid__item--custom-flex"
+                                      className="tss-1yim49x-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
@@ -4720,119 +4293,109 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             className="tss-12f1i2r-content"
                             onScroll={[Function]}
                           >
-                            <SheetListWithStyles
+                            <SheetList
+                              className={null}
+                              hasImages={false}
                               key=".0"
+                              onClose={[Function]}
+                              query=""
+                              testId={null}
                             >
-                              <SheetList
-                                className={null}
-                                classes={
-                                  {
-                                    "innerContainer": "tss-1adanqp-SheetList-innerContainer",
-                                    "item": "tss-10ao2s8-SheetList-item",
-                                    "itemNotLast": "tss-57o8jq-SheetList-itemNotLast",
-                                    "itemSelected": "tss-1nq8rfu-SheetList-itemSelected",
-                                    "itemWithImage": "tss-1km5zk-SheetList-itemWithImage",
-                                  }
-                                }
-                                hasImages={false}
-                                testId={null}
+                              <List
+                                className="engage__sheet-list"
+                                role="listbox"
                               >
-                                <List
-                                  className="null engage__sheet-list"
+                                <ul
+                                  className="engage__sheet-list common_list"
                                   role="listbox"
                                 >
-                                  <ul
-                                    className="null engage__sheet-list common_list"
-                                    role="listbox"
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-0/.$1"
+                                    role={null}
+                                    tabIndex={0}
                                   >
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-0/.$1"
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 2,
-                                                "id": "1",
-                                                "isFetching": false,
-                                                "name": "Category 1",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 2,
+                                              "id": "1",
+                                              "isFetching": false,
+                                              "name": "Category 1",
                                             }
+                                          }
+                                          key="1"
+                                          onClick={[Function]}
+                                          selected={false}
+                                        >
+                                          <button
+                                            className="tss-1yjeh22-button"
                                             key="1"
                                             onClick={[Function]}
-                                            selected={false}
+                                            type="button"
+                                            value="1"
                                           >
-                                            <button
-                                              className="tss-1rm4ebj-button"
-                                              key="1"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="1"
-                                            >
-                                              Category 1
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                    <ListItem
-                                      className="tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item"
-                                      isSelected={false}
-                                      key="child-1/.$2"
+                                            Category 1
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                  <ListItem
+                                    className="engage__sheet-list__item tss-1ysoomx-item-itemNotLast"
+                                    isSelected={false}
+                                    key="child-1/.$2"
+                                    role={null}
+                                    tabIndex={0}
+                                  >
+                                    <li
+                                      className="engage__sheet-list__item common__list__list-item tss-zqqzk9-item-item-itemNotLast-unselected"
+                                      data-test-id="listItem"
                                       role={null}
-                                      tabIndex={0}
                                     >
-                                      <li
-                                        className="tss-13m5rz6-item tss-10ao2s8-SheetList-item tss-57o8jq-SheetList-itemNotLast engage__sheet-list__item common__list__list-item tss-1g2t9z4-unselected"
-                                        data-test-id="listItem"
-                                        role={null}
+                                      <div
+                                        className="tss-1cl0k0e-innerContainer"
+                                        data-test-id={null}
                                       >
-                                        <div
-                                          className="tss-1adanqp-SheetList-innerContainer"
-                                          data-test-id={null}
-                                        >
-                                          <SheetItem
-                                            item={
-                                              {
-                                                "childrenCount": 0,
-                                                "id": "2",
-                                                "isFetching": false,
-                                                "name": "Category 2",
-                                              }
+                                        <SheetItem
+                                          item={
+                                            {
+                                              "childrenCount": 0,
+                                              "id": "2",
+                                              "isFetching": false,
+                                              "name": "Category 2",
                                             }
+                                          }
+                                          key="2"
+                                          onClick={[Function]}
+                                          selected={true}
+                                        >
+                                          <button
+                                            className="tss-150wio3-buttonSelected"
                                             key="2"
                                             onClick={[Function]}
-                                            selected={true}
+                                            type="button"
+                                            value="2"
                                           >
-                                            <button
-                                              className="tss-1mcy32m-buttonSelected"
-                                              key="2"
-                                              onClick={[Function]}
-                                              type="button"
-                                              value="2"
-                                            >
-                                              Category 2
-                                            </button>
-                                          </SheetItem>
-                                        </div>
-                                      </li>
-                                    </ListItem>
-                                  </ul>
-                                </List>
-                              </SheetList>
-                            </SheetListWithStyles>
+                                            Category 2
+                                          </button>
+                                        </SheetItem>
+                                      </div>
+                                    </li>
+                                  </ListItem>
+                                </ul>
+                              </List>
+                            </SheetList>
                           </div>
                         </div>
                       </Drawer>
@@ -4897,7 +4460,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="tss-1msasxr-buttonContainer"
+        className="tss-10snq43-buttonContainer"
       >
         <Connect(ButtonLink)
           className="tss-1fwzktp-button"
@@ -4913,7 +4476,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             navigate={[Function]}
             noGap={false}
           >
-            <ActionButtonWithStyles
+            <ActionButton
               className="tss-1fwzktp-button"
               disableClickDelay={false}
               disabled={false}
@@ -4927,134 +4490,71 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               type="secondary"
               wrapContent={true}
             >
-              <ActionButton
-                className="tss-1fwzktp-button"
-                classes={
-                  {
-                    "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                    "noGap": "tss-1zr2s7-ActionButton-noGap",
-                    "withGap": "tss-1jype1y-ActionButton-withGap",
-                  }
-                }
-                disableClickDelay={false}
-                disabled={false}
-                flat={false}
-                loading={false}
-                noGap={false}
-                onClick={[Function]}
-                rippleClassName=""
-                rippleSize={null}
-                testId={null}
-                type="secondary"
-                wrapContent={true}
+              <div
+                className="ui-shared__action-button tss-berhvi-withGap"
+                data-test-id={null}
               >
-                <div
-                  className="ui-shared__action-button tss-1jype1y-ActionButton-withGap"
-                  data-test-id={null}
+                <RippleButton
+                  className="tss-1fwzktp-button"
+                  disabled={false}
+                  flat={false}
+                  onClick={[Function]}
+                  rippleClassName=""
+                  rippleSize={null}
+                  testId="Button"
+                  type="secondary"
+                  wrapContent={true}
                 >
-                  <RippleButtonWithStyles
-                    className="tss-1fwzktp-button"
+                  <Button
+                    className="tss-1fwzktp-button ui-shared__ripple-button"
                     disabled={false}
                     flat={false}
                     onClick={[Function]}
-                    rippleClassName=""
-                    rippleSize={null}
                     testId="Button"
                     type="secondary"
-                    wrapContent={true}
+                    wrapContent={false}
                   >
-                    <RippleButton
-                      className="tss-1fwzktp-button"
-                      classes={
-                        {
-                          "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                        }
-                      }
+                    <Button
+                      className="ui-shared__button ui-shared__ripple-button tss-1w1fdno-button-button"
                       disabled={false}
-                      flat={false}
                       onClick={[Function]}
-                      rippleClassName=""
-                      rippleSize={null}
                       testId="Button"
-                      type="secondary"
-                      wrapContent={true}
                     >
-                      <Button
-                        className="tss-1fwzktp-button ui-shared__ripple-button"
+                      <button
+                        className="common__button ui-shared__button ui-shared__ripple-button tss-bxjzsu-root-button-button"
+                        data-test-id="Button"
                         disabled={false}
-                        flat={false}
                         onClick={[Function]}
-                        testId="Button"
-                        type="secondary"
-                        wrapContent={false}
                       >
-                        <Button
-                          className="ui-shared__button tss-x945ka-button tss-1fwzktp-button ui-shared__ripple-button"
+                        <Ripple
+                          className="tss-fpa50s-contentWrapper"
+                          color="#000"
                           disabled={false}
+                          fill={true}
                           onClick={[Function]}
-                          testId="Button"
-                          type="button"
+                          onComplete={[Function]}
+                          overflow={true}
+                          size={null}
                         >
-                          <button
-                            className="ui-shared__button tss-x945ka-button tss-1fwzktp-button ui-shared__ripple-button tss-16c9pag-root common__button"
-                            data-test-id="Button"
-                            disabled={false}
+                          <div
+                            className="ui-shared__ripple tss-fpa50s-contentWrapper"
+                            data-test-id="Ripple"
                             onClick={[Function]}
-                            type="button"
+                            style={null}
                           >
-                            <RippleWithStyles
-                              className="tss-p1t6ie-RippleButton-contentWrapper "
-                              fill={true}
-                              overflow={true}
-                              size={null}
+                            <Text
+                              string="common.show_products"
                             >
-                              <Ripple
-                                className="tss-p1t6ie-RippleButton-contentWrapper "
-                                classes={
-                                  {
-                                    "container": "tss-1dfkr3n-Ripple-container",
-                                  }
-                                }
-                                color="#000"
-                                disabled={false}
-                                fill={true}
-                                onClick={[Function]}
-                                onComplete={[Function]}
-                                overflow={true}
-                                size={null}
-                              >
-                                <div
-                                  className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                  data-test-id="Ripple"
-                                  onClick={[Function]}
-                                  style={null}
-                                >
-                                  <Translate
-                                    acceptPlainTextWithPlaceholders={false}
-                                    className={null}
-                                    params={{}}
-                                    role={null}
-                                    string="common.show_products"
-                                    transform={null}
-                                  >
-                                    <span
-                                      className={null}
-                                      role={null}
-                                    >
-                                      common.show_products
-                                    </span>
-                                  </Translate>
-                                </div>
-                              </Ripple>
-                            </RippleWithStyles>
-                          </button>
-                        </Button>
-                      </Button>
-                    </RippleButton>
-                  </RippleButtonWithStyles>
-                </div>
-              </ActionButton>
-            </ActionButtonWithStyles>
+                              common.show_products
+                            </Text>
+                          </div>
+                        </Ripple>
+                      </button>
+                    </Button>
+                  </Button>
+                </RippleButton>
+              </div>
+            </ActionButton>
           </ButtonLink>
         </Connect(ButtonLink)>
       </div>

@@ -64,7 +64,7 @@ const NestedCategoryFilter = ({ id, settings, persistedState }) => {
     router.update(route.id, {
       [id]: stateRef.current,
     });
-  }, [id, route.id]);
+  }, [id, route?.id]);
 
   const handleSelection = useCallback((categoryId, subcategory) => {
     const { pickers } = stateRef.current;
