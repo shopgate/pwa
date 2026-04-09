@@ -22,16 +22,15 @@ exports[`MediaProvider .handleCookieConsent() should replace the iframe with the
 <body>
   <div>
     <div
-      class="common__media-provider_responsive-container"
+      class="responsiveContainer"
     >
       <div
-        class="common__media-provider_cookie-consent-message-container"
-        style="background: rgb(244, 244, 244); border: 1px solid #ccc; border-radius: 4px;"
+        class="consentContainer common__media-provider_cookie-consent-message-container"
       >
         
   
         <svg
-          class="common__media-provider_cookie-consent-icon"
+          class="consentIcon"
           height="100%"
           version="1.1"
           viewBox="0 0 110 84"
@@ -41,7 +40,6 @@ exports[`MediaProvider .handleCookieConsent() should replace the iframe with the
           
     
           <g
-            fill="#ccc"
             transform="matrix(1,0,0,1,-24.6099,-41.8178)"
           >
             
@@ -74,9 +72,8 @@ exports[`MediaProvider .handleCookieConsent() should replace the iframe with the
           htmlSanitizer.videoCookieConsent.message
         </span>
         <a
-          class="common__media-provider_cookie-consent-message-container_link"
+          class="consentLink common__media-provider_cookie-consent-message-container_link"
           href="/privacy-settings?source=video"
-          style="text-align: center; color: rgb(250, 84, 0); font-weight: 500;"
         >
           htmlSanitizer.videoCookieConsent.link
         </a>
@@ -90,13 +87,12 @@ exports[`MediaProvider .injectCookieConsentMessage() should add the cookie conse
 <body>
   <div />
   <div
-    class="common__media-provider_cookie-consent-message-container"
-    style="background: rgb(244, 244, 244); border: 1px solid #ccc; border-radius: 4px;"
+    class="consentContainer common__media-provider_cookie-consent-message-container"
   >
     
   
     <svg
-      class="common__media-provider_cookie-consent-icon"
+      class="consentIcon"
       height="100%"
       version="1.1"
       viewBox="0 0 110 84"
@@ -106,7 +102,6 @@ exports[`MediaProvider .injectCookieConsentMessage() should add the cookie conse
       
     
       <g
-        fill="#ccc"
         transform="matrix(1,0,0,1,-24.6099,-41.8178)"
       >
         
@@ -139,9 +134,8 @@ exports[`MediaProvider .injectCookieConsentMessage() should add the cookie conse
       htmlSanitizer.videoCookieConsent.message
     </span>
     <a
-      class="common__media-provider_cookie-consent-message-container_link"
+      class="consentLink common__media-provider_cookie-consent-message-container_link"
       href="/privacy-settings?source=video"
-      style="text-align: center; color: rgb(250, 84, 0); font-weight: 500;"
     >
       htmlSanitizer.videoCookieConsent.link
     </a>
@@ -153,7 +147,7 @@ exports[`MediaProvider .responsify() should not responsify already responsive el
 <body>
   <div>
     <div
-      class="common__media-provider_responsive-container"
+      class="responsiveContainer"
     >
       <iframe
         allow="autoplay; fullscreen"
@@ -170,7 +164,7 @@ exports[`MediaProvider .responsify() should not responsify already responsive el
 exports[`MediaProvider .responsify() should responsify a dom container 1`] = `
 <body>
   <div
-    class="common__media-provider_responsive-container"
+    class="responsiveContainer"
   >
     <iframe />
   </div>

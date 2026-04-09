@@ -1,6 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductSlider /> should call the products callback on mount 1`] = `""`;
+exports[`<ProductSlider /> should call the products callback on mount 1`] = `
+<ProductSlider
+  getProducts={
+    [MockFunction] {
+      "calls": [
+        [
+          1,
+          "",
+          {
+            "limit": 30,
+            "sort": "asc",
+          },
+          "some-slider-id",
+        ],
+      ],
+      "results": [
+        {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  hash={null}
+  id="some-slider-id"
+  products={[]}
+  settings={
+    {
+      "headline": "",
+      "layout": "",
+      "queryParams": "",
+      "queryType": 1,
+      "showName": true,
+      "showPrice": true,
+      "showReviews": true,
+      "sliderSettings": {
+        "autostart": false,
+        "delay": "1000",
+        "loop": false,
+      },
+      "sortOrder": "asc",
+    }
+  }
+  widgetSettings={{}}
+/>
+`;
 
 exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] = `
 <div

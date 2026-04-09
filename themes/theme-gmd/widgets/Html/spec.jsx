@@ -48,7 +48,6 @@ describe('<HtmlWidget />', () => {
     const wrapper = createComponent(settings);
     expect(wrapper).toMatchSnapshot();
     const outer = wrapper.find(UnwrappedHtml).childAt(0);
-    expect(outer.prop('data-test-default-padding')).toBe(true);
-    expect(outer.prop('style')).toEqual({});
+    expect(outer.prop('style')).toEqual({ padding: 16 });
   });
 });

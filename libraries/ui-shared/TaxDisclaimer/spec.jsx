@@ -1,6 +1,24 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
+
+jest.mock('@shopgate/engage/components');
+/* eslint-disable require-jsdoc */
+jest.mock('@shopgate/engage/styles', () => ({
+  makeStyles: () => function mockUseStylesFactory(defs) {
+    return function useStylesMock() {
+      const keys = Object.keys(defs);
+      const classes = keys.reduce((acc, key) => {
+        acc[key] = `mock-class-${key}`;
+        return acc;
+      }, {});
+      const cx = (...parts) => parts.filter(Boolean).join(' ');
+      return { classes, cx };
+    };
+  },
+  keyframes: () => ({}),
+}));
+/* eslint-enable require-jsdoc */
 
 jest.mock('@shopgate/engage/core/hooks/useWidgetSettings', () => ({
   useWidgetSettings: jest.fn().mockReturnValue({

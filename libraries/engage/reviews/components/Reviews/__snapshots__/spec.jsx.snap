@@ -187,7 +187,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
               className="engage__reviews__list"
             >
               <li
-                className="tss-1sn0hxb-item"
+                className="tss-4bfwpo-item"
                 data-test-id="reviewTitle: "
                 key="1"
               >
@@ -227,15 +227,15 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       >
                         <div
                           aria-label="reviews.rating_stars"
-                          className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                          className="ui-shared__rating-stars tss-1ecuo2n-container-stars"
                           data-test-id="ratedStars: 5"
                           role="img"
                         >
                           <div
-                            className="css-4s85e9 rating-stars-empty"
+                            className="tss-170uo4n-emptyStars rating-stars-empty"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="1"
                             >
                               <Star
@@ -265,7 +265,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="2"
                             >
                               <Star
@@ -295,7 +295,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="3"
                             >
                               <Star
@@ -325,7 +325,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="4"
                             >
                               <Star
@@ -355,7 +355,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="5"
                             >
                               <Star
@@ -386,10 +386,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-16bht0q rating-stars-filled"
+                            className="tss-8o0m3k-filledStars rating-stars-filled"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="6"
                             >
                               <Star
@@ -419,7 +419,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="7"
                             >
                               <Star
@@ -449,7 +449,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="8"
                             >
                               <Star
@@ -479,7 +479,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="9"
                             >
                               <Star
@@ -509,7 +509,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="10"
                             >
                               <Star
@@ -571,12 +571,12 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <ReviewDate
                         date="2017-09-06T12:38:51.000Z"
                       >
-                        <FormatDate
+                        <Date
                           format="long"
                           timestamp={1504701531000}
                         >
-                          d
-                        </FormatDate>
+                          1504701531000-long
+                        </Date>
                       </ReviewDate>
                        
                       <Author
@@ -587,7 +587,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </SurroundPortals>
               </li>
               <li
-                className="tss-1sn0hxb-item"
+                className="tss-4bfwpo-item"
                 data-test-id="reviewTitle: "
                 key="2"
               >
@@ -627,15 +627,15 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       >
                         <div
                           aria-label="reviews.rating_stars"
-                          className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                          className="ui-shared__rating-stars tss-1ecuo2n-container-stars"
                           data-test-id="ratedStars: 5"
                           role="img"
                         >
                           <div
-                            className="css-4s85e9 rating-stars-empty"
+                            className="tss-170uo4n-emptyStars rating-stars-empty"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="1"
                             >
                               <Star
@@ -665,7 +665,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="2"
                             >
                               <Star
@@ -695,7 +695,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="3"
                             >
                               <Star
@@ -725,7 +725,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="4"
                             >
                               <Star
@@ -755,7 +755,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="5"
                             >
                               <Star
@@ -786,10 +786,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-16bht0q rating-stars-filled"
+                            className="tss-8o0m3k-filledStars rating-stars-filled"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="6"
                             >
                               <Star
@@ -819,7 +819,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="7"
                             >
                               <Star
@@ -849,7 +849,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="8"
                             >
                               <Star
@@ -879,7 +879,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="9"
                             >
                               <Star
@@ -909,7 +909,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="10"
                             >
                               <Star
@@ -971,12 +971,12 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <ReviewDate
                         date="2017-09-06T12:38:51.000Z"
                       >
-                        <FormatDate
+                        <Date
                           format="long"
                           timestamp={1504701531000}
                         >
-                          d
-                        </FormatDate>
+                          1504701531000-long
+                        </Date>
                       </ReviewDate>
                        
                       <Author
@@ -987,7 +987,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </SurroundPortals>
               </li>
               <li
-                className="tss-1sn0hxb-item"
+                className="tss-4bfwpo-item"
                 data-test-id="reviewTitle: "
                 key="3"
               >
@@ -1027,15 +1027,15 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       >
                         <div
                           aria-label="reviews.rating_stars"
-                          className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                          className="ui-shared__rating-stars tss-1ecuo2n-container-stars"
                           data-test-id="ratedStars: 5"
                           role="img"
                         >
                           <div
-                            className="css-4s85e9 rating-stars-empty"
+                            className="tss-170uo4n-emptyStars rating-stars-empty"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="1"
                             >
                               <Star
@@ -1065,7 +1065,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="2"
                             >
                               <Star
@@ -1095,7 +1095,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="3"
                             >
                               <Star
@@ -1125,7 +1125,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="4"
                             >
                               <Star
@@ -1155,7 +1155,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="5"
                             >
                               <Star
@@ -1186,10 +1186,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-16bht0q rating-stars-filled"
+                            className="tss-8o0m3k-filledStars rating-stars-filled"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="6"
                             >
                               <Star
@@ -1219,7 +1219,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="7"
                             >
                               <Star
@@ -1249,7 +1249,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="8"
                             >
                               <Star
@@ -1279,7 +1279,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="9"
                             >
                               <Star
@@ -1309,7 +1309,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="10"
                             >
                               <Star
@@ -1371,12 +1371,12 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <ReviewDate
                         date="2017-09-06T12:38:51.000Z"
                       >
-                        <FormatDate
+                        <Date
                           format="long"
                           timestamp={1504701531000}
                         >
-                          d
-                        </FormatDate>
+                          1504701531000-long
+                        </Date>
                       </ReviewDate>
                        
                       <Author
@@ -1387,7 +1387,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                 </SurroundPortals>
               </li>
               <li
-                className="tss-1sn0hxb-item"
+                className="tss-4bfwpo-item"
                 data-test-id="reviewTitle: "
                 key="4"
               >
@@ -1427,15 +1427,15 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       >
                         <div
                           aria-label="reviews.rating_stars"
-                          className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                          className="ui-shared__rating-stars tss-1ecuo2n-container-stars"
                           data-test-id="ratedStars: 5"
                           role="img"
                         >
                           <div
-                            className="css-4s85e9 rating-stars-empty"
+                            className="tss-170uo4n-emptyStars rating-stars-empty"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="1"
                             >
                               <Star
@@ -1465,7 +1465,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="2"
                             >
                               <Star
@@ -1495,7 +1495,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="3"
                             >
                               <Star
@@ -1525,7 +1525,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="4"
                             >
                               <Star
@@ -1555,7 +1555,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="5"
                             >
                               <Star
@@ -1586,10 +1586,10 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                             </div>
                           </div>
                           <div
-                            className="css-16bht0q rating-stars-filled"
+                            className="tss-8o0m3k-filledStars rating-stars-filled"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="6"
                             >
                               <Star
@@ -1619,7 +1619,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="7"
                             >
                               <Star
@@ -1649,7 +1649,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="8"
                             >
                               <Star
@@ -1679,7 +1679,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="9"
                             >
                               <Star
@@ -1709,7 +1709,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="10"
                             >
                               <Star
@@ -1771,12 +1771,12 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       <ReviewDate
                         date="2017-09-06T12:38:51.000Z"
                       >
-                        <FormatDate
+                        <Date
                           format="long"
                           timestamp={1504701531000}
                         >
-                          d
-                        </FormatDate>
+                          1504701531000-long
+                        </Date>
                       </ReviewDate>
                        
                       <Author
@@ -1811,7 +1811,7 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                     navigate={[Function]}
                     noGap={false}
                   >
-                    <ActionButtonWithStyles
+                    <ActionButton
                       className=""
                       disableClickDelay={false}
                       disabled={false}
@@ -1825,140 +1825,78 @@ exports[`<Reviews /> should render reviews, header and all reviews link 1`] = `
                       type="secondary"
                       wrapContent={true}
                     >
-                      <ActionButton
-                        className=""
-                        classes={
-                          {
-                            "containerCircle": "tss-zn4st4-ActionButton-containerCircle",
-                            "noGap": "tss-1zr2s7-ActionButton-noGap",
-                            "withGap": "tss-1jype1y-ActionButton-withGap",
-                          }
-                        }
-                        disableClickDelay={false}
-                        disabled={false}
-                        flat={true}
-                        loading={false}
-                        noGap={false}
-                        onClick={[Function]}
-                        rippleClassName=""
-                        rippleSize={null}
-                        testId={null}
-                        type="secondary"
-                        wrapContent={true}
+                      <div
+                        className="ui-shared__action-button tss-berhvi-withGap"
+                        data-test-id={null}
                       >
-                        <div
-                          className="ui-shared__action-button tss-1jype1y-ActionButton-withGap"
-                          data-test-id={null}
+                        <RippleButton
+                          className=""
+                          disabled={false}
+                          flat={true}
+                          onClick={[Function]}
+                          rippleClassName=""
+                          rippleSize={null}
+                          testId="Button"
+                          type="secondary"
+                          wrapContent={true}
                         >
-                          <RippleButtonWithStyles
-                            className=""
+                          <Button
+                            className=" ui-shared__ripple-button"
                             disabled={false}
                             flat={true}
                             onClick={[Function]}
-                            rippleClassName=""
-                            rippleSize={null}
                             testId="Button"
                             type="secondary"
-                            wrapContent={true}
+                            wrapContent={false}
                           >
-                            <RippleButton
-                              className=""
-                              classes={
-                                {
-                                  "contentWrapper": "tss-p1t6ie-RippleButton-contentWrapper",
-                                }
-                              }
+                            <Button
+                              className="ui-shared__button tss-1uz0bre-button ui-shared__ripple-button"
                               disabled={false}
-                              flat={true}
                               onClick={[Function]}
-                              rippleClassName=""
-                              rippleSize={null}
                               testId="Button"
-                              type="secondary"
-                              wrapContent={true}
                             >
-                              <Button
-                                className=" ui-shared__ripple-button"
+                              <button
+                                className="common__button ui-shared__button ui-shared__ripple-button tss-1w8dk5h-root-button"
+                                data-test-id="Button"
                                 disabled={false}
-                                flat={true}
                                 onClick={[Function]}
-                                testId="Button"
-                                type="secondary"
-                                wrapContent={false}
                               >
-                                <Button
-                                  className="ui-shared__button css-k7u7lv  ui-shared__ripple-button"
+                                <Ripple
+                                  className="tss-fpa50s-contentWrapper"
+                                  color="#000"
                                   disabled={false}
+                                  fill={true}
                                   onClick={[Function]}
-                                  testId="Button"
-                                  type="button"
+                                  onComplete={[Function]}
+                                  overflow={true}
+                                  size={null}
                                 >
-                                  <button
-                                    className="ui-shared__button css-k7u7lv  ui-shared__ripple-button tss-16c9pag-root common__button"
-                                    data-test-id="Button"
-                                    disabled={false}
+                                  <div
+                                    className="ui-shared__ripple tss-fpa50s-contentWrapper"
+                                    data-test-id="Ripple"
                                     onClick={[Function]}
-                                    type="button"
+                                    style={null}
                                   >
-                                    <RippleWithStyles
-                                      className="tss-p1t6ie-RippleButton-contentWrapper "
-                                      fill={true}
-                                      overflow={true}
-                                      size={null}
-                                    >
-                                      <Ripple
-                                        className="tss-p1t6ie-RippleButton-contentWrapper "
-                                        classes={
-                                          {
-                                            "container": "tss-1dfkr3n-Ripple-container",
-                                          }
+                                    <Text
+                                      params={
+                                        {
+                                          "count": 4,
+                                          "dispatch": [Function],
+                                          "productId": "foo",
                                         }
-                                        color="#000"
-                                        disabled={false}
-                                        fill={true}
-                                        onClick={[Function]}
-                                        onComplete={[Function]}
-                                        overflow={true}
-                                        size={null}
-                                      >
-                                        <div
-                                          className="ui-shared__ripple tss-p1t6ie-RippleButton-contentWrapper "
-                                          data-test-id="Ripple"
-                                          onClick={[Function]}
-                                          style={null}
-                                        >
-                                          <Translate
-                                            acceptPlainTextWithPlaceholders={false}
-                                            className={null}
-                                            params={
-                                              {
-                                                "count": 4,
-                                                "dispatch": [Function],
-                                                "productId": "foo",
-                                              }
-                                            }
-                                            role={null}
-                                            string="reviews.button_all"
-                                            transform={null}
-                                          >
-                                            <span
-                                              className={null}
-                                              role={null}
-                                            >
-                                              reviews.button_all
-                                            </span>
-                                          </Translate>
-                                        </div>
-                                      </Ripple>
-                                    </RippleWithStyles>
-                                  </button>
-                                </Button>
-                              </Button>
-                            </RippleButton>
-                          </RippleButtonWithStyles>
-                        </div>
-                      </ActionButton>
-                    </ActionButtonWithStyles>
+                                      }
+                                      string="reviews.button_all"
+                                    >
+                                      reviews.button_all
+                                    </Text>
+                                  </div>
+                                </Ripple>
+                              </button>
+                            </Button>
+                          </Button>
+                        </RippleButton>
+                      </div>
+                    </ActionButton>
                   </ButtonLink>
                 </Connect(ButtonLink)>
               </div>
@@ -2057,7 +1995,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
               className="engage__reviews__list"
             >
               <li
-                className="tss-1sn0hxb-item"
+                className="tss-4bfwpo-item"
                 data-test-id="reviewTitle: "
                 key="1"
               >
@@ -2097,15 +2035,15 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       >
                         <div
                           aria-label="reviews.rating_stars"
-                          className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                          className="ui-shared__rating-stars tss-1ecuo2n-container-stars"
                           data-test-id="ratedStars: 5"
                           role="img"
                         >
                           <div
-                            className="css-4s85e9 rating-stars-empty"
+                            className="tss-170uo4n-emptyStars rating-stars-empty"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="1"
                             >
                               <Star
@@ -2135,7 +2073,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="2"
                             >
                               <Star
@@ -2165,7 +2103,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="3"
                             >
                               <Star
@@ -2195,7 +2133,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="4"
                             >
                               <Star
@@ -2225,7 +2163,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="5"
                             >
                               <Star
@@ -2256,10 +2194,10 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </div>
                           </div>
                           <div
-                            className="css-16bht0q rating-stars-filled"
+                            className="tss-8o0m3k-filledStars rating-stars-filled"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="6"
                             >
                               <Star
@@ -2289,7 +2227,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="7"
                             >
                               <Star
@@ -2319,7 +2257,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="8"
                             >
                               <Star
@@ -2349,7 +2287,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="9"
                             >
                               <Star
@@ -2379,7 +2317,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="10"
                             >
                               <Star
@@ -2441,12 +2379,12 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       <ReviewDate
                         date="2017-09-06T12:38:51.000Z"
                       >
-                        <FormatDate
+                        <Date
                           format="long"
                           timestamp={1504701531000}
                         >
-                          d
-                        </FormatDate>
+                          1504701531000-long
+                        </Date>
                       </ReviewDate>
                        
                       <Author
@@ -2457,7 +2395,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                 </SurroundPortals>
               </li>
               <li
-                className="tss-1sn0hxb-item"
+                className="tss-4bfwpo-item"
                 data-test-id="reviewTitle: "
                 key="2"
               >
@@ -2497,15 +2435,15 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       >
                         <div
                           aria-label="reviews.rating_stars"
-                          className="css-13azwyo tss-1uyeoj6-stars ui-shared__rating-stars"
+                          className="ui-shared__rating-stars tss-1ecuo2n-container-stars"
                           data-test-id="ratedStars: 5"
                           role="img"
                         >
                           <div
-                            className="css-4s85e9 rating-stars-empty"
+                            className="tss-170uo4n-emptyStars rating-stars-empty"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="1"
                             >
                               <Star
@@ -2535,7 +2473,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="2"
                             >
                               <Star
@@ -2565,7 +2503,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="3"
                             >
                               <Star
@@ -2595,7 +2533,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="4"
                             >
                               <Star
@@ -2625,7 +2563,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="5"
                             >
                               <Star
@@ -2656,10 +2594,10 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                             </div>
                           </div>
                           <div
-                            className="css-16bht0q rating-stars-filled"
+                            className="tss-8o0m3k-filledStars rating-stars-filled"
                           >
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="6"
                             >
                               <Star
@@ -2689,7 +2627,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="7"
                             >
                               <Star
@@ -2719,7 +2657,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="8"
                             >
                               <Star
@@ -2749,7 +2687,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="9"
                             >
                               <Star
@@ -2779,7 +2717,7 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                               </Star>
                             </div>
                             <div
-                              className="css-kdb68h css-q4owmg"
+                              className="tss-1jcir28-icon-iconGapSmall"
                               key="10"
                             >
                               <Star
@@ -2841,12 +2779,12 @@ exports[`<Reviews /> should render reviews, header, but no all reviews link 1`] 
                       <ReviewDate
                         date="2017-09-06T12:38:51.000Z"
                       >
-                        <FormatDate
+                        <Date
                           format="long"
                           timestamp={1504701531000}
                         >
-                          d
-                        </FormatDate>
+                          1504701531000-long
+                        </Date>
                       </ReviewDate>
                        
                       <Author

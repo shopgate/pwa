@@ -11,7 +11,8 @@ import {
 } from './index';
 import { checkoutOrder } from './index.spec.mock';
 
-jest.mock('@shopgate/engage/core', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  mutable: input => input,
   i18n: {
     text: jest.fn(),
   },

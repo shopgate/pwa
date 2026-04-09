@@ -1,299 +1,325 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProductImage /> should apply an inner shadow to the image if turned off via the widget settings 1`] = `
-<ProductImage
-  alt={null}
-  animating={true}
-  className={null}
-  classes={
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={
     {
-      "innerShadow": "tss-qvc75c-ProductImage-innerShadow",
-      "placeholder": "tss-iecjxp-ProductImage-placeholder",
-      "placeholderContainer": "tss-h32ut1-ProductImage-placeholderContainer",
-      "placeholderContent": "tss-elojqu-ProductImage-placeholderContent",
+      "resolutions": [
+        {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        {
+          "height": 440,
+          "width": 440,
+        },
+      ],
+      "src": "http://placehold.it/300x300",
     }
   }
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  noBackground={false}
-  placeholderSrc={null}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src="http://placehold.it/300x300"
-  srcmap={null}
-  widgetSettings={
-    {
-      "showInnerShadow": true,
-    }
-  }
-/>
+>
+  <div
+    className="engage__product__product-image"
+  >
+    <Image
+      alt={null}
+      animating={true}
+      aria-hidden={true}
+      backgroundColor="#fff"
+      className="tss-ff8tgd-innerShadow"
+      classNameImg=""
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      lazy={true}
+      noBackground={false}
+      onError={[Function]}
+      onLoad={[Function]}
+      placeholderSrc={null}
+      ratio={null}
+      resolutions={
+        [
+          {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="http://placehold.it/300x300"
+      srcmap={null}
+      unwrapped={false}
+      widgetSettings={
+        {
+          "showInnerShadow": true,
+        }
+      }
+    />
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should apply an inner shadow to the placeholder if turned off via the widget settings 1`] = `
-<ProductImage
-  alt={null}
-  animating={true}
-  className={null}
-  classes={
-    {
-      "innerShadow": "tss-qvc75c-ProductImage-innerShadow",
-      "placeholder": "tss-iecjxp-ProductImage-placeholder",
-      "placeholderContainer": "tss-h32ut1-ProductImage-placeholderContainer",
-      "placeholderContent": "tss-elojqu-ProductImage-placeholderContent",
-    }
-  }
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  noBackground={false}
-  placeholderSrc={null}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src={null}
-  srcmap={null}
-  widgetSettings={
-    {
-      "showInnerShadow": true,
-    }
-  }
-/>
+<SurroundPortals
+  portalName="component.product-image"
+>
+  <div
+    className="tss-7iqvdv-placeholderContainer-innerShadow"
+  >
+    <ProductImagePlaceholder
+      noBackground={false}
+      showInnerShadow={true}
+      src="http://placehold.it/300x300"
+    />
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should not apply an inner shadow to the image if turned off via the app config 1`] = `
-<ProductImage
-  alt={null}
-  animating={true}
-  className={null}
-  classes={
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={
     {
-      "innerShadow": "tss-qvc75c-ProductImage-innerShadow",
-      "placeholder": "tss-iecjxp-ProductImage-placeholder",
-      "placeholderContainer": "tss-h32ut1-ProductImage-placeholderContainer",
-      "placeholderContent": "tss-elojqu-ProductImage-placeholderContent",
+      "resolutions": [
+        {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        {
+          "height": 440,
+          "width": 440,
+        },
+      ],
+      "src": "http://placehold.it/300x300",
     }
   }
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  noBackground={false}
-  placeholderSrc={null}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src="http://placehold.it/300x300"
-  srcmap={null}
-  widgetSettings={
-    {
-      "mocked": "widgetSetting",
-    }
-  }
-/>
+>
+  <div
+    className="engage__product__product-image"
+  >
+    <Image
+      alt={null}
+      animating={true}
+      aria-hidden={true}
+      backgroundColor="#fff"
+      className=""
+      classNameImg=""
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      lazy={true}
+      noBackground={false}
+      onError={[Function]}
+      onLoad={[Function]}
+      placeholderSrc={null}
+      ratio={null}
+      resolutions={
+        [
+          {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="http://placehold.it/300x300"
+      srcmap={null}
+      unwrapped={false}
+      widgetSettings={
+        {
+          "mocked": "widgetSetting",
+        }
+      }
+    />
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should not apply an inner shadow to the image if turned off via the widget settings 1`] = `
-<ProductImageWithStyles
-  src="http://placehold.it/300x300"
-  widgetSettings={
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={
     {
-      "showInnerShadow": false,
+      "resolutions": [
+        {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        {
+          "height": 440,
+          "width": 440,
+        },
+      ],
+      "src": "http://placehold.it/300x300",
     }
   }
-/>
+>
+  <div
+    className="engage__product__product-image"
+  >
+    <Image
+      alt={null}
+      animating={true}
+      aria-hidden={true}
+      backgroundColor="#fff"
+      className=""
+      classNameImg=""
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      lazy={true}
+      noBackground={false}
+      onError={[Function]}
+      onLoad={[Function]}
+      placeholderSrc={null}
+      ratio={null}
+      resolutions={
+        [
+          {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="http://placehold.it/300x300"
+      srcmap={null}
+      unwrapped={false}
+      widgetSettings={
+        {
+          "showInnerShadow": false,
+        }
+      }
+    />
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should not apply an inner shadow to the placeholder if turned off via the app config 1`] = `
-<ProductImage
-  alt={null}
-  animating={true}
-  className={null}
-  classes={
-    {
-      "innerShadow": "tss-qvc75c-ProductImage-innerShadow",
-      "placeholder": "tss-iecjxp-ProductImage-placeholder",
-      "placeholderContainer": "tss-h32ut1-ProductImage-placeholderContainer",
-      "placeholderContent": "tss-elojqu-ProductImage-placeholderContent",
-    }
-  }
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  noBackground={false}
-  placeholderSrc={null}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src={null}
-  srcmap={null}
-  widgetSettings={
-    {
-      "mocked": "widgetSetting",
-    }
-  }
-/>
+<SurroundPortals
+  portalName="component.product-image"
+>
+  <div
+    className="tss-rvs4ak-placeholderContainer"
+  >
+    <ProductImagePlaceholder
+      noBackground={false}
+      showInnerShadow={false}
+      src="http://placehold.it/300x300"
+    />
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should not apply an inner shadow to the placeholder if turned off via the widget settings 1`] = `
-<ProductImage
-  alt={null}
-  animating={true}
-  className={null}
-  classes={
-    {
-      "innerShadow": "tss-qvc75c-ProductImage-innerShadow",
-      "placeholder": "tss-iecjxp-ProductImage-placeholder",
-      "placeholderContainer": "tss-h32ut1-ProductImage-placeholderContainer",
-      "placeholderContent": "tss-elojqu-ProductImage-placeholderContent",
-    }
-  }
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  noBackground={false}
-  placeholderSrc={null}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src={null}
-  srcmap={null}
-  widgetSettings={
-    {
-      "showInnerShadow": false,
-    }
-  }
-/>
+<SurroundPortals
+  portalName="component.product-image"
+>
+  <div
+    className="tss-rvs4ak-placeholderContainer"
+  >
+    <ProductImagePlaceholder
+      noBackground={false}
+      showInnerShadow={false}
+      src="http://placehold.it/300x300"
+    />
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should render a placeholder if no src prop is provided 1`] = `
-<ProductImage
-  alt={null}
-  animating={true}
-  className={null}
-  classes={
-    {
-      "innerShadow": "tss-qvc75c-ProductImage-innerShadow",
-      "placeholder": "tss-iecjxp-ProductImage-placeholder",
-      "placeholderContainer": "tss-h32ut1-ProductImage-placeholderContainer",
-      "placeholderContent": "tss-elojqu-ProductImage-placeholderContent",
-    }
-  }
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  noBackground={false}
-  placeholderSrc={null}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src={null}
-  srcmap={null}
-  widgetSettings={
-    {
-      "mocked": "widgetSetting",
-    }
-  }
-/>
+<SurroundPortals
+  portalName="component.product-image"
+>
+  <div
+    className="tss-rvs4ak-placeholderContainer"
+  >
+    <div
+      aria-hidden={true}
+      className="tss-1k7fitm-placeholderContent"
+      data-test-id="placeHolder"
+    >
+      <Placeholder
+        className="tss-1k233yj-placeholder"
+      />
+    </div>
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should render the image without a placeholder 1`] = `
-<ProductImage
-  alt={null}
-  animating={true}
-  className={null}
-  classes={
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={
     {
-      "innerShadow": "tss-qvc75c-ProductImage-innerShadow",
-      "placeholder": "tss-iecjxp-ProductImage-placeholder",
-      "placeholderContainer": "tss-h32ut1-ProductImage-placeholderContainer",
-      "placeholderContent": "tss-elojqu-ProductImage-placeholderContent",
+      "resolutions": [
+        {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        {
+          "height": 440,
+          "width": 440,
+        },
+      ],
+      "src": "http://placehold.it/300x300",
     }
   }
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  noBackground={false}
-  placeholderSrc={null}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src="http://placehold.it/300x300"
-  srcmap={null}
-  widgetSettings={
-    {
-      "mocked": "widgetSetting",
-    }
-  }
-/>
+>
+  <div
+    className="engage__product__product-image"
+  >
+    <Image
+      alt={null}
+      animating={true}
+      aria-hidden={true}
+      backgroundColor="#fff"
+      className=""
+      classNameImg=""
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      lazy={true}
+      noBackground={false}
+      onError={[Function]}
+      onLoad={[Function]}
+      placeholderSrc={null}
+      ratio={null}
+      resolutions={
+        [
+          {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="http://placehold.it/300x300"
+      srcmap={null}
+      unwrapped={false}
+      widgetSettings={
+        {
+          "mocked": "widgetSetting",
+        }
+      }
+    />
+  </div>
+</SurroundPortals>
 `;

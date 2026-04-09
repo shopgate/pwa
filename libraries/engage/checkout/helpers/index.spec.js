@@ -5,7 +5,7 @@ import {
   getCheckoutTaxLinesFromOrder,
 } from './index';
 
-jest.mock('@shopgate/engage/core', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   i18n: {
     text: jest.fn(key => key),
   },

@@ -11,9 +11,11 @@ const insertionPoint = document.querySelector(
   'meta[name="emotion-insertion-point"]'
 ) as HTMLMetaElement;
 
+export const CLASS_PREFIX = 'tss';
+
 export const emotionCache = createCache({
   // All tss-react styles will be prefixed with `.tss-*` instead of `.css-*`
-  key: 'tss',
+  key: CLASS_PREFIX,
   /**
    * We define a custom Emotion insertion point to control the order in which
    * TSS (Emotion-based) styles are injected into the document.

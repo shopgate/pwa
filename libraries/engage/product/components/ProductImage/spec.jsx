@@ -33,7 +33,7 @@ describe('<ProductImage />', () => {
 
   it('should not apply an inner shadow to the placeholder if turned off via the app config', () => {
     jest.spyOn(appConfig, 'hideProductImageShadow', 'get').mockReturnValue(true);
-    const wrapper = shallow(<ProductImage />).dive();
+    const wrapper = shallow(<ProductImage placeholderSrc="http://placehold.it/300x300" />).dive();
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(false);
@@ -48,21 +48,30 @@ describe('<ProductImage />', () => {
   });
 
   it('should not apply an inner shadow to the placeholder if turned off via the widget settings', () => {
-    const wrapper = shallow(<ProductImage widgetSettings={{ showInnerShadow: false }} />).dive();
+    const wrapper = shallow(<ProductImage
+      placeholderSrc="http://placehold.it/300x300"
+      widgetSettings={{ showInnerShadow: false }}
+    />).dive();
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(false);
   });
 
   it('should not apply an inner shadow to the image if turned off via the widget settings', () => {
-    const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" widgetSettings={{ showInnerShadow: false }} />);
+    const wrapper = shallow(<ProductImage
+      src="http://placehold.it/300x300"
+      widgetSettings={{ showInnerShadow: false }}
+    />).dive();
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Image).prop('className')).toBe('');
   });
 
   it('should apply an inner shadow to the placeholder if turned off via the widget settings', () => {
-    const wrapper = shallow(<ProductImage widgetSettings={{ showInnerShadow: true }} />).dive();
+    const wrapper = shallow(<ProductImage
+      widgetSettings={{ showInnerShadow: true }}
+      placeholderSrc="http://placehold.it/300x300"
+    />).dive();
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(true);

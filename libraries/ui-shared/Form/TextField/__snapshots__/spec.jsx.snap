@@ -19,7 +19,7 @@ exports[`<TextField> should focus the input 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -35,7 +35,7 @@ exports[`<TextField> should focus the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -43,23 +43,20 @@ exports[`<TextField> should focus the input 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -73,10 +70,7 @@ exports[`<TextField> should focus the input 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -99,10 +93,7 @@ exports[`<TextField> should focus the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -131,10 +122,10 @@ exports[`<TextField> should focus the input 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -168,7 +159,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -184,7 +175,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -192,23 +183,20 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -222,10 +210,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -248,10 +233,7 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -280,10 +262,10 @@ exports[`<TextField> should receive the correct value while typing 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -317,7 +299,7 @@ exports[`<TextField> should render a simple text field 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -333,7 +315,7 @@ exports[`<TextField> should render a simple text field 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -341,23 +323,20 @@ exports[`<TextField> should render a simple text field 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -371,10 +350,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -397,10 +373,7 @@ exports[`<TextField> should render a simple text field 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -429,10 +402,10 @@ exports[`<TextField> should render a simple text field 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -467,7 +440,7 @@ exports[`<TextField> should render the text field as password 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -483,7 +456,7 @@ exports[`<TextField> should render the text field as password 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -491,23 +464,20 @@ exports[`<TextField> should render the text field as password 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -522,10 +492,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -548,10 +515,7 @@ exports[`<TextField> should render the text field as password 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -580,10 +544,10 @@ exports[`<TextField> should render the text field as password 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -617,7 +581,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
   value="FooBar"
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -633,7 +597,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -641,23 +605,20 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -671,10 +632,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -697,10 +655,7 @@ exports[`<TextField> should render the text field with a default value 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -729,10 +684,10 @@ exports[`<TextField> should render the text field with a default value 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -767,7 +722,7 @@ exports[`<TextField> should sanitize the input 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -783,7 +738,7 @@ exports[`<TextField> should sanitize the input 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -791,23 +746,20 @@ exports[`<TextField> should sanitize the input 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -822,10 +774,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -848,10 +797,7 @@ exports[`<TextField> should sanitize the input 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -880,10 +826,10 @@ exports[`<TextField> should sanitize the input 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -917,7 +863,7 @@ exports[`<TextField> should show the error message 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText="This is an error here"
     hasLeftElement={false}
@@ -933,7 +879,7 @@ exports[`<TextField> should show the error message 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -941,23 +887,20 @@ exports[`<TextField> should show the error message 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -971,10 +914,7 @@ exports[`<TextField> should show the error message 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -997,10 +937,7 @@ exports[`<TextField> should show the error message 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -1029,13 +966,13 @@ exports[`<TextField> should show the error message 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
-                "borderBottomColor": "var(--color-state-alert)",
+                "borderBottomColor": "var(--sg-palette-error-main)",
               }
             }
           />
@@ -1052,24 +989,14 @@ exports[`<TextField> should show the error message 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="css-68xh0w errorText"
+          className="tss-11p2a3k-root errorText"
           id="ariaError-test-input"
         >
-          <Translate
-            acceptPlainTextWithPlaceholders={false}
-            className={null}
-            params={{}}
-            role={null}
+          <Text
             string="This is an error here"
-            transform={null}
           >
-            <span
-              className={null}
-              role={null}
-            >
-              This is an error here
-            </span>
-          </Translate>
+            This is an error here
+          </Text>
         </div>
       </ErrorText>
     </div>
@@ -1096,7 +1023,7 @@ exports[`<TextField> should show the label 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -1112,7 +1039,7 @@ exports[`<TextField> should show the label 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -1122,23 +1049,13 @@ exports[`<TextField> should show the label 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-1ppmfxj placeholder"
+          className="tss-1m15d1c-placeholder placeholder"
         >
-          <Translate
-            acceptPlainTextWithPlaceholders={false}
-            className={null}
-            params={{}}
-            role={null}
+          <Text
             string="This is the label"
-            transform={null}
           >
-            <span
-              className={null}
-              role={null}
-            >
-              This is the label
-            </span>
-          </Translate>
+            This is the label
+          </Text>
         </div>
       </Placeholder>
       <Label
@@ -1150,24 +1067,14 @@ exports[`<TextField> should show the label 1`] = `
         labelStatic={false}
       >
         <label
-          className="css-1nn9zl4 css-1jyyyen label"
+          className="label tss-smo66e-label-labelRegular"
           htmlFor="test-input"
         >
-          <Translate
-            acceptPlainTextWithPlaceholders={false}
-            className={null}
-            params={{}}
-            role={null}
+          <Text
             string="This is the label"
-            transform={null}
           >
-            <span
-              className={null}
-              role={null}
-            >
-              This is the label
-            </span>
-          </Translate>
+            This is the label
+          </Text>
         </label>
       </Label>
       <Grid
@@ -1176,23 +1083,20 @@ exports[`<TextField> should show the label 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -1206,10 +1110,7 @@ exports[`<TextField> should show the label 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -1232,10 +1133,7 @@ exports[`<TextField> should show the label 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -1264,10 +1162,10 @@ exports[`<TextField> should show the label 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -1301,7 +1199,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -1317,7 +1215,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Placeholder
         aria-hidden={true}
@@ -1327,23 +1225,13 @@ exports[`<TextField> should show the placeholder text 1`] = `
       >
         <div
           aria-hidden={true}
-          className="css-1ppmfxj placeholder"
+          className="tss-1m15d1c-placeholder placeholder"
         >
-          <Translate
-            acceptPlainTextWithPlaceholders={false}
-            className={null}
-            params={{}}
-            role={null}
+          <Text
             string="This is the placeholder text"
-            transform={null}
           >
-            <span
-              className={null}
-              role={null}
-            >
-              This is the placeholder text
-            </span>
-          </Translate>
+            This is the placeholder text
+          </Text>
         </div>
       </Placeholder>
       <Grid
@@ -1352,23 +1240,20 @@ exports[`<TextField> should show the placeholder text 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -1382,10 +1267,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -1408,10 +1290,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -1440,10 +1319,10 @@ exports[`<TextField> should show the placeholder text 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -1493,7 +1372,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
   value=""
 >
   <FormElement
-    className=" ui-shared__form__text-field"
+    className="ui-shared__form__text-field"
     disabled={false}
     errorText=""
     hasLeftElement={false}
@@ -1509,7 +1388,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv  ui-shared__form__text-field formElement ui-shared__form-element"
+      className="tss-1iey9hl-formElement ui-shared__form__text-field formElement ui-shared__form-element"
     >
       <Grid
         className=""
@@ -1517,23 +1396,20 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         wrap={false}
       >
         <ul
-          className=" tss-pauvta-root common__grid tss-i2x46h-noWrap"
+          className="common__grid tss-190r8b9-root-noWrap"
         >
           <GridItem
-            className="css-1kppfx4"
+            className="tss-j5fkr8-container"
             component="li"
             grow={1}
             shrink={1}
           >
             <li
-              className="css-1kppfx4 tss-xljr6b-root common__grid__item--custom-flex"
+              className="tss-1uei5pq-root-container"
             >
               <_default
                 attributes={null}
-                className="
-                css-keangt 
-                
-              "
+                className="tss-1w45uhc-input"
                 maxLength=""
                 multiLine={false}
                 name="test-input"
@@ -1563,10 +1439,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   attributes={null}
                   autoComplete={false}
                   autoCorrect={false}
-                  className="
-                css-keangt 
-                
-              "
+                  className="tss-1w45uhc-input"
                   disabled={false}
                   id={null}
                   inputComponent="input"
@@ -1604,10 +1477,7 @@ exports[`<TextField> should trigger the validation callback 1`] = `
                   <input
                     autoComplete="off"
                     autoCorrect="off"
-                    className="
-                css-keangt 
-                
-               simpleInput common__simple-input"
+                    className="tss-1w45uhc-input simpleInput common__simple-input"
                     disabled={false}
                     id={null}
                     inputMode={null}
@@ -1636,10 +1506,10 @@ exports[`<TextField> should trigger the validation callback 1`] = `
         isFocused={false}
       >
         <div
-          className="css-ycal4l underline"
+          className="tss-titfmn-underlineWrapper underline"
         >
           <div
-            className="css-1tpmuef"
+            className="tss-ll3grb-underline"
             style={
               {
                 "borderBottomColor": "var(--color-primary, #fa5400)",

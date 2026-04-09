@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { CLASS_PREFIX } from '@shopgate/engage/styles/tss';
 import SwiperItem from '.';
 
 jest.mock('react', () => ({
@@ -17,7 +18,7 @@ describe('<SwiperItem />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.html()).toMatch(
-      /^<div class="swiper-slide css-[^"]+" data-test-id="Slider"><div><\/div><\/div>$/
+      new RegExp(`^<div class="swiper-slide ${CLASS_PREFIX}-[^"]+" data-test-id="Slider"><div></div></div>$`)
     );
   });
 
@@ -30,7 +31,7 @@ describe('<SwiperItem />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.html()).toMatch(
-      /^<div class="swiper-slide css-[^"]+ test" data-test-id="Slider"><div><\/div><\/div>$/
+      new RegExp(`^<div class="swiper-slide ${CLASS_PREFIX}-[^"]+ test" data-test-id="Slider"><div></div></div>$`)
     );
   });
 });
