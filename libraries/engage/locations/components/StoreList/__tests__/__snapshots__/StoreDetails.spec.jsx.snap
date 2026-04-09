@@ -24,7 +24,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           className="sg-31v86g-detailsLine"
         >
           <Grid.Item
-            className="sg-105dt1h-detailsIcon"
+            className="sg-sjacpx-detailsIcon"
             shrink={0}
           >
             <TimeIcon
@@ -146,7 +146,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             className="sg-31v86g-detailsLine"
           >
             <Grid.Item
-              className="sg-burank-detailsIcon-detailsIconLinked"
+              className="sg-15jmucj-detailsIcon-detailsIconLinked"
               shrink={0}
             >
               <PhoneIcon
@@ -210,7 +210,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             className="sg-31v86g-detailsLine"
           >
             <Grid.Item
-              className="sg-burank-detailsIcon-detailsIconLinked"
+              className="sg-15jmucj-detailsIcon-detailsIconLinked"
               shrink={0}
             >
               <LocationIcon

@@ -103,7 +103,7 @@ exports[`<ProductProperties /> should render if properties are passed 1`] = `
           htmlOnly={false}
         >
           <div
-            className="engage__product__product-property-group sg-vtyyyx-container"
+            className="engage__product__product-property-group sg-lre9jt-container"
             data-group-name=""
           >
             <table>
