@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.30.2](https://github.com/shopgate/pwa/compare/v7.30.1...v7.30.2) (2026-04-10)
+
+#### :rocket: Enhancement
+* [#1448](https://github.com/shopgate/pwa/pull/1448) Implement virtual routes to request app permissions ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.30.1](https://github.com/shopgate/pwa/compare/v7.30.0...v7.30.1) (2026-03-04)
 
 #### :rocket: Enhancement
