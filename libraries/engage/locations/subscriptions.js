@@ -1,3 +1,4 @@
+import chunk from 'lodash/chunk';
 import {
   getProductsResult,
   productIsReady$, productsReceived$, productsReceivedCached$,
@@ -98,6 +99,8 @@ const setLocationOnceAvailable = async (locationCode, dispatch) => {
     // Location won't be set.
   }
 };
+
+const MAX_PRODUCT_CODES_PER_INVENTORY_REQUEST = 100;
 
 /**
  * Locations subscriptions.
@@ -346,7 +349,11 @@ function locationsSubscriber(subscribe) {
 
       const productCodes = products.map(({ id }) => id);
 
-      dispatch(fetchInventories(productCodes));
+      // fetchInventories requests for too many product codes can cause request errors, so we
+      // split them into chunked requests if necessary.
+      chunk(productCodes, MAX_PRODUCT_CODES_PER_INVENTORY_REQUEST).forEach((productCodesChunk) => {
+        dispatch(fetchInventories(productCodesChunk));
+      });
     }
   );
 
@@ -362,7 +369,11 @@ function locationsSubscriber(subscribe) {
     const productCodes = action.type !== RECEIVE_PRODUCTS_CACHED ?
       action.products.map(({ id }) => id) : action.products;
 
-    dispatch(fetchInventories(productCodes));
+    // fetchInventories requests for too many product codes can cause request errors, so we
+    // split them into chunked requests if necessary.
+    chunk(productCodes, MAX_PRODUCT_CODES_PER_INVENTORY_REQUEST).forEach((productCodesChunk) => {
+      dispatch(fetchInventories(productCodesChunk));
+    });
   });
 
   subscribe(
@@ -379,7 +390,11 @@ function locationsSubscriber(subscribe) {
         return;
       }
 
-      dispatch(fetchInventories(productIds));
+      // fetchInventories requests for too many product codes can cause request errors, so we
+      // split them into chunked requests if necessary.
+      chunk(productIds, MAX_PRODUCT_CODES_PER_INVENTORY_REQUEST).forEach((productIdsChunk) => {
+        dispatch(fetchInventories(productIdsChunk));
+      });
     }
   );
 
