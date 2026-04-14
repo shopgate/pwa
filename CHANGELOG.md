@@ -1,5 +1,15 @@
 # Changelog
 
+## [v7.30.2](https://github.com/shopgate/pwa/compare/v7.30.1...v7.30.2) (2026-04-14)
+
+#### :rocket: Enhancement
+* [#1452](https://github.com/shopgate/pwa/pull/1452) Refactored category reducers and added receiveCategories action ([@fkloes](https://github.com/fkloes))
+* [#1448](https://github.com/shopgate/pwa/pull/1448) Implement virtual routes to request app permissions ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1456](https://github.com/shopgate/pwa/pull/1456) Fix wrong empty results message for categories ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v7.30.1](https://github.com/shopgate/pwa/compare/v7.30.0...v7.30.1) (2026-03-04)
 
 #### :rocket: Enhancement
