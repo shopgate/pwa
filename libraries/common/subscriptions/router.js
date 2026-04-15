@@ -7,8 +7,9 @@ import {
   ACTION_RESET,
 } from '@virtuous/conductor';
 import Route from '@virtuous/conductor/Route';
+import { Linking } from '@shopgate/native-modules';
 import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
-import { logger, APP_EVENT_WINDOW_OPEN_REQUESTED, event } from '@shopgate/pwa-core';
+import { logger } from '@shopgate/pwa-core';
 import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { getCurrentRoute, getRouterStackIndex } from '../selectors/router';
@@ -333,8 +334,8 @@ export default function routerSubscriptions(subscribe) {
      * and iFrame tries to open a link in a new window. The handler will perform a history push,
      * so that the router can decide how to handle the URL.
      */
-    event.addCallback(APP_EVENT_WINDOW_OPEN_REQUESTED, (payload) => {
-      const { targetUrl } = payload;
+    Linking.addEventListener('onWindowOpenRequested', (event) => {
+      const { targetUrl } = event.detail;
 
       dispatch(historyPush({
         pathname: targetUrl,
