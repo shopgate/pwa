@@ -8,7 +8,7 @@ import {
 } from '@virtuous/conductor';
 import Route from '@virtuous/conductor/Route';
 import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
-import { logger } from '@shopgate/pwa-core';
+import { logger, APP_EVENT_WINDOW_OPEN_REQUESTED, event } from '@shopgate/pwa-core';
 import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { getCurrentRoute, getRouterStackIndex } from '../selectors/router';
@@ -328,6 +328,20 @@ export default function routerSubscriptions(subscribe) {
   });
 
   subscribe(appWillStart$, ({ dispatch }) => {
+    /**
+     * Register a listener to the APP_EVENT_WINDOW_OPEN_REQUESTED event which is emitted when e.g.
+     * and iFrame tries to open a link in a new window. The handler will perform a history push,
+     * so that the router can decide how to handle the URL.
+     */
+    event.addCallback(APP_EVENT_WINDOW_OPEN_REQUESTED, (payload) => {
+      const { targetUrl } = payload;
+
+      dispatch(historyPush({
+        pathname: targetUrl,
+        state: {},
+      }));
+    });
+
     const windowOpenOriginal = window.open;
     /**
      * Override for the window.open method which is usually used by external SDKs to open URLs.

@@ -7,6 +7,7 @@ export const APP_EVENT_VIEW_DID_DISAPPEAR = 'viewDidDisappear';
 
 export const APP_EVENT_APPLICATION_WILL_ENTER_FOREGROUND = 'applicationWillEnterForeground';
 export const APP_EVENT_APPLICATION_DID_ENTER_BACKGROUND = 'applicationDidEnterBackground';
+export const APP_EVENT_WINDOW_OPEN_REQUESTED = 'windowOpenRequested';
 
 export const APP_EVENT_SCANNER_DID_SCAN = 'scannerDidScan';
 export const APP_EVENT_SCANNER_DID_APPEAR = 'scannerDidAppear';
