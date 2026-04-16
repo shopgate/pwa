@@ -334,7 +334,7 @@ export default function routerSubscriptions(subscribe) {
      * and iFrame tries to open a link in a new window. The handler will perform a history push,
      * so that the router can decide how to handle the URL.
      */
-    Linking.addEventListener('onWindowOpenRequested', (event) => {
+    Linking.addEventListener('windowOpenRequested', (event) => {
       const { targetUrl } = event.detail;
 
       dispatch(historyPush({
