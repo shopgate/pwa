@@ -6,12 +6,12 @@ import connect from './connector';
 const useStyles = makeStyles()(theme => ({
   badge: {
     backgroundColor: 'var(--color-primary)',
-    borderRadius: theme.spacing(18),
+    borderRadius: theme.spacing(2 * 1.125),
     color: 'var(--color-primary-contrast)',
     fontSize: 12,
     fontWeight: 700,
-    height: theme.spacing(18),
-    minWidth: theme.spacing(18),
+    height: theme.spacing(2 * 1.125),
+    minWidth: theme.spacing(2 * 1.125),
     padding: theme.spacing(0, 0.625),
     position: 'absolute',
     right: 16,

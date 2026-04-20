@@ -60,7 +60,8 @@ const Menu = ({
       top: 0,
       left: 0,
     };
-  }, [contextRef]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
 
   return (
     <ConnectedReactPortal isOpened={isOpen}>

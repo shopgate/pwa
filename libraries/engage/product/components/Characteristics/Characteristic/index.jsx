@@ -1,16 +1,199 @@
-import React, {
-  useState, useEffect, useCallback, memo,
-} from 'react';
+import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { ResponsiveContainer, ArrowDropIcon } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core/helpers';
-import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
+import { withStyles, cx } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/engage';
 import Sheet from './components/Sheet';
 import transition from '../transition';
 
-const useStyles = makeStyles()(theme => ({
+const { colors: themeColors } = themeConfig;
+
+/**
+ * A single characteristic.
+ */
+class Characteristic extends PureComponent {
+  static propTypes = {
+    charRef: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.shape(),
+    ]).isRequired,
+    classes: PropTypes.shape({
+      button: PropTypes.string,
+      buttonDisabled: PropTypes.string,
+      label: PropTypes.string,
+      selection: PropTypes.string,
+      arrow: PropTypes.string,
+    }).isRequired,
+    disabled: PropTypes.bool.isRequired,
+    highlight: PropTypes.bool.isRequired,
+    id: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    select: PropTypes.func.isRequired,
+    values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+    selected: PropTypes.string,
+  };
+
+  static contextTypes = {
+    i18n: PropTypes.func,
+  };
+
+  static defaultProps = {
+    selected: null,
+  };
+
+  /**
+   * @param {Object} props The component props
+   */
+  constructor(props) {
+    super(props);
+    this.state = {
+      highlight: false,
+      sheet: false,
+    };
+  }
+
+  /**
+   * @param {Object} nextProps The next component props.
+   */
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    this.setState({ highlight: nextProps.highlight });
+  }
+
+  /**
+   * @param {string} defaultLabel The default button label.
+   * @return {string}
+   */
+  getButtonLabel = (defaultLabel) => {
+    if (!this.props.selected) {
+      return defaultLabel;
+    }
+
+    const value = this.props.values.find(val => (val.id === this.props.selected));
+
+    return value.label;
+  };
+
+  /**
+   * @param {Object} event The event object.
+   */
+  handleButtonClick = (event) => {
+    event.preventDefault();
+
+    if (this.props.disabled) {
+      return;
+    }
+
+    this.setState({ sheet: true });
+  };
+
+  /**
+   * @param {string} valueId The ID of the selected value.
+   */
+  handleItemSelection = (valueId) => {
+    this.props.select({
+      id: this.props.id,
+      value: valueId,
+    });
+
+    this.closeSheet();
+  };
+
+  closeSheet = () => {
+    this.setState({ sheet: false });
+  };
+
+  sheetDidClose = () => {
+    if (this.props.charRef && this.props.charRef.current) {
+      // Focus the element that triggered the CharacteristicsSheet after it closes
+      this.props.charRef.current.focus();
+    }
+  };
+
+  removeHighlight = () => {
+    this.setState({ highlight: false });
+  };
+
+  /**
+   * Renders the transition contents.
+   * @param {string} state The current transition state.
+   * @returns {JSX}
+   */
+  transitionRenderer = (state) => {
+    const { __ } = this.context.i18n();
+    const {
+      disabled, selected, charRef, label, classes,
+    } = this.props;
+    const translatedLabel = __('product.pick_an_attribute', [label]);
+    const buttonLabel = this.getButtonLabel(translatedLabel);
+    const cmpClasses = cx(
+      classes.button,
+      { [classes.buttonDisabled]: disabled },
+      'theme__product__characteristic'
+    );
+
+    return (
+      <div
+        role="button"
+        aria-disabled={disabled}
+        aria-haspopup={!disabled}
+        tabIndex={0}
+        className={cmpClasses}
+        onClick={this.handleButtonClick}
+        onKeyDown={() => { }}
+        ref={charRef}
+        style={transition[state]}
+        data-test-id={label}
+      >
+        {selected && <div className={`${classes.label} theme__product__characteristic__label`}>{label}</div>}
+        <div
+          className={`${classes.selection} theme__product__characteristic__selection`}
+          {...selected && { 'data-selected': true }}
+        >
+          {buttonLabel}
+        </div>
+        <ResponsiveContainer breakpoint=">xs" webOnly>
+          <div className={classes.arrow}>
+            <ArrowDropIcon />
+          </div>
+        </ResponsiveContainer>
+      </div>
+    );
+  };
+
+  /**
+   * @return {JSX}
+   */
+  render() {
+    const { __ } = this.context.i18n();
+    const {
+      id, selected, values, charRef,
+    } = this.props;
+    const displayLabel = this.props.label;
+    const translatedLabel = __('product.pick_an_attribute', [displayLabel]);
+
+    return (
+      <>
+        <Transition in={this.state.highlight} timeout={500} onEntered={this.removeHighlight}>
+          {this.transitionRenderer}
+        </Transition>
+        <Sheet
+          charId={id}
+          contextRef={charRef}
+          items={values}
+          label={translatedLabel}
+          onClose={this.closeSheet}
+          onDidClose={this.sheetDidClose}
+          onSelect={this.handleItemSelection}
+          open={this.state.sheet}
+          selectedValue={selected}
+        />
+      </>
+    );
+  }
+}
+
+export default withStyles(Characteristic, theme => ({
   button: {
     background: 'var(--color-background-accent)',
     color: theme.palette.text.primary,
@@ -43,162 +226,3 @@ const useStyles = makeStyles()(theme => ({
     fontSize: 20,
   },
 }));
-
-/**
- * A single characteristic.
- * @param {Object} props Props.
- * @returns {JSX.Element}
- */
-const Characteristic = ({
-  charRef,
-  disabled,
-  highlight: highlightProp,
-  id,
-  label: displayLabel,
-  select,
-  values,
-  selected,
-}) => {
-  const { classes, cx } = useStyles();
-  const [highlight, setHighlight] = useState(false);
-  const [sheet, setSheet] = useState(false);
-
-  useEffect(() => {
-    setHighlight(highlightProp);
-  }, [highlightProp]);
-
-  const getButtonLabel = useCallback((defaultLabel) => {
-    if (!selected) {
-      return defaultLabel;
-    }
-
-    const value = values.find(val => (val.id === selected));
-
-    return value.label;
-  }, [selected, values]);
-
-  const handleButtonClick = useCallback((event) => {
-    event.preventDefault();
-
-    if (disabled) {
-      return;
-    }
-
-    setSheet(true);
-  }, [disabled]);
-
-  const handleItemSelection = useCallback((valueId) => {
-    select({
-      id,
-      value: valueId,
-    });
-
-    setSheet(false);
-  }, [id, select]);
-
-  const closeSheet = useCallback(() => {
-    setSheet(false);
-  }, []);
-
-  const sheetDidClose = useCallback(() => {
-    if (charRef && charRef.current) {
-      charRef.current.focus();
-    }
-  }, [charRef]);
-
-  const removeHighlight = useCallback(() => {
-    setHighlight(false);
-  }, []);
-
-  const translatedLabel = i18n.text('product.pick_an_attribute', [displayLabel]);
-
-  const transitionRenderer = useCallback((state) => {
-    const buttonLabel = getButtonLabel(translatedLabel);
-    const buttonClasses = cx(
-      classes.button,
-      { [classes.buttonDisabled]: disabled },
-      'theme__product__characteristic'
-    );
-
-    return (
-      <div
-        role="button"
-        aria-disabled={disabled}
-        aria-haspopup={!disabled}
-        tabIndex={0}
-        className={buttonClasses}
-        onClick={handleButtonClick}
-        onKeyDown={() => { }}
-        ref={charRef}
-        style={transition[state]}
-        data-test-id={displayLabel}
-      >
-        {selected && <div className={cx(classes.label, 'theme__product__characteristic__label')}>{displayLabel}</div>}
-        <div
-          className={cx(classes.selection, 'theme__product__characteristic__selection')}
-          {...selected && { 'data-selected': true }}
-        >
-          {buttonLabel}
-        </div>
-        <ResponsiveContainer breakpoint=">xs" webOnly>
-          <div className={classes.arrow}>
-            <ArrowDropIcon />
-          </div>
-        </ResponsiveContainer>
-      </div>
-    );
-  }, [
-    charRef,
-    classes.arrow,
-    classes.button,
-    classes.buttonDisabled,
-    classes.label,
-    classes.selection,
-    disabled,
-    displayLabel,
-    getButtonLabel,
-    handleButtonClick,
-    selected,
-    translatedLabel,
-    cx,
-  ]);
-
-  return (
-    <>
-      <Transition in={highlight} timeout={500} onEntered={removeHighlight}>
-        {transitionRenderer}
-      </Transition>
-      <Sheet
-        charId={id}
-        contextRef={charRef}
-        items={values}
-        label={translatedLabel}
-        onClose={closeSheet}
-        onDidClose={sheetDidClose}
-        onSelect={handleItemSelection}
-        open={sheet}
-        selectedValue={selected}
-      />
-    </>
-  );
-};
-
-Characteristic.propTypes = {
-  charRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape(),
-  ]).isRequired,
-  disabled: PropTypes.bool.isRequired,
-  highlight: PropTypes.bool.isRequired,
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  select: PropTypes.func.isRequired,
-  values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  selected: PropTypes.string,
-};
-
-Characteristic.defaultProps = {
-  selected: null,
-};
-
-export default memo(Characteristic);
