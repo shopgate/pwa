@@ -11,7 +11,7 @@ class WithHistoryActions extends Component {
     historyPop: PropTypes.func.isRequired,
     historyPush: PropTypes.func.isRequired,
     historyReplace: PropTypes.func.isRequired,
-    WrappedComponent: PropTypes.func.isRequired,
+    WrappedComponent: PropTypes.elementType.isRequired,
     otherProps: PropTypes.shape({}),
   };
 

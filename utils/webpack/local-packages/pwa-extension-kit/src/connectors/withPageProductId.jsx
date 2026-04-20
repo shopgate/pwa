@@ -31,7 +31,7 @@ function decodeProductIdFromParams(params) {
 // eslint-disable-next-line react/prefer-stateless-function, require-jsdoc
 class WithPageProductId extends Component {
   static propTypes = {
-    WrappedComponent: PropTypes.func.isRequired,
+    WrappedComponent: PropTypes.elementType.isRequired,
   };
 
   /**
