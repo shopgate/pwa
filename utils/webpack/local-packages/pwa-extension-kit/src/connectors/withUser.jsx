@@ -28,7 +28,7 @@ const WithUser = ({ WrappedComponent, user, ...otherProps }) => (
 
 WithUser.propTypes = {
   user: User.isRequired,
-  WrappedComponent: PropTypes.func.isRequired,
+  WrappedComponent: PropTypes.elementType.isRequired,
 };
 
 /**
