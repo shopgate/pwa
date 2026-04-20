@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.30.3](https://github.com/shopgate/pwa/compare/v7.30.2...v7.30.3) (2026-04-20)
+
+#### :rocket: Enhancement
+* [#1458](https://github.com/shopgate/pwa/pull/1458) Add support for new app event to handle links in iframes ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1457](https://github.com/shopgate/pwa/pull/1457) Fix fetchInventories request issues when called for too many products ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.30.2](https://github.com/shopgate/pwa/compare/v7.30.1...v7.30.2) (2026-04-14)
 
 #### :rocket: Enhancement
