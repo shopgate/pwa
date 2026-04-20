@@ -106,6 +106,13 @@ const config = {
       '@shopgate/pwa-ui-shared': resolveForAliasPackage('@shopgate/pwa-ui-shared'),
       '@shopgate/pwa-webcheckout-shopify': resolveForAliasPackage('@shopgate/pwa-webcheckout-shopify'),
       '@shopgate/tracking-core': resolveForAliasPackage('@shopgate/tracking-core'),
+
+      // Use local version for PWA Extension Kit to ensure compatibility with current Babel setup
+      // https://github.com/shopgate-professional-services/pwa-extension-kit
+      '@shopgate-ps/pwa-extension-kit': path.resolve(__dirname, 'local-packages/pwa-extension-kit/src'),
+      '@shopgate-ps/pwa-extension-kit/': path.resolve(__dirname, 'local-packages/pwa-extension-kit/src/'),
+      '@shopgate/pwa-extension-kit': path.resolve(__dirname, 'local-packages/pwa-extension-kit/src'),
+      '@shopgate/pwa-extension-kit/': path.resolve(__dirname, 'local-packages/pwa-extension-kit/src/'),
     },
     modules: [
       'node_modules',
@@ -230,21 +237,6 @@ const config = {
       {
         test: /\.mjs$/,
         type: 'javascript/auto',
-      },
-      // Special treatment for PWA Extension Kit to ensure compatibility with current Babel setup
-      // https://github.com/shopgate-professional-services/pwa-extension-kit
-      {
-        test: /\.js$/,
-        include: /node_modules\/@shopgate-ps\/pwa-extension-kit/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ['@babel/preset-env', { modules: 'commonjs' }],
-              '@babel/preset-react',
-            ],
-          },
-        },
       },
       {
         test: /\.(js|jsx)$/,
