@@ -8,7 +8,7 @@ import { Theme } from '@shopgate/pwa-common/context';
 // eslint-disable-next-line react/prefer-stateless-function, require-jsdoc
 class WithProductContext extends Component {
   static propTypes = {
-    WrappedComponent: PropTypes.func.isRequired,
+    WrappedComponent: PropTypes.elementType.isRequired,
   };
 
   /**
