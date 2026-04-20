@@ -13,13 +13,21 @@ export const isCategoryEmpty = createSelector(
   getCategoryProductCount,
   getCategoryChildCount,
   getProductsResult,
-  (productCount, childrenCount, { products, totalProductCount }) => {
+  (productCount, childrenCount, { products, totalProductCount, isFetching }) => {
     if (childrenCount !== 0) {
       return false;
     }
 
     if (productCount === 0) {
       return true;
+    }
+
+    if (isFetching) {
+      return false;
+    }
+
+    if (productCount !== null && productCount > 0) {
+      return false;
     }
 
     if (totalProductCount !== null && products.length === 0) {
