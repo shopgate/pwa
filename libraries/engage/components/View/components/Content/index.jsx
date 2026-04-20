@@ -93,7 +93,7 @@ class ViewContent extends Component {
     window.requestAnimationFrame(() => {
       if (this.ref.current === window) {
         window.scrollTo(0, scrollTop || 0);
-      } else if (this.ref.current?.scrollTop) {
+      } else if (typeof this.ref.current?.scrollTop !== 'undefined') {
         this.ref.current.scrollTop = scrollTop || 0;
       }
     });

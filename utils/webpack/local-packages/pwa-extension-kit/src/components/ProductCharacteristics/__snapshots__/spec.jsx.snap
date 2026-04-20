@@ -1,0 +1,428 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/ProductCharacteristics should render 1`] = `
+<Component
+  render={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          Object {
+            "charRef": Object {
+              "current": null,
+            },
+            "disabled": false,
+            "highlight": false,
+            "id": "1",
+            "key": "1",
+            "label": "Color",
+            "select": [Function],
+            "selected": null,
+            "values": Array [
+              Object {
+                "id": "1",
+                "label": "BLACK-WHITE (9000)",
+                "selectable": true,
+              },
+              Object {
+                "id": "2",
+                "label": "RED-WHITE (1000)",
+                "selectable": true,
+              },
+            ],
+          },
+        ],
+        Array [
+          Object {
+            "charRef": Object {
+              "current": null,
+            },
+            "disabled": true,
+            "highlight": false,
+            "id": "2",
+            "key": "2",
+            "label": "Size",
+            "select": [Function],
+            "selected": null,
+            "values": Array [
+              Object {
+                "id": "11",
+                "label": "7",
+                "selectable": true,
+              },
+              Object {
+                "id": "12",
+                "label": "7.5",
+                "selectable": true,
+              },
+            ],
+          },
+        ],
+      ],
+      "results": undefined,
+    }
+  }
+>
+  <WithProductContext
+    WrappedComponent={[Function]}
+    render={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "charRef": Object {
+                "current": null,
+              },
+              "disabled": false,
+              "highlight": false,
+              "id": "1",
+              "key": "1",
+              "label": "Color",
+              "select": [Function],
+              "selected": null,
+              "values": Array [
+                Object {
+                  "id": "1",
+                  "label": "BLACK-WHITE (9000)",
+                  "selectable": true,
+                },
+                Object {
+                  "id": "2",
+                  "label": "RED-WHITE (1000)",
+                  "selectable": true,
+                },
+              ],
+            },
+          ],
+          Array [
+            Object {
+              "charRef": Object {
+                "current": null,
+              },
+              "disabled": true,
+              "highlight": false,
+              "id": "2",
+              "key": "2",
+              "label": "Size",
+              "select": [Function],
+              "selected": null,
+              "values": Array [
+                Object {
+                  "id": "11",
+                  "label": "7",
+                  "selectable": true,
+                },
+                Object {
+                  "id": "12",
+                  "label": "7.5",
+                  "selectable": true,
+                },
+              ],
+            },
+          ],
+        ],
+        "results": undefined,
+      }
+    }
+  >
+    <Theme>
+      <Component
+        AppBar={[Function]}
+        Drawer={[Function]}
+        View={[Function]}
+        contexts={
+          Object {
+            "ProductContext": Object {
+              "Consumer": [Function],
+            },
+          }
+        }
+      >
+        <Consumer>
+          <Component
+            conditioner={
+              Conditioner {
+                "conditioners": Map {
+                  "product-variants" => [Function],
+                },
+              }
+            }
+            options={Object {}}
+            productId="123"
+            variantId="123-45"
+          >
+            <Component
+              productContext={
+                Object {
+                  "conditioner": Conditioner {
+                    "conditioners": Map {
+                      "product-variants" => [Function],
+                    },
+                  },
+                  "options": Object {},
+                  "productId": "123",
+                  "variantId": "123-45",
+                }
+              }
+              render={
+                [MockFunction] {
+                  "calls": Array [
+                    Array [
+                      Object {
+                        "charRef": Object {
+                          "current": null,
+                        },
+                        "disabled": false,
+                        "highlight": false,
+                        "id": "1",
+                        "key": "1",
+                        "label": "Color",
+                        "select": [Function],
+                        "selected": null,
+                        "values": Array [
+                          Object {
+                            "id": "1",
+                            "label": "BLACK-WHITE (9000)",
+                            "selectable": true,
+                          },
+                          Object {
+                            "id": "2",
+                            "label": "RED-WHITE (1000)",
+                            "selectable": true,
+                          },
+                        ],
+                      },
+                    ],
+                    Array [
+                      Object {
+                        "charRef": Object {
+                          "current": null,
+                        },
+                        "disabled": true,
+                        "highlight": false,
+                        "id": "2",
+                        "key": "2",
+                        "label": "Size",
+                        "select": [Function],
+                        "selected": null,
+                        "values": Array [
+                          Object {
+                            "id": "11",
+                            "label": "7",
+                            "selectable": true,
+                          },
+                          Object {
+                            "id": "12",
+                            "label": "7.5",
+                            "selectable": true,
+                          },
+                        ],
+                      },
+                    ],
+                  ],
+                  "results": undefined,
+                }
+              }
+            >
+              <Component
+                conditioner={
+                  Conditioner {
+                    "conditioners": Map {
+                      "product-variants" => [Function],
+                    },
+                  }
+                }
+                options={Object {}}
+                productId="123"
+                render={
+                  [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        Object {
+                          "charRef": Object {
+                            "current": null,
+                          },
+                          "disabled": false,
+                          "highlight": false,
+                          "id": "1",
+                          "key": "1",
+                          "label": "Color",
+                          "select": [Function],
+                          "selected": null,
+                          "values": Array [
+                            Object {
+                              "id": "1",
+                              "label": "BLACK-WHITE (9000)",
+                              "selectable": true,
+                            },
+                            Object {
+                              "id": "2",
+                              "label": "RED-WHITE (1000)",
+                              "selectable": true,
+                            },
+                          ],
+                        },
+                      ],
+                      Array [
+                        Object {
+                          "charRef": Object {
+                            "current": null,
+                          },
+                          "disabled": true,
+                          "highlight": false,
+                          "id": "2",
+                          "key": "2",
+                          "label": "Size",
+                          "select": [Function],
+                          "selected": null,
+                          "values": Array [
+                            Object {
+                              "id": "11",
+                              "label": "7",
+                              "selectable": true,
+                            },
+                            Object {
+                              "id": "12",
+                              "label": "7.5",
+                              "selectable": true,
+                            },
+                          ],
+                        },
+                      ],
+                    ],
+                    "results": undefined,
+                  }
+                }
+                variantId="123-45"
+              >
+                <ProductCharacteristics
+                  conditioner={
+                    Conditioner {
+                      "conditioners": Map {
+                        "product-variants" => [Function],
+                      },
+                    }
+                  }
+                  finishTimeout={0}
+                  navigate={[Function]}
+                  options={Object {}}
+                  productId="123"
+                  render={
+                    [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          Object {
+                            "charRef": Object {
+                              "current": null,
+                            },
+                            "disabled": false,
+                            "highlight": false,
+                            "id": "1",
+                            "key": "1",
+                            "label": "Color",
+                            "select": [Function],
+                            "selected": null,
+                            "values": Array [
+                              Object {
+                                "id": "1",
+                                "label": "BLACK-WHITE (9000)",
+                                "selectable": true,
+                              },
+                              Object {
+                                "id": "2",
+                                "label": "RED-WHITE (1000)",
+                                "selectable": true,
+                              },
+                            ],
+                          },
+                        ],
+                        Array [
+                          Object {
+                            "charRef": Object {
+                              "current": null,
+                            },
+                            "disabled": true,
+                            "highlight": false,
+                            "id": "2",
+                            "key": "2",
+                            "label": "Size",
+                            "select": [Function],
+                            "selected": null,
+                            "values": Array [
+                              Object {
+                                "id": "11",
+                                "label": "7",
+                                "selectable": true,
+                              },
+                              Object {
+                                "id": "12",
+                                "label": "7.5",
+                                "selectable": true,
+                              },
+                            ],
+                          },
+                        ],
+                      ],
+                      "results": undefined,
+                    }
+                  }
+                  variantId="123-45"
+                  variants={
+                    Object {
+                      "characteristics": Array [
+                        Object {
+                          "id": "1",
+                          "label": "Color",
+                          "values": Array [
+                            Object {
+                              "id": "1",
+                              "label": "BLACK-WHITE (9000)",
+                            },
+                            Object {
+                              "id": "2",
+                              "label": "RED-WHITE (1000)",
+                            },
+                          ],
+                        },
+                        Object {
+                          "id": "2",
+                          "label": "Size",
+                          "values": Array [
+                            Object {
+                              "id": "11",
+                              "label": "7",
+                            },
+                            Object {
+                              "id": "12",
+                              "label": "7.5",
+                            },
+                          ],
+                        },
+                      ],
+                      "products": Array [
+                        Object {
+                          "characteristics": Object {
+                            "1": "1",
+                            "2": "11",
+                          },
+                          "id": "32050590001000",
+                        },
+                        Object {
+                          "characteristics": Object {
+                            "1": "2",
+                            "2": "12",
+                          },
+                          "id": "32050590000950",
+                        },
+                      ],
+                    }
+                  }
+                />
+              </Component>
+            </Component>
+          </Component>
+        </Consumer>
+      </Component>
+    </Theme>
+  </WithProductContext>
+</Component>
+`;
