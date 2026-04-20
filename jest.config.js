@@ -60,6 +60,7 @@ module.exports = {
     '/themes/*/extensions/',
     '/themes/*/e2e/',
     `/extensions/(?!(${testedExtensions.join('|')}))`,
+    '/utils/webpack/local-packages',
     '/dist/',
     '.*/dist/.*',
     ...skipPatterns,
