@@ -180,7 +180,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             testId="logoutButton"
                           >
                             <button
-                              className="sg-1lse86s-root"
+                              className="sg-xorol2-root"
                               data-test-id="logoutButton"
                               onClick={[Function]}
                               type="button"
@@ -310,7 +310,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/shipping"
                           role="button"
                         >
@@ -367,7 +367,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/payment"
                           role="button"
                         >
@@ -424,7 +424,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/terms"
                           role="button"
                         >
@@ -481,7 +481,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/privacy"
                           role="button"
                         >
@@ -560,7 +560,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/imprint"
                           role="button"
                         >
@@ -892,7 +892,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/shipping"
                           role="button"
                         >
@@ -949,7 +949,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/payment"
                           role="button"
                         >
@@ -1006,7 +1006,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/terms"
                           role="button"
                         >
@@ -1063,7 +1063,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/privacy"
                           role="button"
                         >
@@ -1142,7 +1142,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-1lse86s-root"
+                          className="sg-xorol2-root"
                           href="/page/imprint"
                           role="button"
                         >

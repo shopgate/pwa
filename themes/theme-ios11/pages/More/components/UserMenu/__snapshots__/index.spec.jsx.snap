@@ -101,7 +101,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   testId="accountButton"
                 >
                   <Link
-                    className="sg-1lse86s-root"
+                    className="sg-xorol2-root"
                     href="/account/profile"
                     role="button"
                   >
@@ -125,7 +125,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   testId="accountButton"
                 >
                   <Link
-                    className="sg-1lse86s-root"
+                    className="sg-xorol2-root"
                     href="/account/orders"
                     role="button"
                   >
@@ -149,7 +149,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   testId="accountButton"
                 >
                   <Link
-                    className="sg-1lse86s-root"
+                    className="sg-xorol2-root"
                     href="/account/wish-list"
                     role="button"
                   >
@@ -181,7 +181,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                     testId="logoutButton"
                   >
                     <button
-                      className="sg-1lse86s-root"
+                      className="sg-xorol2-root"
                       data-test-id="logoutButton"
                       onClick={[Function]}
                       type="button"
@@ -330,7 +330,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                     testId="logoutButton"
                   >
                     <button
-                      className="sg-1lse86s-root"
+                      className="sg-xorol2-root"
                       data-test-id="logoutButton"
                       onClick={[MockFunction]}
                       type="button"

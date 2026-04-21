@@ -52,7 +52,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-1lse86s-root"
+        className="sg-xorol2-root"
         href="/link/one"
         role="button"
       >
@@ -76,7 +76,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-1lse86s-root"
+        className="sg-xorol2-root"
         href="/link/two"
         role="button"
       >
@@ -121,7 +121,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-1lse86s-root"
+        className="sg-xorol2-root"
         href="/link/one"
         role="button"
       >
@@ -145,7 +145,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-1lse86s-root"
+        className="sg-xorol2-root"
         href="/link/two"
         role="button"
       >

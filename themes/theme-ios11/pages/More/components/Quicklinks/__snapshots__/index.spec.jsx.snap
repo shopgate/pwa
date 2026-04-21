@@ -117,7 +117,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 testId={null}
               >
                 <Link
-                  className="sg-1lse86s-root"
+                  className="sg-xorol2-root"
                   href="/some/url"
                   role="button"
                 >
@@ -142,7 +142,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 testId={null}
               >
                 <Link
-                  className="sg-1lse86s-root"
+                  className="sg-xorol2-root"
                   href="/another/url"
                   role="button"
                 >
