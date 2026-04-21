@@ -96,7 +96,7 @@ const CartItems = ({
                 <CartItemCard
                   multiLineReservation={multiLineReservation}
                   fulfillmentLocationId={item.fulfillmentLocationId}
-                  fulfillmentMethod={item.fulfillmentMethod}
+                  fulfillmentMethod={item.fulfillmentMethod || item?.fulfillment?.method}
                   hasMessages={Array.isArray(item.messages) && item.messages.length > 0}
                 >
                   <CartItem

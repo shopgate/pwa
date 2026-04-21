@@ -17,10 +17,10 @@ const useStyles = makeStyles()({
   locationRow: {
     borderBottom: '1px solid #e8e8e8',
     borderTop: '1px solid #e8e8e8',
-    '> td:first-child > div': {
+    '> td:first-of-type > div': {
       paddingLeft: 0,
     },
-    '> td:last-child > div': {
+    '> td:last-of-type > div': {
       paddingRight: 0,
     },
   },

@@ -22,7 +22,7 @@ const iconMapping = {
 const getMessageColors = (sourceColor, textColor) => ({
   background: Color(sourceColor).fade(0.9).toString(),
   color: textColor || 'var(--color-text-high-emphasis)',
-  borderColor: sourceColor,
+  borderColor: `${sourceColor}!important`,
 });
 
 const useStyles = makeStyles()((theme, { secondaryColor }) => {
@@ -53,15 +53,6 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
     ' > svg': {
       fontSize: '1.5rem !important',
     },
-    [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      padding: theme.spacing(1.5, 2),
-      fontWeight: 'normal',
-      border: '1px solid',
-      borderRadius: 4,
-      ':not(:last-child)': {
-        marginBottom: theme.spacing(1),
-      },
-    },
   };
 
   return {
@@ -84,6 +75,13 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
         ' > svg': {
           color: 'var(--color-secondary)',
         },
+        padding: theme.spacing(1.5, 2),
+        fontWeight: 'normal',
+        border: '1px solid',
+        borderRadius: 4,
+        ':not(:last-child)': {
+          marginBottom: theme.spacing(1),
+        },
       },
     },
     // eslint-disable-next-line tss-unused-classes/unused-classes
@@ -96,6 +94,13 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
         ' > svg': {
           color: themeColors.error,
         },
+        padding: theme.spacing(1.5, 2),
+        fontWeight: 'normal',
+        border: '1px solid',
+        borderRadius: 4,
+        ':not(:last-child)': {
+          marginBottom: theme.spacing(1),
+        },
       },
     },
     // eslint-disable-next-line tss-unused-classes/unused-classes
@@ -107,6 +112,13 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
         ...getMessageColors(themeColors.warning),
         ' > svg': {
           color: themeColors.warning,
+        },
+        padding: theme.spacing(1.5, 2),
+        fontWeight: 'normal',
+        border: '1px solid',
+        borderRadius: 4,
+        ':not(:last-child)': {
+          marginBottom: theme.spacing(1),
         },
       },
     },

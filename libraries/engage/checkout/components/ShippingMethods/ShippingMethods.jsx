@@ -50,7 +50,7 @@ const useStyles = makeStyles()(theme => ({
   },
   container: {
     border: '1px solid #eaeaea',
-    ' li:nth-child(2n)': {
+    ' li:nth-of-type(2n)': {
       background: 'var(--color-background-accent)',
     },
   },

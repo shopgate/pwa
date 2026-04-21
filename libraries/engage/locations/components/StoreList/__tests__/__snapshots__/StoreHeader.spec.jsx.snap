@@ -3,7 +3,7 @@
 exports[`engage > locations > StoreList > StoreHeader should render as expected 1`] = `
 <StoreHeader>
   <div
-    className="sg-wgjkzd-storeHeader"
+    className="sg-1tjoxlz-storeHeader"
   >
     <Grid>
       <Grid.Item

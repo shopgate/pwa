@@ -31,10 +31,10 @@ const useStyles = makeStyles()(theme => ({
       flexDirection: 'column',
       paddingLeft: theme.spacing(1),
       paddingRight: theme.spacing(1),
-      ':first-child': {
+      ':first-of-type': {
         paddingLeft: theme.spacing(2),
       },
-      ':last-child': {
+      ':last-of-type': {
         paddingRight: theme.spacing(2),
       },
     },

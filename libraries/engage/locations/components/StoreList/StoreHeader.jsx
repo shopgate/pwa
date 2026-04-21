@@ -12,7 +12,7 @@ import { StockInfo } from '../StockInfo';
 const useStyles = makeStyles()(theme => ({
   storeHeader: {
     cursor: 'pointer',
-    padding: theme.spacing(1, 2, 1, 0.5),
+    padding: theme.spacing(1, 2, 0.5),
   },
   storeName: {
     fontSize: '1rem',

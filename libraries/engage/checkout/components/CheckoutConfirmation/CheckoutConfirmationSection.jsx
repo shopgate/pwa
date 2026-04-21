@@ -58,7 +58,7 @@ const useStyles = makeStyles()(theme => ({
     letterSpacing: '1.5px',
     textTransform: 'uppercase',
     color: theme.palette.text.primary,
-    ':not(:first-child)': {
+    ':not(:first-of-type)': {
       paddingTop: theme.spacing(1.5),
     },
   },
@@ -75,15 +75,15 @@ const useStyles = makeStyles()(theme => ({
     ' td': {
       padding: theme.spacing(0.5, 0),
     },
-    ' td:last-child': {
+    ' td:last-of-type': {
       textAlign: 'right',
       whiteSpace: 'pre-wrap',
       paddingLeft: theme.spacing(0.5),
     },
-    ' tr:nth-last-child(2) td': {
+    ' tr:nth-last-of-type(2) td': {
       paddingBottom: 8,
     },
-    ' tr:last-child td': {
+    ' tr:last-of-type td': {
       fontSize: '1rem',
       paddingTop: 8,
       borderTop: '1px solid #979797',

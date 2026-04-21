@@ -18,11 +18,11 @@ const useStyles = makeStyles()({
     [responsiveMediaQuery('xs')]: {
       width: '50%',
     },
-    '&:not(:last-child)': {
+    '&:not(:last-child)/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
     },
-    '&:not(:first-child)': {
+    '&:not(:first-child)/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       borderLeft: 'none',
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,

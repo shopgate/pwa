@@ -35,7 +35,7 @@ const useStyles = makeStyles()(theme => ({
     ' td': {
       padding: theme.spacing(0.5, 0),
     },
-    ' td:last-child': {
+    ' td:last-of-type': {
       textAlign: 'right',
       whiteSpace: 'pre-wrap',
       paddingLeft: theme.spacing(0.5),
@@ -43,7 +43,7 @@ const useStyles = makeStyles()(theme => ({
     ' tr:nth-last-of-type(2) td': {
       paddingBottom: 8,
     },
-    ' tr:last-child td': {
+    ' tr:last-of-type td': {
       paddingTop: 8,
       borderTop: '1px solid #979797',
       fontWeight: '600',

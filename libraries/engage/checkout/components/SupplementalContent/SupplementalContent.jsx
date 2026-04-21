@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: 12,
     lineHeight: 'unset',
     padding: theme.spacing(2, 0),
-    '> *:first-child': {
+    '> *:first-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       marginTop: 0,
     },
     ' ol, ul': {

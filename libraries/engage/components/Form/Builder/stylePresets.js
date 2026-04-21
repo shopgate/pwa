@@ -76,7 +76,7 @@ export const getOutlinedFormFields = theme => ({
   ' .textField label': {
     paddingLeft: 17,
     color: 'var(--color-text-low-emphasis)',
-    '.floating': {
+    '&.floating': {
       transform: 'translate3d(3px, -18px, 0) scale3d(0.75, 0.75, 0.75)',
     },
   },
@@ -96,7 +96,7 @@ export const getOutlinedFormFields = theme => ({
     ' input, select, svg': {
       opacity: 0.28,
     },
-    ' .label': {
+    '&.label': {
       opacity: 0.6,
     },
   },
