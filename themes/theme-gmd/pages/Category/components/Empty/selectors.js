@@ -26,10 +26,6 @@ export const isCategoryEmpty = createSelector(
       return false;
     }
 
-    if (productCount !== null && productCount > 0) {
-      return false;
-    }
-
     if (totalProductCount !== null && products.length === 0) {
       return true;
     }
