@@ -8,7 +8,7 @@ const { colors } = themeConfig;
 
 const useStyles = makeStyles()({
   root: {
-    '&:first-child': {
+    '&:first-of-type': {
       boxShadow: '0 0 0 0',
     },
     boxShadow: `0 -1px 0 0 ${colors.darkGray}`,

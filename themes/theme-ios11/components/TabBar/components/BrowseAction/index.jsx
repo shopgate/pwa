@@ -10,8 +10,8 @@ import connect from '../connector';
 
 const useIconStyles = makeStyles()({
   icon: {
-    height: 24,
-    width: 24,
+    height: 32,
+    width: 31,
   },
 });
 

@@ -14,7 +14,7 @@ const useStyles = makeStyles()((theme, { disabled }) => {
   const customPropColor = getCSSCustomProp('--color-primary');
 
   if (customPropColor) {
-    background = Color(customPropColor).alpha(0.04);
+    background = Color(customPropColor).alpha(0.04).toString();
   }
 
   return {

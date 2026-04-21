@@ -9,10 +9,10 @@ import Item from '../Item';
 
 const useStyles = makeStyles()({
   item: {
-    ':first-child': {
+    ':first-of-type': {
       paddingTop: 0,
     },
-    ':last-child': {
+    ':last-of-type': {
       paddingBottom: 4,
     },
     paddingTop: 2,

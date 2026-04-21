@@ -70,7 +70,6 @@ const useStyles = makeStyles()({
   addButton: {
     width: 'calc(100% - 32px)',
     margin: 16,
-    backgroundColor: 'var(--color-primary)',
     borderRadius: 5,
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       width: 240,

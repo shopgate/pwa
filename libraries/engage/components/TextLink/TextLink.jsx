@@ -23,7 +23,7 @@ const useStyles = makeStyles()({
 const TextLink = (props) => {
   const { classes, cx } = useStyles();
 
-  return <Link {...props} className={cx(props.className, classes.link)} tag="a" role="link" tabIndex={0} />;
+  return <Link {...props} className={cx(classes.link, props.className)} tag="a" role="link" tabIndex={0} />;
 };
 
 TextLink.propTypes = {

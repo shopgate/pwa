@@ -14,10 +14,10 @@ const { colors } = themeConfig;
 const listView = css({
   background: colors.light,
   overflow: 'auto',
-  '> ul > li:first-child': {
+  '> ul > li:first-of-type': {
     paddingTop: 0,
   },
-  '> ul > li:last-child': {
+  '> ul > li:last-of-type': {
     paddingBottom: 0,
   },
 });

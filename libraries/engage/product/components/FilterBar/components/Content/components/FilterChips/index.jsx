@@ -16,7 +16,9 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
   },
   label: {
-    color: theme.palette.text.primary,
+    // TODO: This CSS variable is re-defined inside the Chip component. So refactoring to the
+    // theme need some planning.
+    color: 'var(--color-text-high-emphasis)',
   },
 }));
 
