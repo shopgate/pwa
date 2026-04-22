@@ -278,9 +278,9 @@ const RangeSlider = ({
   );
 
   return (
-    <div className={cx(classNames.container, 'engage__range-slider')} onMouseDown={handleRangeTouch} aria-hidden>
-      <div className={cx(classNames.outerRange, classes.outerRange)} ref={domElement}>
-        <div className={cx(classNames.range, classes.range)} style={rangeStyle}>
+    <div className={cx(classNames.container, 'engage__range-slider', 'common__range-slider')} onMouseDown={handleRangeTouch} aria-hidden>
+      <div className={cx(classes.outerRange, classNames.outerRange)} ref={domElement}>
+        <div className={cx(classes.range, classNames.range)} style={rangeStyle}>
           <Handle
             index={0}
             onTouchStart={handleTouchStart}

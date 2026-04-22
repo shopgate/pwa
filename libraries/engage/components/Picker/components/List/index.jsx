@@ -40,7 +40,7 @@ const PickerList = (props) => {
     });
   }, [items, query]);
   return (
-    <ul className="engage__picker_list">
+    <ul className={cx('engage__picker_list', 'common__picker__list')}>
       {filteredItems.map((item, currentIndex) => (
         <li
           key={item.value}

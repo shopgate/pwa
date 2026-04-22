@@ -107,7 +107,7 @@ const PickerModal = ({ children, isOpen, onClose }) => {
   );
 
   return (
-    <div className={cx(classes.wrapper, 'engage__picker_modal')}>
+    <div className={cx(classes.wrapper, 'engage__picker_modal', 'common__picker__modal')}>
       <div aria-hidden className={backgroundClassName} onClick={closeModal} />
       <div className={containerClassName}>
         {cloneElement(children, { onClose: closeModal })}

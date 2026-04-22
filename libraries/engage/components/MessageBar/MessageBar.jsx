@@ -154,10 +154,10 @@ const MessageBar = ({
   const { classes, cx } = useStyles({ secondaryColor });
   const containerClass = React.useMemo(() => {
     if (raised) {
-      return cx(classes.containerRaised, classNames.containerRaised);
+      return cx(classes.containerRaised, classNames.containerRaised, 'ui-shared__message-bar');
     }
 
-    return cx(classes.container, classNames.container);
+    return cx(classes.container, classNames.container, 'ui-shared__message-bar');
   }, [classNames.container, classNames.containerRaised, raised,
     classes.container, classes.containerRaised, cx]);
 
@@ -190,14 +190,14 @@ const MessageBar = ({
             key={`${type}-${message}`}
             className={cx(
               (classes[type] || null),
-              classNames.message,
-              Icon ? classes.withIcon : null
+              Icon ? classes.withIcon : null,
+              classNames.message
             )}
             aria-live="assertive"
             aria-atomic="true"
           >
             {Icon && (
-              <Icon className={cx(classNames.icon, classes.icon)} />
+              <Icon className={cx(classes.icon, classNames.icon)} />
             )}
             <span className="sr-only">
               {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}

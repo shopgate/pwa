@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseProductCharacteristics from '@shopgate/pwa-common/components/ProductCharacteristics';
+import { ProductCharacteristics as BaseProductCharacteristics } from '@shopgate/engage/product/components';
 import withProductContext from '../../connectors/withProductContext';
 
 export default withProductContext(({ productContext, ...otherProps }) => (

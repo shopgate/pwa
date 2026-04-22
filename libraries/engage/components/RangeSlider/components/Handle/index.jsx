@@ -42,7 +42,7 @@ const RangeSliderHandle = (props) => {
 
   return (
     <div
-      className={cx(classNames.handleOuter, classes.root, 'engage__range-slider__handle')}
+      className={cx(classes.root, classNames.handleOuter, 'engage__range-slider__handle')}
       style={style}
       {...eventHandler}
     >

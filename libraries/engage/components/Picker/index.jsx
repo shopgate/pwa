@@ -227,7 +227,7 @@ class Picker extends Component {
     return (
       <div
         role="button"
-        className={cx(this.props.className, 'engage__picker')}
+        className={cx(this.props.className, 'engage__picker', 'common__picker')}
         ref={this.props.forwardedRef}
         tabIndex={0}
         aria-haspopup
