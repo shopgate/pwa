@@ -15,7 +15,7 @@ exports[`<MessageBar /> General rendering should be empty if no messages have be
   showIcons={false}
 >
   <div
-    className="sg-1iqmfe8-container"
+    className="sg-1iqmfe8-container ui-shared__message-bar"
     role={null}
   />
 </MessageBar>
@@ -42,7 +42,7 @@ exports[`<MessageBar /> General rendering should render a message as info if typ
   showIcons={false}
 >
   <div
-    className="sg-1iqmfe8-container"
+    className="sg-1iqmfe8-container ui-shared__message-bar"
     role="alert"
   >
     <div
@@ -105,7 +105,7 @@ exports[`<MessageBar /> Multiple messages rendering should render messages witho
   showIcons={false}
 >
   <div
-    className="sg-1iqmfe8-container"
+    className="sg-1iqmfe8-container ui-shared__message-bar"
     role="alert"
   >
     <div
@@ -232,7 +232,7 @@ exports[`<MessageBar /> Multiple messages rendering should translate and render 
   showIcons={false}
 >
   <div
-    className="sg-1iqmfe8-container"
+    className="sg-1iqmfe8-container ui-shared__message-bar"
     role="alert"
   >
     <div
@@ -296,7 +296,7 @@ exports[`<MessageBar /> should render with custom classNames 1`] = `
   showIcons={false}
 >
   <div
-    className="sg-1iqmfe8-container cls-container"
+    className="sg-1iqmfe8-container cls-container ui-shared__message-bar"
     role="alert"
   >
     <div

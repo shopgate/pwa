@@ -33,7 +33,7 @@ exports[`<Picker /> should render the picker 1`] = `
             {
               "current": <div
                 aria-haspopup="true"
-                class="sg-1nsf4dv-root engage__picker-utilize engage__picker"
+                class="sg-1nsf4dv-root engage__picker-utilize engage__picker common__picker"
                 role="button"
                 tabindex="0"
               >
@@ -64,7 +64,7 @@ exports[`<Picker /> should render the picker 1`] = `
         >
           <div
             aria-haspopup={true}
-            className="sg-1nsf4dv-root engage__picker-utilize engage__picker"
+            className="sg-1nsf4dv-root engage__picker-utilize engage__picker common__picker"
             role="button"
             tabIndex={0}
           >
