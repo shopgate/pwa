@@ -152,6 +152,7 @@ exports[`<ImageSliderWidget /> should render the images unlinked if no link is s
     }
   >
     <div
+      aria-hidden={true}
       className=""
     >
       <img
@@ -204,6 +205,7 @@ exports[`<ImageSliderWidget /> should render the images with links 1`] = `
       loop={false}
     >
       <SwiperItem
+        aria-hidden={true}
         key="http://placehold.it/350x150"
       >
         <img
