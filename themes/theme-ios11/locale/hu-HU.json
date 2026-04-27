@@ -415,6 +415,8 @@
     "label": "Keresés",
     "cancel": "Törölje",
     "placeholder": "Keresés",
+    "deleteHistory": "Keresési előzmények törlése",
+    "history_announcement": "Keresési előzmények",
     "no_result": {
       "heading": "Hoppá!",
       "body": "A \"{searchPhrase}\" keresése nem adott eredményt."

@@ -408,6 +408,8 @@
     }
   },
   "search": {
+    "deleteHistory": "Cancella la cronologia di ricerca",
+    "history_announcement": "Cronologia di ricerca",
     "no_result": {
       "heading": "Ops!",
       "body": "La tua ricerca \"{searchPhrase}\" ha prodotto 0 risultati."

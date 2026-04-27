@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { UIEvents } from '@shopgate/pwa-core';
 import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { SearchHistory } from '@shopgate/engage/components';
 import AppBar from './components/AppBar';
 import Backdrop from './components/Backdrop';
 import Suggestions from './components/Suggestions';
@@ -18,9 +19,12 @@ const SUGGESTIONS_MIN = 1;
  */
 class Search extends Component {
   static propTypes = {
+    addSearchHistory: PropTypes.func.isRequired,
+    clearSearchHistory: PropTypes.func.isRequired,
     fetchSuggestions: PropTypes.func.isRequired,
     historyPush: PropTypes.func.isRequired,
     historyReplace: PropTypes.func.isRequired,
+    searchHistory: PropTypes.arrayOf(PropTypes.string).isRequired,
     route: PropTypes.shape(),
   };
 
@@ -116,15 +120,19 @@ class Search extends Component {
 
   /**
    * @param {Event} event The event.
+   * @param {string|null} entry The search history entry.
    */
-  fetchResults = (event) => {
-    event.preventDefault();
+  fetchResults = (event, entry = null) => {
+    if (event) {
+      event.preventDefault();
+    }
 
-    const searchQuery = (event.currentTarget.value || this.state.query).trim();
-
+    const searchQuery = (entry || (event && event.currentTarget.value) || this.state.query).trim();
     if (searchQuery.length === 0) {
       return;
     }
+
+    this.props.addSearchHistory(searchQuery);
 
     this.setState({
       query: DEFAULT_QUERY,
@@ -145,18 +153,32 @@ class Search extends Component {
     }
   };
 
+  handleClearHistory = () => {
+    this.props.clearSearchHistory();
+  };
+
+  /**
+   * Handles the selection of a search history entry.
+   * @param {string} entry The search history entry.
+   */
+  handleSelectHistory = (entry) => {
+    this.fetchResults(null, entry.trim());
+  };
+
   /**
    * @returns {JSX}
    */
   render() {
     const { query, visible } = this.state;
+    const { searchHistory } = this.props;
+    const showHistory = searchHistory && searchHistory.length > 0;
 
     if (!visible) {
       return null;
     }
 
     return (
-      <div className={styles}>
+      <div className={styles.wrapper}>
         <AppBar
           close={this.close}
           reset={this.reset}
@@ -165,6 +187,15 @@ class Search extends Component {
           fieldRef={this.fieldRef}
         />
         <Backdrop onClick={this.close} />
+        {showHistory && (
+        <div className={styles.historyOverlay}>
+          <SearchHistory
+            history={searchHistory}
+            onClear={this.handleClearHistory}
+            onSelect={this.handleSelectHistory}
+          />
+        </div>
+        )}
         <Suggestions onClick={this.fetchResults} searchPhrase={query} />
       </div>
     );

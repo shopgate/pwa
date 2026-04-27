@@ -414,6 +414,8 @@
     "label": "Sök",
     "cancel": "Avbryt",
     "placeholder": "Sökning",
+    "deleteHistory": "Rensa sökhistorik",
+    "history_announcement": "Sökhistorik",
     "no_result": {
       "heading": "Hoppsan!",
       "body": "Din sökning efter \"{searchPhrase}\" gav inget resultat."
