@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { embeddedMedia } from '@shopgate/pwa-common/collections';
+import { embeddedMedia, configuration } from '@shopgate/engage/core/collections';
+import { CONFIGURATION_COLLECTION_KEY_UNIVERSAL_LINK_HANDLER } from '@shopgate/engage/core/constants';
 import EmbeddedMedia from '../EmbeddedMedia';
 import parseHTML from '../../helpers/html/parseHTML';
 import connect from './connector';
+
+/**
+ * Checks if a link is a universal link.
+ * @param {string} link The link to check.
+ * @returns {boolean} True if the link is a universal link, false otherwise.
+ */
+const isUniversalLink = link => link.startsWith('http://') || link.startsWith('https://');
 
 /**
  * HtmlSanitizer component.
@@ -40,6 +48,9 @@ class HtmlSanitizer extends Component {
     super(props);
 
     this.htmlContainer = React.createRef();
+    this.state = {
+      openingLink: false,
+    };
   }
 
   /**
@@ -81,6 +92,14 @@ class HtmlSanitizer extends Component {
    * @param {Object} event The touchstart event.
    */
   handleClick = (event) => {
+    // Prevent multiple clicks on links while the first one is still being processed.
+    if (this.state.openingLink) {
+      event.preventDefault();
+      return;
+    }
+
+    this.setState({ openingLink: true });
+
     const linkTag = event.target.closest('a');
 
     if (!linkTag) return;
@@ -91,11 +110,48 @@ class HtmlSanitizer extends Component {
     if (!href) return;
 
     event.preventDefault();
-    if (this.props.settings.handleClick) {
-      this.props.settings.handleClick(href, target);
-    } else {
-      this.props.navigate(href, target);
-    }
+
+    /**
+     * Runs async logic to open links to potentially resolve universal links.
+     */
+    const openLink = async () => {
+      const universalLinkHandler = configuration.get(
+        CONFIGURATION_COLLECTION_KEY_UNIVERSAL_LINK_HANDLER
+      );
+
+      let link = href;
+      // If the universalLinkHandler is registered by an extension and the link looks like a
+      // qualified URL, we try to resolve it as a universal link.
+      if (typeof universalLinkHandler === 'function' && isUniversalLink(link)) {
+        const {
+          redirectLink = null,
+          handled = false,
+        } = await universalLinkHandler({ link }) ?? {};
+
+        if (handled) {
+          this.setState({ openingLink: false });
+          return;
+        }
+
+        if (redirectLink) {
+          link = redirectLink;
+        }
+      }
+
+      this.setState({ openingLink: false });
+
+      if (!link) {
+        return;
+      }
+
+      if (this.props.settings.handleClick) {
+        this.props.settings.handleClick(link, target);
+      } else {
+        this.props.navigate(link, target);
+      }
+    };
+
+    openLink();
   };
 
   /**
