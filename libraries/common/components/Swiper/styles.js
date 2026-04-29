@@ -52,6 +52,17 @@ export const innerContainer = css({
   },
 }).toString();
 
+export const paginationBelowContainer = css({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  position: 'relative',
+  left: '50%',
+  marginTop: 8,
+  marginBottom: 8,
+  bottom: '0 !important',
+}).toString();
+
 /**
  * Prevents a visible shrink animation of swiped out slides which where in a zoomed state before.
  */

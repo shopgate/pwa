@@ -20,8 +20,10 @@ import 'swiper/css/zoom';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import SwiperItem from './components/SwiperItem';
 import {
-  container, innerContainer, zoomFix, buttonNext, buttonPrev,
+  container, innerContainer, paginationBelowContainer, zoomFix, buttonNext, buttonPrev,
 } from './styles';
+
+let paginationIdCounter = 0;
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
@@ -74,6 +76,7 @@ const Swiper = ({
   additionalModules,
   loop: loopProp,
   children,
+  paginationBelow,
   paginationType: paginationTypeProp,
   ...swiperProps
 }) => {
@@ -83,8 +86,15 @@ const Swiper = ({
   const hasControls = typeof controls === 'boolean' && controls === true;
   const reduceMotion = useReduceMotion();
 
+  console.log('AYAY: paginationBelow', paginationBelow);
   /** @type {React.RefObject<{ swiper: SwiperClass}>} */
   const swiperRef = useRef(null);
+
+  const paginationIdRef = useRef(null);
+  if (paginationIdRef.current === null) {
+    paginationIdCounter += 1;
+    paginationIdRef.current = `swiper-pagination-below-${paginationIdCounter}`;
+  }
 
   const [currentSlidesPerView, setCurrentSlidesPerView] = useState(swiperProps?.slidesPerView || 1);
 
@@ -125,14 +135,16 @@ const Swiper = ({
       Zoom,
       ...(Array.isArray(additionalModules) ? additionalModules : []),
     ],
-    className: cls(innerContainer, classNames.container, { [zoomFix]: swiperProps?.zoom }),
+    className: cls(innerContainer, classNames.container, {
+      [zoomFix]: swiperProps?.zoom,
+    }),
     autoplay: autoPlay ? {
       delay: interval,
     } : false,
     navigation,
     ...showPagination && {
       pagination: {
-        el: undefined,
+        el: paginationBelow ? `#${paginationIdRef.current}` : undefined,
         type: paginationTypeProp || paginationType,
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
         bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
@@ -145,23 +157,24 @@ const Swiper = ({
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
   }),
-  [
-    additionalModules,
-    classNames.container,
-    classNames.bulletClass,
-    classNames.bulletActiveClass,
-    swiperProps,
-    autoPlay,
-    interval,
-    navigation,
-    showPagination,
-    paginationTypeProp,
-    paginationType,
-    indicators,
-    children.length,
-    disabled,
-    handleSlideChange,
-  ]);
+    [
+      additionalModules,
+      classNames.container,
+      classNames.bulletClass,
+      classNames.bulletActiveClass,
+      swiperProps,
+      autoPlay,
+      interval,
+      navigation,
+      showPagination,
+      paginationTypeProp,
+      paginationType,
+      indicators,
+      children.length,
+      disabled,
+      handleSlideChange,
+      paginationBelow,
+    ]);
 
   useEffect(() => {
     if (!internalProps.autoplay && !swiperProps.autoplay) {
@@ -257,6 +270,9 @@ const Swiper = ({
           </>
         )}
       </OriginalSwiper>
+      {paginationBelow && showPagination && (
+        <div id={paginationIdRef.current} className={paginationBelowContainer} />
+      )}
     </div>
   );
 };
@@ -339,6 +355,10 @@ Swiper.propTypes = {
    */
   onSlideChange: PropTypes.func,
   /**
+   * When true, bullet pagination is rendered below the slide content instead of overlaid on it.
+   */
+  paginationBelow: PropTypes.bool,
+  /**
    * Config to determine slider pagination type
    */
   paginationType: PropTypes.string,
@@ -359,6 +379,7 @@ Swiper.defaultProps = {
   onSlideChange: null,
   onBreakpoint: null,
   paginationType: null,
+  paginationBelow: false,
 };
 
 export default Swiper;

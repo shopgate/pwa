@@ -1,14 +1,16 @@
 import { css } from 'glamor';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { appConfig } from '@shopgate/engage';
 
 const { variables } = themeConfig;
+const { pdpImageSliderPaginationBelow = false } = appConfig || {};
 
 const iconSize = 24;
 
 const buttons = css({
   position: 'absolute',
   right: variables.gap.big,
-  top: -30,
+  top: pdpImageSliderPaginationBelow ? -45 : -30,
   display: 'flex',
   justifyContent: 'flex-end',
   alignItems: 'center',
