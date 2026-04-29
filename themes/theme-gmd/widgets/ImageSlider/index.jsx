@@ -35,7 +35,7 @@ const ImageSliderWidget = ({ settings, className }) => {
       );
     }
     return (
-      <div className={className}>
+      <div className={className} aria-hidden={!image.alt}>
         {img}
       </div>
     );
@@ -66,7 +66,7 @@ const ImageSliderWidget = ({ settings, className }) => {
         }
 
         return (
-          <Swiper.Item key={image}>
+          <Swiper.Item key={image} aria-hidden={!alt}>
             {img}
           </Swiper.Item>
         );

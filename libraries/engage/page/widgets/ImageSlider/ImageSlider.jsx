@@ -47,6 +47,7 @@ const ImageSliderWidget = () => {
                 className={classes.image}
                 src={slide.image.url}
                 alt={slide.image.altText || ''}
+                aria-hidden={!slide.image.altText}
                 borderRadius={borderRadius}
               />
             </ConditionalWrapper>
