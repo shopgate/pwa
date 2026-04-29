@@ -61,6 +61,16 @@ export const paginationBelowContainer = css({
   marginTop: 8,
   marginBottom: 8,
   bottom: '0 !important',
+  ' .swiper-pagination-bullet': {
+    background: `${themeColors.gray} !important`,
+    opacity: '.5',
+    transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    border: `1px solid ${themeColors.dark}`,
+  },
+  ' .swiper-pagination-bullet-active': {
+    background: `${themeColors.gray} !important`,
+    opacity: 1,
+  },
 }).toString();
 
 /**
