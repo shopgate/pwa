@@ -86,7 +86,6 @@ const Swiper = ({
   const hasControls = typeof controls === 'boolean' && controls === true;
   const reduceMotion = useReduceMotion();
 
-  console.log('AYAY: paginationBelow', paginationBelow);
   /** @type {React.RefObject<{ swiper: SwiperClass}>} */
   const swiperRef = useRef(null);
 
@@ -157,24 +156,24 @@ const Swiper = ({
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
   }),
-    [
-      additionalModules,
-      classNames.container,
-      classNames.bulletClass,
-      classNames.bulletActiveClass,
-      swiperProps,
-      autoPlay,
-      interval,
-      navigation,
-      showPagination,
-      paginationTypeProp,
-      paginationType,
-      indicators,
-      children.length,
-      disabled,
-      handleSlideChange,
-      paginationBelow,
-    ]);
+  [
+    additionalModules,
+    classNames.container,
+    classNames.bulletClass,
+    classNames.bulletActiveClass,
+    swiperProps,
+    autoPlay,
+    interval,
+    navigation,
+    showPagination,
+    paginationTypeProp,
+    paginationType,
+    indicators,
+    children.length,
+    disabled,
+    handleSlideChange,
+    paginationBelow,
+  ]);
 
   useEffect(() => {
     if (!internalProps.autoplay && !swiperProps.autoplay) {
