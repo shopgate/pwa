@@ -78,8 +78,12 @@ const Swiper = ({
   children,
   paginationBelow,
   paginationType: paginationTypeProp,
-  ...swiperProps
+  ...rawSwiperProps
 }) => {
+  const {
+    pagination: paginationFromProps,
+    ...swiperProps
+  } = rawSwiperProps;
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const showPagination = (indicators && children.length > 1);
@@ -143,6 +147,9 @@ const Swiper = ({
     navigation,
     ...showPagination && {
       pagination: {
+        ...(paginationFromProps && typeof paginationFromProps === 'object'
+          ? paginationFromProps
+          : {}),
         el: paginationBelow ? `#${paginationIdRef.current}` : undefined,
         type: paginationTypeProp || paginationType,
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
@@ -156,24 +163,25 @@ const Swiper = ({
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
   }),
-  [
-    additionalModules,
-    classNames.container,
-    classNames.bulletClass,
-    classNames.bulletActiveClass,
-    swiperProps,
-    autoPlay,
-    interval,
-    navigation,
-    showPagination,
-    paginationTypeProp,
-    paginationType,
-    indicators,
-    children.length,
-    disabled,
-    handleSlideChange,
-    paginationBelow,
-  ]);
+    [
+      additionalModules,
+      classNames.container,
+      classNames.bulletClass,
+      classNames.bulletActiveClass,
+      swiperProps,
+      autoPlay,
+      interval,
+      navigation,
+      showPagination,
+      paginationTypeProp,
+      paginationType,
+      indicators,
+      children.length,
+      disabled,
+      handleSlideChange,
+      paginationFromProps,
+      paginationBelow,
+    ]);
 
   useEffect(() => {
     if (!internalProps.autoplay && !swiperProps.autoplay) {

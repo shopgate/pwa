@@ -330,6 +330,23 @@
         }
       },
       {
+        "code": "paginationBelow",
+        "label": {
+          "en-us": "Pagination Below Slider",
+          "de-de": "Navigation unterhalb des Sliders"
+        },
+        "required": false,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
         "code": "imageSpacing",
         "label": {
           "en-us": "Image spacing",
