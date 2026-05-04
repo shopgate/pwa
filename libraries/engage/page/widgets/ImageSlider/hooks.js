@@ -30,7 +30,7 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {number} slidesPerViewCustomMedium Slides per view for medium screens.
  * @property {number} slidesPerViewCustomLarge Slides per view for large screens.
  * @property {number} imageSpacing Optional gap between image slides (in pixels).
- * @property {"default"|"off"|"bullets"|"progressbar"|"fraction"} paginationStyle
+ * @property {"default"|"off"|"bullets"|"bulletsBelow"|"progressbar"|"fraction"} paginationStyle
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
  * the pagination type for the slider.

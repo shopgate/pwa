@@ -5,6 +5,12 @@ const { variables } = themeConfig;
 
 const iconSize = 24;
 
+const wrapper = css({
+  position: 'relative',
+  top: -38,
+  right: -16,
+}).toString();
+
 const buttons = css({
   position: 'absolute',
   right: variables.gap.big,
@@ -24,6 +30,7 @@ const ripple = css({
 }).toString();
 
 export default {
+  wrapper,
   buttons,
   favButton,
   iconSize,
