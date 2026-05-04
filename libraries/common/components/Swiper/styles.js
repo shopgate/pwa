@@ -4,10 +4,17 @@ import { themeColors } from '@shopgate/pwa-common/helpers/config';
 export const container = css({
   position: 'relative',
   maxHeight: '100%',
-  // This needs to be 100vw to compensate a chrome 80 bug - see related ticket / pr. (PWA-2509)
-  // commented out for now since it causes issues in the responsive layout
-  // width: '100vw',
 
+  '&.pagination-below': {
+    '& .swiper-pagination.swiper-pagination-bullets': {
+      '--swiper-pagination-bottom': 0,
+      position: 'relative',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: 20,
+    },
+  },
 }).toString();
 
 export const innerContainer = css({
@@ -49,27 +56,6 @@ export const innerContainer = css({
     ' .swiper-pagination-progressbar-fill': {
       background: themeColors.dark,
     },
-  },
-}).toString();
-
-export const paginationBelowContainer = css({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  position: 'relative',
-  left: '50%',
-  marginTop: 8,
-  marginBottom: 8,
-  bottom: '0 !important',
-  ' .swiper-pagination-bullet': {
-    background: `${themeColors.gray} !important`,
-    opacity: '.5',
-    transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    border: `1px solid ${themeColors.dark}`,
-  },
-  ' .swiper-pagination-bullet-active': {
-    background: `${themeColors.gray} !important`,
-    opacity: 1,
   },
 }).toString();
 

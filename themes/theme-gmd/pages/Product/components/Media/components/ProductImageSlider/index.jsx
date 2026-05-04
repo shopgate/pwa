@@ -14,7 +14,7 @@ import {
 import { appConfig } from '@shopgate/engage';
 import connect from './connector';
 
-const { pdpImageSliderPaginationType, pdpImageSliderPaginationBelow = false } = appConfig || {};
+const { pdpImageSliderPaginationType } = appConfig || {};
 
 /**
  * The product image slider component.
@@ -150,7 +150,6 @@ class ProductImageSlider extends Component {
       content = (
         <Swiper
           paginationType={pdpImageSliderPaginationType}
-          paginationBelow={pdpImageSliderPaginationBelow}
           loop
           indicators
           onSlideChange={this.handleSlideChange}

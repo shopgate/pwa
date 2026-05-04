@@ -20,10 +20,8 @@ import 'swiper/css/zoom';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import SwiperItem from './components/SwiperItem';
 import {
-  container, innerContainer, paginationBelowContainer, zoomFix, buttonNext, buttonPrev,
+  container, innerContainer, zoomFix, buttonNext, buttonPrev,
 } from './styles';
-
-let paginationIdCounter = 0;
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
@@ -76,7 +74,6 @@ const Swiper = ({
   additionalModules,
   loop: loopProp,
   children,
-  paginationBelow,
   paginationType: paginationTypeProp,
   ...rawSwiperProps
 }) => {
@@ -84,6 +81,7 @@ const Swiper = ({
     pagination: paginationFromProps,
     ...swiperProps
   } = rawSwiperProps;
+  const isBulletsBelow = paginationTypeProp === 'bulletsBelow';
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const showPagination = (indicators && children.length > 1);
@@ -92,12 +90,6 @@ const Swiper = ({
 
   /** @type {React.RefObject<{ swiper: SwiperClass}>} */
   const swiperRef = useRef(null);
-
-  const paginationIdRef = useRef(null);
-  if (paginationIdRef.current === null) {
-    paginationIdCounter += 1;
-    paginationIdRef.current = `swiper-pagination-below-${paginationIdCounter}`;
-  }
 
   const [currentSlidesPerView, setCurrentSlidesPerView] = useState(swiperProps?.slidesPerView || 1);
 
@@ -150,8 +142,7 @@ const Swiper = ({
         ...(paginationFromProps && typeof paginationFromProps === 'object'
           ? paginationFromProps
           : {}),
-        el: paginationBelow ? `#${paginationIdRef.current}` : undefined,
-        type: paginationTypeProp || paginationType,
+        type: isBulletsBelow ? 'bullets' : (paginationTypeProp || paginationType),
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
         bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
         dynamicBullets: true,
@@ -180,7 +171,6 @@ const Swiper = ({
       disabled,
       handleSlideChange,
       paginationFromProps,
-      paginationBelow,
     ]);
 
   useEffect(() => {
@@ -259,7 +249,10 @@ const Swiper = ({
   );
 
   return (
-    <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
+    <div
+      className={cls(container, className, 'common__swiper', { 'pagination-below': isBulletsBelow })}
+      aria-hidden={ariaHidden}
+    >
       <OriginalSwiper
         aria-live="off"
         a11y={{ enabled: false }}
@@ -277,9 +270,6 @@ const Swiper = ({
           </>
         )}
       </OriginalSwiper>
-      {paginationBelow && showPagination && (
-        <div id={paginationIdRef.current} className={paginationBelowContainer} />
-      )}
     </div>
   );
 };
@@ -362,10 +352,6 @@ Swiper.propTypes = {
    */
   onSlideChange: PropTypes.func,
   /**
-   * When true, bullet pagination is rendered below the slide content instead of overlaid on it.
-   */
-  paginationBelow: PropTypes.bool,
-  /**
    * Config to determine slider pagination type
    */
   paginationType: PropTypes.string,
@@ -386,7 +372,6 @@ Swiper.defaultProps = {
   onSlideChange: null,
   onBreakpoint: null,
   paginationType: null,
-  paginationBelow: false,
 };
 
 export default Swiper;

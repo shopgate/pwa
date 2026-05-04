@@ -31,7 +31,6 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @property {number} slidesPerViewCustomLarge Slides per view for large screens.
  * @property {number} imageSpacing Optional gap between image slides (in pixels).
  * @property {"default"|"off"|"bullets"|"progressbar"|"fraction"} paginationStyle
- * @property {boolean} paginationBelow Whether the pagination should be displayed below the slider.
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
  * the pagination type for the slider.
@@ -62,7 +61,6 @@ export const useImageSliderWidget = () => {
     slidesPerViewCustomLarge,
     imageSpacing,
     paginationStyle = 'bullets',
-    paginationBelow = false,
     borderRadius,
     borderRadiusCustom,
   } = config;
@@ -191,7 +189,6 @@ export const useImageSliderWidget = () => {
   return {
     slides: imagesWithUrls,
     swiperProps,
-    paginationBelow,
     borderRadius: borderRadiusResolved,
   };
 };
