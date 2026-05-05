@@ -7,7 +7,7 @@ const iconSize = 24;
 
 const wrapper = css({
   position: 'relative',
-  top: -35,
+  top: -38,
   right: -16,
 }).toString();
 

@@ -9,8 +9,8 @@ export const container = css({
     '& .swiper-pagination.swiper-pagination-bullets': {
       '--swiper-pagination-bottom': 0,
       position: 'relative',
-      height: 20,
-      lineHeight: '38px',
+      height: 32,
+      lineHeight: '40px',
     },
   },
 }).toString();
