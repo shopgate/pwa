@@ -1,4 +1,4 @@
-import React, { Fragment, memo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
@@ -14,23 +14,28 @@ import {
   PRODUCT_CTAS_ADD_TO_CART_BEFORE,
   PRODUCT_CTAS_ADD_TO_CART_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import CartButton from './components/CartButton';
 import styles from './style';
 import connect from './connector';
+
+const { pdpImageSliderPaginationType } = appConfig;
 
 /**
  * Renders CTA buttons for product page (add to cart + toggle favorites).
  * @param {Object} props Props.
  * @returns {JSX}
  */
-const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
-  <>
+const CTAButtons = ({
+  isFavorite, productId, isProductActive, hasImageGallery,
+}) => (
+  <div className={pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery ? styles.wrapper : null}>
     <Portal name={PRODUCT_CTAS_BEFORE} />
     <Portal name={PRODUCT_CTAS}>
       <div className={classNames(styles.buttons, 'theme__product__header__cta-buttons')}>
         <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
         <Portal name={PRODUCT_CTAS_FAVORITES}>
-          { isProductActive && (
+          {isProductActive && (
             <FavoritesButton
               className={styles.favButton}
               rippleClassName={styles.ripple}
@@ -48,11 +53,12 @@ const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
       </div>
     </Portal>
     <Portal name={PRODUCT_CTAS_AFTER} />
-  </>
+  </div>
 );
 
 CTAButtons.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
+  hasImageGallery: PropTypes.bool,
   isProductActive: PropTypes.bool,
   productId: PropTypes.string,
 };
@@ -60,6 +66,7 @@ CTAButtons.propTypes = {
 CTAButtons.defaultProps = {
   productId: null,
   isProductActive: true,
+  hasImageGallery: false,
 };
 
 export default connect(memo(CTAButtons));

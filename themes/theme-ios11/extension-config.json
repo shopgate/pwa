@@ -217,7 +217,7 @@
       "default": "bullets",
       "params": {
         "type": "text",
-        "label": "Pagination type for the image slider on the product detail page. Possible variants: bullets (a.k.a dynamic), fraction, progressbar"
+        "label": "Pagination type for the image slider on the product detail page. Possible variants: bullets (a.k.a dynamic), bulletsBelow, fraction, progressbar"
       }
     },
     "theme": {
