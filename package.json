@@ -45,8 +45,7 @@
     "e2e:checkout": "make e2e-checkout",
     "start-cloud": "sgconnect backend start & sgconnect frontend start",
     "lint-staged": "lint-staged",
-    "resetup": "npx lerna clean --yes && rm -rf node_modules && yarn install && npx lerna bootstrap",
-    "postinstall": "patch-package"
+    "resetup": "npx lerna clean --yes && rm -rf node_modules && yarn install && npx lerna bootstrap"
   },
   "husky": {
     "hooks": {
@@ -86,8 +85,6 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "compare-versions": "^3.4.0",
-    "patch-package": "^8.0.1",
-    "postinstall-postinstall": "^2.1.0",
     "typescript": "^5.9.3"
   },
   "overrides": {
