@@ -148,23 +148,24 @@ const Swiper = ({
     allowSlideNext: !disabled,
     onSlideChange: handleSlideChange,
   }),
-    [
-      additionalModules,
-      classNames.container,
-      classNames.bulletClass,
-      classNames.bulletActiveClass,
-      swiperProps,
-      autoPlay,
-      interval,
-      navigation,
-      showPagination,
-      paginationTypeProp,
-      paginationType,
-      indicators,
-      children.length,
-      disabled,
-      handleSlideChange,
-    ]);
+  [
+    additionalModules,
+    classNames.container,
+    classNames.bulletClass,
+    classNames.bulletActiveClass,
+    swiperProps,
+    autoPlay,
+    interval,
+    navigation,
+    showPagination,
+    paginationTypeProp,
+    paginationType,
+    indicators,
+    children.length,
+    disabled,
+    handleSlideChange,
+    isBulletsBelow,
+  ]);
 
   useEffect(() => {
     if (!internalProps.autoplay && !swiperProps.autoplay) {

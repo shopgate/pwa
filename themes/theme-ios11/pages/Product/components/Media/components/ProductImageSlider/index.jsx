@@ -15,6 +15,7 @@ import { appConfig } from '@shopgate/engage';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig || {};
+
 /**
  * The product image slider component.
  * @param {number} currentSlide The index of the current visible slide.

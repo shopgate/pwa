@@ -26,8 +26,10 @@ const { pdpImageSliderPaginationType } = appConfig;
  * @param {Object} props Props.
  * @returns {JSX}
  */
-const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
-  <div className={pdpImageSliderPaginationType === 'bulletsBelow' ? styles.wrapper : null}>
+const CTAButtons = ({
+  isFavorite, productId, isProductActive, hasImageGallery,
+}) => (
+  <div className={pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery ? styles.wrapper : null}>
     <Portal name={PRODUCT_CTAS_BEFORE} />
     <Portal name={PRODUCT_CTAS}>
       <div className={classNames(styles.buttons, 'theme__product__header__cta-buttons')}>
@@ -56,6 +58,7 @@ const CTAButtons = ({ isFavorite, productId, isProductActive }) => (
 
 CTAButtons.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
+  hasImageGallery: PropTypes.bool,
   isProductActive: PropTypes.bool,
   productId: PropTypes.string,
 };
@@ -63,6 +66,7 @@ CTAButtons.propTypes = {
 CTAButtons.defaultProps = {
   productId: null,
   isProductActive: true,
+  hasImageGallery: false,
 };
 
 export default connect(memo(CTAButtons));

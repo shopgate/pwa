@@ -9,10 +9,8 @@ export const container = css({
     '& .swiper-pagination.swiper-pagination-bullets': {
       '--swiper-pagination-bottom': 0,
       position: 'relative',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
       height: 20,
+      lineHeight: '38px',
     },
   },
 }).toString();
