@@ -28,6 +28,7 @@ module.exports = (api) => {
 
     plugins: [
       '@sigmacomputing/babel-plugin-lodash',
+      '@babel/plugin-transform-class-static-block',
       ['@babel/plugin-transform-class-properties', { loose: true }],
       ['@babel/plugin-transform-private-methods', { loose: true }],
       ['@babel/plugin-transform-private-property-in-object', { loose: true }],
