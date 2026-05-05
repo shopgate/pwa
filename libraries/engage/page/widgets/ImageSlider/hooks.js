@@ -70,7 +70,7 @@ export const useImageSliderWidget = () => {
     borderRadiusCustom,
   });
 
-  const paginationType = useMemo(() => (paginationStyle === 'default' ? 'bullets' : paginationStyle.toLowerCase()),
+  const paginationType = useMemo(() => (paginationStyle === 'default' ? 'bullets' : paginationStyle),
     [paginationStyle]);
   const imagesWithUrls = useMemo(() => images.filter(img => img?.image?.url), [images]);
 
@@ -140,7 +140,9 @@ export const useImageSliderWidget = () => {
       slidesPerView: slidesPerViewSmall,
       breakpoints,
       pagination: showPagination ? {
-        type: paginationType,
+        // The "bulletsBelow" pagination type is a custom variant of "bullets" and needs to be set
+        // to "bullets" for Swiper to render it
+        type: paginationType === 'bulletsBelow' ? 'bullets' : paginationType,
         clickable: true,
         dynamicBullets: true,
       } : false,
@@ -190,5 +192,8 @@ export const useImageSliderWidget = () => {
     slides: imagesWithUrls,
     swiperProps,
     borderRadius: borderRadiusResolved,
+    // Since "bulletsBelow" is a custom pagination type we need to use the paginationType prop of
+    // our Swiper component, since it's can't be passed with the pagination object in swiperProps
+    paginationType: paginationType === 'bulletsBelow' ? 'bulletsBelow' : undefined,
   };
 };

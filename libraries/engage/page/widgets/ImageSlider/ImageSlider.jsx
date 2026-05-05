@@ -17,7 +17,7 @@ const useStyles = makeStyles()({
  */
 const ImageSliderWidget = () => {
   const {
-    slides, swiperProps, borderRadius,
+    slides, swiperProps, borderRadius, paginationType,
   } = useImageSliderWidget();
   const { classes } = useStyles();
 
@@ -28,6 +28,7 @@ const ImageSliderWidget = () => {
   return (
     <Swiper
       indicators
+      paginationType={paginationType}
       {...swiperProps}
     >
       {slides.map((slide) => {
