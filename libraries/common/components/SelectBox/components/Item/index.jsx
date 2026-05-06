@@ -32,9 +32,8 @@ const SelectBoxItem = ({
 
   return (
     <li
-      className={cx(classes.item, {
+      className={cx(classes.item, selectItem, {
         [selectItemSelected]: isSelected,
-        selectItem,
       })}
       onKeyUp={() => {}}
       onClick={onSelect}

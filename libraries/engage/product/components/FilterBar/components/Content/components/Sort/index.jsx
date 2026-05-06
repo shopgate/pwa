@@ -51,10 +51,10 @@ const useStyles = makeStyles()(theme => ({
     textAlign: 'left',
     width: '100%',
     color: theme.palette.text.primary,
-    ':first-of-type': {
+    ':first-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       marginTop: theme.spacing(1),
     },
-    ':last-child': {
+    ':last-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       marginBottom: theme.spacing(1),
     },
   },
