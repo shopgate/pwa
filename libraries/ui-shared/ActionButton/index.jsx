@@ -1,89 +1,107 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles, cx } from '@shopgate/engage/styles';
 import IndicatorCircle from '../IndicatorCircle';
 import RippleButton from '../RippleButton';
-import styles from './style';
+
+const useStyles = makeStyles()(theme => ({
+  withGap: {
+    textAlign: 'center',
+    margin: theme.spacing(1, 0),
+  },
+  noGap: {
+    textAlign: 'center',
+  },
+  containerCircle: {
+    textAlign: 'center',
+    margin: `${theme.spacing(1) + 5}px 0`,
+  },
+}));
+
+const CLICK_DELAY = 300;
 
 /**
  * The action button component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class ActionButton extends Component {
-  static clickDelay = 300;
+const ActionButton = ({
+  children,
+  className,
+  disabled,
+  flat,
+  type,
+  onClick,
+  disableClickDelay,
+  loading,
+  noGap,
+  testId,
+  ...rest
+}) => {
+  const { classes } = useStyles();
 
-  static propTypes = {
-    ...RippleButton.propTypes,
-    onClick: PropTypes.func.isRequired,
-    disableClickDelay: PropTypes.bool,
-    loading: PropTypes.bool,
-    noGap: PropTypes.bool,
-    testId: PropTypes.string,
-  };
-
-  static defaultProps = {
-    ...RippleButton.defaultProps,
-    loading: false,
-    type: 'primary',
-    flat: true,
-    noGap: false,
-    testId: null,
-    disableClickDelay: false,
-  };
-
-  /**
-   * Getter for the calculated button props.
-   * @returns {Object}
-   */
-  get buttonProps() {
-    const buttonProps = {
-      className: this.props.className,
-      disabled: this.props.disabled,
-      flat: this.props.flat,
-      type: this.props.type,
-    };
-
-    return buttonProps;
-  }
-
-  /**
-   * The click handler
-   * @param {Object} event The event object for the click handler
-   */
-  handleClick = (event) => {
-    const { clickDelay } = this.constructor;
-
-    if (this.props.disableClickDelay) {
-      this.props.onClick(event);
+  const handleClick = useCallback((event) => {
+    if (disableClickDelay) {
+      onClick(event);
       return;
     }
-
     setTimeout(() => {
-      this.props.onClick(event);
-    }, clickDelay);
+      onClick(event);
+    }, CLICK_DELAY);
+  }, [disableClickDelay, onClick]);
+
+  const buttonProps = {
+    className,
+    disabled,
+    flat,
+    type,
   };
 
-  /**
-   * The render function.
-   * @returns {JSX}
-   */
-  render() {
-    const containerClass = this.props.noGap ? styles.noGapContainer : styles.container;
-
-    if (this.props.loading) {
-      return (
-        <div className={styles.containerCircle}>
-          <IndicatorCircle />
-        </div>
-      );
-    }
-
+  if (loading) {
     return (
-      <div className={`ui-shared__action-button ${containerClass}`} data-test-id={this.props.testId}>
-        <RippleButton {...this.buttonProps} onClick={this.handleClick}>
-          {this.props.children}
-        </RippleButton>
+      <div className={classes.containerCircle}>
+        <IndicatorCircle />
       </div>
     );
   }
-}
+
+  const containerClass = noGap ? classes.noGap : classes.withGap;
+
+  return (
+    <div
+      className={cx('ui-shared__action-button', containerClass)}
+      data-test-id={testId}
+    >
+      <RippleButton
+        {...rest}
+        {...buttonProps}
+        onClick={handleClick}
+      >
+        {children}
+      </RippleButton>
+    </div>
+  );
+};
+
+ActionButton.propTypes = {
+  ...RippleButton.propTypes,
+  onClick: PropTypes.func.isRequired,
+  disableClickDelay: PropTypes.bool,
+  loading: PropTypes.bool,
+  noGap: PropTypes.bool,
+  testId: PropTypes.string,
+};
+
+ActionButton.defaultProps = {
+  ...RippleButton.defaultProps,
+  loading: false,
+  type: 'primary',
+  flat: true,
+  noGap: false,
+  testId: null,
+  disableClickDelay: false,
+};
+
+ActionButton.clickDelay = CLICK_DELAY;
 
 export default ActionButton;

@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo } from 'react';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
   I18n, ContextMenu,
 } from '@shopgate/engage/components';
@@ -7,16 +8,24 @@ import {
   ROPIS,
   BOPIS,
 } from '../../constants';
-import {
-  menuToggleButton,
-  menuToggleContainer,
-} from './CartContextMenuChangeFulfillmentContent.style';
 import { useFulfillmentState } from '../../locations.hooks';
 
-const contextMenuClasses = {
-  button: menuToggleButton,
-  container: menuToggleContainer,
-};
+const useStyles = makeStyles()(theme => ({
+  menuToggleContainer: {
+    margin: theme.spacing(1),
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      marginLeft: 0,
+    },
+  },
+  menuToggleButton: {
+    height: theme.spacing(4),
+    width: theme.spacing(4),
+    fontSize: theme.spacing(3),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+}));
 
 /**
  * The CartContextMenuChangeFulfillmentContent component renders a context menu which enables
@@ -24,6 +33,7 @@ const contextMenuClasses = {
  * @returns {JSX}
  */
 const CartContextMenuChangeFulfillmentContent = () => {
+  const { classes } = useStyles();
   const labelMapping = {
     [DIRECT_SHIP]: 'cart.change_fulfillment.direct_ship',
     [ROPIS]: 'cart.change_fulfillment.ropis',
@@ -59,6 +69,10 @@ const CartContextMenuChangeFulfillmentContent = () => {
   }, [activeFulfillmentMethod, enabledFulfillmentMethods, fulfillmentMethods]);
 
   const disabled = selectableFulfillmentMethods.length === 0;
+  const contextMenuClasses = useMemo(() => ({
+    button: classes.menuToggleButton,
+    container: classes.menuToggleContainer,
+  }), [classes.menuToggleButton, classes.menuToggleContainer]);
 
   return (
     <ContextMenu classes={contextMenuClasses} disabled={disabled}>

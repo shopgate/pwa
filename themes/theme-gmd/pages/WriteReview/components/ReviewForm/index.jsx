@@ -1,6 +1,8 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
+import { withStyles } from '@shopgate/engage/styles';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import LoadingIndicator from '@shopgate/pwa-ui-shared/LoadingIndicator';
 import RatingScale from './components/RatingScale';
@@ -14,7 +16,6 @@ import {
   FIELD_NAME_TITLE,
 } from './constants';
 import connect from './connector';
-import styles from './style';
 
 /**
  * The Review Form.
@@ -27,6 +28,7 @@ class ReviewForm extends PureComponent {
   };
 
   static propTypes = {
+    classes: PropTypes.shape().isRequired,
     isLoadingUserReview: PropTypes.bool.isRequired,
     submit: PropTypes.func.isRequired,
 
@@ -35,10 +37,6 @@ class ReviewForm extends PureComponent {
     review: PropTypes.shape(),
 
     widgetSettings: PropTypes.shape(),
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   static defaultProps = {
@@ -163,18 +161,19 @@ class ReviewForm extends PureComponent {
   };
 
   /**
-   * Validate rate.
+   * Length validation.
+   * @param {string} field The field name.
    * @param {Object} scope The data to be validated.
    * @return {boolean} Valid or invalid data provided.
    */
-  validateRate(scope = this.state) {
-    const { __ } = this.context.i18n();
+  validateLength(field, scope = this.state) {
     const { validationErrors } = this.state;
+    const length = this.constructor.validationLengths[field];
 
-    if (!scope.rate) {
-      validationErrors[FIELD_NAME_RATE] = __('reviews.review_form_rate_error');
+    if (length && scope[field] && scope[field].length >= length) {
+      validationErrors[field] = i18n.text('reviews.review_form_error_length', { length });
     } else {
-      delete validationErrors[FIELD_NAME_RATE];
+      delete validationErrors[field];
     }
 
     return validationErrors;
@@ -186,14 +185,13 @@ class ReviewForm extends PureComponent {
    * @return {boolean} Valid or invalid data provided.
    */
   validateAuthor(scope = this.state) {
-    const { __ } = this.context.i18n();
     const { validationErrors } = this.state;
     const length = this.constructor.validationLengths[FIELD_NAME_AUTHOR];
 
     if (!scope[FIELD_NAME_AUTHOR] || !scope[FIELD_NAME_AUTHOR].length) {
-      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_author_empty');
+      validationErrors[FIELD_NAME_AUTHOR] = i18n.text('reviews.review_form_error_author_empty');
     } else if (length && scope[FIELD_NAME_AUTHOR].length > length) {
-      validationErrors[FIELD_NAME_AUTHOR] = __('reviews.review_form_error_length', { length });
+      validationErrors[FIELD_NAME_AUTHOR] = i18n.text('reviews.review_form_error_length', { length });
     } else {
       delete validationErrors[FIELD_NAME_AUTHOR];
     }
@@ -202,20 +200,17 @@ class ReviewForm extends PureComponent {
   }
 
   /**
-   * Length validation.
-   * @param {string} field The field name.
+   * Validate rate.
    * @param {Object} scope The data to be validated.
    * @return {boolean} Valid or invalid data provided.
    */
-  validateLength(field, scope = this.state) {
-    const { __ } = this.context.i18n();
+  validateRate(scope = this.state) {
     const { validationErrors } = this.state;
-    const length = this.constructor.validationLengths[field];
 
-    if (length && scope[field] && scope[field].length >= length) {
-      validationErrors[field] = __('reviews.review_form_error_length', { length });
+    if (!scope.rate) {
+      validationErrors[FIELD_NAME_RATE] = i18n.text('reviews.review_form_rate_error');
     } else {
-      delete validationErrors[field];
+      delete validationErrors[FIELD_NAME_RATE];
     }
 
     return validationErrors;
@@ -243,7 +238,7 @@ class ReviewForm extends PureComponent {
     const { validationErrors } = this.state;
 
     return (
-      <section className={styles.container} data-test-id="reviewForm">
+      <section className={this.props.classes.container} data-test-id="reviewForm">
         <form onSubmit={this.handleSubmit}>
           <RatingScale
             onChange={this.handleRatingChange}
@@ -282,4 +277,8 @@ class ReviewForm extends PureComponent {
   }
 }
 
-export default withWidgetSettings(connect(ReviewForm), '@shopgate/engage/reviews');
+export default withWidgetSettings(connect(withStyles(ReviewForm, theme => ({
+  container: {
+    margin: theme.spacing(2),
+  },
+}))), '@shopgate/engage/reviews');

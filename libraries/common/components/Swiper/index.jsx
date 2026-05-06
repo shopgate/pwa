@@ -2,7 +2,6 @@ import React, {
   useMemo, useCallback, useEffect, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import cls from 'classnames';
 import {
   A11y,
   Autoplay,
@@ -18,10 +17,74 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css/zoom';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import SwiperItem from './components/SwiperItem';
-import {
-  container, innerContainer, zoomFix, buttonNext, buttonPrev,
-} from './styles';
+
+const useStyles = makeStyles()(() => ({
+  container: {
+    position: 'relative',
+    maxHeight: '100%',
+  },
+  innerContainer: {
+    overflow: 'hidden',
+    '--swiper-navigation-color': themeColors.gray,
+    '& .swiper-wrapper': {
+      alignItems: 'stretch',
+    },
+    '& .swiper-slide': {
+      height: 'auto',
+    },
+    '& .swiper-pagination': {
+      '& .swiper-pagination-bullet': {
+        background: themeColors.gray,
+        opacity: '.5',
+        margin: '0 4px',
+        transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+        border: `1px solid ${themeColors.dark}`,
+      },
+      '& .swiper-pagination-bullet-active.swiper-pagination-bullet-active-main': {
+        opacity: 1,
+      },
+    },
+    '& .swiper-pagination-fraction': {
+      top: 'var(--swiper-pagination-fraction-top-offset, 4px)',
+      left: 'auto',
+      right: 0,
+      bottom: 'auto',
+      fontSize: 12,
+      background: themeColors.background,
+      borderRadius: '50px',
+      width: 'fit-content',
+      padding: '4px 8px',
+      margin: '4px 16px',
+      transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    },
+    '& .swiper-pagination-progressbar': {
+      background: themeColors.shade7,
+      '& .swiper-pagination-progressbar-fill': {
+        background: themeColors.dark,
+      },
+    },
+  },
+  zoomFix: {
+    '& .swiper-slide': {
+      overflow: 'hidden',
+    },
+  },
+  buttonNext: {
+    backgroundImage: "url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23808080'%2F%3E%3C%2Fsvg%3E\") !important",
+    '&:after': {
+      color: 'transparent',
+    },
+  },
+  buttonPrev: {
+    backgroundImage: "url(\"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23808080'%2F%3E%3C%2Fsvg%3E\") !important",
+    '&:after': {
+      color: 'transparent',
+    },
+  },
+}));
 
 /**
  * @typedef {import('swiper/react').SwiperProps} SwiperCmpProps
@@ -77,6 +140,8 @@ const Swiper = ({
   paginationType: paginationTypeProp,
   ...swiperProps
 }) => {
+  const { classes, cx } = useStyles();
+
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const showPagination = (indicators && children.length > 1);
@@ -94,8 +159,8 @@ const Swiper = ({
     if (hasControls) {
       nav = {
         // Important to use dot notation (swiper uses it as selector internally)
-        nextEl: `.swiper-button-next.${buttonNext}`,
-        prevEl: `.swiper-button-prev.${buttonPrev}`,
+        nextEl: `.swiper-button-next.${classes.buttonNext}`,
+        prevEl: `.swiper-button-prev.${classes.buttonPrev}`,
       };
     }
 
@@ -104,7 +169,7 @@ const Swiper = ({
     }
 
     return nav;
-  }, [controls, hasControls]);
+  }, [controls, hasControls, classes.buttonNext, classes.buttonPrev]);
 
   const handleSlideChange = useCallback((swiper) => {
     if (typeof onSlideChange === 'function') {
@@ -125,7 +190,11 @@ const Swiper = ({
       Zoom,
       ...(Array.isArray(additionalModules) ? additionalModules : []),
     ],
-    className: cls(innerContainer, classNames.container, { [zoomFix]: swiperProps?.zoom }),
+    className: cx(
+      classes.innerContainer,
+      classNames.container,
+      { [classes.zoomFix]: swiperProps?.zoom }
+    ),
     autoplay: autoPlay ? {
       delay: interval,
     } : false,
@@ -150,6 +219,8 @@ const Swiper = ({
     classNames.container,
     classNames.bulletClass,
     classNames.bulletActiveClass,
+    classes.innerContainer,
+    classes.zoomFix,
     swiperProps,
     autoPlay,
     interval,
@@ -161,6 +232,7 @@ const Swiper = ({
     children.length,
     disabled,
     handleSlideChange,
+    cx,
   ]);
 
   useEffect(() => {
@@ -239,7 +311,7 @@ const Swiper = ({
   );
 
   return (
-    <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
+    <div className={cx(classes.container, className, 'common__swiper')} aria-hidden={ariaHidden}>
       <OriginalSwiper
         aria-live="off"
         a11y={{ enabled: false }}
@@ -252,8 +324,8 @@ const Swiper = ({
         {children}
         {hasControls && (
           <>
-            <div className={`swiper-button-next ${buttonNext}`} />
-            <div className={`swiper-button-prev ${buttonPrev}`} />
+            <div className={cx('swiper-button-next', classes.buttonNext)} />
+            <div className={cx('swiper-button-prev', classes.buttonPrev)} />
           </>
         )}
       </OriginalSwiper>

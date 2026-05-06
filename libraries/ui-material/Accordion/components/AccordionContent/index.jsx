@@ -1,23 +1,34 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { useSpring, animated } from 'react-spring';
 import { useMeasure } from 'react-use';
-import * as styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  content: {
+    overflow: 'hidden',
+    willChange: 'height',
+  },
+  contentInner: {
+    padding: '0 16px 16px',
+    overflow: 'hidden',
+  },
+});
 
 /**
  * The accordion content component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function AccordionContent(props) {
+const AccordionContent = (props) => {
   const {
     children, open, id, className,
   } = props;
-  const [contentHeight, setContentHeight] = React.useState(0);
+  const { classes, cx } = useStyles();
+  const [contentHeight, setContentHeight] = useState(0);
   const [ref, { height }] = useMeasure();
 
-  React.useEffect(() => {
+  useEffect(() => {
     setContentHeight(height);
     window.addEventListener('resize', setContentHeight(height));
     return () => {
@@ -35,15 +46,15 @@ function AccordionContent(props) {
   });
 
   return (
-    <animated.div className={classnames('ui-material__accordion-content', styles.content)} style={expand} id={id} aria-hidden={!open}>
+    <animated.div className={cx('ui-material__accordion-content', classes.content)} style={expand} id={id} aria-hidden={!open}>
       <div ref={ref}>
-        <div className={classnames(styles.contentInner, className)}>
+        <div className={cx(classes.contentInner, className)}>
           {children}
         </div>
       </div>
     </animated.div>
   );
-}
+};
 
 AccordionContent.propTypes = {
   children: PropTypes.node.isRequired,

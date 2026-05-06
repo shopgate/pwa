@@ -13,7 +13,6 @@ const navigationProps = {
   historyUpdate: update,
 };
 
-// eslint-disable-next-line require-jsdoc
 const MockComponent = () => null;
 
 describe('engage > core > hocs > withNavigation', () => {

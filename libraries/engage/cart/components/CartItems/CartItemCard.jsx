@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import CartItemCardReservation from './CartItemCardReservation';
-import { withBorder } from './CartItemCard.style';
+
+const useStyles = makeStyles()({
+  withBorder: {
+    borderBottom: `1px solid ${themeColors.shade7}`,
+  },
+});
 
 /**
  * Renders the cart items.
@@ -20,13 +27,14 @@ export const CartItemCard = ({
   fulfillmentMethod,
   hasMessages,
 }) => {
+  const { classes } = useStyles();
   if (!multiLineReservation) {
     return children;
   }
 
   return (
     <>
-      <ul className={fulfillmentLocationId && !hasMessages ? withBorder : null}>
+      <ul className={fulfillmentLocationId && !hasMessages ? classes.withBorder : null}>
         {children}
       </ul>
       {!!fulfillmentLocationId && (

@@ -1,11 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
-import buttonStyles from '@shopgate/pwa-ui-shared/Button/style';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
+
+const { colors, variables } = themeConfig;
+
+const useStyles = makeStyles()(theme => ({
+  buttonLine: {
+    float: 'right',
+    marginTop: 14,
+  },
+  cancelButton: {
+    position: 'relative',
+    display: 'inline-block',
+    outline: 0,
+    color: colors.dark,
+    backgroundColor: 'transparent',
+    minWidth: 64,
+    overflow: 'hidden',
+    border: 0,
+    ...variables.buttonBase,
+    padding: theme.spacing(0, 2, 0),
+    '&:disabled': {
+      cursor: 'not-allowed',
+    },
+  },
+}));
 
 /**
  * The form buttons component.
@@ -13,18 +37,23 @@ import connect from './connector';
  * @returns {JSX}
  */
 const FormButtons = (props) => {
-  const buttonStyle = buttonStyles.regular(false);
+  const { classes } = useStyles();
+
   return (
-    <div className={styles.buttonLine}>
+    <div className={classes.buttonLine}>
       <button
         type="button"
-        className={`${buttonStyle.button} ${buttonStyle.content}`}
+        className={classes.cancelButton}
         onClick={props.cancel}
         data-test-id="reviewCancelButton"
       >
         <I18n.Text string="common.cancel" />
       </button>
-      <RippleButton type="secondary" disabled={props.isLoading} testId="sendReviewButton">
+      <RippleButton
+        type="secondary"
+        disabled={props.isLoading}
+        testId="sendReviewButton"
+      >
         <I18n.Text string="common.submit" />
       </RippleButton>
     </div>

@@ -17,35 +17,32 @@ exports[`<Picker /> should render the picker 1`] = `
       <ForwardRef(WithForwardedRef(Picker))
         buttonComponent={[Function]}
         buttonProps={{}}
-        className="css-kdzjuz engage__picker-utilize"
-        clickDelay={150}
+        className="sg-1nsf4dv-root engage__picker-utilize"
         label="Picker label"
         listComponent={[Function]}
         modalComponent={[Function]}
         onClose={[Function]}
-        setViewAriaHidden={[MockFunction]}
       >
         <Picker
           buttonComponent={[Function]}
           buttonProps={{}}
-          className="css-kdzjuz engage__picker-utilize"
-          clickDelay={150}
+          className="sg-1nsf4dv-root engage__picker-utilize"
           disabled={false}
           duration={300}
           forwardedRef={
             {
               "current": <div
                 aria-haspopup="true"
-                class="css-kdzjuz engage__picker-utilize engage__picker"
+                class="sg-1nsf4dv-root engage__picker-utilize engage__picker common__picker"
                 role="button"
                 tabindex="0"
               >
                 <button
-                  class="css-164ggb6"
+                  class="sg-5zgxuh-button"
                   type="button"
                 >
                   <span
-                    class="css-1358lbd"
+                    class="sg-1mg745j-label"
                   >
                     Pick ...
                   </span>
@@ -63,12 +60,11 @@ exports[`<Picker /> should render the picker 1`] = `
           onClose={[Function]}
           onSelect={[Function]}
           placeholder="Pick ..."
-          setViewAriaHidden={[MockFunction]}
           value={null}
         >
           <div
             aria-haspopup={true}
-            className="css-kdzjuz engage__picker-utilize engage__picker"
+            className="sg-1nsf4dv-root engage__picker-utilize engage__picker common__picker"
             role="button"
             tabIndex={0}
           >
@@ -79,12 +75,12 @@ exports[`<Picker /> should render the picker 1`] = `
               value=""
             >
               <button
-                className="css-164ggb6"
+                className="sg-5zgxuh-button"
                 onClick={[Function]}
                 type="button"
               >
                 <span
-                  className="css-1358lbd"
+                  className="sg-1mg745j-label"
                 >
                   Pick ...
                 </span>

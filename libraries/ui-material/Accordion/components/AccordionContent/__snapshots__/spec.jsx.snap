@@ -8,7 +8,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
 >
   <ForwardRef
     aria-hidden={true}
-    className="ui-material__accordion-content css-apm51k"
+    className="ui-material__accordion-content sg-fv5x50-content"
     id="some-id"
     style={
       {
@@ -18,7 +18,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
   >
     <div
       aria-hidden={true}
-      className="ui-material__accordion-content css-apm51k"
+      className="ui-material__accordion-content sg-fv5x50-content"
       id="some-id"
       style={
         {
@@ -28,7 +28,7 @@ exports[`<AccordionContent /> should render as closed 1`] = `
     >
       <div>
         <div
-          className="css-yh2lvw"
+          className="sg-3cu6ey-contentInner"
         >
           <div
             id="test"
@@ -50,7 +50,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
 >
   <ForwardRef
     aria-hidden={false}
-    className="ui-material__accordion-content css-apm51k"
+    className="ui-material__accordion-content sg-fv5x50-content"
     id="some-id"
     style={
       {
@@ -60,7 +60,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
   >
     <div
       aria-hidden={false}
-      className="ui-material__accordion-content css-apm51k"
+      className="ui-material__accordion-content sg-fv5x50-content"
       id="some-id"
       style={
         {
@@ -70,7 +70,7 @@ exports[`<AccordionContent /> should render as open 1`] = `
     >
       <div>
         <div
-          className="css-yh2lvw"
+          className="sg-3cu6ey-contentInner"
         >
           <div
             id="test"

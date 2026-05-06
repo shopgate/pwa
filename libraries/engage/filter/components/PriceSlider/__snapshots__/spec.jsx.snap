@@ -3,7 +3,7 @@
 exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
 <FilterItem>
   <div
-    className="css-vafydm"
+    className="sg-1167cjk-wrapper"
     data-test-id="priceRangeSlider"
   >
     <Label
@@ -15,11 +15,11 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
     <RangeSlider
       classNames={
         {
-          "container": "css-x355v3",
-          "handleInner": "css-1aks6z8",
-          "handleOuter": "css-nil",
-          "outerRange": "css-19d9uwb",
-          "range": "css-117nhon",
+          "container": "sg-shctl2-rangeSliderContainer",
+          "handleInner": "sg-p3et0u-rangeSliderHandleInner",
+          "handleOuter": "sg-dlsvg8-rangeSliderHandleOuter",
+          "outerRange": "sg-a7xmlr-rangeSliderOuterRange",
+          "range": "sg-q7l2tr-rangeSliderRange",
         }
       }
       easing="exponential"
@@ -41,7 +41,7 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
 exports[`Filter: <PriceSlider /> should render with default props 1`] = `
 <FilterItem>
   <div
-    className="css-vafydm"
+    className="sg-1167cjk-wrapper"
     data-test-id="priceRangeSlider"
   >
     <Label
@@ -53,11 +53,11 @@ exports[`Filter: <PriceSlider /> should render with default props 1`] = `
     <RangeSlider
       classNames={
         {
-          "container": "css-x355v3",
-          "handleInner": "css-1aks6z8",
-          "handleOuter": "css-nil",
-          "outerRange": "css-19d9uwb",
-          "range": "css-117nhon",
+          "container": "sg-shctl2-rangeSliderContainer",
+          "handleInner": "sg-p3et0u-rangeSliderHandleInner",
+          "handleOuter": "sg-dlsvg8-rangeSliderHandleOuter",
+          "outerRange": "sg-a7xmlr-rangeSliderOuterRange",
+          "range": "sg-q7l2tr-rangeSliderRange",
         }
       }
       easing="exponential"

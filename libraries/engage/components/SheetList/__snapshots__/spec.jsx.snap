@@ -7,27 +7,27 @@ exports[`<SheetList /> should not render invalid children 1`] = `
   testId={null}
 >
   <List
-    className="null engage__sheet-list"
+    className="engage__sheet-list"
     role="listbox"
   >
     <ul
-      className="null engage__sheet-list common_list"
+      className="engage__sheet-list common_list"
       role="listbox"
     >
       <ListItem
-        className="css-id5jvr css-171mywc engage__sheet-list__item"
+        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
+          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
           data-test-id="listItem"
           role={null}
         >
           <div
-            className="css-1ckzvk7"
+            className="sg-1cl0k0e-innerContainer"
             data-test-id={null}
           >
             <ForwardRef(WithForwardedRef(Item))
@@ -54,21 +54,21 @@ exports[`<SheetList /> should not render invalid children 1`] = `
                   data-test-id={null}
                 >
                   <Grid
-                    className="css-1ojce65"
+                    className="sg-oxesat-grid"
                     component="div"
                     wrap={false}
                   >
                     <div
-                      className="css-1ojce65 css-h7r55a common__grid"
+                      className="common__grid sg-1m2nk0b-root-noWrap-grid"
                     >
                       <GridItem
-                        className="css-1tp5o1f"
+                        className="sg-h6motv-title"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-1tp5o1f css-1gs0ko2"
+                          className="sg-427d4o-root-title"
                         >
                           <div>
                             List Item
@@ -103,27 +103,27 @@ exports[`<SheetList /> should render a child and add styles for list items with 
   testId={null}
 >
   <List
-    className="null engage__sheet-list"
+    className="engage__sheet-list"
     role="listbox"
   >
     <ul
-      className="null engage__sheet-list common_list"
+      className="engage__sheet-list common_list"
       role="listbox"
     >
       <ListItem
-        className="css-id5jvr css-1brrprg css-171mywc engage__sheet-list__item"
+        className="engage__sheet-list__item sg-wjbn21-item-itemWithImage-itemNotLast"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-id5jvr css-1brrprg css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
+          className="engage__sheet-list__item common__list__list-item sg-nbvjw8-item-item-itemWithImage-itemNotLast-unselected"
           data-test-id="listItem"
           role={null}
         >
           <div
-            className="css-1ckzvk7"
+            className="sg-1cl0k0e-innerContainer"
             data-test-id={null}
           >
             <ForwardRef(WithForwardedRef(Item))
@@ -150,21 +150,21 @@ exports[`<SheetList /> should render a child and add styles for list items with 
                   data-test-id={null}
                 >
                   <Grid
-                    className="css-1ojce65"
+                    className="sg-oxesat-grid"
                     component="div"
                     wrap={false}
                   >
                     <div
-                      className="css-1ojce65 css-h7r55a common__grid"
+                      className="common__grid sg-1m2nk0b-root-noWrap-grid"
                     >
                       <GridItem
-                        className="css-1tp5o1f"
+                        className="sg-h6motv-title"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-1tp5o1f css-1gs0ko2"
+                          className="sg-427d4o-root-title"
                         >
                           <div>
                             List Item
@@ -191,27 +191,27 @@ exports[`<SheetList /> should render with two children 1`] = `
   testId={null}
 >
   <List
-    className="null engage__sheet-list"
+    className="engage__sheet-list"
     role="listbox"
   >
     <ul
-      className="null engage__sheet-list common_list"
+      className="engage__sheet-list common_list"
       role="listbox"
     >
       <ListItem
-        className="css-id5jvr css-171mywc engage__sheet-list__item"
+        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
+          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
           data-test-id="listItem"
           role={null}
         >
           <div
-            className="css-1ckzvk7"
+            className="sg-1cl0k0e-innerContainer"
             data-test-id={null}
           >
             <ForwardRef(WithForwardedRef(Item))
@@ -238,21 +238,21 @@ exports[`<SheetList /> should render with two children 1`] = `
                   data-test-id={null}
                 >
                   <Grid
-                    className="css-1ojce65"
+                    className="sg-oxesat-grid"
                     component="div"
                     wrap={false}
                   >
                     <div
-                      className="css-1ojce65 css-h7r55a common__grid"
+                      className="common__grid sg-1m2nk0b-root-noWrap-grid"
                     >
                       <GridItem
-                        className="css-1tp5o1f"
+                        className="sg-h6motv-title"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-1tp5o1f css-1gs0ko2"
+                          className="sg-427d4o-root-title"
                         >
                           <div>
                             List Item
@@ -268,19 +268,19 @@ exports[`<SheetList /> should render with two children 1`] = `
         </li>
       </ListItem>
       <ListItem
-        className="css-id5jvr css-171mywc engage__sheet-list__item"
+        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
         isSelected={false}
         key="child-1/.1"
         role={null}
         tabIndex={0}
       >
         <li
-          className="css-1p5q8vq css-id5jvr css-171mywc engage__sheet-list__item common__list__list-item css-16gj3o1"
+          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
           data-test-id="listItem"
           role={null}
         >
           <div
-            className="css-1ckzvk7"
+            className="sg-1cl0k0e-innerContainer"
             data-test-id={null}
           >
             <ForwardRef(WithForwardedRef(Item))
@@ -307,21 +307,21 @@ exports[`<SheetList /> should render with two children 1`] = `
                   data-test-id={null}
                 >
                   <Grid
-                    className="css-1ojce65"
+                    className="sg-oxesat-grid"
                     component="div"
                     wrap={false}
                   >
                     <div
-                      className="css-1ojce65 css-h7r55a common__grid"
+                      className="common__grid sg-1m2nk0b-root-noWrap-grid"
                     >
                       <GridItem
-                        className="css-1tp5o1f"
+                        className="sg-h6motv-title"
                         component="div"
                         grow={1}
                         shrink={1}
                       >
                         <div
-                          className="css-1tp5o1f css-1gs0ko2"
+                          className="sg-427d4o-root-title"
                         >
                           <div>
                             List Item

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import styles from './style';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 
 const SIZE_BIG = 'big';
 const SIZE_SMALL = 'small';
@@ -9,12 +9,38 @@ const SIZE_SMALL = 'small';
 const TYPE_BUTTON = 'button';
 const TYPE_SUBMIT = 'submit';
 
+const useStyles = makeStyles()({
+  button: {
+    borderRadius: '50%',
+    outline: 0,
+    overflow: 'hidden',
+    padding: 0,
+    position: 'relative',
+    zIndex: 1,
+    ':disabled': {
+      cursor: 'not-allowed',
+    },
+  },
+  buttonSmall: {
+    height: 40,
+    width: 40,
+  },
+  buttonLarge: {
+    height: 56,
+    width: 56,
+  },
+  buttonShadow: {
+    boxShadow: themeConfig.shadows.buttons.elevated,
+  },
+});
+
 /**
  * The FloatingActionButton component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
 const FloatingActionButton = (props) => {
+  const { classes, cx } = useStyles();
   const {
     background,
     children,
@@ -25,31 +51,31 @@ const FloatingActionButton = (props) => {
     ref,
     size,
     type,
+    testId,
   } = props;
 
-  const classes = classNames(
+  const rootClass = cx(
     'floating-action-button',
     'ui-material__floating-action-button',
-    styles.button,
+    classes.button,
     {
       [className]: className,
-      [styles.buttonSmall]: size === SIZE_SMALL,
-      [styles.buttonSmall]: size === SIZE_SMALL,
-      [styles.buttonLarge]: size === SIZE_BIG,
-      [styles.buttonShadow]: raised,
+      [classes.buttonSmall]: size === SIZE_SMALL,
+      [classes.buttonLarge]: size === SIZE_BIG,
+      [classes.buttonShadow]: raised,
     }
   );
 
   return (
     <button
-      className={classes}
+      className={rootClass}
       disabled={disabled}
       onClick={onClick}
       ref={ref}
       style={{ background }}
       // eslint-disable-next-line react/button-has-type
       type={type}
-      data-test-id={props.testId}
+      data-test-id={testId}
     >
       {children}
     </button>

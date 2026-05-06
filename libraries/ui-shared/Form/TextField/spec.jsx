@@ -6,6 +6,8 @@ const inputProps = {
   name: 'test-input',
 };
 
+jest.mock('@shopgate/engage/components');
+
 describe('<TextField>', () => {
   it('should render a simple text field', () => {
     const wrapper = mount(<TextField {...inputProps} />);
@@ -95,7 +97,7 @@ describe('<TextField>', () => {
     const wrapper = mount(<TextField {...inputProps} errorText={errorText} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ErrorText').find('Translate').at(0).props().string).toEqual(errorText);
+    expect(wrapper.find('ErrorText').find('Text').at(0).props().string).toEqual(errorText);
   });
 
   it('should show the label', () => {
@@ -104,7 +106,7 @@ describe('<TextField>', () => {
     const wrapper = mount(<TextField {...inputProps} label={label} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Label').find('Translate').props().string).toEqual(label);
+    expect(wrapper.find('Label').find('Text').props().string).toEqual(label);
   });
 
   it('should show the placeholder text', () => {
@@ -113,6 +115,6 @@ describe('<TextField>', () => {
     const wrapper = mount(<TextField {...inputProps} placeholder={placeholder} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Placeholder').find('Translate').at(0).props().string).toEqual(placeholder);
+    expect(wrapper.find('Placeholder').find('Text').at(0).props().string).toEqual(placeholder);
   });
 });

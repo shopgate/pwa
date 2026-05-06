@@ -1,4 +1,11 @@
-import React, { Component } from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useCallback,
+  useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import ResponsiveContainer from '@shopgate/engage/components/ResponsiveContainer';
@@ -9,148 +16,107 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEvents';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
-import { useScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
+import { applyScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
+import { makeStyles, cx, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
 import ParallaxProvider from './components/ParallaxProvider';
-import { container, containerInner } from './style';
+
+const useStyles = makeStyles()({
+  containerBase: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: '100vw',
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      width: 'var(--page-content-width)',
+    },
+  },
+  containerScroll: {
+    bottom: 0,
+    top: 0,
+    overflowScrolling: 'touch',
+    position: 'absolute',
+    WebkitOverflowScrolling: 'touch',
+    ...(IS_PAGE_PREVIEW_ACTIVE && {
+      scrollbarWidth: 'thin',
+      backgroundColor: 'var(--page-background-color)',
+    }),
+  },
+  containerWindow: {
+    height: '100%',
+    backgroundColor: 'var(--page-background-color)',
+  },
+  containerInner: {
+    ':after': {
+      content: "''",
+      display: 'block',
+      pointerEvents: 'none',
+      paddingBottom: 'calc(var(--page-content-offset-bottom) + var(--keyboard-height))',
+    },
+  },
+  containerInnerIosScroll: {
+    minHeight: 'calc(100% + var(--extra-ios-scroll-space, 0px))',
+  },
+});
 
 /**
  * The ViewContent component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class ViewContent extends Component {
-  static contextType = RouteContext;
+const ViewContent = ({
+  setContentRef,
+  visible,
+  children,
+  className,
+  noContentPortal,
+  noKeyboardListener,
+  noScrollOnKeyboard,
+}) => {
+  const routeContext = useContext(RouteContext);
+  const scrollContainer = applyScrollContainer();
+  const { classes } = useStyles();
 
-  static propTypes = {
-    setContentRef: PropTypes.func.isRequired,
-    visible: PropTypes.bool.isRequired,
-    children: PropTypes.node,
-    className: PropTypes.string,
-    noContentPortal: PropTypes.bool,
-    noKeyboardListener: PropTypes.bool,
-    noScrollOnKeyboard: PropTypes.bool,
-  };
-
-  static defaultProps = {
-    className: '',
-    children: null,
-    noScrollOnKeyboard: false,
-    noContentPortal: false,
-    noKeyboardListener: false,
-  };
-
-  /**
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.ref = React.createRef();
-    this.state = {
-      keyboardHeight: 0,
-      isInputFocused: false,
-    };
-
-    this.scrollContainer = useScrollContainer();
-
-    if (!this.scrollContainer) {
-      this.ref.current = window;
-    }
-
-    this.props.setContentRef(this.ref);
-
-    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
-
-    if (isIOs) {
-      window.addEventListener('focusin', this.handleInputFocusChange);
-      window.addEventListener('focusout', this.handleInputFocusChange);
-    }
-  }
-
-  /**
-   * @param {Object} props The component props.
-   * @param {Object} state The component state.
-   * @returns {Object}
-   */
-  static getDerivedStateFromProps(props, state) {
-    if (props.visible || state.keyboardHeight === 0) {
+  const ref = useRef((() => {
+    if (scrollContainer) {
       return null;
     }
+    if (typeof window !== 'undefined') {
+      return window;
+    }
+    return null;
+  })());
 
-    return { keyboardHeight: 0 };
-  }
+  const [keyboardHeight, setKeyboardHeight] = useState(0);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
-  /**
-   * Restore the scroll position of the page.
-   */
-  componentDidMount() {
-    const { scrollTop } = this.context.state;
+  useLayoutEffect(() => {
+    setContentRef(ref);
+  }, [setContentRef]);
 
-    // This trick ensures the scroll position is restored correctly. Without it there where
-    // situations where scroll position was restored before the content was rendered.
-    // In that case restoration didn't have any effect.
-    window.requestAnimationFrame(() => {
-      if (this.ref.current === window) {
+  useEffect(() => {
+    if (!visible) {
+      setKeyboardHeight(0);
+    }
+  }, [visible]);
+
+  useLayoutEffect(() => {
+    const { scrollTop } = routeContext.state;
+    const raf = window.requestAnimationFrame(() => {
+      if (ref.current === window) {
         window.scrollTo(0, scrollTop || 0);
-      } else if (typeof this.ref.current?.scrollTop !== 'undefined') {
-        this.ref.current.scrollTop = scrollTop || 0;
+      } else if (ref.current?.scrollTop !== undefined) {
+        ref.current.scrollTop = scrollTop || 0;
       }
     });
-  }
+    return () => window.cancelAnimationFrame(raf);
+  // Restore scroll once on mount (matches former componentDidMount).
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  /**
-   * Removes the keyboardWillChange listener.
-   */
-  componentWillUnmount() {
-    let scrollTop;
-
-    if (this.ref.current === window) {
-      scrollTop = window.scrollY;
-    } else {
-      ({ scrollTop } = this.ref.current);
-    }
-
-    router.update(this.context.id, {
-      scrollTop,
-    }, false);
-
-    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
-
-    if (isIOs) {
-      window.removeEventListener('focusin', this.handleInputFocusChange);
-      window.removeEventListener('focusout', this.handleInputFocusChange);
-    }
-  }
-
-  /**
-   * @returns {Object}
-   */
-  get style() {
-    const { noScrollOnKeyboard } = this.props;
-    const { keyboardHeight, isInputFocused } = this.state;
-
-    let overflow = 'inherit';
-
-    if (this.scrollContainer) {
-      overflow = (noScrollOnKeyboard && keyboardHeight > 0) ? 'hidden' : 'auto';
-    }
-
-    return {
-      '--keyboard-height': `${keyboardHeight}px`,
-      // Used on iOS devices to make the scroll container content always a bit taller than the
-      // scroll container to enforce rubber band effect. Needs to be deactivated when input
-      // is focused to prevent side effects (multiple scrollable content areas).
-      '--extra-ios-scroll-space': isInputFocused ? 0 : '12px',
-      overflow,
-    };
-  }
-
-  /**
-   * Handles focus changes on the window to detect if an input is focused.
-   * @param {FocusEvent} e The event payload
-   */
-  handleInputFocusChange = (e) => {
+  const handleInputFocusChange = useCallback((e) => {
     const el = e.target;
     const isInputTarget =
       (el.tagName === 'INPUT' &&
@@ -161,75 +127,134 @@ class ViewContent extends Component {
       el.isContentEditable;
 
     if (isInputTarget) {
-      this.setState({
-        isInputFocused: e.type === 'focusin',
-      });
+      setIsInputFocused(e.type === 'focusin');
     }
-  };
+  }, []);
 
-  /**
-   * Handles a keyboard change event.
-   * @param {boolean} open If the keyboard is now open.
-   * @param {boolean} overlap The height of the keyboard.
-   */
-  handleKeyboardChange = ({ open, overlap }) => {
-    if (this.props.noKeyboardListener) {
+  const handleKeyboardChange = useCallback(({ open, overlap }) => {
+    if (noKeyboardListener) {
       return;
     }
-
-    const height = (open) ? overlap : 0;
-
-    if (this.props.visible && height !== this.state.keyboardHeight) {
-      this.setState({
-        keyboardHeight: height,
-      });
+    const height = open ? overlap : 0;
+    if (visible && height !== keyboardHeight) {
+      setKeyboardHeight(height);
     }
+  }, [noKeyboardListener, visible, keyboardHeight]);
+
+  useLayoutEffect(() => {
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, handleKeyboardChange);
+
+    return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      const node = ref.current;
+      let scrollTop;
+      if (node === window) {
+        scrollTop = window.scrollY;
+      } else if (node) {
+        ({ scrollTop } = node);
+      }
+      router.update(routeContext.id, {
+        scrollTop,
+      }, false);
+
+      event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, handleKeyboardChange);
+    };
+  }, [handleKeyboardChange, routeContext.id]);
+
+  useEffect(() => {
+    if (!isIOs) {
+      return undefined;
+    }
+    window.addEventListener('focusin', handleInputFocusChange);
+    window.addEventListener('focusout', handleInputFocusChange);
+    return () => {
+      window.removeEventListener('focusin', handleInputFocusChange);
+      window.removeEventListener('focusout', handleInputFocusChange);
+    };
+  }, [handleInputFocusChange]);
+
+  let overflow = 'inherit';
+  if (scrollContainer) {
+    overflow = (noScrollOnKeyboard && keyboardHeight > 0) ? 'hidden' : 'auto';
+  }
+
+  const style = {
+    '--keyboard-height': `${keyboardHeight}px`,
+    '--extra-ios-scroll-space': isInputFocused ? 0 : '12px',
+    overflow,
   };
 
-  /**
-   * @return {JSX.Element}
-   */
-  render() {
-    return (
-      <ParallaxProvider viewVisible={this.props.visible}>
-        <article
-          className={`${container} engage__view__content ${this.props.className}`}
-          ref={this.scrollContainer ? this.ref : null}
-          style={this.style}
-          role="none"
+  return (
+    <ParallaxProvider viewVisible={visible}>
+      <article
+        className={cx(
+          classes.containerBase,
+          scrollContainer ? classes.containerScroll : classes.containerWindow,
+          'engage__view__content',
+          className
+        )}
+        ref={scrollContainer ? ref : null}
+        style={style}
+        role="none"
+      >
+        <div
+          className={cx(
+            classes.containerInner,
+            isIOs && scrollContainer && classes.containerInnerIosScroll
+          )}
         >
-          <div className={containerInner}>
-            {/** Class of this div is needed by the ParallaxProvider component */}
-            <div className="engage__view__content__scrollable-content">
-              <Helmet title={appConfig.shopName} />
-              <Above />
-              <ResponsiveContainer breakpoint=">xs" webOnly>
-                {this.props.visible ? (
-                  <div id="PageHeaderBelow" />
-                ) : null}
-              </ResponsiveContainer>
-              <ConditionalWrapper
-                condition={!this.props.noContentPortal}
-                wrapper={children =>
-                  <SurroundPortals portalName={VIEW_CONTENT}>
-                    {children}
-                  </SurroundPortals>}
-              >
-                {this.props.children}
-              </ConditionalWrapper>
-              <Below />
-            </div>
+          <div className="engage__view__content__scrollable-content">
+            <Helmet title={appConfig.shopName} />
+            <Above />
+            <ResponsiveContainer breakpoint=">xs" webOnly>
+              {visible ? (
+                <div id="PageHeaderBelow" />
+              ) : null}
+            </ResponsiveContainer>
+            <ConditionalWrapper
+              condition={!noContentPortal}
+              wrapper={portalChildren => (
+                <SurroundPortals portalName={VIEW_CONTENT}>
+                  {portalChildren}
+                </SurroundPortals>
+              )}
+            >
+              {children}
+            </ConditionalWrapper>
+            <Below />
           </div>
-        </article>
-      </ParallaxProvider>
-    );
-  }
-}
+        </div>
+      </article>
+    </ParallaxProvider>
+  );
+};
+
+ViewContent.propTypes = {
+  setContentRef: PropTypes.func.isRequired,
+  visible: PropTypes.bool.isRequired,
+  children: PropTypes.node,
+  className: PropTypes.string,
+  noContentPortal: PropTypes.bool,
+  noKeyboardListener: PropTypes.bool,
+  noScrollOnKeyboard: PropTypes.bool,
+};
+
+ViewContent.defaultProps = {
+  className: '',
+  children: null,
+  noScrollOnKeyboard: false,
+  noContentPortal: false,
+  noKeyboardListener: false,
+};
 
 export default props => (
   <RouteContext.Consumer>
     {({ visible, pattern = '', is404 = false }) => (
-      <ViewContent {...props} visible={visible} className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`} />
+      <ViewContent
+        {...props}
+        visible={visible}
+        className={`route_${is404 ? '404' : pattern.replace(/[:/]/g, '_')}`}
+      />
     )}
   </RouteContext.Consumer>
 );

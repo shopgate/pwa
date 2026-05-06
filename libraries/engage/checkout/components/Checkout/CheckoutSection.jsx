@@ -1,75 +1,71 @@
 import React, { Fragment } from 'react';
-import { css } from 'glamor';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Card, Link } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import CheckoutSectionInfo from './CheckoutSectionInfo';
 import CheckoutSectionMessages from './CheckoutSectionMessages';
 import { i18n } from '../../../core/helpers/i18n';
 
-const { variables } = themeConfig;
-
-const styles = {
-  headline: css({
+const useStyles = makeStyles()(theme => ({
+  headline: {
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    margin: `0 0 ${variables.gap.small}px 0`,
-    color: 'var(--color-text-high-emphasis)',
+    margin: theme.spacing(0, 0, 1, 0),
+    color: theme.palette.text.primary,
     textTransform: 'none',
-  }),
-  card: css({
+  },
+  card: {
     display: 'flex',
     flexDirection: 'row',
     fontSize: 15,
     width: '100%',
     overflow: 'inherit !important',
-    marginBottom: variables.gap.big,
+    marginBottom: theme.spacing(2),
     boxShadow: 'none',
     background: 'var(--color-background-accent)',
-    padding: `${variables.gap.small}px ${variables.gap.big}px`,
+    padding: theme.spacing(1, 2),
     margin: 0,
-  }),
-  cardWithForm: css({
+  },
+  cardWithForm: {
     background: 'inherit !important',
     boxShadow: 'none  !important',
     padding: '0px !important',
-  }).toString(),
-  table: css({
+  },
+  table: {
     ' td': {
-      padding: `${variables.gap.xsmall}px 0`,
+      padding: theme.spacing(0.5, 0),
     },
-    ' td:last-child': {
+    ' td:last-of-type': {
       textAlign: 'right',
       whiteSpace: 'pre-wrap',
-      paddingLeft: variables.gap.xsmall,
+      paddingLeft: theme.spacing(0.5),
     },
-    ' tr:nth-last-child(2) td': {
+    ' tr:nth-last-of-type(2) td': {
       paddingBottom: 8,
     },
-    ' tr:last-child td': {
+    ' tr:last-of-type td': {
       paddingTop: 8,
       borderTop: '1px solid #979797',
       fontWeight: '600',
     },
-  }),
-  actionsContainer: css({
+  },
+  actionsContainer: {
     flex: 1,
     display: 'table',
     width: '100%',
-  }).toString(),
-  link: css({
+  },
+  link: {
     fontSize: '0.875rem',
     color: 'var(--color-primary)',
     textTransform: 'uppercase',
-  }).toString(),
-  actions: css({
+  },
+  actions: {
     paddingTop: 8,
-  }).toString(),
-  labelWithInfoIcon: css({
-    paddingRight: variables.gap.small,
-  }).toString(),
-};
+  },
+  labelWithInfoIcon: {
+    paddingRight: theme.spacing(1),
+  },
+}));
 
 /**
  * CheckoutSection component
@@ -84,86 +80,90 @@ const CheckoutSection = ({
   editLink,
   editLabel,
   id,
-}) => (
-  <>
-    { title && (
-      <h3 className={styles.headline} id={id}>{i18n.text(title)}</h3>
-    )}
-    <Card
-      className={classNames(styles.card.toString(), {
-        [styles.cardWithForm.toString()]: hasForm,
-      })}
-      id={!title ? id : null}
-    >
-      <div className={`${styles.actionsContainer} ${className}`}>
-        {children || null}
-        {content && (
-          <table className={styles.table}>
-            <tbody>
-              {content.map(({
-                label, text, info, messages,
-              }) => {
-                const hasMessages = Array.isArray(messages) && messages.length > 0;
-                let hasError = false;
+}) => {
+  const { classes, cx } = useStyles();
 
-                if (hasMessages) {
-                  hasError = !!messages.find(({ type }) => type === 'error');
-                }
+  return (
+    <>
+      { title && (
+        <h3 className={classes.headline} id={id}>{i18n.text(title)}</h3>
+      )}
+      <Card
+        className={cx(classes.card, {
+          [classes.cardWithForm]: hasForm,
+        })}
+        id={!title ? id : null}
+      >
+        <div className={cx(classes.actionsContainer, className)}>
+          {children || null}
+          {content && (
+            <table className={classes.table}>
+              <tbody>
+                {content.map(({
+                  label, text, info, messages,
+                }) => {
+                  const hasMessages = Array.isArray(messages) && messages.length > 0;
+                  let hasError = false;
 
-                return (
-                  <Fragment key={label}>
-                    <tr>
-                      <td>
-                        <span className={classNames({
-                          [styles.labelWithInfoIcon]: !!info,
-                        })}
-                        >
-                          {label}
-                        </span>
-                        { !hasError && (
-                        <CheckoutSectionInfo text={info} />
-                        )}
-                      </td>
-                      <td>{text}</td>
-                    </tr>
-                    { hasMessages && (
+                  if (hasMessages) {
+                    hasError = !!messages.find(({ type }) => type === 'error');
+                  }
+
+                  return (
+                    <Fragment key={label}>
                       <tr>
-                        <td
-                          colSpan="2"
-                          style={{
-                            textAlign: 'left',
-                            paddingLeft: 0,
-                          }}
-                        >
-                          <CheckoutSectionMessages messages={messages} />
-                          { hasError && (
-                          <CheckoutSectionInfo text={info} renderIcon={false} />
+                        <td>
+                          <span className={cx({
+                            [classes.labelWithInfoIcon]: !!info,
+                          })}
+                          >
+                            {label}
+                          </span>
+                          { !hasError && (
+                          <CheckoutSectionInfo text={info} />
                           )}
                         </td>
+                        <td>{text}</td>
                       </tr>
-                    )}
-                  </Fragment>
+                      { hasMessages && (
+                        <tr>
+                          <td
+                            colSpan="2"
+                            style={{
+                              textAlign: 'left',
+                              paddingLeft: 0,
+                            }}
+                          >
+                            <CheckoutSectionMessages messages={messages} />
+                            { hasError && (
+                            <CheckoutSectionInfo text={info} renderIcon={false} />
+                            )}
+                          </td>
+                        </tr>
+                      )}
+                    </Fragment>
 
-                );
-              })}
-            </tbody>
-          </table>
-        )}
-      </div>
-      {editLink ? (
-        <div className={styles.actions}>
-          <Link
-            tag="a"
-            className={styles.link}
-            href={editLink}
-          >
-            {i18n.text(editLabel)}
-          </Link>
+                  );
+                })}
+              </tbody>
+            </table>
+          )}
         </div>
-      ) : null}
-    </Card>
-  </>
-);
+        {editLink ? (
+          <div className={classes.actions}>
+            <Link
+              tag="a"
+              className={classes.link}
+              href={editLink}
+            >
+              {i18n.text(editLabel)}
+            </Link>
+          </div>
+        ) : null}
+      </Card>
+    </>
+  );
+};
 
 CheckoutSection.propTypes = {
   children: PropTypes.node,

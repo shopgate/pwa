@@ -3,11 +3,7 @@
 exports[`<LiveMessage /> should render a polite simple message 1`] = `
 <div
   aria-live="polite"
-  className={
-    {
-      "data-css-1krt3b8": "",
-    }
-  }
+  className="sg-1pj3g40-hiddenLiveRegion"
   role="log"
 >
   <Translate
@@ -20,11 +16,7 @@ exports[`<LiveMessage /> should render a polite simple message 1`] = `
 exports[`<LiveMessage /> should render an assertive message with params  1`] = `
 <div
   aria-live="assertive"
-  className={
-    {
-      "data-css-1krt3b8": "",
-    }
-  }
+  className="sg-1pj3g40-hiddenLiveRegion"
   role="log"
 >
   <Translate

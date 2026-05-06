@@ -4,6 +4,7 @@ import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import {
   mockProductId,
   mockedStateWithoutReview,
@@ -44,6 +45,12 @@ const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
 };
 
 describe('<ReviewForm />', () => {
+  beforeEach(() => {
+    getCurrentRoute.mockReturnValue({
+      pathname: '/some/path',
+    });
+  });
+
   it('should render form correctly', () => {
     const comp = createComponent(mockedStateWithoutReview);
     expect(comp).toMatchSnapshot();

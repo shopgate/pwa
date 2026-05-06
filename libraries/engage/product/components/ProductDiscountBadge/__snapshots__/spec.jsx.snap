@@ -22,7 +22,7 @@ exports[`<ProductDiscountBadge /> should not render with discount if widgetSetti
       productId="1234"
     >
       <ProductBadges
-        className="css-1q31aw2"
+        className="sg-nay627-portal"
         location="productDiscountBadge"
         portalProps={
           {
@@ -33,7 +33,7 @@ exports[`<ProductDiscountBadge /> should not render with discount if widgetSetti
         productId="1234"
       >
         <div
-          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+          className="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
         >
           <SurroundPortals
             portalName="component.product-badges"
@@ -75,7 +75,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
       productId="1234"
     >
       <ProductBadges
-        className="css-1q31aw2"
+        className="sg-nay627-portal"
         location="productDiscountBadge"
         portalProps={
           {
@@ -88,7 +88,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
         productId="1234"
       >
         <div
-          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+          className="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
         >
           <SurroundPortals
             portalName="component.product-badges"
@@ -104,7 +104,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
             }
           >
             <div
-              className="css-1bgf2js css-icjsl7 theme__product__product-discount"
+              className="theme__product__product-discount sg-1amw3ay-container"
             >
               <SurroundPortals
                 portalName="product.discount"
@@ -116,7 +116,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                 }
               >
                 <DiscountBadge
-                  className="css-1dtzobl"
+                  className="sg-j2p5xi-badge"
                   discount={null}
                   display="small"
                   text="-12%"
@@ -128,14 +128,17 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                     tabIndex={-1}
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
                       aria-hidden={true}
-                      className="css-1huo0k0 css-1dtzobl theme__discount-badge"
+                      className="theme__discount-badge sg-19fv54w-small-badge"
                       params={
                         [
                           null,
                         ]
                       }
+                      role={null}
                       string="-12%"
+                      transform={null}
                     >
                       -12%
                     </Text>
@@ -173,7 +176,7 @@ exports[`<ProductDiscountBadge /> should render without discount 1`] = `
       productId="1234"
     >
       <ProductBadges
-        className="css-1q31aw2"
+        className="sg-nay627-portal"
         location="productDiscountBadge"
         portalProps={
           {
@@ -186,7 +189,7 @@ exports[`<ProductDiscountBadge /> should render without discount 1`] = `
         productId="1234"
       >
         <div
-          className="css-9iaawp css-1q31aw2 product_badges product_badges__product-discount-badge"
+          className="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
         >
           <SurroundPortals
             portalName="component.product-badges"

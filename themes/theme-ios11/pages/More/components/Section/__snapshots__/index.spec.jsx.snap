@@ -20,7 +20,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
     text="Headline"
   >
     <h2
-      className="css-18cwfw7 headline theme__headline"
+      className="sg-1e76cvh-root headline theme__headline"
       data-test-id="Headline"
       style={
         {
@@ -29,18 +29,20 @@ exports[`<Section /> should render with a headline and items 1`] = `
       }
     >
       <Text
+        acceptPlainTextWithPlaceholders={false}
+        className={null}
+        params={{}}
+        role={null}
         string="Headline"
+        transform={null}
       >
         Headline
       </Text>
     </h2>
   </Headline>
   <div
-    className={
-      {
-        "data-css-13ch7sr": "",
-      }
-    }
+    className="sg-1sqpupb-list"
+    data-test-id="more-section-list"
   >
     <MoreMenuItem
       className={null}
@@ -50,12 +52,17 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="css-1hj8a57"
+        className="sg-xorol2-root"
         href="/link/one"
         role="button"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="Item One"
+          transform={null}
         >
           Item One
         </Text>
@@ -69,12 +76,17 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="css-1hj8a57"
+        className="sg-xorol2-root"
         href="/link/two"
         role="button"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="Item Two"
+          transform={null}
         >
           Item Two
         </Text>
@@ -98,11 +110,8 @@ exports[`<Section /> should render without a headline but items 1`] = `
     text=""
   />
   <div
-    className={
-      {
-        "data-css-13ch7sr": "",
-      }
-    }
+    className="sg-1sqpupb-list"
+    data-test-id="more-section-list"
   >
     <MoreMenuItem
       className={null}
@@ -112,12 +121,17 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="css-1hj8a57"
+        className="sg-xorol2-root"
         href="/link/one"
         role="button"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="Item One"
+          transform={null}
         >
           Item One
         </Text>
@@ -131,12 +145,17 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="css-1hj8a57"
+        className="sg-xorol2-root"
         href="/link/two"
         role="button"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="Item Two"
+          transform={null}
         >
           Item Two
         </Text>

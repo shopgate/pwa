@@ -8,7 +8,6 @@ const label = 'Item Label';
 
 describe('<Item />', () => {
   it('should render as a button when no href, but a click handler is passed to the props', () => {
-    // eslint-disable-next-line require-jsdoc
     const clickHandler = () => {};
     const wrapper = mount(<Item label={label} onClick={clickHandler} />);
     expect(wrapper).toMatchSnapshot();

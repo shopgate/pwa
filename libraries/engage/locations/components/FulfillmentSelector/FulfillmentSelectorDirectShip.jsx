@@ -1,25 +1,45 @@
 import * as React from 'react';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import { Grid } from '@shopgate/engage/components';
 import { i18n } from '../../../core';
 import { Availability } from '../../../product';
 import { DIRECT_SHIP_LABEL, DIRECT_SHIP } from '../../constants';
-import { itemRow, itemColumn, itemRowDisabled } from './FulfillmentSelectorItem.style';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 import { FulfillmentSelectorImpossibleError } from './FulfillmentSelectorImpossibleError';
+
+const useStyles = makeStyles()(theme => ({
+  itemRow: {
+    alignContent: 'stretch',
+    alignItems: 'baseline',
+  },
+  itemColumn: {
+    display: 'block',
+    width: '50%',
+    '&:first-of-type': {
+      paddingRight: theme.spacing(1),
+    },
+    '&:last-of-type': {
+      textAlign: 'right',
+    },
+  },
+  itemRowDisabled: {
+    opacity: 0.3,
+  },
+}));
 
 /**
  * Renders the direct ship item label.
  * @returns {JSX.Element}
  */
 export const FulfillmentSelectorDirectShip = () => {
+  const { classes, cx } = useStyles();
   const {
     productId, selection, isOrderable, isDirectShipEnabled, isReady,
   } = useFulfillmentSelectorState();
 
-  const rowClasses = React.useMemo(() => classNames(itemRow, {
-    [itemRowDisabled.toString()]: !isReady || !isDirectShipEnabled,
-  }), [isDirectShipEnabled, isReady]);
+  const rowClasses = React.useMemo(() => cx(classes.itemRow, {
+    [classes.itemRowDisabled]: !isReady || !isDirectShipEnabled,
+  }), [classes.itemRow, classes.itemRowDisabled, isDirectShipEnabled, isReady, cx]);
 
   const selected = (selection === DIRECT_SHIP);
 
@@ -36,10 +56,10 @@ export const FulfillmentSelectorDirectShip = () => {
 
   return (
     <Grid className={rowClasses} component="div">
-      <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+      <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
         {i18n.text(DIRECT_SHIP_LABEL)}
       </Grid.Item>
-      <Grid.Item className={itemColumn} grow={1} shrink={0} component="div">
+      <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
         {isReady && isDirectShipEnabled && isOrderable && (
           <Availability productId={productId} fulfillmentSelection={DIRECT_SHIP} />
         )}

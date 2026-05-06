@@ -1,73 +1,62 @@
-import { css } from 'glamor';
 import {
-  useScrollContainer,
+  applyScrollContainer,
   hasWebBridge,
   isIOSTheme,
 } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/engage';
+import { injectGlobal } from '..';
 
 const { typography } = themeConfig;
 const iosThemeActive = isIOSTheme();
 
-css.global('*, *:before, *:after', {
-  boxSizing: 'border-box',
-});
-
-css.global('*', {
-  touchAction: 'manipulation',
-});
-
-css.global('::-moz-focus-inner', {
-  border: 0,
-});
-
-css.global('html, body', {
-  WebkitTapHighlightColor: 'transparent',
-  width: '100%',
-  height: '100%',
-});
-
-css.global('html', {
-  overflow: useScrollContainer() ? 'hidden' : 'inherit',
-  MozOsxFontSmoothing: 'grayscale',
-  WebkitFontSmoothing: 'antialiased',
-  MsTextSizeAdjust: '100%',
-  WebkitTextSizeAdjust: '100%',
-  minHeight: '100%',
-});
-
-// Include Roboto font as a fallback to the iOS theme when other fonts are not available
-const fontSuffix = iosThemeActive && !(typography.family || '').includes('Roboto')
-  ? ', Roboto'
-  : '';
-
-css.global('body', {
-  font: `${typography.rootSize}px/${typography.lineHeight} ${typography.family}${fontSuffix}`,
-  overflow: 'auto',
-  margin: 0,
-  WebkitOverflowScrolling: 'touch',
-  WebkitUserSelect: hasWebBridge() ? 'inherit' : 'none',
-  userSelect: hasWebBridge() ? 'inherit' : 'none',
-  color: 'var(--color-text-high-emphasis)',
-});
-
-css.global('[data-pattern]', {
-  height: '100% !important',
-});
-
-css.global('html, body', {
-  backgroundColor: 'var(--page-background-color)',
-});
-
-if (hasWebBridge() && !iosThemeActive) {
-  css.insert(`@media(min-width: 600px) {
-    html, body {
-      background-color: var(--color-background-gutter-body, var(--page-background-color))
-    }
-  }`);
-}
-
-// since iOS 15 button has a default color of blue rgb(0, 122, 255);
-css.global('button', {
-  color: 'inherit',
+injectGlobal({
+  '*, *:before, *:after': {
+    boxSizing: 'border-box',
+  },
+  '*': {
+    touchAction: 'manipulation',
+  },
+  '::-moz-focus-inner': {
+    border: 0,
+  },
+  'html, body': {
+    WebkitTapHighlightColor: 'transparent',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'var(--page-background-color)',
+  },
+  html: {
+    overflow: applyScrollContainer() ? 'hidden' : 'inherit',
+    MozOsxFontSmoothing: 'grayscale',
+    WebkitFontSmoothing: 'antialiased',
+    MsTextSizeAdjust: '100%',
+    WebkitTextSizeAdjust: '100%',
+    minHeight: '100%',
+  },
+  body: {
+    // Include Roboto font as a fallback to the iOS theme when other fonts are not available
+    font: `${typography.rootSize}px/${typography.lineHeight} ${typography.family}${
+      iosThemeActive && !(typography.family || '').includes('Roboto') ? ', Roboto' : ''
+    }`,
+    overflow: 'auto',
+    margin: 0,
+    WebkitOverflowScrolling: 'touch',
+    WebkitUserSelect: hasWebBridge() ? 'inherit' : 'none',
+    userSelect: hasWebBridge() ? 'inherit' : 'none',
+    color: 'var(--color-text-high-emphasis)',
+  },
+  '[data-pattern]': {
+    height: '100% !important',
+  },
+  // since iOS 15 button has a default color of blue rgb(0, 122, 255);
+  button: {
+    color: 'inherit',
+  },
+  ...hasWebBridge() && !iosThemeActive && {
+    '@media (min-width: 600px)': {
+      html: {
+        backgroundColor: 'var(--color-background-gutter-body, var(--page-background-color))',
+      },
+    },
+  },
 });

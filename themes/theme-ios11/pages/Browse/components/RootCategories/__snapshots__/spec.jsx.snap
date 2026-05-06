@@ -104,7 +104,7 @@ exports[`<RootCategories /> should render category list with root categories fro
             showLeftSideImages={false}
           >
             <SheetList
-              className="css-1tgouoh engage__category__category-list"
+              className="sg-1k0ezhy-sheet engage__category__category-list"
             >
               <Portal
                 key="123-123"

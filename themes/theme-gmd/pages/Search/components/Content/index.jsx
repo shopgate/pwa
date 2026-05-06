@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { memo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import NoResults from '@shopgate/pwa-ui-shared/NoResults';
@@ -14,109 +14,98 @@ import { DefaultBar } from 'Components/AppBar/presets';
 import { TOGGLE_SEARCH } from 'Components/Search/constants';
 import Bar from 'Components/PageTitleBar';
 import { VIEW_CONTENT } from '@shopgate/engage/core';
+import { applyScrollContainer } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
 import Products from '../Products';
-import { emptyWrapper } from './style';
 import connect from './connector';
+
+const useStyles = makeStyles()({
+  withTopPadding: {
+    paddingTop: 100,
+  },
+});
 
 /**
  * The SearchContent component.
  */
-class SearchContent extends Component {
-  static propTypes = {
-    searchPhrase: PropTypes.string.isRequired,
-    showFilterBar: PropTypes.bool.isRequired,
-    showNoResults: PropTypes.bool.isRequired,
-    pattern: PropTypes.string,
-  };
+// Default shallow compare; a partial custom comparator risks missing props (e.g. `pattern`).
+const SearchContent = memo(({
+  searchPhrase,
+  showNoResults,
+  showFilterBar,
+  pattern,
+}) => {
+  const { classes, cx } = useStyles();
 
-  static defaultProps = {
-    pattern: null,
-  };
-
-  /**
-   * @param {Object} nextProps The next component props.
-   * @return {JSX}
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      (this.props.showNoResults !== nextProps.showNoResults)
-      || (this.props.showFilterBar !== nextProps.showFilterBar)
-      || (this.props.searchPhrase !== nextProps.searchPhrase)
-    );
-  }
-
-  showSearch = () => {
+  const showSearch = useCallback(() => {
     UIEvents.emit(TOGGLE_SEARCH);
-  };
+  }, []);
 
-  /**
-   * @param {string} categoryName Name of the category
-   * @returns {JSX}
-   */
-  getAppBar = (categoryName = '') => {
-    const { searchPhrase, showFilterBar, pattern } = this.props;
+  const getAppBar = useCallback((categoryName = '') => {
     const title = pattern === CATEGORY_ALL_PATTERN ? categoryName || '' : searchPhrase;
     return (
       <DefaultBar
-        center={<AppBar.Title title={title} onClick={this.showSearch} />}
+        center={<AppBar.Title title={title} onClick={showSearch} />}
         shadow={!showFilterBar}
         below={<Bar showFilterBar={showFilterBar} />}
       />
     );
-  };
+  }, [searchPhrase, showFilterBar, pattern, showSearch]);
 
-  /**
-   * @return {JSX}
-   */
-  render() {
-    const {
-      searchPhrase, showNoResults, showFilterBar, pattern,
-    } = this.props;
-
-    return (
-      <RouteContext.Consumer>
-        {({ state, query, id: routeId }) => (
-          <>
-            <ResponsiveContainer appAlways breakpoint="<=xs">
-              { this.getAppBar(state.categoryName) }
-            </ResponsiveContainer>
-            <ResponsiveContainer webOnly breakpoint=">xs">
-              { this.getAppBar(state.categoryName) }
-            </ResponsiveContainer>
-            <ProductFilters
+  return (
+    <RouteContext.Consumer>
+      {({ state, query, id: routeId }) => (
+        <>
+          <ResponsiveContainer appAlways breakpoint="<=xs">
+            {getAppBar(state.categoryName)}
+          </ResponsiveContainer>
+          <ResponsiveContainer webOnly breakpoint=">xs">
+            {getAppBar(state.categoryName)}
+          </ResponsiveContainer>
+          <ProductFilters
+            searchPhrase={searchPhrase}
+            showFilters={showFilterBar}
+          />
+          <SurroundPortals portalName={VIEW_CONTENT}>
+            <Products
               searchPhrase={searchPhrase}
-              showFilters={showFilterBar}
+              filters={state.filters}
+              sort={query.sort || DEFAULT_SORT}
+              routeId={routeId}
             />
-            <SurroundPortals portalName={VIEW_CONTENT}>
-              <Products
-                searchPhrase={searchPhrase}
-                filters={state.filters}
-                sort={query.sort || DEFAULT_SORT}
-                routeId={routeId}
-              />
-              {showNoResults && (
-                <SurroundPortals portalName={NO_RESULTS_CONTENT}>
-                  <NoResults
-                    headlineText="search.no_result.heading"
-                    bodyText="search.no_result.body"
-                    className={emptyWrapper}
-                    {...pattern !== CATEGORY_ALL_PATTERN ? {
-                      headlineText: 'search.no_result.heading',
-                      bodyText: 'search.no_result.body',
-                      searchPhrase,
-                    } : {
-                      headlineText: 'category.no_result.heading',
-                      bodyText: 'category.no_result.body',
-                    }}
-                  />
-                </SurroundPortals>
-              )}
-            </SurroundPortals>
-          </>
-        )}
-      </RouteContext.Consumer>
-    );
-  }
-}
+            {showNoResults && (
+              <SurroundPortals portalName={NO_RESULTS_CONTENT}>
+                <NoResults
+                  headlineText="search.no_result.heading"
+                  bodyText="search.no_result.body"
+                  className={cx({ [classes.withTopPadding]: !applyScrollContainer() })}
+                  {...pattern !== CATEGORY_ALL_PATTERN ? {
+                    headlineText: 'search.no_result.heading',
+                    bodyText: 'search.no_result.body',
+                    searchPhrase,
+                  } : {
+                    headlineText: 'category.no_result.heading',
+                    bodyText: 'category.no_result.body',
+                  }}
+                />
+              </SurroundPortals>
+            )}
+          </SurroundPortals>
+        </>
+      )}
+    </RouteContext.Consumer>
+  );
+});
+
+SearchContent.propTypes = {
+  searchPhrase: PropTypes.string.isRequired,
+  showFilterBar: PropTypes.bool.isRequired,
+  showNoResults: PropTypes.bool.isRequired,
+  pattern: PropTypes.string,
+};
+
+SearchContent.defaultProps = {
+  pattern: null,
+};
 
 export default connect(SearchContent);

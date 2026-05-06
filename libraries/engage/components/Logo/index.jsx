@@ -1,16 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
+import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import noop from 'lodash/noop';
-import styles from './style';
 import connect from './connector';
+
+const { variables } = themeConfig;
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    alignItems: 'center',
+    display: 'flex',
+    flexGrow: 1,
+  },
+  image: {
+    margin: '0 auto',
+    maxHeight: variables.navigator.height,
+    maxWidth: `calc(var(--page-content-width) - ${(variables.navigator.height * 3) + theme.spacing(4)}px)`,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+  },
+}));
 
 /**
  * The Logo component.
  * @return {JSX}
  */
 const Logo = ({ className, onClick, showLogo }) => {
+  const { classes, cx } = useStyles();
+
   if (!showLogo) {
     return null;
   }
@@ -20,10 +39,10 @@ const Logo = ({ className, onClick, showLogo }) => {
     /* eslint-disable jsx-a11y/no-static-element-interactions */
     <div
       onClick={onClick}
-      className={classNames(styles.container, className, 'engage__logo')}
+      className={cx(classes.container, className, 'engage__logo')}
     >
       <img
-        className={styles.image}
+        className={classes.image}
         src={appConfig.logo || appConfig.logoFallback}
         alt={appConfig.shopName}
       />

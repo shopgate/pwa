@@ -94,7 +94,7 @@ describe('MediaProvider', () => {
       expect(dom).toMatchSnapshot();
       expect(container.getAttribute('height')).toBeNull();
       expect(container.getAttribute('width')).toBeNull();
-      expect(container.closest('div').className).toBe(styles.responsiveContainer.toString());
+      expect(container.closest('div').className).toBe(styles.responsiveContainer);
     });
 
     it('should not responsify already responsive element', () => {
@@ -108,7 +108,7 @@ describe('MediaProvider', () => {
       expect(dom).toMatchSnapshot();
       expect(container.getAttribute('height')).toBeNull();
       expect(container.getAttribute('width')).toBeNull();
-      expect(container.closest('div').className).toBe(styles.responsiveContainer.toString());
+      expect(container.closest('div').className).toBe(styles.responsiveContainer);
     });
   });
 

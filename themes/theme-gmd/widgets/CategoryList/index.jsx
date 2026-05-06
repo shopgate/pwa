@@ -1,80 +1,101 @@
-import React, { Component } from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { ResponsiveContainer } from '@shopgate/engage/components';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CategoryGrid from 'Components/CategoryGrid';
 import Headline from 'Components/Headline';
 import connect from './connector';
 import CategoryListDefault from './CategoryListDefault';
-import styles from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    background: colors.light,
+  },
+  grid: {
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      marginTop: theme.spacing(2),
+      paddingBottom: 0,
+    },
+  },
+}));
+
+/**
+ * Mirrors legacy `shouldComponentUpdate` for `memo` (return `true` when props are equal).
+ * @param {Object} prev Previous props.
+ * @param {Object} next Next props.
+ * @returns {boolean}
+ */
+const categoryListPropsAreEqual = (prev, next) => {
+  if (!next.items) {
+    return true;
+  }
+  return isEqual(prev.items, next.items) && isEqual(prev.settings, next.settings);
+};
 
 /**
  * Core category list widget.
  * @param {Object} props The widget properties
  * @returns {JSX}
  */
-class CategoryListWidget extends Component {
-  static propTypes = {
-    settings: PropTypes.shape().isRequired,
-    fetchCategory: PropTypes.func,
-    items: PropTypes.arrayOf(PropTypes.shape()),
-  };
-
-  static defaultProps = {
-    fetchCategory: () => {},
-    items: null,
-  };
+const CategoryListWidget = memo(({
+  settings,
+  fetchCategory,
+  items,
+}) => {
+  const { classes } = useStyles();
+  const { categoryNumber } = settings;
 
   /**
-   * Get the category data once the component has mounted.
+   * Load categories when Redux has not provided `items` yet (`null` / `undefined`).
+   * Empty array `[]` is treated as loaded (no refetch) — same as `if (!items)` in the former
+   * `componentDidMount`.
+   * Dependencies keep the effect aligned with `categoryNumber` and `fetchCategory` without
+   * stale closures; when `items` arrives, the effect runs again and exits early.
    */
-  componentDidMount() {
-    if (!this.props.items) {
-      this.props.fetchCategory(this.props.settings.categoryNumber);
+  useEffect(() => {
+    if (items) {
+      return;
     }
+    fetchCategory(categoryNumber);
+  }, [items, fetchCategory, categoryNumber]);
+
+  if (!items) {
+    return null;
   }
 
-  /**
-   * Only update when we have category items.
-   * @param {Object} nextProps The next set of component props.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      nextProps.items &&
-      (!isEqual(this.props.items, nextProps.items) ||
-        !isEqual(this.props.settings, nextProps.settings))
-    );
-  }
+  return (
+    <div className={classes.container} data-test-id="categoryList">
+      {(settings.headline) ? <Headline text={settings.headline} /> : null}
+      <ResponsiveContainer appAlways breakpoint="<=xs">
+        <CategoryListDefault categories={items} settings={settings} />
+      </ResponsiveContainer>
+      <ResponsiveContainer webOnly breakpoint=">xs">
+        <CategoryGrid
+          categories={items}
+          showImages={settings.showImages}
+          className={classes.grid}
+        />
+      </ResponsiveContainer>
+    </div>
+  );
+}, categoryListPropsAreEqual);
 
-  /**
-   * The render function.
-   * @returns {JSX}
-   */
-  render() {
-    const { items, settings } = this.props;
+CategoryListWidget.propTypes = {
+  settings: PropTypes.shape().isRequired,
+  fetchCategory: PropTypes.func,
+  items: PropTypes.arrayOf(PropTypes.shape()),
+};
 
-    if (!items) {
-      return null;
-    }
+CategoryListWidget.defaultProps = {
+  fetchCategory: () => {},
+  items: null,
+};
 
-    return (
-      <div className={styles.container} data-test-id="categoryList">
-        {(settings.headline) ? <Headline text={settings.headline} /> : null}
-        <ResponsiveContainer appAlways breakpoint="<=xs">
-          <CategoryListDefault categories={items} settings={settings} />
-        </ResponsiveContainer>
-        <ResponsiveContainer webOnly breakpoint=">xs">
-          <CategoryGrid
-            categories={items}
-            showImages={settings.showImages}
-            className={styles.grid}
-          />
-        </ResponsiveContainer>
-      </div>
-    );
-  }
-}
+CategoryListWidget.displayName = 'CategoryListWidget';
 
 export default connect(CategoryListWidget);
 

@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  root: {
+    color: themeConfig.colors.shade3,
+  },
+});
 
 /**
  * The price info component
@@ -9,13 +16,18 @@ import styles from './style';
  * @param {string} [props.className] CSS classes
  * @return {JSX}
  */
-const PriceInfo = ({ className, text }) => (
-  <div
-    className={`${styles} ${className} ui-shared__price-info`}
-    dangerouslySetInnerHTML={{ __html: text }}
-    data-test-id={`priceInfo: ${text}`}
-  />
-);
+const PriceInfo = ({ className, text }) => {
+  const { classes, cx } = useStyles();
+
+  return (
+    <div
+      className={cx(classes.root, className, 'ui-shared__price-info')}
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{ __html: text }}
+      data-test-id={`priceInfo: ${text}`}
+    />
+  );
+};
 
 PriceInfo.propTypes = {
   text: PropTypes.string.isRequired,

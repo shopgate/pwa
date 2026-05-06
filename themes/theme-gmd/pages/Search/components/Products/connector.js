@@ -27,20 +27,32 @@ const mapDispatchToProps = dispatch => ({
 });
 
 /**
- * Check to see if the categories have arrived.
- * @param {*} next The next state.
- * @param {*} prev the previous state.
- * @returns {boolean}
+ * Custom stateProps equality: must include `hash` (and related fields) from `getProductsResult`.
+ * Otherwise a new search can keep the same empty `products` / `totalProductCount` while `hash`
+ * changes, and react-redux would skip updates — leaving InfiniteContainer’s loading state stuck.
+ * @param {*} next Next state props from connect.
+ * @param {*} prev Previous state props.
+ * @returns {boolean} True if props are equal (skip re-render).
  */
 const areStatePropsEqual = (next, prev) => {
-  if (!isEqual(prev.products, next.products)) {
+  if (prev.hash !== next.hash) {
     return false;
   }
-
+  if (prev.expired !== next.expired) {
+    return false;
+  }
+  if (prev.sort !== next.sort) {
+    return false;
+  }
   if (prev.totalProductCount !== next.totalProductCount) {
     return false;
   }
-
+  if (!isEqual(prev.products, next.products)) {
+    return false;
+  }
+  if (prev.isFetching !== next.isFetching) {
+    return false;
+  }
   return true;
 };
 

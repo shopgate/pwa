@@ -1,12 +1,32 @@
 import React from 'react';
 import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';
 import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
 import { CartItemCard } from './CartItemCard';
-import { items, card } from './CartItems.style';
 import CartItemsSubstitution from './CartItemsSubstitution';
+
+const useStyles = makeStyles()(theme => ({
+  items: {
+    background: 'var(--color-background-accent)',
+    padding: theme.spacing(1.5, 1.5, 2),
+    marginBottom: theme.spacing(-1.5),
+  },
+  card: {
+    background: themeColors.light,
+    marginBottom: theme.spacing(1.5),
+    ':last-of-type': {
+      marginBottom: 0,
+    },
+    border: `1px solid ${themeColors.shade7}`,
+    boxSizing: 'border-box',
+    boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
+    borderRadius: 5,
+  },
+}));
 
 /**
  * @typedef {import('../../../cart/cart.types').Item} Item
@@ -35,6 +55,7 @@ const CartItems = ({
   currencyOverride,
   isDirectShipOnly,
 }) => {
+  const { classes } = useStyles();
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
@@ -50,7 +71,7 @@ const CartItems = ({
         />
       </ResponsiveContainer>
 
-      <CardList className={items}>
+      <CardList className={classes.items}>
         {!isOrderDetails ? (
           <ResponsiveContainer appAlways breakpoint="<=xs">
             <FulfillmentSlotSwitcher renderBar card editable={editable} />
@@ -58,11 +79,11 @@ const CartItems = ({
         ) : null}
         {editable && !isDirectShipOnly && (
           <ResponsiveContainer breakpoint="<=xs" appAlways>
-            <CartItemsSubstitution cartItems={cartItems} wrapCard className={card} />
+            <CartItemsSubstitution cartItems={cartItems} wrapCard className={classes.card} />
           </ResponsiveContainer>
         )}
         {cartItems.map(item => (
-          <CardList.Item className={card} key={item.id}>
+          <CardList.Item className={classes.card} key={item.id}>
             <CartItemProvider
               cartItem={item}
               isEditable={editable}
@@ -75,7 +96,7 @@ const CartItems = ({
                 <CartItemCard
                   multiLineReservation={multiLineReservation}
                   fulfillmentLocationId={item.fulfillmentLocationId}
-                  fulfillmentMethod={item.fulfillmentMethod}
+                  fulfillmentMethod={item.fulfillmentMethod || item?.fulfillment?.method}
                   hasMessages={Array.isArray(item.messages) && item.messages.length > 0}
                 >
                   <CartItem

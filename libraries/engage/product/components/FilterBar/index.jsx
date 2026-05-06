@@ -6,19 +6,27 @@ import { ResponsiveContainer } from '@shopgate/engage/components';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { themeConfig } from '@shopgate/engage';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import Provider from './FilterBarProvider';
 import Content from './components/Content';
 import Modal from './components/FilterModal';
-import styles from './style';
 
 const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  root: {
+    transition: 'transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+  },
+});
 
 /**
  * The FilterBar component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function FilterBar({ filters, categoryId }) {
+const FilterBar = ({ filters, categoryId }) => {
+  const theme = useTheme();
+  const { classes, cx } = useStyles();
   const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
 
   const handleChipCountUpdate = useCallback((count) => {
@@ -31,11 +39,11 @@ function FilterBar({ filters, categoryId }) {
       : 'var(--color-background-accent)',
     color: active
       ? 'var(--color-primary)'
-      : 'var(--color-text-high-emphasis)',
+      : theme.palette.text.primary,
   } : {
     background: active ? 'var(--color-secondary)' : colors.background,
     color: active ? 'var(--color-secondary-contrast)' : colors.dark,
-  }), [active]);
+  }), [active, theme]);
 
   const sortScope = useMemo(
     () => (categoryId ? SORT_SCOPE_CATEGORY : SORT_SCOPE_SEARCH),
@@ -43,7 +51,7 @@ function FilterBar({ filters, categoryId }) {
   );
 
   return (
-    <div className={`${styles} theme__filter-bar`} data-test-id="filterBar" style={style}>
+    <div className={cx(classes.root, 'theme__filter-bar')} data-test-id="filterBar" style={style}>
       <SortProvider scope={sortScope}>
         <Provider>
           <Content onChipCountUpdate={handleChipCountUpdate} />
@@ -54,7 +62,7 @@ function FilterBar({ filters, categoryId }) {
       </SortProvider>
     </div>
   );
-}
+};
 
 FilterBar.propTypes = {
   categoryId: PropTypes.string,

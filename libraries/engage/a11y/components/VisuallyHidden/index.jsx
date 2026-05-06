@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     position: 'absolute !important',
     height: '1px',
     width: '1px',
     overflow: 'hidden',
     clip: 'rect(1px, 1px, 1px, 1px)',
     whiteSpace: 'nowrap',
-  }),
-};
+  },
+});
 
 /**
  * This component surrounds its children with a wrapper that takes care that they are not visible
@@ -24,11 +24,15 @@ const styles = {
 const VisuallyHidden = ({
   tag = 'span',
   children,
-}) => React.createElement(
-  tag,
-  { className: styles.root },
-  children
-);
+}) => {
+  const { classes } = useStyles();
+
+  return React.createElement(
+    tag,
+    { className: classes.root },
+    children
+  );
+};
 
 VisuallyHidden.propTypes = {
   children: PropTypes.node.isRequired,

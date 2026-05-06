@@ -12,10 +12,10 @@ import { getCategoriesById } from '../../../CategoryList/selectors';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     background: 'var(--color-background-accent)',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -39,7 +39,7 @@ const useStyles = makeStyles()({
     fontWeight: 500,
     lineHeight: 1.125,
   },
-});
+}));
 
 /**
  * The CategoryPicker component.

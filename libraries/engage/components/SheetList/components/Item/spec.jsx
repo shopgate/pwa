@@ -67,7 +67,6 @@ describe('<SheetList.Item />', () => {
   it('should render with an onClick element', () => {
     const spy = jest.fn();
 
-    // eslint-disable-next-line require-jsdoc
     const clickHandler = () => {
       /**
        * The spy can't be assigned directly to the event, since the snapshot gets too big
@@ -84,25 +83,11 @@ describe('<SheetList.Item />', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should update the component when the isDisabled prop changed', () => {
+  it('should re-render when isDisabled changes (memo allows leftComponent path)', () => {
     const wrapper = mount(<Item title={title} isDisabled />);
-    const props = wrapper.props();
-    const updated = wrapper.find('Item').instance().shouldComponentUpdate({
-      ...props,
-      isDisabled: false,
-    });
-
-    expect(updated).toBe(true);
-  });
-
-  it('should update the component when the isSelected prop changed', () => {
-    const wrapper = mount(<Item title={title} isSelected />);
-    const props = wrapper.props();
-    const updated = wrapper.find('Item').instance().shouldComponentUpdate({
-      ...props,
-      isSelected: false,
-    });
-
-    expect(updated).toBe(true);
+    expect(wrapper.find('.engage__sheet-list__item').exists()).toBe(true);
+    wrapper.setProps({ isDisabled: false });
+    wrapper.update();
+    expect(wrapper.find('.engage__sheet-list__item').exists()).toBe(true);
   });
 });

@@ -1,4 +1,6 @@
-import React, { useMemo, useCallback } from 'react';
+import React, {
+  useMemo, useCallback, useEffect, useRef,
+} from 'react';
 import PropTypes from 'prop-types';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
@@ -19,11 +21,17 @@ import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { BackBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
 import { ProductListTypeProvider } from '@shopgate/engage/product';
+import { makeStyles } from '@shopgate/engage/styles';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
 import connect from './connector';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  cardList: {
+    marginTop: 4,
+  },
+});
 
 const config = getCartConfig();
 
@@ -36,8 +44,17 @@ function CartContent(props) {
   const {
     cartItems, messages, isUserLoggedIn, currency, flags, hasPromotionCoupons, isDirectShipOnly,
   } = props;
+  const { classes } = useStyles();
   const [isPaymentBarVisible, setIsPaymentBarVisible] = React.useState(true);
   const { isLoading: getIsLoading } = React.useContext(LoadingContext);
+  const isMountedRef = useRef(true);
+
+  useEffect(() => {
+    isMountedRef.current = true;
+    return () => {
+      isMountedRef.current = false;
+    };
+  }, []);
 
   const isLoading = getIsLoading(CART_PATH);
   const hasItems = (cartItems.length > 0);
@@ -51,6 +68,9 @@ function CartContent(props) {
    * @param {boolean} isHidden Tells if the payment bar is hidden or not.
    */
   const togglePaymentBar = useCallback((isHidden) => {
+    if (!isMountedRef.current) {
+      return;
+    }
     setIsPaymentBarVisible(!isHidden);
   }, []);
 
@@ -77,7 +97,7 @@ function CartContent(props) {
               <ProductListTypeProvider type="cart">
                 <SurroundPortals portalName={CART_ITEM_LIST}>
                   {(cartItemsDisplay === 'line') && (
-                  <CardList className={styles}>
+                  <CardList className={classes.cardList}>
                     {cartItemsSorted.map(cartItem => (
                       <CartItemGroup
                         key={cartItem.id}

@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import BaseListItem from '@shopgate/pwa-common/components/List/components/Item';
 import SheetList from './index';
-import styles from './style';
 
 describe('<SheetList />', () => {
   it('should render with two children', () => {
@@ -26,7 +25,7 @@ describe('<SheetList />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(SheetList.Item).length).toEqual(1);
-    expect(wrapper.find(BaseListItem).first().hasClass(styles.itemWithImage)).toBeTruthy();
+    expect(wrapper.find(BaseListItem).first().hasClass('engage__sheet-list__item')).toBeTruthy();
   });
 
   it('should not render without children', () => {

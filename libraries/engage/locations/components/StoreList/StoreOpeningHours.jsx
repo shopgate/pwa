@@ -2,10 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { every, isEmpty } from 'lodash';
 import { getWeekDaysOrder } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { I18n, TimeIcon } from '@shopgate/engage/components';
 import { StoreDetailsLine } from './StoreDetailsLine';
 import { StoreOpeningHoursLine } from './StoreOpeningHoursLine';
-import { openingHours, detailsSecondary } from './Store.style';
+
+const useStyles = makeStyles()({
+  openingHours: {
+    display: 'table',
+    color: 'var(--color-text-medium-emphasis)',
+  },
+  detailsSecondary: {
+    color: 'var(--color-text-medium-emphasis)',
+    fontSize: '0.75rem',
+  },
+});
 
 /**
  * Renders the store's opening hours.
@@ -15,12 +26,13 @@ import { openingHours, detailsSecondary } from './Store.style';
  * @returns {JSX.Element}
  */
 export function StoreOpeningHours({ hours, pure }) {
+  const { classes } = useStyles();
   if (!hours || every(hours, isEmpty)) {
     return null;
   }
 
   const storeHours = (
-    <div className={openingHours}>
+    <div className={classes.openingHours}>
       <table>
         <tbody>
           {getWeekDaysOrder().map(weekDay => (
@@ -37,7 +49,7 @@ export function StoreOpeningHours({ hours, pure }) {
 
   return (
     <StoreDetailsLine icon={TimeIcon}>
-      <I18n.Text string="locations.hours_details" className={detailsSecondary} />
+      <I18n.Text string="locations.hours_details" className={classes.detailsSecondary} />
       {storeHours}
     </StoreDetailsLine>
   );

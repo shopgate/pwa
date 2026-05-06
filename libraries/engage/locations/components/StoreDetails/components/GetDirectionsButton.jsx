@@ -1,19 +1,17 @@
 import React, { useMemo } from 'react';
-import { css } from 'glamor';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import PropTypes from 'prop-types';
 import { Button } from '@shopgate/engage/components';
 import { generateGoogleMapsDirectionsUrl, i18n } from '@shopgate/engage/core';
 import { useDispatch } from 'react-redux';
+import { makeStyles } from '@shopgate/engage/styles';
 
-const styles = {
-  container: css({
-
-  }),
-  buttonText: css({
+const useStyles = makeStyles()({
+  container: {},
+  buttonText: {
     color: 'var(--color-primary)',
-  }),
-};
+  },
+});
 
 /**
  * @param {Object} props The component props
@@ -21,6 +19,7 @@ const styles = {
  * @returns {JSX}
  */
 const GetDirectionsButton = ({ address }) => {
+  const { classes } = useStyles();
   const dispatch = useDispatch();
   const url = useMemo(() => address && generateGoogleMapsDirectionsUrl(address), [address]);
 
@@ -37,13 +36,13 @@ const GetDirectionsButton = ({ address }) => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={classes.container}>
       <Button
         onClick={handleClick}
         role="button"
         type="plain"
       >
-        <span className={styles.buttonText}>
+        <span className={classes.buttonText}>
           {i18n.text('location.getDirections')}
         </span>
       </Button>

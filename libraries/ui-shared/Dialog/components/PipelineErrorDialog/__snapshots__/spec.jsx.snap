@@ -21,19 +21,19 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
       <div
         aria-labelledby="basicDialogTitle basicDialogDesc"
         aria-modal={true}
-        className="css-1oc7wvq ui-material__base-dialog"
+        className="sg-ls7awc-container ui-material__base-dialog"
         data-test-id="basicDialog"
         role="alertdialog"
       >
         <div
-          className="css-1vzqftr"
+          className="sg-1t4okzq-content"
         >
           <Title
             title="modal.title_error"
           >
             <div
               aria-level="2"
-              className="css-axwumg"
+              className="sg-1vnt0h7-title"
               id="basicDialogTitle"
               role="heading"
             >
@@ -90,7 +90,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             }
           >
             <div
-              className="css-1rx8rr8"
+              className="sg-1meak5z-body"
               id="basicDialogDesc"
             >
               <div
@@ -116,10 +116,10 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
           </Content>
         </div>
         <div
-          className="css-1h5vk0a"
+          className="sg-3766ab-actions"
         >
           <div
-            className="css-hw75se"
+            className="sg-1orvbrr-innerActions"
           >
             <Buttons
               actions={[]}
@@ -153,19 +153,19 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
       <div
         aria-labelledby="basicDialogTitle basicDialogDesc"
         aria-modal={true}
-        className="css-1oc7wvq ui-material__base-dialog"
+        className="sg-ls7awc-container ui-material__base-dialog"
         data-test-id="basicDialog"
         role="alertdialog"
       >
         <div
-          className="css-1vzqftr"
+          className="sg-1t4okzq-content"
         >
           <Title
             title="modal.title_error"
           >
             <div
               aria-level="2"
-              className="css-axwumg"
+              className="sg-1vnt0h7-title"
               id="basicDialogTitle"
               role="heading"
             >
@@ -222,7 +222,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             }
           >
             <div
-              className="css-1rx8rr8"
+              className="sg-1meak5z-body"
               id="basicDialogDesc"
             >
               <div
@@ -248,10 +248,10 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
           </Content>
         </div>
         <div
-          className="css-1h5vk0a"
+          className="sg-3766ab-actions"
         >
           <div
-            className="css-hw75se"
+            className="sg-1orvbrr-innerActions"
           >
             <Buttons
               actions={[]}

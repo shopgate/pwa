@@ -1,23 +1,35 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import Headline from 'Components/Headline';
 import Item from '../Item';
-import styles from '../../style';
+
+const useStyles = makeStyles()(() => ({
+  list: {
+    margin: '0 20px 8px',
+  },
+}));
+
+const headline = {
+  margin: '24px 20px 16px',
+};
 
 /**
- * The SectionComponent.
- * @param {Object} props The component props.
- * @returns {JSX}
+ * Section component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element|null}
  */
 const Section = ({ children, title }) => {
+  const { classes } = useStyles();
+
   if (!children) {
     return null;
   }
 
   return (
     <>
-      <Headline style={styles.headline} text={title} />
-      <div className={styles.list}>
+      <Headline style={headline} text={title} />
+      <div className={classes.list} data-test-id="more-section-list">
         {children}
       </div>
     </>

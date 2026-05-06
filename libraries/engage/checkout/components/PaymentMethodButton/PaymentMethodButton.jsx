@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
-import { css } from 'glamor';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '../../hooks/common';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     outline: 'none',
     border: '1px solid rgba(0, 0, 0, 0.12)',
     borderRadius: 4,
@@ -19,11 +18,11 @@ const styles = {
     [responsiveMediaQuery('xs')]: {
       width: '50%',
     },
-    '&:not(:last-child)': {
+    '&:not(:last-child)/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       borderTopRightRadius: 0,
       borderBottomRightRadius: 0,
     },
-    '&:not(:first-child)': {
+    '&:not(:first-child)/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
       borderLeft: 'none',
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
@@ -31,14 +30,14 @@ const styles = {
     '&:hover': {
       background: 'rgba(0, 0, 0, 0.05)',
     },
-  }).toString(),
-  active: css({
+  },
+  active: {
     background: 'rgba(0, 0, 0, 0.12)',
     '&:hover': {
       background: 'rgba(0, 0, 0, 0.12)',
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * Payment Button
@@ -46,12 +45,13 @@ const styles = {
  * @returns {JSX}
  */
 const PaymentMethodButton = ({ children, active, onChange }) => {
+  const { classes, cx } = useStyles();
   const { isLocked } = useCheckoutContext();
   return (
     <button
       type="button"
       disabled={isLocked}
-      className={`${styles.root} ${active && styles.active}`}
+      className={cx(classes.root, { [classes.active]: active })}
       onClick={() => onChange()}
     >
       {children}

@@ -2,33 +2,30 @@
  * @deprecated used @shopgate/engage/styles instead
  */
 
-import { css } from 'glamor';
+import { injectGlobal } from '@shopgate/engage/styles';
 import { rem } from '../../helpers/style';
 
-css.global('a', {
-  color: 'inherit',
-  textDecoration: 'none',
-  WebkitTextDecorationSkip: 'objects',
-});
-
-css.global('a:hover, a:focus, a:active, [tabindex]', {
-  outline: 0,
-});
-
-css.global('ol, ul', {
-  listStyle: 'none',
-  margin: 0,
-  paddingLeft: 0,
-});
-
-css.global('b, strong', {
-  fontWeight: 700,
-});
-
-css.global('small', {
-  fontSize: rem(13),
-});
-
-css.global('sub, sup', {
-  lineHeight: 0,
+injectGlobal({
+  a: {
+    color: 'inherit',
+    textDecoration: 'none',
+    WebkitTextDecorationSkip: 'objects',
+  },
+  'a:hover, a:focus, a:active, [tabindex]': {
+    outline: 0,
+  },
+  'ol, ul': {
+    listStyle: 'none',
+    margin: 0,
+    paddingLeft: 0,
+  },
+  'b, strong': {
+    fontWeight: 700,
+  },
+  small: {
+    fontSize: rem(13),
+  },
+  'sub, sup': {
+    lineHeight: 0,
+  },
 });

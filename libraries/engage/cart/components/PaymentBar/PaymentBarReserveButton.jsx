@@ -1,11 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, SurroundPortals, RippleButton } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { FulfillmentSheet, STAGE_RESERVE_FORM } from '../../../locations';
 import { CartContext } from '../../cart.context';
-import { button, disabledButton } from './PaymentBarCheckoutButton.style';
 import connect from './PaymentBarReserveButton.connector';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  button: {
+    width: '100%',
+    background: 'var(--color-button-cta)',
+    color: 'var(--color-button-cta-contrast)!important',
+  },
+  disabledButton: {
+    width: '100%',
+    background: colors.shade7,
+    color: `${colors.shade4}!important`,
+  },
+});
 
 /**
  * The reserve button component.
@@ -14,6 +30,7 @@ import connect from './PaymentBarReserveButton.connector';
  * @return {JSX.Element} The rendered component.
  */
 const PaymentBarReserveButton = ({ historyReset }) => {
+  const { classes } = useStyles();
   const { flags: { orderable } } = React.useContext(CartContext);
 
   /**
@@ -36,7 +53,7 @@ const PaymentBarReserveButton = ({ historyReset }) => {
         onClick={handleClick}
         disabled={!orderable}
         type="regular"
-        className={orderable ? button : disabledButton}
+        className={orderable ? classes.button : classes.disabledButton}
       >
         <I18n.Text string="cart.reserve" />
       </RippleButton>

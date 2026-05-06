@@ -1,19 +1,22 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { Availability } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { AVAILABILITY_STATE_ALERT } from '@shopgate/engage/product';
 import { ROPIS, BOPIS } from '../../constants';
 
-export const container = css({
-  fontSize: '0.625rem',
-}).toString();
+const useStyles = makeStyles()({
+  container: {
+    fontSize: '0.625rem',
+  },
+});
 
 /**
  * @returns {JSX}
  */
 export function FulfillmentSelectorLocationMethodNotAvailable({ method }) {
+  const { classes } = useStyles();
   const label = useMemo(() => {
     if (method === ROPIS) {
       return i18n.text('locations.fulfillment.error.ropis');
@@ -30,7 +33,7 @@ export function FulfillmentSelectorLocationMethodNotAvailable({ method }) {
 
   return (
     <Availability
-      className={container}
+      className={classes.container}
       showWhenAvailable
       text={label}
       state={AVAILABILITY_STATE_ALERT}

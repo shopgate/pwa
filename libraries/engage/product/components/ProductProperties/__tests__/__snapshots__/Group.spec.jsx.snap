@@ -6,11 +6,7 @@ exports[`<Group /> should render a group title row 1`] = `
 >
   <tr>
     <td
-      className={
-        {
-          "data-css-1o9kcbq": "",
-        }
-      }
+      className="sg-1794djr-subgroup"
       colSpan="2"
     >
       <span

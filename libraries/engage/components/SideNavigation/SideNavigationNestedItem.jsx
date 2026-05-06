@@ -3,10 +3,30 @@ import React, {
 } from 'react';
 import ArrowDrop from '@shopgate/pwa-ui-shared/icons/ArrowDropIcon';
 import PropTypes from 'prop-types';
-import {
-  chevronButton, chevronUp, chevronDown, open,
-} from './SideNavigationCategoriesItem.style';
+import { makeStyles } from '@shopgate/engage/styles';
 import SideNavigationItem from './SideNavigationItem';
+
+const useStyles = makeStyles()(theme => ({
+  chevronButton: {
+    flexShrink: 0,
+    outline: 0,
+    margin: theme.spacing(0, -2, 0, 1),
+    fontSize: '1.6em',
+    color: '#373D41',
+    position: 'relative',
+  },
+  chevronDown: {
+    transformOrigin: 'center center',
+    transition: 'transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    transform: 'rotateZ(0deg)',
+  },
+  chevronUp: {
+    transformOrigin: 'center center',
+    transition: 'transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    transform: 'rotateZ(180deg)',
+  },
+  open: {},
+}));
 
 /**
  * The SideNavigationCategoriesItem component
@@ -25,6 +45,7 @@ const SideNavigationNestedItem = ({
   children,
   forceActive,
 }) => {
+  const { classes } = useStyles();
   const [isOpen, setIsOpen] = useState(forceActive);
 
   useEffect(() => {
@@ -38,10 +59,10 @@ const SideNavigationNestedItem = ({
   }, [isOpen]);
 
   const buttonRight = useMemo(() => (
-    <button type="button" onClick={handleClick} className={chevronButton}>
-      <ArrowDrop className={(isOpen ? chevronUp : chevronDown).toString()} />
+    <button type="button" onClick={handleClick} className={classes.chevronButton}>
+      <ArrowDrop className={isOpen ? classes.chevronUp : classes.chevronDown} />
     </button>
-  ), [handleClick, isOpen]);
+  ), [classes.chevronButton, classes.chevronDown, classes.chevronUp, handleClick, isOpen]);
 
   return (
     <SideNavigationItem
@@ -49,7 +70,7 @@ const SideNavigationNestedItem = ({
       label={label}
       level={level}
       buttonRight={buttonRight}
-      className={level === 0 && isOpen ? open : null}
+      className={level === 0 && isOpen ? classes.open : null}
       forceInactive
     >
       {isOpen ? children : null}

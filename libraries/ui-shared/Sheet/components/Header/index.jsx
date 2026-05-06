@@ -1,86 +1,118 @@
-import React, { Component } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Grid from '@shopgate/pwa-common/components/Grid';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import Ripple from '../../../Ripple';
 import CrossIcon from '../../../icons/CrossIcon';
-import styles from './style';
 import SearchBar from './components/SearchBar';
 
+const useStyles = makeStyles()(theme => ({
+  wrapper: {
+    position: 'relative',
+    zIndex: 2,
+  },
+  closePlaceholder: {
+    height: themeConfig.variables.navigator.height,
+    padding: 0,
+    lineHeight: 1,
+  },
+  closeButton: {
+    lineHeight: 1,
+    outline: 0,
+    padding: 0,
+    minWidth: themeConfig.variables.navigator.height,
+    height: themeConfig.variables.navigator.height,
+    position: 'relative',
+    zIndex: 2,
+    color: theme.palette.text.primary,
+  },
+  closeIcon: {
+    display: 'flex',
+    height: '100%',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  title: {
+    fontSize: '1.25rem',
+    fontWeight: 500,
+    position: 'relative',
+    alignItems: 'center',
+    padding: theme.spacing(0, 2),
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    alignSelf: 'center',
+  },
+  headerShadow: {
+    boxShadow: themeConfig.shadows.material,
+  },
+}));
+
 /**
- * Header component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Header extends Component {
-  static propTypes = {
-    title: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.element, // ex.: I18n.Text
-    ]).isRequired,
-    allowClose: PropTypes.bool,
-    handleChange: PropTypes.func,
-    onToggleClose: PropTypes.func,
-    shadow: PropTypes.bool,
-    showSearch: PropTypes.bool,
-  };
+const Header = ({
+  title,
+  allowClose,
+  handleChange,
+  onToggleClose,
+  shadow,
+  showSearch,
+}) => {
+  const { classes, cx } = useStyles();
 
-  /**
-   * The component's default props.
-   * @type {Object}
-   */
-  static defaultProps = {
-    onToggleClose: () => {},
-    shadow: false,
-    allowClose: true,
-    handleChange: () => {},
-    showSearch: false,
-  };
+  return (
+    <div className={cx({ [classes.headerShadow]: shadow })}>
+      <Grid className={classes.wrapper} component="div" wrap={false}>
+        {allowClose ? (
+          <button
+            className={classes.closeButton}
+            onClick={onToggleClose}
+            aria-label={i18n.text('common.close')}
+            type="button"
+          >
+            <Ripple className={classes.closeIcon}>
+              <CrossIcon size={24} />
+            </Ripple>
+          </button>
+        ) : <div className={classes.closePlaceholder} />}
+        <Grid.Item
+          className={classes.title}
+          component="div"
+          grow={1}
+          role="heading"
+          {...(allowClose ? { tabIndex: 0 } : null)}
+        >
+          {title}
+        </Grid.Item>
+      </Grid>
+      {showSearch && <SearchBar handleChange={handleChange} />}
+    </div>
+  );
+};
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
+Header.propTypes = {
+  title: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+  ]).isRequired,
+  allowClose: PropTypes.bool,
+  handleChange: PropTypes.func,
+  onToggleClose: PropTypes.func,
+  shadow: PropTypes.bool,
+  showSearch: PropTypes.bool,
+};
 
-  /**
-   * @param {Object} nextProps Next Props
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    return (
-      this.props.shadow !== nextProps.shadow ||
-      this.props.title !== nextProps.title
-    );
-  }
+Header.defaultProps = {
+  onToggleClose: () => {},
+  shadow: false,
+  allowClose: true,
+  handleChange: () => {},
+  showSearch: false,
+};
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const { allowClose } = this.props;
-
-    const classes = classNames(
-      styles.wrapper
-    );
-
-    const { __ } = this.context.i18n();
-
-    return (
-      <div className={classNames({ [styles.shadow]: this.props.shadow })}>
-        <Grid className={classes} component="div" wrap={false}>
-          {allowClose ? (
-            <button className={styles.closeButton} onClick={this.props.onToggleClose} aria-label={__('common.close')} type="button">
-              <Ripple className={styles.closeIcon}>
-                <CrossIcon size={24} />
-              </Ripple>
-            </button>
-          ) : <div className={styles.closePlaceholder} />}
-          <Grid.Item className={styles.title} component="div" grow={1} role="heading" {...(allowClose ? { tabIndex: 0 } : null)}>
-            {this.props.title}
-          </Grid.Item>
-        </Grid>
-        {this.props.showSearch && <SearchBar handleChange={this.props.handleChange} />}
-      </div>
-    );
-  }
-}
-
-export default Header;
+export default memo(Header);

@@ -17,7 +17,6 @@ jest.mock('@shopgate/pwa-common/context', () => ({
   },
 }));
 
-// eslint-disable-next-line require-jsdoc
 const MockComponent = () => null;
 
 describe('engage > core > hocs > withRoute', () => {

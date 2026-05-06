@@ -1,13 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { SurroundPortals } from '@shopgate/engage/components';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import DiscountBadge from '@shopgate/pwa-ui-shared/DiscountBadge';
 import { PRODUCT_DISCOUNT } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import ProductBadges from '../ProductBadges';
-import styles from './style';
 import connect from './connector';
+
+const useStyles = makeStyles()(() => ({
+  portal: {
+    top: 12,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      top: 25,
+      left: 25,
+    },
+  },
+  container: {
+    minWidth: 65,
+    zIndex: 10,
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      minWidth: 50,
+    },
+  },
+  badge: {
+    fontSize: '1.15rem',
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      fontSize: 14,
+    },
+  },
+}));
 
 /**
  * ProductDiscountBadge
@@ -20,10 +42,11 @@ const ProductDiscountBadge = ({ productId, discount }) => {
       style: {},
     },
   } = useWidgetSettings('@shopgate/engage/product/components/ProductDiscountBadge') || {};
+  const { classes, cx, css } = useStyles();
 
   return (
     <ProductBadges
-      className={styles.portal}
+      className={classes.portal}
       location="productDiscountBadge"
       productId={productId}
       portalProps={{
@@ -31,7 +54,7 @@ const ProductDiscountBadge = ({ productId, discount }) => {
       }}
     >
       { pdp.show && discount ? (
-        <div className={`${styles.container} ${css(pdp.style)} theme__product__product-discount`}>
+        <div className={cx(classes.container, css(pdp.style), 'theme__product__product-discount')}>
           <SurroundPortals
             portalName={PRODUCT_DISCOUNT}
             portalProps={{
@@ -39,7 +62,7 @@ const ProductDiscountBadge = ({ productId, discount }) => {
               discount,
             }}
           >
-            <DiscountBadge className={styles.badge} text={`-${discount}%`} />
+            <DiscountBadge className={classes.badge} text={`-${discount}%`} />
           </SurroundPortals>
         </div>
       ) : null}

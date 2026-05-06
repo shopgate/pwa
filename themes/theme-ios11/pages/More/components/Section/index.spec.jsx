@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Item from '../Item';
 import Section from './index';
-import styles from '../../style';
 
 jest.mock('@shopgate/engage/components');
 
@@ -16,7 +15,7 @@ describe('<Section />', () => {
       </Section>));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(`div.${styles.list}`).exists()).toBe(true);
+    expect(wrapper.find('[data-test-id="more-section-list"]').exists()).toBe(true);
     expect(wrapper.find('Headline').exists()).toBe(true);
     expect(wrapper.find('Headline').prop('text')).toEqual(title);
     expect(wrapper.find('MoreMenuItem')).toHaveLength(2);
@@ -30,7 +29,7 @@ describe('<Section />', () => {
       </Section>));
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(`div.${styles.list}`).exists()).toBe(true);
+    expect(wrapper.find('[data-test-id="more-section-list"]').exists()).toBe(true);
     expect(wrapper.find('Headline').isEmptyRender()).toBe(true);
     expect(wrapper.find('MoreMenuItem')).toHaveLength(2);
   });
@@ -40,6 +39,6 @@ describe('<Section />', () => {
     const wrapper = mount(<Section title={title} />);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(`div.${styles.list}`).exists()).toBe(false);
+    expect(wrapper.find('[data-test-id="more-section-list"]').exists()).toBe(false);
   });
 });

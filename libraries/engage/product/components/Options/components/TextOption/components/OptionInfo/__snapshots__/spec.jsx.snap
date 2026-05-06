@@ -2,11 +2,11 @@
 
 exports[`<OptionInfo /> should render price element 1`] = `
 <ul
-  className="css-jy6f7q css-h7r55a common__grid"
+  className="common__grid sg-10l9eav-root-noWrap-info"
 >
   <GridItem
     aria-hidden={true}
-    className="css-1bia360"
+    className="sg-wzlmdo-price"
     component="li"
     grow={1}
     shrink={1}
@@ -31,11 +31,11 @@ exports[`<OptionInfo /> should render price element 1`] = `
 
 exports[`<OptionInfo /> should render required element 1`] = `
 <ul
-  className="css-jy6f7q css-h7r55a common__grid"
+  className="common__grid sg-10l9eav-root-noWrap-info"
 >
   <GridItem
     aria-hidden={true}
-    className="css-1rrzpjg"
+    className="sg-10mixir-required"
     component="li"
     grow={0}
     shrink={1}

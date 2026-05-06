@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import Button from '../../components/PaymentMethodButton';
 import { i18n } from '../../../core/helpers/i18n';
 import { loadSdk } from './sdk';
@@ -9,11 +9,11 @@ import connect from './StripeButton.connector';
 import googlePayLogo from './googlepay.png';
 import applePayLogo from './applepay.svg';
 
-const styles = {
-  mark: css({
+const useStyles = makeStyles()({
+  mark: {
     height: 32,
-  }).toString(),
-};
+  },
+});
 
 /**
  * Stripe Payment Button Component
@@ -31,6 +31,7 @@ const StripeButton = ({
   activePaymentMeta: subMethod,
   ...props
 }) => {
+  const { classes } = useStyles();
   const [stripeRequest, setStripeRequest] = useState(null);
   const [stripeRequestType, setStripeRequestType] = useState(null);
   const { order } = useCheckoutContext();
@@ -77,7 +78,7 @@ const StripeButton = ({
             stripeRequestType,
           })}
         >
-          <img className={styles.mark} alt="ApplePay" src={applePayLogo} />
+          <img className={classes.mark} alt="ApplePay" src={applePayLogo} />
         </Button>
       ) : null}
       {stripeRequest && !stripeRequestType?.applePay ? (
@@ -89,7 +90,7 @@ const StripeButton = ({
             stripeRequestType,
           })}
         >
-          <img className={styles.mark} alt="GooglePay" src={googlePayLogo} />
+          <img className={classes.mark} alt="GooglePay" src={googlePayLogo} />
         </Button>
       ) : null}
     </>

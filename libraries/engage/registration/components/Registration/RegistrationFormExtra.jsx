@@ -1,11 +1,23 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormBuilder } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { StylePresets } from '@shopgate/engage/components/Form';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { useRegistration } from '../../hooks';
 import { ELEMENT_ID_CUSTOMER_ATTRIBUTES } from '../../constants';
 import generateFormConfig from './RegistrationFormExtra.config';
-import { form, section } from './RegistrationContent.style';
+
+const useStyles = makeStyles()(theme => ({
+  form: {
+    ...StylePresets.getOutlinedFormFields(theme),
+    ' .registrationOptInMarketingOptIn': {
+      paddingTop: 0,
+      paddingBottom: theme.spacing(2),
+    },
+  },
+  section: {},
+}));
 
 /**
  * The RegistrationFormExtra component.
@@ -13,6 +25,7 @@ import { form, section } from './RegistrationContent.style';
  * @returns {JSX}
  */
 const RegistrationFormExtra = ({ isGuest }) => {
+  const { classes } = useStyles();
   const {
     defaultExtraFormState,
     updateExtraForm,
@@ -39,9 +52,9 @@ const RegistrationFormExtra = ({ isGuest }) => {
   }, [updateExtraForm]);
 
   return (
-    <Section className={section} hasForm id={ELEMENT_ID_CUSTOMER_ATTRIBUTES}>
+    <Section className={classes.section} hasForm id={ELEMENT_ID_CUSTOMER_ATTRIBUTES}>
       <FormBuilder
-        className={form}
+        className={classes.form}
         name="RegistrationExtra"
         config={formConfig}
         defaults={defaultExtraFormState}

@@ -1,110 +1,114 @@
-import React, { PureComponent } from 'react';
+import React, {
+  useCallback, useContext, useEffect, useRef, useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import { router } from '@virtuous/conductor';
 import { RouteContext } from '@shopgate/pwa-common/context';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import ButtonLink from '@shopgate/pwa-ui-shared/ButtonLink';
 import Headline from 'Components/Headline';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CategoryPicker from './components/Picker';
-import styles from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    background: colors.light,
+    display: 'flex',
+    flexDirection: 'column',
+    paddingBottom: theme.spacing(2),
+  },
+  buttonContainer: {
+    padding: theme.spacing(0, 2),
+  },
+  button: {
+    width: '100%',
+  },
+}));
 
 /**
- * The NestedCategoryFilter component
+ * @param {Object} settings Widget settings.
+ * @param {Object|null|undefined} persisted State restored from the route.
+ * @returns {Object} Initial widget state with `pickers` and `buttonCategoryId`.
  */
-class NestedCategoryFilter extends PureComponent {
-  static contextType = RouteContext;
-
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    settings: PropTypes.shape({
-      categoryNumber: PropTypes.string.isRequired,
-      limit: PropTypes.string.isRequired,
-      headline: PropTypes.string.isRequired,
-
-      label_1: PropTypes.string.isRequired,
-      label_2: PropTypes.string.isRequired,
-      label_3: PropTypes.string.isRequired,
-      label_4: PropTypes.string.isRequired,
-
-    }).isRequired,
-    persistedState: PropTypes.shape(),
-  };
-
-  static defaultProps = {
-    persistedState: null,
-  };
-
-  /**
-   * The component constructor.
-   * @param {Object} props The components props.
-   */
-  constructor(props) {
-    super(props);
-
-    const defaultState = {
-      pickers: [{
-        categoryId: this.props.settings.categoryNumber,
-        selectedId: null,
-      }],
-      buttonCategoryId: null,
+const buildInitialState = (settings, persisted) => {
+  const pickers = persisted?.pickers;
+  if (Array.isArray(pickers) && pickers.length > 0) {
+    return {
+      pickers: pickers.map(({ categoryId, selectedId }) => ({
+        categoryId,
+        selectedId: selectedId ?? null,
+      })),
+      buttonCategoryId: persisted.buttonCategoryId ?? null,
     };
-
-    this.state = props.persistedState || defaultState;
   }
+  return {
+    pickers: [{
+      categoryId: settings.categoryNumber,
+      selectedId: null,
+    }],
+    buttonCategoryId: null,
+  };
+};
 
-  /**
-   * Persists the widget state when the component is removed from the DOM.
-   */
-  componentWillUnmount() {
-    router.update(this.context.id, {
-      [this.props.id]: this.state,
-    });
-  }
+/**
+ * Nested category filter component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
+ */
+const NestedCategoryFilter = ({ id, settings, persistedState }) => {
+  const { classes } = useStyles();
+  const route = useContext(RouteContext);
+  const [state, setState] = useState(() => buildInitialState(settings, persistedState));
+  const stateRef = useRef(state);
+  stateRef.current = state;
 
-  /**
-   * Handles the selection of a subcategory within a category picker.
-   * @param {string} categoryId The categoryId of the picker where a subcategory was selected.
-   * @param {Object} subcategory The subcategory entity which was selected.
-   */
-  handleSelection = (categoryId, subcategory) => {
-    const { pickers } = this.state;
+  useEffect(() => {
+    const routeId = route?.id;
+    if (!routeId) {
+      return undefined;
+    }
+    return () => {
+      router.update(routeId, {
+        [id]: stateRef.current,
+      });
+    };
+  }, [id, route?.id]);
+
+  const handleSelection = useCallback((categoryId, subcategory) => {
+    const { pickers } = stateRef.current;
     const { id: subcategoryId, childrenCount } = subcategory;
 
-    const limitReached = pickers.length === Number(this.props.settings.limit);
+    const limitReached = pickers.length === Number(settings.limit);
     const appendNewPicker = !!childrenCount && !limitReached;
 
     const selectedIndex = pickers.findIndex(picker => picker.categoryId === categoryId);
 
-    // Get all pickers from the list, till the one where the selection happened.
     let updatedPickers = pickers.slice(0, selectedIndex + 1);
-    // Add the selected subcategoryId to the picker.
     updatedPickers[updatedPickers.length - 1].selectedId = subcategoryId;
 
     if (appendNewPicker) {
-      // Add a new picker entry if necessary.
       updatedPickers = updatedPickers.concat([{
         categoryId: subcategoryId,
         selectedId: null,
       }]);
     }
 
-    this.setState({
+    setState({
       pickers: updatedPickers,
       buttonCategoryId: !appendNewPicker ? subcategoryId : null,
     });
-  };
+  }, [settings.limit]);
 
-  /**
-   * Creates the pickers.
-   * @returns {JSX}
-   */
-  createPickers() {
-    const { settings } = this.props;
-    const { pickers } = this.state;
+  const { buttonCategoryId, pickers } = state;
 
-    return (
+  return (
+    <div className={classes.container}>
+      <Headline text={settings.headline} />
       <div>
         {pickers.map((entry, index) => {
           const { categoryId, selectedId } = entry;
@@ -114,35 +118,38 @@ class NestedCategoryFilter extends PureComponent {
               key={categoryId}
               categoryId={categoryId}
               selectedId={selectedId}
-              onSelect={this.handleSelection}
+              onSelect={handleSelection}
               label={settings[`label_${index + 1}`]}
             />
           );
         })}
       </div>
-    );
-  }
-
-  /**
-   * The render method.
-   * @returns {JSX}
-   */
-  render() {
-    const { buttonCategoryId } = this.state;
-
-    return (
-      <div className={styles.container}>
-        <Headline text={this.props.settings.headline} />
-        { this.createPickers() }
-        <div className={styles.buttonContainer}>
-          <ButtonLink className={styles.button} href={`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`} disabled={!buttonCategoryId} flat={false}>
-            <I18n.Text string="common.show_products" />
-          </ButtonLink>
-        </div>
+      <div className={classes.buttonContainer}>
+        <ButtonLink className={classes.button} href={`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`} disabled={!buttonCategoryId} flat={false}>
+          <I18n.Text string="common.show_products" />
+        </ButtonLink>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+NestedCategoryFilter.propTypes = {
+  id: PropTypes.string.isRequired,
+  settings: PropTypes.shape({
+    categoryNumber: PropTypes.string.isRequired,
+    limit: PropTypes.string.isRequired,
+    headline: PropTypes.string.isRequired,
+    label_1: PropTypes.string.isRequired,
+    label_2: PropTypes.string.isRequired,
+    label_3: PropTypes.string.isRequired,
+    label_4: PropTypes.string.isRequired,
+  }).isRequired,
+  persistedState: PropTypes.shape(),
+};
+
+NestedCategoryFilter.defaultProps = {
+  persistedState: null,
+};
 
 export default props => (
   <RouteContext.Consumer>

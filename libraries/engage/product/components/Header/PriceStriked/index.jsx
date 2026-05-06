@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Portal,
@@ -13,8 +13,29 @@ import {
 } from '@shopgate/engage/product/constants';
 import { withPriceCalculation } from '@shopgate/engage/product/hocs';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
-import styles from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()(theme => ({
+  placeholder: {
+    height: 16,
+    width: '70%',
+    marginTop: 5,
+    marginBottom: 2,
+  },
+  msrp: {
+    color: colors.shade11,
+    fontSize: '0.875rem',
+    marginRight: theme.spacing(0.5),
+  },
+  msrpStriked: {
+    display: 'inline',
+    fontSize: '0.875rem',
+  },
+}));
 
 /**
  * The PriceStriked component.
@@ -22,6 +43,7 @@ import styles from './style';
  * @return {JSX}
  */
 const PriceStriked = ({ price }) => {
+  const { classes } = useStyles();
   const {
     msrpLabel = 'price.msrp',
     unitPriceStrikedLabel,
@@ -31,12 +53,12 @@ const PriceStriked = ({ price }) => {
     <>
       <Portal name={PRODUCT_PRICE_STRIKED_BEFORE} />
       <Portal name={PRODUCT_PRICE_STRIKED}>
-        <PlaceholderLabel className={styles.placeholder} ready={(price !== null)}>
+        <PlaceholderLabel className={classes.placeholder} ready={(price !== null)}>
           {(price && price.msrp > 0 && price.unitPrice !== price.msrp) && (
             <>
-              {!!msrpLabel && (<I18n.Text string={msrpLabel} className={styles.msrp} />)}
+              {!!msrpLabel && (<I18n.Text string={msrpLabel} className={classes.msrp} />)}
               <StrikePrice
-                className={styles.msrpStriked}
+                className={classes.msrpStriked}
                 value={price.msrp}
                 currency={price.currency}
               />
@@ -49,7 +71,7 @@ const PriceStriked = ({ price }) => {
           ) && (
             <>
               {!!unitPriceStrikedLabel && (
-                <I18n.Text string={unitPriceStrikedLabel} className={styles.msrp} />
+                <I18n.Text string={unitPriceStrikedLabel} className={classes.msrp} />
               )}
               <StrikePrice value={price.unitPriceStriked} currency={price.currency} />
             </>

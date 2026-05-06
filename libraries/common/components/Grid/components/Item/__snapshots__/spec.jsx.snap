@@ -2,18 +2,18 @@
 
 exports[`<GridItem /> should add custom classes on demand 1`] = `
 <li
-  className="custom-class-name"
+  className="sg-5qovnk-root custom-class-name"
 />
 `;
 
 exports[`<GridItem /> should be able to render a custom tag 1`] = `
 <section
-  className=""
+  className="sg-5qovnk-root"
 />
 `;
 
 exports[`<GridItem /> should render without any further props 1`] = `
 <li
-  className=""
+  className="sg-5qovnk-root"
 />
 `;

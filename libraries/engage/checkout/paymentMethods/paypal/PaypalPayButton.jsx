@@ -2,7 +2,7 @@ import React, {
   useLayoutEffect, useEffect, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 
 import {
   getThemeSettings, showModal, MODAL_PIPELINE_ERROR,
@@ -12,15 +12,15 @@ import { i18n } from '../../../core/helpers/i18n';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
 
-const styles = {
-  headline: css({
+const useStyles = makeStyles()(theme => ({
+  headline: {
     fontSize: '1.25rem',
     fontWeight: 'normal',
     margin: '12px 0 12px 0',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     textTransform: 'none',
-  }).toString(),
-};
+  },
+}));
 
 /**
  * Paypal Pay button
@@ -30,6 +30,7 @@ const PaypalPayButton = ({
   // eslint-disable-next-line no-shadow
   disabled, onSubmit, onValidate, showModal,
 }) => {
+  const { classes } = useStyles();
   const { paymentData, paymentTransactions } = useCheckoutContext();
   const [paypalActions, setPaypalActions] = useState(null);
   const paypal = usePaypal();
@@ -118,7 +119,7 @@ const PaypalPayButton = ({
 
   return (
     <>
-      <h3 className={styles.headline}>{i18n.text('checkout.finalizePayment')}</h3>
+      <h3 className={classes.headline}>{i18n.text('checkout.finalizePayment')}</h3>
       <div ref={button} />
     </>
   );

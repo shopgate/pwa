@@ -1,148 +1,127 @@
-import React, { PureComponent } from 'react';
+import React, {
+  useState, useEffect, useCallback, memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import { Accordion, SurroundPortals } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
 import { FilterItem } from '@shopgate/engage/filter';
 import { PORTAL_FILTER_SELECTOR } from '@shopgate/engage/filter/constants';
 import ValueButton from './components/ValueButton';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
-import * as styles from './style';
+
+const useStyles = makeStyles()(() => ({
+  accordion: {
+    overflow: 'hidden',
+  },
+  content: {
+    marginLeft: -8,
+    marginBottom: -8,
+  },
+}));
 
 /**
  * The selector component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Selector extends PureComponent {
-  static propTypes = {
-    id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    multi: PropTypes.bool,
-    onChange: PropTypes.func,
-    selected: PropTypes.node,
-  };
+const Selector = ({
+  id,
+  label,
+  values,
+  multi,
+  onChange,
+  selected: selectedFromProps,
+}) => {
+  const { classes } = useStyles();
+  const [selected, setSelected] = useState(() => selectedFromProps || []);
 
-  static defaultProps = {
-    multi: false,
-    onChange() { },
-    selected: null,
-  };
+  useEffect(() => {
+    setSelected(selectedFromProps || []);
+  }, [selectedFromProps]);
 
-  /**
-   * @param {Object} props The component props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: props.selected || [],
-    };
-  }
-
-  /**
-   * @param {Object} nextProps The new incoming props.
-   */
-  UNSAFE_componentWillReceiveProps({ selected }) {
-    if (selected !== this.state.selected) {
-      this.setState({ selected });
-    }
-  }
-
-  /**
-   * @param {SyntheticEvent} event The button click event.
-   */
-  handleClick = (event) => {
+  const handleClick = useCallback((event) => {
     const { value } = event.target;
-    const { selected } = this.state;
-    const { id, multi, onChange } = this.props;
-    let newSelected = [...selected, value];
+    setSelected((prev) => {
+      let newSelected = [...prev, value];
 
-    // If in single select mode, only allow one selected value.
-    if (!multi && selected.length === 1) {
-      newSelected = [value];
-    }
+      if (!multi && prev.length === 1) {
+        newSelected = [value];
+      }
 
-    // If the clicked value was already selected, remove it again.
-    if (selected.includes(value)) {
-      newSelected = selected.filter(item => item !== value);
-    }
+      if (prev.includes(value)) {
+        newSelected = prev.filter(item => item !== value);
+      }
 
-    // Set it if it wasn't selected already.
-    this.setState({ selected: newSelected });
-    onChange(id, newSelected);
-  };
+      onChange(id, newSelected);
+      return newSelected;
+    });
+  }, [id, multi, onChange]);
 
-  /**
-   * Filter value change handler for the portal props. Invokes handleClick method with a mocked
-   * click event
-   * @param {string} updatedId Id of the updated filter value
-   */
-  handlePortalChange = (updatedId) => {
-    this.handleClick({ target: { value: updatedId } });
-  };
+  const handlePortalChange = useCallback((updatedId) => {
+    handleClick({ target: { value: updatedId } });
+  }, [handleClick]);
 
-  /**
-   * @param {Object} props The send render props.
-   * @return {JSX}
-   */
-  renderLabel = (props) => {
-    const { label, values } = this.props;
-    const { selected } = this.state;
+  const renderLabel = useCallback(props => (
+    <Toggle
+      {...props}
+      label={label}
+      selected={<Selected values={values} selected={selected} />}
+    />
+  ), [label, selected, values]);
 
-    return (
-      <Toggle
-        {...props}
-        label={label}
-        selected={<Selected values={values} selected={selected} />}
-      />
-    );
-  };
+  return (
+    <SurroundPortals
+      portalName={PORTAL_FILTER_SELECTOR}
+      portalProps={{
+        filter: {
+          id,
+          label,
+          values,
+          isMultiSelect: multi,
+        },
+        selectedValueIds: selected,
+        onChange: handlePortalChange,
+      }}
+    >
+      <FilterItem>
+        <Accordion
+          renderLabel={renderLabel}
+          testId={id}
+          handleLabel={i18n.text('filter.filter_by', { label })}
+          className={classes.accordion}
+        >
+          <div className={classes.content}>
+            {values.map(value => (
+              <ValueButton
+                key={value.id}
+                id={value.id}
+                label={value.label}
+                isActive={(selected && selected.includes(value.id))}
+                onClick={handleClick}
+              />
+            ))}
+          </div>
+        </Accordion>
+      </FilterItem>
+    </SurroundPortals>
+  );
+};
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const {
-      values, id, label, multi,
-    } = this.props;
-    const { selected } = this.state;
+Selector.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  multi: PropTypes.bool,
+  onChange: PropTypes.func,
+  selected: PropTypes.node,
+};
 
-    return (
-      <SurroundPortals
-        portalName={PORTAL_FILTER_SELECTOR}
-        portalProps={{
-          filter: {
-            id,
-            label,
-            values,
-            isMultiSelect: multi,
-          },
-          selectedValueIds: selected,
-          onChange: this.handlePortalChange,
-        }}
-      >
-        <FilterItem>
-          <Accordion
-            renderLabel={this.renderLabel}
-            testId={id}
-            handleLabel={i18n.text('filter.filter_by', { label })}
-            className={styles.accordion}
-          >
-            <div className={styles.content}>
-              {values.map(value => (
-                <ValueButton
-                  key={value.id}
-                  id={value.id}
-                  label={value.label}
-                  isActive={(selected && selected.includes(value.id))}
-                  onClick={this.handleClick}
-                />
-              ))}
-            </div>
-          </Accordion>
-        </FilterItem>
-      </SurroundPortals>
-    );
-  }
-}
+Selector.defaultProps = {
+  multi: false,
+  onChange() {},
+  selected: null,
+};
 
-export default Selector;
+export default memo(Selector);

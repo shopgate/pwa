@@ -1,5 +1,8 @@
 import { getCSSCustomProp } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/engage';
 import type { ThemeOptions } from '../createTheme';
+
+const { colors } = themeConfig;
 
 /**
  * Creates the default theme options with legacy palette values.
@@ -25,11 +28,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           main: getCSSCustomProp('--color-state-ok'),
         },
         background: {
-          default: '#fff',
+          default: colors.background,
         },
         text: {
           primary: getCSSCustomProp('--color-text-high-emphasis'),
-          secondary: getCSSCustomProp('--color-text-medium-emphasis'),
+          secondary: getCSSCustomProp('--color-text-low-emphasis'),
         },
       },
     },

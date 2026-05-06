@@ -1,11 +1,31 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { StoreContext } from './Store.context';
 import { FulfillmentContext } from '../../locations.context';
 import { StockInfo } from '../StockInfo';
 import { LocationIcon } from '../../../components';
-import { i18n } from '../../../core';
-import { address as container, addressIcon, stockInfoContainer } from './Store.style';
+import { i18n } from '../../../core/helpers';
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    color: 'var(--color-text-medium-emphasis)',
+    marginBottom: 4,
+  },
+  addressIcon: {
+    color: 'var(--color-text-medium-emphasis)',
+    fontSize: '1.4rem',
+    padding: theme.spacing(0.5, 2, 0, 0),
+  },
+  stockInfoContainer: {
+    marginTop: 8,
+    ':empty': {
+      display: 'none',
+    },
+  },
+}));
 
 /**
  * Renders the pickup location's address information.
@@ -15,6 +35,7 @@ import { address as container, addressIcon, stockInfoContainer } from './Store.s
  * @returns {JSX.Element}
  */
 export function StoreAddress({ address, pure }) {
+  const { classes } = useStyles();
   const store = React.useContext(StoreContext);
   const { product } = React.useContext(FulfillmentContext);
 
@@ -51,14 +72,14 @@ export function StoreAddress({ address, pure }) {
   }
 
   return (
-    <div className={container}>
-      <div className={addressIcon} aria-hidden>
+    <div className={classes.container}>
+      <div className={classes.addressIcon} aria-hidden>
         <LocationIcon />
       </div>
       <div>
         {addressContent}
         {product && (
-          <div className={stockInfoContainer}>
+          <div className={classes.stockInfoContainer}>
             <StockInfo location={store} product={product} showStoreName={false} />
           </div>
         )}

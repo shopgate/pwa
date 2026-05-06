@@ -8,10 +8,19 @@ import {
 import { PRODUCT_RATING } from '@shopgate/engage/product/constants';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { container } from './style';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
 const { hasReviews } = appConfig;
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    lineHeight: '12px',
+    marginBottom: theme.spacing(1),
+  },
+}));
 
 /**
  * Scrolls page to reviews excerpt.
@@ -40,6 +49,7 @@ const scrollToRating = () => {
  * @return {JSX.Element}
  */
 const Rating = ({ rating }) => {
+  const { classes } = useStyles();
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
 
   const showRatings = useMemo(() => {
@@ -58,7 +68,7 @@ const Rating = ({ rating }) => {
     <SurroundPortals portalName={PRODUCT_RATING}>
       {showRatings &&
       <div
-        className={container}
+        className={classes.container}
         onClick={scrollToRating}
         role="presentation"
       >

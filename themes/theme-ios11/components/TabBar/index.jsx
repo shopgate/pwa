@@ -2,11 +2,13 @@ import React, {
   useMemo, useEffect, useCallback, useState, useRef, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { KeyboardConsumer, SurroundPortals } from '@shopgate/engage/components';
 import { UIEvents } from '@shopgate/engage/core/events';
+import { injectGlobal, makeStyles } from '@shopgate/engage/styles';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
+import { isAndroidOs } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings, useElementSize } from '@shopgate/engage/core/hooks';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -15,8 +17,92 @@ import {
 } from './constants';
 import connect from './connector';
 import { useTabBarScrollObserver } from './hooks';
-import * as classes from './style';
 import visibleTabs from './tabs';
+
+const { colors, shadows, variables } = themeConfig;
+
+injectGlobal({
+  ':root': {
+    '--tab-bar-background': colors.lightOverlay,
+    '--tab-bar-box-shadow': shadows.tabBar,
+    '--tab-bar-min-height': `${variables.tabBar.height}px`,
+
+    '--tab-bar-floating-border-radius': '16px',
+    '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.24)',
+    '--tab-bar-floating-min-height': '59px',
+
+    '--tab-bar-item-default-color': colors.shade11,
+    '--tab-bar-item-highlighted-color': 'var(--color-secondary)',
+
+    '--tab-bar-item-badge-color': 'var(--color-secondary-contrast)',
+    '--tab-bar-item-badge-background': 'var(--color-secondary)',
+    '--tab-bar-item-badge-border-radius': `${variables.gap.small}px`,
+    '--tab-bar-item-badge-top': `-${variables.gap.small}px`,
+    '--tab-bar-item-badge-left': 'calc(50% + 20px)',
+  },
+});
+
+const useStyles = makeStyles()({
+  hidden: {
+    display: 'none !important',
+  },
+  tabBarContainerBase: {
+    display: 'flex',
+    width: '100%',
+    position: 'fixed',
+    bottom: 0,
+    zIndex: 10,
+    justifyContent: 'center',
+  },
+  tabBarContainerDocked: {
+    background: 'var(--tab-bar-background)',
+    minHeight: 'calc(var(--tab-bar-min-height) + var(--safe-area-inset-bottom))',
+    boxShadow: 'var(--tab-bar-box-shadow)',
+  },
+  tabBarContainerFloating: {
+    padding: '0 16px',
+  },
+  tabBarBase: {
+    display: 'flex',
+    width: '100%',
+    zIndex: 10,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  tabBarDocked: {
+    paddingBottom: 'var(--safe-area-inset-bottom)',
+  },
+  tabBarFloating: {
+    background: 'var(--tab-bar-background)',
+    minHeight: 'var(--tab-bar-floating-min-height)',
+    padding: '4px 0',
+    marginBottom: `max(16px, calc(var(--safe-area-inset-bottom) + ${isAndroidOs ? '8px' : '0px'}))`,
+    borderRadius: 'var(--tab-bar-floating-border-radius)',
+    boxShadow: 'var(--tab-bar-floating-box-shadow)',
+  },
+  transitionFadeBase: {
+    transition: 'opacity 0.2s ease-in-out, visibility 0.2s ease-in-out',
+  },
+  transitionFadeIn: {
+    opacity: 1,
+    visibility: 'visible',
+    pointerEvents: 'auto',
+  },
+  transitionFadeOut: {
+    opacity: 0,
+    visibility: 'hidden',
+    pointerEvents: 'none',
+  },
+  transitionSlideBase: {
+    transition: 'transform 0.2s ease-in-out',
+  },
+  transitionSlideIn: {
+    transform: 'translateY(0)',
+  },
+  transitionSlideOut: {
+    transform: 'translateY(calc(100% + var(--safe-area-inset-bottom) + 16px))',
+  },
+});
 
 /**
  * Renders the action for a given tab configuration.
@@ -55,6 +141,7 @@ const TabBar = ({
   path,
   modalCount,
 }) => {
+  const { classes, cx } = useStyles();
   useTabBarScrollObserver(isVisibleProp);
 
   const {
@@ -145,18 +232,22 @@ const TabBar = ({
     setTransitionVisibility(!isScrolledOut);
   }, [isScrolledOut]);
 
-  // Pick classes for the configured transition
-  const transitionClasses = useMemo(() => {
-    if (Object.keys(classes.transitions).includes(transition)) {
-      return classes.transitions[transition];
-    }
-
-    return classes.transitions.fade;
-  }, [transition]);
-
   const tabBarClasses = useMemo(() => {
-    // Create class list for the tab bar container
-    const container = classNames(
+    const transitionsMap = {
+      fade: {
+        base: classes.transitionFadeBase,
+        in: classes.transitionFadeIn,
+        out: classes.transitionFadeOut,
+      },
+      slide: {
+        base: classes.transitionSlideBase,
+        in: classes.transitionSlideIn,
+        out: classes.transitionSlideOut,
+      },
+    };
+    const transitionClasses = transitionsMap[transition] || transitionsMap.fade;
+
+    const container = cx(
       'theme__tab-bar__container',
       classes.tabBarContainerBase,
       transitionClasses.base,
@@ -173,8 +264,7 @@ const TabBar = ({
       }
     );
 
-    // Create class list for the actual tab bar
-    const component = classNames(
+    const component = cx(
       'theme__tab-bar',
       // Backwards compatibility to prevent broken custom styling that addressed class of the Grid
       // component
@@ -191,15 +281,26 @@ const TabBar = ({
       component,
     };
   }, [
+    classes.hidden,
+    classes.tabBarBase,
+    classes.tabBarContainerBase,
+    classes.tabBarContainerDocked,
+    classes.tabBarContainerFloating,
+    classes.tabBarDocked,
+    classes.tabBarFloating,
+    classes.transitionFadeBase,
+    classes.transitionFadeIn,
+    classes.transitionFadeOut,
+    classes.transitionSlideBase,
+    classes.transitionSlideIn,
+    classes.transitionSlideOut,
+    hideOnScroll,
     isScrolledOut,
     isVisible,
-    hideOnScroll,
     transition,
-    transitionClasses.base,
-    transitionClasses.in,
-    transitionClasses.out,
     transitionVisibility,
     variant,
+    cx,
   ]);
 
   return (

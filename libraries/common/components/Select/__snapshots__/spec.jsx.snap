@@ -23,22 +23,23 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6  common_select"
+    className="sg-1xbqkr6-container common_select"
   >
     <div
       onTouchStart={[Function]}
+      role="presentation"
     >
       <span>
         Select ...
       </span>
       <span
-        className="css-jf1dde"
+        className="sg-1b1j1g2-selectHandle"
       >
         ▾
       </span>
     </div>
     <div
-      className="css-182i7wq"
+      className="sg-c2wo8u-items"
     >
       <SelectItem
         className=""
@@ -49,7 +50,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
         value="a"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           a
@@ -64,7 +65,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
         value="b"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           b
@@ -79,7 +80,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
         value="c"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           c
@@ -94,7 +95,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
         value="d"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           d
@@ -109,7 +110,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
         value="e"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           E
@@ -124,7 +125,7 @@ exports[`<Select /> accepts implicit and explicit items 1`] = `
         value="f"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           f
@@ -153,16 +154,17 @@ exports[`<Select /> renders with implicit items (closed) 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6  common_select"
+    className="sg-1xbqkr6-container common_select"
   >
     <div
       onTouchStart={[Function]}
+      role="presentation"
     >
       <span>
         Select ...
       </span>
       <span
-        className="css-jf1dde"
+        className="sg-1b1j1g2-selectHandle"
       >
         ▾
       </span>
@@ -189,22 +191,23 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6  common_select"
+    className="sg-1xbqkr6-container common_select"
   >
     <div
       onTouchStart={[Function]}
+      role="presentation"
     >
       <span>
         Select ...
       </span>
       <span
-        className="css-jf1dde"
+        className="sg-1b1j1g2-selectHandle"
       >
         ▾
       </span>
     </div>
     <div
-      className="css-182i7wq"
+      className="sg-c2wo8u-items"
     >
       <SelectItem
         className=""
@@ -215,7 +218,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
         value="a"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           a
@@ -230,7 +233,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
         value="b"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           b
@@ -245,7 +248,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
         value="c"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           c
@@ -260,7 +263,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
         value="d"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           d
@@ -275,7 +278,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
         value="e"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           e
@@ -290,7 +293,7 @@ exports[`<Select /> renders with implicit items (opened) 1`] = `
         value="f"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           f
@@ -310,20 +313,24 @@ exports[`<Select /> renders without items 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6  common_select"
+    className="sg-1xbqkr6-container common_select"
   >
     <div
       onTouchStart={[Function]}
+      role="presentation"
     >
       <span>
         Select ...
       </span>
       <span
-        className="css-jf1dde"
+        className="sg-1b1j1g2-selectHandle"
       >
         ▾
       </span>
     </div>
+    <div
+      className="sg-c2wo8u-items"
+    />
   </div>
 </Select>
 `;
@@ -346,22 +353,23 @@ exports[`<Select /> triggers callback on change 1`] = `
   value={null}
 >
   <div
-    className="css-7c9av6  common_select"
+    className="sg-1xbqkr6-container common_select"
   >
     <div
       onTouchStart={[Function]}
+      role="presentation"
     >
       <span>
         Select ...
       </span>
       <span
-        className="css-jf1dde"
+        className="sg-1b1j1g2-selectHandle"
       >
         ▾
       </span>
     </div>
     <div
-      className="css-182i7wq"
+      className="sg-c2wo8u-items"
     >
       <SelectItem
         className=""
@@ -372,7 +380,7 @@ exports[`<Select /> triggers callback on change 1`] = `
         value="a"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           a
@@ -387,7 +395,7 @@ exports[`<Select /> triggers callback on change 1`] = `
         value="b"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           b
@@ -402,7 +410,7 @@ exports[`<Select /> triggers callback on change 1`] = `
         value="c"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           c
@@ -417,7 +425,7 @@ exports[`<Select /> triggers callback on change 1`] = `
         value="d"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           d
@@ -432,7 +440,7 @@ exports[`<Select /> triggers callback on change 1`] = `
         value="e"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           e
@@ -447,7 +455,7 @@ exports[`<Select /> triggers callback on change 1`] = `
         value="f"
       >
         <div
-          className="css-fisw11 "
+          className="sg-1p90zzb-item"
           onTouchEnd={[Function]}
         >
           f

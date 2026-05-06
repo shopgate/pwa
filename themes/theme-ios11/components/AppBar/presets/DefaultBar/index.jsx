@@ -11,6 +11,7 @@ import { AppBar } from '@shopgate/pwa-ui-ios';
 import {
   withRoute, withWidgetSettings, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { ViewContext } from '@shopgate/engage/components/View';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
@@ -36,10 +37,6 @@ class AppBarDefault extends PureComponent {
     'aria-hidden': null,
     below: null,
     title: null,
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   /**
@@ -76,9 +73,8 @@ class AppBarDefault extends PureComponent {
       this.updateStatusBar();
 
       if (this.props.title) {
-        const { __ } = this.context.i18n();
         if (this.props.route.state.title !== this.props.title) {
-          router.update(this.props.route.id, { title: __(this.props.title) });
+          router.update(this.props.route.id, { title: i18n.text(this.props.title) });
         }
       }
     }
@@ -112,8 +108,7 @@ class AppBarDefault extends PureComponent {
     }
 
     if (prevProps.title !== this.props.title && this.props.route.state.title !== this.props.title) {
-      const { __ } = this.context.i18n();
-      router.update(this.props.route.id, { title: __(this.props.title) });
+      router.update(this.props.route.id, { title: i18n.text(this.props.title) });
     }
   }
 
@@ -138,8 +133,7 @@ class AppBarDefault extends PureComponent {
     }
 
     const { background, color } = this.props.widgetSettings;
-    const { __ } = this.context.i18n();
-    const center = <AppBar.Title title={__(this.props.title || '')} />;
+    const center = <AppBar.Title title={i18n.text(this.props.title || '')} />;
     const below = (
       <Fragment key="below">
         {this.props.below}

@@ -1,8 +1,19 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import noop from 'lodash/noop';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  image: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    maxHeight: '100%',
+    WebkitTouchCallout: 'none',
+    fontSize: 0,
+  },
+});
 
 /**
  * The ImageInner component renders tha actual image of the Image component.
@@ -18,25 +29,29 @@ const ImageInner = forwardRef(({
   onLoad,
   onError,
   style,
-}, ref) => (
-  <img
-    ref={ref}
-    loading={lazy ? 'lazy' : 'eager'}
-    src={src}
-    className={classNames(
-      className,
-      styles.image,
-      'common__image'
-    )}
-    alt={alt}
-    aria-label={alt}
-    aria-hidden={!alt}
-    data-test-id="image"
-    onLoad={onLoad}
-    onError={onError}
-    style={style}
-  />
-));
+}, ref) => {
+  const { classes, cx } = useStyles();
+
+  return (
+    <img
+      ref={ref}
+      loading={lazy ? 'lazy' : 'eager'}
+      src={src}
+      className={cx(
+        classes.image,
+        'common__image',
+        className
+      )}
+      alt={alt}
+      aria-label={alt}
+      aria-hidden={!alt}
+      data-test-id="image"
+      onLoad={onLoad}
+      onError={onError}
+      style={style}
+    />
+  );
+});
 
 ImageInner.propTypes = {
   alt: PropTypes.string,

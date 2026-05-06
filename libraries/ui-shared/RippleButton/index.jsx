@@ -1,74 +1,100 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import BaseButton from '@shopgate/pwa-common/components/Button';
+import { makeStyles, cx } from '@shopgate/engage/styles';
 import Ripple from '../Ripple';
 import Button from '../Button';
-import style from '../Button/style';
+
+const BUTTON_TYPES = [
+  'plain',
+  'regular',
+  'simple',
+  'primary',
+  'secondary',
+];
+
+const useStyles = makeStyles()(theme => ({
+  contentWrapper: {
+    padding: theme.spacing(0, 2, 0),
+  },
+}));
 
 /**
  * The ripple button component is a special derivation of the basic button component
  * that adds a ripple effect when clicked.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class RippleButton extends Component {
-  static propTypes = {
-    ...Button.propTypes,
-    rippleClassName: PropTypes.string,
-    rippleSize: PropTypes.number,
-    testId: PropTypes.string,
+const RippleButton = ({
+  children,
+  className,
+  disabled,
+  flat,
+  onClick,
+  rippleClassName,
+  rippleSize,
+  testId,
+  type,
+  'aria-label': ariaLabel,
+  'aria-haspopup': ariaHaspopup,
+}) => {
+  const { classes } = useStyles();
+
+  const buttonProps = {
+    className: `${className} ui-shared__ripple-button`,
+    disabled,
+    onClick,
+    flat,
+    type,
+    wrapContent: false,
+    'aria-label': ariaLabel,
+    'aria-haspopup': ariaHaspopup,
   };
 
-  static defaultProps = {
-    ...Button.defaultProps,
-    rippleClassName: '',
-    rippleSize: null,
-    testId: 'Button',
-  };
-
-  /**
-   * Getter for the calculated button props.
-   * @returns {Object}
-   */
-  get buttonProps() {
-    return {
-      className: `${this.props.className} ui-shared__ripple-button`,
-      disabled: this.props.disabled,
-      onClick: this.props.onClick,
-      flat: this.props.flat,
-      type: this.props.type,
-      wrapContent: false,
-      'aria-label': this.props['aria-label'],
-      'aria-haspopup': this.props['aria-haspopup'],
-    };
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    if (this.props.disabled) {
-      // Don't show the ripple effect when the button is disabled.
-      return (
-        <Button {...this.buttonProps} wrapContent>
-          {this.props.children}
-        </Button>
-      );
-    }
-
-    const rippleProps = {
-      className: `${style.contentWrapper} ${this.props.rippleClassName}`,
-      fill: true,
-      size: this.props.rippleSize,
-      overflow: true,
-    };
-
+  if (disabled) {
     return (
-      <Button {...this.buttonProps} testId={this.props.testId}>
-        <Ripple {...rippleProps}>
-          {this.props.children}
-        </Ripple>
+      <Button {...buttonProps} wrapContent>
+        {children}
       </Button>
     );
   }
-}
+
+  const rippleProps = {
+    className: cx(classes.contentWrapper, rippleClassName),
+    fill: true,
+    size: rippleSize,
+    overflow: true,
+  };
+
+  return (
+    <Button {...buttonProps} testId={testId}>
+      <Ripple {...rippleProps}>
+        {children}
+      </Ripple>
+    </Button>
+  );
+};
+
+RippleButton.propTypes = {
+  ...BaseButton.propTypes,
+  className: PropTypes.string,
+  flat: PropTypes.bool,
+  rippleClassName: PropTypes.string,
+  rippleSize: PropTypes.number,
+  testId: PropTypes.string,
+  type: PropTypes.oneOf(BUTTON_TYPES),
+  wrapContent: PropTypes.bool,
+};
+
+RippleButton.defaultProps = {
+  ...BaseButton.defaultProps,
+  className: '',
+  flat: false,
+  type: 'primary',
+  wrapContent: true,
+  testId: 'Button',
+  rippleClassName: '',
+  rippleSize: null,
+};
 
 export default RippleButton;

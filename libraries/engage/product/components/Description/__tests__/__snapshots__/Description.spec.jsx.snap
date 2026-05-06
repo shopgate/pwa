@@ -33,23 +33,28 @@ exports[`<Description /> should not render if no data is available 1`] = `
     }
   >
     <div
-      className="css-1gp4e0e engage__product__description"
+      className="sg-15t3g79-container engage__product__description"
     >
       <div
-        className="css-1qs89bq theme__description_heading"
+        className="sg-q3ilz0-title theme__description_heading"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="product.description_heading"
+          transform={null}
         >
           product.description_heading
         </Text>
       </div>
       <PlaceholderParagraph
-        className="css-11lvu0k"
+        className="sg-125u37g-placeholder"
         ready={false}
       >
         <div
-          className="css-1liqdzi"
+          className="sg-1xb0rl5-content"
           data-test-id="description"
         >
           <HtmlSanitizer
@@ -100,23 +105,28 @@ exports[`<Description /> should render description if data is available 1`] = `
     }
   >
     <div
-      className="css-1gp4e0e engage__product__description"
+      className="sg-15t3g79-container engage__product__description"
     >
       <div
-        className="css-1qs89bq theme__description_heading"
+        className="sg-q3ilz0-title theme__description_heading"
       >
         <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
           string="product.description_heading"
+          transform={null}
         >
           product.description_heading
         </Text>
       </div>
       <PlaceholderParagraph
-        className="css-11lvu0k"
+        className="sg-125u37g-placeholder"
         ready={true}
       >
         <div
-          className="css-1liqdzi"
+          className="sg-1xb0rl5-content"
           data-test-id="description"
         >
           <HtmlSanitizer

@@ -1,57 +1,58 @@
-import React, { Component } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import style from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(() => ({
+  root: {
+    '&:focus': {
+      outline: 0,
+    },
+  },
+}));
 
 /**
  * The button component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Button extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    onClick: PropTypes.func,
-    testId: PropTypes.string,
+const Button = ({
+  children,
+  className,
+  disabled,
+  onClick,
+  testId,
+  ...rest
+}) => {
+  const { classes, cx } = useStyles();
+
+  const buttonProps = {
+    className: cx(classes.root, 'common__button', className),
+    disabled,
+    onClick: disabled ? null : onClick,
+    ...rest,
   };
 
-  static defaultProps = {
-    className: '',
-    disabled: false,
-    onClick: null,
-    testId: 'Button',
-  };
+  return (
+    // eslint-disable-next-line react/button-has-type
+    <button data-test-id={testId} {...buttonProps}>
+      {children}
+    </button>
+  );
+};
 
-  /**
-   * Getter for the calculated button props.
-   * @returns {Object}
-   */
-  get buttonProps() {
-    const {
-      children, testId, className, disabled, onClick, ...props
-    } = this.props;
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  testId: PropTypes.string,
+};
 
-    const buttonProps = {
-      className: `${className} ${style} common__button`,
-      disabled,
-      onClick: disabled ? null : onClick,
-      ...props,
-    };
+Button.defaultProps = {
+  className: '',
+  disabled: false,
+  onClick: null,
+  testId: 'Button',
+};
 
-    return buttonProps;
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX.Element}
-   */
-  render() {
-    return (
-      // eslint-disable-next-line react/button-has-type
-      <button data-test-id={this.props.testId} {...this.buttonProps}>
-        {this.props.children}
-      </button>
-    );
-  }
-}
-
-export default Button;
+export default memo(Button);

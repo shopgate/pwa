@@ -69,7 +69,7 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                 text="navigation.your_account"
               >
                 <h2
-                  className="css-18cwfw7 headline theme__headline"
+                  className="sg-1e76cvh-root headline theme__headline"
                   data-test-id="Headline"
                   style={
                     {
@@ -78,18 +78,20 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   }
                 >
                   <Text
+                    acceptPlainTextWithPlaceholders={false}
+                    className={null}
+                    params={{}}
+                    role={null}
                     string="navigation.your_account"
+                    transform={null}
                   >
                     navigation.your_account
                   </Text>
                 </h2>
               </Headline>
               <div
-                className={
-                  {
-                    "data-css-13ch7sr": "",
-                  }
-                }
+                className="sg-1sqpupb-list"
+                data-test-id="more-section-list"
               >
                 <MoreMenuItem
                   className={null}
@@ -99,12 +101,17 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   testId="accountButton"
                 >
                   <Link
-                    className="css-1hj8a57"
+                    className="sg-xorol2-root"
                     href="/account/profile"
                     role="button"
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="navigation.profile"
+                      transform={null}
                     >
                       navigation.profile
                     </Text>
@@ -118,12 +125,17 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   testId="accountButton"
                 >
                   <Link
-                    className="css-1hj8a57"
+                    className="sg-xorol2-root"
                     href="/account/orders"
                     role="button"
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="navigation.order_history"
+                      transform={null}
                     >
                       navigation.order_history
                     </Text>
@@ -137,12 +149,17 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                   testId="accountButton"
                 >
                   <Link
-                    className="css-1hj8a57"
+                    className="sg-xorol2-root"
                     href="/account/wish-list"
                     role="button"
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="navigation.favorites"
+                      transform={null}
                     >
                       navigation.favorites
                     </Text>
@@ -164,13 +181,18 @@ exports[`<UserMenu /> should render additional links when logged in and new serv
                     testId="logoutButton"
                   >
                     <button
-                      className="css-1hj8a57"
+                      className="sg-xorol2-root"
                       data-test-id="logoutButton"
                       onClick={[Function]}
                       type="button"
                     >
                       <Text
+                        acceptPlainTextWithPlaceholders={false}
+                        className={null}
+                        params={{}}
+                        role={null}
                         string="navigation.logout"
+                        transform={null}
                       >
                         navigation.logout
                       </Text>
@@ -268,7 +290,7 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                 text="navigation.your_account"
               >
                 <h2
-                  className="css-18cwfw7 headline theme__headline"
+                  className="sg-1e76cvh-root headline theme__headline"
                   data-test-id="Headline"
                   style={
                     {
@@ -277,18 +299,20 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                   }
                 >
                   <Text
+                    acceptPlainTextWithPlaceholders={false}
+                    className={null}
+                    params={{}}
+                    role={null}
                     string="navigation.your_account"
+                    transform={null}
                   >
                     navigation.your_account
                   </Text>
                 </h2>
               </Headline>
               <div
-                className={
-                  {
-                    "data-css-13ch7sr": "",
-                  }
-                }
+                className="sg-1sqpupb-list"
+                data-test-id="more-section-list"
               >
                 <SurroundPortals
                   portalName="nav-menu.logout"
@@ -306,13 +330,18 @@ exports[`<UserMenu /> should render as expected when the user is logged in 1`] =
                     testId="logoutButton"
                   >
                     <button
-                      className="css-1hj8a57"
+                      className="sg-xorol2-root"
                       data-test-id="logoutButton"
                       onClick={[MockFunction]}
                       type="button"
                     >
                       <Text
+                        acceptPlainTextWithPlaceholders={false}
+                        className={null}
+                        params={{}}
+                        role={null}
                         string="navigation.logout"
+                        transform={null}
                       >
                         navigation.logout
                       </Text>
@@ -392,10 +421,10 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
             data-test-id="userMenu"
           >
             <Grid
-              className="css-az18cj theme__more-page__user-menu__container"
+              className="sg-mxubgw-grid theme__more-page__user-menu__container"
             >
               <Grid.Item
-                className="css-mzzsxh theme__more-page__login-button__container"
+                className="sg-u59bcx-gridItem theme__more-page__login-button__container"
               >
                 <Link
                   disabled={true}
@@ -403,13 +432,18 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   tabIndex={0}
                 >
                   <Button
-                    className="css-6f03lb theme__more-page__login-button"
+                    className="sg-sv9uio-button theme__more-page__login-button"
                     disabled={true}
                     testId="UserMenuLogin"
                     type="secondary"
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="login.button"
+                      transform={null}
                     >
                       login.button
                     </Text>
@@ -417,7 +451,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                 </Link>
               </Grid.Item>
               <Grid.Item
-                className="css-mzzsxh theme__more-page-register-button__container"
+                className="sg-u59bcx-gridItem theme__more-page-register-button__container"
               >
                 <Link
                   disabled={true}
@@ -425,13 +459,18 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   tabIndex={0}
                 >
                   <Button
-                    className="css-6f03lb theme__more-page-register-button"
+                    className="sg-sv9uio-button theme__more-page-register-button"
                     disabled={true}
                     testId="UserMenuRegister"
                     type="secondary"
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="login.signup"
+                      transform={null}
                     >
                       login.signup
                     </Text>
@@ -510,10 +549,10 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
             data-test-id="userMenu"
           >
             <Grid
-              className="css-az18cj theme__more-page__user-menu__container"
+              className="sg-mxubgw-grid theme__more-page__user-menu__container"
             >
               <Grid.Item
-                className="css-mzzsxh theme__more-page__login-button__container"
+                className="sg-u59bcx-gridItem theme__more-page__login-button__container"
               >
                 <Link
                   disabled={false}
@@ -521,13 +560,18 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   tabIndex={0}
                 >
                   <Button
-                    className="css-6f03lb theme__more-page__login-button"
+                    className="sg-sv9uio-button theme__more-page__login-button"
                     disabled={false}
                     testId="UserMenuLogin"
                     type="secondary"
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="login.button"
+                      transform={null}
                     >
                       login.button
                     </Text>
@@ -535,7 +579,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                 </Link>
               </Grid.Item>
               <Grid.Item
-                className="css-mzzsxh theme__more-page-register-button__container"
+                className="sg-u59bcx-gridItem theme__more-page-register-button__container"
               >
                 <Link
                   disabled={false}
@@ -543,13 +587,18 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   tabIndex={0}
                 >
                   <Button
-                    className="css-6f03lb theme__more-page-register-button"
+                    className="sg-sv9uio-button theme__more-page-register-button"
                     disabled={false}
                     testId="UserMenuRegister"
                     type="secondary"
                   >
                     <Text
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
                       string="login.signup"
+                      transform={null}
                     >
                       login.signup
                     </Text>

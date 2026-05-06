@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import classNames from 'classnames';
 import { Grid, ResponsiveContainer } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { isProductAvailable } from '../../helpers';
 import { FulfillmentContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
@@ -8,13 +8,27 @@ import { StoreDistance } from './StoreDistance';
 import { StoreHoursToday } from './StoreHoursToday';
 import { StoreSelectLocationButton } from './StoreSelectLocationButton';
 import { StockInfo } from '../StockInfo';
-import { storeHeader, storeName, disabled } from './Store.style';
+
+const useStyles = makeStyles()(theme => ({
+  storeHeader: {
+    cursor: 'pointer',
+    padding: theme.spacing(1, 2, 0.5),
+  },
+  storeName: {
+    fontSize: '1rem',
+    fontWeight: 500,
+  },
+  disabled: {
+    cursor: 'not-allowed',
+  },
+}));
 
 /**
  * Renders a single store headline.
  * @returns {JSX}
  */
 export function StoreHeader() {
+  const { classes, cx } = useStyles();
   const store = useContext(StoreContext);
   const { product } = useContext(FulfillmentContext);
   const isAvailable = isProductAvailable(store, store?.inventory);
@@ -23,10 +37,10 @@ export function StoreHeader() {
 
   return (
     <div
-      className={classNames(storeHeader, { [disabled]: !isAvailable })}
+      className={cx(classes.storeHeader, { [classes.disabled]: !isAvailable })}
     >
       <Grid>
-        <Grid.Item grow={1} className={storeName}>
+        <Grid.Item grow={1} className={classes.storeName}>
           {name}
           <ResponsiveContainer breakpoint=">=sm" webOnly>
             <ul>

@@ -1,12 +1,11 @@
 import React, { useMemo, useCallback, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import {
   i18n, useRoute, historyPop, getNumberOfAddressLines,
 } from '@shopgate/engage/core';
 import { convertValidationErrors, useFormState } from '@shopgate/engage/core/hooks/useFormState';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getShopSettings } from '@shopgate/engage/core/config';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 
@@ -44,20 +43,20 @@ const mapDispatchToProps = dispatch => ({
   })),
 });
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()(theme => ({
+  root: {
     margin: 16,
-  }),
-  form: css({
-    ...StylePresets.OUTLINED_FORM_FIELDS,
+  },
+  form: {
+    ...StylePresets.getOutlinedFormFields(theme),
     ...StylePresets.TWO_COLUMN_LAYOUT,
     ' .profileAddressFormRegion': {
       [responsiveMediaQuery('>=md', { webOnly: false })]: {
         marginRight: '50%',
       },
     },
-  }).toString(),
-  button: css({
+  },
+  button: {
     '&&': {
       marginTop: 8,
       marginRight: 16,
@@ -71,19 +70,19 @@ const styles = {
         marginRight: 0,
       },
     },
-  }).toString(),
-  ripple: css({
+  },
+  ripple: {
     padding: '8px 16px',
-  }).toString(),
-  actions: css({
+  },
+  actions: {
     display: 'flex',
     justifyContent: 'flex-end',
     flexDirection: 'row',
     [responsiveMediaQuery('<md', { webOnly: false })]: {
       flex: 1,
     },
-  }).toString(),
-};
+  },
+}));
 
 /**
  * @param {Object} props Props.
@@ -92,6 +91,7 @@ const styles = {
 const ProfileContact = ({
   shopSettings, userLocation, addContact, updateContact, pop, customer, numberOfAddressLines,
 }) => {
+  const { classes } = useStyles();
   const { updateOrderWithContact, type, isCheckout } = useAddressBook();
   const formContainerRef = useRef(null);
   const { pathname, state: { contact = {} } } = useRoute();
@@ -179,19 +179,19 @@ const ProfileContact = ({
   /* eslint-enable react-hooks/exhaustive-deps */
 
   return (
-    <div className={styles.root} ref={formContainerRef}>
+    <div className={classes.root} ref={formContainerRef}>
       <FormBuilder
         name="ProfileAddressForm"
-        className={styles.form}
+        className={classes.form}
         config={formConfig}
         defaults={contact}
         validationErrors={validationErrors}
         handleUpdate={handleUpdate}
       />
-      <div className={styles.actions}>
+      <div className={classes.actions}>
         <RippleButton
-          className={styles.button}
-          rippleClassName={styles.ripple}
+          className={classes.button}
+          rippleClassName={classes.ripple}
           type="primary"
           onClick={formState.handleSubmit}
         >

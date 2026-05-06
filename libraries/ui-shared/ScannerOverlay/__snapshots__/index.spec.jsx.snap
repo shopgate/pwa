@@ -17,7 +17,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
         props={null}
       >
         <div
-          className="css-yxgai8"
+          className="sg-19szxml-root"
         >
           <div />
         </div>
@@ -45,10 +45,10 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
         }
       >
         <Grid
-          className="css-1saiotv ui-shared__scanner-bar"
+          className="sg-r65lb9-container ui-shared__scanner-bar"
         >
           <Grid.Item
-            className="css-1uot7vp"
+            className="sg-ouqtvo-column"
           >
             <FlashlightButton
               flashlightState={false}
@@ -59,7 +59,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
               >
                 <button
                   aria-label="scanner.flashlight.switchOn"
-                  className="css-1yh9ja6"
+                  className="sg-176t45u-button"
                   onClick={[Function]}
                   role="link"
                   type="button"
@@ -67,13 +67,13 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                   <ToggleIcon
                     offIcon={
                       <FlashDisabledIcon
-                        className="css-hxnimk"
+                        className="sg-vhz0cx-icon"
                       />
                     }
                     on={false}
                     onIcon={
                       <FlashEnabledIcon
-                        className="css-hxnimk"
+                        className="sg-vhz0cx-icon"
                       />
                     }
                     toggleHandler={[Function]}
@@ -84,7 +84,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
                       onClick={[Function]}
                     >
                       <FlashDisabledIcon
-                        className="css-hxnimk"
+                        className="sg-vhz0cx-icon"
                       />
                     </div>
                   </ToggleIcon>
@@ -100,14 +100,19 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
             </FlashlightButton>
           </Grid.Item>
           <Grid.Item
-            className="css-1uot7vp"
+            className="sg-ouqtvo-column"
           >
             <ScannerInstructions>
               <SurroundPortals
                 portalName="scanner.instructions"
               >
                 <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
                   string="scanner.instructions"
+                  transform={null}
                 >
                   scanner.instructions
                 </Text>

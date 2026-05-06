@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { TextField } from '@shopgate/engage/components';
-import { getCSSCustomProp } from '@shopgate/engage/styles';
+import { getCSSCustomProp, makeStyles } from '@shopgate/engage/styles';
 import {
   CardNumberElement,
   CardCvcElement,
@@ -15,8 +14,8 @@ import StripeContext from './StripeProvider.context';
 
 const { colors } = themeConfig;
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()(theme => ({
+  root: {
     padding: '0 16px',
     display: 'flex',
     flexDirection: 'column',
@@ -30,7 +29,7 @@ const styles = {
       borderBottom: `1px solid ${colors.shade12}`,
     },
     ' .formElement label': {
-      color: 'var(--color-text-low-emphasis)',
+      color: theme.palette.text.secondary,
       paddingLeft: 24,
     },
     ' .underline': {
@@ -44,19 +43,19 @@ const styles = {
     ' .StripeElement': {
       paddingLeft: 16,
     },
-  }).toString(),
-  secondRow: css({
+  },
+  secondRow: {
     display: 'flex',
     flexDirection: 'row',
-  }).toString(),
-  cvc: css({
+  },
+  cvc: {
     flex: 1.5,
     marginRight: 16,
-  }).toString(),
-  expiry: css({
+  },
+  expiry: {
     flex: 1,
-  }).toString(),
-};
+  },
+}));
 
 /* eslint-disable react/prop-types */
 /**
@@ -89,6 +88,7 @@ const StripeCardExpiryElement = wrapStripeElement(CardExpiryElement);
  * @returns {JSX}
  */
 const StripeCreditCard = () => {
+  const { classes } = useStyles();
   const cardRef = React.useRef();
   const { error, setError } = useContext(StripeContext);
   const { needsPayment, paymentData } = useCheckoutContext();
@@ -119,7 +119,7 @@ const StripeCreditCard = () => {
   };
 
   return (
-    <div ref={cardRef} className={styles.root}>
+    <div ref={cardRef} className={classes.root}>
       <Section title="checkout.creditCard.headline" hasForm>
         <TextField
           label={i18n.text('checkout.creditCard.card')}
@@ -137,9 +137,9 @@ const StripeCreditCard = () => {
             },
           }}
         />
-        <div className={styles.secondRow}>
+        <div className={classes.secondRow}>
           <TextField
-            className={styles.cvc}
+            className={classes.cvc}
             label={i18n.text('checkout.creditCard.cvc')}
             name="creditCard"
             inputComponent={StripeCardCvcElement}
@@ -153,7 +153,7 @@ const StripeCreditCard = () => {
             }}
           />
           <TextField
-            className={styles.expiry}
+            className={classes.expiry}
             label={i18n.text('checkout.creditCard.expiry')}
             name="creditCard"
             inputComponent={StripeCardExpiryElement}

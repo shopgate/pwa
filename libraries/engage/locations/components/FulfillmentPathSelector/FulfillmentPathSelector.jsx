@@ -1,9 +1,15 @@
 import * as React from 'react';
 import { UIEvents, i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { SheetList } from '@shopgate/engage/components';
 import SheetDrawer from '../../../components/SheetDrawer';
 import { QUICK_RESERVE, MULTI_LINE_RESERVE } from '../../constants';
-import { sheetDrawer } from './FulfillmentPathSelector.style';
+
+const useStyles = makeStyles()({
+  sheetDrawer: {
+    boxShadow: '0 0 0 9999px rgba(0, 0, 0, 0.25)',
+  },
+});
 
 let callback = null;
 const EVENT_SET_OPEN = 'FulfillmentPathSelector.setOpen';
@@ -13,66 +19,67 @@ const EVENT_SET_OPEN = 'FulfillmentPathSelector.setOpen';
  * @returns {JSX.Element}
  */
 function FulfillmentPathSelector() {
+  const { classes } = useStyles();
   const [isOpen, setIsOpen] = React.useState(false);
 
   /**
    * Handles opening of the sheet.
    */
-  function handleOpen() {
+  const handleOpen = React.useCallback(() => {
     setIsOpen(true);
-  }
+  }, []);
 
   React.useEffect(() => {
     UIEvents.addListener(EVENT_SET_OPEN, handleOpen);
     return () => {
       UIEvents.removeListener(EVENT_SET_OPEN, handleOpen);
     };
-  }, []);
+  }, [handleOpen]);
 
   /**
    * @param {string} value The selected value.
    */
-  function handleSelect(value) {
+  const handleSelect = React.useCallback((value) => {
     if (callback !== null) {
       callback(value);
     }
     setIsOpen(false);
     callback = null;
-  }
+  }, []);
 
   /**
    * @param {Object} event The click event.
    */
-  function handleQuickReserve(event) {
+  const handleQuickReserve = React.useCallback((event) => {
     event.preventDefault();
     handleSelect(QUICK_RESERVE);
-  }
+  }, [handleSelect]);
 
   /**
    * @param {Object} event The click event.
    */
-  function handleReserveToCart(event) {
+  const handleReserveToCart = React.useCallback((event) => {
     event.preventDefault();
     handleSelect(MULTI_LINE_RESERVE);
-  }
+  }, [handleSelect]);
 
   /**
    * Handles the case when the sheet is closed manually.
    */
-  function handleClose() {
+  const handleClose = React.useCallback(() => {
     if (callback !== null) {
       callback('');
     }
 
     setIsOpen(false);
     callback = null;
-  }
+  }, []);
 
   return (
     <SheetDrawer
       isOpen={isOpen}
       title={i18n.text('locations.choose_reservation_type')}
-      className={sheetDrawer}
+      className={classes.sheetDrawer}
       onDidClose={handleClose}
     >
       <SheetList>

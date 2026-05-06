@@ -3,14 +3,14 @@
 exports[`<RatingStars /> renders with value of 0 1`] = `
 <div
   aria-hidden={true}
-  className="css-13azwyo "
+  className="sg-p4e9kp-container"
   data-test-id="ratedStars: 0"
 >
   <div
-    className="css-4s85e9 rating-stars-empty"
+    className="sg-ckws8t-emptyStars rating-stars-empty"
   >
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="1"
     >
       <Star
@@ -21,7 +21,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="2"
     >
       <Star
@@ -32,7 +32,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="3"
     >
       <Star
@@ -43,7 +43,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="4"
     >
       <Star
@@ -54,7 +54,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="5"
     >
       <Star
@@ -66,7 +66,7 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
   </div>
   <div
-    className="css-16bht0q rating-stars-filled"
+    className="sg-1a3jay-filledStars rating-stars-filled"
   />
 </div>
 `;
@@ -74,14 +74,14 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
 exports[`<RatingStars /> renders with value of 50 1`] = `
 <div
   aria-hidden={true}
-  className="css-13azwyo "
+  className="sg-p4e9kp-container"
   data-test-id="ratedStars: 2.5"
 >
   <div
-    className="css-4s85e9 rating-stars-empty"
+    className="sg-ckws8t-emptyStars rating-stars-empty"
   >
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="1"
     >
       <Star
@@ -92,7 +92,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="2"
     >
       <Star
@@ -103,7 +103,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="3"
     >
       <Star
@@ -114,7 +114,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="4"
     >
       <Star
@@ -125,7 +125,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="5"
     >
       <Star
@@ -137,10 +137,10 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
   </div>
   <div
-    className="css-16bht0q rating-stars-filled"
+    className="sg-1a3jay-filledStars rating-stars-filled"
   >
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="6"
     >
       <Star
@@ -151,7 +151,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="7"
     >
       <Star
@@ -162,7 +162,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="2"
     >
       <StarHalfIcon
@@ -179,14 +179,14 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
 exports[`<RatingStars /> renders with value of 100 1`] = `
 <div
   aria-hidden={true}
-  className="css-13azwyo "
+  className="sg-p4e9kp-container"
   data-test-id="ratedStars: 5"
 >
   <div
-    className="css-4s85e9 rating-stars-empty"
+    className="sg-ckws8t-emptyStars rating-stars-empty"
   >
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="1"
     >
       <Star
@@ -197,7 +197,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="2"
     >
       <Star
@@ -208,7 +208,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="3"
     >
       <Star
@@ -219,7 +219,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="4"
     >
       <Star
@@ -230,7 +230,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="5"
     >
       <Star
@@ -242,10 +242,10 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
   </div>
   <div
-    className="css-16bht0q rating-stars-filled"
+    className="sg-1a3jay-filledStars rating-stars-filled"
   >
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="6"
     >
       <Star
@@ -256,7 +256,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="7"
     >
       <Star
@@ -267,7 +267,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="8"
     >
       <Star
@@ -278,7 +278,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="9"
     >
       <Star
@@ -289,7 +289,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="10"
     >
       <Star
@@ -306,15 +306,15 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
 exports[`<RatingStars /> should change rating on click 1`] = `
 <div
   aria-hidden={true}
-  className="css-13azwyo "
+  className="sg-p4e9kp-container"
   data-test-id="ratedStars: 5"
 >
   <div
-    className="css-4s85e9 rating-stars-empty"
+    className="sg-ckws8t-emptyStars rating-stars-empty"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="1"
       onClick={[Function]}
       role="button"
@@ -328,7 +328,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="2"
       onClick={[Function]}
       role="button"
@@ -342,7 +342,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="3"
       onClick={[Function]}
       role="button"
@@ -356,7 +356,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="4"
       onClick={[Function]}
       role="button"
@@ -370,7 +370,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="5"
       onClick={[Function]}
       role="button"
@@ -384,11 +384,11 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
   </div>
   <div
-    className="css-16bht0q rating-stars-filled"
+    className="sg-1a3jay-filledStars rating-stars-filled"
   >
     <div
       aria-hidden={true}
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="6"
       onClick={[Function]}
       role="button"
@@ -402,7 +402,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="7"
       onClick={[Function]}
       role="button"
@@ -416,7 +416,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="8"
       onClick={[Function]}
       role="button"
@@ -430,7 +430,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="9"
       onClick={[Function]}
       role="button"
@@ -444,7 +444,7 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="10"
       onClick={[Function]}
       role="button"
@@ -463,15 +463,15 @@ exports[`<RatingStars /> should change rating on click 1`] = `
 exports[`<RatingStars /> should change rating on click 2`] = `
 <div
   aria-hidden={true}
-  className="css-13azwyo "
+  className="sg-p4e9kp-container"
   data-test-id="ratedStars: 3.5"
 >
   <div
-    className="css-4s85e9 rating-stars-empty"
+    className="sg-ckws8t-emptyStars rating-stars-empty"
   >
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="1"
       onClick={[Function]}
       role="button"
@@ -485,7 +485,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="2"
       onClick={[Function]}
       role="button"
@@ -499,7 +499,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="3"
       onClick={[Function]}
       role="button"
@@ -513,7 +513,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="4"
       onClick={[Function]}
       role="button"
@@ -527,7 +527,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-label="reviews.press_to_rate_with_x_stars"
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="5"
       onClick={[Function]}
       role="button"
@@ -541,11 +541,11 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
   </div>
   <div
-    className="css-16bht0q rating-stars-filled"
+    className="sg-1a3jay-filledStars rating-stars-filled"
   >
     <div
       aria-hidden={true}
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="6"
       onClick={[Function]}
       role="button"
@@ -559,7 +559,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="7"
       onClick={[Function]}
       role="button"
@@ -573,7 +573,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
     <div
       aria-hidden={true}
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="8"
       onClick={[Function]}
       role="button"
@@ -586,7 +586,7 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       />
     </div>
     <div
-      className="css-1uwa32v css-q4owmg"
+      className="sg-1aman2z-icon-iconSmall"
       key="3"
     >
       <StarHalfIcon

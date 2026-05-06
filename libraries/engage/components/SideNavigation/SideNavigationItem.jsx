@@ -1,12 +1,50 @@
 import React, { useMemo, memo } from 'react';
-import classNames from 'classnames';
 import Link from '@shopgate/pwa-common/components/Link';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
 import PropTypes from 'prop-types';
-import {
-  getIndentation, item, itemActive, link, linkActive, list,
-} from './SideNavigationItem.style';
 import { useSideNavigation } from './SideNavigation.hooks';
+
+/**
+ * @param {Object} theme Theme object
+ * @param {number} level Side navigation nesting depth.
+ * @returns {number|string}  padding for the level.
+ */
+const getIndentationPadding = (theme, level) => level * theme.spacing(2);
+
+const useStyles = makeStyles()((theme, { level }) => ({
+  indentation: {
+    paddingLeft: getIndentationPadding(theme, level),
+  },
+  list: {
+    position: 'relative',
+  },
+  item: {
+    alignItems: 'center',
+    display: 'flex',
+    textAlign: 'left',
+    outline: 0,
+    padding: theme.spacing(2),
+    position: 'relative',
+    width: '100%',
+    lineHeight: '1.45em',
+  },
+  itemActive: {
+    background: 'var(--color-side-navigation-active-background)',
+  },
+  link: {
+    flexGrow: 1,
+    textAlign: 'left',
+    outline: 0,
+    color: theme.palette.text.primary,
+    ':hover': {
+      color: 'var(--color-primary)',
+    },
+  },
+  linkActive: {
+    color: 'var(--color-primary) !important',
+  },
+}));
 
 /**
  * SideNavigationItem component.
@@ -33,6 +71,7 @@ const SideNavigationItem = ({
   href,
   label,
 }) => {
+  const { classes, cx } = useStyles({ level });
   const { currentPathname } = useSideNavigation();
   const isActive = useMemo(() => !forceInactive && (currentPathname === href || forceActive), [
     currentPathname,
@@ -42,17 +81,17 @@ const SideNavigationItem = ({
   ]);
 
   return (
-    <li className={classNames(list, className)}>
-      <div className={classNames(item, {
-        [itemActive]: isActive,
+    <li className={cx(classes.list, className)}>
+      <div className={cx(classes.item, {
+        [classes.itemActive]: isActive,
       })}
       >
         { href ? (
           <Link
             tag="a"
             href={href}
-            className={classNames(link, getIndentation(level), {
-              [linkActive]: isActive,
+            className={cx(classes.link, classes.indentation, {
+              [classes.linkActive]: isActive,
             })}
           >
             {i18n.text(label)}
@@ -60,8 +99,8 @@ const SideNavigationItem = ({
         ) : (
           <button
             type="button"
-            className={classNames(link, getIndentation(level), {
-              [linkActive]: isActive,
+            className={cx(classes.link, classes.indentation, {
+              [classes.linkActive]: isActive,
             })}
             onClick={onClick}
           >

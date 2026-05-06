@@ -8,8 +8,7 @@ import React, {
 } from 'react';
 import { connect, useStore } from 'react-redux';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getPaymentMethods } from '../selectors/payment';
 import { getCheckoutOrder } from '../selectors/order';
 import CheckoutContext from '../providers/CheckoutProvider.context';
@@ -42,30 +41,28 @@ const mapDispatchToProps = dispatch => ({
   fetchOrder: () => dispatch(fetchCheckoutOrder()),
 });
 
-const { variables } = themeConfig;
-
-const styles = {
-  headline: css({
+const useStyles = makeStyles()(theme => ({
+  headline: {
     fontSize: '1.25rem',
     fontWeight: 'normal',
-    margin: `0 0 ${variables.gap.small}px 0`,
+    margin: theme.spacing(0, 0, 1, 0),
     marginLeft: 16,
     marginRight: 8,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     textTransform: 'none',
-  }).toString(),
-  section: css({
+  },
+  section: {
     marginBottom: 0,
     marginTop: 4,
-  }).toString(),
-  buttons: css({
+  },
+  buttons: {
     marginLeft: 16,
     marginRight: 16,
     marginBottom: 16,
     display: 'flex',
     flexDirection: 'row',
-  }).toString(),
-};
+  },
+}));
 
 /**
  * PaymentMethodProvider
@@ -78,6 +75,7 @@ const PaymentMethodProvider = ({
   fetchOrder,
   updateOrder,
 }) => {
+  const { classes } = useStyles();
   const [activePaymentMeta, setActivePaymentMeta] = useState(null);
   const {
     setPaymentHandler, setPaymentData, needsPayment, setButtonLocked, setLocked,
@@ -167,11 +165,11 @@ const PaymentMethodProvider = ({
   const { provider: Provider, content: Content } = paymentImpl || {};
   return (
     <Context.Provider value={paymentMethodApi}>
-      <div className={styles.section}>
-        <h3 className={styles.headline}>
+      <div className={classes.section}>
+        <h3 className={classes.headline}>
           {i18n.text('checkout.payment.title')}
         </h3>
-        <div className={styles.buttons}>
+        <div className={classes.buttons}>
           {availablePaymentMethods.map(method => (
             <method.button
               key={method.internalCode}

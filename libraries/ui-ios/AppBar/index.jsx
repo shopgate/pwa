@@ -1,9 +1,8 @@
 import React, { useMemo, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
-import { setCSSCustomProp } from '@shopgate/engage/styles';
+import { makeStyles, setCSSCustomProp } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { APP_BAR_CONTENT } from '@shopgate/engage/core/constants';
 import Field from './components/Field';
@@ -13,7 +12,20 @@ import Right from './components/Right';
 import Center from './components/Center';
 import Left from './components/Left';
 import Below from './components/Below';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  outer: {
+    boxSizing: 'content-box',
+    minHeight: 44,
+    paddingTop: 'var(--safe-area-inset-top)',
+  },
+  inner: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    position: 'relative',
+    zIndex: 1,
+  },
+});
 
 /**
  * Updates the --app-bar-height custom property
@@ -37,11 +49,12 @@ const AppBar = ({
   center,
   left,
   right,
-  classes,
+  classes: parentClasses,
   'aria-hidden': ariaHidden,
   backgroundColor,
   textColor,
 }) => {
+  const { classes, cx } = useStyles();
   const contentRef = useRef(null);
   const style = useMemo(() => ({
     background: backgroundColor,
@@ -61,7 +74,7 @@ const AppBar = ({
     };
   }, [contentRef, observer]);
 
-  const sectionClasses = classnames(styles.outer, classes.outer, 'ui-ios__app-bar');
+  const sectionClasses = cx(classes.outer, parentClasses.outer, 'ui-ios__app-bar');
 
   return (
     <section
@@ -72,7 +85,7 @@ const AppBar = ({
       ref={contentRef}
     >
       <SurroundPortals portalName={APP_BAR_CONTENT}>
-        <div className={classnames(styles.inner, classes.inner)}>
+        <div className={cx(classes.inner, parentClasses.inner)}>
           <Left elements={left} />
           <Center elements={center} />
           <Right elements={right} />

@@ -6,14 +6,19 @@ import {
   AVAILABILITY_TYPE_COMING_SOON,
 } from '@shopgate/engage/product/constants';
 
-export default {
+/**
+ * Default stock info settings with theme palette colors.
+ * @param {Object} theme Engage theme from `useTheme()` / `makeStyles`.
+ * @returns {Object}
+ */
+export const createStockInfoDefaultSettings = theme => ({
   [AVAILABILITY_TYPE_AVAILABLE]: {
     visibleInventoryFrom: 11,
     visibleInventoryTo: null,
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: 'locations.stock_info.availableInventory',
-    availabilityTextColor: 'var(--color-state-ok)',
+    availabilityTextColor: theme.palette.success.main,
   },
   [AVAILABILITY_TYPE_COMING_SOON]: {
     comingSoon: true,
@@ -22,7 +27,7 @@ export default {
     includeInventoryBlind: true,
     includeNoRecordStores: true,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_COMING_SOON}`,
-    availabilityTextColor: 'var(--color-state-warning)',
+    availabilityTextColor: theme.palette.warning.main,
   },
   [AVAILABILITY_TYPE_LIMITED_AVAILABILITY]: {
     visibleInventoryFrom: 1,
@@ -30,7 +35,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_LIMITED_AVAILABILITY}`,
-    availabilityTextColor: 'var(--color-state-warning)',
+    availabilityTextColor: theme.palette.warning.main,
   },
   [AVAILABILITY_TYPE_NOT_AVAILABLE]: {
     visibleInventoryFrom: 0,
@@ -38,7 +43,7 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: false,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_NOT_AVAILABLE}`,
-    availabilityTextColor: 'var(--color-state-alert)',
+    availabilityTextColor: theme.palette.error.main,
     allowOrderingToStore: true,
   },
   [AVAILABILITY_TYPE_CUSTOM_AVAILABILITY]: {
@@ -47,9 +52,9 @@ export default {
     includeInventoryBlind: false,
     includeNoRecordStores: true,
     availabilityText: `locations.stock_info.${AVAILABILITY_TYPE_CUSTOM_AVAILABILITY}`,
-    availabilityTextColor: 'var(--color-state-alert)',
+    availabilityTextColor: theme.palette.error.main,
     allowOrderingToStore: true,
   },
   maxNumberOfVisibleInventory: 100,
   aboveMaxExtension: '+',
-};
+});

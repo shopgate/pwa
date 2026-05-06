@@ -2,7 +2,7 @@ import React, { useMemo, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
-import { setCSSCustomProp } from '@shopgate/engage/styles';
+import { makeStyles, setCSSCustomProp } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { APP_BAR_CONTENT } from '@shopgate/engage/core/constants';
 import Field from './components/Field';
@@ -12,7 +12,25 @@ import Right from './components/Right';
 import Center from './components/Center';
 import Left from './components/Left';
 import Below from './components/Below';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  outer: {
+    boxSizing: 'content-box',
+    left: 0,
+    paddingTop: 'var(--safe-area-inset-top)',
+    position: 'sticky',
+    top: 0,
+    width: '100%',
+    zIndex: 15,
+  },
+  inner: {
+    background: 'inherit',
+    display: 'flex',
+    justifyContent: 'space-between',
+    position: 'relative',
+    zIndex: 14,
+  },
+});
 
 /**
  * Updates the --app-bar-height custom property
@@ -40,6 +58,7 @@ const AppBar = ({
   textColor,
   shadow,
 }) => {
+  const { classes, cx } = useStyles();
   const contentRef = useRef(null);
   const style = useMemo(() => ({
     background: backgroundColor,
@@ -63,13 +82,13 @@ const AppBar = ({
   return (
     <header
       ref={contentRef}
-      className={`${styles.outer} ui-material__app-bar`}
+      className={cx(classes.outer, 'ui-material__app-bar')}
       data-test-id="Navigator"
       role="banner"
       style={style}
     >
       <SurroundPortals portalName={APP_BAR_CONTENT}>
-        <div className={styles.inner}>
+        <div className={classes.inner}>
           <Left elements={left} />
           <Center elements={center} />
           <Right elements={right} />

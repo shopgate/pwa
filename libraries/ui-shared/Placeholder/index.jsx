@@ -1,41 +1,62 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(() => ({
+  root: {
+    background: 'var(--color-background-accent)',
+    position: 'relative',
+  },
+}));
 
 /**
  * The placeholder component.
+ * @param {Object} props Props (also spread to style).
+ * @returns {JSX.Element}
  */
-class Placeholder extends PureComponent {
-  /* eslint-disable react/no-unused-prop-types */
-  static propTypes = {
-    height: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-    left: PropTypes.number,
-    top: PropTypes.number,
-    width: PropTypes.oneOfType([
-      PropTypes.number,
-      PropTypes.string,
-    ]),
-  };
-  /* eslint-enable react/no-unused-prop-types */
+const Placeholder = ({
+  height,
+  left,
+  top,
+  width,
+  ...rest
+}) => {
+  const { classes, cx } = useStyles();
 
-  static defaultProps = {
-    height: 0,
-    left: 0,
-    top: 0,
-    width: 0,
+  const style = {
+    height,
+    left,
+    top,
+    width,
+    ...rest,
   };
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <div className={`${styles} ui-shared__placeholder`} style={this.props} />
-    );
-  }
-}
+  return (
+    <div
+      className={cx(classes.root, 'ui-shared__placeholder')}
+      style={style}
+    />
+  );
+};
 
-export default Placeholder;
+Placeholder.propTypes = {
+  height: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  left: PropTypes.number,
+  top: PropTypes.number,
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+};
+
+Placeholder.defaultProps = {
+  height: 0,
+  left: 0,
+  top: 0,
+  width: 0,
+};
+
+export default memo(Placeholder);

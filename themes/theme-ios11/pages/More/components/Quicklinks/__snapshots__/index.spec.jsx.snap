@@ -74,7 +74,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             text="navigation.more_menu"
           >
             <h2
-              className="css-18cwfw7 headline theme__headline"
+              className="sg-1e76cvh-root headline theme__headline"
               data-test-id="Headline"
               style={
                 {
@@ -83,18 +83,20 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
               }
             >
               <Text
+                acceptPlainTextWithPlaceholders={false}
+                className={null}
+                params={{}}
+                role={null}
                 string="navigation.more_menu"
+                transform={null}
               >
                 navigation.more_menu
               </Text>
             </h2>
           </Headline>
           <div
-            className={
-              {
-                "data-css-13ch7sr": "",
-              }
-            }
+            className="sg-1sqpupb-list"
+            data-test-id="more-section-list"
           >
             <SurroundPortals
               portalName="nav-menu.quick-links.items"
@@ -115,12 +117,17 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 testId={null}
               >
                 <Link
-                  className="css-1hj8a57"
+                  className="sg-xorol2-root"
                   href="/some/url"
                   role="button"
                 >
                   <Text
+                    acceptPlainTextWithPlaceholders={false}
+                    className={null}
+                    params={{}}
+                    role={null}
                     string="Some Label"
+                    transform={null}
                   >
                     Some Label
                   </Text>
@@ -135,12 +142,17 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 testId={null}
               >
                 <Link
-                  className="css-1hj8a57"
+                  className="sg-xorol2-root"
                   href="/another/url"
                   role="button"
                 >
                   <Text
+                    acceptPlainTextWithPlaceholders={false}
+                    className={null}
+                    params={{}}
+                    role={null}
                     string="Another Label"
+                    transform={null}
                   >
                     Another Label
                   </Text>

@@ -1,165 +1,158 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useEffect, useRef, useCallback, memo,
+} from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import styles from './style';
+import { makeStyles, keyframes } from '@shopgate/engage/styles';
+
+const duration = 150;
+const easing = 'ease';
+
+const slideInBaseDrawer = keyframes({
+  '0%': { transform: 'translateY(100%)' },
+  '100%': { transform: 'translateY(0)' },
+});
+
+const slideOutBaseDrawer = keyframes({
+  '0%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(100%)' },
+});
+
+const useStyles = makeStyles()(() => ({
+  container: {
+    position: 'fixed',
+    bottom: 0,
+    left: 0,
+    zIndex: 5,
+  },
+  animationIn: {
+    animation: `${slideInBaseDrawer} ${duration}ms 1 forwards ${easing}`,
+  },
+  animationOut: {
+    animation: `${slideOutBaseDrawer} ${duration}ms 1 forwards ${easing}`,
+  },
+}));
 
 /**
  * Drawer component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element|null}
  */
-class Drawer extends Component {
-  /**
-   * The component prop types.
-   * @type {Object}
-   */
-  static propTypes = {
-    animation: PropTypes.shape({
-      duration: PropTypes.number,
-      in: PropTypes.string,
-      out: PropTypes.string,
-    }),
-    children: PropTypes.node,
-    className: PropTypes.string,
-    isOpen: PropTypes.bool,
+const Drawer = ({
+  animation,
+  children,
+  className,
+  isOpen,
+  onOpen,
+  onClose,
+  onDidClose,
+  onDidOpen,
+}) => {
+  const { classes, cx } = useStyles();
+  const [active, setActive] = useState(isOpen);
+  const sheetRef = useRef(null);
+  const isFirstIsOpenSync = useRef(true);
+  const onOpenRef = useRef(onOpen);
+  const onCloseRef = useRef(onClose);
+  onOpenRef.current = onOpen;
+  onCloseRef.current = onClose;
 
-    onClose: PropTypes.func,
-    onDidClose: PropTypes.func,
-    onDidOpen: PropTypes.func,
-
-    onOpen: PropTypes.func,
-  };
-
-  /**
-   * The component default props.
-   * @type {Object}
-   */
-  static defaultProps = {
-    className: '',
-    children: null,
-    isOpen: false,
-    onOpen: () => { },
-    onClose: () => { },
-    onDidClose: () => { },
-    onDidOpen: () => { },
-    animation: {
-      duration: null,
-      in: '',
-      out: '',
-    },
-  };
-
-  /**
-   * Initializes the Drawer component.
-   * @param {Object} props The components props.
-   */
-  constructor(props) {
-    super(props);
-    this.sheetRef = React.createRef();
-    this.state = {
-      active: props.isOpen,
-    };
-  }
-
-  /** inheritdoc */
-  componentDidMount() {
-    if (this.props.isOpen) {
-      if (this.sheetRef.current) {
-        this.sheetRef.current.focus();
-      }
+  useEffect(() => {
+    if (isFirstIsOpenSync.current) {
+      isFirstIsOpenSync.current = false;
+      return;
     }
-  }
-
-  /**
-   * Update state when isOpen changes.
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.isOpen !== nextProps.isOpen) {
-      if (nextProps.isOpen) {
-        if (typeof nextProps.onOpen === 'function') {
-          nextProps.onOpen();
-        }
-        this.setState({ active: true });
-      } else if (typeof nextProps.onClose === 'function') {
-        nextProps.onClose();
-      }
-    }
-  }
-
-  /**
-   * Set focus for a11y when sheet opens
-   * @param {Object} prevProps The previous component props.
-   */
-  componentDidUpdate(prevProps) {
-    if (!prevProps.isOpen && this.props.isOpen) {
-      if (this.sheetRef.current) {
-        this.sheetRef.current.focus();
-      }
-    }
-  }
-
-  /**
-   * Syncs the internal active state when an animation ends.
-   */
-  handleAnimationEnd = () => {
-    this.setState({ active: this.props.isOpen });
-    if (!this.props.isOpen) {
-      this.props.onDidClose();
+    if (isOpen) {
+      onOpenRef.current();
+      setActive(true);
     } else {
-      this.props.onDidOpen();
+      onCloseRef.current();
     }
-  };
+  }, [isOpen]);
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const {
-      className,
-      children,
-      isOpen,
-      animation,
-    } = this.props;
-    const { active } = this.state;
-
-    const animationIn = animation.in || styles.animation.in;
-    const animationOut = animation.out || styles.animation.out;
-
-    const combinedClassName = classNames(
-      className,
-      styles.container,
-      { [animationIn]: isOpen },
-      { [animationOut]: !isOpen },
-      'common__drawer'
-    );
-
-    const style = {};
-    if (typeof animation.duration === 'number') {
-      style.animationDuration = `${animation.duration}ms`;
+  useEffect(() => {
+    if (isOpen && sheetRef.current) {
+      sheetRef.current.focus();
     }
+  }, [isOpen]);
 
-    return (active) ? (
-      <div
-        ref={this.sheetRef}
-        className={combinedClassName}
-        style={style}
-        onAnimationEnd={() => {
-          this.handleAnimationEnd();
-          // clear any residual animation style to fix a11y issue on Android
-          // (focus ring is misaligned)
-          if (this.sheetRef?.style) {
-            this.sheetRef.style.animation = '';
-            this.sheetRef.style.transform = 'none';
-          }
-        }}
-        role="dialog"
-        aria-modal
-        tabIndex={-1}
-      >
-        {children}
-      </div>
-    ) : null;
+  const handleAnimationEnd = useCallback(() => {
+    setActive(isOpen);
+    if (!isOpen) {
+      onDidClose();
+    } else {
+      onDidOpen();
+    }
+  }, [isOpen, onDidClose, onDidOpen]);
+
+  const animationIn = animation.in || classes.animationIn;
+  const animationOut = animation.out || classes.animationOut;
+
+  const combinedClassName = cx(
+    classes.container,
+    { [animationIn]: isOpen },
+    { [animationOut]: !isOpen },
+    className,
+    'common__drawer'
+  );
+
+  const style = {};
+  if (typeof animation.duration === 'number') {
+    style.animationDuration = `${animation.duration}ms`;
   }
-}
 
-export default Drawer;
+  if (!active) {
+    return null;
+  }
+
+  return (
+    <div
+      ref={sheetRef}
+      className={combinedClassName}
+      style={style}
+      onAnimationEnd={() => {
+        handleAnimationEnd();
+        if (sheetRef?.current?.style) {
+          sheetRef.current.style.animation = '';
+          sheetRef.current.style.transform = 'none';
+        }
+      }}
+      role="dialog"
+      aria-modal
+      tabIndex={-1}
+    >
+      {children}
+    </div>
+  );
+};
+
+Drawer.propTypes = {
+  animation: PropTypes.shape({
+    duration: PropTypes.number,
+    in: PropTypes.string,
+    out: PropTypes.string,
+  }),
+  children: PropTypes.node,
+  className: PropTypes.string,
+  isOpen: PropTypes.bool,
+  onClose: PropTypes.func,
+  onDidClose: PropTypes.func,
+  onDidOpen: PropTypes.func,
+  onOpen: PropTypes.func,
+};
+
+Drawer.defaultProps = {
+  animation: {
+    duration: null,
+    in: '',
+    out: '',
+  },
+  children: null,
+  className: '',
+  isOpen: false,
+  onOpen: () => {},
+  onClose: () => {},
+  onDidClose: () => {},
+  onDidOpen: () => {},
+};
+
+export default memo(Drawer);

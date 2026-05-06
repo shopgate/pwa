@@ -10,18 +10,14 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
   leftElement={null}
   rightElement={
     <Chevron
-      className="css-1h5rpg9"
+      className="sg-pez732-chevron"
     />
   }
   showErrorText={true}
 >
   <div
     aria-hidden={true}
-    className={
-      {
-        "data-css-hcovq9": "",
-      }
-    }
+    className="sg-1jjwasa-toggle"
     onClick={[Function]}
     role="button"
     tabIndex="0"
@@ -43,7 +39,7 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
   >
     <Item
       autoClose={false}
-      className="css-1dw7neb"
+      className="sg-e3edmo-itemSelected"
       disabled={false}
       key="DE"
       onClick={[Function]}
@@ -73,18 +69,14 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
   leftElement={null}
   rightElement={
     <Chevron
-      className="css-1h5rpg9"
+      className="sg-pez732-chevron"
     />
   }
   showErrorText={true}
 >
   <div
     aria-hidden={true}
-    className={
-      {
-        "data-css-hcovq9": "",
-      }
-    }
+    className="sg-1jjwasa-toggle"
     onClick={[Function]}
     role="button"
     tabIndex="0"
@@ -136,18 +128,14 @@ exports[`<SelectContextChoices /> should render select with no options 1`] = `
   leftElement={null}
   rightElement={
     <Chevron
-      className="css-1h5rpg9"
+      className="sg-pez732-chevron"
     />
   }
   showErrorText={true}
 >
   <div
     aria-hidden={true}
-    className={
-      {
-        "data-css-hcovq9": "",
-      }
-    }
+    className="sg-1jjwasa-toggle"
     onClick={[Function]}
     role="button"
     tabIndex="0"

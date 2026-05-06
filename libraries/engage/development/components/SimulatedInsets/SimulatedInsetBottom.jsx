@@ -1,10 +1,9 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 
-const classes = {
-  container: css({
+const useStyles = makeStyles()({
+  container: {
     position: 'fixed',
     bottom: 0,
     display: 'flex',
@@ -15,19 +14,19 @@ const classes = {
     zIndex: 10000000,
     pointerEvents: 'auto',
     transition: 'background 0.2s ease',
-  }),
-  containerHighlight: css({
+  },
+  containerHighlight: {
     background: 'rgba(255, 0, 0, 0.7)',
-  }),
-  handle: css({
+  },
+  handle: {
     width: 120,
     height: 3,
     borderRadius: 3,
     background: 'rgba(0, 0, 0, 0.4)',
     border: '1px solid rgba(255, 255, 255, 0.5)',
     boxSizing: 'content-box',
-  }),
-};
+  },
+});
 
 /**
  * Renders a simulated iOS bottom inset in development.
@@ -41,9 +40,10 @@ const SimulatedInsetBottom = ({
   onClick,
   ...props
 }) => {
-  const containerClasses = useMemo(() => classNames(classes.container, {
+  const { classes, cx } = useStyles();
+  const containerClasses = useMemo(() => cx(classes.container, {
     [classes.containerHighlight]: highlightInset,
-  }), [highlightInset]);
+  }), [highlightInset, classes.container, classes.containerHighlight, cx]);
 
   return (
     <div

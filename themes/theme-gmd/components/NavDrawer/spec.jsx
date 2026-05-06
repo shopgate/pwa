@@ -3,7 +3,8 @@ import { shallow, mount } from 'enzyme';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 // eslint-disable-next-line import/named
 import ConnectedNavDrawer, { Unwrapped as NavDrawer } from './index';
-import headerStyles from './components/Header/style';
+
+const headerLoggedInSelector = '[data-test-id="NavDrawerLoginButton"]';
 
 // Mock the redux connect() method instead of providing a fake store.
 jest.mock('./connector', () => obj => obj);
@@ -105,8 +106,6 @@ describe.skip('<NavDrawer />', () => {
 
     expect(wrapper).toMatchSnapshot();
 
-    const headerLoggedInSelector = `.${headerStyles.loggedIn.split(' ').join('.')}`;
-
     expect(wrapper.find(headerLoggedInSelector).length).toBe(1);
   });
 
@@ -120,8 +119,6 @@ describe.skip('<NavDrawer />', () => {
     const wrapper = mount(Component);
 
     expect(wrapper).toMatchSnapshot();
-
-    const headerLoggedInSelector = `.${headerStyles.loggedIn.split(' ').join('.')}`;
 
     expect(wrapper.find(headerLoggedInSelector).length).toBe(0);
   });

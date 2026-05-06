@@ -1,16 +1,25 @@
 import React from 'react';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   BOPIS,
   ROPIS,
 } from '@shopgate/engage/locations';
-import { i18n } from '@shopgate/engage/core';
-import { label } from './CartItemProductLayoutWideFulfillmentLabel.style';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { useCartItemProduct } from './CartItem.hooks';
+
+const useStyles = makeStyles()({
+  label: {
+    color: 'var(--color-secondary)',
+    fontSize: '0.875rem',
+    marginTop: 'auto',
+  },
+});
 
 /**
  * @returns {JSX.Element}
  */
 const CartItemProductLayoutWideFulfillmentLabel = () => {
+  const { classes } = useStyles();
   const { cartItem } = useCartItemProduct();
   const fulfillmentMethod = cartItem?.fulfillment?.method || null;
 
@@ -23,7 +32,7 @@ const CartItemProductLayoutWideFulfillmentLabel = () => {
   }
 
   return (
-    <div className={label}>
+    <div className={classes.label}>
       {i18n.text(`locations.method.${suffix}`)}
     </div>
   );

@@ -2,12 +2,19 @@ import React, { memo, useMemo } from 'react';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  root: {
+    width: 10,
+  },
+});
 
 /**
  * @returns {JSX}
  */
 const TaxDisclaimer = () => {
+  const { classes } = useStyles();
   // Added with PWA 6 - CCP-2372
   const {
     show,
@@ -24,7 +31,7 @@ const TaxDisclaimer = () => {
   }
 
   return (
-    <Grid.Item className={styles} component="div" grow={0} shrink={0} />
+    <Grid.Item className={classes.root} component="div" grow={0} shrink={0} />
   );
 };
 

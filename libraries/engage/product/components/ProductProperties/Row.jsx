@@ -1,28 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { tableCell } from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(theme => ({
+  tableCell: {
+    maxWidth: 100,
+    padding: theme.spacing(0.25, 1),
+    overflowWrap: 'break-word',
+    ':first-of-type': {
+      paddingLeft: 0,
+    },
+    ':last-of-type': {
+      paddingRight: 0,
+    },
+  },
+}));
 
 /**
  * Renders a single properties row.
  * @param {Object} props The component props.
  * @return {JSX.Element}
  */
-const Row = ({ label, value, type }) => (
-  <tr
-    className="engage__product__product-property"
-    data-type={type}
-    data-label={label}
-    aria-label={`${typeof label === 'string' ? label : ''}: ${typeof value === 'string' ? value : ''}`}
-    tabIndex={0}
-  >
-    <td className={tableCell} aria-hidden>
-      <span dangerouslySetInnerHTML={{ __html: label }} />
-    </td>
-    <td className={tableCell} data-test-id={`property: ${value}`} aria-hidden>
-      <span dangerouslySetInnerHTML={{ __html: value }} />
-    </td>
-  </tr>
-);
+const Row = ({ label, value, type }) => {
+  const { classes } = useStyles();
+
+  return (
+    <tr
+      className="engage__product__product-property"
+      data-type={type}
+      data-label={label}
+      aria-label={`${typeof label === 'string' ? label : ''}: ${typeof value === 'string' ? value : ''}`}
+      tabIndex={0}
+    >
+      <td className={classes.tableCell} aria-hidden>
+        { /* eslint-disable-next-line react/no-danger */}
+        <span dangerouslySetInnerHTML={{ __html: label }} />
+      </td>
+      <td className={classes.tableCell} data-test-id={`property: ${value}`} aria-hidden>
+        { /* eslint-disable-next-line react/no-danger */}
+        <span dangerouslySetInnerHTML={{ __html: value }} />
+      </td>
+    </tr>
+  );
+};
 
 Row.propTypes = {
   label: PropTypes.string.isRequired,

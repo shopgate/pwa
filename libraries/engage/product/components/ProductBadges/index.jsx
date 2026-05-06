@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
-import classNames from 'classnames';
 import kebabCase from 'lodash/kebabCase';
+import { makeStyles } from '@shopgate/engage/styles';
 import { SurroundPortals } from '../../../components';
 import { PORTAL_PRODUCT_BADGES } from '../../../components/constants';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     position: 'absolute',
     paddingLeft: 10,
     left: 0,
@@ -20,8 +19,8 @@ const styles = {
     ' > *:empty': {
       display: 'none',
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * The ProductBadges component
@@ -31,6 +30,7 @@ const styles = {
 const ProductBadges = ({
   children, location, productId, portalProps, className,
 }) => {
+  const { classes, cx } = useStyles();
   const props = useMemo(() => ({
     ...portalProps,
     location,
@@ -45,7 +45,7 @@ const ProductBadges = ({
   }, [location]);
 
   return (
-    <div className={classNames(styles.root, className, 'product_badges', locationClass)}>
+    <div className={cx(classes.root, className, 'product_badges', locationClass)}>
       <SurroundPortals portalName={PORTAL_PRODUCT_BADGES} portalProps={props}>
         {children}
       </SurroundPortals>

@@ -5,7 +5,7 @@ exports[`engage > components > view > components > content should render content
   viewVisible={true}
 >
   <article
-    className="css-ytqxab engage__view__content route_"
+    className="engage__view__content route__ sg-1tbr3ux-containerBase-containerScroll"
     role="none"
     style={
       {
@@ -16,11 +16,7 @@ exports[`engage > components > view > components > content should render content
     }
   >
     <div
-      className={
-        {
-          "data-css-18u3fb9": "",
-        }
-      }
+      className="sg-x5n1ie-containerInner"
     >
       <div
         className="engage__view__content__scrollable-content"

@@ -2,19 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Accordion } from '@shopgate/pwa-ui-material';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
 import Lists from './Lists';
 import ListsHTML from './ListsHTML';
 import Wrapper from './Wrapper';
-import { accordion } from './style';
+
+const useStyles = makeStyles()(theme => ({
+  accordion: {
+    borderTop: `3px solid ${theme.palette.background.default}`,
+  },
+}));
 
 /**
  * Renders the properties as groups.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const GroupedProperties = ({ groups }) => groups
-  .map(group => (
-    <div key={group.key} className={accordion}>
+const GroupedProperties = ({ groups }) => {
+  const { classes } = useStyles();
+
+  return groups.map(group => (
+    <div key={group.key} className={classes.accordion}>
       <Accordion
         renderLabel={() => group.label || i18n.text(`product.displayGroups.${group.key}`)}
         testId={`product-properties-group-${!group.label ? group.key : `${group.key}-${group.label}`}`}
@@ -29,6 +37,7 @@ const GroupedProperties = ({ groups }) => groups
       </Accordion>
     </div>
   ));
+};
 
 GroupedProperties.propTypes = {
   groups: PropTypes.arrayOf(PropTypes.shape()).isRequired,

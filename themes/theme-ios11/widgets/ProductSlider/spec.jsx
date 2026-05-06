@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import {
   PRODUCT_SLIDER_WIDGET_LIMIT,
   UnwrappedProductSlider as ProductSlider,
@@ -11,7 +11,6 @@ jest.mock('@shopgate/engage/core', () => ({
 }));
 
 jest.mock('@shopgate/engage/components', () => {
-  // eslint-disable-next-line require-jsdoc
   function Swiper({ children }) { return children; }
   Swiper.Item = function SwiperItem({ children }) { return children; };
   return {
@@ -122,7 +121,7 @@ describe('<ProductSlider />', () => {
   it('should call the products callback on mount', () => {
     const getProducts = jest.fn();
     const settings = getSettings();
-    const wrapper = shallow(<ProductSlider
+    const wrapper = mount(<ProductSlider
       id={sliderId}
       settings={settings}
       getProducts={getProducts}

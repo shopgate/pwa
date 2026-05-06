@@ -4,10 +4,10 @@ exports[`components/ProductCharacteristics should render 1`] = `
 <Component
   render={
     [MockFunction] {
-      "calls": Array [
-        Array [
-          Object {
-            "charRef": Object {
+      "calls": [
+        [
+          {
+            "charRef": {
               "current": null,
             },
             "disabled": false,
@@ -15,25 +15,29 @@ exports[`components/ProductCharacteristics should render 1`] = `
             "id": "1",
             "key": "1",
             "label": "Color",
+            "resetHighlight": [Function],
             "select": [Function],
             "selected": null,
-            "values": Array [
-              Object {
+            "swatch": false,
+            "values": [
+              {
                 "id": "1",
                 "label": "BLACK-WHITE (9000)",
                 "selectable": true,
+                "selected": false,
               },
-              Object {
+              {
                 "id": "2",
                 "label": "RED-WHITE (1000)",
                 "selectable": true,
+                "selected": false,
               },
             ],
           },
         ],
-        Array [
-          Object {
-            "charRef": Object {
+        [
+          {
+            "charRef": {
               "current": null,
             },
             "disabled": true,
@@ -41,24 +45,37 @@ exports[`components/ProductCharacteristics should render 1`] = `
             "id": "2",
             "key": "2",
             "label": "Size",
+            "resetHighlight": [Function],
             "select": [Function],
             "selected": null,
-            "values": Array [
-              Object {
+            "swatch": false,
+            "values": [
+              {
                 "id": "11",
                 "label": "7",
-                "selectable": true,
+                "selectable": false,
+                "selected": false,
               },
-              Object {
+              {
                 "id": "12",
                 "label": "7.5",
-                "selectable": true,
+                "selectable": false,
+                "selected": false,
               },
             ],
           },
         ],
       ],
-      "results": undefined,
+      "results": [
+        {
+          "type": "return",
+          "value": undefined,
+        },
+        {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
     }
   }
 >
@@ -66,10 +83,10 @@ exports[`components/ProductCharacteristics should render 1`] = `
     WrappedComponent={[Function]}
     render={
       [MockFunction] {
-        "calls": Array [
-          Array [
-            Object {
-              "charRef": Object {
+        "calls": [
+          [
+            {
+              "charRef": {
                 "current": null,
               },
               "disabled": false,
@@ -77,25 +94,29 @@ exports[`components/ProductCharacteristics should render 1`] = `
               "id": "1",
               "key": "1",
               "label": "Color",
+              "resetHighlight": [Function],
               "select": [Function],
               "selected": null,
-              "values": Array [
-                Object {
+              "swatch": false,
+              "values": [
+                {
                   "id": "1",
                   "label": "BLACK-WHITE (9000)",
                   "selectable": true,
+                  "selected": false,
                 },
-                Object {
+                {
                   "id": "2",
                   "label": "RED-WHITE (1000)",
                   "selectable": true,
+                  "selected": false,
                 },
               ],
             },
           ],
-          Array [
-            Object {
-              "charRef": Object {
+          [
+            {
+              "charRef": {
                 "current": null,
               },
               "disabled": true,
@@ -103,72 +124,119 @@ exports[`components/ProductCharacteristics should render 1`] = `
               "id": "2",
               "key": "2",
               "label": "Size",
+              "resetHighlight": [Function],
               "select": [Function],
               "selected": null,
-              "values": Array [
-                Object {
+              "swatch": false,
+              "values": [
+                {
                   "id": "11",
                   "label": "7",
-                  "selectable": true,
+                  "selectable": false,
+                  "selected": false,
                 },
-                Object {
+                {
                   "id": "12",
                   "label": "7.5",
-                  "selectable": true,
+                  "selectable": false,
+                  "selected": false,
                 },
               ],
             },
           ],
         ],
-        "results": undefined,
+        "results": [
+          {
+            "type": "return",
+            "value": undefined,
+          },
+          {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
       }
     }
   >
     <Theme>
-      <Component
+      <children
         AppBar={[Function]}
         Drawer={[Function]}
         View={[Function]}
         contexts={
-          Object {
-            "ProductContext": Object {
+          {
+            "ProductContext": {
               "Consumer": [Function],
             },
           }
         }
       >
         <Consumer>
-          <Component
+          <children
             conditioner={
               Conditioner {
-                "conditioners": Map {
-                  "product-variants" => [Function],
+                "conditions": Map {
+                  "product-variants" => {
+                    "conditioner": [Function],
+                    "priority": 1,
+                  },
                 },
               }
             }
-            options={Object {}}
+            options={{}}
             productId="123"
+            setCharacteristics={
+              [MockFunction] {
+                "calls": [
+                  [
+                    {},
+                  ],
+                ],
+                "results": [
+                  {
+                    "type": "return",
+                    "value": undefined,
+                  },
+                ],
+              }
+            }
             variantId="123-45"
           >
             <Component
               productContext={
-                Object {
+                {
                   "conditioner": Conditioner {
-                    "conditioners": Map {
-                      "product-variants" => [Function],
+                    "conditions": Map {
+                      "product-variants" => {
+                        "conditioner": [Function],
+                        "priority": 1,
+                      },
                     },
                   },
-                  "options": Object {},
+                  "options": {},
                   "productId": "123",
+                  "setCharacteristics": [MockFunction] {
+                    "calls": [
+                      [
+                        {},
+                      ],
+                    ],
+                    "results": [
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                    ],
+                  },
                   "variantId": "123-45",
                 }
               }
               render={
                 [MockFunction] {
-                  "calls": Array [
-                    Array [
-                      Object {
-                        "charRef": Object {
+                  "calls": [
+                    [
+                      {
+                        "charRef": {
                           "current": null,
                         },
                         "disabled": false,
@@ -176,25 +244,29 @@ exports[`components/ProductCharacteristics should render 1`] = `
                         "id": "1",
                         "key": "1",
                         "label": "Color",
+                        "resetHighlight": [Function],
                         "select": [Function],
                         "selected": null,
-                        "values": Array [
-                          Object {
+                        "swatch": false,
+                        "values": [
+                          {
                             "id": "1",
                             "label": "BLACK-WHITE (9000)",
                             "selectable": true,
+                            "selected": false,
                           },
-                          Object {
+                          {
                             "id": "2",
                             "label": "RED-WHITE (1000)",
                             "selectable": true,
+                            "selected": false,
                           },
                         ],
                       },
                     ],
-                    Array [
-                      Object {
-                        "charRef": Object {
+                    [
+                      {
+                        "charRef": {
                           "current": null,
                         },
                         "disabled": true,
@@ -202,43 +274,59 @@ exports[`components/ProductCharacteristics should render 1`] = `
                         "id": "2",
                         "key": "2",
                         "label": "Size",
+                        "resetHighlight": [Function],
                         "select": [Function],
                         "selected": null,
-                        "values": Array [
-                          Object {
+                        "swatch": false,
+                        "values": [
+                          {
                             "id": "11",
                             "label": "7",
-                            "selectable": true,
+                            "selectable": false,
+                            "selected": false,
                           },
-                          Object {
+                          {
                             "id": "12",
                             "label": "7.5",
-                            "selectable": true,
+                            "selectable": false,
+                            "selected": false,
                           },
                         ],
                       },
                     ],
                   ],
-                  "results": undefined,
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
                 }
               }
             >
               <Component
                 conditioner={
                   Conditioner {
-                    "conditioners": Map {
-                      "product-variants" => [Function],
+                    "conditions": Map {
+                      "product-variants" => {
+                        "conditioner": [Function],
+                        "priority": 1,
+                      },
                     },
                   }
                 }
-                options={Object {}}
+                options={{}}
                 productId="123"
                 render={
                   [MockFunction] {
-                    "calls": Array [
-                      Array [
-                        Object {
-                          "charRef": Object {
+                    "calls": [
+                      [
+                        {
+                          "charRef": {
                             "current": null,
                           },
                           "disabled": false,
@@ -246,25 +334,29 @@ exports[`components/ProductCharacteristics should render 1`] = `
                           "id": "1",
                           "key": "1",
                           "label": "Color",
+                          "resetHighlight": [Function],
                           "select": [Function],
                           "selected": null,
-                          "values": Array [
-                            Object {
+                          "swatch": false,
+                          "values": [
+                            {
                               "id": "1",
                               "label": "BLACK-WHITE (9000)",
                               "selectable": true,
+                              "selected": false,
                             },
-                            Object {
+                            {
                               "id": "2",
                               "label": "RED-WHITE (1000)",
                               "selectable": true,
+                              "selected": false,
                             },
                           ],
                         },
                       ],
-                      Array [
-                        Object {
-                          "charRef": Object {
+                      [
+                        {
+                          "charRef": {
                             "current": null,
                           },
                           "disabled": true,
@@ -272,46 +364,78 @@ exports[`components/ProductCharacteristics should render 1`] = `
                           "id": "2",
                           "key": "2",
                           "label": "Size",
+                          "resetHighlight": [Function],
                           "select": [Function],
                           "selected": null,
-                          "values": Array [
-                            Object {
+                          "swatch": false,
+                          "values": [
+                            {
                               "id": "11",
                               "label": "7",
-                              "selectable": true,
+                              "selectable": false,
+                              "selected": false,
                             },
-                            Object {
+                            {
                               "id": "12",
                               "label": "7.5",
-                              "selectable": true,
+                              "selectable": false,
+                              "selected": false,
                             },
                           ],
                         },
                       ],
                     ],
-                    "results": undefined,
+                    "results": [
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
+                setCharacteristics={
+                  [MockFunction] {
+                    "calls": [
+                      [
+                        {},
+                      ],
+                    ],
+                    "results": [
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                    ],
                   }
                 }
                 variantId="123-45"
               >
                 <ProductCharacteristics
+                  characteristics={null}
                   conditioner={
                     Conditioner {
-                      "conditioners": Map {
-                        "product-variants" => [Function],
+                      "conditions": Map {
+                        "product-variants" => {
+                          "conditioner": [Function],
+                          "priority": 1,
+                        },
                       },
                     }
                   }
                   finishTimeout={0}
-                  navigate={[Function]}
-                  options={Object {}}
+                  navigate={[MockFunction]}
+                  options={{}}
                   productId="123"
                   render={
                     [MockFunction] {
-                      "calls": Array [
-                        Array [
-                          Object {
-                            "charRef": Object {
+                      "calls": [
+                        [
+                          {
+                            "charRef": {
                               "current": null,
                             },
                             "disabled": false,
@@ -319,25 +443,29 @@ exports[`components/ProductCharacteristics should render 1`] = `
                             "id": "1",
                             "key": "1",
                             "label": "Color",
+                            "resetHighlight": [Function],
                             "select": [Function],
                             "selected": null,
-                            "values": Array [
-                              Object {
+                            "swatch": false,
+                            "values": [
+                              {
                                 "id": "1",
                                 "label": "BLACK-WHITE (9000)",
                                 "selectable": true,
+                                "selected": false,
                               },
-                              Object {
+                              {
                                 "id": "2",
                                 "label": "RED-WHITE (1000)",
                                 "selectable": true,
+                                "selected": false,
                               },
                             ],
                           },
                         ],
-                        Array [
-                          Object {
-                            "charRef": Object {
+                        [
+                          {
+                            "charRef": {
                               "current": null,
                             },
                             "disabled": true,
@@ -345,69 +473,97 @@ exports[`components/ProductCharacteristics should render 1`] = `
                             "id": "2",
                             "key": "2",
                             "label": "Size",
+                            "resetHighlight": [Function],
                             "select": [Function],
                             "selected": null,
-                            "values": Array [
-                              Object {
+                            "swatch": false,
+                            "values": [
+                              {
                                 "id": "11",
                                 "label": "7",
-                                "selectable": true,
+                                "selectable": false,
+                                "selected": false,
                               },
-                              Object {
+                              {
                                 "id": "12",
                                 "label": "7.5",
-                                "selectable": true,
+                                "selectable": false,
+                                "selected": false,
                               },
                             ],
                           },
                         ],
                       ],
-                      "results": undefined,
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
+                    }
+                  }
+                  setCharacteristics={
+                    [MockFunction] {
+                      "calls": [
+                        [
+                          {},
+                        ],
+                      ],
+                      "results": [
+                        {
+                          "type": "return",
+                          "value": undefined,
+                        },
+                      ],
                     }
                   }
                   variantId="123-45"
                   variants={
-                    Object {
-                      "characteristics": Array [
-                        Object {
+                    {
+                      "characteristics": [
+                        {
                           "id": "1",
                           "label": "Color",
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "id": "1",
                               "label": "BLACK-WHITE (9000)",
                             },
-                            Object {
+                            {
                               "id": "2",
                               "label": "RED-WHITE (1000)",
                             },
                           ],
                         },
-                        Object {
+                        {
                           "id": "2",
                           "label": "Size",
-                          "values": Array [
-                            Object {
+                          "values": [
+                            {
                               "id": "11",
                               "label": "7",
                             },
-                            Object {
+                            {
                               "id": "12",
                               "label": "7.5",
                             },
                           ],
                         },
                       ],
-                      "products": Array [
-                        Object {
-                          "characteristics": Object {
+                      "products": [
+                        {
+                          "characteristics": {
                             "1": "1",
                             "2": "11",
                           },
                           "id": "32050590001000",
                         },
-                        Object {
-                          "characteristics": Object {
+                        {
+                          "characteristics": {
                             "1": "2",
                             "2": "12",
                           },
@@ -419,9 +575,9 @@ exports[`components/ProductCharacteristics should render 1`] = `
                 />
               </Component>
             </Component>
-          </Component>
+          </children>
         </Consumer>
-      </Component>
+      </children>
     </Theme>
   </WithProductContext>
 </Component>

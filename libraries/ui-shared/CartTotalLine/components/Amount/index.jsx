@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import styles from './style';
+import { I18n } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  amount: {
+    textAlign: 'right',
+    order: 4,
+  },
+});
 
 /**
  * The Amount component.
@@ -9,12 +16,14 @@ import styles from './style';
  * @return {JSX}
  */
 const Amount = ({ amount, currency }) => {
+  const { classes } = useStyles();
+
   if (amount === null) {
     return null;
   }
 
   return (
-    <div className={styles.amount}>
+    <div className={classes.amount}>
       {typeof amount === 'string' && <I18n.Text string={amount} />}
       {typeof amount === 'number' && <I18n.Price price={amount} currency={currency} />}
     </div>

@@ -24,14 +24,14 @@ exports[`<TextField /> should focus the input 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -52,7 +52,7 @@ exports[`<TextField /> should focus the input 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -95,7 +95,7 @@ exports[`<TextField /> should focus the input 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -122,7 +122,7 @@ exports[`<TextField /> should focus the input 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -147,7 +147,7 @@ exports[`<TextField /> should focus the input 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -174,10 +174,10 @@ exports[`<TextField /> should focus the input 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -199,7 +199,7 @@ exports[`<TextField /> should focus the input 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -240,14 +240,14 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -268,7 +268,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -311,7 +311,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -338,7 +338,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -363,7 +363,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -390,10 +390,10 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -415,7 +415,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -456,14 +456,14 @@ exports[`<TextField /> should render a simple text field 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -484,7 +484,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -527,7 +527,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -554,7 +554,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -579,7 +579,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -606,10 +606,10 @@ exports[`<TextField /> should render a simple text field 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -631,7 +631,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -672,14 +672,14 @@ exports[`<TextField /> should render the text field as password 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -700,7 +700,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -743,7 +743,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -770,7 +770,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -795,7 +795,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -822,10 +822,10 @@ exports[`<TextField /> should render the text field as password 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -847,7 +847,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -888,14 +888,14 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
   value="FooBar"
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -916,7 +916,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-16msjt6 css-1fekhao label floating"
+        className="label floating sg-grelb-label-labelFloating-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -959,7 +959,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -986,7 +986,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1011,7 +1011,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1038,10 +1038,10 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -1063,7 +1063,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1104,14 +1104,14 @@ exports[`<TextField /> should replace the error text with custom validation erro
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1132,7 +1132,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -1175,7 +1175,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -1202,7 +1202,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1227,7 +1227,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1254,13 +1254,13 @@ exports[`<TextField /> should replace the error text with custom validation erro
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-state-alert)",
+              "borderBottomColor": "var(--sg-palette-error-main)",
             }
           }
         />
@@ -1278,7 +1278,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1326,14 +1326,14 @@ exports[`<TextField /> should sanitize the input 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1354,7 +1354,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -1397,7 +1397,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -1424,7 +1424,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1449,7 +1449,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1476,10 +1476,10 @@ exports[`<TextField /> should sanitize the input 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -1501,7 +1501,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1542,14 +1542,14 @@ exports[`<TextField /> should show the error message 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1570,7 +1570,7 @@ exports[`<TextField /> should show the error message 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -1613,7 +1613,7 @@ exports[`<TextField /> should show the error message 1`] = `
             "aria-invalid": true,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -1640,7 +1640,7 @@ exports[`<TextField /> should show the error message 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1665,7 +1665,7 @@ exports[`<TextField /> should show the error message 1`] = `
             aria-invalid={true}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1692,13 +1692,13 @@ exports[`<TextField /> should show the error message 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-state-alert)",
+              "borderBottomColor": "var(--sg-palette-error-main)",
             }
           }
         />
@@ -1716,7 +1716,7 @@ exports[`<TextField /> should show the error message 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1764,14 +1764,14 @@ exports[`<TextField /> should show the hint text 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText="This is the hint text"
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -1799,7 +1799,7 @@ exports[`<TextField /> should show the hint text 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -1842,7 +1842,7 @@ exports[`<TextField /> should show the hint text 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -1869,7 +1869,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1894,7 +1894,7 @@ exports[`<TextField /> should show the hint text 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1921,10 +1921,10 @@ exports[`<TextField /> should show the hint text 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -1946,7 +1946,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -1987,14 +1987,14 @@ exports[`<TextField /> should show the label 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -2015,7 +2015,7 @@ exports[`<TextField /> should show the label 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -2065,7 +2065,7 @@ exports[`<TextField /> should show the label 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -2092,7 +2092,7 @@ exports[`<TextField /> should show the label 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -2117,7 +2117,7 @@ exports[`<TextField /> should show the label 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -2144,10 +2144,10 @@ exports[`<TextField /> should show the label 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -2169,7 +2169,7 @@ exports[`<TextField /> should show the label 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -2224,14 +2224,14 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
   value=""
 >
   <div
-    className="css-e4z0u6 textField ui-shared__text-field"
+    className="sg-1legmli-input textField ui-shared__text-field"
   >
     <Hint
       hintText=""
       visible={false}
     >
       <div
-        className="css-tnfb18 css-1jyyyen hint"
+        className="hint sg-1kbq3o6-hint-hintInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -2252,7 +2252,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     >
       <label
         aria-hidden={true}
-        className="css-udxgne css-1fekhao label"
+        className="label sg-192rdno-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -2295,7 +2295,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
             "aria-invalid": false,
           }
         }
-        className="css-keangt"
+        className="sg-1w45uhc-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -2322,7 +2322,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="css-keangt"
+          className="sg-1w45uhc-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -2347,7 +2347,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="css-keangt simpleInput common__simple-input"
+            className="sg-1w45uhc-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -2374,10 +2374,10 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -2399,7 +2399,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-7t8drq errorText"
+        className="sg-kwic2t-error errorText"
         id="ariaError-test-input"
       >
         <Translate

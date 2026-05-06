@@ -1,16 +1,16 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { connect } from 'react-redux';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getWishlistItemQuantityEnabled } from '../../../core/selectors/shopSettings';
 
 import UnitQuantityPicker from '../../../product/components/UnitQuantityPicker/UnitQuantityPicker';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     width: 120,
-  }),
-};
+  },
+});
 
 /**
  * @return {Function} The extended component props.
@@ -29,6 +29,7 @@ const ItemQuantity = ({
   quantity,
   onChange,
 }) => {
+  const { classes } = useStyles();
   const [internalQuantity, setInternalQuantity] = useState(quantity);
 
   const handleChange = useCallback((newQuantity) => {
@@ -45,7 +46,7 @@ const ItemQuantity = ({
   }
 
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <UnitQuantityPicker
         maxValue={99}
         minValue={1}

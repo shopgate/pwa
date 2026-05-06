@@ -24,7 +24,7 @@ export * from './string';
 export { isIOSTheme } from './isIOSTheme';
 export { isTouchDevice } from './isTouchDevice';
 export { generateGoogleMapsDirectionsUrl } from './googleMaps';
-export { useScrollContainer } from './scrollContainer';
+export { applyScrollContainer, useScrollContainer } from './scrollContainer';
 export { getDeviceTypeForCms } from './deviceType';
 export * from './featureFlag';
 

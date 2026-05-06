@@ -5,9 +5,22 @@ import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Chip, ChipLayout } from '@shopgate/engage/components';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
-import { container, label } from './style';
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    overflow: 'auto',
+    padding: theme.spacing(0, 1.5),
+    width: '100%',
+  },
+  label: {
+    // TODO: This CSS variable is re-defined inside the Chip component. So refactoring to the
+    // theme need some planning.
+    color: 'var(--color-text-high-emphasis)',
+  },
+}));
 
 /**
  * The FilterChips component.
@@ -22,6 +35,7 @@ const FilterChips = ({
   currentPathname,
   onChipCountUpdate,
 }) => {
+  const { classes, cx } = useStyles();
   const handleRemove = useCallback((id, value) => {
     const { [id]: selected, ...rest } = filters;
 
@@ -96,7 +110,7 @@ const FilterChips = ({
               removeLabel={removeLabel}
               editLabel={editLabel}
             >
-              <span className={label}>
+              <span className={classes.label}>
                 {pricesFormatted}
               </span>
             </Chip>
@@ -123,7 +137,7 @@ const FilterChips = ({
                 removeLabel={removeLabel}
                 editLabel={editLabel}
               >
-                <span className={label}>
+                <span className={classes.label}>
                   {filterFormatted}
                 </span>
               </Chip>
@@ -135,7 +149,7 @@ const FilterChips = ({
     });
 
     return entries;
-  }, [filters, handleRemove, openFilters]);
+  }, [classes.label, filters, handleRemove, openFilters]);
 
   useEffect(() => {
     onChipCountUpdate(chips.length);
@@ -146,7 +160,7 @@ const FilterChips = ({
   }
 
   return (
-    <div className={`${container} theme__filter-bar__filter-chips`}>
+    <div className={cx(classes.container, 'theme__filter-bar__filter-chips')}>
       <ChipLayout
         moreLabel="filter.more"
         handleMoreButton={openFilters}

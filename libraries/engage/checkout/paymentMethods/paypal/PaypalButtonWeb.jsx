@@ -2,13 +2,13 @@ import React, {
   Fragment, useLayoutEffect, useEffect, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '../../hooks/common';
 import Button from '../../components/PaymentMethodButton';
 import { loadWebSdk, usePaypal } from './sdk';
 
-const styles = {
-  button: css({
+const useStyles = makeStyles()({
+  button: {
     ' .paypal-mark': {
       ' img': {
         height: 25,
@@ -19,8 +19,8 @@ const styles = {
       margin: 0,
       padding: 0,
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * Paypal
@@ -30,6 +30,7 @@ const styles = {
 const PaypalButton = ({
   settings, onChange, activePaymentMeta: activeFundingSource, active,
 }) => {
+  const { classes } = useStyles();
   const { setLocked, order } = useCheckoutContext();
   const paypal = usePaypal();
 
@@ -83,7 +84,7 @@ const PaypalButton = ({
             onChange={() => onChange(fundingSource)}
             active={isButtonActive}
           >
-            <div id={`sg-paypal-button-${index}`} className={styles.button} />
+            <div id={`sg-paypal-button-${index}`} className={classes.button} />
           </Button>
         );
       })}

@@ -1,20 +1,32 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import styles from '../../style';
+import { I18n, Ellipsis } from '@shopgate/engage/components';
+import { themeConfig } from '@shopgate/engage';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(theme => ({
+  title: {
+    fontSize: '1.25em',
+    lineHeight: themeConfig.typography.lineHeight,
+    fontWeight: 500,
+    paddingBottom: theme.spacing(1),
+    marginTop: '-.25em',
+  },
+}));
 
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Title = ({ title }) => {
+  const { classes } = useStyles();
+
   if (!title) {
     return null;
   }
 
   return (
-    <div className={styles.title} id="basicDialogTitle" role="heading" aria-level="2">
+    <div className={classes.title} id="basicDialogTitle" role="heading" aria-level="2">
       <Ellipsis rows={3}>
         {typeof title === 'string' ? <I18n.Text string={title} /> : title}
       </Ellipsis>

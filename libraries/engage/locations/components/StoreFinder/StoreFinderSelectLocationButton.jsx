@@ -1,9 +1,23 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { RippleButton } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { StoreContext } from './Store.context';
-import { i18n } from '../../../core';
+import { i18n } from '../../../core/helpers';
 import { StoreFinderContext } from '../../locations.context';
-import { selectLocationButton, selectLocationButtonWrapper } from '../StoreList/Store.style';
+
+const useStyles = makeStyles()(theme => ({
+  selectLocationButtonWrapper: {
+    padding: theme.spacing(0, 2, 1, 2),
+  },
+  selectLocationButton: {
+    width: '100%',
+    fontSize: '.875rem !important',
+    ':not(:disabled)': {
+      background: 'var(--color-primary)!important',
+      color: 'var(--color-primary-contrast)!important',
+    },
+  },
+}));
 
 /**
  * The StoreFinderSelectLocationButton component.
@@ -11,6 +25,7 @@ import { selectLocationButton, selectLocationButtonWrapper } from '../StoreList/
  * @returns {JSX.Element}
  */
 export const StoreFinderSelectLocationButton = () => {
+  const { classes } = useStyles();
   const store = useContext(StoreContext);
   const { selectLocation, isLoading, selectedLocation } = useContext(StoreFinderContext);
 
@@ -24,10 +39,10 @@ export const StoreFinderSelectLocationButton = () => {
   [selectedLocation, store]);
 
   return (
-    <div className={selectLocationButtonWrapper}>
+    <div className={classes.selectLocationButtonWrapper}>
       <RippleButton
         onClick={handleClick}
-        className={selectLocationButton.toString()}
+        className={classes.selectLocationButton}
         disabled={(isLoading || store?.isComingSoon || isSelected)}
       >
         {i18n.text(

@@ -3,10 +3,24 @@ import PropTypes from 'prop-types';
 import { ProductList } from '@shopgate/engage/product/components';
 import { ActionButton, I18n } from '@shopgate/engage/components';
 import { transformDisplayOptions } from '@shopgate/engage/core/helpers';
+import { css } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/engage';
 import Headline from 'Components/Headline';
 import ProductGrid from 'Components/ProductGrid';
 import connect from './connector';
-import styles from './style';
+
+const { colors } = themeConfig;
+
+const listView = css({
+  background: colors.light,
+  overflow: 'auto',
+  '> ul > li:first-of-type': {
+    paddingTop: 0,
+  },
+  '> ul > li:last-of-type': {
+    paddingBottom: 0,
+  },
+});
 
 /**
  * The product widget component.
@@ -187,7 +201,7 @@ class ProductsWidget extends Component {
     const ProductComponent = isList ? ProductList : ProductGrid;
 
     return (
-      <div {...isList ? { className: styles.listView } : {}}>
+      <div {...isList ? { className: listView } : {}}>
         <Headline text={headline} />
         <ProductComponent
           flags={flags}

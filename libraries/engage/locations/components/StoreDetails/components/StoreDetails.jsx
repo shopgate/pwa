@@ -1,95 +1,95 @@
 import React, { useContext, useMemo } from 'react';
-import { css } from 'glamor';
 import {
   LocationIcon, Button, Link, ConditionalWrapper,
 } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   getWeekDaysOrder,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
-import classNames from 'classnames';
 import moment from 'moment';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 import GetDirectionsButton from './GetDirectionsButton';
 
-const styles = {
-  headerWrapper: css({
+const useStyles = makeStyles()({
+  headerWrapper: {
     display: 'flex',
-  }),
-  headerIcon: css({
+  },
+  headerIcon: {
     color: 'var(--color-primary)',
     fontSize: 20,
     alignContent: 'center',
     marginRight: 4,
-  }),
-  header: css({
+  },
+  header: {
     color: 'var(--color-primary)',
     fontWeight: '600',
     fontSize: 20,
-  }),
-  locationName: css({
+  },
+  locationName: {
     fontSize: 20,
     fontWeight: '600',
     marginBottom: 8,
-  }),
-  locationRow: css({
+  },
+  locationRow: {
     display: 'flex',
     gap: 8,
     flexWrap: 'wrap',
-  }),
-  locationColumn: css({
+  },
+  locationColumn: {
     flex: 1,
     minWidth: '200px',
     '& > p': {
       margin: 0,
     },
-  }),
-  storeHoursColumn: css({
+  },
+  storeHoursColumn: {
     flex: 1,
     minWidth: '250px',
     maxWidth: '455px',
-  }),
-  storeHours: css({
+  },
+  storeHours: {
     fontSize: 17,
     fontWeight: '600',
-  }),
-  storeHoursLine: css({ }),
-  storeHoursWeekday: css({
+  },
+  storeHoursLine: { },
+  storeHoursWeekday: {
     textAlign: 'left',
-  }),
-  bold: css({
+  },
+  bold: {
     fontWeight: '600',
-  }),
-  storeHoursOpeningTime: css({
+  },
+  storeHoursOpeningTime: {
     textAlign: 'right',
-  }),
-  phone: css({
+  },
+  phone: {
     fontSize: 17,
     fontWeight: '600',
-  }),
-  phoneNumber: css({
+  },
+  phoneNumber: {
     textDecoration: 'underline',
-  }),
-  makeMyStoreButton: css({
+  },
+  makeMyStoreButton: {
     color: 'var(--color-primary)',
-  }),
-  comingSoon: css({
+  },
+  comingSoon: {
     fontStyle: 'italic',
-  }),
-  buttonRow: css({
+  },
+  buttonRow: {
     display: 'flex',
     alignItems: 'center',
     gap: '8px 30px',
     flexWrap: 'wrap',
     margin: '8px 0',
-  }),
-};
+  },
+});
 
 /**
  * Store details component.
   * @returns {JSX}
   */
 const StoreDetails = () => {
+  const { classes, cx } = useStyles();
   const {
     selectLocation,
     routeLocation,
@@ -127,22 +127,22 @@ const StoreDetails = () => {
           </Button>
         )}
       >
-        <div className={styles.headerWrapper}>
-          <div className={styles.headerIcon}>
-            <LocationIcon className={styles.icon} size={20} />
+        <div className={classes.headerWrapper}>
+          <div className={classes.headerIcon}>
+            <LocationIcon className={classes.icon} size={20} />
           </div>
-          <div className={styles.header}>
+          <div className={classes.header}>
             {isRouteLocationPreferred ?
               i18n.text('location.myStore') :
               i18n.text('location.makeMyStore')}
           </div>
         </div>
       </ConditionalWrapper>
-      <div className={styles.locationName}>
+      <div className={classes.locationName}>
         {routeLocation.name}
       </div>
-      <div className={styles.locationRow}>
-        <div className={styles.locationColumn}>
+      <div className={classes.locationRow}>
+        <div className={classes.locationColumn}>
           <p>
             {address?.street}
           </p>
@@ -165,21 +165,21 @@ const StoreDetails = () => {
             {i18n.text('locations.address', address)}
           </p>
 
-          <div className={styles.buttonRow}>
+          <div className={classes.buttonRow}>
             <GetDirectionsButton address={address} />
             { (!isComingSoon && !isRouteLocationPreferred) &&
             <Button
               onClick={() => selectLocation(routeLocation, true)}
               role="button"
               type="plain"
-              className={classNames(styles.makeMyStoreButton)}
+              className={classes.makeMyStoreButton}
             >
               <span>
                 {i18n.text('location.makeMyStore')}
               </span>
             </Button>}
             {isComingSoon && (
-            <div className={styles.comingSoon}>
+            <div className={classes.comingSoon}>
               {i18n.text('location.comingSoon')}
             </div>
             )}
@@ -187,14 +187,14 @@ const StoreDetails = () => {
           </div>
           {address?.phoneNumber && (
             <>
-              <div className={styles.phone}>
+              <div className={classes.phone}>
                 {`${i18n.text('location.phone')}: `}
               </div>
 
-              <div className={styles.phoneNumber}>
+              <div className={classes.phoneNumber}>
                 <Link
                   href={`tel:${address.phoneNumber}`}
-                  className={classNames(styles.phoneNumber)}
+                  className={classes.phoneNumber}
                   target="_blank"
                   role="button"
                   aria-label={address.phoneNumber}
@@ -206,8 +206,8 @@ const StoreDetails = () => {
           )}
         </div>
         {hasOpeningHours && (
-        <div className={styles.storeHoursColumn}>
-          <div className={styles.storeHours}>
+        <div className={classes.storeHoursColumn}>
+          <div className={classes.storeHours}>
             {`${i18n.text('location.storeHours')}:`}
           </div>
           <table>
@@ -218,7 +218,7 @@ const StoreDetails = () => {
                 }
                 return (
                   <tr
-                    className={styles.storeHoursLine}
+                    className={classes.storeHoursLine}
                     key={weekDay}
                     aria-label={
                     `${i18n.text(`locations.${weekDay}`)}: ${operationHours[weekDay]}`
@@ -226,16 +226,16 @@ const StoreDetails = () => {
                     tabIndex={0}
                   >
                     <td
-                      className={classNames(styles.storeHoursWeekday, {
-                        [styles.bold]: weekDay === currentDay,
+                      className={cx(classes.storeHoursWeekday, {
+                        [classes.bold]: weekDay === currentDay,
                       })}
                       aria-hidden
                     >
                       {`${i18n.text(`locations.${weekDay}`)}:`}
                     </td>
                     <td
-                      className={classNames(styles.storeHoursOpeningTime, {
-                        [styles.bold]: weekDay === currentDay,
+                      className={cx(classes.storeHoursOpeningTime, {
+                        [classes.bold]: weekDay === currentDay,
                       })}
                       aria-hidden
                     >

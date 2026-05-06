@@ -1,11 +1,11 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import {
   getPromotionLinesFromOrder,
   getCouponLinesFromOrder,
   getCheckoutTaxLinesFromOrder,
 } from './index';
 
-jest.mock('@shopgate/engage/core', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   i18n: {
     text: jest.fn(key => key),
   },

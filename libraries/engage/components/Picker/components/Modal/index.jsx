@@ -1,82 +1,125 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useEffect, useRef, useCallback, cloneElement,
+} from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import styles from './style';
+import { makeStyles, keyframes } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
+
+const FADE_DURATION = 150;
+const SLIDE_DURATION = 150;
+const EASING = 'cubic-bezier(0.25, 0.1, 0.25, 1)';
+const DURATION = Math.max(SLIDE_DURATION, FADE_DURATION);
+
+const slideInPickerModal = keyframes({
+  '0%': { transform: 'translateY(100%)' },
+  '100%': { transform: 'translateY(0)' },
+});
+
+const slideOutPickerModal = keyframes({
+  '0%': { transform: 'translateY(0)' },
+  '100%': { transform: 'translateY(100%)' },
+});
+
+const fadeInPickerBackground = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 0.5 },
+});
+
+const fadeOutPickerBackground = keyframes({
+  '0%': { opacity: 0.5 },
+  '100%': { opacity: 0 },
+});
+
+const useStyles = makeStyles()(() => ({
+  wrapper: {
+    zIndex: 1000,
+    position: 'fixed',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  backgroundBase: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'black',
+    animation: `${fadeInPickerBackground} ${FADE_DURATION}ms 1 both`,
+  },
+  backgroundInactive: {
+    animation: `${fadeOutPickerBackground} ${FADE_DURATION}ms 1 both`,
+  },
+  containerBase: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: themeColors.light,
+    animation: `${slideInPickerModal} ${SLIDE_DURATION}ms 1 both ${EASING}`,
+  },
+  containerInactive: {
+    animation: `${slideOutPickerModal} ${SLIDE_DURATION}ms 1 both ${EASING}`,
+  },
+}));
 
 /**
  * The picker modal.
+ * @param {Object} props Props.
+ * @returns {JSX.Element|null}
  */
-class PickerModal extends Component {
-  static propTypes = {
-    children: PropTypes.node.isRequired,
-    isOpen: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired,
-  };
+const PickerModal = ({ children, isOpen, onClose }) => {
+  const { classes, cx } = useStyles();
+  const [active, setActive] = useState(isOpen);
+  const timeoutRef = useRef(null);
 
-  /**
-   * The constructor.
-   * @param {Object} props The props.
-   */
-  constructor(props) {
-    super(props);
+  useEffect(() => {
+    setActive(isOpen);
+  }, [isOpen]);
 
-    this.timeout = null;
-    this.state = {
-      active: true,
-    };
+  useEffect(() => () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setActive(false);
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    timeoutRef.current = setTimeout(onClose, DURATION);
+  }, [onClose]);
+
+  if (!isOpen) {
+    return null;
   }
 
-  /**
-   * Update state when isOpen changes.
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.isOpen !== nextProps.isOpen) {
-      this.setState({ active: nextProps.isOpen });
-    }
-  }
+  const backgroundClassName = cx(
+    classes.backgroundBase,
+    { [classes.backgroundInactive]: !active }
+  );
 
-  /**
-   * Closes the modal after the closing animations have finished.
-   */
-  closeModal = () => {
-    this.setState({ active: false });
+  const containerClassName = cx(
+    classes.containerBase,
+    { [classes.containerInactive]: !active }
+  );
 
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(this.props.onClose, styles.duration);
-  };
-
-  /**
-   * Render all the things!
-   * @returns {JSX} The picker modal with the picker list inside.
-   */
-  render() {
-    const backgroundClassName = classNames(
-      styles.background.base,
-      { [styles.background.inactive]: !this.state.active }
-    );
-
-    const containerClassName = classNames(
-      styles.container.base,
-      { [styles.container.inactive]: !this.state.active }
-    );
-
-    if (!this.props.isOpen) {
-      return null;
-    }
-
-    return (
-      <div className={`${styles.wrapper} engage__picker_modal`}>
-        <div aria-hidden className={backgroundClassName} onClick={this.closeModal} />
-        <div className={containerClassName}>
-          {React.cloneElement(
-            this.props.children,
-            { onClose: this.closeModal }
-          )}
-        </div>
+  return (
+    <div className={cx(classes.wrapper, 'engage__picker_modal', 'common__picker__modal')}>
+      <div aria-hidden className={backgroundClassName} onClick={closeModal} />
+      <div className={containerClassName}>
+        {cloneElement(children, { onClose: closeModal })}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
+
+PickerModal.propTypes = {
+  children: PropTypes.node.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+};
 
 export default PickerModal;

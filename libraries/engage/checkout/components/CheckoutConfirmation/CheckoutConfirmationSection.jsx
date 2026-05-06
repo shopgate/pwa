@@ -1,97 +1,96 @@
 import React, { Fragment } from 'react';
-import { css } from 'glamor';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Card, TextLink } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 
-const { colors, variables } = themeConfig;
-const styles = {
-  wrapper: css({
-    padding: `${variables.gap.bigger}px ${variables.gap.big}px 0 ${variables.gap.big}px`,
-  }).toString(),
-  headline: css({
+const { colors } = themeConfig;
+const useStyles = makeStyles()(theme => ({
+  wrapper: {
+    padding: theme.spacing(2.5, 2, 0, 2),
+  },
+  headline: {
     color: colors.shade3,
     fontSize: '1rem',
     fontWeight: 'normal',
     textTransform: 'uppercase',
-    paddingBottom: variables.gap.small,
+    paddingBottom: theme.spacing(1),
     margin: 0,
     ...(!isIOSTheme() ? {
       fontSize: '1.25rem',
       lineHeight: '1.5rem',
       fontWeight: 500,
-      color: 'var(--color-text-high-emphasis)',
+      color: theme.palette.text.primary,
       textTransform: 'none',
     } : {}),
-  }),
-  link: css({
+  },
+  link: {
     color: 'var(--color-primary) !important',
-  }).toString(),
-  card: css({
+  },
+  card: {
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
     margin: 0,
-    padding: variables.gap.big,
+    padding: theme.spacing(2),
     color: 'var(--color-text-medium-emphasis)',
     flex: '1 0 auto',
     ...(!isIOSTheme() ? {
       background: 'var(--color-background-accent)',
       boxShadow: 'none',
     } : {}),
-  }).toString(),
-  cardWithForm: css({
+  },
+  cardWithForm: {
     ...(!isIOSTheme() ? {
       background: 'inherit',
       boxShadow: 'none',
       padding: 0,
     } : {}),
-  }).toString(),
-  list: css({
+  },
+  list: {
     margin: 0,
-  }),
-  listTitle: css({
+  },
+  listTitle: {
     fontSize: '0.625rem',
     lineHeight: '1rem',
     fontWeight: 'bold',
     letterSpacing: '1.5px',
     textTransform: 'uppercase',
-    color: 'var(--color-text-high-emphasis)',
-    ':not(:first-child)': {
-      paddingTop: variables.gap.xsmall * 3,
+    color: theme.palette.text.primary,
+    ':not(:first-of-type)': {
+      paddingTop: theme.spacing(1.5),
     },
-  }),
-  listEntry: css({
+  },
+  listEntry: {
     fontSize: '0.875rem',
     lineHeight: '1.5rem',
     marginLeft: 0,
     whiteSpace: 'pre-line',
     wordBreak: 'break-all',
     color: 'var(--color-text-medium-emphasis)',
-  }),
-  table: css({
-    color: 'var(--color-text-high-emphasis)',
+  },
+  table: {
+    color: theme.palette.text.primary,
     ' td': {
-      padding: `${variables.gap.xsmall}px 0`,
+      padding: theme.spacing(0.5, 0),
     },
-    ' td:last-child': {
+    ' td:last-of-type': {
       textAlign: 'right',
       whiteSpace: 'pre-wrap',
-      paddingLeft: variables.gap.xsmall,
+      paddingLeft: theme.spacing(0.5),
     },
-    ' tr:nth-last-child(2) td': {
+    ' tr:nth-last-of-type(2) td': {
       paddingBottom: 8,
     },
-    ' tr:last-child td': {
+    ' tr:last-of-type td': {
       fontSize: '1rem',
       paddingTop: 8,
       borderTop: '1px solid #979797',
       fontWeight: 'bold',
     },
-  }),
-};
+  },
+}));
 
 /**
  * CheckoutConfirmationSegment component
@@ -100,35 +99,38 @@ const styles = {
 const CheckoutConfirmationSegment = ({
   title, content, children, hasForm, isSummary, className,
 }) => {
+  const { classes, cx } = useStyles();
+
   if (!content) {
     return null;
   }
 
   const isString = typeof content === 'string';
 
+  /* eslint-disable react/no-danger */
   return (
-    <div className={classNames(styles.wrapper, className)}>
-      <h3 className={styles.headline}>{i18n.text(title)}</h3>
-      <Card className={classNames(styles.card, {
-        [styles.cardWithForm]: hasForm,
+    <div className={cx(classes.wrapper, className)}>
+      <h3 className={classes.headline}>{i18n.text(title)}</h3>
+      <Card className={cx(classes.card, {
+        [classes.cardWithForm]: hasForm,
       })}
       >
         {isString && (<span>{content}</span>)}
         {!isString && !isSummary && (
-          <dl className={styles.list}>
+          <dl className={classes.list}>
             {content.map(({ label, text, link }) => (
               <Fragment key={label || text}>
-                { label && (
-                  <dt className={styles.listTitle}>{i18n.text(label)}</dt>
+                {label && (
+                  <dt className={classes.listTitle}>{i18n.text(label)}</dt>
                 )}
-                { link ? (
-                  <dd className={styles.listEntry}>
-                    <TextLink href={link} className={styles.link}>
+                {link ? (
+                  <dd className={classes.listEntry}>
+                    <TextLink href={link} className={classes.link}>
                       <span dangerouslySetInnerHTML={{ __html: text }} />
                     </TextLink>
                   </dd>
                 ) : (
-                  <dd className={styles.listEntry} dangerouslySetInnerHTML={{ __html: text }} />
+                  <dd className={classes.listEntry} dangerouslySetInnerHTML={{ __html: text }} />
                 )}
               </Fragment>
             ))}
@@ -136,24 +138,26 @@ const CheckoutConfirmationSegment = ({
         )}
         {children}
         {isSummary && (
-        <table className={styles.table}>
-          <tbody>
-            {content.map(({ label, text }) => (
-              <tr key={label || text}>
-                { label && (
-                <td>{i18n.text(label)}</td>
-                )}
-                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                <td dangerouslySetInnerHTML={{ __html: text }} />
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <table className={classes.table}>
+            <tbody>
+              {content.map(({ label, text }) => (
+                <tr key={label || text}>
+                  {label && (
+                    <td>{i18n.text(label)}</td>
+                  )}
+                  {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                  <td dangerouslySetInnerHTML={{ __html: text }} />
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )}
       </Card>
     </div>
   );
 };
+
+/* eslint-enable react/no-danger */
 
 CheckoutConfirmationSegment.propTypes = {
   title: PropTypes.string.isRequired,

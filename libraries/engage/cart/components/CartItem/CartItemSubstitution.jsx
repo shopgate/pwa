@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import {
   BOPIS,
   ROPIS,
@@ -8,7 +10,13 @@ import {
 import connect from './CartItemSubstitution.connector';
 import { useCartItem } from './CartItem.hooks';
 import Substitution, { SubstitutionWrapper } from '../Substitution';
-import { root } from './CartItemSubstitution.style';
+
+const useStyles = makeStyles()(theme => ({
+  root: {
+    padding: theme.spacing(2),
+    borderTop: `1px solid ${themeColors.shade7}`,
+  },
+}));
 
 /**
  * Renders the cart reservation card label.
@@ -18,6 +26,7 @@ import { root } from './CartItemSubstitution.style';
  * @returns {JSX.Element}
  */
 const CartItemSubstitution = ({ setSubstitutionAllowed, editable }) => {
+  const { classes } = useStyles();
   const { cartItem: { id, substitutionAllowed, fulfillment } = {} } = useCartItem();
 
   if (![ROPIS, BOPIS].includes(fulfillment?.method || [])) {
@@ -27,7 +36,7 @@ const CartItemSubstitution = ({ setSubstitutionAllowed, editable }) => {
   return (
     <SubstitutionWrapper>
       <Substitution
-        className={root}
+        className={classes.root}
         id={`substitution-${id}`}
         label={i18n.text('cart.allow_substitution')}
         checked={substitutionAllowed}

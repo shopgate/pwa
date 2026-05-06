@@ -12,7 +12,7 @@ describe('<InfiniteContainer />', () => {
   let renderedElement;
   let renderedInstance;
   let mockLoader;
-  let mockIterator;
+  let MockIterator;
   let mockItems;
 
   const mockData = range(100).map(id => ({
@@ -47,7 +47,7 @@ describe('<InfiniteContainer />', () => {
 
   beforeEach(() => {
     mockLoader = jest.fn();
-    mockIterator = jest.fn(data => <li key={data.id}>{data.title}</li>);
+    MockIterator = data => <li key={data.id}>{data.title}</li>;
   });
 
   describe('Given the component was mounted to the DOM', () => {
@@ -55,7 +55,7 @@ describe('<InfiniteContainer />', () => {
       renderComponent({
         items: [],
         loader: mockLoader,
-        iterator: mockIterator,
+        iterator: MockIterator,
         totalItems: null,
       });
 
@@ -79,13 +79,8 @@ describe('<InfiniteContainer />', () => {
         receiveItemsByProp(mockItemsLength);
       });
 
-      it('should call the iterator function according to the number of loaded items', () => {
-        expect(mockIterator).toBeCalled();
-        expect(mockIterator.mock.calls.length).toBe(mockItemsLength);
-      });
-
       it('should render the loaded items', () => {
-        expect(renderedElement.find('li').length).toBe(mockItemsLength);
+        expect(renderedElement.find(MockIterator)).toHaveLength(mockItemsLength);
       });
     });
 
@@ -138,7 +133,7 @@ describe('<InfiniteContainer />', () => {
       it('should keep state.awaitingItems as true if not all items are rendered', () => {
         expect(renderedInstance.allItemsAreRendered()).toBe(false);
         expect(renderedInstance.state.awaitingItems).toBe(true);
-        expect(renderedElement.find('li').length).toBeLessThan(mockItemsLength);
+        expect(renderedElement.find(MockIterator).length).toBeLessThan(mockItemsLength);
       });
 
       it('should set state.awaitingItems to false if all items are rendered', () => {
@@ -149,7 +144,7 @@ describe('<InfiniteContainer />', () => {
 
         expect(renderedInstance.allItemsAreRendered()).toBe(true);
         expect(renderedInstance.state.awaitingItems).toBe(false);
-        expect(renderedElement.find('li').length).toBe(mockItemsLength);
+        expect(renderedElement.find(MockIterator).length).toBe(mockItemsLength);
       });
     });
   });
@@ -160,12 +155,12 @@ describe('<InfiniteContainer />', () => {
         renderComponent({
           items: mockData,
           loader: mockLoader,
-          iterator: mockIterator,
+          iterator: MockIterator,
           totalItems: mockData.length,
         });
 
         // Check if the iniLimit was used
-        expect(renderedElement.find('li').length).toBe(renderedInstance.props.initialLimit);
+        expect(renderedElement.find(MockIterator).length).toBe(renderedInstance.props.initialLimit);
 
         // Reset the limit from props.initialLimit back to props.limit
         renderedInstance.componentDidMount();
@@ -176,7 +171,7 @@ describe('<InfiniteContainer />', () => {
 
         // Check if the correct limit was used for the second render
         const newLimit = renderedInstance.props.initialLimit + renderedInstance.props.limit;
-        expect(renderedElement.find('li').length).toBe(newLimit);
+        expect(renderedElement.find(MockIterator).length).toBe(newLimit);
       });
     });
 
@@ -185,7 +180,7 @@ describe('<InfiniteContainer />', () => {
         renderComponent({
           items: [],
           loader: mockLoader,
-          iterator: mockIterator,
+          iterator: MockIterator,
           totalItems: null,
         });
 
@@ -194,7 +189,7 @@ describe('<InfiniteContainer />', () => {
 
         // Check if the iniLimit wasn't used
         expect(renderedElement).toMatchSnapshot();
-        expect(renderedElement.find('li').length).toBe(renderedInstance.props.limit);
+        expect(renderedElement.find(MockIterator).length).toBe(renderedInstance.props.limit);
       });
     });
   });
@@ -204,7 +199,7 @@ describe('<InfiniteContainer />', () => {
       const props = {
         items: mockData,
         loader: mockLoader,
-        iterator: mockIterator,
+        iterator: MockIterator,
         totalItems: mockData.length,
         requestHash: 'default',
       };

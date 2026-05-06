@@ -1,12 +1,30 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Grid, Price, PriceStriked,
 } from '@shopgate/engage/components';
 import { PriceInfo } from '@shopgate/engage/product/components';
 import { withPriceCalculation } from '@shopgate/engage/product/hocs';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeName } from '@shopgate/pwa-common/helpers/config';
 
-import styles from './style';
+const isIOS = themeName.includes('ios');
+
+const useStyles = makeStyles()({
+  priceWrapper: isIOS ? {
+    lineHeight: 1.75,
+    marginTop: 2,
+    alignItems: 'center',
+  } : {
+    lineHeight: 1.75,
+  },
+  basicPrice: {
+    fontSize: '0.875rem',
+  },
+  strikedPrice: isIOS ? {
+    fontSize: '0.75rem',
+  } : {},
+});
 
 /**
  * The ProductGridPrice component is supposed to be used to display prices at product grids. It
@@ -15,11 +33,12 @@ import styles from './style';
  * @return {JSX.Element}
  */
 const ProductGridPrice = ({ product }) => {
+  const { classes, cx } = useStyles();
   const { price } = product;
 
   return (
     <>
-      <Grid className={`${styles.priceWrapper} engage__product__product-grid-price`} wrap>
+      <Grid className={cx(classes.priceWrapper, 'engage__product__product-grid-price')} wrap>
         <Grid.Item grow={1}>
           <Price
             currency={price.currency}
@@ -32,7 +51,7 @@ const ProductGridPrice = ({ product }) => {
         {(price.msrp > 0 && price.unitPrice !== price.msrp) && (
           <Grid.Item>
             <PriceStriked
-              className={styles.strikedPrice}
+              className={classes.strikedPrice}
               value={price.msrp}
               currency={price.currency}
             />
@@ -44,7 +63,7 @@ const ProductGridPrice = ({ product }) => {
         ) && (
           <Grid.Item>
             <PriceStriked
-              className={styles.strikedPrice}
+              className={classes.strikedPrice}
               value={price.unitPriceStriked}
               currency={price.currency}
             />
@@ -53,7 +72,7 @@ const ProductGridPrice = ({ product }) => {
       </Grid>
       <PriceInfo
         product={product}
-        className={styles.basicPrice}
+        className={classes.basicPrice}
         wrapper={children =>
           <Grid>
             <Grid.Item>

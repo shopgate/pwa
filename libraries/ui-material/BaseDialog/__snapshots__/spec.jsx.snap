@@ -5,12 +5,12 @@ exports[`<BasicDialog /> should render as expected 1`] = `
   <div
     aria-labelledby="basicDialogTitle basicDialogDesc"
     aria-modal={true}
-    className="css-1oc7wvq ui-material__base-dialog"
+    className="sg-ls7awc-container ui-material__base-dialog"
     data-test-id="basicDialog"
     role="alertdialog"
   >
     <div
-      className="css-1vzqftr"
+      className="sg-1t4okzq-content"
     >
       <Title
         title="Hello World"
@@ -24,10 +24,10 @@ exports[`<BasicDialog /> should render as expected 1`] = `
       />
     </div>
     <div
-      className="css-1h5vk0a"
+      className="sg-3766ab-actions"
     >
       <div
-        className="css-hw75se"
+        className="sg-1orvbrr-innerActions"
       >
         <Buttons
           actions={
@@ -58,12 +58,12 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
   <div
     aria-labelledby="basicDialogTitle basicDialogDesc"
     aria-modal={true}
-    className="css-1oc7wvq ui-material__base-dialog"
+    className="sg-ls7awc-container ui-material__base-dialog"
     data-test-id="basicDialog"
     role="alertdialog"
   >
     <div
-      className="css-1vzqftr"
+      className="sg-1t4okzq-content"
     >
       <Title
         title={null}
@@ -73,10 +73,10 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
       />
     </div>
     <div
-      className="css-1h5vk0a"
+      className="sg-3766ab-actions"
     >
       <div
-        className="css-hw75se"
+        className="sg-1orvbrr-innerActions"
       >
         <Buttons
           actions={[]}

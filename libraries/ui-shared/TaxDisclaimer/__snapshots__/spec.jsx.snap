@@ -25,9 +25,9 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
     className="ui-shared__tax-disclaimer"
     data-test-id="taxDisclaimer"
   >
-    <Translate
+    <Text
       acceptPlainTextWithPlaceholders={false}
-      className="css-fazkyv"
+      className="mock-class-text"
       params={{}}
       role={null}
       string="product.tax_disclaimer"

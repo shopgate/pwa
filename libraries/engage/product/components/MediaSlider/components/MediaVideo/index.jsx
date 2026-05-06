@@ -1,15 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { IntersectionVisibility, VideoPlayer } from '../../../../../components';
 import { useWidgetSettings } from '../../../../../core';
 import connect from './connector';
-import { videoWrapper, videoResponsive, video } from '../../style';
+
+const useStyles = makeStyles()({
+  videoWrapper: {
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'black',
+    paddingTop: '22%',
+  },
+  videoResponsive: {
+    position: 'relative',
+    overflow: 'hidden',
+    paddingTop: '56.25%',
+  },
+  video: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+});
 
 /**
  * The media video component.
  * @returns {JSX}
  */
 const MediaVideo = ({ connectivityType, media }) => {
+  const { classes } = useStyles();
   const settings = useWidgetSettings('@shopgate/engage/product/MediaSlider');
 
   const autoPlay = settings.videos.autoPlay[connectivityType] || false;
@@ -17,8 +39,8 @@ const MediaVideo = ({ connectivityType, media }) => {
   return (
     <IntersectionVisibility>
       {({ visible, ratio, setRef }) => (
-        <div ref={setRef} className={videoWrapper}>
-          <div className={videoResponsive}>
+        <div ref={setRef} className={classes.videoWrapper}>
+          <div className={classes.videoResponsive}>
             <VideoPlayer
               url={media.url}
               playing={autoPlay && visible && ratio > 0.8}
@@ -27,7 +49,7 @@ const MediaVideo = ({ connectivityType, media }) => {
               controls={settings.videos.controls}
               muted={settings.videos.muted}
               loop={settings.videos.loop}
-              className={video}
+              className={classes.video}
             />
           </div>
         </div>

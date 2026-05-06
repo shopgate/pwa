@@ -1,30 +1,29 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import { useCartItemProduct, useCartItem } from './CartItem.hooks';
 import { createCartItemPrices } from '../../cart.helpers';
 import CartItemProductPriceListPromotion from './CartItemProductPriceListPromotion';
 
-const styles = {
-  price: css({
+const useStyles = makeStyles()({
+  price: {
     fontSize: '1rem',
     fontWeight: 500,
     marginLeft: 'auto',
-  }).toString(),
-  priceStriked: css({
+  },
+  priceStriked: {
     fontSize: '.875rem',
     marginLeft: 'auto',
-  }).toString(),
-  priceListEntry: css({
+  },
+  priceListEntry: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props The component props
@@ -33,7 +32,8 @@ const styles = {
  * @param {boolean} [props.showLabels] Whether to show promotion labels
  * @returns {JSX.Element}
  */
-const CartItemProductPriceList = ({ classes, isSubtotal, showLabels }) => {
+const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabels }) => {
+  const { classes, cx } = useStyles();
   const { isOrderDetails, isCheckoutConfirmation } = useCartItem();
   const context = useCartItemProduct();
   const { currency, cartItem } = context;
@@ -54,23 +54,23 @@ const CartItemProductPriceList = ({ classes, isSubtotal, showLabels }) => {
         const isLast = index === prices.length - 1;
         return (
           /* eslint-disable react/no-array-index-key */
-          <li key={`total_${index}`} className={classNames(styles.priceListEntry, classes?.entry)}>
+          <li key={`total_${index}`} className={cx(classes.priceListEntry, customClasses?.entry)}>
             { (showLabels || !isSubtotal) && (
               <CartItemProductPriceListPromotion
                 isCoupon={isCoupon}
                 isPromo={isPromo}
-                className={classes?.promo}
+                className={customClasses?.promo}
               />
             )}
             { !isLast ? (
               <PriceStriked
-                className={classNames(styles.priceStriked, classes?.priceStriked)}
+                className={cx(classes.priceStriked, customClasses?.priceStriked)}
                 value={price}
                 currency={currency}
               />
             ) : (
               <Price
-                className={classNames(styles.price, classes?.price)}
+                className={cx(classes.price, customClasses?.price)}
                 unitPrice={price}
                 currency={currency}
                 discounted={prices.length > 1 || price === 0}

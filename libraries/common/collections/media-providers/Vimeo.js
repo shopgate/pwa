@@ -88,7 +88,7 @@ class VimeoMediaProvider extends MediaProvider {
    * sandbox attributes to improve security and layout behavior.
    *
    * @param {Document} document - The DOM document containing iframes to optimize.
-   * @returns {YouTubeMediaProvider}
+   * @returns {VimeoMediaProvider}
    */
   applyIframeOptimizations(document) {
     const iframes = this.getMediaContainers(document);

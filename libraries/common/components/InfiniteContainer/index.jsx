@@ -443,23 +443,22 @@ class InfiniteContainer extends Component {
     const {
       wrapper,
       items,
-      iterator,
+      iterator: Iterator,
       loadingIndicator,
       columns,
     } = this.props;
     const { awaitingItems } = this.state;
     const [start, length] = this.state.offset;
     // Only show items in offset range. uses iterator component as item factory
-    const children = items.slice(0, start + length).map(item => iterator({
-      ...item,
-      columns,
-    }));
+    const children = items.slice(0, start + length).map((item, index) => (
+      <Iterator
+        key={item.id ?? index}
+        {...item}
+        columns={columns}
+      />
+    ));
 
-    const content = (typeof wrapper === 'function') ? (
-      wrapper({ children })
-    ) : (
-      React.createElement(wrapper, {}, children)
-    );
+    const content = React.createElement(wrapper, {}, children);
 
     return (
       <div className="common__infinite-container">

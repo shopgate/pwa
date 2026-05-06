@@ -1,10 +1,11 @@
-import { css } from 'glamor';
+import { injectGlobal } from '..';
 
-css.global('table', {
-  borderCollapse: 'collapse',
-  minWidth: '100%',
-});
-
-css.global('td, th', {
-  verticalAlign: 'top',
+injectGlobal({
+  table: {
+    borderCollapse: 'collapse',
+    minWidth: '100%',
+  },
+  'td, th': {
+    verticalAlign: 'top',
+  },
 });

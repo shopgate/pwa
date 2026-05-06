@@ -1,32 +1,56 @@
 import React, { useMemo } from 'react';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { themeConfig } from '@shopgate/engage';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import Icon from './components/Icon';
-import styles from './style';
 
-const { svgImages = {} } = themeConfig || {};
+const { svgImages = {}, variables } = themeConfig || {};
 const { emptyCart = '' } = svgImages || {};
+
+const useStyles = makeStyles()({
+  wrapper: {
+    display: 'flex',
+    flexDirection: 'column',
+    textAlign: 'center',
+    height: '100%',
+  },
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    flexGrow: '1',
+    flexShrink: '0',
+  },
+  icon: {
+    width: variables.emptyPage.icon,
+  },
+  title: {
+    textAlign: 'center',
+    paddingTop: variables.emptyPage.titleTopGap,
+  },
+});
 
 /**
  * The Cart Empty component.
  * @return {JSX.Element}
  */
 const Empty = () => {
+  const { classes, cx } = useStyles();
   const imageSRC = useMemo(() => svgToDataUrl(emptyCart), []);
 
   return (
-    <div className={styles.wrapper}>
+    <div className={classes.wrapper}>
       <Portal name={portals.CART_EMPTY_BEFORE} />
       <Portal name={portals.CART_EMPTY}>
-        <div className={styles.container}>
-          <div className={classNames(styles.icon, 'empty-cart__image')}>
+        <div className={classes.container}>
+          <div className={cx(classes.icon, 'empty-cart__image')}>
             {emptyCart ? <img src={imageSRC} alt="" /> : <Icon />}
           </div>
-          <div className={styles.title} data-test-id="emptyCartPlaceHolderString">
+          <div className={classes.title} data-test-id="emptyCartPlaceHolderString">
             <I18n.Text string="cart.empty" />
           </div>
         </div>

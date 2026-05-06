@@ -1,21 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import CheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioCheckedIcon';
 import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
 import { Ripple } from '@shopgate/engage/components';
 import { useRadioGroup } from '../RadioGroup';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'inline-flex',
     alignItems: 'inherit',
     justifyContent: 'inherit',
     position: 'relative',
     borderRadius: '50%',
-  }).toString(),
-  input: css({
+  },
+  input: {
     top: 0,
     left: 0,
     margin: 0,
@@ -25,28 +24,28 @@ const styles = {
     zIndex: 1,
     width: '100%',
     height: '100%',
-  }).toString(),
-  radioContainer: css({
+  },
+  radioContainer: {
     display: 'flex',
     position: 'relative',
     width: 24,
     height: 24,
-  }).toString(),
-  radio: css({
+  },
+  radio: {
     height: '100%',
     width: '100%',
-  }).toString(),
-  radioChecked: css({
+  },
+  radioChecked: {
     color: 'var(--color-primary)',
-  }).toString(),
-  radioDisabled: css({
+  },
+  radioDisabled: {
     opacity: 0.5,
     pointerEvents: 'none',
-  }).toString(),
-  ripple: css({
+  },
+  ripple: {
     padding: 12,
-  }).toString(),
-};
+  },
+});
 
 /**
  * The Radio component
@@ -54,7 +53,7 @@ const styles = {
  * @returns {JSX}
  */
 const Radio = ({
-  classes,
+  classes: classNamesProp,
   name: nameProp,
   onChange: onChangeProp,
   checked: checkedProp,
@@ -62,6 +61,7 @@ const Radio = ({
   value: valueProp,
   attributes,
 }) => {
+  const { classes, cx } = useStyles();
   const radioGroup = useRadioGroup();
 
   let name = nameProp;
@@ -83,10 +83,10 @@ const Radio = ({
   }
 
   return (
-    <span className={classNames(styles.root, classes.root)}>
-      <Ripple className={styles.ripple} color="var(--color-primary)">
+    <span className={cx(classes.root, classNamesProp.root)}>
+      <Ripple className={classes.ripple} color="var(--color-primary)">
         <input
-          className={styles.input}
+          className={classes.input}
           type="radio"
           name={name}
           value={valueProp}
@@ -96,25 +96,25 @@ const Radio = ({
           id={`${name}_${valueProp}`}
           {...attributes}
         />
-        <div className={classNames(
-          styles.radioContainer,
+        <div className={cx(
+          classes.radioContainer,
           {
-            [styles.radioDisabled]: disabledProp,
-            [classes.disabled]: disabledProp,
+            [classes.radioDisabled]: disabledProp,
+            [classNamesProp.disabled]: disabledProp,
           }
         )}
         >
           {checked && (
-            <CheckedIcon className={classNames(
-              styles.radio,
-              styles.radioChecked,
+            <CheckedIcon className={cx(
+              classes.radio,
               classes.radioChecked,
+              classNamesProp.radioChecked,
               'checkedIcon'
             )}
             />
           )}
           {!checked && (
-            <UncheckedIcon className={classNames(styles.radio, classes.radioUnchecked, 'uncheckedIcon')} />
+            <UncheckedIcon className={cx(classes.radio, classNamesProp.radioUnchecked, 'uncheckedIcon')} />
           )}
         </div>
       </Ripple>

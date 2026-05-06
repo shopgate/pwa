@@ -2,10 +2,14 @@ import React from 'react';
 import { mount } from 'enzyme';
 import WidgetGrid from './index';
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  Suspense: function Suspense({ children }) { return children; },
-}));
+jest.mock('react', () => {
+  const actual = jest.requireActual('react');
+  return {
+    ...actual,
+    memo: c => c,
+    Suspense: function Suspense({ children }) { return children; },
+  };
+});
 
 /**
  * A mock Image component.

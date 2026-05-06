@@ -495,7 +495,6 @@ GuestRegistrationProvider.propTypes = {
   prepareCheckout: PropTypes.func.isRequired,
   shopSettings: PropTypes.shape().isRequired,
   submitGuestRegistration: PropTypes.func.isRequired,
-  userLocation: PropTypes.shape().isRequired,
   billingAddress: PropTypes.shape(),
   billingPickupEquals: PropTypes.bool,
   billingShippingEquals: PropTypes.bool,
@@ -510,12 +509,17 @@ GuestRegistrationProvider.propTypes = {
   orderReserveOnly: PropTypes.bool,
   pickupAddress: PropTypes.shape(),
   shippingAddress: PropTypes.shape(),
+  userLocation: PropTypes.shape({
+    country: PropTypes.string,
+    region: PropTypes.string,
+  }),
 };
 
 GuestRegistrationProvider.defaultProps = {
   children: null,
   customer: null,
   formContainerRef: null,
+  userLocation: undefined,
   billingAddress: null,
   shippingAddress: null,
   pickupAddress: null,

@@ -1,23 +1,24 @@
 import React, { useRef } from 'react';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import Provider from './Profile.provider';
 import AddressBook from './ProfileAddressBook';
 import Header from './ProfileHeader';
 import Form from './ProfileForm';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     padding: 8,
-  }).toString(),
-};
+  },
+});
 
 /** @returns {JSX} */
 const Profile = () => {
+  const { classes } = useStyles();
   const formContainerRef = useRef(null);
 
   return (
     <Provider formContainerRef={formContainerRef}>
-      <div className={styles.root}>
+      <div className={classes.root}>
         <Header />
         <Form ref={formContainerRef} />
         <AddressBook />

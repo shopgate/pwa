@@ -9,7 +9,7 @@ import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constant
 import Portal from '@shopgate/pwa-common/components/Portal';
 import HeartIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import { NavDrawer } from '@shopgate/pwa-ui-material';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import Badge from './components/Badge';
 import connect from '../../../../connector';
 import connectBadge from './components/Badge/connector';

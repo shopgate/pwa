@@ -18,5 +18,6 @@ export {
   cx,
   tss,
   GlobalStyles,
+  injectGlobal,
   keyframes,
 } from './tss';

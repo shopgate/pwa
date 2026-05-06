@@ -10,9 +10,18 @@ import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
 import { NotFound, Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
-import { i18n } from '@shopgate/engage/core';
-import styles from './style';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import connect from './connector';
+
+const useStyles = makeStyles()({
+  widgetWrapper: {
+    background: 'var(--page-background-color)',
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      paddingBottom: 16,
+    },
+  },
+});
 
 /**
  * @param {Object} props The component props
@@ -26,7 +35,7 @@ import connect from './connector';
  * @param {boolean} props.hasError Whether the page has an error.
  * @returns {JSX.Element}
  */
-function PageContent({
+const PageContent = ({
   isCmsV2Enabled = false,
   postponeRender = false,
   pageId = null,
@@ -34,7 +43,8 @@ function PageContent({
   widgets = [],
   isCookieConsentHandled,
   hasError = false,
-}) {
+}) => {
+  const { classes } = useStyles();
   let center = <Logo key="center" />;
 
   if (pageId !== PAGE_ID_INDEX) {
@@ -55,7 +65,7 @@ function PageContent({
         portalName={PAGE_CONTENT}
         portalProps={{ id: pageId }}
       >
-        <div key="widgetWrapper" className={styles.widgetWrapper}>
+        <div key="widgetWrapper" className={classes.widgetWrapper}>
           {(!postponeRender) && (
             hasError
               ? <NotFound />
@@ -65,7 +75,7 @@ function PageContent({
       </SurroundPortals>
     </>
   );
-}
+};
 
 PageContent.propTypes = {
   pageId: PropTypes.string.isRequired,

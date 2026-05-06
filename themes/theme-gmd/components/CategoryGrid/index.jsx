@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { makeStyles, cx } from '@shopgate/engage/styles';
 import CategoryGridItem from './CategoryGridItem';
 import CategoryGridItemPlaceholder from './CategoryGridItemPlaceholder';
-import {
-  grid,
-} from './style';
+
+const useStyles = makeStyles()(theme => ({
+  grid: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    padding: theme.spacing(0, 2, 2, 2),
+  },
+}));
 
 /**
  * The CategoryGrid component.
@@ -15,13 +21,15 @@ import {
 const CategoryGrid = ({
   categories, prerender, showImages, className,
 }) => {
+  const { classes } = useStyles();
+
   if (!categories || !categories.length) {
     if (prerender === 0) {
       return null;
     }
 
     return (
-      <ul className={classNames(grid, className, 'engage__category__category-grid')}>
+      <ul className={cx(classes.grid, className, 'engage__category__category-grid')}>
         {Array(Math.min(prerender, 8)).fill('').map((val, index) => {
           const key = `placeholder-${index}`;
           return <CategoryGridItemPlaceholder key={key} showImages={showImages} />;
@@ -31,7 +39,7 @@ const CategoryGrid = ({
   }
 
   return (
-    <ul className={classNames(grid, className, 'engage__category__category-grid')}>
+    <ul className={cx(classes.grid, className, 'engage__category__category-grid')}>
       {categories.map(category => (
         <CategoryGridItem key={category.id} category={category} showImages={showImages} />
       ))}

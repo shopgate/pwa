@@ -1,7 +1,16 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
-import styles from './CartItemCouponTitle.style';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  title: {
+    fontSize: '1rem',
+    fontWeight: 500,
+    lineHeight: 1.125,
+    marginBottom: 4,
+  },
+});
 
 /**
  * The CouponTitle component.
@@ -9,12 +18,13 @@ import styles from './CartItemCouponTitle.style';
  * @returns {JSX}
  */
 export function CartItemCouponTitle({ value }) {
+  const { classes } = useStyles();
   const title = useMemo(() => (
     value || i18n.text('cart.default_coupon_label')
   ), [value]);
 
   return (
-    <div className={styles}>
+    <div className={classes.title}>
       {title}
     </div>
   );

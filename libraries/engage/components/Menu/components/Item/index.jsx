@@ -2,7 +2,23 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import compose from 'lodash/fp/compose';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
-import { getItemClass } from './style';
+import Color from 'color';
+import { makeStyles, getCSSCustomProp } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const useStyles = makeStyles()((theme, { background }) => ({
+  item: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    padding: theme.spacing(1.75, 2.75),
+    lineHeight: 1,
+    zIndex: 1,
+    cursor: 'pointer',
+    ':hover': {
+      background,
+    },
+  },
+}));
 
 /**
  * A delay in ms after that the closeMenu callback gets triggered.
@@ -16,6 +32,15 @@ const CLOSE_DELAY = 250;
  * @returns {JSX.Element}
  */
 const Item = ({ children, closeMenu, onClick }) => {
+  let background = themeConfig.colors.shade8;
+  const customPropColor = getCSSCustomProp('--color-primary');
+
+  if (customPropColor) {
+    background = Color(customPropColor).alpha(0.04).toString();
+  }
+
+  const { classes } = useStyles({ background });
+
   const handleClick = compose(
     onClick,
     () => setTimeout(closeMenu, CLOSE_DELAY)
@@ -31,7 +56,7 @@ const Item = ({ children, closeMenu, onClick }) => {
   return (
     <Glow>
       <div
-        className={getItemClass()}
+        className={classes.item}
         onClick={handleClick}
         role="button"
         data-test-id="contextMenuButton"

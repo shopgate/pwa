@@ -107,12 +107,13 @@ init:
 
 
 add-remotes:
-		node ./scripts/add-remotes.js 2> /dev/null; # ignore stderr output here
+		# node ./scripts/add-remotes.js 2> /dev/null; # ignore stderr output here
+		node ./scripts/add-remotes.js;
 
 
 
 sanity-check:
-		npm install --no-package-lock --no-save yargs && \
+		npm install --no-package-lock --no-save --ignore-scripts yargs && \
 			node ./scripts/check-release-version.js -v="$(RELEASE_VERSION)";
 
 		@if [[ "$(BRANCH_NAME)" = "" ]]; then \

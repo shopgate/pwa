@@ -1,33 +1,31 @@
 import React, { useMemo } from 'react';
-import { css } from 'glamor';
-import { themeConfig } from '@shopgate/engage';
+import { makeStyles } from '@shopgate/engage/styles';
 import { GUEST_CHECKOUT_PATTERN } from '../../constants/routes';
 import Section from '../Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import { ADDRESS_TYPE_PICKUP } from '../../constants';
 
-const { variables } = themeConfig;
-
-const styles = {
-  root: css({
-    padding: `0 ${variables.gap.big}px ${variables.gap.big}px`,
+const useStyles = makeStyles()(theme => ({
+  root: {
+    padding: theme.spacing(0, 2, 2),
     display: 'flex',
     flexDirection: 'column',
     flex: '0 0 auto',
-  }).toString(),
-  card: css({
+  },
+  card: {
     display: 'flex',
     flexDirection: 'column',
     fontSize: 15,
     margin: '8px 0 12px 0',
-  }).toString(),
-};
+  },
+}));
 
 /**
  * GuestCheckoutPickup
  * @returns {JSX}
  */
 const GuestCheckoutPickup = () => {
+  const { classes } = useStyles();
   const { pickupAddress, orderReserveOnly } = useCheckoutContext();
   const headline = useMemo(
     () =>
@@ -42,9 +40,9 @@ const GuestCheckoutPickup = () => {
   }
 
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <Section
-        className={styles.card}
+        className={classes.card}
         title={headline}
         editLink={`${GUEST_CHECKOUT_PATTERN}?edit=${ADDRESS_TYPE_PICKUP}`}
       >

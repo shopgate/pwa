@@ -1,72 +1,78 @@
-import React, { Component } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
 import connect from './connector';
-import style from './style';
+
+const MAX_NUMBER = 999;
+
+const defaultWidgetSettings = { showCounter: true };
+
+const useStyles = makeStyles()(theme => ({
+  root: {
+    position: 'absolute',
+    background: 'var(--tab-bar-item-badge-background)',
+    color: 'var(--tab-bar-item-badge-color)',
+    fontSize: '0.7rem',
+    lineHeight: 1.5,
+    fontWeight: 'bold',
+    borderRadius: 'var(--tab-bar-item-badge-border-radius)',
+    height: theme.spacing(2),
+    top: 'var(--tab-bar-item-badge-top)',
+    paddingLeft: theme.spacing(0.5),
+    paddingRight: theme.spacing(0.5),
+    minWidth: theme.spacing(2),
+    transform: 'translateX(-50%)',
+    left: 'var(--tab-bar-item-badge-left)',
+  },
+}));
 
 /**
  * Favorites icon badge.
+ * @param {Object} props Props.
+ * @returns {JSX.Element|null}
  */
-export class FavoritesIconBadge extends Component {
-  static MAX_NUMBER = 999;
+const FavoritesIconBadge = ({
+  favoritesCount = 0,
+  showWishlistItemsCountBadge = true,
+  widgetSettings = defaultWidgetSettings,
+}) => {
+  const { classes, cx } = useStyles();
 
-  static propTypes = {
-    favoritesCount: PropTypes.number,
-    showWishlistItemsCountBadge: PropTypes.bool,
-    widgetSettings: PropTypes.shape({
-      showCounter: PropTypes.bool,
-    }),
-  };
-
-  static defaultProps = {
-    favoritesCount: 0,
-    showWishlistItemsCountBadge: true,
-    widgetSettings: {
-      showCounter: true,
-    },
-  };
-
-  /**
-   * Disallows component to update when favorites count is the same or above the maximum limit.
-   * @param {Object} nextProps Next props.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    if (nextProps.favoritesCount === this.props.favoritesCount) {
-      return false;
-    }
-    // No re-render if it's 999+
-    if (
-      nextProps.favoritesCount > this.constructor.MAX_NUMBER
-      && this.props.favoritesCount > this.constructor.MAX_NUMBER
-    ) {
-      return false;
-    }
-    return true;
+  if (!showWishlistItemsCountBadge || favoritesCount === 0) {
+    return null;
   }
 
-  /**
-   * Renders component.
-   * @returns {JSX}
-   */
-  render() {
-    if (!this.props.showWishlistItemsCountBadge || this.props.favoritesCount === 0) {
-      return null;
-    }
+  const showCounter = widgetSettings.showCounter ?? defaultWidgetSettings.showCounter;
 
-    const showCounter =
-      this.props.widgetSettings.showCounter ??
-      FavoritesIconBadge.defaultProps.widgetSettings.showCounter;
+  const number = (favoritesCount > MAX_NUMBER)
+    ? `${MAX_NUMBER}+`
+    : favoritesCount;
 
-    const number = (this.props.favoritesCount > this.constructor.MAX_NUMBER) ?
-      `${this.constructor.MAX_NUMBER}+`
-      : this.props.favoritesCount;
-    return (
-      <div className={`${style} theme__tab-bar__favorites-icon-badge theme__badge`}>
-        {showCounter !== false ? number : ''}
-      </div>
-    );
-  }
-}
+  return (
+    <div className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge theme__badge')}>
+      {showCounter !== false ? number : ''}
+    </div>
+  );
+};
 
-export default withWidgetSettings(connect(FavoritesIconBadge), '@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge');
+export { FavoritesIconBadge };
+
+FavoritesIconBadge.propTypes = {
+  favoritesCount: PropTypes.number,
+  showWishlistItemsCountBadge: PropTypes.bool,
+  widgetSettings: PropTypes.shape({
+    showCounter: PropTypes.bool,
+  }),
+};
+
+FavoritesIconBadge.defaultProps = {
+  favoritesCount: 0,
+  showWishlistItemsCountBadge: true,
+  widgetSettings: defaultWidgetSettings,
+};
+
+export default withWidgetSettings(
+  connect(memo(FavoritesIconBadge)),
+  '@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge'
+);

@@ -1,5 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   Grid, I18n, ContextMenu, SurroundPortals, TextLink,
 } from '@shopgate/engage/components';
@@ -15,18 +16,31 @@ import {
 import { ITEM_PATH, ProductName } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
-import {
-  menuToggleButton,
-  menuToggleContainer,
-  title,
-  menuContainer,
-} from './CartItemProductTitle.style';
 import { ConditionalWrapper } from '../../../components';
 
-const contextMenuClasses = {
-  button: menuToggleButton,
-  container: menuToggleContainer,
-};
+const useStyles = makeStyles()(theme => ({
+  title: {
+    fontWeight: 500,
+    lineHeight: 1.125,
+    wordBreak: ['keep-all', 'break-word'],
+    hyphens: 'auto',
+  },
+  menuContainer: {
+    marginTop: theme.spacing(-2),
+    marginRight: theme.spacing(-2),
+  },
+  menuToggleContainer: {
+    margin: theme.spacing(1),
+  },
+  menuToggleButton: {
+    height: theme.spacing(4),
+    width: theme.spacing(4),
+    fontSize: theme.spacing(3),
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+  },
+}));
 
 /**
  * The Cart Product Title component.
@@ -36,6 +50,7 @@ const contextMenuClasses = {
  * @returns {JSX.Element}
  */
 export function CartItemProductTitle({ value, productId }) {
+  const { classes } = useStyles();
   const { invokeFulfillmentAction } = useCartItem();
 
   const context = useCartItemProduct();
@@ -57,6 +72,11 @@ export function CartItemProductTitle({ value, productId }) {
     invokeFulfillmentAction('changeFulfillment');
   }, [invokeFulfillmentAction]);
 
+  const contextMenuClasses = useMemo(() => ({
+    button: classes.menuToggleButton,
+    container: classes.menuToggleContainer,
+  }), [classes.menuToggleButton, classes.menuToggleContainer]);
+
   return (
     <Grid>
       <Grid.Item grow={1}>
@@ -69,7 +89,7 @@ export function CartItemProductTitle({ value, productId }) {
         >
           <ProductName
             name={value}
-            className={title}
+            className={classes.title}
             portalName={CART_ITEM_NAME}
             portalProps={context}
             testId={value}
@@ -78,7 +98,7 @@ export function CartItemProductTitle({ value, productId }) {
         </ConditionalWrapper>
       </Grid.Item>
       { isEditable && (
-        <Grid.Item className={menuContainer} shrink={0}>
+        <Grid.Item className={classes.menuContainer} shrink={0}>
           <SurroundPortals
             portalName={CART_ITEM_CONTEXT_MENU}
             portalProps={{

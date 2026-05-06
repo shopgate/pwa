@@ -1,11 +1,56 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import noop from 'lodash/noop';
 import { AccordionContainer, ChevronIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import AccordionContent from './components/AccordionContent';
-import * as styles from './style';
+
+const useStyles = makeStyles()({
+  toggle: {
+    padding: '12px 16px',
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  clickable: {
+    cursor: 'pointer',
+  },
+  toggleLeftAligned: {
+    flexDirection: 'row-reverse',
+  },
+  chevronContainer: {
+    display: 'flex',
+    flexShrink: 0,
+    fontSize: '1.5rem',
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      backgroundColor: 'rgba(0, 0, 0, 0.04)',
+      borderRadius: 32,
+      padding: 8,
+    },
+  },
+  labelContainer: {
+    marginRight: 'auto',
+    display: 'flex',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  chevronClosed: {
+    transformOrigin: 'center center',
+    transition: 'transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    transform: 'rotateZ(-90deg)',
+  },
+  chevronOpen: {
+    transformOrigin: 'center center',
+    transition: 'transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    transform: 'rotateZ(90deg)',
+  },
+});
 
 /**
  * Accordion component
@@ -26,7 +71,7 @@ import * as styles from './style';
  * for the accordion header
  * @returns {JSX.Element}
  */
-function Accordion(props) {
+const Accordion = (props) => {
   const {
     renderLabel,
     handleLabel,
@@ -41,6 +86,8 @@ function Accordion(props) {
     chevronPosition,
     renderAdditionalHeaderContent,
   } = props;
+
+  const { classes, cx } = useStyles();
 
   if (!renderLabel || !children) {
     return null;
@@ -61,10 +108,10 @@ function Accordion(props) {
           return (
             <>
               <div
-                className={classnames(
+                className={cx(
                   'ui-material__accordion-title',
-                  className,
-                  styles.toggle
+                  classes.toggle,
+                  className
                 )}
                 data-test-id={testId}
               >
@@ -74,28 +121,28 @@ function Accordion(props) {
                   aria-expanded={open}
                   aria-controls={controlsId}
                   aria-label={handleLabel}
-                  className={classnames(
-                    styles.labelContainer,
+                  className={cx(
+                    classes.labelContainer,
                     {
-                      [styles.toggleLeftAligned]: chevronPosition === 'left',
+                      [classes.toggleLeftAligned]: chevronPosition === 'left',
                     }
                   )}
                 >
                   {renderLabel({ open })}
                   <div
-                    className={classnames(
-                      styles.chevronContainer,
+                    className={cx(
+                      classes.chevronContainer,
                       chevronClassName,
-                      { [styles.clickable]: openWithChevron }
+                      { [classes.clickable]: openWithChevron }
                     )}
                     {... (openWithChevron ? clickHandlers : {})}
                     aria-label={i18n.text(open ? 'favorites.close_list' : 'favorites.open_list')}
                   >
-                    <ChevronIcon className={open ? styles.chevronOpen : styles.chevronClosed} />
+                    <ChevronIcon className={open ? classes.chevronOpen : classes.chevronClosed} />
                   </div>
                 </div>
                 {renderAdditionalHeaderContent && (
-                <div>{renderAdditionalHeaderContent()}</div>
+                  <div>{renderAdditionalHeaderContent()}</div>
                 )}
               </div>
               <AccordionContent
@@ -112,7 +159,7 @@ function Accordion(props) {
       </AccordionContainer>
     </div>
   );
-}
+};
 
 Accordion.propTypes = {
   chevronClassName: PropTypes.string,
@@ -143,4 +190,5 @@ Accordion.defaultProps = {
   chevronPosition: 'right',
   startOpened: false,
 };
+
 export default Accordion;
