@@ -44,8 +44,8 @@ const useStyles = makeStyles()((theme, {
       width: '100%',
       fontSize: 16,
       backgroundColor: 'var(--color-background-accent)',
-      ...(inputColor && { color: `${inputColor} !important` }),
-      ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
+      ...(inputColor && { color: `${inputColor}` }),
+      ...(inputBgColor && { backgroundColor: `${inputBgColor}` }),
       ' .quantity-label': {
         paddingLeft: theme.spacing(1),
         paddingRight: 4,
@@ -64,7 +64,7 @@ const useStyles = makeStyles()((theme, {
       height: '100%',
       width: '100%',
       ...(inputColor && { color: `${inputColor}` }),
-      ...(inputBgColor && { backgroundColor: `${inputBgColor} !important` }),
+      ...(inputBgColor && { backgroundColor: `${inputBgColor}` }),
       ...(hasLabel && { paddingLeft: 0 }),
       outline: 'none',
       '&:focus:not(:focus-visible)': {
@@ -78,10 +78,10 @@ const useStyles = makeStyles()((theme, {
         padding: 0,
       },
       height: sizeValue,
-      fontSize: `${Math.floor((sizeValue / 28) * 100)}% !important`,
+      fontSize: `${Math.floor((sizeValue / 28) * 100)}%`,
       '&:not(:disabled)': {
-        ...(buttonColor && { color: `${buttonColor} !important` }),
-        ...(buttonBgColor && { backgroundColor: `${buttonBgColor} !important` }),
+        ...(buttonColor && { color: `${buttonColor}` }),
+        ...(buttonBgColor && { backgroundColor: `${buttonBgColor}` }),
       },
     },
     buttonRipple: {
