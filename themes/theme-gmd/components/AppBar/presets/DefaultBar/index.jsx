@@ -1,15 +1,6 @@
-import React, {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useCallback,
-  useRef,
-  memo,
-  useContext,
-} from 'react';
+import React, { PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
 import { AppBar, NavDrawer } from '@shopgate/pwa-ui-material';
 import { BurgerIcon } from '@shopgate/pwa-ui-shared';
 import { Portal } from '@shopgate/pwa-common/components';
@@ -19,276 +10,277 @@ import {
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import {
-  withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents, i18n,
+  withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents,
 } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import {
   ViewContext,
   ResponsiveContainer,
 } from '@shopgate/engage/components';
+import { withStyles } from '@shopgate/engage/styles';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
 
-const useBarButtonsStyles = makeStyles()({
-  root: {
-    display: 'flex',
-    flexDirection: 'row',
-  },
-});
-
-/**
- * Right-side app bar actions container.
- * @param {Object} props Props.
- * @param {React.ReactNode} props.children Child nodes.
- * @returns {JSX.Element}
- */
-const BarButtons = ({ children }) => {
-  const { classes } = useBarButtonsStyles();
-  return <div className={classes.root}>{children}</div>;
-};
-
-BarButtons.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
 /**
  * The AppBarDefault component.
- * @param {Object} props The component properties.
- * @returns {JSX.Element|null}
  */
-const AppBarDefault = (props) => {
-  const { ariaHidden } = useContext(ViewContext);
-  const {
-    app,
-    resetStatusBar,
-    route,
-    setFocus: shouldSetFocusOnMount,
-    updateStatusBar: updateStatusBarAction,
-    widgetSettings,
-    below,
-    title,
-    ...restProps
-  } = props;
+class AppBarDefault extends PureComponent {
+  static propTypes = {
+    app: PropTypes.shape().isRequired,
+    classes: PropTypes.shape({
+      buttons: PropTypes.string,
+    }).isRequired,
+    resetStatusBar: PropTypes.func.isRequired,
+    route: PropTypes.shape().isRequired,
+    setFocus: PropTypes.bool.isRequired,
+    updateStatusBar: PropTypes.func.isRequired,
+    widgetSettings: PropTypes.shape().isRequired,
+    'aria-hidden': PropTypes.bool,
+    below: PropTypes.node,
+    title: PropTypes.string,
+  };
 
-  const [target, setTarget] = useState(() => document.getElementById('AppHeader'));
-  const [pageHeaderTarget, setPageHeaderTarget] = useState(
-    () => document.getElementById('PageHeaderBelow')
-  );
-  const [pageHeaderProgressTarget, setPageHeaderProgressTarget] = useState(
-    () => document.getElementById('PageHeaderProgress')
-  );
+  static defaultProps = {
+    'aria-hidden': null,
+    title: null,
+    below: null,
+  };
 
-  const prevRouteVisibleRef = useRef(route.visible);
-  const prevAppVisibleRef = useRef(app.isVisible);
-  const prevTitleRef = useRef(title);
+  /**
+   * Constructor
+   * @param {Object} props The component properties
+   */
+  constructor(props) {
+    super(props);
 
-  const setFocus = useCallback(() => {
+    this.state = {
+      target: document.getElementById('AppHeader'),
+      pageHeaderTarget: document.getElementById('PageHeaderBelow'),
+      pageHeaderProgressTarget: document.getElementById('PageHeaderProgress'),
+    };
+
+    UIEvents.addListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
+
+  /**
+   * Sets the target if it hasn't been set before.
+   */
+  componentDidMount() {
+    let { target, pageHeaderTarget } = this.state;
+
+    if (!target) {
+      target = document.getElementById('AppHeader');
+      this.setState({ target: target || null });
+    }
+
+    const pageHeaderProgressTarget = document.getElementById('PageHeaderProgress') || null;
+    pageHeaderTarget = document.getElementById('PageHeaderBelow') || null;
+    this.setState({
+      pageHeaderTarget,
+      pageHeaderProgressTarget,
+    });
+
+    if (this.props.setFocus) {
+      this.setFocus();
+    }
+
+    if (this.props.route.visible) {
+      this.updateStatusBar();
+
+      if (this.props.title) {
+        if (this.props.route.state.title !== this.props.title) {
+          router.update(this.props.route.id, { title: i18n.text(this.props.title) });
+        }
+      }
+    }
+  }
+
+  /**
+   * Syncs the colors of the device status bar with the colors of the AppBar when it came visible.
+   * @param {Object} prevProps The previous component props.
+   */
+  componentDidUpdate(prevProps) {
+    if (!this.props.route.visible) {
+      // Only visible app bars trigger color syncing.
+      return;
+    }
+
+    const pageHeaderTarget = document.getElementById('PageHeaderBelow') || null;
+    if (this.state.pageHeaderTarget !== pageHeaderTarget) {
+      this.setState({ pageHeaderTarget });
+    }
+
+    const routeDidEnter =
+      prevProps.route.visible === false && this.props.route.visible === true;
+    const engageDidEnter =
+      prevProps.app.isVisible === false && this.props.app.isVisible === true;
+    const engageWillLeave =
+      prevProps.app.isVisible === true && this.props.app.isVisible === false;
+
+    if (routeDidEnter || engageDidEnter) {
+      // Sync the colors of the app bar when the route with the bar came visible.
+      this.updateStatusBar();
+    }
+
+    if (engageWillLeave) {
+      // Reset the status bar when Engage goes into the background.
+      this.props.resetStatusBar();
+    }
+
+    if (prevProps.title !== this.props.title) {
+      router.update(this.props.route.id, { title: i18n.text(this.props.title) });
+    }
+  }
+
+  /**
+   * Removes the event listeners when the component unmounts.
+   */
+  componentWillUnmount() {
+    UIEvents.removeListener(NavDrawer.EVENT_CLOSE, this.setFocus);
+  }
+
+  /**
+   * Sets the focus to the app bar title or else to the first focusable element in the app bar
+   * for screen readers
+   */
+  setFocus = () => {
+    const { target } = this.state;
+
     if (!target) {
       return;
     }
 
-    const focusable = target.querySelector('.theme__app-bar__title')
-      || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
+    const focusable = target.querySelector('.theme__app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
 
     if (focusable) {
       focusable.focus();
     }
-  }, [target]);
+  };
 
-  const updateStatusBar = useCallback(() => {
-    const { pathname } = route;
-    /**
-     * The settings for the startpage need to be preserved within the statusbar to optimize
-     * the initial rendering at the app start.
-     */
-    updateStatusBarAction(widgetSettings, pathname === INDEX_PATH);
-  }, [route, updateStatusBarAction, widgetSettings]);
-
-  const toggleSearch = useCallback((visible) => {
-    if (!route.visible) {
+  /**
+   * Maintains the status bar based on the visibility of the global SearchComponent.
+   * @param {boolean} visible The current state.
+   */
+  toggleSearch = (visible) => {
+    if (!this.props.route.visible) {
       return;
     }
 
     if (visible) {
-      resetStatusBar();
+      this.props.resetStatusBar();
     } else {
-      updateStatusBar();
+      this.updateStatusBar();
     }
-  }, [route.visible, resetStatusBar, updateStatusBar]);
+  };
 
-  useEffect(() => {
-    UIEvents.addListener(NavDrawer.EVENT_CLOSE, setFocus);
-    return () => {
-      UIEvents.removeListener(NavDrawer.EVENT_CLOSE, setFocus);
-    };
-  }, [setFocus]);
-
-  useLayoutEffect(() => {
-    let nextTarget = target;
-    if (!nextTarget) {
-      nextTarget = document.getElementById('AppHeader') || null;
-      setTarget(nextTarget);
-    }
-
-    setPageHeaderTarget(document.getElementById('PageHeaderBelow') || null);
-    setPageHeaderProgressTarget(document.getElementById('PageHeaderProgress') || null);
-
-    if (shouldSetFocusOnMount && nextTarget) {
-      const focusable = nextTarget.querySelector('.theme__app-bar__title')
-        || nextTarget.querySelector(
-          'button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])'
-        );
-      focusable?.focus();
-    }
-
-    if (route.visible) {
-      updateStatusBar();
-
-      if (title && route.state.title !== title) {
-        router.update(route.id, { title: i18n.text(title) });
-      }
-    }
-    /* eslint-disable-next-line react-hooks/exhaustive-deps -- mount / initial DOM targets only */
-  }, []);
-
-  useLayoutEffect(() => {
-    if (!route.visible) {
-      prevRouteVisibleRef.current = route.visible;
-      prevAppVisibleRef.current = app.isVisible;
-      prevTitleRef.current = title;
-      return;
-    }
-
-    const nextPageHeaderBelow = document.getElementById('PageHeaderBelow') || null;
-    if (pageHeaderTarget !== nextPageHeaderBelow) {
-      setPageHeaderTarget(nextPageHeaderBelow);
-    }
-
-    const routeDidEnter =
-      prevRouteVisibleRef.current === false && route.visible === true;
-    const engageDidEnter =
-      prevAppVisibleRef.current === false && app.isVisible === true;
-    const engageWillLeave =
-      prevAppVisibleRef.current === true && app.isVisible === false;
-
-    if (routeDidEnter || engageDidEnter) {
-      updateStatusBar();
-    }
-
-    if (engageWillLeave) {
-      resetStatusBar();
-    }
-
-    if (prevTitleRef.current !== title) {
-      router.update(route.id, { title: i18n.text(title || '') });
-    }
-
-    prevRouteVisibleRef.current = route.visible;
-    prevAppVisibleRef.current = app.isVisible;
-    prevTitleRef.current = title;
-  }, [
-    app.isVisible,
-    pageHeaderTarget,
-    resetStatusBar,
-    route.id,
-    route.visible,
-    title,
-    updateStatusBar,
-  ]);
-
-  if (!route.visible || !target) {
-    return null;
+  /**
+   * Updates the status bar styling.
+   */
+  updateStatusBar() {
+    const { pathname } = this.props.route;
+    /**
+     * The settings for the startpage need to be preserved within the statusbar to optimize
+     * the initial rendering at the app start.
+     */
+    this.props.updateStatusBar(this.props.widgetSettings, pathname === INDEX_PATH);
   }
 
-  const { background, color } = widgetSettings;
-  const left = (
-    <AppBarIcon
-      icon={BurgerIcon}
-      onClick={NavDrawer.open}
-      testId="Button"
-      aria-label={i18n.text('navigation.open_menu')}
-    />
-  );
-  const center = <AppBar.Title title={i18n.text(title || '')} />;
-  const right = (
-    <BarButtons>
-      <SearchButton onToggle={toggleSearch} />
-      <CartButton />
-    </BarButtons>
-  );
+  /**
+   * @returns {JSX}
+   */
+  render() {
+    if (!this.props.route.visible || !this.state.target) {
+      return null;
+    }
 
-  const belowContent = (
-    <>
-      {below}
-      <ProgressBar />
-    </>
-  );
+    const { background, color } = this.props.widgetSettings;
+    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-label={i18n.text('navigation.open_menu')} />;
+    const center = <AppBar.Title title={i18n.text(this.props.title || '')} />;
+    const right = (
+      <div className={this.props.classes.buttons}>
+        <SearchButton onToggle={this.toggleSearch} />
+        <CartButton />
+      </div>
+    );
 
-  const appBar = (
-    <AppBar
-      backgroundColor={background}
-      textColor={color}
-      left={left}
-      center={center}
-      right={right}
-      {...restProps}
-      below={belowContent}
-      aria-hidden={ariaHidden}
-    />
-  );
+    const below = (
+      <>
+        {this.props.below}
+        <ProgressBar />
+      </>
+    );
 
-  const appBarPortal = ReactDOM.createPortal(
-    <>
-      <Portal name={APP_BAR_DEFAULT_BEFORE} />
-      <Portal name={APP_BAR_DEFAULT}>
-        {appBar}
-      </Portal>
-      <Portal name={APP_BAR_DEFAULT_AFTER} />
-    </>,
-    target
-  );
+    const appBar = (
+      <AppBar
+        backgroundColor={background}
+        textColor={color}
+        left={left}
+        center={center}
+        right={right}
+        {...this.props}
+        below={below}
+        aria-hidden={this.props['aria-hidden']}
+      />
+    );
 
-  return (
-    <>
-      <ResponsiveContainer appAlways breakpoint="<=xs">
-        {appBarPortal}
-      </ResponsiveContainer>
-      <ResponsiveContainer webOnly breakpoint=">xs">
-        {pageHeaderTarget ? ReactDOM.createPortal(
-          below,
-          pageHeaderTarget
-        ) : null}
-        {pageHeaderProgressTarget ? ReactDOM.createPortal(
-          <ProgressBar />,
-          pageHeaderProgressTarget
-        ) : null}
-      </ResponsiveContainer>
-    </>
-  );
-};
+    const appBarPortal = ReactDOM.createPortal(
+      <>
+        <Portal name={APP_BAR_DEFAULT_BEFORE} />
+        <Portal name={APP_BAR_DEFAULT}>
+          {appBar}
+        </Portal>
+        <Portal name={APP_BAR_DEFAULT_AFTER} />
+      </>,
+      this.state.target
+    );
 
-AppBarDefault.propTypes = {
-  app: PropTypes.shape().isRequired,
-  resetStatusBar: PropTypes.func.isRequired,
-  route: PropTypes.shape().isRequired,
-  setFocus: PropTypes.bool.isRequired,
-  updateStatusBar: PropTypes.func.isRequired,
-  widgetSettings: PropTypes.shape().isRequired,
-  below: PropTypes.node,
-  title: PropTypes.string,
-};
+    return (
+      <>
+        <ResponsiveContainer appAlways breakpoint="<=xs">
+          {appBarPortal}
+        </ResponsiveContainer>
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          {/* Render custom below content to a portal */}
+          {this.state.pageHeaderTarget ? ReactDOM.createPortal(
+            this.props.below,
+            this.state.pageHeaderTarget
+          ) : null}
+          {/* Render progress bar to a portal */}
+          {this.state.pageHeaderProgressTarget ? ReactDOM.createPortal(
+            <ProgressBar />,
+            this.state.pageHeaderProgressTarget
+          ) : null}
+        </ResponsiveContainer>
+      </>
+    );
+  }
+}
 
-AppBarDefault.defaultProps = {
-  title: null,
-  below: null,
-};
+/**
+ * The AppBarDefaultWithContext component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
+ */
+const AppBarDefaultWithContext = props => (
+  <ViewContext.Consumer>
+    {({ ariaHidden }) => (
+      <AppBarDefault {...props} aria-hidden={ariaHidden} />
+    )}
+  </ViewContext.Consumer>
+);
 
-const WrappedComponent = withApp(withWidgetSettings(
-  withRoute(connect(memo(AppBarDefault)), { prop: 'route' }),
+const WrappedComponent = withStyles(withApp(withWidgetSettings(
+  withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }),
   '@shopgate/engage/components/AppBar'
-));
+)), () => ({
+  buttons: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+}));
 
 WrappedComponent.Icon = AppBarIcon;
 
