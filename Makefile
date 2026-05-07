@@ -113,7 +113,7 @@ add-remotes:
 
 
 sanity-check:
-		npm install --no-package-lock --no-save --ignore-scripts yargs && \
+		npm install --no-package-lock --no-save yargs && \
 			node ./scripts/check-release-version.js -v="$(RELEASE_VERSION)";
 
 		@if [[ "$(BRANCH_NAME)" = "" ]]; then \
