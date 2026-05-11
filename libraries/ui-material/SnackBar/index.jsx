@@ -17,7 +17,7 @@ const buttonColor = themeColors.accent;
 const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
 const safeButtonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'fixed',
     height: 'var(--snack-bar-height, 80px)',
@@ -41,7 +41,7 @@ const useStyles = makeStyles()({
     background: backgroundColor,
     borderRadius: 3,
     boxShadow: themeShadows.toast,
-    color: themeColors.light,
+    color: theme.palette.background.default,
     display: 'flex',
     fontSize: '0.875rem',
     justifyContent: 'space-between',
@@ -67,7 +67,7 @@ const useStyles = makeStyles()({
     padding: '0 8px',
     textTransform: 'uppercase',
   },
-});
+}));
 
 /**
  * Calculates the required amount of rows for the snack bar.

@@ -4,21 +4,18 @@ import { isBeta } from '@shopgate/engage/core';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()((theme, { display }) => ({
   root: {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: colors.light,
+    background: theme.palette.background.default,
     height: '100%',
   },
   itemDetails: {
@@ -52,13 +49,13 @@ const Item = ({ product, display }) => {
       >
         {isBeta() && product.featuredMedia
           ? <FeaturedMedia
-              type={product.featuredMedia.type}
-              url={product.featuredMedia.url}
+            type={product.featuredMedia.type}
+            url={product.featuredMedia.url}
           />
           : <ItemImage
-              productId={product.id}
-              name={product.name}
-              imageUrl={product.featuredImageBaseUrl}
+            productId={product.id}
+            name={product.name}
+            imageUrl={product.featuredImageBaseUrl}
           />}
       </Link>
       <ProductBadges location="productGrid" productId={product.id}>

@@ -10,14 +10,11 @@ import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants'
 import ButtonLink from '@shopgate/pwa-ui-shared/ButtonLink';
 import Headline from 'Components/Headline';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CategoryPicker from './components/Picker';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    background: colors.light,
+    background: theme.palette.background.default,
     display: 'flex',
     flexDirection: 'column',
     paddingBottom: theme.spacing(2),

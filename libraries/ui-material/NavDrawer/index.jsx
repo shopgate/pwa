@@ -18,7 +18,7 @@ import transition from './transition';
 const OPEN = 'navdrawer_open';
 const CLOSE = 'navdrawer_close';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   content: {
     fontSize: 14,
     height: '100%',
@@ -27,7 +27,7 @@ const useStyles = makeStyles()({
     WebkitOverflowScrolling: 'touch',
   },
   drawer: {
-    background: themeColors.light,
+    background: theme.palette.background.default,
     boxShadow: themeShadows.navDrawer,
     color: themeColors.dark,
     height: '100vh',
@@ -43,7 +43,7 @@ const useStyles = makeStyles()({
       maxWidth: '67vw',
     },
   },
-});
+}));
 
 /**
  * Material navigation drawer; opens/closes via `NavDrawer.open()` / `NavDrawer.close()` (UIEvents).

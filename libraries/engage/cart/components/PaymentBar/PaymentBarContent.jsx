@@ -18,11 +18,11 @@ import PaymentBarCheckoutButton from './PaymentBarCheckoutButton';
 import PaymentBarPromotionCoupons from './PaymentBarPromotionCoupons';
 import PaymentBarAppliedPromotions from './PaymentBarAppliedPromotions';
 
-const { colors, shadows } = themeConfig;
+const { shadows } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
-    background: colors.light,
+    background: theme.palette.background.default,
     boxShadow: shadows.cart.paymentBar,
     position: 'relative',
     zIndex: 2,
@@ -42,7 +42,7 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
   },
   checkoutButtonContainer: {
-    background: colors.light,
+    background: theme.palette.background.default,
     alignItems: 'center',
     padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
     position: 'relative',

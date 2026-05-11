@@ -32,7 +32,7 @@ const useStyles = makeStyles()(theme => ({
     marginRight: theme.spacing(1),
   },
   rangeSliderHandleInner: {
-    background: colors.light,
+    background: theme.palette.background.default,
     boxShadow: shadows.filter.priceSlider,
     borderRadius: '50%',
     width: theme.spacing(3),

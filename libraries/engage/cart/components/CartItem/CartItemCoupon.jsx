@@ -13,12 +13,9 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { CART_ITEM_TYPE_COUPON } from '@shopgate/pwa-common-commerce/cart';
 import { getPageSettings } from '@shopgate/engage/core/config';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { MessageBar, CardList } from '@shopgate/engage/components';
 import connect from './CartItemCoupon.connector';
 import { CartItemCouponLayout, CartItemCouponLayoutContext } from './CartItemCouponLayout';
-
-const { colors } = themeConfig;
 
 const duration = 300;
 
@@ -53,7 +50,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: 4,
   },
   messagesContainerCard: {
-    background: colors.light,
+    background: theme.palette.background.default,
     padding: theme.spacing(0, 0, 2, 0),
   },
   messagesCard: {
@@ -61,7 +58,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(1, 1.75),
   },
   messagesContainerLine: {
-    background: colors.light,
+    background: theme.palette.background.default,
     padding: theme.spacing(2, 2, 0),
   },
   messagesLine: {

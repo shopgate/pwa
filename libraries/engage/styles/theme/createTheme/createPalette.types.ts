@@ -141,6 +141,11 @@ export const paletteSchema = {
     primary: '',
     secondary: '',
   },
+  tabBar: {
+    background: '',
+    border: '',
+    inactive: '',
+  },
   /**
    * Palette with grey colors, intended for backgrounds, borders, and dividers.
    * The numbers represent the lightness of the color,

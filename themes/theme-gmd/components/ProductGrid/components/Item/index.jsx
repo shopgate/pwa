@@ -13,12 +13,12 @@ import ItemDetails from './components/ItemDetails';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: colors.light,
+    background: theme.palette.background.default,
     fontSize: 14,
     height: '100%',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles()({
       width: 'inherit',
     },
   },
-});
+}));
 
 /**
  * The Product Grid Item component.
@@ -70,13 +70,13 @@ const Item = ({ product, display }) => {
       >
         {isBeta() && product.featuredMedia
           ? <FeaturedMedia
-              type={product.featuredMedia.type}
-              url={product.featuredMedia.url}
+            type={product.featuredMedia.type}
+            url={product.featuredMedia.url}
           />
           : <ItemImage
-              productId={product.id}
-              name={product.name}
-              imageUrl={product.featuredImageBaseUrl}
+            productId={product.id}
+            name={product.name}
+            imageUrl={product.featuredImageBaseUrl}
           />}
       </Link>
       <ProductBadges location="productGrid" productId={product.id} className={classes.badgesPortal}>

@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const FADE_DURATION = 150;
 const SLIDE_DURATION = 150;
@@ -30,7 +29,7 @@ const fadeOutPickerBackground = keyframes({
   '100%': { opacity: 0 },
 });
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     zIndex: 1000,
     position: 'fixed',
@@ -56,7 +55,7 @@ const useStyles = makeStyles()(() => ({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: themeColors.light,
+    backgroundColor: theme.palette.background.default,
     animation: `${slideInPickerModal} ${SLIDE_DURATION}ms 1 both ${EASING}`,
   },
   containerInactive: {

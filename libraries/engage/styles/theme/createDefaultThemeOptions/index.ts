@@ -28,12 +28,17 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           main: getCSSCustomProp('--color-state-ok'),
         },
         background: {
-          default: colors.background,
+          default: colors.light,
         },
         text: {
           primary: getCSSCustomProp('--color-text-high-emphasis'),
           secondary: getCSSCustomProp('--color-text-low-emphasis'),
         },
+        tabBar: {
+          background: '#AAAAAA',
+          border: '#E6E6E6',
+          inactive: '#FFFFFF',
+        }
       },
     },
     dark: {

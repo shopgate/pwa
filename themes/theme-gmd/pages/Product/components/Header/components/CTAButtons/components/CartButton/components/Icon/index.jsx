@@ -4,12 +4,9 @@ import Transition from 'react-transition-group/Transition';
 import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
 import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import transition from './transition';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     transition: 'transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1)',
     willChange: 'transform',
@@ -22,14 +19,14 @@ const useStyles = makeStyles()({
   iconCartDisabled: {
     boxSizing: 'content-box',
     padding: 16,
-    fill: colors.light,
+    fill: theme.palette.background.default,
   },
   iconTick: {
     boxSizing: 'content-box',
     padding: 16,
     fill: 'var(--color-button-cta)',
   },
-});
+}));
 
 /**
  * The CartButtonIcon component.

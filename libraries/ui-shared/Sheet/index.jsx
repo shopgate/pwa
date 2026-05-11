@@ -61,7 +61,7 @@ const useStyles = makeStyles()(theme => ({
   },
   container: {
     bottom: 0,
-    background: themeConfig.colors.light,
+    background: theme.palette.background.default,
     width: '100vw',
     [responsiveMediaQuery('<xl', { appOnly: true })]: {
       maxWidth: 640,
