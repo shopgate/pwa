@@ -12,29 +12,31 @@ import HeartPlus from '../icons/HeartPlusIcon';
 import Ripple from '../Ripple';
 import connect from './connector';
 
-const buttonProto = {
-  display: 'block',
-  position: 'relative',
-  background: themeColors.light,
-  borderRadius: '50%',
-  padding: 0,
-  fontSize: 20,
-  lineHeight: 1,
-  color: 'var(--color-secondary)',
-  outline: 0,
-};
+const useStyles = makeStyles()((theme) => {
+  const buttonProto = {
+    display: 'block',
+    position: 'relative',
+    background: themeColors.light,
+    borderRadius: '50%',
+    padding: 0,
+    fontSize: 20,
+    lineHeight: 1,
+    color: theme.palette.secondary.main,
+    outline: 0,
+  };
 
-const useStyles = makeStyles()({
-  buttonFlat: {
-    ...buttonProto,
-  },
-  button: {
-    ...buttonProto,
-    boxShadow: themeShadows.buttons.elevated,
-  },
-  ripple: {
-    padding: 6,
-  },
+  return {
+    buttonFlat: {
+      ...buttonProto,
+    },
+    button: {
+      ...buttonProto,
+      boxShadow: themeShadows.buttons.elevated,
+    },
+    ripple: {
+      padding: 6,
+    },
+  };
 });
 
 /**
@@ -162,14 +164,14 @@ FavoritesButton.propTypes = {
 
 FavoritesButton.defaultProps = {
   active: false,
-  addFavorites: () => {},
+  addFavorites: () => { },
   'aria-hidden': null,
   className: '',
   noShadow: false,
   once: false,
-  onRippleComplete: () => {},
+  onRippleComplete: () => { },
   productId: null,
-  removeFavorites: () => {},
+  removeFavorites: () => { },
   removeThrottle: 0,
   removeWithRelatives: false,
   rippleClassName: '',

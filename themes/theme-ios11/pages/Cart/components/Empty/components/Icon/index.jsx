@@ -6,7 +6,7 @@ const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   leaf: {
-    fill: 'var(--color-primary)',
+    fill: theme.palette.primary.main,
   },
   background: {
     fill: theme.palette.background.default,
@@ -15,7 +15,7 @@ const useStyles = makeStyles()(theme => ({
     fill: colors.shade10,
   },
   basket: {
-    fill: 'var(--color-secondary)',
+    fill: theme.palette.secondary.main,
   },
 }));
 

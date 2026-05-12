@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
   title: {
     fontSize: '20px',
     fontWeight: '500',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     marginBottom: '8px',
   },
   inputCell: {

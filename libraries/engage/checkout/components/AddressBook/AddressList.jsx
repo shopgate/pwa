@@ -35,7 +35,7 @@ const mapDispatchToProps = dispatch => ({
   push: props => dispatch(historyPush(props)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -54,7 +54,7 @@ const useStyles = makeStyles()({
     '&&': {
       marginTop: 8,
       marginRight: 16,
-      backgroundColor: 'var(--color-primary)',
+      backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
       fontSize: 14,
       textTransform: 'none',
@@ -77,7 +77,7 @@ const useStyles = makeStyles()({
       flex: 1,
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}

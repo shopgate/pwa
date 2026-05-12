@@ -3,7 +3,7 @@ import CryptoJs from 'crypto-js';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   outerCircle: {
     fill: 'var(--color-primary-contrast)',
   },
@@ -18,9 +18,9 @@ const useStyles = makeStyles()({
   },
   viewBox: {
     width: themeVariables.emptyPage.icon,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 /**
  * Renders empty favorites icon.

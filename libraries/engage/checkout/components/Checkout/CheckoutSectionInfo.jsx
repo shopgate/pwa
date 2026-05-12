@@ -17,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
   },
   iconWrapper: {
     cursor: 'pointer',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontSize: '1.5rem',
     display: 'inline-flex',
     verticalAlign: 'bottom',

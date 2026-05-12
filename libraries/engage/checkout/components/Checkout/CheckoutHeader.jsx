@@ -5,7 +5,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core/helpers/i18n';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   title: {
     padding: 16,
     display: 'flex',
@@ -21,13 +21,13 @@ const useStyles = makeStyles()({
   step: {
     fontSize: '1rem',
     lineHeight: 1,
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     paddingLeft: 16,
     margin: 0,
     fontWeight: '400',
     paddingBottom: 2,
   },
-});
+}));
 
 /**
  * CheckoutSection component

@@ -65,7 +65,7 @@ const useStyles = makeStyles()(theme => ({
   },
   resetInstructionsEmail: {
     fontWeight: 'bold',
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
   },
   goBackButtonContainer: {
     padding: theme.spacing(2, 0),

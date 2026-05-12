@@ -11,7 +11,7 @@ import { useCartItem } from './CartItem.hooks';
 const useStyles = makeStyles()(theme => ({
   container: {
     flex: '0 1 auto',
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     paddingRight: 8,
   },
   deleteIcon: {
@@ -29,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
   },
   infoIconWrapper: {
     cursor: 'pointer',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontSize: '1.5rem',
     display: 'inline-flex',
     verticalAlign: 'bottom',

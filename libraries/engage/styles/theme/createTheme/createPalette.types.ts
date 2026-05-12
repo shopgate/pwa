@@ -159,6 +159,10 @@ export const paletteSchema = {
     badgeTop: '',
     badgeLeft: '',
   },
+  ratingStars: {
+    filled: '',
+    empty: '',
+  },
   /**
    * Palette with grey colors, intended for backgrounds, borders, and dividers.
    * The numbers represent the lightness of the color,

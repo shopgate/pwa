@@ -5,11 +5,11 @@ import BaseCheckbox from '@shopgate/pwa-common/components/Checkbox';
 import CheckedIcon from '../icons/RadioCheckedIcon';
 import UncheckedIcon from '../icons/RadioUncheckedIcon';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   checkedIcon: {
     width: 24,
     height: 24,
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
   },
   uncheckedIcon: {
     width: 24,

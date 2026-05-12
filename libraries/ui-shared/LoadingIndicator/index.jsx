@@ -8,13 +8,13 @@ const {
   loadingIndicator: { imgSrc: loadingImageSrc } = {},
 } = themeConfig.variables;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'block',
     padding: '1em',
     textAlign: 'center',
     fontSize: '1.5em',
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
   },
   imgContainer: {
     display: 'flex',

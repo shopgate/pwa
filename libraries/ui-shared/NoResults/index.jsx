@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
   },
   icon: {
     width: 216,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   headline: {
     fontSize: '1.25rem',

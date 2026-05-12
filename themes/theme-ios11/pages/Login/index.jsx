@@ -107,7 +107,7 @@ const useStyles = makeStyles()(theme => ({
   },
   signup: {
     display: 'inline-block',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     width: 'auto',
     margin: '-.35em 0 -.35em -.35em',
     padding: '.35em',

@@ -52,6 +52,10 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           badgeTop: 'var(--tab-bar-item-badge-top, -8px)',
           badgeLeft: 'var(--tab-bar-item-badge-left, calc(50% + 20px))',
         },
+        ratingStars: {
+          filled: `var(--rating-stars-filled, ${getCSSCustomProp('--color-primary')})`,
+          empty: 'var(--rating-stars-empty, #CCCCCC)',
+        },
       },
     },
     dark: {

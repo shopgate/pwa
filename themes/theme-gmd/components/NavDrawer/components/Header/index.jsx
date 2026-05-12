@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: 4,
   },
   loggedIn: {
-    background: 'var(--color-secondary)',
+    background: theme.palette.secondary.main,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -48,7 +48,7 @@ const useStyles = makeStyles()(theme => ({
 const NavDrawerHeader = ({
   isLoggedIn, email, name, openLogin,
 }) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx, theme } = useStyles();
 
   if (!isLoggedIn) {
     return (
@@ -57,7 +57,7 @@ const NavDrawerHeader = ({
         label="navigation.login_register"
         onClick={openLogin}
         style={{
-          background: 'var(--color-primary)',
+          background: theme.palette.primary.main,
           color: 'var(--color-primary-contrast)',
         }}
         testId="navDrawerLoginButton"

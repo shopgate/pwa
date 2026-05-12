@@ -38,11 +38,11 @@ const useStyles = makeStyles()((theme, { level }) => ({
     outline: 0,
     color: theme.palette.text.primary,
     ':hover': {
-      color: 'var(--color-primary)',
+      color: theme.palette.primary.main,
     },
   },
   linkActive: {
-    color: 'var(--color-primary) !important',
+    color: `${theme.palette.primary.main} !important`,
   },
 }));
 

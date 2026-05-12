@@ -57,12 +57,12 @@ const indeterminateShort = keyframes({
   },
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   innerElement: {
     ':before': {
       content: '""',
       position: 'absolute',
-      background: 'var(--color-secondary)',
+      background: theme.palette.secondary.main,
       top: 0,
       left: 0,
       bottom: 0,
@@ -71,7 +71,7 @@ const useStyles = makeStyles()({
     ':after': {
       content: '""',
       position: 'absolute',
-      background: 'var(--color-secondary)',
+      background: theme.palette.secondary.main,
       top: 0,
       left: 0,
       bottom: 0,
@@ -87,7 +87,7 @@ const useStyles = makeStyles()({
       animationDelay: '1.15s',
     },
   },
-});
+}));
 
 /**
  * A component for visualizing any kind of progress.

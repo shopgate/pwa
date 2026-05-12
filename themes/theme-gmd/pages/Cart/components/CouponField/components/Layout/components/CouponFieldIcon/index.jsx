@@ -8,7 +8,7 @@ const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   iconCircleEnabled: {
-    fill: 'var(--color-primary)',
+    fill: theme.palette.primary.main,
   },
   iconArrowEnabled: {
     fill: theme.palette.background.default,

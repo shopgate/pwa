@@ -7,13 +7,13 @@ import {
 import { i18n } from '@shopgate/engage/core/helpers';
 import { useCartItemProduct } from './CartItem.hooks';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   label: {
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     fontSize: '0.875rem',
     marginTop: 'auto',
   },
-});
+}));
 
 /**
  * @returns {JSX.Element}

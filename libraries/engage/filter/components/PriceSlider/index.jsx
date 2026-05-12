@@ -25,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
   },
   rangeSliderRange: {
-    background: 'var(--color-secondary)',
+    background: theme.palette.secondary.main,
     position: 'absolute',
     height: '100%',
     marginLeft: theme.spacing(1),

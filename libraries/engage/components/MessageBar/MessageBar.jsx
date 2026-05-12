@@ -68,12 +68,12 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
     // eslint-disable-next-line tss-unused-classes/unused-classes
     info: {
       ...messageBase,
-      background: 'var(--color-secondary)',
+      background: theme.palette.secondary.main,
       color: 'var(--color-secondary-contrast)',
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
         ...getMessageColors(secondaryColor),
         ' > svg': {
-          color: 'var(--color-secondary)',
+          color: theme.palette.secondary.main,
         },
         padding: theme.spacing(1.5, 2),
         fontWeight: 'normal',

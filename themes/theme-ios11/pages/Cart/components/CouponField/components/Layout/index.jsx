@@ -36,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   icon: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontSize: '1.875rem',
     position: 'absolute',
     transition: `opacity ${easing}`,

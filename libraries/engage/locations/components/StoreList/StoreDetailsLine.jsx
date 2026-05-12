@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0.5, 2, 0, 0),
   },
   detailsIconLinked: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   details: {
     paddingTop: theme.spacing(0.5),

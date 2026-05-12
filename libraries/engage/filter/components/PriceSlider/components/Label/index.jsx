@@ -12,7 +12,7 @@ const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   price: {
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     display: 'inline-block',
     fontWeight: 500,
     textAlign: 'center',
@@ -40,11 +40,11 @@ const useStyles = makeStyles()(theme => ({
       borderColor: colors.shade5,
     },
     [responsiveMediaQuery('>=xs', { webOnly: true })]: {
-      borderColor: 'var(--color-primary)',
+      borderColor: theme.palette.primary.main,
       padding: '4px 0',
       top: -4,
       ':focus': {
-        borderColor: 'var(--color-primary)',
+        borderColor: theme.palette.primary.main,
       },
     },
   },

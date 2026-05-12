@@ -40,7 +40,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
     marginTop: '-1px',
     marginRight: theme.spacing(1),
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   activeIconDisabled: {
     width: 24,
@@ -48,7 +48,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
     marginTop: '-1px',
     marginRight: theme.spacing(1),
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     opacity: 0.3,
   },
   radio: {

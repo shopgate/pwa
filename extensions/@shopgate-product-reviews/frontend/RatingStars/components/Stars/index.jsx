@@ -2,13 +2,10 @@ import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import times from 'lodash/times';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core';
 import StarIcon from '../StarIcon';
 import StarHalfIcon from '../StarHalfIcon';
 import { RATING_SCALE_DIVISOR, NUMBER_OF_STARS } from '../../../constants';
-
-const { colors } = themeConfig;
 
 const ICON_SIZES = {
   small: '1em',
@@ -18,7 +15,7 @@ const ICON_SIZES = {
 
 const DISPLAY_KEYS = Object.keys(ICON_SIZES);
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
   },
@@ -28,11 +25,11 @@ const useStyles = makeStyles()(() => ({
     outline: 0,
   },
   emptyStars: {
-    color: colors.shade7,
+    color: theme.palette.ratingStars.empty,
   },
   filledStars: {
     position: 'absolute',
-    color: 'var(--color-primary)',
+    color: theme.palette.ratingStars.filled,
     top: 0,
   },
   iconSmall: {
@@ -66,7 +63,7 @@ const Stars = ({
   className = '',
   display = 'small',
   isSelectable = false,
-  onSelection = () => {},
+  onSelection = () => { },
   value = 0,
 }) => {
   const { classes, cx } = useStyles();
@@ -164,7 +161,7 @@ Stars.defaultProps = {
   className: '',
   display: 'small',
   isSelectable: false,
-  onSelection: () => {},
+  onSelection: () => { },
   value: 0,
 };
 

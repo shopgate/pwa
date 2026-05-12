@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: '0.7rem',
     lineHeight: 1.5,
     fontWeight: 700,
-    background: 'var(--color-primary)',
+    background: theme.palette.primary.main,
     color: 'var(--color-primary-contrast)',
     borderRadius: theme.spacing(1),
     height: theme.spacing(2),

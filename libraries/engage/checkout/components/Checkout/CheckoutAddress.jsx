@@ -29,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
   },
   link: {
     fontSize: '0.875rem',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     textTransform: 'uppercase',
     textAlign: 'center',
   },

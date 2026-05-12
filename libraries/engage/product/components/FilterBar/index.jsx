@@ -38,10 +38,10 @@ const FilterBar = ({ filters, categoryId }) => {
       ? 'var(--color-background-accent)'
       : 'var(--color-background-accent)',
     color: active
-      ? 'var(--color-primary)'
+      ? theme.palette.primary.main
       : theme.palette.text.primary,
   } : {
-    background: active ? 'var(--color-secondary)' : colors.background,
+    background: active ? theme.palette.secondary.main : colors.background,
     color: active ? 'var(--color-secondary-contrast)' : colors.dark,
   }), [active, theme]);
 
