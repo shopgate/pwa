@@ -52,10 +52,10 @@ type PaletteFromSchema<T> =
   T extends Leaf ? string
   : T extends readonly (infer U)[] ? readonly PaletteFromSchema<U>[]
   : T extends object
-    ? ('main' extends keyof T
-        ? AugmentedPaletteColorForTheme
-        : { [K in keyof T]: PaletteFromSchema<T[K]> })
-    : string;
+  ? ('main' extends keyof T
+    ? AugmentedPaletteColorForTheme
+    : { [K in keyof T]: PaletteFromSchema<T[K]> })
+  : string;
 
 /**
  * Derives the **input** palette type from `paletteSchema`.
@@ -72,10 +72,10 @@ type PaletteInputFromSchema<T> =
   T extends Leaf ? string
   : T extends readonly (infer U)[] ? readonly PaletteInputFromSchema<U>[]
   : T extends object
-    ? ('main' extends keyof T
-        ? { main: string; light?: string; dark?: string; contrastText?: string }
-        : { [K in keyof T]: PaletteInputFromSchema<T[K]> })
-    : string;
+  ? ('main' extends keyof T
+    ? { main: string; light?: string; dark?: string; contrastText?: string }
+    : { [K in keyof T]: PaletteInputFromSchema<T[K]> })
+  : string;
 
 type PaletteKeysWithMain<T> = {
   [K in keyof T]-?: T[K] extends { main: unknown } ? K : never
@@ -145,6 +145,19 @@ export const paletteSchema = {
     background: '',
     border: '',
     inactive: '',
+    active: '',
+    boxShadow: '',
+    minHeight: '',
+
+    floatingBorderRadius: '',
+    floatingBoxShadow: '',
+    floatingMinHeight: '',
+
+    badgeColor: '',
+    badgeBackground: '',
+    badgeBorderRadius: '',
+    badgeTop: '',
+    badgeLeft: '',
   },
   /**
    * Palette with grey colors, intended for backgrounds, borders, and dividers.
