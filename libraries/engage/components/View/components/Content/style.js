@@ -27,6 +27,9 @@ export const container = css({
 });
 
 export const containerInner = css({
+  display: 'flex',
+  flexGrow: 1,
+  flexDirection: 'column',
   ...isIOs && useScrollContainer() ? {
     // Make the scroll container content a bit higher than the actual scroll container to
     // get a rubber band effect in all situations
@@ -38,4 +41,10 @@ export const containerInner = css({
     pointerEvents: 'none',
     paddingBottom: 'calc(var(--page-content-offset-bottom) + var(--keyboard-height))',
   },
+});
+
+export const scrollableContent = css({
+  display: 'flex',
+  flexDirection: 'column',
+  flexGrow: 1,
 });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
+import classNames from 'classnames';
 import ResponsiveContainer from '@shopgate/engage/components/ResponsiveContainer';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import event from '@shopgate/pwa-core/classes/Event';
@@ -14,7 +15,7 @@ import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
 import ParallaxProvider from './components/ParallaxProvider';
-import { container, containerInner } from './style';
+import { container, containerInner, scrollableContent } from './style';
 
 /**
  * The ViewContent component.
@@ -200,7 +201,7 @@ class ViewContent extends Component {
         >
           <div className={containerInner}>
             {/** Class of this div is needed by the ParallaxProvider component */}
-            <div className="engage__view__content__scrollable-content">
+            <div className={classNames(scrollableContent, 'engage__view__content__scrollable-content')}>
               <Helmet title={appConfig.shopName} />
               <Above />
               <ResponsiveContainer breakpoint=">xs" webOnly>
