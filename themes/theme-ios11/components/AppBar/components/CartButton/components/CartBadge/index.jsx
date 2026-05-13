@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: 1.5,
     fontWeight: 700,
     background: theme.palette.primary.main,
-    color: 'var(--color-primary-contrast)',
+    color: theme.palette.primary.contrastText,
     borderRadius: theme.spacing(1),
     height: theme.spacing(2),
     minWidth: theme.spacing(2),

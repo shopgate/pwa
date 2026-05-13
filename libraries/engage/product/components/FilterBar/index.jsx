@@ -42,7 +42,7 @@ const FilterBar = ({ filters, categoryId }) => {
       : theme.palette.text.primary,
   } : {
     background: active ? theme.palette.secondary.main : colors.background,
-    color: active ? 'var(--color-secondary-contrast)' : colors.dark,
+    color: active ? theme.palette.secondary.contrastText : colors.dark,
   }), [active, theme]);
 
   const sortScope = useMemo(

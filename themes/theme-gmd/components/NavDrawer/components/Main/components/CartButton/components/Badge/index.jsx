@@ -10,7 +10,7 @@ const useStyles = makeStyles()((theme) => {
     badge: {
       backgroundColor: theme.palette.primary.main,
       borderRadius: size,
-      color: 'var(--color-primary-contrast)',
+      color: theme.palette.primary.contrastText,
       fontSize: 12,
       fontWeight: 700,
       height: size,

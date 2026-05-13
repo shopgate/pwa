@@ -5,9 +5,9 @@ import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   badge: {
-    backgroundColor: 'var(--color-primary)',
+    backgroundColor: theme.palette.primary.main,
     borderRadius: theme.spacing(2 * 1.125),
-    color: 'var(--color-primary-contrast)',
+    color: theme.palette.primary.contrastText,
     fontSize: 12,
     fontWeight: 700,
     height: theme.spacing(2 * 1.125),

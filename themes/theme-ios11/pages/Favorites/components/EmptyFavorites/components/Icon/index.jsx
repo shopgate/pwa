@@ -5,14 +5,14 @@ import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const useStyles = makeStyles()(theme => ({
   outerCircle: {
-    fill: 'var(--color-primary-contrast)',
+    fill: theme.palette.primary.contrastText,
   },
   innerCircle: {
     fill: 'currentColor',
     opacity: 0.065,
   },
   heart: {
-    fill: 'var(--color-primary-contrast)',
+    fill: theme.palette.primary.contrastText,
     stroke: 'currentColor',
     strokeWidth: '4px',
   },

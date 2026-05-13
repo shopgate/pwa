@@ -69,7 +69,7 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
     info: {
       ...messageBase,
       background: theme.palette.secondary.main,
-      color: 'var(--color-secondary-contrast)',
+      color: theme.palette.secondary.contrastText,
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
         ...getMessageColors(secondaryColor),
         ' > svg': {

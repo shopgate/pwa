@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
   button: {
     width: '100%',
     background: `${theme.palette.primary.main} !important`,
-    color: 'var(--color-primary-contrast)!important',
+    color: `${theme.palette.primary.contrastText} !important`,
     fontSize: '0.875rem !important',
   },
 }));

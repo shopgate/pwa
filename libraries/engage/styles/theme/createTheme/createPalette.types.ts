@@ -132,15 +132,32 @@ export const paletteSchema = {
    * Colors to be used for the background of various elements
    */
   background: {
-    /**
-     * The color used for the background of the application
-     */
     default: '',
+    emphasized: '',
   },
+  /**
+   * Colors to be used for the background and border of input elements
+   */
+  input: {
+    background: '',
+    border: '',
+  },
+  /**
+   * Colors to be used for text.
+   */
   text: {
     primary: '',
     secondary: '',
   },
+  /**
+   * Colors to be used for the background and text of discount badges
+   */
+  discountBadge: {
+    background: '',
+  },
+  /**
+   * Colors to be used for the tab bar component
+   */
   tabBar: {
     background: '',
     border: '',
@@ -159,6 +176,9 @@ export const paletteSchema = {
     badgeTop: '',
     badgeLeft: '',
   },
+  /**
+   * Colors to be used for the filled and empty states of rating stars
+   */
   ratingStars: {
     filled: '',
     empty: '',

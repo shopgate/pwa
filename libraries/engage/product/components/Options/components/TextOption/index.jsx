@@ -11,7 +11,7 @@ import Transition from 'react-transition-group/Transition';
 import debounce from 'lodash/debounce';
 import { TextField, InfoIcon } from '@shopgate/engage/components';
 import { withShowModal } from '@shopgate/engage/core/hocs';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import transition from '@shopgate/engage/product/components/Characteristics/transition';
@@ -64,6 +64,7 @@ const TextOption = ({
   info,
   value,
 }) => {
+  const theme = useTheme();
   const { classes } = useStyles();
   const [highlight, setHighlight] = useState(false);
   const fieldRef = useRef(null);
@@ -141,7 +142,7 @@ const TextOption = ({
       <Transition in={highlight} timeout={700} onEntered={removeHighlight}>
         {state => (
           <>
-            <div className={classes.wrapper} style={transition[state]}>
+            <div className={classes.wrapper} style={transition(theme)[state]}>
               <TextField
                 setRef={setRef}
                 name={`text_${id}`}

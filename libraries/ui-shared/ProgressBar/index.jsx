@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import Color from 'color';
 import Transition from 'react-transition-group/Transition';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { getCSSCustomProp, makeStyles, keyframes } from '@shopgate/engage/styles';
+import {
+  getCSSCustomProp,
+  makeStyles,
+  keyframes,
+  useTheme,
+} from '@shopgate/engage/styles';
 
 const duration = 150;
 
@@ -22,8 +26,6 @@ const transitionStyles = {
     transform: 'scale(1, 0)',
   },
 };
-
-const { colors } = themeConfig;
 
 const progressBarHeight = 4;
 
@@ -95,6 +97,7 @@ const useStyles = makeStyles()(theme => ({
  */
 const ProgressBar = memo(({ isVisible }) => {
   const { classes, cx } = useStyles();
+  const theme = useTheme();
   const [isAnimating, setIsAnimating] = useState(isVisible);
   const [visible, setVisible] = useState(isVisible);
 
@@ -107,7 +110,7 @@ const ProgressBar = memo(({ isVisible }) => {
     }
   }, [isVisible]);
 
-  const wrapperBackground = Color(getCSSCustomProp('--color-secondary') || colors.accent).fade(0.6);
+  const wrapperBackground = Color(getCSSCustomProp(theme.palette.secondary.main).fade(0.6));
 
   return (
     <Transition

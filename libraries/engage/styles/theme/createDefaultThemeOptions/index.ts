@@ -29,6 +29,14 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         background: {
           default: colors.light,
+          emphasized: colors.placeholder || '#F2F2F2',
+        },
+        input: {
+          background: '#F2F2F2',
+          border: '#CCCCCC',
+        },
+        discountBadge: {
+          background: '#857500',
         },
         text: {
           primary: `${getCSSCustomProp('--color-text-high-emphasis')}, #1A1A1A`,
