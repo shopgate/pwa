@@ -24,6 +24,13 @@ const ProductMediaSlider = ({
       const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
       return (<MediaImage {...props} className={className} />);
     }}
+    {...pdpImageSliderPaginationType === 'bulletsBelow' ? {
+      swiperProps: {
+        style: {
+          marginBottom: -8,
+        },
+      },
+    } : {}}
   />
 );
 

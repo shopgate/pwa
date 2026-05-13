@@ -25,6 +25,7 @@ const MediaSlider = ({
   renderPlaceholder,
   className,
   paginationType,
+  swiperProps,
 }) => {
   let currentSlide = 0;
 
@@ -60,6 +61,7 @@ const MediaSlider = ({
             controls={media.some(m => m.type === MEDIA_TYPE_VIDEO)}
             className={className}
             aria-hidden={ariaHidden}
+            {...swiperProps}
           >
             {media.map((singleMedia) => {
               const Type = typeRenders[singleMedia.type];
@@ -95,6 +97,7 @@ MediaSlider.propTypes = {
   })),
   paginationType: PropTypes.string,
   renderPlaceholder: PropTypes.func,
+  swiperProps: PropTypes.shape(),
 };
 
 MediaSlider.defaultProps = {
@@ -104,6 +107,7 @@ MediaSlider.defaultProps = {
   paginationType: null,
   media: null,
   renderPlaceholder: featuredMedia => (<MediaImage {...featuredMedia} />),
+  swiperProps: {},
 };
 
 export default connect(MediaSlider);
