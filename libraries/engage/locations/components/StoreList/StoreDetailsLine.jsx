@@ -8,7 +8,7 @@ const useStyles = makeStyles()(theme => ({
     marginTop: theme.spacing(1.5),
   },
   detailsIcon: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: '1.4rem',
     padding: theme.spacing(0.5, 2, 0, 0),
   },

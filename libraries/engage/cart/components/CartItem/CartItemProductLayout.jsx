@@ -79,7 +79,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     wordBreak: 'break-word',
     alignSelf: 'flex-start',
     fontSize: '0.875rem',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     lineHeight: 1.3,
     '&:not(:empty)': {
       [`+ .${classes.price}`]: {

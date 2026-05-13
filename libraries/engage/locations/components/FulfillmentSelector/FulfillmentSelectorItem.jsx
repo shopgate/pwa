@@ -23,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
     marginTop: '-1px',
     marginRight: theme.spacing(1),
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   inactiveIconDisabled: {
     width: 24,
@@ -31,7 +31,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
     marginTop: '-1px',
     marginRight: theme.spacing(1),
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     opacity: 0.3,
   },
   activeIcon: {

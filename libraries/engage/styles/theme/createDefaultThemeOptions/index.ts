@@ -31,8 +31,8 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           default: colors.light,
         },
         text: {
-          primary: getCSSCustomProp('--color-text-high-emphasis'),
-          secondary: getCSSCustomProp('--color-text-low-emphasis'),
+          primary: `${getCSSCustomProp('--color-text-high-emphasis')}, #1A1A1A`,
+          secondary: `${getCSSCustomProp('--color-text-medium-emphasis')}, #808080`,
         },
         tabBar: {
           background: 'var(--tab-bar-background, #FFFFFF)',

@@ -5,15 +5,15 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { RippleButton } from '@shopgate/engage/components';
 import connect from './StoreFinderGetDirectionsButton.connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {},
   button: {
     width: '100%',
-    background: 'var(--color-primary)!important',
+    background: `${theme.palette.primary.main} !important`,
     color: 'var(--color-primary-contrast)!important',
     fontSize: '0.875rem !important',
   },
-});
+}));
 
 /**
  * @param {Object} props The component props

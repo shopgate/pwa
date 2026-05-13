@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
   labelValue: {
     fontWeight: 500,
     display: 'inline',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   fulfillmentLabel: {
     fontSize: 'inherit',

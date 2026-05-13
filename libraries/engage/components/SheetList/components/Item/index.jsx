@@ -38,7 +38,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
-      color: 'var(--color-text-medium-emphasis)',
+      color: theme.palette.text.secondary,
       fontSize: '0.875rem',
       lineHeight: '1.25rem',
       fontWeight: 'initial',

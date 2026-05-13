@@ -77,7 +77,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: '1.125rem',
     marginBottom: theme.spacing(3),
     marginTop: 4,
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   form: {
     paddingTop: theme.spacing(3),
@@ -113,7 +113,7 @@ const useStyles = makeStyles()(theme => ({
     padding: '.35em',
   },
   icon: {
-    fill: 'var(--color-text-medium-emphasis)',
+    fill: theme.palette.text.secondary,
     width: '24px',
     height: '24px',
   },

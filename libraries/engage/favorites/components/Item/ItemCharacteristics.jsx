@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   property: {
     fontSize: 14,
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     fontWeight: 400,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props

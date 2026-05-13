@@ -39,7 +39,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -52,9 +52,9 @@ const useStyles = makeStyles()({
     textAlign: 'right',
     marginTop: -16,
     fontSize: '0.875rem',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
-});
+}));
 
 const MAX_CHARACTER_COUNT = 250;
 

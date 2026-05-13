@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: '1.375rem',
   },
   detailsSecondary: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: '0.75rem',
   },
 }));

@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: '19px',
     pointerEvents: 'none',
     userSelect: 'none',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     transformOrigin: 'left top 0px',
     willChange: 'transform, color',
     transition: `transform ${easing}, color ${easing}`,
@@ -30,7 +30,7 @@ const useStyles = makeStyles()(theme => ({
     transform: 'translate3d(0, -22px, 0) scale3d(0.75, 0.75, 0.75)',
   },
   labelRegular: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   labelError: {
     color: theme.palette.error.main,
