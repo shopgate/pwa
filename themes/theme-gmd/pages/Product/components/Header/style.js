@@ -1,11 +1,10 @@
 import { css } from 'glamor';
-import { themeColors, themeVariables } from '@shopgate/pwa-common/helpers/config';
+import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const content = css({
   position: 'relative',
   padding: themeVariables.gap.big,
-  borderTop: `${themeColors.placeholder} 2px solid`,
   [responsiveMediaQuery('>xs', { webOnly: true })]: {
     borderTop: 'none',
   },

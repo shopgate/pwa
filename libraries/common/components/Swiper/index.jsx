@@ -77,6 +77,7 @@ const Swiper = ({
   paginationType: paginationTypeProp,
   ...swiperProps
 }) => {
+  const isBulletsBelow = paginationTypeProp === 'bulletsBelow';
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const showPagination = (indicators && children.length > 1);
@@ -125,7 +126,9 @@ const Swiper = ({
       Zoom,
       ...(Array.isArray(additionalModules) ? additionalModules : []),
     ],
-    className: cls(innerContainer, classNames.container, { [zoomFix]: swiperProps?.zoom }),
+    className: cls(innerContainer, classNames.container, {
+      [zoomFix]: swiperProps?.zoom,
+    }),
     autoplay: autoPlay ? {
       delay: interval,
     } : false,
@@ -133,7 +136,7 @@ const Swiper = ({
     ...showPagination && {
       pagination: {
         el: undefined,
-        type: paginationTypeProp || paginationType,
+        type: isBulletsBelow ? 'bullets' : (paginationTypeProp || paginationType),
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
         bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
         dynamicBullets: true,
@@ -161,6 +164,7 @@ const Swiper = ({
     children.length,
     disabled,
     handleSlideChange,
+    isBulletsBelow,
   ]);
 
   useEffect(() => {
@@ -239,7 +243,10 @@ const Swiper = ({
   );
 
   return (
-    <div className={cls(container, className, 'common__swiper')} aria-hidden={ariaHidden}>
+    <div
+      className={cls(container, className, 'common__swiper', { 'pagination-below': isBulletsBelow })}
+      aria-hidden={ariaHidden}
+    >
       <OriginalSwiper
         aria-live="off"
         a11y={{ enabled: false }}

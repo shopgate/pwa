@@ -28,7 +28,7 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
   return (
     <div className={styles.container}>
       <Swiper
-        paginationType={pdpImageSliderPaginationType}
+        paginationType={pdpImageSliderPaginationType === 'bulletsBelow' ? 'bullets' : pdpImageSliderPaginationType}
         classNames={styles.sliderStyles}
         className={styles.slider}
         initialSlide={initialSlide}

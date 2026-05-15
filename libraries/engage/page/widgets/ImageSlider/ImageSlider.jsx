@@ -16,7 +16,9 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const ImageSliderWidget = () => {
-  const { slides, swiperProps, borderRadius } = useImageSliderWidget();
+  const {
+    slides, swiperProps, borderRadius, paginationType,
+  } = useImageSliderWidget();
   const { classes } = useStyles();
 
   if (slides.length === 0) {
@@ -26,6 +28,7 @@ const ImageSliderWidget = () => {
   return (
     <Swiper
       indicators
+      paginationType={paginationType}
       {...swiperProps}
     >
       {slides.map((slide) => {
