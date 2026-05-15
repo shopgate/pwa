@@ -87,6 +87,13 @@ DRAFT_RELEASE = true
 
 SKIP_RC = false
 
+# Enable or disable timestamp log lines.
+# Set TIMESTAMP_LOGS=false to keep original logs without timestamp echoes.
+TIMESTAMP_LOGS = true
+
+# Timestamp format for CI log output (example: 2026-05-15 14:37:12).
+TIMESTAMP_FORMAT = +%Y-%m-%d %H:%M:%S
+
 
 ####################################################################################################
 # MAIN MAKEFILE COMMANDS
@@ -112,6 +119,7 @@ add-remotes:
 
 
 sanity-check:
+		$(call log,Running sanity-check)
 		npm install --no-package-lock --no-save yargs && \
 			node ./scripts/check-release-version.js -v="$(RELEASE_VERSION)";
 
@@ -129,13 +137,20 @@ sanity-check:
 
 
 release:
+		$(call log,Starting release for $(RELEASE_NAME) from $(BRANCH_NAME))
+		$(call log,Phase: setup-release)
 		$(call setup-release)
+		$(call log,Phase: update-versions)
 		$(call update-versions)
+		$(call log,Phase: release-npm-packages)
 		$(call release-npm-packages)
+		$(call log,Phase: publish-to-github)
 		$(call make, publish-to-github)
 ifeq ("$(STABLE)-$(UPDATE_MASTER)","true-true")
+		$(call log,Phase: create-github-releases target=master)
 		$(call create-github-releases,master)
 else
+		$(call log,Phase: create-github-releases target=releases/$(RELEASE_NAME))
 		$(call create-github-releases,releases/$(RELEASE_NAME))
 endif
 		$(call finalize-release)
@@ -159,6 +174,7 @@ release-purge:
 
 # Clean the repository before starting a release.
 clean:
+		$(call log,Cleaning repository state)
 		$(call make, init)
 		find . -name "*error.log" -type f -delete;
 		find . -name "*debug.log" -type f -delete;
@@ -166,6 +182,7 @@ clean:
 		rm -rf ./node_modules/;
 		rm -rf ./.cache-loader/;
 		node ./scripts/init-subtrees.js;
+		$(call log,Running lerna bootstrap)
 		lerna bootstrap;
 
 
@@ -223,10 +240,19 @@ define make
 
 endef
 
+define log
+	@if [ "$(TIMESTAMP_LOGS)" = "true" ]; then \
+		echo ""; \
+		echo "[$$(date '$(TIMESTAMP_FORMAT)')] $(strip $(1))"; \
+	fi
+
+endef
+
 ####################################################################################################
 # SETUP-RELEASE
 
 define setup-release
+		$(call log,Setup release: start)
 		# Perform "sanity check" before doing anything else
 		$(call make, sanity-check)
 
@@ -242,12 +268,14 @@ define setup-release
 
 		# Set up dependencies (lerna) and subtrees
 		$(call make, clean)
+		$(call log,Setup release: done)
 
 endef
 
 
 
 define create-pwa-release-branch
+		$(call log,Creating release branch out of $(BRANCH_NAME))
 		@echo "======================================================================"
 		@echo "| Creating release branch out of '$(BRANCH_NAME)' ... "
 		@echo "======================================================================"
@@ -272,6 +300,7 @@ endef
 
 # Changes all the version numbers using lerna
 define update-pwa-versions
+		$(call log,Updating pwa versions to $(RELEASE_VERSION))
 		@echo "======================================================================"
 		@echo "| Updating pwa versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
@@ -292,6 +321,7 @@ endef
 
 # Change the version in the extension-config.json file of all extensions
 define update-extension-versions
+		$(call log,Updating extension versions to $(RELEASE_VERSION))
 		@echo "======================================================================"
 		@echo "| Updating extension versions to '$(RELEASE_VERSION))'"
 		@echo "======================================================================"
@@ -306,6 +336,7 @@ endef
 
 # Change the version in the extension-config.json files of all themes
 define update-theme-versions
+		$(call log,Updating theme versions to $(RELEASE_VERSION))
 		@echo "======================================================================"
 		@echo "| Updating theme versions to '$(RELEASE_VERSION)'"
 		@echo "======================================================================"
@@ -324,6 +355,7 @@ endef
 # RELEASE-NPM-PACKAGES
 
 define release-npm-packages
+		$(call log,Releasing library and util npm packages)
 		@echo "======================================================================"
 		@echo "| Releasing library and util npm packages"
 		@echo "======================================================================"
@@ -342,6 +374,7 @@ define build-publish-npm-package
 endef
 
 define build-npm-package
+		$(call log,Build npm package)
 		@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
 		@BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ --out-dir ./$(strip $(1))/$(strip $(2))/dist --copy-files --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
 
@@ -357,6 +390,7 @@ define normalize-build
 endef
 
 define publish-npm-package
+		$(call log,Publish npm package)
 		@echo "> Publishing './$(strip $(1))/$(strip $(2))' npm package"
 		@if [ "$(STABLE)" != "true" ]; \
 			then npm publish ./$(strip $(1))/$(strip $(2))/$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3)))) --access public --tag beta; \
@@ -366,6 +400,7 @@ define publish-npm-package
 endef
 
 define clean-npm-package
+		$(call log,Clean npm package)
 		@echo "> Cleaning './$(strip $(1))/$(strip $(2))/dist' npm package"
 		-rm -rf ./$(strip $(1))/$(strip $(2))/dist;
 
@@ -399,6 +434,7 @@ else
 endif
 
 define build-changelog
+		$(call log,Creating changelog)
 		@echo "======================================================================"
 		@echo "| Creating changelog ..."
 		@echo "======================================================================"
@@ -456,6 +492,7 @@ define finalize-release
 @# 		@echo "======================================================================"
 @# 		@echo " "
 
+		$(call log,Done releasing)
 		@echo " "
 		@echo "======================================================================"
 		@echo "| Done releasing!"
