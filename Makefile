@@ -462,14 +462,19 @@ define build-changelog
 endef
 
 define push-subtrees-to-git
+		$(call log,Syncing subtrees to branch $(strip $(1)))
 		$(foreach remote, $(THEMES), $(call update-subtree-remotes, themes/$(remote), $(remote), $(strip $(1))))
 		$(foreach remote, $(EXTENSIONS), $(call update-subtree-remotes, extensions/$(remote), $(patsubst @shopgate-%,ext-%,$(remote)), $(strip $(1))))
+		$(call log,Finished syncing subtrees to branch $(strip $(1)))
 
 endef
 
 define update-subtree-remotes
+		$(call log,Subtree pull: prefix=$(strip $(1)) remote=$(strip $(2)) branch=$(strip $(3)))
 		-git subtree pull --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
+		$(call log,Subtree push: prefix=$(strip $(1)) remote=$(strip $(2)) branch=$(strip $(3)))
 		git subtree push --prefix=$(strip $(1)) $(strip $(2)) $(strip $(3));
+		$(call log,Subtree sync done: prefix=$(strip $(1)) remote=$(strip $(2)) branch=$(strip $(3)))
 
 endef
 
@@ -479,9 +484,11 @@ endef
 # CREATE-GITHUB-RELEASEES
 
 define create-github-releases
+		$(call log,Creating GitHub releases for target $(strip $(1)))
 		$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),pwa)
 		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-theme-to-repo-name,$(theme))))
 		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-extension-to-repo-name,$(extension))))
+		$(call log,Finished creating GitHub releases for target $(strip $(1)))
 
 endef
 
@@ -520,7 +527,9 @@ endef
 ####################################################################################################
 
 define create-github-release
+		$(call log,Create GitHub release: repo=$(strip $(3)) tag=$(strip $(1)) target=$(strip $(2)))
 		curl -X POST --silent --data '{"tag_name": "$(1)","target_commitish": "$(2)","name": "$(1)","body": "","draft": $(DRAFT_RELEASE),"prerelease": $(strip $(PRE_RELEASE))}' -H "Content-Type: application/json" -H "Authorization: token $(GITHUB_AUTH_TOKEN)" https://api.github.com/repos/shopgate/$(strip $(3))/releases 2>&1 | grep '^  "id":' | cut -d' ' -f 4 | cut -d',' -f 1;
+		$(call log,GitHub release request finished: repo=$(strip $(3)) tag=$(strip $(1)))
 
 endef
 
