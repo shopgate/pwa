@@ -17,7 +17,7 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { applyScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
-import { makeStyles, cx, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
@@ -49,6 +49,9 @@ const useStyles = makeStyles()({
     backgroundColor: 'var(--page-background-color)',
   },
   containerInner: {
+    display: 'flex',
+    flexGrow: 1,
+    flexDirection: 'column',
     ':after': {
       content: "''",
       display: 'block',
@@ -58,6 +61,11 @@ const useStyles = makeStyles()({
   },
   containerInnerIosScroll: {
     minHeight: 'calc(100% + var(--extra-ios-scroll-space, 0px))',
+  },
+  scrollableContent: {
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
   },
 });
 
@@ -77,7 +85,7 @@ const ViewContent = ({
 }) => {
   const routeContext = useContext(RouteContext);
   const scrollContainer = applyScrollContainer();
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const ref = useRef((() => {
     if (scrollContainer) {
@@ -203,7 +211,7 @@ const ViewContent = ({
             isIOs && scrollContainer && classes.containerInnerIosScroll
           )}
         >
-          <div className="engage__view__content__scrollable-content">
+          <div className={cx(classes.scrollableContent, 'engage__view__content__scrollable-content')}>
             <Helmet title={appConfig.shopName} />
             <Above />
             <ResponsiveContainer breakpoint=">xs" webOnly>

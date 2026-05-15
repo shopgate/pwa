@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { isCurrentProductOnFavoriteList } from '@shopgate/engage/favorites';
-import { makeIsProductActive } from '@shopgate/engage/product';
+import { makeIsProductActive, getProductImages } from '@shopgate/engage/product';
 import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/core';
 
 /**
@@ -13,6 +13,7 @@ const makeMapStateToProps = () => {
   const isProductActive = makeIsProductActive(true);
 
   return (state, props) => {
+    const productImages = getProductImages(state, props);
     const isActive = isProductActive(state, props) !== false;
     const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(state);
     const isOnWishlist = isCurrentProductOnFavoriteList(state, props);
@@ -20,6 +21,7 @@ const makeMapStateToProps = () => {
     return ({
       isFavorite: !loadWishlistOnAppStartEnabled ? false : isOnWishlist,
       isProductActive: isActive,
+      hasImageGallery: Array.isArray(productImages) && productImages.length > 1,
     });
   };
 };

@@ -16,10 +16,10 @@ exports[`engage > components > view > components > content should render content
     }
   >
     <div
-      className="sg-x5n1ie-containerInner"
+      className="sg-1bjuloe-containerInner"
     >
       <div
-        className="engage__view__content__scrollable-content"
+        className="sg-sp7lk7-scrollableContent engage__view__content__scrollable-content"
       >
         <HelmetWrapper
           defer={true}

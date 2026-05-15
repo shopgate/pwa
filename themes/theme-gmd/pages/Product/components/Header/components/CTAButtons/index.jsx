@@ -13,9 +13,12 @@ import {
   PRODUCT_CTAS_ADD_TO_CART_BEFORE,
   PRODUCT_CTAS_ADD_TO_CART_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { appConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import CartButton from './components/CartButton';
 import connect from './connector';
+
+const { pdpImageSliderPaginationType } = appConfig;
 
 const iconSize = 24;
 
@@ -33,6 +36,11 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 1,
     fontSize: iconSize,
   },
+  wrapper: {
+    position: 'relative',
+    top: -38,
+    right: -16,
+  },
   ripple: {
     padding: 8,
   },
@@ -43,11 +51,13 @@ const useStyles = makeStyles()(theme => ({
  * @param {Object} props Props.
  * @returns {JSX}
  */
-const CTAButtons = ({ isFavorite, productId, isProductActive }) => {
+const CTAButtons = ({
+  isFavorite, productId, isProductActive, hasImageGallery,
+}) => {
   const { classes, cx } = useStyles();
 
   return (
-    <>
+    <div className={pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery ? classes.wrapper : null}>
       <Portal name={PRODUCT_CTAS_BEFORE} />
       <Portal name={PRODUCT_CTAS}>
         <div className={cx(classes.buttons, 'theme__product__header__cta-buttons')}>
@@ -71,12 +81,13 @@ const CTAButtons = ({ isFavorite, productId, isProductActive }) => {
         </div>
       </Portal>
       <Portal name={PRODUCT_CTAS_AFTER} />
-    </>
+    </div>
   );
 };
 
 CTAButtons.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
+  hasImageGallery: PropTypes.bool,
   isProductActive: PropTypes.bool,
   productId: PropTypes.string,
 };
@@ -84,6 +95,7 @@ CTAButtons.propTypes = {
 CTAButtons.defaultProps = {
   productId: null,
   isProductActive: true,
+  hasImageGallery: false,
 };
 
 export default connect(memo(CTAButtons));
