@@ -20,8 +20,8 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   itemSelected: {
-    background: 'var(--color-background-accent)',
-    boxShadow: `${theme.spacing(-2.5)}px 0 0 var(--color-background-accent), ${theme.spacing(2.5)}px 0 0 var(--color-background-accent)`,
+    background: theme.palette.background.emphasized,
+    boxShadow: `${theme.spacing(-2.5)}px 0 0 ${theme.palette.background.emphasized}, ${theme.spacing(2.5)}px 0 0 ${theme.palette.background.emphasized}`,
     marginTop: -1,
   },
   itemWithImage: {

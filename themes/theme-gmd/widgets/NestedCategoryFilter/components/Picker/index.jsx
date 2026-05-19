@@ -10,7 +10,7 @@ import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',

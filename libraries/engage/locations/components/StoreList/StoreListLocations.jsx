@@ -10,7 +10,7 @@ import { FULFILLMENT_SHEET_STORE_LIST } from '../../constants/Portals';
 
 const useStyles = makeStyles()(theme => ({
   stores: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(1.5, 1.5, 2),
     fontSize: '0.875rem',
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',

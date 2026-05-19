@@ -1,14 +1,13 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
-import { themeConfig, themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
-import { makeStyles } from '@shopgate/engage/styles';
+import { themeShadows } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { useLoadImage } from '@shopgate/engage/core';
 
-const { colors } = themeConfig;
 const placeholderIconScale = 0.65;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   placeholderContent: {
     position: 'absolute',
     width: '100%',
@@ -22,7 +21,7 @@ const useStyles = makeStyles()({
     height: `${placeholderIconScale * 100}% !important`,
     top: `${(1.0 - placeholderIconScale) * 50}%`,
     left: `${(1.0 - placeholderIconScale) * 50}%`,
-    color: themeColors.placeholder,
+    color: theme.palette.background.emphasized,
   },
   innerShadow: {
     position: 'relative',
@@ -39,7 +38,7 @@ const useStyles = makeStyles()({
       pointerEvents: 'none',
     },
   },
-});
+}));
 
 /**
  * The ProductImagePlaceholder component.
@@ -50,6 +49,7 @@ const ProductImagePlaceholder = ({
   src, showInnerShadow, noBackground,
 }) => {
   const { classes, cx } = useStyles();
+  const theme = useTheme();
   const [showPlaceholder, setShowPlaceholder] = useState(true);
 
   const srcLoaded = useLoadImage(src);
@@ -62,14 +62,14 @@ const ProductImagePlaceholder = ({
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundColor: noBackground ? 'transparent' : colors.light,
+        backgroundColor: noBackground ? 'transparent' : theme.palette.background.default,
         position: 'absolute',
       };
     }
     return {
-      backgroundColor: noBackground ? 'transparent' : colors.light,
+      backgroundColor: noBackground ? 'transparent' : theme.palette.background.default,
     };
-  }, [src, noBackground, srcLoaded]);
+  }, [srcLoaded, noBackground, theme.palette.background.default, src]);
 
   const contentClasses = cx(classes.placeholderContent, {
     [classes.innerShadow]: showInnerShadow,
@@ -77,8 +77,8 @@ const ProductImagePlaceholder = ({
 
   return (
     <div className={contentClasses} style={contentStyles} data-test-id="placeHolder">
-      { showPlaceholder && <PlaceholderIcon className={classes.placeholder} />}
-      { !showPlaceholder && ' ' }
+      {showPlaceholder && <PlaceholderIcon className={classes.placeholder} />}
+      {!showPlaceholder && ' '}
     </div>
   );
 };

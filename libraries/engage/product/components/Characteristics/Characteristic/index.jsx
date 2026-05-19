@@ -195,7 +195,7 @@ class Characteristic extends PureComponent {
 
 export default withStyles(Characteristic, theme => ({
   button: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     color: theme.palette.text.primary,
     position: 'relative',
     cursor: 'pointer',

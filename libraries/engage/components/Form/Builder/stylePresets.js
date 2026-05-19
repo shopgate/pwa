@@ -55,7 +55,7 @@ export const getOutlinedFormFields = theme => ({
   },
   ' .textField, .formElement:not(.radioGroup):not(.checkbox), .phonePicker': {
     paddingBottom: 8,
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: 0,
     marginBottom: 32,
     borderTopLeftRadius: 4,

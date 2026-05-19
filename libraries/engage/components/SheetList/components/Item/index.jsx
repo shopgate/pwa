@@ -16,8 +16,8 @@ const useStyles = makeStyles()(theme => ({
     cursor: 'not-allowed',
   },
   selected: {
-    background: 'var(--color-background-accent)',
-    boxShadow: '-16px 0 0 0 var(--color-background-accent) !important',
+    background: theme.palette.background.emphasized,
+    boxShadow: `-16px 0 0 0 ${theme.palette.background.emphasized} !important`,
   },
   title: {
     width: '100%',
@@ -119,7 +119,7 @@ const Item = ({
             <div>
               {title}
             </div>
-            { description && (
+            {description && (
               <div
                 className={classes.description}
                 // eslint-disable-next-line react/no-danger

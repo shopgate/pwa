@@ -21,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
     flex: '0 0 auto',
     width: '2.5rem',
     height: '2.5rem',
-    background: themeColors.placeholder,
+    background: theme.palette.background.emphasized,
     marginRight: theme.spacing(2.5),
   },
   productContent: {

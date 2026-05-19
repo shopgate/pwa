@@ -25,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: theme.spacing(1),
   },
   wrapper: {
-    backgroundColor: 'var(--color-background-accent)',
+    backgroundColor: theme.palette.background.emphasized,
     padding: theme.spacing(1, 2),
     minHeight: 56,
   },

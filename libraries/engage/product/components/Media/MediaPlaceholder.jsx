@@ -1,12 +1,11 @@
 import React from 'react';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { defaultProps, propTypes } from './props';
 
 const placeholderIconScale = 0.65;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   placeholderContainer: {
     position: 'relative',
     width: '100%',
@@ -30,9 +29,9 @@ const useStyles = makeStyles()({
     height: `${placeholderIconScale * 100}% !important`,
     top: `${(1.0 - placeholderIconScale) * 50}%`,
     left: `${(1.0 - placeholderIconScale) * 50}%`,
-    color: themeColors.placeholder,
+    color: theme.palette.background.emphasized,
   },
-});
+}));
 
 /**
  * The media placeholder component.

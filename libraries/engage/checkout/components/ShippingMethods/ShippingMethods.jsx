@@ -51,7 +51,7 @@ const useStyles = makeStyles()(theme => ({
   container: {
     border: '1px solid #eaeaea',
     ' li:nth-of-type(2n)': {
-      background: 'var(--color-background-accent)',
+      background: theme.palette.background.emphasized,
     },
   },
   containerSingle: {

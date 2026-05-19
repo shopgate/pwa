@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     overflow: 'inherit !important',
     marginBottom: theme.spacing(2),
     boxShadow: 'none',
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(1, 2),
     margin: 0,
   },

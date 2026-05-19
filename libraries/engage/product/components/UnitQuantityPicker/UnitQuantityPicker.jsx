@@ -43,7 +43,7 @@ const useStyles = makeStyles()((theme, {
       alignItems: 'center',
       width: '100%',
       fontSize: 16,
-      backgroundColor: 'var(--color-background-accent)',
+      backgroundColor: theme.palette.background.emphasized,
       ...(inputColor && { color: `${inputColor}` }),
       ...(inputBgColor && { backgroundColor: `${inputBgColor}` }),
       ' .quantity-label': {

@@ -11,7 +11,7 @@ import CartItemsSubstitution from './CartItemsSubstitution';
 
 const useStyles = makeStyles()(theme => ({
   items: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(1.5, 1.5, 2),
     marginBottom: theme.spacing(-1.5),
   },

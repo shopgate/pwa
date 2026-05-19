@@ -37,7 +37,7 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.text.secondary,
     flex: '1 0 auto',
     ...(!isIOSTheme() ? {
-      background: 'var(--color-background-accent)',
+      background: theme.palette.background.emphasized,
       boxShadow: 'none',
     } : {}),
   },

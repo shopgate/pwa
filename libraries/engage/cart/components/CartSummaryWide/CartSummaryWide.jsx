@@ -28,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: '1.5rem',
   },
   summary: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(2),
   },
   total: {
