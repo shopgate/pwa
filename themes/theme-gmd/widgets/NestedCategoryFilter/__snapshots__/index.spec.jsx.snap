@@ -74,7 +74,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -380,7 +380,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -464,7 +464,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 class="sg-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="sg-150wio3-buttonSelected"
+                                  class="sg-1mothy2-buttonSelected"
                                   type="button"
                                   value="1-1"
                                 >
@@ -723,7 +723,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                           selected={true}
                                         >
                                           <button
-                                            className="sg-150wio3-buttonSelected"
+                                            className="sg-1mothy2-buttonSelected"
                                             key="1-1"
                                             onClick={[Function]}
                                             type="button"
@@ -1039,7 +1039,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -1213,7 +1213,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -1381,7 +1381,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -1707,7 +1707,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -1791,7 +1791,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 class="sg-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="sg-150wio3-buttonSelected"
+                                  class="sg-1mothy2-buttonSelected"
                                   type="button"
                                   value="1"
                                 >
@@ -2050,7 +2050,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           selected={true}
                                         >
                                           <button
-                                            className="sg-150wio3-buttonSelected"
+                                            className="sg-1mothy2-buttonSelected"
                                             key="1"
                                             onClick={[Function]}
                                             type="button"
@@ -2202,7 +2202,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -2526,7 +2526,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -2610,7 +2610,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 class="sg-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="sg-150wio3-buttonSelected"
+                                  class="sg-1mothy2-buttonSelected"
                                   type="button"
                                   value="1"
                                 >
@@ -2869,7 +2869,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           selected={true}
                                         >
                                           <button
-                                            className="sg-150wio3-buttonSelected"
+                                            className="sg-1mothy2-buttonSelected"
                                             key="1"
                                             onClick={[Function]}
                                             type="button"
@@ -3021,7 +3021,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -3105,7 +3105,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 class="sg-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="sg-150wio3-buttonSelected"
+                                  class="sg-1mothy2-buttonSelected"
                                   type="button"
                                   value="1-1"
                                 >
@@ -3364,7 +3364,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                           selected={true}
                                         >
                                           <button
-                                            className="sg-150wio3-buttonSelected"
+                                            className="sg-1mothy2-buttonSelected"
                                             key="1-1"
                                             onClick={[Function]}
                                             type="button"
@@ -3656,7 +3656,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -3956,7 +3956,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             <div
               aria-disabled={false}
               aria-hidden={true}
-              className="sg-tky32e-button"
+              className="sg-bkdzwf-button"
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
@@ -4056,7 +4056,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 class="sg-1cl0k0e-innerContainer"
                               >
                                 <button
-                                  class="sg-150wio3-buttonSelected"
+                                  class="sg-1mothy2-buttonSelected"
                                   type="button"
                                   value="2"
                                 >
@@ -4341,7 +4341,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                           selected={true}
                                         >
                                           <button
-                                            className="sg-150wio3-buttonSelected"
+                                            className="sg-1mothy2-buttonSelected"
                                             key="2"
                                             onClick={[Function]}
                                             type="button"
