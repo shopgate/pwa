@@ -152,6 +152,11 @@ class ProductImageSlider extends Component {
           onSlideChange={this.handleSlideChange}
           className={className}
           aria-hidden={ariaHidden}
+          {...pdpImageSliderPaginationType === 'bulletsBelow' ? {
+            style: {
+              marginBottom: -8,
+            },
+          } : {}}
         >
           {images.map(image => (
             <Swiper.Item key={`${productId}-${image}`}>

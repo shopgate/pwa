@@ -25,6 +25,14 @@ const useStyles = makeStyles()(() => ({
   container: {
     position: 'relative',
     maxHeight: '100%',
+    '&.pagination-below': {
+      '& .swiper-pagination.swiper-pagination-bullets': {
+        '--swiper-pagination-bottom': 0,
+        position: 'relative',
+        height: 32,
+        lineHeight: '40px',
+      },
+    },
   },
   innerContainer: {
     overflow: 'hidden',
@@ -142,6 +150,7 @@ const Swiper = ({
 }) => {
   const { classes, cx } = useStyles();
 
+  const isBulletsBelow = paginationTypeProp === 'bulletsBelow';
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const showPagination = (indicators && children.length > 1);
@@ -202,7 +211,7 @@ const Swiper = ({
     ...showPagination && {
       pagination: {
         el: undefined,
-        type: paginationTypeProp || paginationType,
+        type: isBulletsBelow ? 'bullets' : (paginationTypeProp || paginationType),
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
         bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
         dynamicBullets: true,
@@ -232,6 +241,7 @@ const Swiper = ({
     children.length,
     disabled,
     handleSlideChange,
+    isBulletsBelow,
     cx,
   ]);
 
@@ -311,7 +321,12 @@ const Swiper = ({
   );
 
   return (
-    <div className={cx(classes.container, className, 'common__swiper')} aria-hidden={ariaHidden}>
+    <div
+      className={cx(classes.container, className, 'common__swiper', {
+        'pagination-below': isBulletsBelow,
+      })}
+      aria-hidden={ariaHidden}
+    >
       <OriginalSwiper
         aria-live="off"
         a11y={{ enabled: false }}
