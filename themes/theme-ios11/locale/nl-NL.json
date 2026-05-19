@@ -415,6 +415,8 @@
     "label": "Zoek",
     "cancel": "Annuleer",
     "placeholder": "Zoek",
+    "deleteHistory": "Zoekgeschiedenis wissen",
+    "history_announcement": "Zoekgeschiedenis",
     "no_result": {
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."

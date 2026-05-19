@@ -408,6 +408,8 @@
     }
   },
   "search": {
+    "deleteHistory": "Suchverlauf löschen",
+    "history_announcement": "Suchverlauf",
     "no_result": {
       "heading": "Ups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."

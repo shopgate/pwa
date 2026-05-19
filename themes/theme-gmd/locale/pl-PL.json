@@ -408,6 +408,8 @@
     }
   },
   "search": {
+    "deleteHistory": "Wyczyść historię wyszukiwania",
+    "history_announcement": "Historia wyszukiwania",
     "no_result": {
       "heading": "Ups!",
       "body": "Twoje wyszukiwanie dla frazy \"{searchPhrase}\" nie przyniosło żadnych rezultatów."

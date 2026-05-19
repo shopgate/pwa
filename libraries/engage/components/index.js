@@ -174,6 +174,7 @@ export { default as TimeBoundary } from './TimeBoundary';
 export { default as IntersectionVisibility } from './IntersectionVisibility';
 export { default as VideoPlayer } from './VideoPlayer';
 export { default as SheetDrawer } from './SheetDrawer';
+export { default as SearchHistory } from './SearchHistory';
 export { default as SheetList } from './SheetList';
 export { default as NullComponent } from './NullComponent';
 export { default as View, ViewContext } from './View';

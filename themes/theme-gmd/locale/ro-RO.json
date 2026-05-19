@@ -408,6 +408,8 @@
     }
   },
   "search": {
+    "deleteHistory": "Șterge istoricul căutărilor",
+    "history_announcement": "Istoricul căutărilor",
     "no_result": {
       "heading": "Oops!",
       "body": "Căutarea dvs. pentru \"{searchPhrase}\" nu a dat niciun rezultat."

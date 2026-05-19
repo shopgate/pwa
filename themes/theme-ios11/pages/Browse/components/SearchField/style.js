@@ -75,16 +75,17 @@ const scannerIcon = css({
   right: 0,
 }).toString();
 
-const overlay = css({
-  background: themeColors.darkTransparent,
+const historyOverlay = css({
+  background: themeColors.light,
   position: 'absolute',
   left: 0,
   width: '100%',
   top: 124,
   bottom: 0,
-  zIndex: 2,
+  zIndex: 3,
   overflow: 'hidden',
   outline: 'none',
+  padding: 16,
 }).toString();
 
 export default {
@@ -98,5 +99,5 @@ export default {
   button,
   icon,
   scannerIcon,
-  overlay,
+  historyOverlay,
 };

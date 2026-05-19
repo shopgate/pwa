@@ -3,9 +3,14 @@ import {
   RECEIVE_SEARCH_SUGGESTIONS,
   SEARCH_SUGGESTIONS_LIFETIME,
 } from '../constants';
+import {
+  ADD_SEARCH_HISTORY,
+  CLEAR_SEARCH_HISTORY,
+} from '../constants/Portals';
 
 const initialState = {
   suggestions: {},
+  history: [],
 };
 
 /**
@@ -40,6 +45,19 @@ const search = (state = initialState, action = {}) => {
             expires: Date.now() + SEARCH_SUGGESTIONS_LIFETIME,
           },
         },
+      };
+
+      // number of search history entries is limited to 10
+    case ADD_SEARCH_HISTORY:
+      return {
+        ...state,
+        history: [action.searchPhrase,
+          ...state.history.filter(item => item !== action.searchPhrase)].slice(0, 10),
+      };
+    case CLEAR_SEARCH_HISTORY:
+      return {
+        ...state,
+        history: [],
       };
 
     default:

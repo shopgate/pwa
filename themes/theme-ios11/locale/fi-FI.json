@@ -415,6 +415,8 @@
     "label": "Etsi",
     "cancel": "Peruuta",
     "placeholder": "Etsi",
+    "deleteHistory": "Tyhjennä hakuhistoria",
+    "history_announcement": "Hakuhistoria",
     "no_result": {
       "heading": "Hups!",
       "body": "Hakusi \"{searchPhrase}\" ei tuottanut tuloksia."

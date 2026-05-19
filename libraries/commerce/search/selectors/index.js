@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 /**
- * @param {Object} state The appllication state.
+ * @param {Object} state The application state.
  * @return {Object}
  */
 export const getSuggestionsState = state => state.search.suggestions;
@@ -41,3 +41,9 @@ export const getSuggestionsFetchingState = createSelector(
     return suggestions[phrase].isFetching;
   }
 );
+
+/**
+ * @param {Object} state The search history state.
+ * @return {Object}
+ */
+export const getSearchHistory = state => state.search.history;

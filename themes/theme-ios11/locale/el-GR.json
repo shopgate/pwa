@@ -415,6 +415,8 @@
     "label": "Αναζήτηση",
     "cancel": "Ακύρωση",
     "placeholder": "Αναζήτηση",
+    "deleteHistory": "Διαγραφή ιστορικού αναζήτησης",
+    "history_announcement": "Ιστορικό αναζήτησης",
     "no_result": {
       "heading": "Ουπς!",
       "body": "Η αναζήτησή σας για \"{searchPhrase}\" δεν επέστρεψε αποτελέσματα."
