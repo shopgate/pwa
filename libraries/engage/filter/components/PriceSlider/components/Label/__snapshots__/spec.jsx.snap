@@ -22,7 +22,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="fromPrice"
     >
       <span
-        className="sg-1whxrbt-price"
+        className="sg-1tx0lni-price"
         style={
           {
             "minWidth": "5",
@@ -41,7 +41,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
       forKey="toPrice"
     >
       <span
-        className="sg-1whxrbt-price"
+        className="sg-1tx0lni-price"
         style={
           {
             "minWidth": "5",
@@ -67,7 +67,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_from"
-    className="sg-1s37zvn-editableField"
+    className="sg-lqa8vn-editableField"
     id="priceMin"
     inputMode="numeric"
     name="priceMin"
@@ -86,7 +86,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_to"
-    className="sg-1s37zvn-editableField"
+    className="sg-lqa8vn-editableField"
     id="priceMax"
     inputMode="numeric"
     name="priceMax"

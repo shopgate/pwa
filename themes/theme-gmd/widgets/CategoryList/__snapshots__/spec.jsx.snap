@@ -40,7 +40,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
   }
 >
   <div
-    className="sg-1toq9zt-container"
+    className="sg-11r2i0b-container"
     data-test-id="categoryList"
   >
     <Headline
@@ -187,7 +187,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       }
                     />
                     <div
-                      className="sg-xdzmgq-categoryDescription"
+                      className="sg-7m7fd6-categoryDescription"
                       dangerouslySetInnerHTML={
                         {
                           "__html": undefined,
@@ -246,7 +246,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                       }
                     />
                     <div
-                      className="sg-xdzmgq-categoryDescription"
+                      className="sg-7m7fd6-categoryDescription"
                       dangerouslySetInnerHTML={
                         {
                           "__html": undefined,

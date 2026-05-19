@@ -44,7 +44,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
                 unitSystem="metric"
               >
                 <span
-                  className="sg-1bdlznc-storeDistance"
+                  className="sg-p63w4k-storeDistance"
                 >
                   formats.distance.pattern
                 </span>
@@ -65,7 +65,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
             unitSystem="metric"
           >
             <span
-              className="sg-1bdlznc-storeDistance"
+              className="sg-p63w4k-storeDistance"
             >
               formats.distance.pattern
             </span>
@@ -98,7 +98,7 @@ exports[`engage > locations > StoreList > StoreHeader should render as expected 
       longLabel={false}
     >
       <div
-        className="sg-96msta-storeHoursToday"
+        className="sg-1cn6mtl-storeHoursToday"
       >
         locations.today_hours
       </div>

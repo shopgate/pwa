@@ -29,7 +29,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
     }
   >
     <div
-      className="sg-55ypqp-container"
+      className="sg-196h94r-container"
     >
       <Headline
         style={null}
@@ -178,7 +178,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -343,7 +343,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
     }
   >
     <div
-      className="sg-55ypqp-container"
+      className="sg-196h94r-container"
     >
       <Headline
         style={null}
@@ -532,7 +532,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -541,7 +541,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
+                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -670,15 +670,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   className="ui-shared__progress-bar"
                                   style={
                                     {
-                                      "background": {
-                                        "color": [
-                                          92,
-                                          206,
-                                          227,
-                                        ],
-                                        "model": "rgb",
-                                        "valpha": 0.4,
-                                      },
+                                      "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                       "bottom": 0,
                                       "height": 4,
                                       "overflow": "hidden",
@@ -691,7 +683,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   }
                                 >
                                   <div
-                                    className="sg-hmfbp5-innerElement"
+                                    className="sg-1cn0v06-innerElement"
                                   />
                                 </div>
                               </Transition>
@@ -923,13 +915,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-1w1fdno-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-bxjzsu-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1018,7 +1010,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-55ypqp-container"
+      className="sg-196h94r-container"
     >
       <Headline
         style={null}
@@ -1167,7 +1159,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1341,7 +1333,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1497,7 +1489,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1599,13 +1591,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-1w1fdno-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-bxjzsu-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1694,7 +1686,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-55ypqp-container"
+      className="sg-196h94r-container"
     >
       <Headline
         style={null}
@@ -1883,7 +1875,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1892,7 +1884,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
+                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -2021,15 +2013,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   className="ui-shared__progress-bar"
                                   style={
                                     {
-                                      "background": {
-                                        "color": [
-                                          92,
-                                          206,
-                                          227,
-                                        ],
-                                        "model": "rgb",
-                                        "valpha": 0.4,
-                                      },
+                                      "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                       "bottom": 0,
                                       "height": 4,
                                       "overflow": "hidden",
@@ -2042,7 +2026,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   }
                                 >
                                   <div
-                                    className="sg-hmfbp5-innerElement"
+                                    className="sg-1cn0v06-innerElement"
                                   />
                                 </div>
                               </Transition>
@@ -2346,7 +2330,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -2529,7 +2513,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-55ypqp-container"
+      className="sg-196h94r-container"
     >
       <Headline
         style={null}
@@ -2718,7 +2702,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -2727,7 +2711,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
+                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -2856,15 +2840,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   className="ui-shared__progress-bar"
                                   style={
                                     {
-                                      "background": {
-                                        "color": [
-                                          92,
-                                          206,
-                                          227,
-                                        ],
-                                        "model": "rgb",
-                                        "valpha": 0.4,
-                                      },
+                                      "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                       "bottom": 0,
                                       "height": 4,
                                       "overflow": "hidden",
@@ -2877,7 +2853,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   }
                                 >
                                   <div
-                                    className="sg-hmfbp5-innerElement"
+                                    className="sg-1cn0v06-innerElement"
                                   />
                                 </div>
                               </Transition>
@@ -3221,7 +3197,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -3230,7 +3206,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
+                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -3359,15 +3335,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   className="ui-shared__progress-bar"
                                   style={
                                     {
-                                      "background": {
-                                        "color": [
-                                          92,
-                                          206,
-                                          227,
-                                        ],
-                                        "model": "rgb",
-                                        "valpha": 0.4,
-                                      },
+                                      "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                       "bottom": 0,
                                       "height": 4,
                                       "overflow": "hidden",
@@ -3380,7 +3348,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   }
                                 >
                                   <div
-                                    className="sg-hmfbp5-innerElement"
+                                    className="sg-1cn0v06-innerElement"
                                   />
                                 </div>
                               </Transition>
@@ -3612,13 +3580,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-1w1fdno-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-bxjzsu-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3689,7 +3657,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
     }
   >
     <div
-      className="sg-55ypqp-container"
+      className="sg-196h94r-container"
     >
       <Headline
         style={null}
@@ -3826,7 +3794,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -3991,7 +3959,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
     }
   >
     <div
-      className="sg-55ypqp-container"
+      className="sg-196h94r-container"
     >
       <Headline
         style={null}
@@ -4168,7 +4136,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-omro4t-container"
+                        className="sg-krhh1u-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -4177,7 +4145,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
+                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -4306,15 +4274,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   className="ui-shared__progress-bar"
                                   style={
                                     {
-                                      "background": {
-                                        "color": [
-                                          92,
-                                          206,
-                                          227,
-                                        ],
-                                        "model": "rgb",
-                                        "valpha": 0.4,
-                                      },
+                                      "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                       "bottom": 0,
                                       "height": 4,
                                       "overflow": "hidden",
@@ -4327,7 +4287,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   }
                                 >
                                   <div
-                                    className="sg-hmfbp5-innerElement"
+                                    className="sg-1cn0v06-innerElement"
                                   />
                                 </div>
                               </Transition>
@@ -4559,13 +4519,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-1w1fdno-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-bxjzsu-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}

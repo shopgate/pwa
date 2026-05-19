@@ -44,7 +44,7 @@ exports[`Rating (product header) Rendering should render rating when data is ava
           >
             <Text
               acceptPlainTextWithPlaceholders={false}
-              className="engage__reviews__rating-count sg-6cwwaq-greyStyle-prominentStyle"
+              className="engage__reviews__rating-count sg-c9fit8-greyStyle-prominentStyle"
               params={
                 {
                   "count": 4,

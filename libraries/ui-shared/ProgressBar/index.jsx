@@ -1,10 +1,8 @@
 import React, { useEffect, useState, memo } from 'react';
 import PropTypes from 'prop-types';
-import Color from 'color';
 import Transition from 'react-transition-group/Transition';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import {
-  getCSSCustomProp,
   makeStyles,
   keyframes,
   useTheme,
@@ -110,8 +108,6 @@ const ProgressBar = memo(({ isVisible }) => {
     }
   }, [isVisible]);
 
-  const wrapperBackground = Color(getCSSCustomProp(theme.palette.secondary.main).fade(0.6));
-
   return (
     <Transition
       in={visible}
@@ -124,7 +120,7 @@ const ProgressBar = memo(({ isVisible }) => {
           style={{
             position: 'absolute',
             bottom: 0,
-            background: wrapperBackground,
+            background: theme.alpha(theme.palette.secondary.main, 0.6),
             width: '100%',
             height: progressBarHeight,
             overflow: 'hidden',

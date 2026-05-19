@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Color from 'color';
-import { makeStyles, responsiveMediaQuery, getCSSCustomProp } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { i18n, errorBehavior } from '@shopgate/engage/core/helpers';
 import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
@@ -14,18 +13,18 @@ const iconMapping = {
   error: StopIcon,
 };
 
-/**
- * @param {string} sourceColor Source color.
- * @param {string} [textColor] Optional text color.
- * @returns {{ background: string, color: string, borderColor: string }}
- */
-const getMessageColors = (sourceColor, textColor) => ({
-  background: Color(sourceColor).fade(0.9).toString(),
-  color: textColor || 'var(--color-text-high-emphasis)',
-  borderColor: `${sourceColor}!important`,
-});
+const useStyles = makeStyles()((theme) => {
+  /**
+   * @param {string} sourceColor Source color.
+   * @param {string} [textColor] Optional text color.
+   * @returns {{ background: string, color: string, borderColor: string }}
+   */
+  const getMessageColors = (sourceColor, textColor) => ({
+    background: theme.alpha(sourceColor, 0.1),
+    color: textColor || theme.palette.text.primary,
+    borderColor: `${sourceColor}!important`,
+  });
 
-const useStyles = makeStyles()((theme, { secondaryColor }) => {
   const containerBase = {
     background: themeColors.background,
     display: 'flex',
@@ -71,7 +70,7 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
       background: theme.palette.secondary.main,
       color: theme.palette.secondary.contrastText,
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
-        ...getMessageColors(secondaryColor),
+        ...getMessageColors(theme.palette.secondary.main),
         ' > svg': {
           color: theme.palette.secondary.main,
         },
@@ -90,9 +89,9 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
       background: themeColors.error,
       color: themeColors.light,
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
-        ...getMessageColors(themeColors.error),
+        ...getMessageColors(theme.palette.error.main),
         ' > svg': {
-          color: themeColors.error,
+          color: theme.palette.error.main,
         },
         padding: theme.spacing(1.5, 2),
         fontWeight: 'normal',
@@ -106,12 +105,12 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
     // eslint-disable-next-line tss-unused-classes/unused-classes
     warning: {
       ...messageBase,
-      background: themeColors.warning,
-      color: themeColors.light,
+      background: theme.palette.warning.main,
+      color: theme.palette.warning.contrastText,
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
-        ...getMessageColors(themeColors.warning),
+        ...getMessageColors(theme.palette.warning.main),
         ' > svg': {
-          color: themeColors.warning,
+          color: theme.palette.warning.main,
         },
         padding: theme.spacing(1.5, 2),
         fontWeight: 'normal',
@@ -150,8 +149,7 @@ const useStyles = makeStyles()((theme, { secondaryColor }) => {
 const MessageBar = ({
   messages, classNames, raised, showIcons,
 }) => {
-  const secondaryColor = getCSSCustomProp('--color-secondary');
-  const { classes, cx } = useStyles({ secondaryColor });
+  const { classes, cx } = useStyles();
   const containerClass = React.useMemo(() => {
     if (raised) {
       return cx(classes.containerRaised, classNames.containerRaised, 'ui-shared__message-bar');

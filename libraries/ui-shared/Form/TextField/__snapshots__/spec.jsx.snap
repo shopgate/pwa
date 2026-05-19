@@ -1054,7 +1054,7 @@ exports[`<TextField> should show the label 1`] = `
       >
         <div
           aria-hidden={true}
-          className="sg-1m15d1c-placeholder placeholder"
+          className="sg-14fp90p-placeholder placeholder"
         >
           <Text
             acceptPlainTextWithPlaceholders={false}
@@ -1077,7 +1077,7 @@ exports[`<TextField> should show the label 1`] = `
         labelStatic={false}
       >
         <label
-          className="label sg-smo66e-label-labelRegular"
+          className="label sg-98zxjx-label-labelRegular"
           htmlFor="test-input"
         >
           <Text
@@ -1240,7 +1240,7 @@ exports[`<TextField> should show the placeholder text 1`] = `
       >
         <div
           aria-hidden={true}
-          className="sg-1m15d1c-placeholder placeholder"
+          className="sg-14fp90p-placeholder placeholder"
         >
           <Text
             acceptPlainTextWithPlaceholders={false}
