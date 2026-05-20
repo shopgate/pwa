@@ -3,11 +3,22 @@ import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import { Swiper } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   ProductListTypeProvider,
   ProductListEntryProvider,
 } from '@shopgate/engage/product/providers';
-import { container, items } from './style';
+
+const useStyles = makeStyles()({
+  container: {
+    paddingBottom: 10,
+  },
+});
+
+const items = {
+  margin: '0 8px',
+  height: '100%',
+};
 
 export const WIDGET_ID = '@shopgate/engage/product/ProductSlider';
 
@@ -16,6 +27,7 @@ export const WIDGET_ID = '@shopgate/engage/product/ProductSlider';
  * @returns {JSX.Element}
  */
 function ProductSlider(props) {
+  const { classes, cx } = useStyles();
   const {
     autoplay,
     className,
@@ -42,7 +54,7 @@ function ProductSlider(props) {
             delay,
           },
         }}
-        className={`${className} engage__product__product-slider`}
+        className={cx(className, 'engage__product__product-slider')}
         controls={false}
         indicators={false}
         freeMode={!snap}
@@ -50,7 +62,7 @@ function ProductSlider(props) {
         slidesPerView={slidesPerView}
       >
         {productIds.map(id => (
-          <Swiper.Item key={id} className={container}>
+          <Swiper.Item key={id} className={classes.container}>
             <ProductListEntryProvider productId={id}>
               <Item productId={id} style={items} {...productItemProps} />
             </ProductListEntryProvider>

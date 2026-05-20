@@ -1,174 +1,165 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useRef, useEffect, useLayoutEffect, useMemo, useCallback,
+} from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { UIEvents } from '@shopgate/pwa-core';
 import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { makeStyles } from '@shopgate/engage/styles';
 import AppBar from './components/AppBar';
 import Backdrop from './components/Backdrop';
 import Suggestions from './components/Suggestions';
 import { TOGGLE_SEARCH, SEARCH_CLOSED } from './constants';
 import connect from './connector';
-import styles from './style';
 
 const DEFAULT_QUERY = '';
 const SUGGESTIONS_MIN = 1;
 
+const useStyles = makeStyles()({
+  root: {
+    bottom: 0,
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+    zIndex: 4,
+  },
+});
+
 /**
  * The Search component.
+ * @param {Object} props Component props.
+ * @param {Function} props.fetchSuggestions Fetches suggestions for a query.
+ * @param {Function} props.historyPush history.push wrapper.
+ * @param {Function} props.historyReplace history.replace wrapper.
+ * @param {Object|null} props.route Current route.
+ * @returns {JSX.Element|null}
  */
-class Search extends Component {
-  static propTypes = {
-    fetchSuggestions: PropTypes.func.isRequired,
-    historyPush: PropTypes.func.isRequired,
-    historyReplace: PropTypes.func.isRequired,
-    route: PropTypes.shape(),
-  };
+const Search = ({
+  fetchSuggestions,
+  historyPush,
+  historyReplace,
+  route,
+}) => {
+  const { classes } = useStyles();
+  const fieldRef = useRef(null);
+  const [query, setQuery] = useState(DEFAULT_QUERY);
+  const [visible, setVisible] = useState(false);
 
-  static defaultProps = {
-    route: null,
-  };
+  const fetchSuggestionsDebounced = useMemo(
+    () => debounce((q) => {
+      if (q.length > SUGGESTIONS_MIN) {
+        fetchSuggestions(q.trim());
+      }
+    }, 200, { maxWait: 400 }),
+    [fetchSuggestions]
+  );
 
-  /**
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
+  useEffect(() => () => {
+    fetchSuggestionsDebounced.cancel();
+  }, [fetchSuggestionsDebounced]);
 
-    this.fieldRef = React.createRef();
-    this.state = {
-      query: DEFAULT_QUERY,
-      visible: false,
-    };
-
-    UIEvents.on(TOGGLE_SEARCH, this.toggle);
-  }
-
-  /**
-   * When opened, focus the search field and set the initial field value.
-   */
-  componentDidUpdate() {
-    if (this.state.visible) {
-      this.fieldRef.current.value = this.state.query;
-      this.fieldRef.current.focus();
-    }
-  }
-
-  /**
-   * Removes the TOGGLE_SEARCH event listener on unmount.
-   */
-  componentWillUnmount() {
-    UIEvents.off(TOGGLE_SEARCH, this.toggle);
-  }
-
-  /**
-   * Fetch the search suggestions, debounced to reduce the request amount.
-   */
-  fetchSuggestions = debounce((query) => {
-    if (query.length > SUGGESTIONS_MIN) {
-      this.props.fetchSuggestions(query.trim());
-    }
-  }, 200, { maxWait: 400 });
-
-  /**
-   * Close the search.
-   */
-  close = () => {
-    this.toggle(false);
-  };
-
-  /**
-   * @param {boolean} visible The next visible state.
-   */
-  toggle = (visible = true) => {
-    const { route } = this.props;
-
+  const toggle = useCallback((nextVisible = true) => {
     if (!route) {
       return;
     }
 
-    const { query } = route;
+    const routeQuery = route.query;
 
-    const wasVisible = this.state.visible;
+    setVisible((prevVisible) => {
+      if (prevVisible && !nextVisible) {
+        UIEvents.emit(SEARCH_CLOSED);
+      }
+      return nextVisible;
+    });
 
-    this.setState(prevState => ({
-      query: query.s || prevState.query,
-      visible,
-    }));
+    setQuery(prev => routeQuery.s || prev);
+  }, [route]);
 
-    if (wasVisible && !visible) {
-      UIEvents.emit(SEARCH_CLOSED);
+  useEffect(() => {
+    UIEvents.on(TOGGLE_SEARCH, toggle);
+    return () => {
+      UIEvents.off(TOGGLE_SEARCH, toggle);
+    };
+  }, [toggle]);
+
+  useLayoutEffect(() => {
+    if (visible && fieldRef.current) {
+      fieldRef.current.value = query;
+      fieldRef.current.focus();
     }
-  };
+  }, [visible, query]);
 
-  reset = () => {
-    this.fieldRef.current.value = DEFAULT_QUERY;
-    this.setState({ query: DEFAULT_QUERY });
-  };
+  const close = useCallback(() => {
+    toggle(false);
+  }, [toggle]);
 
-  /**
-   * @param {Event} event The event.
-   */
-  update = (event) => {
-    const query = event.currentTarget.value;
-    this.fetchSuggestions(query);
-    this.setState({ query });
-  };
+  const reset = useCallback(() => {
+    if (fieldRef.current) {
+      fieldRef.current.value = DEFAULT_QUERY;
+    }
+    setQuery(DEFAULT_QUERY);
+  }, []);
 
-  /**
-   * @param {Event} event The event.
-   */
-  fetchResults = (event) => {
+  const update = useCallback((event) => {
+    const nextQuery = event.currentTarget.value;
+    fetchSuggestionsDebounced(nextQuery);
+    setQuery(nextQuery);
+  }, [fetchSuggestionsDebounced]);
+
+  const fetchResults = useCallback((event) => {
     event.preventDefault();
 
-    const searchQuery = (event.currentTarget.value || this.state.query).trim();
+    const searchQuery = (event.currentTarget.value || query).trim();
 
     if (searchQuery.length === 0) {
       return;
     }
 
-    this.setState({
-      query: DEFAULT_QUERY,
-      visible: false,
-    });
+    setQuery(DEFAULT_QUERY);
+    setVisible(false);
 
     const location = `/search?s=${encodeURIComponent(searchQuery)}`;
-    const { route: { pattern, query } } = this.props;
+    const { pattern, query: routeQuery } = route;
 
-    if (query.s === searchQuery) {
+    if (routeQuery.s === searchQuery) {
       return;
     }
 
     if (pattern === SEARCH_PATTERN) {
-      this.props.historyReplace({ pathname: location });
+      historyReplace({ pathname: location });
     } else {
-      this.props.historyPush({ pathname: location });
+      historyPush({ pathname: location });
     }
-  };
+  }, [query, route, historyPush, historyReplace]);
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { query, visible } = this.state;
-
-    if (!visible) {
-      return null;
-    }
-
-    return (
-      <div className={styles}>
-        <AppBar
-          close={this.close}
-          reset={this.reset}
-          onInput={this.update}
-          onEnter={this.fetchResults}
-          fieldRef={this.fieldRef}
-        />
-        <Backdrop onClick={this.close} />
-        <Suggestions onClick={this.fetchResults} searchPhrase={query} />
-      </div>
-    );
+  if (!visible) {
+    return null;
   }
-}
+
+  return (
+    <div className={classes.root}>
+      <AppBar
+        close={close}
+        reset={reset}
+        onInput={update}
+        onEnter={fetchResults}
+        fieldRef={fieldRef}
+      />
+      <Backdrop onClick={close} />
+      <Suggestions onClick={fetchResults} searchPhrase={query} />
+    </div>
+  );
+};
+
+Search.propTypes = {
+  fetchSuggestions: PropTypes.func.isRequired,
+  historyPush: PropTypes.func.isRequired,
+  historyReplace: PropTypes.func.isRequired,
+  route: PropTypes.shape(),
+};
+
+Search.defaultProps = {
+  route: null,
+};
 
 export default connect(Search);

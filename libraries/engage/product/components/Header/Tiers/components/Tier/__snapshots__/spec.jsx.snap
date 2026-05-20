@@ -3,7 +3,7 @@
 exports[`<Tier /> Rendering with data should render tier prices when tier prices are available 1`] = `
 <Translate
   acceptPlainTextWithPlaceholders={false}
-  className="css-z8ikop"
+  className="sg-myao6a-tier"
   key="3"
   params={
     {
@@ -15,7 +15,7 @@ exports[`<Tier /> Rendering with data should render tier prices when tier prices
   transform={null}
 >
   <FormatPrice
-    className="css-ud99sa"
+    className="sg-z2q7om-price"
     currency="USD"
     forKey="price"
     fractions={true}

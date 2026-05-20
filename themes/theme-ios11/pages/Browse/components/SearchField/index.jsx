@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, {
+  useCallback, useEffect, useMemo, useRef, useState,
+} from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import debounce from 'lodash/debounce';
 import {
   registerEvents,
@@ -24,272 +25,275 @@ import {
   BarcodeScannerIcon,
 } from '@shopgate/engage/components';
 import { SCANNER_ICON } from '@shopgate/engage/scanner/constants';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import TabBar from 'Components/TabBar';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
-import styles from './style';
 
 const SUGGESTIONS_MIN = 1;
 
+const useStyles = makeStyles()(() => ({
+  container: {
+    display: 'flex',
+    position: 'relative',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    marginBottom: 4,
+    paddingLeft: 16,
+    paddingRight: 16,
+  },
+  inputWrapper: {
+    position: 'relative',
+    flexGrow: 1,
+  },
+  input: {
+    borderRadius: 10,
+    width: '100%',
+    padding: '4px 10px 4px 30px',
+    lineHeight: '28px',
+    outline: 'none',
+    background: themeColors.shade7,
+    verticalAlign: 'middle',
+    WebkitAppearance: 'none',
+  },
+  inputWithScannerIcon: {
+    paddingRight: 36,
+  },
+  label: {
+    alignItems: 'center',
+    color: themeColors.shade3,
+    display: 'flex',
+    height: '36px',
+    position: 'absolute',
+    pointerEvents: 'none',
+    width: '100%',
+  },
+  hidden: {
+    display: 'none',
+  },
+  button: {
+    lineHeight: '34px',
+    color: 'var(--color-secondary)',
+    paddingTop: 0,
+    paddingLeft: 16,
+    paddingRight: 0,
+    marginLeft: 0,
+    marginRight: 0,
+    verticalAlign: 'middle',
+    outline: 0,
+  },
+  icon: {
+    padding: '0 6px',
+    color: themeColors.shade11,
+    fontSize: '1.235rem',
+  },
+  scannerIcon: {
+    padding: '4px 6px 4px 4px',
+    color: themeColors.shade11,
+    fontSize: '1.7rem',
+    position: 'absolute',
+    right: 0,
+  },
+  overlay: {
+    background: themeColors.darkTransparent,
+    position: 'absolute',
+    left: 0,
+    width: '100%',
+    top: 124,
+    bottom: 0,
+    zIndex: 2,
+    overflow: 'hidden',
+    outline: 'none',
+  },
+}));
+
 /**
- * The SearchField component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class SearchField extends Component {
-  static propTypes = {
-    fetchSuggestions: PropTypes.func.isRequired,
-    openScanner: PropTypes.func.isRequired,
-    pageId: PropTypes.string.isRequired,
-    submitSearch: PropTypes.func.isRequired,
-    name: PropTypes.string,
-    query: PropTypes.string,
-    showScannerIcon: PropTypes.bool,
-  };
+const SearchField = ({
+  fetchSuggestions,
+  openScanner,
+  pageId,
+  submitSearch,
+  name = 'search',
+  query: queryProp = '',
+  showScannerIcon = true,
+}) => {
+  const { classes, cx } = useStyles();
+  const [focused, setFocused] = useState(Trilean.NONE);
+  const [bottomHeight, setBottomHeight] = useState(0);
+  const initialQuery = queryProp || '';
+  const [query, setQuery] = useState(initialQuery);
+  const queryRef = useRef(initialQuery);
+  const inputRef = useRef(null);
 
-  static defaultProps = {
-    showScannerIcon: true,
-    name: 'search',
-    query: '',
-  };
+  const fetchSuggestionsDebounced = useMemo(
+    () => debounce((q) => {
+      if (q.length > SUGGESTIONS_MIN) {
+        fetchSuggestions(q);
+      }
+    }, 200, { maxWait: 400 }),
+    [fetchSuggestions]
+  );
 
-  /**
-   * Creates a new search field instance.
-   * @param {Object} props The component properties.
-   */
-  constructor(props) {
-    super(props);
+  useEffect(() => () => fetchSuggestionsDebounced.cancel(), [fetchSuggestionsDebounced]);
 
-    this.state = {
-      /** @type {null|boolean} added with CCP-2443 */
-      focused: Trilean.NONE,
-      bottomHeight: 0,
-      query: this.props.query || '',
-    };
+  useEffect(() => {
+    const next = queryProp || '';
+    queryRef.current = next;
+    setQuery(next);
+  }, [queryProp]);
 
-    this.input = null;
-  }
-
-  /**
-   * Adds callback for keyboardWillChange.
-   */
-  componentDidMount() {
+  useEffect(() => {
     registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
-    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
-  }
+    /**
+     * @param {Object} payload Event payload from keyboard overlap.
+     * @param {number} payload.overlap Keyboard overlap height in px.
+     */
+    const handleKeyboardChange = ({ overlap }) => {
+      setBottomHeight(overlap);
+    };
+    event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, handleKeyboardChange);
+    return () => {
+      event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, handleKeyboardChange);
+    };
+  }, []);
 
-  /**
-   * Removing callback for keyboardWillChange.
-   */
-  componentWillUnmount() {
-    event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, this.handleKeyboardChange);
-  }
+  const setInputRef = useCallback((ref) => {
+    inputRef.current = ref;
+  }, []);
 
-  /**
-   * Fetch the search suggestions, debounced to reduce the request amount.
-   */
-  fetchSuggestions = debounce((query) => {
-    if (query.length > SUGGESTIONS_MIN) {
-      this.props.fetchSuggestions(query);
-    }
-  }, 200, { maxWait: 400 });
-
-  /**
-   * Sets a reference to the input fields DOM element.
-   * @param {HTMLElement} ref The reference.
-   */
-  setInputRef = (ref) => {
-    this.input = ref;
-  };
-
-  /**
-   * Handler for keyboardWillChange event.
-   * @param {Object} props Props.
-   * @param {number} props.overlap Current overlap.
-   * @type {Function}
-   */
-  handleKeyboardChange = ({ overlap }) => {
-    this.setState({
-      bottomHeight: overlap,
-    });
-  };
-
-  /**
-   * @param {Event} event The event.
-   */
-  reset = () => {
+  const reset = useCallback(() => {
     setTimeout(() => {
-      /*
-       * Delay the execution of the state change until the next cycle
-       * to give pending click events a chance to run.
-       */
-      this.setState({
-        query: '',
-        focused: Trilean.NONE,
-      });
+      queryRef.current = '';
+      setQuery('');
+      setFocused(Trilean.NONE);
     }, 0);
-  };
+  }, []);
 
-  /**
-   * @param {string} value The updated value.
-   */
-  update = (value) => {
-    const query = value.trim();
-    this.fetchSuggestions(query);
-    this.setState({ query });
-  };
+  const update = useCallback((value) => {
+    const q = value.trim();
+    queryRef.current = q;
+    fetchSuggestionsDebounced(q);
+    setQuery(q);
+  }, [fetchSuggestionsDebounced]);
 
-  /**
-   * Handles changes to the focus of the input element.
-   * @param {boolean} focused Whether the element currently became focused.
-   */
-  handleFocusChange = (focused) => {
-    // we've faced an issue
-    // where the keyboard will be shown for a few
-    // milliseconds and then it'll hide.
+  const handleFocusChange = useCallback((isFocused) => {
     const bufferTimeout = 100;
-
-    if (!focused) {
+    if (!isFocused) {
       setTimeout(() => {
         TabBar.show();
       }, bufferTimeout);
     } else {
       TabBar.hide();
     }
+    setFocused(isFocused ? Trilean.TRUE : Trilean.FALSE);
+  }, []);
 
-    this.setState({
-      focused: focused
-        ? Trilean.TRUE
-        : Trilean.FALSE,
-    });
-  };
-
-  /**
-   * Handles the form submit event.
-   * @param {Object} e The event object.
-   * @param {string} searchQuery Defaults to query in state.
-   */
-  handleSubmit = (e, searchQuery) => {
+  const handleSubmitStable = useCallback((e, searchQuery) => {
     e.preventDefault();
-
-    const query = searchQuery || this.state.query;
-    if (!query) {
+    const fromArg = searchQuery != null ? String(searchQuery).trim() : '';
+    const fromDom = inputRef.current && 'value' in inputRef.current
+      ? String(inputRef.current.value).trim()
+      : '';
+    const q = fromArg || fromDom || String(queryRef.current || '').trim();
+    if (!q) {
       return;
     }
 
-    router.update(this.props.pageId, { query });
+    router.update(pageId, { query: q });
 
-    this.setState({ focused: Trilean.FALSE }, () => {
-      /**
-       * "submitSearch" might cause a component unmount. So we take care that the state update
-       * happens before to avoid errors about state updates on unmounted components.
-       */
-      this.input.blur();
-      this.props.submitSearch(query);
-    });
-  };
+    setFocused(Trilean.FALSE);
+    setTimeout(() => {
+      inputRef.current?.blur();
+      submitSearch(q);
+    }, 0);
+  }, [pageId, submitSearch]);
 
-  /**
-   * Renders the hint element.
-   * @return {JSX}
-   */
-  renderLabelElement = () => (
-    <label
-      htmlFor={this.props.name}
-      className={styles.label}
-    >
-      <div className={styles.icon}>
-        <MagnifierIcon />
-      </div>
-      {!this.state.query.length && <I18n.Text string="search.label" />}
-    </label>
+  const inputClassName = cx(
+    classes.input,
+    showScannerIcon && focused === Trilean.NONE && classes.inputWithScannerIcon
   );
 
-  /**
-   * Renders the cancel button.
-   * @return {JSX}
-   */
-  renderCancelButton = () => (
-    <button
-      className={classNames(styles.button, {
-        [styles.hidden]: this.state.focused === Trilean.NONE,
-      })}
-      onClick={this.reset}
-      type="button"
-    >
-      <I18n.Text string="search.cancel" />
-    </button>
-  );
-
-  /**
-   * Renders the input field.
-   * @return {JSX}
-   */
-  renderInputField = () => {
-    const classes = classNames(styles.input, {
-      [styles.inputWithScannerIcon]: this.props.showScannerIcon && !this.state.focused,
-    });
-    return (
-      <Input
-        autoComplete={false}
-        className={classes}
-        onFocusChange={this.handleFocusChange}
-        onChange={this.update}
-        onSubmit={this.handleSubmit}
-        value={this.state.query}
-        setRef={this.setInputRef}
-        type="search"
-      />
-    );
-  };
-
-  /**
-   * Renders the scanner icon
-   * @returns {JSX}
-   */
-  renderScannerIcon = () => {
-    if (!this.props.showScannerIcon || this.state.focused !== Trilean.NONE) {
-      return null;
-    }
-
-    return (
-      <SurroundPortals portalName={SCANNER_ICON}>
-        <button className={styles.scannerIcon} onClick={this.props.openScanner} type="button" aria-hidden aria-label={i18n.text('titles.scanner')}>
-          <BarcodeScannerIcon />
-        </button>
-      </SurroundPortals>
-    );
-  };
-
-  /**
-   * Renders the text field.
-   * @return {JSX}
-   */
-  render() {
-    const { focused } = this.state;
-
-    return (
-      <div className="theme__browse__search-field" data-test-id="SearchField">
-        <div className={styles.container}>
-          <div className={styles.inputWrapper}>
-            <form onSubmit={this.handleSubmit} action=".">
-              {this.renderLabelElement()}
-              {this.renderInputField()}
-              {this.renderScannerIcon()}
-            </form>
-          </div>
-          <div>
-            {this.renderCancelButton()}
-          </div>
+  return (
+    <div className="theme__browse__search-field" data-test-id="SearchField">
+      <div className={classes.container}>
+        <div className={classes.inputWrapper}>
+          <form onSubmit={handleSubmitStable} action=".">
+            <label
+              htmlFor={name}
+              className={classes.label}
+            >
+              <div className={classes.icon}>
+                <MagnifierIcon />
+              </div>
+              {!query.length && <I18n.Text string="search.label" />}
+            </label>
+            <Input
+              autoComplete={false}
+              className={inputClassName}
+              onFocusChange={handleFocusChange}
+              onChange={update}
+              onSubmit={handleSubmitStable}
+              value={query}
+              setRef={setInputRef}
+              type="search"
+            />
+            {showScannerIcon && focused === Trilean.NONE && (
+              <SurroundPortals portalName={SCANNER_ICON}>
+                <button
+                  type="button"
+                  className={classes.scannerIcon}
+                  data-test-id="search-field-scanner"
+                  onClick={openScanner}
+                  aria-hidden
+                  aria-label={i18n.text('titles.scanner')}
+                >
+                  <BarcodeScannerIcon />
+                </button>
+              </SurroundPortals>
+            )}
+          </form>
         </div>
-        {focused !== Trilean.NONE && <div className={styles.overlay} />}
-        <SuggestionList
-          visible={focused !== Trilean.NONE}
-          searchPhrase={this.state.query}
-          onClick={this.handleSubmit}
-          bottomHeight={this.state.bottomHeight}
-        />
+        <div>
+          <button
+            type="button"
+            data-test-id="search-field-cancel"
+            aria-hidden={focused === Trilean.NONE}
+            className={cx(classes.button, focused === Trilean.NONE && classes.hidden)}
+            onClick={reset}
+          >
+            <I18n.Text string="search.cancel" />
+          </button>
+        </div>
       </div>
-    );
-  }
-}
+      {focused !== Trilean.NONE && <div className={classes.overlay} />}
+      <SuggestionList
+        visible={focused !== Trilean.NONE}
+        searchPhrase={query}
+        onClick={handleSubmitStable}
+        bottomHeight={bottomHeight}
+      />
+    </div>
+  );
+};
+
+SearchField.propTypes = {
+  fetchSuggestions: PropTypes.func.isRequired,
+  openScanner: PropTypes.func.isRequired,
+  pageId: PropTypes.string.isRequired,
+  submitSearch: PropTypes.func.isRequired,
+  name: PropTypes.string,
+  query: PropTypes.string,
+  showScannerIcon: PropTypes.bool,
+};
+
+SearchField.defaultProps = {
+  name: 'search',
+  query: '',
+  showScannerIcon: true,
+};
 
 export default connect(SearchField);

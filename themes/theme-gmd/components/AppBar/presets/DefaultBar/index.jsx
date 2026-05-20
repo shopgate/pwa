@@ -12,16 +12,17 @@ import {
 import {
   withRoute, withWidgetSettings, withApp, INDEX_PATH, router, UIEvents,
 } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import {
   ViewContext,
   ResponsiveContainer,
 } from '@shopgate/engage/components';
+import { withStyles } from '@shopgate/engage/styles';
 import AppBarIcon from './components/Icon';
 import CartButton from './components/CartButton';
 import SearchButton from './components/SearchButton';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
-import { buttons } from './styles';
 
 /**
  * The AppBarDefault component.
@@ -29,6 +30,9 @@ import { buttons } from './styles';
 class AppBarDefault extends PureComponent {
   static propTypes = {
     app: PropTypes.shape().isRequired,
+    classes: PropTypes.shape({
+      buttons: PropTypes.string,
+    }).isRequired,
     resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
@@ -43,10 +47,6 @@ class AppBarDefault extends PureComponent {
     'aria-hidden': null,
     title: null,
     below: null,
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
   };
 
   /**
@@ -91,9 +91,8 @@ class AppBarDefault extends PureComponent {
       this.updateStatusBar();
 
       if (this.props.title) {
-        const { __ } = this.context.i18n();
         if (this.props.route.state.title !== this.props.title) {
-          router.update(this.props.route.id, { title: __(this.props.title) });
+          router.update(this.props.route.id, { title: i18n.text(this.props.title) });
         }
       }
     }
@@ -132,8 +131,7 @@ class AppBarDefault extends PureComponent {
     }
 
     if (prevProps.title !== this.props.title) {
-      const { __ } = this.context.i18n();
-      router.update(this.props.route.id, { title: __(this.props.title) });
+      router.update(this.props.route.id, { title: i18n.text(this.props.title) });
     }
   }
 
@@ -199,11 +197,10 @@ class AppBarDefault extends PureComponent {
     }
 
     const { background, color } = this.props.widgetSettings;
-    const { __ } = this.context.i18n();
-    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-label={__('navigation.open_menu')} />;
-    const center = <AppBar.Title title={__(this.props.title || '')} />;
+    const left = <AppBarIcon icon={BurgerIcon} onClick={NavDrawer.open} testId="Button" aria-label={i18n.text('navigation.open_menu')} />;
+    const center = <AppBar.Title title={i18n.text(this.props.title || '')} />;
     const right = (
-      <div className={buttons}>
+      <div className={this.props.classes.buttons}>
         <SearchButton onToggle={this.toggleSearch} />
         <CartButton />
       </div>
@@ -275,10 +272,15 @@ const AppBarDefaultWithContext = props => (
   </ViewContext.Consumer>
 );
 
-const WrappedComponent = withApp(withWidgetSettings(
+const WrappedComponent = withStyles(withApp(withWidgetSettings(
   withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }),
   '@shopgate/engage/components/AppBar'
-));
+)), () => ({
+  buttons: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+}));
 
 WrappedComponent.Icon = AppBarIcon;
 

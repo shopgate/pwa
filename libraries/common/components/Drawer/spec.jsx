@@ -51,10 +51,11 @@ describe('<Drawer />', () => {
     wrapper.setProps({
       isOpen: true,
     });
+    wrapper.update();
 
     expect(onOpen).toBeCalled();
     expect(onDidOpen).not.toBeCalled();
-    wrapper.simulate('animationEnd');
+    wrapper.find('[role="dialog"]').simulate('animationEnd');
     expect(onDidOpen).toBeCalled();
   });
 
@@ -64,10 +65,11 @@ describe('<Drawer />', () => {
     wrapper.setProps({
       isOpen: false,
     });
+    wrapper.update();
 
     expect(onClose).toBeCalled();
     expect(onDidClose).not.toBeCalled();
-    wrapper.simulate('animationEnd');
+    wrapper.find('[role="dialog"]').simulate('animationEnd');
     expect(onDidClose).toBeCalled();
   });
 });

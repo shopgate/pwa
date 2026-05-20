@@ -12,7 +12,6 @@ jest.mock('../../contexts/AppContext', () => ({
   Consumer: ({ children }) => children(mockContext()),
 }));
 
-// eslint-disable-next-line require-jsdoc
 const MockComponent = () => null;
 
 describe('engage > core > hocs > withApp', () => {

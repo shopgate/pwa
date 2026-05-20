@@ -2,7 +2,7 @@
 module.exports = {
   testEnvironment: 'jsdom',
   silent: false,
-  moduleFileExtensions: ['js', 'jsx', 'json', 'mjs'],
+  moduleFileExtensions: ['js', 'jsx', 'json', 'mjs', 'ts', 'tsx'],
   moduleNameMapper: {
     // Mock styles since they are not needed for unit tests
     '\\.(css|sass)$': '<rootDir>/__mocks__/styleMock.js',
@@ -17,7 +17,7 @@ module.exports = {
   snapshotSerializers: [
     'enzyme-to-json/serializer',
   ],
-  testRegex: '(/__tests__/.*|(\\.|/)spec)\\.(js|jsx)?$',
+  testRegex: '(/__tests__/.*|(\\.|/)spec)\\.(js|jsx|ts|tsx)?$',
   testPathIgnorePatterns: [
     '/node_modules/',
     '/dist/',
@@ -32,7 +32,7 @@ module.exports = {
     'node_modules/enzyme/',
   ],
   collectCoverageFrom: [
-    '**/*.{js,jsx}',
+    '**/*.{js,jsx,ts,tsx}',
     '!**/node_modules/**',
     '!**/coverage/**',
     '!.eslintrc.js',

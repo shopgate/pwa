@@ -53,14 +53,14 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       open={false}
     >
       <div
-        className="ui-material__accordion-title css-10xt915"
+        className="ui-material__accordion-title sg-u2wp82-toggle"
         data-test-id="Some Thing"
       >
         <div
           aria-controls="Some-Thing-content"
           aria-expanded={false}
           aria-label={null}
-          className="css-14p7lnq"
+          className="sg-qy42xh-labelContainer"
           key="accordion-toggle"
           onClick={[Function]}
           onKeyDown={[Function]}
@@ -69,10 +69,10 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
           <div />
           <div
             aria-label="favorites.open_list"
-            className="css-1puew42"
+            className="sg-fj274v-chevronContainer"
           >
             <ChevronIcon
-              className="css-paji06"
+              className="sg-1ojuoqg-chevronClosed"
             />
           </div>
         </div>
@@ -85,7 +85,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
       >
         <ForwardRef
           aria-hidden={true}
-          className="ui-material__accordion-content css-apm51k"
+          className="ui-material__accordion-content sg-fv5x50-content"
           id="Some-Thing-content"
           style={
             {
@@ -95,7 +95,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
         >
           <div
             aria-hidden={true}
-            className="ui-material__accordion-content css-apm51k"
+            className="ui-material__accordion-content sg-fv5x50-content"
             id="Some-Thing-content"
             style={
               {
@@ -105,7 +105,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
           >
             <div>
               <div
-                className="css-yh2lvw"
+                className="sg-3cu6ey-contentInner"
               >
                 Some content.
               </div>

@@ -3,16 +3,65 @@ import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import Helmet from 'react-helmet';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
-import { hasWebBridge } from '@shopgate/engage/core';
-import { setPageContentWidth, setViewportHeight } from '@shopgate/engage/styles';
+import { hasWebBridge, applyScrollContainer } from '@shopgate/engage/core';
+import {
+  injectGlobal,
+  makeStyles,
+  responsiveMediaQuery,
+  setPageContentWidth,
+  setViewportHeight,
+} from '@shopgate/engage/styles';
 import { LiveMessenger, Navigation } from '@shopgate/engage/a11y';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import NavDrawer from 'Components/NavDrawer';
 import Search from 'Components/Search';
 import WideBar from 'Components/AppBar/presets/DefaultBar/components/WideBar';
 import { a11yNavEntries } from './constants';
-import styles from './style';
 import { MAX_DESKTOP_WIDTH, DESKTOP_MENU_BAR_WIDTH } from '../../constants';
 import connect from './connector';
+
+const { colors } = themeConfig;
+const defaultBackgroundColor = colors.background;
+
+injectGlobal({
+  html: {
+    '--page-background-color': defaultBackgroundColor,
+    '--tabbar-height': '0px',
+    '--app-bar-height': '0px',
+  },
+});
+
+const useStyles = makeStyles()({
+  viewport: {
+    display: 'flex',
+    flexDirection: 'column',
+    minHeight: '100vh',
+    overflow: applyScrollContainer() ? 'hidden' : 'inherit',
+    position: 'relative',
+    [responsiveMediaQuery('<=xs', { appAlways: true })]: {
+      width: '100vw',
+    },
+  },
+  content: {
+    flexGrow: 1,
+    position: 'relative',
+    zIndex: 0,
+    ...(hasWebBridge() ? {
+      display: 'flex',
+      justifyContent: 'center',
+    } : {}),
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      boxShadow: '0px 1px 5px rgba(0, 0, 0, 0.2), 0px 3px 1px rgba(0, 0, 0, 0.12), 0px 2px 2px rgba(0, 0, 0, 0.14)',
+      margin: 'auto',
+    },
+  },
+  header: {
+    top: 0,
+    flexShrink: 1,
+    position: 'sticky',
+    zIndex: 1,
+  },
+});
 
 /**
  * Updates the page content width css variable
@@ -49,7 +98,9 @@ setViewportHeight();
 const Viewport = ({
   children, enableWebIndexing, favicon, googleSiteVerificationCode,
 }) => {
+  const { classes, cx } = useStyles();
   const [hidden, setHidden] = useState(false);
+
   return (
     <main role="main" itemScope itemProp="http://schema.org/MobileApplication">
       { hasWebBridge() && (
@@ -66,9 +117,9 @@ const Viewport = ({
         </Helmet>
       )}
       <NavDrawer onOpen={() => setHidden(true)} onClose={() => setHidden(false)} />
-      <div className={`${styles.viewport} theme__viewport`} aria-hidden={hidden} tabIndex="-1">
+      <div className={cx(classes.viewport, 'theme__viewport')} aria-hidden={hidden} tabIndex="-1">
         <LiveMessenger />
-        <header className={styles.header} id="AppHeader">
+        <header className={classes.header} id="AppHeader">
           <ResponsiveContainer webOnly breakpoint=">xs">
             <WideBar
               backgroundColor="#fff"
@@ -76,7 +127,7 @@ const Viewport = ({
             />
           </ResponsiveContainer>
         </header>
-        <section className={styles.content} id="AppContent">
+        <section className={classes.content} id="AppContent">
           {children}
         </section>
         <Footer />

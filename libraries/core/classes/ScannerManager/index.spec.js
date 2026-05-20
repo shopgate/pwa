@@ -86,7 +86,6 @@ describe('ScannerManager', () => {
 
   describe('.registerScanHandler()', () => {
     it('should work as expected when a valid handler was passed', () => {
-      // eslint-disable-next-line require-jsdoc
       const handler = () => {};
       const result = instance.registerScanHandler(handler);
       expect(result).toEqual(instance);
@@ -190,7 +189,6 @@ describe('ScannerManager', () => {
     });
 
     it('should close the scanner when the handler does not throw an error', async () => {
-      // eslint-disable-next-line require-jsdoc
       const handler = async () => {};
       instance.registerScanHandler(handler);
       await instance.scannerDidScanListener({ requestId });

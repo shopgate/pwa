@@ -1,62 +1,24 @@
-import React, { memo } from 'react';
-import classnames from 'classnames';
-import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
-import styles from './style';
+import React, { useEffect } from 'react';
+import { logger } from '@shopgate/engage/core/helpers';
+import { MessageBar } from '@shopgate/engage/components';
 
 /**
- * The MessageBar component.
+ * @deprecated Use `import { MessageBar } from '@shopgate/engage/components'` instead.
  * @param {Object} props The component props.
- * @param {Array} props.messages The message content.
- * @param {Object} props.classNames Styling.
  * @returns {JSX}
- * @deprecated Please import from `@shopgate/engage/components` instead.
  */
-const MessageBar = memo(({ messages, classNames }) => (
-  <div
-    className={classnames(styles.container, classNames.container, 'ui-shared__message-bar')}
-    role={messages.length > 0 ? 'alert' : null}
-  >
-    {messages.map((item) => {
-      const {
-        type = 'info',
-        message,
-        messageParams = null,
-        translated,
-      } = item;
+const DeprecatedMessageBar = (props) => {
+  useEffect(() => {
+    logger.warn(
+      '===== MessageBar deprecated =====\n'
+      + 'The MessageBar component '
+      + '(@shopgate/pwa-ui-shared/MessageBar) is deprecated.\n'
+      + 'Please use: import { MessageBar } from \'@shopgate/engage/components\'.\n'
+      + '==================================='
+    );
+  }, []);
 
-      const messageOutput = !translated ? i18n.text(message, messageParams) : message;
-
-      return (
-        <div
-          key={`${type}-${message}`}
-          className={classnames(classNames.message, styles[type])}
-        >
-          <span aria-hidden>
-            {messageOutput}
-          </span>
-        </div>
-      );
-    })}
-  </div>
-));
-
-MessageBar.propTypes = {
-  messages: PropTypes.arrayOf(PropTypes.shape({
-    message: PropTypes.string,
-    type: PropTypes.string,
-  })).isRequired,
-  classNames: PropTypes.shape({
-    container: PropTypes.string,
-    message: PropTypes.string,
-  }),
+  return <MessageBar {...props} />;
 };
 
-MessageBar.defaultProps = {
-  classNames: {
-    container: null,
-    message: null,
-  },
-};
-
-export default MessageBar;
+export default DeprecatedMessageBar;

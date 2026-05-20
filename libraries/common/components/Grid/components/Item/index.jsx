@@ -1,60 +1,50 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { objectWithoutProps } from '../../../../helpers/data';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()((_theme, { grow, shrink }) => ({
+  root: {
+    ...(grow !== 0 ? { flexGrow: grow } : {}),
+    ...(shrink !== 1 ? { flexShrink: shrink } : {}),
+  },
+}));
 
 /**
  * The grid item component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class GridItem extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    component: PropTypes.string,
-    grow: PropTypes.number,
-    shrink: PropTypes.number,
-  };
+const GridItem = ({
+  className,
+  component,
+  grow,
+  shrink,
+  ...rest
+}) => {
+  const { classes, cx } = useStyles({
+    grow,
+    shrink,
+  });
+  const composedClassName = cx(classes.root, className);
 
-  static defaultProps = {
-    className: '',
-    component: 'li',
-    grow: 0,
-    shrink: 1,
-  };
+  return React.createElement(component, {
+    ...rest,
+    className: composedClassName,
+  });
+};
 
-  /**
-   * Composes the props.
-   * @returns {Object} The composed props.
-   */
-  getProps() {
-    let { className } = this.props;
+GridItem.propTypes = {
+  className: PropTypes.string,
+  component: PropTypes.string,
+  grow: PropTypes.number,
+  shrink: PropTypes.number,
+};
 
-    if (this.props.grow !== 0) {
-      className += ` ${styles.grow(this.props.grow)}`;
-    }
-
-    if (this.props.shrink !== 1) {
-      className += ` ${styles.shrink(this.props.shrink)}`;
-    }
-
-    const props = {
-      ...this.props,
-      className,
-    };
-
-    return objectWithoutProps(props, [
-      'component',
-      'grow',
-      'shrink',
-    ]);
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    return React.createElement(this.props.component, this.getProps());
-  }
-}
+GridItem.defaultProps = {
+  className: '',
+  component: 'li',
+  grow: 0,
+  shrink: 1,
+};
 
 export default GridItem;

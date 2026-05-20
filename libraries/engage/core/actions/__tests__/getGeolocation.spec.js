@@ -22,12 +22,12 @@ jest.mock('../grantGeolocationPermissions', () => jest.fn().mockResolvedValue({
   success: true,
 }));
 jest.mock('../../classes/GeolocationRequest', () => class Foo {
-  // eslint-disable-next-line require-jsdoc, extra-rules/potential-point-free
+  // eslint-disable-next-line extra-rules/potential-point-free
   constructor(...args) {
     mockedGeolocationRequestConstructor(...args);
   }
 
-  // eslint-disable-next-line require-jsdoc, class-methods-use-this
+  // eslint-disable-next-line class-methods-use-this
   dispatch() {
     return mockedGeolocationRequestDispatch();
   }

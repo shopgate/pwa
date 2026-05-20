@@ -5,7 +5,22 @@ import {
   AVAILABILITY_STATE_WARNING,
   AVAILABILITY_STATE_ALERT,
 } from '@shopgate/pwa-common-commerce/product/constants';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(theme => ({
+  base: {
+    fontSize: '0.875rem',
+  },
+  stateOk: {
+    color: theme.palette.success.main,
+  },
+  stateWarning: {
+    color: theme.palette.warning.main,
+  },
+  stateAlert: {
+    color: theme.palette.error.main,
+  },
+}));
 
 /**
  * This component renders the availability text for a product
@@ -20,22 +35,25 @@ import styles from './style';
 const Availability = ({
   text, state, showWhenAvailable = false, className = null,
 }) => {
+  const { classes, cx } = useStyles();
+
   if (!text || (state === AVAILABILITY_STATE_OK && !showWhenAvailable)) {
     return null;
   }
 
-  let style = styles.stateOk;
-
+  let stateClass = classes.stateOk;
   if (state === AVAILABILITY_STATE_WARNING) {
-    style = styles.stateWarning;
+    stateClass = classes.stateWarning;
   }
-
   if (state === AVAILABILITY_STATE_ALERT) {
-    style = styles.stateAlert;
+    stateClass = classes.stateAlert;
   }
 
   return (
-    <div className={`ui-shared__availability ${className} ${style}`} data-test-id={`availabilityText: ${text}`}>
+    <div
+      className={cx('ui-shared__availability', classes.base, stateClass, className)}
+      data-test-id={`availabilityText: ${text}`}
+    >
       {text}
     </div>
   );

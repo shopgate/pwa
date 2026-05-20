@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import Image from '@shopgate/pwa-common/components/Image';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeShadows } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import { SurroundPortals } from '../../../components';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import { useWidgetSettings } from '../../../core';
 import { defaultProps, propTypes } from './props';
 import MediaPlaceholder from './MediaPlaceholder';
-import { innerShadow } from './style';
+
+const useStyles = makeStyles()({
+  innerShadow: {
+    ':after': {
+      display: 'block',
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      right: 0,
+      bottom: 0,
+      left: 0,
+      boxShadow: themeShadows.productImage,
+      pointerEvents: 'none',
+    },
+  },
+});
 
 /**
  * The featured image component.
@@ -17,6 +32,7 @@ import { innerShadow } from './style';
 const MediaImage = ({
   url, altText, className, resolutions,
 }) => {
+  const { classes, cx } = useStyles();
   const [placeholder, setPlaceholderEnabled] = useState(!url);
 
   const {
@@ -25,14 +41,14 @@ const MediaImage = ({
 
   useEffect(() => setPlaceholderEnabled(!url), [url]);
 
-  const classes = classnames(className, {
-    [innerShadow]: showInnerShadow,
+  const mergedClassName = cx(className, {
+    [classes.innerShadow]: showInnerShadow,
   });
 
   if (placeholder) {
     return (
       <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-        <MediaPlaceholder className={classes} />
+        <MediaPlaceholder className={mergedClassName} />
       </SurroundPortals>
     );
   }
@@ -49,7 +65,7 @@ const MediaImage = ({
         src={url}
         resolutions={resolutions}
         alt={altText}
-        className={classes}
+        className={mergedClassName}
         backgroundColor="transparent"
         onError={() => setPlaceholderEnabled(true)}
         animating

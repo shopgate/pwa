@@ -28,3 +28,13 @@ jest.mock('@shopgate/pwa-core/classes/AppCommand');
 jest.mock('@shopgate/theme-gmd/extensions/reducers', () => null);
 jest.mock('@shopgate/theme-ios11/extensions/reducers', () => null);
 
+// Mock the media provider styles to prevent failing tests
+jest.mock('@shopgate/pwa-common/collections/media-providers/style', () => ({
+  responsiveContainer: 'responsiveContainer',
+  consentContainer: 'consentContainer',
+  consentLink: 'consentLink',
+  consentIcon: 'consentIcon',
+}));
+
+// Mock the useTheme hook to prevent failing tests due to missing theme object
+jest.mock('@shopgate/engage/styles/theme/hooks/useTheme');

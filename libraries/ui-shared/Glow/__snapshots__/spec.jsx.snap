@@ -16,13 +16,12 @@ exports[`<Glow /> should render with a smile 1`] = `
     }
   >
     <div
-      className="css-13azwyo ui-shared__glow"
-      disabled={false}
+      className="sg-p4e9kp-container ui-shared__glow"
       onClick={[Function]}
       style={null}
     >
       <div
-        className="css-1bmd5dz"
+        className="sg-f2xef3-glow"
         style={{}}
       />
       <p>

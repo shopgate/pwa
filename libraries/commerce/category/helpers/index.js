@@ -1,5 +1,5 @@
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { CATEGORY_PATH } from '../constants';
 
 /**

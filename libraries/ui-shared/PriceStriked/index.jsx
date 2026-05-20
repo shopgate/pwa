@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import styles from './style';
+import { I18n } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * Calculates the angle for the strike-through line
@@ -21,9 +23,34 @@ const calcAngle = (element) => {
 
   document.body.removeChild(cloned);
 
-  // Calculate the correct angle for the strike-through line
   return Math.round(90 - (Math.atan(width / height) * (180 / Math.PI)));
 };
+
+const useStyles = makeStyles()({
+  root: {
+    whiteSpace: 'nowrap',
+    color: themeColors.shade11,
+    '& span': {
+      position: 'relative',
+      '&::before': {
+        borderColor: 'currentColor',
+        content: '""',
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: '50%',
+      },
+    },
+  },
+  strikeActive: {
+    '& span': {
+      '&::before': {
+        borderTop: '1px solid',
+        transform: 'rotate(calc(var(--price-strike-deg) * -1deg))',
+      },
+    },
+  },
+});
 
 /**
  * The price striked component
@@ -33,81 +60,54 @@ const calcAngle = (element) => {
  * @param {string} [props.className] CSS classes
  * @return {JSX}
  */
-class PriceStriked extends Component {
-  static propTypes = {
-    currency: PropTypes.string.isRequired,
-    value: PropTypes.number.isRequired,
-    className: PropTypes.string,
-  };
+const PriceStriked = ({ className, currency, value }) => {
+  const { classes, cx } = useStyles();
+  const [angle, setAngle] = useState(null);
+  const elementRef = useRef(null);
 
-  static defaultProps = {
-    className: '',
-  };
-
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * Constructor
-   * @param {Object} props The component props
-   */
-  constructor(props) {
-    super(props);
-    this.angle = null;
-    this.element = null;
-  }
-
-  /**
-   * Updates the component one more time with the calculated angle
-   * based on the DOM element.
-   */
-  componentDidMount() {
-    if (this.setAngle()) {
-      this.forceUpdate();
+  useLayoutEffect(() => {
+    if (elementRef.current) {
+      setAngle(calcAngle(elementRef.current));
     }
-  }
+  }, []);
 
-  /**
-   * Sets the calculated angle for the DOM element
-   * and returns true if succeeded.
-   * @returns {boolean}
-   */
-  setAngle = () => {
-    if (this.element) {
-      this.angle = calcAngle(this.element);
-      return true;
-    }
-
-    return false;
-  };
-
-  /**
-   * Renders the component.
-   * @returns {JSX.Element}
-   */
-  render() {
-    const { __, _p } = this.context.i18n();
-    const angleStyle = this.angle ? styles.getAngleStyle(this.angle) : '';
-    return (
-      <>
-        <div
-          className={`${styles.basic} ${this.props.className} ${angleStyle} price-striked ui-shared__price-striked`}
+  return (
+    <>
+      <div
+        className={cx(
+          classes.root,
+          angle != null && classes.strikeActive,
+          className,
+          'price-striked',
+          'ui-shared__price-striked'
+        )}
+        style={angle != null ? { '--price-strike-deg': angle } : undefined}
+      >
+        <span
+          aria-hidden
+          ref={elementRef}
+          data-test-id={`strikedPrice: ${value}`}
         >
-          <span
-            aria-hidden
-            ref={(ref) => { this.element = ref; }}
-            data-test-id={`strikedPrice: ${this.props.value}`}
-          >
-            <I18n.Price price={this.props.value} currency={this.props.currency} />
-          </span>
-        </div>
-        <span className="sr-only">
-          {__('price.label_old_price', { price: _p(this.props.value, this.props.currency, true) })}
+          <I18n.Price price={value} currency={currency} />
         </span>
-      </>
-    );
-  }
-}
+      </div>
+      <span className="sr-only">
+        {i18n.text('price.label_old_price', {
+          price: i18n.price(value, currency, true),
+        })}
+      </span>
+    </>
+  );
+};
+
+PriceStriked.propTypes = {
+  currency: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+  className: PropTypes.string,
+};
+
+PriceStriked.defaultProps = {
+  className: '',
+};
 
 export default PriceStriked;

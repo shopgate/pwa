@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { ResponsiveContainer, Logo } from '@shopgate/engage/components';
 import { GlobalLocationSwitcher, FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
@@ -10,30 +9,28 @@ import Search from './Search';
 import Cart from './Cart';
 import connect from './WideBar.connector';
 
-const { variables } = themeConfig;
-
-const styles = {
-  root: css({
+const useStyles = makeStyles()(theme => ({
+  root: {
     height: DESKTOP_MENU_BAR_HEIGHT,
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-  }).toString(),
-  letterBox: css({
+  },
+  letterBox: {
     display: 'flex',
     flexDirection: 'row-reverse',
     flexWrap: 'wrap',
     overflow: 'hidden',
     maxWidth: MAX_DESKTOP_WIDTH,
-    height: `calc(${DESKTOP_MENU_BAR_HEIGHT}px - ${variables.gap.small}px)`,
+    height: `calc(${DESKTOP_MENU_BAR_HEIGHT}px - ${theme.spacing(1)}px)`,
     justifyContent: 'flex-end',
     flexGrow: 1,
     padding: '0 12px',
-  }).toString(),
-  logo: css({
-    padding: `${variables.gap.small - 1}px 0`,
+  },
+  logo: {
+    padding: `${theme.spacing(1) - 1}px 0`,
     display: 'block',
     cursor: 'pointer',
     flex: 0,
@@ -41,16 +38,16 @@ const styles = {
     ' img': {
       maxHeight: 42,
     },
-  }).toString(),
-  right: css({
-    padding: `${variables.gap.small - 1}px 0`,
+  },
+  right: {
+    padding: `${theme.spacing(1) - 1}px 0`,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
     marginLeft: 'auto',
-  }),
-};
+  },
+}));
 
 /**
  * Renders a wide app bar for desktop and tablets.
@@ -62,38 +59,42 @@ const WideBar = ({
   textColor,
   navigate,
   ...props
-}) => (
-  <AppBar
-    {...props}
-    backgroundColor={backgroundColor}
-    textColor={textColor}
-    left={null}
-    center={(
-      <div className={styles.root}>
-        <div className={styles.letterBox}>
-          <Logo onClick={navigate} className={styles.logo} />
-          <div className={styles.right}>
-            <GlobalLocationSwitcher />
-            <FulfillmentSlotSwitcher />
-            <Search />
-            <Cart />
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <AppBar
+      {...props}
+      backgroundColor={backgroundColor}
+      textColor={textColor}
+      left={null}
+      center={(
+        <div className={classes.root}>
+          <div className={classes.letterBox}>
+            <Logo onClick={navigate} className={classes.logo} />
+            <div className={classes.right}>
+              <GlobalLocationSwitcher />
+              <FulfillmentSlotSwitcher />
+              <Search />
+              <Cart />
+            </div>
           </div>
         </div>
-      </div>
-      )}
-    right={null}
-    below={
-      <>
-        <ResponsiveContainer breakpoint="xs" appAlways>
-          <div id="PageHeaderBelow" />
-        </ResponsiveContainer>
-        <ResponsiveContainer breakpoint=">xs" webOnly>
-          <div id="PageHeaderProgress" />
-        </ResponsiveContainer>
-      </>
-    }
-  />
-);
+        )}
+      right={null}
+      below={
+        <>
+          <ResponsiveContainer breakpoint="xs" appAlways>
+            <div id="PageHeaderBelow" />
+          </ResponsiveContainer>
+          <ResponsiveContainer breakpoint=">xs" webOnly>
+            <div id="PageHeaderProgress" />
+          </ResponsiveContainer>
+        </>
+      }
+    />
+  );
+};
 
 WideBar.propTypes = {
   backgroundColor: PropTypes.string.isRequired,

@@ -193,6 +193,7 @@ function Tooltip({ children, text }) {
             style={portalStyle}
             data-visible={animate ? 'true' : 'false'}
             data-tooltip-id={tooltipId.current}
+            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: text }}
           />,
           document.body

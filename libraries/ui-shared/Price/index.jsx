@@ -1,10 +1,28 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  container: {
+    display: 'flex',
+    position: 'relative',
+    whiteSpace: 'nowrap',
+  },
+  disclaimer: {
+    color: 'initial',
+    fontSize: 14,
+    position: 'absolute',
+    right: -10,
+    top: 0,
+  },
+  discounted: {
+    color: 'var(--color-primary)',
+  },
+});
 
 /**
  * The Price component
@@ -14,10 +32,10 @@ import styles from './style';
  * @param {number} props.unitPrice The price of the product
  * @param {number} props.unitPriceMin The minimum price of possible child products
  * @param {boolean} props.discounted Tells if the pice is discounted
- * @param {Object} context The component context.
  * @return {JSX.Element}
  */
-const Price = (props, context) => {
+const Price = (props) => {
+  const { classes, cx } = useStyles();
   // Added with PWA 6 - CCP-2372
   const {
     show,
@@ -27,17 +45,15 @@ const Price = (props, context) => {
   // use widget setting if set to true/false, otherwise use market logic
   const showDisclaimer = typeof show === 'boolean' ? show : showTaxDisclaimer;
 
-  const containerClasses = classNames(
-    styles.container,
+  const containerClasses = cx(
+    classes.container,
     props.className,
     {
-      [styles.discounted]: props.discounted,
+      [classes.discounted]: props.discounted,
     },
     'price',
     props.discounted ? 'ui-shared__price-discounted' : 'ui-shared__price'
   );
-
-  const { __, _p } = context.i18n();
 
   let ariaPrice;
 
@@ -49,9 +65,11 @@ const Price = (props, context) => {
   }, [props.unitPriceMax, props.unitPriceMin]);
 
   if (showFromPrice) {
-    ariaPrice = __('price.from', { price: _p(props.unitPriceMin, props.currency, props.fractions) });
+    ariaPrice = i18n.text('price.from', {
+      price: i18n.price(props.unitPriceMin, props.currency, props.fractions),
+    });
   } else {
-    ariaPrice = _p(props.unitPrice, props.currency, props.fractions);
+    ariaPrice = i18n.price(props.unitPrice, props.currency, props.fractions);
   }
 
   ariaPrice = ariaPrice.replace('-', '\u2212');
@@ -102,14 +120,14 @@ const Price = (props, context) => {
       className={containerClasses}
       data-test-id={`minPrice: ${props.unitPriceMin} price: ${props.unitPrice} currency: ${props.currency}`}
     >
-      <span aria-label={__('price.label', { price: ariaPrice })}>
+      <span aria-label={i18n.text('price.label', { price: ariaPrice })}>
         {priceContent}
       </span>
       {props.taxDisclaimer && showDisclaimer ? (
-        <div className={styles.disclaimer}>
+        <div className={classes.disclaimer}>
           <span aria-hidden>{hint || '*'}</span>
-          <span className="sr-only" aria-label={hint || __('product.tax_disclaimer_aria')}>
-            {__('product.tax_disclaimer_aria')}
+          <span className="sr-only" aria-label={hint || i18n.text('product.tax_disclaimer_aria')}>
+            {i18n.text('product.tax_disclaimer_aria')}
           </span>
         </div>
       ) : null}
@@ -137,10 +155,6 @@ Price.defaultProps = {
   fractions: true,
   taxDisclaimer: false,
   allowFree: false,
-};
-
-Price.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default Price;

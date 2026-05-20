@@ -2,10 +2,10 @@
 
 exports[`<ActionButton /> Given the component was mounted to the DOM Given the loading prop is set to true should match snapshot 1`] = `
 <div
-  className="css-367mns"
+  className="sg-stwow3-containerCircle"
 >
   <IndicatorCircle
-    color="var(--color-secondary, #5ccee3)"
+    color="var(--color-secondary)"
     paused={false}
     size={32}
     strokeWidth={3}
@@ -15,7 +15,7 @@ exports[`<ActionButton /> Given the component was mounted to the DOM Given the l
 
 exports[`<ActionButton /> Given the component was mounted to the DOM should match snapshot 1`] = `
 <div
-  className="ui-shared__action-button css-omcrdt"
+  className="ui-shared__action-button sg-berhvi-withGap"
   data-test-id={null}
 >
   <RippleButton

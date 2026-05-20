@@ -1,10 +1,28 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
 import UICheckbox from '@shopgate/pwa-ui-shared/Checkbox';
 import FormElement from '@shopgate/pwa-ui-shared/FormElement';
-import style from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(theme => ({
+  root: {
+    marginLeft: -2,
+    cursor: 'pointer',
+    '& svg': {
+      float: 'left',
+    },
+  },
+  label: {
+    lineHeight: 1.6,
+  },
+  labelWrapper: {
+    marginLeft: theme.spacing(4),
+  },
+  checked: {
+    color: 'var(--color-primary)',
+  },
+}));
 
 /**
  * @typedef {Object} Props
@@ -26,76 +44,71 @@ import style from './style';
  * @extends {React.Component<Props>}
  * @returns {JSX.Element}
  */
-class Checkbox extends PureComponent {
-  static propTypes = {
-    name: PropTypes.string.isRequired,
-    checkboxClassName: PropTypes.string,
-    className: PropTypes.string,
-    defaultChecked: PropTypes.bool,
-    disabled: PropTypes.bool,
-    errorText: PropTypes.node,
-    label: PropTypes.node,
-    onChange: PropTypes.func,
-    showErrorText: PropTypes.bool,
-    translateErrorText: PropTypes.bool,
-  };
+const Checkbox = ({
+  name,
+  label,
+  onChange,
+  className,
+  errorText,
+  translateErrorText,
+  showErrorText,
+  checkboxClassName,
+  ...restProps
+}) => {
+  const { classes, cx } = useStyles();
 
-  static defaultProps = {
-    className: '',
-    checkboxClassName: undefined,
-    defaultChecked: undefined,
-    errorText: '',
-    label: '',
-    onChange: () => {},
-    translateErrorText: true,
-    disabled: false,
-    showErrorText: true,
-  };
+  return (
+    <FormElement
+      className={cx(classes.root, 'checkbox', 'ui-shared__form__checkbox', className)}
+      htmlFor={name}
+      errorText={errorText}
+      translateErrorText={translateErrorText}
+      hasUnderline={false}
+      hasPlaceholder={false}
+      disabled={restProps.disabled}
+      showErrorText={showErrorText}
+    >
+      <UICheckbox
+        {...restProps}
+        className={checkboxClassName}
+        name={name}
+        onCheck={onChange}
+        checkedClassName={`${className} ${classes.checked}`}
+        unCheckedClassName={className}
+        labelPosition="right"
+        label={typeof label === 'string' ? (
+          <div className={cx(classes.labelWrapper, 'label')}>
+            <I18n.Text className={classes.label} string={label} />
+          </div>
+        ) : label}
+      />
+    </FormElement>
+  );
+};
 
-  /**
-   * @return {JSX}
-   */
-  render() {
-    const {
-      name,
-      label,
-      onChange,
-      className,
-      errorText,
-      translateErrorText,
-      showErrorText,
-      checkboxClassName,
-      ...restProps
-    } = this.props;
+Checkbox.propTypes = {
+  name: PropTypes.string.isRequired,
+  checkboxClassName: PropTypes.string,
+  className: PropTypes.string,
+  defaultChecked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  errorText: PropTypes.node,
+  label: PropTypes.node,
+  onChange: PropTypes.func,
+  showErrorText: PropTypes.bool,
+  translateErrorText: PropTypes.bool,
+};
 
-    return (
-      <FormElement
-        className={classNames(className, style.root, 'checkbox', 'ui-shared__form__checkbox')}
-        htmlFor={name}
-        errorText={errorText}
-        translateErrorText={translateErrorText}
-        hasUnderline={false}
-        hasPlaceholder={false}
-        disabled={restProps.disabled}
-        showErrorText={showErrorText}
-      >
-        <UICheckbox
-          {...restProps}
-          className={checkboxClassName}
-          name={name}
-          onCheck={onChange}
-          checkedClassName={`${className} ${style.checked}`}
-          unCheckedClassName={className}
-          labelPosition="right"
-          label={typeof label === 'string' ? (
-            <div className={classNames(style.labelWrapper, 'label')}>
-              <I18n.Text className={style.label} string={label} />
-            </div>
-          ) : label}
-        />
-      </FormElement>
-    );
-  }
-}
+Checkbox.defaultProps = {
+  className: '',
+  checkboxClassName: undefined,
+  defaultChecked: undefined,
+  errorText: '',
+  label: '',
+  onChange: () => {},
+  translateErrorText: true,
+  disabled: false,
+  showErrorText: true,
+};
 
 export default Checkbox;

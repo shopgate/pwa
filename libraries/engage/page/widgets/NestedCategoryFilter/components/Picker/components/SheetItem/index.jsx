@@ -1,28 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 
-const { colors, variables } = themeConfig;
-const bgColor = colors.darkGray;
-const boxShadowOffset = variables.gap.bigger;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     outline: 0,
     padding: 16,
     textAlign: 'left',
     width: '100%',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   buttonSelected: {
-    background: `var(--color-background-accent, ${bgColor})`,
-    boxShadow: `-${boxShadowOffset}px 0px 0px var(--color-background-accent, ${bgColor}), ${boxShadowOffset}px 0px 0px var(--color-background-accent,${bgColor})`,
+    background: 'var(--color-background-accent)',
+    boxShadow: `${theme.spacing(-2.5)}px 0px 0px var(--color-background-accent), ${theme.spacing(2.5)}px 0px 0px var(--color-background-accent)`,
     margin: '-1px 0',
     paddingTop: 17,
     paddingBottom: 17,
   },
-});
+}));
 
 /**
  * The SheetItem component.

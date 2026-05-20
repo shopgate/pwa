@@ -12,14 +12,10 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
   }
 >
   <div
-    className={
-      {
-        "data-css-1cqgl9p": "",
-      }
-    }
+    className="sg-d9m8pl-wrapper"
   >
     <Button
-      className="css-1x58v7w"
+      className="sg-1obactg-button"
       disabled={false}
       flat={true}
       onClick={[MockFunction]}
@@ -51,14 +47,10 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
   }
 >
   <div
-    className={
-      {
-        "data-css-1cqgl9p": "",
-      }
-    }
+    className="sg-d9m8pl-wrapper"
   >
     <Button
-      className="css-1x58v7w"
+      className="sg-1obactg-button"
       disabled={false}
       flat={true}
       onClick={[Function]}
@@ -90,14 +82,10 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
   }
 >
   <div
-    className={
-      {
-        "data-css-1cqgl9p": "",
-      }
-    }
+    className="sg-d9m8pl-wrapper"
   >
     <Button
-      className="css-1x58v7w"
+      className="sg-1obactg-button"
       disabled={true}
       flat={true}
       onClick={[Function]}

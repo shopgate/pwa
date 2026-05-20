@@ -29,7 +29,7 @@ jest.mock('../../helpers/logGroup', () => function logGroup(...args) {
 
 let mockedBridgeDispatch = jest.fn();
 
-/* eslint-disable require-jsdoc, class-methods-use-this */
+/* eslint-disable class-methods-use-this */
 jest.mock('../DevServerBridge', () => {
   class DevServerBridge {
     dispatchCommandsForVersion(...args) {
@@ -41,7 +41,7 @@ jest.mock('../DevServerBridge', () => {
     default: DevServerBridge,
   };
 });
-/* eslint-enable require-jsdoc, class-methods-use-this */
+/* eslint-enable class-methods-use-this */
 
 // Mock of the client information web storage.
 let mockedClientInformation = null;

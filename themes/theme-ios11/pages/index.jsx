@@ -5,6 +5,7 @@ import Helmet from 'react-helmet';
 import { CacheProvider } from '@emotion/react';
 import { emotionCache } from '@shopgate/engage/styles/tss';
 import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
+import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { themeConfig } from '@shopgate/engage';
@@ -109,6 +110,7 @@ const Pages = ({ store }) => {
     const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);
 
     return createTheme({
+      ...createDefaultThemeOptions(),
       typography: {
         fontFamily,
         ...extendedTypography,
@@ -312,6 +314,10 @@ const Pages = ({ store }) => {
                           <Route
                             pattern={STORE_DETAILS_PATTERN}
                             component={routes.StoreDetails}
+                          />
+                          <Route
+                            pattern="/shopgate-theme-demo"
+                            component={routes.ThemeDemo}
                           />
                           <Route.NotFound
                             component={PageNotFound}

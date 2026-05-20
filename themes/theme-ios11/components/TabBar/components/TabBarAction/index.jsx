@@ -1,10 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import Button from '@shopgate/pwa-common/components/Button';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import style from './style';
+import { I18n } from '@shopgate/engage/components';
+
+const useStyles = makeStyles()({
+  container: {
+    display: 'flex',
+    position: 'relative',
+    flexBasis: 0,
+    flexDirection: 'column',
+    flexGrow: 1,
+    alignItems: 'center',
+    fontWeight: 500,
+    fontSize: '0.64rem',
+    height: '100%',
+    '& > svg': {
+      flexGrow: 1,
+      marginRight: 'auto',
+      marginLeft: 'auto',
+      minHeight: 32,
+    },
+  },
+  regular: {
+    color: 'var(--tab-bar-item-default-color)',
+  },
+  highlighted: {
+    color: 'var(--tab-bar-item-highlighted-color)',
+  },
+  label: {
+    '&:not(:empty)': {
+      display: 'block',
+    },
+  },
+});
 
 /**
  * Renders the tab bar action component.
@@ -30,6 +60,7 @@ const TabBarAction = ({
   children,
   ...props
 }) => {
+  const { classes, cx } = useStyles();
   const { showLabels = true } = useWidgetSettings('@shopgate/engage/components/TabBar');
 
   // Remove some props that are not meant for the Button component.
@@ -38,12 +69,12 @@ const TabBarAction = ({
     dispatch, historyPush, path, type, ...buttonProps
   } = props;
 
-  const className = classNames(
+  const className = cx(
     'theme__tab-bar__tab-bar-action',
-    style.container,
-    { [style.highlighted]: isHighlighted },
+    classes.container,
+    { [classes.highlighted]: isHighlighted },
     { 'tab-active': isHighlighted },
-    { [style.regular]: !isHighlighted }
+    { [classes.regular]: !isHighlighted }
   );
 
   return (
@@ -59,7 +90,7 @@ const TabBarAction = ({
       {...buttonProps}
     >
       {Icon}
-      <div className={classNames(style.label, 'theme__tab-bar__tab-bar-action__label')} data-test-id={label}>
+      <div className={cx(classes.label, 'theme__tab-bar__tab-bar-action__label')} data-test-id={label}>
         {showLabels && <I18n.Text string={label} />}
       </div>
       {children}

@@ -1,6 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
+
+jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/styles', () => ({
+  makeStyles: () => function mockUseStylesFactory() {
+    return function useStylesMock() {
+      return {
+        classes: {
+          text: 'mock-class-text',
+        },
+      };
+    };
+  },
+  keyframes: () => ({}),
+}));
 
 jest.mock('@shopgate/engage/core/hooks/useWidgetSettings', () => ({
   useWidgetSettings: jest.fn().mockReturnValue({
@@ -17,8 +31,7 @@ describe('<TaxDisclaimer />', () => {
 
   it('should display the component', () => {
     jest.mock('@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer', () => true);
-    // eslint-disable-next-line global-require
-    const TaxDisclaimer = require('./index').default;
+    const TaxDisclaimer = jest.requireActual('./index').default;
     const wrapper = shallow(<TaxDisclaimer />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(I18n.Text).exists()).toBe(true);
@@ -26,8 +39,7 @@ describe('<TaxDisclaimer />', () => {
 
   it('should display null', () => {
     jest.mock('@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer', () => false);
-    // eslint-disable-next-line global-require
-    const TaxDisclaimer = require('./index').default;
+    const TaxDisclaimer = jest.requireActual('./index').default;
     const wrapper = shallow(<TaxDisclaimer />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(I18n.Text).exists()).toBe(false);

@@ -1,18 +1,42 @@
 import React, { useMemo } from 'react';
-import classNames from 'classnames';
 import { QuantityLabel, I18n, Price } from '@shopgate/engage/components';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
+import { makeStyles } from '@shopgate/engage/styles';
 import { CartItemProductPriceCaption } from './CartItemProductPriceCaption';
 import { createCartItemPrices } from '../../cart.helpers';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
-import {
-  quantityLabel, label, container, labelValue, fulfillmentLabel,
-} from './CartItemProductOrderDetails.style';
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    paddingTop: theme.spacing(1),
+  },
+  quantityLabel: {
+    textAlign: 'center',
+    whiteSpace: 'nowrap',
+  },
+  label: {
+    ':after': {
+      content: '": "',
+    },
+  },
+  labelValue: {
+    fontWeight: 500,
+    display: 'inline',
+    color: 'var(--color-text-medium-emphasis)',
+  },
+  fulfillmentLabel: {
+    fontSize: 'inherit',
+    ':before': {
+      content: '" "',
+    },
+  },
+}));
 
 /**
  * @returns {JSX.Element}
  */
 const CartItemProductOrderDetails = () => {
+  const { classes, cx } = useStyles();
   const { location, cartItem, cartIsDirectShipOnly } = useCartItem();
   const { product, currency } = useCartItemProduct();
 
@@ -23,45 +47,45 @@ const CartItemProductOrderDetails = () => {
   }, [cartItem]);
 
   return (
-    <ul className={container}>
+    <ul className={classes.container}>
       { !cartIsDirectShipOnly && location?.name ? (
         <li>
-          <I18n.Text string="cart.location" className={label} />
-          <span className={labelValue}>
+          <I18n.Text string="cart.location" className={classes.label} />
+          <span className={classes.labelValue}>
             {location?.name}
           </span>
-          <CartItemProductPriceCaption className={fulfillmentLabel} />
+          <CartItemProductPriceCaption className={classes.fulfillmentLabel} />
         </li>
       ) : null}
       <li>
-        <I18n.Text string="cart.status" className={label} />
-        <span className={labelValue}>
+        <I18n.Text string="cart.status" className={classes.label} />
+        <span className={classes.labelValue}>
           {getTranslatedLineItemStatus(cartItem?.status, cartItem?.subStatus)}
         </span>
 
       </li>
       <li>
-        <I18n.Text string="cart.fulfilled_quantity" className={label} />
+        <I18n.Text string="cart.fulfilled_quantity" className={classes.label} />
         <QuantityLabel
-          className={classNames(quantityLabel, labelValue)}
+          className={cx(classes.quantityLabel, classes.labelValue)}
           value={cartItem.quantity}
           unit={hasUnitWithDecimals ? product.unit : null}
           maxDecimals={hasUnitWithDecimals ? 2 : 0}
         />
       </li>
       <li>
-        <I18n.Text string="cart.ordered_quantity" className={label} />
+        <I18n.Text string="cart.ordered_quantity" className={classes.label} />
         <QuantityLabel
-          className={classNames(quantityLabel, labelValue)}
+          className={cx(classes.quantityLabel, classes.labelValue)}
           value={cartItem.orderedQuantity}
           unit={hasUnitWithDecimals ? product.unit : null}
           maxDecimals={hasUnitWithDecimals ? 2 : 0}
         />
       </li>
       <li>
-        <I18n.Text string="cart.price" className={label} />
+        <I18n.Text string="cart.price" className={classes.label} />
         <Price
-          className={labelValue}
+          className={classes.labelValue}
           currency={currency}
           taxDisclaimer
           unitPrice={unitPrice}

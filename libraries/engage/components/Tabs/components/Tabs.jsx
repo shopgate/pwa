@@ -1,14 +1,28 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import debounce from '../debounce';
 import ownerWindow from '../ownerWindow';
 import TabIndicator from './TabIndicator';
 import useEventCallback from '../useEventCallback';
-import {
-  root, fixed, flexContainer,
-} from './Tabs.style';
 import { useTabContext } from '../TabContext';
+
+const useStyles = makeStyles()({
+  root: {
+    overflow: 'hidden',
+    minHeight: 48,
+    WebkitOverflowScrolling: 'touch',
+    display: 'flex',
+    position: 'relative',
+  },
+  fixed: {
+    overflowX: 'hidden',
+    width: '100%',
+  },
+  flexContainer: {
+    display: 'flex',
+  },
+});
 
 /**
  * C
@@ -16,6 +30,7 @@ import { useTabContext } from '../TabContext';
  * @returns {JSX}
  */
 const Tabs = (props) => {
+  const { classes, cx } = useStyles();
   const {
     children: childrenProp,
     className,
@@ -143,17 +158,17 @@ const Tabs = (props) => {
 
   return (
     <div
-      className={classNames(
-        root,
+      className={cx(
+        classes.root,
         className
       )}
     >
       <div
-        className={classNames(fixed)}
+        className={classes.fixed}
         ref={tabsRef}
       >
         <div
-          className={classNames(flexContainer)}
+          className={classes.flexContainer}
           ref={tabListRef}
           role="tablist"
         >

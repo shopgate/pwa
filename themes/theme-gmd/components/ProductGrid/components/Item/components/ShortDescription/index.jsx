@@ -1,6 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { wrapper } from './style';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  wrapper: {
+    display: 'none',
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      display: 'block',
+      color: 'var(--color-text-medium-emphasis)',
+    },
+  },
+});
 
 /**
  * The ShortDescription component.
@@ -9,12 +19,14 @@ import { wrapper } from './style';
  * @returns {JSX.Element|null} The rendered component or null.
  */
 const ShortDescription = ({ shortDescription }) => {
+  const { classes } = useStyles();
   if (!shortDescription) {
     return null;
   }
 
   return (
-    <div className={wrapper} dangerouslySetInnerHTML={{ __html: shortDescription }} />
+    // eslint-disable-next-line react/no-danger
+    <div className={classes.wrapper} dangerouslySetInnerHTML={{ __html: shortDescription }} />
   );
 };
 

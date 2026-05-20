@@ -1,57 +1,63 @@
-import React, { PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(theme => ({
+  button: {
+    outline: 0,
+    padding: '16px 16px 16px 0',
+    textAlign: 'left',
+    width: '100%',
+    color: theme.palette.text.primary,
+  },
+  buttonSelected: {
+    outline: 0,
+    padding: '17px 16px 17px 0',
+    textAlign: 'left',
+    width: '100%',
+    color: theme.palette.text.primary,
+    background: 'var(--color-background-accent)',
+    boxShadow: `${theme.spacing(-2.5)}px 0px 0px var(--color-background-accent), ${theme.spacing(2.5)}px 0px 0px var(--color-background-accent)`,
+    margin: '-1px 0',
+  },
+}));
 
 /**
  * The SheetItem component.
+ * @param {Object} props The component props.
+ * @returns {JSX}
  */
-class SheetItem extends PureComponent {
-  static propTypes = {
-    item: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-    onClick: PropTypes.func,
-    selected: PropTypes.bool,
-  };
+const SheetItem = ({ item, onClick, selected }) => {
+  const { classes, cx } = useStyles();
 
-  static defaultProps = {
-    onClick() { },
-    selected: false,
-  };
+  return (
+    <button
+      type="button"
+      className={cx({
+        [classes.button]: !selected,
+        [classes.buttonSelected]: selected,
+      })}
+      value={item.id}
+      key={item.id}
+      onClick={onClick}
+    >
+      {item.name}
+    </button>
+  );
+};
 
-  /**
-   * Creates props for the button.
-   * @returns {Object}
-   */
-  buildProps = () => {
-    const { item, selected, onClick } = this.props;
+SheetItem.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  onClick: PropTypes.func,
+  selected: PropTypes.bool,
+};
 
-    return {
-      className: classNames({
-        [styles.button]: !selected,
-        [styles.buttonSelected]: selected,
-      }),
-      key: item.id,
-      value: item.id,
-      onClick,
-    };
-  };
+SheetItem.defaultProps = {
+  onClick() {},
+  selected: false,
+};
 
-  /**
-   * Render method of the component.
-   * @returns {JSX}
-   */
-  render() {
-    const { item } = this.props;
-
-    return (
-      <button {...this.buildProps()} type="button">
-        {item.name}
-      </button>
-    );
-  }
-}
-
-export default SheetItem;
+export default memo(SheetItem);

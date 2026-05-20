@@ -16,7 +16,7 @@ import {
 import { parse2dsQrCode } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import core from '@shopgate/tracking-core/core/Core';
 import appConfig, { shopNumber } from '@shopgate/pwa-common/helpers/config';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 
 /**
  * Converts a price to a formatted string.

@@ -13,6 +13,7 @@ class SearchProducts extends PureComponent {
     hash: PropTypes.string.isRequired,
     searchPhrase: PropTypes.string.isRequired,
     sort: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool,
     products: PropTypes.arrayOf(PropTypes.shape()),
     totalProductCount: PropTypes.number,
   };
@@ -20,6 +21,7 @@ class SearchProducts extends PureComponent {
   static defaultProps = {
     products: null,
     totalProductCount: null,
+    isFetching: undefined,
   };
 
   /**
@@ -46,6 +48,7 @@ class SearchProducts extends PureComponent {
         products={this.props.products}
         totalProductCount={this.props.totalProductCount}
         requestHash={this.props.hash}
+        resultIsFetching={this.props.isFetching}
       />
     );
   }

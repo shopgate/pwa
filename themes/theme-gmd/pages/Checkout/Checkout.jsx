@@ -3,7 +3,7 @@ import { View } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/engage';
 import { AppBar } from '@shopgate/pwa-ui-material';
 import { BackBar } from 'Components/AppBar/presets';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { Checkout } from '@shopgate/engage/checkout/components';
 
 const { colors } = themeConfig;

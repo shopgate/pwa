@@ -12,10 +12,68 @@ import {
 import { Link, Availability } from '@shopgate/engage/components';
 import { StockInfoLists } from '@shopgate/engage/locations/components';
 import { hasNewServices as checkHasNewServices, i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 import ShortDescription from '../ShortDescription';
-import * as styles from './style';
+
+const useStyles = makeStyles()(theme => ({
+  details: {
+    lineHeight: 1.35,
+    '&:not(:empty)': {
+      padding: '12px 16px',
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        padding: theme.spacing(2),
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        '& > *:empty': {
+          display: 'none',
+        },
+        '& > *:first-of-type[style*="display:none"] + *:not([style*="display:none"])': {
+          paddingTop: 8,
+        },
+      },
+    },
+  },
+  itemNameLink: {
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      '& > *:not(:first-of-type)': {
+        paddingTop: 8,
+      },
+    },
+  },
+  propertiesLink: {
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      '& > *:not([style*="display:none"])': {
+        paddingTop: 8,
+      },
+    },
+  },
+  itemPrice: {
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      paddingTop: theme.spacing(1),
+      marginTop: 'auto',
+      fontSize: '1.125rem',
+      '& ul > li': {
+        flexGrow: 'inherit',
+        lineHeight: '1.5rem',
+        '&:first-of-type': {
+          marginRight: theme.spacing(2),
+        },
+      },
+    },
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      fontSize: '1.25rem',
+    },
+  },
+  quantityHint: {
+    paddingTop: 4,
+  },
+}));
 
 /**
  * The item details component.
@@ -27,6 +85,7 @@ import * as styles from './style';
  * @returns {JSX.Element}
  */
 const ItemDetails = ({ product, display, productListTypeMeta }) => {
+  const { classes, cx } = useStyles();
   const {
     id: productId, name = null, stock = null, shortDescription = null,
   } = product;
@@ -39,7 +98,7 @@ const ItemDetails = ({ product, display, productListTypeMeta }) => {
 
   return (
     <Link
-      className={`${styles.details} theme__product-grid__item__item-details`}
+      className={cx(classes.details, 'theme__product-grid__item__item-details')}
       tabIndex={0}
       href={getProductRoute(productId)}
       state={{
@@ -48,34 +107,19 @@ const ItemDetails = ({ product, display, productListTypeMeta }) => {
       }}
     >
       <div>
-        {/*
-          This feature is currently in BETA testing.
-          It should only be used for approved BETA Client Projects
-        */}
         <Swatches productId={productId} />
       </div>
-      <div className={styles.itemNameLink}>
+      <div className={classes.itemNameLink}>
         <ItemName display={display} productId={productId} name={name} />
       </div>
 
-      <div className={styles.propertiesLink}>
+      <div className={classes.propertiesLink}>
         <ShortDescription shortDescription={shortDescription} />
 
-        {/*
-          This feature is currently in BETA testing.
-          It should only be used for approved BETA Client Projects
-        */}
         <MapPriceHint productId={productId} />
 
-        {/*
-          This feature is currently in BETA testing.
-          It should only be used for approved BETA Client Projects
-        */}
-        <OrderQuantityHint productId={productId} className={styles.quantityHint} />
+        <OrderQuantityHint productId={productId} className={classes.quantityHint} />
 
-        {/* This feature is currently in BETA testing.
-          It should only be used for approved BETA Client Projects
-        */}
         <EffectivityDates productId={productId} />
 
         { hasNewServices && (
@@ -91,7 +135,7 @@ const ItemDetails = ({ product, display, productListTypeMeta }) => {
         </>
         )}
 
-        <div className={styles.itemPrice}>
+        <div className={classes.itemPrice}>
           <ItemPrice product={product} display={display} />
         </div>
       </div>

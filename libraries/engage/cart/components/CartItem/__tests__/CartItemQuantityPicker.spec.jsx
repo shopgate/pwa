@@ -42,33 +42,26 @@ describe('<CartItemQuantityPicker />', () => {
   });
 
   describe('Given editMode prop is handled correctly', () => {
-    let wrapper;
-    let input;
-
-    beforeEach(() => {
-      wrapper = mount(<CartItemQuantityPicker />);
-
-      input = wrapper.instance().input.current;
-      jest.spyOn(input, 'focus');
-      jest.spyOn(input, 'blur');
-    });
-
     it('should focus the input, if the editMode is enabled via prop', () => {
-      wrapper.setProps({
-        editMode: true,
-      });
+      const wrapper = mount(<CartItemQuantityPicker />);
+      const inputNode = wrapper.find('input').getDOMNode();
+      jest.spyOn(inputNode, 'focus');
+
+      wrapper.setProps({ editMode: true });
 
       expect(wrapper).toMatchSnapshot();
-      expect(input.focus).toHaveBeenCalled();
+      expect(inputNode.focus).toHaveBeenCalled();
     });
 
-    it('should blur the input, if the editMode is disabled via prop', () => {
-      wrapper.setProps({
-        editMode: false,
-      });
+    it('should not call focus when editMode is false', () => {
+      const wrapper = mount(<CartItemQuantityPicker />);
+      const inputNode = wrapper.find('input').getDOMNode();
+      jest.spyOn(inputNode, 'focus');
+
+      wrapper.setProps({ editMode: false });
 
       expect(wrapper).toMatchSnapshot();
-      expect(input.blur).toHaveBeenCalled();
+      expect(inputNode.focus).not.toHaveBeenCalled();
     });
   });
 

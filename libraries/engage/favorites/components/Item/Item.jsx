@@ -8,7 +8,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { css } from 'glamor';
 import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
 import {
   ProductImage,
@@ -44,15 +43,13 @@ import {
   FAVORITES_AVAILABILITY_TEXT,
 } from '@shopgate/engage/favorites';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import { openFavoritesCommentDialog } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import AvailableText from '@shopgate/pwa-ui-shared/Availability';
-import classNames from 'classnames';
 import Remove from '../RemoveButton';
 import ItemCharacteristics from './ItemCharacteristics';
 import ItemQuantity from './ItemQuantity';
@@ -63,7 +60,7 @@ import {
   FAVORITES_QUANTITY,
 } from '../../constants/Portals';
 
-const { variables } = themeConfig;
+const EMPTY_CHARACTERISTICS = [];
 
 /**
  * @return {Function} The extended component props.
@@ -95,15 +92,15 @@ const mapDispatchToProps = dispatch => ({
   openCommentDialog: (productId, listId) => dispatch(openFavoritesCommentDialog(productId, listId)),
 });
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()(theme => ({
+  root: {
     display: 'flex',
     position: 'relative',
     '&:not(:last-child)': {
       marginBottom: 16,
     },
-  }).toString(),
-  imageContainer: css({
+  },
+  imageContainer: {
     flex: 0.4,
     marginRight: 18,
     [responsiveMediaQuery('>=xs', { appAlways: true })]: {
@@ -118,63 +115,63 @@ const styles = {
       width: 120,
       flex: 'none',
     },
-  }).toString(),
-  infoContainer: css({
+  },
+  infoContainer: {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
     gap: 8,
-  }).toString(),
-  infoContainerRow: css({
+  },
+  infoContainerRow: {
     flexDirection: 'row',
     display: 'flex',
     justifyContent: 'space-between',
-  }).toString(),
-  quantityContainer: css({
+  },
+  quantityContainer: {
     flexDirection: 'row',
     display: 'flex',
     alignItems: 'center',
     flexWrap: 'wrap',
     gap: 16,
-  }).toString(),
-  priceContainer: css({
+  },
+  priceContainer: {
     minWidth: 100,
-  }).toString(),
-  priceContainerInner: css({
+  },
+  priceContainerInner: {
     display: 'inline-block',
     textAlign: 'right',
-  }),
-  price: css({
+  },
+  price: {
     justifyContent: 'flex-end',
-  }).toString(),
-  priceInfo: css({
+  },
+  priceInfo: {
     wordBreak: 'break-word',
     fontSize: '0.875rem',
     lineHeight: '0.875rem',
-    color: 'var(--color-text-low-emphasis)',
-    padding: `${variables.gap.xsmall}px 0`,
-  }).toString(),
-  titleWrapper: css({
+    color: theme.palette.text.secondary,
+    padding: theme.spacing(0.5, 0),
+  },
+  titleWrapper: {
     display: 'flex',
     flexDirection: 'column',
     gap: 8,
-  }).toString(),
-  titleContainer: css({
+  },
+  titleContainer: {
     marginRight: 10,
     flex: 1,
-  }).toString(),
-  title: css({
+  },
+  title: {
     fontSize: 17,
 
     fontWeight: 600,
-  }).toString(),
-  removeContainer: css({
+  },
+  removeContainer: {
     display: 'flex',
     flexShrink: 0,
     alignItems: 'flex-start',
-  }),
-};
+  },
+}));
 
 /**
  * Favorite Item component
@@ -196,13 +193,14 @@ const FavoriteItem = ({
   updateFavoriteItem,
   openCommentDialog,
 }) => {
+  const { classes, cx } = useStyles();
   const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
   const hasStrikePrice = typeof specialPrice === 'number' && specialPrice > defaultPrice;
-  const characteristics = product?.characteristics || [];
+  const characteristics = product?.characteristics ?? EMPTY_CHARACTERISTICS;
   const productLink = `${ITEM_PATH}/${bin2hex(product.id)}`;
 
   const notesButtonRef = useRef();
@@ -321,19 +319,19 @@ const FavoriteItem = ({
   return (
     <ProductListEntryProvider productId={product.id}>
       <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
-        <div className={classNames(styles.root, 'engage__favorites__item')}>
+        <div className={cx(classes.root, 'engage__favorites__item')}>
           <Link
-            className={classNames(styles.imageContainer, 'engage__favorites__item__image-container')}
+            className={cx(classes.imageContainer, 'engage__favorites__item__image-container')}
             component="div"
             href={productLink}
             aria-hidden
           >
-            <ProductImage className={classNames('engage__favorites__item__image')} src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+            <ProductImage className={cx('engage__favorites__item__image')} src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
           </Link>
 
-          <div className={classNames(styles.infoContainer, 'engage__favorites__item__info-container')}>
-            <div className={classNames(styles.infoContainerRow)}>
-              <div className={styles.titleWrapper}>
+          <div className={cx(classes.infoContainer, 'engage__favorites__item__info-container')}>
+            <div className={classes.infoContainerRow}>
+              <div className={classes.titleWrapper}>
                 <SurroundPortals
                   portalName={FAVORITES_PRODUCT_NAME}
                   portalProps={commonPortalProps}
@@ -341,10 +339,10 @@ const FavoriteItem = ({
                   <TextLink
                     href={productLink}
                     tag="span"
-                    className={classNames(styles.titleContainer, 'engage__favorites__item__title-container')}
+                    className={cx(classes.titleContainer, 'engage__favorites__item__title-container')}
                   >
                     <span
-                      className={styles.title}
+                      className={classes.title}
                       // eslint-disable-next-line react/no-danger
                       dangerouslySetInnerHTML={{ __html: `${product.name}` }}
                     />
@@ -352,7 +350,7 @@ const FavoriteItem = ({
 
                 </SurroundPortals>
               </div>
-              <div className={styles.removeContainer}>
+              <div className={classes.removeContainer}>
                 <Remove onClick={remove} />
               </div>
             </div>
@@ -366,14 +364,14 @@ const FavoriteItem = ({
                   text={commonPortalProps.availability.text}
                   state={commonPortalProps.availability.state}
                   showWhenAvailable
-                  className={styles.availability}
+                  className={classes.availability}
                 />
               </SurroundPortals>
             ) :
               (<StockInfoLists product={product} />)}
 
-            <div className={styles.infoContainerRow}>
-              <div className={styles.quantityContainer}>
+            <div className={classes.infoContainerRow}>
+              <div className={classes.quantityContainer}>
                 <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
                   <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
                 </SurroundPortals>
@@ -381,8 +379,8 @@ const FavoriteItem = ({
                   portalName={FAVORITES_PRODUCT_PRICE}
                   portalProps={commonPortalProps}
                 >
-                  <div className={styles.priceContainer}>
-                    <div className={styles.priceContainerInner}>
+                  <div className={classes.priceContainer}>
+                    <div className={classes.priceContainerInner}>
                       {hasStrikePrice ? (
                         <PriceStriked
                           value={specialPrice}
@@ -393,10 +391,14 @@ const FavoriteItem = ({
                         currency={currency}
                         discounted={hasStrikePrice}
                         unitPrice={defaultPrice}
-                        className={styles.price}
+                        className={classes.price}
                       />
                     </div>
-                    <PriceInfo product={product} currency={currency} className={styles.priceInfo} />
+                    <PriceInfo
+                      product={product}
+                      currency={currency}
+                      className={classes.priceInfo}
+                    />
                   </div>
                 </SurroundPortals>
               </div>

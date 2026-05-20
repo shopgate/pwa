@@ -10,6 +10,21 @@ const MESSAGE5 = 'Normal pre-translated message two.';
 const MESSAGE6 = 'some.translation.string';
 const MESSAGE7 = 'Message with messageParams';
 
+jest.mock('@shopgate/engage/styles/helpers', () => {
+  const originalModule = jest.requireActual('@shopgate/engage/styles/helpers');
+
+  return {
+    ...originalModule,
+    getCSSCustomProp: (prop) => {
+      if (prop === '--color-secondary') {
+        return '#5ccee3';
+      }
+
+      return originalModule.getCSSCustomProp(prop);
+    },
+  };
+});
+
 describe('<MessageBar />', () => {
   describe('General rendering', () => {
     it('should be empty if no messages have been set', () => {

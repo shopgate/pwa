@@ -1,99 +1,105 @@
-import React, { PureComponent } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import I18n from '@shopgate/pwa-common/components/I18n';
+import { I18n } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
-import styles from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()(theme => ({
+  button: {
+    position: 'absolute',
+    right: 0,
+    top: 0,
+    display: 'block',
+    flexGrow: 1,
+    background: 'var(--color-button-cta)',
+    color: 'var(--color-button-cta-contrast)',
+    fontSize: 16,
+    fontWeight: 700,
+    borderRadius: 5,
+    width: '100%',
+    outline: 0,
+    transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    padding: theme.spacing(1.375, 1.2, 1.625),
+    ':disabled': {
+      cursor: 'not-allowed',
+    },
+  },
+  disabled: {
+    background: colors.shade5,
+    color: colors.light,
+  },
+}));
 
 /**
- * The AddToCartButton component.
+ * Add to cart button component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class AddToCartButton extends PureComponent {
-  static propTypes = {
-    disabled: PropTypes.bool.isRequired,
-    handleAddToCart: PropTypes.func.isRequired,
-    itemCount: PropTypes.number.isRequired,
-    openCart: PropTypes.func.isRequired,
-    onReset: PropTypes.func,
-  };
+const AddToCartButton = ({
+  disabled,
+  handleAddToCart,
+  itemCount,
+  openCart,
+  onReset,
+}) => {
+  const { classes, cx } = useStyles();
+  const [opened, setOpened] = useState(!!itemCount);
 
-  static defaultProps = {
-    onReset: () => { },
-  };
+  useEffect(() => {
+    setOpened(!!itemCount);
+  }, [itemCount]);
 
-  static contextTypes = {
-    i18n: PropTypes.func,
-  };
-
-  /**
-   * Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      opened: !!props.itemCount,
-    };
-  }
-
-  /**
-   * Resets to not open when the count is 0.
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    this.setState({
-      opened: !!nextProps.itemCount,
-    });
-  }
-
-  /**
-   * Adds a new product to cart or opens the cart if it already has products in it.
-   */
-  handleClick = () => {
-    const {
-      itemCount, handleAddToCart, openCart, onReset,
-    } = this.props;
-
+  const handleClick = useCallback(() => {
     if (!itemCount) {
       handleAddToCart();
       setTimeout(() => {
-        // Take care that the reset happens after the addToCart request was dispatched.
         onReset();
       }, 0);
       return;
     }
 
-    this.setState({
-      opened: true,
-    });
-
+    setOpened(true);
     openCart();
-  };
+  }, [itemCount, handleAddToCart, onReset, openCart]);
 
-  /**
-   * Renders the component.
-   * @return {JSX}
-   */
-  render() {
-    const { itemCount, disabled } = this.props;
-    const { __ } = this.context.i18n();
-    const style = this.state.opened ? { width: '40%' } : null;
-    const className = disabled ? styles.disabled : styles.button;
+  const style = opened ? { width: '40%' } : null;
+  const className = cx(
+    classes.button,
+    'theme__product__add-to-cart-bar__add-to-cart-button',
+    { [classes.disabled]: disabled }
+  );
 
-    return (
-      <button
-        className={`${className} theme__product__add-to-cart-bar__add-to-cart-button`}
-        style={style}
-        onClick={this.handleClick}
-        disabled={disabled}
-        data-test-id="addToCartBarButton"
-        aria-label={__(!itemCount ? 'product.add_to_cart' : 'product.go_to_cart')}
-        type="button"
-      >
-        <I18n.Text string={!itemCount ? 'product.add_to_cart' : 'product.go_to_cart'} />
-      </button>
-    );
-  }
-}
+  const ariaLabel = i18n.text(!itemCount ? 'product.add_to_cart' : 'product.go_to_cart');
+
+  return (
+    <button
+      className={className}
+      style={style}
+      onClick={handleClick}
+      disabled={disabled}
+      data-test-id="addToCartBarButton"
+      aria-label={ariaLabel}
+      type="button"
+    >
+      <I18n.Text string={!itemCount ? 'product.add_to_cart' : 'product.go_to_cart'} />
+    </button>
+  );
+};
+
+AddToCartButton.propTypes = {
+  disabled: PropTypes.bool.isRequired,
+  handleAddToCart: PropTypes.func.isRequired,
+  itemCount: PropTypes.number.isRequired,
+  openCart: PropTypes.func.isRequired,
+  onReset: PropTypes.func,
+};
+
+AddToCartButton.defaultProps = {
+  onReset: () => { },
+};
 
 export default connect(AddToCartButton);

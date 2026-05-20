@@ -49,7 +49,7 @@ exports[`<List /> should render list with reviews 1`] = `
     className="engage__reviews__list"
   >
     <li
-      className="css-1yhq1gr"
+      className="sg-4bfwpo-item"
       data-test-id="reviewTitle: "
       key="a"
     >
@@ -72,17 +72,17 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-1rmdcnr"
+            className="sg-m3j5n0-root"
           />
         </Title>
         <Rating
           rate={100}
         >
           <div
-            className="css-15pwoui"
+            className="sg-1wudg9u-container"
           >
             <RatingStars
-              className="css-hgkz41"
+              className="sg-1uyeoj6-stars"
               display="small"
               isSelectable={false}
               onSelection={[Function]}
@@ -90,32 +90,26 @@ exports[`<List /> should render list with reviews 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo css-hgkz41 ui-shared__rating-stars"
+                className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
                 data-test-id="ratedStars: 5"
                 role="img"
               >
                 <div
-                  className="css-4s85e9 rating-stars-empty"
+                  className="sg-170uo4n-emptyStars rating-stars-empty"
                 >
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="1"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -123,7 +117,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -134,24 +128,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="2"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -159,7 +147,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -170,24 +158,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="3"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -195,7 +177,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -206,24 +188,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="4"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -231,7 +207,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -242,24 +218,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="5"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -267,7 +237,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -279,27 +249,21 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn rating-stars-filled"
+                  className="sg-8o0m3k-filledStars rating-stars-filled"
                 >
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="6"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -307,7 +271,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -318,24 +282,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="7"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -343,7 +301,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -354,24 +312,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="8"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -379,7 +331,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -390,24 +342,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="9"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -415,7 +361,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -426,24 +372,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="10"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -451,7 +391,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -470,7 +410,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
         >
           <div
-            className="css-vkqu2k"
+            className="sg-78jqgy-root"
           >
             "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
           </div>
@@ -488,18 +428,18 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-focklv"
+            className="sg-ustu6l-root"
             role="text"
           >
             <ReviewDate
               date="2017-09-06T12:38:51.000Z"
             >
-              <FormatDate
+              <Date
                 format="long"
                 timestamp={1504701531000}
               >
-                d
-              </FormatDate>
+                1504701531000-long
+              </Date>
             </ReviewDate>
              
             <Author
@@ -510,7 +450,7 @@ exports[`<List /> should render list with reviews 1`] = `
       </SurroundPortals>
     </li>
     <li
-      className="css-1yhq1gr"
+      className="sg-4bfwpo-item"
       data-test-id="reviewTitle: Test review 2 "
       key="b"
     >
@@ -533,7 +473,7 @@ exports[`<List /> should render list with reviews 1`] = `
           title="Test review 2 "
         >
           <div
-            className="css-1rmdcnr"
+            className="sg-m3j5n0-root"
           >
             Test review 2 
           </div>
@@ -542,10 +482,10 @@ exports[`<List /> should render list with reviews 1`] = `
           rate={40}
         >
           <div
-            className="css-15pwoui"
+            className="sg-1wudg9u-container"
           >
             <RatingStars
-              className="css-hgkz41"
+              className="sg-1uyeoj6-stars"
               display="small"
               isSelectable={false}
               onSelection={[Function]}
@@ -553,32 +493,26 @@ exports[`<List /> should render list with reviews 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo css-hgkz41 ui-shared__rating-stars"
+                className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
                 data-test-id="ratedStars: 2"
                 role="img"
               >
                 <div
-                  className="css-4s85e9 rating-stars-empty"
+                  className="sg-170uo4n-emptyStars rating-stars-empty"
                 >
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="1"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -586,7 +520,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -597,24 +531,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="2"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -622,7 +550,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -633,24 +561,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="3"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -658,7 +580,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -669,24 +591,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="4"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -694,7 +610,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -705,24 +621,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="5"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -730,7 +640,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -742,27 +652,21 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn rating-stars-filled"
+                  className="sg-8o0m3k-filledStars rating-stars-filled"
                 >
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="6"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -770,7 +674,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -781,24 +685,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="7"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -806,7 +704,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -825,7 +723,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
         >
           <div
-            className="css-vkqu2k"
+            className="sg-78jqgy-root"
           >
             "Lorem ipsum dolor sit amet, consetetur sadipscing … takimata sanctus est Lorem ipsum dolor sit amet."
           </div>
@@ -843,24 +741,24 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-focklv"
+            className="sg-ustu6l-root"
             role="text"
           >
             <ReviewDate
               date="2017-09-06T12:37:40.000Z"
             >
-              <FormatDate
+              <Date
                 format="long"
                 timestamp={1504701460000}
               >
-                d
-              </FormatDate>
+                1504701460000-long
+              </Date>
             </ReviewDate>
              
             <Author
               author="username123"
             >
-              <Translate
+              <Text
                 acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={
@@ -872,20 +770,15 @@ exports[`<List /> should render list with reviews 1`] = `
                 string="reviews.author"
                 transform={null}
               >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  reviews.author
-                </span>
-              </Translate>
+                reviews.author
+              </Text>
             </Author>
           </div>
         </Info>
       </SurroundPortals>
     </li>
     <li
-      className="css-1yhq1gr"
+      className="sg-4bfwpo-item"
       data-test-id="reviewTitle: "
       key="c"
     >
@@ -908,17 +801,17 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-1rmdcnr"
+            className="sg-m3j5n0-root"
           />
         </Title>
         <Rating
           rate={60}
         >
           <div
-            className="css-15pwoui"
+            className="sg-1wudg9u-container"
           >
             <RatingStars
-              className="css-hgkz41"
+              className="sg-1uyeoj6-stars"
               display="small"
               isSelectable={false}
               onSelection={[Function]}
@@ -926,32 +819,26 @@ exports[`<List /> should render list with reviews 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo css-hgkz41 ui-shared__rating-stars"
+                className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
                 data-test-id="ratedStars: 3"
                 role="img"
               >
                 <div
-                  className="css-4s85e9 rating-stars-empty"
+                  className="sg-170uo4n-emptyStars rating-stars-empty"
                 >
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="1"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -959,7 +846,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -970,24 +857,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="2"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -995,7 +876,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1006,24 +887,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="3"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1031,7 +906,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1042,24 +917,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="4"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1067,7 +936,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1078,24 +947,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="5"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1103,7 +966,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1115,27 +978,21 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn rating-stars-filled"
+                  className="sg-8o0m3k-filledStars rating-stars-filled"
                 >
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="6"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1143,7 +1000,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1154,24 +1011,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="7"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1179,7 +1030,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1190,24 +1041,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="8"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1215,7 +1060,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1234,7 +1079,7 @@ exports[`<List /> should render list with reviews 1`] = `
           review="Test review"
         >
           <div
-            className="css-vkqu2k"
+            className="sg-78jqgy-root"
           >
             "Test review"
           </div>
@@ -1252,24 +1097,24 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-focklv"
+            className="sg-ustu6l-root"
             role="text"
           >
             <ReviewDate
               date="2017-09-06T12:30:23.000Z"
             >
-              <FormatDate
+              <Date
                 format="long"
                 timestamp={1504701023000}
               >
-                d
-              </FormatDate>
+                1504701023000-long
+              </Date>
             </ReviewDate>
              
             <Author
               author="Carina Hoffmann"
             >
-              <Translate
+              <Text
                 acceptPlainTextWithPlaceholders={false}
                 className={null}
                 params={
@@ -1281,20 +1126,15 @@ exports[`<List /> should render list with reviews 1`] = `
                 string="reviews.author"
                 transform={null}
               >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  reviews.author
-                </span>
-              </Translate>
+                reviews.author
+              </Text>
             </Author>
           </div>
         </Info>
       </SurroundPortals>
     </li>
     <li
-      className="css-1yhq1gr"
+      className="sg-4bfwpo-item"
       data-test-id="reviewTitle: "
       key="d"
     >
@@ -1317,17 +1157,17 @@ exports[`<List /> should render list with reviews 1`] = `
           title=""
         >
           <div
-            className="css-1rmdcnr"
+            className="sg-m3j5n0-root"
           />
         </Title>
         <Rating
           rate={20}
         >
           <div
-            className="css-15pwoui"
+            className="sg-1wudg9u-container"
           >
             <RatingStars
-              className="css-hgkz41"
+              className="sg-1uyeoj6-stars"
               display="small"
               isSelectable={false}
               onSelection={[Function]}
@@ -1335,32 +1175,26 @@ exports[`<List /> should render list with reviews 1`] = `
             >
               <div
                 aria-label="reviews.rating_stars"
-                className="css-13azwyo css-hgkz41 ui-shared__rating-stars"
+                className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
                 data-test-id="ratedStars: 1"
                 role="img"
               >
                 <div
-                  className="css-4s85e9 rating-stars-empty"
+                  className="sg-170uo4n-emptyStars rating-stars-empty"
                 >
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="1"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1368,7 +1202,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1379,24 +1213,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="2"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1404,7 +1232,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1415,24 +1243,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="3"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1440,7 +1262,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1451,24 +1273,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="4"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1476,7 +1292,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1487,24 +1303,18 @@ exports[`<List /> should render list with reviews 1`] = `
                     </Star>
                   </div>
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="5"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1512,7 +1322,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1524,27 +1334,21 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                 </div>
                 <div
-                  className="css-1m683rn rating-stars-filled"
+                  className="sg-8o0m3k-filledStars rating-stars-filled"
                 >
                   <div
-                    className="css-kdb68h css-q4owmg"
+                    className="sg-1jcir28-icon-iconGapSmall"
                     key="6"
                   >
                     <Star
-                      className=""
-                      color={null}
                       size="1em"
-                      viewBox="0 0 24 24"
                     >
                       <Icon
-                        className=""
-                        color={null}
                         content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                         size="1em"
-                        viewBox="0 0 24 24"
                       >
                         <svg
-                          className="css-yys9hb  common__icon"
+                          className="sg-1n8b10t-root common__icon"
                           dangerouslySetInnerHTML={
                             {
                               "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -1552,7 +1356,7 @@ exports[`<List /> should render list with reviews 1`] = `
                           }
                           style={
                             {
-                              "fill": null,
+                              "fill": undefined,
                               "fontSize": "1em",
                             }
                           }
@@ -1583,18 +1387,18 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="css-focklv"
+            className="sg-ustu6l-root"
             role="text"
           >
             <ReviewDate
               date="2017-09-06T12:30:23.000Z"
             >
-              <FormatDate
+              <Date
                 format="long"
                 timestamp={1504701023000}
               >
-                d
-              </FormatDate>
+                1504701023000-long
+              </Date>
             </ReviewDate>
              
             <Author

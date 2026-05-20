@@ -1,75 +1,74 @@
-import React, { Component } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
-import styles from './style';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    position: 'absolute',
+    margin: theme.spacing(1),
+  },
+}));
 
 /**
  * The Context Menu Position component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Position extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-    offset: PropTypes.shape({
-      top: PropTypes.number,
-      left: PropTypes.number,
-    }),
-  };
+const Position = ({
+  children,
+  offset,
+}) => {
+  const theme = useTheme();
+  const { classes } = useStyles();
+  const elementRef = useRef(null);
+  const gap = theme.spacing(1);
 
-  static defaultProps = {
-    children: null,
-    offset: {
-      top: 0,
-      left: 0,
-    },
-  };
+  useEffect(() => {
+    const el = elementRef.current;
+    if (!el) {
+      return;
+    }
 
-  /**
-   * The Constructor.
-   * @param {Object} props The component props.
-   */
-  constructor(props) {
-    super(props);
+    const [child] = el.childNodes;
+    if (!child) {
+      return;
+    }
 
-    this.elementRef = null;
-  }
-
-  /**
-   * Calculate and apply the correct menu position after mounting.
-   */
-  componentDidMount() {
-    const { offset } = this.props;
-
-    // Get ref to the actual child DOM element and calculate bounding rect.
-    const [child] = this.elementRef.childNodes;
     const bounds = child.getBoundingClientRect();
-
-    // Get window dimensions
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    // Get the outer gap from styles
-    const gap = styles.outerGap;
-
-    // Calculate clamped menu position
     const left = clamp(offset.left, 0, width - bounds.width - (gap * 2));
     const top = clamp(offset.top - gap, 0, height - bounds.height - (gap * 2));
 
-    // Assign position directly w/o re-rendering the component
-    this.elementRef.style.left = `${left}px`;
-    this.elementRef.style.top = `${top}px`;
-  }
+    el.style.left = `${left}px`;
+    el.style.top = `${top}px`;
+    /* eslint-disable-next-line react-hooks/exhaustive-deps --
+     * match legacy componentDidMount: position once */
+  }, []);
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <div ref={(ref) => { this.elementRef = ref; }} className={styles.container}>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+  return (
+    <div ref={elementRef} className={classes.container}>
+      {children}
+    </div>
+  );
+};
+
+Position.propTypes = {
+  children: PropTypes.node,
+  offset: PropTypes.shape({
+    top: PropTypes.number,
+    left: PropTypes.number,
+  }),
+};
+
+Position.defaultProps = {
+  children: null,
+  offset: {
+    top: 0,
+    left: 0,
+  },
+};
 
 export default Position;

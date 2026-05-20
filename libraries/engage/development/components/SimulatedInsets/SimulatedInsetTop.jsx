@@ -2,13 +2,12 @@ import React, {
   useState, useEffect, useMemo,
 } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { useSelector } from 'react-redux';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getStatusBarStyleStorage } from '@shopgate/engage/development/selectors';
 
-const classes = {
-  container: css({
+const useStyles = makeStyles()({
+  container: {
     position: 'fixed',
     top: 0,
     display: 'flex',
@@ -20,33 +19,33 @@ const classes = {
     pointerEvents: 'auto',
     transition: 'background 0.2s ease',
     fontSize: '16px',
-  }),
-  containerHighlight: css({
+  },
+  containerHighlight: {
     background: 'rgba(255, 0, 0, 0.7)',
-  }),
-  styleLight: css({
+  },
+  styleLight: {
     color: 'white',
-  }),
-  styleDark: css({
+  },
+  styleDark: {
     color: 'black',
-  }),
-  styleNone: css({
+  },
+  styleNone: {
     color: 'transparent',
-  }),
-  info: css({
+  },
+  info: {
     flex: 1,
     textAlign: 'center',
     fontWeight: 500,
-  }),
-  notch: css({
+  },
+  notch: {
     flex: 1,
     background: 'black',
     height: 'calc(var(--safe-area-inset-top) - 16px)',
     maxWidth: 150,
     borderRadius: 16,
     border: '1px solid rgba(255, 255, 255, 0.5)',
-  }),
-};
+  },
+});
 
 /**
  * Creates a human readable time string to mimic the iOS clock.
@@ -72,6 +71,7 @@ const SimulatedInsetTop = ({
   onClick,
   ...props
 }) => {
+  const { classes, cx } = useStyles();
   // State to hold the current time string for the status bar
   const [time, setTime] = useState(getTime());
 
@@ -87,20 +87,20 @@ const SimulatedInsetTop = ({
   const { statusBarStyle } = useSelector(getStatusBarStyleStorage);
 
   const containerClasses = useMemo(
-    () => classNames(classes.container, {
+    () => cx(classes.container, {
       [classes.containerHighlight]: highlightInset,
       [classes.styleDark]: statusBarStyle === 'dark',
       [classes.styleLight]: statusBarStyle === 'light',
       [classes.styleNone]: statusBarStyle === 'none',
     }),
-    [highlightInset, statusBarStyle]
+    [highlightInset, statusBarStyle, classes, cx]
   );
 
   return (
     <div
       aria-hidden
       role="presentation"
-      className={classNames(containerClasses)}
+      className={containerClasses}
       {...props}
       onClick={onClick}
     >

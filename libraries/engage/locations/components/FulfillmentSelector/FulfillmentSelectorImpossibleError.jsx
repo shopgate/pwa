@@ -1,16 +1,23 @@
 import React, { useMemo, useContext } from 'react';
 import { Availability } from '@shopgate/engage/components';
 import { i18n, LoadingContext, useRoute } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { AVAILABILITY_STATE_ALERT } from '@shopgate/engage/product';
 import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
-import { container } from './FulfillmentSelectorImpossibleError.style';
+
+const useStyles = makeStyles()({
+  container: {
+    fontSize: '0.625rem',
+  },
+});
 
 /**
  * Renders the "not possible" error for each item.
  * @returns {JSX}
  */
 export function FulfillmentSelectorImpossibleError() {
+  const { classes } = useStyles();
   const { selection, selectedLocation } = useFulfillmentSelectorState();
   const { pathname } = useRoute();
   const { isLoading } = useContext(LoadingContext);
@@ -31,7 +38,7 @@ export function FulfillmentSelectorImpossibleError() {
 
   return (
     <Availability
-      className={container}
+      className={classes.container}
       showWhenAvailable
       text={label}
       state={AVAILABILITY_STATE_ALERT}

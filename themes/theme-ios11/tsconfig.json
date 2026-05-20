@@ -1,0 +1,11 @@
+{
+  "extends": "@shopgate/engage/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "Components/*": ["./components/*"],
+      "Config/*": ["./config/*"],
+      "Extensions/*": ["./extensions/*"],
+      "Pages/*": ["./pages/*"]
+    }
+  }
+}

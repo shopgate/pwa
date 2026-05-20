@@ -27,13 +27,13 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
 }));
 
 let getTimeResult = 0;
-/* eslint-disable require-jsdoc, class-methods-use-this */
+/* eslint-disable class-methods-use-this */
 global.Date = class {
   getTime() {
     return getTimeResult;
   }
 };
-/* eslint-enable require-jsdoc, class-methods-use-this */
+/* eslint-enable class-methods-use-this */
 
 const mockResponse = {
   accuracy: 25,

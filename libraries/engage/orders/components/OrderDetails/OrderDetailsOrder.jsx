@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartItems } from '@shopgate/engage/cart';
 import {
   CheckoutConfirmationPickUpContact,
@@ -12,21 +13,62 @@ import { convertLineItemsToCartItems, isDirectShipOnlyOrder, isReserveOnlyOrder 
 import { useOrderDetails } from '../../hooks';
 import OrderDetailsOrderHeader from './OrderDetailsOrderHeader';
 import OrderDetailsOrderPickupLocation from './OrderDetailsOrderPickupLocation';
-import {
-  root,
-  contactsWrapper,
-  contact,
-  cartWrapper,
-  summaryWrapper,
-  summary,
-  supplemental,
-} from './OrderDetailsOrder.style';
+
+const useStyles = makeStyles()(theme => ({
+  root: {
+    padding: theme.spacing(2, 0),
+  },
+  contactsWrapper: {
+    paddingBottom: theme.spacing(2),
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      display: 'flex',
+    },
+  },
+  contact: {
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      width: '50%',
+      display: 'flex',
+      flexDirection: 'column',
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1),
+      ':first-of-type': {
+        paddingLeft: theme.spacing(2),
+      },
+      ':last-of-type': {
+        paddingRight: theme.spacing(2),
+      },
+    },
+  },
+  cartWrapper: {
+    paddingTop: theme.spacing(2),
+    paddingBottom: theme.spacing(2),
+  },
+  summaryWrapper: {
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      display: 'flex',
+      alignItems: 'flex-end',
+      flexDirection: 'column',
+    },
+  },
+  summary: {
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      width: '50%',
+    },
+  },
+  supplemental: {
+    padding: theme.spacing(2),
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      width: '50%',
+    },
+  },
+}));
 
 /**
  * The OrderDetailsOrder component
  * @returns {JSX}
  */
 const OrderDetailsOrder = () => {
+  const { classes } = useStyles();
   const {
     isUserLoggedIn,
     order,
@@ -53,19 +95,19 @@ const OrderDetailsOrder = () => {
   }
 
   return (
-    <div className={root}>
+    <div className={classes.root}>
       <OrderDetailsOrderHeader order={order} />
-      <div className={contactsWrapper}>
+      <div className={classes.contactsWrapper}>
         { (!isUserLoggedIn && isReserveOnly) ? (
-          <CheckoutConfirmationOrderContact order={order} className={contact} />
+          <CheckoutConfirmationOrderContact order={order} className={classes.contact} />
         ) : (
-          <CheckoutConfirmationBilledTo order={order} className={contact} />
+          <CheckoutConfirmationBilledTo order={order} className={classes.contact} />
         ) }
-        <CheckoutConfirmationShippedTo order={order} className={contact} />
-        <CheckoutConfirmationPickUpContact order={order} className={contact} />
-        <OrderDetailsOrderPickupLocation order={order} className={contact} />
+        <CheckoutConfirmationShippedTo order={order} className={classes.contact} />
+        <CheckoutConfirmationPickUpContact order={order} className={classes.contact} />
+        <OrderDetailsOrderPickupLocation order={order} className={classes.contact} />
       </div>
-      <div className={cartWrapper}>
+      <div className={classes.cartWrapper}>
         <CartItems
           cartItems={cartItems}
           onFocus={() => { }}
@@ -76,9 +118,9 @@ const OrderDetailsOrder = () => {
           currencyOverride={currencyOverride}
         />
       </div>
-      <div className={summaryWrapper}>
-        <CheckoutConfirmationOrderSummary order={order} className={summary} />
-        <SupplementalContent className={supplemental} />
+      <div className={classes.summaryWrapper}>
+        <CheckoutConfirmationOrderSummary order={order} className={classes.summary} />
+        <SupplementalContent className={classes.supplemental} />
       </div>
     </div>
   );
