@@ -1,4 +1,4 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 
 /**
  * Formats a numeric distance value.

@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react';
-import { css } from 'glamor';
 import PropTypes from 'prop-types';
 import { PayPalRiskCheck } from '@shopgate/native-modules';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '../../hooks/common';
 import Button from '../../components/PaymentMethodButton';
 import paypalLogoUrl from './paypal_logo.png';
 
-const styles = {
-  logo: css({
+const useStyles = makeStyles()({
+  logo: {
     width: '60%',
-  }).toString(),
-};
+  },
+});
 
 /**
  * @param {Object} props The component props
  * @returns {JSX}
  */
 const PaypalButtonApp = (props) => {
+  const { classes } = useStyles();
   const { settings } = props;
   const { setLocked } = useCheckoutContext();
 
@@ -41,7 +42,7 @@ const PaypalButtonApp = (props) => {
   return (
     <Button {...props}>
       <img
-        className={styles.logo}
+        className={classes.logo}
         src={paypalLogoUrl}
         alt="PayPal"
       />

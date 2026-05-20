@@ -1,11 +1,17 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import SideNavigationCategories from './SideNavigationCategories';
 import SideNavigationLinks from './SideNavigationLinks';
 import SideNavigationItem from './SideNavigationItem';
 import { useSideNavigation } from './SideNavigation.hooks';
-import { container } from './SideNavigationContent.style';
+
+const useStyles = makeStyles()({
+  container: {
+    background: '#fff',
+  },
+});
 
 /**
  * SideNavigationContent component.
@@ -14,6 +20,7 @@ import { container } from './SideNavigationContent.style';
  * @returns {JSX.Element} The rendered component.
  */
 const SideNavigationContent = ({ classNames }) => {
+  const { classes } = useStyles();
   const { isVisible } = useSideNavigation();
   const wrapperClass = useMemo(() => {
     if (!classNames) {
@@ -27,7 +34,7 @@ const SideNavigationContent = ({ classNames }) => {
   return (
     <div className={wrapperClass}>
       { isVisible && (
-        <nav className={container}>
+        <nav className={classes.container}>
           <ul>
             <SideNavigationItem href={INDEX_PATH} label="navigation.home" />
             <SideNavigationCategories />

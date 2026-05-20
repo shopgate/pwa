@@ -1,8 +1,21 @@
 import React, { useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
+import { makeStyles } from '@shopgate/engage/styles';
 import { toggleBodyScroll } from '@shopgate/engage/styles/helpers';
-import style from './style';
+
+const useStyles = makeStyles()({
+  backdrop: {
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    // Prevents that content behind the backdrop is clickable
+    pointerEvents: 'all',
+    touchAction: 'none',
+  },
+});
 
 /**
  * Backdrop component
@@ -19,6 +32,7 @@ function Backdrop({
   onClick,
   opacity,
 }) {
+  const { classes } = useStyles();
   // Stable id for body scroll lock
   const bodyScrollRef = useRef(
     Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2)
@@ -74,7 +88,7 @@ function Backdrop({
     },
   }), [targetOpacity]);
 
-  const combinedClassName = `${style} ${className} common__backdrop`;
+  const combinedClassName = `${classes.backdrop} ${className} common__backdrop`;
 
   return (
     <Transition

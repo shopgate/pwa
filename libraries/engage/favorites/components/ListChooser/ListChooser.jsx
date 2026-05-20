@@ -5,7 +5,7 @@ import {
   getFavoritesListState,
   getFavoritesLists,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { SheetList, SheetDrawer } from '@shopgate/engage/components';
 import { closeFavoritesListChooser } from '@shopgate/pwa-common-commerce/favorites/action-creators';
 import { toggleFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';

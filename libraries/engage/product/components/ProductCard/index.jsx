@@ -26,8 +26,23 @@ import {
   PRODUCT_ITEM_DISCOUNT,
   PRODUCT_ITEM_PRICE,
 } from '@shopgate/engage/category';
+import { makeStyles } from '@shopgate/engage/styles';
 import ProductGridPrice from '../ProductGridPrice';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  details: {
+    padding: '12px 16px',
+    lineHeight: 1.35,
+  },
+  title: {
+    fontWeight: '500',
+    lineHeight: 1.15,
+    marginTop: 1,
+  },
+  badgeWrapper: {
+    minWidth: 40,
+  },
+});
 
 const location = 'productCard';
 
@@ -43,6 +58,7 @@ const location = 'productCard';
  * @return {JSX.Element}
  */
 function ProductCard(props) {
+  const { classes, cx } = useStyles();
   const {
     product, hidePrice, hideRating, hideName, titleRows, url,
   } = props;
@@ -89,7 +105,7 @@ function ProductCard(props) {
         />}
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
-        <div className={styles.badgeWrapper}>
+        <div className={classes.badgeWrapper}>
           <SurroundPortals
             portalName={PRODUCT_ITEM_DISCOUNT}
             portalProps={{ productId: product.id }}
@@ -100,7 +116,7 @@ function ProductCard(props) {
         )}
       </ProductBadges>
       {!(hidePrice && hideRating && hideName) && (
-        <div className={`${styles.details} engage__product-card__information`}>
+        <div className={cx(classes.details, 'engage__product-card__information')}>
             {showRatings && <RatingStars value={product.rating.average} />}
           {/*
             This feature is currently in BETA testing.
@@ -110,7 +126,7 @@ function ProductCard(props) {
           {!hideName && (
             <ProductName
               name={product.name}
-              className={styles.title}
+              className={classes.title}
               testId={`Productname: ${product.name}`}
               itemProp="name"
               rows={titleRows || 3}

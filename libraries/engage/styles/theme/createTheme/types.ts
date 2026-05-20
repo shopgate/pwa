@@ -163,7 +163,7 @@ export interface Theme extends BaseTheme {
    * Function that generates a CSS selector string for a given color scheme.
    * The browser applies the given styles only when the specified color scheme is active.
    * @example
-   * makeStyles()((theme) => ({
+   * makeStyles()(theme => ({
    *   root: {
    *     color: theme.palette.primary.main,
    *     ...theme.applyStyles('dark', {

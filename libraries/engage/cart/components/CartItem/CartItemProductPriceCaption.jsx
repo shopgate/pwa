@@ -1,18 +1,27 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   ROPIS,
 //  BOPIS,
 } from '@shopgate/engage/locations';
 import { I18n } from '@shopgate/engage/components';
 import { useCartItemProduct } from './CartItem.hooks';
-import { caption } from './CartItemProductPriceCaption.style';
+
+const useStyles = makeStyles()(theme => ({
+  caption: {
+    fontSize: '0.75rem',
+    lineHeight: '0.875rem',
+    color: theme.palette.text.secondary,
+    paddingTop: theme.spacing(0.5),
+  },
+}));
 
 /**
  * @returns {JSX.Element}
  */
 const CartItemProductPriceCaption = ({ className }) => {
+  const { classes, cx } = useStyles();
   const { cartItem } = useCartItemProduct();
 
   const label = useMemo(() => {
@@ -31,7 +40,7 @@ const CartItemProductPriceCaption = ({ className }) => {
   }
 
   return (
-    <span className={classNames(caption, className)}>
+    <span className={cx(classes.caption, className)}>
       (
       <I18n.Text string={label} />
       )

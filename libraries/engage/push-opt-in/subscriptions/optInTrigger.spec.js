@@ -101,7 +101,7 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   hasSGJavaScriptBridge: jest.fn(() => true),
   hasWebBridge: jest.fn(() => false),
   createMockedPermissions: jest.fn(() => 'mockedPermissions'),
-  useScrollContainer: jest.fn(() => true),
+  applyScrollContainer: jest.fn(() => true),
 }));
 
 describe('Push OptIn Subscriptions', () => {

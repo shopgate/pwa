@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@shopgate/engage/styles';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 
 /**
  * Capitalizes the first letter of a string.
@@ -129,6 +128,10 @@ export const styles = theme => ({
   },
 });
 
+const useTypographyStyles = makeStyles({
+  name: 'Typography',
+})(styles);
+
 const defaultVariantMapping = {
   h1: 'h1',
   h2: 'h2',
@@ -146,6 +149,7 @@ const Typography = React.forwardRef((props, ref) => {
   const {
     align = 'inherit',
     className,
+    classes: classesOverrides,
     color = 'initial',
     component,
     display = 'initial',
@@ -154,9 +158,12 @@ const Typography = React.forwardRef((props, ref) => {
     paragraph = false,
     variant = 'body1',
     variantMapping = defaultVariantMapping,
-    classes,
     ...other
   } = props;
+
+  const { classes, cx } = useTypographyStyles(undefined, {
+    props: { classes: classesOverrides },
+  });
 
   const Component =
     component ||
@@ -165,7 +172,7 @@ const Typography = React.forwardRef((props, ref) => {
 
   return (
     <Component
-      className={classNames(
+      className={cx(
         classes.root,
         'engage__typography',
         {
@@ -190,9 +197,9 @@ const Typography = React.forwardRef((props, ref) => {
 });
 
 Typography.propTypes = {
-  classes: PropTypes.shape().isRequired,
   align: PropTypes.oneOf(['inherit', 'left', 'center', 'right', 'justify']),
   children: PropTypes.node,
+  classes: PropTypes.shape(),
   className: PropTypes.string,
   color: PropTypes.oneOf([
     'initial',
@@ -233,6 +240,7 @@ Typography.propTypes = {
 Typography.defaultProps = {
   align: 'inherit',
   children: null,
+  classes: undefined,
   className: undefined,
   color: 'initial',
   component: null,
@@ -244,4 +252,4 @@ Typography.defaultProps = {
   variantMapping: defaultVariantMapping,
 };
 
-export default withStyles(Typography, styles);
+export default Typography;

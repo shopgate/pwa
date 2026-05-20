@@ -6,13 +6,20 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
   shopName: 'Test Shop',
   themeConfig: { colors: {} },
 }));
-jest.mock('@shopgate/pwa-common/context', () => ({
-  RouteContext: {
-    Consumer: jest.fn(({ children }) => children({
+
+jest.mock('@shopgate/pwa-common/context', () => {
+  // eslint-disable-next-line global-require
+  const { createContext } = require('react');
+  return {
+    RouteContext: createContext({
       visible: true,
-    })),
-  },
-}));
+      pattern: '/',
+      is404: false,
+      id: 'test-route',
+      state: { scrollTop: 0 },
+    }),
+  };
+});
 jest.mock('@shopgate/pwa-common/selectors/history', () => ({
   getSortOrder: jest.fn(),
 }));

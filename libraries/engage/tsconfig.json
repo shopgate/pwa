@@ -3,7 +3,7 @@
     "target": "es2019",
     "lib": ["DOM", "ES2019"],
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "jsx": "react-jsx",
 
     "strict": true,

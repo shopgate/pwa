@@ -14,6 +14,9 @@
     "shopgate",
     "connect"
   ],
+  "scripts": {
+
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@shopgate/native-modules": "1.0.0-beta.25",
@@ -41,7 +44,7 @@
     "react-portal": "^3.1.0",
     "react-scroll-parallax": "^3.5.0",
     "react-transition-group": "^4.4.5",
-    "tss-react": "^4.9.20",
+    "tss-react": "4.9.20",
     "validate.js": "^0.13.1"
   },
   "devDependencies": {

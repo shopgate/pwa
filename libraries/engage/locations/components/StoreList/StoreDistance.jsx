@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import formatDistance from '../../helpers/formatDistance';
-import { storeDistance } from './Store.style';
+
+const useStyles = makeStyles()({
+  storeDistance: {
+    whiteSpace: 'nowrap',
+    color: 'var(--color-text-medium-emphasis)',
+    [responsiveMediaQuery('>sm', { webOnly: true })]: {
+      fontSize: '0.875rem',
+    },
+  },
+});
 
 export const UNIT_SYSTEM_METRIC = 'metric';
 export const UNIT_SYSTEM_IMPERIAL = 'imperial';
@@ -14,12 +24,13 @@ export const UNIT_SYSTEM_IMPERIAL = 'imperial';
  * @returns {JSX.Element}
  */
 export function StoreDistance({ distance = null, unitSystem = UNIT_SYSTEM_METRIC }) {
+  const { classes } = useStyles();
   if (distance === null) {
     return null;
   }
 
   return (
-    <span className={storeDistance}>
+    <span className={classes.storeDistance}>
       {formatDistance(distance, unitSystem === UNIT_SYSTEM_IMPERIAL)}
     </span>
   );

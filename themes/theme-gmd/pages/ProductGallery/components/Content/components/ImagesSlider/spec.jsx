@@ -2,7 +2,7 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { useWidgetSettings } from '@shopgate/engage/core';
+import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   getProductImages,
@@ -11,7 +11,6 @@ import {
 import Content from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
-  useWidgetSettings: jest.fn(),
   useLoadImage: jest.fn().mockReturnValue(true),
   getThemeSettings: () => ({
     fillColor: 'FFFFFF',
@@ -35,6 +34,10 @@ jest.mock('@shopgate/engage/core', () => ({
     ],
   }),
   getFullImageSource: orig => orig,
+}));
+
+jest.mock('@shopgate/engage/core/hooks', () => ({
+  useWidgetSettings: jest.fn(),
 }));
 
 jest.mock('@shopgate/engage/components', () => {

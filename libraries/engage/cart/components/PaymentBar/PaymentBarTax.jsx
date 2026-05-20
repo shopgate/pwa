@@ -1,14 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { isIOSTheme } from '@shopgate/engage/core';
 import {
   CART_PAYMENT_BAR_TOTALS_TAX,
   getTaxLine,
 } from '@shopgate/pwa-common-commerce/cart';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
-import { spacer } from './PaymentBarContent.style';
 import connect from './PaymentBarTax.connector';
+
+const useStyles = makeStyles()({
+  spacer: {
+    width: isIOSTheme() ? 27 : 32,
+    order: 1,
+    flexShrink: 0,
+  },
+});
 
 /**
  * The Tax component.
@@ -19,6 +28,7 @@ import connect from './PaymentBarTax.connector';
  * @returns {JSX.Element|null} The rendered component or null.
  */
 const PaymentBarTax = ({ taxData, showSeparator, className }) => {
+  const { classes } = useStyles();
   const {
     currency, isLoading, config, hasPromotionCoupons,
   } = React.useContext(CartContext);
@@ -40,7 +50,7 @@ const PaymentBarTax = ({ taxData, showSeparator, className }) => {
         <CartTotalLine.Amount amount={taxLine.amount} currency={currency} />
         <CartTotalLine.Hint hint={taxLine.hint} />
         { hasPromotionCoupons && (
-          <CartTotalLine.Spacer className={spacer} />
+          <CartTotalLine.Spacer className={classes.spacer} />
         )}
       </CartTotalLine>
     </SurroundPortals>

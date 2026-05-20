@@ -1,4 +1,6 @@
-import createCache from '@emotion/cache';
+import createCache, { type EmotionCache } from '@emotion/cache';
+import { serializeStyles, type Interpolation } from '@emotion/serialize';
+import type { SerializedStyles } from '@emotion/utils';
 import { createMakeAndWithStyles, createTss } from 'tss-react';
 import { createCssAndCx } from 'tss-react/cssAndCx';
 import { useTheme } from '@shopgate/engage/styles';
@@ -9,9 +11,11 @@ const insertionPoint = document.querySelector(
   'meta[name="emotion-insertion-point"]'
 ) as HTMLMetaElement;
 
+export const CLASS_PREFIX = 'sg';
+
 export const emotionCache = createCache({
   // All tss-react styles will be prefixed with `.tss-*` instead of `.css-*`
-  key: 'tss',
+  key: CLASS_PREFIX,
   /**
    * We define a custom Emotion insertion point to control the order in which
    * TSS (Emotion-based) styles are injected into the document.
@@ -30,6 +34,39 @@ export const emotionCache = createCache({
    */
   insertionPoint,
 });
+
+// eslint-disable-next-line consistent-return
+function insertWithoutScoping(
+  cache: EmotionCache,
+  serialized: SerializedStyles
+) {
+  if (cache.inserted[serialized.name] === undefined) {
+    return cache.insert('', serialized, cache.sheet, true);
+  }
+}
+
+/**
+ * Injects global CSS rules into the application.
+ *
+ * This is a programmatic alternative to the `GlobalStyles` component from `@shopgate/engage/styles`,
+ * allowing global styles to be defined outside of React components.
+ * It should be avoided when possible in favor of `GlobalStyles` for better integration with React's
+ * rendering lifecycle.
+ *
+ * Styles are applied as written (e.g. `body`, `*`, `.class`).
+ *
+ * @param args Styles to apply globally
+ * @example
+ * injectGlobal({
+ *   body: { margin: 0 }
+ * });
+ */
+export const injectGlobal = (
+  ...args: (TemplateStringsArray | Interpolation<unknown>)[]
+) => {
+  const serialized = serializeStyles(args, emotionCache.registered);
+  insertWithoutScoping(emotionCache, serialized);
+};
 
 export const { tss } = createTss({
   // @ts-expect-error - We are sure about the type here

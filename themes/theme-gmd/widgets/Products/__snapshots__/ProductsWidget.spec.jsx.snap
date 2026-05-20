@@ -4,7 +4,7 @@ exports[`<ProductsWidget /> should render the grid only when products are receiv
 
 exports[`<ProductsWidget /> should render the products in the list view 1`] = `
 <div
-  className="css-13tch1f"
+  className="sg-1anmtl1"
 >
   <Headline
     text=""

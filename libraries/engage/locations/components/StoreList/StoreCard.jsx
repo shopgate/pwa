@@ -1,4 +1,4 @@
-import React, { useContext, Fragment } from 'react';
+import React, { useContext } from 'react';
 import { StoreContext } from './Store.context';
 import { StoreHeader } from './StoreHeader';
 import { StoreDetails } from './StoreDetails';

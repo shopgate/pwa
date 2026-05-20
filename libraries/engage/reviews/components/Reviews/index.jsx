@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_REVIEWS } from '@shopgate/engage/product';
 import List from './components/List';
 import Header from './components/Header';
 import AllReviewsLink from './components/AllReviewsLink';
 import ReviewsInfo from './components/ReviewsInfo';
-import styles from './style';
 import connect from './connector';
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    marginBottom: theme.spacing(1),
+  },
+}));
 
 /**
  * @param {Object} props The component props.
@@ -17,13 +23,15 @@ import connect from './connector';
  * @returns {JSX}
  */
 function Reviews({ productId, productActive, reviews }) {
+  const { classes, cx } = useStyles();
+
   return (
     <SurroundPortals
       portalName={PRODUCT_REVIEWS}
       portalProps={{ productId }}
     >
       {(appConfig.hasReviews && productActive) && (
-        <div className={`${styles.container} engage__reviews__reviews`} data-test-id="reviewSection">
+        <div className={cx(classes.container, 'engage__reviews__reviews')} data-test-id="reviewSection">
           <Header productId={productId} />
           <List productId={productId} reviews={reviews} />
           <AllReviewsLink productId={productId} />

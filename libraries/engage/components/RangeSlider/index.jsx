@@ -1,7 +1,8 @@
-import React, { PureComponent } from 'react';
+import React, {
+  useState, useEffect, useRef, useMemo, useCallback, useReducer, memo,
+} from 'react';
 import PropTypes from 'prop-types';
-import cxs from 'classnames';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
 import Handle from './components/Handle';
 import { isTouchDevice } from '../../core';
 import {
@@ -13,297 +14,321 @@ import {
   getRelativeValue,
 } from './helper';
 
+const useStyles = makeStyles()({
+  outerRange: {
+    minHeight: 1,
+    position: 'relative',
+  },
+  range: {
+    left: 0,
+    right: 0,
+    position: 'absolute',
+  },
+});
+
+const useMouseEvents = !isTouchDevice();
+
 /**
  * The range slider component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class RangeSlider extends PureComponent {
-  static propTypes = {
-    animationSpeed: PropTypes.number, // The animation speed of the handles in px/sec.
-    classNames: PropTypes.shape({
-      container: PropTypes.string, // The container style.
-      handleInner: PropTypes.string, // The inner handle style.
-      handleOuter: PropTypes.string, // The outer handle style.
-      outerRange: PropTypes.string, // The outer range style.
-      range: PropTypes.string, // The inner range style.
-    }), // Additional style classes for the slider.
-    easing: PropTypes.string, // The name of builtin easing function.
-    factor: PropTypes.number, // The factor for the exponential easing.
-    max: PropTypes.number, // The maximum range value.
-    min: PropTypes.number, // The minimum range value.
-    onChange: PropTypes.func, // Callback for changes to the range selection.
-    resolution: PropTypes.number, // The resolution for the linear easing.
-    value: PropTypes.arrayOf(PropTypes.number), // A pair describing the initial selection.
-  };
+const RangeSlider = ({
+  animationSpeed,
+  classNames,
+  easing,
+  factor,
+  max,
+  min,
+  onChange,
+  resolution,
+  value,
+}) => {
+  const { classes, cx } = useStyles();
+  const domElement = useRef(null);
+  const draggedHandle = useRef(null);
+  const touchOffset = useRef(0);
+  const draggedHandlePixelOffset = useRef(0);
+  const stateRef = useRef({
+    rangeMin: 0,
+    rangeMax: 1,
+  });
+  const moveRef = useRef(() => { });
+  const endRef = useRef(() => { });
+  const docListenersRef = useRef({
+    onMove: null,
+    onEnd: null,
+  });
+  const [, forceActiveRender] = useReducer(x => x + 1, 0);
 
-  static defaultProps = {
-    animationSpeed: 500,
-    classNames: {},
-    easing: 'linear',
-    factor: 2,
-    max: 100,
-    min: 0,
-    resolution: 1,
-    value: [0, 100],
-    onChange: null,
-  };
+  const ease = useMemo(() => (
+    {
+      linear: generateLinearEasingCallback(resolution),
+      exponential: generateExponentialEasingCallback(factor),
+    }[easing]
+  ), [easing, resolution, factor]);
 
-  /**
-   * Constructor
-   * @param {Object} props The component properties
-   */
-  constructor(props) {
-    super(props);
+  const invertedEase = useMemo(() => (
+    {
+      linear: generateLinearEasingCallback(resolution),
+      exponential: generateExponentialEasingCallback(1 / factor),
+    }[easing]
+  ), [easing, resolution, factor]);
 
-    this.draggedHandle = null; // 0 for left handle, 1 for right handle or null
-    this.domElement = React.createRef();
-    this.touchOffset = 0;
-    this.draggedHandlePixelOffset = 0; // The absolute pixel delta of the last handle move event.
+  const getRange = useCallback(p => ({
+    rangeMin: invertedEase(getRelativeValue(p.value[0], p.min, p.max)),
+    rangeMax: invertedEase(getRelativeValue(p.value[1], p.min, p.max)),
+  }), [invertedEase]);
 
-    this.state = this.getRange(props);
-
-    this.useMouseEvents = !isTouchDevice();
-  }
-
-  /**
-   * Updates the component properties.
-   * @param {Object} newProps The new component properties.
-   */
-  UNSAFE_componentWillReceiveProps(newProps) {
-    this.setState(this.getRange(newProps));
-  }
-
-  /**
-   * Get the easing function.
-   */
-  get ease() {
-    return (
-      {
-        linear: generateLinearEasingCallback(this.props.resolution),
-        exponential: generateExponentialEasingCallback(this.props.factor),
-      }[this.props.easing]
-    );
-  }
-
-  /**
-   * Get the function to invert an eased value to it's original value.
-   */
-  get invertedEase() {
-    return (
-      {
-        linear: generateLinearEasingCallback(this.props.resolution),
-        exponential: generateExponentialEasingCallback(1 / this.props.factor),
-      }[this.props.easing]
-    );
-  }
-
-  /**
-   * Adds event listeners
-   */
-  addEventListeners() {
-    if (this.useMouseEvents) {
-      document.addEventListener('mouseup', this.handleTouchEnd);
-      document.addEventListener('mousemove', this.handleTouchMove);
-    } else {
-      document.addEventListener('touchend', this.handleTouchEnd);
-      document.addEventListener('touchmove', this.handleTouchMove);
-    }
-  }
-
-  /**
-   * Removes event listeners
-   */
-  removeEventListeners() {
-    if (this.useMouseEvents) {
-      document.removeEventListener('mouseup', this.handleTouchEnd);
-      document.removeEventListener('mousemove', this.handleTouchMove);
-    } else {
-      document.removeEventListener('touchend', this.handleTouchEnd);
-      document.removeEventListener('touchmove', this.handleTouchMove);
-    }
-  }
-
-  /**
-   * Get range min and max from props.
-   * @param {Object} props The component props.
-   * @returns {Object} The new state
-   */
-  getRange(props) {
-    const { value, min, max } = props;
-
-    return ({
-      rangeMin: this.invertedEase(getRelativeValue(value[0], min, max)),
-      rangeMax: this.invertedEase(getRelativeValue(value[1], min, max)),
+  const [state, setState] = useState(() => {
+    const initial = getRange({
+      value,
+      min,
+      max,
     });
-  }
+    stateRef.current = initial;
+    return initial;
+  });
 
-  /**
-   * Processes touch start events on handles.
-   * @param {Object} event The touch event
-   * @param {number} index The index of the touched handle.
-   */
-  handleTouchStart = (event, index) => {
-    this.addEventListeners();
+  useEffect(() => {
+    const next = getRange({
+      value,
+      min,
+      max,
+    });
+    stateRef.current = next;
+    setState(next);
+  }, [value, min, max, getRange]);
 
-    this.draggedHandle = index;
-
-    // Calculate the relative offset to the handles center
-    const handleDOMElement = event.target;
-    // Get the handles bounding rectangle ...
-    const handleRect = handleDOMElement.getBoundingClientRect();
-    // ... and calculate its absolute center.
-    const handleCenterX = handleRect.left + (handleDOMElement.offsetWidth / 2);
-    // Store the signed distanced between the current touch offset and the handle center.
-    this.touchOffset = getTouchPositionX(event) - handleCenterX;
+  const propsRef = useRef({
+    value,
+    onChange,
+    min,
+    max,
+    ease,
+  });
+  propsRef.current = {
+    value,
+    onChange,
+    min,
+    max,
+    ease,
   };
 
-  /**
-   * Processes move events on handles.
-   * @param {Object} event The touch event
-   */
-  handleTouchMove = (event) => {
-    if (this.props.min === this.props.max) {
+  const removeEventListeners = useCallback(() => {
+    const { onMove, onEnd } = docListenersRef.current;
+    if (!onMove || !onEnd) {
       return;
     }
-
-    if (this.draggedHandle === null) {
-      return;
-    }
-
-    const {
-      width: offsetWidth,
-      left: offsetLeft,
-    } = this.domElement.current.getBoundingClientRect();
-
-    // Calculate the absolute offset where the element was touched...
-    let deltaX = (getTouchPositionX(event) - offsetLeft) - this.touchOffset;
-
-    // ...and convert it into a relative value between [0...1].
-    deltaX = Math.max(0, Math.min(1, deltaX / offsetWidth));
-
-    const stateUpdate = {};
-
-    if (this.draggedHandle === 1) {
-      // Right handle dragged
-      if (this.state.rangeMin < deltaX) {
-        stateUpdate.rangeMax = Math.min(1, deltaX);
-        this.draggedHandlePixelOffset = Math.abs(stateUpdate.rangeMax - this.state.rangeMax);
-      } else {
-        // Not in valid range, swap handles
-        this.draggedHandle = 0;
-        stateUpdate.rangeMax = this.state.rangeMin;
-        stateUpdate.rangeMin = deltaX;
-        this.draggedHandlePixelOffset = Math.abs(stateUpdate.rangeMin - this.state.rangeMin);
-      }
-    } else if (this.draggedHandle === 0) {
-      // Left handle dragged
-      if (this.state.rangeMax > deltaX) {
-        stateUpdate.rangeMin = Math.max(0, deltaX);
-        this.draggedHandlePixelOffset = Math.abs(stateUpdate.rangeMin - this.state.rangeMin);
-      } else {
-        // Not in valid range, swap handles
-        this.draggedHandle = 1;
-        stateUpdate.rangeMin = this.state.rangeMax;
-        stateUpdate.rangeMax = deltaX;
-        this.draggedHandlePixelOffset = Math.abs(stateUpdate.rangeMax - this.state.rangeMax);
-      }
-    }
-
-    this.draggedHandlePixelOffset *= offsetWidth;
-
-    this.setState(stateUpdate, this.triggerChangeCallback);
-  };
-
-  /**
-   * Processes global touch end events for handles.
-   * @param {Object} e The touch event
-   */
-  handleTouchEnd = () => {
-    this.removeEventListeners();
-    this.touchOffset = 0;
-    this.draggedHandle = null;
-  };
-
-  /**
-   * Processes outer range touch end events.
-   * @param {Object} event The touch event
-   */
-  handleRangeTouch = (event) => {
-    const {
-      width: offsetWidth,
-      left: offsetLeft,
-    } = this.domElement.current.getBoundingClientRect();
-
-    const dx = (getTouchPositionX(event) - offsetLeft) / offsetWidth;
-    const d0 = Math.abs(this.state.rangeMin - dx);
-    const d1 = Math.abs(this.state.rangeMax - dx);
-
-    if (d0 < d1) {
-      this.draggedHandle = 0;
+    if (useMouseEvents) {
+      document.removeEventListener('mouseup', onEnd);
+      document.removeEventListener('mousemove', onMove);
     } else {
-      this.draggedHandle = 1;
+      document.removeEventListener('touchend', onEnd);
+      document.removeEventListener('touchmove', onMove);
     }
+  }, []);
 
-    this.handleTouchMove(event);
-  };
-
-  /**
-   * Calls the change callback in case of a state update.
-   */
-  triggerChangeCallback() {
+  const triggerChangeCallback = useCallback((mergedState) => {
     const {
-      value, onChange, min, max,
-    } = this.props;
-
-    if (!onChange) {
+      onChange: oc, value: v, min: mn, max: mx, ease: ez,
+    } = propsRef.current;
+    if (!oc) {
       return;
     }
 
     const newRange = [
-      getAbsoluteValue(this.ease(this.state.rangeMin), min, max, true),
-      getAbsoluteValue(this.ease(this.state.rangeMax), min, max, true),
+      getAbsoluteValue(ez(mergedState.rangeMin), mn, mx, true),
+      getAbsoluteValue(ez(mergedState.rangeMax), mn, mx, true),
     ];
 
-    if (newRange !== value) {
-      onChange(newRange);
+    if (newRange !== v) {
+      oc(newRange);
     }
-  }
+  }, []);
 
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    const { classNames, animationSpeed } = this.props;
-    const speed = Math.round(((1000 / animationSpeed) * this.draggedHandlePixelOffset));
-    const rangeStyle = getRangeStyle(
-      this.state.rangeMin,
-      this.state.rangeMax,
-      speed > 10 ? speed : 0
-    );
+  const handleTouchMove = useCallback((event) => {
+    if (min === max) {
+      return;
+    }
 
-    return (
-      <div className={cxs(classNames.container, 'engage__range-slider')} onMouseDown={this.handleRangeTouch} aria-hidden>
-        <div className={cxs(classNames.outerRange, styles.outerRange)} ref={this.domElement}>
-          <div className={cxs(classNames.range, styles.range)} style={rangeStyle}>
-            <Handle
-              index={0}
-              onTouchStart={this.handleTouchStart}
-              active={this.draggedHandle === 0}
-              classNames={classNames}
-              useMouseEvents={this.useMouseEvents}
-            />
-            <Handle
-              index={1}
-              onTouchStart={this.handleTouchStart}
-              active={this.draggedHandle === 1}
-              classNames={classNames}
-              useMouseEvents={this.useMouseEvents}
-            />
-          </div>
+    if (draggedHandle.current === null) {
+      return;
+    }
+
+    const {
+      width: offsetWidth,
+      left: offsetLeft,
+    } = domElement.current.getBoundingClientRect();
+
+    let deltaX = (getTouchPositionX(event) - offsetLeft) - touchOffset.current;
+
+    deltaX = Math.max(0, Math.min(1, deltaX / offsetWidth));
+
+    const stateUpdate = {};
+    const { rangeMin, rangeMax } = stateRef.current;
+
+    if (draggedHandle.current === 1) {
+      if (rangeMin < deltaX) {
+        stateUpdate.rangeMax = Math.min(1, deltaX);
+        draggedHandlePixelOffset.current = Math.abs(
+          stateUpdate.rangeMax - rangeMax
+        );
+      } else {
+        draggedHandle.current = 0;
+        stateUpdate.rangeMax = rangeMin;
+        stateUpdate.rangeMin = deltaX;
+        draggedHandlePixelOffset.current = Math.abs(
+          stateUpdate.rangeMin - rangeMin
+        );
+      }
+    } else if (draggedHandle.current === 0) {
+      if (rangeMax > deltaX) {
+        stateUpdate.rangeMin = Math.max(0, deltaX);
+        draggedHandlePixelOffset.current = Math.abs(
+          stateUpdate.rangeMin - rangeMin
+        );
+      } else {
+        draggedHandle.current = 1;
+        stateUpdate.rangeMin = rangeMax;
+        stateUpdate.rangeMax = deltaX;
+        draggedHandlePixelOffset.current = Math.abs(
+          stateUpdate.rangeMax - rangeMax
+        );
+      }
+    }
+
+    draggedHandlePixelOffset.current *= offsetWidth;
+
+    setState((prev) => {
+      const next = {
+        ...prev,
+        ...stateUpdate,
+      };
+      stateRef.current = next;
+      queueMicrotask(() => triggerChangeCallback(next));
+      return next;
+    });
+  }, [triggerChangeCallback, min, max]);
+
+  const handleTouchEnd = useCallback(() => {
+    removeEventListeners();
+    touchOffset.current = 0;
+    draggedHandle.current = null;
+    forceActiveRender();
+  }, [removeEventListeners]);
+
+  moveRef.current = handleTouchMove;
+  endRef.current = handleTouchEnd;
+
+  const addEventListeners = useCallback(() => {
+    if (!docListenersRef.current.onMove) {
+      docListenersRef.current.onMove = e => moveRef.current(e);
+      docListenersRef.current.onEnd = () => endRef.current();
+    }
+    const { onMove, onEnd } = docListenersRef.current;
+    if (useMouseEvents) {
+      document.addEventListener('mouseup', onEnd);
+      document.addEventListener('mousemove', onMove);
+    } else {
+      document.addEventListener('touchend', onEnd);
+      document.addEventListener('touchmove', onMove);
+    }
+  }, []);
+
+  const handleTouchStart = useCallback((event, index) => {
+    addEventListeners();
+
+    draggedHandle.current = index;
+
+    const handleDOMElement = event.target;
+    const handleRect = handleDOMElement.getBoundingClientRect();
+    const handleCenterX = handleRect.left + (handleDOMElement.offsetWidth / 2);
+    touchOffset.current = getTouchPositionX(event) - handleCenterX;
+    forceActiveRender();
+  }, [addEventListeners]);
+
+  const handleRangeTouch = useCallback((event) => {
+    const {
+      width: offsetWidth,
+      left: offsetLeft,
+    } = domElement.current.getBoundingClientRect();
+
+    const dx = (getTouchPositionX(event) - offsetLeft) / offsetWidth;
+    const { rangeMin, rangeMax } = stateRef.current;
+    const d0 = Math.abs(rangeMin - dx);
+    const d1 = Math.abs(rangeMax - dx);
+
+    if (d0 < d1) {
+      draggedHandle.current = 0;
+    } else {
+      draggedHandle.current = 1;
+    }
+
+    handleTouchMove(event);
+  }, [handleTouchMove]);
+
+  const speed = Math.round(
+    (1000 / animationSpeed) * draggedHandlePixelOffset.current
+  );
+  const rangeStyle = getRangeStyle(
+    state.rangeMin,
+    state.rangeMax,
+    speed > 10 ? speed : 0
+  );
+
+  return (
+    <div className={cx(classNames.container, 'engage__range-slider', 'common__range-slider')} onMouseDown={handleRangeTouch} aria-hidden>
+      <div className={cx(classes.outerRange, classNames.outerRange)} ref={domElement}>
+        <div className={cx(classes.range, classNames.range)} style={rangeStyle}>
+          <Handle
+            index={0}
+            onTouchStart={handleTouchStart}
+            active={draggedHandle.current === 0}
+            classNames={classNames}
+            useMouseEvents={useMouseEvents}
+          />
+          <Handle
+            index={1}
+            onTouchStart={handleTouchStart}
+            active={draggedHandle.current === 1}
+            classNames={classNames}
+            useMouseEvents={useMouseEvents}
+          />
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default RangeSlider;
+RangeSlider.propTypes = {
+  animationSpeed: PropTypes.number,
+  classNames: PropTypes.shape({
+    container: PropTypes.string,
+    handleInner: PropTypes.string,
+    handleOuter: PropTypes.string,
+    outerRange: PropTypes.string,
+    range: PropTypes.string,
+  }),
+  easing: PropTypes.string,
+  factor: PropTypes.number,
+  max: PropTypes.number,
+  min: PropTypes.number,
+  onChange: PropTypes.func,
+  resolution: PropTypes.number,
+  value: PropTypes.arrayOf(PropTypes.number),
+};
+
+RangeSlider.defaultProps = {
+  animationSpeed: 500,
+  classNames: {},
+  easing: 'linear',
+  factor: 2,
+  max: 100,
+  min: 0,
+  resolution: 1,
+  value: [0, 100],
+  onChange: null,
+};
+
+export default memo(RangeSlider);

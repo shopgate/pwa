@@ -1,194 +1,184 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useEffect, useRef, useCallback, memo,
+} from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import find from 'lodash/find';
+import { makeStyles } from '@shopgate/engage/styles';
 import Dropdown from '../Dropdown';
 import I18n from '../I18n';
 import SelectBoxItem from './components/Item';
-import styles from './style';
+
+const useStyles = makeStyles()(() => ({
+  overlay: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    overflow: 'auto',
+    zIndex: 1,
+    outline: 0,
+  },
+}));
 
 /**
  * The select box component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class SelectBox extends Component {
-  static propTypes = {
-    icon: PropTypes.func.isRequired,
-    item: PropTypes.func.isRequired,
-    items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-    className: PropTypes.string,
-    classNames: PropTypes.objectOf(PropTypes.string),
-    defaultText: PropTypes.string,
-    duration: PropTypes.number,
-    handleSelectionUpdate: PropTypes.func,
-    initialValue: PropTypes.string,
-    testId: PropTypes.string,
-  };
+const SelectBox = ({
+  icon: Icon,
+  item: Item,
+  items,
+  className,
+  classNames: classNamesProp,
+  defaultText,
+  duration,
+  handleSelectionUpdate,
+  initialValue,
+  testId,
+}) => {
+  const { classes, cx } = useStyles();
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState(() => find(items, { value: initialValue }));
+  const controlRef = useRef(null);
+  const firstItemRef = useRef(null);
 
-  static defaultProps = {
-    className: '',
-    classNames: {},
-    duration: 225,
-    defaultText: 'filter.sort.default',
-    handleSelectionUpdate: () => { },
-    initialValue: null,
-    testId: null,
-  };
+  useEffect(() => {
+    setSelected(find(items, { value: initialValue }));
+  }, [initialValue, items]);
 
-  /**
-   * Initializes the component.
-   * @param {Object} props The components props.
-   */
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isOpen: false,
-      selected: find(props.items, { value: props.initialValue }),
-    };
-  }
-
-  /**
-   * Reset selected when changing the initial value.
-    * @param {Object} nextProps The next props the component will receive.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (this.props.initialValue !== nextProps.initialValue) {
-      this.setState({
-        selected: find(nextProps.items, { value: nextProps.initialValue }),
-      });
-    }
-  }
-
-  /**
-   * Handles any interaction the user does outside of the component.
-   * In this case the select gets closed.
-   * @param {Object} event The event object.
-   */
-  handleInteractionOutside = (event) => {
-    this.setState({
-      isOpen: false,
-    });
-
+  const handleInteractionOutside = useCallback((event) => {
+    setIsOpen(false);
     event.preventDefault();
     event.stopPropagation();
-  };
+  }, []);
 
-  /**
-   * Sets the open state to true
-   */
-  handleOpenList = () => {
-    if (this.state.isOpen) {
+  const handleOpenList = useCallback(() => {
+    if (isOpen) {
       return;
     }
 
-    this.setState({
-      isOpen: true,
-    });
+    setIsOpen(true);
 
-    if (this.firstItemRef) {
-      this.firstItemRef.focus();
+    if (firstItemRef.current) {
+      firstItemRef.current.focus();
     }
-  };
+  }, [isOpen]);
 
-  /**
-   * Sets the new active selection.
-   * @param {string} value Value of the selected item.
-   */
-  handleSelectionUpdate = (value) => {
-    const selection = find(this.props.items, { value });
+  const handleSelectionUpdateInner = useCallback((value) => {
+    const selection = find(items, { value });
 
-    this.setState({
-      selected: selection,
-      isOpen: false,
-    });
+    setSelected(selection);
+    setIsOpen(false);
 
-    // Delay the callback to make sure actions are fired after animations are done.
     setTimeout(() => {
-      this.props.handleSelectionUpdate(selection.value);
-    }, this.props.duration);
+      handleSelectionUpdate(selection.value);
+    }, duration);
 
-    if (this.controlRef) {
-      this.controlRef.focus();
+    if (controlRef.current) {
+      controlRef.current.focus();
     }
+  }, [duration, handleSelectionUpdate, items]);
+
+  // eslint-disable-next-line require-jsdoc
+  const setControlRef = (ref) => {
+    controlRef.current = ref;
   };
 
-  /** @param {HTMLElement} ref The element */
-  setControlRef = (ref) => { this.controlRef = ref; };
+  // eslint-disable-next-line require-jsdoc
+  const setFirstItemRef = (ref) => {
+    firstItemRef.current = ref;
+  };
 
-  /** @param {HTMLElement} ref The element */
-  setFirstItemRef = (ref) => { this.firstItemRef = ref; };
+  const {
+    icon: iconClass,
+    iconOpen = null,
+    selection,
+    button,
+    dropdown,
+    selectItem,
+    selectItemSelected,
+  } = classNamesProp;
 
-  /**
-   * Renders the component
-   * @returns {JSX}
-   */
-  render() {
-    const Icon = this.props.icon;
-    const {
-      icon,
-      iconOpen = null,
-      selection,
-      button,
-      dropdown,
-      selectItem,
-      selectItemSelected,
-    } = this.props.classNames;
-    const buttonLabel = this.state.selected ? this.state.selected.label : this.props.defaultText;
-    const iconClasses = classNames(icon, {
-      [iconOpen]: (this.state.isOpen && iconOpen !== null),
-    });
+  const buttonLabel = selected ? selected.label : defaultText;
 
-    return (
-      <div className={`${this.props.className} common__select-box`} data-test-id={this.props.testId}>
+  return (
+    <div className={cx(className, 'common__select-box')} data-test-id={testId}>
+      <button
+        className={button}
+        onClick={handleOpenList}
+        data-test-id={buttonLabel}
+        type="button"
+        aria-haspopup
+        aria-expanded={isOpen ? true : null}
+        aria-controls={buttonLabel}
+        ref={setControlRef}
+      >
+        <span className={selection}>
+          <I18n.Text string={buttonLabel} />
+        </span>
+        <div className={cx(iconClass, { [iconOpen]: (isOpen && iconOpen !== null) })}>
+          <Icon />
+        </div>
+      </button>
+      <Dropdown
+        className={dropdown}
+        isOpen={isOpen}
+        duration={duration}
+      >
+        <ul role="menu" id={buttonLabel} tabIndex="-1">
+          {items.map(item => (
+            <SelectBoxItem
+              classNames={{
+                selectItem,
+                selectItemSelected,
+              }}
+              wrapper={Item}
+              key={item.value}
+              value={item.value}
+              label={item.label}
+              handleSelectionUpdate={handleSelectionUpdateInner}
+              isSelected={buttonLabel === item.label}
+              forwardedRef={buttonLabel === item.label ? setFirstItemRef : null}
+            />
+          ))}
+        </ul>
+      </Dropdown>
+      {isOpen && (
         <button
-          className={button}
-          onClick={this.handleOpenList}
-          data-test-id={buttonLabel}
+          className={classes.overlay}
+          onClick={handleInteractionOutside}
+          onTouchMove={handleInteractionOutside}
           type="button"
-          aria-haspopup
-          aria-expanded={this.state.isOpen ? true : null}
-          aria-controls={buttonLabel}
-          ref={this.setControlRef}
-        >
-          <span className={selection}>
-            <I18n.Text string={buttonLabel} />
-          </span>
-          <div className={iconClasses}><Icon /></div>
-        </button>
-        <Dropdown
-          className={dropdown}
-          isOpen={this.state.isOpen}
-          duration={this.props.duration}
-        >
-          <ul role="menu" id={buttonLabel} tabIndex="-1">
-            {this.props.items.map(item => (
-              <SelectBoxItem
-                classNames={{
-                  selectItem,
-                  selectItemSelected,
-                }}
-                wrapper={this.props.item}
-                key={item.value}
-                value={item.value}
-                label={item.label}
-                handleSelectionUpdate={this.handleSelectionUpdate}
-                isSelected={buttonLabel === item.label}
-                forwardedRef={buttonLabel === item.label ? this.setFirstItemRef : null}
-              />
-            ))}
-          </ul>
-        </Dropdown>
-        {this.state.isOpen &&
-          <button
-            className={styles.overlay}
-            onClick={this.handleInteractionOutside}
-            onTouchMove={this.handleInteractionOutside}
-            type="button"
-            aria-hidden
-          />}
-      </div>
-    );
-  }
-}
+          aria-hidden
+        />
+      )}
+    </div>
+  );
+};
 
-export default SelectBox;
+SelectBox.propTypes = {
+  icon: PropTypes.func.isRequired,
+  item: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  className: PropTypes.string,
+  classNames: PropTypes.objectOf(PropTypes.string),
+  defaultText: PropTypes.string,
+  duration: PropTypes.number,
+  handleSelectionUpdate: PropTypes.func,
+  initialValue: PropTypes.string,
+  testId: PropTypes.string,
+};
+
+SelectBox.defaultProps = {
+  className: '',
+  classNames: {},
+  duration: 225,
+  defaultText: 'filter.sort.default',
+  handleSelectionUpdate: () => {},
+  initialValue: null,
+  testId: null,
+};
+
+export default memo(SelectBox);

@@ -178,7 +178,7 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
           key="w0"
         >
           <div
-            className="css-jldvt6 common__widgets__widget-grid"
+            className="sg-nupkh5-root common__widgets__widget-grid"
           >
             <Widget
               component={[Function]}
@@ -200,13 +200,13 @@ exports[`<Widgets /> should render a grid if the widget is of type grid 1`] = `
               key="w0"
             >
               <GridItem
-                className="common__widgets__widget css-14cdwhd"
+                className="common__widgets__widget sg-1codpeu-widgetCell"
                 component="div"
                 grow={0}
                 shrink={1}
               >
                 <div
-                  className="common__widgets__widget css-14cdwhd"
+                  className="common__widgets__widget sg-1mqgeq0-root-widgetCell"
                 >
                   <div>
                     <Suspense

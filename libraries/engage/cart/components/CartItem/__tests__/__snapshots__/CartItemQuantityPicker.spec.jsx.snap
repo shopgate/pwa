@@ -1,54 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly should blur the input, if the editMode is disabled via prop 1`] = `
-<CartItemQuantityPicker
-  disabled={false}
-  editMode={false}
-  hasCatchWeight={false}
-  onChange={[Function]}
-  onToggleEditMode={[Function]}
-  quantity={1}
-  unit={null}
->
-  <form
-    className="theme__cart__product__quantity-picker"
-    onSubmit={[Function]}
-  >
-    <ForwardRef
-      aria-label="product.quantity"
-      className="css-1bncmx2"
-      data-test-id="quantityPicker"
-      disabled={false}
-      maxDecimals={0}
-      maxValue={null}
-      minValue={null}
-      onBlur={[Function]}
-      onChange={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      unit={null}
-      value={1}
-    >
-      <input
-        aria-label="product.quantity"
-        className="css-1bncmx2"
-        data-test-id="quantityPicker"
-        disabled={false}
-        inputMode="numeric"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onClick={[Function]}
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        pattern="[0–9]*"
-        value="1"
-      />
-    </ForwardRef>
-  </form>
-</CartItemQuantityPicker>
-`;
-
 exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly should focus the input, if the editMode is enabled via prop 1`] = `
 <CartItemQuantityPicker
   disabled={false}
@@ -65,7 +16,7 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
   >
     <ForwardRef
       aria-label="product.quantity"
-      className="css-1bncmx2"
+      className="sg-1cl8js3-inputStyle"
       data-test-id="quantityPicker"
       disabled={false}
       maxDecimals={0}
@@ -81,7 +32,56 @@ exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly sho
     >
       <input
         aria-label="product.quantity"
-        className="css-1bncmx2"
+        className="sg-1cl8js3-inputStyle"
+        data-test-id="quantityPicker"
+        disabled={false}
+        inputMode="numeric"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        pattern="[0–9]*"
+        value="1"
+      />
+    </ForwardRef>
+  </form>
+</CartItemQuantityPicker>
+`;
+
+exports[`<CartItemQuantityPicker /> Given editMode prop is handled correctly should not call focus when editMode is false 1`] = `
+<CartItemQuantityPicker
+  disabled={false}
+  editMode={false}
+  hasCatchWeight={false}
+  onChange={[Function]}
+  onToggleEditMode={[Function]}
+  quantity={1}
+  unit={null}
+>
+  <form
+    className="theme__cart__product__quantity-picker"
+    onSubmit={[Function]}
+  >
+    <ForwardRef
+      aria-label="product.quantity"
+      className="sg-1cl8js3-inputStyle"
+      data-test-id="quantityPicker"
+      disabled={false}
+      maxDecimals={0}
+      maxValue={null}
+      minValue={null}
+      onBlur={[Function]}
+      onChange={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      unit={null}
+      value={1}
+    >
+      <input
+        aria-label="product.quantity"
+        className="sg-1cl8js3-inputStyle"
         data-test-id="quantityPicker"
         disabled={false}
         inputMode="numeric"
@@ -114,7 +114,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
   >
     <ForwardRef
       aria-label="product.quantity"
-      className="css-1bncmx2"
+      className="sg-1cl8js3-inputStyle"
       data-test-id="quantityPicker"
       disabled={false}
       maxDecimals={0}
@@ -130,7 +130,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
     >
       <input
         aria-label="product.quantity"
-        className="css-1bncmx2"
+        className="sg-1cl8js3-inputStyle"
         data-test-id="quantityPicker"
         disabled={false}
         inputMode="numeric"
@@ -177,7 +177,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
   >
     <ForwardRef
       aria-label="product.quantity"
-      className="css-1bncmx2"
+      className="sg-1cl8js3-inputStyle"
       data-test-id="quantityPicker"
       disabled={false}
       maxDecimals={0}
@@ -193,7 +193,7 @@ exports[`<CartItemQuantityPicker /> Given onChange callback is triggered correct
     >
       <input
         aria-label="product.quantity"
-        className="css-1bncmx2"
+        className="sg-1cl8js3-inputStyle"
         data-test-id="quantityPicker"
         disabled={false}
         inputMode="numeric"
@@ -247,7 +247,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
   >
     <ForwardRef
       aria-label="product.quantity"
-      className="css-1bncmx2"
+      className="sg-1cl8js3-inputStyle"
       data-test-id="quantityPicker"
       disabled={false}
       maxDecimals={0}
@@ -263,7 +263,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
     >
       <input
         aria-label="product.quantity"
-        className="css-1bncmx2"
+        className="sg-1cl8js3-inputStyle"
         data-test-id="quantityPicker"
         disabled={false}
         inputMode="numeric"
@@ -310,7 +310,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
   >
     <ForwardRef
       aria-label="product.quantity"
-      className="css-1bncmx2"
+      className="sg-1cl8js3-inputStyle"
       data-test-id="quantityPicker"
       disabled={false}
       maxDecimals={0}
@@ -326,7 +326,7 @@ exports[`<CartItemQuantityPicker /> Given onToggleEditMode callback is triggered
     >
       <input
         aria-label="product.quantity"
-        className="css-1bncmx2"
+        className="sg-1cl8js3-inputStyle"
         data-test-id="quantityPicker"
         disabled={false}
         inputMode="numeric"
@@ -402,7 +402,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = 
   >
     <ForwardRef
       aria-label="product.quantity"
-      className="css-1bncmx2"
+      className="sg-1cl8js3-inputStyle"
       data-test-id="quantityPicker"
       disabled={false}
       maxDecimals={0}
@@ -418,7 +418,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 1 by default 1`] = 
     >
       <input
         aria-label="product.quantity"
-        className="css-1bncmx2"
+        className="sg-1cl8js3-inputStyle"
         data-test-id="quantityPicker"
         disabled={false}
         inputMode="numeric"
@@ -451,7 +451,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
   >
     <ForwardRef
       aria-label="product.quantity"
-      className="css-1bncmx2"
+      className="sg-1cl8js3-inputStyle"
       data-test-id="quantityPicker"
       disabled={false}
       maxDecimals={0}
@@ -467,7 +467,7 @@ exports[`<CartItemQuantityPicker /> should have an amount of 3 via prop 1`] = `
     >
       <input
         aria-label="product.quantity"
-        className="css-1bncmx2"
+        className="sg-1cl8js3-inputStyle"
         data-test-id="quantityPicker"
         disabled={false}
         inputMode="numeric"
@@ -500,7 +500,7 @@ exports[`<CartItemQuantityPicker /> should have an mount of 0, if 0 is supplied 
   >
     <ForwardRef
       aria-label="product.quantity"
-      className="css-1bncmx2"
+      className="sg-1cl8js3-inputStyle"
       data-test-id="quantityPicker"
       disabled={false}
       maxDecimals={0}
@@ -516,7 +516,7 @@ exports[`<CartItemQuantityPicker /> should have an mount of 0, if 0 is supplied 
     >
       <input
         aria-label="product.quantity"
-        className="css-1bncmx2"
+        className="sg-1cl8js3-inputStyle"
         data-test-id="quantityPicker"
         disabled={false}
         inputMode="numeric"

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import { shallow } from 'enzyme';
 import List from './index';
@@ -33,4 +32,3 @@ describe('<List />', () => {
     expect(console.error).toHaveBeenCalledTimes(1);
   });
 });
-/* eslint-enable no-console */

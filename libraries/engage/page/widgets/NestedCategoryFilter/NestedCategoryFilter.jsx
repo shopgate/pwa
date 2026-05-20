@@ -12,22 +12,22 @@ import CategoryPicker from './components/Picker';
 import { useNestedCategoryFilterWidget } from './hooks';
 import WidgetHeadline from '../../components/WidgetHeadline';
 
-const { colors, variables } = themeConfig;
+const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     background: colors.light,
     display: 'flex',
     flexDirection: 'column',
-    paddingBottom: variables.gap.big,
+    paddingBottom: theme.spacing(2),
   },
   buttonContainer: {
-    padding: `0 ${variables.gap.big}px`,
+    padding: theme.spacing(0, 2),
   },
   button: {
     width: '100%',
   },
-});
+}));
 
 /**
  * The NestedCategoryFilter component

@@ -25,7 +25,7 @@ const useStyles = makeStyles()(({
 const CategorySheet = ({
   items, label, onClose, open, selectedId, onSelect,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const handleItemClick = useCallback((event) => {
     event.stopPropagation();
     onSelect(event.target.value);
@@ -33,7 +33,7 @@ const CategorySheet = ({
 
   return (
     <SheetDrawer title={label} isOpen={open} onClose={onClose}>
-      <SheetList className={`widget__nested-category-filter__sheet-list ${classes.sheetList}`}>
+      <SheetList className={cx('widget__nested-category-filter__sheet-list', classes.sheetList)}>
         {items.map(item => (
           <Item
             item={item}

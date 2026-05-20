@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { css } from '@shopgate/engage/styles';
 import { logger } from '../../../core/helpers';
 import { useWidgetStyles } from '../../../core/hooks';
 import { I18n, SheetDrawer, SheetList } from '../../../components';
@@ -101,7 +101,7 @@ const QuantityPicker = ({ conditioner, setQuantity, stock }) => {
       title={<I18n.Text string="product.quantity" />}
       isOpen={opened}
       onClose={handleCloseSheet}
-      contentClassName={css(styles.sheet).toString()}
+      contentClassName={css(styles.sheet)}
     >
       <SheetList>
         {items.map(item => (

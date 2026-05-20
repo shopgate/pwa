@@ -1,6 +1,5 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { camelCase, upperCase, isEqual } from 'lodash';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { parsePhoneNumber } from 'react-phone-number-input';
@@ -14,59 +13,41 @@ import fr from 'react-phone-number-input/locale/fr';
 import pt from 'react-phone-number-input/locale/pt';
 import flags from 'react-phone-number-input/flags';
 import { useCountriesNames } from '@shopgate/engage/i18n';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
+import { makeStyles } from '@shopgate/engage/styles';
 import Label from '@shopgate/pwa-ui-shared/TextField/components/Label';
 import FormHelper from './FormHelper';
 
-const { variables, colors } = themeConfig;
+const { colors } = themeConfig;
 
-const styles = {
-  formField: css({
-    width: '100%',
-    marginBottom: '0px !important',
-  }).toString(),
-
-  phoneField: css({
+const useStyles = makeStyles()(theme => ({
+  phoneField: {
     position: 'relative',
     width: '100%',
-    paddingTop: variables.gap.big * 0.75,
-    paddingBottom: variables.gap.big * 1.25,
+    paddingTop: theme.spacing(1.5),
+    paddingBottom: theme.spacing(2.5),
 
     ' input.PhoneInputInput': {
       outline: 'none',
       fontSize: '1rem',
       lineHeight: '1.1875rem',
       borderRadius: 0,
-      paddingBottom: variables.gap.xsmall * 1.5,
+      paddingBottom: theme.spacing(0.75),
       borderBottom: `1px solid ${colors.shade12}`,
       '&:focus': {
-        borderBottom: `2px solid ${colors.primary}`,
-        paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+        borderBottom: `2px solid ${theme.palette.primary.main}`,
+        paddingBottom: theme.spacing(0.75) - 1,
       },
     },
-  }),
+  },
 
-  phoneFieldError: css({
+  phoneFieldError: {
     ' input.PhoneInputInput': {
-      borderBottom: '2px solid var(--color-state-alert)',
-      paddingBottom: (variables.gap.xsmall * 1.5) - 1,
+      borderBottom: `2px solid ${theme.palette.error.main}`,
+      paddingBottom: theme.spacing(0.75) - 1,
     },
-  }).toString(),
-
-  phoneFieldErrorText: css({
-    position: 'absolute',
-    width: '100%',
-    bottom: '-10px',
-    fontSize: '0.75rem',
-    lineHeight: 0.875,
-    color: 'var(--color-state-alert)',
-    overflow: 'hidden',
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    marginLeft: '38px',
-  }),
-};
+  },
+}));
 
 const builtInCountries = getCountries();
 const locales = {
@@ -83,6 +64,7 @@ const locales = {
  * @returns {JSX.Element}
  */
 const UnwrappedElementPhoneNumber = React.memo((props) => {
+  const { classes, cx } = useStyles();
   const {
     element,
     name,
@@ -196,15 +178,15 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
     handleChange(phoneValue, { target: { name } });
   }, [handleChange, name]);
 
-  const phoneClasses = classnames('textField', {
+  const phoneClasses = cx('textField', {
     simpleInput: !hasCountrySelect,
     [camelCase(name)]: true,
     phonePicker: true,
     phonePickerError: !!errorText,
     validationError: !!errorText,
     phonePickerFocused: isFocused,
-    [styles.phoneField]: true,
-    [styles.phoneFieldError]: !!errorText,
+    [classes.phoneField]: true,
+    [classes.phoneFieldError]: !!errorText,
   });
 
   if (!visible) {
@@ -215,7 +197,7 @@ const UnwrappedElementPhoneNumber = React.memo((props) => {
 
   return (
     <div
-      className={classnames(
+      className={cx(
         'formBuilderField',
         'engage__form-phone-number',
         { validationError: !!errorText }

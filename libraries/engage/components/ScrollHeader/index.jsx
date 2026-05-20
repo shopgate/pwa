@@ -1,10 +1,31 @@
 import React, { useState, forwardRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useScrollDirectionChange } from '@shopgate/engage/core/hooks';
-import {
-  root, scrolledIn, scrolledOut, transition,
-} from './style';
+
+const useStyles = makeStyles()({
+  root: {
+    position: 'sticky',
+    left: 0,
+    backgroundColor: '#fff',
+    [responsiveMediaQuery('<=xs', { appAlways: true })]: {
+      boxShadow: 'rgba(0, 0, 0, 0.118) 0px 1px 6px, rgba(0, 0, 0, 0.118) 0px 1px 4px',
+    },
+  },
+  scrolledIn: {
+    '&&': {
+      transform: 'translateY(0%)',
+    },
+  },
+  scrolledOut: {
+    '&&': {
+      transform: 'translateY(-250%)',
+    },
+  },
+  transition: {
+    transition: 'transform 0.2s ease,transform 0.2s',
+  },
+});
 
 /* eslint-disable react/prop-types */
 /**
@@ -38,8 +59,9 @@ function ScrollHeaderBase({
   onlyShowAtTop = false,
   onlyShowAtTopOffset = 0,
   onChange,
-  classes,
+  classes: classesProp = {},
 }, ref) {
+  const { classes, cx } = useStyles();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
 
   useScrollDirectionChange({
@@ -66,9 +88,9 @@ function ScrollHeaderBase({
   return (
     <div
       ref={ref}
-      className={classNames(root, transition, className, {
-        [classNames(scrolledIn, classes?.scrolledIn)]: !shouldHideHeader,
-        [classNames(scrolledOut, classes?.scrolledOut)]: shouldHideHeader,
+      className={cx(classes.root, classes.transition, className, {
+        [cx(classes.scrolledIn, classesProp?.scrolledIn)]: !shouldHideHeader,
+        [cx(classes.scrolledOut, classesProp?.scrolledOut)]: shouldHideHeader,
       })}
     >
       {children}

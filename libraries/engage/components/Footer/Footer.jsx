@@ -1,15 +1,23 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import { UIEvents } from '@shopgate/engage/core/events';
-import { getAbsoluteHeight } from '@shopgate/engage/core/helpers';
+import { getAbsoluteHeight, applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { SHEET_EVENTS } from '@shopgate/engage/components';
-import * as classes from './Footer.style';
 import {
   handleSafeAreaInsets,
   updateFooterHeight,
 } from './helpers';
 import { APP_FOOTER_ID, DATA_IGNORED } from './constants';
+
+const useStyles = makeStyles()(() => ({
+  footer: {
+    bottom: 0,
+    flexShrink: 1,
+    position: applyScrollContainer() ? 'relative' : 'sticky',
+    zIndex: 1,
+  },
+}));
 
 /**
  * The footer component.
@@ -17,6 +25,7 @@ import { APP_FOOTER_ID, DATA_IGNORED } from './constants';
  * @returns {JSX.Element}
  */
 const Footer = ({ children }) => {
+  const { classes, cx } = useStyles();
   const footerRef = useRef(null);
 
   const performFooterUpdate = useCallback(() => {
@@ -67,7 +76,7 @@ const Footer = ({ children }) => {
   }, [performFooterUpdate]);
 
   return (
-    <div className={classNames(classes.footer, 'engage__footer')}>
+    <div className={cx(classes.footer, 'engage__footer')}>
       <div id={APP_FOOTER_ID} ref={footerRef}>
         {children}
       </div>

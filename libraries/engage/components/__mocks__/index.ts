@@ -134,7 +134,20 @@ export const I18n = {
   Placeholder: () => null,
   Price: () => null,
   Number: ({ number }) => number,
+  Date: ({ timestamp, format }) => `${timestamp}-${format}`,
 };
+
+const ActualI18n = jest.requireActual('@shopgate/pwa-common/components/I18n').default;
+I18n.Text.propTypes = ActualI18n.Text.propTypes;
+I18n.Placeholder.propTypes = ActualI18n.Placeholder.propTypes;
+I18n.Price.propTypes = ActualI18n.Price.propTypes;
+I18n.Number.propTypes = ActualI18n.Number.propTypes;
+I18n.Date.propTypes = ActualI18n.Date.propTypes;
+I18n.Text.defaultProps = ActualI18n.Text.defaultProps;
+I18n.Placeholder.defaultProps = ActualI18n.Placeholder.defaultProps;
+I18n.Price.defaultProps = ActualI18n.Price.defaultProps;
+I18n.Number.defaultProps = ActualI18n.Number.defaultProps;
+I18n.Date.defaultProps = ActualI18n.Date.defaultProps;
 
 export { default as View, ViewContext } from '../View/__mocks__/index';
 export { default as ConnectedReactPortal } from '../ConnectedReactPortal/__mocks__/index';

@@ -2,6 +2,13 @@ import { css } from 'glamor';
 import spring from 'css-spring';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
+/* eslint-disable max-len */
+// TODO This file was brought back since some extensions import it (@shopgate-project/tablet-adjustments, @shopgate/grouped-products).
+// It's not used anymore by the component. To reduce the effort of updating all shops to a new version
+// of the extension, we temporarily keep this file. It should be removed in the future and the extensions should handle their styling
+// on their own
+/* eslint-enable max-len */
+
 const options = {
   stiffness: 381.47,
   damping: 15,

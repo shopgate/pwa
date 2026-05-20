@@ -1,19 +1,69 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { QuantityLabel } from '@shopgate/engage/components';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
-import {
-  column,
-  locationColumn,
-  statusColumn,
-  quantityPickerDisabled,
-} from './CartItemProductLayoutWide.style';
+const useStyles = makeStyles()(theme => ({
+  column: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexShrink: 1,
+    flexGrow: 1,
+    flexBasis: 0,
+    padding: theme.spacing(0, 1),
+    ':last-child': {
+      paddingRight: 0,
+    },
+  },
+  locationColumn: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexShrink: 1,
+    flexGrow: 2,
+    flexBasis: 0,
+    padding: theme.spacing(0, 1),
+    ':last-child': {
+      paddingRight: 0,
+    },
+    fontSize: '1.25rem',
+    lineHeight: '1.625rem',
+    fontWeight: 500,
+  },
+  statusColumn: {
+    display: 'flex',
+    alignItems: 'center',
+    flexDirection: 'column',
+    flexShrink: 1,
+    flexGrow: 1,
+    flexBasis: 0,
+    padding: theme.spacing(0, 1),
+    ':last-child': {
+      paddingRight: 0,
+    },
+    fontSize: '1.25rem',
+    lineHeight: '1.625rem',
+  },
+  quantityPickerDisabled: {
+    padding: theme.spacing(0, 1),
+    textAlign: 'center',
+    fontSize: '1.25rem',
+    lineHeight: '1.625rem',
+    height: 28,
+    width: '100%',
+    fontWeight: 500,
+    color: theme.palette.text.primary,
+    whiteSpace: 'nowrap',
+  },
+}));
 
 /**
  * @returns {JSX.Element}
  */
-const CartItemProductLayoutWide = () => {
+const CartItemProductLayoutWideOrderDetails = () => {
+  const { classes } = useStyles();
   const { location, cartItem, cartIsDirectShipOnly } = useCartItem();
   const { product } = useCartItemProduct();
 
@@ -22,16 +72,16 @@ const CartItemProductLayoutWide = () => {
   return (
     <>
       {!cartIsDirectShipOnly ? (
-        <div className={locationColumn}>
+        <div className={classes.locationColumn}>
           {location?.name }
         </div>
       ) : null}
-      <div className={statusColumn}>
+      <div className={classes.statusColumn}>
         {getTranslatedLineItemStatus(cartItem?.status, cartItem?.subStatus)}
       </div>
-      <div className={column}>
+      <div className={classes.column}>
         <QuantityLabel
-          className={quantityPickerDisabled}
+          className={classes.quantityPickerDisabled}
           value={cartItem.quantity}
           unit={hasUnitWithDecimals ? product.unit : null}
           maxDecimals={hasUnitWithDecimals ? 2 : 0}
@@ -41,4 +91,4 @@ const CartItemProductLayoutWide = () => {
   );
 };
 
-export default CartItemProductLayoutWide;
+export default CartItemProductLayoutWideOrderDetails;

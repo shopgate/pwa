@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
-import { setPageBackgroundColor } from '../../../styles';
+import { setPageBackgroundColor } from '../../../styles/helpers';
 import View from '../index';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
@@ -15,7 +15,7 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 
 jest.mock('../provider', () => ({ children }) => children);
 jest.mock('../context');
-jest.mock('../../../styles', () => ({
+jest.mock('../../../styles/helpers', () => ({
   setPageBackgroundColor: jest.fn(),
   responsiveMediaQuery: jest.fn(),
 }));

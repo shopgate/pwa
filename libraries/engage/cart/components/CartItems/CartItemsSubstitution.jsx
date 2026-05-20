@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { CardList } from '@shopgate/engage/components';
 import Substitution, { SubstitutionWrapper } from '../Substitution';
 import connect from './CartItemsSubscription.connector';

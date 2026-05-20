@@ -9,10 +9,10 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
   pathname=""
 >
   <div
-    className="css-1hor112 engage__chip-layout"
+    className="sg-npcfqg-container engage__chip-layout"
   >
     <div
-      className="css-1ck9rgi"
+      className="sg-741rda-layout"
     >
       <Chip
         editLabel={null}
@@ -24,19 +24,19 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip css-151hpn9"
+          className="ui-shared__chip sg-ih9beq-chip"
           data-test-id="some-id"
         >
           <Button
             aria-label={null}
-            className="css-39vnpz"
+            className="sg-18bi9x7-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="css-39vnpz css-1rn65c0 common__button"
+              className="common__button sg-1bdmg0z-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -56,7 +56,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                     size={16}
                   >
                     <svg
-                      className="css-1n8b10t-root common__icon"
+                      className="sg-1n8b10t-root common__icon"
                       dangerouslySetInnerHTML={
                         {
                           "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
@@ -85,14 +85,14 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="css-hb5pev"
+            className="sg-cgogq3-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="css-hb5pev css-1rn65c0 common__button"
+              className="common__button sg-llt41d-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -104,10 +104,10 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       </Chip>
     </div>
     <div
-      className="css-shibib"
+      className="sg-1l5tw3l-moreButtonWrapper"
     >
       <RippleButton
-        className="css-18twdlt"
+        className="sg-jtmjaa-moreButton"
         disabled={false}
         fill={true}
         flat={false}
@@ -119,7 +119,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         wrapContent={true}
       >
         <Button
-          className="css-18twdlt ui-shared__ripple-button"
+          className="sg-jtmjaa-moreButton ui-shared__ripple-button"
           disabled={false}
           flat={false}
           onClick={[Function]}
@@ -128,19 +128,19 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           wrapContent={false}
         >
           <Button
-            className="ui-shared__button css-1xxwysr css-18twdlt ui-shared__ripple-button"
+            className="ui-shared__button ui-shared__ripple-button sg-13li33e-button-moreButton"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
-              className="ui-shared__button css-1xxwysr css-18twdlt ui-shared__ripple-button css-1rn65c0 common__button"
+              className="common__button ui-shared__button ui-shared__ripple-button sg-11ej0u6-root-button-moreButton"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
               <Ripple
-                className="css-1fscwua "
+                className="sg-fpa50s-contentWrapper"
                 color="#000"
                 disabled={false}
                 fill={true}
@@ -150,7 +150,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
                 size={null}
               >
                 <div
-                  className="ui-shared__ripple css-1fscwua "
+                  className="ui-shared__ripple sg-fpa50s-contentWrapper"
                   data-test-id="Ripple"
                   onClick={[Function]}
                   style={null}
@@ -190,10 +190,10 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
   pathname=""
 >
   <div
-    className="css-1hor112 engage__chip-layout"
+    className="sg-npcfqg-container engage__chip-layout"
   >
     <div
-      className="css-1ck9rgi"
+      className="sg-741rda-layout"
     >
       <Chip
         editLabel={null}
@@ -205,19 +205,19 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip css-151hpn9"
+          className="ui-shared__chip sg-ih9beq-chip"
           data-test-id="some-id"
         >
           <Button
             aria-label={null}
-            className="css-39vnpz"
+            className="sg-18bi9x7-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="css-39vnpz css-1rn65c0 common__button"
+              className="common__button sg-1bdmg0z-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -237,7 +237,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                     size={16}
                   >
                     <svg
-                      className="css-1n8b10t-root common__icon"
+                      className="sg-1n8b10t-root common__icon"
                       dangerouslySetInnerHTML={
                         {
                           "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
@@ -266,14 +266,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="css-hb5pev"
+            className="sg-cgogq3-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="css-hb5pev css-1rn65c0 common__button"
+              className="common__button sg-llt41d-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -293,19 +293,19 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip css-151hpn9"
+          className="ui-shared__chip sg-ih9beq-chip"
           data-test-id="some-other-id"
         >
           <Button
             aria-label={null}
-            className="css-39vnpz"
+            className="sg-18bi9x7-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="css-39vnpz css-1rn65c0 common__button"
+              className="common__button sg-1bdmg0z-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -325,7 +325,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                     size={16}
                   >
                     <svg
-                      className="css-1n8b10t-root common__icon"
+                      className="sg-1n8b10t-root common__icon"
                       dangerouslySetInnerHTML={
                         {
                           "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
@@ -354,14 +354,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="css-hb5pev"
+            className="sg-cgogq3-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="css-hb5pev css-1rn65c0 common__button"
+              className="common__button sg-llt41d-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -373,10 +373,10 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       </Chip>
     </div>
     <div
-      className="css-shibib"
+      className="sg-1l5tw3l-moreButtonWrapper"
     >
       <RippleButton
-        className="css-18twdlt"
+        className="sg-jtmjaa-moreButton"
         disabled={false}
         fill={true}
         flat={false}
@@ -388,7 +388,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         wrapContent={true}
       >
         <Button
-          className="css-18twdlt ui-shared__ripple-button"
+          className="sg-jtmjaa-moreButton ui-shared__ripple-button"
           disabled={false}
           flat={false}
           onClick={[Function]}
@@ -397,19 +397,19 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           wrapContent={false}
         >
           <Button
-            className="ui-shared__button css-1xxwysr css-18twdlt ui-shared__ripple-button"
+            className="ui-shared__button ui-shared__ripple-button sg-13li33e-button-moreButton"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
-              className="ui-shared__button css-1xxwysr css-18twdlt ui-shared__ripple-button css-1rn65c0 common__button"
+              className="common__button ui-shared__button ui-shared__ripple-button sg-11ej0u6-root-button-moreButton"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
             >
               <Ripple
-                className="css-1fscwua "
+                className="sg-fpa50s-contentWrapper"
                 color="#000"
                 disabled={false}
                 fill={true}
@@ -419,7 +419,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
                 size={null}
               >
                 <div
-                  className="ui-shared__ripple css-1fscwua "
+                  className="ui-shared__ripple sg-fpa50s-contentWrapper"
                   data-test-id="Ripple"
                   onClick={[Function]}
                   style={null}

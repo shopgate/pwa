@@ -37,31 +37,35 @@ describe('TabBar favorites action', () => {
     expect(component).toMatchSnapshot();
   });
 });
-describe('TabBar favorites action - lifecycle', () => {
-  let component;
-  it('should create component', () => {
-    component = mount(<FavoritesIconBadge favoritesCount={0} />);
+
+describe('TabBar favorites action - behavior', () => {
+  it('should render empty when unconnected count is 0', () => {
+    const component = mount(<FavoritesIconBadge favoritesCount={0} />);
+    expect(component.isEmptyRender()).toBe(true);
   });
-  it('should not update when number is the same', () => {
-    expect(component.at(0).instance().shouldComponentUpdate({ favoritesCount: 0 })).toBe(false);
-  });
-  it('should update when number is changed', () => {
-    component.setProps({ favoritesCount: 99 });
-    expect(component.props().favoritesCount).toBe(99);
+
+  it('should show count when number is changed', () => {
+    const component = mount(<FavoritesIconBadge favoritesCount={99} />);
+    expect(component.text()).toContain('99');
     expect(component).toMatchSnapshot();
   });
-  it('should update when number exceeds maximum', () => {
-    component.setProps({ favoritesCount: 9999 });
-    expect(component.html().indexOf('999+')).toBeGreaterThan(0);
+
+  it('should cap display at MAX when number exceeds maximum', () => {
+    const component = mount(<FavoritesIconBadge favoritesCount={9999} />);
+    expect(component.text()).toContain('999+');
     expect(component).toMatchSnapshot();
   });
-  it('should not update when number still exceeds maximum', () => {
-    expect(component.at(0).instance().shouldComponentUpdate({ favoritesCount: 1000 })).toBe(false);
+
+  it('should remain 999+ when count stays above max', () => {
+    const component = mount(<FavoritesIconBadge favoritesCount={5000} />);
+    expect(component.text()).toContain('999+');
+    component.setProps({ favoritesCount: 6000 });
+    expect(component.text()).toContain('999+');
   });
-  it('should update when number goes back to limits', () => {
-    expect(component.at(0).instance().shouldComponentUpdate({ favoritesCount: 100 })).toBe(true);
-  });
-  it('should update when number goes back to 0', () => {
-    expect(component.at(0).instance().shouldComponentUpdate({ favoritesCount: 0 })).toBe(true);
+
+  it('should show lower count when number goes back to limits', () => {
+    const component = mount(<FavoritesIconBadge favoritesCount={9999} />);
+    component.setProps({ favoritesCount: 100 });
+    expect(component.text()).toContain('100');
   });
 });

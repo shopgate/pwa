@@ -6,14 +6,21 @@ import {
   SEARCH_SUGGESTION_ITEM,
   SEARCH_SUGGESTION_ITEM_CONTENT,
 } from '@shopgate/engage/search';
+import { withStyles, cx } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
-import styles from './style';
+
+const { colors } = themeConfig;
 
 /**
  * The SuggestionList component.
  */
 class SuggestionList extends Component {
   static propTypes = {
+    classes: PropTypes.shape({
+      list: PropTypes.string,
+      item: PropTypes.string,
+    }).isRequired,
     onClick: PropTypes.func.isRequired,
     fetching: PropTypes.bool,
     searchPhrase: PropTypes.string,
@@ -39,7 +46,9 @@ class SuggestionList extends Component {
    * @return {JSX}
    */
   render() {
-    const { onClick, suggestions, searchPhrase } = this.props;
+    const {
+      onClick, suggestions, searchPhrase, classes,
+    } = this.props;
 
     if (!suggestions) {
       return (
@@ -65,12 +74,12 @@ class SuggestionList extends Component {
           searchPhrase,
         }}
       >
-        <div className={`${styles.list} theme__search__suggestion-list`}>
+        <div className={cx(classes.list, 'theme__search__suggestion-list')}>
           {suggestions.map(suggestion => (
             <SurroundPortals
               portalName={SEARCH_SUGGESTION_ITEM}
               portalProps={{
-                className: styles.item.toString(),
+                className: classes.item,
                 onClick,
                 suggestion,
               }}
@@ -78,7 +87,7 @@ class SuggestionList extends Component {
             >
               <button
                 type="button"
-                className={styles.item}
+                className={classes.item}
                 onClick={onClick}
                 value={suggestion}
                 data-test-id={`searchSuggestion ${suggestion}`}
@@ -98,6 +107,26 @@ class SuggestionList extends Component {
   }
 }
 
-export { SuggestionList as UnwrappedSuggestionList };
+const StyledSuggestionList = withStyles(SuggestionList, () => ({
+  list: {
+    fontSize: 14,
+    fontWeight: 400,
+    marginTop: 4,
+    position: 'relative',
+  },
+  item: {
+    alignItems: 'center',
+    background: colors.light,
+    display: 'flex',
+    height: 48,
+    marginTop: 2,
+    outline: 0,
+    padding: '0 16px 0 72px',
+    width: '100%',
+    textAlign: 'left',
+  },
+}));
 
-export default connect(SuggestionList);
+export { StyledSuggestionList as UnwrappedSuggestionList };
+
+export default connect(StyledSuggestionList);

@@ -6,7 +6,7 @@ import { AppBar } from '@shopgate/pwa-ui-ios';
 import { CrossIcon } from '@shopgate/pwa-ui-shared';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { CheckoutConfirmation as Content } from '@shopgate/engage/checkout/components';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import connect from './CheckoutConfirmation.connector';
 
 const { colors } = themeConfig;

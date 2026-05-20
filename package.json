@@ -58,6 +58,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/react": "^17.0.39",
+    "baseline-browser-mapping": "^2.10.23",
     "detector": "^2.5.0",
     "eslint": "^8.57.1",
     "eslint-formatter-summary": "^1.1.0",

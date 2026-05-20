@@ -1,14 +1,26 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { FormBuilder } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
+import { StylePresets } from '@shopgate/engage/components/Form';
 import { useRegistration } from '../../hooks';
 import Section from '../../../checkout/components/Checkout/CheckoutSection';
 import { ELEMENT_ID_SHIPPING_CONTACT } from '../../constants';
 import generateFormConfig from './RegistrationFormShipping.config';
-import {
-  form, section, shippingFormSection,
-} from './RegistrationContent.style';
+
+const useStyles = makeStyles()(theme => ({
+  form: {
+    ...StylePresets.getOutlinedFormFields(theme),
+    ' .registrationOptInMarketingOptIn': {
+      paddingTop: 0,
+      paddingBottom: theme.spacing(2),
+    },
+  },
+  section: {},
+  shippingFormSection: {
+    paddingBottom: 32,
+  },
+}));
 
 /**
  * The RegistrationFormShipping component.
@@ -16,6 +28,7 @@ import {
  * @returns {JSX}
  */
 const RegistrationFormShipping = ({ isGuest }) => {
+  const { classes, cx } = useStyles();
   const {
     supportedCountries,
     countrySortOrder,
@@ -49,12 +62,12 @@ const RegistrationFormShipping = ({ isGuest }) => {
   return (
     <Section
       title="registration.headlines.shipping_address"
-      className={classNames(section, shippingFormSection)}
+      className={cx(classes.section, classes.shippingFormSection)}
       hasForm
       id={ELEMENT_ID_SHIPPING_CONTACT}
     >
       <FormBuilder
-        className={form}
+        className={classes.form}
         name="RegistrationShipping"
         config={formConfig}
         defaults={defaultShippingFormState}

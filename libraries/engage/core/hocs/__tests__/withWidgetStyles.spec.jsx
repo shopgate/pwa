@@ -7,7 +7,6 @@ jest.mock('../../hooks/useWidgetStyles', () => ({
   useWidgetStyles: jest.fn(),
 }));
 
-// eslint-disable-next-line require-jsdoc
 const MockComponent = () => null;
 
 const widgetStyles = {

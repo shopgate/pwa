@@ -21,14 +21,14 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
   }
 >
   <div
-    className="null engage__product__product-image"
+    className="engage__product__product-image"
   >
     <Image
       alt={null}
       animating={true}
       aria-hidden={true}
       backgroundColor="#fff"
-      className="css-3hjqnz"
+      className="sg-ff8tgd-innerShadow"
       classNameImg=""
       forcePlaceholder={false}
       highestResolutionLoaded={[Function]}
@@ -69,17 +69,13 @@ exports[`<ProductImage /> should apply an inner shadow to the placeholder if tur
   portalName="component.product-image"
 >
   <div
-    className="css-y5kkpq css-3hjqnz"
+    className="sg-7iqvdv-placeholderContainer-innerShadow"
   >
-    <div
-      aria-hidden={true}
-      className="css-1vq3byi"
-      data-test-id="placeHolder"
-    >
-      <Placeholder
-        className="css-1g8mrwn"
-      />
-    </div>
+    <ProductImagePlaceholder
+      noBackground={false}
+      showInnerShadow={true}
+      src="http://placehold.it/300x300"
+    />
   </div>
 </SurroundPortals>
 `;
@@ -105,7 +101,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
   }
 >
   <div
-    className="null engage__product__product-image"
+    className="engage__product__product-image"
   >
     <Image
       alt={null}
@@ -149,36 +145,67 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
 `;
 
 exports[`<ProductImage /> should not apply an inner shadow to the image if turned off via the widget settings 1`] = `
-<ProductImage
-  alt={null}
-  animating={true}
-  className={null}
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  noBackground={false}
-  placeholderSrc={null}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "blur": 2,
-        "height": 50,
-        "width": 50,
-      },
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src="http://placehold.it/300x300"
-  srcmap={null}
-  widgetSettings={
+<SurroundPortals
+  portalName="component.product-image"
+  portalProps={
     {
-      "showInnerShadow": false,
+      "resolutions": [
+        {
+          "blur": 2,
+          "height": 50,
+          "width": 50,
+        },
+        {
+          "height": 440,
+          "width": 440,
+        },
+      ],
+      "src": "http://placehold.it/300x300",
     }
   }
-/>
+>
+  <div
+    className="engage__product__product-image"
+  >
+    <Image
+      alt={null}
+      animating={true}
+      aria-hidden={true}
+      backgroundColor="#fff"
+      className=""
+      classNameImg=""
+      forcePlaceholder={false}
+      highestResolutionLoaded={[Function]}
+      lazy={true}
+      noBackground={false}
+      onError={[Function]}
+      onLoad={[Function]}
+      placeholderSrc={null}
+      ratio={null}
+      resolutions={
+        [
+          {
+            "blur": 2,
+            "height": 50,
+            "width": 50,
+          },
+          {
+            "height": 440,
+            "width": 440,
+          },
+        ]
+      }
+      src="http://placehold.it/300x300"
+      srcmap={null}
+      unwrapped={false}
+      widgetSettings={
+        {
+          "showInnerShadow": false,
+        }
+      }
+    />
+  </div>
+</SurroundPortals>
 `;
 
 exports[`<ProductImage /> should not apply an inner shadow to the placeholder if turned off via the app config 1`] = `
@@ -186,17 +213,13 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalName="component.product-image"
 >
   <div
-    className="css-y5kkpq"
+    className="sg-rvs4ak-placeholderContainer"
   >
-    <div
-      aria-hidden={true}
-      className="css-1vq3byi"
-      data-test-id="placeHolder"
-    >
-      <Placeholder
-        className="css-1g8mrwn"
-      />
-    </div>
+    <ProductImagePlaceholder
+      noBackground={false}
+      showInnerShadow={false}
+      src="http://placehold.it/300x300"
+    />
   </div>
 </SurroundPortals>
 `;
@@ -206,17 +229,13 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalName="component.product-image"
 >
   <div
-    className="css-y5kkpq"
+    className="sg-rvs4ak-placeholderContainer"
   >
-    <div
-      aria-hidden={true}
-      className="css-1vq3byi"
-      data-test-id="placeHolder"
-    >
-      <Placeholder
-        className="css-1g8mrwn"
-      />
-    </div>
+    <ProductImagePlaceholder
+      noBackground={false}
+      showInnerShadow={false}
+      src="http://placehold.it/300x300"
+    />
   </div>
 </SurroundPortals>
 `;
@@ -226,15 +245,15 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
   portalName="component.product-image"
 >
   <div
-    className="css-y5kkpq"
+    className="sg-rvs4ak-placeholderContainer"
   >
     <div
       aria-hidden={true}
-      className="css-1vq3byi"
+      className="sg-1k7fitm-placeholderContent"
       data-test-id="placeHolder"
     >
       <Placeholder
-        className="css-1g8mrwn"
+        className="sg-1k233yj-placeholder"
       />
     </div>
   </div>
@@ -262,7 +281,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
   }
 >
   <div
-    className="null engage__product__product-image"
+    className="engage__product__product-image"
   >
     <Image
       alt={null}

@@ -1,83 +1,71 @@
-import React, { Component } from 'react';
+import React, {
+  useState, useContext, useCallback, useMemo, memo,
+} from 'react';
 import PropTypes from 'prop-types';
 import { FloatingActionButton } from '@shopgate/pwa-ui-material';
 import IndicatorCircle from '@shopgate/pwa-ui-shared/IndicatorCircle';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { I18n } from '@shopgate/engage/components';
+import { makeStyles, cx } from '@shopgate/engage/styles';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import Icon from './components/Icon';
 import connect from './connector';
 import inject from './injector';
-import { button, hidden } from './style';
 
 const { colors } = themeConfig;
 
+const useStyles = makeStyles()({
+  button: {
+    transition: 'background 400ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+  },
+  hidden: {
+    clip: 'rect(1px, 1px, 1px, 1px)',
+    height: '1px',
+    margin: 0,
+    overflow: 'hidden',
+    padding: 0,
+    position: 'absolute',
+    whiteSpace: 'nowrap',
+    width: '1px',
+    zIndex: -1000,
+  },
+});
+
 /**
  * The CartButton component.
+ * @param {Object} props Props from connector and injector.
+ * @returns {JSX.Element}
  */
-class CartButton extends Component {
-  static contextType = ProductContext;
+const CartButton = ({
+  addToCart,
+  conditioner,
+  disabled,
+  loading,
+  options,
+  productId,
+  isRopeFulfillmentMethodAllowed,
+  userLocation,
+  userMethod,
+}) => {
+  const { classes } = useStyles();
+  const { quantity } = useContext(ProductContext);
+  const [clicked, setClicked] = useState(false);
 
-  static propTypes = {
-    addToCart: PropTypes.func.isRequired,
-    conditioner: PropTypes.shape().isRequired,
-    disabled: PropTypes.bool.isRequired,
-    loading: PropTypes.bool.isRequired,
-    options: PropTypes.shape().isRequired,
-    productId: PropTypes.string.isRequired,
-    isRopeFulfillmentMethodAllowed: PropTypes.bool,
-    userLocation: PropTypes.shape(),
-    userMethod: PropTypes.string,
-  };
-
-  static defaultProps = {
-    isRopeFulfillmentMethodAllowed: false,
-    userLocation: null,
-    userMethod: null,
-  };
-
-  /**
-   * @param {Object} props The component props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      clicked: false,
-    };
-  }
-
-  /**
-   * Only update when the clicked state has changed.
-   * @param {Object} nextProps The next component props.
-   * @param {Object} nextState The next component state.
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps, nextState) {
-    return (
-      this.state.clicked !== nextState.clicked ||
-      this.props.disabled !== nextProps.disabled ||
-      this.props.loading !== nextProps.loading
-    );
-  }
-
-  /**
-   * Returns the color for the button.
-   */
-  get color() {
-    if (this.state.clicked) {
+  const color = useMemo(() => {
+    if (clicked) {
       return 'var(--color-button-cta-contrast)';
     }
+    return (disabled && !loading) ? colors.shade5 : 'var(--color-button-cta)';
+  }, [clicked, disabled, loading]);
 
-    return (this.props.disabled && !this.props.loading) ? colors.shade5 : 'var(--color-button-cta)';
-  }
+  const resetClicked = useCallback(() => {
+    setClicked(false);
+  }, []);
 
-  /**
-   * Returns a loading icon or the cart icon.
-   */
-  get icon() {
-    if (this.props.loading) {
+  const icon = useMemo(() => {
+    if (loading) {
       return (
         <IndicatorCircle
           color="var(--color-button-cta-contrast)"
@@ -87,34 +75,17 @@ class CartButton extends Component {
       );
     }
 
-    return <Icon
-      disabled={this.props.disabled}
-      success={this.state.clicked}
-      onSuccess={this.resetClicked}
-    />;
-  }
+    return (
+      <Icon
+        disabled={disabled}
+        success={clicked}
+        onSuccess={resetClicked}
+      />
+    );
+  }, [loading, disabled, clicked, resetClicked]);
 
-  /**
-   * Handles the button click.
-   * Checks if the button can be clicked and if
-   * all criteria set by the conditioner are met.
-   */
-  handleClick = () => {
-    const {
-      disabled,
-      conditioner,
-      addToCart,
-      productId,
-      options,
-      userLocation,
-      userMethod,
-      isRopeFulfillmentMethodAllowed,
-    } = this.props;
-    if (this.state.clicked) {
-      return;
-    }
-
-    if (disabled) {
+  const handleClick = useCallback(() => {
+    if (clicked || disabled) {
       return;
     }
 
@@ -123,15 +94,14 @@ class CartButton extends Component {
         return;
       }
 
-      this.setState({ clicked: true });
+      setClicked(true);
 
       const addToCartData = {
         productId,
         options,
-        quantity: this.context.quantity,
+        quantity,
       };
 
-      // Add the user location for ROPIS if it is set.
       if (
         userLocation !== null
         && userMethod !== DIRECT_SHIP
@@ -149,35 +119,52 @@ class CartButton extends Component {
       addToCart(addToCartData);
 
       broadcastLiveMessage('product.adding_item', {
-        params: { count: this.context.quantity },
+        params: { count: quantity },
       });
     });
-  };
+  }, [
+    clicked,
+    disabled,
+    conditioner,
+    addToCart,
+    productId,
+    options,
+    quantity,
+    userLocation,
+    userMethod,
+    isRopeFulfillmentMethodAllowed,
+  ]);
 
-  /**
-   * Reset the state to make the button clickable again.
-   */
-  resetClicked = () => {
-    this.setState({ clicked: false });
-  };
+  return (
+    <FloatingActionButton
+      background={color}
+      className={cx(classes.button, 'theme__product__header__cta-buttons__cart-button')}
+      onClick={handleClick}
+      disabled={disabled}
+      testId="addToCartButton"
+    >
+      <I18n.Text string="product.add_to_cart" className={classes.hidden} />
+      {icon}
+    </FloatingActionButton>
+  );
+};
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    return (
-      <FloatingActionButton
-        background={this.color}
-        className={`${button} theme__product__header__cta-buttons__cart-button`}
-        onClick={this.handleClick}
-        disabled={this.props.disabled}
-        testId="addToCartButton"
-      >
-        <I18n.Text string="product.add_to_cart" className={hidden} />
-        {this.icon}
-      </FloatingActionButton>
-    );
-  }
-}
+CartButton.propTypes = {
+  addToCart: PropTypes.func.isRequired,
+  conditioner: PropTypes.shape().isRequired,
+  disabled: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  options: PropTypes.shape().isRequired,
+  productId: PropTypes.string.isRequired,
+  isRopeFulfillmentMethodAllowed: PropTypes.bool,
+  userLocation: PropTypes.shape(),
+  userMethod: PropTypes.string,
+};
 
-export default inject(connect(CartButton));
+CartButton.defaultProps = {
+  isRopeFulfillmentMethodAllowed: false,
+  userLocation: null,
+  userMethod: null,
+};
+
+export default inject(connect(memo(CartButton)));

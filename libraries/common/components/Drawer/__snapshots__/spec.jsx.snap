@@ -18,7 +18,7 @@ exports[`<Drawer /> should add custom classes 1`] = `
 >
   <div
     aria-modal={true}
-    className="custom-class-name css-1rg7udn css-kk46gv common__drawer"
+    className="custom-class-name common__drawer sg-15rmibb-container-animationIn"
     onAnimationEnd={[Function]}
     role="dialog"
     style={{}}
@@ -45,7 +45,7 @@ exports[`<Drawer /> should execute callback when drawer close animation did end 
 >
   <div
     aria-modal={true}
-    className="custom-class-name css-1rg7udn css-kk46gv common__drawer"
+    className="custom-class-name common__drawer sg-15rmibb-container-animationIn"
     onAnimationEnd={[Function]}
     role="dialog"
     style={{}}

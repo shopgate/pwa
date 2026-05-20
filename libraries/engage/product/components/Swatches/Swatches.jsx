@@ -1,13 +1,22 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { PRODUCT_SWATCHES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 import { isBeta, useWidgetSettings } from '../../../core';
 import { Swatch } from '../Swatch';
-import { swatchesClass } from './style';
 import connect from './connector';
 
 const WIDGET_ID = '@shopgate/engage/product/Swatches';
+const { typography } = themeConfig;
+
+const useStyles = makeStyles()({
+  swatches: {
+    marginTop: '8px',
+    lineHeight: typography.lineHeight,
+  },
+});
 
 /**
  * Renders only product swatches from a list of characteristics.
@@ -15,6 +24,7 @@ const WIDGET_ID = '@shopgate/engage/product/Swatches';
  * @returns {JSX}
  */
 const Swatches = ({ productId, characteristics }) => {
+  const { classes } = useStyles();
   const settings = useWidgetSettings(WIDGET_ID);
 
   if (!isBeta()) {
@@ -42,7 +52,7 @@ const Swatches = ({ productId, characteristics }) => {
 
   return (
     <SurroundPortals portalName={PRODUCT_SWATCHES} portalProps={{ characteristics }}>
-      <div className={swatchesClass}>
+      <div className={classes.swatches}>
         {swatches.map(swatch => (
           <Swatch key={`${productId}.${swatch.id}`} swatch={swatch} />
         ))}

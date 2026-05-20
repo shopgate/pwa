@@ -6,6 +6,37 @@ const message = '<p><i>This is a html message.</i></p>';
 const title = 'This is the title.';
 
 jest.mock('@shopgate/engage/a11y/components');
+jest.mock('@shopgate/engage/components', () => {
+  const mockReact = jest.requireActual('react');
+
+  function Text({ string }) {
+    return mockReact.createElement('span', null, string);
+  }
+  Text.propTypes = { params: () => null };
+  Text.defaultProps = { params: {} };
+
+  const I18n = { Text };
+
+  function Ellipsis({ children }) {
+    return mockReact.createElement('span', null, children);
+  }
+
+  function Button({
+    children, onClick, disabled, className,
+  }) {
+    return mockReact.createElement('button', {
+      onClick,
+      disabled,
+      className,
+    }, children);
+  }
+
+  return {
+    I18n,
+    Ellipsis,
+    Button,
+  };
+});
 
 describe('<HtmlContentDialog />', () => {
   it('should render with minimal props', () => {

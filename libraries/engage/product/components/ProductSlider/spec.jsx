@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 import React from 'react';
 import { shallow } from 'enzyme';
 import ProductSlider from './index';
@@ -32,4 +31,3 @@ describe('<ProductSlider />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
-/* eslint-enable require-jsdoc */

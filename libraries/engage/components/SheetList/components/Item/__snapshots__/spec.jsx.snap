@@ -45,12 +45,11 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         }
       >
         <div
-          className="css-13azwyo ui-shared__glow"
-          disabled={false}
+          className="sg-p4e9kp-container ui-shared__glow"
           onClick={[Function]}
         >
           <div
-            className="css-1bmd5dz"
+            className="sg-f2xef3-glow"
             style={{}}
           />
           <Link
@@ -102,21 +101,21 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1ojce65"
+        className="sg-oxesat-grid"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1ojce65 css-h7r55a common__grid"
+          className="common__grid sg-1m2nk0b-root-noWrap-grid"
         >
           <GridItem
-            className="css-1tp5o1f"
+            className="sg-h6motv-title"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1tp5o1f css-1gs0ko2"
+              className="sg-427d4o-root-title"
             >
               <div>
                 My Title
@@ -130,7 +129,7 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
             shrink={1}
           >
             <div
-              className=" css-1gs0ko2"
+              className="sg-xljr6b-root"
             >
               <span>
                 I\`m a span.
@@ -169,21 +168,21 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1ojce65"
+        className="sg-oxesat-grid"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1ojce65 css-h7r55a common__grid"
+          className="common__grid sg-1m2nk0b-root-noWrap-grid"
         >
           <GridItem
-            className="css-1tp5o1f"
+            className="sg-h6motv-title"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1tp5o1f css-1gs0ko2"
+              className="sg-427d4o-root-title"
             >
               <div>
                 My Title
@@ -233,15 +232,15 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1ojce65"
+        className="sg-oxesat-grid"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1ojce65 css-h7r55a common__grid"
+          className="common__grid sg-1m2nk0b-root-noWrap-grid"
         >
           <div
-            className="css-1mhrjzj"
+            className="sg-o97c3u-image"
           >
             <img
               alt="Alternative text"
@@ -249,13 +248,13 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
             />
           </div>
           <GridItem
-            className="css-1tp5o1f"
+            className="sg-h6motv-title"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1tp5o1f css-1gs0ko2"
+              className="sg-427d4o-root-title"
             >
               <div>
                 My Title
@@ -322,12 +321,11 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           }
         >
           <div
-            className="css-13azwyo ui-shared__glow"
-            disabled={false}
+            className="sg-p4e9kp-container ui-shared__glow"
             onClick={[Function]}
           >
             <div
-              className="css-1bmd5dz"
+              className="sg-f2xef3-glow"
               style={{}}
             />
             <div
@@ -335,21 +333,21 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
               data-test-id={null}
             >
               <Grid
-                className="css-1ojce65"
+                className="sg-oxesat-grid"
                 component="div"
                 wrap={false}
               >
                 <div
-                  className="css-1ojce65 css-h7r55a common__grid"
+                  className="common__grid sg-1m2nk0b-root-noWrap-grid"
                 >
                   <GridItem
-                    className="css-1tp5o1f"
+                    className="sg-h6motv-title"
                     component="div"
                     grow={1}
                     shrink={1}
                   >
                     <div
-                      className="css-1tp5o1f css-1gs0ko2"
+                      className="sg-427d4o-root-title"
                     >
                       <div>
                         My Title
@@ -393,21 +391,21 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1ojce65"
+        className="sg-oxesat-grid"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1ojce65 css-h7r55a common__grid"
+          className="common__grid sg-1m2nk0b-root-noWrap-grid"
         >
           <GridItem
-            className="css-1tp5o1f css-4va972"
+            className="sg-1hibuk7-title-disabled"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1tp5o1f css-4va972 css-1gs0ko2"
+              className="sg-1n1osdl-root-title-disabled"
             >
               <div>
                 My Title
@@ -447,21 +445,21 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="css-1ojce65 css-1m9e0oa"
+        className="sg-1n7wr56-grid-selected"
         component="div"
         wrap={false}
       >
         <div
-          className="css-1ojce65 css-1m9e0oa css-h7r55a common__grid"
+          className="common__grid sg-6eunye-root-noWrap-grid-selected"
         >
           <GridItem
-            className="css-1tp5o1f"
+            className="sg-h6motv-title"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="css-1tp5o1f css-1gs0ko2"
+              className="sg-427d4o-root-title"
             >
               <div>
                 My Title

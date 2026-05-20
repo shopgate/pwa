@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './styles';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  title: {
+    flex: 1,
+  },
+});
 
 /**
  * Favorite List Accordion Label component
@@ -9,11 +15,15 @@ import styles from './styles';
  */
 const ListAccordionLabel = ({
   title,
-}) => (
-  <span className={styles.title}>
-    {title}
-  </span>
-);
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <span className={classes.title}>
+      {title}
+    </span>
+  );
+};
 
 ListAccordionLabel.propTypes = {
   title: PropTypes.string.isRequired,

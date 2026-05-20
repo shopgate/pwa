@@ -18,7 +18,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement ui-shared__form-element"
+    className="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
     <Placeholder
       aria-hidden={true}
@@ -28,7 +28,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-1ppmfxj css-1jyyyen placeholder"
+        className="placeholder sg-mbc0wh-placeholder-placeholderInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -56,7 +56,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       labelStatic={false}
     >
       <label
-        className="css-1nn9zl4 css-1r91c0g css-1jyyyen label floating"
+        className="label floating sg-knep4g-label-labelFloating"
         htmlFor="test-input"
       >
         <Translate
@@ -81,10 +81,10 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       isFocused={false}
     >
       <div
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -116,17 +116,17 @@ exports[`<FormElement /> should render a focused form element 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement ui-shared__form-element"
+    className="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
     <Underline
       hasErrorMessage={false}
       isFocused={true}
     >
       <div
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -157,7 +157,7 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement ui-shared__form-element"
+    className="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
     <input
       key="test-key"
@@ -167,10 +167,10 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       isFocused={false}
     >
       <div
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -202,17 +202,17 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement ui-shared__form-element"
+    className="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
     <Underline
       hasErrorMessage={false}
       isFocused={false}
     >
       <div
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -244,20 +244,20 @@ exports[`<FormElement /> should show the error message 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement ui-shared__form-element"
+    className="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
     <Underline
       hasErrorMessage={true}
       isFocused={false}
     >
       <div
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-state-alert)",
+              "borderBottomColor": "var(--sg-palette-error-main)",
             }
           }
         />
@@ -274,7 +274,7 @@ exports[`<FormElement /> should show the error message 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="css-68xh0w errorText"
+        className="sg-11p2a3k-root errorText"
         id="ariaError-test-input"
       >
         <Translate
@@ -316,7 +316,7 @@ exports[`<FormElement /> should show the label 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement ui-shared__form-element"
+    className="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
     <Placeholder
       aria-hidden={true}
@@ -326,7 +326,7 @@ exports[`<FormElement /> should show the label 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-1ppmfxj placeholder"
+        className="sg-1m15d1c-placeholder placeholder"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -354,7 +354,7 @@ exports[`<FormElement /> should show the label 1`] = `
       labelStatic={false}
     >
       <label
-        className="css-1nn9zl4 css-1jyyyen label"
+        className="label sg-smo66e-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -379,10 +379,10 @@ exports[`<FormElement /> should show the label 1`] = `
       isFocused={false}
     >
       <div
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -414,7 +414,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
   translateErrorText={true}
 >
   <div
-    className="css-1vjh8yv formElement ui-shared__form-element"
+    className="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
     <Placeholder
       aria-hidden={true}
@@ -424,7 +424,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
     >
       <div
         aria-hidden={true}
-        className="css-1ppmfxj placeholder"
+        className="sg-1m15d1c-placeholder placeholder"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -448,10 +448,10 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       isFocused={false}
     >
       <div
-        className="css-ycal4l underline"
+        className="sg-titfmn-underlineWrapper underline"
       >
         <div
-          className="css-1tpmuef"
+          className="sg-ll3grb-underline"
           style={
             {
               "borderBottomColor": "var(--color-primary, #fa5400)",

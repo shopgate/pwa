@@ -2,28 +2,26 @@
  * @deprecated used @shopgate/engage/styles/reset instead
  */
 
-import { css } from 'glamor';
+import { injectGlobal } from '@shopgate/engage/styles';
 
-css.global('audio:not([controls])', {
-  display: 'none',
-  height: 0,
-});
-
-css.global('figure', {
-  margin: 0,
-});
-
-css.global('iframe', {
-  border: 0,
-  display: 'block',
-  width: '100%',
-});
-
-css.global('img, svg', {
-  display: 'block',
-  maxWidth: '100%',
-});
-
-css.global('progress', {
-  verticalAlign: 'baseline',
+injectGlobal({
+  'audio:not([controls])': {
+    display: 'none',
+    height: 0,
+  },
+  figure: {
+    margin: 0,
+  },
+  iframe: {
+    border: 0,
+    display: 'block',
+    width: '100%',
+  },
+  'img, svg': {
+    display: 'block',
+    maxWidth: '100%',
+  },
+  progress: {
+    verticalAlign: 'baseline',
+  },
 });

@@ -3,8 +3,7 @@ import { mount } from 'enzyme';
 import { withCurrentProduct } from '../withCurrentProduct';
 
 jest.mock('@shopgate/pwa-common/context', () => {
-  // eslint-disable-next-line global-require
-  const { createContext } = require('react');
+  const { createContext } = jest.requireActual('react');
 
   return {
     ThemeContext: createContext({
@@ -23,7 +22,6 @@ jest.mock('@shopgate/pwa-common/context', () => {
   };
 });
 
-// eslint-disable-next-line require-jsdoc
 const MockComponent = () => null;
 
 describe('engage > core > hocs > withCurrentProduct', () => {

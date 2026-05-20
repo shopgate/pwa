@@ -2,13 +2,17 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "declaration": true,
+    "removeComments": false,
     "emitDeclarationOnly": true,
     "declarationMap": true,
     "outDir": "./dist",
     "rootDir": ".",
     "noEmit": false,
     "stripInternal": false,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "tss-react/tools/*": ["../../node_modules/tss-react/tools/*"]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": [

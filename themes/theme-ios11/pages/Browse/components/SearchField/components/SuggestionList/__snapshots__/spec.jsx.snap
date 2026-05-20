@@ -1,11 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SuggestionList /> should not update while suggestions are fetching 1`] = `
-<SuggestionList
+<SuggestionListWithStyles
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
-  searchPhrase=""
   suggestions={
     [
       "foo",
@@ -16,157 +15,178 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
   }
   visible={true}
 >
-  <SurroundPortals
-    portalName="search.suggestions"
-    portalProps={
+  <SuggestionList
+    bottomHeight={10}
+    classes={
       {
-        "bottomHeight": 10,
-        "onClick": [Function],
-        "searchPhrase": "",
-        "suggestions": [
-          "foo",
-          "foo bar",
-          "foo bar buz",
-          "foo bar buz quz",
-        ],
-        "visible": true,
+        "item": "sg-145leov-SuggestionList-item",
+        "list": "sg-1s4ynj-SuggestionList-list",
       }
     }
+    fetching={false}
+    onClick={[Function]}
+    searchPhrase=""
+    suggestions={
+      [
+        "foo",
+        "foo bar",
+        "foo bar buz",
+        "foo bar buz quz",
+      ]
+    }
+    visible={true}
   >
-    <div
-      className="theme__browse__search-field__suggestion-list css-7w6rep css-90ryaa"
+    <SurroundPortals
+      portalName="search.suggestions"
+      portalProps={
+        {
+          "bottomHeight": 10,
+          "onClick": [Function],
+          "searchPhrase": "",
+          "suggestions": [
+            "foo",
+            "foo bar",
+            "foo bar buz",
+            "foo bar buz quz",
+          ],
+          "visible": true,
+        }
+      }
     >
-      <SurroundPortals
-        key="foo"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo",
-          }
-        }
+      <div
+        className="theme__browse__search-field__suggestion-list sg-1s4ynj-SuggestionList-list"
       >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo"
-          onClick={[Function]}
-          type="button"
-          value="foo"
-        >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo",
-              }
+        <SurroundPortals
+          key="foo"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo",
             }
-          >
-            foo
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo bar"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar",
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar"
-          onClick={[Function]}
-          type="button"
-          value="foo bar"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo"
+            onClick={[Function]}
+            type="button"
+            value="foo"
           >
-            foo bar
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo bar buz"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar buz",
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo",
+                }
+              }
+            >
+              foo
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo bar"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar",
+            }
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar buz"
-          onClick={[Function]}
-          type="button"
-          value="foo bar buz"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar buz",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar"
+            onClick={[Function]}
+            type="button"
+            value="foo bar"
           >
-            foo bar buz
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo bar buz quz"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar buz quz",
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar",
+                }
+              }
+            >
+              foo bar
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo bar buz"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar buz",
+            }
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar buz quz"
-          onClick={[Function]}
-          type="button"
-          value="foo bar buz quz"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar buz quz",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar buz"
+            onClick={[Function]}
+            type="button"
+            value="foo bar buz"
           >
-            foo bar buz quz
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-    </div>
-  </SurroundPortals>
-</SuggestionList>
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar buz",
+                }
+              }
+            >
+              foo bar buz
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo bar buz quz"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar buz quz",
+            }
+          }
+        >
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar buz quz"
+            onClick={[Function]}
+            type="button"
+            value="foo bar buz quz"
+          >
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar buz quz",
+                }
+              }
+            >
+              foo bar buz quz
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+      </div>
+    </SurroundPortals>
+  </SuggestionList>
+</SuggestionListWithStyles>
 `;
 
 exports[`<SuggestionList /> should not update while suggestions are fetching 2`] = `
-<SuggestionList
+<SuggestionListWithStyles
   bottomHeight={10}
   fetching={true}
   onClick={[Function]}
-  searchPhrase=""
   suggestions={
     [
       "foo bar buz quz",
@@ -177,157 +197,178 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
   }
   visible={true}
 >
-  <SurroundPortals
-    portalName="search.suggestions"
-    portalProps={
+  <SuggestionList
+    bottomHeight={10}
+    classes={
       {
-        "bottomHeight": 10,
-        "onClick": [Function],
-        "searchPhrase": "",
-        "suggestions": [
-          "foo",
-          "foo bar",
-          "foo bar buz",
-          "foo bar buz quz",
-        ],
-        "visible": true,
+        "item": "sg-145leov-SuggestionList-item",
+        "list": "sg-1s4ynj-SuggestionList-list",
       }
     }
+    fetching={true}
+    onClick={[Function]}
+    searchPhrase=""
+    suggestions={
+      [
+        "foo bar buz quz",
+        "foo bar buz",
+        "foo bar",
+        "foo",
+      ]
+    }
+    visible={true}
   >
-    <div
-      className="theme__browse__search-field__suggestion-list css-7w6rep css-90ryaa"
+    <SurroundPortals
+      portalName="search.suggestions"
+      portalProps={
+        {
+          "bottomHeight": 10,
+          "onClick": [Function],
+          "searchPhrase": "",
+          "suggestions": [
+            "foo",
+            "foo bar",
+            "foo bar buz",
+            "foo bar buz quz",
+          ],
+          "visible": true,
+        }
+      }
     >
-      <SurroundPortals
-        key="foo"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo",
-          }
-        }
+      <div
+        className="theme__browse__search-field__suggestion-list sg-1s4ynj-SuggestionList-list"
       >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo"
-          onClick={[Function]}
-          type="button"
-          value="foo"
-        >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo",
-              }
+        <SurroundPortals
+          key="foo"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo",
             }
-          >
-            foo
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo bar"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar",
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar"
-          onClick={[Function]}
-          type="button"
-          value="foo bar"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo"
+            onClick={[Function]}
+            type="button"
+            value="foo"
           >
-            foo bar
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo bar buz"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar buz",
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo",
+                }
+              }
+            >
+              foo
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo bar"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar",
+            }
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar buz"
-          onClick={[Function]}
-          type="button"
-          value="foo bar buz"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar buz",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar"
+            onClick={[Function]}
+            type="button"
+            value="foo bar"
           >
-            foo bar buz
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo bar buz quz"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar buz quz",
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar",
+                }
+              }
+            >
+              foo bar
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo bar buz"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar buz",
+            }
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar buz quz"
-          onClick={[Function]}
-          type="button"
-          value="foo bar buz quz"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar buz quz",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar buz"
+            onClick={[Function]}
+            type="button"
+            value="foo bar buz"
           >
-            foo bar buz quz
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-    </div>
-  </SurroundPortals>
-</SuggestionList>
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar buz",
+                }
+              }
+            >
+              foo bar buz
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo bar buz quz"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar buz quz",
+            }
+          }
+        >
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar buz quz"
+            onClick={[Function]}
+            type="button"
+            value="foo bar buz quz"
+          >
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar buz quz",
+                }
+              }
+            >
+              foo bar buz quz
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+      </div>
+    </SurroundPortals>
+  </SuggestionList>
+</SuggestionListWithStyles>
 `;
 
 exports[`<SuggestionList /> should not update while suggestions are fetching 3`] = `
-<SuggestionList
+<SuggestionListWithStyles
   bottomHeight={10}
   fetching={false}
   onClick={[Function]}
-  searchPhrase=""
   suggestions={
     [
       "foo bar buz quz",
@@ -338,149 +379,171 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
   }
   visible={true}
 >
-  <SurroundPortals
-    portalName="search.suggestions"
-    portalProps={
+  <SuggestionList
+    bottomHeight={10}
+    classes={
       {
-        "bottomHeight": 10,
-        "onClick": [Function],
-        "searchPhrase": "",
-        "suggestions": [
-          "foo bar buz quz",
-          "foo bar buz",
-          "foo bar",
-          "foo",
-        ],
-        "visible": true,
+        "item": "sg-145leov-SuggestionList-item",
+        "list": "sg-1s4ynj-SuggestionList-list",
       }
     }
+    fetching={false}
+    onClick={[Function]}
+    searchPhrase=""
+    suggestions={
+      [
+        "foo bar buz quz",
+        "foo bar buz",
+        "foo bar",
+        "foo",
+      ]
+    }
+    visible={true}
   >
-    <div
-      className="theme__browse__search-field__suggestion-list css-7w6rep css-90ryaa"
+    <SurroundPortals
+      portalName="search.suggestions"
+      portalProps={
+        {
+          "bottomHeight": 10,
+          "onClick": [Function],
+          "searchPhrase": "",
+          "suggestions": [
+            "foo bar buz quz",
+            "foo bar buz",
+            "foo bar",
+            "foo",
+          ],
+          "visible": true,
+        }
+      }
     >
-      <SurroundPortals
-        key="foo bar buz quz"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar buz quz",
-          }
-        }
+      <div
+        className="theme__browse__search-field__suggestion-list sg-1s4ynj-SuggestionList-list"
       >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar buz quz"
-          onClick={[Function]}
-          type="button"
-          value="foo bar buz quz"
-        >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar buz quz",
-              }
+        <SurroundPortals
+          key="foo bar buz quz"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar buz quz",
             }
-          >
-            foo bar buz quz
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo bar buz"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar buz",
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar buz"
-          onClick={[Function]}
-          type="button"
-          value="foo bar buz"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar buz",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar buz quz"
+            onClick={[Function]}
+            type="button"
+            value="foo bar buz quz"
           >
-            foo bar buz
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo bar"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo bar",
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar buz quz",
+                }
+              }
+            >
+              foo bar buz quz
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo bar buz"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar buz",
+            }
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo bar"
-          onClick={[Function]}
-          type="button"
-          value="foo bar"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo bar",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar buz"
+            onClick={[Function]}
+            type="button"
+            value="foo bar buz"
           >
-            foo bar
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-      <SurroundPortals
-        key="foo"
-        portalName="search.suggestion-item"
-        portalProps={
-          {
-            "className": "css-crua9x",
-            "onClick": [Function],
-            "suggestion": "foo",
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar buz",
+                }
+              }
+            >
+              foo bar buz
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo bar"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo bar",
+            }
           }
-        }
-      >
-        <button
-          className="css-crua9x"
-          data-test-id="searchSuggestion foo"
-          onClick={[Function]}
-          type="button"
-          value="foo"
         >
-          <SurroundPortals
-            portalName="search.suggestion-item-content"
-            portalProps={
-              {
-                "suggestion": "foo",
-              }
-            }
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo bar"
+            onClick={[Function]}
+            type="button"
+            value="foo bar"
           >
-            foo
-          </SurroundPortals>
-        </button>
-      </SurroundPortals>
-    </div>
-  </SurroundPortals>
-</SuggestionList>
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo bar",
+                }
+              }
+            >
+              foo bar
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+        <SurroundPortals
+          key="foo"
+          portalName="search.suggestion-item"
+          portalProps={
+            {
+              "className": "sg-145leov-SuggestionList-item",
+              "onClick": [Function],
+              "suggestion": "foo",
+            }
+          }
+        >
+          <button
+            className="sg-145leov-SuggestionList-item"
+            data-test-id="searchSuggestion foo"
+            onClick={[Function]}
+            type="button"
+            value="foo"
+          >
+            <SurroundPortals
+              portalName="search.suggestion-item-content"
+              portalProps={
+                {
+                  "suggestion": "foo",
+                }
+              }
+            >
+              foo
+            </SurroundPortals>
+          </button>
+        </SurroundPortals>
+      </div>
+    </SurroundPortals>
+  </SuggestionList>
+</SuggestionListWithStyles>
 `;
 
 exports[`<SuggestionList /> should render a list of suggestions 1`] = `
@@ -495,17 +558,16 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
     }
   }
 >
-  <Connect(SuggestionList)
+  <Connect(SuggestionListWithStyles)
     bottomHeight={10}
     onClick={[Function]}
     visible={true}
   >
-    <SuggestionList
+    <SuggestionListWithStyles
       bottomHeight={10}
       dispatch={[Function]}
       fetching={false}
       onClick={[Function]}
-      searchPhrase=""
       suggestions={
         [
           "foo",
@@ -516,173 +578,209 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
       }
       visible={true}
     >
-      <SurroundPortals
-        portalName="search.suggestions"
-        portalProps={
+      <SuggestionList
+        bottomHeight={10}
+        classes={
           {
-            "bottomHeight": 10,
-            "onClick": [Function],
-            "searchPhrase": "",
-            "suggestions": [
-              "foo",
-              "foo bar",
-              "foo bar buz",
-              "foo bar buz quz",
-            ],
-            "visible": true,
+            "item": "sg-145leov-SuggestionList-item",
+            "list": "sg-1s4ynj-SuggestionList-list",
           }
         }
+        dispatch={[Function]}
+        fetching={false}
+        onClick={[Function]}
+        searchPhrase=""
+        suggestions={
+          [
+            "foo",
+            "foo bar",
+            "foo bar buz",
+            "foo bar buz quz",
+          ]
+        }
+        visible={true}
       >
-        <div
-          className="theme__browse__search-field__suggestion-list css-7w6rep css-90ryaa"
+        <SurroundPortals
+          portalName="search.suggestions"
+          portalProps={
+            {
+              "bottomHeight": 10,
+              "onClick": [Function],
+              "searchPhrase": "",
+              "suggestions": [
+                "foo",
+                "foo bar",
+                "foo bar buz",
+                "foo bar buz quz",
+              ],
+              "visible": true,
+            }
+          }
         >
-          <SurroundPortals
-            key="foo"
-            portalName="search.suggestion-item"
-            portalProps={
-              {
-                "className": "css-crua9x",
-                "onClick": [Function],
-                "suggestion": "foo",
-              }
-            }
+          <div
+            className="theme__browse__search-field__suggestion-list sg-1s4ynj-SuggestionList-list"
           >
-            <button
-              className="css-crua9x"
-              data-test-id="searchSuggestion foo"
-              onClick={[Function]}
-              type="button"
-              value="foo"
-            >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  {
-                    "suggestion": "foo",
-                  }
+            <SurroundPortals
+              key="foo"
+              portalName="search.suggestion-item"
+              portalProps={
+                {
+                  "className": "sg-145leov-SuggestionList-item",
+                  "onClick": [Function],
+                  "suggestion": "foo",
                 }
-              >
-                foo
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-          <SurroundPortals
-            key="foo bar"
-            portalName="search.suggestion-item"
-            portalProps={
-              {
-                "className": "css-crua9x",
-                "onClick": [Function],
-                "suggestion": "foo bar",
               }
-            }
-          >
-            <button
-              className="css-crua9x"
-              data-test-id="searchSuggestion foo bar"
-              onClick={[Function]}
-              type="button"
-              value="foo bar"
             >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  {
-                    "suggestion": "foo bar",
-                  }
-                }
+              <button
+                className="sg-145leov-SuggestionList-item"
+                data-test-id="searchSuggestion foo"
+                onClick={[Function]}
+                type="button"
+                value="foo"
               >
-                foo bar
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-          <SurroundPortals
-            key="foo bar buz"
-            portalName="search.suggestion-item"
-            portalProps={
-              {
-                "className": "css-crua9x",
-                "onClick": [Function],
-                "suggestion": "foo bar buz",
+                <SurroundPortals
+                  portalName="search.suggestion-item-content"
+                  portalProps={
+                    {
+                      "suggestion": "foo",
+                    }
+                  }
+                >
+                  foo
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+            <SurroundPortals
+              key="foo bar"
+              portalName="search.suggestion-item"
+              portalProps={
+                {
+                  "className": "sg-145leov-SuggestionList-item",
+                  "onClick": [Function],
+                  "suggestion": "foo bar",
+                }
               }
-            }
-          >
-            <button
-              className="css-crua9x"
-              data-test-id="searchSuggestion foo bar buz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz"
             >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  {
-                    "suggestion": "foo bar buz",
-                  }
-                }
+              <button
+                className="sg-145leov-SuggestionList-item"
+                data-test-id="searchSuggestion foo bar"
+                onClick={[Function]}
+                type="button"
+                value="foo bar"
               >
-                foo bar buz
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-          <SurroundPortals
-            key="foo bar buz quz"
-            portalName="search.suggestion-item"
-            portalProps={
-              {
-                "className": "css-crua9x",
-                "onClick": [Function],
-                "suggestion": "foo bar buz quz",
+                <SurroundPortals
+                  portalName="search.suggestion-item-content"
+                  portalProps={
+                    {
+                      "suggestion": "foo bar",
+                    }
+                  }
+                >
+                  foo bar
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+            <SurroundPortals
+              key="foo bar buz"
+              portalName="search.suggestion-item"
+              portalProps={
+                {
+                  "className": "sg-145leov-SuggestionList-item",
+                  "onClick": [Function],
+                  "suggestion": "foo bar buz",
+                }
               }
-            }
-          >
-            <button
-              className="css-crua9x"
-              data-test-id="searchSuggestion foo bar buz quz"
-              onClick={[Function]}
-              type="button"
-              value="foo bar buz quz"
             >
-              <SurroundPortals
-                portalName="search.suggestion-item-content"
-                portalProps={
-                  {
-                    "suggestion": "foo bar buz quz",
-                  }
-                }
+              <button
+                className="sg-145leov-SuggestionList-item"
+                data-test-id="searchSuggestion foo bar buz"
+                onClick={[Function]}
+                type="button"
+                value="foo bar buz"
               >
-                foo bar buz quz
-              </SurroundPortals>
-            </button>
-          </SurroundPortals>
-        </div>
-      </SurroundPortals>
-    </SuggestionList>
-  </Connect(SuggestionList)>
+                <SurroundPortals
+                  portalName="search.suggestion-item-content"
+                  portalProps={
+                    {
+                      "suggestion": "foo bar buz",
+                    }
+                  }
+                >
+                  foo bar buz
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+            <SurroundPortals
+              key="foo bar buz quz"
+              portalName="search.suggestion-item"
+              portalProps={
+                {
+                  "className": "sg-145leov-SuggestionList-item",
+                  "onClick": [Function],
+                  "suggestion": "foo bar buz quz",
+                }
+              }
+            >
+              <button
+                className="sg-145leov-SuggestionList-item"
+                data-test-id="searchSuggestion foo bar buz quz"
+                onClick={[Function]}
+                type="button"
+                value="foo bar buz quz"
+              >
+                <SurroundPortals
+                  portalName="search.suggestion-item-content"
+                  portalProps={
+                    {
+                      "suggestion": "foo bar buz quz",
+                    }
+                  }
+                >
+                  foo bar buz quz
+                </SurroundPortals>
+              </button>
+            </SurroundPortals>
+          </div>
+        </SurroundPortals>
+      </SuggestionList>
+    </SuggestionListWithStyles>
+  </Connect(SuggestionListWithStyles)>
 </Provider>
 `;
 
 exports[`<SuggestionList /> should render portal without suggestions 1`] = `
-<SuggestionList
+<SuggestionListWithStyles
   bottomHeight={0}
-  fetching={false}
   onClick={[Function]}
-  searchPhrase=""
   suggestions={null}
   visible={true}
 >
-  <SurroundPortals
-    portalName="search.suggestions"
-    portalProps={
+  <SuggestionList
+    bottomHeight={0}
+    classes={
       {
-        "bottomHeight": 0,
-        "onClick": [Function],
-        "searchPhrase": "",
-        "suggestions": null,
-        "visible": true,
+        "item": "sg-145leov-SuggestionList-item",
+        "list": "sg-kzy2pe-SuggestionList-list",
       }
     }
-  />
-</SuggestionList>
+    fetching={false}
+    onClick={[Function]}
+    searchPhrase=""
+    suggestions={null}
+    visible={true}
+  >
+    <SurroundPortals
+      portalName="search.suggestions"
+      portalProps={
+        {
+          "bottomHeight": 0,
+          "onClick": [Function],
+          "searchPhrase": "",
+          "suggestions": null,
+          "visible": true,
+        }
+      }
+    />
+  </SuggestionList>
+</SuggestionListWithStyles>
 `;

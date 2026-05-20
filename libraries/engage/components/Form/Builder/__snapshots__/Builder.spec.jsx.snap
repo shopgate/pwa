@@ -150,16 +150,16 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                 value="default"
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -178,10 +178,10 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
+                      className="label floating sg-grelb-label-labelFloating-labelRegular"
                       htmlFor="foo_foo"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -189,13 +189,8 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                         string="foo"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          foo
-                        </span>
-                      </Translate>
+                        foo
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -228,7 +223,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_foo"
                       inputComponent="input"
@@ -255,7 +250,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_foo"
                         inputComponent="input"
@@ -280,7 +275,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
@@ -307,10 +302,10 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -533,16 +528,16 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 value=""
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -561,10 +556,10 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-1fekhao label"
+                      className="label sg-192rdno-label-labelRegular"
                       htmlFor="foo_foo"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -572,13 +567,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         string="foo"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          foo
-                        </span>
-                      </Translate>
+                        foo
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -611,7 +601,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_foo"
                       inputComponent="input"
@@ -638,7 +628,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_foo"
                         inputComponent="input"
@@ -663,7 +653,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
@@ -690,10 +680,10 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -878,16 +868,16 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 value=""
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -906,10 +896,10 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-1fekhao label"
+                      className="label sg-192rdno-label-labelRegular"
                       htmlFor="foo_bar"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -917,13 +907,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         string="bar"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          bar
-                        </span>
-                      </Translate>
+                        bar
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -956,7 +941,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_bar"
                       inputComponent="input"
@@ -983,7 +968,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_bar"
                         inputComponent="input"
@@ -1008,7 +993,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_bar"
                           inputMode={null}
@@ -1035,10 +1020,10 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -1297,16 +1282,16 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                 value="abc"
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -1325,10 +1310,10 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
+                      className="label floating sg-grelb-label-labelFloating-labelRegular"
                       htmlFor="foo_foo"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -1336,13 +1321,8 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         string="foo"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          foo
-                        </span>
-                      </Translate>
+                        foo
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -1375,7 +1355,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_foo"
                       inputComponent="input"
@@ -1402,7 +1382,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_foo"
                         inputComponent="input"
@@ -1427,7 +1407,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
@@ -1454,10 +1434,10 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -1959,16 +1939,16 @@ exports[`<Builder /> should render two text fields 1`] = `
                 value=""
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -1987,10 +1967,10 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-1fekhao label"
+                      className="label sg-192rdno-label-labelRegular"
                       htmlFor="foo_firstName"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -1998,13 +1978,8 @@ exports[`<Builder /> should render two text fields 1`] = `
                         string="foo"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          foo
-                        </span>
-                      </Translate>
+                        foo
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -2037,7 +2012,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_firstName"
                       inputComponent="input"
@@ -2064,7 +2039,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_firstName"
                         inputComponent="input"
@@ -2089,7 +2064,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_firstName"
                           inputMode={null}
@@ -2116,10 +2091,10 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -2265,16 +2240,16 @@ exports[`<Builder /> should render two text fields 1`] = `
                 value=""
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -2293,10 +2268,10 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-1fekhao label"
+                      className="label sg-192rdno-label-labelRegular"
                       htmlFor="foo_lastName"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -2304,13 +2279,8 @@ exports[`<Builder /> should render two text fields 1`] = `
                         string="bar"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          bar
-                        </span>
-                      </Translate>
+                        bar
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -2343,7 +2313,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_lastName"
                       inputComponent="input"
@@ -2370,7 +2340,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_lastName"
                         inputComponent="input"
@@ -2395,7 +2365,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_lastName"
                           inputMode={null}
@@ -2422,10 +2392,10 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -2654,16 +2624,16 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                 value="default"
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -2682,10 +2652,10 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
+                      className="label floating sg-grelb-label-labelFloating-labelRegular"
                       htmlFor="foo_foo"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -2693,13 +2663,8 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         string="foo"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          foo
-                        </span>
-                      </Translate>
+                        foo
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -2732,7 +2697,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_foo"
                       inputComponent="input"
@@ -2759,7 +2724,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_foo"
                         inputComponent="input"
@@ -2784,7 +2749,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
@@ -2811,10 +2776,10 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -3017,16 +2982,16 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                 value="default"
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -3045,10 +3010,10 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
+                      className="label floating sg-grelb-label-labelFloating-labelRegular"
                       htmlFor="foo_bar"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -3056,13 +3021,8 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         string="bar"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          bar
-                        </span>
-                      </Translate>
+                        bar
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -3095,7 +3055,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_bar"
                       inputComponent="input"
@@ -3122,7 +3082,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_bar"
                         inputComponent="input"
@@ -3147,7 +3107,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_bar"
                           inputMode={null}
@@ -3174,10 +3134,10 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -3460,16 +3420,16 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                 value="abc"
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -3488,10 +3448,10 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
+                      className="label floating sg-grelb-label-labelFloating-labelRegular"
                       htmlFor="foo_foo"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -3499,13 +3459,8 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         string="foo"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          foo
-                        </span>
-                      </Translate>
+                        foo
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -3538,7 +3493,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_foo"
                       inputComponent="input"
@@ -3565,7 +3520,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_foo"
                         inputComponent="input"
@@ -3590,7 +3545,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_foo"
                           inputMode={null}
@@ -3617,10 +3572,10 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",
@@ -3823,16 +3778,16 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                 value="cheat"
               >
                 <div
-                  className="css-e4z0u6 textField ui-shared__text-field"
+                  className="sg-1legmli-input textField ui-shared__text-field"
                 >
                   <Hint
                     hintText=""
                     visible={false}
                   >
                     <div
-                      className="css-tnfb18 css-1jyyyen hint"
+                      className="hint sg-1kbq3o6-hint-hintInactive"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -3851,10 +3806,10 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="css-udxgne css-16msjt6 css-1fekhao label floating"
+                      className="label floating sg-grelb-label-labelFloating-labelRegular"
                       htmlFor="foo_bar"
                     >
-                      <Translate
+                      <Text
                         acceptPlainTextWithPlaceholders={false}
                         className={null}
                         params={{}}
@@ -3862,13 +3817,8 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         string="bar"
                         transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          bar
-                        </span>
-                      </Translate>
+                        bar
+                      </Text>
                     </label>
                   </Label>
                   <FormElement
@@ -3901,7 +3851,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                           "aria-invalid": false,
                         }
                       }
-                      className="css-keangt"
+                      className="sg-1w45uhc-input"
                       disabled={false}
                       id="foo_bar"
                       inputComponent="input"
@@ -3928,7 +3878,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                         }
                         autoComplete={false}
                         autoCorrect={false}
-                        className="css-keangt"
+                        className="sg-1w45uhc-input"
                         disabled={false}
                         id="foo_bar"
                         inputComponent="input"
@@ -3953,7 +3903,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                           aria-invalid={false}
                           autoComplete="off"
                           autoCorrect="off"
-                          className="css-keangt simpleInput common__simple-input"
+                          className="sg-1w45uhc-input simpleInput common__simple-input"
                           disabled={false}
                           id="foo_bar"
                           inputMode={null}
@@ -3980,10 +3930,10 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <div
                       aria-hidden={true}
-                      className="css-ycal4l underline"
+                      className="sg-titfmn-underlineWrapper underline"
                     >
                       <div
-                        className="css-1tpmuef"
+                        className="sg-ll3grb-underline"
                         style={
                           {
                             "borderBottomColor": "var(--color-primary, #fa5400)",

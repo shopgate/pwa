@@ -3,7 +3,7 @@
 exports[`<ValueButton /> should handle click event 1`] = `
 <button
   aria-checked={false}
-  className="css-88kzn7"
+  className="sg-77e381-inactive"
   data-test-id="someid"
   onClick={
     [MockFunction] {
@@ -29,7 +29,7 @@ exports[`<ValueButton /> should handle click event 1`] = `
 exports[`<ValueButton /> should render as active 1`] = `
 <button
   aria-checked={true}
-  className="css-1r82tc9"
+  className="sg-h4u6fa-active"
   data-test-id="someid"
   onClick={[Function]}
   role="checkbox"
@@ -43,7 +43,7 @@ exports[`<ValueButton /> should render as active 1`] = `
 exports[`<ValueButton /> should render as inactive 1`] = `
 <button
   aria-checked={false}
-  className="css-88kzn7"
+  className="sg-77e381-inactive"
   data-test-id="someid"
   onClick={[Function]}
   role="checkbox"

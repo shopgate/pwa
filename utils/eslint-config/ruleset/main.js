@@ -188,6 +188,10 @@ module.exports = {
         'max-classes-per-file': 'off',
         // Allow non-camelcase names in test files (e.g., snake_case from API)
         camelcase: 'off',
+        // Don't require JSDoc in test/mock files
+        'require-jsdoc': 'off',
+        'valid-jsdoc': 'off',
+        'no-console': 'off',
       },
     },
   ],

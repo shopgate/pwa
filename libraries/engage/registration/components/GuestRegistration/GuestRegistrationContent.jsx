@@ -1,6 +1,5 @@
-import React, { Fragment, useMemo } from 'react';
-import { css } from 'glamor';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import React, { useMemo } from 'react';
+import { makeStyles } from '@shopgate/engage/styles';
 import CheckoutHeader from '../../../checkout/components/Checkout/CheckoutHeader';
 import RegistrationFormBilling from '../Registration/RegistrationFormBilling';
 import RegistrationFormShipping from '../Registration/RegistrationFormShipping';
@@ -10,11 +9,9 @@ import RegistrationFormActions from '../Registration/RegistrationFormActions';
 import RegistrationFormPickup from './GuestRegistrationFormPickup';
 import { useRegistration } from '../../hooks';
 
-const { variables } = themeConfig;
-
-const styles = {
-  container: css({
-    padding: `${variables.gap.big}px ${variables.gap.big}px 0`,
+const useStyles = makeStyles()(theme => ({
+  container: {
+    padding: theme.spacing(2, 2, 0),
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',
@@ -22,14 +19,15 @@ const styles = {
       width: '50%',
       paddingRight: 0,
     },
-  }),
-};
+  },
+}));
 
 /**
  * The GuestRegistrationContent component.
  * @returns {JSX}
  */
 const GuestRegistrationContent = () => {
+  const { classes } = useStyles();
   const {
     orderReserveOnly,
     guestRegistrationEditMode,
@@ -50,7 +48,7 @@ const GuestRegistrationContent = () => {
         stepTo={!guestRegistrationEditMode ? 2 : null}
         headline={headline}
       />
-      <div className={styles.container}>
+      <div className={classes.container}>
         <RegistrationFormBilling isGuest />
         <RegistrationFormToggle isGuest />
         <RegistrationFormShipping isGuest />

@@ -1,28 +1,29 @@
 import React, {
   useCallback, useContext,
 } from 'react';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import { Modal, Backdrop } from '@shopgate/engage/components';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { FilterPageProvider } from '@shopgate/engage/filter/providers';
 import { useFilterBarContext } from '../../FilterBarProvider.context';
 import Content from './FilterModalContent';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
     height: '100%',
-  }),
-};
+  },
+});
 
 /**
  * Filter modal
  * @returns {JSX}
  */
 const FilterModal = () => {
+  const { classes } = useStyles();
   const {
     filterModalOpen,
     setFilterModalOpen,
@@ -55,7 +56,7 @@ const FilterModal = () => {
 
   return (
     <Modal>
-      <div className={styles.root}>
+      <div className={classes.root}>
         <Backdrop
           isVisible
           level={0}

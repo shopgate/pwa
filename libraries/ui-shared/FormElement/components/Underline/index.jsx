@@ -1,21 +1,75 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import styles from './style';
+import color from 'color';
+import { getCSSCustomProp, makeStyles, useTheme } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const { colors } = themeConfig;
+
+const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
+
+const useStyles = makeStyles()({
+  underlineWrapper: {
+    position: 'relative',
+    width: '100%',
+    borderBottom: `1px solid ${colors.shade12}`,
+    marginTop: 2,
+    marginBottom: 7,
+  },
+  underline: {
+    position: 'relative',
+    width: '100%',
+    top: 1,
+    borderBottomWidth: 2,
+    borderBottomStyle: 'solid',
+    willChange: 'transform',
+    transition: `transform ${easing}`,
+  },
+});
 
 /**
- *  Renders the label element.
- * @param {Object} props  The component props.
+ * Returns the underline inline style (border color + scale).
+ * @param {boolean} focused Is focused set or not.
+ * @param {boolean} hasError Has error set or not.
+ * @param {string} errorColor Theme error main color.
+ * @return {Object} style
+ */
+const getUnderlineStyle = (focused, hasError, errorColor) => {
+  const primaryColor = getCSSCustomProp('--color-primary') || colors.primary;
+  let focusColor = '--color-primary';
+
+  if (color(primaryColor).luminosity() >= 0.8) {
+    focusColor = '--color-secondary';
+  }
+
+  return {
+    borderBottomColor: hasError ? errorColor : `var(${focusColor}, ${colors.focus})`,
+    ...(!focused && !hasError) && { transform: 'scale3d(0,1,1)' },
+  };
+};
+
+/**
+ * Renders the underline element.
+ * @param {Object} props The component props.
  * @return {JSX}
  */
-const Underline = props => (
-  <div className={classNames(styles.underlineWrapper, 'underline')}>
-    <div
-      className={styles.underline}
-      style={styles.underlineStyle(props.isFocused, props.hasErrorMessage)}
-    />
-  </div>
-);
+const Underline = (props) => {
+  const theme = useTheme();
+  const { classes, cx } = useStyles();
+
+  return (
+    <div className={cx(classes.underlineWrapper, 'underline')}>
+      <div
+        className={classes.underline}
+        style={getUnderlineStyle(
+          props.isFocused,
+          props.hasErrorMessage,
+          theme.palette.error.main
+        )}
+      />
+    </div>
+  );
+};
 
 Underline.propTypes = {
   hasErrorMessage: PropTypes.bool,

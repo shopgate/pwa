@@ -1,12 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import I18n from '@shopgate/pwa-common/components/I18n';
-import { RatingNumber } from '@shopgate/engage/components';
+import { I18n, RatingNumber } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import AverageRating from '../AverageRating';
 import WriteReviewLink from '../WriteReviewLink';
-import * as styles from './style';
+
+const useStyles = makeStyles()(theme => ({
+  container: {
+    fontWeight: 500,
+    margin: 0,
+  },
+  withTopGapContainer: {
+    fontWeight: 500,
+    margin: 0,
+    marginTop: theme.spacing(4),
+  },
+  reviewsLine: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    padding: theme.spacing(0, 0, 1),
+    marginBottom: -2,
+  },
+  averageRatingNumber: {
+    color: 'var(--color-primary)',
+    marginLeft: theme.spacing(1),
+  },
+  averageRatingText: {
+    marginLeft: theme.spacing(2),
+  },
+}));
 
 /**
  * @param {Object} props The component props.
@@ -14,25 +38,29 @@ import * as styles from './style';
  */
 const ReviewsExcerpt = ({
   productId, average, count, withTopGap,
-}) => (
-  <div
-    className={classNames('engage__reviews__reviews-excerpt', {
-      [styles.withTopGapContainer]: withTopGap,
-      [styles.container]: !withTopGap,
-    })}
-    id="reviewsExcerpt"
-  >
-    <AverageRating productId={productId} average={average} count={count} />
-    <div className={styles.reviewsLine}>
-      <I18n.Text string="reviews.rating" className={styles.averageRatingText}>
-        <RatingNumber rating={average} className={styles.averageRatingNumber} />
-      </I18n.Text>
-      {appConfig.showWriteReview && (
-        <WriteReviewLink productId={productId} />
-      )}
+}) => {
+  const { classes, cx } = useStyles();
+
+  return (
+    <div
+      className={cx('engage__reviews__reviews-excerpt', {
+        [classes.withTopGapContainer]: withTopGap,
+        [classes.container]: !withTopGap,
+      })}
+      id="reviewsExcerpt"
+    >
+      <AverageRating productId={productId} average={average} count={count} />
+      <div className={classes.reviewsLine}>
+        <I18n.Text string="reviews.rating" className={classes.averageRatingText}>
+          <RatingNumber rating={average} className={classes.averageRatingNumber} />
+        </I18n.Text>
+        {appConfig.showWriteReview && (
+          <WriteReviewLink productId={productId} />
+        )}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 ReviewsExcerpt.propTypes = {
   average: PropTypes.number,

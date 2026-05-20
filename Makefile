@@ -114,7 +114,8 @@ init:
 
 
 add-remotes:
-		node ./scripts/add-remotes.js 2> /dev/null; # ignore stderr output here
+		# node ./scripts/add-remotes.js 2> /dev/null; # ignore stderr output here
+		node ./scripts/add-remotes.js;
 
 
 

@@ -5,12 +5,12 @@ exports[`<BasicDialog /> should render as expected 1`] = `
   <div
     aria-labelledby="basicDialogTitle basicDialogDesc"
     aria-modal={true}
-    className="css-e1s1x1 ui-ios__base-dialog"
+    className="sg-1at7hhn-container ui-ios__base-dialog"
     data-test-id="basicDialog"
     role="alertdialog"
   >
     <div
-      className="css-1462t03"
+      className="sg-1o3pu1m-content"
     >
       <Title
         title="Hello World"
@@ -24,7 +24,7 @@ exports[`<BasicDialog /> should render as expected 1`] = `
       />
     </div>
     <div
-      className="css-1hb9t7t"
+      className="sg-knc55g-actions"
     >
       <Buttons
         actions={
@@ -54,12 +54,12 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
   <div
     aria-labelledby="basicDialogTitle basicDialogDesc"
     aria-modal={true}
-    className="css-e1s1x1 ui-ios__base-dialog"
+    className="sg-1at7hhn-container ui-ios__base-dialog"
     data-test-id="basicDialog"
     role="alertdialog"
   >
     <div
-      className="css-1462t03"
+      className="sg-1o3pu1m-content"
     >
       <Title
         title={null}
@@ -69,7 +69,7 @@ exports[`<BasicDialog /> should render with minimal props 1`] = `
       />
     </div>
     <div
-      className="css-1hb9t7t"
+      className="sg-knc55g-actions"
     >
       <Buttons
         actions={[]}

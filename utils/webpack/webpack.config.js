@@ -113,6 +113,10 @@ const config = {
       '@shopgate-ps/pwa-extension-kit/': path.resolve(__dirname, 'local-packages/pwa-extension-kit/src/'),
       '@shopgate/pwa-extension-kit': path.resolve(__dirname, 'local-packages/pwa-extension-kit/src'),
       '@shopgate/pwa-extension-kit/': path.resolve(__dirname, 'local-packages/pwa-extension-kit/src/'),
+
+      // Replace tss-react classnames helper with a local patched version
+      'tss-react/esm/tools/classnames.js$': path.resolve(__dirname, 'local-packages/tss-react/esm/tools/classnames.js'),
+      'tss-react/esm/tools/classnames$': path.resolve(__dirname, 'local-packages/tss-react/esm/tools/classnames.js'),
     },
     modules: [
       'node_modules',
@@ -129,6 +133,15 @@ const config = {
     // Create mapping files inside the theme extensions folder the enable access to code that's
     // provided by extensions via extension-config.json
     new ShopgateIndexerPlugin(),
+
+    // Ensure internal relative imports inside tss-react resolve
+    // to our patched classnames file.
+    new webpack.NormalModuleReplacementPlugin(/^\.\/tools\/classnames(\.js)?$/, (resource) => {
+      if (resource.context.includes(`${path.sep}tss-react${path.sep}esm`)) {
+        // eslint-disable-next-line no-param-reassign
+        resource.request = path.resolve(__dirname, 'local-packages/tss-react/esm/tools/classnames.js');
+      }
+    }),
 
     // Inject environment variables so that they are available within the bundled code
     new webpack.DefinePlugin({

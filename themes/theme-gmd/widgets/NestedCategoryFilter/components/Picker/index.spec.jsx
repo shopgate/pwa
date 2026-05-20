@@ -9,7 +9,6 @@ import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
 import { Sheet as MockSheet } from '@shopgate/pwa-ui-shared';
 import { mockedState, categoriesById, emptyRootCategories } from '../../mockData';
 import Picker from './index';
-import styles from './style';
 
 jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
@@ -54,27 +53,23 @@ describe('<NestedCategoryFilterPicker />', () => {
   });
 
   it('should render the picker with no initial category selection', () => {
-    const { label, selection } = styles;
-
     const wrapper = renderComponent(props);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(`div.${label}`).text()).toEqual(props.label);
-    expect(wrapper.find(`div.${selection}`).text()).toEqual('common.please_choose');
+    expect(wrapper.find('[data-test-id="nested-picker-label"]').text()).toEqual(props.label);
+    expect(wrapper.find('[data-test-id="nested-picker-selection"]').text()).toEqual('common.please_choose');
     expect(wrapper.find('SheetDrawer').first().prop('isOpen')).toBe(false);
     expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should render the picker without a label', () => {
-    const { label, selection } = styles;
-
     const wrapper = renderComponent({
       ...props,
       label: '',
     });
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(`div.${label}`).exists()).toBe(false);
-    expect(wrapper.find(`div.${selection}`).text()).toEqual('common.please_choose');
+    expect(wrapper.find('[data-test-id="nested-picker-label"]').exists()).toBe(false);
+    expect(wrapper.find('[data-test-id="nested-picker-selection"]').text()).toEqual('common.please_choose');
   });
 
   it('should handle user interaction as expected', () => {
@@ -99,7 +94,6 @@ describe('<NestedCategoryFilterPicker />', () => {
   });
 
   it('should not accept user interaction when no categoryId was passed', () => {
-    const { label, buttonDisabled } = styles;
     const wrapper = renderComponent({
       ...props,
       categoryId: undefined,
@@ -107,7 +101,7 @@ describe('<NestedCategoryFilterPicker />', () => {
 
     wrapper.find(Picker).simulate('click');
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(`div.${label}`).parent().hasClass(buttonDisabled)).toBe(true);
+    expect(wrapper.find('[data-test-id="nested-picker-trigger"]').prop('aria-disabled')).toBe(true);
     expect(wrapper.find('SheetDrawer').first().prop('isOpen')).toBe(false);
     expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });

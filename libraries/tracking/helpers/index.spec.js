@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import core from '@shopgate/tracking-core/core/Core';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import {
   createScannerEventData,
   buildScannerUtmUrl,
@@ -11,7 +11,8 @@ import {
 } from './index';
 import { checkoutOrder } from './index.spec.mock';
 
-jest.mock('@shopgate/engage/core', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  mutable: input => input,
   i18n: {
     text: jest.fn(),
   },

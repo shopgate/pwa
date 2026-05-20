@@ -1,11 +1,19 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   COUPON_TYPE_FIXED,
   COUPON_TYPE_PERCENTAGE,
 } from '@shopgate/pwa-common-commerce/cart';
 import Price from '@shopgate/pwa-ui-shared/Price';
-import styles from './CartItemCouponPrice.style';
+
+const useStyles = makeStyles()({
+  price: {
+    fontSize: '1rem',
+    fontWeight: 500,
+    color: 'var(--color-primary)',
+  },
+});
 /**
  * @typedef {import('../../cart.types').SavedPrice} SavedPrice
  */
@@ -20,10 +28,11 @@ import styles from './CartItemCouponPrice.style';
  * @returns {JSX.Element|null}
  */
 export const CartItemCouponPrice = React.memo(({ currency, savedPrice }) => {
+  const { classes } = useStyles();
   if (savedPrice.type === COUPON_TYPE_FIXED) {
     return (
       <Price
-        className={styles}
+        className={classes.price}
         currency={currency}
         discounted
         unitPrice={-savedPrice.value}
@@ -33,7 +42,7 @@ export const CartItemCouponPrice = React.memo(({ currency, savedPrice }) => {
 
   if (savedPrice.type === COUPON_TYPE_PERCENTAGE) {
     return (
-      <span className={styles}>
+      <span className={classes.price}>
         {`-${savedPrice.value}%`}
       </span>
     );

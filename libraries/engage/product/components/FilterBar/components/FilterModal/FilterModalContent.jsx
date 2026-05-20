@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import { themeConfig } from '@shopgate/engage';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useFilterPage } from '@shopgate/engage/filter/hooks';
 import FilterPageContent from '@shopgate/engage/filter/components/FilterPageContent';
 import Title from './FilterModalTitle';
 
 const { colors } = themeConfig;
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     zIndex: 1,
     background: colors.light,
     borderRadius: 4,
@@ -24,12 +23,12 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     overflow: 'hidden',
-  }),
-  scrollable: css({
+  },
+  scrollable: {
     overflow: 'auto',
     flex: 1,
-  }),
-};
+  },
+});
 
 /**
  * Filter modal content component
@@ -38,16 +37,17 @@ const styles = {
 const FilterModalContent = ({
   onClose,
 }) => {
+  const { classes } = useStyles();
   const { applyFilters, resetAllFilters } = useFilterPage();
 
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <Title
         apply={applyFilters}
         reset={resetAllFilters}
         close={onClose}
       />
-      <div className={styles.scrollable}>
+      <div className={classes.scrollable}>
         <FilterPageContent />
       </div>
     </div>

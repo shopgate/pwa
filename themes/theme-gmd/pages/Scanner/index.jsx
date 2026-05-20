@@ -1,13 +1,8 @@
 import React from 'react';
-import { css } from 'glamor';
 import { useRoute, useTheme } from '@shopgate/engage/core';
 import { ScannerContainer, ScannerOverlay } from '@shopgate/engage/components';
+import { GlobalStyles } from '@shopgate/engage/styles';
 import { SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE } from '@shopgate/engage/scanner';
-
-// Disable rubber band effect hack for scanner view to prevent scrollable viewfinder
-css.global('.engage__view__content.route__scanner', {
-  '--extra-ios-scroll-space': '0px !important',
-});
 
 /**
  * The scanner page component.
@@ -19,6 +14,14 @@ const ScannerView = () => {
 
   return (
     <View background="transparent">
+      {/* Disable rubber band effect to prevent a scrollable viewfinder. */}
+      <GlobalStyles
+        styles={{
+          '.engage__view__content.route__scanner': {
+            '--extra-ios-scroll-space': '0px !important',
+          },
+        }}
+      />
       <AppBar title="titles.scanner" right={null} />
       <ScannerContainer scope={scope} type={type}>
         <ScannerOverlay />

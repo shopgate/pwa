@@ -17,7 +17,6 @@ jest.mock('@shopgate/pwa-core/classes/Event', () => ({
   removeCallback: jest.fn(),
 }));
 
-// eslint-disable-next-line require-jsdoc
 const MockComponent = () => null;
 
 describe('engage > core > providers > AppProvider', () => {

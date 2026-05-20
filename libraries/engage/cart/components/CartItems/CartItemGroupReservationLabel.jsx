@@ -1,10 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { LocationIcon } from '@shopgate/engage/components';
 import { BOPIS } from '@shopgate/engage/locations';
-import { address, addressIcon, title } from './CartItemGroup.style';
+import { makeStyles } from '@shopgate/engage/styles';
 /** @typedef {import('@shopgate/engage/locations/locations.types').LocationAware} LocationAware */
+
+const useStyles = makeStyles()(theme => ({
+  address: {
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    fontSize: '0.875rem',
+  },
+  addressIcon: {
+    fontSize: '1.25rem',
+    padding: theme.spacing(1, 1, 0, 0),
+    flexShrink: 0,
+  },
+  title: {
+    fontWeight: 600,
+  },
+}));
 
 /**
  * Renders the cart reservation group label.
@@ -12,6 +28,7 @@ import { address, addressIcon, title } from './CartItemGroup.style';
  * @returns {JSX.Element|null}
  */
 export function CartItemGroupReservationLabel({ location, fulfillmentMethod }) {
+  const { classes } = useStyles();
   if (!location) {
     return null;
   }
@@ -19,12 +36,12 @@ export function CartItemGroupReservationLabel({ location, fulfillmentMethod }) {
   const suffix = fulfillmentMethod === BOPIS ? 'bopis' : 'ropis';
 
   return (
-    <div className={address}>
-      <div className={addressIcon}>
+    <div className={classes.address}>
+      <div className={classes.addressIcon}>
         <LocationIcon />
       </div>
       <div>
-        <div className={title}>
+        <div className={classes.title}>
           {i18n.text(`locations.method.${suffix}`)}
         </div>
         {location.name}

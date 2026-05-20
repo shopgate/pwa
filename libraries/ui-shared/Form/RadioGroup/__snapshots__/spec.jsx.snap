@@ -31,10 +31,10 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
-        className="css-1t62idy radioGroup"
+        className="sg-rr50qp-container radioGroup"
       >
         <RadioItem
           attributes={null}
@@ -47,11 +47,11 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 foo radioItem"
+            className="sg-obun7b-container foo radioItem"
             htmlFor="foo"
           >
             <UncheckedIcon
-              className="css-pljilv uncheckedIcon"
+              className="sg-10dwlu9-icon uncheckedIcon"
             />
             <input
               aria-labelledby="foo-label"
@@ -63,10 +63,14 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
               type="radio"
             />
             <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="css-1hju4sd label"
+              className="sg-17gczke-label label"
               id="foo-label"
+              params={{}}
+              role={null}
               string="foo"
+              transform={null}
             >
               foo
             </Text>
@@ -109,10 +113,10 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
-        className="css-1t62idy radioGroup"
+        className="sg-rr50qp-container radioGroup"
       >
         <RadioItem
           attributes={null}
@@ -125,11 +129,11 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 foo radioItem"
+            className="sg-obun7b-container foo radioItem"
             htmlFor="foo"
           >
             <UncheckedIcon
-              className="css-pljilv uncheckedIcon"
+              className="sg-10dwlu9-icon uncheckedIcon"
             />
             <input
               aria-labelledby="foo-label"
@@ -141,10 +145,14 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               type="radio"
             />
             <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="css-1hju4sd label"
+              className="sg-17gczke-label label"
               id="foo-label"
+              params={{}}
+              role={null}
               string="foo"
+              transform={null}
             >
               foo
             </Text>
@@ -161,11 +169,11 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 bar radioItem"
+            className="sg-obun7b-container bar radioItem"
             htmlFor="bar"
           >
             <UncheckedIcon
-              className="css-pljilv uncheckedIcon"
+              className="sg-10dwlu9-icon uncheckedIcon"
             />
             <input
               aria-labelledby="bar-label"
@@ -177,10 +185,14 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               type="radio"
             />
             <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="css-1hju4sd label"
+              className="sg-17gczke-label label"
               id="bar-label"
+              params={{}}
+              role={null}
               string="bar"
+              transform={null}
             >
               bar
             </Text>
@@ -223,10 +235,10 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
-        className="css-1t62idy radioGroup"
+        className="sg-rr50qp-container radioGroup"
       >
         <RadioItem
           attributes={null}
@@ -239,11 +251,11 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 foo radioItem"
+            className="sg-obun7b-container foo radioItem"
             htmlFor="foo"
           >
             <UncheckedIcon
-              className="css-pljilv uncheckedIcon"
+              className="sg-10dwlu9-icon uncheckedIcon"
             />
             <input
               aria-labelledby="foo-label"
@@ -255,10 +267,14 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
               type="radio"
             />
             <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="css-1hju4sd label"
+              className="sg-17gczke-label label"
               id="foo-label"
+              params={{}}
+              role={null}
               string="foo"
+              transform={null}
             >
               foo
             </Text>
@@ -301,10 +317,10 @@ exports[`<RadioGroup /> should render empty group 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
-        className="css-1t62idy radioGroup"
+        className="sg-rr50qp-container radioGroup"
       />
     </div>
   </FormElement>
@@ -342,10 +358,10 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
-        className="css-1gehsfr radioGroup"
+        className="sg-1vn8p4b-container radioGroup"
       >
         <RadioItem
           attributes={null}
@@ -358,11 +374,11 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 foo radioItem"
+            className="sg-obun7b-container foo radioItem"
             htmlFor="foo"
           >
             <UncheckedIcon
-              className="css-pljilv uncheckedIcon"
+              className="sg-10dwlu9-icon uncheckedIcon"
             />
             <input
               aria-labelledby="foo-label"
@@ -374,10 +390,14 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
               type="radio"
             />
             <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="css-1hju4sd label"
+              className="sg-17gczke-label label"
               id="foo-label"
+              params={{}}
+              role={null}
               string="foo"
+              transform={null}
             >
               foo
             </Text>
@@ -420,10 +440,10 @@ exports[`<RadioGroup /> should use default value 1`] = `
     translateErrorText={true}
   >
     <div
-      className="css-1vjh8yv radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
+      className="sg-1iey9hl-formElement radioGroup ui-shared__form__radio-group formElement ui-shared__form-element"
     >
       <div
-        className="css-1t62idy radioGroup"
+        className="sg-rr50qp-container radioGroup"
       >
         <RadioItem
           attributes={null}
@@ -436,11 +456,11 @@ exports[`<RadioGroup /> should use default value 1`] = `
           onChange={[Function]}
         >
           <label
-            className="css-15broj4 foo radioItem"
+            className="sg-obun7b-container foo radioItem"
             htmlFor="foo"
           >
             <CheckedIcon
-              className="css-1ynyzke css-pljilv checkedIcon"
+              className="checkedIcon sg-1cj7vn2-active-icon"
             />
             <input
               aria-labelledby="foo-label"
@@ -452,10 +472,14 @@ exports[`<RadioGroup /> should use default value 1`] = `
               type="radio"
             />
             <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="css-1hju4sd label"
+              className="sg-17gczke-label label"
               id="foo-label"
+              params={{}}
+              role={null}
               string="foo"
+              transform={null}
             >
               foo
             </Text>

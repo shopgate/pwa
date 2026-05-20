@@ -37,11 +37,7 @@ exports[`<Header /> should render empty 1`] = `
         productId="foo"
       >
         <div
-          className={
-            {
-              "data-css-1ppx0ok": "",
-            }
-          }
+          className="sg-1p31f2r-container"
         >
           <AverageRating
             average={0}
@@ -49,7 +45,7 @@ exports[`<Header /> should render empty 1`] = `
             productId="foo"
           >
             <Link
-              className="css-1us3hnd"
+              className="sg-16m0zyl-container"
               data-test-id="ratedStarsAverage"
               disabled={false}
               href="/item/666f6f/write_review"
@@ -68,15 +64,15 @@ exports[`<Header /> should render empty 1`] = `
               >
                 <div
                   aria-label="reviews.rating_stars"
-                  className="css-13azwyo  ui-shared__rating-stars"
+                  className="sg-1tckjm8-container ui-shared__rating-stars"
                   data-test-id="ratedStars: 0"
                   role="img"
                 >
                   <div
-                    className="css-4s85e9 rating-stars-empty"
+                    className="sg-170uo4n-emptyStars rating-stars-empty"
                   >
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="1"
                     >
                       <Star
@@ -87,7 +83,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -106,7 +102,7 @@ exports[`<Header /> should render empty 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="2"
                     >
                       <Star
@@ -117,7 +113,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -136,7 +132,7 @@ exports[`<Header /> should render empty 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="3"
                     >
                       <Star
@@ -147,7 +143,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -166,7 +162,7 @@ exports[`<Header /> should render empty 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="4"
                     >
                       <Star
@@ -177,7 +173,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -196,7 +192,7 @@ exports[`<Header /> should render empty 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="5"
                     >
                       <Star
@@ -207,7 +203,7 @@ exports[`<Header /> should render empty 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -227,7 +223,7 @@ exports[`<Header /> should render empty 1`] = `
                     </div>
                   </div>
                   <div
-                    className="css-16bht0q rating-stars-filled"
+                    className="sg-8o0m3k-filledStars rating-stars-filled"
                   />
                 </div>
               </RatingStars>
@@ -238,14 +234,15 @@ exports[`<Header /> should render empty 1`] = `
             </Link>
           </AverageRating>
           <div
-            className={
-              {
-                "data-css-108dizf": "",
-              }
-            }
+            className="sg-j878ir-noReviews"
           >
             <Text
+              acceptPlainTextWithPlaceholders={false}
+              className={null}
+              params={{}}
+              role={null}
               string="reviews.no_reviews"
+              transform={null}
             >
               reviews.no_reviews
             </Text>
@@ -286,10 +283,11 @@ exports[`<Header /> should render empty 1`] = `
                       wrapContent={true}
                     >
                       <div
-                        className="ui-shared__action-button css-1yv2jt6"
+                        className="ui-shared__action-button sg-id1nq4-noGap"
                         data-test-id={null}
                       >
                         <RippleButton
+                          aria-label="reviews.button_add"
                           className=""
                           disabled={false}
                           flat={true}
@@ -301,6 +299,7 @@ exports[`<Header /> should render empty 1`] = `
                           wrapContent={true}
                         >
                           <Button
+                            aria-label="reviews.button_add"
                             className=" ui-shared__ripple-button"
                             disabled={false}
                             flat={true}
@@ -310,19 +309,21 @@ exports[`<Header /> should render empty 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button css-k7u7lv  ui-shared__ripple-button"
+                              aria-label="reviews.button_add"
+                              className="ui-shared__button sg-1uz0bre-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={[Function]}
                               testId="Button"
                             >
                               <button
-                                className="ui-shared__button css-k7u7lv  ui-shared__ripple-button css-1rn65c0 common__button"
+                                aria-label="reviews.button_add"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-1w8dk5h-root-button"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
                               >
                                 <Ripple
-                                  className="css-1fscwua "
+                                  className="sg-fpa50s-contentWrapper"
                                   color="#000"
                                   disabled={false}
                                   fill={true}
@@ -332,13 +333,18 @@ exports[`<Header /> should render empty 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    className="ui-shared__ripple css-1fscwua "
+                                    className="ui-shared__ripple sg-fpa50s-contentWrapper"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
                                   >
                                     <Text
+                                      acceptPlainTextWithPlaceholders={false}
+                                      className={null}
+                                      params={{}}
+                                      role={null}
                                       string="reviews.button_add"
+                                      transform={null}
                                     >
                                       reviews.button_add
                                     </Text>
@@ -402,7 +408,7 @@ exports[`<Header /> should render rating summary 1`] = `
         withTopGap={false}
       >
         <div
-          className="engage__reviews__reviews-excerpt css-1ppx0ok"
+          className="engage__reviews__reviews-excerpt sg-1p31f2r-container"
           id="reviewsExcerpt"
         >
           <AverageRating
@@ -411,7 +417,7 @@ exports[`<Header /> should render rating summary 1`] = `
             productId="foo"
           >
             <Link
-              className="css-1us3hnd"
+              className="sg-16m0zyl-container"
               data-test-id="ratedStarsAverage"
               disabled={false}
               href="/item/666f6f/write_review"
@@ -430,15 +436,15 @@ exports[`<Header /> should render rating summary 1`] = `
               >
                 <div
                   aria-label="reviews.rating_stars"
-                  className="css-13azwyo  ui-shared__rating-stars"
+                  className="sg-1tckjm8-container ui-shared__rating-stars"
                   data-test-id="ratedStars: 2.5"
                   role="img"
                 >
                   <div
-                    className="css-4s85e9 rating-stars-empty"
+                    className="sg-170uo4n-emptyStars rating-stars-empty"
                   >
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="1"
                     >
                       <Star
@@ -449,7 +455,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -468,7 +474,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="2"
                     >
                       <Star
@@ -479,7 +485,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -498,7 +504,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="3"
                     >
                       <Star
@@ -509,7 +515,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -528,7 +534,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="4"
                     >
                       <Star
@@ -539,7 +545,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -558,7 +564,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="5"
                     >
                       <Star
@@ -569,7 +575,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -589,10 +595,10 @@ exports[`<Header /> should render rating summary 1`] = `
                     </div>
                   </div>
                   <div
-                    className="css-16bht0q rating-stars-filled"
+                    className="sg-8o0m3k-filledStars rating-stars-filled"
                   >
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="6"
                     >
                       <Star
@@ -603,7 +609,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -622,7 +628,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="7"
                     >
                       <Star
@@ -633,7 +639,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
@@ -652,7 +658,7 @@ exports[`<Header /> should render rating summary 1`] = `
                       </Star>
                     </div>
                     <div
-                      className="css-ntfpo9 css-q4owmg"
+                      className="sg-1e9cjpt-icon-iconGapLarge"
                       key="2"
                     >
                       <StarHalfIcon
@@ -663,7 +669,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           size="2.3em"
                         >
                           <svg
-                            className="css-1n8b10t-root common__icon"
+                            className="sg-1n8b10t-root common__icon"
                             dangerouslySetInnerHTML={
                               {
                                 "__html": "<defs><path id="a" d="M0 0h24v24H0z"/></defs> <clipPath id="b"><use xlink:href="#a" overflow="visible"/></clipPath> <path clip-path="ul(#b)" d="M12 2L9.2 8.6 2 9.2 7.5 14l-1.6 7 6.2-3.7m-.1-1.9V6.1m2.8 7.3"/>",
@@ -688,9 +694,9 @@ exports[`<Header /> should render rating summary 1`] = `
                 count={4}
                 prominent={false}
               >
-                <Translate
+                <Text
                   acceptPlainTextWithPlaceholders={false}
-                  className="css-a7xi3l engage__reviews__rating-count"
+                  className="sg-ee426l-greyStyle engage__reviews__rating-count"
                   params={
                     {
                       "count": 4,
@@ -701,45 +707,24 @@ exports[`<Header /> should render rating summary 1`] = `
                   string="reviews.review_count"
                   transform={null}
                 >
-                  <span
-                    className="css-a7xi3l engage__reviews__rating-count"
-                    role={null}
-                  >
-                    reviews.review_count
-                  </span>
-                </Translate>
+                  reviews.review_count
+                </Text>
               </RatingCount>
             </Link>
           </AverageRating>
           <div
-            className={
-              {
-                "data-css-1anve4d": "",
-              }
-            }
+            className="sg-1gye89q-reviewsLine"
           >
-            <Translate
+            <Text
               acceptPlainTextWithPlaceholders={false}
-              className="css-1nftllw"
+              className="sg-15ijniw-averageRatingText"
               params={{}}
               role={null}
               string="reviews.rating"
               transform={null}
             >
-              <span
-                className="css-1nftllw"
-                role={null}
-              >
-                reviews.rating
-                <RatingNumber
-                  className="css-1t6w7m8"
-                  key=".0"
-                  rating={50}
-                >
-                  50
-                </RatingNumber>
-              </span>
-            </Translate>
+              reviews.rating
+            </Text>
             <WriteReviewLink
               productId="foo"
             >
@@ -777,10 +762,11 @@ exports[`<Header /> should render rating summary 1`] = `
                       wrapContent={true}
                     >
                       <div
-                        className="ui-shared__action-button css-1yv2jt6"
+                        className="ui-shared__action-button sg-id1nq4-noGap"
                         data-test-id={null}
                       >
                         <RippleButton
+                          aria-label="reviews.button_add"
                           className=""
                           disabled={false}
                           flat={true}
@@ -792,6 +778,7 @@ exports[`<Header /> should render rating summary 1`] = `
                           wrapContent={true}
                         >
                           <Button
+                            aria-label="reviews.button_add"
                             className=" ui-shared__ripple-button"
                             disabled={false}
                             flat={true}
@@ -801,19 +788,21 @@ exports[`<Header /> should render rating summary 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button css-k7u7lv  ui-shared__ripple-button"
+                              aria-label="reviews.button_add"
+                              className="ui-shared__button sg-1uz0bre-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={[Function]}
                               testId="Button"
                             >
                               <button
-                                className="ui-shared__button css-k7u7lv  ui-shared__ripple-button css-1rn65c0 common__button"
+                                aria-label="reviews.button_add"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-1w8dk5h-root-button"
                                 data-test-id="Button"
                                 disabled={false}
                                 onClick={[Function]}
                               >
                                 <Ripple
-                                  className="css-1fscwua "
+                                  className="sg-fpa50s-contentWrapper"
                                   color="#000"
                                   disabled={false}
                                   fill={true}
@@ -823,13 +812,18 @@ exports[`<Header /> should render rating summary 1`] = `
                                   size={null}
                                 >
                                   <div
-                                    className="ui-shared__ripple css-1fscwua "
+                                    className="ui-shared__ripple sg-fpa50s-contentWrapper"
                                     data-test-id="Ripple"
                                     onClick={[Function]}
                                     style={null}
                                   >
                                     <Text
+                                      acceptPlainTextWithPlaceholders={false}
+                                      className={null}
+                                      params={{}}
+                                      role={null}
                                       string="reviews.button_add"
+                                      transform={null}
                                     >
                                       reviews.button_add
                                     </Text>

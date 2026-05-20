@@ -1,57 +1,60 @@
-import React, { Fragment, useContext } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { css } from 'glamor';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
-import { errorBehavior } from '@shopgate/engage/core';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { errorBehavior, isIOSTheme } from '@shopgate/engage/core';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
-import { spacer } from './PaymentBarContent.style';
 
-const styles = {
-  line: css({
+const useStyles = makeStyles()(theme => ({
+  line: {
     justifyContent: 'start',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       fontSize: '0.75rem',
       paddingBottom: 3,
     },
-  }).toString(),
-  message: css({
+  },
+  message: {
     order: 2,
-  }).toString(),
-  error: css({
-    color: 'var(--color-state-alert)',
-  }).toString(),
-  warning: css({
-    color: 'var(--color-state-warning)',
-  }).toString(),
-  info: css({
-    color: 'var(--color-state-ok)',
-  }).toString(),
-  loading: css({
+  },
+  error: {
+    color: theme.palette.error.main,
+  },
+  warning: {
+    color: theme.palette.warning.main,
+  },
+  info: {
+    color: theme.palette.success.main,
+  },
+  loading: {
     opacity: 0.4,
-  }).toString(),
-};
+  },
+  spacer: {
+    width: isIOSTheme() ? 27 : 32,
+    order: 1,
+    flexShrink: 0,
+  },
+}));
 
 /**
  * @param {Object} props The components props
  * @returns {JSX}
  */
 const PaymentBarPromotionCouponMessages = ({ messages }) => {
+  const { classes, cx } = useStyles();
   const { isLoading } = useContext(CartContext);
   if (!messages.length) {
     return null;
   }
 
   return messages.map(({ message, additionalParams, type }) => (
-    <CartTotalLine className={styles.line} key={message}>
+    <CartTotalLine className={classes.line} key={message}>
       <>
-        <CartTotalLine.Spacer className={spacer} />
-        <div className={classNames(styles.message, {
-          [styles.loading]: isLoading,
-          [styles.error]: type === 'error',
-          [styles.warning]: type === 'warning',
-          [styles.info]: type === 'info',
+        <CartTotalLine.Spacer className={classes.spacer} />
+        <div className={cx(classes.message, {
+          [classes.loading]: isLoading,
+          [classes.error]: type === 'error',
+          [classes.warning]: type === 'warning',
+          [classes.info]: type === 'info',
         })}
         >
           {errorBehavior.getErrorMessage(message, additionalParams)}
