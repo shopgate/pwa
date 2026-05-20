@@ -31,16 +31,28 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           default: colors.light,
           emphasized: colors.placeholder || '#F2F2F2',
         },
+        text: {
+          primary: getCSSCustomProp('--color-text-high-emphasis') || '#1A1A1A',
+          secondary: getCSSCustomProp('--color-text-medium-emphasis') || '#808080',
+        },
+        link: {
+          color: getCSSCustomProp('--color-link') || getCSSCustomProp('--color-primary'),
+        },
         input: {
           background: '#F2F2F2',
           border: '#CCCCCC',
         },
+        ctaButton: {
+          background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
+        },
+        disabledButton: {
+          background: '#CCCCCC',
+        },
         discountBadge: {
           background: '#857500',
         },
-        text: {
-          primary: getCSSCustomProp('--color-text-high-emphasis') || '#1A1A1A',
-          secondary: getCSSCustomProp('--color-text-medium-emphasis') || '#808080',
+        snackbar: {
+          background: 'var(--snackbar-background, #323232)',
         },
         tabBar: {
           background: 'var(--tab-bar-background, #FFFFFF)',
