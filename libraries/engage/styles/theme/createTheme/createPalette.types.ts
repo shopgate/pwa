@@ -136,13 +136,6 @@ export const paletteSchema = {
     emphasized: '',
   },
   /**
-   * Colors to be used for the background and border of input elements
-   */
-  input: {
-    background: '',
-    border: '',
-  },
-  /**
    * Colors to be used for text.
    */
   text: {
@@ -150,9 +143,40 @@ export const paletteSchema = {
     secondary: '',
   },
   /**
+   * Colors to be used for links.
+   */
+  link: {
+    color: '',
+  },
+  /**
+   * Colors to be used for the background and border of input elements
+   */
+  input: {
+    background: '',
+    border: '',
+  },
+  /**
+   * Colors to be used for the call-to-action buttons
+   */
+  ctaButton: {
+    background: '',
+  },
+  /**
+   * Colors to be used for disabled buttons
+   */
+  disabledButton: {
+    background: '',
+  },
+  /**
    * Colors to be used for the background and text of discount badges
    */
   discountBadge: {
+    background: '',
+  },
+  /**
+   * Colors to be used for the background of snackbars
+   */
+  snackbar: {
     background: '',
   },
   /**
