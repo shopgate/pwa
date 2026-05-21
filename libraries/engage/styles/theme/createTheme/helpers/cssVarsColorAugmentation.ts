@@ -20,6 +20,8 @@ function addAugmentationToVars(
         // Inject css color-mix function to create light and dark variants of the main color
         light: theme.lighten(paletteEntry.main),
         dark: theme.darken(paletteEntry.main),
+        // Inject contrast text color based on the main color
+        contrastText: theme.contrastColor(paletteEntry.main),
       };
     }
   });

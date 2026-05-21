@@ -51,6 +51,16 @@ export const darken = (
 ): string => `color-mix(in oklch, ${color}, #000 ${coefficientToPercentage(coefficient)})`;
 
 /**
+ * Helper function to calculate a contrast color (either black or white) based on the lightness of
+ * the input color.
+ * @param color The color to evaluate.
+ * @returns A string representing the contrast color (either black or white) for the input color.
+ */
+export const contrastColor = (
+  color: string
+): string => `oklch(from ${color} var(--__l) 0 h / var(--__a))`;
+
+/**
  * Creates a theme object for a given color scheme (light or dark).
  * @param colorScheme The color scheme options.
  * @returns A theme object for the given color scheme.
@@ -78,6 +88,7 @@ const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): BaseTheme 
     alpha,
     lighten,
     darken,
+    contrastColor,
   };
 
   return theme;
