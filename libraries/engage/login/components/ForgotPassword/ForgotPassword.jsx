@@ -29,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
   },
   subline: {
     fontSize: '1.125rem',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     marginBottom: theme.spacing(2),
     marginTop: 4,
   },
@@ -49,10 +49,10 @@ const useStyles = makeStyles()(theme => ({
   },
   input: {
     ' .label': {
-      color: 'var(--color-text-medium-emphasis)',
+      color: theme.palette.text.secondary,
     },
     ' .placeholder': {
-      color: 'var(--color-text-medium-emphasis)',
+      color: theme.palette.text.secondary,
     },
     ' .simpleInput': {
       color: theme.palette.text.primary,
@@ -65,7 +65,7 @@ const useStyles = makeStyles()(theme => ({
   },
   resetInstructionsEmail: {
     fontWeight: 'bold',
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
   },
   goBackButtonContainer: {
     padding: theme.spacing(2, 0),

@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
     left: 0,
     padding: theme.spacing(1, 0),
     minWidth: 130,
-    background: themeConfig.colors.light,
+    background: theme.palette.background.default,
     borderRadius: 2,
     boxShadow: themeConfig.shadows.contextMenu,
   },

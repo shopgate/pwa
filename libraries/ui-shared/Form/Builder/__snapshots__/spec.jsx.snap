@@ -132,7 +132,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                 >
                   <label
                     aria-hidden={true}
-                    className="label floating sg-grelb-label-labelFloating-labelRegular"
+                    className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                     htmlFor="foo.foo"
                   >
                     <Text
@@ -429,7 +429,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 >
                   <label
                     aria-hidden={true}
-                    className="label sg-192rdno-label-labelRegular"
+                    className="label sg-jvdinf-label-labelRegular"
                     htmlFor="foo.foo"
                   >
                     <Text
@@ -683,7 +683,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 >
                   <label
                     aria-hidden={true}
-                    className="label sg-192rdno-label-labelRegular"
+                    className="label sg-jvdinf-label-labelRegular"
                     htmlFor="foo.bar"
                   >
                     <Text
@@ -980,7 +980,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                 >
                   <label
                     aria-hidden={true}
-                    className="label floating sg-grelb-label-labelFloating-labelRegular"
+                    className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                     htmlFor="foo.foo"
                   >
                     <Text
@@ -1357,7 +1357,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="label sg-192rdno-label-labelRegular"
+                    className="label sg-jvdinf-label-labelRegular"
                     htmlFor="foo.firstName"
                   >
                     <Text
@@ -1598,7 +1598,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="label sg-192rdno-label-labelRegular"
+                    className="label sg-jvdinf-label-labelRegular"
                     htmlFor="foo.lastName"
                   >
                     <Text
@@ -1902,7 +1902,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="label floating sg-grelb-label-labelFloating-labelRegular"
+                    className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                     htmlFor="foo.foo"
                   >
                     <Text
@@ -2161,7 +2161,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="label floating sg-grelb-label-labelFloating-labelRegular"
+                    className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                     htmlFor="foo.bar"
                   >
                     <Text
@@ -2465,7 +2465,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="label floating sg-grelb-label-labelFloating-labelRegular"
+                    className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                     htmlFor="foo.foo"
                   >
                     <Text
@@ -2724,7 +2724,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 >
                   <label
                     aria-hidden={true}
-                    className="label floating sg-grelb-label-labelFloating-labelRegular"
+                    className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                     htmlFor="foo.bar"
                   >
                     <Text

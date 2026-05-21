@@ -1,3 +1,4 @@
+import { getCSSCustomProp } from '@shopgate/engage/styles';
 import type { BaseTheme } from './index';
 
 type Theme = Omit<BaseTheme, 'components'>;
@@ -57,8 +58,8 @@ export type ComponentsDefaultsFromSchema<TSchema, TTheme> =
   TSchema extends Leaf ? ComponentTokenValue<TTheme>
   : TSchema extends readonly (infer U)[] ? readonly ComponentsDefaultsFromSchema<U, TTheme>[]
   : TSchema extends object
-    ? { [K in keyof TSchema]: ComponentsDefaultsFromSchema<TSchema[K], TTheme> }
-    : ComponentTokenValue<TTheme>;
+  ? { [K in keyof TSchema]: ComponentsDefaultsFromSchema<TSchema[K], TTheme> }
+  : ComponentTokenValue<TTheme>;
 
 /**
  * Derives the **override** components type from `componentsSchema`.
@@ -76,8 +77,8 @@ export type ComponentsOverrideFromSchema<TSchema, TTheme> =
   TSchema extends Leaf ? ComponentTokenValue<TTheme>
   : TSchema extends readonly (infer U)[] ? readonly ComponentsOverrideFromSchema<U, TTheme>[]
   : TSchema extends object
-    ? { [K in keyof TSchema]?: ComponentsOverrideFromSchema<TSchema[K], TTheme> }
-    : ComponentTokenValue<TTheme>;
+  ? { [K in keyof TSchema]?: ComponentsOverrideFromSchema<TSchema[K], TTheme> }
+  : ComponentTokenValue<TTheme>;
 
 /**
  * Derives the flattened component vars type from `componentsSchema`.
@@ -103,9 +104,9 @@ export type ComponentsOverrideFromSchema<TSchema, TTheme> =
  */
 export type ComponentVarsFromSchema<TSchema> = {
   [K in keyof TSchema]:
-    TSchema[K] extends { vars: infer TVars }
-      ? ComponentsFromSchema<TVars>
-      : never;
+  TSchema[K] extends { vars: infer TVars }
+  ? ComponentsFromSchema<TVars>
+  : never;
 };
 
 /**
@@ -127,6 +128,63 @@ export const componentsSchema = {
       textColor: '',
     },
   },
+  link: {
+    vars: {
+      color: '',
+    },
+  },
+  input: {
+    vars: {
+      background: '',
+      border: '',
+    },
+  },
+  ctaButton: {
+    vars: {
+      background: '',
+      color: '',
+    },
+  },
+  disabledButton: {
+    vars: {
+      background: '',
+    },
+  },
+  discountBadge: {
+    vars: {
+      background: '',
+    },
+  },
+  snackbar: {
+    vars: {
+      background: '',
+      contrastText: '',
+    },
+  },
+  tabBar: {
+    vars: {
+      background: '',
+      boxShadow: '',
+      minHeight: '',
+      border: '',
+      inactive: '',
+      active: '',
+      floatingBorderRadius: '',
+      floatingBoxShadow: '',
+      floatingMinHeight: '',
+      badgeColor: '',
+      badgeBackground: '',
+      badgeBorderRadius: '',
+      badgeTop: '',
+      badgeLeft: '',
+    },
+  },
+  ratingStars: {
+    vars: {
+      filled: '',
+      empty: '',
+    },
+  },
 } as const;
 
 /**
@@ -141,6 +199,70 @@ export const componentsDefaults = {
   price: {
     vars: {
       color: t => t.palette.primary.main,
+    },
+  },
+  button: {
+    vars: {
+      borderRadius: '4px',
+      color: t => t.palette.primary.main,
+      textColor: t => t.palette.primary.contrastText,
+    },
+  },
+  link: {
+    vars: {
+      color: t => getCSSCustomProp('--color-link') || t.palette.primary.main,
+    },
+  },
+  input: {
+    vars: {
+      background: '#F2F2F2',
+      border: '#CCCCCC',
+    },
+  },
+  ctaButton: {
+    vars: {
+      background: t => getCSSCustomProp('--color-button-cta') || t.palette.primary.main,
+      color: t => getCSSCustomProp('--color-button-cta-contrast') || t.palette.primary.contrastText,
+    },
+  },
+  disabledButton: {
+    vars: {
+      background: '#CCCCCC',
+    },
+  },
+  discountBadge: {
+    vars: {
+      background: '#857500',
+    },
+  },
+  snackbar: {
+    vars: {
+      background: '#323232',
+      contrastText: '#FFFFFF',
+    },
+  },
+  tabBar: {
+    vars: {
+      background: 'var(--tab-bar-background, #FFFFFF)',
+      boxShadow: 'var(--tab-bar-box-shadow, 0 -1px 0 0 rgba(0, 0, 0, 0.1))',
+      minHeight: 'var(--tab-bar-min-height, 0px)',
+      border: '#E6E6E6',
+      inactive: 'var(--tab-bar-item-default-color, #747474)',
+      active: t => `var(--tab-bar-item-highlighted-color, ${t.palette.secondary.main})`,
+      floatingBorderRadius: 'var(--tab-bar-floating-border-radius, 16px)',
+      floatingBoxShadow: 'var(--tab-bar-floating-box-shadow, 0 0 12px rgba(0, 0, 0, 0.24))',
+      floatingMinHeight: 'var(--tab-bar-floating-min-height, 59px)',
+      badgeColor: 'var(--tab-bar-item-badge-color, #FFFFFF)',
+      badgeBackground: t => `var(--tab-bar-item-badge-background, ${t.palette.secondary.main})`,
+      badgeBorderRadius: 'var(--tab-bar-item-badge-border-radius, 8px)',
+      badgeTop: 'var(--tab-bar-item-badge-top, -8px)',
+      badgeLeft: 'var(--tab-bar-item-badge-left, calc(50% + 20px))',
+    },
+  },
+  ratingStars: {
+    vars: {
+      filled: t => `var(--rating-stars-filled, ${t.palette.primary.main})`,
+      empty: 'var(--rating-stars-empty, #CCCCCC)',
     },
   },
 } satisfies ComponentsDefaults;

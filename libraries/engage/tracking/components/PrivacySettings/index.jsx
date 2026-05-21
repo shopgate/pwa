@@ -8,7 +8,7 @@ import { appConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core/helpers';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     marginTop: '20px',
   },
@@ -30,7 +30,7 @@ const useStyles = makeStyles()({
     flexDirection: 'column',
   },
   link: {
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     textDecoration: 'underline',
   },
   switchWrapper: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles()({
     fontWeight: 'bold',
     display: 'block',
   },
-});
+}));
 
 /**
  * The PrivacySettings component.

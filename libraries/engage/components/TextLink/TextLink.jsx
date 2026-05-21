@@ -3,17 +3,11 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Link } from '@shopgate/engage/components';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   link: {
-    color: 'var(--color-link, inherit)',
-    ':visited': {
-      color: 'var(--color-link-visited, var(--color-link, inherit))',
-    },
-    ':hover': {
-      color: 'var(--color-link-active , var(--color-link, inherit))',
-    },
+    color: theme.components.link.color,
   },
-});
+}));
 
 /**
  * The TextLink component

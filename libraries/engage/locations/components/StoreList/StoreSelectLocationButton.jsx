@@ -16,8 +16,8 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
     fontSize: '.875rem !important',
     ':not(:disabled)': {
-      background: 'var(--color-primary)!important',
-      color: 'var(--color-primary-contrast)!important',
+      background: `${theme.palette.primary.main} !important`,
+      color: `${theme.palette.primary.contrastText} !important`,
     },
   },
 }));

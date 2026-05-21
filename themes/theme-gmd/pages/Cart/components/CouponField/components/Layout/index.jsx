@@ -12,11 +12,11 @@ const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
-    background: colors.light,
+    background: theme.palette.background.default,
     padding: theme.spacing(1, 2),
   },
   wrapperCard: {
-    background: colors.light,
+    background: theme.palette.background.default,
     padding: theme.spacing(1, 2),
     margin: theme.spacing(1.5, 1.5, 2),
     border: `1px solid ${colors.shade7}`,
@@ -36,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   icon: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontSize: '1.875rem',
     position: 'absolute',
     transition: `opacity ${easing}`,

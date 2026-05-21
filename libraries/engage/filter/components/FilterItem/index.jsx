@@ -1,16 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   item: {
-    background: colors.light,
+    background: theme.palette.background.default,
     marginTop: 4,
   },
-});
+}));
 
 /**
  * Wraps a single filter page item.

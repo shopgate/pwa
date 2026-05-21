@@ -7,15 +7,15 @@ import connect from './connector';
 
 const { forgotPasswordUrl } = appConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     position: 'relative',
     display: 'inline-block',
     width: 'auto',
     zIndex: '1',
   },
-});
+}));
 
 /**
  * The ForgotPassword component.

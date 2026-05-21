@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   storeHoursToday: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
-});
+}));
 
 const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 

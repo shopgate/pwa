@@ -38,7 +38,7 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 2,
     top: '100%',
     left: 0,
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     boxShadow: shadows.filter.sort,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       top: 'inherit',

@@ -24,7 +24,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           className="sg-31v86g-detailsLine"
         >
           <Grid.Item
-            className="sg-sjacpx-detailsIcon"
+            className="sg-18fd1r-detailsIcon"
             shrink={0}
           >
             <TimeIcon
@@ -37,7 +37,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
           >
             <Text
               acceptPlainTextWithPlaceholders={false}
-              className="sg-1i25451-detailsSecondary"
+              className="sg-18uc42k-detailsSecondary"
               params={{}}
               role={null}
               string="locations.hours_details"
@@ -46,7 +46,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               locations.hours_details
             </Text>
             <div
-              className="sg-1nae00d-openingHours"
+              className="sg-1k6m969-openingHours"
             >
               <table>
                 <tbody>
@@ -146,7 +146,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             className="sg-31v86g-detailsLine"
           >
             <Grid.Item
-              className="sg-15jmucj-detailsIcon-detailsIconLinked"
+              className="sg-1jacrdu-detailsIcon-detailsIconLinked"
               shrink={0}
             >
               <PhoneIcon
@@ -159,14 +159,14 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             >
               <div
                 aria-hidden={true}
-                className="sg-zsrto7-detailsPrimary"
+                className="sg-1wxxjuy-detailsPrimary"
               >
                 06033123
               </div>
               <Text
                 acceptPlainTextWithPlaceholders={false}
                 aria-hidden={true}
-                className="sg-1i25451-detailsSecondary"
+                className="sg-18uc42k-detailsSecondary"
                 params={{}}
                 role={null}
                 string="locations.phone"
@@ -210,7 +210,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
             className="sg-31v86g-detailsLine"
           >
             <Grid.Item
-              className="sg-15jmucj-detailsIcon-detailsIconLinked"
+              className="sg-1jacrdu-detailsIcon-detailsIconLinked"
               shrink={0}
             >
               <LocationIcon
@@ -222,12 +222,12 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               grow={1}
             >
               <p
-                className="sg-zsrto7-detailsPrimary"
+                className="sg-1wxxjuy-detailsPrimary"
               >
                 Marktplatz 12
               </p>
               <Ellipsis
-                className="sg-zsrto7-detailsPrimary"
+                className="sg-1wxxjuy-detailsPrimary"
                 rows={1}
               >
                 locations.address
@@ -235,7 +235,7 @@ exports[`engage > locations > StoreList > StoreDetails should render as expected
               <Text
                 acceptPlainTextWithPlaceholders={false}
                 aria-label=": locations.map_open"
-                className="sg-1i25451-detailsSecondary"
+                className="sg-18uc42k-detailsSecondary"
                 params={{}}
                 role={null}
                 string="locations.map_open"

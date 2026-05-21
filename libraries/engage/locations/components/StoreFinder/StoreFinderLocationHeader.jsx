@@ -25,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
       paddingTop: 0,
     },
     ' a': {
-      color: 'var(--color-primary)',
+      color: theme.palette.primary.main,
       textDecoration: 'underline',
     },
     fontSize: '0.875rem',
@@ -55,13 +55,13 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
   },
   myStore: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontSize: '1rem',
     fontWeight: 500,
   },
   myStoreIcon: {
     ' svg': {
-      color: 'var(--color-primary)',
+      color: theme.palette.primary.main,
     },
     marginRight: '4px',
   },

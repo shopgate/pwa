@@ -6,14 +6,14 @@ import BaseCheckbox from '@shopgate/pwa-common/components/Checkbox';
 import CheckedIcon from '../icons/CheckedIcon';
 import UncheckedIcon from '../icons/UncheckedIcon';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   icon: {
     width: 24,
     height: 24,
     flexShrink: 0,
   },
   checkedIcon: {
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
   },
   uncheckedIcon: {
     color: themeConfig.colors.shade6,

@@ -11,11 +11,11 @@ import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 import Layout from './components/Layout';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
   },
-});
+}));
 
 const ON_FOCUS_BLUR_DELAY_MS = 300;
 

@@ -26,7 +26,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: theme.spacing(1),
   },
   active: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
 }));
 

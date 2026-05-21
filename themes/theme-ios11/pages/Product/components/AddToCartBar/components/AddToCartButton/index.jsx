@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   button: {
@@ -15,8 +12,8 @@ const useStyles = makeStyles()(theme => ({
     top: 0,
     display: 'block',
     flexGrow: 1,
-    background: 'var(--color-button-cta)',
-    color: 'var(--color-button-cta-contrast)',
+    background: theme.components.ctaButton.background,
+    color: theme.contrastColor(theme.components.ctaButton.background),
     fontSize: 16,
     fontWeight: 700,
     borderRadius: 5,
@@ -29,8 +26,8 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   disabled: {
-    background: colors.shade5,
-    color: colors.light,
+    background: theme.components.disabledButton.background,
+    color: theme.contrastColor(theme.components.disabledButton.background),
   },
 }));
 

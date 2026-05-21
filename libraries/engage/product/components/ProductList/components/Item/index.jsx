@@ -18,14 +18,11 @@ import Manufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import { PriceInfo, ProductName, ProductBadges } from '@shopgate/engage/product';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   listItemContainer: {
     padding: theme.spacing(1),
-    background: colors.light,
+    background: theme.palette.background.default,
   },
   imageContainer: {
     padding: theme.spacing(1),

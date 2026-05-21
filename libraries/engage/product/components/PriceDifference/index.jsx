@@ -6,7 +6,7 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   positive: {
     color: colors.shade4,
     ':before': {
@@ -14,9 +14,9 @@ const useStyles = makeStyles()({
     },
   },
   negative: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 /**
  * The price difference component

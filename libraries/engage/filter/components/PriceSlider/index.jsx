@@ -25,14 +25,14 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
   },
   rangeSliderRange: {
-    background: 'var(--color-secondary)',
+    background: theme.palette.secondary.main,
     position: 'absolute',
     height: '100%',
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
   },
   rangeSliderHandleInner: {
-    background: colors.light,
+    background: theme.palette.background.default,
     boxShadow: shadows.filter.priceSlider,
     borderRadius: '50%',
     width: theme.spacing(3),

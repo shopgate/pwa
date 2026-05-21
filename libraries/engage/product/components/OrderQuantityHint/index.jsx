@@ -9,12 +9,12 @@ import { formatFloat } from '@shopgate/engage/components/QuantityInput/helper';
 import withProductStock from '../../hocs/withProductStock';
 import withProduct from '../../hocs/withProduct';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   hint: {
     fontSize: '0.75rem',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
-});
+}));
 
 /**
  * The Product Order Quantity Hint component.

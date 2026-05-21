@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
   },
   heading: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   name: {
     fontWeight: 500,

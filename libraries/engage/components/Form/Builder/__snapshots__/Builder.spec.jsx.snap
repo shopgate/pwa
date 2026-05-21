@@ -178,7 +178,7 @@ exports[`<Builder /> should call onChange callback when input is changed 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="label floating sg-grelb-label-labelFloating-labelRegular"
+                      className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                       htmlFor="foo_foo"
                     >
                       <Text
@@ -556,7 +556,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="label sg-192rdno-label-labelRegular"
+                      className="label sg-jvdinf-label-labelRegular"
                       htmlFor="foo_foo"
                     >
                       <Text
@@ -896,7 +896,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="label sg-192rdno-label-labelRegular"
+                      className="label sg-jvdinf-label-labelRegular"
                       htmlFor="foo_bar"
                     >
                       <Text
@@ -1310,7 +1310,7 @@ exports[`<Builder /> should modify the element visibility if setVisibilty rule a
                   >
                     <label
                       aria-hidden={true}
-                      className="label floating sg-grelb-label-labelFloating-labelRegular"
+                      className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                       htmlFor="foo_foo"
                     >
                       <Text
@@ -1967,7 +1967,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="label sg-192rdno-label-labelRegular"
+                      className="label sg-jvdinf-label-labelRegular"
                       htmlFor="foo_firstName"
                     >
                       <Text
@@ -2268,7 +2268,7 @@ exports[`<Builder /> should render two text fields 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="label sg-192rdno-label-labelRegular"
+                      className="label sg-jvdinf-label-labelRegular"
                       htmlFor="foo_lastName"
                     >
                       <Text
@@ -2652,7 +2652,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="label floating sg-grelb-label-labelFloating-labelRegular"
+                      className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                       htmlFor="foo_foo"
                     >
                       <Text
@@ -3010,7 +3010,7 @@ exports[`<Builder /> should reset value when rule applies 1`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="label floating sg-grelb-label-labelFloating-labelRegular"
+                      className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                       htmlFor="foo_bar"
                     >
                       <Text
@@ -3448,7 +3448,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="label floating sg-grelb-label-labelFloating-labelRegular"
+                      className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                       htmlFor="foo_foo"
                     >
                       <Text
@@ -3806,7 +3806,7 @@ exports[`<Builder /> should reset value when rule applies 2`] = `
                   >
                     <label
                       aria-hidden={true}
-                      className="label floating sg-grelb-label-labelFloating-labelRegular"
+                      className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                       htmlFor="foo_bar"
                     >
                       <Text

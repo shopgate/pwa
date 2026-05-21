@@ -4,20 +4,20 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   leaf: {
-    fill: 'var(--color-primary)',
+    fill: theme.palette.primary.main,
   },
   background: {
-    fill: colors.light,
+    fill: theme.palette.background.default,
   },
   shadow: {
     fill: colors.shade10,
   },
   basket: {
-    fill: 'var(--color-secondary)',
+    fill: theme.palette.secondary.main,
   },
-});
+}));
 
 /**
  * The empty cart icon component.

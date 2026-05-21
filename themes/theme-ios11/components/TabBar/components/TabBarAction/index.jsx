@@ -5,7 +5,7 @@ import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import Button from '@shopgate/pwa-common/components/Button';
 import { I18n } from '@shopgate/engage/components';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     position: 'relative',
@@ -24,17 +24,17 @@ const useStyles = makeStyles()({
     },
   },
   regular: {
-    color: 'var(--tab-bar-item-default-color)',
+    color: theme.components.tabBar.inactive,
   },
   highlighted: {
-    color: 'var(--tab-bar-item-highlighted-color)',
+    color: theme.components.tabBar.active,
   },
   label: {
     '&:not(:empty)': {
       display: 'block',
     },
   },
-});
+}));
 
 /**
  * Renders the tab bar action component.

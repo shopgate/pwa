@@ -24,7 +24,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-e9rqvi-chip"
           data-test-id="some-id"
         >
           <Button
@@ -205,7 +205,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-e9rqvi-chip"
           data-test-id="some-id"
         >
           <Button
@@ -293,7 +293,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-e9rqvi-chip"
           data-test-id="some-other-id"
         >
           <Button

@@ -7,17 +7,15 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { logger } from '@shopgate/pwa-core';
-import appConfig, { themeConfig, themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
+import appConfig, { themeShadows } from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import ProductImagePlaceholder from './ProductImagePlaceholder';
 import connect from './connector';
-
-const { colors } = themeConfig;
 
 const placeholderIconScale = 0.65;
 
@@ -69,7 +67,7 @@ const useStyles = makeStyles()((theme, { ratio }) => ({
     height: `${placeholderIconScale * 100}% !important`,
     top: `${(1.0 - placeholderIconScale) * 50}%`,
     left: `${(1.0 - placeholderIconScale) * 50}%`,
-    color: themeColors.placeholder,
+    color: theme.palette.background.emphasized,
   },
   innerShadow: {
     position: 'relative',
@@ -116,7 +114,7 @@ const ProductImage = (props) => {
     })
   ) || 1;
   const { classes, cx } = useStyles({ ratio: ratioValue });
-
+  const theme = useTheme();
   const [showPlaceholder, setShowPlaceholder] = useState(
     !src && (srcmap === null || srcmap.length === 0)
   );
@@ -127,7 +125,7 @@ const ProductImage = (props) => {
       !srcmap,
       'Use of srcmap prop is deprecated. Use resolutions instead'
     );
-  /* eslint-disable-next-line react-hooks/exhaustive-deps -- legacy: assert once at mount */
+    /* eslint-disable-next-line react-hooks/exhaustive-deps -- legacy: assert once at mount */
   }, []);
 
   useEffect(() => {
@@ -155,7 +153,7 @@ const ProductImage = (props) => {
             [className]: !!className,
           })}
         >
-          { placeholderSrc ? (
+          {placeholderSrc ? (
             <ProductImagePlaceholder
               src={placeholderSrc}
               showInnerShadow={showInnerShadow}
@@ -183,7 +181,7 @@ const ProductImage = (props) => {
         <Image
           {...props}
           className={showInnerShadow ? classes.innerShadow : ''}
-          backgroundColor={noBackground ? 'transparent' : colors.light}
+          backgroundColor={noBackground ? 'transparent' : theme.palette.background.default}
           onError={imageLoadingFailedHandler}
           aria-hidden={!alt}
         />

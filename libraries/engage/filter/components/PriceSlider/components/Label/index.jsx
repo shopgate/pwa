@@ -10,9 +10,9 @@ import { i18n } from '@shopgate/engage/core/helpers';
 const { currency } = appConfig;
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   price: {
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     display: 'inline-block',
     fontWeight: 500,
     textAlign: 'center',
@@ -35,16 +35,16 @@ const useStyles = makeStyles()({
     borderRadius: 3,
     lineHeight: 1,
     ':focus': {
-      background: colors.light,
+      background: theme.palette.background.default,
       textIndent: 0,
       borderColor: colors.shade5,
     },
     [responsiveMediaQuery('>=xs', { webOnly: true })]: {
-      borderColor: 'var(--color-primary)',
+      borderColor: theme.palette.primary.main,
       padding: '4px 0',
       top: -4,
       ':focus': {
-        borderColor: 'var(--color-primary)',
+        borderColor: theme.palette.primary.main,
       },
     },
   },
@@ -59,7 +59,7 @@ const useStyles = makeStyles()({
     whiteSpace: 'nowrap',
     border: 0,
   },
-});
+}));
 
 /**
  * The filter price range slider label component.

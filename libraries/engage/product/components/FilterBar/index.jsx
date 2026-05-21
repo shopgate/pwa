@@ -35,14 +35,14 @@ const FilterBar = ({ filters, categoryId }) => {
 
   const style = useMemo(() => (hasNewServices() ? {
     background: active
-      ? 'var(--color-background-accent)'
-      : 'var(--color-background-accent)',
+      ? theme.palette.background.emphasized
+      : theme.palette.background.emphasized,
     color: active
-      ? 'var(--color-primary)'
+      ? theme.palette.primary.main
       : theme.palette.text.primary,
   } : {
-    background: active ? 'var(--color-secondary)' : colors.background,
-    color: active ? 'var(--color-secondary-contrast)' : colors.dark,
+    background: active ? theme.palette.secondary.main : colors.background,
+    color: active ? theme.palette.secondary.contrastText : colors.dark,
   }), [active, theme]);
 
   const sortScope = useMemo(

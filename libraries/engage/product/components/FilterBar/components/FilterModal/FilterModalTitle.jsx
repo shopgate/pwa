@@ -4,7 +4,7 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { Ripple, CrossIcon } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
@@ -22,23 +22,23 @@ const useStyles = makeStyles()({
     fontSize: 21,
     marginRight: 12,
     cursor: 'pointer',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   actionButton: {
     cursor: 'pointer',
     marginLeft: 16,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontWeight: '600',
     padding: 8,
   },
   actionButtonSecondary: {
     cursor: 'pointer',
     marginLeft: 16,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontWeight: '500',
     padding: 8,
   },
-});
+}));
 
 /**
  * Filter Modal Title

@@ -52,10 +52,10 @@ type PaletteFromSchema<T> =
   T extends Leaf ? string
   : T extends readonly (infer U)[] ? readonly PaletteFromSchema<U>[]
   : T extends object
-    ? ('main' extends keyof T
-        ? AugmentedPaletteColorForTheme
-        : { [K in keyof T]: PaletteFromSchema<T[K]> })
-    : string;
+  ? ('main' extends keyof T
+    ? AugmentedPaletteColorForTheme
+    : { [K in keyof T]: PaletteFromSchema<T[K]> })
+  : string;
 
 /**
  * Derives the **input** palette type from `paletteSchema`.
@@ -72,10 +72,10 @@ type PaletteInputFromSchema<T> =
   T extends Leaf ? string
   : T extends readonly (infer U)[] ? readonly PaletteInputFromSchema<U>[]
   : T extends object
-    ? ('main' extends keyof T
-        ? { main: string; light?: string; dark?: string; contrastText?: string }
-        : { [K in keyof T]: PaletteInputFromSchema<T[K]> })
-    : string;
+  ? ('main' extends keyof T
+    ? { main: string; light?: string; dark?: string; contrastText?: string }
+    : { [K in keyof T]: PaletteInputFromSchema<T[K]> })
+  : string;
 
 type PaletteKeysWithMain<T> = {
   [K in keyof T]-?: T[K] extends { main: unknown } ? K : never
@@ -132,14 +132,80 @@ export const paletteSchema = {
    * Colors to be used for the background of various elements
    */
   background: {
-    /**
-     * The color used for the background of the application
-     */
     default: '',
+    emphasized: '',
   },
+  /**
+   * Colors to be used for text.
+   */
   text: {
     primary: '',
     secondary: '',
+  },
+  /**
+   * Colors to be used for links.
+   */
+  link: {
+    color: '',
+  },
+  /**
+   * Colors to be used for the background and border of input elements
+   */
+  input: {
+    background: '',
+    border: '',
+  },
+  /**
+   * Colors to be used for the call-to-action buttons
+   */
+  ctaButton: {
+    background: '',
+  },
+  /**
+   * Colors to be used for disabled buttons
+   */
+  disabledButton: {
+    background: '',
+  },
+  /**
+   * Colors to be used for the background and text of discount badges
+   */
+  discountBadge: {
+    background: '',
+  },
+  /**
+   * Colors to be used for the background of snackbars
+   */
+  snackbar: {
+    background: '',
+  },
+  /**
+   * Colors to be used for the tab bar component
+   */
+  tabBar: {
+    background: '',
+    border: '',
+    inactive: '',
+    active: '',
+    boxShadow: '',
+    minHeight: '',
+
+    floatingBorderRadius: '',
+    floatingBoxShadow: '',
+    floatingMinHeight: '',
+
+    badgeColor: '',
+    badgeBackground: '',
+    badgeBorderRadius: '',
+    badgeTop: '',
+    badgeLeft: '',
+  },
+  /**
+   * Colors to be used for the filled and empty states of rating stars
+   */
+  ratingStars: {
+    filled: '',
+    empty: '',
   },
   /**
    * Palette with grey colors, intended for backgrounds, borders, and dividers.

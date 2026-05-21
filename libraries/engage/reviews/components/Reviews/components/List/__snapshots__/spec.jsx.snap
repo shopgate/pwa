@@ -95,7 +95,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 role="img"
               >
                 <div
-                  className="sg-170uo4n-emptyStars rating-stars-empty"
+                  className="sg-465vqm-emptyStars rating-stars-empty"
                 >
                   <div
                     className="sg-1jcir28-icon-iconGapSmall"
@@ -249,7 +249,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                 </div>
                 <div
-                  className="sg-8o0m3k-filledStars rating-stars-filled"
+                  className="sg-8h772-filledStars rating-stars-filled"
                 >
                   <div
                     className="sg-1jcir28-icon-iconGapSmall"
@@ -428,7 +428,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="sg-ustu6l-root"
+            className="sg-9l1yt0-root"
             role="text"
           >
             <ReviewDate
@@ -498,7 +498,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 role="img"
               >
                 <div
-                  className="sg-170uo4n-emptyStars rating-stars-empty"
+                  className="sg-465vqm-emptyStars rating-stars-empty"
                 >
                   <div
                     className="sg-1jcir28-icon-iconGapSmall"
@@ -652,7 +652,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                 </div>
                 <div
-                  className="sg-8o0m3k-filledStars rating-stars-filled"
+                  className="sg-8h772-filledStars rating-stars-filled"
                 >
                   <div
                     className="sg-1jcir28-icon-iconGapSmall"
@@ -741,7 +741,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="sg-ustu6l-root"
+            className="sg-9l1yt0-root"
             role="text"
           >
             <ReviewDate
@@ -824,7 +824,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 role="img"
               >
                 <div
-                  className="sg-170uo4n-emptyStars rating-stars-empty"
+                  className="sg-465vqm-emptyStars rating-stars-empty"
                 >
                   <div
                     className="sg-1jcir28-icon-iconGapSmall"
@@ -978,7 +978,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                 </div>
                 <div
-                  className="sg-8o0m3k-filledStars rating-stars-filled"
+                  className="sg-8h772-filledStars rating-stars-filled"
                 >
                   <div
                     className="sg-1jcir28-icon-iconGapSmall"
@@ -1097,7 +1097,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="sg-ustu6l-root"
+            className="sg-9l1yt0-root"
             role="text"
           >
             <ReviewDate
@@ -1180,7 +1180,7 @@ exports[`<List /> should render list with reviews 1`] = `
                 role="img"
               >
                 <div
-                  className="sg-170uo4n-emptyStars rating-stars-empty"
+                  className="sg-465vqm-emptyStars rating-stars-empty"
                 >
                   <div
                     className="sg-1jcir28-icon-iconGapSmall"
@@ -1334,7 +1334,7 @@ exports[`<List /> should render list with reviews 1`] = `
                   </div>
                 </div>
                 <div
-                  className="sg-8o0m3k-filledStars rating-stars-filled"
+                  className="sg-8h772-filledStars rating-stars-filled"
                 >
                   <div
                     className="sg-1jcir28-icon-iconGapSmall"
@@ -1387,7 +1387,7 @@ exports[`<List /> should render list with reviews 1`] = `
           }
         >
           <div
-            className="sg-ustu6l-root"
+            className="sg-9l1yt0-root"
             role="text"
           >
             <ReviewDate

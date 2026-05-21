@@ -48,7 +48,7 @@ const useStyles = makeStyles()(theme => ({
   },
   timer: {
     fontSize: '0.875rem',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontStyle: 'italic',
     fontWeight: 500,
   },

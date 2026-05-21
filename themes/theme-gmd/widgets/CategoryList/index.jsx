@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CategoryGrid from 'Components/CategoryGrid';
 import Headline from 'Components/Headline';
 import connect from './connector';
 import CategoryListDefault from './CategoryListDefault';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   container: {
-    background: colors.light,
+    background: theme.palette.background.default,
   },
   grid: {
     [responsiveMediaQuery('>xs', { webOnly: true })]: {

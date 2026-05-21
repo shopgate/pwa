@@ -75,7 +75,7 @@ const useStyles = makeStyles()((theme, { type, flat, disabled }) => {
     if (!flat) {
       return disabled
         ? pairFromColors(colors.shade4, colors.shade7, theme)
-        : pairFromColors('var(--color-primary-contrast)', 'var(--color-primary)', theme);
+        : pairFromColors(theme.palette.primary.contrastText, theme.palette.primary.main, theme);
     }
     return disabled
       ? pairFromColors(colors.shade4, null, theme)
@@ -85,7 +85,7 @@ const useStyles = makeStyles()((theme, { type, flat, disabled }) => {
   if (!flat) {
     return disabled
       ? pairFromColors(colors.shade4, colors.shade7, theme)
-      : pairFromColors('var(--color-secondary-contrast)', 'var(--color-secondary)', theme);
+      : pairFromColors(theme.palette.secondary.contrastText, theme.palette.secondary.main, theme);
   }
 
   return disabled

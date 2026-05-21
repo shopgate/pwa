@@ -86,7 +86,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           data-test-id="ratedStars: 0"
                         >
                           <div
-                            className="sg-170uo4n-emptyStars rating-stars-empty"
+                            className="sg-465vqm-emptyStars rating-stars-empty"
                           >
                             <div
                               aria-label="reviews.press_to_rate_with_x_stars"
@@ -255,7 +255,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                             </div>
                           </div>
                           <div
-                            className="sg-8o0m3k-filledStars rating-stars-filled"
+                            className="sg-8h772-filledStars rating-stars-filled"
                           />
                         </div>
                       </RatingStars>
@@ -339,7 +339,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="author"
                       >
                         <Text
@@ -555,7 +555,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="title"
                       >
                         <Text
@@ -771,7 +771,7 @@ exports[`<ReviewForm /> should render empty 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="review"
                       >
                         <Text
@@ -977,13 +977,13 @@ exports[`<ReviewForm /> should render empty 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                              className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={null}
                               testId="sendReviewButton"
                             >
                               <button
-                                className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
                                 data-test-id="sendReviewButton"
                                 disabled={false}
                                 onClick={null}
@@ -1120,7 +1120,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           data-test-id="ratedStars: 0"
                         >
                           <div
-                            className="sg-170uo4n-emptyStars rating-stars-empty"
+                            className="sg-465vqm-emptyStars rating-stars-empty"
                           >
                             <div
                               aria-label="reviews.press_to_rate_with_x_stars"
@@ -1289,7 +1289,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                             </div>
                           </div>
                           <div
-                            className="sg-8o0m3k-filledStars rating-stars-filled"
+                            className="sg-8h772-filledStars rating-stars-filled"
                           />
                         </div>
                       </RatingStars>
@@ -1373,7 +1373,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="author"
                       >
                         <Text
@@ -1589,7 +1589,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="title"
                       >
                         <Text
@@ -1805,7 +1805,7 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="review"
                       >
                         <Text
@@ -2011,13 +2011,13 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                              className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={null}
                               testId="sendReviewButton"
                             >
                               <button
-                                className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
                                 data-test-id="sendReviewButton"
                                 disabled={false}
                                 onClick={null}
@@ -2116,7 +2116,7 @@ exports[`<ReviewForm /> should render loading indicator 1`] = `
               className={null}
             >
               <div
-                className="sg-1p5ntnr-container loading-indicator ui-shared__loading-indicator"
+                className="sg-1gt9zfj-container loading-indicator ui-shared__loading-indicator"
               >
                 <IndicatorCircle
                   color="var(--color-secondary)"
@@ -2256,7 +2256,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                           data-test-id="ratedStars: 5"
                         >
                           <div
-                            className="sg-170uo4n-emptyStars rating-stars-empty"
+                            className="sg-465vqm-emptyStars rating-stars-empty"
                           >
                             <div
                               aria-label="reviews.press_to_rate_with_x_stars"
@@ -2425,7 +2425,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                             </div>
                           </div>
                           <div
-                            className="sg-8o0m3k-filledStars rating-stars-filled"
+                            className="sg-8h772-filledStars rating-stars-filled"
                           >
                             <div
                               aria-hidden={true}
@@ -2675,7 +2675,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="author"
                       >
                         <Text
@@ -2891,7 +2891,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="title"
                       >
                         <Text
@@ -3107,7 +3107,7 @@ exports[`<ReviewForm /> should set form data 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="review"
                       >
                         <Text
@@ -3313,13 +3313,13 @@ exports[`<ReviewForm /> should set form data 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                              className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={null}
                               testId="sendReviewButton"
                             >
                               <button
-                                className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
                                 data-test-id="sendReviewButton"
                                 disabled={false}
                                 onClick={null}
@@ -3476,7 +3476,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                           data-test-id="ratedStars: 5"
                         >
                           <div
-                            className="sg-170uo4n-emptyStars rating-stars-empty"
+                            className="sg-465vqm-emptyStars rating-stars-empty"
                           >
                             <div
                               aria-label="reviews.press_to_rate_with_x_stars"
@@ -3645,7 +3645,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                             </div>
                           </div>
                           <div
-                            className="sg-8o0m3k-filledStars rating-stars-filled"
+                            className="sg-8h772-filledStars rating-stars-filled"
                           >
                             <div
                               aria-hidden={true}
@@ -3895,7 +3895,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="author"
                       >
                         <Text
@@ -4111,7 +4111,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="title"
                       >
                         <Text
@@ -4327,7 +4327,7 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="review"
                       >
                         <Text
@@ -4533,13 +4533,13 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                              className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={null}
                               testId="sendReviewButton"
                             >
                               <button
-                                className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
                                 data-test-id="sendReviewButton"
                                 disabled={false}
                                 onClick={null}
@@ -4696,7 +4696,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                           data-test-id="ratedStars: 5"
                         >
                           <div
-                            className="sg-170uo4n-emptyStars rating-stars-empty"
+                            className="sg-465vqm-emptyStars rating-stars-empty"
                           >
                             <div
                               aria-label="reviews.press_to_rate_with_x_stars"
@@ -4865,7 +4865,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                             </div>
                           </div>
                           <div
-                            className="sg-8o0m3k-filledStars rating-stars-filled"
+                            className="sg-8h772-filledStars rating-stars-filled"
                           >
                             <div
                               aria-hidden={true}
@@ -5115,7 +5115,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="author"
                       >
                         <Text
@@ -5331,7 +5331,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="title"
                       >
                         <Text
@@ -5547,7 +5547,7 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="review"
                       >
                         <Text
@@ -5753,13 +5753,13 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                              className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={null}
                               testId="sendReviewButton"
                             >
                               <button
-                                className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
                                 data-test-id="sendReviewButton"
                                 disabled={false}
                                 onClick={null}
@@ -5916,7 +5916,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                           data-test-id="ratedStars: 5"
                         >
                           <div
-                            className="sg-170uo4n-emptyStars rating-stars-empty"
+                            className="sg-465vqm-emptyStars rating-stars-empty"
                           >
                             <div
                               aria-label="reviews.press_to_rate_with_x_stars"
@@ -6085,7 +6085,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                             </div>
                           </div>
                           <div
-                            className="sg-8o0m3k-filledStars rating-stars-filled"
+                            className="sg-8h772-filledStars rating-stars-filled"
                           >
                             <div
                               aria-hidden={true}
@@ -6335,7 +6335,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="author"
                       >
                         <Text
@@ -6551,7 +6551,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="title"
                       >
                         <Text
@@ -6767,7 +6767,7 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="review"
                       >
                         <Text
@@ -6974,13 +6974,13 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                              className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={null}
                               testId="sendReviewButton"
                             >
                               <button
-                                className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
                                 data-test-id="sendReviewButton"
                                 disabled={false}
                                 onClick={null}
@@ -7137,7 +7137,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                           data-test-id="ratedStars: 5"
                         >
                           <div
-                            className="sg-170uo4n-emptyStars rating-stars-empty"
+                            className="sg-465vqm-emptyStars rating-stars-empty"
                           >
                             <div
                               aria-label="reviews.press_to_rate_with_x_stars"
@@ -7306,7 +7306,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                             </div>
                           </div>
                           <div
-                            className="sg-8o0m3k-filledStars rating-stars-filled"
+                            className="sg-8h772-filledStars rating-stars-filled"
                           >
                             <div
                               aria-hidden={true}
@@ -7556,7 +7556,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="author"
                       >
                         <Text
@@ -7772,7 +7772,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="title"
                       >
                         <Text
@@ -7988,7 +7988,7 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label floating sg-grelb-label-labelFloating-labelRegular"
+                        className="label floating sg-1rogyz5-label-labelFloating-labelRegular"
                         htmlFor="review"
                       >
                         <Text
@@ -8194,13 +8194,13 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                              className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={null}
                               testId="sendReviewButton"
                             >
                               <button
-                                className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
                                 data-test-id="sendReviewButton"
                                 disabled={false}
                                 onClick={null}
@@ -8337,7 +8337,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           data-test-id="ratedStars: 0"
                         >
                           <div
-                            className="sg-170uo4n-emptyStars rating-stars-empty"
+                            className="sg-465vqm-emptyStars rating-stars-empty"
                           >
                             <div
                               aria-label="reviews.press_to_rate_with_x_stars"
@@ -8506,7 +8506,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                             </div>
                           </div>
                           <div
-                            className="sg-8o0m3k-filledStars rating-stars-filled"
+                            className="sg-8h772-filledStars rating-stars-filled"
                           />
                         </div>
                       </RatingStars>
@@ -8592,7 +8592,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="author"
                       >
                         <Text
@@ -8809,7 +8809,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="title"
                       >
                         <Text
@@ -9025,7 +9025,7 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                     >
                       <label
                         aria-hidden={true}
-                        className="label sg-192rdno-label-labelRegular"
+                        className="label sg-jvdinf-label-labelRegular"
                         htmlFor="review"
                       >
                         <Text
@@ -9231,13 +9231,13 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                             wrapContent={false}
                           >
                             <Button
-                              className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                              className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
                               disabled={false}
                               onClick={null}
                               testId="sendReviewButton"
                             >
                               <button
-                                className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                                className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
                                 data-test-id="sendReviewButton"
                                 disabled={false}
                                 onClick={null}

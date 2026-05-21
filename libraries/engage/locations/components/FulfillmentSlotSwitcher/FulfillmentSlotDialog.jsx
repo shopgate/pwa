@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => ({
   fetch: locationCode => dispatch(fetchFulfillmentSlots(locationCode)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     display: 'flex',
@@ -69,7 +69,7 @@ const useStyles = makeStyles()({
     margin: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    border: '1px solid var(--color-secondary)',
+    border: `1px solid ${theme.palette.secondary.main}`,
     borderRadius: 4,
     background: '#fff',
     transition: 'background, color 500ms',
@@ -77,7 +77,7 @@ const useStyles = makeStyles()({
   },
   buttonActive: {
     color: '#fff',
-    background: 'var(--color-secondary)',
+    background: theme.palette.secondary.main,
   },
   buttonDate: {
     width: 124,
@@ -120,7 +120,7 @@ const useStyles = makeStyles()({
       width: '100%',
     },
   },
-});
+}));
 
 /**
  * Get Month day time.

@@ -34,7 +34,7 @@ const useStyles = makeStyles()(theme => ({
   },
   disabled: {
     background: colors.shade5,
-    color: colors.light,
+    color: theme.palette.background.default,
     cursor: 'not-allowed',
     fontSize: 16,
     fontWeight: 700,
