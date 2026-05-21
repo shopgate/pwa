@@ -11,13 +11,13 @@ import connect from './PaymentBarCheckoutButton.connector';
 const useStyles = makeStyles()(theme => ({
   button: {
     width: '100%',
-    background: theme.palette.ctaButton.background,
-    color: `${theme.palette.ctaButton.background.contrastText}!important`,
+    background: theme.components.ctaButton.background,
+    color: `${theme.contrastColor(theme.components.ctaButton.background)}!important`,
   },
   disabledButton: {
     width: '100%',
-    background: theme.palette.disabledButton.background,
-    color: `${theme.palette.disabledButton.background.contrastText}!important`,
+    background: theme.components.disabledButton.background,
+    color: `${theme.contrastColor(theme.components.disabledButton.background)}!important`,
   },
 }));
 

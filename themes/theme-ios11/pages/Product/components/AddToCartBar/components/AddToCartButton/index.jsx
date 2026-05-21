@@ -12,8 +12,8 @@ const useStyles = makeStyles()(theme => ({
     top: 0,
     display: 'block',
     flexGrow: 1,
-    background: theme.palette.ctaButton.background,
-    color: theme.palette.ctaButton.background.contrastText,
+    background: theme.components.ctaButton.background,
+    color: theme.contrastColor(theme.components.ctaButton.background),
     fontSize: 16,
     fontWeight: 700,
     borderRadius: 5,
@@ -26,8 +26,8 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   disabled: {
-    background: theme.palette.disabledButton.background,
-    color: theme.palette.disabledButton.background.contrastText,
+    background: theme.components.disabledButton.background,
+    color: theme.contrastColor(theme.components.disabledButton.background),
   },
 }));
 

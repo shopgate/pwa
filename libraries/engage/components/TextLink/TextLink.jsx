@@ -5,7 +5,7 @@ import { Link } from '@shopgate/engage/components';
 
 const useStyles = makeStyles()(theme => ({
   link: {
-    color: theme.palette.link.color,
+    color: theme.components.link.color,
   },
 }));
 

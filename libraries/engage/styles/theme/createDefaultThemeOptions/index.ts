@@ -35,46 +35,62 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           primary: getCSSCustomProp('--color-text-high-emphasis') || '#1A1A1A',
           secondary: getCSSCustomProp('--color-text-medium-emphasis') || '#808080',
         },
+      },
+      components: {
         link: {
-          color: getCSSCustomProp('--color-link') || getCSSCustomProp('--color-primary'),
+          vars: {
+            color: getCSSCustomProp('--color-link') || getCSSCustomProp('--color-primary'),
+          },
         },
         input: {
-          background: '#F2F2F2',
-          border: '#CCCCCC',
+          vars: {
+            background: '#F2F2F2',
+            border: '#CCCCCC',
+          },
         },
         ctaButton: {
-          background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
+          vars: {
+            background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
+          },
         },
         disabledButton: {
-          background: '#CCCCCC',
+          vars: {
+            background: '#CCCCCC',
+          },
         },
         discountBadge: {
-          background: '#857500',
+          vars: {
+            background: '#857500',
+          },
         },
         snackbar: {
-          background: 'var(--snackbar-background, #323232)',
+          vars: {
+            background: '#323232',
+          },
         },
         tabBar: {
-          background: 'var(--tab-bar-background, #FFFFFF)',
-          boxShadow: 'var(--tab-bar-box-shadow, 0 -1px 0 0 rgba(0, 0, 0, 0.1))',
-          minHeight: 'var(--tab-bar-min-height, 0px)',
-          border: '#E6E6E6',
-          inactive: 'var(--tab-bar-item-default-color, #747474)',
-          active: `var(--tab-bar-item-highlighted-color, ${getCSSCustomProp('--color-secondary')})`,
-
-          floatingBorderRadius: 'var(--tab-bar-floating-border-radius, 16px)',
-          floatingBoxShadow: 'var(--tab-bar-floating-box-shadow, 0 0 12px rgba(0, 0, 0, 0.24))',
-          floatingMinHeight: 'var(--tab-bar-floating-min-height, 59px)',
-
-          badgeColor: 'var(--tab-bar-item-badge-color, #FFFFFF)',
-          badgeBackground: `var(--tab-bar-item-badge-background, ${getCSSCustomProp('--color-secondary')})`,
-          badgeBorderRadius: 'var(--tab-bar-item-badge-border-radius, 8px)',
-          badgeTop: 'var(--tab-bar-item-badge-top, -8px)',
-          badgeLeft: 'var(--tab-bar-item-badge-left, calc(50% + 20px))',
+          vars: {
+            background: 'var(--tab-bar-background, #FFFFFF)',
+            boxShadow: 'var(--tab-bar-box-shadow, 0 -1px 0 0 rgba(0, 0, 0, 0.1))',
+            minHeight: 'var(--tab-bar-min-height, 0px)',
+            border: '#E6E6E6',
+            inactive: 'var(--tab-bar-item-default-color, #747474)',
+            active: `var(--tab-bar-item-highlighted-color, ${getCSSCustomProp('--color-secondary')})`,
+            floatingBorderRadius: 'var(--tab-bar-floating-border-radius, 16px)',
+            floatingBoxShadow: 'var(--tab-bar-floating-box-shadow, 0 0 12px rgba(0, 0, 0, 0.24))',
+            floatingMinHeight: 'var(--tab-bar-floating-min-height, 59px)',
+            badgeColor: 'var(--tab-bar-item-badge-color, #FFFFFF)',
+            badgeBackground: `var(--tab-bar-item-badge-background, ${getCSSCustomProp('--color-secondary')})`,
+            badgeBorderRadius: 'var(--tab-bar-item-badge-border-radius, 8px)',
+            badgeTop: 'var(--tab-bar-item-badge-top, -8px)',
+            badgeLeft: 'var(--tab-bar-item-badge-left, calc(50% + 20px))',
+          },
         },
         ratingStars: {
-          filled: `var(--rating-stars-filled, ${getCSSCustomProp('--color-primary')})`,
-          empty: 'var(--rating-stars-empty, #CCCCCC)',
+          vars: {
+            filled: `var(--rating-stars-filled, ${getCSSCustomProp('--color-primary')})`,
+            empty: 'var(--rating-stars-empty, #CCCCCC)',
+          },
         },
       },
     },

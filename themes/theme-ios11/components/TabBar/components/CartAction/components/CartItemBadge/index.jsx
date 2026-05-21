@@ -7,19 +7,19 @@ import connect from './connector';
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
-    background: theme.palette.tabBar.badgeBackground,
-    color: theme.palette.tabBar.badgeColor,
+    background: theme.components.tabBar.badgeBackground,
+    color: theme.components.tabBar.badgeColor,
     fontSize: '0.7rem',
     lineHeight: 1.5,
     fontWeight: 'bold',
-    borderRadius: theme.palette.tabBar.badgeBorderRadius,
+    borderRadius: theme.components.tabBar.badgeBorderRadius,
     height: theme.spacing(2),
-    top: theme.palette.tabBar.badgeTop,
+    top: theme.components.tabBar.badgeTop,
     paddingLeft: theme.spacing(0.5),
     paddingRight: theme.spacing(0.5),
     minWidth: theme.spacing(2),
     transform: 'translateX(-50%)',
-    left: theme.palette.tabBar.badgeLeft,
+    left: theme.components.tabBar.badgeLeft,
   },
 }));
 

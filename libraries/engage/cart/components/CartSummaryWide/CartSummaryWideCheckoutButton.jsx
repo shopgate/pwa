@@ -15,14 +15,14 @@ const useStyles = makeStyles()(theme => ({
   },
   button: {
     width: '100%',
-    background: theme.palette.ctaButton.background,
-    color: `${theme.palette.ctaButton.background.contrastText}!important`,
+    background: theme.components.ctaButton.background,
+    color: `${theme.contrastColor(theme.components.ctaButton.background)}!important`,
     borderRadius: 4,
     margin: theme.spacing(2, 0),
   },
   disabledButton: {
-    background: theme.palette.disabledButton.background,
-    color: `${theme.palette.disabledButton.background.contrastText}!important`,
+    background: theme.components.disabledButton.background,
+    color: `${theme.contrastColor(theme.components.disabledButton.background)}!important`,
   },
 }));
 

@@ -31,9 +31,9 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'center',
   },
   tabBarContainerDocked: {
-    background: theme.palette.tabBar.background,
-    minHeight: `calc(${theme.palette.tabBar.minHeight} + var(--safe-area-inset-bottom))`,
-    boxShadow: theme.palette.tabBar.boxShadow,
+    background: theme.components.tabBar.background,
+    minHeight: `calc(${theme.components.tabBar.minHeight} + var(--safe-area-inset-bottom))`,
+    boxShadow: theme.components.tabBar.boxShadow,
   },
   tabBarContainerFloating: {
     padding: '0 16px',
@@ -49,12 +49,12 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 'var(--safe-area-inset-bottom)',
   },
   tabBarFloating: {
-    background: theme.palette.tabBar.background,
-    minHeight: theme.palette.tabBar.floatingMinHeight,
+    background: theme.components.tabBar.background,
+    minHeight: theme.components.tabBar.floatingMinHeight,
     padding: '4px 0',
     marginBottom: `max(16px, calc(var(--safe-area-inset-bottom) + ${isAndroidOs ? '8px' : '0px'}))`,
-    borderRadius: theme.palette.tabBar.floatingBorderRadius,
-    boxShadow: theme.palette.tabBar.floatingBoxShadow,
+    borderRadius: theme.components.tabBar.floatingBorderRadius,
+    boxShadow: theme.components.tabBar.floatingBoxShadow,
   },
   transitionFadeBase: {
     transition: 'opacity 0.2s ease-in-out, visibility 0.2s ease-in-out',

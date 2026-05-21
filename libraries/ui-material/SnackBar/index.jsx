@@ -2,20 +2,14 @@ import React, {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import Color from 'color';
 import { config } from 'react-spring';
 import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeColors, themeShadows } from '@shopgate/pwa-common/helpers/config';
+import { themeShadows } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const defaultToast = {};
-
-const backgroundColor = themeColors.lightDark;
-const buttonColor = themeColors.accent;
-const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
-const safeButtonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -38,10 +32,10 @@ const useStyles = makeStyles()(theme => ({
   },
   box: {
     alignItems: 'center',
-    background: backgroundColor,
+    background: theme.components.snackbar.background,
     borderRadius: 3,
     boxShadow: themeShadows.toast,
-    color: theme.palette.background.default,
+    color: theme.contrastColor(theme.components.snackbar.background),
     display: 'flex',
     fontSize: '0.875rem',
     justifyContent: 'space-between',
@@ -58,7 +52,7 @@ const useStyles = makeStyles()(theme => ({
     overflow: 'hidden',
   },
   actionButton: {
-    color: safeButtonColor,
+    color: theme.palette.secondary.main,
     fontWeight: 500,
     height: 36,
     letterSpacing: 'inherit',

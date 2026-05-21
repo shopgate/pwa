@@ -37,7 +37,7 @@ const useStyles = makeStyles()(theme => ({
     marginRight: '0.23em',
   },
   emptyStars: {
-    color: theme.palette.ratingStars.empty,
+    color: theme.components.ratingStars.empty,
     display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
@@ -46,7 +46,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'absolute',
     left: 0,
     top: 0,
-    color: theme.palette.ratingStars.filled,
+    color: theme.components.ratingStars.filled,
     display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',

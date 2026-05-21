@@ -65,16 +65,16 @@ const useStyles = makeStyles()(theme => ({
     marginLeft: -(themeConfig.variables.loadingIndicator.size) / 2,
   },
   buttonReady: {
-    background: theme.palette.ctaButton.background,
-    color: theme.palette.ctaButton.background.contrastText,
+    background: theme.components.ctaButton.background,
+    color: theme.contrastColor(theme.components.ctaButton.background),
   },
   buttonSuccess: {
-    background: theme.palette.ctaButton.background.contrastText,
+    background: theme.contrastColor(theme.components.ctaButton.background),
     color: theme.palette.ctaButton.background,
   },
   buttonDisabled: {
-    background: theme.palette.disabledButton.background,
-    color: theme.palette.ctaButton.background.contrastText,
+    background: theme.components.disabledButton.background,
+    color: theme.contrastColor(theme.components.disabledButton.background),
     boxShadow: themeConfig.shadows.buttons.disabled,
   },
 }));

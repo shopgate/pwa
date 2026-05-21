@@ -24,10 +24,10 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   regular: {
-    color: theme.palette.tabBar.inactive,
+    color: theme.components.tabBar.inactive,
   },
   highlighted: {
-    color: theme.palette.tabBar.active,
+    color: theme.components.tabBar.active,
   },
   label: {
     '&:not(:empty)': {
