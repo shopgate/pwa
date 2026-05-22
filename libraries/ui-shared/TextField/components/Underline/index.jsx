@@ -7,11 +7,11 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 const { colors } = themeConfig;
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   underlineWrapper: {
     position: 'relative',
     width: '100%',
-    borderBottom: `1px solid ${colors.shade12}`,
+    borderBottom: `1px solid ${theme.palette.border.medium}`,
     marginTop: 2,
     marginBottom: 7,
   },
@@ -24,7 +24,7 @@ const useStyles = makeStyles()({
     willChange: 'transform',
     transition: `transform ${easing}`,
   },
-});
+}));
 
 /**
  * Returns the underline inline style.

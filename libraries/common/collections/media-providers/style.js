@@ -31,7 +31,7 @@ const consentContainer = css({
   textAlign: 'center',
   gap: 16,
   background: colors.shade10,
-  border: `1px solid ${colors.shade5}`,
+  border: '1px solid var(--sg-palette-border-medium)',
   // Add a tiny little border radius to make the message container look nice with padding
   borderRadius: 4,
   top: 0,

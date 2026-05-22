@@ -30,6 +30,12 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         background: {
           default: colors.light,
           emphasized: colors.placeholder || '#F2F2F2',
+          dark: '#000000',
+        },
+        border: {
+          light: '#F2F2F2',
+          medium: '#b5b5b5b5',
+          dark: '#747474',
         },
         text: {
           primary: getCSSCustomProp('--color-text-high-emphasis') || '#1A1A1A',

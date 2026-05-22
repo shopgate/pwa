@@ -21,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
   inputContainer: {
     position: 'relative',
     background: theme.palette.background.default,
-    border: `1px solid ${themeColors.shade7}`,
+    border: `1px solid ${theme.palette.border.light}`,
     borderRadius: 4,
     display: 'flex',
     alignItems: 'center',

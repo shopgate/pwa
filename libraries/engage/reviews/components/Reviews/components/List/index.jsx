@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_REVIEWS_ENTRY } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Title from './components/Title';
 import Rating from './components/Rating';
 import Text from './components/Text';
 import Info from './components/Info';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   item: {
     marginLeft: theme.spacing(2),
     padding: theme.spacing(2, 2, 2, 0),
-    borderTop: `1px solid ${colors.shade7}`,
+    borderTop: `1px solid ${theme.palette.border.light}`,
   },
 }));
 

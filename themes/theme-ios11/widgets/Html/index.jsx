@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import HtmlSanitizer from '@shopgate/pwa-common/components/HtmlSanitizer';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     '& h1, & h2, & h3, & h4, & h5, & h6, & p, & ul, & ol': {
       margin: '1rem 0',
@@ -51,7 +48,7 @@ const useStyles = makeStyles()(() => ({
     '& blockquote, & q': {
       paddingLeft: '1rem',
       margin: '2rem 0',
-      borderLeft: `.25rem solid ${colors.shade6}`,
+      borderLeft: `.25rem solid ${theme.palette.border.dark}`,
       fontStyle: 'italic',
     },
     '& > :first-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {

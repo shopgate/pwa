@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { Accordion } from '../../../components';
 import { StoreContext } from './Store.context';
 import { StoreOpeningHours } from './StoreOpeningHours';
@@ -11,7 +10,7 @@ import { StoreAddressShort } from './StoreAddressShort';
 const useStyles = makeStyles()(theme => ({
   storeDetailsBody: {
     padding: theme.spacing(1, 2),
-    borderTop: `1px solid ${themeColors.shade7}`,
+    borderTop: `1px solid ${theme.palette.border.light}`,
   },
   storeDetailsAccordion: {
     justifyContent: 'space-between',

@@ -1,14 +1,13 @@
 import React, { useContext } from 'react';
 import { every, isEmpty } from 'lodash';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { StoreContext } from './Store.context';
 import { StoreOpeningHours } from '../StoreList/StoreOpeningHours';
 import { Accordion, I18n } from '../../../components';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   accordionHeader: {
-    borderTop: `1px solid ${themeColors.shade7}`,
+    borderTop: `1px solid ${theme.palette.border.light}`,
     cursor: 'pointer',
     ' svg': {
       display: 'inline',
@@ -20,7 +19,7 @@ const useStyles = makeStyles()({
       padding: 0,
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}

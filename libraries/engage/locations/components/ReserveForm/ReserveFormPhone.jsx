@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { parsePhoneNumber } from 'react-phone-number-input';
 import PhoneInput from 'react-phone-number-input/mobile';
@@ -18,8 +17,6 @@ import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import { FulfillmentContext } from '../../locations.context';
 import connect from './ReserveFormPhone.connector';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   formField: {
@@ -38,7 +35,7 @@ const useStyles = makeStyles()(theme => ({
       lineHeight: '1.1875rem',
       borderRadius: 0,
       paddingBottom: theme.spacing(0.75),
-      borderBottom: `1px solid ${colors.shade12}`,
+      borderBottom: `1px solid ${theme.palette.border.medium}`,
       '&:focus': {
         borderBottom: `2px solid ${theme.palette.primary.main}`,
         paddingBottom: theme.spacing(0.75) - 1,

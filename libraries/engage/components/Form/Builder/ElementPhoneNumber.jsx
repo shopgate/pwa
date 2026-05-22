@@ -13,12 +13,9 @@ import fr from 'react-phone-number-input/locale/fr';
 import pt from 'react-phone-number-input/locale/pt';
 import flags from 'react-phone-number-input/flags';
 import { useCountriesNames } from '@shopgate/engage/i18n';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import Label from '@shopgate/pwa-ui-shared/TextField/components/Label';
 import FormHelper from './FormHelper';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   phoneField: {
@@ -33,7 +30,7 @@ const useStyles = makeStyles()(theme => ({
       lineHeight: '1.1875rem',
       borderRadius: 0,
       paddingBottom: theme.spacing(0.75),
-      borderBottom: `1px solid ${colors.shade12}`,
+      borderBottom: `1px solid ${theme.palette.border.medium}`,
       '&:focus': {
         borderBottom: `2px solid ${theme.palette.primary.main}`,
         paddingBottom: theme.spacing(0.75) - 1,

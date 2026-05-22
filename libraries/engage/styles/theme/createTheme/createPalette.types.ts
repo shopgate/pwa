@@ -149,68 +149,13 @@ export const paletteSchema = {
     color: '',
   },
   /**
-   * Colors to be used for the background and border of input elements
+   * Colors to be used for borders.
    */
-  input: {
-    background: '',
-    border: '',
+  border: {
+    light: '',
+    medium: '',
+    dark: '',
   },
-  /**
-   * Colors to be used for the call-to-action buttons
-   */
-  ctaButton: {
-    background: '',
-  },
-  /**
-   * Colors to be used for disabled buttons
-   */
-  disabledButton: {
-    background: '',
-  },
-  /**
-   * Colors to be used for the background and text of discount badges
-   */
-  discountBadge: {
-    background: '',
-  },
-  /**
-   * Colors to be used for the background of snackbars
-   */
-  snackbar: {
-    background: '',
-  },
-  /**
-   * Colors to be used for the tab bar component
-   */
-  tabBar: {
-    background: '',
-    border: '',
-    inactive: '',
-    active: '',
-    boxShadow: '',
-    minHeight: '',
-
-    floatingBorderRadius: '',
-    floatingBoxShadow: '',
-    floatingMinHeight: '',
-
-    badgeColor: '',
-    badgeBackground: '',
-    badgeBorderRadius: '',
-    badgeTop: '',
-    badgeLeft: '',
-  },
-  /**
-   * Colors to be used for the filled and empty states of rating stars
-   */
-  ratingStars: {
-    filled: '',
-    empty: '',
-  },
-  /**
-   * Palette with grey colors, intended for backgrounds, borders, and dividers.
-   * The numbers represent the lightness of the color,
-   */
   grey,
   action: {
     disabled: '#808080',

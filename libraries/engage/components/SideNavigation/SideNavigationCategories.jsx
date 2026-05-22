@@ -2,15 +2,12 @@ import React, { useEffect } from 'react';
 import { LoadingIndicator } from '@shopgate/pwa-ui-shared';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import SideNavigationCategoriesItemChildren from './SideNavigationCategoriesItemChildren';
 import connect from './SideNavigationCategories.connector';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   list: {
-    borderBottom: `1px solid ${colors.shade7}`,
+    borderBottom: `1px solid ${theme.palette.border.light}`,
   },
   loadingIndicator: {
     padding: 0,

@@ -22,12 +22,12 @@ const useStyles = makeStyles()(theme => ({
       width: 5,
       height: 5,
       border: '5px solid transparent',
-      borderTopColor: themeColors.shade6,
+      borderTopColor: theme.palette.border.dark,
     },
   },
   select: {
     appearance: 'none',
-    border: `1px solid ${themeColors.shade7}`,
+    border: `1px solid ${theme.palette.border.light}`,
     padding: theme.spacing(0, 4, 0, 1.5),
     color: themeColors.shade11,
     fontSize: '1rem',
@@ -87,7 +87,7 @@ const StoreListSearchRadius = ({ radius, unitSystem, setRadius }) => {
         className={classes.select}
         onChange={handleRadiusChange}
       >
-        { options.map(({ value, label }) => (
+        {options.map(({ value, label }) => (
           <option className={classes.option} value={value} key={label}>{label}</option>
         ))}
       </select>
