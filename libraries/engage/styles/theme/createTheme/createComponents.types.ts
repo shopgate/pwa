@@ -128,11 +128,6 @@ export const componentsSchema = {
       textColor: '',
     },
   },
-  link: {
-    vars: {
-      color: '',
-    },
-  },
   input: {
     vars: {
       background: '',
@@ -143,11 +138,6 @@ export const componentsSchema = {
     vars: {
       background: '',
       color: '',
-    },
-  },
-  disabledButton: {
-    vars: {
-      background: '',
     },
   },
   discountBadge: {
@@ -208,11 +198,6 @@ export const componentsDefaults = {
       textColor: t => t.palette.primary.contrastText,
     },
   },
-  link: {
-    vars: {
-      color: t => getCSSCustomProp('--color-link') || t.palette.primary.main,
-    },
-  },
   input: {
     vars: {
       background: '#F2F2F2',
@@ -221,13 +206,8 @@ export const componentsDefaults = {
   },
   ctaButton: {
     vars: {
-      background: t => getCSSCustomProp('--color-button-cta') || t.palette.primary.main,
-      color: t => getCSSCustomProp('--color-button-cta-contrast') || t.palette.primary.contrastText,
-    },
-  },
-  disabledButton: {
-    vars: {
-      background: '#CCCCCC',
+      background: t => t.palette.primary.main,
+      color: t => t.palette.primary.contrastText,
     },
   },
   discountBadge: {
@@ -238,31 +218,30 @@ export const componentsDefaults = {
   snackbar: {
     vars: {
       background: '#323232',
-      contrastText: '#FFFFFF',
     },
   },
   tabBar: {
     vars: {
-      background: 'var(--tab-bar-background, #FFFFFF)',
-      boxShadow: 'var(--tab-bar-box-shadow, 0 -1px 0 0 rgba(0, 0, 0, 0.1))',
-      minHeight: 'var(--tab-bar-min-height, 0px)',
+      background: '#FFFFFF',
+      boxShadow: '0 -1px 0 0 rgba(0, 0, 0, 0.1)',
+      minHeight: '0px',
       border: '#E6E6E6',
-      inactive: 'var(--tab-bar-item-default-color, #747474)',
-      active: t => `var(--tab-bar-item-highlighted-color, ${t.palette.secondary.main})`,
-      floatingBorderRadius: 'var(--tab-bar-floating-border-radius, 16px)',
-      floatingBoxShadow: 'var(--tab-bar-floating-box-shadow, 0 0 12px rgba(0, 0, 0, 0.24))',
-      floatingMinHeight: 'var(--tab-bar-floating-min-height, 59px)',
-      badgeColor: 'var(--tab-bar-item-badge-color, #FFFFFF)',
-      badgeBackground: t => `var(--tab-bar-item-badge-background, ${t.palette.secondary.main})`,
-      badgeBorderRadius: 'var(--tab-bar-item-badge-border-radius, 8px)',
-      badgeTop: 'var(--tab-bar-item-badge-top, -8px)',
-      badgeLeft: 'var(--tab-bar-item-badge-left, calc(50% + 20px))',
+      inactive: '#747474)',
+      active: t => t.palette.secondary.main,
+      floatingBorderRadius: '16px',
+      floatingBoxShadow: '0 0 12px rgba(0, 0, 0, 0.24)',
+      floatingMinHeight: '59px',
+      badgeColor: ' #FFFFFF)',
+      badgeBackground: t => t.palette.secondary.main,
+      badgeBorderRadius: '8px',
+      badgeTop: '-8px',
+      badgeLeft: 'calc(50% + 20px)',
     },
   },
   ratingStars: {
     vars: {
-      filled: t => `var(--rating-stars-filled, ${t.palette.primary.main})`,
-      empty: 'var(--rating-stars-empty, #CCCCCC)',
+      filled: t => t.palette.primary.main,
+      empty: '#CCCCCC',
     },
   },
 } satisfies ComponentsDefaults;

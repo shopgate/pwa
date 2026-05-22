@@ -37,11 +37,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
       },
       components: {
-        link: {
-          vars: {
-            color: getCSSCustomProp('--color-link') || getCSSCustomProp('--color-primary'),
-          },
-        },
         input: {
           vars: {
             background: '#F2F2F2',
@@ -51,16 +46,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         ctaButton: {
           vars: {
             background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
-          },
-        },
-        disabledButton: {
-          vars: {
-            background: '#CCCCCC',
-          },
-        },
-        discountBadge: {
-          vars: {
-            background: '#857500',
           },
         },
         snackbar: {
