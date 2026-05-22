@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { themeConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { TextField } from '@shopgate/engage/components';
-import { getCSSCustomProp, makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import {
   CardNumberElement,
   CardCvcElement,
@@ -21,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
     flex: '0 0 auto',
     ' .formElement': {
-      background: 'var(--color-background-accent)',
+      background: theme.palette.secondary.main,
       padding: 0,
       marginBottom: 38,
       borderTopLeftRadius: 4,
@@ -89,6 +89,7 @@ const StripeCardExpiryElement = wrapStripeElement(CardExpiryElement);
  */
 const StripeCreditCard = () => {
   const { classes } = useStyles();
+  const theme = useTheme();
   const cardRef = React.useRef();
   const { error, setError } = useContext(StripeContext);
   const { needsPayment, paymentData } = useCheckoutContext();
@@ -110,9 +111,9 @@ const StripeCreditCard = () => {
   const textFieldStyles = {
     style: {
       base: {
-        color: getCSSCustomProp('--color-text-high-emphasis'),
+        color: theme.palette.text.primary,
         '::placeholder': {
-          color: getCSSCustomProp('--color-text-low-emphasis'),
+          color: theme.palette.text.secondary,
         },
       },
     },

@@ -33,7 +33,7 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 0,
     '& label': {
       fontWeight: 400,
-      color: 'var(--color-text-high-emphasis, inherit)',
+      color: `${theme.palette.text.primary}, inherit`,
     },
     '& input': {
       fontWeight: 500,
