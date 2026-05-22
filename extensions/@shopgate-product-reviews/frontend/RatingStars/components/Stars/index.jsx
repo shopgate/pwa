@@ -25,11 +25,11 @@ const useStyles = makeStyles()(theme => ({
     outline: 0,
   },
   emptyStars: {
-    color: theme.palette.ratingStars.empty,
+    color: theme.components.ratingStars.empty,
   },
   filledStars: {
     position: 'absolute',
-    color: theme.palette.ratingStars.filled,
+    color: theme.components.ratingStars.filled,
     top: 0,
   },
   iconSmall: {
