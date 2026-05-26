@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable require-jsdoc, extra-rules/potential-point-free, class-methods-use-this, no-unused-vars */
 
+require('@testing-library/jest-dom');
+
 // Extend Jest matchers to add Enzyme specific ones (necessary since jest-enzyme packages was dropped)
 expect.extend({
   toBeEmptyRender(received) {
