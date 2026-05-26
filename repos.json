@@ -4,7 +4,6 @@
     "theme-ios11": "git@github.com:shopgate/theme-ios11.git"
   },
   "extensions": {
-    "@shopgate-product-reviews": "git@github.com:shopgate/ext-product-reviews.git",
     "@shopgate-tracking-ga-native": "git@github.com:shopgate/tracking-ga-native.git",
     "@shopgate-user-privacy": "git@github.com:shopgate/ext-user-privacy.git"
   }
