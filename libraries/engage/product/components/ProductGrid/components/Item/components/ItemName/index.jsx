@@ -6,7 +6,7 @@ import {
   PRODUCT_ITEM_NAME_AFTER,
 } from '@shopgate/engage/category/constants';
 import { Portal } from '@shopgate/engage/components';
-import { ProductName } from '@shopgate/engage/product';
+import { ProductName, RatingStars } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -42,6 +42,9 @@ const ItemName = ({
           name={PRODUCT_ITEM_NAME_BEFORE}
           props={portalProps}
         />
+        <RatingStars
+          productId={productId}
+        />
         <Portal
           name={PRODUCT_ITEM_NAME_AFTER}
           props={portalProps}
@@ -51,13 +54,18 @@ const ItemName = ({
   }
 
   return (
-    <ProductName
-      name={name}
-      className={cx(classes.root, 'theme__product-grid__item__item-name')}
-      portalName={PRODUCT_ITEM_NAME}
-      portalProps={portalProps}
-      testId={`Productname: ${name}`}
-    />
+    <>
+      <RatingStars
+        productId={productId}
+      />
+      <ProductName
+        name={name}
+        className={cx(classes.root, 'theme__product-grid__item__item-name')}
+        portalName={PRODUCT_ITEM_NAME}
+        portalProps={portalProps}
+        testId={`Productname: ${name}`}
+      />
+    </>
   );
 };
 

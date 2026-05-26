@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { PRODUCT_ITEM_NAME } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import { ProductName } from '@shopgate/engage/product';
+import { PRODUCT_ITEM_NAME } from '@shopgate/engage/category/constants';
+import { ProductName, RatingStars } from '@shopgate/engage/product/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -36,13 +36,18 @@ const ItemName = ({ display, productId, name }) => {
   const portalProps = { productId };
 
   return (
-    <ProductName
-      name={name}
-      className={cx(classes.name, 'theme__product-grid__item__item-name')}
-      portalName={PRODUCT_ITEM_NAME}
-      portalProps={portalProps}
-      testId={`Productname: ${name}`}
-    />
+    <>
+      <RatingStars
+        productId={productId}
+      />
+      <ProductName
+        name={name}
+        className={cx(classes.name, 'theme__product-grid__item__item-name')}
+        portalName={PRODUCT_ITEM_NAME}
+        portalProps={portalProps}
+        testId={`Productname: ${name}`}
+      />
+    </>
   );
 };
 
