@@ -1,7 +1,7 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
+import { render, screen, waitFor } from '@shopgate/pwa-unit-test/rtlUtils';
 import AppScanner from '@shopgate/pwa-core/classes/Scanner';
 import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
 import {
@@ -27,7 +27,7 @@ const scannerDidOpen = jest.fn();
 
 /**
  * @param {string} libVersion An app lib version.
- * @return {JSX}
+ * @return {Object} Render result.
  */
 const createWrapper = (libVersion = SCANNER_MIN_APP_LIB_VERSION) => {
   // Change the lib version of the client information for the internal checks of the Scanner class.
@@ -41,17 +41,24 @@ const createWrapper = (libVersion = SCANNER_MIN_APP_LIB_VERSION) => {
     },
   });
 
-  return mount((
+  // eslint-disable-next-line react/prop-types
+  const Wrapper = ({ children }) => (
     <Provider store={store}>
-      <ScannerContainer
-        scannerDidOpen={scannerDidOpen}
-        scannerDidClose={scannerDidClose}
-        scope={SCANNER_SCOPE_DEFAULT}
-        type={SCANNER_TYPE_BARCODE}
-      >
-        <div>Container Children</div>
-      </ScannerContainer>
-    </Provider>));
+      {children}
+    </Provider>
+  );
+
+  return render(
+    <ScannerContainer
+      scannerDidOpen={scannerDidOpen}
+      scannerDidClose={scannerDidClose}
+      scope={SCANNER_SCOPE_DEFAULT}
+      type={SCANNER_TYPE_BARCODE}
+    >
+      <div>Container Children</div>
+    </ScannerContainer>,
+    { wrapper: Wrapper }
+  );
 };
 
 describe('<ScannerContainer />', () => {
@@ -63,41 +70,41 @@ describe('<ScannerContainer />', () => {
   });
 
   it('should render the component when the scanner is supported', () => {
-    const wrapper = createWrapper();
-    expect(wrapper.find(ScannerContainer)).not.toBeEmptyRender();
+    createWrapper();
+    expect(screen.getByText('Container Children')).toBeInTheDocument();
   });
 
   it('should not render the component when the scanner is not supported', () => {
-    const wrapper = createWrapper('10.0.0');
-    expect(wrapper.find(ScannerContainer)).toBeEmptyRender();
+    createWrapper('10.0.0');
+    expect(screen.queryByText('Container Children')).not.toBeInTheDocument();
   });
 
   it('should open the scanner when the component mounts', async () => {
-    const wrapper = createWrapper();
-    await wrapper.find(ScannerContainer);
+    createWrapper();
 
+    await waitFor(() => {
+      expect(scannerOpenSpy).toHaveBeenCalledTimes(1);
+    });
     expect(scannerDidOpen).toHaveBeenCalledTimes(1);
-    expect(scannerOpenSpy).toHaveBeenCalledTimes(1);
   });
 
   it('should not open the scanner when the component mounts and the scanner is not supported', async () => {
-    const wrapper = createWrapper('10.0.0');
-    await wrapper.find(ScannerContainer);
+    createWrapper('10.0.0');
 
     expect(scannerDidOpen).not.toHaveBeenCalled();
     expect(scannerOpenSpy).not.toHaveBeenCalled();
   });
 
   it('should close the scanner when the component unmounts', () => {
-    const wrapper = createWrapper();
-    wrapper.unmount();
+    const { unmount } = createWrapper();
+    unmount();
     expect(scannerDidClose).toHaveBeenCalledTimes(1);
     expect(scannerCloseSpy).toHaveBeenCalledTimes(1);
   });
 
   it('should not close the scanner when the component unmounts and the scanner is not supported', () => {
-    const wrapper = createWrapper('10.0.0');
-    wrapper.unmount();
+    const { unmount } = createWrapper('10.0.0');
+    unmount();
     expect(scannerDidClose).not.toHaveBeenCalled();
     expect(scannerCloseSpy).not.toHaveBeenCalled();
   });

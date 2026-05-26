@@ -1,19 +1,37 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {
+  render,
+  screen,
+} from '@shopgate/pwa-unit-test/rtlUtils';
 import NavDrawerTitle from './index';
 
+const mockI18nText = jest.fn(({ string }) => <span data-testid="i18n-text">{string}</span>);
+
+jest.mock('@shopgate/engage/components', () => ({
+  I18n: {
+    Text: props => mockI18nText(props),
+  },
+}));
+
 describe('<NavDrawerTitle />', () => {
+  beforeEach(() => {
+    mockI18nText.mockClear();
+  });
+
   it('should render when a text is passed within the props', () => {
     const title = 'Title';
-    const wrapper = mount(<NavDrawerTitle text={title} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.text()).toEqual(title);
-    expect(wrapper.find('Translate').prop('string')).toEqual(title);
+    const { container } = render(<NavDrawerTitle text={title} />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getByTestId('i18n-text')).toHaveTextContent(title);
+    expect(mockI18nText).toHaveBeenCalledWith(expect.objectContaining({ string: title }));
   });
 
   it('should not render when no text is passed within the props', () => {
-    const wrapper = mount(<NavDrawerTitle />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.isEmptyRender()).toBe(true);
+    const { container } = render(<NavDrawerTitle />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(container.firstChild).toBeNull();
+    expect(mockI18nText).not.toHaveBeenCalled();
   });
 });

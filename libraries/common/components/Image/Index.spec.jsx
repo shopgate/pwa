@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import Image from './index';
 
 window.requestAnimationFrame = () => { };
@@ -18,16 +18,16 @@ describe('<Image />', () => {
   };
 
   it('should render placeholders if forced to', () => {
-    const wrapper = mount(<Image src="foo/bar" forcePlaceholder />);
+    const { container } = render(<Image src="foo/bar" forcePlaceholder />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').length).toEqual(0);
+    expect(container.firstChild).toMatchSnapshot();
+    expect(container.querySelectorAll('img')).toHaveLength(0);
   });
 
   it('should render placeholders if src is null', () => {
-    const wrapper = mount(<Image src="foo/bar" />);
+    const { container } = render(<Image src="foo/bar" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').length).toEqual(1);
+    expect(container.firstChild).toMatchSnapshot();
+    expect(container.querySelectorAll('img')).toHaveLength(1);
   });
 });

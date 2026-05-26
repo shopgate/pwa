@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { mount } from 'enzyme';
+import {
+  render,
+  waitFor,
+} from '@shopgate/pwa-unit-test/rtlUtils';
 import { UIEvents } from '@shopgate/pwa-core';
 import LoadingContext from './context';
 import LoadingProvider from './index';
@@ -8,34 +11,47 @@ import LoadingProvider from './index';
 jest.unmock('@shopgate/pwa-core');
 
 const MOCKED_PATH = 'some/path';
+const ANOTHER_PATH = '/some/other/path';
 
 /**
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const MockComponent = ({ isLoading, path }) => (isLoading(path) ? <div /> : null);
+const MockComponent = ({ isLoading, path }) => (isLoading(path) ? <div data-testid="loading-indicator" /> : null);
 
 MockComponent.propTypes = {
   isLoading: PropTypes.func.isRequired,
   path: PropTypes.string.isRequired,
 };
 
+let latestContext;
+
+const ContextConsumerBridge = ({ path }) => (
+  <LoadingContext.Consumer>
+    {(props) => {
+      latestContext = props;
+
+      return <MockComponent {...props} path={path} />;
+    }}
+  </LoadingContext.Consumer>
+);
+
+ContextConsumerBridge.propTypes = {
+  path: PropTypes.string.isRequired,
+};
+
 /**
  * @param {string} path A mocked path.
- * @return {JSX}
+ * @return {Object} RTL render result.
  */
 const createWrapper = (path = '/') => {
-  const wrapper = mount((
+  latestContext = null;
+
+  return render((
     <LoadingProvider>
-      <LoadingContext.Consumer>
-        {props => (
-          <MockComponent {...props} path={path} />
-        )}
-      </LoadingContext.Consumer>
+      <ContextConsumerBridge path={path} />
     </LoadingProvider>
   ));
-
-  return wrapper;
 };
 
 describe('LoadingProvider', () => {
@@ -50,54 +66,65 @@ describe('LoadingProvider', () => {
   });
 
   it('should not render the child component when the current path is not loading', () => {
-    const wrapper = createWrapper();
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('MockComponent > div').exists()).toBe(false);
+    const { queryByTestId } = createWrapper();
+    expect(queryByTestId('loading-indicator')).not.toBeInTheDocument();
   });
 
   it('should render the child component when the current path is loading', async () => {
-    const wrapper = createWrapper(MOCKED_PATH);
-    expect(wrapper).toMatchSnapshot();
-    wrapper.instance().setLoading(MOCKED_PATH);
-    wrapper.update();
-    setTimeout(() => {
-      expect(wrapper.find('MockComponent > div').exists()).toBe(true);
-      wrapper.instance().unsetLoading(MOCKED_PATH);
-      wrapper.update();
-      expect(wrapper.find('MockComponent > div').exists()).toBe(false);
-    }, 0);
+    const { container, getByTestId, queryByTestId } = createWrapper(MOCKED_PATH);
+
+    latestContext.setLoading(MOCKED_PATH);
+    await waitFor(() => {
+      expect(getByTestId('loading-indicator')).toBeInTheDocument();
+    });
+    expect(container.firstChild).toMatchSnapshot();
+
+    latestContext.unsetLoading(MOCKED_PATH);
+    await waitFor(() => {
+      expect(queryByTestId('loading-indicator')).not.toBeInTheDocument();
+    });
   });
 
-  it('should populate internal methods its children', () => {
-    const wrapper = createWrapper();
-    expect(wrapper).toMatchSnapshot();
-    const child = wrapper.find('MockComponent');
-    expect(child.prop('setLoading')).toEqual(wrapper.instance().setLoading);
-    expect(child.prop('unsetLoading')).toEqual(wrapper.instance().unsetLoading);
-    expect(child.prop('isLoading')).toEqual(wrapper.instance().isLoading);
+  it('should provide expected loading API methods in context', () => {
+    createWrapper();
+    expect(latestContext).toEqual(expect.objectContaining({
+      setLoading: expect.any(Function),
+      unsetLoading: expect.any(Function),
+      isLoading: expect.any(Function),
+    }));
   });
 
   it('should register event listeners within the constructor', () => {
-    const wrapper = createWrapper();
+    createWrapper();
     expect(UIEvents.addListener).toHaveBeenCalledTimes(3);
+    const addCalls = UIEvents.addListener.mock.calls;
+    const getListener = eventName => addCalls.find(([name]) => name === eventName)?.[1];
+
     expect(UIEvents.addListener)
-      .toHaveBeenCalledWith(LoadingProvider.SET, wrapper.instance().setLoading);
+      .toHaveBeenCalledWith(LoadingProvider.SET, latestContext.setLoading);
     expect(UIEvents.addListener)
-      .toHaveBeenCalledWith(LoadingProvider.RESET, wrapper.instance().resetLoading);
+      .toHaveBeenCalledWith(LoadingProvider.RESET, expect.any(Function));
     expect(UIEvents.addListener)
-      .toHaveBeenCalledWith(LoadingProvider.UNSET, wrapper.instance().unsetLoading);
+      .toHaveBeenCalledWith(LoadingProvider.UNSET, latestContext.unsetLoading);
+
+    expect(getListener(LoadingProvider.SET)).toBe(latestContext.setLoading);
+    expect(getListener(LoadingProvider.UNSET)).toBe(latestContext.unsetLoading);
   });
 
   it('should remove event listeners within componentWillUnmount', () => {
-    const wrapper = createWrapper();
-    wrapper.unmount();
+    const { unmount } = createWrapper();
+    const addCalls = UIEvents.addListener.mock.calls;
+    const listenerByEvent = Object.fromEntries(addCalls.map(([event, fn]) => [event, fn]));
+
+    unmount();
+
     expect(UIEvents.removeListener).toHaveBeenCalledTimes(3);
     expect(UIEvents.removeListener)
-      .toHaveBeenCalledWith(LoadingProvider.SET, expect.any(Function));
+      .toHaveBeenCalledWith(LoadingProvider.SET, listenerByEvent[LoadingProvider.SET]);
     expect(UIEvents.removeListener)
-      .toHaveBeenCalledWith(LoadingProvider.RESET, expect.any(Function));
+      .toHaveBeenCalledWith(LoadingProvider.RESET, listenerByEvent[LoadingProvider.RESET]);
     expect(UIEvents.removeListener)
-      .toHaveBeenCalledWith(LoadingProvider.UNSET, expect.any(Function));
+      .toHaveBeenCalledWith(LoadingProvider.UNSET, listenerByEvent[LoadingProvider.UNSET]);
   });
 
   describe('LoadingProvider.setLoading()', () => {
@@ -126,26 +153,25 @@ describe('LoadingProvider', () => {
 
   describe('.isLoading()', () => {
     it('should work as expected', () => {
-      const ANOTHER_PATH = '/some/other/path';
-      const instance = createWrapper().instance();
+      createWrapper();
 
-      expect(instance.isLoading(MOCKED_PATH)).toBe(false);
-      expect(instance.isLoading(ANOTHER_PATH)).toBe(false);
+      expect(latestContext.isLoading(MOCKED_PATH)).toBe(false);
+      expect(latestContext.isLoading(ANOTHER_PATH)).toBe(false);
 
-      instance.setLoading(MOCKED_PATH);
-      expect(instance.isLoading(MOCKED_PATH)).toBe(true);
-      expect(instance.isLoading(ANOTHER_PATH)).toBe(false);
+      latestContext.setLoading(MOCKED_PATH);
+      expect(latestContext.isLoading(MOCKED_PATH)).toBe(true);
+      expect(latestContext.isLoading(ANOTHER_PATH)).toBe(false);
 
-      instance.setLoading(ANOTHER_PATH);
-      expect(instance.isLoading(MOCKED_PATH)).toBe(true);
-      expect(instance.isLoading(ANOTHER_PATH)).toBe(true);
+      latestContext.setLoading(ANOTHER_PATH);
+      expect(latestContext.isLoading(MOCKED_PATH)).toBe(true);
+      expect(latestContext.isLoading(ANOTHER_PATH)).toBe(true);
 
-      instance.unsetLoading(MOCKED_PATH);
-      instance.unsetLoading(MOCKED_PATH);
-      instance.unsetLoading(ANOTHER_PATH);
-      instance.unsetLoading(ANOTHER_PATH);
-      expect(instance.isLoading(MOCKED_PATH)).toBe(false);
-      expect(instance.isLoading(ANOTHER_PATH)).toBe(false);
+      latestContext.unsetLoading(MOCKED_PATH);
+      latestContext.unsetLoading(MOCKED_PATH);
+      latestContext.unsetLoading(ANOTHER_PATH);
+      latestContext.unsetLoading(ANOTHER_PATH);
+      expect(latestContext.isLoading(MOCKED_PATH)).toBe(false);
+      expect(latestContext.isLoading(ANOTHER_PATH)).toBe(false);
     });
   });
 });

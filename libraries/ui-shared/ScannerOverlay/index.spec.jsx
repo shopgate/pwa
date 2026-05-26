@@ -1,5 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {
+  fireEvent,
+  render,
+  screen,
+} from '@shopgate/pwa-unit-test/rtlUtils';
 import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
 import AppScanner from '@shopgate/pwa-core/classes/Scanner';
 import {
@@ -7,16 +11,19 @@ import {
   SCANNER_TYPE_BARCODE,
   SCANNER_MIN_APP_LIB_VERSION,
 } from '@shopgate/pwa-core/constants/Scanner';
-import CameraOverlay from './components/CameraOverlay';
-import FlashlightButton from './components/ScannerBar/components/FlashlightButton';
 import ScannerOverlay from './index';
 
 jest.mock('@shopgate/pwa-core/classes/AppCommand');
-jest.mock('react-dom', () => ({
-  createPortal: element => (
-    <div id="portal-content">{element}</div>
-  ),
-}));
+jest.mock('react-dom', () => {
+  const actual = jest.requireActual('react-dom');
+
+  return {
+    ...actual,
+    createPortal: element => (
+      <div id="portal-content">{element}</div>
+    ),
+  };
+});
 
 jest.mock('@shopgate/engage/components');
 
@@ -25,27 +32,33 @@ defaultClientInformation.libVersion = SCANNER_MIN_APP_LIB_VERSION;
 describe('<ScannerOverlay />', () => {
   const toggleFlashlightSpy = jest.spyOn(AppScanner, 'toggleFlashlight');
 
+  beforeEach(() => {
+    toggleFlashlightSpy.mockClear();
+  });
+
   it('should render the component', () => {
-    const wrapper = mount(<ScannerOverlay />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(CameraOverlay)).not.toBeEmptyRender();
-    expect(wrapper.find(CameraOverlay)).not.toBeEmptyRender();
-    expect(wrapper.state('flashlight')).toBe(false);
+    const { container } = render(<ScannerOverlay />);
+
+    expect(container).toMatchSnapshot();
+    expect(screen.getByText('scanner.instructions')).toBeInTheDocument();
+    expect(screen.getByRole('status')).toHaveTextContent('scanner.flashlight.off');
+    expect(screen.getByRole('link', { name: 'scanner.flashlight.switchOn' })).toBeInTheDocument();
   });
 
   it('should toggle the flashlight when the button is pressed', async () => {
     await AppScanner.open(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE);
 
-    const wrapper = mount(<ScannerOverlay />);
-    const button = wrapper.find(FlashlightButton).find('ToggleIcon');
+    render(<ScannerOverlay />);
+    const button = screen.getByRole('link', { name: 'scanner.flashlight.switchOn' });
 
-    button.simulate('click');
+    fireEvent.click(button);
 
-    expect(wrapper.state('flashlight')).toBe(true);
+    expect(screen.getByRole('status')).toHaveTextContent('scanner.flashlight.on');
+    expect(screen.getByRole('link', { name: 'scanner.flashlight.switchOff' })).toBeInTheDocument();
     expect(toggleFlashlightSpy).toHaveBeenCalledTimes(1);
 
-    button.simulate('click');
-    expect(wrapper.state('flashlight')).toBe(false);
+    fireEvent.click(screen.getByRole('link', { name: 'scanner.flashlight.switchOff' }));
+    expect(screen.getByRole('status')).toHaveTextContent('scanner.flashlight.off');
     expect(toggleFlashlightSpy).toHaveBeenCalledTimes(2);
   });
 });
