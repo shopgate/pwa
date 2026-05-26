@@ -1,6 +1,6 @@
 {
   "lerna": "2.9.0",
-  "version": "7.30.4",
+  "version": "7.31.1-alpha.1",
   "packages": [
     "extensions/@shopgate-tracking-ga-native/frontend",
     "extensions/@shopgate-user-privacy/frontend",
