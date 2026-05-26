@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import { withRoute } from '../withRoute';
 
 const mockRoute = {
@@ -17,7 +17,9 @@ jest.mock('@shopgate/pwa-common/context', () => ({
   },
 }));
 
-const MockComponent = () => null;
+const mockWrappedComponent = jest.fn(props => (
+  <pre data-testid="wrapped-props">{JSON.stringify(props)}</pre>
+));
 
 describe('engage > core > hocs > withRoute', () => {
   beforeEach(() => {
@@ -25,24 +27,30 @@ describe('engage > core > hocs > withRoute', () => {
   });
 
   it('should inject the context properties into the component', () => {
-    const ComposedComponent = withRoute(MockComponent);
-    const wrapper = mount(<ComposedComponent someProp />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).props()).toEqual({
+    const ComposedComponent = withRoute(mockWrappedComponent);
+    const { container } = render(<ComposedComponent someProp />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       someProp: true,
       ...mockRoute,
     });
+    expect(screen.getByTestId('wrapped-props')).toHaveTextContent('"pathname":"/"');
   });
 
   it('should inject a single property with the context into the component', () => {
-    const ComposedComponent = withRoute(MockComponent, { prop: 'route' });
-    const wrapper = mount(<ComposedComponent someProp />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).props()).toEqual({
+    const ComposedComponent = withRoute(mockWrappedComponent, { prop: 'route' });
+    const { container } = render(<ComposedComponent someProp />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       someProp: true,
       route: {
         ...mockRoute,
       },
     });
+    expect(screen.getByTestId('wrapped-props')).toHaveTextContent('"route"');
   });
 });

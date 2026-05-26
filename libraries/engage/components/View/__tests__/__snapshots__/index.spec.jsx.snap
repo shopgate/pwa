@@ -2,38 +2,32 @@
 
 exports[`engage > components > view > index should have structured content 1`] = `
 <section
-  aria-hidden={false}
-  className="sg-d7m3dj-root engage__view"
-  style={
-    {
-      "display": "flex",
-    }
-  }
+  aria-hidden="false"
+  class="sg-d7m3dj-root engage__view"
+  style="display: flex;"
 >
-  <_default
-    noContentPortal={false}
-    noKeyboardListener={false}
-    noScrollOnKeyboard={false}
-    setContentRef={[MockFunction]}
+  <div
+    data-testid="view-content"
   >
     <div>
       Page #1
     </div>
-  </_default>
+  </div>
 </section>
 `;
 
 exports[`engage > components > view > index should initialize with visible route 1`] = `
-<ViewContainer
-  aria-hidden={false}
-  background="#fff"
-  noContentPortal={false}
-  noKeyboardListener={false}
-  noScrollOnKeyboard={false}
-  visible={true}
+<section
+  aria-hidden="false"
+  class="sg-d7m3dj-root engage__view"
+  style="display: flex;"
 >
-  <div>
-    Page #1
+  <div
+    data-testid="view-content"
+  >
+    <div>
+      Page #1
+    </div>
   </div>
-</ViewContainer>
+</section>
 `;

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { mount } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import { combineReducers } from 'redux';
 import { Provider as StoreProvider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
@@ -27,16 +27,27 @@ MockComponent.defaultProps = {
 };
 
 /**
- * Creates a mounted MockComponent with the given store.
+ * Creates a rendered MockComponent with the given store.
  * @param {Object} store Redux store.
  * @param {Object} props Component props
- * @returns {JSX.Element}
+ * @returns {Object}
  */
-const renderWithStore = (store, props = {}) => mount(
-  <StoreProvider store={store}>
-    <MockComponent {...props} />
-  </StoreProvider>
-);
+const renderWithStore = (store, props = {}) => {
+  const rendered = render(
+    <StoreProvider store={store}>
+      <MockComponent {...props} />
+    </StoreProvider>
+  );
+
+  return {
+    ...rendered,
+    rerenderWithStore: (nextProps = {}) => rendered.rerender(
+      <StoreProvider store={store}>
+        <MockComponent {...nextProps} />
+      </StoreProvider>
+    ),
+  };
+};
 
 describe('engage > a11y > hooks', () => {
   describe('useTrackModalState()', () => {
@@ -65,25 +76,25 @@ describe('engage > a11y > hooks', () => {
 
     describe('isVisible parameter is NOT set', () => {
       it('should dispatch expected actions when mounted', () => {
-        const wrapper = renderWithStore(store);
+        const rendered = renderWithStore(store);
 
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith(increaseModalCount());
         expect(getModalCount()).toBe(1);
 
         // Simulate component updates
-        wrapper.setProps({ children: <MockComponent someProp /> });
+        rendered.rerenderWithStore({ someProp: true });
         expect(getModalCount()).toBe(1);
-        wrapper.setProps({ children: <MockComponent anotherProp={false} /> });
+        rendered.rerenderWithStore({ anotherProp: false });
 
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(getModalCount()).toBe(1);
       });
 
       it('should dispatch expected actions when unmounted', () => {
-        const wrapper = renderWithStore(store);
+        const rendered = renderWithStore(store);
         expect(getModalCount()).toBe(1);
-        wrapper.unmount();
+        rendered.unmount();
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(dispatch).toHaveBeenNthCalledWith(1, increaseModalCount());
         expect(dispatch).toHaveBeenNthCalledWith(2, decreaseModalCount());
@@ -93,37 +104,52 @@ describe('engage > a11y > hooks', () => {
 
     describe('isVisible parameter is set', () => {
       it('should dispatch expected actions when mounted with isVisible true', () => {
-        const wrapper = renderWithStore(store, { isVisible: true });
+        const rendered = renderWithStore(store, { isVisible: true });
 
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenCalledWith(increaseModalCount());
         expect(getModalCount()).toBe(1);
 
         // Simulate component updates
-        wrapper.setProps({ children: <MockComponent isVisible someProp /> });
+        rendered.rerenderWithStore({
+          isVisible: true,
+          someProp: true,
+        });
         expect(getModalCount()).toBe(1);
-        wrapper.setProps({ children: <MockComponent isVisible anotherProp={false} /> });
+        rendered.rerenderWithStore({
+          isVisible: true,
+          anotherProp: false,
+        });
 
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(getModalCount()).toBe(1);
 
-        wrapper.unmount();
+        rendered.unmount();
         expect(dispatch).toHaveBeenCalledTimes(2);
         expect(getModalCount()).toBe(0);
       });
 
       it('should dispatch expected actions when mounted with isVisible false and multiple updates', () => {
-        const wrapper = renderWithStore(store, { isVisible: false });
+        const rendered = renderWithStore(store, { isVisible: false });
 
         expect(dispatch).toHaveBeenCalledTimes(0);
         expect(getModalCount()).toBe(0);
 
         // Simulate component updates
-        wrapper.setProps({ children: <MockComponent isVisible someProp /> });
+        rendered.rerenderWithStore({
+          isVisible: true,
+          someProp: true,
+        });
         expect(getModalCount()).toBe(1);
-        wrapper.setProps({ children: <MockComponent isVisible={false} someProp /> });
+        rendered.rerenderWithStore({
+          isVisible: false,
+          someProp: true,
+        });
         expect(getModalCount()).toBe(0);
-        wrapper.setProps({ children: <MockComponent isVisible someProp /> });
+        rendered.rerenderWithStore({
+          isVisible: true,
+          someProp: true,
+        });
 
         expect(dispatch).toHaveBeenCalledTimes(3);
         expect(dispatch).toHaveBeenNthCalledWith(1, increaseModalCount());
@@ -132,7 +158,7 @@ describe('engage > a11y > hooks', () => {
 
         expect(getModalCount()).toBe(1);
 
-        wrapper.unmount();
+        rendered.unmount();
         expect(dispatch).toHaveBeenCalledTimes(4);
         expect(dispatch).toHaveBeenNthCalledWith(4, decreaseModalCount());
 

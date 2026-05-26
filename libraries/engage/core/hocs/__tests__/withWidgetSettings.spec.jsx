@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import { withWidgetSettings } from '../withWidgetSettings';
 import { useWidgetSettings } from '../../hooks/useWidgetSettings';
 
@@ -7,7 +7,7 @@ jest.mock('../../hooks/useWidgetSettings', () => ({
   useWidgetSettings: jest.fn(),
 }));
 
-const MockComponent = () => null;
+const mockWrappedComponent = jest.fn(() => null);
 
 const widgetSettings = {
   some: 'setting',
@@ -18,10 +18,14 @@ describe('engage > core > hocs > withWidgetSettings', () => {
     useWidgetSettings.mockReturnValue(widgetSettings);
   });
 
-  it('should merge add the widget settings to a wrapped component', () => {
-    const ComposedComponent = withWidgetSettings(MockComponent);
-    const wrapper = mount(<ComposedComponent />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).prop('widgetSettings')).toEqual(widgetSettings);
+  it('should inject widget settings into the wrapped component', () => {
+    const ComposedComponent = withWidgetSettings(mockWrappedComponent);
+    const { container } = render(<ComposedComponent />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
+      widgetSettings,
+    });
   });
 });

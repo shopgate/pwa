@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import { setPageBackgroundColor } from '../../../styles/helpers';
 import View from '../index';
@@ -15,6 +15,8 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 
 jest.mock('../provider', () => ({ children }) => children);
 jest.mock('../context');
+// eslint-disable-next-line react/prop-types
+jest.mock('../components/Content', () => ({ children }) => <div data-testid="view-content">{children}</div>);
 jest.mock('../../../styles/helpers', () => ({
   setPageBackgroundColor: jest.fn(),
   responsiveMediaQuery: jest.fn(),
@@ -24,29 +26,32 @@ jest.mock('@shopgate/engage/components');
 describe('engage > components > view > index', () => {
   beforeEach(jest.clearAllMocks);
 
-  let wrapper;
-  beforeAll(() => {
-    wrapper = shallow((
+  it('should initialize with visible route', () => {
+    const { container } = render((
       <View>
         <div>Page #1</div>
       </View>
     ));
-  });
 
-  it('should initialize with visible route', () => {
-    expect(wrapper.dive()).toMatchSnapshot();
+    expect(container.querySelector('section')).toMatchSnapshot();
   });
 
   it('should have structured content', () => {
-    expect(wrapper.dive().dive().dive().dive()).toMatchSnapshot();
+    const { container } = render((
+      <View>
+        <div>Page #1</div>
+      </View>
+    ));
+
+    expect(container.querySelector('section')).toMatchSnapshot();
   });
 
   it('should set background on intialization', () => {
-    wrapper = shallow((
+    render((
       <View background="#990000">
         <div>Page #1</div>
       </View>
-    )).dive().dive();
+    ));
 
     expect(setPageBackgroundColor).toBeCalledWith('#990000');
   });

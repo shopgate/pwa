@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import { useFormState } from '../useFormState';
 
 jest.mock('lodash', () => ({
@@ -34,7 +34,7 @@ describe('engage > core > hooks -> useFormState', () => {
   beforeEach(() => {
     spy = jest.fn().mockReturnValue(null);
     submitSpy = jest.fn();
-    mount(<TestComponent
+    render(<TestComponent
       spy={spy}
       submitSpy={submitSpy}
       initialState={mockInitialState}
