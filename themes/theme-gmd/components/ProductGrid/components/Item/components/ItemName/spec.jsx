@@ -2,8 +2,9 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ItemName from './index';
 
-jest.mock('@shopgate/engage/product', () => ({
+jest.mock('@shopgate/engage/product/components', () => ({
   ProductName: () => null,
+  ProductRatingStars: () => null,
 }));
 
 const props = {

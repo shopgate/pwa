@@ -57,7 +57,7 @@ const ProductRatingStars = ({
   }
 
   return (
-    <RatingStars value={rating?.average || 0} display={size} />
+    <RatingStars value={rating?.average ?? 0} display={size} />
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { PRODUCT_ITEM_NAME } from '@shopgate/engage/category/constants';
-import { ProductName, RatingStars } from '@shopgate/engage/product/components';
+import { ProductName, ProductRatingStars } from '@shopgate/engage/product/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -37,7 +37,7 @@ const ItemName = ({ display, productId, name }) => {
 
   return (
     <>
-      <RatingStars
+      <ProductRatingStars
         productId={productId}
       />
       <ProductName
