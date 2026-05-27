@@ -36,7 +36,7 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
         <Text
           acceptPlainTextWithPlaceholders={false}
           aria-hidden={true}
-          className="theme__discount-badge sg-14yu4yh-big-root"
+          className="theme__discount-badge sg-3hyyvh-big-root"
           params={
             [
               50,
