@@ -1,14 +1,30 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import RatingCount from './index';
+
+const mockText = jest.fn(({ string }) => <span>{string}</span>);
+
+jest.mock('@shopgate/engage/components', () => ({
+  I18n: {
+    Text: props => mockText(props),
+  },
+}));
 
 describe('<RatingCount>', () => {
   it('should render nothing when count is 0', () => {
-    const rating = mount(<RatingCount count={0} />);
-    expect(rating.find('span').exists()).toBe(false);
+    render(<RatingCount count={0} />);
+
+    expect(screen.queryByText('reviews.review_count')).toBeNull();
+    expect(mockText).not.toHaveBeenCalled();
   });
+
   it('should render text when count is more than 0', () => {
-    const rating = mount(<RatingCount count={1} />);
-    expect(rating.find('span').exists()).toBe(true);
+    render(<RatingCount count={1} />);
+
+    expect(screen.getByText('reviews.review_count')).toBeTruthy();
+    expect(mockText).toHaveBeenCalledWith(expect.objectContaining({
+      string: 'reviews.review_count',
+      params: expect.objectContaining({ count: 1 }),
+    }));
   });
 });
