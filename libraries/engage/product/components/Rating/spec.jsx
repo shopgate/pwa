@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   setMocks,
@@ -22,7 +22,7 @@ describe('Rating (product header)', () => {
    * @param {Object} state State
    * @returns {Object}
    */
-  const getComponent = state => mount(
+  const getComponent = state => render(
     <Provider store={mockedStore(state)}>
       <Rating productId="foo" />
     </Provider>,
@@ -31,7 +31,7 @@ describe('Rating (product header)', () => {
   describe('Rendering', () => {
     it('should render rating when data is available', () => {
       const component = getComponent(mockedStateWithTwoReviews);
-      expect(component).toMatchSnapshot();
+      expect(component.asFragment()).toMatchSnapshot();
     });
     it('should render nothing when data is not available', () => {
       const component = getComponent(mockedStateWithoutReview);

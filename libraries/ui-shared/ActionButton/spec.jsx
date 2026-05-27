@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import IndicatorCircle from '../IndicatorCircle';
 import RippleButton from '../RippleButton';
 import ActionButton from './index';
@@ -15,7 +15,7 @@ describe('<ActionButton />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props = {}) => {
-    renderedElement = shallow((
+    renderedElement = render((
       <ActionButton {...props}>
         Action Button
       </ActionButton>
@@ -32,7 +32,7 @@ describe('<ActionButton />', () => {
     });
 
     it('should match snapshot', () => {
-      expect(renderedElement).toMatchSnapshot();
+      expect(renderedElement.asFragment()).toMatchSnapshot();
     });
 
     it('should not show the loading indicator by default', () => {
@@ -46,7 +46,7 @@ describe('<ActionButton />', () => {
       });
 
       it('should match snapshot', () => {
-        expect(renderedElement).toMatchSnapshot();
+        expect(renderedElement.asFragment()).toMatchSnapshot();
       });
 
       it('should show the loading indicator', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import Select from './index';
 
 const inputProps = {
@@ -20,8 +20,8 @@ describe('<Select />', () => {
     it(test, () => {
       const testFixtures = tests[test];
       // eslint-disable-next-line extra-rules/no-single-line-objects
-      const wrapper = mount(<Select {...{ ...inputProps, ...testFixtures }} />);
-      expect(wrapper).toMatchSnapshot();
+      const wrapper = render(<Select {...{ ...inputProps, ...testFixtures }} />);
+      expect(wrapper.asFragment()).toMatchSnapshot();
     });
   });
 });

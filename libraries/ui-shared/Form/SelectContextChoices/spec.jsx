@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import SelectContextChoices from './index';
 
 jest.mock('@shopgate/engage/a11y/components');
@@ -18,8 +18,8 @@ describe('<SelectContextChoices />', () => {
   Object.keys(tests).forEach((test) => {
     it(test, () => {
       const testFixtures = tests[test];
-      const wrapper = shallow(<SelectContextChoices {...{ ...testFixtures }} />);
-      expect(wrapper).toMatchSnapshot();
+      const wrapper = render(<SelectContextChoices {...{ ...testFixtures }} />);
+      expect(wrapper.asFragment()).toMatchSnapshot();
     });
   });
 });

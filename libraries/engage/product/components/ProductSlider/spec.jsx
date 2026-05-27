@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import ProductSlider from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
@@ -24,10 +24,10 @@ jest.mock('@shopgate/engage/core/hooks', () => {
 
 describe('<ProductSlider />', () => {
   it('should match snapshot', () => {
-    const wrapper = shallow((
+    const wrapper = render((
       <ProductSlider productIds={['prod1']} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

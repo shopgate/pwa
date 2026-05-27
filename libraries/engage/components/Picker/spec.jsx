@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import Picker from './index';
 import PickerList from './components/List';
 
@@ -24,7 +24,7 @@ describe('<Picker />', () => {
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = mount(<Picker {...props} />);
+    renderedElement = render(<Picker {...props} />);
     renderedInstance = renderedElement.find('Picker').instance();
   };
 
@@ -40,7 +40,7 @@ describe('<Picker />', () => {
 
   describe('Given the component was mounted to the DOM', () => {
     it('should match snapshot', () => {
-      expect(renderedElement).toMatchSnapshot();
+      expect(renderedElement.asFragment()).toMatchSnapshot();
     });
 
     it('should have no selected value', () => {

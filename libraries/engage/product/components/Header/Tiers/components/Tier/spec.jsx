@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import Tier from './index';
 
 describe('<Tier />', () => {
@@ -32,15 +32,15 @@ describe('<Tier />', () => {
         unitPrice: 77.5,
       };
 
-      const wrapper = shallow(<Tier price={price} tier={tier} />);
-      expect(wrapper).toMatchSnapshot();
+      const wrapper = render(<Tier price={price} tier={tier} />);
+      expect(wrapper.asFragment()).toMatchSnapshot();
     });
   });
 
   describe('Rendering without data', () => {
     it('should render nothing when tier from is less then 1', () => {
       const tier = { from: 1 };
-      const wrapper = shallow(<Tier tier={tier} price={{}} />);
+      const wrapper = render(<Tier tier={tier} price={{}} />);
       expect(wrapper).toBeEmptyRender();
     });
   });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import Selected from './index';
 
 const values = [
@@ -15,12 +15,12 @@ const values = [
 
 describe('Filter: <Selected />', () => {
   it('should not render without selected', () => {
-    const wrapper = shallow(<Selected values={values} />);
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = render(<Selected values={values} />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('should render with selected', () => {
-    const wrapper = shallow(<Selected values={values} selected={['foo']} />);
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = render(<Selected values={values} selected={['foo']} />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

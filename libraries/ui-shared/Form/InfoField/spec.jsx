@@ -1,14 +1,14 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import InfoField from './index';
 
 describe('<InfoField>', () => {
   it('should render info field', () => {
-    const wrapper = shallow((
+    const wrapper = render((
       <InfoField>
         Some info text
       </InfoField>
     ));
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

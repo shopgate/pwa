@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import ItemName from './index';
 
 jest.mock('@shopgate/engage/product', () => ({
@@ -15,7 +15,7 @@ const props = {
 
 describe('<ItemName />', () => {
   it('should render with minimal props', () => {
-    const wrapper = shallow(<ItemName {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = render(<ItemName {...props} />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

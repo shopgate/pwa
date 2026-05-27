@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import ItemImage from './index';
 
 jest.mock('@shopgate/engage/components');
@@ -7,7 +7,7 @@ jest.mock('@shopgate/engage/product');
 
 describe('<ItemImage />', () => {
   it('should render', () => {
-    const wrapper = shallow(<ItemImage productId="1234" imageUrl="http://www.google.com" name="FooBar" />);
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = render(<ItemImage productId="1234" imageUrl="http://www.google.com" name="FooBar" />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });
