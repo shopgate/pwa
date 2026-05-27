@@ -130,7 +130,7 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
                     <Text
                       acceptPlainTextWithPlaceholders={false}
                       aria-hidden={true}
-                      className="theme__discount-badge sg-1mwbudg-small-badge"
+                      className="theme__discount-badge sg-hgme7t-small-badge"
                       params={
                         [
                           null,

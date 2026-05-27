@@ -10,7 +10,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
   <Text
     acceptPlainTextWithPlaceholders={false}
     aria-hidden={true}
-    className="sg-1ajee6w-small theme__discount-badge"
+    className="sg-13madlx-small theme__discount-badge"
     params={
       [
         null,
@@ -33,7 +33,7 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
   <Text
     acceptPlainTextWithPlaceholders={false}
     aria-hidden={true}
-    className="sg-1ajee6w-small theme__discount-badge"
+    className="sg-13madlx-small theme__discount-badge"
     params={
       [
         20,

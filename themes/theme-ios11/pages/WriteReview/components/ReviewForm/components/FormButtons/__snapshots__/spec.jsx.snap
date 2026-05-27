@@ -70,13 +70,13 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 wrapContent={false}
               >
                 <Button
-                  className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
+                  className="ui-shared__button sg-bqdced-button ui-shared__ripple-button"
                   disabled={false}
                   onClick={null}
                   testId="sendReviewButton"
                 >
                   <button
-                    className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
+                    className="common__button ui-shared__button ui-shared__ripple-button sg-149k0f5-root-button"
                     data-test-id="sendReviewButton"
                     disabled={false}
                     onClick={null}

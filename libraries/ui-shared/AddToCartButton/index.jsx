@@ -70,7 +70,7 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonSuccess: {
     background: theme.contrastColor(theme.components.ctaButton.background),
-    color: theme.palette.ctaButton.background,
+    color: theme.components.ctaButton.background,
   },
   buttonDisabled: {
     background: theme.palette.action.disabledBackground,
