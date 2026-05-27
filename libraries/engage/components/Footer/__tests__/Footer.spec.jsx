@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { SHEET_EVENTS } from '@shopgate/engage/components';
 import { getAbsoluteHeight } from '@shopgate/engage/core/helpers';
@@ -50,11 +50,12 @@ const defaultChildren = (
 );
 
 /**
- * @param {Object} wrapper A wrapper.
+ * @param {HTMLElement} container A render container.
  * @param {string} id Id of the element to change.
  */
-const addHeightToWrapperElement = (wrapper, id) => {
-  const elements = wrapper.find(`#${APP_FOOTER_ID}`).getDOMNode().querySelectorAll(`#${id}`);
+const addHeightToWrapperElement = (container, id) => {
+  const footer = container.querySelector(`#${APP_FOOTER_ID}`);
+  const elements = footer ? footer.querySelectorAll(`#${id}`) : [];
   if (elements) {
     Array.from(elements).forEach((element) => {
       Object.defineProperty(element, 'clientHeight', {
@@ -65,18 +66,18 @@ const addHeightToWrapperElement = (wrapper, id) => {
 };
 
 /**
- * Returns to DOM node of the footer from an enzyme wrapper.
- * @param {Object} wrapper A wrapper.
+ * Returns the DOM node of the footer from a render container.
+ * @param {HTMLElement} container A render container.
  * @returns {Node}
  */
-const getFooterRefFromWrapper = wrapper => wrapper.find(`#${APP_FOOTER_ID}`).getDOMNode();
+const getFooterRefFromContainer = container => container.querySelector(`#${APP_FOOTER_ID}`);
 
 /**
  * @param {NodeList} children Children for the footer.
- * @returns {JSX}
+ * @returns {Object}
  */
 const createComponent = (children = defaultChildren) => {
-  const wrapper = mount((
+  const renderResult = render((
     <div>
       <Footer>
         {children}
@@ -84,7 +85,7 @@ const createComponent = (children = defaultChildren) => {
     </div>
   ));
 
-  return wrapper.find(Footer);
+  return renderResult;
 };
 
 describe('<Footer />', () => {
@@ -93,9 +94,8 @@ describe('<Footer />', () => {
   });
 
   it('should render the component', () => {
-    const wrapper = createComponent();
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(`div#${APP_FOOTER_ID} > #${FOOTER_CHILD_ID}`)).toExist();
+    const { container } = createComponent();
+    expect(container.querySelector(`div#${APP_FOOTER_ID} > #${FOOTER_CHILD_ID}`)).not.toBeNull();
     expect(mutationConstructorSpy).toHaveBeenCalledWith(expect.any(Function));
     expect(handleSafeAreaInsets).toHaveBeenCalledTimes(1);
     expect(updateFooterHeight).toHaveBeenCalledTimes(1);
@@ -103,17 +103,17 @@ describe('<Footer />', () => {
 
   describe('MutationObserver', () => {
     let callback;
-    let wrapper;
+    let container;
 
     beforeEach(() => {
       jest.clearAllMocks();
-      wrapper = createComponent();
+      ({ container } = createComponent());
       ([[callback]] = mutationConstructorSpy.mock.calls);
     });
 
     it('should observer with the correct initialization', () => {
       expect(mutationObserveSpy).toHaveBeenCalledWith(
-        getFooterRefFromWrapper(wrapper),
+        getFooterRefFromContainer(container),
         {
           childList: true,
           subtree: true,
@@ -139,7 +139,7 @@ describe('<Footer />', () => {
 
   describe('UI events subscriptions', () => {
     it('should subscribe / unsubscribe UI events', () => {
-      const wrapper = mount((
+      const { unmount } = render((
         <Footer>
           <div>Footer</div>
         </Footer>
@@ -150,7 +150,7 @@ describe('<Footer />', () => {
       expect(UIEvents.addListener).nthCalledWith(1, SHEET_EVENTS.OPEN, expect.any(Function));
       expect(UIEvents.addListener).nthCalledWith(2, SHEET_EVENTS.CLOSE, expect.any(Function));
 
-      wrapper.unmount();
+      unmount();
       expect(UIEvents.removeListener).toBeCalledTimes(2);
       expect(UIEvents.removeListener).nthCalledWith(1, SHEET_EVENTS.OPEN, expect.any(Function));
       expect(UIEvents.removeListener).nthCalledWith(2, SHEET_EVENTS.CLOSE, expect.any(Function));
@@ -192,16 +192,16 @@ describe('<Footer />', () => {
       });
 
       it('should return null when there is no visible content', () => {
-        const wrapper = createComponent(null);
-        addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-        const elements = getFooterRefFromWrapper(wrapper).children[0];
+        const { container } = createComponent(null);
+        addHeightToWrapperElement(container, FOOTER_CHILD_ID);
+        const elements = getFooterRefFromContainer(container).children[0];
         expect(getElementBackgroundColor(elements)).toBe(null);
       });
 
       it('should return "red" when there is visible content', () => {
-        const wrapper = createComponent();
-        addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-        const elements = getFooterRefFromWrapper(wrapper).children[0];
+        const { container } = createComponent();
+        addHeightToWrapperElement(container, FOOTER_CHILD_ID);
+        const elements = getFooterRefFromContainer(container).children[0];
         expect(getElementBackgroundColor(elements)).toBe(defaultBackgroundColor);
       });
 
@@ -213,10 +213,10 @@ describe('<Footer />', () => {
             </div>
           </div>
         );
-        const wrapper = createComponent(children);
+        const { container } = createComponent(children);
 
-        addHeightToWrapperElement(wrapper, FOOTER_CHILD_ID);
-        const elements = getFooterRefFromWrapper(wrapper).children[0];
+        addHeightToWrapperElement(container, FOOTER_CHILD_ID);
+        const elements = getFooterRefFromContainer(container).children[0];
         expect(getElementBackgroundColor(elements)).toBe('yellow');
       });
     });

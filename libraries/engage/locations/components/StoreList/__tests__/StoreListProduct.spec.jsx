@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import StoreListProduct from '../StoreListProduct';
 import { FulfillmentContext } from '../../../locations.context';
 
@@ -44,10 +44,10 @@ jest.mock('../../../locations.context', () => {
 
 /**
  * @param {Object} value FulfillmentContext provider value.
- * @returns {Object} Enzyme mount wrapper
+ * @returns {Object} RTL render result
  */
-function mountWithFulfillment(value) {
-  return mount(
+function renderWithFulfillment(value) {
+  return render(
     <FulfillmentContext.Provider value={value}>
       <StoreListProduct />
     </FulfillmentContext.Provider>
@@ -55,16 +55,13 @@ function mountWithFulfillment(value) {
 }
 
 describe('<StoreListProduct />', () => {
-  it('should not render if not product is supplied', () => {
-    const wrapper = mountWithFulfillment({});
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('[role="text"]')).toHaveLength(0);
-    wrapper.unmount();
+  it('should not render if no product is supplied', () => {
+    const { container } = renderWithFulfillment({});
+    expect(container.querySelectorAll('[role="text"]')).toHaveLength(0);
   });
 
   it('should render a product without selected variants.', () => {
-    const wrapper = mountWithFulfillment({ product });
-    expect(wrapper).toMatchSnapshot();
-    wrapper.unmount();
+    renderWithFulfillment({ product });
+    expect(screen.getByRole('text')).toBeTruthy();
   });
 });

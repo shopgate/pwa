@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import { MessageBar } from '../index';
 
 const MESSAGE1 = 'This is some information';
@@ -28,19 +28,21 @@ jest.mock('@shopgate/engage/styles/helpers', () => {
 describe('<MessageBar />', () => {
   describe('General rendering', () => {
     it('should be empty if no messages have been set', () => {
-      const wrapper = mount(<MessageBar messages={[]} />);
-      expect(wrapper).toMatchSnapshot();
+      render(<MessageBar messages={[]} />);
+      expect(screen.queryByRole('alert')).toBeNull();
+      expect(document.querySelectorAll('[aria-live="assertive"]')).toHaveLength(0);
     });
 
     it('should render a message as info if type is missing', () => {
-      const wrapper = mount(<MessageBar messages={[{ message: 'something' }]} />);
-      expect(wrapper).toMatchSnapshot();
+      render(<MessageBar messages={[{ message: 'something' }]} />);
+      expect(screen.getByRole('alert')).toBeTruthy();
+      expect(screen.getByText('something')).toBeTruthy();
     });
   });
 
   describe('Multiple messages rendering', () => {
     it('should render messages without frontend translation', () => {
-      const wrapper = mount(<MessageBar
+      render(<MessageBar
         messages={[
           {
             type: 'info',
@@ -65,11 +67,16 @@ describe('<MessageBar />', () => {
         ]}
       />);
 
-      expect(wrapper).toMatchSnapshot();
+      expect(screen.getByRole('alert')).toBeTruthy();
+      expect(screen.getByText(MESSAGE1)).toBeTruthy();
+      expect(screen.getByText(MESSAGE2)).toBeTruthy();
+      expect(screen.getByText(MESSAGE3)).toBeTruthy();
+      expect(screen.getByText(MESSAGE4)).toBeTruthy();
+      expect(screen.getByText(MESSAGE5)).toBeTruthy();
     });
 
     it('should translate and render all given messages', () => {
-      const wrapper = mount(<MessageBar
+      render(<MessageBar
         messages={[
           {
             message: MESSAGE6,
@@ -86,12 +93,13 @@ describe('<MessageBar />', () => {
         ]}
       />);
 
-      expect(wrapper).toMatchSnapshot();
+      expect(screen.getByRole('alert')).toBeTruthy();
+      expect(document.querySelectorAll('[aria-live="assertive"]')).toHaveLength(2);
     });
   });
 
   it('should render with custom classNames', () => {
-    const wrapper = mount((
+    const { container } = render((
       <MessageBar
         messages={[{ message: MESSAGE1 }]}
         classNames={{
@@ -100,6 +108,7 @@ describe('<MessageBar />', () => {
         }}
       />
     ));
-    expect(wrapper).toMatchSnapshot();
+    expect(container.firstChild).toHaveClass('cls-container');
+    expect(container.querySelector('.cls-message')).not.toBeNull();
   });
 });

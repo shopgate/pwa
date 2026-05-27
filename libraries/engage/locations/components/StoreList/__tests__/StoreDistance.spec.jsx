@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import formatDistance from '../../../helpers/formatDistance';
 import { StoreDistance, UNIT_SYSTEM_METRIC, UNIT_SYSTEM_IMPERIAL } from '../StoreDistance';
 
@@ -17,16 +17,16 @@ describe('engage > locations > StoreList > StoreDistance', () => {
   });
 
   it('should not render when no distance was passed', () => {
-    const wrapper = shallow((<StoreDistance />));
-    expect(wrapper).toBeEmptyRender();
+    const { container } = render(<StoreDistance />);
+    expect(container.firstChild).toBeNull();
   });
 
   it('should render when the distance is 0', () => {
     const distance = 0;
     const unitSystem = UNIT_SYSTEM_METRIC;
-    const wrapper = shallow((<StoreDistance distance={distance} />));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('span').text()).toBe(`${distance} ${unitSystem}`);
+    const { container } = render(<StoreDistance distance={distance} />);
+    expect(container.firstChild).toBeTruthy();
+    expect(screen.getByText(`${distance} ${unitSystem}`)).toBeTruthy();
     expect(formatDistance).toHaveBeenCalledTimes(1);
     expect(formatDistance).toHaveBeenCalledWith(distance, false);
   });
@@ -34,14 +34,14 @@ describe('engage > locations > StoreList > StoreDistance', () => {
   it('should render when a unit system is set', () => {
     const distance = 5.4;
     const unitSystem = UNIT_SYSTEM_IMPERIAL;
-    const wrapper = shallow((
+    const { container } = render((
       <StoreDistance
         distance={distance}
         unitSystem={unitSystem}
       />
     ));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('span').text()).toBe(`${distance} ${unitSystem}`);
+    expect(container.firstChild).toBeTruthy();
+    expect(screen.getByText(`${distance} ${unitSystem}`)).toBeTruthy();
     expect(formatDistance).toHaveBeenCalledTimes(1);
     expect(formatDistance).toHaveBeenCalledWith(distance, true);
   });

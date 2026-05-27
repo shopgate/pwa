@@ -1,5 +1,6 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import { combineReducers } from 'redux';
 import { Provider as StoreProvider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
@@ -8,7 +9,14 @@ import a11y from '@shopgate/engage/a11y/reducers';
 import Provider from '../provider';
 
 jest.mock('@shopgate/engage/components');
-jest.mock('../context');
+
+const mockContextProvider = jest.fn(({ children }) => children);
+
+jest.mock('../context', () => ({
+  ViewContext: {
+    Provider: props => mockContextProvider(props),
+  },
+}));
 
 describe('engage > components > view > provider', () => {
   let store;
@@ -23,41 +31,50 @@ describe('engage > components > view > provider', () => {
     ({ dispatch } = store);
   });
 
-  it('should initialize and provider context', () => {
-    const wrapper = mount((
+  const getLastProviderValue = () => {
+    const lastCall = mockContextProvider.mock.calls[mockContextProvider.mock.calls.length - 1];
+    return lastCall[0].value;
+  };
+
+  it('should initialize provider context', () => {
+    render((
       <StoreProvider store={store}>
         <Provider>
           <div>Page #1</div>
         </Provider>
       </StoreProvider>
     ));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Provider').last().prop('value').ariaHidden).toBe(false);
+
+    expect(screen.getByText('Page #1')).toBeTruthy();
+    expect(getLastProviderValue().ariaHidden).toBe(false);
   });
 
   it('should toggle aria-hidden context value when modalCount redux state changes', () => {
-    const wrapper = mount((
+    render((
       <StoreProvider store={store}>
         <Provider>
           <div>Page #1</div>
         </Provider>
       </StoreProvider>
     ));
-    expect(wrapper).toMatchSnapshot();
+
+    expect(screen.getByText('Page #1')).toBeTruthy();
 
     // Check initial aria hidden state
-    expect(wrapper.find('Provider').last().prop('value').ariaHidden).toBe(false);
+    expect(getLastProviderValue().ariaHidden).toBe(false);
 
     // Update a11y state
-    dispatch(increaseModalCount());
-    wrapper.update();
+    act(() => {
+      dispatch(increaseModalCount());
+    });
     // Check updated aria hidden state
-    expect(wrapper.find('Provider').last().prop('value').ariaHidden).toBe(true);
+    expect(getLastProviderValue().ariaHidden).toBe(true);
 
     // Update a11y state
-    dispatch(decreaseModalCount());
-    wrapper.update();
+    act(() => {
+      dispatch(decreaseModalCount());
+    });
     // Check updated aria hidden state
-    expect(wrapper.find('Provider').last().prop('value').ariaHidden).toBe(false);
+    expect(getLastProviderValue().ariaHidden).toBe(false);
   });
 });

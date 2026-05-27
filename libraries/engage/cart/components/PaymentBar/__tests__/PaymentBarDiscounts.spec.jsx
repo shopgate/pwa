@@ -1,21 +1,36 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@shopgate/pwa-unit-test/rtlUtils';
 import PaymentBarDiscounts from '../PaymentBarDiscounts';
+import { CartContext } from '../../../cart.context';
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useContext: () => ({
-    currency: 'EUR',
-  }),
-}));
 jest.mock('../PaymentBarDiscounts.connector', () => cmp => cmp);
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/components', () => ({
+  SurroundPortals: ({ children }) => children,
+  I18n: {
+    Text: ({ string, params }) => <span>{params?.label ? `${string} ${params.label}` : string}</span>,
+    Price: ({ price, currency }) => <span>{`${price} ${currency}`}</span>,
+  },
+}));
+
 jest.mock('@shopgate/pwa-common-commerce/cart', () => ({
   CART_PAYMENT_BAR_TOTALS_DISCOUNTS: 'CART_PAYMENT_BAR_TOTALS_DISCOUNTS',
 }));
 
 describe('<PaymentBarDiscounts />', () => {
-  it('should render and match snapshot', () => {
+  const renderWithCartContext = ui => render(
+    <CartContext.Provider
+      value={{
+        currency: 'EUR',
+        isLoading: false,
+        hasPromotionCoupons: false,
+      }}
+    >
+      {ui}
+    </CartContext.Provider>
+  );
+
+  it('should render discount labels and signed amounts', () => {
     const discounts = [
       {
         label: 'Coupon',
@@ -26,12 +41,18 @@ describe('<PaymentBarDiscounts />', () => {
         amount: 2,
       },
     ];
-    const wrapper = shallow(<PaymentBarDiscounts discounts={discounts} />).dive();
-    expect(wrapper).toMatchSnapshot();
+    const { container } = renderWithCartContext(<PaymentBarDiscounts discounts={discounts} />);
+
+    expect(container.querySelectorAll('[data-test-id="discountCartTotal"]')).toHaveLength(2);
+    expect(container).toHaveTextContent('cart.discount_with_label Coupon:');
+    expect(container).toHaveTextContent('cart.discount:');
+    expect(container).toHaveTextContent('-10 EUR');
+    expect(container).toHaveTextContent('-2 EUR');
   });
 
   it('should be empty render', () => {
-    const wrapper = shallow(<PaymentBarDiscounts discounts={null} />);
-    expect(wrapper).toBeEmptyRender();
+    const { container } = renderWithCartContext(<PaymentBarDiscounts discounts={null} />);
+    expect(container.firstChild).toBeNull();
   });
 });
+/* eslint-enable react/prop-types */

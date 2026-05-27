@@ -1,168 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductProperties /> should not render if no properties where passed 1`] = `
-<Connect(ProductProperties)
-  store={
-    {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <ProductProperties
-    dispatch={[Function]}
-    properties={null}
-    store={
-      {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
-  >
-    <SurroundPortals
-      portalName="product.properties"
-      portalProps={
-        {
-          "properties": null,
-        }
-      }
-    >
-      <Content
-        properties={null}
-      />
-    </SurroundPortals>
-  </ProductProperties>
-</Connect(ProductProperties)>
-`;
+exports[`<ProductProperties /> should not render if no properties were passed 1`] = `<div />`;
 
 exports[`<ProductProperties /> should render if properties are passed 1`] = `
-<Connect(ProductProperties)
-  store={
-    {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <ProductProperties
-    dispatch={[Function]}
-    properties={
-      [
-        {
-          "displayGroup": "test",
-        },
-      ]
-    }
-    store={
-      {
-        "clearActions": [Function],
-        "dispatch": [Function],
-        "getActions": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      }
-    }
+<div>
+  <div
+    class="engage__product__product-property-group sg-lre9jt-container"
+    data-group-name=""
   >
-    <SurroundPortals
-      portalName="product.properties"
-      portalProps={
-        {
-          "properties": [
-            {
-              "displayGroup": "test",
-            },
-          ],
-        }
-      }
-    >
-      <Content
-        properties={
-          [
-            {
-              "displayGroup": "test",
-            },
-          ]
-        }
-      >
-        <Wrapper
-          dense={false}
-          groupName=""
-          htmlOnly={false}
+    <table>
+      <thead />
+      <tbody>
+        <tr
+          aria-label=": "
+          class="engage__product__product-property"
+          tabindex="0"
         >
-          <div
-            className="engage__product__product-property-group sg-lre9jt-container"
-            data-group-name=""
+          <td
+            aria-hidden="true"
+            class="sg-15jjn2r-tableCell"
           >
-            <table>
-              <thead />
-              <tbody>
-                <Rows
-                  properties={
-                    [
-                      {
-                        "displayGroup": "test",
-                      },
-                    ]
-                  }
-                >
-                  <Row
-                    key="undefined-"
-                    type={null}
-                    value=""
-                  >
-                    <tr
-                      aria-label=": "
-                      className="engage__product__product-property"
-                      data-type={null}
-                      tabIndex={0}
-                    >
-                      <td
-                        aria-hidden={true}
-                        className="sg-15jjn2r-tableCell"
-                      >
-                        <span
-                          dangerouslySetInnerHTML={
-                            {
-                              "__html": undefined,
-                            }
-                          }
-                        />
-                      </td>
-                      <td
-                        aria-hidden={true}
-                        className="sg-15jjn2r-tableCell"
-                        data-test-id="property: "
-                      >
-                        <span
-                          dangerouslySetInnerHTML={
-                            {
-                              "__html": "",
-                            }
-                          }
-                        />
-                      </td>
-                    </tr>
-                  </Row>
-                </Rows>
-              </tbody>
-            </table>
-          </div>
-        </Wrapper>
-      </Content>
-    </SurroundPortals>
-  </ProductProperties>
-</Connect(ProductProperties)>
+            <span />
+          </td>
+          <td
+            aria-hidden="true"
+            class="sg-15jjn2r-tableCell"
+            data-test-id="property: "
+          >
+            <span />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 `;

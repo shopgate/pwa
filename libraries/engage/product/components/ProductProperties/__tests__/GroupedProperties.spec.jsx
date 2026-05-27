@@ -1,8 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import { getGroupsFromProperties } from '../helpers/getGroupsFromProperties';
 import GroupedProperties from '../GroupedProperties';
 
+/* eslint-disable react/prop-types */
+jest.mock('@shopgate/pwa-ui-material', () => ({
+  Accordion: ({ renderLabel, testId, children }) => (
+    <section data-testid={testId}>
+      <h3>{renderLabel()}</h3>
+      {children}
+    </section>
+  ),
+}));
+/* eslint-enable react/prop-types */
 jest.mock('@shopgate/engage/components', () => ({
   HtmlSanitizer: ({ children }) => children,
 }));
@@ -32,11 +42,12 @@ const properties = [
 
 describe('<GroupedProperties />', () => {
   it('should render as expected', () => {
-    const wrapper = shallow(<GroupedProperties groups={getGroupsFromProperties(properties)} />);
-    expect(wrapper.find('Wrapper').length).toEqual(2);
-    expect(wrapper.find('Wrapper').at(0).prop('dense')).toEqual(true);
-    expect(wrapper.find('Accordion').length).toEqual(2);
-    expect(wrapper.find('Lists').length).toEqual(2);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(
+      <GroupedProperties groups={getGroupsFromProperties(properties)} />
+    );
+    expect(container.querySelectorAll('[data-testid^="product-properties-group-"]')).toHaveLength(2);
+    expect(container.querySelectorAll('[data-group-name]')).toHaveLength(2);
+    expect(screen.getByText('product.displayGroups.Group 1')).toBeTruthy();
+    expect(screen.getByText('product.displayGroups.Group 2')).toBeTruthy();
   });
 });

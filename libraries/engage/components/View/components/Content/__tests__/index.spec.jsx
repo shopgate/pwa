@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import Content from '../index';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
@@ -8,8 +8,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 }));
 
 jest.mock('@shopgate/pwa-common/context', () => {
-  // eslint-disable-next-line global-require
-  const { createContext } = require('react');
+  const { createContext } = jest.requireActual('react');
   return {
     RouteContext: createContext({
       visible: true,
@@ -22,6 +21,11 @@ jest.mock('@shopgate/pwa-common/context', () => {
 });
 jest.mock('@shopgate/pwa-common/selectors/history', () => ({
   getSortOrder: jest.fn(),
+}));
+jest.mock('@virtuous/conductor', () => ({
+  router: {
+    update: jest.fn(),
+  },
 }));
 jest.mock('@shopgate/engage/components');
 
@@ -36,14 +40,13 @@ describe('engage > components > view > components > content', () => {
   beforeEach(jest.clearAllMocks);
 
   it('should render content', () => {
-    const wrapper = shallow((
+    const { container } = render((
       <Content setContentRef={jest.fn()}>
         <div>Page #1</div>
       </Content>
-    ), { disableLifecycleMethods: true })
-      // Dive through Route context and into render component
-      .dive().dive();
+    ));
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container.querySelector('article')).not.toBeNull();
+    expect(screen.getByText('Page #1')).toBeTruthy();
   });
 });

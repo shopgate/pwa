@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import { FulfillmentContext } from '../../../locations.context';
 import { StoreContext } from '../Store.context';
 import { StoreHeader } from '../StoreHeader';
@@ -42,13 +42,13 @@ describe('engage > locations > StoreList > StoreHeader', () => {
   });
 
   it('should render as expected', () => {
-    const wrapper = mount((
+    render((
       <FulfillmentContext.Provider value={context}>
         <StoreContext.Provider value={store}>
           <StoreHeader />
         </StoreContext.Provider>
       </FulfillmentContext.Provider>
     ));
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByText('SomeStore')).toBeTruthy();
   });
 });

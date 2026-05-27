@@ -1,12 +1,14 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import Row from '../Row';
 
 describe('<Row />', () => {
   it('should render as expected', () => {
-    const wrapper = mount(<Row label="TestLabel" value="TestValue" />);
-    expect(wrapper.find('td').at(0).text()).toEqual('TestLabel');
-    expect(wrapper.find('td').at(1).text()).toEqual('TestValue');
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<table><tbody><Row label="TestLabel" value="TestValue" /></tbody></table>);
+    const cells = container.querySelectorAll('td');
+    expect(cells[0].textContent).toEqual('TestLabel');
+    expect(cells[1].textContent).toEqual('TestValue');
+    expect(screen.getByLabelText('TestLabel: TestValue')).toBeTruthy();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });
