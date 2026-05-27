@@ -4,10 +4,9 @@ export FORCE_COLOR = true
 ####################################################################################################
 # NOTICE:
 # -------
-# If LIBRARIES, EXTENSIONS or UTILS is extended and the npm packacke should not be prefixed with
+# If LIBRARIES or UTILS is extended and the npm packacke should not be prefixed with
 # "@shopgate/pwa-", then you need to modify the "get-npm-package-name" function below as well!
 LIBRARIES = engage commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
-EXTENSIONS = @shopgate-tracking-ga-native @shopgate-user-privacy
 TRANSPILED_UTILS = benchmark
 UTILS = eslint-config unit-tests e2e webpack
 THEMES = theme-gmd theme-ios11
@@ -299,7 +298,6 @@ endef
 
 define update-versions
 		$(call update-pwa-versions)
-		$(call update-extension-versions)
 		$(call update-theme-versions)
 
 endef
@@ -322,21 +320,6 @@ define update-pwa-versions
 			then echo "ERROR: Package version mismatch, please check your specified version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
-
-endef
-
-# Change the version in the extension-config.json file of all extensions
-define update-extension-versions
-		$(call log,Updating extension versions to $(RELEASE_VERSION))
-		@echo "======================================================================"
-		@echo "| Updating extension versions to '$(RELEASE_VERSION))'"
-		@echo "======================================================================"
-		$(foreach extension, $(EXTENSIONS), $(call update-extension-version, $(extension)))
-
-endef
-
-define update-extension-version
-		node ./scripts/bump-extension.js --file="./extensions/$(strip $(1))/extension-config.json" --v="$(RELEASE_VERSION)";
 
 endef
 
@@ -465,7 +448,6 @@ endef
 define push-subtrees-to-git
 		$(call log,Syncing subtrees to branch $(strip $(1)))
 		$(foreach remote, $(THEMES), $(call update-subtree-remotes, themes/$(remote), $(remote), $(strip $(1))))
-		$(foreach remote, $(EXTENSIONS), $(call update-subtree-remotes, extensions/$(remote), $(patsubst @shopgate-%,ext-%,$(remote)), $(strip $(1))))
 		$(call log,Finished syncing subtrees to branch $(strip $(1)))
 
 endef
@@ -488,7 +470,6 @@ define create-github-releases
 		$(call log,Creating GitHub releases for target $(strip $(1)))
 		$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),pwa)
 		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-theme-to-repo-name,$(theme))))
-		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-extension-to-repo-name,$(extension))))
 		$(call log,Finished creating GitHub releases for target $(strip $(1)))
 
 endef
@@ -497,13 +478,6 @@ define map-theme-to-repo-name
 		$(patsubst @shopgate-%,ext-%,$(1))
 
 endef
-
-define map-extension-to-repo-name
-		$(patsubst ext-tracking-ga-native,tracking-ga-native,$(patsubst @shopgate-%,ext-%,$(1)))
-
-endef
-
-
 
 define finalize-release
 		# Cleanup by removing alpha / beta branches via GitHub API

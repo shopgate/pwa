@@ -2,9 +2,5 @@
   "themes": {
     "theme-gmd": "git@github.com:shopgate/theme-gmd.git",
     "theme-ios11": "git@github.com:shopgate/theme-ios11.git"
-  },
-  "extensions": {
-    "@shopgate-tracking-ga-native": "git@github.com:shopgate/tracking-ga-native.git",
-    "@shopgate-user-privacy": "git@github.com:shopgate/ext-user-privacy.git"
   }
 }

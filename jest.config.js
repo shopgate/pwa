@@ -26,8 +26,6 @@ const skipPatterns = process.env.RUN_LONG === 'true'
   : [skippedIndexSpecPattern];
 
 const testedExtensions = [
-  '@shopgate-tracking-ga-native',
-  '@shopgate-user-privacy',
   '@shopgate-theme-config',
 ];
 
