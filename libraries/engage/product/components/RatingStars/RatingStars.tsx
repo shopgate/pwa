@@ -41,7 +41,7 @@ const ProductRatingStars = ({
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating') as { showEmptyRatingStars: boolean };
 
   const showRatings = useMemo(() => {
-    if (hasReviews && rating && rating.average > 0) {
+    if (hasReviews && (rating?.average ?? 0) > 0) {
       return true;
     }
 
@@ -52,12 +52,12 @@ const ProductRatingStars = ({
     return false;
   }, [rating, showEmptyRatingStars]);
 
-  if (!showRatings || !rating) {
+  if (!showRatings) {
     return null;
   }
 
   return (
-    <RatingStars value={rating.average} display={size} />
+    <RatingStars value={rating?.average || 0} display={size} />
   );
 };
 
