@@ -27,16 +27,18 @@ describe('Shipping label', () => {
 
   it('should render shipping price', () => {
     const component = createComponent(mockedStoreWithShippingPrice);
-    expect(component.asFragment()).toMatchSnapshot();
-    expect(component.html().includes('shipping.cost')).toBe(true);
+    expect(component.container.firstChild).toMatchSnapshot();
+    expect(component.container.textContent).toContain('shipping.cost');
   });
+
   it('should render free shipping', () => {
     const component = createComponent(mockedStoreWithFreeShipping);
-    expect(component.asFragment()).toMatchSnapshot();
-    expect(component.html().includes('shipping.free')).toBe(true);
+    expect(component.container.firstChild).toMatchSnapshot();
+    expect(component.container.textContent).toContain('shipping.free');
   });
+
   it('should not render when shipping is unknown', () => {
     const component = createComponent(mockedStoreWithUnknownShipping);
-    expect(component.isEmptyRender()).toBe(true);
+    expect(component.container.firstChild).toBeNull();
   });
 });

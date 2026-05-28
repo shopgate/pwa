@@ -1,12 +1,16 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
-import ActionButton from '../ActionButton';
+import { fireEvent, render } from '@shopgate/pwa-unit-test/rtlUtils';
 import { UnwrappedButtonLink as ButtonLink } from './index';
 
 describe('<ButtonLink>', () => {
   describe('On click action', () => {
-    beforeAll(() => {
-      ActionButton.clickDelay = 0;
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+
+    afterEach(() => {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
     });
 
     it('should create component and open page on click', () => {
@@ -15,8 +19,11 @@ describe('<ButtonLink>', () => {
       const component = render((
         <ButtonLink href={link} navigate={mockedNavigate}>Text inside</ButtonLink>
       ));
-      expect(component.asFragment()).toMatchSnapshot();
-      component.simulate('click');
+
+      expect(component.container.firstChild).toMatchSnapshot();
+      fireEvent.click(component.container.querySelector('button'));
+      jest.runOnlyPendingTimers();
+
       expect(mockedNavigate).toHaveBeenCalledTimes(1);
       expect(mockedNavigate).toHaveBeenCalledWith(link);
     });

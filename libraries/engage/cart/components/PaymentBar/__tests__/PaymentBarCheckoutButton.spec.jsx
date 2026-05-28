@@ -4,7 +4,7 @@ import PaymentBarCheckoutButton from '../PaymentBarCheckoutButton';
 import { CartContext } from '../../../cart.context';
 
 function mockFactories() {
-  return jest.requireActual('./mockFactories');
+  return jest.requireActual('../testUtils/mockFactories');
 }
 
 const mockLink = jest.fn(props => <div data-testid="link">{props.children}</div>);

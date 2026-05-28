@@ -1,25 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Tier /> Rendering with data should render tier prices when tier prices are available 1`] = `
-<Translate
-  acceptPlainTextWithPlaceholders={false}
-  className="sg-myao6a-tier"
-  key="3"
-  params={
-    {
-      "from": 3,
-    }
-  }
-  role="text"
-  string="price.tier.range"
-  transform={null}
->
-  <FormatPrice
-    className="sg-z2q7om-price"
-    currency="USD"
-    forKey="price"
-    fractions={true}
-    price={77.5}
-  />
-</Translate>
+<DocumentFragment>
+  <span
+    class="sg-myao6a-tier"
+    role="text"
+  >
+    price.tier.range
+    <span
+      class="sg-z2q7om-price"
+    >
+      p
+    </span>
+  </span>
+</DocumentFragment>
 `;

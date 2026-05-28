@@ -1,57 +1,57 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
-import IndicatorCircle from '../IndicatorCircle';
-import RippleButton from '../RippleButton';
+import { fireEvent, render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
 import ActionButton from './index';
 
 describe('<ActionButton />', () => {
-  let renderedElement;
-  let mockOnClick;
-
-  jest.useFakeTimers();
-
-  /**
-   * Renders the component.
-   * @param {Object} props The component props.
-   */
-  const renderComponent = (props = {}) => {
-    renderedElement = render((
-      <ActionButton {...props}>
-        Action Button
-      </ActionButton>
-    ));
-  };
+  const renderComponent = (props = {}) => render((
+    <ActionButton {...props}>
+      Action Button
+    </ActionButton>
+  ));
 
   describe('Given the component was mounted to the DOM', () => {
+    let renderedElement;
+    let mockOnClick;
+
     beforeEach(() => {
+      jest.useFakeTimers();
       mockOnClick = jest.fn();
 
-      renderComponent({
+      renderedElement = renderComponent({
         onClick: mockOnClick,
       });
     });
 
+    afterEach(() => {
+      jest.clearAllTimers();
+      jest.useRealTimers();
+    });
+
     it('should match snapshot', () => {
-      expect(renderedElement.asFragment()).toMatchSnapshot();
+      expect(renderedElement.container.firstChild).toMatchSnapshot();
     });
 
     it('should not show the loading indicator by default', () => {
-      const indicator = renderedElement.find(IndicatorCircle);
-      expect(indicator.length).toBe(0);
+      const indicator = renderedElement.container.querySelector('[data-test-id="loadingIndicator"]');
+      expect(indicator).toBeNull();
     });
 
     describe('Given the loading prop is set to true', () => {
       beforeEach(() => {
-        renderedElement.setProps({ loading: true });
+        renderedElement.rerender((
+          <ActionButton onClick={mockOnClick} loading>
+            Action Button
+          </ActionButton>
+        ));
       });
 
       it('should match snapshot', () => {
-        expect(renderedElement.asFragment()).toMatchSnapshot();
+        expect(renderedElement.container.firstChild).toMatchSnapshot();
       });
 
       it('should show the loading indicator', () => {
-        const indicator = renderedElement.find(IndicatorCircle);
-        expect(indicator.length).toBe(1);
+        const indicator = renderedElement.container.querySelector('[data-test-id="loadingIndicator"]');
+        expect(indicator).toBeTruthy();
       });
     });
 
@@ -60,7 +60,7 @@ describe('<ActionButton />', () => {
 
       beforeEach(() => {
         timeoutSpy = jest.spyOn(global, 'setTimeout');
-        renderedElement.find(RippleButton).simulate('click');
+        fireEvent.click(screen.getByRole('button'));
       });
 
       afterEach(() => {

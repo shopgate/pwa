@@ -4,7 +4,7 @@ import PaymentBarSubTotal from '../PaymentBarSubTotal';
 import { CartContext } from '../../../cart.context';
 
 function mockFactories() {
-  return jest.requireActual('./mockFactories');
+  return jest.requireActual('../testUtils/mockFactories');
 }
 
 jest.mock('../PaymentBarSubTotal.connector', () => cmp => cmp);

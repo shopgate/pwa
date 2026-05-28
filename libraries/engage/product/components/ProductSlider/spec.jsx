@@ -16,7 +16,7 @@ jest.mock('@shopgate/engage/components', () => {
 });
 
 jest.mock('@shopgate/engage/core/hooks', () => {
-  const ProductCard = props => <ProductCard {...props} />;
+  const ProductCard = () => <div data-testid="product-card" />;
   return {
     useThemeComponents: () => ({ ProductCard }),
   };
@@ -28,6 +28,6 @@ describe('<ProductSlider />', () => {
       <ProductSlider productIds={['prod1']} />
     ));
 
-    expect(wrapper.asFragment()).toMatchSnapshot();
+    expect(wrapper.container.firstChild).toMatchSnapshot();
   });
 });

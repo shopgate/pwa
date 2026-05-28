@@ -1,77 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
-<FilterItem>
+<div
+  class="sg-1167cjk-wrapper"
+  data-test-id="priceRangeSlider"
+>
   <div
-    className="sg-1167cjk-wrapper"
-    data-test-id="priceRangeSlider"
-  >
-    <Label
-      onChange={[Function]}
-      priceLength="3ch"
-      priceMax={1}
-      priceMin={0}
-    />
-    <RangeSlider
-      classNames={
-        {
-          "container": "sg-shctl2-rangeSliderContainer",
-          "handleInner": "sg-1wjm66t-rangeSliderHandleInner",
-          "handleOuter": "sg-dlsvg8-rangeSliderHandleOuter",
-          "outerRange": "sg-a7xmlr-rangeSliderOuterRange",
-          "range": "sg-cuiecf-rangeSliderRange",
-        }
-      }
-      easing="exponential"
-      factor={3}
-      max={100}
-      min={0}
-      onChange={[Function]}
-      value={
-        [
-          0,
-          100,
-        ]
-      }
-    />
-  </div>
-</FilterItem>
+    data-testid="price-slider-label"
+  />
+</div>
 `;
 
 exports[`Filter: <PriceSlider /> should render with default props 1`] = `
-<FilterItem>
+<div
+  class="sg-1167cjk-wrapper"
+  data-test-id="priceRangeSlider"
+>
   <div
-    className="sg-1167cjk-wrapper"
-    data-test-id="priceRangeSlider"
-  >
-    <Label
-      onChange={[Function]}
-      priceLength="3ch"
-      priceMax={1}
-      priceMin={0}
-    />
-    <RangeSlider
-      classNames={
-        {
-          "container": "sg-shctl2-rangeSliderContainer",
-          "handleInner": "sg-1wjm66t-rangeSliderHandleInner",
-          "handleOuter": "sg-dlsvg8-rangeSliderHandleOuter",
-          "outerRange": "sg-a7xmlr-rangeSliderOuterRange",
-          "range": "sg-cuiecf-rangeSliderRange",
-        }
-      }
-      easing="exponential"
-      factor={3}
-      max={100}
-      min={0}
-      onChange={[Function]}
-      value={
-        [
-          0,
-          100,
-        ]
-      }
-    />
-  </div>
-</FilterItem>
+    data-testid="price-slider-label"
+  />
+</div>
 `;

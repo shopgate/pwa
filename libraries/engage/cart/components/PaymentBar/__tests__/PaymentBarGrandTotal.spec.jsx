@@ -6,7 +6,7 @@ import { CartContext } from '../../../cart.context';
 /* eslint-disable react/prop-types */
 
 function mockFactories() {
-  return jest.requireActual('./mockFactories');
+  return jest.requireActual('../testUtils/mockFactories');
 }
 
 jest.mock('../PaymentBarGrandTotal.connector', () => cmp => cmp);

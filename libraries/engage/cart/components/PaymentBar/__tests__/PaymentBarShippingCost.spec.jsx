@@ -5,7 +5,7 @@ import PaymentBarShippingCost from '../PaymentBarShippingCost';
 import { CartContext } from '../../../cart.context';
 
 function mockFactories() {
-  return jest.requireActual('./mockFactories');
+  return jest.requireActual('../testUtils/mockFactories');
 }
 
 jest.mock('@shopgate/pwa-common-commerce/cart', () => ({

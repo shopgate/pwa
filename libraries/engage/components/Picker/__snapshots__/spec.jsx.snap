@@ -1,88 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Picker /> Given the component was mounted to the DOM should match snapshot 1`] = `
-<ForwardRef(WithForwardedRef(Picker))
-  items={
-    [
-      "String only",
-      {
-        "value": "Value only",
-      },
-      {
-        "label": "Value and label",
-        "value": "value",
-      },
-    ]
-  }
-  onChange={[MockFunction]}
-  onSelect={[MockFunction]}
+<div
+  aria-haspopup="true"
+  class="engage__picker common__picker"
+  role="button"
+  tabindex="0"
 >
-  <Picker
-    buttonComponent={[Function]}
-    buttonProps={{}}
-    className=""
-    disabled={false}
-    duration={300}
-    forwardedRef={null}
-    isOpen={false}
-    items={
-      [
-        "String only",
-        {
-          "value": "Value only",
-        },
-        {
-          "label": "Value and label",
-          "value": "value",
-        },
-      ]
-    }
-    label=""
-    listComponent={[Function]}
-    modalComponent={[Function]}
-    onChange={[MockFunction]}
-    onClose={[Function]}
-    onSelect={[MockFunction]}
-    placeholder="Pick ..."
-    value={null}
+  <button
+    class="sg-as22e6-button engage__picker__button"
+    type="button"
   >
-    <div
-      aria-haspopup={true}
-      className="engage__picker common__picker"
-      role="button"
-      tabIndex={0}
+    <span
+      class="sg-1o59evv-label"
     >
-      <PickerButton
-        disabled={false}
-        label="Pick ..."
-        openList={[Function]}
-        value=""
-      >
-        <button
-          className="sg-as22e6-button engage__picker__button"
-          onClick={[Function]}
-          type="button"
-        >
-          <span
-            className="sg-1o59evv-label"
-          >
-            Pick ...
-          </span>
-          <span
-            className="sg-10un7lc-value"
-          />
-        </button>
-      </PickerButton>
-      <ConnectedReactPortal
-        isOpened={true}
-      >
-        <PickerModal
-          duration={300}
-          isOpen={false}
-          onClose={[Function]}
-        />
-      </ConnectedReactPortal>
-    </div>
-  </Picker>
-</ForwardRef(WithForwardedRef(Picker))>
+      Pick ...
+    </span>
+    <span
+      class="sg-10un7lc-value"
+    />
+  </button>
+</div>
 `;

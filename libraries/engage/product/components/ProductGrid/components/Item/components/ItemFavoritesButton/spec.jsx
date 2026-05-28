@@ -19,7 +19,7 @@ describe('<ItemFavoritesButton />', () => {
         <ItemFavoritesButton productId="1234" />
       </Provider>
     ));
-    expect(wrapper.asFragment()).toMatchSnapshot();
+    expect(wrapper.container.firstChild).toMatchSnapshot();
   });
 
   it('should render if it\'s a favorite', () => {
@@ -28,6 +28,6 @@ describe('<ItemFavoritesButton />', () => {
         <ItemFavoritesButton productId="1234" isFavorite />
       </Provider>
     ));
-    expect(wrapper.asFragment()).toMatchSnapshot();
+    expect(wrapper.container.firstChild).toMatchSnapshot();
   });
 });
