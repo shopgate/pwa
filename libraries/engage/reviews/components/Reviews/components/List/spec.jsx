@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import List from './index';
 
 const mockTitle = jest.fn(({ title }) => <div data-testid="review-title">{title}</div>);

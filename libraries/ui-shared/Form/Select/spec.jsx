@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import Select from './index';
 
 const inputProps = {
@@ -9,7 +9,7 @@ const inputProps = {
 describe('<Select />', () => {
   // Simple tests for snapshots
   const tests = {
-    'should render select with no options': { },
+    'should render select with no options': {},
     // eslint-disable-next-line extra-rules/no-single-line-objects
     'should render select with 2 options': { options: { DE: 'Germany', US: 'United states' } },
     // eslint-disable-next-line extra-rules/no-single-line-objects

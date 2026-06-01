@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {
   render,
   waitFor,
-} from '@shopgate/pwa-unit-test/rtlUtils';
+} from '@testing-library/react';
 import { UIEvents } from '@shopgate/pwa-core';
 import LoadingContext from './context';
 import LoadingProvider from './index';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import {
   push, pop, replace, reset, update,
 } from '../../router/helpers';

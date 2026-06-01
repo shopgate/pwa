@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { fireEvent, render } from '@testing-library/react';
 import { UnwrappedButtonLink as ButtonLink } from './index';
 
 describe('<ButtonLink>', () => {

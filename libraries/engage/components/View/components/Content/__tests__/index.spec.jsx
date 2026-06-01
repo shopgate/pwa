@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import Content from '../index';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({

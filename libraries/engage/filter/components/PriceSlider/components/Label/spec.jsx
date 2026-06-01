@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import { I18n } from '@shopgate/engage/components';
 import Label from './index';
 
@@ -13,7 +13,7 @@ beforeEach(() => {
 
 describe('PriceSlider: <Label />', () => {
   it('should render', () => {
-    const wrapper = render(<Label onChange={() => {}} priceLength="5" priceMax={999} priceMin={25} />);
+    const wrapper = render(<Label onChange={() => { }} priceLength="5" priceMax={999} priceMin={25} />);
     expect(wrapper.container.firstChild).toMatchSnapshot();
   });
 });

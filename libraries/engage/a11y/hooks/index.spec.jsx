@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import { combineReducers } from 'redux';
 import { Provider as StoreProvider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';

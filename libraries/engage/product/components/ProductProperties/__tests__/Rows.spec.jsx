@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen, within } from '@testing-library/react';
 import Rows from '../Rows';
 
 jest.mock('@shopgate/engage/components');
@@ -22,13 +22,15 @@ const properties = [
 describe('<Rows />', () => {
   it('should render three rows of properties', () => {
     const { container } = render(<table><tbody><Rows properties={properties} /></tbody></table>);
-    expect(container.querySelectorAll('tr')).toHaveLength(3);
-    expect(screen.getByText('test1')).toBeTruthy();
-    expect(screen.getByText('123')).toBeTruthy();
-    expect(screen.getByText('test2')).toBeTruthy();
-    expect(screen.getByText('456')).toBeTruthy();
-    expect(screen.getByText('test3')).toBeTruthy();
-    expect(screen.getByText('789')).toBeTruthy();
+
+    const rows = screen.getAllByRole('row');
+    expect(rows).toHaveLength(3);
+
+    rows.forEach((row, index) => {
+      expect(within(row).getByText(properties[index].label)).toBeTruthy();
+      expect(within(row).getByText(properties[index].value)).toBeTruthy();
+    });
+
     expect(container.firstChild).toMatchSnapshot();
   });
 });

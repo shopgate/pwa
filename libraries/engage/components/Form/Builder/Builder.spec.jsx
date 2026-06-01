@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import React from 'react';
-import { fireEvent, render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { fireEvent, render } from '@testing-library/react';
 import { Builder } from '.';
 
 jest.mock('@shopgate/engage/components');

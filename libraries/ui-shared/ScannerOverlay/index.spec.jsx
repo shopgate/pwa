@@ -3,7 +3,7 @@ import {
   fireEvent,
   render,
   screen,
-} from '@shopgate/pwa-unit-test/rtlUtils';
+} from '@testing-library/react';
 import { defaultClientInformation } from '@shopgate/pwa-core/helpers/version';
 import AppScanner from '@shopgate/pwa-core/classes/Scanner';
 import {

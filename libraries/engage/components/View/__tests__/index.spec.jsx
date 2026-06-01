@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import { setPageBackgroundColor } from '../../../styles/helpers';
 import View from '../index';

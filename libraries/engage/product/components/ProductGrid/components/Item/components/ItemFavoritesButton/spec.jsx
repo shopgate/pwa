@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';

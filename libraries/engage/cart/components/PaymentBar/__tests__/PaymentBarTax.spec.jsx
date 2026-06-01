@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import { getTaxLine } from '@shopgate/pwa-common-commerce/cart';
 import PaymentBarTax from '../PaymentBarTax';
 import { CartContext } from '../../../cart.context';

@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import CartItemGroupReservation from '../CartItemGroupReservation';
 
 const mockAccordion = jest.fn(({ children }) => children);

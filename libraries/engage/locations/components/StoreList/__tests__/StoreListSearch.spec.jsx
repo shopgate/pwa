@@ -5,7 +5,7 @@ import {
   screen,
   fireEvent,
   waitFor,
-} from '@shopgate/pwa-unit-test/rtlUtils';
+} from '@testing-library/react';
 import StoreListSearch from '../StoreListSearch';
 import { FulfillmentContext } from '../../../locations.context';
 

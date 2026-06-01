@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import ItemName from './index';
 
 jest.mock('@shopgate/engage/product', () => ({

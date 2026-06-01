@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import { getGroupsFromProperties } from '../helpers/getGroupsFromProperties';
 import GroupedProperties from '../GroupedProperties';
 

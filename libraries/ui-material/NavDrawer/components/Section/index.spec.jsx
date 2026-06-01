@@ -2,7 +2,7 @@ import React from 'react';
 import {
   render,
   screen,
-} from '@shopgate/pwa-unit-test/rtlUtils';
+} from '@testing-library/react';
 import NavDrawerSection from './index';
 
 const mockNavDrawerItem = jest.fn(() => <div data-testid="nav-drawer-item" />);

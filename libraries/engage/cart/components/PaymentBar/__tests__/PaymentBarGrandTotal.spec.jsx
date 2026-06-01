@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import PaymentBarGrandTotal from '../PaymentBarGrandTotal';
 import { CartContext } from '../../../cart.context';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { fireEvent, render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { fireEvent, render } from '@testing-library/react';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import {
   setMocks,

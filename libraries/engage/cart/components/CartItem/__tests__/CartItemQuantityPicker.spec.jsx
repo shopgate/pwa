@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { CartItemQuantityPicker } from '../CartItemQuantityPicker';
 
 jest.mock('@shopgate/engage/components/QuantityInput', () => {

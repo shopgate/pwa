@@ -3,7 +3,7 @@ import {
   render,
   screen,
   within,
-} from '@shopgate/pwa-unit-test/rtlUtils';
+} from '@testing-library/react';
 import ProductProperties from './index';
 
 const properties = [{

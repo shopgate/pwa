@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { createRef } from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import { withForwardedRef } from '../withForwardedRef';
 
 const mockWrappedComponent = jest.fn(props => (

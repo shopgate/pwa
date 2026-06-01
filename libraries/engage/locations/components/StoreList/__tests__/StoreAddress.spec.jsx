@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import { FulfillmentContext } from '../../../locations.context';
 import { StoreContext } from '../Store.context';
 import { StoreAddress } from '../StoreAddress';

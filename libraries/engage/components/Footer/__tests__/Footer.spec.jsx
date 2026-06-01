@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render } from '@testing-library/react';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { SHEET_EVENTS } from '@shopgate/engage/components';
 import { getAbsoluteHeight } from '@shopgate/engage/core/helpers';

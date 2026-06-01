@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import formatDistance from '../../../helpers/formatDistance';
 import { StoreDistance, UNIT_SYSTEM_METRIC, UNIT_SYSTEM_IMPERIAL } from '../StoreDistance';
 

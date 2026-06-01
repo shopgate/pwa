@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import { MessageBar } from '../index';
 
 const MESSAGE1 = 'This is some information';
@@ -67,12 +67,15 @@ describe('<MessageBar />', () => {
         ]}
       />);
 
-      expect(screen.getByRole('alert')).toBeTruthy();
-      expect(screen.getByText(MESSAGE1)).toBeTruthy();
-      expect(screen.getByText(MESSAGE2)).toBeTruthy();
-      expect(screen.getByText(MESSAGE3)).toBeTruthy();
-      expect(screen.getByText(MESSAGE4)).toBeTruthy();
-      expect(screen.getByText(MESSAGE5)).toBeTruthy();
+      const alertContent = screen.getByRole('alert').textContent;
+      const expectedOrder = [MESSAGE1, MESSAGE2, MESSAGE3, MESSAGE4, MESSAGE5];
+      let previousIndex = -1;
+
+      expectedOrder.forEach((message) => {
+        const currentIndex = alertContent.indexOf(message);
+        expect(currentIndex).toBeGreaterThan(previousIndex);
+        previousIndex = currentIndex;
+      });
     });
 
     it('should translate and render all given messages', () => {

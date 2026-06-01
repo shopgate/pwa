@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen } from '@testing-library/react';
 import Navigation from '../index';
 
 jest.mock('@shopgate/engage/core/helpers/i18n', () => ({

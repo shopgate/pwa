@@ -1,13 +1,15 @@
 import React from 'react';
-import { render, screen } from '@shopgate/pwa-unit-test/rtlUtils';
+import { render, screen, within } from '@testing-library/react';
 import Row from '../Row';
 
 describe('<Row />', () => {
   it('should render as expected', () => {
     const { container } = render(<table><tbody><Row label="TestLabel" value="TestValue" /></tbody></table>);
-    const cells = container.querySelectorAll('td');
-    expect(cells[0].textContent).toEqual('TestLabel');
-    expect(cells[1].textContent).toEqual('TestValue');
+
+    const [row] = screen.getAllByRole('row');
+    expect(within(row).getByText('TestLabel')).toBeTruthy();
+    expect(within(row).getByText('TestValue')).toBeTruthy();
+
     expect(screen.getByLabelText('TestLabel: TestValue')).toBeTruthy();
     expect(container.firstChild).toMatchSnapshot();
   });

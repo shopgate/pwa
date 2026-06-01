@@ -2,7 +2,7 @@ import React from 'react';
 import {
   render,
   screen,
-} from '@shopgate/pwa-unit-test/rtlUtils';
+} from '@testing-library/react';
 import NavDrawerTitle from './index';
 
 const mockI18nText = jest.fn(({ string }) => <span data-testid="i18n-text">{string}</span>);
