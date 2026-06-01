@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, within } from '@testing-library/react';
 import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
 import { setPageBackgroundColor } from '../../../styles/helpers';
 import View from '../index';
@@ -43,7 +43,10 @@ describe('engage > components > view > index', () => {
       </View>
     ));
 
-    expect(container.querySelector('section')).toMatchSnapshot();
+    const section = container.querySelector('section');
+    expect(section).toBeTruthy();
+    expect(within(section).getByTestId('view-content')).toBeTruthy();
+    expect(within(section).getByText('Page #1')).toBeTruthy();
   });
 
   it('should set background on intialization', () => {

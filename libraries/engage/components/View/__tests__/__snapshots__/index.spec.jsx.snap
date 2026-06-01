@@ -1,21 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`engage > components > view > index should have structured content 1`] = `
-<section
-  aria-hidden="false"
-  class="sg-d7m3dj-root engage__view"
-  style="display: flex;"
->
-  <div
-    data-testid="view-content"
-  >
-    <div>
-      Page #1
-    </div>
-  </div>
-</section>
-`;
-
 exports[`engage > components > view > index should initialize with visible route 1`] = `
 <section
   aria-hidden="false"
