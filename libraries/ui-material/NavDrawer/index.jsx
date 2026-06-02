@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
     WebkitOverflowScrolling: 'touch',
   },
   drawer: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     boxShadow: themeShadows.navDrawer,
     color: themeColors.dark,
     height: '100vh',

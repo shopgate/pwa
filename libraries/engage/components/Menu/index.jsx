@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
     left: 0,
     padding: theme.spacing(1, 0),
     minWidth: 130,
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     borderRadius: 2,
     boxShadow: themeConfig.shadows.contextMenu,
   },
@@ -60,7 +60,7 @@ const Menu = ({
       top: 0,
       left: 0,
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   return (
@@ -96,7 +96,7 @@ Menu.defaultProps = {
   children: null,
   contextRef: null,
   isOpen: false,
-  onClose: () => {},
+  onClose: () => { },
 };
 
 export default Menu;

@@ -27,7 +27,7 @@ import { FULFILLMENT_SHEET_SEARCH } from '../../constants/Portals';
 const useStyles = makeStyles()(theme => ({
   container: {
     padding: '0 12px 8px 12px',
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     display: 'grid',
     gridTemplateColumns: 'auto 1fr',
     gridTemplateRows: 'auto',
@@ -81,7 +81,7 @@ const useStyles = makeStyles()(theme => ({
     outline: 0,
   },
   inputContainer: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     border: `1px solid ${theme.palette.border.light}`,
     borderRadius: 4,
     display: 'flex',

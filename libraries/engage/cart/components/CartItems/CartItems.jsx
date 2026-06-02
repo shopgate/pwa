@@ -15,7 +15,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: theme.spacing(-1.5),
   },
   card: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     marginBottom: theme.spacing(1.5),
     ':last-of-type': {
       marginBottom: 0,

@@ -34,7 +34,7 @@ const useStyles = makeStyles()(theme => ({
     borderRadius: 3,
     lineHeight: 1,
     ':focus': {
-      background: theme.palette.background.default,
+      background: theme.palette.background.surface,
       textIndent: 0,
       borderColor: theme.palette.border.medium,
     },

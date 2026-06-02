@@ -186,7 +186,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="img"
                             >
                               <div
-                                className="sg-465vqm-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -340,7 +340,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8h772-filledStars rating-stars-filled"
+                                className="sg-10z3jvw-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -587,7 +587,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="img"
                             >
                               <div
-                                className="sg-465vqm-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -741,7 +741,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8h772-filledStars rating-stars-filled"
+                                className="sg-10z3jvw-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -988,7 +988,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="img"
                             >
                               <div
-                                className="sg-465vqm-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1142,7 +1142,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8h772-filledStars rating-stars-filled"
+                                className="sg-10z3jvw-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1389,7 +1389,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="img"
                             >
                               <div
-                                className="sg-465vqm-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1543,7 +1543,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8h772-filledStars rating-stars-filled"
+                                className="sg-10z3jvw-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"

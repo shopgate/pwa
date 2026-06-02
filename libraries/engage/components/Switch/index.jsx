@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { VisuallyHidden } from '@shopgate/engage/a11y/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -31,7 +30,7 @@ const useStyles = makeStyles()(theme => ({
       left: '2px',
       width: '16px',
       height: '16px',
-      backgroundColor: theme.palette.background.default,
+      backgroundColor: theme.palette.common.white,
       borderRadius: '50%',
       transition: 'transform 0.3s',
     },
@@ -42,7 +41,7 @@ const useStyles = makeStyles()(theme => ({
       transform: 'translateX(20px)',
     },
     ':disabled': {
-      backgroundColor: themeConfig.colors.shade7,
+      backgroundColor: theme.palette.action.disabledBackground,
       cursor: 'not-allowed',
     },
   },

@@ -55,7 +55,7 @@ const useStyles = makeStyles()(theme => ({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.surface,
     animation: `${slideInPickerModal} ${SLIDE_DURATION}ms 1 both ${EASING}`,
   },
   containerInactive: {

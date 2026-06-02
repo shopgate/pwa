@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
     fill: theme.palette.primary.main,
   },
   iconArrowEnabled: {
-    fill: theme.palette.background.default,
+    fill: theme.palette.background.surface,
   },
   iconCircleDisabled: {
     fill: colors.shade7,

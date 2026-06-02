@@ -16,8 +16,8 @@ const useStyles = makeStyles()(theme => ({
   },
   disabledButton: {
     width: '100%',
-    background: theme.components.disabledButton.background,
-    color: `${theme.contrastColor(theme.components.disabledButton.background)}!important`,
+    background: theme.palette.action.disabledBackground,
+    color: `${theme.contrastColor(theme.palette.action.disabledBackground)}!important`,
   },
 }));
 

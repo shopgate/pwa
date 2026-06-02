@@ -21,8 +21,8 @@ const useStyles = makeStyles()(theme => ({
     margin: theme.spacing(2, 0),
   },
   disabledButton: {
-    background: theme.components.disabledButton.background,
-    color: `${theme.contrastColor(theme.components.disabledButton.background)}!important`,
+    background: theme.palette.action.disabledBackground,
+    color: `${theme.contrastColor(theme.palette.action.disabledBackground)}!important`,
   },
 }));
 

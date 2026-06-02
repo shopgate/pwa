@@ -24,7 +24,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button sg-wd65dq-buttonReady"
+      className="ui-shared__add-to-cart-button sg-6rg5es-buttonReady"
       data-test-id="addToCartButton"
       onClick={[Function]}
       style={
@@ -198,7 +198,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button sg-ut1w4n-buttonSuccess"
+      className="ui-shared__add-to-cart-button sg-qq4p6o-buttonSuccess"
       data-test-id="addToCartButton"
       onClick={[Function]}
       style={
@@ -341,7 +341,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button sg-ut1w4n-buttonSuccess"
+      className="ui-shared__add-to-cart-button sg-qq4p6o-buttonSuccess"
       data-test-id="addToCartButton"
       onClick={[Function]}
       style={

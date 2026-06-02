@@ -14,7 +14,7 @@ import { constraints } from './ReserveForm.constraints';
 
 const useStyles = makeStyles()(theme => ({
   form: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     padding: theme.spacing(1.5, 1.5, 2),
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },

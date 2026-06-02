@@ -4,11 +4,8 @@ import { CATEGORY_ALL_FILTER_PATTERN } from '@shopgate/engage/category/constants
 import { buildFilterParamsForFetchFiltersRequest } from '@shopgate/engage/filter/helpers';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { View } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Content from '@shopgate/engage/filter/components/FilterPageContentWithProvider';
 import { CloseBar } from 'Components/AppBar/presets';
-
-const { colors } = themeConfig;
 
 const map = {
   categoryId: 'params.categoryId',
@@ -61,7 +58,7 @@ class Filter extends PureComponent {
    */
   render() {
     return (
-      <View background={colors.background} aria-hidden={false}>
+      <View aria-hidden={false}>
         <Consume context={RouteContext} props={map}>
           {this.consumeRenderer}
         </Consume>

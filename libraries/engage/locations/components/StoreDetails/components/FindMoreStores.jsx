@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
   },
   inputContainer: {
     position: 'relative',
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     border: `1px solid ${theme.palette.border.light}`,
     borderRadius: 4,
     display: 'flex',

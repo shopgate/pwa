@@ -108,6 +108,10 @@ const grey = {
  * theme palette.
  */
 export const paletteSchema = {
+  common: {
+    black: '#000',
+    white: '#fff',
+  },
   /**
    * Color scheme for primary interface elements
    */
@@ -133,6 +137,7 @@ export const paletteSchema = {
    */
   background: {
     default: '',
+    surface: '',
     emphasized: '',
   },
   /**
@@ -143,20 +148,13 @@ export const paletteSchema = {
     secondary: '',
   },
   /**
-   * Colors to be used for links.
+   * Palette with grey colors, intended for backgrounds, borders, and dividers.
+   * The numbers represent the lightness of the color,
    */
-  link: {
-    color: '',
-  },
-  /**
-   * Colors to be used for borders.
-   */
-  border: {
-    light: '',
-    medium: '',
-    dark: '',
-  },
   grey,
+  /**
+   * Colors to be used for actions, such as disabled states.
+   */
   action: {
     disabled: '#808080',
     disabledBackground: '#CCCCCC',

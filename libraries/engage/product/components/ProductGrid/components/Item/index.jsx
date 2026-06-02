@@ -15,7 +15,7 @@ const useStyles = makeStyles()((theme, { display }) => ({
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     height: '100%',
   },
   itemDetails: {

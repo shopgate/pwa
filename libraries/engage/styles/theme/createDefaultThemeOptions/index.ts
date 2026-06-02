@@ -29,6 +29,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         background: {
           default: colors.light,
+          surface: colors.light,
           emphasized: colors.placeholder || '#F2F2F2',
           dark: '#000000',
         },
@@ -43,11 +44,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
       },
       components: {
-        link: {
-          vars: {
-            color: getCSSCustomProp('--color-link') || getCSSCustomProp('--color-primary'),
-          },
-        },
         input: {
           vars: {
             background: '#F2F2F2',
@@ -57,16 +53,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         ctaButton: {
           vars: {
             background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
-          },
-        },
-        disabledButton: {
-          vars: {
-            background: '#CCCCCC',
-          },
-        },
-        discountBadge: {
-          vars: {
-            background: '#857500',
           },
         },
         snackbar: {

@@ -25,7 +25,7 @@ const barHeight = 46;
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     boxShadow: shadows.cart.paymentBar,
     position: 'relative',
     zIndex: 2,

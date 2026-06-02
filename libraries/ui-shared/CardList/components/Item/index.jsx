@@ -5,7 +5,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   root: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     marginBottom: theme.spacing(0.5),
     position: 'relative',
   },
