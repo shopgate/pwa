@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '@shopgate/pwa-common/components/Icon';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   iconCircleEnabled: {
@@ -14,10 +11,10 @@ const useStyles = makeStyles()(theme => ({
     fill: theme.palette.background.surface,
   },
   iconCircleDisabled: {
-    fill: colors.shade7,
+    fill: theme.palette.grey.light,
   },
   iconArrowDisabled: {
-    fill: colors.shade4,
+    fill: theme.palette.grey.medium,
   },
 }));
 

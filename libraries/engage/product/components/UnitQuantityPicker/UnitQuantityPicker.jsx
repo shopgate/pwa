@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { i18n, hasNewServices } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
@@ -129,6 +129,7 @@ const UnitQuantityPicker = ({
   toggleTabBarOnFocus,
   quantityLabel,
 }) => {
+  const theme = useTheme();
   const widgetDefaults = useMemo(() => {
     if (hasNewServices()) {
       // The widget configuration was introduced with CCP-2449 in PWA6. It's inactive for now
@@ -140,13 +141,13 @@ const UnitQuantityPicker = ({
     }
 
     return {
-      buttonColor: colors.shade8,
-      buttonBgColor: colors.primary,
+      buttonColor: theme.palette.grey.light,
+      buttonBgColor: theme.palette.primary.main,
       inputColor: colors.dark,
-      inputBgColor: colors.shade8,
+      inputBgColor: theme.palette.grey.light,
       showLabel: true,
     };
-  }, []);
+  }, [theme.palette.grey.light, theme.palette.primary.main]);
 
   const {
     buttonColor = widgetDefaults.buttonColor,
@@ -254,7 +255,7 @@ const UnitQuantityPicker = ({
 
   return (
     <>
-      { isFocused && (
+      {isFocused && (
         // Show hidden backdrop when focused to avoid side effects when user blurs the input
         // e.g. opening links unintended
         <div className={classes.backdrop} />

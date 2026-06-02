@@ -4,8 +4,6 @@ import BaseButton from '@shopgate/pwa-common/components/Button';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const { colors } = themeConfig;
-
 const buttonTypes = [
   'plain',
   'regular',
@@ -61,36 +59,36 @@ const useStyles = makeStyles()((theme, { type, flat, disabled }) => {
 
   if (type === 'simple') {
     return disabled
-      ? pairFromColors(themeConfig.colors.shade4, themeConfig.colors.shade7, theme)
-      : pairFromColors(themeConfig.colors.dark, themeConfig.colors.shade7, theme);
+      ? pairFromColors(theme.palette.grey.medium, theme.palette.grey.light, theme)
+      : pairFromColors(theme.palette.grey.dark, theme.palette.grey.light, theme);
   }
 
   if (type === 'regular') {
     return disabled
-      ? pairFromColors(colors.shade4, null, theme)
-      : pairFromColors(colors.dark, null, theme);
+      ? pairFromColors(theme.palette.grey.medium, null, theme)
+      : pairFromColors(theme.palette.grey.dark, null, theme);
   }
 
   if (type === 'secondary') {
     if (!flat) {
       return disabled
-        ? pairFromColors(colors.shade4, colors.shade7, theme)
+        ? pairFromColors(theme.palette.grey.medium, theme.palette.grey.light, theme)
         : pairFromColors(theme.palette.primary.contrastText, theme.palette.primary.main, theme);
     }
     return disabled
-      ? pairFromColors(colors.shade4, null, theme)
-      : pairFromColors('var(--color-primary)', null, theme);
+      ? pairFromColors(theme.palette.grey.medium, null, theme)
+      : pairFromColors(theme.palette.primary.main, null, theme);
   }
 
   if (!flat) {
     return disabled
-      ? pairFromColors(colors.shade4, colors.shade7, theme)
+      ? pairFromColors(theme.palette.grey.medium, theme.palette.grey.light, theme)
       : pairFromColors(theme.palette.secondary.contrastText, theme.palette.secondary.main, theme);
   }
 
   return disabled
-    ? pairFromColors(colors.shade4, null, theme)
-    : pairFromColors('var(--color-secondary)', null, theme);
+    ? pairFromColors(theme.palette.grey.medium, null, theme)
+    : pairFromColors(theme.palette.secondary.main, null, theme);
 });
 
 /**

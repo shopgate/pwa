@@ -53,7 +53,7 @@ const useStyles = makeStyles()(theme => ({
     padding: '4px 10px 4px 30px',
     lineHeight: '28px',
     outline: 'none',
-    background: themeColors.shade7,
+    background: theme.palette.grey.light,
     verticalAlign: 'middle',
     WebkitAppearance: 'none',
   },
@@ -62,7 +62,7 @@ const useStyles = makeStyles()(theme => ({
   },
   label: {
     alignItems: 'center',
-    color: themeColors.shade3,
+    color: theme.palette.grey.medium,
     display: 'flex',
     height: '36px',
     position: 'absolute',
@@ -85,12 +85,12 @@ const useStyles = makeStyles()(theme => ({
   },
   icon: {
     padding: '0 6px',
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
     fontSize: '1.235rem',
   },
   scannerIcon: {
     padding: '4px 6px 4px 4px',
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
     fontSize: '1.7rem',
     position: 'absolute',
     right: 0,

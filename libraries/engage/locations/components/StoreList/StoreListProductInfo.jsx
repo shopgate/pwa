@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Grid, ProductProperties } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { ProductGridPrice } from '../../../product';
 import { FulfillmentContext } from '../../locations.context';
 
@@ -12,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
   },
   productInfoLeft: {
     fontSize: '0.875rem',
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
   },
   priceInfo: {
     color: theme.palette.primary.main,

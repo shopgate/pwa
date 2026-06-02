@@ -15,10 +15,7 @@ import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import transition from '@shopgate/engage/product/components/Characteristics/transition';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import OptionInformation from './components/OptionInfo';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   row: {
@@ -44,7 +41,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   infoIcon: {
-    color: colors.shade9,
+    color: theme.palette.grey.medium,
   },
 }));
 

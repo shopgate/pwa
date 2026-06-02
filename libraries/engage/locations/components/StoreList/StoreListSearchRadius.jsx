@@ -2,7 +2,6 @@ import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import connector from './StoreListSearchRadius.connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -29,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
     appearance: 'none',
     border: `1px solid ${theme.components.border.light}`,
     padding: theme.spacing(0, 4, 0, 1.5),
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
     fontSize: '1rem',
     borderRadius: 4,
     width: '100%',

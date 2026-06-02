@@ -1,7 +1,4 @@
-import { themeConfig } from '@shopgate/engage';
 import { responsiveMediaQuery } from '@shopgate/engage/styles';
-
-const { colors } = themeConfig;
 
 export const TWO_COLUMN_LAYOUT = {
   [responsiveMediaQuery('>=md', { webOnly: false })]: {
@@ -152,6 +149,6 @@ export const getOutlinedFormFields = theme => ({
     marginBottom: 8,
   },
   ' .placeholder': {
-    color: colors.shade12,
+    color: theme.palette.grey.medium,
   },
 });

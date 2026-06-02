@@ -10,7 +10,6 @@ import React, {
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import {
   InfoIcon,
   LocatorIcon,
@@ -74,7 +73,7 @@ const useStyles = makeStyles()(theme => ({
     appearance: 'none',
     border: `1px solid ${theme.components.border.light}`,
     padding: theme.spacing(0, 4, 0, 1.5),
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
     fontSize: '1rem',
     borderRadius: 4,
     width: '100%',
@@ -99,7 +98,7 @@ const useStyles = makeStyles()(theme => ({
   inputIcon: {
     padding: 0,
     margin: '0 8px',
-    color: themeColors.shade9,
+    color: theme.palette.grey.medium,
     fontSize: '1.23rem',
     flexShrink: 0,
     outline: 0,

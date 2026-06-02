@@ -21,7 +21,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import SwiperItem from './components/SwiperItem';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
     maxHeight: '100%',
@@ -69,7 +69,7 @@ const useStyles = makeStyles()(() => ({
       transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
     },
     '& .swiper-pagination-progressbar': {
-      background: themeColors.shade7,
+      background: theme.palette.grey.light,
       '& .swiper-pagination-progressbar-fill': {
         background: themeColors.dark,
       },

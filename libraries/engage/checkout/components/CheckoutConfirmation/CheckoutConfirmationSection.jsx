@@ -2,17 +2,15 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Card, TextLink } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 
-const { colors } = themeConfig;
 const useStyles = makeStyles()(theme => ({
   wrapper: {
     padding: theme.spacing(2.5, 2, 0, 2),
   },
   headline: {
-    color: colors.shade3,
+    color: theme.palette.grey.medium,
     fontSize: '1rem',
     fontWeight: 'normal',
     textTransform: 'uppercase',

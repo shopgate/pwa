@@ -2,13 +2,12 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import pick from 'lodash/pick';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Chevron from '../../icons/ChevronIcon';
 import InfoField from '../InfoField';
 import ContextMenu from '../../ContextMenu';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   chevron: {
     position: 'absolute',
     top: '50%',
@@ -22,10 +21,10 @@ const useStyles = makeStyles()({
     paddingRight: '2rem',
   },
   itemSelected: {
-    backgroundColor: themeConfig.colors.shade8,
+    backgroundColor: theme.palette.grey.light,
     fontWeight: 500,
   },
-});
+}));
 
 /**
  * @param {Object} props Props.

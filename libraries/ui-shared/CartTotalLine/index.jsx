@@ -9,7 +9,7 @@ import Spacer from './components/Spacer';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   line: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -17,10 +17,10 @@ const useStyles = makeStyles()({
     alignItems: 'baseline',
   },
   disabled: {
-    color: `${colors.shade4} !important`,
+    color: `${theme.palette.grey.medium} !important`,
   },
   base: {
-    color: colors.shade9,
+    color: theme.palette.grey.medium,
   },
   subTotal: {
     color: `${colors.dark}`,
@@ -29,7 +29,7 @@ const useStyles = makeStyles()({
     color: `${colors.dark}`,
     fontSize: '1rem !important',
   },
-});
+}));
 
 /**
  * @returns {JSX}
