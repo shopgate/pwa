@@ -7,7 +7,7 @@ import connect from './SideNavigationCategories.connector';
 
 const useStyles = makeStyles()(theme => ({
   list: {
-    borderBottom: `1px solid ${theme.palette.border.light}`,
+    borderBottom: `1px solid ${theme.components.border.light}`,
   },
   loadingIndicator: {
     padding: 0,

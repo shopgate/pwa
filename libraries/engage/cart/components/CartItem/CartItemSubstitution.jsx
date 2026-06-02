@@ -13,7 +13,7 @@ import Substitution, { SubstitutionWrapper } from '../Substitution';
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(2),
-    borderTop: `1px solid ${theme.palette.border.light}`,
+    borderTop: `1px solid ${theme.components.border.light}`,
   },
 }));
 

@@ -67,12 +67,12 @@ const useStyles = makeStyles()(theme => ({
       width: 5,
       height: 5,
       border: '5px solid transparent',
-      borderTopColor: theme.palette.border.dark,
+      borderTopColor: theme.components.border.dark,
     },
   },
   select: {
     appearance: 'none',
-    border: `1px solid ${theme.palette.border.light}`,
+    border: `1px solid ${theme.components.border.light}`,
     padding: theme.spacing(0, 4, 0, 1.5),
     color: themeColors.shade11,
     fontSize: '1rem',
@@ -82,7 +82,7 @@ const useStyles = makeStyles()(theme => ({
   },
   inputContainer: {
     background: theme.palette.background.surface,
-    border: `1px solid ${theme.palette.border.light}`,
+    border: `1px solid ${theme.components.border.light}`,
     borderRadius: 4,
     display: 'flex',
     alignItems: 'center',

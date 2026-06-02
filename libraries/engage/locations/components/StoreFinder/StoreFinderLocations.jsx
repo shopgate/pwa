@@ -17,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
   },
   card: {
     background: theme.palette.background.surface,
-    border: `1px solid ${theme.palette.border.light}`,
+    border: `1px solid ${theme.components.border.light}`,
     boxSizing: 'border-box',
     boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)',
     borderRadius: 3,

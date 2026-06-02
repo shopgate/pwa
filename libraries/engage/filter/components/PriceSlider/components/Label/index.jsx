@@ -36,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
     ':focus': {
       background: theme.palette.background.surface,
       textIndent: 0,
-      borderColor: theme.palette.border.medium,
+      borderColor: theme.components.border.medium,
     },
     [responsiveMediaQuery('>=xs', { webOnly: true })]: {
       borderColor: theme.palette.primary.main,

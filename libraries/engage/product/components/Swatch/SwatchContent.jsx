@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     borderRadius: '50%',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: theme.palette.border.medium,
+    borderColor: theme.components.border.medium,
     backgroundSize: 'cover',
   },
   itemSelected: {

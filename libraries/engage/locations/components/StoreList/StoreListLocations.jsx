@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
     ':last-of-type': {
       marginBottom: 0,
     },
-    border: `1px solid ${theme.palette.border.light}`,
+    border: `1px solid ${theme.components.border.light}`,
     boxSizing: 'border-box',
     boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)',
     borderRadius: '0px 0px 3px 3px',

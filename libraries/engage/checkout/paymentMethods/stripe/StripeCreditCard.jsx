@@ -23,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
       marginBottom: 38,
       borderTopLeftRadius: 4,
       borderTopRightRadius: 4,
-      borderBottom: `1px solid ${theme.palette.border.medium}`,
+      borderBottom: `1px solid ${theme.components.border.medium}`,
     },
     ' .formElement label': {
       color: theme.palette.text.secondary,

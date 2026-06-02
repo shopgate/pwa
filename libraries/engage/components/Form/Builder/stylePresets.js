@@ -60,7 +60,7 @@ export const getOutlinedFormFields = theme => ({
     marginBottom: 32,
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
-    borderBottom: `1px solid ${theme.palette.border.medium}`,
+    borderBottom: `1px solid ${theme.components.border.medium}`,
   },
   ' .phonePickerError': {
     borderBottom: `2px solid ${theme.palette.error.main}`,

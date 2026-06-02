@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
   item: {
     marginLeft: theme.spacing(2),
     padding: theme.spacing(2, 2, 2, 0),
-    borderTop: `1px solid ${theme.palette.border.light}`,
+    borderTop: `1px solid ${theme.components.border.light}`,
   },
 }));
 

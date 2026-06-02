@@ -5,7 +5,7 @@ import CartItemCardReservation from './CartItemCardReservation';
 
 const useStyles = makeStyles()(theme => ({
   withBorder: {
-    borderBottom: `1px solid ${theme.palette.border.light}`,
+    borderBottom: `1px solid ${theme.components.border.light}`,
   },
 }));
 

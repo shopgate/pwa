@@ -7,7 +7,7 @@ import { Accordion, I18n } from '../../../components';
 
 const useStyles = makeStyles()(theme => ({
   accordionHeader: {
-    borderTop: `1px solid ${theme.palette.border.light}`,
+    borderTop: `1px solid ${theme.components.border.light}`,
     cursor: 'pointer',
     ' svg': {
       display: 'inline',

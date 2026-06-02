@@ -31,12 +31,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           default: colors.light,
           surface: colors.light,
           emphasized: colors.placeholder || '#F2F2F2',
-          dark: '#000000',
-        },
-        border: {
-          light: '#F2F2F2',
-          medium: '#b5b5b5b5',
-          dark: '#747474',
         },
         text: {
           primary: getCSSCustomProp('--color-text-high-emphasis') || '#1A1A1A',
@@ -44,6 +38,13 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
       },
       components: {
+        border: {
+          vars: {
+            light: '#F2F2F2',
+            medium: '#b5b5b5b5',
+            dark: '#747474',
+          },
+        },
         input: {
           vars: {
             background: '#F2F2F2',

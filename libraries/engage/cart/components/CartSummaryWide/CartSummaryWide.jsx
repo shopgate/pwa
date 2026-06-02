@@ -36,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
   grandTotal: {
     fontSize: '1.25rem !important',
     fontWeight: 500,
-    borderTop: `1px solid ${theme.palette.border.medium}`,
+    borderTop: `1px solid ${theme.components.border.medium}`,
     padding: theme.spacing(1, 0),
     color: theme.palette.text.primary,
     '&:last-child': {

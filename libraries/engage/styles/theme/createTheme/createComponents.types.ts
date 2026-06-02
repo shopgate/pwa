@@ -115,6 +115,13 @@ export type ComponentVarsFromSchema<TSchema> = {
  * for the theme components.
  */
 export const componentsSchema = {
+  border: {
+    vars: {
+      light: '',
+      medium: '',
+      dark: '',
+    },
+  },
   price: {
     vars: {
       color: '',
@@ -190,6 +197,13 @@ export const componentsSchema = {
  * - functions get proper `Theme` typing
  */
 export const componentsDefaults = {
+  border: {
+    vars: {
+      light: '#F2F2F2',
+      medium: '#b5b5b5b5',
+      dark: '#747474',
+    },
+  },
   price: {
     vars: {
       color: t => t.palette.primary.main,

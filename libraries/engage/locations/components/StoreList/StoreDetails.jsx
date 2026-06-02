@@ -10,7 +10,7 @@ import { StoreAddressShort } from './StoreAddressShort';
 const useStyles = makeStyles()(theme => ({
   storeDetailsBody: {
     padding: theme.spacing(1, 2),
-    borderTop: `1px solid ${theme.palette.border.light}`,
+    borderTop: `1px solid ${theme.components.border.light}`,
   },
   storeDetailsAccordion: {
     justifyContent: 'space-between',

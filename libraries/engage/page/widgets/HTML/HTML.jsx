@@ -47,7 +47,7 @@ const useStyles = makeStyles()(theme => ({
     ' blockquote, q': {
       paddingLeft: '1rem',
       margin: '2rem 0',
-      borderLeft: `.25rem solid ${theme.palette.border.dark}`,
+      borderLeft: `.25rem solid ${theme.components.border.dark}`,
       fontStyle: 'italic',
     },
     ' > :first-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
