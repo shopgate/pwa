@@ -62,14 +62,14 @@ const ProductImagePlaceholder = ({
         backgroundSize: 'contain',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundColor: noBackground ? 'transparent' : theme.palette.background.default,
+        backgroundColor: noBackground ? 'transparent' : theme.palette.background.surface,
         position: 'absolute',
       };
     }
     return {
-      backgroundColor: noBackground ? 'transparent' : theme.palette.background.default,
+      backgroundColor: noBackground ? 'transparent' : theme.palette.background.surface,
     };
-  }, [srcLoaded, noBackground, theme.palette.background.default, src]);
+  }, [srcLoaded, noBackground, theme.palette.background.surface, src]);
 
   const contentClasses = cx(classes.placeholderContent, {
     [classes.innerShadow]: showInnerShadow,

@@ -10,7 +10,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   text: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     display: 'block',
     fontSize: 12,
     padding: theme.spacing(2.5, 2),
@@ -40,9 +40,9 @@ const TaxDisclaimer = () => {
       portalProps={{ showTaxDisclaimer: showDisclaimer }}
     >
       {showDisclaimer && (
-      <div data-test-id="taxDisclaimer" aria-hidden className="ui-shared__tax-disclaimer">
-        <I18n.Text className={classes.text} string={text || 'product.tax_disclaimer'} />
-      </div>
+        <div data-test-id="taxDisclaimer" aria-hidden className="ui-shared__tax-disclaimer">
+          <I18n.Text className={classes.text} string={text || 'product.tax_disclaimer'} />
+        </div>
       )}
     </SurroundPortals>
   );

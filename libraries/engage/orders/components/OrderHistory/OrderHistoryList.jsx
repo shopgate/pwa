@@ -35,7 +35,7 @@ const useStyles = makeStyles()(theme => ({
     ':last-of-type': {
       marginBottom: 0,
     },
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     boxSizing: 'border-box',
     boxShadow: themeConfig.shadows.productCard,
     borderRadius: isIOS ? 10 : 2,
@@ -64,7 +64,7 @@ export const Row = (props) => {
               timestamp={new Date(props.submitDate).getTime()}
               format="short"
             />
-                &nbsp;
+            &nbsp;
             <I18n.Time
               timestamp={new Date(props.submitDate).getTime()}
               format="short"

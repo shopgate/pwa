@@ -29,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 16,
   },
   card: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     height: '100%',
     margin: '0px 8px',
     borderRadius: 11,

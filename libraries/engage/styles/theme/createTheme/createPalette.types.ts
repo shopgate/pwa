@@ -137,6 +137,7 @@ export const paletteSchema = {
    */
   background: {
     default: '',
+    surface: '',
     emphasized: '',
   },
   /**

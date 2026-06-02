@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
     margin: '8px 8px 10px',
   },
   rootNoFavoritesLists: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     flexGrow: 1,
     paddingBottom: theme.spacing(1),
     paddingLeft: '16px',

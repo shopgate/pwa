@@ -29,6 +29,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         background: {
           default: colors.light,
+          surface: colors.light,
           emphasized: colors.placeholder || '#F2F2F2',
         },
         text: {

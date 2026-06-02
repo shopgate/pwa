@@ -50,7 +50,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: 4,
   },
   messagesContainerCard: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     padding: theme.spacing(0, 0, 2, 0),
   },
   messagesCard: {
@@ -58,7 +58,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(1, 1.75),
   },
   messagesContainerLine: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     padding: theme.spacing(2, 2, 0),
   },
   messagesLine: {
@@ -179,7 +179,7 @@ CartItemCoupon.propTypes = {
 
 CartItemCoupon.defaultProps = {
   editable: true,
-  deleteCoupon: () => {},
+  deleteCoupon: () => { },
 };
 
 export default connect(memo(CartItemCoupon));

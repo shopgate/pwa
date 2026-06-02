@@ -13,7 +13,7 @@ import WidgetHeadline from '../../components/WidgetHeadline';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     display: 'flex',
     flexDirection: 'column',
     paddingBottom: theme.spacing(2),

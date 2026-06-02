@@ -8,7 +8,7 @@ const useStyles = makeStyles()(theme => ({
     fill: 'currentColor',
   },
   background: {
-    fill: theme.palette.background.default,
+    fill: theme.palette.background.surface,
   },
   circle: {
     fill: 'currentColor',

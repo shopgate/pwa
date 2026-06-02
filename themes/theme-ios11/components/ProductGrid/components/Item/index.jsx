@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     display: 'block',
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     height: '100%',
   },
   itemDetails: {
@@ -45,13 +45,13 @@ const Item = ({ product, display }) => {
       >
         {isBeta() && product.featuredMedia
           ? <FeaturedMedia
-              type={product.featuredMedia.type}
-              url={product.featuredMedia.url}
+            type={product.featuredMedia.type}
+            url={product.featuredMedia.url}
           />
           : <ItemImage
-              productId={product.id}
-              name={product.name}
-              imageUrl={product.featuredImageBaseUrl}
+            productId={product.id}
+            name={product.name}
+            imageUrl={product.featuredImageBaseUrl}
           />}
       </Link>
       <ProductBadges location="productGrid" productId={product.id}>

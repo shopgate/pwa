@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: themeConfig.shadows.productCard,
     margin: '5px 5px 10px',
     borderRadius: isIOS ? 10 : 2,
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     overflow: 'hidden',
     position: 'relative',
   },
