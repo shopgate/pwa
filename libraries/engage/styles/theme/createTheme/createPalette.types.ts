@@ -108,6 +108,10 @@ const grey = {
  * theme palette.
  */
 export const paletteSchema = {
+  common: {
+    black: '#000',
+    white: '#fff',
+  },
   /**
    * Color scheme for primary interface elements
    */
@@ -147,6 +151,9 @@ export const paletteSchema = {
    * The numbers represent the lightness of the color,
    */
   grey,
+  /**
+   * Colors to be used for actions, such as disabled states.
+   */
   action: {
     disabled: '#808080',
     disabledBackground: '#CCCCCC',
