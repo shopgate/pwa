@@ -5,12 +5,9 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { VariantSwatch } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import transition from '../transition';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   label: {
     display: 'flex',
     flexDirection: 'column',
@@ -23,7 +20,7 @@ const useStyles = makeStyles()(() => ({
     lineHeight: 1.125,
   },
   labelDisabled: {
-    color: colors.shade4,
+    color: theme.palette.action.disabled,
   },
   items: {
     padding: '0 16px',

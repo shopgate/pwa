@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
     } : {}),
   },
   link: {
-    color: 'var(--color-primary) !important',
+    color: `${theme.palette.primary.main} !important`,
   },
   card: {
     fontSize: '0.875rem',
@@ -86,7 +86,7 @@ const useStyles = makeStyles()(theme => ({
     ' tr:last-of-type td': {
       fontSize: '1rem',
       paddingTop: 8,
-      borderTop: '1px solid #979797',
+      borderTop: `1px solid ${theme.components.border.medium}`,
       fontWeight: 'bold',
     },
   },
