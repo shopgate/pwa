@@ -24,6 +24,7 @@ export { default as ProductSlider } from './ProductSlider';
 export * from './ProductVariants';
 export { default as QuantityPicker } from './QuantityPicker';
 export { default as Rating } from './Rating';
+export { ProductRatingStars } from './ProductRatingStars';
 export * from './RelationsSlider';
 export * from './Swatch';
 export * from './Swatches';

@@ -4,6 +4,7 @@ import ItemName from './index';
 
 jest.mock('@shopgate/engage/product', () => ({
   ProductName: () => null,
+  ProductRatingStars: () => null,
 }));
 
 jest.mock('@shopgate/engage/components');

@@ -3,7 +3,7 @@ const exec = util.promisify(require('child_process').exec);
 const repos = require('../repos.json');
 const logger = require('./logger');
 
-const { themes, extensions } = repos;
+const { themes } = repos;
 
 /**
  * Adds a new remote to a predefined package.
@@ -21,11 +21,5 @@ async function removeRemote(name) {
 
 // Remove the theme remotes.
 Object.keys(themes).forEach(async (name) => {
-  await removeRemote(name);
-});
-
-// Remove the extensions remotes.
-Object.keys(extensions).forEach(async (extension) => {
-  const name = extension.replace('@shopgate-', 'ext-');
   await removeRemote(name);
 });
