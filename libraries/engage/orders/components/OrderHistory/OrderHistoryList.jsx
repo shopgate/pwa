@@ -2,12 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, CardList, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig, themeName } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { getOrderDetailsRoute } from '../../helpers/orderDetails';
-
-const isIOS = themeName.includes('ios');
 
 const useStyles = makeStyles()(theme => ({
   orderNumber: {
@@ -38,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
     background: theme.palette.background.surface,
     boxSizing: 'border-box',
     boxShadow: themeConfig.shadows.productCard,
-    borderRadius: isIOS ? 10 : 2,
+    borderRadius: 10,
   },
 }));
 
