@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const useStyles = makeStyles()((theme) => {
   const badgeBase = {
-    background: theme.palette.primary.main,
+    background: theme.components.discountBadge.background,
     borderRadius: 2,
-    color: theme.palette.primary.contrastText,
+    color: theme.contrastColor(theme.components.discountBadge.background),
     padding: 5,
     width: '100%',
     fontWeight: 700,
@@ -19,7 +18,7 @@ const useStyles = makeStyles()((theme) => {
     alignItems: 'center',
     lineHeight: 1,
     whiteSpace: 'nowrap',
-    ...themeConfig.variables.discountBadgeBase,
+    fontSize: '0.75rem',
   };
   return {
     small: {
