@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import color from 'color';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
@@ -33,12 +32,7 @@ const useStyles = makeStyles()(theme => ({
  * @return {Object} style
  */
 const getUnderlineStyle = (theme, focused, hasError, errorColor) => {
-  const primaryColor = theme.palette.primary.main;
-  let focusColor = theme.palette.primary.main;
-
-  if (color(primaryColor).luminosity() >= 0.8) {
-    focusColor = theme.palette.secondary.main;
-  }
+  const focusColor = theme.palette.primary.main;
 
   return {
     borderBottomColor: hasError ? errorColor : focusColor,

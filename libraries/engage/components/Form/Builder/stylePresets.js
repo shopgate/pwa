@@ -63,23 +63,23 @@ export const getOutlinedFormFields = theme => ({
     borderBottom: `2px solid ${theme.palette.error.main}`,
   },
   ' .phonePickerFocused:not(.phonePickerError)': {
-    borderBottom: '2px solid var(--color-primary)',
+    borderBottom: `2px solid ${theme.palette.primary.main}`,
   },
   ' .formElement:not(.radioGroup) label': {
     paddingLeft: 24,
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     transform: 'translate3d(0, -18px, 0) scale3d(0.75, 0.75, 0.75)',
   },
   ' .textField label': {
     paddingLeft: 17,
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
     '&.floating': {
       transform: 'translate3d(3px, -18px, 0) scale3d(0.75, 0.75, 0.75)',
     },
   },
   ' .formElement:not(.radioGroup) select, .formElement .info-field': {
     paddingLeft: 16,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   ' .formElement:not(.radioGroup):not(.checkbox) svg': {
     marginTop: 8,
@@ -87,7 +87,7 @@ export const getOutlinedFormFields = theme => ({
   },
   ' .formElement:not(.radioGroup) .placeholder': {
     paddingLeft: 20,
-    color: 'var(--color-text-low-emphasis)',
+    color: theme.palette.text.secondary,
   },
   ' .formElement.disabled, .textField.disabled': {
     ' input, select, svg': {
@@ -99,7 +99,7 @@ export const getOutlinedFormFields = theme => ({
   },
   ' .textField input': {
     paddingLeft: 16,
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
   },
   ' .underline': {
     marginBottom: 0,
@@ -128,12 +128,12 @@ export const getOutlinedFormFields = theme => ({
   },
   ' .phonePicker .PhoneInputInput': {
     borderBottom: 'none',
-    color: 'var(--color-text-high-emphasis)',
+    color: theme.palette.text.primary,
     '&:focus': {
       borderBottom: 'none',
     },
     '::placeholder': {
-      color: 'var(--color-text-low-emphasis)',
+      color: theme.palette.text.secondary,
     },
   },
   ' .phonePicker .errorText': {

@@ -26,7 +26,6 @@ import {
 } from '@shopgate/engage/components';
 import { SCANNER_ICON } from '@shopgate/engage/scanner/constants';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import TabBar from 'Components/TabBar';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
@@ -96,7 +95,7 @@ const useStyles = makeStyles()(theme => ({
     right: 0,
   },
   overlay: {
-    background: themeColors.darkTransparent,
+    background: 'rgba(0,0,0, 0.4)',
     position: 'absolute',
     left: 0,
     width: '100%',

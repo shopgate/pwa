@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import CryptoJs from 'crypto-js';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 
 const useStyles = makeStyles()(theme => ({
   outerCircle: {
@@ -17,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     strokeWidth: '4px',
   },
   viewBox: {
-    width: themeVariables.emptyPage.icon,
+    width: 216,
     color: theme.palette.primary.main,
   },
 }));

@@ -1,7 +1,6 @@
 import React, { useMemo, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, setCSSCustomProp } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { APP_BAR_CONTENT } from '@shopgate/engage/core/constants';
@@ -110,13 +109,13 @@ AppBar.propTypes = {
 };
 
 AppBar.defaultProps = {
-  backgroundColor: themeColors.light,
+  backgroundColor: '--sg-palette-common-white',
   below: null,
   center: null,
   left: null,
   right: null,
   shadow: true,
-  textColor: themeColors.dark,
+  textColor: '--sg-palette-common-black',
 };
 
 AppBar.Field = Field;
