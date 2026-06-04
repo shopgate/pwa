@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   root: {
-    boxShadow: themeConfig.shadows.productCard,
+    boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
     margin: '5px 5px 10px',
     borderRadius: 10,
     background: theme.palette.background.surface,

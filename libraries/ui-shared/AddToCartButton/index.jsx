@@ -75,7 +75,7 @@ const useStyles = makeStyles()(theme => ({
   buttonDisabled: {
     background: theme.palette.action.disabledBackground,
     color: theme.contrastColor(theme.palette.action.disabledBackground),
-    boxShadow: themeConfig.shadows.buttons.disabled,
+    boxShadow: '0 3px 4px rgba(0, 0, 0, 0.13)',
   },
 }));
 

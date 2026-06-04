@@ -1,7 +1,7 @@
 import React, { useMemo, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, setCSSCustomProp } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { APP_BAR_CONTENT } from '@shopgate/engage/core/constants';
@@ -63,7 +63,7 @@ const AppBar = ({
   const style = useMemo(() => ({
     background: backgroundColor,
     color: textColor,
-    boxShadow: !shadow ? 'none' : themeShadows.material,
+    boxShadow: !shadow ? 'none' : '0 1px 6px rgba(0, 0, 0, .117647), 0 1px 4px rgba(0, 0, 0, .117647)',
   }), [backgroundColor, shadow, textColor]);
 
   const observer = useMemo(() => new MutationObserver(() => {

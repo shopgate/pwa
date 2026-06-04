@@ -4,11 +4,10 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { ProductCard as EngageProductCard } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeShadows } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
 const shadowStyle = {
-  boxShadow: themeShadows.productCard,
+  boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
 };
 
 const useStyles = makeStyles()(theme => ({

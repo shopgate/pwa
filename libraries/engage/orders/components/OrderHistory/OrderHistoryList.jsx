@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, CardList, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { getOrderDetailsRoute } from '../../helpers/orderDetails';
@@ -35,7 +34,7 @@ const useStyles = makeStyles()(theme => ({
     },
     background: theme.palette.background.surface,
     boxSizing: 'border-box',
-    boxShadow: themeConfig.shadows.productCard,
+    boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
     borderRadius: 10,
   },
 }));

@@ -51,6 +51,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             border: '#CCCCCC',
           },
         },
+        seperatorLine: {
+          vars: {
+            borderColor: '#EBEBEF',
+          },
+        },
         ctaButton: {
           vars: {
             background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
@@ -83,6 +88,17 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           vars: {
             filled: `var(--rating-stars-filled, ${getCSSCustomProp('--color-primary')})`,
             empty: 'var(--rating-stars-empty, #CCCCCC)',
+          },
+        },
+        swiper: {
+          vars: {
+            pagination: {
+              bulletColor: '#b5b5b5b5',
+              bulletActiveColor: '#747474',
+              fractionBackground: '#F2F2F2',
+              progressbarBackground: '#F2F2F2',
+              progressbarActiveColor: '#000000',
+            },
           },
         },
       },

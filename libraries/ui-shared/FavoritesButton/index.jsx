@@ -2,7 +2,7 @@ import React, {
   useCallback, useRef, useMemo, memo,
 } from 'react';
 import PropTypes from 'prop-types';
-import appConfig, { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import HeartIcon from '../icons/HeartIcon';
@@ -16,7 +16,7 @@ const useStyles = makeStyles()((theme) => {
   const buttonProto = {
     display: 'block',
     position: 'relative',
-    background: themeColors.light,
+    background: theme.palette.common.white,
     borderRadius: '50%',
     padding: 0,
     fontSize: 20,
@@ -31,7 +31,7 @@ const useStyles = makeStyles()((theme) => {
     },
     button: {
       ...buttonProto,
-      boxShadow: themeShadows.buttons.elevated,
+      boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
     },
     ripple: {
       padding: 6,

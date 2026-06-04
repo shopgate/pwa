@@ -1,17 +1,16 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   body: {
-    color: themeColors.dark,
+    color: theme.palette.text.primary,
     flexGrow: 1,
     fontSize: '13px',
     textAlign: 'center',
     overflow: 'auto',
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

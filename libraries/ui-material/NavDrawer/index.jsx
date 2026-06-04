@@ -7,7 +7,6 @@ import Transition from 'react-transition-group/Transition';
 import { Backdrop } from '@shopgate/engage/components';
 import { ModalStateTracker } from '@shopgate/engage/a11y/components';
 import { UIEvents } from '@shopgate/pwa-core';
-import { themeShadows } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Divider from './components/Divider';
 import Item from './components/Item';
@@ -28,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
   },
   drawer: {
     background: theme.palette.background.surface,
-    boxShadow: themeShadows.navDrawer,
+    boxShadow: '0 0 15px rgba(0, 0, 0, .24)',
     color: theme.palette.text.primary,
     height: '100vh',
     left: 0,

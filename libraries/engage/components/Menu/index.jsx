@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Position from './components/Position';
 import Item from './components/Item';
 
@@ -26,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     minWidth: 130,
     background: theme.palette.background.surface,
     borderRadius: 2,
-    boxShadow: themeConfig.shadows.contextMenu,
+    boxShadow: '0 2px 6px rgba(0, 0, 0, .4)',
   },
 }));
 

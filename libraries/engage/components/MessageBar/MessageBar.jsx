@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { i18n, errorBehavior } from '@shopgate/engage/core/helpers';
 import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
 import InfoIcon from '@shopgate/pwa-ui-shared/icons/InfoIcon';
@@ -26,7 +25,7 @@ const useStyles = makeStyles()((theme) => {
   });
 
   const containerBase = {
-    background: themeColors.background,
+    background: theme.palette.background.emphasized,
     display: 'flex',
     flexDirection: 'column',
     flexShrink: 0,
@@ -86,8 +85,8 @@ const useStyles = makeStyles()((theme) => {
     // eslint-disable-next-line tss-unused-classes/unused-classes
     error: {
       ...messageBase,
-      background: themeColors.error,
-      color: themeColors.light,
+      background: theme.palette.error.main,
+      color: theme.palette.error.contrastText,
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
         ...getMessageColors(theme.palette.error.main),
         ' > svg': {
