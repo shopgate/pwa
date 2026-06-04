@@ -32,13 +32,13 @@ const mapDispatchToProps = dispatch => ({
   toggle: productId => dispatch(toggleFavoriteWithListChooser(productId)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     '&&': {
       margin: '0 0px 16px 16px',
-      backgroundColor: '#fff',
-      border: '1px solid var(--color-primary)',
-      color: 'var(--color-high-emphasis)',
+      backgroundColor: theme.palette.background.surface,
+      border: `1px solid ${theme.palette.primary.main}`,
+      color: theme.palette.text.primary,
       borderRadius: 5,
       fontSize: 14,
       textTransform: 'none',
@@ -48,7 +48,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: '8px 16px',
   },
-});
+}));
 
 /** @returns {JSX} */
 const FavoriteButtonWide = ({

@@ -24,7 +24,7 @@ const useStyles = makeStyles()((theme, {
     padding: theme.spacing(0.5),
     display: 'flex',
     gap: theme.spacing(1),
-    background: '#fff',
+    background: theme.palette.background.surface,
     borderRadius: 4,
     border: '1px solid rgba(0, 0, 0, 0.23)',
     ':empty': {
@@ -35,13 +35,13 @@ const useStyles = makeStyles()((theme, {
     cursor: 'pointer',
   },
   visibilityIcon: {
-    color: '#f44336',
+    color: theme.palette.error.main,
   },
   scheduledIcon: {
     color: '#347DD3',
   },
   scheduledIconExpired: {
-    color: '#f44336',
+    color: theme.palette.error.main,
   },
 }));
 

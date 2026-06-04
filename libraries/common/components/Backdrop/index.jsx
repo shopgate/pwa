@@ -4,8 +4,9 @@ import { Transition } from 'react-transition-group';
 import { makeStyles } from '@shopgate/engage/styles';
 import { toggleBodyScroll } from '@shopgate/engage/styles/helpers';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   backdrop: {
+    background: theme.palette.common.black,
     position: 'fixed',
     top: 0,
     right: 0,
@@ -15,7 +16,7 @@ const useStyles = makeStyles()({
     pointerEvents: 'all',
     touchAction: 'none',
   },
-});
+}));
 
 /**
  * Backdrop component

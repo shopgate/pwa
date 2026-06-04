@@ -6,11 +6,8 @@ import { i18n, hasNewServices } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()((theme, {
   inputColor,
@@ -143,12 +140,11 @@ const UnitQuantityPicker = ({
     return {
       buttonColor: theme.palette.grey.light,
       buttonBgColor: theme.palette.primary.main,
-      inputColor: colors.dark,
+      inputColor: theme.palette.text.primary,
       inputBgColor: theme.palette.grey.light,
       showLabel: true,
     };
-  }, [theme.palette.grey.light, theme.palette.primary.main]);
-
+  }, [theme.palette.grey.light, theme.palette.primary.main, theme.palette.text.primary]);
   const {
     buttonColor = widgetDefaults.buttonColor,
     buttonBgColor = widgetDefaults.buttonBgColor,

@@ -4,14 +4,11 @@ import React, {
 import PropTypes from 'prop-types';
 import { ResponsiveContainer } from '@shopgate/engage/components';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/engage';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import Provider from './FilterBarProvider';
 import Content from './components/Content';
 import Modal from './components/FilterModal';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()({
   root: {
@@ -41,8 +38,8 @@ const FilterBar = ({ filters, categoryId }) => {
       ? theme.palette.primary.main
       : theme.palette.text.primary,
   } : {
-    background: active ? theme.palette.secondary.main : colors.background,
-    color: active ? theme.palette.secondary.contrastText : colors.dark,
+    background: active ? theme.palette.secondary.main : theme.palette.background.emphasized,
+    color: active ? theme.palette.secondary.contrastText : theme.palette.text.primary,
   }), [active, theme]);
 
   const sortScope = useMemo(

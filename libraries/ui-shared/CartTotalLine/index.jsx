@@ -1,13 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import Amount from './components/Amount';
 import Hint from './components/Hint';
 import Spacer from './components/Spacer';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   line: {
@@ -17,16 +14,16 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'baseline',
   },
   disabled: {
-    color: `${theme.palette.grey.medium} !important`,
+    color: `${theme.palette.action.disabled} !important`,
   },
   base: {
-    color: theme.palette.grey.medium,
+    color: theme.palette.text.secondary,
   },
   subTotal: {
-    color: `${colors.dark}`,
+    color: theme.palette.text.primary,
   },
   grandTotal: {
-    color: `${colors.dark}`,
+    color: theme.palette.text.primary,
     fontSize: '1rem !important',
   },
 }));

@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     flexShrink: 0,
     margin: theme.spacing(0, 2),
-    borderBottom: '1px solid #eaeaea',
+    borderBottom: `1px solid ${theme.components.border.light}`,
     alignItems: 'center',
     height: variables.filterbar.height,
   },

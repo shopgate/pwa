@@ -45,6 +45,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             dark: '#747474',
           },
         },
+        price: {
+          vars: {
+            color: getCSSCustomProp('--color-primary'),
+          },
+        },
         input: {
           vars: {
             background: '#F2F2F2',

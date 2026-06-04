@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
 
 const rotate = keyframes({
@@ -90,10 +89,10 @@ IndicatorCircle.propTypes = {
 };
 
 IndicatorCircle.defaultProps = {
-  color: 'var(--color-secondary)',
+  color: '--sg-palette-secondary-main',
   paused: false,
-  size: themeConfig.variables.loadingIndicator.size,
-  strokeWidth: themeConfig.variables.loadingIndicator.strokeWidth,
+  size: 32,
+  strokeWidth: 3,
 };
 
 export default IndicatorCircle;

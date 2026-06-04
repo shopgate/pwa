@@ -15,8 +15,8 @@ const useStyles = makeStyles()(theme => ({
     paddingRight: 8,
   },
   deleteIcon: {
-    backgroundColor: '#898989',
-    color: '#fff',
+    backgroundColor: theme.palette.grey.dark,
+    color: theme.contrastColor(theme.palette.grey.dark),
     borderRadius: 32,
     padding: 4,
     marginRight: theme.spacing(1),

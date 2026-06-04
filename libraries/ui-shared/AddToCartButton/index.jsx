@@ -1,9 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import spring from 'css-spring';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { withForwardedRef } from '@shopgate/engage/core';
-import { keyframes, makeStyles } from '@shopgate/engage/styles';
+import { keyframes, makeStyles, useTheme } from '@shopgate/engage/styles';
 import CartPlusIcon from '../icons/CartPlusIcon';
 import TickIcon from '../icons/TickIcon';
 import IndicatorCircle from '../IndicatorCircle';
@@ -61,8 +60,8 @@ const useStyles = makeStyles()(theme => ({
   spinnerIcon: {
     left: '50%',
     top: '50%',
-    marginTop: -(themeConfig.variables.loadingIndicator.size) / 2,
-    marginLeft: -(themeConfig.variables.loadingIndicator.size) / 2,
+    marginTop: -32 / 2,
+    marginLeft: -32 / 2,
   },
   buttonReady: {
     background: theme.components.ctaButton.background,
@@ -117,6 +116,7 @@ const AddToCartButton = ({
   onReset,
 }) => {
   const { classes, cx } = useStyles();
+  const theme = useTheme();
   const [showCheckmark, setShowCheckmark] = useState(null);
 
   /**
@@ -228,7 +228,7 @@ const AddToCartButton = ({
       {isLoading && (
         <div className={cx(classes.icon, classes.spinnerIcon)} style={spinnerInlineStyle}>
           <IndicatorCircle
-            color={themeConfig.colors.primaryContrast}
+            color={theme.contrastColor(theme.palette.primary.main)}
             strokeWidth={5}
             paused={!isLoading}
           />
