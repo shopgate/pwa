@@ -7,7 +7,7 @@ const useStyles = makeStyles()(theme => ({
     '& + hr': {
       display: 'none',
     },
-    background: theme.components.seperatorLine,
+    background: theme.components.separatorLine,
     border: 0,
     height: 1,
     margin: '16px 0',

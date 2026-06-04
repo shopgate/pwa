@@ -140,7 +140,7 @@ export const componentsSchema = {
       border: '',
     },
   },
-  seperatorLine: {
+  separatorLine: {
     vars: {
       borderColor: '',
     },
@@ -211,7 +211,7 @@ export const componentsDefaults = {
   border: {
     vars: {
       light: '#F2F2F2',
-      medium: '#b5b5b5b5',
+      medium: '#b5b5b5',
       dark: '#747474',
     },
   },
@@ -226,7 +226,7 @@ export const componentsDefaults = {
       border: '#CCCCCC',
     },
   },
-  seperatorLine: {
+  separatorLine: {
     vars: {
       borderColor: '#EBEBEF',
     },

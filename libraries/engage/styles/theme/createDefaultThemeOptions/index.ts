@@ -41,7 +41,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         border: {
           vars: {
             light: '#F2F2F2',
-            medium: '#b5b5b5b5',
+            medium: '#b5b5b5',
             dark: '#747474',
           },
         },
@@ -56,7 +56,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             border: '#CCCCCC',
           },
         },
-        seperatorLine: {
+        separatorLine: {
           vars: {
             borderColor: '#EBEBEF',
           },
@@ -98,7 +98,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         swiper: {
           vars: {
             pagination: {
-              bulletColor: '#b5b5b5b5',
+              bulletColor: '#b5b5b5',
               bulletActiveColor: '#747474',
               fractionBackground: '#F2F2F2',
               progressbarBackground: '#F2F2F2',

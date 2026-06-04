@@ -6,7 +6,7 @@ const useStyles = makeStyles()(theme => ({
   item: {
     background: theme.palette.common.white,
     marginTop: 4,
-    borderTop: `1px solid ${theme.components.seperatorLine.borderColor}`,
+    borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
   },
 }));
 

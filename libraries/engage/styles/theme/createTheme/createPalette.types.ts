@@ -96,7 +96,7 @@ const grey = {
   800: '#424242',
   900: '#212121',
   light: '#F2F2F2',
-  medium: '#b5b5b5b5',
+  medium: '#b5b5b5',
   dark: '#747474',
 } as const;
 
