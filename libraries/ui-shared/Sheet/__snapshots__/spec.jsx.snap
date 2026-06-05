@@ -58,7 +58,7 @@ exports[`<Sheet /> should open 1`] = `
             "out": "sg-1uynekm-drawerAnimOut",
           }
         }
-        className="sg-krhh1u-container"
+        className="sg-1us1dh1-container"
         isOpen={true}
         onClose={[Function]}
         onDidClose={[Function]}
@@ -67,7 +67,7 @@ exports[`<Sheet /> should open 1`] = `
       >
         <div
           aria-modal={true}
-          className="common__drawer sg-maosdv-container-drawerAnimIn-container"
+          className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
           onAnimationEnd={[Function]}
           role="dialog"
           style={
@@ -446,7 +446,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             "out": "sg-1uynekm-drawerAnimOut",
           }
         }
-        className="sg-krhh1u-container"
+        className="sg-1us1dh1-container"
         isOpen={false}
         onClose={[Function]}
         onDidClose={[Function]}
@@ -455,7 +455,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       >
         <div
           aria-modal={true}
-          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
+          className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
           onAnimationEnd={[Function]}
           role="dialog"
           style={

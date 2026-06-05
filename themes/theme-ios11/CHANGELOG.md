@@ -1,5 +1,15 @@
 # Changelog
 
+## [v7.30.4](https://github.com/shopgate/pwa/compare/v7.30.3...v7.30.4) (2026-05-19)
+
+#### :rocket: Enhancement
+* [#1461](https://github.com/shopgate/pwa/pull/1461) Add config for pagination below product image slider ([@AylinUenal](https://github.com/AylinUenal))
+* [#1459](https://github.com/shopgate/pwa/pull/1459) Add support for universal links in HtmlSanitizer ([@fkloes](https://github.com/fkloes))
+
+#### :bug: Bug Fix
+* [#1463](https://github.com/shopgate/pwa/pull/1463) Fix misaligned empty icons in cart, category, and search ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.30.3](https://github.com/shopgate/pwa/compare/v7.30.2...v7.30.3) (2026-04-20)
 
 #### :rocket: Enhancement

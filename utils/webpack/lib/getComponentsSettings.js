@@ -22,6 +22,38 @@ const importFresh = require('import-fresh');
  * system
  */
 
+const ignoredExtensions = [
+  '@shopgate/product-reviews',
+];
+
+/**
+ * Removes ignored extension entries from one config section.
+ * @param {Object} section The component settings section.
+ * @returns {Object}
+ */
+const filterIgnoredEntries = (section = {}) => Object.keys(section).reduce((acc, key) => {
+  const isIgnored = ignoredExtensions.some(ignored => key.startsWith(`${ignored}/`));
+
+  if (isIgnored) {
+    return acc;
+  }
+
+  return {
+    ...acc,
+    [key]: section[key],
+  };
+}, {});
+
+/**
+ * Removes ignored extension entries from component config sections that come from the sdk.
+ * @param {ComponentSettings} config The raw component settings.
+ * @returns {ComponentSettings}
+ */
+const filterIgnoredExtensions = (config = {}) => Object.keys(config).reduce((acc, sectionName) => ({
+  ...acc,
+  [sectionName]: filterIgnoredEntries(config[sectionName]),
+}), {});
+
 /**
  * Returns contents of the `config/components.json` file from the theme.
  *
@@ -44,7 +76,7 @@ module.exports = function getComponentsSettings(themePath) {
     const themeWidgetsV2Config = '@shopgate/engage/page/widgets/widgets.json';
 
     /** @type {ComponentSettings} */
-    const defaultConfig = importFresh(`${themePath}/config/components.json`);
+    const defaultConfig = filterIgnoredExtensions(importFresh(`${themePath}/config/components.json`));
 
     /**
      * Loads a JSON config file using `import-fresh`, if it exists.

@@ -4,7 +4,7 @@ const exec = util.promisify(require('child_process').exec);
 const repos = require('../repos.json');
 const logger = require('./logger');
 
-const { themes, extensions } = repos;
+const { themes } = repos;
 
 /**
  * @param {string} group The subtree group.
@@ -30,9 +30,4 @@ async function initSubtree(group, name, url) {
 // Add the theme subtrees.
 Object.keys(themes).forEach(async (name) => {
   await initSubtree('themes', name, themes[name]);
-});
-
-// Add the extensions subtrees.
-Object.keys(extensions).forEach(async (extension) => {
-  await initSubtree('extensions', extension, extensions[extension]);
 });
