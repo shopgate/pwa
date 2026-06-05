@@ -29,7 +29,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -335,7 +335,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -994,7 +994,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -1662,7 +1662,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -2481,7 +2481,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -3617,7 +3617,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text=""
@@ -3917,7 +3917,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text=""
