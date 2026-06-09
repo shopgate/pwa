@@ -4,9 +4,9 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   item: {
-    background: theme.palette.common.white,
+    background: theme.palette.background.surface,
     marginTop: 4,
-    borderTop: `1px solid ${theme.components.seperatorLine.borderColor}`,
+    borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
   },
 }));
 

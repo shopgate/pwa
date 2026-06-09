@@ -21,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
     flex: '0 0 auto',
     ' .formElement': {
-      background: theme.palette.secondary.main,
+      background: theme.palette.background.emphasized,
       padding: 0,
       marginBottom: 38,
       borderTopLeftRadius: 4,
