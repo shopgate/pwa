@@ -1,66 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ItemFavoritesButton /> should not render when its not a favorite 1`] = `
-<ContextProvider
-  value={
-    {
-      "getServerState": undefined,
-      "noopCheck": "once",
-      "stabilityCheck": "once",
-      "store": {
-        "@@observable": [Function],
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": {
-        "addNestedSub": [Function],
-        "getListeners": [Function],
-        "handleChangeWrapper": [Function],
-        "isSubscribed": [Function],
-        "notifyNestedSubs": [Function],
-        "trySubscribe": [Function],
-        "tryUnsubscribe": [Function],
-      },
-    }
-  }
->
-  <ItemFavoritesButton
-    productId="1234"
-  />
-</ContextProvider>
+exports[`<ItemFavoritesButton /> should not render when it's not a favorite 1`] = `
+<div
+  class="sg-wn14dv-root"
+  data-test-id="favorites"
+/>
 `;
 
-exports[`<ItemFavoritesButton /> should render if its a favorite 1`] = `
-<ContextProvider
-  value={
-    {
-      "getServerState": undefined,
-      "noopCheck": "once",
-      "stabilityCheck": "once",
-      "store": {
-        "@@observable": [Function],
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-      },
-      "subscription": {
-        "addNestedSub": [Function],
-        "getListeners": [Function],
-        "handleChangeWrapper": [Function],
-        "isSubscribed": [Function],
-        "notifyNestedSubs": [Function],
-        "trySubscribe": [Function],
-        "tryUnsubscribe": [Function],
-      },
-    }
-  }
->
-  <ItemFavoritesButton
-    isFavorite={true}
-    productId="1234"
-  />
-</ContextProvider>
+exports[`<ItemFavoritesButton /> should render if it's a favorite 1`] = `
+<div
+  class="sg-wn14dv-root"
+  data-test-id="favorites"
+/>
 `;

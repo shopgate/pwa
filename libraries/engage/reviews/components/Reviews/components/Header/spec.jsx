@@ -1,8 +1,5 @@
 import React from 'react';
-import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
-import configureStore from 'redux-mock-store';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { render, screen } from '@testing-library/react';
 import {
   mockProductId,
   mockedStateWithoutReview,
@@ -10,55 +7,74 @@ import {
 } from '@shopgate/pwa-common-commerce/reviews/mock';
 import Header from './index';
 
-const mockedStore = configureStore();
+const mockNoReviews = jest.fn(props => (
+  <div data-testid="no-reviews" data-product-id={props.productId} />
+));
 
-jest.mock('@shopgate/engage/components');
+const mockReviewsExcerpt = jest.fn(props => (
+  <div
+    data-testid="reviews-excerpt"
+    data-product-id={props.productId}
+    data-average={String(props.average)}
+    data-count={String(props.count)}
+    data-with-top-gap={String(props.withTopGap)}
+  />
+));
+
+jest.mock('./connector', () => component => component);
+jest.mock('./components/NoReviews', () => props => mockNoReviews(props));
+jest.mock('./components/ReviewsExcerpt', () => props => mockReviewsExcerpt(props));
 
 /**
- * Creates component with provided store state.
- * @param {Object} mockedState Mocked stage.
- * @param {Object|null} props Rating prop.
- * @return {ReactWrapper}
+ * Creates component with provided props.
+ * @param {Object} props Header props.
+ * @returns {object} Render result.
  */
-const createComponent = (mockedState, props = {}) => mount(
-  <Provider store={mockedStore(mockedState)}>
-    <Header {...props} />
-  </Provider>,
-  mockRenderOptions
-);
+const createComponent = (props = {}) => render(<Header {...props} />);
 
 describe('<Header />', () => {
-  let header = null;
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
   it('should render empty', () => {
     const productId = mockProductId;
     const { rating } = mockedStateWithoutReview.product.productsById[productId].productData;
-    header = createComponent(mockedStateWithoutReview, {
+    createComponent({
       productId,
       rating,
     });
 
-    expect(header.find('Header').exists()).toBe(true);
-    expect(header).toMatchSnapshot();
-    expect(header.find('RatingStars').prop('value')).toEqual(0);
-    expect(header.find('RatingCount').isEmptyRender()).toBe(true);
+    expect(screen.getByTestId('no-reviews')).toHaveAttribute('data-product-id', productId);
+    expect(mockNoReviews).toHaveBeenCalledWith(expect.objectContaining({ productId }));
+    expect(screen.queryByTestId('reviews-excerpt')).toBeNull();
   });
 
   it('should render rating summary', () => {
     const productId = mockProductId;
     const { rating } = mockedStateWithAll.product.productsById[productId].productData;
-    header = createComponent(mockedStateWithAll, {
+    createComponent({
       productId,
       rating,
     });
-    expect(header.find('Header').exists()).toBe(true);
-    expect(header).toMatchSnapshot();
-    expect(header.find('RatingStars').prop('value')).toEqual(rating.average);
-    expect(header.find('RatingCount').prop('count')).toEqual(rating.count);
+
+    expect(screen.getByTestId('reviews-excerpt')).toHaveAttribute('data-product-id', productId);
+    expect(screen.getByTestId('reviews-excerpt')).toHaveAttribute('data-average', String(rating.average));
+    expect(screen.getByTestId('reviews-excerpt')).toHaveAttribute('data-count', String(rating.count));
+    expect(mockReviewsExcerpt).toHaveBeenCalledWith(expect.objectContaining({
+      productId,
+      average: rating.average,
+      count: rating.count,
+      withTopGap: false,
+    }));
+    expect(screen.queryByTestId('no-reviews')).toBeNull();
   });
 
   it('should render null when no review is provided', () => {
-    header = createComponent(mockedStateWithAll, { productId: 'some-id' });
-    expect(header.isEmptyRender()).toBe(true);
+    const { container } = createComponent({ productId: 'some-id' });
+
+    expect(container.firstChild).toBeNull();
+    expect(screen.queryByTestId('no-reviews')).toBeNull();
+    expect(screen.queryByTestId('reviews-excerpt')).toBeNull();
   });
 });

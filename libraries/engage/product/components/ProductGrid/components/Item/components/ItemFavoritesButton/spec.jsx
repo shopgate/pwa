@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
@@ -13,21 +13,21 @@ const store = createMockStore(combineReducers({
 }));
 
 describe('<ItemFavoritesButton />', () => {
-  it('should not render when its not a favorite', () => {
-    const wrapper = shallow((
+  it('should not render when it\'s not a favorite', () => {
+    const wrapper = render((
       <Provider store={store}>
         <ItemFavoritesButton productId="1234" />
       </Provider>
     ));
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.container.firstChild).toMatchSnapshot();
   });
 
-  it('should render if its a favorite', () => {
-    const wrapper = shallow((
+  it('should render if it\'s a favorite', () => {
+    const wrapper = render((
       <Provider store={store}>
         <ItemFavoritesButton productId="1234" isFavorite />
       </Provider>
     ));
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.container.firstChild).toMatchSnapshot();
   });
 });

@@ -1,15 +1,15 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Glow from './index';
 
 describe('<Glow />', () => {
   it('should render with a smile', () => {
-    const wrapper = mount((
+    const wrapper = render((
       <Glow>
         <p>Glowing!</p>
       </Glow>
     ));
 
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

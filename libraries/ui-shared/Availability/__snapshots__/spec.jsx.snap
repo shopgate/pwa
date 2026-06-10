@@ -1,67 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Availability /> should not render by default if state is "ok" 1`] = `
-<Availability
-  className=""
-  showWhenAvailable={false}
-  state="ok"
-  text="Available"
-/>
-`;
+exports[`<Availability /> should not render by default if state is "ok" 1`] = `<DocumentFragment />`;
 
-exports[`<Availability /> should not render when text is empty 1`] = `
-<Availability
-  className=""
-  showWhenAvailable={false}
-  state="ok"
-  text=""
-/>
-`;
+exports[`<Availability /> should not render when text is empty 1`] = `<DocumentFragment />`;
 
 exports[`<Availability /> should render if state is "ok" when "showWhenAvailable" is set 1`] = `
-<Availability
-  className=""
-  showWhenAvailable={true}
-  state="ok"
-  text="Available"
->
+<DocumentFragment>
   <div
-    className="ui-shared__availability sg-tq70j6-base-stateOk"
+    class="ui-shared__availability sg-tq70j6-base-stateOk"
     data-test-id="availabilityText: Available"
   >
     Available
   </div>
-</Availability>
+</DocumentFragment>
 `;
 
 exports[`<Availability /> should render if state is "warning" 1`] = `
-<Availability
-  className=""
-  showWhenAvailable={false}
-  state="warning"
-  text="Only 5 left"
->
+<DocumentFragment>
   <div
-    className="ui-shared__availability sg-qjuldc-base-stateWarning"
+    class="ui-shared__availability sg-qjuldc-base-stateWarning"
     data-test-id="availabilityText: Only 5 left"
   >
     Only 5 left
   </div>
-</Availability>
+</DocumentFragment>
 `;
 
 exports[`<Availability /> should render if state is "warning" 2`] = `
-<Availability
-  className=""
-  showWhenAvailable={false}
-  state="alert"
-  text="Out of stock"
->
+<DocumentFragment>
   <div
-    className="ui-shared__availability sg-1ra5qp2-base-stateAlert"
+    class="ui-shared__availability sg-1ra5qp2-base-stateAlert"
     data-test-id="availabilityText: Out of stock"
   >
     Out of stock
   </div>
-</Availability>
+</DocumentFragment>
 `;

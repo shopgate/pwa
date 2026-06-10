@@ -1,39 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`engage > components > view > index should have structured content 1`] = `
+exports[`engage > components > view > index should initialize with visible route 1`] = `
 <section
-  aria-hidden={false}
-  className="sg-d7m3dj-root engage__view"
-  style={
-    {
-      "display": "flex",
-    }
-  }
+  aria-hidden="false"
+  class="sg-d7m3dj-root engage__view"
+  style="display: flex;"
 >
-  <_default
-    noContentPortal={false}
-    noKeyboardListener={false}
-    noScrollOnKeyboard={false}
-    setContentRef={[MockFunction]}
+  <div
+    data-testid="view-content"
   >
     <div>
       Page #1
     </div>
-  </_default>
-</section>
-`;
-
-exports[`engage > components > view > index should initialize with visible route 1`] = `
-<ViewContainer
-  aria-hidden={false}
-  background="var(--sg-palette-background-default)"
-  noContentPortal={false}
-  noKeyboardListener={false}
-  noScrollOnKeyboard={false}
-  visible={true}
->
-  <div>
-    Page #1
   </div>
-</ViewContainer>
+</section>
 `;

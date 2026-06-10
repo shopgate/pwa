@@ -1,159 +1,163 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SelectContextChoices /> should render select with 1 selected option 1`] = `
-<InfoField
-  className=""
-  errorText=""
-  hasUnderline={true}
-  hasValue={true}
-  label=""
-  leftElement={null}
-  rightElement={
-    <Chevron
-      className="sg-pez732-chevron"
-    />
-  }
-  showErrorText={true}
->
+<DocumentFragment>
   <div
-    aria-hidden={true}
-    className="sg-1jjwasa-toggle"
-    onClick={[Function]}
-    role="button"
-    tabIndex="0"
+    class="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
-    Germany
+    <ul
+      class="common__grid sg-190r8b9-root-noWrap"
+    >
+      <li
+        class="info-field sg-1g6kt2h-root-info"
+      >
+        <div
+          aria-hidden="true"
+          class="sg-1jjwasa-toggle"
+          role="button"
+          tabindex="0"
+        >
+          Germany
+        </div>
+        <div
+          class="sg-p4e9kp-container ui-shared__context-menu"
+          data-test-id="contextMenu"
+        />
+      </li>
+      <li
+        class="sg-1wmo01y-root-element"
+      >
+        <svg
+          class="common__icon sg-1ix3ppp-root-chevron"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </li>
+    </ul>
+    <div
+      class="sg-titfmn-underlineWrapper underline"
+    >
+      <div
+        class="sg-ll3grb-underline"
+        style="transform: scale3d(0,1,1);"
+      />
+    </div>
   </div>
-  <ContextMenu
-    classes={
-      {
-        "button": "",
-        "container": "",
-      }
-    }
-    disabled={false}
-    isOpened={false}
-    onStateChange={[Function]}
-    scroll={true}
-    showToggle={false}
-  >
-    <Item
-      autoClose={false}
-      className="sg-e3edmo-itemSelected"
-      disabled={false}
-      key="DE"
-      onClick={[Function]}
-    >
-      Germany
-    </Item>
-    <Item
-      autoClose={false}
-      className=""
-      disabled={false}
-      key="US"
-      onClick={[Function]}
-    >
-      United states
-    </Item>
-  </ContextMenu>
-</InfoField>
+</DocumentFragment>
 `;
 
 exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
-<InfoField
-  className=""
-  errorText=""
-  hasUnderline={true}
-  hasValue={true}
-  label=""
-  leftElement={null}
-  rightElement={
-    <Chevron
-      className="sg-pez732-chevron"
-    />
-  }
-  showErrorText={true}
->
+<DocumentFragment>
   <div
-    aria-hidden={true}
-    className="sg-1jjwasa-toggle"
-    onClick={[Function]}
-    role="button"
-    tabIndex="0"
+    class="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
-    common.please_choose
+    <ul
+      class="common__grid sg-190r8b9-root-noWrap"
+    >
+      <li
+        class="info-field sg-1g6kt2h-root-info"
+      >
+        <div
+          aria-hidden="true"
+          class="sg-1jjwasa-toggle"
+          role="button"
+          tabindex="0"
+        >
+          common.please_choose
+        </div>
+        <div
+          class="sg-p4e9kp-container ui-shared__context-menu"
+          data-test-id="contextMenu"
+        />
+      </li>
+      <li
+        class="sg-1wmo01y-root-element"
+      >
+        <svg
+          class="common__icon sg-1ix3ppp-root-chevron"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </li>
+    </ul>
+    <div
+      class="sg-titfmn-underlineWrapper underline"
+    >
+      <div
+        class="sg-ll3grb-underline"
+        style="transform: scale3d(0,1,1);"
+      />
+    </div>
   </div>
-  <ContextMenu
-    classes={
-      {
-        "button": "",
-        "container": "",
-      }
-    }
-    disabled={false}
-    isOpened={false}
-    onStateChange={[Function]}
-    scroll={true}
-    showToggle={false}
-  >
-    <Item
-      autoClose={false}
-      className=""
-      disabled={false}
-      key="DE"
-      onClick={[Function]}
-    >
-      Germany
-    </Item>
-    <Item
-      autoClose={false}
-      className=""
-      disabled={false}
-      key="US"
-      onClick={[Function]}
-    >
-      United states
-    </Item>
-  </ContextMenu>
-</InfoField>
+</DocumentFragment>
 `;
 
 exports[`<SelectContextChoices /> should render select with no options 1`] = `
-<InfoField
-  className=""
-  errorText=""
-  hasUnderline={true}
-  hasValue={true}
-  label=""
-  leftElement={null}
-  rightElement={
-    <Chevron
-      className="sg-pez732-chevron"
-    />
-  }
-  showErrorText={true}
->
+<DocumentFragment>
   <div
-    aria-hidden={true}
-    className="sg-1jjwasa-toggle"
-    onClick={[Function]}
-    role="button"
-    tabIndex="0"
+    class="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
-    common.please_choose
+    <ul
+      class="common__grid sg-190r8b9-root-noWrap"
+    >
+      <li
+        class="info-field sg-1g6kt2h-root-info"
+      >
+        <div
+          aria-hidden="true"
+          class="sg-1jjwasa-toggle"
+          role="button"
+          tabindex="0"
+        >
+          common.please_choose
+        </div>
+        <div
+          class="sg-p4e9kp-container ui-shared__context-menu"
+          data-test-id="contextMenu"
+        />
+      </li>
+      <li
+        class="sg-1wmo01y-root-element"
+      >
+        <svg
+          class="common__icon sg-1ix3ppp-root-chevron"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+          />
+          <path
+            d="M0 0h24v24H0z"
+            fill="none"
+          />
+        </svg>
+      </li>
+    </ul>
+    <div
+      class="sg-titfmn-underlineWrapper underline"
+    >
+      <div
+        class="sg-ll3grb-underline"
+        style="transform: scale3d(0,1,1);"
+      />
+    </div>
   </div>
-  <ContextMenu
-    classes={
-      {
-        "button": "",
-        "container": "",
-      }
-    }
-    disabled={false}
-    isOpened={false}
-    onStateChange={[Function]}
-    scroll={true}
-    showToggle={false}
-  />
-</InfoField>
+</DocumentFragment>
 `;

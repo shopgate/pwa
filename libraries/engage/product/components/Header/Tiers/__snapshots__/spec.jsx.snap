@@ -1,119 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Tiers /> Rendering with data should render tier prices when tier prices are available 1`] = `
-<Fragment>
-  <Portal
-    name="product.tiers.before"
-    props={null}
-  />
-  <Portal
-    name="product.tiers"
-    props={null}
+<DocumentFragment>
+  <div
+    class="sg-1du56tt-wrapper engage__product__header__tiers"
   >
-    <div
-      className="sg-1du56tt-wrapper engage__product__header__tiers"
+    <span
+      class="sg-myao6a-tier"
+      role="text"
     >
-      <Tier
-        key="1_2_92.5"
-        price={
-          {
-            "currency": "USD",
-            "tiers": [
-              {
-                "from": 1,
-                "to": 2,
-                "unitPrice": 92.5,
-              },
-              {
-                "from": 3,
-                "to": 5,
-                "unitPrice": 77.5,
-              },
-              {
-                "from": 6,
-                "to": null,
-                "unitPrice": 68.5,
-              },
-            ],
-          }
-        }
-        tier={
-          {
-            "from": 1,
-            "to": 2,
-            "unitPrice": 92.5,
-          }
-        }
-      />
-      <Tier
-        key="3_5_77.5"
-        price={
-          {
-            "currency": "USD",
-            "tiers": [
-              {
-                "from": 1,
-                "to": 2,
-                "unitPrice": 92.5,
-              },
-              {
-                "from": 3,
-                "to": 5,
-                "unitPrice": 77.5,
-              },
-              {
-                "from": 6,
-                "to": null,
-                "unitPrice": 68.5,
-              },
-            ],
-          }
-        }
-        tier={
-          {
-            "from": 3,
-            "to": 5,
-            "unitPrice": 77.5,
-          }
-        }
-      />
-      <Tier
-        key="6__68.5"
-        price={
-          {
-            "currency": "USD",
-            "tiers": [
-              {
-                "from": 1,
-                "to": 2,
-                "unitPrice": 92.5,
-              },
-              {
-                "from": 3,
-                "to": 5,
-                "unitPrice": 77.5,
-              },
-              {
-                "from": 6,
-                "to": null,
-                "unitPrice": 68.5,
-              },
-            ],
-          }
-        }
-        tier={
-          {
-            "from": 6,
-            "to": null,
-            "unitPrice": 68.5,
-          }
-        }
-      />
-    </div>
-  </Portal>
-  <Portal
-    name="product.tiers.after"
-    props={null}
-  />
-</Fragment>
+      price.tier.range
+      <span
+        class="sg-z2q7om-price"
+      >
+        p
+      </span>
+    </span>
+    <span
+      class="sg-myao6a-tier"
+      role="text"
+    >
+      price.tier.range
+      <span
+        class="sg-z2q7om-price"
+      >
+        p
+      </span>
+    </span>
+  </div>
+</DocumentFragment>
 `;
