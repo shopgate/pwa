@@ -98,7 +98,7 @@ const useStyles = makeStyles()(theme => ({
   inputIcon: {
     padding: 0,
     margin: '0 8px',
-    color: theme.palette.grey.medium,
+    color: theme.palette.grey.dark,
     fontSize: '1.23rem',
     flexShrink: 0,
     outline: 0,

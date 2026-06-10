@@ -4,7 +4,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   body: {
-    color: theme.palette.text.primary,
+    color: theme.palette.common.black,
     flexGrow: 1,
     fontSize: '13px',
     textAlign: 'center',

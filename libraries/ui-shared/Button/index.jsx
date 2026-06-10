@@ -59,35 +59,41 @@ const useStyles = makeStyles()((theme, { type, flat, disabled }) => {
 
   if (type === 'simple') {
     return disabled
-      ? pairFromColors(theme.palette.grey.medium, theme.palette.grey.light, theme)
-      : pairFromColors(theme.palette.grey.dark, theme.palette.grey.light, theme);
+      ? pairFromColors(
+        theme.palette.action.disabled, theme.palette.action.disabledBackground, theme
+      )
+      : pairFromColors(theme.palette.common.black, theme.palette.grey.light, theme);
   }
 
   if (type === 'regular') {
     return disabled
-      ? pairFromColors(theme.palette.grey.medium, null, theme)
-      : pairFromColors(theme.palette.grey.dark, null, theme);
+      ? pairFromColors(theme.palette.action.disabled, null, theme)
+      : pairFromColors(theme.palette.common.black, null, theme);
   }
 
   if (type === 'secondary') {
     if (!flat) {
       return disabled
-        ? pairFromColors(theme.palette.grey.medium, theme.palette.grey.light, theme)
+        ? pairFromColors(
+          theme.palette.action.disabled, theme.palette.action.disabledBackground, theme
+        )
         : pairFromColors(theme.palette.primary.contrastText, theme.palette.primary.main, theme);
     }
     return disabled
-      ? pairFromColors(theme.palette.grey.medium, null, theme)
+      ? pairFromColors(theme.palette.action.disabled, null, theme)
       : pairFromColors(theme.palette.primary.main, null, theme);
   }
 
   if (!flat) {
     return disabled
-      ? pairFromColors(theme.palette.grey.medium, theme.palette.grey.light, theme)
+      ? pairFromColors(
+        theme.palette.action.disabled, theme.palette.action.disabledBackground, theme
+      )
       : pairFromColors(theme.palette.secondary.contrastText, theme.palette.secondary.main, theme);
   }
 
   return disabled
-    ? pairFromColors(theme.palette.grey.medium, null, theme)
+    ? pairFromColors(theme.palette.action.disabled, null, theme)
     : pairFromColors(theme.palette.secondary.main, null, theme);
 });
 

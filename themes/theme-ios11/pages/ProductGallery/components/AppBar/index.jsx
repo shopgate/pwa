@@ -25,7 +25,7 @@ const GalleryAppBar = ({ goBack }) => {
   return (
     <DefaultBar
       classes={{ outer: classes.outer }}
-      backgroundColor={theme.palette.common.black}
+      backgroundColor="rgba(0, 0, 0, 0)"
       textColor={theme.palette.common.white}
       left={<AppBar.Icon key="left" icon={ArrowIcon} onClick={goBack} shadow />}
     />
