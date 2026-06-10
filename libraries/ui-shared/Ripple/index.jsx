@@ -211,7 +211,7 @@ Ripple.propTypes = {
 
 Ripple.defaultProps = {
   className: '',
-  color: '--sg-palette-common-black',
+  color: 'var(--sg-palette-common-black)',
   disabled: false,
   fill: false,
   onClick: () => {},

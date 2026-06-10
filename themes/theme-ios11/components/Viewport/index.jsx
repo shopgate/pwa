@@ -9,7 +9,7 @@ import TabBar from 'Components/TabBar';
 
 injectGlobal({
   html: {
-    '--page-background-color': '--sg-palette-background-default',
+    '--page-background-color': 'var(--sg-palette-background-default)',
     '--tabbar-height': '0px',
     '--app-bar-height': '0px',
   },

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()({
   container: {
     position: 'relative',
   },
@@ -19,7 +19,7 @@ const useStyles = makeStyles()(() => ({
     transition: 'background 100ms cubic-bezier(0.25, 0.1, 0.25, 1)',
     zIndex: 0,
   },
-}));
+});
 
 /**
  * Renders a glowing component that is visible when the user interacts with the element.

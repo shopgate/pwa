@@ -89,7 +89,7 @@ IndicatorCircle.propTypes = {
 };
 
 IndicatorCircle.defaultProps = {
-  color: '--sg-palette-secondary-main',
+  color: 'var(--sg-palette-secondary-main)',
   paused: false,
   size: 32,
   strokeWidth: 3,

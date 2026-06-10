@@ -228,7 +228,7 @@ const AddToCartButton = ({
       {isLoading && (
         <div className={cx(classes.icon, classes.spinnerIcon)} style={spinnerInlineStyle}>
           <IndicatorCircle
-            color={theme.contrastColor(theme.palette.primary.main)}
+            color={theme.contrastColor(theme.components.ctaButton.background)}
             strokeWidth={5}
             paused={!isLoading}
           />

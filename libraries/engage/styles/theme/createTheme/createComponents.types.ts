@@ -188,13 +188,11 @@ export const componentsSchema = {
   },
   swiper: {
     vars: {
-      pagination: {
-        bulletColor: '',
-        bulletActiveColor: '',
-        fractionBackground: '',
-        progressbarBackground: '',
-        progressbarActiveColor: '',
-      },
+      paginationBulletColor: '',
+      paginationBulletActiveColor: '',
+      paginationFractionBackground: '',
+      paginationProgressbarBackground: '',
+      paginationProgressbarActiveColor: '',
     },
   },
 } as const;
@@ -273,13 +271,11 @@ export const componentsDefaults = {
   },
   swiper: {
     vars: {
-      pagination: {
-        bulletColor: t => t.palette.grey.medium,
-        bulletActiveColor: t => t.palette.grey.dark,
-        fractionBackground: t => t.palette.grey.light,
-        progressbarBackground: t => t.palette.grey.light,
-        progressbarActiveColor: t => t.palette.common.black,
-      },
+      paginationBulletColor: t => t.palette.grey.medium,
+      paginationBulletActiveColor: t => t.palette.grey.dark,
+      paginationFractionBackground: t => t.palette.grey.light,
+      paginationProgressbarBackground: t => t.palette.grey.light,
+      paginationProgressbarActiveColor: t => t.palette.common.black,
     },
   },
 } satisfies ComponentsDefaults;

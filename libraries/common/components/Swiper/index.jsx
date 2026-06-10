@@ -35,7 +35,7 @@ const useStyles = makeStyles()(theme => ({
   },
   innerContainer: {
     overflow: 'hidden',
-    '--swiper-navigation-color': theme.components.swiper.pagination.bulletColor,
+    '--swiper-navigation-color': theme.components.swiper.paginationBulletColor,
     '& .swiper-wrapper': {
       alignItems: 'stretch',
     },
@@ -44,7 +44,7 @@ const useStyles = makeStyles()(theme => ({
     },
     '& .swiper-pagination': {
       '& .swiper-pagination-bullet': {
-        background: theme.components.swiper.pagination.bulletActiveColor,
+        background: theme.components.swiper.paginationBulletActiveColor,
         opacity: '.5',
         margin: '0 4px',
         transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
@@ -59,7 +59,7 @@ const useStyles = makeStyles()(theme => ({
       right: 0,
       bottom: 'auto',
       fontSize: 12,
-      background: theme.components.swiper.pagination.fractionBackground,
+      background: theme.components.swiper.paginationFractionBackground,
       borderRadius: '50px',
       width: 'fit-content',
       padding: '4px 8px',
@@ -67,9 +67,9 @@ const useStyles = makeStyles()(theme => ({
       transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
     },
     '& .swiper-pagination-progressbar': {
-      background: theme.components.swiper.pagination.progressbarBackground,
+      background: theme.components.swiper.paginationProgressbarBackground,
       '& .swiper-pagination-progressbar-fill': {
-        background: theme.components.swiper.pagination.progressbarActiveColor,
+        background: theme.components.swiper.paginationProgressbarActiveColor,
       },
     },
   },

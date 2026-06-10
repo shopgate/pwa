@@ -118,7 +118,7 @@ RippleAnimation.propTypes = {
 };
 
 RippleAnimation.defaultProps = {
-  color: '--sg-palette-common-black',
+  color: 'var(--sg-palette-common-black)',
   duration: 300,
   onComplete: () => {},
   size: 48,

@@ -138,13 +138,13 @@ const UnitQuantityPicker = ({
     }
 
     return {
-      buttonColor: theme.palette.grey.light,
+      buttonColor: theme.contrastColor(theme.palette.primary.main),
       buttonBgColor: theme.palette.primary.main,
       inputColor: theme.palette.text.primary,
       inputBgColor: theme.palette.grey.light,
       showLabel: true,
     };
-  }, [theme.palette.grey.light, theme.palette.primary.main, theme.palette.text.primary]);
+  }, [theme]);
   const {
     buttonColor = widgetDefaults.buttonColor,
     buttonBgColor = widgetDefaults.buttonBgColor,

@@ -27,21 +27,20 @@ const consentContainer = css({
   justifyContent: 'center',
   textAlign: 'center',
   gap: 16,
-  background: 'var(--sg-palette-grey-light)',
-  border: '1px solid var(--sg-palette-border-medium)',
-  // Add a tiny little border radius to make the message container look nice with padding
+  background: '--sg-palette-grey-light',
+  border: '1px solid --sg-components-border-medium',
   borderRadius: 4,
   top: 0,
 });
 
 const consentLink = css({
   textAlign: 'center',
-  color: 'var(--sg-palette-primary)',
+  color: '--sg-palette-primary',
   fontWeight: 500,
 }).toString();
 
 const consentIcon = css({
-  fill: 'var(--sg-palette-grey-medium)',
+  fill: '--sg-palette-grey-medium',
   height: 40,
 });
 

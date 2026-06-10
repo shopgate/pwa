@@ -284,7 +284,7 @@ const defaultResolutions = [
 
 Image.defaultProps = {
   alt: null,
-  backgroundColor: '--sg-palette-background-emphasized',
+  backgroundColor: 'var(--sg-palette-background-emphasized)',
   className: '',
   classNameImg: '',
   forcePlaceholder: false,

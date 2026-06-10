@@ -8,7 +8,7 @@ const useStyles = makeStyles()(theme => ({
   underlineWrapper: {
     position: 'relative',
     width: '100%',
-    borderBottom: `1px solid ${theme.components.border.medium}`,
+    borderBottom: `1px solid ${theme.components.border.dark}`,
     marginTop: 2,
     marginBottom: 7,
   },

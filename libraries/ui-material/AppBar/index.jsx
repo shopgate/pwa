@@ -109,13 +109,13 @@ AppBar.propTypes = {
 };
 
 AppBar.defaultProps = {
-  backgroundColor: '--sg-palette-common-white',
+  backgroundColor: 'var(--sg-palette-common-white)',
   below: null,
   center: null,
   left: null,
   right: null,
   shadow: true,
-  textColor: '--sg-palette-common-black',
+  textColor: 'var(--sg-palette-common-black)',
 };
 
 AppBar.Field = Field;

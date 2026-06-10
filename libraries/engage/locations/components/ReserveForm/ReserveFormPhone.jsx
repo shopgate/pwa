@@ -35,7 +35,7 @@ const useStyles = makeStyles()(theme => ({
       lineHeight: '1.1875rem',
       borderRadius: 0,
       paddingBottom: theme.spacing(0.75),
-      borderBottom: `1px solid ${theme.components.border.medium}`,
+      borderBottom: `1px solid ${theme.components.border.dark}`,
       '&:focus': {
         borderBottom: `2px solid ${theme.palette.primary.main}`,
         paddingBottom: theme.spacing(0.75) - 1,

@@ -97,13 +97,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         swiper: {
           vars: {
-            pagination: {
-              bulletColor: '#b5b5b5',
-              bulletActiveColor: '#747474',
-              fractionBackground: '#F2F2F2',
-              progressbarBackground: '#F2F2F2',
-              progressbarActiveColor: '#000000',
-            },
+            paginationBulletColor: '#b5b5b5',
+            paginationBulletActiveColor: '#747474',
+            paginationFractionBackground: '#F2F2F2',
+            paginationProgressbarBackground: '#F2F2F2',
+            paginationProgressbarActiveColor: '#000000',
           },
         },
       },

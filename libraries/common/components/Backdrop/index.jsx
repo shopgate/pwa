@@ -130,7 +130,7 @@ Backdrop.propTypes = {
 
 Backdrop.defaultProps = {
   className: '',
-  color: '--sg-palette-common-black',
+  color: 'var(--sg-palette-common-black)',
   duration: 200,
   isVisible: false,
   level: 2,
