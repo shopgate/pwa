@@ -27,7 +27,7 @@ const consentContainer = css({
   justifyContent: 'center',
   textAlign: 'center',
   gap: 16,
-  background: '--sg-palette-grey-light',
+  background: 'var(--sg-palette-grey-light)',
   border: '1px solid --sg-components-border-medium',
   borderRadius: 4,
   top: 0,
@@ -35,12 +35,12 @@ const consentContainer = css({
 
 const consentLink = css({
   textAlign: 'center',
-  color: '--sg-palette-primary',
+  color: 'var(--sg-palette-primary-main)',
   fontWeight: 500,
 }).toString();
 
 const consentIcon = css({
-  fill: '--sg-palette-grey-medium',
+  fill: 'var(--sg-palette-grey-medium)',
   height: 40,
 });
 
