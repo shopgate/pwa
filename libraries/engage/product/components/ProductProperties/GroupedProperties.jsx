@@ -9,7 +9,7 @@ import Wrapper from './Wrapper';
 
 const useStyles = makeStyles()(theme => ({
   accordion: {
-    borderTop: `3px solid ${theme.palette.background.default}`,
+    borderTop: `3px solid ${theme.palette.background.surface}`,
   },
 }));
 

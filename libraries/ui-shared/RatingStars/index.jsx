@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import times from 'lodash/times';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -96,7 +96,7 @@ const RatingStars = ({
   );
   const rootClassName = cx(classes.container, className, 'ui-shared__rating-stars');
 
-  const emptyStars = [
+  const emptyStars = useMemo(() => [
     ...times(numStars, (i) => {
       const pos = i + 1;
       const starProps = {
@@ -115,9 +115,9 @@ const RatingStars = ({
         </div>
       );
     }),
-  ];
+  ], [iconClassName, isSelectable, getTextualCTA, handleSelection, size]);
 
-  const filledStars = [
+  const filledStars = useMemo(() => [
     ...times(numFullStars, (i) => {
       const pos = i + 1;
       const starProps = {
@@ -141,7 +141,7 @@ const RatingStars = ({
         <StarHalfIcon size={size} />
       </div>
     )),
-  ];
+  ], [iconClassName, numFullStars, numHalfStars, size, handleSelection, isSelectable]);
 
   return (
     <div

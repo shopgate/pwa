@@ -61,7 +61,7 @@ const useStyles = makeStyles()(theme => ({
   },
   container: {
     bottom: 0,
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     width: '100vw',
     [responsiveMediaQuery('<xl', { appOnly: true })]: {
       maxWidth: 640,
@@ -215,7 +215,7 @@ const SheetView = ({
         <Backdrop
           isVisible={isOpen}
           level={4}
-          onClick={allowClose ? onClose : () => {}}
+          onClick={allowClose ? onClose : () => { }}
           opacity={20}
         />
       )}

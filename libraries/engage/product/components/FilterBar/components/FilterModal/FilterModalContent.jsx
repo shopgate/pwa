@@ -8,7 +8,7 @@ import Title from './FilterModalTitle';
 const useStyles = makeStyles()(theme => ({
   root: {
     zIndex: 1,
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     borderRadius: 4,
     minWidth: 300,
     [responsiveMediaQuery('>=md')]: {

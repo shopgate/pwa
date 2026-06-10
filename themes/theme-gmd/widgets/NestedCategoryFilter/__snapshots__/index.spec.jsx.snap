@@ -29,7 +29,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -170,7 +170,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -335,7 +335,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -516,7 +516,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -525,7 +525,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
+                          className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -994,7 +994,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -1135,7 +1135,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1309,7 +1309,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1465,7 +1465,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1662,7 +1662,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -1843,7 +1843,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -1852,7 +1852,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
+                          className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -2298,7 +2298,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -2481,7 +2481,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text="Widget Headline"
@@ -2662,7 +2662,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -2671,7 +2671,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
+                          className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -3157,7 +3157,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -3166,7 +3166,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
+                          className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={
@@ -3617,7 +3617,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text=""
@@ -3752,7 +3752,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -3917,7 +3917,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
     }
   >
     <div
-      className="sg-196h94r-container"
+      className="sg-1ao5o1c-container"
     >
       <Headline
         text=""
@@ -4092,7 +4092,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             "out": "sg-1uynekm-drawerAnimOut",
                           }
                         }
-                        className="sg-krhh1u-container"
+                        className="sg-1us1dh1-container"
                         isOpen={false}
                         onClose={[Function]}
                         onDidClose={[Function]}
@@ -4101,7 +4101,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       >
                         <div
                           aria-modal={true}
-                          className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
+                          className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
                           onAnimationEnd={[Function]}
                           role="dialog"
                           style={

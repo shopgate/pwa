@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
     maxHeight: `calc(100vh - ${outerGap * 2}px)`,
     borderRadius: 2,
     boxShadow: themeConfig.shadows.dialog,
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       width: `calc(80vh - ${outerGap * 2}px)`,
       maxHeight: `calc(80vh - ${outerGap * 2}px)`,

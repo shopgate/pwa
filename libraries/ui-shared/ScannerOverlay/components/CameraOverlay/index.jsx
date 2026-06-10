@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
       height: edgeHeight,
       position: 'absolute',
       borderStyle: 'solid',
-      borderColor: theme.palette.background.default,
+      borderColor: theme.palette.common.white,
     },
     ':before': {
       top: theme.spacing(8),

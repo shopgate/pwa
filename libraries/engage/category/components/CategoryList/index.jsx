@@ -13,7 +13,7 @@ import CategoryImage from '../CategoryImage';
 
 const useStyles = makeStyles()(theme => ({
   sheet: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
   },
   showAllProducts: {
     fontWeight: 700,
@@ -97,15 +97,15 @@ const CategoryList = ({
             }}
             testId={category.name}
             rightComponent={
-                showImages
-                  ? <CategoryImage className={classes.image} src={category.imageUrl} />
-                  : null
-              }
+              showImages
+                ? <CategoryImage className={classes.image} src={category.imageUrl} />
+                : null
+            }
             leftComponent={
-                showLeftSideImages
-                  ? <CategoryImage className={classes.image} src={category.imageUrl} />
-                  : null
-              }
+              showLeftSideImages
+                ? <CategoryImage className={classes.image} src={category.imageUrl} />
+                : null
+            }
             linkComponent={TextLink}
           />
         </Portal>

@@ -181,7 +181,7 @@ const ProductImage = (props) => {
         <Image
           {...props}
           className={showInnerShadow ? classes.innerShadow : ''}
-          backgroundColor={noBackground ? 'transparent' : theme.palette.background.default}
+          backgroundColor={noBackground ? 'transparent' : theme.palette.background.surface}
           onError={imageLoadingFailedHandler}
           aria-hidden={!alt}
         />

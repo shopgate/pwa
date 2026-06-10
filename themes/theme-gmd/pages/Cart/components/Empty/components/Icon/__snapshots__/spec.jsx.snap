@@ -6,7 +6,7 @@ exports[`<CartEmptyIcon /> should render 1`] = `
   xmlns="http://www.w3.org/2000/svg"
 >
   <circle
-    className="sg-6f6osg-background"
+    className="sg-12r7j0l-background"
     cx="104"
     cy="104"
     r="104"

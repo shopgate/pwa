@@ -1,13 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <Item /> should render 1`] = `
-<DocumentFragment>
-  <div
-    class="sg-1819393-item"
-  >
-    <div>
-      Some
-    </div>
+<div
+  className="sg-9io51f-item"
+>
+  <div>
+    Some
   </div>
-</DocumentFragment>
+</div>
 `;

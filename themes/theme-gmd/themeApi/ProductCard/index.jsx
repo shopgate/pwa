@@ -13,7 +13,7 @@ const shadowStyle = {
 
 const useStyles = makeStyles()(theme => ({
   root: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     borderRadius: 2,
     overflow: 'hidden',
     position: 'relative',

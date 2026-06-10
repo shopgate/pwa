@@ -5,7 +5,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()((theme, { columns }) => ({
   grid: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     padding: '0 16px',
     '&:not(:empty)': {
       marginTop: 16,

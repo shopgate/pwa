@@ -112,7 +112,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
           >
             <div
               aria-modal="true"
-              className="sg-g6j7j4-menu"
+              className="sg-o8yspb-menu"
               role="dialog"
               tabIndex="-1"
             >
@@ -186,7 +186,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] 
           >
             <div
               aria-modal="true"
-              className="sg-g6j7j4-menu"
+              className="sg-o8yspb-menu"
               role="dialog"
               tabIndex="-1"
             >

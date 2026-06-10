@@ -1,4 +1,3 @@
-import { getCSSCustomProp } from '@shopgate/engage/styles';
 import type { BaseTheme } from './index';
 
 type Theme = Omit<BaseTheme, 'components'>;
@@ -134,6 +133,11 @@ export const componentsSchema = {
       border: '',
     },
   },
+  separatorLine: {
+    vars: {
+      borderColor: '',
+    },
+  },
   ctaButton: {
     vars: {
       background: '',
@@ -191,17 +195,15 @@ export const componentsDefaults = {
       color: t => t.palette.primary.main,
     },
   },
-  button: {
-    vars: {
-      borderRadius: '4px',
-      color: t => t.palette.primary.main,
-      textColor: t => t.palette.primary.contrastText,
-    },
-  },
   input: {
     vars: {
       background: '#F2F2F2',
       border: '#CCCCCC',
+    },
+  },
+  separatorLine: {
+    vars: {
+      borderColor: '#EBEBEF',
     },
   },
   ctaButton: {
@@ -226,12 +228,12 @@ export const componentsDefaults = {
       boxShadow: '0 -1px 0 0 rgba(0, 0, 0, 0.1)',
       minHeight: '0px',
       border: '#E6E6E6',
-      inactive: '#747474)',
+      inactive: '#747474',
       active: t => t.palette.secondary.main,
       floatingBorderRadius: '16px',
       floatingBoxShadow: '0 0 12px rgba(0, 0, 0, 0.24)',
       floatingMinHeight: '59px',
-      badgeColor: ' #FFFFFF)',
+      badgeColor: '#FFFFFF',
       badgeBackground: t => t.palette.secondary.main,
       badgeBorderRadius: '8px',
       badgeTop: '-8px',

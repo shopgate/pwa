@@ -22,7 +22,7 @@ const { shadows } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     boxShadow: shadows.cart.paymentBar,
     position: 'relative',
     zIndex: 2,
@@ -42,7 +42,7 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
   },
   checkoutButtonContainer: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     alignItems: 'center',
     padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
     position: 'relative',
