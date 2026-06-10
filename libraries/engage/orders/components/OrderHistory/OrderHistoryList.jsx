@@ -11,7 +11,6 @@ const useStyles = makeStyles()(theme => ({
     fontWeight: 500,
   },
   list: {
-    background: theme.palette.background.emphasized,
     marginBottom: theme.spacing(-1.5),
   },
   cardContent: {

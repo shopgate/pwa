@@ -31,9 +31,7 @@ const FilterBar = ({ filters, categoryId }) => {
   }, []);
 
   const style = useMemo(() => (hasNewServices() ? {
-    background: active
-      ? theme.palette.background.emphasized
-      : theme.palette.background.emphasized,
+    background: theme.palette.background.emphasized,
     color: active
       ? theme.palette.primary.main
       : theme.palette.text.primary,

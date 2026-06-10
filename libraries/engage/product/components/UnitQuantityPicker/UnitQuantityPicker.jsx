@@ -40,7 +40,7 @@ const useStyles = makeStyles()((theme, {
       alignItems: 'center',
       width: '100%',
       fontSize: 16,
-      backgroundColor: theme.palette.background.emphasized,
+      backgroundColor: theme.components.input.background,
       ...(inputColor && { color: `${inputColor}` }),
       ...(inputBgColor && { backgroundColor: `${inputBgColor}` }),
       ' .quantity-label': {

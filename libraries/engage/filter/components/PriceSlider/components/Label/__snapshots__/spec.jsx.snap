@@ -67,7 +67,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_from"
-    className="sg-lqa8vn-editableField"
+    className="sg-1jp3och-editableField"
     id="priceMin"
     inputMode="numeric"
     name="priceMin"
@@ -86,7 +86,7 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_to"
-    className="sg-lqa8vn-editableField"
+    className="sg-1jp3och-editableField"
     id="priceMax"
     inputMode="numeric"
     name="priceMax"

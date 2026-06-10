@@ -9,7 +9,7 @@ const useStyles = makeStyles()(theme => ({
     fill: theme.palette.primary.main,
   },
   background: {
-    fill: theme.palette.background.default,
+    fill: theme.palette.background.surface,
   },
   shadow: {
     fill: colors.shade10,

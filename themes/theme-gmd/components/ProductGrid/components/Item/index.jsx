@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     fontSize: 14,
     height: '100%',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
@@ -70,13 +70,13 @@ const Item = ({ product, display }) => {
       >
         {isBeta() && product.featuredMedia
           ? <FeaturedMedia
-            type={product.featuredMedia.type}
-            url={product.featuredMedia.url}
+              type={product.featuredMedia.type}
+              url={product.featuredMedia.url}
           />
           : <ItemImage
-            productId={product.id}
-            name={product.name}
-            imageUrl={product.featuredImageBaseUrl}
+              productId={product.id}
+              name={product.name}
+              imageUrl={product.featuredImageBaseUrl}
           />}
       </Link>
       <ProductBadges location="productGrid" productId={product.id} className={classes.badgesPortal}>

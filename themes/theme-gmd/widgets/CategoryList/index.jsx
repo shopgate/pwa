@@ -10,7 +10,7 @@ import CategoryListDefault from './CategoryListDefault';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
   },
   grid: {
     [responsiveMediaQuery('>xs', { webOnly: true })]: {

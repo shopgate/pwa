@@ -8,7 +8,7 @@ const useStyles = makeStyles()(theme => ({
     fill: theme.palette.primary.main,
   },
   iconArrowEnabled: {
-    fill: theme.palette.background.surface,
+    fill: theme.contrastColor(theme.palette.primary.main),
   },
   iconCircleDisabled: {
     fill: theme.palette.grey.light,

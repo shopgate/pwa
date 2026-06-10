@@ -157,7 +157,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-krhh1u-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -166,7 +166,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-maosdv-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -592,7 +592,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-krhh1u-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -601,7 +601,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-maosdv-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1067,7 +1067,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-krhh1u-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1076,7 +1076,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-1q5l1fe-container-drawerAnimOut-container"
+                    className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1503,7 +1503,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-krhh1u-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1512,7 +1512,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-maosdv-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1920,7 +1920,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-krhh1u-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2108,7 +2108,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-krhh1u-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2290,7 +2290,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-krhh1u-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
