@@ -4,21 +4,21 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { ProductCard as EngageProductCard } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
+import { themeShadows } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
 
 const shadowStyle = {
   boxShadow: themeShadows.productCard,
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    background: themeColors.light,
+    background: theme.palette.background.surface,
     borderRadius: 10,
     overflow: 'hidden',
     position: 'relative',
   },
-});
+}));
 
 /**
  * ProductCard component for theme-ios11.

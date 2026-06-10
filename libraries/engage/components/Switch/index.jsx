@@ -2,9 +2,8 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { VisuallyHidden } from '@shopgate/engage/a11y/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     flex: 1,
@@ -31,22 +30,22 @@ const useStyles = makeStyles()({
       left: '2px',
       width: '16px',
       height: '16px',
-      backgroundColor: 'white',
+      backgroundColor: theme.palette.common.white,
       borderRadius: '50%',
       transition: 'transform 0.3s',
     },
     ':checked': {
-      backgroundColor: 'var(--color-secondary)',
+      backgroundColor: theme.palette.secondary.main,
     },
     ':checked::before': {
       transform: 'translateX(20px)',
     },
     ':disabled': {
-      backgroundColor: themeConfig.colors.shade7,
+      backgroundColor: theme.palette.action.disabledBackground,
       cursor: 'not-allowed',
     },
   },
-});
+}));
 
 /**
  * The Switch component.

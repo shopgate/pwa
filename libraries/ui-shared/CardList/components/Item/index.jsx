@@ -1,12 +1,11 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import ListItem from '@shopgate/pwa-common/components/List/components/Item';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   root: {
-    background: themeConfig.colors.light,
+    background: theme.palette.background.surface,
     marginBottom: theme.spacing(0.5),
     position: 'relative',
   },

@@ -5,18 +5,14 @@ import { I18n, ButtonLink } from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/engage/core/helpers';
 import { CATEGORY_PATH } from '@shopgate/engage/category';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 import { useRoute, usePrevious, useLocalStorage } from '@shopgate/engage/core/hooks';
 import { router } from '@virtuous/conductor';
 import CategoryPicker from './components/Picker';
 import { useNestedCategoryFilterWidget } from './hooks';
 import WidgetHeadline from '../../components/WidgetHeadline';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   container: {
-    background: colors.light,
     display: 'flex',
     flexDirection: 'column',
     paddingBottom: theme.spacing(2),
@@ -159,7 +155,7 @@ const NestedCategoryFilter = () => {
       {(showHeadline && headline) ? (
         <WidgetHeadline headline={headline} className="widget__nested-category-filter__headline" />
       ) : null}
-      { categoryPickers }
+      {categoryPickers}
       <div className={cx(classes.buttonContainer, 'widget__nested-category-filter__button-container')}>
         <ButtonLink
           className={cx(classes.button, 'widget__nested-category-filter__CTA-button')}

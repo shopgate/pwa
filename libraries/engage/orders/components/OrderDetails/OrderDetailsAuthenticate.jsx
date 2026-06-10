@@ -25,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
   },
   loginLink: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     ':hover': {
       textDecoration: 'underline',
     },

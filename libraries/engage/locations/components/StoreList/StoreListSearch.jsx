@@ -27,7 +27,7 @@ import { FULFILLMENT_SHEET_SEARCH } from '../../constants/Portals';
 const useStyles = makeStyles()(theme => ({
   container: {
     padding: '0 12px 8px 12px',
-    background: themeColors.light,
+    background: theme.palette.background.surface,
     display: 'grid',
     gridTemplateColumns: 'auto 1fr',
     gridTemplateRows: 'auto',
@@ -81,7 +81,7 @@ const useStyles = makeStyles()(theme => ({
     outline: 0,
   },
   inputContainer: {
-    background: themeColors.light,
+    background: theme.palette.background.surface,
     border: `1px solid ${themeColors.shade7}`,
     borderRadius: 4,
     display: 'flex',
@@ -274,8 +274,8 @@ function StoreListSearch({
 
         </div>
         <div className={classes.radiusCell}>
-          { isStoreFinder && (
-          <StoreListSearchRadius />
+          {isStoreFinder && (
+            <StoreListSearchRadius />
           )}
         </div>
       </div>

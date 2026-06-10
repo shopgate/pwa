@@ -4,7 +4,6 @@ import React, {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { showModal } from '@shopgate/engage/core/actions';
 import {
   Accordion,
@@ -20,14 +19,12 @@ import ListAccordionLabel from './ListAccordionLabel';
 import ListContent from './ListContent';
 import ListAccordionHeader from './ListAccordionHeader';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   root: {
     margin: '8px 8px 10px',
   },
   rootNoFavoritesLists: {
-    background: colors.light,
+    background: theme.palette.background.surface,
     flexGrow: 1,
     paddingBottom: theme.spacing(1),
     paddingLeft: '16px',

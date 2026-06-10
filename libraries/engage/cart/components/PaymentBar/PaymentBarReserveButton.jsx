@@ -2,26 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, SurroundPortals, RippleButton } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { FulfillmentSheet, STAGE_RESERVE_FORM } from '../../../locations';
 import { CartContext } from '../../cart.context';
 import connect from './PaymentBarReserveButton.connector';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     width: '100%',
-    background: 'var(--color-button-cta)',
-    color: 'var(--color-button-cta-contrast)!important',
+    background: theme.components.ctaButton.background,
+    color: `${theme.contrastColor(theme.components.ctaButton.background)}!important`,
   },
   disabledButton: {
     width: '100%',
-    background: colors.shade7,
-    color: `${colors.shade4}!important`,
+    background: theme.palette.action.disabledBackground,
+    color: `${theme.contrastColor(theme.palette.action.disabledBackground)}!important`,
   },
-});
+}));
 
 /**
  * The reserve button component.

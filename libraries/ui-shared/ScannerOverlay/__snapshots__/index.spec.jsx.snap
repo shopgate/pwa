@@ -17,7 +17,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
         props={null}
       >
         <div
-          className="sg-19szxml-root"
+          className="sg-8ytxrl-root"
         >
           <div />
         </div>

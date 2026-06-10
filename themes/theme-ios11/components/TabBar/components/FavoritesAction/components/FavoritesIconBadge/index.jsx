@@ -11,19 +11,19 @@ const defaultWidgetSettings = { showCounter: true };
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
-    background: 'var(--tab-bar-item-badge-background)',
-    color: 'var(--tab-bar-item-badge-color)',
+    background: theme.components.tabBar.badgeBackground,
+    color: theme.components.tabBar.badgeColor,
     fontSize: '0.7rem',
     lineHeight: 1.5,
     fontWeight: 'bold',
-    borderRadius: 'var(--tab-bar-item-badge-border-radius)',
+    borderRadius: theme.components.tabBar.badgeBorderRadius,
     height: theme.spacing(2),
-    top: 'var(--tab-bar-item-badge-top)',
+    top: theme.components.tabBar.badgeTop,
     paddingLeft: theme.spacing(0.5),
     paddingRight: theme.spacing(0.5),
     minWidth: theme.spacing(2),
     transform: 'translateX(-50%)',
-    left: 'var(--tab-bar-item-badge-left)',
+    left: theme.components.tabBar.badgeLeft,
   },
 }));
 

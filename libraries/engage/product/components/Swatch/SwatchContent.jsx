@@ -8,7 +8,7 @@ import { SurroundPortals } from '../../../components';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   swatch: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(12px, 1fr))',
@@ -29,7 +29,7 @@ const useStyles = makeStyles()(() => ({
     backgroundSize: 'cover',
   },
   itemSelected: {
-    borderColor: 'var(--color-secondary)',
+    borderColor: theme.palette.secondary.main,
   },
 }));
 

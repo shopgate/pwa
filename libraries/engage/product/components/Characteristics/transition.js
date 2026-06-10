@@ -1,10 +1,10 @@
-export default {
+export default theme => ({
   entering: {
-    background: 'var(--color-primary)',
-    color: 'var(--color-primary-contrast)',
+    background: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
   },
   entered: {
-    background: 'var(--color-primary)',
-    color: 'var(--color-primary-contrast)',
+    background: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
   },
-};
+});

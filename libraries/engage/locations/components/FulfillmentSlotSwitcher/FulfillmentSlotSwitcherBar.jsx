@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
   wrapper: {
     fontSize: '0.875rem',
     color: theme.palette.text.primary,
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
   },
   inner: {
     display: 'flex',

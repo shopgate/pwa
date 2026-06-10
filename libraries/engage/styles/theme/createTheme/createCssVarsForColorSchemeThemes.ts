@@ -95,6 +95,15 @@ export default function createCssVarsForColorSchemeThemes(
     };
 
     if (Array.isArray(styleSheets)) {
+      styleSheets.push({
+        ':root': {
+          // use double underscore to indicate that these are private variables
+          '--__l-threshold': '0.7',
+          '--__l': 'clamp(0, (l / var(--__l-threshold) - 1) * -infinity, 1)',
+          '--__a': 'clamp(0.87, (l / var(--__l-threshold) - 1) * -infinity, 1)', // 0.87 is the default alpha value for black text.
+        },
+      });
+
       // Create a style sheet selector for the color scheme with the generated CSS variables
       styleSheets.push({
         [`${schemeName === 'light' ? ':root, ' : ''}${getColorSchemeSelector(schemeName)}`]: {

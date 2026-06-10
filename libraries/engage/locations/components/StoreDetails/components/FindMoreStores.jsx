@@ -5,14 +5,14 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { STORE_FINDER_PATTERN } from '../../../constants';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     margin: '16px 0px',
   },
   title: {
     fontSize: '20px',
     fontWeight: '500',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     marginBottom: '8px',
   },
   inputCell: {
@@ -20,7 +20,7 @@ const useStyles = makeStyles()({
   },
   inputContainer: {
     position: 'relative',
-    background: themeColors.light,
+    background: theme.components.input.background,
     border: `1px solid ${themeColors.shade7}`,
     borderRadius: 4,
     display: 'flex',
@@ -48,7 +48,7 @@ const useStyles = makeStyles()({
     height: '100%',
     width: '100%',
   },
-});
+}));
 
 /**
  * Find more stores component.

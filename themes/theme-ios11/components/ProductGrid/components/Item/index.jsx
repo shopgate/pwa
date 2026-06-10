@@ -5,25 +5,22 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     display: 'block',
-    background: colors.light,
+    background: theme.palette.background.surface,
     height: '100%',
   },
   itemDetails: {
     position: 'relative',
   },
-});
+}));
 
 /**
  * The Product Grid Item component.

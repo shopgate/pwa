@@ -33,7 +33,7 @@ const useStyles = makeStyles()(theme => ({
     opacity: 0.5,
   },
   locationName: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   itemRow: {
     alignContent: 'stretch',

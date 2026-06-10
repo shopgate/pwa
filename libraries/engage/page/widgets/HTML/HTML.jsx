@@ -6,7 +6,7 @@ import { useHtmlWidget } from './hooks';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     ' h1, h2, h3, h4, h5, h6, p, ul, ol': {
       margin: '1rem 0',
@@ -65,10 +65,10 @@ const useStyles = makeStyles()({
       height: 0,
     },
     a: {
-      color: 'var(--color-primary)',
+      color: theme.palette.primary.main,
     },
   },
-});
+}));
 
 /**
  * The HtmlWidget component is used to display html code.

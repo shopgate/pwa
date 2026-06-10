@@ -31,22 +31,22 @@ const useStyles = makeStyles()((theme, { removable, invert }) => ({
     ...(hasNewServices()
       ? {
         backgroundColor: invert
-          ? 'var(--color-primary)'
-          : 'var(--color-primary-contrast)',
+          ? theme.palette.primary.main
+          : theme.palette.primary.contrastText,
         color: invert
-          ? 'var(--color-primary-contrast)'
-          : 'var(--color-primary)',
+          ? theme.palette.primary.contrastText
+          : theme.palette.primary.main,
       }
       : {
         backgroundColor: invert
-          ? 'var(--color-secondary)'
-          : 'var(--color-secondary-contrast)',
+          ? theme.palette.secondary.main
+          : theme.palette.secondary.contrastText,
         color: invert
-          ? 'var(--color-secondary-contrast)'
-          : 'var(--color-secondary)',
+          ? theme.palette.secondary.contrastText
+          : theme.palette.secondary.main,
         '--color-text-high-emphasis': invert
-          ? 'var(--color-secondary-contrast)'
-          : 'var(--color-secondary)',
+          ? theme.palette.secondary.contrastText
+          : theme.palette.secondary.main,
       }),
   },
   removeButton: {

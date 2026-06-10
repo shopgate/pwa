@@ -9,7 +9,7 @@ exports[`<PaymentBarCheckoutButton /> should render disabled button 1`] = `
   tabIndex={0}
 >
   <RippleButton
-    className="sg-1vdkzbz-disabledButton"
+    className="sg-vwgtgn-disabledButton"
     disabled={true}
     flat={false}
     rippleClassName=""
@@ -39,7 +39,7 @@ exports[`<PaymentBarCheckoutButton /> should render enabled button 1`] = `
   tabIndex={0}
 >
   <RippleButton
-    className="sg-16oxzxm-button"
+    className="sg-o4b7wh-button"
     disabled={false}
     flat={false}
     rippleClassName=""

@@ -96,7 +96,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
       <div>
         <button
           aria-hidden={true}
-          className="sg-16w71l0-button-hidden"
+          className="sg-1j0scw0-button-hidden"
           data-test-id="search-field-cancel"
           onClick={[Function]}
           type="button"
@@ -215,7 +215,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
       <div>
         <button
           aria-hidden={false}
-          className="sg-1a9h8im-button"
+          className="sg-3q8uc0-button"
           data-test-id="search-field-cancel"
           onClick={[Function]}
           type="button"

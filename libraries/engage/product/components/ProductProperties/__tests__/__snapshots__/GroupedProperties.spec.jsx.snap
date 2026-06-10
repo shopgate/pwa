@@ -3,7 +3,7 @@
 exports[`<GroupedProperties /> should render as expected 1`] = `
 [
   <div
-    className="sg-1wad7nn-accordion"
+    className="sg-1bugv3m-accordion"
     key="Group 1"
   >
     <Accordion
@@ -44,7 +44,7 @@ exports[`<GroupedProperties /> should render as expected 1`] = `
     </Accordion>
   </div>,
   <div
-    className="sg-1wad7nn-accordion"
+    className="sg-1bugv3m-accordion"
     key="Group 2"
   >
     <Accordion

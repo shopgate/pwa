@@ -2,7 +2,6 @@ import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import times from 'lodash/times';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import StarIcon from '../icons/StarIcon';
 import StarHalfIcon from '../icons/StarHalfIcon';
@@ -16,7 +15,7 @@ const ICON_SIZES = {
   large: '2.3em',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
     display: 'inline-block',
@@ -38,7 +37,7 @@ const useStyles = makeStyles()({
     marginRight: '0.23em',
   },
   emptyStars: {
-    color: themeConfig.colors.shade7,
+    color: theme.components.ratingStars.empty,
     display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
@@ -47,12 +46,12 @@ const useStyles = makeStyles()({
     position: 'absolute',
     left: 0,
     top: 0,
-    color: 'var(--color-primary)',
+    color: theme.components.ratingStars.filled,
     display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
   },
-});
+}));
 
 const numStars = 5;
 

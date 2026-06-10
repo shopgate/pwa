@@ -27,7 +27,7 @@ exports[`<ProductImage /> should apply an inner shadow to the image if turned of
       alt={null}
       animating={true}
       aria-hidden={true}
-      backgroundColor="#fff"
+      backgroundColor="var(--sg-palette-background-surface)"
       className="sg-ff8tgd-innerShadow"
       classNameImg=""
       forcePlaceholder={false}
@@ -107,7 +107,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       alt={null}
       animating={true}
       aria-hidden={true}
-      backgroundColor="#fff"
+      backgroundColor="var(--sg-palette-background-surface)"
       className=""
       classNameImg=""
       forcePlaceholder={false}
@@ -171,7 +171,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the image if turne
       alt={null}
       animating={true}
       aria-hidden={true}
-      backgroundColor="#fff"
+      backgroundColor="var(--sg-palette-background-surface)"
       className=""
       classNameImg=""
       forcePlaceholder={false}
@@ -253,7 +253,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
       data-test-id="placeHolder"
     >
       <Placeholder
-        className="sg-1k233yj-placeholder"
+        className="sg-1ut7txd-placeholder"
       />
     </div>
   </div>
@@ -287,7 +287,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
       alt={null}
       animating={true}
       aria-hidden={true}
-      backgroundColor="#fff"
+      backgroundColor="var(--sg-palette-background-surface)"
       className=""
       classNameImg=""
       forcePlaceholder={false}

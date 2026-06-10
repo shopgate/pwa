@@ -20,12 +20,12 @@ import AddMoreButton from './components/AddMoreButton';
 import CartItemsCount from './components/CartItemsCount';
 import connect from './connector';
 
-const { colors, shadows } = themeConfig;
+const { shadows } = themeConfig;
 const barHeight = 46;
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    background: colors.light,
+    background: theme.palette.background.surface,
     boxShadow: shadows.cart.paymentBar,
     position: 'relative',
     zIndex: 2,

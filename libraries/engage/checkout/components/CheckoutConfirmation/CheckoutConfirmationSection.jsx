@@ -34,10 +34,10 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: '1.25rem',
     margin: 0,
     padding: theme.spacing(2),
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     flex: '1 0 auto',
     ...(!isIOSTheme() ? {
-      background: 'var(--color-background-accent)',
+      background: theme.palette.background.emphasized,
       boxShadow: 'none',
     } : {}),
   },
@@ -68,7 +68,7 @@ const useStyles = makeStyles()(theme => ({
     marginLeft: 0,
     whiteSpace: 'pre-line',
     wordBreak: 'break-all',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   table: {
     color: theme.palette.text.primary,

@@ -28,7 +28,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
     >
       <div
         aria-hidden={true}
-        className="placeholder sg-mbc0wh-placeholder-placeholderInactive"
+        className="placeholder sg-8wydk2-placeholder-placeholderInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -56,7 +56,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       labelStatic={false}
     >
       <label
-        className="label floating sg-knep4g-label-labelFloating"
+        className="label floating sg-9ajhko-label-labelFloating"
         htmlFor="test-input"
       >
         <Translate
@@ -326,7 +326,7 @@ exports[`<FormElement /> should show the label 1`] = `
     >
       <div
         aria-hidden={true}
-        className="sg-1m15d1c-placeholder placeholder"
+        className="sg-14fp90p-placeholder placeholder"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -354,7 +354,7 @@ exports[`<FormElement /> should show the label 1`] = `
       labelStatic={false}
     >
       <label
-        className="label sg-smo66e-label-labelRegular"
+        className="label sg-98zxjx-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -424,7 +424,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
     >
       <div
         aria-hidden={true}
-        className="sg-1m15d1c-placeholder placeholder"
+        className="sg-14fp90p-placeholder placeholder"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}

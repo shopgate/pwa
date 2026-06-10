@@ -25,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     },
     ' a': {
       textDecoration: 'underline',
-      color: 'var(--color-primary)',
+      color: theme.palette.primary.main,
     },
   },
 }));

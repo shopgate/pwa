@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import formatDistance from '../../helpers/formatDistance';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   storeDistance: {
     whiteSpace: 'nowrap',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       fontSize: '0.875rem',
     },
   },
-});
+}));
 
 export const UNIT_SYSTEM_METRIC = 'metric';
 export const UNIT_SYSTEM_IMPERIAL = 'imperial';

@@ -6,12 +6,12 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   iconCircleEnabled: {
-    fill: 'var(--color-primary)',
+    fill: theme.palette.primary.main,
   },
   iconArrowEnabled: {
-    fill: colors.light,
+    fill: theme.contrastColor(theme.palette.primary.main),
   },
   iconCircleDisabled: {
     fill: colors.shade7,
@@ -19,7 +19,7 @@ const useStyles = makeStyles()({
   iconArrowDisabled: {
     fill: colors.shade4,
   },
-});
+}));
 
 /**
  * Coupon field add icon.

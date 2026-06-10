@@ -6,7 +6,7 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   greyStyle: {
     fontSize: 12,
     margin: '0 0.5em',
@@ -17,9 +17,9 @@ const useStyles = makeStyles()({
     fontSize: 12,
     margin: '0 0.5em',
     lineHeight: '2em',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

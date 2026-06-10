@@ -44,7 +44,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
@@ -157,7 +157,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -166,7 +166,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -295,15 +295,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             className="ui-shared__progress-bar"
                             style={
                               {
-                                "background": {
-                                  "color": [
-                                    92,
-                                    206,
-                                    227,
-                                  ],
-                                  "model": "rgb",
-                                  "valpha": 0.4,
-                                },
+                                "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                 "bottom": 0,
                                 "height": 4,
                                 "overflow": "hidden",
@@ -316,7 +308,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             }
                           >
                             <div
-                              className="sg-hmfbp5-innerElement"
+                              className="sg-1cn0v06-innerElement"
                             />
                           </div>
                         </Transition>
@@ -487,7 +479,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
@@ -600,7 +592,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -609,7 +601,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -738,15 +730,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             className="ui-shared__progress-bar"
                             style={
                               {
-                                "background": {
-                                  "color": [
-                                    92,
-                                    206,
-                                    227,
-                                  ],
-                                  "model": "rgb",
-                                  "valpha": 0.4,
-                                },
+                                "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                 "bottom": 0,
                                 "height": 4,
                                 "overflow": "hidden",
@@ -759,7 +743,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             }
                           >
                             <div
-                              className="sg-hmfbp5-innerElement"
+                              className="sg-1cn0v06-innerElement"
                             />
                           </div>
                         </Transition>
@@ -970,7 +954,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
@@ -1083,7 +1067,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1092,7 +1076,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
+                    className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1221,15 +1205,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             className="ui-shared__progress-bar"
                             style={
                               {
-                                "background": {
-                                  "color": [
-                                    92,
-                                    206,
-                                    227,
-                                  ],
-                                  "model": "rgb",
-                                  "valpha": 0.4,
-                                },
+                                "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                 "bottom": 0,
                                 "height": 4,
                                 "overflow": "hidden",
@@ -1242,7 +1218,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             }
                           >
                             <div
-                              className="sg-hmfbp5-innerElement"
+                              className="sg-1cn0v06-innerElement"
                             />
                           </div>
                         </Transition>
@@ -1414,7 +1390,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
@@ -1487,7 +1463,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                     class="sg-12f1i2r-content"
                   >
                     <button
-                      class="sg-y1zczv-buttonSelected"
+                      class="sg-130gbr2-buttonSelected"
                       type="button"
                       value="1-1"
                     >
@@ -1527,7 +1503,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1536,7 +1512,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1665,15 +1641,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             className="ui-shared__progress-bar"
                             style={
                               {
-                                "background": {
-                                  "color": [
-                                    92,
-                                    206,
-                                    227,
-                                  ],
-                                  "model": "rgb",
-                                  "valpha": 0.4,
-                                },
+                                "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                 "bottom": 0,
                                 "height": 4,
                                 "overflow": "hidden",
@@ -1686,7 +1654,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             }
                           >
                             <div
-                              className="sg-hmfbp5-innerElement"
+                              className="sg-1cn0v06-innerElement"
                             />
                           </div>
                         </Transition>
@@ -1715,7 +1683,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           selected={true}
                         >
                           <button
-                            className="sg-y1zczv-buttonSelected"
+                            className="sg-130gbr2-buttonSelected"
                             key="1-1"
                             onClick={[Function]}
                             type="button"
@@ -1856,7 +1824,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
       <div
         aria-disabled={true}
         aria-hidden={true}
-        className="sg-hlwkfd-button-buttonDisabled"
+        className="sg-3rn0gn-button-buttonDisabled"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
@@ -1952,7 +1920,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2044,7 +2012,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
@@ -2140,7 +2108,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2232,7 +2200,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
@@ -2322,7 +2290,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}

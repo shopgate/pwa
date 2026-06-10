@@ -125,6 +125,12 @@ export interface BaseTheme {
    * @returns A string representing the darkened color.
    */
   darken(color: string, coefficient?: number | string): string;
+  /**
+   * Calculates a contrast color (either black or white) based on the lightness of the input color.
+   * @param color The color to evaluate.
+   * @returns A string representing the contrast color (either black or white) for the input color.
+   */
+  contrastColor(color: string): string;
 }
 
 export interface Theme extends BaseTheme {

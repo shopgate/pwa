@@ -33,7 +33,7 @@ import connect from './connector';
 
 const SUGGESTIONS_MIN = 1;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     position: 'relative',
@@ -74,7 +74,7 @@ const useStyles = makeStyles()(() => ({
   },
   button: {
     lineHeight: '34px',
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     paddingTop: 0,
     paddingLeft: 16,
     paddingRight: 0,

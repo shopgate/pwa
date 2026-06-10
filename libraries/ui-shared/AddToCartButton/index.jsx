@@ -40,7 +40,7 @@ const springToBottomKeyframes = keyframes(spring(
   springOptions
 ));
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   springFromBottom: {
     animation: `${springFromBottomKeyframes} 600ms`,
   },
@@ -65,19 +65,19 @@ const useStyles = makeStyles()({
     marginLeft: -(themeConfig.variables.loadingIndicator.size) / 2,
   },
   buttonReady: {
-    background: `var(--color-button-cta, ${themeConfig.colors.cta})`,
-    color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
+    background: theme.components.ctaButton.background,
+    color: theme.contrastColor(theme.components.ctaButton.background),
   },
   buttonSuccess: {
-    background: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
-    color: `var(--color-button-cta, ${themeConfig.colors.cta})`,
+    background: theme.contrastColor(theme.components.ctaButton.background),
+    color: theme.components.ctaButton.background,
   },
   buttonDisabled: {
-    background: themeConfig.colors.shade5,
-    color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
+    background: theme.palette.action.disabledBackground,
+    color: theme.contrastColor(theme.palette.action.disabledBackground),
     boxShadow: themeConfig.shadows.buttons.disabled,
   },
-});
+}));
 
 /**
  * @param {number} bSize .

@@ -7,7 +7,7 @@ const useStyles = makeStyles()(theme => ({
     '& + span': {
       paddingTop: 0,
     },
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     display: 'block',
     fontSize: 12,
     padding: theme.spacing(2.5, 2),

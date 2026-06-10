@@ -6,12 +6,12 @@ import { generateGoogleMapsDirectionsUrl, i18n } from '@shopgate/engage/core';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {},
   buttonText: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props

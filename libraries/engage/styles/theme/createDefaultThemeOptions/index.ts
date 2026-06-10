@@ -28,11 +28,55 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           main: getCSSCustomProp('--color-state-ok'),
         },
         background: {
-          default: colors.background,
+          default: colors.light,
+          surface: colors.light,
+          emphasized: colors.placeholder || '#F2F2F2',
         },
         text: {
-          primary: getCSSCustomProp('--color-text-high-emphasis'),
-          secondary: getCSSCustomProp('--color-text-low-emphasis'),
+          primary: getCSSCustomProp('--color-text-high-emphasis') || '#1A1A1A',
+          secondary: getCSSCustomProp('--color-text-medium-emphasis') || '#808080',
+        },
+      },
+      components: {
+        input: {
+          vars: {
+            background: '#F2F2F2',
+            border: '#CCCCCC',
+          },
+        },
+        ctaButton: {
+          vars: {
+            background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
+          },
+        },
+        snackbar: {
+          vars: {
+            background: '#323232',
+          },
+        },
+        tabBar: {
+          vars: {
+            background: 'var(--tab-bar-background, #FFFFFF)',
+            boxShadow: 'var(--tab-bar-box-shadow, 0 -1px 0 0 rgba(0, 0, 0, 0.1))',
+            minHeight: 'var(--tab-bar-min-height, 0px)',
+            border: '#E6E6E6',
+            inactive: 'var(--tab-bar-item-default-color, #747474)',
+            active: `var(--tab-bar-item-highlighted-color, ${getCSSCustomProp('--color-secondary')})`,
+            floatingBorderRadius: 'var(--tab-bar-floating-border-radius, 16px)',
+            floatingBoxShadow: 'var(--tab-bar-floating-box-shadow, 0 0 12px rgba(0, 0, 0, 0.24))',
+            floatingMinHeight: 'var(--tab-bar-floating-min-height, 59px)',
+            badgeColor: 'var(--tab-bar-item-badge-color, #FFFFFF)',
+            badgeBackground: `var(--tab-bar-item-badge-background, ${getCSSCustomProp('--color-secondary')})`,
+            badgeBorderRadius: 'var(--tab-bar-item-badge-border-radius, 8px)',
+            badgeTop: 'var(--tab-bar-item-badge-top, -8px)',
+            badgeLeft: 'var(--tab-bar-item-badge-left, calc(50% + 20px))',
+          },
+        },
+        ratingStars: {
+          vars: {
+            filled: `var(--rating-stars-filled, ${getCSSCustomProp('--color-primary')})`,
+            empty: 'var(--rating-stars-empty, #CCCCCC)',
+          },
         },
       },
     },

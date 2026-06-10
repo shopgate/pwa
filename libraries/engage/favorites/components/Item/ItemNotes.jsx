@@ -15,7 +15,7 @@ const useStyles = makeStyles()(theme => ({
   },
   addCommentButton: {
     fontSize: 17,
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     fontWeight: 500,
     whiteSpace: 'nowrap',
     overflow: 'hidden',

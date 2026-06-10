@@ -35,7 +35,7 @@ exports[`<OptionInfo /> should render required element 1`] = `
 >
   <GridItem
     aria-hidden={true}
-    className="sg-10mixir-required"
+    className="sg-x40hcy-required"
     component="li"
     grow={0}
     shrink={1}

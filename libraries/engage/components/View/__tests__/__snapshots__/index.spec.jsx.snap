@@ -26,7 +26,7 @@ exports[`engage > components > view > index should have structured content 1`] =
 exports[`engage > components > view > index should initialize with visible route 1`] = `
 <ViewContainer
   aria-hidden={false}
-  background="#fff"
+  background="var(--sg-palette-background-default)"
   noContentPortal={false}
   noKeyboardListener={false}
   noScrollOnKeyboard={false}

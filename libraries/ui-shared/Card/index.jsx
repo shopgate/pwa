@@ -5,16 +5,16 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const isIOS = themeName.includes('ios');
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     boxShadow: themeConfig.shadows.productCard,
     margin: '5px 5px 10px',
     borderRadius: isIOS ? 10 : 2,
-    background: themeConfig.colors.light,
+    background: theme.palette.background.surface,
     overflow: 'hidden',
     position: 'relative',
   },
-});
+}));
 
 /**
  * Renders the card component.

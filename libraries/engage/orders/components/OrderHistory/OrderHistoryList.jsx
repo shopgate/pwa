@@ -2,19 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, CardList, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig, themeColors, themeName } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { getOrderDetailsRoute } from '../../helpers/orderDetails';
-
-const isIOS = themeName.includes('ios');
 
 const useStyles = makeStyles()(theme => ({
   orderNumber: {
     fontWeight: 500,
   },
   list: {
-    background: 'var(--color-background-accent)',
     marginBottom: theme.spacing(-1.5),
   },
   cardContent: {
@@ -35,10 +32,10 @@ const useStyles = makeStyles()(theme => ({
     ':last-of-type': {
       marginBottom: 0,
     },
-    background: themeColors.light,
+    background: theme.palette.background.surface,
     boxSizing: 'border-box',
     boxShadow: themeConfig.shadows.productCard,
-    borderRadius: isIOS ? 10 : 2,
+    borderRadius: 10,
   },
 }));
 
@@ -64,7 +61,7 @@ export const Row = (props) => {
               timestamp={new Date(props.submitDate).getTime()}
               format="short"
             />
-                &nbsp;
+            &nbsp;
             <I18n.Time
               timestamp={new Date(props.submitDate).getTime()}
               format="short"

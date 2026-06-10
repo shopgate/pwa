@@ -7,16 +7,16 @@ import { I18n, TimeIcon } from '@shopgate/engage/components';
 import { StoreDetailsLine } from './StoreDetailsLine';
 import { StoreOpeningHoursLine } from './StoreOpeningHoursLine';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   openingHours: {
     display: 'table',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   detailsSecondary: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: '0.75rem',
   },
-});
+}));
 
 /**
  * Renders the store's opening hours.
