@@ -179,7 +179,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       />
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -272,19 +272,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-mi87rq-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-13yvck0-button-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-10aenfk-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-17fplr3-root-button-button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
                       >
                         <div
-                          className="sg-1vtrm1i-content"
+                          className="sg-ig6wzi-content"
                         >
                           <Text
                             string="common.show_products"
@@ -457,7 +457,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             role="listbox"
                           >
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -473,7 +473,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                               </div>
                             </li>
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -562,7 +562,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   >
                                     <Ripple
                                       className="sg-8ivrra-closeIcon"
-                                      color="#000"
+                                      color="var(--sg-palette-common-black)"
                                       disabled={false}
                                       fill={false}
                                       onClick={[Function]}
@@ -694,14 +694,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                   role="listbox"
                                 >
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-0/.$1-1"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -736,14 +736,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-1/.$1-2"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -785,7 +785,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       </Drawer>
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -805,7 +805,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 aria-hidden="true"
                                 class="sg-1tlnanp-backdrop  common__backdrop"
                                 data-test-id="Backdrop"
-                                style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
+                                style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                               />,
                             }
                           }
@@ -825,7 +825,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             onClick={[Function]}
                             style={
                               {
-                                "background": "#000",
+                                "background": "var(--sg-palette-common-black)",
                                 "opacity": 0,
                                 "pointerEvents": "none",
                                 "transition": "opacity 200ms ease-out",
@@ -912,7 +912,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                       >
                         <Ripple
                           className="sg-fpa50s-contentWrapper"
-                          color="#000"
+                          color="var(--sg-palette-common-black)"
                           disabled={false}
                           fill={true}
                           onClick={[Function]}
@@ -1144,7 +1144,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       />
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -1318,7 +1318,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       />
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -1474,7 +1474,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       />
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -1580,7 +1580,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <Ripple
                           className="sg-fpa50s-contentWrapper"
-                          color="#000"
+                          color="var(--sg-palette-common-black)"
                           disabled={false}
                           fill={true}
                           onClick={[Function]}
@@ -1784,7 +1784,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             role="listbox"
                           >
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -1800,7 +1800,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               </div>
                             </li>
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -1889,7 +1889,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   >
                                     <Ripple
                                       className="sg-8ivrra-closeIcon"
-                                      color="#000"
+                                      color="var(--sg-palette-common-black)"
                                       disabled={false}
                                       fill={false}
                                       onClick={[Function]}
@@ -2021,14 +2021,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   role="listbox"
                                 >
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-0/.$1"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -2063,14 +2063,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-1/.$2"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -2112,7 +2112,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       </Drawer>
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -2132,7 +2132,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-hidden="true"
                                 class="sg-1tlnanp-backdrop  common__backdrop"
                                 data-test-id="Backdrop"
-                                style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
+                                style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                               />,
                             }
                           }
@@ -2152,7 +2152,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             onClick={[Function]}
                             style={
                               {
-                                "background": "#000",
+                                "background": "var(--sg-palette-common-black)",
                                 "opacity": 0,
                                 "pointerEvents": "none",
                                 "transition": "opacity 200ms ease-out",
@@ -2307,7 +2307,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       />
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -2400,19 +2400,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-mi87rq-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-13yvck0-button-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-10aenfk-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-17fplr3-root-button-button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
                       >
                         <div
-                          className="sg-1vtrm1i-content"
+                          className="sg-ig6wzi-content"
                         >
                           <Text
                             string="common.show_products"
@@ -2603,7 +2603,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             role="listbox"
                           >
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -2619,7 +2619,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               </div>
                             </li>
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -2708,7 +2708,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   >
                                     <Ripple
                                       className="sg-8ivrra-closeIcon"
-                                      color="#000"
+                                      color="var(--sg-palette-common-black)"
                                       disabled={false}
                                       fill={false}
                                       onClick={[Function]}
@@ -2840,14 +2840,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   role="listbox"
                                 >
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-0/.$1"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -2882,14 +2882,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-1/.$2"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -2931,7 +2931,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       </Drawer>
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -2951,7 +2951,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-hidden="true"
                                 class="sg-1tlnanp-backdrop  common__backdrop"
                                 data-test-id="Backdrop"
-                                style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
+                                style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                               />,
                             }
                           }
@@ -2971,7 +2971,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             onClick={[Function]}
                             style={
                               {
-                                "background": "#000",
+                                "background": "var(--sg-palette-common-black)",
                                 "opacity": 0,
                                 "pointerEvents": "none",
                                 "transition": "opacity 200ms ease-out",
@@ -3098,7 +3098,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             role="listbox"
                           >
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -3114,7 +3114,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                               </div>
                             </li>
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -3203,7 +3203,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   >
                                     <Ripple
                                       className="sg-8ivrra-closeIcon"
-                                      color="#000"
+                                      color="var(--sg-palette-common-black)"
                                       disabled={false}
                                       fill={false}
                                       onClick={[Function]}
@@ -3335,14 +3335,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                   role="listbox"
                                 >
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-0/.$1-1"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -3377,14 +3377,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-1/.$1-2"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -3426,7 +3426,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       </Drawer>
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -3446,7 +3446,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 aria-hidden="true"
                                 class="sg-1tlnanp-backdrop  common__backdrop"
                                 data-test-id="Backdrop"
-                                style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
+                                style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                               />,
                             }
                           }
@@ -3466,7 +3466,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             onClick={[Function]}
                             style={
                               {
-                                "background": "#000",
+                                "background": "var(--sg-palette-common-black)",
                                 "opacity": 0,
                                 "pointerEvents": "none",
                                 "transition": "opacity 200ms ease-out",
@@ -3553,7 +3553,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                       >
                         <Ripple
                           className="sg-fpa50s-contentWrapper"
-                          color="#000"
+                          color="var(--sg-palette-common-black)"
                           disabled={false}
                           fill={true}
                           onClick={[Function]}
@@ -3761,7 +3761,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       />
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -3854,19 +3854,19 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={true}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-mi87rq-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-13yvck0-button-button"
                       disabled={true}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-10aenfk-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-17fplr3-root-button-button"
                         data-test-id="Button"
                         disabled={true}
                         onClick={null}
                       >
                         <div
-                          className="sg-1vtrm1i-content"
+                          className="sg-ig6wzi-content"
                         >
                           <Text
                             string="common.show_products"
@@ -4033,7 +4033,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             role="listbox"
                           >
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -4049,7 +4049,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                               </div>
                             </li>
                             <li
-                              class="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                              class="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                               data-test-id="listItem"
                             >
                               <div
@@ -4138,7 +4138,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   >
                                     <Ripple
                                       className="sg-8ivrra-closeIcon"
-                                      color="#000"
+                                      color="var(--sg-palette-common-black)"
                                       disabled={false}
                                       fill={false}
                                       onClick={[Function]}
@@ -4270,14 +4270,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                   role="listbox"
                                 >
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-0/.$1"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -4312,14 +4312,14 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                     </li>
                                   </ListItem>
                                   <ListItem
-                                    className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+                                    className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
                                     isSelected={false}
                                     key="child-1/.$2"
                                     role={null}
                                     tabIndex={0}
                                   >
                                     <li
-                                      className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+                                      className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
                                       data-test-id="listItem"
                                       role={null}
                                     >
@@ -4361,7 +4361,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       </Drawer>
                       <Backdrop
                         className=""
-                        color="#000"
+                        color="var(--sg-palette-common-black)"
                         duration={200}
                         isVisible={false}
                         level={4}
@@ -4381,7 +4381,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 aria-hidden="true"
                                 class="sg-1tlnanp-backdrop  common__backdrop"
                                 data-test-id="Backdrop"
-                                style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
+                                style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                               />,
                             }
                           }
@@ -4401,7 +4401,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             onClick={[Function]}
                             style={
                               {
-                                "background": "#000",
+                                "background": "var(--sg-palette-common-black)",
                                 "opacity": 0,
                                 "pointerEvents": "none",
                                 "transition": "opacity 200ms ease-out",
@@ -4488,7 +4488,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                       >
                         <Ripple
                           className="sg-fpa50s-contentWrapper"
-                          color="#000"
+                          color="var(--sg-palette-common-black)"
                           disabled={false}
                           fill={true}
                           onClick={[Function]}

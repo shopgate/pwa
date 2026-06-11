@@ -111,7 +111,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -256,13 +256,13 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -408,7 +408,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -553,13 +553,13 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -662,7 +662,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -807,13 +807,13 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -959,7 +959,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -1104,13 +1104,13 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -1336,7 +1336,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -1481,13 +1481,13 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -1577,7 +1577,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -1722,13 +1722,13 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -1881,7 +1881,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -2026,13 +2026,13 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -2140,7 +2140,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -2285,13 +2285,13 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -2444,7 +2444,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -2589,13 +2589,13 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }
@@ -2703,7 +2703,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   visible={false}
                 >
                   <div
-                    className="hint sg-1kbq3o6-hint-hintInactive"
+                    className="hint sg-s916et-hint-hintInactive"
                   >
                     <Text
                       acceptPlainTextWithPlaceholders={false}
@@ -2848,13 +2848,13 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                 >
                   <div
                     aria-hidden={true}
-                    className="sg-titfmn-underlineWrapper underline"
+                    className="sg-1egfkgm-underlineWrapper underline"
                   >
                     <div
                       className="sg-ll3grb-underline"
                       style={
                         {
-                          "borderBottomColor": "var(--color-primary, #fa5400)",
+                          "borderBottomColor": "var(--sg-palette-primary-main)",
                           "transform": "scale3d(0,1,1)",
                         }
                       }

@@ -2,13 +2,13 @@
 
 exports[`<Image /> should render placeholders if forced to 1`] = `
 <div
-  class="sg-6uouo7-container common__image__container"
+  class="sg-nx1wh0-container common__image__container"
 />
 `;
 
 exports[`<Image /> should render placeholders if src is null 1`] = `
 <div
-  class="sg-6uouo7-container common__image__container"
+  class="sg-nx1wh0-container common__image__container"
 >
   <img
     aria-hidden="true"

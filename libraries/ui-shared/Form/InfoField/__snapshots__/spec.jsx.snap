@@ -15,7 +15,7 @@ exports[`<InfoField> should render info field 1`] = `
       </li>
     </ul>
     <div
-      class="sg-titfmn-underlineWrapper underline"
+      class="sg-1fzvff5-underlineWrapper underline"
     >
       <div
         class="sg-ll3grb-underline"

@@ -104,7 +104,7 @@ exports[`<Sheet /> should open 1`] = `
                   >
                     <Ripple
                       className="sg-8ivrra-closeIcon"
-                      color="#000"
+                      color="var(--sg-palette-common-black)"
                       disabled={false}
                       fill={false}
                       onClick={[Function]}
@@ -229,7 +229,7 @@ exports[`<Sheet /> should open 1`] = `
       </Drawer>
       <Backdrop
         className=""
-        color="#000"
+        color="var(--sg-palette-common-black)"
         duration={200}
         isVisible={true}
         level={4}
@@ -249,7 +249,7 @@ exports[`<Sheet /> should open 1`] = `
                 aria-hidden="true"
                 class="sg-1tlnanp-backdrop  common__backdrop"
                 data-test-id="Backdrop"
-                style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
               />,
             }
           }
@@ -269,7 +269,7 @@ exports[`<Sheet /> should open 1`] = `
             onClick={[Function]}
             style={
               {
-                "background": "#000",
+                "background": "var(--sg-palette-common-black)",
                 "opacity": 0.2,
                 "pointerEvents": "auto",
                 "transition": "opacity 200ms ease-out",
@@ -492,7 +492,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   >
                     <Ripple
                       className="sg-8ivrra-closeIcon"
-                      color="#000"
+                      color="var(--sg-palette-common-black)"
                       disabled={false}
                       fill={false}
                       onClick={[Function]}
@@ -617,7 +617,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       </Drawer>
       <Backdrop
         className=""
-        color="#000"
+        color="var(--sg-palette-common-black)"
         duration={200}
         isVisible={false}
         level={4}
@@ -652,7 +652,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             onClick={[Function]}
             style={
               {
-                "background": "#000",
+                "background": "var(--sg-palette-common-black)",
                 "opacity": 0,
                 "pointerEvents": "none",
                 "transition": "opacity 200ms ease-out",

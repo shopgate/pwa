@@ -17,7 +17,7 @@ exports[`RadioButton should render selected RadioButton 1`] = `
     onCheck={[Function]}
     uncheckedIcon={
       <RadioUnchecked
-        className="sg-11cpk1a-uncheckedIcon"
+        className="sg-63hfdc-uncheckedIcon"
       />
     }
   >
@@ -73,7 +73,7 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
     onCheck={[Function]}
     uncheckedIcon={
       <RadioUnchecked
-        className="sg-11cpk1a-uncheckedIcon"
+        className="sg-63hfdc-uncheckedIcon"
       />
     }
   >
@@ -85,14 +85,14 @@ exports[`RadioButton should render unselected RadioButton 1`] = `
       tabIndex={0}
     >
       <RadioUnchecked
-        className="sg-11cpk1a-uncheckedIcon"
+        className="sg-63hfdc-uncheckedIcon"
       >
         <Icon
-          className="sg-11cpk1a-uncheckedIcon"
+          className="sg-63hfdc-uncheckedIcon"
           content="<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>"
         >
           <svg
-            className="common__icon sg-kvzpvq-root-uncheckedIcon"
+            className="common__icon sg-1hlmo2q-root-uncheckedIcon"
             dangerouslySetInnerHTML={
               {
                 "__html": "<path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>",

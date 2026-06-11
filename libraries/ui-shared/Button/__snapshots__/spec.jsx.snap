@@ -17,13 +17,13 @@ exports[`<Button /> should render as a primary button 1`] = `
 
 exports[`<Button /> should render as a regular button if type is explicitly defined 1`] = `
 <Button
-  className="ui-shared__button sg-1cs55nz-button"
+  className="ui-shared__button sg-12559zs-button"
   disabled={false}
   onClick={null}
   testId="Button"
 >
   <div
-    className="sg-1jqywej-content"
+    className="sg-2jbepc-content"
   >
     Press me
   </div>

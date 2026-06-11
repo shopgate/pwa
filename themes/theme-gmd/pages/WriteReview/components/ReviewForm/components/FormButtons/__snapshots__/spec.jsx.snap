@@ -83,7 +83,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                   >
                     <Ripple
                       className="sg-fpa50s-contentWrapper"
-                      color="#000"
+                      color="var(--sg-palette-common-black)"
                       disabled={false}
                       fill={true}
                       onClick={[Function]}

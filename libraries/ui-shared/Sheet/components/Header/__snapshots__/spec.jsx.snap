@@ -17,7 +17,7 @@ exports[`<Header /> should render with correct title 1`] = `
     >
       <Ripple
         className="sg-8ivrra-closeIcon"
-        color="#000"
+        color="var(--sg-palette-common-black)"
         disabled={false}
         fill={false}
         onClick={[Function]}

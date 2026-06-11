@@ -13,7 +13,7 @@ exports[`<ActionButton /> Given the component was mounted to the DOM Given the l
     xmlns="http://www.w3.org/2000/svg"
   >
     <circle
-      class="sg-crficz-circle"
+      class="sg-g16yqe-circle"
       cx="50"
       cy="50"
       r="20"
@@ -27,7 +27,7 @@ exports[`<ActionButton /> Given the component was mounted to the DOM should matc
   class="ui-shared__action-button sg-berhvi-withGap"
 >
   <button
-    class="common__button ui-shared__button ui-shared__ripple-button sg-69eg9a-root-button"
+    class="common__button ui-shared__button ui-shared__ripple-button sg-1hyscfq-root-button"
     data-test-id="Button"
   >
     <div

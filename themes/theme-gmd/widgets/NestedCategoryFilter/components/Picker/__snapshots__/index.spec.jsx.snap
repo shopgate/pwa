@@ -203,7 +203,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             >
                               <Ripple
                                 className="sg-8ivrra-closeIcon"
-                                color="#000"
+                                color="var(--sg-palette-common-black)"
                                 disabled={false}
                                 fill={false}
                                 onClick={[Function]}
@@ -375,7 +375,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 </Drawer>
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={true}
                   level={4}
@@ -395,7 +395,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           aria-hidden="true"
                           class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
-                          style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                          style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
                       }
                     }
@@ -415,7 +415,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       onClick={[Function]}
                       style={
                         {
-                          "background": "#000",
+                          "background": "var(--sg-palette-common-black)",
                           "opacity": 0.2,
                           "pointerEvents": "auto",
                           "transition": "opacity 200ms ease-out",
@@ -638,7 +638,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             >
                               <Ripple
                                 className="sg-8ivrra-closeIcon"
-                                color="#000"
+                                color="var(--sg-palette-common-black)"
                                 disabled={false}
                                 fill={false}
                                 onClick={[Function]}
@@ -810,7 +810,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 </Drawer>
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={true}
                   level={4}
@@ -830,7 +830,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           aria-hidden="true"
                           class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
-                          style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                          style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
                       }
                     }
@@ -850,7 +850,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       onClick={[Function]}
                       style={
                         {
-                          "background": "#000",
+                          "background": "var(--sg-palette-common-black)",
                           "opacity": 0.2,
                           "pointerEvents": "auto",
                           "transition": "opacity 200ms ease-out",
@@ -1113,7 +1113,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             >
                               <Ripple
                                 className="sg-8ivrra-closeIcon"
-                                color="#000"
+                                color="var(--sg-palette-common-black)"
                                 disabled={false}
                                 fill={false}
                                 onClick={[Function]}
@@ -1285,7 +1285,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 </Drawer>
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={false}
                   level={4}
@@ -1305,7 +1305,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           aria-hidden="true"
                           class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
-                          style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
+                          style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                         />,
                       }
                     }
@@ -1325,7 +1325,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       onClick={[Function]}
                       style={
                         {
-                          "background": "#000",
+                          "background": "var(--sg-palette-common-black)",
                           "opacity": 0,
                           "pointerEvents": "none",
                           "transition": "opacity 200ms ease-out",
@@ -1549,7 +1549,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             >
                               <Ripple
                                 className="sg-8ivrra-closeIcon"
-                                color="#000"
+                                color="var(--sg-palette-common-black)"
                                 disabled={false}
                                 fill={false}
                                 onClick={[Function]}
@@ -1721,7 +1721,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 </Drawer>
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={true}
                   level={4}
@@ -1741,7 +1741,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           aria-hidden="true"
                           class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
-                          style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                          style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
                       }
                     }
@@ -1761,7 +1761,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       onClick={[Function]}
                       style={
                         {
-                          "background": "#000",
+                          "background": "var(--sg-palette-common-black)",
                           "opacity": 0.2,
                           "pointerEvents": "auto",
                           "transition": "opacity 200ms ease-out",
@@ -1824,7 +1824,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
       <div
         aria-disabled={true}
         aria-hidden={true}
-        className="sg-3rn0gn-button-buttonDisabled"
+        className="sg-cnuklq-button-buttonDisabled"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
@@ -1929,7 +1929,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                 />
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={false}
                   level={4}
@@ -2117,7 +2117,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                 />
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={false}
                   level={4}
@@ -2299,7 +2299,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                 />
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={false}
                   level={4}

@@ -37,7 +37,7 @@ exports[`<ProductGallery.Appbar> page should render a default app bar 1`] = `
             testId={null}
           />
         }
-        textColor="#fff"
+        textColor="var(--sg-palette-common-white)"
       />
     </GalleryAppBar>
   </Connect(GalleryAppBar)>

@@ -90,7 +90,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             }
           >
             <div
-              className="sg-1meak5z-body"
+              className="sg-jwwtvb-body"
               id="basicDialogDesc"
             >
               <div
@@ -222,7 +222,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             }
           >
             <div
-              className="sg-1meak5z-body"
+              className="sg-jwwtvb-body"
               id="basicDialogDesc"
             >
               <div

@@ -12,7 +12,7 @@ exports[`<CartEmptyIcon /> should render 1`] = `
     r="104"
   />
   <ellipse
-    className="sg-1kw7vd9-shadow"
+    className="sg-15z2l7-shadow"
     cx="104"
     cy="161"
     rx="65"

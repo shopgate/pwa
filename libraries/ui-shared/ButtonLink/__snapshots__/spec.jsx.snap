@@ -5,7 +5,7 @@ exports[`<ButtonLink> On click action should create component and open page on c
   class="ui-shared__action-button sg-berhvi-withGap"
 >
   <button
-    class="common__button ui-shared__button ui-shared__ripple-button sg-1w8dk5h-root-button"
+    class="common__button ui-shared__button ui-shared__ripple-button sg-lgpz4u-root-button"
     data-test-id="Button"
   >
     <div

@@ -15,14 +15,14 @@ exports[`<SheetList /> should not render invalid children 1`] = `
       role="listbox"
     >
       <ListItem
-        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+        className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+          className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
           data-test-id="listItem"
           role={null}
         >
@@ -111,14 +111,14 @@ exports[`<SheetList /> should render a child and add styles for list items with 
       role="listbox"
     >
       <ListItem
-        className="engage__sheet-list__item sg-wjbn21-item-itemWithImage-itemNotLast"
+        className="engage__sheet-list__item sg-gizbjl-item-itemWithImage-itemNotLast"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="engage__sheet-list__item common__list__list-item sg-nbvjw8-item-item-itemWithImage-itemNotLast-unselected"
+          className="engage__sheet-list__item common__list__list-item sg-qapjji-item-item-itemWithImage-itemNotLast-unselected"
           data-test-id="listItem"
           role={null}
         >
@@ -199,14 +199,14 @@ exports[`<SheetList /> should render with two children 1`] = `
       role="listbox"
     >
       <ListItem
-        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+        className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
         isSelected={false}
         key="child-0/.0"
         role={null}
         tabIndex={0}
       >
         <li
-          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+          className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
           data-test-id="listItem"
           role={null}
         >
@@ -268,14 +268,14 @@ exports[`<SheetList /> should render with two children 1`] = `
         </li>
       </ListItem>
       <ListItem
-        className="engage__sheet-list__item sg-1ysoomx-item-itemNotLast"
+        className="engage__sheet-list__item sg-1mdv09n-item-itemNotLast"
         isSelected={false}
         key="child-1/.1"
         role={null}
         tabIndex={0}
       >
         <li
-          className="engage__sheet-list__item common__list__list-item sg-zqqzk9-item-item-itemNotLast-unselected"
+          className="engage__sheet-list__item common__list__list-item sg-1y7jg05-item-item-itemNotLast-unselected"
           data-test-id="listItem"
           role={null}
         >

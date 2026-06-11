@@ -26,20 +26,20 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
       styles={
         {
           "hover": {
-            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+            "boxShadow": "-20px 0 0 var(--sg-palette-grey-light), 20px 0 0 var(--sg-palette-grey-light)",
           },
         }
       }
     >
       <Glow
         className={null}
-        color="#f7f7f7"
+        color="var(--sg-palette-grey-light)"
         disabled={false}
         forwardedRef={null}
         styles={
           {
             "hover": {
-              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+              "boxShadow": "-20px 0 0 var(--sg-palette-grey-light), 20px 0 0 var(--sg-palette-grey-light)",
             },
           }
         }
@@ -302,20 +302,20 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
         styles={
           {
             "hover": {
-              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+              "boxShadow": "-20px 0 0 var(--sg-palette-grey-light), 20px 0 0 var(--sg-palette-grey-light)",
             },
           }
         }
       >
         <Glow
           className={null}
-          color="#f7f7f7"
+          color="var(--sg-palette-grey-light)"
           disabled={false}
           forwardedRef={null}
           styles={
             {
               "hover": {
-                "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+                "boxShadow": "-20px 0 0 var(--sg-palette-grey-light), 20px 0 0 var(--sg-palette-grey-light)",
               },
             }
           }
@@ -399,13 +399,13 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
           className="common__grid sg-1m2nk0b-root-noWrap-grid"
         >
           <GridItem
-            className="sg-1hibuk7-title-disabled"
+            className="sg-zotmqd-title-disabled"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="sg-1n1osdl-root-title-disabled"
+              className="sg-dysmw3-root-title-disabled"
             >
               <div>
                 My Title

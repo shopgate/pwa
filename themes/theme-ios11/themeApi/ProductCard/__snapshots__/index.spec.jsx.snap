@@ -73,7 +73,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
         data-test-id="Product: Product Name"
         style={
           {
-            "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.16)",
+            "boxShadow": "0 4px 8px rgba(0,0,0,0.16)",
           }
         }
       >
@@ -157,7 +157,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
         data-test-id="Product: Product Name"
         style={
           {
-            "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.16)",
+            "boxShadow": "0 4px 8px rgba(0,0,0,0.16)",
           }
         }
       >

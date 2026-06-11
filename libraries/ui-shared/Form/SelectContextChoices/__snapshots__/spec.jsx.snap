@@ -43,7 +43,7 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
       </li>
     </ul>
     <div
-      class="sg-titfmn-underlineWrapper underline"
+      class="sg-1fzvff5-underlineWrapper underline"
     >
       <div
         class="sg-ll3grb-underline"
@@ -97,7 +97,7 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
       </li>
     </ul>
     <div
-      class="sg-titfmn-underlineWrapper underline"
+      class="sg-1fzvff5-underlineWrapper underline"
     >
       <div
         class="sg-ll3grb-underline"
@@ -151,7 +151,7 @@ exports[`<SelectContextChoices /> should render select with no options 1`] = `
       </li>
     </ul>
     <div
-      class="sg-titfmn-underlineWrapper underline"
+      class="sg-1fzvff5-underlineWrapper underline"
     >
       <div
         class="sg-ll3grb-underline"

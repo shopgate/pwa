@@ -91,7 +91,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
       >
         <Backdrop
           className=""
-          color="#000"
+          color="var(--sg-palette-common-black)"
           duration={200}
           isVisible={true}
           level={0}
@@ -165,7 +165,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot without toggle 1`] 
       >
         <Backdrop
           className=""
-          color="#000"
+          color="var(--sg-palette-common-black)"
           duration={200}
           isVisible={true}
           level={0}
