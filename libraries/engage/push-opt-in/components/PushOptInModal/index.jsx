@@ -85,13 +85,13 @@ const PushOptInModal = ({
     leading: true,
     trailing: false,
   }),
-    [allowPushOptIn]);
+  [allowPushOptIn]);
 
   const handleDenyPushOptIn = useMemo(() => throttle(denyPushOptIn, 1000, {
     leading: true,
     trailing: false,
   }),
-    [denyPushOptIn]);
+  [denyPushOptIn]);
 
   useEffect(() => () => {
     handleAllowPushOptIn.cancel();

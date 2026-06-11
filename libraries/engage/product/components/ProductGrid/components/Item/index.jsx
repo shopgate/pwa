@@ -49,13 +49,13 @@ const Item = ({ product, display }) => {
       >
         {isBeta() && product.featuredMedia
           ? <FeaturedMedia
-            type={product.featuredMedia.type}
-            url={product.featuredMedia.url}
+              type={product.featuredMedia.type}
+              url={product.featuredMedia.url}
           />
           : <ItemImage
-            productId={product.id}
-            name={product.name}
-            imageUrl={product.featuredImageBaseUrl}
+              productId={product.id}
+              name={product.name}
+              imageUrl={product.featuredImageBaseUrl}
           />}
       </Link>
       <ProductBadges location="productGrid" productId={product.id}>
