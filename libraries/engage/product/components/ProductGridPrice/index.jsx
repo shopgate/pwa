@@ -6,24 +6,19 @@ import {
 import { PriceInfo } from '@shopgate/engage/product/components';
 import { withPriceCalculation } from '@shopgate/engage/product/hocs';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeName } from '@shopgate/pwa-common/helpers/config';
-
-const isIOS = themeName.includes('ios');
 
 const useStyles = makeStyles()({
-  priceWrapper: isIOS ? {
+  priceWrapper: {
     lineHeight: 1.75,
     marginTop: 2,
     alignItems: 'center',
-  } : {
-    lineHeight: 1.75,
   },
   basicPrice: {
     fontSize: '0.875rem',
   },
-  strikedPrice: isIOS ? {
+  strikedPrice: {
     fontSize: '0.75rem',
-  } : {},
+  },
 });
 
 /**

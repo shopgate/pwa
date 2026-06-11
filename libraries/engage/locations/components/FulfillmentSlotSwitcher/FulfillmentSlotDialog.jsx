@@ -71,12 +71,12 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     border: `1px solid ${theme.palette.secondary.main}`,
     borderRadius: 4,
-    background: '#fff',
+    background: theme.palette.common.white,
     transition: 'background, color 500ms',
     outline: 'none',
   },
   buttonActive: {
-    color: '#fff',
+    color: theme.palette.common.white,
     background: theme.palette.secondary.main,
   },
   buttonDate: {
@@ -96,11 +96,11 @@ const useStyles = makeStyles()(theme => ({
   buttonDisabled: {
     cursor: 'blocked',
     pointerEvents: 'none',
-    border: '1px solid #444',
+    border: `1px solid ${theme.palette.action.disabled}`,
   },
   buttonStrikethrough: {
     position: 'absolute',
-    background: '#444',
+    background: theme.palette.action.disabled,
     left: 0,
     right: 0,
     height: 2,
@@ -111,7 +111,7 @@ const useStyles = makeStyles()(theme => ({
     bottom: 'calc(-1 * env(safe-area-inset-bottom))',
     margin: -16,
     marginTop: 8,
-    background: '#fff',
+    background: theme.palette.background.surface,
     padding: 16,
     paddingBottom: 24,
   },

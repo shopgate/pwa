@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '../../hooks/common';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     outline: 'none',
     border: '1px solid rgba(0, 0, 0, 0.12)',
     borderRadius: 4,
-    background: '#fff',
+    background: theme.palette.common.white,
     height: 52,
     width: 160,
     display: 'flex',
@@ -37,7 +37,7 @@ const useStyles = makeStyles()({
       background: 'rgba(0, 0, 0, 0.12)',
     },
   },
-});
+}));
 
 /**
  * Payment Button

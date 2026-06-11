@@ -1,11 +1,10 @@
 import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 const useStyles = makeStyles()((theme) => {
   const inactive = {
-    border: `1px solid ${themeColors.darkGray}`,
+    border: `1px solid ${theme.components.border.light}`,
     borderRadius: 2,
     color: 'inherit',
     height: 42,

@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { themeConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { TextField } from '@shopgate/engage/components';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
@@ -11,8 +10,6 @@ import {
 import Section from '../../components/Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import StripeContext from './StripeProvider.context';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -26,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
       marginBottom: 38,
       borderTopLeftRadius: 4,
       borderTopRightRadius: 4,
-      borderBottom: `1px solid ${colors.shade12}`,
+      borderBottom: `1px solid ${theme.components.border.medium}`,
     },
     ' .formElement label': {
       color: theme.palette.text.secondary,

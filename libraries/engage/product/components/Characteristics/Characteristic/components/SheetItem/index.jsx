@@ -2,10 +2,7 @@ import React, { useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core/hocs';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()((theme) => {
   const buttonBase = {
@@ -26,7 +23,7 @@ const useStyles = makeStyles()((theme) => {
     },
     buttonDisabled: {
       ...buttonBase,
-      color: colors.shade4,
+      color: theme.palette.action.disabled,
     },
     root: {
       padding: '16px 0',

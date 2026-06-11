@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   swatch: {
@@ -25,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     borderRadius: '50%',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: colors.shade4,
+    borderColor: theme.components.border.medium,
     backgroundSize: 'cover',
   },
   itemSelected: {

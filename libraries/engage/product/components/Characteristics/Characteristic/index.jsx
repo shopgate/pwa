@@ -3,11 +3,8 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { ResponsiveContainer, ArrowDropIcon } from '@shopgate/engage/components';
 import { withStyles, cx } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 import Sheet from './components/Sheet';
 import transition from '../transition';
-
-const { colors: themeColors } = themeConfig;
 
 /**
  * A single characteristic.
@@ -209,7 +206,7 @@ export default withStyles(Characteristic, theme => ({
     transition: 'background 250ms ease-in, color 250ms ease-in',
   },
   buttonDisabled: {
-    color: `${themeColors.shade4} !important`,
+    color: `${theme.palette.grey.medium} !important`,
   },
   label: {
     fontSize: 12,

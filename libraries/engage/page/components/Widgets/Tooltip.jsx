@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'inline-block',
     position: 'relative',
@@ -13,7 +13,7 @@ const useStyles = makeStyles()(() => ({
     position: 'absolute',
     padding: '6px 10px',
     backgroundColor: 'rgba(0, 0, 0, 0.87)',
-    color: '#fff',
+    color: theme.palette.common.white,
     fontSize: '0.875rem',
     fontWeight: 400,
     borderRadius: '4px',

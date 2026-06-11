@@ -6,7 +6,6 @@ import { config } from 'react-spring';
 import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeShadows } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const defaultToast = {};
@@ -34,7 +33,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     background: theme.components.snackbar.background,
     borderRadius: 3,
-    boxShadow: themeShadows.toast,
+    boxShadow: '0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12)',
     color: theme.contrastColor(theme.components.snackbar.background),
     display: 'flex',
     fontSize: '0.875rem',

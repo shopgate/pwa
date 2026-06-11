@@ -11,10 +11,10 @@ const useStyles = makeStyles()(theme => ({
     fontSize: 14,
   },
   pre: {
-    background: '#f7f9fc',
-    border: '1px solid #dbdde2',
+    background: theme.palette.background.emphasized,
+    border: `1px solid ${theme.components.border.light}`,
     borderRadius: 8,
-    color: '#000',
+    color: theme.contrastColor(theme.palette.background.emphasized),
     fontSize: 10,
     overflowY: 'auto',
     padding: theme.spacing(1),

@@ -28,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
   },
   cardWithForm: {
     background: 'inherit !important',
-    boxShadow: 'none  !important',
+    boxShadow: 'none !important',
     padding: '0px !important',
   },
   table: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles()(theme => ({
     },
     ' tr:last-of-type td': {
       paddingTop: 8,
-      borderTop: '1px solid #979797',
+      borderTop: `1px solid ${theme.components.border.medium}`,
       fontWeight: '600',
     },
   },

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
@@ -13,12 +12,12 @@ const ellipsisLine = {
   textOverflow: 'ellipsis',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   hint: {
     position: 'absolute',
     pointerEvents: 'none',
     bottom: 12,
-    color: themeConfig.colors.shade4,
+    color: theme.palette.grey.medium,
     willChange: 'transform',
     transition: `opacity ${easing}`,
     ...ellipsisLine,
@@ -26,7 +25,7 @@ const useStyles = makeStyles()({
   hintInactive: {
     opacity: 0,
   },
-});
+}));
 
 /**
  * The form element hint component.

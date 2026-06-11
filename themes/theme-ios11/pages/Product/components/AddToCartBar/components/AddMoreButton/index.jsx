@@ -4,14 +4,13 @@ import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'block',
     flexShrink: 0,
     fontSize: '1.75rem !important',
-    background: themeColors.darkOverlay,
+    background: theme.palette.grey.light,
     transform: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1) !important',
     outline: 0,
     boxShadow: 'none !important',
@@ -24,7 +23,7 @@ const useStyles = makeStyles()({
       opacity: 0.5,
     },
   },
-});
+}));
 
 /**
  * The AddMoreButton component.

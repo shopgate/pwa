@@ -38,10 +38,27 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
       },
       components: {
+        border: {
+          vars: {
+            light: '#F2F2F2',
+            medium: '#b5b5b5',
+            dark: '#747474',
+          },
+        },
+        price: {
+          vars: {
+            color: getCSSCustomProp('--color-primary'),
+          },
+        },
         input: {
           vars: {
             background: '#F2F2F2',
             border: '#CCCCCC',
+          },
+        },
+        separatorLine: {
+          vars: {
+            borderColor: '#EBEBEF',
           },
         },
         ctaButton: {
@@ -76,6 +93,15 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
           vars: {
             filled: `var(--rating-stars-filled, ${getCSSCustomProp('--color-primary')})`,
             empty: 'var(--rating-stars-empty, #CCCCCC)',
+          },
+        },
+        swiper: {
+          vars: {
+            paginationBulletColor: '#b5b5b5',
+            paginationBulletActiveColor: '#747474',
+            paginationFractionBackground: '#F2F2F2',
+            paginationProgressbarBackground: '#F2F2F2',
+            paginationProgressbarActiveColor: '#000000',
           },
         },
       },

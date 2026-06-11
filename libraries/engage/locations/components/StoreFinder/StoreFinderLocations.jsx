@@ -1,12 +1,9 @@
 import React, { useContext, forwardRef } from 'react';
 import { CardList } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { StoreFinderContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
 import StoreFinderLocation from './StoreFinderLocation';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -20,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
   },
   card: {
     background: theme.palette.background.surface,
-    border: `1px solid ${colors.shade7}`,
+    border: `1px solid ${theme.components.border.light}`,
     boxSizing: 'border-box',
     boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)',
     borderRadius: 3,

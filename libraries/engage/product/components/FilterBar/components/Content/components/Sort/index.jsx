@@ -5,7 +5,7 @@ import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Item from './components/Item';
 
-const { shadows, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   button: {
@@ -39,7 +39,7 @@ const useStyles = makeStyles()(theme => ({
     top: '100%',
     left: 0,
     background: theme.palette.background.emphasized,
-    boxShadow: shadows.filter.sort,
+    boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       top: 'inherit',
     },

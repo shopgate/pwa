@@ -1,10 +1,7 @@
 import React from 'react';
 import { HtmlSanitizer } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 import { useHtmlWidget } from './hooks';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -50,7 +47,7 @@ const useStyles = makeStyles()(theme => ({
     ' blockquote, q': {
       paddingLeft: '1rem',
       margin: '2rem 0',
-      borderLeft: `.25rem solid ${colors.shade6}`,
+      borderLeft: `.25rem solid ${theme.components.border.dark}`,
       fontStyle: 'italic',
     },
     ' > :first-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {

@@ -2,17 +2,15 @@ import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery, useTheme } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
 
-const { colors } = themeConfig;
 const IMAGE_SPACE = 72;
 
 const useStyles = makeStyles()(theme => ({
   disabled: {
-    color: colors.shade5,
+    color: theme.palette.grey.medium,
     cursor: 'not-allowed',
   },
   selected: {
@@ -86,7 +84,7 @@ const Item = ({
 }) => {
   const theme = useTheme();
   const glowHover = useMemo(() => ({
-    boxShadow: `${theme.spacing(-2.5)}px 0 0 ${colors.shade8}, ${theme.spacing(2.5)}px 0 0 ${colors.shade8}`,
+    boxShadow: `${theme.spacing(-2.5)}px 0 0 ${theme.palette.grey.light}, ${theme.spacing(2.5)}px 0 0 ${theme.palette.grey.light}`,
   }), [theme]);
   const { classes, cx } = useStyles();
 

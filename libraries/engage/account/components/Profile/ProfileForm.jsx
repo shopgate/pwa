@@ -40,7 +40,7 @@ const useStyles = makeStyles()(theme => ({
       marginTop: 8,
       marginRight: 16,
       border: `1px solid ${theme.palette.error.main}`,
-      backgroundColor: '#fff',
+      backgroundColor: theme.palette.common.white,
       color: theme.palette.error.main,
       borderRadius: 5,
       fontSize: 14,

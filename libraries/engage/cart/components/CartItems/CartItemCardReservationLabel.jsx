@@ -4,7 +4,6 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { LocationIcon, ResponsiveContainer } from '@shopgate/engage/components';
 import { BOPIS, CartItemProductChangeLocation } from '@shopgate/engage/locations';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { useCartItem } from '../CartItem';
 import CartItemCardReservationLabelChangeStore from './CartItemCardReservationLabelChangeStore';
 /** @typedef {import('@shopgate/engage/locations/locations.types').LocationAware} LocationAware */
@@ -35,7 +34,7 @@ const useStyles = makeStyles()(theme => ({
   },
   method: {
     fontSize: '0.75rem',
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
   },
 }));
 

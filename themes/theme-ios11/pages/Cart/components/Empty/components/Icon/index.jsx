@@ -1,8 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   leaf: {
@@ -12,7 +9,7 @@ const useStyles = makeStyles()(theme => ({
     fill: theme.palette.background.surface,
   },
   shadow: {
-    fill: colors.shade10,
+    fill: theme.palette.grey.light,
   },
   basket: {
     fill: theme.palette.secondary.main,

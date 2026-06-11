@@ -5,15 +5,11 @@ import { injectGlobal, makeStyles, setViewportHeight } from '@shopgate/engage/st
 import { Footer } from '@shopgate/engage/components';
 import { LiveMessenger } from '@shopgate/engage/a11y';
 import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import TabBar from 'Components/TabBar';
-
-const { colors } = themeConfig;
-const defaultBackgroundColor = colors.light;
 
 injectGlobal({
   html: {
-    '--page-background-color': defaultBackgroundColor,
+    '--page-background-color': 'var(--sg-palette-background-default)',
     '--tabbar-height': '0px',
     '--app-bar-height': '0px',
   },

@@ -47,7 +47,7 @@ const useStyles = makeStyles()(theme => ({
     alignSelf: 'center',
   },
   headerShadow: {
-    boxShadow: themeConfig.shadows.material,
+    boxShadow: '0 1px 6px rgba(0, 0, 0, .117647), 0 1px 4px rgba(0, 0, 0, .117647)',
   },
 }));
 
@@ -108,10 +108,10 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  onToggleClose: () => {},
+  onToggleClose: () => { },
   shadow: false,
   allowClose: true,
-  handleChange: () => {},
+  handleChange: () => { },
   showSearch: false,
 };
 

@@ -2,7 +2,6 @@ import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { MagnifierIcon, LocatorIcon, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { STORE_FINDER_PATTERN } from '../../../constants';
 
 const useStyles = makeStyles()(theme => ({
@@ -20,8 +19,8 @@ const useStyles = makeStyles()(theme => ({
   },
   inputContainer: {
     position: 'relative',
+    border: `1px solid ${theme.components.border.light}`,
     background: theme.components.input.background,
-    border: `1px solid ${themeColors.shade7}`,
     borderRadius: 4,
     display: 'flex',
     alignItems: 'center',
@@ -30,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
   inputIcon: {
     padding: 0,
     margin: '0 8px',
-    color: themeColors.shade9,
+    color: theme.palette.grey.dark,
     fontSize: '1.23rem',
     flexShrink: 0,
     outline: 0,

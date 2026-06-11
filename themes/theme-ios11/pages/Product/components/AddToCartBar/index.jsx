@@ -13,20 +13,18 @@ import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
 import AddMoreButton from './components/AddMoreButton';
 import CartItemsCount from './components/CartItemsCount';
 import connect from './connector';
 
-const { shadows } = themeConfig;
 const barHeight = 46;
 
 const useStyles = makeStyles()(theme => ({
   container: {
     background: theme.palette.background.surface,
-    boxShadow: shadows.cart.paymentBar,
+    boxShadow: '0 -4px 5px -2px rgba(0, 0, 0, 0.1)',
     position: 'relative',
     zIndex: 2,
     overflow: 'hidden',

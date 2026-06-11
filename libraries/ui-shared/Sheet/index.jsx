@@ -87,7 +87,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
   },
   sheetShadow: {
-    boxShadow: themeConfig.shadows.sheet,
+    boxShadow: '0 -2px 4px rgba(0, 0, 0, 0.1)',
   },
   content: {
     maxHeight: [

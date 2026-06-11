@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
-import { themeShadows } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { useLoadImage } from '@shopgate/engage/core';
 
@@ -34,7 +33,7 @@ const useStyles = makeStyles()(theme => ({
       right: 0,
       bottom: 0,
       left: 0,
-      boxShadow: themeShadows.productImage,
+      boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
       pointerEvents: 'none',
     },
   },

@@ -2,13 +2,12 @@ import React, {
   memo, useState, useEffect, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 
 const { currency } = appConfig;
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   price: {
@@ -37,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
     ':focus': {
       background: theme.components.input.background,
       textIndent: 0,
-      borderColor: colors.shade5,
+      borderColor: theme.components.border.medium,
     },
     [responsiveMediaQuery('>=xs', { webOnly: true })]: {
       borderColor: theme.palette.primary.main,

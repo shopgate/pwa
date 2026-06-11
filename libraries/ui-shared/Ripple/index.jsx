@@ -8,7 +8,6 @@ import PropTypes from 'prop-types';
 import clamp from 'lodash/clamp';
 import { shift } from '@shopgate/pwa-common/helpers/data';
 import { getOffset } from '@shopgate/pwa-common/helpers/dom';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import RippleAnimation from './components/RippleAnimation';
 
@@ -212,7 +211,7 @@ Ripple.propTypes = {
 
 Ripple.defaultProps = {
   className: '',
-  color: themeConfig.colors.dark,
+  color: 'var(--sg-palette-common-black)',
   disabled: false,
   fill: false,
   onClick: () => {},

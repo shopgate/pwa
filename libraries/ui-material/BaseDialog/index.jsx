@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FocusTrap } from '@shopgate/engage/a11y/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Title from './components/Title';
 import Content from './components/Content';
@@ -17,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     width: `calc(100vw - ${outerGap * 2}px)`,
     maxHeight: `calc(100vh - ${outerGap * 2}px)`,
     borderRadius: 2,
-    boxShadow: themeConfig.shadows.dialog,
+    boxShadow: '0 0.75em 3em 0 rgba(0, 0, 0, 0.5)',
     background: theme.palette.background.surface,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       width: `calc(80vh - ${outerGap * 2}px)`,

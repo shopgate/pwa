@@ -129,11 +129,11 @@ Backdrop.propTypes = {
 
 Backdrop.defaultProps = {
   className: '',
-  color: '#000',
+  color: 'var(--sg-palette-common-black)',
   duration: 200,
   isVisible: false,
   level: 2,
-  onClick: () => {},
+  onClick: () => { },
   opacity: 50,
   lockBodyScroll: true,
 };

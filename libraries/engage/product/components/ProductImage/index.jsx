@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { logger } from '@shopgate/pwa-core';
-import appConfig, { themeShadows } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
@@ -80,7 +80,7 @@ const useStyles = makeStyles()((theme, { ratio }) => ({
       right: 0,
       bottom: 0,
       left: 0,
-      boxShadow: themeShadows.productImage,
+      boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
       pointerEvents: 'none',
     },
   },

@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import BaseCheckbox from '@shopgate/pwa-common/components/Checkbox';
 import CheckedIcon from '../icons/RadioCheckedIcon';
 import UncheckedIcon from '../icons/RadioUncheckedIcon';
@@ -14,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
   uncheckedIcon: {
     width: 24,
     height: 24,
-    color: themeConfig.colors.shade6,
+    color: theme.palette.grey.dark,
   },
 }));
 

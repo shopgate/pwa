@@ -4,7 +4,6 @@ import React, {
 import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
 const useStyles = makeStyles()({
   container: {
@@ -100,7 +99,7 @@ Glow.propTypes = {
 };
 
 Glow.defaultProps = {
-  color: themeConfig.colors.shade8,
+  color: 'var(--sg-palette-grey-light)',
   className: null,
   forwardedRef: null,
   disabled: false,

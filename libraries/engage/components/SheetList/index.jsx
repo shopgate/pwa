@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 import List from '@shopgate/pwa-common/components/List';
 import Item from './components/Item';
 
-const { colors } = themeConfig;
 const IMAGE_SPACE = 72;
 
 const useStyles = makeStyles()(theme => ({
@@ -15,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
   },
   itemNotLast: {
     '&:not(:last-child)': {
-      boxShadow: `0 1px 0 0 ${colors.darkGray}`,
+      boxShadow: `0 1px 0 0 ${theme.components.border.light}`,
       marginBottom: 1,
     },
   },

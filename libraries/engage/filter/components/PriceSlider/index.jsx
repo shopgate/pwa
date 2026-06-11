@@ -4,12 +4,9 @@ import React, {
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { RangeSlider } from '@shopgate/engage/components';
 import { FilterItem } from '@shopgate/engage/filter';
 import Label from './components/Label';
-
-const { shadows, colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
@@ -20,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: theme.spacing(2),
   },
   rangeSliderOuterRange: {
-    background: colors.darkGray,
+    background: theme.palette.grey.light,
     height: 8,
     position: 'relative',
   },
@@ -33,7 +30,7 @@ const useStyles = makeStyles()(theme => ({
   },
   rangeSliderHandleInner: {
     background: theme.palette.common.white,
-    boxShadow: shadows.filter.priceSlider,
+    boxShadow: '0 0 8px rgba(0, 0, 0, .16)',
     borderRadius: '50%',
     width: theme.spacing(3),
     height: theme.spacing(3),

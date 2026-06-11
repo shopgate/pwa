@@ -7,7 +7,7 @@ import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const { colors, variables } = themeConfig;
+const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   buttonLine: {
@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     display: 'inline-block',
     outline: 0,
-    color: colors.dark,
+    color: theme.palette.text.primary,
     backgroundColor: 'transparent',
     minWidth: 64,
     overflow: 'hidden',

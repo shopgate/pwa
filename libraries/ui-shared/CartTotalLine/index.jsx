@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import Amount from './components/Amount';
 import Hint from './components/Hint';
 import Spacer from './components/Spacer';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   line: {
     display: 'flex',
     justifyContent: 'space-between',
@@ -17,19 +14,19 @@ const useStyles = makeStyles()({
     alignItems: 'baseline',
   },
   disabled: {
-    color: `${colors.shade4} !important`,
+    color: `${theme.palette.action.disabled} !important`,
   },
   base: {
-    color: colors.shade9,
+    color: theme.palette.text.secondary,
   },
   subTotal: {
-    color: `${colors.dark}`,
+    color: theme.palette.text.primary,
   },
   grandTotal: {
-    color: `${colors.dark}`,
+    color: theme.palette.text.primary,
     fontSize: '1rem !important',
   },
-});
+}));
 
 /**
  * @returns {JSX}

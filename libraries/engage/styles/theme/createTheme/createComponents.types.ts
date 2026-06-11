@@ -115,6 +115,13 @@ export type ComponentVarsFromSchema<TSchema> = {
  * for the theme components.
  */
 export const componentsSchema = {
+  border: {
+    vars: {
+      light: '',
+      medium: '',
+      dark: '',
+    },
+  },
   price: {
     vars: {
       color: '',
@@ -179,6 +186,15 @@ export const componentsSchema = {
       empty: '',
     },
   },
+  swiper: {
+    vars: {
+      paginationBulletColor: '',
+      paginationBulletActiveColor: '',
+      paginationFractionBackground: '',
+      paginationProgressbarBackground: '',
+      paginationProgressbarActiveColor: '',
+    },
+  },
 } as const;
 
 /**
@@ -190,6 +206,13 @@ export const componentsSchema = {
  * - functions get proper `Theme` typing
  */
 export const componentsDefaults = {
+  border: {
+    vars: {
+      light: '#F2F2F2',
+      medium: '#b5b5b5',
+      dark: '#747474',
+    },
+  },
   price: {
     vars: {
       color: t => t.palette.primary.main,
@@ -244,6 +267,15 @@ export const componentsDefaults = {
     vars: {
       filled: t => t.palette.primary.main,
       empty: '#CCCCCC',
+    },
+  },
+  swiper: {
+    vars: {
+      paginationBulletColor: t => t.palette.grey.medium,
+      paginationBulletActiveColor: t => t.palette.grey.dark,
+      paginationFractionBackground: t => t.palette.grey.light,
+      paginationProgressbarBackground: t => t.palette.grey.light,
+      paginationProgressbarActiveColor: t => t.palette.common.black,
     },
   },
 } satisfies ComponentsDefaults;

@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import { Grid, SurroundPortals } from '@shopgate/engage/components';
 import { SCANNER_BAR } from '@shopgate/engage/scanner/constants';
-import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import FlashlightButton from './components/FlashlightButton';
 import ScannerInstructions from './components/ScannerInstructions';
@@ -11,8 +10,8 @@ import ScannerInstructions from './components/ScannerInstructions';
 const useStyles = makeStyles()(theme => ({
   container: {
     bottom: 0,
-    backgroundColor: themeColors.overlay,
-    boxShadow: themeShadows.scannerBar,
+    backgroundColor: theme.palette.background.emphasized,
+    boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.1)',
     fontSize: 14,
     alignItems: 'center',
     paddingBottom: 'var(--safe-area-inset-bottom)',

@@ -2,7 +2,6 @@ import React, { useCallback, useMemo } from 'react';
 import intersection from 'lodash/intersection';
 import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import {
   ROPIS,
   BOPIS,
@@ -26,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
   },
   unavailable: {
-    color: themeColors.dark,
+    color: theme.palette.common.black,
     fontSize: '0.625rem',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',

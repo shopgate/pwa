@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import { TextField } from '@shopgate/engage/components';
 import { i18n, usePageSettings } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import CouponFieldIcon from './components/CouponFieldIcon';
-
-const { colors } = themeConfig;
 
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
@@ -19,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     background: theme.palette.background.surface,
     padding: theme.spacing(1, 2),
     margin: theme.spacing(1.5, 1.5, 2),
-    border: `1px solid ${colors.shade7}`,
+    border: `1px solid ${theme.components.border.light}`,
     boxSizing: 'border-box',
     boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
     borderRadius: 5,

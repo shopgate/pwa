@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
     appearance: 'none',
     width: '40px',
     height: '20px',
-    backgroundColor: '#ccc',
+    backgroundColor: theme.palette.grey.medium,
     borderRadius: '10px',
     position: 'relative',
     cursor: 'pointer',
@@ -81,15 +81,15 @@ const Switch = ({
         id={switchId}
       />
 
-      { children && (
+      {children && (
         <label htmlFor={switchId}>
           <span aria-hidden={!!a11yFallbackText}>
             {children}
           </span>
-          { a11yFallbackText && (
-          <VisuallyHidden>
-            { a11yFallbackText}
-          </VisuallyHidden>
+          {a11yFallbackText && (
+            <VisuallyHidden>
+              {a11yFallbackText}
+            </VisuallyHidden>
           )}
         </label>
       )}
