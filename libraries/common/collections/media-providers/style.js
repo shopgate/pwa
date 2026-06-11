@@ -28,7 +28,7 @@ const consentContainer = css({
   textAlign: 'center',
   gap: 16,
   background: 'var(--sg-palette-grey-light)',
-  border: '1px solid --sg-components-border-medium',
+  border: '1px solid var(--sg-components-border-medium)',
   borderRadius: 4,
   top: 0,
 });
