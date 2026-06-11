@@ -1,70 +1,84 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import NavDrawerItem from '../Item';
-import NavDrawerDivider from '../Divider';
-import NavDrawerTitle from '../Title';
+import {
+  render,
+  screen,
+} from '@testing-library/react';
 import NavDrawerSection from './index';
 
-jest.mock('@shopgate/engage/components');
+const mockNavDrawerItem = jest.fn(() => <div data-testid="nav-drawer-item" />);
+
+jest.mock('../Divider', () => () => <div data-testid="nav-drawer-divider" />);
+
+const mockNavDrawerTitle = jest.fn(() => <div data-testid="nav-drawer-title" />);
+
+jest.mock('../Item', () => props => mockNavDrawerItem(props));
+jest.mock('../Title', () => props => mockNavDrawerTitle(props));
 
 describe('<NavDrawerSection />', () => {
+  beforeEach(() => {
+    mockNavDrawerItem.mockClear();
+    mockNavDrawerTitle.mockClear();
+  });
+
   it('should render with a title and dividers', () => {
     const sectionTitle = 'Section title';
     const itemLabel = 'Item Label';
 
-    const wrapper = shallow((
+    const { container } = render((
       <NavDrawerSection title={sectionTitle} dividerTop dividerBottom>
-        <NavDrawerItem label={itemLabel} />
+        <div data-testid="passed-child" data-label={itemLabel} />
       </NavDrawerSection>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(NavDrawerDivider)).toHaveLength(2);
-    expect(wrapper.find(NavDrawerTitle).prop('text')).toBe(sectionTitle);
-    expect(wrapper.find(NavDrawerItem).prop('label')).toBe(itemLabel);
+    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.getAllByTestId('nav-drawer-divider')).toHaveLength(2);
+    expect(screen.getByTestId('nav-drawer-title')).toBeInTheDocument();
+    expect(mockNavDrawerTitle)
+      .toHaveBeenCalledWith(expect.objectContaining({ text: sectionTitle }));
+    expect(screen.getByTestId('passed-child')).toHaveAttribute('data-label', itemLabel);
   });
 
   it('should render without a title and one divider at the top', () => {
     const itemLabel = 'Item Label';
-    const wrapper = shallow((
+    render((
       <NavDrawerSection>
-        <NavDrawerItem label={itemLabel} />
+        <div data-testid="passed-child" data-label={itemLabel} />
       </NavDrawerSection>
     ));
 
-    expect(wrapper.find(NavDrawerDivider)).toHaveLength(1);
-    expect(wrapper.find(NavDrawerTitle).prop('text')).toBe('');
-    expect(wrapper.find(NavDrawerItem).prop('label')).toBe(itemLabel);
+    expect(screen.getAllByTestId('nav-drawer-divider')).toHaveLength(1);
+    expect(mockNavDrawerTitle).toHaveBeenCalledWith(expect.objectContaining({ text: '' }));
+    expect(screen.getByTestId('passed-child')).toHaveAttribute('data-label', itemLabel);
   });
 
   it('should render without a title and one divider at the top', () => {
     const itemLabel = 'Item Label';
-    const wrapper = shallow((
+    render((
       <NavDrawerSection dividerTop={false} dividerBottom>
-        <NavDrawerItem label={itemLabel} />
+        <div data-testid="passed-child" data-label={itemLabel} />
       </NavDrawerSection>
     ));
 
-    expect(wrapper.find(NavDrawerDivider)).toHaveLength(1);
-    expect(wrapper.find(NavDrawerTitle).prop('text')).toBe('');
-    expect(wrapper.find(NavDrawerItem).prop('label')).toBe(itemLabel);
+    expect(screen.getAllByTestId('nav-drawer-divider')).toHaveLength(1);
+    expect(mockNavDrawerTitle).toHaveBeenCalledWith(expect.objectContaining({ text: '' }));
+    expect(screen.getByTestId('passed-child')).toHaveAttribute('data-label', itemLabel);
   });
 
   it('should render without a title and dividers', () => {
     const itemLabel = 'Item Label';
-    const wrapper = shallow((
+    render((
       <NavDrawerSection dividerTop={false}>
-        <NavDrawerItem label={itemLabel} />
+        <div data-testid="passed-child" data-label={itemLabel} />
       </NavDrawerSection>
     ));
 
-    expect(wrapper.find(NavDrawerDivider)).toHaveLength(0);
-    expect(wrapper.find(NavDrawerTitle).prop('text')).toBe('');
-    expect(wrapper.find(NavDrawerItem).prop('label')).toBe(itemLabel);
+    expect(screen.queryByTestId('nav-drawer-divider')).not.toBeInTheDocument();
+    expect(mockNavDrawerTitle).toHaveBeenCalledWith(expect.objectContaining({ text: '' }));
+    expect(screen.getByTestId('passed-child')).toHaveAttribute('data-label', itemLabel);
   });
 
   it('should not render without children', () => {
-    const wrapper = shallow(<NavDrawerSection />);
-    expect(wrapper.isEmptyRender()).toBe(true);
+    const { container } = render(<NavDrawerSection />);
+    expect(container.firstChild).toBeNull();
   });
 });

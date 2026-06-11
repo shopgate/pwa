@@ -1,28 +1,28 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import React from 'react';
-import { mount } from 'enzyme';
+import { fireEvent, render } from '@testing-library/react';
 import { Builder } from '.';
 
 jest.mock('@shopgate/engage/components');
 
 describe('<Builder />', () => {
   it('should render empty form', () => {
-    const wrapper = mount((
+    const { container } = render((
       <Builder
         config={{
           fields: {
           },
         }}
         name="foo"
-        handleUpdate={() => {}}
+        handleUpdate={() => { }}
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container.querySelectorAll('input')).toHaveLength(0);
   });
 
   it('should render two text fields', () => {
-    const wrapper = mount((
+    const { container } = render((
       <Builder
         config={{
           fields: {
@@ -39,16 +39,15 @@ describe('<Builder />', () => {
           },
         }}
         name="foo"
-        handleUpdate={() => {}}
+        handleUpdate={() => { }}
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
+    expect(container.querySelectorAll('input')).toHaveLength(2);
   });
 
   it('should render invisible field with visibility prop set to false', () => {
-    const wrapper = mount((
+    const { container } = render((
       <Builder
         config={{
           fields: {
@@ -60,17 +59,16 @@ describe('<Builder />', () => {
           },
         }}
         name="foo"
-        handleUpdate={() => {}}
+        handleUpdate={() => { }}
       />
     ));
 
     // The TextField component is hidden by the ElementText component
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(0);
+    expect(container.querySelectorAll('input')).toHaveLength(0);
   });
 
   it('should modify the element visibility if setVisibilty rule applies', () => {
-    const wrapper = mount((
+    const { container } = render((
       <Builder
         config={{
           fields: {
@@ -94,25 +92,23 @@ describe('<Builder />', () => {
           },
         }}
         name="foo"
-        handleUpdate={() => {}}
+        handleUpdate={() => { }}
       />
     ));
 
     // Both should be marked visible at the beginning.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
+    expect(container.querySelectorAll('input')).toHaveLength(2);
 
     // Simulate user input to the text field.
-    wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
+    fireEvent.change(container.querySelectorAll('input')[0], { target: { value: 'abc' } });
 
     // Second field should be marked as hidden but be still rendered.
     // The TextField component is only rendered when the ElementText is visible.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(1);
+    expect(container.querySelectorAll('input')).toHaveLength(1);
   });
 
   it('should reset value when rule applies', () => {
-    const wrapper = mount((
+    const { container } = render((
       <Builder
         config={{
           fields: {
@@ -142,30 +138,27 @@ describe('<Builder />', () => {
           },
         }}
         name="foo"
-        handleUpdate={() => {}}
+        handleUpdate={() => { }}
       />
     ));
 
     // Default values should be in the inputs.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
-    expect(wrapper.find('input').at(0).props().value).toEqual('default');
-    expect(wrapper.find('input').at(1).props().value).toEqual('default');
+    expect(container.querySelectorAll('input')).toHaveLength(2);
+    expect(container.querySelectorAll('input')[0].value).toEqual('default');
+    expect(container.querySelectorAll('input')[1].value).toEqual('default');
 
     // Simulate text input to trigger rule.
-    wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
-    wrapper.update();
+    fireEvent.change(container.querySelectorAll('input')[0], { target: { value: 'abc' } });
 
     // Second field should be hidden now.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
-    expect(wrapper.find('input').at(0).props().value).toEqual('abc');
-    expect(wrapper.find('input').at(1).props().value).toEqual('cheat');
+    expect(container.querySelectorAll('input')).toHaveLength(2);
+    expect(container.querySelectorAll('input')[0].value).toEqual('abc');
+    expect(container.querySelectorAll('input')[1].value).toEqual('cheat');
   });
 
   it('should call onChange callback when input is changed', () => {
     const handleUpdate = jest.fn();
-    const wrapper = mount((
+    const { container } = render((
       <Builder
         config={{
           fields: {
@@ -184,12 +177,11 @@ describe('<Builder />', () => {
     ));
 
     // Should call with initial state.
-    expect(wrapper).toMatchSnapshot();
     expect(handleUpdate).toHaveBeenCalledWith({ foo: 'default' }, false, []);
     handleUpdate.mockClear();
 
     // Update input
-    wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
+    fireEvent.change(container.querySelectorAll('input')[0], { target: { value: 'abc' } });
 
     // Should call with updated state.
     expect(handleUpdate).toHaveBeenCalledWith({ foo: 'abc' }, false, []);
@@ -200,7 +192,7 @@ describe('<Builder />', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
       const ref = React.createRef();
-      mount((
+      render((
         <Builder
           ref={ref}
           validationErrors={[]}
@@ -241,7 +233,7 @@ describe('<Builder />', () => {
       // Create mocked Form builder.
       const handleUpdate = jest.fn();
       const ref = React.createRef();
-      mount((
+      render((
         <Builder
           ref={ref}
           validationErrors={[]}

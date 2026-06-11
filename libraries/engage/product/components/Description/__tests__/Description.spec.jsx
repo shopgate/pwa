@@ -1,38 +1,62 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import configureStore from 'redux-mock-store';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { render, screen } from '@testing-library/react';
 import Description from '../index';
 
 jest.mock('../connector', () => obj => obj);
 
-jest.mock('@shopgate/engage/components');
+/* eslint-disable react/prop-types */
+jest.mock('@shopgate/engage/components', () => ({
+  SurroundPortals: (props) => {
+    const { children } = props;
+    return children;
+  },
+  PlaceholderParagraph: (props) => {
+    const { children, ready } = props;
+    return (
+      <div data-testid="placeholder-paragraph" data-ready={String(ready)}>
+        {children}
+      </div>
+    );
+  },
+  HtmlSanitizer: (props) => {
+    const { children } = props;
+    return children;
+  },
+  I18n: {
+    Text: (props) => {
+      const { string } = props;
+      return <span>{string}</span>;
+    },
+  },
+}));
+/* eslint-enable react/prop-types */
 jest.mock('@shopgate/engage/product', () => ({
   PRODUCT_DESCRIPTION: 'PRODUCT_DESCRIPTION',
 }));
 
 describe('<Description />', () => {
-  const mockStore = configureStore();
   const html = '<h1>foo</h1>';
 
-  it('should not render if no data is available', () => {
-    const store = mockStore({});
-    const wrapper = mount(<Description store={store} html={null} />, mockRenderOptions);
-    const foundContent = wrapper.findWhere(n =>
-      typeof n.prop('dangerouslySetInnerHTML') !== 'undefined');
+  it('should render heading and empty content when html is null', () => {
+    render(<Description html={null} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(foundContent.length).toEqual(0);
-    expect(wrapper.find('PlaceholderParagraph').length).toEqual(1);
-    expect(wrapper.find('PlaceholderParagraph').prop('ready')).toEqual(false);
+    expect(screen.getByText('product.description_heading')).toBeTruthy();
+    expect(screen.getByTestId('placeholder-paragraph')).toHaveAttribute('data-ready', 'false');
+    expect(screen.queryByText(html)).toBeNull();
   });
 
   it('should render description if data is available', () => {
-    const store = mockStore({});
-    const wrapper = mount(<Description store={store} html={html} />, mockRenderOptions);
+    render(<Description html={html} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('PlaceholderParagraph').length).toEqual(1);
-    expect(wrapper.find('PlaceholderParagraph').prop('ready')).toEqual(true);
+    expect(screen.getByText('product.description_heading')).toBeTruthy();
+    expect(screen.getByTestId('placeholder-paragraph')).toHaveAttribute('data-ready', 'true');
+    expect(screen.getByText(html)).toBeTruthy();
+  });
+
+  it('should not render component when html is an empty string', () => {
+    render(<Description html="" />);
+
+    expect(screen.queryByText('product.description_heading')).toBeNull();
+    expect(screen.queryByTestId('placeholder-paragraph')).toBeNull();
   });
 });

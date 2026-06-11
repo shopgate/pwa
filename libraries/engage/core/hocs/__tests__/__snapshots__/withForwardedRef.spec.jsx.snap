@@ -1,27 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > core > hocs > withForwardedRef should inject the ref with a custom prop name 1`] = `
-<MockComponent
-  className="foo"
-  custom={
-    {
-      "current": null,
-    }
-  }
+<pre
+  data-testid="wrapped-props"
 >
-  Testing 123
-</MockComponent>
+  {"className":"foo","children":"Testing 123","custom":{"current":null}}
+</pre>
 `;
 
 exports[`engage > core > hocs > withForwardedRef should render 1`] = `
-<MockComponent
-  className="foo"
-  forwardedRef={
-    {
-      "current": null,
-    }
-  }
+<pre
+  data-testid="wrapped-props"
 >
-  Testing 123
-</MockComponent>
+  {"className":"foo","children":"Testing 123","forwardedRef":{"current":null}}
+</pre>
 `;

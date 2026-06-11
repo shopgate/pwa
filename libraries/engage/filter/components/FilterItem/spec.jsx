@@ -1,15 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Item from './index';
 
 describe('Filter: <Item />', () => {
   it('should render', () => {
-    const wrapper = shallow((
+    const wrapper = render((
       <Item>
         <div>Some</div>
       </Item>
     ));
 
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

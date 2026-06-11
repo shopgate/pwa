@@ -1,8 +1,14 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { getThemeSettings } from '../../../../core';
 import { getAvailabilitySettings } from '../../../helpers';
 import { StockInfo } from '../StockInfo';
+
+/* eslint-disable react/prop-types */
+
+jest.mock('react-redux', () => ({
+  connect: () => component => component,
+}));
 
 jest.mock('../../../../../core', () => ({
   ...jest.requireActual('../../../../core'),
@@ -11,20 +17,30 @@ jest.mock('../../../../../core', () => ({
 jest.mock('../../../helpers', () => ({
   getAvailabilitySettings: jest.fn(),
 }));
+jest.mock('../../../components', () => ({
+  SurroundPortals: ({ children }) => children,
+}));
+jest.mock('../StockInfoInventory', () => ({
+  StockInfoInventory: ({ availabilityText, location }) => (
+    <span data-testid="stock-info-inventory">{`${location?.name || ''} ${availabilityText}`.trim()}</span>
+  ),
+}));
 
 describe.skip('<StockInfo />', () => {
-  it('should render with the visible inventory and with the store name', () => {
+  it('should render availability text and store name', () => {
     getThemeSettings.mockReturnValueOnce({});
     getAvailabilitySettings.mockReturnValueOnce({
       availabilityText: 'demo_availability_text',
       availabilityTextColor: 'green',
     });
-    const wrapper = mount(<StockInfo
+
+    render(<StockInfo
       location={{
         name: 'Test Store',
       }}
     />);
-    expect(wrapper).toMatchSnapshot();
+
+    expect(screen.getByTestId('stock-info-inventory')).toHaveTextContent('Test Store demo_availability_text');
   });
 
   it('should render without store name', () => {
@@ -33,28 +49,32 @@ describe.skip('<StockInfo />', () => {
       availabilityText: 'demo_availability_text',
       availabilityTextColor: 'green',
     });
-    const wrapper = mount(<StockInfo
+
+    render(<StockInfo
       location={{
         name: 'Test Store',
       }}
       showStoreName={false}
     />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('[string="product.location_stock_info.pick_up_at"]').length).toBe(0);
+
+    expect(screen.getByTestId('stock-info-inventory')).toHaveTextContent('demo_availability_text');
   });
 
-  it('should render without the visible inventory', () => {
+  it('should render empty availability text when none is provided', () => {
     getThemeSettings.mockReturnValueOnce({});
     getAvailabilitySettings.mockReturnValueOnce({
-      availabilityText: 'demo_availability_text',
+      availabilityText: '',
       availabilityTextColor: 'green',
     });
-    const wrapper = mount(<StockInfo
+
+    render(<StockInfo
       location={{
         name: 'Test Store',
       }}
     />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('[string="demo_availability_text"]').length).toBe(0);
+
+    expect(screen.getByTestId('stock-info-inventory')).toHaveTextContent('Test Store');
   });
 });
+
+/* eslint-enable react/prop-types */

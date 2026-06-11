@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Navigation from '../index';
 
 jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
@@ -28,15 +28,18 @@ const entries = [{
 describe('<Navigation />', () => {
   it('should render with an aria label and entries', () => {
     const title = 'Navigation Title';
-    const wrapper = mount(<Navigation title={title} entries={entries} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('nav').prop('aria-label')).toEqual(title);
-    expect(wrapper.find('ul').children()).toHaveLength(2);
+    render(<Navigation title={title} entries={entries} />);
+    const nav = screen.getByRole('navigation', { name: title });
+
+    expect(nav).toMatchSnapshot();
+    expect(nav).toHaveAttribute('aria-label', title);
+    expect(nav.querySelectorAll('ul > li')).toHaveLength(2);
   });
 
   it('should render empty when no entries are passed', () => {
-    const wrapper = mount(<Navigation />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.isEmptyRender()).toBe(true);
+    const { container } = render(<Navigation />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(screen.queryByRole('navigation')).toBeNull();
   });
 });

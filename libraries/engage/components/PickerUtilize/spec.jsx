@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Picker from './index';
 
 jest.mock('@shopgate/engage/components/View');
@@ -18,7 +18,7 @@ jest.mock('@shopgate/engage/components', () => {
 describe('<Picker />', () => {
   it('should render the picker', () => {
     const label = 'Picker label';
-    const wrapper = mount(<Picker label={label} />);
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = render(<Picker label={label} />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

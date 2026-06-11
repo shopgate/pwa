@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import ProductSlider from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
@@ -16,7 +16,7 @@ jest.mock('@shopgate/engage/components', () => {
 });
 
 jest.mock('@shopgate/engage/core/hooks', () => {
-  const ProductCard = props => <ProductCard {...props} />;
+  const ProductCard = () => <div data-testid="product-card" />;
   return {
     useThemeComponents: () => ({ ProductCard }),
   };
@@ -24,10 +24,10 @@ jest.mock('@shopgate/engage/core/hooks', () => {
 
 describe('<ProductSlider />', () => {
   it('should match snapshot', () => {
-    const wrapper = shallow((
+    const wrapper = render((
       <ProductSlider productIds={['prod1']} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.container.firstChild).toMatchSnapshot();
   });
 });

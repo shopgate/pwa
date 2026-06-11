@@ -107,6 +107,7 @@ export const RangeSlider = () => null;
 export const RatingStars = () => null;
 export const RatingNumber = ({ rating }) => rating;
 export const Availability = () => null;
+export const FavoritesButton = () => null;
 export const TextLink = () => null;
 export const ProductImage = ({ children }) => children;
 export const PlaceholderParagraph = ({ children }) => children;

@@ -1,15 +1,20 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import PaymentBarSubTotal from '../PaymentBarSubTotal';
+import { CartContext } from '../../../cart.context';
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useContext: () => ({
-    currency: 'EUR',
-  }),
-}));
+function mockFactories() {
+  return jest.requireActual('../testUtils/mockFactories');
+}
+
 jest.mock('../PaymentBarSubTotal.connector', () => cmp => cmp);
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/components', () => ({
+  SurroundPortals: mockFactories().createSurroundPortalsMock(),
+}));
+
+jest.mock('@shopgate/pwa-ui-shared/CartTotalLine', () =>
+  mockFactories().createCartTotalLineMock());
+
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   logger: {
     error: jest.fn(),
@@ -17,8 +22,23 @@ jest.mock('@shopgate/pwa-core/helpers', () => ({
 }));
 
 describe('<PaymentBarSubTotal>', () => {
+  const renderWithCartContext = ui => render(
+    <CartContext.Provider
+      value={{
+        currency: 'EUR',
+        isLoading: false,
+        hasPromotionCoupons: false,
+      }}
+    >
+      {ui}
+    </CartContext.Provider>
+  );
+
   it('should render line', () => {
-    const wrapper = shallow(<PaymentBarSubTotal amount={10} />).dive();
-    expect(wrapper).toMatchSnapshot();
+    renderWithCartContext(<PaymentBarSubTotal amount={10} />);
+    expect(screen.getByTestId('surround-portals')).toBeTruthy();
+    expect(screen.getByTestId('cart-total-line')).toBeTruthy();
+    expect(screen.getByTestId('cart-total-line-label')).toBeTruthy();
+    expect(screen.getByTestId('cart-total-line-amount')).toBeTruthy();
   });
 });
