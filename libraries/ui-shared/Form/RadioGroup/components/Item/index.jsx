@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
-import { I18n, CheckedIcon, UncheckedIcon } from '@shopgate/engage/components';
+import {
+  I18n, CheckedIcon, UncheckedIcon, Typography,
+} from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -20,8 +22,6 @@ const useStyles = makeStyles()(theme => ({
   },
   label: {
     flex: 1,
-    fontSize: '1rem',
-    lineHeight: 1.5,
     marginLeft: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
@@ -68,12 +68,15 @@ const RadioItem = ({
         aria-labelledby={`${id || name}-label`}
         {...attributes}
       />
-      <I18n.Text
-        string={ItemLabel}
+      <Typography
+        variant="body1"
+        component="div"
         aria-hidden
         id={`${id || name}-label`}
         className={cx(classes.label, 'label')}
-      />
+      >
+        <I18n.Text string={ItemLabel} />
+      </Typography>
     </label>
   );
 };

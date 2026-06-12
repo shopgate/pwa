@@ -1,17 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
   root: {
-    fontSize: 20,
-    fontWeight: 500,
     flexGrow: 1,
     lineHeight: '56px',
-    overflow: 'hidden',
     padding: '0 16px',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
   },
 });
 
@@ -28,7 +24,10 @@ const AppBarTitle = ({ onClick, title }) => {
   }
 
   return (
-    <div
+    <Typography
+      variant="h3"
+      component="div"
+      noWrap
       className={cx(classes.root, 'theme__app-bar__title')}
       role="heading"
       aria-labelledby="titleLabel"
@@ -38,7 +37,7 @@ const AppBarTitle = ({ onClick, title }) => {
     >
       {/* eslint-disable-next-line react/no-danger */}
       <span role="presentation" onClick={onClick} id="titleLabel" dangerouslySetInnerHTML={{ __html: title }} />
-    </div>
+    </Typography>
   );
 };
 

@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
-  RippleButton, I18n, ArrowIcon,
+  RippleButton, I18n, ArrowIcon, Typography,
 } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
@@ -18,18 +18,14 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   headline: {
-    fontSize: '2.1875rem',
     lineHeight: 1,
     fontWeight: 500,
     paddingBottom: theme.spacing(2),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
-      fontSize: '2rem',
       fontWeight: 'normal',
     },
   },
   subline: {
-    fontSize: '1.125rem',
-    color: theme.palette.text.secondary,
     marginBottom: theme.spacing(2),
     marginTop: 4,
   },
@@ -129,14 +125,14 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
 
   return (
     <div className={classes.container}>
-      <div className={classes.headline}>
+      <Typography variant="h1" component="div" className={classes.headline}>
         <I18n.Text string="login.forgot_password" />
-      </div>
+      </Typography>
       { !showSuccess ? (
         <>
-          <div className={classes.subline}>
+          <Typography variant="h4" component="div" color="textSecondary" className={classes.subline}>
             <I18n.Text string="login.reset_password.subline" />
-          </div>
+          </Typography>
           <form onSubmit={handleSubmit} className={classes.form}>
             <TextField
               type="email"

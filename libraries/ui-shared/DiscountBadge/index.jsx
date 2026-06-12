@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -12,13 +12,11 @@ const useStyles = makeStyles()((theme) => {
     padding: 5,
     width: '100%',
     fontWeight: 700,
-    textAlign: 'center',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     lineHeight: 1,
     whiteSpace: 'nowrap',
-    fontSize: '0.75rem',
   };
   return {
     small: {
@@ -58,12 +56,17 @@ const DiscountBadge = ({
       aria-label={`${i18n.text('cart.discount')}: ${text}`}
       tabIndex={-1}
     >
-      <I18n.Text
+      <Typography
+        variant="caption"
+        align="center"
         className={cx(displayClass, className, 'theme__discount-badge')}
-        string={text}
-        params={[discount]}
         aria-hidden
-      />
+      >
+        <I18n.Text
+          string={text}
+          params={[discount]}
+        />
+      </Typography>
     </div>
   );
 };

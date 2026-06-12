@@ -2,12 +2,12 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
-    fontSize: '0.7rem',
     lineHeight: 1.5,
     fontWeight: 700,
     background: theme.palette.primary.main,
@@ -42,7 +42,9 @@ const CartButtonBadge = ({ count, style }) => {
   const productCount = count > CART_MAX_ITEMS ? `${CART_MAX_ITEMS}+` : count;
 
   return (
-    <div style={badgeStyle} className={cx(classes.root, 'theme__app-bar__cart-button-badge theme__badge')} data-test-id="badge">{productCount}</div>
+    <Typography variant="caption" component="div" style={badgeStyle} className={cx(classes.root, 'theme__app-bar__cart-button-badge theme__badge')} data-test-id="badge">
+      {productCount}
+    </Typography>
   );
 };
 

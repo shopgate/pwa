@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
 import connect from './connector';
@@ -13,7 +14,6 @@ const useStyles = makeStyles()(theme => ({
     position: 'absolute',
     background: theme.components.tabBar.badgeBackground,
     color: theme.components.tabBar.badgeColor,
-    fontSize: '0.7rem',
     lineHeight: 1.5,
     fontWeight: 'bold',
     borderRadius: theme.components.tabBar.badgeBorderRadius,
@@ -50,9 +50,9 @@ const FavoritesIconBadge = ({
     : favoritesCount;
 
   return (
-    <div className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge theme__badge')}>
+    <Typography variant="caption" component="div" className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge theme__badge')}>
       {showCounter !== false ? number : ''}
-    </div>
+    </Typography>
   );
 };
 
