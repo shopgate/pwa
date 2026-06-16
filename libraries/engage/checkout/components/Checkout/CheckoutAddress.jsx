@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { Link } from '@shopgate/engage/components';
+import { Link, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useProfileContext } from '../../../account/components/Profile/Profile.provider';
 import Section from './CheckoutSection';
@@ -24,14 +24,10 @@ const useStyles = makeStyles()(theme => ({
   card: {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: 15,
     margin: '8px 0',
   },
   link: {
-    fontSize: '0.875rem',
-    color: theme.palette.primary.main,
     textTransform: 'uppercase',
-    textAlign: 'center',
   },
 }));
 
@@ -112,44 +108,46 @@ const CheckoutAddress = ({ type }) => {
       >
         { address ? (
           <>
-            <span>
+            <Typography variant="body1" component="span">
               {address.middleName?.length
                 ? `${address.firstName} ${address.middleName} ${address.lastName}`
                 : `${address.firstName} ${address.lastName}`}
-            </span>
+            </Typography>
             { (type === ADDRESS_TYPE_BILLING && isGuestCheckout && orderReserveOnly) && (
               <>
-                <span>{address.emailAddress}</span>
-                <span>{address.mobile}</span>
+                <Typography variant="body1" component="span">{address.emailAddress}</Typography>
+                <Typography variant="body1" component="span">{address.mobile}</Typography>
               </>
             )}
-            <span>{address.address1}</span>
+            <Typography variant="body1" component="span">{address.address1}</Typography>
             {address.address2?.length ? (
-              <span>{address.address2}</span>
+              <Typography variant="body1" component="span">{address.address2}</Typography>
             ) : null}
             {address.address3?.length ? (
-              <span>{address.address3}</span>
+              <Typography variant="body1" component="span">{address.address3}</Typography>
             ) : null}
             {address.address4?.length ? (
-              <span>{address.address4}</span>
+              <Typography variant="body1" component="span">{address.address4}</Typography>
             ) : null}
             {address.postalCode ||
               address.region ||
               address.city ||
               address.country ? (
-                <span>
+                <Typography variant="body1" component="span">
                   {i18n.text(`checkout.${type}.address`, {
                     postalCode: address.postalCode || '',
                     region: iso3166?.[address.country]?.divisions?.[address.region] || address.region || '',
                     city: address.city || '',
                     country: address.country || '',
                   })}
-                </span>
+                </Typography>
               ) : null}
           </>
         ) : (
           <Link href={selectAddressLink} className={classes.link}>
-            {i18n.text(`checkout.${type}.select_address`)}
+            <Typography variant="body2" color="primary" component="span" align="center">
+              {i18n.text(`checkout.${type}.select_address`)}
+            </Typography>
           </Link>)}
       </Section>
     </div>

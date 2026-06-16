@@ -6,7 +6,9 @@ import {
   useWidgetStyles,
 } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { I18n, TimeBoundary, SurroundPortals } from '@shopgate/engage/components';
+import {
+  I18n, TimeBoundary, SurroundPortals, Typography,
+} from '@shopgate/engage/components';
 import { PRODUCT_EFFECTIVITY_DATES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { showExpiringLabel, showScheduledLabel } from './helpers';
 import connect from './connector';
@@ -14,12 +16,10 @@ import connect from './connector';
 const useStyles = makeStyles()((theme, { hintStyle }) => ({
   hint: {
     color: theme.palette.success.main,
-    fontSize: '0.75rem',
     ...(hintStyle || {}),
   },
   notAvailable: {
     color: theme.palette.error.main,
-    fontSize: '0.75rem',
   },
 }));
 
@@ -54,7 +54,11 @@ const EffectivityDates = ({
         {({ before, between, after }) => {
           if (before) {
             return showScheduledLabel(startDate, settings)
-              ? <I18n.Text string="product.available.at" params={{ startDate }} className={classes.hint} />
+              ? (
+                <Typography variant="caption" component="div" color="success" className={classes.hint}>
+                  <I18n.Text string="product.available.at" params={{ startDate }} />
+                </Typography>
+              )
               : children;
           }
 
@@ -63,7 +67,11 @@ const EffectivityDates = ({
               <>
                 {children}
                 {showExpiringLabel(endDate, settings) &&
-                  <I18n.Text string="product.available.until" params={{ endDate }} className={classes.hint} />}
+                  (
+                    <Typography variant="caption" component="div" color="success" className={classes.hint}>
+                      <I18n.Text string="product.available.until" params={{ endDate }} />
+                    </Typography>
+                  )}
               </>
             );
           }
@@ -72,7 +80,16 @@ const EffectivityDates = ({
             productNotAvailable();
 
             return showExpiringLabel(endDate, settings)
-              ? <I18n.Text string="product.available.not" className={cx(classes.hint, classes.notAvailable)} />
+              ? (
+                <Typography
+                  variant="caption"
+                  component="div"
+                  color="error"
+                  className={cx(classes.hint, classes.notAvailable)}
+                >
+                  <I18n.Text string="product.available.not" />
+                </Typography>
+              )
               : children;
           }
           return children;

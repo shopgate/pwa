@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -14,8 +15,6 @@ const useStyles = makeStyles()(theme => ({
     padding: '6px 10px',
     backgroundColor: 'rgba(0, 0, 0, 0.87)',
     color: theme.palette.common.white,
-    fontSize: '0.875rem',
-    fontWeight: 400,
     borderRadius: '4px',
     whiteSpace: 'normal', // allow multiline
     wordBreak: 'break-word',
@@ -188,12 +187,13 @@ function Tooltip({ children, text }) {
       {children}
       {mounted &&
         ReactDOM.createPortal(
-          <div
+          <Typography
+            variant="body2"
+            component="div"
             className={cx(classes.tooltipBox, arrowClass, 'tooltip-box')}
             style={portalStyle}
             data-visible={animate ? 'true' : 'false'}
             data-tooltip-id={tooltipId.current}
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: text }}
           />,
           document.body

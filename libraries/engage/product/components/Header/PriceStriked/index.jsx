@@ -4,6 +4,7 @@ import {
   Portal,
   I18n,
   PlaceholderLabel,
+  Typography,
   PriceStriked as StrikePrice,
 } from '@shopgate/engage/components';
 import {
@@ -25,7 +26,6 @@ const useStyles = makeStyles()(theme => ({
   },
   msrp: {
     color: theme.palette.grey.dark,
-    fontSize: '0.875rem',
     marginRight: theme.spacing(0.5),
   },
   msrpStriked: {
@@ -53,7 +53,11 @@ const PriceStriked = ({ price }) => {
         <PlaceholderLabel className={classes.placeholder} ready={(price !== null)}>
           {(price && price.msrp > 0 && price.unitPrice !== price.msrp) && (
             <>
-              {!!msrpLabel && (<I18n.Text string={msrpLabel} className={classes.msrp} />)}
+              {!!msrpLabel && (
+                <Typography variant="body2" component="span" className={classes.msrp}>
+                  <I18n.Text string={msrpLabel} />
+                </Typography>
+              )}
               <StrikePrice
                 className={classes.msrpStriked}
                 value={price.msrp}
@@ -68,7 +72,9 @@ const PriceStriked = ({ price }) => {
           ) && (
             <>
               {!!unitPriceStrikedLabel && (
-                <I18n.Text string={unitPriceStrikedLabel} className={classes.msrp} />
+                <Typography variant="body2" component="span" className={classes.msrp}>
+                  <I18n.Text string={unitPriceStrikedLabel} />
+                </Typography>
               )}
               <StrikePrice value={price.unitPriceStriked} currency={price.currency} />
             </>

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -7,7 +8,6 @@ const useStyles = makeStyles()(theme => ({
     paddingTop: theme.spacing(1),
     fontWeight: 600,
     textTransform: 'uppercase',
-    fontSize: '0.75rem',
   },
 }));
 
@@ -22,8 +22,11 @@ const Group = ({ group }) => {
   return (
     <tr>
       <td colSpan="2" className={classes.subgroup}>
-        {/* eslint-disable-next-line react/no-danger */}
-        <span dangerouslySetInnerHTML={{ __html: group }} />
+        <Typography
+          variant="caption"
+          component="span"
+          dangerouslySetInnerHTML={{ __html: group }}
+        />
       </td>
     </tr>
   );

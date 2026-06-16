@@ -18,9 +18,6 @@ const useStyles = makeStyles()({
     marginTop: 5,
     marginBottom: 2,
   },
-  shipping: {
-    fontSize: '0.875rem',
-  },
 });
 
 /**
@@ -29,7 +26,7 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const Shipping = ({ shipping }) => {
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
 
   return (
     <>
@@ -37,7 +34,7 @@ const Shipping = ({ shipping }) => {
       <Portal name={PRODUCT_SHIPPING}>
         <PlaceholderLabel className={classes.placeholder} ready={(shipping !== null)}>
           {shipping && typeof shipping.price !== 'undefined' && shipping.price !== null && (
-            <Label className={cx(classes.shipping, 'engage__product__header__shipping')} price={shipping.price} currency={shipping.currency} />
+            <Label className="engage__product__header__shipping" price={shipping.price} currency={shipping.currency} />
           )}
         </PlaceholderLabel>
       </Portal>

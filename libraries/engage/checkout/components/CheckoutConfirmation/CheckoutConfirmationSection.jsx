@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Card, TextLink } from '@shopgate/engage/components';
+import { Card, TextLink, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 
 const useStyles = makeStyles()(theme => ({
@@ -11,18 +10,9 @@ const useStyles = makeStyles()(theme => ({
   },
   headline: {
     color: theme.palette.grey.medium,
-    fontSize: '1rem',
-    fontWeight: 'normal',
-    textTransform: 'uppercase',
     paddingBottom: theme.spacing(1),
     margin: 0,
-    ...(!isIOSTheme() ? {
-      fontSize: '1.25rem',
-      lineHeight: '1.5rem',
-      fontWeight: 500,
-      color: theme.palette.text.primary,
-      textTransform: 'none',
-    } : {}),
+    lineHeight: '1.5rem',
   },
   link: {
     color: `${theme.palette.primary.main} !important`,
@@ -34,17 +24,13 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
     color: theme.palette.text.secondary,
     flex: '1 0 auto',
-    ...(!isIOSTheme() ? {
-      background: theme.palette.background.emphasized,
-      boxShadow: 'none',
-    } : {}),
+    background: theme.palette.background.emphasized,
+    boxShadow: 'none',
   },
   cardWithForm: {
-    ...(!isIOSTheme() ? {
-      background: 'inherit',
-      boxShadow: 'none',
-      padding: 0,
-    } : {}),
+    background: 'inherit',
+    boxShadow: 'none',
+    padding: 0,
   },
   list: {
     margin: 0,
@@ -61,12 +47,10 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   listEntry: {
-    fontSize: '0.875rem',
     lineHeight: '1.5rem',
     marginLeft: 0,
     whiteSpace: 'pre-line',
     wordBreak: 'break-all',
-    color: theme.palette.text.secondary,
   },
   table: {
     color: theme.palette.text.primary,
@@ -108,12 +92,23 @@ const CheckoutConfirmationSegment = ({
   /* eslint-disable react/no-danger */
   return (
     <div className={cx(classes.wrapper, className)}>
-      <h3 className={classes.headline}>{i18n.text(title)}</h3>
+      <Typography
+        variant="body1"
+        component="h3"
+        color="textPrimary"
+        className={classes.headline}
+      >
+        {i18n.text(title)}
+      </Typography>
       <Card className={cx(classes.card, {
         [classes.cardWithForm]: hasForm,
       })}
       >
-        {isString && (<span>{content}</span>)}
+        {isString && (
+          <Typography variant="body2" component="span" color="textSecondary">
+            {content}
+          </Typography>
+        )}
         {!isString && !isSummary && (
           <dl className={classes.list}>
             {content.map(({ label, text, link }) => (
@@ -122,13 +117,19 @@ const CheckoutConfirmationSegment = ({
                   <dt className={classes.listTitle}>{i18n.text(label)}</dt>
                 )}
                 {link ? (
-                  <dd className={classes.listEntry}>
+                  <Typography variant="body2" component="dd" color="textSecondary" className={classes.listEntry}>
                     <TextLink href={link} className={classes.link}>
                       <span dangerouslySetInnerHTML={{ __html: text }} />
                     </TextLink>
-                  </dd>
+                  </Typography>
                 ) : (
-                  <dd className={classes.listEntry} dangerouslySetInnerHTML={{ __html: text }} />
+                  <Typography
+                    variant="body2"
+                    component="dd"
+                    color="textSecondary"
+                    className={classes.listEntry}
+                    dangerouslySetInnerHTML={{ __html: text }}
+                  />
                 )}
               </Fragment>
             ))}

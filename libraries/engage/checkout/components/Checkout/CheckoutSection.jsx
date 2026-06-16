@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Card, Link } from '@shopgate/engage/components';
+import { Card, Link, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import CheckoutSectionInfo from './CheckoutSectionInfo';
 import CheckoutSectionMessages from './CheckoutSectionMessages';
@@ -8,16 +8,13 @@ import { i18n } from '../../../core/helpers/i18n';
 
 const useStyles = makeStyles()(theme => ({
   headline: {
-    fontSize: '1.25rem',
     fontWeight: 'normal',
     margin: theme.spacing(0, 0, 1, 0),
-    color: theme.palette.text.primary,
     textTransform: 'none',
   },
   card: {
     display: 'flex',
     flexDirection: 'row',
-    fontSize: 15,
     width: '100%',
     overflow: 'inherit !important',
     marginBottom: theme.spacing(2),
@@ -55,8 +52,6 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
   },
   link: {
-    fontSize: '0.875rem',
-    color: theme.palette.primary.main,
     textTransform: 'uppercase',
   },
   actions: {
@@ -86,7 +81,9 @@ const CheckoutSection = ({
   return (
     <>
       { title && (
-        <h3 className={classes.headline} id={id}>{i18n.text(title)}</h3>
+        <Typography variant="h3" component="h3" color="textPrimary" className={classes.headline} id={id}>
+          {i18n.text(title)}
+        </Typography>
       )}
       <Card
         className={cx(classes.card, {
@@ -113,17 +110,24 @@ const CheckoutSection = ({
                     <Fragment key={label}>
                       <tr>
                         <td>
-                          <span className={cx({
-                            [classes.labelWithInfoIcon]: !!info,
-                          })}
+                          <Typography
+                            variant="body1"
+                            component="span"
+                            className={cx({
+                              [classes.labelWithInfoIcon]: !!info,
+                            })}
                           >
                             {label}
-                          </span>
+                          </Typography>
                           { !hasError && (
                           <CheckoutSectionInfo text={info} />
                           )}
                         </td>
-                        <td>{text}</td>
+                        <td>
+                          {typeof text === 'string'
+                            ? <Typography variant="body1" component="span">{text}</Typography>
+                            : text}
+                        </td>
                       </tr>
                       { hasMessages && (
                         <tr>
@@ -156,7 +160,7 @@ const CheckoutSection = ({
               className={classes.link}
               href={editLink}
             >
-              {i18n.text(editLabel)}
+              <Typography variant="body2" component="span" color="primary">{i18n.text(editLabel)}</Typography>
             </Link>
           </div>
         ) : null}

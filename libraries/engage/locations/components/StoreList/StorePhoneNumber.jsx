@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { I18n, PhoneIcon } from '@shopgate/engage/components';
+import { PhoneIcon, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { StoreDetailsLine } from './StoreDetailsLine';
 
@@ -10,10 +10,6 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
     color: theme.palette.primary.main,
     lineHeight: '1.375rem',
-  },
-  detailsSecondary: {
-    color: theme.palette.text.secondary,
-    fontSize: '0.75rem',
   },
 }));
 
@@ -37,7 +33,9 @@ export function StorePhoneNumber({ phone }) {
     >
       <StoreDetailsLine icon={PhoneIcon} linked>
         <div className={classes.detailsPrimary} aria-hidden>{phone}</div>
-        <I18n.Text string="locations.phone" className={classes.detailsSecondary} aria-hidden />
+        <Typography variant="caption" component="span" color="textSecondary" aria-hidden>
+          {i18n.text('locations.phone')}
+        </Typography>
       </StoreDetailsLine>
     </a>
   );

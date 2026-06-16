@@ -1,6 +1,8 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { ResponsiveContainer, RippleButton } from '@shopgate/engage/components';
+import {
+  ResponsiveContainer, RippleButton, Typography,
+} from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartItems } from '@shopgate/engage/cart';
 import { useRoute } from '@shopgate/engage/core';
@@ -51,7 +53,6 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   heading: {
-    fontSize: '2.125rem',
     fontWeight: 'normal',
     margin: 0,
     lineHeight: '2.25rem',
@@ -62,13 +63,10 @@ const useStyles = makeStyles()(theme => ({
   },
   body: {
     border: 0,
-    fontSize: '0.875rem',
     lineHeight: '1.25rem',
   },
   orderNum: {
     padding: 0,
-    fontSize: '1.25rem',
-    fontWeight: 500,
     lineHeight: '1.5rem',
     margin: theme.spacing(0, 0, 2),
     border: 0,
@@ -144,22 +142,22 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
           <ResponsiveBackButton label="checkout.success.continue" onClick={onContinueShopping} />
         </div>
         <div className={classes.container}>
-          <h2 className={classes.heading}>
+          <Typography variant="h1" component="h2" className={classes.heading}>
             {i18n.text('checkout.success.title')}
-          </h2>
-          <p className={classes.orderNum}>
+          </Typography>
+          <Typography variant="h3" component="p" className={classes.orderNum}>
             {i18n.text('checkout.success.order_date', { date: i18n.date(new Date(date).getTime(), 'short') })}
             {' | '}
             {i18n.text('checkout.success.order_number', { orderNumber })}
-          </p>
+          </Typography>
 
           <div className={classes.instructions}>
-            <p className={classes.body}>
+            <Typography variant="body2" component="p" className={classes.body}>
               {i18n.text('checkout.success.instructions_1')}
-            </p>
-            <p className={classes.body}>
+            </Typography>
+            <Typography variant="body2" component="p" className={classes.body}>
               {i18n.text('checkout.success.instructions_2')}
-            </p>
+            </Typography>
           </div>
 
         </div>

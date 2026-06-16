@@ -30,6 +30,7 @@ import {
   Link,
   TextLink,
   SurroundPortals,
+  Typography,
 } from '@shopgate/engage/components';
 import {
   makeIsRopeProductOrderable,
@@ -162,8 +163,6 @@ const useStyles = makeStyles()(theme => ({
     flex: 1,
   },
   title: {
-    fontSize: 17,
-
     fontWeight: 600,
   },
   removeContainer: {
@@ -341,9 +340,10 @@ const FavoriteItem = ({
                     tag="span"
                     className={cx(classes.titleContainer, 'engage__favorites__item__title-container')}
                   >
-                    <span
+                    <Typography
+                      variant="h4"
+                      component="span"
                       className={classes.title}
-                      // eslint-disable-next-line react/no-danger
                       dangerouslySetInnerHTML={{ __html: `${product.name}` }}
                     />
                   </TextLink>

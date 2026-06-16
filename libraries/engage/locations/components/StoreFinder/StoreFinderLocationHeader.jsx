@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { Grid, LocationIcon } from '@shopgate/engage/components';
+import { Grid, LocationIcon, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { StoreContext } from './Store.context';
@@ -45,19 +45,9 @@ const useStyles = makeStyles()(theme => ({
       paddingTop: 0,
     },
   },
-  storeName: {
-    fontSize: '1rem',
-    fontWeight: 500,
-    color: theme.palette.text.primary,
-  },
   myStoreWrapper: {
     display: 'flex',
     alignItems: 'center',
-  },
-  myStore: {
-    color: theme.palette.primary.main,
-    fontSize: '1rem',
-    fontWeight: 500,
   },
   myStoreIcon: {
     ' svg': {
@@ -102,17 +92,17 @@ const StoreFinderLocationHeader = () => {
         <Grid>
           <Grid.Item grow={1}>
             <div className={classes.storeNameWrapper}>
-              <div className={classes.storeName}>
+              <Typography variant="h4" component="div" color="textPrimary">
                 { name }
-              </div>
+              </Typography>
               {isSelectedLocation && (
                 <div className={classes.myStoreWrapper}>
                   <div className={classes.myStoreIcon}>
                     <LocationIcon size={20} />
                   </div>
-                  <div className={classes.myStore}>
+                  <Typography variant="h4" component="div" color="primary">
                     {i18n.text('location.myStore')}
-                  </div>
+                  </Typography>
                 </div>
               )}
             </div>

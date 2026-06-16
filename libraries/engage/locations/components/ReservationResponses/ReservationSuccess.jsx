@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core/helpers/i18n';
 import { FulfillmentContext } from '../../locations.context';
@@ -10,7 +11,6 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   heading: {
-    fontSize: '1.125rem',
     fontWeight: 'bold',
     margin: theme.spacing(1, 0, 2.5),
   },
@@ -21,7 +21,6 @@ const useStyles = makeStyles()(theme => ({
   },
   orderNum: {
     padding: 0,
-    fontSize: '1.1875rem',
     fontWeight: 'bold',
     margin: theme.spacing(0, 0, 2),
     border: 0,
@@ -38,19 +37,19 @@ export function ReservationSuccess() {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.heading}>
+      <Typography variant="h4" component="h2" className={classes.heading}>
         {i18n.text('locations.success_title')}
-      </h2>
-      <p className={classes.body}>
+      </Typography>
+      <Typography variant="body1" component="p" className={classes.body}>
         {i18n.text('locations.success_copy')}
-      </p>
-      <p className={classes.body}>
+      </Typography>
+      <Typography variant="body1" component="p" className={classes.body}>
         {i18n.text('locations.success_order_num')}
-      </p>
+      </Typography>
       {orderNumbers !== null && (
-        <p className={classes.orderNum}>
+        <Typography variant="h3" component="p" className={classes.orderNum}>
           {orderNumbers[0]}
-        </p>
+        </Typography>
       )}
     </div>
   );
