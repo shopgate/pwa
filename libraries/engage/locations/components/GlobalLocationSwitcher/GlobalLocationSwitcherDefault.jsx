@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RippleButton, I18n } from '@shopgate/engage/components';
+import { RippleButton, I18n, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -8,7 +8,6 @@ const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: '0.875rem',
     padding: theme.spacing(0, 2),
     flexShrink: 0,
   },
@@ -20,7 +19,6 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.text.primary,
   },
   button: {
-    fontSize: '0.625rem !important',
     letterSpacing: '0.05em',
     padding: `${theme.spacing(0.375, 0)} !important`,
     ' *': {
@@ -37,9 +35,13 @@ const GlobalLocationSwitcherDefault = ({ locationName, handleChange, editable })
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.heading}>{i18n.text('locations.your_current_location.heading')}</div>
-      <div className={classes.name}>
-        <span>{ locationName }</span>
+      <Typography variant="body2" component="div" className={classes.heading}>
+        {i18n.text('locations.your_current_location.heading')}
+      </Typography>
+      <div>
+        <Typography variant="body2" component="span" className={classes.name}>
+          {locationName}
+        </Typography>
         <RippleButton
           onClick={handleChange}
           type="secondary"
@@ -47,7 +49,9 @@ const GlobalLocationSwitcherDefault = ({ locationName, handleChange, editable })
           disabled={!editable}
           flat
         >
-          <I18n.Text string="locations.your_current_location.change" />
+          <Typography variant="caption" component="span" style={{ fontSize: '0.625rem' }}>
+            <I18n.Text string="locations.your_current_location.change" />
+          </Typography>
         </RippleButton>
       </div>
     </div>

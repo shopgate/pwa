@@ -30,7 +30,6 @@ const useStyles = makeStyles()(theme => ({
   },
   msrpStriked: {
     display: 'inline',
-    fontSize: '0.875rem',
   },
 }));
 
@@ -58,11 +57,12 @@ const PriceStriked = ({ price }) => {
                   <I18n.Text string={msrpLabel} />
                 </Typography>
               )}
-              <StrikePrice
-                className={classes.msrpStriked}
-                value={price.msrp}
-                currency={price.currency}
-              />
+              <Typography variant="body2" component="span" className={classes.msrpStriked}>
+                <StrikePrice
+                  value={price.msrp}
+                  currency={price.currency}
+                />
+              </Typography>
             </>
           )}
           {(price &&
@@ -76,7 +76,9 @@ const PriceStriked = ({ price }) => {
                   <I18n.Text string={unitPriceStrikedLabel} />
                 </Typography>
               )}
-              <StrikePrice value={price.unitPriceStriked} currency={price.currency} />
+              <Typography variant="body2" component="span" className={classes.msrpStriked}>
+                <StrikePrice value={price.unitPriceStriked} currency={price.currency} />
+              </Typography>
             </>
           )}
         </PlaceholderLabel>

@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import {
-  LocationIcon, Button, Link, ConditionalWrapper,
+  LocationIcon, Button, Link, ConditionalWrapper, Typography,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
@@ -24,10 +24,8 @@ const useStyles = makeStyles()(theme => ({
   header: {
     color: theme.palette.primary.main,
     fontWeight: '600',
-    fontSize: 20,
   },
   locationName: {
-    fontSize: 20,
     fontWeight: '600',
     marginBottom: 8,
   },
@@ -131,16 +129,16 @@ const StoreDetails = () => {
           <div className={classes.headerIcon}>
             <LocationIcon className={classes.icon} size={20} />
           </div>
-          <div className={classes.header}>
+          <Typography variant="h3" component="div" className={classes.header}>
             {isRouteLocationPreferred ?
               i18n.text('location.myStore') :
               i18n.text('location.makeMyStore')}
-          </div>
+          </Typography>
         </div>
       </ConditionalWrapper>
-      <div className={classes.locationName}>
+      <Typography variant="h3" component="div" className={classes.locationName}>
         {routeLocation.name}
-      </div>
+      </Typography>
       <div className={classes.locationRow}>
         <div className={classes.locationColumn}>
           <p>

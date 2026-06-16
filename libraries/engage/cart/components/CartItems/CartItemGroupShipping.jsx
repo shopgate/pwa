@@ -1,5 +1,6 @@
 import React from 'react';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { LocalShippingIcon } from '../../../components';
 import { i18n } from '../../../core';
@@ -8,7 +9,6 @@ const useStyles = makeStyles()(theme => ({
   address: {
     display: 'flex',
     flexFlow: 'row nowrap',
-    fontSize: '0.875rem',
   },
   shippingIcon: {
     fontSize: '1.25rem',
@@ -35,9 +35,9 @@ export const CartItemGroupShipping = () => {
           <LocalShippingIcon />
         </div>
         <div>
-          <div className={classes.shippingTitle}>
+          <Typography variant="body2" component="div" className={classes.shippingTitle}>
             {i18n.text('locations.method.direct_ship')}
-          </div>
+          </Typography>
         </div>
       </div>
     </CardListItem>

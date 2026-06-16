@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { every, isEmpty } from 'lodash';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
-import { Accordion } from '@shopgate/engage/components';
+import { Accordion, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { StoreOpeningHours, StorePhoneNumber } from '@shopgate/engage/locations';
 import { CartItemGroupReservationLabel } from './CartItemGroupReservationLabel';
@@ -17,7 +17,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0.5, 4, 0.5, 2),
   },
   addressDetails: {
-    fontSize: '0.875rem',
     paddingLeft: theme.spacing(4),
   },
 }));
@@ -55,10 +54,10 @@ function CartItemGroupReservation({ location, fulfillmentMethod }) {
           />}
         className={classes.accordionToggle}
       >
-        <div className={classes.addressDetails}>
+        <Typography variant="body2" component="div" className={classes.addressDetails}>
           <StoreOpeningHours hours={operationHours} />
           <StorePhoneNumber phone={phoneNumber} />
-        </div>
+        </Typography>
       </Accordion>
     </CardListItem>
   );

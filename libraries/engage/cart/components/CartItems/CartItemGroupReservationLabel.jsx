@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { LocationIcon } from '@shopgate/engage/components';
+import { LocationIcon, Typography } from '@shopgate/engage/components';
 import { BOPIS } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
 /** @typedef {import('@shopgate/engage/locations/locations.types').LocationAware} LocationAware */
@@ -10,7 +10,6 @@ const useStyles = makeStyles()(theme => ({
   address: {
     display: 'flex',
     flexFlow: 'row nowrap',
-    fontSize: '0.875rem',
   },
   addressIcon: {
     fontSize: '1.25rem',
@@ -41,10 +40,10 @@ export function CartItemGroupReservationLabel({ location, fulfillmentMethod }) {
         <LocationIcon />
       </div>
       <div>
-        <div className={classes.title}>
+        <Typography variant="body2" component="div" className={classes.title}>
           {i18n.text(`locations.method.${suffix}`)}
-        </div>
-        {location.name}
+        </Typography>
+        <Typography variant="body2" component="div">{location.name}</Typography>
       </div>
     </div>
   );

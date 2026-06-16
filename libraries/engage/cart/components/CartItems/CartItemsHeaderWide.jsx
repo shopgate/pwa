@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './CartItemsHeaderWide.connector';
 
@@ -9,10 +9,11 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    fontWeight: 500,
-    fontSize: '1rem',
     lineHeight: '1.5rem',
     padding: theme.spacing(0, 2, 1, 2),
+  },
+  headerText: {
+    fontWeight: 500,
   },
   column: {
     display: 'flex',
@@ -120,27 +121,37 @@ const CartItemsHeaderWide = ({
   return (
     <div className={classes.header}>
       <div className={classes.imageColumn}>
-        <I18n.Text string="cart.items" />
+        <Typography variant="body1" component="span" className={classes.headerText}>
+          <I18n.Text string="cart.items" />
+        </Typography>
       </div>
       <div className={classes.detailsColumn} />
       <div className={cx(classes.column, {
         [classes.priceColumnWide]: hasLineItemPromotions,
       })}
       >
-        <I18n.Text string="cart.price" />
+        <Typography variant="body1" component="span" className={classes.headerText}>
+          <I18n.Text string="cart.price" />
+        </Typography>
       </div>
       {isOrderDetails && (
       <>
         {!isDirectShipOnly ? (
           <div className={classes.locationColumn}>
-            <I18n.Text string="cart.location" />
+            <Typography variant="body1" component="span" className={classes.headerText}>
+              <I18n.Text string="cart.location" />
+            </Typography>
           </div>
         ) : null}
         <div className={classes.column}>
-          <I18n.Text string="cart.status" />
+          <Typography variant="body1" component="span" className={classes.headerText}>
+            <I18n.Text string="cart.status" />
+          </Typography>
         </div>
         <div className={classes.column}>
-          <I18n.Text string="cart.fulfilled_quantity" />
+          <Typography variant="body1" component="span" className={classes.headerText}>
+            <I18n.Text string="cart.fulfilled_quantity" />
+          </Typography>
         </div>
       </>
       )}
@@ -148,10 +159,14 @@ const CartItemsHeaderWide = ({
         ? classes.quantityPickerColumn
         : classes.quantityPickerColumnNotEditable}
       >
-        <I18n.Text string={isOrderDetails ? 'cart.ordered_quantity' : 'cart.quantity'} />
+        <Typography variant="body1" component="span" className={classes.headerText}>
+          <I18n.Text string={isOrderDetails ? 'cart.ordered_quantity' : 'cart.quantity'} />
+        </Typography>
       </div>
       <div className={classes.column}>
-        <I18n.Text string="cart.subtotal" />
+        <Typography variant="body1" component="span" className={classes.headerText}>
+          <I18n.Text string="cart.subtotal" />
+        </Typography>
       </div>
       { editable && enabledFulfillmentMethodsCount > 1 && (
       <div className={classes.contextMenuColumn} />

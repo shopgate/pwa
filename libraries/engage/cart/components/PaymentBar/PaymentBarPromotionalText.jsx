@@ -2,7 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { nl2br, showModal as showModalAction, isIOSTheme } from '@shopgate/engage/core';
-import { InfoIcon } from '@shopgate/engage/components';
+import { InfoIcon, Typography } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
@@ -14,13 +14,11 @@ const mapDispatchToProps = {
 const useStyles = makeStyles()(theme => ({
   textWrapper: {
     padding: theme.spacing(0.5, 0),
-    color: theme.palette.error.main,
     order: 3,
   },
   line: {
     justifyContent: 'start',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
-      fontSize: '0.75rem',
       paddingBottom: 3,
       verticalAlign: 'text-bottom',
     },
@@ -74,11 +72,13 @@ const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
     return (
       <CartTotalLine className={classes.line}>
         <>
-          <div
+          <Typography
+            variant="caption"
+            component="div"
+            color="error"
             className={cx(classes.textWrapper, {
               [classes.loading]: isLoading,
             })}
-            // eslint-disable-next-line react/no-danger
             dangerouslySetInnerHTML={{ __html: nl2br(text) }}
           />
           <CartTotalLine.Spacer className={classes.spacer} />

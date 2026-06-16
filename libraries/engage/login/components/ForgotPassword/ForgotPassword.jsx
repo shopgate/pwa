@@ -67,7 +67,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2, 0),
   },
   goBackButton: {
-    fontSize: '0.875rem !important',
     padding: '0 !important',
     ' > div ': {
       padding: 0,
@@ -175,7 +174,9 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
               onClick={handleBackToLogin}
             >
               <ArrowIcon className={classes.goBackButtonIcon} />
-              <I18n.Text string="login.reset_password.back_to_login" />
+              <Typography variant="body2" component="span">
+                <I18n.Text string="login.reset_password.back_to_login" />
+              </Typography>
             </RippleButton>
           </div>
         </>

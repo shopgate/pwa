@@ -1,5 +1,5 @@
 import React, { useContext, useCallback } from 'react';
-import { RippleButton } from '@shopgate/engage/components';
+import { RippleButton, Typography } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isProductAvailable } from '../../helpers';
@@ -14,7 +14,6 @@ const useStyles = makeStyles()(theme => ({
   },
   selectLocationButton: {
     width: '100%',
-    fontSize: '.875rem !important',
     ':not(:disabled)': {
       background: theme.palette.primary.main,
       color: theme.palette.primary.contrastText,
@@ -62,11 +61,13 @@ const StoreSelectLocationButton = ({ setPostalCode }) => {
         className={classes.selectLocationButton}
         disabled={(isLoading || store?.isComingSoon || (!noInventory && !isAvailable))}
       >
-        {i18n.text(
-          store?.isComingSoon ?
-            'location.comingSoon' :
-            'locations.select_location'
-        )}
+        <Typography variant="body2" component="span">
+          {i18n.text(
+            store?.isComingSoon ?
+              'location.comingSoon' :
+              'locations.select_location'
+          )}
+        </Typography>
       </RippleButton>
     </div>
   );

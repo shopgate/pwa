@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { Button } from '@shopgate/engage/components';
+import { Button, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { historyPush } from '@shopgate/engage/core';
 import formatDistance from '../../../helpers/formatDistance';
@@ -11,7 +11,6 @@ import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    fontSize: '14px !important',
     padding: '0px !important',
   },
   locationRow: {
@@ -104,18 +103,24 @@ const StoresNearbyListItem = ({ location }) => {
             <div className={classes.makeMyStore}>
               {(!isComingSoon) && (
                 <Button className={classes.button} onClick={() => selectLocation(location, true)} role="button" type="primary" flat disabled={isPreferredLocation} wrapContent={false}>
+                  <Typography variant="body2" component="span">
                     {`${i18n.text('location.makeMyStore')}`}
+                  </Typography>
                 </Button>
               )}
               {isComingSoon && (
                 <Button className={classes.button} role="button" type="primary" flat disabled wrapContent={false}>
-                  {i18n.text('location.comingSoon')}
+                  <Typography variant="body2" component="span">
+                    {i18n.text('location.comingSoon')}
+                  </Typography>
                 </Button>
               )}
             </div>
             <div className={classes.storeInfo}>
               <Button className={classes.button} role="button" type="primary" flat onClick={() => openStoreDetails(code)} wrapContent={false}>
-                {i18n.text('locations.details')}
+                <Typography variant="body2" component="span">
+                  {i18n.text('locations.details')}
+                </Typography>
               </Button>
             </div>
           </div>

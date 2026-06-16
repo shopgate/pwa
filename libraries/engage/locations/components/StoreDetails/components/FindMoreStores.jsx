@@ -1,6 +1,11 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { MagnifierIcon, LocatorIcon, Link } from '@shopgate/engage/components';
+import {
+  MagnifierIcon,
+  LocatorIcon,
+  Link,
+  Typography,
+} from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { STORE_FINDER_PATTERN } from '../../../constants';
 
@@ -9,9 +14,6 @@ const useStyles = makeStyles()(theme => ({
     margin: '16px 0px',
   },
   title: {
-    fontSize: '20px',
-    fontWeight: '500',
-    color: theme.palette.primary.main,
     marginBottom: '8px',
   },
   inputCell: {
@@ -57,12 +59,10 @@ const FindMoreStores = () => {
   const { classes } = useStyles();
 
   return (
-    <div
-      className={classes.container}
-    >
-      <div className={classes.title} aria-hidden>
+    <div className={classes.container}>
+      <Typography variant="h3" component="div" color="primary" className={classes.title} aria-hidden>
         {i18n.text('location.findMoreStores')}
-      </div>
+      </Typography>
       <div className={classes.inputCell}>
         <div className={classes.inputContainer}>
           <span className={classes.inputIcon} aria-hidden>
@@ -78,9 +78,7 @@ const FindMoreStores = () => {
             placeholder=""
             aria-hidden
           />
-          <div
-            className={classes.inputIcon}
-          >
+          <div className={classes.inputIcon}>
             <LocatorIcon />
           </div>
           <Link
