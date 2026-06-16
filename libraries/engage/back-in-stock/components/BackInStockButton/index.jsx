@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  Link, CheckedIcon, Button, NotificationIcon,
+  Link, CheckedIcon, Button, NotificationIcon, Typography,
 } from '@shopgate/engage/components';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -26,10 +26,6 @@ const useStyles = makeStyles()(theme => ({
   },
   backInStockMessage: {
     verticalAlign: 'middle',
-    fontSize: '0.875rem',
-  },
-  buttonText: {
-    fontSize: '0.875rem',
   },
   icon: {
     marginRight: 4,
@@ -107,7 +103,9 @@ const BackInStockButton = ({
           color={theme.palette.success.main}
           className={alignRight ? classes.icon : cx(classes.iconCentered, classes.icon)}
         />
-        <span className={classes.backInStockMessage}>{i18n.text('back_in_stock.we_will_remind_you')}</span>
+        <Typography variant="body2" component="span" className={classes.backInStockMessage}>
+          {i18n.text('back_in_stock.we_will_remind_you')}
+        </Typography>
       </Link>
     );
   }
@@ -120,9 +118,9 @@ const BackInStockButton = ({
         onClick={handleClick}
         className={classes.button}
       >
-        <span className={classes.buttonText}>
+        <Typography variant="body2" component="span" className={classes.buttonText}>
           {i18n.text('back_in_stock.get_notified')}
-        </span>
+        </Typography>
       </Button>
     );
   }

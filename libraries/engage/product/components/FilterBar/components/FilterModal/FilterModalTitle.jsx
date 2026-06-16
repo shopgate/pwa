@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { Ripple, CrossIcon } from '@shopgate/engage/components';
+import { Ripple, CrossIcon, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -16,7 +16,6 @@ const useStyles = makeStyles()(theme => ({
   },
   title: {
     flex: 1,
-    fontSize: '1.25rem',
   },
   closeButton: {
     fontSize: 21,
@@ -53,9 +52,9 @@ const FilterModalTitle = ({ apply, reset, close }) => {
       <Ripple onClick={close} className={classes.closeButton}>
         <CrossIcon />
       </Ripple>
-      <span className={classes.title}>
+      <Typography variant="h3" component="span" className={classes.title}>
         {i18n.text('titles.filter')}
-      </span>
+      </Typography>
       <Ripple fill className={classes.actionButtonSecondary} onClick={reset}>
         {i18n.text('filter.reset')}
       </Ripple>

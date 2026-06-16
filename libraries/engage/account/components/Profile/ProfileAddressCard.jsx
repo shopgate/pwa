@@ -7,7 +7,9 @@ import {
   ADDRESS_TYPE_BILLING,
   ADDRESS_TYPE_SHIPPING,
 } from '@shopgate/engage/checkout';
-import { RippleButton, Card, ContextMenu } from '@shopgate/engage/components';
+import {
+  RippleButton, Card, ContextMenu, Typography,
+} from '@shopgate/engage/components';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
 const useStyles = makeStyles()(theme => ({
@@ -49,9 +51,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   name: {
-    color: theme.palette.text.primary,
     flex: 1,
-    fontSize: 16,
     fontWeight: '600',
   },
   others: {
@@ -91,11 +91,11 @@ const ProfileAddressCard = ({
   return (
     <Card className={classes.root}>
       <div className={classes.header}>
-        <span className={classes.name}>
+        <Typography variant="h5" component="span" color="textPrimary" className={classes.name}>
           {contact.middleName
             ? `${contact.firstName} ${contact.middleName} ${contact.lastName}`
             : `${contact.firstName} ${contact.lastName}`}
-        </span>
+        </Typography>
         <ContextMenu classes={{ container: classes.contextMenu }}>
           <ContextMenu.Item onClick={editContact}>
             {i18n.text('account.profile.address_book.context.edit')}

@@ -5,6 +5,7 @@ import {
   i18n,
 } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import { getWishlistItemNotesEnabled } from '../../../core/selectors/shopSettings';
 
 const useStyles = makeStyles()(theme => ({
@@ -23,14 +24,6 @@ const useStyles = makeStyles()(theme => ({
     paddingLeft: 0,
     paddingRight: 0,
     textAlign: 'left',
-  },
-  comment: {
-    fontSize: 17,
-    color: theme.palette.text.primary,
-    fontWeight: 500,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
   },
   notes: {
     paddingRight: 4,
@@ -69,9 +62,9 @@ const ItemNotes = ({
     <div className={classes.root}>
       {notes && (
         <span role="text">
-          <span className={classes.comment}>
+          <Typography variant="h4" component="span" color="textPrimary" noWrap>
             {`${i18n.text('favorites.comments.notes')}: `}
-          </span>
+          </Typography>
           <span className={classes.notes}>{`"${notes}"`}</span>
         </span>
       )}

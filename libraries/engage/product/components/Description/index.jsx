@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  SurroundPortals, PlaceholderParagraph, HtmlSanitizer, I18n,
+  SurroundPortals, PlaceholderParagraph, HtmlSanitizer, I18n, Typography,
 } from '@shopgate/engage/components';
 import { PRODUCT_DESCRIPTION } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -13,10 +13,8 @@ const useStyles = makeStyles()(theme => ({
     padding: '0.8125rem 1rem 1rem',
   },
   title: {
-    fontSize: '1rem',
     fontWeight: 500,
     marginBottom: '0.5rem',
-    color: theme.palette.text.primary,
   },
   content: {
     lineHeight: 1.7,
@@ -67,9 +65,9 @@ function Description({ html, navigate, ...props }) {
     >
       {(html !== '') && (
         <div className={cx(classes.container, 'engage__product__description')}>
-          <div className={cx(classes.title, 'theme__description_heading')}>
+          <Typography variant="h5" component="div" color="textPrimary" className={cx(classes.title, 'theme__description_heading')}>
             <I18n.Text string="product.description_heading" />
-          </div>
+          </Typography>
           <PlaceholderParagraph className={classes.placeholder} ready={!!html}>
             <div className={classes.content} data-test-id="description">
               <HtmlSanitizer

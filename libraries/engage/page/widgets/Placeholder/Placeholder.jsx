@@ -1,14 +1,12 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import { usePlaceholderWidget } from './hooks';
 
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(2),
     minHeight: 200,
-  },
-  name: {
-    fontSize: 14,
   },
   pre: {
     background: theme.palette.background.emphasized,
@@ -35,7 +33,7 @@ const PlaceholderWidget = () => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.name}>{name}</div>
+      <Typography variant="body2" component="div">{name}</Typography>
       <pre className={classes.pre}>
         {JSON.stringify({
           code,

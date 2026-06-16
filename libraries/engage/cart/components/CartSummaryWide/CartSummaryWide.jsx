@@ -1,6 +1,7 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import PaymentBarSubTotal from '../PaymentBar/PaymentBarSubTotal';
 import PaymentBarGrandTotal from '../PaymentBar/PaymentBarGrandTotal';
 import PaymentBarShippingCost from '../PaymentBar/PaymentBarShippingCost';
@@ -20,8 +21,6 @@ const useStyles = makeStyles()(theme => ({
     width: 420,
   },
   headline: {
-    fontSize: '1.25rem',
-    fontWeight: 500,
     lineHeight: '1.5rem',
   },
   summary: {
@@ -54,9 +53,9 @@ const CartSummaryWide = () => {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.headline}>
+      <Typography variant="h3" component="h2" className={classes.headline}>
         {i18n.text('checkout.summary.headline')}
-      </h2>
+      </Typography>
       <div className={classes.summary}>
         <PaymentBarSubTotal showSeparator={false} label="cart.subtotal" className={classes.total} />
         <PaymentBarAppliedPromotions showSeparator={false} className={classes.total} />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import { useLongPress } from '@shopgate/engage/core/hooks';
 import { getClientInformation } from '@shopgate/engage/core/selectors';
 import DevelopmentSettings from '../DevelopmentSettings';
@@ -10,7 +11,6 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     textAlign: 'center',
     color: theme.palette.grey[500],
-    fontSize: 12,
     paddingBottom: 20,
   },
   unselectable: {
@@ -55,7 +55,9 @@ const ClientInformation = () => {
   }
 
   return (
-    <div
+    <Typography
+      variant="caption"
+      component="div"
       className={cx('ui-shared__client-information', classes.root)}
       {...longPressAttrs}
       aria-hidden
@@ -75,7 +77,7 @@ const ClientInformation = () => {
             onClose={() => setDevelopmentSettingsVisible(false)}
           />
         </>}
-    </div>
+    </Typography>
   );
 };
 

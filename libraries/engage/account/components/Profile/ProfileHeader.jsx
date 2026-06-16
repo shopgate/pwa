@@ -1,9 +1,10 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useProfileContext } from './Profile.provider';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   root: {
     marginTop: 8,
     [responsiveMediaQuery('<md')]: {
@@ -12,11 +13,9 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   title: {
-    color: theme.palette.text.primary,
-    fontSize: 17,
     fontWeight: '600',
   },
-}));
+});
 
 /**
  * @returns {JSX}
@@ -27,9 +26,9 @@ const ProfileHeader = () => {
 
   return (
     <div className={classes.root}>
-      <span className={classes.title}>
+      <Typography variant="h4" component="span" color="textPrimary" className={classes.title}>
         {i18n.text('account.profile.customer.number', { customerNumber: internalCustomerNumber })}
-      </span>
+      </Typography>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import {
   PriceStriked,
   Price,
   Availability,
+  Typography,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getProductRoute, ProductImage } from '@shopgate/engage/product';
@@ -55,10 +56,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0.5, 0),
     textAlign: 'right',
   },
-  titleContainer: {
-  },
   title: {
-    fontSize: 17,
     fontWeight: 600,
     flexWrap: 'wrap',
     overflowWrap: 'anywhere',
@@ -67,11 +65,7 @@ const useStyles = makeStyles()(theme => ({
     minWidth: '30px',
   },
   availabilityText: {
-    fontSize: '0.875rem',
     marginBottom: '4px',
-  },
-  characteristicText: {
-    fontSize: '0.875rem',
   },
   ripple: {
     minWidth: '17px',
@@ -116,11 +110,11 @@ const Subscription = ({
           <Link
             href={productLink}
             tag="span"
-            className={classes.titleContainer}
           >
-            <span
+            <Typography
+              variant="h4"
+              component="span"
               className={classes.title}
-                // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{ __html: `${product.name}` }}
             />
           </Link>
@@ -138,14 +132,16 @@ const Subscription = ({
         </div>
         <div className={classes.baseContainerRow}>
           {product?.characteristics?.map(({ label, value }) =>
-            <div
+            <Typography
+              variant="body2"
+              component="div"
               key={label + value}
               className={classes.characteristicText}
             >
               {label}
               {': '}
               {value}
-            </div>)}
+            </Typography>)}
           <Availability
             text={product?.availability?.text}
             state={product?.availability?.state}

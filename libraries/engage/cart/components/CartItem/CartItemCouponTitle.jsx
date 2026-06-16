@@ -2,11 +2,10 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 
 const useStyles = makeStyles()({
   title: {
-    fontSize: '1rem',
-    fontWeight: 500,
     lineHeight: 1.125,
     marginBottom: 4,
   },
@@ -24,9 +23,9 @@ export function CartItemCouponTitle({ value }) {
   ), [value]);
 
   return (
-    <div className={classes.title}>
+    <Typography variant="h5" component="div" className={classes.title}>
       {title}
-    </div>
+    </Typography>
   );
 }
 
