@@ -50,11 +50,8 @@ const useStyles = makeStyles()(theme => ({
   },
   priceInfo: {
     wordBreak: 'break-word',
-    fontSize: '0.875rem',
     lineHeight: '0.875rem',
-    color: theme.palette.text.secondary,
     padding: theme.spacing(0.5, 0),
-    textAlign: 'right',
   },
   title: {
     fontWeight: 600,
@@ -168,7 +165,9 @@ const Subscription = ({
             unitPrice={defaultPrice}
           />
           {!!product.price.info && (
-            <PriceInfo text={product.price.info} className={classes.priceInfo} />
+            <Typography variant="body2" component="div" color="textSecondary" align="right" className={classes.priceInfo}>
+              <PriceInfo text={product.price.info} className={classes.priceInfo} />
+            </Typography>
           )}
         </div>
       </div>

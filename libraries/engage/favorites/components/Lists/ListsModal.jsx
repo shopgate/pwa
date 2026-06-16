@@ -1,19 +1,19 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
-import { Dialog, TextField } from '@shopgate/engage/components';
+import { Dialog, TextField, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
   },
   input: {
     textAlign: 'left',
-    fontSize: '1rem',
+    fontSize: theme.typography.body1,
   },
-});
+}));
 
 /**
  * @param {Object} props Props
@@ -53,7 +53,9 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
       }}
     >
       <div className={classes.root}>
-        <span>{i18n.text(`favorites.${type}_modal.message`)}</span>
+        <Typography variant="body1" component="span">
+          {i18n.text(`favorites.${type}_modal.message`)}
+        </Typography>
         <TextField
           name="name"
           placeholder={i18n.text(`favorites.${type}_modal.label`)}

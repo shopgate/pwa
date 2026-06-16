@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
+import { Typography } from '@shopgate/engage/components';
 import {
   PRODUCT_TIERS,
   PRODUCT_TIERS_AFTER,
@@ -13,7 +14,6 @@ import connect from './connector';
 const useStyles = makeStyles()({
   wrapper: {
     marginTop: 4,
-    fontSize: '0.875rem',
   },
 });
 
@@ -33,7 +33,11 @@ const Tiers = ({ price }) => {
     <>
       <Portal name={PRODUCT_TIERS_BEFORE} />
       <Portal name={PRODUCT_TIERS}>
-        <div className={cx(classes.wrapper, 'engage__product__header__tiers')}>
+        <Typography
+          variant="body2"
+          component="div"
+          className={cx(classes.wrapper, 'engage__product__header__tiers')}
+        >
           {price.tiers.map(tier => (
             <Tier
               tier={tier}
@@ -41,7 +45,7 @@ const Tiers = ({ price }) => {
               key={`${Object.values(tier).join('_')}`}
             />
           ))}
-        </div>
+        </Typography>
       </Portal>
       <Portal name={PRODUCT_TIERS_AFTER} />
     </>

@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery, useTheme } from '@shopgate/engage/styles';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -36,8 +37,6 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
-      color: theme.palette.text.secondary,
-      fontSize: '0.875rem',
       lineHeight: '1.25rem',
       fontWeight: 'initial',
       paddingTop: theme.spacing(1),
@@ -118,9 +117,11 @@ const Item = ({
               {title}
             </div>
             {description && (
-              <div
+              <Typography
+                variant="body2"
+                component="div"
+                color="textSecondary"
                 className={classes.description}
-                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             )}

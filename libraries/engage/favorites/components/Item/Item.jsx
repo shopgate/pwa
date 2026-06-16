@@ -148,9 +148,7 @@ const useStyles = makeStyles()(theme => ({
   },
   priceInfo: {
     wordBreak: 'break-word',
-    fontSize: '0.875rem',
     lineHeight: '0.875rem',
-    color: theme.palette.text.secondary,
     padding: theme.spacing(0.5, 0),
   },
   titleWrapper: {
@@ -394,11 +392,13 @@ const FavoriteItem = ({
                         className={classes.price}
                       />
                     </div>
-                    <PriceInfo
-                      product={product}
-                      currency={currency}
-                      className={classes.priceInfo}
-                    />
+                    <Typography variant="body2" component="div" color="textSecondary" className={classes.priceInfo}>
+                      <PriceInfo
+                        product={product}
+                        currency={currency}
+                        className={classes.priceInfo}
+                      />
+                    </Typography>
                   </div>
                 </SurroundPortals>
               </div>

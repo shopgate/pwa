@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { i18n, errorBehavior } from '@shopgate/engage/core/helpers';
 import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
@@ -42,7 +43,6 @@ const useStyles = makeStyles()((theme) => {
 
   const messageBase = {
     padding: theme.spacing(2, 2),
-    fontSize: '0.875rem',
     lineHeight: 1.3,
     fontWeight: 500,
     ':not(:last-child)': {
@@ -199,9 +199,14 @@ const MessageBar = ({
             <span className="sr-only">
               {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
             </span>
-            <span aria-hidden className={Icon ? classes.messageToIcon : null}>
+            <Typography
+              variant="body2"
+              component="span"
+              aria-hidden
+              className={Icon ? classes.messageToIcon : null}
+            >
               {messageOutput}
-            </span>
+            </Typography>
           </div>
         );
       })}

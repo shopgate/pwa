@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import intersection from 'lodash/intersection';
-import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
+import {
+  Grid, ResponsiveContainer, SurroundPortals, Typography,
+} from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   ROPIS,
@@ -19,20 +21,15 @@ import FulfillmentSelectorAlternativeLocation from './FulfillmentSelectorAlterna
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    fontSize: '0.75rem',
     padding: theme.spacing(0, 2, 1, 6),
     marginTop: theme.spacing(-1),
     flexDirection: 'column',
   },
   unavailable: {
     color: theme.palette.common.black,
-    fontSize: '0.625rem',
     textTransform: 'uppercase',
     letterSpacing: '0.05em',
     opacity: 0.5,
-  },
-  locationName: {
-    color: theme.palette.text.secondary,
   },
   itemRow: {
     alignContent: 'stretch',
@@ -123,7 +120,9 @@ export function FulfillmentSelectorLocation() {
             <Grid component="div">
               <ResponsiveContainer appAlways breakpoint="xs">
                 <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
-                  <div className={classes.locationName}>{usedLocation.name}</div>
+                  <Typography variant="body2" component="div" color="textSecondary">
+                    {usedLocation.name}
+                  </Typography>
                 </Grid.Item>
                 <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
                   <StockInfo productId={productId} location={usedLocation} />
@@ -131,7 +130,9 @@ export function FulfillmentSelectorLocation() {
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
                 <div>
-                  <div className={classes.locationName}>{usedLocation.name}</div>
+                  <Typography variant="body2" component="div" color="textSecondary">
+                    {usedLocation.name}
+                  </Typography>
                 </div>
                 <div className={classes.itemSpacer}>
                   <StockInfo productId={productId} location={usedLocation} />
@@ -145,17 +146,19 @@ export function FulfillmentSelectorLocation() {
           </Grid>
         )}
         {(isRopeMethodEnabled && selected && !isOrderable) && (
-          <div className={classes.container}>
-            <div className={classes.locationName}>{usedLocation?.name || ''}</div>
+          <Typography variant="body2" component="div" className={classes.container}>
+            <Typography variant="body2" component="div" color="textSecondary">
+              {usedLocation?.name || ''}
+            </Typography>
             <FulfillmentSelectorImpossibleError />
             <ChangeLocationButton onClick={handleChangeLocation} />
-          </div>
+          </Typography>
         )}
         {/* eslint-disable-next-line no-constant-condition */}
         {false && !isRopeMethodEnabled ? (
-          <div className={cx(classes.unavailable, classes.container)}>
+          <Typography variant="caption" component="div" className={cx(classes.unavailable, classes.container)}>
             {i18n.text('locations.no_available')}
-          </div>
+          </Typography>
         ) : null}
 
       </SurroundPortals>

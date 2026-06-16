@@ -14,7 +14,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
-    color: theme.palette.text.secondary,
     ' > *': {
       margin: 0,
     },
@@ -28,7 +27,6 @@ const useStyles = makeStyles()(theme => ({
       color: theme.palette.primary.main,
       textDecoration: 'underline',
     },
-    fontSize: '0.875rem',
     lineHeight: '1.5rem',
     ' > *:not(:last-child)': {
       paddingBottom: theme.spacing(0.5),
@@ -87,7 +85,7 @@ const StoreFinderLocationHeader = () => {
   [selectedLocation, store]);
 
   return (
-    <div className={classes.container}>
+    <Typography variant="body2" component="div" color="textSecondary" className={classes.container}>
       <div className={classes.clickable}>
         <Grid>
           <Grid.Item grow={1}>
@@ -117,7 +115,7 @@ const StoreFinderLocationHeader = () => {
         <StoreAddress address={address} />
       </div>
       <StoreFinderLocationHeaderPhoneNumber phone={address.phoneNumber} />
-    </div>
+    </Typography>
   );
 };
 

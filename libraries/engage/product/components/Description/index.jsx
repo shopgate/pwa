@@ -9,7 +9,6 @@ import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    fontSize: '0.875rem',
     padding: '0.8125rem 1rem 1rem',
   },
   title: {
@@ -20,7 +19,6 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: 1.7,
     overflow: 'hidden',
     wordBreak: ['break-all', 'break-word'],
-    color: theme.palette.text.primary,
     hyphens: 'auto',
     ' ul': {
       listStyle: 'disc',
@@ -65,11 +63,11 @@ function Description({ html, navigate, ...props }) {
     >
       {(html !== '') && (
         <div className={cx(classes.container, 'engage__product__description')}>
-          <Typography variant="h5" component="div" color="textPrimary" className={cx(classes.title, 'theme__description_heading')}>
+          <Typography variant="h5" component="div" className={cx(classes.title, 'theme__description_heading')}>
             <I18n.Text string="product.description_heading" />
           </Typography>
           <PlaceholderParagraph className={classes.placeholder} ready={!!html}>
-            <div className={classes.content} data-test-id="description">
+            <Typography variant="body2" component="div" color="textPrimary" className={classes.content} data-test-id="description">
               <HtmlSanitizer
                 settings={{
                   html,
@@ -78,7 +76,7 @@ function Description({ html, navigate, ...props }) {
               >
                 {html}
               </HtmlSanitizer>
-            </div>
+            </Typography>
           </PlaceholderParagraph>
         </div>
       )}

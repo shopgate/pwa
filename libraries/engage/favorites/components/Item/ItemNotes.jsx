@@ -8,16 +8,13 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { Typography } from '@shopgate/engage/components';
 import { getWishlistItemNotesEnabled } from '../../../core/selectors/shopSettings';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
   },
   addCommentButton: {
-    fontSize: 17,
-    color: theme.palette.secondary.main,
-    fontWeight: 500,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -57,11 +54,10 @@ const ItemNotes = ({
   if (!wishlistItemNotesEnabled) {
     return null;
   }
-  /* eslint-disable jsx-a11y/aria-role */
   return (
     <div className={classes.root}>
       {notes && (
-        <span role="text">
+        <span>
           <Typography variant="h4" component="span" color="textPrimary" noWrap>
             {`${i18n.text('favorites.comments.notes')}: `}
           </Typography>
@@ -76,20 +72,23 @@ const ItemNotes = ({
           with the "notesId" that can be focused when closing the CommentDialog modal.
         */}
         <button type="button" onClick={onClickOpenComment} className={classes.addCommentButton} ref={notesButtonRef}>
-          {notes ? i18n.text('favorites.comments.edit') : i18n.text('favorites.comments.add')}
+          <Typography variant="h4" component="span" color="secondary">
+            {notes ? i18n.text('favorites.comments.edit') : i18n.text('favorites.comments.add')}
+          </Typography>
         </button>
         { notes && (
           <>
             <span aria-hidden> | </span>
             <button type="button" onClick={onClickDeleteComment} className={classes.addCommentButton}>
-              {i18n.text('favorites.comments.delete')}
+              <Typography variant="h4" component="span" color="secondary">
+                {i18n.text('favorites.comments.delete')}
+              </Typography>
             </button>
           </>
         )}
       </span>
     </div>
   );
-  /* eslint-enable jsx-a11y/aria-role */
 };
 
 ItemNotes.propTypes = {

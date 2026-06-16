@@ -6,11 +6,11 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { AVAILABILITY_STATE_ALERT } from '@shopgate/engage/product';
 import { ROPIS, BOPIS } from '../../constants';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    fontSize: '0.625rem',
+    fontSize: theme.typography.caption,
   },
-});
+}));
 
 /**
  * @returns {JSX}
