@@ -34,7 +34,7 @@ const useStyles = makeStyles()(theme => ({
   },
   grandTotal: {
     fontSize: '1.25rem !important',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     borderTop: `1px solid ${theme.components.border.medium}`,
     padding: theme.spacing(1, 0),
     color: theme.palette.text.primary,

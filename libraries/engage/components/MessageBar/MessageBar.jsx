@@ -44,7 +44,7 @@ const useStyles = makeStyles()((theme) => {
   const messageBase = {
     padding: theme.spacing(2, 2),
     lineHeight: 1.3,
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     ':not(:last-child)': {
       marginBottom: theme.spacing(0.5),
     },

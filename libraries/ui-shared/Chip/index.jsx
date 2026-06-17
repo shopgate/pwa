@@ -63,7 +63,7 @@ const useStyles = makeStyles()((theme, { removable, invert }) => ({
     paddingTop: 3,
     paddingBottom: 3,
     fontSize: 12,
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     textOverflow: 'ellipsis',
     maxWidth: '100%',
     whiteSpace: 'nowrap',

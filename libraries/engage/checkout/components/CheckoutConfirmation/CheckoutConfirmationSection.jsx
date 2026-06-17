@@ -18,11 +18,9 @@ const useStyles = makeStyles()(theme => ({
     color: `${theme.palette.primary.main} !important`,
   },
   card: {
-    fontSize: '0.875rem',
     lineHeight: '1.25rem',
     margin: 0,
     padding: theme.spacing(2),
-    color: theme.palette.text.secondary,
     flex: '1 0 auto',
     background: theme.palette.background.emphasized,
     boxShadow: 'none',
@@ -36,12 +34,10 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
   },
   listTitle: {
-    fontSize: '0.625rem',
     lineHeight: '1rem',
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     letterSpacing: '1.5px',
     textTransform: 'uppercase',
-    color: theme.palette.text.primary,
     ':not(:first-of-type)': {
       paddingTop: theme.spacing(1.5),
     },
@@ -66,10 +62,9 @@ const useStyles = makeStyles()(theme => ({
       paddingBottom: 8,
     },
     ' tr:last-of-type td': {
-      fontSize: '1rem',
       paddingTop: 8,
       borderTop: `1px solid ${theme.components.border.medium}`,
-      fontWeight: 'bold',
+      fontWeight: theme.typography.fontWeightBold,
     },
   },
 }));
@@ -95,7 +90,6 @@ const CheckoutConfirmationSegment = ({
       <Typography
         variant="body1"
         component="h3"
-        color="textPrimary"
         className={classes.headline}
       >
         {i18n.text(title)}
@@ -114,7 +108,9 @@ const CheckoutConfirmationSegment = ({
             {content.map(({ label, text, link }) => (
               <Fragment key={label || text}>
                 {label && (
-                  <dt className={classes.listTitle}>{i18n.text(label)}</dt>
+                <Typography variant="caption" component="dt" color="textPrimary" className={classes.listTitle}>
+                  {i18n.text(label)}
+                </Typography>
                 )}
                 {link ? (
                   <Typography variant="body2" component="dd" color="textSecondary" className={classes.listEntry}>
@@ -139,15 +135,27 @@ const CheckoutConfirmationSegment = ({
         {isSummary && (
           <table className={classes.table}>
             <tbody>
-              {content.map(({ label, text }) => (
-                <tr key={label || text}>
-                  {label && (
-                    <td>{i18n.text(label)}</td>
-                  )}
-                  {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                  <td dangerouslySetInnerHTML={{ __html: text }} />
-                </tr>
-              ))}
+              {content.map(({ label, text }, index) => {
+                const isLastRow = index === content.length - 1;
+
+                return (
+                  <tr key={label || text}>
+                    {label && (
+                    <Typography
+                      variant={isLastRow ? 'body1' : 'body2'}
+                      component="td"
+                    >
+                      {i18n.text(label)}
+                    </Typography>
+                    )}
+                    <Typography
+                      variant={isLastRow ? 'body1' : 'body2'}
+                      component="td"
+                      dangerouslySetInnerHTML={{ __html: text }}
+                    />
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         )}

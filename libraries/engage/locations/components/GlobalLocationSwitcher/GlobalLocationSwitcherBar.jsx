@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
     paddingRight: theme.spacing(1),
   },
   name: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   button: {
     marginLeft: 'auto',
@@ -37,7 +37,7 @@ const useStyles = makeStyles()(theme => ({
       textTransform: 'initial',
       padding: '0 !important',
       color: theme.palette.text.primary,
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
     },
   },
 }));

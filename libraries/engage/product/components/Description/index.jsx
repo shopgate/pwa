@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     padding: '0.8125rem 1rem 1rem',
   },
   title: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     marginBottom: '0.5rem',
   },
   content: {

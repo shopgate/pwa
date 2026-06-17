@@ -44,7 +44,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: '0.875rem',
     color: theme.palette.primary.main,
     fontStyle: 'italic',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   badgesPortal: {
     width: '50%',

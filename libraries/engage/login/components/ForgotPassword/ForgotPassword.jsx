@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
   },
   headline: {
     lineHeight: 1,
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     paddingBottom: theme.spacing(2),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       fontWeight: 'normal',

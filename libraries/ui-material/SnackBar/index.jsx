@@ -52,7 +52,7 @@ const useStyles = makeStyles()(theme => ({
   },
   actionButton: {
     color: theme.palette.secondary.main,
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     height: 36,
     letterSpacing: 'inherit',
     margin: '0 -8px 0 8px',

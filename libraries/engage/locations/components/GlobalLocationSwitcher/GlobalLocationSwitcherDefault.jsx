@@ -15,7 +15,7 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.text.secondary,
   },
   name: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     color: theme.palette.text.primary,
   },
   button: {

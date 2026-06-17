@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
   price: {
     color: theme.palette.secondary.main,
     display: 'inline-block',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     textAlign: 'center',
   },
   editableContainer: {

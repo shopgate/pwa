@@ -124,7 +124,7 @@ class SuggestionList extends Component {
 const StyledSuggestionList = withStyles(SuggestionList, (theme, { bottomHeight = 0 }) => ({
   list: {
     fontSize: 16,
-    fontWeight: 400,
+    fontWeight: theme.typography.fontWeightRegular,
     marginTop: 4,
     bottom: 0,
     position: 'absolute',

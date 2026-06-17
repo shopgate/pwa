@@ -1,5 +1,5 @@
 import React from 'react';
-import { QuantityLabel } from '@shopgate/engage/components';
+import { QuantityLabel, Typography } from '@shopgate/engage/components';
 import { getTranslatedLineItemStatus } from '@shopgate/engage/orders';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
@@ -28,9 +28,8 @@ const useStyles = makeStyles()(theme => ({
     ':last-child': {
       paddingRight: 0,
     },
-    fontSize: '1.25rem',
     lineHeight: '1.625rem',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   statusColumn: {
     display: 'flex',
@@ -43,7 +42,6 @@ const useStyles = makeStyles()(theme => ({
     ':last-child': {
       paddingRight: 0,
     },
-    fontSize: '1.25rem',
     lineHeight: '1.625rem',
   },
   quantityPickerDisabled: {
@@ -53,7 +51,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: '1.625rem',
     height: 28,
     width: '100%',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     color: theme.palette.text.primary,
     whiteSpace: 'nowrap',
   },
@@ -73,11 +71,11 @@ const CartItemProductLayoutWideOrderDetails = () => {
     <>
       {!cartIsDirectShipOnly ? (
         <div className={classes.locationColumn}>
-          {location?.name }
+          <Typography variant="h3" component="span">{location?.name}</Typography>
         </div>
       ) : null}
       <div className={classes.statusColumn}>
-        {getTranslatedLineItemStatus(cartItem?.status, cartItem?.subStatus)}
+        <Typography variant="h3" component="span">{getTranslatedLineItemStatus(cartItem?.status, cartItem?.subStatus)}</Typography>
       </div>
       <div className={classes.column}>
         <QuantityLabel

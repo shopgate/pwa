@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     transform: 'rotateY(180deg)',
   },
   shippingTitle: {
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
     padding: theme.spacing(1),
   },
 }));

@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'flex-start',
     color: 'inherit',
     display: 'flex',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     outline: 0,
     padding: '16px 8px 16px 0',
     position: 'relative',

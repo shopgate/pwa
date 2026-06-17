@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
   },
   name: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     color: theme.palette.text.primary,
   },
   button: {

@@ -33,7 +33,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: 4,
   },
   selection: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.125,
   },
 }));

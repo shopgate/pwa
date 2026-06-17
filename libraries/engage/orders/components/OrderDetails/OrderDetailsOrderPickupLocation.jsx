@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
     color: theme.palette.text.primary,
     fontSize: '1rem',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
 }));
 

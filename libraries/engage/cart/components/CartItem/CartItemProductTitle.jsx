@@ -20,7 +20,7 @@ import { ConditionalWrapper } from '../../../components';
 
 const useStyles = makeStyles()(theme => ({
   title: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.125,
     wordBreak: ['keep-all', 'break-word'],
     hyphens: 'auto',

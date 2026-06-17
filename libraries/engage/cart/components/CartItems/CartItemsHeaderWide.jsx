@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0, 2, 1, 2),
   },
   headerText: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   column: {
     display: 'flex',

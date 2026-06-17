@@ -3,7 +3,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import { Link, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     marginTop: 8,
     fontWeight: 300,
@@ -12,10 +12,10 @@ const useStyles = makeStyles()({
   },
   link: {
     textAlign: 'center',
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
     marginTop: 8,
   },
-});
+}));
 
 const {
   reviewsInfo: {

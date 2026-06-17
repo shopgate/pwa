@@ -17,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
   },
   title: {
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
   },
 }));
 

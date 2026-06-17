@@ -7,6 +7,7 @@ import {
   ConditionalWrapper,
   MessageBar,
   SurroundPortals,
+  Typography,
 } from '@shopgate/engage/components';
 import {
   ProductImage,
@@ -79,7 +80,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   productName: {
     fontSize: '1.25rem',
     lineHeight: '1.5rem',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     wordBreak: ['keep-all', 'break-word'],
     hyphens: 'auto',
   },
@@ -98,7 +99,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     lineHeight: '1.625rem',
     height: 28,
     width: '100%',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     color: theme.palette.text.primary,
     whiteSpace: 'nowrap',
   },
@@ -124,9 +125,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   },
   priceInfo: {
     wordBreak: 'break-word',
-    fontSize: '0.75rem',
     lineHeight: '0.875rem',
-    color: theme.palette.text.secondary,
     padding: theme.spacing(0.5, 0),
   },
   contextMenu: {
@@ -212,7 +211,9 @@ const CartItemProductLayoutWide = () => {
               promo: classes.priceListPromo,
             }}
           />
-          <PriceInfo product={product} currency={currency} className={classes.priceInfo} />
+          <Typography variant="caption" component="div" color="textSecondary">
+            <PriceInfo product={product} currency={currency} className={classes.priceInfo} />
+          </Typography>
           <CartItemProductPriceCaption />
         </div>
         { isOrderDetails && (

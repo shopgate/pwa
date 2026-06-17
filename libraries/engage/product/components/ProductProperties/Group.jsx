@@ -6,7 +6,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   subgroup: {
     paddingTop: theme.spacing(1),
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
     textTransform: 'uppercase',
   },
 }));

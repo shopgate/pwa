@@ -11,7 +11,7 @@ const useStyles = makeStyles()((theme) => {
     color: theme.contrastColor(theme.components.discountBadge.background),
     padding: 5,
     width: '100%',
-    fontWeight: 700,
+    fontWeight: theme.typography.fontWeightBold,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

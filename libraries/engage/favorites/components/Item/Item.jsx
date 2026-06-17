@@ -161,7 +161,7 @@ const useStyles = makeStyles()(theme => ({
     flex: 1,
   },
   title: {
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
   },
   removeContainer: {
     display: 'flex',

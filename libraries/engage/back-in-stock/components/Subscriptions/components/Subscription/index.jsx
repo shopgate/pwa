@@ -54,7 +54,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0.5, 0),
   },
   title: {
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
     flexWrap: 'wrap',
     overflowWrap: 'anywhere',
   },

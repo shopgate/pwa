@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
   },
   itemSelected: {
     backgroundColor: theme.palette.grey.light,
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
 }));
 

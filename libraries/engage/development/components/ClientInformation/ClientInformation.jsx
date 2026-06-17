@@ -4,13 +4,14 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { Typography } from '@shopgate/engage/components';
 import { useLongPress } from '@shopgate/engage/core/hooks';
 import { getClientInformation } from '@shopgate/engage/core/selectors';
+import { pckVersion } from '@shopgate/pwa-common/helpers/config';
 import DevelopmentSettings from '../DevelopmentSettings';
 
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     textAlign: 'center',
-    color: theme.palette.grey[500],
+    color: theme.palette.text.secondary,
     paddingBottom: 20,
   },
   unselectable: {
@@ -64,6 +65,8 @@ const ClientInformation = () => {
     >
       <p className={classes.unselectable}>
         {`App Version: ${appVersion} (${codebaseVersion})`}
+        <br />
+        {`PWA Version: ${pckVersion}`}
         <br />
         {`Lib Version: ${libVersion}`}
       </p>

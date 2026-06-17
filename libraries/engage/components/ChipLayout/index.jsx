@@ -44,7 +44,7 @@ const useStyles = makeStyles()((theme, { maxRows }) => ({
     outline: 0,
     padding: 9,
     fontSize: '0.8rem',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     textTransform: 'uppercase',
   },
   moreButtonInverted: {
@@ -52,7 +52,7 @@ const useStyles = makeStyles()((theme, { maxRows }) => ({
     outline: 0,
     padding: 9,
     fontSize: '0.8rem',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     textTransform: 'uppercase',
   },
 }));

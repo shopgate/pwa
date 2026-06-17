@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Image, Link, Grid, Availability,
+  Image, Link, Grid, Availability, Typography,
 } from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -45,19 +45,15 @@ const useStyles = makeStyles()(theme => ({
     width: 40,
   },
   availability: {
-    fontSize: '0.75rem',
   },
   manufacturer: {
-    fontSize: '0.875rem',
   },
   price: {
     justifyContent: 'flex-end',
   },
   priceStriked: {
-    fontSize: '0.875rem',
   },
   priceInfo: {
-    fontSize: '0.75rem',
   },
   discount: {
     minWidth: 40,
@@ -84,14 +80,12 @@ const Item = ({ display, product }) => {
       <Grid className={classes.listItemContainer}>
         <Grid.Item shrink={0} className={classes.imageContainer}>
 
-          {/* IMAGE */}
           <Portal name={portals.PRODUCT_ITEM_IMAGE_BEFORE} props={{ productId: product.id }} />
           <Portal name={portals.PRODUCT_ITEM_IMAGE} props={{ productId: product.id }}>
             <Image itemProp="image" src={product.featuredImageBaseUrl} alt={product.name} />
           </Portal>
           <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={{ productId: product.id }} />
           <ProductBadges location="productList" productId={product.id}>
-            {/* DISCOUNT */}
             {!!product.price.discount && (
               <>
                 <Portal
@@ -114,7 +108,6 @@ const Item = ({ display, product }) => {
         </Grid.Item>
         <Grid.Item grow={4} className={classes.titleContainer}>
 
-          {/* NAME */}
           <ProductName
             name={product.name}
             portalName={portals.PRODUCT_ITEM_NAME}
@@ -123,7 +116,6 @@ const Item = ({ display, product }) => {
             testId={`Productname: ${product.name}`}
           />
 
-          {/* MANUFACTURER */}
           {(!display || (display.manufacturer && product.manufacturer)) && (
             <>
               <Portal
@@ -131,7 +123,9 @@ const Item = ({ display, product }) => {
                 props={{ productId: product.id }}
               />
               <Portal name={portals.PRODUCT_ITEM_MANUFACTURER} props={{ productId: product.id }}>
-                <Manufacturer text={product.manufacturer} className={classes.manufacturer} />
+                <Typography variant="body2" component="div" className={classes.manufacturer}>
+                  <Manufacturer text={product.manufacturer} className={classes.manufacturer} />
+                </Typography>
               </Portal>
               <Portal
                 name={portals.PRODUCT_ITEM_MANUFACTURER_AFTER}
@@ -140,7 +134,6 @@ const Item = ({ display, product }) => {
             </>
           )}
 
-          {/* AVAILABILITY */}
           {product.availability && (
             <>
               <Portal
@@ -148,11 +141,13 @@ const Item = ({ display, product }) => {
                 props={{ productId: product.id }}
               />
               <Portal name={portals.PRODUCT_ITEM_AVAILABILITY} props={{ productId: product.id }}>
-                <Availability
-                  className={classes.availability}
-                  text={product.availability.text}
-                  state={product.availability.state}
-                />
+                <Typography variant="caption" component="div" className={classes.availability}>
+                  <Availability
+                    className={classes.availability}
+                    text={product.availability.text}
+                    state={product.availability.state}
+                  />
+                </Typography>
               </Portal>
               <Portal
                 name={portals.PRODUCT_ITEM_AVAILABILITY_AFTER}
@@ -173,7 +168,6 @@ const Item = ({ display, product }) => {
 
         </Grid.Item>
 
-        {/* PRICE - STRIKE PRICE - PRICE INFO */}
         {(!display || display.price) && (
           <>
             <Portal
@@ -204,20 +198,26 @@ const Item = ({ display, product }) => {
                   unitPriceMax={product.price.unitPriceMax}
                 />
                 {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
-                  <PriceStriked
-                    value={product.price.msrp}
-                    currency={product.price.currency}
-                    className={classes.priceStriked}
-                  />
+                  <Typography variant="body2" component="div" className={classes.priceStriked}>
+                    <PriceStriked
+                      value={product.price.msrp}
+                      currency={product.price.currency}
+                      className={classes.priceStriked}
+                    />
+                  </Typography>
                 )}
                 {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
-                  <PriceStriked
-                    value={product.price.unitPriceStriked}
-                    currency={product.price.currency}
-                    className={classes.priceStriked}
-                  />
+                  <Typography variant="body2" component="div" className={classes.priceStriked}>
+                    <PriceStriked
+                      value={product.price.unitPriceStriked}
+                      currency={product.price.currency}
+                      className={classes.priceStriked}
+                    />
+                  </Typography>
                 )}
-                <PriceInfo product={product} className={classes.priceInfo} />
+                <Typography variant="caption" component="div" className={classes.priceInfo}>
+                  <PriceInfo product={product} className={classes.priceInfo} />
+                </Typography>
                 <Portal
                   name={portals.PRODUCT_ITEM_PRICE_INSIDE_AFTER}
                   props={{ productId: product.id }}
