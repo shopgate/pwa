@@ -48,7 +48,7 @@ function ScrollHeaderBase({
   // hidden when the user navigates back. `visible` is true only for the active route.
   const route = useRoute();
   const visible = route ? route.visible !== false : true;
-  console.log('AYAY: visible', visible);
+
   useScrollDirectionChange({
     enabled: hideOnScroll && visible,
     offset: scrollOffset,
