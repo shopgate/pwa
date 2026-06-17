@@ -13,6 +13,7 @@ export * from './appPermissions';
 export * from './baseUrl';
 export * from './bridge';
 export { isBeta } from '../config/isBeta';
+export { swatchesEnabled } from '../config/swatchesEnabled';
 export { getFullImageSource } from './getFullImageSource';
 export { getImageFormat } from './getImageFormat';
 export { svgToDataUrl } from './svgToDataUrl';

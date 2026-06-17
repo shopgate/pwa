@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { isBeta } from '@shopgate/engage/core';
+import { swatchesEnabled } from '@shopgate/engage/core';
 import { Portal } from '@shopgate/engage/components';
 import {
   PRODUCT_VARIANT_SELECT,
@@ -52,7 +52,7 @@ class Characteristics extends PureComponent {
    * @returns {JSX}
    */
   renderer = (props) => {
-    if (isBeta() && !!props.swatch) {
+    if (swatchesEnabled() && !!props.swatch) {
       return <Swatch {...props} />;
     }
     return <Characteristic {...props} />;

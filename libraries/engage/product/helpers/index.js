@@ -1,6 +1,8 @@
 import configuration from '@shopgate/pwa-common/collections/Configuration';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
-import { getFullImageSource, isBeta, loadImage } from '@shopgate/engage/core/helpers';
+import {
+  getFullImageSource, isBeta, loadImage, swatchesEnabled,
+} from '@shopgate/engage/core/helpers';
 import { getThemeSettings } from '@shopgate/engage/core/config';
 import { buildShowScheduledParams } from '../components/EffectivityDates/helpers';
 
@@ -13,17 +15,21 @@ export * from './redirects';
  * @returns {undefined|{params: Object}}
  */
 export const buildFetchCategoryProductsParams = () => {
+  const params = {};
+
+  if (swatchesEnabled()) {
+    params.characteristics = true;
+  }
+
   if (!isBeta()) {
-    return {
-      params: {},
-    };
+    return { params };
   }
 
   const scheduled = buildShowScheduledParams();
 
   return {
     params: {
-      characteristics: true,
+      ...params,
       ...scheduled.params,
     },
     ...scheduled.cachedTime && { cachedTime: scheduled.cachedTime },
@@ -40,7 +46,7 @@ export const buildFetchSearchResultsParams = buildFetchCategoryProductsParams;
  * Set default params for fetching products
  */
 export const setDefaultProductFetchParams = () => {
-  if (!isBeta()) {
+  if (!swatchesEnabled()) {
     return;
   }
   configuration.set(DEFAULT_PRODUCTS_FETCH_PARAMS, {

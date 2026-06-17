@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { PRODUCT_SWATCHES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { SurroundPortals } from '../../../components';
-import { isBeta, useWidgetSettings } from '../../../core';
+import { swatchesEnabled, useWidgetSettings } from '../../../core';
 import { Swatch } from '../Swatch';
 import { swatchesClass } from './style';
 import connect from './connector';
@@ -17,7 +17,7 @@ const WIDGET_ID = '@shopgate/engage/product/Swatches';
 const Swatches = ({ productId, characteristics }) => {
   const settings = useWidgetSettings(WIDGET_ID);
 
-  if (!isBeta()) {
+  if (!swatchesEnabled()) {
     return null;
   }
 
@@ -29,7 +29,7 @@ const Swatches = ({ productId, characteristics }) => {
   if (settings.filter && settings.filter.length) {
     swatches = swatches.filter(swatch => settings.filter.includes(swatch.id));
   }
-  if (!swatches) {
+  if (!swatches.length) {
     return null;
   }
 

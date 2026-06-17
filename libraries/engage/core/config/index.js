@@ -24,6 +24,7 @@ export {
 
 export { ThemeConfigResolver } from './ThemeConfigResolver';
 export { isBeta } from './isBeta';
+export { swatchesEnabled } from './swatchesEnabled';
 
 export { getPageConfig } from './getPageConfig';
 export { getPageSettings } from './getPageSettings';
