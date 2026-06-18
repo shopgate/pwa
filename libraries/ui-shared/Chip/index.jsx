@@ -54,12 +54,12 @@ const useStyles = makeStyles()((theme, { removable, invert }) => ({
     padding: 0,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       padding: '0 5px',
-      fontSize: '1.125rem',
+      fontSize: theme.typography.h4.fontSize,
     },
   },
   name: {
-    paddingLeft: (theme.spacing(0.5)),
-    paddingRight: (theme.spacing(0.5)),
+    paddingLeft: theme.spacing(0.5),
+    paddingRight: theme.spacing(0.5),
     paddingTop: 3,
     paddingBottom: 3,
     fontSize: theme.typography.caption.fontSize,
