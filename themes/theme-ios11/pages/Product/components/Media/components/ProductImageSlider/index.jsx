@@ -12,6 +12,7 @@ import {
   getProductImageSettings,
 } from '@shopgate/engage/product';
 import { appConfig } from '@shopgate/engage';
+import { registerTarget, subscribe, hasPendingSource } from '../../../../../../components/HeroTransition/coordinator';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig || {};
@@ -51,6 +52,11 @@ class ProductImageSlider extends Component {
     this.mediaRef = React.createRef(null);
     this.state = {
       depImage: null,
+      // Hide the real PDP hero from the first paint when this component mounts
+      // as the destination of an in-progress flight, so the user never sees the
+      // real image and the flying clone at the same time. The coordinator's
+      // 'clear' event (emitted on every flight teardown path) reveals it again.
+      heroHidden: hasPendingSource(),
     };
   }
 
@@ -59,13 +65,50 @@ class ProductImageSlider extends Component {
    */
   componentDidMount() {
     this.mounted = true;
+
+    if (this.mediaRef.current) {
+      registerTarget(this.mediaRef.current);
+    }
+
+    // Reveal on flight teardown ('clear'); hide again if a new flight begins
+    // while this PDP is already mounted (product -> product navigation, where
+    // this component becomes the new flight's destination).
+    this.unsubscribeHero = subscribe((event) => {
+      if (!this.mounted) {
+        return;
+      }
+      if (event.type === 'clear') {
+        clearTimeout(this.heroRevealTimer);
+        this.setState({ heroHidden: false });
+      } else if (event.type === 'source') {
+        this.setState({ heroHidden: true });
+        // Belt-and-suspenders: schedule a safety reveal in case the matching
+        // 'clear' for this new flight is ever missed.
+        this.scheduleHeroRevealSafety();
+      }
+    });
+
+    // Race guard: the flight may have cleared between the initial render (where
+    // heroHidden was seeded from hasPendingSource) and this mount. If so, the
+    // 'clear' event already fired before we subscribed, so re-check and reveal
+    // to guarantee the image can never get stuck hidden.
+    if (this.state.heroHidden && !hasPendingSource()) {
+      clearTimeout(this.heroRevealTimer);
+      this.setState({ heroHidden: false });
+    } else if (this.state.heroHidden) {
+      // Mounted as an in-progress flight destination: schedule a safety reveal
+      // so the hero can never stay hidden if the 'clear' event is ever missed.
+      this.scheduleHeroRevealSafety();
+    }
   }
 
   /**
    * @param {Object} nextProps the next props
+   * @param {Object} nextState the next state
    * @returns {boolean}
    */
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
+    const heroHiddenChanged = nextState.heroHidden !== this.state.heroHidden;
     let depImage = null;
 
     if (!nextProps.images) {
@@ -110,7 +153,24 @@ class ProductImageSlider extends Component {
           }
         });
     }
-    return false;
+    return heroHiddenChanged;
+  }
+
+  /**
+   * Re-registers the hero transition target whenever this component is updated
+   * for a different product (e.g. navigating directly from one PDP to another
+   * where React updates rather than remounts the component). Only re-registers
+   * when the product actually changed so the blur/preload logic in
+   * shouldComponentUpdate is not disturbed.
+   * @param {Object} prevProps the previous props
+   */
+  componentDidUpdate(prevProps) {
+    const prevId = prevProps.productId || (prevProps.product && prevProps.product.id);
+    const nextId = this.props.productId || (this.props.product && this.props.product.id);
+
+    if (prevId !== nextId && this.mediaRef.current) {
+      registerTarget(this.mediaRef.current);
+    }
   }
 
   /**
@@ -118,6 +178,31 @@ class ProductImageSlider extends Component {
    */
   componentWillUnmount() {
     this.mounted = false;
+
+    clearTimeout(this.heroRevealTimer);
+
+    if (this.unsubscribeHero) {
+      this.unsubscribeHero();
+      this.unsubscribeHero = null;
+    }
+  }
+
+  /**
+   * Belt-and-suspenders safety net: whenever the hero is hidden, schedule a
+   * one-shot timer that force-reveals it after a bounded delay if it is still
+   * hidden. This guarantees the real PDP hero can never stay blank, regardless
+   * of any 'clear' event-timing issue. The delay (1500ms) is comfortably longer
+   * than the 1000ms flight duration plus the coordinator's ~1100ms cleanup
+   * safety, so by the time it fires any legitimate flight has already finished
+   * and revealed the hero (in which case this is a no-op).
+   */
+  scheduleHeroRevealSafety() {
+    clearTimeout(this.heroRevealTimer);
+    this.heroRevealTimer = setTimeout(() => {
+      if (this.mounted && this.state.heroHidden) {
+        this.setState({ heroHidden: false });
+      }
+    }, 1500);
   }
 
   handleOpenGallery = () => {
@@ -200,6 +285,11 @@ class ProductImageSlider extends Component {
     const wrapperStyles = {
       transition: '0.5s filter ease-out', // blur filter
       transform: 'translate3d(0, 0, 0)', // Fix for cut off overlapping icons
+      // Hide the real hero while a flight is in progress. Instant (no opacity
+      // transition) so the reveal at flight teardown is imperceptible. opacity:0
+      // keeps layout intact, so registerTarget's getBoundingClientRect still
+      // measures the correct destination rect for the flying clone.
+      opacity: this.state.heroHidden ? 0 : 1,
     };
 
     return (
