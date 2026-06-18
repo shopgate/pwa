@@ -6,7 +6,7 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import AccordionContent from './components/AccordionContent';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   toggle: {
     padding: '12px 16px',
     position: 'relative',
@@ -25,7 +25,7 @@ const useStyles = makeStyles()({
   chevronContainer: {
     display: 'flex',
     flexShrink: 0,
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       backgroundColor: 'rgba(0, 0, 0, 0.04)',
       borderRadius: 32,
@@ -50,7 +50,7 @@ const useStyles = makeStyles()({
     transition: 'transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1)',
     transform: 'rotateZ(90deg)',
   },
-});
+}));
 
 /**
  * Accordion component

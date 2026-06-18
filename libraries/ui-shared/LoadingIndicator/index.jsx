@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'block',
     padding: '1em',
     textAlign: 'center',
-    fontSize: '1.5em',
+    fontSize: theme.components.icon.medium,
     color: theme.palette.secondary.main,
   },
   imgContainer: {

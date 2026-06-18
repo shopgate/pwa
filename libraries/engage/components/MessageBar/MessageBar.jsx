@@ -49,7 +49,7 @@ const useStyles = makeStyles()((theme) => {
       marginBottom: theme.spacing(0.5),
     },
     ' > svg': {
-      fontSize: '1.5rem !important',
+      fontSize: `${theme.components.icon.medium} !important`,
     },
   };
 

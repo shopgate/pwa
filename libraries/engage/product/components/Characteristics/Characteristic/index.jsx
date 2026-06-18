@@ -219,6 +219,6 @@ export default withStyles(Characteristic, theme => ({
   arrow: {
     position: 'absolute',
     right: 32,
-    fontSize: 20,
+    fontSize: theme.components.icon.small,
   },
 }));

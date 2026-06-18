@@ -45,7 +45,7 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 0,
   },
   title: {
-    fontSize: 24,
+    fontSize: theme.components.icon.medium,
     fontWeight: '500',
     marginBottom: 8,
   },

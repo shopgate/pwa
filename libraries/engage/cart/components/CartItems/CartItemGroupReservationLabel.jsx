@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     flexFlow: 'row nowrap',
   },
   addressIcon: {
-    fontSize: '1.25rem',
+    fontSize: theme.components.icon.small,
     padding: theme.spacing(1, 1, 0, 0),
     flexShrink: 0,
   },

@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
     top: '50%',
     right: 0,
     transform: 'translateY(-50%) rotateZ(-90deg)',
-    fontSize: '1.3em !important',
+    fontSize: `${theme.components.icon.medium} !important`,
     marginTop: -3,
   },
   toggle: {

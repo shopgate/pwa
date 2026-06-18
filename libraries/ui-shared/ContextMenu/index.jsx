@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
   },
   button: {
     display: 'block',
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
     outline: 0,
     padding: 0,
     color: 'inherit',

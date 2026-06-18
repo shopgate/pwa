@@ -17,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
   },
   headerIcon: {
     color: theme.palette.primary.main,
-    fontSize: 20,
+    fontSize: theme.components.icon.small,
     alignContent: 'center',
     marginRight: 4,
   },

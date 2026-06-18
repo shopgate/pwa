@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonIcon: {
     display: 'inline-block',
-    fontSize: '1.375rem !important',
+    fontSize: `${theme.components.icon.medium} !important`,
     alignSelf: 'center',
     marginRight: theme.spacing(0.5),
     marginLeft: -3,

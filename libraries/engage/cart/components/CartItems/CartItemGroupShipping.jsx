@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
     flexFlow: 'row nowrap',
   },
   shippingIcon: {
-    fontSize: '1.25rem',
+    fontSize: theme.components.icon.small,
     padding: theme.spacing(1, 2, 1, 0),
     transform: 'rotateY(180deg)',
   },

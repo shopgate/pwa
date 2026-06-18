@@ -29,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
     alignSelf: 'center',
   },
   icon: {
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
   },
   iconOpen: {
     transform: 'rotate(180deg)',

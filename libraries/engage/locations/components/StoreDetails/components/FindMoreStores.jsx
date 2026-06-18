@@ -32,7 +32,7 @@ const useStyles = makeStyles()(theme => ({
     padding: 0,
     margin: '0 8px',
     color: theme.palette.grey.dark,
-    fontSize: '1.23rem',
+    fontSize: theme.components.icon.small,
     flexShrink: 0,
     outline: 0,
   },

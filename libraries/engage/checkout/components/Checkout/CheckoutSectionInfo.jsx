@@ -16,11 +16,11 @@ const useStyles = makeStyles()(theme => ({
   iconWrapper: {
     cursor: 'pointer',
     color: theme.palette.primary.main,
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
     display: 'inline-flex',
     verticalAlign: 'bottom',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
-      fontSize: '1.375rem',
+      fontSize: theme.components.icon.medium,
     },
   },
 }));

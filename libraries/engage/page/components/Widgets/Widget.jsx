@@ -20,7 +20,7 @@ const useStyles = makeStyles()((theme, {
     position: 'absolute',
     top: -marginTop + (theme.spacing(0.5) + 1),
     left: -marginLeft + theme.spacing(0.5),
-    fontSize: 24,
+    fontSize: theme.components.icon.medium,
     padding: theme.spacing(0.5),
     display: 'flex',
     gap: theme.spacing(1),

@@ -11,7 +11,7 @@ const { variables } = themeConfig;
 const useStyles = makeStyles()(theme => ({
   button: {
     color: 'inherit',
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
     lineHeight: 1,
     outline: 0,
     padding: 0,

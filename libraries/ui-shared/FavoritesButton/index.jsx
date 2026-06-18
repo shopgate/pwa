@@ -19,7 +19,7 @@ const useStyles = makeStyles()((theme) => {
     background: theme.palette.common.white,
     borderRadius: '50%',
     padding: 0,
-    fontSize: 20,
+    fontSize: theme.components.icon.small,
     lineHeight: 1,
     color: theme.palette.secondary.main,
     outline: 0,
