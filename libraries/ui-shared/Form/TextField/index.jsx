@@ -19,7 +19,7 @@ const webkitDateFields = [
   '::-webkit-datetime-edit-text',
 ].map(suffix => `${bluredDateSelector}${suffix}`).join(', ');
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     '& input[type="date"]': {
       minHeight: '1.3rem',
@@ -38,7 +38,7 @@ const useStyles = makeStyles()({
     width: '100%',
     marginTop: 24,
     outline: 0,
-    fontSize: 16,
+    fontSize: theme.typography.body1.fontSize,
     lineHeight: '19px',
   },
   multiLine: {
@@ -61,7 +61,7 @@ const useStyles = makeStyles()({
   leftOffset: {
     marginLeft: 2,
   },
-});
+}));
 
 /**
  * TextField component (form wrapper with leading/trailing elements).

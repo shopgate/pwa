@@ -12,7 +12,7 @@ import {
 } from '@shopgate/engage/components';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   root: {
     padding: 16,
     display: 'flex',
@@ -52,7 +52,7 @@ const useStyles = makeStyles()(() => ({
   },
   name: {
     flex: 1,
-    fontWeight: '600',
+    fontWeight: theme.typography.fontWeightMedium,
   },
   button: {
     '&&:disabled': {

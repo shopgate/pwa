@@ -40,7 +40,7 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'space-between',
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     display: 'block',
   },
 }));

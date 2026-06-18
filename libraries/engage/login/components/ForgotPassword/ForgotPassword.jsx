@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     fontWeight: theme.typography.fontWeightMedium,
     paddingBottom: theme.spacing(2),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
-      fontWeight: 'normal',
+      fontWeight: theme.typography.fontWeightRegular,
     },
   },
   subline: {
@@ -60,7 +60,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
   },
   resetInstructionsEmail: {
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     color: theme.palette.secondary.main,
   },
   goBackButtonContainer: {

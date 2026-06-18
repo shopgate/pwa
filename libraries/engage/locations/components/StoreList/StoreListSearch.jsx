@@ -74,7 +74,7 @@ const useStyles = makeStyles()(theme => ({
     border: `1px solid ${theme.components.border.light}`,
     padding: theme.spacing(0, 4, 0, 1.5),
     color: theme.palette.grey.dark,
-    fontSize: '1rem',
+    fontSize: theme.typography.body1.fontSize,
     borderRadius: 4,
     width: '100%',
     outline: 0,

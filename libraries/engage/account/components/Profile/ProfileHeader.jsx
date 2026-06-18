@@ -4,7 +4,7 @@ import { Typography } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useProfileContext } from './Profile.provider';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     marginTop: 8,
     [responsiveMediaQuery('<md')]: {
@@ -13,9 +13,9 @@ const useStyles = makeStyles()({
     },
   },
   title: {
-    fontWeight: '600',
+    fontWeight: theme.typography.fontWeightMedium,
   },
-});
+}));
 
 /**
  * @returns {JSX}

@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 const useStyles = makeStyles()(theme => ({
   title: {
     lineHeight: 2.5,
-    fontWeight: '600',
+    fontWeight: theme.typography.fontWeightMedium,
   },
   container: {
     display: 'flex',

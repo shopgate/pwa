@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
-      fontWeight: 'normal',
+      fontWeight: theme.typography.fontWeightRegular,
       paddingBottom: theme.spacing(2),
       padding: theme.spacing(2, 2, 0),
     },

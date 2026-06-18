@@ -32,7 +32,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: theme.spacing(1),
     ' input.PhoneInputInput': {
       outline: 'none',
-      fontSize: '1rem',
+      fontSize: theme.typography.body1.fontSize,
       lineHeight: '1.1875rem',
       borderRadius: 0,
       paddingBottom: theme.spacing(0.75),

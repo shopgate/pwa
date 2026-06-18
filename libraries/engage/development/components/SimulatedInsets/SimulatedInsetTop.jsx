@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 10000000,
     pointerEvents: 'auto',
     transition: 'background 0.2s ease',
-    fontSize: '16px',
+    fontSize: theme.typography.body1.fontSize,
   },
   containerHighlight: {
     background: 'rgba(255, 0, 0, 0.7)',
