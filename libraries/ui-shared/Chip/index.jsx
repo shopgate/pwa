@@ -62,7 +62,7 @@ const useStyles = makeStyles()((theme, { removable, invert }) => ({
     paddingRight: (theme.spacing(0.5)),
     paddingTop: 3,
     paddingBottom: 3,
-    fontSize: 12,
+    fontSize: theme.typography.caption.fontSize,
     fontWeight: theme.typography.fontWeightMedium,
     textOverflow: 'ellipsis',
     maxWidth: '100%',
@@ -72,7 +72,7 @@ const useStyles = makeStyles()((theme, { removable, invert }) => ({
     lineHeight: '1',
     color: 'inherit',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      fontSize: '0.875rem',
+      fontSize: theme.typography.body2.fontSize,
       lineHeight: '1.25rem',
       padding: '6px 8px 6px 0',
     },

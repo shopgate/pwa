@@ -9,7 +9,7 @@ const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
     lineHeight: 1.5,
-    fontWeight: 700,
+    fontWeight: theme.typography.fontWeightBold,
     background: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
     borderRadius: theme.spacing(1),

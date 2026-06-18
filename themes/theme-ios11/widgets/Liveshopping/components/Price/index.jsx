@@ -13,11 +13,11 @@ const useStyles = makeStyles()(theme => ({
     marginTop: theme.spacing(1),
   },
   priceStriked: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
   },
   price: {
     color: theme.palette.primary.main,
-    fontSize: '1.25rem',
+    fontSize: theme.typography.h3.fontSize,
     lineHeight: 1,
   },
 }));

@@ -10,9 +10,9 @@ import { PRODUCT_NAME } from '@shopgate/engage/product/constants';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   name: {
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     lineHeight: '1.25',
     marginBottom: 2,
     marginRight: 72,
@@ -24,7 +24,7 @@ const useStyles = makeStyles()({
     height: 24,
     marginTop: 5,
   },
-});
+}));
 
 /**
  * The Product Name component.

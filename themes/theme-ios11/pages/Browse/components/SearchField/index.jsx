@@ -85,12 +85,12 @@ const useStyles = makeStyles()(theme => ({
   icon: {
     padding: '0 6px',
     color: theme.palette.grey.dark,
-    fontSize: '1.235rem',
+    fontSize: theme.components.icon.small,
   },
   scannerIcon: {
     padding: '4px 6px 4px 4px',
     color: theme.palette.grey.dark,
-    fontSize: '1.7rem',
+    fontSize: theme.components.icon.medium,
     position: 'absolute',
     right: 0,
   },

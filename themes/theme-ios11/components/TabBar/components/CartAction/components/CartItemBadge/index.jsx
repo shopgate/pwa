@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
     background: theme.components.tabBar.badgeBackground,
     color: theme.components.tabBar.badgeColor,
     lineHeight: 1.5,
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     borderRadius: theme.components.tabBar.badgeBorderRadius,
     height: theme.spacing(2),
     top: theme.components.tabBar.badgeTop,
