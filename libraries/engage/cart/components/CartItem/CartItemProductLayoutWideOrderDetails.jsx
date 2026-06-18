@@ -47,7 +47,7 @@ const useStyles = makeStyles()(theme => ({
   quantityPickerDisabled: {
     padding: theme.spacing(0, 1),
     textAlign: 'center',
-    fontSize: '1.25rem',
+    fontSize: theme.typography.h3.fontSize,
     lineHeight: '1.625rem',
     height: 28,
     width: '100%',

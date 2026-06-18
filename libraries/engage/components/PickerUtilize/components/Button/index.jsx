@@ -27,7 +27,7 @@ const useStyles = makeStyles()((theme) => {
       fontWeight: theme.typography.fontWeightMedium,
       ':not(:only-child)': {
         fontWeight: theme.typography.fontWeightRegular,
-        fontSize: '0.75rem',
+        fontSize: theme.typography.caption.fontSize,
         marginBottom: 4,
       },
     },

@@ -8,7 +8,7 @@ import { ROPIS, BOPIS } from '../../constants';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    fontSize: theme.typography.caption,
+    fontSize: theme.typography.caption.fontSize,
   },
 }));
 

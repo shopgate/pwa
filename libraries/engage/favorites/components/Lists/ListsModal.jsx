@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
   },
   input: {
     textAlign: 'left',
-    fontSize: theme.typography.body1,
+    fontSize: theme.typography.body1.fontSize,
   },
 }));
 

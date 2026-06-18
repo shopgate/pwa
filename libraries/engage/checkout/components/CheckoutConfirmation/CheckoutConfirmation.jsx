@@ -53,7 +53,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   heading: {
-    fontWeight: 'normal',
+    fontWeight: theme.typography.fontWeightRegular,
     margin: 0,
     lineHeight: '2.25rem',
     paddingBottom: theme.spacing(4),

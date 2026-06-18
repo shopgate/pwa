@@ -78,7 +78,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     },
   },
   productName: {
-    fontSize: '1.25rem',
+    fontSize: theme.typography.h3.fontSize,
     lineHeight: '1.5rem',
     fontWeight: theme.typography.fontWeightMedium,
     wordBreak: ['keep-all', 'break-word'],
@@ -87,7 +87,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   productProperties: {
     paddingTop: theme.spacing(1),
     color: theme.palette.text.secondary,
-    fontSize: '1rem',
+    fontSize: theme.typography.body1.fontSize,
   },
   quantityPicker: {
     width: 140,
@@ -95,7 +95,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   quantityPickerDisabled: {
     padding: theme.spacing(0, 1),
     textAlign: 'center',
-    fontSize: '1.25rem',
+    fontSize: theme.typography.h3.fontSize,
     lineHeight: '1.625rem',
     height: 28,
     width: '100%',
@@ -113,7 +113,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     },
   },
   price: {
-    fontSize: '1.25rem !important',
+    fontSize: `${theme.typography.h3.fontSize} !important`,
     lineHeight: '1.625rem  !important',
   },
   priceListEntry: {

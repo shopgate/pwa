@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   heading: {
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     margin: theme.spacing(1, 0, 2.5),
   },
   body: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
   },
   orderNum: {
     padding: 0,
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     margin: theme.spacing(0, 0, 2),
     border: 0,
   },

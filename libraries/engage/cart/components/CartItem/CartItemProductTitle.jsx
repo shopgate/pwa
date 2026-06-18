@@ -35,7 +35,7 @@ const useStyles = makeStyles()(theme => ({
   menuToggleButton: {
     height: theme.spacing(4),
     width: theme.spacing(4),
-    fontSize: theme.spacing(3),
+    fontSize: theme.components.icon.medium,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',

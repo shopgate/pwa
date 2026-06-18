@@ -32,7 +32,7 @@ const useStyles = makeStyles()((theme) => {
     flexShrink: 0,
     overflow: 'hidden',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      fontWeight: 'normal',
+      fontWeight: theme.typography.fontWeightRegular,
       border: 'none',
       borderRadius: 'inherit',
       margin: theme.spacing(2),
@@ -74,7 +74,7 @@ const useStyles = makeStyles()((theme) => {
           color: theme.palette.secondary.main,
         },
         padding: theme.spacing(1.5, 2),
-        fontWeight: 'normal',
+        fontWeight: theme.typography.fontWeightRegular,
         border: '1px solid',
         borderRadius: 4,
         ':not(:last-child)': {
@@ -93,7 +93,7 @@ const useStyles = makeStyles()((theme) => {
           color: theme.palette.error.main,
         },
         padding: theme.spacing(1.5, 2),
-        fontWeight: 'normal',
+        fontWeight: theme.typography.fontWeightRegular,
         border: '1px solid',
         borderRadius: 4,
         ':not(:last-child)': {
@@ -112,7 +112,7 @@ const useStyles = makeStyles()((theme) => {
           color: theme.palette.warning.main,
         },
         padding: theme.spacing(1.5, 2),
-        fontWeight: 'normal',
+        fontWeight: theme.typography.fontWeightRegular,
         border: '1px solid',
         borderRadius: 4,
         ':not(:last-child)': {

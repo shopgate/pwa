@@ -8,7 +8,7 @@ import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    fontSize: theme.typography.caption,
+    fontSize: theme.typography.caption.fontSize,
   },
 }));
 

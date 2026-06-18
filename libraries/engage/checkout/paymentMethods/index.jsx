@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => ({
 
 const useStyles = makeStyles()(theme => ({
   headline: {
-    fontWeight: 'normal',
+    fontWeight: theme.typography.fontWeightRegular,
     margin: theme.spacing(0, 0, 1, 0),
     marginLeft: 16,
     marginRight: 8,

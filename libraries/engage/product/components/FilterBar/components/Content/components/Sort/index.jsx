@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     whiteSpace: 'nowrap',
   },
   selection: {
-    fontSize: theme.typography.body2,
+    fontSize: theme.typography.body2.fontSize,
     fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1,
     paddingTop: 1,

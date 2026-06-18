@@ -45,12 +45,9 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 0,
   },
   title: {
-    fontSize: theme.components.icon.medium,
-    fontWeight: '500',
     marginBottom: 8,
   },
   subtitle: {
-    fontWeight: '500',
     marginBottom: 8,
     marginTop: 16,
   },
@@ -265,9 +262,9 @@ const FulfillmentSlotSheet = ({
       allowClose={allowClose}
     >
       <div className={classes.root}>
-        <span className={classes.title}>
+        <Typography variant="h3" component="span" className={classes.title}>
           {i18n.text('locations.your_current_timeslot.dialog.date')}
-        </span>
+        </Typography>
         <div className={classes.row}>
           {Object.keys(groupedSlots).map(date => (
             <button

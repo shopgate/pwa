@@ -18,7 +18,7 @@ const useStyles = makeStyles()(theme => ({
     flex: 1,
   },
   closeButton: {
-    fontSize: 21,
+    fontSize: theme.components.icon.small,
     marginRight: 12,
     cursor: 'pointer',
     color: theme.palette.primary.main,
@@ -27,14 +27,14 @@ const useStyles = makeStyles()(theme => ({
     cursor: 'pointer',
     marginLeft: 16,
     color: theme.palette.primary.main,
-    fontWeight: '600',
+    fontWeight: theme.typography.fontWeightBold,
     padding: 8,
   },
   actionButtonSecondary: {
     cursor: 'pointer',
     marginLeft: 16,
     color: theme.palette.primary.main,
-    fontWeight: '500',
+    fontWeight: theme.typography.fontWeightMedium,
     padding: 8,
   },
 }));

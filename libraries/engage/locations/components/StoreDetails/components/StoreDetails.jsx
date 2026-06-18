@@ -23,10 +23,8 @@ const useStyles = makeStyles()(theme => ({
   },
   header: {
     color: theme.palette.primary.main,
-    fontWeight: '600',
   },
   locationName: {
-    fontWeight: '600',
     marginBottom: 8,
   },
   locationRow: {
@@ -46,23 +44,15 @@ const useStyles = makeStyles()(theme => ({
     minWidth: '250px',
     maxWidth: '455px',
   },
-  storeHours: {
-    fontSize: 17,
-    fontWeight: '600',
-  },
   storeHoursLine: { },
   storeHoursWeekday: {
     textAlign: 'left',
   },
   bold: {
-    fontWeight: '600',
+    fontWeight: theme.typography.fontWeightBold,
   },
   storeHoursOpeningTime: {
     textAlign: 'right',
-  },
-  phone: {
-    fontSize: 17,
-    fontWeight: '600',
   },
   phoneNumber: {
     textDecoration: 'underline',
@@ -185,9 +175,9 @@ const StoreDetails = () => {
           </div>
           {address?.phoneNumber && (
             <>
-              <div className={classes.phone}>
+              <Typography variant="h4" component="div">
                 {`${i18n.text('location.phone')}: `}
-              </div>
+              </Typography>
 
               <div className={classes.phoneNumber}>
                 <Link
@@ -205,9 +195,9 @@ const StoreDetails = () => {
         </div>
         {hasOpeningHours && (
         <div className={classes.storeHoursColumn}>
-          <div className={classes.storeHours}>
+          <Typography variant="h4" component="div">
             {`${i18n.text('location.storeHours')}:`}
-          </div>
+          </Typography>
           <table>
             <tbody>
               {getWeekDaysOrder().map((weekDay) => {

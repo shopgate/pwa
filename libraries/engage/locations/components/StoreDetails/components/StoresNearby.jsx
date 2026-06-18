@@ -7,7 +7,6 @@ import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 const useStyles = makeStyles()({
   title: {
-    fontWeight: '600',
     marginBottom: 12,
   },
   table: {

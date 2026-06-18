@@ -29,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       padding: theme.spacing(2),
       margin: 0,
-      fontSize: '1.25rem',
+      fontSize: theme.typography.h3.fontSize,
       lineHeight: '1.5rem',
     },
   },
@@ -38,7 +38,6 @@ const useStyles = makeStyles()(theme => ({
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
       lineHeight: '1.25rem',
-      fontWeight: 'initial',
       paddingTop: theme.spacing(1),
     },
   },

@@ -8,7 +8,7 @@ import { i18n } from '../../../core/helpers/i18n';
 
 const useStyles = makeStyles()(theme => ({
   headline: {
-    fontWeight: 'normal',
+    fontWeight: theme.typography.fontWeightRegular,
     margin: theme.spacing(0, 0, 1, 0),
     textTransform: 'none',
   },
@@ -43,7 +43,7 @@ const useStyles = makeStyles()(theme => ({
     ' tr:last-of-type td': {
       paddingTop: 8,
       borderTop: `1px solid ${theme.components.border.medium}`,
-      fontWeight: '600',
+      fontWeight: theme.typography.fontWeightBold,
     },
   },
   actionsContainer: {

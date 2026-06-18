@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
     textWrapMode: 'nowrap',
     alignContent: 'center',
     verticalAlign: 'middle',
-    fontWeight: '500',
+    fontWeight: theme.typography.fontWeightMedium,
   },
   makeMyStore: {
     textWrapMode: 'nowrap',

@@ -7,14 +7,14 @@ import ProfileContact from '../../../account/components/ProfileContact';
 import AddressBookProvider from '../../providers/AddressBookProvider';
 import { ADDRESS_TYPE_BILLING } from '../../constants';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   headline: {
     padding: 16,
-    fontWeight: 'normal',
+    fontWeight: theme.typography.fontWeightRegular,
     margin: 0,
     lineHeight: '2.25rem',
   },
-});
+}));
 
 /**
  * AddressBookContact
