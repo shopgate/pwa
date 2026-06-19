@@ -4,7 +4,7 @@ import { isBeta } from '@shopgate/engage/core';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
-import { captureSource } from '../../../HeroTransition/coordinator';
+import { capture } from '../../../HeroTransition/flight';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
@@ -47,8 +47,8 @@ const Item = ({ product, display }) => {
       return;
     }
 
-    captureSource({
-      rect,
+    capture({
+      sourceRect: rect,
       src,
       productId: product.id,
     });
