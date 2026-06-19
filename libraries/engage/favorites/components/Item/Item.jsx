@@ -339,7 +339,7 @@ const FavoriteItem = ({
                     className={cx(classes.titleContainer, 'engage__favorites__item__title-container')}
                   >
                     <Typography
-                      variant="h4"
+                      variant="h5"
                       component="span"
                       className={classes.title}
                       dangerouslySetInnerHTML={{ __html: `${product.name}` }}
