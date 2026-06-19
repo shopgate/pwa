@@ -5,6 +5,7 @@ import RatingCount from './index';
 const mockText = jest.fn(({ string }) => <span>{string}</span>);
 
 jest.mock('@shopgate/engage/components', () => ({
+  Typography: ({ children }) => children,
   I18n: {
     Text: props => mockText(props),
   },

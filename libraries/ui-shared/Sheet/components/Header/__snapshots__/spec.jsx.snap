@@ -31,14 +31,39 @@ exports[`<Header /> should render with correct title 1`] = `
       </Ripple>
     </button>
     <GridItem
-      className="sg-1gh7dpa-title"
+      className="sg-1h2u7d7-title"
       component="div"
       grow={1}
       role="heading"
       shrink={1}
       tabIndex={0}
     >
-      My Title
+      <ForwardRef
+        align="inherit"
+        color="initial"
+        component="div"
+        display="initial"
+        gutterBottom={false}
+        noWrap={true}
+        paragraph={false}
+        variant="h3"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
+      >
+        My Title
+      </ForwardRef>
     </GridItem>
   </Grid>
 </div>

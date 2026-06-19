@@ -177,7 +177,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.foo"
                     inputComponent="input"
@@ -204,7 +204,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.foo"
                       inputComponent="input"
@@ -229,7 +229,7 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
@@ -277,13 +277,24 @@ exports[`<FormBuilder /> should call onChange callback when input is changed 1`]
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.foo"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.foo"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -474,7 +485,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.foo"
                     inputComponent="input"
@@ -501,7 +512,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.foo"
                       inputComponent="input"
@@ -526,7 +537,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
@@ -574,13 +585,24 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.foo"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.foo"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -728,7 +750,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.bar"
                     inputComponent="input"
@@ -755,7 +777,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.bar"
                       inputComponent="input"
@@ -780,7 +802,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         inputMode={null}
@@ -828,13 +850,24 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 1`] = 
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.bar"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.bar"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -1025,7 +1058,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.foo"
                     inputComponent="input"
@@ -1052,7 +1085,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.foo"
                       inputComponent="input"
@@ -1077,7 +1110,7 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
@@ -1125,13 +1158,24 @@ exports[`<FormBuilder /> should hide element if setVisibilty rule applies 2`] = 
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.foo"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.foo"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -1402,7 +1446,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.firstName"
                     inputComponent="input"
@@ -1429,7 +1473,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.firstName"
                       inputComponent="input"
@@ -1454,7 +1498,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.firstName"
                         inputMode={null}
@@ -1502,13 +1546,24 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.firstName"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.firstName"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -1643,7 +1698,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.lastName"
                     inputComponent="input"
@@ -1670,7 +1725,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.lastName"
                       inputComponent="input"
@@ -1695,7 +1750,7 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.lastName"
                         inputMode={null}
@@ -1743,13 +1798,24 @@ exports[`<FormBuilder /> should render two text fields 1`] = `
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.lastName"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.lastName"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -1947,7 +2013,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.foo"
                     inputComponent="input"
@@ -1974,7 +2040,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.foo"
                       inputComponent="input"
@@ -1999,7 +2065,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
@@ -2047,13 +2113,24 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.foo"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.foo"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -2206,7 +2283,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.bar"
                     inputComponent="input"
@@ -2233,7 +2310,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.bar"
                       inputComponent="input"
@@ -2258,7 +2335,7 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         inputMode={null}
@@ -2306,13 +2383,24 @@ exports[`<FormBuilder /> should reset value when rule applies 1`] = `
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.bar"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.bar"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -2510,7 +2598,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.foo"
                     inputComponent="input"
@@ -2537,7 +2625,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.foo"
                       inputComponent="input"
@@ -2562,7 +2650,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.foo"
                         inputMode={null}
@@ -2610,13 +2698,24 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.foo"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.foo"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>
@@ -2769,7 +2868,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         "aria-invalid": false,
                       }
                     }
-                    className="sg-1w45uhc-input"
+                    className="sg-r4rsrd-input"
                     disabled={false}
                     id="foo.bar"
                     inputComponent="input"
@@ -2796,7 +2895,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                       }
                       autoComplete={false}
                       autoCorrect={false}
-                      className="sg-1w45uhc-input"
+                      className="sg-r4rsrd-input"
                       disabled={false}
                       id="foo.bar"
                       inputComponent="input"
@@ -2821,7 +2920,7 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                         aria-invalid={false}
                         autoComplete="off"
                         autoCorrect="off"
-                        className="sg-1w45uhc-input simpleInput common__simple-input"
+                        className="sg-r4rsrd-input simpleInput common__simple-input"
                         disabled={false}
                         id="foo.bar"
                         inputMode={null}
@@ -2869,13 +2968,24 @@ exports[`<FormBuilder /> should reset value when rule applies 2`] = `
                   translate={false}
                   validationError={null}
                 >
-                  <div
+                  <Typography
                     aria-atomic="true"
                     aria-hidden={false}
                     aria-live="assertive"
-                    className="sg-kwic2t-error errorText"
+                    className="sg-a3ijwv-error errorText"
+                    color="error"
+                    component="div"
                     id="ariaError-foo.bar"
-                  />
+                    variant="caption"
+                  >
+                    <div
+                      aria-atomic="true"
+                      aria-hidden={false}
+                      aria-live="assertive"
+                      className="sg-a3ijwv-error errorText"
+                      id="ariaError-foo.bar"
+                    />
+                  </Typography>
                 </ErrorText>
               </div>
             </TextField>

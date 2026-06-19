@@ -36,17 +36,20 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         tag="h2"
         text="Widget Headline"
       >
-        <h2
-          className="sg-1e76cvh-root headline theme__headline"
+        <Typography
+          align="inherit"
+          className="sg-1ivqote-root headline theme__headline"
+          component="h2"
           data-test-id="Headline"
           style={null}
+          variant="h2"
         >
           <Text
             string="Widget Headline"
           >
             Widget Headline
           </Text>
-        </h2>
+        </Typography>
       </Headline>
       <div>
         <Connect(CategoryPicker)
@@ -86,14 +89,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label One
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 common.please_choose
@@ -350,17 +355,20 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         tag="h2"
         text="Widget Headline"
       >
-        <h2
-          className="sg-1e76cvh-root headline theme__headline"
+        <Typography
+          align="inherit"
+          className="sg-1ivqote-root headline theme__headline"
+          component="h2"
           data-test-id="Headline"
           style={null}
+          variant="h2"
         >
           <Text
             string="Widget Headline"
           >
             Widget Headline
           </Text>
-        </h2>
+        </Typography>
       </Headline>
       <div>
         <Connect(CategoryPicker)
@@ -400,14 +408,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label One
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 Category 1-1
@@ -626,7 +636,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1gh7dpa-title"
+                                    className="sg-1h2u7d7-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -634,11 +644,17 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1yim49x-root-title"
+                                      className="sg-1pnus5l-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
-                                      Label One
+                                      <Typography
+                                        component="div"
+                                        noWrap={true}
+                                        variant="h3"
+                                      >
+                                        Label One
+                                      </Typography>
                                     </div>
                                   </GridItem>
                                 </div>
@@ -1017,17 +1033,20 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         tag="h2"
         text="Widget Headline"
       >
-        <h2
-          className="sg-1e76cvh-root headline theme__headline"
+        <Typography
+          align="inherit"
+          className="sg-1ivqote-root headline theme__headline"
+          component="h2"
           data-test-id="Headline"
           style={null}
+          variant="h2"
         >
           <Text
             string="Widget Headline"
           >
             Widget Headline
           </Text>
-        </h2>
+        </Typography>
       </Headline>
       <div>
         <Connect(CategoryPicker)
@@ -1067,14 +1086,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label One
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 Category 1
@@ -1241,14 +1262,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label Two
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 Category 1-2
@@ -1410,7 +1433,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               onClick={[Function]}
             >
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 Category 1-2-1
@@ -1693,17 +1716,20 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         tag="h2"
         text="Widget Headline"
       >
-        <h2
-          className="sg-1e76cvh-root headline theme__headline"
+        <Typography
+          align="inherit"
+          className="sg-1ivqote-root headline theme__headline"
+          component="h2"
           data-test-id="Headline"
           style={null}
+          variant="h2"
         >
           <Text
             string="Widget Headline"
           >
             Widget Headline
           </Text>
-        </h2>
+        </Typography>
       </Headline>
       <div>
         <Connect(CategoryPicker)
@@ -1743,14 +1769,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label One
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 Category 1
@@ -1969,7 +1997,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1gh7dpa-title"
+                                    className="sg-1h2u7d7-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -1977,11 +2005,17 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1yim49x-root-title"
+                                      className="sg-1pnus5l-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
-                                      Label One
+                                      <Typography
+                                        component="div"
+                                        noWrap={true}
+                                        variant="h3"
+                                      >
+                                        Label One
+                                      </Typography>
                                     </div>
                                   </GridItem>
                                 </div>
@@ -2238,14 +2272,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label Two
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 common.please_choose
@@ -2520,17 +2556,20 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         tag="h2"
         text="Widget Headline"
       >
-        <h2
-          className="sg-1e76cvh-root headline theme__headline"
+        <Typography
+          align="inherit"
+          className="sg-1ivqote-root headline theme__headline"
+          component="h2"
           data-test-id="Headline"
           style={null}
+          variant="h2"
         >
           <Text
             string="Widget Headline"
           >
             Widget Headline
           </Text>
-        </h2>
+        </Typography>
       </Headline>
       <div>
         <Connect(CategoryPicker)
@@ -2570,14 +2609,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label One
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 Category 1
@@ -2796,7 +2837,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1gh7dpa-title"
+                                    className="sg-1h2u7d7-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -2804,11 +2845,17 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1yim49x-root-title"
+                                      className="sg-1pnus5l-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
-                                      Label One
+                                      <Typography
+                                        component="div"
+                                        noWrap={true}
+                                        variant="h3"
+                                      >
+                                        Label One
+                                      </Typography>
                                     </div>
                                   </GridItem>
                                 </div>
@@ -3065,14 +3112,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label Two
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 Category 1-1
@@ -3291,7 +3340,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1gh7dpa-title"
+                                    className="sg-1h2u7d7-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -3299,11 +3348,17 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1yim49x-root-title"
+                                      className="sg-1pnus5l-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
-                                      Label Two
+                                      <Typography
+                                        component="div"
+                                        noWrap={true}
+                                        variant="h3"
+                                      >
+                                        Label Two
+                                      </Typography>
                                     </div>
                                   </GridItem>
                                 </div>
@@ -3702,14 +3757,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label One
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 common.please_choose
@@ -4004,14 +4061,16 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
               data-test-id="nested-picker-trigger"
               onClick={[Function]}
             >
-              <div
-                className="sg-1pccjd4-label"
+              <Typography
+                className="sg-at9m9c-label"
+                component="div"
                 data-test-id="nested-picker-label"
+                variant="caption"
               >
                 Label One
-              </div>
+              </Typography>
               <div
-                className="sg-2yv5tj-selection"
+                className="sg-zq8tsh-selection"
                 data-test-id="nested-picker-selection"
               >
                 Category 2
@@ -4230,7 +4289,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1gh7dpa-title"
+                                    className="sg-1h2u7d7-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -4238,11 +4297,17 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1yim49x-root-title"
+                                      className="sg-1pnus5l-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
-                                      Label One
+                                      <Typography
+                                        component="div"
+                                        noWrap={true}
+                                        variant="h3"
+                                      >
+                                        Label One
+                                      </Typography>
                                     </div>
                                   </GridItem>
                                 </div>

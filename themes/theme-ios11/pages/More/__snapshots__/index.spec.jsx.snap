@@ -41,26 +41,39 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
             tag="h1"
             text="navigation.welcome_message"
           >
-            <h1
-              className="sg-1e76cvh-root headline theme__headline"
+            <Typography
+              align="inherit"
+              className="sg-1ivqote-root headline theme__headline"
+              component="h1"
               data-test-id="Headline"
               style={
                 {
                   "margin": "24px 20px 16px",
                 }
               }
+              variant="h1"
             >
-              <Text
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={{}}
-                role={null}
-                string="navigation.welcome_message"
-                transform={null}
+              <h1
+                className="sg-1ivqote-root headline theme__headline"
+                data-test-id="Headline"
+                style={
+                  {
+                    "margin": "24px 20px 16px",
+                  }
+                }
               >
-                navigation.welcome_message
-              </Text>
-            </h1>
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="navigation.welcome_message"
+                  transform={null}
+                >
+                  navigation.welcome_message
+                </Text>
+              </h1>
+            </Typography>
           </Headline>
           <Portal
             name="nav-menu.content.before"
@@ -139,26 +152,39 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         tag="h2"
                         text="navigation.your_account"
                       >
-                        <h2
-                          className="sg-1e76cvh-root headline theme__headline"
+                        <Typography
+                          align="inherit"
+                          className="sg-1ivqote-root headline theme__headline"
+                          component="h2"
                           data-test-id="Headline"
                           style={
                             {
                               "margin": "24px 20px 16px",
                             }
                           }
+                          variant="h2"
                         >
-                          <Text
-                            acceptPlainTextWithPlaceholders={false}
-                            className={null}
-                            params={{}}
-                            role={null}
-                            string="navigation.your_account"
-                            transform={null}
+                          <h2
+                            className="sg-1ivqote-root headline theme__headline"
+                            data-test-id="Headline"
+                            style={
+                              {
+                                "margin": "24px 20px 16px",
+                              }
+                            }
                           >
-                            navigation.your_account
-                          </Text>
-                        </h2>
+                            <Text
+                              acceptPlainTextWithPlaceholders={false}
+                              className={null}
+                              params={{}}
+                              role={null}
+                              string="navigation.your_account"
+                              transform={null}
+                            >
+                              navigation.your_account
+                            </Text>
+                          </h2>
+                        </Typography>
                       </Headline>
                       <div
                         className="sg-1sqpupb-list"
@@ -256,26 +282,39 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   tag="h2"
                   text="navigation.store_information"
                 >
-                  <h2
-                    className="sg-1e76cvh-root headline theme__headline"
+                  <Typography
+                    align="inherit"
+                    className="sg-1ivqote-root headline theme__headline"
+                    component="h2"
                     data-test-id="Headline"
                     style={
                       {
                         "margin": "24px 20px 16px",
                       }
                     }
+                    variant="h2"
                   >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="navigation.store_information"
-                      transform={null}
+                    <h2
+                      className="sg-1ivqote-root headline theme__headline"
+                      data-test-id="Headline"
+                      style={
+                        {
+                          "margin": "24px 20px 16px",
+                        }
+                      }
                     >
-                      navigation.store_information
-                    </Text>
-                  </h2>
+                      <Text
+                        acceptPlainTextWithPlaceholders={false}
+                        className={null}
+                        params={{}}
+                        role={null}
+                        string="navigation.store_information"
+                        transform={null}
+                      >
+                        navigation.store_information
+                      </Text>
+                    </h2>
+                  </Typography>
                 </Headline>
                 <div
                   className="sg-1sqpupb-list"
@@ -658,26 +697,39 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
             tag="h1"
             text="login.headline"
           >
-            <h1
-              className="sg-1e76cvh-root headline theme__headline"
+            <Typography
+              align="inherit"
+              className="sg-1ivqote-root headline theme__headline"
+              component="h1"
               data-test-id="Headline"
               style={
                 {
                   "margin": "24px 20px 16px",
                 }
               }
+              variant="h1"
             >
-              <Text
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={{}}
-                role={null}
-                string="login.headline"
-                transform={null}
+              <h1
+                className="sg-1ivqote-root headline theme__headline"
+                data-test-id="Headline"
+                style={
+                  {
+                    "margin": "24px 20px 16px",
+                  }
+                }
               >
-                login.headline
-              </Text>
-            </h1>
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="login.headline"
+                  transform={null}
+                >
+                  login.headline
+                </Text>
+              </h1>
+            </Typography>
           </Headline>
           <UserMenu
             entries={null}
@@ -838,26 +890,39 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                   tag="h2"
                   text="navigation.store_information"
                 >
-                  <h2
-                    className="sg-1e76cvh-root headline theme__headline"
+                  <Typography
+                    align="inherit"
+                    className="sg-1ivqote-root headline theme__headline"
+                    component="h2"
                     data-test-id="Headline"
                     style={
                       {
                         "margin": "24px 20px 16px",
                       }
                     }
+                    variant="h2"
                   >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="navigation.store_information"
-                      transform={null}
+                    <h2
+                      className="sg-1ivqote-root headline theme__headline"
+                      data-test-id="Headline"
+                      style={
+                        {
+                          "margin": "24px 20px 16px",
+                        }
+                      }
                     >
-                      navigation.store_information
-                    </Text>
-                  </h2>
+                      <Text
+                        acceptPlainTextWithPlaceholders={false}
+                        className={null}
+                        params={{}}
+                        role={null}
+                        string="navigation.store_information"
+                        transform={null}
+                      >
+                        navigation.store_information
+                      </Text>
+                    </h2>
+                  </Typography>
                 </Headline>
                 <div
                   className="sg-1sqpupb-list"

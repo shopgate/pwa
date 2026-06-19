@@ -8,6 +8,7 @@ jest.mock('@shopgate/engage/components', () => {
   SheetList.Item = function Item() { return null; };
 
   return {
+    Typography: ({ children }) => children,
     SheetList,
     Sheet: ({ children }) => children,
     Picker: jest.requireActual('@shopgate/engage/components/Picker').default,

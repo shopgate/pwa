@@ -12,6 +12,7 @@ jest.mock('@shopgate/engage/core/hooks/events');
 jest.mock('../GroupedProperties', () => jest.fn(() => 'GroupedProperties'));
 
 jest.mock('@shopgate/engage/components', () => ({
+  Typography: ({ children }) => children,
   HtmlSanitizer: ({ children }) => children,
 }));
 

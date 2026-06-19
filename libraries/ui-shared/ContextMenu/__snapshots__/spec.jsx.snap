@@ -23,7 +23,7 @@ exports[`<ContextMenu /> Given the component was mounted to the DOM should match
       aria-expanded={null}
       aria-haspopup="true"
       aria-label="navigation.open_menu"
-      className="sg-jzqegf-button"
+      className="sg-1381d15-button"
       disabled={false}
       onClick={[Function]}
       type="button"
@@ -71,7 +71,7 @@ exports[`<ContextMenu /> Snapshot test should match snapshot 1`] = `
     aria-expanded={true}
     aria-haspopup="true"
     aria-label="navigation.open_menu"
-    className="sg-jzqegf-button"
+    className="sg-1381d15-button"
     disabled={false}
     onClick={[Function]}
     type="button"

@@ -5,7 +5,7 @@ exports[`engage > cart > components > CartItemGroupReservation should render acc
   data-testid="card-list-item"
 >
   <div
-    class="sg-h5vm8p-addressDetails"
+    class="sg-1dqn7hy-addressDetails"
   >
     StoreOpeningHours
     012456789
@@ -15,10 +15,10 @@ exports[`engage > cart > components > CartItemGroupReservation should render acc
 
 exports[`engage > cart > components > CartItemGroupReservation should render accordion 2`] = `
 <div
-  class="sg-1n883za-address"
+  class="sg-y23pzr-address"
 >
   <div
-    class="sg-1ylg789-addressIcon"
+    class="sg-xyhfks-addressIcon"
   >
     <div
       data-testid="location-icon"
@@ -26,11 +26,13 @@ exports[`engage > cart > components > CartItemGroupReservation should render acc
   </div>
   <div>
     <div
-      class="sg-1uoiszi-title"
+      class="sg-1rfsj14-title"
     >
       locations.method.ropis
     </div>
-    Location name
+    <div>
+      Location name
+    </div>
   </div>
 </div>
 `;
@@ -40,10 +42,10 @@ exports[`engage > cart > components > CartItemGroupReservation should render onl
   data-testid="card-list-item"
 >
   <div
-    class="sg-1n883za-address"
+    class="sg-y23pzr-address"
   >
     <div
-      class="sg-1ylg789-addressIcon"
+      class="sg-xyhfks-addressIcon"
     >
       <div
         data-testid="location-icon"
@@ -51,11 +53,13 @@ exports[`engage > cart > components > CartItemGroupReservation should render onl
     </div>
     <div>
       <div
-        class="sg-1uoiszi-title"
+        class="sg-1rfsj14-title"
       >
         locations.method.ropis
       </div>
-      Location name
+      <div>
+        Location name
+      </div>
     </div>
   </div>
 </div>

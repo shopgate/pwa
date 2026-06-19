@@ -29,14 +29,14 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         >
           <Button
             aria-label={null}
-            className="sg-18bi9x7-removeButton"
+            className="sg-1g4u82s-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="common__button sg-1bdmg0z-root-removeButton"
+              className="common__button sg-3ns3ho-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -85,14 +85,14 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="sg-cgogq3-name"
+            className="sg-1lp0dbu-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="common__button sg-llt41d-root-name"
+              className="common__button sg-15bdo8l-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -107,7 +107,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
       className="sg-1l5tw3l-moreButtonWrapper"
     >
       <RippleButton
-        className="sg-jtmjaa-moreButton"
+        className="sg-vwngim-moreButton"
         disabled={false}
         fill={true}
         flat={false}
@@ -119,7 +119,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         wrapContent={true}
       >
         <Button
-          className="sg-jtmjaa-moreButton ui-shared__ripple-button"
+          className="sg-vwngim-moreButton ui-shared__ripple-button"
           disabled={false}
           flat={false}
           onClick={[Function]}
@@ -128,13 +128,13 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           wrapContent={false}
         >
           <Button
-            className="ui-shared__button ui-shared__ripple-button sg-13li33e-button-moreButton"
+            className="ui-shared__button ui-shared__ripple-button sg-gy5wk2-button-moreButton"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
-              className="common__button ui-shared__button ui-shared__ripple-button sg-11ej0u6-root-button-moreButton"
+              className="common__button ui-shared__button ui-shared__ripple-button sg-wpknjg-root-button-moreButton"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -210,14 +210,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         >
           <Button
             aria-label={null}
-            className="sg-18bi9x7-removeButton"
+            className="sg-1g4u82s-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="common__button sg-1bdmg0z-root-removeButton"
+              className="common__button sg-3ns3ho-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -266,14 +266,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="sg-cgogq3-name"
+            className="sg-1lp0dbu-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="common__button sg-llt41d-root-name"
+              className="common__button sg-15bdo8l-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -298,14 +298,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         >
           <Button
             aria-label={null}
-            className="sg-18bi9x7-removeButton"
+            className="sg-1g4u82s-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="common__button sg-1bdmg0z-root-removeButton"
+              className="common__button sg-3ns3ho-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -354,14 +354,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="sg-cgogq3-name"
+            className="sg-1lp0dbu-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="common__button sg-llt41d-root-name"
+              className="common__button sg-15bdo8l-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -376,7 +376,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
       className="sg-1l5tw3l-moreButtonWrapper"
     >
       <RippleButton
-        className="sg-jtmjaa-moreButton"
+        className="sg-vwngim-moreButton"
         disabled={false}
         fill={true}
         flat={false}
@@ -388,7 +388,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         wrapContent={true}
       >
         <Button
-          className="sg-jtmjaa-moreButton ui-shared__ripple-button"
+          className="sg-vwngim-moreButton ui-shared__ripple-button"
           disabled={false}
           flat={false}
           onClick={[Function]}
@@ -397,13 +397,13 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           wrapContent={false}
         >
           <Button
-            className="ui-shared__button ui-shared__ripple-button sg-13li33e-button-moreButton"
+            className="ui-shared__button ui-shared__ripple-button sg-gy5wk2-button-moreButton"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
-              className="common__button ui-shared__button ui-shared__ripple-button sg-11ej0u6-root-button-moreButton"
+              className="common__button ui-shared__button ui-shared__ripple-button sg-wpknjg-root-button-moreButton"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}

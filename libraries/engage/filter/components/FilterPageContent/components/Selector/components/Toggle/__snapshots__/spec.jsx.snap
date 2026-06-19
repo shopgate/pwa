@@ -6,7 +6,7 @@ exports[`<Toggle /> should render with selected 1`] = `
     class="sg-1a4ev5x-toggle"
   >
     <span
-      class="sg-3akxav-label-closed"
+      class="sg-11pywio-label-closed"
     >
       somelabel
     </span>
@@ -25,7 +25,7 @@ exports[`<Toggle /> should render with selected as open 1`] = `
     class="sg-1a4ev5x-toggle"
   >
     <span
-      class="sg-y39g3w-label-open"
+      class="sg-14gm6rw-label-open"
     >
       somelabel
     </span>
@@ -44,7 +44,7 @@ exports[`<Toggle /> should render without selected 1`] = `
     class="sg-1a4ev5x-toggle"
   >
     <span
-      class="sg-3akxav-label-closed"
+      class="sg-11pywio-label-closed"
     >
       somelabel
     </span>
@@ -58,7 +58,7 @@ exports[`<Toggle /> should render without selected as open 1`] = `
     class="sg-1a4ev5x-toggle"
   >
     <span
-      class="sg-y39g3w-label-open"
+      class="sg-14gm6rw-label-open"
     >
       somelabel
     </span>

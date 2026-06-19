@@ -3,7 +3,7 @@
 exports[`<Tiers /> Rendering with data should render tier prices when tier prices are available 1`] = `
 <DocumentFragment>
   <div
-    class="sg-1du56tt-wrapper engage__product__header__tiers"
+    class="engage__typography engage__typography_body2 engage__product__header__tiers sg-1x7luiv-Typography-root-Typography-body2-wrapper"
   >
     <span
       class="sg-myao6a-tier"
@@ -11,7 +11,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
     >
       price.tier.range
       <span
-        class="sg-z2q7om-price"
+        class="sg-akguvg-price"
       >
         p
       </span>
@@ -22,7 +22,7 @@ exports[`<Tiers /> Rendering with data should render tier prices when tier price
     >
       price.tier.range
       <span
-        class="sg-z2q7om-price"
+        class="sg-akguvg-price"
       >
         p
       </span>

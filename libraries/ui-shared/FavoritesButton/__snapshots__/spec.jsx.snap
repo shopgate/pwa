@@ -35,7 +35,7 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       <button
         aria-hidden={null}
         aria-label="favorites.add"
-        className="ui-shared__favorites-button sg-1n5m6e4-button"
+        className="ui-shared__favorites-button sg-1ne7yjr-button"
         data-test-id="favoriteButton"
         onClick={[Function]}
         type="button"
@@ -126,7 +126,7 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       <button
         aria-hidden={null}
         aria-label="favorites.remove"
-        className="ui-shared__favorites-button sg-1n5m6e4-button"
+        className="ui-shared__favorites-button sg-1ne7yjr-button"
         data-test-id="favoriteButton"
         onClick={[Function]}
         type="button"

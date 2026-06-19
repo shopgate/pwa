@@ -44,22 +44,31 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
     tag="h2"
     text="Yay Categories"
   >
-    <h2
-      className="sg-1e76cvh-root headline theme__headline"
+    <Typography
+      align="inherit"
+      className="sg-1ivqote-root headline theme__headline"
+      component="h2"
       data-test-id="Headline"
       style={null}
+      variant="h2"
     >
-      <Text
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={{}}
-        role={null}
-        string="Yay Categories"
-        transform={null}
+      <h2
+        className="sg-1ivqote-root headline theme__headline"
+        data-test-id="Headline"
+        style={null}
       >
-        Yay Categories
-      </Text>
-    </h2>
+        <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
+          string="Yay Categories"
+          transform={null}
+        >
+          Yay Categories
+        </Text>
+      </h2>
+    </Typography>
   </Headline>
   <SheetList
     hasImages={false}

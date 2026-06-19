@@ -7,7 +7,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
   >
     <select
       aria-invalid="false"
-      class="sg-5x7qyf-select select"
+      class="sg-1rlwztn-select select"
       id="test-name"
       name="test-name"
     >
@@ -25,7 +25,7 @@ exports[`<Select /> should render select with 1 selected option 1`] = `
       </option>
     </select>
     <svg
-      class="common__icon sg-1ix3ppp-root-chevron"
+      class="common__icon sg-lk7or6-root-chevron"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -56,7 +56,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
   >
     <select
       aria-invalid="false"
-      class="sg-5x7qyf-select select"
+      class="sg-1rlwztn-select select"
       id="test-name"
       name="test-name"
     >
@@ -74,7 +74,7 @@ exports[`<Select /> should render select with 2 options 1`] = `
       </option>
     </select>
     <svg
-      class="common__icon sg-1ix3ppp-root-chevron"
+      class="common__icon sg-lk7or6-root-chevron"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -105,12 +105,12 @@ exports[`<Select /> should render select with no options 1`] = `
   >
     <select
       aria-invalid="false"
-      class="sg-5x7qyf-select select"
+      class="sg-1rlwztn-select select"
       id="test-name"
       name="test-name"
     />
     <svg
-      class="common__icon sg-1ix3ppp-root-chevron"
+      class="common__icon sg-lk7or6-root-chevron"
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >

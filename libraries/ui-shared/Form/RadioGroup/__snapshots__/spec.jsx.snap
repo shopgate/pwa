@@ -62,18 +62,30 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Text
-              acceptPlainTextWithPlaceholders={false}
+            <Typography
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
+              component="div"
               id="foo-label"
-              params={{}}
-              role={null}
-              string="foo"
-              transform={null}
+              variant="body1"
             >
-              foo
-            </Text>
+              <div
+                aria-hidden={true}
+                className="sg-wy4z7j-label label"
+                id="foo-label"
+              >
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="foo"
+                  transform={null}
+                >
+                  foo
+                </Text>
+              </div>
+            </Typography>
           </label>
         </RadioItem>
       </div>
@@ -144,18 +156,30 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Text
-              acceptPlainTextWithPlaceholders={false}
+            <Typography
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
+              component="div"
               id="foo-label"
-              params={{}}
-              role={null}
-              string="foo"
-              transform={null}
+              variant="body1"
             >
-              foo
-            </Text>
+              <div
+                aria-hidden={true}
+                className="sg-wy4z7j-label label"
+                id="foo-label"
+              >
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="foo"
+                  transform={null}
+                >
+                  foo
+                </Text>
+              </div>
+            </Typography>
           </label>
         </RadioItem>
         <RadioItem
@@ -184,18 +208,30 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Text
-              acceptPlainTextWithPlaceholders={false}
+            <Typography
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
+              component="div"
               id="bar-label"
-              params={{}}
-              role={null}
-              string="bar"
-              transform={null}
+              variant="body1"
             >
-              bar
-            </Text>
+              <div
+                aria-hidden={true}
+                className="sg-wy4z7j-label label"
+                id="bar-label"
+              >
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="bar"
+                  transform={null}
+                >
+                  bar
+                </Text>
+              </div>
+            </Typography>
           </label>
         </RadioItem>
       </div>
@@ -266,18 +302,30 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Text
-              acceptPlainTextWithPlaceholders={false}
+            <Typography
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
+              component="div"
               id="foo-label"
-              params={{}}
-              role={null}
-              string="foo"
-              transform={null}
+              variant="body1"
             >
-              foo
-            </Text>
+              <div
+                aria-hidden={true}
+                className="sg-wy4z7j-label label"
+                id="foo-label"
+              >
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="foo"
+                  transform={null}
+                >
+                  foo
+                </Text>
+              </div>
+            </Typography>
           </label>
         </RadioItem>
       </div>
@@ -389,18 +437,30 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Text
-              acceptPlainTextWithPlaceholders={false}
+            <Typography
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
+              component="div"
               id="foo-label"
-              params={{}}
-              role={null}
-              string="foo"
-              transform={null}
+              variant="body1"
             >
-              foo
-            </Text>
+              <div
+                aria-hidden={true}
+                className="sg-wy4z7j-label label"
+                id="foo-label"
+              >
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="foo"
+                  transform={null}
+                >
+                  foo
+                </Text>
+              </div>
+            </Typography>
           </label>
         </RadioItem>
       </div>
@@ -471,18 +531,30 @@ exports[`<RadioGroup /> should use default value 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Text
-              acceptPlainTextWithPlaceholders={false}
+            <Typography
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
+              component="div"
               id="foo-label"
-              params={{}}
-              role={null}
-              string="foo"
-              transform={null}
+              variant="body1"
             >
-              foo
-            </Text>
+              <div
+                aria-hidden={true}
+                className="sg-wy4z7j-label label"
+                id="foo-label"
+              >
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="foo"
+                  transform={null}
+                >
+                  foo
+                </Text>
+              </div>
+            </Typography>
           </label>
         </RadioItem>
       </div>

@@ -22,7 +22,12 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
         data-test-id="-12%"
         tabindex="-1"
       >
-        -12%
+        <span
+          aria-hidden="true"
+          class="theme__discount-badge sg-uf8b3f-small-badge"
+        >
+          -12%
+        </span>
       </div>
     </div>
   </div>

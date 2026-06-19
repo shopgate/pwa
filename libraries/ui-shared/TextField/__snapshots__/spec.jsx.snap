@@ -95,7 +95,7 @@ exports[`<TextField /> should focus the input 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -122,7 +122,7 @@ exports[`<TextField /> should focus the input 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -147,7 +147,7 @@ exports[`<TextField /> should focus the input 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -195,22 +195,52 @@ exports[`<TextField /> should focus the input 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -311,7 +341,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -338,7 +368,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -363,7 +393,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -411,22 +441,52 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -527,7 +587,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -554,7 +614,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -579,7 +639,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -627,22 +687,52 @@ exports[`<TextField /> should render a simple text field 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -743,7 +833,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -770,7 +860,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -795,7 +885,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -843,22 +933,52 @@ exports[`<TextField /> should render the text field as password 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -959,7 +1079,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -986,7 +1106,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1011,7 +1131,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1059,22 +1179,52 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -1175,7 +1325,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -1202,7 +1352,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1227,7 +1377,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1274,29 +1424,59 @@ exports[`<TextField /> should replace the error text with custom validation erro
       translate={true}
       validationError="Custom validation error"
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string="Custom validation error"
-          transform={null}
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
         >
-          <span
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
+            params={{}}
             role={null}
+            string="Custom validation error"
+            transform={null}
           >
-            Custom validation error
-          </span>
-        </Translate>
-      </div>
+            <span
+              className={null}
+              role={null}
+            >
+              Custom validation error
+            </span>
+          </Translate>
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -1397,7 +1577,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -1424,7 +1604,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1449,7 +1629,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1497,22 +1677,52 @@ exports[`<TextField /> should sanitize the input 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -1613,7 +1823,7 @@ exports[`<TextField /> should show the error message 1`] = `
             "aria-invalid": true,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -1640,7 +1850,7 @@ exports[`<TextField /> should show the error message 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1665,7 +1875,7 @@ exports[`<TextField /> should show the error message 1`] = `
             aria-invalid={true}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1712,29 +1922,59 @@ exports[`<TextField /> should show the error message 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string="This is an error here"
-          transform={null}
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
         >
-          <span
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
+            params={{}}
             role={null}
+            string="This is an error here"
+            transform={null}
           >
-            This is an error here
-          </span>
-        </Translate>
-      </div>
+            <span
+              className={null}
+              role={null}
+            >
+              This is an error here
+            </span>
+          </Translate>
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -1842,7 +2082,7 @@ exports[`<TextField /> should show the hint text 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -1869,7 +2109,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -1894,7 +2134,7 @@ exports[`<TextField /> should show the hint text 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -1942,22 +2182,52 @@ exports[`<TextField /> should show the hint text 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -2065,7 +2335,7 @@ exports[`<TextField /> should show the label 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -2092,7 +2362,7 @@ exports[`<TextField /> should show the label 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -2117,7 +2387,7 @@ exports[`<TextField /> should show the label 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -2165,22 +2435,52 @@ exports[`<TextField /> should show the label 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>
@@ -2295,7 +2595,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
             "aria-invalid": false,
           }
         }
-        className="sg-1w45uhc-input"
+        className="sg-r4rsrd-input"
         disabled={false}
         id="test-input"
         inputComponent="input"
@@ -2322,7 +2622,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           }
           autoComplete={false}
           autoCorrect={false}
-          className="sg-1w45uhc-input"
+          className="sg-r4rsrd-input"
           disabled={false}
           id="test-input"
           inputComponent="input"
@@ -2347,7 +2647,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
             aria-invalid={false}
             autoComplete="off"
             autoCorrect="off"
-            className="sg-1w45uhc-input simpleInput common__simple-input"
+            className="sg-r4rsrd-input simpleInput common__simple-input"
             disabled={false}
             id="test-input"
             inputMode={null}
@@ -2395,22 +2695,52 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       translate={true}
       validationError={null}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-kwic2t-error errorText"
+        className="sg-a3ijwv-error errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string=""
-          transform={null}
-        />
-      </div>
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          id="ariaError-test-input"
+        >
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string=""
+            transform={null}
+          />
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </TextField>

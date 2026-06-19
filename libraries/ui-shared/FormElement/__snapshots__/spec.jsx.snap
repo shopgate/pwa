@@ -270,29 +270,59 @@ exports[`<FormElement /> should show the error message 1`] = `
       errorText="The error text"
       translate={true}
     >
-      <div
+      <ForwardRef
+        align="inherit"
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-11p2a3k-root errorText"
+        className="sg-1k2envm-root errorText"
+        color="error"
+        component="div"
+        display="initial"
+        gutterBottom={false}
         id="ariaError-test-input"
+        noWrap={false}
+        paragraph={false}
+        variant="caption"
+        variantMapping={
+          {
+            "body1": "p",
+            "body2": "p",
+            "h1": "h1",
+            "h2": "h2",
+            "h3": "h3",
+            "h4": "h4",
+            "h5": "h5",
+            "h6": "h6",
+            "subtitle1": "h6",
+            "subtitle2": "h6",
+          }
+        }
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string="The error text"
-          transform={null}
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-1wcr6ws-Typography-root-Typography-caption-Typography-colorError-root"
+          id="ariaError-test-input"
         >
-          <span
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
+            params={{}}
             role={null}
+            string="The error text"
+            transform={null}
           >
-            The error text
-          </span>
-        </Translate>
-      </div>
+            <span
+              className={null}
+              role={null}
+            >
+              The error text
+            </span>
+          </Translate>
+        </div>
+      </ForwardRef>
     </ErrorText>
   </div>
 </FormElement>

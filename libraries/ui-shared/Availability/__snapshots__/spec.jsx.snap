@@ -7,7 +7,7 @@ exports[`<Availability /> should not render when text is empty 1`] = `<DocumentF
 exports[`<Availability /> should render if state is "ok" when "showWhenAvailable" is set 1`] = `
 <DocumentFragment>
   <div
-    class="ui-shared__availability sg-tq70j6-base-stateOk"
+    class="engage__typography engage__typography_body2 ui-shared__availability sg-ey0rgj-Typography-root-Typography-body2-Typography-colorSuccess"
     data-test-id="availabilityText: Available"
   >
     Available
@@ -18,7 +18,7 @@ exports[`<Availability /> should render if state is "ok" when "showWhenAvailable
 exports[`<Availability /> should render if state is "warning" 1`] = `
 <DocumentFragment>
   <div
-    class="ui-shared__availability sg-qjuldc-base-stateWarning"
+    class="engage__typography engage__typography_body2 ui-shared__availability sg-nusujr-Typography-root-Typography-body2-Typography-colorWarning"
     data-test-id="availabilityText: Only 5 left"
   >
     Only 5 left
@@ -29,7 +29,7 @@ exports[`<Availability /> should render if state is "warning" 1`] = `
 exports[`<Availability /> should render if state is "warning" 2`] = `
 <DocumentFragment>
   <div
-    class="ui-shared__availability sg-1ra5qp2-base-stateAlert"
+    class="engage__typography engage__typography_body2 ui-shared__availability sg-xufsat-Typography-root-Typography-body2-Typography-colorError"
     data-test-id="availabilityText: Out of stock"
   >
     Out of stock

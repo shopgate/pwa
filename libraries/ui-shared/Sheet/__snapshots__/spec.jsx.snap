@@ -152,7 +152,7 @@ exports[`<Sheet /> should open 1`] = `
                     </Ripple>
                   </button>
                   <GridItem
-                    className="sg-1gh7dpa-title"
+                    className="sg-1h2u7d7-title"
                     component="div"
                     grow={1}
                     role="heading"
@@ -160,11 +160,40 @@ exports[`<Sheet /> should open 1`] = `
                     tabIndex={0}
                   >
                     <div
-                      className="sg-1yim49x-root-title"
+                      className="sg-1pnus5l-root-title"
                       role="heading"
                       tabIndex={0}
                     >
-                      Test-Title
+                      <ForwardRef
+                        align="inherit"
+                        color="initial"
+                        component="div"
+                        display="initial"
+                        gutterBottom={false}
+                        noWrap={true}
+                        paragraph={false}
+                        variant="h3"
+                        variantMapping={
+                          {
+                            "body1": "p",
+                            "body2": "p",
+                            "h1": "h1",
+                            "h2": "h2",
+                            "h3": "h3",
+                            "h4": "h4",
+                            "h5": "h5",
+                            "h6": "h6",
+                            "subtitle1": "h6",
+                            "subtitle2": "h6",
+                          }
+                        }
+                      >
+                        <div
+                          className="engage__typography engage__typography_h3 sg-vvg96k-Typography-root-Typography-h3-Typography-noWrap"
+                        >
+                          Test-Title
+                        </div>
+                      </ForwardRef>
                     </div>
                   </GridItem>
                 </div>
@@ -540,7 +569,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                     </Ripple>
                   </button>
                   <GridItem
-                    className="sg-1gh7dpa-title"
+                    className="sg-1h2u7d7-title"
                     component="div"
                     grow={1}
                     role="heading"
@@ -548,11 +577,40 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                     tabIndex={0}
                   >
                     <div
-                      className="sg-1yim49x-root-title"
+                      className="sg-1pnus5l-root-title"
                       role="heading"
                       tabIndex={0}
                     >
-                      Test-Title
+                      <ForwardRef
+                        align="inherit"
+                        color="initial"
+                        component="div"
+                        display="initial"
+                        gutterBottom={false}
+                        noWrap={true}
+                        paragraph={false}
+                        variant="h3"
+                        variantMapping={
+                          {
+                            "body1": "p",
+                            "body2": "p",
+                            "h1": "h1",
+                            "h2": "h2",
+                            "h3": "h3",
+                            "h4": "h4",
+                            "h5": "h5",
+                            "h6": "h6",
+                            "subtitle1": "h6",
+                            "subtitle2": "h6",
+                          }
+                        }
+                      >
+                        <div
+                          className="engage__typography engage__typography_h3 sg-vvg96k-Typography-root-Typography-h3-Typography-noWrap"
+                        >
+                          Test-Title
+                        </div>
+                      </ForwardRef>
                     </div>
                   </GridItem>
                 </div>

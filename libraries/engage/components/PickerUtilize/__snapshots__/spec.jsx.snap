@@ -13,7 +13,7 @@ exports[`<Picker /> should render the picker 1`] = `
       type="button"
     >
       <span
-        class="sg-1mg745j-label"
+        class="sg-177vvd9-label"
       >
         Pick ...
       </span>

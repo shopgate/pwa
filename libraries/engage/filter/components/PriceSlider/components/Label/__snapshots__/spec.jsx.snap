@@ -10,11 +10,11 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     price.range
   </span>
   <span
-    class="sg-1tx0lni-price"
+    class="sg-j50sqw-price"
     style="min-width: 5;"
   />
   <span
-    class="sg-1tx0lni-price"
+    class="sg-j50sqw-price"
     style="min-width: 5;"
   />
   <span

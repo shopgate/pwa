@@ -6,6 +6,10 @@ import CartItemGroupReservation from '../CartItemGroupReservation';
 const mockAccordion = jest.fn(({ children }) => children);
 
 jest.mock('@shopgate/engage/components', () => ({
+  Typography: ({
+    children, component: Component = 'div', variant, align, color, display,
+    gutterBottom, noWrap, paragraph, classes, variantMapping, ...rest
+  }) => <Component {...rest}>{children}</Component>,
   Accordion: props => mockAccordion(props),
   LocationIcon: () => <div data-testid="location-icon" />,
 }));
