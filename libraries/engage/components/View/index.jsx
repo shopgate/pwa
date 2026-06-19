@@ -6,12 +6,10 @@ import { setPageBackgroundColor } from '../../styles';
 import Content from './components/Content';
 import ViewProvider from './provider';
 import { ViewContext } from './context';
+import { FADE_DURATION } from './constants';
 import styles from './style';
 
 const { colors } = themeConfig;
-
-// Duration of the opacity crossfade between routed views (keep in sync with the transition below).
-const FADE_DURATION = 350;
 
 // api: import { ViewContext } from '@shopgate/engage/components/View';
 export { ViewContext };

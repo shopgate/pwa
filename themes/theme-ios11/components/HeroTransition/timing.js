@@ -1,8 +1,12 @@
+import { FADE_DURATION } from '@shopgate/engage/components/View/constants';
+
 /**
- * The duration of the FLIP flight + crossfade, in milliseconds.
+ * The duration of the FLIP flight + crossfade, in milliseconds. Derived from
+ * the engage View crossfade duration (the single source of truth) so the hero
+ * clone's flight stays in lockstep with the routed-view fade.
  * @type {number}
  */
-export const FLIGHT_DURATION = 350;
+export const FLIGHT_DURATION = FADE_DURATION;
 
 /**
  * How long to wait for a hero target before giving up, in milliseconds.
