@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { RouteContext } from '@shopgate/pwa-common/context';
@@ -6,6 +6,7 @@ import { setPageBackgroundColor } from '../../styles';
 import Content from './components/Content';
 import ViewProvider from './provider';
 import { ViewContext } from './context';
+import { FADE_DURATION } from './constants';
 import styles from './style';
 
 const { colors } = themeConfig;
@@ -31,8 +32,40 @@ function ViewContainer({
     setPageBackgroundColor(background);
   }
 
+  // Keeps the element in layout (display:flex) while it fades out, then drops it once invisible.
+  const [rendered, setRendered] = useState(visible);
+  const hideTimeout = useRef(null);
+
+  useEffect(() => {
+    if (visible) {
+      // Becoming visible: cancel any pending hide and re-enter layout immediately.
+      if (hideTimeout.current) {
+        clearTimeout(hideTimeout.current);
+        hideTimeout.current = null;
+      }
+      setRendered(true);
+    } else if (rendered && !hideTimeout.current) {
+      // Becoming invisible: keep rendered for the fade-out, then drop from layout.
+      hideTimeout.current = setTimeout(() => {
+        hideTimeout.current = null;
+        setRendered(false);
+      }, FADE_DURATION);
+    }
+  }, [visible, rendered]);
+
+  // Clear any pending timer on unmount to avoid leaks / setState after unmount.
+  useEffect(() => () => {
+    if (hideTimeout.current) {
+      clearTimeout(hideTimeout.current);
+      hideTimeout.current = null;
+    }
+  }, []);
+
   const style = {
-    display: visible ? 'flex' : 'none',
+    display: visible || rendered ? 'flex' : 'none',
+    opacity: visible ? 1 : 0,
+    transition: `opacity ${FADE_DURATION}ms ease`,
+    pointerEvents: visible ? 'auto' : 'none',
   };
 
   return (

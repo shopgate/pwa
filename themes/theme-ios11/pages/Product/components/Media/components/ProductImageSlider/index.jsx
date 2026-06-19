@@ -12,6 +12,7 @@ import {
   getProductImageSettings,
 } from '@shopgate/engage/product';
 import { appConfig } from '@shopgate/engage';
+import { registerHero, isFlightPending } from '../../../../../../components/HeroTransition/flight';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig || {};
@@ -51,6 +52,12 @@ class ProductImageSlider extends Component {
     this.mediaRef = React.createRef(null);
     this.state = {
       depImage: null,
+      // Hide the real PDP hero from the first paint when this component mounts
+      // as the destination of an in-progress flight, so the user never sees the
+      // real image and the flying clone at the same time. The flight module owns
+      // the visibility state machine and toggles this back via the registered
+      // hero adapter once the flight settles.
+      heroHidden: isFlightPending(),
     };
   }
 
@@ -59,13 +66,30 @@ class ProductImageSlider extends Component {
    */
   componentDidMount() {
     this.mounted = true;
+
+    // Register this slider as the hero adapter. The flight module owns the
+    // visibility state machine, timers and teardown latch; it calls setHidden
+    // to hide on capture / reveal on settle (with its own safety backstop), and
+    // reads getRect to measure the destination rect for the flying clone.
+    this.unregisterHero = registerHero({
+      setHidden: (hidden) => {
+        if (this.mounted) {
+          this.setState({ heroHidden: hidden });
+        }
+      },
+      getRect: () => (
+        this.mediaRef.current ? this.mediaRef.current.getBoundingClientRect() : null
+      ),
+    });
   }
 
   /**
    * @param {Object} nextProps the next props
+   * @param {Object} nextState the next state
    * @returns {boolean}
    */
-  shouldComponentUpdate(nextProps) {
+  shouldComponentUpdate(nextProps, nextState) {
+    const heroHiddenChanged = nextState.heroHidden !== this.state.heroHidden;
     let depImage = null;
 
     if (!nextProps.images) {
@@ -110,7 +134,7 @@ class ProductImageSlider extends Component {
           }
         });
     }
-    return false;
+    return heroHiddenChanged;
   }
 
   /**
@@ -118,6 +142,7 @@ class ProductImageSlider extends Component {
    */
   componentWillUnmount() {
     this.mounted = false;
+    this.unregisterHero?.();
   }
 
   handleOpenGallery = () => {
@@ -200,6 +225,11 @@ class ProductImageSlider extends Component {
     const wrapperStyles = {
       transition: '0.5s filter ease-out', // blur filter
       transform: 'translate3d(0, 0, 0)', // Fix for cut off overlapping icons
+      // Hide the real hero while a flight is in progress. Instant (no opacity
+      // transition) so the reveal at flight settle is imperceptible. opacity:0
+      // keeps layout intact, so the adapter's getRect (getBoundingClientRect)
+      // still measures the correct destination rect for the flying clone.
+      opacity: this.state.heroHidden ? 0 : 1,
     };
 
     return (

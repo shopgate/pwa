@@ -38,6 +38,14 @@ const header = css({
   flexShrink: 1,
   position: hasWebBridge() ? 'sticky' : 'relative',
   zIndex: 1,
+  // Reserve one AppBar's height (the ui-ios AppBar minHeight of 44 plus the top
+  // safe-area inset it pads by) so the header never collapses to 0 while it is
+  // momentarily empty during a route transition. The outgoing page's AppBar
+  // unmounts the instant its route turns invisible, but the outgoing content
+  // lingers for the view crossfade and the incoming page's AppBar only appears
+  // after that page's cold first-render mounts; without this floor the in-flow
+  // header collapses in that gap and the still-visible content jumps upward.
+  minHeight: 'calc(44px + var(--safe-area-inset-top))',
 });
 
 export default {
