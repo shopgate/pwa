@@ -12,7 +12,6 @@ const useStyles = makeStyles()(theme => ({
   button: {
     color: 'inherit',
     fontSize: theme.components.icon.medium,
-    lineHeight: 1,
     outline: 0,
     padding: 0,
     minWidth: variables.navigator.height,
@@ -26,7 +25,6 @@ const useStyles = makeStyles()(theme => ({
   },
   filterButtonLabel: {
     alignSelf: 'center',
-    lineHeight: 1,
     paddingRight: theme.spacing(1),
   },
   filterButtonRipple: {

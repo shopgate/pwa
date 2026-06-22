@@ -6,7 +6,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()({
   root: {
     flexGrow: 1,
-    lineHeight: '56px',
     padding: '0 16px',
   },
 });

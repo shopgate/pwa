@@ -12,7 +12,6 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.text.primary,
     fontSize: theme.components.icon.medium,
     padding: '0 8px 8px 8px',
-    lineHeight: 1,
     outline: 0,
     justifyContent: 'center',
     alignItems: 'center',

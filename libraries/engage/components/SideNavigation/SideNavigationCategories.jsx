@@ -21,7 +21,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
     position: 'relative',
     width: '100%',
-    lineHeight: '1.45em',
   },
 }));
 

@@ -24,7 +24,6 @@ const useStyles = makeStyles()(theme => ({
   selection: {
     fontSize: theme.typography.body2.fontSize,
     fontWeight: theme.typography.fontWeightMedium,
-    lineHeight: 1,
     paddingTop: 1,
     alignSelf: 'center',
   },

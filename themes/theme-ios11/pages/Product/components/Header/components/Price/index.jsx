@@ -21,7 +21,6 @@ const useStyles = makeStyles()(theme => ({
   price: {
     fontSize: theme.typography.h3.fontSize,
     justifyContent: 'flex-end',
-    lineHeight: 1,
   },
 }));
 

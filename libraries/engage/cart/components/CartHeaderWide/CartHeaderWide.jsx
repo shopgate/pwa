@@ -5,7 +5,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   header: {
-    lineHeight: '2.25rem',
     padding: theme.spacing(4),
   },
 }));

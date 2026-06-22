@@ -18,7 +18,6 @@ const useStyles = makeStyles()(theme => ({
   price: {
     color: theme.palette.primary.main,
     fontSize: theme.typography.h3.fontSize,
-    lineHeight: 1,
   },
 }));
 

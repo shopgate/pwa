@@ -12,7 +12,6 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.grey.medium,
     paddingBottom: theme.spacing(1),
     margin: 0,
-    lineHeight: '1.5rem',
   },
   link: {
     color: `${theme.palette.primary.main} !important`,
@@ -34,7 +33,6 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
   },
   listTitle: {
-    lineHeight: '1rem',
     fontWeight: theme.typography.fontWeightBold,
     letterSpacing: '1.5px',
     textTransform: 'uppercase',
@@ -43,7 +41,6 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   listEntry: {
-    lineHeight: '1.5rem',
     marginLeft: 0,
     whiteSpace: 'pre-line',
     wordBreak: 'break-all',

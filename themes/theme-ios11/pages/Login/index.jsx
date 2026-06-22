@@ -68,9 +68,6 @@ const useStyles = makeStyles()(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3, 2),
   },
-  headline: {
-    lineHeight: 1.2,
-  },
   subline: {
     marginBottom: theme.spacing(3),
     marginTop: 4,
@@ -224,7 +221,7 @@ const Login = ({
       <section className={classes.container} data-test-id="LoginPage">
         <Portal name={PAGE_LOGIN_BEFORE} />
         <Portal name={PAGE_LOGIN}>
-          <Typography variant="h1" component="div" className={cx(classes.headline, 'theme__headline')}>
+          <Typography variant="h1" component="div" className="theme__headline">
             <I18n.Text string="login.headline" />
           </Typography>
           <Typography variant="h4" component="div" color="textSecondary" className={cx(classes.subline, 'theme__sub-headline')}>

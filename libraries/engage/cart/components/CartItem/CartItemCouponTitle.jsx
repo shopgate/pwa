@@ -6,7 +6,6 @@ import { Typography } from '@shopgate/engage/components';
 
 const useStyles = makeStyles()({
   title: {
-    lineHeight: 1.125,
     marginBottom: 4,
   },
 });

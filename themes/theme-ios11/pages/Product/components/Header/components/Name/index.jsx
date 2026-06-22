@@ -13,7 +13,6 @@ import connect from './connector';
 const useStyles = makeStyles()(theme => ({
   name: {
     fontWeight: theme.typography.fontWeightBold,
-    lineHeight: '1.25',
     marginBottom: 2,
     marginRight: 72,
     wordBreak: 'break-word',

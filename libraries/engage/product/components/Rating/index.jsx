@@ -17,7 +17,6 @@ const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     alignItems: 'center',
-    lineHeight: '12px',
     marginBottom: theme.spacing(1),
   },
 }));
