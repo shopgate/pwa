@@ -1,7 +1,7 @@
 import React, { useState, forwardRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { useScrollDirectionChange } from '@shopgate/engage/core/hooks';
+import { useScrollDirectionChange, useRoute } from '@shopgate/engage/core/hooks';
 
 const useStyles = makeStyles()({
   root: {
@@ -64,8 +64,15 @@ function ScrollHeaderBase({
   const { classes, cx } = useStyles();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
 
+  // The `viewScroll$` stream is shared across all mounted views. Cached routes (e.g. a product
+  // list) stay mounted in the background while another route is active, so without this guard the
+  // header would react to scroll events emitted by a different, currently visible view and end up
+  // hidden when the user navigates back. `visible` is true only for the active route.
+  const route = useRoute();
+  const visible = route ? route.visible !== false : true;
+
   useScrollDirectionChange({
-    enabled: hideOnScroll,
+    enabled: hideOnScroll && visible,
     offset: scrollOffset,
     onlyFireOnScrollUpAtTop: onlyShowAtTop,
     onlyFireOnScrollUpAtTopOffset: onlyShowAtTopOffset,
