@@ -1,5 +1,12 @@
 # Changelog
 
+## [v7.31.0](https://github.com/shopgate/pwa/compare/v7.30.5...v7.31.0) (2026-06-23)
+
+#### :house: Internal
+* [#1464](https://github.com/shopgate/pwa/pull/1464) Prepare styling infrastructure for future theming ([@fkloes](https://github.com/fkloes))
+* [#1468](https://github.com/shopgate/pwa/pull/1468) Remove extensions from core repo ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.30.4](https://github.com/shopgate/pwa/compare/v7.30.3...v7.30.4) (2026-05-19)
 
 #### :rocket: Enhancement
