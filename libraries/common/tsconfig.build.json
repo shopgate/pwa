@@ -1,0 +1,16 @@
+{
+  "extends": "@shopgate/engage/tsconfig.build.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "."
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "**/*.spec.*",
+    "**/__tests__/**",
+    "**/__snapshots__/**",
+    "coverage"
+  ]
+}

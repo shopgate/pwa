@@ -1,42 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { Ripple } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import { CartIcon } from '@shopgate/pwa-ui-shared';
 import connect from './Cart.connector';
 import CartBadge from '../CartBadge';
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     cursor: 'pointer',
     marginLeft: 32,
-  }).toString(),
-  ripple: css({
+  },
+  ripple: {
     display: 'flex',
     flexDirection: 'row',
     margin: -12,
     padding: 12,
-  }).toString(),
-  priceContainer: css({
+  },
+  priceContainer: {
     display: 'flex',
     flexDirection: 'column',
     lineHeight: 1,
-  }).toString(),
-  priceHeader: css({
+  },
+  priceHeader: {
     textAlign: 'right',
     fontSize: 10,
     fontWeight: '500',
     paddingBottom: 4,
     color: 'var(--color-primary)',
     textTransform: 'uppercase',
-  }).toString(),
-  price: css({
+  },
+  price: {
     fontSize: 24,
     textAlign: 'right',
     color: 'var(--color-primary)',
-  }).toString(),
-  icon: css({
+  },
+  icon: {
     display: 'flex',
     flexShrink: 0,
     fontSize: 35,
@@ -47,8 +47,8 @@ const styles = {
     color: 'var(--color-primary)',
     padding: 0,
     position: 'relative',
-  }).toString(),
-};
+  },
+});
 
 const badgeStyles = {
   background: 'var(--color-primary)',
@@ -70,17 +70,19 @@ const Cart = ({
   total,
   currency,
   count,
-}) => (
-  currency ? (
-    <div className={styles.root}>
-      <Ripple onClick={navigate} className={styles.ripple} color="var(--color-primary)" fill>
-        <div className={styles.priceContainer}>
-          <span className={styles.priceHeader}>{i18n.text('cart.current_total')}</span>
-          <span className={styles.price}>
+}) => {
+  const { classes } = useStyles();
+
+  return currency ? (
+    <div className={classes.root}>
+      <Ripple onClick={navigate} className={classes.ripple} color="var(--color-primary)" fill>
+        <div className={classes.priceContainer}>
+          <span className={classes.priceHeader}>{i18n.text('cart.current_total')}</span>
+          <span className={classes.price}>
             {i18n.price(total?.amount || 0, currency, true)}
           </span>
         </div>
-        <div className={styles.icon}>
+        <div className={classes.icon}>
           <CartIcon />
           {count > 0 ? (
             <CartBadge
@@ -91,8 +93,8 @@ const Cart = ({
         </div>
       </Ripple>
     </div>
-  ) : null
-);
+  ) : null;
+};
 
 Cart.propTypes = {
   count: PropTypes.number.isRequired,

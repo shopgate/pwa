@@ -2,6 +2,12 @@ import React from 'react';
 import { mount } from 'enzyme';
 import Navigation from '../index';
 
+jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
+  i18n: {
+    text: jest.fn(key => key),
+  },
+}));
+
 jest.mock('../../../../components', () => ({
   I18n: {
     Text: function Translate({ string }) {
@@ -10,16 +16,6 @@ jest.mock('../../../../components', () => ({
   },
   Link: function Link({ children }) { return children; },
 }));
-
-const mockTranslate = jest.fn(key => key);
-
-const mockRenderOptions = {
-  context: {
-    i18n: () => ({
-      __: mockTranslate,
-    }),
-  },
-};
 
 const entries = [{
   title: 'Title One',
@@ -32,14 +28,14 @@ const entries = [{
 describe('<Navigation />', () => {
   it('should render with an aria label and entries', () => {
     const title = 'Navigation Title';
-    const wrapper = mount((<Navigation title={title} entries={entries} />), mockRenderOptions);
+    const wrapper = mount(<Navigation title={title} entries={entries} />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.find('nav').prop('aria-label')).toEqual(title);
     expect(wrapper.find('ul').children()).toHaveLength(2);
   });
 
   it('should render empty when no entries are passed', () => {
-    const wrapper = mount((<Navigation />), mockRenderOptions);
+    const wrapper = mount(<Navigation />);
     expect(wrapper).toMatchSnapshot();
     expect(wrapper.isEmptyRender()).toBe(true);
   });

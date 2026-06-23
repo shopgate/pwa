@@ -1,13 +1,12 @@
 import React, { useMemo } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
 import {
   getCheckoutBillingAddress,
   getCheckoutShippingAddress,
 } from '@shopgate/engage/checkout/selectors/order';
 import { i18n, historyPush } from '@shopgate/engage/core';
-import { responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { RippleButton, ResponsiveContainer } from '@shopgate/engage/components';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 import AddressCard from '../../../account/components/Profile/ProfileAddressCard';
@@ -36,28 +35,22 @@ const mapDispatchToProps = dispatch => ({
   push: props => dispatch(historyPush(props)),
 });
 
-const styles = {
-  title: css({
-    color: 'var(--color-text-high-emphasis)',
-    lineHeight: 2.5,
-    fontSize: 17,
-    fontWeight: '600',
-  }).toString(),
-  container: css({
+const useStyles = makeStyles()({
+  container: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     margin: -4,
     padding: 16,
-  }).toString(),
-  headline: css({
+  },
+  headline: {
     padding: 16,
     fontSize: '2.125rem',
     fontWeight: 'normal',
     margin: 0,
     lineHeight: '2.25rem',
-  }).toString(),
-  button: css({
+  },
+  button: {
     '&&': {
       marginTop: 8,
       marginRight: 16,
@@ -71,11 +64,11 @@ const styles = {
         marginRight: 0,
       },
     },
-  }).toString(),
-  ripple: css({
+  },
+  ripple: {
     padding: '8px 16px',
-  }).toString(),
-  actions: css({
+  },
+  actions: {
     display: 'flex',
     justifyContent: 'flex-end',
     flexDirection: 'row',
@@ -83,8 +76,8 @@ const styles = {
     [responsiveMediaQuery('<md', { webOnly: false })]: {
       flex: 1,
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * @returns {JSX}
@@ -92,6 +85,7 @@ const styles = {
 const AddressList = ({
   push, shippingAddress, billingAddress,
 }) => {
+  const { classes } = useStyles();
   const { contacts, deleteContact, editContact } = useProfileContext();
   const { type, updateOrderWithContact } = useAddressBook();
 
@@ -119,11 +113,11 @@ const AddressList = ({
     <div>
       <ResponsiveContainer webOnly breakpoint=">xs">
         <ResponsiveBackButton />
-        <h1 className={styles.headline}>
+        <h1 className={classes.headline}>
           {title}
         </h1>
       </ResponsiveContainer>
-      <div className={styles.container}>
+      <div className={classes.container}>
         {contacts && contacts.map(contact => (
           <AddressCard
             key={contact.id}
@@ -136,10 +130,10 @@ const AddressList = ({
           />
         ))}
       </div>
-      <div className={styles.actions}>
+      <div className={classes.actions}>
         <RippleButton
-          className={styles.button}
-          rippleClassName={styles.ripple}
+          className={classes.button}
+          rippleClassName={classes.ripple}
           type="primary"
           onClick={() => push({
             pathname: `${CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}`.replace(':type', type),

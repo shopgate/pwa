@@ -22,15 +22,15 @@ exports[`MediaProvider .handleCookieConsent() should replace the iframe with the
 <body>
   <div>
     <div
-      class="css-1t4jwth"
+      class="responsiveContainer"
     >
       <div
-        class="css-j0rmw5 common__media-provider_cookie-consent-message-container"
+        class="consentContainer common__media-provider_cookie-consent-message-container"
       >
         
   
         <svg
-          class="css-1ok2y9v"
+          class="consentIcon"
           height="100%"
           version="1.1"
           viewBox="0 0 110 84"
@@ -72,7 +72,7 @@ exports[`MediaProvider .handleCookieConsent() should replace the iframe with the
           htmlSanitizer.videoCookieConsent.message
         </span>
         <a
-          class="css-v9gxso common__media-provider_cookie-consent-message-container_link"
+          class="consentLink common__media-provider_cookie-consent-message-container_link"
           href="/privacy-settings?source=video"
         >
           htmlSanitizer.videoCookieConsent.link
@@ -87,12 +87,12 @@ exports[`MediaProvider .injectCookieConsentMessage() should add the cookie conse
 <body>
   <div />
   <div
-    class="css-j0rmw5 common__media-provider_cookie-consent-message-container"
+    class="consentContainer common__media-provider_cookie-consent-message-container"
   >
     
   
     <svg
-      class="css-1ok2y9v"
+      class="consentIcon"
       height="100%"
       version="1.1"
       viewBox="0 0 110 84"
@@ -134,7 +134,7 @@ exports[`MediaProvider .injectCookieConsentMessage() should add the cookie conse
       htmlSanitizer.videoCookieConsent.message
     </span>
     <a
-      class="css-v9gxso common__media-provider_cookie-consent-message-container_link"
+      class="consentLink common__media-provider_cookie-consent-message-container_link"
       href="/privacy-settings?source=video"
     >
       htmlSanitizer.videoCookieConsent.link
@@ -147,7 +147,7 @@ exports[`MediaProvider .responsify() should not responsify already responsive el
 <body>
   <div>
     <div
-      class="css-1t4jwth"
+      class="responsiveContainer"
     >
       <iframe
         allow="autoplay; fullscreen"
@@ -164,7 +164,7 @@ exports[`MediaProvider .responsify() should not responsify already responsive el
 exports[`MediaProvider .responsify() should responsify a dom container 1`] = `
 <body>
   <div
-    class="css-1t4jwth"
+    class="responsiveContainer"
   >
     <iframe />
   </div>

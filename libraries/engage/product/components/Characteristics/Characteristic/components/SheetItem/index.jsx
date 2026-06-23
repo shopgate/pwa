@@ -1,94 +1,152 @@
-import React, { PureComponent } from 'react';
+import React, { useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { withForwardedRef } from '@shopgate/engage/core/hocs';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
-import styles from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()((theme) => {
+  const buttonBase = {
+    outline: 0,
+    textAlign: 'left',
+    paddingLeft: 0,
+    paddingRight: 0,
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    color: theme.palette.text.primary,
+  };
+
+  return {
+    button: {
+      ...buttonBase,
+    },
+    buttonDisabled: {
+      ...buttonBase,
+      color: colors.shade4,
+    },
+    root: {
+      padding: '16px 0',
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        padding: '8px 16px',
+      },
+    },
+    rootSelected: {
+      ...buttonBase,
+      background: 'var(--color-background-accent)',
+      boxShadow: '-16px 0 0 var(--color-background-accent), 16px 0 0 var(--color-background-accent)',
+      margin: '-1px 0',
+      paddingTop: 17,
+      paddingBottom: 17,
+      fontWeight: 500,
+      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+        margin: 0,
+        paddingTop: 8,
+        paddingBottom: 8,
+        padding: '8px 16px',
+        boxShadow: 'none',
+      },
+    },
+    mainRow: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '4px 8px',
+      justifyContent: 'space-between',
+      width: '100%',
+    },
+    mainRowRight: {
+      marginLeft: 'auto',
+    },
+    bottomRow: {
+      '&:not(:empty)': {
+        textAlign: 'right',
+      },
+    },
+  };
+});
 
 /**
  * The SheetItem component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class SheetItem extends PureComponent {
-  static propTypes = {
-    characteristics: PropTypes.shape().isRequired,
-    item: PropTypes.shape().isRequired,
-    forwardedRef: PropTypes.shape(),
-    onClick: PropTypes.func,
-    rightComponent: PropTypes.func,
-    selected: PropTypes.bool,
-  };
+const SheetItem = ({
+  characteristics,
+  item,
+  forwardedRef,
+  onClick,
+  rightComponent: Right,
+  selected,
+}) => {
+  const { classes, cx } = useStyles();
 
-  static defaultProps = {
-    forwardedRef: null,
-    onClick() { },
-    rightComponent: null,
-    selected: false,
-  };
+  const buildProps = useCallback(() => ({
+    className: cx({
+      [classes.button]: item.selectable,
+      [classes.buttonDisabled]: !item.selectable,
+    }, 'theme__product__characteristic__option'),
+    key: item.id,
+    ref: forwardedRef,
+    value: item.id,
+    'aria-hidden': !item.selectable,
+    ...(item.selectable ? { onClick: event => onClick(event, item.id) } : {}),
+  }), [
+    forwardedRef,
+    item.id,
+    item.selectable,
+    onClick,
+    classes.button,
+    classes.buttonDisabled,
+    cx,
+  ]);
 
-  /**
-   * @param {boolean} selectable Whether or not the item can be selected.
-   * @returns {string}
-   */
-  getStyle = (selectable) => {
-    if (!selectable) {
-      return styles.buttonDisabled;
-    }
-
-    return styles.button;
-  };
-
-  /**
-   * @returns {Object}
-   */
-  buildProps = () => {
-    const {
-      item, onClick, forwardedRef,
-    } = this.props;
-
-    return {
-      className: `${this.getStyle(item.selectable).toString()} theme__product__characteristic__option`,
-      key: item.id,
-      ref: forwardedRef,
-      value: item.id,
-      'aria-hidden': !item.selectable,
-      ...item.selectable && { onClick: event => onClick(event, item.id) },
-    };
-  };
-
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const {
-      item,
-      rightComponent: Right,
-      selected,
-      characteristics,
-    } = this.props;
-
-    return (
-      <div className={classNames(styles.root, {
-        [styles.rootSelected]: selected,
-      })}
+  return (
+    <div className={cx(classes.root, {
+      [classes.rootSelected]: selected,
+    })}
+    >
+      <button
+        {...buildProps()}
+        data-test-id={item.label}
+        aria-selected={selected}
+        role="option"
+        type="button"
       >
-        <button {...this.buildProps()} data-test-id={item.label} aria-selected={selected} role="option" type="button">
-          <div className={styles.mainRow}>
-            <div>
-              {item.label}
-            </div>
-            <div className={styles.mainRowRight}>
-              {item.selectable && <Right />}
-            </div>
+        <div className={classes.mainRow}>
+          <div>
+            {item.label}
           </div>
-        </button>
-        <div className={styles.bottomRow}>
-          {item.selectable && (
-          <CharacteristicsButton characteristics={characteristics} />
-          )}
+          <div className={classes.mainRowRight}>
+            {item.selectable && <Right />}
+          </div>
         </div>
+      </button>
+      <div className={classes.bottomRow}>
+        {item.selectable && (
+        <CharacteristicsButton characteristics={characteristics} />
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default withForwardedRef(SheetItem);
+SheetItem.propTypes = {
+  characteristics: PropTypes.shape().isRequired,
+  item: PropTypes.shape().isRequired,
+  forwardedRef: PropTypes.shape(),
+  onClick: PropTypes.func,
+  rightComponent: PropTypes.func,
+  selected: PropTypes.bool,
+};
+
+SheetItem.defaultProps = {
+  forwardedRef: null,
+  onClick() { },
+  rightComponent: null,
+  selected: false,
+};
+
+export default withForwardedRef(memo(SheetItem));

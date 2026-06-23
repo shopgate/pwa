@@ -1,4 +1,4 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
 import { Portal } from '@shopgate/engage/components';

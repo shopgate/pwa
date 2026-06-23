@@ -63,14 +63,14 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           }
         >
           <div
-            className="css-f7yea6"
+            className="sg-1bqqk3g-container"
           >
             <Swiper
-              className="css-2ypihg"
+              className="sg-cvn9wz-slider"
               classNames={
                 {
-                  "container": "css-sa13d4",
-                  "indicator": "css-vsp2nx",
+                  "container": "sg-1qjzoe-swiperContainer",
+                  "indicator": "sg-2rzi0y-indicator",
                 }
               }
               disabled={false}
@@ -95,7 +95,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                     alt=""
                     animating={false}
                     backgroundColor="transparent"
-                    classNameImg="css-4kgshc"
+                    classNameImg="sg-1nm4qaq-slide"
                     resolutions={
                       [
                         {
@@ -125,7 +125,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                     alt=""
                     animating={false}
                     backgroundColor="transparent"
-                    classNameImg="css-4kgshc"
+                    classNameImg="sg-1nm4qaq-slide"
                     resolutions={
                       [
                         {
@@ -217,14 +217,14 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           }
         >
           <div
-            className="css-f7yea6"
+            className="sg-1bqqk3g-container"
           >
             <Swiper
-              className="css-2ypihg"
+              className="sg-cvn9wz-slider"
               classNames={
                 {
-                  "container": "css-sa13d4",
-                  "indicator": "css-vsp2nx",
+                  "container": "sg-1qjzoe-swiperContainer",
+                  "indicator": "sg-2rzi0y-indicator",
                 }
               }
               disabled={false}
@@ -249,7 +249,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                     alt=""
                     animating={false}
                     backgroundColor="transparent"
-                    classNameImg="css-4kgshc"
+                    classNameImg="sg-1nm4qaq-slide"
                     resolutions={
                       [
                         {
@@ -279,7 +279,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                     alt=""
                     animating={false}
                     backgroundColor="transparent"
-                    classNameImg="css-4kgshc"
+                    classNameImg="sg-1nm4qaq-slide"
                     resolutions={
                       [
                         {

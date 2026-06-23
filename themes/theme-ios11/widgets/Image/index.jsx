@@ -1,7 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from '@shopgate/pwa-common/components/Link';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  link: {
+    width: '100%',
+  },
+  image: {
+    display: 'block',
+    width: '100%',
+  },
+});
 
 /**
  * The image widget.
@@ -9,14 +19,16 @@ import styles from './style';
  * @returns {JSX}
  */
 const ImageWidget = ({ settings }) => {
+  const { classes } = useStyles();
+
   const content = (
-    <img src={settings.image} alt={settings.alt} className={styles.image} data-test-id={`imageWidget: ${settings.link}`} />
+    <img src={settings.image} alt={settings.alt} className={classes.image} data-test-id={`imageWidget: ${settings.link}`} />
   );
 
   // Wrap a Link around the Image if needed.
   if (settings.link) {
     return (
-      <Link href={settings.link} className={styles.link} data-test-id="link">
+      <Link href={settings.link} className={classes.link} data-test-id="link">
         {content}
       </Link>
     );

@@ -1,70 +1,81 @@
-import React, { PureComponent } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
 import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import transition from './transition';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  container: {
+    transition: 'transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1)',
+    willChange: 'transform',
+  },
+  iconCart: {
+    boxSizing: 'content-box',
+    padding: 16,
+    fill: 'var(--color-button-cta-contrast)',
+  },
+  iconCartDisabled: {
+    boxSizing: 'content-box',
+    padding: 16,
+    fill: colors.light,
+  },
+  iconTick: {
+    boxSizing: 'content-box',
+    padding: 16,
+    fill: 'var(--color-button-cta)',
+  },
+});
 
 /**
  * The CartButtonIcon component.
+ * @param {Object} props Props.
+ * @param {boolean} props.disabled Whether interaction is disabled.
+ * @param {Function} props.onSuccess Called when success animation finishes.
+ * @param {boolean} props.success External success trigger.
+ * @returns {JSX.Element}
  */
-class CartButtonIcon extends PureComponent {
-  static propTypes = {
-    disabled: PropTypes.bool.isRequired,
-    onSuccess: PropTypes.func.isRequired,
-    success: PropTypes.bool.isRequired,
-  };
+const CartButtonIcon = ({ disabled, onSuccess, success }) => {
+  const { classes } = useStyles();
+  const [localSuccess, setLocalSuccess] = useState(false);
 
-  /**
-   * @param {Object} props The component props
-   */
-  constructor(props) {
-    super(props);
-    this.state = {
-      success: false,
-    };
-  }
-
-  /**
-   * Set the success state when it is received as true.
-   * @param {Object} nextProps The next component props.
-   */
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    if (!nextProps.success) {
-      return;
+  useEffect(() => {
+    if (success) {
+      setLocalSuccess(true);
     }
+  }, [success]);
 
-    this.setState({
-      success: nextProps.success,
-    });
-  }
+  const reset = useCallback(() => {
+    setLocalSuccess(false);
+    onSuccess();
+  }, [onSuccess]);
 
-  reset = () => {
-    this.setState({ success: false });
-    this.props.onSuccess();
-  };
+  const iconClass = disabled ? classes.iconCartDisabled : classes.iconCart;
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const iconClass = this.props.disabled ? styles.iconCartDisabled : styles.iconCart;
-    return (
-      <Transition
-        in={this.state.success}
-        timeout={800}
-        onEntered={this.reset}
-      >
-        {state => (
-          <div className={styles.container} style={transition[state]}>
-            <CartPlusIcon className={iconClass} size={24} />
-            <TickIcon className={styles.iconTick} size={24} />
-          </div>
-        )}
-      </Transition>
-    );
-  }
-}
+  return (
+    <Transition
+      in={localSuccess}
+      timeout={800}
+      onEntered={reset}
+    >
+      {state => (
+        <div className={classes.container} style={transition[state]}>
+          <CartPlusIcon className={iconClass} size={24} />
+          <TickIcon className={classes.iconTick} size={24} />
+        </div>
+      )}
+    </Transition>
+  );
+};
+
+CartButtonIcon.propTypes = {
+  disabled: PropTypes.bool.isRequired,
+  onSuccess: PropTypes.func.isRequired,
+  success: PropTypes.bool.isRequired,
+};
 
 export default CartButtonIcon;

@@ -1,10 +1,37 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
-import cls from 'classnames';
+import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
-import { swatchClass, itemClass, itemSelectedClass } from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()(() => ({
+  swatch: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(12px, 1fr))',
+    gridGap: '2px',
+    marginBottom: '0.2rem',
+  },
+  item: {
+    minWidth: '12px',
+    width: '12px',
+    maxWidth: '12px',
+    minHeight: '12px',
+    height: '12px',
+    maxHeight: '12px',
+    borderRadius: '50%',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: colors.shade4,
+    backgroundSize: 'cover',
+  },
+  itemSelected: {
+    borderColor: 'var(--color-secondary)',
+  },
+}));
 
 /**
  * The swatch content component.
@@ -12,24 +39,22 @@ import { swatchClass, itemClass, itemSelectedClass } from './style';
  * @returns {JSX}
  */
 const SwatchContent = ({ swatch, classNames, onClick }) => {
+  const { classes, cx } = useStyles();
+
   if (!swatch) {
     return null;
   }
 
   return (
     <SurroundPortals portalName={PRODUCT_SWATCH} portalProps={{ swatch }}>
-      <ul className={cls(swatchClass, {
-        [classNames.swatch]: !!classNames.swatch,
-      })}
-      >
+      <ul className={cx(classes.swatch, classNames.swatch)}>
         {swatch.values.map(value => (
           <li
             aria-hidden
             key={value.id}
             onClick={() => onClick(value.id)}
-            className={cls(itemClass, {
-              [classNames.item]: !!classNames.item,
-              [itemSelectedClass]: !!value.selected,
+            className={cx(classes.item, classNames.item, {
+              [classes.itemSelected]: !!value.selected,
               [classNames.itemSelected]: !!value.selected,
             })}
             style={{

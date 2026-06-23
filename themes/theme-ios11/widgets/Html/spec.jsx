@@ -2,10 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Html, { UnwrappedHtml } from './index';
 
-const { variables } = themeConfig;
 const mockedStore = configureStore();
 
 /**
@@ -36,7 +34,9 @@ describe('<HtmlWidget />', () => {
   it('should render the widget', () => {
     const wrapper = createComponent(defaultSettings);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(UnwrappedHtml).childAt(0).prop('style')).toEqual({});
+    const outer = wrapper.find(UnwrappedHtml).childAt(0);
+    expect(outer.prop('data-test-default-padding')).toBeUndefined();
+    expect(outer.prop('style')).toEqual({});
   });
 
   it('should render the widget with a padding', () => {
@@ -47,6 +47,7 @@ describe('<HtmlWidget />', () => {
 
     const wrapper = createComponent(settings);
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(UnwrappedHtml).childAt(0).prop('style').padding).toBe(variables.gap.big);
+    const outer = wrapper.find(UnwrappedHtml).childAt(0);
+    expect(outer.prop('style')).toEqual({ padding: 16 });
   });
 });

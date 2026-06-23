@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { SheetList, SheetDrawer } from '@shopgate/engage/components';
 
 /**

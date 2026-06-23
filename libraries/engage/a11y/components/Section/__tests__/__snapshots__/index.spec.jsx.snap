@@ -30,11 +30,7 @@ exports[`<Section /> should render with a label 1`] = `
       tag="span"
     >
       <span
-        className={
-          {
-            "data-css-10i921h": "",
-          }
-        }
+        className="sg-1plkyt0-root"
       >
         <h2
           id="my-headline"

@@ -2,7 +2,7 @@
 
 exports[`<SwiperItem /> should add custom className 1`] = `
 <SwiperSlide
-  className="css-10a4qrv test"
+  className="sg-1jp3pni-item test"
   data-test-id="Slider"
 >
   <div />
@@ -11,7 +11,7 @@ exports[`<SwiperItem /> should add custom className 1`] = `
 
 exports[`<SwiperItem /> should not render without children 1`] = `
 <SwiperSlide
-  className="css-10a4qrv"
+  className="sg-1jp3pni-item"
   data-test-id="Slider"
 >
   <div />

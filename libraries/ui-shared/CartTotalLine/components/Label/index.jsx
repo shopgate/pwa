@@ -1,35 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { I18n } from '@shopgate/engage/components';
-import styles from './style';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()(theme => ({
+  label: {
+    flexGrow: 1,
+    paddingRight: theme.spacing(1),
+    order: 3,
+  },
+  labelWithSuffix: {
+    paddingRight: theme.spacing(1),
+  },
+}));
 
 /**
  * The ShippingCostsLabel component.
  * @param {Object} props The component props.
  * @return {JSX|null}
  */
-function Label({
+const Label = ({
   label, showSeparator, labelParams, suffix,
-}) {
+}) => {
+  const { classes, cx } = useStyles();
+
   if (!label) {
-    return <div className={styles.label} />;
+    return <div className={classes.label} />;
   }
 
   return (
-    <div className={styles.label}>
+    <div className={classes.label}>
       <I18n.Text
         string={label}
         params={labelParams}
-        className={classNames({
-          [styles.labelWithSuffix]: !!suffix,
+        className={cx({
+          [classes.labelWithSuffix]: !!suffix,
         })}
       />
       {suffix}
       {`${showSeparator ? ':' : ''}`}
     </div>
   );
-}
+};
 
 Label.propTypes = {
   label: PropTypes.string,

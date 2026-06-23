@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { Portal } from '@shopgate/pwa-common/components';
 import {
   APP_BAR_CLOSE_BEFORE,

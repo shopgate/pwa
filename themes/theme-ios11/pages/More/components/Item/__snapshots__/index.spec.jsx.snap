@@ -9,13 +9,18 @@ exports[`<Item /> should render as a button when no href, but a click handler is
   testId={null}
 >
   <button
-    className="css-1hj8a57"
+    className="sg-xorol2-root"
     data-test-id={null}
     onClick={[Function]}
     type="button"
   >
     <Text
+      acceptPlainTextWithPlaceholders={false}
+      className={null}
+      params={{}}
+      role={null}
       string="Item Label"
+      transform={null}
     >
       Item Label
     </Text>
@@ -32,12 +37,17 @@ exports[`<Item /> should render as a link when an href is passed to the props 1`
   testId={null}
 >
   <Link
-    className="css-1hj8a57"
+    className="sg-xorol2-root"
     href="/some/link"
     role="button"
   >
     <Text
+      acceptPlainTextWithPlaceholders={false}
+      className={null}
+      params={{}}
+      role={null}
       string="Item Label"
+      transform={null}
     >
       Item Label
     </Text>

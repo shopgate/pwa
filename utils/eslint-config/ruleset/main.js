@@ -163,33 +163,55 @@ module.exports = {
     {
       files: [
         '**/*.spec.js',
+        '**/*.spec.ts',
         '**/*.spec.jsx',
+        '**/*.spec.tsx',
         '**/*.test.js',
+        '**/*.test.ts',
         '**/*.test.jsx',
+        '**/*.test.tsx',
         '**/*.mock.js',
+        '**/*.mock.ts',
         '**/*.mock.jsx',
+        '**/*.mock.tsx',
         '**/spec.js',
+        '**/spec.ts',
         '**/spec.jsx',
+        '**/spec.tsx',
         '**/mock.js',
+        '**/mock.ts',
         '**/mock.jsx',
+        '**/mock.tsx',
       ],
       rules: {
         // Allow more than one class per file in test files
         'max-classes-per-file': 'off',
         // Allow non-camelcase names in test files (e.g., snake_case from API)
         camelcase: 'off',
+        // Don't require JSDoc in test/mock files
+        'require-jsdoc': 'off',
+        'valid-jsdoc': 'off',
+        'no-console': 'off',
       },
     },
   ],
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
     'import/extensions': [
       '.js',
       '.json',
       '.jsx',
+      '.ts',
+      '.tsx',
     ],
     'import/resolver': {
       exports: {},
-      node: {},
+      node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'] },
+      typescript: {
+        alwaysTryTypes: true,
+      },
     },
   },
 };

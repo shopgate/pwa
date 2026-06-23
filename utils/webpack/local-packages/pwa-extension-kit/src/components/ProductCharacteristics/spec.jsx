@@ -30,10 +30,12 @@ const mockedMapStateToPropsResult = {
       }],
   },
 };
+
 jest.mock('react-redux', () => ({
   connect: mapStateToProps => Component => props => (
     <Component
       variants={mockedMapStateToPropsResult.variants}
+      navigate={jest.fn()}
       {...props}
     />
   ),
@@ -57,6 +59,7 @@ jest.mock('@shopgate/pwa-common/context', () => ({
               productId="123"
               variantId="123-45"
               conditioner={mockedConditioner}
+              setCharacteristics={jest.fn()}
               {...contextProps}
             />
           ),
@@ -110,8 +113,8 @@ describe('components/ProductCharacteristics', () => {
       label: 'Size',
       selected: null,
       values: [
-        { id: '11', label: '7', selectable: true },
-        { id: '12', label: '7.5', selectable: true },
+        { id: '11', label: '7', selectable: false },
+        { id: '12', label: '7.5', selectable: false },
       ],
     };
 

@@ -31,8 +31,12 @@ jest.mock('@shopgate/engage/core', () => ({
     text: text => text,
   },
 }));
-jest.mock('../ItemName');
-jest.mock('../ItemPrice');
+jest.mock('../ItemName', () => function ItemName() {
+  return null;
+});
+jest.mock('../ItemPrice', () => function ItemPrice() {
+  return null;
+});
 
 describe('<ItemDetails />', () => {
   const props = {

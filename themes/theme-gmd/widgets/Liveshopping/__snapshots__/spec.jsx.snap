@@ -4,11 +4,7 @@ exports[`<LiveshoppingWidget /> should not render the widget without any data 1`
 
 exports[`<LiveshoppingWidget /> should render the widget with a slider for multiple products 1`] = `
 <div
-  className={
-    {
-      "data-css-1rjsvq5": "",
-    }
-  }
+  className="sg-ldvkxy-wrapper"
   data-test-id="liveShoppingWidget"
 >
   <ProductListTypeProvider
@@ -65,11 +61,7 @@ exports[`<LiveshoppingWidget /> should render the widget with a slider for multi
 
 exports[`<LiveshoppingWidget /> should render the widget with no slider for one product 1`] = `
 <div
-  className={
-    {
-      "data-css-1rjsvq5": "",
-    }
-  }
+  className="sg-ldvkxy-wrapper"
   data-test-id="liveShoppingWidget"
 >
   <ProductListTypeProvider

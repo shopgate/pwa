@@ -1,18 +1,31 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import styles from '../../style';
+import { themeColors } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
+
+const useStyles = makeStyles()({
+  body: {
+    color: themeColors.dark,
+    flexGrow: 1,
+    fontSize: '13px',
+    textAlign: 'center',
+    overflow: 'auto',
+  },
+});
 
 /**
  * @param {Object} props The component props.
  * @returns {JSX}
  */
 const Content = ({ content }) => {
+  const { classes } = useStyles();
+
   if (!content) {
     return null;
   }
 
   return (
-    <div className={styles.body} id="basicDialogDesc">
+    <div className={classes.body} id="basicDialogDesc">
       {content}
     </div>
   );

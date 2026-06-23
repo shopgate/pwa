@@ -1,7 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core';
-import { storeHoursToday } from './Store.style';
+
+const useStyles = makeStyles()({
+  storeHoursToday: {
+    color: 'var(--color-text-medium-emphasis)',
+  },
+});
 
 const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
@@ -13,6 +19,7 @@ const weekdays = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
  * @returns {JSX.Element}
  */
 export function StoreHoursToday({ hours, longLabel }) {
+  const { classes } = useStyles();
   if (!hours) {
     return null;
   }
@@ -27,7 +34,7 @@ export function StoreHoursToday({ hours, longLabel }) {
   const label = longLabel ? 'locations.today_hours_long' : 'locations.today_hours';
 
   return (
-    <div className={storeHoursToday}>
+    <div className={classes.storeHoursToday}>
       {i18n.text(label, { hours: hoursToday })}
     </div>
   );

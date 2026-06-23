@@ -4,10 +4,9 @@ export FORCE_COLOR = true
 ####################################################################################################
 # NOTICE:
 # -------
-# If LIBRARIES, EXTENSIONS or UTILS is extended and the npm packacke should not be prefixed with
+# If LIBRARIES or UTILS is extended and the npm package should not be prefixed with
 # "@shopgate/pwa-", then you need to modify the "get-npm-package-name" function below as well!
 LIBRARIES = engage commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
-EXTENSIONS = @shopgate-product-reviews @shopgate-tracking-ga-native @shopgate-user-privacy
 TRANSPILED_UTILS = benchmark
 UTILS = eslint-config unit-tests e2e webpack
 THEMES = theme-gmd theme-ios11
@@ -114,7 +113,8 @@ init:
 
 
 add-remotes:
-		node ./scripts/add-remotes.js 2> /dev/null; # ignore stderr output here
+		# node ./scripts/add-remotes.js 2> /dev/null; # ignore stderr output here
+		node ./scripts/add-remotes.js;
 
 
 
@@ -155,13 +155,18 @@ else
 endif
 		$(call finalize-release)
 
+define NL
+
+
+endef
+
 release-dry-run:
 	@echo "Purging dist"
-	$(foreach library, $(LIBRARIES), $(call clean-npm-package, libraries, $(library)))
+	$(foreach library, $(LIBRARIES), $(call clean-npm-package, libraries, $(library))$(NL))
 	@echo "Running babel"
-	$(foreach library, $(LIBRARIES), $(call build-npm-package, libraries, $(library)))
+	$(foreach library, $(LIBRARIES), $(call build-npm-package, libraries, $(library))$(NL))
 	@echo "Normalizing dist"
-	$(foreach library, $(LIBRARIES), $(call normalize-build, libraries, $(library)))
+	$(foreach library, $(LIBRARIES), $(call normalize-build, libraries, $(library))$(NL))
 	@echo "You can check dist folder"
 
 release-normalize:
@@ -293,7 +298,6 @@ endef
 
 define update-versions
 		$(call update-pwa-versions)
-		$(call update-extension-versions)
 		$(call update-theme-versions)
 
 endef
@@ -316,21 +320,6 @@ define update-pwa-versions
 			then echo "ERROR: Package version mismatch, please check your specified version ('$$(cat ./lerna.json | grep version | head -1 | awk -F: '{ print $$2 }' | sed 's/[\",]//g' | tr -d '[[:space:]]')' != '$(RELEASE_VERSION)')" && false; \
 			else echo "Version check OK!"; \
 		fi;
-
-endef
-
-# Change the version in the extension-config.json file of all extensions
-define update-extension-versions
-		$(call log,Updating extension versions to $(RELEASE_VERSION))
-		@echo "======================================================================"
-		@echo "| Updating extension versions to '$(RELEASE_VERSION))'"
-		@echo "======================================================================"
-		$(foreach extension, $(EXTENSIONS), $(call update-extension-version, $(extension)))
-
-endef
-
-define update-extension-version
-		node ./scripts/bump-extension.js --file="./extensions/$(strip $(1))/extension-config.json" --v="$(RELEASE_VERSION)";
 
 endef
 
@@ -367,17 +356,24 @@ define release-npm-packages
 endef
 
 define build-publish-npm-package
-		$(call build-npm-package, $(strip $(1)), $(strip $(2)))
-		$(call normalize-build, $(strip $(1)), $(strip $(2)))
-		$(call publish-npm-package, $(strip $(1)), $(strip $(2)), dist)
-		$(call clean-npm-package, $(strip $(1)), $(strip $(2)))
+		$(call build-npm-package, $(strip $(1)), $(strip $(2)))$(NL)
+		$(call normalize-build, $(strip $(1)), $(strip $(2)))$(NL)
+		$(call publish-npm-package, $(strip $(1)), $(strip $(2)),dist)$(NL)
+		$(call clean-npm-package, $(strip $(1)), $(strip $(2)))$(NL)
 endef
 
 define build-npm-package
-		$(call log,Build npm package)
-		@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
-		@BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ --out-dir ./$(strip $(1))/$(strip $(2))/dist --copy-files --ignore tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
-
+	$(call log,Build npm package)
+	@echo "> Building './$(strip $(1))/$(strip $(2))$(patsubst %//,%/,$(patsubst %,%/,$(strip $(3))))/dist' npm package"
+	@BABEL_ENV=production ./node_modules/.bin/babel ./$(strip $(1))/$(strip $(2))/ \
+		--out-dir ./$(strip $(1))/$(strip $(2))/dist \
+		--extensions ".js,.jsx,.ts,.tsx" \
+		--copy-files \
+		--ignore "**/*.d.ts","**/*.d.tsx","**/node_modules/**",tests,spec.js,spec.jsx,spec.ts,spec.tsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+	@if [ -f "./$(strip $(1))/$(strip $(2))/tsconfig.build.json" ]; then \
+		echo "> Generating types for './$(strip $(1))/$(strip $(2))' npm package"; \
+		./node_modules/.bin/tsc -p "./$(strip $(1))/$(strip $(2))/tsconfig.build.json" --noCheck; \
+	fi;
 endef
 
 # tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
@@ -452,7 +448,6 @@ endef
 define push-subtrees-to-git
 		$(call log,Syncing subtrees to branch $(strip $(1)))
 		$(foreach remote, $(THEMES), $(call update-subtree-remotes, themes/$(remote), $(remote), $(strip $(1))))
-		$(foreach remote, $(EXTENSIONS), $(call update-subtree-remotes, extensions/$(remote), $(patsubst @shopgate-%,ext-%,$(remote)), $(strip $(1))))
 		$(call log,Finished syncing subtrees to branch $(strip $(1)))
 
 endef
@@ -469,13 +464,12 @@ endef
 
 
 ####################################################################################################
-# CREATE-GITHUB-RELEASEES
+# CREATE-GITHUB-RELEASES
 
 define create-github-releases
 		$(call log,Creating GitHub releases for target $(strip $(1)))
 		$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),pwa)
 		$(foreach theme, $(THEMES),$(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-theme-to-repo-name,$(theme))))
-		$(foreach extension, $(EXTENSIONS), $(call create-github-release,$(RELEASE_NAME),$(strip $(1)),$(call map-extension-to-repo-name,$(extension))))
 		$(call log,Finished creating GitHub releases for target $(strip $(1)))
 
 endef
@@ -484,13 +478,6 @@ define map-theme-to-repo-name
 		$(patsubst @shopgate-%,ext-%,$(1))
 
 endef
-
-define map-extension-to-repo-name
-		$(patsubst ext-tracking-ga-native,tracking-ga-native,$(patsubst @shopgate-%,ext-%,$(1)))
-
-endef
-
-
 
 define finalize-release
 		# Cleanup by removing alpha / beta branches via GitHub API

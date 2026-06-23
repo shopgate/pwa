@@ -1,14 +1,29 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
-import styles, { itemDetails } from './style';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()({
+  root: {
+    position: 'relative',
+    display: 'block',
+    background: colors.light,
+    height: '100%',
+  },
+  itemDetails: {
+    position: 'relative',
+  },
+});
 
 /**
  * The Product Grid Item component.
@@ -18,10 +33,11 @@ import styles, { itemDetails } from './style';
  * @return {JSX.Element}
  */
 const Item = ({ product, display }) => {
+  const { classes, cx } = useStyles();
   const { meta } = useProductListType();
 
   return (
-    <div className={`${styles} theme__product-grid__item`}>
+    <div className={cx(classes.root, 'theme__product-grid__item')}>
       <Link
         role="none"
         href={getProductRoute(product.id)}
@@ -47,7 +63,7 @@ const Item = ({ product, display }) => {
           discount={product.price.discount || null}
         />
       </ProductBadges>
-      <div className={itemDetails}>
+      <div className={classes.itemDetails}>
         <ItemDetails
           product={product}
           display={display}

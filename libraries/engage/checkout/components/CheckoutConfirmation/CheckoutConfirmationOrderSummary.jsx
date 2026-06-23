@@ -1,29 +1,30 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import TimeIcon from '@shopgate/pwa-ui-shared/icons/TimeIcon';
 import moment from 'moment';
 import { i18n } from '../../../core/helpers/i18n';
 import CheckoutConfirmationSection from './CheckoutConfirmationSection';
 import { getCheckoutTaxLinesFromOrder } from '../../helpers';
 
-const styles = {
-  time: css({
+const useStyles = makeStyles()({
+  time: {
     marginBottom: 4,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
-  }).toString(),
-  timeText: css({
+  },
+  timeText: {
     marginLeft: 8,
-  }),
-};
+  },
+});
 
 /**
  * CheckoutConfirmationOrderSummary component
  * @returns {JSX}
  */
 const CheckoutConfirmationOrderSummary = ({ order, className }) => {
+  const { classes } = useStyles();
   const content = useMemo(() =>
     getCheckoutTaxLinesFromOrder(order)
       .filter(t => t.visible)
@@ -53,9 +54,9 @@ const CheckoutConfirmationOrderSummary = ({ order, className }) => {
       className={className}
     >
       {fulfillmentSlot ? (
-        <div className={styles.time}>
+        <div className={classes.time}>
           <TimeIcon size={20} />
-          <span className={styles.timeText}>
+          <span className={classes.timeText}>
             {moment(fulfillmentSlot?.date, 'YYYY-MM-DD').format('ll')}
             {' '}
             {moment(fulfillmentSlot?.from, 'HH:mm').format('LT')}

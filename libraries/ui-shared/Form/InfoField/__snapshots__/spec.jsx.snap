@@ -23,7 +23,7 @@ exports[`<InfoField> should render info field 1`] = `
     wrap={false}
   >
     <GridItem
-      className="css-1klwfzq info-field"
+      className="sg-jf2zto-info info-field"
       component="li"
       grow={1}
       shrink={1}

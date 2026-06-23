@@ -76,14 +76,16 @@ describe('<TextField />', () => {
     const input = wrapper.find('input');
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance().isFocused).toBe(false);
+    expect(onFocusMock).toHaveBeenCalledTimes(0);
 
     input.simulate('focus');
 
-    expect(wrapper.instance().isFocused).toBe(true);
+    expect(onFocusMock).toHaveBeenCalledTimes(1);
+    expect(onFocusMock).toHaveBeenCalledWith(true);
 
     input.simulate('blur');
-    expect(wrapper.instance().isFocused).toBe(false);
+    expect(onFocusMock).toHaveBeenCalledTimes(2);
+    expect(onFocusMock).toHaveBeenCalledWith(false);
   });
 
   it('should show the error message', () => {

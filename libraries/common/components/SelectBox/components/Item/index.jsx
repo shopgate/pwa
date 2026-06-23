@@ -1,64 +1,68 @@
-import React, { Component } from 'react';
-import classNames from 'classnames';
+import React, { useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import I18n from '../../../I18n';
-import { item } from './style';
+
+const useStyles = makeStyles()(() => ({
+  item: {
+    cursor: 'pointer',
+  },
+}));
 
 /**
  * The SelectBoxItem component.
- * @param {Object} props The components props.
- * @returns {JSX}
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class SelectBoxItem extends Component {
-  static propTypes = {
-    handleSelectionUpdate: PropTypes.func.isRequired,
-    isSelected: PropTypes.bool.isRequired,
-    label: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    wrapper: PropTypes.func.isRequired,
-    classNames: PropTypes.objectOf(PropTypes.string),
-    forwardedRef: PropTypes.func,
-  };
+const SelectBoxItem = ({
+  handleSelectionUpdate,
+  isSelected,
+  label,
+  value,
+  wrapper: Wrapper,
+  classNames: classNamesProp,
+  forwardedRef,
+}) => {
+  const { classes, cx } = useStyles();
+  const { selectItem, selectItemSelected } = classNamesProp;
 
-  static defaultProps = {
-    forwardedRef: null,
-    classNames: {},
-  };
+  const onSelect = useCallback(() => {
+    handleSelectionUpdate(value);
+  }, [handleSelectionUpdate, value]);
 
-  /**
-   * Calls the handleSelectionUpdate prop and prevents further events.
-   */
-  handleSelectionUpdate = () => {
-    this.props.handleSelectionUpdate(this.props.value);
-  };
+  return (
+    <li
+      className={cx(classes.item, selectItem, {
+        [selectItemSelected]: isSelected,
+      })}
+      onKeyUp={() => {}}
+      onClick={onSelect}
+      data-test-id={label}
+      role="menuitem"
+      ref={forwardedRef}
+      tabIndex={isSelected ? '0' : '-1'}
+      aria-current={isSelected}
+    >
+      <Wrapper>
+        <I18n.Text string={label} />
+      </Wrapper>
+    </li>
+  );
+};
 
-  /**
-   * Renders the component
-   * @returns {JSX}
-   */
-  render() {
-    const Wrapper = this.props.wrapper;
-    const { selectItem, selectItemSelected } = this.props.classNames;
+SelectBoxItem.propTypes = {
+  handleSelectionUpdate: PropTypes.func.isRequired,
+  isSelected: PropTypes.bool.isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  wrapper: PropTypes.func.isRequired,
+  classNames: PropTypes.objectOf(PropTypes.string),
+  forwardedRef: PropTypes.func,
+};
 
-    return (
-      <li
-        className={classNames(selectItem, item, {
-          [selectItemSelected]: this.props.isSelected,
-        })}
-        onKeyUp={() => { }}
-        onClick={this.handleSelectionUpdate}
-        data-test-id={this.props.label}
-        role="menuitem"
-        ref={this.props.forwardedRef}
-        tabIndex={this.props.isSelected ? '0' : '-1'}
-        aria-current={this.props.isSelected}
-      >
-        <Wrapper>
-          <I18n.Text string={this.props.label} />
-        </Wrapper>
-      </li>
-    );
-  }
-}
+SelectBoxItem.defaultProps = {
+  forwardedRef: null,
+  classNames: {},
+};
 
-export default SelectBoxItem;
+export default memo(SelectBoxItem);

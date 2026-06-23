@@ -1,41 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<StoreListProduct /> should not render if not product is supplied 1`] = `""`;
+exports[`<StoreListProduct /> should not render if not product is supplied 1`] = `<StoreListProduct />`;
 
 exports[`<StoreListProduct /> should render a product without selected variants. 1`] = `
-<SurroundPortals
-  portalName="fulfillment-sheet.product"
-  portalProps={
-    {
-      "product": {
-        "featuredImageBaseUrl": "http://www.some.com",
-        "featuredImageUrl": "http://www.some.com&height=200",
-        "name": "Test Product",
-      },
+<StoreListProduct>
+  <SurroundPortals
+    portalName="fulfillment-sheet.product"
+    portalProps={
+      {
+        "product": {
+          "featuredImageBaseUrl": "http://www.some.com",
+          "featuredImageUrl": "http://www.some.com&height=200",
+          "name": "Test Product",
+        },
+      }
     }
-  }
->
-  <div
-    className="css-73f55n"
-    role="text"
   >
     <div
-      className="css-1f7wp8g"
+      className="productContainer"
+      role="text"
     >
       <div
-        className="css-15aij0t"
+        className="productContainerInner"
       >
-        <WithWidgetSettings(ProductImagePure)
-          src="http://www.some.com"
-        />
-      </div>
-      <div
-        className="css-yp5sfk"
-      >
-        <StoreListProductName />
-        <StoreListProductInfo />
+        <div
+          className="productImage"
+        >
+          <WithWidgetSettings(ProductImagePure)
+            src="http://www.some.com"
+          >
+            <ProductImagePure
+              src="http://www.some.com"
+              widgetSettings={{}}
+            />
+          </WithWidgetSettings(ProductImagePure)>
+        </div>
+        <div
+          className="productContent"
+        >
+          <StoreListProductName />
+          <StoreListProductInfo />
+        </div>
       </div>
     </div>
-  </div>
-</SurroundPortals>
+  </SurroundPortals>
+</StoreListProduct>
 `;

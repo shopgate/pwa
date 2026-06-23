@@ -1,5 +1,5 @@
 /* global SGJavascriptBridge */
-import { useBrowserConnector, hasSGJavaScriptBridge } from '../../helpers';
+import { useBrowserConnector as hasBrowserConnector, hasSGJavaScriptBridge } from '../../helpers';
 import BrowserConnector from '../BrowserConnector';
 import DevServerBridge from '../DevServerBridge';
 
@@ -12,7 +12,7 @@ class Bridge {
    * Initializes the Bridge.
    */
   constructor() {
-    if (useBrowserConnector()) {
+    if (hasBrowserConnector()) {
       this.bridge = new BrowserConnector();
     } else if (hasSGJavaScriptBridge()) {
       this.bridge = SGJavascriptBridge;

@@ -1,15 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ItemName /> should render with minimal props 1`] = `
-<ProductName
-  className="css-5rrf15 theme__product-grid__item__item-name"
-  name="Foo"
-  portalName="product-item.name"
-  portalProps={
-    {
-      "productId": "1234",
+<Fragment>
+  <ProductRatingStars
+    productId="1234"
+  />
+  <ProductName
+    className="sg-9qyp86-name theme__product-grid__item__item-name"
+    name="Foo"
+    portalName="product-item.name"
+    portalProps={
+      {
+        "productId": "1234",
+      }
     }
-  }
-  testId="Productname: Foo"
-/>
+    testId="Productname: Foo"
+  />
+</Fragment>
 `;

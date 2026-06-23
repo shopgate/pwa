@@ -2,7 +2,7 @@
 
 exports[`<CartEmpty /> should render 1`] = `
 <div
-  className="css-1fis757"
+  className="sg-1ood6um-wrapper"
 >
   <Portal
     name="cart.empty.before"
@@ -13,15 +13,15 @@ exports[`<CartEmpty /> should render 1`] = `
     props={null}
   >
     <div
-      className="css-aphe06"
+      className="sg-he5guj-container"
     >
       <div
-        className="css-11342l empty-cart__image"
+        className="sg-1vww25b-icon empty-cart__image"
       >
         <Icon />
       </div>
       <div
-        className="css-b9wt33"
+        className="sg-t9d5pc-title"
         data-test-id="emptyCartPlaceHolderString"
       >
         <Translate
@@ -40,10 +40,10 @@ exports[`<CartEmpty /> should render 1`] = `
     props={null}
   />
   <div
-    className="css-1dq8tqy"
+    className="sg-iwde4c-buttonContainer"
   >
     <RippleButton
-      className="css-63oe3q"
+      className="sg-1fwzktp-button"
       disabled={false}
       flat={false}
       onClick={[Function]}

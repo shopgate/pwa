@@ -1,4 +1,4 @@
-/* eslint-disable require-jsdoc, react/prop-types */
+/* eslint-disable react/prop-types */
 import React, { createRef } from 'react';
 import { renderIntoDocument } from 'react-dom/test-utils';
 import { shallow } from 'enzyme';
@@ -55,4 +55,4 @@ describe('engage > core > hocs > withForwardedRef', () => {
   });
 });
 
-/* eslint-enable require-jsdoc, react/prop-types */
+/* eslint-enable react/prop-types */

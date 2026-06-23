@@ -6,11 +6,8 @@ coverage
 /themes/*/extensions/
 /themes/*/e2e/
 /themes/*/public/
-!/extensions/@shopgate-product-reviews
-!/extensions/@shopgate-tracking-native
-!/extensions/@shopgate-user-privacy
 !/extensions/@shopgate-theme-config
-/utils/webpack/local-packages/pwa-extension-kit/src
+/utils/webpack/local-packages/
 offline.js
 polyfill.js
 template.ejs

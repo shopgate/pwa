@@ -21,7 +21,7 @@ exports[`<Content /> should render 1`] = `
     </BackBar>
     <Headline
       tag="h1"
-      text=""
+      text="titles.browse"
     />
     <SearchField
       pageId="1234"

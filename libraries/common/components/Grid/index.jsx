@@ -1,56 +1,63 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@shopgate/engage/styles';
 import { objectWithoutProps } from '../../helpers/data';
 import GridItem from './components/Item';
-import styles, { wrap } from './style';
+
+const useStyles = makeStyles()(() => ({
+  root: {
+    display: 'flex',
+    minWidth: '100%',
+  },
+  wrap: {
+    flexWrap: 'wrap',
+  },
+  noWrap: {
+    flexWrap: 'nowrap',
+  },
+}));
 
 /**
  * The grid component.
+ * @param {Object} props Props.
+ * @returns {JSX.Element}
  */
-class Grid extends Component {
-  static Item = GridItem;
+const Grid = ({
+  className,
+  component,
+  wrap,
+  ...rest
+}) => {
+  const { classes, cx } = useStyles();
 
-  static propTypes = {
-    className: PropTypes.string,
-    component: PropTypes.string,
-    wrap: PropTypes.bool,
-  };
+  const composedClassName = cx(classes.root, 'common__grid', {
+    [classes.wrap]: wrap,
+    [classes.noWrap]: !wrap,
+  }, className);
 
-  static defaultProps = {
-    className: '',
-    component: 'ul',
-    wrap: false,
-  };
+  const props = objectWithoutProps(
+    {
+      ...rest,
+      className: composedClassName,
+    },
+    ['wrap', 'component']
+  );
 
-  /**
-   * Composes the props.
-   * @returns {Object} The composed props.
-   */
-  getProps() {
-    let className = `${this.props.className} ${styles} common__grid`;
+  return React.createElement(component, props);
+};
 
-    if (this.props.wrap) {
-      className += ` ${wrap(this.props.wrap)}`;
-    }
+Grid.Item = GridItem;
 
-    const props = {
-      ...this.props,
-      className,
-    };
+Grid.propTypes = {
+  className: PropTypes.string,
+  component: PropTypes.string,
+  wrap: PropTypes.bool,
+};
 
-    return objectWithoutProps(props, [
-      'wrap',
-      'component',
-    ]);
-  }
-
-  /**
-   * Renders the component.
-   * @returns {JSX}
-   */
-  render() {
-    return React.createElement(this.props.component, this.getProps());
-  }
-}
+Grid.defaultProps = {
+  className: '',
+  component: 'ul',
+  wrap: false,
+};
 
 export default Grid;

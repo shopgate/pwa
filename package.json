@@ -3,9 +3,6 @@
   "version": "7.0.0",
   "private": true,
   "workspaces": [
-    "extensions/@shopgate-product-reviews/frontend",
-    "extensions/@shopgate-tracking-ga-native/frontend",
-    "extensions/@shopgate-user-privacy/frontend",
     "extensions/@shopgate-theme-config/frontend",
     "libraries/*",
     "themes/*",
@@ -58,6 +55,7 @@
   "devDependencies": {
     "@types/jest": "^29.5.14",
     "@types/react": "^17.0.39",
+    "baseline-browser-mapping": "^2.10.23",
     "detector": "^2.5.0",
     "eslint": "^8.57.1",
     "eslint-formatter-summary": "^1.1.0",
@@ -83,7 +81,8 @@
     "@sigmacomputing/babel-plugin-lodash": "3.3.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "compare-versions": "^3.4.0"
+    "compare-versions": "^3.4.0",
+    "typescript": "^5.9.3"
   },
   "overrides": {
     "enzyme": {

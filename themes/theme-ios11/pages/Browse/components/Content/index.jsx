@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
 import SearchField from '../SearchField';
@@ -10,20 +11,16 @@ import RootCategories from '../RootCategories';
  * @param {Object} params The component params.
  * @param {string} params.pageId The id of the page.
  * @param {string} params.query The last query.
- * @param {Object} context The context.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
-const BrowseContent = ({ pageId, query }, context) => {
-  const { __ } = context.i18n();
-  return (
-    <>
-      <BackBar />
-      <Headline text={__('titles.browse')} tag="h1" />
-      <SearchField pageId={pageId} query={query} />
-      <RootCategories />
-    </>
-  );
-};
+const BrowseContent = ({ pageId, query }) => (
+  <>
+    <BackBar />
+    <Headline text={i18n.text('titles.browse')} tag="h1" />
+    <SearchField pageId={pageId} query={query} />
+    <RootCategories />
+  </>
+);
 
 BrowseContent.propTypes = {
   pageId: PropTypes.string.isRequired,
@@ -32,10 +29,6 @@ BrowseContent.propTypes = {
 
 BrowseContent.defaultProps = {
   query: '',
-};
-
-BrowseContent.contextTypes = {
-  i18n: PropTypes.func,
 };
 
 export default BrowseContent;

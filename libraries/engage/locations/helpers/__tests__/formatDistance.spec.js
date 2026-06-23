@@ -1,4 +1,4 @@
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import formatDistance from '../formatDistance';
 
 jest.unmock('@shopgate/engage/core/helpers/i18n');

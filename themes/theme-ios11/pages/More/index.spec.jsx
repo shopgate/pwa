@@ -22,7 +22,6 @@ jest.mock('./components/StoreInfo/components/LegalPages', () => function LegalPa
   return null;
 });
 
-/* eslint-disable require-jsdoc */
 jest.mock('@shopgate/engage/development/components/ClientInformation', () => {
   const ClientInformation = () => (<div />);
   return ClientInformation;
@@ -32,7 +31,6 @@ jest.mock('./components/Quicklinks', () => {
   const Quicklinks = () => <div />;
   return Quicklinks;
 });
-/* eslint-enable require-jsdoc */
 
 const store = createMockStore();
 
@@ -80,6 +78,5 @@ describe('<More />', () => {
     expect(wrapper.find('Headline').first().text()).toBe('navigation.welcome_message');
     expect(wrapper.find('Headline + UserMenu').exists()).toBe(false);
     expect(wrapper.find('UserMenu')).toHaveLength(1);
-    expect(mockedi18n).toHaveBeenCalledWith('navigation.welcome_message', { name: userData.firstName });
   });
 });

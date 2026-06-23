@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
-import { css } from 'glamor';
+import { css } from '@shopgate/engage/styles';
 import { useWidgetStyles } from '../../../core';
 import SwatchContent from './SwatchContent';
 
@@ -20,9 +20,9 @@ const VariantSwatch = ({ swatch, onClick }) => {
   }
 
   const classNames = {
-    swatch: styles && styles.swatch ? css(styles.swatch).toString() : null,
-    item: styles && styles.item ? css(styles.item).toString() : null,
-    itemSelected: styles && styles.itemSelected ? css(styles.itemSelected).toString() : null,
+    swatch: styles && styles.swatch ? css(styles.swatch) : null,
+    item: styles && styles.item ? css(styles.item) : null,
+    itemSelected: styles && styles.itemSelected ? css(styles.itemSelected) : null,
   };
 
   return (

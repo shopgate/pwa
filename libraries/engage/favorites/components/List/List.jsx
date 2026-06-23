@@ -3,6 +3,8 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { makeStyles } from '@shopgate/engage/styles';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { showModal } from '@shopgate/engage/core/actions';
 import {
   Accordion,
@@ -16,8 +18,22 @@ import {
 import { FAVORITES_SHOW_LIMIT } from '@shopgate/engage/favorites/constants';
 import ListAccordionLabel from './ListAccordionLabel';
 import ListContent from './ListContent';
-import styles from './styles';
 import ListAccordionHeader from './ListAccordionHeader';
+
+const { colors } = themeConfig;
+
+const useStyles = makeStyles()(theme => ({
+  root: {
+    margin: '8px 8px 10px',
+  },
+  rootNoFavoritesLists: {
+    background: colors.light,
+    flexGrow: 1,
+    paddingBottom: theme.spacing(1),
+    paddingLeft: '16px',
+    paddingRight: '16px',
+  },
+}));
 
 /**
  * @param {Object} _ State
@@ -70,6 +86,7 @@ const FavoriteList = ({
   hasMultipleFavoritesListsSupport,
   useGetFavoriteIdsPipeline,
 }) => {
+  const { classes } = useStyles();
   const [offset, setOffset] = useState(FAVORITES_SHOW_LIMIT);
 
   const filteredItems = useMemo(() => {
@@ -120,12 +137,12 @@ const FavoriteList = ({
     <ConditionalWrapper
       condition={hasMultipleFavoritesListsSupport}
       wrapperFalsy={children => (
-        <div className={styles.rootNoFavoritesLists}>
+        <div className={classes.rootNoFavoritesLists}>
           {children}
         </div>
       )}
       wrapper={children => (
-        <Card className={styles.root}>
+        <Card className={classes.root}>
           <Accordion
             className=""
             renderAdditionalHeaderContent={() => <ListAccordionHeader

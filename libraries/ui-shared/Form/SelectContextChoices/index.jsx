@@ -1,19 +1,40 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import pick from 'lodash/pick';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles } from '@shopgate/engage/styles';
 import Chevron from '../../icons/ChevronIcon';
 import InfoField from '../InfoField';
 import ContextMenu from '../../ContextMenu';
-import styles from './style';
+
+const useStyles = makeStyles()({
+  chevron: {
+    position: 'absolute',
+    top: '50%',
+    right: 0,
+    transform: 'translateY(-50%) rotateZ(-90deg)',
+    fontSize: '1.3em !important',
+    marginTop: -3,
+  },
+  toggle: {
+    fontSize: '1rem',
+    paddingRight: '2rem',
+  },
+  itemSelected: {
+    backgroundColor: themeConfig.colors.shade8,
+    fontWeight: 500,
+  },
+});
 
 /**
- * @param {Object} props .
+ * @param {Object} props Props.
  * @returns {JSX}
  */
 const SelectContextChoices = ({
   options, onChange, value, placeholder, className, label, errorText, showErrorText,
 }) => {
+  const { classes } = useStyles();
   const [opened, setOpened] = useState(false);
 
   const onMenuChange = useCallback(({ active }) => {
@@ -24,7 +45,6 @@ const SelectContextChoices = ({
     if (key === '') {
       onChange([]);
     } else if (value.includes(key)) {
-      // Eliminate value
       onChange(value.filter(v => v !== key));
     } else {
       onChange([...value, key]);
@@ -41,14 +61,14 @@ const SelectContextChoices = ({
       errorText={errorText}
       showErrorText={showErrorText}
       hasValue
-      rightElement={<Chevron className={styles.chevron} />}
+      rightElement={<Chevron className={classes.chevron} />}
     >
       <div
         role="button"
         onClick={() => setOpened(true)}
         aria-hidden
         tabIndex="0"
-        className={styles.toggle}
+        className={classes.toggle}
       >
         {!hasValue && (placeholder || i18n.text('common.please_choose'))}
         {hasValue && values.join(', ')}
@@ -65,7 +85,7 @@ const SelectContextChoices = ({
             key={key}
             autoClose={false}
             onClick={() => onItemClick(key)}
-            className={hasValue && value.includes(key) ? styles.itemSelected : ''}
+            className={hasValue && value.includes(key) ? classes.itemSelected : ''}
           >
             {options[key]}
           </ContextMenu.Item>

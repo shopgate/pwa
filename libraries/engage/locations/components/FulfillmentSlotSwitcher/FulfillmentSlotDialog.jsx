@@ -1,14 +1,13 @@
 import React, {
   Fragment, useState, useMemo, useEffect, useCallback,
 } from 'react';
-import classnames from 'classnames';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { css } from 'glamor';
+import { makeStyles } from '@shopgate/engage/styles';
 import groupBy from 'lodash/groupBy';
 import { SheetDrawer, Button } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { getActiveFulfillmentSlot } from '@shopgate/engage/cart/cart.selectors';
 import { makeGetFulfillmentSlotsForLocation, getPreferredLocation } from '../../selectors';
 import fetchFulfillmentSlots from '../../actions/fetchFulfillmentSlots';
@@ -37,33 +36,33 @@ const mapDispatchToProps = dispatch => ({
   fetch: locationCode => dispatch(fetchFulfillmentSlots(locationCode)),
 });
 
-const styles = {
-  root: css({
+const useStyles = makeStyles()({
+  root: {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
     padding: 16,
     paddingBottom: 0,
-  }).toString(),
-  title: css({
+  },
+  title: {
     fontSize: 24,
     fontWeight: '500',
     marginBottom: 8,
-  }).toString(),
-  subtitle: css({
+  },
+  subtitle: {
     fontSize: 20,
     fontWeight: '500',
     marginBottom: 8,
     marginTop: 16,
-  }).toString(),
-  row: css({
+  },
+  row: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
     marginLeft: -8,
     marginRight: -8,
-  }).toString(),
-  button: css({
+  },
+  button: {
     position: 'relative',
     cursor: 'pointer',
     display: 'flex',
@@ -75,39 +74,39 @@ const styles = {
     background: '#fff',
     transition: 'background, color 500ms',
     outline: 'none',
-  }).toString(),
-  buttonActive: css({
+  },
+  buttonActive: {
     color: '#fff',
     background: 'var(--color-secondary)',
-  }).toString(),
-  buttonDate: css({
+  },
+  buttonDate: {
     width: 124,
     height: 70,
     lineHeight: 1.3,
-  }).toString(),
-  buttonLabel: css({
+  },
+  buttonLabel: {
     fontSize: 20,
     textAlign: 'center',
-  }).toString(),
-  buttonLabelSlot: css({
+  },
+  buttonLabelSlot: {
     padding: 2,
     fontSize: 16,
     textAlign: 'center',
-  }).toString(),
-  buttonDisabled: css({
+  },
+  buttonDisabled: {
     cursor: 'blocked',
     pointerEvents: 'none',
     border: '1px solid #444',
-  }).toString(),
-  buttonStrikethrough: css({
+  },
+  buttonStrikethrough: {
     position: 'absolute',
     background: '#444',
     left: 0,
     right: 0,
     height: 2,
     transform: 'rotate(-5deg)',
-  }).toString(),
-  buttonScheduleContainer: css({
+  },
+  buttonScheduleContainer: {
     position: 'sticky',
     bottom: 'calc(-1 * env(safe-area-inset-bottom))',
     margin: -16,
@@ -115,13 +114,13 @@ const styles = {
     background: '#fff',
     padding: 16,
     paddingBottom: 24,
-  }).toString(),
-  buttonSchedule: css({
+  },
+  buttonSchedule: {
     '&&': {
       width: '100%',
     },
-  }).toString(),
-};
+  },
+});
 
 /**
  * Get Month day time.
@@ -177,6 +176,7 @@ const FulfillmentSlotSheet = ({
   allowClose,
   fulfillmentSlot,
 }) => {
+  const { classes, cx } = useStyles();
   // Group by date.
   const groupedSlots = useMemo(
     () => groupBy(fulfillmentSlots, 'date'),
@@ -267,25 +267,25 @@ const FulfillmentSlotSheet = ({
       onDidClose={onClose}
       allowClose={allowClose}
     >
-      <div className={styles.root}>
-        <span className={styles.title}>
+      <div className={classes.root}>
+        <span className={classes.title}>
           {i18n.text('locations.your_current_timeslot.dialog.date')}
         </span>
-        <div className={styles.row}>
+        <div className={classes.row}>
           {Object.keys(groupedSlots).map(date => (
             <button
               type="button"
               key={date}
-              className={classnames(
-                styles.button,
-                styles.buttonDate,
+              className={cx(
+                classes.button,
+                classes.buttonDate,
                 {
-                  [styles.buttonActive]: selectedDate === date,
+                  [classes.buttonActive]: selectedDate === date,
                 }
               )}
               onClick={() => setSelectedDate(date)}
             >
-              <span className={styles.buttonLabel}>
+              <span className={classes.buttonLabel}>
                 {moment(date, 'YYYY-MM-DD').format('dddd')}
                 {' '}
                 {getMonthDay(date)}
@@ -295,37 +295,37 @@ const FulfillmentSlotSheet = ({
         </div>
         {slotGroups && slotGroups.map(group => (
           <Fragment key={group.name}>
-            <span className={styles.subtitle}>
+            <span className={classes.subtitle}>
               {i18n.text(`locations.your_current_timeslot.dialog.${group.name}`)}
             </span>
-            <div className={styles.row}>
+            <div className={classes.row}>
               {group.slots.map(slot => (
                 <button
                   type="button"
                   key={`${slot.from}-${slot.to}`}
                   onClick={() => setSelectedSlot(slot.id)}
-                  className={classnames(
-                    styles.button,
+                  className={cx(
+                    classes.button,
                     {
-                      [styles.buttonDisabled]: slot.status !== 'active',
-                      [styles.buttonActive]: slot.id === selectedSlot,
+                      [classes.buttonDisabled]: slot.status !== 'active',
+                      [classes.buttonActive]: slot.id === selectedSlot,
                     }
                   )}
                 >
-                  <span className={styles.buttonLabelSlot}>
+                  <span className={classes.buttonLabelSlot}>
                     {getRange(slot.from, slot.to)}
                   </span>
                   {slot.status !== 'active' ? (
-                    <div className={styles.buttonStrikethrough} />
+                    <div className={classes.buttonStrikethrough} />
                   ) : null}
                 </button>
               ))}
             </div>
           </Fragment>
         ))}
-        <div className={styles.buttonScheduleContainer}>
+        <div className={classes.buttonScheduleContainer}>
           <Button
-            className={styles.buttonSchedule}
+            className={classes.buttonSchedule}
             type="secondary"
             onClick={handleChange}
             disabled={!selectedDate || !selectedSlot}

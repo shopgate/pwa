@@ -81,7 +81,6 @@ const simulateInputTest = (
     exponential: generateExponentialEasingCallback(config.factor),
   }[config.easing];
 
-  // eslint-disable-next-line require-jsdoc
   const callback = ([from, to]) => {
     const {
       currentTouchDeltaX,
@@ -176,7 +175,7 @@ describe.skip('<RangeSlider />', () => {
       100, 73, // Range slider pixel width and offset.
       0, 100, // Range slider minimum and maximum value.
       [50, 75], // Initial value.
-      'linear', // Which wasing should be used.
+      'linear', // Which easing should be used.
       0.01, // Resolution.
       [ // A series of pixel offsets to move the slider handle.
         +0, +3, -15, +17, -80, +75,
@@ -189,7 +188,7 @@ describe.skip('<RangeSlider />', () => {
       78, 12, // Range slider pixel width and offset.
       0, 1000, // Range slider minimum maximum value.
       [10, 450], // Initial value.
-      'exponential', // Which wasing should be used.
+      'exponential', // Which easing should be used.
       0.01, // Resolution.
       [ // A series of pixel offsets to move the slider handle.
         +10, +10, +10, +10, +10, +10, +10, +10,
@@ -200,7 +199,6 @@ describe.skip('<RangeSlider />', () => {
   });
 
   it('emits onChange if the outer range was touched', () => {
-    // eslint-disable-next-line require-jsdoc
     const callback = value => expect(value).toEqual([-80, 0]);
 
     const wrapper = mount((

@@ -39,20 +39,24 @@ describe('<PipelineErrorDialog />', () => {
 
     const clickElement = wrapper.find('div[onClick]');
 
+    const devMarker = 'Pipeline:';
+
     // Dev mode should be disabled.
     for (let i = 0; i < numTaps; i += 1) {
-      expect(wrapper.state().devMode).toBe(false);
+      expect(wrapper.text()).not.toContain(devMarker);
       clickElement.simulate('click');
     }
 
-    // Dev mode should be enabled.
-    for (let i = 0; i < numTaps; i += 1) {
-      expect(wrapper.state().devMode).toBe(true);
+    expect(wrapper.text()).toContain(devMarker);
+
+    // Dev mode should be enabled until 10 more taps.
+    for (let i = 0; i < numTaps - 1; i += 1) {
+      expect(wrapper.text()).toContain(devMarker);
       clickElement.simulate('click');
     }
 
-    // Dev mode should be disabled again.
-    expect(wrapper.state().devMode).toBe(false);
+    clickElement.simulate('click');
+    expect(wrapper.text()).not.toContain(devMarker);
   });
 
   it('should not switch modes if tapped too slow', () => {
@@ -65,8 +69,9 @@ describe('<PipelineErrorDialog />', () => {
 
     const clickElement = wrapper.find('div[onClick]');
 
-    // Dev mode should be disabled.
-    expect(wrapper.state().devMode).toBe(false);
+    const devMarker = 'Pipeline:';
+
+    expect(wrapper.text()).not.toContain(devMarker);
 
     /**
      * Simulates multiple tap events.
@@ -88,13 +93,10 @@ describe('<PipelineErrorDialog />', () => {
     // Tap the remaining times.
     tapOnElement(numTaps - numTapsUntilTimeout);
 
-    // We timed out and should not be in dev mode by now.
-    expect(wrapper.state().devMode).toBe(false);
+    expect(wrapper.text()).not.toContain(devMarker);
 
-    // Add the remaining amount of taps to enter dev mode.
     tapOnElement(numTapsUntilTimeout);
 
-    // This time dev mode should be enabled.
-    expect(wrapper.state().devMode).toBe(true);
+    expect(wrapper.text()).toContain(devMarker);
   });
 });

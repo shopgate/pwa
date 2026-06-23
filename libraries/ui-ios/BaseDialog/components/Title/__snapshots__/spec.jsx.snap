@@ -5,7 +5,7 @@ exports[`<Title /> should not render without a title 1`] = `""`;
 exports[`<Title /> should render with a title 1`] = `
 <div
   aria-level="2"
-  className="css-q8b787"
+  className="sg-53vpsx-title"
   id="basicDialogTitle"
   role="heading"
 >
