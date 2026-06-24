@@ -200,7 +200,7 @@ exports[`<TextField /> should focus the input 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -228,7 +228,7 @@ exports[`<TextField /> should focus the input 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -446,7 +446,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -474,7 +474,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -692,7 +692,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -720,7 +720,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -938,7 +938,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -966,7 +966,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -1184,7 +1184,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -1212,7 +1212,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -1429,7 +1429,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -1457,7 +1457,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -1682,7 +1682,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -1710,7 +1710,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -1927,7 +1927,7 @@ exports[`<TextField /> should show the error message 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -1955,7 +1955,7 @@ exports[`<TextField /> should show the error message 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -2187,7 +2187,7 @@ exports[`<TextField /> should show the hint text 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -2215,7 +2215,7 @@ exports[`<TextField /> should show the hint text 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -2440,7 +2440,7 @@ exports[`<TextField /> should show the label 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -2468,7 +2468,7 @@ exports[`<TextField /> should show the label 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate
@@ -2700,7 +2700,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-a3ijwv-error errorText"
+        className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
         display="initial"
@@ -2728,7 +2728,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-tluwcn-Typography-root-Typography-caption-Typography-colorError-error"
+          className="engage__typography engage__typography_caption errorText sg-1puxs0c-Typography-root-Typography-caption-Typography-colorError-error"
           id="ariaError-test-input"
         >
           <Translate

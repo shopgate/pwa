@@ -36,7 +36,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
           </label>
           <_default
             autoComplete={false}
-            className="sg-3x1c7n-input"
+            className="sg-1860m1m-input"
             onChange={[Function]}
             onFocusChange={[Function]}
             onSubmit={[Function]}
@@ -48,7 +48,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="sg-3x1c7n-input"
+              className="sg-1860m1m-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -71,7 +71,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="sg-3x1c7n-input simpleInput common__simple-input"
+                className="sg-1860m1m-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}
@@ -96,7 +96,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
       <div>
         <button
           aria-hidden={true}
-          className="sg-1j0scw0-button-hidden"
+          className="sg-1ldmva4-button-hidden"
           data-test-id="search-field-cancel"
           onClick={[Function]}
           type="button"
@@ -155,7 +155,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
           </label>
           <_default
             autoComplete={false}
-            className="sg-3x1c7n-input"
+            className="sg-1860m1m-input"
             onChange={[Function]}
             onFocusChange={[Function]}
             onSubmit={[Function]}
@@ -167,7 +167,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="sg-3x1c7n-input"
+              className="sg-1860m1m-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -190,7 +190,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="sg-3x1c7n-input simpleInput common__simple-input"
+                className="sg-1860m1m-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}
@@ -215,7 +215,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
       <div>
         <button
           aria-hidden={false}
-          className="sg-3q8uc0-button"
+          className="sg-i7ibe5-button"
           data-test-id="search-field-cancel"
           onClick={[Function]}
           type="button"

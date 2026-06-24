@@ -556,7 +556,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-cb4y3g-closeButton"
+                                    className="sg-1cxk1cy-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -610,7 +610,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1h2u7d7-title"
+                                    className="sg-1ff2avy-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -618,11 +618,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1pnus5l-root-title"
+                                      className="sg-12wzbts-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
                                       <Typography
+                                        className="sg-9uf2sj-titleText"
                                         component="div"
                                         noWrap={true}
                                         variant="h3"
@@ -1889,7 +1890,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-cb4y3g-closeButton"
+                                    className="sg-1cxk1cy-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -1943,7 +1944,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1h2u7d7-title"
+                                    className="sg-1ff2avy-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -1951,11 +1952,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1pnus5l-root-title"
+                                      className="sg-12wzbts-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
                                       <Typography
+                                        className="sg-9uf2sj-titleText"
                                         component="div"
                                         noWrap={true}
                                         variant="h3"
@@ -2714,7 +2716,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-cb4y3g-closeButton"
+                                    className="sg-1cxk1cy-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -2768,7 +2770,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1h2u7d7-title"
+                                    className="sg-1ff2avy-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -2776,11 +2778,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1pnus5l-root-title"
+                                      className="sg-12wzbts-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
                                       <Typography
+                                        className="sg-9uf2sj-titleText"
                                         component="div"
                                         noWrap={true}
                                         variant="h3"
@@ -3215,7 +3218,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-cb4y3g-closeButton"
+                                    className="sg-1cxk1cy-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -3269,7 +3272,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1h2u7d7-title"
+                                    className="sg-1ff2avy-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -3277,11 +3280,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1pnus5l-root-title"
+                                      className="sg-12wzbts-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
                                       <Typography
+                                        className="sg-9uf2sj-titleText"
                                         component="div"
                                         noWrap={true}
                                         variant="h3"
@@ -4156,7 +4160,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-cb4y3g-closeButton"
+                                    className="sg-1cxk1cy-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -4210,7 +4214,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                     </Ripple>
                                   </button>
                                   <GridItem
-                                    className="sg-1h2u7d7-title"
+                                    className="sg-1ff2avy-title"
                                     component="div"
                                     grow={1}
                                     role="heading"
@@ -4218,11 +4222,12 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                     tabIndex={0}
                                   >
                                     <div
-                                      className="sg-1pnus5l-root-title"
+                                      className="sg-12wzbts-root-title"
                                       role="heading"
                                       tabIndex={0}
                                     >
                                       <Typography
+                                        className="sg-9uf2sj-titleText"
                                         component="div"
                                         noWrap={true}
                                         variant="h3"

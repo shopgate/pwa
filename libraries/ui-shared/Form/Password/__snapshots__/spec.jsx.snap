@@ -75,7 +75,7 @@ exports[`<Password> should render a password field 1`] = `
               >
                 <_default
                   attributes={null}
-                  className="sg-r4rsrd-input"
+                  className="sg-sn2gzm-input"
                   maxLength=""
                   multiLine={false}
                   name="test-input"
@@ -89,7 +89,7 @@ exports[`<Password> should render a password field 1`] = `
                     attributes={null}
                     autoComplete={false}
                     autoCorrect={false}
-                    className="sg-r4rsrd-input"
+                    className="sg-sn2gzm-input"
                     disabled={false}
                     id={null}
                     inputComponent="input"
@@ -112,7 +112,7 @@ exports[`<Password> should render a password field 1`] = `
                     <input
                       autoComplete="off"
                       autoCorrect="off"
-                      className="sg-r4rsrd-input simpleInput common__simple-input"
+                      className="sg-sn2gzm-input simpleInput common__simple-input"
                       disabled={false}
                       id={null}
                       inputMode={null}

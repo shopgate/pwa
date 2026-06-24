@@ -275,7 +275,7 @@ exports[`<FormElement /> should show the error message 1`] = `
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-1k2envm-root errorText"
+        className="sg-1ln57h9-root errorText"
         color="error"
         component="div"
         display="initial"
@@ -303,7 +303,7 @@ exports[`<FormElement /> should show the error message 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="engage__typography engage__typography_caption errorText sg-1wcr6ws-Typography-root-Typography-caption-Typography-colorError-root"
+          className="engage__typography engage__typography_caption errorText sg-zidkoz-Typography-root-Typography-caption-Typography-colorError-root"
           id="ariaError-test-input"
         >
           <Translate

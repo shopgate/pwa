@@ -12,7 +12,7 @@ exports[`TabBar favorites action - behavior should cap display at MAX when numbe
 >
   <ForwardRef
     align="inherit"
-    className="sg-15e2465-root theme__tab-bar__favorites-icon-badge theme__badge"
+    className="sg-141s9fq-root theme__tab-bar__favorites-icon-badge theme__badge"
     color="initial"
     component="div"
     display="initial"
@@ -36,7 +36,7 @@ exports[`TabBar favorites action - behavior should cap display at MAX when numbe
     }
   >
     <div
-      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-gdtkwe-Typography-root-Typography-caption-root"
+      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-2rsbku-Typography-root-Typography-caption-root"
     >
       999+
     </div>
@@ -56,7 +56,7 @@ exports[`TabBar favorites action - behavior should show count when number is cha
 >
   <ForwardRef
     align="inherit"
-    className="sg-15e2465-root theme__tab-bar__favorites-icon-badge theme__badge"
+    className="sg-141s9fq-root theme__tab-bar__favorites-icon-badge theme__badge"
     color="initial"
     component="div"
     display="initial"
@@ -80,7 +80,7 @@ exports[`TabBar favorites action - behavior should show count when number is cha
     }
   >
     <div
-      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-gdtkwe-Typography-root-Typography-caption-root"
+      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-2rsbku-Typography-root-Typography-caption-root"
     >
       99
     </div>
@@ -113,7 +113,7 @@ exports[`TabBar favorites action should render exact number 1`] = `
       >
         <ForwardRef
           align="inherit"
-          className="sg-15e2465-root theme__tab-bar__favorites-icon-badge theme__badge"
+          className="sg-141s9fq-root theme__tab-bar__favorites-icon-badge theme__badge"
           color="initial"
           component="div"
           display="initial"
@@ -137,7 +137,7 @@ exports[`TabBar favorites action should render exact number 1`] = `
           }
         >
           <div
-            className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-gdtkwe-Typography-root-Typography-caption-root"
+            className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-2rsbku-Typography-root-Typography-caption-root"
           >
             1
           </div>

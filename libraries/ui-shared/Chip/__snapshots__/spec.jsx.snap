@@ -72,14 +72,14 @@ exports[`<Chip /> should render a tag 1`] = `
     </Button>
     <Button
       aria-label={null}
-      className="sg-1lp0dbu-name"
+      className="sg-1p000sf-name"
       disabled={false}
       onClick={[Function]}
       testId="Button"
     >
       <button
         aria-label={null}
-        className="common__button sg-15bdo8l-root-name"
+        className="common__button sg-4vcewk-root-name"
         data-test-id="Button"
         disabled={false}
         onClick={[Function]}
@@ -107,14 +107,14 @@ exports[`<Chip /> should render a without removable icon 1`] = `
   >
     <Button
       aria-label={null}
-      className="sg-1lp0dbu-name"
+      className="sg-1p000sf-name"
       disabled={false}
       onClick={[Function]}
       testId="Button"
     >
       <button
         aria-label={null}
-        className="common__button sg-15bdo8l-root-name"
+        className="common__button sg-4vcewk-root-name"
         data-test-id="Button"
         disabled={false}
         onClick={[Function]}

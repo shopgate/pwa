@@ -167,7 +167,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           className="sg-1wudg9u-container"
                         >
                           <RatingStars
-                            className="sg-1uyeoj6-stars"
+                            className="sg-1t55clb-stars"
                             display="small"
                             isSelectable={false}
                             onSelection={[Function]}
@@ -175,7 +175,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-wsrkeg-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
@@ -580,7 +580,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           className="sg-1wudg9u-container"
                         >
                           <RatingStars
-                            className="sg-1uyeoj6-stars"
+                            className="sg-1t55clb-stars"
                             display="small"
                             isSelectable={false}
                             onSelection={[Function]}
@@ -588,7 +588,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-wsrkeg-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
@@ -993,7 +993,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           className="sg-1wudg9u-container"
                         >
                           <RatingStars
-                            className="sg-1uyeoj6-stars"
+                            className="sg-1t55clb-stars"
                             display="small"
                             isSelectable={false}
                             onSelection={[Function]}
@@ -1001,7 +1001,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-wsrkeg-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
@@ -1406,7 +1406,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           className="sg-1wudg9u-container"
                         >
                           <RatingStars
-                            className="sg-1uyeoj6-stars"
+                            className="sg-1t55clb-stars"
                             display="small"
                             isSelectable={false}
                             onSelection={[Function]}
@@ -1414,7 +1414,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-wsrkeg-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >

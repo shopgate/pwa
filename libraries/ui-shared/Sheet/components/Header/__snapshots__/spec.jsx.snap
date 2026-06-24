@@ -11,7 +11,7 @@ exports[`<Header /> should render with correct title 1`] = `
   >
     <button
       aria-label="common.close"
-      className="sg-cb4y3g-closeButton"
+      className="sg-1cxk1cy-closeButton"
       onClick={[Function]}
       type="button"
     >
@@ -31,7 +31,7 @@ exports[`<Header /> should render with correct title 1`] = `
       </Ripple>
     </button>
     <GridItem
-      className="sg-1h2u7d7-title"
+      className="sg-1ff2avy-title"
       component="div"
       grow={1}
       role="heading"
@@ -40,6 +40,7 @@ exports[`<Header /> should render with correct title 1`] = `
     >
       <ForwardRef
         align="inherit"
+        className="sg-9uf2sj-titleText"
         color="initial"
         component="div"
         display="initial"
