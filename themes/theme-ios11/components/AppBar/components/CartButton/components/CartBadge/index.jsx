@@ -8,7 +8,8 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
-    lineHeight: 1.5,
+    display: 'flex',
+    alignItems: 'center',
     fontWeight: theme.typography.fontWeightBold,
     background: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,

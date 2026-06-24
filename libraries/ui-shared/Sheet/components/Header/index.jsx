@@ -17,10 +17,8 @@ const useStyles = makeStyles()(theme => ({
   closePlaceholder: {
     height: themeConfig.variables.navigator.height,
     padding: 0,
-    lineHeight: 1,
   },
   closeButton: {
-    lineHeight: 1,
     outline: 0,
     padding: 0,
     minWidth: themeConfig.variables.navigator.height,

@@ -28,7 +28,6 @@ const useStyles = makeStyles()(theme => ({
   container: {
     padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
     paddingBottom: 0,
-    lineHeight: 1.45,
     flexWrap: 'wrap',
     flexDirection: 'column',
     minWidth: 'auto',

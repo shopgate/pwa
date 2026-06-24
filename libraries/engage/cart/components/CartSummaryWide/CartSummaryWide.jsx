@@ -20,9 +20,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
     width: 420,
   },
-  headline: {
-    lineHeight: '1.5rem',
-  },
   summary: {
     background: theme.palette.background.emphasized,
     padding: theme.spacing(2),
@@ -53,7 +50,7 @@ const CartSummaryWide = () => {
 
   return (
     <div className={classes.container}>
-      <Typography variant="h3" component="h2" className={classes.headline}>
+      <Typography variant="h3" component="h2">
         {i18n.text('checkout.summary.headline')}
       </Typography>
       <div className={classes.summary}>

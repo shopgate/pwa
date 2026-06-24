@@ -9,7 +9,6 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    lineHeight: '1.5rem',
     padding: theme.spacing(0, 2, 1, 2),
   },
   headerText: {

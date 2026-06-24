@@ -28,7 +28,6 @@ const useStyles = makeStyles()(theme => ({
     ':last-child': {
       paddingRight: 0,
     },
-    lineHeight: '1.625rem',
     fontWeight: theme.typography.fontWeightMedium,
   },
   statusColumn: {
@@ -42,13 +41,14 @@ const useStyles = makeStyles()(theme => ({
     ':last-child': {
       paddingRight: 0,
     },
-    lineHeight: '1.625rem',
   },
   quantityPickerDisabled: {
     padding: theme.spacing(0, 1),
     textAlign: 'center',
     fontSize: theme.typography.h3.fontSize,
-    lineHeight: '1.625rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     height: 28,
     width: '100%',
     fontWeight: theme.typography.fontWeightMedium,

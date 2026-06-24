@@ -49,8 +49,7 @@ const useStyles = makeStyles()(theme => ({
   input: {
     borderRadius: 10,
     width: '100%',
-    padding: '4px 10px 4px 30px',
-    lineHeight: '28px',
+    padding: '4px 10px 10px 30px',
     outline: 'none',
     background: theme.palette.grey.light,
     verticalAlign: 'middle',
@@ -72,7 +71,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
   },
   button: {
-    lineHeight: '34px',
+    height: 34,
     color: theme.palette.secondary.main,
     paddingTop: 0,
     paddingLeft: 16,

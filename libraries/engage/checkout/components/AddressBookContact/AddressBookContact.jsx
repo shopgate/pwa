@@ -12,7 +12,6 @@ const useStyles = makeStyles()(theme => ({
     padding: 16,
     fontWeight: theme.typography.fontWeightRegular,
     margin: 0,
-    lineHeight: '2.25rem',
   },
 }));
 

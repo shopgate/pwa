@@ -48,7 +48,6 @@ const useStyles = makeStyles()(theme => ({
   headline: {
     padding: 16,
     margin: 0,
-    lineHeight: '2.25rem',
   },
   button: {
     '&&': {

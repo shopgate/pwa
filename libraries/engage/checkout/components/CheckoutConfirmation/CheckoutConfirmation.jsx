@@ -55,7 +55,6 @@ const useStyles = makeStyles()(theme => ({
   heading: {
     fontWeight: theme.typography.fontWeightRegular,
     margin: 0,
-    lineHeight: '2.25rem',
     paddingBottom: theme.spacing(4),
   },
   instructions: {
@@ -63,11 +62,9 @@ const useStyles = makeStyles()(theme => ({
   },
   body: {
     border: 0,
-    lineHeight: '1.25rem',
   },
   orderNum: {
     padding: 0,
-    lineHeight: '1.5rem',
     margin: theme.spacing(0, 0, 2),
     border: 0,
   },

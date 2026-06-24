@@ -28,7 +28,6 @@ const useStyles = makeStyles()(theme => ({
     fontWeight: theme.typography.fontWeightMedium,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       fontSize: theme.typography.h3.fontSize,
-      lineHeight: '1.5rem',
     },
   },
   method: {

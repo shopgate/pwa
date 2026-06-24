@@ -10,12 +10,10 @@ import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    lineHeight: '16.5px',
     color: theme.palette.warning.main,
     width: '100%',
   },
   backInStockMessageContainer: {
-    lineHeight: '16.5px',
     display: 'flex',
     alignItems: 'center',
     width: 'auto',

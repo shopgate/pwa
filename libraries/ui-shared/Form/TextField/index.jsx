@@ -39,7 +39,6 @@ const useStyles = makeStyles()(theme => ({
     marginTop: 24,
     outline: 0,
     fontSize: theme.typography.body1.fontSize,
-    lineHeight: '19px',
   },
   multiLine: {
     position: 'relative',
@@ -50,7 +49,6 @@ const useStyles = makeStyles()(theme => ({
     outline: 0,
     height: 19,
     minHeight: 19,
-    lineHeight: '19px',
     verticalAlign: 'top',
   },
   element: {

@@ -14,13 +14,14 @@ import connect from './connector';
 
 const useStyles = makeStyles()((theme) => {
   const buttonProto = {
-    display: 'block',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     position: 'relative',
     background: theme.palette.common.white,
     borderRadius: '50%',
     padding: 0,
     fontSize: theme.components.icon.small,
-    lineHeight: 1,
     color: theme.palette.secondary.main,
     outline: 0,
   };

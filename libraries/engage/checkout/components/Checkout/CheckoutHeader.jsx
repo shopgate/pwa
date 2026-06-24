@@ -15,10 +15,8 @@ const useStyles = makeStyles()(theme => ({
   headline: {
     fontWeight: theme.typography.fontWeightRegular,
     margin: 0,
-    lineHeight: '2.25rem',
   },
   step: {
-    lineHeight: 1,
     paddingLeft: 16,
     margin: 0,
     paddingBottom: 2,

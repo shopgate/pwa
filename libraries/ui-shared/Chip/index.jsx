@@ -69,7 +69,6 @@ const useStyles = makeStyles()((theme, { removable, invert }) => ({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     display: 'block',
-    lineHeight: '1',
     color: 'inherit',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       fontSize: theme.typography.body2.fontSize,

@@ -27,7 +27,6 @@ const useStyles = makeStyles()(theme => ({
       color: theme.palette.primary.main,
       textDecoration: 'underline',
     },
-    lineHeight: '1.5rem',
     ' > *:not(:last-child)': {
       paddingBottom: theme.spacing(0.5),
       paddingTop: 0,
