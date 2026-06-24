@@ -32,7 +32,6 @@ import ProductGridPrice from '../ProductGridPrice';
 const useStyles = makeStyles()(theme => ({
   details: {
     padding: '12px 16px',
-    lineHeight: 1.35,
   },
   title: {
     fontWeight: theme.typography.fontWeightMedium,

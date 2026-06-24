@@ -9,8 +9,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
   priceWrapper: {
-    lineHeight: 1.75,
-    marginTop: 2,
+    marginTop: 4,
     alignItems: 'center',
   },
 });

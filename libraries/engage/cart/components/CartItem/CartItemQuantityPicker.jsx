@@ -12,7 +12,6 @@ const useStyles = makeStyles()(theme => ({
     background: theme.palette.background.emphasized,
     display: 'block',
     fontSize: theme.typography.caption.fontSize,
-    lineHeight: 1,
     textAlign: 'center',
     padding: theme.spacing(0.75, 1),
     outline: 0,

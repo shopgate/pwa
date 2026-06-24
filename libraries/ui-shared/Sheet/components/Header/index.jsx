@@ -39,6 +39,10 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     padding: theme.spacing(0, 2),
     alignSelf: 'center',
+    minWidth: 0,
+  },
+  titleText: {
+    minWidth: 0,
   },
   headerShadow: {
     boxShadow: '0 1px 6px rgba(0, 0, 0, .117647), 0 1px 4px rgba(0, 0, 0, .117647)',
@@ -81,7 +85,7 @@ const Header = ({
           role="heading"
           {...(allowClose ? { tabIndex: 0 } : null)}
         >
-          <Typography variant="h3" component="div" noWrap>
+          <Typography variant="h3" component="div" noWrap className={classes.titleText}>
             {title}
           </Typography>
         </Grid.Item>

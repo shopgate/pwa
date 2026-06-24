@@ -32,7 +32,6 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
     border: '1px solid transparent',
     borderRadius: 3,
-    lineHeight: 1,
     ':focus': {
       background: theme.components.input.background,
       textIndent: 0,

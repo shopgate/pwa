@@ -18,7 +18,6 @@ const useStyles = makeStyles()(theme => ({
     margin: '24px 0 0 0',
     outline: 0,
     fontSize: theme.typography.body1.fontSize,
-    lineHeight: '19px',
     zIndex: 10,
   },
   chevron: {

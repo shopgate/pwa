@@ -14,7 +14,6 @@ const useStyles = makeStyles()({
   error: {
     position: 'absolute',
     bottom: 2,
-    lineHeight: '14px',
     ...ellipsisLine,
   },
 });
