@@ -109,12 +109,18 @@ const walkObjectDeep = <Value, T = Record<string, unknown>>(
  */
 const getCssValue = (keys: string[], value: string | number) => {
   if (typeof value === 'number') {
-    if (['lineHeight', 'fontWeight', 'opacity', 'zIndex'].some(
-      prop => keys.some(key => key.includes(prop))
-    )) {
-      // CSS properties that are unitless. Match as substring so derived keys like
-      // `fontWeightBold`/`fontWeightMedium` are also treated as unitless (otherwise they would
-      // get a `px` unit, producing invalid values like `font-weight: 700px`).
+    if ([
+      'lineHeight',
+      'fontWeight',
+      'opacity',
+      'zIndex',
+      'fontSize',
+      'fontWeightLight',
+      'fontWeightRegular',
+      'fontWeightMedium',
+      'fontWeightBold',
+    ].some(prop => keys[keys.length - 1] === prop)) {
+      // CSS property that are unitless
       return value;
     }
 
@@ -194,7 +200,7 @@ export default function cssVarsParser<T extends object>(
   const vars: T = {} as T;
   const varsWithDefaults: T = {} as T;
   const varNames: T = {} as T;
-
+  console.warn('xxxx', theme);
   walkObjectDeep(
     theme,
     (keys, value, arrayKeys) => {
