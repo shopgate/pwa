@@ -16,7 +16,6 @@ const useStyles = makeStyles()(theme => ({
     color: theme.components.tabBar.badgeColor,
     display: 'flex',
     alignItems: 'center',
-    fontWeight: theme.typography.fontWeightBold,
     borderRadius: theme.components.tabBar.badgeBorderRadius,
     height: theme.spacing(2),
     top: theme.components.tabBar.badgeTop,
@@ -51,7 +50,7 @@ const FavoritesIconBadge = ({
     : favoritesCount;
 
   return (
-    <Typography variant="caption" component="div" className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge theme__badge')}>
+    <Typography variant="caption" component="div" fontWeight="bold" className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge theme__badge')}>
       {showCounter !== false ? number : ''}
     </Typography>
   );

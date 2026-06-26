@@ -12,7 +12,6 @@ const useStyles = makeStyles()(theme => ({
     color: theme.components.tabBar.badgeColor,
     display: 'flex',
     alignItems: 'center',
-    fontWeight: theme.typography.fontWeightBold,
     borderRadius: theme.components.tabBar.badgeBorderRadius,
     height: theme.spacing(2),
     top: theme.components.tabBar.badgeTop,
@@ -44,7 +43,7 @@ const CartItemBadge = (props) => {
   }
 
   return (
-    <Typography variant="caption" component="div" className={cx(classes.root, 'theme__tab-bar__cart-item-badge theme__badge')}>
+    <Typography variant="caption" component="div" fontWeight="bold" className={cx(classes.root, 'theme__tab-bar__cart-item-badge theme__badge')}>
       {cartProductCount}
     </Typography>
   );

@@ -12,7 +12,7 @@ import {
 } from '@shopgate/engage/components';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   root: {
     padding: 16,
     display: 'flex',
@@ -52,7 +52,6 @@ const useStyles = makeStyles()(theme => ({
   },
   name: {
     flex: 1,
-    fontWeight: theme.typography.fontWeightMedium,
   },
   button: {
     '&&:disabled': {
@@ -68,7 +67,7 @@ const useStyles = makeStyles()(theme => ({
   ripple: {
     padding: '8px 16px',
   },
-}));
+});
 
 /**
  * @returns {JSX}
@@ -82,7 +81,7 @@ const ProfileAddressCard = ({
   return (
     <Card className={classes.root}>
       <div className={classes.header}>
-        <Typography variant="h5" component="span" color="textPrimary" className={classes.name}>
+        <Typography variant="h5" component="span" color="textPrimary" fontWeight="medium" className={classes.name}>
           {contact.middleName
             ? `${contact.firstName} ${contact.middleName} ${contact.lastName}`
             : `${contact.firstName} ${contact.lastName}`}
@@ -99,7 +98,7 @@ const ProfileAddressCard = ({
       <div className={classes.body}>
         <div className={classes.column}>
           {!isCheckout && contact.emailAddress ? (
-            <Typography variant="body1" component="span" color="textSecondary">
+            <Typography component="span" color="textSecondary">
               {contact.emailAddress}
             </Typography>
           ) : null}
@@ -107,7 +106,7 @@ const ProfileAddressCard = ({
         contact.region ||
         contact.city ||
         contact.country ? (
-          <Typography variant="body1" component="span" color="textSecondary">
+          <Typography component="span" color="textSecondary">
             {i18n.text('checkout.billing.address', {
               postalCode: contact.postalCode || '',
               region: iso3166?.[contact.country]?.divisions?.[contact.region] || contact.region || '',
@@ -117,27 +116,27 @@ const ProfileAddressCard = ({
           </Typography>
             ) : null}
           {contact.address1 ? (
-            <Typography variant="body1" component="span" color="textSecondary">
+            <Typography component="span" color="textSecondary">
               {contact.address1}
             </Typography>
           ) : null}
           {contact.address2 ? (
-            <Typography variant="body1" component="span" color="textSecondary">
+            <Typography component="span" color="textSecondary">
               {contact.address2}
             </Typography>
           ) : null}
           {contact.address3 ? (
-            <Typography variant="body1" component="span" color="textSecondary">
+            <Typography component="span" color="textSecondary">
               {contact.address3}
             </Typography>
           ) : null}
           {contact.address4 ? (
-            <Typography variant="body1" component="span" color="textSecondary">
+            <Typography component="span" color="textSecondary">
               {contact.address4}
             </Typography>
           ) : null}
           {!isCheckout && contact.mobile ? (
-            <Typography variant="body1" component="span" color="textSecondary">
+            <Typography component="span" color="textSecondary">
               {contact.mobile}
             </Typography>
           ) : null}

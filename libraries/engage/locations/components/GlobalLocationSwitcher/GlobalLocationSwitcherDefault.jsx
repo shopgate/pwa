@@ -11,11 +11,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0, 2),
     flexShrink: 0,
   },
-  heading: {
-    color: theme.palette.text.secondary,
-  },
   name: {
-    fontWeight: theme.typography.fontWeightMedium,
     color: theme.palette.text.primary,
   },
   button: {
@@ -28,18 +24,18 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const GlobalLocationSwitcherDefault = ({ locationName, handleChange, editable }) => {
   const { classes } = useStyles();
 
   return (
     <div className={classes.wrapper}>
-      <Typography variant="body2" component="div" className={classes.heading}>
+      <Typography variant="body2" component="div" color="textSecondary">
         {i18n.text('locations.your_current_location.heading')}
       </Typography>
       <div>
-        <Typography variant="body2" component="span" className={classes.name}>
+        <Typography variant="body2" component="span" fontWeight="medium" className={classes.name}>
           {locationName}
         </Typography>
         <RippleButton

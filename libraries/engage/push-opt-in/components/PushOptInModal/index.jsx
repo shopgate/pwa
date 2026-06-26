@@ -26,7 +26,6 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
   },
   title: {
-    fontWeight: theme.typography.fontWeightBold,
     paddingTop: '30px',
     paddingBottom: '30px',
   },
@@ -120,6 +119,7 @@ const PushOptInModal = ({
           <Typography
             variant="h3"
             component="div"
+            fontWeight="bold"
             className={cx(classes.title, 'push-opt-in-modal__title')}
           >
             <I18n.Text

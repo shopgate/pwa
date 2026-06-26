@@ -30,9 +30,6 @@ const useStyles = makeStyles()(theme => ({
       content: '":"',
     },
   },
-  name: {
-    fontWeight: theme.typography.fontWeightMedium,
-  },
   button: {
     marginLeft: 'auto',
     letterSpacing: '0.05em',
@@ -47,7 +44,7 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FulfillmentSlotSwitcherBar = ({
   fulfillmentSlot, handleChange, standalone, editable,
@@ -60,7 +57,7 @@ const FulfillmentSlotSwitcherBar = ({
         <Typography variant="body2" component="span" className={classes.heading}>
           {i18n.text('locations.your_current_timeslot.heading')}
         </Typography>
-        <Typography variant="body2" component="span" className={classes.name}>
+        <Typography variant="body2" component="span" fontWeight="medium">
           {displayTime}
         </Typography>
         { editable && (

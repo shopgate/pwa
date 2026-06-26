@@ -16,9 +16,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(1, 1, 0, 0),
     flexShrink: 0,
   },
-  title: {
-    fontWeight: theme.typography.fontWeightBold,
-  },
 }));
 
 /**
@@ -40,7 +37,7 @@ export function CartItemGroupReservationLabel({ location, fulfillmentMethod }) {
         <LocationIcon />
       </div>
       <div>
-        <Typography variant="body2" component="div" className={classes.title}>
+        <Typography variant="body2" component="div" fontWeight="bold">
           {i18n.text(`locations.method.${suffix}`)}
         </Typography>
         <Typography variant="body2" component="div">{location.name}</Typography>

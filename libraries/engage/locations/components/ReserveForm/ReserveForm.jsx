@@ -19,7 +19,6 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   formHeading: {
-    fontWeight: theme.typography.fontWeightBold,
     margin: theme.spacing(0, 0, 1),
   },
   fieldset: {
@@ -189,7 +188,7 @@ function ReserveFormUnwrapped() {
             errorText={i18n.text(validationErrors.email)}
           />
         </fieldset>
-        <Typography variant="h4" component="p" className={classes.formHeading}>
+        <Typography variant="h4" component="p" fontWeight="bold" className={classes.formHeading}>
           {i18n.text('locations.who_will_pickup')}
         </Typography>
         <div className={classes.pickerSwitch}>

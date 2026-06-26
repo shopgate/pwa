@@ -53,7 +53,7 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
       }}
     >
       <div className={classes.root}>
-        <Typography variant="body1" component="span">
+        <Typography component="span">
           {i18n.text(`favorites.${type}_modal.message`)}
         </Typography>
         <TextField

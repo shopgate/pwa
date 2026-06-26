@@ -44,7 +44,6 @@ const mapDispatchToProps = dispatch => ({
 
 const useStyles = makeStyles()(theme => ({
   headline: {
-    fontWeight: theme.typography.fontWeightRegular,
     margin: theme.spacing(0, 0, 1, 0),
     marginLeft: 16,
     marginRight: 8,
@@ -165,7 +164,7 @@ const PaymentMethodProvider = ({
   return (
     <Context.Provider value={paymentMethodApi}>
       <div className={classes.section}>
-        <Typography variant="h3" component="h3" color="textPrimary" className={classes.headline}>
+        <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline}>
           {i18n.text('checkout.payment.title')}
         </Typography>
         <div className={classes.buttons}>

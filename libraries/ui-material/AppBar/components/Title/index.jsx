@@ -7,6 +7,8 @@ const useStyles = makeStyles()({
   root: {
     flexGrow: 1,
     padding: '0 16px',
+    display: 'flex',
+    alignItems: 'center',
   },
 });
 

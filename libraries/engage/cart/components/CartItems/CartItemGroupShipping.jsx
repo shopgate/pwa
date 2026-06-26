@@ -16,7 +16,6 @@ const useStyles = makeStyles()(theme => ({
     transform: 'rotateY(180deg)',
   },
   shippingTitle: {
-    fontWeight: theme.typography.fontWeightBold,
     padding: theme.spacing(1),
   },
 }));
@@ -35,7 +34,7 @@ export const CartItemGroupShipping = () => {
           <LocalShippingIcon />
         </div>
         <div>
-          <Typography variant="body2" component="div" className={classes.shippingTitle}>
+          <Typography variant="body2" component="div" fontWeight="bold" className={classes.shippingTitle}>
             {i18n.text('locations.method.direct_ship')}
           </Typography>
         </div>

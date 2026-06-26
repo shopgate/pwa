@@ -17,9 +17,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const useStyles = makeStyles()(theme => ({
-  title: {
-    fontWeight: theme.typography.fontWeightMedium,
-  },
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -62,7 +59,7 @@ const ProfileAddressBook = ({ push }) => {
 
   return (
     <div>
-      <Typography variant="h4" component="span" color="textPrimary" className={classes.title}>
+      <Typography variant="h4" component="div" color="textPrimary" gutterBottom fontWeight="medium">
         {i18n.text('account.profile.address_book.title')}
       </Typography>
       <div className={classes.container}>

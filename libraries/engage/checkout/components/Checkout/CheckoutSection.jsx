@@ -8,7 +8,6 @@ import { i18n } from '../../../core/helpers/i18n';
 
 const useStyles = makeStyles()(theme => ({
   headline: {
-    fontWeight: theme.typography.fontWeightRegular,
     margin: theme.spacing(0, 0, 1, 0),
     textTransform: 'none',
   },
@@ -81,7 +80,7 @@ const CheckoutSection = ({
   return (
     <>
       { title && (
-        <Typography variant="h3" component="h3" color="textPrimary" className={classes.headline} id={id}>
+        <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline} id={id}>
           {i18n.text(title)}
         </Typography>
       )}
@@ -111,7 +110,6 @@ const CheckoutSection = ({
                       <tr>
                         <td>
                           <Typography
-                            variant="body1"
                             component="span"
                             className={cx({
                               [classes.labelWithInfoIcon]: !!info,
@@ -125,7 +123,7 @@ const CheckoutSection = ({
                         </td>
                         <td>
                           {typeof text === 'string'
-                            ? <Typography variant="body1" component="span">{text}</Typography>
+                            ? <Typography component="span">{text}</Typography>
                             : text}
                         </td>
                       </tr>

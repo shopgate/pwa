@@ -108,32 +108,32 @@ const CheckoutAddress = ({ type }) => {
       >
         { address ? (
           <>
-            <Typography variant="body1" component="span">
+            <Typography component="span">
               {address.middleName?.length
                 ? `${address.firstName} ${address.middleName} ${address.lastName}`
                 : `${address.firstName} ${address.lastName}`}
             </Typography>
             { (type === ADDRESS_TYPE_BILLING && isGuestCheckout && orderReserveOnly) && (
               <>
-                <Typography variant="body1" component="span">{address.emailAddress}</Typography>
-                <Typography variant="body1" component="span">{address.mobile}</Typography>
+                <Typography component="span">{address.emailAddress}</Typography>
+                <Typography component="span">{address.mobile}</Typography>
               </>
             )}
-            <Typography variant="body1" component="span">{address.address1}</Typography>
+            <Typography component="span">{address.address1}</Typography>
             {address.address2?.length ? (
-              <Typography variant="body1" component="span">{address.address2}</Typography>
+              <Typography component="span">{address.address2}</Typography>
             ) : null}
             {address.address3?.length ? (
-              <Typography variant="body1" component="span">{address.address3}</Typography>
+              <Typography component="span">{address.address3}</Typography>
             ) : null}
             {address.address4?.length ? (
-              <Typography variant="body1" component="span">{address.address4}</Typography>
+              <Typography component="span">{address.address4}</Typography>
             ) : null}
             {address.postalCode ||
               address.region ||
               address.city ||
               address.country ? (
-                <Typography variant="body1" component="span">
+                <Typography component="span">
                   {i18n.text(`checkout.${type}.address`, {
                     postalCode: address.postalCode || '',
                     region: iso3166?.[address.country]?.divisions?.[address.region] || address.region || '',

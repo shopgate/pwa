@@ -69,7 +69,6 @@ const RadioItem = ({
         {...attributes}
       />
       <Typography
-        variant="body1"
         component="div"
         aria-hidden
         id={`${id || name}-label`}

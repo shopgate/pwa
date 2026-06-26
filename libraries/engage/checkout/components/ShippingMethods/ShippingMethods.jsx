@@ -41,7 +41,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0, 2, 4),
   },
   headline: {
-    fontWeight: theme.typography.fontWeightRegular,
     padding: theme.spacing(0, 1, 0, 0),
     margin: theme.spacing(0, 0, 1, 0),
     textTransform: 'none',
@@ -157,7 +156,7 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
   if (shippingMethods.length === 0) {
     return (
       <div className={classes.root}>
-        <Typography variant="h3" component="h3" color="textPrimary" className={classes.headline}>
+        <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline}>
           {i18n.text('checkout.shippingMethod.title')}
         </Typography>
 
@@ -175,7 +174,7 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h3" component="h3" color="textPrimary" className={classes.headline}>
+      <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline}>
         {i18n.text('checkout.shippingMethod.title')}
       </Typography>
       { shippingMethods.length === 1 ? (

@@ -63,7 +63,6 @@ const SelectContextChoices = ({
       rightElement={<Chevron className={classes.chevron} />}
     >
       <Typography
-        variant="body1"
         component="div"
         role="button"
         onClick={() => setOpened(true)}

@@ -44,7 +44,7 @@ export const FulfillmentPathItem = ({ name, children, ...rest }) => {
       className={classes.radioItem}
       label={(
         <div className={cx(classes.radioGroupLabel, classes.itemLabel)}>
-          <Typography variant="body1" component="span">
+          <Typography component="span">
             {i18n.text(name)}
           </Typography>
           {children}

@@ -11,9 +11,6 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'space-between',
     padding: theme.spacing(0, 2, 1, 2),
   },
-  headerText: {
-    fontWeight: theme.typography.fontWeightMedium,
-  },
   column: {
     display: 'flex',
     alignItems: 'center',
@@ -120,7 +117,7 @@ const CartItemsHeaderWide = ({
   return (
     <div className={classes.header}>
       <div className={classes.imageColumn}>
-        <Typography variant="body1" component="span" className={classes.headerText}>
+        <Typography component="span" fontWeight="medium">
           <I18n.Text string="cart.items" />
         </Typography>
       </div>
@@ -129,7 +126,7 @@ const CartItemsHeaderWide = ({
         [classes.priceColumnWide]: hasLineItemPromotions,
       })}
       >
-        <Typography variant="body1" component="span" className={classes.headerText}>
+        <Typography component="span" fontWeight="medium">
           <I18n.Text string="cart.price" />
         </Typography>
       </div>
@@ -137,18 +134,18 @@ const CartItemsHeaderWide = ({
       <>
         {!isDirectShipOnly ? (
           <div className={classes.locationColumn}>
-            <Typography variant="body1" component="span" className={classes.headerText}>
+            <Typography component="span" fontWeight="medium">
               <I18n.Text string="cart.location" />
             </Typography>
           </div>
         ) : null}
         <div className={classes.column}>
-          <Typography variant="body1" component="span" className={classes.headerText}>
+          <Typography component="span" fontWeight="medium">
             <I18n.Text string="cart.status" />
           </Typography>
         </div>
         <div className={classes.column}>
-          <Typography variant="body1" component="span" className={classes.headerText}>
+          <Typography component="span" fontWeight="medium">
             <I18n.Text string="cart.fulfilled_quantity" />
           </Typography>
         </div>
@@ -158,12 +155,12 @@ const CartItemsHeaderWide = ({
         ? classes.quantityPickerColumn
         : classes.quantityPickerColumnNotEditable}
       >
-        <Typography variant="body1" component="span" className={classes.headerText}>
+        <Typography component="span" fontWeight="medium">
           <I18n.Text string={isOrderDetails ? 'cart.ordered_quantity' : 'cart.quantity'} />
         </Typography>
       </div>
       <div className={classes.column}>
-        <Typography variant="body1" component="span" className={classes.headerText}>
+        <Typography component="span" fontWeight="medium">
           <I18n.Text string="cart.subtotal" />
         </Typography>
       </div>

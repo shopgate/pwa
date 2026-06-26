@@ -6,7 +6,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   root: {
     marginTop: 8,
-    fontWeight: theme.typography.fontWeightLight,
     padding: '0 1rem 1rem',
   },
   link: {
@@ -35,7 +34,7 @@ const ReviewsInfo = () => {
   }
 
   return (
-    <Typography variant="body2" component="div" align="center" className={cx(classes.root, 'engage__reviews__review_info_text')}>
+    <Typography variant="body2" component="div" align="center" fontWeight="light" className={cx(classes.root, 'engage__reviews__review_info_text')}>
       <div>
         {text}
         { linkText && linkUrl && (

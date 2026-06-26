@@ -67,7 +67,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
               className="sg-wy4z7j-label label"
               component="div"
               id="foo-label"
-              variant="body1"
+               
             >
               <div
                 aria-hidden={true}
@@ -161,7 +161,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               className="sg-wy4z7j-label label"
               component="div"
               id="foo-label"
-              variant="body1"
+               
             >
               <div
                 aria-hidden={true}
@@ -213,7 +213,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               className="sg-wy4z7j-label label"
               component="div"
               id="bar-label"
-              variant="body1"
+               
             >
               <div
                 aria-hidden={true}
@@ -307,7 +307,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
               className="sg-wy4z7j-label label"
               component="div"
               id="foo-label"
-              variant="body1"
+               
             >
               <div
                 aria-hidden={true}
@@ -442,7 +442,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
               className="sg-wy4z7j-label label"
               component="div"
               id="foo-label"
-              variant="body1"
+               
             >
               <div
                 aria-hidden={true}
@@ -536,7 +536,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
               className="sg-wy4z7j-label label"
               component="div"
               id="foo-label"
-              variant="body1"
+               
             >
               <div
                 aria-hidden={true}

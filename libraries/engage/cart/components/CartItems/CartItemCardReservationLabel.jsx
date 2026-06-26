@@ -25,7 +25,6 @@ const useStyles = makeStyles()(theme => ({
     paddingRight: theme.spacing(4),
   },
   name: {
-    fontWeight: theme.typography.fontWeightMedium,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       fontSize: theme.typography.h3.fontSize,
     },
@@ -56,7 +55,7 @@ export function CartItemCardReservationLabel({ location, fulfillmentMethod }) {
         <LocationIcon />
       </div>
       <div className={classes.titles}>
-        <Typography variant="body2" component="div" className={classes.name}>
+        <Typography variant="body2" component="div" fontWeight="medium" className={classes.name}>
           {location.name}
         </Typography>
         {isEditable && (

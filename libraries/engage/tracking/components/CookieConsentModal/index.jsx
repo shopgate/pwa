@@ -26,7 +26,6 @@ const useStyles = makeStyles()(theme => ({
     textAlign: 'center',
   },
   title: {
-    fontWeight: theme.typography.fontWeightBold,
     paddingTop: '30px',
     paddingBottom: '30px',
   },
@@ -140,6 +139,7 @@ const CookieConsentModal = ({
           <Typography
             variant="h3"
             component="div"
+            fontWeight="bold"
             className={cx(classes.title, 'cookie-consent-modal__title')}
             id="cookieConsentDialogTitle"
           >

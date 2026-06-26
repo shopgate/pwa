@@ -158,7 +158,7 @@ const RANGES = {
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FulfillmentSlotSheet = ({
   isOpen,
@@ -306,7 +306,7 @@ const FulfillmentSlotSheet = ({
                     }
                   )}
                 >
-                  <Typography variant="body1" component="span" className={classes.buttonLabelSlot}>
+                  <Typography component="span" className={classes.buttonLabelSlot}>
                     {getRange(slot.from, slot.to)}
                   </Typography>
                   {slot.status !== 'active' ? (

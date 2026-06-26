@@ -10,7 +10,6 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   heading: {
-    fontWeight: theme.typography.fontWeightBold,
     margin: theme.spacing(1, 0, 2.5),
   },
   body: {
@@ -22,16 +21,16 @@ const useStyles = makeStyles()(theme => ({
 
 /**
  * Renders the reservation error screen.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 export function ReservationError() {
   const { classes } = useStyles();
   return (
     <div className={classes.container}>
-      <Typography variant="h4" component="h2" className={classes.heading}>
+      <Typography variant="h4" component="h2" fontWeight="bold" className={classes.heading}>
         {i18n.text('locations.error_title')}
       </Typography>
-      <Typography variant="body1" component="p" className={classes.body}>
+      <Typography component="p" className={classes.body}>
         {i18n.text('locations.error_copy')}
       </Typography>
     </div>

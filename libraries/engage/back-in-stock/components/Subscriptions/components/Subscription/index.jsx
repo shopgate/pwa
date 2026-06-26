@@ -54,7 +54,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0.5, 0),
   },
   title: {
-    fontWeight: theme.typography.fontWeightBold,
     flexWrap: 'wrap',
     overflowWrap: 'anywhere',
   },
@@ -111,6 +110,7 @@ const Subscription = ({
             <Typography
               variant="h4"
               component="span"
+              fontWeight="bold"
               className={classes.title}
               dangerouslySetInnerHTML={{ __html: `${product.name}` }}
             />

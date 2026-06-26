@@ -4,7 +4,7 @@ import { Typography } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useProfileContext } from './Profile.provider';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   root: {
     marginTop: 8,
     [responsiveMediaQuery('<md')]: {
@@ -12,10 +12,7 @@ const useStyles = makeStyles()(theme => ({
       marginBottom: 16,
     },
   },
-  title: {
-    fontWeight: theme.typography.fontWeightMedium,
-  },
-}));
+});
 
 /**
  * @returns {JSX}
@@ -26,7 +23,7 @@ const ProfileHeader = () => {
 
   return (
     <div className={classes.root}>
-      <Typography variant="h4" component="span" color="textPrimary" className={classes.title}>
+      <Typography variant="h4" component="span" color="textPrimary" fontWeight="medium">
         {i18n.text('account.profile.customer.number', { customerNumber: internalCustomerNumber })}
       </Typography>
     </div>

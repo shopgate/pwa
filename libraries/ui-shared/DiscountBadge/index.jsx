@@ -11,7 +11,6 @@ const useStyles = makeStyles()((theme) => {
     color: theme.contrastColor(theme.components.discountBadge.background),
     padding: 5,
     width: '100%',
-    fontWeight: theme.typography.fontWeightBold,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -59,6 +58,7 @@ const DiscountBadge = ({
       <Typography
         variant="caption"
         align="center"
+        fontWeight="bold"
         className={cx(displayClass, className, 'theme__discount-badge')}
         aria-hidden
       >

@@ -12,10 +12,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0, 2),
     flexShrink: 0,
   },
-  name: {
-    fontWeight: theme.typography.fontWeightMedium,
-    color: theme.palette.text.primary,
-  },
   button: {
     letterSpacing: '0.05em',
     padding: `${theme.spacing(0.375, 0)} !important`,
@@ -26,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FulfillmentSlotSwitcherDefault = ({ handleChange, fulfillmentSlot, editable }) => {
   const { classes } = useStyles();
@@ -38,7 +34,7 @@ const FulfillmentSlotSwitcherDefault = ({ handleChange, fulfillmentSlot, editabl
         {i18n.text('locations.your_current_timeslot.heading')}
       </Typography>
       <div>
-        <Typography variant="body2" component="span" className={classes.name}>
+        <Typography variant="body2" component="span" color="textPrimary" fontWeight="medium">
           {displayTime}
         </Typography>
         <RippleButton

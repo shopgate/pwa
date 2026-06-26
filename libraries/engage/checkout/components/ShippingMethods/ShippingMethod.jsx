@@ -54,10 +54,10 @@ const ShippingMethod = ({ shippingMethod }) => {
         ) : <ShippingMethodIcon className={classes.image} />}
       </div>
       <div className={classes.label}>
-        <Typography variant="body1" component="span" className={classes.name}>
+        <Typography component="span" className={classes.name}>
           {serviceLevel?.name}
         </Typography>
-        <Typography variant="body1" component="span">
+        <Typography component="span">
           { serviceLevel?.cost ? (
             i18n.price(serviceLevel?.cost, currencyCode, 2)
           ) : (

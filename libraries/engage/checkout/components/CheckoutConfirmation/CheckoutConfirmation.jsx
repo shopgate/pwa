@@ -53,7 +53,6 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   heading: {
-    fontWeight: theme.typography.fontWeightRegular,
     margin: 0,
     paddingBottom: theme.spacing(4),
   },
@@ -139,7 +138,7 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
           <ResponsiveBackButton label="checkout.success.continue" onClick={onContinueShopping} />
         </div>
         <div className={classes.container}>
-          <Typography variant="h1" component="h2" className={classes.heading}>
+          <Typography variant="h1" component="h2" fontWeight="regular" className={classes.heading}>
             {i18n.text('checkout.success.title')}
           </Typography>
           <Typography variant="h3" component="p" className={classes.orderNum}>

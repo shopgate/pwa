@@ -11,7 +11,6 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   heading: {
-    fontWeight: theme.typography.fontWeightBold,
     margin: theme.spacing(1, 0, 2.5),
   },
   body: {
@@ -21,7 +20,6 @@ const useStyles = makeStyles()(theme => ({
   },
   orderNum: {
     padding: 0,
-    fontWeight: theme.typography.fontWeightBold,
     margin: theme.spacing(0, 0, 2),
     border: 0,
   },
@@ -37,17 +35,17 @@ export function ReservationSuccess() {
 
   return (
     <div className={classes.container}>
-      <Typography variant="h4" component="h2" className={classes.heading}>
+      <Typography variant="h4" component="h2" fontWeight="bold" className={classes.heading}>
         {i18n.text('locations.success_title')}
       </Typography>
-      <Typography variant="body1" component="p" className={classes.body}>
+      <Typography component="p" className={classes.body}>
         {i18n.text('locations.success_copy')}
       </Typography>
-      <Typography variant="body1" component="p" className={classes.body}>
+      <Typography component="p" className={classes.body}>
         {i18n.text('locations.success_order_num')}
       </Typography>
       {orderNumbers !== null && (
-        <Typography variant="h3" component="p" className={classes.orderNum}>
+        <Typography variant="h3" component="p" fontWeight="bold" className={classes.orderNum}>
           {orderNumbers[0]}
         </Typography>
       )}

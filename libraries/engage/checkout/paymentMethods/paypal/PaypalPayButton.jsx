@@ -13,13 +13,12 @@ import { i18n } from '../../../core/helpers/i18n';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   headline: {
-    fontWeight: theme.typography.fontWeightRegular,
     margin: '12px 0 12px 0',
     textTransform: 'none',
   },
-}));
+});
 
 /**
  * Paypal Pay button
@@ -118,7 +117,7 @@ const PaypalPayButton = ({
 
   return (
     <>
-      <Typography variant="h3" component="h3" color="textPrimary" className={classes.headline}>
+      <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline}>
         {i18n.text('checkout.finalizePayment')}
       </Typography>
       <div ref={button} />

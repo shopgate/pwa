@@ -10,7 +10,6 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
-      fontWeight: theme.typography.fontWeightRegular,
       paddingBottom: theme.spacing(2),
       padding: theme.spacing(2, 2, 0),
     },
@@ -31,7 +30,7 @@ const OrderDetailsContent = () => {
   return (
     <>
       { (showForm || order || errorMessage) && (
-        <Typography variant="h1" component="div" className={classes.headline}>
+        <Typography variant="h1" component="div" fontWeight="regular" className={classes.headline}>
           <I18n.Text string="titles.order_details" />
         </Typography>
       )}

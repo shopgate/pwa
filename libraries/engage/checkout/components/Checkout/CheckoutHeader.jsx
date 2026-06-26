@@ -5,7 +5,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core/helpers/i18n';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   title: {
     padding: 16,
     display: 'flex',
@@ -13,7 +13,6 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'flex-end',
   },
   headline: {
-    fontWeight: theme.typography.fontWeightRegular,
     margin: 0,
   },
   step: {
@@ -21,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
     paddingBottom: 2,
   },
-}));
+});
 
 /**
  * CheckoutSection component
@@ -36,11 +35,11 @@ const CheckoutTitle = ({
     <ResponsiveContainer webOnly breakpoint=">xs">
       <ResponsiveBackButton />
       <div className={classes.title}>
-        <Typography variant="h1" component="h1" className={classes.headline}>
+        <Typography variant="h1" component="h1" fontWeight="regular" className={classes.headline}>
           {i18n.text(headline)}
         </Typography>
         {stepFrom !== null ? (
-          <Typography variant="body1" component="h2" color="secondary" className={classes.step}>
+          <Typography component="h2" color="secondary" className={classes.step}>
             {i18n.text('checkout.steps', {
               from: stepFrom,
               to: stepTo,

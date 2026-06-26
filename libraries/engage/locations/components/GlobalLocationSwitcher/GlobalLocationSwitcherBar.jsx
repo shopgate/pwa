@@ -26,9 +26,6 @@ const useStyles = makeStyles()(theme => ({
   heading: {
     paddingRight: theme.spacing(1),
   },
-  name: {
-    fontWeight: theme.typography.fontWeightMedium,
-  },
   button: {
     marginLeft: 'auto',
     letterSpacing: '0.05em',
@@ -55,7 +52,7 @@ const GlobalLocationSwitcherBar = ({ locationName, handleChange, standalone }) =
           <Typography variant="body2" component="span" className={classes.heading}>
             {`${i18n.text('locations.your_current_location.heading')}:`}
           </Typography>
-          <Typography variant="body2" component="span" className={classes.name}>
+          <Typography variant="body2" component="span" fontWeight="medium">
             {locationName}
           </Typography>
         </span>

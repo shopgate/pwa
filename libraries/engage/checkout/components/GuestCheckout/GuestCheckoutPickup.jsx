@@ -46,13 +46,13 @@ const GuestCheckoutPickup = () => {
         title={headline}
         editLink={`${GUEST_CHECKOUT_PATTERN}?edit=${ADDRESS_TYPE_PICKUP}`}
       >
-        <Typography variant="body1" component="span">
+        <Typography component="span">
           {pickupAddress.middleName?.length
             ? `${pickupAddress.firstName} ${pickupAddress.middleName} ${pickupAddress.lastName}`
             : `${pickupAddress.firstName} ${pickupAddress.lastName}`}
         </Typography>
-        <Typography variant="body1" component="span">{pickupAddress.emailAddress}</Typography>
-        <Typography variant="body1" component="span">{pickupAddress.mobile}</Typography>
+        <Typography component="span">{pickupAddress.emailAddress}</Typography>
+        <Typography component="span">{pickupAddress.mobile}</Typography>
       </Section>
     </div>
   );

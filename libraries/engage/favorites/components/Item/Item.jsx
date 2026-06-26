@@ -160,9 +160,6 @@ const useStyles = makeStyles()(theme => ({
     marginRight: 10,
     flex: 1,
   },
-  title: {
-    fontWeight: theme.typography.fontWeightBold,
-  },
   removeContainer: {
     display: 'flex',
     flexShrink: 0,
@@ -341,7 +338,7 @@ const FavoriteItem = ({
                     <Typography
                       variant="h5"
                       component="span"
-                      className={classes.title}
+                      fontWeight="bold"
                       dangerouslySetInnerHTML={{ __html: `${product.name}` }}
                     />
                   </TextLink>

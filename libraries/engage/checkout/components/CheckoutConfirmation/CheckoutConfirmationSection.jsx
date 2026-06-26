@@ -33,7 +33,6 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
   },
   listTitle: {
-    fontWeight: theme.typography.fontWeightBold,
     letterSpacing: '1.5px',
     textTransform: 'uppercase',
     ':not(:first-of-type)': {
@@ -85,7 +84,6 @@ const CheckoutConfirmationSegment = ({
   return (
     <div className={cx(classes.wrapper, className)}>
       <Typography
-        variant="body1"
         component="h3"
         className={classes.headline}
       >
@@ -105,7 +103,7 @@ const CheckoutConfirmationSegment = ({
             {content.map(({ label, text, link }) => (
               <Fragment key={label || text}>
                 {label && (
-                <Typography variant="caption" component="dt" color="textPrimary" className={classes.listTitle}>
+                <Typography variant="caption" component="dt" color="textPrimary" fontWeight="bold" className={classes.listTitle}>
                   {i18n.text(label)}
                 </Typography>
                 )}

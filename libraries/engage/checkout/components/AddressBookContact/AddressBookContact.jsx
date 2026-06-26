@@ -7,13 +7,12 @@ import ProfileContact from '../../../account/components/ProfileContact';
 import AddressBookProvider from '../../providers/AddressBookProvider';
 import { ADDRESS_TYPE_BILLING } from '../../constants';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   headline: {
     padding: 16,
-    fontWeight: theme.typography.fontWeightRegular,
     margin: 0,
   },
-}));
+});
 
 /**
  * AddressBookContact
@@ -31,7 +30,7 @@ const AddressBookContact = () => {
     <>
       <ResponsiveContainer webOnly breakpoint=">xs">
         <ResponsiveBackButton />
-        <Typography variant="h1" component="h1" className={classes.headline}>
+        <Typography variant="h1" component="h1" fontWeight="regular" className={classes.headline}>
           {title}
         </Typography>
       </ResponsiveContainer>

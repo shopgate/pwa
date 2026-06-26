@@ -10,7 +10,6 @@ const useStyles = makeStyles()(theme => ({
     position: 'absolute',
     display: 'flex',
     alignItems: 'center',
-    fontWeight: theme.typography.fontWeightBold,
     background: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
     borderRadius: theme.spacing(1),
@@ -43,7 +42,7 @@ const CartButtonBadge = ({ count, style }) => {
   const productCount = count > CART_MAX_ITEMS ? `${CART_MAX_ITEMS}+` : count;
 
   return (
-    <Typography variant="caption" component="div" style={badgeStyle} className={cx(classes.root, 'theme__app-bar__cart-button-badge theme__badge')} data-test-id="badge">
+    <Typography variant="caption" component="div" style={badgeStyle} fontWeight="bold" className={cx(classes.root, 'theme__app-bar__cart-button-badge theme__badge')} data-test-id="badge">
       {productCount}
     </Typography>
   );

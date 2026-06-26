@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   root: {
-    fontWeight: theme.typography.fontWeightBold,
     flexGrow: 1,
     lineHeight: '44px',
     left: 90,
@@ -13,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     right: 90,
     top: 0,
   },
-}));
+});
 
 /**
  * The AppBarTitle component.
@@ -33,6 +32,7 @@ const AppBarTitle = ({ title }) => {
       component="div"
       noWrap
       align="center"
+      fontWeight="bold"
       className={cx(classes.root, 'theme__app-bar__title')}
       role="heading"
       aria-level="1"

@@ -10,9 +10,8 @@ import { PRODUCT_NAME } from '@shopgate/engage/product/constants';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   name: {
-    fontWeight: theme.typography.fontWeightBold,
     marginBottom: 2,
     marginRight: 72,
     wordBreak: 'break-word',
@@ -23,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     height: 24,
     marginTop: 5,
   },
-}));
+});
 
 /**
  * The Product Name component.
@@ -35,7 +34,7 @@ const Content = ({ longName, name }) => {
 
   return (
 
-    <Typography variant="h3" component="div" className={cx(classes.name, 'product-name')} role="heading">
+    <Typography variant="h3" component="div" fontWeight="bold" className={cx(classes.name, 'product-name')} role="heading">
       {/* This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects */}
       { isBeta()
