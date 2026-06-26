@@ -62,7 +62,7 @@ const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabe
             )}
             { !isLast ? (
               <Typography
-                variant="h5"
+                fontWeight="medium"
                 component="span"
                 className={cx(classes.priceStriked, customClasses?.priceStriked)}
               >
@@ -72,7 +72,7 @@ const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabe
                 />
               </Typography>
             ) : (
-              <Typography variant="h5" component="span" className={cx(classes.price, customClasses?.price)}>
+              <Typography fontWeight="medium" component="span" className={cx(classes.price, customClasses?.price)}>
                 <Price
                   unitPrice={price}
                   currency={currency}

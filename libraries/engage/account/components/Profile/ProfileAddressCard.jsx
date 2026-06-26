@@ -81,7 +81,7 @@ const ProfileAddressCard = ({
   return (
     <Card className={classes.root}>
       <div className={classes.header}>
-        <Typography variant="h5" component="span" color="textPrimary" fontWeight="medium" className={classes.name}>
+        <Typography component="span" color="textPrimary" fontWeight="medium" className={classes.name}>
           {contact.middleName
             ? `${contact.firstName} ${contact.middleName} ${contact.lastName}`
             : `${contact.firstName} ${contact.lastName}`}

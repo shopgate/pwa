@@ -23,7 +23,7 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 export const CartItemCouponPrice = React.memo(({ currency, savedPrice }) => {
   if (savedPrice.type === COUPON_TYPE_FIXED) {
     return (
-      <Typography variant="h5" component="span" color="primary">
+      <Typography fontWeight="medium" component="span" color="primary">
         <Price
           currency={currency}
           discounted
@@ -35,7 +35,7 @@ export const CartItemCouponPrice = React.memo(({ currency, savedPrice }) => {
 
   if (savedPrice.type === COUPON_TYPE_PERCENTAGE) {
     return (
-      <Typography variant="h5" component="span" color="primary">
+      <Typography fontWeight="medium" component="span" color="primary">
         {`-${savedPrice.value}%`}
       </Typography>
     );
