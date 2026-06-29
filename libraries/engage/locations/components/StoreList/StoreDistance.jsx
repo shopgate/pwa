@@ -19,7 +19,7 @@ export function StoreDistance({ distance = null, unitSystem = UNIT_SYSTEM_METRIC
   }
 
   return (
-    <Typography variant="body2" component="span" color="textSecondary" nowrap>
+    <Typography variant="body2" component="span" color="textSecondary" noWrap>
       {formatDistance(distance, unitSystem === UNIT_SYSTEM_IMPERIAL)}
     </Typography>
   );
