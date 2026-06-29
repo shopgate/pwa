@@ -26,7 +26,6 @@ const useStyles = makeStyles()((theme) => {
   });
 
   const containerBase = {
-    background: theme.palette.background.emphasized,
     display: 'flex',
     flexDirection: 'column',
     flexShrink: 0,
