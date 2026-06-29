@@ -276,7 +276,7 @@ const Login = ({
                   </div>
                 )}
               />
-              <Typography variant="caption" align="right" className={classes.forgotWrapper}>
+              <Typography variant="caption" align="right" component="div" className={classes.forgotWrapper}>
                 <ForgotPassword />
               </Typography>
               <div className={classes.buttonWrapper} data-test-id="LoginButton">
