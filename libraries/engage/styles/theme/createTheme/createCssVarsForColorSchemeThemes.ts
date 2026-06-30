@@ -71,7 +71,7 @@ export default function createCssVarsForColorSchemeThemes(
     } = cssVarsColorAugmentation(cssVarsParser<BaseTheme>(rest, {
       prefix: cssVarPrefix,
       // @ts-expect-error - We are sure about the type here
-    }), rest);
+    }), rest, cssVarPrefix);
 
     // Resolve component token values to actual CSS variable references
     const resolvedComponents = flattenComponentVars(resolveComponentsValues(componentsInput, vars));
