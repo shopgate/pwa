@@ -1,4 +1,5 @@
 import merge from 'lodash/merge';
+import omit from 'lodash/omit';
 import type { CSSInterpolation } from 'tss-react';
 import { cssVarsParser, cssVarsColorAugmentation } from './helpers';
 import type { GetColorSchemeSelector } from './helpers';
@@ -113,10 +114,29 @@ export default function createCssVarsForColorSchemeThemes(
     }
   });
 
+  // Keep `components`, but remove each nested `vars` object because those raw values
+  // should not leak into the final cssVars theme object.
+  const componentsWithoutVars = Object
+    .entries(colorSchemes.light.components || {})
+    .reduce((acc, [key, value]) => {
+      if (value && typeof value === 'object') {
+        acc[key] = omit(value, ['vars']);
+        return acc;
+      }
+
+      acc[key] = value;
+      return acc;
+    }, {} as Record<string, unknown>);
+
+  const lightSchemeWithoutComponentVars = {
+    ...colorSchemes.light,
+    components: componentsWithoutVars,
+  };
+
   return {
     cssVarsTheme: merge(
       {},
-      colorSchemes.light,
+      lightSchemeWithoutComponentVars,
       colorSchemeMap.light.vars,
       { vars: colorSchemeMap.light.varNames }
     ),
