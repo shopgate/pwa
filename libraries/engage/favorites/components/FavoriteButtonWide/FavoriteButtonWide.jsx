@@ -79,7 +79,7 @@ const FavoriteButtonWide = ({
       type="primary"
       onClick={() => toggle(productId)}
     >
-      <Typography variant="body2" component="span" color="textPrimary">
+      <Typography variant="body2" component="span" color="textPrimary" fontWeight="bold">
         { i18n.text(label) }
       </Typography>
     </RippleButton>

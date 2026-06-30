@@ -160,7 +160,7 @@ const ProfileAddressCard = ({
               disabled={selected}
               onClick={selectContact}
             >
-              <Typography variant="body2" component="span">
+              <Typography variant="body2" component="span" fontWeight="bold">
                 {i18n.text(`account.profile.address_book.${selected ? 'selected' : 'select'}`)}
               </Typography>
             </RippleButton>

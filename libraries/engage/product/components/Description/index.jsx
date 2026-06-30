@@ -62,7 +62,7 @@ function Description({ html, navigate, ...props }) {
     >
       {(html !== '') && (
         <div className={cx(classes.container, 'engage__product__description')}>
-          <Typography variant="h5" component="div" fontWeight="medium" className={cx(classes.title, 'theme__description_heading')}>
+          <Typography variant="h5" component="div" className={cx(classes.title, 'theme__description_heading')}>
             <I18n.Text string="product.description_heading" />
           </Typography>
           <PlaceholderParagraph className={classes.placeholder} ready={!!html}>

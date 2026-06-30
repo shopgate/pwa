@@ -36,7 +36,7 @@ const StoreFinderGetDirectionsButton = ({ address, openMap, className }) => {
         onClick={handleClick}
         className={classes.button}
       >
-        <Typography variant="body2" component="span">
+        <Typography variant="body2" component="span" fontWeight="bold">
           {i18n.text('locations.get_directions')}
         </Typography>
       </RippleButton>

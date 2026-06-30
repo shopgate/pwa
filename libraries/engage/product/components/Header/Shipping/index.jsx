@@ -11,14 +11,17 @@ import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   placeholder: {
     height: 16,
     width: '70%',
     marginTop: 5,
     marginBottom: 2,
   },
-});
+  shipping: {
+    fontSize: theme.typography.body2.fontSize,
+  },
+}));
 
 /**
  * The Shipping Info component.
@@ -26,7 +29,7 @@ const useStyles = makeStyles()({
  * @return {JSX}
  */
 const Shipping = ({ shipping }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <>
@@ -34,7 +37,7 @@ const Shipping = ({ shipping }) => {
       <Portal name={PRODUCT_SHIPPING}>
         <PlaceholderLabel className={classes.placeholder} ready={(shipping !== null)}>
           {shipping && typeof shipping.price !== 'undefined' && shipping.price !== null && (
-            <Label className="engage__product__header__shipping" price={shipping.price} currency={shipping.currency} />
+            <Label className={cx(classes.shipping, 'engage__product__header__shipping')} price={shipping.price} currency={shipping.currency} />
           )}
         </PlaceholderLabel>
       </Portal>

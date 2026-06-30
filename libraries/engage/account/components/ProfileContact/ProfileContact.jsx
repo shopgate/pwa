@@ -194,7 +194,7 @@ const ProfileContact = ({
           type="primary"
           onClick={formState.handleSubmit}
         >
-          <Typography variant="body2" component="span">
+          <Typography variant="body2" component="span" fontWeight="bold">
             {i18n.text('account.profile.form.save')}
           </Typography>
         </RippleButton>

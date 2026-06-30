@@ -89,7 +89,7 @@ const StoreFinderLocationHeader = () => {
         <Grid>
           <Grid.Item grow={1}>
             <div className={classes.storeNameWrapper}>
-              <Typography variant="h4" component="div" color="textPrimary">
+              <Typography variant="body1" component="div" color="textPrimary" fontWeight="medium">
                 { name }
               </Typography>
               {isSelectedLocation && (
@@ -97,7 +97,7 @@ const StoreFinderLocationHeader = () => {
                   <div className={classes.myStoreIcon}>
                     <LocationIcon size={20} />
                   </div>
-                  <Typography variant="h4" component="div" color="primary">
+                  <Typography variant="body1" component="div" color="primary" fontWeight="medium">
                     {i18n.text('location.myStore')}
                   </Typography>
                 </div>

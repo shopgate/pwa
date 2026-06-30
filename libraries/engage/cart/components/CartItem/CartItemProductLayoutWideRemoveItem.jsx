@@ -31,7 +31,7 @@ const CartItemProductLayoutWideRemoveItem = () => {
       type="secondary"
       flat
     >
-      <Typography variant="body2" component="span">
+      <Typography variant="body2" component="span" fontWeight="bold">
         <I18n.Text string="cart.remove_item" />
       </Typography>
     </RippleButton>

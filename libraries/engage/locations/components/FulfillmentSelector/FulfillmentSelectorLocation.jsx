@@ -21,6 +21,7 @@ import FulfillmentSelectorAlternativeLocation from './FulfillmentSelectorAlterna
 
 const useStyles = makeStyles()(theme => ({
   container: {
+    fontSize: theme.typography.caption.fontSize,
     padding: theme.spacing(0, 2, 1, 6),
     marginTop: theme.spacing(-1),
     flexDirection: 'column',
@@ -120,7 +121,7 @@ export function FulfillmentSelectorLocation() {
             <Grid component="div">
               <ResponsiveContainer appAlways breakpoint="xs">
                 <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
-                  <Typography variant="body2" component="div" color="textSecondary">
+                  <Typography variant="caption" component="div" color="textSecondary">
                     {usedLocation.name}
                   </Typography>
                 </Grid.Item>
@@ -130,7 +131,7 @@ export function FulfillmentSelectorLocation() {
               </ResponsiveContainer>
               <ResponsiveContainer webOnly breakpoint=">xs">
                 <div>
-                  <Typography variant="body2" component="div" color="textSecondary">
+                  <Typography variant="caption" component="div" color="textSecondary">
                     {usedLocation.name}
                   </Typography>
                 </div>
@@ -146,13 +147,13 @@ export function FulfillmentSelectorLocation() {
           </Grid>
         )}
         {(isRopeMethodEnabled && selected && !isOrderable) && (
-          <Typography variant="body2" component="div" className={classes.container}>
-            <Typography variant="body2" component="div" color="textSecondary">
+          <div className={classes.container}>
+            <Typography variant="caption" component="div" color="textSecondary">
               {usedLocation?.name || ''}
             </Typography>
             <FulfillmentSelectorImpossibleError />
             <ChangeLocationButton onClick={handleChangeLocation} />
-          </Typography>
+          </div>
         )}
         {/* eslint-disable-next-line no-constant-condition */}
         {false && !isRopeMethodEnabled ? (

@@ -58,7 +58,7 @@ const ItemNotes = ({
     <div className={classes.root}>
       {notes && (
         <span>
-          <Typography variant="h4" component="span" color="textPrimary" noWrap>
+          <Typography variant="body1" component="span" color="textPrimary" fontWeight="medium" noWrap>
             {`${i18n.text('favorites.comments.notes')}: `}
           </Typography>
           <span className={classes.notes}>{`"${notes}"`}</span>
@@ -72,7 +72,7 @@ const ItemNotes = ({
           with the "notesId" that can be focused when closing the CommentDialog modal.
         */}
         <button type="button" onClick={onClickOpenComment} className={classes.addCommentButton} ref={notesButtonRef}>
-          <Typography variant="h4" component="span" color="secondary">
+          <Typography variant="body1" component="span" color="secondary" fontWeight="medium">
             {notes ? i18n.text('favorites.comments.edit') : i18n.text('favorites.comments.add')}
           </Typography>
         </button>
@@ -80,7 +80,7 @@ const ItemNotes = ({
           <>
             <span aria-hidden> | </span>
             <button type="button" onClick={onClickDeleteComment} className={classes.addCommentButton}>
-              <Typography variant="h4" component="span" color="secondary">
+              <Typography variant="body1" component="span" color="secondary" fontWeight="medium">
                 {i18n.text('favorites.comments.delete')}
               </Typography>
             </button>

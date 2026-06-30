@@ -48,7 +48,7 @@ const NotFound = () => {
 
   return (
     <div className={classes.wrapper}>
-      <Typography variant="h2" component="div">
+      <Typography variant="h2" component="div" fontWeight="regular">
         <I18n.Text string="page.not_found" />
       </Typography>
       <div className={classes.buttonContainer}>

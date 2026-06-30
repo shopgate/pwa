@@ -44,7 +44,7 @@ export const StoreFinderSelectLocationButton = () => {
         className={classes.selectLocationButton}
         disabled={(isLoading || store?.isComingSoon || isSelected)}
       >
-        <Typography variant="body2" component="span">
+        <Typography variant="body2" component="span" fontWeight="bold">
           {i18n.text(
             store?.isComingSoon ?
               'location.comingSoon' :

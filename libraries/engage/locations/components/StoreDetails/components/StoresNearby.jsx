@@ -24,7 +24,7 @@ const StoresNearby = () => {
 
   return (
     <div>
-      <Typography variant="h3" component="div" className={classes.title}>
+      <Typography variant="h3" component="div" fontWeight="bold" className={classes.title}>
         {i18n.text('location.storesNearby')}
       </Typography>
       {nearbyLocations.length > 0 && (

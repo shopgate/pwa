@@ -45,7 +45,7 @@ const GlobalLocationSwitcherDefault = ({ locationName, handleChange, editable })
           disabled={!editable}
           flat
         >
-          <Typography variant="caption" component="span">
+          <Typography variant="caption" component="span" fontWeight="bold">
             <I18n.Text string="locations.your_current_location.change" />
           </Typography>
         </RippleButton>

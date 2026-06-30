@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
-import { Dialog, TextField, Typography } from '@shopgate/engage/components';
+import { Dialog, TextField } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -53,9 +53,9 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
       }}
     >
       <div className={classes.root}>
-        <Typography component="span">
+        <span>
           {i18n.text(`favorites.${type}_modal.message`)}
-        </Typography>
+        </span>
         <TextField
           name="name"
           placeholder={i18n.text(`favorites.${type}_modal.label`)}

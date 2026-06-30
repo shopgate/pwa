@@ -103,14 +103,14 @@ const StoresNearbyListItem = ({ location }) => {
             <div className={classes.makeMyStore}>
               {(!isComingSoon) && (
                 <Button className={classes.button} onClick={() => selectLocation(location, true)} role="button" type="primary" flat disabled={isPreferredLocation} wrapContent={false}>
-                  <Typography variant="body2" component="span">
+                  <Typography variant="body2" component="span" fontWeight="bold">
                     {`${i18n.text('location.makeMyStore')}`}
                   </Typography>
                 </Button>
               )}
               {isComingSoon && (
                 <Button className={classes.button} role="button" type="primary" flat disabled wrapContent={false}>
-                  <Typography variant="body2" component="span">
+                  <Typography variant="body2" component="span" fontWeight="bold">
                     {i18n.text('location.comingSoon')}
                   </Typography>
                 </Button>
@@ -118,7 +118,7 @@ const StoresNearbyListItem = ({ location }) => {
             </div>
             <div className={classes.storeInfo}>
               <Button className={classes.button} role="button" type="primary" flat onClick={() => openStoreDetails(code)} wrapContent={false}>
-                <Typography variant="body2" component="span">
+                <Typography variant="body2" component="span" fontWeight="bold">
                   {i18n.text('locations.details')}
                 </Typography>
               </Button>

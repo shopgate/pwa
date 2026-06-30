@@ -54,7 +54,7 @@ const StoreFinderStoreInfoButton = ({ openStoreDetail }) => {
         className={classes.showStoreInfoButton}
         disabled={isLoading}
       >
-        <Typography variant="body2" component="span">
+        <Typography variant="body2" component="span" fontWeight="bold">
           {i18n.text('locations.store_info')}
         </Typography>
       </RippleButton>

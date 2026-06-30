@@ -54,7 +54,7 @@ const ResponsiveBackButton = ({ label, onClick }) => {
         onClick={handleClick}
       >
         <ArrowIcon className={classes.buttonIcon} />
-        <Typography variant="body2" component="span">
+        <Typography variant="body2" component="span" fontWeight="bold">
           <I18n.Text string={label} />
         </Typography>
       </RippleButton>

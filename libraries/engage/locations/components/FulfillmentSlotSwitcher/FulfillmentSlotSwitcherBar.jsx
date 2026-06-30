@@ -67,7 +67,7 @@ const FulfillmentSlotSwitcherBar = ({
             className={classes.button}
             flat
           >
-            <Typography variant="body2" component="span">
+            <Typography variant="body2" component="span" fontWeight="bold">
               <I18n.Text string="locations.your_current_location.change" />
             </Typography>
           </RippleButton>

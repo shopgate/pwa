@@ -137,7 +137,7 @@ const AddressList = ({
             pathname: `${CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}`.replace(':type', type),
           })}
         >
-          <Typography variant="body2" component="span">
+          <Typography variant="body2" component="span" fontWeight="bold">
             {i18n.text('account.profile.address_book.add')}
           </Typography>
         </RippleButton>

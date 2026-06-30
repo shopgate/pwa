@@ -37,7 +37,7 @@ export function StoreHeader() {
     >
       <Grid>
         <Grid.Item grow={1}>
-          <Typography variant="h4" component="div">
+          <Typography variant="body1" component="div" fontWeight="medium">
             {name}
           </Typography>
           <ResponsiveContainer breakpoint=">=sm" webOnly>

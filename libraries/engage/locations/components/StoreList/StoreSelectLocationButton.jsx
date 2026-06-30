@@ -61,7 +61,7 @@ const StoreSelectLocationButton = ({ setPostalCode }) => {
         className={classes.selectLocationButton}
         disabled={(isLoading || store?.isComingSoon || (!noInventory && !isAvailable))}
       >
-        <Typography variant="body2" component="span">
+        <Typography variant="body2" component="span" fontWeight="bold">
           {i18n.text(
             store?.isComingSoon ?
               'location.comingSoon' :

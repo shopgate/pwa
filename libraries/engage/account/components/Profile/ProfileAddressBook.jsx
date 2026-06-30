@@ -79,7 +79,7 @@ const ProfileAddressBook = ({ push }) => {
           type="primary"
           onClick={() => push({ pathname: PROFILE_ADDRESS_PATH })}
         >
-          <Typography variant="body2" component="span">
+          <Typography variant="body2" component="span" fontWeight="bold">
             {i18n.text('account.profile.address_book.add')}
           </Typography>
         </RippleButton>

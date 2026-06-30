@@ -116,7 +116,7 @@ const BackInStockButton = ({
         onClick={handleClick}
         className={classes.button}
       >
-        <Typography variant="body2" component="span">
+        <Typography variant="body2" component="span" fontWeight="bold">
           {i18n.text('back_in_stock.get_notified')}
         </Typography>
       </Button>

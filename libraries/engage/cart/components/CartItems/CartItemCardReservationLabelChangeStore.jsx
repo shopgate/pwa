@@ -41,7 +41,7 @@ const CartItemCardReservationLabelChangeStore = () => {
       type="secondary"
       flat
     >
-      <Typography variant="body2" component="span">
+      <Typography variant="body2" component="span" fontWeight="bold">
         <I18n.Text string="locations.change_location" />
       </Typography>
     </RippleButton>

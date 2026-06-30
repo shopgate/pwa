@@ -8,7 +8,7 @@ const useStyles = makeStyles()(theme => ({
   item: {
     position: 'relative',
     whiteSpace: 'nowrap',
-    padding: theme.spacing(1.75, 2.75),
+    padding: theme.spacing(1.3, 2.75),
     zIndex: 1,
     cursor: 'pointer',
     ':hover': {

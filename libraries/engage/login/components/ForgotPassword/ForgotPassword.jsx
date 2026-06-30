@@ -173,7 +173,7 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
               onClick={handleBackToLogin}
             >
               <ArrowIcon className={classes.goBackButtonIcon} />
-              <Typography variant="body2" component="span">
+              <Typography variant="body2" component="span" fontWeight="bold">
                 <I18n.Text string="login.reset_password.back_to_login" />
               </Typography>
             </RippleButton>

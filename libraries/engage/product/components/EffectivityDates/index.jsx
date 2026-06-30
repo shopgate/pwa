@@ -5,9 +5,10 @@ import {
   useWidgetSettings,
   useWidgetStyles,
 } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  I18n, TimeBoundary, SurroundPortals, Typography,
+  TimeBoundary, SurroundPortals, Typography,
 } from '@shopgate/engage/components';
 import { PRODUCT_EFFECTIVITY_DATES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { showExpiringLabel, showScheduledLabel } from './helpers';
@@ -55,8 +56,8 @@ const EffectivityDates = ({
           if (before) {
             return showScheduledLabel(startDate, settings)
               ? (
-                <Typography variant="caption" component="div" color="success" className={classes.hint}>
-                  <I18n.Text string="product.available.at" params={{ startDate }} />
+                <Typography variant="caption" component="span" color="success" className={classes.hint}>
+                  {i18n.text('product.available.at', { startDate })}
                 </Typography>
               )
               : children;
@@ -68,8 +69,8 @@ const EffectivityDates = ({
                 {children}
                 {showExpiringLabel(endDate, settings) &&
                   (
-                    <Typography variant="caption" component="div" color="success" className={classes.hint}>
-                      <I18n.Text string="product.available.until" params={{ endDate }} />
+                    <Typography variant="caption" component="span" color="success" className={classes.hint}>
+                      {i18n.text('product.available.until', { endDate })}
                     </Typography>
                   )}
               </>
@@ -83,11 +84,11 @@ const EffectivityDates = ({
               ? (
                 <Typography
                   variant="caption"
-                  component="div"
+                  component="span"
                   color="error"
                   className={cx(classes.hint, classes.notAvailable)}
                 >
-                  <I18n.Text string="product.available.not" />
+                  {i18n.text('product.available.not')}
                 </Typography>
               )
               : children;

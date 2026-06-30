@@ -119,14 +119,14 @@ const StoreDetails = () => {
           <div className={classes.headerIcon}>
             <LocationIcon className={classes.icon} size={20} />
           </div>
-          <Typography variant="h3" component="div" className={classes.header}>
+          <Typography variant="h3" component="div" fontWeight="bold" className={classes.header}>
             {isRouteLocationPreferred ?
               i18n.text('location.myStore') :
               i18n.text('location.makeMyStore')}
           </Typography>
         </div>
       </ConditionalWrapper>
-      <Typography variant="h3" component="div" className={classes.locationName}>
+      <Typography variant="h3" component="div" fontWeight="bold" className={classes.locationName}>
         {routeLocation.name}
       </Typography>
       <div className={classes.locationRow}>
@@ -175,7 +175,7 @@ const StoreDetails = () => {
           </div>
           {address?.phoneNumber && (
             <>
-              <Typography variant="h4" component="div">
+              <Typography variant="h4" component="div" fontWeight="bold">
                 {`${i18n.text('location.phone')}: `}
               </Typography>
 
@@ -195,7 +195,7 @@ const StoreDetails = () => {
         </div>
         {hasOpeningHours && (
         <div className={classes.storeHoursColumn}>
-          <Typography variant="h4" component="div">
+          <Typography variant="h4" component="div" fontWeight="bold">
             {`${i18n.text('location.storeHours')}:`}
           </Typography>
           <table>

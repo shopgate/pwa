@@ -117,7 +117,7 @@ const ProfileForm = forwardRef((_, ref) => {
           type="primary"
           onClick={deleteCustomer}
         >
-          <Typography variant="body2" component="span">
+          <Typography variant="body2" component="span" fontWeight="bold">
             {i18n.text('account.profile.delete')}
           </Typography>
         </RippleButton>
@@ -127,7 +127,7 @@ const ProfileForm = forwardRef((_, ref) => {
           type="primary"
           onClick={saveForm}
         >
-          <Typography variant="body2" component="span">
+          <Typography variant="body2" component="span" fontWeight="bold">
             {i18n.text('account.profile.form.save')}
           </Typography>
         </RippleButton>
