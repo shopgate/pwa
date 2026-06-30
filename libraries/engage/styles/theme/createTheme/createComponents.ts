@@ -5,6 +5,7 @@ import mapValues from 'lodash/mapValues';
 import type {
   ComponentsOptions,
   Components,
+  ComponentVars,
   ComponentsFromSchema,
 } from './createComponents.types';
 import { componentsDefaults, componentsSchema } from './createComponents.types';
@@ -81,13 +82,14 @@ export function flattenComponentVars<T extends AnyObject>(input: T) {
  * @param inputComponents The input components options
  * @returns The components object
  */
-const createComponents = (inputComponents: ComponentsOptions): Components => {
+const createComponents = (inputComponents: ComponentsOptions): ComponentVars => {
   const mergedComponents = merge(
     {},
     componentsSchema,
     componentsDefaults,
     inputComponents
   ) as Components;
+  // @ts-expect-error - We are sure about the type here
   return mergedComponents;
 };
 

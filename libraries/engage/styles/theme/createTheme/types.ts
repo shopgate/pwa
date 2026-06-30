@@ -97,7 +97,7 @@ export interface BaseTheme {
   /**
    * Component specific styling tokes.
    */
-  components: Components;
+  components: ComponentVars;
   shape: Shape;
   /**
    * Pre-defined shadow styles for different elevation levels, following Material Design guidelines.
