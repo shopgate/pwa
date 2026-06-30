@@ -200,7 +200,7 @@ export default function cssVarsParser<T extends object>(
   const vars: T = {} as T;
   const varsWithDefaults: T = {} as T;
   const varNames: T = {} as T;
-  console.warn('xxxx', theme);
+
   walkObjectDeep(
     theme,
     (keys, value, arrayKeys) => {
