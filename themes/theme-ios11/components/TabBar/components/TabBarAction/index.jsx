@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import Button from '@shopgate/pwa-common/components/Button';
-import { I18n, Typography } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -12,6 +12,9 @@ const useStyles = makeStyles()(theme => ({
     flexBasis: 0,
     flexDirection: 'column',
     flexGrow: 1,
+    alignItems: 'center',
+    fontWeight: 500,
+    fontSize: '0.64rem',
     height: '100%',
     '& > svg': {
       flexGrow: 1,
@@ -88,11 +91,7 @@ const TabBarAction = ({
     >
       {Icon}
       <div className={cx(classes.label, 'theme__tab-bar__tab-bar-action__label')} data-test-id={label}>
-        {showLabels && (
-          <Typography variant="caption" component="span" align="center">
-            <I18n.Text string={label} />
-          </Typography>
-        )}
+        {showLabels && <I18n.Text string={label} />}
       </div>
       {children}
     </Button>

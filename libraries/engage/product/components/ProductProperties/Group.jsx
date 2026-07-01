@@ -6,7 +6,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   subgroup: {
     paddingTop: theme.spacing(1),
-    fontWeight: theme.typography.fontWeightBold,
     textTransform: 'uppercase',
   },
 }));
@@ -25,6 +24,7 @@ const Group = ({ group }) => {
         <Typography
           variant="caption"
           component="span"
+          fontWeight="bold"
           dangerouslySetInnerHTML={{ __html: group }}
         />
       </td>

@@ -17,6 +17,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     alignItems: 'center',
     width: 'auto',
+    lineHeight: '16.5px',
   },
   rightAligned: {
     display: 'inline-block',

@@ -11,6 +11,7 @@ const useStyles = makeStyles()({
   },
   stars: {
     display: 'inline-block',
+    lineHeight: 1,
   },
 });
 

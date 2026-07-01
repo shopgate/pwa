@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
 import {
-  I18n, CheckedIcon, UncheckedIcon, Typography,
+  I18n, CheckedIcon, UncheckedIcon,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -68,14 +68,12 @@ const RadioItem = ({
         aria-labelledby={`${id || name}-label`}
         {...attributes}
       />
-      <Typography
-        component="div"
+      <I18n.Text
+        string={ItemLabel}
         aria-hidden
         id={`${id || name}-label`}
         className={cx(classes.label, 'label')}
-      >
-        <I18n.Text string={ItemLabel} />
-      </Typography>
+      />
     </label>
   );
 };

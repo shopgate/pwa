@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {Function}
  */
 const TaxDisclaimer = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   // Added with PWA 6 - CCP-2372
   const {
@@ -37,11 +37,17 @@ const TaxDisclaimer = () => {
       portalProps={{ showTaxDisclaimer: showDisclaimer }}
     >
       {showDisclaimer && (
-        <div data-test-id="taxDisclaimer" aria-hidden className="ui-shared__tax-disclaimer">
-          <Typography variant="caption" display="block" align="left" className={classes.text}>
-            <I18n.Text string={text || 'product.tax_disclaimer'} />
-          </Typography>
-        </div>
+        <Typography
+          variant="caption"
+          display="block"
+          align="left"
+          component="div"
+          data-test-id="taxDisclaimer"
+          aria-hidden
+          className={cx(classes.text, 'ui-shared__tax-disclaimer')}
+        >
+          <I18n.Text string={text || 'product.tax_disclaimer'} />
+        </Typography>
       )}
     </SurroundPortals>
   );

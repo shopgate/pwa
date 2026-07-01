@@ -4,7 +4,6 @@ import {
   Portal,
   I18n,
   PlaceholderLabel,
-  Typography,
   PriceStriked as StrikePrice,
 } from '@shopgate/engage/components';
 import {
@@ -27,9 +26,11 @@ const useStyles = makeStyles()(theme => ({
   msrp: {
     color: theme.palette.grey.dark,
     marginRight: theme.spacing(0.5),
+    fontSize: theme.typography.body2.fontSize,
   },
   msrpStriked: {
     display: 'inline',
+    fontSize: theme.typography.body2.fontSize,
   },
 }));
 
@@ -52,17 +53,12 @@ const PriceStriked = ({ price }) => {
         <PlaceholderLabel className={classes.placeholder} ready={(price !== null)}>
           {(price && price.msrp > 0 && price.unitPrice !== price.msrp) && (
             <>
-              {!!msrpLabel && (
-                <Typography variant="body2" component="span" className={classes.msrp}>
-                  <I18n.Text string={msrpLabel} />
-                </Typography>
-              )}
-              <Typography variant="body2" component="span" className={classes.msrpStriked}>
-                <StrikePrice
-                  value={price.msrp}
-                  currency={price.currency}
-                />
-              </Typography>
+              {!!msrpLabel && (<I18n.Text string={msrpLabel} className={classes.msrp} />)}
+              <StrikePrice
+                className={classes.msrpStriked}
+                value={price.msrp}
+                currency={price.currency}
+              />
             </>
           )}
           {(price &&
@@ -72,13 +68,9 @@ const PriceStriked = ({ price }) => {
           ) && (
             <>
               {!!unitPriceStrikedLabel && (
-                <Typography variant="body2" component="span" className={classes.msrp}>
-                  <I18n.Text string={unitPriceStrikedLabel} />
-                </Typography>
+                <I18n.Text string={unitPriceStrikedLabel} className={classes.msrp} />
               )}
-              <Typography variant="body2" component="span" className={classes.msrpStriked}>
-                <StrikePrice value={price.unitPriceStriked} currency={price.currency} />
-              </Typography>
+              <StrikePrice value={price.unitPriceStriked} currency={price.currency} />
             </>
           )}
         </PlaceholderLabel>

@@ -49,7 +49,7 @@ const useStyles = makeStyles()(theme => ({
   input: {
     borderRadius: 10,
     width: '100%',
-    padding: '4px 10px 10px 30px',
+    padding: '8px 10px 10px 30px',
     outline: 'none',
     background: theme.palette.grey.light,
     verticalAlign: 'middle',

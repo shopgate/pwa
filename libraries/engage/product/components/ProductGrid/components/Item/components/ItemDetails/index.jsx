@@ -18,8 +18,9 @@ import ItemPrice from '../ItemPrice';
 
 const useStyles = makeStyles()({
   root: {
+    lineHeight: 1.2,
     ':not(:empty)': {
-      padding: '8px 0 16px',
+      padding: '12px 0 16px',
     },
   },
   quantityHint: {

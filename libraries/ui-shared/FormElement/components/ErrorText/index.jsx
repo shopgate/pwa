@@ -5,7 +5,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
   root: {
-    bottom: 2,
     overflow: 'hidden',
     position: 'absolute',
     textOverflow: 'ellipsis',

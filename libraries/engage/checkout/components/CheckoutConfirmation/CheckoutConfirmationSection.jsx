@@ -21,13 +21,6 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
     padding: theme.spacing(2),
     flex: '1 0 auto',
-    background: theme.palette.background.emphasized,
-    boxShadow: 'none',
-  },
-  cardWithForm: {
-    background: 'inherit',
-    boxShadow: 'none',
-    padding: 0,
   },
   list: {
     margin: 0,
@@ -70,7 +63,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const CheckoutConfirmationSegment = ({
-  title, content, children, hasForm, isSummary, className,
+  title, content, children, isSummary, className,
 }) => {
   const { classes, cx } = useStyles();
 
@@ -89,10 +82,7 @@ const CheckoutConfirmationSegment = ({
       >
         {i18n.text(title)}
       </Typography>
-      <Card className={cx(classes.card, {
-        [classes.cardWithForm]: hasForm,
-      })}
-      >
+      <Card className={classes.card}>
         {isString && (
           <Typography variant="body2" component="span" color="textSecondary">
             {content}
@@ -169,14 +159,12 @@ CheckoutConfirmationSegment.propTypes = {
     PropTypes.arrayOf(PropTypes.shape()),
     PropTypes.string,
   ]),
-  hasForm: PropTypes.bool,
   isSummary: PropTypes.bool,
 };
 
 CheckoutConfirmationSegment.defaultProps = {
   children: null,
   content: null,
-  hasForm: false,
   isSummary: false,
   className: null,
 };

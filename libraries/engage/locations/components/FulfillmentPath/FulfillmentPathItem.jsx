@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core';
 import { RadioGroupItem } from '../../../components';
@@ -44,9 +43,7 @@ export const FulfillmentPathItem = ({ name, children, ...rest }) => {
       className={classes.radioItem}
       label={(
         <div className={cx(classes.radioGroupLabel, classes.itemLabel)}>
-          <Typography component="span">
-            {i18n.text(name)}
-          </Typography>
+          <span>{i18n.text(name)}</span>
           {children}
         </div>
       )}

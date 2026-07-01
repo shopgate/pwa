@@ -1,18 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, Price, PriceStriked, Typography,
+  Grid, Price, PriceStriked,
 } from '@shopgate/engage/components';
 import { PriceInfo } from '@shopgate/engage/product/components';
 import { withPriceCalculation } from '@shopgate/engage/product/hocs';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   priceWrapper: {
     marginTop: 4,
     alignItems: 'center',
   },
-});
+  strikedPrice: {
+    fontSize: theme.typography.caption.fontSize,
+  },
+  basicPrice: {
+    fontSize: theme.typography.body2.fontSize,
+  },
+}));
 
 /**
  * The ProductGridPrice component is supposed to be used to display prices at product grids. It
@@ -38,12 +44,11 @@ const ProductGridPrice = ({ product }) => {
         </Grid.Item>
         {(price.msrp > 0 && price.unitPrice !== price.msrp) && (
           <Grid.Item>
-            <Typography variant="caption" component="span">
-              <PriceStriked
-                value={price.msrp}
-                currency={price.currency}
-              />
-            </Typography>
+            <PriceStriked
+              className={classes.strikedPrice}
+              value={price.msrp}
+              currency={price.currency}
+            />
           </Grid.Item>
         )}
         {(!price.msrp &&
@@ -51,26 +56,24 @@ const ProductGridPrice = ({ product }) => {
           price.unitPrice !== price.unitPriceStriked
         ) && (
           <Grid.Item>
-            <Typography variant="caption" component="span">
-              <PriceStriked
-                value={price.unitPriceStriked}
-                currency={price.currency}
-              />
-            </Typography>
+            <PriceStriked
+              className={classes.strikedPrice}
+              value={price.unitPriceStriked}
+              currency={price.currency}
+            />
           </Grid.Item>
         )}
       </Grid>
-      <Typography variant="body2" component="div">
-        <PriceInfo
-          product={product}
-          wrapper={children =>
-            <Grid>
-              <Grid.Item>
-                {children}
-              </Grid.Item>
-            </Grid>}
-        />
-      </Typography>
+      <PriceInfo
+        product={product}
+        className={classes.basicPrice}
+        wrapper={children =>
+          <Grid>
+            <Grid.Item>
+              {children}
+            </Grid.Item>
+          </Grid>}
+      />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Image, Link, Grid, Availability, Typography,
+  Image, Link, Grid, Availability,
 } from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -45,15 +45,19 @@ const useStyles = makeStyles()(theme => ({
     width: 40,
   },
   availability: {
+    fontSize: theme.typography.caption.fontSize,
   },
   manufacturer: {
+    fontSize: theme.typography.body2.fontSize,
   },
   price: {
     justifyContent: 'flex-end',
   },
   priceStriked: {
+    fontSize: theme.typography.body2.fontSize,
   },
   priceInfo: {
+    fontSize: theme.typography.caption.fontSize,
   },
   discount: {
     minWidth: 40,
@@ -123,9 +127,7 @@ const Item = ({ display, product }) => {
                 props={{ productId: product.id }}
               />
               <Portal name={portals.PRODUCT_ITEM_MANUFACTURER} props={{ productId: product.id }}>
-                <Typography variant="body2" component="div" className={classes.manufacturer}>
-                  <Manufacturer text={product.manufacturer} className={classes.manufacturer} />
-                </Typography>
+                <Manufacturer text={product.manufacturer} className={classes.manufacturer} />
               </Portal>
               <Portal
                 name={portals.PRODUCT_ITEM_MANUFACTURER_AFTER}
@@ -141,13 +143,11 @@ const Item = ({ display, product }) => {
                 props={{ productId: product.id }}
               />
               <Portal name={portals.PRODUCT_ITEM_AVAILABILITY} props={{ productId: product.id }}>
-                <Typography variant="caption" component="div" className={classes.availability}>
-                  <Availability
-                    className={classes.availability}
-                    text={product.availability.text}
-                    state={product.availability.state}
-                  />
-                </Typography>
+                <Availability
+                  className={classes.availability}
+                  text={product.availability.text}
+                  state={product.availability.state}
+                />
               </Portal>
               <Portal
                 name={portals.PRODUCT_ITEM_AVAILABILITY_AFTER}
@@ -198,26 +198,20 @@ const Item = ({ display, product }) => {
                   unitPriceMax={product.price.unitPriceMax}
                 />
                 {(product.price.msrp > 0 && product.price.unitPrice !== product.price.msrp) && (
-                  <Typography variant="body2" component="div" className={classes.priceStriked}>
-                    <PriceStriked
-                      value={product.price.msrp}
-                      currency={product.price.currency}
-                      className={classes.priceStriked}
-                    />
-                  </Typography>
+                  <PriceStriked
+                    value={product.price.msrp}
+                    currency={product.price.currency}
+                    className={classes.priceStriked}
+                  />
                 )}
                 {(!product.price.msrp && product.price.unitPriceStriked > 0) && (
-                  <Typography variant="body2" component="div" className={classes.priceStriked}>
-                    <PriceStriked
-                      value={product.price.unitPriceStriked}
-                      currency={product.price.currency}
-                      className={classes.priceStriked}
-                    />
-                  </Typography>
+                  <PriceStriked
+                    value={product.price.unitPriceStriked}
+                    currency={product.price.currency}
+                    className={classes.priceStriked}
+                  />
                 )}
-                <Typography variant="caption" component="div" className={classes.priceInfo}>
-                  <PriceInfo product={product} className={classes.priceInfo} />
-                </Typography>
+                <PriceInfo product={product} className={classes.priceInfo} />
                 <Portal
                   name={portals.PRODUCT_ITEM_PRICE_INSIDE_AFTER}
                   props={{ productId: product.id }}
