@@ -29,6 +29,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: 16,
       backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
@@ -79,9 +80,7 @@ const ProfileAddressBook = ({ push }) => {
           type="primary"
           onClick={() => push({ pathname: PROFILE_ADDRESS_PATH })}
         >
-          <Typography variant="body2" component="span" fontWeight="bold">
-            {i18n.text('account.profile.address_book.add')}
-          </Typography>
+          {i18n.text('account.profile.address_book.add')}
         </RippleButton>
       </div>
     </div>

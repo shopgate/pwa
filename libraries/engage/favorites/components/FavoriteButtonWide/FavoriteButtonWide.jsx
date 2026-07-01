@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { RippleButton, Typography } from '@shopgate/engage/components';
+import { RippleButton } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { toggleFavoriteWithListChooser } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
@@ -39,6 +39,7 @@ const useStyles = makeStyles()(theme => ({
       backgroundColor: theme.palette.background.surface,
       border: `1px solid ${theme.palette.primary.main}`,
       borderRadius: 5,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
     },
@@ -79,9 +80,7 @@ const FavoriteButtonWide = ({
       type="primary"
       onClick={() => toggle(productId)}
     >
-      <Typography variant="body2" component="span" color="textPrimary" fontWeight="bold">
-        { i18n.text(label) }
-      </Typography>
+      { i18n.text(label) }
     </RippleButton>
   );
 };

@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  RippleButton, I18n, SurroundPortals, Typography,
-} from '@shopgate/engage/components';
+import { RippleButton, I18n, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_FULFILLMENT_CHANGE_LOCATION } from '../../constants/Portals';
 
 const useStyles = makeStyles()(theme => ({
   button: {
+    fontSize: `${theme.typography.caption.fontSize} !important`,
     letterSpacing: '0.05em',
     padding: `${theme.spacing(0.375, 0)} !important`,
     ' *': {
@@ -45,9 +44,7 @@ export const ChangeLocationButtonUnwrapped = ({ onClick, disabled }) => {
         type="secondary"
         flat
       >
-        <Typography variant="caption" component="span">
-          <I18n.Text string="locations.change_location" />
-        </Typography>
+        <I18n.Text string="locations.change_location" />
       </RippleButton>
     </SurroundPortals>
   );

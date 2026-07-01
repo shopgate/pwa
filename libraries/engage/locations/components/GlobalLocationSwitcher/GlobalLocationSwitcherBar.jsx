@@ -31,6 +31,7 @@ const useStyles = makeStyles()(theme => ({
     letterSpacing: '0.05em',
     padding: `${theme.spacing(0.375, 0)} !important`,
     ' *': {
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'initial',
       padding: '0 !important',
       color: theme.palette.text.primary,
@@ -63,9 +64,7 @@ const GlobalLocationSwitcherBar = ({ locationName, handleChange, standalone }) =
           aria-haspopup
           flat
         >
-          <Typography variant="body2" component="span" fontWeight="bold">
-            <I18n.Text string="locations.your_current_location.change" />
-          </Typography>
+          <I18n.Text string="locations.your_current_location.change" />
         </RippleButton>
       </div>
     </div>

@@ -12,7 +12,7 @@ import {
 } from '@shopgate/engage/components';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     padding: 16,
     display: 'flex',
@@ -60,6 +60,7 @@ const useStyles = makeStyles()({
     '&&': {
       marginTop: 8,
       borderRadius: 5,
+      fontSize: theme.typography.body2.fontSize,
       padding: 0,
       textTransform: 'none',
     },
@@ -67,7 +68,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: '8px 16px',
   },
-});
+}));
 
 /**
  * @returns {JSX}
@@ -160,9 +161,7 @@ const ProfileAddressCard = ({
               disabled={selected}
               onClick={selectContact}
             >
-              <Typography variant="body2" component="span" fontWeight="bold">
-                {i18n.text(`account.profile.address_book.${selected ? 'selected' : 'select'}`)}
-              </Typography>
+              {i18n.text(`account.profile.address_book.${selected ? 'selected' : 'select'}`)}
             </RippleButton>
           ) : null}
         </div>

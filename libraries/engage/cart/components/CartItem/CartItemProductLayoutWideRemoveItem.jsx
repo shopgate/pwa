@@ -1,10 +1,11 @@
 import React from 'react';
-import { RippleButton, I18n, Typography } from '@shopgate/engage/components';
+import { RippleButton, I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useCartItemProduct } from './CartItem.hooks';
 
 const useStyles = makeStyles()(theme => ({
   button: {
+    fontSize: `${theme.typography.body2.fontSize} !important`,
     letterSpacing: '0.05em',
     padding: `${theme.spacing(2, 0)} !important`,
     ' *': {
@@ -31,9 +32,7 @@ const CartItemProductLayoutWideRemoveItem = () => {
       type="secondary"
       flat
     >
-      <Typography variant="body2" component="span" fontWeight="bold">
-        <I18n.Text string="cart.remove_item" />
-      </Typography>
+      <I18n.Text string="cart.remove_item" />
     </RippleButton>
   );
 };

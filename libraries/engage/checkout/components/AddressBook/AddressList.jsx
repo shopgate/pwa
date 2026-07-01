@@ -55,6 +55,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: 16,
       backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
@@ -137,9 +138,7 @@ const AddressList = ({
             pathname: `${CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}`.replace(':type', type),
           })}
         >
-          <Typography variant="body2" component="span" fontWeight="bold">
-            {i18n.text('account.profile.address_book.add')}
-          </Typography>
+          {i18n.text('account.profile.address_book.add')}
         </RippleButton>
       </div>
     </div>

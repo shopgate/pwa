@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import {
-  RippleButton, I18n, ArrowIcon, Typography,
-} from '@shopgate/engage/components';
+import { RippleButton, I18n, ArrowIcon } from '@shopgate/engage/components';
 import { useNavigation } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -12,6 +10,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(4, 2, 2, 2),
   },
   button: {
+    fontSize: `${theme.typography.body2.fontSize} !important`,
     padding: '0 !important',
     ' > div ': {
       padding: 0,
@@ -54,9 +53,7 @@ const ResponsiveBackButton = ({ label, onClick }) => {
         onClick={handleClick}
       >
         <ArrowIcon className={classes.buttonIcon} />
-        <Typography variant="body2" component="span" fontWeight="bold">
-          <I18n.Text string={label} />
-        </Typography>
+        <I18n.Text string={label} />
       </RippleButton>
     </div>
   );

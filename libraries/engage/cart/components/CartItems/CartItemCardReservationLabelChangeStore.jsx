@@ -1,10 +1,11 @@
 import React, { useCallback } from 'react';
-import { RippleButton, I18n, Typography } from '@shopgate/engage/components';
+import { RippleButton, I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useCartItem } from '../CartItem';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
+    fontSize: `${theme.typography.body2.fontSize} !important`,
     letterSpacing: '0.05em',
     padding: '0px !important',
     ' *': {
@@ -14,7 +15,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: 0,
   },
-});
+}));
 
 /**
  * @returns {JSX}
@@ -41,9 +42,7 @@ const CartItemCardReservationLabelChangeStore = () => {
       type="secondary"
       flat
     >
-      <Typography variant="body2" component="span" fontWeight="bold">
-        <I18n.Text string="locations.change_location" />
-      </Typography>
+      <I18n.Text string="locations.change_location" />
     </RippleButton>
   );
 };

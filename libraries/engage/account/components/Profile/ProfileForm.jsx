@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback, forwardRef } from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { FormBuilder, RippleButton, Typography } from '@shopgate/engage/components';
+import { FormBuilder, RippleButton } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { useProfileContext } from './Profile.provider';
 import generateFormConfig from './Profile.config';
@@ -27,6 +27,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: 16,
       backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
@@ -42,6 +43,7 @@ const useStyles = makeStyles()(theme => ({
       backgroundColor: theme.palette.common.white,
       color: theme.palette.error.main,
       borderRadius: 5,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
@@ -117,9 +119,7 @@ const ProfileForm = forwardRef((_, ref) => {
           type="primary"
           onClick={deleteCustomer}
         >
-          <Typography variant="body2" component="span" fontWeight="bold">
-            {i18n.text('account.profile.delete')}
-          </Typography>
+          {i18n.text('account.profile.delete')}
         </RippleButton>
         <RippleButton
           className={classes.button}
@@ -127,9 +127,7 @@ const ProfileForm = forwardRef((_, ref) => {
           type="primary"
           onClick={saveForm}
         >
-          <Typography variant="body2" component="span" fontWeight="bold">
-            {i18n.text('account.profile.form.save')}
-          </Typography>
+          {i18n.text('account.profile.form.save')}
         </RippleButton>
       </div>
     </div>

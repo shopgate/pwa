@@ -2,7 +2,7 @@ import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { i18n, generateGoogleMapsDirectionsUrl } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { RippleButton, Typography } from '@shopgate/engage/components';
+import { RippleButton } from '@shopgate/engage/components';
 import connect from './StoreFinderGetDirectionsButton.connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -11,6 +11,7 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
     background: `${theme.palette.primary.main} !important`,
     color: `${theme.palette.primary.contrastText} !important`,
+    fontSize: `${theme.typography.body2.fontSize} !important`,
   },
 }));
 
@@ -36,9 +37,7 @@ const StoreFinderGetDirectionsButton = ({ address, openMap, className }) => {
         onClick={handleClick}
         className={classes.button}
       >
-        <Typography variant="body2" component="span" fontWeight="bold">
-          {i18n.text('locations.get_directions')}
-        </Typography>
+        {i18n.text('locations.get_directions')}
       </RippleButton>
     </div>
   );

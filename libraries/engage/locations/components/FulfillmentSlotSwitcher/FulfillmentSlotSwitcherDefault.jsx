@@ -13,6 +13,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
   },
   button: {
+    fontSize: `${theme.typography.caption.fontSize} !important`,
     letterSpacing: '0.05em',
     padding: `${theme.spacing(0.375, 0)} !important`,
     ' *': {
@@ -44,9 +45,7 @@ const FulfillmentSlotSwitcherDefault = ({ handleChange, fulfillmentSlot, editabl
           disabled={!editable}
           flat
         >
-          <Typography variant="caption" component="span" fontWeight="bold">
-            <I18n.Text string="locations.your_current_location.change" />
-          </Typography>
+          <I18n.Text string="locations.your_current_location.change" />
         </RippleButton>
       </div>
     </div>

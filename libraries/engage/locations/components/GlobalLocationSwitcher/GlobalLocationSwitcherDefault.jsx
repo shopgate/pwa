@@ -15,6 +15,7 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.text.primary,
   },
   button: {
+    fontSize: `${theme.typography.caption.fontSize} !important`,
     letterSpacing: '0.05em',
     padding: `${theme.spacing(0.375, 0)} !important`,
     ' *': {
@@ -45,9 +46,7 @@ const GlobalLocationSwitcherDefault = ({ locationName, handleChange, editable })
           disabled={!editable}
           flat
         >
-          <Typography variant="caption" component="span" fontWeight="bold">
-            <I18n.Text string="locations.your_current_location.change" />
-          </Typography>
+          <I18n.Text string="locations.your_current_location.change" />
         </RippleButton>
       </div>
     </div>

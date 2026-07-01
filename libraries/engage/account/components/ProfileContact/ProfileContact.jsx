@@ -9,7 +9,7 @@ import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getShopSettings } from '@shopgate/engage/core/config';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 
-import { FormBuilder, RippleButton, Typography } from '@shopgate/engage/components';
+import { FormBuilder, RippleButton } from '@shopgate/engage/components';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { useAddressBook } from '@shopgate/engage/checkout';
@@ -62,6 +62,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: 16,
       backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
@@ -194,9 +195,7 @@ const ProfileContact = ({
           type="primary"
           onClick={formState.handleSubmit}
         >
-          <Typography variant="body2" component="span" fontWeight="bold">
-            {i18n.text('account.profile.form.save')}
-          </Typography>
+          {i18n.text('account.profile.form.save')}
         </RippleButton>
       </div>
     </div>
