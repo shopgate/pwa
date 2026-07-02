@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useLongPress } from '@shopgate/engage/core/hooks';
 import { getClientInformation } from '@shopgate/engage/core/selectors';
+import { pckVersion } from '@shopgate/pwa-common/helpers/config';
 import DevelopmentSettings from '../DevelopmentSettings';
 
 const useStyles = makeStyles()(theme => ({
@@ -62,6 +63,8 @@ const ClientInformation = () => {
     >
       <p className={classes.unselectable}>
         {`App Version: ${appVersion} (${codebaseVersion})`}
+        <br />
+        {`PWA Version: ${pckVersion}`}
         <br />
         {`Lib Version: ${libVersion}`}
       </p>
