@@ -103,7 +103,7 @@ const BackInStockButton = ({
       >
         <CheckedIcon
           color={theme.palette.success.main}
-          className={alignRight ? classes.icon : cx(classes.iconCentered, classes.icon)}
+          className={alignRight ? classes.icon : cx(classes.icon, classes.iconCentered)}
         />
         <Typography variant="body2" component="span" className={classes.backInStockMessage}>
           {i18n.text('back_in_stock.we_will_remind_you')}
