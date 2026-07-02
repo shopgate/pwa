@@ -989,7 +989,7 @@ exports[`<TextField> should show the error message 1`] = `
           aria-atomic="true"
           aria-hidden={false}
           aria-live="assertive"
-          className="sg-1ln57h9-root errorText"
+          className="sg-1wdh9p0-root errorText"
           color="error"
           component="div"
           id="ariaError-test-input"
@@ -999,7 +999,7 @@ exports[`<TextField> should show the error message 1`] = `
             aria-atomic="true"
             aria-hidden={false}
             aria-live="assertive"
-            className="sg-1ln57h9-root errorText"
+            className="sg-1wdh9p0-root errorText"
             id="ariaError-test-input"
           >
             <Text

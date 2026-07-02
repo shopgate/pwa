@@ -164,37 +164,18 @@ exports[`<Sheet /> should open 1`] = `
                       role="heading"
                       tabIndex={0}
                     >
-                      <ForwardRef
-                        align="inherit"
+                      <ForwardRef(Typography)
                         className="sg-9uf2sj-titleText"
-                        color="initial"
                         component="div"
-                        display="initial"
-                        gutterBottom={false}
                         noWrap={true}
-                        paragraph={false}
                         variant="h3"
-                        variantMapping={
-                          {
-                            "body1": "p",
-                            "body2": "p",
-                            "h1": "h1",
-                            "h2": "h2",
-                            "h3": "h3",
-                            "h4": "h4",
-                            "h5": "h5",
-                            "h6": "h6",
-                            "subtitle1": "h6",
-                            "subtitle2": "h6",
-                          }
-                        }
                       >
                         <div
                           className="engage__typography engage__typography_h3 sg-10s498a-Typography-root-Typography-h3-Typography-noWrap-titleText"
                         >
                           Test-Title
                         </div>
-                      </ForwardRef>
+                      </ForwardRef(Typography)>
                     </div>
                   </GridItem>
                 </div>
@@ -582,37 +563,18 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                       role="heading"
                       tabIndex={0}
                     >
-                      <ForwardRef
-                        align="inherit"
+                      <ForwardRef(Typography)
                         className="sg-9uf2sj-titleText"
-                        color="initial"
                         component="div"
-                        display="initial"
-                        gutterBottom={false}
                         noWrap={true}
-                        paragraph={false}
                         variant="h3"
-                        variantMapping={
-                          {
-                            "body1": "p",
-                            "body2": "p",
-                            "h1": "h1",
-                            "h2": "h2",
-                            "h3": "h3",
-                            "h4": "h4",
-                            "h5": "h5",
-                            "h6": "h6",
-                            "subtitle1": "h6",
-                            "subtitle2": "h6",
-                          }
-                        }
                       >
                         <div
                           className="engage__typography engage__typography_h3 sg-10s498a-Typography-root-Typography-h3-Typography-noWrap-titleText"
                         >
                           Test-Title
                         </div>
-                      </ForwardRef>
+                      </ForwardRef(Typography)>
                     </div>
                   </GridItem>
                 </div>

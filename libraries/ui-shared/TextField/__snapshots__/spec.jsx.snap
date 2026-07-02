@@ -195,34 +195,15 @@ exports[`<TextField /> should focus the input 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -240,7 +221,7 @@ exports[`<TextField /> should focus the input 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -441,34 +422,15 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -486,7 +448,7 @@ exports[`<TextField /> should receive the correct value while typing 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -687,34 +649,15 @@ exports[`<TextField /> should render a simple text field 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -732,7 +675,7 @@ exports[`<TextField /> should render a simple text field 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -933,34 +876,15 @@ exports[`<TextField /> should render the text field as password 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -978,7 +902,7 @@ exports[`<TextField /> should render the text field as password 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -1179,34 +1103,15 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -1224,7 +1129,7 @@ exports[`<TextField /> should render the text field with a default value 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -1424,34 +1329,15 @@ exports[`<TextField /> should replace the error text with custom validation erro
       translate={true}
       validationError="Custom validation error"
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -1476,7 +1362,7 @@ exports[`<TextField /> should replace the error text with custom validation erro
             </span>
           </Translate>
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -1677,34 +1563,15 @@ exports[`<TextField /> should sanitize the input 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -1722,7 +1589,7 @@ exports[`<TextField /> should sanitize the input 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -1922,34 +1789,15 @@ exports[`<TextField /> should show the error message 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -1974,7 +1822,7 @@ exports[`<TextField /> should show the error message 1`] = `
             </span>
           </Translate>
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -2182,34 +2030,15 @@ exports[`<TextField /> should show the hint text 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -2227,7 +2056,7 @@ exports[`<TextField /> should show the hint text 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -2435,34 +2264,15 @@ exports[`<TextField /> should show the label 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -2480,7 +2290,7 @@ exports[`<TextField /> should show the label 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>
@@ -2695,34 +2505,15 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
       translate={true}
       validationError={null}
     >
-      <ForwardRef
-        align="inherit"
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
         className="sg-1xijcrm-error errorText"
         color="error"
         component="div"
-        display="initial"
-        gutterBottom={false}
         id="ariaError-test-input"
-        noWrap={false}
-        paragraph={false}
         variant="caption"
-        variantMapping={
-          {
-            "body1": "p",
-            "body2": "p",
-            "h1": "h1",
-            "h2": "h2",
-            "h3": "h3",
-            "h4": "h4",
-            "h5": "h5",
-            "h6": "h6",
-            "subtitle1": "h6",
-            "subtitle2": "h6",
-          }
-        }
       >
         <div
           aria-atomic="true"
@@ -2740,7 +2531,7 @@ exports[`<TextField /> should trigger the validation callback 1`] = `
             transform={null}
           />
         </div>
-      </ForwardRef>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </TextField>

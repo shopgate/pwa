@@ -36,7 +36,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
           </label>
           <_default
             autoComplete={false}
-            className="sg-1860m1m-input"
+            className="sg-lbexiq-input"
             onChange={[Function]}
             onFocusChange={[Function]}
             onSubmit={[Function]}
@@ -48,7 +48,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="sg-1860m1m-input"
+              className="sg-lbexiq-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -71,7 +71,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="sg-1860m1m-input simpleInput common__simple-input"
+                className="sg-lbexiq-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}
@@ -155,7 +155,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
           </label>
           <_default
             autoComplete={false}
-            className="sg-1860m1m-input"
+            className="sg-lbexiq-input"
             onChange={[Function]}
             onFocusChange={[Function]}
             onSubmit={[Function]}
@@ -167,7 +167,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="sg-1860m1m-input"
+              className="sg-lbexiq-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -190,7 +190,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="sg-1860m1m-input simpleInput common__simple-input"
+                className="sg-lbexiq-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}

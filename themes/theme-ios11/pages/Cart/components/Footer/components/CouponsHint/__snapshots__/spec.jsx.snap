@@ -2,30 +2,11 @@
 
 exports[`<CouponsHint /> should render as expected without any props 1`] = `
 <CouponsHint>
-  <ForwardRef
+  <ForwardRef(Typography)
     align="left"
     className="sg-19pkrcp-root"
-    color="initial"
-    component={null}
     display="block"
-    gutterBottom={false}
-    noWrap={false}
-    paragraph={false}
     variant="caption"
-    variantMapping={
-      {
-        "body1": "p",
-        "body2": "p",
-        "h1": "h1",
-        "h2": "h2",
-        "h3": "h3",
-        "h4": "h4",
-        "h5": "h5",
-        "h6": "h6",
-        "subtitle1": "h6",
-        "subtitle2": "h6",
-      }
-    }
   >
     <span
       className="engage__typography engage__typography_caption sg-qlwtwx-Typography-root-Typography-caption-Typography-alignLeft-Typography-displayBlock-root"
@@ -46,6 +27,6 @@ exports[`<CouponsHint /> should render as expected without any props 1`] = `
         </span>
       </Translate>
     </span>
-  </ForwardRef>
+  </ForwardRef(Typography)>
 </CouponsHint>
 `;

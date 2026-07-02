@@ -2,7 +2,7 @@
 
 exports[`Shipping label should render free shipping 1`] = `
 <div
-  class="sg-15e5xww-text engage__product__header__shipping"
+  class="engage__product__header__shipping sg-pm76gq-text-shipping"
   role="text"
 >
   <span>
@@ -13,7 +13,7 @@ exports[`Shipping label should render free shipping 1`] = `
 
 exports[`Shipping label should render shipping price 1`] = `
 <div
-  class="sg-15e5xww-text engage__product__header__shipping"
+  class="engage__product__header__shipping sg-pm76gq-text-shipping"
   role="text"
 >
   <span>

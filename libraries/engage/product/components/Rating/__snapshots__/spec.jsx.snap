@@ -2,7 +2,7 @@
 
 exports[`Rating (product header) Rendering should render rating when data is available 1`] = `
 <div
-  class="sg-1x07a2n-container"
+  class="sg-1urk15m-container"
   role="presentation"
 >
   <span

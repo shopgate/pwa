@@ -3,32 +3,13 @@
 exports[`<Content /> should not render if no content is passed 1`] = `""`;
 
 exports[`<Content /> should render content components 1`] = `
-<ForwardRef
+<ForwardRef(Typography)
   align="center"
   className="sg-1u4u647-body"
-  color="initial"
   component="div"
-  display="initial"
-  gutterBottom={false}
   id="basicDialogDesc"
-  noWrap={false}
-  paragraph={false}
   variant="body2"
-  variantMapping={
-    {
-      "body1": "p",
-      "body2": "p",
-      "h1": "h1",
-      "h2": "h2",
-      "h3": "h3",
-      "h4": "h4",
-      "h5": "h5",
-      "h6": "h6",
-      "subtitle1": "h6",
-      "subtitle2": "h6",
-    }
-  }
 >
   Hello World
-</ForwardRef>
+</ForwardRef(Typography)>
 `;

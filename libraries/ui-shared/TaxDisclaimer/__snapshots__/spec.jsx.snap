@@ -20,26 +20,23 @@ exports[`<TaxDisclaimer /> should display the component 1`] = `
     }
   }
 >
-  <div
+  <Typography
+    align="left"
     aria-hidden={true}
-    className="ui-shared__tax-disclaimer"
+    className="mock-class-text ui-shared__tax-disclaimer"
+    component="div"
     data-test-id="taxDisclaimer"
+    display="block"
+    variant="caption"
   >
-    <Typography
-      align="left"
-      className="mock-class-text"
-      display="block"
-      variant="caption"
-    >
-      <Text
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={{}}
-        role={null}
-        string="product.tax_disclaimer"
-        transform={null}
-      />
-    </Typography>
-  </div>
+    <Text
+      acceptPlainTextWithPlaceholders={false}
+      className={null}
+      params={{}}
+      role={null}
+      string="product.tax_disclaimer"
+      transform={null}
+    />
+  </Typography>
 </SurroundPortals>
 `;

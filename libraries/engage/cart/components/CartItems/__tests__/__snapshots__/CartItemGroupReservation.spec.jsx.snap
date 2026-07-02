@@ -26,7 +26,7 @@ exports[`engage > cart > components > CartItemGroupReservation should render acc
   </div>
   <div>
     <div
-      class="sg-1rfsj14-title"
+      font-weight="bold"
     >
       locations.method.ropis
     </div>
@@ -53,7 +53,7 @@ exports[`engage > cart > components > CartItemGroupReservation should render onl
     </div>
     <div>
       <div
-        class="sg-1rfsj14-title"
+        font-weight="bold"
       >
         locations.method.ropis
       </div>

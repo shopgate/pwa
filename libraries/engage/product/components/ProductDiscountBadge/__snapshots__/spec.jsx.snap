@@ -24,7 +24,8 @@ exports[`<ProductDiscountBadge /> should render with discount 1`] = `
       >
         <span
           aria-hidden="true"
-          class="theme__discount-badge sg-uf8b3f-small-badge"
+          class="theme__discount-badge sg-13s9a7b-small-badge"
+          font-weight="bold"
         >
           -12%
         </span>

@@ -3,33 +3,13 @@
 exports[`<Title /> should not render without a title 1`] = `""`;
 
 exports[`<Title /> should render with a title 1`] = `
-<ForwardRef
-  align="inherit"
+<ForwardRef(Typography)
   aria-level="2"
   className="sg-bawed5-title"
-  color="initial"
   component="div"
-  display="initial"
-  gutterBottom={false}
   id="basicDialogTitle"
-  noWrap={false}
-  paragraph={false}
   role="heading"
   variant="h3"
-  variantMapping={
-    {
-      "body1": "p",
-      "body2": "p",
-      "h1": "h1",
-      "h2": "h2",
-      "h3": "h3",
-      "h4": "h4",
-      "h5": "h5",
-      "h6": "h6",
-      "subtitle1": "h6",
-      "subtitle2": "h6",
-    }
-  }
 >
   <Ellipsis
     className=""
@@ -44,5 +24,5 @@ exports[`<Title /> should render with a title 1`] = `
       transform={null}
     />
   </Ellipsis>
-</ForwardRef>
+</ForwardRef(Typography)>
 `;

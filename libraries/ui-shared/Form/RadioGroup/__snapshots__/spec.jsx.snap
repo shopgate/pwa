@@ -62,30 +62,18 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Typography
+            <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
               className="sg-wy4z7j-label label"
-              component="div"
               id="foo-label"
-               
+              params={{}}
+              role={null}
+              string="foo"
+              transform={null}
             >
-              <div
-                aria-hidden={true}
-                className="sg-wy4z7j-label label"
-                id="foo-label"
-              >
-                <Text
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="foo"
-                  transform={null}
-                >
-                  foo
-                </Text>
-              </div>
-            </Typography>
+              foo
+            </Text>
           </label>
         </RadioItem>
       </div>
@@ -156,30 +144,18 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Typography
+            <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
               className="sg-wy4z7j-label label"
-              component="div"
               id="foo-label"
-               
+              params={{}}
+              role={null}
+              string="foo"
+              transform={null}
             >
-              <div
-                aria-hidden={true}
-                className="sg-wy4z7j-label label"
-                id="foo-label"
-              >
-                <Text
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="foo"
-                  transform={null}
-                >
-                  foo
-                </Text>
-              </div>
-            </Typography>
+              foo
+            </Text>
           </label>
         </RadioItem>
         <RadioItem
@@ -208,30 +184,18 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Typography
+            <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
               className="sg-wy4z7j-label label"
-              component="div"
               id="bar-label"
-               
+              params={{}}
+              role={null}
+              string="bar"
+              transform={null}
             >
-              <div
-                aria-hidden={true}
-                className="sg-wy4z7j-label label"
-                id="bar-label"
-              >
-                <Text
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="bar"
-                  transform={null}
-                >
-                  bar
-                </Text>
-              </div>
-            </Typography>
+              bar
+            </Text>
           </label>
         </RadioItem>
       </div>
@@ -302,30 +266,18 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Typography
+            <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
               className="sg-wy4z7j-label label"
-              component="div"
               id="foo-label"
-               
+              params={{}}
+              role={null}
+              string="foo"
+              transform={null}
             >
-              <div
-                aria-hidden={true}
-                className="sg-wy4z7j-label label"
-                id="foo-label"
-              >
-                <Text
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="foo"
-                  transform={null}
-                >
-                  foo
-                </Text>
-              </div>
-            </Typography>
+              foo
+            </Text>
           </label>
         </RadioItem>
       </div>
@@ -437,30 +389,18 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Typography
+            <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
               className="sg-wy4z7j-label label"
-              component="div"
               id="foo-label"
-               
+              params={{}}
+              role={null}
+              string="foo"
+              transform={null}
             >
-              <div
-                aria-hidden={true}
-                className="sg-wy4z7j-label label"
-                id="foo-label"
-              >
-                <Text
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="foo"
-                  transform={null}
-                >
-                  foo
-                </Text>
-              </div>
-            </Typography>
+              foo
+            </Text>
           </label>
         </RadioItem>
       </div>
@@ -531,30 +471,18 @@ exports[`<RadioGroup /> should use default value 1`] = `
               onChange={[Function]}
               type="radio"
             />
-            <Typography
+            <Text
+              acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
               className="sg-wy4z7j-label label"
-              component="div"
               id="foo-label"
-               
+              params={{}}
+              role={null}
+              string="foo"
+              transform={null}
             >
-              <div
-                aria-hidden={true}
-                className="sg-wy4z7j-label label"
-                id="foo-label"
-              >
-                <Text
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="foo"
-                  transform={null}
-                >
-                  foo
-                </Text>
-              </div>
-            </Typography>
+              foo
+            </Text>
           </label>
         </RadioItem>
       </div>

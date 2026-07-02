@@ -31,33 +31,13 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
           <Title
             title="modal.title_error"
           >
-            <ForwardRef
-              align="inherit"
+            <ForwardRef(Typography)
               aria-level="2"
               className="sg-bawed5-title"
-              color="initial"
               component="div"
-              display="initial"
-              gutterBottom={false}
               id="basicDialogTitle"
-              noWrap={false}
-              paragraph={false}
               role="heading"
               variant="h3"
-              variantMapping={
-                {
-                  "body1": "p",
-                  "body2": "p",
-                  "h1": "h1",
-                  "h2": "h2",
-                  "h3": "h3",
-                  "h4": "h4",
-                  "h5": "h5",
-                  "h6": "h6",
-                  "subtitle1": "h6",
-                  "subtitle2": "h6",
-                }
-              }
             >
               <div
                 aria-level="2"
@@ -98,7 +78,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                   </Dotdotdot>
                 </Ellipsis>
               </div>
-            </ForwardRef>
+            </ForwardRef(Typography)>
           </Title>
           <Content
             content={
@@ -192,33 +172,13 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
           <Title
             title="modal.title_error"
           >
-            <ForwardRef
-              align="inherit"
+            <ForwardRef(Typography)
               aria-level="2"
               className="sg-bawed5-title"
-              color="initial"
               component="div"
-              display="initial"
-              gutterBottom={false}
               id="basicDialogTitle"
-              noWrap={false}
-              paragraph={false}
               role="heading"
               variant="h3"
-              variantMapping={
-                {
-                  "body1": "p",
-                  "body2": "p",
-                  "h1": "h1",
-                  "h2": "h2",
-                  "h3": "h3",
-                  "h4": "h4",
-                  "h5": "h5",
-                  "h6": "h6",
-                  "subtitle1": "h6",
-                  "subtitle2": "h6",
-                }
-              }
             >
               <div
                 aria-level="2"
@@ -259,7 +219,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                   </Dotdotdot>
                 </Ellipsis>
               </div>
-            </ForwardRef>
+            </ForwardRef(Typography)>
           </Title>
           <Content
             content={

@@ -10,37 +10,18 @@ exports[`TabBar favorites action - behavior should cap display at MAX when numbe
     }
   }
 >
-  <ForwardRef
-    align="inherit"
-    className="sg-141s9fq-root theme__tab-bar__favorites-icon-badge theme__badge"
-    color="initial"
+  <ForwardRef(Typography)
+    className="sg-1fzif63-root theme__tab-bar__favorites-icon-badge theme__badge"
     component="div"
-    display="initial"
-    gutterBottom={false}
-    noWrap={false}
-    paragraph={false}
+    fontWeight="bold"
     variant="caption"
-    variantMapping={
-      {
-        "body1": "p",
-        "body2": "p",
-        "h1": "h1",
-        "h2": "h2",
-        "h3": "h3",
-        "h4": "h4",
-        "h5": "h5",
-        "h6": "h6",
-        "subtitle1": "h6",
-        "subtitle2": "h6",
-      }
-    }
   >
     <div
-      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-2rsbku-Typography-root-Typography-caption-root"
+      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-5ld4iv-Typography-root-Typography-caption-Typography-fontWeightBold-root"
     >
       999+
     </div>
-  </ForwardRef>
+  </ForwardRef(Typography)>
 </FavoritesIconBadge>
 `;
 
@@ -54,37 +35,18 @@ exports[`TabBar favorites action - behavior should show count when number is cha
     }
   }
 >
-  <ForwardRef
-    align="inherit"
-    className="sg-141s9fq-root theme__tab-bar__favorites-icon-badge theme__badge"
-    color="initial"
+  <ForwardRef(Typography)
+    className="sg-1fzif63-root theme__tab-bar__favorites-icon-badge theme__badge"
     component="div"
-    display="initial"
-    gutterBottom={false}
-    noWrap={false}
-    paragraph={false}
+    fontWeight="bold"
     variant="caption"
-    variantMapping={
-      {
-        "body1": "p",
-        "body2": "p",
-        "h1": "h1",
-        "h2": "h2",
-        "h3": "h3",
-        "h4": "h4",
-        "h5": "h5",
-        "h6": "h6",
-        "subtitle1": "h6",
-        "subtitle2": "h6",
-      }
-    }
   >
     <div
-      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-2rsbku-Typography-root-Typography-caption-root"
+      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-5ld4iv-Typography-root-Typography-caption-Typography-fontWeightBold-root"
     >
       99
     </div>
-  </ForwardRef>
+  </ForwardRef(Typography)>
 </FavoritesIconBadge>
 `;
 
@@ -111,37 +73,18 @@ exports[`TabBar favorites action should render exact number 1`] = `
         showWishlistItemsCountBadge={true}
         widgetSettings={{}}
       >
-        <ForwardRef
-          align="inherit"
-          className="sg-141s9fq-root theme__tab-bar__favorites-icon-badge theme__badge"
-          color="initial"
+        <ForwardRef(Typography)
+          className="sg-1fzif63-root theme__tab-bar__favorites-icon-badge theme__badge"
           component="div"
-          display="initial"
-          gutterBottom={false}
-          noWrap={false}
-          paragraph={false}
+          fontWeight="bold"
           variant="caption"
-          variantMapping={
-            {
-              "body1": "p",
-              "body2": "p",
-              "h1": "h1",
-              "h2": "h2",
-              "h3": "h3",
-              "h4": "h4",
-              "h5": "h5",
-              "h6": "h6",
-              "subtitle1": "h6",
-              "subtitle2": "h6",
-            }
-          }
         >
           <div
-            className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-2rsbku-Typography-root-Typography-caption-root"
+            className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-5ld4iv-Typography-root-Typography-caption-Typography-fontWeightBold-root"
           >
             1
           </div>
-        </ForwardRef>
+        </ForwardRef(Typography)>
       </FavoritesIconBadge>
     </Connect(FavoritesIconBadge)>
   </WithWidgetSettings(Connect(FavoritesIconBadge))>
