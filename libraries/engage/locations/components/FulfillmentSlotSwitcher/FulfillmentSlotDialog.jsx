@@ -36,7 +36,7 @@ const mapDispatchToProps = dispatch => ({
   fetch: locationCode => dispatch(fetchFulfillmentSlots(locationCode)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     display: 'flex',
@@ -69,15 +69,15 @@ const useStyles = makeStyles()({
     margin: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    border: '1px solid var(--color-secondary)',
+    border: `1px solid ${theme.palette.secondary.main}`,
     borderRadius: 4,
-    background: '#fff',
+    background: theme.palette.common.white,
     transition: 'background, color 500ms',
     outline: 'none',
   },
   buttonActive: {
-    color: '#fff',
-    background: 'var(--color-secondary)',
+    color: theme.palette.common.white,
+    background: theme.palette.secondary.main,
   },
   buttonDate: {
     width: 124,
@@ -96,11 +96,11 @@ const useStyles = makeStyles()({
   buttonDisabled: {
     cursor: 'blocked',
     pointerEvents: 'none',
-    border: '1px solid #444',
+    border: `1px solid ${theme.palette.action.disabled}`,
   },
   buttonStrikethrough: {
     position: 'absolute',
-    background: '#444',
+    background: theme.palette.action.disabled,
     left: 0,
     right: 0,
     height: 2,
@@ -111,7 +111,7 @@ const useStyles = makeStyles()({
     bottom: 'calc(-1 * env(safe-area-inset-bottom))',
     margin: -16,
     marginTop: 8,
-    background: '#fff',
+    background: theme.palette.background.surface,
     padding: 16,
     paddingBottom: 24,
   },
@@ -120,7 +120,7 @@ const useStyles = makeStyles()({
       width: '100%',
     },
   },
-});
+}));
 
 /**
  * Get Month day time.

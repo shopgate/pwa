@@ -57,8 +57,8 @@ export type ComponentsDefaultsFromSchema<TSchema, TTheme> =
   TSchema extends Leaf ? ComponentTokenValue<TTheme>
   : TSchema extends readonly (infer U)[] ? readonly ComponentsDefaultsFromSchema<U, TTheme>[]
   : TSchema extends object
-    ? { [K in keyof TSchema]: ComponentsDefaultsFromSchema<TSchema[K], TTheme> }
-    : ComponentTokenValue<TTheme>;
+  ? { [K in keyof TSchema]: ComponentsDefaultsFromSchema<TSchema[K], TTheme> }
+  : ComponentTokenValue<TTheme>;
 
 /**
  * Derives the **override** components type from `componentsSchema`.
@@ -76,8 +76,8 @@ export type ComponentsOverrideFromSchema<TSchema, TTheme> =
   TSchema extends Leaf ? ComponentTokenValue<TTheme>
   : TSchema extends readonly (infer U)[] ? readonly ComponentsOverrideFromSchema<U, TTheme>[]
   : TSchema extends object
-    ? { [K in keyof TSchema]?: ComponentsOverrideFromSchema<TSchema[K], TTheme> }
-    : ComponentTokenValue<TTheme>;
+  ? { [K in keyof TSchema]?: ComponentsOverrideFromSchema<TSchema[K], TTheme> }
+  : ComponentTokenValue<TTheme>;
 
 /**
  * Derives the flattened component vars type from `componentsSchema`.
@@ -103,9 +103,9 @@ export type ComponentsOverrideFromSchema<TSchema, TTheme> =
  */
 export type ComponentVarsFromSchema<TSchema> = {
   [K in keyof TSchema]:
-    TSchema[K] extends { vars: infer TVars }
-      ? ComponentsFromSchema<TVars>
-      : never;
+  TSchema[K] extends { vars: infer TVars }
+  ? ComponentsFromSchema<TVars>
+  : never;
 };
 
 /**
@@ -115,6 +115,13 @@ export type ComponentVarsFromSchema<TSchema> = {
  * for the theme components.
  */
 export const componentsSchema = {
+  border: {
+    vars: {
+      light: '',
+      medium: '',
+      dark: '',
+    },
+  },
   price: {
     vars: {
       color: '',
@@ -125,6 +132,67 @@ export const componentsSchema = {
       borderRadius: '',
       color: '',
       textColor: '',
+    },
+  },
+  input: {
+    vars: {
+      background: '',
+      border: '',
+    },
+  },
+  separatorLine: {
+    vars: {
+      borderColor: '',
+    },
+  },
+  ctaButton: {
+    vars: {
+      background: '',
+      color: '',
+    },
+  },
+  discountBadge: {
+    vars: {
+      background: '',
+    },
+  },
+  snackbar: {
+    vars: {
+      background: '',
+      contrastText: '',
+    },
+  },
+  tabBar: {
+    vars: {
+      background: '',
+      boxShadow: '',
+      minHeight: '',
+      border: '',
+      inactive: '',
+      active: '',
+      floatingBorderRadius: '',
+      floatingBoxShadow: '',
+      floatingMinHeight: '',
+      badgeColor: '',
+      badgeBackground: '',
+      badgeBorderRadius: '',
+      badgeTop: '',
+      badgeLeft: '',
+    },
+  },
+  ratingStars: {
+    vars: {
+      filled: '',
+      empty: '',
+    },
+  },
+  swiper: {
+    vars: {
+      paginationBulletColor: '',
+      paginationBulletActiveColor: '',
+      paginationFractionBackground: '',
+      paginationProgressbarBackground: '',
+      paginationProgressbarActiveColor: '',
     },
   },
 } as const;
@@ -138,9 +206,76 @@ export const componentsSchema = {
  * - functions get proper `Theme` typing
  */
 export const componentsDefaults = {
+  border: {
+    vars: {
+      light: '#F2F2F2',
+      medium: '#b5b5b5',
+      dark: '#747474',
+    },
+  },
   price: {
     vars: {
       color: t => t.palette.primary.main,
+    },
+  },
+  input: {
+    vars: {
+      background: '#F2F2F2',
+      border: '#CCCCCC',
+    },
+  },
+  separatorLine: {
+    vars: {
+      borderColor: '#EBEBEF',
+    },
+  },
+  ctaButton: {
+    vars: {
+      background: t => t.palette.primary.main,
+      color: t => t.palette.primary.contrastText,
+    },
+  },
+  discountBadge: {
+    vars: {
+      background: '#857500',
+    },
+  },
+  snackbar: {
+    vars: {
+      background: '#323232',
+    },
+  },
+  tabBar: {
+    vars: {
+      background: '#FFFFFF',
+      boxShadow: '0 -1px 0 0 rgba(0, 0, 0, 0.1)',
+      minHeight: '0px',
+      border: '#E6E6E6',
+      inactive: '#747474',
+      active: t => t.palette.secondary.main,
+      floatingBorderRadius: '16px',
+      floatingBoxShadow: '0 0 12px rgba(0, 0, 0, 0.24)',
+      floatingMinHeight: '59px',
+      badgeColor: '#FFFFFF',
+      badgeBackground: t => t.palette.secondary.main,
+      badgeBorderRadius: '8px',
+      badgeTop: '-8px',
+      badgeLeft: 'calc(50% + 20px)',
+    },
+  },
+  ratingStars: {
+    vars: {
+      filled: t => t.palette.primary.main,
+      empty: '#CCCCCC',
+    },
+  },
+  swiper: {
+    vars: {
+      paginationBulletColor: t => t.palette.grey.medium,
+      paginationBulletActiveColor: t => t.palette.grey.dark,
+      paginationFractionBackground: t => t.palette.grey.light,
+      paginationProgressbarBackground: t => t.palette.grey.light,
+      paginationProgressbarActiveColor: t => t.palette.common.black,
     },
   },
 } satisfies ComponentsDefaults;

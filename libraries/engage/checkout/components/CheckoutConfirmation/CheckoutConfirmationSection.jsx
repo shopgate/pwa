@@ -2,17 +2,15 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Card, TextLink } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { i18n } from '../../../core/helpers/i18n';
 
-const { colors } = themeConfig;
 const useStyles = makeStyles()(theme => ({
   wrapper: {
     padding: theme.spacing(2.5, 2, 0, 2),
   },
   headline: {
-    color: colors.shade3,
+    color: theme.palette.grey.medium,
     fontSize: '1rem',
     fontWeight: 'normal',
     textTransform: 'uppercase',
@@ -27,17 +25,17 @@ const useStyles = makeStyles()(theme => ({
     } : {}),
   },
   link: {
-    color: 'var(--color-primary) !important',
+    color: `${theme.palette.primary.main} !important`,
   },
   card: {
     fontSize: '0.875rem',
     lineHeight: '1.25rem',
     margin: 0,
     padding: theme.spacing(2),
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     flex: '1 0 auto',
     ...(!isIOSTheme() ? {
-      background: 'var(--color-background-accent)',
+      background: theme.palette.background.emphasized,
       boxShadow: 'none',
     } : {}),
   },
@@ -68,7 +66,7 @@ const useStyles = makeStyles()(theme => ({
     marginLeft: 0,
     whiteSpace: 'pre-line',
     wordBreak: 'break-all',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   table: {
     color: theme.palette.text.primary,
@@ -86,7 +84,7 @@ const useStyles = makeStyles()(theme => ({
     ' tr:last-of-type td': {
       fontSize: '1rem',
       paddingTop: 8,
-      borderTop: '1px solid #979797',
+      borderTop: `1px solid ${theme.components.border.medium}`,
       fontWeight: 'bold',
     },
   },

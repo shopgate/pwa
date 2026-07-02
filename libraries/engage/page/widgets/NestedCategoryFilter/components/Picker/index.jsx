@@ -5,16 +5,13 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core/helpers';
 import Sheet from './components/Sheet';
 import { getCategoriesById } from '../../../CategoryList/selectors';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   button: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',
@@ -27,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
     cursor: 'pointer',
   },
   buttonDisabled: {
-    color: colors.shade4,
+    color: theme.palette.grey.medium,
     cursor: 'not-allowed',
   },
   label: {

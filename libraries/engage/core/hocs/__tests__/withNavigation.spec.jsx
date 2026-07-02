@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import {
   push, pop, replace, reset, update,
 } from '../../router/helpers';
@@ -13,7 +13,9 @@ const navigationProps = {
   historyUpdate: update,
 };
 
-const MockComponent = () => null;
+const mockWrappedComponent = jest.fn(props => (
+  <pre data-testid="wrapped-props">{JSON.stringify(props)}</pre>
+));
 
 describe('engage > core > hocs > withNavigation', () => {
   beforeEach(() => {
@@ -21,20 +23,24 @@ describe('engage > core > hocs > withNavigation', () => {
   });
 
   it('should inject the navigation properties into the component', () => {
-    const ComposedComponent = withNavigation(MockComponent);
-    const wrapper = mount(<ComposedComponent someProp />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).props()).toEqual({
+    const ComposedComponent = withNavigation(mockWrappedComponent);
+    const { container } = render(<ComposedComponent someProp />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       someProp: true,
       ...navigationProps,
     });
   });
 
   it('should inject a single property with the navigation into the component', () => {
-    const ComposedComponent = withNavigation(MockComponent, { prop: 'navigation' });
-    const wrapper = mount(<ComposedComponent someProp />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).props()).toEqual({
+    const ComposedComponent = withNavigation(mockWrappedComponent, { prop: 'navigation' });
+    const { container } = render(<ComposedComponent someProp />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       someProp: true,
       navigation: {
         ...navigationProps,

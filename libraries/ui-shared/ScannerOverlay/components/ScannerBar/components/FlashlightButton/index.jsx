@@ -7,7 +7,7 @@ import { SCANNER_FLASH } from '@shopgate/engage/scanner/constants';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     alignItems: 'center',
     color: 'inherit',
@@ -24,9 +24,9 @@ const useStyles = makeStyles()({
   },
   icon: {
     boxSizing: 'content-box',
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
   },
-});
+}));
 
 /**
  * Renders the flashlight button for the scanner bar.

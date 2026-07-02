@@ -28,7 +28,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
     >
       <div
         aria-hidden={true}
-        className="placeholder sg-mbc0wh-placeholder-placeholderInactive"
+        className="placeholder sg-8wydk2-placeholder-placeholderInactive"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -56,7 +56,7 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       labelStatic={false}
     >
       <label
-        className="label floating sg-knep4g-label-labelFloating"
+        className="label floating sg-9ajhko-label-labelFloating"
         htmlFor="test-input"
       >
         <Translate
@@ -81,13 +81,13 @@ exports[`<FormElement /> Should hide placeholder with hasValue 1`] = `
       isFocused={false}
     >
       <div
-        className="sg-titfmn-underlineWrapper underline"
+        className="sg-1fzvff5-underlineWrapper underline"
       >
         <div
           className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-primary, #fa5400)",
+              "borderBottomColor": "var(--sg-palette-primary-main)",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -123,13 +123,13 @@ exports[`<FormElement /> should render a focused form element 1`] = `
       isFocused={true}
     >
       <div
-        className="sg-titfmn-underlineWrapper underline"
+        className="sg-1fzvff5-underlineWrapper underline"
       >
         <div
           className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-primary, #fa5400)",
+              "borderBottomColor": "var(--sg-palette-primary-main)",
             }
           }
         />
@@ -167,13 +167,13 @@ exports[`<FormElement /> should render a form element with 1 child 1`] = `
       isFocused={false}
     >
       <div
-        className="sg-titfmn-underlineWrapper underline"
+        className="sg-1fzvff5-underlineWrapper underline"
       >
         <div
           className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-primary, #fa5400)",
+              "borderBottomColor": "var(--sg-palette-primary-main)",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -209,13 +209,13 @@ exports[`<FormElement /> should render a form element with no children 1`] = `
       isFocused={false}
     >
       <div
-        className="sg-titfmn-underlineWrapper underline"
+        className="sg-1fzvff5-underlineWrapper underline"
       >
         <div
           className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-primary, #fa5400)",
+              "borderBottomColor": "var(--sg-palette-primary-main)",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -251,7 +251,7 @@ exports[`<FormElement /> should show the error message 1`] = `
       isFocused={false}
     >
       <div
-        className="sg-titfmn-underlineWrapper underline"
+        className="sg-1fzvff5-underlineWrapper underline"
       >
         <div
           className="sg-ll3grb-underline"
@@ -326,7 +326,7 @@ exports[`<FormElement /> should show the label 1`] = `
     >
       <div
         aria-hidden={true}
-        className="sg-1m15d1c-placeholder placeholder"
+        className="sg-14fp90p-placeholder placeholder"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -354,7 +354,7 @@ exports[`<FormElement /> should show the label 1`] = `
       labelStatic={false}
     >
       <label
-        className="label sg-smo66e-label-labelRegular"
+        className="label sg-98zxjx-label-labelRegular"
         htmlFor="test-input"
       >
         <Translate
@@ -379,13 +379,13 @@ exports[`<FormElement /> should show the label 1`] = `
       isFocused={false}
     >
       <div
-        className="sg-titfmn-underlineWrapper underline"
+        className="sg-1fzvff5-underlineWrapper underline"
       >
         <div
           className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-primary, #fa5400)",
+              "borderBottomColor": "var(--sg-palette-primary-main)",
               "transform": "scale3d(0,1,1)",
             }
           }
@@ -424,7 +424,7 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
     >
       <div
         aria-hidden={true}
-        className="sg-1m15d1c-placeholder placeholder"
+        className="sg-14fp90p-placeholder placeholder"
       >
         <Translate
           acceptPlainTextWithPlaceholders={false}
@@ -448,13 +448,13 @@ exports[`<FormElement /> should show the placeholder text 1`] = `
       isFocused={false}
     >
       <div
-        className="sg-titfmn-underlineWrapper underline"
+        className="sg-1fzvff5-underlineWrapper underline"
       >
         <div
           className="sg-ll3grb-underline"
           style={
             {
-              "borderBottomColor": "var(--color-primary, #fa5400)",
+              "borderBottomColor": "var(--sg-palette-primary-main)",
               "transform": "scale3d(0,1,1)",
             }
           }

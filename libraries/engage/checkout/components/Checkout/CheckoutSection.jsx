@@ -22,13 +22,13 @@ const useStyles = makeStyles()(theme => ({
     overflow: 'inherit !important',
     marginBottom: theme.spacing(2),
     boxShadow: 'none',
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(1, 2),
     margin: 0,
   },
   cardWithForm: {
     background: 'inherit !important',
-    boxShadow: 'none  !important',
+    boxShadow: 'none !important',
     padding: '0px !important',
   },
   table: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles()(theme => ({
     },
     ' tr:last-of-type td': {
       paddingTop: 8,
-      borderTop: '1px solid #979797',
+      borderTop: `1px solid ${theme.components.border.medium}`,
       fontWeight: '600',
     },
   },
@@ -56,7 +56,7 @@ const useStyles = makeStyles()(theme => ({
   },
   link: {
     fontSize: '0.875rem',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     textTransform: 'uppercase',
   },
   actions: {

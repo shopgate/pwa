@@ -6,7 +6,7 @@ import UncheckedIcon from '@shopgate/pwa-ui-shared/icons/RadioUncheckedIcon';
 import { Ripple } from '@shopgate/engage/components';
 import { useRadioGroup } from '../RadioGroup';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'inline-flex',
     alignItems: 'inherit',
@@ -36,7 +36,7 @@ const useStyles = makeStyles()({
     width: '100%',
   },
   radioChecked: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   radioDisabled: {
     opacity: 0.5,
@@ -45,7 +45,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: 12,
   },
-});
+}));
 
 /**
  * The Radio component
@@ -61,7 +61,7 @@ const Radio = ({
   value: valueProp,
   attributes,
 }) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx, theme } = useStyles();
   const radioGroup = useRadioGroup();
 
   let name = nameProp;
@@ -84,7 +84,7 @@ const Radio = ({
 
   return (
     <span className={cx(classes.root, classNamesProp.root)}>
-      <Ripple className={classes.ripple} color="var(--color-primary)">
+      <Ripple className={classes.ripple} color={theme.palette.primary.main}>
         <input
           className={classes.input}
           type="radio"

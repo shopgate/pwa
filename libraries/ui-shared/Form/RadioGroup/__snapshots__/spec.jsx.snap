@@ -460,7 +460,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
             htmlFor="foo"
           >
             <CheckedIcon
-              className="checkedIcon sg-1cj7vn2-active-icon"
+              className="checkedIcon sg-1uhd729-active-icon"
             />
             <input
               aria-labelledby="foo-label"

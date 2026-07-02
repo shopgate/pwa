@@ -2,7 +2,6 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -18,12 +17,10 @@ import PaymentBarCheckoutButton from './PaymentBarCheckoutButton';
 import PaymentBarPromotionCoupons from './PaymentBarPromotionCoupons';
 import PaymentBarAppliedPromotions from './PaymentBarAppliedPromotions';
 
-const { colors, shadows } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   wrapper: {
-    background: colors.light,
-    boxShadow: shadows.cart.paymentBar,
+    background: theme.palette.background.surface,
+    boxShadow: '0 -4px 5px -2px rgba(0, 0, 0, 0.1)',
     position: 'relative',
     zIndex: 2,
     paddingBottom: 'var(--safe-area-inset-bottom)',
@@ -42,7 +39,7 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
   },
   checkoutButtonContainer: {
-    background: colors.light,
+    background: theme.palette.background.surface,
     alignItems: 'center',
     padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
     position: 'relative',

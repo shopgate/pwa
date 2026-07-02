@@ -55,7 +55,7 @@ const useStyles = makeStyles()(theme => ({
     fontWeight: '600',
   },
   others: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: 16,
   },
   defaultLabel: {

@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import Input from '@shopgate/pwa-common/components/Input';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import MagnifierIcon from '../../../../../icons/MagnifierIcon';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -27,13 +26,13 @@ const useStyles = makeStyles()({
     padding: '4px 10px 4px 30px',
     lineHeight: '28px',
     outline: 'none',
-    background: themeColors.shade7,
+    background: theme.palette.grey.light,
     verticalAlign: 'middle',
     WebkitAppearance: 'none',
   },
   label: {
     alignItems: 'center',
-    color: themeColors.shade3,
+    color: theme.palette.grey.medium,
     display: 'flex',
     height: '36px',
     position: 'absolute',
@@ -42,10 +41,10 @@ const useStyles = makeStyles()({
   },
   icon: {
     padding: '0 6px',
-    color: themeColors.shade3,
+    color: theme.palette.grey.medium,
     fontSize: '1.235rem',
   },
-});
+}));
 
 /**
  * @param {Object} props Props.

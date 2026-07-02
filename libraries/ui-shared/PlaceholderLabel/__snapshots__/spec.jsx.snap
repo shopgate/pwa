@@ -19,7 +19,7 @@ exports[`<PlaceholderLabel /> should render placeholder  1`] = `
   style={null}
 >
   <div
-    className="sg-a61ihj-label ui-shared__placeholder-label"
+    className="sg-yr36ua-label ui-shared__placeholder-label"
     style={null}
   />
 </PlaceholderLabel>

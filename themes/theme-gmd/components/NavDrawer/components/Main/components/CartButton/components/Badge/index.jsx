@@ -8,9 +8,9 @@ const useStyles = makeStyles()((theme) => {
   const size = theme.spacing(2) * 1.125;
   return {
     badge: {
-      backgroundColor: 'var(--color-primary)',
+      backgroundColor: theme.palette.primary.main,
       borderRadius: size,
-      color: 'var(--color-primary-contrast)',
+      color: theme.palette.primary.contrastText,
       fontSize: 12,
       fontWeight: 700,
       height: size,

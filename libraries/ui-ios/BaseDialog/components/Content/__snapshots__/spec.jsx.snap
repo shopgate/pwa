@@ -4,7 +4,7 @@ exports[`<Content /> should not render if no content is passed 1`] = `""`;
 
 exports[`<Content /> should render content components 1`] = `
 <div
-  className="sg-lveuu7-body"
+  className="sg-1nb3vww-body"
   id="basicDialogDesc"
 >
   Hello World

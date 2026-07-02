@@ -7,17 +7,9 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { ProductImage, ProductBadges, ProductName } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
-
-const { colors } = themeConfig;
-
-const paneBase = {
-  width: '50%',
-  background: colors.light,
-};
 
 const liveshoppingCardStyle = {
   margin: '5px 15px 10px',
@@ -25,10 +17,12 @@ const liveshoppingCardStyle = {
 
 const useStyles = makeStyles()(theme => ({
   image: {
-    ...paneBase,
+    width: '50%',
+    background: theme.palette.background.surface,
   },
   infoPane: {
-    ...paneBase,
+    width: '50%',
+    background: theme.palette.background.surface,
     padding: 16,
     display: 'flex',
     flexDirection: 'column',
@@ -48,7 +42,7 @@ const useStyles = makeStyles()(theme => ({
   },
   timer: {
     fontSize: '0.875rem',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontStyle: 'italic',
     fontWeight: 500,
   },
@@ -118,7 +112,7 @@ function LiveshoppingItem({
                     className={classes.badgesPortal}
                   >
                     {price.discount > 0 &&
-                    <Discount discount={price.discount} productId={productId} />}
+                      <Discount discount={price.discount} productId={productId} />}
                   </ProductBadges>
                   <ProductName
                     name={name}
@@ -127,7 +121,7 @@ function LiveshoppingItem({
                     rows={2}
                   />
                   {timeout &&
-                  <CountdownTimer className={classes.timer} timeout={timeout / 1000} />}
+                    <CountdownTimer className={classes.timer} timeout={timeout / 1000} />}
                 </div>
                 <Price price={price} />
               </Grid.Item>

@@ -2,22 +2,15 @@ import React, {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import Color from 'color';
 import { config } from 'react-spring';
 import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeColors, themeShadows } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const defaultToast = {};
 
-const backgroundColor = themeColors.lightDark;
-const buttonColor = themeColors.accent;
-const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
-const safeButtonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'fixed',
     height: 'var(--snack-bar-height, 80px)',
@@ -38,10 +31,10 @@ const useStyles = makeStyles()({
   },
   box: {
     alignItems: 'center',
-    background: backgroundColor,
+    background: theme.components.snackbar.background,
     borderRadius: 3,
-    boxShadow: themeShadows.toast,
-    color: themeColors.light,
+    boxShadow: '0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12)',
+    color: theme.contrastColor(theme.components.snackbar.background),
     display: 'flex',
     fontSize: '0.875rem',
     justifyContent: 'space-between',
@@ -58,7 +51,7 @@ const useStyles = makeStyles()({
     overflow: 'hidden',
   },
   actionButton: {
-    color: safeButtonColor,
+    color: theme.palette.secondary.main,
     fontWeight: 500,
     height: 36,
     letterSpacing: 'inherit',
@@ -67,7 +60,7 @@ const useStyles = makeStyles()({
     padding: '0 8px',
     textTransform: 'uppercase',
   },
-});
+}));
 
 /**
  * Calculates the required amount of rows for the snack bar.

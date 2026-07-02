@@ -1,7 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import ProductGridPrice from './index';
+
+const mockPriceInfo = jest.fn(() => <div data-testid="price-info" />);
+
+jest.mock('@shopgate/engage/product/hocs', () => ({
+  withPriceCalculation: component => component,
+}));
 
 jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
   i18n: {
@@ -11,22 +16,36 @@ jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
   },
 }));
 
-jest.mock('@shopgate/engage/components');
-jest.mock('@shopgate/engage/product/components', () => ({
-  PriceInfo: () => null,
-}));
+/* eslint-disable react/prop-types */
+jest.mock('@shopgate/engage/components', () => {
+  const Grid = ({ children }) => <div data-testid="grid">{children}</div>;
+  Grid.Item = ({ children }) => <div data-testid="grid-item">{children}</div>;
 
-const mockRenderOptions = {
-  context: {
-    i18n: () => ({
-      __: input => input,
-      _p: input => input,
-    }),
-  },
-  childContextTypes: {
-    i18n: PropTypes.func,
-  },
-};
+  return {
+    Grid,
+    Price: ({
+      currency,
+      unitPrice,
+      unitPriceMin,
+      discounted,
+    }) => (
+      <div
+        data-testid="price"
+        data-currency={currency}
+        data-unit-price={String(unitPrice)}
+        data-unit-price-min={String(unitPriceMin)}
+        data-discounted={String(discounted)}
+      />
+    ),
+    PriceStriked: ({ currency, value }) => (
+      <div data-testid="price-striked" data-currency={currency} data-value={String(value)} />
+    ),
+  };
+});
+/* eslint-enable react/prop-types */
+jest.mock('@shopgate/engage/product/components', () => ({
+  PriceInfo: props => mockPriceInfo(props),
+}));
 
 const mockPrice = {
   currency: 'EUR',
@@ -59,76 +78,64 @@ const mockPriceMsrp = {
 };
 
 describe('<ProductGridPrice />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render without discounts', () => {
     const product = {
       price: mockPrice,
     };
 
-    const component = mount(<ProductGridPrice product={product} />, mockRenderOptions);
-    const price = component.find('Price');
-    const priceStriked = component.find('PriceStriked');
-    const priceInfo = component.find('PriceInfo');
+    const { container } = render(<ProductGridPrice product={product} />);
+    const price = screen.getByTestId('price');
 
-    expect(component).toMatchSnapshot();
-
-    expect(price.exists()).toBe(true);
-    expect(price.prop('currency')).toBe(mockPrice.currency);
-    expect(price.prop('unitPrice')).toBe(mockPrice.unitPrice);
-    expect(price.prop('unitPriceMin')).toBe(mockPrice.unitPriceMin);
-    expect(price.prop('discounted')).toBe(false);
-
-    expect(priceStriked.exists()).toBe(false);
-
-    expect(priceInfo.exists()).toBe(true);
-    expect(priceInfo.prop('product')).toBe(product);
+    expect(container.firstChild).toBeTruthy();
+    expect(price.getAttribute('data-currency')).toBe(mockPrice.currency);
+    expect(price.getAttribute('data-unit-price')).toBe(String(mockPrice.unitPrice));
+    expect(price.getAttribute('data-unit-price-min')).toBe(String(mockPrice.unitPriceMin));
+    expect(price.getAttribute('data-discounted')).toBe('false');
+    expect(screen.queryAllByTestId('price-striked')).toHaveLength(0);
+    expect(screen.getByTestId('price-info')).toBeTruthy();
+    expect(mockPriceInfo).toHaveBeenCalledWith(expect.objectContaining({ product }));
   });
 
   it('should render with strike price', () => {
     const product = {
       price: mockPriceStriked,
     };
-    const component = mount(<ProductGridPrice product={product} />, mockRenderOptions);
-    const price = component.find('Price');
-    const priceStriked = component.find('PriceStriked');
-    const priceInfo = component.find('PriceInfo');
+    const { container } = render(<ProductGridPrice product={product} />);
+    const price = screen.getByTestId('price');
+    const [priceStriked] = screen.getAllByTestId('price-striked');
 
-    expect(component).toMatchSnapshot();
-    expect(price.exists()).toBe(true);
-    expect(price.prop('currency')).toBe(mockPriceStriked.currency);
-    expect(price.prop('unitPrice')).toBe(mockPriceStriked.unitPrice);
-    expect(price.prop('unitPriceMin')).toBe(mockPriceStriked.unitPriceMin);
-    expect(price.prop('discounted')).toBe(true);
-
-    expect(priceStriked.exists()).toBe(true);
-    expect(priceStriked.prop('currency')).toBe(mockPriceStriked.currency);
-    expect(priceStriked.prop('value')).toBe(mockPriceStriked.unitPriceStriked);
-
-    expect(priceInfo.exists()).toBe(true);
-    expect(priceInfo.prop('product')).toBe(product);
+    expect(container.firstChild).toBeTruthy();
+    expect(price.getAttribute('data-currency')).toBe(mockPriceStriked.currency);
+    expect(price.getAttribute('data-unit-price')).toBe(String(mockPriceStriked.unitPrice));
+    expect(price.getAttribute('data-unit-price-min')).toBe(String(mockPriceStriked.unitPriceMin));
+    expect(price.getAttribute('data-discounted')).toBe('true');
+    expect(priceStriked.getAttribute('data-currency')).toBe(mockPriceStriked.currency);
+    expect(priceStriked.getAttribute('data-value')).toBe(String(mockPriceStriked.unitPriceStriked));
+    expect(screen.getByTestId('price-info')).toBeTruthy();
+    expect(mockPriceInfo).toHaveBeenCalledWith(expect.objectContaining({ product }));
   });
 
   it('should render with msrp', () => {
     const product = {
-      price: mockPriceStriked,
+      price: mockPriceMsrp,
     };
 
-    const component = mount(<ProductGridPrice product={product} />, mockRenderOptions);
-    const price = component.find('Price');
-    const priceStriked = component.find('PriceStriked');
-    const priceInfo = component.find('PriceInfo');
+    const { container } = render(<ProductGridPrice product={product} />);
+    const price = screen.getByTestId('price');
+    const [priceStriked] = screen.getAllByTestId('price-striked');
 
-    expect(component).toMatchSnapshot();
-    expect(price.exists()).toBe(true);
-    expect(price.prop('currency')).toBe(mockPriceMsrp.currency);
-    expect(price.prop('unitPrice')).toBe(mockPriceMsrp.unitPrice);
-    expect(price.prop('unitPriceMin')).toBe(mockPriceMsrp.unitPriceMin);
-    expect(price.prop('discounted')).toBe(true);
-
-    expect(priceStriked.exists()).toBe(true);
-    expect(priceStriked.prop('currency')).toBe(mockPriceMsrp.currency);
-    expect(priceStriked.prop('value')).toBe(mockPriceMsrp.msrp);
-
-    expect(priceInfo.exists()).toBe(true);
-    expect(priceInfo.prop('product')).toBe(product);
+    expect(container.firstChild).toBeTruthy();
+    expect(price.getAttribute('data-currency')).toBe(mockPriceMsrp.currency);
+    expect(price.getAttribute('data-unit-price')).toBe(String(mockPriceMsrp.unitPrice));
+    expect(price.getAttribute('data-unit-price-min')).toBe(String(mockPriceMsrp.unitPriceMin));
+    expect(price.getAttribute('data-discounted')).toBe('true');
+    expect(priceStriked.getAttribute('data-currency')).toBe(mockPriceMsrp.currency);
+    expect(priceStriked.getAttribute('data-value')).toBe(String(mockPriceMsrp.msrp));
+    expect(screen.getByTestId('price-info')).toBeTruthy();
+    expect(mockPriceInfo).toHaveBeenCalledWith(expect.objectContaining({ product }));
   });
 });

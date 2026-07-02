@@ -1,212 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProductDiscountBadge /> should not render with discount if widgetSetting is false 1`] = `
-<Provider
-  store={
-    {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(ProductDiscountBadge)
-    productId="1234"
-  >
-    <ProductDiscountBadge
-      discount={12}
-      dispatch={[Function]}
-      productId="1234"
-    >
-      <ProductBadges
-        className="sg-nay627-portal"
-        location="productDiscountBadge"
-        portalProps={
-          {
-            "show": false,
-            "style": {},
-          }
-        }
-        productId="1234"
-      >
-        <div
-          className="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
-        >
-          <SurroundPortals
-            portalName="component.product-badges"
-            portalProps={
-              {
-                "location": "productDiscountBadge",
-                "productId": "1234",
-                "show": false,
-                "style": {},
-              }
-            }
-          />
-        </div>
-      </ProductBadges>
-    </ProductDiscountBadge>
-  </Connect(ProductDiscountBadge)>
-</Provider>
+<DocumentFragment>
+  <div
+    class="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
+  />
+</DocumentFragment>
 `;
 
 exports[`<ProductDiscountBadge /> should render with discount 1`] = `
-<Provider
-  store={
-    {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(ProductDiscountBadge)
-    productId="1234"
+<DocumentFragment>
+  <div
+    class="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
   >
-    <ProductDiscountBadge
-      discount={12}
-      dispatch={[Function]}
-      productId="1234"
+    <div
+      class="theme__product__product-discount sg-1amw3ay-container"
     >
-      <ProductBadges
-        className="sg-nay627-portal"
-        location="productDiscountBadge"
-        portalProps={
-          {
-            "show": true,
-            "style": {
-              "color": "blue",
-            },
-          }
-        }
-        productId="1234"
+      <div
+        aria-label="cart.discount: -12%"
+        class="ui-shared__discount-badge"
+        data-test-id="-12%"
+        tabindex="-1"
       >
-        <div
-          className="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
-        >
-          <SurroundPortals
-            portalName="component.product-badges"
-            portalProps={
-              {
-                "location": "productDiscountBadge",
-                "productId": "1234",
-                "show": true,
-                "style": {
-                  "color": "blue",
-                },
-              }
-            }
-          >
-            <div
-              className="theme__product__product-discount sg-1amw3ay-container"
-            >
-              <SurroundPortals
-                portalName="product.discount"
-                portalProps={
-                  {
-                    "discount": 12,
-                    "productId": "1234",
-                  }
-                }
-              >
-                <DiscountBadge
-                  className="sg-j2p5xi-badge"
-                  discount={null}
-                  display="small"
-                  text="-12%"
-                >
-                  <div
-                    aria-label="cart.discount: -12%"
-                    className="ui-shared__discount-badge"
-                    data-test-id="-12%"
-                    tabIndex={-1}
-                  >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      aria-hidden={true}
-                      className="theme__discount-badge sg-19fv54w-small-badge"
-                      params={
-                        [
-                          null,
-                        ]
-                      }
-                      role={null}
-                      string="-12%"
-                      transform={null}
-                    >
-                      -12%
-                    </Text>
-                  </div>
-                </DiscountBadge>
-              </SurroundPortals>
-            </div>
-          </SurroundPortals>
-        </div>
-      </ProductBadges>
-    </ProductDiscountBadge>
-  </Connect(ProductDiscountBadge)>
-</Provider>
+        -12%
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<ProductDiscountBadge /> should render without discount 1`] = `
-<Provider
-  store={
-    {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
->
-  <Connect(ProductDiscountBadge)
-    productId="1234"
-  >
-    <ProductDiscountBadge
-      discount={0}
-      dispatch={[Function]}
-      productId="1234"
-    >
-      <ProductBadges
-        className="sg-nay627-portal"
-        location="productDiscountBadge"
-        portalProps={
-          {
-            "show": true,
-            "style": {
-              "color": "blue",
-            },
-          }
-        }
-        productId="1234"
-      >
-        <div
-          className="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
-        >
-          <SurroundPortals
-            portalName="component.product-badges"
-            portalProps={
-              {
-                "location": "productDiscountBadge",
-                "productId": "1234",
-                "show": true,
-                "style": {
-                  "color": "blue",
-                },
-              }
-            }
-          />
-        </div>
-      </ProductBadges>
-    </ProductDiscountBadge>
-  </Connect(ProductDiscountBadge)>
-</Provider>
+<DocumentFragment>
+  <div
+    class="product_badges product_badges__product-discount-badge sg-1y89v43-root-portal"
+  />
+</DocumentFragment>
 `;

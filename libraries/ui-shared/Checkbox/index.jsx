@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import BaseCheckbox from '@shopgate/pwa-common/components/Checkbox';
 import CheckedIcon from '../icons/CheckedIcon';
 import UncheckedIcon from '../icons/UncheckedIcon';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   icon: {
     width: 24,
     height: 24,
     flexShrink: 0,
   },
   checkedIcon: {
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
   },
   uncheckedIcon: {
-    color: themeConfig.colors.shade6,
+    color: theme.palette.grey.dark,
   },
 }));
 

@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useFilterPage } from '@shopgate/engage/filter/hooks';
 import FilterPageContent from '@shopgate/engage/filter/components/FilterPageContent';
 import Title from './FilterModalTitle';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     zIndex: 1,
-    background: colors.light,
+    background: theme.palette.background.surface,
     borderRadius: 4,
     minWidth: 300,
     [responsiveMediaQuery('>=md')]: {
@@ -28,7 +25,7 @@ const useStyles = makeStyles()({
     overflow: 'auto',
     flex: 1,
   },
-});
+}));
 
 /**
  * Filter modal content component

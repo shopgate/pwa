@@ -24,7 +24,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-ifvhci-chip"
           data-test-id="some-id"
         >
           <Button
@@ -141,7 +141,7 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
             >
               <Ripple
                 className="sg-fpa50s-contentWrapper"
-                color="#000"
+                color="var(--sg-palette-common-black)"
                 disabled={false}
                 fill={true}
                 onClick={[Function]}
@@ -205,7 +205,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-ifvhci-chip"
           data-test-id="some-id"
         >
           <Button
@@ -293,7 +293,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-ifvhci-chip"
           data-test-id="some-other-id"
         >
           <Button
@@ -410,7 +410,7 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
             >
               <Ripple
                 className="sg-fpa50s-contentWrapper"
-                color="#000"
+                color="var(--sg-palette-common-black)"
                 disabled={false}
                 fill={true}
                 onClick={[Function]}

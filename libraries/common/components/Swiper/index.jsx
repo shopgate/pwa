@@ -18,10 +18,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/zoom';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import SwiperItem from './components/SwiperItem';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
     maxHeight: '100%',
@@ -36,7 +35,7 @@ const useStyles = makeStyles()(() => ({
   },
   innerContainer: {
     overflow: 'hidden',
-    '--swiper-navigation-color': themeColors.gray,
+    '--swiper-navigation-color': theme.components.swiper.paginationBulletColor,
     '& .swiper-wrapper': {
       alignItems: 'stretch',
     },
@@ -45,11 +44,10 @@ const useStyles = makeStyles()(() => ({
     },
     '& .swiper-pagination': {
       '& .swiper-pagination-bullet': {
-        background: themeColors.gray,
+        background: theme.components.swiper.paginationBulletActiveColor,
         opacity: '.5',
         margin: '0 4px',
         transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-        border: `1px solid ${themeColors.dark}`,
       },
       '& .swiper-pagination-bullet-active.swiper-pagination-bullet-active-main': {
         opacity: 1,
@@ -61,7 +59,7 @@ const useStyles = makeStyles()(() => ({
       right: 0,
       bottom: 'auto',
       fontSize: 12,
-      background: themeColors.background,
+      background: theme.components.swiper.paginationFractionBackground,
       borderRadius: '50px',
       width: 'fit-content',
       padding: '4px 8px',
@@ -69,9 +67,9 @@ const useStyles = makeStyles()(() => ({
       transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
     },
     '& .swiper-pagination-progressbar': {
-      background: themeColors.shade7,
+      background: theme.components.swiper.paginationProgressbarBackground,
       '& .swiper-pagination-progressbar-fill': {
-        background: themeColors.dark,
+        background: theme.components.swiper.paginationProgressbarActiveColor,
       },
     },
   },

@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { I18n } from '@shopgate/engage/components';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   srOnly: {
     clip: 'rect(1px, 1px, 1px, 1px)',
     height: '1px',
@@ -44,10 +43,10 @@ const useStyles = makeStyles()({
   },
   icon: {
     boxSizing: 'content-box',
-    color: themeColors.gray,
+    color: theme.palette.grey.dark,
     padding: '0 32px 0 16px',
   },
-});
+}));
 
 /**
  * The NavDrawerItem component.

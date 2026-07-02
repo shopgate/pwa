@@ -28,7 +28,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
             className="sg-99a97b-buttonLine"
           >
             <button
-              className="sg-x29o6s-cancelButton"
+              className="sg-19m17bm-cancelButton"
               data-test-id="reviewCancelButton"
               onClick={[Function]}
               type="button"
@@ -70,20 +70,20 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 wrapContent={false}
               >
                 <Button
-                  className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+                  className="ui-shared__button sg-bqdced-button ui-shared__ripple-button"
                   disabled={false}
                   onClick={null}
                   testId="sendReviewButton"
                 >
                   <button
-                    className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+                    className="common__button ui-shared__button ui-shared__ripple-button sg-149k0f5-root-button"
                     data-test-id="sendReviewButton"
                     disabled={false}
                     onClick={null}
                   >
                     <Ripple
                       className="sg-fpa50s-contentWrapper"
-                      color="#000"
+                      color="var(--sg-palette-common-black)"
                       disabled={false}
                       fill={true}
                       onClick={[Function]}

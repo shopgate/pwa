@@ -5,22 +5,20 @@ import { makeStyles } from '@shopgate/engage/styles';
 import {
   Grid, I18n, Button, Modal,
 } from '@shopgate/engage/components';
-import { appConfig, themeConfig } from '@shopgate/engage';
+import { appConfig } from '@shopgate/engage';
 import pushImage from './push-opt-in.svg';
 import connect from './connector';
 import { svgToDataUrl } from '../../../core';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   modalContent: {
     width: '100%',
   },
   modalLayout: {
-    backgroundColor: colors.lightOverlay,
+    backgroundColor: theme.palette.background.surface,
   },
   container: {
-    backgroundColor: colors.lightOverlay,
+    backgroundColor: theme.palette.background.surface,
     textAlign: 'center',
     padding: '30px',
     justifyContent: 'center',
@@ -46,7 +44,7 @@ const useStyles = makeStyles()(() => ({
     marginTop: '30px',
   },
   buttonText: {
-    color: colors.gray,
+    color: theme.palette.text.secondary,
   },
 }));
 

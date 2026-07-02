@@ -1,42 +1,31 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
-import Color from 'color';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { getCSSCustomProp, makeStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import Glow from '../../../Glow';
 import { useContextMenu } from '../../ContextMenu.hooks';
 
 const CLOSE_DELAY = 250;
 
-const useStyles = makeStyles()((theme, { disabled }) => {
-  let background = themeConfig.colors.shade8;
-  const customPropColor = getCSSCustomProp('--color-primary');
-
-  if (customPropColor) {
-    background = Color(customPropColor).alpha(0.04).toString();
-  }
-
-  return {
-    root: {
-      position: 'relative',
-      whiteSpace: 'nowrap',
-      marginBottom: 2,
-      padding: theme.spacing(1.75, 2.75),
-      lineHeight: 1,
-      zIndex: 1,
-      color: disabled ? theme.palette.text.secondary : 'inherits',
-      ...(!disabled ? {
-        cursor: 'pointer',
-        '&:hover': {
-          background,
-        },
-      } : {
-        cursor: 'default',
-      }),
-    },
-  };
-});
+const useStyles = makeStyles()((theme, { disabled }) => ({
+  root: {
+    position: 'relative',
+    whiteSpace: 'nowrap',
+    marginBottom: 2,
+    padding: theme.spacing(1.75, 2.75),
+    lineHeight: 1,
+    zIndex: 1,
+    color: disabled ? theme.palette.text.secondary : 'inherits',
+    ...(!disabled ? {
+      cursor: 'pointer',
+      '&:hover': {
+        background: theme.alpha(theme.palette.primary.main, 0.04),
+      },
+    } : {
+      cursor: 'default',
+    }),
+  },
+}));
 
 /**
  * The Context Menu Item component.

@@ -5,22 +5,20 @@ import { makeStyles } from '@shopgate/engage/styles';
 import {
   Grid, I18n, Button, Modal, Link, ConditionalWrapper,
 } from '@shopgate/engage/components';
-import { appConfig, themeConfig } from '@shopgate/engage';
+import { appConfig } from '@shopgate/engage';
 import connect from './connector';
 import cookieImage from './tracking-opt-in.svg';
 import { svgToDataUrl } from '../../../core';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   modalContent: {
     width: '100%',
   },
   modalLayout: {
-    backgroundColor: colors.lightOverlay,
+    backgroundColor: theme.palette.background.surface,
   },
   container: {
-    backgroundColor: colors.lightOverlay,
+    backgroundColor: theme.palette.background.surface,
     padding: '30px',
     justifyContent: 'center',
     display: 'flex',

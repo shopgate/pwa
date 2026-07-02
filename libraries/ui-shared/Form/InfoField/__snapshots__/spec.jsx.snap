@@ -1,35 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<InfoField> should render info field 1`] = `
-<FormElement
-  className=""
-  disabled={false}
-  errorText=""
-  hasLeftElement={false}
-  hasPlaceholder={true}
-  hasUnderline={true}
-  hasValue={false}
-  htmlFor=""
-  isFocused={false}
-  label=""
-  labelStatic={false}
-  placeholder=""
-  showErrorText={true}
-  translateErrorText={true}
->
-  <Grid
-    className=""
-    component="ul"
-    wrap={false}
+<DocumentFragment>
+  <div
+    class="sg-1iey9hl-formElement formElement ui-shared__form-element"
   >
-    <GridItem
-      className="sg-jf2zto-info info-field"
-      component="li"
-      grow={1}
-      shrink={1}
+    <ul
+      class="common__grid sg-190r8b9-root-noWrap"
     >
-      Some info text
-    </GridItem>
-  </Grid>
-</FormElement>
+      <li
+        class="info-field sg-1g6kt2h-root-info"
+      >
+        Some info text
+      </li>
+    </ul>
+    <div
+      class="sg-1fzvff5-underlineWrapper underline"
+    >
+      <div
+        class="sg-ll3grb-underline"
+        style="transform: scale3d(0,1,1);"
+      />
+    </div>
+  </div>
+</DocumentFragment>
 `;

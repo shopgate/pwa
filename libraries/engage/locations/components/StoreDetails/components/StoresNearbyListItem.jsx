@@ -9,14 +9,14 @@ import formatDistance from '../../../helpers/formatDistance';
 import { STORE_DETAILS_PATH } from '../../../constants';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     fontSize: '14px !important',
     padding: '0px !important',
   },
   locationRow: {
-    borderBottom: '1px solid #e8e8e8',
-    borderTop: '1px solid #e8e8e8',
+    borderBottom: `1px solid ${theme.components.border.light}`,
+    borderTop: `1px solid ${theme.components.border.light}`,
     '> td:first-of-type > div': {
       paddingLeft: 0,
     },
@@ -56,7 +56,7 @@ const useStyles = makeStyles()({
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
   },
-});
+}));
 
 /**
 * Shows a location in a row

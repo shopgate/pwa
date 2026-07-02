@@ -1,13 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Picker from './index';
-import PickerList from './components/List';
 
 jest.mock('@shopgate/engage/components');
 
 describe('<Picker />', () => {
-  let renderedElement;
-  let renderedInstance;
   const mockItems = [
     'String only',
     { value: 'Value only' },
@@ -19,80 +16,104 @@ describe('<Picker />', () => {
   const mockOnChange = jest.fn();
   const mockOnSelect = jest.fn();
 
-  /**
-   * The view component
-   * @param {Object} props The component props.
-   */
-  const renderComponent = (props) => {
-    renderedElement = mount(<Picker {...props} />);
-    renderedInstance = renderedElement.find('Picker').instance();
-  };
+  const renderComponent = props => render(<Picker {...props} />);
 
   beforeEach(() => {
-    renderComponent({
-      items: mockItems,
-      onChange: mockOnChange,
-      onSelect: mockOnSelect,
-    });
-
-    renderedElement.update();
+    jest.clearAllMocks();
   });
 
   describe('Given the component was mounted to the DOM', () => {
     it('should match snapshot', () => {
-      expect(renderedElement).toMatchSnapshot();
+      const renderedElement = renderComponent({
+        items: mockItems,
+        onChange: mockOnChange,
+        onSelect: mockOnSelect,
+      });
+
+      expect(renderedElement.container.firstChild).toMatchSnapshot();
     });
 
     it('should have no selected value', () => {
-      expect(renderedInstance.selectedItem).toBe(null);
+      renderComponent({
+        items: mockItems,
+        onChange: mockOnChange,
+        onSelect: mockOnSelect,
+      });
+
+      expect(screen.queryByText('String only')).toBeNull();
+      expect(screen.getByText('Pick ...')).toBeTruthy();
     });
 
     describe('Given picker component gets opened', () => {
-      beforeEach(() => {
-        renderedInstance.toggleOpenState(true);
-        renderedElement.update();
-      });
+      const openPicker = () => {
+        const renderedElement = renderComponent({
+          items: mockItems,
+          onChange: mockOnChange,
+          onSelect: mockOnSelect,
+        });
+
+        fireEvent.click(renderedElement.container.querySelector('button.engage__picker__button'));
+
+        return renderedElement;
+      };
 
       it('should have isOpen state', () => {
-        expect(renderedInstance.state.isOpen).toBe(true);
+        openPicker();
+
+        expect(document.querySelector('.engage__picker_modal')).toBeTruthy();
       });
 
       it('should render the picker list', () => {
-        expect(renderedElement.find(PickerList).length).toBe(1);
+        openPicker();
+
+        expect(document.querySelector('ul.engage__picker_list')).toBeTruthy();
       });
 
       it('should render the picker items', () => {
-        expect(renderedElement.find('li button').length).toBe(mockItems.length);
+        const renderedElement = openPicker();
+
+        expect(renderedElement.container.querySelectorAll('li button').length).toBe(mockItems.length);
       });
 
       describe('Given a item gets selected', () => {
         jest.useFakeTimers();
-
-        beforeEach(() => {
-          jest.clearAllMocks();
-          renderedElement.find('li button').first().simulate('click');
-          jest.runAllTimers();
-        });
 
         afterEach(() => {
           jest.clearAllTimers();
         });
 
         it('should trigger onChange when the value changed', () => {
+          const renderedElement = openPicker();
+
+          fireEvent.click(renderedElement.container.querySelectorAll('li button')[0]);
+          jest.runAllTimers();
+
           expect(mockOnChange).toHaveBeenCalledTimes(1);
         });
 
         it('should trigger onSelect when the value changed', () => {
+          const renderedElement = openPicker();
+
+          fireEvent.click(renderedElement.container.querySelectorAll('li button')[0]);
+          jest.runAllTimers();
+
           expect(mockOnSelect).toHaveBeenCalledTimes(1);
         });
 
         it('should not trigger onChange when the value did not change, but trigger onSelect', () => {
-          renderedInstance.setState({ selectedIndex: 0 });
-          renderedInstance.toggleOpenState(true);
-          renderedElement.find('li button').first().simulate('click');
+          const renderedElement = renderComponent({
+            items: mockItems,
+            value: 'String only',
+            onChange: mockOnChange,
+            onSelect: mockOnSelect,
+          });
+
+          fireEvent.click(renderedElement.container.querySelector('button.engage__picker__button'));
+          fireEvent.click(renderedElement.container.querySelectorAll('li button')[0]);
           jest.runAllTimers();
-          expect(mockOnChange).toHaveBeenCalledTimes(1);
-          expect(mockOnSelect).toHaveBeenCalledTimes(2);
+
+          expect(mockOnChange).toHaveBeenCalledTimes(0);
+          expect(mockOnSelect).toHaveBeenCalledTimes(1);
         });
       });
     });

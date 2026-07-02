@@ -4,21 +4,18 @@ import { isBeta } from '@shopgate/engage/core';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()((theme, { display }) => ({
   root: {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: colors.light,
+    background: theme.palette.background.surface,
     height: '100%',
   },
   itemDetails: {

@@ -1,8 +1,11 @@
 /* eslint-disable react/prop-types */
 import React, { createRef } from 'react';
-import { renderIntoDocument } from 'react-dom/test-utils';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { withForwardedRef } from '../withForwardedRef';
+
+const mockWrappedComponent = jest.fn(props => (
+  <pre data-testid="wrapped-props">{JSON.stringify(props)}</pre>
+));
 
 const MockComponent = ({ children, className, forwardedRef }) => (
   <div className={className} ref={forwardedRef}>
@@ -11,42 +14,50 @@ const MockComponent = ({ children, className, forwardedRef }) => (
 );
 
 describe('engage > core > hocs > withForwardedRef', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render', () => {
-    const ComposedComponent = withForwardedRef(MockComponent);
+    const ComposedComponent = withForwardedRef(mockWrappedComponent);
     const ref = createRef();
-    const wrapper = shallow((
+    const { container } = render((
       <ComposedComponent className="foo" ref={ref}>
         Testing 123
       </ComposedComponent>
     ));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.props()).toEqual({
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       className: 'foo',
       children: 'Testing 123',
-      forwardedRef: { current: null },
+      forwardedRef: ref,
     });
   });
 
   it('should inject the ref with a custom prop name', () => {
-    const ComposedComponent = withForwardedRef(MockComponent, { prop: 'custom' });
+    const ComposedComponent = withForwardedRef(mockWrappedComponent, { prop: 'custom' });
     const ref = createRef();
-    const wrapper = shallow((
+    const { container } = render((
       <ComposedComponent className="foo" ref={ref}>
         Testing 123
       </ComposedComponent>
     ));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.props()).toEqual({
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       className: 'foo',
       children: 'Testing 123',
-      custom: { current: null },
+      custom: ref,
     });
   });
 
   it('should create a ref that points to a HTMLDivElement', () => {
     const ComposedComponent = withForwardedRef(MockComponent);
     const ref = createRef();
-    renderIntoDocument((
+    render((
       <ComposedComponent className="foo" ref={ref}>
         Testing 123
       </ComposedComponent>

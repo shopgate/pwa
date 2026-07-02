@@ -1,120 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Picker /> should render the picker 1`] = `
-<_default
-  label="Picker label"
->
-  <Consumer>
-    <PickerUtilize
-      buttonComponent={null}
-      buttonProps={{}}
-      clickDelay={150}
-      hasButton={true}
-      label="Picker label"
-      setViewAriaHidden={[MockFunction]}
-      sheetProps={{}}
+<DocumentFragment>
+  <div
+    aria-haspopup="true"
+    class="sg-1nsf4dv-root engage__picker-utilize engage__picker common__picker"
+    role="button"
+    tabindex="0"
+  >
+    <button
+      class="sg-1n7uj3u-button"
+      type="button"
     >
-      <ForwardRef(WithForwardedRef(Picker))
-        buttonComponent={[Function]}
-        buttonProps={{}}
-        className="sg-1nsf4dv-root engage__picker-utilize"
-        label="Picker label"
-        listComponent={[Function]}
-        modalComponent={[Function]}
-        onClose={[Function]}
+      <span
+        class="sg-1mg745j-label"
       >
-        <Picker
-          buttonComponent={[Function]}
-          buttonProps={{}}
-          className="sg-1nsf4dv-root engage__picker-utilize"
-          disabled={false}
-          duration={300}
-          forwardedRef={
-            {
-              "current": <div
-                aria-haspopup="true"
-                class="sg-1nsf4dv-root engage__picker-utilize engage__picker common__picker"
-                role="button"
-                tabindex="0"
-              >
-                <button
-                  class="sg-5zgxuh-button"
-                  type="button"
-                >
-                  <span
-                    class="sg-1mg745j-label"
-                  >
-                    Pick ...
-                  </span>
-                  
-                </button>
-              </div>,
-            }
-          }
-          isOpen={false}
-          items={[]}
-          label="Picker label"
-          listComponent={[Function]}
-          modalComponent={[Function]}
-          onChange={[Function]}
-          onClose={[Function]}
-          onSelect={[Function]}
-          placeholder="Pick ..."
-          value={null}
-        >
-          <div
-            aria-haspopup={true}
-            className="sg-1nsf4dv-root engage__picker-utilize engage__picker common__picker"
-            role="button"
-            tabIndex={0}
-          >
-            <Button
-              disabled={false}
-              label="Pick ..."
-              openList={[Function]}
-              value=""
-            >
-              <button
-                className="sg-5zgxuh-button"
-                onClick={[Function]}
-                type="button"
-              >
-                <span
-                  className="sg-1mg745j-label"
-                >
-                  Pick ...
-                </span>
-              </button>
-            </Button>
-            <ConnectedReactPortal
-              isOpened={true}
-            >
-              <Component
-                duration={300}
-                isOpen={false}
-                onClose={[Function]}
-              >
-                <Sheet
-                  duration={300}
-                  isOpen={false}
-                  onClose={[Function]}
-                  onDidOpen={[Function]}
-                  title="Picker label"
-                >
-                  <Component
-                    items={[]}
-                    onSelect={[Function]}
-                    selectedIndex={-1}
-                  >
-                    <SheetList />
-                  </Component>
-                </Sheet>
-              </Component>
-            </ConnectedReactPortal>
-          </div>
-        </Picker>
-      </ForwardRef(WithForwardedRef(Picker))>
-    </PickerUtilize>
-  </Consumer>
-</_default>
+        Pick ...
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import mockConsole from 'jest-mock-console';
 import ProductProperties from '../ProductProperties';
@@ -8,7 +8,9 @@ import { makeGetProductProperties } from '../../../selectors/product';
 const mockStore = configureStore();
 const store = mockStore({});
 
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/components', () => ({
+  SurroundPortals: ({ children }) => children,
+}));
 jest.mock('@shopgate/engage/core', () => ({
   hasWebBridge: () => false,
   withForwardedRef: jest.fn(),
@@ -34,17 +36,17 @@ describe('<ProductProperties />', () => {
     restoreConsole();
   });
 
-  it('should not render if no properties where passed', () => {
+  it('should not render if no properties were passed', () => {
     makeGetProductProperties.mockReturnValueOnce(() => null);
-    const wrapper = mount(<ProductProperties key="1" store={store} />);
-    expect(wrapper.find('ProductProperties').instance()).toEqual(null);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<ProductProperties key="1" store={store} />);
+    expect(container.firstChild).toBeNull();
+    expect(container).toMatchSnapshot();
   });
 
   it('should render if properties are passed', () => {
     makeGetProductProperties.mockReturnValueOnce(() => properties);
-    const wrapper = mount(<ProductProperties key="2" store={store} />);
-    expect(wrapper.find('Content').length).toEqual(1);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<ProductProperties key="2" store={store} />);
+    expect(container.firstChild).not.toBeNull();
+    expect(container).toMatchSnapshot();
   });
 });

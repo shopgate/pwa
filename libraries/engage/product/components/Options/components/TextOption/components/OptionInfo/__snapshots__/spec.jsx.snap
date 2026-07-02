@@ -2,27 +2,20 @@
 
 exports[`<OptionInfo /> should render price element 1`] = `
 <ul
-  className="common__grid sg-10l9eav-root-noWrap-info"
+  class="common__grid sg-10l9eav-root-noWrap-info"
 >
-  <GridItem
-    aria-hidden={true}
-    className="sg-wzlmdo-price"
-    component="li"
-    grow={1}
-    shrink={1}
+  <li
+    aria-hidden="true"
+    class="sg-8zfqfd-root-price"
   >
     Label: 
-    <FormatPrice
-      className={null}
-      currency="EUR"
-      fractions={true}
-      price={10}
-    />
-  </GridItem>
+    p
+  </li>
   <div
-    hidden={true}
+    hidden=""
     id="some-id"
   >
+    
     price.label
     Some Text
   </div>
@@ -31,29 +24,22 @@ exports[`<OptionInfo /> should render price element 1`] = `
 
 exports[`<OptionInfo /> should render required element 1`] = `
 <ul
-  className="common__grid sg-10l9eav-root-noWrap-info"
+  class="common__grid sg-10l9eav-root-noWrap-info"
 >
-  <GridItem
-    aria-hidden={true}
-    className="sg-10mixir-required"
-    component="li"
-    grow={0}
-    shrink={1}
+  <li
+    aria-hidden="true"
+    class="sg-50ofhl-root-required"
   >
-    <Translate
-      acceptPlainTextWithPlaceholders={false}
-      className={null}
-      params={{}}
-      role={null}
-      string="common.required"
-      transform={null}
-    />
-  </GridItem>
+    <span>
+      common.required
+    </span>
+  </li>
   <div
-    hidden={true}
+    hidden=""
     id="some-id"
   >
     common.required
+    
     Some Text
   </div>
 </ul>

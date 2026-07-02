@@ -1,90 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Image /> should render placeholders if forced to 1`] = `
-<Image
-  alt={null}
-  backgroundColor="#f2f2f2"
-  className=""
-  classNameImg=""
-  forcePlaceholder={true}
-  highestResolutionLoaded={[Function]}
-  lazy={true}
-  onError={[Function]}
-  onLoad={[Function]}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src="foo/bar"
-  unwrapped={false}
->
-  <div
-    className="sg-6uouo7-container common__image__container"
-  />
-</Image>
+<div
+  class="sg-nx1wh0-container common__image__container"
+/>
 `;
 
 exports[`<Image /> should render placeholders if src is null 1`] = `
-<Image
-  alt={null}
-  backgroundColor="#f2f2f2"
-  className=""
-  classNameImg=""
-  forcePlaceholder={false}
-  highestResolutionLoaded={[Function]}
-  lazy={true}
-  onError={[Function]}
-  onLoad={[Function]}
-  ratio={null}
-  resolutions={
-    [
-      {
-        "height": 440,
-        "width": 440,
-      },
-    ]
-  }
-  src="foo/bar"
-  unwrapped={false}
+<div
+  class="sg-nx1wh0-container common__image__container"
 >
-  <div
-    className="sg-6uouo7-container common__image__container"
-  >
-    <ForwardRef
-      alt={null}
-      className=""
-      lazy={true}
-      onError={[Function]}
-      onLoad={[Function]}
-      src="foo/bar"
-      style={
-        {
-          "aspectRatio": "1 / 1",
-        }
-      }
-    >
-      <img
-        alt={null}
-        aria-hidden={true}
-        aria-label={null}
-        className="sg-1k2ml0g-image common__image"
-        data-test-id="image"
-        loading="lazy"
-        onError={[Function]}
-        onLoad={[Function]}
-        src="foo/bar"
-        style={
-          {
-            "aspectRatio": "1 / 1",
-          }
-        }
-      />
-    </ForwardRef>
-  </div>
-</Image>
+  <img
+    aria-hidden="true"
+    class="sg-1k2ml0g-image common__image"
+    data-test-id="image"
+    loading="lazy"
+    src="foo/bar"
+  />
+</div>
 `;

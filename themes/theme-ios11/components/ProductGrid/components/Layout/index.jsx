@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()((_theme, { columns }) => ({
+const useStyles = makeStyles()((theme, { columns }) => ({
   grid: {
-    background: colors.light,
+    background: theme.palette.background.surface,
     padding: '0 16px',
     '&:not(:empty)': {
       marginTop: 16,

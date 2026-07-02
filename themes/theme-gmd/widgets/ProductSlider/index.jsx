@@ -7,7 +7,7 @@ import {
 } from '@shopgate/engage/product/providers';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
 import { withWidgetSettings } from '@shopgate/engage/core';
-import appConfig, { themeColors } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   ProductSlider as EngageProductSlider,
   ProductCard,
@@ -18,7 +18,7 @@ import connect from './connector';
 
 export const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   sliderContainer: {
     paddingBottom: '10px !important',
   },
@@ -32,11 +32,11 @@ const useStyles = makeStyles()({
     },
   },
   card: {
-    background: themeColors.light,
+    background: theme.palette.background.surface,
     height: '100%',
     margin: '0px 8px',
   },
-});
+}));
 
 /**
  * The core product slider widget.

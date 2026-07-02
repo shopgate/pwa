@@ -7,7 +7,6 @@ import Transition from 'react-transition-group/Transition';
 import { Backdrop } from '@shopgate/engage/components';
 import { ModalStateTracker } from '@shopgate/engage/a11y/components';
 import { UIEvents } from '@shopgate/pwa-core';
-import { themeShadows, themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Divider from './components/Divider';
 import Item from './components/Item';
@@ -18,7 +17,7 @@ import transition from './transition';
 const OPEN = 'navdrawer_open';
 const CLOSE = 'navdrawer_close';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   content: {
     fontSize: 14,
     height: '100%',
@@ -27,9 +26,9 @@ const useStyles = makeStyles()({
     WebkitOverflowScrolling: 'touch',
   },
   drawer: {
-    background: themeColors.light,
-    boxShadow: themeShadows.navDrawer,
-    color: themeColors.dark,
+    background: theme.palette.background.surface,
+    boxShadow: '0 0 15px rgba(0, 0, 0, .24)',
+    color: theme.palette.text.primary,
     height: '100vh',
     left: 0,
     maxWidth: '300px',
@@ -43,7 +42,7 @@ const useStyles = makeStyles()({
       maxWidth: '67vw',
     },
   },
-});
+}));
 
 /**
  * Material navigation drawer; opens/closes via `NavDrawer.open()` / `NavDrawer.close()` (UIEvents).

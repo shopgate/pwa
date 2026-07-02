@@ -33,7 +33,7 @@ const useStyles = makeStyles()(theme => ({
     '&&': {
       marginTop: 8,
       marginRight: 16,
-      backgroundColor: 'var(--color-primary)',
+      backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
       fontSize: 14,
       textTransform: 'none',

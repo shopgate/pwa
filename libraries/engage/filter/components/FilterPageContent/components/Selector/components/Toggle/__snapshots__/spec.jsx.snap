@@ -1,59 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Toggle /> should render with selected 1`] = `
-<div
-  class="sg-1a4ev5x-toggle"
->
-  <span
-    class="sg-3akxav-label-closed"
+<DocumentFragment>
+  <div
+    class="sg-1a4ev5x-toggle"
   >
-    somelabel
-  </span>
-  <span
-    class="sg-guvefl-selected"
-  >
-    Some, Thing, Selected
-  </span>
-</div>
+    <span
+      class="sg-3akxav-label-closed"
+    >
+      somelabel
+    </span>
+    <span
+      class="sg-guvefl-selected"
+    >
+      Some, Thing, Selected
+    </span>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<Toggle /> should render with selected as open 1`] = `
-<div
-  class="sg-1a4ev5x-toggle"
->
-  <span
-    class="sg-y39g3w-label-open"
+<DocumentFragment>
+  <div
+    class="sg-1a4ev5x-toggle"
   >
-    somelabel
-  </span>
-  <span
-    class="sg-guvefl-selected"
-  >
-    Some, Thing, Selected
-  </span>
-</div>
+    <span
+      class="sg-y39g3w-label-open"
+    >
+      somelabel
+    </span>
+    <span
+      class="sg-guvefl-selected"
+    >
+      Some, Thing, Selected
+    </span>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<Toggle /> should render without selected 1`] = `
-<div
-  class="sg-1a4ev5x-toggle"
->
-  <span
-    class="sg-3akxav-label-closed"
+<DocumentFragment>
+  <div
+    class="sg-1a4ev5x-toggle"
   >
-    somelabel
-  </span>
-</div>
+    <span
+      class="sg-3akxav-label-closed"
+    >
+      somelabel
+    </span>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<Toggle /> should render without selected as open 1`] = `
-<div
-  class="sg-1a4ev5x-toggle"
->
-  <span
-    class="sg-y39g3w-label-open"
+<DocumentFragment>
+  <div
+    class="sg-1a4ev5x-toggle"
   >
-    somelabel
-  </span>
-</div>
+    <span
+      class="sg-y39g3w-label-open"
+    >
+      somelabel
+    </span>
+  </div>
+</DocumentFragment>
 `;

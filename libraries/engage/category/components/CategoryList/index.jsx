@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -12,11 +11,9 @@ import { getShowAllProductsFilters } from '@shopgate/engage/category';
 import { SheetList, TextLink } from '@shopgate/engage/components';
 import CategoryImage from '../CategoryImage';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   sheet: {
-    background: colors.light,
+    background: theme.palette.background.surface,
   },
   showAllProducts: {
     fontWeight: 700,
@@ -25,7 +22,7 @@ const useStyles = makeStyles()({
     width: '30px',
     marginRight: 8,
   },
-});
+}));
 
 /**
  * The CategoryList component.
@@ -100,15 +97,15 @@ const CategoryList = ({
             }}
             testId={category.name}
             rightComponent={
-                showImages
-                  ? <CategoryImage className={classes.image} src={category.imageUrl} />
-                  : null
-              }
+              showImages
+                ? <CategoryImage className={classes.image} src={category.imageUrl} />
+                : null
+            }
             leftComponent={
-                showLeftSideImages
-                  ? <CategoryImage className={classes.image} src={category.imageUrl} />
-                  : null
-              }
+              showLeftSideImages
+                ? <CategoryImage className={classes.image} src={category.imageUrl} />
+                : null
+            }
             linkComponent={TextLink}
           />
         </Portal>

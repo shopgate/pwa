@@ -1,36 +1,61 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import {
+  render,
+  screen,
+} from '@testing-library/react';
 import RatingNumber from './index';
 
-jest.mock('@shopgate/engage/components');
+const mockNumber = jest.fn(({ number }) => <span data-testid="i18n-number">{number}</span>);
+
+jest.mock('@shopgate/engage/components', () => ({
+  I18n: {
+    Number: props => mockNumber(props),
+  },
+}));
 
 // One of the tests deliberately produces a react warning. The console is mocked to avoid ugly logs.
 console.error = jest.fn();
 
 describe('RatingNumber', () => {
+  beforeEach(() => {
+    mockNumber.mockClear();
+    console.error.mockClear();
+  });
+
   it('should render a number', () => {
-    const component = mount(<RatingNumber rating={100} className="class-test" />);
-    expect(component).toMatchSnapshot();
-    expect(component.find('Number').props().number).toBe(5);
-    expect(component.find('Number').props().fractions).toBe(2);
-    expect(component.find('Number').props().className).toBe('class-test ui-shared__rating-number');
+    const { container } = render(<RatingNumber rating={100} className="class-test" />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockNumber).toHaveBeenCalledTimes(1);
+    expect(mockNumber).toHaveBeenCalledWith(expect.objectContaining({
+      number: 5,
+      fractions: 2,
+      className: 'class-test ui-shared__rating-number',
+    }));
+    expect(screen.getByTestId('i18n-number')).toHaveTextContent('5');
     expect(console.error).not.toHaveBeenCalled();
   });
 
   it('should return when rating is null', () => {
-    const component = mount(<RatingNumber rating={null} />);
-    expect(component.html()).toBe(null);
+    const { container } = render(<RatingNumber rating={null} />);
+
+    expect(container.firstChild).toBeNull();
+    expect(mockNumber).not.toHaveBeenCalled();
     expect(console.error).not.toHaveBeenCalled();
   });
 
   it('should return Number when rating is zero', () => {
-    const component = mount(<RatingNumber rating={0} />);
-    expect(component.html()).not.toBe(null);
+    const { container } = render(<RatingNumber rating={0} />);
+
+    expect(container.firstChild).not.toBeNull();
+    expect(mockNumber).toHaveBeenCalledWith(expect.objectContaining({ number: 0 }));
     expect(console.error).not.toHaveBeenCalled();
   });
 
   it('should return null when division result is NaN', () => {
-    const component = mount(<RatingNumber rating={{}} />);
-    expect(component.html()).toBe(null);
+    const { container } = render(<RatingNumber rating={{}} />);
+
+    expect(container.firstChild).toBeNull();
+    expect(mockNumber).not.toHaveBeenCalled();
   });
 });

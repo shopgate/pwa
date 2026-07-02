@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { ArrowIcon } from '@shopgate/pwa-ui-shared';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import connect from './connector';
 
 const useStyles = makeStyles()({
@@ -20,12 +20,13 @@ const useStyles = makeStyles()({
  */
 const GalleryAppBar = ({ goBack }) => {
   const { classes } = useStyles();
+  const theme = useTheme();
 
   return (
     <DefaultBar
       classes={{ outer: classes.outer }}
       backgroundColor="rgba(0, 0, 0, 0)"
-      textColor="#fff"
+      textColor={theme.palette.common.white}
       left={<AppBar.Icon key="left" icon={ArrowIcon} onClick={goBack} shadow />}
     />
   );

@@ -2,10 +2,7 @@ import React, { useCallback, memo } from 'react';
 import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core/hocs';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()((theme) => {
   const buttonBase = {
@@ -26,7 +23,7 @@ const useStyles = makeStyles()((theme) => {
     },
     buttonDisabled: {
       ...buttonBase,
-      color: colors.shade4,
+      color: theme.palette.action.disabled,
     },
     root: {
       padding: '16px 0',
@@ -36,8 +33,8 @@ const useStyles = makeStyles()((theme) => {
     },
     rootSelected: {
       ...buttonBase,
-      background: 'var(--color-background-accent)',
-      boxShadow: '-16px 0 0 var(--color-background-accent), 16px 0 0 var(--color-background-accent)',
+      background: theme.palette.background.emphasized,
+      boxShadow: `-16px 0 0 ${theme.palette.background.emphasized}, 16px 0 0 ${theme.palette.background.emphasized}`,
       margin: '-1px 0',
       paddingTop: 17,
       paddingBottom: 17,
@@ -126,7 +123,7 @@ const SheetItem = ({
       </button>
       <div className={classes.bottomRow}>
         {item.selectable && (
-        <CharacteristicsButton characteristics={characteristics} />
+          <CharacteristicsButton characteristics={characteristics} />
         )}
       </div>
     </div>

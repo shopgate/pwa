@@ -7,7 +7,6 @@ import { ConnectedReactPortal } from '@shopgate/engage/components';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import { FocusTrap } from '@shopgate/engage/a11y/components';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import MoreVertIcon from '../icons/MoreVertIcon';
 import Position from './components/Position';
@@ -42,9 +41,9 @@ const useStyles = makeStyles()(theme => ({
     left: 0,
     padding: theme.spacing(1, 0),
     minWidth: 130,
-    background: themeConfig.colors.light,
+    background: theme.palette.background.surface,
     borderRadius: 2,
-    boxShadow: themeConfig.shadows.contextMenu,
+    boxShadow: '0 2px 6px rgba(0, 0, 0, .4)',
   },
   scrollable: {
     maxHeight: '30vh',

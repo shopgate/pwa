@@ -134,7 +134,7 @@ exports[`<Reviews> page should not crash 1`] = `
                   className="engage__reviews__list"
                 >
                   <li
-                    className="sg-4bfwpo-item"
+                    className="sg-1pvwwup-item"
                     data-test-id="reviewTitle: "
                     key="1"
                   >
@@ -180,7 +180,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="img"
                             >
                               <div
-                                className="sg-170uo4n-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -334,7 +334,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8o0m3k-filledStars rating-stars-filled"
+                                className="sg-10z3jvw-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -513,7 +513,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         }
                       >
                         <div
-                          className="sg-ustu6l-root"
+                          className="sg-9l1yt0-root"
                           role="text"
                         >
                           <ReviewDate
@@ -535,7 +535,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-4bfwpo-item"
+                    className="sg-1pvwwup-item"
                     data-test-id="reviewTitle: "
                     key="2"
                   >
@@ -581,7 +581,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="img"
                             >
                               <div
-                                className="sg-170uo4n-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -735,7 +735,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8o0m3k-filledStars rating-stars-filled"
+                                className="sg-10z3jvw-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -914,7 +914,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         }
                       >
                         <div
-                          className="sg-ustu6l-root"
+                          className="sg-9l1yt0-root"
                           role="text"
                         >
                           <ReviewDate
@@ -936,7 +936,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-4bfwpo-item"
+                    className="sg-1pvwwup-item"
                     data-test-id="reviewTitle: "
                     key="3"
                   >
@@ -982,7 +982,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="img"
                             >
                               <div
-                                className="sg-170uo4n-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1136,7 +1136,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8o0m3k-filledStars rating-stars-filled"
+                                className="sg-10z3jvw-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1315,7 +1315,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         }
                       >
                         <div
-                          className="sg-ustu6l-root"
+                          className="sg-9l1yt0-root"
                           role="text"
                         >
                           <ReviewDate
@@ -1337,7 +1337,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-4bfwpo-item"
+                    className="sg-1pvwwup-item"
                     data-test-id="reviewTitle: "
                     key="4"
                   >
@@ -1383,7 +1383,7 @@ exports[`<Reviews> page should not crash 1`] = `
                               role="img"
                             >
                               <div
-                                className="sg-170uo4n-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1537,7 +1537,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8o0m3k-filledStars rating-stars-filled"
+                                className="sg-10z3jvw-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1716,7 +1716,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         }
                       >
                         <div
-                          className="sg-ustu6l-root"
+                          className="sg-9l1yt0-root"
                           role="text"
                         >
                           <ReviewDate

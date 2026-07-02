@@ -2,34 +2,40 @@
 
 exports[`<ActionButton /> Given the component was mounted to the DOM Given the loading prop is set to true should match snapshot 1`] = `
 <div
-  className="sg-stwow3-containerCircle"
+  class="sg-stwow3-containerCircle"
 >
-  <IndicatorCircle
-    color="var(--color-secondary)"
-    paused={false}
-    size={32}
-    strokeWidth={3}
-  />
+  <svg
+    class="sg-uewran-spinner ui-shared__indicator-circle"
+    data-test-id="loadingIndicator"
+    height="32"
+    viewBox="25 25 50 50"
+    width="32"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      class="sg-g16yqe-circle"
+      cx="50"
+      cy="50"
+      r="20"
+    />
+  </svg>
 </div>
 `;
 
 exports[`<ActionButton /> Given the component was mounted to the DOM should match snapshot 1`] = `
 <div
-  className="ui-shared__action-button sg-berhvi-withGap"
-  data-test-id={null}
+  class="ui-shared__action-button sg-berhvi-withGap"
 >
-  <RippleButton
-    className=""
-    disabled={false}
-    flat={true}
-    onClick={[Function]}
-    rippleClassName=""
-    rippleSize={null}
-    testId="Button"
-    type="primary"
-    wrapContent={true}
+  <button
+    class="common__button ui-shared__button ui-shared__ripple-button sg-1hyscfq-root-button"
+    data-test-id="Button"
   >
-    Action Button
-  </RippleButton>
+    <div
+      class="ui-shared__ripple sg-fpa50s-contentWrapper"
+      data-test-id="Ripple"
+    >
+      Action Button
+    </div>
+  </button>
 </div>
 `;

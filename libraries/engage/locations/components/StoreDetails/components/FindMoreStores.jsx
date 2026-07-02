@@ -2,17 +2,16 @@ import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { MagnifierIcon, LocatorIcon, Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { STORE_FINDER_PATTERN } from '../../../constants';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     margin: '16px 0px',
   },
   title: {
     fontSize: '20px',
     fontWeight: '500',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     marginBottom: '8px',
   },
   inputCell: {
@@ -20,8 +19,8 @@ const useStyles = makeStyles()({
   },
   inputContainer: {
     position: 'relative',
-    background: themeColors.light,
-    border: `1px solid ${themeColors.shade7}`,
+    border: `1px solid ${theme.components.border.light}`,
+    background: theme.components.input.background,
     borderRadius: 4,
     display: 'flex',
     alignItems: 'center',
@@ -30,7 +29,7 @@ const useStyles = makeStyles()({
   inputIcon: {
     padding: 0,
     margin: '0 8px',
-    color: themeColors.shade9,
+    color: theme.palette.grey.dark,
     fontSize: '1.23rem',
     flexShrink: 0,
     outline: 0,
@@ -48,7 +47,7 @@ const useStyles = makeStyles()({
     height: '100%',
     width: '100%',
   },
-});
+}));
 
 /**
  * Find more stores component.

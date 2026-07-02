@@ -1,20 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ButtonLink> On click action should create component and open page on click 1`] = `
-<ActionButton
-  className=""
-  disableClickDelay={false}
-  disabled={false}
-  flat={true}
-  loading={false}
-  noGap={false}
-  onClick={[Function]}
-  rippleClassName=""
-  rippleSize={null}
-  testId={null}
-  type="secondary"
-  wrapContent={true}
+<div
+  class="ui-shared__action-button sg-berhvi-withGap"
 >
-  Text inside
-</ActionButton>
+  <button
+    class="common__button ui-shared__button ui-shared__ripple-button sg-lgpz4u-root-button"
+    data-test-id="Button"
+  >
+    <div
+      class="ui-shared__ripple sg-fpa50s-contentWrapper"
+      data-test-id="Ripple"
+    >
+      Text inside
+    </div>
+  </button>
+</div>
 `;

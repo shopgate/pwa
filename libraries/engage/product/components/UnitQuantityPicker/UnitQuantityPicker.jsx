@@ -5,12 +5,9 @@ import PropTypes from 'prop-types';
 import { i18n, hasNewServices } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { RippleButton, QuantityInput } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()((theme, {
   inputColor,
@@ -43,7 +40,7 @@ const useStyles = makeStyles()((theme, {
       alignItems: 'center',
       width: '100%',
       fontSize: 16,
-      backgroundColor: 'var(--color-background-accent)',
+      backgroundColor: theme.components.input.background,
       ...(inputColor && { color: `${inputColor}` }),
       ...(inputBgColor && { backgroundColor: `${inputBgColor}` }),
       ' .quantity-label': {
@@ -129,6 +126,7 @@ const UnitQuantityPicker = ({
   toggleTabBarOnFocus,
   quantityLabel,
 }) => {
+  const theme = useTheme();
   const widgetDefaults = useMemo(() => {
     if (hasNewServices()) {
       // The widget configuration was introduced with CCP-2449 in PWA6. It's inactive for now
@@ -140,14 +138,13 @@ const UnitQuantityPicker = ({
     }
 
     return {
-      buttonColor: colors.shade8,
-      buttonBgColor: colors.primary,
-      inputColor: colors.dark,
-      inputBgColor: colors.shade8,
+      buttonColor: theme.contrastColor(theme.palette.primary.main),
+      buttonBgColor: theme.palette.primary.main,
+      inputColor: theme.palette.text.primary,
+      inputBgColor: theme.palette.grey.light,
       showLabel: true,
     };
-  }, []);
-
+  }, [theme]);
   const {
     buttonColor = widgetDefaults.buttonColor,
     buttonBgColor = widgetDefaults.buttonBgColor,
@@ -254,7 +251,7 @@ const UnitQuantityPicker = ({
 
   return (
     <>
-      { isFocused && (
+      {isFocused && (
         // Show hidden backdrop when focused to avoid side effects when user blurs the input
         // e.g. opening links unintended
         <div className={classes.backdrop} />

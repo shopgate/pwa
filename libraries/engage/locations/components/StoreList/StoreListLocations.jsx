@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { CardList, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import { FulfillmentContext } from '../../locations.context';
 import { StoreContext } from './Store.context';
@@ -10,18 +9,18 @@ import { FULFILLMENT_SHEET_STORE_LIST } from '../../constants/Portals';
 
 const useStyles = makeStyles()(theme => ({
   stores: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(1.5, 1.5, 2),
     fontSize: '0.875rem',
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   storeCard: {
-    background: themeColors.light,
+    background: theme.palette.background.surface,
     marginBottom: theme.spacing(1.5),
     ':last-of-type': {
       marginBottom: 0,
     },
-    border: `1px solid ${themeColors.shade7}`,
+    border: `1px solid ${theme.components.border.light}`,
     boxSizing: 'border-box',
     boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.25)',
     borderRadius: '0px 0px 3px 3px',

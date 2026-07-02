@@ -77,7 +77,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: '1.125rem',
     marginBottom: theme.spacing(3),
     marginTop: 4,
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   form: {
     paddingTop: theme.spacing(3),
@@ -107,13 +107,13 @@ const useStyles = makeStyles()(theme => ({
   },
   signup: {
     display: 'inline-block',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     width: 'auto',
     margin: '-.35em 0 -.35em -.35em',
     padding: '.35em',
   },
   icon: {
-    fill: 'var(--color-text-medium-emphasis)',
+    fill: theme.palette.text.secondary,
     width: '24px',
     height: '24px',
   },

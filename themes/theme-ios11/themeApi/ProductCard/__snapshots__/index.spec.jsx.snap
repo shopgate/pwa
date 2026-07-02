@@ -69,11 +69,11 @@ exports[`<ProductCard /> should render as expected 1`] = `
       style={{}}
     >
       <section
-        className="sg-3h4h50-root theme__product-card"
+        className="sg-ywrwkl-root theme__product-card"
         data-test-id="Product: Product Name"
         style={
           {
-            "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.16)",
+            "boxShadow": "0 4px 8px rgba(0,0,0,0.16)",
           }
         }
       >
@@ -153,11 +153,11 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
       style={{}}
     >
       <section
-        className="sg-3h4h50-root theme__product-card"
+        className="sg-ywrwkl-root theme__product-card"
         data-test-id="Product: Product Name"
         style={
           {
-            "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.16)",
+            "boxShadow": "0 4px 8px rgba(0,0,0,0.16)",
           }
         }
       >

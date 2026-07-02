@@ -2,7 +2,6 @@ import React from 'react';
 import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';
 import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
@@ -11,17 +10,17 @@ import CartItemsSubstitution from './CartItemsSubstitution';
 
 const useStyles = makeStyles()(theme => ({
   items: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(1.5, 1.5, 2),
     marginBottom: theme.spacing(-1.5),
   },
   card: {
-    background: themeColors.light,
+    background: theme.palette.background.surface,
     marginBottom: theme.spacing(1.5),
     ':last-of-type': {
       marginBottom: 0,
     },
-    border: `1px solid ${themeColors.shade7}`,
+    border: `1px solid ${theme.components.border.light}`,
     boxSizing: 'border-box',
     boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
     borderRadius: 5,

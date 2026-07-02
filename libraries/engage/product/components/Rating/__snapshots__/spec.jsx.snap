@@ -1,66 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Rating (product header) Rendering should render rating when data is available 1`] = `
-<Provider
-  store={
-    {
-      "clearActions": [Function],
-      "dispatch": [Function],
-      "getActions": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-    }
-  }
+<div
+  class="sg-1urk15m-container"
+  role="presentation"
 >
-  <Connect(Rating)
-    productId="foo"
-  >
-    <Rating
-      dispatch={[Function]}
-      productId="foo"
-      rating={
-        {
-          "average": 50,
-          "count": 4,
-        }
-      }
-    >
-      <SurroundPortals
-        portalName="product.rating"
-      >
-        <div
-          className="sg-1urk15m-container"
-          onClick={[Function]}
-          role="presentation"
-        >
-          <RatingStars
-            display="big"
-            value={50}
-          />
-          <RatingCount
-            count={4}
-            prominent={true}
-          >
-            <Text
-              acceptPlainTextWithPlaceholders={false}
-              className="engage__reviews__rating-count sg-6cwwaq-greyStyle-prominentStyle"
-              params={
-                {
-                  "count": 4,
-                  "prominent": true,
-                }
-              }
-              role={null}
-              string="reviews.review_count"
-              transform={null}
-            >
-              reviews.review_count
-            </Text>
-          </RatingCount>
-        </div>
-      </SurroundPortals>
-    </Rating>
-  </Connect(Rating)>
-</Provider>
+  reviews.review_count
+</div>
 `;

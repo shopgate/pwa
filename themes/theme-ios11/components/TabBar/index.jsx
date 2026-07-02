@@ -4,11 +4,10 @@ import React, {
 import PropTypes from 'prop-types';
 import { KeyboardConsumer, SurroundPortals } from '@shopgate/engage/components';
 import { UIEvents } from '@shopgate/engage/core/events';
-import { injectGlobal, makeStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { isAndroidOs } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings, useElementSize } from '@shopgate/engage/core/hooks';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -19,30 +18,7 @@ import connect from './connector';
 import { useTabBarScrollObserver } from './hooks';
 import visibleTabs from './tabs';
 
-const { colors, shadows, variables } = themeConfig;
-
-injectGlobal({
-  ':root': {
-    '--tab-bar-background': colors.lightOverlay,
-    '--tab-bar-box-shadow': shadows.tabBar,
-    '--tab-bar-min-height': `${variables.tabBar.height}px`,
-
-    '--tab-bar-floating-border-radius': '16px',
-    '--tab-bar-floating-box-shadow': '0 0 12px rgba(0, 0, 0, 0.24)',
-    '--tab-bar-floating-min-height': '59px',
-
-    '--tab-bar-item-default-color': colors.shade11,
-    '--tab-bar-item-highlighted-color': 'var(--color-secondary)',
-
-    '--tab-bar-item-badge-color': 'var(--color-secondary-contrast)',
-    '--tab-bar-item-badge-background': 'var(--color-secondary)',
-    '--tab-bar-item-badge-border-radius': `${variables.gap.small}px`,
-    '--tab-bar-item-badge-top': `-${variables.gap.small}px`,
-    '--tab-bar-item-badge-left': 'calc(50% + 20px)',
-  },
-});
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   hidden: {
     display: 'none !important',
   },
@@ -55,9 +31,9 @@ const useStyles = makeStyles()({
     justifyContent: 'center',
   },
   tabBarContainerDocked: {
-    background: 'var(--tab-bar-background)',
-    minHeight: 'calc(var(--tab-bar-min-height) + var(--safe-area-inset-bottom))',
-    boxShadow: 'var(--tab-bar-box-shadow)',
+    background: theme.components.tabBar.background,
+    minHeight: `calc(${theme.components.tabBar.minHeight} + var(--safe-area-inset-bottom))`,
+    boxShadow: theme.components.tabBar.boxShadow,
   },
   tabBarContainerFloating: {
     padding: '0 16px',
@@ -73,12 +49,12 @@ const useStyles = makeStyles()({
     paddingBottom: 'var(--safe-area-inset-bottom)',
   },
   tabBarFloating: {
-    background: 'var(--tab-bar-background)',
-    minHeight: 'var(--tab-bar-floating-min-height)',
+    background: theme.components.tabBar.background,
+    minHeight: theme.components.tabBar.floatingMinHeight,
     padding: '4px 0',
     marginBottom: `max(16px, calc(var(--safe-area-inset-bottom) + ${isAndroidOs ? '8px' : '0px'}))`,
-    borderRadius: 'var(--tab-bar-floating-border-radius)',
-    boxShadow: 'var(--tab-bar-floating-box-shadow)',
+    borderRadius: theme.components.tabBar.floatingBorderRadius,
+    boxShadow: theme.components.tabBar.floatingBoxShadow,
   },
   transitionFadeBase: {
     transition: 'opacity 0.2s ease-in-out, visibility 0.2s ease-in-out',
@@ -102,7 +78,7 @@ const useStyles = makeStyles()({
   transitionSlideOut: {
     transform: 'translateY(calc(100% + var(--safe-area-inset-bottom) + 16px))',
   },
-});
+}));
 
 /**
  * Renders the action for a given tab configuration.
@@ -306,23 +282,23 @@ const TabBar = ({
   return (
     <KeyboardConsumer>
       {({ open }) => !open && (
-      <SurroundPortals portalName={TAB_BAR} portalProps={portalProps}>
-        <div
-          className={tabBarClasses.container}
-          aria-hidden={ariaHidden}
-          onTransitionEnd={handleTransitionEnd}
-          ref={tabBarRef}
-        >
+        <SurroundPortals portalName={TAB_BAR} portalProps={portalProps}>
           <div
-            className={tabBarClasses.component}
-            data-test-id="tabBar"
-            role="tablist"
+            className={tabBarClasses.container}
             aria-hidden={ariaHidden}
+            onTransitionEnd={handleTransitionEnd}
+            ref={tabBarRef}
           >
-            {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+            <div
+              className={tabBarClasses.component}
+              data-test-id="tabBar"
+              role="tablist"
+              aria-hidden={ariaHidden}
+            >
+              {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+            </div>
           </div>
-        </div>
-      </SurroundPortals>
+        </SurroundPortals>
       )}
     </KeyboardConsumer>
   );

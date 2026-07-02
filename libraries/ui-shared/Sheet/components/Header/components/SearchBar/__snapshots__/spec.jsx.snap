@@ -32,11 +32,11 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
           onSubmit={[Function]}
         >
           <label
-            className="sg-9d4lwt-label"
+            className="sg-1t1ulwt-label"
             htmlFor="search"
           >
             <div
-              className="sg-1c2gis-icon"
+              className="sg-1bcmtcb-icon"
             >
               <Magnifier>
                 <Icon
@@ -79,7 +79,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
           </label>
           <_default
             autoComplete={false}
-            className="sg-1oqqane-input"
+            className="sg-3x1c7n-input"
             name="search"
             onChange={[Function]}
             type="search"
@@ -89,7 +89,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="sg-1oqqane-input"
+              className="sg-3x1c7n-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -111,7 +111,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="sg-1oqqane-input simpleInput common__simple-input"
+                className="sg-3x1c7n-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}

@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   Link, CheckedIcon, Button, NotificationIcon,
@@ -9,12 +8,10 @@ import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants'
 import { i18n } from '@shopgate/engage/core/helpers';
 import connect from './connector';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     lineHeight: '16.5px',
-    color: themeConfig.colors.warning,
+    color: theme.palette.warning.main,
     width: '100%',
   },
   backInStockMessageContainer: {
@@ -47,7 +44,7 @@ const useStyles = makeStyles()({
     marginLeft: '-2px',
     marginRight: '8px',
   },
-});
+}));
 /**
  * This component renders a button to subscribe a product or a hint
  * that the product is already subscribed
@@ -71,7 +68,7 @@ const BackInStockButton = ({
   alignRight,
   showAsButton,
 }) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx, theme } = useStyles();
   const handleClick = useCallback(async (event) => {
     if (stopPropagation) {
       event.stopPropagation();
@@ -107,7 +104,7 @@ const BackInStockButton = ({
         tag="span"
       >
         <CheckedIcon
-          color={colors.success}
+          color={theme.palette.success.main}
           className={alignRight ? classes.icon : cx(classes.iconCentered, classes.icon)}
         />
         <span className={classes.backInStockMessage}>{i18n.text('back_in_stock.we_will_remind_you')}</span>
@@ -140,7 +137,7 @@ const BackInStockButton = ({
         { [classes.rightAligned]: alignRight }
       )}
     >
-      <NotificationIcon color={colors.primary} className={classes.icon} />
+      <NotificationIcon color={theme.palette.primary.main} className={classes.icon} />
       <span className={classes.buttonText}>
         {i18n.text('back_in_stock.get_notified')}
       </span>

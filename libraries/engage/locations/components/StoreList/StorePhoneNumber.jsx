@@ -5,17 +5,17 @@ import { I18n, PhoneIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { StoreDetailsLine } from './StoreDetailsLine';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   detailsPrimary: {
     margin: 0,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     lineHeight: '1.375rem',
   },
   detailsSecondary: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: '0.75rem',
   },
-});
+}));
 
 /**
  * Renders the store's phone number.

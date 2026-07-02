@@ -4,12 +4,12 @@ import { makeStyles } from '@shopgate/engage/styles';
 import ReviewDate from './components/ReviewDate';
 import Author from './components/Author';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: 14,
   },
-});
+}));
 
 /**
  * Review Info Component.

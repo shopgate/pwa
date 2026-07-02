@@ -2,9 +2,9 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   root: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     position: 'relative',
   },
 }));

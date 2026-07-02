@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import CartItemCardReservation from './CartItemCardReservation';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   withBorder: {
-    borderBottom: `1px solid ${themeColors.shade7}`,
+    borderBottom: `1px solid ${theme.components.border.light}`,
   },
-});
+}));
 
 /**
  * Renders the cart items.

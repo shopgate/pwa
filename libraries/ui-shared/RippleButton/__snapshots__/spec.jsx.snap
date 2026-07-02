@@ -22,19 +22,19 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
     wrapContent={true}
   >
     <Button
-      className="ui-shared__button sg-u02dqw-button ui-shared__ripple-button"
+      className="ui-shared__button sg-mmq1z3-button ui-shared__ripple-button"
       disabled={true}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-1vmosx6-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-1wnudjz-root-button"
         data-test-id="Button"
         disabled={true}
         onClick={null}
       >
         <div
-          className="sg-1vtrm1i-content"
+          className="sg-ig6wzi-content"
         >
           Press me
         </div>
@@ -66,20 +66,20 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="ui-shared__button sg-hgw3or-button ui-shared__ripple-button"
+      className="ui-shared__button sg-1ru9xz1-button ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-1c7tyy7-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-1t277ns-root-button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
       >
         <Ripple
           className="sg-fpa50s-contentWrapper"
-          color="#000"
+          color="var(--sg-palette-common-black)"
           disabled={false}
           fill={true}
           onClick={[Function]}
@@ -124,20 +124,20 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
     wrapContent={false}
   >
     <Button
-      className="ui-shared__button sg-hgw3or-button ui-shared__ripple-button"
+      className="ui-shared__button sg-1ru9xz1-button ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-1c7tyy7-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-1t277ns-root-button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
       >
         <Ripple
           className="sg-fpa50s-contentWrapper"
-          color="#000"
+          color="var(--sg-palette-common-black)"
           disabled={false}
           fill={true}
           onClick={[Function]}
@@ -182,20 +182,20 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
     wrapContent={false}
   >
     <Button
-      className="ui-shared__button sg-1cs55nz-button ui-shared__ripple-button"
+      className="ui-shared__button sg-12559zs-button ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-1h6ofnq-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-b07o5q-root-button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
       >
         <Ripple
           className="sg-fpa50s-contentWrapper"
-          color="#000"
+          color="var(--sg-palette-common-black)"
           disabled={false}
           fill={true}
           onClick={[Function]}
@@ -240,20 +240,20 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="ui-shared__button sg-x945ka-button ui-shared__ripple-button"
+      className="ui-shared__button sg-bqdced-button ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-1y4oqzg-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-149k0f5-root-button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
       >
         <Ripple
           className="sg-fpa50s-contentWrapper"
-          color="#000"
+          color="var(--sg-palette-common-black)"
           disabled={false}
           fill={true}
           onClick={[Function]}

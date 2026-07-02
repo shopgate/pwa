@@ -1,48 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > cart > components > CartItemGroupReservation should render accordion 1`] = `
-<CardListItem>
-  <Accordion
-    className="sg-i7tpew-accordionToggle"
-    renderLabel={[Function]}
+<div
+  data-testid="card-list-item"
+>
+  <div
+    class="sg-h5vm8p-addressDetails"
   >
-    <div
-      className="sg-h5vm8p-addressDetails"
-    >
-      <StoreOpeningHours />
-      <StorePhoneNumber
-        phone="012456789"
-      />
-    </div>
-  </Accordion>
-</CardListItem>
+    StoreOpeningHours
+    012456789
+  </div>
+</div>
 `;
 
 exports[`engage > cart > components > CartItemGroupReservation should render accordion 2`] = `
-<CartItemGroupReservationLabel
-  fulfillmentMethod="BOPIS"
-  location={
-    {
-      "address": {
-        "phoneNumber": "012456789",
-      },
-      "name": "Location name",
-    }
-  }
-/>
+<div
+  class="sg-1n883za-address"
+>
+  <div
+    class="sg-1ylg789-addressIcon"
+  >
+    <div
+      data-testid="location-icon"
+    />
+  </div>
+  <div>
+    <div
+      class="sg-1uoiszi-title"
+    >
+      locations.method.ropis
+    </div>
+    Location name
+  </div>
+</div>
 `;
 
 exports[`engage > cart > components > CartItemGroupReservation should render only label 1`] = `
-<CardListItem
-  className="sg-148h0d1-simpleLabel"
+<div
+  data-testid="card-list-item"
 >
-  <CartItemGroupReservationLabel
-    fulfillmentMethod="BOPIS"
-    location={
-      {
-        "name": "Location name",
-      }
-    }
-  />
-</CardListItem>
+  <div
+    class="sg-1n883za-address"
+  >
+    <div
+      class="sg-1ylg789-addressIcon"
+    >
+      <div
+        data-testid="location-icon"
+      />
+    </div>
+    <div>
+      <div
+        class="sg-1uoiszi-title"
+      >
+        locations.method.ropis
+      </div>
+      Location name
+    </div>
+  </div>
+</div>
 `;

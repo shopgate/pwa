@@ -1,127 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ScannerOverlay /> should render the component 1`] = `
-<ScannerOverlay
-  flashlight={false}
->
-  <CameraOverlay>
-    <SurroundPortals
-      portalName="scanner.camera"
-    >
-      <Portal
-        name="scanner.camera.before"
-        props={null}
-      />
-      <Portal
-        name="scanner.camera"
-        props={null}
-      >
-        <div
-          className="sg-19szxml-root"
-        >
-          <div />
-        </div>
-      </Portal>
-      <Portal
-        name="scanner.camera.after"
-        props={null}
-      />
-    </SurroundPortals>
-  </CameraOverlay>
-  <ScannerBar
-    flashlightState={false}
-    onToggleFlashlight={[Function]}
+<div>
+  <div
+    class="sg-8ytxrl-root"
   >
-    <div
-      id="portal-content"
+    <div />
+  </div>
+  <div
+    id="portal-content"
+  >
+    <button
+      aria-label="scanner.flashlight.switchOn"
+      class="sg-176t45u-button"
+      role="link"
+      type="button"
     >
-      <SurroundPortals
-        portalName="scanner.bar"
-        portalProps={
-          {
-            "flashlightState": false,
-            "onToggleFlashlight": [Function],
-          }
-        }
-      >
-        <Grid
-          className="sg-r65lb9-container ui-shared__scanner-bar"
-        >
-          <Grid.Item
-            className="sg-ouqtvo-column"
-          >
-            <FlashlightButton
-              flashlightState={false}
-              onToggle={[Function]}
-            >
-              <SurroundPortals
-                portalName="scanner.flash"
-              >
-                <button
-                  aria-label="scanner.flashlight.switchOn"
-                  className="sg-176t45u-button"
-                  onClick={[Function]}
-                  role="link"
-                  type="button"
-                >
-                  <ToggleIcon
-                    offIcon={
-                      <FlashDisabledIcon
-                        className="sg-vhz0cx-icon"
-                      />
-                    }
-                    on={false}
-                    onIcon={
-                      <FlashEnabledIcon
-                        className="sg-vhz0cx-icon"
-                      />
-                    }
-                    toggleHandler={[Function]}
-                  >
-                    <div
-                      aria-hidden={true}
-                      className="ui-shared__toggle-icon"
-                      onClick={[Function]}
-                    >
-                      <FlashDisabledIcon
-                        className="sg-vhz0cx-icon"
-                      />
-                    </div>
-                  </ToggleIcon>
-                </button>
-                <div
-                  aria-live="polite"
-                  className="sr-only"
-                  role="status"
-                >
-                  scanner.flashlight.off
-                </div>
-              </SurroundPortals>
-            </FlashlightButton>
-          </Grid.Item>
-          <Grid.Item
-            className="sg-ouqtvo-column"
-          >
-            <ScannerInstructions>
-              <SurroundPortals
-                portalName="scanner.instructions"
-              >
-                <Text
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="scanner.instructions"
-                  transform={null}
-                >
-                  scanner.instructions
-                </Text>
-              </SurroundPortals>
-            </ScannerInstructions>
-          </Grid.Item>
-        </Grid>
-      </SurroundPortals>
+      <div
+        aria-hidden="true"
+        class="ui-shared__toggle-icon"
+      />
+    </button>
+    <div
+      aria-live="polite"
+      class="sr-only"
+      role="status"
+    >
+      scanner.flashlight.off
     </div>
-  </ScannerBar>
-</ScannerOverlay>
+    scanner.instructions
+  </div>
+</div>
 `;

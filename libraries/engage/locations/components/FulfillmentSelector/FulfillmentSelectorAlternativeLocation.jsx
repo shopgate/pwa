@@ -14,7 +14,7 @@ import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
 
 const useStyles = makeStyles()(theme => ({
   locationName: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
   },
   gridClassName: {
     fontSize: '0.825rem',

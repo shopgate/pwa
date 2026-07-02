@@ -3,12 +3,9 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getFullImageSource } from '@shopgate/engage/core/helpers';
 import ImageInner from './ImageInner';
-
-const { colors: themeColors } = themeConfig;
 
 const useStyles = makeStyles()((_theme, { background, paddingTop }) => ({
   container: {
@@ -287,7 +284,7 @@ const defaultResolutions = [
 
 Image.defaultProps = {
   alt: null,
-  backgroundColor: themeColors.placeholder,
+  backgroundColor: 'var(--sg-palette-background-emphasized)',
   className: '',
   classNameImg: '',
   forcePlaceholder: false,

@@ -26,14 +26,13 @@ import {
 } from '@shopgate/engage/components';
 import { SCANNER_ICON } from '@shopgate/engage/scanner/constants';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import TabBar from 'Components/TabBar';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 
 const SUGGESTIONS_MIN = 1;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     position: 'relative',
@@ -53,7 +52,7 @@ const useStyles = makeStyles()(() => ({
     padding: '4px 10px 4px 30px',
     lineHeight: '28px',
     outline: 'none',
-    background: themeColors.shade7,
+    background: theme.palette.grey.light,
     verticalAlign: 'middle',
     WebkitAppearance: 'none',
   },
@@ -62,7 +61,7 @@ const useStyles = makeStyles()(() => ({
   },
   label: {
     alignItems: 'center',
-    color: themeColors.shade3,
+    color: theme.palette.grey.medium,
     display: 'flex',
     height: '36px',
     position: 'absolute',
@@ -74,7 +73,7 @@ const useStyles = makeStyles()(() => ({
   },
   button: {
     lineHeight: '34px',
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     paddingTop: 0,
     paddingLeft: 16,
     paddingRight: 0,
@@ -85,18 +84,18 @@ const useStyles = makeStyles()(() => ({
   },
   icon: {
     padding: '0 6px',
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
     fontSize: '1.235rem',
   },
   scannerIcon: {
     padding: '4px 6px 4px 4px',
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
     fontSize: '1.7rem',
     position: 'absolute',
     right: 0,
   },
   overlay: {
-    background: themeColors.darkTransparent,
+    background: 'rgba(0,0,0, 0.4)',
     position: 'absolute',
     left: 0,
     width: '100%',

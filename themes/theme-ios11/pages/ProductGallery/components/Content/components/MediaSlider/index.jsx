@@ -5,11 +5,9 @@ import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { Swiper, Image } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import connect from './connector';
 
-const { colors } = themeConfig;
 const { pdpImageSliderPaginationType } = appConfig || {};
 
 const fullSize = {
@@ -18,10 +16,10 @@ const fullSize = {
   height: '100%',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     ...fullSize,
-    background: colors.dark,
+    background: theme.palette.common.black,
     position: 'fixed',
     top: 0,
     bottom: 0,
@@ -50,7 +48,7 @@ const useStyles = makeStyles()({
     transform: 'translateX(-50%)',
     zIndex: 10,
   },
-});
+}));
 
 /**
  * The Product media gallery component.

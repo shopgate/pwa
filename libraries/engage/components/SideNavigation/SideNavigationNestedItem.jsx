@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     outline: 0,
     margin: theme.spacing(0, -2, 0, 1),
     fontSize: '1.6em',
-    color: '#373D41',
+    color: theme.palette.common.black,
     position: 'relative',
   },
   chevronDown: {

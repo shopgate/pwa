@@ -1,341 +1,135 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Select /> should render select with 1 selected option 1`] = `
-<Select
-  aria-describedby={null}
-  aria-invalid={false}
-  className=""
-  disabled={false}
-  errorText=""
-  isControlled={false}
-  label=""
-  multiple={false}
-  name="test-name"
-  onChange={[Function]}
-  options={
-    {
-      "DE": "Germany",
-      "US": "United states",
-    }
-  }
-  placeholder=""
-  required={false}
-  showErrorText={true}
-  size={null}
-  translateErrorText={true}
-  value="DE"
->
-  <FormElement
-    className="ui-shared__form__select"
-    disabled={false}
-    errorText=""
-    hasLeftElement={false}
-    hasPlaceholder={true}
-    hasUnderline={true}
-    hasValue={true}
-    htmlFor="test-name"
-    isFocused={false}
-    label=""
-    labelStatic={false}
-    placeholder=""
-    showErrorText={true}
-    translateErrorText={true}
+<DocumentFragment>
+  <div
+    class="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
   >
-    <div
-      className="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
+    <select
+      aria-invalid="false"
+      class="sg-5x7qyf-select select"
+      id="test-name"
+      name="test-name"
     >
-      <select
-        aria-describedby={null}
-        aria-invalid={false}
-        className="sg-5x7qyf-select select"
-        disabled={false}
-        id="test-name"
-        name="test-name"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
+      <option
+        class="option"
         value="DE"
       >
-        <option
-          className="option"
-          key="test-name_DE"
-          value="DE"
-        >
-          Germany
-        </option>
-        <option
-          className="option"
-          key="test-name_US"
-          value="US"
-        >
-          United states
-        </option>
-      </select>
-      <Chevron
-        className="sg-pez732-chevron"
+        Germany
+      </option>
+      <option
+        class="option"
+        value="US"
       >
-        <Icon
-          className="sg-pez732-chevron"
-          content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
-        >
-          <svg
-            className="common__icon sg-1ix3ppp-root-chevron"
-            dangerouslySetInnerHTML={
-              {
-                "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
-              }
-            }
-            style={
-              {
-                "fill": undefined,
-                "fontSize": "inherit",
-              }
-            }
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </Chevron>
-      <Underline
-        hasErrorMessage={false}
-        isFocused={false}
-      >
-        <div
-          className="sg-titfmn-underlineWrapper underline"
-        >
-          <div
-            className="sg-ll3grb-underline"
-            style={
-              {
-                "borderBottomColor": "var(--color-primary, #fa5400)",
-                "transform": "scale3d(0,1,1)",
-              }
-            }
-          />
-        </div>
-      </Underline>
+        United states
+      </option>
+    </select>
+    <svg
+      class="common__icon sg-1ix3ppp-root-chevron"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+    <div
+      class="sg-1fzvff5-underlineWrapper underline"
+    >
+      <div
+        class="sg-ll3grb-underline"
+        style="transform: scale3d(0,1,1);"
+      />
     </div>
-  </FormElement>
-</Select>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<Select /> should render select with 2 options 1`] = `
-<Select
-  aria-describedby={null}
-  aria-invalid={false}
-  className=""
-  disabled={false}
-  errorText=""
-  isControlled={false}
-  label=""
-  multiple={false}
-  name="test-name"
-  onChange={[Function]}
-  options={
-    {
-      "DE": "Germany",
-      "US": "United states",
-    }
-  }
-  placeholder=""
-  required={false}
-  showErrorText={true}
-  size={null}
-  translateErrorText={true}
-  value=""
->
-  <FormElement
-    className="ui-shared__form__select"
-    disabled={false}
-    errorText=""
-    hasLeftElement={false}
-    hasPlaceholder={true}
-    hasUnderline={true}
-    hasValue={true}
-    htmlFor="test-name"
-    isFocused={false}
-    label=""
-    labelStatic={false}
-    placeholder=""
-    showErrorText={true}
-    translateErrorText={true}
+<DocumentFragment>
+  <div
+    class="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
   >
-    <div
-      className="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
+    <select
+      aria-invalid="false"
+      class="sg-5x7qyf-select select"
+      id="test-name"
+      name="test-name"
     >
-      <select
-        aria-describedby={null}
-        aria-invalid={false}
-        className="sg-5x7qyf-select select"
-        disabled={false}
-        id="test-name"
-        name="test-name"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
+      <option
+        class="option"
         value="DE"
       >
-        <option
-          className="option"
-          key="test-name_DE"
-          value="DE"
-        >
-          Germany
-        </option>
-        <option
-          className="option"
-          key="test-name_US"
-          value="US"
-        >
-          United states
-        </option>
-      </select>
-      <Chevron
-        className="sg-pez732-chevron"
+        Germany
+      </option>
+      <option
+        class="option"
+        value="US"
       >
-        <Icon
-          className="sg-pez732-chevron"
-          content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
-        >
-          <svg
-            className="common__icon sg-1ix3ppp-root-chevron"
-            dangerouslySetInnerHTML={
-              {
-                "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
-              }
-            }
-            style={
-              {
-                "fill": undefined,
-                "fontSize": "inherit",
-              }
-            }
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </Chevron>
-      <Underline
-        hasErrorMessage={false}
-        isFocused={false}
-      >
-        <div
-          className="sg-titfmn-underlineWrapper underline"
-        >
-          <div
-            className="sg-ll3grb-underline"
-            style={
-              {
-                "borderBottomColor": "var(--color-primary, #fa5400)",
-                "transform": "scale3d(0,1,1)",
-              }
-            }
-          />
-        </div>
-      </Underline>
+        United states
+      </option>
+    </select>
+    <svg
+      class="common__icon sg-1ix3ppp-root-chevron"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+      />
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+    <div
+      class="sg-1fzvff5-underlineWrapper underline"
+    >
+      <div
+        class="sg-ll3grb-underline"
+        style="transform: scale3d(0,1,1);"
+      />
     </div>
-  </FormElement>
-</Select>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<Select /> should render select with no options 1`] = `
-<Select
-  aria-describedby={null}
-  aria-invalid={false}
-  className=""
-  disabled={false}
-  errorText=""
-  isControlled={false}
-  label=""
-  multiple={false}
-  name="test-name"
-  onChange={[Function]}
-  options={{}}
-  placeholder=""
-  required={false}
-  showErrorText={true}
-  size={null}
-  translateErrorText={true}
-  value=""
->
-  <FormElement
-    className="ui-shared__form__select"
-    disabled={false}
-    errorText=""
-    hasLeftElement={false}
-    hasPlaceholder={true}
-    hasUnderline={true}
-    hasValue={false}
-    htmlFor="test-name"
-    isFocused={false}
-    label=""
-    labelStatic={false}
-    placeholder=""
-    showErrorText={true}
-    translateErrorText={true}
+<DocumentFragment>
+  <div
+    class="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
   >
-    <div
-      className="sg-1iey9hl-formElement ui-shared__form__select formElement ui-shared__form-element"
+    <select
+      aria-invalid="false"
+      class="sg-5x7qyf-select select"
+      id="test-name"
+      name="test-name"
+    />
+    <svg
+      class="common__icon sg-1ix3ppp-root-chevron"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <select
-        aria-describedby={null}
-        aria-invalid={false}
-        className="sg-5x7qyf-select select"
-        disabled={false}
-        id="test-name"
-        name="test-name"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        required={false}
-        value=""
+      <path
+        d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
       />
-      <Chevron
-        className="sg-pez732-chevron"
-      >
-        <Icon
-          className="sg-pez732-chevron"
-          content="<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />"
-        >
-          <svg
-            className="common__icon sg-1ix3ppp-root-chevron"
-            dangerouslySetInnerHTML={
-              {
-                "__html": "<path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none" />",
-              }
-            }
-            style={
-              {
-                "fill": undefined,
-                "fontSize": "inherit",
-              }
-            }
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          />
-        </Icon>
-      </Chevron>
-      <Underline
-        hasErrorMessage={false}
-        isFocused={false}
-      >
-        <div
-          className="sg-titfmn-underlineWrapper underline"
-        >
-          <div
-            className="sg-ll3grb-underline"
-            style={
-              {
-                "borderBottomColor": "var(--color-primary, #fa5400)",
-                "transform": "scale3d(0,1,1)",
-              }
-            }
-          />
-        </div>
-      </Underline>
+      <path
+        d="M0 0h24v24H0z"
+        fill="none"
+      />
+    </svg>
+    <div
+      class="sg-1fzvff5-underlineWrapper underline"
+    >
+      <div
+        class="sg-ll3grb-underline"
+        style="transform: scale3d(0,1,1);"
+      />
     </div>
-  </FormElement>
-</Select>
+  </div>
+</DocumentFragment>
 `;

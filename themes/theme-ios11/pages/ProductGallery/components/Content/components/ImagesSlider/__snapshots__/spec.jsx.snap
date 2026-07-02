@@ -63,7 +63,7 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
           }
         >
           <div
-            className="sg-1bqqk3g-container"
+            className="sg-nxfk3l-container"
           >
             <Swiper
               className="sg-cvn9wz-slider"
@@ -217,7 +217,7 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
           }
         >
           <div
-            className="sg-1bqqk3g-container"
+            className="sg-nxfk3l-container"
           >
             <Swiper
               className="sg-cvn9wz-slider"

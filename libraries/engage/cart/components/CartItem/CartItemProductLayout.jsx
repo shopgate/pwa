@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   Grid, Link, ProductProperties, SurroundPortals, ConditionalWrapper, I18n,
 } from '@shopgate/engage/components';
@@ -25,7 +24,6 @@ import CartItemProductOrderDetails from './CartItemProductOrderDetails';
 import CartItemProductPriceList from './CartItemProductPriceList';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
-const { colors } = themeConfig;
 const leftColumnWidth = 72;
 
 const useStyles = makeStyles()((theme, _params, classes) => ({
@@ -38,7 +36,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     width: leftColumnWidth,
   },
   image: {
-    background: colors.placeholder,
+    background: theme.palette.background.emphasized,
     marginBottom: theme.spacing(1.25),
     height: leftColumnWidth,
     width: leftColumnWidth,
@@ -79,7 +77,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     wordBreak: 'break-word',
     alignSelf: 'flex-start',
     fontSize: '0.875rem',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     lineHeight: 1.3,
     '&:not(:empty)': {
       [`+ .${classes.price}`]: {
@@ -175,15 +173,15 @@ export function CartItemProductLayout() {
               >
                 <ProductProperties properties={product.properties} lineClamp={2} />
               </SurroundPortals>
-              { isOrderDetails && (
+              {isOrderDetails && (
                 <CartItemProductOrderDetails />
               )}
             </Grid.Item>
             <Grid.Item grow={1} className={classes.price}>
-              { isOrderDetails && (
+              {isOrderDetails && (
                 <I18n.Text string="cart.subtotal" className={classes.orderDetailsSubtotalLabel} />
               )}
-              { !showLineItemPromotions && (
+              {!showLineItemPromotions && (
                 <>
                   <CartItemProductPriceList isSubtotal />
                   <PriceInfo product={product} currency={currency} className={classes.priceInfo} />
@@ -198,7 +196,7 @@ export function CartItemProductLayout() {
               />
             )}
           </Grid>
-          { showLineItemPromotions && (
+          {showLineItemPromotions && (
             <Grid className={cx(classes.info, classes.promotionLine)}>
               <Grid.Item />
               <Grid.Item className={classes.promotionLineItem}>
@@ -223,7 +221,7 @@ export function CartItemProductLayout() {
               </SurroundPortals>
             </ConditionalWrapper>
           </div>
-          { !isOrderDetails && allowQuantityChange && (
+          {!isOrderDetails && allowQuantityChange && (
             <SurroundPortals
               portalName={CART_ITEM_QUANTITY_PICKER}
               portalProps={portalProps}

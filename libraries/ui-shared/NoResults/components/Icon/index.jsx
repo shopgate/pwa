@@ -1,21 +1,20 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import CryptoJs from 'crypto-js';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   magnifier: {
     fill: 'currentColor',
   },
   background: {
-    fill: themeColors.light,
+    fill: theme.palette.background.surface,
   },
   circle: {
     fill: 'currentColor',
     opacity: 0.065,
   },
-});
+}));
 
 /**
  * The no search results icon component.

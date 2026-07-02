@@ -11,18 +11,18 @@ import moment from 'moment';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 import GetDirectionsButton from './GetDirectionsButton';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   headerWrapper: {
     display: 'flex',
   },
   headerIcon: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontSize: 20,
     alignContent: 'center',
     marginRight: 4,
   },
   header: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     fontWeight: '600',
     fontSize: 20,
   },
@@ -70,7 +70,7 @@ const useStyles = makeStyles()({
     textDecoration: 'underline',
   },
   makeMyStoreButton: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   comingSoon: {
     fontStyle: 'italic',
@@ -82,7 +82,7 @@ const useStyles = makeStyles()({
     flexWrap: 'wrap',
     margin: '8px 0',
   },
-});
+}));
 
 /**
  * Store details component.

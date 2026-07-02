@@ -1,7 +1,6 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import PaymentBarSubTotal from '../PaymentBar/PaymentBarSubTotal';
 import PaymentBarGrandTotal from '../PaymentBar/PaymentBarGrandTotal';
 import PaymentBarShippingCost from '../PaymentBar/PaymentBarShippingCost';
@@ -11,8 +10,6 @@ import PaymentBarAppliedPromotions from '../PaymentBar/PaymentBarAppliedPromotio
 import PaymentBarPromotionCoupons from '../PaymentBar/PaymentBarPromotionCoupons';
 import CartSummaryWideCheckoutButton from './CartSummaryWideCheckoutButton';
 import CartSummaryWideFooter from './CartSummaryWideFooter';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -28,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: '1.5rem',
   },
   summary: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(2),
   },
   total: {
@@ -39,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
   grandTotal: {
     fontSize: '1.25rem !important',
     fontWeight: 500,
-    borderTop: `1px solid ${colors.shade4}`,
+    borderTop: `1px solid ${theme.components.border.medium}`,
     padding: theme.spacing(1, 0),
     color: theme.palette.text.primary,
     '&:last-child': {

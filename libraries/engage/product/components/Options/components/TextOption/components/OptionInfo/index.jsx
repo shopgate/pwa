@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0, 2),
   },
   required: {
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     fontSize: '0.825rem',
   },
   price: {

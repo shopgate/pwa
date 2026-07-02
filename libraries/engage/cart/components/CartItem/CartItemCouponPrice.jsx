@@ -7,13 +7,13 @@ import {
 } from '@shopgate/pwa-common-commerce/cart';
 import Price from '@shopgate/pwa-ui-shared/Price';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   price: {
     fontSize: '1rem',
     fontWeight: 500,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
-});
+}));
 /**
  * @typedef {import('../../cart.types').SavedPrice} SavedPrice
  */

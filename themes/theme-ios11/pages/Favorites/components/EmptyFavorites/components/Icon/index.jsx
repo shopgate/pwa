@@ -1,26 +1,25 @@
 import React, { useMemo } from 'react';
 import CryptoJs from 'crypto-js';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeVariables } from '@shopgate/pwa-common/helpers/config';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   outerCircle: {
-    fill: 'var(--color-primary-contrast)',
+    fill: theme.palette.primary.contrastText,
   },
   innerCircle: {
     fill: 'currentColor',
     opacity: 0.065,
   },
   heart: {
-    fill: 'var(--color-primary-contrast)',
+    fill: theme.palette.primary.contrastText,
     stroke: 'currentColor',
     strokeWidth: '4px',
   },
   viewBox: {
-    width: themeVariables.emptyPage.icon,
-    color: 'var(--color-primary)',
+    width: 216,
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 /**
  * Renders empty favorites icon.

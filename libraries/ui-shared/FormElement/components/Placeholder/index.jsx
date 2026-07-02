@@ -12,12 +12,12 @@ const ellipsisLine = {
   textOverflow: 'ellipsis',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   placeholder: {
     position: 'absolute',
     pointerEvents: 'none',
     top: 24,
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     willChange: 'transform',
     transition: `opacity ${easing}`,
     ...ellipsisLine,
@@ -29,7 +29,7 @@ const useStyles = makeStyles()({
     left: 'var(--form-element-left-offset, 26px)',
     width: 'calc(100% - var(--form-element-left-offset, 26px))',
   },
-});
+}));
 
 /**
  * The form element placeholder component.

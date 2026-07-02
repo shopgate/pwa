@@ -4,13 +4,12 @@ import React, {
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import Sheet from './components/Sheet';
 import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',
@@ -23,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     cursor: 'pointer',
   },
   buttonDisabled: {
-    color: themeColors.shade4,
+    color: theme.palette.action.disabledBackground,
     cursor: 'not-allowed',
   },
   label: {
