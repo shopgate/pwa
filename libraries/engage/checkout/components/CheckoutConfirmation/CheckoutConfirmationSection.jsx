@@ -78,7 +78,7 @@ const CheckoutConfirmationSegment = ({
   return (
     <div className={cx(classes.wrapper, className)}>
       <Typography
-        component="body1"
+        variant="body1"
         className={classes.headline}
       >
         {i18n.text(title)}
