@@ -10,6 +10,7 @@ const useStyles = makeStyles()(theme => ({
   },
   headline: {
     color: theme.palette.grey.medium,
+    textTransform: 'uppercase',
     paddingBottom: theme.spacing(1),
     margin: 0,
   },
@@ -77,7 +78,7 @@ const CheckoutConfirmationSegment = ({
   return (
     <div className={cx(classes.wrapper, className)}>
       <Typography
-        component="h3"
+        component="body1"
         className={classes.headline}
       >
         {i18n.text(title)}

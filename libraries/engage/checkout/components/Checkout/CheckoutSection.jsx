@@ -14,6 +14,7 @@ const useStyles = makeStyles()(theme => ({
   card: {
     display: 'flex',
     flexDirection: 'row',
+    fontSize: theme.typography.body1.fontSize,
     width: '100%',
     overflow: 'inherit !important',
     marginBottom: theme.spacing(2),

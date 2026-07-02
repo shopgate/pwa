@@ -145,7 +145,7 @@ const CheckoutAddress = ({ type }) => {
           </>
         ) : (
           <Link href={selectAddressLink} className={classes.link}>
-            <Typography variant="body2" color="primary" component="span" align="center">
+            <Typography variant="body2" color="primary" component="div" align="center">
               {i18n.text(`checkout.${type}.select_address`)}
             </Typography>
           </Link>)}
