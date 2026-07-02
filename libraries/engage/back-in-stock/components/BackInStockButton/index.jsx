@@ -26,6 +26,9 @@ const useStyles = makeStyles()(theme => ({
   backInStockMessage: {
     verticalAlign: 'middle',
   },
+  buttonText: {
+    fontSize: theme.typography.body2.fontSize,
+  },
   icon: {
     marginRight: 4,
     marginTop: -1,
@@ -117,9 +120,9 @@ const BackInStockButton = ({
         onClick={handleClick}
         className={classes.button}
       >
-        <Typography variant="body2" component="span" fontWeight="bold">
+        <span className={classes.buttonText}>
           {i18n.text('back_in_stock.get_notified')}
-        </Typography>
+        </span>
       </Button>
     );
   }
