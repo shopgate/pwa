@@ -9,6 +9,7 @@ const mockStore = configureStore();
 const store = mockStore({});
 
 jest.mock('@shopgate/engage/components', () => ({
+  Typography: ({ children }) => children,
   SurroundPortals: ({ children }) => children,
 }));
 jest.mock('@shopgate/engage/core', () => ({

@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
-  container: {},
   buttonText: {
     color: theme.palette.primary.main,
   },
@@ -36,7 +35,7 @@ const GetDirectionsButton = ({ address }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div>
       <Button
         onClick={handleClick}
         role="button"

@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
@@ -9,12 +10,9 @@ import CartItemProductPriceListPromotion from './CartItemProductPriceListPromoti
 
 const useStyles = makeStyles()({
   price: {
-    fontSize: '1rem',
-    fontWeight: 500,
     marginLeft: 'auto',
   },
   priceStriked: {
-    fontSize: '.875rem',
     marginLeft: 'auto',
   },
   priceListEntry: {
@@ -63,20 +61,26 @@ const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabe
               />
             )}
             { !isLast ? (
-              <PriceStriked
+              <Typography
+                variant="body2"
+                component="span"
                 className={cx(classes.priceStriked, customClasses?.priceStriked)}
-                value={price}
-                currency={currency}
-              />
+              >
+                <PriceStriked
+                  value={price}
+                  currency={currency}
+                />
+              </Typography>
             ) : (
-              <Price
-                className={cx(classes.price, customClasses?.price)}
-                unitPrice={price}
-                currency={currency}
-                discounted={prices.length > 1 || price === 0}
-                taxDisclaimer
-                allowFree
-              />
+              <Typography fontWeight="medium" component="span" className={cx(classes.price, customClasses?.price)}>
+                <Price
+                  unitPrice={price}
+                  currency={currency}
+                  discounted={prices.length > 1 || price === 0}
+                  taxDisclaimer
+                  allowFree
+                />
+              </Typography>
             )}
 
           </li>

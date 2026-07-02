@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     alignItems: 'center',
     color: 'inherit',
     display: 'flex',
     flexShrink: 0,
-    fontSize: 24,
+    fontSize: theme.components.icon.medium,
     height: 44,
     justifyContent: 'center',
     outline: 0,
@@ -17,7 +17,7 @@ const useStyles = makeStyles()({
     width: 44,
     zIndex: 1,
   },
-});
+}));
 
 /**
  * The AppBarIcon component.

@@ -21,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
     padding: 4,
     marginRight: theme.spacing(1),
     cursor: 'pointer',
-    fontSize: '0.75rem',
+    fontSize: theme.components.icon.xsmall,
     display: 'inline-flex',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       padding: 3,
@@ -30,13 +30,13 @@ const useStyles = makeStyles()(theme => ({
   infoIconWrapper: {
     cursor: 'pointer',
     color: theme.palette.primary.main,
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
     display: 'inline-flex',
     verticalAlign: 'bottom',
     paddingBottom: 1,
     marginLeft: theme.spacing(1),
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
-      fontSize: '1.375rem',
+      fontSize: theme.components.icon.medium,
       paddingBottom: 0,
     },
   },

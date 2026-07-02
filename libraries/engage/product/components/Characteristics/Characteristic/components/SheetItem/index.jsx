@@ -38,7 +38,7 @@ const useStyles = makeStyles()((theme) => {
       margin: '-1px 0',
       paddingTop: 17,
       paddingBottom: 17,
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
         margin: 0,
         paddingTop: 8,

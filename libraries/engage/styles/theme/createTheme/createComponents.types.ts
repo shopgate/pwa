@@ -156,6 +156,14 @@ export const componentsSchema = {
       background: '',
     },
   },
+  icon: {
+    vars: {
+      xsmall: '',
+      small: '',
+      medium: '',
+      large: '',
+    },
+  },
   snackbar: {
     vars: {
       background: '',
@@ -238,6 +246,14 @@ export const componentsDefaults = {
   discountBadge: {
     vars: {
       background: '#857500',
+    },
+  },
+  icon: {
+    vars: {
+      xsmall: '0.75rem',
+      small: '1.25rem',
+      medium: '1.5rem',
+      large: '2rem',
     },
   },
   snackbar: {

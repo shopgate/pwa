@@ -29,20 +29,19 @@ import {
 import { makeStyles } from '@shopgate/engage/styles';
 import ProductGridPrice from '../ProductGridPrice';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   details: {
     padding: '12px 16px',
-    lineHeight: 1.35,
   },
   title: {
-    fontWeight: '500',
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.15,
     marginTop: 1,
   },
   badgeWrapper: {
     minWidth: 40,
   },
-});
+}));
 
 const location = 'productCard';
 

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
-  Grid, I18n, Ripple, FilterIcon,
+  Grid, I18n, Ripple, FilterIcon, Typography,
 } from '@shopgate/engage/components';
 
 const { variables } = themeConfig;
@@ -11,8 +11,7 @@ const { variables } = themeConfig;
 const useStyles = makeStyles()(theme => ({
   button: {
     color: 'inherit',
-    fontSize: '1.5rem',
-    lineHeight: 1,
+    fontSize: theme.components.icon.medium,
     outline: 0,
     padding: 0,
     minWidth: variables.navigator.height,
@@ -26,9 +25,6 @@ const useStyles = makeStyles()(theme => ({
   },
   filterButtonLabel: {
     alignSelf: 'center',
-    fontSize: '0.875rem',
-    fontWeight: '500',
-    lineHeight: 1,
     paddingRight: theme.spacing(1),
   },
   filterButtonRipple: {
@@ -54,9 +50,9 @@ function FilterButton({ openFilters }) {
       <Ripple className={classes.filterButtonRipple} fill>
         <Grid component="div">
           <Grid.Item className={classes.filterButton} component="div">
-            <span className={classes.filterButtonLabel}>
+            <Typography variant="subtitle2" component="span" className={classes.filterButtonLabel}>
               <I18n.Text string="titles.filter" />
-            </span>
+            </Typography>
           </Grid.Item>
           <Grid.Item component="div">
             <FilterIcon />

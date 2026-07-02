@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: 16,
       backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
-      fontSize: 14,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
@@ -43,7 +43,7 @@ const useStyles = makeStyles()(theme => ({
       backgroundColor: theme.palette.common.white,
       color: theme.palette.error.main,
       borderRadius: 5,
-      fontSize: 14,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {

@@ -8,7 +8,13 @@ exports[`<DiscountBadge /> should render the text 1`] = `
     data-test-id="foo"
     tabindex="-1"
   >
-    foo
+    <span
+      aria-hidden="true"
+      class="sg-1ysfu9i-small theme__discount-badge"
+      font-weight="bold"
+    >
+      foo
+    </span>
   </div>
 </DocumentFragment>
 `;
@@ -21,7 +27,13 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
     data-test-id="SAVE {0}%"
     tabindex="-1"
   >
-    SAVE {0}%
+    <span
+      aria-hidden="true"
+      class="sg-1ysfu9i-small theme__discount-badge"
+      font-weight="bold"
+    >
+      SAVE {0}%
+    </span>
   </div>
 </DocumentFragment>
 `;

@@ -30,6 +30,7 @@ import {
   Link,
   TextLink,
   SurroundPortals,
+  Typography,
 } from '@shopgate/engage/components';
 import {
   makeIsRopeProductOrderable,
@@ -147,9 +148,7 @@ const useStyles = makeStyles()(theme => ({
   },
   priceInfo: {
     wordBreak: 'break-word',
-    fontSize: '0.875rem',
     lineHeight: '0.875rem',
-    color: theme.palette.text.secondary,
     padding: theme.spacing(0.5, 0),
   },
   titleWrapper: {
@@ -160,11 +159,6 @@ const useStyles = makeStyles()(theme => ({
   titleContainer: {
     marginRight: 10,
     flex: 1,
-  },
-  title: {
-    fontSize: 17,
-
-    fontWeight: 600,
   },
   removeContainer: {
     display: 'flex',
@@ -341,9 +335,9 @@ const FavoriteItem = ({
                     tag="span"
                     className={cx(classes.titleContainer, 'engage__favorites__item__title-container')}
                   >
-                    <span
-                      className={classes.title}
-                      // eslint-disable-next-line react/no-danger
+                    <Typography
+                      component="span"
+                      fontWeight="bold"
                       dangerouslySetInnerHTML={{ __html: `${product.name}` }}
                     />
                   </TextLink>
@@ -394,11 +388,13 @@ const FavoriteItem = ({
                         className={classes.price}
                       />
                     </div>
-                    <PriceInfo
-                      product={product}
-                      currency={currency}
-                      className={classes.priceInfo}
-                    />
+                    <Typography variant="body2" component="div" color="textSecondary" className={classes.priceInfo}>
+                      <PriceInfo
+                        product={product}
+                        currency={currency}
+                        className={classes.priceInfo}
+                      />
+                    </Typography>
                   </div>
                 </SurroundPortals>
               </div>

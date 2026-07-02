@@ -22,9 +22,6 @@ const useStyles = makeStyles()({
     marginTop: 5,
     marginBottom: 2,
   },
-  availability: {
-    fontSize: '0.875rem',
-  },
 });
 
 /**
@@ -55,7 +52,6 @@ function Availability({
       <PlaceholderLabel className={placeholderClasses} ready={(availability !== null)}>
         {availability && (
           <AvailableText
-            className={classes.availability}
             showWhenAvailable
             text={availability.text || ''}
             state={availability.state}

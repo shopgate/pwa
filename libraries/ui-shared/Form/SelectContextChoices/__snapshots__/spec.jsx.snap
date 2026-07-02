@@ -13,7 +13,7 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
       >
         <div
           aria-hidden="true"
-          class="sg-1jjwasa-toggle"
+          class="sg-1m6nosi-toggle"
           role="button"
           tabindex="0"
         >
@@ -28,7 +28,7 @@ exports[`<SelectContextChoices /> should render select with 1 selected option 1`
         class="sg-1wmo01y-root-element"
       >
         <svg
-          class="common__icon sg-1ix3ppp-root-chevron"
+          class="common__icon sg-lk7or6-root-chevron"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -67,7 +67,7 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
       >
         <div
           aria-hidden="true"
-          class="sg-1jjwasa-toggle"
+          class="sg-1m6nosi-toggle"
           role="button"
           tabindex="0"
         >
@@ -82,7 +82,7 @@ exports[`<SelectContextChoices /> should render select with 2 options 1`] = `
         class="sg-1wmo01y-root-element"
       >
         <svg
-          class="common__icon sg-1ix3ppp-root-chevron"
+          class="common__icon sg-lk7or6-root-chevron"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -121,7 +121,7 @@ exports[`<SelectContextChoices /> should render select with no options 1`] = `
       >
         <div
           aria-hidden="true"
-          class="sg-1jjwasa-toggle"
+          class="sg-1m6nosi-toggle"
           role="button"
           tabindex="0"
         >
@@ -136,7 +136,7 @@ exports[`<SelectContextChoices /> should render select with no options 1`] = `
         class="sg-1wmo01y-root-element"
       >
         <svg
-          class="common__icon sg-1ix3ppp-root-chevron"
+          class="common__icon sg-lk7or6-root-chevron"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >

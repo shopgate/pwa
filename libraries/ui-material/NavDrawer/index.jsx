@@ -19,7 +19,7 @@ const CLOSE = 'navdrawer_close';
 
 const useStyles = makeStyles()(theme => ({
   content: {
-    fontSize: 14,
+    fontSize: theme.typography.body2.fontSize,
     height: '100%',
     overflowY: 'scroll',
     paddingBottom: 'var(--safe-area-inset-bottom)',

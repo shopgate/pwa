@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import connect from './connector';
@@ -9,9 +10,8 @@ const useStyles = makeStyles()(theme => ({
     position: 'absolute',
     background: theme.components.tabBar.badgeBackground,
     color: theme.components.tabBar.badgeColor,
-    fontSize: '0.7rem',
-    lineHeight: 1.5,
-    fontWeight: 'bold',
+    display: 'flex',
+    alignItems: 'center',
     borderRadius: theme.components.tabBar.badgeBorderRadius,
     height: theme.spacing(2),
     top: theme.components.tabBar.badgeTop,
@@ -43,9 +43,9 @@ const CartItemBadge = (props) => {
   }
 
   return (
-    <div className={cx(classes.root, 'theme__tab-bar__cart-item-badge theme__badge')}>
+    <Typography variant="caption" component="div" fontWeight="bold" className={cx(classes.root, 'theme__tab-bar__cart-item-badge theme__badge')}>
       {cartProductCount}
-    </div>
+    </Typography>
   );
 };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core/helpers/i18n';
 
@@ -9,8 +10,6 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   heading: {
-    fontSize: '1.125rem',
-    fontWeight: 'bold',
     margin: theme.spacing(1, 0, 2.5),
   },
   body: {
@@ -22,18 +21,18 @@ const useStyles = makeStyles()(theme => ({
 
 /**
  * Renders the reservation error screen.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 export function ReservationError() {
   const { classes } = useStyles();
   return (
     <div className={classes.container}>
-      <h2 className={classes.heading}>
+      <Typography variant="h4" component="h2" fontWeight="bold" className={classes.heading}>
         {i18n.text('locations.error_title')}
-      </h2>
-      <p className={classes.body}>
+      </Typography>
+      <Typography component="p" className={classes.body}>
         {i18n.text('locations.error_copy')}
-      </p>
+      </Typography>
     </div>
   );
 }

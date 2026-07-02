@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
   price: {
     color: theme.palette.secondary.main,
     display: 'inline-block',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     textAlign: 'center',
   },
   editableContainer: {
@@ -32,7 +32,6 @@ const useStyles = makeStyles()(theme => ({
     margin: 0,
     border: '1px solid transparent',
     borderRadius: 3,
-    lineHeight: 1,
     ':focus': {
       background: theme.components.input.background,
       textIndent: 0,

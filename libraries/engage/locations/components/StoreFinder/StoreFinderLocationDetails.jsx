@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { every, isEmpty } from 'lodash';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { StoreContext } from './Store.context';
 import { StoreOpeningHours } from '../StoreList/StoreOpeningHours';
@@ -14,7 +15,6 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   accordionContent: {
-    fontSize: '0.875rem',
     ' > div': {
       padding: 0,
     },
@@ -39,9 +39,9 @@ const StoreFinderLocationDetails = () => {
         <I18n.Text string="locations.details" />
       )}
     >
-      <div className={classes.accordionContent}>
+      <Typography variant="body2" component="div" className={classes.accordionContent}>
         <StoreOpeningHours hours={operationHours} pure />
-      </div>
+      </Typography>
     </Accordion>
   );
 };

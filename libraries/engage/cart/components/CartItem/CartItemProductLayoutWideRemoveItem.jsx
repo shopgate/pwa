@@ -5,7 +5,7 @@ import { useCartItemProduct } from './CartItem.hooks';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    fontSize: '0.875rem !important',
+    fontSize: `${theme.typography.body2.fontSize} !important`,
     letterSpacing: '0.05em',
     padding: `${theme.spacing(2, 0)} !important`,
     ' *': {

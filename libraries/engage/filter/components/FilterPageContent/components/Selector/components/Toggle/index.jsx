@@ -2,7 +2,7 @@ import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   toggle: {
     display: 'flex',
     flexFlow: 'row no-wrap',
@@ -27,10 +27,10 @@ const useStyles = makeStyles()(() => ({
     maxWidth: '65%',
   },
   closed: {
-    fontWeight: 'normal',
+    fontWeight: theme.typography.fontWeightRegular,
   },
   open: {
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
   },
 }));
 

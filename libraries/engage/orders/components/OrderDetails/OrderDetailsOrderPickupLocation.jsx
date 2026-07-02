@@ -9,8 +9,8 @@ const useStyles = makeStyles()(theme => ({
   locationName: {
     margin: 0,
     color: theme.palette.text.primary,
-    fontSize: '1rem',
-    fontWeight: 500,
+    fontSize: theme.typography.body1.fontSize,
+    fontWeight: theme.typography.fontWeightMedium,
   },
 }));
 

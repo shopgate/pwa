@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { InfoIcon } from '@shopgate/engage/components';
+import { InfoIcon, Typography } from '@shopgate/engage/components';
 import { nl2br, showModal as showModalAction } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 
@@ -12,17 +12,15 @@ const mapDispatchToProps = {
 const useStyles = makeStyles()(theme => ({
   textWrapper: {
     paddingTop: theme.spacing(0.5),
-    fontSize: '0.75rem',
-    color: theme.palette.error.main,
   },
   iconWrapper: {
     cursor: 'pointer',
     color: theme.palette.primary.main,
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
     display: 'inline-flex',
     verticalAlign: 'bottom',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
-      fontSize: '1.375rem',
+      fontSize: theme.components.icon.medium,
     },
   },
 }));
@@ -49,8 +47,13 @@ const CheckoutSectionInfo = ({ text, showModal, renderIcon }) => {
 
   if (!renderIcon) {
     return (
-      // eslint-disable-next-line react/no-danger
-      <div className={classes.textWrapper} dangerouslySetInnerHTML={{ __html: nl2br(text) }} />
+      <Typography
+        variant="caption"
+        component="div"
+        color="error"
+        className={classes.textWrapper}
+        dangerouslySetInnerHTML={{ __html: nl2br(text) }}
+      />
     );
   }
 

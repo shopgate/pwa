@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getStatusBarStyleStorage } from '@shopgate/engage/development/selectors';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'fixed',
     top: 0,
@@ -18,7 +18,7 @@ const useStyles = makeStyles()({
     zIndex: 10000000,
     pointerEvents: 'auto',
     transition: 'background 0.2s ease',
-    fontSize: '16px',
+    fontSize: theme.typography.body1.fontSize,
   },
   containerHighlight: {
     background: 'rgba(255, 0, 0, 0.7)',
@@ -35,7 +35,7 @@ const useStyles = makeStyles()({
   info: {
     flex: 1,
     textAlign: 'center',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   notch: {
     flex: 1,
@@ -45,7 +45,7 @@ const useStyles = makeStyles()({
     borderRadius: 16,
     border: '1px solid rgba(255, 255, 255, 0.5)',
   },
-});
+}));
 
 /**
  * Creates a human readable time string to mimic the iOS clock.

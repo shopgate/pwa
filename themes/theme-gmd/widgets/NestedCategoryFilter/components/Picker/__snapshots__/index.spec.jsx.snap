@@ -197,7 +197,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-1cxk1cy-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -251,7 +251,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -259,11 +259,18 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -632,7 +639,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-1cxk1cy-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -686,7 +693,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -694,11 +701,18 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -1107,7 +1121,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-1cxk1cy-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1161,7 +1175,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -1169,11 +1183,18 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -1543,7 +1564,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-1cxk1cy-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1597,7 +1618,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -1605,11 +1626,18 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>

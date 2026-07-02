@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const ellipsisLine = {
@@ -10,16 +10,13 @@ const ellipsisLine = {
   textOverflow: 'ellipsis',
 };
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   error: {
     position: 'absolute',
     bottom: 2,
-    fontSize: 12,
-    lineHeight: '14px',
-    color: theme.palette.error.main,
     ...ellipsisLine,
   },
-}));
+});
 
 /**
  * Error message component.
@@ -32,7 +29,10 @@ const ErrorText = ({
   const { classes, cx } = useStyles();
 
   return (
-    <div
+    <Typography
+      variant="caption"
+      component="div"
+      color="error"
       id={`ariaError-${elementName}`}
       className={cx(classes.error, className, 'errorText')}
       aria-live="assertive"
@@ -41,7 +41,7 @@ const ErrorText = ({
     >
       {translate && <I18n.Text string={validationError || errorText} />}
       {!translate && (validationError || errorText)}
-    </div>
+    </Typography>
   );
 };
 

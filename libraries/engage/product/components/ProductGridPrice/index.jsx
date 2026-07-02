@@ -7,19 +7,18 @@ import { PriceInfo } from '@shopgate/engage/product/components';
 import { withPriceCalculation } from '@shopgate/engage/product/hocs';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   priceWrapper: {
-    lineHeight: 1.75,
-    marginTop: 2,
+    marginTop: 4,
     alignItems: 'center',
   },
-  basicPrice: {
-    fontSize: '0.875rem',
-  },
   strikedPrice: {
-    fontSize: '0.75rem',
+    fontSize: theme.typography.caption.fontSize,
   },
-});
+  basicPrice: {
+    fontSize: theme.typography.body2.fontSize,
+  },
+}));
 
 /**
  * The ProductGridPrice component is supposed to be used to display prices at product grids. It

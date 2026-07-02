@@ -35,16 +35,16 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 28,
   },
   title: {
-    fontWeight: '500',
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.15,
     marginTop: 1,
     marginBottom: theme.spacing(0.5),
   },
   timer: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
     color: theme.palette.primary.main,
     fontStyle: 'italic',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   badgesPortal: {
     width: '50%',

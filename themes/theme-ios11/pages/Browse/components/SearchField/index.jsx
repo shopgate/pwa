@@ -49,8 +49,7 @@ const useStyles = makeStyles()(theme => ({
   input: {
     borderRadius: 10,
     width: '100%',
-    padding: '4px 10px 4px 30px',
-    lineHeight: '28px',
+    padding: '9px 10px 9px 30px',
     outline: 'none',
     background: theme.palette.grey.light,
     verticalAlign: 'middle',
@@ -63,7 +62,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     color: theme.palette.grey.medium,
     display: 'flex',
-    height: '36px',
+    height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
     width: '100%',
@@ -72,7 +71,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
   },
   button: {
-    lineHeight: '34px',
+    height: 34,
     color: theme.palette.secondary.main,
     paddingTop: 0,
     paddingLeft: 16,
@@ -85,14 +84,18 @@ const useStyles = makeStyles()(theme => ({
   icon: {
     padding: '0 6px',
     color: theme.palette.grey.dark,
-    fontSize: '1.235rem',
+    fontSize: theme.components.icon.small,
   },
   scannerIcon: {
     padding: '4px 6px 4px 4px',
     color: theme.palette.grey.dark,
-    fontSize: '1.7rem',
+    fontSize: theme.components.icon.medium,
     position: 'absolute',
     right: 0,
+    top: 0,
+    bottom: 0,
+    display: 'flex',
+    alignItems: 'center',
   },
   overlay: {
     background: 'rgba(0,0,0, 0.4)',

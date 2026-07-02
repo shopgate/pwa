@@ -48,14 +48,16 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -197,7 +199,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-1cxk1cy-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -251,7 +253,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -259,11 +261,18 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -483,14 +492,16 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -632,7 +643,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-1cxk1cy-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -686,7 +697,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -694,11 +705,18 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -958,14 +976,16 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -1107,7 +1127,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-1cxk1cy-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1161,7 +1181,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -1169,11 +1189,18 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -1394,14 +1421,16 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           Category 1-1
@@ -1543,7 +1572,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-1cxk1cy-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1597,7 +1626,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -1605,11 +1634,18 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -1828,14 +1864,16 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -2016,14 +2054,16 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -2205,7 +2245,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
         onClick={[Function]}
       >
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose

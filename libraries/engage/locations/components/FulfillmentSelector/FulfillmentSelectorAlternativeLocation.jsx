@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withWidgetSettings } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { Grid, ResponsiveContainer, SurroundPortals } from '@shopgate/engage/components';
+import {
+  Grid, ResponsiveContainer, SurroundPortals, Typography,
+} from '@shopgate/engage/components';
 import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 import { provideProductAlternativeLocation } from '../../action-creators';
 import { StockInfo } from '../StockInfo';
@@ -13,11 +15,7 @@ import { getProductAlternativeLocations } from '../../selectors';
 import { SORT_CLOSEST_LOCATION_WITH_INVENTORY } from '../../constants';
 
 const useStyles = makeStyles()(theme => ({
-  locationName: {
-    color: theme.palette.text.secondary,
-  },
   gridClassName: {
-    fontSize: '0.825rem',
     padding: theme.spacing(0, 2, 1, 6),
   },
   itemColumn: {
@@ -87,15 +85,19 @@ function FulfillmentSelectorAlternativeLocation({
         <Grid component="div" className={classes.gridClassName}>
           <ResponsiveContainer appAlways breakpoint="xs">
             <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
-              <div className={classes.locationName}>{alternativeLocation.name}</div>
+              <Typography variant="body2" component="div" color="textSecondary">
+                {alternativeLocation.name}
+              </Typography>
             </Grid.Item>
             <Grid.Item className={classes.itemColumn} grow={1} shrink={0} component="div">
               <StockInfo productId={productId} location={alternativeLocation} />
             </Grid.Item>
           </ResponsiveContainer>
           <ResponsiveContainer webOnly breakpoint=">xs">
-            <div className={classes.locationName}>
-              {alternativeLocation.name}
+            <div>
+              <Typography variant="body2" component="span" color="textSecondary">
+                {alternativeLocation.name}
+              </Typography>
               <span className={classes.itemSpacer}>
                 <StockInfo productId={productId} location={alternativeLocation} />
               </span>

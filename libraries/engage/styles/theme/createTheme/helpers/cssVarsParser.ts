@@ -109,7 +109,17 @@ const walkObjectDeep = <Value, T = Record<string, unknown>>(
  */
 const getCssValue = (keys: string[], value: string | number) => {
   if (typeof value === 'number') {
-    if (['lineHeight', 'fontWeight', 'opacity', 'zIndex'].some(prop => keys.includes(prop))) {
+    if ([
+      'lineHeight',
+      'fontWeight',
+      'opacity',
+      'zIndex',
+      'fontSize',
+      'fontWeightLight',
+      'fontWeightRegular',
+      'fontWeightMedium',
+      'fontWeightBold',
+    ].some(prop => keys[keys.length - 1] === prop)) {
       // CSS property that are unitless
       return value;
     }

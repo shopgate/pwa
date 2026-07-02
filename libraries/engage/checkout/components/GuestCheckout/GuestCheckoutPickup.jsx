@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { GUEST_CHECKOUT_PATTERN } from '../../constants/routes';
 import Section from '../Checkout/CheckoutSection';
@@ -15,7 +16,6 @@ const useStyles = makeStyles()(theme => ({
   card: {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: 15,
     margin: '8px 0 12px 0',
   },
 }));
@@ -46,13 +46,13 @@ const GuestCheckoutPickup = () => {
         title={headline}
         editLink={`${GUEST_CHECKOUT_PATTERN}?edit=${ADDRESS_TYPE_PICKUP}`}
       >
-        <span>
+        <Typography component="span">
           {pickupAddress.middleName?.length
             ? `${pickupAddress.firstName} ${pickupAddress.middleName} ${pickupAddress.lastName}`
             : `${pickupAddress.firstName} ${pickupAddress.lastName}`}
-        </span>
-        <span>{pickupAddress.emailAddress}</span>
-        <span>{pickupAddress.mobile}</span>
+        </Typography>
+        <Typography component="span">{pickupAddress.emailAddress}</Typography>
+        <Typography component="span">{pickupAddress.mobile}</Typography>
       </Section>
     </div>
   );

@@ -3,11 +3,13 @@
 exports[`<Title /> should not render without a title 1`] = `""`;
 
 exports[`<Title /> should render with a title 1`] = `
-<div
+<ForwardRef(Typography)
   aria-level="2"
-  className="sg-1vnt0h7-title"
+  className="sg-bawed5-title"
+  component="div"
   id="basicDialogTitle"
   role="heading"
+  variant="h3"
 >
   <Ellipsis
     className=""
@@ -22,5 +24,5 @@ exports[`<Title /> should render with a title 1`] = `
       transform={null}
     />
   </Ellipsis>
-</div>
+</ForwardRef(Typography)>
 `;

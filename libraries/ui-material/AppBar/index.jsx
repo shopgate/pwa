@@ -25,6 +25,7 @@ const useStyles = makeStyles()({
   inner: {
     background: 'inherit',
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-between',
     position: 'relative',
     zIndex: 14,

@@ -7,7 +7,9 @@ import {
   ADDRESS_TYPE_BILLING,
   ADDRESS_TYPE_SHIPPING,
 } from '@shopgate/engage/checkout';
-import { RippleButton, Card, ContextMenu } from '@shopgate/engage/components';
+import {
+  RippleButton, Card, ContextMenu, Typography,
+} from '@shopgate/engage/components';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
 const useStyles = makeStyles()(theme => ({
@@ -49,18 +51,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   name: {
-    color: theme.palette.text.primary,
     flex: 1,
-    fontSize: 16,
-    fontWeight: '600',
-  },
-  others: {
-    color: theme.palette.text.secondary,
-    fontSize: 16,
-  },
-  defaultLabel: {
-    color: theme.palette.text.secondary,
-    fontSize: 15,
   },
   button: {
     '&&:disabled': {
@@ -69,7 +60,7 @@ const useStyles = makeStyles()(theme => ({
     '&&': {
       marginTop: 8,
       borderRadius: 5,
-      fontSize: 14,
+      fontSize: theme.typography.body2.fontSize,
       padding: 0,
       textTransform: 'none',
     },
@@ -91,11 +82,11 @@ const ProfileAddressCard = ({
   return (
     <Card className={classes.root}>
       <div className={classes.header}>
-        <span className={classes.name}>
+        <Typography component="span" color="textPrimary" fontWeight="medium" className={classes.name}>
           {contact.middleName
             ? `${contact.firstName} ${contact.middleName} ${contact.lastName}`
             : `${contact.firstName} ${contact.lastName}`}
-        </span>
+        </Typography>
         <ContextMenu classes={{ container: classes.contextMenu }}>
           <ContextMenu.Item onClick={editContact}>
             {i18n.text('account.profile.address_book.context.edit')}
@@ -108,57 +99,57 @@ const ProfileAddressCard = ({
       <div className={classes.body}>
         <div className={classes.column}>
           {!isCheckout && contact.emailAddress ? (
-            <span className={classes.others}>
+            <Typography component="span" color="textSecondary">
               {contact.emailAddress}
-            </span>
+            </Typography>
           ) : null}
           {contact.postalCode ||
         contact.region ||
         contact.city ||
         contact.country ? (
-          <span className={classes.others}>
+          <Typography component="span" color="textSecondary">
             {i18n.text('checkout.billing.address', {
               postalCode: contact.postalCode || '',
               region: iso3166?.[contact.country]?.divisions?.[contact.region] || contact.region || '',
               city: contact.city || '',
               country: contact.country || '',
             })}
-          </span>
+          </Typography>
             ) : null}
           {contact.address1 ? (
-            <span className={classes.others}>
+            <Typography component="span" color="textSecondary">
               {contact.address1}
-            </span>
+            </Typography>
           ) : null}
           {contact.address2 ? (
-            <span className={classes.others}>
+            <Typography component="span" color="textSecondary">
               {contact.address2}
-            </span>
+            </Typography>
           ) : null}
           {contact.address3 ? (
-            <span className={classes.others}>
+            <Typography component="span" color="textSecondary">
               {contact.address3}
-            </span>
+            </Typography>
           ) : null}
           {contact.address4 ? (
-            <span className={classes.others}>
+            <Typography component="span" color="textSecondary">
               {contact.address4}
-            </span>
+            </Typography>
           ) : null}
           {!isCheckout && contact.mobile ? (
-            <span className={classes.others}>
+            <Typography component="span" color="textSecondary">
               {contact.mobile}
-            </span>
+            </Typography>
           ) : null}
           {(!isCheckout || type === ADDRESS_TYPE_BILLING) && contact.isDefaultBilling ? (
-            <span className={classes.defaultLabel}>
+            <Typography variant="body2" component="span" color="textSecondary">
               {i18n.text('account.profile.address_book.default_billing')}
-            </span>
+            </Typography>
           ) : null}
           {(!isCheckout || type === ADDRESS_TYPE_SHIPPING) && contact.isDefaultShipping ? (
-            <span className={classes.defaultLabel}>
+            <Typography variant="body2" component="span" color="textSecondary">
               {i18n.text('account.profile.address_book.default_shipping')}
-            </span>
+            </Typography>
           ) : null}
         </div>
         <div className={cx(classes.column, classes.selectButtonColumn)}>

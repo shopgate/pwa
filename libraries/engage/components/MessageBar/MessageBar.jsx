@@ -1,5 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { i18n, errorBehavior } from '@shopgate/engage/core/helpers';
 import StopIcon from '@shopgate/pwa-ui-shared/icons/StopIcon';
@@ -25,13 +26,12 @@ const useStyles = makeStyles()((theme) => {
   });
 
   const containerBase = {
-    background: theme.palette.background.emphasized,
     display: 'flex',
     flexDirection: 'column',
     flexShrink: 0,
     overflow: 'hidden',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      fontWeight: 'normal',
+      fontWeight: theme.typography.fontWeightRegular,
       border: 'none',
       borderRadius: 'inherit',
       margin: theme.spacing(2),
@@ -42,14 +42,13 @@ const useStyles = makeStyles()((theme) => {
 
   const messageBase = {
     padding: theme.spacing(2, 2),
-    fontSize: '0.875rem',
     lineHeight: 1.3,
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     ':not(:last-child)': {
       marginBottom: theme.spacing(0.5),
     },
     ' > svg': {
-      fontSize: '1.5rem !important',
+      fontSize: `${theme.components.icon.medium} !important`,
     },
   };
 
@@ -74,7 +73,7 @@ const useStyles = makeStyles()((theme) => {
           color: theme.palette.secondary.main,
         },
         padding: theme.spacing(1.5, 2),
-        fontWeight: 'normal',
+        fontWeight: theme.typography.fontWeightRegular,
         border: '1px solid',
         borderRadius: 4,
         ':not(:last-child)': {
@@ -93,7 +92,7 @@ const useStyles = makeStyles()((theme) => {
           color: theme.palette.error.main,
         },
         padding: theme.spacing(1.5, 2),
-        fontWeight: 'normal',
+        fontWeight: theme.typography.fontWeightRegular,
         border: '1px solid',
         borderRadius: 4,
         ':not(:last-child)': {
@@ -112,7 +111,7 @@ const useStyles = makeStyles()((theme) => {
           color: theme.palette.warning.main,
         },
         padding: theme.spacing(1.5, 2),
-        fontWeight: 'normal',
+        fontWeight: theme.typography.fontWeightRegular,
         border: '1px solid',
         borderRadius: 4,
         ':not(:last-child)': {
@@ -199,9 +198,14 @@ const MessageBar = ({
             <span className="sr-only">
               {`${i18n.text(`cart.message_type_${type}`)}: ${messageOutput}`}
             </span>
-            <span aria-hidden className={Icon ? classes.messageToIcon : null}>
+            <Typography
+              variant="body2"
+              component="span"
+              aria-hidden
+              className={Icon ? classes.messageToIcon : null}
+            >
               {messageOutput}
-            </span>
+            </Typography>
           </div>
         );
       })}

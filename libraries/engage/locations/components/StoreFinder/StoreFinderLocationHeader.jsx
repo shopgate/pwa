@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { Grid, LocationIcon } from '@shopgate/engage/components';
+import { Grid, LocationIcon, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { StoreContext } from './Store.context';
@@ -14,7 +14,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
     display: 'flex',
     flexDirection: 'column',
-    color: theme.palette.text.secondary,
     ' > *': {
       margin: 0,
     },
@@ -28,8 +27,6 @@ const useStyles = makeStyles()(theme => ({
       color: theme.palette.primary.main,
       textDecoration: 'underline',
     },
-    fontSize: '0.875rem',
-    lineHeight: '1.5rem',
     ' > *:not(:last-child)': {
       paddingBottom: theme.spacing(0.5),
       paddingTop: 0,
@@ -45,19 +42,9 @@ const useStyles = makeStyles()(theme => ({
       paddingTop: 0,
     },
   },
-  storeName: {
-    fontSize: '1rem',
-    fontWeight: 500,
-    color: theme.palette.text.primary,
-  },
   myStoreWrapper: {
     display: 'flex',
     alignItems: 'center',
-  },
-  myStore: {
-    color: theme.palette.primary.main,
-    fontSize: '1rem',
-    fontWeight: 500,
   },
   myStoreIcon: {
     ' svg': {
@@ -97,22 +84,22 @@ const StoreFinderLocationHeader = () => {
   [selectedLocation, store]);
 
   return (
-    <div className={classes.container}>
+    <Typography variant="body2" component="div" color="textSecondary" className={classes.container}>
       <div className={classes.clickable}>
         <Grid>
           <Grid.Item grow={1}>
             <div className={classes.storeNameWrapper}>
-              <div className={classes.storeName}>
+              <Typography variant="body1" component="div" color="textPrimary" fontWeight="medium">
                 { name }
-              </div>
+              </Typography>
               {isSelectedLocation && (
                 <div className={classes.myStoreWrapper}>
                   <div className={classes.myStoreIcon}>
                     <LocationIcon size={20} />
                   </div>
-                  <div className={classes.myStore}>
+                  <Typography variant="body1" component="div" color="primary" fontWeight="medium">
                     {i18n.text('location.myStore')}
-                  </div>
+                  </Typography>
                 </div>
               )}
             </div>
@@ -127,7 +114,7 @@ const StoreFinderLocationHeader = () => {
         <StoreAddress address={address} />
       </div>
       <StoreFinderLocationHeaderPhoneNumber phone={address.phoneNumber} />
-    </div>
+    </Typography>
   );
 };
 

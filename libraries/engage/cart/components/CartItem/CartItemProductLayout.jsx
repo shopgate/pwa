@@ -47,7 +47,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     paddingLeft: theme.spacing(2),
   },
   info: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
     marginTop: theme.spacing(1.75),
     marginBottom: theme.spacing(0.25),
     flexGrow: 1,
@@ -76,7 +76,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   properties: {
     wordBreak: 'break-word',
     alignSelf: 'flex-start',
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
     color: theme.palette.text.secondary,
     lineHeight: 1.3,
     '&:not(:empty)': {

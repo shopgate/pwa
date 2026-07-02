@@ -8,6 +8,7 @@ import React, {
 } from 'react';
 import { connect, useStore } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getPaymentMethods } from '../selectors/payment';
 import { getCheckoutOrder } from '../selectors/order';
@@ -43,12 +44,9 @@ const mapDispatchToProps = dispatch => ({
 
 const useStyles = makeStyles()(theme => ({
   headline: {
-    fontSize: '1.25rem',
-    fontWeight: 'normal',
     margin: theme.spacing(0, 0, 1, 0),
     marginLeft: 16,
     marginRight: 8,
-    color: theme.palette.text.primary,
     textTransform: 'none',
   },
   section: {
@@ -166,9 +164,9 @@ const PaymentMethodProvider = ({
   return (
     <Context.Provider value={paymentMethodApi}>
       <div className={classes.section}>
-        <h3 className={classes.headline}>
+        <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline}>
           {i18n.text('checkout.payment.title')}
-        </h3>
+        </Typography>
         <div className={classes.buttons}>
           {availablePaymentMethods.map(method => (
             <method.button

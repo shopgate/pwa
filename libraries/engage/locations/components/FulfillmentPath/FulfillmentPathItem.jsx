@@ -20,8 +20,6 @@ const useStyles = makeStyles()(theme => ({
   },
   radioGroupLabel: {
     flex: 1,
-    fontSize: '1rem',
-    lineHeight: 1.5,
     marginLeft: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },

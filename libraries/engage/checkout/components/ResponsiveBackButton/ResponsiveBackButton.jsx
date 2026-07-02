@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(4, 2, 2, 2),
   },
   button: {
-    fontSize: '0.875rem !important',
+    fontSize: `${theme.typography.body2.fontSize} !important`,
     padding: '0 !important',
     ' > div ': {
       padding: 0,
@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonIcon: {
     display: 'inline-block',
-    fontSize: '1.375rem !important',
+    fontSize: `${theme.components.icon.medium} !important`,
     alignSelf: 'center',
     marginRight: theme.spacing(0.5),
     marginLeft: -3,

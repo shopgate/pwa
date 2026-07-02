@@ -10,6 +10,7 @@ jest.mock('@shopgate/engage/styles', () => ({
         classes: {
           text: 'mock-class-text',
         },
+        cx: (...classes) => classes.filter(Boolean).join(' '),
       };
     };
   },

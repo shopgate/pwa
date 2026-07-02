@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'center',
   },
   button: {
-    fontWeight: 'normal',
+    fontWeight: theme.typography.fontWeightRegular,
   },
 }));
 

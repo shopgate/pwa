@@ -25,12 +25,12 @@ const useStyles = makeStyles()(theme => ({
   },
   msrp: {
     color: theme.palette.grey.dark,
-    fontSize: '0.875rem',
     marginRight: theme.spacing(0.5),
+    fontSize: theme.typography.body2.fontSize,
   },
   msrpStriked: {
     display: 'inline',
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
   },
 }));
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { i18n, historyPush } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { RippleButton } from '@shopgate/engage/components';
+import { RippleButton, Typography } from '@shopgate/engage/components';
 import AddressCard from './ProfileAddressCard';
 import { useProfileContext } from './Profile.provider';
 import { PROFILE_ADDRESS_PATH } from '../../constants/routes';
@@ -17,12 +17,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const useStyles = makeStyles()(theme => ({
-  title: {
-    color: theme.palette.text.primary,
-    lineHeight: 2.5,
-    fontSize: 17,
-    fontWeight: '600',
-  },
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -35,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: 16,
       backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
-      fontSize: 14,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
@@ -66,9 +60,9 @@ const ProfileAddressBook = ({ push }) => {
 
   return (
     <div>
-      <span className={classes.title}>
+      <Typography variant="h4" component="div" color="textPrimary" gutterBottom fontWeight="medium">
         {i18n.text('account.profile.address_book.title')}
-      </span>
+      </Typography>
       <div className={classes.container}>
         {contacts && contacts.map(contact => (
           <AddressCard

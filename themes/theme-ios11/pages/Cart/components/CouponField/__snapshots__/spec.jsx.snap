@@ -3,9 +3,7 @@
 exports[`<CouponField /> should render a message when the cart does not support coupons 1`] = `""`;
 
 exports[`<CouponField /> should render a message when the cart supports coupons 1`] = `
-<div
-  className="sg-o9k7tz-container"
->
+<div>
   <Layout
     error=""
     handleAddCoupon={[Function]}
@@ -25,9 +23,7 @@ exports[`<CouponField /> should render a message when the cart supports coupons 
 `;
 
 exports[`<CouponField /> should render as expected without any props 1`] = `
-<div
-  className="sg-o9k7tz-container"
->
+<div>
   <Layout
     error=""
     handleAddCoupon={[Function]}

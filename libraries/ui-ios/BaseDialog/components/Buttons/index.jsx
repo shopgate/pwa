@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
       color: 'var(--color-button-dialog-ios, #1a73e8)',
     },
     '&&': {
-      fontWeight: 400,
+      fontWeight: theme.typography.fontWeightRegular,
       minWidth: '50%',
       flexGrow: 1,
       paddingTop: 10,
@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonPrimary: {
     '&&': {
-      fontWeight: 400,
+      fontWeight: theme.typography.fontWeightRegular,
     },
   },
   buttonText: {

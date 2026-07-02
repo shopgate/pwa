@@ -42,7 +42,7 @@ const useStyles = makeStyles()(theme => ({
   icon: {
     padding: '0 6px',
     color: theme.palette.grey.medium,
-    fontSize: '1.235rem',
+    fontSize: theme.components.icon.small,
   },
 }));
 

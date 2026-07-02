@@ -33,21 +33,34 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
         data-test-id="liveshopping.discount_badge"
         tabIndex={-1}
       >
-        <Text
-          acceptPlainTextWithPlaceholders={false}
+        <Typography
+          align="center"
           aria-hidden={true}
-          className="theme__discount-badge sg-z5nzz6-big-root"
-          params={
-            [
-              50,
-            ]
-          }
-          role={null}
-          string="liveshopping.discount_badge"
-          transform={null}
+          className="theme__discount-badge sg-ss5rk2-big-root"
+          fontWeight="bold"
+          variant="caption"
         >
-          liveshopping.discount_badge
-        </Text>
+          <span
+            aria-hidden={true}
+            className="theme__discount-badge sg-ss5rk2-big-root"
+            fontWeight="bold"
+          >
+            <Text
+              acceptPlainTextWithPlaceholders={false}
+              className={null}
+              params={
+                [
+                  50,
+                ]
+              }
+              role={null}
+              string="liveshopping.discount_badge"
+              transform={null}
+            >
+              liveshopping.discount_badge
+            </Text>
+          </span>
+        </Typography>
       </div>
     </DiscountBadge>
   </Portal>
