@@ -8,6 +8,7 @@ import NavDrawerTitle from './index';
 const mockI18nText = jest.fn(({ string }) => <span data-testid="i18n-text">{string}</span>);
 
 jest.mock('@shopgate/engage/components', () => ({
+  Typography: ({ children }) => children,
   I18n: {
     Text: props => mockI18nText(props),
   },

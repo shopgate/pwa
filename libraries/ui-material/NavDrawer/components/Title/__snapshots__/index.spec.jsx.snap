@@ -3,13 +3,9 @@
 exports[`<NavDrawerTitle /> should not render when no text is passed within the props 1`] = `null`;
 
 exports[`<NavDrawerTitle /> should render when a text is passed within the props 1`] = `
-<div
-  class="sg-1hy8dnt-root"
+<span
+  data-testid="i18n-text"
 >
-  <span
-    data-testid="i18n-text"
-  >
-    Title
-  </span>
-</div>
+  Title
+</span>
 `;

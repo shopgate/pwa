@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Grid, ProductProperties } from '@shopgate/engage/components';
+import { Grid, ProductProperties, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { ProductGridPrice } from '../../../product';
 import { FulfillmentContext } from '../../locations.context';
@@ -10,7 +10,6 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.text.primary,
   },
   productInfoLeft: {
-    fontSize: '0.875rem',
     color: theme.palette.grey.dark,
   },
   priceInfo: {
@@ -40,7 +39,11 @@ function StoreListProductInfo() {
   return (
     <Grid className={classes.productInfo}>
       <Grid.Item grow={1} className={classes.productInfoLeft}>
-        {characteristics && <ProductProperties properties={characteristics} />}
+        {characteristics && (
+          <Typography variant="body2" component="div" className={classes.productInfoLeft}>
+            <ProductProperties properties={characteristics} />
+          </Typography>
+        )}
       </Grid.Item>
       <Grid.Item shrink={0} className={classes.priceInfo}>
         <ProductGridPrice product={product} />

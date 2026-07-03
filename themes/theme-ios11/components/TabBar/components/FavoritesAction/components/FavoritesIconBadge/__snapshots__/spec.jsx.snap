@@ -10,11 +10,18 @@ exports[`TabBar favorites action - behavior should cap display at MAX when numbe
     }
   }
 >
-  <div
-    className="sg-l23vkm-root theme__tab-bar__favorites-icon-badge theme__badge"
+  <ForwardRef(Typography)
+    className="sg-1fzif63-root theme__tab-bar__favorites-icon-badge theme__badge"
+    component="div"
+    fontWeight="bold"
+    variant="caption"
   >
-    999+
-  </div>
+    <div
+      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-5ld4iv-Typography-root-Typography-caption-Typography-fontWeightBold-root"
+    >
+      999+
+    </div>
+  </ForwardRef(Typography)>
 </FavoritesIconBadge>
 `;
 
@@ -28,11 +35,18 @@ exports[`TabBar favorites action - behavior should show count when number is cha
     }
   }
 >
-  <div
-    className="sg-l23vkm-root theme__tab-bar__favorites-icon-badge theme__badge"
+  <ForwardRef(Typography)
+    className="sg-1fzif63-root theme__tab-bar__favorites-icon-badge theme__badge"
+    component="div"
+    fontWeight="bold"
+    variant="caption"
   >
-    99
-  </div>
+    <div
+      className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-5ld4iv-Typography-root-Typography-caption-Typography-fontWeightBold-root"
+    >
+      99
+    </div>
+  </ForwardRef(Typography)>
 </FavoritesIconBadge>
 `;
 
@@ -59,11 +73,18 @@ exports[`TabBar favorites action should render exact number 1`] = `
         showWishlistItemsCountBadge={true}
         widgetSettings={{}}
       >
-        <div
-          className="sg-l23vkm-root theme__tab-bar__favorites-icon-badge theme__badge"
+        <ForwardRef(Typography)
+          className="sg-1fzif63-root theme__tab-bar__favorites-icon-badge theme__badge"
+          component="div"
+          fontWeight="bold"
+          variant="caption"
         >
-          1
-        </div>
+          <div
+            className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-5ld4iv-Typography-root-Typography-caption-Typography-fontWeightBold-root"
+          >
+            1
+          </div>
+        </ForwardRef(Typography)>
       </FavoritesIconBadge>
     </Connect(FavoritesIconBadge)>
   </WithWidgetSettings(Connect(FavoritesIconBadge))>

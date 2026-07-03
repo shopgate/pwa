@@ -29,11 +29,11 @@ const useStyles = makeStyles()(theme => ({
   element: {
     paddingBottom: 0,
     '& label': {
-      fontWeight: 400,
+      fontWeight: theme.typography.fontWeightRegular,
       color: `${theme.palette.text.primary}, inherit`,
     },
     '& input': {
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
       color: theme.palette.text.primary,
     },
     '& .placeholder': {

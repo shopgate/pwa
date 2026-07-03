@@ -7,7 +7,7 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
   >
     <button
       aria-checked="false"
-      class="sg-1pqskzk-inactive"
+      class="sg-13fqxlu-inactive"
       data-test-id="foo"
       role="checkbox"
       type="button"
@@ -17,7 +17,7 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
     </button>
     <button
       aria-checked="false"
-      class="sg-1pqskzk-inactive"
+      class="sg-13fqxlu-inactive"
       data-test-id="bar"
       role="checkbox"
       type="button"

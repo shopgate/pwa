@@ -5,6 +5,10 @@ exports[`Rating (product header) Rendering should render rating when data is ava
   class="sg-1urk15m-container"
   role="presentation"
 >
-  reviews.review_count
+  <span
+    class="engage__reviews__rating-count sg-6wua5d-greyStyle-prominentStyle"
+  >
+    reviews.review_count
+  </span>
 </div>
 `;

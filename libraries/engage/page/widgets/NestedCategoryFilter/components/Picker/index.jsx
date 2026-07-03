@@ -4,6 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
 import Sheet from './components/Sheet';
@@ -28,12 +29,11 @@ const useStyles = makeStyles()(theme => ({
     cursor: 'not-allowed',
   },
   label: {
-    fontSize: 12,
     marginTop: -2,
     marginBottom: 4,
   },
   selection: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.125,
   },
 }));
@@ -107,7 +107,11 @@ const CategoryPicker = ({
           { [classes.buttonDisabled]: disabled },
           'widget__nested-category-filter__category-picker')}
       >
-        {label && <div className={classes.label}>{label}</div>}
+        {label && (
+        <Typography variant="caption" component="div" className={classes.label}>
+          {label}
+        </Typography>
+        )}
         <div className={classes.selection}>{buttonLabel}</div>
       </div>
       <Sheet

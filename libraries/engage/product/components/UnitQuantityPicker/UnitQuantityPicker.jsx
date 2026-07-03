@@ -39,7 +39,7 @@ const useStyles = makeStyles()((theme, {
       display: 'flex',
       alignItems: 'center',
       width: '100%',
-      fontSize: 16,
+      fontSize: theme.typography.body1.fontSize,
       backgroundColor: theme.components.input.background,
       ...(inputColor && { color: `${inputColor}` }),
       ...(inputBgColor && { backgroundColor: `${inputBgColor}` }),

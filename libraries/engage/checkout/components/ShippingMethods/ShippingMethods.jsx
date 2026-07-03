@@ -8,7 +8,7 @@ import uniqBy from 'lodash/uniqBy';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  RadioGroupV2 as RadioGroup, RadioCard, MessageBar,
+  RadioGroupV2 as RadioGroup, RadioCard, MessageBar, Typography,
 } from '@shopgate/engage/components';
 import { useCheckoutContext } from '@shopgate/engage/checkout/hooks/common';
 import ShippingMethod from './ShippingMethod';
@@ -41,11 +41,8 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(0, 2, 4),
   },
   headline: {
-    fontSize: '1.25rem',
-    fontWeight: 'normal',
     padding: theme.spacing(0, 1, 0, 0),
     margin: theme.spacing(0, 0, 1, 0),
-    color: theme.palette.text.primary,
     textTransform: 'none',
   },
   container: {
@@ -159,9 +156,9 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
   if (shippingMethods.length === 0) {
     return (
       <div className={classes.root}>
-        <h3 className={classes.headline}>
+        <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline}>
           {i18n.text('checkout.shippingMethod.title')}
-        </h3>
+        </Typography>
 
         <MessageBar
           messages={[{
@@ -177,9 +174,9 @@ const ShippingMethods = ({ orderHasDirectShipItems }) => {
 
   return (
     <div className={classes.root}>
-      <h3 className={classes.headline}>
+      <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline}>
         {i18n.text('checkout.shippingMethod.title')}
-      </h3>
+      </Typography>
       { shippingMethods.length === 1 ? (
         <div className={cx(classes.container, classes.containerSingle)}>
           <ShippingMethod shippingMethod={shippingMethods[0]} />

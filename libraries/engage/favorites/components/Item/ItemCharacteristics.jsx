@@ -1,21 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
-
-const useStyles = makeStyles()(theme => ({
-  property: {
-    fontSize: 14,
-    color: theme.palette.text.secondary,
-    fontWeight: 400,
-  },
-}));
+import { Typography } from '@shopgate/engage/components';
 
 /**
  * @param {Object} props The component props
  * @returns {JSX}
  */
 const ItemCharacteristics = ({ characteristics }) => {
-  const { classes } = useStyles();
   if (!characteristics || characteristics.length === 0) {
     return null;
   }
@@ -23,11 +14,11 @@ const ItemCharacteristics = ({ characteristics }) => {
   return (
     <ul>
       {characteristics.map(({ label, value }) => (
-        <li key={`${label}-${value}`} className={classes.property}>
+        <Typography variant="body2" component="li" color="textSecondary" key={`${label}-${value}`}>
           {label}
           {': '}
           {value}
-        </li>
+        </Typography>
       ))}
     </ul>
   );

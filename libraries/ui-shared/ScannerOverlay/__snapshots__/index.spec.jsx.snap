@@ -12,7 +12,7 @@ exports[`<ScannerOverlay /> should render the component 1`] = `
   >
     <button
       aria-label="scanner.flashlight.switchOn"
-      class="sg-176t45u-button"
+      class="sg-imf5wf-button"
       role="link"
       type="button"
     >

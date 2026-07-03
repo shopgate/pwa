@@ -1,6 +1,6 @@
 import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
-import { Swiper, Card } from '@shopgate/engage/components';
+import { Swiper, Card, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import ProductCard from '../ProductCard';
 import RelationsSheet from './RelationsSheet';
@@ -13,8 +13,6 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
   },
   headline: {
-    fontSize: '1rem',
-    fontWeight: 500,
     padding: theme.spacing(0, 2, 1),
     margin: 0,
   },
@@ -60,7 +58,7 @@ const RelationsSliderContent = memo(({ products: { products, productsCount }, ge
 
   return (
     <div className={classes.container}>
-      {!!headline && <h3 className={classes.headline}>{headline}</h3>}
+      {!!headline && <Typography variant="h5" component="h3" className={classes.headline}>{headline}</Typography>}
       {!!showMoreButton && productsCount > 10 && (
         <RelationsSheet limit={100} productId={productId} type={type} />
       )}

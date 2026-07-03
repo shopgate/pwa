@@ -36,7 +36,7 @@ exports[`<SearchBar /> should call handleChange on input 1`] = `
             htmlFor="search"
           >
             <div
-              className="sg-1bcmtcb-icon"
+              className="sg-3qrbdm-icon"
             >
               <Magnifier>
                 <Icon

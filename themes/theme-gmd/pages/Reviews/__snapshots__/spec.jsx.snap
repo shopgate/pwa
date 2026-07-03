@@ -157,7 +157,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="sg-m3j5n0-root"
+                          className="sg-5rdyxc-root"
                         />
                       </Title>
                       <Rating
@@ -494,11 +494,17 @@ exports[`<Reviews> page should not crash 1`] = `
                       <Text
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
-                        <div
-                          className="sg-78jqgy-root"
+                        <Typography
+                          className="sg-1ub84xp-root"
+                          component="div"
+                          variant="body2"
                         >
-                          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-                        </div>
+                          <div
+                            className="sg-1ub84xp-root"
+                          >
+                            "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+                          </div>
+                        </Typography>
                       </Text>
                       <Info
                         review={
@@ -512,25 +518,31 @@ exports[`<Reviews> page should not crash 1`] = `
                           }
                         }
                       >
-                        <div
-                          className="sg-9l1yt0-root"
+                        <Typography
+                          color="textSecondary"
+                          component="div"
                           role="text"
+                          variant="body2"
                         >
-                          <ReviewDate
-                            date="2017-09-06T12:38:51.000Z"
+                          <div
+                            role="text"
                           >
-                            <Date
-                              format="long"
-                              timestamp={1504701531000}
+                            <ReviewDate
+                              date="2017-09-06T12:38:51.000Z"
                             >
-                              1504701531000-long
-                            </Date>
-                          </ReviewDate>
-                           
-                          <Author
-                            author=""
-                          />
-                        </div>
+                              <Date
+                                format="long"
+                                timestamp={1504701531000}
+                              >
+                                1504701531000-long
+                              </Date>
+                            </ReviewDate>
+                             
+                            <Author
+                              author=""
+                            />
+                          </div>
+                        </Typography>
                       </Info>
                     </SurroundPortals>
                   </li>
@@ -558,7 +570,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="sg-m3j5n0-root"
+                          className="sg-5rdyxc-root"
                         />
                       </Title>
                       <Rating
@@ -895,11 +907,17 @@ exports[`<Reviews> page should not crash 1`] = `
                       <Text
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
-                        <div
-                          className="sg-78jqgy-root"
+                        <Typography
+                          className="sg-1ub84xp-root"
+                          component="div"
+                          variant="body2"
                         >
-                          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-                        </div>
+                          <div
+                            className="sg-1ub84xp-root"
+                          >
+                            "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+                          </div>
+                        </Typography>
                       </Text>
                       <Info
                         review={
@@ -913,25 +931,31 @@ exports[`<Reviews> page should not crash 1`] = `
                           }
                         }
                       >
-                        <div
-                          className="sg-9l1yt0-root"
+                        <Typography
+                          color="textSecondary"
+                          component="div"
                           role="text"
+                          variant="body2"
                         >
-                          <ReviewDate
-                            date="2017-09-06T12:38:51.000Z"
+                          <div
+                            role="text"
                           >
-                            <Date
-                              format="long"
-                              timestamp={1504701531000}
+                            <ReviewDate
+                              date="2017-09-06T12:38:51.000Z"
                             >
-                              1504701531000-long
-                            </Date>
-                          </ReviewDate>
-                           
-                          <Author
-                            author=""
-                          />
-                        </div>
+                              <Date
+                                format="long"
+                                timestamp={1504701531000}
+                              >
+                                1504701531000-long
+                              </Date>
+                            </ReviewDate>
+                             
+                            <Author
+                              author=""
+                            />
+                          </div>
+                        </Typography>
                       </Info>
                     </SurroundPortals>
                   </li>
@@ -959,7 +983,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="sg-m3j5n0-root"
+                          className="sg-5rdyxc-root"
                         />
                       </Title>
                       <Rating
@@ -1296,11 +1320,17 @@ exports[`<Reviews> page should not crash 1`] = `
                       <Text
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
-                        <div
-                          className="sg-78jqgy-root"
+                        <Typography
+                          className="sg-1ub84xp-root"
+                          component="div"
+                          variant="body2"
                         >
-                          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-                        </div>
+                          <div
+                            className="sg-1ub84xp-root"
+                          >
+                            "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+                          </div>
+                        </Typography>
                       </Text>
                       <Info
                         review={
@@ -1314,25 +1344,31 @@ exports[`<Reviews> page should not crash 1`] = `
                           }
                         }
                       >
-                        <div
-                          className="sg-9l1yt0-root"
+                        <Typography
+                          color="textSecondary"
+                          component="div"
                           role="text"
+                          variant="body2"
                         >
-                          <ReviewDate
-                            date="2017-09-06T12:38:51.000Z"
+                          <div
+                            role="text"
                           >
-                            <Date
-                              format="long"
-                              timestamp={1504701531000}
+                            <ReviewDate
+                              date="2017-09-06T12:38:51.000Z"
                             >
-                              1504701531000-long
-                            </Date>
-                          </ReviewDate>
-                           
-                          <Author
-                            author=""
-                          />
-                        </div>
+                              <Date
+                                format="long"
+                                timestamp={1504701531000}
+                              >
+                                1504701531000-long
+                              </Date>
+                            </ReviewDate>
+                             
+                            <Author
+                              author=""
+                            />
+                          </div>
+                        </Typography>
                       </Info>
                     </SurroundPortals>
                   </li>
@@ -1360,7 +1396,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="sg-m3j5n0-root"
+                          className="sg-5rdyxc-root"
                         />
                       </Title>
                       <Rating
@@ -1697,11 +1733,17 @@ exports[`<Reviews> page should not crash 1`] = `
                       <Text
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
-                        <div
-                          className="sg-78jqgy-root"
+                        <Typography
+                          className="sg-1ub84xp-root"
+                          component="div"
+                          variant="body2"
                         >
-                          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-                        </div>
+                          <div
+                            className="sg-1ub84xp-root"
+                          >
+                            "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+                          </div>
+                        </Typography>
                       </Text>
                       <Info
                         review={
@@ -1715,25 +1757,31 @@ exports[`<Reviews> page should not crash 1`] = `
                           }
                         }
                       >
-                        <div
-                          className="sg-9l1yt0-root"
+                        <Typography
+                          color="textSecondary"
+                          component="div"
                           role="text"
+                          variant="body2"
                         >
-                          <ReviewDate
-                            date="2017-09-06T12:38:51.000Z"
+                          <div
+                            role="text"
                           >
-                            <Date
-                              format="long"
-                              timestamp={1504701531000}
+                            <ReviewDate
+                              date="2017-09-06T12:38:51.000Z"
                             >
-                              1504701531000-long
-                            </Date>
-                          </ReviewDate>
-                           
-                          <Author
-                            author=""
-                          />
-                        </div>
+                              <Date
+                                format="long"
+                                timestamp={1504701531000}
+                              >
+                                1504701531000-long
+                              </Date>
+                            </ReviewDate>
+                             
+                            <Author
+                              author=""
+                            />
+                          </div>
+                        </Typography>
                       </Info>
                     </SurroundPortals>
                   </li>

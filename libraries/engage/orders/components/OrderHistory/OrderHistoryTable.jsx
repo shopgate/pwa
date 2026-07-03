@@ -9,7 +9,7 @@ const useStyles = makeStyles()(theme => ({
   tableHeader: {
     '& > th': {
       padding: theme.spacing(2),
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
     },

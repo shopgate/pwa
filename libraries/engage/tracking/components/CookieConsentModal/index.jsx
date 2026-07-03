@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  Grid, I18n, Button, Modal, Link, ConditionalWrapper,
+  Grid, I18n, Button, Modal, Link, ConditionalWrapper, Typography,
 } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
 import connect from './connector';
@@ -26,8 +26,6 @@ const useStyles = makeStyles()(theme => ({
     textAlign: 'center',
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: '1.35rem',
     paddingTop: '30px',
     paddingBottom: '30px',
   },
@@ -138,11 +136,15 @@ const CookieConsentModal = ({
       >
         <Grid.Item component="div" className={classes.item}>
           <img src={imageSRC} className={cx(classes.image, 'cookie-consent-modal__image')} alt="" aria-hidden="true" />
-          <I18n.Text
+          <Typography
+            variant="h3"
+            component="div"
+            fontWeight="bold"
             className={cx(classes.title, 'cookie-consent-modal__title')}
-            string={modalTitle || 'cookieConsentModal.title'}
             id="cookieConsentDialogTitle"
-          />
+          >
+            <I18n.Text string={modalTitle || 'cookieConsentModal.title'} />
+          </Typography>
           <I18n.Text
             string={modalMessage || 'cookieConsentModal.message'}
             className={cx('cookie-consent-modal__message')}

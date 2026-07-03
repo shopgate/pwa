@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     background: theme.palette.background.surface,
   },
   showAllProducts: {
-    fontWeight: 700,
+    fontWeight: theme.typography.fontWeightBold,
   },
   image: {
     width: '30px',

@@ -8,7 +8,7 @@ import WriteReviewLink from '../WriteReviewLink';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     margin: 0,
   },
   noReviews: {

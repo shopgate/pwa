@@ -45,19 +45,19 @@ const useStyles = makeStyles()(theme => ({
     width: 40,
   },
   availability: {
-    fontSize: '0.75rem',
+    fontSize: theme.typography.caption.fontSize,
   },
   manufacturer: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
   },
   price: {
     justifyContent: 'flex-end',
   },
   priceStriked: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
   },
   priceInfo: {
-    fontSize: '0.75rem',
+    fontSize: theme.typography.caption.fontSize,
   },
   discount: {
     minWidth: 40,
@@ -84,14 +84,12 @@ const Item = ({ display, product }) => {
       <Grid className={classes.listItemContainer}>
         <Grid.Item shrink={0} className={classes.imageContainer}>
 
-          {/* IMAGE */}
           <Portal name={portals.PRODUCT_ITEM_IMAGE_BEFORE} props={{ productId: product.id }} />
           <Portal name={portals.PRODUCT_ITEM_IMAGE} props={{ productId: product.id }}>
             <Image itemProp="image" src={product.featuredImageBaseUrl} alt={product.name} />
           </Portal>
           <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={{ productId: product.id }} />
           <ProductBadges location="productList" productId={product.id}>
-            {/* DISCOUNT */}
             {!!product.price.discount && (
               <>
                 <Portal
@@ -114,7 +112,6 @@ const Item = ({ display, product }) => {
         </Grid.Item>
         <Grid.Item grow={4} className={classes.titleContainer}>
 
-          {/* NAME */}
           <ProductName
             name={product.name}
             portalName={portals.PRODUCT_ITEM_NAME}
@@ -123,7 +120,6 @@ const Item = ({ display, product }) => {
             testId={`Productname: ${product.name}`}
           />
 
-          {/* MANUFACTURER */}
           {(!display || (display.manufacturer && product.manufacturer)) && (
             <>
               <Portal
@@ -140,7 +136,6 @@ const Item = ({ display, product }) => {
             </>
           )}
 
-          {/* AVAILABILITY */}
           {product.availability && (
             <>
               <Portal
@@ -173,7 +168,6 @@ const Item = ({ display, product }) => {
 
         </Grid.Item>
 
-        {/* PRICE - STRIKE PRICE - PRICE INFO */}
         {(!display || display.price) && (
           <>
             <Portal

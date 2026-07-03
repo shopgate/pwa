@@ -1,5 +1,7 @@
 import React from 'react';
-import { SelectBox, ArrowDropIcon, SurroundPortals } from '@shopgate/engage/components';
+import {
+  SelectBox, ArrowDropIcon, SurroundPortals,
+} from '@shopgate/engage/components';
 import { useSort, PORTAL_FILTER_SORT_OPTIONS } from '@shopgate/engage/filter';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -20,14 +22,13 @@ const useStyles = makeStyles()(theme => ({
     whiteSpace: 'nowrap',
   },
   selection: {
-    fontSize: '0.875rem',
-    fontWeight: '500',
-    lineHeight: 1,
+    fontSize: theme.typography.body2.fontSize,
+    fontWeight: theme.typography.fontWeightMedium,
     paddingTop: 1,
     alignSelf: 'center',
   },
   icon: {
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
   },
   iconOpen: {
     transform: 'rotate(180deg)',
@@ -59,7 +60,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   selectItemSelected: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   selectBox: {
     flexGrow: 2,

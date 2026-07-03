@@ -4,34 +4,29 @@ exports[`<ProductProperties /> should not render if no properties were passed 1`
 
 exports[`<ProductProperties /> should render if properties are passed 1`] = `
 <div>
-  <div
-    class="engage__product__product-property-group sg-lre9jt-container"
-    data-group-name=""
-  >
-    <table>
-      <thead />
-      <tbody>
-        <tr
-          aria-label=": "
-          class="engage__product__product-property"
-          tabindex="0"
+  <table>
+    <thead />
+    <tbody>
+      <tr
+        aria-label=": "
+        class="engage__product__product-property"
+        tabindex="0"
+      >
+        <td
+          aria-hidden="true"
+          class="sg-15jjn2r-tableCell"
         >
-          <td
-            aria-hidden="true"
-            class="sg-15jjn2r-tableCell"
-          >
-            <span />
-          </td>
-          <td
-            aria-hidden="true"
-            class="sg-15jjn2r-tableCell"
-            data-test-id="property: "
-          >
-            <span />
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+          <span />
+        </td>
+        <td
+          aria-hidden="true"
+          class="sg-15jjn2r-tableCell"
+          data-test-id="property: "
+        >
+          <span />
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;

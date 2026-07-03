@@ -73,26 +73,39 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
             tag="h2"
             text="navigation.more_menu"
           >
-            <h2
-              className="sg-1e76cvh-root headline theme__headline"
+            <Typography
+              align="inherit"
+              className="sg-1ivqote-root headline theme__headline"
+              component="h2"
               data-test-id="Headline"
               style={
                 {
                   "margin": "24px 20px 16px",
                 }
               }
+              variant="h2"
             >
-              <Text
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={{}}
-                role={null}
-                string="navigation.more_menu"
-                transform={null}
+              <h2
+                className="sg-1ivqote-root headline theme__headline"
+                data-test-id="Headline"
+                style={
+                  {
+                    "margin": "24px 20px 16px",
+                  }
+                }
               >
-                navigation.more_menu
-              </Text>
-            </h2>
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="navigation.more_menu"
+                  transform={null}
+                >
+                  navigation.more_menu
+                </Text>
+              </h2>
+            </Typography>
           </Headline>
           <div
             className="sg-1sqpupb-list"

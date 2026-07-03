@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import pick from 'lodash/pick';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import Chevron from '../../icons/ChevronIcon';
 import InfoField from '../InfoField';
 import ContextMenu from '../../ContextMenu';
@@ -13,16 +14,15 @@ const useStyles = makeStyles()(theme => ({
     top: '50%',
     right: 0,
     transform: 'translateY(-50%) rotateZ(-90deg)',
-    fontSize: '1.3em !important',
+    fontSize: `${theme.components.icon.medium} !important`,
     marginTop: -3,
   },
   toggle: {
-    fontSize: '1rem',
     paddingRight: '2rem',
   },
   itemSelected: {
     backgroundColor: theme.palette.grey.light,
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
 }));
 
@@ -62,7 +62,8 @@ const SelectContextChoices = ({
       hasValue
       rightElement={<Chevron className={classes.chevron} />}
     >
-      <div
+      <Typography
+        component="div"
         role="button"
         onClick={() => setOpened(true)}
         aria-hidden
@@ -71,7 +72,7 @@ const SelectContextChoices = ({
       >
         {!hasValue && (placeholder || i18n.text('common.please_choose'))}
         {hasValue && values.join(', ')}
-      </div>
+      </Typography>
 
       <ContextMenu
         isOpened={opened}

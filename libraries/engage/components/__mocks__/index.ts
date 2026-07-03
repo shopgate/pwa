@@ -116,6 +116,28 @@ export const PlaceholderLabel = ({ children }) => children;
 export const HtmlSanitizer = ({ children }) => children;
 export const RippleButton = ({ children }) => children;
 export const Button = ({ children }) => children;
+const typographyVariantMapping = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  subtitle1: 'h6',
+  subtitle2: 'h6',
+  body1: 'p',
+  body2: 'p',
+};
+export const Typography = (props) => {
+  const {
+    children, component, variant = 'body1', paragraph, ...rest
+  } = props;
+  // Strip styling-only props so they don't leak onto the rendered DOM node.
+  ['align', 'color', 'display', 'gutterBottom', 'noWrap', 'classes', 'variantMapping']
+    .forEach((prop) => { delete rest[prop]; });
+  const Component = component || (paragraph ? 'p' : typographyVariantMapping[variant]) || 'span';
+  return jest.requireActual('react').createElement(Component, rest, children);
+};
 export const SheetDrawer = UISharedSheet;
 export const SheetList = ({ children }) => children;
 SheetList.Item = () => null;

@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { historyPop, historyResetTo } from '@shopgate/pwa-common/actions/router';
 import { i18n, INDEX_PATH } from '../../core';
@@ -14,9 +14,6 @@ const useStyles = makeStyles()(theme => ({
     textAlign: 'center',
     padding: theme.spacing(2),
     paddingTop: theme.spacing(8),
-  },
-  text: {
-    fontSize: '1.5rem',
   },
   button: {
     width: '100%',
@@ -51,7 +48,9 @@ const NotFound = () => {
 
   return (
     <div className={classes.wrapper}>
-      <I18n.Text className={classes.text} string="page.not_found" />
+      <Typography variant="h2" component="div" fontWeight="regular">
+        <I18n.Text string="page.not_found" />
+      </Typography>
       <div className={classes.buttonContainer}>
         <RippleButton onClick={handleBack} className={classes.button} type="secondary">
           <I18n.Text string="common.back" />

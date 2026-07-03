@@ -12,10 +12,14 @@ jest.mock('@shopgate/pwa-ui-material', () => ({
     </section>
   ),
 }));
-/* eslint-enable react/prop-types */
 jest.mock('@shopgate/engage/components', () => ({
+  Typography: ({
+    children, component: Component = 'div', variant, align, color, display,
+    gutterBottom, noWrap, paragraph, classes, variantMapping, ...rest
+  }) => <Component {...rest}>{children}</Component>,
   HtmlSanitizer: ({ children }) => children,
 }));
+/* eslint-enable react/prop-types */
 
 const properties = [
   {

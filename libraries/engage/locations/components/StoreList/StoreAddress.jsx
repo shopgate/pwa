@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
   },
   addressIcon: {
     color: theme.palette.text.secondary,
-    fontSize: '1.4rem',
+    fontSize: theme.components.icon.medium,
     padding: theme.spacing(0.5, 2, 0, 0),
   },
   stockInfoContainer: {

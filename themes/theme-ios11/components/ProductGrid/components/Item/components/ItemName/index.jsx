@@ -4,15 +4,15 @@ import { PRODUCT_ITEM_NAME } from '@shopgate/engage/category/constants';
 import { ProductName, ProductRatingStars } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   name: {
-    fontWeight: '500',
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.15,
     marginTop: 1,
     wordBreak: ['keep-all', 'break-word'],
     hyphens: 'auto',
   },
-});
+}));
 
 /**
  * The item name component.

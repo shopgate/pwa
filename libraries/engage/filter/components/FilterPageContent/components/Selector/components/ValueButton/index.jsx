@@ -4,7 +4,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()((theme) => {
   const inactive = {
-    border: `1px solid ${theme.components.border.light}`,
+    border: `1px solid ${theme.components.border.medium}`,
     borderRadius: 2,
     color: 'inherit',
     height: 42,

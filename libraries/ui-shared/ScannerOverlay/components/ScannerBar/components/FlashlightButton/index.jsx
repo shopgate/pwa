@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
     color: 'inherit',
     display: 'flex',
     flexShrink: 0,
-    fontSize: 24,
+    fontSize: theme.components.icon.medium,
     height: 44,
     justifyContent: 'center',
     outline: 0,

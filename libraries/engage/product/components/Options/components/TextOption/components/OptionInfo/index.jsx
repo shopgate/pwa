@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, I18n } from '@shopgate/engage/components';
+import { Grid, I18n, Typography } from '@shopgate/engage/components';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -8,14 +8,6 @@ const useStyles = makeStyles()(theme => ({
   info: {
     marginTop: theme.spacing(0.5),
     padding: theme.spacing(0, 2),
-  },
-  required: {
-    color: theme.palette.text.secondary,
-    fontSize: '0.825rem',
-  },
-  price: {
-    textAlign: 'right',
-    fontSize: '0.825rem',
   },
 }));
 
@@ -50,16 +42,20 @@ const OptionInfo = ({
   return (
     <Grid className={classes.info}>
       {required &&
-        <Grid.Item className={classes.required} aria-hidden>
-          <I18n.Text string="common.required" />
+        <Grid.Item aria-hidden>
+          <Typography variant="body2" component="span" color="textSecondary">
+            <I18n.Text string="common.required" />
+          </Typography>
         </Grid.Item>}
       {!!price &&
-        <Grid.Item grow={1} className={classes.price} aria-hidden>
-          {`${label}: `}
-          <I18n.Price
-            currency={currency}
-            price={price}
-          />
+        <Grid.Item grow={1} aria-hidden>
+          <Typography variant="body2" component="span" align="right">
+            {`${label}: `}
+            <I18n.Price
+              currency={currency}
+              price={price}
+            />
+          </Typography>
         </Grid.Item>}
       <div hidden id={optionInfoId}>
         { ariaRequired }

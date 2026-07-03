@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, SurroundPortals } from '@shopgate/engage/components';
+import { I18n, SurroundPortals, Typography } from '@shopgate/engage/components';
 import { PRODUCT_UNIT_QUANTITY_PICKER, ProductContext } from '@shopgate/engage/product';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { withCurrentProduct } from '@shopgate/engage/core/hocs';
@@ -14,8 +14,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
   },
   title: {
-    fontSize: '1rem',
-    fontWeight: 500,
     marginBottom: '0.5rem',
   },
   pickerSmall: {
@@ -77,9 +75,9 @@ const ProductUnitQuantityPicker = ({
       <div className={cx(classes.root, className)}>
         <div>
           {!hideHeadline && (
-            <div className={classes.title}>
+            <Typography variant="h5" component="div" className={classes.title}>
               <I18n.Text string="product.sections.quantity" />
-            </div>
+            </Typography>
           )}
           <UnitQuantityPicker
             className={customClasses?.picker

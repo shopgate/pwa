@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
   line: {
     display: 'flex',
     justifyContent: 'space-between',
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
     alignItems: 'baseline',
   },
   disabled: {
@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
   },
   grandTotal: {
     color: theme.palette.text.primary,
-    fontSize: '1rem !important',
+    fontSize: `${theme.typography.body1.fontSize} !important`,
   },
 }));
 

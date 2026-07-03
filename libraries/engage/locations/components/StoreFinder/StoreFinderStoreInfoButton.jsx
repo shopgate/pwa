@@ -12,7 +12,7 @@ import { STORE_DETAILS_PATH } from '../../constants';
 const useStyles = makeStyles()(theme => ({
   showStoreInfoButton: {
     width: '100%',
-    fontSize: '.875rem !important',
+    fontSize: `${theme.typography.body2.fontSize} !important`,
     ':not(:disabled)': {
       background: `${theme.palette.primary.main} !important`,
       color: `${theme.palette.primary.contrastText} !important`,

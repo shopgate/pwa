@@ -2,20 +2,31 @@
 
 exports[`<CouponsHint /> should render as expected without any props 1`] = `
 <CouponsHint>
-  <Translate
-    acceptPlainTextWithPlaceholders={false}
-    className="sg-6u8ihq-root"
-    params={{}}
-    role={null}
-    string="cart.coupons_not_supported"
-    transform={null}
+  <ForwardRef(Typography)
+    align="left"
+    className="sg-19pkrcp-root"
+    display="block"
+    variant="caption"
   >
     <span
-      className="sg-6u8ihq-root"
-      role={null}
+      className="engage__typography engage__typography_caption sg-qlwtwx-Typography-root-Typography-caption-Typography-alignLeft-Typography-displayBlock-root"
     >
-      cart.coupons_not_supported
+      <Translate
+        acceptPlainTextWithPlaceholders={false}
+        className={null}
+        params={{}}
+        role={null}
+        string="cart.coupons_not_supported"
+        transform={null}
+      >
+        <span
+          className={null}
+          role={null}
+        >
+          cart.coupons_not_supported
+        </span>
+      </Translate>
     </span>
-  </Translate>
+  </ForwardRef(Typography)>
 </CouponsHint>
 `;

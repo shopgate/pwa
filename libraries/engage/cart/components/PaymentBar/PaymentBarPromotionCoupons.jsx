@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     borderRadius: 32,
     padding: 4,
     cursor: 'pointer',
-    fontSize: '0.75rem',
+    fontSize: theme.components.icon.xsmall,
     display: 'inline-flex',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       padding: 3,

@@ -8,7 +8,7 @@ import { getOrderDetailsRoute } from '../../helpers/orderDetails';
 
 const useStyles = makeStyles()(theme => ({
   orderNumber: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   list: {
     marginBottom: theme.spacing(-1.5),

@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
     width: '100%',
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
   },
   input: {
     '& .errorText': {
@@ -34,7 +34,7 @@ const useStyles = makeStyles()(theme => ({
   },
   icon: {
     color: theme.palette.primary.main,
-    fontSize: '1.875rem',
+    fontSize: theme.components.icon.large,
     position: 'absolute',
     transition: `opacity ${easing}`,
     cursor: 'pointer',

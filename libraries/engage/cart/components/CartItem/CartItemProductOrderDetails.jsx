@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   labelValue: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     display: 'inline',
     color: theme.palette.text.secondary,
   },

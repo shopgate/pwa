@@ -41,7 +41,7 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: 1.25,
   },
   check: {
-    fontSize: '1.2rem',
+    fontSize: theme.components.icon.small,
     paddingRight: theme.spacing(1),
   },
 }));

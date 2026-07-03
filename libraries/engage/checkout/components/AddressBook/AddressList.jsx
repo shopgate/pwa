@@ -7,7 +7,9 @@ import {
 } from '@shopgate/engage/checkout/selectors/order';
 import { i18n, historyPush } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { RippleButton, ResponsiveContainer } from '@shopgate/engage/components';
+import {
+  RippleButton, ResponsiveContainer, Typography,
+} from '@shopgate/engage/components';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 import AddressCard from '../../../account/components/Profile/ProfileAddressCard';
 import { useProfileContext } from '../../../account/components/Profile/Profile.provider';
@@ -45,10 +47,7 @@ const useStyles = makeStyles()(theme => ({
   },
   headline: {
     padding: 16,
-    fontSize: '2.125rem',
-    fontWeight: 'normal',
     margin: 0,
-    lineHeight: '2.25rem',
   },
   button: {
     '&&': {
@@ -56,7 +55,7 @@ const useStyles = makeStyles()(theme => ({
       marginRight: 16,
       backgroundColor: theme.palette.primary.main,
       borderRadius: 5,
-      fontSize: 14,
+      fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,
       [responsiveMediaQuery('<md', { webOnly: false })]: {
@@ -113,9 +112,9 @@ const AddressList = ({
     <div>
       <ResponsiveContainer webOnly breakpoint=">xs">
         <ResponsiveBackButton />
-        <h1 className={classes.headline}>
+        <Typography variant="h1" component="h1" className={classes.headline}>
           {title}
-        </h1>
+        </Typography>
       </ResponsiveContainer>
       <div className={classes.container}>
         {contacts && contacts.map(contact => (

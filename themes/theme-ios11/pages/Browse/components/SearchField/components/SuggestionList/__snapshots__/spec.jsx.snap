@@ -20,7 +20,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
     classes={
       {
         "item": "sg-13ywxbn-SuggestionList-item",
-        "list": "sg-1kv5o5l-SuggestionList-list",
+        "list": "sg-147kuv6-SuggestionList-list",
       }
     }
     fetching={false}
@@ -54,7 +54,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 1`]
       }
     >
       <div
-        className="theme__browse__search-field__suggestion-list sg-1kv5o5l-SuggestionList-list"
+        className="theme__browse__search-field__suggestion-list sg-147kuv6-SuggestionList-list"
       >
         <SurroundPortals
           key="foo"
@@ -202,7 +202,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
     classes={
       {
         "item": "sg-13ywxbn-SuggestionList-item",
-        "list": "sg-1kv5o5l-SuggestionList-list",
+        "list": "sg-147kuv6-SuggestionList-list",
       }
     }
     fetching={true}
@@ -236,7 +236,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 2`]
       }
     >
       <div
-        className="theme__browse__search-field__suggestion-list sg-1kv5o5l-SuggestionList-list"
+        className="theme__browse__search-field__suggestion-list sg-147kuv6-SuggestionList-list"
       >
         <SurroundPortals
           key="foo"
@@ -384,7 +384,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
     classes={
       {
         "item": "sg-13ywxbn-SuggestionList-item",
-        "list": "sg-1kv5o5l-SuggestionList-list",
+        "list": "sg-147kuv6-SuggestionList-list",
       }
     }
     fetching={false}
@@ -418,7 +418,7 @@ exports[`<SuggestionList /> should not update while suggestions are fetching 3`]
       }
     >
       <div
-        className="theme__browse__search-field__suggestion-list sg-1kv5o5l-SuggestionList-list"
+        className="theme__browse__search-field__suggestion-list sg-147kuv6-SuggestionList-list"
       >
         <SurroundPortals
           key="foo bar buz quz"
@@ -583,7 +583,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
         classes={
           {
             "item": "sg-13ywxbn-SuggestionList-item",
-            "list": "sg-1kv5o5l-SuggestionList-list",
+            "list": "sg-147kuv6-SuggestionList-list",
           }
         }
         dispatch={[Function]}
@@ -618,7 +618,7 @@ exports[`<SuggestionList /> should render a list of suggestions 1`] = `
           }
         >
           <div
-            className="theme__browse__search-field__suggestion-list sg-1kv5o5l-SuggestionList-list"
+            className="theme__browse__search-field__suggestion-list sg-147kuv6-SuggestionList-list"
           >
             <SurroundPortals
               key="foo"
@@ -760,7 +760,7 @@ exports[`<SuggestionList /> should render portal without suggestions 1`] = `
     classes={
       {
         "item": "sg-13ywxbn-SuggestionList-item",
-        "list": "sg-oxnby3-SuggestionList-list",
+        "list": "sg-17v4lr3-SuggestionList-list",
       }
     }
     fetching={false}

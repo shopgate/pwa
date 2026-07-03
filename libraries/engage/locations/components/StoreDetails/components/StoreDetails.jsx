@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import {
-  LocationIcon, Button, Link, ConditionalWrapper,
+  LocationIcon, Button, Link, ConditionalWrapper, Typography,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
@@ -17,18 +17,14 @@ const useStyles = makeStyles()(theme => ({
   },
   headerIcon: {
     color: theme.palette.primary.main,
-    fontSize: 20,
+    fontSize: theme.components.icon.small,
     alignContent: 'center',
     marginRight: 4,
   },
   header: {
     color: theme.palette.primary.main,
-    fontWeight: '600',
-    fontSize: 20,
   },
   locationName: {
-    fontSize: 20,
-    fontWeight: '600',
     marginBottom: 8,
   },
   locationRow: {
@@ -48,23 +44,15 @@ const useStyles = makeStyles()(theme => ({
     minWidth: '250px',
     maxWidth: '455px',
   },
-  storeHours: {
-    fontSize: 17,
-    fontWeight: '600',
-  },
   storeHoursLine: { },
   storeHoursWeekday: {
     textAlign: 'left',
   },
   bold: {
-    fontWeight: '600',
+    fontWeight: theme.typography.fontWeightBold,
   },
   storeHoursOpeningTime: {
     textAlign: 'right',
-  },
-  phone: {
-    fontSize: 17,
-    fontWeight: '600',
   },
   phoneNumber: {
     textDecoration: 'underline',
@@ -131,16 +119,16 @@ const StoreDetails = () => {
           <div className={classes.headerIcon}>
             <LocationIcon className={classes.icon} size={20} />
           </div>
-          <div className={classes.header}>
+          <Typography variant="h3" component="div" fontWeight="bold" className={classes.header}>
             {isRouteLocationPreferred ?
               i18n.text('location.myStore') :
               i18n.text('location.makeMyStore')}
-          </div>
+          </Typography>
         </div>
       </ConditionalWrapper>
-      <div className={classes.locationName}>
+      <Typography variant="h3" component="div" fontWeight="bold" className={classes.locationName}>
         {routeLocation.name}
-      </div>
+      </Typography>
       <div className={classes.locationRow}>
         <div className={classes.locationColumn}>
           <p>
@@ -187,9 +175,9 @@ const StoreDetails = () => {
           </div>
           {address?.phoneNumber && (
             <>
-              <div className={classes.phone}>
+              <Typography variant="h4" component="div" fontWeight="bold">
                 {`${i18n.text('location.phone')}: `}
-              </div>
+              </Typography>
 
               <div className={classes.phoneNumber}>
                 <Link
@@ -207,9 +195,9 @@ const StoreDetails = () => {
         </div>
         {hasOpeningHours && (
         <div className={classes.storeHoursColumn}>
-          <div className={classes.storeHours}>
+          <Typography variant="h4" component="div" fontWeight="bold">
             {`${i18n.text('location.storeHours')}:`}
-          </div>
+          </Typography>
           <table>
             <tbody>
               {getWeekDaysOrder().map((weekDay) => {

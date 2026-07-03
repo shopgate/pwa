@@ -12,6 +12,7 @@ jest.mock('@shopgate/engage/components', () => {
   const { default: I18nComponent } = jest.requireActual('@shopgate/pwa-common/components/I18n');
 
   return {
+    Typography: ({ children }) => children,
     Grid,
     I18n: I18nComponent,
   };

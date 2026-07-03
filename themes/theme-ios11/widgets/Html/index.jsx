@@ -10,7 +10,7 @@ const useStyles = makeStyles()(theme => ({
       margin: '1rem 0',
     },
     '& h1, & h2, & h3, & h4, & h5, & h6': {
-      fontWeight: 600,
+      fontWeight: theme.typography.fontWeightBold,
     },
     '& h1': {
       fontSize: '1.5rem',

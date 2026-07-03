@@ -65,7 +65,7 @@ exports[`<RadioGroup /> should call onChange callback 1`] = `
             <Text
               acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
               id="foo-label"
               params={{}}
               role={null}
@@ -147,7 +147,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             <Text
               acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
               id="foo-label"
               params={{}}
               role={null}
@@ -187,7 +187,7 @@ exports[`<RadioGroup /> should have on value at a time 1`] = `
             <Text
               acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
               id="bar-label"
               params={{}}
               role={null}
@@ -269,7 +269,7 @@ exports[`<RadioGroup /> should render column group with items 1`] = `
             <Text
               acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
               id="foo-label"
               params={{}}
               role={null}
@@ -392,7 +392,7 @@ exports[`<RadioGroup /> should render rows group with items 1`] = `
             <Text
               acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
               id="foo-label"
               params={{}}
               role={null}
@@ -474,7 +474,7 @@ exports[`<RadioGroup /> should use default value 1`] = `
             <Text
               acceptPlainTextWithPlaceholders={false}
               aria-hidden={true}
-              className="sg-17gczke-label label"
+              className="sg-wy4z7j-label label"
               id="foo-label"
               params={{}}
               role={null}

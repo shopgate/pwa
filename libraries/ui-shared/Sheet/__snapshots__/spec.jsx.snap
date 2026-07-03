@@ -98,7 +98,7 @@ exports[`<Sheet /> should open 1`] = `
                 >
                   <button
                     aria-label="common.close"
-                    className="sg-cb4y3g-closeButton"
+                    className="sg-1cxk1cy-closeButton"
                     onClick={[Function]}
                     type="button"
                   >
@@ -152,7 +152,7 @@ exports[`<Sheet /> should open 1`] = `
                     </Ripple>
                   </button>
                   <GridItem
-                    className="sg-1gh7dpa-title"
+                    className="sg-1ff2avy-title"
                     component="div"
                     grow={1}
                     role="heading"
@@ -160,11 +160,22 @@ exports[`<Sheet /> should open 1`] = `
                     tabIndex={0}
                   >
                     <div
-                      className="sg-1yim49x-root-title"
+                      className="sg-12wzbts-root-title"
                       role="heading"
                       tabIndex={0}
                     >
-                      Test-Title
+                      <ForwardRef(Typography)
+                        className="sg-9uf2sj-titleText"
+                        component="div"
+                        noWrap={true}
+                        variant="h3"
+                      >
+                        <div
+                          className="engage__typography engage__typography_h3 sg-10s498a-Typography-root-Typography-h3-Typography-noWrap-titleText"
+                        >
+                          Test-Title
+                        </div>
+                      </ForwardRef(Typography)>
                     </div>
                   </GridItem>
                 </div>
@@ -486,7 +497,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 >
                   <button
                     aria-label="common.close"
-                    className="sg-cb4y3g-closeButton"
+                    className="sg-1cxk1cy-closeButton"
                     onClick={[Function]}
                     type="button"
                   >
@@ -540,7 +551,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                     </Ripple>
                   </button>
                   <GridItem
-                    className="sg-1gh7dpa-title"
+                    className="sg-1ff2avy-title"
                     component="div"
                     grow={1}
                     role="heading"
@@ -548,11 +559,22 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                     tabIndex={0}
                   >
                     <div
-                      className="sg-1yim49x-root-title"
+                      className="sg-12wzbts-root-title"
                       role="heading"
                       tabIndex={0}
                     >
-                      Test-Title
+                      <ForwardRef(Typography)
+                        className="sg-9uf2sj-titleText"
+                        component="div"
+                        noWrap={true}
+                        variant="h3"
+                      >
+                        <div
+                          className="engage__typography engage__typography_h3 sg-10s498a-Typography-root-Typography-h3-Typography-noWrap-titleText"
+                        >
+                          Test-Title
+                        </div>
+                      </ForwardRef(Typography)>
                     </div>
                   </GridItem>
                 </div>

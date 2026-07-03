@@ -22,6 +22,7 @@ jest.mock('@shopgate/engage/components', () => {
   Grid.Item = ({ children }) => <div data-testid="grid-item">{children}</div>;
 
   return {
+    Typography: ({ children }) => children,
     Grid,
     Price: ({
       currency,

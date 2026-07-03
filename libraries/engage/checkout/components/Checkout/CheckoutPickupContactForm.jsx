@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
     },
     ' .pickupFormPickupPerson .label span': {
       color: theme.palette.text.primary,
-      fontWeight: 'bold',
+      fontWeight: theme.typography.fontWeightBold,
     },
     ' .pickupFormPickupPerson .radioGroup': {
       marginTop: theme.spacing(1),

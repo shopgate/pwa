@@ -1,33 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import ReviewDate from './components/ReviewDate';
 import Author from './components/Author';
-
-const useStyles = makeStyles()(theme => ({
-  root: {
-    color: theme.palette.text.secondary,
-    fontSize: 14,
-  },
-}));
 
 /**
  * Review Info Component.
  * @param {Object} props The props.
  * @returns {JSX}
  */
-const Info = ({ review }) => {
-  const { classes } = useStyles();
-
-  return (
-    // eslint-disable-next-line jsx-a11y/aria-role
-    <div className={classes.root} role="text">
-      <ReviewDate date={review.date} />
-      {' '}
-      <Author author={review.author} />
-    </div>
-  );
-};
+const Info = ({ review }) => (
+  // eslint-disable-next-line jsx-a11y/aria-role
+  <Typography variant="body2" component="div" color="textSecondary" role="text">
+    <ReviewDate date={review.date} />
+    {' '}
+    <Author author={review.author} />
+  </Typography>
+);
 
 Info.propTypes = {
   review: PropTypes.shape(),

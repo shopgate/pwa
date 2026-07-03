@@ -1,13 +1,12 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   body: {
     color: theme.palette.common.black,
     flexGrow: 1,
-    fontSize: '13px',
-    textAlign: 'center',
     overflow: 'auto',
   },
 }));
@@ -24,9 +23,9 @@ const Content = ({ content }) => {
   }
 
   return (
-    <div className={classes.body} id="basicDialogDesc">
+    <Typography variant="body2" component="div" align="center" className={classes.body} id="basicDialogDesc">
       {content}
-    </div>
+    </Typography>
   );
 };
 

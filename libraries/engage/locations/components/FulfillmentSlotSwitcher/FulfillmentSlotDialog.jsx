@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import groupBy from 'lodash/groupBy';
-import { SheetDrawer, Button } from '@shopgate/engage/components';
+import { SheetDrawer, Button, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getActiveFulfillmentSlot } from '@shopgate/engage/cart/cart.selectors';
 import { makeGetFulfillmentSlotsForLocation, getPreferredLocation } from '../../selectors';
@@ -45,13 +45,9 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 0,
   },
   title: {
-    fontSize: 24,
-    fontWeight: '500',
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 20,
-    fontWeight: '500',
     marginBottom: 8,
     marginTop: 16,
   },
@@ -85,12 +81,10 @@ const useStyles = makeStyles()(theme => ({
     lineHeight: 1.3,
   },
   buttonLabel: {
-    fontSize: 20,
     textAlign: 'center',
   },
   buttonLabelSlot: {
     padding: 2,
-    fontSize: 16,
     textAlign: 'center',
   },
   buttonDisabled: {
@@ -164,7 +158,7 @@ const RANGES = {
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FulfillmentSlotSheet = ({
   isOpen,
@@ -268,9 +262,9 @@ const FulfillmentSlotSheet = ({
       allowClose={allowClose}
     >
       <div className={classes.root}>
-        <span className={classes.title}>
+        <Typography variant="h3" component="span" className={classes.title}>
           {i18n.text('locations.your_current_timeslot.dialog.date')}
-        </span>
+        </Typography>
         <div className={classes.row}>
           {Object.keys(groupedSlots).map(date => (
             <button
@@ -285,19 +279,19 @@ const FulfillmentSlotSheet = ({
               )}
               onClick={() => setSelectedDate(date)}
             >
-              <span className={classes.buttonLabel}>
+              <Typography variant="h3" component="span" className={classes.buttonLabel}>
                 {moment(date, 'YYYY-MM-DD').format('dddd')}
                 {' '}
                 {getMonthDay(date)}
-              </span>
+              </Typography>
             </button>
           ))}
         </div>
         {slotGroups && slotGroups.map(group => (
           <Fragment key={group.name}>
-            <span className={classes.subtitle}>
+            <Typography variant="h3" component="span" className={classes.subtitle}>
               {i18n.text(`locations.your_current_timeslot.dialog.${group.name}`)}
-            </span>
+            </Typography>
             <div className={classes.row}>
               {group.slots.map(slot => (
                 <button
@@ -312,9 +306,9 @@ const FulfillmentSlotSheet = ({
                     }
                   )}
                 >
-                  <span className={classes.buttonLabelSlot}>
+                  <Typography component="span" className={classes.buttonLabelSlot}>
                     {getRange(slot.from, slot.to)}
-                  </span>
+                  </Typography>
                   {slot.status !== 'active' ? (
                     <div className={classes.buttonStrikethrough} />
                   ) : null}

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     display: 'block',
     width: '100%',
@@ -14,9 +14,9 @@ const useStyles = makeStyles()({
   },
   value: {
     display: 'block',
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
   },
-});
+}));
 
 /**
  * The default button for the Picker component.

@@ -31,45 +31,54 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
           <Title
             title="modal.title_error"
           >
-            <div
+            <ForwardRef(Typography)
               aria-level="2"
-              className="sg-1vnt0h7-title"
+              className="sg-bawed5-title"
+              component="div"
               id="basicDialogTitle"
               role="heading"
+              variant="h3"
             >
-              <Ellipsis
-                className=""
-                rows={3}
+              <div
+                aria-level="2"
+                className="engage__typography engage__typography_h3 sg-a3ut8q-Typography-root-Typography-h3-title"
+                id="basicDialogTitle"
+                role="heading"
               >
-                <Dotdotdot
-                  clamp={3}
-                  className=" common__ellipsis"
-                  tagName="div"
-                  truncationChar="…"
-                  useNativeClamp={true}
+                <Ellipsis
+                  className=""
+                  rows={3}
                 >
-                  <div
+                  <Dotdotdot
+                    clamp={3}
                     className=" common__ellipsis"
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
                   >
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="modal.title_error"
-                      transform={null}
+                    <div
+                      className=" common__ellipsis"
                     >
-                      <span
+                      <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
+                        params={{}}
                         role={null}
+                        string="modal.title_error"
+                        transform={null}
                       >
-                        modal.title_error
-                      </span>
-                    </Translate>
-                  </div>
-                </Dotdotdot>
-              </Ellipsis>
-            </div>
+                        <span
+                          className={null}
+                          role={null}
+                        >
+                          modal.title_error
+                        </span>
+                      </Translate>
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </div>
+            </ForwardRef(Typography)>
           </Title>
           <Content
             content={
@@ -163,45 +172,54 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
           <Title
             title="modal.title_error"
           >
-            <div
+            <ForwardRef(Typography)
               aria-level="2"
-              className="sg-1vnt0h7-title"
+              className="sg-bawed5-title"
+              component="div"
               id="basicDialogTitle"
               role="heading"
+              variant="h3"
             >
-              <Ellipsis
-                className=""
-                rows={3}
+              <div
+                aria-level="2"
+                className="engage__typography engage__typography_h3 sg-a3ut8q-Typography-root-Typography-h3-title"
+                id="basicDialogTitle"
+                role="heading"
               >
-                <Dotdotdot
-                  clamp={3}
-                  className=" common__ellipsis"
-                  tagName="div"
-                  truncationChar="…"
-                  useNativeClamp={true}
+                <Ellipsis
+                  className=""
+                  rows={3}
                 >
-                  <div
+                  <Dotdotdot
+                    clamp={3}
                     className=" common__ellipsis"
+                    tagName="div"
+                    truncationChar="…"
+                    useNativeClamp={true}
                   >
-                    <Translate
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="modal.title_error"
-                      transform={null}
+                    <div
+                      className=" common__ellipsis"
                     >
-                      <span
+                      <Translate
+                        acceptPlainTextWithPlaceholders={false}
                         className={null}
+                        params={{}}
                         role={null}
+                        string="modal.title_error"
+                        transform={null}
                       >
-                        modal.title_error
-                      </span>
-                    </Translate>
-                  </div>
-                </Dotdotdot>
-              </Ellipsis>
-            </div>
+                        <span
+                          className={null}
+                          role={null}
+                        >
+                          modal.title_error
+                        </span>
+                      </Translate>
+                    </div>
+                  </Dotdotdot>
+                </Ellipsis>
+              </div>
+            </ForwardRef(Typography)>
           </Title>
           <Content
             content={

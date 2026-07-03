@@ -9,15 +9,14 @@ import { Portal } from '@shopgate/engage/components';
 import { ProductName, ProductRatingStars } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    fontWeight: '500',
-    lineHeight: 1.15,
+    fontWeight: theme.typography.fontWeightMedium,
     marginTop: 1,
     wordBreak: ['keep-all', 'break-word'],
     hyphens: 'auto',
   },
-});
+}));
 
 /**
  * The item name component.

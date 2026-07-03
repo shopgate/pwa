@@ -4,7 +4,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     marginBottom: theme.spacing(0.5),
   },
 }));

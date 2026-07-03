@@ -8,7 +8,7 @@ exports[`<Tier /> Rendering with data should render tier prices when tier prices
   >
     price.tier.range
     <span
-      class="sg-z2q7om-price"
+      class="sg-akguvg-price"
     >
       p
     </span>

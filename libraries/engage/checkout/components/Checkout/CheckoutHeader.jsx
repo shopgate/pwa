@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ResponsiveContainer } from '@shopgate/engage/components';
+import { ResponsiveContainer, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core/helpers/i18n';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   title: {
     padding: 16,
     display: 'flex',
@@ -13,21 +13,14 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'flex-end',
   },
   headline: {
-    fontSize: '2.125rem',
-    fontWeight: 'normal',
     margin: 0,
-    lineHeight: '2.25rem',
   },
   step: {
-    fontSize: '1rem',
-    lineHeight: 1,
-    color: theme.palette.secondary.main,
     paddingLeft: 16,
     margin: 0,
-    fontWeight: '400',
     paddingBottom: 2,
   },
-}));
+});
 
 /**
  * CheckoutSection component
@@ -42,16 +35,16 @@ const CheckoutTitle = ({
     <ResponsiveContainer webOnly breakpoint=">xs">
       <ResponsiveBackButton />
       <div className={classes.title}>
-        <h1 className={classes.headline}>
+        <Typography variant="h1" component="h1" fontWeight="regular" className={classes.headline}>
           {i18n.text(headline)}
-        </h1>
+        </Typography>
         {stepFrom !== null ? (
-          <h2 className={classes.step}>
+          <Typography component="h2" color="secondary" className={classes.step}>
             {i18n.text('checkout.steps', {
               from: stepFrom,
               to: stepTo,
             })}
-          </h2>
+          </Typography>
         ) : null}
       </div>
     </ResponsiveContainer>

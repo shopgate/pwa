@@ -7,15 +7,8 @@ import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '@shopgate/engage/cart';
 import { hasWebBridge } from '@shopgate/engage/core';
-import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 import Layout from './components/Layout';
-
-const useStyles = makeStyles()(theme => ({
-  container: {
-    background: theme.palette.background.emphasized,
-  },
-}));
 
 const ON_FOCUS_BLUR_DELAY_MS = 150;
 
@@ -34,7 +27,6 @@ const CouponField = ({
   setValue,
   value,
 }) => {
-  const { classes } = useStyles();
   const [isFocused, setIsFocused] = useState(false);
   const elementRef = useRef(null);
   const inputRef = useRef(null);
@@ -108,7 +100,6 @@ const CouponField = ({
   return (
     <div
       ref={elementRef}
-      className={classes.container}
     >
       <Layout
         handleAddCoupon={addCoupon}

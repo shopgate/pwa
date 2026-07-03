@@ -6,11 +6,11 @@ import { AVAILABILITY_STATE_ALERT } from '@shopgate/engage/product';
 import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    fontSize: '0.625rem',
+    fontSize: theme.typography.caption.fontSize,
   },
-});
+}));
 
 /**
  * Renders the "not possible" error for each item.

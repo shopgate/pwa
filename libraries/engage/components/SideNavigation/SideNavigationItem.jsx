@@ -27,7 +27,6 @@ const useStyles = makeStyles()((theme, { level }) => ({
     padding: theme.spacing(2),
     position: 'relative',
     width: '100%',
-    lineHeight: '1.45em',
   },
   itemActive: {
     background: 'var(--color-side-navigation-active-background)',

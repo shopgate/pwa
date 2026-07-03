@@ -11,10 +11,10 @@ import BaseManufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   infoContainer: {
     alignSelf: 'flex-end',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     marginTop: -2,
   },
   placeholder: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles()({
     marginTop: 5,
     marginBottom: 2,
   },
-});
+}));
 
 /**
  * The Manufacturer component.

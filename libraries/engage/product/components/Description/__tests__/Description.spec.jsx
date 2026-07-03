@@ -6,6 +6,7 @@ jest.mock('../connector', () => obj => obj);
 
 /* eslint-disable react/prop-types */
 jest.mock('@shopgate/engage/components', () => ({
+  Typography: ({ children }) => children,
   SurroundPortals: (props) => {
     const { children } = props;
     return children;

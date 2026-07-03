@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     },
     ' .guestFormPickupPerson .label span': {
       color: theme.palette.text.primary,
-      fontWeight: 'bold',
+      fontWeight: theme.typography.fontWeightBold,
     },
     ' .guestFormPickupPerson .radioGroup': {
       marginTop: theme.spacing(1),

@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     outline: 0,
     padding: '12px 16px',
     transition: 'background 250ms ease-in, color 250ms ease-in',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.125,
   },
   labelDisabled: {

@@ -33,9 +33,8 @@ export const getOutlinedFormFields = theme => ({
       position: 'relative',
       textOverflow: 'unset',
       whiteSpace: 'unset',
-      lineHeight: '15px',
       bottom: 'unset',
-      padding: '8px 8px 8px 16px',
+      padding: '6px 8px 6px 16px',
     },
   },
   ' .formBuilderField': {

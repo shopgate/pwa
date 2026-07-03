@@ -4,7 +4,7 @@ import React, {
 } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  TextField, RippleButton, RadioGroup, RadioGroupItem, ProgressBar,
+  TextField, RippleButton, RadioGroup, RadioGroupItem, ProgressBar, Typography,
 } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { useFormState } from '../../../core/hooks/useFormState';
@@ -19,8 +19,6 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   formHeading: {
-    fontSize: '1.125rem',
-    fontWeight: 'bold',
     margin: theme.spacing(0, 0, 1),
   },
   fieldset: {
@@ -190,9 +188,9 @@ function ReserveFormUnwrapped() {
             errorText={i18n.text(validationErrors.email)}
           />
         </fieldset>
-        <p className={classes.formHeading}>
+        <Typography variant="h4" component="p" fontWeight="bold" className={classes.formHeading}>
           {i18n.text('locations.who_will_pickup')}
-        </p>
+        </Typography>
         <div className={classes.pickerSwitch}>
           <RadioGroup name="picker" direction="row" value={picker} onChange={setPicker}>
             <RadioGroupItem

@@ -24,16 +24,16 @@ const useStyles = makeStyles()((theme) => {
     },
     label: {
       display: 'block',
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
       ':not(:only-child)': {
-        fontWeight: 400,
-        fontSize: '0.75rem',
+        fontWeight: theme.typography.fontWeightRegular,
+        fontSize: theme.typography.caption.fontSize,
         marginBottom: 4,
       },
     },
     value: {
       display: 'block',
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
     },
   };
 });

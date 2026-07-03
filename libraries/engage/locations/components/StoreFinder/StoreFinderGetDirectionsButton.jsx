@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
     background: `${theme.palette.primary.main} !important`,
     color: `${theme.palette.primary.contrastText} !important`,
-    fontSize: '0.875rem !important',
+    fontSize: `${theme.typography.body2.fontSize} !important`,
   },
 }));
 

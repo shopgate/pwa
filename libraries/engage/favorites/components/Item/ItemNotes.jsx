@@ -5,32 +5,22 @@ import {
   i18n,
 } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import { getWishlistItemNotesEnabled } from '../../../core/selectors/shopSettings';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
   },
   addCommentButton: {
-    fontSize: 17,
-    color: theme.palette.secondary.main,
-    fontWeight: 500,
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     paddingLeft: 0,
     paddingRight: 0,
     textAlign: 'left',
-  },
-  comment: {
-    fontSize: 17,
-    color: theme.palette.text.primary,
-    fontWeight: 500,
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
   },
   notes: {
     paddingRight: 4,
@@ -64,14 +54,13 @@ const ItemNotes = ({
   if (!wishlistItemNotesEnabled) {
     return null;
   }
-  /* eslint-disable jsx-a11y/aria-role */
   return (
     <div className={classes.root}>
       {notes && (
-        <span role="text">
-          <span className={classes.comment}>
+        <span>
+          <Typography variant="body1" component="span" color="textPrimary" fontWeight="medium" noWrap>
             {`${i18n.text('favorites.comments.notes')}: `}
-          </span>
+          </Typography>
           <span className={classes.notes}>{`"${notes}"`}</span>
         </span>
       )}
@@ -83,20 +72,23 @@ const ItemNotes = ({
           with the "notesId" that can be focused when closing the CommentDialog modal.
         */}
         <button type="button" onClick={onClickOpenComment} className={classes.addCommentButton} ref={notesButtonRef}>
-          {notes ? i18n.text('favorites.comments.edit') : i18n.text('favorites.comments.add')}
+          <Typography variant="body1" component="span" color="secondary" fontWeight="medium">
+            {notes ? i18n.text('favorites.comments.edit') : i18n.text('favorites.comments.add')}
+          </Typography>
         </button>
         { notes && (
           <>
             <span aria-hidden> | </span>
             <button type="button" onClick={onClickDeleteComment} className={classes.addCommentButton}>
-              {i18n.text('favorites.comments.delete')}
+              <Typography variant="body1" component="span" color="secondary" fontWeight="medium">
+                {i18n.text('favorites.comments.delete')}
+              </Typography>
             </button>
           </>
         )}
       </span>
     </div>
   );
-  /* eslint-enable jsx-a11y/aria-role */
 };
 
 ItemNotes.propTypes = {

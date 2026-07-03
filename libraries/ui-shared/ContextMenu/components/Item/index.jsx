@@ -12,10 +12,9 @@ const useStyles = makeStyles()((theme, { disabled }) => ({
     position: 'relative',
     whiteSpace: 'nowrap',
     marginBottom: 2,
-    padding: theme.spacing(1.75, 2.75),
-    lineHeight: 1,
+    padding: theme.spacing(1.25, 2.75),
     zIndex: 1,
-    color: disabled ? theme.palette.text.secondary : 'inherits',
+    color: disabled ? theme.palette.text.secondary : 'inherit',
     ...(!disabled ? {
       cursor: 'pointer',
       '&:hover': {

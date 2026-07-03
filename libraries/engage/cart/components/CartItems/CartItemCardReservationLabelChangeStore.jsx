@@ -3,9 +3,9 @@ import { RippleButton, I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useCartItem } from '../CartItem';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
-    fontSize: '0.875rem !important',
+    fontSize: `${theme.typography.body2.fontSize} !important`,
     letterSpacing: '0.05em',
     padding: '0px !important',
     ' *': {
@@ -15,7 +15,7 @@ const useStyles = makeStyles()({
   ripple: {
     padding: 0,
   },
-});
+}));
 
 /**
  * @returns {JSX}

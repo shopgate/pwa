@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     bottom: 0,
     backgroundColor: theme.palette.background.emphasized,
     boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.1)',
-    fontSize: 14,
+    fontSize: theme.typography.body2.fontSize,
     alignItems: 'center',
     paddingBottom: 'var(--safe-area-inset-bottom)',
   },

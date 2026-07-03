@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
   },
   selectLocationButton: {
     width: '100%',
-    fontSize: '.875rem !important',
+    fontSize: `${theme.typography.body2.fontSize} !important`,
     ':not(:disabled)': {
       background: theme.palette.primary.main,
       color: theme.palette.primary.contrastText,

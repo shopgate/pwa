@@ -270,29 +270,40 @@ exports[`<FormElement /> should show the error message 1`] = `
       errorText="The error text"
       translate={true}
     >
-      <div
+      <ForwardRef(Typography)
         aria-atomic="true"
         aria-hidden={false}
         aria-live="assertive"
-        className="sg-11p2a3k-root errorText"
+        className="sg-1wdh9p0-root errorText"
+        color="error"
+        component="div"
         id="ariaError-test-input"
+        variant="caption"
       >
-        <Translate
-          acceptPlainTextWithPlaceholders={false}
-          className={null}
-          params={{}}
-          role={null}
-          string="The error text"
-          transform={null}
+        <div
+          aria-atomic="true"
+          aria-hidden={false}
+          aria-live="assertive"
+          className="engage__typography engage__typography_caption errorText sg-1oaz41s-Typography-root-Typography-caption-Typography-colorError-root"
+          id="ariaError-test-input"
         >
-          <span
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
             className={null}
+            params={{}}
             role={null}
+            string="The error text"
+            transform={null}
           >
-            The error text
-          </span>
-        </Translate>
-      </div>
+            <span
+              className={null}
+              role={null}
+            >
+              The error text
+            </span>
+          </Translate>
+        </div>
+      </ForwardRef(Typography)>
     </ErrorText>
   </div>
 </FormElement>

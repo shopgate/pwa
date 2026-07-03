@@ -25,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     ' svg': {
       height: 40,
       width: 40,
-      fontSize: '1.5rem',
+      fontSize: theme.components.icon.medium,
       color: theme.palette.primary.main,
     },
   },

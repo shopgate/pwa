@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { every, isEmpty } from 'lodash';
-import { getWeekDaysOrder } from '@shopgate/engage/core';
+import { i18n, getWeekDaysOrder } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { I18n, TimeIcon } from '@shopgate/engage/components';
+import { TimeIcon, Typography } from '@shopgate/engage/components';
 import { StoreDetailsLine } from './StoreDetailsLine';
 import { StoreOpeningHoursLine } from './StoreOpeningHoursLine';
 
@@ -11,10 +11,6 @@ const useStyles = makeStyles()(theme => ({
   openingHours: {
     display: 'table',
     color: theme.palette.text.secondary,
-  },
-  detailsSecondary: {
-    color: theme.palette.text.secondary,
-    fontSize: '0.75rem',
   },
 }));
 
@@ -49,7 +45,9 @@ export function StoreOpeningHours({ hours, pure }) {
 
   return (
     <StoreDetailsLine icon={TimeIcon}>
-      <I18n.Text string="locations.hours_details" className={classes.detailsSecondary} />
+      <Typography variant="caption" component="span" color="textSecondary">
+        {i18n.text('locations.hours_details')}
+      </Typography>
       {storeHours}
     </StoreDetailsLine>
   );
