@@ -4,6 +4,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { useRoute, useThemeWidgets } from '@shopgate/engage/core/hooks';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import { ConditionalWrapper } from '@shopgate/engage/components';
+import { isDev } from '@shopgate/engage/core/helpers';
 import WidgetsPreviewProvider from './WidgetsPreviewProvider';
 import Widget from './Widget';
 import Overlay from './Overlay';
@@ -82,7 +83,7 @@ const Widgets = ({
       >
         {widgets.map((widget) => {
           const component = widgetComponents[widget.widgetConfigDefinitionCode] ||
-          widgetComponents[PLACEHOLDER_COMPONENT];
+          (isDev ? widgetComponents[PLACEHOLDER_COMPONENT] : null);
 
           return <Widget
             key={widget.code}
