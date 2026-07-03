@@ -41,6 +41,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: 4,
     paddingLeft: 16,
     paddingRight: 16,
+    alignItems: 'center',
   },
   inputWrapper: {
     position: 'relative',
@@ -71,14 +72,12 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
   },
   button: {
-    height: 34,
     color: theme.palette.secondary.main,
     paddingTop: 0,
     paddingLeft: 16,
     paddingRight: 0,
     marginLeft: 0,
     marginRight: 0,
-    verticalAlign: 'middle',
     outline: 0,
   },
   icon: {
