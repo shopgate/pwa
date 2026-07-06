@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: theme.components.icon.medium,
     outline: 0,
     padding: 0,
-    minWidth: variables.navigator.height,
+    minWidth: theme.components.navigator.height,
     height: variables.filterbar.height,
     position: 'relative',
     zIndex: 1,

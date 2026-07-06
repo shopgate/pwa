@@ -10,7 +10,6 @@ import throttle from 'lodash/throttle';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, keyframes, responsiveMediaQuery } from '@shopgate/engage/styles';
 import ProgressBar from '../ProgressBar';
 import Header from './components/Header';
@@ -79,8 +78,8 @@ const useStyles = makeStyles()(theme => ({
   },
   containerFullScreen: {
     height: [
-      `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px)`,
-      `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px - var(--safe-area-inset-top))`,
+      `calc(100vh - ${theme.components.navigator.height} - 51px)`,
+      `calc(100vh - ${theme.components.navigator.height} - 51px - var(--safe-area-inset-top))`,
     ],
   },
   progressBarContainer: {
@@ -91,13 +90,13 @@ const useStyles = makeStyles()(theme => ({
   },
   content: {
     maxHeight: [
-      `calc(var(--vh-100, 100vh) - ${themeConfig.variables.navigator.height}px)`,
-      `calc(var(--vh-100, 100vh) - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+      `calc(var(--vh-100, 100vh) - ${theme.components.navigator.height})`,
+      `calc(var(--vh-100, 100vh) - ${theme.components.navigator.height} - var(--safe-area-inset-top))`,
     ],
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       maxHeight: [
-        `calc(var(--vh-80, 80vh) - ${themeConfig.variables.navigator.height}px)`,
-        `calc(var(--vh-80, 80vh) - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+        `calc(var(--vh-80, 80vh) - ${theme.components.navigator.height})`,
+        `calc(var(--vh-80, 80vh) - ${theme.components.navigator.height} - var(--safe-area-inset-top))`,
       ],
     },
     paddingBottom: [

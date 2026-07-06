@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import Ripple from '../../../Ripple';
@@ -15,14 +14,14 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 2,
   },
   closePlaceholder: {
-    height: themeConfig.variables.navigator.height,
+    height: theme.components.navigator.height,
     padding: 0,
   },
   closeButton: {
     outline: 0,
     padding: 0,
-    minWidth: themeConfig.variables.navigator.height,
-    height: themeConfig.variables.navigator.height,
+    minWidth: theme.components.navigator.height,
+    height: theme.components.navigator.height,
     position: 'relative',
     zIndex: 2,
     color: theme.palette.text.primary,

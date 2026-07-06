@@ -3,30 +3,19 @@ import PropTypes from 'prop-types';
 import { ProductList } from '@shopgate/engage/product/components';
 import { ActionButton, I18n } from '@shopgate/engage/components';
 import { transformDisplayOptions } from '@shopgate/engage/core/helpers';
-import { css } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
+import { withStyles } from '@shopgate/engage/styles';
 import Headline from 'Components/Headline';
 import ProductGrid from 'Components/ProductGrid';
 import connect from './connector';
-
-const { colors } = themeConfig;
-
-const listView = css({
-  background: colors.light,
-  overflow: 'auto',
-  '> ul > li:first-of-type': {
-    paddingTop: 0,
-  },
-  '> ul > li:last-of-type': {
-    paddingBottom: 0,
-  },
-});
 
 /**
  * The product widget component.
  */
 class ProductsWidget extends Component {
   static propTypes = {
+    classes: PropTypes.shape({
+      listView: PropTypes.string,
+    }).isRequired,
     getProducts: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
     settings: PropTypes.shape().isRequired,
@@ -170,7 +159,7 @@ class ProductsWidget extends Component {
    * @returns {JSX|null}
    */
   render() {
-    const { products } = this.props;
+    const { classes, products } = this.props;
 
     // Don't render if we don't have any products.
     if (!products || !products.length) {
@@ -201,7 +190,7 @@ class ProductsWidget extends Component {
     const ProductComponent = isList ? ProductList : ProductGrid;
 
     return (
-      <div {...isList ? { className: listView } : {}}>
+      <div {...isList ? { className: classes.listView } : {}}>
         <Headline text={headline} />
         <ProductComponent
           flags={flags}
@@ -215,6 +204,17 @@ class ProductsWidget extends Component {
   }
 }
 
-export default connect(ProductsWidget);
+export default connect(withStyles(ProductsWidget, theme => ({
+  listView: {
+    background: theme.palette.background.default,
+    overflow: 'auto',
+    '> ul > li:first-of-type': {
+      paddingTop: 0,
+    },
+    '> ul > li:last-of-type': {
+      paddingBottom: 0,
+    },
+  },
+})));
 
 export { ProductsWidget as UnwrappedProductsWidget };

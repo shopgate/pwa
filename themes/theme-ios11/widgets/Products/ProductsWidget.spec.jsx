@@ -8,6 +8,7 @@ jest.mock('Components/ProductGrid', () => function ProductGrid() { return null; 
 describe('<ProductsWidget />', () => {
   const getProducts = jest.fn();
   const props = {
+    classes: { listView: 'listView' },
     id: 'someid',
     products: [],
     totalProductCount: null,
