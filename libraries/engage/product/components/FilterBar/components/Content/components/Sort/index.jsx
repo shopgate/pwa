@@ -4,10 +4,7 @@ import {
 } from '@shopgate/engage/components';
 import { useSort, PORTAL_FILTER_SORT_OPTIONS } from '@shopgate/engage/filter';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Item from './components/Item';
-
-const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   button: {
@@ -18,7 +15,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     textOverflow: 'ellipsis',
     justifyContent: 'center',
-    height: variables.filterbar.height,
+    height: theme.components.filterBar.height,
     whiteSpace: 'nowrap',
   },
   selection: {

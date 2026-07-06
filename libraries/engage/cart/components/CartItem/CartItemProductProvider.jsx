@@ -2,15 +2,13 @@ import React, {
   useMemo, useCallback, useState, useRef,
 } from 'react';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { useTheme } from '@shopgate/engage/styles';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import PropTypes from 'prop-types';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../cart.constants';
 import Context from './CartItemProductProvider.context';
 import connect from './CartItemProductProvider.connector';
 import CartItemProductProviderLegacy from './CartItemProductProviderLegacy';
-
-const { variables } = themeConfig;
 
 /**
  * @typedef {import('./CartItemProductProvider.types').OwnProps} OwnProps
@@ -58,6 +56,7 @@ const CartItemProductProvider = ({
   } = cartItem;
   const [editMode, setEditMode] = useState(false);
   const cartItemRef = useRef();
+  const theme = useTheme();
 
   const handleRemove = useCallback(() => {
     deleteProduct(id);
@@ -79,7 +78,7 @@ const CartItemProductProvider = ({
       setTimeout(() => {
         const yOffset = -(window.innerHeight / 2)
           + getAbsoluteHeight(cartItemRef.current)
-          + variables.paymentBar.height;
+          + parseInt(theme.colorSchemes[theme.defaultColorScheme].components.paymentBar.height, 10);
 
         if (cartItemRef.current) {
           cartItemRef.current.scrollIntoView({
@@ -98,7 +97,7 @@ const CartItemProductProvider = ({
     }, isEnabled ? 300 : 0);
 
     setEditMode(isEnabled);
-  }, [isAndroid, onFocus]);
+  }, [isAndroid, onFocus, theme]);
 
   const value = useMemo(
     () => {

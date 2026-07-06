@@ -208,6 +208,16 @@ export const componentsSchema = {
       height: '',
     },
   },
+  filterBar: {
+    vars: {
+      height: '',
+    },
+  },
+  paymentBar: {
+    vars: {
+      height: '',
+    },
+  },
 } as const;
 
 /**
@@ -302,6 +312,16 @@ export const componentsDefaults = {
   navigator: {
     vars: {
       height: '44px',
+    },
+  },
+  filterBar: {
+    vars: {
+      height: '48px',
+    },
+  },
+  paymentBar: {
+    vars: {
+      height: '78px',
     },
   },
 } satisfies ComponentsDefaults;

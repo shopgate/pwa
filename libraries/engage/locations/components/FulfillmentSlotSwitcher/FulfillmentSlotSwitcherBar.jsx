@@ -3,10 +3,7 @@ import PropTypes from 'prop-types';
 import { RippleButton, I18n, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { getTimeSlotDisplayText } from './time';
-
-const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
@@ -19,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     margin: theme.spacing(0, 2),
     borderBottom: `1px solid ${theme.components.border.light}`,
     alignItems: 'center',
-    height: variables.filterbar.height,
+    height: theme.components.filterBar.height,
   },
   innerStandalone: {
     borderBottom: 'none',

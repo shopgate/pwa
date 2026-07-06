@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { transitions } from '@shopgate/engage/styles';
 import ToastContext from './context';
 
-const { variables: { toast: { duration = 5000 } = {} } = {} } = themeConfig;
+const { duration: { toast: duration } } = transitions;
 
 /**
  * The ToastProvider component

@@ -2,6 +2,7 @@ export * from './helpers';
 export {
   ThemeProvider,
   createTheme,
+  transitions,
   useActiveBreakpoint,
   useMediaQuery,
   useResponsiveValue,

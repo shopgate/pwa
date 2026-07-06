@@ -1,12 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import {
   Grid, I18n, Ripple, FilterIcon, Typography,
 } from '@shopgate/engage/components';
-
-const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   button: {
@@ -15,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     outline: 0,
     padding: 0,
     minWidth: theme.components.navigator.height,
-    height: variables.filterbar.height,
+    height: theme.components.filterBar.height,
     position: 'relative',
     zIndex: 1,
     overflow: 'hidden',

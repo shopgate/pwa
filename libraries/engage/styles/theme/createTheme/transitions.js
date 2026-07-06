@@ -28,6 +28,8 @@ export const duration = {
   enteringScreen: 225,
   // recommended when something is leaving screen
   leavingScreen: 195,
+  // how long a toast stays visible before auto-dismissing
+  toast: 5000,
 };
 
 /**
