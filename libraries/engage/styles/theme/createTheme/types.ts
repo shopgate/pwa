@@ -83,6 +83,21 @@ export interface ThemeOptions {
    *  Component specific styling tokes.
    */
   components?: ComponentsOptions;
+  /**
+   * Merchant-configurable SVG images (e.g. the empty cart / favorites illustrations).
+   */
+  svgImages?: SvgImages;
+}
+
+/**
+ * Merchant-configurable raw SVG markup strings
+ * Values are raw SVG (not CSS), consumed via `svgToDataUrl` — so this lives as a
+ * plain theme value rather than a CSS-variable component token.
+ */
+export interface SvgImages {
+  emptyCart?: string | null;
+  emptyFavorites?: string | null;
+  noResultsImage?: string | null;
 }
 
 export interface BaseTheme {
@@ -179,6 +194,10 @@ export interface Theme extends BaseTheme {
    * }))
    */
   applyStyles: ApplyStyles<ColorSchemeName>;
+  /**
+   * Merchant-configurable SVG images (e.g. the empty cart / favorites illustrations),
+   */
+  svgImages: SvgImages;
 }
 
 /**

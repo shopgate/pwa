@@ -2,13 +2,9 @@ import React, { useMemo } from 'react';
 import { I18n } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import { themeConfig } from '@shopgate/engage';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import Icon from './components/Icon';
-
-const { svgImages = {} } = themeConfig || {};
-const { emptyCart = '' } = svgImages || {};
 
 const useStyles = makeStyles()({
   wrapper: {
@@ -40,7 +36,9 @@ const useStyles = makeStyles()({
  */
 const Empty = () => {
   const { classes, cx } = useStyles();
-  const imageSRC = useMemo(() => svgToDataUrl(emptyCart), []);
+  const { svgImages = {} } = useTheme();
+  const { emptyCart = '' } = svgImages || {};
+  const imageSRC = useMemo(() => svgToDataUrl(emptyCart), [emptyCart]);
 
   return (
     <div className={classes.wrapper}>

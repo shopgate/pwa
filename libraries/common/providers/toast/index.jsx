@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
-import { transitions } from '@shopgate/engage/styles';
+import transitions from '@shopgate/engage/styles/theme/createTheme/transitions';
 import ToastContext from './context';
 
 const { duration: { toast: duration } } = transitions;

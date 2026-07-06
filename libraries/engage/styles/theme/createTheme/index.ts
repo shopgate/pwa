@@ -38,6 +38,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     palette: paletteInput = {},
     typography: typographyInput = {},
     colorSchemes: colorSchemesInput = { light: {} },
+    svgImages = {},
   } = options;
 
   const defaultScheme: BaseTheme = merge({}, {
@@ -87,6 +88,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     spacing,
     transitions,
     zIndex,
+    svgImages,
     colorSchemes,
     getColorSchemeSelector,
     setActiveColorScheme,

@@ -1,13 +1,9 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { I18n, Typography } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { svgToDataUrl } from '@shopgate/engage/core';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import Icon from './components/Icon';
-
-const { svgImages = {} } = themeConfig || {};
-const { noResultsImage = '' } = svgImages || {};
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
@@ -40,7 +36,9 @@ const useStyles = makeStyles()(theme => ({
  */
 const NoResults = (props) => {
   const { classes, cx } = useStyles();
-  const imageSRC = useMemo(() => svgToDataUrl(noResultsImage), []);
+  const { svgImages = {} } = useTheme();
+  const { noResultsImage = '' } = svgImages || {};
+  const imageSRC = useMemo(() => svgToDataUrl(noResultsImage), [noResultsImage]);
 
   return (
     <div
