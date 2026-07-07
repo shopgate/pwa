@@ -1,4 +1,7 @@
+import { IS_ADMIN_PREVIEW_ACTIVE } from '@shopgate/engage/admin-preview/constants';
 import { PAGE_PATH, PAGE_PATTERN } from '@shopgate/pwa-common/constants/RoutePaths';
+
+export { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/admin-preview/constants';
 
 export * from '@shopgate/pwa-common/constants/PageIDs';
 export { PAGE_PATH, PAGE_PATTERN };
@@ -11,14 +14,14 @@ export const RETURN_POLICY_PATH = `${PAGE_PATH}/return_policy`;
 export const SHIPPING_PATH = `${PAGE_PATH}/shipping`;
 export const TERMS_PATH = `${PAGE_PATH}/terms`;
 
-export const PAGE_PREVIEW_PATTERN = '/shopgate-internal-page-preview';
-
 export const PAGE_PREVIEW_SLUG = 'page_preview';
 
 /**
  * Checks if the app is currently in page preview mode.
+ * @todo For backwards compatibility, this constant is still exported from the page package and
+ * mapped to the IS_ADMIN_PREVIEW_ACTIVE constant. It should be removed in the future.
  */
-export const IS_PAGE_PREVIEW_ACTIVE = window.location.pathname.startsWith(PAGE_PREVIEW_PATTERN);
+export const IS_PAGE_PREVIEW_ACTIVE = IS_ADMIN_PREVIEW_ACTIVE;
 
 /**
  * One hour in milliseconds

@@ -4,7 +4,7 @@ import {
   configuration,
   RESET_APP_REDUCERS,
 } from '@shopgate/engage/core';
-import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import { isPageAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import backInStock from '@shopgate/engage/back-in-stock/reducers';
 import checkout from '@shopgate/engage/checkout/reducers';
 import client from '@shopgate/pwa-common/reducers/client';
@@ -39,7 +39,7 @@ persistedReducers.set([
   'client.info',
   'page',
   // Preview page data should not persist
-  ...IS_PAGE_PREVIEW_ACTIVE ? [] : ['pageV2'],
+  ...isPageAdminPreviewActive() ? [] : ['pageV2'],
   'locations.storage',
   'locations.userFormInput',
   'locations.userSearch',
