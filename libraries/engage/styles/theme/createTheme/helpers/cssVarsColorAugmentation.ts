@@ -130,14 +130,12 @@ export default function cssVarsColorAugmentation(
 ): CssVarsParserReturnValue<BaseTheme> {
   const {
     vars: varsInput,
-    varsWithDefaults: varsWithDefaultsInput,
     css: cssInput,
     ...rest
   } = cssParserReturn;
 
   // vars and varsWithDefaults need augmentation because both are consumed by the theme layer.
   const vars = addAugmentationToVars(varsInput, theme);
-  const varsWithDefaults = addAugmentationToVars(varsWithDefaultsInput, theme);
 
   // cssInput was produced before augmentation, so merge refreshed augmented keys back in.
   const css = addAugmentationToCss(cssInput, varsInput, vars, cssVarsPrefix);
@@ -145,7 +143,6 @@ export default function cssVarsColorAugmentation(
   return {
     ...rest,
     css,
-    vars,
-    varsWithDefaults,
+    vars: varsInput,
   };
 }
