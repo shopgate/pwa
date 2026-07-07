@@ -24,6 +24,11 @@ export {
   getProductListShowInventory,
   getEnabledCMSVersion,
 } from './merchantSettings';
+export {
+  getAreAppSettingsHydrated,
+  getCardSettings,
+  getMenubarSettings,
+} from './appSettings';
 
 export * from '../config/config.selectors';
 

@@ -7,7 +7,7 @@ import { UIEvents } from '@shopgate/engage/core/events';
 import { makeStyles } from '@shopgate/engage/styles';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { isAndroidOs } from '@shopgate/engage/core/helpers';
-import { useWidgetSettings, useElementSize } from '@shopgate/engage/core/hooks';
+import { useElementSize } from '@shopgate/engage/core/hooks';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -15,7 +15,7 @@ import {
   HIDE_TAB_BAR,
 } from './constants';
 import connect from './connector';
-import { useTabBarScrollObserver } from './hooks';
+import { useTabBarScrollObserver, useTabBarSettings } from './hooks';
 import visibleTabs from './tabs';
 
 const useStyles = makeStyles()(theme => ({
@@ -124,7 +124,7 @@ const TabBar = ({
     transition = 'fade',
     variant = 'docked',
     hideOnScroll = false,
-  } = useWidgetSettings('@shopgate/engage/components/TabBar');
+  } = useTabBarSettings();
 
   const [ariaHidden, setAriaHidden] = useState(modalCount > 0);
   const [isScrolledOut, setIsScrolledOut] = useState(false);

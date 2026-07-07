@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import Button from '@shopgate/pwa-common/components/Button';
 import { I18n } from '@shopgate/engage/components';
+import { useTabBarSettings } from '../../hooks';
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -61,7 +61,7 @@ const TabBarAction = ({
   ...props
 }) => {
   const { classes, cx } = useStyles();
-  const { showLabels = true } = useWidgetSettings('@shopgate/engage/components/TabBar');
+  const { showLabels = true } = useTabBarSettings();
 
   // Remove some props that are not meant for the Button component.
   const {

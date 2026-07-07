@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 import type { Reducer, UnknownAction } from 'redux';
-import type { AppSettings } from '../types/appSettings';
+import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
 import { RECEIVE_APP_SETTINGS } from '../constants';
 
@@ -12,7 +12,8 @@ const isReceiveAppSettingsAction = (
   action.type === RECEIVE_APP_SETTINGS && 'settings' in action
 );
 
-const defaultState: AppSettings = {
+const defaultState: AppSettingsSlice = {
+  isHydrated: false,
   theme: {
     cards: {
       style: 'shadow',
@@ -25,6 +26,7 @@ const defaultState: AppSettings = {
       style: 'fixed',
       showLabels: true,
       hideOnScroll: false,
+      transition: 'fade',
     },
   },
 };
@@ -35,12 +37,13 @@ const defaultState: AppSettings = {
  * @param action The action object.
  * @returns The new state.
  */
-const appSettings: Reducer<AppSettings, AppSettingsAction> = (
+const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   state,
   action = { type: '' }
-) => produce(state ?? defaultState, (draft: AppSettings) => {
+) => produce(state ?? defaultState, (draft: AppSettingsSlice) => {
   if (isReceiveAppSettingsAction(action)) {
     Object.assign(draft, action.settings);
+    draft.isHydrated = true;
   }
 });
 

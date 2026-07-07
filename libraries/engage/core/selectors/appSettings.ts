@@ -1,13 +1,24 @@
 import { createSelector } from 'reselect';
-import type { AppSettings, AppSettingsState } from '../types/appSettings';
+import type { AppSettingsSlice, AppSettingsState } from '../types/appSettings';
 
 /**
  * Retrieves the appSettings state from the store.
  * @param state The current application state.
  * @returns The appSettings state.
  */
-export const getAppSettingsState = (state: AppSettingsState): AppSettings =>
+export const getAppSettingsState = (state: AppSettingsState): AppSettingsSlice =>
   state.settings.appSettings;
+
+/**
+ * Selects whether the app settings have been hydrated from a source
+ * (admin sync / jsonp). While `false` the values are the built-in defaults,
+ * so consumers should not rely on them and can fall back to the legacy
+ * settings system.
+ */
+export const getAreAppSettingsHydrated = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.isHydrated
+);
 
 /**
  * Selects the card theme settings.
@@ -18,25 +29,9 @@ export const getCardSettings = createSelector(
 );
 
 /**
- * Selects the configured card style.
+ * Selects the menubar settings.
  */
-export const getCardStyle = createSelector(
-  getCardSettings,
-  cards => cards.style
-);
-
-/**
- * Selects the configured card background color.
- */
-export const getCardBackgroundColor = createSelector(
-  getCardSettings,
-  cards => cards.backgroundColor
-);
-
-/**
- * Selects the configured card padding.
- */
-export const getCardPadding = createSelector(
-  getCardSettings,
-  cards => cards.padding
+export const getMenubarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.menubar
 );
