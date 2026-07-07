@@ -932,13 +932,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-5r5p5v-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-15220nf-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -1615,13 +1615,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-5r5p5v-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-15220nf-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -3639,13 +3639,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-5r5p5v-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-15220nf-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
@@ -4589,13 +4589,13 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     wrapContent={false}
                   >
                     <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-5r5p5v-button-button"
+                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
                       disabled={false}
                       onClick={[Function]}
                       testId="Button"
                     >
                       <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-15220nf-root-button-button"
+                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
                         data-test-id="Button"
                         disabled={false}
                         onClick={[Function]}
