@@ -26,7 +26,7 @@ exports[`<Sheet /> should open 1`] = `
     contentRef={
       {
         "current": <div
-          class="sg-12f1i2r-content"
+          class="sg-e47i1i-content"
         >
           <div>
             Test
@@ -98,7 +98,7 @@ exports[`<Sheet /> should open 1`] = `
                 >
                   <button
                     aria-label="common.close"
-                    className="sg-1cxk1cy-closeButton"
+                    className="sg-nop4m7-closeButton"
                     onClick={[Function]}
                     type="button"
                   >
@@ -227,7 +227,7 @@ exports[`<Sheet /> should open 1`] = `
             </ProgressBar>
           </div>
           <div
-            className="sg-12f1i2r-content"
+            className="sg-e47i1i-content"
             onScroll={[Function]}
           >
             <div
@@ -425,7 +425,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     contentRef={
       {
         "current": <div
-          class="sg-12f1i2r-content"
+          class="sg-e47i1i-content"
         >
           <div>
             Test
@@ -497,7 +497,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 >
                   <button
                     aria-label="common.close"
-                    className="sg-1cxk1cy-closeButton"
+                    className="sg-nop4m7-closeButton"
                     onClick={[Function]}
                     type="button"
                   >
@@ -626,7 +626,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             </ProgressBar>
           </div>
           <div
-            className="sg-12f1i2r-content"
+            className="sg-e47i1i-content"
             onScroll={[Function]}
           >
             <div

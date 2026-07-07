@@ -33,7 +33,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
           >
             <ForwardRef(Typography)
               aria-level="2"
-              className="sg-bawed5-title"
+              className="sg-7aik3e-title"
               component="div"
               id="basicDialogTitle"
               role="heading"
@@ -41,7 +41,7 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
             >
               <div
                 aria-level="2"
-                className="engage__typography engage__typography_h3 sg-a3ut8q-Typography-root-Typography-h3-title"
+                className="engage__typography engage__typography_h3 sg-urd2kp-Typography-root-Typography-h3-title"
                 id="basicDialogTitle"
                 role="heading"
               >
@@ -174,7 +174,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
           >
             <ForwardRef(Typography)
               aria-level="2"
-              className="sg-bawed5-title"
+              className="sg-7aik3e-title"
               component="div"
               id="basicDialogTitle"
               role="heading"
@@ -182,7 +182,7 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
             >
               <div
                 aria-level="2"
-                className="engage__typography engage__typography_h3 sg-a3ut8q-Typography-root-Typography-h3-title"
+                className="engage__typography engage__typography_h3 sg-urd2kp-Typography-root-Typography-h3-title"
                 id="basicDialogTitle"
                 role="heading"
               >
