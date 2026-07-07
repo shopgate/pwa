@@ -1,0 +1,47 @@
+import { produce } from 'immer';
+import type { Reducer, UnknownAction } from 'redux';
+import type { AppSettings } from '../types/appSettings';
+import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
+import { RECEIVE_APP_SETTINGS } from '../constants';
+
+type AppSettingsAction = ReceiveAppSettingsAction | UnknownAction;
+
+const isReceiveAppSettingsAction = (
+  action: AppSettingsAction
+): action is ReceiveAppSettingsAction => (
+  action.type === RECEIVE_APP_SETTINGS && 'settings' in action
+);
+
+const defaultState: AppSettings = {
+  theme: {
+    cards: {
+      style: 'shadow',
+      backgroundColor: '#ffffff',
+      padding: 10,
+    },
+  },
+  navigation: {
+    menubar: {
+      style: 'fixed',
+      showLabels: true,
+      hideOnScroll: false,
+    },
+  },
+};
+
+/**
+ * Stores the app settings.
+ * @param state The current state.
+ * @param action The action object.
+ * @returns The new state.
+ */
+const appSettings: Reducer<AppSettings, AppSettingsAction> = (
+  state,
+  action = { type: '' }
+) => produce(state ?? defaultState, (draft: AppSettings) => {
+  if (isReceiveAppSettingsAction(action)) {
+    Object.assign(draft, action.settings);
+  }
+});
+
+export default appSettings;

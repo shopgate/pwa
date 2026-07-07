@@ -4,8 +4,8 @@ import {
 import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
 import { GlobalStyles } from '@shopgate/engage/styles';
 import { IS_FRONTEND_SETTINGS_ADMIN_PREVIEW_ACTIVE } from '@shopgate/engage/admin-preview/constants';
+import { FrontendSettingsPreviewBridge } from '@shopgate/engage/admin-preview/components';
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
-import FrontendSettingsPreview from '../../components/FrontendSettingsPreview';
 import { type Theme, type ThemeInternal, type ColorSchemeName } from '../createTheme';
 
 export interface ColorSchemeContextValue {
@@ -54,7 +54,7 @@ const ThemeProvider = ({
   return (
     // @ts-expect-error The input theme contains more properties than exposed to the Theme type
     <ColorSchemeContext.Provider value={colorSchemeContextValue}>
-      {IS_FRONTEND_SETTINGS_ADMIN_PREVIEW_ACTIVE && <FrontendSettingsPreview />}
+      {IS_FRONTEND_SETTINGS_ADMIN_PREVIEW_ACTIVE && <FrontendSettingsPreviewBridge />}
       <ThemeContext.Provider value={theme}>
         <ActiveBreakpointProvider>
           {children}

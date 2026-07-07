@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useIframeMessenger } from '@shopgate/engage/admin-preview/hooks';
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
+import { receiveAppSettings } from '@shopgate/engage/core/action-creators';
 import type {
-  FrontendSettingsPreviewMessage,
+  FrontendSettingsPreviewBridgeMessage,
   FrontendSettingsStyling,
 } from './types';
 import {
@@ -12,15 +14,21 @@ import {
 } from './helpers';
 
 /**
- * Component that listens for messages from the parent window when in frontend settings preview mode.
+ * Headless bridge that connects the app to the admin frontend settings preview. It listens for
+ * messages from the parent window and applies the received styling while in preview mode.
  */
-const FrontendSettingsPreview = () => {
+const FrontendSettingsPreviewBridge = () => {
   const [styling, setStyling] = useState<FrontendSettingsStyling | null>(null);
+  const dispatch = useDispatch();
 
-  const { sendToParent } = useIframeMessenger<FrontendSettingsPreviewMessage>((data) => {
+  const { sendToParent } = useIframeMessenger<FrontendSettingsPreviewBridgeMessage>((data) => {
     if (data.type === 'receiveFrontendSettings') {
       if (data.payload?.styling) {
         setStyling(data.payload.styling);
+      }
+
+      if (data.payload?.appSettings) {
+        dispatch(receiveAppSettings(data.payload.appSettings));
       }
     }
   }, ALLOWED_ADMIN_PREVIEW_ORIGINS);
@@ -47,4 +55,4 @@ const FrontendSettingsPreview = () => {
   return null;
 };
 
-export default FrontendSettingsPreview;
+export default FrontendSettingsPreviewBridge;
