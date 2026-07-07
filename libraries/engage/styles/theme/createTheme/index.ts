@@ -78,7 +78,6 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
   const breakpoints = createBreakpoints();
   const spacing = createSpacing();
 
-  // @ts-expect-error applyStyles is added to the theme object after its creation
   const theme: ThemeInternal = {
     ...currentTheme,
     ...cssVarsTheme,
@@ -87,6 +86,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     spacing,
     transitions,
     zIndex,
+    // @ts-expect-error - Sure about the type here
     colorSchemes,
     getColorSchemeSelector,
     setActiveColorScheme,
