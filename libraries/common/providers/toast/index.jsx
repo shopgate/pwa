@@ -4,8 +4,6 @@ import { UIEvents } from '@shopgate/pwa-core';
 import transitions from '@shopgate/engage/styles/theme/createTheme/transitions';
 import ToastContext from './context';
 
-const { duration: { toast: duration } } = transitions;
-
 /**
  * The ToastProvider component
  */
@@ -67,7 +65,7 @@ class ToastProvider extends Component {
       found.actionLabel = toast.actionLabel;
       found.message = toast.message;
       found.messageParams = toast.messageParams;
-      found.duration = toast.duration || duration;
+      found.duration = toast.duration || transitions.duration.toast;
     } else {
       toasts.push({
         id: toast.id,
@@ -75,7 +73,7 @@ class ToastProvider extends Component {
         actionLabel: toast.actionLabel,
         message: toast.message,
         messageParams: toast.messageParams,
-        duration: toast.duration || duration,
+        duration: toast.duration || transitions.duration.toast,
       });
     }
 
