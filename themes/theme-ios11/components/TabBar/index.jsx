@@ -33,7 +33,7 @@ const useStyles = makeStyles()(theme => ({
   tabBarContainerDocked: {
     background: theme.components.tabBar.background,
     minHeight: `calc(${theme.components.tabBar.minHeight} + var(--safe-area-inset-bottom))`,
-    boxShadow: theme.components.tabBar.boxShadow,
+    borderTop: `1px solid ${theme.components.tabBar.border}`,
   },
   tabBarContainerFloating: {
     padding: '0 16px',
