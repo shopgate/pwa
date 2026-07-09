@@ -2,7 +2,7 @@ import { produce } from 'immer';
 import type { Reducer, UnknownAction } from 'redux';
 import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
-import { RECEIVE_APP_SETTINGS } from '../constants';
+import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
 
 type AppSettingsAction = ReceiveAppSettingsAction | UnknownAction;
 
@@ -14,13 +14,6 @@ const isReceiveAppSettingsAction = (
 
 const defaultState: AppSettingsSlice = {
   isHydrated: false,
-  theme: {
-    cards: {
-      style: 'shadow',
-      backgroundColor: '#ffffff',
-      padding: 10,
-    },
-  },
   navigation: {
     menubar: {
       style: 'fixed',

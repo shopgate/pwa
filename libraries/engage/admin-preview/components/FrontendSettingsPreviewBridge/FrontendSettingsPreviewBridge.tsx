@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useIframeMessenger } from '@shopgate/engage/admin-preview/hooks';
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
-import { receiveAppSettings } from '@shopgate/engage/core/action-creators';
+import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
 import type {
   FrontendSettingsPreviewBridgeMessage,
   FrontendSettingsStyling,

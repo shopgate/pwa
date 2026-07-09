@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme, SHOP_SETTING_REGISTRATION_MODE_SIMPLE } from '@shopgate/engage/core';
+import { isIOSTheme } from '@shopgate/engage/core';
+import { SHOP_SETTING_REGISTRATION_MODE_SIMPLE } from '@shopgate/engage/settings/constants/shopSettings';
 import RegistrationFormBase from './RegistrationFormBase';
 import RegistrationFormBilling from './RegistrationFormBilling';
 import RegistrationFormShipping from './RegistrationFormShipping';

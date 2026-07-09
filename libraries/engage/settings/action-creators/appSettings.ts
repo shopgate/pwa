@@ -1,4 +1,4 @@
-import { RECEIVE_APP_SETTINGS } from '../constants';
+import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
 import type { AppSettings } from '../types/appSettings';
 /**
  * Creates the dispatched RECEIVE_APP_SETTINGS action object.

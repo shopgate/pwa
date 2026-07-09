@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
+import { hasWebBridge } from '@shopgate/engage/core';
+import { makeGetShopSettingByKey } from '@shopgate/engage/settings/selectors/shopSettings';
 import {
-  hasWebBridge,
-  makeGetShopSettingByKey,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_APP,
   SHOP_SETTING_SHOW_SHOP_LOGO_IN_WEB,
-} from '@shopgate/engage/core';
+} from '@shopgate/engage/settings/constants/shopSettings';
 
 /**
  * Creates the mapStateToProps connector function.

@@ -2,8 +2,9 @@ import React, { useMemo, useCallback, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  i18n, useRoute, historyPop, getNumberOfAddressLines,
+  i18n, useRoute, historyPop,
 } from '@shopgate/engage/core';
+import { getNumberOfAddressLines } from '@shopgate/engage/settings/selectors/shopSettings';
 import { convertValidationErrors, useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getShopSettings } from '@shopgate/engage/core/config';

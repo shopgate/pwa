@@ -21,14 +21,6 @@ export const getAreAppSettingsHydrated = createSelector(
 );
 
 /**
- * Selects the card theme settings.
- */
-export const getCardSettings = createSelector(
-  getAppSettingsState,
-  appSettings => appSettings.theme.cards
-);
-
-/**
  * Selects the menubar settings.
  */
 export const getMenubarSettings = createSelector(

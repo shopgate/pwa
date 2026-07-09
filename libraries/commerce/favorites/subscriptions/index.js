@@ -8,7 +8,7 @@ import { makeGetRoutePattern } from '@shopgate/engage/core/selectors';
 import {
   getLoadWishlistOnAppStartEnabled,
   getWishlistItemQuantityEnabled,
-} from '@shopgate/engage/core/selectors/shopSettings';
+} from '@shopgate/engage/settings/selectors/shopSettings';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import {
   favoritesWillEnter$,

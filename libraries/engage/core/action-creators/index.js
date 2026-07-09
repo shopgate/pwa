@@ -5,9 +5,6 @@ export {
 export {
   receiveMerchantSettings,
 } from './merchantSettings';
-export {
-  receiveAppSettings,
-} from './appSettings';
 
 export * from './app';
 export * from './appPermissions';

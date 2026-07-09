@@ -8,7 +8,7 @@ import {
   MERCHANT_SETTINGS_DEFAULT_CURRENCY,
   MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
   MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
-} from '../constants';
+} from '../constants/merchantSettings';
 
 const { locales: { currency = null } = {} } = appConfig;
 

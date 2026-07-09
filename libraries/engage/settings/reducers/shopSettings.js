@@ -19,7 +19,7 @@ import {
   SHOP_SETTING_LOAD_WISHLIST_ON_APP_START_ENABLED,
   SHOP_SETTING_SHOW_WISHLIST_ITEMS_COUNT_BADGE,
   SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS,
-} from '../constants';
+} from '../constants/shopSettings';
 
 const defaultState = {
   [SHOP_SETTING_GOOGLE_SITE_VERIFICATION_CODE]: null,

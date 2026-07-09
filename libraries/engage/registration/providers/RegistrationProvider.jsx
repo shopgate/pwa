@@ -6,8 +6,8 @@ import {
   LoadingProvider,
   i18n,
   useRoute,
-  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
 } from '@shopgate/engage/core';
+import { SHOP_SETTING_REGISTRATION_MODE_SIMPLE } from '@shopgate/engage/settings/constants/shopSettings';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';

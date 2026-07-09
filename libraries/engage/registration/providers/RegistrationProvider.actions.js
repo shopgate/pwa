@@ -1,13 +1,11 @@
-import {
-  EVALIDATION,
-  getRegistrationMode,
-  SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
-} from '@shopgate/engage/core';
+import { EVALIDATION } from '@shopgate/engage/core';
+import { getRegistrationMode } from '@shopgate/engage/settings/selectors/shopSettings';
+import { SHOP_SETTING_REGISTRATION_MODE_SIMPLE } from '@shopgate/engage/settings/constants/shopSettings';
 import {
   extractAttributes,
   convertPipelineValidationErrors,
 } from '@shopgate/engage/account/helper/form';
-import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { submitRegistration as submit } from '../actions';
 
 /**

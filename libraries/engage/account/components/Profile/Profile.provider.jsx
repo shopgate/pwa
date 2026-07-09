@@ -8,7 +8,7 @@ import { getPreferredLocationAddress } from '@shopgate/engage/locations/selector
 import {
   useRoute, i18n, historyPush, EVALIDATION,
 } from '@shopgate/engage/core';
-import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { useFormState as useForm, convertValidationErrors } from '@shopgate/engage/core/hooks/useFormState';
 import showModal from '@shopgate/pwa-common/actions/modal/showModal';
 import { LoadingProvider, ToastProvider } from '@shopgate/pwa-common/providers';

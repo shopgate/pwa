@@ -38,9 +38,6 @@ export {
   MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
   MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
 } from './merchantSettings';
-export {
-  RECEIVE_APP_SETTINGS,
-} from './appSettings';
 export { SHOPGATE_CORE_GET_SHOP_SETTINGS, EUNAUTHORIZED, EAUTHENTICATION } from './pipelines';
 
 export * from './actionTypes';

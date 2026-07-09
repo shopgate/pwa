@@ -6,7 +6,7 @@ import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { getSortOrder } from '@shopgate/pwa-common/selectors/history';
 import { SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter/constants';
 import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
-import { getIsLocationBasedShopping } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getIsLocationBasedShopping } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { getActiveFilters } from '../../filter/selectors';
 import { filterProperties } from '../helpers';
 

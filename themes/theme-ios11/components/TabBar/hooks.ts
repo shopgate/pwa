@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { themeConfig } from '@shopgate/engage';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { useWidgetSettings, useScrollDirectionChange } from '@shopgate/engage/core/hooks';
-import { getAreAppSettingsHydrated, getMenubarSettings } from '@shopgate/engage/core/selectors';
+import { getAreAppSettingsHydrated, getMenubarSettings } from '@shopgate/engage/settings/selectors/appSettings';
 import {
   HIDE_TAB_BAR,
   SHOW_TAB_BAR,
