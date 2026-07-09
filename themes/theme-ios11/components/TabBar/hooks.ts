@@ -49,9 +49,7 @@ export const useTabBarSettings = (): Partial<TabBarSettings> => {
     // Once hydrated, the app settings cover every field the TabBar reads.
     return {
       transition: menubarSettings.transition,
-      // menubar.style -> variant: 'fixed' maps to 'docked', 'floating' to
-      // 'floating'. 'drawer' has no TabBar equivalent, so it falls back to
-      // 'docked' (the TabBar only distinguishes floating vs. docked).
+      // menubar.style -> variant: 'fixed' maps to 'docked', 'floating' to 'floating'.
       variant: menubarSettings.style === 'floating' ? 'floating' : 'docked',
       hideOnScroll: menubarSettings.hideOnScroll,
       showLabels: menubarSettings.showLabels,

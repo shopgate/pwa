@@ -7,7 +7,7 @@ export interface AppSettingsState {
 export interface AppSettings {
   navigation: {
     menubar: {
-      style: 'fixed' | 'floating' | 'drawer';
+      style: 'fixed' | 'floating'
       transition: 'fade' | 'slide';
       showLabels: boolean;
       hideOnScroll: boolean;
