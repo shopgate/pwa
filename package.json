@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa",
-  "version": "7.31.0",
+  "version": "7.0.0",
   "private": true,
   "workspaces": [
     "extensions/@shopgate-theme-config/frontend",

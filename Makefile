@@ -1,4 +1,4 @@
-# Fix color output until TravisCI fixes https://github.com/travis-ci/travis-ci/issues/7967
+# Force colored output in CI/non-tty environments
 export FORCE_COLOR = true
 
 ####################################################################################################
