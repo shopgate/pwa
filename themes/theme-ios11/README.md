@@ -1,6 +1,5 @@
 # iOS11 theme for the Shopgate Connect PWA
 
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/theme-ios11/badge.svg?branch=master)](https://coveralls.io/github/shopgate/theme-ios11?branch=master)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 ## About Shopgate
