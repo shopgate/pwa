@@ -87,6 +87,8 @@ Do not copy Knowledge Base content into this file. Keep AGENTS.md focused on thi
 - Do not hand-edit generated/local files: `CHANGELOG.md`, `dist/`, `coverage/`, `.sgcloud/`, `node_modules/`, subtree'd `themes/*` (edit those in their own repos).
 - When adding a library/extension, keep `package.json` `workspaces` and `lerna.json` `packages` in sync, and respect the Makefile's `@shopgate/pwa-` prefixing rule.
 - New typed code should use TypeScript (`.ts/.tsx`).
+- Don't import `React` just for JSX — the Babel automatic JSX runtime (React 17) handles it.
+- Prefer `import type { X } from '...'` (keyword before the braces) for type-only imports; use the inline `type` marker only when a line mixes values and types.
 - Do not add new glamor styling — write CSS with `makeStyles` / `useStyles` (`tss-react`) instead.
 - Do not create new `connector.js` files — wire redux in new code with hooks (`useSelector`, `useDispatch`); `connector.js` is legacy.
 - Write new tests with `@testing-library/react`, not enzyme (enzyme→RTL migration in progress).
