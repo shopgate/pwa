@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { DEFAULT_MERCHANT_SETTINGS } from '../reducers/merchantSettings';
 import {
   MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED,
   MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
@@ -17,7 +18,7 @@ import {
  * @param {Object} state The current application state.
  * @return {Object} The merchant settings state.
  */
-const getState = state => state?.settings?.merchantSettings || {};
+const getState = state => state?.settings?.merchantSettings ?? DEFAULT_MERCHANT_SETTINGS;
 
 /**
  * Creates a selector to retrieve a single merchant setting.

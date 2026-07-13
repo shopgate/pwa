@@ -12,7 +12,12 @@ import {
 
 const { locales: { currency = null } = {} } = appConfig;
 
-const defaultState = {
+/**
+ * The built-in default merchant settings. Used as the reducer's initial state
+ * and as a safe fallback for selectors when the slice is not present in the
+ * store yet.
+ */
+export const DEFAULT_MERCHANT_SETTINGS = {
   [MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED]: false,
   [MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED]: false,
   [MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS]: false,
@@ -27,7 +32,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export default function merchantSettings(state = defaultState, action = {}) {
+export default function merchantSettings(state = DEFAULT_MERCHANT_SETTINGS, action = {}) {
   const producer = produce((draft) => {
     switch (action.type) {
       case RECEIVE_MERCHANT_SETTINGS: {

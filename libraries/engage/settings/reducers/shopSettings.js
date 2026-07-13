@@ -21,7 +21,12 @@ import {
   SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS,
 } from '../constants/shopSettings';
 
-const defaultState = {
+/**
+ * The built-in default shop settings. Used as the reducer's initial state and
+ * as a safe fallback for selectors when the slice is not present in the store
+ * yet.
+ */
+export const DEFAULT_SHOP_SETTINGS = {
   [SHOP_SETTING_GOOGLE_SITE_VERIFICATION_CODE]: null,
   [SHOP_SETTING_CART_SUPPLEMENTAL_CONTENT]: null,
   [SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT]: null,
@@ -47,7 +52,7 @@ const defaultState = {
  * @param {Object} action The action object.
  * @returns {Object} The new state.
  */
-export default function shopSettings(state = defaultState, action = {}) {
+export default function shopSettings(state = DEFAULT_SHOP_SETTINGS, action = {}) {
   const producer = produce((draft) => {
     switch (action.type) {
       case RECEIVE_SHOP_SETTINGS: {
@@ -59,7 +64,7 @@ export default function shopSettings(state = defaultState, action = {}) {
       }
       case ERROR_SHOP_SETTINGS: {
         Object.assign(draft, {
-          ...defaultState,
+          ...DEFAULT_SHOP_SETTINGS,
           ...state,
         });
 

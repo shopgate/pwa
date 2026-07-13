@@ -1,13 +1,15 @@
 import { createSelector } from 'reselect';
 import type { AppSettingsSlice, AppSettingsState } from '../types/appSettings';
+import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 
 /**
- * Retrieves the appSettings state from the store.
+ * Retrieves the appSettings state from the store. Falls back to the built-in
+ * defaults when the slice is not present in the store yet.
  * @param state The current application state.
  * @returns The appSettings state.
  */
 export const getAppSettingsState = (state: AppSettingsState): AppSettingsSlice =>
-  state.settings.appSettings;
+  state?.settings?.appSettings ?? DEFAULT_APP_SETTINGS;
 
 /**
  * Selects whether the app settings have been hydrated from a source

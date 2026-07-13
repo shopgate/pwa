@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { DEFAULT_SHOP_SETTINGS } from '../reducers/shopSettings';
 import {
   WISHLIST_MODE_PERSIST_ON_ADD,
   SHOP_SETTING_WISHLIST_MODE,
@@ -23,7 +24,7 @@ import {
  * @param {Object} state The current application state.
  * @return {Object} The shop settings state.
  */
-export const getState = state => state?.settings?.shopSettings || {};
+export const getState = state => state?.settings?.shopSettings ?? DEFAULT_SHOP_SETTINGS;
 
 /**
  * Creates a selector to retrieve a single shop setting.

@@ -12,7 +12,11 @@ const isReceiveAppSettingsAction = (
   action.type === RECEIVE_APP_SETTINGS && 'settings' in action
 );
 
-const defaultState: AppSettingsSlice = {
+/**
+ * The built-in default app settings. Used as the reducer's initial state and as
+ * a safe fallback for selectors when the slice is not present in the store yet.
+ */
+export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   isHydrated: false,
   navigation: {
     menubar: {
@@ -33,7 +37,7 @@ const defaultState: AppSettingsSlice = {
 const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   state,
   action = { type: '' }
-) => produce(state ?? defaultState, (draft: AppSettingsSlice) => {
+) => produce(state ?? DEFAULT_APP_SETTINGS, (draft: AppSettingsSlice) => {
   if (isReceiveAppSettingsAction(action)) {
     Object.assign(draft, action.settings);
     draft.isHydrated = true;
