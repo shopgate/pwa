@@ -21,7 +21,7 @@ import {
 /**
  * Retrieves the shopSettings state from the store.
  * @param {Object} state The current application state.
- * @return {Object} The locations state.
+ * @return {Object} The shop settings state.
  */
 export const getState = state => state?.settings?.shopSettings || {};
 
@@ -51,7 +51,7 @@ export const makeGetShopSettings = (keys = []) => createSelector(
 
       return true;
     }).reduce((acc, key) => {
-      if (state?.[key]) {
+      if (typeof state?.[key] !== 'undefined') {
         acc[key] = state[key];
       }
 

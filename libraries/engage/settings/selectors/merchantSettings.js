@@ -15,7 +15,7 @@ import {
 /**
  * Retrieves the merchantSettings state from the store.
  * @param {Object} state The current application state.
- * @return {Object} The locations state.
+ * @return {Object} The merchant settings state.
  */
 const getState = state => state?.settings?.merchantSettings || {};
 

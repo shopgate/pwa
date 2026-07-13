@@ -2,7 +2,7 @@ import { RECEIVE_MERCHANT_SETTINGS } from '../constants/merchantSettings';
 
 /**
  * Creates the dispatched RECEIVE_MERCHANT_SETTINGS action object.
- * @param {Array} settings A list of shop settings.
+ * @param {Array} settings A list of merchant settings.
  * @returns {Object} The dispatched action object.
  */
 export const receiveMerchantSettings = settings => ({

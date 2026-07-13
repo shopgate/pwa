@@ -23,9 +23,7 @@ const FrontendSettingsPreviewBridge = () => {
 
   const { sendToParent } = useIframeMessenger<FrontendSettingsPreviewBridgeMessage>((data) => {
     if (data.type === 'receiveFrontendSettings') {
-      if (data.payload?.styling) {
-        setStyling(data.payload.styling);
-      }
+      setStyling(data.payload?.styling ?? null);
 
       if (data.payload?.appSettings) {
         dispatch(receiveAppSettings(data.payload.appSettings));
@@ -38,14 +36,12 @@ const FrontendSettingsPreviewBridge = () => {
   }, [sendToParent]);
 
   useEffect(() => {
-    const styleTag = getOrCreateStyleTag();
-
     if (!styling) {
-      styleTag.textContent = '';
+      removeStyleTag();
       return;
     }
 
-    styleTag.textContent = serializeStyling(styling);
+    getOrCreateStyleTag().textContent = serializeStyling(styling);
   }, [styling]);
 
   useEffect(() => () => {
