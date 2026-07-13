@@ -8,8 +8,10 @@ export {
   useResponsiveValue,
   useTheme,
   useColorScheme,
+  withTheme,
   type Theme,
   type PaletteColorsWithMain,
+  type WithThemeProps,
 } from './theme';
 export {
   makeStyles,

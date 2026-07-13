@@ -9,3 +9,4 @@ export {
   useTheme,
   useColorScheme,
 } from './hooks';
+export { withTheme, type WithThemeProps } from './hocs';
