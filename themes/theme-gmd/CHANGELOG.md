@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.31.3](https://github.com/shopgate/pwa/compare/v7.31.1...v7.31.3) (2026-07-03)
+
+#### :bug: Bug Fix
+* [#1475](https://github.com/shopgate/pwa/pull/1475) Fix image render issue in CMS preview ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v7.31.0](https://github.com/shopgate/pwa/compare/v7.30.5...v7.31.0) (2026-06-23)
 
 #### :house: Internal
