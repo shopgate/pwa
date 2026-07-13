@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useResponsiveValue } from '@shopgate/engage/styles';
 import { useParallax } from 'react-scroll-parallax';
+import { IS_PAGE_PREVIEW_ACTIVE } from '../../constants';
 import { parseImageUrl } from '../../helpers';
 
 /**
@@ -33,6 +34,8 @@ const useStyles = makeStyles()({
   },
   image: {
     width: '100%',
+    height: 'auto',
+    display: 'block',
   },
   container: {
     width: '100%',
@@ -140,7 +143,11 @@ const ResponsiveWidgetImage = ({
         src={imgSrc}
         ref={parallax.ref}
         alt={alt}
-        loading="lazy"
+        // In the CMS page-preview iframe, native lazy loading defers the image load after the admin
+        // re-posts an updated page config and never triggers it again, so widget images stay at
+        // height 0 until a resize forces the browser to re-evaluate. Load eagerly there; keep lazy
+        // loading for the live app.
+        loading={IS_PAGE_PREVIEW_ACTIVE ? 'eager' : 'lazy'}
         className={cx(classes.preventSave, classes.image, {
           [classes.banner]: isBanner,
         }, className)}

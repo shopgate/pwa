@@ -66,7 +66,7 @@ const ClientInformation = () => {
       <p className={classes.unselectable}>
         {`App Version: ${appVersion} (${codebaseVersion})`}
         <br />
-        {`PWA Version: ${pckVersion}`}
+        {`Theme Version: ${pckVersion}`}
         <br />
         {`Lib Version: ${libVersion}`}
       </p>
