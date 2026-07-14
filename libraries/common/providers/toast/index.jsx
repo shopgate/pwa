@@ -5,7 +5,14 @@ import { withTheme } from '@shopgate/engage/styles';
 import ToastContext from './context';
 
 /**
+ * @typedef {Object} ToastProviderProps
+ * @property {import('react').ReactNode} children
+ * @property {import('@shopgate/engage/styles').Theme} theme
+ */
+
+/**
  * The ToastProvider component
+ * @augments {Component<ToastProviderProps>}
  */
 class ToastProvider extends Component {
   static ADD = 'toast_add';

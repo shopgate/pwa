@@ -204,7 +204,12 @@ class ProductsWidget extends Component {
   }
 }
 
-export default connect(withStyles(ProductsWidget, theme => ({
+/**
+ * The styles for the products widget.
+ * @param {Object} theme The theme.
+ * @returns {Object}
+ */
+export const styles = theme => ({
   listView: {
     background: theme.palette.background.default,
     overflow: 'auto',
@@ -215,6 +220,8 @@ export default connect(withStyles(ProductsWidget, theme => ({
       paddingBottom: 0,
     },
   },
-})));
+});
+
+export default connect(withStyles(ProductsWidget, styles));
 
 export { ProductsWidget as UnwrappedProductsWidget };
