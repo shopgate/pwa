@@ -1,6 +1,6 @@
 import { setABFeatureFlag, isFeatureEnabled } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { getProductListShowInventory } from '../../core/selectors';
+import { getProductListShowInventory } from '@shopgate/engage/settings/selectors/merchantSettings';
 
 const STORE_KEY = 'showInventoryInLists.v1';
 let enabled = null;

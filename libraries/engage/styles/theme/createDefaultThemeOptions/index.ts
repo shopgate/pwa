@@ -74,7 +74,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         tabBar: {
           vars: {
             background: 'var(--tab-bar-background, #FFFFFF)',
-            boxShadow: 'var(--tab-bar-box-shadow, 0 -1px 0 0 rgba(0, 0, 0, 0.1))',
             minHeight: 'var(--tab-bar-min-height, 0px)',
             border: '#E6E6E6',
             inactive: 'var(--tab-bar-item-default-color, #747474)',

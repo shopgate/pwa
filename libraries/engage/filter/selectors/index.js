@@ -1,8 +1,7 @@
 import { createSelector } from 'reselect';
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
-import {
-  SHOP_SETTING_PRODUCTS_SORT_ORDER,
-} from '../../core/constants';
+import { SHOP_SETTING_PRODUCTS_SORT_ORDER } from '@shopgate/engage/settings/constants/shopSettings';
+import { makeGetShopSettingByKey } from '@shopgate/engage/settings/selectors/shopSettings';
 import {
   SORT_ORDER_RANK_DESC,
   SORT_SCOPE_CATEGORY,
@@ -11,7 +10,6 @@ import {
   isSortOrderSupported,
   mapSortOrderFromShopSettings,
 } from '../constants/sort';
-import { makeGetShopSettingByKey } from '../../core/selectors/shopSettings';
 
 export * from '@shopgate/pwa-common-commerce/filter/selectors';
 

@@ -20,9 +20,9 @@ import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/con
 import { loadCustomStyles } from '@shopgate/engage/styles';
 import {
   receiveShopSettings,
-  receiveMerchantSettings,
   errorShopSettings,
-} from '../action-creators';
+} from '@shopgate/engage/settings/action-creators/shopSettings';
+import { receiveMerchantSettings } from '@shopgate/engage/settings/action-creators/merchantSettings';
 
 const {
   locales: { currency: currencyLocale = null } = {},

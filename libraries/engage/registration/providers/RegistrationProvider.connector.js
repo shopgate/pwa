@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
-import { getNumberOfAddressLines, getRegistrationMode } from '@shopgate/engage/core';
+import { getNumberOfAddressLines, getRegistrationMode } from '@shopgate/engage/settings/selectors/shopSettings';
 import { hasDirectShipItems } from '@shopgate/engage/cart';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
-import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { submitRegistration } from './RegistrationProvider.actions';
 
 /**

@@ -1,11 +1,3 @@
-import { RECEIVE_MERCHANT_SETTINGS } from '../constants';
-
-/**
- * Creates the dispatched RECEIVE_MERCHANT_SETTINGS action object.
- * @param {Array} settings A list of shop settings.
- * @returns {Object} The dispatched action object.
- */
-export const receiveMerchantSettings = settings => ({
-  type: RECEIVE_MERCHANT_SETTINGS,
-  settings,
-});
+// Backwards-compatible shim. The merchant settings action-creators now live in the
+// dedicated `settings` package: @shopgate/engage/settings/action-creators/merchantSettings
+export * from '../../settings/action-creators/merchantSettings';

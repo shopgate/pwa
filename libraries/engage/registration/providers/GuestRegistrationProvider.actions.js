@@ -4,7 +4,7 @@ import {
   extractAttributes,
   convertPipelineValidationErrors,
 } from '@shopgate/engage/account/helper/form';
-import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/settings/selectors/merchantSettings';
 
 /**
  * Submits guest registration form data.
