@@ -187,7 +187,12 @@ export interface Theme extends BaseTheme {
  */
 export type ColorSchemeThemes = Record<ColorSchemeName, BaseTheme>
 
-export type ThemeInternal = Theme & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {
+export type ThemeInternal = Omit<Theme, 'colorSchemes'> & {
+  /**
+   * Internal runtime map of fully resolved color-scheme themes.
+   */
+  colorSchemes: ColorSchemeThemes;
+} & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {
   /**
    * Function that generates a CSS selector string for a given color scheme.
    */
