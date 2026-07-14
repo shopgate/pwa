@@ -138,7 +138,7 @@ const UnitQuantityPicker = ({
     }
 
     return {
-      buttonColor: theme.contrastColor(theme.palette.primary.main),
+      buttonColor: theme.palette.primary.contrastText,
       buttonBgColor: theme.palette.primary.main,
       inputColor: theme.palette.text.primary,
       inputBgColor: theme.palette.grey.light,
