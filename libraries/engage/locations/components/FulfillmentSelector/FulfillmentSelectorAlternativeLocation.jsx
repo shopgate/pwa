@@ -6,7 +6,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import {
   Grid, ResponsiveContainer, SurroundPortals, Typography,
 } from '@shopgate/engage/components';
-import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
+import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '@shopgate/engage/settings/constants/merchantSettings';
 import { provideProductAlternativeLocation } from '../../action-creators';
 import { StockInfo } from '../StockInfo';
 import { useFulfillmentSelectorState } from './FulfillmentSelector.hooks';

@@ -79,7 +79,7 @@ const useStyles = makeStyles()(theme => ({
   containerFullScreen: {
     height: [
       `calc(100vh - ${theme.components.navigator.height} - 51px)`,
-      `calc(100vh - ${theme.components.navigator.height} - 51px - var(--safe-area-inset-top))`,
+      `calc(100vh - ${theme.components.navigator.height} - 51px - ${theme.layout.safeArea.top})`,
     ],
   },
   progressBarContainer: {
@@ -91,16 +91,16 @@ const useStyles = makeStyles()(theme => ({
   content: {
     maxHeight: [
       `calc(var(--vh-100, 100vh) - ${theme.components.navigator.height})`,
-      `calc(var(--vh-100, 100vh) - ${theme.components.navigator.height} - var(--safe-area-inset-top))`,
+      `calc(var(--vh-100, 100vh) - ${theme.components.navigator.height} - ${theme.layout.safeArea.top})`,
     ],
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       maxHeight: [
         `calc(var(--vh-80, 80vh) - ${theme.components.navigator.height})`,
-        `calc(var(--vh-80, 80vh) - ${theme.components.navigator.height} - var(--safe-area-inset-top))`,
+        `calc(var(--vh-80, 80vh) - ${theme.components.navigator.height} - ${theme.layout.safeArea.top})`,
       ],
     },
     paddingBottom: [
-      'var(--safe-area-inset-bottom)',
+      theme.layout.safeArea.bottom,
     ],
     overflowY: 'scroll',
     WebkitOverflowScrolling: 'touch',

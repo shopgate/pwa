@@ -2,14 +2,14 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'fixed',
     bottom: 0,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 'var(--safe-area-inset-bottom)',
+    height: theme.layout.safeArea.bottom,
     width: '100%',
     zIndex: 10000000,
     pointerEvents: 'auto',
@@ -26,7 +26,7 @@ const useStyles = makeStyles()({
     border: '1px solid rgba(255, 255, 255, 0.5)',
     boxSizing: 'content-box',
   },
-});
+}));
 
 /**
  * Renders a simulated iOS bottom inset in development.

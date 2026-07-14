@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { SheetDrawer, RippleButton } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getEnabledCMSVersion, getEnableCms2ForAllShoppers } from '@shopgate/engage/core/selectors';
+import { getEnabledCMSVersion } from '@shopgate/engage/settings/selectors/merchantSettings';
+import { getEnableCms2ForAllShoppers } from '@shopgate/engage/settings/selectors/shopSettings';
 import { getIsCMS2PreviewEnabled } from '../../selectors';
 import { toggleCms2Preview } from '../../action-creators';
 

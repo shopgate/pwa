@@ -23,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: '0 -4px 5px -2px rgba(0, 0, 0, 0.1)',
     position: 'relative',
     zIndex: 2,
-    paddingBottom: 'var(--safe-area-inset-bottom)',
+    paddingBottom: theme.layout.safeArea.bottom,
   },
   container: {
     padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),

@@ -1,7 +1,7 @@
 import {
   SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
   SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
-} from '@shopgate/engage/core';
+} from '@shopgate/engage/settings/constants/shopSettings';
 import { generateFormConstraints } from '@shopgate/engage/account/helper/form';
 
 /**

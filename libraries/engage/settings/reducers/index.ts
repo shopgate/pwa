@@ -1,13 +1,12 @@
 import { combineReducers } from 'redux';
-import config from '../config/config.reducers';
+import config from '../../core/config/config.reducers';
 import shopSettings from './shopSettings';
 import merchantSettings from './merchantSettings';
-
-export { default as app } from './app';
+import appSettings from './appSettings';
 
 export const settings = combineReducers({
   config,
   shopSettings,
   merchantSettings,
+  appSettings,
 });
-

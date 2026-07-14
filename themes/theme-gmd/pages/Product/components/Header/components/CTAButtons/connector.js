@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { isCurrentProductOnFavoriteList } from '@shopgate/engage/favorites';
 import { makeIsProductActive, getProductImages } from '@shopgate/engage/product';
-import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/core';
+import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/settings/selectors/shopSettings';
 
 /**
  * Maps the contents of the state to the component props.

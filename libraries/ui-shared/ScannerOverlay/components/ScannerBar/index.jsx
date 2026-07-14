@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
     boxShadow: '0 0 0 1px rgba(0, 0, 0, 0.1)',
     fontSize: theme.typography.body2.fontSize,
     alignItems: 'center',
-    paddingBottom: 'var(--safe-area-inset-bottom)',
+    paddingBottom: theme.layout.safeArea.bottom,
   },
   column: {
     margin: theme.spacing(2),

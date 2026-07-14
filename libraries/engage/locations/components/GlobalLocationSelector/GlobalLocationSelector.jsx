@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { selectGlobalLocation } from '@shopgate/engage/locations/action-creators';
+import { getIsLocationBasedShopping } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { getPreferredLocation, getIsPending } from '../../selectors';
-import { getIsLocationBasedShopping } from '../../../core/selectors';
 import { FulfillmentSheet } from '../FulfillmentSheet';
 import { STAGE_SELECT_STORE, MULTI_LINE_RESERVE } from '../../constants';
 

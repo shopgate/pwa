@@ -18,7 +18,7 @@ import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { applyScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
 import Below from '../Below';
@@ -39,7 +39,7 @@ const useStyles = makeStyles()({
     overflowScrolling: 'touch',
     position: 'absolute',
     WebkitOverflowScrolling: 'touch',
-    ...(IS_PAGE_PREVIEW_ACTIVE && {
+    ...(isAdminPreviewActive() && {
       scrollbarWidth: 'thin',
       backgroundColor: 'var(--page-background-color)',
     }),

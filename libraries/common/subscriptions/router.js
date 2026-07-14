@@ -10,7 +10,7 @@ import Route from '@virtuous/conductor/Route';
 import { Linking } from '@shopgate/native-modules';
 import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
 import { logger } from '@shopgate/pwa-core';
-import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import { isPageAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { getCurrentRoute, getRouterStackIndex } from '../selectors/router';
 import { LoadingProvider } from '../providers';
@@ -34,7 +34,7 @@ import ToastProvider from '../providers/toast';
  */
 export default function routerSubscriptions(subscribe) {
   subscribe(navigate$, async (params) => {
-    if (IS_PAGE_PREVIEW_ACTIVE) {
+    if (isPageAdminPreviewActive()) {
       // No navigation is allowed in page preview mode.
       return;
     }

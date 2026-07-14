@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getCategoryImagePlaceholder } from '@shopgate/engage/core';
+import { getCategoryImagePlaceholder } from '@shopgate/engage/settings/selectors/shopSettings';
 
 /**
  * Maps the current application state to the component props.
