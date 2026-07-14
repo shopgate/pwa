@@ -246,7 +246,7 @@ const TabBar = ({
         [classes.hidden]: !isVisible,
       }
     );
-    console.warn(variant !== 'floating' && borderEnabled);
+
     const component = cx(
       'theme__tab-bar',
       // Backwards compatibility to prevent broken custom styling that addressed class of the Grid
