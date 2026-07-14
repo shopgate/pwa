@@ -213,11 +213,6 @@ export const componentsSchema = {
       height: '',
     },
   },
-  paymentBar: {
-    vars: {
-      height: '',
-    },
-  },
 } as const;
 
 /**
@@ -317,11 +312,6 @@ export const componentsDefaults = {
   filterBar: {
     vars: {
       height: 48,
-    },
-  },
-  paymentBar: {
-    vars: {
-      height: 78,
     },
   },
 } satisfies ComponentsDefaults;

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { isAndroid } from '@shopgate/pwa-common/selectors/client';
 import deleteProductsFromCart from '@shopgate/pwa-common-commerce/cart/actions/deleteProductsFromCart';
 import updateProductsInCart from '@shopgate/pwa-common-commerce/cart/actions/updateProductsInCart';
 import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
@@ -15,7 +14,6 @@ import { getCurrency } from '@shopgate/pwa-common-commerce/cart/selectors';
  * @returns {StateProps} The extended component props.
  */
 const mapStateToProps = state => ({
-  isAndroid: isAndroid(state),
   currency: getCurrency(state),
 });
 
