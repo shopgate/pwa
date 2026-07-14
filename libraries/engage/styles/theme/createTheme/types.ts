@@ -1,6 +1,6 @@
 import type { PaletteOptions, Palette } from './createPalette';
 import type { Typography, TypographyOptions } from './createTypography';
-import type { ComponentsOptions, ComponentVars } from './createComponents';
+import type { ComponentsOptions, ComponentVars, Components } from './createComponents';
 import type { Breakpoints } from './createBreakpoints';
 import type { Spacing } from './createSpacing';
 import type { Transitions } from './transitions';
@@ -189,10 +189,18 @@ export interface Theme extends BaseTheme {
 }
 
 /**
- * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
- * and the value is a theme object that contains e.g. the palette and typography for that color scheme.
+ * A single fully-resolved color-scheme theme. Identical to {@link BaseTheme} except that its
+ * `components` keep the nested `vars` level (the raw per-scheme token defaults produced by
+ * `createComponents`), whereas the flattened `BaseTheme['components']` shape is only produced for
+ * the final merged theme.
  */
-export type ColorSchemeThemes = Record<ColorSchemeName, BaseTheme>
+export type ColorSchemeTheme = Omit<BaseTheme, 'components'> & { components: Components };
+
+/**
+ * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
+ * and the value is a fully-resolved color-scheme theme ({@link ColorSchemeTheme}).
+ */
+export type ColorSchemeThemes = Record<ColorSchemeName, ColorSchemeTheme>
 
 export type ThemeInternal = Omit<Theme, 'colorSchemes'> & {
   /**
