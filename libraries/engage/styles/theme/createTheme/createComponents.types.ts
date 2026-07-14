@@ -173,7 +173,6 @@ export const componentsSchema = {
   tabBar: {
     vars: {
       background: '',
-      boxShadow: '',
       minHeight: '',
       border: '',
       inactive: '',
@@ -279,7 +278,6 @@ export const componentsDefaults = {
   tabBar: {
     vars: {
       background: '#FFFFFF',
-      boxShadow: '0 -1px 0 0 rgba(0, 0, 0, 0.1)',
       minHeight: '0px',
       border: '#E6E6E6',
       inactive: '#747474',

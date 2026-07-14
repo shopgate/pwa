@@ -7,7 +7,7 @@ import { UIEvents } from '@shopgate/engage/core/events';
 import { makeStyles } from '@shopgate/engage/styles';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { isAndroidOs } from '@shopgate/engage/core/helpers';
-import { useWidgetSettings, useElementSize } from '@shopgate/engage/core/hooks';
+import { useElementSize } from '@shopgate/engage/core/hooks';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -15,7 +15,7 @@ import {
   HIDE_TAB_BAR,
 } from './constants';
 import connect from './connector';
-import { useTabBarScrollObserver } from './hooks';
+import { useTabBarScrollObserver, useTabBarSettings } from './hooks';
 import visibleTabs from './tabs';
 
 const useStyles = makeStyles()(theme => ({
@@ -30,10 +30,12 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 10,
     justifyContent: 'center',
   },
-  tabBarContainerDocked: {
+  tabBarContainerFixed: {
     background: theme.components.tabBar.background,
     minHeight: `calc(${theme.components.tabBar.minHeight} + ${theme.layout.safeArea.bottom})`,
-    boxShadow: theme.components.tabBar.boxShadow,
+  },
+  tabBarContainerBorder: {
+    borderTop: `1px solid ${theme.components.tabBar.border}`,
   },
   tabBarContainerFloating: {
     padding: '0 16px',
@@ -45,8 +47,8 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  tabBarDocked: {
-    paddingBottom: theme.layout.safeArea.bottom,
+  tabBarFixed: {
+    paddingBottom: theme.layout.safeArea.bottom,,
   },
   tabBarFloating: {
     background: theme.components.tabBar.background,
@@ -122,9 +124,10 @@ const TabBar = ({
 
   const {
     transition = 'fade',
-    variant = 'docked',
+    variant = 'fixed',
     hideOnScroll = false,
-  } = useWidgetSettings('@shopgate/engage/components/TabBar');
+    fixed: { borderEnabled = true } = {},
+  } = useTabBarSettings();
 
   const [ariaHidden, setAriaHidden] = useState(modalCount > 0);
   const [isScrolledOut, setIsScrolledOut] = useState(false);
@@ -232,9 +235,13 @@ const TabBar = ({
       isScrolledOut ? 'transition-hidden' : 'transition-visible',
       transitionVisibility ? 'visible' : 'hidden',
       {
+        // 'variant-docked' is kept for backwards compatibility with custom
+        // styling; 'variant-fixed' is the new vocabulary. Both are emitted.
         'variant-docked': variant !== 'floating',
+        'variant-fixed': variant !== 'floating',
         'variant-floating': variant === 'floating',
-        [classes.tabBarContainerDocked]: variant !== 'floating',
+        [classes.tabBarContainerFixed]: variant !== 'floating',
+        [classes.tabBarContainerBorder]: variant !== 'floating' && borderEnabled,
         [classes.tabBarContainerFloating]: variant === 'floating',
         [classes.hidden]: !isVisible,
       }
@@ -247,7 +254,7 @@ const TabBar = ({
       'common__grid',
       classes.tabBarBase,
       {
-        [classes.tabBarDocked]: variant !== 'floating',
+        [classes.tabBarFixed]: variant !== 'floating',
         [classes.tabBarFloating]: variant === 'floating',
       }
     );
@@ -260,9 +267,10 @@ const TabBar = ({
     classes.hidden,
     classes.tabBarBase,
     classes.tabBarContainerBase,
-    classes.tabBarContainerDocked,
+    classes.tabBarContainerFixed,
+    classes.tabBarContainerBorder,
     classes.tabBarContainerFloating,
-    classes.tabBarDocked,
+    classes.tabBarFixed,
     classes.tabBarFloating,
     classes.transitionFadeBase,
     classes.transitionFadeIn,
@@ -276,6 +284,7 @@ const TabBar = ({
     transition,
     transitionVisibility,
     variant,
+    borderEnabled,
     cx,
   ]);
 

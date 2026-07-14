@@ -1,4 +1,4 @@
-import { getFulfillmentSchedulingEnabled } from '@shopgate/engage/core/selectors';
+import { getFulfillmentSchedulingEnabled } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { getPreferredLocation } from '@shopgate/engage/locations';
 import { forceOpenFulfillmentSlotDialog } from '@shopgate/engage/locations/components/FulfillmentSlotSwitcher/FulfillmentSlotProvider';
 import {

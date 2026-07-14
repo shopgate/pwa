@@ -5,7 +5,7 @@ import {
   getCurrency,
 } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { getDefaultCurrency } from '@shopgate/engage/core';
+import { getDefaultCurrency } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { navigate } from './WideBar.actions';
 
 /**

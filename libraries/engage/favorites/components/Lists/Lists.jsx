@@ -17,8 +17,8 @@ import {
   FulfillmentSheet, MULTI_LINE_RESERVE, STAGE_SELECT_STORE, DIRECT_SHIP,
 } from '@shopgate/engage/locations';
 import { openSheet } from '@shopgate/engage/locations/providers/FulfillmentProvider';
-import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
-import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
+import { getWishlistMode } from '@shopgate/engage/settings/selectors/shopSettings';
+import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/settings/constants/shopSettings';
 import { getPreferredLocation, getPreferredFulfillmentMethod, getUserSearch } from '@shopgate/engage/locations/selectors';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';

@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getWishlistItemQuantityEnabled } from '../../../core/selectors/shopSettings';
+import { getWishlistItemQuantityEnabled } from '@shopgate/engage/settings/selectors/shopSettings';
 
 import UnitQuantityPicker from '../../../product/components/UnitQuantityPicker/UnitQuantityPicker';
 

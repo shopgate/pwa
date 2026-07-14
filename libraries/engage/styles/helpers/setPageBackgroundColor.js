@@ -1,6 +1,6 @@
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { hasWebBridge } from '@shopgate/engage/core/helpers';
-import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { setCSSCustomProp } from './cssCustomProperties';
 
 const { colors: { light: defaultBackgroundColor } } = themeConfig;
@@ -11,7 +11,7 @@ const { colors: { light: defaultBackgroundColor } } = themeConfig;
  */
 export const setPageBackgroundColor = (color = defaultBackgroundColor) => {
   // Curbside website changes never its background color
-  if (!hasWebBridge() || IS_PAGE_PREVIEW_ACTIVE) {
+  if (!hasWebBridge() || isAdminPreviewActive()) {
     setCSSCustomProp('--page-background-color', color);
   }
 };

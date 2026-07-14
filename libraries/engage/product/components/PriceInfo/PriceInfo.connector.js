@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { makeGetShopSettingByKey } from '../../../core/selectors/shopSettings';
-import { SHOP_SETTING_DISPLAY_PRICE_PER_MEASURE_UNIT } from '../../../core/constants';
+import { makeGetShopSettingByKey } from '@shopgate/engage/settings/selectors/shopSettings';
+import { SHOP_SETTING_DISPLAY_PRICE_PER_MEASURE_UNIT } from '@shopgate/engage/settings/constants/shopSettings';
 
 /**
  * Creates the mapStateToProps connector function.

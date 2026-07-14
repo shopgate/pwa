@@ -39,7 +39,7 @@ import {
 } from '@shopgate/pwa-common-commerce/search/streams';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { cookieConsentInitialized$ } from '@shopgate/engage/tracking/streams';
-import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import {
   getUserSearch,
   getStoreFinderSearch,
@@ -111,7 +111,7 @@ function locationsSubscriber(subscribe) {
     appInitialization.set('location', async ({ dispatch }) => {
       // Skip fetching the default location if the page preview is active, since it blocks
       // iFrame communication.
-      if (hasNewServices() && !IS_PAGE_PREVIEW_ACTIVE) {
+      if (hasNewServices() && !isAdminPreviewActive()) {
         await dispatch(fetchDefaultLocation());
       }
     });

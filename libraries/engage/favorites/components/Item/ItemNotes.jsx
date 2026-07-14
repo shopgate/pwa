@@ -6,7 +6,7 @@ import {
 } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Typography } from '@shopgate/engage/components';
-import { getWishlistItemNotesEnabled } from '../../../core/selectors/shopSettings';
+import { getWishlistItemNotesEnabled } from '@shopgate/engage/settings/selectors/shopSettings';
 
 const useStyles = makeStyles()(() => ({
   root: {

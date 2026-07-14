@@ -4,14 +4,14 @@ import {
   isProductOrderable,
   makeIsBaseProductActive,
 } from '@shopgate/engage/product';
+import { getProductShowAlternativeLocation } from '@shopgate/engage/settings/selectors/merchantSettings';
+import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '@shopgate/engage/settings/constants/merchantSettings';
 import { DIRECT_SHIP, ROPIS, BOPIS } from '../../constants';
 import {
   makeGetEnabledFulfillmentMethods,
   makeGetFulfillmentPaths,
   makeUseLocationFulfillmentMethods,
 } from '../../../core/config';
-import { getProductShowAlternativeLocation } from '../../../core/selectors';
-import { MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION } from '../../../core/constants';
 import {
   makeIsFulfillmentSelectorMethodEnabled,
   getPreferredLocation,
