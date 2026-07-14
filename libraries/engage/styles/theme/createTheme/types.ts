@@ -164,7 +164,7 @@ export interface Theme extends BaseTheme {
    * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
    * and the value is a theme object that contains e.g. the palette and typography for that color scheme.
    */
-  colorSchemes: ColorSchemeThemes;
+  colorSchemes: Record<ColorSchemeName, DeepPartial<ColorSchemeOptions>>;
   /**
    * Function that generates a CSS selector string for a given color scheme.
    * The browser applies the given styles only when the specified color scheme is active.

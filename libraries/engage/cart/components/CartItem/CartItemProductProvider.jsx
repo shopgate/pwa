@@ -2,7 +2,7 @@ import React, {
   useMemo, useCallback, useState, useRef,
 } from 'react';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { useTheme } from '@shopgate/engage/styles';
+import { useTheme, getCSSCustomProp } from '@shopgate/engage/styles';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import PropTypes from 'prop-types';
 import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../cart.constants';
@@ -76,9 +76,18 @@ const CartItemProductProvider = ({
        * This should not happen on iOS devices, since their web views behave different.
        */
       setTimeout(() => {
+        // Read the live computed value of the payment bar height CSS variable rather than the
+        // theme token, which only holds a `var(...)` reference and can be overridden at runtime
+        // by an external stylesheet.
+        const paymentBarHeight = getCSSCustomProp(
+          theme.vars.components.paymentBar.height,
+          document.documentElement,
+          'number'
+        ) || 0;
+
         const yOffset = -(window.innerHeight / 2)
           + getAbsoluteHeight(cartItemRef.current)
-          + parseInt(theme.colorSchemes[theme.defaultColorScheme].components.paymentBar.height, 10);
+          + paymentBarHeight;
 
         if (cartItemRef.current) {
           cartItemRef.current.scrollIntoView({
