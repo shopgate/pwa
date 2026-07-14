@@ -24,7 +24,9 @@ describe('settings / reducers / appSettings', () => {
           transition: 'slide',
           showLabels: false,
           hideOnScroll: true,
-          fixedBorderEnabled: false,
+          fixed: {
+            borderEnabled: false,
+          },
         },
       },
     };
@@ -50,7 +52,7 @@ describe('settings / reducers / appSettings', () => {
       transition: DEFAULT_APP_SETTINGS.navigation.tabBar.transition,
       showLabels: DEFAULT_APP_SETTINGS.navigation.tabBar.showLabels,
       hideOnScroll: DEFAULT_APP_SETTINGS.navigation.tabBar.hideOnScroll,
-      fixedBorderEnabled: DEFAULT_APP_SETTINGS.navigation.tabBar.fixedBorderEnabled,
+      fixed: DEFAULT_APP_SETTINGS.navigation.tabBar.fixed,
     });
   });
 

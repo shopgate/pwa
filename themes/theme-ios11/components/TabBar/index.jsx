@@ -126,7 +126,7 @@ const TabBar = ({
     transition = 'fade',
     variant = 'fixed',
     hideOnScroll = false,
-    fixedBorderEnabled = true,
+    fixed: { borderEnabled = true } = {},
   } = useTabBarSettings();
 
   const [ariaHidden, setAriaHidden] = useState(modalCount > 0);
@@ -241,12 +241,12 @@ const TabBar = ({
         'variant-fixed': variant !== 'floating',
         'variant-floating': variant === 'floating',
         [classes.tabBarContainerFixed]: variant !== 'floating',
-        [classes.tabBarContainerBorder]: variant !== 'floating' && fixedBorderEnabled,
+        [classes.tabBarContainerBorder]: variant !== 'floating' && borderEnabled,
         [classes.tabBarContainerFloating]: variant === 'floating',
         [classes.hidden]: !isVisible,
       }
     );
-
+    console.warn(variant !== 'floating' && borderEnabled);
     const component = cx(
       'theme__tab-bar',
       // Backwards compatibility to prevent broken custom styling that addressed class of the Grid
@@ -284,7 +284,7 @@ const TabBar = ({
     transition,
     transitionVisibility,
     variant,
-    fixedBorderEnabled,
+    borderEnabled,
     cx,
   ]);
 

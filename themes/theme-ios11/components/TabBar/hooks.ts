@@ -50,7 +50,7 @@ export const useTabBarSettings = (): TabBarSettings => {
         variant = 'docked',
         hideOnScroll = false,
         showLabels = true,
-        fixedBorderEnabled = true,
+        fixed,
       } = widgetSettings;
 
       return {
@@ -58,7 +58,7 @@ export const useTabBarSettings = (): TabBarSettings => {
         variant: variant === 'floating' ? 'floating' : 'fixed',
         hideOnScroll,
         showLabels,
-        fixedBorderEnabled,
+        fixed: { borderEnabled: fixed?.borderEnabled ?? true },
       };
     }
 
@@ -68,7 +68,7 @@ export const useTabBarSettings = (): TabBarSettings => {
       variant: tabBarSettings.variant,
       hideOnScroll: tabBarSettings.hideOnScroll,
       showLabels: tabBarSettings.showLabels,
-      fixedBorderEnabled: tabBarSettings.fixedBorderEnabled,
+      fixed: tabBarSettings.fixed,
     };
   }, [areAppSettingsHydrated, tabBarSettings, widgetSettings]);
 };

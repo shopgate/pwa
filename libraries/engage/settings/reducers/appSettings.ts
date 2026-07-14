@@ -25,7 +25,9 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       showLabels: true,
       hideOnScroll: false,
       transition: 'fade',
-      fixedBorderEnabled: true,
+      fixed: {
+        borderEnabled: true,
+      },
     },
   },
 };

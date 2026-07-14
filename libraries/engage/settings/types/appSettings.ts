@@ -11,7 +11,9 @@ export interface AppSettings {
       transition: 'fade' | 'slide';
       showLabels: boolean;
       hideOnScroll: boolean;
-      fixedBorderEnabled: boolean;
+      fixed: {
+        borderEnabled: boolean;
+      }
     }
   }
 }
