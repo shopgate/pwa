@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    height: 'var(--safe-area-inset-top)',
+    height: theme.layout.safeArea.top,
     width: '100%',
     zIndex: 10000000,
     pointerEvents: 'auto',
@@ -40,7 +40,7 @@ const useStyles = makeStyles()(theme => ({
   notch: {
     flex: 1,
     background: 'black',
-    height: 'calc(var(--safe-area-inset-top) - 16px)',
+    height: `calc(${theme.layout.safeArea.top} - 16px)`,
     maxWidth: 150,
     borderRadius: 16,
     border: '1px solid rgba(255, 255, 255, 0.5)',

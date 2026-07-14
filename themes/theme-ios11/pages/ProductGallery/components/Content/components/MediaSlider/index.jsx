@@ -28,8 +28,8 @@ const useStyles = makeStyles()(theme => ({
   },
   slider: {
     height: '100%',
-    '--swiper-pagination-fraction-top-offset': 'calc(4px + var(--safe-area-inset-top))',
-    '--swiper-pagination-bottom': 'max(var(--safe-area-inset-bottom), 8px)',
+    '--swiper-pagination-fraction-top-offset': `calc(4px + ${theme.layout.safeArea.top})`,
+    '--swiper-pagination-bottom': `max(${theme.layout.safeArea.bottom}, 8px)`,
   },
   slide: {
     position: 'relative',
@@ -42,7 +42,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'absolute',
     bottom: [
       '2px',
-      'calc(2px + var(--safe-area-inset-bottom))',
+      `calc(2px + ${theme.layout.safeArea.bottom})`,
     ],
     left: '50%',
     transform: 'translateX(-50%)',

@@ -3,6 +3,7 @@ import createBreakpoints from './createBreakpoints';
 import createSpacing from './createSpacing';
 import transitions from './transitions';
 import zIndex from './zIndex';
+import layout from './layout';
 import createThemeFromColorScheme from './createThemeFromColorScheme';
 import createCssVarsForColorSchemeThemes from './createCssVarsForColorSchemeThemes';
 import applyStyles from './applyStyles';
@@ -86,6 +87,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     spacing,
     transitions,
     zIndex,
+    layout,
     colorSchemes,
     getColorSchemeSelector,
     setActiveColorScheme,
