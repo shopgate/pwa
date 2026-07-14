@@ -12,11 +12,11 @@ export interface ColorSchemeContextValue {
   /**
    * The current color scheme (e.g., 'light' or 'dark')
    */
-  mode: ColorSchemeName;
+  mode: ColorSchemeName | null;
   /**
    * Function to update the color scheme
    */
-  setMode: React.Dispatch<React.SetStateAction<ColorSchemeName>>;
+  setMode: React.Dispatch<React.SetStateAction<ColorSchemeName | null>>;
 }
 
 export const ThemeContext = createContext<Theme>({ } as Theme);
