@@ -1,4 +1,5 @@
 import { produce } from 'immer';
+import { merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
@@ -19,11 +20,12 @@ const isReceiveAppSettingsAction = (
 export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   isHydrated: false,
   navigation: {
-    menubar: {
-      style: 'fixed',
+    tabBar: {
+      variant: 'fixed',
       showLabels: true,
       hideOnScroll: false,
       transition: 'fade',
+      fixedBorderEnabled: true,
     },
   },
 };
@@ -39,7 +41,10 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   action = { type: '' }
 ) => produce(state ?? DEFAULT_APP_SETTINGS, (draft: AppSettingsSlice) => {
   if (isReceiveAppSettingsAction(action)) {
-    Object.assign(draft, action.settings);
+    // Deep merge so a partial payload (e.g. only some navigation.tabBar fields)
+    // keeps the built-in defaults for anything the source omits, rather than
+    // shallow-replacing whole branches and leaving consumers with undefined.
+    merge(draft, action.settings);
     draft.isHydrated = true;
   }
 });

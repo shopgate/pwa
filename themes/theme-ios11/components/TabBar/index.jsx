@@ -30,9 +30,11 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 10,
     justifyContent: 'center',
   },
-  tabBarContainerDocked: {
+  tabBarContainerFixed: {
     background: theme.components.tabBar.background,
     minHeight: `calc(${theme.components.tabBar.minHeight} + var(--safe-area-inset-bottom))`,
+  },
+  tabBarContainerBorder: {
     borderTop: `1px solid ${theme.components.tabBar.border}`,
   },
   tabBarContainerFloating: {
@@ -45,7 +47,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
-  tabBarDocked: {
+  tabBarFixed: {
     paddingBottom: 'var(--safe-area-inset-bottom)',
   },
   tabBarFloating: {
@@ -122,8 +124,9 @@ const TabBar = ({
 
   const {
     transition = 'fade',
-    variant = 'docked',
+    variant = 'fixed',
     hideOnScroll = false,
+    fixedBorderEnabled = true,
   } = useTabBarSettings();
 
   const [ariaHidden, setAriaHidden] = useState(modalCount > 0);
@@ -232,9 +235,13 @@ const TabBar = ({
       isScrolledOut ? 'transition-hidden' : 'transition-visible',
       transitionVisibility ? 'visible' : 'hidden',
       {
+        // 'variant-docked' is kept for backwards compatibility with custom
+        // styling; 'variant-fixed' is the new vocabulary. Both are emitted.
         'variant-docked': variant !== 'floating',
+        'variant-fixed': variant !== 'floating',
         'variant-floating': variant === 'floating',
-        [classes.tabBarContainerDocked]: variant !== 'floating',
+        [classes.tabBarContainerFixed]: variant !== 'floating',
+        [classes.tabBarContainerBorder]: variant !== 'floating' && fixedBorderEnabled,
         [classes.tabBarContainerFloating]: variant === 'floating',
         [classes.hidden]: !isVisible,
       }
@@ -247,7 +254,7 @@ const TabBar = ({
       'common__grid',
       classes.tabBarBase,
       {
-        [classes.tabBarDocked]: variant !== 'floating',
+        [classes.tabBarFixed]: variant !== 'floating',
         [classes.tabBarFloating]: variant === 'floating',
       }
     );
@@ -260,9 +267,10 @@ const TabBar = ({
     classes.hidden,
     classes.tabBarBase,
     classes.tabBarContainerBase,
-    classes.tabBarContainerDocked,
+    classes.tabBarContainerFixed,
+    classes.tabBarContainerBorder,
     classes.tabBarContainerFloating,
-    classes.tabBarDocked,
+    classes.tabBarFixed,
     classes.tabBarFloating,
     classes.transitionFadeBase,
     classes.transitionFadeIn,
@@ -276,6 +284,7 @@ const TabBar = ({
     transition,
     transitionVisibility,
     variant,
+    fixedBorderEnabled,
     cx,
   ]);
 

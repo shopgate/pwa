@@ -23,9 +23,9 @@ export const getAreAppSettingsHydrated = createSelector(
 );
 
 /**
- * Selects the menubar settings.
+ * Selects the tab bar settings.
  */
-export const getMenubarSettings = createSelector(
+export const getTabBarSettings = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.navigation.menubar
+  appSettings => appSettings.navigation.tabBar
 );

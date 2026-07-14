@@ -6,11 +6,12 @@ export interface AppSettingsState {
 
 export interface AppSettings {
   navigation: {
-    menubar: {
-      style: 'fixed' | 'floating'
+    tabBar: {
+      variant: 'fixed' | 'floating'
       transition: 'fade' | 'slide';
       showLabels: boolean;
       hideOnScroll: boolean;
+      fixedBorderEnabled: boolean;
     }
   }
 }
