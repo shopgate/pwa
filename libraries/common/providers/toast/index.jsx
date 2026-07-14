@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
-import transitions from '@shopgate/engage/styles/theme/createTheme/transitions';
+import { withTheme } from '@shopgate/engage/styles';
 import ToastContext from './context';
 
 /**
@@ -17,6 +17,7 @@ class ToastProvider extends Component {
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element),
     ]).isRequired,
+    theme: PropTypes.shape().isRequired,
   };
 
   /**
@@ -65,7 +66,7 @@ class ToastProvider extends Component {
       found.actionLabel = toast.actionLabel;
       found.message = toast.message;
       found.messageParams = toast.messageParams;
-      found.duration = toast.duration || transitions.duration.toast;
+      found.duration = toast.duration || this.props.theme.transitions.duration.toast;
     } else {
       toasts.push({
         id: toast.id,
@@ -73,7 +74,7 @@ class ToastProvider extends Component {
         actionLabel: toast.actionLabel,
         message: toast.message,
         messageParams: toast.messageParams,
-        duration: toast.duration || transitions.duration.toast,
+        duration: toast.duration || this.props.theme.transitions.duration.toast,
       });
     }
 
@@ -108,4 +109,4 @@ class ToastProvider extends Component {
   }
 }
 
-export default ToastProvider;
+export default withTheme(ToastProvider);

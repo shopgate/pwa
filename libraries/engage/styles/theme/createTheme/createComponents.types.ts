@@ -311,17 +311,17 @@ export const componentsDefaults = {
   },
   navigator: {
     vars: {
-      height: '44px',
+      height: 44,
     },
   },
   filterBar: {
     vars: {
-      height: '48px',
+      height: 48,
     },
   },
   paymentBar: {
     vars: {
-      height: '78px',
+      height: 78,
     },
   },
 } satisfies ComponentsDefaults;

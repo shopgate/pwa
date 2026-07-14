@@ -9,7 +9,6 @@ const { colors } = themeConfig;
  * @returns The theme object
  */
 export const createDefaultThemeOptions = (): ThemeOptions => ({
-  svgImages: themeConfig.svgImages,
   colorSchemes: {
     light: {
       palette: {

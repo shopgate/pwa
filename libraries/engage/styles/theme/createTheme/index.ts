@@ -38,7 +38,6 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     palette: paletteInput = {},
     typography: typographyInput = {},
     colorSchemes: colorSchemesInput = { light: {} },
-    svgImages = {},
   } = options;
 
   const defaultScheme: BaseTheme = merge({}, {
@@ -79,6 +78,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
   const breakpoints = createBreakpoints();
   const spacing = createSpacing();
 
+  // @ts-expect-error applyStyles is added to the theme object after its creation
   const theme: ThemeInternal = {
     ...currentTheme,
     ...cssVarsTheme,
@@ -87,8 +87,6 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     spacing,
     transitions,
     zIndex,
-    svgImages,
-    // @ts-expect-error - Sure about the type here
     colorSchemes,
     getColorSchemeSelector,
     setActiveColorScheme,

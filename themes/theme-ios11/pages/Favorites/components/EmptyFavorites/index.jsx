@@ -2,9 +2,13 @@ import React, { useMemo } from 'react';
 import { I18n } from '@shopgate/engage/components';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { FAVORITES_EMPTY } from '@shopgate/pwa-common-commerce/favorites/constants/Portals';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { svgToDataUrl } from '@shopgate/engage/core/helpers';
-import { makeStyles, useTheme } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import Icon from './components/Icon';
+
+const { svgImages = {} } = themeConfig || {};
+const { emptyFavorites = '' } = svgImages || {};
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -35,9 +39,7 @@ const useStyles = makeStyles()(theme => ({
  */
 const EmptyFavorites = () => {
   const { classes, cx } = useStyles();
-  const { svgImages = {} } = useTheme();
-  const { emptyFavorites = '' } = svgImages || {};
-  const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites), [emptyFavorites]);
+  const imageSRC = useMemo(() => svgToDataUrl(emptyFavorites), []);
 
   return (
     <div className={classes.container}>
