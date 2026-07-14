@@ -48,7 +48,7 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'space-around',
   },
   tabBarFixed: {
-    paddingBottom: theme.layout.safeArea.bottom,,
+    paddingBottom: theme.layout.safeArea.bottom,
   },
   tabBarFloating: {
     background: theme.components.tabBar.background,

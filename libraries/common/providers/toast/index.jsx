@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
-import { withTheme } from '@shopgate/engage/styles';
+import { withTheme } from '@shopgate/engage/styles/theme/hocs/withTheme';
 import ToastContext from './context';
 
 /**
