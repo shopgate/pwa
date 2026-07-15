@@ -156,9 +156,9 @@ export interface Theme extends BaseTheme {
    */
   zIndex: ZIndex;
   /**
-   * Mappings to runtime layout CSS variables (app bar / footer heights, safe-area insets).
-   * The values are `var(--...)` references to variables measured/updated at runtime elsewhere
-   * in the app; this node does not generate any new CSS variables.
+   * Mappings to runtime layout CSS variables (safe-area insets).
+   * The values are `var(--...)` references to variables updated at runtime elsewhere in the app;
+   * this node does not generate any new CSS variables.
    */
   layout: Layout;
   /**
