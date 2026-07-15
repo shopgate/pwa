@@ -8,7 +8,6 @@
 
 <div align="center">
 
-[![Build Status](https://travis-ci.org/shopgate/pwa.svg?branch=v6.X)](https://travis-ci.org/shopgate/pwa)
 [![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=v6.X)](https://coveralls.io/github/shopgate/pwa?branch=v6.X)
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
@@ -19,17 +18,6 @@
 ## Documentation
 
 Check out our [documentation website](https://developer.shopgate.com/guides)!
-
-## Setting up new core extensions
-
-To set up a new core extension you need to perform the following steps:
-
-* Add an exception into the `.gitignore` file as it was done with `@shopgate-product-reviews`.
-* Open the file `repos.json` and add the repository to include there as a subtree.
-* Add the new extensions into the `Makefile` as an additional value for the `EXTENSIONS` variable.
-  * If it's not an extension, then use the apropriate variable in the `Makefile`.
-* Open the monorepo's `lerna.json` file and add your extension as an additional entry in `packages`
-* Add the same entry additionally into `workspaces` in the `package.json` file
 
 ## PWA 7 specialities
 The GMD theme of PWA 7 supports a special mode to display responsive content for desktop browsers. To enable PWA in desktop browsers, pipeline requests (that are an app concept originally) are transformed to AJAX requests which are send to a special proxy which is called "web bridge".

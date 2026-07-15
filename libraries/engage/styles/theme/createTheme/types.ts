@@ -1,10 +1,11 @@
 import type { PaletteOptions, Palette } from './createPalette';
 import type { Typography, TypographyOptions } from './createTypography';
-import type { Components, ComponentsOptions, ComponentVars } from './createComponents';
+import type { ComponentsOptions, ComponentVars, Components } from './createComponents';
 import type { Breakpoints } from './createBreakpoints';
 import type { Spacing } from './createSpacing';
 import type { Transitions } from './transitions';
 import type { ZIndex } from './zIndex';
+import type { Layout } from './layout';
 import type { ApplyStyles } from './applyStyles';
 import type { GetColorSchemeSelector, ActiveColorSchemeSwitcher } from './helpers';
 import type { CreateCssVarsForColorSchemeThemesReturnValue } from './createCssVarsForColorSchemeThemes';
@@ -155,6 +156,12 @@ export interface Theme extends BaseTheme {
    */
   zIndex: ZIndex;
   /**
+   * Mappings to runtime layout CSS variables (safe-area insets).
+   * The values are `var(--...)` references to variables updated at runtime elsewhere in the app;
+   * this node does not generate any new CSS variables.
+   */
+  layout: Layout;
+  /**
    * An object that contains the CSS variable references for the theme properties.
    * It has the same structure as the theme, but the values are CSS variable references
    * (e.g., `var(--sg-palette-primary-main)`) instead of actual color values.
@@ -182,12 +189,25 @@ export interface Theme extends BaseTheme {
 }
 
 /**
- * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
- * and the value is a theme object that contains e.g. the palette and typography for that color scheme.
+ * A single fully-resolved color-scheme theme. Identical to {@link BaseTheme} except that its
+ * `components` keep the nested `vars` level (the raw per-scheme token defaults produced by
+ * `createComponents`), whereas the flattened `BaseTheme['components']` shape is only produced for
+ * the final merged theme.
  */
-export type ColorSchemeThemes = Record<ColorSchemeName, BaseTheme>
+export type ColorSchemeTheme = Omit<BaseTheme, 'components'> & { components: Components };
 
-export type ThemeInternal = Theme & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {
+/**
+ * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
+ * and the value is a fully-resolved color-scheme theme ({@link ColorSchemeTheme}).
+ */
+export type ColorSchemeThemes = Record<ColorSchemeName, ColorSchemeTheme>
+
+export type ThemeInternal = Omit<Theme, 'colorSchemes'> & {
+  /**
+   * Internal runtime map of fully resolved color-scheme themes.
+   */
+  colorSchemes: ColorSchemeThemes;
+} & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {
   /**
    * Function that generates a CSS selector string for a given color scheme.
    */

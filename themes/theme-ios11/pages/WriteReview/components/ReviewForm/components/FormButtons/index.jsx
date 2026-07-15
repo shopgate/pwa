@@ -2,12 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
-
-const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   buttonLine: {
@@ -23,7 +20,9 @@ const useStyles = makeStyles()(theme => ({
     minWidth: 64,
     overflow: 'hidden',
     border: 0,
-    ...variables.buttonBase,
+    borderRadius: 5,
+    fontWeight: 600,
+    fontSize: 17,
     padding: theme.spacing(0, 2, 0),
     '&:disabled': {
       cursor: 'not-allowed',

@@ -234,8 +234,11 @@ const FavoriteItem = ({
       return false;
     }
 
-    if (hasNewServices() && !isRopeProductOrderable) {
-      // Product is not orderable for ROPE. So users need to do some corrections. Just redirect.
+    if (hasNewServices() && isRopeProductOrderable === false) {
+      // Product is explicitly not orderable for ROPE (a fulfillment method other than direct ship
+      // that isn't available for the current product/location). Users need to correct the
+      // selection on the PDP, so redirect. `null` means ROPE doesn't apply (direct ship) and must
+      // fall through to the regular add-to-cart below.
       historyPush({ pathname: productLink });
       return false;
     }

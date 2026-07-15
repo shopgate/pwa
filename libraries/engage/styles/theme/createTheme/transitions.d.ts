@@ -39,6 +39,10 @@ export interface Duration {
    * Recommended when something is leaving screen
    */
   leavingScreen: number;
+  /**
+   * How long a toast stays visible before auto-dismissing
+   */
+  toast: number;
 }
 
 export const duration: Duration;

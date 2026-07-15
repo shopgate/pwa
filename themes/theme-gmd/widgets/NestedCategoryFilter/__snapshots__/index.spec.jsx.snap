@@ -450,7 +450,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     contentRef={
                       {
                         "current": <div
-                          class="sg-12f1i2r-content"
+                          class="sg-e47i1i-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -556,7 +556,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-1cxk1cy-closeButton"
+                                    className="sg-nop4m7-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -681,7 +681,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-12f1i2r-content"
+                            className="sg-e47i1i-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -1784,7 +1784,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-12f1i2r-content"
+                          class="sg-e47i1i-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -1890,7 +1890,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-1cxk1cy-closeButton"
+                                    className="sg-nop4m7-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -2015,7 +2015,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-12f1i2r-content"
+                            className="sg-e47i1i-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -2610,7 +2610,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-12f1i2r-content"
+                          class="sg-e47i1i-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -2716,7 +2716,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-1cxk1cy-closeButton"
+                                    className="sg-nop4m7-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -2841,7 +2841,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-12f1i2r-content"
+                            className="sg-e47i1i-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -3112,7 +3112,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-12f1i2r-content"
+                          class="sg-e47i1i-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -3218,7 +3218,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-1cxk1cy-closeButton"
+                                    className="sg-nop4m7-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -3343,7 +3343,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-12f1i2r-content"
+                            className="sg-e47i1i-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -4054,7 +4054,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     contentRef={
                       {
                         "current": <div
-                          class="sg-12f1i2r-content"
+                          class="sg-e47i1i-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -4160,7 +4160,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                                 >
                                   <button
                                     aria-label="common.close"
-                                    className="sg-1cxk1cy-closeButton"
+                                    className="sg-nop4m7-closeButton"
                                     onClick={[Function]}
                                     type="button"
                                   >
@@ -4285,7 +4285,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-12f1i2r-content"
+                            className="sg-e47i1i-content"
                             onScroll={[Function]}
                           >
                             <SheetList

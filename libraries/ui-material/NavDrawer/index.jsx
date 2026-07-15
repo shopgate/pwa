@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
     fontSize: theme.typography.body2.fontSize,
     height: '100%',
     overflowY: 'scroll',
-    paddingBottom: 'var(--safe-area-inset-bottom)',
+    paddingBottom: theme.layout.safeArea.bottom,
     WebkitOverflowScrolling: 'touch',
   },
   drawer: {

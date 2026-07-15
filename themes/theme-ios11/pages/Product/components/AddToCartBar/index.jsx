@@ -28,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     zIndex: 2,
     overflow: 'hidden',
-    paddingBottom: 'var(--safe-area-inset-bottom)',
+    paddingBottom: theme.layout.safeArea.bottom,
   },
   innerContainer: {
     padding: theme.spacing(1),

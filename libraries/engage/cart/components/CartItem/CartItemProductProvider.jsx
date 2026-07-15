@@ -1,16 +1,11 @@
 import React, {
   useMemo, useCallback, useState, useRef,
 } from 'react';
-import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { CART_ITEM_TYPE_PRODUCT } from '@shopgate/pwa-common-commerce/cart/constants';
 import PropTypes from 'prop-types';
-import { CART_INPUT_AUTO_SCROLL_DELAY } from '../../cart.constants';
 import Context from './CartItemProductProvider.context';
 import connect from './CartItemProductProvider.connector';
 import CartItemProductProviderLegacy from './CartItemProductProviderLegacy';
-
-const { variables } = themeConfig;
 
 /**
  * @typedef {import('./CartItemProductProvider.types').OwnProps} OwnProps
@@ -35,7 +30,6 @@ const CartItemProductProvider = ({
   cartItem,
   isEditable,
   children,
-  isAndroid,
   currencyOverride,
 }) => {
   const {
@@ -68,28 +62,6 @@ const CartItemProductProvider = ({
   }, [id, updateProduct]);
 
   const toggleEditMode = useCallback((isEnabled) => {
-    if (isAndroid && isEnabled) {
-      /**
-       * When the user focuses the quantity input, the keyboard will pop up an overlap the input.
-       * Therefor the input has to be scrolled into the viewport again. Since between the focus and
-       * the keyboard appearance some time ticks away, the execution of the scroll code is delayed.
-       *
-       * This should not happen on iOS devices, since their web views behave different.
-       */
-      setTimeout(() => {
-        const yOffset = -(window.innerHeight / 2)
-          + getAbsoluteHeight(cartItemRef.current)
-          + variables.paymentBar.height;
-
-        if (cartItemRef.current) {
-          cartItemRef.current.scrollIntoView({
-            behavior: 'smooth',
-            yOffset,
-          });
-        }
-      }, CART_INPUT_AUTO_SCROLL_DELAY);
-    }
-
     // Give the keyboard some time to slide out after blur, before further actions are taken.
     setTimeout(() => {
       if (onFocus) {
@@ -98,7 +70,7 @@ const CartItemProductProvider = ({
     }, isEnabled ? 300 : 0);
 
     setEditMode(isEnabled);
-  }, [isAndroid, onFocus]);
+  }, [onFocus]);
 
   const value = useMemo(
     () => {
@@ -200,7 +172,6 @@ CartItemProductProvider.propTypes = {
   children: PropTypes.node,
   currency: PropTypes.string,
   currencyOverride: PropTypes.string,
-  isAndroid: PropTypes.bool,
   isEditable: PropTypes.bool,
   onFocus: PropTypes.func,
 };
@@ -211,7 +182,6 @@ CartItemProductProvider.defaultProps = {
   onFocus: () => {},
   currencyOverride: null,
   currency: null,
-  isAndroid: false,
 };
 
 export default connect(CartItemProductProvider);

@@ -32,7 +32,7 @@ const useStyles = makeStyles()(theme => ({
   },
   tabBarContainerFixed: {
     background: theme.components.tabBar.background,
-    minHeight: `calc(${theme.components.tabBar.minHeight} + var(--safe-area-inset-bottom))`,
+    minHeight: `calc(${theme.components.tabBar.minHeight} + ${theme.layout.safeArea.bottom})`,
   },
   tabBarContainerBorder: {
     borderTop: `1px solid ${theme.components.tabBar.border}`,
@@ -48,13 +48,13 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'space-around',
   },
   tabBarFixed: {
-    paddingBottom: 'var(--safe-area-inset-bottom)',
+    paddingBottom: theme.layout.safeArea.bottom,
   },
   tabBarFloating: {
     background: theme.components.tabBar.background,
     minHeight: theme.components.tabBar.floatingMinHeight,
     padding: '4px 0',
-    marginBottom: `max(16px, calc(var(--safe-area-inset-bottom) + ${isAndroidOs ? '8px' : '0px'}))`,
+    marginBottom: `max(16px, calc(${theme.layout.safeArea.bottom} + ${isAndroidOs ? '8px' : '0px'}))`,
     borderRadius: theme.components.tabBar.floatingBorderRadius,
     boxShadow: theme.components.tabBar.floatingBoxShadow,
   },
@@ -78,7 +78,7 @@ const useStyles = makeStyles()(theme => ({
     transform: 'translateY(0)',
   },
   transitionSlideOut: {
-    transform: 'translateY(calc(100% + var(--safe-area-inset-bottom) + 16px))',
+    transform: `translateY(calc(100% + ${theme.layout.safeArea.bottom} + 16px))`,
   },
 }));
 

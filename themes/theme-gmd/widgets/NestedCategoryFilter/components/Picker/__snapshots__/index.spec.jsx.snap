@@ -114,7 +114,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               contentRef={
                 {
                   "current": <div
-                    class="sg-12f1i2r-content"
+                    class="sg-e47i1i-content"
                   >
                     <button
                       class="sg-1yjeh22-button"
@@ -197,7 +197,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-1cxk1cy-closeButton"
+                              className="sg-nop4m7-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -322,7 +322,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-12f1i2r-content"
+                      className="sg-e47i1i-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -556,7 +556,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               contentRef={
                 {
                   "current": <div
-                    class="sg-12f1i2r-content"
+                    class="sg-e47i1i-content"
                   >
                     <button
                       class="sg-1yjeh22-button"
@@ -639,7 +639,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-1cxk1cy-closeButton"
+                              className="sg-nop4m7-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -764,7 +764,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-12f1i2r-content"
+                      className="sg-e47i1i-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -1038,7 +1038,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               contentRef={
                 {
                   "current": <div
-                    class="sg-12f1i2r-content"
+                    class="sg-e47i1i-content"
                   >
                     <button
                       class="sg-1yjeh22-button"
@@ -1121,7 +1121,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-1cxk1cy-closeButton"
+                              className="sg-nop4m7-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1246,7 +1246,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-12f1i2r-content"
+                      className="sg-e47i1i-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -1481,7 +1481,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               contentRef={
                 {
                   "current": <div
-                    class="sg-12f1i2r-content"
+                    class="sg-e47i1i-content"
                   >
                     <button
                       class="sg-1mothy2-buttonSelected"
@@ -1564,7 +1564,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-1cxk1cy-closeButton"
+                              className="sg-nop4m7-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
@@ -1689,7 +1689,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-12f1i2r-content"
+                      className="sg-e47i1i-content"
                       onScroll={[Function]}
                     >
                       <SheetList

@@ -3,6 +3,7 @@ import createBreakpoints from './createBreakpoints';
 import createSpacing from './createSpacing';
 import transitions from './transitions';
 import zIndex from './zIndex';
+import layout from './layout';
 import createThemeFromColorScheme from './createThemeFromColorScheme';
 import createCssVarsForColorSchemeThemes from './createCssVarsForColorSchemeThemes';
 import applyStyles from './applyStyles';
@@ -78,7 +79,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
   const breakpoints = createBreakpoints();
   const spacing = createSpacing();
 
-  const theme: ThemeInternal = {
+  const theme = {
     ...currentTheme,
     ...cssVarsTheme,
     defaultColorScheme,
@@ -86,12 +87,12 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     spacing,
     transitions,
     zIndex,
-    // @ts-expect-error - Sure about the type here
+    layout,
     colorSchemes,
     getColorSchemeSelector,
     setActiveColorScheme,
     generateStyleSheets,
-  };
+  } as ThemeInternal;
 
   theme.applyStyles = applyStyles;
 

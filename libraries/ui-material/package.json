@@ -19,7 +19,7 @@
     "prop-types": "~15.8.1",
     "react-spring": "^8.0.27",
     "react-transition-group": "^4.4.5",
-    "react-use": "^17.6.0"
+    "react-use": "^17.6.1"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0"

@@ -13,7 +13,9 @@ import updateFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions
 import removeFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/removeFavoritesList';
 import { removeFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { FulfillmentSheet, MULTI_LINE_RESERVE, STAGE_SELECT_STORE } from '@shopgate/engage/locations';
+import {
+  FulfillmentSheet, MULTI_LINE_RESERVE, STAGE_SELECT_STORE, DIRECT_SHIP,
+} from '@shopgate/engage/locations';
 import { openSheet } from '@shopgate/engage/locations/providers/FulfillmentProvider';
 import { getWishlistMode } from '@shopgate/engage/settings/selectors/shopSettings';
 import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/settings/constants/shopSettings';
@@ -181,6 +183,22 @@ const FavoriteLists = ({
     ) || [];
     if (activeLocation && !activeFulfillmentMethod && availableFulfillmentMethods.length === 1) {
       [activeFulfillmentMethod] = availableFulfillmentMethods;
+    }
+
+    // Direct ship needs neither a location nor an explicit method selection. When it's the only
+    // available fulfillment method for the product, add straight to the cart without prompting
+    // the user with the fulfillment method chooser.
+    if (
+      !activeFulfillmentMethod
+      && availableFulfillmentMethods.length === 1
+      && availableFulfillmentMethods[0] === DIRECT_SHIP
+    ) {
+      addToCart([{
+        productId: product.id,
+        quantity,
+      }]);
+      promiseRef.current.resolve();
+      return promise;
     }
 
     // If all options are already configured immediately add it to the cart.

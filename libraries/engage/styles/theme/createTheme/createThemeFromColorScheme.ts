@@ -3,7 +3,7 @@ import createTypography from './createTypography';
 import createComponents from './createComponents';
 import createShape from './createShape';
 import shadows from './shadows';
-import type { ColorSchemeOptions, BaseTheme } from './types';
+import type { ColorSchemeOptions, ColorSchemeTheme } from './types';
 
 /**
  * Calculates the percentage value for a given coefficient, which can be a number or a string representing a CSS calculation.
@@ -65,7 +65,7 @@ export const contrastColor = (
  * @param colorScheme The color scheme options.
  * @returns A theme object for the given color scheme.
  */
-const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): BaseTheme => {
+const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): ColorSchemeTheme => {
   const {
     palette: paletteInput = {},
     typography: typographyInput = {},

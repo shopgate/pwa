@@ -17,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
     width: '1px',
     zIndex: -1000,
     '&:first-of-type': {
-      marginTop: 'calc(16px + var(--safe-area-inset-top))',
+      marginTop: `calc(16px + ${theme.layout.safeArea.top})`,
     },
   },
   button: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     width: '100%',
     '&:first-of-type': {
-      paddingTop: 'calc(16px + var(--safe-area-inset-top))',
+      paddingTop: `calc(16px + ${theme.layout.safeArea.top})`,
     },
   },
   label: {

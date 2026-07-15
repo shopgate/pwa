@@ -11,7 +11,7 @@ exports[`<Header /> should render with correct title 1`] = `
   >
     <button
       aria-label="common.close"
-      className="sg-1cxk1cy-closeButton"
+      className="sg-nop4m7-closeButton"
       onClick={[Function]}
       type="button"
     >

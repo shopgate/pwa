@@ -1,12 +1,11 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { I18n, Ellipsis, Typography } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   title: {
-    lineHeight: themeConfig.typography.lineHeight,
+    lineHeight: theme.typography.body2.lineHeight,
     paddingBottom: theme.spacing(1),
     marginTop: '-.25em',
   },

@@ -202,6 +202,16 @@ export const componentsSchema = {
       paginationProgressbarActiveColor: '',
     },
   },
+  navigator: {
+    vars: {
+      height: '',
+    },
+  },
+  filterBar: {
+    vars: {
+      height: '',
+    },
+  },
 } as const;
 
 /**
@@ -290,6 +300,16 @@ export const componentsDefaults = {
       paginationFractionBackground: t => t.palette.grey.light,
       paginationProgressbarBackground: t => t.palette.grey.light,
       paginationProgressbarActiveColor: t => t.palette.common.black,
+    },
+  },
+  navigator: {
+    vars: {
+      height: 44,
+    },
+  },
+  filterBar: {
+    vars: {
+      height: 48,
     },
   },
 } satisfies ComponentsDefaults;

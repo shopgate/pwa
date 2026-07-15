@@ -4,7 +4,7 @@ import { createPortal } from 'react-dom';
 import { useTrackModalState } from '@shopgate/engage/a11y/hooks';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'fixed',
     top: 0,
@@ -25,14 +25,14 @@ const useStyles = makeStyles()({
     position: 'relative',
     maxWidth: '100vw',
     maxHeight: '100vh',
-    paddingTop: 'var(--safe-area-inset-top)',
-    paddingBottom: 'var(--safe-area-inset-bottom)',
+    paddingTop: theme.layout.safeArea.top,
+    paddingBottom: theme.layout.safeArea.bottom,
     overflowY: 'scroll',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       overflowY: 'initial',
     },
   },
-});
+}));
 
 /**
  * The Modal component.

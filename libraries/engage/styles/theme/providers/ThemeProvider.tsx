@@ -12,11 +12,11 @@ export interface ColorSchemeContextValue {
   /**
    * The current color scheme (e.g., 'light' or 'dark')
    */
-  mode: ColorSchemeName;
+  mode: ColorSchemeName | null;
   /**
    * Function to update the color scheme
    */
-  setMode: React.Dispatch<React.SetStateAction<ColorSchemeName>>;
+  setMode: React.Dispatch<React.SetStateAction<ColorSchemeName | null>>;
 }
 
 export const ThemeContext = createContext<Theme>({ } as Theme);
@@ -52,7 +52,6 @@ const ThemeProvider = ({
   const styleSheets = useMemo(() => theme.generateStyleSheets(), [theme]);
 
   return (
-    // @ts-expect-error The input theme contains more properties than exposed to the Theme type
     <ColorSchemeContext.Provider value={colorSchemeContextValue}>
       {IS_FRONTEND_SETTINGS_ADMIN_PREVIEW_ACTIVE && <FrontendSettingsPreviewBridge />}
       <ThemeContext.Provider value={theme}>

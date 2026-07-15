@@ -12,11 +12,11 @@ import Center from './components/Center';
 import Left from './components/Left';
 import Below from './components/Below';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   outer: {
     boxSizing: 'content-box',
     left: 0,
-    paddingTop: 'var(--safe-area-inset-top)',
+    paddingTop: theme.layout.safeArea.top,
     position: 'sticky',
     top: 0,
     width: '100%',
@@ -30,7 +30,7 @@ const useStyles = makeStyles()({
     position: 'relative',
     zIndex: 14,
   },
-});
+}));
 
 /**
  * Updates the --app-bar-height custom property

@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
   container: {
     position: 'fixed',
     height: 'var(--snack-bar-height, 80px)',
-    bottom: 'max(var(--footer-height), var(--safe-area-inset-bottom))',
+    bottom: `max(var(--footer-height), ${theme.layout.safeArea.bottom})`,
     transition: 'bottom 0.3s ease',
     overflow: 'hidden',
     zIndex: 6,

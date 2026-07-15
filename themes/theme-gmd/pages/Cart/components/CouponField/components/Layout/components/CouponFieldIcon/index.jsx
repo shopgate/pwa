@@ -11,7 +11,7 @@ const useStyles = makeStyles()(theme => ({
     fill: theme.palette.primary.main,
   },
   iconArrowEnabled: {
-    fill: theme.contrastColor(theme.palette.primary.main),
+    fill: theme.palette.primary.contrastText,
   },
   iconCircleDisabled: {
     fill: colors.shade7,
