@@ -682,6 +682,24 @@
         "label": "A url to fetch a JSONP file with merchant settings for Engage."
       }
     },
+    "appSettingsUrl": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "json",
+        "label": "A url to fetch a JSONP file with app settings for Engage."
+      }
+    },
+    "themeCssUrl": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "type": "json",
+        "label": "A url to fetch the theme css file for Engage."
+      }
+    },
     "omniStage": {
       "type": "bigApi",
       "destination": "frontend",
