@@ -20,7 +20,7 @@ const useStyles = makeStyles()({
   details: {
     lineHeight: 1.2,
     '&:not(:empty)': {
-      padding: '12px 0 30px',
+      padding: '12px 16px 30px',
     },
   },
   quantityHint: {

@@ -151,6 +151,12 @@ export const componentsSchema = {
       color: '',
     },
   },
+  appBar: {
+    vars: {
+      background: '',
+      color: '',
+    },
+  },
   counterBadge: {
     vars: {
       background: '',
@@ -255,6 +261,12 @@ export const componentsDefaults = {
     vars: {
       background: t => t.palette.primary.main,
       color: t => t.palette.primary.contrastText,
+    },
+  },
+  appBar: {
+    vars: {
+      background: '#FFFFFF',
+      color: t => t.palette.common.black,
     },
   },
   counterBadge: {
