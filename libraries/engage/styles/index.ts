@@ -9,6 +9,7 @@ export {
   useColorScheme,
   withTheme,
   type Theme,
+  type ColorSchemeName,
   type PaletteColorsWithMain,
   type WithThemeProps,
 } from './theme';

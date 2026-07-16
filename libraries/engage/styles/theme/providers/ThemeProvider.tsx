@@ -1,30 +1,24 @@
 import {
-  createContext, memo, useMemo, useLayoutEffect,
+  createContext, memo, useCallback, useMemo, useLayoutEffect,
 } from 'react';
 import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
+import { logger } from '@shopgate/engage/core/helpers';
 import { GlobalStyles } from '@shopgate/engage/styles';
 import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { FrontendSettingsPreviewBridge } from '@shopgate/engage/admin-preview/components';
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
-import { type Theme, type ThemeInternal, type ColorSchemeName } from '../createTheme';
+import { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
+import {
+  COLOR_SCHEME_NAMES, type Theme, type ThemeInternal, type ColorSchemeName,
+} from '../createTheme';
 
-export interface ColorSchemeContextValue {
-  /**
-   * The current color scheme (e.g., 'light' or 'dark')
-   */
-  mode: ColorSchemeName | null;
-  /**
-   * Function to update the color scheme
-   */
-  setMode: React.Dispatch<React.SetStateAction<ColorSchemeName | null>>;
-}
+export { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
 
 export const ThemeContext = createContext<Theme>({ } as Theme);
 
-export const ColorSchemeContext = createContext<ColorSchemeContextValue>({
-  mode: 'light',
-  setMode: () => '',
-});
+// Derived from the same tuple that ColorSchemeName is generated from, so the runtime list and the
+// type can never drift apart.
+const modes: ColorSchemeName[] = [...COLOR_SCHEME_NAMES];
 
 /**
  * The ThemeProvider component provides the theme context to its children.
@@ -38,10 +32,26 @@ const ThemeProvider = ({
     setActiveColorScheme,
   ] = useLocalStorage<ColorSchemeName>('persistedColorScheme', { initialValue: theme.defaultColorScheme });
 
+  // Wraps the raw storage setter, so an unsupported mode is rejected before it is persisted.
+  // Setting null is allowed and clears the stored preference.
+  const setMode = useCallback<ColorSchemeContextValue['setMode']>((value) => {
+    setActiveColorScheme((currentColorScheme) => {
+      const nextColorScheme = typeof value === 'function' ? value(currentColorScheme) : value;
+
+      if (nextColorScheme !== null && !modes.includes(nextColorScheme)) {
+        logger.warn(`ThemeProvider: "${nextColorScheme}" is not a supported color scheme.`);
+        return currentColorScheme;
+      }
+
+      return nextColorScheme;
+    });
+  }, [setActiveColorScheme]);
+
   const colorSchemeContextValue = useMemo(() => ({
     mode: activeColorScheme,
-    setMode: setActiveColorScheme,
-  }), [activeColorScheme, setActiveColorScheme]);
+    setMode,
+    modes,
+  }), [activeColorScheme, setMode]);
 
   useLayoutEffect(() => {
     if (!activeColorScheme) return;

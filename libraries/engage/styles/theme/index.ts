@@ -1,6 +1,8 @@
 export { default as ThemeProvider } from './providers/ThemeProvider';
 export { createTheme } from './createTheme';
-export type { Theme, Breakpoint, PaletteColorsWithMain } from './createTheme';
+export type {
+  Theme, Breakpoint, PaletteColorsWithMain, ColorSchemeName,
+} from './createTheme';
 export {
   useActiveBreakpoint,
   useMediaQuery,

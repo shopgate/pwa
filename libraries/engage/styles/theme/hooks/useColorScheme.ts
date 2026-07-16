@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ColorSchemeContext } from '../providers/ThemeProvider';
+import { ColorSchemeContext } from '../providers/ColorSchemeContext';
 
 /**
  * Returns the currently selected color scheme and a function to update it.

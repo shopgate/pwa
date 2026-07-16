@@ -26,6 +26,8 @@ export type {
   PaletteColorsWithMain,
 } from './types';
 
+export { COLOR_SCHEME_NAMES } from './types';
+
 /**
  * Creates a theme object for the ThemeProvider.
  * @param options The theme options.

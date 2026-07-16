@@ -15,9 +15,9 @@ import type { Shadows } from './shadows';
 export type { Breakpoint } from './createBreakpoints';
 export type { PaletteColorsWithMain } from './createPalette';
 
-const colorSchemes = ['light', 'dark'] as const;
+export const COLOR_SCHEME_NAMES = ['light', 'dark'] as const;
 
-export type ColorSchemeName = (typeof colorSchemes)[number];
+export type ColorSchemeName = (typeof COLOR_SCHEME_NAMES)[number];
 
 const selectorTypes = ['data', 'class'] as const;
 
