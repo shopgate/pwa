@@ -1,4 +1,4 @@
-import { IS_ADMIN_PREVIEW_ACTIVE } from '@shopgate/engage/admin-preview/constants';
+import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { PAGE_PATH, PAGE_PATTERN } from '@shopgate/pwa-common/constants/RoutePaths';
 
 export { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/admin-preview/constants';
@@ -19,9 +19,11 @@ export const PAGE_PREVIEW_SLUG = 'page_preview';
 /**
  * Checks if the app is currently in page preview mode.
  * @todo For backwards compatibility, this constant is still exported from the page package and
- * mapped to the IS_ADMIN_PREVIEW_ACTIVE constant. It should be removed in the future.
+ * mapped to the isAdminPreviewActive helper. It should be removed in the future. Note that this
+ * is a snapshot taken when this module is evaluated - consumers that can call
+ * isAdminPreviewActive() at usage time should do that instead.
  */
-export const IS_PAGE_PREVIEW_ACTIVE = IS_ADMIN_PREVIEW_ACTIVE;
+export const IS_PAGE_PREVIEW_ACTIVE = isAdminPreviewActive();
 
 /**
  * One hour in milliseconds

@@ -2,7 +2,7 @@ import {
   detectAdminPreview,
   detectFrontendSettingsAdminPreview,
   detectPageAdminPreview,
-} from '../detection';
+} from './_internal/detection';
 
 /**
  * Checks if the app is currently in admin preview mode (pages or frontend settings).
@@ -24,3 +24,12 @@ export const isPageAdminPreviewActive = (): boolean =>
  */
 export const isFrontendSettingsAdminPreviewActive = (): boolean =>
   detectFrontendSettingsAdminPreview();
+
+/**
+ * Checks if navigation is blocked. Page admin preview renders a single page in an iframe, so
+ * leaving that page would only ever show the admin something it did not ask to preview.
+ * Frontend settings preview is not affected - it previews styling on the regular app.
+ * @returns True if the app must not navigate, false otherwise.
+ */
+export const isNavigationBlocked = (): boolean =>
+  isPageAdminPreviewActive();

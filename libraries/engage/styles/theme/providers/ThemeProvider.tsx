@@ -3,7 +3,7 @@ import {
 } from 'react';
 import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
 import { GlobalStyles } from '@shopgate/engage/styles';
-import { IS_FRONTEND_SETTINGS_ADMIN_PREVIEW_ACTIVE } from '@shopgate/engage/admin-preview/constants';
+import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { FrontendSettingsPreviewBridge } from '@shopgate/engage/admin-preview/components';
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 import { type Theme, type ThemeInternal, type ColorSchemeName } from '../createTheme';
@@ -53,7 +53,7 @@ const ThemeProvider = ({
 
   return (
     <ColorSchemeContext.Provider value={colorSchemeContextValue}>
-      {IS_FRONTEND_SETTINGS_ADMIN_PREVIEW_ACTIVE && <FrontendSettingsPreviewBridge />}
+      {isFrontendSettingsAdminPreviewActive() && <FrontendSettingsPreviewBridge />}
       <ThemeContext.Provider value={theme}>
         <ActiveBreakpointProvider>
           {children}

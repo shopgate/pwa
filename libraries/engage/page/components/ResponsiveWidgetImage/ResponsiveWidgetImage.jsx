@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useResponsiveValue } from '@shopgate/engage/styles';
 import { useParallax } from 'react-scroll-parallax';
-import { IS_PAGE_PREVIEW_ACTIVE } from '../../constants';
+import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { parseImageUrl } from '../../helpers';
 
 /**
@@ -147,7 +147,7 @@ const ResponsiveWidgetImage = ({
         // re-posts an updated page config and never triggers it again, so widget images stay at
         // height 0 until a resize forces the browser to re-evaluate. Load eagerly there; keep lazy
         // loading for the live app.
-        loading={IS_PAGE_PREVIEW_ACTIVE ? 'eager' : 'lazy'}
+        loading={isAdminPreviewActive() ? 'eager' : 'lazy'}
         className={cx(classes.preventSave, classes.image, {
           [classes.banner]: isBanner,
         }, className)}
