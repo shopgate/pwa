@@ -10,10 +10,10 @@ import {
   hasWebBridge,
 } from '@shopgate/engage/core/helpers';
 import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchClientInformation';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { appConfig } from '@shopgate/engage';
 import { appInitialization, configuration } from '@shopgate/engage/core/collections';
 import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/constants';
-import { loadCustomStyles } from '@shopgate/engage/styles';
+import { loadCustomStyles, loadThemeCss } from '@shopgate/engage/styles';
 import { fetchSettings } from './fetchSettings';
 
 declare global {
@@ -88,7 +88,10 @@ export const initialize = async (
   store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
 
   try {
-    const promises = [fetchSettings(store), loadCustomStyles()];
+    // The order of the style loaders does not affect the cascade: loadThemeCss pins its link to
+    // the theme css insertion point in the html template, while loadCustomStyles appends its link
+    // to the end of the head.
+    const promises = [fetchSettings(store), loadCustomStyles(), loadThemeCss()];
     await Promise.all(promises);
   } catch (e) {
     // Nothing to see here.
