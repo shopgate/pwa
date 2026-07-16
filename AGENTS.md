@@ -12,6 +12,8 @@ behavior here drifts from the code, update this document in the same PR.
 
 4. Flag uncertainty explicitly. If you are not confident about an approach or technical detail, say so before proceeding. Confidence without certainty causes more damage than admitting a gap.
 
+5. Never update snapshots. Do not run `jest -u` / `--updateSnapshot`, and do not hand-edit `.snap` files. When a change makes snapshots stale, show the diff and stop — the developer reviews and updates them. A snapshot diff is how humans catch unintended UI changes; an agent accepting it destroys that signal. A local `PreToolUse` hook blocks the command, but the rule stands regardless of tooling.
+
 ## Project Overview
 
 Shopgate's ENGAGE PWA — a Lerna + Yarn-workspaces monorepo holding the shared

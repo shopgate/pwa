@@ -66,6 +66,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
           },
         },
+        counterBadge: {
+          vars: {
+            background: getCSSCustomProp('--color-secondary'),
+          },
+        },
         snackbar: {
           vars: {
             background: '#323232',

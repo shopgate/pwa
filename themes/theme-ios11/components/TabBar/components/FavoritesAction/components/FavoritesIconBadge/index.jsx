@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@shopgate/engage/components';
+import { CounterBadge } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
 import connect from './connector';
@@ -12,16 +12,8 @@ const defaultWidgetSettings = { showCounter: true };
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
-    background: theme.components.tabBar.badgeBackground,
-    color: theme.components.tabBar.badgeColor,
-    display: 'flex',
-    alignItems: 'center',
     borderRadius: theme.components.tabBar.badgeBorderRadius,
-    height: theme.spacing(2),
     top: theme.components.tabBar.badgeTop,
-    paddingLeft: theme.spacing(0.5),
-    paddingRight: theme.spacing(0.5),
-    minWidth: theme.spacing(2),
     transform: 'translateX(-50%)',
     left: theme.components.tabBar.badgeLeft,
   },
@@ -39,20 +31,19 @@ const FavoritesIconBadge = ({
 }) => {
   const { classes, cx } = useStyles();
 
-  if (!showWishlistItemsCountBadge || favoritesCount === 0) {
+  if (!showWishlistItemsCountBadge) {
     return null;
   }
 
   const showCounter = widgetSettings.showCounter ?? defaultWidgetSettings.showCounter;
 
-  const number = (favoritesCount > MAX_NUMBER)
-    ? `${MAX_NUMBER}+`
-    : favoritesCount;
-
   return (
-    <Typography variant="caption" component="div" fontWeight="bold" className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge theme__badge')}>
-      {showCounter !== false ? number : ''}
-    </Typography>
+    <CounterBadge
+      count={favoritesCount}
+      max={MAX_NUMBER}
+      showCount={showCounter !== false}
+      className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge')}
+    />
   );
 };
 

@@ -151,6 +151,11 @@ export const componentsSchema = {
       color: '',
     },
   },
+  counterBadge: {
+    vars: {
+      background: '',
+    },
+  },
   discountBadge: {
     vars: {
       background: '',
@@ -250,6 +255,11 @@ export const componentsDefaults = {
     vars: {
       background: t => t.palette.primary.main,
       color: t => t.palette.primary.contrastText,
+    },
+  },
+  counterBadge: {
+    vars: {
+      background: t => t.palette.secondary.main,
     },
   },
   discountBadge: {
