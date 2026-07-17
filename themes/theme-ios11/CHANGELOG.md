@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.31.4](https://github.com/shopgate/pwa/compare/v7.31.3...v7.31.4) (2026-07-17)
+
+#### :house: Internal
+* [#1478](https://github.com/shopgate/pwa/pull/1478) Update @shopgate/native-modules package to latest version ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.31.3](https://github.com/shopgate/pwa/compare/v7.31.1...v7.31.3) (2026-07-03)
 
 #### :bug: Bug Fix
