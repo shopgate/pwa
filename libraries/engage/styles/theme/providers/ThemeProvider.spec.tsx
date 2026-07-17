@@ -1,6 +1,7 @@
 import { render } from '@testing-library/react';
 import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
 import { logger } from '@shopgate/engage/core/helpers';
+import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import ThemeProvider from './ThemeProvider';
 import type { ColorSchemeContextValue } from './ColorSchemeContext';
 import useColorScheme from '../hooks/useColorScheme';
@@ -26,7 +27,7 @@ jest.mock('@shopgate/engage/styles', () => ({
 }));
 
 jest.mock('@shopgate/engage/admin-preview/helpers', () => ({
-  isFrontendSettingsAdminPreviewActive: () => false,
+  isFrontendSettingsAdminPreviewActive: jest.fn(() => false),
 }));
 
 jest.mock('@shopgate/engage/admin-preview/components', () => ({
@@ -108,6 +109,30 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
       const { mode } = renderProvider('dark');
 
       expect(mode).toBe<ColorSchemeName>('dark');
+    });
+  });
+
+  describe('persisting the color scheme', () => {
+    it('should persist the color scheme when not in the frontend settings preview', () => {
+      (isFrontendSettingsAdminPreviewActive as jest.Mock).mockReturnValue(false);
+
+      renderProvider('light');
+
+      expect(useLocalStorage).toHaveBeenCalledWith(
+        'persistedColorScheme',
+        expect.objectContaining({ persist: true })
+      );
+    });
+
+    it('should not persist the color scheme while in the frontend settings preview', () => {
+      (isFrontendSettingsAdminPreviewActive as jest.Mock).mockReturnValue(true);
+
+      renderProvider('light');
+
+      expect(useLocalStorage).toHaveBeenCalledWith(
+        'persistedColorScheme',
+        expect.objectContaining({ persist: false })
+      );
     });
   });
 

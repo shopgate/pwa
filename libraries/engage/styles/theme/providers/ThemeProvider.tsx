@@ -30,7 +30,13 @@ const ThemeProvider = ({
   const [
     activeColorScheme,
     setActiveColorScheme,
-  ] = useLocalStorage<ColorSchemeName>('persistedColorScheme', { initialValue: theme.defaultColorScheme });
+  ] = useLocalStorage<ColorSchemeName>('persistedColorScheme', {
+    initialValue: theme.defaultColorScheme,
+    // The frontend settings preview runs the app in an iframe on the shop origin. Persisting the
+    // color scheme there would write the admin's preview choice into the visitor's own storage and
+    // outlive the preview, so the scheme is kept in memory only while previewing.
+    persist: !isFrontendSettingsAdminPreviewActive(),
+  });
 
   // Wraps the raw storage setter, so an unsupported mode is rejected before it is persisted.
   // Setting null is allowed and clears the stored preference.
