@@ -30,7 +30,8 @@ const checkValue = value => !!value || value === 0 || value === false;
  * @returns {JSX.Element}
  */
 const PipelineErrorDialog = ({ actions, params, message }) => {
-  const [devMode, setDevMode] = useState(false);
+  // May be opened directly in developer detail mode (e.g. via long-pressing an error toast).
+  const [devMode, setDevMode] = useState(!!params.devMode);
   const tapTimeoutRef = useRef(null);
   const tapCounterRef = useRef(0);
 
@@ -159,6 +160,7 @@ PipelineErrorDialog.propTypes = {
     translated: PropTypes.bool,
     pipeline: PropTypes.string.isRequired,
     request: PropTypes.shape(),
+    devMode: PropTypes.bool,
   }).isRequired,
   message: PropTypes.string,
 };

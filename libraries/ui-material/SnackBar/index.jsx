@@ -7,6 +7,7 @@ import { config } from 'react-spring';
 import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { useLongPress } from '@shopgate/engage/core/hooks/events';
 import { themeColors, themeShadows } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -126,6 +127,15 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
     hide();
   }, [toasts, hide]);
 
+  const handleLongPress = useCallback(() => {
+    if (toasts[0] && toasts[0].onLongPress) {
+      toasts[0].onLongPress();
+    }
+    hide();
+  }, [toasts, hide]);
+
+  const longPressHandlers = useLongPress(handleLongPress, { threshold: 500 });
+
   const handleRest = useCallback(() => {
     if (visibleRef.current) {
       const duration = toasts[0]?.duration || 2500;
@@ -139,9 +149,11 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
     action = null,
     actionLabel = null,
     message = null,
+    onLongPress = null,
   } = snack;
 
   const boxProps = {
+    ...(onLongPress && longPressHandlers),
     ...(action && !actionLabel && { onClick: handleAction }),
   };
 

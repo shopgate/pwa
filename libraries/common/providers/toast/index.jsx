@@ -65,6 +65,7 @@ class ToastProvider extends Component {
     if (found) {
       found.action = toast.action;
       found.actionLabel = toast.actionLabel;
+      found.onLongPress = toast.onLongPress;
       found.message = toast.message;
       found.messageParams = toast.messageParams;
       found.duration = toast.duration || duration;
@@ -73,6 +74,7 @@ class ToastProvider extends Component {
         id: toast.id,
         action: toast.action,
         actionLabel: toast.actionLabel,
+        onLongPress: toast.onLongPress,
         message: toast.message,
         messageParams: toast.messageParams,
         duration: toast.duration || duration,
