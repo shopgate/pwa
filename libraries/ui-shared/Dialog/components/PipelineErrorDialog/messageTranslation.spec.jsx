@@ -28,8 +28,9 @@ const baseParams = {
 
 describe('<PipelineErrorDialog /> message translation', () => {
   it('should run a locale-key message through I18n.Text when translated is false', () => {
-    // This is what error.js now sends whenever the display message is a key (generic fallback,
-    // code-mapped key, or a pipeline-provided i18n key) rather than already-human text.
+    // This mirrors how `errorBehavior.modal()` passes modal params: when the display message is a
+    // locale key (generic fallback, code-mapped key, or a pipeline-provided i18n key)
+    // it must be rendered via I18n.Text rather than shown verbatim.
     render((
       <PipelineErrorDialog
         actions={[]}
