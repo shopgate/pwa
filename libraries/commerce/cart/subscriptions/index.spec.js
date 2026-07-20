@@ -10,8 +10,17 @@ import {
   DEEPLINK_CART_ADD_COUPON_PATTERN,
   DEEPLINK_CART_ADD_PRODUCT_PATTERN,
 } from '../constants';
-import { routeAddProductNavigate$, routeWithCouponWillEnter$ } from '../streams';
+import {
+  cartUpdateFailed$,
+  routeAddProductNavigate$,
+  routeWithCouponWillEnter$,
+} from '../streams';
 import subscription from './index';
+
+const mockModalHandler = jest.fn();
+jest.mock('@shopgate/engage/core', () => ({
+  errorBehavior: { modal: jest.fn(() => mockModalHandler) },
+}));
 
 jest.mock('@shopgate/pwa-common-commerce/product', () => ({
   getProductRoute: jest.fn(productId => productId),
@@ -175,6 +184,133 @@ describe('Cart subscriptions', () => {
       expect(historyReplace).toHaveBeenCalledWith({
         pathname: CART_PATH,
       });
+    });
+  });
+
+  describe('cartUpdateFailed$', () => {
+    let callback;
+
+    beforeEach(() => {
+      const call = subscribe.mock.calls.find(([stream]) => stream === cartUpdateFailed$);
+      [, callback] = call;
+    });
+
+    it('should subscribe as expected', () => {
+      const call = subscribe.mock.calls.find(([stream]) => stream === cartUpdateFailed$);
+      expect(call).toBeDefined();
+      expect(callback).toBeInstanceOf(Function);
+    });
+
+    it('should prefer the backend translatedMessage and mark it as translated', () => {
+      const action = {
+        errors: [{
+          code: 'ECART :: ESTOCKREACHED',
+          message: 'ApiteSW6Utility.notice.product-stock-reached',
+          pipeline: 'shopgate.cart.updateProducts.v1',
+          translated: false,
+          messageParams: {
+            translatedMessage: 'Das Produkt "Rinderpansen" ist nur noch 50 mal verfügbar',
+            parameters: {
+              name: 'Rinderpansen',
+              quantity: 50,
+            },
+          },
+        }],
+      };
+
+      callback({
+        dispatch,
+        action,
+      });
+
+      expect(mockModalHandler).toHaveBeenCalledTimes(1);
+      expect(mockModalHandler).toHaveBeenCalledWith(expect.objectContaining({
+        dispatch,
+        error: expect.objectContaining({
+          code: 'ECART :: ESTOCKREACHED',
+          context: 'shopgate.cart.updateProducts.v1',
+          meta: expect.objectContaining({
+            message: 'Das Produkt "Rinderpansen" ist nur noch 50 mal verfügbar',
+            translated: true,
+            additionalParams: action.errors[0].messageParams,
+          }),
+        }),
+      }));
+    });
+
+    it('should fall back to the message key when no translatedMessage is present', () => {
+      const action = {
+        errors: [{
+          code: 'ECART :: ENOTFOUND',
+          message: 'ApiteSW6Utility.notice.product-not-found',
+          pipeline: 'shopgate.cart.updateProducts.v1',
+          translated: false,
+          messageParams: {},
+        }],
+      };
+
+      callback({
+        dispatch,
+        action,
+      });
+
+      expect(mockModalHandler).toHaveBeenCalledWith(expect.objectContaining({
+        error: expect.objectContaining({
+          meta: expect.objectContaining({
+            message: 'ApiteSW6Utility.notice.product-not-found',
+            translated: false,
+          }),
+        }),
+      }));
+    });
+
+    it('should support the legacy result.messages shape (context/additionalParams)', () => {
+      const action = {
+        errors: [{
+          code: '1001',
+          message: 'cart.error.product.1001',
+          context: 'shopgate.cart.updateProducts',
+          translated: false,
+          additionalParams: {
+            minQty: 2,
+          },
+        }],
+      };
+
+      callback({
+        dispatch,
+        action,
+      });
+
+      expect(mockModalHandler).toHaveBeenCalledWith(expect.objectContaining({
+        error: expect.objectContaining({
+          code: '1001',
+          context: 'shopgate.cart.updateProducts',
+          meta: expect.objectContaining({
+            message: 'cart.error.product.1001',
+            translated: false,
+            additionalParams: action.errors[0].additionalParams,
+          }),
+        }),
+      }));
+    });
+
+    it('should not show a modal for already handled errors', () => {
+      const action = {
+        errors: [{
+          code: 'ECART :: ESTOCKREACHED',
+          message: 'ApiteSW6Utility.notice.product-stock-reached',
+          handled: true,
+          messageParams: {},
+        }],
+      };
+
+      callback({
+        dispatch,
+        action,
+      });
+
+      expect(mockModalHandler).not.toHaveBeenCalled();
     });
   });
 });

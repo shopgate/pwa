@@ -1,6 +1,11 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { getTaxLine } from './tax';
 
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  // Behave like an unresolved i18n key: echo the key back.
+  i18n: { text: jest.fn(key => key) },
+}));
+
 describe('Cart helper tax', () => {
   const cartConfig = {
     hideTax: false,
@@ -38,6 +43,13 @@ describe('Cart helper tax', () => {
     it('should return tax', () => {
       expect(getTaxLine(cartConfig, { amount: 5, label: 'incl 19%' })).toEqual({
         label: 'incl 19%',
+        amount: 5,
+        hint: '(incl)',
+      });
+    });
+    it('should fall back to checkout.summary.tax when the backend label is an unresolved i18n key', () => {
+      expect(getTaxLine(cartConfig, { amount: 5, label: 'ApiteSW6Utility.cart.summaryTax' })).toEqual({
+        label: 'checkout.summary.tax',
         amount: 5,
         hint: '(incl)',
       });

@@ -1,3 +1,5 @@
+import { getTotalLabel } from './totalLabel';
+
 /**
  * Check if shipping line should be shown
  * @param {Object} cartConfig shippingConfig
@@ -38,20 +40,20 @@ export function getShippingLine(cartConfig, isUserLoggedIn = false, shippingCost
     }
     if (shippingConfig.textForFreeShipping) {
       return {
-        label: shippingCost.label || 'titles.shipping',
+        label: getTotalLabel(shippingCost.label, 'titles.shipping'),
         amount: shippingConfig.textForFreeShipping,
         ...shippingConfig.hint && { hint: shippingConfig.hint },
       };
     }
     return {
-      label: shippingCost.label || 'titles.shipping',
+      label: getTotalLabel(shippingCost.label, 'titles.shipping'),
       amount: 'shipping.free_short',
       ...shippingConfig.hint && { hint: shippingConfig.hint },
     };
   }
 
   return {
-    label: shippingCost.label || 'titles.shipping',
+    label: getTotalLabel(shippingCost.label, 'titles.shipping'),
     amount: shippingCost.amount,
     ...shippingConfig.hint && { hint: shippingConfig.hint },
   };

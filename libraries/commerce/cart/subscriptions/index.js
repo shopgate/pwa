@@ -198,7 +198,7 @@ export default function cart(subscribe) {
       // Supports only one error, because none of the pipelines is ever called with multiple items.
       // Multiple errors would cause the this to overlay multiple modals on top of each other.
       const {
-        message, handled, code, additionalParams, translated, context,
+        message, handled, code, translated,
       } = errors[0];
 
       // Some errors are already handled automatically before
@@ -206,15 +206,27 @@ export default function cart(subscribe) {
         return;
       }
 
+      // Two error element shapes reach this subscription:
+      // - Pipeline errors (createPipelineErrorList) use "pipeline" + "messageParams".
+      // - Legacy result.messages (createErrorMessageList) use "context" + "additionalParams".
+      const pipeline = errors[0].pipeline || errors[0].context;
+      const messageParams = errors[0].messageParams || errors[0].additionalParams || {};
+
+      // The backend may already provide a fully localized message (e.g. Shopware cart
+      // notices like "product-stock-reached"). Prefer it over the backend-only i18n key
+      // in "message", which has no matching entry in the PWA locales and would otherwise
+      // fall back to the generic error text.
+      const { translatedMessage } = messageParams;
+
       errorBehavior.modal()({
         dispatch,
         error: {
           code,
-          context,
+          context: pipeline,
           meta: {
-            message,
-            additionalParams,
-            translated,
+            message: translatedMessage || message,
+            additionalParams: messageParams,
+            translated: translated || Boolean(translatedMessage),
             ...(Array.isArray(couponsIds) && couponsIds.length > 0 ? {
               input: {
                 couponsIds,

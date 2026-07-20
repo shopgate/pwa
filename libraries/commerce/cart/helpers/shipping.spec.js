@@ -1,6 +1,11 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { getShippingLine } from './shipping';
 
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  // Behave like an unresolved i18n key: echo the key back.
+  i18n: { text: jest.fn(key => key) },
+}));
+
 describe('Cart helper shipping', () => {
   const cartConfig = {
     hideShipping: false,
@@ -86,6 +91,16 @@ describe('Cart helper shipping', () => {
     it('should return shipping', () => {
       expect(getShippingLine(cartConfig, false, { label: 'DHL', amount: 5 })).toEqual({
         label: 'DHL',
+        amount: 5,
+        hint: '(incl)',
+      });
+    });
+    it('should fall back to titles.shipping when the backend label is an unresolved i18n key', () => {
+      expect(getShippingLine(cartConfig, false, {
+        label: 'ApiteSW6Utility.cart.summaryShipping',
+        amount: 5,
+      })).toEqual({
+        label: 'titles.shipping',
         amount: 5,
         hint: '(incl)',
       });
