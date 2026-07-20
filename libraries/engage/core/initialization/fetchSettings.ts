@@ -65,16 +65,16 @@ interface LoadJsonpSettingsParams {
  * @param onError Callback for error situations.
  */
 const injectScript = (id: string, src: string, onError: (error: unknown) => void) => {
-  let scriptTag = document.querySelector(`#${id}`);
+  const existingTag = document.querySelector(`#${id}`);
 
-  if (scriptTag) {
-    scriptTag.remove();
+  if (existingTag) {
+    existingTag.remove();
   }
 
-  scriptTag = document.createElement('script');
+  const scriptTag = document.createElement('script');
   scriptTag.setAttribute('src', src);
   scriptTag.setAttribute('id', id);
-  (scriptTag as HTMLScriptElement).onerror = onError;
+  scriptTag.onerror = onError;
   document.head.appendChild(scriptTag);
 };
 

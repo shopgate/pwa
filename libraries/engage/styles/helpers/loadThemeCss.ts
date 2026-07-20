@@ -66,6 +66,24 @@ export const loadThemeCss = (): Promise<void> => new Promise((resolve) => {
     resolve();
   };
 
+  /**
+   * Starts the fallback that keeps app start from waiting on a stalled request. The link is
+   * deliberately left in place when the timeout hits: it still applies once it eventually loads,
+   * it just no longer holds up app start.
+   */
+  const startTimeoutFallback = () => {
+    timeout = setTimeout(() => {
+      withScope((scope) => {
+        scope.setLevel(SentrySeverity.Warning);
+        scope.setExtra('themeCssUrl', href);
+        scope.setExtra('timeout', REQUEST_TIMEOUT);
+        captureMessage('Fetching theme css took too long');
+      });
+
+      settle();
+    }, REQUEST_TIMEOUT);
+  };
+
   const existingTag = document.querySelector<HTMLLinkElement>(`#${LINK_TAG_ID}`);
 
   if (existingTag) {
@@ -75,9 +93,11 @@ export const loadThemeCss = (): Promise<void> => new Promise((resolve) => {
       return;
     }
 
-    // Still loading
+    // Still loading - a stalled request must not leave the promise pending, so arm the timeout
+    // here too rather than relying on the load / error events alone.
     existingTag.addEventListener('load', settle);
     existingTag.addEventListener('error', settle);
+    startTimeoutFallback();
     return;
   }
 
@@ -101,16 +121,5 @@ export const loadThemeCss = (): Promise<void> => new Promise((resolve) => {
 
   insertLinkTag(linkTag);
 
-  // The link is deliberately left in place when the timeout hits: it still applies once it
-  // eventually loads, it just no longer holds up app start.
-  timeout = setTimeout(() => {
-    withScope((scope) => {
-      scope.setLevel(SentrySeverity.Warning);
-      scope.setExtra('themeCssUrl', href);
-      scope.setExtra('timeout', REQUEST_TIMEOUT);
-      captureMessage('Fetching theme css took too long');
-    });
-
-    settle();
-  }, REQUEST_TIMEOUT);
+  startTimeoutFallback();
 });
