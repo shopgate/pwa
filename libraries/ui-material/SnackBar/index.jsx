@@ -128,11 +128,11 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
   }, [toasts, hide]);
 
   const handleLongPress = useCallback(() => {
-    if (toasts[0] && toasts[0].onLongPress) {
-      toasts[0].onLongPress();
+    if (snack.onLongPress) {
+      snack.onLongPress();
     }
     hide();
-  }, [toasts, hide]);
+  }, [snack, hide]);
 
   const longPressHandlers = useLongPress(handleLongPress, { threshold: 500 });
 
@@ -152,10 +152,12 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
     onLongPress = null,
   } = snack;
 
-  const boxProps = {
-    ...(onLongPress && longPressHandlers),
-    ...(action && !actionLabel && { onClick: handleAction }),
-  };
+  // A toast is either long-pressable or has a whole-box click action — never both. Attaching both
+  // would let a single long press fire onLongPress (at the threshold) and then handleAction (on the
+  // release click). Long-press takes precedence.
+  const boxProps = onLongPress
+    ? { ...longPressHandlers }
+    : { ...(action && !actionLabel && { onClick: handleAction }) };
 
   const rows = calcRows(message, actionLabel);
   const snackBarHeight = 40 + (rows * 20);

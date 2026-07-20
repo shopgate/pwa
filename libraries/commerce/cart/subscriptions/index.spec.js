@@ -192,7 +192,9 @@ describe('Cart subscriptions', () => {
 
     beforeEach(() => {
       const call = subscribe.mock.calls.find(([stream]) => stream === cartUpdateFailed$);
-      [, callback] = call;
+      // Guard the lookup so a missing subscription fails the explicit assertion below rather than
+      // throwing "undefined is not iterable" in setup and crashing every test in this block.
+      callback = call?.[1];
     });
 
     it('should subscribe as expected', () => {

@@ -71,6 +71,59 @@ describe('<SnackBar />', () => {
     expect(onLongPress).toHaveBeenCalledTimes(1);
   });
 
+  it('should invoke the pressed toast\'s handler even if the toast is mutated in place mid-press', () => {
+    // ToastProvider updates a same-id toast by mutating it in place, so the long-press must fire
+    // the handler captured when the press started, not whatever toasts[0].onLongPress became.
+    const pressedHandler = jest.fn();
+    const replacementHandler = jest.fn();
+    const toasts = [{
+      id: 'pipeline.error',
+      message: 'error.general',
+      onLongPress: pressedHandler,
+      duration: 5000,
+    }];
+
+    render(<SnackBar removeToast={jest.fn()} toasts={toasts} />);
+
+    const message = screen.getByText('error.general');
+    fireEvent.mouseDown(message);
+    // A second pipeline error arrives during the press and overwrites the toast's handler in place.
+    toasts[0].onLongPress = replacementHandler;
+    act(() => {
+      jest.advanceTimersByTime(500);
+    });
+    fireEvent.mouseUp(message);
+
+    expect(pressedHandler).toHaveBeenCalledTimes(1);
+    expect(replacementHandler).not.toHaveBeenCalled();
+  });
+
+  it('should not also fire the box click action on a long press when onLongPress is present', () => {
+    const onLongPress = jest.fn();
+    const action = jest.fn();
+    const toasts = [{
+      id: 'pipeline.error',
+      message: 'error.general',
+      onLongPress,
+      action, // no actionLabel → would otherwise become a whole-box onClick
+      duration: 5000,
+    }];
+
+    render(<SnackBar removeToast={jest.fn()} toasts={toasts} />);
+
+    const message = screen.getByText('error.general');
+    fireEvent.mouseDown(message);
+    act(() => {
+      jest.advanceTimersByTime(500);
+    });
+    fireEvent.mouseUp(message);
+    // The pointer release also produces a click, which must not run the action too.
+    fireEvent.click(message);
+
+    expect(onLongPress).toHaveBeenCalledTimes(1);
+    expect(action).not.toHaveBeenCalled();
+  });
+
   it('should not invoke onLongPress when the press is released before the threshold', () => {
     const onLongPress = jest.fn();
     const toasts = [{
