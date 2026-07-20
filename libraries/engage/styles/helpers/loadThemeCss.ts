@@ -95,8 +95,8 @@ export const loadThemeCss = (): Promise<void> => new Promise((resolve) => {
 
     // Still loading - a stalled request must not leave the promise pending, so arm the timeout
     // here too rather than relying on the load / error events alone.
-    existingTag.addEventListener('load', settle);
-    existingTag.addEventListener('error', settle);
+    existingTag.addEventListener('load', settle, { once: true });
+    existingTag.addEventListener('error', settle, { once: true });
     startTimeoutFallback();
     return;
   }
