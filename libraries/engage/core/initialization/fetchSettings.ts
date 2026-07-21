@@ -111,6 +111,20 @@ const loadJsonpSettings = (params: LoadJsonpSettingsParams): Promise<void> =>
       resolve();
     };
 
+    // Started before the callback and the script are wired up, so that a synchronously firing
+    // callback / error (e.g. a data: url) settles against an already assigned timeout - otherwise
+    // clearTimeout would no-op and this timer would still fire a false timeout warning.
+    timeout = setTimeout(() => {
+      withScope((scope) => {
+        scope.setLevel(SentrySeverity.Warning);
+        scope.setExtra('settingsUrl', url);
+        scope.setExtra('timeout', REQUEST_TIMEOUT);
+        captureMessage(`Fetching settings took too long: ${id}`);
+      });
+
+      settle();
+    }, REQUEST_TIMEOUT);
+
     // Registered before the script is injected, since the JSONP files guard their call with
     // `window.setX && window.setX(...)` - a callback assigned too late is a silent no-op.
     // Deliberately never removed: the timeout may settle while the script is still in flight,
@@ -130,17 +144,6 @@ const loadJsonpSettings = (params: LoadJsonpSettingsParams): Promise<void> =>
       onError?.(error);
       settle();
     });
-
-    timeout = setTimeout(() => {
-      withScope((scope) => {
-        scope.setLevel(SentrySeverity.Warning);
-        scope.setExtra('settingsUrl', url);
-        scope.setExtra('timeout', REQUEST_TIMEOUT);
-        captureMessage(`Fetching settings took too long: ${id}`);
-      });
-
-      settle();
-    }, REQUEST_TIMEOUT);
   });
 
 /**
