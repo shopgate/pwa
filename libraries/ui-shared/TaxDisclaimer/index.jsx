@@ -10,7 +10,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   text: {
-    background: theme.palette.background.surface,
     padding: theme.spacing(2.5, 2),
   },
 }));
