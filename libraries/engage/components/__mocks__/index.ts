@@ -138,7 +138,7 @@ export const Typography = (props) => {
   const Component = component || (paragraph ? 'p' : typographyVariantMapping[variant]) || 'span';
   return jest.requireActual('react').createElement(Component, rest, children);
 };
-export const CounterBadge = (props) => {
+export const Badge = (props) => {
   const {
     // eslint-disable-next-line react/prop-types
     count, max, showCount = true, ...rest

@@ -6,8 +6,8 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: theme.components.counterBadge.background,
-    color: theme.contrastColor(theme.components.counterBadge.background),
+    background: theme.components.badge.background,
+    color: theme.contrastColor(theme.components.badge.background),
     borderRadius: theme.spacing(1),
     height: theme.spacing(2),
     minWidth: theme.spacing(2),
@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
-export interface CounterBadgeProps {
+export interface BadgeProps {
   /**
    * The number to display. The badge renders nothing when this is 0.
    */
@@ -42,22 +42,16 @@ export interface CounterBadgeProps {
 
 /**
  * A counter bubble used to display item counts on icons, e.g. within the tab bar or app bar.
- * @param props The component props.
- * @param props.count The number to display.
- * @param props.max Counts above this are displayed as `{max}+`.
- * @param props.className Additional CSS classes.
- * @param props.style Inline style overrides.
- * @param props.showCount Whether the number is rendered inside the bubble.
  * @returns The rendered component.
  */
-const CounterBadge = ({
+const Badge = ({
   count,
   max,
   className,
   style,
   showCount = true,
   ...restProps
-}: CounterBadgeProps) => {
+}: BadgeProps) => {
   const { classes, cx } = useStyles();
 
   if (!count) {
@@ -80,4 +74,4 @@ const CounterBadge = ({
   );
 };
 
-export default CounterBadge;
+export default Badge;

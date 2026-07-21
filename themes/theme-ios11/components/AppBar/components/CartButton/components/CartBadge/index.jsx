@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core';
 import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
-import { CounterBadge } from '@shopgate/engage/components';
+import { Badge } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(() => ({
@@ -21,14 +21,14 @@ const CartButtonBadge = ({ count }) => {
   const { classes, cx } = useStyles();
   const settings = useWidgetSettings('@shopgate/engage/components/AppBar');
 
-  // Only the shadow is configurable here — the badge color is owned by the counterBadge
+  // Only the shadow is configurable here — the badge color is owned by the badge
   // theme config so this bubble always matches the tab bar counters.
   const badgeStyle = {
     boxShadow: settings.buttonCartBadgeShadow,
   };
 
   return (
-    <CounterBadge
+    <Badge
       count={count}
       max={CART_MAX_ITEMS}
       style={badgeStyle}

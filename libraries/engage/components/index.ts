@@ -200,5 +200,5 @@ export { default as Switch } from './Switch';
 export { default as SnackBarContainer } from './SnackBarContainer';
 export { default as ConnectedReactPortal } from './ConnectedReactPortal';
 export { Typography } from './Typography';
-export { default as CounterBadge } from './CounterBadge';
+export { default as Badge } from './Badge';
 

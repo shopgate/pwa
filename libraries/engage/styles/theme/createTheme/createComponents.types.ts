@@ -157,7 +157,7 @@ export const componentsSchema = {
       color: '',
     },
   },
-  counterBadge: {
+  badge: {
     vars: {
       background: '',
     },
@@ -269,7 +269,7 @@ export const componentsDefaults = {
       color: t => t.palette.common.black,
     },
   },
-  counterBadge: {
+  badge: {
     vars: {
       background: t => t.palette.secondary.main,
     },

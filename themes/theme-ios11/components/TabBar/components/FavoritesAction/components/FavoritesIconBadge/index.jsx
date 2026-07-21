@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { CounterBadge } from '@shopgate/engage/components';
+import { Badge } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { withWidgetSettings } from '@shopgate/engage/core/hocs';
 import connect from './connector';
@@ -38,7 +38,7 @@ const FavoritesIconBadge = ({
   const showCounter = widgetSettings.showCounter ?? defaultWidgetSettings.showCounter;
 
   return (
-    <CounterBadge
+    <Badge
       count={favoritesCount}
       max={MAX_NUMBER}
       showCount={showCounter !== false}

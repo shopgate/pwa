@@ -66,7 +66,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
           },
         },
-        counterBadge: {
+        badge: {
           vars: {
             background: getCSSCustomProp('--color-secondary'),
           },
