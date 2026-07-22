@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, type Dispatch, type SetStateAction } from 'react';
 import { type ColorSchemeName } from '../createTheme';
 
 export interface ColorSchemeContextValue {
@@ -9,7 +9,7 @@ export interface ColorSchemeContextValue {
   /**
    * Function to update the color scheme
    */
-  setMode: React.Dispatch<React.SetStateAction<ColorSchemeName | null>>;
+  setMode: Dispatch<SetStateAction<ColorSchemeName | null>>;
   /**
    * The modes the active theme actually provides. Only these can be set - passing anything else
    * to setMode has no effect.
@@ -19,6 +19,6 @@ export interface ColorSchemeContextValue {
 
 export const ColorSchemeContext = createContext<ColorSchemeContextValue>({
   mode: 'light',
-  setMode: () => '',
+  setMode: () => undefined,
   modes: ['light'],
 });

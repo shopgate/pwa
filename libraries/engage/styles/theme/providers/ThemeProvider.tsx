@@ -9,16 +9,12 @@ import { FrontendSettingsPreviewBridge } from '@shopgate/engage/admin-preview/co
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 import { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
 import {
-  COLOR_SCHEME_NAMES, type Theme, type ThemeInternal, type ColorSchemeName,
+  type Theme, type ThemeInternal, type ColorSchemeName,
 } from '../createTheme';
 
 export { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
 
 export const ThemeContext = createContext<Theme>({ } as Theme);
-
-// Derived from the same tuple that ColorSchemeName is generated from, so the runtime list and the
-// type can never drift apart.
-const modes: ColorSchemeName[] = [...COLOR_SCHEME_NAMES];
 
 /**
  * The ThemeProvider component provides the theme context to its children.
@@ -27,6 +23,16 @@ const ThemeProvider = ({
   children,
   theme,
 }: ThemeProviderProps) => {
+  // The color schemes the active theme actually provides. createTheme() can be configured with only
+  // a subset of the possible schemes (it defaults to just `light`), so `modes` and the validation
+  // below are derived from the resolved theme rather than the full COLOR_SCHEME_NAMES tuple.
+  // Otherwise the provider could expose and accept a scheme (e.g. `dark`) the theme doesn't style,
+  // and setActiveColorScheme would flip the root selector to an unstyled scheme.
+  const modes = useMemo(
+    () => Object.keys(theme.colorSchemes) as ColorSchemeName[],
+    [theme]
+  );
+
   const [
     activeColorScheme,
     setActiveColorScheme,
@@ -51,13 +57,13 @@ const ThemeProvider = ({
 
       return nextColorScheme;
     });
-  }, [setActiveColorScheme]);
+  }, [modes, setActiveColorScheme]);
 
   const colorSchemeContextValue = useMemo(() => ({
     mode: activeColorScheme,
     setMode,
     modes,
-  }), [activeColorScheme, setMode]);
+  }), [activeColorScheme, modes, setMode]);
 
   useLayoutEffect(() => {
     if (!activeColorScheme) return;

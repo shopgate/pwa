@@ -41,6 +41,8 @@ jest.mock('./ActiveBreakpointProvider', () => ({
 
 const themeStub = {
   defaultColorScheme: 'light',
+  // The provider derives the supported modes from the schemes the theme actually resolved.
+  colorSchemes: { light: {}, dark: {} },
   setActiveColorScheme: mockedSetActiveColorScheme,
   generateStyleSheets: () => [],
 } as unknown as ThemeInternal;
