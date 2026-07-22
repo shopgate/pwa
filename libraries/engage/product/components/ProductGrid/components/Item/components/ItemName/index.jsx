@@ -11,6 +11,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   root: {
+    fontSize: theme.typography.body2.fontSize,
     fontWeight: theme.typography.fontWeightMedium,
     marginTop: 1,
     wordBreak: ['keep-all', 'break-word'],
