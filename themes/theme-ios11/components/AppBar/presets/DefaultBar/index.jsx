@@ -28,7 +28,6 @@ class AppBarDefault extends PureComponent {
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
     updateStatusBar: PropTypes.func.isRequired,
-    widgetSettings: PropTypes.shape().isRequired,
     'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
     title: PropTypes.string,
