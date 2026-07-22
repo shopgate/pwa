@@ -10,25 +10,25 @@ exports[`TabBar favorites action - behavior should cap display at MAX when numbe
     }
   }
 >
-  <CounterBadge
+  <Badge
     className="sg-u2omqm-root theme__tab-bar__favorites-icon-badge"
     count={9999}
     max={999}
     showCount={true}
   >
     <ForwardRef(Typography)
-      className="theme__tab-bar__favorites-icon-badge theme__badge sg-16849n5-root-root"
+      className="theme__tab-bar__favorites-icon-badge theme__badge sg-aibdx1-root-root"
       component="div"
       fontWeight="bold"
       variant="caption"
     >
       <div
-        className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-wz91dx-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
+        className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-1radaz1-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
       >
         999+
       </div>
     </ForwardRef(Typography)>
-  </CounterBadge>
+  </Badge>
 </FavoritesIconBadge>
 `;
 
@@ -42,25 +42,25 @@ exports[`TabBar favorites action - behavior should show count when number is cha
     }
   }
 >
-  <CounterBadge
+  <Badge
     className="sg-u2omqm-root theme__tab-bar__favorites-icon-badge"
     count={99}
     max={999}
     showCount={true}
   >
     <ForwardRef(Typography)
-      className="theme__tab-bar__favorites-icon-badge theme__badge sg-16849n5-root-root"
+      className="theme__tab-bar__favorites-icon-badge theme__badge sg-aibdx1-root-root"
       component="div"
       fontWeight="bold"
       variant="caption"
     >
       <div
-        className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-wz91dx-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
+        className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-1radaz1-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
       >
         99
       </div>
     </ForwardRef(Typography)>
-  </CounterBadge>
+  </Badge>
 </FavoritesIconBadge>
 `;
 
@@ -87,25 +87,25 @@ exports[`TabBar favorites action should render exact number 1`] = `
         showWishlistItemsCountBadge={true}
         widgetSettings={{}}
       >
-        <CounterBadge
+        <Badge
           className="sg-u2omqm-root theme__tab-bar__favorites-icon-badge"
           count={1}
           max={999}
           showCount={true}
         >
           <ForwardRef(Typography)
-            className="theme__tab-bar__favorites-icon-badge theme__badge sg-16849n5-root-root"
+            className="theme__tab-bar__favorites-icon-badge theme__badge sg-aibdx1-root-root"
             component="div"
             fontWeight="bold"
             variant="caption"
           >
             <div
-              className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-wz91dx-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
+              className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-1radaz1-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
             >
               1
             </div>
           </ForwardRef(Typography)>
-        </CounterBadge>
+        </Badge>
       </FavoritesIconBadge>
     </Connect(FavoritesIconBadge)>
   </WithWidgetSettings(Connect(FavoritesIconBadge))>
