@@ -260,13 +260,13 @@ export const componentsDefaults = {
   ctaButton: {
     vars: {
       background: t => t.palette.primary.main,
-      color: t => t.palette.primary.contrastText,
+      color: t => t.contrastColor('var(--sg-components-ctaButton-background)'),
     },
   },
   appBar: {
     vars: {
       background: '#FFFFFF',
-      color: t => t.palette.common.black,
+      color: t => t.contrastColor('var(--sg-components-appBar-background)'),
     },
   },
   badge: {

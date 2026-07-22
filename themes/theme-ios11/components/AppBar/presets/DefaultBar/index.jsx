@@ -9,7 +9,7 @@ import {
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import {
-  withRoute, withWidgetSettings, withApp, INDEX_PATH, router,
+  withRoute, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getCSSCustomProp } from '@shopgate/engage/styles';
@@ -178,10 +178,7 @@ const AppBarDefaultWithContext = props => (
   </ViewContext.Consumer>
 );
 
-const WrappedComponent = withApp(withWidgetSettings(
-  withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }),
-  '@shopgate/engage/components/AppBar'
-));
+const WrappedComponent = withApp(withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }));
 
 WrappedComponent.Icon = AppBarIcon;
 
