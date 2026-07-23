@@ -4,6 +4,7 @@ import debounce from 'lodash/debounce';
 import Helmet from 'react-helmet';
 import { Footer, ResponsiveContainer } from '@shopgate/engage/components';
 import { hasWebBridge, applyScrollContainer } from '@shopgate/engage/core';
+import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import {
   injectGlobal,
   makeStyles,
@@ -39,7 +40,9 @@ const useStyles = makeStyles()({
     overflow: applyScrollContainer() ? 'hidden' : 'inherit',
     position: 'relative',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
-      width: '100vw',
+      // In the admin preview iframe (Safari) `100vw` includes the vertical scrollbar
+      // width, overflowing the iframe body and producing spurious double scrollbars.
+      width: isAdminPreviewActive() ? '100%' : '100vw',
     },
   },
   content: {

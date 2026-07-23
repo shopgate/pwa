@@ -21,6 +21,15 @@ interface UseLocalStorageOptions<T> {
    * @default true
    */
   sync?: boolean;
+
+  /**
+   * Whether the value is written to localStorage at all. Set to false in contexts that must not
+   * leak state into the visitor's browser and should stay ephemeral. With this off the hook is a
+   * plain useState: it neither reads nor writes localStorage, and it ignores updates from other
+   * tabs.
+   * @default true
+   */
+  persist?: boolean;
 }
 
 type SetValueAction<T> = T | null | ((prev: T | null) => T | null);
@@ -35,11 +44,13 @@ export default function useLocalStorage<T>(
   key: string,
   options: UseLocalStorageOptions<T> = {}
 ): readonly [T | null, (value: SetValueAction<T>) => void] {
-  const { initialValue = null, sync = true } = options;
+  const { initialValue = null, sync = true, persist = true } = options;
 
   const storageKey = useMemo(() => `${appId}_${key}`, [key]);
 
   const readValue = useCallback(() => {
+    if (!persist) return initialValue;
+
     try {
       const item = window.localStorage.getItem(storageKey);
       if (item == null) return initialValue;
@@ -47,7 +58,7 @@ export default function useLocalStorage<T>(
     } catch (error) {
       return initialValue;
     }
-  }, [storageKey, initialValue]);
+  }, [storageKey, initialValue, persist]);
 
   const [storedValue, setStoredValue] = useState<T|null>(readValue);
 
@@ -56,27 +67,32 @@ export default function useLocalStorage<T>(
    * @param value The new value to store.
    */
   const setValue = useCallback((value) => {
-    try {
-      const valueToStore =
-          typeof value === 'function' ? value(readValue()) : value;
+    // Resolve an updater against the live React state, so it sees the current value whether or not
+    // the value is persisted (when persist is off there is nothing to read back from storage).
+    setStoredValue((prev) => {
+      const valueToStore = typeof value === 'function' ? value(prev) : value;
 
-      setStoredValue(valueToStore);
+      if (!persist) return valueToStore;
 
-      if (valueToStore == null) {
-        window.localStorage.removeItem(storageKey);
-      } else {
-        window.localStorage.setItem(
-          storageKey,
-          JSON.stringify(valueToStore)
-        );
+      try {
+        if (valueToStore == null) {
+          window.localStorage.removeItem(storageKey);
+        } else {
+          window.localStorage.setItem(
+            storageKey,
+            JSON.stringify(valueToStore)
+          );
+        }
+      } catch (error) {
+        //
       }
-    } catch (error) {
-      //
-    }
-  }, [storageKey, readValue]);
+
+      return valueToStore;
+    });
+  }, [storageKey, persist]);
 
   useEffect(() => {
-    if (!sync) return undefined;
+    if (!sync || !persist) return undefined;
 
     /**
      * Handles cross-document localStorage updates.
@@ -109,7 +125,7 @@ export default function useLocalStorage<T>(
     return () => {
       window.removeEventListener('storage', handleStorageChange);
     };
-  }, [storageKey, initialValue, sync]);
+  }, [storageKey, initialValue, sync, persist]);
 
   return [storedValue, setValue];
 }

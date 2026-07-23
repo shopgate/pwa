@@ -42,6 +42,9 @@ const useStyles = makeStyles()({
     ...(isAdminPreviewActive() && {
       scrollbarWidth: 'thin',
       backgroundColor: 'var(--page-background-color)',
+      // Fill the positioned ancestor exactly. In Safari `100vw` (from containerBase)
+      // includes the vertical scrollbar width, causing a spurious horizontal scrollbar.
+      width: '100%',
     }),
   },
   containerWindow: {
