@@ -151,6 +151,17 @@ export const componentsSchema = {
       color: '',
     },
   },
+  appBar: {
+    vars: {
+      background: '',
+      color: '',
+    },
+  },
+  badge: {
+    vars: {
+      background: '',
+    },
+  },
   discountBadge: {
     vars: {
       background: '',
@@ -249,7 +260,18 @@ export const componentsDefaults = {
   ctaButton: {
     vars: {
       background: t => t.palette.primary.main,
-      color: t => t.palette.primary.contrastText,
+      color: t => t.contrastColor('var(--sg-components-ctaButton-background)'),
+    },
+  },
+  appBar: {
+    vars: {
+      background: '#FFFFFF',
+      color: t => t.contrastColor('var(--sg-components-appBar-background)'),
+    },
+  },
+  badge: {
+    vars: {
+      background: t => t.palette.secondary.main,
     },
   },
   discountBadge: {

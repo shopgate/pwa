@@ -2,6 +2,8 @@ import type { CSSDeclarationValue, FrontendSettingsStyling } from './types';
 
 export const PREVIEW_STYLE_TAG_ID = 'frontend-settings-preview-overrides';
 
+const INSERTION_POINT_SELECTOR = 'meta[name="preview-css-insertion-point"]';
+
 const UNITLESS_PROPERTIES = new Set([
   'font-weight',
   'line-height',
@@ -49,7 +51,13 @@ export const serializeStyling = (styling: FrontendSettingsStyling) => Object.ent
   .join('\n');
 
 /**
- * Returns the existing preview style tag or creates it in the document head.
+ * Returns the existing preview style tag or creates it at the preview css insertion point, which
+ * the html template declares directly below the theme css one. The preview has to override both
+ * the defaults that theme initialization generates and the theme css file, and since all three
+ * have the same specificity, only document order decides.
+ *
+ * Falls back to appending when the meta is absent, which is where the tag used to live before the
+ * insertion points existed.
  *
  * @returns The style element used for frontend settings preview overrides.
  */
@@ -60,7 +68,14 @@ export const getOrCreateStyleTag = () => {
     styleTag = document.createElement('style');
     styleTag.setAttribute('id', PREVIEW_STYLE_TAG_ID);
     styleTag.setAttribute('type', 'text/css');
-    document.head.appendChild(styleTag);
+
+    const insertionPoint = document.querySelector(INSERTION_POINT_SELECTOR);
+
+    if (insertionPoint) {
+      insertionPoint.parentNode?.insertBefore(styleTag, insertionPoint.nextSibling);
+    } else {
+      document.head.appendChild(styleTag);
+    }
   }
 
   return styleTag;

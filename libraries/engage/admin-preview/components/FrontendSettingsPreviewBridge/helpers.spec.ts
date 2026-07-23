@@ -86,6 +86,40 @@ describe('FrontendSettingsPreviewBridge helpers', () => {
   describe('getOrCreateStyleTag', () => {
     afterEach(() => {
       removeStyleTag();
+      document.head.innerHTML = '';
+    });
+
+    it('inserts the style tag at the preview css insertion point', () => {
+      document.head.innerHTML = `
+        <meta name="theme-css-insertion-point" content="" />
+        <link id="theme-css" rel="stylesheet" />
+        <meta name="preview-css-insertion-point" content="" />
+      `;
+
+      const styleTag = getOrCreateStyleTag();
+      const insertionPoint = document.querySelector('meta[name="preview-css-insertion-point"]');
+
+      expect(insertionPoint?.nextElementSibling).toBe(styleTag);
+    });
+
+    it('keeps the style tag below the theme css file', () => {
+      document.head.innerHTML = `
+        <meta name="theme-css-insertion-point" content="" />
+        <link id="theme-css" rel="stylesheet" />
+        <meta name="preview-css-insertion-point" content="" />
+      `;
+
+      getOrCreateStyleTag();
+
+      const ids = Array.from(document.head.children).map(child => child.id).filter(Boolean);
+
+      expect(ids).toEqual(['theme-css', PREVIEW_STYLE_TAG_ID]);
+    });
+
+    it('appends the style tag when the insertion point is missing', () => {
+      const styleTag = getOrCreateStyleTag();
+
+      expect(document.head.lastChild).toBe(styleTag);
     });
 
     it('creates a style tag in the document head on first call', () => {

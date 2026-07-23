@@ -34,6 +34,7 @@ const useStyles = makeStyles()(theme => ({
     padding: '12px 16px',
   },
   title: {
+    fontSize: theme.typography.body2.fontSize,
     fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.15,
     marginTop: 1,

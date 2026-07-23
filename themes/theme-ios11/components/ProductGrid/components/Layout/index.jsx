@@ -5,12 +5,12 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()((theme, { columns }) => ({
   grid: {
-    background: theme.palette.background.surface,
     padding: '0 16px',
     '&:not(:empty)': {
       marginTop: 16,
     },
     ...(columns <= 2 ? {
+      rowGap: 16,
       '& > *': {
         padding: '0px 8px',
         width: `${100 / columns}%`,
@@ -23,7 +23,7 @@ const useStyles = makeStyles()((theme, { columns }) => ({
       },
     } : {
       display: 'grid',
-      gridGap: '0 16px',
+      gridGap: 16,
       gridTemplateColumns: `repeat(${columns}, 1fr)`,
     }),
   },

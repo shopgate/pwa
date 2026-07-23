@@ -9,9 +9,23 @@ const useStyles = makeStyles()((theme, { columns }) => ({
     ':not(:empty)': {
       marginTop: 16,
     },
-    display: 'grid',
-    gridGap: '0 16px',
-    gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    ...(columns <= 2 ? {
+      rowGap: 16,
+      '& > *': {
+        padding: '0px 8px',
+        width: `${100 / columns}%`,
+        [`&:nth-of-type(${columns}n)`]: {
+          paddingRight: 0,
+        },
+        [`&:nth-of-type(${columns}n+1)`]: {
+          paddingLeft: 0,
+        },
+      },
+    } : {
+      display: 'grid',
+      gridGap: 16,
+      gridTemplateColumns: `repeat(${columns}, 1fr)`,
+    }),
   },
 }));
 

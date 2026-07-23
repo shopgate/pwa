@@ -43,7 +43,7 @@ injectGlobal({
     WebkitOverflowScrolling: 'touch',
     WebkitUserSelect: hasWebBridge() ? 'inherit' : 'none',
     userSelect: hasWebBridge() ? 'inherit' : 'none',
-    color: 'var(--color-text-high-emphasis)',
+    color: 'var(--sg-palette-text-primary, var(--color-text-high-emphasis))',
   },
   '[data-pattern]': {
     height: '100% !important',

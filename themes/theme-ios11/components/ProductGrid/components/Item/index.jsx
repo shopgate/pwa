@@ -10,17 +10,16 @@ import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   root: {
     position: 'relative',
     display: 'block',
-    background: theme.palette.background.surface,
     height: '100%',
   },
   itemDetails: {
     position: 'relative',
   },
-}));
+});
 
 /**
  * The Product Grid Item component.

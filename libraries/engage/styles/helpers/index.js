@@ -10,6 +10,7 @@ export { setViewportHeight } from './setViewportHeight';
 export { toggleBodyScroll } from './toggleBodyScroll';
 export { initCSSCustomProps, initCSSCustomPropsFallback } from './initCSSCustomProperties';
 export { loadCustomStyles } from './loadCustomStyles';
+export { loadThemeCss } from './loadThemeCss';
 export * from './color';
 
 export { responsiveMediaQuery } from '../../components/ResponsiveContainer/mediaQuery';

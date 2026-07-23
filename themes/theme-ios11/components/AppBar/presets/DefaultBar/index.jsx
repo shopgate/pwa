@@ -9,9 +9,10 @@ import {
 } from '@shopgate/pwa-common/constants/Portals';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import {
-  withRoute, withWidgetSettings, withApp, INDEX_PATH, router,
+  withRoute, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { ViewContext } from '@shopgate/engage/components/View';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
@@ -27,7 +28,6 @@ class AppBarDefault extends PureComponent {
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
     updateStatusBar: PropTypes.func.isRequired,
-    widgetSettings: PropTypes.shape().isRequired,
     'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
     title: PropTypes.string,
@@ -120,8 +120,14 @@ class AppBarDefault extends PureComponent {
     /**
      * The settings for the startpage need to be preserved within the statusbar to optimize
      * the initial rendering at the app start.
+     *
+     * The native status bar needs a resolved color value, so the app bar background is read
+     * from the live custom property rather than passed along as a var() reference.
      */
-    this.props.updateStatusBar(this.props.widgetSettings, pathname === INDEX_PATH);
+    this.props.updateStatusBar(
+      getCSSCustomProp('--sg-components-appBar-background'),
+      pathname === INDEX_PATH
+    );
   }
 
   /**
@@ -132,7 +138,6 @@ class AppBarDefault extends PureComponent {
       return null;
     }
 
-    const { background, color } = this.props.widgetSettings;
     const center = <AppBar.Title title={i18n.text(this.props.title || '')} />;
     const below = (
       <Fragment key="below">
@@ -146,8 +151,6 @@ class AppBarDefault extends PureComponent {
         <Portal name={APP_BAR_DEFAULT_BEFORE} />
         <Portal name={APP_BAR_DEFAULT}>
           <AppBar
-            backgroundColor={background}
-            textColor={color}
             center={center}
             {...this.props}
             below={below}
@@ -174,10 +177,7 @@ const AppBarDefaultWithContext = props => (
   </ViewContext.Consumer>
 );
 
-const WrappedComponent = withApp(withWidgetSettings(
-  withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }),
-  '@shopgate/engage/components/AppBar'
-));
+const WrappedComponent = withApp(withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }));
 
 WrappedComponent.Icon = AppBarIcon;
 
