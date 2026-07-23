@@ -1,4 +1,20 @@
+import { i18n } from '@shopgate/engage/core/helpers';
 import { transformGeneralPipelineError, getDisplayErrorMessage } from './pipeline';
+
+// Exercise the real i18n helper (and its `has`) rather than a hand-rolled stub, so the test proves
+// the resolver actually distinguishes resolvable translation keys from raw backend text.
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  i18n: jest.requireActual('@shopgate/engage/core/helpers/i18n').i18n,
+}));
+
+// Load a minimal locale bundle so `i18n.has` resolves these keys and only these keys.
+i18n.init({
+  locales: {
+    cart: { error_out_of_stock: 'Out of stock' },
+    favorites: { error_general: 'Could not load favorites' },
+  },
+  lang: 'en-US',
+});
 
 describe('transformGeneralPipelineError', () => {
   const general = [

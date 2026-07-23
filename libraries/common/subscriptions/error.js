@@ -80,16 +80,6 @@ export default (subscribe) => {
 
     const { behavior, message: originalMessage } = meta;
 
-    if (behavior) {
-      behavior({
-        dispatch,
-        getState,
-        events,
-        error,
-      });
-      return;
-    }
-
     // Never surface a raw backend message to the user: show the extension's own translated
     // message, a code-mapped translated message, or a generic fallback. The resolver is the single
     // source of truth for both the text and whether it is ready-to-display (`displayTranslated`) or
@@ -99,12 +89,32 @@ export default (subscribe) => {
       translated: displayTranslated,
     } = getDisplayErrorMessage(error, GENERIC_ERROR_MESSAGE);
 
+    // Unknown/generic and connection-style backend errors are treated as general platform issues.
+    // They have no meaningful, mappable message and are always surfaced as a toast (see below).
+    const isConnectionError = displayMessage === 'error.general'
+      || [ETIMEOUT, ENETUNREACH].includes(code);
+    const isGeneralError = isConnectionError || displayMessage === GENERIC_ERROR_MESSAGE;
+
+    // Some pipeline actions (e.g. fetchCategory) register an error behavior for *every* error via
+    // `setResponseBehavior`. Those behaviors are only meaningful for the specific errors they
+    // expect; when the platform fails with an unexpected/unmappable message we skip the behavior
+    // and fall through to the generic toast handling instead of, for example, showing a modal.
+    if (behavior && !isGeneralError) {
+      behavior({
+        dispatch,
+        getState,
+        events,
+        error,
+      });
+      return;
+    }
+
     /**
-     * Shows the pipeline error modal. When devMode is set, the modal opens directly on the
+     * Shows the pipeline error modal. When openWithDetails is set, the modal opens directly on the
      * developer detail view (pipeline, code, raw message, params) — used for the toast long-press.
-     * @param {boolean} [devMode=false] Whether to open the modal in developer detail mode.
+     * @param {boolean} [openWithDetails=false] Whether to open the modal in developer detail mode.
      */
-    const showModalError = (devMode = false) => {
+    const showModalError = (openWithDetails = false) => {
       dispatch(showModal({
         confirm: 'modal.ok',
         dismiss: null,
@@ -118,18 +128,14 @@ export default (subscribe) => {
           code,
           translated: displayTranslated,
           messageParams: meta.additionalParams,
-          devMode,
+          openWithDetails,
         },
       }));
     };
 
-    // Unknown/generic and connection-style backend errors surface as a toast instead of a modal.
+    // General platform errors surface as a toast instead of a modal.
     // Long-pressing the toast opens the error modal in developer detail mode.
-    const isConnectionError = displayMessage === 'error.general'
-      || [ETIMEOUT, ENETUNREACH].includes(code);
-    const shouldShowToast = isConnectionError || displayMessage === GENERIC_ERROR_MESSAGE;
-
-    if (shouldShowToast) {
+    if (isGeneralError) {
       // Connection-style errors show the generic connection message, but never override a message
       // an extension already translated for us.
       const useGenericConnectionText = isConnectionError && !displayTranslated;

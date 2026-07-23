@@ -61,13 +61,13 @@ describe('<PipelineErrorDialog />', () => {
     expect(wrapper.text()).not.toContain(devMarker);
   });
 
-  it('should open directly in developer detail mode when params.devMode is set', () => {
+  it('should open directly in developer detail mode when params.openWithDetails is set', () => {
     render((
       <PipelineErrorDialog
         actions={[]}
         params={{
           ...defaultParams,
-          devMode: true,
+          openWithDetails: true,
         }}
       />
     ));

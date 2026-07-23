@@ -96,6 +96,7 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
   const [visible, setVisible] = useState(true);
   const visibleRef = useRef(visible);
   const timerRef = useRef(null);
+  const pressingRef = useRef(false);
 
   useEffect(() => {
     visibleRef.current = visible;
@@ -119,6 +120,14 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
     setVisible(false);
   }, []);
 
+  // (Re)starts the auto-hide countdown. Clears any pending timer first so there is only ever a
+  // single live timer, which keeps repeated calls (e.g. resume after a press) idempotent.
+  const scheduleAutoHide = useCallback(() => {
+    clearTimeout(timerRef.current);
+    const duration = toasts[0]?.duration || 2500;
+    timerRef.current = setTimeout(hide, duration);
+  }, [toasts, hide]);
+
   const handleAction = useCallback(() => {
     clearTimeout(timerRef.current);
     if (toasts[0]) {
@@ -128,22 +137,41 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
   }, [toasts, hide]);
 
   const handleLongPress = useCallback(() => {
+    pressingRef.current = false;
     if (snack.onLongPress) {
       snack.onLongPress();
     }
     hide();
   }, [snack, hide]);
 
-  const longPressHandlers = useLongPress(handleLongPress, { threshold: 500 });
+  // While a long press is held, freeze the auto-hide countdown so the toast can't disappear
+  // mid-press. A press released before the threshold resumes the countdown from the start.
+  const handlePressStart = useCallback(() => {
+    pressingRef.current = true;
+    clearTimeout(timerRef.current);
+  }, []);
+
+  const handlePressCancel = useCallback(() => {
+    pressingRef.current = false;
+    scheduleAutoHide();
+  }, [scheduleAutoHide]);
+
+  const longPressHandlers = useLongPress(handleLongPress, {
+    threshold: 4000,
+    onStart: handlePressStart,
+    onCancel: handlePressCancel,
+  });
 
   const handleRest = useCallback(() => {
-    if (visibleRef.current) {
-      const duration = toasts[0]?.duration || 2500;
-      timerRef.current = setTimeout(hide, duration);
-    } else {
+    if (!visibleRef.current) {
       removeToast();
+      return;
     }
-  }, [toasts, hide, removeToast]);
+    // Don't start the auto-hide countdown while a long press is holding the toast open.
+    if (!pressingRef.current) {
+      scheduleAutoHide();
+    }
+  }, [scheduleAutoHide, removeToast]);
 
   const {
     action = null,

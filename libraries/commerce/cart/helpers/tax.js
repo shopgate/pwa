@@ -1,5 +1,3 @@
-import { getTotalLabel } from './totalLabel';
-
 /**
  * Check if tax line should be shown
  * @param {Object} cartConfig cartConfig
@@ -25,7 +23,7 @@ export function getTaxLine(cartConfig, tax = null) {
   }
 
   return {
-    label: getTotalLabel(tax.label, 'checkout.summary.tax'),
+    label: tax.label,
     amount: tax.amount,
     ...taxConfig.hint && { hint: taxConfig.hint },
   };

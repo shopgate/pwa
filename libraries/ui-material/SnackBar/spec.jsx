@@ -34,11 +34,22 @@ jest.mock('@shopgate/engage/styles', () => ({
   }),
 }));
 
-// Render the Spring render-prop child immediately without animating.
+// Render the Spring render-prop child immediately without animating. onRest is fired on a 0ms
+// timer to mirror react-spring calling it after the commit — this drives the auto-hide countdown.
 jest.mock('react-spring', () => ({ config: { stiff: {} } }));
-jest.mock('react-spring/renderprops.cjs', () => ({
-  Spring: ({ children }) => children({}),
-}));
+jest.mock('react-spring/renderprops.cjs', () => {
+  // eslint-disable-next-line global-require
+  const { useEffect } = require('react');
+  return {
+    Spring: ({ children, onRest }) => {
+      useEffect(() => {
+        const id = setTimeout(() => onRest && onRest(), 0);
+        return () => clearTimeout(id);
+      });
+      return children({});
+    },
+  };
+});
 
 describe('<SnackBar />', () => {
   beforeEach(() => {
@@ -64,10 +75,40 @@ describe('<SnackBar />', () => {
     const message = screen.getByText('error.general');
     fireEvent.mouseDown(message);
     act(() => {
-      jest.advanceTimersByTime(500);
+      jest.advanceTimersByTime(4000);
     });
     fireEvent.mouseUp(message);
 
+    expect(onLongPress).toHaveBeenCalledTimes(1);
+  });
+
+  it('should keep the toast open while it is being long-pressed instead of auto-hiding', () => {
+    const onLongPress = jest.fn();
+    const removeToast = jest.fn();
+    const toasts = [{
+      id: 'pipeline.error',
+      message: 'error.general',
+      onLongPress,
+      duration: 2500,
+    }];
+
+    render(<SnackBar removeToast={removeToast} toasts={toasts} />);
+
+    const message = screen.getByText('error.general');
+    fireEvent.mouseDown(message);
+
+    // Hold well past the toast's 2500ms lifetime: the auto-hide countdown must be frozen, so the
+    // toast neither hides nor gets removed while the press is ongoing.
+    act(() => {
+      jest.advanceTimersByTime(3000);
+    });
+    expect(onLongPress).not.toHaveBeenCalled();
+    expect(removeToast).not.toHaveBeenCalled();
+
+    // The long press still completes at its 4000ms threshold.
+    act(() => {
+      jest.advanceTimersByTime(1000);
+    });
     expect(onLongPress).toHaveBeenCalledTimes(1);
   });
 
@@ -90,7 +131,7 @@ describe('<SnackBar />', () => {
     // A second pipeline error arrives during the press and overwrites the toast's handler in place.
     toasts[0].onLongPress = replacementHandler;
     act(() => {
-      jest.advanceTimersByTime(500);
+      jest.advanceTimersByTime(4000);
     });
     fireEvent.mouseUp(message);
 
@@ -114,7 +155,7 @@ describe('<SnackBar />', () => {
     const message = screen.getByText('error.general');
     fireEvent.mouseDown(message);
     act(() => {
-      jest.advanceTimersByTime(500);
+      jest.advanceTimersByTime(4000);
     });
     fireEvent.mouseUp(message);
     // The pointer release also produces a click, which must not run the action too.

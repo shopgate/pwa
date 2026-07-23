@@ -19,6 +19,7 @@ import { logger } from '@shopgate/pwa-core/helpers';
  * @property {Function} number - Number translator
  * @property {Function} getSupplementalData - Get Supplemental Data
  * @property {Function} getPath - Get locale data by path
+ * @property {Function} has - Check whether a translation key resolves to a value
  * @property {Function} getLang - Get locale lang code, eg de-DE
  */
 
@@ -54,6 +55,7 @@ const I18n = () => {
       this.number = getNumberFormatter(lang);
       this.getSupplementalData = () => locales.supplementalData || {};
       this.getPath = path => get(locales, path);
+      this.has = path => this.getPath(path) !== undefined;
       this.getLang = () => lang;
       // If component decides to act accordingly this information should be exposed.
       this.ready = true;
@@ -66,6 +68,7 @@ const I18n = () => {
     number: notReadyCb,
     getSupplementalData: notReadyCb,
     getPath: notReadyCb,
+    has: notReadyCb,
     getLang: notReadyCb,
     ready: false,
   };

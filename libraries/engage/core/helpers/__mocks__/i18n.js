@@ -8,6 +8,7 @@ export const i18n = {
   time: () => 't',
   getLang: () => 'de-DE',
   getPath: path => path,
+  has: path => path !== undefined,
 };
 
 /** @returns {string[]} */
