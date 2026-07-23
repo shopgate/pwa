@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -6,47 +6,55 @@ import {
   PRODUCT_ITEM_IMAGE_AFTER,
   PRODUCT_ITEM_IMAGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import { makeStyles } from '@shopgate/engage/styles';
 import { getProductImageSettings, ProductImage } from '@shopgate/engage/product';
 
 const { ListImage: gridResolutions } = getProductImageSettings();
 
+const useStyles = makeStyles()(theme => ({
+  image: {
+    background: theme.palette.background.surface,
+  },
+}));
+
 /**
  * The item image component.
+ * @param {Object} props The component props.
+ * @param {string} props.productId The product id.
+ * @param {string} [props.imageUrl] The product image url.
+ * @param {string} [props.name] The product name.
+ * @returns {JSX.Element}
  */
-class ItemImage extends PureComponent {
-  static propTypes = {
-    productId: PropTypes.string.isRequired,
-    imageUrl: PropTypes.string,
-    name: PropTypes.string,
-  };
+const ItemImage = ({ productId, name, imageUrl }) => {
+  const { classes } = useStyles();
+  const props = { productId };
 
-  static defaultProps = {
-    imageUrl: null,
-    name: null,
-  };
+  return (
+    <>
+      <Portal name={PRODUCT_ITEM_IMAGE_BEFORE} props={props} />
+      <Portal name={PRODUCT_ITEM_IMAGE} props={props}>
+        <ProductImage
+          className={classes.image}
+          alt={name}
+          src={imageUrl}
+          resolutions={gridResolutions}
+          itemProp="image"
+        />
+      </Portal>
+      <Portal name={PRODUCT_ITEM_IMAGE_AFTER} props={props} />
+    </>
+  );
+};
 
-  /**
-   * @returns {JSX}
-   */
-  render() {
-    const { productId, name, imageUrl } = this.props;
-    const props = { productId };
+ItemImage.propTypes = {
+  productId: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
+  name: PropTypes.string,
+};
 
-    return (
-      <>
-        <Portal name={PRODUCT_ITEM_IMAGE_BEFORE} props={props} />
-        <Portal name={PRODUCT_ITEM_IMAGE} props={props}>
-          <ProductImage
-            alt={name}
-            src={imageUrl}
-            resolutions={gridResolutions}
-            itemProp="image"
-          />
-        </Portal>
-        <Portal name={PRODUCT_ITEM_IMAGE_AFTER} props={props} />
-      </>
-    );
-  }
-}
+ItemImage.defaultProps = {
+  imageUrl: null,
+  name: null,
+};
 
-export default ItemImage;
+export default memo(ItemImage);

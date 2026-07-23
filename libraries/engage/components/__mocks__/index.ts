@@ -138,6 +138,19 @@ export const Typography = (props) => {
   const Component = component || (paragraph ? 'p' : typographyVariantMapping[variant]) || 'span';
   return jest.requireActual('react').createElement(Component, rest, children);
 };
+export const Badge = (props) => {
+  const {
+    // eslint-disable-next-line react/prop-types
+    count, max, showCount = true, ...rest
+  } = props;
+  if (!count) {
+    return null;
+  }
+  const label = max !== null && max !== undefined && count > max ? `${max}+` : `${count}`;
+  // Strip styling-only props so they don't leak onto the rendered DOM node.
+  ['style'].forEach((prop) => { delete rest[prop]; });
+  return jest.requireActual('react').createElement('div', rest, showCount ? label : '');
+};
 export const SheetDrawer = UISharedSheet;
 export const SheetList = ({ children }) => children;
 SheetList.Item = () => null;

@@ -6,7 +6,7 @@ exports[`<ItemName /> should render with minimal props 1`] = `
     productId="1234"
   />
   <ProductName
-    className="sg-liubmf-name theme__product-grid__item__item-name"
+    className="sg-1619dwq-name theme__product-grid__item__item-name"
     name="Foo"
     portalName="product-item.name"
     portalProps={

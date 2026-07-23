@@ -111,7 +111,7 @@ AppBar.propTypes = {
 
 AppBar.defaultProps = {
   'aria-hidden': null,
-  backgroundColor: 'var(--sg-palette-background-default)',
+  backgroundColor: 'var(--sg-components-appBar-background)',
   below: null,
   center: null,
   classes: {
@@ -120,7 +120,7 @@ AppBar.defaultProps = {
   },
   left: null,
   right: null,
-  textColor: 'var(--sg-palette-text-primary)',
+  textColor: 'var(--sg-components-appBar-color)',
 };
 
 AppBar.Field = Field;

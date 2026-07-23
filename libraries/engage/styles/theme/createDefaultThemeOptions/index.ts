@@ -2,7 +2,7 @@ import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/engage';
 import type { ThemeOptions } from '../createTheme';
 
-const { colors } = themeConfig;
+const { colors, settings } = themeConfig;
 
 /**
  * Creates the default theme options with legacy palette values.
@@ -66,6 +66,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
           },
         },
+        badge: {
+          vars: {
+            background: getCSSCustomProp('--color-secondary'),
+          },
+        },
         snackbar: {
           vars: {
             background: '#323232',
@@ -86,6 +91,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             badgeBorderRadius: 'var(--tab-bar-item-badge-border-radius, 8px)',
             badgeTop: 'var(--tab-bar-item-badge-top, -8px)',
             badgeLeft: 'var(--tab-bar-item-badge-left, calc(50% + 20px))',
+          },
+        },
+        appBar: {
+          vars: {
+            background: settings?.['@shopgate/engage/components/AppBar']?.background || '#FFF',
           },
         },
         ratingStars: {

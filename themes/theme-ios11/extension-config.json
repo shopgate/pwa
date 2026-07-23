@@ -240,15 +240,15 @@
             "quality": 75,
             "fillColor": "FFFFFF,1",
             "HeroImage": [
-                {
-                  "width": 440,
-                  "height": 440
-                },
-                {
-                  "width": 1024,
-                  "height": 1024
-                }
-              ],
+              {
+                "width": 440,
+                "height": 440
+              },
+              {
+                "width": 1024,
+                "height": 1024
+              }
+            ],
             "GalleryImage": [
               {
                 "width": 1024,
@@ -258,7 +258,7 @@
                 "width": 2048,
                 "height": 2048
               }
-              ],
+            ],
             "ListImage": [
               {
                 "width": 440,
@@ -297,7 +297,7 @@
             "prefillAuthor": true
           },
           "@shopgate/engage/rating": {
-            "showEmptyRatingStars":false
+            "showEmptyRatingStars": false
           },
           "@shopgate/engage/components/TaxDisclaimer": {
             "show": null,
@@ -316,8 +316,8 @@
             "show": false,
             "buttonColor": "$.colors.shade8",
             "buttonBgColor": "$.colors.primary",
-            "inputColor":  "$.colors.dark",
-            "inputBgColor":  "$.colors.shade8",
+            "inputColor": "$.colors.dark",
+            "inputBgColor": "$.colors.shade8",
             "propertyLabel": "",
             "showLabel": false
           },
@@ -865,7 +865,7 @@
       "destination": "frontend",
       "default": null,
       "params": {
-        "type": "text" ,
+        "type": "text",
         "label": "Default color of the navigation bar on Android >= 15",
         "description": "On Android >= 15 the navigation bar overlays the app. This settings defines the default color of the navigation bar if not set on demand by the PWA."
       }

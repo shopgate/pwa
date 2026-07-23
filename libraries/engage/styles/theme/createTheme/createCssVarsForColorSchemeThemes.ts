@@ -75,7 +75,10 @@ export default function createCssVarsForColorSchemeThemes(
     }), rest, cssVarPrefix);
 
     // Resolve component token values to actual CSS variable references
-    const resolvedComponents = flattenComponentVars(resolveComponentsValues(componentsInput, vars));
+    const resolvedComponents = flattenComponentVars(resolveComponentsValues(componentsInput, {
+      ...rest,
+      ...vars,
+    }));
 
     const {
       css: componentsCss,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { CART_MAX_ITEMS } from '@shopgate/engage/cart';
 import CartButtonBadge from './index';
 
@@ -13,17 +13,17 @@ jest.mock('@shopgate/engage/cart', () => ({
 
 describe('<CartButtonBadge />', () => {
   it('should be null render', () => {
-    const wrapper = shallow(<CartButtonBadge count={0} />);
-    expect(wrapper).toBeEmptyRender();
+    const { container } = render(<CartButtonBadge count={0} />);
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should render with number', () => {
-    const wrapper = shallow(<CartButtonBadge count={1} />);
-    expect(wrapper.find('[data-test-id="badge"]').props().children).toEqual(1);
+    render(<CartButtonBadge count={1} />);
+    expect(screen.getByText('1')).toBeInTheDocument();
   });
 
   it('should render with max plus count', () => {
-    const wrapper = shallow(<CartButtonBadge count={CART_MAX_ITEMS + 1} />);
-    expect(wrapper.find('[data-test-id="badge"]').props().children).toEqual(`${CART_MAX_ITEMS}+`);
+    render(<CartButtonBadge count={CART_MAX_ITEMS + 1} />);
+    expect(screen.getByText(`${CART_MAX_ITEMS}+`)).toBeInTheDocument();
   });
 });
