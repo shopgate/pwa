@@ -106,6 +106,10 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
     setVisible(toasts.length > 0);
   }, [toasts.length]);
 
+  useEffect(() => () => {
+    clearTimeout(timerRef.current);
+  }, []);
+
   const snack = useMemo(() => {
     const raw = toasts.length ? toasts[0] : defaultToast;
     return {
@@ -153,8 +157,10 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
 
   const handlePressCancel = useCallback(() => {
     pressingRef.current = false;
-    scheduleAutoHide();
-  }, [scheduleAutoHide]);
+    if (visibleRef.current && toasts[0]) {
+      scheduleAutoHide();
+    }
+  }, [scheduleAutoHide, toasts]);
 
   const longPressHandlers = useLongPress(handleLongPress, {
     threshold: 4000,
