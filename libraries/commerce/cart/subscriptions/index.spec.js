@@ -203,7 +203,7 @@ describe('Cart subscriptions', () => {
       expect(callback).toBeInstanceOf(Function);
     });
 
-    it('should prefer the backend translatedMessage and mark it as translated', () => {
+    it('should forward messageParams as additionalParams and derive context from the pipeline', () => {
       const action = {
         errors: [{
           code: 'ECART :: ESTOCKREACHED',
@@ -211,7 +211,6 @@ describe('Cart subscriptions', () => {
           pipeline: 'shopgate.cart.updateProducts.v1',
           translated: false,
           messageParams: {
-            translatedMessage: 'Das Produkt "Rinderpansen" ist nur noch 50 mal verfügbar',
             parameters: {
               name: 'Rinderpansen',
               quantity: 50,
@@ -232,15 +231,15 @@ describe('Cart subscriptions', () => {
           code: 'ECART :: ESTOCKREACHED',
           context: 'shopgate.cart.updateProducts.v1',
           meta: expect.objectContaining({
-            message: 'Das Produkt "Rinderpansen" ist nur noch 50 mal verfügbar',
-            translated: true,
+            message: 'ApiteSW6Utility.notice.product-stock-reached',
+            translated: false,
             additionalParams: action.errors[0].messageParams,
           }),
         }),
       }));
     });
 
-    it('should fall back to the message key when no translatedMessage is present', () => {
+    it('should use the message key and the backend translated flag', () => {
       const action = {
         errors: [{
           code: 'ECART :: ENOTFOUND',
