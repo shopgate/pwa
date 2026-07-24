@@ -13,6 +13,12 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const defaultToast = {};
 
+// Approximate settle time of the slide-out (config.stiff). The current toast is removed from the
+// queue this long after it starts sliding out, so the exit animation is fully visible before the
+// next toast slides in. Timer-driven removal keeps queue advancement independent of the spring's
+// onRest callback, which fires unreliably during the toast-to-toast handoff.
+const EXIT_ANIMATION_MS = 500;
+
 const backgroundColor = themeColors.lightDark;
 const buttonColor = themeColors.accent;
 const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
@@ -93,52 +99,72 @@ const calcRows = (message, actionLabel) => {
 const SnackBar = ({ removeToast, toasts: toastsProp }) => {
   const { classes, cx } = useStyles();
   const toasts = useMemo(() => toastsProp || [], [toastsProp]);
+  const current = toasts.length ? toasts[0] : null;
+  const currentId = current ? current.id : null;
+
   const [visible, setVisible] = useState(true);
-  const visibleRef = useRef(visible);
-  const timerRef = useRef(null);
+  const autoHideTimer = useRef(null);
+  const exitTimer = useRef(null);
   const pressingRef = useRef(false);
 
-  useEffect(() => {
-    visibleRef.current = visible;
-  }, [visible]);
+  // Latest values reachable from the stable timer callbacks below without re-creating them.
+  const durationRef = useRef();
+  durationRef.current = (current && current.duration) || 2500;
+  const removeToastRef = useRef(removeToast);
+  removeToastRef.current = removeToast;
 
+  // Show whenever there is a toast to display; hide when the queue drains. Reacting to the queue
+  // length is what slides the next toast in after the current one has been removed.
   useEffect(() => {
     setVisible(toasts.length > 0);
   }, [toasts.length]);
 
   useEffect(() => () => {
-    clearTimeout(timerRef.current);
+    clearTimeout(autoHideTimer.current);
+    clearTimeout(exitTimer.current);
   }, []);
 
   const snack = useMemo(() => {
-    const raw = toasts.length ? toasts[0] : defaultToast;
+    const raw = current || defaultToast;
     return {
       ...raw,
       message: i18n.text(raw.message || '', raw.messageParams || {}),
       actionLabel: i18n.text(raw.actionLabel || ''),
     };
-  }, [toasts]);
+  }, [current]);
 
+  // Slide the current toast out, then advance the queue once the exit animation has played. The
+  // removal is timer-driven (not the spring's onRest), so it fires exactly once for the toast being
+  // dismissed and can't be re-triggered by the spring re-settling as the next toast slides in.
   const hide = useCallback(() => {
-    clearTimeout(timerRef.current);
+    clearTimeout(autoHideTimer.current);
+    clearTimeout(exitTimer.current);
     setVisible(false);
+    exitTimer.current = setTimeout(() => removeToastRef.current(), EXIT_ANIMATION_MS);
   }, []);
 
-  // (Re)starts the auto-hide countdown. Clears any pending timer first so there is only ever a
-  // single live timer, which keeps repeated calls (e.g. resume after a press) idempotent.
+  // (Re)starts the auto-hide countdown. Stable identity (reads the duration via a ref), so the
+  // effect below only re-runs when the shown toast actually changes.
   const scheduleAutoHide = useCallback(() => {
-    clearTimeout(timerRef.current);
-    const duration = toasts[0]?.duration || 2500;
-    timerRef.current = setTimeout(hide, duration);
-  }, [toasts, hide]);
+    clearTimeout(autoHideTimer.current);
+    autoHideTimer.current = setTimeout(hide, durationRef.current);
+  }, [hide]);
+
+  // Start the countdown once per shown toast, keyed on its id — NOT on the spring's onRest. With
+  // `force`, onRest fires on every re-render, so scheduling the auto-hide there restarted the
+  // countdown on each render and could keep a toast on screen far longer than its duration.
+  useEffect(() => {
+    if (!currentId) {
+      return undefined;
+    }
+    scheduleAutoHide();
+    return () => clearTimeout(autoHideTimer.current);
+  }, [currentId, scheduleAutoHide]);
 
   const handleAction = useCallback(() => {
-    clearTimeout(timerRef.current);
-    if (toasts[0]) {
-      toasts[0].action();
-    }
+    current?.action?.();
     hide();
-  }, [toasts, hide]);
+  }, [current, hide]);
 
   const handleLongPress = useCallback(() => {
     pressingRef.current = false;
@@ -152,32 +178,21 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
   // mid-press. A press released before the threshold resumes the countdown from the start.
   const handlePressStart = useCallback(() => {
     pressingRef.current = true;
-    clearTimeout(timerRef.current);
+    clearTimeout(autoHideTimer.current);
   }, []);
 
   const handlePressCancel = useCallback(() => {
     pressingRef.current = false;
-    if (visibleRef.current && toasts[0]) {
+    if (currentId) {
       scheduleAutoHide();
     }
-  }, [scheduleAutoHide, toasts]);
+  }, [currentId, scheduleAutoHide]);
 
   const longPressHandlers = useLongPress(handleLongPress, {
     threshold: 4000,
     onStart: handlePressStart,
     onCancel: handlePressCancel,
   });
-
-  const handleRest = useCallback(() => {
-    if (!visibleRef.current) {
-      removeToast();
-      return;
-    }
-    // Don't start the auto-hide countdown while a long press is holding the toast open.
-    if (!pressingRef.current) {
-      scheduleAutoHide();
-    }
-  }, [scheduleAutoHide, removeToast]);
 
   const {
     action = null,
@@ -207,7 +222,6 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
         config={config.stiff}
         reverse={!visible}
         force
-        onRest={handleRest}
       >
         {springProps => (
           // eslint-disable-next-line max-len

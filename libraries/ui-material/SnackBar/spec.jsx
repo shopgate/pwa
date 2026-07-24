@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 import SnackBar from './index';
@@ -39,10 +39,10 @@ jest.mock('@shopgate/engage/styles', () => ({
 jest.mock('react-spring', () => ({ config: { stiff: {} } }));
 jest.mock('react-spring/renderprops.cjs', () => {
   // eslint-disable-next-line global-require
-  const { useEffect } = require('react');
+  const { useEffect: useSpringEffect } = require('react');
   return {
     Spring: ({ children, onRest }) => {
-      useEffect(() => {
+      useSpringEffect(() => {
         const id = setTimeout(() => onRest && onRest(), 0);
         return () => clearTimeout(id);
       });
@@ -204,5 +204,73 @@ describe('<SnackBar />', () => {
     expect(() => act(() => {
       jest.advanceTimersByTime(500);
     })).not.toThrow();
+  });
+
+  it('should play each queued toast in turn — the second is not skipped or instantly removed', () => {
+    // Mirrors ToastProvider: a FIFO queue whose head is dropped (immutably) on removeToast.
+    const Harness = () => {
+      const [toasts, setToasts] = useState([
+        {
+          id: 'a',
+          message: 'first.toast',
+          duration: 2500,
+        },
+        {
+          id: 'b',
+          message: 'second.toast',
+          duration: 2500,
+        },
+      ]);
+      const removeToast = useCallback(() => setToasts(t => t.slice(1)), []);
+      if (!toasts.length) return null;
+      return <SnackBar removeToast={removeToast} toasts={toasts} />;
+    };
+
+    render(<Harness />);
+
+    // First toast is shown; the second is still queued, not yet rendered.
+    expect(screen.getByText('first.toast')).toBeTruthy();
+    expect(screen.queryByText('second.toast')).toBe(null);
+
+    // First toast dwells (2500ms), then slides out and is removed after the exit animation.
+    act(() => { jest.advanceTimersByTime(2500 + 600); });
+
+    // The second toast is now on screen — it got its turn rather than being dropped instantly.
+    expect(screen.getByText('second.toast')).toBeTruthy();
+    expect(screen.queryByText('first.toast')).toBe(null);
+
+    // It in turn dwells and is removed, draining the queue.
+    act(() => { jest.advanceTimersByTime(2500 + 600); });
+    expect(screen.queryByText('second.toast')).toBe(null);
+  });
+
+  it('auto-hides within its duration even when the parent re-renders repeatedly', () => {
+    // The spring re-settles (and fires onRest) on every render because of `force`. The auto-hide
+    // countdown must therefore NOT be tied to onRest, or frequent parent re-renders would keep
+    // resetting it and the toast would outlive its duration.
+    const removeToast = jest.fn();
+    const Harness = () => {
+      const [, tick] = useState(0);
+      useEffect(() => {
+        const id = setInterval(() => tick(n => n + 1), 500); // re-render every 500ms (< duration)
+        return () => clearInterval(id);
+      }, []);
+      const toasts = [{
+        id: 'a',
+        message: 'error.general',
+        duration: 2500,
+      }];
+      return <SnackBar removeToast={removeToast} toasts={toasts} />;
+    };
+
+    render(<Harness />);
+
+    // Not yet gone before its duration elapses.
+    act(() => { jest.advanceTimersByTime(2000); });
+    expect(removeToast).not.toHaveBeenCalled();
+
+    // Removed shortly after its duration (dwell + exit animation), despite the periodic re-renders.
+    act(() => { jest.advanceTimersByTime(500 + 600); });
+    expect(removeToast).toHaveBeenCalledTimes(1);
   });
 });
