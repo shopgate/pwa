@@ -8,7 +8,7 @@ export const i18n = {
   time: () => 't',
   getLang: () => 'de-DE',
   getPath: path => path,
-  has: path => path !== undefined,
+  has: path => typeof path === 'string' && /^\S+\.\S+/.test(path),
 };
 
 /** @returns {string[]} */
