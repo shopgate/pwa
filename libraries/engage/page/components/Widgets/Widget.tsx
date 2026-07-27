@@ -1,5 +1,6 @@
-import React, { Suspense, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import {
+  Suspense, useCallback, type ComponentType, type DOMAttributes,
+} from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { VisibilityOffIcon, TimeIcon, Loading } from '@shopgate/engage/components';
 import { usePressHandler } from '@shopgate/engage/core/hooks';
@@ -7,8 +8,19 @@ import WidgetProvider from './WidgetProvider';
 import { dispatchWidgetPreviewEvent } from './events';
 import { useWidgetsPreview } from './hooks';
 import Tooltip from './Tooltip';
+import { type WidgetDefinition } from './types';
 
-const useStyles = makeStyles()((theme, {
+/**
+ * Style parameters for the widget, derived from its layout margins.
+ */
+interface WidgetStyleParams {
+  marginTop: number;
+  marginBottom: number;
+  marginLeft: number;
+  marginRight: number;
+}
+
+const useStyles = makeStyles<WidgetStyleParams>()((theme, {
   marginTop,
   marginLeft,
 }) => ({
@@ -46,29 +58,37 @@ const useStyles = makeStyles()((theme, {
 }));
 
 /**
- * @typedef {import('./types').WidgetDefinition} WidgetDefinition
+ * Props of the {@link Widget} component.
  */
-
-/**
- * @typedef {import('./types').ScheduledStatus} ScheduledStatus
- */
+export interface WidgetProps {
+  /**
+   * The widget component to render.
+   */
+  component: ComponentType<{ settings?: WidgetDefinition['widgetConfig'] }>;
+  /**
+   * The widget definition data.
+   */
+  definition: WidgetDefinition;
+  /**
+   * Whether the widget is in preview mode.
+   */
+  isPreview: boolean;
+  /**
+   * Whether the widget is a legacy custom widget provided by an extension that's configured
+   * via an HTML comment inside a HTML widget.
+   */
+  isCustomLegacyWidget?: boolean;
+}
 
 /**
  * The Widget component.
- * @param {Object} props The component props.
- * @param {React.ComponentType} props.component The widget component to render.
- * @param {WidgetDefinition} props.definition The widget definition data.
- * @param {boolean} props.isPreview Whether the widget is in preview mode.
- * @param {boolean} props.isCustomLegacyWidget Whether the widget is a legacy custom widget provided
- * by an extension that's configured via an HTML comment inside a HTML widget.
- * @returns {JSX.Element}
  */
 const Widget = ({
   component: Component,
   definition,
   isPreview,
-  isCustomLegacyWidget,
-}) => {
+  isCustomLegacyWidget = false,
+}: WidgetProps) => {
   const { classes, cx } = useStyles({
     marginTop: definition?.layout?.marginTop ?? 0,
     marginBottom: definition?.layout?.marginBottom ?? 0,
@@ -86,7 +106,7 @@ const Widget = ({
     dispatchWidgetPreviewEvent('widget-clicked', definition.code);
   }, [activeWidget, definition.code, setActiveWidget]);
 
-  const handlers = usePressHandler(handleInteraction);
+  const handlers = usePressHandler(handleInteraction) as DOMAttributes<HTMLElement>;
 
   if (!Component) {
     return null;
@@ -137,17 +157,6 @@ const Widget = ({
       </WidgetProvider>
     </section>
   );
-};
-
-Widget.propTypes = {
-  component: PropTypes.elementType.isRequired,
-  definition: PropTypes.shape().isRequired,
-  isPreview: PropTypes.bool.isRequired,
-  isCustomLegacyWidget: PropTypes.bool,
-};
-
-Widget.defaultProps = {
-  isCustomLegacyWidget: false,
 };
 
 export default Widget;

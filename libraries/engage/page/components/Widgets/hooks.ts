@@ -2,29 +2,49 @@ import {
   useContext, useMemo,
 } from 'react';
 import { useDispatch } from 'react-redux';
+import { type AnyAction } from 'redux';
 import { useRoute } from '@shopgate/engage/core/hooks';
 import { receivePageConfigV2 } from '@shopgate/engage/page/action-creators';
 import { PAGE_PREVIEW_SLUG } from '@shopgate/engage/page/constants';
-import { useIframeMessenger } from '@shopgate/engage/admin-preview/hooks';
+import { useIframeMessenger, type MessageData } from '@shopgate/engage/admin-preview/hooks';
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
 import {
   CONSIDER_CONTAINER_MARGINS_ON_SCROLL_DEFAULT,
 } from './constants';
 import { getScrollContainer } from './helpers';
-import { WidgetsPreviewContext } from './WidgetsPreviewContext';
+import {
+  WidgetsPreviewContext,
+  type WidgetsPreviewContextType,
+} from './WidgetsPreviewContext';
 import {
   dispatchWidgetPreviewEvent,
   useWidgetPreviewEvent,
 } from './events';
 
 /**
+ * Message payload exchanged with the parent window in the page preview iframe.
+ */
+interface WidgetPreviewMessage extends MessageData {
+  type: string;
+  payload?: {
+    /**
+     * The code of the widget the message refers to.
+     */
+    widgetCode?: string;
+    [key: string]: unknown;
+  };
+}
+
+/**
  * Hook to handle communication with the parent window in a page preview iframe.
- * @param {boolean} isActive Whether the preview communication is active.
+ * @param isActive Whether the preview communication is active.
  */
 export const usePreviewIframeCommunication = (isActive = false) => {
   const dispatch = useDispatch();
 
-  const { query: { considerContainerMarginsOnScroll } } = useRoute();
+  const {
+    query: { considerContainerMarginsOnScroll },
+  } = useRoute() as { query: Record<string, string | undefined> };
 
   // Detect if container margins should be considered at scroll to widget.
   const considerVerticalMargins = useMemo(() => {
@@ -35,18 +55,19 @@ export const usePreviewIframeCommunication = (isActive = false) => {
     return considerContainerMarginsOnScroll === 'true';
   }, [considerContainerMarginsOnScroll]);
 
-  const { sendToParent } = useIframeMessenger((data) => {
+  const { sendToParent } = useIframeMessenger<WidgetPreviewMessage>((data) => {
     if (data.type === 'receivePageConfig') {
       // Page preview config received from the parent window.
       dispatch(receivePageConfigV2({
         type: 'cms',
         slug: PAGE_PREVIEW_SLUG,
-        data: data.payload,
-      }));
+        data: data.payload ?? {},
+      }) as AnyAction);
     } else if (data.type === 'scrollToWidget' && data.payload?.widgetCode) {
       // Parent window requested to scroll to a specific widget.
+      const { widgetCode } = data.payload;
       const scrollContainer = getScrollContainer();
-      const target = scrollContainer.querySelector(`#widget-code-${data.payload.widgetCode}`);
+      const target = scrollContainer?.querySelector(`#widget-code-${widgetCode}`);
 
       if (scrollContainer && target) {
         let marginTop = 0;
@@ -63,17 +84,17 @@ export const usePreviewIframeCommunication = (isActive = false) => {
         const actualScrollTop = Math.min(scrollOffset, maxScrollTop);
 
         // Register the target element as the active widget.
-        dispatchWidgetPreviewEvent('set-active-widget-id', data.payload.widgetCode);
+        dispatchWidgetPreviewEvent('set-active-widget-id', widgetCode);
 
         /**
          * Callback to highlight the widget after scrolling.
          */
         const highlightWidget = () => {
-          dispatchWidgetPreviewEvent('highlight-widget', data.payload.widgetCode);
+          dispatchWidgetPreviewEvent('highlight-widget', widgetCode);
         };
 
         // Add listener to onScrollEnd if available, otherwise use scroll event.
-        if ('onscrollend' in scrollContainer) {
+        if ('onscrollend' in (scrollContainer as object)) {
           /**
            * Callback for the scrollend event.
            */
@@ -126,13 +147,8 @@ export const usePreviewIframeCommunication = (isActive = false) => {
 };
 
 /**
- * @typedef {import('./WidgetsPreviewContext.js').WidgetsPreviewContextType}
- * WidgetsPreviewContextType
- */
-
-/**
  * The useWidgetsPreview hook provides access to the context that is wrapped around the Widgets
  * component when it's rendered in preview mode.
- * @returns {WidgetsPreviewContextType} The widget context.
+ * @returns The widget preview context.
  */
-export const useWidgetsPreview = () => useContext(WidgetsPreviewContext);
+export const useWidgetsPreview = (): WidgetsPreviewContextType => useContext(WidgetsPreviewContext);

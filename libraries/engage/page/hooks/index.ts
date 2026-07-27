@@ -2,29 +2,18 @@ import {
   useContext, useMemo, useCallback, useEffect, useState,
 } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { WidgetContext } from '@shopgate/engage/page/components/Widgets';
+import { WidgetContext, type WidgetContextType } from '@shopgate/engage/page/components/Widgets';
 import { ITEMS_PER_LOAD } from '@shopgate/engage/core/constants';
 import { transformDisplayOptions } from '@shopgate/engage/core/helpers';
 import { fetchProductsByQuery } from '@shopgate/engage/product';
 import { makeGetWidgetProducts } from '../selectors';
 
 /**
- * @typedef {import('../components/Widgets/WidgetContext').WidgetContextType WidgetContextType}
- */
-
-/**
- * @typedef {import('./index').UseWidgetProductsOptions} UseWidgetProductsOptions
- */
-
-/**
- * @typedef {import('./index').UseWidgetProductsResult} UseWidgetProductsResult
- */
-
-/**
  * The useWidget hook provides access to the context that is wrapped around a widget.
- * @returns {WidgetContextType} The widget context.
+ * @returns The widget context.
  */
-export const useWidget = () => useContext(WidgetContext);
+export const useWidget = <C = Record<string, unknown>>(): WidgetContextType<C> =>
+  useContext(WidgetContext) as WidgetContextType<C>;
 
 const REQUEST_TYPE_MAPPING = {
   highlights: 1,
@@ -35,11 +24,96 @@ const REQUEST_TYPE_MAPPING = {
 };
 
 /**
- * Retrieves the products for the current widget.
- * @param {UseWidgetProductsOptions} options Hook options
- * @returns {UseWidgetProductsResult} The products and a function to fetch more products.
+ * Shape of the memoized widget products selector result. The underlying selector and its
+ * dependencies live in untyped JS, so the shape is described here at the consumption boundary.
  */
-export const useWidgetProducts = (options = {}) => {
+interface WidgetProductsSelectorResult {
+  /**
+   * The products currently loaded for the widget.
+   */
+  products: unknown[];
+  /**
+   * The total number of products available for the widget query.
+   */
+  totalProductCount: number;
+  /**
+   * Whether a products request is currently in flight.
+   */
+  isFetching: boolean;
+}
+
+/**
+ * Shape of the result returned by the (untyped) `fetchProductsByQuery` thunk.
+ */
+interface ProductQueryResult {
+  /**
+   * Total product count when the result comes from a real pipeline request.
+   */
+  totalProductCount: number;
+  /**
+   * Total result count when the result comes from cached products.
+   */
+  totalResultCount: number;
+}
+
+/**
+ * Options for the {@link useWidgetProducts} hook.
+ */
+export interface UseWidgetProductsOptions {
+  /**
+   * The search value to use for the product search.
+   */
+  value: string;
+  /**
+   * The type of product search to perform.
+   */
+  type: 'searchTerm' | 'productIds' | 'brand' | 'category' | 'highlights';
+  /**
+   * The number of products to return per page.
+   * @default 32
+   */
+  limit?: number;
+  /**
+   * Sort order for the products.
+   * @default 'relevance'
+   */
+  sort?: 'relevance' | 'priceAsc' | 'priceDesc' | 'nameAsc' | 'nameDesc';
+}
+
+/**
+ * Result of the {@link useWidgetProducts} hook.
+ */
+export interface UseWidgetProductsResult {
+  /**
+   * Function to fetch the next page of products.
+   */
+  fetchNext: () => void;
+  /**
+   * Whether there are more products to fetch.
+   */
+  hasNext: boolean;
+  /**
+   * Whether the products are currently being fetched.
+   */
+  isFetching: boolean;
+  /**
+   * Number of products available in the current result set.
+   */
+  totalResultCount: number;
+  /**
+   * Array of product results.
+   */
+  results: unknown[];
+}
+
+/**
+ * Retrieves the products for the current widget.
+ * @param options Hook options.
+ * @returns The products and a function to fetch more products.
+ */
+export const useWidgetProducts = (
+  options: UseWidgetProductsOptions = {} as UseWidgetProductsOptions
+): UseWidgetProductsResult => {
   const {
     type,
     value,
@@ -47,7 +121,8 @@ export const useWidgetProducts = (options = {}) => {
     sort = 'relevance',
   } = options;
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch() as unknown as
+    (action: unknown) => Promise<ProductQueryResult>;
   const { code = `${type}_${value}_${limit}_${sort}`, isPreview } = useWidget();
 
   // ###### Products selection ######
@@ -63,18 +138,20 @@ export const useWidgetProducts = (options = {}) => {
     [code, selectorOptions, type]
   );
 
-  const widgetProducts = useSelector(getWidgetProducts);
+  const widgetProducts = useSelector(
+    getWidgetProducts as unknown as (state: unknown) => WidgetProductsSelectorResult
+  );
 
   // ###### Products request ######
 
   // Outside the preview mode the offset and hasNext state are initialized based on previously
   // fetched product data. That ensures that users see the same product list when they leave
   // the page and come back later.
-  const [offset, setOffset] = useState(isPreview
+  const [offset, setOffset] = useState<number>(isPreview
     ? 0
     : widgetProducts.products.length);
 
-  const [hasNext, setHasNext] = useState(isPreview
+  const [hasNext, setHasNext] = useState<boolean>(isPreview
     ? true
     : widgetProducts.totalProductCount > widgetProducts.products.length);
 

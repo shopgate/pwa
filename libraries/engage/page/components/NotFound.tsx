@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
 import { I18n, Typography } from '@shopgate/engage/components';
@@ -32,11 +32,10 @@ const useStyles = makeStyles()(theme => ({
 /**
  * The NotFoundPage component renders a "Page Not Found" view
  * with options to navigate back or to the home page.
- * @returns {JSX.Element}
  */
 const NotFound = () => {
   const { classes } = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch() as unknown as (action: unknown) => void;
 
   const handleBack = useCallback(() => {
     dispatch(historyPop());
