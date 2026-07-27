@@ -256,7 +256,58 @@ exports[`<ReviewForm /> should render empty 1`] = `
                           </div>
                           <div
                             className="sg-10z3jvw-filledStars rating-stars-filled"
-                          />
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-0"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-1"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-2"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-3"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-4"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                          </div>
                         </div>
                       </RatingStars>
                       <ErrorText
@@ -1334,7 +1385,58 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                           </div>
                           <div
                             className="sg-10z3jvw-filledStars rating-stars-filled"
-                          />
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-0"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-1"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-2"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-3"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-4"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                          </div>
                         </div>
                       </RatingStars>
                       <ErrorText
@@ -8815,7 +8917,58 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                           </div>
                           <div
                             className="sg-10z3jvw-filledStars rating-stars-filled"
-                          />
+                          >
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-0"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-1"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-2"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-3"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                            <div
+                              aria-hidden={true}
+                              className="sg-1e9cjpt-icon-iconGapLarge"
+                              key="placeholder-4"
+                              style={
+                                {
+                                  "width": "2.3em",
+                                }
+                              }
+                            />
+                          </div>
                         </div>
                       </RatingStars>
                       <ErrorText
