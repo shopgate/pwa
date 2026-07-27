@@ -141,6 +141,17 @@ const RatingStars = ({
         <StarHalfIcon size={size} />
       </div>
     )),
+    // Invisible spacers keep the filled layer the same width as the empty
+    // layer (both always span numStars slots) so the two overlapping rows
+    // shrink in lockstep and stay aligned in tight spaces.
+    ...times(Math.max(numStars - numFullStars - numHalfStars, 0), i => (
+      <div
+        className={iconClassName}
+        style={{ width: size }}
+        key={`placeholder-${i}`}
+        aria-hidden
+      />
+    )),
   ], [iconClassName, numFullStars, numHalfStars, size, handleSelection, isSelectable]);
 
   return (

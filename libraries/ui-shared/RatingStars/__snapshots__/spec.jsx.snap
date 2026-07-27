@@ -53,7 +53,58 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
   </div>
   <div
     className="sg-10z3jvw-filledStars rating-stars-filled"
-  />
+  >
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-0"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-1"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-2"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-3"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-4"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+  </div>
 </div>
 `;
 
@@ -135,6 +186,26 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
         size="1em"
       />
     </div>
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-0"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-1"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
   </div>
 </div>
 `;
@@ -473,6 +544,16 @@ exports[`<RatingStars /> should change rating on click 2`] = `
         size="1em"
       />
     </div>
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-0"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
   </div>
 </div>
 `;
