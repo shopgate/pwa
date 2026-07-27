@@ -1,13 +1,13 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import { useSelector } from 'react-redux';
-import { WidgetContext } from '@shopgate/engage/page/components/Widgets/WidgetContext';
+import { WidgetContext, type WidgetContextType } from '@shopgate/engage/page/components/Widgets/WidgetContext';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
 import {
   getAreAppSettingsHydrated,
   getProductGridColumns,
 } from '@shopgate/engage/settings/selectors/appSettings';
+import type { ProductColumns } from '@shopgate/engage/settings/types/appSettings';
 import { useProductGridColumns } from './hooks';
 
 jest.mock('react-redux', () => ({ useSelector: jest.fn() }));
@@ -18,20 +18,20 @@ jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
   getProductGridColumns: jest.fn(),
 }));
 
-const APP_SETTINGS_DEFAULT = {
+const APP_SETTINGS_DEFAULT: ProductColumns = {
   xs: 2,
   md: 4,
 };
 
-/**
- * Configures the mocked dependencies for a single render.
- * @param {Object} options The scenario options.
- * @param {boolean} options.hydrated Whether the app settings are hydrated.
- * @param {Object} options.appColumns The app-settings columns map.
- * @param {Object} options.widgetSettings The legacy widget settings.
- */
-const setup = ({ hydrated, appColumns, widgetSettings }) => {
-  useSelector.mockImplementation((selector) => {
+interface SetupOptions {
+  hydrated: boolean;
+  appColumns: ProductColumns;
+  widgetSettings: { columns?: number };
+}
+
+// Configures the mocked dependencies for a single render.
+const setup = ({ hydrated, appColumns, widgetSettings }: SetupOptions) => {
+  (useSelector as jest.Mock).mockImplementation((selector: unknown) => {
     if (selector === getAreAppSettingsHydrated) {
       return hydrated;
     }
@@ -40,29 +40,22 @@ const setup = ({ hydrated, appColumns, widgetSettings }) => {
     }
     return undefined;
   });
-  useWidgetSettings.mockReturnValue(widgetSettings);
+  (useWidgetSettings as jest.Mock).mockReturnValue(widgetSettings);
   // Identity mock so the test can assert which breakpoint map the hook picks.
-  useResponsiveValue.mockImplementation(map => map);
+  (useResponsiveValue as jest.Mock).mockImplementation((map: unknown) => map);
 };
 
-/**
- * Renders the hook inside an optional WidgetContext and returns the resolved map.
- * @param {string|null} widgetCode The widget code to expose via WidgetContext.
- * @returns {Object} The breakpoint map passed to useResponsiveValue.
- */
-const renderHook = (widgetCode = null) => {
-  let result;
+// Renders the hook inside an optional WidgetContext and returns the resolved map.
+const renderHook = (widgetCode: string | null = null): number | undefined => {
+  let result: number | undefined;
 
-  /**
-   * @returns {null} Nothing renderable.
-   */
   const Consumer = () => {
     result = useProductGridColumns();
     return null;
   };
 
   render(
-    <WidgetContext.Provider value={widgetCode ? { code: widgetCode } : {}}>
+    <WidgetContext.Provider value={(widgetCode ? { code: widgetCode } : {}) as WidgetContextType}>
       <Consumer />
     </WidgetContext.Provider>
   );
