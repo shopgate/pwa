@@ -1,4 +1,3 @@
-import React from 'react';
 import { ProductGrid } from '@shopgate/engage/product/components';
 import { logger } from '@shopgate/engage/core/helpers';
 

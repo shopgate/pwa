@@ -46,6 +46,11 @@ const useStyles = makeStyles()(theme => ({
     position: 'absolute',
     left: 0,
     top: 0,
+    // Purely decorative overlay: let every pointer event fall through to the
+    // empty-star buttons underneath, which span all slots and handle selection.
+    // Without this, the invisible spacers/half-stars cover the higher-index
+    // buttons and swallow clicks in selectable mode.
+    pointerEvents: 'none',
     color: theme.components.ratingStars.filled,
     display: 'inline-flex',
     alignItems: 'center',
@@ -123,10 +128,10 @@ const RatingStars = ({
       const starProps = {
         className: iconClassName,
         key: numStars + pos,
+        // Decorative duplicate of the underlying empty-star button; hidden from
+        // assistive tech and non-interactive (the empty layer handles clicks).
         ...(isSelectable) && {
           'aria-hidden': true,
-          role: 'button',
-          onClick: e => handleSelection(e, pos),
         },
       };
 
@@ -152,7 +157,7 @@ const RatingStars = ({
         aria-hidden
       />
     )),
-  ], [iconClassName, numFullStars, numHalfStars, size, handleSelection, isSelectable]);
+  ], [iconClassName, numFullStars, numHalfStars, size, isSelectable]);
 
   return (
     <div
