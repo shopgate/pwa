@@ -1,15 +1,30 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import {
+  useEffect, useMemo, useState, useRef, type ComponentType, type ReactNode,
+} from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import {
   usePrevious,
   useAppEventOnReturnFromBackground,
 } from '@shopgate/engage/core/hooks';
-import { ConditionalWrapper, Link } from '@shopgate/engage/components';
-import PropTypes from 'prop-types';
+import { ConditionalWrapper, Link as EngageLink } from '@shopgate/engage/components';
 import { isHttpsUrl } from '../../helpers';
 
-const useStyles = makeStyles()((_theme, { borderRadius }) => ({
+// `Link` is a redux-connected component whose react-redux connect() typing resolves its own props
+// (href/children) to `never`; alias it to its actual usable prop shape.
+const Link = EngageLink as unknown as ComponentType<{
+  href?: string | null;
+  children?: ReactNode;
+}>;
+
+/**
+ * Style parameters for the widget video.
+ */
+interface WidgetVideoStyleParams {
+  borderRadius?: number;
+}
+
+const useStyles = makeStyles<WidgetVideoStyleParams>()((_theme, { borderRadius }) => ({
   root: {
     width: '100%',
     display: 'flex',
@@ -38,34 +53,62 @@ const useStyles = makeStyles()((_theme, { borderRadius }) => ({
 }));
 
 /**
+ * Props of the {@link WidgetVideo} component.
+ */
+export interface WidgetVideoProps {
+  /**
+   * Whether the video is used in a banner.
+   */
+  isBanner?: boolean;
+  /**
+   * The video URL.
+   */
+  url?: string | null;
+  /**
+   * Whether the video is muted.
+   */
+  muted?: boolean;
+  /**
+   * Whether the video is looping.
+   */
+  loop?: boolean;
+  /**
+   * Whether the video controls are shown.
+   */
+  controls?: boolean;
+  /**
+   * Whether the video should autoplay.
+   */
+  autoplay?: boolean;
+  /**
+   * The border radius value.
+   */
+  borderRadius?: number;
+  /**
+   * The link URL.
+   */
+  link?: string | null;
+}
+
+/**
  * The WidgetVideo component is used to display a video in a widget.
- * @param {Object} props The component props.
- * @param {boolean} props.isBanner Whether the video is used in a banner.
- * @param {string} props.url The video URL.
- * @param {boolean} props.muted Whether the video is muted.
- * @param {boolean} props.loop Whether the video is looping.
- * @param {boolean} props.controls Whether the video controls are shown.
- * @param {boolean} props.autoplay Whether the video should autoplay.
- * @param {number} props.borderRadius The border radius value.
- * @param {string} props.link The link URL.
- * @returns {JSX.Element}
  */
 const WidgetVideo = ({
-  isBanner,
-  url,
-  muted,
-  loop,
-  controls,
-  autoplay,
-  borderRadius,
-  link,
-}) => {
+  isBanner = false,
+  url = null,
+  muted = false,
+  loop = false,
+  controls = false,
+  autoplay = false,
+  borderRadius = 0,
+  link = null,
+}: WidgetVideoProps) => {
   const reduceMotion = useReduceMotion();
   const autoplayValue = reduceMotion ? false : isBanner || autoplay;
 
   const { classes, cx } = useStyles({ borderRadius });
   const [hasError, setHasError] = useState(false);
-  const videoRef = React.useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const prevUrl = usePrevious(url);
   const isValidUrl = useMemo(() => (url ? isHttpsUrl(url) : false), [url]);
 
@@ -80,29 +123,31 @@ const WidgetVideo = ({
 
   // Resume video playback when app returned from background
   useAppEventOnReturnFromBackground(() => {
-    if (!videoRef.current || reduceMotion || !autoplayValue) {
+    const video = videoRef.current;
+    if (!video || reduceMotion || !autoplayValue) {
       return;
     }
 
-    videoRef.current.play();
+    video.play();
   });
 
   useEffect(() => {
-    if (!videoRef.current) {
+    const video = videoRef.current;
+    if (!video) {
       return;
     }
 
     if (reduceMotion) {
       // Pause playback when reduced motion settings changed after video was rendered
-      videoRef.current.pause();
+      video.pause();
       return;
     }
 
     if (autoplayValue) {
-      videoRef.current.play();
+      video.play();
     } else {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
+      video.pause();
+      video.currentTime = 0;
     }
   }, [autoplayValue, reduceMotion]);
 
@@ -118,7 +163,7 @@ const WidgetVideo = ({
     <div className={cx(classes.root, { [classes.bannerContainer]: isBanner })}>
       <ConditionalWrapper
         condition={!!link}
-        wrapper={children =>
+        wrapper={(children: ReactNode) =>
           <Link href={link}>
             { children }
           </Link>}
@@ -143,28 +188,6 @@ const WidgetVideo = ({
       </ConditionalWrapper>
     </div>
   );
-};
-
-WidgetVideo.propTypes = {
-  autoplay: PropTypes.bool,
-  borderRadius: PropTypes.number,
-  controls: PropTypes.bool,
-  isBanner: PropTypes.bool,
-  link: PropTypes.string,
-  loop: PropTypes.bool,
-  muted: PropTypes.bool,
-  url: PropTypes.string,
-};
-
-WidgetVideo.defaultProps = {
-  isBanner: false,
-  link: null,
-  url: null,
-  muted: false,
-  loop: false,
-  controls: false,
-  autoplay: false,
-  borderRadius: 0,
 };
 
 export default WidgetVideo;

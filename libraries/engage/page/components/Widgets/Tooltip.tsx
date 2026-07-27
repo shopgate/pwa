@@ -1,6 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import {
+  useState, useRef, useEffect, type ReactNode, type ReactElement, type CSSProperties,
+} from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
 import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -56,15 +57,25 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
- * AI generated Tooltip component to display additional information on hover.
- * @param {Object} props The component props.
- * @param {React.ReactNode} props.children The child elements to wrap.
- * @param {string} props.text The tooltip text to display.
- * @returns {JSX.Element}
+ * Props of the {@link Tooltip} component.
  */
-function Tooltip({ children, text }) {
+export interface TooltipProps {
+  /**
+   * The child elements to wrap.
+   */
+  children: ReactNode;
+  /**
+   * The tooltip text to display.
+   */
+  text?: string | null;
+}
+
+/**
+ * AI generated Tooltip component to display additional information on hover.
+ */
+function Tooltip({ children, text }: TooltipProps) {
   const { classes, cx } = useStyles();
-  const wrapperRef = useRef(null);
+  const wrapperRef = useRef<HTMLSpanElement>(null);
   const [visible, setVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [animate, setAnimate] = useState(false);
@@ -72,13 +83,13 @@ function Tooltip({ children, text }) {
     left: 0,
     top: 0,
   });
-  const [arrowLeft, setArrowLeft] = useState(null);
-  const [positionState, setPositionState] = useState('top'); // 'top' or 'bottom'
+  const [arrowLeft, setArrowLeft] = useState<number | null>(null);
+  const [positionState, setPositionState] = useState<'top' | 'bottom'>('top');
   const tooltipId = useRef(Math.random().toString(36).slice(2, 11));
 
   // Handle mounting/unmounting and trigger fade animation
   useEffect(() => {
-    let timeoutId;
+    let timeoutId: ReturnType<typeof setTimeout>;
     if (visible) {
       setMounted(true);
       // allow DOM to insert before starting the fade-in
@@ -117,7 +128,7 @@ function Tooltip({ children, text }) {
     }
 
     // If top would be too high (tooltip clipped), switch to "bottom"
-    let finalPosition = 'top';
+    let finalPosition: 'top' | 'bottom' = 'top';
     if (top < margin) {
       // try bottom
       const bottomTop = wrapperRect.bottom + 8;
@@ -164,14 +175,14 @@ function Tooltip({ children, text }) {
   }, [mounted]);
 
   if (!text) {
-    return children;
+    return children as ReactElement;
   }
 
   const portalStyle = {
     left: `${coords.left}px`,
     top: `${coords.top}px`,
     ...(arrowLeft !== null ? { '--arrow-left': `${arrowLeft}px` } : {}),
-  };
+  } as CSSProperties;
 
   const arrowClass =
     positionState === 'top' ? classes.arrowTop : classes.arrowBottom;
@@ -201,14 +212,5 @@ function Tooltip({ children, text }) {
     </span>
   );
 }
-
-Tooltip.propTypes = {
-  children: PropTypes.node.isRequired,
-  text: PropTypes.string,
-};
-
-Tooltip.defaultProps = {
-  text: null,
-};
 
 export default Tooltip;

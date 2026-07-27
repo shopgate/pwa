@@ -1,10 +1,8 @@
-import React from 'react';
 import { useVideoWidget } from './hooks';
 import WidgetVideo from '../../components/WidgetVideo';
 
 /**
  * The VideoWidget is used to display a video.
- * @returns {JSX.Element}
  */
 const Video = () => {
   const {

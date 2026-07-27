@@ -1,45 +1,42 @@
-import { createContext, type Context } from 'react';
-import type {
-  WidgetDefinitionLayout,
-  WidgetDefinitionVisibility,
+import { createContext } from 'react';
+import {
+  type WidgetDefinitionLayout,
+  type WidgetDefinitionVisibility,
 } from './types';
 
-export type { WidgetDefinition } from './types';
+export { type WidgetDefinition } from './types';
 
-export interface WidgetContextType<C = Record<string, any>> {
+/**
+ * Context value provided by the {@link WidgetContext} for a single widget instance.
+ */
+export interface WidgetContextType<C = Record<string, unknown>> {
   /**
-   * The unique code of the widget instance
+   * The unique code of the widget instance.
    */
   code: string;
   /**
-   * The name of the widget
+   * The name of the widget.
    */
   name: string;
   /**
-   * The widget configuration
+   * The widget configuration.
    */
   config: C;
   /**
-   * The widget layout settings
+   * The widget layout settings.
    */
   layout: WidgetDefinitionLayout;
   /**
-   * The widget visibility settings
+   * The widget visibility settings.
    */
   visibility: WidgetDefinitionVisibility;
   /**
-   * Whether the widget is rendered in preview mode
+   * Whether the widget is rendered in preview mode.
    */
   isPreview: boolean;
 }
 
 /**
- * React context for widgets. The default value is empty; a meaningful value is
- * only provided by the WidgetProvider, so consumers rendered outside a widget
- * receive an empty object.
+ * React context for widgets.
  */
-export const WidgetContext: Context<WidgetContextType> = createContext<WidgetContextType>(
-  {} as WidgetContextType
-);
-
-export default WidgetContext;
+export const WidgetContext = createContext<WidgetContextType>({} as WidgetContextType);

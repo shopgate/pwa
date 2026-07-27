@@ -1,7 +1,6 @@
-import React, {
-  useState, useRef, useEffect, useCallback,
+import {
+  useState, useRef, useEffect, useCallback, type RefObject,
 } from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles, keyframes, colorToRgba } from '@shopgate/engage/styles';
 import { useRoute } from '@shopgate/engage/core/hooks';
 import { getScrollContainer } from './helpers';
@@ -9,22 +8,60 @@ import { useWidgetPreviewEvent } from './events';
 import { useWidgetsPreview } from './hooks';
 
 /**
- * @typedef {Object} OverlayStyle
- * @property {number} top Style for the top position of the overlay.
- * @property {number} left Style for the left position of the overlay.
- * @property {number} width Style for the width of the overlay.
- * @property {number} height Style for the height of the overlay.
+ * Position and dimensions of a single overlay rectangle.
  */
+interface OverlayStyle {
+  /**
+   * Style for the top position of the overlay.
+   */
+  top: number;
+  /**
+   * Style for the left position of the overlay.
+   */
+  left: number;
+  /**
+   * Style for the width of the overlay.
+   */
+  width: number;
+  /**
+   * Style for the height of the overlay.
+   */
+  height: number;
+}
 
 /**
- * @typedef {Object} MarginOverlayStyles
- * @property {OverlayStyle} top Style for the top margin overlay.
- * @property {OverlayStyle} left Style for the left margin overlay.
- * @property {OverlayStyle} bottom Style for the bottom margin overlay.
- * @property {OverlayStyle} right Style for the right margin overlay.
+ * Styles for the four margin overlays surrounding the active widget.
  */
+interface MarginOverlayStyles {
+  /**
+   * Style for the top margin overlay.
+   */
+  top: OverlayStyle;
+  /**
+   * Style for the left margin overlay.
+   */
+  left: OverlayStyle;
+  /**
+   * Style for the bottom margin overlay.
+   */
+  bottom: OverlayStyle;
+  /**
+   * Style for the right margin overlay.
+   */
+  right: OverlayStyle;
+}
 
-const useStyles = makeStyles({ name: 'WidgetPreviewOverlay' })((_, {
+/**
+ * Style parameters for the overlay.
+ */
+interface OverlayStyleParams {
+  highlightColor?: string;
+  overlayBorderColor?: string;
+  marginOverlayColor?: string;
+  isFlashing: boolean;
+}
+
+const useStyles = makeStyles<OverlayStyleParams>({ name: 'WidgetPreviewOverlay' })((_, {
   highlightColor,
   overlayBorderColor,
   marginOverlayColor,
@@ -59,38 +96,37 @@ const useStyles = makeStyles({ name: 'WidgetPreviewOverlay' })((_, {
 }));
 
 /**
+ * Props of the {@link Overlay} component.
+ */
+export interface OverlayProps {
+  /**
+   * The reference to the container element that holds the widgets.
+   */
+  containerRef: RefObject<HTMLDivElement>;
+}
+
+/**
  * The Overlay component is used to highlight the active widget when preview mode is active.
  * It also visualizes the margins of the widget and the borders to its sibling widgets.
- * @param {Object} props The component props.
- * @param {React.Ref<HTMLDivElement>} props.containerRef The reference to the container element that
- * holds the widgets.
- * @returns {JSX.Element|null}
  */
 const Overlay = ({
   containerRef,
-}) => {
+}: OverlayProps) => {
   const {
     query: {
       highlightColor,
       overlayBorderColor,
       marginOverlayColor,
     },
-  } = useRoute();
+  } = useRoute() as { query: Record<string, string | undefined> };
 
   const { activeWidget } = useWidgetsPreview();
 
-  /**
-   * State to hold the style for the main overlay that highlights the active widget.
-   * @type {[OverlayStyle|null, React.Dispatch<React.SetStateAction<OverlayStyle|null>>]}
-   */
-  const [mainOverlayStyle, setMainOverlayStyle] = useState(null);
+  // State to hold the style for the main overlay that highlights the active widget.
+  const [mainOverlayStyle, setMainOverlayStyle] = useState<OverlayStyle | null>(null);
 
-  /**
-   * State to hold the styles for the margin overlays that visualize the widget margins.
-   * @type {[MarginOverlayStyles|null,
-   * React.Dispatch<React.SetStateAction<MarginOverlayStyles|null>>]}
-   */
-  const [marginOverlays, setMarginOverlays] = useState(null);
+  // State to hold the styles for the margin overlays that visualize the widget margins.
+  const [marginOverlays, setMarginOverlays] = useState<MarginOverlayStyles | null>(null);
 
   const [isFlashing, setIsFlashing] = useState(false);
 
@@ -101,14 +137,8 @@ const Overlay = ({
     isFlashing,
   });
 
-  /**
-   * @type {import('react').MutableRefObject<ResizeObserver|null>}
-   */
-  const resizeRef = useRef(null);
-  /**
-   * @type {import('react').MutableRefObject<MutationObserver|null>}
-   */
-  const mutationRef = useRef(null);
+  const resizeRef = useRef<ResizeObserver | null>(null);
+  const mutationRef = useRef<MutationObserver | null>(null);
 
   /**
    * Callback to update the overlay position, margin overlays and size based on the active widget.
@@ -118,7 +148,7 @@ const Overlay = ({
       return;
     }
 
-    const target = containerRef.current.querySelector(`#widget-code-${activeWidget}`);
+    const target = containerRef.current.querySelector<HTMLElement>(`#widget-code-${activeWidget}`);
 
     if (!target) {
       setMainOverlayStyle(null);
@@ -126,6 +156,10 @@ const Overlay = ({
     }
 
     const scrollContainer = getScrollContainer();
+
+    if (!scrollContainer) {
+      return;
+    }
 
     // Get the computed styles of the active widget to calculate margins
     const styles = window.getComputedStyle(target);
@@ -193,33 +227,34 @@ const Overlay = ({
     if (!containerEl) return undefined;
 
     // Create a ResizeObserver to watch for size changes of children
-    resizeRef.current = new ResizeObserver(() => {
+    const resizeObserver = new ResizeObserver(() => {
       // Whenever any observed child resizes, update overlay
       updateOverlay();
     });
+    resizeRef.current = resizeObserver;
 
     // Observe all existing children
     Array.from(containerEl.children).forEach((child) => {
       if (child.nodeType === Node.ELEMENT_NODE) {
-        resizeRef.current.observe(child);
+        resizeObserver.observe(child);
       }
     });
 
     // Create one MutationObserver on the container to watch for changes in the DOM
-    mutationRef.current = new MutationObserver((mutations) => {
+    const mutationObserver = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         if (mutation.type === 'childList') {
           // Handle newly added nodes - observe them for size changes
           mutation.addedNodes.forEach((node) => {
             if (node.nodeType === Node.ELEMENT_NODE) {
-              resizeRef.current.observe(node);
+              resizeObserver.observe(node as Element);
             }
           });
 
           // Handle removed nodes - remove them from observation
           mutation.removedNodes.forEach((node) => {
             if (node.nodeType === Node.ELEMENT_NODE) {
-              resizeRef.current.unobserve(node);
+              resizeObserver.unobserve(node as Element);
             }
           });
 
@@ -236,11 +271,12 @@ const Overlay = ({
         }
       }
     });
+    mutationRef.current = mutationObserver;
 
     // Start observing:
     // - childList:true → to catch added/removed children
     // - subtree:true + attributes:true → to catch any class/style changes in descendants
-    mutationRef.current.observe(containerEl, {
+    mutationObserver.observe(containerEl, {
       childList: true,
       subtree: true,
       attributes: true,
@@ -286,10 +322,6 @@ const Overlay = ({
       ))}
     </div>
   );
-};
-
-Overlay.propTypes = {
-  containerRef: PropTypes.shape().isRequired,
 };
 
 export default Overlay;

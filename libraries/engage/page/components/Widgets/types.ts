@@ -53,7 +53,7 @@ export interface WidgetDefinition {
   /**
    * Individual configuration for the widget.
    */
-  widgetConfig: Record<string, any>;
+  widgetConfig: Record<string, unknown>;
   /**
    * Whether the widget is a legacy custom widget provided by an extension that's configured
    * via an HTML comment inside a HTML widget.
