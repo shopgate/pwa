@@ -3,7 +3,10 @@ import { shallow } from 'enzyme';
 import { UnwrappedProductsWidget as ProductsWidget } from './ProductsWidget';
 
 jest.mock('@shopgate/engage/components');
-jest.mock('Components/ProductGrid', () => function ProductGrid() { return null; });
+jest.mock('@shopgate/engage/product/components', () => ({
+  ProductGrid: function ProductGrid() { return null; },
+  ProductList: function ProductList() { return null; },
+}));
 
 describe('<ProductsWidget />', () => {
   const getProducts = jest.fn();

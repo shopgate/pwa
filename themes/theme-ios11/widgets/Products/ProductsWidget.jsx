@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ProductList } from '@shopgate/engage/product/components';
+import { ProductList, ProductGrid } from '@shopgate/engage/product/components';
 import { ActionButton, I18n } from '@shopgate/engage/components';
 import { transformDisplayOptions } from '@shopgate/engage/core/helpers';
 import { withStyles } from '@shopgate/engage/styles';
 import Headline from 'Components/Headline';
-import ProductGrid from 'Components/ProductGrid';
 import connect from './connector';
 
 /**

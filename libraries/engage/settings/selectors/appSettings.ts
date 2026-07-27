@@ -29,3 +29,11 @@ export const getTabBarSettings = createSelector(
   getAppSettingsState,
   appSettings => appSettings.navigation.tabBar
 );
+
+/**
+ * Selects the ProductGrid columns setting (keyed by breakpoint).
+ */
+export const getProductGridColumns = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.productList.grid.columns
+);

@@ -17,6 +17,14 @@ const appSettings: AppSettings = {
       fixed: { borderEnabled: true },
     },
   },
+  productList: {
+    grid: {
+      columns: {
+        xs: 2,
+        md: 4,
+      },
+    },
+  },
 };
 
 const mockedDispatch = jest.fn();
