@@ -1,11 +1,10 @@
-import { type Context } from 'react';
-import {
-  type WidgetDefinitionLayout,
-  type WidgetDefinitionVisibility,
-  type WidgetDefinition,
-} from './types'
+import { createContext, type Context } from 'react';
+import type {
+  WidgetDefinitionLayout,
+  WidgetDefinitionVisibility,
+} from './types';
 
-export { WidgetDefinition } from './types';
+export type { WidgetDefinition } from './types';
 
 export interface WidgetContextType<C = Record<string, any>> {
   /**
@@ -35,8 +34,12 @@ export interface WidgetContextType<C = Record<string, any>> {
 }
 
 /**
- * React context for widgets.
+ * React context for widgets. The default value is empty; a meaningful value is
+ * only provided by the WidgetProvider, so consumers rendered outside a widget
+ * receive an empty object.
  */
-declare const WidgetContext: Context<WidgetContextType>;
+export const WidgetContext: Context<WidgetContextType> = createContext<WidgetContextType>(
+  {} as WidgetContextType
+);
 
 export default WidgetContext;
