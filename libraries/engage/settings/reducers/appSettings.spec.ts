@@ -29,12 +29,21 @@ describe('settings / reducers / appSettings', () => {
           },
         },
       },
+      productList: {
+        grid: {
+          columns: {
+            xs: 1,
+            md: 3,
+          },
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
 
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
+    expect(state.productList.grid.columns).toEqual(settings.productList.grid.columns);
   });
 
   it('deep merges a partial payload over the defaults', () => {

@@ -1,7 +1,31 @@
+import type { Breakpoint } from '@shopgate/engage/styles/theme';
+
 export interface AppSettingsState {
   settings: {
     appSettings: AppSettingsSlice;
   };
+}
+
+/**
+ * Number of product columns to render, keyed by breakpoint. Partial: any unset
+ * breakpoint cascades down to the next smaller defined value (see
+ * useResponsiveValue).
+ */
+export type ProductColumns = Partial<Record<Breakpoint, number>>;
+
+/**
+ * Settings for the ProductGrid list type.
+ */
+export interface ProductGridSettings {
+  columns: ProductColumns;
+}
+
+/**
+ * Settings for the various product-list types. Add a key and its own settings
+ * interface per future type (e.g. slider).
+ */
+export interface ProductListSettings {
+  grid: ProductGridSettings;
 }
 
 export interface AppSettings {
@@ -16,6 +40,7 @@ export interface AppSettings {
       }
     }
   }
+  productList: ProductListSettings;
 }
 
 /**

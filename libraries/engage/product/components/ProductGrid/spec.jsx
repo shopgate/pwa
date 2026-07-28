@@ -23,6 +23,8 @@ jest.mock('@shopgate/engage/components', () => {
 jest.mock('./components/Iterator', () =>
   function Iterator() { return null; });
 
+jest.mock('./hooks', () => ({ useProductGridColumns: jest.fn(() => 2) }));
+
 jest.mock('@shopgate/engage/product', () => ({
   ProductListTypeProvider: ({ children }) => children,
   ProductListEntryProvider: ({ children }) => children,

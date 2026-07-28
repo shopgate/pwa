@@ -7,10 +7,10 @@ import {
   SelectOption,
 } from '@shopgate/engage/product/components';
 import AppBar from 'Components/AppBar/presets/BackBar';
-import ProductGrid from 'Components/ProductGrid';
 import TabBar from 'Components/TabBar';
 import ProductHeader from '../pages/Product/components/Header';
 import ProductCard from './ProductCard';
+import ProductGrid from './DeprecatedProductGrid';
 
 export const legacyThemeAPI = {
   AppBar,
