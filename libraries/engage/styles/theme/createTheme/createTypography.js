@@ -34,6 +34,7 @@ export default function createTypography(palette, typography) {
 
   if (isDev) {
     if (typeof fontSize !== 'number') {
+      // eslint-disable-next-line no-console
       console.error('Shopgate Theme: `fontSize` is required to be a number.');
     }
   }
