@@ -30,6 +30,14 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
     },
   },
+  productList: {
+    grid: {
+      columns: {
+        xs: 2,
+        md: 4,
+      },
+    },
+  },
 };
 
 /**

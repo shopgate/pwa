@@ -52,8 +52,59 @@ exports[`<RatingStars /> renders with value of 0 1`] = `
     </div>
   </div>
   <div
-    className="sg-10z3jvw-filledStars rating-stars-filled"
-  />
+    className="sg-d9opiy-filledStars rating-stars-filled"
+  >
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-0"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-1"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-2"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-3"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-4"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+  </div>
 </div>
 `;
 
@@ -109,7 +160,7 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
     </div>
   </div>
   <div
-    className="sg-10z3jvw-filledStars rating-stars-filled"
+    className="sg-d9opiy-filledStars rating-stars-filled"
   >
     <div
       className="sg-1jcir28-icon-iconGapSmall"
@@ -135,6 +186,26 @@ exports[`<RatingStars /> renders with value of 50 1`] = `
         size="1em"
       />
     </div>
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-0"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-1"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
   </div>
 </div>
 `;
@@ -191,7 +262,7 @@ exports[`<RatingStars /> renders with value of 100 1`] = `
     </div>
   </div>
   <div
-    className="sg-10z3jvw-filledStars rating-stars-filled"
+    className="sg-d9opiy-filledStars rating-stars-filled"
   >
     <div
       className="sg-1jcir28-icon-iconGapSmall"
@@ -303,14 +374,12 @@ exports[`<RatingStars /> should change rating on click 1`] = `
     </div>
   </div>
   <div
-    className="sg-10z3jvw-filledStars rating-stars-filled"
+    className="sg-d9opiy-filledStars rating-stars-filled"
   >
     <div
       aria-hidden={true}
       className="sg-1jcir28-icon-iconGapSmall"
       key="6"
-      onClick={[Function]}
-      role="button"
     >
       <Star
         size="1em"
@@ -320,8 +389,6 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       aria-hidden={true}
       className="sg-1jcir28-icon-iconGapSmall"
       key="7"
-      onClick={[Function]}
-      role="button"
     >
       <Star
         size="1em"
@@ -331,8 +398,6 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       aria-hidden={true}
       className="sg-1jcir28-icon-iconGapSmall"
       key="8"
-      onClick={[Function]}
-      role="button"
     >
       <Star
         size="1em"
@@ -342,8 +407,6 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       aria-hidden={true}
       className="sg-1jcir28-icon-iconGapSmall"
       key="9"
-      onClick={[Function]}
-      role="button"
     >
       <Star
         size="1em"
@@ -353,8 +416,6 @@ exports[`<RatingStars /> should change rating on click 1`] = `
       aria-hidden={true}
       className="sg-1jcir28-icon-iconGapSmall"
       key="10"
-      onClick={[Function]}
-      role="button"
     >
       <Star
         size="1em"
@@ -430,14 +491,12 @@ exports[`<RatingStars /> should change rating on click 2`] = `
     </div>
   </div>
   <div
-    className="sg-10z3jvw-filledStars rating-stars-filled"
+    className="sg-d9opiy-filledStars rating-stars-filled"
   >
     <div
       aria-hidden={true}
       className="sg-1jcir28-icon-iconGapSmall"
       key="6"
-      onClick={[Function]}
-      role="button"
     >
       <Star
         size="1em"
@@ -447,8 +506,6 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       aria-hidden={true}
       className="sg-1jcir28-icon-iconGapSmall"
       key="7"
-      onClick={[Function]}
-      role="button"
     >
       <Star
         size="1em"
@@ -458,8 +515,6 @@ exports[`<RatingStars /> should change rating on click 2`] = `
       aria-hidden={true}
       className="sg-1jcir28-icon-iconGapSmall"
       key="8"
-      onClick={[Function]}
-      role="button"
     >
       <Star
         size="1em"
@@ -473,6 +528,16 @@ exports[`<RatingStars /> should change rating on click 2`] = `
         size="1em"
       />
     </div>
+    <div
+      aria-hidden={true}
+      className="sg-1jcir28-icon-iconGapSmall"
+      key="placeholder-0"
+      style={
+        {
+          "width": "1em",
+        }
+      }
+    />
   </div>
 </div>
 `;

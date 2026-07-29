@@ -334,7 +334,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-10z3jvw-filledStars rating-stars-filled"
+                                className="sg-d9opiy-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -747,7 +747,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-10z3jvw-filledStars rating-stars-filled"
+                                className="sg-d9opiy-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1160,7 +1160,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-10z3jvw-filledStars rating-stars-filled"
+                                className="sg-d9opiy-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1573,7 +1573,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-10z3jvw-filledStars rating-stars-filled"
+                                className="sg-d9opiy-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"

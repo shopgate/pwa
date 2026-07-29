@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import ProductGrid from 'Components/ProductGrid';
+import { ProductGrid } from '@shopgate/engage/product/components';
 import connect from './connector';
 
 /**
