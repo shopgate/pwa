@@ -14,7 +14,6 @@ export { ProductContext, VariantContext } from '../components/context';
 // SELECTORS
 export const getProductDataById = jest.fn().mockReturnValue(mockedProducts.products[0]);
 
-export const productImageFormats = new Map();
 export const enableRedirectHandler = jest.fn();
 export const setDefaultProductFetchParams = jest.fn();
 export const getProductImageSettings = jest.fn().mockReturnValue({});
