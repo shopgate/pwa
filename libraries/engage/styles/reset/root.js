@@ -10,13 +10,13 @@ import { injectGlobal } from '..';
 import {
   CSS_ROOT_FONT_FAMILY,
   CSS_ROOT_FONT_SIZE,
-  CSS_ROOT_LINE_HEIGHT,
 } from './typographyCustomProps';
 
 const { typography } = themeConfig;
 const iosThemeActive = isIOSTheme();
 
-// Flag (for feature-detecting extensions) that base typography is applied on the root element.
+// Flag (for feature-detecting extensions) that base typography uses the `--sg-root-*` custom
+// properties and the `body1` variant.
 configuration.set(CONFIGURATION_COLLECTION_KEY_HAS_ROOT_TYPOGRAPHY, true);
 
 injectGlobal({
@@ -36,18 +36,15 @@ injectGlobal({
     backgroundColor: 'var(--page-background-color)',
   },
   html: {
-    // Base typography on the root element. The build-time defaults are published as `--sg-root-*`
-    // props and consumed here, so a higher-specificity `:root` override (admin css / live preview /
-    // extension) wins. The default is the property value, not a `var()` fallback (a comma-separated
-    // family list can't be a fallback). Roboto is appended as an iOS fallback.
+    // Publish the shared font family (used by every variant) and the rem anchor here. The base body
+    // text itself is the `body1` variant, applied to `<body>` below. A higher-specificity `:root`
+    // override (admin css / live preview / extension) wins. The family default is the property
+    // value, not a `var()` fallback (a comma list can't be a fallback). Roboto is an iOS fallback.
     [CSS_ROOT_FONT_FAMILY]: `${typography.family}${
       iosThemeActive && !(typography.family || '').includes('Roboto') ? ', Roboto' : ''
     }`,
     [CSS_ROOT_FONT_SIZE]: `${typography.rootSize}px`,
-    [CSS_ROOT_LINE_HEIGHT]: `${typography.lineHeight}`,
-    fontFamily: `var(${CSS_ROOT_FONT_FAMILY})`,
     fontSize: `var(${CSS_ROOT_FONT_SIZE})`,
-    lineHeight: `var(${CSS_ROOT_LINE_HEIGHT})`,
     color: 'var(--sg-palette-text-primary, var(--color-text-high-emphasis))',
     overflow: applyScrollContainer() ? 'hidden' : 'inherit',
     MozOsxFontSmoothing: 'grayscale',
@@ -57,6 +54,13 @@ injectGlobal({
     minHeight: '100%',
   },
   body: {
+    // Base body text = the `body1` variant. Family is the shared root var; weight/size/line-height
+    // come from the theme's `body1` css vars, with fallbacks so there is no flash before the theme
+    // injects them. Configuring `body1` drives both this base text and the variant.
+    fontFamily: `var(${CSS_ROOT_FONT_FAMILY})`,
+    fontWeight: 'var(--sg-typography-body1-fontWeight, 400)',
+    fontSize: 'var(--sg-typography-body1-fontSize, 1rem)',
+    lineHeight: 'var(--sg-typography-body1-lineHeight, 1.5)',
     overflow: 'auto',
     margin: 0,
     WebkitOverflowScrolling: 'touch',
