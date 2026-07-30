@@ -119,7 +119,10 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             // unconfigured card doesn't stay light while the rest of the app follows the dark
             // scheme. Every color scheme inherits these mappings from the default one.
             backgroundColor: (t: Theme) => `var(--sg-cards-backgroundColor, ${t.palette.background.surface})`,
-            padding: 'var(--sg-cards-padding, 12px 16px)',
+            // Whole-card padding: insets every element (image + text) from the card edge
+            padding: 'var(--sg-cards-padding, 0px)',
+            textPadding: 'var(--sg-cards-text-padding, 12px 16px)',
+            imagePadding: 'var(--sg-cards-image-padding, 0px)',
             boxShadow: 'var(--sg-cards-boxShadow, 0 4px 8px rgba(0,0,0,0.16))',
             border: 'var(--sg-cards-border-width, 0px) solid var(--sg-cards-border-color, transparent)',
           },
@@ -127,15 +130,16 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         tiles: {
           vars: {
             backgroundColor: 'var(--sg-tiles-backgroundColor, transparent)',
-            // `--sg-tiles-padding` is a single length, so `paddingTop` below can floor it with
-            // `max()`, which only accepts single lengths.
-            padding: 'var(--sg-tiles-padding, 8px)',
+            // Whole-tile padding: insets every element (image + text) from the tile edge. Defaults
+            // to `0` so the image stays flush unless the merchant configures it.
+            padding: 'var(--sg-tiles-padding, 0px)',
+            textPadding: 'var(--sg-tiles-text-padding, 8px)',
             // The favorites button is centred on the seam between image and details, so its
-            // lower half hangs into the details area. The button is 32px (icon.small 1.25rem
-            // plus 6px ripple padding per side), giving a 16px overhang. The configured inner
-            // padding may be smaller, so floor the top padding at the overhang, otherwise the
-            // button collides with the product name.
-            paddingTop: 'max(var(--sg-tiles-padding, 8px), 16px)',
+            // lower half hangs into the details area. The configured inner
+            // padding may be smaller, so floor the text's top padding at the overhang, otherwise
+            // the button collides with the product name.
+            textPaddingTop: 'max(var(--sg-tiles-text-padding, 8px), 16px)',
+            imagePadding: 'var(--sg-tiles-image-padding, 0px)',
             boxShadow: 'var(--sg-tiles-boxShadow, none)',
             border: 'var(--sg-tiles-border-width, 0px) solid var(--sg-tiles-border-color, transparent)',
           },

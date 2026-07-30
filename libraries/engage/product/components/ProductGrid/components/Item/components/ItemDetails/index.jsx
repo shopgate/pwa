@@ -20,10 +20,10 @@ const useStyles = makeStyles()(theme => ({
   root: {
     lineHeight: 1.2,
     ':not(:empty)': {
-      padding: theme.components.tiles.padding,
+      padding: theme.components.tiles.textPadding,
       // Floored at the favorites button overhang so a small configured inner padding
       // can't let the button overlap the product name.
-      paddingTop: theme.components.tiles.paddingTop,
+      paddingTop: theme.components.tiles.textPaddingTop,
     },
   },
   quantityHint: {

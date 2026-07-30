@@ -227,6 +227,8 @@ export const componentsSchema = {
     vars: {
       backgroundColor: '',
       padding: '',
+      textPadding: '',
+      imagePadding: '',
       boxShadow: '',
       border: '',
     },
@@ -235,7 +237,9 @@ export const componentsSchema = {
     vars: {
       backgroundColor: '',
       padding: '',
-      paddingTop: '',
+      textPadding: '',
+      textPaddingTop: '',
+      imagePadding: '',
       boxShadow: '',
       border: '',
     },
@@ -354,7 +358,11 @@ export const componentsDefaults = {
   cards: {
     vars: {
       backgroundColor: t => t.palette.background.surface,
-      padding: '12px 16px',
+      // Whole-card padding (space between the card edge and all of its content). `0` keeps the
+      // image flush to the card edge by default; the text keeps its own `textPadding`.
+      padding: '0px',
+      textPadding: '12px 16px',
+      imagePadding: '0px',
       boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
       border: '0px solid transparent',
     },
@@ -362,8 +370,10 @@ export const componentsDefaults = {
   tiles: {
     vars: {
       backgroundColor: 'transparent',
-      padding: '8px',
-      paddingTop: '16px',
+      padding: '0px',
+      textPadding: '8px',
+      textPaddingTop: '16px',
+      imagePadding: '0px',
       boxShadow: 'none',
       border: '0px solid transparent',
     },

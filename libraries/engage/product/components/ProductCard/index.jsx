@@ -37,13 +37,17 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     overflow: 'hidden',
     height: '100%',
+    padding: theme.components.cards.padding,
     background: theme.components.cards.backgroundColor,
     borderRadius: theme.shape.cardsBorderRadius,
     boxShadow: theme.components.cards.boxShadow,
     border: theme.components.cards.border,
   },
+  image: {
+    padding: theme.components.cards.imagePadding,
+  },
   details: {
-    padding: theme.components.cards.padding,
+    padding: theme.components.cards.textPadding,
   },
   title: {
     fontSize: theme.typography.body2.fontSize,
@@ -108,18 +112,20 @@ function ProductCard(props) {
         ...meta,
       }}
     >
-      {isBeta() && product.featuredMedia
-        ? <FeaturedMedia
-            type={product.featuredMedia.type}
-            url={product.featuredMedia.url}
-            altText={product.featuredMedia.altText}
-        />
-        : <ProductImage
-            src={product.featuredImageBaseUrl}
-            resolutions={gridResolutions}
-            alt={product.name}
-            itemProp="image"
-        />}
+      <div className={classes.image}>
+        {isBeta() && product.featuredMedia
+          ? <FeaturedMedia
+              type={product.featuredMedia.type}
+              url={product.featuredMedia.url}
+              altText={product.featuredMedia.altText}
+          />
+          : <ProductImage
+              src={product.featuredImageBaseUrl}
+              resolutions={gridResolutions}
+              alt={product.name}
+              itemProp="image"
+          />}
+      </div>
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
         <div className={classes.badgeWrapper}>
