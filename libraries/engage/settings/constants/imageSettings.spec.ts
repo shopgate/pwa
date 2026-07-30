@@ -23,6 +23,30 @@ const loadImageQuality = (themeSettings: unknown): number => {
   return quality;
 };
 
+/**
+ * Loads DEFAULT_SHOW_INNER_SHADOW against a given app config, for the same reason as above.
+ * @param hideProductImageShadow The legacy app config flag.
+ * @returns The resolved default.
+ */
+const loadShowInnerShadow = (hideProductImageShadow: boolean | undefined): boolean => {
+  let showInnerShadow = false;
+
+  jest.isolateModules(() => {
+    jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
+      __esModule: true,
+      default: { hideProductImageShadow },
+    }));
+    jest.doMock('@shopgate/engage/core/config/getThemeSettings', () => ({
+      getThemeSettings: () => undefined,
+    }));
+
+    // eslint-disable-next-line global-require
+    ({ DEFAULT_SHOW_INNER_SHADOW: showInnerShadow } = require('./imageSettings'));
+  });
+
+  return showInnerShadow;
+};
+
 describe('settings / constants / imageSettings', () => {
   describe('IMAGE_QUALITY', () => {
     it('takes the quality from the theme configuration', () => {
@@ -37,6 +61,18 @@ describe('settings / constants / imageSettings', () => {
       ['a config without a quality', { fillColor: 'FFFFFF,1' }],
     ])('falls back to the built-in default when the theme config is %s', (_, themeSettings) => {
       expect(loadImageQuality(themeSettings)).toBe(75);
+    });
+  });
+
+  describe('DEFAULT_SHOW_INNER_SHADOW', () => {
+    // The legacy flag is inverted, and its default differs per theme - gmd ships true, ios11
+    // false - so the polarity has to survive.
+    it.each([
+      ['true', true, false],
+      ['false', false, true],
+      ['unset', undefined, true],
+    ])('is %s inverted from the legacy flag', (_, hideProductImageShadow, expected) => {
+      expect(loadShowInnerShadow(hideProductImageShadow as boolean | undefined)).toBe(expected);
     });
   });
 });

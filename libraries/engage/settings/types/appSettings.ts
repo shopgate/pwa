@@ -88,6 +88,11 @@ export interface ProductImageSettings {
    */
   ratio: AspectRatio;
   /**
+   * Whether product images get an inset shadow. Applies to the image and to the placeholder that
+   * stands in for it, so both keep the same silhouette.
+   */
+  showInnerShadow: boolean;
+  /**
    * Overrides for the product detail page.
    */
   pdp?: ProductImageContextSettings;

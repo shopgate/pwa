@@ -48,6 +48,7 @@ const useStyles = makeStyles()({
     maxHeight: '100%',
     WebkitTouchCallout: 'none',
     fontSize: 0,
+    objectFit: 'contain',
   },
 });
 

@@ -61,7 +61,7 @@ describe('settings / helpers / resolveImageSettings', () => {
 
       it('fans a single global ratio out across every context', () => {
         const settings = buildImageSettings({
-          product: { ratio: { width: 4, height: 5 } },
+          product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: { width: 4, height: 5 } },
         });
 
         const resolved = resolveProductImageSettings(true, settings);
@@ -83,6 +83,7 @@ describe('settings / helpers / resolveImageSettings', () => {
         // be rolled out from the admin alone.
         const settings = buildImageSettings({
           product: {
+            ...DEFAULT_APP_SETTINGS.images.product,
             ratio: { width: 4, height: 5 },
             list: { ratio: { width: 1, height: 1 } },
           },
@@ -98,7 +99,7 @@ describe('settings / helpers / resolveImageSettings', () => {
 
       it('rounds derived heights to whole pixels', () => {
         const settings = buildImageSettings({
-          product: { ratio: { width: 16, height: 9 } },
+          product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: { width: 16, height: 9 } },
         });
 
         // 440 * 9 / 16 = 247.5
@@ -129,7 +130,7 @@ describe('settings / helpers / resolveImageSettings', () => {
         mockedGetThemeSettings.mockReturnValue({ ListImage: [{ width: 300, height: 400 }] });
 
         const settings = buildImageSettings({
-          product: { ratio: { width: 4, height: 5 } },
+          product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: { width: 4, height: 5 } },
         });
 
         expect(resolveProductImageSettings(false, settings).list.resolutions)

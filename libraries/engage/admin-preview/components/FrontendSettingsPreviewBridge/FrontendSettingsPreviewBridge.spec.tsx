@@ -33,6 +33,7 @@ const appSettings: AppSettings = {
         width: 1,
         height: 1,
       },
+      showInnerShadow: false,
     },
   },
 };

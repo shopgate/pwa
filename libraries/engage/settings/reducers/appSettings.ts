@@ -7,6 +7,7 @@ import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
 import {
   DEFAULT_IMAGE_FILL_COLOR,
   DEFAULT_IMAGE_FILL_TRANSPARENT,
+  DEFAULT_SHOW_INNER_SHADOW,
 } from '../constants/imageSettings';
 import { toThumborColor } from '../helpers';
 
@@ -52,6 +53,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
         width: 1,
         height: 1,
       },
+      showInnerShadow: DEFAULT_SHOW_INNER_SHADOW,
     },
   },
 };

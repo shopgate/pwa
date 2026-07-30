@@ -1,5 +1,6 @@
 // Imported via its module path rather than the "core" barrel, since that barrel pulls in
 // getFullImageSource which reads these settings back, and would create a circular import.
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
 import type { ProductImageContext } from '../types/appSettings';
 
@@ -41,6 +42,19 @@ const FALLBACK_IMAGE_QUALITY = 75;
 export const IMAGE_QUALITY: number = (
   (getThemeSettings(LEGACY_IMAGE_SETTINGS_KEY) ?? {}) as { quality?: number }
 ).quality ?? FALLBACK_IMAGE_QUALITY;
+
+/**
+ * Whether product images get an inset shadow when nothing is configured.
+ *
+ * Derived from the legacy app config flag rather than hardcoded: that flag is inverted, and its
+ * default differs per theme - gmd hides the shadow, ios11 shows it - so a fixed value here would
+ * flip the shadow for one of them.
+ *
+ * Safe to read once at module scope for the same reason as IMAGE_QUALITY: the app config is
+ * inlined into the bundle at build time.
+ */
+export const DEFAULT_SHOW_INNER_SHADOW =
+  !(appConfig as { hideProductImageShadow?: boolean }).hideProductImageShadow;
 
 /**
  * Fill color used when no valid one is configured. Already in Thumbor's expected format - a

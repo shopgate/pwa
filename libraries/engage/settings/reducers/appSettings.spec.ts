@@ -1,8 +1,18 @@
+import { logger } from '@shopgate/pwa-core/helpers';
 import type { AppSettings } from '../types/appSettings';
 import { receiveAppSettings } from '../action-creators/appSettings';
 import appSettings, { DEFAULT_APP_SETTINGS } from './appSettings';
 
+// Several cases feed the reducer a fill color it is meant to reject, which logs a real warning.
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: { warn: jest.fn() },
+}));
+
 describe('settings / reducers / appSettings', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('returns the built-in defaults as initial state', () => {
     const state = appSettings(undefined, { type: '@@INIT' });
 
@@ -45,6 +55,7 @@ describe('settings / reducers / appSettings', () => {
             width: 1,
             height: 1,
           },
+          showInnerShadow: false,
         },
       },
     };
@@ -78,7 +89,14 @@ describe('settings / reducers / appSettings', () => {
   describe('images', () => {
     it('deep merges a partial images payload', () => {
       const partial = {
-        images: { product: { ratio: { width: 4, height: 5 } } },
+        images: {
+          product: {
+            ratio: {
+              width: 4,
+              height: 5,
+            },
+          },
+        },
       } as AppSettings;
 
       const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
@@ -114,6 +132,7 @@ describe('settings / reducers / appSettings', () => {
       const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
 
       expect(state.images.fillColor).toBe('FFFFFF');
+      expect(logger.warn).toHaveBeenCalled();
     });
 
     it.each([

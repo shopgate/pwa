@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Image from '@shopgate/pwa-common/components/Image';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import ProductImagePlaceholder from './ProductImagePlaceholder';
 import ProductImage from './index';
+import { useProductImageShadow } from './hooks';
 
 jest.unmock('@shopgate/pwa-core');
 jest.mock('../../../core/hocs/withWidgetSettings');
@@ -17,6 +17,10 @@ jest.mock('@shopgate/engage/components', () => ({
 // These are shallow renders, so there is no Provider for the hook to read the store from. The
 // mock returns what the resolver produces before the app settings are hydrated: the built-in
 // resolutions, and no ratio, so the Image derives it from the largest resolution as before.
+jest.mock('./hooks', () => ({
+  useProductImageShadow: jest.fn(() => false),
+}));
+
 jest.mock('@shopgate/engage/settings/hooks', () => ({
   useProductImageSettings: () => ({
     pdp: {
@@ -57,56 +61,37 @@ describe('<ProductImage />', () => {
     expect(wrapper.find(PlaceholderIcon).length).toBe(0);
   });
 
-  it('should not apply an inner shadow to the placeholder if turned off via the app config', () => {
-    jest.spyOn(appConfig, 'hideProductImageShadow', 'get').mockReturnValue(true);
-    const wrapper = shallow(<ProductImage placeholderSrc="http://placehold.it/300x300" />).dive();
+  describe('inner shadow', () => {
+    it('should not apply it to the placeholder when the hook says no', () => {
+      useProductImageShadow.mockReturnValue(false);
+      const wrapper = shallow(<ProductImage placeholderSrc="http://placehold.it/300x300" />).dive();
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(false);
-  });
+      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(false);
+    });
 
-  it('should not apply an inner shadow to the image if turned off via the app config', () => {
-    jest.spyOn(appConfig, 'hideProductImageShadow', 'get').mockReturnValue(true);
-    const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
+    it('should not apply it to the image when the hook says no', () => {
+      useProductImageShadow.mockReturnValue(false);
+      const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Image).prop('className')).toBe('');
-  });
+      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.find(Image).prop('className')).toBe('');
+    });
 
-  it('should not apply an inner shadow to the placeholder if turned off via the widget settings', () => {
-    const wrapper = shallow(<ProductImage
-      placeholderSrc="http://placehold.it/300x300"
-      widgetSettings={{ showInnerShadow: false }}
-    />).dive();
+    it('should apply it to the placeholder when the hook says yes', () => {
+      useProductImageShadow.mockReturnValue(true);
+      const wrapper = shallow(<ProductImage placeholderSrc="http://placehold.it/300x300" />).dive();
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(false);
-  });
+      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(true);
+    });
 
-  it('should not apply an inner shadow to the image if turned off via the widget settings', () => {
-    const wrapper = shallow(<ProductImage
-      src="http://placehold.it/300x300"
-      widgetSettings={{ showInnerShadow: false }}
-    />).dive();
+    it('should apply it to the image when the hook says yes', () => {
+      useProductImageShadow.mockReturnValue(true);
+      const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Image).prop('className')).toBe('');
-  });
-
-  it('should apply an inner shadow to the placeholder if turned off via the widget settings', () => {
-    const wrapper = shallow(<ProductImage
-      widgetSettings={{ showInnerShadow: true }}
-      placeholderSrc="http://placehold.it/300x300"
-    />).dive();
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(true);
-  });
-
-  it('should apply an inner shadow to the image if turned off via the widget settings', () => {
-    const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" widgetSettings={{ showInnerShadow: true }} />).dive();
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Image).prop('className')).toBeTruthy();
+      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.find(Image).prop('className')).toBeTruthy();
+    });
   });
 });

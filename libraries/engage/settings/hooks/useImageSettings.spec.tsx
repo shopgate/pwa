@@ -75,7 +75,7 @@ describe('settings / hooks / useImageSettings', () => {
         hydrated: true,
         imageSettings: {
           ...DEFAULT_APP_SETTINGS.images,
-          product: { ratio: { width: 4, height: 5 } },
+          product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: { width: 4, height: 5 } },
         },
       });
 
@@ -90,7 +90,7 @@ describe('settings / hooks / useImageSettings', () => {
         hydrated: false,
         imageSettings: {
           ...DEFAULT_APP_SETTINGS.images,
-          product: { ratio: { width: 4, height: 5 } },
+          product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: { width: 4, height: 5 } },
         },
       });
 

@@ -7,7 +7,6 @@ import {
   memo,
 } from 'react';
 import { logger } from '@shopgate/pwa-core';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import Image from '@shopgate/pwa-common/components/Image';
 import type { ImageProps } from '@shopgate/pwa-common/components/Image';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
@@ -18,9 +17,9 @@ import type {
   ImageResolution,
   ProductImageContext,
 } from '@shopgate/engage/settings/types/appSettings';
-import { withWidgetSettings } from '../../../core/hocs/withWidgetSettings';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import ProductImagePlaceholder from './ProductImagePlaceholder';
+import { useProductImageShadow } from './hooks';
 import connect from './connector';
 
 const placeholderIconScale = 0.65;
@@ -74,15 +73,6 @@ export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 
    * Still honored, and still takes precedence over `context`.
    */
   resolutions?: ImageResolution[];
-  /**
-   * Injected by withWidgetSettings.
-   */
-  widgetSettings?: {
-    /**
-     * Whether the image gets an inset shadow. Falls back to the app config when unset.
-     */
-    showInnerShadow?: boolean;
-  };
 }
 
 /**
@@ -170,7 +160,6 @@ const ProductImage = (props: ProductImageProps) => {
     ratio = null,
     resolutions = null,
     src = null,
-    widgetSettings = {},
   } = props;
 
   const productImageSettings = useProductImageSettings();
@@ -211,9 +200,7 @@ const ProductImage = (props: ProductImageProps) => {
     setImageLoadingFailed(true);
   }, []);
 
-  const showInnerShadow = typeof widgetSettings.showInnerShadow === 'undefined'
-    ? !(appConfig as { hideProductImageShadow?: boolean }).hideProductImageShadow
-    : widgetSettings.showInnerShadow;
+  const showInnerShadow = useProductImageShadow();
 
   if (imageLoadingFailed || showPlaceholder) {
     return (
@@ -265,7 +252,4 @@ const ProductImage = (props: ProductImageProps) => {
 
 export { ProductImage as UnwrappedProductImage };
 
-export default connect(withWidgetSettings(
-  memo(ProductImage),
-  '@shopgate/engage/product/ProductImage'
-));
+export default connect(memo(ProductImage));
