@@ -13,6 +13,11 @@ export interface ImageInnerProps {
    */
   className?: string | null;
   /**
+   * Microdata property name, e.g. "image" for a schema.org Product. Emitted as the itemprop
+   * attribute so crawlers can pick the image out of the surrounding item.
+   */
+  itemProp?: string;
+  /**
    * Whether the browser defers loading until the image is near the viewport.
    */
   lazy?: boolean;
@@ -57,6 +62,7 @@ const ImageInner = forwardRef<HTMLImageElement, ImageInnerProps>((props, ref) =>
     src = null,
     className = null,
     alt = null,
+    itemProp,
     lazy = false,
     onLoad = noop,
     onError = noop,
@@ -79,6 +85,7 @@ const ImageInner = forwardRef<HTMLImageElement, ImageInnerProps>((props, ref) =>
       aria-label={alt ?? undefined}
       aria-hidden={!alt}
       data-test-id="image"
+      itemProp={itemProp}
       onLoad={onLoad}
       onError={onError}
       style={style ?? undefined}

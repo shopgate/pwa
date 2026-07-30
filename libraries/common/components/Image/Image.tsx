@@ -36,6 +36,11 @@ export interface ImageProps {
    */
   highestResolutionLoaded?: () => void;
   /**
+   * Microdata property name, e.g. "image" for a schema.org Product. Emitted as the itemprop
+   * attribute so crawlers can pick the image out of the surrounding item.
+   */
+  itemProp?: string;
+  /**
    * Whether the image should be lazy loaded.
    */
   lazy?: boolean;
@@ -113,6 +118,7 @@ const Image = (props: ImageProps) => {
     classNameImg = '',
     forcePlaceholder: parentRendersPlaceholder = false,
     highestResolutionLoaded = noop,
+    itemProp,
     onError = noop,
     onLoad = noop,
     ratio = null,
@@ -251,6 +257,7 @@ const Image = (props: ImageProps) => {
         className={cx(classNameImg)}
         style={innerStyle}
         alt={alt}
+        itemProp={itemProp}
         lazy={lazy}
         onLoad={handleOnLoad}
         onError={handleOnError}
@@ -267,6 +274,7 @@ const Image = (props: ImageProps) => {
         className={cx(classNameImg)}
         style={innerStyle}
         alt={alt}
+        itemProp={itemProp}
         lazy={lazy}
         onLoad={handleOnLoad}
         onError={handleOnError}

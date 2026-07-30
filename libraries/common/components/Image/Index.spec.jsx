@@ -47,4 +47,26 @@ describe('<Image />', () => {
     expect(container.firstChild).toMatchSnapshot();
     expect(container.querySelectorAll('img')).toHaveLength(1);
   });
+
+  describe('microdata', () => {
+    // The product components wrap their images in a schema.org Product, and rich results need the
+    // image property. Without forwarding, the attribute never reaches the DOM.
+    it('should emit itemprop on the image', () => {
+      const { container } = renderWithStore(<Image src="foo/bar" itemProp="image" />);
+
+      expect(container.querySelector('img').getAttribute('itemprop')).toBe('image');
+    });
+
+    it('should emit itemprop when unwrapped', () => {
+      const { container } = renderWithStore(<Image src="foo/bar" itemProp="image" unwrapped />);
+
+      expect(container.querySelector('img').getAttribute('itemprop')).toBe('image');
+    });
+
+    it('should omit the attribute when no itemProp is given', () => {
+      const { container } = renderWithStore(<Image src="foo/bar" />);
+
+      expect(container.querySelector('img').hasAttribute('itemprop')).toBe(false);
+    });
+  });
 });
