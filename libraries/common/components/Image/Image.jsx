@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getFullImageSource } from '@shopgate/engage/core/helpers';
+import { useImageServiceSettings } from '@shopgate/engage/settings/hooks';
 import ImageInner from './ImageInner';
 
 const useStyles = makeStyles()((_theme, { background, paddingTop }) => ({
@@ -55,6 +56,10 @@ const Image = ({
   lazy,
   unwrapped,
 }) => {
+  // Quality and fill color are configured app wide, so they are resolved here rather than passed
+  // in by every caller. The returned object is reference stable, so it does not defeat the memo.
+  const imageServiceSettings = useImageServiceSettings();
+
   // Prepare two image sources - a small preview image and a large main image. The idea is to
   // display an image as soon as possible. Small images might be also available in the cache from
   // the previous page.
@@ -62,12 +67,12 @@ const Image = ({
     () => {
       // Create a preview source when resolutions array has more than one element
       const preview = resolutions.length > 1
-        ? getFullImageSource(src, resolutions[resolutions.length - 2])
+        ? getFullImageSource(src, resolutions[resolutions.length - 2], imageServiceSettings)
         : null;
 
       // Create a main source when resolutions array has at least one element (highest resolution)
       const main = resolutions.length > 0
-        ? getFullImageSource(src, resolutions[resolutions.length - 1])
+        ? getFullImageSource(src, resolutions[resolutions.length - 1], imageServiceSettings)
         : null;
 
       return ({
@@ -77,7 +82,7 @@ const Image = ({
         main,
       });
     },
-    [resolutions, src]
+    [resolutions, src, imageServiceSettings]
   );
 
   const imgRef = useRef(null);

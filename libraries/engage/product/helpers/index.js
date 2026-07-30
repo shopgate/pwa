@@ -1,7 +1,9 @@
 import configuration from '@shopgate/pwa-common/collections/Configuration';
+import { logger } from '@shopgate/pwa-core/helpers';
 import { DEFAULT_PRODUCTS_FETCH_PARAMS } from '@shopgate/pwa-common/constants/Configuration';
 import { getFullImageSource, isBeta, loadImage } from '@shopgate/engage/core/helpers';
 import { getThemeSettings } from '@shopgate/engage/core/config';
+import { PRODUCT_IMAGE_BASE_WIDTHS } from '@shopgate/engage/settings/constants/imageSettings';
 import { buildShowScheduledParams } from '../components/EffectivityDates/helpers';
 
 export * from '@shopgate/pwa-common-commerce/product/helpers';
@@ -49,10 +51,23 @@ export const setDefaultProductFetchParams = () => {
 };
 
 /**
+ * Whether the deprecation warning for getProductImageSettings has already been logged. Nulled
+ * after the first log, so a single warning is emitted per session rather than one per render.
+ */
+let productImageSettingsWarning = 'getProductImageSettings() is deprecated. Use the "context" prop of ProductImage, or the useProductImageSettings hook from @shopgate/engage/settings/hooks, so that images follow the configured aspect ratio.';
+
+/**
  * Provides the settings for ProductImages
+ * @deprecated Use the "context" prop of ProductImage, or useProductImageSettings. This accessor
+ * only reads the legacy theme configuration, so it does not pick up admin configured ratios.
  * @return {Object}
  */
 export const getProductImageSettings = () => {
+  if (productImageSettingsWarning) {
+    logger.warn(productImageSettingsWarning);
+    productImageSettingsWarning = null;
+  }
+
   const appImages = getThemeSettings('AppImages');
 
   return {
@@ -91,15 +106,17 @@ export const getProductImageSettings = () => {
 /**
  * Load product image with given resolution
  * @param {string} src .
- * @param {Object} resolution .
+ * @param {Object} [resolution] The resolution to preload. Callers that render the image should
+ * pass the one they render, so that the preload hits the same url. Falls back to the smallest
+ * built-in pdp resolution at a 1:1 ratio.
  * @returns {Promise}
  */
 export const loadProductImage = (src, resolution = null) => {
-  let res = resolution;
-  if (!res) {
-    const { HeroImage: resolutions } = getProductImageSettings();
-    ([res] = resolutions);
-  }
+  const [baseWidth] = PRODUCT_IMAGE_BASE_WIDTHS.pdp;
+  const res = resolution ?? {
+    width: baseWidth,
+    height: baseWidth,
+  };
 
   return loadImage(getFullImageSource(src, res));
 };

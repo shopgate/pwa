@@ -37,3 +37,11 @@ export const getProductGridColumns = createSelector(
   getAppSettingsState,
   appSettings => appSettings.productList.grid.columns
 );
+
+/**
+ * Selects the image settings.
+ */
+export const getImageSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.images
+);

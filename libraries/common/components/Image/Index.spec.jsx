@@ -1,9 +1,26 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
 import Image from './index';
 
 window.requestAnimationFrame = () => { };
 jest.unmock('@shopgate/pwa-core');
+
+// The image service settings (quality, fill color) are read from the store, so the component needs
+// a Provider. An empty state exercises the selector's fallback onto the built-in defaults.
+const store = configureStore()({});
+
+/**
+ * Renders the given element inside a redux Provider.
+ * @param {JSX.Element} element The element to render.
+ * @returns {Object} The render result.
+ */
+const renderWithStore = element => render(
+  <Provider store={store}>
+    {element}
+  </Provider>
+);
 
 describe('<Image />', () => {
   const loadedImages = [];
@@ -18,14 +35,14 @@ describe('<Image />', () => {
   };
 
   it('should render placeholders if forced to', () => {
-    const { container } = render(<Image src="foo/bar" forcePlaceholder />);
+    const { container } = renderWithStore(<Image src="foo/bar" forcePlaceholder />);
 
     expect(container.firstChild).toMatchSnapshot();
     expect(container.querySelectorAll('img')).toHaveLength(0);
   });
 
   it('should render placeholders if src is null', () => {
-    const { container } = render(<Image src="foo/bar" />);
+    const { container } = renderWithStore(<Image src="foo/bar" />);
 
     expect(container.firstChild).toMatchSnapshot();
     expect(container.querySelectorAll('img')).toHaveLength(1);

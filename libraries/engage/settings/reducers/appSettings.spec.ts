@@ -37,6 +37,16 @@ describe('settings / reducers / appSettings', () => {
           },
         },
       },
+      images: {
+        fillColor: 'FFFFFF',
+        fillTransparent: true,
+        product: {
+          ratio: {
+            width: 1,
+            height: 1,
+          },
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
@@ -62,6 +72,73 @@ describe('settings / reducers / appSettings', () => {
       showLabels: DEFAULT_APP_SETTINGS.navigation.tabBar.showLabels,
       hideOnScroll: DEFAULT_APP_SETTINGS.navigation.tabBar.hideOnScroll,
       fixed: DEFAULT_APP_SETTINGS.navigation.tabBar.fixed,
+    });
+  });
+
+  describe('images', () => {
+    it('deep merges a partial images payload', () => {
+      const partial = {
+        images: { product: { ratio: { width: 4, height: 5 } } },
+      } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.product.ratio).toEqual({
+        width: 4,
+        height: 5,
+      });
+      expect(state.images.fillColor).toBe(DEFAULT_APP_SETTINGS.images.fillColor);
+    });
+
+    it('converts an incoming fill color into the image service format', () => {
+      // The value reaches the store exactly as the source sent it - any CSS color - and is
+      // converted here, so everything reading the slice gets a wire ready value.
+      const partial = { images: { fillColor: 'rgb(255, 84, 0)' } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.fillColor).toBe('FF5400');
+    });
+
+    it('leaves the default fill color alone when the payload omits images', () => {
+      const partial = { navigation: { tabBar: { variant: 'floating' } } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.fillColor).toBe(DEFAULT_APP_SETTINGS.images.fillColor);
+    });
+
+    it('falls back to the default when the fill color cannot be parsed', () => {
+      const partial = { images: { fillColor: 'not-a-color' } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.fillColor).toBe('FFFFFF');
+    });
+
+    it.each([
+      ['an empty string', ''],
+      ['null', null],
+    ])('falls back to the default when the fill color is %s', (_, fillColor) => {
+      // merge overwrites with these, unlike undefined, so they reach the slice and would produce a
+      // malformed "fill=" parameter if they were not converted.
+      const partial = { images: { fillColor } } as unknown as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.fillColor).toBe('FFFFFF');
+    });
+
+    it('is idempotent across repeated hydrations', () => {
+      // The admin preview bridge dispatches on every edit, so an already converted value gets fed
+      // back through the reducer.
+      const partial = { images: { fillColor: 'white' } } as AppSettings;
+
+      const once = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+      const twice = appSettings(once, receiveAppSettings({} as AppSettings));
+
+      expect(once.images.fillColor).toBe('FFFFFF');
+      expect(twice.images.fillColor).toBe('FFFFFF');
     });
   });
 

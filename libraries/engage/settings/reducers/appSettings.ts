@@ -4,6 +4,11 @@ import type { Reducer, UnknownAction } from 'redux';
 import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
 import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
+import {
+  DEFAULT_IMAGE_FILL_COLOR,
+  DEFAULT_IMAGE_FILL_TRANSPARENT,
+} from '../constants/imageSettings';
+import { toThumborColor } from '../helpers';
 
 type AppSettingsAction = ReceiveAppSettingsAction | UnknownAction;
 
@@ -38,6 +43,17 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
     },
   },
+  images: {
+    // Already in the image service's expected format, so the unhydrated path needs no conversion.
+    fillColor: DEFAULT_IMAGE_FILL_COLOR,
+    fillTransparent: DEFAULT_IMAGE_FILL_TRANSPARENT,
+    product: {
+      ratio: {
+        width: 1,
+        height: 1,
+      },
+    },
+  },
 };
 
 /**
@@ -55,6 +71,17 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
     // keeps the built-in defaults for anything the source omits, rather than
     // shallow-replacing whole branches and leaving consumers with undefined.
     merge(draft, action.settings);
+
+    // The fill color reaches redux exactly as the source sent it - any CSS color, or one of the
+    // image service's own keywords. It is converted here rather than on read, so the slice holds a
+    // wire ready value and the conversion runs once per settings change instead of on every render.
+    //
+    // Converted unconditionally rather than only when the payload carried one: merge overwrites
+    // with an empty string or a null, so guarding on the incoming value would let those through
+    // unconverted and produce a malformed "fill=" parameter. toThumborColor is idempotent, so
+    // re-converting an already converted value is a no-op.
+    draft.images.fillColor = toThumborColor(draft.images.fillColor);
+
     draft.isHydrated = true;
   }
 });
