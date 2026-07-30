@@ -321,7 +321,11 @@ const FavoriteItem = ({
             href={productLink}
             aria-hidden
           >
-            <ProductImage className={cx('engage__favorites__item__image')} src={product.featuredImageBaseUrl} context="list" />
+            <ProductImage
+              className={cx('engage__favorites__item__image')}
+              src={product.featuredImageBaseUrl}
+              context="list"
+            />
           </Link>
 
           <div className={cx(classes.infoContainer, 'engage__favorites__item__info-container')}>

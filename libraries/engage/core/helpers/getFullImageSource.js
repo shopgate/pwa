@@ -53,7 +53,7 @@ const buildUrl = (baseUrl, params = {}) => {
 /**
  * Builds the url that requests an image at a given size. A src that no known image source
  * recognizes is returned untouched.
- * @param {string} src Source to the image.
+ * @param {string|null} src Source to the image.
  * @param {Object} dimension Dimension of the requested image.
  * @param {number} dimension.width Width in pixels.
  * @param {number} dimension.height Height in pixels.

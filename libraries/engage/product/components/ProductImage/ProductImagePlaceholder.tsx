@@ -1,8 +1,24 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useMemo, useState } from 'react';
+import type { CSSProperties } from 'react';
 import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { useLoadImage } from '@shopgate/engage/core';
+
+export interface ProductImagePlaceholderProps {
+  /**
+   * Drops the background behind the placeholder.
+   */
+  noBackground?: boolean;
+  /**
+   * Whether the placeholder gets an inset shadow, matching the image it stands in for.
+   */
+  showInnerShadow?: boolean;
+  /**
+   * The merchant configured placeholder image. While it loads, and when it is absent, the
+   * built-in icon is shown instead.
+   */
+  src?: string | null;
+}
 
 const placeholderIconScale = 0.65;
 
@@ -41,12 +57,16 @@ const useStyles = makeStyles()(theme => ({
 
 /**
  * The ProductImagePlaceholder component.
- * @param {Object} props The components props.
- * @returns {JSX}
+ * @param props The components props.
+ * @returns The rendered component.
  */
-const ProductImagePlaceholder = ({
-  src, showInnerShadow, noBackground,
-}) => {
+const ProductImagePlaceholder = (props: ProductImagePlaceholderProps) => {
+  const {
+    src = null,
+    showInnerShadow = false,
+    noBackground = false,
+  } = props;
+
   const { classes, cx } = useStyles();
   const theme = useTheme();
   const [showPlaceholder, setShowPlaceholder] = useState(true);
@@ -54,7 +74,7 @@ const ProductImagePlaceholder = ({
   const srcLoaded = useLoadImage(src);
   useEffect(() => { setShowPlaceholder(false); }, [srcLoaded]);
 
-  const contentStyles = useMemo(() => {
+  const contentStyles = useMemo<CSSProperties>(() => {
     if (srcLoaded) {
       return {
         backgroundImage: `url(${src})`,
@@ -80,18 +100,6 @@ const ProductImagePlaceholder = ({
       {!showPlaceholder && ' '}
     </div>
   );
-};
-
-ProductImagePlaceholder.propTypes = {
-  noBackground: PropTypes.bool,
-  showInnerShadow: PropTypes.bool,
-  src: PropTypes.string,
-};
-
-ProductImagePlaceholder.defaultProps = {
-  src: null,
-  noBackground: false,
-  showInnerShadow: false,
 };
 
 export default ProductImagePlaceholder;

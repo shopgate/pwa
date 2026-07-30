@@ -1,14 +1,77 @@
-import React, {
+import {
   useMemo, useState, useEffect, useRef, useCallback, memo,
 } from 'react';
-import PropTypes from 'prop-types';
+import type { CSSProperties, SyntheticEvent } from 'react';
 import noop from 'lodash/noop';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getFullImageSource } from '@shopgate/engage/core/helpers';
 import { useImageServiceSettings } from '@shopgate/engage/settings/hooks';
+import type { ImageResolution } from '@shopgate/engage/settings/types/appSettings';
 import ImageInner from './ImageInner';
 
-const useStyles = makeStyles()((_theme, { background, paddingTop }) => ({
+export interface ImageProps {
+  /**
+   * Optional alt text for the image. Without one the image is marked decorative.
+   */
+  alt?: string | null;
+  /**
+   * The background color of the image container.
+   */
+  backgroundColor?: string;
+  /**
+   * External class name for the image container.
+   */
+  className?: string | null;
+  /**
+   * External class name for the image itself.
+   */
+  classNameImg?: string | null;
+  /**
+   * When set to `true` the component will not render an image. The idea is that a parent component
+   * renders a placeholder instead.
+   */
+  forcePlaceholder?: boolean;
+  /**
+   * Callback that is invoked when the image with the highest resolution has been loaded.
+   */
+  highestResolutionLoaded?: () => void;
+  /**
+   * Whether the image should be lazy loaded.
+   */
+  lazy?: boolean;
+  /**
+   * Callback that is invoked when image loading failed.
+   */
+  onError?: (event: SyntheticEvent<HTMLImageElement>) => void;
+  /**
+   * Callback that is invoked when the image has been loaded.
+   */
+  onLoad?: (event: SyntheticEvent<HTMLImageElement>) => void;
+  /**
+   * Width and height parts of the rendered aspect ratio, e.g. [16, 9]. Without one the ratio is
+   * calculated from the highest resolution.
+   */
+  ratio?: number[] | null;
+  /**
+   * The resolutions to request, ordered ascending. The last is displayed; the second to last is
+   * loaded first as a preview, so something appears as soon as possible.
+   */
+  resolutions?: ImageResolution[];
+  /**
+   * Image source. A Shopgate internal url is transformed into a full url carrying the dimensions
+   * from the resolutions array.
+   */
+  src?: string | null;
+  /**
+   * Whether to render a plain img tag without any container.
+   */
+  unwrapped?: boolean;
+}
+
+const useStyles = makeStyles<{ background?: string, paddingTop: string }>()((
+  _theme,
+  { background, paddingTop }
+) => ({
   container: {
     background,
     position: 'relative',
@@ -24,38 +87,41 @@ const useStyles = makeStyles()((_theme, { background, paddingTop }) => ({
 
 /**
  * Calculates the Greatest Common Divisor (GCD) of two numbers using the Euclidean algorithm.
- *
- * @param {number} a - The first number (must be a positive integer).
- * @param {number} b - The second number (must be a positive integer).
- * @returns {number} The greatest common divisor of `a` and `b`.
- *
- * @example
- * gcd(1920, 1080); // Returns 120
- * gcd(10, 15);     // Returns 5
- * gcd(100, 25);    // Returns 25
+ * @param a The first number (must be a positive integer).
+ * @param b The second number (must be a positive integer).
+ * @returns The greatest common divisor of `a` and `b`.
  */
-const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
+
+const defaultResolutions: ImageResolution[] = [
+  {
+    width: 440,
+    height: 440,
+  },
+];
 
 /**
  * The image component.
- * @param {Object} props The components props.
- * @returns {JSX.Element}
+ * @param props The components props.
+ * @returns The rendered component.
  */
-const Image = ({
-  alt,
-  backgroundColor,
-  className,
-  classNameImg,
-  forcePlaceholder: parentRendersPlaceholder,
-  highestResolutionLoaded,
-  onError,
-  onLoad,
-  ratio,
-  resolutions,
-  src,
-  lazy,
-  unwrapped,
-}) => {
+const Image = (props: ImageProps) => {
+  const {
+    alt = null,
+    backgroundColor = 'var(--sg-palette-background-emphasized)',
+    className = '',
+    classNameImg = '',
+    forcePlaceholder: parentRendersPlaceholder = false,
+    highestResolutionLoaded = noop,
+    onError = noop,
+    onLoad = noop,
+    ratio = null,
+    resolutions = defaultResolutions,
+    src = null,
+    lazy = true,
+    unwrapped = false,
+  } = props;
+
   // Quality and fill color are configured app wide, so they are resolved here rather than passed
   // in by every caller. The returned object is reference stable, so it does not defeat the memo.
   const imageServiceSettings = useImageServiceSettings();
@@ -85,7 +151,7 @@ const Image = ({
     [resolutions, src, imageServiceSettings]
   );
 
-  const imgRef = useRef(null);
+  const imgRef = useRef<HTMLImageElement>(null);
   const [isInView, setIsInView] = useState(!lazy);
 
   // Effect to create an Intersection Observer to enable lazy loading of preview images
@@ -118,33 +184,33 @@ const Image = ({
 
   /**
    * Handles the onLoad event of the image.
+   * @param event The load event.
    */
-  const handleOnLoad = useCallback((e) => {
+  const handleOnLoad = useCallback((event: SyntheticEvent<HTMLImageElement>) => {
     highestResolutionLoaded();
-    onLoad(e);
+    onLoad(event);
   }, [highestResolutionLoaded, onLoad]);
 
   /**
    * Handles the onError event of the image.
+   * @param event The error event.
    */
-  const handleOnError = useCallback((e) => {
-    onError(e);
+  const handleOnError = useCallback((event: SyntheticEvent<HTMLImageElement>) => {
+    onError(event);
   }, [onError]);
 
   /**
    * Memoized calculation of aspect ratio and CSS padding-hack ratio for responsive elements.
    *
-   * Returns n object containing:
-   * - `aspectRatio` {string} - The aspect ratio in the format `width / height` (e.g., `16 / 9`).
-   * - `paddingHackRatio` {string} - The CSS padding-hack ratio as a percentage for older browsers
-   * (e.g., `56.250%` for a 16:9 ratio).
+   * aspectRatio is the ratio in the format `width / height` (e.g. `16 / 9`), paddingHackRatio the
+   * same as a percentage for older browsers (e.g. `56.250%` for a 16:9 ratio).
    */
   const {
     aspectRatio,
     paddingHackRatio,
   } = useMemo(() => {
-    let width;
-    let height;
+    let width: number;
+    let height: number;
 
     if (ratio) {
       ([width, height] = ratio);
@@ -165,6 +231,16 @@ const Image = ({
     paddingTop: paddingHackRatio,
   });
 
+  const innerStyle: CSSProperties = {
+    aspectRatio,
+    ...(isInView && sources.preview && {
+      backgroundImage: `url(${sources.preview})`,
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+    }),
+  };
+
   if (unwrapped) {
     if (!(src && !parentRendersPlaceholder)) return null;
 
@@ -173,15 +249,7 @@ const Image = ({
         ref={imgRef}
         src={sources.main}
         className={cx(classNameImg)}
-        style={{
-          aspectRatio,
-          ...(isInView && sources.preview && {
-            backgroundImage: `url(${sources.preview})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-          }),
-        }}
+        style={innerStyle}
         alt={alt}
         lazy={lazy}
         onLoad={handleOnLoad}
@@ -197,15 +265,7 @@ const Image = ({
         ref={imgRef}
         src={sources.main}
         className={cx(classNameImg)}
-        style={{
-          aspectRatio,
-          ...(isInView && sources.preview && {
-            backgroundImage: `url(${sources.preview})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-          }),
-        }}
+        style={innerStyle}
         alt={alt}
         lazy={lazy}
         onLoad={handleOnLoad}
@@ -214,93 +274,6 @@ const Image = ({
       )}
     </div>
   );
-};
-
-Image.propTypes = {
-  /**
-   * Optional alt text for the image.
-   */
-  alt: PropTypes.string,
-  /**
-   * The background color of the image container
-   */
-  backgroundColor: PropTypes.string,
-  /**
-   * External class name for the image container.
-   */
-  className: PropTypes.string,
-  /**
-   * External class name for the image.
-   */
-  classNameImg: PropTypes.string,
-  /**
-   * When set to `true` the component will not render an image. The idea is that a parent component
-   * renders a placeholder instead.
-   */
-  forcePlaceholder: PropTypes.bool,
-  /**
-   * Callback that is invoked when the image with the highest resolution has been loaded.
-   */
-  highestResolutionLoaded: PropTypes.func,
-  /**
-   * Whether the image should be lazy loaded.
-   */
-  lazy: PropTypes.bool,
-  /**
-   * Callback that is invoked when image loading failed
-   */
-  onError: PropTypes.func,
-  /**
-   * Callback that is invoked when the image has been loaded.
-   */
-  onLoad: PropTypes.func,
-  /**
-   * Ratio of the image. If not set, the ratio is calculated from the highest resolution.
-   * @example [16, 9]
-   */
-  ratio: PropTypes.arrayOf(PropTypes.number),
-  /**
-   * Array with multiple resolutions for the image. The last resolution is the highest.
-   * The component will try to load the second last resolution first and then the last resolution
-   * as an attempt to display an image as soon as possible.
-   */
-  resolutions: PropTypes.arrayOf(PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  })),
-  /**
-   * Image source.
-   * If it's a Shopgate internal URL it will be transformed to a full URL with dimensions from
-   * the resolutions array.
-   */
-  src: PropTypes.string,
-  /**
-   * Whether the component is only supposed to render a plain img tag without any container.
-   */
-  unwrapped: PropTypes.bool,
-};
-
-const defaultResolutions = [
-  {
-    width: 440,
-    height: 440,
-  },
-];
-
-Image.defaultProps = {
-  alt: null,
-  backgroundColor: 'var(--sg-palette-background-emphasized)',
-  className: '',
-  classNameImg: '',
-  forcePlaceholder: false,
-  highestResolutionLoaded: noop,
-  onError: noop,
-  onLoad: noop,
-  ratio: null,
-  resolutions: defaultResolutions,
-  src: null,
-  unwrapped: false,
-  lazy: true,
 };
 
 export default memo(Image);

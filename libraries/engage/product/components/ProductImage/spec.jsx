@@ -14,6 +14,32 @@ jest.mock('@shopgate/engage/components', () => ({
   Image: () => null,
 }));
 
+// These are shallow renders, so there is no Provider for the hook to read the store from. The
+// mock returns what the resolver produces before the app settings are hydrated: the built-in
+// resolutions, and no ratio, so the Image derives it from the largest resolution as before.
+jest.mock('@shopgate/engage/settings/hooks', () => ({
+  useProductImageSettings: () => ({
+    pdp: {
+      resolutions: [{ width: 440, height: 440 }, { width: 1024, height: 1024 }],
+      ratio: null,
+    },
+    gallery: {
+      resolutions: [{ width: 1024, height: 1024 }, { width: 2048, height: 2048 }],
+      ratio: null,
+    },
+    list: {
+      resolutions: [{ width: 440, height: 440 }],
+      ratio: null,
+    },
+  }),
+  // Mocking the barrel replaces every export, and the Image component pulls this one from it.
+  useImageServiceSettings: () => ({
+    quality: 75,
+    fillColor: 'FFFFFF',
+    fillTransparent: true,
+  }),
+}));
+
 describe('<ProductImage />', () => {
   it('should render a placeholder if no src prop is provided', () => {
     const wrapper = shallow(<ProductImage />).dive();
