@@ -138,6 +138,27 @@ describe('settings / helpers / resolveImageSettings', () => {
             width: 440,
             height: 440,
           }]);
+          expect(resolved.list.ratio).toEqual([1, 1]);
+        });
+
+        // lodash merge assigns a null over the default rather than skipping it, the way it skips
+        // undefined, so a source that clears a key puts one straight into the slice.
+        it.each([
+          ['the ratio', { product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: null } }],
+          ['the product settings', { product: null }],
+          ['the image settings', null],
+        ])('survives a source that nulls out %s', (_, overrides) => {
+          const settings = (overrides
+            ? buildImageSettings(overrides as unknown as Partial<ImageSettings>)
+            : null) as ImageSettings;
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 440,
+            height: 440,
+          }]);
+          expect(resolved.list.ratio).toEqual([1, 1]);
         });
       });
 
@@ -242,11 +263,12 @@ describe('settings / helpers / resolveImageSettings', () => {
       });
     });
 
-    // The theme configuration already holds the format the image service expects.
-    it('takes the legacy color as it is', () => {
-      mockedGetThemeSettings.mockReturnValue({ fillColor: 'aaa,1' });
+    // Theme configurations carry values the image service does not take - the helper this replaced
+    // stripped the hash off every one of them.
+    it('normalizes a legacy color the image service would not take', () => {
+      mockedGetThemeSettings.mockReturnValue({ fillColor: '#EEEEEE,1' });
 
-      expect(resolveImageServiceSettings(false, buildImageSettings()).fillColor).toBe('aaa');
+      expect(resolveImageServiceSettings(false, buildImageSettings()).fillColor).toBe('EEEEEE');
     });
 
     it('defaults the legacy flag to enabled when the suffix is absent', () => {

@@ -14,6 +14,7 @@ import {
   MAX_IMAGE_DIMENSION,
   PRODUCT_IMAGE_BASE_WIDTHS,
 } from '../constants/imageSettings';
+import { toThumborColor } from './toThumborColor';
 
 /**
  * The shape of the legacy AppImages theme settings. Every field is optional - the key is absent
@@ -124,25 +125,35 @@ const getLegacyImageSettings = (): LegacyImageSettings =>
  * @param value The value to check.
  * @returns Whether it is usable.
  */
-const isUsableRatioPart = (value: number): boolean => Number.isFinite(value) && value > 0;
+const isUsableRatioPart = (value?: number): value is number =>
+  typeof value === 'number' && Number.isFinite(value) && value > 0;
+
+/**
+ * Substitutes a ratio that cannot be calculated with. Anything reading a configured ratio goes
+ * through here first - a source may send a half typed value, or none at all.
+ * @param ratio The configured ratio.
+ * @returns The ratio, or the default when it is unusable.
+ */
+const toUsableRatio = (ratio?: AspectRatio | null): AspectRatio => {
+  if (!ratio || !isUsableRatioPart(ratio.width) || !isUsableRatioPart(ratio.height)) {
+    return DEFAULT_RATIO;
+  }
+
+  return ratio;
+};
 
 /**
  * Derives a resolution ladder from a context's base widths and an aspect ratio.
  * @param context The product image context.
- * @param ratio The aspect ratio to apply.
+ * @param ratio The aspect ratio to apply, already passed through toUsableRatio.
  * @returns The resolutions, ordered ascending.
  */
 const deriveResolutions = (
   context: ProductImageContext,
   ratio: AspectRatio
-): ImageResolution[] => {
-  // A ratio arrives from an admin field a merchant may still be typing into. Zero or NaN would
-  // produce Infinity or NaN here, which the bound below cannot catch, so they are rejected first.
-  const { width: ratioWidth, height: ratioHeight } =
-    isUsableRatioPart(ratio?.width) && isUsableRatioPart(ratio?.height) ? ratio : DEFAULT_RATIO;
-
-  return PRODUCT_IMAGE_BASE_WIDTHS[context].map((baseWidth) => {
-    const height = Math.round((baseWidth * ratioHeight) / ratioWidth);
+): ImageResolution[] => (
+  PRODUCT_IMAGE_BASE_WIDTHS[context].map((baseWidth) => {
+    const height = Math.round((baseWidth * ratio.height) / ratio.width);
 
     if (height <= MAX_IMAGE_DIMENSION) {
       return {
@@ -157,8 +168,8 @@ const deriveResolutions = (
       width: Math.max(1, Math.round((baseWidth * MAX_IMAGE_DIMENSION) / height)),
       height: MAX_IMAGE_DIMENSION,
     };
-  });
-};
+  })
+);
 
 /**
  * Resolves the settings for every product image context.
@@ -198,8 +209,11 @@ export const resolveProductImageSettings = (
       };
     }
 
-    const { product } = imageSettings;
-    const ratio = product[context]?.ratio ?? product.ratio;
+    const product = imageSettings?.product;
+
+    // Resolved once and used for both, so the tuple cannot disagree with the resolutions it is
+    // rendered against.
+    const ratio = toUsableRatio(product?.[context]?.ratio ?? product?.ratio);
 
     return {
       ...resolved,
@@ -227,12 +241,12 @@ export const resolveImageServiceSettings = (
   if (areAppSettingsHydrated) {
     ({ fillColor: color, fillTransparent } = imageSettings);
   } else {
-    // The legacy value packs both parts into one string, e.g. "FFFFFF,1". Its color is taken as it
-    // is - the theme configuration already holds the format the image service expects.
+    // The legacy value packs both parts into one string, e.g. "FFFFFF,1". Its color is normalized
+    // like a configured one - theme configurations carry values the image service will not take.
     const { fillColor: legacyFillColor = '' } = getLegacyImageSettings();
     const [legacyColor, legacyFillTransparent] = legacyFillColor.split(',');
 
-    color = legacyColor || DEFAULT_IMAGE_FILL_COLOR;
+    color = legacyColor ? toThumborColor(legacyColor) : DEFAULT_IMAGE_FILL_COLOR;
     fillTransparent = legacyFillTransparent === undefined
       ? DEFAULT_IMAGE_FILL_TRANSPARENT
       : legacyFillTransparent.trim() === '1';

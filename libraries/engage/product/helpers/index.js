@@ -104,19 +104,23 @@ export const getProductImageSettings = () => {
 };
 
 /**
- * Load product image with given resolution
+ * Load product image with given resolution.
+ *
+ * A preload only pays off when it requests the same url the rendered image does, so pass the
+ * resolution and settings that image resolves. Anything omitted falls back to the built-in
+ * defaults.
  * @param {string} src .
- * @param {Object} [resolution] The resolution to preload. Callers that render the image should
- * pass the one they render, so that the preload hits the same url. Falls back to the smallest
- * built-in pdp resolution at a 1:1 ratio.
+ * @param {Object} [resolution] The resolution to preload. Falls back to the smallest built-in pdp
+ * resolution at a 1:1 ratio.
+ * @param {Object} [settings] The image service settings, as resolved by useImageServiceSettings.
  * @returns {Promise}
  */
-export const loadProductImage = (src, resolution = null) => {
+export const loadProductImage = (src, resolution = null, settings = undefined) => {
   const [baseWidth] = PRODUCT_IMAGE_BASE_WIDTHS.pdp;
   const res = resolution ?? {
     width: baseWidth,
     height: baseWidth,
   };
 
-  return loadImage(getFullImageSource(src, res));
+  return loadImage(getFullImageSource(src, res, settings));
 };

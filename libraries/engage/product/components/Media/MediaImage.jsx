@@ -58,7 +58,8 @@ const MediaImage = ({
         alt={altText}
         className={mergedClassName}
         backgroundColor="transparent"
-        placeholder={<MediaPlaceholder className={mergedClassName} />}
+        // Without the merged class name - it is already on the container this renders into.
+        placeholder={<MediaPlaceholder />}
         animating
       />
     </SurroundPortals>

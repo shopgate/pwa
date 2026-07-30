@@ -10,7 +10,7 @@ import {
   ITEM_PATH,
   ProductImage,
 } from '@shopgate/engage/product';
-import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
+import { useImageServiceSettings, useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { appConfig } from '@shopgate/engage';
 import connect from './connector';
 
@@ -27,6 +27,7 @@ class ProductImageSlider extends Component {
     className: PropTypes.string,
     historyPush: PropTypes.func,
     images: PropTypes.arrayOf(PropTypes.string),
+    imageServiceSettings: PropTypes.shape(),
     pdpResolutions: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
     productId: PropTypes.string,
@@ -38,6 +39,7 @@ class ProductImageSlider extends Component {
     className: null,
     historyPush: noop,
     images: null,
+    imageServiceSettings: undefined,
     pdpResolutions: null,
     product: null,
     productId: null,
@@ -96,7 +98,11 @@ class ProductImageSlider extends Component {
         this.mediaRef.current.style.filter = 'blur(3px)';
       }
       this.setState({ depImage });
-      loadProductImage(depImage, this.props.pdpResolutions?.[0])
+      loadProductImage(
+        depImage,
+        this.props.pdpResolutions?.[0],
+        this.props.imageServiceSettings
+      )
         .then(() => {
           if (this.mounted) {
             if (this.mediaRef.current) {
@@ -223,14 +229,18 @@ class ProductImageSlider extends Component {
  * @return {JSX.Element}
  */
 const Wrapper = (props) => {
-  // The slider is a class component, so it cannot call the hook itself. It needs the pdp
-  // resolutions for the preload in loadProductImage - the rendered images resolve their own
-  // settings from the context prop.
+  // The slider is a class component, so it cannot call the hooks itself. Both feed the preload in
+  // loadProductImage - the rendered images resolve their own settings from the context prop.
   const { pdp } = useProductImageSettings();
+  const imageServiceSettings = useImageServiceSettings();
 
   return (
     <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
-      <ProductImageSlider {...props} pdpResolutions={pdp.resolutions} />
+      <ProductImageSlider
+        {...props}
+        pdpResolutions={pdp.resolutions}
+        imageServiceSettings={imageServiceSettings}
+      />
     </SurroundPortals>
   );
 };
