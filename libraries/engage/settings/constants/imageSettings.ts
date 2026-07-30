@@ -19,6 +19,14 @@ export const PRODUCT_IMAGE_BASE_WIDTHS: Record<ProductImageContext, number[]> = 
 };
 
 /**
+ * The largest width or height that may be requested from the image service.
+ *
+ * A configured aspect ratio is applied to the base widths, so an extreme one would otherwise ask for
+ * dimensions the service rejects. Comfortably above the largest base width in use.
+ */
+export const MAX_IMAGE_DIMENSION = 4096;
+
+/**
  * The key the legacy image settings live under in the theme configuration.
  */
 export const LEGACY_IMAGE_SETTINGS_KEY = 'AppImages';

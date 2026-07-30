@@ -39,7 +39,17 @@ exports[`<ProductImage /> inner shadow should apply it to the image when the hoo
         aria-hidden={true}
         backgroundColor="var(--sg-palette-background-surface)"
         className="sg-ff8tgd-innerShadow"
-        onError={[Function]}
+        placeholder={
+          <div
+            aria-hidden={true}
+            className="sg-1k7fitm-placeholderContent"
+            data-test-id="placeHolder"
+          >
+            <Placeholder
+              className="sg-1ut7txd-placeholder"
+            />
+          </div>
+        }
         ratio={null}
         resolutions={
           [
@@ -82,12 +92,29 @@ exports[`<ProductImage /> inner shadow should apply it to the placeholder when t
     props={null}
   >
     <div
-      className="sg-7iqvdv-placeholderContainer-innerShadow"
+      className="engage__product__product-image"
     >
-      <ProductImagePlaceholder
-        noBackground={false}
-        showInnerShadow={true}
-        src="http://placehold.it/300x300"
+      <Image
+        aria-hidden={true}
+        backgroundColor="var(--sg-palette-background-surface)"
+        className="sg-ff8tgd-innerShadow"
+        placeholder={
+          <ProductImagePlaceholder
+            noBackground={false}
+            showInnerShadow={true}
+            src="http://placehold.it/300x300"
+          />
+        }
+        placeholderSrc="http://placehold.it/300x300"
+        ratio={null}
+        resolutions={
+          [
+            {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
       />
     </div>
   </Portal>
@@ -137,7 +164,17 @@ exports[`<ProductImage /> inner shadow should not apply it to the image when the
         aria-hidden={true}
         backgroundColor="var(--sg-palette-background-surface)"
         className=""
-        onError={[Function]}
+        placeholder={
+          <div
+            aria-hidden={true}
+            className="sg-1k7fitm-placeholderContent"
+            data-test-id="placeHolder"
+          >
+            <Placeholder
+              className="sg-1ut7txd-placeholder"
+            />
+          </div>
+        }
         ratio={null}
         resolutions={
           [
@@ -180,12 +217,29 @@ exports[`<ProductImage /> inner shadow should not apply it to the placeholder wh
     props={null}
   >
     <div
-      className="sg-rvs4ak-placeholderContainer"
+      className="engage__product__product-image"
     >
-      <ProductImagePlaceholder
-        noBackground={false}
-        showInnerShadow={false}
-        src="http://placehold.it/300x300"
+      <Image
+        aria-hidden={true}
+        backgroundColor="var(--sg-palette-background-surface)"
+        className=""
+        placeholder={
+          <ProductImagePlaceholder
+            noBackground={false}
+            showInnerShadow={false}
+            src="http://placehold.it/300x300"
+          />
+        }
+        placeholderSrc="http://placehold.it/300x300"
+        ratio={null}
+        resolutions={
+          [
+            {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
       />
     </div>
   </Portal>
@@ -207,17 +261,33 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
     props={null}
   >
     <div
-      className="sg-rvs4ak-placeholderContainer"
+      className="engage__product__product-image"
     >
-      <div
+      <Image
         aria-hidden={true}
-        className="sg-1k7fitm-placeholderContent"
-        data-test-id="placeHolder"
-      >
-        <Placeholder
-          className="sg-1ut7txd-placeholder"
-        />
-      </div>
+        backgroundColor="var(--sg-palette-background-surface)"
+        className=""
+        placeholder={
+          <div
+            aria-hidden={true}
+            className="sg-1k7fitm-placeholderContent"
+            data-test-id="placeHolder"
+          >
+            <Placeholder
+              className="sg-1ut7txd-placeholder"
+            />
+          </div>
+        }
+        ratio={null}
+        resolutions={
+          [
+            {
+              "height": 440,
+              "width": 440,
+            },
+          ]
+        }
+      />
     </div>
   </Portal>
   <Portal
@@ -266,7 +336,17 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
         aria-hidden={true}
         backgroundColor="var(--sg-palette-background-surface)"
         className=""
-        onError={[Function]}
+        placeholder={
+          <div
+            aria-hidden={true}
+            className="sg-1k7fitm-placeholderContent"
+            data-test-id="placeHolder"
+          >
+            <Placeholder
+              className="sg-1ut7txd-placeholder"
+            />
+          </div>
+        }
         ratio={null}
         resolutions={
           [

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Image from '@shopgate/pwa-common/components/Image';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -33,33 +33,24 @@ const MediaImage = ({
   url, altText, className, resolutions,
 }) => {
   const { classes, cx } = useStyles();
-  const [placeholder, setPlaceholderEnabled] = useState(!url);
 
   const {
     showInnerShadow = !appConfig.hideProductImageShadow,
   } = useWidgetSettings('@shopgate/engage/product/MediaImage');
 
-  useEffect(() => setPlaceholderEnabled(!url), [url]);
-
   const mergedClassName = cx(className, {
     [classes.innerShadow]: showInnerShadow,
   });
 
-  if (placeholder) {
-    return (
-      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-        <MediaPlaceholder className={mergedClassName} />
-      </SurroundPortals>
-    );
-  }
-
   return (
     <SurroundPortals
       portalName={PORTAL_PRODUCT_IMAGE}
-      portalProps={{
+      // Nothing is passed on without a url, so portals keep seeing what they saw before the
+      // placeholder moved into the Image component.
+      portalProps={url ? {
         src: url,
         resolutions,
-      }}
+      } : undefined}
     >
       <Image
         src={url}
@@ -67,7 +58,7 @@ const MediaImage = ({
         alt={altText}
         className={mergedClassName}
         backgroundColor="transparent"
-        onError={() => setPlaceholderEnabled(true)}
+        placeholder={<MediaPlaceholder className={mergedClassName} />}
         animating
       />
     </SurroundPortals>

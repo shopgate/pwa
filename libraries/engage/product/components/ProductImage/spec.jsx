@@ -44,21 +44,28 @@ jest.mock('@shopgate/engage/settings/hooks', () => ({
   }),
 }));
 
+/**
+ * Reads the placeholder element the component hands to the Image. Image decides when to render it,
+ * so the placeholder is a prop here rather than part of this component's tree.
+ * @param {Object} wrapper The rendered ProductImage.
+ * @returns {JSX.Element} The placeholder element.
+ */
+const getPlaceholder = wrapper => wrapper.find(Image).prop('placeholder');
+
 describe('<ProductImage />', () => {
   it('should render a placeholder if no src prop is provided', () => {
     const wrapper = shallow(<ProductImage />).dive();
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Image).length).toBe(0);
-    expect(wrapper.find(PlaceholderIcon).length).toBe(1);
+    expect(shallow(getPlaceholder(wrapper)).find(PlaceholderIcon).length).toBe(1);
   });
 
   it('should render the image without a placeholder', () => {
     const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
 
-    expect(wrapper).toMatchSnapshot();
     expect(wrapper.find(Image).length).toBe(1);
     expect(wrapper.find(PlaceholderIcon).length).toBe(0);
+    expect(wrapper).toMatchSnapshot();
   });
 
   describe('inner shadow', () => {
@@ -66,32 +73,34 @@ describe('<ProductImage />', () => {
       useProductImageShadow.mockReturnValue(false);
       const wrapper = shallow(<ProductImage placeholderSrc="http://placehold.it/300x300" />).dive();
 
+      expect(getPlaceholder(wrapper).type).toBe(ProductImagePlaceholder);
+      expect(getPlaceholder(wrapper).props.showInnerShadow).toBe(false);
       expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(false);
     });
 
     it('should not apply it to the image when the hook says no', () => {
       useProductImageShadow.mockReturnValue(false);
       const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
 
+      expect(wrapper.find(Image).prop('className')).not.toContain('innerShadow');
       expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find(Image).prop('className')).toBe('');
     });
 
     it('should apply it to the placeholder when the hook says yes', () => {
       useProductImageShadow.mockReturnValue(true);
       const wrapper = shallow(<ProductImage placeholderSrc="http://placehold.it/300x300" />).dive();
 
+      expect(getPlaceholder(wrapper).type).toBe(ProductImagePlaceholder);
+      expect(getPlaceholder(wrapper).props.showInnerShadow).toBe(true);
       expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find(ProductImagePlaceholder).prop('showInnerShadow')).toBe(true);
     });
 
     it('should apply it to the image when the hook says yes', () => {
       useProductImageShadow.mockReturnValue(true);
       const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
 
+      expect(wrapper.find(Image).prop('className')).toContain('innerShadow');
       expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find(Image).prop('className')).toBeTruthy();
     });
   });
 });

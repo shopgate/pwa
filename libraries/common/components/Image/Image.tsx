@@ -1,7 +1,7 @@
 import {
   useMemo, useState, useEffect, useRef, useCallback, memo,
 } from 'react';
-import type { CSSProperties, SyntheticEvent } from 'react';
+import type { CSSProperties, ReactElement, SyntheticEvent } from 'react';
 import noop from 'lodash/noop';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getFullImageSource } from '@shopgate/engage/core/helpers';
@@ -27,8 +27,8 @@ export interface ImageProps {
    */
   classNameImg?: string | null;
   /**
-   * When set to `true` the component will not render an image. The idea is that a parent component
-   * renders a placeholder instead.
+   * Shows the `placeholder` even when the image could be loaded. For a parent that decides on
+   * grounds this component cannot see, e.g. a product that is not orderable.
    */
   forcePlaceholder?: boolean;
   /**
@@ -41,17 +41,25 @@ export interface ImageProps {
    */
   itemProp?: string;
   /**
-   * Whether the image should be lazy loaded.
+   * Whether the image is loaded only once it comes near the viewport. Turn it off for images that
+   * are visible immediately, e.g. the first tile of a list.
    */
   lazy?: boolean;
   /**
-   * Callback that is invoked when image loading failed.
+   * Callback that is invoked when image loading failed. Handling the failure is not required - a
+   * `placeholder` covers that - so this is for callers that need to react beyond the image itself.
    */
   onError?: (event: SyntheticEvent<HTMLImageElement>) => void;
   /**
    * Callback that is invoked when the image has been loaded.
    */
   onLoad?: (event: SyntheticEvent<HTMLImageElement>) => void;
+  /**
+   * Rendered in place of the image when there is no `src`, when `forcePlaceholder` is set, or when
+   * the image failed to load. It renders inside the container, so it inherits the reserved aspect
+   * ratio box and needs no sizing of its own.
+   */
+  placeholder?: ReactElement | null;
   /**
    * Width and height parts of the rendered aspect ratio, e.g. [16, 9]. Without one the ratio is
    * calculated from the highest resolution.
@@ -63,12 +71,14 @@ export interface ImageProps {
    */
   resolutions?: ImageResolution[];
   /**
-   * Image source. A Shopgate internal url is transformed into a full url carrying the dimensions
-   * from the resolutions array.
+   * Image source. A url the image service serves is rewritten to carry the requested dimensions and
+   * the app wide quality and fill settings. Any other url is used as it is, so `resolutions` and
+   * `ratio` then only affect the layout, not what is downloaded.
    */
   src?: string | null;
   /**
-   * Whether to render a plain img tag without any container.
+   * Renders a plain img tag without the container, for callers that position the image themselves.
+   * Nothing reserves its space while it loads, and `backgroundColor` has nothing to apply to.
    */
   unwrapped?: boolean;
 }
@@ -132,7 +142,20 @@ const defaultResolutions: ImageResolution[] = [
 ];
 
 /**
- * The image component.
+ * Renders an image at the configured resolutions, inside a container that reserves its aspect ratio
+ * so the layout does not shift while it loads.
+ *
+ * What a caller should know:
+ *
+ * - **Nothing is rendered until there is something to render.** Without a `src`, the container is
+ *   still there and keeps its space, but it stays empty unless a `placeholder` is given.
+ * - **A failed image is remembered per source, not per component.** Once a `placeholder` is given,
+ *   it takes over on failure, and the image returns by itself as soon as the requested url changes -
+ *   a new `src`, different `resolutions`, or an app wide image setting edited in the admin. Callers
+ *   that pass no `placeholder` keep the failed image, and `onError` keeps reporting every attempt.
+ * - **`onLoad` and `onError` are always forwarded**, whether or not a placeholder is involved.
+ * - **`unwrapped` gives up the container**, and with it the reserved aspect ratio box and the
+ *   background color. The caller has to provide the space itself.
  * @param props The components props.
  * @returns The rendered component.
  */
@@ -147,6 +170,7 @@ const Image = (props: ImageProps) => {
     itemProp,
     onError = noop,
     onLoad = noop,
+    placeholder = null,
     ratio = null,
     resolutions = defaultResolutions,
     src = null,
@@ -185,6 +209,18 @@ const Image = (props: ImageProps) => {
 
   const imgRef = useRef<HTMLImageElement>(null);
   const [isInView, setIsInView] = useState(!lazy);
+  const [failedSource, setFailedSource] = useState<string | null>(null);
+
+  // A failure counts against the source that produced it, not against the component. Anything that
+  // rebuilds the url - a new src, a reconfigured ratio, a different fill color - is by itself the
+  // decision to try again, so the placeholder gives way without anyone having to reset a flag.
+  //
+  // Only callers that provide a placeholder have the image taken away from them. Without one there
+  // is nothing to swap to, so a failed image stays mounted and keeps reporting through onError,
+  // exactly as it behaved before this prop existed.
+  const showPlaceholder = !src
+    || parentRendersPlaceholder
+    || (!!placeholder && failedSource === sources.main);
 
   // Effect to create an Intersection Observer to enable lazy loading of preview images
   useEffect(() => {
@@ -228,8 +264,9 @@ const Image = (props: ImageProps) => {
    * @param event The error event.
    */
   const handleOnError = useCallback((event: SyntheticEvent<HTMLImageElement>) => {
+    setFailedSource(sources.main);
     onError(event);
-  }, [onError]);
+  }, [onError, sources.main]);
 
   /**
    * Memoized calculation of aspect ratio and CSS padding-hack ratio for responsive elements.
@@ -279,7 +316,7 @@ const Image = (props: ImageProps) => {
   };
 
   if (unwrapped) {
-    if (!(src && !parentRendersPlaceholder)) return null;
+    if (showPlaceholder) return placeholder;
 
     return (
       <ImageInner
@@ -298,18 +335,18 @@ const Image = (props: ImageProps) => {
 
   return (
     <div className={cx(classes.container, className, 'common__image__container')}>
-      {src && !parentRendersPlaceholder && (
-      <ImageInner
-        ref={imgRef}
-        src={sources.main}
-        className={cx(classNameImg)}
-        style={innerStyle}
-        alt={alt}
-        itemProp={itemProp}
-        lazy={lazy}
-        onLoad={handleOnLoad}
-        onError={handleOnError}
-      />
+      {showPlaceholder ? placeholder : (
+        <ImageInner
+          ref={imgRef}
+          src={sources.main}
+          className={cx(classNameImg)}
+          style={innerStyle}
+          alt={alt}
+          itemProp={itemProp}
+          lazy={lazy}
+          onLoad={handleOnLoad}
+          onError={handleOnError}
+        />
       )}
     </div>
   );

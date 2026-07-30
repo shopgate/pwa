@@ -1,11 +1,4 @@
-import {
-  useState,
-  useEffect,
-  useLayoutEffect,
-  useCallback,
-  useMemo,
-  memo,
-} from 'react';
+import { useLayoutEffect, useMemo, memo } from 'react';
 import { logger } from '@shopgate/pwa-core';
 import Image from '@shopgate/pwa-common/components/Image';
 import type { ImageProps } from '@shopgate/pwa-common/components/Image';
@@ -47,10 +40,10 @@ interface ResolvedImage {
 
 /**
  * Everything the underlying Image accepts is forwarded, minus the two props this component owns:
- * it derives `backgroundColor` from `noBackground`, and takes `onError` over to swap in the
- * placeholder when loading fails.
+ * it derives `backgroundColor` from `noBackground`, and supplies the `placeholder` that stands in
+ * for a product without an image.
  */
-export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 'onError'> {
+export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 'placeholder'> {
   /**
    * The surface this image is rendered on. Determines the resolutions and aspect ratio, which are
    * configured app wide. Ignored when an explicit `resolutions` prop is passed.
@@ -75,41 +68,7 @@ export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 
   resolutions?: ImageResolution[];
 }
 
-/**
- * Derives the image aspect ratio from an explicit ratio or the largest resolution.
- * @param resolved The resolutions and ratio the image renders with.
- * @param resolved.ratio Width and height parts, when one is configured.
- * @param resolved.resolutions The ladder the image is requested at.
- * @returns The computed ratio as a fixed decimal string.
- */
-const getImageRatio = ({ ratio, resolutions }: Partial<ResolvedImage> = {}): string => {
-  if (Array.isArray(ratio) && ratio.length === 2 && ratio[0]) {
-    const [x, y] = ratio;
-    return ((y / x)).toFixed(3);
-  }
-
-  if (Array.isArray(resolutions) && resolutions.length > 0) {
-    const { width, height } = resolutions[resolutions.length - 1];
-
-    if (width && height) {
-      return ((height / width)).toFixed(3);
-    }
-  }
-
-  return '1.000';
-};
-
-const useStyles = makeStyles<{ ratio: number }>()((theme, { ratio }) => ({
-  placeholderContainer: {
-    position: 'relative',
-    width: '100%',
-    ':before': {
-      display: 'block',
-      content: '""',
-      width: '100%',
-      paddingTop: `${100 * ratio}%`,
-    },
-  },
+const useStyles = makeStyles()(theme => ({
   placeholderContent: {
     position: 'absolute',
     width: '100%',
@@ -185,64 +144,44 @@ const ProductImage = (props: ProductImageProps) => {
     /* eslint-disable-next-line react-hooks/exhaustive-deps -- legacy: assert once at mount */
   }, []);
 
-  const ratioValue = Number.parseFloat(getImageRatio(resolved)) || 1;
-  const { classes, cx } = useStyles({ ratio: ratioValue });
+  const { classes, cx } = useStyles();
   const theme = useTheme();
-  const [showPlaceholder, setShowPlaceholder] = useState(!src);
-  const [imageLoadingFailed, setImageLoadingFailed] = useState(false);
-
-  useEffect(() => {
-    setShowPlaceholder(!src);
-  }, [src]);
-
-  const imageLoadingFailedHandler = useCallback(() => {
-    setShowPlaceholder(true);
-    setImageLoadingFailed(true);
-  }, []);
-
   const showInnerShadow = useProductImageShadow();
 
-  if (imageLoadingFailed || showPlaceholder) {
-    return (
-      <SurroundPortals portalName={PORTAL_PRODUCT_IMAGE}>
-        <div
-          className={cx(classes.placeholderContainer, {
-            [classes.innerShadow]: showInnerShadow,
-          }, className)}
-        >
-          {placeholderSrc ? (
-            <ProductImagePlaceholder
-              src={placeholderSrc}
-              showInnerShadow={showInnerShadow}
-              noBackground={noBackground}
-            />
-          ) : (
-            <div aria-hidden className={classes.placeholderContent} data-test-id="placeHolder">
-              <PlaceholderIcon className={classes.placeholder} />
-            </div>
-          )}
-        </div>
-      </SurroundPortals>
-    );
-  }
+  // Image owns the decision between the two, because it is the only place that knows which url was
+  // requested - and therefore whether a past failure still applies to the image it is about to show.
+  const placeholder = placeholderSrc ? (
+    <ProductImagePlaceholder
+      src={placeholderSrc}
+      showInnerShadow={showInnerShadow}
+      noBackground={noBackground}
+    />
+  ) : (
+    <div aria-hidden className={classes.placeholderContent} data-test-id="placeHolder">
+      <PlaceholderIcon className={classes.placeholder} />
+    </div>
+  );
 
   return (
     <SurroundPortals
       portalName={PORTAL_PRODUCT_IMAGE}
-      portalProps={{
+      // A product without an image passes nothing on, so portals keep seeing what they saw before
+      // the placeholder moved into the Image component. An image that was requested but failed to
+      // load does pass its props on - that state is only known one level down.
+      portalProps={src ? {
         src,
         resolutions: resolved.resolutions,
         ratio: resolved.ratio,
-      }}
+      } : undefined}
     >
       <div className={cx(className, 'engage__product__product-image')}>
         <Image
           {...props}
           resolutions={resolved.resolutions}
           ratio={resolved.ratio}
+          placeholder={placeholder}
           className={showInnerShadow ? classes.innerShadow : ''}
           backgroundColor={noBackground ? 'transparent' : theme.palette.background.surface}
-          onError={imageLoadingFailedHandler}
           aria-hidden={!alt}
         />
       </div>

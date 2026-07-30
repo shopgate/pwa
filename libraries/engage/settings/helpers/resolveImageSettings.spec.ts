@@ -78,6 +78,69 @@ describe('settings / helpers / resolveImageSettings', () => {
         expect(resolved.pdp.ratio).toEqual([4, 5]);
       });
 
+      describe('extreme ratios', () => {
+        // The admin dispatches on every keystroke, so a merchant on their way to a sane value sends
+        // ratios that would ask the image service for dimensions it rejects.
+        it('scales the whole resolution down rather than only capping the height', () => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio: {
+                width: 1,
+                height: 9999,
+              },
+            },
+          });
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 1,
+            height: 4096,
+          }]);
+        });
+
+        it('leaves a ratio that stays within the bound untouched', () => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio: {
+                width: 1,
+                height: 2,
+              },
+            },
+          });
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 440,
+            height: 880,
+          }]);
+        });
+
+        it.each([
+          ['a zero', { width: 0, height: 5 }],
+          ['a NaN', { width: NaN, height: NaN }],
+          ['a negative', { width: -4, height: 5 }],
+          ['an Infinity', { width: 1, height: Infinity }],
+        ])('falls back to a square for %s ratio part', (_, ratio) => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio,
+            },
+          });
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 440,
+            height: 440,
+          }]);
+        });
+      });
+
       it('lets a per context override win for that context only', () => {
         // No source writes these overrides yet - honoring them means per context ratios can later
         // be rolled out from the admin alone.
