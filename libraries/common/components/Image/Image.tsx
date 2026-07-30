@@ -91,12 +91,38 @@ const useStyles = makeStyles<{ background?: string, paddingTop: string }>()((
 }));
 
 /**
- * Calculates the Greatest Common Divisor (GCD) of two numbers using the Euclidean algorithm.
- * @param a The first number (must be a positive integer).
- * @param b The second number (must be a positive integer).
- * @returns The greatest common divisor of `a` and `b`.
+ * Calculates the Greatest Common Divisor of two numbers using the Euclidean algorithm.
+ * @param a The first number.
+ * @param b The second number.
+ * @returns The greatest common divisor, or 1 when the pair cannot be reduced.
  */
-const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b));
+const gcd = (a: number, b: number): number => {
+  // Anything but a pair of positive whole numbers is left unreduced. The values can originate from
+  // an admin field a merchant is still typing into, and NaN or Infinity would otherwise recurse
+  // until the stack overflows, while a fraction would reduce to a near-zero divisor.
+  if (!Number.isInteger(a) || !Number.isInteger(b) || a <= 0 || b <= 0) {
+    return 1;
+  }
+
+  let dividend = a;
+  let remainder = b;
+
+  while (remainder !== 0) {
+    const next = dividend % remainder;
+
+    dividend = remainder;
+    remainder = next;
+  }
+
+  return dividend;
+};
+
+/**
+ * Whether a value can be used as one side of an aspect ratio.
+ * @param value The value to check.
+ * @returns Whether it is a usable length.
+ */
+const isUsableLength = (value: number): boolean => Number.isFinite(value) && value > 0;
 
 const defaultResolutions: ImageResolution[] = [
   {
@@ -215,13 +241,18 @@ const Image = (props: ImageProps) => {
     aspectRatio,
     paddingHackRatio,
   } = useMemo(() => {
-    let width: number;
-    let height: number;
+    const [width, height] = ratio ?? [
+      resolutions[resolutions.length - 1]?.width,
+      resolutions[resolutions.length - 1]?.height,
+    ];
 
-    if (ratio) {
-      ([width, height] = ratio);
-    } else {
-      ({ width, height } = resolutions[resolutions.length - 1]);
+    // Fall back to a square rather than emitting "NaN / NaN" or dividing by zero. Reached when the
+    // resolutions are empty, or when a ratio arrives half typed from the admin.
+    if (!isUsableLength(width) || !isUsableLength(height)) {
+      return {
+        aspectRatio: '1 / 1',
+        paddingHackRatio: '100.000%',
+      };
     }
 
     const divisor = gcd(width, height);

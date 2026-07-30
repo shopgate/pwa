@@ -48,6 +48,36 @@ describe('<Image />', () => {
     expect(container.querySelectorAll('img')).toHaveLength(1);
   });
 
+  describe('malformed aspect ratios', () => {
+    // The admin preview dispatches on every keystroke, so a merchant on their way to "16" sends
+    // "", "1", "1." and so on. NaN and Infinity used to recurse in gcd until the stack overflowed.
+    it.each([
+      ['NaN', [NaN, NaN]],
+      ['Infinity', [1, Infinity]],
+      ['zero', [0, 0]],
+      ['a negative', [-16, 9]],
+      ['a fraction', [1, 0.3]],
+    ])('should render without throwing for %s', (_, ratio) => {
+      expect(() => renderWithStore(<Image src="foo/bar" ratio={ratio} />)).not.toThrow();
+    });
+
+    it('should fall back to a square rather than emitting NaN', () => {
+      const { container } = renderWithStore(<Image src="foo/bar" ratio={[NaN, NaN]} />);
+
+      expect(container.querySelector('img').style.aspectRatio).toBe('1 / 1');
+    });
+
+    it('should render without throwing when there are no resolutions', () => {
+      expect(() => renderWithStore(<Image src="foo/bar" resolutions={[]} />)).not.toThrow();
+    });
+
+    it('should still reduce a valid ratio', () => {
+      const { container } = renderWithStore(<Image src="foo/bar" ratio={[440, 550]} />);
+
+      expect(container.querySelector('img').style.aspectRatio).toBe('4 / 5');
+    });
+  });
+
   describe('microdata', () => {
     // The product components wrap their images in a schema.org Product, and rich results need the
     // image property. Without forwarding, the attribute never reaches the DOM.
