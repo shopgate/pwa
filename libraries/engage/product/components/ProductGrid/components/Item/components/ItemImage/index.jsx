@@ -2,10 +2,8 @@ import React, { useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_ITEM_IMAGE } from '@shopgate/engage/category/constants';
-import { getProductImageSettings, ProductImage } from '@shopgate/engage/product';
+import { ProductImage } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
-
-const { ListImage: gridResolutions } = getProductImageSettings();
 
 const useStyles = makeStyles()(theme => ({
   image: {
@@ -32,7 +30,7 @@ const ItemImage = ({
         className={classes.image}
         alt={name}
         src={imageUrl}
-        resolutions={gridResolutions}
+        context="list"
         itemProp="image"
       />
     </SurroundPortals>

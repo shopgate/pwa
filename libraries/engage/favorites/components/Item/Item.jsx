@@ -22,7 +22,6 @@ import {
   bin2hex,
   showModal as showModalAction,
   historyPush as historyPushAction,
-  getThemeSettings,
   i18n,
 } from '@shopgate/engage/core';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
@@ -188,7 +187,6 @@ const FavoriteItem = ({
   openCommentDialog,
 }) => {
   const { classes, cx } = useStyles();
-  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
@@ -323,7 +321,7 @@ const FavoriteItem = ({
             href={productLink}
             aria-hidden
           >
-            <ProductImage className={cx('engage__favorites__item__image')} src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+            <ProductImage className={cx('engage__favorites__item__image')} src={product.featuredImageBaseUrl} context="list" />
           </Link>
 
           <div className={cx(classes.infoContainer, 'engage__favorites__item__info-container')}>
