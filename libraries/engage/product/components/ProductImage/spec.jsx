@@ -68,6 +68,18 @@ describe('<ProductImage />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  // Most callers are untyped .jsx, and extensions are not type checked at all.
+  it('should fall back to the default context for an unknown one', () => {
+    const wrapper = shallow(
+      <ProductImage src="http://placehold.it/300x300" context="somethingElse" />
+    ).dive();
+
+    expect(wrapper.find(Image).prop('resolutions')).toEqual([{
+      width: 440,
+      height: 440,
+    }]);
+  });
+
   describe('inner shadow', () => {
     it('should not apply it to the placeholder when the hook says no', () => {
       useProductImageShadow.mockReturnValue(false);

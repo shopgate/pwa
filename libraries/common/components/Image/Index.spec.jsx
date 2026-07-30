@@ -88,6 +88,15 @@ describe('<Image />', () => {
       expect(container.querySelectorAll('img')).toHaveLength(0);
     });
 
+    // There is no source to request without resolutions, which must not read as a failed one.
+    it('should not treat an empty resolutions array as a failure', () => {
+      const { container } = renderWithStore(
+        <Image src="foo/bar" placeholder={placeholder} resolutions={[]} />
+      );
+
+      expect(container.querySelector('[data-test-id="fallback"]')).toBeNull();
+    });
+
     it('should render the placeholder when the parent forces it', () => {
       const { container } = renderWithStore(
         <Image src="foo/bar" placeholder={placeholder} forcePlaceholder />

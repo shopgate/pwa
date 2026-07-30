@@ -218,9 +218,12 @@ const Image = (props: ImageProps) => {
   // Only callers that provide a placeholder have the image taken away from them. Without one there
   // is nothing to swap to, so a failed image stays mounted and keeps reporting through onError,
   // exactly as it behaved before this prop existed.
-  const showPlaceholder = !src
-    || parentRendersPlaceholder
-    || (!!placeholder && failedSource === sources.main);
+  //
+  // The null check matters: an empty resolutions array leaves no source to request, and would
+  // otherwise match the initial state and report a failure that never happened.
+  const hasFailed = sources.main !== null && failedSource === sources.main;
+
+  const showPlaceholder = !src || parentRendersPlaceholder || (!!placeholder && hasFailed);
 
   // Effect to create an Intersection Observer to enable lazy loading of preview images
   useEffect(() => {

@@ -133,7 +133,8 @@ const ProductImage = (props: ProductImageProps) => {
       };
     }
 
-    return productImageSettings[context || DEFAULT_PRODUCT_IMAGE_CONTEXT];
+    return productImageSettings[context || DEFAULT_PRODUCT_IMAGE_CONTEXT]
+      ?? productImageSettings[DEFAULT_PRODUCT_IMAGE_CONTEXT];
   }, [context, productImageSettings, ratio, resolutions]);
 
   useLayoutEffect(() => {
