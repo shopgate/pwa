@@ -10,11 +10,9 @@ import type {
 import {
   DEFAULT_IMAGE_FILL_COLOR,
   DEFAULT_IMAGE_FILL_TRANSPARENT,
-  IMAGE_QUALITY,
   LEGACY_IMAGE_SETTINGS_KEY,
   PRODUCT_IMAGE_BASE_WIDTHS,
 } from '../constants/imageSettings';
-import { toThumborColor } from './toThumborColor';
 
 /**
  * The shape of the legacy AppImages theme settings. Every field is optional - the key is absent
@@ -201,18 +199,20 @@ export const resolveImageServiceSettings = (
   if (areAppSettingsHydrated) {
     ({ fillColor: color, fillTransparent } = imageSettings);
   } else {
-    // The legacy value packs both parts into one string, e.g. "FFFFFF,1".
+    // The legacy value packs both parts into one string, e.g. "FFFFFF,1". Its color is taken as it
+    // is - the theme configuration already holds the format the image service expects.
     const { fillColor: legacyFillColor = '' } = getLegacyImageSettings();
     const [legacyColor, legacyFillTransparent] = legacyFillColor.split(',');
 
-    color = legacyColor ? toThumborColor(legacyColor) : DEFAULT_IMAGE_FILL_COLOR;
+    color = legacyColor || DEFAULT_IMAGE_FILL_COLOR;
     fillTransparent = legacyFillTransparent === undefined
       ? DEFAULT_IMAGE_FILL_TRANSPARENT
       : legacyFillTransparent.trim() === '1';
   }
 
   return {
-    quality: IMAGE_QUALITY,
+    // No hydration branch, unlike the fill: the unhydrated slice already holds the legacy quality.
+    quality: imageSettings.quality,
     fillColor: color,
     fillTransparent,
   };

@@ -7,9 +7,13 @@ import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
 import {
   DEFAULT_IMAGE_FILL_COLOR,
   DEFAULT_IMAGE_FILL_TRANSPARENT,
+  DEFAULT_IMAGE_QUALITY,
   DEFAULT_SHOW_INNER_SHADOW,
 } from '../constants/imageSettings';
-import { toThumborColor } from '../helpers';
+// Deliberately not exported from the "helpers" barrel - they normalize values on their way into
+// the slice, which is nothing a consumer of the settings needs.
+import { toImageQuality } from '../helpers/toImageQuality';
+import { toThumborColor } from '../helpers/toThumborColor';
 
 type AppSettingsAction = ReceiveAppSettingsAction | UnknownAction;
 
@@ -45,6 +49,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     },
   },
   images: {
+    quality: DEFAULT_IMAGE_QUALITY,
     // Already in the image service's expected format, so the unhydrated path needs no conversion.
     fillColor: DEFAULT_IMAGE_FILL_COLOR,
     fillTransparent: DEFAULT_IMAGE_FILL_TRANSPARENT,
@@ -74,15 +79,16 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
     // shallow-replacing whole branches and leaving consumers with undefined.
     merge(draft, action.settings);
 
-    // The fill color reaches redux exactly as the source sent it - any CSS color, or one of the
-    // image service's own keywords. It is converted here rather than on read, so the slice holds a
-    // wire ready value and the conversion runs once per settings change instead of on every render.
+    // The image service values reach redux exactly as the source sent them - the fill color as any
+    // CSS color, the quality possibly as a half typed number from an admin field. Converting here
+    // rather than on read keeps the slice wire ready, and runs the conversion once per settings
+    // change instead of on every render.
     //
-    // Converted unconditionally rather than only when the payload carried one: merge overwrites
-    // with an empty string or a null, so guarding on the incoming value would let those through
-    // unconverted and produce a malformed "fill=" parameter. toThumborColor is idempotent, so
-    // re-converting an already converted value is a no-op.
+    // Unconditional rather than guarded on what the payload carried: merge overwrites with an empty
+    // string or a null, which would otherwise reach the url unconverted. Both converters are
+    // idempotent, so re-converting is a no-op.
     draft.images.fillColor = toThumborColor(draft.images.fillColor);
+    draft.images.quality = toImageQuality(draft.images.quality);
 
     draft.isHydrated = true;
   }

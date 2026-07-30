@@ -1,7 +1,7 @@
 import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
 import type { ImageSettings } from '../types/appSettings';
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
-import { IMAGE_QUALITY } from '../constants/imageSettings';
+import { DEFAULT_IMAGE_QUALITY } from '../constants/imageSettings';
 import {
   resolveImageServiceSettings,
   resolveProductImageSettings,
@@ -171,12 +171,19 @@ describe('settings / helpers / resolveImageSettings', () => {
     });
 
     it('splits the packed legacy value', () => {
-      mockedGetThemeSettings.mockReturnValue({ fillColor: 'AAA,0' });
+      mockedGetThemeSettings.mockReturnValue({ fillColor: 'AAAAAA,0' });
 
       expect(resolveImageServiceSettings(false, buildImageSettings())).toMatchObject({
         fillColor: 'AAAAAA',
         fillTransparent: false,
       });
+    });
+
+    // The theme configuration already holds the format the image service expects.
+    it('takes the legacy color as it is', () => {
+      mockedGetThemeSettings.mockReturnValue({ fillColor: 'aaa,1' });
+
+      expect(resolveImageServiceSettings(false, buildImageSettings()).fillColor).toBe('aaa');
     });
 
     it('defaults the legacy flag to enabled when the suffix is absent', () => {
@@ -193,11 +200,17 @@ describe('settings / helpers / resolveImageSettings', () => {
         .toBe('FFFFFF');
     });
 
-    // quality is not part of the app settings - it comes from IMAGE_QUALITY, which is covered in
-    // the constants spec. All this function has to do is pass it through unchanged.
-    it('reports the same quality regardless of hydration', () => {
-      expect(resolveImageServiceSettings(true, buildImageSettings()).quality).toBe(IMAGE_QUALITY);
-      expect(resolveImageServiceSettings(false, buildImageSettings()).quality).toBe(IMAGE_QUALITY);
+    it('reports the configured quality', () => {
+      const settings = buildImageSettings({ quality: 42 });
+
+      expect(resolveImageServiceSettings(true, settings).quality).toBe(42);
+    });
+
+    // The unhydrated slice holds DEFAULT_IMAGE_QUALITY, which is derived from the legacy theme
+    // config, so the quality needs no hydration branch of its own.
+    it('reports the default quality before hydration', () => {
+      expect(resolveImageServiceSettings(false, buildImageSettings()).quality)
+        .toBe(DEFAULT_IMAGE_QUALITY);
     });
   });
 });

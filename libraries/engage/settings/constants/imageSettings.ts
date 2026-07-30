@@ -29,17 +29,14 @@ export const LEGACY_IMAGE_SETTINGS_KEY = 'AppImages';
 const FALLBACK_IMAGE_QUALITY = 75;
 
 /**
- * The compression quality passed to the image service.
+ * The compression quality passed to the image service when nothing is configured.
  *
- * The theme configuration is the only way to configure this - it is deliberately absent from the
- * appSettings schema, so it stays out of the public API until there is a concept for configuring
- * it properly.
+ * Derived from the theme configuration, so an app whose settings never carry a quality keeps the
+ * one its theme configured.
  *
- * Safe to read once at module scope: the theme config is inlined into the bundle at build time,
- * the app settings never carry a quality, and ThemeConfigResolver only rewrites "$." string
- * references - a numeric value passes through it unchanged.
+ * Safe to read once at module scope: the theme config is inlined into the bundle at build time.
  */
-export const IMAGE_QUALITY: number = (
+export const DEFAULT_IMAGE_QUALITY: number = (
   (getThemeSettings(LEGACY_IMAGE_SETTINGS_KEY) ?? {}) as { quality?: number }
 ).quality ?? FALLBACK_IMAGE_QUALITY;
 
@@ -50,7 +47,7 @@ export const IMAGE_QUALITY: number = (
  * default differs per theme - gmd hides the shadow, ios11 shows it - so a fixed value here would
  * flip the shadow for one of them.
  *
- * Safe to read once at module scope for the same reason as IMAGE_QUALITY: the app config is
+ * Safe to read once at module scope for the same reason as DEFAULT_IMAGE_QUALITY: the app config is
  * inlined into the bundle at build time.
  */
 export const DEFAULT_SHOW_INNER_SHADOW =

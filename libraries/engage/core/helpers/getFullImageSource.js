@@ -3,7 +3,7 @@ import { configuration } from '@shopgate/engage/core/collections';
 import {
   DEFAULT_IMAGE_FILL_COLOR,
   DEFAULT_IMAGE_FILL_TRANSPARENT,
-  IMAGE_QUALITY,
+  DEFAULT_IMAGE_QUALITY,
 } from '@shopgate/engage/settings/constants/imageSettings';
 import { getImageFormat } from './getImageFormat';
 
@@ -11,7 +11,7 @@ import { getImageFormat } from './getImageFormat';
  * The settings applied when the caller passes none.
  */
 const defaultSettings = {
-  quality: IMAGE_QUALITY,
+  quality: DEFAULT_IMAGE_QUALITY,
   fillColor: DEFAULT_IMAGE_FILL_COLOR,
   fillTransparent: DEFAULT_IMAGE_FILL_TRANSPARENT,
 };

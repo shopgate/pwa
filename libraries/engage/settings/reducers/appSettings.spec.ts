@@ -48,6 +48,7 @@ describe('settings / reducers / appSettings', () => {
         },
       },
       images: {
+        quality: 75,
         fillColor: 'FFFFFF',
         fillTransparent: true,
         product: {
@@ -106,6 +107,37 @@ describe('settings / reducers / appSettings', () => {
         height: 5,
       });
       expect(state.images.fillColor).toBe(DEFAULT_APP_SETTINGS.images.fillColor);
+    });
+
+    it('applies an incoming quality', () => {
+      const partial = { images: { quality: 40 } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.quality).toBe(40);
+    });
+
+    it('keeps the default quality when the payload omits it', () => {
+      const partial = { images: { fillColor: 'white' } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.quality).toBe(DEFAULT_APP_SETTINGS.images.quality);
+    });
+
+    it.each([
+      ['an empty string', '', DEFAULT_APP_SETTINGS.images.quality],
+      ['not a number', 'abc', DEFAULT_APP_SETTINGS.images.quality],
+      ['above the range', 1000, 100],
+      ['below the range', 0, 1],
+    ])('sanitizes a quality that is %s', (_, quality, expected) => {
+      // The admin dispatches on every keystroke, so half typed values reach the reducer and would
+      // otherwise end up in an image service url.
+      const partial = { images: { quality } } as unknown as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.quality).toBe(expected);
     });
 
     it('converts an incoming fill color into the image service format', () => {

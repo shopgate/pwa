@@ -109,15 +109,16 @@ export interface ProductImageSettings {
 /**
  * Settings for images that are served through the image service.
  *
- * fillColor and fillTransparent sit here rather than under product because they are not product
- * specific - getFullImageSource applies them to every image that goes through the image service,
- * including category images, carrier logos and page builder widget images.
- *
- * `quality` is deliberately absent - it keeps coming from the legacy
- * `getThemeSettings('AppImages').quality` until there is a concept for configuring it. Modelling
- * it here while nothing reads it from the store would be a field that silently does nothing.
+ * quality, fillColor and fillTransparent sit here rather than under product because they are not
+ * product specific - getFullImageSource applies them to every image that goes through the image
+ * service, including category images, carrier logos and page builder widget images.
  */
 export interface ImageSettings {
+  /**
+   * Compression quality passed to the image service, 1 to 100. Not exposed in the admin yet, but
+   * read from here, so a source can start sending it without a PWA release.
+   */
+  quality: number;
   /**
    * The color the image service fills letterboxed areas with. A source may send any CSS color -
    * named, hex 3/6/8, rgb(), rgba(), hsl() - or one of Thumbor's own keywords: 'auto', 'blur',

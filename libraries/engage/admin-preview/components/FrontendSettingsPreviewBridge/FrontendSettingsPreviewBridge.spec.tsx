@@ -26,6 +26,7 @@ const appSettings: AppSettings = {
     },
   },
   images: {
+    quality: 75,
     fillColor: 'FFFFFF',
     fillTransparent: true,
     product: {

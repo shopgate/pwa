@@ -7,4 +7,3 @@ export type {
   ResolvedProductImageContext,
   ResolvedProductImageSettings,
 } from './resolveImageSettings';
-export { toThumborColor } from './toThumborColor';

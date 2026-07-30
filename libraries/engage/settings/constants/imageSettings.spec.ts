@@ -1,5 +1,5 @@
 /**
- * Loads IMAGE_QUALITY against a given theme configuration.
+ * Loads DEFAULT_IMAGE_QUALITY against a given theme configuration.
  *
  * The constant is evaluated once at module scope, so the module has to be re-imported in isolation
  * for each case rather than swapping a mock return value between assertions.
@@ -17,7 +17,7 @@ const loadImageQuality = (themeSettings: unknown): number => {
     }));
 
     // eslint-disable-next-line global-require
-    ({ IMAGE_QUALITY: quality } = require('./imageSettings'));
+    ({ DEFAULT_IMAGE_QUALITY: quality } = require('./imageSettings'));
   });
 
   return quality;
@@ -48,10 +48,8 @@ const loadShowInnerShadow = (hideProductImageShadow: boolean | undefined): boole
 };
 
 describe('settings / constants / imageSettings', () => {
-  describe('IMAGE_QUALITY', () => {
+  describe('DEFAULT_IMAGE_QUALITY', () => {
     it('takes the quality from the theme configuration', () => {
-      // The theme config is the only way to configure this - it is deliberately absent from the
-      // appSettings schema.
       expect(loadImageQuality({ quality: 42 })).toBe(42);
     });
 

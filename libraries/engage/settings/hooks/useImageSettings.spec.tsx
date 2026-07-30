@@ -112,6 +112,15 @@ describe('settings / hooks / useImageSettings', () => {
       });
     });
 
+    it('reports the configured quality', () => {
+      setup({
+        hydrated: true,
+        imageSettings: { ...DEFAULT_APP_SETTINGS.images, quality: 40 },
+      });
+
+      expect(renderHook(useImageServiceSettings).result.quality).toBe(40);
+    });
+
     it('stays reference stable across renders, so it does not defeat memoization', () => {
       setup({ hydrated: true });
 
