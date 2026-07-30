@@ -37,3 +37,19 @@ export const getProductGridColumns = createSelector(
   getAppSettingsState,
   appSettings => appSettings.productList.grid.columns
 );
+
+/**
+ * Selects the max number of lines a product card name is clamped to.
+ */
+export const getProductCardNameLines = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.productList.card.productName.lines
+);
+
+/**
+ * Selects the max number of lines a product tile name is clamped to.
+ */
+export const getProductTileNameLines = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.productList.tile.productName.lines
+);

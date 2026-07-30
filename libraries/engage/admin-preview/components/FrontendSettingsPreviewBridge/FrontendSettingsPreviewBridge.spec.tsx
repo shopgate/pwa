@@ -24,6 +24,8 @@ const appSettings: AppSettings = {
         md: 4,
       },
     },
+    card: { productName: { lines: 3 } },
+    tile: { productName: { lines: 3 } },
   },
 };
 

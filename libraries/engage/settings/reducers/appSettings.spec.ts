@@ -36,6 +36,8 @@ describe('settings / reducers / appSettings', () => {
             md: 3,
           },
         },
+        card: { productName: { lines: 1 } },
+        tile: { productName: { lines: 4 } },
       },
     };
 

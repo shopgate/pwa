@@ -1,6 +1,6 @@
 import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/engage';
-import type { ThemeOptions } from '../createTheme';
+import type { Theme, ThemeOptions } from '../createTheme';
 
 const { colors, settings } = themeConfig;
 
@@ -111,6 +111,33 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             paginationFractionBackground: '#F2F2F2',
             paginationProgressbarBackground: '#F2F2F2',
             paginationProgressbarActiveColor: '#000000',
+          },
+        },
+        cards: {
+          vars: {
+            // The fallback resolves to the surface color of the scheme the card renders in, so an
+            // unconfigured card doesn't stay light while the rest of the app follows the dark
+            // scheme. Every color scheme inherits these mappings from the default one.
+            backgroundColor: (t: Theme) => `var(--sg-cards-backgroundColor, ${t.palette.background.surface})`,
+            padding: 'var(--sg-cards-padding, 12px 16px)',
+            boxShadow: 'var(--sg-cards-boxShadow, 0 4px 8px rgba(0,0,0,0.16))',
+            border: 'var(--sg-cards-border-width, 0px) solid var(--sg-cards-border-color, transparent)',
+          },
+        },
+        tiles: {
+          vars: {
+            backgroundColor: 'var(--sg-tiles-backgroundColor, transparent)',
+            // `--sg-tiles-padding` is a single length, so `paddingTop` below can floor it with
+            // `max()`, which only accepts single lengths.
+            padding: 'var(--sg-tiles-padding, 8px)',
+            // The favorites button is centred on the seam between image and details, so its
+            // lower half hangs into the details area. The button is 32px (icon.small 1.25rem
+            // plus 6px ripple padding per side), giving a 16px overhang. The configured inner
+            // padding may be smaller, so floor the top padding at the overhang, otherwise the
+            // button collides with the product name.
+            paddingTop: 'max(var(--sg-tiles-padding, 8px), 16px)',
+            boxShadow: 'var(--sg-tiles-boxShadow, none)',
+            border: 'var(--sg-tiles-border-width, 0px) solid var(--sg-tiles-border-color, transparent)',
           },
         },
       },

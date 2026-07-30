@@ -68,7 +68,12 @@ const RelationsSliderContent = memo(({ products: { products, productsCount }, ge
       >
         {products.map(product => (
           <Swiper.Item key={product.id} className={classes.sliderItem}>
-            <Card className={classes.card}>
+            {/*
+              The card chrome (background, radius, shadow, border) lives on the ProductCard itself,
+              driven by theme.components.cards. A second layer of it would clip the card's corners
+              and double its shadow, so the Card here only positions the slide.
+            */}
+            <Card className={classes.card} plain>
               <ProductCard
                 product={product}
                 hidePrice={hidePrice}

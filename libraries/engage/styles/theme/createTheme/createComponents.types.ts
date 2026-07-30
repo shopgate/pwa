@@ -223,6 +223,23 @@ export const componentsSchema = {
       height: '',
     },
   },
+  cards: {
+    vars: {
+      backgroundColor: '',
+      padding: '',
+      boxShadow: '',
+      border: '',
+    },
+  },
+  tiles: {
+    vars: {
+      backgroundColor: '',
+      padding: '',
+      paddingTop: '',
+      boxShadow: '',
+      border: '',
+    },
+  },
 } as const;
 
 /**
@@ -332,6 +349,23 @@ export const componentsDefaults = {
   filterBar: {
     vars: {
       height: 48,
+    },
+  },
+  cards: {
+    vars: {
+      backgroundColor: t => t.palette.background.surface,
+      padding: '12px 16px',
+      boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
+      border: '0px solid transparent',
+    },
+  },
+  tiles: {
+    vars: {
+      backgroundColor: 'transparent',
+      padding: '8px',
+      paddingTop: '16px',
+      boxShadow: 'none',
+      border: '0px solid transparent',
     },
   },
 } satisfies ComponentsDefaults;

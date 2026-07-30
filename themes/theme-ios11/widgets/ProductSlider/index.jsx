@@ -18,7 +18,7 @@ import connect from './connector';
 
 export const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
   sliderContainer: {
     paddingBottom: '10px !important',
   },
@@ -29,10 +29,8 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 16,
   },
   card: {
-    background: theme.palette.background.surface,
     height: '100%',
     margin: '0px 8px',
-    borderRadius: 11,
   },
 }));
 
@@ -81,13 +79,17 @@ const ProductSlider = ({
     return (
       <Swiper.Item key={key}>
         <ProductListEntryProvider productId={product.id}>
-          <Card className={classes.card}>
+          {/*
+            The card chrome (background, radius, shadow, border) lives on the engage ProductCard
+            itself, driven by theme.components.cards. A second layer of it would clip the card's
+            corners and double its shadow, so the Card here only positions the slide.
+          */}
+          <Card className={classes.card} plain>
             <ProductCard
               product={product}
               hideName={!settings.showName}
               hidePrice={!settings.showPrice}
               hideRating={!showReviewsSanitized}
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>

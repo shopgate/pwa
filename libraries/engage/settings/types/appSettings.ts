@@ -21,11 +21,23 @@ export interface ProductGridSettings {
 }
 
 /**
+ * Name-clamping shared by the card and tile product surfaces.
+ */
+export interface ProductNameSettings {
+  /** Max number of lines the product name is clamped to before an ellipsis. */
+  lines: number;
+}
+
+/**
  * Settings for the various product-list types. Add a key and its own settings
  * interface per future type (e.g. slider).
  */
 export interface ProductListSettings {
   grid: ProductGridSettings;
+  /** Product cards (sliders, relations, live shopping). */
+  card: { productName: ProductNameSettings };
+  /** Product grid tiles. */
+  tile: { productName: ProductNameSettings };
 }
 
 export interface AppSettings {

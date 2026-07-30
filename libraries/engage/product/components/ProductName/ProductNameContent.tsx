@@ -19,7 +19,15 @@ const ProductNameContent = ({
   <ConditionalWrapper
     condition={ellipsis}
     wrapper={(children: React.ReactNode) => (
-      <Ellipsis rows={rows !== null ? rows : undefined}>
+      // The name is truncated in JS instead of via `-webkit-line-clamp`. The CSS clamp requires
+      // `display: -webkit-box`, which mis-reports the element height in the WebView the app runs
+      // in, letting the absolutely positioned favorites button overlap the name. The JS clamp
+      // keeps the element a plain block and appends a real ellipsis character.
+      <Ellipsis
+        key={rows ?? undefined}
+        rows={rows !== null ? rows : undefined}
+        useNativeClamp={false}
+      >
         <span>
           {children}
         </span>
@@ -32,4 +40,3 @@ const ProductNameContent = ({
 );
 
 export default ProductNameContent;
-

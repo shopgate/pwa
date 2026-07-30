@@ -16,6 +16,11 @@ const useStyles = makeStyles()((theme, { display }) => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
+    overflow: 'hidden',
+    background: theme.components.tiles.backgroundColor,
+    borderRadius: theme.shape.tilesBorderRadius,
+    boxShadow: theme.components.tiles.boxShadow,
+    border: theme.components.tiles.border,
   },
   itemDetails: {
     position: 'relative',

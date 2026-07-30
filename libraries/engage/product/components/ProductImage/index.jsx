@@ -43,10 +43,11 @@ const getImageRatio = ({ ratio, resolutions } = {}) => {
   return '1.000';
 };
 
-const useStyles = makeStyles()((theme, { ratio }) => ({
+const useStyles = makeStyles()((theme, { ratio, noBackground }) => ({
   placeholderContainer: {
     position: 'relative',
     width: '100%',
+    backgroundColor: noBackground ? 'transparent' : theme.palette.background.surface,
     ':before': {
       display: 'block',
       content: '""',
@@ -113,7 +114,10 @@ const ProductImage = (props) => {
       resolutions,
     })
   ) || 1;
-  const { classes, cx } = useStyles({ ratio: ratioValue });
+  const { classes, cx } = useStyles({
+    ratio: ratioValue,
+    noBackground,
+  });
   const theme = useTheme();
   const [showPlaceholder, setShowPlaceholder] = useState(
     !src && (srcmap === null || srcmap.length === 0)

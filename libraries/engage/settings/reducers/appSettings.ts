@@ -37,6 +37,12 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
         md: 4,
       },
     },
+    card: {
+      productName: { lines: 3 },
+    },
+    tile: {
+      productName: { lines: 3 },
+    },
   },
 };
 

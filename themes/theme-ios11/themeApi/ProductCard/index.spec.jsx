@@ -61,6 +61,30 @@ describe('<ProductCard />', () => {
     expect(renderWrapper.prop('product')).toBe(mockProduct);
   });
 
+  it('should suppress the card shadow for legacy shadow={false} callers', () => {
+    const getCardClass = wrapper => Array
+      .from(wrapper.find('section').getDOMNode().classList)
+      .find(name => name.startsWith('sg-'));
+
+    const withShadow = getCardClass(renderComponent({ productId: mockProductId }));
+    const withoutShadow = getCardClass(renderComponent({
+      productId: mockProductId,
+      shadow: false,
+    }));
+
+    expect(withoutShadow).not.toBe(withShadow);
+
+    // The shadow is drawn by the card inside, so it is switched off through the inherited token.
+    // Emotion inserts its rules via the CSSOM, so they are read from the sheet, not from the tag.
+    const css = Array.from(document.styleSheets)
+      .flatMap(sheet => Array.from(sheet.cssRules).map(rule => rule.cssText))
+      .join('');
+
+    expect(css).toMatch(
+      new RegExp(`\\.${withoutShadow}[^}]*--sg-components-cards-boxShadow: ?none`)
+    );
+  });
+
   it('should render with a custom render prop', () => {
     const text = 'Custom Output';
 

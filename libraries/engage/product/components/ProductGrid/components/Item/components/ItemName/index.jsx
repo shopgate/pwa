@@ -5,9 +5,11 @@ import {
   PRODUCT_ITEM_NAME_BEFORE,
   PRODUCT_ITEM_NAME_AFTER,
 } from '@shopgate/engage/category/constants';
+import { useSelector } from 'react-redux';
 import { Portal } from '@shopgate/engage/components';
 import { ProductName, ProductRatingStars } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
+import { getProductTileNameLines } from '@shopgate/engage/settings/selectors/appSettings';
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -30,6 +32,10 @@ const ItemName = ({
   name,
 }) => {
   const { classes, cx } = useStyles();
+  // Configured in the admin and delivered through the appSettings channel. A redux value rather
+  // than a CSS variable, because the name is clamped in JS (see ProductNameContent) — a plain
+  // number needs no document read, and a store update re-renders this on its own.
+  const productNameLines = useSelector(getProductTileNameLines);
   const portalProps = useMemo(() => ({
     productId,
     display,
@@ -64,6 +70,7 @@ const ItemName = ({
         portalName={PRODUCT_ITEM_NAME}
         portalProps={portalProps}
         testId={`Productname: ${name}`}
+        rows={productNameLines}
       />
     </>
   );

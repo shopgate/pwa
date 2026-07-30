@@ -11,11 +11,17 @@ import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
 
-const liveshoppingCardStyle = {
-  margin: '5px 15px 10px',
-};
-
 const useStyles = makeStyles()(theme => ({
+  // This widget renders the card content itself instead of the engage ProductCard, so it also
+  // brings the card chrome that the ProductCard would otherwise draw from these tokens.
+  card: {
+    margin: '5px 15px 10px',
+    background: theme.components.cards.backgroundColor,
+    borderRadius: theme.shape.cardsBorderRadius,
+    boxShadow: theme.components.cards.boxShadow,
+    border: theme.components.cards.border,
+    overflow: 'hidden',
+  },
   image: {
     width: '50%',
     background: theme.palette.background.surface,
@@ -76,7 +82,7 @@ function LiveshoppingItem({
   return (
     <ProductCard
       productId={productId}
-      style={liveshoppingCardStyle}
+      className={classes.card}
       render={({ product, url }) => {
         const {
           featuredImageBaseUrl,
