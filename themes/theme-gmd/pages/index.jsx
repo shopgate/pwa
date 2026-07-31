@@ -7,6 +7,7 @@ import { emotionCache } from '@shopgate/engage/styles/tss';
 import {
   ThemeProvider, createTheme, makeStyles, responsiveMediaQuery,
 } from '@shopgate/engage/styles';
+import { CSS_ROOT_FONT_FAMILY } from '@shopgate/engage/styles/reset/typographyCustomProps';
 import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
 import { ThemeConfigResolver, AppProvider, hasWebBridge } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -158,7 +159,8 @@ const Pages = ({ store }) => {
     return createTheme({
       ...createDefaultThemeOptions(),
       typography: {
-        fontFamily: themeConfig.typography.family,
+        // The property is defined by the css reset: libraries/engage/styles/reset/root.js
+        fontFamily: `var(${CSS_ROOT_FONT_FAMILY})`,
         ...extendedTypography,
       },
     });
