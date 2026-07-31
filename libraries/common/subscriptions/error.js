@@ -90,10 +90,13 @@ export default (subscribe) => {
     } = getDisplayErrorMessage(error, GENERIC_ERROR_MESSAGE);
 
     // Unknown/generic and connection-style backend errors are treated as general platform issues.
-    // They have no meaningful, mappable message and are always surfaced as a toast (see below).
+    // EUNKNOWN is always treated as general — even when the backend supplied a translated message —
+    // so it is shown as a toast with its translated message or generic fallback, never a modal.
     const isConnectionError = displayMessage === 'error.general'
       || [ETIMEOUT, ENETUNREACH].includes(code);
-    const isGeneralError = isConnectionError || displayMessage === GENERIC_ERROR_MESSAGE;
+    const isGeneralError = isConnectionError
+      || displayMessage === GENERIC_ERROR_MESSAGE
+      || code === EUNKNOWN;
 
     // Some pipeline actions (e.g. fetchCategory) register an error behavior for *every* error via
     // `setResponseBehavior`. Those behaviors are only meaningful for the specific errors they
