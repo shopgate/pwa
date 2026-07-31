@@ -1,5 +1,5 @@
 import { produce } from 'immer';
-import { merge } from 'lodash';
+import { cloneDeep, merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
@@ -76,13 +76,20 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   if (isReceiveAppSettingsAction(action)) {
     const { images } = action.settings ?? {};
 
-    // Deep merged so a partial payload keeps the defaults for whatever the source omits. A cleared
-    // branch is substituted first - merge assigns a null, where it would skip an undefined.
+    // A cleared branch is replaced outright, then kept out of the merge below. Merging the defaults
+    // in would only add to it, leaving whatever an earlier payload configured in place.
+    if (images === null) {
+      draft.images = cloneDeep(DEFAULT_APP_SETTINGS.images);
+    } else if (images?.product === null) {
+      draft.images.product = cloneDeep(DEFAULT_APP_SETTINGS.images.product);
+    }
+
+    // Deep merged so a partial payload keeps the defaults for whatever the source omits.
     merge(draft, {
       ...action.settings,
-      images: {
+      images: images === null ? undefined : {
         ...images,
-        product: images?.product ?? DEFAULT_APP_SETTINGS.images.product,
+        product: images?.product ?? undefined,
       },
     });
 

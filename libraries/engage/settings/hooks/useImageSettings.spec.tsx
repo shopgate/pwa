@@ -82,7 +82,7 @@ describe('settings / hooks / useImageSettings', () => {
       const { result } = renderHook(useProductImageSettings);
 
       expect(result.list.resolutions).toEqual([{ width: 440, height: 550 }]);
-      expect(result.list.ratio).toEqual([4, 5]);
+      expect(result.list.ratio).toEqual([440, 550]);
     });
 
     it('falls back to the legacy behavior before hydration', () => {

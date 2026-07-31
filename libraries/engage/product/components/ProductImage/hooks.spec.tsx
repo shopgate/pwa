@@ -45,11 +45,11 @@ const setup = ({ hydrated, storeValue = true, widgetSettings = null }: SetupOpti
 };
 
 // Renders the hook and returns its result.
-const renderHook = (): boolean | undefined => {
+const renderHook = (widgetId?: string): boolean | undefined => {
   let result: boolean | undefined;
 
   const Consumer = () => {
-    result = useProductImageShadow();
+    result = useProductImageShadow(widgetId);
     return null;
   };
 
@@ -112,6 +112,18 @@ describe('useProductImageShadow', () => {
     (useWidgetSettings as jest.Mock).mockReturnValue(null);
 
     expect(renderHook()).toBe(DEFAULT_SHOW_INNER_SHADOW);
+  });
+
+  // MediaImage carries its own legacy widget id, but resolves against the same app setting.
+  it('reads the legacy value from the given widget id', () => {
+    setup({
+      hydrated: false,
+      widgetSettings: { showInnerShadow: false },
+    });
+
+    renderHook('@shopgate/engage/product/MediaImage');
+
+    expect(useWidgetSettings).toHaveBeenCalledWith('@shopgate/engage/product/MediaImage');
   });
 
   it('treats an explicit false in the widget configuration as a value, not as absent', () => {

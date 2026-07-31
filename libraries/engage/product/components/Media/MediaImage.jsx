@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Image from '@shopgate/pwa-common/components/Image';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import { SurroundPortals } from '../../../components';
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
-import { useWidgetSettings } from '../../../core';
+import { useProductImageShadow } from '../ProductImage/hooks';
 import { defaultProps, propTypes } from './props';
 import MediaPlaceholder from './MediaPlaceholder';
+
+/**
+ * The widget id the legacy inner shadow setting is configured under for this component.
+ */
+const WIDGET_ID = '@shopgate/engage/product/MediaImage';
 
 const useStyles = makeStyles()({
   innerShadow: {
@@ -34,9 +38,7 @@ const MediaImage = ({
 }) => {
   const { classes, cx } = useStyles();
 
-  const {
-    showInnerShadow = !appConfig.hideProductImageShadow,
-  } = useWidgetSettings('@shopgate/engage/product/MediaImage');
+  const showInnerShadow = useProductImageShadow(WIDGET_ID);
 
   const mergedClassName = cx(className, {
     [classes.innerShadow]: showInnerShadow,

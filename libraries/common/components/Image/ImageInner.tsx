@@ -53,7 +53,7 @@ const useStyles = makeStyles()({
 });
 
 /**
- * The ImageInner component renders tha actual image of the Image component.
+ * The ImageInner component renders the actual image of the Image component.
  * @param props The component props.
  * @param ref The component reference.
  * @returns The rendered component.

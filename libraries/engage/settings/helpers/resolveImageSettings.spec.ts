@@ -53,10 +53,12 @@ describe('settings / helpers / resolveImageSettings', () => {
         expect(resolved.list.resolutions).toEqual(LEGACY_RESOLUTIONS.list);
       });
 
-      it('returns the configured ratio as a tuple', () => {
+      // The tuple describes the image that is requested, so it reduces to the configured ratio
+      // rather than repeating its parts.
+      it('reports the ratio of the image it requests', () => {
         const resolved = resolveProductImageSettings(true, buildImageSettings());
 
-        expect(resolved.pdp.ratio).toEqual([1, 1]);
+        expect(resolved.pdp.ratio).toEqual([1024, 1024]);
       });
 
       it('fans a single global ratio out across every context', () => {
@@ -75,7 +77,7 @@ describe('settings / helpers / resolveImageSettings', () => {
           { width: 1024, height: 1280 },
           { width: 2048, height: 2560 },
         ]);
-        expect(resolved.pdp.ratio).toEqual([4, 5]);
+        expect(resolved.pdp.ratio).toEqual([1024, 1280]);
       });
 
       describe('extreme ratios', () => {
@@ -98,6 +100,26 @@ describe('settings / helpers / resolveImageSettings', () => {
             width: 1,
             height: 4096,
           }]);
+        });
+
+        // The ratio drives the box the layout reserves. Reporting the configured value there would
+        // reserve one the bounded image cannot fill - or, wide enough, one no percentage expresses.
+        it.each([
+          ['taller than the bound allows', { width: 1, height: 9999 }, [1, 4096]],
+          ['wider than the bound allows', { width: 9999, height: 1 }, [440, 1]],
+          ['beyond what a percentage holds', { width: 1e-300, height: 1e300 }, [1, 4096]],
+        ])('reports a bounded ratio for one %s', (_, ratio, expected) => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio,
+            },
+          });
+
+          const { list } = resolveProductImageSettings(true, settings);
+
+          expect(list.ratio).toEqual(expected);
+          expect(list.ratio).toEqual([list.resolutions[0].width, list.resolutions[0].height]);
         });
 
         it('keeps a height of at least one pixel when the ratio rounds it away', () => {
@@ -157,7 +179,7 @@ describe('settings / helpers / resolveImageSettings', () => {
             width: 440,
             height: 440,
           }]);
-          expect(resolved.list.ratio).toEqual([1, 1]);
+          expect(resolved.list.ratio).toEqual([440, 440]);
         });
 
         // lodash merge assigns a null over the default rather than skipping it, the way it skips
@@ -177,7 +199,7 @@ describe('settings / helpers / resolveImageSettings', () => {
             width: 440,
             height: 440,
           }]);
-          expect(resolved.list.ratio).toEqual([1, 1]);
+          expect(resolved.list.ratio).toEqual([440, 440]);
         });
       });
 
@@ -193,9 +215,9 @@ describe('settings / helpers / resolveImageSettings', () => {
         const resolved = resolveProductImageSettings(true, settings);
 
         expect(resolved.list.resolutions).toEqual([{ width: 440, height: 440 }]);
-        expect(resolved.list.ratio).toEqual([1, 1]);
-        expect(resolved.pdp.ratio).toEqual([4, 5]);
-        expect(resolved.gallery.ratio).toEqual([4, 5]);
+        expect(resolved.list.ratio).toEqual([440, 440]);
+        expect(resolved.pdp.ratio).toEqual([1024, 1280]);
+        expect(resolved.gallery.ratio).toEqual([2048, 2560]);
       });
 
       it('rounds derived heights to whole pixels', () => {

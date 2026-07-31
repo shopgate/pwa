@@ -80,8 +80,9 @@ export interface ResolvedProductImageContext {
    */
   resolutions: ImageResolution[];
   /**
-   * Width and height parts to apply to the rendered element. Null leaves the Image component to
-   * derive one from the largest resolution.
+   * Width and height parts to apply to the rendered element, taken from the image that is
+   * requested rather than from the configured ratio, which may have been bounded. Null leaves the
+   * Image component to derive one from the largest resolution.
    */
   ratio: [number, number] | null;
 }
@@ -209,16 +210,16 @@ export const resolveProductImageSettings = (
     }
 
     const product = imageSettings?.product;
-
-    // Resolved once and used for both, so the tuple cannot disagree with the resolutions it is
-    // rendered against.
     const ratio = toUsableRatio(product?.[context]?.ratio ?? product?.ratio);
+    const resolutions = deriveResolutions(context, ratio);
+
+    const largest = resolutions[resolutions.length - 1];
 
     return {
       ...resolved,
       [context]: {
-        resolutions: deriveResolutions(context, ratio),
-        ratio: [ratio.width, ratio.height] as [number, number],
+        resolutions,
+        ratio: [largest.width, largest.height] as [number, number],
       },
     };
   }, {} as ResolvedProductImageSettings);

@@ -100,8 +100,8 @@ class ProductImageSlider extends Component {
       this.setState({ depImage });
       loadProductImage(
         depImage,
-        this.props.pdpResolutions?.[0],
-        this.props.imageServiceSettings
+        nextProps.pdpResolutions?.[0],
+        nextProps.imageServiceSettings
       )
         .then(() => {
           if (this.mounted) {

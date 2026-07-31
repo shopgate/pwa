@@ -180,8 +180,28 @@ describe('settings / reducers / appSettings', () => {
       expect(state.images.fillColor).toBe('FFFFFF');
     });
 
-    // The settings boundary accepts whatever a source sends, and merge assigns a null rather than
-    // skipping it. Restoring the branch keeps every reader off a hole it cannot do anything about.
+    // The admin preview dispatches repeatedly, so a reset arrives on top of whatever the merchant
+    // configured before it - and a merge on its own would only add to that.
+    it.each([
+      ['the whole branch', { images: null }],
+      ['the product branch', { images: { product: null } }],
+    ])('drops earlier configuration when a source clears %s', (_, partial) => {
+      const configured = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        images: {
+          quality: 40,
+          product: {
+            ratio: { width: 4, height: 5 },
+            pdp: { ratio: { width: 1, height: 2 } },
+          },
+        },
+      } as AppSettings));
+
+      const state = appSettings(configured, receiveAppSettings(partial as unknown as AppSettings));
+
+      expect(state.images.product).toEqual(DEFAULT_APP_SETTINGS.images.product);
+      expect(state.images.product.pdp).toBeUndefined();
+    });
+
     it.each([
       ['the whole branch', { images: null }],
       ['the product branch', { images: { product: null } }],

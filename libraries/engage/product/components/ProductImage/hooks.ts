@@ -12,14 +12,16 @@ import { WIDGET_ID } from './constants';
 
 /**
  * Resolves whether product images render with an inset shadow.
+ * @param widgetId The widget id the legacy setting is configured under, for the product image
+ * components that have their own.
  * @returns Whether to render the shadow.
  */
-export const useProductImageShadow = (): boolean => {
+export const useProductImageShadow = (widgetId: string = WIDGET_ID): boolean => {
   const areAppSettingsHydrated = useSelector(getAreAppSettingsHydrated);
   const configured = useSelector(getImageSettings)?.product?.showInnerShadow;
 
   const { showInnerShadow: legacy } =
-    (useWidgetSettings(WIDGET_ID) || {}) as { showInnerShadow?: boolean };
+    (useWidgetSettings(widgetId) || {}) as { showInnerShadow?: boolean };
 
   return useMemo(() => {
     if (areAppSettingsHydrated) {
