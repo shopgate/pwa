@@ -69,7 +69,7 @@ exports[`<ProductImage /> should apply an inner shadow to the placeholder if tur
   portalName="component.product-image"
 >
   <div
-    className="sg-7iqvdv-placeholderContainer-innerShadow"
+    className="sg-1n128ui-placeholderContainer-innerShadow"
   >
     <ProductImagePlaceholder
       noBackground={false}
@@ -213,7 +213,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalName="component.product-image"
 >
   <div
-    className="sg-rvs4ak-placeholderContainer"
+    className="sg-x8pc2a-placeholderContainer"
   >
     <ProductImagePlaceholder
       noBackground={false}
@@ -229,7 +229,7 @@ exports[`<ProductImage /> should not apply an inner shadow to the placeholder if
   portalName="component.product-image"
 >
   <div
-    className="sg-rvs4ak-placeholderContainer"
+    className="sg-x8pc2a-placeholderContainer"
   >
     <ProductImagePlaceholder
       noBackground={false}
@@ -245,7 +245,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
   portalName="component.product-image"
 >
   <div
-    className="sg-rvs4ak-placeholderContainer"
+    className="sg-x8pc2a-placeholderContainer"
   >
     <div
       aria-hidden={true}

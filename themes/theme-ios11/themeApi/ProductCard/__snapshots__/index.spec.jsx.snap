@@ -15,6 +15,7 @@ exports[`<ProductCard /> should not render when no product could be found 1`] = 
 >
   <Connect(ProductCard)>
     <ProductCard
+      className={null}
       dispatch={[Function]}
       product={null}
       render={[Function]}
@@ -42,6 +43,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
     productId="PR0DUCTID"
   >
     <ProductCard
+      className={null}
       dispatch={[Function]}
       product={
         {
@@ -69,13 +71,9 @@ exports[`<ProductCard /> should render as expected 1`] = `
       style={{}}
     >
       <section
-        className="sg-ywrwkl-root theme__product-card"
+        className="sg-1e99pvw-root theme__product-card"
         data-test-id="Product: Product Name"
-        style={
-          {
-            "boxShadow": "0 4px 8px rgba(0,0,0,0.16)",
-          }
-        }
+        style={{}}
       >
         <ProductCard
           dispatch={[Function]}
@@ -126,6 +124,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
     render={[Function]}
   >
     <ProductCard
+      className={null}
       dispatch={[Function]}
       product={
         {
@@ -153,13 +152,9 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
       style={{}}
     >
       <section
-        className="sg-ywrwkl-root theme__product-card"
+        className="sg-1e99pvw-root theme__product-card"
         data-test-id="Product: Product Name"
-        style={
-          {
-            "boxShadow": "0 4px 8px rgba(0,0,0,0.16)",
-          }
-        }
+        style={{}}
       >
         <div>
           Custom Output
