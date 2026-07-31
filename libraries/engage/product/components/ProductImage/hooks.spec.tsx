@@ -95,6 +95,25 @@ describe('useProductImageShadow', () => {
     expect(renderHook()).toBe(DEFAULT_SHOW_INNER_SHADOW);
   });
 
+  // A source can null the branch out, and every ProductImage calls this hook.
+  it.each([
+    ['the product settings are nulled out', { product: null }],
+    ['the image settings are nulled out', null],
+  ])('falls back to the built-in default when %s', (_, images) => {
+    (useSelector as jest.Mock).mockImplementation((selector: unknown) => {
+      if (selector === getAreAppSettingsHydrated) {
+        return true;
+      }
+      if (selector === getImageSettings) {
+        return images === null ? null : { ...DEFAULT_APP_SETTINGS.images, ...images };
+      }
+      return undefined;
+    });
+    (useWidgetSettings as jest.Mock).mockReturnValue(null);
+
+    expect(renderHook()).toBe(DEFAULT_SHOW_INNER_SHADOW);
+  });
+
   it('treats an explicit false in the widget configuration as a value, not as absent', () => {
     setup({
       hydrated: false,

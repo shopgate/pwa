@@ -50,7 +50,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   },
   images: {
     quality: DEFAULT_IMAGE_QUALITY,
-    // Already in the image service's expected format, so the unhydrated path needs no conversion.
+    // Already in the image service's format, so the unhydrated path needs no conversion.
     fillColor: DEFAULT_IMAGE_FILL_COLOR,
     fillTransparent: DEFAULT_IMAGE_FILL_TRANSPARENT,
     product: {
@@ -74,19 +74,21 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   action = { type: '' }
 ) => produce(state ?? DEFAULT_APP_SETTINGS, (draft: AppSettingsSlice) => {
   if (isReceiveAppSettingsAction(action)) {
-    // Deep merge so a partial payload (e.g. only some navigation.tabBar fields)
-    // keeps the built-in defaults for anything the source omits, rather than
-    // shallow-replacing whole branches and leaving consumers with undefined.
-    merge(draft, action.settings);
+    const { images } = action.settings ?? {};
 
-    // The image service values reach redux exactly as the source sent them - the fill color as any
-    // CSS color, the quality possibly as a half typed number from an admin field. Converting here
-    // rather than on read keeps the slice wire ready, and runs the conversion once per settings
-    // change instead of on every render.
-    //
-    // Unconditional rather than guarded on what the payload carried: merge overwrites with an empty
-    // string or a null, which would otherwise reach the url unconverted. Both converters are
-    // idempotent, so re-converting is a no-op.
+    // Deep merged so a partial payload keeps the defaults for whatever the source omits. A cleared
+    // branch is substituted first - merge assigns a null, where it would skip an undefined.
+    merge(draft, {
+      ...action.settings,
+      images: {
+        ...images,
+        product: images?.product ?? DEFAULT_APP_SETTINGS.images.product,
+      },
+    });
+
+    // Converted on the way in, so the slice holds wire ready values and every image url does not
+    // pay for it. Unconditional, because an empty string or a null reaches here like any other
+    // value - both converters are idempotent.
     draft.images.fillColor = toThumborColor(draft.images.fillColor);
     draft.images.quality = toImageQuality(draft.images.quality);
 

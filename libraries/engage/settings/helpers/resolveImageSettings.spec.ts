@@ -100,6 +100,25 @@ describe('settings / helpers / resolveImageSettings', () => {
           }]);
         });
 
+        it('keeps a height of at least one pixel when the ratio rounds it away', () => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio: {
+                width: 9999,
+                height: 1,
+              },
+            },
+          });
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 440,
+            height: 1,
+          }]);
+        });
+
         it('leaves a ratio that stays within the bound untouched', () => {
           const settings = buildImageSettings({
             product: {
@@ -163,8 +182,6 @@ describe('settings / helpers / resolveImageSettings', () => {
       });
 
       it('lets a per context override win for that context only', () => {
-        // No source writes these overrides yet - honoring them means per context ratios can later
-        // be rolled out from the admin alone.
         const settings = buildImageSettings({
           product: {
             ...DEFAULT_APP_SETTINGS.images.product,
@@ -293,6 +310,14 @@ describe('settings / helpers / resolveImageSettings', () => {
 
     // The unhydrated slice holds DEFAULT_IMAGE_QUALITY, which is derived from the legacy theme
     // config, so the quality needs no hydration branch of its own.
+    it('falls back to the defaults when a source nulls the branch out', () => {
+      expect(resolveImageServiceSettings(true, null as unknown as ImageSettings)).toEqual({
+        quality: DEFAULT_IMAGE_QUALITY,
+        fillColor: 'FFFFFF',
+        fillTransparent: true,
+      });
+    });
+
     it('reports the default quality before hydration', () => {
       expect(resolveImageServiceSettings(false, buildImageSettings()).quality)
         .toBe(DEFAULT_IMAGE_QUALITY);

@@ -10,6 +10,7 @@ import type {
 import {
   DEFAULT_IMAGE_FILL_COLOR,
   DEFAULT_IMAGE_FILL_TRANSPARENT,
+  DEFAULT_IMAGE_QUALITY,
   LEGACY_IMAGE_SETTINGS_KEY,
   MAX_IMAGE_DIMENSION,
   PRODUCT_IMAGE_BASE_WIDTHS,
@@ -153,7 +154,7 @@ const deriveResolutions = (
   ratio: AspectRatio
 ): ImageResolution[] => (
   PRODUCT_IMAGE_BASE_WIDTHS[context].map((baseWidth) => {
-    const height = Math.round((baseWidth * ratio.height) / ratio.width);
+    const height = Math.max(1, Math.round((baseWidth * ratio.height) / ratio.width));
 
     if (height <= MAX_IMAGE_DIMENSION) {
       return {
@@ -176,9 +177,7 @@ const deriveResolutions = (
  *
  * Precedence:
  * - Once the app settings are hydrated from a source (admin sync / jsonp), they are authoritative.
- *   The single configured ratio applies to every context unless that context overrides it - the
- *   overrides are not written by any source yet, but honoring them here means per context
- *   configuration can later be rolled out from the admin without a PWA release.
+ *   The configured ratio applies to every context unless that context overrides it.
  * - Before hydration the legacy AppImages resolutions are passed through as-is, with a null ratio.
  *   They already carry their own implied proportions, so reverse engineering a ratio from them
  *   would only introduce rounding - passing them through unchanged keeps the pre-hydration path
@@ -239,7 +238,8 @@ export const resolveImageServiceSettings = (
   let fillTransparent: boolean;
 
   if (areAppSettingsHydrated) {
-    ({ fillColor: color, fillTransparent } = imageSettings);
+    color = imageSettings?.fillColor ?? DEFAULT_IMAGE_FILL_COLOR;
+    fillTransparent = imageSettings?.fillTransparent ?? DEFAULT_IMAGE_FILL_TRANSPARENT;
   } else {
     // The legacy value packs both parts into one string, e.g. "FFFFFF,1". Its color is normalized
     // like a configured one - theme configurations carry values the image service will not take.
@@ -254,7 +254,7 @@ export const resolveImageServiceSettings = (
 
   return {
     // No hydration branch, unlike the fill: the unhydrated slice already holds the legacy quality.
-    quality: imageSettings.quality,
+    quality: imageSettings?.quality ?? DEFAULT_IMAGE_QUALITY,
     fillColor: color,
     fillTransparent,
   };

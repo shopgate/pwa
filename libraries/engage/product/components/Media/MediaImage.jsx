@@ -30,7 +30,7 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const MediaImage = ({
-  url, altText, className, resolutions,
+  url, altText, className, resolutions, ratio,
 }) => {
   const { classes, cx } = useStyles();
 
@@ -50,11 +50,13 @@ const MediaImage = ({
       portalProps={url ? {
         src: url,
         resolutions,
+        ratio,
       } : undefined}
     >
       <Image
         src={url}
         resolutions={resolutions}
+        ratio={ratio}
         alt={altText}
         className={mergedClassName}
         backgroundColor="transparent"
@@ -69,6 +71,7 @@ const MediaImage = ({
 MediaImage.propTypes = {
   altText: propTypes.altText,
   className: propTypes.className,
+  ratio: PropTypes.arrayOf(PropTypes.number),
   resolutions: PropTypes.arrayOf(PropTypes.shape({
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
@@ -80,6 +83,7 @@ MediaImage.defaultProps = {
   url: defaultProps.url,
   altText: defaultProps.altText,
   className: defaultProps.className,
+  ratio: null,
   resolutions: undefined,
 };
 

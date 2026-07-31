@@ -77,10 +77,6 @@ export interface ProductImageContextSettings {
 
 /**
  * Settings for the product image contexts.
- *
- * ratio applies to all three contexts. The per context entries are optional overrides that no
- * source writes yet - the admin currently exposes a single global ratio - but the resolver honors
- * them from day one, so per context configuration can be rolled out from the admin alone.
  */
 export interface ProductImageSettings {
   /**
@@ -115,8 +111,7 @@ export interface ProductImageSettings {
  */
 export interface ImageSettings {
   /**
-   * Compression quality passed to the image service, 1 to 100. Not exposed in the admin yet, but
-   * read from here, so a source can start sending it without a PWA release.
+   * Compression quality passed to the image service, 1 to 100.
    */
   quality: number;
   /**
@@ -128,8 +123,7 @@ export interface ImageSettings {
   fillColor: string;
   /**
    * Thumbor's fill_transparent argument - whether transparent areas of the source image are
-   * filled too. True is what the legacy 'FFFFFF,1' config expressed. Not exposed in the admin
-   * yet, but read from here, so a source can start sending it without a PWA release.
+   * filled too. True is what the legacy 'FFFFFF,1' config expressed.
    */
   fillTransparent: boolean;
   /**

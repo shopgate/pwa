@@ -180,6 +180,39 @@ describe('settings / reducers / appSettings', () => {
       expect(state.images.fillColor).toBe('FFFFFF');
     });
 
+    // The settings boundary accepts whatever a source sends, and merge assigns a null rather than
+    // skipping it. Restoring the branch keeps every reader off a hole it cannot do anything about.
+    it.each([
+      ['the whole branch', { images: null }],
+      ['the product branch', { images: { product: null } }],
+    ])('restores the defaults when a source clears %s', (_, partial) => {
+      const state = appSettings(
+        DEFAULT_APP_SETTINGS,
+        receiveAppSettings(partial as unknown as AppSettings)
+      );
+
+      expect(state.images).toEqual(DEFAULT_APP_SETTINGS.images);
+      expect(state.isHydrated).toBe(true);
+    });
+
+    // The substituted branch is read from the defaults constant, so a later payload writing into
+    // it must not reach back and change them.
+    it('leaves the defaults untouched after restoring a cleared branch', () => {
+      const restored = appSettings(
+        DEFAULT_APP_SETTINGS,
+        receiveAppSettings({ images: { product: null } } as unknown as AppSettings)
+      );
+
+      appSettings(restored, receiveAppSettings({
+        images: { product: { ratio: { width: 4, height: 5 } } },
+      } as AppSettings));
+
+      expect(DEFAULT_APP_SETTINGS.images.product.ratio).toEqual({
+        width: 1,
+        height: 1,
+      });
+    });
+
     it('is idempotent across repeated hydrations', () => {
       // The admin preview bridge dispatches on every edit, so an already converted value gets fed
       // back through the reducer.
