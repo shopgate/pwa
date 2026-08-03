@@ -57,7 +57,6 @@ export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 
   placeholderSrc?: string | null;
   /**
    * @deprecated Pass a `context` instead, so the image follows the configured aspect ratio.
-   * Only applied together with `resolutions`.
    */
   ratio?: number[] | null;
   /**
@@ -104,7 +103,6 @@ const useStyles = makeStyles()(theme => ({
  * The product image component.
  *
  * Behaves like the core Image component, with a product placeholder for a missing or failed image.
- * Takes the placeholder image from its props - the default export reads the shop wide one.
  * @param props The component props.
  * @returns The rendered component.
  */
@@ -147,7 +145,7 @@ const ProductImage = (props: ProductImageProps) => {
   const theme = useTheme();
   const showInnerShadow = useProductImageShadow();
 
-  // Image decides when to show this - it is the only place that knows which url was requested.
+  // Image decides when to show this.
   const placeholder = placeholderSrc ? (
     <ProductImagePlaceholder
       src={placeholderSrc}
@@ -163,8 +161,6 @@ const ProductImage = (props: ProductImageProps) => {
   return (
     <SurroundPortals
       portalName={PORTAL_PRODUCT_IMAGE}
-      // A product without an image passes nothing on, as before. One whose image failed to load
-      // does - that state is only known one level down.
       portalProps={src ? {
         src,
         resolutions: resolved.resolutions,
@@ -190,14 +186,11 @@ export { ProductImage as UnwrappedProductImage };
 
 /**
  * Supplies the shop wide placeholder image.
- *
- * A plain wrapper rather than a connect HOC - connect adds a `context` prop of its own, which
- * collides with the one this component takes.
  * @param props The component props.
  * @returns The rendered component.
  */
 const ConnectedProductImage = (props: ProductImageProps) => {
-  // The shop wide placeholder takes precedence over a passed one, as the connector it replaced did.
+  // The shop wide placeholder takes precedence over a passed one.
   const placeholderSrc = useSelector(getProductImagePlaceholder) ?? props.placeholderSrc ?? null;
 
   return <ProductImage {...props} placeholderSrc={placeholderSrc} />;
