@@ -9,7 +9,11 @@ import { useProductImageShadow } from './hooks';
 jest.unmock('@shopgate/pwa-core');
 jest.mock('../../../core/hocs/withWidgetSettings');
 jest.mock('@shopgate/pwa-common/helpers/config');
-jest.mock('./connector', () => Component => Component);
+// Shallow renders have no store; the component only reads the shop wide placeholder from it.
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: () => null,
+}));
 jest.mock('@shopgate/engage/components', () => ({
   Image: () => null,
 }));
@@ -52,16 +56,24 @@ jest.mock('@shopgate/engage/settings/hooks', () => ({
  */
 const getPlaceholder = wrapper => wrapper.find(Image).prop('placeholder');
 
+/**
+ * Renders down to the component's own output, past the wrapper that supplies the shop wide
+ * placeholder and past the portals.
+ * @param {JSX.Element} element The element to render.
+ * @returns {Object} The rendered component.
+ */
+const renderProductImage = element => shallow(element).dive().dive();
+
 describe('<ProductImage />', () => {
   it('should render a placeholder if no src prop is provided', () => {
-    const wrapper = shallow(<ProductImage />).dive();
+    const wrapper = renderProductImage(<ProductImage />);
 
     expect(wrapper).toMatchSnapshot();
     expect(shallow(getPlaceholder(wrapper)).find(PlaceholderIcon).length).toBe(1);
   });
 
   it('should render the image without a placeholder', () => {
-    const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
+    const wrapper = renderProductImage(<ProductImage src="http://placehold.it/300x300" />);
 
     expect(wrapper.find(Image).length).toBe(1);
     expect(wrapper.find(PlaceholderIcon).length).toBe(0);
@@ -70,9 +82,9 @@ describe('<ProductImage />', () => {
 
   // Most callers are untyped .jsx, and extensions are not type checked at all.
   it('should fall back to the default context for an unknown one', () => {
-    const wrapper = shallow(
+    const wrapper = renderProductImage(
       <ProductImage src="http://placehold.it/300x300" context="somethingElse" />
-    ).dive();
+    );
 
     expect(wrapper.find(Image).prop('resolutions')).toEqual([{
       width: 440,
@@ -83,7 +95,7 @@ describe('<ProductImage />', () => {
   describe('inner shadow', () => {
     it('should not apply it to the placeholder when the hook says no', () => {
       useProductImageShadow.mockReturnValue(false);
-      const wrapper = shallow(<ProductImage placeholderSrc="http://placehold.it/300x300" />).dive();
+      const wrapper = renderProductImage(<ProductImage placeholderSrc="http://placehold.it/300x300" />);
 
       expect(getPlaceholder(wrapper).type).toBe(ProductImagePlaceholder);
       expect(getPlaceholder(wrapper).props.showInnerShadow).toBe(false);
@@ -92,7 +104,7 @@ describe('<ProductImage />', () => {
 
     it('should not apply it to the image when the hook says no', () => {
       useProductImageShadow.mockReturnValue(false);
-      const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
+      const wrapper = renderProductImage(<ProductImage src="http://placehold.it/300x300" />);
 
       expect(wrapper.find(Image).prop('className')).not.toContain('innerShadow');
       expect(wrapper).toMatchSnapshot();
@@ -100,7 +112,7 @@ describe('<ProductImage />', () => {
 
     it('should apply it to the placeholder when the hook says yes', () => {
       useProductImageShadow.mockReturnValue(true);
-      const wrapper = shallow(<ProductImage placeholderSrc="http://placehold.it/300x300" />).dive();
+      const wrapper = renderProductImage(<ProductImage placeholderSrc="http://placehold.it/300x300" />);
 
       expect(getPlaceholder(wrapper).type).toBe(ProductImagePlaceholder);
       expect(getPlaceholder(wrapper).props.showInnerShadow).toBe(true);
@@ -109,7 +121,7 @@ describe('<ProductImage />', () => {
 
     it('should apply it to the image when the hook says yes', () => {
       useProductImageShadow.mockReturnValue(true);
-      const wrapper = shallow(<ProductImage src="http://placehold.it/300x300" />).dive();
+      const wrapper = renderProductImage(<ProductImage src="http://placehold.it/300x300" />);
 
       expect(wrapper.find(Image).prop('className')).toContain('innerShadow');
       expect(wrapper).toMatchSnapshot();

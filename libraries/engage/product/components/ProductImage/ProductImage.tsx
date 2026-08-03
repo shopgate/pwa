@@ -1,4 +1,5 @@
 import { useLayoutEffect, useMemo, memo } from 'react';
+import { useSelector } from 'react-redux';
 import { logger } from '@shopgate/pwa-core';
 import Image from '@shopgate/pwa-common/components/Image';
 import type { ImageProps } from '@shopgate/pwa-common/components/Image';
@@ -6,6 +7,7 @@ import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
+import { getProductImagePlaceholder } from '@shopgate/engage/settings/selectors/shopSettings';
 import type {
   ImageResolution,
   ProductImageContext,
@@ -13,19 +15,16 @@ import type {
 import { PORTAL_PRODUCT_IMAGE } from '../../../components/constants';
 import ProductImagePlaceholder from './ProductImagePlaceholder';
 import { useProductImageShadow } from './hooks';
-import connect from './connector';
 
 const placeholderIconScale = 0.65;
 
 /**
- * The product image context applied when a caller passes neither a context nor explicit
- * resolutions. Matches the surface most product images are rendered on.
+ * The context applied when a caller passes neither a context nor explicit resolutions.
  */
 const DEFAULT_PRODUCT_IMAGE_CONTEXT: ProductImageContext = 'list';
 
 /**
- * The resolutions and aspect ratio the image is finally rendered with, whether they came from
- * props or from the app settings.
+ * The resolutions and aspect ratio the image is rendered with.
  */
 interface ResolvedImage {
   /**
@@ -39,9 +38,8 @@ interface ResolvedImage {
 }
 
 /**
- * Everything the underlying Image accepts is forwarded, minus the two props this component owns:
- * it derives `backgroundColor` from `noBackground`, and supplies the `placeholder` that stands in
- * for a product without an image.
+ * Everything the underlying Image accepts is forwarded, minus the two this component owns:
+ * `backgroundColor`, derived from `noBackground`, and `placeholder`.
  */
 export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 'placeholder'> {
   /**
@@ -54,11 +52,12 @@ export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 
    */
   noBackground?: boolean;
   /**
-   * Image to show instead of the placeholder icon. Injected from the store.
+   * Image to show instead of the placeholder icon. The shop wide setting wins over this.
    */
   placeholderSrc?: string | null;
   /**
    * @deprecated Pass a `context` instead, so the image follows the configured aspect ratio.
+   * Only applied together with `resolutions`.
    */
   ratio?: number[] | null;
   /**
@@ -103,9 +102,9 @@ const useStyles = makeStyles()(theme => ({
 
 /**
  * The product image component.
- * This component will behave like the core Image component with the additional
- * feature of showing a placeholder in case no src property has been passed
- * or the given source image cannot be loaded.
+ *
+ * Behaves like the core Image component, with a product placeholder for a missing or failed image.
+ * Takes the placeholder image from its props - the default export reads the shop wide one.
  * @param props The component props.
  * @returns The rendered component.
  */
@@ -123,8 +122,7 @@ const ProductImage = (props: ProductImageProps) => {
 
   const productImageSettings = useProductImageSettings();
 
-  // An explicit resolutions prop always wins over the configured ratio, so nothing an extension
-  // renders today changes behavior. The context is only consulted when nothing was passed in.
+  // An explicit resolutions prop wins over the context, which is only consulted without one.
   const resolved = useMemo<ResolvedImage>(() => {
     if (resolutions) {
       return {
@@ -149,8 +147,7 @@ const ProductImage = (props: ProductImageProps) => {
   const theme = useTheme();
   const showInnerShadow = useProductImageShadow();
 
-  // Image owns the decision between the two, because it is the only place that knows which url was
-  // requested - and therefore whether a past failure still applies to the image it is about to show.
+  // Image decides when to show this - it is the only place that knows which url was requested.
   const placeholder = placeholderSrc ? (
     <ProductImagePlaceholder
       src={placeholderSrc}
@@ -166,9 +163,8 @@ const ProductImage = (props: ProductImageProps) => {
   return (
     <SurroundPortals
       portalName={PORTAL_PRODUCT_IMAGE}
-      // A product without an image passes nothing on, so portals keep seeing what they saw before
-      // the placeholder moved into the Image component. An image that was requested but failed to
-      // load does pass its props on - that state is only known one level down.
+      // A product without an image passes nothing on, as before. One whose image failed to load
+      // does - that state is only known one level down.
       portalProps={src ? {
         src,
         resolutions: resolved.resolutions,
@@ -192,4 +188,19 @@ const ProductImage = (props: ProductImageProps) => {
 
 export { ProductImage as UnwrappedProductImage };
 
-export default connect(memo(ProductImage));
+/**
+ * Supplies the shop wide placeholder image.
+ *
+ * A plain wrapper rather than a connect HOC - connect adds a `context` prop of its own, which
+ * collides with the one this component takes.
+ * @param props The component props.
+ * @returns The rendered component.
+ */
+const ConnectedProductImage = (props: ProductImageProps) => {
+  // The shop wide placeholder takes precedence over a passed one, as the connector it replaced did.
+  const placeholderSrc = useSelector(getProductImagePlaceholder) ?? props.placeholderSrc ?? null;
+
+  return <ProductImage {...props} placeholderSrc={placeholderSrc} />;
+};
+
+export default memo(ConnectedProductImage);

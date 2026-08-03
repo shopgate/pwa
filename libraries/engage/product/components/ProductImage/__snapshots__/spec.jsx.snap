@@ -50,6 +50,7 @@ exports[`<ProductImage /> inner shadow should apply it to the image when the hoo
             />
           </div>
         }
+        placeholderSrc={null}
         ratio={null}
         resolutions={
           [
@@ -175,6 +176,7 @@ exports[`<ProductImage /> inner shadow should not apply it to the image when the
             />
           </div>
         }
+        placeholderSrc={null}
         ratio={null}
         resolutions={
           [
@@ -278,6 +280,7 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
             />
           </div>
         }
+        placeholderSrc={null}
         ratio={null}
         resolutions={
           [
@@ -347,6 +350,7 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
             />
           </div>
         }
+        placeholderSrc={null}
         ratio={null}
         resolutions={
           [

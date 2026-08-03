@@ -35,8 +35,8 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     padding: theme.spacing(2),
   },
   imageColumn: {
-    width: 120,
-    height: 120,
+    minWidth: 120,
+    minHeight: 120,
     marginRight: theme.spacing(1),
     flexShrink: 0,
     flexGrow: 0,
@@ -175,7 +175,10 @@ const CartItemProductLayoutWide = () => {
       })}
       >
         <div className={classes.imageColumn}>
-          <ProductImage src={product.featuredImageBaseUrl || product.featuredImageUrl} />
+          <ProductImage
+            src={product.featuredImageBaseUrl || product.featuredImageUrl}
+            context="list"
+          />
         </div>
         <div className={classes.detailsColumn}>
           <ConditionalWrapper
