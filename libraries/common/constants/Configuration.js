@@ -37,4 +37,11 @@ export const CONFIGURATION_COLLECTION_CREATE_EXTERNAL_IMAGE_URL =
 
 export const CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY = 'CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY';
 
+/**
+ * Capability flag the PWA sets to signal that base typography is applied on the root (`<html>`)
+ * element rather than the legacy `<body>` element. Consumers can read it to adjust behavior
+ * accordingly. Absent on older PWAs.
+ */
+export const CONFIGURATION_COLLECTION_KEY_HAS_ROOT_TYPOGRAPHY = 'CONFIGURATION_COLLECTION_KEY_HAS_ROOT_TYPOGRAPHY';
+
 export const CONFIGURATION_COLLECTION_KEY_UNIVERSAL_LINK_HANDLER = 'universalLinkHandler';

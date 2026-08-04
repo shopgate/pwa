@@ -69,6 +69,27 @@ describe('i18n', () => {
     });
   });
 
+  describe('has', () => {
+    beforeEach(() => {
+      i18n.init({
+        locales: {
+          test: {
+            string: 'Test string',
+          },
+        },
+        lang: 'en-US',
+      });
+    });
+
+    it('should return true when the translation key resolves', () => {
+      expect(i18n.has('test.string')).toBe(true);
+    });
+
+    it('should return false when the translation key is missing', () => {
+      expect(i18n.has('test.missing')).toBe(false);
+    });
+  });
+
   it('should return default text for missing translation', () => {
     const locales = {
       test: {
