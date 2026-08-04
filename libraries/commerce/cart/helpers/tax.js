@@ -1,6 +1,6 @@
 /**
- * Check if shipping line should be shown
- * @param {Object} cartConfig shippingConfig
+ * Check if tax line should be shown
+ * @param {Object} cartConfig cartConfig
  * @param {Object} tax tax
  * @returns {Object|null}
  */

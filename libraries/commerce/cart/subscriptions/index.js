@@ -198,8 +198,11 @@ export default function cart(subscribe) {
       // Supports only one error, because none of the pipelines is ever called with multiple items.
       // Multiple errors would cause the this to overlay multiple modals on top of each other.
       const {
-        message, handled, code, additionalParams, translated, context,
+        message, handled, code, translated,
       } = errors[0];
+
+      const context = errors[0].context || errors[0].pipeline;
+      const additionalParams = errors[0].additionalParams || errors[0].messageParams || {};
 
       // Some errors are already handled automatically before
       if (handled) {
