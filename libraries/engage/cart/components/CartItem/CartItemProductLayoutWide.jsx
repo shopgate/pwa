@@ -35,8 +35,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     padding: theme.spacing(2),
   },
   imageColumn: {
-    minWidth: 120,
-    minHeight: 120,
+    width: 120,
     marginRight: theme.spacing(1),
     flexShrink: 0,
     flexGrow: 0,

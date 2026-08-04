@@ -38,8 +38,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   image: {
     background: theme.palette.background.emphasized,
     marginBottom: theme.spacing(1.25),
-    minHeight: leftColumnWidth,
-    minWidth: leftColumnWidth,
+    width: leftColumnWidth,
   },
   content: {
     display: 'flex',
