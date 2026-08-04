@@ -36,15 +36,29 @@ class ToastProvider extends Component {
   }
 
   /**
-   * Returns the context value to be passed to consumers.
+   * Removes the UIEvents listeners registered in the constructor.
+   */
+  componentWillUnmount() {
+    UIEvents.removeListener(this.constructor.ADD, this.addToast);
+    UIEvents.removeListener(this.constructor.FLUSH, this.flushToasts);
+  }
+
+  /**
+   * Returns the context value to be passed to consumers. The object reference is cached and only
+   * rebuilt when `toasts` changes, so consumers (Toaster → SnackBarContainer → SnackBar) don't
+   * re-render on every unrelated ToastProvider render.
    * @returns {Object}
    */
   get provided() {
-    return {
-      addToast: this.addToast,
-      removeToast: this.removeToast,
-      toasts: this.state.toasts,
-    };
+    if (!this.providedCache || this.providedCache.toasts !== this.state.toasts) {
+      this.providedCache = {
+        addToast: this.addToast,
+        removeToast: this.removeToast,
+        toasts: this.state.toasts,
+      };
+    }
+
+    return this.providedCache;
   }
 
   /**
@@ -56,40 +70,37 @@ class ToastProvider extends Component {
       return;
     }
 
-    const { toasts } = this.state;
+    const nextToast = {
+      id: toast.id,
+      action: toast.action,
+      actionLabel: toast.actionLabel,
+      onLongPress: toast.onLongPress,
+      message: toast.message,
+      messageParams: toast.messageParams,
+      duration: toast.duration || duration,
+    };
 
-    // Check if the toast id already is present.
-    const found = toasts.find(({ id }) => toast.id === id);
+    // Update the queue immutably: consumers rely on the array reference changing to re-render
+    // (e.g. the SnackBar memoizes the currently shown toast on this reference). A toast whose id
+    // is already queued replaces that entry with the new data; otherwise it is appended.
+    this.setState(({ toasts }) => {
+      const exists = toasts.some(({ id }) => id === toast.id);
 
-    // If found, update the toast with the new data.
-    if (found) {
-      found.action = toast.action;
-      found.actionLabel = toast.actionLabel;
-      found.message = toast.message;
-      found.messageParams = toast.messageParams;
-      found.duration = toast.duration || duration;
-    } else {
-      toasts.push({
-        id: toast.id,
-        action: toast.action,
-        actionLabel: toast.actionLabel,
-        message: toast.message,
-        messageParams: toast.messageParams,
-        duration: toast.duration || duration,
-      });
-    }
-
-    this.setState({ toasts });
+      return {
+        toasts: exists
+          ? toasts.map(item => (item.id === toast.id ? nextToast : item))
+          : [...toasts, nextToast],
+      };
+    });
   };
 
   /**
    * Removes the first toast from the list.
    */
   removeToast = () => {
-    const { toasts } = this.state;
-    toasts.shift();
-
-    this.setState({ toasts });
+    // Drop the first toast immutably so the array reference changes and the SnackBar advances to
+    // the next queued toast (rather than re-rendering the same, now-stale, memoized toast).
+    this.setState(({ toasts }) => ({ toasts: toasts.slice(1) }));
   };
 
   flushToasts = () => {

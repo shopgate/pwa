@@ -7,10 +7,17 @@ import { config } from 'react-spring';
 import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { useLongPress } from '@shopgate/engage/core/hooks/events';
 import { themeColors, themeShadows } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const defaultToast = {};
+
+// Approximate settle time of the slide-out (config.stiff). The current toast is removed from the
+// queue this long after it starts sliding out, so the exit animation is fully visible before the
+// next toast slides in. Timer-driven removal keeps queue advancement independent of the spring's
+// onRest callback, which fires unreliably during the toast-to-toast handoff.
+const EXIT_ANIMATION_MS = 500;
 
 const backgroundColor = themeColors.lightDark;
 const buttonColor = themeColors.accent;
@@ -92,58 +99,114 @@ const calcRows = (message, actionLabel) => {
 const SnackBar = ({ removeToast, toasts: toastsProp }) => {
   const { classes, cx } = useStyles();
   const toasts = useMemo(() => toastsProp || [], [toastsProp]);
+  const current = toasts.length ? toasts[0] : null;
+  const currentId = current ? current.id : null;
+
   const [visible, setVisible] = useState(true);
-  const visibleRef = useRef(visible);
-  const timerRef = useRef(null);
+  const autoHideTimer = useRef(null);
+  const exitTimer = useRef(null);
+  const pressingRef = useRef(false);
 
-  useEffect(() => {
-    visibleRef.current = visible;
-  }, [visible]);
+  // Latest values reachable from the stable timer callbacks below without re-creating them.
+  const durationRef = useRef();
+  durationRef.current = (current && current.duration) || 2500;
+  const removeToastRef = useRef(removeToast);
+  removeToastRef.current = removeToast;
 
+  // Show whenever there is a toast to display; hide when the queue drains. Reacting to the queue
+  // length is what slides the next toast in after the current one has been removed.
   useEffect(() => {
     setVisible(toasts.length > 0);
   }, [toasts.length]);
 
+  useEffect(() => () => {
+    clearTimeout(autoHideTimer.current);
+    clearTimeout(exitTimer.current);
+  }, []);
+
   const snack = useMemo(() => {
-    const raw = toasts.length ? toasts[0] : defaultToast;
+    const raw = current || defaultToast;
     return {
       ...raw,
       message: i18n.text(raw.message || '', raw.messageParams || {}),
       actionLabel: i18n.text(raw.actionLabel || ''),
     };
-  }, [toasts]);
+  }, [current]);
 
+  // Slide the current toast out, then advance the queue once the exit animation has played. The
+  // removal is timer-driven (not the spring's onRest), so it fires exactly once for the toast being
+  // dismissed and can't be re-triggered by the spring re-settling as the next toast slides in.
   const hide = useCallback(() => {
-    clearTimeout(timerRef.current);
+    clearTimeout(autoHideTimer.current);
+    clearTimeout(exitTimer.current);
     setVisible(false);
+    exitTimer.current = setTimeout(() => removeToastRef.current(), EXIT_ANIMATION_MS);
   }, []);
 
+  // (Re)starts the auto-hide countdown. Stable identity (reads the duration via a ref), so the
+  // effect below only re-runs when the shown toast actually changes.
+  const scheduleAutoHide = useCallback(() => {
+    clearTimeout(autoHideTimer.current);
+    autoHideTimer.current = setTimeout(hide, durationRef.current);
+  }, [hide]);
+
+  // Start the countdown once per shown toast, keyed on its id — NOT on the spring's onRest. With
+  // `force`, onRest fires on every re-render, so scheduling the auto-hide there restarted the
+  // countdown on each render and could keep a toast on screen far longer than its duration.
+  useEffect(() => {
+    if (!currentId) {
+      return undefined;
+    }
+    scheduleAutoHide();
+    return () => clearTimeout(autoHideTimer.current);
+  }, [currentId, scheduleAutoHide]);
+
   const handleAction = useCallback(() => {
-    clearTimeout(timerRef.current);
-    if (toasts[0]) {
-      toasts[0].action();
+    current?.action?.();
+    hide();
+  }, [current, hide]);
+
+  const handleLongPress = useCallback(() => {
+    pressingRef.current = false;
+    if (snack.onLongPress) {
+      snack.onLongPress();
     }
     hide();
-  }, [toasts, hide]);
+  }, [snack, hide]);
 
-  const handleRest = useCallback(() => {
-    if (visibleRef.current) {
-      const duration = toasts[0]?.duration || 2500;
-      timerRef.current = setTimeout(hide, duration);
-    } else {
-      removeToast();
+  // While a long press is held, freeze the auto-hide countdown so the toast can't disappear
+  // mid-press. A press released before the threshold resumes the countdown from the start.
+  const handlePressStart = useCallback(() => {
+    pressingRef.current = true;
+    clearTimeout(autoHideTimer.current);
+  }, []);
+
+  const handlePressCancel = useCallback(() => {
+    pressingRef.current = false;
+    if (currentId) {
+      scheduleAutoHide();
     }
-  }, [toasts, hide, removeToast]);
+  }, [currentId, scheduleAutoHide]);
+
+  const longPressHandlers = useLongPress(handleLongPress, {
+    threshold: 4000,
+    onStart: handlePressStart,
+    onCancel: handlePressCancel,
+  });
 
   const {
     action = null,
     actionLabel = null,
     message = null,
+    onLongPress = null,
   } = snack;
 
-  const boxProps = {
-    ...(action && !actionLabel && { onClick: handleAction }),
-  };
+  // A toast is either long-pressable or has a whole-box click action — never both. Attaching both
+  // would let a single long press fire onLongPress (at the threshold) and then handleAction (on the
+  // release click). Long-press takes precedence.
+  const boxProps = onLongPress
+    ? { ...longPressHandlers }
+    : { ...(action && !actionLabel && { onClick: handleAction }) };
 
   const rows = calcRows(message, actionLabel);
   const snackBarHeight = 40 + (rows * 20);
@@ -159,7 +222,6 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
         config={config.stiff}
         reverse={!visible}
         force
-        onRest={handleRest}
       >
         {springProps => (
           // eslint-disable-next-line max-len

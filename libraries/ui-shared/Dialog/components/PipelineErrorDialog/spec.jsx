@@ -1,5 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import PipelineErrorDialog from './index';
 
 jest.mock('@shopgate/engage/a11y/components');
@@ -57,6 +59,23 @@ describe('<PipelineErrorDialog />', () => {
 
     clickElement.simulate('click');
     expect(wrapper.text()).not.toContain(devMarker);
+  });
+
+  it('should open directly in developer detail mode when params.openWithDetails is set', () => {
+    render((
+      <PipelineErrorDialog
+        actions={[]}
+        params={{
+          ...defaultParams,
+          openWithDetails: true,
+        }}
+      />
+    ));
+
+    // Developer detail view is shown immediately, without any tapping.
+    expect(screen.getByText('Pipeline:')).toBeInTheDocument();
+    expect(screen.getByText('Code:')).toBeInTheDocument();
+    expect(screen.getByText(/fakePipeline/)).toBeInTheDocument();
   });
 
   it('should not switch modes if tapped too slow', () => {
