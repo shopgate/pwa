@@ -127,4 +127,12 @@ class ToastProvider extends Component {
   }
 }
 
-export default withTheme(ToastProvider);
+const ThemedToastProvider = withTheme(ToastProvider);
+
+// The HOC returns a new component which doesn't carry over the statics of the wrapped class. They
+// are part of the public API of this module (consumers emit UIEvents on ToastProvider.ADD), so they
+// are re-attached explicitly.
+ThemedToastProvider.ADD = ToastProvider.ADD;
+ThemedToastProvider.FLUSH = ToastProvider.FLUSH;
+
+export default ThemedToastProvider;
