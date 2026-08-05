@@ -89,7 +89,7 @@ export const getFullImageSource = (src, { width, height } = {}, settings = {}) =
     return buildUrl(src, {
       w: width,
       h: height,
-      q: quality,
+      q: 70,
       zd: 'resize',
       // No transparency flag here - the legacy cdn only understands a plain color.
       fillc: fillColor,

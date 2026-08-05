@@ -101,7 +101,7 @@ describe('getFullImageSource()', () => {
         width: 1024,
       });
 
-      expect(result).toBe(`${baseUrl}?w=1024&h=1024&q=75&zd=resize&fillc=FFFFFF`);
+      expect(result).toBe(`${baseUrl}?w=1024&h=1024&q=70&zd=resize&fillc=FFFFFF`);
     });
 
     it('should add query parameters independent from the order of input parameters', () => {
@@ -110,7 +110,7 @@ describe('getFullImageSource()', () => {
         height: 1024,
       });
 
-      expect(result).toBe(`${baseUrl}?w=1024&h=1024&q=75&zd=resize&fillc=FFFFFF`);
+      expect(result).toBe(`${baseUrl}?w=1024&h=1024&q=70&zd=resize&fillc=FFFFFF`);
     });
   });
 });
