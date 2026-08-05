@@ -28,6 +28,23 @@ export interface ProductListSettings {
   grid: ProductGridSettings;
 }
 
+/**
+ * Settings for the product rating stars.
+ */
+export interface ProductRatingSettings {
+  /**
+   * Whether rating stars are also rendered for products that have no rating yet.
+   */
+  showEmptyStars: boolean;
+}
+
+/**
+ * Settings for product presentation across the app.
+ */
+export interface ProductSettings {
+  rating: ProductRatingSettings;
+}
+
 export interface AppSettings {
   navigation: {
     tabBar: {
@@ -38,9 +55,16 @@ export interface AppSettings {
       fixed: {
         borderEnabled: boolean;
       }
+      favorites: {
+        /**
+         * Whether the favorites tab bar icon renders the number of favorites within its badge.
+         */
+        showCounter: boolean;
+      }
     }
   }
   productList: ProductListSettings;
+  product: ProductSettings;
 }
 
 /**

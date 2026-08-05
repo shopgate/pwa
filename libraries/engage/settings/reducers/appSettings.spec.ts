@@ -27,6 +27,9 @@ describe('settings / reducers / appSettings', () => {
           fixed: {
             borderEnabled: false,
           },
+          favorites: {
+            showCounter: false,
+          },
         },
       },
       productList: {
@@ -37,6 +40,11 @@ describe('settings / reducers / appSettings', () => {
           },
         },
       },
+      product: {
+        rating: {
+          showEmptyStars: false,
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
@@ -44,6 +52,7 @@ describe('settings / reducers / appSettings', () => {
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
     expect(state.productList.grid.columns).toEqual(settings.productList.grid.columns);
+    expect(state.product.rating).toEqual(settings.product.rating);
   });
 
   it('deep merges a partial payload over the defaults', () => {
@@ -62,6 +71,7 @@ describe('settings / reducers / appSettings', () => {
       showLabels: DEFAULT_APP_SETTINGS.navigation.tabBar.showLabels,
       hideOnScroll: DEFAULT_APP_SETTINGS.navigation.tabBar.hideOnScroll,
       fixed: DEFAULT_APP_SETTINGS.navigation.tabBar.fixed,
+      favorites: DEFAULT_APP_SETTINGS.navigation.tabBar.favorites,
     });
   });
 

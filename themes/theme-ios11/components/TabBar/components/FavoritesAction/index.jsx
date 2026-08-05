@@ -2,7 +2,6 @@ import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { makeStyles } from '@shopgate/engage/styles';
-import { withWidgetSettings } from '@shopgate/engage/core/hocs';
 import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import FavoritesIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
@@ -11,6 +10,7 @@ import FavoritesIconBadge from './components/FavoritesIconBadge'; // eslint-disa
 import TabBarAction from '../TabBarAction';
 import connect from '../connector';
 import connectBadge from './components/FavoritesIconBadge/connector';
+import { useShowFavoritesCounter } from './hooks';
 
 const useIconStyles = makeStyles()({
   icon: {
@@ -18,8 +18,6 @@ const useIconStyles = makeStyles()({
     width: 24,
   },
 });
-
-const defaultWidgetSettings = { showCounter: true };
 
 /**
  * The tab bar favorites action.
@@ -33,37 +31,39 @@ const TabBarFavoritesAction = (props) => {
     historyPush,
     label,
     showWishlistItemsCountBadge,
-    widgetSettings = defaultWidgetSettings,
     ...tabBarActionProps
   } = props;
+  const showConfiguredCounter = useShowFavoritesCounter();
 
   const handleClick = useCallback(() => {
     historyPush({ pathname: FAVORITES_PATH });
   }, [historyPush]);
 
   const showCounter = (hasNewServices() && showWishlistItemsCountBadge)
-    || (!hasNewServices() && (widgetSettings.showCounter ?? defaultWidgetSettings.showCounter));
+    || (!hasNewServices() && showConfiguredCounter);
 
   const ariaLabel = useMemo(() => {
     const ariaCount = showCounter ? `${i18n.text('common.products')}: ${favoritesCount}.` : '';
     return `${i18n.text(label)}. ${ariaCount} `;
   }, [favoritesCount, label, showCounter]);
 
+  // `widgetSettings` used to reach the portals via the withWidgetSettings HOC. It is kept in the
+  // payload for extensions, but now carries the resolved value instead of the raw legacy settings.
+  const portalProps = {
+    ...props,
+    widgetSettings: { showCounter: showConfiguredCounter },
+    TabBarAction,
+  };
+
   return (
     <>
       <Portal
         name={portals.TAB_BAR_FAVORITES_BEFORE}
-        props={{
-          ...props,
-          TabBarAction,
-        }}
+        props={portalProps}
       />
       <Portal
         name={portals.TAB_BAR_FAVORITES}
-        props={{
-          ...props,
-          TabBarAction,
-        }}
+        props={portalProps}
       >
         <TabBarAction
           {...tabBarActionProps}
@@ -81,10 +81,7 @@ const TabBarFavoritesAction = (props) => {
       </Portal>
       <Portal
         name={portals.TAB_BAR_FAVORITES_AFTER}
-        props={{
-          ...props,
-          TabBarAction,
-        }}
+        props={portalProps}
       />
     </>
   );
@@ -95,18 +92,11 @@ TabBarFavoritesAction.propTypes = {
   historyPush: PropTypes.func.isRequired,
   path: PropTypes.string.isRequired,
   showWishlistItemsCountBadge: PropTypes.bool.isRequired,
-  widgetSettings: PropTypes.shape({
-    showCounter: PropTypes.bool,
-  }),
   ...TabBarAction.propTypes,
 };
 
 TabBarFavoritesAction.defaultProps = {
-  widgetSettings: defaultWidgetSettings,
   ...TabBarAction.defaultProps,
 };
 
-export default withWidgetSettings(
-  connect(connectBadge(memo(TabBarFavoritesAction))),
-  '@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge'
-);
+export default connect(connectBadge(memo(TabBarFavoritesAction)));

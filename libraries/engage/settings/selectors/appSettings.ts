@@ -37,3 +37,19 @@ export const getProductGridColumns = createSelector(
   getAppSettingsState,
   appSettings => appSettings.productList.grid.columns
 );
+
+/**
+ * Selects whether the favorites tab bar icon shows the number of favorites within its badge.
+ */
+export const getShowFavoritesCounter = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.tabBar.favorites.showCounter
+);
+
+/**
+ * Selects whether rating stars are also shown for products without a rating.
+ */
+export const getShowEmptyRatingStars = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.rating.showEmptyStars
+);

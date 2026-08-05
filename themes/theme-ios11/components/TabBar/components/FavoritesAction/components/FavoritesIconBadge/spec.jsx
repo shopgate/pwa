@@ -13,6 +13,11 @@ jest.mock('@shopgate/pwa-common-commerce/favorites/selectors', () => ({
   getFavoritesCount: jest.fn(() => 1),
 }));
 
+// Resolution of the setting has its own spec - this one covers the badge rendering.
+jest.mock('../../hooks', () => ({
+  useShowFavoritesCounter: jest.fn(() => true),
+}));
+
 const mockedStore = configureStore();
 /**
  * Creates component

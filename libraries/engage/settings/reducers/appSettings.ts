@@ -28,6 +28,9 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       fixed: {
         borderEnabled: true,
       },
+      favorites: {
+        showCounter: true,
+      },
     },
   },
   productList: {
@@ -36,6 +39,11 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
         xs: 2,
         md: 4,
       },
+    },
+  },
+  product: {
+    rating: {
+      showEmptyStars: true,
     },
   },
 };
