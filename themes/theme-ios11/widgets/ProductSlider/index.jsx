@@ -19,8 +19,11 @@ import connect from './connector';
 export const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
 
 const useStyles = makeStyles()(() => ({
+  // The `.swiper` element clips its slides via swiper/css `overflow: hidden`, so the card shadow
+  // has to fit inside: the largest preset reaches 6px above, 14px below and 9px to each side of
+  // the card, rounded up here. Swiper subtracts this padding before it sizes its slides.
   sliderContainer: {
-    paddingBottom: '10px !important',
+    padding: '8px 9px 16px !important',
   },
   slider: {
     width: '100%',
@@ -81,8 +84,8 @@ const ProductSlider = ({
         <ProductListEntryProvider productId={product.id}>
           {/*
             The card chrome (background, radius, shadow, border) lives on the engage ProductCard
-            itself, driven by theme.components.cards. A second layer of it would clip the card's
-            corners and double its shadow, so the Card here only positions the slide.
+            itself. A second layer of it would clip the card's corners and double its shadow, so
+            the Card here only positions the slide.
           */}
           <Card className={classes.card} plain>
             <ProductCard

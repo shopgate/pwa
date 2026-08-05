@@ -10,7 +10,7 @@ import {
 } from '@shopgate/engage/settings/action-creators/shopSettings';
 import { receiveMerchantSettings } from '@shopgate/engage/settings/action-creators/merchantSettings';
 import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
-import type { AppSettings } from '@shopgate/engage/settings/types/appSettings';
+import type { AppSettingsPayload } from '@shopgate/engage/settings/types/appSettings';
 
 const REQUEST_TIMEOUT = 3000;
 
@@ -189,7 +189,7 @@ export const fetchSettings = async (store: SettingsStore): Promise<void> => {
       id: 'app-settings-jsonp',
       url: appSettingsUrl,
       callbackName: 'setAppSettings',
-      onReceive: settings => store.dispatch(receiveAppSettings(settings as AppSettings)),
+      onReceive: settings => store.dispatch(receiveAppSettings(settings as AppSettingsPayload)),
     }));
   }
 

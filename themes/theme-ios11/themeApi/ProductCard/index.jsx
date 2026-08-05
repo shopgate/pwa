@@ -6,18 +6,20 @@ import { ProductCard as EngageProductCard } from '@shopgate/engage/product/compo
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()((theme, { shadow }) => ({
+const useStyles = makeStyles()((_theme, { shadow }) => ({
   root: {
-    // Card chrome (background, radius, shadow, border) now lives on the engage
-    // ProductCard itself, driven by theme.components.cards.*. This wrapper stays a
-    // neutral positioning container so it never clips the card's shadow. A custom
-    // `render` that doesn't use the engage ProductCard has to bring its own chrome.
+    // Card chrome now lives on the engage ProductCard itself — background, radius and border from
+    // theme.components.cards.*, the shadow from the admin configuration. This wrapper stays a
+    // neutral positioning container so it never clips that shadow. A custom `render` that doesn't
+    // use the engage ProductCard has to bring its own chrome.
     position: 'relative',
-    // `shadow={false}` predates the card tokens, when the shadow sat on this wrapper. It is
-    // honoured by overriding the token itself: custom properties inherit, so this reaches the
-    // card that draws the shadow, plus anything else in the subtree reading the same token.
+    // `shadow={false}` predates the card settings, when the shadow sat on this wrapper. The card
+    // now draws its own shadow from the admin configuration, so the prop is honoured by
+    // suppressing it on the card rendered inside this wrapper.
     ...!shadow && {
-      [theme.vars.components.cards.boxShadow]: 'none',
+      '& .engage__product-card': {
+        boxShadow: 'none',
+      },
     },
   },
 }));
@@ -29,7 +31,7 @@ const useStyles = makeStyles()((theme, { shadow }) => ({
  * @param {Function} props.render The render function for the card content.
  * @param {string} props.className Custom class name for the card.
  * @param {boolean} props.shadow Whether to show a shadow. Deprecated — the card shadow is
- * configured via the `--sg-cards-boxShadow` custom property. Only `false` still has an effect.
+ * configured in the admin under "Cards & Tiles". Only `false` still has an effect.
  * @param {Object} props.style Custom style for the card.
  * @returns {JSX.Element}
  */
@@ -70,7 +72,7 @@ ProductCard.propTypes = {
   className: PropTypes.string,
   product: PropTypes.shape(),
   render: PropTypes.func,
-  /** @deprecated Configure the card shadow via the `--sg-cards-boxShadow` custom property. */
+  /** @deprecated Configure the card shadow in the admin under "Cards & Tiles". */
   shadow: PropTypes.bool,
   style: PropTypes.shape(),
 };

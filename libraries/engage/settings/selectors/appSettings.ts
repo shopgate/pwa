@@ -53,3 +53,19 @@ export const getProductTileNameLines = createSelector(
   getAppSettingsState,
   appSettings => appSettings.productList.tile.productName.lines
 );
+
+/**
+ * Selects the drop shadow configured for product cards.
+ */
+export const getProductCardShadow = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.productList.card.shadow
+);
+
+/**
+ * Selects the drop shadow configured for product tiles.
+ */
+export const getProductTileShadow = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.productList.tile.shadow
+);

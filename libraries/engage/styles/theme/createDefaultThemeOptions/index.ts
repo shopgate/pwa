@@ -123,7 +123,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             padding: 'var(--sg-cards-padding, 0px)',
             textPadding: 'var(--sg-cards-text-padding, 12px 16px)',
             imagePadding: 'var(--sg-cards-image-padding, 0px)',
-            boxShadow: 'var(--sg-cards-boxShadow, 0 4px 8px rgba(0,0,0,0.16))',
             border: 'var(--sg-cards-border-width, 0px) solid var(--sg-cards-border-color, transparent)',
           },
         },
@@ -140,7 +139,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             // the button collides with the product name.
             textPaddingTop: 'max(var(--sg-tiles-text-padding, 8px), 16px)',
             imagePadding: 'var(--sg-tiles-image-padding, 0px)',
-            boxShadow: 'var(--sg-tiles-boxShadow, none)',
             border: 'var(--sg-tiles-border-width, 0px) solid var(--sg-tiles-border-color, transparent)',
           },
         },

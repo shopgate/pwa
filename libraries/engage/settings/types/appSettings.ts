@@ -1,4 +1,16 @@
-import type { Breakpoint } from '@shopgate/engage/styles/theme';
+import type { Breakpoint, ShadowSize } from '@shopgate/engage/styles/theme';
+
+// Re-exported so consumers of these settings do not have to reach into the styles layer, which
+// owns the type because it owns the elevation scale the sizes map to.
+export type { ShadowSize };
+
+/**
+ * Recursively optional variant of `T`. The settings sources send only what a merchant configured,
+ * and the admin preview additionally prunes the fields its visibility conditions hide.
+ */
+export type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+};
 
 export interface AppSettingsState {
   settings: {
@@ -29,15 +41,25 @@ export interface ProductNameSettings {
 }
 
 /**
+ * Drop shadow shared by the card and tile product surfaces.
+ */
+export interface ShadowSettings {
+  /** Which preset elevation to draw. `none` renders no shadow at all. */
+  size: ShadowSize;
+  /** CSS color the shadow is drawn in, e.g. `rgba(0, 0, 0, 0.16)`. */
+  color: string;
+}
+
+/**
  * Settings for the various product-list types. Add a key and its own settings
  * interface per future type (e.g. slider).
  */
 export interface ProductListSettings {
   grid: ProductGridSettings;
   /** Product cards (sliders, relations, live shopping). */
-  card: { productName: ProductNameSettings };
+  card: { productName: ProductNameSettings; shadow: ShadowSettings };
   /** Product grid tiles. */
-  tile: { productName: ProductNameSettings };
+  tile: { productName: ProductNameSettings; shadow: ShadowSettings };
 }
 
 export interface AppSettings {
@@ -54,6 +76,12 @@ export interface AppSettings {
   }
   productList: ProductListSettings;
 }
+
+/**
+ * What a settings source actually sends. Every field is optional, so the reducer fills the gaps
+ * from its defaults instead of leaving consumers with undefined.
+ */
+export type AppSettingsPayload = DeepPartial<AppSettings>;
 
 /**
  * The stored app settings slice. Extends the raw {@link AppSettings} values

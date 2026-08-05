@@ -1,4 +1,4 @@
-import type { AppSettings } from '../types/appSettings';
+import type { AppSettings, AppSettingsPayload } from '../types/appSettings';
 import { receiveAppSettings } from '../action-creators/appSettings';
 import appSettings, { DEFAULT_APP_SETTINGS } from './appSettings';
 
@@ -36,8 +36,20 @@ describe('settings / reducers / appSettings', () => {
             md: 3,
           },
         },
-        card: { productName: { lines: 1 } },
-        tile: { productName: { lines: 4 } },
+        card: {
+          productName: { lines: 1 },
+          shadow: {
+            size: 'low',
+            color: 'rgba(0, 0, 0, 0.4)',
+          },
+        },
+        tile: {
+          productName: { lines: 4 },
+          shadow: {
+            size: 'strong',
+            color: '#000000',
+          },
+        },
       },
     };
 
@@ -51,9 +63,9 @@ describe('settings / reducers / appSettings', () => {
   it('deep merges a partial payload over the defaults', () => {
     // The admin preview may send only the fields the merchant changed. Anything
     // omitted must keep its default so consumers never read undefined.
-    const partial = {
+    const partial: AppSettingsPayload = {
       navigation: { tabBar: { variant: 'floating' } },
-    } as AppSettings;
+    };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
 
@@ -67,10 +79,32 @@ describe('settings / reducers / appSettings', () => {
     });
   });
 
+  it('resets fields a later payload omits back to their default', () => {
+    // The admin preview drops the fields of inputs its visibility conditions hide, so selecting the
+    // flat card style stops sending a shadow size. The elevation of the previous payload must not
+    // survive that, or the preview keeps drawing a shadow on a flat card.
+    const withShadow = appSettings(
+      DEFAULT_APP_SETTINGS,
+      receiveAppSettings({
+        productList: { card: { shadow: { size: 'strong' } } },
+      })
+    );
+
+    expect(withShadow.productList.card.shadow.size).toBe('strong');
+
+    const withoutShadow = appSettings(
+      withShadow,
+      receiveAppSettings({ productList: { card: {} } })
+    );
+
+    expect(withoutShadow.productList.card.shadow.size)
+      .toBe(DEFAULT_APP_SETTINGS.productList.card.shadow.size);
+  });
+
   it('does not mutate the shared defaults constant', () => {
     appSettings(
       DEFAULT_APP_SETTINGS,
-      receiveAppSettings({ navigation: { tabBar: { variant: 'floating' } } } as AppSettings)
+      receiveAppSettings({ navigation: { tabBar: { variant: 'floating' } } })
     );
 
     expect(DEFAULT_APP_SETTINGS.navigation.tabBar.variant).toBe('fixed');

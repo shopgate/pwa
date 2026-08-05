@@ -2,12 +2,12 @@ import { act, render } from '@testing-library/react';
 import { logger } from '@shopgate/engage/core/helpers';
 import { RECEIVE_APP_SETTINGS } from '@shopgate/engage/settings/constants/appSettings';
 import useColorScheme from '@shopgate/engage/styles/theme/hooks/useColorScheme';
-import type { AppSettings } from '@shopgate/engage/settings/types/appSettings';
+import type { AppSettingsPayload } from '@shopgate/engage/settings/types/appSettings';
 import FrontendSettingsPreviewBridge from './FrontendSettingsPreviewBridge';
 import { PREVIEW_STYLE_TAG_ID } from './helpers';
 import type { FrontendSettingsPreviewBridgeMessage } from './types';
 
-const appSettings: AppSettings = {
+const appSettings: AppSettingsPayload = {
   navigation: {
     tabBar: {
       variant: 'fixed',

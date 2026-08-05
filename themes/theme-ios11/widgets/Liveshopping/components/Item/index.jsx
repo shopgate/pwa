@@ -6,19 +6,20 @@ import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { ProductImage, ProductBadges, ProductName } from '@shopgate/engage/product/components';
+import { useProductCardShadow } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()((theme, { shadow }) => ({
   // This widget renders the card content itself instead of the engage ProductCard, so it also
   // brings the card chrome that the ProductCard would otherwise draw from these tokens.
   card: {
     margin: '5px 15px 10px',
     background: theme.components.cards.backgroundColor,
     borderRadius: theme.shape.cardsBorderRadius,
-    boxShadow: theme.components.cards.boxShadow,
+    boxShadow: shadow,
     border: theme.components.cards.border,
     overflow: 'hidden',
   },
@@ -76,7 +77,8 @@ function LiveshoppingItem({
   productId,
   hasPagination,
 }) {
-  const { classes, cx } = useStyles();
+  const shadow = useProductCardShadow();
+  const { classes, cx } = useStyles({ shadow });
   const { ProductCard } = useThemeComponents();
 
   return (

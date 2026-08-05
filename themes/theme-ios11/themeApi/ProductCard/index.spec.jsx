@@ -74,14 +74,14 @@ describe('<ProductCard />', () => {
 
     expect(withoutShadow).not.toBe(withShadow);
 
-    // The shadow is drawn by the card inside, so it is switched off through the inherited token.
+    // The shadow is drawn by the card inside, so it is switched off by targeting that card.
     // Emotion inserts its rules via the CSSOM, so they are read from the sheet, not from the tag.
     const css = Array.from(document.styleSheets)
       .flatMap(sheet => Array.from(sheet.cssRules).map(rule => rule.cssText))
       .join('');
 
     expect(css).toMatch(
-      new RegExp(`\\.${withoutShadow}[^}]*--sg-components-cards-boxShadow: ?none`)
+      new RegExp(`\\.${withoutShadow} \\.engage__product-card[^}]*box-shadow: ?none`)
     );
   });
 
