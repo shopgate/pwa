@@ -19,7 +19,7 @@ const useShowEmptyRatingStars = (): boolean => {
     (useWidgetSettings(RATING_WIDGET_ID) || {}) as { showEmptyRatingStars?: boolean };
 
   if (!areAppSettingsHydrated) {
-    return legacyShowEmptyRatingStars ?? false;
+    return legacyShowEmptyRatingStars ?? showEmptyStars;
   }
 
   return showEmptyStars;
