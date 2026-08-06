@@ -39,6 +39,14 @@ describe('settings / reducers / appSettings', () => {
             md: 3,
           },
         },
+        slider: {
+          slidesPerView: {
+            xs: 1.2,
+            sm: 2.2,
+            md: 3.2,
+            lg: 4.2,
+          },
+        },
       },
       product: {
         rating: {
@@ -52,6 +60,8 @@ describe('settings / reducers / appSettings', () => {
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
     expect(state.productList.grid.columns).toEqual(settings.productList.grid.columns);
+    expect(state.productList.slider.slidesPerView)
+      .toEqual(settings.productList.slider.slidesPerView);
     expect(state.product.rating).toEqual(settings.product.rating);
   });
 

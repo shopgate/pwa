@@ -40,6 +40,14 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
         md: 4,
       },
     },
+    slider: {
+      slidesPerView: {
+        xs: 2.3,
+        sm: 3.3,
+        md: 4.3,
+        lg: 5.3,
+      },
+    },
   },
   product: {
     rating: {

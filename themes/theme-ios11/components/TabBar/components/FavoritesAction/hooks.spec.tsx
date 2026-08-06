@@ -20,7 +20,6 @@ interface SetupOptions {
   widgetSettings: { showCounter?: boolean };
 }
 
-// Configures the mocked dependencies for a single render.
 const setup = ({ hydrated, appSettingsValue, widgetSettings }: SetupOptions) => {
   (useSelector as jest.Mock).mockImplementation((selector: unknown) => {
     if (selector === getAreAppSettingsHydrated) {
@@ -34,7 +33,6 @@ const setup = ({ hydrated, appSettingsValue, widgetSettings }: SetupOptions) => 
   (useWidgetSettings as jest.Mock).mockReturnValue(widgetSettings);
 };
 
-// Renders the hook and returns its result.
 const renderHook = (): boolean | undefined => {
   let result: boolean | undefined;
 
@@ -54,20 +52,36 @@ describe('useShowFavoritesCounter', () => {
   });
 
   it('honors the legacy widget setting before hydration', () => {
-    setup({ hydrated: false, appSettingsValue: true, widgetSettings: { showCounter: false } });
+    setup({
+      hydrated: false,
+      appSettingsValue: true,
+      widgetSettings: { showCounter: false },
+    });
     expect(renderHook()).toBe(false);
   });
 
   it('keeps the legacy default of true when the widget setting is missing', () => {
-    setup({ hydrated: false, appSettingsValue: false, widgetSettings: {} });
+    setup({
+      hydrated: false,
+      appSettingsValue: false,
+      widgetSettings: {},
+    });
     expect(renderHook()).toBe(true);
   });
 
   it('uses the app settings once hydrated', () => {
-    setup({ hydrated: true, appSettingsValue: false, widgetSettings: { showCounter: true } });
+    setup({
+      hydrated: true,
+      appSettingsValue: false,
+      widgetSettings: { showCounter: true },
+    });
     expect(renderHook()).toBe(false);
 
-    setup({ hydrated: true, appSettingsValue: true, widgetSettings: { showCounter: false } });
+    setup({
+      hydrated: true,
+      appSettingsValue: true,
+      widgetSettings: { showCounter: false },
+    });
     expect(renderHook()).toBe(true);
   });
 });

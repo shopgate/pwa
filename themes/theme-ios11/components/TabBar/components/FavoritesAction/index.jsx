@@ -47,8 +47,6 @@ const TabBarFavoritesAction = (props) => {
     return `${i18n.text(label)}. ${ariaCount} `;
   }, [favoritesCount, label, showCounter]);
 
-  // `widgetSettings` used to reach the portals via the withWidgetSettings HOC. It is kept in the
-  // payload for extensions, but now carries the resolved value instead of the raw legacy settings.
   const portalProps = {
     ...props,
     widgetSettings: { showCounter: showConfiguredCounter },

@@ -21,11 +21,25 @@ export interface ProductGridSettings {
 }
 
 /**
+ * Number of slides to render side by side, keyed by breakpoint. Fractional values are
+ * intentional - they let the next slide peek in.
+ */
+export type SlidesPerView = Partial<Record<Breakpoint, number>>;
+
+/**
+ * Settings for the ProductSlider list type.
+ */
+export interface ProductSliderSettings {
+  slidesPerView: SlidesPerView;
+}
+
+/**
  * Settings for the various product-list types. Add a key and its own settings
- * interface per future type (e.g. slider).
+ * interface per future type.
  */
 export interface ProductListSettings {
   grid: ProductGridSettings;
+  slider: ProductSliderSettings;
 }
 
 /**

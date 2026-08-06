@@ -20,7 +20,6 @@ interface SetupOptions {
   widgetSettings: { showEmptyRatingStars?: boolean };
 }
 
-// Configures the mocked dependencies for a single render.
 const setup = ({ hydrated, appSettingsValue, widgetSettings }: SetupOptions) => {
   (useSelector as jest.Mock).mockImplementation((selector: unknown) => {
     if (selector === getAreAppSettingsHydrated) {
@@ -34,7 +33,6 @@ const setup = ({ hydrated, appSettingsValue, widgetSettings }: SetupOptions) => 
   (useWidgetSettings as jest.Mock).mockReturnValue(widgetSettings);
 };
 
-// Renders the hook and returns its result.
 const renderHook = (): boolean | undefined => {
   let result: boolean | undefined;
 
@@ -70,7 +68,11 @@ describe('useShowEmptyRatingStars', () => {
   });
 
   it('keeps the legacy default of false when the widget setting is missing', () => {
-    setup({ hydrated: false, appSettingsValue: true, widgetSettings: {} });
+    setup({
+      hydrated: false,
+      appSettingsValue: true,
+      widgetSettings: {},
+    });
     expect(renderHook()).toBe(false);
   });
 

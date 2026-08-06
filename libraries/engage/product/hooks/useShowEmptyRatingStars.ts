@@ -9,10 +9,6 @@ const RATING_WIDGET_ID = '@shopgate/engage/rating';
 
 /**
  * Resolves whether rating stars are also rendered for products without a rating.
- *
- * Once the app settings are hydrated from a source (admin sync / jsonp / preview) they are
- * authoritative. Before that the legacy `useWidgetSettings` value keeps its previous behavior,
- * including its `false` default.
  * @returns Whether empty rating stars are shown.
  */
 const useShowEmptyRatingStars = (): boolean => {

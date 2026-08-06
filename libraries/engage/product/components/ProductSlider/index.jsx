@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useWidgetSettings } from '@shopgate/engage/core';
 import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import { Swiper } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -8,6 +7,8 @@ import {
   ProductListTypeProvider,
   ProductListEntryProvider,
 } from '@shopgate/engage/product/providers';
+import { useSlidesPerView } from './hooks';
+import { WIDGET_ID } from './constants';
 
 const useStyles = makeStyles()({
   container: {
@@ -19,8 +20,6 @@ const items = {
   margin: '0 8px',
   height: '100%',
 };
-
-export const WIDGET_ID = '@shopgate/engage/product/ProductSlider';
 
 /**
  * @param {Object} props The component props.
@@ -40,8 +39,7 @@ function ProductSlider(props) {
     item,
     ...swiperProps
   } = props;
-  const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
-  const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSettings;
+  const slidesPerView = useSlidesPerView(props.slidesPerView);
   // ProductSlider items are rendered with the ProductCard component provided by the theme.
   const { ProductCard } = useThemeComponents();
   const Item = item || ProductCard;

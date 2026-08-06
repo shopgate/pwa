@@ -39,6 +39,14 @@ export const getProductGridColumns = createSelector(
 );
 
 /**
+ * Selects the ProductSlider slidesPerView setting (keyed by breakpoint).
+ */
+export const getProductSliderSlidesPerView = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.productList.slider.slidesPerView
+);
+
+/**
  * Selects whether the favorites tab bar icon shows the number of favorites within its badge.
  */
 export const getShowFavoritesCounter = createSelector(

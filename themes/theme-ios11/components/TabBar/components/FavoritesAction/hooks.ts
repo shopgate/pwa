@@ -9,9 +9,6 @@ const FAVORITES_ICON_BADGE_WIDGET_ID = '@shopgate/theme-ios11/components/TabBar/
 
 /**
  * Resolves whether the favorites tab bar icon renders the number of favorites within its badge.
- *
- * Once the app settings are hydrated from a source (admin sync / jsonp / preview) they are
- * authoritative. Before that the legacy `useWidgetSettings` value is honored.
  * @returns Whether the counter is shown.
  */
 export const useShowFavoritesCounter = (): boolean => {

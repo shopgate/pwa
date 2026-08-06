@@ -18,7 +18,7 @@ const ICON_SIZES = {
 const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
-    display: 'inline-block',
+    display: 'inline-flex',
     verticalAlign: 'middle',
     maxWidth: '100%',
   },
