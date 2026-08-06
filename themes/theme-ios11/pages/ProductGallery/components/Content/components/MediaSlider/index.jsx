@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
+import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { Swiper, Image } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -57,13 +57,12 @@ const useStyles = makeStyles()(theme => ({
  */
 const ProductGalleryMedia = ({ initialSlide, media }) => {
   const { classes } = useStyles();
+  const { gallery } = useProductImageSettings();
   const settings = useWidgetSettings('@shopgate/engage/product/Gallery');
 
   if (!Array.isArray(media) || media.length === 0) {
     return <div className={classes.container} />;
   }
-
-  const { GalleryImage: galleryResolutions } = getProductImageSettings();
 
   const sliderClassNames = {
     container: classes.swiperContainer,
@@ -92,7 +91,8 @@ const ProductGalleryMedia = ({ initialSlide, media }) => {
                 src={singleMedia.url}
                 alt={singleMedia.altText}
                 classNameImg={classes.slide}
-                resolutions={galleryResolutions}
+                resolutions={gallery.resolutions}
+                ratio={gallery.ratio}
                 unwrapped
               />
             </div>

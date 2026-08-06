@@ -6,15 +6,12 @@ import { defaultProps, propTypes } from './props';
 const placeholderIconScale = 0.65;
 
 const useStyles = makeStyles()(theme => ({
+  // Fills the box its parent reserves rather than reserving one of its own.
   placeholderContainer: {
-    position: 'relative',
+    position: 'absolute',
     width: '100%',
-    ':before': {
-      display: 'block',
-      content: '""',
-      width: '100%',
-      paddingTop: '100%',
-    },
+    height: '100%',
+    top: 0,
   },
   placeholderContent: {
     position: 'absolute',

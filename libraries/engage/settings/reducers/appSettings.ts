@@ -1,9 +1,19 @@
 import { produce } from 'immer';
-import { merge } from 'lodash';
+import { cloneDeep, merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
 import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
+import {
+  DEFAULT_IMAGE_FILL_COLOR,
+  DEFAULT_IMAGE_FILL_TRANSPARENT,
+  DEFAULT_IMAGE_QUALITY,
+  DEFAULT_SHOW_INNER_SHADOW,
+} from '../constants/imageSettings';
+// Deliberately not exported from the "helpers" barrel - they normalize values on their way into
+// the slice, which is nothing a consumer of the settings needs.
+import { toImageQuality } from '../helpers/toImageQuality';
+import { toThumborColor } from '../helpers/toThumborColor';
 
 type AppSettingsAction = ReceiveAppSettingsAction | UnknownAction;
 
@@ -38,6 +48,19 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
     },
   },
+  images: {
+    quality: DEFAULT_IMAGE_QUALITY,
+    // Already in the image service's format, so the unhydrated path needs no conversion.
+    fillColor: DEFAULT_IMAGE_FILL_COLOR,
+    fillTransparent: DEFAULT_IMAGE_FILL_TRANSPARENT,
+    product: {
+      ratio: {
+        width: 1,
+        height: 1,
+      },
+      showInnerShadow: DEFAULT_SHOW_INNER_SHADOW,
+    },
+  },
 };
 
 /**
@@ -51,10 +74,31 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   action = { type: '' }
 ) => produce(state ?? DEFAULT_APP_SETTINGS, (draft: AppSettingsSlice) => {
   if (isReceiveAppSettingsAction(action)) {
-    // Deep merge so a partial payload (e.g. only some navigation.tabBar fields)
-    // keeps the built-in defaults for anything the source omits, rather than
-    // shallow-replacing whole branches and leaving consumers with undefined.
-    merge(draft, action.settings);
+    const { images } = action.settings ?? {};
+
+    // A cleared branch is replaced outright, then kept out of the merge below. Merging the defaults
+    // in would only add to it, leaving whatever an earlier payload configured in place.
+    if (images === null) {
+      draft.images = cloneDeep(DEFAULT_APP_SETTINGS.images);
+    } else if (images?.product === null) {
+      draft.images.product = cloneDeep(DEFAULT_APP_SETTINGS.images.product);
+    }
+
+    // Deep merged so a partial payload keeps the defaults for whatever the source omits.
+    merge(draft, {
+      ...action.settings,
+      images: images === null ? undefined : {
+        ...images,
+        product: images?.product ?? undefined,
+      },
+    });
+
+    // Converted on the way in, so the slice holds wire ready values and every image url does not
+    // pay for it. Unconditional, because an empty string or a null reaches here like any other
+    // value - both converters are idempotent.
+    draft.images.fillColor = toThumborColor(draft.images.fillColor);
+    draft.images.quality = toImageQuality(draft.images.quality);
+
     draft.isHydrated = true;
   }
 });

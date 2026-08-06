@@ -1,6 +1,7 @@
 import React from 'react';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { MEDIA_TYPE_IMAGE, MEDIA_TYPE_VIDEO } from '@shopgate/engage/product';
+import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { PORTAL_PRODUCT_MEDIA } from '../../../components/constants';
 import MediaImage from './MediaImage';
 import FeaturedVideo from './FeaturedVideo';
@@ -17,10 +18,16 @@ const types = {
  */
 const FeaturedMedia = ({ type, url, altText }) => {
   const TypeRenderer = types[type] || MediaImage;
+  const { list } = useProductImageSettings();
 
   return (
     <SurroundPortals portalName={PORTAL_PRODUCT_MEDIA}>
-      <TypeRenderer url={url} altText={altText} />
+      <TypeRenderer
+        url={url}
+        altText={altText}
+        resolutions={list.resolutions}
+        ratio={list.ratio}
+      />
     </SurroundPortals>
   );
 };

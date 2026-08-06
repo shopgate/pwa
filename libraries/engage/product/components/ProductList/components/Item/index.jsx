@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Image, Link, Grid, Availability,
+  Link, Grid, Availability,
 } from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import Portal from '@shopgate/pwa-common/components/Portal';
@@ -18,6 +18,7 @@ import Manufacturer from '@shopgate/pwa-ui-shared/Manufacturer';
 import { PriceInfo, ProductName, ProductBadges } from '@shopgate/engage/product';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
+import ProductImage from '../../../ProductImage';
 
 const useStyles = makeStyles()(theme => ({
   listItemContainer: {
@@ -86,7 +87,12 @@ const Item = ({ display, product }) => {
 
           <Portal name={portals.PRODUCT_ITEM_IMAGE_BEFORE} props={{ productId: product.id }} />
           <Portal name={portals.PRODUCT_ITEM_IMAGE} props={{ productId: product.id }}>
-            <Image itemProp="image" src={product.featuredImageBaseUrl} alt={product.name} />
+            <ProductImage
+              itemProp="image"
+              src={product.featuredImageBaseUrl}
+              alt={product.name}
+              context="list"
+            />
           </Portal>
           <Portal name={portals.PRODUCT_ITEM_IMAGE_AFTER} props={{ productId: product.id }} />
           <ProductBadges location="productList" productId={product.id}>

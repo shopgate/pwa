@@ -38,7 +38,7 @@ Requires the external `sgconnect` CLI (not installed by `yarn install`).
 
 - Install / setup: `yarn install`, then `yarn setup` (`sgconnect init && lerna bootstrap`). Full reset: `yarn resetup`.
 - Run locally: `yarn start` (`sgconnect frontend start`); `yarn start-cloud` (backend + frontend). Desktop web bridge: `WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd`.
-- Test: `yarn test` (`RUN_LONG=true jest`, full run); `yarn test:short` / `yarn test:watch` (skip long engage index specs — see Pitfalls); `yarn cover`.
+- Test: **`yarn test:short` is the default** — use it for routine runs, and scope it to the paths you touched (`yarn test:short <path>`) rather than sweeping the repo. `yarn test` (`RUN_LONG=true jest`) is the full run, reserved for changes that touch `@shopgate/engage/*` exports (see Pitfalls); `yarn test:watch`; `yarn cover`.
 - Lint: `yarn lint` (eslint `.js/.jsx/.json`, ignores `extensions/`); `yarn lint:summary`. A Husky pre-commit hook runs `lint-staged`.
 - Theme git subtrees: `yarn add-remotes` / `yarn remove-remotes`.
 - Release / build: `yarn release` → `make release` (publishes npm + GitHub releases — **verify before use**; `make release-dry-run` to inspect output). `yarn clean` → `make clean`.
@@ -68,6 +68,7 @@ Do not copy Knowledge Base content into this file. Keep AGENTS.md focused on thi
 ## Testing Notes
 
 - Tests are `*.spec.js(x)` colocated with source. Config: root `jest.config.js` extends `@shopgate/pwa-unit-test/jest.config`.
+- **Prefer `yarn test:short`, scoped to the paths you changed.** A repo-wide run takes minutes and rarely tells you more than the affected suites do. Widen to the whole suite only when the change could reach unrelated packages, and to `yarn test` only for the export-surface reason below.
 - `RUN_LONG=true` (set only by `yarn test`) runs everything; without it, the 18 `libraries/engage/<pkg>/index.spec.js(x)` barrel specs are skipped. `test:short`, `test:watch`, **and CI** (`yarn cover` = `jest --coverage`, no `RUN_LONG`) all skip them — so they run only when someone manually runs `yarn test`. These specs guard the `@shopgate/engage/*` public export surface, so run `yarn test` locally before merging changes that touch exports.
 - Only the `@shopgate-theme-config` extension is included in tests; all other `extensions/` are excluded.
 - Both enzyme and `@testing-library/react` (RTL) exist; the direction is to migrate from enzyme to RTL. **Write all new tests with RTL, not enzyme.** Keep RTL tests forward-compatible (query via `screen.*`, `getByRole`/`findBy*`, drive with `fireEvent` or wrapped `userEvent`) so they survive the planned RTL 12→16 / React 17→18 upgrade.
@@ -94,4 +95,5 @@ Do not copy Knowledge Base content into this file. Keep AGENTS.md focused on thi
 - Do not add new glamor styling — write CSS with `makeStyles` / `useStyles` (`tss-react`) instead.
 - Do not create new `connector.js` files — wire redux in new code with hooks (`useSelector`, `useDispatch`); `connector.js` is legacy.
 - Write new tests with `@testing-library/react`, not enzyme (enzyme→RTL migration in progress).
+- Run tests with `yarn test:short`, narrowed to the paths you touched; keep `yarn test` for export-surface changes.
 - Don't rely on `extensions/*` being linted or CI-covered; only `@shopgate-theme-config` is.

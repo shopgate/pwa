@@ -18,10 +18,9 @@ const useStyles = makeStyles()(theme => ({
   },
   productImage: {
     flex: '0 0 auto',
-    width: '2.5rem',
-    height: '2.5rem',
+    width: 70,
     background: theme.palette.background.emphasized,
-    marginRight: theme.spacing(2.5),
+    marginRight: theme.spacing(2),
   },
   productContent: {
     flexGrow: 1,
