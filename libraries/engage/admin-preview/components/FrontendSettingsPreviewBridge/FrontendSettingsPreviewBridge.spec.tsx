@@ -39,6 +39,18 @@ const appSettings: AppSettings = {
       showEmptyStars: true,
     },
   },
+  images: {
+    quality: 75,
+    fillColor: 'FFFFFF',
+    fillTransparent: true,
+    product: {
+      ratio: {
+        width: 1,
+        height: 1,
+      },
+      showInnerShadow: false,
+    },
+  },
 };
 
 const mockedDispatch = jest.fn();

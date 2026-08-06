@@ -12,7 +12,7 @@ exports[`<Image /> should render placeholders if src is null 1`] = `
 >
   <img
     aria-hidden="true"
-    class="sg-1k2ml0g-image common__image"
+    class="sg-1u2earn-image common__image"
     data-test-id="image"
     loading="lazy"
     src="foo/bar"

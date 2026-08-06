@@ -38,7 +38,6 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   image: {
     background: theme.palette.background.emphasized,
     marginBottom: theme.spacing(1.25),
-    height: leftColumnWidth,
     width: leftColumnWidth,
   },
   content: {
@@ -217,7 +216,10 @@ export function CartItemProductLayout() {
                 </Link>}
             >
               <SurroundPortals portalName={CART_ITEM_IMAGE} portalProps={portalProps}>
-                <ProductImage src={product.featuredImageBaseUrl || product.featuredImageUrl} />
+                <ProductImage
+                  context="list"
+                  src={product.featuredImageBaseUrl || product.featuredImageUrl}
+                />
               </SurroundPortals>
             </ConditionalWrapper>
           </div>

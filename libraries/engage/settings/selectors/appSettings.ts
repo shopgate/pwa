@@ -61,3 +61,10 @@ export const getShowEmptyRatingStars = createSelector(
   getAppSettingsState,
   appSettings => appSettings.product.rating.showEmptyStars
 );
+
+ /** Selects the image settings.
+ */
+export const getImageSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.images
+);

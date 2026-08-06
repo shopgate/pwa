@@ -4,7 +4,6 @@ import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { ProductImage, ProductBadges, ProductName } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import Discount from '../Discount';
@@ -85,7 +84,6 @@ function LiveshoppingItem({
           price,
         } = product;
         const timeout = getLiveshoppingTimeout(liveshoppings);
-        const { ListImage: gridResolutions } = getProductImageSettings();
 
         return (
           <Link
@@ -97,7 +95,7 @@ function LiveshoppingItem({
               <Grid.Item className={classes.image}>
                 <ProductImage
                   src={featuredImageBaseUrl}
-                  resolutions={gridResolutions}
+                  context="list"
                   alt={name}
                 />
               </Grid.Item>

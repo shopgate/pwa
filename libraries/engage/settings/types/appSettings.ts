@@ -59,6 +59,110 @@ export interface ProductSettings {
   rating: ProductRatingSettings;
 }
 
+/**
+ * An aspect ratio expressed as width and height parts. Only the proportion matters -
+ * { width: 4, height: 5 } and { width: 8, height: 10 } are equivalent.
+ */
+export interface AspectRatio {
+  /**
+   * The width part of the proportion.
+   */
+  width: number;
+  /**
+   * The height part of the proportion.
+   */
+  height: number;
+}
+
+/**
+ * A single image resolution requested from the image service.
+ */
+export interface ImageResolution {
+  /**
+   * Width in pixels.
+   */
+  width: number;
+  /**
+   * Height in pixels, derived from the configured aspect ratio.
+   */
+  height: number;
+}
+
+/**
+ * The product image contexts. pdp drives the product detail page, gallery the fullscreen gallery,
+ * and list every grid, slider, list and row tile.
+ */
+export type ProductImageContext = 'pdp' | 'gallery' | 'list';
+
+/**
+ * Settings for a single product image context. The pixel dimensions are not configurable - they
+ * are derived from the built-in base widths for the context (see PRODUCT_IMAGE_BASE_WIDTHS) so
+ * that image weight stays under the theme's control.
+ */
+export interface ProductImageContextSettings {
+  /**
+   * The aspect ratio images in this context are rendered at.
+   */
+  ratio: AspectRatio;
+}
+
+/**
+ * Settings for the product image contexts.
+ */
+export interface ProductImageSettings {
+  /**
+   * The aspect ratio applied to every context that does not override it.
+   */
+  ratio: AspectRatio;
+  /**
+   * Whether product images get an inset shadow. Applies to the image and to the placeholder that
+   * stands in for it, so both keep the same silhouette.
+   */
+  showInnerShadow: boolean;
+  /**
+   * Overrides for the product detail page.
+   */
+  pdp?: ProductImageContextSettings;
+  /**
+   * Overrides for the fullscreen gallery.
+   */
+  gallery?: ProductImageContextSettings;
+  /**
+   * Overrides for grid, slider, list and row tiles.
+   */
+  list?: ProductImageContextSettings;
+}
+
+/**
+ * Settings for images that are served through the image service.
+ *
+ * quality, fillColor and fillTransparent sit here rather than under product because they are not
+ * product specific - getFullImageSource applies them to every image that goes through the image
+ * service, including category images, carrier logos and page builder widget images.
+ */
+export interface ImageSettings {
+  /**
+   * Compression quality passed to the image service, 1 to 100.
+   */
+  quality: number;
+  /**
+   * The color the image service fills letterboxed areas with. A source may send any CSS color -
+   * named, hex 3/6/8, rgb(), rgba(), hsl() - or one of Thumbor's own keywords: 'auto', 'blur',
+   * 'transparent'. The value reaches the store untouched and the reducer converts it into a
+   * Thumbor color token, so everything reading this field gets a wire-ready value.
+   */
+  fillColor: string;
+  /**
+   * Thumbor's fill_transparent argument - whether transparent areas of the source image are
+   * filled too. True is what the legacy 'FFFFFF,1' config expressed.
+   */
+  fillTransparent: boolean;
+  /**
+   * Aspect ratios for the product image contexts.
+   */
+  product: ProductImageSettings;
+}
+
 export interface AppSettings {
   navigation: {
     tabBar: {
@@ -79,6 +183,10 @@ export interface AppSettings {
   }
   productList: ProductListSettings;
   product: ProductSettings;
+  /**
+   * Settings for images that are served through the image service.
+   */
+  images: ImageSettings;
 }
 
 /**

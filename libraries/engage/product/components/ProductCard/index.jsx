@@ -20,7 +20,6 @@ import {
   ProductName,
   ProductBadges,
 } from '@shopgate/engage/product/components';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import {
   PRODUCT_ITEM_DISCOUNT,
   PRODUCT_ITEM_PRICE,
@@ -98,7 +97,7 @@ function ProductCard(props) {
         />
         : <ProductImage
             src={product.featuredImageBaseUrl}
-            resolutions={gridResolutions}
+            context="list"
             alt={product.name}
             itemProp="image"
         />}

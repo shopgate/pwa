@@ -1,8 +1,18 @@
+import { logger } from '@shopgate/pwa-core/helpers';
 import type { AppSettings } from '../types/appSettings';
 import { receiveAppSettings } from '../action-creators/appSettings';
 import appSettings, { DEFAULT_APP_SETTINGS } from './appSettings';
 
+// Several cases feed the reducer a fill color it is meant to reject, which logs a real warning.
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: { warn: jest.fn() },
+}));
+
 describe('settings / reducers / appSettings', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('returns the built-in defaults as initial state', () => {
     const state = appSettings(undefined, { type: '@@INIT' });
 
@@ -53,6 +63,18 @@ describe('settings / reducers / appSettings', () => {
           showEmptyStars: false,
         },
       },
+      images: {
+        quality: 75,
+        fillColor: 'FFFFFF',
+        fillTransparent: true,
+        product: {
+          ratio: {
+            width: 1,
+            height: 1,
+          },
+          showInnerShadow: false,
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
@@ -82,6 +104,165 @@ describe('settings / reducers / appSettings', () => {
       hideOnScroll: DEFAULT_APP_SETTINGS.navigation.tabBar.hideOnScroll,
       fixed: DEFAULT_APP_SETTINGS.navigation.tabBar.fixed,
       favorites: DEFAULT_APP_SETTINGS.navigation.tabBar.favorites,
+    });
+  });
+
+  describe('images', () => {
+    it('deep merges a partial images payload', () => {
+      const partial = {
+        images: {
+          product: {
+            ratio: {
+              width: 4,
+              height: 5,
+            },
+          },
+        },
+      } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.product.ratio).toEqual({
+        width: 4,
+        height: 5,
+      });
+      expect(state.images.fillColor).toBe(DEFAULT_APP_SETTINGS.images.fillColor);
+    });
+
+    it('applies an incoming quality', () => {
+      const partial = { images: { quality: 40 } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.quality).toBe(40);
+    });
+
+    it('keeps the default quality when the payload omits it', () => {
+      const partial = { images: { fillColor: 'white' } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.quality).toBe(DEFAULT_APP_SETTINGS.images.quality);
+    });
+
+    it.each([
+      ['an empty string', '', DEFAULT_APP_SETTINGS.images.quality],
+      ['not a number', 'abc', DEFAULT_APP_SETTINGS.images.quality],
+      ['above the range', 1000, 100],
+      ['below the range', 0, 1],
+    ])('sanitizes a quality that is %s', (_, quality, expected) => {
+      // The admin dispatches on every keystroke, so half typed values reach the reducer and would
+      // otherwise end up in an image service url.
+      const partial = { images: { quality } } as unknown as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.quality).toBe(expected);
+    });
+
+    it('converts an incoming fill color into the image service format', () => {
+      // The value reaches the store exactly as the source sent it - any CSS color - and is
+      // converted here, so everything reading the slice gets a wire ready value.
+      const partial = { images: { fillColor: 'rgb(255, 84, 0)' } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.fillColor).toBe('FF5400');
+    });
+
+    it('leaves the default fill color alone when the payload omits images', () => {
+      const partial = { navigation: { tabBar: { variant: 'floating' } } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.fillColor).toBe(DEFAULT_APP_SETTINGS.images.fillColor);
+    });
+
+    it('falls back to the default when the fill color cannot be parsed', () => {
+      const partial = { images: { fillColor: 'not-a-color' } } as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.fillColor).toBe('FFFFFF');
+      expect(logger.warn).toHaveBeenCalled();
+    });
+
+    it.each([
+      ['an empty string', ''],
+      ['null', null],
+    ])('falls back to the default when the fill color is %s', (_, fillColor) => {
+      // merge overwrites with these, unlike undefined, so they reach the slice and would produce a
+      // malformed "fill=" parameter if they were not converted.
+      const partial = { images: { fillColor } } as unknown as AppSettings;
+
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+
+      expect(state.images.fillColor).toBe('FFFFFF');
+    });
+
+    // The admin preview dispatches repeatedly, so a reset arrives on top of whatever the merchant
+    // configured before it - and a merge on its own would only add to that.
+    it.each([
+      ['the whole branch', { images: null }],
+      ['the product branch', { images: { product: null } }],
+    ])('drops earlier configuration when a source clears %s', (_, partial) => {
+      const configured = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        images: {
+          quality: 40,
+          product: {
+            ratio: { width: 4, height: 5 },
+            pdp: { ratio: { width: 1, height: 2 } },
+          },
+        },
+      } as AppSettings));
+
+      const state = appSettings(configured, receiveAppSettings(partial as unknown as AppSettings));
+
+      expect(state.images.product).toEqual(DEFAULT_APP_SETTINGS.images.product);
+      expect(state.images.product.pdp).toBeUndefined();
+    });
+
+    it.each([
+      ['the whole branch', { images: null }],
+      ['the product branch', { images: { product: null } }],
+    ])('restores the defaults when a source clears %s', (_, partial) => {
+      const state = appSettings(
+        DEFAULT_APP_SETTINGS,
+        receiveAppSettings(partial as unknown as AppSettings)
+      );
+
+      expect(state.images).toEqual(DEFAULT_APP_SETTINGS.images);
+      expect(state.isHydrated).toBe(true);
+    });
+
+    // The substituted branch is read from the defaults constant, so a later payload writing into
+    // it must not reach back and change them.
+    it('leaves the defaults untouched after restoring a cleared branch', () => {
+      const restored = appSettings(
+        DEFAULT_APP_SETTINGS,
+        receiveAppSettings({ images: { product: null } } as unknown as AppSettings)
+      );
+
+      appSettings(restored, receiveAppSettings({
+        images: { product: { ratio: { width: 4, height: 5 } } },
+      } as AppSettings));
+
+      expect(DEFAULT_APP_SETTINGS.images.product.ratio).toEqual({
+        width: 1,
+        height: 1,
+      });
+    });
+
+    it('is idempotent across repeated hydrations', () => {
+      // The admin preview bridge dispatches on every edit, so an already converted value gets fed
+      // back through the reducer.
+      const partial = { images: { fillColor: 'white' } } as AppSettings;
+
+      const once = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
+      const twice = appSettings(once, receiveAppSettings({} as AppSettings));
+
+      expect(once.images.fillColor).toBe('FFFFFF');
+      expect(twice.images.fillColor).toBe('FFFFFF');
     });
   });
 
