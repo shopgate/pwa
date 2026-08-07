@@ -14,7 +14,6 @@ exports[`<Title /> should render with a title 1`] = `
   <Ellipsis
     className=""
     rows={3}
-    useNativeClamp={true}
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}

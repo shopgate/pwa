@@ -48,7 +48,6 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
                 <Ellipsis
                   className=""
                   rows={3}
-                  useNativeClamp={true}
                 >
                   <Dotdotdot
                     clamp={3}
@@ -190,7 +189,6 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
                 <Ellipsis
                   className=""
                   rows={3}
-                  useNativeClamp={true}
                 >
                   <Dotdotdot
                     clamp={3}
