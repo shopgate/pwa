@@ -28,7 +28,7 @@ import {
 } from '@shopgate/engage/category';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductCardNameLines } from '@shopgate/engage/settings/selectors/appSettings';
+import { getProductCardNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
 import ProductGridPrice from '../ProductGridPrice';
 
 const useStyles = makeStyles()((theme, { shadow }) => ({
@@ -81,10 +81,7 @@ function ProductCard(props) {
     product, hidePrice, hideRating, hideName, titleRows, url,
   } = props;
   const { meta } = useProductListType();
-  // Configured in the admin and delivered through the appSettings channel. A redux value rather
-  // than a CSS variable, because the name is clamped in JS (see ProductNameContent) — a plain
-  // number needs no document read, and a store update re-renders this on its own.
-  const productNameLines = useSelector(getProductCardNameLines);
+  const productNameLines = useSelector(getProductCardNameMaxLines);
 
   const { ListImage: gridResolutions } = getProductImageSettings();
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');

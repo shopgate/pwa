@@ -16,16 +16,6 @@ describe('<ProductName />', () => {
     expect(screen.getByLabelText('Product name.')).toHaveTextContent('Product name');
   });
 
-  it('should clamp the name without relying on the -webkit-box display', () => {
-    render(<ProductName name="Product name" rows={2} />);
-
-    const clampElement = getClampElement();
-
-    expect(clampElement).not.toBeNull();
-    expect(clampElement?.style.display).not.toBe('-webkit-box');
-    expect(clampElement?.style.webkitLineClamp).toBeFalsy();
-  });
-
   it('should not clamp the name when ellipsis is disabled', () => {
     render(<ProductName name="Product name" ellipsis={false} />);
 

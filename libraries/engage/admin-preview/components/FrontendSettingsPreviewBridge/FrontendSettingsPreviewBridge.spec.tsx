@@ -24,8 +24,8 @@ const appSettings: AppSettingsPayload = {
         md: 4,
       },
     },
-    card: { productName: { lines: 3 } },
-    tile: { productName: { lines: 3 } },
+    card: { productName: { maxLines: 3 } },
+    tile: { productName: { maxLines: 3 } },
   },
 };
 

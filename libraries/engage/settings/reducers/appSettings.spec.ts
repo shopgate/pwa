@@ -37,14 +37,14 @@ describe('settings / reducers / appSettings', () => {
           },
         },
         card: {
-          productName: { lines: 1 },
+          productName: { maxLines: 1 },
           shadow: {
             size: 'low',
             color: 'rgba(0, 0, 0, 0.4)',
           },
         },
         tile: {
-          productName: { lines: 4 },
+          productName: { maxLines: 4 },
           shadow: {
             size: 'strong',
             color: '#000000',

@@ -48,11 +48,11 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
     },
     card: {
-      productName: { lines: 3 },
+      productName: { maxLines: 3 },
       shadow: { ...DEFAULT_SHADOW },
     },
     tile: {
-      productName: { lines: 3 },
+      productName: { maxLines: 3 },
       shadow: { ...DEFAULT_SHADOW },
     },
   },

@@ -37,7 +37,7 @@ export interface ProductGridSettings {
  */
 export interface ProductNameSettings {
   /** Max number of lines the product name is clamped to before an ellipsis. */
-  lines: number;
+  maxLines: number;
 }
 
 /**

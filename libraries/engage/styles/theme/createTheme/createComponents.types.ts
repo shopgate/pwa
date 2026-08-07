@@ -356,21 +356,19 @@ export const componentsDefaults = {
   cards: {
     vars: {
       backgroundColor: t => t.palette.background.surface,
-      // Whole-card padding (space between the card edge and all of its content). `0` keeps the
-      // image flush to the card edge by default; the text keeps its own `textPadding`.
-      padding: '0px',
+      padding: 0,
       textPadding: '12px 16px',
-      imagePadding: '0px',
+      imagePadding: 0,
       border: '0px solid transparent',
     },
   },
   tiles: {
     vars: {
       backgroundColor: 'transparent',
-      padding: '0px',
+      padding: 0,
       textPadding: '8px',
       textPaddingTop: '16px',
-      imagePadding: '0px',
+      imagePadding: 0,
       border: '0px solid transparent',
     },
   },
