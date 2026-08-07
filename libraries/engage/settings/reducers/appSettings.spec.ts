@@ -38,9 +38,6 @@ describe('settings / reducers / appSettings', () => {
         },
         card: {
           productName: { maxLines: 1 },
-          shadow: {
-            size: 'low',
-          },
         },
         tile: {
           productName: { maxLines: 4 },
@@ -49,6 +46,10 @@ describe('settings / reducers / appSettings', () => {
           },
         },
       },
+      cards: {
+        style: 'border',
+        shadow: { size: 'low' },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
@@ -56,6 +57,7 @@ describe('settings / reducers / appSettings', () => {
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
     expect(state.productList.grid.columns).toEqual(settings.productList.grid.columns);
+    expect(state.cards).toEqual(settings.cards);
   });
 
   it('deep merges a partial payload over the defaults', () => {
@@ -84,19 +86,19 @@ describe('settings / reducers / appSettings', () => {
     const withShadow = appSettings(
       DEFAULT_APP_SETTINGS,
       receiveAppSettings({
-        productList: { card: { shadow: { size: 'strong' } } },
+        cards: { shadow: { size: 'strong' } },
       })
     );
 
-    expect(withShadow.productList.card.shadow.size).toBe('strong');
+    expect(withShadow.cards.shadow.size).toBe('strong');
 
     const withoutShadow = appSettings(
       withShadow,
-      receiveAppSettings({ productList: { card: {} } })
+      receiveAppSettings({ cards: {} })
     );
 
-    expect(withoutShadow.productList.card.shadow.size)
-      .toBe(DEFAULT_APP_SETTINGS.productList.card.shadow.size);
+    expect(withoutShadow.cards.shadow.size)
+      .toBe(DEFAULT_APP_SETTINGS.cards.shadow.size);
   });
 
   it('does not mutate the shared defaults constant', () => {

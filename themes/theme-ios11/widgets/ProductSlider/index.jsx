@@ -87,7 +87,7 @@ const ProductSlider = ({
             itself. A second layer of it would clip the card's corners and double its shadow, so
             the Card here only positions the slide.
           */}
-          <Card className={classes.card} plain>
+          <Card className={classes.card} variant="plain">
             <ProductCard
               product={product}
               hideName={!settings.showName}

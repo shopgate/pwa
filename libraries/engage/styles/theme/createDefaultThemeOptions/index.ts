@@ -113,20 +113,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             paginationProgressbarActiveColor: '#000000',
           },
         },
-        cards: {
-          vars: {
-            // The fallback resolves to the surface color of the scheme the card renders in, so an
-            // unconfigured card doesn't stay light while the rest of the app follows the dark
-            // scheme. Every color scheme inherits these mappings from the default one.
-            backgroundColor: (t: Theme) => `var(--sg-cards-backgroundColor, ${t.palette.background.surface})`,
-            // Whole-card padding: insets every element (image + text) from the card edge
-            padding: 'var(--sg-cards-padding, 0px)',
-            textPadding: 'var(--sg-cards-text-padding, 12px 16px)',
-            imagePadding: 'var(--sg-cards-image-padding, 0px)',
-            border: 'var(--sg-cards-border-width, 0px) solid var(--sg-cards-border-color, transparent)',
-            shadowColor: (t: Theme) => `var(--sg-cards-shadow-color, ${t.palette.shadow})`,
-          },
-        },
         tiles: {
           vars: {
             backgroundColor: 'var(--sg-tiles-backgroundColor, transparent)',

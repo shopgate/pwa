@@ -7,7 +7,7 @@ import Grid from '@shopgate/pwa-common/components/Grid';
 import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { useSelector } from 'react-redux';
 import { ProductImage, ProductBadges, ProductName } from '@shopgate/engage/product/components';
-import { getProductCardShadowSize } from '@shopgate/engage/settings/selectors/appSettings';
+import { getCardShadowSize } from '@shopgate/engage/settings/selectors/appSettings';
 import { makeStyles, SHADOW_COLOR_VAR } from '@shopgate/engage/styles';
 import Discount from '../Discount';
 import Price from '../Price';
@@ -79,7 +79,7 @@ function LiveshoppingItem({
   productId,
   hasPagination,
 }) {
-  const shadowSize = useSelector(getProductCardShadowSize);
+  const shadowSize = useSelector(getCardShadowSize);
   const { classes, cx } = useStyles({ size: shadowSize });
   const { ProductCard } = useThemeComponents();
 

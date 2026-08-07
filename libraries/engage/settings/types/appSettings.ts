@@ -55,9 +55,22 @@ export interface ShadowSettings {
 export interface ProductListSettings {
   grid: ProductGridSettings;
   /** Product cards (sliders, relations, live shopping). */
-  card: { productName: ProductNameSettings; shadow: ShadowSettings };
+  card: { productName: ProductNameSettings };
   /** Product grid tiles. */
   tile: { productName: ProductNameSettings; shadow: ShadowSettings };
+}
+
+/**
+ * The visual style of the card surface.
+ */
+export type CardStyle = 'shadow' | 'border' | 'flat';
+
+/**
+ * Settings for the themed card surface (checkout sections, address cards, sliders).
+ */
+export interface CardSettings {
+  style: CardStyle;
+  shadow: ShadowSettings;
 }
 
 export interface AppSettings {
@@ -73,6 +86,7 @@ export interface AppSettings {
     }
   }
   productList: ProductListSettings;
+  cards: CardSettings;
 }
 
 /**

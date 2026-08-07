@@ -14,6 +14,7 @@ import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
 const useStyles = makeStyles()(theme => ({
   root: {
+    margin: '5px 5px 10px',
     padding: 16,
     display: 'flex',
     flexDirection: 'column',

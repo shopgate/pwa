@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TextField } from '@shopgate/engage/components';
+import { TextField, Card } from '@shopgate/engage/components';
 import { i18n, usePageSettings } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import CouponFieldIcon from './components/CouponFieldIcon';
@@ -13,13 +13,9 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(1, 2),
   },
   wrapperCard: {
-    background: theme.palette.background.surface,
     padding: theme.spacing(1, 2),
     margin: theme.spacing(1.5, 1.5, 2),
-    border: `1px solid ${theme.components.border.light}`,
     boxSizing: 'border-box',
-    boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
-    borderRadius: 5,
   },
   container: {
     position: 'relative',
@@ -51,9 +47,11 @@ const useStyles = makeStyles()(theme => ({
 const Layout = (props) => {
   const { classes, cx } = useStyles();
   const { cartItemsDisplay = 'line' } = usePageSettings();
+  const isCard = cartItemsDisplay !== 'line';
+  const Wrapper = isCard ? Card : 'div';
 
   return (
-    <div className={cartItemsDisplay === 'line' ? classes.wrapper : classes.wrapperCard}>
+    <Wrapper className={isCard ? classes.wrapperCard : classes.wrapper}>
       <form className={cx(classes.container, 'theme__cart__coupon')} onSubmit={props.handleAddCoupon} data-test-id="couponField">
         <TextField
           disabled={props.isLoading}
@@ -66,7 +64,6 @@ const Layout = (props) => {
           errorText={props.error}
           className={classes.input}
         />
-
         <div
           data-test-id="CouponSubmitButton"
           style={props.iconStyle}
@@ -80,9 +77,8 @@ const Layout = (props) => {
         >
           <CouponFieldIcon disabled={props.isButtonDisabled} />
         </div>
-
       </form>
-    </div>
+    </Wrapper>
   );
 };
 

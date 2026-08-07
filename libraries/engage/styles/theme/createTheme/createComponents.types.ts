@@ -226,9 +226,8 @@ export const componentsSchema = {
   cards: {
     vars: {
       backgroundColor: '',
-      padding: '',
-      textPadding: '',
-      imagePadding: '',
+      borderWidth: '',
+      borderColor: '',
       border: '',
       shadowColor: '',
     },
@@ -358,10 +357,9 @@ export const componentsDefaults = {
   cards: {
     vars: {
       backgroundColor: t => t.palette.background.surface,
-      padding: 0,
-      textPadding: '12px 16px',
-      imagePadding: 0,
-      border: '0px solid transparent',
+      borderWidth: '0px',
+      borderColor: 'transparent',
+      border: 'var(--sg-components-cards-borderWidth) solid var(--sg-components-cards-borderColor)',
       shadowColor: t => t.palette.shadow,
     },
   },

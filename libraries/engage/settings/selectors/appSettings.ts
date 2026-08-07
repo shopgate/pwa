@@ -55,11 +55,19 @@ export const getProductTileNameMaxLines = createSelector(
 );
 
 /**
- * Selects the shadow size configured for product cards.
+ * Selects the themed card settings (style and shadow size).
  */
-export const getProductCardShadowSize = createSelector(
+export const getCardSettings = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.card.shadow.size
+  appSettings => appSettings.cards
+);
+
+/**
+ * Selects the effective card shadow size. `none` unless the shadow style is selected.
+ */
+export const getCardShadowSize = createSelector(
+  getCardSettings,
+  cards => (cards.style === 'shadow' ? cards.shadow.size : 'none')
 );
 
 /**

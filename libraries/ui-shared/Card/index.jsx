@@ -1,52 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
-
-const useStyles = makeStyles()((theme, { plain }) => ({
-  root: {
-    margin: '5px 5px 10px',
-    position: 'relative',
-    ...!plain && {
-      boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
-      borderRadius: theme.shape.cardsBorderRadius,
-      background: theme.palette.background.surface,
-      overflow: 'hidden',
-    },
-  },
-}));
+import React, { useEffect } from 'react';
+import { logger } from '@shopgate/engage/core/helpers';
+import { Card } from '@shopgate/engage/components';
 
 /**
- * Renders the card component.
- * @param {Object} props The component properties.
+ * @deprecated Use `import { Card } from '@shopgate/engage/components'` instead.
+ * @param {Object} props The component props.
  * @returns {JSX}
  */
-const Card = ({
-  className, children, id, plain,
-}) => {
-  const { classes, cx } = useStyles({ plain });
+const DeprecatedCard = (props) => {
+  useEffect(() => {
+    logger.warn(
+      '===== Card deprecated =====\n'
+      + 'The Card component '
+      + '(@shopgate/pwa-ui-shared/Card) is deprecated.\n'
+      + 'Please use: import { Card } from \'@shopgate/engage/components\'.\n'
+      + '==================================='
+    );
+  }, []);
 
-  return (
-    <div className={cx('ui-shared__card', classes.root, className)} id={id}>
-      {children}
-    </div>
-  );
+  return <Card {...props} />;
 };
 
-Card.propTypes = {
-  children: PropTypes.node.isRequired,
-  className: PropTypes.string,
-  id: PropTypes.string,
-  /**
-   * Renders the card without its own chrome (background, radius, shadow, clipping), so content
-   * that brings its own card styling isn't clipped or double-styled by it.
-   */
-  plain: PropTypes.bool,
-};
-
-Card.defaultProps = {
-  className: '',
-  id: null,
-  plain: false,
-};
-
-export default Card;
+export default DeprecatedCard;
