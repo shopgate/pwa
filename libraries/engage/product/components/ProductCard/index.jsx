@@ -62,7 +62,6 @@ function ProductCard(props) {
   } = props;
   const { meta } = useProductListType();
 
-  const { ListImage: gridResolutions } = getProductImageSettings();
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
   const showRatings = useMemo(() => {
