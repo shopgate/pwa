@@ -66,11 +66,18 @@ const defaultConfig = require('@shopgate/pwa-unit-test/jest.config');
 module.exports = {
   ...defaultConfig,
   moduleNameMapper: {
-    '^Components(.*)$': '<rootDir>/components',
-    '^Styles(.*)$': '<rootDir>/styles',
+    // Keep the default mappings - they would be replaced otherwise
+    ...defaultConfig.moduleNameMapper,
+    '^Components(.*)$': '<rootDir>/components$1',
+    '^Styles(.*)$': '<rootDir>/styles$1',
   },
 };
 ```
+
+__NOTE: Options which hold an object or an array - like `moduleNameMapper`, `setupFiles` or
+`transformIgnorePatterns` - are replaced and not merged when they are set. Spread the value of the
+default configuration first to keep it, as shown above. Without that, the mappings for styles and
+assets are lost, and imports of stylesheets or images within the tested components fail.__
 
 ## About Shopgate
 
