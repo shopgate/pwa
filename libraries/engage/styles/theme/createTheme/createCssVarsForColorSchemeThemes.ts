@@ -71,6 +71,9 @@ export default function createCssVarsForColorSchemeThemes(
       css, vars, varsWithDefaults, varNames,
     } = cssVarsColorAugmentation(cssVarsParser<BaseTheme>(rest, {
       prefix: cssVarPrefix,
+      // Keep as literal strings, not `:root` vars, so their inline `var(--sg-palette-shadow)`
+      // resolves on the element using the shadow (recolorable) instead of freezing against `:root`.
+      shouldSkipGeneratingVar: keys => ['shadows', 'shadowSizes'].includes(keys[0]),
       // @ts-expect-error - We are sure about the type here
     }), rest, cssVarPrefix);
 

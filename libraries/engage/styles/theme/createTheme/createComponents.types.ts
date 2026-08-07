@@ -230,6 +230,7 @@ export const componentsSchema = {
       textPadding: '',
       imagePadding: '',
       border: '',
+      shadowColor: '',
     },
   },
   tiles: {
@@ -240,6 +241,7 @@ export const componentsSchema = {
       textPaddingTop: '',
       imagePadding: '',
       border: '',
+      shadowColor: '',
     },
   },
 } as const;
@@ -360,6 +362,7 @@ export const componentsDefaults = {
       textPadding: '12px 16px',
       imagePadding: 0,
       border: '0px solid transparent',
+      shadowColor: t => t.palette.shadow,
     },
   },
   tiles: {
@@ -370,6 +373,7 @@ export const componentsDefaults = {
       textPaddingTop: '16px',
       imagePadding: 0,
       border: '0px solid transparent',
+      shadowColor: t => t.palette.shadow,
     },
   },
 } satisfies ComponentsDefaults;

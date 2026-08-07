@@ -2,8 +2,7 @@ export * from './helpers';
 export {
   ThemeProvider,
   createTheme,
-  createShadowForSize,
-  DEFAULT_SHADOW_COLOR,
+  SHADOW_COLOR_VAR,
   useActiveBreakpoint,
   useMediaQuery,
   useResponsiveValue,

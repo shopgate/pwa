@@ -46,8 +46,6 @@ export interface ProductNameSettings {
 export interface ShadowSettings {
   /** Which preset elevation to draw. `none` renders no shadow at all. */
   size: ShadowSize;
-  /** CSS color the shadow is drawn in, e.g. `rgba(0, 0, 0, 0.16)`. */
-  color: string;
 }
 
 /**

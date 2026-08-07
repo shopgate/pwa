@@ -1,6 +1,5 @@
 import { merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
-import { DEFAULT_SHADOW_COLOR } from '@shopgate/engage/styles/theme/createTheme/shadows';
 import type { AppSettingsSlice, ShadowSettings } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
 import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
@@ -20,7 +19,6 @@ const isReceiveAppSettingsAction = (
  */
 const DEFAULT_SHADOW: ShadowSettings = {
   size: 'none',
-  color: DEFAULT_SHADOW_COLOR,
 };
 
 /**

@@ -40,14 +40,12 @@ describe('settings / reducers / appSettings', () => {
           productName: { maxLines: 1 },
           shadow: {
             size: 'low',
-            color: 'rgba(0, 0, 0, 0.4)',
           },
         },
         tile: {
           productName: { maxLines: 4 },
           shadow: {
             size: 'strong',
-            color: '#000000',
           },
         },
       },

@@ -55,17 +55,17 @@ export const getProductTileNameMaxLines = createSelector(
 );
 
 /**
- * Selects the drop shadow configured for product cards.
+ * Selects the shadow size configured for product cards.
  */
-export const getProductCardShadow = createSelector(
+export const getProductCardShadowSize = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.card.shadow
+  appSettings => appSettings.productList.card.shadow.size
 );
 
 /**
- * Selects the drop shadow configured for product tiles.
+ * Selects the shadow size configured for product tiles.
  */
-export const getProductTileShadow = createSelector(
+export const getProductTileShadowSize = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.tile.shadow
+  appSettings => appSettings.productList.tile.shadow.size
 );

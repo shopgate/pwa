@@ -3,8 +3,6 @@ const shadowKeyUmbraPercent = 20;
 const shadowKeyPenumbraPercent = 14;
 const shadowAmbientShadowPercent = 12;
 
-export const DEFAULT_SHADOW_COLOR = '#000000';
-
 /**
  * The elevations the admin offers. Offset, blur and spread are not configurable — a shop picks
  * one of these presets so the surfaces stay visually consistent, and only the color is free.
@@ -53,33 +51,6 @@ const elevationGeometries: number[][] = [
 ];
 
 /**
- * Renders a hex color at a share of its opacity as plain `rgba()`.
- * @param color The color to render.
- * @param percent The share of the color to render it with.
- * @returns The `rgba()` color, or null when the color is not a hex color.
- */
-const toRgba = (color: string, percent: number): string | null => {
-  const hex = color.trim();
-  // `#abc` is shorthand for `#aabbcc`.
-  const isShorthand = hex.length === 4;
-
-  if (!hex.startsWith('#') || (!isShorthand && hex.length !== 7)) {
-    return null;
-  }
-
-  // `Number('0x…')` is NaN unless every digit is a hex digit, so it validates while it parses.
-  const channels = [0, 1, 2].map(channel => Number(`0x${isShorthand
-    ? hex.charAt(channel + 1).repeat(2)
-    : hex.slice(1 + (channel * 2), 3 + (channel * 2))}`));
-
-  if (channels.some(Number.isNaN)) {
-    return null;
-  }
-
-  return `rgba(${channels.join(',')},${percent / 100})`;
-};
-
-/**
  * Builds one elevation from its geometry.
  * @param px The twelve lengths of the elevation's three layers.
  * @param renderColor Renders the color of a layer from the share of the shadow color it is drawn
@@ -99,43 +70,23 @@ function createShadow(px: number[], renderColor: (percent: number)=> string): st
   ].join(',');
 }
 
-/**
- * Builds the box-shadow declaration for one of the sizes the admin offers, drawn in `color`.
- *
- * Built here rather than recoloring `theme.shadows[…]` through a custom property: the theme exposes
- * its scale as `var(--sg-shadows-N)`, which resolves on `:root`, so a per-surface color never
- * reaches it. A complete declaration keeps the color at the use site.
- * @param size The configured shadow size.
- * @param color The configured shadow color.
- * @returns A box-shadow value, `none` for the `none` size.
- */
-export const createShadowForSize = (size: ShadowSize, color: string): string => {
-  const geometry = elevationGeometries[(SHADOW_SIZE_ELEVATIONS[size] ?? 0) - 1];
+export const SHADOW_COLOR_VAR = '--sg-palette-shadow';
 
-  if (!geometry) {
-    return 'none';
-  }
-
-  return createShadow(geometry, (percent) => {
-    const rgba = toRgba(color || DEFAULT_SHADOW_COLOR, percent);
-
-    // `color-mix` only for the colors that are not hex — it is not supported across the whole
-    // browserslist range, and an unsupported value invalidates the whole declaration.
-    return rgba ?? `color-mix(in srgb, ${color} ${percent}%, transparent)`;
-  });
-};
-
-// The scale exposed on the theme. Its entries end up as `var(--sg-shadows-N)` declarations on
-// `:root`, so they cannot carry a per-surface color — see `createShadowForSize` for the surfaces
-// the admin makes configurable.
 const shadows = [
   'none',
   ...elevationGeometries.map(geometry => createShadow(
     geometry,
-    percent => `rgba(0,0,0,${percent / 100})`
+    percent => `rgb(from var(${SHADOW_COLOR_VAR}) r g b / ${percent / 100})`
   )),
 ] as const;
 
 export type Shadows = typeof shadows
+
+/**
+ * The finished shadow for each size the admin offers, for a single `theme.shadowSizes[size]` lookup.
+ */
+export const shadowSizes = Object.fromEntries(
+  Object.entries(SHADOW_SIZE_ELEVATIONS).map(([size, elevation]) => [size, shadows[elevation]])
+) as Record<ShadowSize, string>;
 
 export default shadows;

@@ -2,15 +2,17 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
+import { useSelector } from 'react-redux';
 import { Link } from '@shopgate/engage/components';
-import { useProductListType, useProductTileShadow } from '@shopgate/engage/product/hooks';
-import { makeStyles } from '@shopgate/engage/styles';
+import { useProductListType } from '@shopgate/engage/product/hooks';
+import { getProductTileShadowSize } from '@shopgate/engage/settings/selectors/appSettings';
+import { makeStyles, SHADOW_COLOR_VAR } from '@shopgate/engage/styles';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
 
-const useStyles = makeStyles()((theme, { display, shadow }) => ({
+const useStyles = makeStyles()((theme, { display, size }) => ({
   root: {
     position: 'relative',
     display: 'flex',
@@ -20,7 +22,8 @@ const useStyles = makeStyles()((theme, { display, shadow }) => ({
     padding: theme.components.tiles.padding,
     background: theme.components.tiles.backgroundColor,
     borderRadius: theme.shape.tilesBorderRadius,
-    boxShadow: shadow,
+    [SHADOW_COLOR_VAR]: theme.components.tiles.shadowColor,
+    boxShadow: theme.shadowSizes[size],
     border: theme.components.tiles.border,
   },
   image: {
@@ -43,10 +46,10 @@ const useStyles = makeStyles()((theme, { display, shadow }) => ({
  * @return {JSX.Element}
  */
 const Item = ({ product, display }) => {
-  const shadow = useProductTileShadow();
+  const shadowSize = useSelector(getProductTileShadowSize);
   const { classes, cx } = useStyles({
     display,
-    shadow,
+    size: shadowSize,
   });
   const { meta } = useProductListType();
 

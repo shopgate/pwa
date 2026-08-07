@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { useProductListType, useProductCardShadow } from '@shopgate/engage/product/hooks';
+import { useProductListType } from '@shopgate/engage/product/hooks';
 import {
   Link,
   RatingStars,
@@ -27,11 +27,11 @@ import {
   PRODUCT_ITEM_PRICE,
 } from '@shopgate/engage/category';
 import { useSelector } from 'react-redux';
-import { makeStyles } from '@shopgate/engage/styles';
-import { getProductCardNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
+import { makeStyles, SHADOW_COLOR_VAR } from '@shopgate/engage/styles';
+import { getProductCardNameMaxLines, getProductCardShadowSize } from '@shopgate/engage/settings/selectors/appSettings';
 import ProductGridPrice from '../ProductGridPrice';
 
-const useStyles = makeStyles()((theme, { shadow }) => ({
+const useStyles = makeStyles()((theme, { size }) => ({
   root: {
     display: 'block',
     position: 'relative',
@@ -40,7 +40,8 @@ const useStyles = makeStyles()((theme, { shadow }) => ({
     padding: theme.components.cards.padding,
     background: theme.components.cards.backgroundColor,
     borderRadius: theme.shape.cardsBorderRadius,
-    boxShadow: shadow,
+    [SHADOW_COLOR_VAR]: theme.components.cards.shadowColor,
+    boxShadow: theme.shadowSizes[size],
     border: theme.components.cards.border,
   },
   image: {
@@ -75,8 +76,8 @@ const location = 'productCard';
  * @return {JSX.Element}
  */
 function ProductCard(props) {
-  const shadow = useProductCardShadow();
-  const { classes, cx } = useStyles({ shadow });
+  const shadowSize = useSelector(getProductCardShadowSize);
+  const { classes, cx } = useStyles({ size: shadowSize });
   const {
     product, hidePrice, hideRating, hideName, titleRows, url,
   } = props;

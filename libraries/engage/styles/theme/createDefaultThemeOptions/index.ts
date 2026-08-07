@@ -124,6 +124,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             textPadding: 'var(--sg-cards-text-padding, 12px 16px)',
             imagePadding: 'var(--sg-cards-image-padding, 0px)',
             border: 'var(--sg-cards-border-width, 0px) solid var(--sg-cards-border-color, transparent)',
+            shadowColor: (t: Theme) => `var(--sg-cards-shadow-color, ${t.palette.shadow})`,
           },
         },
         tiles: {
@@ -140,6 +141,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             textPaddingTop: 'max(var(--sg-tiles-text-padding, 8px), 16px)',
             imagePadding: 'var(--sg-tiles-image-padding, 0px)',
             border: 'var(--sg-tiles-border-width, 0px) solid var(--sg-tiles-border-color, transparent)',
+            shadowColor: (t: Theme) => `var(--sg-tiles-shadow-color, ${t.palette.shadow})`,
           },
         },
       },
