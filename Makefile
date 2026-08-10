@@ -7,8 +7,8 @@ export FORCE_COLOR = true
 # If LIBRARIES or UTILS is extended and the npm package should not be prefixed with
 # "@shopgate/pwa-", then you need to modify the "get-npm-package-name" function below as well!
 LIBRARIES = engage commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
-TRANSPILED_UTILS = benchmark
-UTILS = eslint-config unit-tests e2e webpack
+TRANSPILED_UTILS = benchmark unit-tests
+UTILS = eslint-config e2e webpack
 THEMES = theme-gmd theme-ios11
 
 # Adds "@shopgate/pwa-" in front of all package names except "@shopgate/eslint-config" and "@shopgate/tracking-core".
@@ -163,19 +163,24 @@ endef
 release-dry-run:
 	@echo "Purging dist"
 	$(foreach library, $(LIBRARIES), $(call clean-npm-package, libraries, $(library))$(NL))
+	$(foreach transpiled_util, $(TRANSPILED_UTILS), $(call clean-npm-package, utils, $(transpiled_util))$(NL))
 	@echo "Running babel"
 	$(foreach library, $(LIBRARIES), $(call build-npm-package, libraries, $(library))$(NL))
+	$(foreach transpiled_util, $(TRANSPILED_UTILS), $(call build-npm-package, utils, $(transpiled_util))$(NL))
 	@echo "Normalizing dist"
 	$(foreach library, $(LIBRARIES), $(call normalize-build, libraries, $(library))$(NL))
+	$(foreach transpiled_util, $(TRANSPILED_UTILS), $(call normalize-build, utils, $(transpiled_util))$(NL))
 	@echo "You can check dist folder"
 
 release-normalize:
 	@echo "Normalizing dist"
 	$(foreach library, $(LIBRARIES), $(call normalize-build, libraries, $(library)))
+	$(foreach transpiled_util, $(TRANSPILED_UTILS), $(call normalize-build, utils, $(transpiled_util)))
 
 release-purge:
 	@echo "Purging dist"
 	$(foreach library, $(LIBRARIES), $(call clean-npm-package, libraries, $(library)))
+	$(foreach transpiled_util, $(TRANSPILED_UTILS), $(call clean-npm-package, utils, $(transpiled_util)))
 
 # Clean the repository before starting a release.
 clean:
@@ -376,12 +381,17 @@ define build-npm-package
 	fi;
 endef
 
-# tests,spec.js,spec.jsx,__snapshots__,.eslintrc.js,jest.config.js,dist,coverage,node_modules;
+# Removes everything from the build which is not meant to be published.
+# The --ignore patterns of the babel call above only match at the root of a package, and ignored
+# files are copied by --copy-files anyway, so test files have to be removed here.
+# Only the jest manual mocks in "__mocks__" folders are removed. Folders named "mocks" contain
+# fixtures which are shared with consumers like extensions, so they are published.
 define normalize-build
-	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*tests*' -exec rm -Rf {} \;
-	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*mocks*' -exec rm -Rf {} \;
-	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '*snapshots*' -exec rm -Rf {} \;
-	@-find ./$(strip $(1))/$(strip $(2))/dist -type f -name '*.spec.*' -delete
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d \( -name '__tests__' -o -name 'tests' \) -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '__mocks__' -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type d -name '__snapshots__' -exec rm -Rf {} \;
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type f \( -name '*.spec.*' -o -name 'spec.*' \) -delete
+	@-find ./$(strip $(1))/$(strip $(2))/dist -type f -name 'tsconfig*.json' -delete
 
 endef
 

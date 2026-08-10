@@ -14,6 +14,18 @@ const babelTransform = [babelJest, babelOptions];
 
 const stylesMock = require.resolve('./mocks/styles.js');
 
+/**
+ * Swiper exposes its React build via the "exports" field of its package.json, which jest can't
+ * resolve. Mapping it to the concrete file fixes that. Resolving it from this package works for
+ * consumers as well, and only falls back to the rootDir of the consumer when swiper is installed
+ * somewhere this package can't reach.
+ */
+let swiperReact = '<rootDir>/node_modules/swiper/swiper-react.mjs';
+
+try {
+  swiperReact = require.resolve('swiper/react');
+} catch (e) { /* swiper is not installed */ }
+
 /** @type {import('jest').Config} */
 module.exports = {
   testEnvironment: 'jsdom',
@@ -24,8 +36,7 @@ module.exports = {
     '\\.(css|sass|scss|less)$': stylesMock,
     // Mock assets since they are not needed for unit tests
     '\\.(jpg|jpeg|png|gif|webp|svg|ico|eot|otf|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': require.resolve('./mocks/assets.js'),
-    // Fix issue with Swiper ES module imports that work via "exports" field in package.json
-    '^swiper/react$': '<rootDir>/node_modules/swiper/swiper-react.mjs',
+    '^swiper/react$': swiperReact,
     // Mock Swiper styles - they are imported without a file extension
     '^swiper/css(?:/.*)?$': stylesMock,
   },
