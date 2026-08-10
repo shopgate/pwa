@@ -98,6 +98,34 @@ describe('createMockStore()', () => {
     expect(listener).not.toHaveBeenCalled();
   });
 
+  it('should fulfill the store contract of redux', () => {
+    const store = createMockStore({ counter: 0 });
+    // redux resolves the observable symbol with a string fallback
+    const observableKey = (typeof Symbol === 'function' && Symbol.observable) || '@@observable';
+
+    expect(typeof store.getState).toBe('function');
+    expect(typeof store.dispatch).toBe('function');
+    expect(typeof store.subscribe).toBe('function');
+    expect(typeof store.replaceReducer).toBe('function');
+    const members = store as unknown as Record<string | symbol, unknown>;
+
+    expect(typeof members[observableKey]).toBe('function');
+    // a missing Symbol.observable fallback would produce a key of "undefined"
+    expect(Object.keys(store)).not.toContain('undefined');
+  });
+
+  it('should apply the reducer which replaceReducer was called with', () => {
+    const store = createMockStore({ counter: 0 });
+
+    // replaceReducer takes a redux reducer, where the state can be undefined
+    // eslint-disable-next-line default-param-last
+    store.replaceReducer((state = { counter: 0 }, action) =>
+      (action.type === 'INCREMENT' ? { counter: state.counter + 1 } : state));
+    store.dispatch({ type: 'INCREMENT' });
+
+    expect(store.getState()).toEqual({ counter: 1 });
+  });
+
   it('should apply dispatched actions to the state when a reducer is passed', () => {
     const store = createMockStore({ counter: 0 }, reducer);
 
@@ -111,7 +139,7 @@ describe('createMockStore()', () => {
       const store = createMockStore<TestState>({ counter: 7 });
 
       const wrapper = mount(
-        <Provider store={store as never}>
+        <Provider store={store}>
           <Counter />
         </Provider>
       );
@@ -123,7 +151,7 @@ describe('createMockStore()', () => {
       const store = createMockStore<TestState>({ counter: 0 });
 
       mount(
-        <Provider store={store as never}>
+        <Provider store={store}>
           <Counter />
         </Provider>
       ).find('button').simulate('click');
@@ -135,7 +163,7 @@ describe('createMockStore()', () => {
       const store = createMockStore<TestState>({ counter: 0 }, reducer);
 
       const wrapper = mount(
-        <Provider store={store as never}>
+        <Provider store={store}>
           <Counter />
         </Provider>
       );
