@@ -1,3 +1,17 @@
+// Resolve everything from this package so consumers need no babel-jest,
+// preset install, or local babel config of their own.
+const babelJest = require.resolve('babel-jest');
+const babelOptions = {
+  babelrc: false,
+  configFile: false,
+  presets: [
+    require.resolve('@babel/preset-env'),
+    require.resolve('@babel/preset-react'),
+    require.resolve('@babel/preset-typescript'),
+  ],
+};
+const babelTransform = [babelJest, babelOptions];
+
 /** @type {import('jest').Config} */
 module.exports = {
   testEnvironment: 'jsdom',
@@ -10,9 +24,9 @@ module.exports = {
     '^swiper/react$': '<rootDir>/node_modules/swiper/swiper-react.mjs',
   },
   transform: {
-    '^.+\\.jsx?$': 'babel-jest',
-    '^.+\\.mjs$': 'babel-jest',
-    '^.+\\.[jt]sx?$': 'babel-jest',
+    '^.+\\.jsx?$': babelTransform,
+    '^.+\\.mjs$': babelTransform,
+    '^.+\\.[jt]sx?$': babelTransform,
   },
   snapshotSerializers: [
     'enzyme-to-json/serializer',

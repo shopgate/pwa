@@ -13,9 +13,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { getProductRoute, ProductImage } from '@shopgate/engage/product';
 import PropTypes from 'prop-types';
 import { BackInStockButton } from '@shopgate/engage/back-in-stock/components';
-import {
-  getThemeSettings, i18n,
-} from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core';
 import { useBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/hooks';
 
 const useStyles = makeStyles()(theme => ({
@@ -83,7 +81,6 @@ const Subscription = ({
     removeBackInStockSubscription,
   } = useBackInStockSubscriptions();
 
-  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
@@ -98,7 +95,7 @@ const Subscription = ({
         href={productLink}
         aria-hidden
       >
-        <ProductImage src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+        <ProductImage src={product.featuredImageBaseUrl} context="list" />
       </Link>
 
       <div className={classes.infoContainer}>

@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.31.5](https://github.com/shopgate/pwa/compare/v7.31.4...v7.31.5) (2026-08-04)
+
+#### :rocket: Enhancement
+* [#1482](https://github.com/shopgate/pwa/pull/1482) Improve frontend error handling ([@AylinUenal](https://github.com/AylinUenal))
+
+#### :house: Internal
+* [#1487](https://github.com/shopgate/pwa/pull/1487) Update native modules, improve unit test and lint setup for extensions ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.31.4](https://github.com/shopgate/pwa/compare/v7.31.3...v7.31.4) (2026-07-17)
 
 #### :house: Internal

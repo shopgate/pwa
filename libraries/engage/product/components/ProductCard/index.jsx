@@ -21,7 +21,6 @@ import {
   ProductName,
   ProductBadges,
 } from '@shopgate/engage/product/components';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import {
   PRODUCT_ITEM_DISCOUNT,
   PRODUCT_ITEM_PRICE,
@@ -80,7 +79,6 @@ function ProductCard(props) {
   const { meta } = useProductListType();
   const productNameLines = useSelector(getProductCardNameMaxLines);
 
-  const { ListImage: gridResolutions } = getProductImageSettings();
   const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
 
   const showRatings = useMemo(() => {
@@ -116,7 +114,7 @@ function ProductCard(props) {
           />
           : <ProductImage
               src={product.featuredImageBaseUrl}
-              resolutions={gridResolutions}
+              context="list"
               alt={product.name}
               itemProp="image"
           />}

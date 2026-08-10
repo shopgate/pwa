@@ -3,6 +3,16 @@ import type { Reducer, UnknownAction } from 'redux';
 import type { AppSettingsSlice, ShadowSettings } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
 import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
+import {
+  DEFAULT_IMAGE_FILL_COLOR,
+  DEFAULT_IMAGE_FILL_TRANSPARENT,
+  DEFAULT_IMAGE_QUALITY,
+  DEFAULT_SHOW_INNER_SHADOW,
+} from '../constants/imageSettings';
+// Deliberately not exported from the "helpers" barrel - they normalize values on their way into
+// the slice, which is nothing a consumer of the settings needs.
+import { toImageQuality } from '../helpers/toImageQuality';
+import { toThumborColor } from '../helpers/toThumborColor';
 
 type AppSettingsAction = ReceiveAppSettingsAction | UnknownAction;
 
@@ -57,6 +67,19 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     style: 'shadow',
     shadow: { size: 'medium' },
   },
+  images: {
+    quality: DEFAULT_IMAGE_QUALITY,
+    // Already in the image service's format, so the unhydrated path needs no conversion.
+    fillColor: DEFAULT_IMAGE_FILL_COLOR,
+    fillTransparent: DEFAULT_IMAGE_FILL_TRANSPARENT,
+    product: {
+      ratio: {
+        width: 1,
+        height: 1,
+      },
+      showInnerShadow: DEFAULT_SHOW_INNER_SHADOW,
+    },
+  },
 };
 
 /**
@@ -70,10 +93,29 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   action = { type: '' }
 ) => {
   if (isReceiveAppSettingsAction(action)) {
+    const { images } = action.settings ?? {};
+
     // Merged over the defaults rather than over the current state, so a field an incoming payload
     // omits falls back to its default instead of keeping the value of an earlier one. The admin
-    // preview needs that: it stops sending a shadow size once the card style isn't `shadow`.
-    return merge({}, DEFAULT_APP_SETTINGS, action.settings, { isHydrated: true });
+    // preview needs that: it stops sending a shadow size once the card style isn't `shadow`, and it
+    // clears a whole branch by sending a null.
+    const nextState: AppSettingsSlice = merge({}, DEFAULT_APP_SETTINGS, {
+      ...action.settings,
+      // A cleared branch is mapped to undefined, which merge skips, so the defaults it started from
+      // stay in place. A null would be written into the slice like any other value.
+      images: images === null ? undefined : {
+        ...images,
+        product: images?.product ?? undefined,
+      },
+    }, { isHydrated: true });
+
+    // Converted on the way in, so the slice holds wire ready values and every image url does not
+    // pay for it. Unconditional, because an empty string or a null reaches here like any other
+    // value - both converters are idempotent.
+    nextState.images.fillColor = toThumborColor(nextState.images.fillColor);
+    nextState.images.quality = toImageQuality(nextState.images.quality);
+
+    return nextState;
   }
 
   return state ?? DEFAULT_APP_SETTINGS;

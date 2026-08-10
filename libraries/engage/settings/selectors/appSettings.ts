@@ -39,6 +39,14 @@ export const getProductGridColumns = createSelector(
 );
 
 /**
+ * Selects the image settings.
+ */
+export const getImageSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.images
+);
+
+/*
  * Selects the max number of lines a product card name is clamped to.
  */
 export const getProductCardNameMaxLines = createSelector(

@@ -1,6 +1,3 @@
-import after from 'lodash/after';
-import before from 'lodash/before';
-import over from 'lodash/over';
 import { isAvailable } from '@shopgate/native-modules';
 import {
   init,
@@ -31,7 +28,7 @@ import {
   pckVersion,
 } from '../helpers/config';
 import { env } from '../helpers/environment';
-import { transformGeneralPipelineError } from './helpers/pipeline';
+import { transformGeneralPipelineError, getDisplayErrorMessage } from './helpers/pipeline';
 import { historyPop } from '../actions/router';
 import showModal from '../actions/modal/showModal';
 import { getUserData } from '../selectors/user';
@@ -42,6 +39,9 @@ import { appError$, pipelineError$ } from '../streams/error';
 import { getRouterStack } from '../selectors/router';
 import { MODAL_PIPELINE_ERROR } from '../constants/ModalTypes';
 import ToastProvider from '../providers/toast';
+
+// Generic, translated fallback shown when a backend error carries no code we can map to a message.
+const GENERIC_ERROR_MESSAGE = 'modal.body_error';
 
 /**
  * App errors subscriptions.
@@ -75,12 +75,34 @@ export default (subscribe) => {
   }) => {
     const { error } = action;
     const {
-      message, code, context, meta = {},
+      code, context, meta = {},
     } = error;
 
-    const { behavior } = meta;
+    const { behavior, message: originalMessage } = meta;
 
-    if (behavior) {
+    // Never surface a raw backend message to the user: show the extension's own translated
+    // message, a code-mapped translated message, or a generic fallback. The resolver is the single
+    // source of truth for both the text and whether it is ready-to-display (`displayTranslated`) or
+    // a locale key that must still go through I18n.Text.
+    const {
+      message: displayMessage,
+      translated: displayTranslated,
+    } = getDisplayErrorMessage(error, GENERIC_ERROR_MESSAGE);
+
+    // Unknown/generic and connection-style backend errors are treated as general platform issues.
+    // EUNKNOWN is always treated as general — even when the backend supplied a translated message —
+    // so it is shown as a toast with its translated message or generic fallback, never a modal.
+    const isConnectionError = displayMessage === 'error.general'
+      || [ETIMEOUT, ENETUNREACH].includes(code);
+    const isGeneralError = isConnectionError
+      || displayMessage === GENERIC_ERROR_MESSAGE
+      || code === EUNKNOWN;
+
+    // Some pipeline actions (e.g. fetchCategory) register an error behavior for *every* error via
+    // `setResponseBehavior`. Those behaviors are only meaningful for the specific errors they
+    // expect; when the platform fails with an unexpected/unmappable message we skip the behavior
+    // and fall through to the generic toast handling instead of, for example, showing a modal.
+    if (behavior && !isGeneralError) {
       behavior({
         dispatch,
         getState,
@@ -90,39 +112,41 @@ export default (subscribe) => {
       return;
     }
 
-    /** Show modal thunk */
-    const showModalError = () => {
+    /**
+     * Shows the pipeline error modal. When openWithDetails is set, the modal opens directly on the
+     * developer detail view (pipeline, code, raw message, params) — used for the toast long-press.
+     * @param {boolean} [openWithDetails=false] Whether to open the modal in developer detail mode.
+     */
+    const showModalError = (openWithDetails = false) => {
       dispatch(showModal({
         confirm: 'modal.ok',
         dismiss: null,
         title: null,
-        message,
+        message: displayMessage,
         type: MODAL_PIPELINE_ERROR,
         params: {
           pipeline: context,
           request: meta.input,
-          message: meta.message,
+          message: originalMessage,
           code,
+          translated: displayTranslated,
+          messageParams: meta.additionalParams,
+          openWithDetails,
         },
       }));
     };
 
-    let shouldShowToast = message === 'error.general';
-    if ([ETIMEOUT, ENETUNREACH].includes(code) && message === 'modal.body_error') {
-      shouldShowToast = true;
-    }
-    // It was transformed general error. let it popup after 10 toast clicks
-    if (shouldShowToast) {
-      const showToastAfter = after(9, showModalError);
-      // Recursively show same toast message until clicked 10 times
-      const showToast = before(10, () => {
-        events.emit(ToastProvider.ADD, {
-          id: 'pipeline.error',
-          message: 'error.general',
-          action: over([showToast, showToastAfter]),
-        });
+    // General platform errors surface as a toast instead of a modal.
+    // Long-pressing the toast opens the error modal in developer detail mode.
+    if (isGeneralError) {
+      // Connection-style errors show the generic connection message, but never override a message
+      // an extension already translated for us.
+      const useGenericConnectionText = isConnectionError && !displayTranslated;
+      events.emit(ToastProvider.ADD, {
+        id: 'pipeline.error',
+        message: useGenericConnectionText ? 'error.general' : displayMessage,
+        onLongPress: () => showModalError(true),
       });
-      showToast();
       return;
     }
 
