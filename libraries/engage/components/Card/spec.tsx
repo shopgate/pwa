@@ -96,6 +96,14 @@ describe('<Card />', () => {
     expect(styleText()).toContain('var(--sg-components-cards-border)');
   });
 
+  it('forwards a ref to the rendered element', () => {
+    const ref = React.createRef<HTMLElement>();
+
+    renderCard(<Card ref={ref} data-testid="card">x</Card>);
+
+    expect(ref.current).toBe(screen.getByTestId('card'));
+  });
+
   it('renders the plain variant', () => {
     renderCard(<Card variant="plain" data-testid="card">x</Card>);
     const el = screen.getByTestId('card');

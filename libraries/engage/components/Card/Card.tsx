@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { useTheme, makeStyles } from '@shopgate/engage/styles';
 import type { ShadowSize } from '@shopgate/engage/styles';
 import Paper from '../Paper';
@@ -33,9 +33,9 @@ const useStyles = makeStyles<StyleParams>({ name: 'Card' })((theme, { variant })
 /**
  * A themed content surface built on `Paper`, reading the merchant's card settings.
  */
-const Card = ({
+const Card = forwardRef<HTMLElement, CardProps>(({
   className, children, id, variant, elevation, square, ...rest
-}: CardProps) => {
+}, ref) => {
   const theme = useTheme();
   const appearance = useCardAppearance();
   const resolvedVariant = variant ?? appearance.variant;
@@ -45,6 +45,7 @@ const Card = ({
 
   return (
     <Paper
+      ref={ref}
       id={id}
       variant={paperVariant}
       elevation={isPlain ? 0 : (elevation ?? appearance.elevation)}
@@ -59,6 +60,6 @@ const Card = ({
       {children}
     </Paper>
   );
-};
+});
 
 export default Card;
