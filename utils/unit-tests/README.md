@@ -66,10 +66,67 @@ const defaultConfig = require('@shopgate/pwa-unit-test/jest.config');
 module.exports = {
   ...defaultConfig,
   moduleNameMapper: {
-    '^Components(.*)$': '<rootDir>/components',
-    '^Styles(.*)$': '<rootDir>/styles',
+    // Keep the default mappings - they would be replaced otherwise
+    ...defaultConfig.moduleNameMapper,
+    '^Components(.*)$': '<rootDir>/components$1',
+    '^Styles(.*)$': '<rootDir>/styles$1',
   },
 };
+```
+
+__NOTE: Options which hold an object or an array - like `moduleNameMapper`, `setupFiles` or
+`transformIgnorePatterns` - are replaced and not merged when they are set. Spread the value of the
+default configuration first to keep it, as shown above. Without that, the mappings for styles and
+assets are lost, and imports of stylesheets or images within the tested components fail.__
+
+## Test utilities
+
+### `createMockStore`
+
+Creates a minimal Redux store for component tests. It implements the contract that `react-redux`
+relies on, without pulling in the reducers of the application:
+
+```js
+import { createMockStore } from '@shopgate/pwa-unit-test/testUtils';
+
+const store = createMockStore({ counter: 0 });
+
+mount(
+  <Provider store={store}>
+    <MyComponent />
+  </Provider>
+);
+```
+
+Dispatched actions are recorded, so they can be asserted on. `store.dispatch` is a jest mock:
+
+```js
+expect(store.getActions()).toEqual([{ type: 'INCREMENT' }]);
+expect(store.dispatch).toHaveBeenCalledWith({ type: 'INCREMENT' });
+
+store.clearActions();
+```
+
+__NOTE: `getActions()` reads the recorded calls of the `dispatch` mock, so a `jest.clearAllMocks()`
+- e.g. within a `beforeEach` - also clears the recorded actions. Create the store after that call,
+or use `store.clearActions()` to reset only this store.__
+
+By default the state doesn't change when an action is dispatched, which keeps it predictable. Use
+`setState` to simulate a state change - the subscribers are notified, so connected components
+re-render:
+
+```js
+store.setState({ counter: 5 });
+store.setState(current => ({ counter: current.counter + 1 }));
+```
+
+Pass a reducer as second argument to also apply dispatched actions to the state, e.g. to assert
+what a component renders after it dispatched something:
+
+```js
+const store = createMockStore({ counter: 0 }, (state, action) => (
+  action.type === 'INCREMENT' ? { counter: state.counter + 1 } : state
+));
 ```
 
 ## About Shopgate
