@@ -48,4 +48,18 @@ describe('styles/theme/createTheme/helpers/cssVarsParser', () => {
 
     expect(body2).toBe('0.75rem');
   });
+
+  it('emits a var() reference verbatim', () => {
+    // Variant font weights reference the shared `fontWeight*` tokens (see createTypography), so the
+    // reference has to survive the parser unchanged - no `px` suffix, no rewriting.
+    const css = parse({
+      typography: {
+        fontWeightRegular: 400,
+        body2: { fontWeight: 'var(--sg-typography-fontWeightRegular, 400)' },
+      },
+    });
+
+    expect(css['--sg-typography-fontWeightRegular']).toBe(400);
+    expect(css['--sg-typography-body2-fontWeight']).toBe('var(--sg-typography-fontWeightRegular, 400)');
+  });
 });
