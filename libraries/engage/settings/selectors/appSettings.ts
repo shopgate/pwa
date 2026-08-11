@@ -35,7 +35,31 @@ export const getTabBarSettings = createSelector(
  */
 export const getProductGridColumns = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.grid.columns
+  appSettings => appSettings.product.grid.columns
+);
+
+/**
+ * Selects the ProductSlider slidesPerView setting (keyed by breakpoint).
+ */
+export const getProductSliderSlidesPerView = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.slider.slidesPerView
+);
+
+/**
+ * Selects whether the favorites tab bar icon shows the number of favorites within its badge.
+ */
+export const getShowFavoritesCounter = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.tabBar.favorites.showCounter
+);
+
+/**
+ * Selects whether rating stars are also shown for products without a rating.
+ */
+export const getShowEmptyRatingStars = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.rating.showEmptyStars
 );
 
 /**

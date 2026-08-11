@@ -15,14 +15,25 @@ const appSettings: AppSettings = {
       showLabels: true,
       hideOnScroll: false,
       fixed: { borderEnabled: true },
+      favorites: { showCounter: true },
     },
   },
-  productList: {
+  product: {
     grid: {
       columns: {
-        xs: 2,
-        md: 4,
+        small: 2,
+        large: 4,
       },
+    },
+    slider: {
+      slidesPerView: {
+        small: 2.3,
+        medium: 3.3,
+        large: 4.3,
+      },
+    },
+    rating: {
+      showEmptyStars: true,
     },
   },
   images: {

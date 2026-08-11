@@ -37,14 +37,27 @@ describe('settings / reducers / appSettings', () => {
           fixed: {
             borderEnabled: false,
           },
+          favorites: {
+            showCounter: false,
+          },
         },
       },
-      productList: {
+      product: {
         grid: {
           columns: {
-            xs: 1,
-            md: 3,
+            small: 1,
+            large: 3,
           },
+        },
+        slider: {
+          slidesPerView: {
+            small: 1.2,
+            medium: 2.2,
+            large: 3.2,
+          },
+        },
+        rating: {
+          showEmptyStars: false,
         },
       },
       images: {
@@ -65,7 +78,10 @@ describe('settings / reducers / appSettings', () => {
 
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
-    expect(state.productList.grid.columns).toEqual(settings.productList.grid.columns);
+    expect(state.product.grid.columns).toEqual(settings.product.grid.columns);
+    expect(state.product.slider.slidesPerView)
+      .toEqual(settings.product.slider.slidesPerView);
+    expect(state.product.rating).toEqual(settings.product.rating);
   });
 
   it('deep merges a partial payload over the defaults', () => {
@@ -84,6 +100,7 @@ describe('settings / reducers / appSettings', () => {
       showLabels: DEFAULT_APP_SETTINGS.navigation.tabBar.showLabels,
       hideOnScroll: DEFAULT_APP_SETTINGS.navigation.tabBar.hideOnScroll,
       fixed: DEFAULT_APP_SETTINGS.navigation.tabBar.fixed,
+      favorites: DEFAULT_APP_SETTINGS.navigation.tabBar.favorites,
     });
   });
 
@@ -190,8 +207,16 @@ describe('settings / reducers / appSettings', () => {
         images: {
           quality: 40,
           product: {
-            ratio: { width: 4, height: 5 },
-            pdp: { ratio: { width: 1, height: 2 } },
+            ratio: {
+              width: 4,
+              height: 5,
+            },
+            pdp: {
+              ratio: {
+                width: 1,
+                height: 2,
+              },
+            },
           },
         },
       } as AppSettings));
@@ -224,7 +249,14 @@ describe('settings / reducers / appSettings', () => {
       );
 
       appSettings(restored, receiveAppSettings({
-        images: { product: { ratio: { width: 4, height: 5 } } },
+        images: {
+          product: {
+            ratio: {
+              width: 4,
+              height: 5,
+            },
+          },
+        },
       } as AppSettings));
 
       expect(DEFAULT_APP_SETTINGS.images.product.ratio).toEqual({
