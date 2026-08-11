@@ -35,7 +35,7 @@ export const getTabBarSettings = createSelector(
  */
 export const getProductGridColumns = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.grid.columns
+  appSettings => appSettings.product.grid.columns
 );
 
 /**
@@ -43,7 +43,7 @@ export const getProductGridColumns = createSelector(
  */
 export const getProductSliderSlidesPerView = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.slider.slidesPerView
+  appSettings => appSettings.product.slider.slidesPerView
 );
 
 /**
@@ -62,7 +62,8 @@ export const getShowEmptyRatingStars = createSelector(
   appSettings => appSettings.product.rating.showEmptyStars
 );
 
- /** Selects the image settings.
+/**
+ * Selects the image settings.
  */
 export const getImageSettings = createSelector(
   getAppSettingsState,

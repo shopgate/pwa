@@ -1,5 +1,3 @@
-import type { Breakpoint } from '@shopgate/engage/styles/theme';
-
 export interface AppSettingsState {
   settings: {
     appSettings: AppSettingsSlice;
@@ -7,11 +5,21 @@ export interface AppSettingsState {
 }
 
 /**
- * Number of product columns to render, keyed by breakpoint. Partial: any unset
- * breakpoint cascades down to the next smaller defined value (see
- * useResponsiveValue).
+ * The merchant-facing screen sizes for the product list types. Each maps to a theme
+ * breakpoint inside the consuming hook (small → xs, medium → sm, large → md).
  */
-export type ProductColumns = Partial<Record<Breakpoint, number>>;
+export type ScreenSize = 'small' | 'medium' | 'large';
+
+/**
+ * A value keyed by screen size. Partial: any unset size cascades down to the next smaller
+ * defined value (see useResponsiveValue).
+ */
+export type PerScreenSize = Partial<Record<ScreenSize, number>>;
+
+/**
+ * Number of product columns to render, keyed by screen size.
+ */
+export type ProductColumns = PerScreenSize;
 
 /**
  * Settings for the ProductGrid list type.
@@ -21,25 +29,15 @@ export interface ProductGridSettings {
 }
 
 /**
- * Number of slides to render side by side, keyed by breakpoint. Fractional values are
- * intentional - they let the next slide peek in.
+ * Number of slides to render side by side, keyed by screen size. Fractional values are allowed.
  */
-export type SlidesPerView = Partial<Record<Breakpoint, number>>;
+export type SlidesPerView = PerScreenSize;
 
 /**
  * Settings for the ProductSlider list type.
  */
 export interface ProductSliderSettings {
   slidesPerView: SlidesPerView;
-}
-
-/**
- * Settings for the various product-list types. Add a key and its own settings
- * interface per future type.
- */
-export interface ProductListSettings {
-  grid: ProductGridSettings;
-  slider: ProductSliderSettings;
 }
 
 /**
@@ -56,6 +54,8 @@ export interface ProductRatingSettings {
  * Settings for product presentation across the app.
  */
 export interface ProductSettings {
+  grid: ProductGridSettings;
+  slider: ProductSliderSettings;
   rating: ProductRatingSettings;
 }
 
@@ -181,7 +181,6 @@ export interface AppSettings {
       }
     }
   }
-  productList: ProductListSettings;
   product: ProductSettings;
   /**
    * Settings for images that are served through the image service.

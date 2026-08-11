@@ -18,23 +18,20 @@ const appSettings: AppSettings = {
       favorites: { showCounter: true },
     },
   },
-  productList: {
+  product: {
     grid: {
       columns: {
-        xs: 2,
-        md: 4,
+        small: 2,
+        large: 4,
       },
     },
     slider: {
       slidesPerView: {
-        xs: 2.3,
-        sm: 3.3,
-        md: 4.3,
-        lg: 5.3,
+        small: 2.3,
+        medium: 3.3,
+        large: 4.3,
       },
     },
-  },
-  product: {
     rating: {
       showEmptyStars: true,
     },

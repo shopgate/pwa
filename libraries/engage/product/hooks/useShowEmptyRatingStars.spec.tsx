@@ -67,13 +67,13 @@ describe('useShowEmptyRatingStars', () => {
     expect(renderHook()).toBe(false);
   });
 
-  it('falls back to the app setting when the widget setting is missing', () => {
+  it('falls back to the legacy default (false) when the widget setting is missing', () => {
     setup({
       hydrated: false,
       appSettingsValue: true,
       widgetSettings: {},
     });
-    expect(renderHook()).toBe(true);
+    expect(renderHook()).toBe(false);
   });
 
   it('uses the app settings once hydrated', () => {

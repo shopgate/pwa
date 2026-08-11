@@ -15,11 +15,11 @@ const useShowEmptyRatingStars = (): boolean => {
   const areAppSettingsHydrated = useSelector(getAreAppSettingsHydrated);
   const showEmptyStars = useSelector(getShowEmptyRatingStars);
 
-  const { showEmptyRatingStars: legacyShowEmptyRatingStars } =
+  const { showEmptyRatingStars: legacyShowEmptyRatingStars = false } =
     (useWidgetSettings(RATING_WIDGET_ID) || {}) as { showEmptyRatingStars?: boolean };
 
   if (!areAppSettingsHydrated) {
-    return legacyShowEmptyRatingStars ?? showEmptyStars;
+    return legacyShowEmptyRatingStars;
   }
 
   return showEmptyStars;

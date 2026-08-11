@@ -42,23 +42,20 @@ describe('settings / reducers / appSettings', () => {
           },
         },
       },
-      productList: {
+      product: {
         grid: {
           columns: {
-            xs: 1,
-            md: 3,
+            small: 1,
+            large: 3,
           },
         },
         slider: {
           slidesPerView: {
-            xs: 1.2,
-            sm: 2.2,
-            md: 3.2,
-            lg: 4.2,
+            small: 1.2,
+            medium: 2.2,
+            large: 3.2,
           },
         },
-      },
-      product: {
         rating: {
           showEmptyStars: false,
         },
@@ -81,9 +78,9 @@ describe('settings / reducers / appSettings', () => {
 
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
-    expect(state.productList.grid.columns).toEqual(settings.productList.grid.columns);
-    expect(state.productList.slider.slidesPerView)
-      .toEqual(settings.productList.slider.slidesPerView);
+    expect(state.product.grid.columns).toEqual(settings.product.grid.columns);
+    expect(state.product.slider.slidesPerView)
+      .toEqual(settings.product.slider.slidesPerView);
     expect(state.product.rating).toEqual(settings.product.rating);
   });
 
@@ -210,8 +207,16 @@ describe('settings / reducers / appSettings', () => {
         images: {
           quality: 40,
           product: {
-            ratio: { width: 4, height: 5 },
-            pdp: { ratio: { width: 1, height: 2 } },
+            ratio: {
+              width: 4,
+              height: 5,
+            },
+            pdp: {
+              ratio: {
+                width: 1,
+                height: 2,
+              },
+            },
           },
         },
       } as AppSettings));
@@ -244,7 +249,14 @@ describe('settings / reducers / appSettings', () => {
       );
 
       appSettings(restored, receiveAppSettings({
-        images: { product: { ratio: { width: 4, height: 5 } } },
+        images: {
+          product: {
+            ratio: {
+              width: 4,
+              height: 5,
+            },
+          },
+        },
       } as AppSettings));
 
       expect(DEFAULT_APP_SETTINGS.images.product.ratio).toEqual({

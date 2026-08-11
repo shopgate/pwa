@@ -37,9 +37,10 @@ function ProductSlider(props) {
     meta,
     productItemProps,
     item,
+    slidesPerView: slidesPerViewProp,
     ...swiperProps
   } = props;
-  const slidesPerView = useSlidesPerView(props.slidesPerView);
+  const slidesPerView = useSlidesPerView(slidesPerViewProp);
   // ProductSlider items are rendered with the ProductCard component provided by the theme.
   const { ProductCard } = useThemeComponents();
   const Item = item || ProductCard;
