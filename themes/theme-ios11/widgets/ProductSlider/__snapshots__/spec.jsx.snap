@@ -43,7 +43,6 @@ exports[`<ProductSlider /> should call the products callback on mount 1`] = `
       "sortOrder": "asc",
     }
   }
-  widgetSettings={{}}
 />
 `;
 

@@ -6,12 +6,9 @@ import {
   ProductListEntryProvider,
 } from '@shopgate/engage/product/providers';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
-import { withWidgetSettings } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import {
-  ProductSlider as EngageProductSlider,
-  ProductCard,
-} from '@shopgate/engage/product/components';
+import { ProductCard } from '@shopgate/engage/product/components';
+import { useSlidesPerView } from '@shopgate/engage/product/hooks';
 import { makeStyles, cx } from '@shopgate/engage/styles';
 import Headline from 'Components/Headline';
 import connect from './connector';
@@ -48,11 +45,10 @@ const ProductSlider = ({
   id,
   products,
   settings,
-  widgetSettings,
 }) => {
   const { classes } = useStyles();
   const { sliderSettings } = settings;
-  const { slidesPerView = 2.3 } = widgetSettings;
+  const slidesPerView = useSlidesPerView();
 
   useEffect(() => {
     const { queryType, queryParams, sortOrder } = settings;
@@ -156,17 +152,13 @@ ProductSlider.propTypes = {
   }).isRequired,
   hash: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape()),
-  widgetSettings: PropTypes.shape({
-    slidesPerView: PropTypes.number,
-  }),
 };
 
 ProductSlider.defaultProps = {
   products: [],
-  widgetSettings: {},
   hash: null,
 };
 
-export default withWidgetSettings(connect(ProductSlider), EngageProductSlider.WIDGET_ID);
+export default connect(ProductSlider);
 
 export { ProductSlider as UnwrappedProductSlider };

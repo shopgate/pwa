@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
-import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { useProductListType } from '@shopgate/engage/product/hooks';
+import { useProductListType, useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
 import {
   Link,
   RatingStars,
@@ -79,7 +78,7 @@ function ProductCard(props) {
   const { meta } = useProductListType();
   const productNameLines = useSelector(getProductCardNameMaxLines);
 
-  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+  const showEmptyRatingStars = useShowEmptyRatingStars();
 
   const showRatings = useMemo(() => {
     if (!hideRating && product?.rating?.average > 0) {

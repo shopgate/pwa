@@ -7,7 +7,7 @@ import {
 } from '@shopgate/engage/components';
 import { PRODUCT_RATING } from '@shopgate/engage/product/constants';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
-import { useWidgetSettings } from '@shopgate/engage/core/hooks';
+import { useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
@@ -50,7 +50,7 @@ const scrollToRating = () => {
  */
 const Rating = ({ rating }) => {
   const { classes } = useStyles();
-  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+  const showEmptyRatingStars = useShowEmptyRatingStars();
 
   const showRatings = useMemo(() => {
     if (hasReviews && (rating?.average ?? 0) > 0) {

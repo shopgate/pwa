@@ -35,7 +35,31 @@ export const getTabBarSettings = createSelector(
  */
 export const getProductGridColumns = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.grid.columns
+  appSettings => appSettings.product.grid.columns
+);
+
+/**
+ * Selects the ProductSlider slidesPerView setting (keyed by breakpoint).
+ */
+export const getProductSliderSlidesPerView = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.slider.slidesPerView
+);
+
+/**
+ * Selects whether the favorites tab bar icon shows the number of favorites within its badge.
+ */
+export const getShowFavoritesCounter = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.tabBar.favorites.showCounter
+);
+
+/**
+ * Selects whether rating stars are also shown for products without a rating.
+ */
+export const getShowEmptyRatingStars = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.rating.showEmptyStars
 );
 
 /**
@@ -46,12 +70,12 @@ export const getImageSettings = createSelector(
   appSettings => appSettings.images
 );
 
-/*
+/**
  * Selects the max number of lines a product card name is clamped to.
  */
 export const getProductCardNameMaxLines = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.card.productName.maxLines
+  appSettings => appSettings.product.card.productName.maxLines
 );
 
 /**
@@ -59,7 +83,7 @@ export const getProductCardNameMaxLines = createSelector(
  */
 export const getProductTileNameMaxLines = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.tile.productName.maxLines
+  appSettings => appSettings.product.tile.productName.maxLines
 );
 
 /**
@@ -83,5 +107,5 @@ export const getCardShadowSize = createSelector(
  */
 export const getProductTileShadowSize = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.productList.tile.shadow.size
+  appSettings => appSettings.product.tile.shadow.size
 );

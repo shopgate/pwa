@@ -37,14 +37,27 @@ describe('settings / reducers / appSettings', () => {
           fixed: {
             borderEnabled: false,
           },
+          favorites: {
+            showCounter: false,
+          },
         },
       },
-      productList: {
+      product: {
         grid: {
           columns: {
-            xs: 1,
-            md: 3,
+            small: 1,
+            large: 3,
           },
+        },
+        slider: {
+          slidesPerView: {
+            small: 1.2,
+            medium: 2.2,
+            large: 3.2,
+          },
+        },
+        rating: {
+          showEmptyStars: false,
         },
         card: {
           productName: { maxLines: 1 },
@@ -78,7 +91,7 @@ describe('settings / reducers / appSettings', () => {
 
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
-    expect(state.productList.grid.columns).toEqual(settings.productList.grid.columns);
+    expect(state.product).toEqual(settings.product);
     expect(state.cards).toEqual(settings.cards);
   });
 
@@ -98,6 +111,7 @@ describe('settings / reducers / appSettings', () => {
       showLabels: DEFAULT_APP_SETTINGS.navigation.tabBar.showLabels,
       hideOnScroll: DEFAULT_APP_SETTINGS.navigation.tabBar.hideOnScroll,
       fixed: DEFAULT_APP_SETTINGS.navigation.tabBar.fixed,
+      favorites: DEFAULT_APP_SETTINGS.navigation.tabBar.favorites,
     });
   });
 
@@ -231,8 +245,7 @@ describe('settings / reducers / appSettings', () => {
               height: 5,
             },
             pdp: {
-              ratio:
-              {
+              ratio: {
                 width: 1,
                 height: 2,
               },

@@ -19,6 +19,12 @@ jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
 }));
 
 const APP_SETTINGS_DEFAULT: ProductColumns = {
+  small: 2,
+  large: 4,
+};
+
+// The screen-size map above, resolved to the theme breakpoints the hook feeds useResponsiveValue.
+const APP_SETTINGS_DEFAULT_RESOLVED = {
   xs: 2,
   md: 4,
 };
@@ -75,7 +81,7 @@ describe('useProductGridColumns', () => {
       widgetSettings: { columns: 3 },
     });
 
-    expect(renderHook('some-widget-code')).toEqual(APP_SETTINGS_DEFAULT);
+    expect(renderHook('some-widget-code')).toEqual(APP_SETTINGS_DEFAULT_RESOLVED);
   });
 
   it('honors the legacy scalar flat when outside a widget (pre-hydration)', () => {
@@ -95,11 +101,15 @@ describe('useProductGridColumns', () => {
       widgetSettings: {},
     });
 
-    expect(renderHook(null)).toEqual(APP_SETTINGS_DEFAULT);
+    expect(renderHook(null)).toEqual(APP_SETTINGS_DEFAULT_RESOLVED);
   });
 
   it('uses the app-settings map everywhere once hydrated', () => {
     const appColumns = {
+      small: 1,
+      large: 3,
+    };
+    const resolved = {
       xs: 1,
       md: 3,
     };
@@ -110,7 +120,7 @@ describe('useProductGridColumns', () => {
     });
 
     // Both inside and outside a widget defer to the hydrated app settings.
-    expect(renderHook(null)).toEqual(appColumns);
-    expect(renderHook('some-widget-code')).toEqual(appColumns);
+    expect(renderHook(null)).toEqual(resolved);
+    expect(renderHook('some-widget-code')).toEqual(resolved);
   });
 });
