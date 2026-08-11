@@ -70,37 +70,58 @@ exports[`<ProductCard /> should render as expected 1`] = `
       shadow={true}
       style={{}}
     >
-      <section
-        className="sg-1e99pvw-root theme__product-card"
+      <Card
+        className="theme__product-card"
+        component="section"
         data-test-id="Product: Product Name"
         style={{}}
       >
-        <ProductCard
-          dispatch={[Function]}
-          product={
-            {
-              "featuredImageBaseUrl": null,
-              "featuredImageUrl": null,
-              "id": "PR0DUCTID",
-              "name": "Product Name",
-              "price": {
-                "currency": "EUR",
-                "discount": 50,
-                "info": "Price Info",
-                "unitPrice": 5,
-                "unitPriceStriked": 10,
-              },
-              "rating": {
-                "average": 80,
-                "count": 4,
-                "reviewCount": 3,
-              },
-            }
-          }
-          productId="PR0DUCTID"
-          url="/item/505230445543544944"
-        />
-      </section>
+        <Paper
+          background="var(--sg-components-cards-backgroundColor)"
+          border="var(--sg-components-cards-border)"
+          borderRadius="var(--sg-shape-cardsBorderRadius)"
+          className="sg-5e7qca-Card-root engage__card ui-shared__card theme__product-card"
+          component="section"
+          data-test-id="Product: Product Name"
+          elevation="medium"
+          shadowColor="var(--sg-components-cards-shadowColor)"
+          square={false}
+          style={{}}
+          variant="elevation"
+        >
+          <section
+            className="engage__paper engage__card ui-shared__card theme__product-card sg-1k2lror-Paper-root-Card-root"
+            data-test-id="Product: Product Name"
+            style={{}}
+          >
+            <ProductCard
+              dispatch={[Function]}
+              product={
+                {
+                  "featuredImageBaseUrl": null,
+                  "featuredImageUrl": null,
+                  "id": "PR0DUCTID",
+                  "name": "Product Name",
+                  "price": {
+                    "currency": "EUR",
+                    "discount": 50,
+                    "info": "Price Info",
+                    "unitPrice": 5,
+                    "unitPriceStriked": 10,
+                  },
+                  "rating": {
+                    "average": 80,
+                    "count": 4,
+                    "reviewCount": 3,
+                  },
+                }
+              }
+              productId="PR0DUCTID"
+              url="/item/505230445543544944"
+            />
+          </section>
+        </Paper>
+      </Card>
     </ProductCard>
   </Connect(ProductCard)>
 </Provider>
@@ -151,15 +172,36 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
       shadow={true}
       style={{}}
     >
-      <section
-        className="sg-1e99pvw-root theme__product-card"
+      <Card
+        className="theme__product-card"
+        component="section"
         data-test-id="Product: Product Name"
         style={{}}
       >
-        <div>
-          Custom Output
-        </div>
-      </section>
+        <Paper
+          background="var(--sg-components-cards-backgroundColor)"
+          border="var(--sg-components-cards-border)"
+          borderRadius="var(--sg-shape-cardsBorderRadius)"
+          className="sg-5e7qca-Card-root engage__card ui-shared__card theme__product-card"
+          component="section"
+          data-test-id="Product: Product Name"
+          elevation="medium"
+          shadowColor="var(--sg-components-cards-shadowColor)"
+          square={false}
+          style={{}}
+          variant="elevation"
+        >
+          <section
+            className="engage__paper engage__card ui-shared__card theme__product-card sg-1k2lror-Paper-root-Card-root"
+            data-test-id="Product: Product Name"
+            style={{}}
+          >
+            <div>
+              Custom Output
+            </div>
+          </section>
+        </Paper>
+      </Card>
     </ProductCard>
   </Connect(ProductCard)>
 </Provider>

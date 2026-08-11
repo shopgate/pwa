@@ -1,22 +1,32 @@
 import React, { Children } from 'react';
 import PropTypes from 'prop-types';
-import ListItem from '@shopgate/pwa-common/components/List/components/Item';
+import Card from '@shopgate/engage/components/Card';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   root: {
-    background: theme.palette.background.surface,
+    display: 'block',
     marginBottom: theme.spacing(0.5),
-    position: 'relative',
+  },
+  unselected: {
+    zIndex: 1,
+  },
+  selected: {
+    zIndex: 2,
   },
 }));
 
 /**
- * The Card List Item component implemented as class so that ref prop is available.
+ * The Card List Item component.
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Item = ({ children, className, isSelected }) => {
+const Item = ({
+  children,
+  className,
+  isSelected,
+  role,
+}) => {
   const { classes, cx } = useStyles();
 
   if (!Children.count(children)) {
@@ -24,9 +34,19 @@ const Item = ({ children, className, isSelected }) => {
   }
 
   return (
-    <ListItem className={cx(classes.root, className)} isSelected={isSelected}>
+    <Card
+      component="li"
+      className={cx(
+        classes.root,
+        className,
+        'common__list__list-item',
+        isSelected ? classes.selected : classes.unselected
+      )}
+      data-test-id="listItem"
+      role={role}
+    >
       {children}
-    </ListItem>
+    </Card>
   );
 };
 
@@ -34,12 +54,14 @@ Item.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   isSelected: PropTypes.bool,
+  role: PropTypes.string,
 };
 
 Item.defaultProps = {
   children: null,
   className: null,
   isSelected: false,
+  role: null,
 };
 
 export default Item;

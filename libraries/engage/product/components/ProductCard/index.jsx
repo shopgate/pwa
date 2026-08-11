@@ -25,24 +25,19 @@ import {
   PRODUCT_ITEM_PRICE,
 } from '@shopgate/engage/category';
 import { useSelector } from 'react-redux';
-import { makeStyles, SHADOW_COLOR_VAR } from '@shopgate/engage/styles';
-import { getProductCardNameMaxLines, getCardShadowSize } from '@shopgate/engage/settings/selectors/appSettings';
+import { makeStyles } from '@shopgate/engage/styles';
+import { getProductCardNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
 import ProductGridPrice from '../ProductGridPrice';
 
-const useStyles = makeStyles()((theme, { size }) => ({
+const useStyles = makeStyles()(theme => ({
   root: {
-    display: 'block',
-    position: 'relative',
-    overflow: 'hidden',
-    height: '100%',
-    background: theme.components.cards.backgroundColor,
-    borderRadius: theme.shape.cardsBorderRadius,
-    [SHADOW_COLOR_VAR]: theme.components.cards.shadowColor,
-    boxShadow: theme.shadowSizes[size],
-    border: theme.components.cards.border,
+    padding: theme.components.productCard.padding,
+  },
+  image: {
+    padding: theme.components.productCard.imagePadding,
   },
   details: {
-    padding: '12px 16px',
+    padding: theme.components.productCard.textPadding,
   },
   title: {
     fontSize: theme.typography.body2.fontSize,
@@ -70,8 +65,7 @@ const location = 'productCard';
  * @return {JSX.Element}
  */
 function ProductCard(props) {
-  const shadowSize = useSelector(getCardShadowSize);
-  const { classes, cx } = useStyles({ size: shadowSize });
+  const { classes, cx } = useStyles();
   const {
     product, hidePrice, hideRating, hideName, titleRows, url,
   } = props;
@@ -104,7 +98,7 @@ function ProductCard(props) {
         ...meta,
       }}
     >
-      <div>
+      <div className={classes.image}>
         {isBeta() && product.featuredMedia
           ? <FeaturedMedia
               type={product.featuredMedia.type}

@@ -7,7 +7,7 @@ import { useCardAppearance } from './useCardAppearance';
 
 export type CardVariant = 'elevation' | 'outlined' | 'plain';
 
-export interface CardProps {
+export interface CardOwnProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
@@ -19,8 +19,12 @@ export interface CardProps {
   elevation?: number | ShadowSize;
   /** Removes the rounded corners. */
   square?: boolean;
-  [key: `data-${string}`]: string;
 }
+
+export type CardProps =
+  CardOwnProps
+  & Omit<React.HTMLAttributes<HTMLElement>, keyof CardOwnProps>
+  & { [key: `data-${string}`]: string };
 
 type StyleParams = { variant: CardVariant };
 
@@ -61,5 +65,7 @@ const Card = forwardRef<HTMLElement, CardProps>(({
     </Paper>
   );
 });
+
+Card.displayName = 'Card';
 
 export default Card;

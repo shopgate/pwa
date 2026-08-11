@@ -4,26 +4,17 @@ import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import { useSelector } from 'react-redux';
 import { ProductImage, ProductBadges, ProductName } from '@shopgate/engage/product/components';
-import { getCardShadowSize } from '@shopgate/engage/settings/selectors/appSettings';
-import { makeStyles, SHADOW_COLOR_VAR } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
 
-const useStyles = makeStyles()((theme, { size }) => ({
-  // This widget renders the card content itself instead of the engage ProductCard, so it also
-  // brings the card chrome that the ProductCard would otherwise draw from these tokens.
-  card: {
-    margin: '5px 15px 10px',
-    background: theme.components.cards.backgroundColor,
-    borderRadius: theme.shape.cardsBorderRadius,
-    [SHADOW_COLOR_VAR]: theme.components.cards.shadowColor,
-    boxShadow: theme.shadowSizes[size],
-    border: theme.components.cards.border,
-    overflow: 'hidden',
-  },
+const liveshoppingCardStyle = {
+  margin: '5px 15px 10px',
+};
+
+const useStyles = makeStyles()(theme => ({
   image: {
     width: '50%',
     background: theme.palette.background.surface,
@@ -78,14 +69,13 @@ function LiveshoppingItem({
   productId,
   hasPagination,
 }) {
-  const shadowSize = useSelector(getCardShadowSize);
-  const { classes, cx } = useStyles({ size: shadowSize });
+  const { classes, cx } = useStyles();
   const { ProductCard } = useThemeComponents();
 
   return (
     <ProductCard
       productId={productId}
-      className={classes.card}
+      style={liveshoppingCardStyle}
       render={({ product, url }) => {
         const {
           featuredImageBaseUrl,

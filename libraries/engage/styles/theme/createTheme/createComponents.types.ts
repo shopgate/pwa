@@ -232,6 +232,13 @@ export const componentsSchema = {
       shadowColor: '',
     },
   },
+  productCard: {
+    vars: {
+      padding: '',
+      textPadding: '',
+      imagePadding: '',
+    },
+  },
   tiles: {
     vars: {
       backgroundColor: '',
@@ -239,8 +246,6 @@ export const componentsSchema = {
       textPadding: '',
       textPaddingTop: '',
       imagePadding: '',
-      border: '',
-      shadowColor: '',
     },
   },
 } as const;
@@ -357,21 +362,26 @@ export const componentsDefaults = {
   cards: {
     vars: {
       backgroundColor: t => t.palette.background.surface,
-      borderWidth: '0px',
+      borderWidth: 0,
       borderColor: 'transparent',
       border: 'var(--sg-components-cards-borderWidth) solid var(--sg-components-cards-borderColor)',
       shadowColor: t => t.palette.shadow,
+    },
+  },
+  productCard: {
+    vars: {
+      padding: 0,
+      textPadding: 16,
+      imagePadding: 0,
     },
   },
   tiles: {
     vars: {
       backgroundColor: 'transparent',
       padding: 0,
-      textPadding: '8px',
-      textPaddingTop: '16px',
+      textPadding: 8,
+      textPaddingTop: 'max(var(--sg-components-tiles-textPadding), 16px)',
       imagePadding: 0,
-      border: '0px solid transparent',
-      shadowColor: t => t.palette.shadow,
     },
   },
 } satisfies ComponentsDefaults;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  I18n, CardList, Card, Link,
+  I18n, CardList, Link,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -46,7 +46,7 @@ export const Row = (props) => {
   const { classes } = useStyles();
 
   return (
-    <Card key={props.orderNumber} component="li" className={classes.card} onClick={props.openDetails}>
+    <CardList.Item key={props.orderNumber} className={classes.card} onClick={props.openDetails}>
       <Link className={classes.cardContent} href={getOrderDetailsRoute(props.orderNumber)}>
         <div className={classes.column}>
           <span className={classes.orderNumber}>
@@ -88,7 +88,7 @@ export const Row = (props) => {
           </span>
         </div>
       </Link>
-    </Card>
+    </CardList.Item>
   );
 };
 

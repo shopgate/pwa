@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardList, Card, ResponsiveContainer } from '@shopgate/engage/components';
+import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
 import PropTypes from 'prop-types';
@@ -77,7 +77,7 @@ const CartItems = ({
           </ResponsiveContainer>
         )}
         {cartItems.map(item => (
-          <Card component="li" className={classes.card} key={item.id}>
+          <CardList.Item className={classes.card} key={item.id}>
             <CartItemProvider
               cartItem={item}
               isEditable={editable}
@@ -102,7 +102,7 @@ const CartItems = ({
                 </CartItemCard>
               </ul>
             </CartItemProvider>
-          </Card>
+          </CardList.Item>
         ))}
       </CardList>
     </>

@@ -12,7 +12,7 @@ import { WIDGET_ID } from './constants';
 
 const useStyles = makeStyles()({
   container: {
-    paddingBottom: 10,
+    padding: '8px 9px 16px !important',
   },
 });
 
@@ -59,9 +59,10 @@ function ProductSlider(props) {
         freeMode={!snap}
         {...swiperProps}
         slidesPerView={slidesPerView}
+        classNames={{ container: classes.container }}
       >
         {productIds.map(id => (
-          <Swiper.Item key={id} className={classes.container}>
+          <Swiper.Item key={id}>
             <ProductListEntryProvider productId={id}>
               <Item productId={id} style={items} {...productItemProps} />
             </ProductListEntryProvider>

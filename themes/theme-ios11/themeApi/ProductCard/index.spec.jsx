@@ -62,27 +62,16 @@ describe('<ProductCard />', () => {
   });
 
   it('should suppress the card shadow for legacy shadow={false} callers', () => {
-    const getCardClass = wrapper => Array
-      .from(wrapper.find('section').getDOMNode().classList)
-      .find(name => name.startsWith('sg-'));
+    // The card draws its own elevation from the merchant configuration, so the legacy prop is
+    // honoured by pinning the Card to elevation 0 — the one entry of the scale with no shadow.
+    const withShadow = renderComponent({ productId: mockProductId });
+    expect(withShadow.find('Card').prop('elevation')).toBeUndefined();
 
-    const withShadow = getCardClass(renderComponent({ productId: mockProductId }));
-    const withoutShadow = getCardClass(renderComponent({
+    const withoutShadow = renderComponent({
       productId: mockProductId,
       shadow: false,
-    }));
-
-    expect(withoutShadow).not.toBe(withShadow);
-
-    // The shadow is drawn by the card inside, so it is switched off by targeting that card.
-    // Emotion inserts its rules via the CSSOM, so they are read from the sheet, not from the tag.
-    const css = Array.from(document.styleSheets)
-      .flatMap(sheet => Array.from(sheet.cssRules).map(rule => rule.cssText))
-      .join('');
-
-    expect(css).toMatch(
-      new RegExp(`\\.${withoutShadow} \\.engage__product-card[^}]*box-shadow: ?none`)
-    );
+    });
+    expect(withoutShadow.find('Card').prop('elevation')).toBe(0);
   });
 
   it('should render with a custom render prop', () => {

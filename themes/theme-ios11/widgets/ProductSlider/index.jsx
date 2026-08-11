@@ -78,12 +78,7 @@ const ProductSlider = ({
     return (
       <Swiper.Item key={key}>
         <ProductListEntryProvider productId={product.id}>
-          {/*
-            The card chrome (background, radius, shadow, border) lives on the engage ProductCard
-            itself. A second layer of it would clip the card's corners and double its shadow, so
-            the Card here only positions the slide.
-          */}
-          <Card className={classes.card} variant="plain">
+          <Card className={classes.card}>
             <ProductCard
               product={product}
               hideName={!settings.showName}

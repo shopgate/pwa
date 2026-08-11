@@ -1,6 +1,6 @@
 import { merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
-import type { AppSettingsSlice, ShadowSettings } from '../types/appSettings';
+import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
 import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
 import {
@@ -21,15 +21,6 @@ const isReceiveAppSettingsAction = (
 ): action is ReceiveAppSettingsAction => (
   action.type === RECEIVE_APP_SETTINGS && 'settings' in action
 );
-
-/**
- * The default shadow of the configurable surfaces. `none` because the admin only sends a size
- * when the shadow style is selected — the fields are hidden for the border and flat styles, and a
- * hidden field is pruned from the payload, so an elevation here would show up on a flat card.
- */
-const DEFAULT_SHADOW: ShadowSettings = {
-  size: 'none',
-};
 
 /**
  * The built-in default app settings. Used as the reducer's initial state and as
@@ -73,7 +64,6 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     },
     tile: {
       productName: { maxLines: 3 },
-      shadow: { ...DEFAULT_SHADOW },
     },
   },
   cards: {

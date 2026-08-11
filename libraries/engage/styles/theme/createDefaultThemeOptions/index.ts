@@ -1,6 +1,6 @@
 import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/engage';
-import type { Theme, ThemeOptions } from '../createTheme';
+import type { ThemeOptions } from '../createTheme';
 
 const { colors, settings } = themeConfig;
 
@@ -111,23 +111,6 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             paginationFractionBackground: '#F2F2F2',
             paginationProgressbarBackground: '#F2F2F2',
             paginationProgressbarActiveColor: '#000000',
-          },
-        },
-        tiles: {
-          vars: {
-            backgroundColor: 'var(--sg-tiles-backgroundColor, transparent)',
-            // Whole-tile padding: insets every element (image + text) from the tile edge. Defaults
-            // to `0` so the image stays flush unless the merchant configures it.
-            padding: 'var(--sg-tiles-padding, 0px)',
-            textPadding: 'var(--sg-tiles-text-padding, 8px)',
-            // The favorites button is centred on the seam between image and details, so its
-            // lower half hangs into the details area. The configured inner
-            // padding may be smaller, so floor the text's top padding at the overhang, otherwise
-            // the button collides with the product name.
-            textPaddingTop: 'max(var(--sg-tiles-text-padding, 8px), 16px)',
-            imagePadding: 'var(--sg-tiles-image-padding, 0px)',
-            border: 'var(--sg-tiles-border-width, 0px) solid var(--sg-tiles-border-color, transparent)',
-            shadowColor: (t: Theme) => `var(--sg-tiles-shadow-color, ${t.palette.shadow})`,
           },
         },
       },

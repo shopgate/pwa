@@ -64,9 +64,6 @@ describe('settings / reducers / appSettings', () => {
         },
         tile: {
           productName: { maxLines: 4 },
-          shadow: {
-            size: 'strong',
-          },
         },
       },
       cards: {

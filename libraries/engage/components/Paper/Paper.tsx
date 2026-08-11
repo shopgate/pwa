@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { makeStyles, SHADOW_COLOR_VAR } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import type { ShadowSize } from '@shopgate/engage/styles';
 
 export type PaperVariant = 'elevation' | 'outlined';
@@ -18,7 +18,7 @@ export interface PaperOwnProps {
   square?: boolean;
   /**
    * Corner radius. The theme carries a dedicated value per surface — `shape.cardsBorderRadius` for
-   * cards, `shape.tilesBorderRadius` for tiles. Ignored when `square`.
+   * cards. Ignored when `square`.
    * @default theme.shape.borderRadius
    */
   borderRadius?: number | string;
@@ -60,7 +60,7 @@ const useStyles = makeStyles<StyleParams>({ name: 'Paper' })((theme, p) => {
         boxShadow: typeof p.elevation === 'number'
           ? theme.shadows[p.elevation]
           : theme.shadowSizes[p.elevation],
-        ...p.shadowColor && { [SHADOW_COLOR_VAR]: p.shadowColor },
+        ...p.shadowColor && { [theme.vars.palette.shadow]: p.shadowColor },
       },
       ...p.variant === 'outlined' && {
         border: p.border ?? `1px solid ${theme.components.border.light}`,
@@ -108,5 +108,7 @@ const Paper = forwardRef<HTMLElement, PaperProps>((props, ref) => {
     </Component>
   );
 });
+
+Paper.displayName = 'Paper';
 
 export default Paper;

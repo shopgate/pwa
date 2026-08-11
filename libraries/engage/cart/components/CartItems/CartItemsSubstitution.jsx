@@ -1,7 +1,7 @@
 import React, { useMemo, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { Card } from '@shopgate/engage/components';
+import { CardList } from '@shopgate/engage/components';
 import Substitution, { SubstitutionWrapper } from '../Substitution';
 import connect from './CartItemsSubscription.connector';
 
@@ -21,14 +21,14 @@ const CartItemsSubstitution = ({
   if (wrapCard) {
     return (
       <SubstitutionWrapper>
-        <Card component="li" className={className}>
+        <CardList.Item className={className}>
           <Substitution
             id="substitution-all"
             label={i18n.text('cart.allow_substitution_all')}
             checked={allAllowed}
             onChange={handleChange}
           />
-        </Card>
+        </CardList.Item>
       </SubstitutionWrapper>
     );
   }

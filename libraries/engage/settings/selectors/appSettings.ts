@@ -101,11 +101,3 @@ export const getCardShadowSize = createSelector(
   getCardSettings,
   cards => (cards.style === 'shadow' ? cards.shadow.size : 'none')
 );
-
-/**
- * Selects the shadow size configured for product tiles.
- */
-export const getProductTileShadowSize = createSelector(
-  getAppSettingsState,
-  appSettings => appSettings.product.tile.shadow.size
-);

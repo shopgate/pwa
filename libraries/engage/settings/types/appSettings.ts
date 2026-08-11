@@ -51,7 +51,7 @@ export interface ProductNameSettings {
 }
 
 /**
- * Drop shadow shared by the card and tile product surfaces.
+ * Drop shadow of the card surface.
  */
 export interface ShadowSettings {
   /** Which preset elevation to draw. `none` renders no shadow at all. */
@@ -90,7 +90,7 @@ export interface ProductSettings {
   /** Product cards (sliders, relations, live shopping). */
   card: { productName: ProductNameSettings };
   /** Product grid tiles. */
-  tile: { productName: ProductNameSettings; shadow: ShadowSettings };
+  tile: { productName: ProductNameSettings };
 }
 
 /**
