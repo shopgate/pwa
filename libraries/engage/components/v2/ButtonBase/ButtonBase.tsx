@@ -21,11 +21,13 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
     onPointerLeave,
     onPointerCancel,
     className,
+    classes: classesProp,
+    testId,
     children,
     ...other
   } = props;
 
-  const { classes, cx } = useStyles(undefined, { props: { classes: props.classes } });
+  const { classes, cx } = useStyles(undefined, { props: { classes: classesProp } });
   const { ripples, start, end } = usePressRipple();
   const reduceMotion = useReduceMotion();
 
@@ -67,6 +69,7 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
   return (
     <button
       ref={ref}
+      data-test-id={testId}
       className={cx(classes.root, className)}
       disabled={disabled}
       onPointerDown={handlePointerDown}
@@ -109,6 +112,10 @@ const useStyles = makeStyles({
     '&::-moz-focus-inner': {
       borderStyle: 'none',
     },
+    '&:focus-visible': {
+      outline: '2px solid currentColor',
+      outlineOffset: 2,
+    },
     '&:disabled': {
       pointerEvents: 'none',
       cursor: 'default',
@@ -132,6 +139,10 @@ export interface ButtonBaseOwnProps {
    */
   className?: string;
   /**
+   * Value for the `data-test-id` attribute of the button.
+   */
+  testId?: string;
+  /**
    * Override or extend the styles applied to the component.
    */
   classes?: Partial<ReturnType<typeof useStyles>['classes']>;
@@ -139,5 +150,7 @@ export interface ButtonBaseOwnProps {
 }
 
 export type ButtonBaseProps = ButtonBaseOwnProps & React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+ButtonBase.displayName = 'ButtonBase';
 
 export default ButtonBase;

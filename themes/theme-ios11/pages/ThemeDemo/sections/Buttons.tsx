@@ -29,6 +29,11 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
     gap: theme.spacing(1),
   },
+  overriddenButton: {
+    borderRadius: 0,
+    background: theme.palette.grey[900],
+    color: theme.palette.common.white,
+  },
   sizeRadioButtons: {
     display: 'flex',
     flexDirection: 'row',
@@ -174,6 +179,35 @@ const Buttons = () => {
             fullWidth
           >
             Full Width
+          </Button>
+        </SectionRow>
+      </SubSection>
+      <SubSection title="Colors">
+        <SectionRow>
+          <Button variant="contained" color="cta">Cta</Button>
+          <Button variant="contained" color="error">Error</Button>
+          <Button variant="contained" color="inherit">Inherit</Button>
+        </SectionRow>
+        <SectionRow>
+          <Button variant="text" color="cta">Cta</Button>
+          <Button variant="outlined" color="error">Error</Button>
+          <Button variant="text" color="inherit">Inherit</Button>
+        </SectionRow>
+      </SubSection>
+      <SubSection title="States and overrides">
+        <SectionRow>
+          <Button variant="contained" color="primary" disabled>Disabled</Button>
+          <Button variant="outlined" color="primary" disabled>Disabled</Button>
+          <Button variant="text" color="primary" disabled>Disabled</Button>
+        </SectionRow>
+        <SectionRow>
+          {/* Proves that a consumer class wins over the variant styles. */}
+          <Button
+            variant="contained"
+            color="primary"
+            classes={{ root: classes.overriddenButton }}
+          >
+            Class Override
           </Button>
         </SectionRow>
       </SubSection>

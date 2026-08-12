@@ -1,4 +1,6 @@
-import { useCallback, useRef, useState } from 'react';
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import { RIPPLE_MIN_VISIBLE_MS } from './constants';
 
 export interface RippleItem {
@@ -22,6 +24,12 @@ export function usePressRipple() {
   const [ripples, setRipples] = useState<RippleItem[]>([]);
   const nextKey = useRef(0);
   const startedAtByPointer = useRef(new Map<number, number>());
+  const pendingTimeouts = useRef(new Set<number>());
+
+  useEffect(() => () => {
+    pendingTimeouts.current.forEach(timeoutId => window.clearTimeout(timeoutId));
+    pendingTimeouts.current.clear();
+  }, []);
 
   const start = useCallback((event: React.PointerEvent<HTMLElement>) => {
     const element = event.currentTarget;
@@ -59,13 +67,18 @@ export function usePressRipple() {
     const elapsed = performance.now() - startedAt;
     const delay = Math.max(0, RIPPLE_MIN_VISIBLE_MS - elapsed);
 
-    window.setTimeout(() => {
+    const timeoutId = window.setTimeout(() => {
+      pendingTimeouts.current.delete(timeoutId);
       setRipples(prev => prev.filter(ripple => ripple.pointerId !== pointerId));
       startedAtByPointer.current.delete(pointerId);
     }, delay);
+
+    pendingTimeouts.current.add(timeoutId);
   }, []);
 
   const clearAll = useCallback(() => {
+    pendingTimeouts.current.forEach(timeoutId => window.clearTimeout(timeoutId));
+    pendingTimeouts.current.clear();
     startedAtByPointer.current.clear();
     setRipples([]);
   }, []);

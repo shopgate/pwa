@@ -18,10 +18,11 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>((prop
     thickness = 3.6,
     style,
     className,
+    classes: classesProp,
     ...other
   } = props;
 
-  const { classes, cx } = useStyles({ color }, { props: { classes: props.classes } });
+  const { classes, cx } = useStyles({ color }, { props: { classes: classesProp } });
 
   const circleStyle: React.CSSProperties = {};
   const rootStyle: React.CSSProperties = {};
@@ -37,10 +38,12 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>((prop
 
   return (
     <div
-      className={cx(classes.root, className, {
+      // `className` comes last so that a consumer class wins over the variant classes. `cx`
+      // re-serializes in argument order, so the last occurrence takes precedence.
+      className={cx(classes.root, {
         [classes.indeterminate]: variant === 'indeterminate',
         [classes.determinate]: variant === 'determinate',
-      })}
+      }, className)}
       style={{
         width: size,
         height: size,
@@ -111,8 +114,8 @@ const useStyles = makeStyles<CircularProgressProps>({
   return {
     root: {
       display: 'inline-block',
-      '--sg-circular-progress-circle-color': cssColor,
-      color: 'var(--sg-circular-progress-circle-color)',
+      '--circular-progress-color': cssColor,
+      color: 'var(--circular-progress-color)',
     },
     svg: {
       display: 'block',
@@ -183,5 +186,7 @@ export interface CircularProgressProps {
    */
   classes?: Partial<ReturnType<typeof useStyles>['classes']>;
 }
+
+CircularProgress.displayName = 'CircularProgress';
 
 export default CircularProgress;

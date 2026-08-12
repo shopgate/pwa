@@ -23,6 +23,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     fullWidth = false,
     disableElevation = false,
     className,
+    classes: classesProp,
     children,
     ...other
   } = props;
@@ -34,7 +35,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loadingPosition,
     loading,
     fullWidth,
-  }, { props: { classes: props.classes } });
+  }, { props: { classes: classesProp } });
 
   const loadingIndicator = loadingIndicatorProp ?? (
     <CircularProgress color="inherit" size={16} />
@@ -71,7 +72,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   return (
     <ButtonBase
       ref={ref}
-      className={cx(classes.root, className, {
+      className={cx(classes.root, {
         [classes.text]: variant === 'text',
         [classes.outlined]: variant === 'outlined',
         [classes.contained]: variant === 'contained',
@@ -80,7 +81,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         [classes.disabled]: disabled || loading,
         [classes.fullWidth]: fullWidth,
         [classes.disableElevation]: disableElevation,
-      })}
+      }, className)}
       disabled={disabled || loading}
       {...other}
     >
@@ -110,7 +111,12 @@ const useStyles = makeStyles<ButtonOwnProps>({
   let cssColor = '';
   let contrastText = '';
 
-  if (color !== 'inherit') {
+  if (color === 'cta') {
+    // The call to action color is not part of the palette. It's a component token so that merchants
+    // can configure it separately from the primary color via `--color-button-cta`.
+    cssColor = theme.components.ctaButton.background;
+    contrastText = theme.components.ctaButton.color;
+  } else if (color !== 'inherit') {
     cssColor = color && theme.palette?.[color]?.main
       ? theme.palette[color].main
       : theme.palette.primary.main;
@@ -128,6 +134,10 @@ const useStyles = makeStyles<ButtonOwnProps>({
 
   return {
     root: {
+      // The `components.button` vars are override hooks for CSS injection and are intentionally
+      // left unseeded, so these fallbacks are what render by default. Don't "fix" the empty values
+      // by skipping their generation - that would also drop them from `theme.vars`, which would
+      // turn these into `var(undefined, ...)`.
       '--button-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
       '--text-color': `var(${theme.vars.components.button.textColor}, ${contrastText})`,
       '--border-radius': `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
@@ -147,7 +157,6 @@ const useStyles = makeStyles<ButtonOwnProps>({
       '--variant-containedDisabledColor': theme.palette.action.disabled,
       '--variant-containedDisabledBg': theme.palette.action.disabledBackground,
 
-      '--icon-size': theme.vars.typography.button.fontSize,
       ...theme.typography.button,
       fontSize: 'var(--font-size)',
       boxSizing: 'border-box',
@@ -229,7 +238,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
       '&:active': {
         boxShadow: 'none',
       },
-      '&$disabled': {
+      '&:disabled': {
         boxShadow: 'none',
       },
     },
@@ -348,7 +357,7 @@ export interface ButtonOwnProps {
    * The color of the component.
    * @default 'inherit'
    */
-  color?: PaletteColorsWithMain | 'inherit';
+  color?: PaletteColorsWithMain | 'inherit' | 'cta';
   /**
    * If `true`, no elevation is used for contained buttons.
    * @default false
@@ -394,5 +403,7 @@ export interface ButtonOwnProps {
 }
 
 export type ButtonProps = ButtonOwnProps & ButtonBaseProps;
+
+Button.displayName = 'Button';
 
 export default Button;

@@ -17,6 +17,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
     disabled = false,
     color = 'inherit',
     className,
+    classes: classesProp,
     children,
     ...other
   } = props;
@@ -24,7 +25,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
   const { classes, cx } = useStyles({
     color,
     variant,
-  }, { props: { classes: props.classes } });
+  }, { props: { classes: classesProp } });
 
   const buttonClassName = cx(
     classes.grouped,
@@ -75,7 +76,9 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
 
   let cssColor = '';
 
-  if (color !== 'inherit') {
+  if (color === 'cta') {
+    cssColor = theme.components.ctaButton.background;
+  } else if (color !== 'inherit') {
     cssColor = color && theme.palette?.[color]?.main
       ? theme.palette[color].main
       : theme.palette.primary.main;
@@ -178,9 +181,9 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
         borderBottomColor: 'transparent !important',
       },
     },
-    groupedText: {
-
-    },
+    // Text buttons need no shared styles, but the key has to exist because the class is looked up
+    // dynamically as `grouped${capitalize(variant)}`.
+    groupedText: {},
     groupedTextHorizontal: {
       '&&:not(:last-of-type)': {
         borderRightWidth: 1,
@@ -227,10 +230,11 @@ export interface ButtonGroupOwnProps {
    */
   disableElevation?: boolean;
   /**
-   * The color of the component.
+   * The color of the component. Besides the palette colors, `cta` is supported. It resolves to the
+   * merchant configurable call to action color from `components.ctaButton`.
    * @default 'inherit'
    */
-  color?: PaletteColorsWithMain | 'inherit';
+  color?: PaletteColorsWithMain | 'inherit' | 'cta';
   /**
    * If true, the buttons will take up the full width of their container.
    * @default false
@@ -255,5 +259,7 @@ export interface ButtonGroupOwnProps {
 }
 
 export type ButtonGroupProps = ButtonGroupOwnProps & React.HTMLAttributes<HTMLDivElement>
+
+ButtonGroup.displayName = 'ButtonGroup';
 
 export default ButtonGroup;
