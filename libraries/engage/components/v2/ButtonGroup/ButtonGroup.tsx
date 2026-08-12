@@ -11,7 +11,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
     variant = 'contained',
     size = 'medium',
     orientation = 'horizontal',
-    disableElevation = false,
+    enableElevation = false,
     fullWidth = false,
     disableRipple = false,
     disabled = false,
@@ -41,10 +41,9 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
     <div
       role="group"
       className={cx(classes.root, {
-        [classes.contained]: variant === 'contained',
         [classes.vertical]: orientation === 'vertical',
         [classes.fullWidth]: fullWidth,
-        [classes.disableElevation]: disableElevation,
+        [classes.enableElevation]: enableElevation && variant === 'contained',
       }, className)}
       ref={ref}
       {...other}
@@ -58,7 +57,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
           className: cx(buttonClassName, child.props.className),
           color: child.props.color || color,
           disabled: child.props.disabled || disabled,
-          disableElevation: child.props.disableElevation || disableElevation,
+          enableElevation: child.props.enableElevation || enableElevation,
           disableRipple,
           fullWidth,
           size: child.props.size || size,
@@ -96,12 +95,9 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       display: 'inline-flex',
       borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
     },
-    contained: {
-      boxShadow: theme.shadows[2],
-    },
     disabled: {},
-    disableElevation: {
-      boxShadow: 'none',
+    enableElevation: {
+      boxShadow: theme.shadows[2],
     },
     fullWidth: {
       width: '100%',
@@ -225,10 +221,10 @@ export interface ButtonGroupOwnProps {
    */
   orientation?: 'horizontal' | 'vertical';
   /**
-   * If true, no elevation is used for contained buttons.
+   * If true, a drop shadow is added to the group. Button groups are flat by default.
    * @default false
    */
-  disableElevation?: boolean;
+  enableElevation?: boolean;
   /**
    * The color of the component. Besides the palette colors, `cta` is supported. It resolves to the
    * merchant configurable call to action color from `components.ctaButton`.

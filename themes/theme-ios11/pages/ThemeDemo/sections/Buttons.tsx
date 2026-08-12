@@ -63,7 +63,7 @@ const Buttons = () => {
   const [loading, setLoading] = useState(false);
   const [showStartIcon, setShowStartIcon] = useState(true);
   const [showEndIcon, setShowEndIcon] = useState(false);
-  const [disableElevation, setDisableElevation] = useState(false);
+  const [enableElevation, setEnableElevation] = useState(false);
   const [loadingPosition, setLoadingPosition] = useState<'start' | 'center' | 'end'>('center');
   const [groupSize, setGroupSize] = useState<'small' | 'medium' | 'large'>('medium');
 
@@ -87,10 +87,10 @@ const Buttons = () => {
           <div className={classes.switchGroup}>
             <div>
               <Switch
-                checked={disableElevation}
-                onChange={() => setDisableElevation(!disableElevation)}
+                checked={enableElevation}
+                onChange={() => setEnableElevation(!enableElevation)}
               >
-                Disable Elevation
+                Enable Elevation
               </Switch>
             </div>
             <div>
@@ -135,7 +135,7 @@ const Buttons = () => {
           <Button
             variant="contained"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loadingPosition={loadingPosition}
@@ -146,7 +146,7 @@ const Buttons = () => {
           <Button
             variant="outlined"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -157,7 +157,7 @@ const Buttons = () => {
           <Button
             variant="text"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -171,7 +171,7 @@ const Buttons = () => {
           <Button
             variant="contained"
             color="secondary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -217,7 +217,7 @@ const Buttons = () => {
             variant="contained"
             size="small"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -229,7 +229,7 @@ const Buttons = () => {
             variant="contained"
             size="medium"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -241,7 +241,7 @@ const Buttons = () => {
             variant="contained"
             size="large"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -255,7 +255,7 @@ const Buttons = () => {
             variant="outlined"
             size="small"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -267,7 +267,7 @@ const Buttons = () => {
             variant="outlined"
             size="medium"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -279,7 +279,7 @@ const Buttons = () => {
             variant="outlined"
             size="large"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -293,7 +293,7 @@ const Buttons = () => {
             variant="text"
             size="small"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -305,7 +305,7 @@ const Buttons = () => {
             variant="text"
             size="medium"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -317,7 +317,7 @@ const Buttons = () => {
             variant="text"
             size="large"
             color="primary"
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -355,7 +355,7 @@ const Buttons = () => {
             color="primary"
             size={groupSize}
             disabled={groupDisabled}
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -368,7 +368,7 @@ const Buttons = () => {
             color="primary"
             size={groupSize}
             disabled={groupDisabled}
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -381,7 +381,7 @@ const Buttons = () => {
             color="primary"
             size={groupSize}
             disabled={groupDisabled}
-            disableElevation={disableElevation}
+            enableElevation={enableElevation}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -396,7 +396,7 @@ const Buttons = () => {
               orientation="vertical"
               size={groupSize}
               disabled={groupDisabled}
-              disableElevation={disableElevation}
+              enableElevation={enableElevation}
             >
               <Button>One</Button>
               <Button>Two</Button>
@@ -410,7 +410,7 @@ const Buttons = () => {
               orientation="vertical"
               size={groupSize}
               disabled={groupDisabled}
-              disableElevation={disableElevation}
+              enableElevation={enableElevation}
             >
               <Button>One</Button>
               <Button>Two</Button>
@@ -424,7 +424,7 @@ const Buttons = () => {
               orientation="vertical"
               size={groupSize}
               disabled={groupDisabled}
-              disableElevation={disableElevation}
+              enableElevation={enableElevation}
             >
               <Button>One</Button>
               <Button>Two</Button>

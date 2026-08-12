@@ -21,7 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     size = 'medium',
     disabled = false,
     fullWidth = false,
-    disableElevation = false,
+    enableElevation = false,
     className,
     classes: classesProp,
     children,
@@ -80,7 +80,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         [classes.large]: size === 'large',
         [classes.disabled]: disabled || loading,
         [classes.fullWidth]: fullWidth,
-        [classes.disableElevation]: disableElevation,
+        [classes.enableElevation]: enableElevation,
       }, className)}
       disabled={disabled || loading}
       {...other}
@@ -161,7 +161,10 @@ const useStyles = makeStyles<ButtonOwnProps>({
       fontSize: 'var(--font-size)',
       boxSizing: 'border-box',
       minWidth: 64,
-      padding: '6px 16px',
+      // Every variant reserves the same 1px border box, so that an outlined button doesn't render
+      // 2px larger than a contained one. The paddings are 1px smaller than they look because of it.
+      border: '1px solid transparent',
+      padding: '5px 15px',
       transition: theme.transitions.create(['background-color', 'box-shadow', 'border'], {
         duration: theme.transitions.duration.short,
       }),
@@ -185,11 +188,11 @@ const useStyles = makeStyles<ButtonOwnProps>({
     },
     small: {
       '--font-size': `calc(${theme.typography.button.fontSize} * 0.875)`,
-      padding: '4px 10px',
+      padding: '3px 9px',
     },
     large: {
       '--font-size': `calc(${theme.typography.button.fontSize} * 1.125)`,
-      padding: '8px 22px',
+      padding: '7px 21px',
     },
     disabled: {},
     text: {
@@ -201,23 +204,34 @@ const useStyles = makeStyles<ButtonOwnProps>({
     },
     outlined: {
       color: 'var(--variant-outlinedColor)',
-      border: '1px solid var(--variant-outlinedBorder)',
+      borderColor: 'var(--variant-outlinedBorder)',
       background: 'var(--variant-outlinedBg)',
       '&:disabled': {
-        border: '1px solid var(--variant-outlinedDisabledBorder)',
+        borderColor: 'var(--variant-outlinedDisabledBorder)',
         color: 'var(--variant-outlinedDisabledColor)',
       },
     },
     contained: {
       color: 'var(--variant-containedColor)',
       background: 'var(--variant-containedBg)',
-      boxShadow: theme.shadows[2],
       '&:hover': {
         background: theme.darken('var(--variant-containedBg)'),
-        boxShadow: theme.shadows[4],
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           background: 'var(--variant-containedBg)',
+        },
+      },
+      '&:disabled': {
+        color: 'var(--variant-containedDisabledColor)',
+        backgroundColor: 'var(--variant-containedDisabledBg)',
+      },
+    },
+    enableElevation: {
+      boxShadow: theme.shadows[2],
+      '&:hover': {
+        boxShadow: theme.shadows[4],
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
           boxShadow: theme.shadows[2],
         },
       },
@@ -225,21 +239,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
         boxShadow: theme.shadows[6],
       },
       '&:disabled': {
-        color: 'var(--variant-containedDisabledColor)',
-        backgroundColor: 'var(--variant-containedDisabledBg)',
         boxShadow: theme.shadows[0],
-      },
-    },
-    disableElevation: {
-      boxShadow: 'none',
-      '&:hover': {
-        boxShadow: 'none',
-      },
-      '&:active': {
-        boxShadow: 'none',
-      },
-      '&:disabled': {
-        boxShadow: 'none',
       },
     },
     label: {
@@ -359,10 +359,10 @@ export interface ButtonOwnProps {
    */
   color?: PaletteColorsWithMain | 'inherit' | 'cta';
   /**
-   * If `true`, no elevation is used for contained buttons.
+   * If `true`, a drop shadow is added to the button. Buttons are flat by default.
    * @default false
    */
-  disableElevation?: boolean;
+  enableElevation?: boolean;
   /**
    * Element placed before the children.
    */

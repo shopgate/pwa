@@ -23,8 +23,8 @@ Object.defineProperty(window, 'matchMedia', {
  * the one that applies.
  * @returns The css text of the rule.
  */
-const getButtonRule = () => {
-  const className = screen.getByRole('button').className.trim().split(' ').pop();
+const getRuleFor = (element: Element) => {
+  const className = element.className.trim().split(' ').pop();
 
   return Array.from(document.querySelectorAll('style'))
     .flatMap((styleElement) => {
@@ -33,6 +33,15 @@ const getButtonRule = () => {
     })
     .find(text => text.startsWith(`.${className} `)) || '';
 };
+
+const getButtonRule = () => getRuleFor(screen.getByRole('button'));
+
+/**
+ * Reads the shorthand `padding` declaration of a css rule, ignoring the longhands.
+ * @param rule The css rule text.
+ * @returns The padding value.
+ */
+const paddingOf = (rule: string) => (rule.match(/[;{] padding: ([^;]+);/) || [])[1];
 
 describe('<Button />', () => {
   describe('className precedence', () => {
@@ -71,6 +80,42 @@ describe('<Button />', () => {
 
       expect(rule).toContain('--sg-palette-primary-main');
       expect(rule).not.toContain('--sg-components-ctaButton-background');
+    });
+  });
+
+  describe('dimensions', () => {
+    it('should reserve the same border box for outlined and contained buttons', () => {
+      render(
+        <>
+          <Button color="primary" testId="contained">Press</Button>
+          <Button variant="outlined" color="primary" testId="outlined">Press</Button>
+        </>
+      );
+
+      const contained = getRuleFor(document.querySelector('[data-test-id="contained"]') as Element);
+      const outlined = getRuleFor(document.querySelector('[data-test-id="outlined"]') as Element);
+
+      // Both reserve a 1px border; outlined only recolors it, so neither renders larger.
+      expect(contained).toContain('border: 1px solid transparent;');
+      expect(outlined).toContain('border: 1px solid transparent;');
+      expect(outlined).toContain('border-color: var(--variant-outlinedBorder);');
+      expect(paddingOf(contained)).toBe('5px 15px');
+      expect(paddingOf(outlined)).toBe('5px 15px');
+    });
+  });
+
+  describe('elevation', () => {
+    // `box-shadow` also appears in the root `transition`, so match the declaration itself.
+    it('should render a contained button without a shadow by default', () => {
+      render(<Button color="primary">Press</Button>);
+
+      expect(getButtonRule()).not.toContain('box-shadow:');
+    });
+
+    it('should add a shadow when elevation is enabled', () => {
+      render(<Button color="primary" enableElevation>Press</Button>);
+
+      expect(getButtonRule()).toContain('box-shadow:');
     });
   });
 
