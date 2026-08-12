@@ -1,7 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import {
-  Button, Grid, I18n, Link, Switch, ConditionalWrapper,
+  Grid, I18n, Link, Switch, ConditionalWrapper,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { appConfig } from '@shopgate/engage';
@@ -135,7 +136,7 @@ const PrivacySettings = ({
       <Grid.Item component="div" className={classes.buttonWrapper}>
         <Button
           onClick={() => handleAcceptAllCookies()}
-          type="primary"
+          color="secondary"
           className={cx(classes.button, 'privacy-settings__button-accept-all')}
         >
           <I18n.Text string="cookieConsentModal.buttonAcceptAll" />
@@ -145,8 +146,8 @@ const PrivacySettings = ({
             comfortCookiesAccepted: areComfortCookiesSelected,
             statisticsCookiesAccepted: areStatisticsCookiesSelected,
           })}
-          type="simple"
           className={cx(classes.button, 'privacy-settings__button-accept-selected')}
+          disableElevation
         >
           <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />
         </Button>
