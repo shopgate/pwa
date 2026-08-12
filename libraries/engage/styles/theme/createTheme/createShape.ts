@@ -1,11 +1,16 @@
 export interface Shape {
   borderRadius: number | string;
+  /**
+   * Corner radius of cards (product cards, content cards).
+   */
+  cardsBorderRadius: number | string;
 }
 
 export type ShapeOptions = Partial<Shape>;
 
 const shape = {
   borderRadius: 4,
+  cardsBorderRadius: 10,
 };
 
 /**

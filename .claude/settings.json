@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat \"$CLAUDE_PROJECT_DIR/AGENTS.md\" | jq -Rs '{hookSpecificOutput:{hookEventName:\"SessionStart\",additionalContext:(\"Project rules from AGENTS.md. These are authoritative and override default behaviour. CLAUDE.md only points here.\\n\\n\" + .)}}'",
+            "statusMessage": "Loading AGENTS.md"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r \".tool_input.command\" | grep -qE \"(jest|(npm|yarn|pnpm)( run)? test[a-z:]*)[^|;&]*( -u( |$)|--updateSnapshot|--update-snapshot)\" && printf \"%s\" \"{\\\"hookSpecificOutput\\\":{\\\"hookEventName\\\":\\\"PreToolUse\\\",\\\"permissionDecision\\\":\\\"deny\\\",\\\"permissionDecisionReason\\\":\\\"Blocked by project policy: never auto-update Jest snapshots. Show the user the failing snapshot diff and stop. Do not run jest -u / --updateSnapshot and do not hand-edit .snap files. See AGENTS.md.\\\"}}\" || true"
+          }
+        ]
+      }
+    ]
+  }
+}

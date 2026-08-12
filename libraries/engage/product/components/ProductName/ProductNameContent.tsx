@@ -32,4 +32,3 @@ const ProductNameContent = ({
 );
 
 export default ProductNameContent;
-

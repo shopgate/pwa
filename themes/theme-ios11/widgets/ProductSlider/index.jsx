@@ -15,9 +15,12 @@ import connect from './connector';
 
 export const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
+  // The `.swiper` element clips its slides via swiper/css `overflow: hidden`, so the card shadow
+  // has to fit inside: the largest preset reaches 6px above, 14px below and 9px to each side of
+  // the card, rounded up here. Swiper subtracts this padding before it sizes its slides.
   sliderContainer: {
-    paddingBottom: '10px !important',
+    padding: '8px 9px 16px !important',
   },
   slider: {
     width: '100%',
@@ -26,10 +29,8 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 16,
   },
   card: {
-    background: theme.palette.background.surface,
     height: '100%',
     margin: '0px 8px',
-    borderRadius: 11,
   },
 }));
 
@@ -83,7 +84,6 @@ const ProductSlider = ({
               hideName={!settings.showName}
               hidePrice={!settings.showPrice}
               hideRating={!showReviewsSanitized}
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>

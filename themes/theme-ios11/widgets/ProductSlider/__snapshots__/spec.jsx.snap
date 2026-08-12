@@ -62,7 +62,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
     <Swiper
       classNames={
         {
-          "container": "sg-16j18l2-sliderContainer",
+          "container": "sg-1rypnqu-sliderContainer",
         }
       }
       controls={false}
@@ -78,7 +78,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -108,7 +108,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -120,7 +119,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -150,7 +149,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -162,7 +160,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -192,7 +190,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -204,7 +201,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -234,7 +231,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -246,7 +242,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -276,7 +272,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -288,7 +283,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -318,7 +313,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -330,7 +324,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -360,7 +354,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -372,7 +365,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -402,7 +395,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -414,7 +406,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -444,7 +436,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -456,7 +447,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -486,7 +477,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -498,7 +488,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -528,7 +518,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -540,7 +529,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -570,7 +559,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -582,7 +570,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -612,7 +600,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -624,7 +611,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -654,7 +641,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -666,7 +652,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -696,7 +682,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -708,7 +693,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -738,7 +723,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -750,7 +734,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -780,7 +764,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -792,7 +775,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -822,7 +805,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -834,7 +816,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -864,7 +846,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -876,7 +857,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -906,7 +887,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -918,7 +898,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -948,7 +928,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -960,7 +939,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -990,7 +969,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1002,7 +980,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1032,7 +1010,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1044,7 +1021,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1074,7 +1051,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1086,7 +1062,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1116,7 +1092,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1128,7 +1103,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1158,7 +1133,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1170,7 +1144,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1200,7 +1174,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1212,7 +1185,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1242,7 +1215,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1254,7 +1226,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1284,7 +1256,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1296,7 +1267,7 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1326,7 +1297,6 @@ exports[`<ProductSlider /> should limit output to a maximum of 30 products 1`] =
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1347,7 +1317,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
     <Swiper
       classNames={
         {
-          "container": "sg-16j18l2-sliderContainer",
+          "container": "sg-1rypnqu-sliderContainer",
         }
       }
       controls={false}
@@ -1363,7 +1333,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1393,7 +1363,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1405,7 +1374,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1435,7 +1404,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1447,7 +1415,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1477,7 +1445,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1489,7 +1456,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1519,7 +1486,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1531,7 +1497,7 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1561,7 +1527,6 @@ exports[`<ProductSlider /> should not render an empty headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1589,7 +1554,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
     <Swiper
       classNames={
         {
-          "container": "sg-16j18l2-sliderContainer",
+          "container": "sg-1rypnqu-sliderContainer",
         }
       }
       controls={false}
@@ -1605,7 +1570,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1635,7 +1600,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1647,7 +1611,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1677,7 +1641,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1689,7 +1652,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1719,7 +1682,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1731,7 +1693,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1761,7 +1723,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1773,7 +1734,7 @@ exports[`<ProductSlider /> should render the headline 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1803,7 +1764,6 @@ exports[`<ProductSlider /> should render the headline 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1824,7 +1784,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
     <Swiper
       classNames={
         {
-          "container": "sg-16j18l2-sliderContainer",
+          "container": "sg-1rypnqu-sliderContainer",
         }
       }
       controls={false}
@@ -1840,7 +1800,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1870,7 +1830,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1882,7 +1841,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1912,7 +1871,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1924,7 +1882,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1954,7 +1912,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -1966,7 +1923,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -1996,7 +1953,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -2008,7 +1964,7 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
           productId="1234"
         >
           <Card
-            className="sg-159e5tr-card"
+            className="sg-1e6hvjg-card"
           >
             <ProductCard
               hideName={false}
@@ -2038,7 +1994,6 @@ exports[`<ProductSlider /> should render the widget with data 1`] = `
                   },
                 }
               }
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>

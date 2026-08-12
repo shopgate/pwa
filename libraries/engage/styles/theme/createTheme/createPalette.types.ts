@@ -158,6 +158,10 @@ export const paletteSchema = {
     disabled: '#808080',
     disabledBackground: '#CCCCCC',
   },
+  /**
+   * Color for the box-shadow.
+   */
+  shadow: '#000000',
 } as const;
 
 /**

@@ -61,7 +61,6 @@ export { default as AddToCartButton } from '@shopgate/pwa-ui-shared/AddToCartBut
 export { default as Availability } from '@shopgate/pwa-ui-shared/Availability';
 export { default as Button } from '@shopgate/pwa-ui-shared/Button';
 export { default as ButtonLink } from '@shopgate/pwa-ui-shared/ButtonLink';
-export { default as Card } from '@shopgate/pwa-ui-shared/Card';
 export { default as CardList } from '@shopgate/pwa-ui-shared/CardList';
 export { default as CartTotalLine } from '@shopgate/pwa-ui-shared/CartTotalLine';
 export { default as Chip } from '@shopgate/pwa-ui-shared/Chip';
@@ -201,4 +200,8 @@ export { default as SnackBarContainer } from './SnackBarContainer';
 export { default as ConnectedReactPortal } from './ConnectedReactPortal';
 export { Typography } from './Typography';
 export { default as Badge } from './Badge';
+export { default as Paper } from './Paper';
+export type { PaperProps, PaperVariant } from './Paper';
+export { default as Card } from './Card';
+export type { CardProps, CardVariant } from './Card';
 

@@ -69,3 +69,35 @@ export const getImageSettings = createSelector(
   getAppSettingsState,
   appSettings => appSettings.images
 );
+
+/**
+ * Selects the max number of lines a product card name is clamped to.
+ */
+export const getProductCardNameMaxLines = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.card.productName.maxLines
+);
+
+/**
+ * Selects the max number of lines a product tile name is clamped to.
+ */
+export const getProductTileNameMaxLines = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.tile.productName.maxLines
+);
+
+/**
+ * Selects the themed card settings (style and shadow size).
+ */
+export const getCardSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.cards
+);
+
+/**
+ * Selects the effective card shadow size. `none` unless the shadow style is selected.
+ */
+export const getCardShadowSize = createSelector(
+  getCardSettings,
+  cards => (cards.style === 'shadow' ? cards.shadow.size : 'none')
+);

@@ -1,5 +1,4 @@
-import { produce } from 'immer';
-import { cloneDeep, merge } from 'lodash';
+import { merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
@@ -60,6 +59,16 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     rating: {
       showEmptyStars: false,
     },
+    card: {
+      productName: { maxLines: 3 },
+    },
+    tile: {
+      productName: { maxLines: 3 },
+    },
+  },
+  cards: {
+    style: 'shadow',
+    shadow: { size: 'medium' },
   },
   images: {
     quality: DEFAULT_IMAGE_QUALITY,
@@ -85,35 +94,34 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
 const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   state,
   action = { type: '' }
-) => produce(state ?? DEFAULT_APP_SETTINGS, (draft: AppSettingsSlice) => {
+) => {
   if (isReceiveAppSettingsAction(action)) {
     const { images } = action.settings ?? {};
 
-    // A cleared branch is replaced outright, then kept out of the merge below. Merging the defaults
-    // in would only add to it, leaving whatever an earlier payload configured in place.
-    if (images === null) {
-      draft.images = cloneDeep(DEFAULT_APP_SETTINGS.images);
-    } else if (images?.product === null) {
-      draft.images.product = cloneDeep(DEFAULT_APP_SETTINGS.images.product);
-    }
-
-    // Deep merged so a partial payload keeps the defaults for whatever the source omits.
-    merge(draft, {
+    // Merged over the defaults rather than over the current state, so a field an incoming payload
+    // omits falls back to its default instead of keeping the value of an earlier one. The admin
+    // preview needs that: it stops sending a shadow size once the card style isn't `shadow`, and it
+    // clears a whole branch by sending a null.
+    const nextState: AppSettingsSlice = merge({}, DEFAULT_APP_SETTINGS, {
       ...action.settings,
+      // A cleared branch is mapped to undefined, which merge skips, so the defaults it started from
+      // stay in place. A null would be written into the slice like any other value.
       images: images === null ? undefined : {
         ...images,
         product: images?.product ?? undefined,
       },
-    });
+    }, { isHydrated: true });
 
     // Converted on the way in, so the slice holds wire ready values and every image url does not
     // pay for it. Unconditional, because an empty string or a null reaches here like any other
     // value - both converters are idempotent.
-    draft.images.fillColor = toThumborColor(draft.images.fillColor);
-    draft.images.quality = toImageQuality(draft.images.quality);
+    nextState.images.fillColor = toThumborColor(nextState.images.fillColor);
+    nextState.images.quality = toImageQuality(nextState.images.quality);
 
-    draft.isHydrated = true;
+    return nextState;
   }
-});
+
+  return state ?? DEFAULT_APP_SETTINGS;
+};
 
 export default appSettings;

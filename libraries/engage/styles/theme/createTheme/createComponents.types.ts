@@ -223,6 +223,31 @@ export const componentsSchema = {
       height: '',
     },
   },
+  cards: {
+    vars: {
+      backgroundColor: '',
+      borderWidth: '',
+      borderColor: '',
+      border: '',
+      shadowColor: '',
+    },
+  },
+  productCard: {
+    vars: {
+      padding: '',
+      textPadding: '',
+      imagePadding: '',
+    },
+  },
+  tiles: {
+    vars: {
+      backgroundColor: '',
+      padding: '',
+      textPadding: '',
+      textPaddingTop: '',
+      imagePadding: '',
+    },
+  },
 } as const;
 
 /**
@@ -332,6 +357,31 @@ export const componentsDefaults = {
   filterBar: {
     vars: {
       height: 48,
+    },
+  },
+  cards: {
+    vars: {
+      backgroundColor: t => t.palette.background.surface,
+      borderWidth: 0,
+      borderColor: 'transparent',
+      border: 'var(--sg-components-cards-borderWidth) solid var(--sg-components-cards-borderColor)',
+      shadowColor: t => t.palette.shadow,
+    },
+  },
+  productCard: {
+    vars: {
+      padding: 0,
+      textPadding: 16,
+      imagePadding: 0,
+    },
+  },
+  tiles: {
+    vars: {
+      backgroundColor: 'transparent',
+      padding: 0,
+      textPadding: 8,
+      textPaddingTop: 'max(var(--sg-components-tiles-textPadding), 16px)',
+      imagePadding: 0,
     },
   },
 } satisfies ComponentsDefaults;

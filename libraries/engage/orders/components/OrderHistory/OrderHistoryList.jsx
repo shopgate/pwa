@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n, CardList, Link } from '@shopgate/engage/components';
+import {
+  I18n, Card, Link,
+} from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getTranslatedOrderStatus } from '../../helpers';
@@ -31,10 +33,7 @@ const useStyles = makeStyles()(theme => ({
     ':last-of-type': {
       marginBottom: 0,
     },
-    background: theme.palette.background.surface,
     boxSizing: 'border-box',
-    boxShadow: '0 4px 8px rgba(0,0,0,0.16)',
-    borderRadius: 10,
   },
 }));
 
@@ -47,7 +46,12 @@ export const Row = (props) => {
   const { classes } = useStyles();
 
   return (
-    <CardList.Item key={props.orderNumber} className={classes.card} onClick={props.openDetails}>
+    <Card
+      key={props.orderNumber}
+      className={classes.card}
+      onClick={props.openDetails}
+      component="li"
+    >
       <Link className={classes.cardContent} href={getOrderDetailsRoute(props.orderNumber)}>
         <div className={classes.column}>
           <span className={classes.orderNumber}>
@@ -89,7 +93,7 @@ export const Row = (props) => {
           </span>
         </div>
       </Link>
-    </CardList.Item>
+    </Card>
   );
 };
 
@@ -109,12 +113,12 @@ Row.propTypes = {
  * @returns {JSX}
  */
 export const List = ({ children }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <CardList className={classes.list}>
+    <ul className={cx(classes.list, 'engage__orders__order-history-list')}>
       {children}
-    </CardList>
+    </ul>
   );
 };
 

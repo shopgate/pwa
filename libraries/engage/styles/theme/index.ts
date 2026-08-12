@@ -1,5 +1,6 @@
 export { default as ThemeProvider } from './providers/ThemeProvider';
 export { createTheme } from './createTheme';
+export { type ShadowSize } from './createTheme/shadows';
 export type {
   Theme, Breakpoint, PaletteColorsWithMain, ColorSchemeName,
 } from './createTheme';
