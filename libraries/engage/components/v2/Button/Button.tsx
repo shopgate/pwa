@@ -19,6 +19,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loadingPosition = 'center',
     loadingIndicator: loadingIndicatorProp,
     size = 'medium',
+    dense = false,
     disabled = false,
     fullWidth = false,
     enableElevation = false,
@@ -78,6 +79,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         [classes.contained]: variant === 'contained',
         [classes.small]: size === 'small',
         [classes.large]: size === 'large',
+        [classes.dense]: dense && size === 'medium',
+        [classes.denseSmall]: dense && size === 'small',
+        [classes.denseLarge]: dense && size === 'large',
         [classes.disabled]: disabled || loading,
         [classes.fullWidth]: fullWidth,
         [classes.enableElevation]: enableElevation,
@@ -193,6 +197,17 @@ const useStyles = makeStyles<ButtonOwnProps>({
     large: {
       '--font-size': `calc(${theme.typography.button.fontSize} * 1.125)`,
       padding: '7px 21px',
+    },
+    // The dense paddings roughly halve the regular ones. They are applied after the size classes,
+    // so they win by declaration order without needing extra specificity.
+    dense: {
+      padding: '2px 7px',
+    },
+    denseSmall: {
+      padding: '2px 4px',
+    },
+    denseLarge: {
+      padding: '3px 10px',
     },
     disabled: {},
     text: {
@@ -396,6 +411,12 @@ export interface ButtonOwnProps {
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * If `true`, the button uses reduced padding. Combines with `size`, which keeps controlling the
+   * font size.
+   * @default false
+   */
+  dense?: boolean;
   /**
    * Override or extend the styles applied to the component.
    */

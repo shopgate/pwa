@@ -10,6 +10,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
   const {
     variant = 'contained',
     size = 'medium',
+    dense = false,
     orientation = 'horizontal',
     enableElevation = false,
     fullWidth = false,
@@ -61,6 +62,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
           disableRipple,
           fullWidth,
           size: child.props.size || size,
+          dense: child.props.dense || dense,
           variant: child.props.variant || variant,
         });
       })}
@@ -215,6 +217,11 @@ export interface ButtonGroupOwnProps {
    * @default 'medium'
    */
   size?: 'small' | 'medium' | 'large';
+  /**
+   * If true, the buttons use reduced padding.
+   * @default false
+   */
+  dense?: boolean;
   /**
    * The orientation of the buttons in the group.
    * @default 'horizontal'

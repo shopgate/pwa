@@ -64,6 +64,7 @@ const Buttons = () => {
   const [showStartIcon, setShowStartIcon] = useState(true);
   const [showEndIcon, setShowEndIcon] = useState(false);
   const [enableElevation, setEnableElevation] = useState(false);
+  const [dense, setDense] = useState(false);
   const [loadingPosition, setLoadingPosition] = useState<'start' | 'center' | 'end'>('center');
   const [groupSize, setGroupSize] = useState<'small' | 'medium' | 'large'>('medium');
 
@@ -91,6 +92,11 @@ const Buttons = () => {
                 onChange={() => setEnableElevation(!enableElevation)}
               >
                 Enable Elevation
+              </Switch>
+            </div>
+            <div>
+              <Switch checked={dense} onChange={() => setDense(!dense)}>
+                Dense
               </Switch>
             </div>
             <div>
@@ -136,6 +142,7 @@ const Buttons = () => {
             variant="contained"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loadingPosition={loadingPosition}
@@ -147,6 +154,7 @@ const Buttons = () => {
             variant="outlined"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -158,6 +166,7 @@ const Buttons = () => {
             variant="text"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -172,6 +181,7 @@ const Buttons = () => {
             variant="contained"
             color="secondary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -218,6 +228,7 @@ const Buttons = () => {
             size="small"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -230,6 +241,7 @@ const Buttons = () => {
             size="medium"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -242,6 +254,7 @@ const Buttons = () => {
             size="large"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -256,6 +269,7 @@ const Buttons = () => {
             size="small"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -268,6 +282,7 @@ const Buttons = () => {
             size="medium"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -280,6 +295,7 @@ const Buttons = () => {
             size="large"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -294,6 +310,7 @@ const Buttons = () => {
             size="small"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -306,6 +323,7 @@ const Buttons = () => {
             size="medium"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -318,6 +336,7 @@ const Buttons = () => {
             size="large"
             color="primary"
             enableElevation={enableElevation}
+            dense={dense}
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
@@ -356,6 +375,7 @@ const Buttons = () => {
             size={groupSize}
             disabled={groupDisabled}
             enableElevation={enableElevation}
+            dense={dense}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -369,6 +389,7 @@ const Buttons = () => {
             size={groupSize}
             disabled={groupDisabled}
             enableElevation={enableElevation}
+            dense={dense}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -382,6 +403,7 @@ const Buttons = () => {
             size={groupSize}
             disabled={groupDisabled}
             enableElevation={enableElevation}
+            dense={dense}
           >
             <Button>One</Button>
             <Button>Two</Button>
@@ -397,6 +419,7 @@ const Buttons = () => {
               size={groupSize}
               disabled={groupDisabled}
               enableElevation={enableElevation}
+              dense={dense}
             >
               <Button>One</Button>
               <Button>Two</Button>
@@ -411,6 +434,7 @@ const Buttons = () => {
               size={groupSize}
               disabled={groupDisabled}
               enableElevation={enableElevation}
+              dense={dense}
             >
               <Button>One</Button>
               <Button>Two</Button>
@@ -425,6 +449,7 @@ const Buttons = () => {
               size={groupSize}
               disabled={groupDisabled}
               enableElevation={enableElevation}
+              dense={dense}
             >
               <Button>One</Button>
               <Button>Two</Button>

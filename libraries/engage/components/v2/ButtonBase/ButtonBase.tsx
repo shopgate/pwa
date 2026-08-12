@@ -42,7 +42,22 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
     onPointerDown?.(event);
   };
 
+  /**
+   * Gives up pointer capture that was taken on pointer down. While an element captures the pointer,
+   * hit testing is redirected to it, so it keeps matching `:hover` and never receives a leave event.
+   * @param event The pointer event.
+   */
+  const releaseCapture = (event: React.PointerEvent<HTMLButtonElement>) => {
+    const target = event.currentTarget;
+
+    if (target.hasPointerCapture?.(event.pointerId)) {
+      target.releasePointerCapture(event.pointerId);
+    }
+  };
+
   const handlePointerUp = (event: React.PointerEvent<HTMLButtonElement>) => {
+    releaseCapture(event);
+
     if (!disableRipple) {
       end(event.pointerId);
     }
@@ -51,6 +66,8 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>((props, ref) =
   };
 
   const handlePointerCancel = (event: React.PointerEvent<HTMLButtonElement>) => {
+    releaseCapture(event);
+
     if (!disableRipple) {
       end(event.pointerId);
     }

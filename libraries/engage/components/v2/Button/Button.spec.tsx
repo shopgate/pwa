@@ -104,6 +104,21 @@ describe('<Button />', () => {
     });
   });
 
+  describe('dense', () => {
+    it.each([
+      ['medium', undefined, '5px 15px', '2px 7px'],
+      ['small', 'small', '4px 9px', '2px 4px'],
+      ['large', 'large', '7px 21px', '3px 10px'],
+    ] as const)('should reduce the %s padding', (_name, size, regular, reduced) => {
+      const { unmount } = render(<Button size={size}>Press</Button>);
+      expect(paddingOf(getButtonRule())).toBe(regular);
+      unmount();
+
+      render(<Button size={size} dense>Press</Button>);
+      expect(paddingOf(getButtonRule())).toBe(reduced);
+    });
+  });
+
   describe('elevation', () => {
     // `box-shadow` also appears in the root `transition`, so match the declaration itself.
     it('should render a contained button without a shadow by default', () => {
