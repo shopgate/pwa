@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  I18n, CardList, Link,
+  I18n, Card, Link,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -46,7 +46,12 @@ export const Row = (props) => {
   const { classes } = useStyles();
 
   return (
-    <CardList.Item key={props.orderNumber} className={classes.card} onClick={props.openDetails}>
+    <Card
+      key={props.orderNumber}
+      className={classes.card}
+      onClick={props.openDetails}
+      component="li"
+    >
       <Link className={classes.cardContent} href={getOrderDetailsRoute(props.orderNumber)}>
         <div className={classes.column}>
           <span className={classes.orderNumber}>
@@ -88,7 +93,7 @@ export const Row = (props) => {
           </span>
         </div>
       </Link>
-    </CardList.Item>
+    </Card>
   );
 };
 
@@ -108,12 +113,12 @@ Row.propTypes = {
  * @returns {JSX}
  */
 export const List = ({ children }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <CardList className={classes.list}>
+    <ul className={cx(classes.list, 'engage__orders__order-history-list')}>
       {children}
-    </CardList>
+    </ul>
   );
 };
 
