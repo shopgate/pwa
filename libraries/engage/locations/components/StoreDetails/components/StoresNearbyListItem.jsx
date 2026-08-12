@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { Button, Typography } from '@shopgate/engage/components';
+import { Typography } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { historyPush } from '@shopgate/engage/core';
 import formatDistance from '../../../helpers/formatDistance';
@@ -10,9 +11,6 @@ import { STORE_DETAILS_PATH } from '../../../constants';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 const useStyles = makeStyles()(theme => ({
-  button: {
-    padding: '0px !important',
-  },
   locationRow: {
     borderBottom: `1px solid ${theme.components.border.light}`,
     borderTop: `1px solid ${theme.components.border.light}`,
@@ -43,7 +41,7 @@ const useStyles = makeStyles()(theme => ({
     textAlign: 'start',
   },
   cellContainer: {
-    padding: '8px',
+    padding: 6,
     textAlign: 'end',
   },
   cell: {
@@ -51,7 +49,7 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonContainer: {
     display: 'flex',
-    gap: '4px 16px',
+    gap: '0 4px',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
   },
@@ -102,14 +100,27 @@ const StoresNearbyListItem = ({ location }) => {
           <div className={classes.buttonContainer}>
             <div className={classes.makeMyStore}>
               {(!isComingSoon) && (
-                <Button className={classes.button} onClick={() => selectLocation(location, true)} role="button" type="primary" flat disabled={isPreferredLocation} wrapContent={false}>
+                <Button
+                  variant="text"
+                  color="secondary"
+                  size="small"
+                  dense
+                  onClick={() => selectLocation(location, true)}
+                  disabled={isPreferredLocation}
+                >
                   <Typography variant="body2" component="span" fontWeight="bold">
                     {`${i18n.text('location.makeMyStore')}`}
                   </Typography>
                 </Button>
               )}
               {isComingSoon && (
-                <Button className={classes.button} role="button" type="primary" flat disabled wrapContent={false}>
+                <Button
+                  variant="text"
+                  color="secondary"
+                  size="small"
+                  dense
+                  disabled
+                >
                   <Typography variant="body2" component="span" fontWeight="bold">
                     {i18n.text('location.comingSoon')}
                   </Typography>
@@ -117,7 +128,13 @@ const StoresNearbyListItem = ({ location }) => {
               )}
             </div>
             <div className={classes.storeInfo}>
-              <Button className={classes.button} role="button" type="primary" flat onClick={() => openStoreDetails(code)} wrapContent={false}>
+              <Button
+                variant="text"
+                color="secondary"
+                size="small"
+                dense
+                onClick={() => openStoreDetails(code)}
+              >
                 <Typography variant="body2" component="span" fontWeight="bold">
                   {i18n.text('locations.details')}
                 </Typography>

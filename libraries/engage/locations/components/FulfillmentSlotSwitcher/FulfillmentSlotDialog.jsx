@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import groupBy from 'lodash/groupBy';
-import { SheetDrawer, Button, Typography } from '@shopgate/engage/components';
+import { SheetDrawer, Typography } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getActiveFulfillmentSlot } from '@shopgate/engage/cart/cart.selectors';
 import { makeGetFulfillmentSlotsForLocation, getPreferredLocation } from '../../selectors';
@@ -108,11 +109,6 @@ const useStyles = makeStyles()(theme => ({
     background: theme.palette.background.surface,
     padding: 16,
     paddingBottom: 24,
-  },
-  buttonSchedule: {
-    '&&': {
-      width: '100%',
-    },
   },
 }));
 
@@ -319,8 +315,8 @@ const FulfillmentSlotSheet = ({
         ))}
         <div className={classes.buttonScheduleContainer}>
           <Button
-            className={classes.buttonSchedule}
-            type="secondary"
+            color="primary"
+            fullWidth
             onClick={handleChange}
             disabled={!selectedDate || !selectedSlot}
           >

@@ -4,8 +4,9 @@ import React, {
 } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  TextField, RippleButton, RadioGroup, RadioGroupItem, ProgressBar, Typography,
+  TextField, RadioGroup, RadioGroupItem, ProgressBar, Typography,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { useFormState } from '../../../core/hooks/useFormState';
 import { FulfillmentContext } from '../../locations.context';
@@ -38,9 +39,6 @@ const useStyles = makeStyles()(theme => ({
     ':last-of-type': {
       paddingRight: 0,
     },
-  },
-  button: {
-    width: '100%',
   },
   progressBar: {
     height: '4px',
@@ -240,13 +238,14 @@ function ReserveFormUnwrapped() {
             />
           </fieldset>
         )}
-        <RippleButton
-          type="secondary"
+        <Button
+          type="submit"
+          color="primary"
+          fullWidth
           disabled={changed || valid === false || isSubmitting}
-          className={classes.button}
         >
           {i18n.text('locations.place_reservation')}
-        </RippleButton>
+        </Button>
       </form>
     </>
   );

@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import PropTypes from 'prop-types';
-import { Button } from '@shopgate/engage/components';
+import { ButtonBase } from '@shopgate/engage/components/v2';
 import { generateGoogleMapsDirectionsUrl, i18n } from '@shopgate/engage/core';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -36,15 +36,11 @@ const GetDirectionsButton = ({ address }) => {
 
   return (
     <div>
-      <Button
-        onClick={handleClick}
-        role="button"
-        type="plain"
-      >
+      <ButtonBase onClick={handleClick}>
         <span className={classes.buttonText}>
           {i18n.text('location.getDirections')}
         </span>
-      </Button>
+      </ButtonBase>
     </div>
 
   );
