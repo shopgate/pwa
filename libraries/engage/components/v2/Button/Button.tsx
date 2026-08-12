@@ -188,7 +188,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
     },
     small: {
       '--font-size': `calc(${theme.typography.button.fontSize} * 0.875)`,
-      padding: '3px 9px',
+      padding: '4px 9px',
     },
     large: {
       '--font-size': `calc(${theme.typography.button.fontSize} * 1.125)`,
