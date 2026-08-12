@@ -10,7 +10,8 @@ import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getShopSettings } from '@shopgate/engage/core/config';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 
-import { FormBuilder, RippleButton } from '@shopgate/engage/components';
+import { FormBuilder } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { useAddressBook } from '@shopgate/engage/checkout';
@@ -58,22 +59,12 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   button: {
-    '&&': {
-      marginTop: 8,
-      marginRight: 16,
-      backgroundColor: theme.palette.primary.main,
-      borderRadius: 5,
-      fontSize: theme.typography.body2.fontSize,
-      textTransform: 'none',
-      padding: 0,
-      [responsiveMediaQuery('<md', { webOnly: false })]: {
-        width: '100%',
-        marginRight: 0,
-      },
+    marginTop: 8,
+    marginRight: 16,
+    [responsiveMediaQuery('<md', { webOnly: false })]: {
+      width: '100%',
+      marginRight: 0,
     },
-  },
-  ripple: {
-    padding: '8px 16px',
   },
   actions: {
     display: 'flex',
@@ -190,14 +181,13 @@ const ProfileContact = ({
         handleUpdate={handleUpdate}
       />
       <div className={classes.actions}>
-        <RippleButton
+        <Button
+          color="primary"
           className={classes.button}
-          rippleClassName={classes.ripple}
-          type="primary"
           onClick={formState.handleSubmit}
         >
           {i18n.text('account.profile.form.save')}
-        </RippleButton>
+        </Button>
       </div>
     </div>
   );

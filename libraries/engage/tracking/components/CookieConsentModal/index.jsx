@@ -178,7 +178,6 @@ const CookieConsentModal = ({
               <Button
                 onClick={handleAcceptRequiredCookies}
                 className={cx(classes.button, 'cookie-consent-modal__button-accept-required')}
-                disableElevation
               >
                 <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
               </Button>
@@ -186,7 +185,6 @@ const CookieConsentModal = ({
             <Button
               onClick={handleOpenPrivacySettings}
               className={cx(classes.button, 'cookie-consent-modal__button-open-settings')}
-              disableElevation
             >
               <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />
             </Button>

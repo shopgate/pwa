@@ -2,8 +2,9 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
-  RippleButton, I18n, ArrowIcon, Typography,
+  I18n, ArrowIcon, Typography,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { i18n, EUSERNOTFOUND } from '@shopgate/engage/core';
@@ -39,9 +40,6 @@ const useStyles = makeStyles()(theme => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(3),
   },
-  button: {
-    width: '100%',
-  },
   input: {
     ' .label': {
       color: theme.palette.text.secondary,
@@ -65,21 +63,11 @@ const useStyles = makeStyles()(theme => ({
   goBackButtonContainer: {
     padding: theme.spacing(2, 0),
   },
-  goBackButton: {
-    fontSize: `${theme.typography.body2.fontSize} !important`,
-    padding: '0 !important',
-    ' > div ': {
-      padding: 0,
-      display: 'flex',
-    },
-  },
   goBackButtonIcon: {
     display: 'inline-block',
-    fontSize: `${theme.components.icon.medium} !important`,
+    fontSize: theme.components.icon.medium,
     alignSelf: 'center',
     marginRight: theme.spacing(0.5),
-    marginLeft: -3,
-    marginTop: -2,
   },
 }));
 
@@ -143,13 +131,14 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
               errorText={validationError}
             />
             <div className={classes.buttonContainer}>
-              <RippleButton
-                className={classes.button}
-                type="secondary"
+              <Button
+                type="submit"
+                color="primary"
+                fullWidth
                 disabled={loading}
               >
                 <I18n.Text string="common.submit" />
-              </RippleButton>
+              </Button>
             </div>
           </form>
         </>
@@ -167,15 +156,14 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
             />
           </div>
           <div className={classes.goBackButtonContainer}>
-            <RippleButton
-              flat
-              className={classes.goBackButton}
-              type="secondary"
+            <Button
+              variant="text"
+              color="primary"
               onClick={handleBackToLogin}
             >
               <ArrowIcon className={classes.goBackButtonIcon} />
               <I18n.Text string="login.reset_password.back_to_login" />
-            </RippleButton>
+            </Button>
           </div>
         </>
       )}

@@ -147,7 +147,6 @@ const PrivacySettings = ({
             statisticsCookiesAccepted: areStatisticsCookiesSelected,
           })}
           className={cx(classes.button, 'privacy-settings__button-accept-selected')}
-          disableElevation
         >
           <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />
         </Button>
