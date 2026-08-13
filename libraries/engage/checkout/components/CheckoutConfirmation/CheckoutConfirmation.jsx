@@ -1,8 +1,9 @@
 import React, { useMemo, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  ResponsiveContainer, RippleButton, Typography,
+  ResponsiveContainer, Typography,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartItems } from '@shopgate/engage/cart';
 import { useRoute } from '@shopgate/engage/core';
@@ -68,9 +69,8 @@ const useStyles = makeStyles()(theme => ({
     border: 0,
   },
   button: {
-    flex: '0 0 auto !important',
-    borderRadius: '2px !important',
-    minWidth: '50% !important',
+    flex: '0 0 auto',
+    minWidth: '50%',
     [responsiveMediaQuery('<md')]: {
       width: '100%',
     },
@@ -183,14 +183,13 @@ const CheckoutConfirmation = ({ onContinueShopping, isUserLoggedIn, fetchCheckou
           <SupplementalContent className={classes.supplementalWrapper} />
         </ResponsiveContainer>
         <div className={classes.buttonWrapper}>
-          <RippleButton
-            type="secondary"
-            disabled={false}
+          <Button
+            color="primary"
             className={classes.button}
             onClick={onContinueShopping}
           >
             {i18n.text('checkout.success.continue')}
-          </RippleButton>
+          </Button>
         </div>
 
       </div>

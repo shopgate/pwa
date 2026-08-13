@@ -18,9 +18,9 @@ jest.mock('@shopgate/engage/components', () => ({
   },
 }));
 
-jest.mock('@shopgate/pwa-ui-shared/RippleButton', () => mockFactories().createRippleButtonMock());
-
-jest.mock('@shopgate/engage/styles', () => mockFactories().createStylesMock());
+jest.mock('@shopgate/engage/components/v2', () => ({
+  Button: mockFactories().createButtonMock(),
+}));
 
 jest.mock('../PaymentBarCheckoutButton.connector', () => cmp => cmp);
 
@@ -52,5 +52,11 @@ describe('<PaymentBarCheckoutButton />', () => {
 
     expect(container.firstChild).toBeTruthy();
     expect(mockLink).toHaveBeenCalledWith(expect.objectContaining({ disabled: false }));
+  });
+
+  it('should render the button in the merchant configurable cta color', () => {
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
+
+    expect(getByRole('button')).toHaveAttribute('data-color', 'cta');
   });
 });

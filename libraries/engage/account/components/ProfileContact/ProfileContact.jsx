@@ -183,6 +183,7 @@ const ProfileContact = ({
       <div className={classes.actions}>
         <Button
           color="primary"
+          size="small"
           className={classes.button}
           onClick={formState.handleSubmit}
         >

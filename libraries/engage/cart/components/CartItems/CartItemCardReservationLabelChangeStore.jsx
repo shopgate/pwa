@@ -1,19 +1,14 @@
 import React, { useCallback } from 'react';
-import { RippleButton, I18n } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useCartItem } from '../CartItem';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
   button: {
-    fontSize: `${theme.typography.body2.fontSize} !important`,
-    letterSpacing: '0.05em',
-    padding: '0px !important',
-    ' *': {
-      padding: '0px !important',
-    },
-  },
-  ripple: {
+    // Inline affordance in the reservation label: no padding of its own, and sentence case.
     padding: 0,
+    textTransform: 'none',
   },
 }));
 
@@ -35,15 +30,14 @@ const CartItemCardReservationLabelChangeStore = () => {
   }, [cartItem, invokeFulfillmentAction]);
 
   return (
-    <RippleButton
+    <Button
+      variant="text"
+      color="primary"
       onClick={handleChangeLocationClick}
       className={classes.button}
-      rippleClassName={classes.ripple}
-      type="secondary"
-      flat
     >
       <I18n.Text string="locations.change_location" />
-    </RippleButton>
+    </Button>
   );
 };
 

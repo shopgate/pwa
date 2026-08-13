@@ -146,6 +146,7 @@ const ProfileAddressCard = ({
           { isCheckout ? (
             <Button
               color="primary"
+              size="small"
               className={classes.button}
               disabled={selected}
               onClick={selectContact}

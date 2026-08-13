@@ -29,28 +29,23 @@ const createCartTotalLineMock = () => {
   return CartTotalLine;
 };
 
-const createRippleButtonMock = () => function RippleButton(props) {
+const createButtonMock = () => function Button(props) {
   return (
-    <button type="button" className={props.className} disabled={props.disabled}>
+    <button
+      type="button"
+      className={props.className}
+      disabled={props.disabled}
+      data-color={props.color}
+    >
       {props.children}
     </button>
   );
 };
 
-const createStylesMock = () => ({
-  makeStyles: () => () => () => ({
-    classes: {
-      button: 'button',
-      disabledButton: 'disabledButton',
-    },
-  }),
-});
-
 module.exports = {
   createSurroundPortalsMock,
   createCartTotalLineMock,
-  createRippleButtonMock,
-  createStylesMock,
+  createButtonMock,
 };
 
 /* eslint-enable react/prop-types, require-jsdoc */
