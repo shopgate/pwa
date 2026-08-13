@@ -41,7 +41,7 @@ const RippleButton = ({
   const { classes } = useStyles();
 
   const buttonProps = {
-    className: `${className} ui-shared__ripple-button`,
+    className: cx(className, 'ui-shared__ripple-button'),
     disabled,
     onClick,
     flat,
