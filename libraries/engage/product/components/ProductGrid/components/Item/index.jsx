@@ -16,7 +16,6 @@ const useStyles = makeStyles()((theme, { display }) => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
-    overflow: 'hidden',
     padding: theme.components.tiles.padding,
     background: theme.components.tiles.backgroundColor,
   },
