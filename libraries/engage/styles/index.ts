@@ -9,6 +9,7 @@ export {
   useColorScheme,
   withTheme,
   type Theme,
+  type ShadowSize,
   type ColorSchemeName,
   type PaletteColorsWithMain,
   type WithThemeProps,

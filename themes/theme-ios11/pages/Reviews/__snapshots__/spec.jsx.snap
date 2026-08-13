@@ -181,7 +181,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-gv0hw9-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
@@ -594,7 +594,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-gv0hw9-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
@@ -1007,7 +1007,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-gv0hw9-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
@@ -1420,7 +1420,7 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-gv0hw9-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >

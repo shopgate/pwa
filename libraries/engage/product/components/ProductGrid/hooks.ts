@@ -3,11 +3,16 @@ import { useSelector } from 'react-redux';
 import { WidgetContext } from '@shopgate/engage/page/components/Widgets/WidgetContext';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
+import type { Breakpoint } from '@shopgate/engage/styles/theme';
 import {
   getAreAppSettingsHydrated,
   getProductGridColumns,
 } from '@shopgate/engage/settings/selectors/appSettings';
-import type { ProductColumns } from '@shopgate/engage/settings/types/appSettings';
+import { SCREEN_SIZE_BREAKPOINTS } from '@shopgate/engage/settings/constants/appSettings';
+import type {
+  ScreenSize,
+  ProductColumns,
+} from '@shopgate/engage/settings/types/appSettings';
 import { WIDGET_ID } from './constants';
 
 /**
@@ -17,13 +22,6 @@ import { WIDGET_ID } from './constants';
  * Precedence:
  * - Once the app settings are hydrated from a source (admin sync / jsonp), they
  *   are authoritative everywhere.
- * - Before hydration, when the grid is rendered outside a page-builder widget
- *   (Category / Search / legacy Products widget), the single legacy
- *   `useWidgetSettings` scalar is honored flat across all breakpoints. This
- *   reproduces the old theme grid and preserves the merchant's configured value.
- * - Otherwise (inside a widget, pre-hydration) the built-in responsive default
- *   from the app settings is used ({ xs: 2, md: 4 }), so the inherited legacy
- *   `columns: 2` default no longer pins tablet to 2.
  * @returns The resolved number of columns for the active breakpoint.
  */
 export const useProductGridColumns = (): number => {
@@ -33,21 +31,32 @@ export const useProductGridColumns = (): number => {
   const isInsideWidget = Boolean(widgetCode);
 
   const areAppSettingsHydrated = useSelector(getAreAppSettingsHydrated);
-  // The built-in default { xs: 2, md: 4 } until hydrated, the source value after.
+  // The built-in default { small: 2, large: 4 } until hydrated, the source value after.
   const appSettingsColumns = useSelector(getProductGridColumns);
 
   const { columns: legacyColumns } =
     (useWidgetSettings(WIDGET_ID) || {}) as { columns?: number };
 
-  const breakpoints = useMemo<ProductColumns>(() => {
+  const sizes = useMemo<ProductColumns>(() => {
     // Only special case: pre-hydration, outside a widget, honor the legacy
     // scalar flat across every breakpoint.
     if (!areAppSettingsHydrated && !isInsideWidget && typeof legacyColumns === 'number') {
-      return { xs: legacyColumns };
+      return { small: legacyColumns };
     }
 
     return appSettingsColumns;
   }, [areAppSettingsHydrated, isInsideWidget, legacyColumns, appSettingsColumns]);
+
+  const breakpoints = useMemo<Partial<Record<Breakpoint, number>>>(
+    () => (Object.entries(sizes) as [ScreenSize, number][]).reduce(
+      (acc, [size, value]) => {
+        acc[SCREEN_SIZE_BREAKPOINTS[size]] = value;
+        return acc;
+      },
+      {} as Partial<Record<Breakpoint, number>>
+    ),
+    [sizes]
+  );
 
   return useResponsiveValue(breakpoints) as number;
 };

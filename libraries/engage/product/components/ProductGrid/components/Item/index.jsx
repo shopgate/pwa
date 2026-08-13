@@ -16,6 +16,13 @@ const useStyles = makeStyles()((theme, { display }) => ({
     display: 'flex',
     flexDirection: 'column',
     height: '100%',
+    overflow: 'hidden',
+    padding: theme.components.tiles.padding,
+    background: theme.components.tiles.backgroundColor,
+  },
+  image: {
+    display: 'block',
+    padding: theme.components.tiles.imagePadding,
   },
   itemDetails: {
     position: 'relative',
@@ -39,6 +46,7 @@ const Item = ({ product, display }) => {
   return (
     <div className={cx(classes.root, 'theme__product-grid__item')}>
       <Link
+        className={classes.image}
         role="none"
         href={getProductRoute(product.id)}
         state={{

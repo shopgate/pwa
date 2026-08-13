@@ -4,11 +4,6 @@ exports[`TabBar favorites action - behavior should cap display at MAX when numbe
 <FavoritesIconBadge
   favoritesCount={9999}
   showWishlistItemsCountBadge={true}
-  widgetSettings={
-    {
-      "showCounter": true,
-    }
-  }
 >
   <Badge
     className="sg-u2omqm-root theme__tab-bar__favorites-icon-badge"
@@ -36,11 +31,6 @@ exports[`TabBar favorites action - behavior should show count when number is cha
 <FavoritesIconBadge
   favoritesCount={99}
   showWishlistItemsCountBadge={true}
-  widgetSettings={
-    {
-      "showCounter": true,
-    }
-  }
 >
   <Badge
     className="sg-u2omqm-root theme__tab-bar__favorites-icon-badge"
@@ -77,37 +67,32 @@ exports[`TabBar favorites action should render exact number 1`] = `
     }
   }
 >
-  <WithWidgetSettings(Connect(FavoritesIconBadge))>
-    <Connect(FavoritesIconBadge)
-      widgetSettings={{}}
+  <Connect(FavoritesIconBadge)>
+    <FavoritesIconBadge
+      dispatch={[Function]}
+      favoritesCount={1}
+      showWishlistItemsCountBadge={true}
     >
-      <FavoritesIconBadge
-        dispatch={[Function]}
-        favoritesCount={1}
-        showWishlistItemsCountBadge={true}
-        widgetSettings={{}}
+      <Badge
+        className="sg-u2omqm-root theme__tab-bar__favorites-icon-badge"
+        count={1}
+        max={999}
+        showCount={true}
       >
-        <Badge
-          className="sg-u2omqm-root theme__tab-bar__favorites-icon-badge"
-          count={1}
-          max={999}
-          showCount={true}
+        <ForwardRef(Typography)
+          className="theme__tab-bar__favorites-icon-badge theme__badge sg-aibdx1-root-root"
+          component="div"
+          fontWeight="bold"
+          variant="caption"
         >
-          <ForwardRef(Typography)
-            className="theme__tab-bar__favorites-icon-badge theme__badge sg-aibdx1-root-root"
-            component="div"
-            fontWeight="bold"
-            variant="caption"
+          <div
+            className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-1radaz1-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
           >
-            <div
-              className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-1radaz1-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
-            >
-              1
-            </div>
-          </ForwardRef(Typography)>
-        </Badge>
-      </FavoritesIconBadge>
-    </Connect(FavoritesIconBadge)>
-  </WithWidgetSettings(Connect(FavoritesIconBadge))>
+            1
+          </div>
+        </ForwardRef(Typography)>
+      </Badge>
+    </FavoritesIconBadge>
+  </Connect(FavoritesIconBadge)>
 </Provider>
 `;

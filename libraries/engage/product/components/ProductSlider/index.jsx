@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useWidgetSettings } from '@shopgate/engage/core';
 import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import { Swiper } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -8,10 +7,12 @@ import {
   ProductListTypeProvider,
   ProductListEntryProvider,
 } from '@shopgate/engage/product/providers';
+import { useSlidesPerView } from './hooks';
+import { WIDGET_ID } from './constants';
 
 const useStyles = makeStyles()({
   container: {
-    paddingBottom: 10,
+    padding: '8px 9px 16px !important',
   },
 });
 
@@ -19,8 +20,6 @@ const items = {
   margin: '0 8px',
   height: '100%',
 };
-
-export const WIDGET_ID = '@shopgate/engage/product/ProductSlider';
 
 /**
  * @param {Object} props The component props.
@@ -38,10 +37,10 @@ function ProductSlider(props) {
     meta,
     productItemProps,
     item,
+    slidesPerView: slidesPerViewProp,
     ...swiperProps
   } = props;
-  const widgetSettings = useWidgetSettings(WIDGET_ID) || {};
-  const { slidesPerView = 2.3 } = props.slidesPerView ? props : widgetSettings;
+  const slidesPerView = useSlidesPerView(slidesPerViewProp);
   // ProductSlider items are rendered with the ProductCard component provided by the theme.
   const { ProductCard } = useThemeComponents();
   const Item = item || ProductCard;
@@ -60,9 +59,10 @@ function ProductSlider(props) {
         freeMode={!snap}
         {...swiperProps}
         slidesPerView={slidesPerView}
+        classNames={{ container: classes.container }}
       >
         {productIds.map(id => (
-          <Swiper.Item key={id} className={classes.container}>
+          <Swiper.Item key={id}>
             <ProductListEntryProvider productId={id}>
               <Item productId={id} style={items} {...productItemProps} />
             </ProductListEntryProvider>

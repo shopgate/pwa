@@ -2,12 +2,10 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Badge } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { withWidgetSettings } from '@shopgate/engage/core/hocs';
+import { useShowFavoritesCounter } from '../../hooks';
 import connect from './connector';
 
 const MAX_NUMBER = 999;
-
-const defaultWidgetSettings = { showCounter: true };
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -27,21 +25,19 @@ const useStyles = makeStyles()(theme => ({
 const FavoritesIconBadge = ({
   favoritesCount = 0,
   showWishlistItemsCountBadge = true,
-  widgetSettings = defaultWidgetSettings,
 }) => {
   const { classes, cx } = useStyles();
+  const showCounter = useShowFavoritesCounter();
 
   if (!showWishlistItemsCountBadge) {
     return null;
   }
 
-  const showCounter = widgetSettings.showCounter ?? defaultWidgetSettings.showCounter;
-
   return (
     <Badge
       count={favoritesCount}
       max={MAX_NUMBER}
-      showCount={showCounter !== false}
+      showCount={showCounter}
       className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge')}
     />
   );
@@ -52,18 +48,11 @@ export { FavoritesIconBadge };
 FavoritesIconBadge.propTypes = {
   favoritesCount: PropTypes.number,
   showWishlistItemsCountBadge: PropTypes.bool,
-  widgetSettings: PropTypes.shape({
-    showCounter: PropTypes.bool,
-  }),
 };
 
 FavoritesIconBadge.defaultProps = {
   favoritesCount: 0,
   showWishlistItemsCountBadge: true,
-  widgetSettings: defaultWidgetSettings,
 };
 
-export default withWidgetSettings(
-  connect(memo(FavoritesIconBadge)),
-  '@shopgate/theme-ios11/components/TabBar/FavoritesIconBadge'
-);
+export default connect(memo(FavoritesIconBadge));

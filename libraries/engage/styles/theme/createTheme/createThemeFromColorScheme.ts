@@ -2,7 +2,7 @@ import createPalette from './createPalette';
 import createTypography from './createTypography';
 import createComponents from './createComponents';
 import createShape from './createShape';
-import shadows from './shadows';
+import shadows, { shadowSizes } from './shadows';
 import type { ColorSchemeOptions, ColorSchemeTheme } from './types';
 
 /**
@@ -85,6 +85,7 @@ const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): ColorSchem
     components,
     shape,
     shadows,
+    shadowSizes,
     alpha,
     lighten,
     darken,

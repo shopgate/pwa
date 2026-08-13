@@ -10,7 +10,7 @@ import type { ApplyStyles } from './applyStyles';
 import type { GetColorSchemeSelector, ActiveColorSchemeSwitcher } from './helpers';
 import type { CreateCssVarsForColorSchemeThemesReturnValue } from './createCssVarsForColorSchemeThemes';
 import type { Shape, ShapeOptions } from './createShape';
-import type { Shadows } from './shadows';
+import type { Shadows, ShadowSize } from './shadows';
 
 export type { Breakpoint } from './createBreakpoints';
 export type { PaletteColorsWithMain } from './createPalette';
@@ -104,6 +104,10 @@ export interface BaseTheme {
    * Pre-defined shadow styles for different elevation levels, following Material Design guidelines.
    */
   shadows: Shadows;
+  /**
+   * The finished box-shadow size (`none` | `low` | `medium` | `strong`)
+   */
+  shadowSizes: Record<ShadowSize, string>;
   /**
    * Adds an alpha value to a color, returning a new color string with the applied alpha.
    * @param color The color to modify.

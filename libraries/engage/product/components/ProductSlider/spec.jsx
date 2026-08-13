@@ -2,8 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import ProductSlider from './index';
 
-jest.mock('@shopgate/engage/core', () => ({
-  useWidgetSettings: jest.fn(),
+jest.mock('./hooks', () => ({
+  useSlidesPerView: jest.fn(() => 2.3),
 }));
 
 jest.mock('@shopgate/engage/components', () => {

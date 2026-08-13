@@ -14,6 +14,8 @@ behavior here drifts from the code, update this document in the same PR.
 
 5. Never update snapshots. Do not run `jest -u` / `--updateSnapshot`, and do not hand-edit `.snap` files. When a change makes snapshots stale, show the diff and stop — the developer reviews and updates them. A snapshot diff is how humans catch unintended UI changes; an agent accepting it destroys that signal. A local `PreToolUse` hook blocks the command, but the rule stands regardless of tooling.
 
+6. Don't comment your code. Do not add comments that explain what the code does or why you chose an approach — write code that reads clearly instead, and put the reasoning in your reply. The only comments to write are doc comments on types (interfaces, type aliases and their members), and those are two lines at most.
+
 ## Project Overview
 
 Shopgate's ENGAGE PWA — a Lerna + Yarn-workspaces monorepo holding the shared

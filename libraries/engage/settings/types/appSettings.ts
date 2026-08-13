@@ -1,4 +1,16 @@
-import type { Breakpoint } from '@shopgate/engage/styles/theme';
+import type { ShadowSize } from '@shopgate/engage/styles/theme';
+
+// Re-exported so consumers of these settings do not have to reach into the styles layer, which
+// owns the type because it owns the elevation scale the sizes map to.
+export type { ShadowSize };
+
+/**
+ * Recursively optional variant of `T`. The settings sources send only what a merchant configured,
+ * and the admin preview additionally prunes the fields its visibility conditions hide.
+ */
+export type DeepPartial<T> = {
+  [K in keyof T]?: T[K] extends object ? DeepPartial<T[K]> : T[K];
+};
 
 export interface AppSettingsState {
   settings: {
@@ -7,11 +19,21 @@ export interface AppSettingsState {
 }
 
 /**
- * Number of product columns to render, keyed by breakpoint. Partial: any unset
- * breakpoint cascades down to the next smaller defined value (see
- * useResponsiveValue).
+ * The merchant-facing screen sizes for the product list types. Each maps to a theme
+ * breakpoint inside the consuming hook (small → xs, medium → sm, large → md).
  */
-export type ProductColumns = Partial<Record<Breakpoint, number>>;
+export type ScreenSize = 'small' | 'medium' | 'large';
+
+/**
+ * A value keyed by screen size. Partial: any unset size cascades down to the next smaller
+ * defined value (see useResponsiveValue).
+ */
+export type PerScreenSize = Partial<Record<ScreenSize, number>>;
+
+/**
+ * Number of product columns to render, keyed by screen size.
+ */
+export type ProductColumns = PerScreenSize;
 
 /**
  * Settings for the ProductGrid list type.
@@ -21,11 +43,67 @@ export interface ProductGridSettings {
 }
 
 /**
- * Settings for the various product-list types. Add a key and its own settings
- * interface per future type (e.g. slider).
+ * Name-clamping shared by the card and tile product surfaces.
  */
-export interface ProductListSettings {
+export interface ProductNameSettings {
+  /** Max number of lines the product name is clamped to before an ellipsis. */
+  maxLines: number;
+}
+
+/**
+ * Drop shadow of the card surface.
+ */
+export interface ShadowSettings {
+  /** Which preset elevation to draw. `none` renders no shadow at all. */
+  size: ShadowSize;
+}
+
+/**
+ * Number of slides to render side by side, keyed by screen size. Fractional values are allowed.
+ */
+export type SlidesPerView = PerScreenSize;
+
+/**
+ * Settings for the ProductSlider list type.
+ */
+export interface ProductSliderSettings {
+  slidesPerView: SlidesPerView;
+}
+
+/**
+ * Settings for the product rating stars.
+ */
+export interface ProductRatingSettings {
+  /**
+   * Whether rating stars are also rendered for products that have no rating yet.
+   */
+  showEmptyStars: boolean;
+}
+
+/**
+ * Settings for product presentation across the app.
+ */
+export interface ProductSettings {
   grid: ProductGridSettings;
+  slider: ProductSliderSettings;
+  rating: ProductRatingSettings;
+  /** Product cards (sliders, relations, live shopping). */
+  card: { productName: ProductNameSettings };
+  /** Product grid tiles. */
+  tile: { productName: ProductNameSettings };
+}
+
+/**
+ * The visual style of the card surface.
+ */
+export type CardStyle = 'shadow' | 'border' | 'flat';
+
+/**
+ * Settings for the themed card surface (checkout sections, address cards, sliders).
+ */
+export interface CardSettings {
+  style: CardStyle;
+  shadow: ShadowSettings;
 }
 
 /**
@@ -142,14 +220,27 @@ export interface AppSettings {
       fixed: {
         borderEnabled: boolean;
       }
+      favorites: {
+        /**
+         * Whether the favorites tab bar icon renders the number of favorites within its badge.
+         */
+        showCounter: boolean;
+      }
     }
   }
-  productList: ProductListSettings;
+  product: ProductSettings;
   /**
    * Settings for images that are served through the image service.
    */
   images: ImageSettings;
+  cards: CardSettings;
 }
+
+/**
+ * What a settings source actually sends. Every field is optional, so the reducer fills the gaps
+ * from its defaults instead of leaving consumers with undefined.
+ */
+export type AppSettingsPayload = DeepPartial<AppSettings>;
 
 /**
  * The stored app settings slice. Extends the raw {@link AppSettings} values

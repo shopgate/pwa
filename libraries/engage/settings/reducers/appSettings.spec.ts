@@ -1,5 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
-import type { AppSettings } from '../types/appSettings';
+import type { AppSettings, AppSettingsPayload } from '../types/appSettings';
 import { receiveAppSettings } from '../action-creators/appSettings';
 import appSettings, { DEFAULT_APP_SETTINGS } from './appSettings';
 
@@ -37,15 +37,38 @@ describe('settings / reducers / appSettings', () => {
           fixed: {
             borderEnabled: false,
           },
-        },
-      },
-      productList: {
-        grid: {
-          columns: {
-            xs: 1,
-            md: 3,
+          favorites: {
+            showCounter: false,
           },
         },
+      },
+      product: {
+        grid: {
+          columns: {
+            small: 1,
+            large: 3,
+          },
+        },
+        slider: {
+          slidesPerView: {
+            small: 1.2,
+            medium: 2.2,
+            large: 3.2,
+          },
+        },
+        rating: {
+          showEmptyStars: false,
+        },
+        card: {
+          productName: { maxLines: 1 },
+        },
+        tile: {
+          productName: { maxLines: 4 },
+        },
+      },
+      cards: {
+        style: 'border',
+        shadow: { size: 'low' },
       },
       images: {
         quality: 75,
@@ -65,15 +88,16 @@ describe('settings / reducers / appSettings', () => {
 
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
-    expect(state.productList.grid.columns).toEqual(settings.productList.grid.columns);
+    expect(state.product).toEqual(settings.product);
+    expect(state.cards).toEqual(settings.cards);
   });
 
   it('deep merges a partial payload over the defaults', () => {
     // The admin preview may send only the fields the merchant changed. Anything
     // omitted must keep its default so consumers never read undefined.
-    const partial = {
+    const partial: AppSettingsPayload = {
       navigation: { tabBar: { variant: 'floating' } },
-    } as AppSettings;
+    };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(partial));
 
@@ -84,7 +108,30 @@ describe('settings / reducers / appSettings', () => {
       showLabels: DEFAULT_APP_SETTINGS.navigation.tabBar.showLabels,
       hideOnScroll: DEFAULT_APP_SETTINGS.navigation.tabBar.hideOnScroll,
       fixed: DEFAULT_APP_SETTINGS.navigation.tabBar.fixed,
+      favorites: DEFAULT_APP_SETTINGS.navigation.tabBar.favorites,
     });
+  });
+
+  it('resets fields a later payload omits back to their default', () => {
+    // The admin preview drops the fields of inputs its visibility conditions hide, so selecting the
+    // flat card style stops sending a shadow size. The elevation of the previous payload must not
+    // survive that, or the preview keeps drawing a shadow on a flat card.
+    const withShadow = appSettings(
+      DEFAULT_APP_SETTINGS,
+      receiveAppSettings({
+        cards: { shadow: { size: 'strong' } },
+      })
+    );
+
+    expect(withShadow.cards.shadow.size).toBe('strong');
+
+    const withoutShadow = appSettings(
+      withShadow,
+      receiveAppSettings({ cards: {} })
+    );
+
+    expect(withoutShadow.cards.shadow.size)
+      .toBe(DEFAULT_APP_SETTINGS.cards.shadow.size);
   });
 
   describe('images', () => {
@@ -190,8 +237,16 @@ describe('settings / reducers / appSettings', () => {
         images: {
           quality: 40,
           product: {
-            ratio: { width: 4, height: 5 },
-            pdp: { ratio: { width: 1, height: 2 } },
+            ratio: {
+              width: 4,
+              height: 5,
+            },
+            pdp: {
+              ratio: {
+                width: 1,
+                height: 2,
+              },
+            },
           },
         },
       } as AppSettings));
@@ -224,7 +279,14 @@ describe('settings / reducers / appSettings', () => {
       );
 
       appSettings(restored, receiveAppSettings({
-        images: { product: { ratio: { width: 4, height: 5 } } },
+        images: {
+          product: {
+            ratio: {
+              width: 4,
+              height: 5,
+            },
+          },
+        },
       } as AppSettings));
 
       expect(DEFAULT_APP_SETTINGS.images.product.ratio).toEqual({
@@ -249,7 +311,7 @@ describe('settings / reducers / appSettings', () => {
   it('does not mutate the shared defaults constant', () => {
     appSettings(
       DEFAULT_APP_SETTINGS,
-      receiveAppSettings({ navigation: { tabBar: { variant: 'floating' } } } as AppSettings)
+      receiveAppSettings({ navigation: { tabBar: { variant: 'floating' } } })
     );
 
     expect(DEFAULT_APP_SETTINGS.navigation.tabBar.variant).toBe('fixed');
