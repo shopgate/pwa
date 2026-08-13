@@ -33,7 +33,12 @@ describe('Router > helpers', () => {
 
   test('pop()', () => {
     pop();
-    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_POP);
+    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_POP, undefined);
+  });
+
+  test('pop() with params', () => {
+    pop({ steps: 2 });
+    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_POP, { steps: 2 });
   });
 
   test('replace()', () => {
